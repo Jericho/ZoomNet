@@ -1,0 +1,71 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net452;netstandard1.3;netstandard2.0</TargetFrameworks>
+    <PlatformTarget>anycpu</PlatformTarget>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <OutputType>Library</OutputType>
+    <Version>$(SemVer)</Version>
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup>
+      <PackageId>ZoomNet</PackageId>
+      <AssemblyName>ZoomNet</AssemblyName>
+      <AssemblyTitle>ZoomNet</AssemblyTitle>
+      <Authors>Jeremie Desautels</Authors>
+      <Company></Company>
+      <Description>ZoomNet is a strongly typed .NET client for Zoom's API.</Description>
+      <Copyright>Copyright © Jeremie Desautels and contributors 2019 - Present</Copyright>
+      <PackageLicenseUrl>http://jericho.mit-license.org</PackageLicenseUrl>
+      <PackageProjectUrl>https://github.com/Jericho/ZoomNet</PackageProjectUrl>
+      <PackageIconUrl>https://github.com/identicons/jericho.png</PackageIconUrl>
+      <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+      <PackageTags>ZoomNet zoom meeting webinar</PackageTags>
+      <PackageReleaseNotes></PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MimeTypesMap" Version="1.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+    <PackageReference Include="Pathoschild.Http.FluentClient" Version="3.2.0" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta008" PrivateAssets="All" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net452' ">
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' != 'net452'">
+    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.5.0" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net452' ">
+    <DefineConstants>$(DefineConstants);LIBLOG_PORTABLE;NETFULL</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard1.3'">
+    <DefineConstants>$(DefineConstants);LIBLOG_PORTABLE;NETSTANDARD;NETSTANDARD1</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <DefineConstants>$(DefineConstants);LIBLOG_PORTABLE;NETSTANDARD;NETSTANDARD2</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release' ">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="$(SolutionDir)stylecop.json" Link="stylecop.json" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>$(SolutionDir)StyleCopRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+</Project>
