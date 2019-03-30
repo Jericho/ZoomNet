@@ -18,7 +18,7 @@ namespace ZoomNet.Utilities
 	{
 		#region FIELDS
 
-		private const string DIAGNOSTIC_ID_HEADER_NAME = "StrongGrid-DiagnosticId";
+		private const string DIAGNOSTIC_ID_HEADER_NAME = "ZoomNet-DiagnosticId";
 		private static readonly ILog _logger = LogProvider.For<DiagnosticHandler>();
 		private readonly IDictionary<WeakReference<HttpRequestMessage>, Tuple<StringBuilder, Stopwatch>> _diagnostics = new Dictionary<WeakReference<HttpRequestMessage>, Tuple<StringBuilder, Stopwatch>>();
 
