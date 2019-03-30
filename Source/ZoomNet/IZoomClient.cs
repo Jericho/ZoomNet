@@ -22,5 +22,13 @@ namespace ZoomNet
 		/// The past meetings resource.
 		/// </value>
 		IPastMeetings PastMeetings { get; }
+
+		/// <summary>
+		/// Gets the resource which allows you to manage webinars.
+		/// </summary>
+		/// <value>
+		/// The webinars resource.
+		/// </value>
+		IWebinars Webinars { get; }
 	}
 }
