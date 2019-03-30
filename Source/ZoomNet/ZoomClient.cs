@@ -56,6 +56,14 @@ namespace ZoomNet
 		}
 
 		/// <summary>
+		/// Gets the resource which allows you to manage sub accounts.
+		/// </summary>
+		/// <value>
+		/// The accounts resource.
+		/// </value>
+		public IAccounts Accounts { get; private set; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage cloud recordings.
 		/// </summary>
 		/// <value>
@@ -192,6 +200,7 @@ namespace ZoomNet
 			_fluentClient.Filters.Add(new DiagnosticHandler(_options.LogLevelSuccessfulCalls, _options.LogLevelFailedCalls));
 			_fluentClient.Filters.Add(new ZoomErrorHandler());
 
+			Accounts = new Accounts(_fluentClient);
 			CloudRecordings = new CloudRecordings(_fluentClient);
 			Meetings = new Meetings(_fluentClient);
 			PastMeetings = new PastMeetings(_fluentClient);
