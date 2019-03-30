@@ -6,18 +6,18 @@
 	public enum WebinarType
 	{
 		/// <summary>
-		/// Five.
+		/// Regular webinar.
 		/// </summary>
-		Five = 5,
+		Regular = 5,
 
 		/// <summary>
-		/// Six.
+		/// Recurring webinar with no fixed time.
 		/// </summary>
-		Six = 6,
+		RecurringNoFixedTime = 6,
 
 		/// <summary>
-		/// Nine
+		/// Recurring webinar with fixed time.
 		/// </summary>
-		Nine = 9
+		RecurringFixedTime = 9
 	}
 }
