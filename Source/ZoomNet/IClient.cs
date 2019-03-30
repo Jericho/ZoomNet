@@ -1,3 +1,5 @@
+using ZoomNet.Resources;
+
 namespace ZoomNet
 {
 	/// <summary>
@@ -5,5 +7,12 @@ namespace ZoomNet
 	/// </summary>
 	public interface IClient
 	{
+		/// <summary>
+		/// Gets the resource which allows you to manage meetings.
+		/// </summary>
+		/// <value>
+		/// The meetings resource.
+		/// </value>
+		IMeetings Meetings { get; }
 	}
 }

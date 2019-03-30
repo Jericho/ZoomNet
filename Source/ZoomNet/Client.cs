@@ -6,6 +6,7 @@ using System;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
+using ZoomNet.Resources;
 using ZoomNet.Utilities;
 
 namespace ZoomNet
@@ -58,6 +59,14 @@ namespace ZoomNet
 		/// Gets the user agent.
 		/// </summary>
 		public static string UserAgent { get; private set; }
+
+		/// <summary>
+		/// Gets the resource which allows you to manage meetings.
+		/// </summary>
+		/// <value>
+		/// The meetings resource.
+		/// </value>
+		public IMeetings Meetings { get; private set; }
 
 		#endregion
 
@@ -131,6 +140,8 @@ namespace ZoomNet
 			_fluentClient.Filters.Add(new JwtTokenHandler(apiKey, apiSecret));
 			_fluentClient.Filters.Add(new DiagnosticHandler(_options.LogLevelSuccessfulCalls, _options.LogLevelFailedCalls));
 			_fluentClient.Filters.Add(new ZoomErrorHandler());
+
+			Meetings = new Meetings(_fluentClient);
 		}
 
 		/// <summary>
