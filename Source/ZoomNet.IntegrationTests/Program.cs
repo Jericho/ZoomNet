@@ -1,15 +1,18 @@
-﻿using System;
+using Logzio.DotNet.NLog;
+using NLog;
+using NLog.Config;
+using NLog.Targets;
+using System;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using ZoomNet.Logging;
 using ZoomNet.Utilities;
 
 namespace ZoomNet.IntegrationTests
 {
-	class Program
+	public class Program
 	{
 		private const int MAX_ZOOM_API_CONCURRENCY = 5;
 
@@ -23,25 +26,46 @@ namespace ZoomNet.IntegrationTests
 		static async Task<int> Main()
 		{
 			// -----------------------------------------------------------------------------
-			// Do you want to proxy requests through Fiddler (useful for debugging)?
-			var useFiddler = true;
+			// Do you want to proxy requests through Fiddler? Can be useful for debugging.
+			var useFiddler = false;
 
-			// As an alternative to Fiddler, you can display debug information about
-			// every HTTP request/response in the console. This is useful for debugging
-			// purposes but the amount of information can be overwhelming.
-			var debugHttpMessagesToConsole = false;
+			// Logging options.
+			var options = new ZoomClientOptions()
+			{
+				LogLevelFailedCalls = Logging.LogLevel.Error,
+				LogLevelSuccessfulCalls = Logging.LogLevel.Debug
+			};
 			// -----------------------------------------------------------------------------
 
-			var apiKey = Environment.GetEnvironmentVariable("ZOOM_APIKEY");
-			var apiSecret = Environment.GetEnvironmentVariable("ZOOM_APISECRET");
-			var userId = Environment.GetEnvironmentVariable("ZOOM_USERID");
-			var client = useFiddler ? new Client(apiKey, apiSecret, new WebProxy("http://localhost:8888")) : new Client(apiKey, apiSecret);
+			// Configure logging
+			var nLogConfig = new LoggingConfiguration();
 
-			if (debugHttpMessagesToConsole)
+			// Send logs to logz.io
+			var logzioToken = Environment.GetEnvironmentVariable("LOGZIO_TOKEN");
+			if (!string.IsNullOrEmpty(logzioToken))
 			{
-				LogProvider.SetCurrentLogProvider(new ConsoleLogProvider());
+				var logzioTarget = new LogzioTarget { Token = logzioToken };
+				logzioTarget.ContextProperties.Add(new TargetPropertyWithContext("source", "StrongGrid_integration_tests"));
+				logzioTarget.ContextProperties.Add(new TargetPropertyWithContext("StrongGrid-Version", Client.Version));
+
+				nLogConfig.AddTarget("Logzio", logzioTarget);
+				nLogConfig.AddRule(NLog.LogLevel.Debug, NLog.LogLevel.Fatal, "Logzio", "*");
 			}
 
+			// Send logs to console
+			var consoleTarget = new ColoredConsoleTarget();
+			nLogConfig.AddTarget("ColoredConsole", consoleTarget);
+			nLogConfig.AddRule(NLog.LogLevel.Warn, NLog.LogLevel.Fatal, "ColoredConsole", "*");
+
+			LogManager.Configuration = nLogConfig;
+
+			// Configure ZoomNet client
+			var apiKey = Environment.GetEnvironmentVariable("ZOOM_APIKEY");
+			var apiSecret = Environment.GetEnvironmentVariable("ZOOM_APISECRET");
+			var proxy = useFiddler ? new WebProxy("http://localhost:8888") : null;
+			var client = new Client(apiKey, apiSecret, proxy, options);
+
+			// Configure Console
 			var source = new CancellationTokenSource();
 			Console.CancelKeyPress += (s, e) =>
 			{
@@ -54,10 +78,9 @@ namespace ZoomNet.IntegrationTests
 			ConsoleUtils.CenterConsole();
 
 			// These are the integration tests that we will execute
-			var integrationTests = new Func<string, IClient, TextWriter, CancellationToken, Task>[]
+			var integrationTests = new Func<IClient, TextWriter, CancellationToken, Task>[]
 			{
 			};
-
 
 			// Execute the async tests in parallel (with max degree of parallelism)
 			var results = await integrationTests.ForEachAsync(
@@ -67,7 +90,7 @@ namespace ZoomNet.IntegrationTests
 
 					try
 					{
-						await integrationTest(userId, client, log, source.Token).ConfigureAwait(false);
+						await integrationTest(client, log, source.Token).ConfigureAwait(false);
 						return (TestName: integrationTest.Method.Name, ResultCode: ResultCodes.Success, Message: string.Empty);
 					}
 					catch (OperationCanceledException)
@@ -78,7 +101,7 @@ namespace ZoomNet.IntegrationTests
 					catch (Exception e)
 					{
 						var exceptionMessage = e.GetBaseException().Message;
-						await log.WriteLineAsync($"-----> AN EXCEPTION OCCURED: {exceptionMessage}").ConfigureAwait(false);
+						await log.WriteLineAsync($"-----> AN EXCEPTION OCCURRED: {exceptionMessage}").ConfigureAwait(false);
 						return (TestName: integrationTest.Method.Name, ResultCode: ResultCodes.Exception, Message: exceptionMessage);
 					}
 					finally

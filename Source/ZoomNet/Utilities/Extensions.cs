@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
@@ -51,7 +51,7 @@ namespace ZoomNet.Utilities
 		/// <summary>
 		/// Reads the content of the HTTP response as string asynchronously.
 		/// </summary>
-		/// <param name="content">The content.</param>
+		/// <param name="httpContent">The content.</param>
 		/// <param name="encoding">The encoding. You can leave this parameter null and the encoding will be
 		/// automatically calculated based on the charset in the response. Also, UTF-8
 		/// encoding will be used if the charset is absent from the response, is blank
@@ -90,26 +90,33 @@ namespace ZoomNet.Utilities
 		/// var responseContent = await response.Content.ReadAsStringAsync(null).ConfigureAwait(false);
 		/// </code>
 		/// </example>
-		public static async Task<string> ReadAsStringAsync(this HttpContent content, Encoding encoding)
+		public static async Task<string> ReadAsStringAsync(this HttpContent httpContent, Encoding encoding)
 		{
-			var responseStream = await content.ReadAsStreamAsync().ConfigureAwait(false);
-			var responseContent = string.Empty;
+			var content = string.Empty;
 
-			if (encoding == null) encoding = content.GetEncoding(Encoding.UTF8);
-
-			// This is important: we must make a copy of the response stream otherwise we would get an
-			// exception on subsequent attempts to read the content of the stream
-			using (var ms = new MemoryStream())
+			if (httpContent != null)
 			{
-				await content.CopyToAsync(ms).ConfigureAwait(false);
-				ms.Position = 0;
-				using (var sr = new StreamReader(ms, encoding))
+				var contentStream = await httpContent.ReadAsStreamAsync().ConfigureAwait(false);
+
+				if (encoding == null) encoding = httpContent.GetEncoding(Encoding.UTF8);
+
+				// This is important: we must make a copy of the response stream otherwise we would get an
+				// exception on subsequent attempts to read the content of the stream
+				using (var ms = new MemoryStream())
 				{
-					responseContent = await sr.ReadToEndAsync().ConfigureAwait(false);
+					await contentStream.CopyToAsync(ms).ConfigureAwait(false);
+					ms.Position = 0;
+					using (var sr = new StreamReader(ms, encoding))
+					{
+						content = await sr.ReadToEndAsync().ConfigureAwait(false);
+					}
+
+					// It's important to rewind the stream
+					if (contentStream.CanSeek) contentStream.Position = 0;
 				}
 			}
 
-			return responseContent;
+			return content;
 		}
 
 		/// <summary>
@@ -139,17 +146,17 @@ namespace ZoomNet.Utilities
 		public static Encoding GetEncoding(this HttpContent content, Encoding defaultEncoding)
 		{
 			var encoding = defaultEncoding;
-			var charset = content.Headers.ContentType.CharSet;
-			if (!string.IsNullOrEmpty(charset))
+			try
 			{
-				try
+				var charset = content?.Headers?.ContentType?.CharSet;
+				if (!string.IsNullOrEmpty(charset))
 				{
 					encoding = Encoding.GetEncoding(charset);
 				}
-				catch
-				{
-					encoding = defaultEncoding;
-				}
+			}
+			catch
+			{
+				encoding = defaultEncoding;
 			}
 
 			return encoding;
@@ -218,7 +225,7 @@ namespace ZoomNet.Utilities
 		/// </remarks>
 		public static IRequest WithJsonBody<T>(this IRequest request, T body)
 		{
-			return request.WithBody(body, new MediaTypeHeaderValue("application/json"));
+			return request.WithBody(bodyBuilder => bodyBuilder.Model(body, new MediaTypeHeaderValue("application/json")));
 		}
 
 		/// <summary>Asynchronously retrieve the response body as a <see cref="string"/>.</summary>
@@ -268,9 +275,9 @@ namespace ZoomNet.Utilities
 			var result = new StringBuilder();
 			AppendFormatIfNecessary(result, "day", timeSpan.Days);
 			AppendFormatIfNecessary(result, "hour", timeSpan.Hours);
-			AppendFormatIfNecessary(result, "minute", timeSpan.Days);
-			AppendFormatIfNecessary(result, "second", timeSpan.Days);
-			AppendFormatIfNecessary(result, "millisecond", timeSpan.Days);
+			AppendFormatIfNecessary(result, "minute", timeSpan.Minutes);
+			AppendFormatIfNecessary(result, "second", timeSpan.Seconds);
+			AppendFormatIfNecessary(result, "millisecond", timeSpan.Milliseconds);
 			return result.ToString().Trim();
 		}
 
@@ -304,7 +311,7 @@ namespace ZoomNet.Utilities
 
 		public static void AddPropertyIfValue<T>(this JObject jsonObject, string propertyName, T value, JsonConverter converter = null)
 		{
-			if (EqualityComparer<T>.Default.Equals(value, default(T))) return;
+			if (EqualityComparer<T>.Default.Equals(value, default)) return;
 
 			var jsonSerializer = new JsonSerializer();
 			if (converter != null)
@@ -330,7 +337,7 @@ namespace ZoomNet.Utilities
 
 		public static T GetPropertyValue<T>(this JToken item, string name)
 		{
-			if (item[name] == null) return default(T);
+			if (item[name] == null) return default;
 			return item[name].Value<T>();
 		}
 
@@ -417,6 +424,89 @@ namespace ZoomNet.Utilities
 					|| value is float
 					|| value is double
 					|| value is decimal;
+		}
+
+		/// <summary>
+		/// Returns the first value for a specified header stored in the System.Net.Http.Headers.HttpHeaderscollection.
+		/// </summary>
+		/// <param name="headers">The HTTP headers.</param>
+		/// <param name="name">The specified header to return value for.</param>
+		/// <returns>A string.</returns>
+		public static string GetValue(this HttpHeaders headers, string name)
+		{
+			if (headers == null) return null;
+
+			if (headers.TryGetValues(name, out IEnumerable<string> values))
+			{
+				return values.FirstOrDefault();
+			}
+
+			return null;
+		}
+
+		public static void CheckForZoomErrors(this IResponse response)
+		{
+			var (isError, errorMessage) = GetErrorMessage(response.Message).GetAwaiter().GetResult();
+			if (!isError) return;
+
+			var diagnosticId = response.Message.RequestMessage.Headers.GetValue(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME);
+			if (DiagnosticHandler.DiagnosticsInfo.TryGetValue(diagnosticId, out (WeakReference<HttpRequestMessage> RequestReference, string Diagnostic, long RequestTimeStamp, long ResponseTimestamp) diagnosticInfo))
+			{
+				throw new ZoomException(errorMessage, response.Message, diagnosticInfo.Diagnostic);
+			}
+			else
+			{
+				throw new ZoomException(errorMessage, response.Message, "Diagnostic log unavailable");
+			}
+		}
+
+		private static async Task<(bool, string)> GetErrorMessage(HttpResponseMessage message)
+		{
+			// Assume there is no error
+			var isError = false;
+
+			// Default error message
+			var errorMessage = $"{(int)message.StatusCode}: {message.ReasonPhrase}";
+
+			/*
+				In case of an error, the Zoom API returns a JSON string that looks like this:
+				{
+					"code": 300,
+					"message": "This meeting has not registration required: 544993922"
+				}
+			*/
+
+			var responseContent = await message.Content.ReadAsStringAsync(null).ConfigureAwait(false);
+
+			if (!string.IsNullOrEmpty(responseContent))
+			{
+				try
+				{
+					// Check for the presence of property called 'errors'
+					var jObject = JObject.Parse(responseContent);
+					var codeProperty = jObject["code"];
+					var messageProperty = jObject["message"];
+
+					if (messageProperty != null)
+					{
+						errorMessage = messageProperty.Value<string>();
+						isError = true;
+					}
+					else if (codeProperty != null)
+					{
+						errorMessage = $"Error code: {codeProperty.Value<string>()}";
+						isError = true;
+					}
+#pragma warning disable RECS0022 // A catch clause that catches System.Exception and has an empty body
+				}
+				catch
+#pragma warning restore RECS0022 // A catch clause that catches System.Exception and has an empty body
+				{
+					// Intentionally ignore parsing errors
+				}
+			}
+
+			return (isError, errorMessage);
 		}
 
 		/// <summary>Asynchronously converts the JSON encoded content and converts it to an object of the desired type.</summary>

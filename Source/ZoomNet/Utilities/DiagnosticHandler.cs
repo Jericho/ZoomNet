@@ -1,26 +1,44 @@
-﻿using Pathoschild.Http.Client;
+using Pathoschild.Http.Client;
 using Pathoschild.Http.Client.Extensibility;
 using System;
-using System.Collections.Generic;
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using ZoomNet.Logging;
 
 namespace ZoomNet.Utilities
 {
 	/// <summary>
-	/// Diagnostic handler for requests dispatched to the SendGrid API.
+	/// Diagnostic handler for requests dispatched to the Zoom API.
 	/// </summary>
 	/// <seealso cref="Pathoschild.Http.Client.Extensibility.IHttpFilter" />
 	internal class DiagnosticHandler : IHttpFilter
 	{
 		#region FIELDS
 
-		private const string DIAGNOSTIC_ID_HEADER_NAME = "ZoomNet-DiagnosticId";
+		internal const string DIAGNOSTIC_ID_HEADER_NAME = "ZoomNet-Diagnostic-Id";
 		private static readonly ILog _logger = LogProvider.For<DiagnosticHandler>();
-		private readonly IDictionary<WeakReference<HttpRequestMessage>, Tuple<StringBuilder, Stopwatch>> _diagnostics = new Dictionary<WeakReference<HttpRequestMessage>, Tuple<StringBuilder, Stopwatch>>();
+		private readonly LogLevel _logLevelSuccessfulCalls;
+		private readonly LogLevel _logLevelFailedCalls;
+
+		#endregion
+
+		#region PROPERTIES
+
+		internal static ConcurrentDictionary<string, (WeakReference<HttpRequestMessage> RequestReference, string Diagnostic, long RequestTimestamp, long ResponseTimeStamp)> DiagnosticsInfo { get; } = new ConcurrentDictionary<string, (WeakReference<HttpRequestMessage>, string, long, long)>();
+
+		#endregion
+
+		#region CTOR
+
+		public DiagnosticHandler(LogLevel logLevelSuccessfulCalls, LogLevel logLevelFailedCalls)
+		{
+			_logLevelSuccessfulCalls = logLevelSuccessfulCalls;
+			_logLevelFailedCalls = logLevelFailedCalls;
+		}
 
 		#endregion
 
@@ -30,18 +48,21 @@ namespace ZoomNet.Utilities
 		/// <param name="request">The HTTP request.</param>
 		public void OnRequest(IRequest request)
 		{
-			request.WithHeader(DIAGNOSTIC_ID_HEADER_NAME, Guid.NewGuid().ToString("N"));
+			// Add a unique ID to the request header
+			var diagnosticId = Guid.NewGuid().ToString("N");
+			request.WithHeader(DIAGNOSTIC_ID_HEADER_NAME, diagnosticId);
 
+			// Log the request
 			var httpRequest = request.Message;
+			var diagnostic = new StringBuilder();
 
-			var diagnosticMessage = new StringBuilder();
-			diagnosticMessage.AppendLine($"Request: {httpRequest}");
-			diagnosticMessage.AppendLine($"Request Content: {httpRequest.Content?.ReadAsStringAsync(null).GetAwaiter().GetResult() ?? "<NULL>"}");
+			diagnostic.AppendLine("REQUEST:");
+			diagnostic.AppendLine($"  {httpRequest.Method.Method} {httpRequest.RequestUri}");
+			LogHeaders(diagnostic, httpRequest.Headers);
+			LogContent(diagnostic, httpRequest.Content);
 
-			lock (_diagnostics)
-			{
-				_diagnostics.Add(new WeakReference<HttpRequestMessage>(request.Message), new Tuple<StringBuilder, Stopwatch>(diagnosticMessage, Stopwatch.StartNew()));
-			}
+			// Add the diagnotic info to our cache
+			DiagnosticsInfo.TryAdd(diagnosticId, (new WeakReference<HttpRequestMessage>(request.Message), diagnostic.ToString(), Stopwatch.GetTimestamp(), long.MinValue));
 		}
 
 		/// <summary>Method invoked just after the HTTP response is received. This method can modify the incoming HTTP response.</summary>
@@ -49,100 +70,137 @@ namespace ZoomNet.Utilities
 		/// <param name="httpErrorAsException">Whether HTTP error responses should be raised as exceptions.</param>
 		public void OnResponse(IResponse response, bool httpErrorAsException)
 		{
-			var diagnosticMessage = string.Empty;
+			var responseTimestamp = Stopwatch.GetTimestamp();
+			var httpResponse = response.Message;
 
-			try
+			var diagnosticId = response.Message.RequestMessage.Headers.GetValue(DIAGNOSTIC_ID_HEADER_NAME);
+			if (DiagnosticsInfo.TryGetValue(diagnosticId, out (WeakReference<HttpRequestMessage> RequestReference, string Diagnostic, long RequestTimestamp, long ResponseTimestamp) diagnosticInfo))
 			{
-				var diagnosticInfo = GetDiagnosticInfo(response.Message.RequestMessage);
-				var diagnosticStringBuilder = diagnosticInfo.Item1;
-				var diagnosticTimer = diagnosticInfo.Item2;
-				if (diagnosticTimer != null) diagnosticTimer?.Stop();
-
-				var httpResponse = response.Message;
-
+				var updatedDiagnostic = new StringBuilder(diagnosticInfo.Diagnostic);
 				try
 				{
-					diagnosticStringBuilder.AppendLine($"Response: {httpResponse}");
-					diagnosticStringBuilder.AppendLine($"Response.Content is null: {httpResponse.Content == null}");
-					diagnosticStringBuilder.AppendLine($"Response.Content.Headers is null: {httpResponse.Content?.Headers == null}");
-					diagnosticStringBuilder.AppendLine($"Response.Content.Headers.ContentType is null: {httpResponse.Content?.Headers?.ContentType == null}");
-					diagnosticStringBuilder.AppendLine($"Response.Content.Headers.ContentType.CharSet: {httpResponse.Content?.Headers?.ContentType?.CharSet ?? "<NULL>"}");
-					diagnosticStringBuilder.AppendLine($"Response.Content: {httpResponse.Content?.ReadAsStringAsync(null).GetAwaiter().GetResult() ?? "<NULL>"}");
-				}
-				catch
-				{
-					// Intentionally ignore errors that may occur when attempting to log the content of the response
-				}
+					// Log the response
+					updatedDiagnostic.AppendLine();
+					updatedDiagnostic.AppendLine("RESPONSE:");
+					updatedDiagnostic.AppendLine($"  HTTP/{httpResponse.Version} {(int)httpResponse.StatusCode} {httpResponse.ReasonPhrase}");
+					LogHeaders(updatedDiagnostic, httpResponse.Headers);
+					LogContent(updatedDiagnostic, httpResponse.Content);
 
-				if (diagnosticTimer != null)
-				{
-					diagnosticStringBuilder.AppendLine($"The request took {diagnosticTimer.Elapsed.ToDurationString()}");
+					// Calculate how much time elapsed between request and response
+					var elapsed = TimeSpan.FromTicks(responseTimestamp - diagnosticInfo.RequestTimestamp);
+
+					// Log diagnostic
+					updatedDiagnostic.AppendLine();
+					updatedDiagnostic.AppendLine("DIAGNOSTIC:");
+					updatedDiagnostic.AppendLine($"  The request took {elapsed.ToDurationString()}");
 				}
-
-				diagnosticMessage = diagnosticStringBuilder.ToString();
-			}
-			catch (Exception e)
-			{
-				Debug.WriteLine("{0}\r\nAN EXCEPTION OCCURED: {1}\r\n{0}", new string('=', 25), e.GetBaseException().Message);
-
-				if (_logger != null && _logger.IsErrorEnabled())
+				catch (Exception e)
 				{
-					_logger.Error(e, "An exception occured when inspecting the response from SendGrid");
-				}
-			}
-			finally
-			{
-				if (!string.IsNullOrEmpty(diagnosticMessage))
-				{
-					Debug.WriteLine("{0}\r\n{1}{0}", new string('=', 25), diagnosticMessage);
+					Debug.WriteLine("{0}\r\nAN EXCEPTION OCCURRED: {1}\r\n{0}", new string('=', 50), e.GetBaseException().Message);
+					updatedDiagnostic.AppendLine($"AN EXCEPTION OCCURRED: {e.GetBaseException().Message}");
 
-					if (_logger != null && _logger.IsDebugEnabled())
+					if (_logger != null && _logger.IsErrorEnabled())
 					{
-						_logger.Debug(diagnosticMessage
-							.Replace("{", "{{")
-							.Replace("}", "}}"));
+						_logger.Error(e, "An exception occurred when inspecting the response from SendGrid");
 					}
 				}
+				finally
+				{
+					var diagnosticMessage = updatedDiagnostic.ToString();
+
+					LogDiagnostic(response.IsSuccessStatusCode, _logLevelSuccessfulCalls, diagnosticMessage);
+					LogDiagnostic(!response.IsSuccessStatusCode, _logLevelFailedCalls, diagnosticMessage);
+
+					DiagnosticsInfo.TryUpdate(
+						diagnosticId,
+						(diagnosticInfo.RequestReference, updatedDiagnostic.ToString(), diagnosticInfo.RequestTimestamp, responseTimestamp),
+						(diagnosticInfo.RequestReference, diagnosticInfo.Diagnostic, diagnosticInfo.RequestTimestamp, diagnosticInfo.ResponseTimestamp));
+				}
 			}
+
+			Cleanup();
 		}
 
 		#endregion
 
 		#region PRIVATE METHODS
 
-		private Tuple<StringBuilder, Stopwatch> GetDiagnosticInfo(HttpRequestMessage requestMessage)
+		private void LogHeaders(StringBuilder diagnostic, HttpHeaders httpHeaders)
 		{
-			lock (_diagnostics)
+			if (httpHeaders != null)
 			{
-				var diagnosticId = requestMessage.Headers.GetValues(DIAGNOSTIC_ID_HEADER_NAME).FirstOrDefault();
-
-				foreach (WeakReference<HttpRequestMessage> key in _diagnostics.Keys.ToArray())
+				foreach (var header in httpHeaders)
 				{
-					// Check if garbage collected
-					if (!key.TryGetTarget(out HttpRequestMessage request))
+					if (header.Key.Equals("authorization", StringComparison.OrdinalIgnoreCase))
 					{
-						_diagnostics.Remove(key);
-						continue;
+						diagnostic.AppendLine($"  {header.Key}: ...redacted for security reasons...");
 					}
-
-					// Check if different request
-					var requestDiagnosticId = request.Headers.GetValues(DIAGNOSTIC_ID_HEADER_NAME).FirstOrDefault();
-					if (requestDiagnosticId != diagnosticId)
+					else
 					{
-						continue;
+						diagnostic.AppendLine($"  {header.Key}: {string.Join(", ", header.Value)}");
 					}
-
-					// Get the diagnostic info from dictionary
-					var diagnosticInfo = _diagnostics[key];
-
-					// Remove the diagnostic info from dictionary
-					_diagnostics.Remove(key);
-
-					return diagnosticInfo;
 				}
 			}
+		}
 
-			return new Tuple<StringBuilder, Stopwatch>(new StringBuilder(), null);
+		private void LogContent(StringBuilder diagnostic, HttpContent httpContent)
+		{
+			if (httpContent == null)
+			{
+				diagnostic.AppendLine("  Content-Length: 0");
+			}
+			else
+			{
+				LogHeaders(diagnostic, httpContent.Headers);
+
+				var contentLength = httpContent.Headers?.ContentLength.GetValueOrDefault(0) ?? 0;
+				if (!httpContent.Headers?.Contains("Content-Length") ?? false)
+				{
+					diagnostic.AppendLine($"  Content-Length: {contentLength}");
+				}
+
+				if (contentLength > 0)
+				{
+					diagnostic.AppendLine();
+					diagnostic.AppendLine(httpContent.ReadAsStringAsync(null).GetAwaiter().GetResult() ?? "<NULL>");
+				}
+			}
+		}
+
+		private void LogDiagnostic(bool shouldLog, LogLevel logLEvel, string diagnosticMessage)
+		{
+			if (shouldLog && _logger != null)
+			{
+				var logLevelEnabled = _logger.Log(logLEvel, null, null, Array.Empty<object>());
+				if (logLevelEnabled)
+				{
+					_logger.Log(logLEvel, () => diagnosticMessage
+						.Replace("{", "{{")
+						.Replace("}", "}}"));
+				}
+			}
+		}
+
+		private void Cleanup()
+		{
+			try
+			{
+				// Remove diagnostic information for requests that have been garbage collected
+				foreach (string key in DiagnosticHandler.DiagnosticsInfo.Keys.ToArray())
+				{
+					if (DiagnosticHandler.DiagnosticsInfo.TryGetValue(key, out (WeakReference<HttpRequestMessage> RequestReference, string Diagnostic, long RequestTimeStamp, long ResponseTimestamp) diagnosticInfo))
+					{
+						if (!diagnosticInfo.RequestReference.TryGetTarget(out HttpRequestMessage request))
+						{
+							DiagnosticsInfo.TryRemove(key, out _);
+						}
+					}
+				}
+			}
+			catch
+			{
+				// Intentionally left empty
+			}
 		}
 
 		#endregion

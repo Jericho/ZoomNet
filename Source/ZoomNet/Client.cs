@@ -1,9 +1,10 @@
-﻿using Pathoschild.Http.Client;
+using Pathoschild.Http.Client;
 using Pathoschild.Http.Client.Extensibility;
 using System;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
+using ZoomNet.Logging;
 using ZoomNet.Utilities;
 
 namespace ZoomNet
@@ -16,7 +17,9 @@ namespace ZoomNet
 		#region FIELDS
 
 		private const string ZOOM_V2_BASE_URI = "https://api.zoom.us/v2";
+
 		private readonly bool _mustDisposeHttpClient;
+		private readonly ZoomClientOptions _options;
 
 		private HttpClient _httpClient;
 		private Pathoschild.Http.Client.IClient _fluentClient;
@@ -24,6 +27,19 @@ namespace ZoomNet
 		#endregion
 
 		#region PROPERTIES
+
+		/// <summary>
+		/// Gets the Version.
+		/// </summary>
+		/// <value>
+		/// The version.
+		/// </value>
+		public static string Version { get; private set; }
+
+		/// <summary>
+		/// Gets the user agent.
+		/// </summary>
+		public static string UserAgent { get; private set; }
 
 		/// <summary>
 		/// Gets the resource which allows you to manage sub accounts.
@@ -73,25 +89,30 @@ namespace ZoomNet
 		/// </value>
 		//public IWebinars Webinars { get; private set; }
 
-		/// <summary>
-		/// Gets the Version.
-		/// </summary>
-		/// <value>
-		/// The version.
-		/// </value>
-		public string Version { get; private set; }
-
 		#endregion
 
 		#region CTOR
+
+		/// <summary>
+		/// Initializes static members of the <see cref="Client"/> class.
+		/// </summary>
+		static Client()
+		{
+			Version = typeof(Client).GetTypeInfo().Assembly.GetName().Version.ToString(3);
+#if DEBUG
+			Version = "DEBUG";
+#endif
+			UserAgent = $"ZoomNet/{Version} (+https://github.com/Jericho/ZoomNet)";
+		}
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Client"/> class.
 		/// </summary>
 		/// <param name="apiKey">Your Zoom API Key.</param>
 		/// <param name="apiSecret">Your Zoom API Secret.</param>
-		public Client(string apiKey, string apiSecret)
-			: this(apiKey, apiSecret, null, false)
+		/// <param name="options">Options for the Zoom client.</param>
+		public Client(string apiKey, string apiSecret, ZoomClientOptions options = null)
+			: this(apiKey, apiSecret, null, false, options)
 		{
 		}
 
@@ -101,8 +122,9 @@ namespace ZoomNet
 		/// <param name="apiKey">Your Zoom API Key.</param>
 		/// <param name="apiSecret">Your Zoom API Secret.</param>
 		/// <param name="proxy">Allows you to specify a proxy.</param>
-		public Client(string apiKey, string apiSecret, IWebProxy proxy)
-			: this(apiKey, apiSecret, new HttpClient(new HttpClientHandler { Proxy = proxy, UseProxy = proxy != null }), true)
+		/// <param name="options">Options for the Zoom client.</param>
+		public Client(string apiKey, string apiSecret, IWebProxy proxy, ZoomClientOptions options = null)
+			: this(apiKey, apiSecret, new HttpClient(new HttpClientHandler { Proxy = proxy, UseProxy = proxy != null }), true, options)
 		{
 		}
 
@@ -112,8 +134,9 @@ namespace ZoomNet
 		/// <param name="apiKey">Your Zoom API Key.</param>
 		/// <param name="apiSecret">Your Zoom API Secret.</param>
 		/// <param name="handler">TThe HTTP handler stack to use for sending requests.</param>
-		public Client(string apiKey, string apiSecret, HttpMessageHandler handler)
-			: this(apiKey, apiSecret, new HttpClient(handler), true)
+		/// <param name="options">Options for the Zoom client.</param>
+		public Client(string apiKey, string apiSecret, HttpMessageHandler handler, ZoomClientOptions options = null)
+			: this(apiKey, apiSecret, new HttpClient(handler), true, options)
 		{
 		}
 
@@ -123,15 +146,17 @@ namespace ZoomNet
 		/// <param name="apiKey">Your Zoom API Key.</param>
 		/// <param name="apiSecret">Your Zoom API Secret.</param>
 		/// <param name="httpClient">Allows you to inject your own HttpClient. This is useful, for example, to setup the HtppClient with a proxy.</param>
-		public Client(string apiKey, string apiSecret, HttpClient httpClient)
-			: this(apiKey, apiSecret, httpClient, false)
+		/// <param name="options">Options for the Zoom client.</param>
+		public Client(string apiKey, string apiSecret, HttpClient httpClient, ZoomClientOptions options = null)
+			: this(apiKey, apiSecret, httpClient, false, options)
 		{
 		}
 
-		private Client(string apiKey, string apiSecret, HttpClient httpClient, bool disposeClient)
+		private Client(string apiKey, string apiSecret, HttpClient httpClient, bool disposeClient, ZoomClientOptions options)
 		{
 			_mustDisposeHttpClient = disposeClient;
 			_httpClient = httpClient;
+			_options = options ?? GetDefaultOptions();
 
 			Version = typeof(Client).GetTypeInfo().Assembly.GetName().Version.ToString(3);
 #if DEBUG
@@ -139,12 +164,15 @@ namespace ZoomNet
 #endif
 
 			_fluentClient = new FluentClient(new Uri(ZOOM_V2_BASE_URI), httpClient)
-				.SetUserAgent($"ZoomNet/{Version} (+https://github.com/Jericho/ZoomNet)");
-			//.SetRequestCoordinator(new ZoomRetryStrategy());
+				.SetUserAgent(Client.UserAgent);
+			// .SetRequestCoordinator(new ZoomRetryStrategy());
 
 			_fluentClient.Filters.Remove<DefaultErrorFilter>();
+
+			// Order is important: JwtTokenHandler, must be first, followed by DiagnosticHandler and then by ErrorHandler.
+			// Also, the list of filters must be kept in sync with the filters in Utils.GetFluentClient in the unit testing project.
 			_fluentClient.Filters.Add(new JwtTokenHandler(apiKey, apiSecret));
-			_fluentClient.Filters.Add(new DiagnosticHandler());
+			_fluentClient.Filters.Add(new DiagnosticHandler(_options.LogLevelSuccessfulCalls, _options.LogLevelFailedCalls));
 			_fluentClient.Filters.Add(new ZoomErrorHandler());
 
 			_fluentClient.SetOptions(new FluentClientOptions()
@@ -229,6 +257,15 @@ namespace ZoomNet
 		private void ReleaseUnmanagedResources()
 		{
 			// We do not hold references to unmanaged resources
+		}
+
+		private ZoomClientOptions GetDefaultOptions()
+		{
+			return new ZoomClientOptions()
+			{
+				LogLevelSuccessfulCalls = LogLevel.Debug,
+				LogLevelFailedCalls = LogLevel.Debug
+			};
 		}
 
 		#endregion

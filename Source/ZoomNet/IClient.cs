@@ -1,4 +1,4 @@
-﻿namespace ZoomNet
+namespace ZoomNet
 {
 	/// <summary>
 	/// Interface for the Zoom REST client.
@@ -52,13 +52,5 @@
 		/// The webinars resource.
 		/// </value>
 		//IWebinars Webinars { get; }
-
-		/// <summary>
-		/// Gets the Version.
-		/// </summary>
-		/// <value>
-		/// The version.
-		/// </value>
-		string Version { get; }
 	}
 }
