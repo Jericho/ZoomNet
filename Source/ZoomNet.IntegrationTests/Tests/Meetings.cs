@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -33,6 +35,23 @@ namespace ZoomNet.IntegrationTests.Tests
 			//        await Task.Delay(250).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
 			//    });
 			//await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
+
+			var settings = new MeetingSettings()
+			{
+				ApprovalType = MeetingApprovalType.Manual
+			};
+			var trackingFields = new Dictionary<string, string>()
+			{
+				{ "field1", "value1"},
+				{ "field2", "value2"}
+			};
+			var newInstantMeeting = await client.Meetings.CreateInstantMeetingAsync(userId, "ZoomNet Integration Testing: instant meeting", "The agenda", "p@ss!w0rd", settings, trackingFields, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Instant meeting {newInstantMeeting.Id} created").ConfigureAwait(false);
+
+			var start = DateTime.UtcNow.AddMonths(1);
+			var duration = 30;
+			var newScheduledMeeting = await client.Meetings.CreateScheduledMeetingAsync(userId, "ZoomNet Integration Testing: scheduled meeting", "The agenda", start, duration, "p@ss!w0rd", settings, trackingFields, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Scheduled meeting {newScheduledMeeting.Id} created").ConfigureAwait(false);
 		}
 	}
 }
