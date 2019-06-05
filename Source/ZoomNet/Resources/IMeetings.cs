@@ -1,4 +1,3 @@
-﻿using ZoomNet.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -29,7 +28,7 @@ namespace ZoomNet.Resources
 		/// <remarks>
 		/// This call omits 'occurrences'. Therefore the 'Occurrences' property will be empty.
 		/// </remarks>
-		Task<PaginatedResponse<Meeting>> GetAllAsync(string userId, MeetingListType type = MeetingListType.Scheduled, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default(CancellationToken));
+		Task<PaginatedResponse<Meeting>> GetAllAsync(string userId, MeetingListType type = MeetingListType.Scheduled, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Creates an instant meeting for a user.
@@ -45,7 +44,7 @@ namespace ZoomNet.Resources
 		/// The new meeting.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the meeting.</exception>
-		Task<InstantMeeting> CreateInstantMeetingAsync(string userId, string topic, string agenda, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default(CancellationToken));
+		Task<InstantMeeting> CreateInstantMeetingAsync(string userId, string topic, string agenda, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Creates a scheduled meeting for a user.
@@ -63,7 +62,7 @@ namespace ZoomNet.Resources
 		/// The new meeting.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the meeting.</exception>
-		Task<ScheduledMeeting> CreateScheduledMeetingAsync(string userId, string topic, string agenda, DateTime start, int duration, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default(CancellationToken));
+		Task<ScheduledMeeting> CreateScheduledMeetingAsync(string userId, string topic, string agenda, DateTime start, int duration, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Creates a recurring meeting for a user.
@@ -82,7 +81,7 @@ namespace ZoomNet.Resources
 		/// The new meeting.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the meeting.</exception>
-		Task<RecurringMeeting> CreateRecurringMeetingAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default(CancellationToken));
+		Task<RecurringMeeting> CreateRecurringMeetingAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve the details of a meeting.
@@ -94,7 +93,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The <see cref="Meeting" />.
 		/// </returns>
-		Task<Meeting> GetAsync(string userId, long meetingId, string occurrenceId = null, CancellationToken cancellationToken = default(CancellationToken));
+		Task<Meeting> GetAsync(string userId, long meetingId, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Delete a meeting.
@@ -106,7 +105,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task DeleteAsync(string userId, long meetingId, string occurrenceId = null, CancellationToken cancellationToken = default(CancellationToken));
+		Task DeleteAsync(string userId, long meetingId, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// End a meeting.
@@ -116,7 +115,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task EndAsync(long meetingId, CancellationToken cancellationToken = default(CancellationToken));
+		Task EndAsync(long meetingId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// List registrants of a meeting.
@@ -130,7 +129,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Registrant" />.
 		/// </returns>
-		Task<PaginatedResponse<Registrant>> GetRegistrantsAsync(long meetingId, RegistrantStatus status, string occurrenceId = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default(CancellationToken));
+		Task<PaginatedResponse<Registrant>> GetRegistrantsAsync(long meetingId, RegistrantStatus status, string occurrenceId = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// List registrants of a meeting.
@@ -144,7 +143,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// A <see cref="Registrant" />.
 		/// </returns>
-		Task<Registrant> AddRegistrantsAsync(long meetingId, string email, string firstName, string lastName, string occurrenceId = null, CancellationToken cancellationToken = default(CancellationToken));
+		Task<Registrant> AddRegistrantsAsync(long meetingId, string email, string firstName, string lastName, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Approve a registration for a meeting.
@@ -157,7 +156,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task ApproveRegistrantAsync(long meetingId, string registrantId, string registrantEmail, string occurrenceId = null, CancellationToken cancellationToken = default(CancellationToken));
+		Task ApproveRegistrantAsync(long meetingId, string registrantId, string registrantEmail, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Approve multiple registrations for a meeting.
@@ -169,7 +168,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task ApproveRegistrantsAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string occurrenceId = null, CancellationToken cancellationToken = default(CancellationToken));
+		Task ApproveRegistrantsAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Reject a registration for a meeting.
@@ -182,7 +181,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task RejectRegistrantAsync(long meetingId, string registrantId, string registrantEmail, string occurrenceId = null, CancellationToken cancellationToken = default(CancellationToken));
+		Task RejectRegistrantAsync(long meetingId, string registrantId, string registrantEmail, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Reject multiple registrations for a meeting.
@@ -194,7 +193,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task RejectRegistrantsAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string occurrenceId = null, CancellationToken cancellationToken = default(CancellationToken));
+		Task RejectRegistrantsAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Cancel a registration for a meeting.
@@ -207,7 +206,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task CancelRegistrantAsync(long meetingId, string registrantId, string registrantEmail, string occurrenceId = null, CancellationToken cancellationToken = default(CancellationToken));
+		Task CancelRegistrantAsync(long meetingId, string registrantId, string registrantEmail, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Cancel multiple registrations for a meeting.
@@ -219,6 +218,6 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task CancelRegistrantsAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string occurrenceId = null, CancellationToken cancellationToken = default(CancellationToken));
+		Task CancelRegistrantsAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string occurrenceId = null, CancellationToken cancellationToken = default);
 	}
 }
