@@ -10,19 +10,25 @@
   </PropertyGroup>
 
   <PropertyGroup>
-      <PackageId>ZoomNet</PackageId>
-      <AssemblyName>ZoomNet</AssemblyName>
-      <AssemblyTitle>ZoomNet</AssemblyTitle>
-      <Authors>Jeremie Desautels</Authors>
-      <Company></Company>
-      <Description>ZoomNet is a strongly typed .NET client for Zoom's API.</Description>
-      <Copyright>Copyright © Jeremie Desautels and contributors 2019 - Present</Copyright>
-      <PackageLicenseUrl>http://jericho.mit-license.org</PackageLicenseUrl>
-      <PackageProjectUrl>https://github.com/Jericho/ZoomNet</PackageProjectUrl>
-      <PackageIconUrl>https://github.com/identicons/jericho.png</PackageIconUrl>
-      <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-      <PackageTags>ZoomNet zoom meeting webinar</PackageTags>
-      <PackageReleaseNotes></PackageReleaseNotes>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <PackageId>ZoomNet</PackageId>
+    <AssemblyName>ZoomNet</AssemblyName>
+    <AssemblyTitle>ZoomNet</AssemblyTitle>
+    <Authors>Jeremie Desautels</Authors>
+    <Company></Company>
+    <Description>ZoomNet is a strongly typed .NET client for Zoom's API.</Description>
+    <Copyright>Copyright © Jeremie Desautels and contributors 2019 - Present</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Jericho/ZoomNet</PackageProjectUrl>
+    <PackageIconUrl>https://github.com/identicons/jericho.png</PackageIconUrl>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageTags>ZoomNet zoom meeting webinar</PackageTags>
+    <PackageReleaseNotes></PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,21 +39,21 @@
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net452' ">
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System" />
+  <ItemGroup Condition=" !$(TargetFramework.StartsWith('netstandard')) ">
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)' != 'net452'">
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
     <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
   </ItemGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)' == 'net452' ">
+  <PropertyGroup Condition=" !$(TargetFramework.StartsWith('netstandard')) ">
     <DefineConstants>$(DefineConstants);NETFULL</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)' != 'net452'">
+  <PropertyGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
     <DefineConstants>$(DefineConstants);NETSTANDARD</DefineConstants>
   </PropertyGroup>
 
