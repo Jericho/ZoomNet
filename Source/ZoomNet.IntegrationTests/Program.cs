@@ -62,6 +62,7 @@ namespace ZoomNet.IntegrationTests
 			// Configure ZoomNet client
 			var apiKey = Environment.GetEnvironmentVariable("ZOOM_APIKEY");
 			var apiSecret = Environment.GetEnvironmentVariable("ZOOM_APISECRET");
+			var userId = Environment.GetEnvironmentVariable("ZOOM_USERID");
 			var proxy = useFiddler ? new WebProxy("http://localhost:8888") : null;
 			var client = new Client(apiKey, apiSecret, proxy, options);
 
@@ -78,7 +79,7 @@ namespace ZoomNet.IntegrationTests
 			ConsoleUtils.CenterConsole();
 
 			// These are the integration tests that we will execute
-			var integrationTests = new Func<IClient, TextWriter, CancellationToken, Task>[]
+			var integrationTests = new Func<string, IClient, TextWriter, CancellationToken, Task>[]
 			{
 			};
 
@@ -90,7 +91,7 @@ namespace ZoomNet.IntegrationTests
 
 					try
 					{
-						await integrationTest(client, log, source.Token).ConfigureAwait(false);
+						await integrationTest(userId, client, log, source.Token).ConfigureAwait(false);
 						return (TestName: integrationTest.Method.Name, ResultCode: ResultCodes.Success, Message: string.Empty);
 					}
 					catch (OperationCanceledException)
