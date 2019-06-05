@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 
 namespace ZoomNet.Models
@@ -37,7 +37,7 @@ namespace ZoomNet.Models
 		public int? MonthlyDay { get; set; }
 
 		/// <summary>
-		/// Gets or sets the week for which the meeting should recur each month,
+		/// Gets or sets the week for which the meeting should recur each month.
 		/// </summary>
 		[JsonProperty(PropertyName = "monthly_week")]
 		public int? MonthlyWeek { get; set; }

@@ -1,6 +1,5 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using ZoomNet.Models;
 using System;
 using System.Linq;
 using ZoomNet.Models;
