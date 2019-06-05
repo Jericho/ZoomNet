@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using ZoomNet.Resources;
 using ZoomNet.Utilities;
 
 namespace ZoomNet.IntegrationTests
@@ -58,6 +59,7 @@ namespace ZoomNet.IntegrationTests
 			// These are the integration tests that we will execute
 			var integrationTests = new Type[]
 			{
+				typeof(Meetings),
 			};
 
 			// Execute the async tests in parallel (with max degree of parallelism)
