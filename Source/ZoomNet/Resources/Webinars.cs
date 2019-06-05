@@ -1,4 +1,4 @@
-﻿using Pathoschild.Http.Client;
+using Pathoschild.Http.Client;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -37,7 +37,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Webinar" />.
 		/// </returns>
-		public Task<PaginatedResponse<Webinar>> GetAllAsync(string userId, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default(CancellationToken))
+		public Task<PaginatedResponse<Webinar>> GetAllAsync(string userId, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
