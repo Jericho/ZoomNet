@@ -52,6 +52,15 @@ namespace ZoomNet.IntegrationTests.Tests
 			var duration = 30;
 			var newScheduledMeeting = await client.Meetings.CreateScheduledMeetingAsync(userId, "ZoomNet Integration Testing: scheduled meeting", "The agenda", start, duration, "p@ss!w0rd", settings, trackingFields, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Scheduled meeting {newScheduledMeeting.Id} created").ConfigureAwait(false);
+
+			var recurrenceInfo = new RecurrenceInfo()
+			{
+				EndTimes = 2,
+				WeeklyDays = new[] { DayOfWeek.Monday, DayOfWeek.Friday },
+				Type = RecurrenceType.Weekly
+			};
+			var newRecurringMeeting = await client.Meetings.CreateRecurringMeetingAsync(userId, "ZoomNet Integration Testing: recurring meeting", "The agenda", start, duration, recurrenceInfo, "p@ss!w0rd", settings, trackingFields, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Recurring meeting {newRecurringMeeting.Id} created").ConfigureAwait(false);
 		}
 	}
 }
