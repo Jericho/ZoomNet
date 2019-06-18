@@ -95,24 +95,18 @@ namespace ZoomNet.Utilities
 			jsonObject.TryGetValue("type", StringComparison.OrdinalIgnoreCase, out JToken meetingTypeJsonProperty);
 			var meetingType = (MeetingType)meetingTypeJsonProperty.ToObject(typeof(MeetingType));
 
-			var meeting = (Meeting)null;
 			switch (meetingType)
 			{
 				case MeetingType.Instant:
-					meeting = jsonObject.ToObject<InstantMeeting>(serializer);
-					break;
+					return jsonObject.ToObject<InstantMeeting>(serializer);
 				case MeetingType.Scheduled:
-					meeting = jsonObject.ToObject<ScheduledMeeting>(serializer);
-					break;
+					return jsonObject.ToObject<ScheduledMeeting>(serializer);
 				case MeetingType.RecurringFixedTime:
 				case MeetingType.RecurringNoFixedTime:
-					meeting = jsonObject.ToObject<RecurringMeeting>(serializer);
-					break;
+					return jsonObject.ToObject<RecurringMeeting>(serializer);
 				default:
 					throw new Exception($"{meetingTypeJsonProperty.ToString()} is an unknown meeting type");
 			}
-
-			return meeting;
 		}
 	}
 }
