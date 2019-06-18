@@ -245,9 +245,14 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task EndAsync(long meetingId, CancellationToken cancellationToken = default)
 		{
+			var data = new JObject()
+			{
+				{ "action", "end" }
+			};
+
 			return _client
 				.PutAsync($"meetings/{meetingId}/status")
-				.WithArgument("action", "end")
+				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}

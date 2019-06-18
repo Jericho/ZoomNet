@@ -47,14 +47,27 @@ namespace ZoomNet.IntegrationTests.Tests
 				{ "field1", "value1"},
 				{ "field2", "value2"}
 			};
+
+			// Instant meeting
 			var newInstantMeeting = await client.Meetings.CreateInstantMeetingAsync(userId, "ZoomNet Integration Testing: instant meeting", "The agenda", "p@ss!w0rd", settings, trackingFields, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Instant meeting {newInstantMeeting.Id} created").ConfigureAwait(false);
 
+			await client.Meetings.EndAsync(newInstantMeeting.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Instant meeting {newInstantMeeting.Id} ended").ConfigureAwait(false);
+
+			await client.Meetings.DeleteAsync(userId, newInstantMeeting.Id, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Instant meeting {newInstantMeeting.Id} deleted").ConfigureAwait(false);
+
+			// Scheduled meeting
 			var start = DateTime.UtcNow.AddMonths(1);
 			var duration = 30;
 			var newScheduledMeeting = await client.Meetings.CreateScheduledMeetingAsync(userId, "ZoomNet Integration Testing: scheduled meeting", "The agenda", start, duration, "p@ss!w0rd", settings, trackingFields, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Scheduled meeting {newScheduledMeeting.Id} created").ConfigureAwait(false);
 
+			await client.Meetings.DeleteAsync(userId, newScheduledMeeting.Id, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Scheduled meeting {newScheduledMeeting.Id} deleted").ConfigureAwait(false);
+
+			// Recurring meeting
 			var recurrenceInfo = new RecurrenceInfo()
 			{
 				EndTimes = 2,
@@ -64,9 +77,8 @@ namespace ZoomNet.IntegrationTests.Tests
 			var newRecurringMeeting = await client.Meetings.CreateRecurringMeetingAsync(userId, "ZoomNet Integration Testing: recurring meeting", "The agenda", start, duration, recurrenceInfo, "p@ss!w0rd", settings, trackingFields, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Recurring meeting {newRecurringMeeting.Id} created").ConfigureAwait(false);
 
-			await client.Meetings.DeleteAsync(userId, newInstantMeeting.Id, null, cancellationToken).ConfigureAwait(false);
-			await client.Meetings.DeleteAsync(userId, newScheduledMeeting.Id, null, cancellationToken).ConfigureAwait(false);
 			await client.Meetings.DeleteAsync(userId, newRecurringMeeting.Id, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Recurring meeting {newRecurringMeeting.Id} deleted").ConfigureAwait(false);
 		}
 	}
 }
