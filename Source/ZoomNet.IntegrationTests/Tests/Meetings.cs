@@ -10,7 +10,7 @@ namespace ZoomNet.IntegrationTests.Tests
 {
 	public class Meetings : IIntegrationTest
 	{
-		public async Task RunAsync(IClient client, TextWriter log, CancellationToken cancellationToken)
+		public async Task RunAsync(string userId, IClient client, TextWriter log, CancellationToken cancellationToken)
 		{
 			if (cancellationToken.IsCancellationRequested) return;
 
