@@ -69,7 +69,7 @@ namespace ZoomNet.IntegrationTests
 					try
 					{
 						var integrationTest = (IIntegrationTest)Activator.CreateInstance(testType);
-						await integrationTest.RunAsync(client, log, source.Token).ConfigureAwait(false);
+						await integrationTest.RunAsync(userId, client, log, source.Token).ConfigureAwait(false);
 						return (TestName: testType.Name, ResultCode: ResultCodes.Success, Message: SUCCESSFUL_TEST_MESSAGE);
 					}
 					catch (OperationCanceledException)
