@@ -132,7 +132,7 @@ namespace ZoomNet.Resources
 		Task<PaginatedResponse<Registrant>> GetRegistrantsAsync(long meetingId, RegistrantStatus status, string occurrenceId = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// List registrants of a meeting.
+		/// Add a registrant to a meeting.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="email">A valid email address.</param>
@@ -143,7 +143,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// A <see cref="Registrant" />.
 		/// </returns>
-		Task<Registrant> AddRegistrantsAsync(long meetingId, string email, string firstName, string lastName, string occurrenceId = null, CancellationToken cancellationToken = default);
+		Task<Registrant> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Approve a registration for a meeting.

@@ -287,7 +287,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
-		/// List registrants of a meeting.
+		/// Add a registrant to a meeting.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="email">A valid email address.</param>
@@ -298,7 +298,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// A <see cref="Registrant" />.
 		/// </returns>
-		public Task<Registrant> AddRegistrantsAsync(long meetingId, string email, string firstName, string lastName, string occurrenceId = null, CancellationToken cancellationToken = default)
+		public Task<Registrant> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
 			data.AddPropertyIfValue("email", email);
@@ -341,16 +341,7 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task ApproveRegistrantsAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("action", "approve");
-			data.AddPropertyIfValue("registrants", registrantsInfo.Select(ri => new { id = ri.RegistrantId, email = ri.RegistrantEmail }).ToArray());
-
-			return _client
-				.PostAsync($"meetings/{meetingId}/registrants/status")
-				.WithArgument("occurence_id", occurrenceId)
-				.WithJsonBody(data)
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
+			return UpdateRegistrantsStatusAsync(meetingId, registrantsInfo, "approve", occurrenceId, cancellationToken);
 		}
 
 		/// <summary>
@@ -366,7 +357,7 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task RejectRegistrantAsync(long meetingId, string registrantId, string registrantEmail, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
-			return ApproveRegistrantsAsync(meetingId, new[] { (registrantId, registrantEmail) }, occurrenceId, cancellationToken);
+			return RejectRegistrantsAsync(meetingId, new[] { (registrantId, registrantEmail) }, occurrenceId, cancellationToken);
 		}
 
 		/// <summary>
@@ -381,20 +372,11 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task RejectRegistrantsAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("action", "deny");
-			data.AddPropertyIfValue("registrants", registrantsInfo.Select(ri => new { id = ri.RegistrantId, email = ri.RegistrantEmail }).ToArray());
-
-			return _client
-				.PostAsync($"meetings/{meetingId}/registrants/status")
-				.WithArgument("occurence_id", occurrenceId)
-				.WithJsonBody(data)
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
+			return UpdateRegistrantsStatusAsync(meetingId, registrantsInfo, "deny", occurrenceId, cancellationToken);
 		}
 
 		/// <summary>
-		/// Cancel a registration for a meeting.
+		/// Cancel a previously approved registration for a meeting.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="registrantId">The registrant ID.</param>
@@ -406,11 +388,11 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task CancelRegistrantAsync(long meetingId, string registrantId, string registrantEmail, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
-			return ApproveRegistrantsAsync(meetingId, new[] { (registrantId, registrantEmail) }, occurrenceId, cancellationToken);
+			return CancelRegistrantsAsync(meetingId, new[] { (registrantId, registrantEmail) }, occurrenceId, cancellationToken);
 		}
 
 		/// <summary>
-		/// Cancel multiple registrations for a meeting.
+		/// Cancel multiple previously approved registrations for a meeting.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="registrantsInfo">ID and email for each registrant to be cancelled.</param>
@@ -421,8 +403,13 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task CancelRegistrantsAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
+			return UpdateRegistrantsStatusAsync(meetingId, registrantsInfo, "cancel", occurrenceId, cancellationToken);
+		}
+
+		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string status, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
 			var data = new JObject();
-			data.AddPropertyIfValue("action", "approve");
+			data.AddPropertyIfValue("action", status);
 			data.AddPropertyIfValue("registrants", registrantsInfo.Select(ri => new { id = ri.RegistrantId, email = ri.RegistrantEmail }).ToArray());
 
 			return _client
