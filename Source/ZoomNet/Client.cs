@@ -165,7 +165,8 @@ namespace ZoomNet
 			_options = options ?? GetDefaultOptions();
 			_logger = logger ?? NullLogger.Instance;
 			_fluentClient = new FluentClient(new Uri(ZOOM_V2_BASE_URI), httpClient)
-				.SetUserAgent($"ZoomNet/{Version} (+https://github.com/Jericho/ZoomNet)");
+				.SetUserAgent($"ZoomNet/{Version} (+https://github.com/Jericho/ZoomNet)")
+				.SetRequestCoordinator(new ZoomRetryStrategy());
 
 			_fluentClient.Filters.Remove<DefaultErrorFilter>();
 
