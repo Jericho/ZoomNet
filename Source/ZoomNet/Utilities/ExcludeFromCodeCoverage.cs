@@ -1,8 +1,8 @@
 using System;
 
-namespace StrongGrid.Utilities
+namespace ZoomNet.Utilities
 {
-	[StrongGrid.Utilities.ExcludeFromCodeCoverage]
+	[ZoomNet.Utilities.ExcludeFromCodeCoverage]
 	internal class ExcludeFromCodeCoverage : Attribute
 	{
 	}
