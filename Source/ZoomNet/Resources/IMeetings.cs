@@ -196,7 +196,7 @@ namespace ZoomNet.Resources
 		Task RejectRegistrantsAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Cancel a registration for a meeting.
+		/// Cancel a previously approved registration for a meeting.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="registrantId">The registrant ID.</param>
@@ -209,7 +209,7 @@ namespace ZoomNet.Resources
 		Task CancelRegistrantAsync(long meetingId, string registrantId, string registrantEmail, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Cancel multiple registrations for a meeting.
+		/// Cancel multiple previously approved registrations for a meeting.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="registrantsInfo">ID and email for each registrant to be cancelled.</param>
