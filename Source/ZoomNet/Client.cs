@@ -1,10 +1,11 @@
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using Pathoschild.Http.Client;
 using Pathoschild.Http.Client.Extensibility;
 using System;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
-using ZoomNet.Logging;
 using ZoomNet.Utilities;
 
 namespace ZoomNet
@@ -18,8 +19,11 @@ namespace ZoomNet
 
 		private const string ZOOM_V2_BASE_URI = "https://api.zoom.us/v2";
 
+		private static string _version;
+
 		private readonly bool _mustDisposeHttpClient;
 		private readonly ZoomClientOptions _options;
+		private readonly ILogger _logger;
 
 		private HttpClient _httpClient;
 		private Pathoschild.Http.Client.IClient _fluentClient;
@@ -34,7 +38,21 @@ namespace ZoomNet
 		/// <value>
 		/// The version.
 		/// </value>
-		public static string Version { get; private set; }
+		public static string Version
+		{
+			get
+			{
+				if (string.IsNullOrEmpty(_version))
+				{
+					_version = typeof(Client).GetTypeInfo().Assembly.GetName().Version.ToString(3);
+#if DEBUG
+					_version = "DEBUG";
+#endif
+				}
+
+				return _version;
+			}
+		}
 
 		/// <summary>
 		/// Gets the user agent.
@@ -94,18 +112,6 @@ namespace ZoomNet
 		#region CTOR
 
 		/// <summary>
-		/// Initializes static members of the <see cref="Client"/> class.
-		/// </summary>
-		static Client()
-		{
-			Version = typeof(Client).GetTypeInfo().Assembly.GetName().Version.ToString(3);
-#if DEBUG
-			Version = "DEBUG";
-#endif
-			UserAgent = $"ZoomNet/{Version} (+https://github.com/Jericho/ZoomNet)";
-		}
-
-		/// <summary>
 		/// Initializes a new instance of the <see cref="Client"/> class.
 		/// </summary>
 		/// <param name="apiKey">Your Zoom API Key.</param>
@@ -152,20 +158,14 @@ namespace ZoomNet
 		{
 		}
 
-		private Client(string apiKey, string apiSecret, HttpClient httpClient, bool disposeClient, ZoomClientOptions options)
+		private Client(string apiKey, string apiSecret, HttpClient httpClient, bool disposeClient, ZoomClientOptions options, ILogger logger = null)
 		{
 			_mustDisposeHttpClient = disposeClient;
 			_httpClient = httpClient;
 			_options = options ?? GetDefaultOptions();
-
-			Version = typeof(Client).GetTypeInfo().Assembly.GetName().Version.ToString(3);
-#if DEBUG
-			Version = "DEBUG";
-#endif
-
+			_logger = logger ?? NullLogger.Instance;
 			_fluentClient = new FluentClient(new Uri(ZOOM_V2_BASE_URI), httpClient)
-				.SetUserAgent(Client.UserAgent);
-			// .SetRequestCoordinator(new ZoomRetryStrategy());
+				.SetUserAgent($"ZoomNet/{Version} (+https://github.com/Jericho/ZoomNet)");
 
 			_fluentClient.Filters.Remove<DefaultErrorFilter>();
 
@@ -174,12 +174,6 @@ namespace ZoomNet
 			_fluentClient.Filters.Add(new JwtTokenHandler(apiKey, apiSecret));
 			_fluentClient.Filters.Add(new DiagnosticHandler(_options.LogLevelSuccessfulCalls, _options.LogLevelFailedCalls));
 			_fluentClient.Filters.Add(new ZoomErrorHandler());
-
-			_fluentClient.SetOptions(new FluentClientOptions()
-			{
-				IgnoreHttpErrors = false,
-				IgnoreNullArguments = true
-			});
 
 			//Accounts = new Accounts(_fluentClient);
 			//BillingInformation = new BillingInformation(_fluentClient);
@@ -264,7 +258,7 @@ namespace ZoomNet
 			return new ZoomClientOptions()
 			{
 				LogLevelSuccessfulCalls = LogLevel.Debug,
-				LogLevelFailedCalls = LogLevel.Debug
+				LogLevelFailedCalls = LogLevel.Error
 			};
 		}
 

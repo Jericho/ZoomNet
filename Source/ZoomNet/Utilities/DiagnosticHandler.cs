@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 using Pathoschild.Http.Client;
 using Pathoschild.Http.Client.Extensibility;
 using System;
@@ -7,7 +9,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using ZoomNet.Logging;
 
 namespace ZoomNet.Utilities
 {
@@ -20,7 +21,7 @@ namespace ZoomNet.Utilities
 		#region FIELDS
 
 		internal const string DIAGNOSTIC_ID_HEADER_NAME = "ZoomNet-Diagnostic-Id";
-		private static readonly ILog _logger = LogProvider.For<DiagnosticHandler>();
+		private readonly ILogger _logger;
 		private readonly LogLevel _logLevelSuccessfulCalls;
 		private readonly LogLevel _logLevelFailedCalls;
 
@@ -34,10 +35,11 @@ namespace ZoomNet.Utilities
 
 		#region CTOR
 
-		public DiagnosticHandler(LogLevel logLevelSuccessfulCalls, LogLevel logLevelFailedCalls)
+		public DiagnosticHandler(LogLevel logLevelSuccessfulCalls, LogLevel logLevelFailedCalls, ILogger logger = null)
 		{
 			_logLevelSuccessfulCalls = logLevelSuccessfulCalls;
 			_logLevelFailedCalls = logLevelFailedCalls;
+			_logger = logger ?? NullLogger.Instance;
 		}
 
 		#endregion
@@ -61,7 +63,7 @@ namespace ZoomNet.Utilities
 			LogHeaders(diagnostic, httpRequest.Headers);
 			LogContent(diagnostic, httpRequest.Content);
 
-			// Add the diagnotic info to our cache
+			// Add the diagnostic info to our cache
 			DiagnosticsInfo.TryAdd(diagnosticId, (new WeakReference<HttpRequestMessage>(request.Message), diagnostic.ToString(), Stopwatch.GetTimestamp(), long.MinValue));
 		}
 
@@ -99,17 +101,20 @@ namespace ZoomNet.Utilities
 					Debug.WriteLine("{0}\r\nAN EXCEPTION OCCURRED: {1}\r\n{0}", new string('=', 50), e.GetBaseException().Message);
 					updatedDiagnostic.AppendLine($"AN EXCEPTION OCCURRED: {e.GetBaseException().Message}");
 
-					if (_logger != null && _logger.IsErrorEnabled())
+					if (_logger.IsEnabled(LogLevel.Error))
 					{
-						_logger.Error(e, "An exception occurred when inspecting the response from SendGrid");
+						_logger.LogError(e, "An exception occurred when inspecting the response from Zoom");
 					}
 				}
 				finally
 				{
-					var diagnosticMessage = updatedDiagnostic.ToString();
-
-					LogDiagnostic(response.IsSuccessStatusCode, _logLevelSuccessfulCalls, diagnosticMessage);
-					LogDiagnostic(!response.IsSuccessStatusCode, _logLevelFailedCalls, diagnosticMessage);
+					var logLevel = response.IsSuccessStatusCode ? _logLevelSuccessfulCalls : _logLevelFailedCalls;
+					if (_logger.IsEnabled(logLevel))
+					{
+						_logger.Log(logLevel, updatedDiagnostic.ToString()
+							.Replace("{", "{{")
+							.Replace("}", "}}"));
+					}
 
 					DiagnosticsInfo.TryUpdate(
 						diagnosticId,
@@ -163,20 +168,6 @@ namespace ZoomNet.Utilities
 				{
 					diagnostic.AppendLine();
 					diagnostic.AppendLine(httpContent.ReadAsStringAsync(null).GetAwaiter().GetResult() ?? "<NULL>");
-				}
-			}
-		}
-
-		private void LogDiagnostic(bool shouldLog, LogLevel logLEvel, string diagnosticMessage)
-		{
-			if (shouldLog && _logger != null)
-			{
-				var logLevelEnabled = _logger.Log(logLEvel, null, null, Array.Empty<object>());
-				if (logLevelEnabled)
-				{
-					_logger.Log(logLEvel, () => diagnosticMessage
-						.Replace("{", "{{")
-						.Replace("}", "}}"));
 				}
 			}
 		}

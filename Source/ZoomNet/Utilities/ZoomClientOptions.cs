@@ -1,4 +1,4 @@
-using ZoomNet.Logging;
+using Microsoft.Extensions.Logging;
 
 namespace ZoomNet.Utilities
 {
