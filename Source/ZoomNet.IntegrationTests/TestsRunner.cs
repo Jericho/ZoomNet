@@ -11,7 +11,7 @@ namespace ZoomNet.IntegrationTests
 {
 	internal class TestsRunner
 	{
-		private const int MAX_SENDGRID_API_CONCURRENCY = 5;
+		private const int MAX_ZOOM_API_CONCURRENCY = 5;
 		private const int TEST_NAME_MAX_LENGTH = 25;
 		private const string SUCCESSFUL_TEST_MESSAGE = "Completed successfully";
 
@@ -90,7 +90,7 @@ namespace ZoomNet.IntegrationTests
 							Console.Out.WriteLine(log.ToString());
 						}
 					}
-				}, MAX_SENDGRID_API_CONCURRENCY)
+				}, MAX_ZOOM_API_CONCURRENCY)
 			.ConfigureAwait(false);
 
 			// Display summary
