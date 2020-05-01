@@ -5,7 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using ZoomNet.Resources;
+using ZoomNet.IntegrationTests.Tests;
 using ZoomNet.Utilities;
 
 namespace ZoomNet.IntegrationTests
