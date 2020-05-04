@@ -117,8 +117,8 @@ namespace ZoomNet
 		/// <param name="apiKey">Your Zoom API Key.</param>
 		/// <param name="apiSecret">Your Zoom API Secret.</param>
 		/// <param name="options">Options for the Zoom client.</param>
-		public Client(string apiKey, string apiSecret, ZoomClientOptions options = null)
-			: this(apiKey, apiSecret, null, false, options)
+		public Client(string apiKey, string apiSecret, ZoomClientOptions options = null, ILogger logger = null)
+			: this(apiKey, apiSecret, null, false, options, logger)
 		{
 		}
 
@@ -129,8 +129,8 @@ namespace ZoomNet
 		/// <param name="apiSecret">Your Zoom API Secret.</param>
 		/// <param name="proxy">Allows you to specify a proxy.</param>
 		/// <param name="options">Options for the Zoom client.</param>
-		public Client(string apiKey, string apiSecret, IWebProxy proxy, ZoomClientOptions options = null)
-			: this(apiKey, apiSecret, new HttpClient(new HttpClientHandler { Proxy = proxy, UseProxy = proxy != null }), true, options)
+		public Client(string apiKey, string apiSecret, IWebProxy proxy, ZoomClientOptions options = null, ILogger logger = null)
+			: this(apiKey, apiSecret, new HttpClient(new HttpClientHandler { Proxy = proxy, UseProxy = proxy != null }), true, options, logger)
 		{
 		}
 
@@ -141,8 +141,8 @@ namespace ZoomNet
 		/// <param name="apiSecret">Your Zoom API Secret.</param>
 		/// <param name="handler">TThe HTTP handler stack to use for sending requests.</param>
 		/// <param name="options">Options for the Zoom client.</param>
-		public Client(string apiKey, string apiSecret, HttpMessageHandler handler, ZoomClientOptions options = null)
-			: this(apiKey, apiSecret, new HttpClient(handler), true, options)
+		public Client(string apiKey, string apiSecret, HttpMessageHandler handler, ZoomClientOptions options = null, ILogger logger = null)
+			: this(apiKey, apiSecret, new HttpClient(handler), true, options, logger)
 		{
 		}
 
@@ -153,8 +153,8 @@ namespace ZoomNet
 		/// <param name="apiSecret">Your Zoom API Secret.</param>
 		/// <param name="httpClient">Allows you to inject your own HttpClient. This is useful, for example, to setup the HtppClient with a proxy.</param>
 		/// <param name="options">Options for the Zoom client.</param>
-		public Client(string apiKey, string apiSecret, HttpClient httpClient, ZoomClientOptions options = null)
-			: this(apiKey, apiSecret, httpClient, false, options)
+		public Client(string apiKey, string apiSecret, HttpClient httpClient, ZoomClientOptions options = null, ILogger logger = null)
+			: this(apiKey, apiSecret, httpClient, false, options, logger)
 		{
 		}
 
