@@ -68,6 +68,14 @@ namespace ZoomNet
 		/// </value>
 		public IMeetings Meetings { get; private set; }
 
+		/// <summary>
+		/// Gets the resource which allows you to manage meetings that occured in the past.
+		/// </summary>
+		/// <value>
+		/// The past meetings resource.
+		/// </value>
+		public IPastMeetings PastMeetings { get; private set; }
+
 		#endregion
 
 		#region CTOR
@@ -142,6 +150,7 @@ namespace ZoomNet
 			_fluentClient.Filters.Add(new ZoomErrorHandler());
 
 			Meetings = new Meetings(_fluentClient);
+			PastMeetings = new PastMeetings(_fluentClient);
 		}
 
 		/// <summary>
