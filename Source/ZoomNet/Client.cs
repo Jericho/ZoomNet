@@ -131,13 +131,6 @@ namespace ZoomNet
 			_fluentClient.Filters.Add(new JwtTokenHandler(apiKey, apiSecret));
 			_fluentClient.Filters.Add(new DiagnosticHandler(_options.LogLevelSuccessfulCalls, _options.LogLevelFailedCalls));
 			_fluentClient.Filters.Add(new ZoomErrorHandler());
-
-			//Accounts = new Accounts(_fluentClient);
-			//BillingInformation = new BillingInformation(_fluentClient);
-			//Users = new Users(_fluentClient);
-			//Roles = new Roles(_fluentClient);
-			//Meetings = new Meetings(_fluentClient);
-			//Webinars = new Webinars(_fluentClient);
 		}
 
 		/// <summary>
