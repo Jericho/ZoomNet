@@ -59,54 +59,6 @@ namespace ZoomNet
 		/// </summary>
 		public static string UserAgent { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to manage sub accounts.
-		/// </summary>
-		/// <value>
-		/// The accounts resource.
-		/// </value>
-		//public IAccounts Accounts { get; private set; }
-
-		/// <summary>
-		/// Gets the resource which allows you to manage billing information.
-		/// </summary>
-		/// <value>
-		/// The billing resource.
-		/// </value>
-		//public IBillingInformation BillingInformation { get; private set; }
-
-		/// <summary>
-		/// Gets the resource which allows you to manage users.
-		/// </summary>
-		/// <value>
-		/// The users resource.
-		/// </value>
-		//public IUsers Users { get; private set; }
-
-		/// <summary>
-		/// Gets the resource wich alloes you to manage roles.
-		/// </summary>
-		/// <value>
-		/// The roles resource.
-		/// </value>
-		//public IRoles Roles { get; private set; }
-
-		/// <summary>
-		/// Gets the resource which allows you to manage meetings.
-		/// </summary>
-		/// <value>
-		/// The meetings resource.
-		/// </value>
-		//public IMeetings Meetings { get; private set; }
-
-		/// <summary>
-		/// Gets the resource which allows you to manage webinars.
-		/// </summary>
-		/// <value>
-		/// The webinars resource.
-		/// </value>
-		//public IWebinars Webinars { get; private set; }
-
 		#endregion
 
 		#region CTOR
