@@ -235,7 +235,7 @@ namespace ZoomNet.Resources
 		/// <summary>
 		/// Retrieve the details of a meeting.
 		/// </summary>
-		/// <param name="meetingId">The meeting id</param>
+		/// <param name="meetingId">The meeting id.</param>
 		/// <param name="pollId">The poll id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
@@ -282,7 +282,7 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="streamUrl">Streaming URL.</param>
-		/// <param name="streamKey">Stream name and key</param>
+		/// <param name="streamKey">Stream name and key.</param>
 		/// <param name="pageUrl">The live stream page URL.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>

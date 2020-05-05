@@ -19,7 +19,7 @@ namespace ZoomNet.Resources
 		private readonly Pathoschild.Http.Client.IClient _client;
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Meetings" /> class.
+		/// Initializes a new instance of the <see cref="PastMeetings" /> class.
 		/// </summary>
 		/// <param name="client">The HTTP client.</param>
 		internal PastMeetings(Pathoschild.Http.Client.IClient client)
