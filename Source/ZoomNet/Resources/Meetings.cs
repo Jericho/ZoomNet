@@ -406,6 +406,185 @@ namespace ZoomNet.Resources
 			return UpdateRegistrantsStatusAsync(meetingId, registrantsInfo, "cancel", occurrenceId, cancellationToken);
 		}
 
+		/// <summary>
+		/// Create a poll for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="title">Title for the poll.</param>
+		/// <param name="questions">The poll questions.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task<Poll> CreatePoll(long meetingId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject()
+			{
+				{ "title", title }
+			};
+			data.AddPropertyIfValue("questions", questions);
+
+			return _client
+				.PostAsync($"meetings/{meetingId}/polls")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<Poll>();
+		}
+
+		/// <summary>
+		/// Retrieve the details of a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting id</param>
+		/// <param name="pollId">The poll id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="Poll" />.
+		/// </returns>
+		public Task<Poll> GetPollAsync(long meetingId, long pollId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"meetings/{meetingId}/polls/{pollId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<Poll>();
+		}
+
+		/// <summary>
+		/// Update a poll for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="pollId">The poll id.</param>
+		/// <param name="title">Title for the poll.</param>
+		/// <param name="questions">The poll questions.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task UpdatePollAsync(long meetingId, long pollId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject();
+			data.AddPropertyIfValue("title", title);
+			data.AddPropertyIfValue("questions", questions);
+
+			return _client
+				.PutAsync($"meetings/{meetingId}/polls/{pollId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Delete a poll for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="pollId">The poll id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task DeletePollAsync(long meetingId, long pollId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"meetings/{meetingId}/polls/{pollId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Get the meeting invite note that was sent for a specific meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The invite note.
+		/// </returns>
+		public Task<string> GetInvitationAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"meetings/{meetingId}/invitation")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("invitation");
+		}
+
+		/// <summary>
+		/// Update a meeting’s live stream information.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="streamUrl">Streaming URL.</param>
+		/// <param name="streamKey">Stream name and key</param>
+		/// <param name="pageUrl">The live stream page URL.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task UpdateLiveStreamAsync(long meetingId, string streamUrl, string streamKey, string pageUrl, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject()
+			{
+				{ "stream_url", streamUrl },
+				{ "stream_key", streamKey },
+				{ "page_url", pageUrl }
+			};
+
+			return _client
+				.PatchAsync($"meetings/{meetingId}/livestream")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Start a meeting’s live stream.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="displaySpeakerName">Display the name of the active speaker during a live stream.</param>
+		/// <param name="speakerName">The name of the speaker.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task StartLiveStreamAsync(long meetingId, bool displaySpeakerName, string speakerName, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject()
+			{
+				{ "action", "Start" },
+				{
+					"settings", new JObject()
+					{
+						{ "active_speaker_name", displaySpeakerName },
+						{ "display_name", speakerName }
+					}
+				}
+			};
+
+			return _client
+				.PatchAsync($"meetings/{meetingId}/livestream/status")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Stop a meeting’s live stream.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task StopLiveStreamAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject()
+			{
+				{ "action", "stop" }
+			};
+
+			return _client
+				.PatchAsync($"meetings/{meetingId}/livestream/status")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string status, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();

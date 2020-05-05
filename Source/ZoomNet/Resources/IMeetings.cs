@@ -219,5 +219,97 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task CancelRegistrantsAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string occurrenceId = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create a poll for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="title">Title for the poll.</param>
+		/// <param name="questions">The poll questions.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task<Poll> CreatePoll(long meetingId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve the details of a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting id</param>
+		/// <param name="pollId">The poll id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="Poll" />.
+		/// </returns>
+		Task<Poll> GetPollAsync(long meetingId, long pollId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update a poll for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="pollId">The poll id.</param>
+		/// <param name="title">Title for the poll.</param>
+		/// <param name="questions">The poll questions.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task UpdatePollAsync(long meetingId, long pollId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a poll for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="pollId">The poll id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task DeletePollAsync(long meetingId, long pollId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the meeting invite note that was sent for a specific meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The invite note.
+		/// </returns>
+		Task<string> GetInvitationAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update a meeting’s live stream information.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="streamUrl">Streaming URL.</param>
+		/// <param name="streamKey">Stream name and key</param>
+		/// <param name="pageUrl">The live stream page URL.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task UpdateLiveStreamAsync(long meetingId, string streamUrl, string streamKey, string pageUrl, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Start a meeting’s live stream.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="displaySpeakerName">Display the name of the active speaker during a live stream.</param>
+		/// <param name="speakerName">The name of the speaker.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task StartLiveStreamAsync(long meetingId, bool displaySpeakerName, string speakerName, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Stop a meeting’s live stream.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task StopLiveStreamAsync(long meetingId, CancellationToken cancellationToken = default);
 	}
 }
