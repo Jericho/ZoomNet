@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZoomNet", "ZoomNet\ZoomNet.csproj", "{1F1336D3-20EE-4EFD-868B-A5FD6E9F260D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZoomNet", "ZoomNet\ZoomNet.csproj", "{1F1336D3-20EE-4EFD-868B-A5FD6E9F260D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZoomNet.IntegrationTests", "ZoomNet.IntegrationTests\ZoomNet.IntegrationTests.csproj", "{86BE46FC-FD82-45B3-8092-0C9AC1A94E8A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{8D45A893-7A48-4D45-9FD7-424B12D4C672}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{85E5BB2F-54EA-4C92-9F02-4F8DD73F8975}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZoomNet.UnitTests", "ZoomNet.UnitTests\ZoomNet.UnitTests.csproj", "{51646A3A-2B1E-43A6-A37D-7E9B3B965CCD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +23,22 @@ Global
 		{1F1336D3-20EE-4EFD-868B-A5FD6E9F260D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F1336D3-20EE-4EFD-868B-A5FD6E9F260D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F1336D3-20EE-4EFD-868B-A5FD6E9F260D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86BE46FC-FD82-45B3-8092-0C9AC1A94E8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86BE46FC-FD82-45B3-8092-0C9AC1A94E8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86BE46FC-FD82-45B3-8092-0C9AC1A94E8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86BE46FC-FD82-45B3-8092-0C9AC1A94E8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51646A3A-2B1E-43A6-A37D-7E9B3B965CCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51646A3A-2B1E-43A6-A37D-7E9B3B965CCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51646A3A-2B1E-43A6-A37D-7E9B3B965CCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51646A3A-2B1E-43A6-A37D-7E9B3B965CCD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1F1336D3-20EE-4EFD-868B-A5FD6E9F260D} = {8D45A893-7A48-4D45-9FD7-424B12D4C672}
+		{86BE46FC-FD82-45B3-8092-0C9AC1A94E8A} = {85E5BB2F-54EA-4C92-9F02-4F8DD73F8975}
+		{51646A3A-2B1E-43A6-A37D-7E9B3B965CCD} = {85E5BB2F-54EA-4C92-9F02-4F8DD73F8975}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BA63CED4-60E8-45F7-BC86-116E79B9CB86}

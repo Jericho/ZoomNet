@@ -4,7 +4,8 @@ init:
 
 # Build script
 build_script:
-  - ps: .\build.ps1 -Target "AppVeyor"
+  - ps: .\build.ps1 -bootstrap
+  - ps: .\build.ps1 -Target AppVeyor
 
 # Tests
 test: off
@@ -23,4 +24,4 @@ cache:
   - tools -> build.cake, tools\packages.config
 
 # Environment configuration
-image: Visual Studio 2017
+image: Visual Studio 2019
