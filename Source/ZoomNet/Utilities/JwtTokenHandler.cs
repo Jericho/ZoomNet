@@ -1,4 +1,4 @@
-﻿using Jose;
+using Jose;
 using Pathoschild.Http.Client;
 using Pathoschild.Http.Client.Extensibility;
 using System;
@@ -25,8 +25,8 @@ namespace ZoomNet.Utilities
 
 		public JwtTokenHandler(string apiKey, string apiSecret, TimeSpan? tokenLifeSpan = null, TimeSpan? clockSkew = null)
 		{
-			_apiKey = apiKey;
-			_apiSecret = apiSecret;
+			_apiKey = apiKey ?? throw new ArgumentNullException(nameof(apiKey));
+			_apiSecret = apiSecret ?? throw new ArgumentNullException(nameof(apiSecret));
 			_tokenLifeSpan = tokenLifeSpan.GetValueOrDefault(TimeSpan.FromMinutes(30));
 			_clockSkew = clockSkew.GetValueOrDefault(TimeSpan.FromMinutes(5));
 		}
