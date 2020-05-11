@@ -37,7 +37,7 @@ namespace ZoomNet.IntegrationTests
 			{
 				var logzioTarget = new LogzioTarget { Token = logzioToken };
 				logzioTarget.ContextProperties.Add(new TargetPropertyWithContext("source", "ZoomNet_integration_tests"));
-				logzioTarget.ContextProperties.Add(new TargetPropertyWithContext("ZoomNet-Version", ZoomNet.Client.Version));
+				logzioTarget.ContextProperties.Add(new TargetPropertyWithContext("ZoomNet-Version", ZoomNet.ZoomClient.Version));
 
 				nLogConfig.AddTarget("Logzio", logzioTarget);
 				nLogConfig.AddRule(NLog.LogLevel.Debug, NLog.LogLevel.Fatal, "Logzio", "*");

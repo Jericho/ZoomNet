@@ -5,7 +5,7 @@ namespace ZoomNet
 	/// <summary>
 	/// Interface for the Zoom REST client.
 	/// </summary>
-	public interface IClient
+	public interface IZoomClient
 	{
 		/// <summary>
 		/// Gets the resource which allows you to manage meetings.

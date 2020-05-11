@@ -42,7 +42,7 @@ namespace ZoomNet.IntegrationTests
 			var apiSecret = Environment.GetEnvironmentVariable("ZOOM_APISECRET");
 			var userId = Environment.GetEnvironmentVariable("ZOOM_USERID");
 			var proxy = useFiddler ? new WebProxy("http://localhost:8888") : null;
-			var client = new Client(apiKey, apiSecret, proxy, null, _loggerFactory.CreateLogger<Client>());
+			var client = new ZoomClient(apiKey, apiSecret, proxy, null, _loggerFactory.CreateLogger<ZoomClient>());
 
 			// Configure Console
 			var source = new CancellationTokenSource();
