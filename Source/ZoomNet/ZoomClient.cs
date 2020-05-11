@@ -12,9 +12,9 @@ using ZoomNet.Utilities;
 namespace ZoomNet
 {
 	/// <summary>
-	/// REST client for interacting with ZoomNet's API.
+	/// REST client for interacting with Zoom's API.
 	/// </summary>
-	public class Client : IClient, IDisposable
+	public class ZoomClient : IZoomClient, IDisposable
 	{
 		#region FIELDS
 
@@ -45,7 +45,7 @@ namespace ZoomNet
 			{
 				if (string.IsNullOrEmpty(_version))
 				{
-					_version = typeof(Client).GetTypeInfo().Assembly.GetName().Version.ToString(3);
+					_version = typeof(ZoomClient).GetTypeInfo().Assembly.GetName().Version.ToString(3);
 #if DEBUG
 					_version = "DEBUG";
 #endif
@@ -54,11 +54,6 @@ namespace ZoomNet
 				return _version;
 			}
 		}
-
-		/// <summary>
-		/// Gets the user agent.
-		/// </summary>
-		public static string UserAgent { get; private set; }
 
 		/// <summary>
 		/// Gets the resource which allows you to manage meetings.
@@ -81,57 +76,53 @@ namespace ZoomNet
 		#region CTOR
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Client"/> class.
+		/// Initializes a new instance of the <see cref="ZoomClient"/> class.
 		/// </summary>
-		/// <param name="apiKey">Your Zoom API Key.</param>
-		/// <param name="apiSecret">Your Zoom API Secret.</param>
+		/// <param name="connectionInfo">Connection information.</param>
 		/// <param name="options">Options for the Zoom client.</param>
 		/// <param name="logger">Logger.</param>
-		public Client(string apiKey, string apiSecret, ZoomClientOptions options = null, ILogger logger = null)
-			: this(apiKey, apiSecret, null, false, options, logger)
+		public ZoomClient(IConnectionInfo connectionInfo, ZoomClientOptions options = null, ILogger logger = null)
+			: this(connectionInfo, null, false, options, logger)
 		{
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Client"/> class with a specific proxy.
+		/// Initializes a new instance of the <see cref="ZoomClient"/> class with a specific proxy.
 		/// </summary>
-		/// <param name="apiKey">Your Zoom API Key.</param>
-		/// <param name="apiSecret">Your Zoom API Secret.</param>
+		/// <param name="connectionInfo">Connection information.</param>
 		/// <param name="proxy">Allows you to specify a proxy.</param>
 		/// <param name="options">Options for the Zoom client.</param>
 		/// <param name="logger">Logger.</param>
-		public Client(string apiKey, string apiSecret, IWebProxy proxy, ZoomClientOptions options = null, ILogger logger = null)
-			: this(apiKey, apiSecret, new HttpClient(new HttpClientHandler { Proxy = proxy, UseProxy = proxy != null }), true, options, logger)
+		public ZoomClient(IConnectionInfo connectionInfo, IWebProxy proxy, ZoomClientOptions options = null, ILogger logger = null)
+			: this(connectionInfo, new HttpClient(new HttpClientHandler { Proxy = proxy, UseProxy = proxy != null }), true, options, logger)
 		{
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Client"/> class with a specific handler.
+		/// Initializes a new instance of the <see cref="ZoomClient"/> class with a specific handler.
 		/// </summary>
-		/// <param name="apiKey">Your Zoom API Key.</param>
-		/// <param name="apiSecret">Your Zoom API Secret.</param>
+		/// <param name="connectionInfo">Connection information.</param>
 		/// <param name="handler">TThe HTTP handler stack to use for sending requests.</param>
 		/// <param name="options">Options for the Zoom client.</param>
 		/// <param name="logger">Logger.</param>
-		public Client(string apiKey, string apiSecret, HttpMessageHandler handler, ZoomClientOptions options = null, ILogger logger = null)
-			: this(apiKey, apiSecret, new HttpClient(handler), true, options, logger)
+		public ZoomClient(IConnectionInfo connectionInfo, HttpMessageHandler handler, ZoomClientOptions options = null, ILogger logger = null)
+			: this(connectionInfo, new HttpClient(handler), true, options, logger)
 		{
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Client"/> class with a specific http client.
+		/// Initializes a new instance of the <see cref="ZoomClient"/> class with a specific http client.
 		/// </summary>
-		/// <param name="apiKey">Your Zoom API Key.</param>
-		/// <param name="apiSecret">Your Zoom API Secret.</param>
+		/// <param name="connectionInfo">Connection information.</param>
 		/// <param name="httpClient">Allows you to inject your own HttpClient. This is useful, for example, to setup the HtppClient with a proxy.</param>
 		/// <param name="options">Options for the Zoom client.</param>
 		/// <param name="logger">Logger.</param>
-		public Client(string apiKey, string apiSecret, HttpClient httpClient, ZoomClientOptions options = null, ILogger logger = null)
-			: this(apiKey, apiSecret, httpClient, false, options, logger)
+		public ZoomClient(IConnectionInfo connectionInfo, HttpClient httpClient, ZoomClientOptions options = null, ILogger logger = null)
+			: this(connectionInfo, httpClient, false, options, logger)
 		{
 		}
 
-		private Client(string apiKey, string apiSecret, HttpClient httpClient, bool disposeClient, ZoomClientOptions options, ILogger logger = null)
+		private ZoomClient(IConnectionInfo connectionInfo, HttpClient httpClient, bool disposeClient, ZoomClientOptions options, ILogger logger = null)
 		{
 			_mustDisposeHttpClient = disposeClient;
 			_httpClient = httpClient;
@@ -143,9 +134,21 @@ namespace ZoomNet
 
 			_fluentClient.Filters.Remove<DefaultErrorFilter>();
 
-			// Order is important: JwtTokenHandler, must be first, followed by DiagnosticHandler and then by ErrorHandler.
-			// Also, the list of filters must be kept in sync with the filters in Utils.GetFluentClient in the unit testing project.
-			_fluentClient.Filters.Add(new JwtTokenHandler(apiKey, apiSecret));
+			// Order is important: the token handler (either JWT or OAuth) must be first, followed by DiagnosticHandler and then by ErrorHandler.
+			if (connectionInfo is JwtConnectionInfo jwtConnectionInfo)
+			{
+				_fluentClient.Filters.Add(new JwtTokenHandler(jwtConnectionInfo));
+			}
+			else if (connectionInfo is OAuthConnectionInfo oauthConnectionInfo)
+			{
+				_fluentClient.Filters.Add(new OAuthTokenHandler(oauthConnectionInfo, httpClient));
+			}
+			else
+			{
+				throw new ZoomException($"{connectionInfo.GetType()} is an unknown connection type", null, null, null);
+			}
+
+			// The list of filters must be kept in sync with the filters in Utils.GetFluentClient in the unit testing project.
 			_fluentClient.Filters.Add(new DiagnosticHandler(_options.LogLevelSuccessfulCalls, _options.LogLevelFailedCalls));
 			_fluentClient.Filters.Add(new ZoomErrorHandler());
 
@@ -154,9 +157,9 @@ namespace ZoomNet
 		}
 
 		/// <summary>
-		/// Finalizes an instance of the <see cref="Client"/> class.
+		/// Finalizes an instance of the <see cref="ZoomClient"/> class.
 		/// </summary>
-		~Client()
+		~ZoomClient()
 		{
 			// The object went out of scope and finalized is called.
 			// Call 'Dispose' to release unmanaged resources

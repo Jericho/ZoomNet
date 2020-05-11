@@ -23,6 +23,12 @@ namespace ZoomNet.IntegrationTests
 			Cancelled = 1223
 		}
 
+		private enum ConnectionMethods
+		{
+			Jwt = 0,
+			OAuth = 1
+		}
+
 		private readonly ILoggerFactory _loggerFactory;
 
 		public TestsRunner(ILoggerFactory loggerFactory)
@@ -35,14 +41,30 @@ namespace ZoomNet.IntegrationTests
 			// -----------------------------------------------------------------------------
 			// Do you want to proxy requests through Fiddler? Can be useful for debugging.
 			var useFiddler = true;
-			// -----------------------------------------------------------------------------
+
+			// Do you want to use JWT or OAuth?
+			var connectionMethod = ConnectionMethods.OAuth;
+			// -----------------------------------;------------------------------------------
 
 			// Configure ZoomNet client
-			var apiKey = Environment.GetEnvironmentVariable("ZOOM_APIKEY");
-			var apiSecret = Environment.GetEnvironmentVariable("ZOOM_APISECRET");
+			IConnectionInfo connectionInfo;
+			if (connectionMethod == ConnectionMethods.Jwt)
+			{
+				var apiKey = Environment.GetEnvironmentVariable("ZOOM_JWT_APIKEY");
+				var apiSecret = Environment.GetEnvironmentVariable("ZOOM_JWT_APISECRET");
+				connectionInfo = new JwtConnectionInfo(apiKey, apiSecret);
+			}
+			else
+			{
+				var clientId = Environment.GetEnvironmentVariable("ZOOM_OAUTH_CLIENTID");
+				var clientSecret = Environment.GetEnvironmentVariable("ZOOM_OAUTH_CLIENTSECRET");
+				var authorizationCode = Environment.GetEnvironmentVariable("ZOOM_OAUTH_AUTHORIZATIONCODE");
+				connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, authorizationCode);
+			}
+
 			var userId = Environment.GetEnvironmentVariable("ZOOM_USERID");
 			var proxy = useFiddler ? new WebProxy("http://localhost:8888") : null;
-			var client = new Client(apiKey, apiSecret, proxy, null, _loggerFactory.CreateLogger<Client>());
+			var client = new ZoomClient(connectionInfo, proxy, null, _loggerFactory.CreateLogger<ZoomClient>());
 
 			// Configure Console
 			var source = new CancellationTokenSource();
