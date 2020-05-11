@@ -360,9 +360,9 @@ namespace ZoomNet.Utilities
 			jsonObject.Add(propertyName, JArray.FromObject(value.ToArray(), jsonSerializer));
 		}
 
-		public static T GetPropertyValue<T>(this JToken item, string name)
+		public static T GetPropertyValue<T>(this JToken item, string name, T defaultValue = default)
 		{
-			if (item[name] == null) return default;
+			if (item[name] == null) return defaultValue;
 			return item[name].Value<T>();
 		}
 
@@ -507,7 +507,6 @@ namespace ZoomNet.Utilities
 			{
 				try
 				{
-					// Check for the presence of property called 'errors'
 					var jObject = JObject.Parse(responseContent);
 					var codeProperty = jObject["code"];
 					var messageProperty = jObject["message"];

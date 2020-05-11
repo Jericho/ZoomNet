@@ -1,4 +1,4 @@
-﻿using Jose;
+using Jose;
 using Pathoschild.Http.Client;
 using Pathoschild.Http.Client.Extensibility;
 using System;
@@ -15,20 +15,22 @@ namespace ZoomNet.Utilities
 	{
 		private static readonly object _lock = new object();
 
-		private readonly string _apiKey;
-		private readonly string _apiSecret;
-		private readonly TimeSpan _clockSkew = TimeSpan.FromMinutes(5);
-		private readonly TimeSpan _tokenLifeSpan = TimeSpan.FromMinutes(30);
-		private readonly DateTime _jwtTokenExpiration = DateTime.MinValue;
+		private readonly JwtConnectionInfo _connectionInfo;
+		private readonly TimeSpan _clockSkew;
+		private readonly TimeSpan _tokenLifeSpan;
 
 		private string _jwtToken;
+		private DateTime _tokenExpiration;
 
-		public JwtTokenHandler(string apiKey, string apiSecret, TimeSpan? tokenLifeSpan = null, TimeSpan? clockSkew = null)
+		public JwtTokenHandler(JwtConnectionInfo connectionInfo, TimeSpan? tokenLifeSpan = null, TimeSpan? clockSkew = null)
 		{
-			_apiKey = apiKey;
-			_apiSecret = apiSecret;
+			if (string.IsNullOrEmpty(connectionInfo.ApiKey)) throw new ArgumentNullException(nameof(connectionInfo.ApiKey));
+			if (string.IsNullOrEmpty(connectionInfo.ApiSecret)) throw new ArgumentNullException(nameof(connectionInfo.ApiSecret));
+
+			_connectionInfo = connectionInfo;
 			_tokenLifeSpan = tokenLifeSpan.GetValueOrDefault(TimeSpan.FromMinutes(30));
 			_clockSkew = clockSkew.GetValueOrDefault(TimeSpan.FromMinutes(5));
+			_tokenExpiration = DateTime.MinValue;
 		}
 
 		/// <summary>Method invoked just before the HTTP request is submitted. This method can modify the outgoing HTTP request.</summary>
@@ -52,12 +54,13 @@ namespace ZoomNet.Utilities
 				{
 					if (TokenIsExpired())
 					{
+						_tokenExpiration = DateTime.UtcNow.Add(_tokenLifeSpan);
 						var jwtPayload = new Dictionary<string, object>()
 						{
-							{ "iss", _apiKey },
-							{ "exp", DateTime.UtcNow.Add(_tokenLifeSpan).ToUnixTime() }
+							{ "iss", _connectionInfo.ApiKey },
+							{ "exp", _tokenExpiration.ToUnixTime() }
 						};
-						_jwtToken = JWT.Encode(jwtPayload, Encoding.ASCII.GetBytes(_apiSecret), JwsAlgorithm.HS256);
+						_jwtToken = JWT.Encode(jwtPayload, Encoding.ASCII.GetBytes(_connectionInfo.ApiSecret), JwsAlgorithm.HS256);
 					}
 				}
 			}
@@ -65,7 +68,7 @@ namespace ZoomNet.Utilities
 
 		private bool TokenIsExpired()
 		{
-			return _jwtTokenExpiration <= DateTime.UtcNow.Add(_clockSkew);
+			return _tokenExpiration <= DateTime.UtcNow.Add(_clockSkew);
 		}
 	}
 }
