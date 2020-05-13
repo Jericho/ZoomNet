@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 
 namespace ZoomNet.Models
@@ -38,9 +38,9 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the account type.
 		/// </summary>
-		/// <value>The meeting type.</value>
-		//[JsonProperty(PropertyName = "account_type", NullValueHandling = NullValueHandling.Ignore)]
-		//public AccountType Type { get; set; }
+		/// <value>The account type.</value>
+		[JsonProperty(PropertyName = "account_type", NullValueHandling = NullValueHandling.Ignore)]
+		public AccountType Type { get; set; }
 
 		/// <summary>
 		/// Gets or sets the number of seats.
@@ -54,22 +54,29 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the date and time when the subscription was started.
 		/// </summary>
-		/// <value>The meeting created time.</value>
+		/// <value>The account created time.</value>
 		[JsonProperty(PropertyName = "subscription_start_time", NullValueHandling = NullValueHandling.Ignore)]
 		public DateTime SubscriptionStart { get; set; }
 
 		/// <summary>
 		/// Gets or sets the date and time when the subscription will end.
 		/// </summary>
-		/// <value>The meeting created time.</value>
+		/// <value>The account created time.</value>
 		[JsonProperty(PropertyName = "subscription_end_time", NullValueHandling = NullValueHandling.Ignore)]
 		public DateTime SubscriptionEnd { get; set; }
 
 		/// <summary>
 		/// Gets or sets the date and time when the meeting was created.
 		/// </summary>
-		/// <value>The meeting created time.</value>
+		/// <value>The account created time.</value>
 		[JsonProperty(PropertyName = "created_at", NullValueHandling = NullValueHandling.Ignore)]
 		public DateTime CreatedOn { get; set; }
+
+		/// <summary>
+		/// Gets or sets the account number.
+		/// </summary>
+		/// <value>The account number.</value>
+		[JsonProperty(PropertyName = "account_number", NullValueHandling = NullValueHandling.Ignore)]
+		public string Number { get; set; }
 	}
 }
