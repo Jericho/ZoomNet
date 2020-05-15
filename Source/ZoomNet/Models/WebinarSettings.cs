@@ -3,57 +3,33 @@ using Newtonsoft.Json;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Meeting Settings.
+	/// Webinar Settings.
 	/// </summary>
-	public class MeetingSettings
+	public class WebinarSettings
 	{
 		/// <summary>
-		/// Gets or sets the value indicating whether to start video when host joins the meeting.
+		/// Gets or sets the value indicating whether to start video when host joins the webinar.
 		/// </summary>
 		[JsonProperty(PropertyName = "host_video")]
 		public bool? StartVideoWhenHostJoins { get; set; }
 
 		/// <summary>
-		/// Gets or sets the value indicating whether to start video when participants join the meeting.
+		/// Gets or sets the value indicating whether to start video when panelists join the webinar.
 		/// </summary>
-		[JsonProperty(PropertyName = "participant_video")]
-		public bool? StartVideoWhenParticipantsJoin { get; set; }
+		[JsonProperty(PropertyName = "panelists_video")]
+		public bool? StartVideoWhenPanelistsJoin { get; set; }
 
 		/// <summary>
-		/// Gets or sets the value indicating whether the meeting should be hosted in China.
+		/// Gets or sets the value indicating whether to enable practice session.
 		/// </summary>
-		[JsonProperty(PropertyName = "cn_meeting")]
-		public bool? HostInChina { get; set; }
+		[JsonProperty(PropertyName = "practice_session")]
+		public bool? EnablePracticeSession { get; set; }
 
 		/// <summary>
-		/// Gets or sets the value indicating whether the meeting should be hosted in India.
+		/// Gets or sets the value indicating whether to enable HD video.
 		/// </summary>
-		[JsonProperty(PropertyName = "in_meeting")]
-		public bool? HostInIndia { get; set; }
-
-		/// <summary>
-		/// Gets or sets the value indicating whether participants can join the meeting before the host starts the meeting. Only used for scheduled or recurring meetings.
-		/// </summary>
-		[JsonProperty(PropertyName = "join_before_host")]
-		public bool? JoinBeforeHost { get; set; }
-
-		/// <summary>
-		/// Gets or sets the value indicating whether participants are muted upon entry.
-		/// </summary>
-		[JsonProperty(PropertyName = "mute_upon_entry")]
-		public bool? MuteUponEntry { get; set; }
-
-		/// <summary>
-		/// Gets or sets the value indicating whether a watermark should be displayed when viewing shared screen.
-		/// </summary>
-		[JsonProperty(PropertyName = "watermark")]
-		public bool? Watermark { get; set; }
-
-		/// <summary>
-		/// Gets or sets the value indicating whether to use Personal Meeting ID. Only used for scheduled meetings and recurring meetings with no fixed time.
-		/// </summary>
-		[JsonProperty(PropertyName = "use_pmi")]
-		public bool? UsePmi { get; set; }
+		[JsonProperty(PropertyName = "hd_video")]
+		public bool? EnableHighDefinitionVideo { get; set; }
 
 		/// <summary>
 		/// Gets or sets the approval type.
@@ -104,16 +80,22 @@ namespace ZoomNet.Models
 		public bool? CloseRegistration { get; set; }
 
 		/// <summary>
-		/// Gets or sets the value indicating whether a confirmation email is sent when a participant registers.
+		/// Gets or sets the value indicating whether to show the social share buttons on the registration page.
 		/// </summary>
-		[JsonProperty(PropertyName = "registrants_confirmation_email")]
-		public bool? SendRegistrationConfirmationEmail { get; set; }
+		[JsonProperty(PropertyName = "show_share_button")]
+		public bool? ShowSocialShareButtons { get; set; }
 
 		/// <summary>
-		/// Gets or sets the value indicating whether to use a waiting room.
+		/// Gets or sets the value indicating whether to allow attendees to join from multiple devices.
 		/// </summary>
-		[JsonProperty(PropertyName = "waiting_room")]
-		public bool? WaitingRoom { get; set; }
+		[JsonProperty(PropertyName = "allow_multiple_devices")]
+		public bool? AllowMultipleDevices { get; set; }
+
+		/// <summary>
+		/// Gets or sets the value indicating whether to make the webinar on-demand.
+		/// </summary>
+		[JsonProperty(PropertyName = "on_demand")]
+		public bool? OnDemand { get; set; }
 
 		/// <summary>
 		/// Gets or sets the list of global dial-in countries.
@@ -132,5 +114,38 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonProperty(PropertyName = "contact_email")]
 		public string ContactEmail { get; set; }
+
+		/// <summary>
+		/// Gets or sets the maximum number of registrants.
+		/// </summary>
+		/// <remarks>
+		/// Omitting this value, setting it to a negative value or setting it to zero indicates that the number of registrants will not be restricted.
+		/// </remarks>
+		[JsonProperty(PropertyName = "registrants_restrict_number")]
+		public int? MaximumNumberOfRegistrants { get; set; }
+
+		/// <summary>
+		/// Gets or sets the URL of the survey displayed in attendees' browsers after leaving the webinar.
+		/// </summary>
+		[JsonProperty(PropertyName = "survey_url")]
+		public string SurveyUrl { get; set; }
+
+		/// <summary>
+		/// Gets or sets the value indicating whether email notifications are sent about approval, cancellation, denial of registration.
+		/// </summary>
+		[JsonProperty(PropertyName = "registrants_email_notification")]
+		public bool? SendRegistrationConfirmationEmail { get; set; }
+
+		/// <summary>
+		/// Gets or sets the value indicating that only authenticated users can join the webinar.
+		/// </summary>
+		[JsonProperty(PropertyName = "meeting_authentication")]
+		public bool? AuthenticatedUsersOnly { get; set; }
+
+		/// <summary>
+		/// Gets or sets the authentication type for users to join a webinar when <see cref="AuthenticatedUsersOnly"/> is set to true.
+		/// </summary>
+		[JsonProperty(PropertyName = "authentication_option")]
+		public bool? AuthenticationType { get; set; }
 	}
 }
