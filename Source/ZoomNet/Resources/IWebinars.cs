@@ -62,5 +62,17 @@ namespace ZoomNet.Resources
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the webinar.</exception>
 		Task<RecurringWebinar> CreateRecurringWebinarAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve the details of a webinar.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="occurrenceId">The meeting occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="Meeting" />.
+		/// </returns>
+		Task<Webinar> GetAsync(string userId, long webinarId, string occurrenceId = null, CancellationToken cancellationToken = default);
 	}
 }

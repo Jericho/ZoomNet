@@ -134,5 +134,24 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsObject<RecurringWebinar>();
 		}
+
+		/// <summary>
+		/// Retrieve the details of a webinar.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="occurrenceId">The meeting occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="Meeting" />.
+		/// </returns>
+		public Task<Webinar> GetAsync(string userId, long webinarId, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"webinars/{webinarId}")
+				.WithArgument("occurrence_id", occurrenceId)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<Webinar>(null, new WebinarConverter());
+		}
 	}
 }

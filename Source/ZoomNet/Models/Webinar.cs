@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using StrongGrid.Models;
 using System;
 
@@ -58,15 +58,6 @@ namespace ZoomNet.Models
 		/// <value>The duration in minutes.</value>
 		[JsonProperty(PropertyName = "duration", NullValueHandling = NullValueHandling.Ignore)]
 		public int Duration { get; set; }
-
-		/// <summary>
-		/// Gets or sets the timezone.
-		/// For example, "America/Los_Angeles".
-		/// Please reference our <a href="https://marketplace.zoom.us/docs/api-reference/other-references/abbreviation-lists#timezones">timezone list</a> for supported timezones and their formats.
-		/// </summary>
-		/// <value>The webinar timezone. For example, "America/Los_Angeles". Please reference our <a href="https://marketplace.zoom.us/docs/api-reference/other-references/abbreviation-lists#timezones">timezone list</a> for supported timezones and their formats.</value>
-		[JsonProperty(PropertyName = "timezone", NullValueHandling = NullValueHandling.Ignore)]
-		public string Timezone { get; set; }
 
 		/// <summary>
 		/// Gets or sets the date and time when the meeting was created.
