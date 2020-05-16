@@ -52,7 +52,7 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("page", page)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponse<Webinar>("webinars");
+				.AsPaginatedResponse<Webinar>("webinars", new WebinarConverter());
 		}
 
 		/// <summary>
