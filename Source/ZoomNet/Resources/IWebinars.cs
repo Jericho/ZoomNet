@@ -66,13 +66,33 @@ namespace ZoomNet.Resources
 		/// <summary>
 		/// Retrieve the details of a webinar.
 		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="webinarId">The webinar ID.</param>
 		/// <param name="occurrenceId">The meeting occurrence id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The <see cref="Meeting" />.
 		/// </returns>
-		Task<Webinar> GetAsync(string userId, long webinarId, string occurrenceId = null, CancellationToken cancellationToken = default);
+		Task<Webinar> GetAsync(long webinarId, string occurrenceId = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="occurrenceId">The webinar occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task DeleteAsync(long webinarId, string occurrenceId = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// End a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task EndAsync(long webinarId, CancellationToken cancellationToken = default);
 	}
 }

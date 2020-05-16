@@ -138,20 +138,59 @@ namespace ZoomNet.Resources
 		/// <summary>
 		/// Retrieve the details of a webinar.
 		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="webinarId">The webinar ID.</param>
 		/// <param name="occurrenceId">The meeting occurrence id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The <see cref="Meeting" />.
 		/// </returns>
-		public Task<Webinar> GetAsync(string userId, long webinarId, string occurrenceId = null, CancellationToken cancellationToken = default)
+		public Task<Webinar> GetAsync(long webinarId, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"webinars/{webinarId}")
 				.WithArgument("occurrence_id", occurrenceId)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<Webinar>(null, new WebinarConverter());
+		}
+
+		/// <summary>
+		/// Delete a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="occurrenceId">The webinar occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task DeleteAsync(long webinarId, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"webinars/{webinarId}")
+				.WithArgument("occurrence_id", occurrenceId)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// End a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task EndAsync(long webinarId, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject()
+			{
+				{ "action", "end" }
+			};
+
+			return _client
+				.PutAsync($"webinars/{webinarId}/status")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
 		}
 	}
 }
