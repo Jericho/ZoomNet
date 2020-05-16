@@ -192,5 +192,90 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
+
+		/// <summary>
+		/// List panelists of a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Panelist"/>.
+		/// </returns>
+		public Task<Panelist[]> GetPanelistsAsync(long webinarId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"webinars/{webinarId}/panelists")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<Panelist[]>("panelists");
+		}
+
+		/// <summary>
+		/// Add a single panelist to a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="email">Panelist's email address.</param>
+		/// <param name="fullName">Panelist's full name.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The unique identifier of the new panelist.
+		/// </returns>
+		public Task AddPanelistAsync(long webinarId, string email, string fullName, CancellationToken cancellationToken = default)
+		{
+			return AddPanelistsAsync(webinarId, new (string Email, string FullName)[] { (email, fullName) }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Add multiple panelists to a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="panelists">The panelists to add to the webinar.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task AddPanelistsAsync(long webinarId, IEnumerable<(string Email, string FullName)> panelists, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject();
+			data.AddPropertyIfValue("panelists", panelists.Select(p => new { email = p.Email, name = p.FullName }).ToArray());
+
+			return _client
+				.PostAsync($"webinars/{webinarId}/panelists")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Remove a single panelist from a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="panelistId">Panelist's email address.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task RemovePanelistAsync(long webinarId, string panelistId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"webinars/{webinarId}/panelists/{panelistId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Remove all panelists from a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task RemoveAllPanelistsAsync(long webinarId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"webinars/{webinarId}/panelists")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
 	}
 }
