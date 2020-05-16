@@ -105,7 +105,7 @@ namespace ZoomNet.Utilities
 				case MeetingType.RecurringNoFixedTime:
 					return jsonObject.ToObject<RecurringMeeting>(serializer);
 				default:
-					throw new Exception($"{meetingTypeJsonProperty.ToString()} is an unknown meeting type");
+					throw new Exception($"{meetingTypeJsonProperty} is an unknown meeting type");
 			}
 		}
 	}
