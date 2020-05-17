@@ -4,12 +4,12 @@ using System;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// A meeting instance that occured in the past.
+	/// A meeting or webinar instance that occured in the past.
 	/// </summary>
-	public class PastMeetingInstance
+	public class PastInstance
 	{
 		/// <summary>
-		/// Gets or sets the meeting uuid.
+		/// Gets or sets the uuid.
 		/// </summary>
 		/// <value>
 		/// The uuid.
@@ -18,9 +18,9 @@ namespace ZoomNet.Models
 		public string Uuid { get; set; }
 
 		/// <summary>
-		/// Gets or sets the date and time when the meeting instance started.
+		/// Gets or sets the date and time when the instance started.
 		/// </summary>
-		/// <value>The meeting start time.</value>
+		/// <value>The start time.</value>
 		[JsonProperty(PropertyName = "start_time", NullValueHandling = NullValueHandling.Ignore)]
 		public DateTime StartedOn { get; set; }
 	}

@@ -72,6 +72,14 @@ namespace ZoomNet
 		public IPastMeetings PastMeetings { get; private set; }
 
 		/// <summary>
+		/// Gets the resource which allows you to manage webinars that occured in the past.
+		/// </summary>
+		/// <value>
+		/// The past webinars resource.
+		/// </value>
+		public IPastWebinars PastWebinars { get; private set; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage webinars.
 		/// </summary>
 		/// <value>
@@ -165,6 +173,7 @@ namespace ZoomNet
 
 			Meetings = new Meetings(_fluentClient);
 			PastMeetings = new PastMeetings(_fluentClient);
+			PastWebinars = new PastWebinars(_fluentClient);
 			Webinars = new Webinars(_fluentClient);
 		}
 

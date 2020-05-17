@@ -42,7 +42,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="PastInstance" />.
 		/// </returns>
-		Task<PastMeetingInstance[]> GetInstancesAsync(long meetingId, CancellationToken cancellationToken = default);
+		Task<PastInstance[]> GetInstancesAsync(long meetingId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get a list of poll results for a meeting that occured in the past.

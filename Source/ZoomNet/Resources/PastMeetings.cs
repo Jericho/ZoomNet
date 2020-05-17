@@ -76,12 +76,12 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="PastInstance" />.
 		/// </returns>
-		public Task<PastMeetingInstance[]> GetInstancesAsync(long meetingId, CancellationToken cancellationToken = default)
+		public Task<PastInstance[]> GetInstancesAsync(long meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"past_meetings/{meetingId}/instances")
 				.WithCancellationToken(cancellationToken)
-				.AsObject<PastMeetingInstance[]>("meetings");
+				.AsObject<PastInstance[]>("meetings");
 		}
 
 		/// <summary>
