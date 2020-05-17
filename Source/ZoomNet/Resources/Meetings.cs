@@ -407,6 +407,22 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
+		/// Retrieve all polls for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Poll" />.
+		/// </returns>
+		public Task<Poll[]> GetPollsAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"meetings/{meetingId}/polls")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<Poll[]>("polls");
+		}
+
+		/// <summary>
 		/// Create a poll for a meeting.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
@@ -432,7 +448,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
-		/// Retrieve the details of a meeting.
+		/// Retrieve a poll.
 		/// </summary>
 		/// <param name="meetingId">The meeting id.</param>
 		/// <param name="pollId">The poll id.</param>
