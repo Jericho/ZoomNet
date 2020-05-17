@@ -10,7 +10,7 @@ namespace ZoomNet.Resources
 	/// Allows you to manage webinars.
 	/// </summary>
 	/// <remarks>
-	/// See <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/webinars/webinars">Zoom documentation</a> for more information.
+	/// See <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/webinars/">Zoom documentation</a> for more information.
 	/// </remarks>
 	public interface IWebinars
 	{

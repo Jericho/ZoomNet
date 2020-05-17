@@ -10,7 +10,7 @@ namespace ZoomNet.Resources
 	/// Allows you to manage meetings.
 	/// </summary>
 	/// <remarks>
-	/// See <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/meetings/meetings">Zoom documentation</a> for more information.
+	/// See <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/meetings">Zoom documentation</a> for more information.
 	/// </remarks>
 	public interface IMeetings
 	{

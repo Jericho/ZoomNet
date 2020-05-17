@@ -16,7 +16,7 @@ namespace ZoomNet.Resources
 	/// </summary>
 	/// <seealso cref="ZoomNet.Resources.IMeetings" />
 	/// <remarks>
-	/// See <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/meetings/meetings">Zoom documentation</a> for more information.
+	/// See <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/meetings">Zoom documentation</a> for more information.
 	/// </remarks>
 	public class Meetings : IMeetings
 	{
