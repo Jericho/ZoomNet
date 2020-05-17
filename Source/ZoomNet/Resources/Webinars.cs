@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
@@ -139,10 +140,10 @@ namespace ZoomNet.Resources
 		/// Retrieve the details of a webinar.
 		/// </summary>
 		/// <param name="webinarId">The webinar ID.</param>
-		/// <param name="occurrenceId">The meeting occurrence id.</param>
+		/// <param name="occurrenceId">The webinar occurrence id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// The <see cref="Meeting" />.
+		/// The <see cref="Webinar" />.
 		/// </returns>
 		public Task<Webinar> GetAsync(long webinarId, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
@@ -219,9 +220,10 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The unique identifier of the new panelist.
 		/// </returns>
-		public Task AddPanelistAsync(long webinarId, string email, string fullName, CancellationToken cancellationToken = default)
+		public async Task<Panelist> AddPanelistAsync(long webinarId, string email, string fullName, CancellationToken cancellationToken = default)
 		{
-			return AddPanelistsAsync(webinarId, new (string Email, string FullName)[] { (email, fullName) }, cancellationToken);
+			var panelists = await AddPanelistsAsync(webinarId, new (string Email, string FullName)[] { (email, fullName) }, cancellationToken).ConfigureAwait(false);
+			return panelists.FirstOrDefault();
 		}
 
 		/// <summary>
@@ -233,7 +235,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task AddPanelistsAsync(long webinarId, IEnumerable<(string Email, string FullName)> panelists, CancellationToken cancellationToken = default)
+		public Task<Panelist[]> AddPanelistsAsync(long webinarId, IEnumerable<(string Email, string FullName)> panelists, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
 			data.AddPropertyIfValue("panelists", panelists.Select(p => new { email = p.Email, name = p.FullName }).ToArray());
@@ -242,7 +244,7 @@ namespace ZoomNet.Resources
 				.PostAsync($"webinars/{webinarId}/panelists")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
-				.AsMessage();
+				.AsObject<Panelist[]>();
 		}
 
 		/// <summary>
@@ -274,6 +276,169 @@ namespace ZoomNet.Resources
 		{
 			return _client
 				.DeleteAsync($"webinars/{webinarId}/panelists")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// List the users that have registered for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="status">The registrant status.</param>
+		/// <param name="occurrenceId">The webinar occurrence id.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="page">The current page number of returned records.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Registrant" />.
+		/// </returns>
+		public Task<PaginatedResponse<Registrant>> GetRegistrantsAsync(long webinarId, RegistrantStatus status, string occurrenceId = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
+		{
+			if (recordsPerPage < 1 || recordsPerPage > 300)
+			{
+				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 300");
+			}
+
+			return _client
+				.GetAsync($"webinars/{webinarId}/registrants")
+				.WithArgument("status", JToken.Parse(JsonConvert.SerializeObject(status)).ToString())
+				.WithArgument("occurrence_id", occurrenceId)
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("page", page)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponse<Registrant>("registrants");
+		}
+
+		/// <summary>
+		/// Add a registrant to a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="email">A valid email address.</param>
+		/// <param name="firstName">User's first name.</param>
+		/// <param name="lastName">User's last name.</param>
+		/// <param name="occurrenceId">The webinar occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// A <see cref="Registrant" />.
+		/// </returns>
+		public Task<Registrant> AddRegistrantAsync(long webinarId, string email, string firstName, string lastName, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject();
+			data.AddPropertyIfValue("email", email);
+			data.AddPropertyIfValue("first_name", firstName);
+			data.AddPropertyIfValue("last_name", lastName);
+
+			return _client
+				.PostAsync($"webinars/{webinarId}/registrants")
+				.WithArgument("occurence_id", occurrenceId)
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<Registrant>();
+		}
+
+		/// <summary>
+		/// Approve a registration for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="registrantId">The registrant ID.</param>
+		/// <param name="registrantEmail">The registrant's email address.</param>
+		/// <param name="occurrenceId">The webinar occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task ApproveRegistrantAsync(long webinarId, string registrantId, string registrantEmail, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			return ApproveRegistrantsAsync(webinarId, new[] { (registrantId, registrantEmail) }, occurrenceId, cancellationToken);
+		}
+
+		/// <summary>
+		/// Approve multiple registrations for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="registrantsInfo">ID and email for each registrant to be approved.</param>
+		/// <param name="occurrenceId">The webinar occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task ApproveRegistrantsAsync(long webinarId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			return UpdateRegistrantsStatusAsync(webinarId, registrantsInfo, "approve", occurrenceId, cancellationToken);
+		}
+
+		/// <summary>
+		/// Reject a registration for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="registrantId">The registrant ID.</param>
+		/// <param name="registrantEmail">The registrant's email address.</param>
+		/// <param name="occurrenceId">The webinar occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task RejectRegistrantAsync(long webinarId, string registrantId, string registrantEmail, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			return RejectRegistrantsAsync(webinarId, new[] { (registrantId, registrantEmail) }, occurrenceId, cancellationToken);
+		}
+
+		/// <summary>
+		/// Reject multiple registrations for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="registrantsInfo">ID and email for each registrant to be rejected.</param>
+		/// <param name="occurrenceId">The webinar occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task RejectRegistrantsAsync(long webinarId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			return UpdateRegistrantsStatusAsync(webinarId, registrantsInfo, "deny", occurrenceId, cancellationToken);
+		}
+
+		/// <summary>
+		/// Cancel a previously approved registration for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="registrantId">The registrant ID.</param>
+		/// <param name="registrantEmail">The registrant's email address.</param>
+		/// <param name="occurrenceId">The webinar occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task CancelRegistrantAsync(long webinarId, string registrantId, string registrantEmail, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			return CancelRegistrantsAsync(webinarId, new[] { (registrantId, registrantEmail) }, occurrenceId, cancellationToken);
+		}
+
+		/// <summary>
+		/// Cancel multiple previously approved registrations for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="registrantsInfo">ID and email for each registrant to be cancelled.</param>
+		/// <param name="occurrenceId">The webinar occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task CancelRegistrantsAsync(long webinarId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			return UpdateRegistrantsStatusAsync(webinarId, registrantsInfo, "cancel", occurrenceId, cancellationToken);
+		}
+
+		private Task UpdateRegistrantsStatusAsync(long webinarId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string status, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject();
+			data.AddPropertyIfValue("action", status);
+			data.AddPropertyIfValue("registrants", registrantsInfo.Select(ri => new { id = ri.RegistrantId, email = ri.RegistrantEmail }).ToArray());
+
+			return _client
+				.PostAsync($"webinars/{webinarId}/registrants/status")
+				.WithArgument("occurence_id", occurrenceId)
+				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
