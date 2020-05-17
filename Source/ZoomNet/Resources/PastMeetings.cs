@@ -74,7 +74,7 @@ namespace ZoomNet.Resources
 		/// <param name="meetingId">The meeting identifier.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="Participant" />.
+		/// An array of <see cref="PastInstance" />.
 		/// </returns>
 		public Task<PastMeetingInstance[]> GetInstancesAsync(long meetingId, CancellationToken cancellationToken = default)
 		{
