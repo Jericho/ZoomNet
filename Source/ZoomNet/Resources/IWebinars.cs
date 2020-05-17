@@ -164,6 +164,18 @@ namespace ZoomNet.Resources
 		Task<PaginatedResponse<Registrant>> GetRegistrantsAsync(long webinarId, RegistrantStatus status, string occurrenceId = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Get details on a specific user who registered for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="registrantId">The registrant ID.</param>
+		/// <param name="occurrenceId">The webinar occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="Registrant" />.
+		/// </returns>
+		Task<Registrant> GetRegistrantAsync(long webinarId, string registrantId, string occurrenceId = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Add a registrant to a webinar.
 		/// </summary>
 		/// <param name="webinarId">The webinar ID.</param>
@@ -251,5 +263,93 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task CancelRegistrantsAsync(long webinarId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string occurrenceId = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve all polls for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Poll" />.
+		/// </returns>
+		Task<Poll[]> GetPollsAsync(long webinarId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create a poll for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="title">Title for the poll.</param>
+		/// <param name="questions">The poll questions.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task<Poll> CreatePoll(long webinarId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve a poll.
+		/// </summary>
+		/// <param name="webinarId">The webinar id.</param>
+		/// <param name="pollId">The poll id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="Poll" />.
+		/// </returns>
+		Task<Poll> GetPollAsync(long webinarId, long pollId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update a poll for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="pollId">The poll id.</param>
+		/// <param name="title">Title for the poll.</param>
+		/// <param name="questions">The poll questions.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task UpdatePollAsync(long webinarId, long pollId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a poll for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="pollId">The poll id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task DeletePollAsync(long webinarId, long pollId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve the questions that are to be answered by users while registering for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="PollQuestion"/>.
+		/// </returns>
+		Task<PollQuestion[]> GetRegistrationQuestions(long webinarId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update the questions that are to be answered by users while registering for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="customQuestions">The questions to be answered.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task UpdateRegistrationQuestions(long webinarId, IEnumerable<PollQuestion> customQuestions, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve all the tracking sources of a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="TrackingSource" />.
+		/// </returns>
+		Task<TrackingSource[]> GetTrackingSourcesAsync(long webinarId, CancellationToken cancellationToken = default);
 	}
 }

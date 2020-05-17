@@ -310,6 +310,25 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
+		/// Get details on a specific user who registered for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="registrantId">The registrant ID.</param>
+		/// <param name="occurrenceId">The webinar occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="Registrant" />.
+		/// </returns>
+		public Task<Registrant> GetRegistrantAsync(long webinarId, string registrantId, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"webinars/{webinarId}/registrants/{registrantId}")
+				.WithArgument("occurrence_id", occurrenceId)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<Registrant>();
+		}
+
+		/// <summary>
 		/// Add a registrant to a webinar.
 		/// </summary>
 		/// <param name="webinarId">The webinar ID.</param>
@@ -427,6 +446,158 @@ namespace ZoomNet.Resources
 		public Task CancelRegistrantsAsync(long webinarId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			return UpdateRegistrantsStatusAsync(webinarId, registrantsInfo, "cancel", occurrenceId, cancellationToken);
+		}
+
+		/// <summary>
+		/// Retrieve all polls for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Poll" />.
+		/// </returns>
+		public Task<Poll[]> GetPollsAsync(long webinarId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"webinars/{webinarId}/polls")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<Poll[]>("polls");
+		}
+
+		/// <summary>
+		/// Create a poll for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="title">Title for the poll.</param>
+		/// <param name="questions">The poll questions.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task<Poll> CreatePoll(long webinarId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject()
+			{
+				{ "title", title }
+			};
+			data.AddPropertyIfValue("questions", questions);
+
+			return _client
+				.PostAsync($"webinars/{webinarId}/polls")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<Poll>();
+		}
+
+		/// <summary>
+		/// Retrieve a poll.
+		/// </summary>
+		/// <param name="webinarId">The webinar id.</param>
+		/// <param name="pollId">The poll id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="Poll" />.
+		/// </returns>
+		public Task<Poll> GetPollAsync(long webinarId, long pollId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"webinars/{webinarId}/polls/{pollId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<Poll>();
+		}
+
+		/// <summary>
+		/// Update a poll for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="pollId">The poll id.</param>
+		/// <param name="title">Title for the poll.</param>
+		/// <param name="questions">The poll questions.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task UpdatePollAsync(long webinarId, long pollId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject();
+			data.AddPropertyIfValue("title", title);
+			data.AddPropertyIfValue("questions", questions);
+
+			return _client
+				.PutAsync($"webinars/{webinarId}/polls/{pollId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Delete a poll for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="pollId">The poll id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task DeletePollAsync(long webinarId, long pollId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"webinars/{webinarId}/polls/{pollId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Retrieve the questions that are to be answered by users while registering for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="PollQuestion"/>.
+		/// </returns>
+		public Task<PollQuestion[]> GetRegistrationQuestions(long webinarId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"webinars/{webinarId}/registrants/questions")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<PollQuestion[]>("custom_questions");
+		}
+
+		/// <summary>
+		/// Update the questions that are to be answered by users while registering for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="customQuestions">The questions to be answered.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task UpdateRegistrationQuestions(long webinarId, IEnumerable<PollQuestion> customQuestions, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject();
+			data.AddPropertyIfValue("custom_questions", customQuestions);
+
+			return _client
+				.PutAsync($"webinars/{webinarId}/registrants/questions")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Retrieve all the tracking sources of a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="TrackingSource" />.
+		/// </returns>
+		public Task<TrackingSource[]> GetTrackingSourcesAsync(long webinarId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"webinars/{webinarId}/tracking_sources")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<TrackingSource[]>("tracking_sources");
 		}
 
 		private Task UpdateRegistrantsStatusAsync(long webinarId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string status, string occurrenceId = null, CancellationToken cancellationToken = default)
