@@ -34,7 +34,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				{
 					await client.Meetings.DeleteAsync(userId, oldMeeting.Id, null, cancellationToken).ConfigureAwait(false);
 					await log.WriteLineAsync($"Meeting {oldMeeting.Id} deleted").ConfigureAwait(false);
-					await Task.Delay(250).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
+					await Task.Delay(250, cancellationToken).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
 				});
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
 
