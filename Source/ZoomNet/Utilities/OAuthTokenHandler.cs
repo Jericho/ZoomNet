@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Runtime.Serialization;
 using System.Text;
+using System.Threading;
 using ZoomNet.Models;
 
 namespace ZoomNet.Utilities
@@ -18,7 +19,7 @@ namespace ZoomNet.Utilities
 	/// <seealso cref="Pathoschild.Http.Client.Extensibility.IHttpFilter" />
 	internal class OAuthTokenHandler : IHttpFilter
 	{
-		private static readonly object _lock = new object();
+		private static readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim();
 
 		private readonly OAuthConnectionInfo _connectionInfo;
 		private readonly HttpClient _httpClient;
@@ -54,37 +55,43 @@ namespace ZoomNet.Utilities
 
 		private void RefreshTokenIfNecessary()
 		{
+			_lock.EnterUpgradeableReadLock();
+
 			if (TokenIsExpired())
 			{
-				lock (_lock)
+				try
 				{
-					if (TokenIsExpired())
+					_lock.EnterWriteLock();
+
+					var grantType = _connectionInfo.GrantType.GetAttributeOfType<EnumMemberAttribute>().Value;
+					var requestUrl = $"https://api.zoom.us/oauth/token?grant_type={grantType}";
+					if (_connectionInfo.GrantType == OAuthGrantType.AuthorizationCode) requestUrl += $"&code={_connectionInfo.AuthorizationCode}";
+
+					var request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
+					request.Headers.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes($"{_connectionInfo.ClientId}:{_connectionInfo.ClientSecret}")));
+					var response = _httpClient.SendAsync(request).GetAwaiter().GetResult();
+					var responseContent = response.Content.ReadAsStringAsync(null).ConfigureAwait(false).GetAwaiter().GetResult();
+					var jObject = JObject.Parse(responseContent);
+
+					if (!response.IsSuccessStatusCode)
 					{
-						var grantType = _connectionInfo.GrantType.GetAttributeOfType<EnumMemberAttribute>().Value;
-						var requestUrl = $"https://api.zoom.us/oauth/token?grant_type={grantType}";
-						if (_connectionInfo.GrantType == OAuthGrantType.AuthorizationCode) requestUrl += $"&code={_connectionInfo.AuthorizationCode}";
-
-						var request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
-						request.Headers.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes($"{_connectionInfo.ClientId}:{_connectionInfo.ClientSecret}")));
-						var response = _httpClient.SendAsync(request).GetAwaiter().GetResult();
-						var responseContent = response.Content.ReadAsStringAsync(null).ConfigureAwait(false).GetAwaiter().GetResult();
-						var jObject = JObject.Parse(responseContent);
-
-						if (!response.IsSuccessStatusCode)
-						{
-							throw new ZoomException(jObject.GetPropertyValue<string>("reason"), response, "No diagnostic available");
-						}
-
-						_accessToken = jObject.GetPropertyValue<string>("access_token");
-						var scope = jObject.GetPropertyValue<string>("scope");
-						_tokenScope = scope
-							.Split(' ')
-							.Select(x => x.Split(':'))
-							.ToDictionary(x => x[0], x => x.Skip(1).ToArray());
-						_tokenExpiration = DateTime.UtcNow.AddSeconds(jObject.GetPropertyValue<int>("expires_in", 60 * 60));
+						throw new ZoomException(jObject.GetPropertyValue<string>("reason"), response, "No diagnostic available");
 					}
+
+					_accessToken = jObject.GetPropertyValue<string>("access_token");
+					_tokenScope = jObject.GetPropertyValue<string>("scope")
+						.Split(' ')
+						.Select(x => x.Split(':'))
+						.ToDictionary(x => x[0], x => x.Skip(1).ToArray());
+					_tokenExpiration = DateTime.UtcNow.AddSeconds(jObject.GetPropertyValue<int>("expires_in", 60 * 60));
+				}
+				finally
+				{
+					_lock.ExitWriteLock();
 				}
 			}
+
+			_lock.ExitUpgradeableReadLock();
 		}
 
 		private bool TokenIsExpired()

@@ -4,6 +4,7 @@ using Pathoschild.Http.Client.Extensibility;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace ZoomNet.Utilities
 {
@@ -13,7 +14,7 @@ namespace ZoomNet.Utilities
 	/// <seealso cref="Pathoschild.Http.Client.Extensibility.IHttpFilter" />
 	internal class JwtTokenHandler : IHttpFilter
 	{
-		private static readonly object _lock = new object();
+		private static readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim();
 
 		private readonly JwtConnectionInfo _connectionInfo;
 		private readonly TimeSpan _clockSkew;
@@ -48,22 +49,29 @@ namespace ZoomNet.Utilities
 
 		private void RefreshTokenIfNecessary()
 		{
+			_lock.EnterUpgradeableReadLock();
+
 			if (TokenIsExpired())
 			{
-				lock (_lock)
+				try
 				{
-					if (TokenIsExpired())
+					_lock.EnterWriteLock();
+
+					_tokenExpiration = DateTime.UtcNow.Add(_tokenLifeSpan);
+					var jwtPayload = new Dictionary<string, object>()
 					{
-						_tokenExpiration = DateTime.UtcNow.Add(_tokenLifeSpan);
-						var jwtPayload = new Dictionary<string, object>()
-						{
-							{ "iss", _connectionInfo.ApiKey },
-							{ "exp", _tokenExpiration.ToUnixTime() }
-						};
-						_jwtToken = JWT.Encode(jwtPayload, Encoding.ASCII.GetBytes(_connectionInfo.ApiSecret), JwsAlgorithm.HS256);
-					}
+						{ "iss", _connectionInfo.ApiKey },
+						{ "exp", _tokenExpiration.ToUnixTime() }
+					};
+					_jwtToken = JWT.Encode(jwtPayload, Encoding.ASCII.GetBytes(_connectionInfo.ApiSecret), JwsAlgorithm.HS256);
+				}
+				finally
+				{
+					_lock.ExitWriteLock();
 				}
 			}
+
+			_lock.ExitUpgradeableReadLock();
 		}
 
 		private bool TokenIsExpired()
