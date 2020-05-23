@@ -43,7 +43,7 @@ namespace ZoomNet.IntegrationTests
 			var useFiddler = true;
 
 			// Do you want to use JWT or OAuth?
-			var connectionMethod = ConnectionMethods.OAuth;
+			var connectionMethod = ConnectionMethods.Jwt;
 			// -----------------------------------;------------------------------------------
 
 			// Configure ZoomNet client
