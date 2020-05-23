@@ -41,6 +41,7 @@ namespace ZoomNet.IntegrationTests
 			// -----------------------------------------------------------------------------
 			// Do you want to proxy requests through Fiddler? Can be useful for debugging.
 			var useFiddler = true;
+			var fiddlerPort = 8866; // By default Fiddler4 uses port 8888 and Fiddler Everywhere uses port 8866
 
 			// Do you want to use JWT or OAuth?
 			var connectionMethod = ConnectionMethods.Jwt;
@@ -63,7 +64,7 @@ namespace ZoomNet.IntegrationTests
 			}
 
 			var userId = Environment.GetEnvironmentVariable("ZOOM_USERID");
-			var proxy = useFiddler ? new WebProxy("http://localhost:8888") : null;
+			var proxy = useFiddler ? new WebProxy($"http://localhost:{fiddlerPort}") : null;
 			var client = new ZoomClient(connectionInfo, proxy, null, _loggerFactory.CreateLogger<ZoomClient>());
 
 			// Configure Console
