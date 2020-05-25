@@ -13,7 +13,7 @@ namespace ZoomNet.Utilities
 	/// and time when the next attempt can take place.
 	/// </summary>
 	/// <seealso cref="Pathoschild.Http.Client.Retry.IRetryConfig" />
-	internal class ZoomRetryStrategy : IRetryConfig
+	internal class Http429RetryStrategy : IRetryConfig
 	{
 		#region FIELDS
 
@@ -35,28 +35,28 @@ namespace ZoomNet.Utilities
 		#region CTOR
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="ZoomRetryStrategy" /> class.
+		/// Initializes a new instance of the <see cref="Http429RetryStrategy" /> class.
 		/// </summary>
-		public ZoomRetryStrategy()
+		public Http429RetryStrategy()
 			: this(DEFAULT_MAX_RETRIES, null)
 		{
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="ZoomRetryStrategy" /> class.
+		/// Initializes a new instance of the <see cref="Http429RetryStrategy" /> class.
 		/// </summary>
 		/// <param name="maxAttempts">The maximum attempts.</param>
-		public ZoomRetryStrategy(int maxAttempts)
+		public Http429RetryStrategy(int maxAttempts)
 			: this(maxAttempts, null)
 		{
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="ZoomRetryStrategy" /> class.
+		/// Initializes a new instance of the <see cref="Http429RetryStrategy" /> class.
 		/// </summary>
 		/// <param name="maxAttempts">The maximum attempts.</param>
 		/// <param name="systemClock">The system clock. This is for unit testing only.</param>
-		internal ZoomRetryStrategy(int maxAttempts, ISystemClock systemClock = null)
+		internal Http429RetryStrategy(int maxAttempts, ISystemClock systemClock)
 		{
 			MaxRetries = maxAttempts;
 			_systemClock = systemClock ?? SystemClock.Instance;
