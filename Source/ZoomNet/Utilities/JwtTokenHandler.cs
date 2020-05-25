@@ -12,7 +12,8 @@ namespace ZoomNet.Utilities
 	/// Handler to ensure requests to the Zoom API include a valid JWT token.
 	/// </summary>
 	/// <seealso cref="Pathoschild.Http.Client.Extensibility.IHttpFilter" />
-	internal class JwtTokenHandler : IHttpFilter
+	/// <seealso cref="ITokenHandler" />
+	internal class JwtTokenHandler : IHttpFilter, ITokenHandler
 	{
 		private static readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim();
 
@@ -38,7 +39,7 @@ namespace ZoomNet.Utilities
 		/// <param name="request">The HTTP request.</param>
 		public void OnRequest(IRequest request)
 		{
-			RefreshTokenIfNecessary();
+			RefreshTokenIfNecessary(false);
 			request.WithBearerAuthentication(_jwtToken);
 		}
 
@@ -47,11 +48,11 @@ namespace ZoomNet.Utilities
 		/// <param name="httpErrorAsException">Whether HTTP error responses should be raised as exceptions.</param>
 		public void OnResponse(IResponse response, bool httpErrorAsException) { }
 
-		private void RefreshTokenIfNecessary()
+		public string RefreshTokenIfNecessary(bool forceRefresh)
 		{
 			_lock.EnterUpgradeableReadLock();
 
-			if (TokenIsExpired())
+			if (forceRefresh || TokenIsExpired())
 			{
 				try
 				{
@@ -72,6 +73,8 @@ namespace ZoomNet.Utilities
 			}
 
 			_lock.ExitUpgradeableReadLock();
+
+			return _jwtToken;
 		}
 
 		private bool TokenIsExpired()
