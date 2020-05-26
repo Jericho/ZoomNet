@@ -4,6 +4,7 @@ using Pathoschild.Http.Client.Extensibility;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace ZoomNet.Utilities
 {
@@ -11,9 +12,10 @@ namespace ZoomNet.Utilities
 	/// Handler to ensure requests to the Zoom API include a valid JWT token.
 	/// </summary>
 	/// <seealso cref="Pathoschild.Http.Client.Extensibility.IHttpFilter" />
-	internal class JwtTokenHandler : IHttpFilter
+	/// <seealso cref="ITokenHandler" />
+	internal class JwtTokenHandler : IHttpFilter, ITokenHandler
 	{
-		private static readonly object _lock = new object();
+		private static readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim();
 
 		private readonly JwtConnectionInfo _connectionInfo;
 		private readonly TimeSpan _clockSkew;
@@ -37,7 +39,7 @@ namespace ZoomNet.Utilities
 		/// <param name="request">The HTTP request.</param>
 		public void OnRequest(IRequest request)
 		{
-			RefreshTokenIfNecessary();
+			RefreshTokenIfNecessary(false);
 			request.WithBearerAuthentication(_jwtToken);
 		}
 
@@ -46,24 +48,33 @@ namespace ZoomNet.Utilities
 		/// <param name="httpErrorAsException">Whether HTTP error responses should be raised as exceptions.</param>
 		public void OnResponse(IResponse response, bool httpErrorAsException) { }
 
-		private void RefreshTokenIfNecessary()
+		public string RefreshTokenIfNecessary(bool forceRefresh)
 		{
-			if (TokenIsExpired())
+			_lock.EnterUpgradeableReadLock();
+
+			if (forceRefresh || TokenIsExpired())
 			{
-				lock (_lock)
+				try
 				{
-					if (TokenIsExpired())
+					_lock.EnterWriteLock();
+
+					_tokenExpiration = DateTime.UtcNow.Add(_tokenLifeSpan);
+					var jwtPayload = new Dictionary<string, object>()
 					{
-						_tokenExpiration = DateTime.UtcNow.Add(_tokenLifeSpan);
-						var jwtPayload = new Dictionary<string, object>()
-						{
-							{ "iss", _connectionInfo.ApiKey },
-							{ "exp", _tokenExpiration.ToUnixTime() }
-						};
-						_jwtToken = JWT.Encode(jwtPayload, Encoding.ASCII.GetBytes(_connectionInfo.ApiSecret), JwsAlgorithm.HS256);
-					}
+						{ "iss", _connectionInfo.ApiKey },
+						{ "exp", _tokenExpiration.ToUnixTime() }
+					};
+					_jwtToken = JWT.Encode(jwtPayload, Encoding.ASCII.GetBytes(_connectionInfo.ApiSecret), JwsAlgorithm.HS256);
+				}
+				finally
+				{
+					_lock.ExitWriteLock();
 				}
 			}
+
+			_lock.ExitUpgradeableReadLock();
+
+			return _jwtToken;
 		}
 
 		private bool TokenIsExpired()

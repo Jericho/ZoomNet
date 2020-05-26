@@ -129,19 +129,22 @@ namespace ZoomNet
 			_options = options ?? GetDefaultOptions();
 			_logger = logger ?? NullLogger.Instance;
 			_fluentClient = new FluentClient(new Uri(ZOOM_V2_BASE_URI), httpClient)
-				.SetUserAgent($"ZoomNet/{Version} (+https://github.com/Jericho/ZoomNet)")
-				.SetRequestCoordinator(new ZoomRetryStrategy());
+				.SetUserAgent($"ZoomNet/{Version} (+https://github.com/Jericho/ZoomNet)");
 
 			_fluentClient.Filters.Remove<DefaultErrorFilter>();
 
 			// Order is important: the token handler (either JWT or OAuth) must be first, followed by DiagnosticHandler and then by ErrorHandler.
 			if (connectionInfo is JwtConnectionInfo jwtConnectionInfo)
 			{
-				_fluentClient.Filters.Add(new JwtTokenHandler(jwtConnectionInfo));
+				var tokenHandler = new JwtTokenHandler(jwtConnectionInfo);
+				_fluentClient.Filters.Add(tokenHandler);
+				_fluentClient.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), tokenHandler));
 			}
 			else if (connectionInfo is OAuthConnectionInfo oauthConnectionInfo)
 			{
-				_fluentClient.Filters.Add(new OAuthTokenHandler(oauthConnectionInfo, httpClient));
+				var tokenHandler = new OAuthTokenHandler(oauthConnectionInfo, httpClient);
+				_fluentClient.Filters.Add(tokenHandler);
+				_fluentClient.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), tokenHandler));
 			}
 			else
 			{
