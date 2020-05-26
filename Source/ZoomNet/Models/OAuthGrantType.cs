@@ -17,6 +17,12 @@ namespace ZoomNet.Models
 		/// Client Credentials.
 		/// </summary>
 		[EnumMember(Value = "client_credentials")]
-		ClientCredentials
+		ClientCredentials,
+
+		/// <summary>
+		/// Refresh token.
+		/// </summary>
+		[EnumMember(Value = "refresh_token")]
+		RefreshToken
 	}
 }
