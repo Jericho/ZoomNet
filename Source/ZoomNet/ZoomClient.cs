@@ -138,13 +138,13 @@ namespace ZoomNet
 			{
 				var tokenHandler = new JwtTokenHandler(jwtConnectionInfo);
 				_fluentClient.Filters.Add(tokenHandler);
-				_fluentClient = _fluentClient.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), tokenHandler));
+				_fluentClient.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), tokenHandler));
 			}
 			else if (connectionInfo is OAuthConnectionInfo oauthConnectionInfo)
 			{
 				var tokenHandler = new OAuthTokenHandler(oauthConnectionInfo, httpClient);
 				_fluentClient.Filters.Add(tokenHandler);
-				_fluentClient = _fluentClient.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), tokenHandler));
+				_fluentClient.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), tokenHandler));
 			}
 			else
 			{

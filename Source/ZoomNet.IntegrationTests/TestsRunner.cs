@@ -141,7 +141,7 @@ namespace ZoomNet.IntegrationTests
 			foreach (var (TestName, ResultCode, Message) in results.OrderBy(r => r.TestName).ToArray())
 			{
 				var name = TestName.Length <= TEST_NAME_MAX_LENGTH ? TestName : TestName.Substring(0, TEST_NAME_MAX_LENGTH - 3) + "...";
-				await summary.WriteLineAsync($"{name:TEST_NAME_MAX_LENGTH} : {Message}").ConfigureAwait(false);
+				await summary.WriteLineAsync($"{name.PadRight(TEST_NAME_MAX_LENGTH, ' ')} : {Message}").ConfigureAwait(false);
 			}
 
 			await summary.WriteLineAsync("**************************************************").ConfigureAwait(false);
