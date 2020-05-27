@@ -1,4 +1,4 @@
-﻿using System.Threading;
+using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
 
@@ -22,6 +22,6 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Users">users</see>.
 		/// </returns>
-		Task<PaginatedResponse<User>> GetAllAsync(UserStatus status = UserStatus.Active, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default(CancellationToken));
+		Task<PaginatedResponse<User>> GetAllAsync(UserStatus status = UserStatus.Active, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
 	}
 }

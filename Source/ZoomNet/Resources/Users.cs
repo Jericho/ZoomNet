@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
@@ -39,7 +39,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Users">users</see>.
 		/// </returns>
-		public Task<PaginatedResponse<User>> GetAllAsync(UserStatus status = UserStatus.Active, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default(CancellationToken))
+		public Task<PaginatedResponse<User>> GetAllAsync(UserStatus status = UserStatus.Active, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
