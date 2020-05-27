@@ -10,7 +10,7 @@ namespace ZoomNet.Resources
 	/// Allows you to manage meetings.
 	/// </summary>
 	/// <remarks>
-	/// See <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/meetings/meetings">Zoom documentation</a> for more information.
+	/// See <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/meetings">Zoom documentation</a> for more information.
 	/// </remarks>
 	public interface IMeetings
 	{
@@ -221,6 +221,16 @@ namespace ZoomNet.Resources
 		Task CancelRegistrantsAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Retrieve all polls for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Poll" />.
+		/// </returns>
+		Task<Poll[]> GetPollsAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Create a poll for a meeting.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
@@ -233,7 +243,7 @@ namespace ZoomNet.Resources
 		Task<Poll> CreatePoll(long meetingId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Retrieve the details of a meeting.
+		/// Retrieve a poll.
 		/// </summary>
 		/// <param name="meetingId">The meeting id.</param>
 		/// <param name="pollId">The poll id.</param>
