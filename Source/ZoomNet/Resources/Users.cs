@@ -33,13 +33,14 @@ namespace ZoomNet.Resources
 		/// Retrieve all users on your account.
 		/// </summary>
 		/// <param name="status">The user status. Allowed values: Active, Inactive, pending.</param>
+		/// <param name="roleId">Unique identifier for the role. Provide this parameter if you would like to filter the response by a specific role.</param>
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="page">The current page number of returned records.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// An array of <see cref="Users">users</see>.
 		/// </returns>
-		public Task<PaginatedResponse<User>> GetAllAsync(UserStatus status = UserStatus.Active, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponse<User>> GetAllAsync(UserStatus status = UserStatus.Active, string roleId = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -49,6 +50,7 @@ namespace ZoomNet.Resources
 			return _client
 				.GetAsync($"users")
 				.WithArgument("status", JToken.Parse(JsonConvert.SerializeObject(status)).ToString())
+				.WithArgument("role_id", roleId)
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("page", page)
 				.WithCancellationToken(cancellationToken)
