@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using StrongGrid.Models;
 using System;
 using System.Linq;
 using ZoomNet.Models;
@@ -7,10 +8,10 @@ using ZoomNet.Models;
 namespace ZoomNet.Utilities
 {
 	/// <summary>
-	/// Converts a JSON string into and array of <see cref="Meeting">meetings</see>.
+	/// Converts a JSON string into and array of <see cref="Webinar">webinars</see>.
 	/// </summary>
 	/// <seealso cref="Newtonsoft.Json.JsonConverter" />
-	internal class MeetingConverter : JsonConverter
+	internal class WebinarConverter : JsonConverter
 	{
 		/// <summary>
 		/// Determines whether this instance can convert the specified object type.
@@ -21,7 +22,7 @@ namespace ZoomNet.Utilities
 		/// </returns>
 		public override bool CanConvert(Type objectType)
 		{
-			return objectType == typeof(Meeting);
+			return objectType == typeof(Webinar);
 		}
 
 		/// <summary>
@@ -87,25 +88,23 @@ namespace ZoomNet.Utilities
 				return Convert(jObject, serializer);
 			}
 
-			throw new Exception("Unable to convert to Meeting");
+			throw new Exception("Unable to convert to Webinar");
 		}
 
-		private Meeting Convert(JObject jsonObject, JsonSerializer serializer)
+		private Webinar Convert(JObject jsonObject, JsonSerializer serializer)
 		{
-			jsonObject.TryGetValue("type", StringComparison.OrdinalIgnoreCase, out JToken meetingTypeJsonProperty);
-			var meetingType = (MeetingType)meetingTypeJsonProperty.ToObject(typeof(MeetingType));
+			jsonObject.TryGetValue("type", StringComparison.OrdinalIgnoreCase, out JToken webinarTypeJsonProperty);
+			var webinarType = (WebinarType)webinarTypeJsonProperty.ToObject(typeof(WebinarType));
 
-			switch (meetingType)
+			switch (webinarType)
 			{
-				case MeetingType.Instant:
-					return jsonObject.ToObject<InstantMeeting>(serializer);
-				case MeetingType.Scheduled:
-					return jsonObject.ToObject<ScheduledMeeting>(serializer);
-				case MeetingType.RecurringFixedTime:
-				case MeetingType.RecurringNoFixedTime:
-					return jsonObject.ToObject<RecurringMeeting>(serializer);
+				case WebinarType.Regular:
+					return jsonObject.ToObject<ScheduledWebinar>(serializer);
+				case WebinarType.RecurringFixedTime:
+				case WebinarType.RecurringNoFixedTime:
+					return jsonObject.ToObject<RecurringWebinar>(serializer);
 				default:
-					throw new Exception($"{meetingTypeJsonProperty} is an unknown meeting type");
+					throw new Exception($"{webinarTypeJsonProperty} is an unknown webinar type");
 			}
 		}
 	}

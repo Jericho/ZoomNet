@@ -97,6 +97,7 @@ namespace ZoomNet.IntegrationTests
 			var integrationTests = new Type[]
 			{
 				typeof(Meetings),
+				typeof(Webinars),
 			};
 
 			// Execute the async tests in parallel (with max degree of parallelism)

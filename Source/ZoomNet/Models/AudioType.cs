@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
 
@@ -8,7 +8,7 @@ namespace ZoomNet.Models
 	/// Enumeration to indicate the type of audio available to attendees.
 	/// </summary>
 	[JsonConverter(typeof(StringEnumConverter))]
-	public enum MeetingAudioType
+	public enum AudioType
 	{
 		/// <summary>
 		/// VOIP.

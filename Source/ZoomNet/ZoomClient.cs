@@ -71,6 +71,22 @@ namespace ZoomNet
 		/// </value>
 		public IPastMeetings PastMeetings { get; private set; }
 
+		/// <summary>
+		/// Gets the resource which allows you to manage webinars that occured in the past.
+		/// </summary>
+		/// <value>
+		/// The past webinars resource.
+		/// </value>
+		public IPastWebinars PastWebinars { get; private set; }
+
+		/// <summary>
+		/// Gets the resource which allows you to manage webinars.
+		/// </summary>
+		/// <value>
+		/// The webinars resource.
+		/// </value>
+		public IWebinars Webinars { get; private set; }
+
 		#endregion
 
 		#region CTOR
@@ -157,6 +173,8 @@ namespace ZoomNet
 
 			Meetings = new Meetings(_fluentClient);
 			PastMeetings = new PastMeetings(_fluentClient);
+			PastWebinars = new PastWebinars(_fluentClient);
+			Webinars = new Webinars(_fluentClient);
 		}
 
 		/// <summary>
