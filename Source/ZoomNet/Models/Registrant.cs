@@ -123,7 +123,7 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the status.
 		/// </summary>
-		[JsonProperty(PropertyName = "comments")]
+		[JsonProperty(PropertyName = "status")]
 		public RegistrantStatus Status { get; set; }
 
 		/// <summary>
