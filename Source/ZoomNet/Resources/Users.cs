@@ -220,5 +220,38 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
+
+		/// <summary>
+		/// Delete a specific assistant of a user.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="assistantId">The id of the assistant to disassociate from this user.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task DeleteAssistantAsync(string userId, string assistantId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"users/{userId}/assistants/{assistantId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Delete all assistants of a user.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task DeleteAllAssistantsAsync(string userId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"users/{userId}/assistants")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
 	}
 }

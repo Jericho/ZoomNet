@@ -111,5 +111,26 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task AddAssistantsByEmailAsync(string userId, IEnumerable<string> assistantEmails, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a specific assistant of a user.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="assistantId">The id of the assistant to disassociate from this user.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task DeleteAssistantAsync(string userId, string assistantId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete all assistants of a user.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task DeleteAllAssistantsAsync(string userId, CancellationToken cancellationToken = default);
 	}
 }
