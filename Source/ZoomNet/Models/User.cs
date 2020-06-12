@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 
 namespace ZoomNet.Models
@@ -86,6 +86,75 @@ namespace ZoomNet.Models
 		public string LastLoginClientVersion { get; set; }
 
 		/// <summary>
+		/// Gets or sets the language for the Zoom Web Portal.
+		/// </summary>
+		[JsonProperty(PropertyName = "language")]
+		public string Language { get; set; }
+
+		/// <summary>
+		/// Gets or sets the country for Company Phone Number.
+		/// </summary>
+		[JsonProperty(PropertyName = "phone_country")]
+		public string PhoneCountry { get; set; }
+
+		/// <summary>
+		/// Gets or sets the phone number.
+		/// </summary>
+		[JsonProperty(PropertyName = "phone_number")]
+		public string PhoneNumber { get; set; }
+
+		/// <summary>
+		/// Gets or sets the personal meeting room URL, if the user has one.
+		/// </summary>
+		[JsonProperty(PropertyName = "vanity_url")]
+		public string VanityUrl { get; set; }
+
+		/// <summary>
+		/// Gets or sets the personal meeting URL.
+		/// </summary>
+		[JsonProperty(PropertyName = "personal_meeting_url")]
+		public string PersonalMeetingUrl { get; set; }
+
+		/// <summary>
+		/// Gets or sets a value indicating whether the user is verified or not.
+		/// </summary>
+		[JsonProperty(PropertyName = "verified")]
+		public bool IsVerified { get; set; }
+
+		/// <summary>
+		/// Gets or sets the URL for the profile picture.
+		/// </summary>
+		[JsonProperty(PropertyName = "pic_url")]
+		public string ProfilePictureUrl { get; set; }
+
+		/// <summary>
+		/// Gets or sets the CMS ID.
+		/// </summary>
+		/// <remarks>
+		/// Only enabled for Kaltura integration.
+		/// </remarks>
+		[JsonProperty(PropertyName = "cms_user_id")]
+		public string CmsUserId { get; set; }
+
+		/// <summary>
+		/// Gets or sets the account id.
+		/// </summary>
+		[JsonProperty(PropertyName = "account_id")]
+		public string AccountId { get; set; }
+
+		/// <summary>
+		/// Gets or sets the host key.
+		/// </summary>
+		[JsonProperty(PropertyName = "host_key")]
+		public string HostKey { get; set; }
+
+		/// <summary>
+		/// Gets or sets the status.
+		/// </summary>
+		[JsonProperty(PropertyName = "status")]
+		public UserStatus Status { get; set; }
+
+		/// <summary>
 		/// Gets or sets the group ids.
 		/// </summary>
 		[JsonProperty(PropertyName = "group_ids")]
@@ -96,5 +165,29 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonProperty(PropertyName = "im_group_ids")]
 		public string[] ImGroupIds { get; set; }
+
+		/// <summary>
+		/// Gets or sets the ???.
+		/// </summary>
+		[JsonProperty(PropertyName = "jid")]
+		public string JId { get; set; }
+
+		/// <summary>
+		/// Gets or sets the job title.
+		/// </summary>
+		[JsonProperty(PropertyName = "job_title")]
+		public string JobTitle { get; set; }
+
+		/// <summary>
+		/// Gets or sets the company.
+		/// </summary>
+		[JsonProperty(PropertyName = "company")]
+		public string Company { get; set; }
+
+		/// <summary>
+		/// Gets or sets the location.
+		/// </summary>
+		[JsonProperty(PropertyName = "location")]
+		public string Location { get; set; }
 	}
 }

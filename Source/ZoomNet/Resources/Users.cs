@@ -2,6 +2,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -55,6 +57,168 @@ namespace ZoomNet.Resources
 				.WithArgument("page", page)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponse<User>("users");
+		}
+
+		/// <summary>
+		/// Creates a user.
+		/// </summary>
+		/// <param name="email">The email address.</param>
+		/// <param name="firstName">First name.</param>
+		/// <param name="lastName">Last name.</param>
+		/// <param name="type">The type of user.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The new user.
+		/// </returns>
+		/// <remarks>
+		/// User will get an email sent from Zoom. There is a confirmation link in this email.
+		/// The user will then need to use the link to activate their Zoom account.
+		/// The user can then set or change their password.
+		/// </remarks>
+		public Task<User> CreateAsync(string email, string firstName = null, string lastName = null, UserType type = UserType.Basic, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject()
+			{
+				{ "action", "create" }
+			};
+			data.AddPropertyIfValue("user_info/email", email);
+			data.AddPropertyIfEnumValue("user_info/type", type);
+			data.AddPropertyIfValue("user_info/first_name", firstName);
+			data.AddPropertyIfValue("user_info/last_name", lastName);
+
+			return _client
+				.PostAsync($"users")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<User>();
+		}
+
+		/// <summary>
+		/// Retrieve the information of a specific user on a Zoom account.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="User" />.
+		/// </returns>
+		public Task<User> GetAsync(string userId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"users/{userId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<User>();
+		}
+
+		/// <summary>
+		/// Delete a user.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="transferEmail">Transfer email.</param>
+		/// <param name="transferMeetings">Transfer meetings.</param>
+		/// <param name="transferWebinars">Transfer webinars.</param>
+		/// <param name="transferRecordings">Transfer recordings.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task DeleteAsync(string userId, string transferEmail, bool transferMeetings, bool transferWebinars, bool transferRecordings, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"users/{userId}")
+				.WithArgument("action", "delete")
+				.WithArgument("transfer_email", transferEmail)
+				.WithArgument("transfer_meetings", transferMeetings)
+				.WithArgument("transfer_webinars", transferWebinars)
+				.WithArgument("transfer_recordings", transferRecordings)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Disassociate a user.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="transferEmail">Transfer email.</param>
+		/// <param name="transferMeetings">Transfer meetings.</param>
+		/// <param name="transferWebinars">Transfer webinars.</param>
+		/// <param name="transferRecordings">Transfer recordings.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task DisassociateAsync(string userId, string transferEmail, bool transferMeetings, bool transferWebinars, bool transferRecordings, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"users/{userId}")
+				.WithArgument("action", "disassociate")
+				.WithArgument("transfer_email", transferEmail)
+				.WithArgument("transfer_meetings", transferMeetings)
+				.WithArgument("transfer_webinars", transferWebinars)
+				.WithArgument("transfer_recordings", transferRecordings)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Retrieve a user's assistants.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Assistant">assistants</see>.
+		/// </returns>
+		public Task<Assistant[]> GetAssistantsAsync(string userId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"users/{userId}/assistants")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<Assistant[]>("assistants");
+		}
+
+		/// <summary>
+		/// Add assistants to a user.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="assistantIds">The id of the assistants to associate with this user.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task AddAssistantsByIdAsync(string userId, IEnumerable<string> assistantIds, CancellationToken cancellationToken = default)
+		{
+			if (assistantIds == null || !assistantIds.Any()) throw new ArgumentNullException(nameof(assistantIds), "You must provide at least one assistant Id.");
+
+			var data = new JObject();
+			data.AddPropertyIfValue("assistants", assistantIds.Select(id => new JObject() { { "id", id } }).ToArray());
+
+			return _client
+				.PostAsync($"users/{userId}/assistants")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Add assistants to a user.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="assistantEmails">The email address of the assistants to associate with this user.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task AddAssistantsByEmailAsync(string userId, IEnumerable<string> assistantEmails, CancellationToken cancellationToken = default)
+		{
+			if (assistantEmails == null || !assistantEmails.Any()) throw new ArgumentNullException(nameof(assistantEmails), "You must provide at least one assistant email address.");
+
+			var data = new JObject();
+			data.AddPropertyIfValue("assistants", assistantEmails.Select(id => new JObject() { { "email", id } }).ToArray());
+
+			return _client
+				.PostAsync($"users/{userId}/assistants")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
 		}
 	}
 }
