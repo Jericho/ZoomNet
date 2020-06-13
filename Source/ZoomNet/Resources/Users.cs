@@ -305,7 +305,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
-		/// Upload a user’s profile picture.
+		/// Upload a userâ€™s profile picture.
 		/// </summary>
 		/// <param name="userId">The user Id.</param>
 		/// <param name="pictureData">The binary data.</param>
@@ -340,6 +340,50 @@ namespace ZoomNet.Resources
 				.GetAsync($"users/{userId}/settings")
 				.WithCancellationToken(cancellationToken)
 				.AsObject<UserSettings>();
+		}
+
+		/// <summary>
+		/// Deactivate a specific user on a Zoom account.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task DeactivateAsync(string userId, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject()
+			{
+				{ "action", "deactivate" }
+			};
+
+			return _client
+				.PutAsync($"users/{userId}/status")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Reactivate a specific user on a Zoom account.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task ReactivateAsync(string userId, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject()
+			{
+				{ "action", "activate" }
+			};
+
+			return _client
+				.PutAsync($"users/{userId}/status")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
 		}
 	}
 }

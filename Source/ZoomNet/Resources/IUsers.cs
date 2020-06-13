@@ -165,7 +165,7 @@ namespace ZoomNet.Resources
 		Task DeleteAllSchedulersAsync(string userId, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Upload a user’s profile picture.
+		/// Upload a userâ€™s profile picture.
 		/// </summary>
 		/// <param name="userId">The user Id.</param>
 		/// <param name="pictureData">The binary data.</param>
@@ -204,5 +204,25 @@ namespace ZoomNet.Resources
 		/// The <see cref="RecodringAuthenticationSettings">settings</see>.
 		/// </returns>
 		//Task<RecordingAuthenticationSettings> GetRecordingAuthenticationSettingsAsync(string userId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Deactivate a specific user on a Zoom account.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task DeactivateAsync(string userId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Reactivate a specific user on a Zoom account.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task ReactivateAsync(string userId, CancellationToken cancellationToken = default);
 	}
 }
