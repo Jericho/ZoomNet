@@ -224,5 +224,16 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task ReactivateAsync(string userId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Change the password of a user.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="password">The password.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task ChangePasswordAsync(string userId, string password, CancellationToken cancellationToken = default);
 	}
 }

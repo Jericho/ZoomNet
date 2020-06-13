@@ -385,5 +385,28 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
+
+		/// <summary>
+		/// Change the password of a user.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="password">The password.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task ChangePasswordAsync(string userId, string password, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject()
+			{
+				{ "password", password }
+			};
+
+			return _client
+				.PutAsync($"users/{userId}/password")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
 	}
 }
