@@ -408,5 +408,21 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
+
+		/// <summary>
+		/// Retrieve the permissions that have been granted to a user.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of strings.
+		/// </returns>
+		public Task<string[]> GetPermissionsAsync(string userId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"users/{userId}/permissions")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string[]>("permissions");
+		}
 	}
 }

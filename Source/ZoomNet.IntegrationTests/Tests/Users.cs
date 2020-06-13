@@ -45,6 +45,10 @@ namespace ZoomNet.IntegrationTests.Tests
 			// GET MY SETTINGS
 			var mySettings = await client.Users.GetSettingsAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("My settings retrieved").ConfigureAwait(false);
+
+			// GET MY PERMISSIONS
+			var myPermissions = await client.Users.GetPermissionsAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"My permissions retrieved: I have been granted {myPermissions.Length} permissions").ConfigureAwait(false);
 		}
 	}
 }
