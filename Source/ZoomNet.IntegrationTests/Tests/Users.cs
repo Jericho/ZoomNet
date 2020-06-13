@@ -38,6 +38,10 @@ namespace ZoomNet.IntegrationTests.Tests
 			var myAssistants = await client.Users.GetAssistantsAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"My user has {myAssistants.Length} assistants").ConfigureAwait(false);
 
+			// GET MY SCHEDULERS
+			var mySchedulers = await client.Users.GetSchedulersAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"My user has {mySchedulers.Length} schedulers").ConfigureAwait(false);
+
 			// GET MY SETTINGS
 			var mySettings = await client.Users.GetSettingsAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("My settings retrieved").ConfigureAwait(false);
