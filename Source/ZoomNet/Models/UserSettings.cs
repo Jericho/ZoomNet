@@ -49,8 +49,8 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The settings.
 		/// </value>
-		//[JsonProperty("telephony", NullValueHandling = NullValueHandling.Ignore)]
-		//public TelephonynUserSettings Telephony { get; set; }
+		[JsonProperty("telephony", NullValueHandling = NullValueHandling.Ignore)]
+		public TelephonyUserSettings Telephony { get; set; }
 
 		/// <summary>
 		/// Gets or sets the settings for feature.
