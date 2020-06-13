@@ -4,6 +4,7 @@ using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -252,6 +253,93 @@ namespace ZoomNet.Resources
 				.DeleteAsync($"users/{userId}/assistants")
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
+		}
+
+		/// <summary>
+		/// Retrieve a user's schedulers.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Assistant">schedulers</see>.
+		/// </returns>
+		public Task<Assistant[]> GetSchedulersAsync(string userId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"users/{userId}/schedulers")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<Assistant[]>("schedulers");
+		}
+
+		/// <summary>
+		/// Delete a specific scheduler of a user.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="assistantId">The id of the scheduler to disassociate from this user.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task DeleteSchedulerAsync(string userId, string assistantId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"users/{userId}/schedulers/{assistantId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Delete all schedulers of a user.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task DeleteAllSchedulersAsync(string userId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"users/{userId}/schedulers")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Upload a user’s profile picture.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="pictureData">The binary data.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		/// <remarks>
+		/// File size cannot exceed 2M.
+		/// Only jpg/jpeg, gif or png image file can be uploaded.
+		/// </remarks>
+		public Task UploadProfilePicture(string userId, byte[] pictureData, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.PostAsync($"users/{userId}/picture")
+				.WithBody(bodyBuilder => bodyBuilder.Model(pictureData, new MediaTypeHeaderValue("multipart/form-data")))
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Retrieve a user's settings.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="UserSettings">settings</see>.
+		/// </returns>
+		public Task<UserSettings> GetSettingsAsync(string userId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"users/{userId}/settings")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<UserSettings>();
 		}
 	}
 }

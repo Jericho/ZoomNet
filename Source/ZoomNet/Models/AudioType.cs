@@ -11,21 +11,27 @@ namespace ZoomNet.Models
 	public enum AudioType
 	{
 		/// <summary>
-		/// VOIP.
+		/// VOIP only.
 		/// </summary>
 		[EnumMember(Value = "voip")]
 		Voip,
 
 		/// <summary>
-		/// Telephony.
+		/// PSTN telephony only.
 		/// </summary>
 		[EnumMember(Value = "telephony")]
 		Telephony,
 
 		/// <summary>
-		/// Both telephony and voip.
+		/// Both telephony and VOIP.
 		/// </summary>
 		[EnumMember(Value = "both")]
-		Both
+		Both,
+
+		/// <summary>
+		/// Third party audio conference.
+		/// </summary>
+		[EnumMember(Value = "thirdParty")]
+		ThirdParty
 	}
 }

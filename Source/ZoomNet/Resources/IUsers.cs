@@ -132,5 +132,77 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task DeleteAllAssistantsAsync(string userId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve a user's schedulers.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Assistant">schedulers</see>.
+		/// </returns>
+		Task<Assistant[]> GetSchedulersAsync(string userId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a specific scheduler of a user.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="assistantId">The id of the scheduler to disassociate from this user.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task DeleteSchedulerAsync(string userId, string assistantId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete all schedulers of a user.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task DeleteAllSchedulersAsync(string userId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Upload a user’s profile picture.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="pictureData">The binary data.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task UploadProfilePicture(string userId, byte[] pictureData, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve a user's settings.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="UserSettings">settings</see>.
+		/// </returns>
+		Task<UserSettings> GetSettingsAsync(string userId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve a user's meeting authentication settings.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="MeetingAuthenticationSettings">settings</see>.
+		/// </returns>
+		//Task<MeetingAuthenticationSettings> GetMeetingAuthenticationSettingsAsync(string userId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve a user's recording authentication settings.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="RecodringAuthenticationSettings">settings</see>.
+		/// </returns>
+		//Task<RecordingAuthenticationSettings> GetRecordingAuthenticationSettingsAsync(string userId, CancellationToken cancellationToken = default);
 	}
 }

@@ -30,13 +30,17 @@ namespace ZoomNet.IntegrationTests.Tests
 				});
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
 
-			// GET ME
-			var user = await client.Users.GetCurrentAsync(cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"User {user.Email} retrieved").ConfigureAwait(false);
+			// GET MY USER
+			var myUser = await client.Users.GetCurrentAsync(cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"My user retrieved. My email address is {myUser.Email}").ConfigureAwait(false);
 
 			// GET MY ASSISTANTS
-			var assistants = await client.Users.GetAssistantsAsync(user.Id, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"{user.Email} has {assistants.Length} assistants").ConfigureAwait(false);
+			var myAssistants = await client.Users.GetAssistantsAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"My user has {myAssistants.Length} assistants").ConfigureAwait(false);
+
+			// GET MY SETTINGS
+			var mySettings = await client.Users.GetSettingsAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("My settings retrieved").ConfigureAwait(false);
 		}
 	}
 }
