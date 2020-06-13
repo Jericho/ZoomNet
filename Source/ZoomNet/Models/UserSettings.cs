@@ -26,13 +26,13 @@ namespace ZoomNet.Models
 		//public InstantMeetingUserSettings InstantMeeting { get; set; }
 
 		/// <summary>
-		/// Gets or sets the settings for instant meetings.
+		/// Gets or sets the settings for email notification.
 		/// </summary>
 		/// <value>
 		/// The settings.
 		/// </value>
-		//[JsonProperty("email_notification", NullValueHandling = NullValueHandling.Ignore)]
-		//public EmailNotificationUserSettings EmailNotification { get; set; }
+		[JsonProperty("email_notification", NullValueHandling = NullValueHandling.Ignore)]
+		public EmailNotificationUserSettings EmailNotification { get; set; }
 
 		/// <summary>
 		/// Gets or sets the settings for recordings.
