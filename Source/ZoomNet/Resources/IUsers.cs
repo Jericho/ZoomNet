@@ -245,5 +245,58 @@ namespace ZoomNet.Resources
 		/// An array of strings.
 		/// </returns>
 		Task<string[]> GetPermissionsAsync(string userId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Revoke a user's SSO token.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task RevokeSsoTokenAsync(string userId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Verify if a user's email is registered with Zoom.
+		/// </summary>
+		/// <param name="email">The email address.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// true if the email is registered to a user within your account.
+		/// </returns>
+		Task<bool> CheckEmailInUseAsync(string email, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Change a user's email address on a Zoom account that has managed domain set up.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="email">The email address.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task ChangeEmailAsync(string userId, string email, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Verify if a personal meeting room with the given name exists or not.
+		/// </summary>
+		/// <param name="name">The room name.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// true if a room with the given name exists.
+		/// </returns>
+		Task<bool> CheckPersonalMeetingRoomNameInUseAsync(string name, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Disassociate a user from one account and move the user to another account under the same master account.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="currentAccountId">The current account id.</param>
+		/// <param name="newAccountId">The new account id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task SwitchAccountAsync(string userId, string currentAccountId, string newAccountId, CancellationToken cancellationToken = default);
 	}
 }

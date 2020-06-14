@@ -424,5 +424,103 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsObject<string[]>("permissions");
 		}
+
+
+		/// <summary>
+		/// Revoke a user's SSO token.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task RevokeSsoTokenAsync(string userId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"users/{userId}/token")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Verify if a user's email is registered with Zoom.
+		/// </summary>
+		/// <param name="email">The email address.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// true if the email is registered to a user within your account.
+		/// </returns>
+		public Task<bool> CheckEmailInUseAsync(string email, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"users/email")
+				.WithArgument("email", email)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<bool>("existed_email");
+		}
+
+		/// <summary>
+		/// Change a user's email address on a Zoom account that has managed domain set up.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="email">The email address.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task ChangeEmailAsync(string userId, string email, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject()
+			{
+				{ "email", email }
+			};
+
+			return _client
+				.PutAsync($"users/{userId}/email")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Verify if a personal meeting room with the given name exists or not.
+		/// </summary>
+		/// <param name="name">The room name.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// true if a room with the given name exists.
+		/// </returns>
+		public Task<bool> CheckPersonalMeetingRoomNameInUseAsync(string name, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"users/vanity_name")
+				.WithArgument("vanity_name", name)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<bool>("existed");
+		}
+
+		/// <summary>
+		/// Disassociate a user from one account and move the user to another account under the same master account.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="currentAccountId">The current account id.</param>
+		/// <param name="newAccountId">The new account id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task SwitchAccountAsync(string userId, string currentAccountId, string newAccountId, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject()
+			{
+				{ "account_id", newAccountId }
+			};
+
+			return _client
+				.PutAsync($"accounts/{currentAccountId}/users/{userId}/account")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
 	}
 }
