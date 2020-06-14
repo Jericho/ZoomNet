@@ -3,8 +3,9 @@ using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Net.Http.Headers;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -308,6 +309,7 @@ namespace ZoomNet.Resources
 		/// Upload a user’s profile picture.
 		/// </summary>
 		/// <param name="userId">The user Id.</param>
+		/// <param name="fileName">The file name.</param>
 		/// <param name="pictureData">The binary data.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
@@ -317,11 +319,23 @@ namespace ZoomNet.Resources
 		/// File size cannot exceed 2M.
 		/// Only jpg/jpeg, gif or png image file can be uploaded.
 		/// </remarks>
-		public Task UploadProfilePicture(string userId, byte[] pictureData, CancellationToken cancellationToken = default)
+		public Task UploadProfilePicture(string userId, string fileName, Stream pictureData, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.PostAsync($"users/{userId}/picture")
-				.WithBody(bodyBuilder => bodyBuilder.Model(pictureData, new MediaTypeHeaderValue("multipart/form-data")))
+				.WithBody(bodyBuilder =>
+				{
+					var content = new MultipartFormDataContent();
+
+					// Zoom requires the 'name' to be 'pic_file'. Also, you
+					// must specify the 'fileName' otherwise Zoom will return
+					// a very confusing HTTP 400 error with the following body:
+					// {"code":120,"message":""}
+					var streamContent = new StreamContent(pictureData);
+					content.Add(streamContent, "pic_file", fileName);
+
+					return content;
+				})
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}

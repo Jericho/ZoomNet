@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -168,12 +169,13 @@ namespace ZoomNet.Resources
 		/// Upload a user’s profile picture.
 		/// </summary>
 		/// <param name="userId">The user Id.</param>
+		/// <param name="fileName">The file name.</param>
 		/// <param name="pictureData">The binary data.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task UploadProfilePicture(string userId, byte[] pictureData, CancellationToken cancellationToken = default);
+		Task UploadProfilePicture(string userId, string fileName, Stream pictureData, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve a user's settings.
