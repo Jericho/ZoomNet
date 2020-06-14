@@ -82,8 +82,8 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets a value indicating whether a password is required for meeting that have already been scheduled.
 		/// </summary>
-		//[JsonProperty(PropertyName = "require_password_for_pmi_meetings")]
-		//public PmiMeetingPasswordRequirementType RequirePasswordForPmiMeetings { get; set; }
+		[JsonProperty(PropertyName = "require_password_for_pmi_meetings")]
+		public PmiMeetingPasswordRequirementType RequirePasswordForPmiMeetings { get; set; }
 
 		/// <summary>
 		/// Gets or sets the PMI password.
@@ -96,6 +96,12 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonProperty(PropertyName = "embed_password_in_join_link")]
 		public bool EmbedPasswordInJoinLink { get; set; }
+
+		/// <summary>
+		/// Gets or sets the password requirements.
+		/// </summary>
+		[JsonProperty(PropertyName = "meeting_password_requirement")]
+		public PasswordRequirements PasswordRequirements { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether the meeting password will be encrypted and included in the join meeting link.

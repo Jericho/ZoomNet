@@ -425,7 +425,6 @@ namespace ZoomNet.Resources
 				.AsObject<string[]>("permissions");
 		}
 
-
 		/// <summary>
 		/// Revoke a user's SSO token.
 		/// </summary>

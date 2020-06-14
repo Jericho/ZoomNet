@@ -22,8 +22,8 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The settings.
 		/// </value>
-		//[JsonProperty("in_meeting", NullValueHandling = NullValueHandling.Ignore)]
-		//public InstantMeetingUserSettings InstantMeeting { get; set; }
+		[JsonProperty("in_meeting", NullValueHandling = NullValueHandling.Ignore)]
+		public InstantMeetingUserSettings InstantMeeting { get; set; }
 
 		/// <summary>
 		/// Gets or sets the settings for email notification.
@@ -40,8 +40,8 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The settings.
 		/// </value>
-		//[JsonProperty("recording", NullValueHandling = NullValueHandling.Ignore)]
-		//public RecordingUserSettings Recordings { get; set; }
+		[JsonProperty("recording", NullValueHandling = NullValueHandling.Ignore)]
+		public RecordingUserSettings Recordings { get; set; }
 
 		/// <summary>
 		/// Gets or sets the settings for telephony.
@@ -58,8 +58,8 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The settings.
 		/// </value>
-		//[JsonProperty("feature", NullValueHandling = NullValueHandling.Ignore)]
-		//public FeatureUserSettings Feature { get; set; }
+		[JsonProperty("feature", NullValueHandling = NullValueHandling.Ignore)]
+		public FeatureUserSettings Feature { get; set; }
 
 		/// <summary>
 		/// Gets or sets the settings for TSP.
@@ -67,7 +67,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The settings.
 		/// </value>
-		//[JsonProperty("tsp", NullValueHandling = NullValueHandling.Ignore)]
-		//public TspUserSettings Tsp { get; set; }
+		[JsonProperty("tsp", NullValueHandling = NullValueHandling.Ignore)]
+		public TspUserSettings Tsp { get; set; }
 	}
 }
