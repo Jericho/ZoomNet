@@ -343,6 +343,58 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
+		/// Retrieve a user's meeting authentication settings.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="AuthenticationSettings">settings</see>.
+		/// </returns>
+		public async Task<AuthenticationSettings> GetMeetingAuthenticationSettingsAsync(string userId, CancellationToken cancellationToken = default)
+		{
+			var response = await _client
+				.GetAsync($"users/{userId}/settings")
+				.WithArgument("option", "meeting_authentication")
+				.WithCancellationToken(cancellationToken)
+				.AsRawJsonObject()
+				.ConfigureAwait(false);
+
+			var settings = new AuthenticationSettings()
+			{
+				RequireAuthentication = response.GetPropertyValue("meeting_authentication", false),
+				AuthenticationOptions = response.GetPropertyValue("authentication_options", Array.Empty<AuthenticationOptions>())
+			};
+
+			return settings;
+		}
+
+		/// <summary>
+		/// Retrieve a user's recording authentication settings.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="AuthenticationSettings">settings</see>.
+		/// </returns>
+		public async Task<AuthenticationSettings> GetRecordingAuthenticationSettingsAsync(string userId, CancellationToken cancellationToken = default)
+		{
+			var response = await _client
+				.GetAsync($"users/{userId}/settings")
+				.WithArgument("option", "meeting_authentication")
+				.WithCancellationToken(cancellationToken)
+				.AsRawJsonObject()
+				.ConfigureAwait(false);
+
+			var settings = new AuthenticationSettings()
+			{
+				RequireAuthentication = response.GetPropertyValue("recording_authentication", false),
+				AuthenticationOptions = response.GetPropertyValue("authentication_options", Array.Empty<AuthenticationOptions>())
+			};
+
+			return settings;
+		}
+
+		/// <summary>
 		/// Deactivate a specific user on a Zoom account.
 		/// </summary>
 		/// <param name="userId">The user Id or email address.</param>

@@ -44,6 +44,8 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			// GET MY SETTINGS
 			var mySettings = await client.Users.GetSettingsAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
+			var myMeetingAuthSettings = await client.Users.GetMeetingAuthenticationSettingsAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
+			var myRecordingAuthSettings = await client.Users.GetRecordingAuthenticationSettingsAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("My settings retrieved").ConfigureAwait(false);
 
 			// GET MY PERMISSIONS

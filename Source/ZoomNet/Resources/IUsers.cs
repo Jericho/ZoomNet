@@ -191,9 +191,9 @@ namespace ZoomNet.Resources
 		/// <param name="userId">The user Id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// The <see cref="MeetingAuthenticationSettings">settings</see>.
+		/// The <see cref="AuthenticationSettings">settings</see>.
 		/// </returns>
-		//Task<MeetingAuthenticationSettings> GetMeetingAuthenticationSettingsAsync(string userId, CancellationToken cancellationToken = default);
+		Task<AuthenticationSettings> GetMeetingAuthenticationSettingsAsync(string userId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve a user's recording authentication settings.
@@ -201,9 +201,9 @@ namespace ZoomNet.Resources
 		/// <param name="userId">The user Id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// The <see cref="RecodringAuthenticationSettings">settings</see>.
+		/// The <see cref="AuthenticationSettings">settings</see>.
 		/// </returns>
-		//Task<RecordingAuthenticationSettings> GetRecordingAuthenticationSettingsAsync(string userId, CancellationToken cancellationToken = default);
+		Task<AuthenticationSettings> GetRecordingAuthenticationSettingsAsync(string userId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Deactivate a specific user on a Zoom account.
