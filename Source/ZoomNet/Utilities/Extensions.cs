@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
+using ZoomNet.Resources;
 
 namespace ZoomNet.Utilities
 {
@@ -331,7 +332,7 @@ namespace ZoomNet.Utilities
 		public static void AddPropertyIfValue(this JObject jsonObject, string propertyName, string value)
 		{
 			if (string.IsNullOrEmpty(value)) return;
-			jsonObject.Add(propertyName, value);
+			jsonObject.AddDeepProperty(propertyName, value);
 		}
 
 		public static void AddPropertyIfValue<T>(this JObject jsonObject, string propertyName, T value, JsonConverter converter = null)
@@ -344,7 +345,7 @@ namespace ZoomNet.Utilities
 				jsonSerializer.Converters.Add(converter);
 			}
 
-			jsonObject.Add(propertyName, JToken.FromObject(value, jsonSerializer));
+			jsonObject.AddDeepProperty(propertyName, JToken.FromObject(value, jsonSerializer));
 		}
 
 		public static void AddPropertyIfValue<T>(this JObject jsonObject, string propertyName, IEnumerable<T> value, JsonConverter converter = null)
@@ -357,7 +358,49 @@ namespace ZoomNet.Utilities
 				jsonSerializer.Converters.Add(converter);
 			}
 
-			jsonObject.Add(propertyName, JArray.FromObject(value.ToArray(), jsonSerializer));
+			jsonObject.AddDeepProperty(propertyName, JArray.FromObject(value.ToArray(), jsonSerializer));
+		}
+
+		public static void AddPropertyIfEnumValue<T>(this JObject jsonObject, string propertyName, T value, JsonConverter converter = null)
+		{
+			var jsonSerializer = new JsonSerializer();
+			if (converter != null)
+			{
+				jsonSerializer.Converters.Add(converter);
+			}
+
+			AddPropertyIfValue(jsonObject, propertyName, value, v => JToken.Parse(JsonConvert.SerializeObject(v)).ToString());
+		}
+
+		public static void AddPropertyIfValue<T>(this JObject jsonObject, string propertyName, T value, Func<T, JToken> convertValueToJsonToken)
+		{
+			if (convertValueToJsonToken == null) throw new ArgumentNullException(nameof(convertValueToJsonToken));
+
+			jsonObject.AddDeepProperty(propertyName, value == null ? null : convertValueToJsonToken(value));
+		}
+
+		public static void AddDeepProperty(this JObject jsonObject, string propertyName, JToken value)
+		{
+			var separatorLocation = propertyName.IndexOf('/');
+
+			if (separatorLocation == -1)
+			{
+				jsonObject.Add(propertyName, value);
+			}
+			else
+			{
+				var name = propertyName.Substring(0, separatorLocation);
+				var childrenName = propertyName.Substring(separatorLocation + 1);
+
+				var property = jsonObject.Value<JObject>(name);
+				if (property == null)
+				{
+					property = new JObject();
+					jsonObject.Add(name, property);
+				}
+
+				property.AddDeepProperty(childrenName, value);
+			}
 		}
 
 		public static T GetPropertyValue<T>(this JToken item, string name, T defaultValue = default)
@@ -483,6 +526,47 @@ namespace ZoomNet.Utilities
 			{
 				throw new ZoomException(errorMessage, response.Message, "Diagnostic log unavailable");
 			}
+		}
+
+		/// <summary>
+		/// Returns information about the current user.
+		/// </summary>
+		/// <param name="usersResource">The user resource.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The current user.</returns>
+		public static Task<User> GetCurrentAsync(this IUsers usersResource, CancellationToken cancellationToken)
+		{
+			return usersResource.GetAsync("me", cancellationToken);
+		}
+
+		/// <summary>
+		/// Add an assistant to a user.
+		/// </summary>
+		/// <param name="usersResource">The user resource.</param>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="assistantId">The id of the assistant to associate with this user.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public static Task AddAssistantByIdAsync(this IUsers usersResource, string userId, string assistantId, CancellationToken cancellationToken = default)
+		{
+			return usersResource.AddAssistantsByIdAsync(userId, new[] { assistantId }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Add an assistant to a user.
+		/// </summary>
+		/// <param name="usersResource">The user resource.</param>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="assistantEmail">The email address of the assistant to associate with this user.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public static Task AddAssistantByEmailAsync(this IUsers usersResource, string userId, string assistantEmail, CancellationToken cancellationToken = default)
+		{
+			return usersResource.AddAssistantsByIdAsync(userId, new[] { assistantEmail }, cancellationToken);
 		}
 
 		private static async Task<(bool, string)> GetErrorMessage(HttpResponseMessage message)
