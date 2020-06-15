@@ -81,7 +81,7 @@ namespace ZoomNet.Utilities
 				bool shouldRetry = false;
 				foreach (var config in _retryConfigs)
 				{
-					if (retryConfig.ShouldRetry(response))
+					if (config.ShouldRetry(response))
 					{
 						retryConfig = config;
 						shouldRetry = true;

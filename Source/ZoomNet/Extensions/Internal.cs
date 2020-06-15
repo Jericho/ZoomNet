@@ -12,13 +12,14 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
+using ZoomNet.Utilities;
 
-namespace ZoomNet.Utilities
+namespace ZoomNet
 {
 	/// <summary>
-	/// Extension methods.
+	/// Internal extension methods.
 	/// </summary>
-	internal static class Extensions
+	internal static class Internal
 	{
 		private static readonly DateTime EPOCH = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
@@ -30,7 +31,7 @@ namespace ZoomNet.Utilities
 		/// <returns>
 		/// The <see cref="DateTime" />.
 		/// </returns>
-		public static DateTime FromUnixTime(this long unixTime)
+		internal static DateTime FromUnixTime(this long unixTime)
 		{
 			return EPOCH.AddSeconds(unixTime);
 		}
@@ -43,7 +44,7 @@ namespace ZoomNet.Utilities
 		/// <returns>
 		/// The numer of seconds since midnight on January 1st 1970.
 		/// </returns>
-		public static long ToUnixTime(this DateTime date)
+		internal static long ToUnixTime(this DateTime date)
 		{
 			return Convert.ToInt64((date.ToUniversalTime() - EPOCH).TotalSeconds);
 		}
@@ -90,7 +91,7 @@ namespace ZoomNet.Utilities
 		/// var responseContent = await response.Content.ReadAsStringAsync(null).ConfigureAwait(false);
 		/// </code>
 		/// </example>
-		public static async Task<string> ReadAsStringAsync(this HttpContent httpContent, Encoding encoding)
+		internal static async Task<string> ReadAsStringAsync(this HttpContent httpContent, Encoding encoding)
 		{
 			var content = string.Empty;
 
@@ -143,7 +144,7 @@ namespace ZoomNet.Utilities
 		/// var encoding = response.Content.GetEncoding(Encoding.UTF8);
 		/// </code>
 		/// </example>
-		public static Encoding GetEncoding(this HttpContent content, Encoding defaultEncoding)
+		internal static Encoding GetEncoding(this HttpContent content, Encoding defaultEncoding)
 		{
 			var encoding = defaultEncoding;
 			try
@@ -169,7 +170,7 @@ namespace ZoomNet.Utilities
 		/// <param name="jsonConverter">Converter that will be used during deserialization.</param>
 		/// <returns>Returns the strongly typed object.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		public static Task<T> AsObject<T>(this IResponse response, string propertyName = null, JsonConverter jsonConverter = null)
+		internal static Task<T> AsObject<T>(this IResponse response, string propertyName = null, JsonConverter jsonConverter = null)
 		{
 			return response.Message.Content.AsObject<T>(propertyName, jsonConverter);
 		}
@@ -181,7 +182,7 @@ namespace ZoomNet.Utilities
 		/// <param name="jsonConverter">Converter that will be used during deserialization.</param>
 		/// <returns>Returns the strongly typed object.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		public static async Task<T> AsObject<T>(this IRequest request, string propertyName = null, JsonConverter jsonConverter = null)
+		internal static async Task<T> AsObject<T>(this IRequest request, string propertyName = null, JsonConverter jsonConverter = null)
 		{
 			var response = await request.AsMessage().ConfigureAwait(false);
 			return await response.Content.AsObject<T>(propertyName, jsonConverter).ConfigureAwait(false);
@@ -194,7 +195,7 @@ namespace ZoomNet.Utilities
 		/// <param name="jsonConverter">Converter that will be used during deserialization.</param>
 		/// <returns>Returns the paginated response.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		public static Task<PaginatedResponse<T>> AsPaginatedResponse<T>(this IResponse response, string propertyName, JsonConverter jsonConverter = null)
+		internal static Task<PaginatedResponse<T>> AsPaginatedResponse<T>(this IResponse response, string propertyName, JsonConverter jsonConverter = null)
 		{
 			return response.Message.Content.AsPaginatedResponse<T>(propertyName, jsonConverter);
 		}
@@ -206,7 +207,7 @@ namespace ZoomNet.Utilities
 		/// <param name="jsonConverter">Converter that will be used during deserialization.</param>
 		/// <returns>Returns the paginated response.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		public static async Task<PaginatedResponse<T>> AsPaginatedResponse<T>(this IRequest request, string propertyName, JsonConverter jsonConverter = null)
+		internal static async Task<PaginatedResponse<T>> AsPaginatedResponse<T>(this IRequest request, string propertyName, JsonConverter jsonConverter = null)
 		{
 			var response = await request.AsMessage().ConfigureAwait(false);
 			return await response.Content.AsPaginatedResponse<T>(propertyName, jsonConverter).ConfigureAwait(false);
@@ -219,7 +220,7 @@ namespace ZoomNet.Utilities
 		/// <param name="jsonConverter">Converter that will be used during deserialization.</param>
 		/// <returns>Returns the paginated response.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		public static Task<PaginatedResponseWithToken<T>> AsPaginatedResponseWithToken<T>(this IResponse response, string propertyName, JsonConverter jsonConverter = null)
+		internal static Task<PaginatedResponseWithToken<T>> AsPaginatedResponseWithToken<T>(this IResponse response, string propertyName, JsonConverter jsonConverter = null)
 		{
 			return response.Message.Content.AsPaginatedResponseWithToken<T>(propertyName, jsonConverter);
 		}
@@ -231,7 +232,7 @@ namespace ZoomNet.Utilities
 		/// <param name="jsonConverter">Converter that will be used during deserialization.</param>
 		/// <returns>Returns the paginated response.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		public static async Task<PaginatedResponseWithToken<T>> AsPaginatedResponseWithToken<T>(this IRequest request, string propertyName, JsonConverter jsonConverter = null)
+		internal static async Task<PaginatedResponseWithToken<T>> AsPaginatedResponseWithToken<T>(this IRequest request, string propertyName, JsonConverter jsonConverter = null)
 		{
 			var response = await request.AsMessage().ConfigureAwait(false);
 			return await response.Content.AsPaginatedResponseWithToken<T>(propertyName, jsonConverter).ConfigureAwait(false);
@@ -248,7 +249,7 @@ namespace ZoomNet.Utilities
 		/// formatter happens to be the JSON formatter. However, I don't feel good about relying on the
 		/// default ordering of the items in the MediaTypeFormatterCollection.
 		/// </remarks>
-		public static IRequest WithJsonBody<T>(this IRequest request, T body)
+		internal static IRequest WithJsonBody<T>(this IRequest request, T body)
 		{
 			return request.WithBody(bodyBuilder => bodyBuilder.Model(body, new MediaTypeHeaderValue("application/json")));
 		}
@@ -261,7 +262,7 @@ namespace ZoomNet.Utilities
 		/// or contains an invalid value.</param>
 		/// <returns>Returns the response body, or <c>null</c> if the response has no body.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		public static Task<string> AsString(this IResponse response, Encoding encoding)
+		internal static Task<string> AsString(this IResponse response, Encoding encoding)
 		{
 			return response.Message.Content.ReadAsStringAsync(encoding);
 		}
@@ -274,7 +275,7 @@ namespace ZoomNet.Utilities
 		/// or contains an invalid value.</param>
 		/// <returns>Returns the response body, or <c>null</c> if the response has no body.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		public static async Task<string> AsString(this IRequest request, Encoding encoding)
+		internal static async Task<string> AsString(this IRequest request, Encoding encoding)
 		{
 			IResponse response = await request.AsResponse().ConfigureAwait(false);
 			return await response.AsString(encoding).ConfigureAwait(false);
@@ -286,7 +287,7 @@ namespace ZoomNet.Utilities
 		/// </summary>
 		/// <param name="timeSpan">The time span.</param>
 		/// <returns>Returns the human readable representation of the TimeSpan.</returns>
-		public static string ToDurationString(this TimeSpan timeSpan)
+		internal static string ToDurationString(this TimeSpan timeSpan)
 		{
 			void AppendFormatIfNecessary(StringBuilder stringBuilder, string timePart, int value)
 			{
@@ -306,35 +307,13 @@ namespace ZoomNet.Utilities
 			return result.ToString().Trim();
 		}
 
-		/// <summary>
-		/// Ensure that a string starts with a given prefix.
-		/// </summary>
-		/// <param name="value">The value.</param>
-		/// <param name="prefix">The prefix.</param>
-		/// <returns>The value including the prefix.</returns>
-		public static string EnsureStartsWith(this string value, string prefix)
-		{
-			return !string.IsNullOrEmpty(value) && value.StartsWith(prefix) ? value : string.Concat(prefix, value);
-		}
-
-		/// <summary>
-		/// Ensure that a string ends with a given suffix.
-		/// </summary>
-		/// <param name="value">The value.</param>
-		/// <param name="suffix">The sufix.</param>
-		/// <returns>The value including the suffix.</returns>
-		public static string EnsureEndsWith(this string value, string suffix)
-		{
-			return !string.IsNullOrEmpty(value) && value.EndsWith(suffix) ? value : string.Concat(value, suffix);
-		}
-
-		public static void AddPropertyIfValue(this JObject jsonObject, string propertyName, string value)
+		internal static void AddPropertyIfValue(this JObject jsonObject, string propertyName, string value)
 		{
 			if (string.IsNullOrEmpty(value)) return;
-			jsonObject.Add(propertyName, value);
+			jsonObject.AddDeepProperty(propertyName, value);
 		}
 
-		public static void AddPropertyIfValue<T>(this JObject jsonObject, string propertyName, T value, JsonConverter converter = null)
+		internal static void AddPropertyIfValue<T>(this JObject jsonObject, string propertyName, T value, JsonConverter converter = null)
 		{
 			if (EqualityComparer<T>.Default.Equals(value, default)) return;
 
@@ -344,10 +323,10 @@ namespace ZoomNet.Utilities
 				jsonSerializer.Converters.Add(converter);
 			}
 
-			jsonObject.Add(propertyName, JToken.FromObject(value, jsonSerializer));
+			jsonObject.AddDeepProperty(propertyName, JToken.FromObject(value, jsonSerializer));
 		}
 
-		public static void AddPropertyIfValue<T>(this JObject jsonObject, string propertyName, IEnumerable<T> value, JsonConverter converter = null)
+		internal static void AddPropertyIfValue<T>(this JObject jsonObject, string propertyName, IEnumerable<T> value, JsonConverter converter = null)
 		{
 			if (value == null || !value.Any()) return;
 
@@ -357,16 +336,58 @@ namespace ZoomNet.Utilities
 				jsonSerializer.Converters.Add(converter);
 			}
 
-			jsonObject.Add(propertyName, JArray.FromObject(value.ToArray(), jsonSerializer));
+			jsonObject.AddDeepProperty(propertyName, JArray.FromObject(value.ToArray(), jsonSerializer));
 		}
 
-		public static T GetPropertyValue<T>(this JToken item, string name, T defaultValue = default)
+		internal static void AddPropertyIfEnumValue<T>(this JObject jsonObject, string propertyName, T value, JsonConverter converter = null)
+		{
+			var jsonSerializer = new JsonSerializer();
+			if (converter != null)
+			{
+				jsonSerializer.Converters.Add(converter);
+			}
+
+			AddPropertyIfValue(jsonObject, propertyName, value, v => JToken.Parse(JsonConvert.SerializeObject(v)).ToString());
+		}
+
+		internal static void AddPropertyIfValue<T>(this JObject jsonObject, string propertyName, T value, Func<T, JToken> convertValueToJsonToken)
+		{
+			if (convertValueToJsonToken == null) throw new ArgumentNullException(nameof(convertValueToJsonToken));
+
+			jsonObject.AddDeepProperty(propertyName, value == null ? null : convertValueToJsonToken(value));
+		}
+
+		internal static void AddDeepProperty(this JObject jsonObject, string propertyName, JToken value)
+		{
+			var separatorLocation = propertyName.IndexOf('/');
+
+			if (separatorLocation == -1)
+			{
+				jsonObject.Add(propertyName, value);
+			}
+			else
+			{
+				var name = propertyName.Substring(0, separatorLocation);
+				var childrenName = propertyName.Substring(separatorLocation + 1);
+
+				var property = jsonObject.Value<JObject>(name);
+				if (property == null)
+				{
+					property = new JObject();
+					jsonObject.Add(name, property);
+				}
+
+				property.AddDeepProperty(childrenName, value);
+			}
+		}
+
+		internal static T GetPropertyValue<T>(this JToken item, string name, T defaultValue = default)
 		{
 			if (item[name] == null) return defaultValue;
 			return item[name].Value<T>();
 		}
 
-		public static async Task<TResult[]> ForEachAsync<T, TResult>(this IEnumerable<T> items, Func<T, Task<TResult>> action, int maxDegreeOfParalellism)
+		internal static async Task<TResult[]> ForEachAsync<T, TResult>(this IEnumerable<T> items, Func<T, Task<TResult>> action, int maxDegreeOfParalellism)
 		{
 			var allTasks = new List<Task<TResult>>();
 			var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism);
@@ -391,7 +412,7 @@ namespace ZoomNet.Utilities
 			return results;
 		}
 
-		public static async Task ForEachAsync<T>(this IEnumerable<T> items, Func<T, Task> action, int maxDegreeOfParalellism)
+		internal static async Task ForEachAsync<T>(this IEnumerable<T> items, Func<T, Task> action, int maxDegreeOfParalellism)
 		{
 			var allTasks = new List<Task>();
 			var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism);
@@ -421,7 +442,7 @@ namespace ZoomNet.Utilities
 		/// <typeparam name="T">The type of the desired attribute.</typeparam>
 		/// <param name="enumVal">The enum value.</param>
 		/// <returns>The attribute.</returns>
-		public static T GetAttributeOfType<T>(this Enum enumVal)
+		internal static T GetAttributeOfType<T>(this Enum enumVal)
 			where T : Attribute
 		{
 			return enumVal.GetType()
@@ -432,32 +453,12 @@ namespace ZoomNet.Utilities
 		}
 
 		/// <summary>
-		/// Indicates if an object contain a numerical value.
-		/// </summary>
-		/// <param name="value">The object.</param>
-		/// <returns>A boolean indicating if the object contains a numerical value.</returns>
-		public static bool IsNumber(this object value)
-		{
-			return value is sbyte
-					|| value is byte
-					|| value is short
-					|| value is ushort
-					|| value is int
-					|| value is uint
-					|| value is long
-					|| value is ulong
-					|| value is float
-					|| value is double
-					|| value is decimal;
-		}
-
-		/// <summary>
 		/// Returns the first value for a specified header stored in the System.Net.Http.Headers.HttpHeaderscollection.
 		/// </summary>
 		/// <param name="headers">The HTTP headers.</param>
 		/// <param name="name">The specified header to return value for.</param>
 		/// <returns>A string.</returns>
-		public static string GetValue(this HttpHeaders headers, string name)
+		internal static string GetValue(this HttpHeaders headers, string name)
 		{
 			if (headers == null) return null;
 
@@ -469,7 +470,7 @@ namespace ZoomNet.Utilities
 			return null;
 		}
 
-		public static void CheckForZoomErrors(this IResponse response)
+		internal static void CheckForZoomErrors(this IResponse response)
 		{
 			var (isError, errorMessage) = GetErrorMessage(response.Message).GetAwaiter().GetResult();
 			if (!isError) return;

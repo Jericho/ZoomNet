@@ -1,9 +1,8 @@
 using Pathoschild.Http.Client.Retry;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace ZoomNet.Utilities
 {
@@ -75,7 +74,17 @@ namespace ZoomNet.Utilities
 		/// </returns>
 		public bool ShouldRetry(HttpResponseMessage response)
 		{
-			return response != null && response.StatusCode == TOO_MANY_REQUESTS;
+			if (response == null) return false;
+			if (response.StatusCode != TOO_MANY_REQUESTS) return false;
+
+			var rateLimitInfo = GetRateLimitInformation(response.Headers);
+
+			// There's no need to retry when the reset time is too far in the future.
+			// I arbitrarily decided that 15 seconds is the cutoff.
+			var delay = CalculateDelay(rateLimitInfo.RetryAfter, DEFAULT_DELAY);
+			if (delay.TotalSeconds > 15) return false;
+
+			return true;
 		}
 
 		/// <summary>
@@ -89,19 +98,23 @@ namespace ZoomNet.Utilities
 		/// </returns>
 		public TimeSpan GetDelay(int attempt, HttpResponseMessage response)
 		{
-			// Default value in case the 'reset' time is missing from HTTP headers
+			// Default value in case the HTTP headers don't provide enough information
 			var waitTime = DEFAULT_DELAY;
 
-			// Get the 'retry-after' time from the HTTP headers (if present)
-			if (response?.Headers != null)
+			// Figure out how long to wait based on the presence of Zoom specific headers as discussed here:
+			// https://marketplace.zoom.us/docs/api-reference/rate-limits#best-practices-for-handling-errors
+			var rateLimitInfo = GetRateLimitInformation(response?.Headers);
+
+			if (!string.IsNullOrEmpty(rateLimitInfo.RetryAfter))
 			{
-				if (response.Headers.TryGetValues("Retry-After", out IEnumerable<string> values))
-				{
-					if (DateTime.TryParse(values?.FirstOrDefault(), out DateTime nextRetryDateTime))
-					{
-						waitTime = nextRetryDateTime.Subtract(_systemClock.UtcNow);
-					}
-				}
+				waitTime = CalculateDelay(rateLimitInfo.RetryAfter, DEFAULT_DELAY);
+			}
+			else if (rateLimitInfo.Type.Equals("QPS", StringComparison.OrdinalIgnoreCase))
+			{
+				// QPS stands for "Query Per Second".
+				// It means that we have exceeded the number of API calls per second.
+				// Therefore we must wait one second before retrying.
+				waitTime = TimeSpan.FromSeconds(1);
 			}
 
 			// Make sure the wait time is valid
@@ -111,6 +124,31 @@ namespace ZoomNet.Utilities
 			if (waitTime.TotalSeconds > 5) waitTime = TimeSpan.FromSeconds(5);
 
 			return waitTime;
+		}
+
+		#endregion
+
+		#region PRIVATE METHODS
+
+		private (string Category, string Type, string Limit, string Remaining, string RetryAfter) GetRateLimitInformation(HttpResponseHeaders headers)
+		{
+			var category = headers.GetValue("X-RateLimit-Category");
+			var type = headers.GetValue("X-RateLimit-Type");
+			var limit = headers.GetValue("X-RateLimit-Limit");
+			var remaining = headers.GetValue("X-RateLimit-Remaining");
+			var retryAfter = headers.GetValue("Retry-After");
+
+			return (category, type, limit, remaining, retryAfter);
+		}
+
+		private TimeSpan CalculateDelay(string retryAfter, TimeSpan defaultDelay)
+		{
+			if (DateTime.TryParse(retryAfter, out DateTime nextRetryDateTime))
+			{
+				return nextRetryDateTime.Subtract(_systemClock.UtcNow);
+			}
+
+			return defaultDelay;
 		}
 
 		#endregion
