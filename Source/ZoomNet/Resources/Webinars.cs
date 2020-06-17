@@ -607,7 +607,7 @@ namespace ZoomNet.Resources
 			data.AddPropertyIfValue("registrants", registrantsInfo.Select(ri => new { id = ri.RegistrantId, email = ri.RegistrantEmail }).ToArray());
 
 			return _client
-				.PostAsync($"webinars/{webinarId}/registrants/status")
+				.PutAsync($"webinars/{webinarId}/registrants/status")
 				.WithArgument("occurence_id", occurrenceId)
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)

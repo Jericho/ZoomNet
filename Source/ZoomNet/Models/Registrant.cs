@@ -16,7 +16,7 @@ namespace ZoomNet.Models
 		/// The id.
 		/// </value>
 		[JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-		public long Id { get; set; }
+		public string Id { get; set; }
 
 		/// <summary>
 		/// Gets or sets a valid email address.
