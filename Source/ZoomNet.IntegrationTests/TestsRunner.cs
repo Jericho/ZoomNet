@@ -58,6 +58,7 @@ namespace ZoomNet.IntegrationTests
 			{
 				var clientId = Environment.GetEnvironmentVariable("ZOOM_OAUTH_CLIENTID", EnvironmentVariableTarget.User);
 				var clientSecret = Environment.GetEnvironmentVariable("ZOOM_OAUTH_CLIENTSECRET", EnvironmentVariableTarget.User);
+
 				var refreshToken = Environment.GetEnvironmentVariable("ZOOM_OAUTH_REFRESHTOKEN", EnvironmentVariableTarget.User);
 				var accessToken = Environment.GetEnvironmentVariable("ZOOM_OAUTH_ACCESSTOKEN", EnvironmentVariableTarget.User);
 				connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, refreshToken, accessToken,
@@ -95,6 +96,7 @@ namespace ZoomNet.IntegrationTests
 			// These are the integration tests that we will execute
 			var integrationTests = new Type[]
 			{
+				typeof(Accounts),
 				typeof(CloudRecordings),
 				typeof(Dashboards),
 				typeof(Meetings),

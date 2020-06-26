@@ -22,7 +22,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Account">accounts</see>.
 		/// </returns>
-		Task<PaginatedResponse<Account>> GetAllAsync(int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default(CancellationToken));
+		Task<PaginatedResponse<Account>> GetAllAsync(int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Create a sub account under the master account.
@@ -40,7 +40,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Account">accounts</see>.
 		/// </returns>
-		Task<Account> CreateAsync(string firstName, string lastName, string email, string password, bool useSharedVirtualRoomConnectors = false, IEnumerable<string> roomConnectorsIpAddresses = null, bool useSharedMeetingConnectors = false, IEnumerable<string> meetingConnectorsIpAddresses = null, PayMode payMode = PayMode.Master, CancellationToken cancellationToken = default(CancellationToken));
+		Task<Account> CreateAsync(string firstName, string lastName, string email, string password, bool useSharedVirtualRoomConnectors = false, IEnumerable<string> roomConnectorsIpAddresses = null, bool useSharedMeetingConnectors = false, IEnumerable<string> meetingConnectorsIpAddresses = null, PayMode payMode = PayMode.Master, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve the details of a sub account.
