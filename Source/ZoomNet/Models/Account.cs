@@ -40,7 +40,7 @@ namespace ZoomNet.Models
 		/// </summary>
 		/// <value>The account type.</value>
 		[JsonProperty(PropertyName = "account_type", NullValueHandling = NullValueHandling.Ignore)]
-		public AccountType Type { get; set; }
+		public string Type { get; set; }
 
 		/// <summary>
 		/// Gets or sets the number of seats.
