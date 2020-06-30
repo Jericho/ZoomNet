@@ -2,6 +2,7 @@ using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using Pathoschild.Http.Client.Extensibility;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
@@ -89,9 +90,12 @@ namespace ZoomNet.Utilities
 					_connectionInfo.TokenScope = new ReadOnlyDictionary<string, string[]>(
 						jObject.GetPropertyValue<string>("scope")
 							.Split(' ')
-							.Select(x => x.Split(':'))
-							.ToDictionary(x => x[0], x => x.Skip(1).ToArray()));
-
+							.Select(x => x.Split(new[] { ':' }, 2))
+							.Select(x => new KeyValuePair<string, string[]>(x[0], x.Skip(1).ToArray()))
+							.GroupBy(x => x.Key)
+							.ToDictionary(
+								x => x.Key,
+								x => x.SelectMany(c => c.Value).ToArray()));
 					_connectionInfo.OnTokenRefreshed(_connectionInfo.RefreshToken, _connectionInfo.AccessToken);
 				}
 				finally
