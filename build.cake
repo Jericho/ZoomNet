@@ -58,7 +58,7 @@ var versionInfo = GitVersion(new GitVersionSettings() { OutputType = GitVersionO
 var milestone = versionInfo.MajorMinorPatch;
 var cakeVersion = typeof(ICakeContext).Assembly.GetName().Version.ToString();
 var isLocalBuild = BuildSystem.IsLocalBuild;
-var isMainBranch = StringComparer.OrdinalIgnoreCase.Equals("master", BuildSystem.AppVeyor.Environment.Repository.Branch);
+var isMainBranch = StringComparer.OrdinalIgnoreCase.Equals("main", BuildSystem.AppVeyor.Environment.Repository.Branch);
 var isMainRepo = StringComparer.OrdinalIgnoreCase.Equals($"{gitHubRepoOwner}/{gitHubRepo}", BuildSystem.AppVeyor.Environment.Repository.Name);
 var isPullRequest = BuildSystem.AppVeyor.Environment.PullRequest.IsPullRequest;
 var isTagged = (
@@ -335,7 +335,7 @@ Task("Create-Release-Notes")
 		Name              = milestone,
 		Milestone         = milestone,
 		Prerelease        = false,
-		TargetCommitish   = "master"
+		TargetCommitish   = "main"
 	};
 
 	if (!string.IsNullOrEmpty(gitHubToken))
@@ -364,7 +364,7 @@ Task("Publish-GitHub-Release")
 		Name              = milestone,
 		Milestone         = milestone,
 		Prerelease        = false,
-		TargetCommitish   = "master"
+		TargetCommitish   = "main"
 	};
 
 	if (!string.IsNullOrEmpty(gitHubToken))
