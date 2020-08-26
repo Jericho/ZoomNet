@@ -200,14 +200,13 @@ namespace ZoomNet.Resources
 		/// <summary>
 		/// Retrieve the details of a meeting.
 		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="occurrenceId">The meeting occurrence id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The <see cref="Meeting" />.
 		/// </returns>
-		public Task<Meeting> GetAsync(string userId, long meetingId, string occurrenceId = null, CancellationToken cancellationToken = default)
+		public Task<Meeting> GetAsync(long meetingId, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"meetings/{meetingId}")
