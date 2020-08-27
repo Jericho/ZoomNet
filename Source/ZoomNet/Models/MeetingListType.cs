@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
 
@@ -26,6 +26,18 @@ namespace ZoomNet.Models
 		/// Upcoming.
 		/// </summary>
 		[EnumMember(Value = "upcoming")]
-		Upcoming
+		Upcoming,
+
+		/// <summary>
+		/// Past
+		/// </summary>
+		[EnumMember(Value = "past")]
+		Past,
+
+		/// <summary>
+		/// PastOne
+		/// </summary>
+		[EnumMember(Value = "pastOne")]
+		PastOne
 	}
 }

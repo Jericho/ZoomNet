@@ -95,6 +95,11 @@ namespace ZoomNet
 		/// </value>
 		public IWebinars Webinars { get; private set; }
 
+		/// <summary>
+		/// Gets the resource which allows you to view metrics
+		/// </summary>
+		public IDashboards Dashboards { get; private set; }
+
 		#endregion
 
 		#region CTOR
@@ -184,6 +189,7 @@ namespace ZoomNet
 			PastWebinars = new PastWebinars(_fluentClient);
 			Users = new Users(_fluentClient);
 			Webinars = new Webinars(_fluentClient);
+			Dashboards = new Dashboards(_fluentClient);
 		}
 
 		/// <summary>
