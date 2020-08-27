@@ -1,10 +1,10 @@
-using System;
 using Newtonsoft.Json;
+using System;
 
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Metrics of a Meeting
+	/// Metrics of a Meeting.
 	/// </summary>
 	public class DashboardMeeting
 	{

@@ -20,7 +20,7 @@ namespace ZoomNet.Resources
 		/// <param name="from">
 		/// Date to start searching from. Should be within a month of "to" as only a months worth of data is returned at a time.
 		/// </param>
-		/// <param name="to">Date to end search</param>
+		/// <param name="to">Date to end search.</param>
 		/// <param name="type">The type of meetings. Allowed values: Past, PastOne, Live.</param>
 		/// <param name="pageSize">The number of records returned within a single API call.</param>
 		/// <param name="pageToken">

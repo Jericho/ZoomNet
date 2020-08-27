@@ -96,7 +96,7 @@ namespace ZoomNet
 		public IWebinars Webinars { get; private set; }
 
 		/// <summary>
-		/// Gets the resource which allows you to view metrics
+		/// Gets the resource which allows you to view metrics.
 		/// </summary>
 		public IDashboards Dashboards { get; private set; }
 

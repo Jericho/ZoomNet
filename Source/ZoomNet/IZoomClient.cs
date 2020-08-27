@@ -48,7 +48,7 @@ namespace ZoomNet
 		IWebinars Webinars { get; }
 
 		/// <summary>
-		/// Gets the resource which allows you to view metrics
+		/// Gets the resource which allows you to view metrics.
 		/// </summary>
 		IDashboards Dashboards { get; }
 	}
