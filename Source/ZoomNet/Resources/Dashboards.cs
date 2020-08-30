@@ -62,7 +62,7 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<DashboardMeeting>("meetings", new MeetingConverter());
+				.AsPaginatedResponseWithToken<DashboardMeeting>("meetings");
 		}
 	}
 }
