@@ -9,13 +9,6 @@ namespace ZoomNet.Models
 	public class PaginatedResponseWithToken<T>
 	{
 		/// <summary>
-		/// Gets or sets the number of items returned on this page.
-		/// </summary>
-		/// <value>The number of items returned on this page.</value>
-		[JsonProperty(PropertyName = "page_count")]
-		public int PageCount { get; set; }
-
-		/// <summary>
 		/// Gets or sets the number of records returned within a single API call.
 		/// </summary>
 		/// <value>The number of records returned within a single API call.</value>
@@ -42,5 +35,11 @@ namespace ZoomNet.Models
 		/// </summary>
 		/// <value>The records.</value>
 		public T[] Records { get; set; }
+
+		/// <summary>
+		/// Gets a value indicating whether more records are available.
+		/// </summary>
+		/// <value>true if more records are available; false otherwise.</value>
+		public bool MoreRecordsAvailable => !string.IsNullOrEmpty(NextPageToken);
 	}
 }

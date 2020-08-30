@@ -27,12 +27,12 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="uuid">The meeting UUID.</param>
 		/// <param name="recordsPerPage">The number of records to return.</param>
-		/// <param name="pageToken">The page token.</param>
+		/// <param name="pagingToken">The paging token.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// An array of <see cref="Participant" />.
 		/// </returns>
-		Task<PaginatedResponseWithToken<Participant>> GetParticipantsAsync(string uuid, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<Participant>> GetParticipantsAsync(string uuid, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get a list of ended meeting instance.

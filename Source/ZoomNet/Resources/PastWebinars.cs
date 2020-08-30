@@ -3,7 +3,6 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
-using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
@@ -31,12 +30,12 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="uuid">The webinar UUID.</param>
 		/// <param name="recordsPerPage">The number of records to return.</param>
-		/// <param name="pageToken">The page token.</param>
+		/// <param name="pagingToken">The paging token.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// An array of <see cref="Participant" />.
 		/// </returns>
-		public Task<PaginatedResponseWithToken<Participant>> GetAbsenteesAsync(string uuid, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<Participant>> GetAbsenteesAsync(string uuid, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -46,7 +45,7 @@ namespace ZoomNet.Resources
 			return _client
 				.GetAsync($"past_webinars/{uuid}/absentees")
 				.WithArgument("page_size", recordsPerPage)
-				.WithArgument("next_page_token", pageToken)
+				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<Participant>("registrants");
 		}
