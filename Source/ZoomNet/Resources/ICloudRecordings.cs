@@ -70,7 +70,7 @@ namespace ZoomNet.Resources
 		Task<PaginatedResponseWithToken<Recording>> GetMeetingRecordingsAsync(string meetingId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Move recordings for a meeting to trash.
+		/// Move recording files for a meeting to trash.
 		/// </summary>
 		/// <param name="meetingId">The meeting Id or UUID.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
@@ -80,7 +80,7 @@ namespace ZoomNet.Resources
 		Task MoveMeetingRecordingsToTrashAsync(string meetingId, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Permanently delete recordings for a meeting.
+		/// Permanently delete recording files for a meeting.
 		/// </summary>
 		/// <param name="meetingId">The meeting Id or UUID.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
@@ -88,5 +88,27 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task DeleteMeetingRecordingsAsync(string meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Move a specific recording file for a meeting to trash.
+		/// </summary>
+		/// <param name="meetingId">The meeting Id or UUID.</param>
+		/// <param name="recordingId">The recording id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task MoveMeetingRecordingToTrashAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Permanently delete a specific recording file for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting Id or UUID.</param>
+		/// <param name="recordingId">The recording id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task DeleteMeetingRecordingAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default);
 	}
 }
