@@ -13,7 +13,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync("\n***** ACCOUNTS *****\n").ConfigureAwait(false);
 
 			// GET ALL THE ACCOUNTS
-			var paginatedAccounts = await client.Accounts.GetAllAsync(100, 1, cancellationToken).ConfigureAwait(false);
+			var paginatedAccounts = await client.Accounts.GetAllAsync(100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {paginatedAccounts.TotalRecords} sub accounts under the main account").ConfigureAwait(false);
 		}
 	}
