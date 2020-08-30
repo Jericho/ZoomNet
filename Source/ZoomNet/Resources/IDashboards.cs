@@ -44,5 +44,25 @@ namespace ZoomNet.Resources
 		/// The <see cref="DashboardMeeting" />.
 		/// </returns>
 		Task<DashboardMeeting> GetMeetingAsync(string meetingId, MeetingListType type = MeetingListType.Live, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get a list of participants from live or past meetings.
+		/// If you do not provide the type query parameter, the default value will be set to live and thus,
+		/// you will only see metrics for participants in a live meeting, if any meeting is currently being conducted.To view metrics on past meeting participants,
+		/// provide the appropriate value for type.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID or meeting UUID. If given the meeting ID it will take the last meeting instance.</param>
+		/// <param name="type">The type of meetings. Allowed values: Past, PastOne, Live.</param>
+		/// <param name="pageSize">The number of records returned within a single API call.</param>
+		/// <param name="pageToken">
+		/// The next page token is used to paginate through large result sets.
+		/// A next page token will be returned whenever the set of available results exceeds the current page size.
+		/// The expiration period for this token is 15 minutes.
+		/// </param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="DashboardParticipant">participants</see>.
+		/// </returns>
+		Task<PaginatedResponseWithToken<DashboardParticipant>> GetMeetingParticipantsAsync(string meetingId, MeetingListType type = MeetingListType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
 	}
 }
