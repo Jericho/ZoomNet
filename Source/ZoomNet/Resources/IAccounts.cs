@@ -64,5 +64,18 @@ namespace ZoomNet.Resources
 		/// The <see cref="Account" />.
 		/// </returns>
 		Task<Account> GetAsync(string accountId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Disassociate a Sub Account from the Master Account.
+		/// </summary>
+		/// <param name="accountId">The account Id that must be disassociated from its master account.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		/// <remarks>
+		/// This will leave the Sub Account intact but it will no longer be associated with the master account.
+		/// </remarks>
+		Task DisassociateAsync(string accountId, CancellationToken cancellationToken = default);
 	}
 }

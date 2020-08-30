@@ -53,7 +53,6 @@ namespace ZoomNet.Resources
 				.AsPaginatedResponse<Account>("accounts");
 		}
 
-
 		/// <summary>
 		/// Retrieve all the sub accounts under the master account.
 		/// </summary>
@@ -132,6 +131,25 @@ namespace ZoomNet.Resources
 				.GetAsync($"accounts/{accountId}")
 				.WithCancellationToken(cancellationToken)
 				.AsObject<Account>();
+		}
+
+		/// <summary>
+		/// Disassociate a Sub Account from the Master Account.
+		/// </summary>
+		/// <param name="accountId">The account Id that must be disassociated from its master account.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		/// <remarks>
+		/// This will leave the Sub Account intact but it will no longer be associated with the master account.
+		/// </remarks>
+		public Task DisassociateAsync(string accountId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"accounts/{accountId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
 		}
 	}
 }
