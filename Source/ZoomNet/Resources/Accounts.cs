@@ -37,6 +37,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Account" />.
 		/// </returns>
+		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
 		public Task<PaginatedResponse<Account>> GetAllAsync(int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
@@ -50,6 +51,31 @@ namespace ZoomNet.Resources
 				.WithArgument("page", page)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponse<Account>("accounts");
+		}
+
+
+		/// <summary>
+		/// Retrieve all the sub accounts under the master account.
+		/// </summary>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Account" />.
+		/// </returns>
+		public Task<PaginatedResponseWithToken<Account>> GetAllAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			if (recordsPerPage < 1 || recordsPerPage > 300)
+			{
+				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 300");
+			}
+
+			return _client
+				.GetAsync($"accounts")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<Account>("accounts");
 		}
 
 		/// <summary>
