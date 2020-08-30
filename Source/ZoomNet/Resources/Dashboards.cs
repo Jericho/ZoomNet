@@ -64,5 +64,22 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<DashboardMeeting>("meetings");
 		}
-	}
+
+		/// <summary>
+		/// Retrieve the details of a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID or meeting UUID. If given the meeting ID it will take the last meeting instance.</param>
+		/// <param name="type">The type of meetings. Allowed values: Past, PastOne, Live.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="DashboardMeeting" />.
+		/// </returns>
+		public Task<DashboardMeeting> GetMeetingAsync(string meetingId, MeetingListType type = MeetingListType.Live, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"metrics/meetings/{meetingId}")
+				.WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
+				.WithCancellationToken(cancellationToken)
+				.AsObject<DashboardMeeting>();
+		}
 }

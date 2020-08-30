@@ -33,5 +33,16 @@ namespace ZoomNet.Resources
 		/// An array of <see cref="DashboardMeeting">meetings</see>.
 		/// </returns>
 		Task<PaginatedResponseWithToken<DashboardMeeting>> GetAllAsync(DateTime from, DateTime to, MeetingListType type = MeetingListType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve the details of a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID or meeting UUID. If given the meeting ID it will take the last meeting instance.</param>
+		/// <param name="type">The type of meetings. Allowed values: Past, PastOne, Live.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="DashboardMeeting" />.
+		/// </returns>
+		Task<DashboardMeeting> GetMeetingAsync(string meetingId, MeetingListType type = MeetingListType.Live, CancellationToken cancellationToken = default);
 	}
 }
