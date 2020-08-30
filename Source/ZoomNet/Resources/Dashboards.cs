@@ -46,7 +46,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="DashboardMeeting">meetings</see>.
 		/// </returns>
-		public Task<PaginatedResponseWithToken<DashboardMeeting>> GetAllAsync(DateTime from, DateTime to, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<DashboardMeeting>> GetAllMeetingsAsync(DateTime from, DateTime to, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			if (pageSize < 1 || pageSize > 300)
 			{
@@ -114,6 +114,25 @@ namespace ZoomNet.Resources
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<DashboardParticipant>("participants");
+		}
+
+		/// <summary>
+		/// Retrieve the quality of service for participants from live or past meetings.
+		/// This data indicates the connection quality for sending/receiving video, audio, and shared content.
+		/// If nothing is being sent or received at that time, no information will be shown in the fields.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID or meeting UUID. If given the meeting ID it will take the last meeting instance.</param>
+		/// <param name="participantId">The participant id.</param>
+		/// <param name="type">The type of meetings. Allowed values: Past, PastOne, Live.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The <see cref="DashboardMeetingParticipantQos"/> quality of service metrics for the participant.</returns>
+		public Task<DashboardMeetingParticipantQos> GetMeetingParticipantQOSAsync(string meetingId, string participantId, DashboardMeetingType type = DashboardMeetingType.Live, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"metrics/meetings/{meetingId}/participants/{participantId}/qos")
+				.WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
+				.WithCancellationToken(cancellationToken)
+				.AsObject<DashboardMeetingParticipantQos>();
 		}
 	}
 }
