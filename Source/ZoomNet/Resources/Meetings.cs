@@ -42,6 +42,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Meeting" />.
 		/// </returns>
+		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
 		public Task<PaginatedResponse<Meeting>> GetAllAsync(string userId, MeetingListType type = MeetingListType.Scheduled, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
@@ -56,6 +57,33 @@ namespace ZoomNet.Resources
 				.WithArgument("page", page)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponse<Meeting>("meetings", new MeetingConverter());
+		}
+
+		/// <summary>
+		/// Retrieve all meetings of the specified type for a user.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="type">The type of meetings. Allowed values: Scheduled, Live, Upcoming.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Meeting" />.
+		/// </returns>
+		public Task<PaginatedResponseWithToken<Meeting>> GetAllAsync(string userId, MeetingListType type = MeetingListType.Scheduled, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			if (recordsPerPage < 1 || recordsPerPage > 300)
+			{
+				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 300");
+			}
+
+			return _client
+				.GetAsync($"users/{userId}/meetings")
+				.WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<Meeting>("meetings", new MeetingConverter());
 		}
 
 		/// <summary>
@@ -268,6 +296,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Registrant" />.
 		/// </returns>
+		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
 		public Task<PaginatedResponse<Registrant>> GetRegistrantsAsync(long meetingId, RegistrantStatus status, string occurrenceId = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
@@ -283,6 +312,35 @@ namespace ZoomNet.Resources
 				.WithArgument("page", page)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponse<Registrant>("registrants");
+		}
+
+		/// <summary>
+		/// List registrants of a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="status">The registrant status.</param>
+		/// <param name="occurrenceId">The meeting occurrence id.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Registrant" />.
+		/// </returns>
+		public Task<PaginatedResponseWithToken<Registrant>> GetRegistrantsAsync(long meetingId, RegistrantStatus status, string occurrenceId = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			if (recordsPerPage < 1 || recordsPerPage > 300)
+			{
+				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 300");
+			}
+
+			return _client
+				.GetAsync($"meetings/{meetingId}/registrants")
+				.WithArgument("status", JToken.Parse(JsonConvert.SerializeObject(status)).ToString())
+				.WithArgument("occurrence_id", occurrenceId)
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<Registrant>("registrants");
 		}
 
 		/// <summary>
