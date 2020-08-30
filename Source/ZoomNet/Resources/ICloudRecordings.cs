@@ -110,5 +110,27 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task DeleteMeetingRecordingAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Recover all deleted recordings of a meeting from trash.
+		/// </summary>
+		/// <param name="meetingId">The meeting Id or UUID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		/// <remarks>Zoom allows recordings to be recovered from trash for up to 30 days from deletion date.</remarks>
+		Task RecoverMeetingRecordingsAsync(string meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Recover a specific recording file of a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting Id or UUID.</param>
+		/// <param name="recordingId">The recording id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task RecoverMeetingRecordingAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default);
 	}
 }

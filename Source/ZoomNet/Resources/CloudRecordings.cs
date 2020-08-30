@@ -208,5 +208,42 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
+
+		/// <summary>
+		/// Recover all deleted recordings of a specific meeting from trash.
+		/// </summary>
+		/// <param name="meetingId">The meeting Id or UUID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		/// <remarks>Zoom allows recordings to be recovered from trash for up to 30 days from deletion date.</remarks>
+		public Task RecoverMeetingRecordingsAsync(string meetingId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.PutAsync($"meetings/{meetingId}/recordings/status")
+				.WithArgument("action", "recover")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Recover a specific recording file of a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting Id or UUID.</param>
+		/// <param name="recordingId">The recording id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		/// <remarks>Zoom allows recordings to be recovered from trash for up to 30 days from deletion date.</remarks>
+		public Task RecoverMeetingRecordingAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.PutAsync($"meetings/{meetingId}/recordings/{recordingId}/status")
+				.WithArgument("action", "recover")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
 	}
 }
