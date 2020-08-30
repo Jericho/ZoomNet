@@ -32,7 +32,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="DashboardMeeting">meetings</see>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<DashboardMeeting>> GetAllAsync(DateTime from, DateTime to, MeetingListType type = MeetingListType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<DashboardMeeting>> GetAllAsync(DateTime from, DateTime to, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve the details of a meeting.
@@ -43,7 +43,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The <see cref="DashboardMeeting" />.
 		/// </returns>
-		Task<DashboardMeeting> GetMeetingAsync(string meetingId, MeetingListType type = MeetingListType.Live, CancellationToken cancellationToken = default);
+		Task<DashboardMeeting> GetMeetingAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get a list of participants from live or past meetings.
@@ -63,6 +63,6 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="DashboardParticipant">participants</see>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<DashboardParticipant>> GetMeetingParticipantsAsync(string meetingId, MeetingListType type = MeetingListType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<DashboardParticipant>> GetMeetingParticipantsAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
 	}
 }

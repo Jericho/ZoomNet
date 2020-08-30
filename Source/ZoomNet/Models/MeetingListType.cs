@@ -27,17 +27,5 @@ namespace ZoomNet.Models
 		/// </summary>
 		[EnumMember(Value = "upcoming")]
 		Upcoming,
-
-		/// <summary>
-		/// Past
-		/// </summary>
-		[EnumMember(Value = "past")]
-		Past,
-
-		/// <summary>
-		/// PastOne
-		/// </summary>
-		[EnumMember(Value = "pastOne")]
-		PastOne
 	}
 }

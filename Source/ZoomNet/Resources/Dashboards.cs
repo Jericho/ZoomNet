@@ -5,7 +5,6 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
-using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
@@ -47,7 +46,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="DashboardMeeting">meetings</see>.
 		/// </returns>
-		public Task<PaginatedResponseWithToken<DashboardMeeting>> GetAllAsync(DateTime from, DateTime to, MeetingListType type = MeetingListType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<DashboardMeeting>> GetAllAsync(DateTime from, DateTime to, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			if (pageSize < 1 || pageSize > 300)
 			{
@@ -74,7 +73,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The <see cref="DashboardMeeting" />.
 		/// </returns>
-		public Task<DashboardMeeting> GetMeetingAsync(string meetingId, MeetingListType type = MeetingListType.Live, CancellationToken cancellationToken = default)
+		public Task<DashboardMeeting> GetMeetingAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"metrics/meetings/{meetingId}")
@@ -101,7 +100,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="DashboardParticipant">participants</see>.
 		/// </returns>
-		public Task<PaginatedResponseWithToken<DashboardParticipant>> GetMeetingParticipantsAsync(string meetingId, MeetingListType type = MeetingListType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<DashboardParticipant>> GetMeetingParticipantsAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			if (pageSize < 1 || pageSize > 300)
 			{
