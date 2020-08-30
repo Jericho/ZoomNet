@@ -35,5 +35,11 @@ namespace ZoomNet.Models
 		/// </summary>
 		/// <value>The records.</value>
 		public T[] Records { get; set; }
+
+		/// <summary>
+		/// Gets a value indicating whether more records are available.
+		/// </summary>
+		/// <value>true if more records are available; false otherwise.</value>
+		public bool MoreRecordsAvailable => !string.IsNullOrEmpty(NextPageToken);
 	}
 }
