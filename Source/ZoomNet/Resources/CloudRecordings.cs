@@ -138,5 +138,39 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<Recording>("meetings", null);
 		}
+
+		/// <summary>
+		/// Move recordings for a meeting to trash.
+		/// </summary>
+		/// <param name="meetingId">The meeting Id or UUID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task MoveMeetingRecordingsToTrashAsync(string meetingId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"meetings/{meetingId}/recordings")
+				.WithArgument("action", "trash")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Permanently delete recordings for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting Id or UUID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task DeleteMeetingRecordingsAsync(string meetingId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"meetings/{meetingId}/recordings")
+				.WithArgument("action", "delete")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
 	}
 }

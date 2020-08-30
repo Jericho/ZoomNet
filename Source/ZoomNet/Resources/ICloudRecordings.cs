@@ -68,5 +68,25 @@ namespace ZoomNet.Resources
 		/// An array of <see cref="Recording">recordings</see>.
 		/// </returns>
 		Task<PaginatedResponseWithToken<Recording>> GetMeetingRecordingsAsync(string meetingId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Move recordings for a meeting to trash.
+		/// </summary>
+		/// <param name="meetingId">The meeting Id or UUID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task MoveMeetingRecordingsToTrashAsync(string meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Permanently delete recordings for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting Id or UUID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task DeleteMeetingRecordingsAsync(string meetingId, CancellationToken cancellationToken = default);
 	}
 }
