@@ -8,6 +8,14 @@ namespace ZoomNet
 	public interface IZoomClient
 	{
 		/// <summary>
+		/// Gets the resource which allows you to manage cloud recordings.
+		/// </summary>
+		/// <value>
+		/// The cloud recordings resource.
+		/// </value>
+		ICloudRecordings CloudRecordings { get; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage meetings.
 		/// </summary>
 		/// <value>
