@@ -614,7 +614,6 @@ namespace ZoomNet
 			var result = new PaginatedResponseWithToken<T>()
 			{
 				NextPageToken = jObject.Property("next_page_token").Value.ToString(),
-				PageCount = jObject.Property("page_count").Value.ToObject<int>(),
 				PageSize = jObject.Property("page_size").Value.ToObject<int>(),
 				Records = jObject.Property(propertyName).Value.ToObject<T[]>(serializer),
 				TotalRecords = jObject.Property("total_records").Value.ToObject<int>()
