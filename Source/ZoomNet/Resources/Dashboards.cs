@@ -44,9 +44,9 @@ namespace ZoomNet.Resources
 		/// </param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="DashboardMeeting">meetings</see>.
+		/// An array of <see cref="DashboardMeetingMetrics">meetings</see>.
 		/// </returns>
-		public Task<PaginatedResponseWithToken<DashboardMeeting>> GetAllMeetingsAsync(DateTime from, DateTime to, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithTokenAndDateRange<DashboardMeetingMetrics>> GetAllMeetingsAsync(DateTime from, DateTime to, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			if (pageSize < 1 || pageSize > 300)
 			{
@@ -61,7 +61,7 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<DashboardMeeting>("meetings");
+				.AsPaginatedResponseWithTokenAndDateRange<DashboardMeetingMetrics>("meetings");
 		}
 
 		/// <summary>
@@ -71,15 +71,15 @@ namespace ZoomNet.Resources
 		/// <param name="type">The type of meetings. Allowed values: Past, PastOne, Live.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// The <see cref="DashboardMeeting" />.
+		/// The <see cref="DashboardMeetingMetrics" />.
 		/// </returns>
-		public Task<DashboardMeeting> GetMeetingAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, CancellationToken cancellationToken = default)
+		public Task<DashboardMeetingMetrics> GetMeetingAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"metrics/meetings/{meetingId}")
 				.WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
 				.WithCancellationToken(cancellationToken)
-				.AsObject<DashboardMeeting>();
+				.AsObject<DashboardMeetingMetrics>();
 		}
 
 		/// <summary>
@@ -100,7 +100,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="DashboardParticipant">participants</see>.
 		/// </returns>
-		public Task<PaginatedResponseWithToken<DashboardParticipant>> GetMeetingParticipantsAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithTokenAndDateRange<DashboardParticipant>> GetMeetingParticipantsAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			if (pageSize < 1 || pageSize > 300)
 			{
@@ -113,7 +113,7 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<DashboardParticipant>("participants");
+				.AsPaginatedResponseWithTokenAndDateRange<DashboardParticipant>("participants");
 		}
 
 		/// <summary>
@@ -150,7 +150,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="DashboardMeetingParticipantQos">quality of service metrics for particpants of the meeting.</see>.
 		/// </returns>
-		public Task<PaginatedResponseWithToken<DashboardMeetingParticipantQos>> GetAllMeetingParticipantQOSAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 1, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithTokenAndDateRange<DashboardMeetingParticipantQos>> GetAllMeetingParticipantQOSAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 1, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			if (pageSize < 1 || pageSize > 10)
 			{
@@ -163,7 +163,7 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<DashboardMeetingParticipantQos>("participants");
+				.AsPaginatedResponseWithTokenAndDateRange<DashboardMeetingParticipantQos>("participants");
 		}
 
 		/// <summary>
@@ -181,7 +181,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The <see cref="ParticipantSharingDetails">sharing details for the meetings participants.</see>.
 		/// </returns>
-		public Task<PaginatedResponseWithToken<ParticipantSharingDetails>> GetAllParticipantSharingDetailsAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithTokenAndDateRange<ParticipantSharingDetails>> GetAllParticipantSharingDetailsAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			if (pageSize < 1 || pageSize > 10)
 			{
@@ -194,7 +194,44 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<ParticipantSharingDetails>("participants");
+				.AsPaginatedResponseWithTokenAndDateRange<ParticipantSharingDetails>("participants");
+		}
+
+		/// <summary>
+		/// Retrieve data on total live or past webinars that occurred during a specified period of time.
+		/// Only data from within the last 6 months will be returned.
+		/// </summary>
+		/// <param name="from">
+		/// Date to start searching from. Should be within a month of "to" as only a months worth of data is returned at a time.
+		/// </param>
+		/// <param name="to">Date to end search.</param>
+		/// <param name="type">The type of meetings. Allowed values: Past, PastOne, Live.</param>
+		/// <param name="pageSize">The number of records returned within a single API call.</param>
+		/// <param name="pageToken">
+		/// The next page token is used to paginate through large result sets.
+		/// A next page token will be returned whenever the set of available results exceeds the current page size.
+		/// The expiration period for this token is 15 minutes.
+		/// </param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="DashboardMetricsBase">webinars.</see>.
+		/// </returns>
+		public Task<PaginatedResponseWithTokenAndDateRange<DashboardMetricsBase>> GetAllWebinarsAsync(DateTime from, DateTime to, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		{
+			if (pageSize < 1 || pageSize > 300)
+			{
+				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 300");
+			}
+
+			return _client
+				.GetAsync($"metrics/webinars")
+				.WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
+				.WithArgument("from", from.ToString("yyyy-MM-dd"))
+				.WithArgument("to", to.ToString("yyyy-MM-dd"))
+				.WithArgument("page_size", pageSize)
+				.WithArgument("next_page_token", pageToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithTokenAndDateRange<DashboardMetricsBase>("webinars");
 		}
 	}
 }

@@ -4,9 +4,9 @@ using System;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Metrics of a Meeting.
+	/// Base model for metrics returned by Dashboards client for meetings and webinars.
 	/// </summary>
-	public class DashboardMeeting
+	public class DashboardMetricsBase
 	{
 		/// <summary>
 		/// Gets or sets the unique id.
@@ -160,15 +160,6 @@ namespace ZoomNet.Models
 		/// </value>
 		[JsonProperty(PropertyName = "has_sip")]
 		public bool HasSip { get; set; }
-
-		/// <summary>
-		/// Gets or sets the number of Zoom Room participants in the meeting.
-		/// </summary>
-		/// <value>
-		/// The number of Zoom Room participants in the meeting.
-		/// </value>
-		[JsonProperty(PropertyName = "in_room_participants")]
-		public int InRoomParticipants { get; set; }
 
 		/// <summary>
 		/// Gets or sets the department of the host.

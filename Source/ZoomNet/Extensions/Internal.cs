@@ -238,6 +238,19 @@ namespace ZoomNet
 			return await response.Content.AsPaginatedResponseWithToken<T>(propertyName, jsonConverter).ConfigureAwait(false);
 		}
 
+		/// <summary>Asynchronously retrieve the JSON encoded response body and convert it to a 'PaginatedResponseWithToken' object.</summary>
+		/// <typeparam name="T">The response model to deserialize into.</typeparam>
+		/// <param name="request">The request.</param>
+		/// <param name="propertyName">The name of the JSON property (or null if not applicable) where the desired data is stored.</param>
+		/// <param name="jsonConverter">Converter that will be used during deserialization.</param>
+		/// <returns>Returns the paginated response.</returns>
+		/// <exception cref="ApiException">An error occurred processing the response.</exception>
+		internal static async Task<PaginatedResponseWithTokenAndDateRange<T>> AsPaginatedResponseWithTokenAndDateRange<T>(this IRequest request, string propertyName, JsonConverter jsonConverter = null)
+		{
+			var response = await request.AsMessage().ConfigureAwait(false);
+			return await response.Content.AsPaginatedResponseWithTokenAndDateRange<T>(propertyName, jsonConverter).ConfigureAwait(false);
+		}
+
 		/// <summary>Set the body content of the HTTP request.</summary>
 		/// <typeparam name="T">The type of object to serialize into a JSON string.</typeparam>
 		/// <param name="request">The request.</param>
@@ -614,6 +627,35 @@ namespace ZoomNet
 			var result = new PaginatedResponseWithToken<T>()
 			{
 				NextPageToken = jObject.Property("next_page_token").Value.ToString(),
+				PageSize = jObject.Property("page_size").Value.ToObject<int>(),
+				Records = jObject.Property(propertyName).Value.ToObject<T[]>(serializer),
+				TotalRecords = jObject.Property("total_records").Value.ToObject<int>()
+			};
+
+			return result;
+		}
+
+		/// <summary>Asynchronously retrieve the JSON encoded content and converts it to a 'PaginatedResponseWithToken' object.</summary>
+		/// <typeparam name="T">The response model to deserialize into.</typeparam>
+		/// <param name="httpContent">The content.</param>
+		/// <param name="propertyName">The name of the JSON property (or null if not applicable) where the desired data is stored.</param>
+		/// <param name="jsonConverter">Converter that will be used during deserialization.</param>
+		/// <returns>Returns the response body, or <c>null</c> if the response has no body.</returns>
+		/// <exception cref="ApiException">An error occurred processing the response.</exception>
+		private static async Task<PaginatedResponseWithTokenAndDateRange<T>> AsPaginatedResponseWithTokenAndDateRange<T>(this HttpContent httpContent, string propertyName, JsonConverter jsonConverter = null)
+		{
+			var responseContent = await httpContent.ReadAsStringAsync(null).ConfigureAwait(false);
+			var jObject = JObject.Parse(responseContent);
+
+			var serializer = new JsonSerializer();
+			if (jsonConverter != null) serializer.Converters.Add(jsonConverter);
+
+			var result = new PaginatedResponseWithTokenAndDateRange<T>()
+			{
+				From = jObject.Property("from").Value.ToString(),
+				To = jObject.Property("to").Value.ToString(),
+				NextPageToken = jObject.Property("next_page_token").Value.ToString(),
+				PageCount = jObject.Property("page_count").Value.ToObject<int>(),
 				PageSize = jObject.Property("page_size").Value.ToObject<int>(),
 				Records = jObject.Property(propertyName).Value.ToObject<T[]>(serializer),
 				TotalRecords = jObject.Property("total_records").Value.ToObject<int>()
