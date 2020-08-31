@@ -154,7 +154,7 @@ namespace ZoomNet.Resources
 		{
 			if (pageSize < 1 || pageSize > 10)
 			{
-				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 300");
+				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 10");
 			}
 
 			return _client
@@ -183,7 +183,7 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task<PaginatedResponseWithToken<ParticipantSharingDetails>> GetAllMeetingParticipantSharingDetailsAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
-			if (pageSize < 1 || pageSize > 10)
+			if (pageSize < 1 || pageSize > 300)
 			{
 				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 300");
 			}
@@ -321,7 +321,7 @@ namespace ZoomNet.Resources
 		{
 			if (pageSize < 1 || pageSize > 10)
 			{
-				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 300");
+				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 10");
 			}
 
 			return _client
@@ -350,7 +350,7 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task<PaginatedResponseWithToken<ParticipantSharingDetails>> GetAllWebinarParticipantSharingDetailsAsync(string webinarId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
-			if (pageSize < 1 || pageSize > 10)
+			if (pageSize < 1 || pageSize > 300)
 			{
 				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 300");
 			}
@@ -362,6 +362,32 @@ namespace ZoomNet.Resources
 			  .WithArgument("next_page_token", pageToken)
 			  .WithCancellationToken(cancellationToken)
 			  .AsPaginatedResponseWithToken<ParticipantSharingDetails>("participants");
+		}
+
+		/// <summary>
+		/// List information on all Zoom Rooms in an account.
+		/// </summary>
+		/// <param name="pageSize">The number of records returned within a single API call.</param>
+		/// <param name="pageToken">
+		/// The next page token is used to paginate through large result sets.
+		/// A next page token will be returned whenever the set of available results exceeds the current page size.
+		/// The expiration period for this token is 15 minutes.
+		/// </param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>An array of <see cref="ZoomRoom"/> Zoom rooms.</returns>
+		public Task<PaginatedResponseWithToken<ZoomRoom>> GetAllZoomRoomsAsync(int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		{
+			if (pageSize < 1 || pageSize > 300)
+			{
+				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 300");
+			}
+
+			return _client
+				.GetAsync($"metrics/zoomrooms")
+				.WithArgument("page_size", pageSize)
+				.WithArgument("next_page_token", pageToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<ZoomRoom>("zoom_rooms");
 		}
 	}
 }

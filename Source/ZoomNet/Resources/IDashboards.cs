@@ -205,5 +205,18 @@ namespace ZoomNet.Resources
 		/// The <see cref="ParticipantSharingDetails">sharing details for the webinars participants.</see>.
 		/// </returns>
 		Task<PaginatedResponseWithToken<ParticipantSharingDetails>> GetAllWebinarParticipantSharingDetailsAsync(string webinarId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// List information on all Zoom Rooms in an account.
+		/// </summary>
+		/// <param name="pageSize">The number of records returned within a single API call.</param>
+		/// <param name="pageToken">
+		/// The next page token is used to paginate through large result sets.
+		/// A next page token will be returned whenever the set of available results exceeds the current page size.
+		/// The expiration period for this token is 15 minutes.
+		/// </param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>An array of <see cref="ZoomRoom"/> Zoom rooms.</returns>
+		Task<PaginatedResponseWithToken<ZoomRoom>> GetAllZoomRoomsAsync(int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
 	}
 }
