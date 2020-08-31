@@ -233,5 +233,23 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithTokenAndDateRange<DashboardMetricsBase>("webinars");
 		}
+
+		/// <summary>
+		/// Retrieve the details of a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID or meeting UUID. If given the webinar ID it will take the last webinar instance.</param>
+		/// <param name="type">The type of webinar. Allowed values: Past, PastOne, Live.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="DashboardMetricsBase" />.
+		/// </returns>
+		public Task<DashboardMetricsBase> GetWebinarAsync(string webinarId, DashboardMeetingType type = DashboardMeetingType.Live, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"metrics/webinars/{webinarId}")
+				.WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
+				.WithCancellationToken(cancellationToken)
+				.AsObject<DashboardMetricsBase>();
+		}
 	}
 }

@@ -119,7 +119,7 @@ namespace ZoomNet.Resources
 		/// Date to start searching from. Should be within a month of "to" as only a months worth of data is returned at a time.
 		/// </param>
 		/// <param name="to">Date to end search.</param>
-		/// <param name="type">The type of meetings. Allowed values: Past, PastOne, Live.</param>
+		/// <param name="type">The type of webinar. Allowed values: Past, PastOne, Live.</param>
 		/// <param name="pageSize">The number of records returned within a single API call.</param>
 		/// <param name="pageToken">
 		/// The next page token is used to paginate through large result sets.
@@ -131,5 +131,16 @@ namespace ZoomNet.Resources
 		/// An array of <see cref="DashboardMetricsBase">webinars.</see>.
 		/// </returns>
 		Task<PaginatedResponseWithTokenAndDateRange<DashboardMetricsBase>> GetAllWebinarsAsync(DateTime from, DateTime to, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve the details of a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID or meeting UUID. If given the webinar ID it will take the last webinar instance.</param>
+		/// <param name="type">The type of webinar. Allowed values: Past, PastOne, Live.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="DashboardMetricsBase" />.
+		/// </returns>
+		Task<DashboardMetricsBase> GetWebinarAsync(string webinarId, DashboardMeetingType type = DashboardMeetingType.Live, CancellationToken cancellationToken = default);
 	}
 }
