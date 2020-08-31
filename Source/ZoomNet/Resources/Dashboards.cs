@@ -126,7 +126,7 @@ namespace ZoomNet.Resources
 		/// <param name="type">The type of meetings. Allowed values: Past, PastOne, Live.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The <see cref="DashboardMeetingParticipantQos"/> quality of service metrics for the participant.</returns>
-		public Task<DashboardMeetingParticipantQos> GetMeetingParticipantQOSAsync(string meetingId, string participantId, DashboardMeetingType type = DashboardMeetingType.Live, CancellationToken cancellationToken = default)
+		public Task<DashboardMeetingParticipantQos> GetMeetingParticipantQosAsync(string meetingId, string participantId, DashboardMeetingType type = DashboardMeetingType.Live, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"metrics/meetings/{meetingId}/participants/{participantId}/qos")
@@ -150,7 +150,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="DashboardMeetingParticipantQos">quality of service metrics for particpants of the meeting.</see>.
 		/// </returns>
-		public Task<PaginatedResponseWithTokenAndDateRange<DashboardMeetingParticipantQos>> GetAllMeetingParticipantQOSAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 1, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithTokenAndDateRange<DashboardMeetingParticipantQos>> GetAllMeetingParticipantQosAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 1, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			if (pageSize < 1 || pageSize > 10)
 			{
