@@ -4,7 +4,7 @@ using System;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Metrics of a meeting participant.
+	/// Metrics of a participant.
 	/// </summary>
 	public class DashboardParticipant
 	{
@@ -90,15 +90,6 @@ namespace ZoomNet.Models
 		/// </value>
 		[JsonProperty(PropertyName = "speaker")]
 		public string Speaker { get; set; }
-
-		/// <summary>
-		/// Gets or sets the type of camera used by participant during the meeting.
-		/// </summary>
-		/// <value>
-		/// The type of camera used by participant during the meeting.
-		/// </value>
-		[JsonProperty(PropertyName = "camera")]
-		public string Camera { get; set; }
 
 		/// <summary>
 		/// Gets or sets the data center where participant’s meeting data is stored.
@@ -216,15 +207,6 @@ namespace ZoomNet.Models
 		/// </value>
 		[JsonProperty(PropertyName = "version")]
 		public string Version { get; set; }
-
-		/// <summary>
-		/// Gets or sets the number of participants who joined via Zoom Room.
-		/// </summary>
-		/// <value>
-		/// The number of participants who joined via Zoom Room.
-		/// </value>
-		[JsonProperty(PropertyName = "in_room_participants")]
-		public int InRoomParticipants { get; set; }
 
 		/// <summary>
 		/// Gets or sets the Possible reasons for why participant left the meeting.

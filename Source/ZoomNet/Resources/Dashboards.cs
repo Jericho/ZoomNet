@@ -98,9 +98,9 @@ namespace ZoomNet.Resources
 		/// </param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="DashboardParticipant">participants</see>.
+		/// An array of <see cref="DashboardMeetingParticipant">participants</see>.
 		/// </returns>
-		public Task<PaginatedResponseWithTokenAndDateRange<DashboardParticipant>> GetMeetingParticipantsAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithTokenAndDateRange<DashboardMeetingParticipant>> GetMeetingParticipantsAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			if (pageSize < 1 || pageSize > 300)
 			{
@@ -113,7 +113,7 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithTokenAndDateRange<DashboardParticipant>("participants");
+				.AsPaginatedResponseWithTokenAndDateRange<DashboardMeetingParticipant>("participants");
 		}
 
 		/// <summary>
@@ -250,6 +250,37 @@ namespace ZoomNet.Resources
 				.WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
 				.WithCancellationToken(cancellationToken)
 				.AsObject<DashboardMetricsBase>();
+		}
+
+		/// <summary>
+		/// Get a list of participants from live or past webinars.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID or webinar UUID. If given the webinar ID it will take the last webinar instance.</param>
+		/// <param name="type">The type of webinar. Allowed values: Past, PastOne, Live.</param>
+		/// <param name="pageSize">The number of records returned within a single API call.</param>
+		/// <param name="pageToken">
+		/// The next page token is used to paginate through large result sets.
+		/// A next page token will be returned whenever the set of available results exceeds the current page size.
+		/// The expiration period for this token is 15 minutes.
+		/// </param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="DashboardParticipant">participants</see>.
+		/// </returns>
+		public Task<PaginatedResponseWithTokenAndDateRange<DashboardParticipant>> GetWebinarParticipantsAsync(string webinarId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		{
+			if (pageSize < 1 || pageSize > 300)
+			{
+				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 300");
+			}
+
+			return _client
+				.GetAsync($"metrics/webinars/{webinarId}/participants")
+				.WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
+				.WithArgument("page_size", pageSize)
+				.WithArgument("next_page_token", pageToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithTokenAndDateRange<DashboardParticipant>("participants");
 		}
 	}
 }

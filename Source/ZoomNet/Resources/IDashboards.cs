@@ -61,9 +61,9 @@ namespace ZoomNet.Resources
 		/// </param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="DashboardParticipant">participants</see>.
+		/// An array of <see cref="DashboardMeetingParticipant">participants</see>.
 		/// </returns>
-		Task<PaginatedResponseWithTokenAndDateRange<DashboardParticipant>> GetMeetingParticipantsAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithTokenAndDateRange<DashboardMeetingParticipant>> GetMeetingParticipantsAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve the quality of service for participants from live or past meetings.
@@ -142,5 +142,22 @@ namespace ZoomNet.Resources
 		/// The <see cref="DashboardMetricsBase" />.
 		/// </returns>
 		Task<DashboardMetricsBase> GetWebinarAsync(string webinarId, DashboardMeetingType type = DashboardMeetingType.Live, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get a list of participants from live or past webinars.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID or webinar UUID. If given the webinar ID it will take the last webinar instance.</param>
+		/// <param name="type">The type of webinar. Allowed values: Past, PastOne, Live.</param>
+		/// <param name="pageSize">The number of records returned within a single API call.</param>
+		/// <param name="pageToken">
+		/// The next page token is used to paginate through large result sets.
+		/// A next page token will be returned whenever the set of available results exceeds the current page size.
+		/// The expiration period for this token is 15 minutes.
+		/// </param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="DashboardParticipant">participants</see>.
+		/// </returns>
+		Task<PaginatedResponseWithTokenAndDateRange<DashboardParticipant>> GetWebinarParticipantsAsync(string webinarId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
 	}
 }
