@@ -245,5 +245,21 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
+
+		/// <summary>
+		/// Retrieve settings applied to a meeting's cloud recording.
+		/// </summary>
+		/// <param name="meetingId">The meeting Id or UUID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="RecordingSettings" />.
+		/// </returns>
+		public Task<RecordingSettings> GetMeetingRecordingSettingsAsync(string meetingId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"meetings/{meetingId}/recordings/settings")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<RecordingSettings>(null, null);
+		}
 	}
 }

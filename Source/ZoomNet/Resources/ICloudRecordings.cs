@@ -132,5 +132,15 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task RecoverMeetingRecordingAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve settings applied to a meeting's cloud recording.
+		/// </summary>
+		/// <param name="meetingId">The meeting Id or UUID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="RecordingSettings" />.
+		/// </returns>
+		Task<RecordingSettings> GetMeetingRecordingSettingsAsync(string meetingId, CancellationToken cancellationToken = default);
 	}
 }
