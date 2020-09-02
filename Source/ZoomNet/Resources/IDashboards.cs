@@ -236,5 +236,18 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>A <see cref="ZoomRoom"/> Zoom room with details on current and past meetings.</returns>
 		Task<ZoomRoom> GetRoomDetailsAsync(string roomId, DateTime from, DateTime to, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// A Cloud Room Connector allows H.323/SIP endpoints to connect to a Zoom meeting. <br/>
+		/// Use this API to get the hour by hour CRC Port usage for a specified period of time. <br/>
+		/// We will provide the report for a maximum of one month.For example, if “from” is set to “2017-08-05” and “to” is set to “2017-10-10”, we will adjust “from” to “2017-09-10”.
+		/// </summary>
+		/// <param name="from">
+		/// Date to start searching from. Should be within a month of "to" as only a months worth of data is returned at a time.
+		/// </param>
+		/// <param name="to">Date to end search.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The <see cref="CrcPortMetrics">Report </see> of metrics on CRC usage.</returns>
+		Task<CrcPortMetrics> GetCrcPortUsageAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default);
 	}
 }
