@@ -389,5 +389,38 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<ZoomRoom>("zoom_rooms");
 		}
+
+		/// <summary>
+		/// The Zoom Rooms dashboard metrics lets you know the type of configuration a Zoom room has and details on the meetings held in that room.
+		/// </summary>
+		/// <param name="zoomRoomId">The Zoom room id.</param>
+		/// <param name = "from" >
+		/// Date to start searching from. Should be within a month of "to" as only a months worth of data is returned at a time.
+		/// </param>
+		/// <param name="to">Date to end search.</param>
+		/// <param name="pageSize">The number of records returned within a single API call.</param>
+		/// <param name="pageToken">
+		/// The next page token is used to paginate through large result sets.
+		/// A next page token will be returned whenever the set of available results exceeds the current page size.
+		/// The expiration period for this token is 15 minutes.
+		/// </param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A <see cref="ZoomRoom"/> Zoom room with details on current and past meetings.</returns>
+		public Task<ZoomRoom> GetRoomDetailsAsync(string zoomRoomId, DateTime from, DateTime to, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		{
+			if (pageSize < 1 || pageSize > 300)
+			{
+				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 300");
+			}
+
+			return _client
+				.GetAsync($"metrics/zoomrooms{zoomRoomId}")
+				.WithArgument("from", from.ToString("yyyy-MM-dd"))
+				.WithArgument("to", to.ToString("yyyy-MM-dd"))
+				.WithArgument("page_size", pageSize)
+				.WithArgument("next_page_token", pageToken)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ZoomRoom>();
+		}
 	}
 }

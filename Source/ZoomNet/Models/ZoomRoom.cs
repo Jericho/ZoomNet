@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace ZoomNet.Models
 {
@@ -17,6 +13,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The room id.
 		/// </value>
+		[JsonProperty(PropertyName = "id")]
 		public string Id { get; set; }
 
 		/// <summary>
@@ -25,6 +22,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The room name.
 		/// </value>
+		[JsonProperty(PropertyName = "room_name")]
 		public string Name { get; set; }
 
 		/// <summary>
@@ -33,6 +31,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The Zoom calendar name.
 		/// </value>
+		[JsonProperty(PropertyName = "calender_name")]
 		public string CalendarName { get; set; }
 
 		/// <summary>
@@ -41,6 +40,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The Zoom room email.
 		/// </value>
+		[JsonProperty(PropertyName = "email")]
 		public string Email { get; set; }
 
 		/// <summary>
@@ -49,6 +49,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Zoom room email type.
 		/// </value>
+		[JsonProperty(PropertyName = "account_type")]
 		public string AccountType { get; set; }
 
 		/// <summary>
@@ -57,6 +58,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The Zoom room status.
 		/// </value>
+		[JsonProperty(PropertyName = "status")]
 		public string Status { get; set; }
 
 		/// <summary>
@@ -65,6 +67,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The Zoom room device IP.
 		/// </value>
+		[JsonProperty(PropertyName = "device_ip")]
 		public string DeviceIp { get; set; }
 
 		/// <summary>
@@ -73,6 +76,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The Zoom room camera.
 		/// </value>
+		[JsonProperty(PropertyName = "camera")]
 		public string Camera { get; set; }
 
 		/// <summary>
@@ -81,6 +85,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The Zoom room microphone.
 		/// </value>
+		[JsonProperty(PropertyName = "microphone")]
 		public string Microphone { get; set; }
 
 		/// <summary>
@@ -89,6 +94,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The Zoom room speaker.
 		/// </value>
+		[JsonProperty(PropertyName = "speaker")]
 		public string Speaker { get; set; }
 
 		/// <summary>
@@ -97,6 +103,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The last start time of the Zoom room.
 		/// </value>
+		[JsonProperty(PropertyName = "last_start_time")]
 		public string LastStartTime { get; set; }
 
 		/// <summary>
@@ -105,6 +112,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The Zoom room location.
 		/// </value>
+		[JsonProperty(PropertyName = "location")]
 		public string Location { get; set; }
 
 		/// <summary>
@@ -113,6 +121,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The health value.
 		/// </value>
+		[JsonProperty(PropertyName = "health")]
 		public string Health { get; set; }
 
 		/// <summary>
@@ -121,6 +130,25 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Zoom room issues.
 		/// </value>
+		[JsonProperty(PropertyName = "issues")]
 		public string[] Issues { get; set; }
+
+		/// <summary>
+		/// Gets or sets information on the live meeting in the Zoom room.
+		/// </summary>
+		/// <value>
+		/// Metrics on the currently live meeting if there is one.
+		/// </value>
+		[JsonProperty(PropertyName = "live_meeting", NullValueHandling = NullValueHandling.Ignore)]
+		public DashboardMeetingMetrics LiveMeeting { get; set; }
+
+		/// <summary>
+		/// Gets or sets metrics for previous meetings that happened in this Zoom room.
+		/// </summary>
+		/// <value>
+		/// Pagination object to get metrics on previous meetings that happened in this Zoom room.
+		/// </value>
+		[JsonProperty(PropertyName = "past_meetings", NullValueHandling = NullValueHandling.Ignore)]
+		public DashboardMeetingMetricsPaginationObject PastMeetings { get; set; }
 	}
 }
