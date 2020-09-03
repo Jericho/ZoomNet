@@ -494,5 +494,24 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsObject<ClientFeedbackMetricsReport>();
 		}
+
+		/// <summary>
+		/// Get Top 25 issues of Zoom rooms.
+		/// </summary>
+		/// <param name="from">
+		/// Date to start searching from. Should be within a month of "to" as only a months worth of data is returned at a time.
+		/// </param>
+		/// <param name="to">Date to end search.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A <see cref="IssuesOfZoomRoomsReport"/> report with the list of top issues in Zoom rooms.</returns>
+		public Task<IssuesOfZoomRoomsReport> GetIssuesOfZoomRoomsAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"metrics/zoomrooms/issues")
+				.WithArgument("from", from.ToString("yyyy-MM-dd"))
+				.WithArgument("to", to.ToString("yyyy-MM-dd"))
+				.WithCancellationToken(cancellationToken)
+				.AsObject<IssuesOfZoomRoomsReport>();
+		}
 	}
 }
