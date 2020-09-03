@@ -290,5 +290,16 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>A <see cref="IssuesOfZoomRoomsReport"/> report with the list of top issues in Zoom rooms.</returns>
 		Task<IssuesOfZoomRoomsReport> GetIssuesOfZoomRoomsAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get information on top 25 Zoom Rooms with issues in a month. The month specified with the “from” and “to” range should fall within the last six months.
+		/// </summary>
+		/// <param name="from">
+		/// Date to start searching from. Should be within a month of "to" as only a months worth of data is returned at a time.
+		/// </param>
+		/// <param name="to">Date to end search.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A <see cref="ZoomRoomWithIssuesReport"/> report with the list of Zoom rooms with issues.</returns>
+		Task<ZoomRoomWithIssuesReport> GetZoomRoomsWithIssuesAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default);
 	}
 }
