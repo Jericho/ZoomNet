@@ -470,6 +470,8 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"metrics/im")
+				.WithArgument("from", from.ToString("yyyy-MM-dd"))
+				.WithArgument("to", to.ToString("yyyy-MM-dd"))
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
@@ -560,10 +562,47 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"metrics/issues/zoomrooms/{zoomRoomId}")
+				.WithArgument("from", from.ToString("yyyy-MM-dd"))
+				.WithArgument("to", to.ToString("yyyy-MM-dd"))
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithTokenAndDateRange<ZoomRoomIssueDetails>("issue_details");
+		}
+
+		/// <summary>
+		/// Retrieve detailed information on a <a href="https://support.zoom.us/hc/en-us/articles/115005855266-End-of-Meeting-Feedback-Survey#h_e30d552b-6d8e-4e0a-a588-9ca8180c4dbf">Zoom meetings client feedback.</a>.
+		/// </summary>
+		/// <param name="feedbackId">The Zoom room id.</param>
+		/// <param name="from">
+		/// Date to start searching from. Should be within a month of "to" as only a months worth of data is returned at a time.
+		/// </param>
+		/// <param name="to">Date to end search.</param>
+		/// <param name="pageSize">The number of records returned within a single API call.</param>
+		/// <param name="pageToken">
+		/// The next page token is used to paginate through large result sets.
+		/// A next page token will be returned whenever the set of available results exceeds the current page size.
+		/// The expiration period for this token is 15 minutes.
+		/// </param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="ClientFeedbackDetail">client feedback details</see>.
+		/// </returns>
+		public Task<PaginatedResponseWithTokenAndDateRange<ClientFeedbackDetail>> GetZoomMeetingsClientFeedbackAsync(string feedbackId, DateTime from, DateTime to, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		{
+			if (pageSize < 1 || pageSize > 300)
+			{
+				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 300");
+			}
+
+			return _client
+				.GetAsync($"metrics/client/feedback/{feedbackId}")
+				.WithArgument("from", from.ToString("yyyy-MM-dd"))
+				.WithArgument("to", to.ToString("yyyy-MM-dd"))
+				.WithArgument("page_size", pageSize)
+				.WithArgument("next_page_token", pageToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithTokenAndDateRange<ClientFeedbackDetail>("client_feedback_details");
 		}
 	}
 }
