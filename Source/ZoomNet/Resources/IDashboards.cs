@@ -240,7 +240,7 @@ namespace ZoomNet.Resources
 		/// <summary>
 		/// A Cloud Room Connector allows H.323/SIP endpoints to connect to a Zoom meeting. <br/>
 		/// Use this API to get the hour by hour CRC Port usage for a specified period of time. <br/>
-		/// We will provide the report for a maximum of one month.For example, if ìfromî is set to ì2017-08-05î and ìtoî is set to ì2017-10-10î, we will adjust ìfromî to ì2017-09-10î.
+		/// We will provide the report for a maximum of one month.For example, if ‚Äúfrom‚Äù is set to ‚Äú2017-08-05‚Äù and ‚Äúto‚Äù is set to ‚Äú2017-10-10‚Äù, we will adjust ‚Äúfrom‚Äù to ‚Äú2017-09-10‚Äù.
 		/// </summary>
 		/// <param name="from">
 		/// Date to start searching from. Should be within a month of "to" as only a months worth of data is returned at a time.
@@ -292,7 +292,7 @@ namespace ZoomNet.Resources
 		Task<IssuesOfZoomRoomsReport> GetIssuesOfZoomRoomsAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Get information on top 25 Zoom Rooms with issues in a month. The month specified with the ìfromî and ìtoî range should fall within the last six months.
+		/// Get information on top 25 Zoom Rooms with issues in a month. The month specified with the ‚Äúfrom‚Äù and ‚Äúto‚Äù range should fall within the last six months.
 		/// </summary>
 		/// <param name="from">
 		/// Date to start searching from. Should be within a month of "to" as only a months worth of data is returned at a time.
@@ -301,5 +301,25 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>A <see cref="ZoomRoomWithIssuesReport"/> report with the list of Zoom rooms with issues.</returns>
 		Task<ZoomRoomWithIssuesReport> GetZoomRoomsWithIssuesAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get information about the issues that occurred on the Top 25 Zoom Rooms with issues in an account.
+		/// </summary>
+		/// <param name="zoomRoomId">The Zoom room id.</param>
+		/// <param name="from">
+		/// Date to start searching from. Should be within a month of "to" as only a months worth of data is returned at a time.
+		/// </param>
+		/// <param name="to">Date to end search.</param>
+		/// <param name="pageSize">The number of records returned within a single API call.</param>
+		/// <param name="pageToken">
+		/// The next page token is used to paginate through large result sets.
+		/// A next page token will be returned whenever the set of available results exceeds the current page size.
+		/// The expiration period for this token is 15 minutes.
+		/// </param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="ZoomRoomIssueDetails">Zoom room issue details</see>.
+		/// </returns>
+		Task<PaginatedResponseWithTokenAndDateRange<ZoomRoomIssueDetails>> GetIssuesOfZoomRoomAsync(string zoomRoomId, DateTime from, DateTime to, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
 	}
 }
