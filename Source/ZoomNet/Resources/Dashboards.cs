@@ -604,5 +604,27 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithTokenAndDateRange<ClientFeedbackDetail>("client_feedback_details");
 		}
+
+		/// <summary>
+		/// If the <a href="https://support.zoom.us/hc/en-us/articles/115005855266">End of Meeting Feedback Survey</a> option is enabled, attendees will be prompted with a survey window where they can tap either the Thumbs Up or Thumbs Down button that indicates their Zoom meeting experience. <br/>
+		/// With this API, you can get information on the attendees’ meeting satisfaction. Specify a monthly date range for the query using the from and to query parameters.
+		/// The month should fall within the last six months. <br />
+		/// To get information on the survey results with negative experiences(indicated by Thumbs Down), use <see cref="GetZoomMeetingsClientFeedbackAsync"/>.
+		/// </summary>
+		/// <param name="from">
+		/// Date to start searching from. Should be within a month of "to" as only a months worth of data is returned at a time.
+		/// </param>
+		/// <param name="to">Date to end search.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A <see cref="ClientSatisfactionReport"/> report with a list of client satisfaction reports.</returns>
+		public Task<ClientSatisfactionReport> GetClientMeetingSatisfactionMetrics(DateTime from, DateTime to, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"metrics/client/satisfaction")
+				.WithArgument("from", from.ToString("yyyy-MM-dd"))
+				.WithArgument("to", to.ToString("yyyy-MM-dd"))
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ClientSatisfactionReport>();
+		}
 	}
 }
