@@ -223,7 +223,7 @@ namespace ZoomNet.Resources
 		/// The Zoom Rooms dashboard metrics lets you know the type of configuration a Zoom room has and details on the meetings held in that room.
 		/// </summary>
 		/// <param name="roomId">The Zoom room id.</param>
-		/// <param name = "from" >
+		/// <param name="from">
 		/// Date to start searching from. Should be within a month of "to" as only a months worth of data is returned at a time.
 		/// </param>
 		/// <param name="to">Date to end search.</param>
@@ -268,5 +268,16 @@ namespace ZoomNet.Resources
 		/// An array of <see cref="ImMetric">chat room usage metrics</see>.
 		/// </returns>
 		Task<PaginatedResponseWithTokenAndDateRange<ImMetric>> GetImMetricsAsync(DateTime from, DateTime to, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve survey results from <a href="https://support.zoom.us/hc/en-us/articles/115005855266-End-of-Meeting-Feedback-Survey#h_e30d552b-6d8e-4e0a-a588-9ca8180c4dbf">Zoom meetings client feedback.</a>.
+		/// </summary>
+		/// <param name="from">
+		/// Date to start searching from. Should be within a month of "to" as only a months worth of data is returned at a time.
+		/// </param>
+		/// <param name="to">Date to end search.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A <see cref="ClientFeedbackMetricsReport"/> report with metrics on client feedback.</returns>
+		Task<ClientFeedbackMetricsReport> GetClientFeedbackMetricsAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default);
 	}
 }

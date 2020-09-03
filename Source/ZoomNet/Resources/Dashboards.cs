@@ -475,5 +475,24 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithTokenAndDateRange<ImMetric>("users");
 		}
+
+		/// <summary>
+		/// Retrieve survey results from <a href="https://support.zoom.us/hc/en-us/articles/115005855266-End-of-Meeting-Feedback-Survey#h_e30d552b-6d8e-4e0a-a588-9ca8180c4dbf">Zoom meetings client feedback.</a>.
+		/// </summary>
+		/// <param name="from">
+		/// Date to start searching from. Should be within a month of "to" as only a months worth of data is returned at a time.
+		/// </param>
+		/// <param name="to">Date to end search.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A <see cref="ClientFeedbackMetricsReport"/> report with metrics on client feedback.</returns>
+		public Task<ClientFeedbackMetricsReport> GetClientFeedbackMetricsAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"metrics/client/feedback")
+				.WithArgument("from", from.ToString("yyyy-MM-dd"))
+				.WithArgument("to", to.ToString("yyyy-MM-dd"))
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ClientFeedbackMetricsReport>();
+		}
 	}
 }
