@@ -27,7 +27,7 @@ namespace ZoomNet.Resources
 		/// An array of <see cref="Recording">recordings</see>.
 		/// </returns>
 		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
-		Task<PaginatedResponse<Recording>> GetUserRecordingsAsync(string userId, bool queryTrash = false, DateTime? from = null, DateTime? to = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
+		Task<PaginatedResponse<Recording>> GetRecordingsForUserAsync(string userId, bool queryTrash = false, DateTime? from = null, DateTime? to = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve all cloud recordings for a user.
@@ -42,7 +42,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Recording">recordings</see>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<Recording>> GetUserRecordingsAsync(string userId, bool queryTrash = false, DateTime? from = null, DateTime? to = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<Recording>> GetRecordingsForUserAsync(string userId, bool queryTrash = false, DateTime? from = null, DateTime? to = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve all cloud recordings for a meeting.
@@ -55,7 +55,7 @@ namespace ZoomNet.Resources
 		/// An array of <see cref="Recording">recordings</see>.
 		/// </returns>
 		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
-		Task<PaginatedResponse<Recording>> GetMeetingRecordingsAsync(string meetingId, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
+		Task<PaginatedResponse<Recording>> GetRecordingsAsync(string meetingId, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve all cloud recordings for a meeting.
@@ -67,7 +67,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Recording">recordings</see>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<Recording>> GetMeetingRecordingsAsync(string meetingId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<Recording>> GetRecordingsAsync(string meetingId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Move recording files for a meeting to trash.
@@ -77,7 +77,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task MoveMeetingRecordingsToTrashAsync(string meetingId, CancellationToken cancellationToken = default);
+		Task MoveRecordingsToTrashAsync(string meetingId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Permanently delete recording files for a meeting.
@@ -87,7 +87,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task DeleteMeetingRecordingsAsync(string meetingId, CancellationToken cancellationToken = default);
+		Task DeleteRecordingsAsync(string meetingId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Move a specific recording file for a meeting to trash.
@@ -98,7 +98,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task MoveMeetingRecordingToTrashAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default);
+		Task MoveRecordingToTrashAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Permanently delete a specific recording file for a meeting.
@@ -109,7 +109,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task DeleteMeetingRecordingAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default);
+		Task DeleteRecordingAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Recover all deleted recordings of a meeting from trash.
@@ -120,7 +120,7 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		/// <remarks>Zoom allows recordings to be recovered from trash for up to 30 days from deletion date.</remarks>
-		Task RecoverMeetingRecordingsAsync(string meetingId, CancellationToken cancellationToken = default);
+		Task RecoverRecordingsAsync(string meetingId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Recover a specific recording file of a meeting.
@@ -131,7 +131,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task RecoverMeetingRecordingAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default);
+		Task RecoverRecordingAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve settings applied to a meeting's cloud recording.
@@ -141,6 +141,6 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The <see cref="RecordingSettings" />.
 		/// </returns>
-		Task<RecordingSettings> GetMeetingRecordingSettingsAsync(string meetingId, CancellationToken cancellationToken = default);
+		Task<RecordingSettings> GetRecordingSettingsAsync(string meetingId, CancellationToken cancellationToken = default);
 	}
 }

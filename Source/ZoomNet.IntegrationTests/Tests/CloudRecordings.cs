@@ -13,7 +13,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync("\n***** CLOUD RECORDINGS *****\n").ConfigureAwait(false);
 
 			// GET ALL THE RECORDINGS FOR A GIVEN USER
-			var paginatedRecordings = await client.CloudRecordings.GetUserRecordingsAsync(userId, false, null, null, 100, null, cancellationToken).ConfigureAwait(false);
+			var paginatedRecordings = await client.CloudRecordings.GetRecordingsForUserAsync(userId, false, null, null, 100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"User {userId} has {paginatedRecordings.TotalRecords} recordings stored in the cloud").ConfigureAwait(false);
 		}
 	}

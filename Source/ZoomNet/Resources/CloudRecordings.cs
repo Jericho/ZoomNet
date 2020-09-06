@@ -39,7 +39,7 @@ namespace ZoomNet.Resources
 		/// An array of <see cref="Recording">recordings</see>.
 		/// </returns>
 		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
-		public Task<PaginatedResponse<Recording>> GetUserRecordingsAsync(string userId, bool queryTrash = false, DateTime? from = null, DateTime? to = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponse<Recording>> GetRecordingsForUserAsync(string userId, bool queryTrash = false, DateTime? from = null, DateTime? to = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -70,7 +70,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Recording">recordings</see>.
 		/// </returns>
-		public Task<PaginatedResponseWithToken<Recording>> GetUserRecordingsAsync(string userId, bool queryTrash = false, DateTime? from = null, DateTime? to = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<Recording>> GetRecordingsForUserAsync(string userId, bool queryTrash = false, DateTime? from = null, DateTime? to = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -99,7 +99,7 @@ namespace ZoomNet.Resources
 		/// An array of <see cref="Recording">recordings</see>.
 		/// </returns>
 		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
-		public Task<PaginatedResponse<Recording>> GetMeetingRecordingsAsync(string meetingId, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponse<Recording>> GetRecordingsAsync(string meetingId, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -124,7 +124,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Recording">recordings</see>.
 		/// </returns>
-		public Task<PaginatedResponseWithToken<Recording>> GetMeetingRecordingsAsync(string meetingId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<Recording>> GetRecordingsAsync(string meetingId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -147,7 +147,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task MoveMeetingRecordingsToTrashAsync(string meetingId, CancellationToken cancellationToken = default)
+		public Task MoveRecordingsToTrashAsync(string meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.DeleteAsync($"meetings/{meetingId}/recordings")
@@ -164,7 +164,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task DeleteMeetingRecordingsAsync(string meetingId, CancellationToken cancellationToken = default)
+		public Task DeleteRecordingsAsync(string meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.DeleteAsync($"meetings/{meetingId}/recordings")
@@ -182,7 +182,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task MoveMeetingRecordingToTrashAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default)
+		public Task MoveRecordingToTrashAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.DeleteAsync($"meetings/{meetingId}/recordings/{recordingId}")
@@ -200,7 +200,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task DeleteMeetingRecordingAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default)
+		public Task DeleteRecordingAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.DeleteAsync($"meetings/{meetingId}/recordings/{recordingId}")
@@ -218,7 +218,7 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		/// <remarks>Zoom allows recordings to be recovered from trash for up to 30 days from deletion date.</remarks>
-		public Task RecoverMeetingRecordingsAsync(string meetingId, CancellationToken cancellationToken = default)
+		public Task RecoverRecordingsAsync(string meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.PutAsync($"meetings/{meetingId}/recordings/status")
@@ -237,7 +237,7 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		/// <remarks>Zoom allows recordings to be recovered from trash for up to 30 days from deletion date.</remarks>
-		public Task RecoverMeetingRecordingAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default)
+		public Task RecoverRecordingAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.PutAsync($"meetings/{meetingId}/recordings/{recordingId}/status")
@@ -254,7 +254,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The <see cref="RecordingSettings" />.
 		/// </returns>
-		public Task<RecordingSettings> GetMeetingRecordingSettingsAsync(string meetingId, CancellationToken cancellationToken = default)
+		public Task<RecordingSettings> GetRecordingSettingsAsync(string meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"meetings/{meetingId}/recordings/settings")
