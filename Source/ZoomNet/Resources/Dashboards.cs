@@ -148,9 +148,9 @@ namespace ZoomNet.Resources
 		/// </param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="DashboardMeetingParticipantQos">quality of service metrics for particpants of the meeting.</see>.
+		/// An array of <see cref="DashboardMeetingParticipantQos">quality of service metrics for participants of the meeting.</see>.
 		/// </returns>
-		public Task<PaginatedResponseWithToken<DashboardMeetingParticipantQos>> GetAllMeetingParticipantQosAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 1, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<DashboardMeetingParticipantQos>> GetAllMeetingParticipantsQosAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 1, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			if (pageSize < 1 || pageSize > 10)
 			{
@@ -315,7 +315,7 @@ namespace ZoomNet.Resources
 		/// </param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="DashboardMeetingParticipantQos">quality of service metrics for particpants of the webinar.</see>.
+		/// An array of <see cref="DashboardMeetingParticipantQos">quality of service metrics for participants of the webinar.</see>.
 		/// </returns>
 		public Task<PaginatedResponseWithToken<DashboardMeetingParticipantQos>> GetAllWebinarParticipantQosAsync(string webinarId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 1, string pageToken = null, CancellationToken cancellationToken = default)
 		{
@@ -414,7 +414,7 @@ namespace ZoomNet.Resources
 			}
 
 			return _client
-				.GetAsync($"metrics/zoomrooms{zoomRoomId}")
+				.GetAsync($"metrics/zoomrooms/{zoomRoomId}")
 				.WithArgument("from", from.ToString("yyyy-MM-dd"))
 				.WithArgument("to", to.ToString("yyyy-MM-dd"))
 				.WithArgument("page_size", pageSize)

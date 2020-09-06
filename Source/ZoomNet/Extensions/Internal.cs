@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -652,10 +653,9 @@ namespace ZoomNet
 
 			var result = new PaginatedResponseWithTokenAndDateRange<T>()
 			{
-				From = jObject.Property("from").Value.ToString(),
-				To = jObject.Property("to").Value.ToString(),
+				From = DateTime.ParseExact(jObject.Property("from").Value.ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture),
+				To = DateTime.ParseExact(jObject.Property("to").Value.ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture),
 				NextPageToken = jObject.Property("next_page_token").Value.ToString(),
-				PageCount = jObject.Property("page_count").Value.ToObject<int>(),
 				PageSize = jObject.Property("page_size").Value.ToObject<int>(),
 				Records = jObject.Property(propertyName).Value.ToObject<T[]>(serializer),
 				TotalRecords = jObject.Property("total_records").Value.ToObject<int>()
