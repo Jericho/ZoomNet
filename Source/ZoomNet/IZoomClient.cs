@@ -46,5 +46,10 @@ namespace ZoomNet
 		/// The webinars resource.
 		/// </value>
 		IWebinars Webinars { get; }
+
+		/// <summary>
+		/// Gets the resource which allows you to view metrics.
+		/// </summary>
+		IDashboards Dashboards { get; }
 	}
 }
