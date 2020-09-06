@@ -35,7 +35,7 @@ namespace ZoomNet.Models
 		/// </summary>
 		/// <value>The Issue name.</value>
 		[JsonProperty(PropertyName = "issue_name")]
-		public string IssueName { get; set; }
+		public IssueType IssueType { get; set; }
 
 		/// <summary>
 		/// Gets or sets the time the issue appeared.
