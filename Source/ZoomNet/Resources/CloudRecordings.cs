@@ -261,5 +261,56 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsObject<RecordingSettings>(null, null);
 		}
+
+		/// <summary>
+		/// Retrieve all registrants for a recording.
+		/// </summary>
+		/// <param name="meetingId">The meeting Id or UUID.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="page">The current page number of returned records.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Registrant">registrants</see>.
+		/// </returns>
+		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
+		public Task<PaginatedResponse<Registrant>> GetRecordingRegistrantsAsync(string meetingId, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
+		{
+			if (recordsPerPage < 1 || recordsPerPage > 300)
+			{
+				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 300");
+			}
+
+			return _client
+				.GetAsync($"meetings/{meetingId}/recordings/registrants")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("page", page)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponse<Registrant>("registrants", null);
+		}
+
+		/// <summary>
+		/// Retrieve all registrants for a recording.
+		/// </summary>
+		/// <param name="meetingId">The meeting Id or UUID.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Registrant">registrants</see>.
+		/// </returns>
+		public Task<PaginatedResponseWithToken<Registrant>> GetRecordingRegistrantsAsync(string meetingId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			if (recordsPerPage < 1 || recordsPerPage > 300)
+			{
+				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 300");
+			}
+
+			return _client
+				.GetAsync($"meetings/{meetingId}/recordings/registrants")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<Registrant>("registrants", null);
+		}
 	}
 }

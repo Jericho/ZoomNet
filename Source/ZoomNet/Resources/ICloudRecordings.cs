@@ -142,5 +142,30 @@ namespace ZoomNet.Resources
 		/// The <see cref="RecordingSettings" />.
 		/// </returns>
 		Task<RecordingSettings> GetRecordingSettingsAsync(string meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve all registrants for a recording.
+		/// </summary>
+		/// <param name="meetingId">The meeting Id or UUID.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="page">The current page number of returned records.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Registrant">registrants</see>.
+		/// </returns>
+		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
+		Task<PaginatedResponse<Registrant>> GetRecordingRegistrantsAsync(string meetingId, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve all registrants for a recording.
+		/// </summary>
+		/// <param name="meetingId">The meeting Id or UUID.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Registrant">registrants</see>.
+		/// </returns>
+		Task<PaginatedResponseWithToken<Registrant>> GetRecordingRegistrantsAsync(string meetingId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 	}
 }
