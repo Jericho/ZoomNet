@@ -6,7 +6,6 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.IntegrationTests.Tests;
-using ZoomNet.Utilities;
 
 namespace ZoomNet.IntegrationTests
 {
@@ -96,6 +95,7 @@ namespace ZoomNet.IntegrationTests
 			// These are the integration tests that we will execute
 			var integrationTests = new Type[]
 			{
+				typeof(Dashboards),
 				typeof(Meetings),
 				typeof(Users),
 				typeof(Webinars),

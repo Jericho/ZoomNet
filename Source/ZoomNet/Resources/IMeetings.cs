@@ -28,7 +28,24 @@ namespace ZoomNet.Resources
 		/// <remarks>
 		/// This call omits 'occurrences'. Therefore the 'Occurrences' property will be empty.
 		/// </remarks>
+		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
 		Task<PaginatedResponse<Meeting>> GetAllAsync(string userId, MeetingListType type = MeetingListType.Scheduled, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve all meetings of the specified type for a user.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="type">The type of meetings. Allowed values: Scheduled, Live, Upcoming.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Meeting">meetings</see>.
+		/// </returns>
+		/// <remarks>
+		/// This call omits 'occurrences'. Therefore the 'Occurrences' property will be empty.
+		/// </remarks>
+		Task<PaginatedResponseWithToken<Meeting>> GetAllAsync(string userId, MeetingListType type = MeetingListType.Scheduled, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Creates an instant meeting for a user.
@@ -128,7 +145,22 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Registrant" />.
 		/// </returns>
+		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
 		Task<PaginatedResponse<Registrant>> GetRegistrantsAsync(long meetingId, RegistrantStatus status, string occurrenceId = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// List registrants of a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="status">The registrant status.</param>
+		/// <param name="occurrenceId">The meeting occurrence id.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Registrant" />.
+		/// </returns>
+		Task<PaginatedResponseWithToken<Registrant>> GetRegistrantsAsync(long meetingId, RegistrantStatus status, string occurrenceId = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Add a registrant to a meeting.

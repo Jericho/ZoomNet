@@ -48,12 +48,12 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="uuid">The meeting UUID.</param>
 		/// <param name="recordsPerPage">The number of records to return.</param>
-		/// <param name="pageToken">The page token.</param>
+		/// <param name="pagingToken">The paging token.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// An array of <see cref="Participant" />.
 		/// </returns>
-		public Task<PaginatedResponseWithToken<Participant>> GetParticipantsAsync(string uuid, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<Participant>> GetParticipantsAsync(string uuid, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -63,7 +63,7 @@ namespace ZoomNet.Resources
 			return _client
 				.GetAsync($"past_meetings/{uuid}/participants")
 				.WithArgument("page_size", recordsPerPage)
-				.WithArgument("next_page_token", pageToken)
+				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<Participant>("participants");
 		}
@@ -111,6 +111,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="MeetingFile" />.
 		/// </returns>
+		[Obsolete("This method has been deprecated and is no longer supported due to GCM encryption updates for security purposes")]
 		public Task<MeetingFile[]> GetFilesAsync(long meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client

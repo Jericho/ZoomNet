@@ -17,7 +17,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync("\n***** WEBINARS *****\n").ConfigureAwait(false);
 
 			// GET ALL THE WEBINARS
-			var paginatedWebinars = await client.Webinars.GetAllAsync(userId, 30, 1, cancellationToken).ConfigureAwait(false);
+			var paginatedWebinars = await client.Webinars.GetAllAsync(userId, 30, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {paginatedWebinars.TotalRecords} webinars for user {userId}").ConfigureAwait(false);
 
 			// CLEANUP PREVIOUS INTEGRATION TESTS THAT MIGHT HAVE BEEN INTERRUPTED BEFORE THEY HAD TIME TO CLEANUP AFTER THEMSELVES

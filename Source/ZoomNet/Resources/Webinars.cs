@@ -41,6 +41,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Webinar" />.
 		/// </returns>
+		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
 		public Task<PaginatedResponse<Webinar>> GetAllAsync(string userId, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
@@ -54,6 +55,31 @@ namespace ZoomNet.Resources
 				.WithArgument("page", page)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponse<Webinar>("webinars", new WebinarConverter());
+		}
+
+		/// <summary>
+		/// Retrieve all webinars for a user.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Webinar" />.
+		/// </returns>
+		public Task<PaginatedResponseWithToken<Webinar>> GetAllAsync(string userId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			if (recordsPerPage < 1 || recordsPerPage > 300)
+			{
+				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 300");
+			}
+
+			return _client
+				.GetAsync($"users/{userId}/webinars")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<Webinar>("webinars", new WebinarConverter());
 		}
 
 		/// <summary>
@@ -292,6 +318,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Registrant" />.
 		/// </returns>
+		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
 		public Task<PaginatedResponse<Registrant>> GetRegistrantsAsync(long webinarId, RegistrantStatus status, string occurrenceId = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
@@ -307,6 +334,35 @@ namespace ZoomNet.Resources
 				.WithArgument("page", page)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponse<Registrant>("registrants");
+		}
+
+		/// <summary>
+		/// List the users that have registered for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="status">The registrant status.</param>
+		/// <param name="occurrenceId">The webinar occurrence id.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Registrant" />.
+		/// </returns>
+		public Task<PaginatedResponseWithToken<Registrant>> GetRegistrantsAsync(long webinarId, RegistrantStatus status, string occurrenceId = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			if (recordsPerPage < 1 || recordsPerPage > 300)
+			{
+				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 300");
+			}
+
+			return _client
+				.GetAsync($"webinars/{webinarId}/registrants")
+				.WithArgument("status", JToken.Parse(JsonConvert.SerializeObject(status)).ToString())
+				.WithArgument("occurrence_id", occurrenceId)
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<Registrant>("registrants");
 		}
 
 		/// <summary>
