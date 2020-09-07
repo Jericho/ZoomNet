@@ -111,6 +111,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="MeetingFile" />.
 		/// </returns>
+		[Obsolete("This method has been deprecated and is no longer supported due to GCM encryption updates for security purposes")]
 		public Task<MeetingFile[]> GetFilesAsync(long meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client

@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -65,6 +66,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="MeetingFile" />.
 		/// </returns>
+		[Obsolete("This method has been deprecated and is no longer supported due to GCM encryption updates for security purposes")]
 		Task<MeetingFile[]> GetFilesAsync(long meetingId, CancellationToken cancellationToken = default);
 	}
 }
