@@ -359,14 +359,6 @@ Task("Publish-GitHub-Release")
 	.WithCriteria(() => isTagged)
 	.Does(() =>
 {
-	var settings = new GitReleaseManagerCreateSettings
-	{
-		Name              = milestone,
-		Milestone         = milestone,
-		Prerelease        = false,
-		TargetCommitish   = "main"
-	};
-
 	if (!string.IsNullOrEmpty(gitHubToken))
 	{
 		GitReleaseManagerClose(gitHubToken, gitHubRepoOwner, gitHubRepo, milestone);
