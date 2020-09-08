@@ -77,8 +77,8 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The meeting end time.
 		/// </value>
-		[JsonProperty(PropertyName = "end_time")]
-		public DateTime EndTime { get; set; }
+		[JsonProperty(PropertyName = "end_time", NullValueHandling = NullValueHandling.Ignore)]
+		public DateTime? EndTime { get; set; }
 
 		/// <summary>
 		/// Gets or sets the meeting duration.
