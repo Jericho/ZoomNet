@@ -1,15 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ZoomNet.Models
 {
 	/// <summary>
 	/// Enumeration to indicate the type of meeting metrics are being returned for.
 	/// </summary>
+	[JsonConverter(typeof(StringEnumConverter))]
 	public enum DashboardMeetingType
 	{
 		/// <summary>
