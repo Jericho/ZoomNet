@@ -100,7 +100,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="DashboardMeetingParticipant">participants</see>.
 		/// </returns>
-		public Task<PaginatedResponseWithTokenAndDateRange<DashboardMeetingParticipant>> GetMeetingParticipantsAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<DashboardMeetingParticipant>> GetMeetingParticipantsAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			if (pageSize < 1 || pageSize > 300)
 			{
@@ -113,7 +113,7 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithTokenAndDateRange<DashboardMeetingParticipant>("participants");
+				.AsPaginatedResponseWithToken<DashboardMeetingParticipant>("participants");
 		}
 
 		/// <summary>
@@ -267,7 +267,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="DashboardParticipant">participants</see>.
 		/// </returns>
-		public Task<PaginatedResponseWithTokenAndDateRange<DashboardParticipant>> GetWebinarParticipantsAsync(string webinarId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<DashboardParticipant>> GetWebinarParticipantsAsync(string webinarId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			if (pageSize < 1 || pageSize > 300)
 			{
@@ -280,7 +280,7 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithTokenAndDateRange<DashboardParticipant>("participants");
+				.AsPaginatedResponseWithToken<DashboardParticipant>("participants");
 		}
 
 		/// <summary>
