@@ -72,5 +72,12 @@ namespace ZoomNet.Models
 		/// <value>The join URL.</value>
 		[JsonProperty(PropertyName = "join_url", NullValueHandling = NullValueHandling.Ignore)]
 		public string JoinUrl { get; set; }
+
+		/// <summary>
+		/// Gets or sets the URL for the host to start the meeting.
+		/// </summary>
+		/// <value>The start URL.</value>
+		[JsonProperty(PropertyName = "start_url", NullValueHandling = NullValueHandling.Ignore)]
+		public string StartUrl { get; set; }
 	}
 }
