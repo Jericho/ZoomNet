@@ -79,5 +79,12 @@ namespace ZoomNet.Models
 		/// <value>The start URL.</value>
 		[JsonProperty(PropertyName = "start_url", NullValueHandling = NullValueHandling.Ignore)]
 		public string StartUrl { get; set; }
+
+		/// <summary>
+		/// Gets or sets the webinar password.
+		/// </summary>
+		/// <value>The password.</value>
+		[JsonProperty(PropertyName = "password", NullValueHandling = NullValueHandling.Ignore)]
+		public string Password { get; set; }
 	}
 }
