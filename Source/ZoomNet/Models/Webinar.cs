@@ -1,6 +1,8 @@
 using Newtonsoft.Json;
 using StrongGrid.Models;
 using System;
+using System.Collections.Generic;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.Models
 {
@@ -95,6 +97,14 @@ namespace ZoomNet.Models
 		/// <value>The start URL.</value>
 		[JsonProperty(PropertyName = "start_url", NullValueHandling = NullValueHandling.Ignore)]
 		public string StartUrl { get; set; }
+
+		/// <summary>
+		/// Gets or sets the tracking fields.
+		/// </summary>
+		/// <value>The tracking fields.</value>
+		[JsonProperty(PropertyName = "tracking_fields", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonConverter(typeof(TrackingFieldsConverter))]
+		public KeyValuePair<string, string>[] TrackingFields { get; set; }
 
 		/// <summary>
 		/// Gets or sets the webinar password.
