@@ -69,6 +69,13 @@ namespace ZoomNet.Models
 		public int Duration { get; set; }
 
 		/// <summary>
+		/// Gets or sets the webinar agenda.
+		/// </summary>
+		/// <value>The agenda.</value>
+		[JsonProperty(PropertyName = "agenda", NullValueHandling = NullValueHandling.Ignore)]
+		public string Agenda { get; set; }
+
+		/// <summary>
 		/// Gets or sets the date and time when the meeting was created.
 		/// </summary>
 		/// <value>The meeting created time.</value>
