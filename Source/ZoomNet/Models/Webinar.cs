@@ -37,6 +37,15 @@ namespace ZoomNet.Models
 		public string HostId { get; set; }
 
 		/// <summary>
+		/// Gets or sets the email address of the host of the webinar.
+		/// </summary>
+		/// <value>
+		/// The user id.
+		/// </value>
+		[JsonProperty("host_email", NullValueHandling = NullValueHandling.Ignore)]
+		public string HostEmail { get; set; }
+
+		/// <summary>
 		/// Gets or sets the topic of the meeting.
 		/// </summary>
 		/// <value>
