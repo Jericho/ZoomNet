@@ -107,6 +107,13 @@ namespace ZoomNet.Models
 		public KeyValuePair<string, string>[] TrackingFields { get; set; }
 
 		/// <summary>
+		/// Gets or sets the webinar settings.
+		/// </summary>
+		/// <value>The webinar settings.</value>
+		[JsonProperty(PropertyName = "settings", NullValueHandling = NullValueHandling.Ignore)]
+		public WebinarSettings Settings { get; set; }
+
+		/// <summary>
 		/// Gets or sets the webinar password.
 		/// </summary>
 		/// <value>The password.</value>
