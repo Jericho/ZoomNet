@@ -1,6 +1,8 @@
 using Newtonsoft.Json;
 using StrongGrid.Models;
 using System;
+using System.Collections.Generic;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.Models
 {
@@ -37,6 +39,15 @@ namespace ZoomNet.Models
 		public string HostId { get; set; }
 
 		/// <summary>
+		/// Gets or sets the email address of the host of the webinar.
+		/// </summary>
+		/// <value>
+		/// The user id.
+		/// </value>
+		[JsonProperty("host_email", NullValueHandling = NullValueHandling.Ignore)]
+		public string HostEmail { get; set; }
+
+		/// <summary>
 		/// Gets or sets the topic of the meeting.
 		/// </summary>
 		/// <value>
@@ -60,6 +71,13 @@ namespace ZoomNet.Models
 		public int Duration { get; set; }
 
 		/// <summary>
+		/// Gets or sets the webinar agenda.
+		/// </summary>
+		/// <value>The agenda.</value>
+		[JsonProperty(PropertyName = "agenda", NullValueHandling = NullValueHandling.Ignore)]
+		public string Agenda { get; set; }
+
+		/// <summary>
 		/// Gets or sets the date and time when the meeting was created.
 		/// </summary>
 		/// <value>The meeting created time.</value>
@@ -72,5 +90,34 @@ namespace ZoomNet.Models
 		/// <value>The join URL.</value>
 		[JsonProperty(PropertyName = "join_url", NullValueHandling = NullValueHandling.Ignore)]
 		public string JoinUrl { get; set; }
+
+		/// <summary>
+		/// Gets or sets the URL for the host to start the meeting.
+		/// </summary>
+		/// <value>The start URL.</value>
+		[JsonProperty(PropertyName = "start_url", NullValueHandling = NullValueHandling.Ignore)]
+		public string StartUrl { get; set; }
+
+		/// <summary>
+		/// Gets or sets the tracking fields.
+		/// </summary>
+		/// <value>The tracking fields.</value>
+		[JsonProperty(PropertyName = "tracking_fields", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonConverter(typeof(TrackingFieldsConverter))]
+		public KeyValuePair<string, string>[] TrackingFields { get; set; }
+
+		/// <summary>
+		/// Gets or sets the webinar settings.
+		/// </summary>
+		/// <value>The webinar settings.</value>
+		[JsonProperty(PropertyName = "settings", NullValueHandling = NullValueHandling.Ignore)]
+		public WebinarSettings Settings { get; set; }
+
+		/// <summary>
+		/// Gets or sets the webinar password.
+		/// </summary>
+		/// <value>The password.</value>
+		[JsonProperty(PropertyName = "password", NullValueHandling = NullValueHandling.Ignore)]
+		public string Password { get; set; }
 	}
 }
