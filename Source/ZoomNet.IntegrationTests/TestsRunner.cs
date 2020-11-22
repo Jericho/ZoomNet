@@ -95,6 +95,7 @@ namespace ZoomNet.IntegrationTests
 			// These are the integration tests that we will execute
 			var integrationTests = new Type[]
 			{
+				typeof(CloudRecordings),
 				typeof(Dashboards),
 				typeof(Meetings),
 				typeof(Users),

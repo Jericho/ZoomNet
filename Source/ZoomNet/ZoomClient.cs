@@ -56,6 +56,14 @@ namespace ZoomNet
 		}
 
 		/// <summary>
+		/// Gets the resource which allows you to manage cloud recordings.
+		/// </summary>
+		/// <value>
+		/// The recordings resource.
+		/// </value>
+		public ICloudRecordings CloudRecordings { get; private set; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage meetings.
 		/// </summary>
 		/// <value>
@@ -184,6 +192,7 @@ namespace ZoomNet
 			_fluentClient.Filters.Add(new DiagnosticHandler(_options.LogLevelSuccessfulCalls, _options.LogLevelFailedCalls));
 			_fluentClient.Filters.Add(new ZoomErrorHandler());
 
+			CloudRecordings = new CloudRecordings(_fluentClient);
 			Meetings = new Meetings(_fluentClient);
 			PastMeetings = new PastMeetings(_fluentClient);
 			PastWebinars = new PastWebinars(_fluentClient);
