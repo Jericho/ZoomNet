@@ -1,5 +1,8 @@
+using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -311,6 +314,126 @@ namespace ZoomNet.Resources
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<Registrant>("registrants", null);
+		}
+
+		/// <summary>
+		/// Add a registrant to an on-demand recording.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="email">Registrant's email address.</param>
+		/// <param name="firstName">Registrant's first name.</param>
+		/// <param name="lastName">Registrant's last name.</param>
+		/// <param name="address">Registrant's address.</param>
+		/// <param name="city">Registrant's city.</param>
+		/// <param name="country">Registrant's country.</param>
+		/// <param name="zip">Registrant's zip/postal code.</param>
+		/// <param name="state">Registrant's state/province.</param>
+		/// <param name="phone">Registrant's phone number.</param>
+		/// <param name="industry">Registrant's industry.</param>
+		/// <param name="organization">Registrant's organization.</param>
+		/// <param name="jobTitle">Registrant's job title.</param>
+		/// <param name="purchasingTimeFrame">This field can be included to gauge interest of attendees towards buying your product or service.</param>
+		/// <param name="roleInPurchaseProcess">Registrant's role in purchase decision.</param>
+		/// <param name="numberOfEmployees">Number of employees.</param>
+		/// <param name="comments">A field that allows registrants to provide any questions or comments that they might have.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// A <see cref="RecordingRegistration" />.
+		/// </returns>
+		public Task<RecordingRegistration> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string address, string city, string country, string zip, string state, string phone, string industry, string organization, string jobTitle, string purchasingTimeFrame, string roleInPurchaseProcess, string numberOfEmployees, string comments, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject();
+			data.AddPropertyIfValue("email", email);
+			data.AddPropertyIfValue("first_name", firstName);
+			data.AddPropertyIfValue("last_name", lastName);
+			data.AddPropertyIfValue("address", address);
+			data.AddPropertyIfValue("city", city);
+			data.AddPropertyIfValue("country", country);
+			data.AddPropertyIfValue("zip", zip);
+			data.AddPropertyIfValue("state", state);
+			data.AddPropertyIfValue("phone", phone);
+			data.AddPropertyIfValue("industry", industry);
+			data.AddPropertyIfValue("org", organization);
+			data.AddPropertyIfValue("job_title", jobTitle);
+			data.AddPropertyIfValue("purchasing_time_frame", purchasingTimeFrame);
+			data.AddPropertyIfValue("role_in_purchasing_process", roleInPurchaseProcess);
+			data.AddPropertyIfValue("no_of_employees", numberOfEmployees);
+			data.AddPropertyIfValue("comments", comments);
+
+			return _client
+				.PostAsync($"meetings/{meetingId}/recordings/registrants")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<RecordingRegistration>();
+		}
+
+		/// <summary>
+		/// Approve a registration for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="registrantId">The registrant ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task ApproveRegistrantAsync(long meetingId, string registrantId, CancellationToken cancellationToken = default)
+		{
+			return ApproveRegistrantsAsync(meetingId, new[] { registrantId }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Approve multiple registrations for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="registrantIds">ID for each registrant to be approved.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task ApproveRegistrantsAsync(long meetingId, IEnumerable<string> registrantIds, CancellationToken cancellationToken = default)
+		{
+			return UpdateRegistrantsStatusAsync(meetingId, registrantIds, "approve", cancellationToken);
+		}
+
+		/// <summary>
+		/// Reject a registration for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="registrantId">The registrant ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task RejectRegistrantAsync(long meetingId, string registrantId, CancellationToken cancellationToken = default)
+		{
+			return RejectRegistrantsAsync(meetingId, new[] { registrantId }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Reject multiple registrations for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="registrantIds">ID for each registrant to be rejected.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task RejectRegistrantsAsync(long meetingId, IEnumerable<string> registrantIds, CancellationToken cancellationToken = default)
+		{
+			return UpdateRegistrantsStatusAsync(meetingId, registrantIds, "deny", cancellationToken);
+		}
+
+		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<string> registrantIds, string status, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject();
+			data.AddPropertyIfValue("action", status);
+			data.AddPropertyIfValue("registrants", registrantIds.ToArray());
+
+			return _client
+				.PutAsync($"meetings/{meetingId}/recordings/registrants/status")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
 		}
 	}
 }
