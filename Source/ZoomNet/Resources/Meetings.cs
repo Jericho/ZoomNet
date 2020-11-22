@@ -487,7 +487,7 @@ namespace ZoomNet.Resources
 		/// <param name="questions">The poll questions.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// The async task.
+		/// A <see cref="Poll"/>.
 		/// </returns>
 		public Task<Poll> CreatePoll(long meetingId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default)
 		{
