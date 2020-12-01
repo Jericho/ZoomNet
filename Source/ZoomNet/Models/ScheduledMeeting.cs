@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+using Newtonsoft.Json;
 using System;
 
 namespace ZoomNet.Models
@@ -22,6 +22,13 @@ namespace ZoomNet.Models
 		/// <value>The meeting duration in minutes.</value>
 		[JsonProperty(PropertyName = "duration", NullValueHandling = NullValueHandling.Ignore)]
 		public int Duration { get; set; }
+
+		/// <summary>
+		/// Sets the userid of another user to schedule the meeting for.
+		/// </summary>
+		/// <value>Email or UserId if you want to schedule meeting for another user.</value>
+		[JsonProperty(PropertyName = "schedule_for", NullValueHandling = NullValueHandling.Ignore)]
+		public string ScheduleFor { get; set; }
 
 		/// <summary>
 		/// Gets or sets the timezone.

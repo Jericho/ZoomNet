@@ -671,5 +671,56 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
+
+		/// <summary>
+		/// Retrieve the details of a Scheduled meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="occurrenceId">The meeting occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="ScheduledMeeting" />.
+		/// </returns>
+		public Task<ScheduledMeeting> GetScheduledAsync(long meetingId, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"meetings/{meetingId}")
+				.WithArgument("occurrence_id", occurrenceId)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ScheduledMeeting>(null, new MeetingConverter());
+		}
+
+		public Task UpdateScheduledAsync(long meetingId, ScheduledMeeting updatedMeeting, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.PatchAsync($"meetings/{meetingId}")
+				.WithArgument("occurrence_id", occurrenceId)
+				.WithJsonBody(updatedMeeting)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Delete a meeting.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="occurrenceId">The meeting occurrence id.</param>
+		/// <param name="scheduleForReminder">true: Notify registrants about the meeting cancellation via email. false: Do not send any email notification to meeting registrants. The default value of this field is false.</param>
+		/// <param name="cancelMeetingReminder">true: Notify host and alternative host about the meeting cancellation via email. false: Do not send any email notification.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task DeleteAsync(long meetingId, bool scheduleForReminder, CancelMeetingReminderType cancelMeetingReminder, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"meetings/{meetingId}")
+				.WithArgument("occurrence_id", occurrenceId)
+				.WithArgument("schedule_for_reminder", scheduleForReminder)
+				.WithArgument("cancel_meeting_reminder", cancelMeetingReminder)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
 	}
 }
