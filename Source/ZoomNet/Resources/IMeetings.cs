@@ -366,6 +366,7 @@ namespace ZoomNet.Resources
 
 		Task UpdateScheduledAsync(long meetingId, ScheduledMeeting updatedMeeting, string occurrenceId = null, CancellationToken cancellationToken = default);
 
+		Task UpdateRecurringAsync(long meetingId, RecurringMeeting updatedMeeting, string occurrenceId = null, CancellationToken cancellationToken = default);
 		/// <summary>
 		/// Delete a meeting.
 		/// </summary>

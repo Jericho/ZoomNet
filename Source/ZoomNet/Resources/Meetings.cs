@@ -700,6 +700,16 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
+		public Task UpdateRecurringAsync(long meetingId, RecurringMeeting updatedMeeting, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.PatchAsync($"meetings/{meetingId}")
+				.WithArgument("occurrence_id", occurrenceId)
+				.WithJsonBody(updatedMeeting)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
 		/// <summary>
 		/// Delete a meeting.
 		/// </summary>
