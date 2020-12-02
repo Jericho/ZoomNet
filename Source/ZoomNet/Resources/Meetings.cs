@@ -681,7 +681,9 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The <see cref="ScheduledMeeting" />.
 		/// </returns>
+#pragma warning disable SA1202 // Elements should be ordered by access
 		public Task<ScheduledMeeting> GetScheduledAsync(long meetingId, string occurrenceId = null, CancellationToken cancellationToken = default)
+#pragma warning restore SA1202 // Elements should be ordered by access
 		{
 			return _client
 				.GetAsync($"meetings/{meetingId}")
@@ -690,6 +692,7 @@ namespace ZoomNet.Resources
 				.AsObject<ScheduledMeeting>(null, new MeetingConverter());
 		}
 
+		/// <inheritdoc/>
 		public Task UpdateScheduledAsync(long meetingId, ScheduledMeeting updatedMeeting, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -700,6 +703,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
+		/// <inheritdoc/>
 		public Task UpdateRecurringAsync(long meetingId, RecurringMeeting updatedMeeting, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -713,11 +717,10 @@ namespace ZoomNet.Resources
 		/// <summary>
 		/// Delete a meeting.
 		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="occurrenceId">The meeting occurrence id.</param>
 		/// <param name="scheduleForReminder">true: Notify registrants about the meeting cancellation via email. false: Do not send any email notification to meeting registrants. The default value of this field is false.</param>
 		/// <param name="cancelMeetingReminder">true: Notify host and alternative host about the meeting cancellation via email. false: Do not send any email notification.</param>
+		/// <param name="occurrenceId">The meeting occurrence id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.

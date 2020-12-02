@@ -32,7 +32,6 @@ namespace ZoomNet.Models
 		[JsonProperty(PropertyName = "timezone", NullValueHandling = NullValueHandling.Ignore)]
 		public string Timezone { get; set; }
 
-
 		/// <summary>
 		/// Gets or sets the occurrences.
 		/// </summary>

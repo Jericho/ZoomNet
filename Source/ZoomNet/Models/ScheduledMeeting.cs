@@ -24,7 +24,7 @@ namespace ZoomNet.Models
 		public int Duration { get; set; }
 
 		/// <summary>
-		/// Sets the userid of another user to schedule the meeting for.
+		/// Gets or Sets the userid of another user to schedule the meeting for.
 		/// </summary>
 		/// <value>Email or UserId if you want to schedule meeting for another user.</value>
 		[JsonProperty(PropertyName = "schedule_for", NullValueHandling = NullValueHandling.Ignore)]
