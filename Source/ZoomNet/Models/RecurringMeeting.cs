@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using System;
 
 namespace ZoomNet.Models
 {
@@ -8,6 +9,20 @@ namespace ZoomNet.Models
 	/// <seealso cref="ZoomNet.Models.Meeting" />
 	public class RecurringMeeting : Meeting
 	{
+		/// <summary>
+		/// Gets or sets the meeting start time.
+		/// </summary>
+		/// <value>The meeting start time. Only used for scheduled meetings and recurring meetings with fixed time.</value>
+		[JsonProperty(PropertyName = "start_time", NullValueHandling = NullValueHandling.Ignore)]
+		public DateTime StartTime { get; set; }
+
+		/// <summary>
+		/// Gets or sets the meeting duration in minutes.
+		/// </summary>
+		/// <value>The meeting duration in minutes.</value>
+		[JsonProperty(PropertyName = "duration", NullValueHandling = NullValueHandling.Ignore)]
+		public int Duration { get; set; }
+
 		/// <summary>
 		/// Gets or sets the timezone.
 		/// For example, "America/Los_Angeles".

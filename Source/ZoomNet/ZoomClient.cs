@@ -154,19 +154,23 @@ namespace ZoomNet
 		/// <param name="httpClient">Allows you to inject your own HttpClient. This is useful, for example, to setup the HtppClient with a proxy.</param>
 		/// <param name="options">Options for the Zoom client.</param>
 		/// <param name="logger">Logger.</param>
-		public ZoomClient(IConnectionInfo connectionInfo, HttpClient httpClient, ZoomClientOptions options = null, ILogger logger = null)
-			: this(connectionInfo, httpClient, false, options, logger)
+		/// <param name="baseUriOverride">override for the Zoom API base URI.</param>
+		public ZoomClient(IConnectionInfo connectionInfo, HttpClient httpClient, ZoomClientOptions options = null, ILogger logger = null, string baseUriOverride = null)
+			: this(connectionInfo, httpClient, false, options, logger, baseUriOverride)
 		{
 		}
 
-		private ZoomClient(IConnectionInfo connectionInfo, HttpClient httpClient, bool disposeClient, ZoomClientOptions options, ILogger logger = null)
+		private ZoomClient(IConnectionInfo connectionInfo, HttpClient httpClient, bool disposeClient, ZoomClientOptions options, ILogger logger = null, string baseUriOverride = null)
 		{
 			_mustDisposeHttpClient = disposeClient;
 			_httpClient = httpClient;
 			_options = options ?? GetDefaultOptions();
 			_logger = logger ?? NullLogger.Instance;
-			_fluentClient = new FluentClient(new Uri(ZOOM_V2_BASE_URI), httpClient)
-				.SetUserAgent($"ZoomNet/{Version} (+https://github.com/Jericho/ZoomNet)");
+			var baseUri = baseUriOverride == null
+				? new Uri(ZOOM_V2_BASE_URI)
+				: new Uri(baseUriOverride);
+			_fluentClient = new FluentClient(baseUri, httpClient)
+				.SetUserAgent($"ZoomNet/{Version} (+https://github.com/sw2dev/ZoomNet)");
 
 			_fluentClient.Filters.Remove<DefaultErrorFilter>();
 
