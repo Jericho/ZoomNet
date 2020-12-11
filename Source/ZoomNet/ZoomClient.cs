@@ -107,6 +107,14 @@ namespace ZoomNet
 		public IDataCompliance DataCompliance { get; private set; }
 
 		/// <summary>
+		/// Gets the resource which allows you to manage groups under an account.
+		/// </summary>
+		/// <value>
+		/// The groups resource.
+		/// </value>
+		public IGroups Groups { get; private set; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage meetings.
 		/// </summary>
 		/// <value>
@@ -275,6 +283,7 @@ namespace ZoomNet
 			CloudRecordings = new CloudRecordings(_fluentClient);
 			Contacts = new Contacts(_fluentClient);
 			DataCompliance = new DataCompliance(_fluentClient);
+			Groups = new Groups(_fluentClient);
 			Meetings = new Meetings(_fluentClient);
 			PastMeetings = new PastMeetings(_fluentClient);
 			PastWebinars = new PastWebinars(_fluentClient);
