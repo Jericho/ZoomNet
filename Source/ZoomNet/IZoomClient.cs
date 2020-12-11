@@ -58,7 +58,7 @@ namespace ZoomNet
 		IDataCompliance DataCompliance { get; }
 
 		/// <summary>
-		/// Gets the resource that allows you to manage groups.
+		/// Gets the resource which allows you to manage groups under an account.
 		/// </summary>
 		IGroups Groups { get; }
 
