@@ -113,7 +113,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task UpdateRecurringMeetingOccurrenceAsync(long meetingId, string occurrenceId, string agenda = null, DateTime? start = null, int? duration = null, MeetingSettings settings = null, CancellationToken cancellationToken = default);
+		Task UpdateMeetingOccurrenceAsync(long meetingId, string occurrenceId, string agenda = null, DateTime? start = null, int? duration = null, MeetingSettings settings = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Update the details of a scheduled meeting.
