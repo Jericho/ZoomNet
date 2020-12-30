@@ -658,28 +658,14 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string status, string occurrenceId = null, CancellationToken cancellationToken = default)
-		{
-			var data = new JObject();
-			data.AddPropertyIfValue("action", status);
-			data.AddPropertyIfValue("registrants", registrantsInfo.Select(ri => new { id = ri.RegistrantId, email = ri.RegistrantEmail }).ToArray());
-
-			return _client
-				.PutAsync($"meetings/{meetingId}/registrants/status")
-				.WithArgument("occurence_id", occurrenceId)
-				.WithJsonBody(data)
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
 		/// <summary>
-		/// Retrieve the details of a Scheduled meeting.
+		/// Retrieve the details of a Scheduled meeting
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="occurrenceId">The meeting occurrence id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <param name="occurrenceId">The meeting occurrence id</param>
+		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns>
-		/// The <see cref="ScheduledMeeting" />.
+		/// The <see cref="ScheduledMeeting" />
 		/// </returns>
 		public Task<ScheduledMeeting> GetScheduledAsync(long meetingId, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
@@ -691,13 +677,13 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
-		/// Modify the details of a Scheduled meeting.
+		/// Modify the details of a Scheduled meeting
 		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="meetingId">The meeting ID</param>
 		/// <param name="updatedMeeting">The modified ScheduledMeeting</param>
-		/// <param name="occurrenceId">The meeting occurrence id.</param> 
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>A <see cref="Task"/> representing the result of the asynchronous operation.</returns>
+		/// <param name="occurrenceId">The meeting occurrence id</param> 
+		/// <param name="cancellationToken">The cancellation token</param>
+		/// <returns>A <see cref="Task"/> representing the result of the asynchronous operation</returns>
 		public Task UpdateScheduledAsync(long meetingId, ScheduledMeeting updatedMeeting, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -709,13 +695,13 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
-		/// Modify the details of a Recurring meeting.
+		/// Modify the details of a Recurring meeting
 		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="meetingId">The meeting ID</param>
 		/// <param name="updatedMeeting">The modified RecurringMeeting</param>
-		/// <param name="occurrenceId">The meeting occurrence id.</param> 
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>A <see cref="Task"/> representing the result of the asynchronous operation.</returns>
+		/// <param name="occurrenceId">The meeting occurrence id</param> 
+		/// <param name="cancellationToken">The cancellation token</param>
+		/// <returns>A <see cref="Task"/> representing the result of the asynchronous operation</returns>
 		public Task UpdateRecurringAsync(long meetingId, RecurringMeeting updatedMeeting, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -727,15 +713,15 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
-		/// Delete a meeting.
+		/// Delete a meeting
 		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="scheduleForReminder">true: Notify registrants about the meeting cancellation via email. false: Do not send any email notification to meeting registrants. The default value of this field is false.</param>
-		/// <param name="cancelMeetingReminder">true: Notify host and alternative host about the meeting cancellation via email. false: Do not send any email notification.</param>
-		/// <param name="occurrenceId">The meeting occurrence id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <param name="meetingId">The meeting ID</param>
+		/// <param name="scheduleForReminder">true: Notify registrants about the meeting cancellation via email. false: Do not send any email notification to meeting registrants. The default value of this field is false</param>
+		/// <param name="cancelMeetingReminder">true: Notify host and alternative host about the meeting cancellation via email. false: Do not send any email notification</param>
+		/// <param name="occurrenceId">The meeting occurrence id</param>
+		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns>
-		/// The async task.
+		/// The async task
 		/// </returns>
 		public Task DeleteAsync(long meetingId, bool scheduleForReminder, CancelMeetingReminderType cancelMeetingReminder, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
@@ -744,6 +730,20 @@ namespace ZoomNet.Resources
 				.WithArgument("occurrence_id", occurrenceId)
 				.WithArgument("schedule_for_reminder", scheduleForReminder)
 				.WithArgument("cancel_meeting_reminder", cancelMeetingReminder)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string status, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject();
+			data.AddPropertyIfValue("action", status);
+			data.AddPropertyIfValue("registrants", registrantsInfo.Select(ri => new { id = ri.RegistrantId, email = ri.RegistrantEmail }).ToArray());
+
+			return _client
+				.PutAsync($"meetings/{meetingId}/registrants/status")
+				.WithArgument("occurence_id", occurrenceId)
+				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
