@@ -639,8 +639,8 @@ namespace ZoomNet.Resources
 		/// <summary>
 		/// Stop a meeting’s live stream.
 		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <param name="meetingId">The meeting ID</param>
+		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
@@ -661,7 +661,7 @@ namespace ZoomNet.Resources
 		/// <summary>
 		/// Retrieve the details of a Scheduled meeting
 		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="meetingId">The meeting ID</param>
 		/// <param name="occurrenceId">The meeting occurrence id</param>
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns>
@@ -681,7 +681,7 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="meetingId">The meeting ID</param>
 		/// <param name="updatedMeeting">The modified ScheduledMeeting</param>
-		/// <param name="occurrenceId">The meeting occurrence id</param> 
+		/// <param name="occurrenceId">The meeting occurrence id</param>
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns>A <see cref="Task"/> representing the result of the asynchronous operation</returns>
 		public Task UpdateScheduledAsync(long meetingId, ScheduledMeeting updatedMeeting, string occurrenceId = null, CancellationToken cancellationToken = default)
@@ -699,7 +699,7 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="meetingId">The meeting ID</param>
 		/// <param name="updatedMeeting">The modified RecurringMeeting</param>
-		/// <param name="occurrenceId">The meeting occurrence id</param> 
+		/// <param name="occurrenceId">The meeting occurrence id</param>
 		/// <param name="cancellationToken">The cancellation token</param>
 		/// <returns>A <see cref="Task"/> representing the result of the asynchronous operation</returns>
 		public Task UpdateRecurringAsync(long meetingId, RecurringMeeting updatedMeeting, string occurrenceId = null, CancellationToken cancellationToken = default)
