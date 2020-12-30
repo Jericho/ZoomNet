@@ -331,7 +331,7 @@ namespace ZoomNet
 		{
 			if (EqualityComparer<T>.Default.Equals(value, default)) return;
 
-			var jsonSerializer = new JsonSerializer();
+			var jsonSerializer = new JsonSerializer() { NullValueHandling = NullValueHandling.Ignore };
 			if (converter != null)
 			{
 				jsonSerializer.Converters.Add(converter);
@@ -344,7 +344,7 @@ namespace ZoomNet
 		{
 			if (value == null || !value.Any()) return;
 
-			var jsonSerializer = new JsonSerializer();
+			var jsonSerializer = new JsonSerializer() { NullValueHandling = NullValueHandling.Ignore };
 			if (converter != null)
 			{
 				jsonSerializer.Converters.Add(converter);
