@@ -38,10 +38,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				});
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
 
-			var settings = new MeetingSettings()
-			{
-				ApprovalType = MeetingApprovalType.Manual
-			};
+			var settings = new MeetingSettings() { Audio = AudioType.Telephony };
 			var trackingFields = new Dictionary<string, string>()
 			{
 				{ "field1", "value1"},
@@ -67,7 +64,8 @@ namespace ZoomNet.IntegrationTests.Tests
 			var newScheduledMeeting = await client.Meetings.CreateScheduledMeetingAsync(userId, "ZoomNet Integration Testing: scheduled meeting", "The agenda", start, duration, "p@ss!w0rd", settings, trackingFields, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Scheduled meeting {newScheduledMeeting.Id} created").ConfigureAwait(false);
 
-			await client.Meetings.UpdateScheduledMeetingAsync(newScheduledMeeting.Id, topic: "ZoomNet Integration Testing: UPDATED scheduled meeting", cancellationToken: cancellationToken).ConfigureAwait(false);
+			var updatedSettings = new MeetingSettings() { Audio = AudioType.Voip };
+			await client.Meetings.UpdateScheduledMeetingAsync(newScheduledMeeting.Id, topic: "ZoomNet Integration Testing: UPDATED scheduled meeting", settings: updatedSettings, cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Scheduled meeting {newScheduledMeeting.Id} updated").ConfigureAwait(false);
 
 			var scheduledMeeting = (ScheduledMeeting)await client.Meetings.GetAsync(newScheduledMeeting.Id, null, cancellationToken).ConfigureAwait(false);
