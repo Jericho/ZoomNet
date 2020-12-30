@@ -91,7 +91,7 @@ namespace ZoomNet.Utilities
 
 			var rawValue = reader.Value as string;
 
-			if (objectType == typeof(DayOfWeek))
+			if (objectType == typeof(DayOfWeek) || objectType == typeof(DayOfWeek?))
 			{
 				var value = Convert.ToInt32(rawValue) - 1;
 				return (DayOfWeek)value;

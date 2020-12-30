@@ -365,22 +365,22 @@ namespace ZoomNet.Resources
 		Task<ScheduledMeeting> GetScheduledAsync(long meetingId, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// summary.
+		/// Modify the details of a Scheduled meeting.
 		/// </summary>
-		/// <param name="meetingId">sdf.</param>
-		/// <param name="updatedMeeting">1.</param>
-		/// <param name="occurrenceId">2.</param>
-		/// <param name="cancellationToken">3.</param>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="updatedMeeting">The modified ScheduledMeeting</param>
+		/// <param name="occurrenceId">The meeting occurrence id.</param> 
+		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>A <see cref="Task"/> representing the result of the asynchronous operation.</returns>
 		Task UpdateScheduledAsync(long meetingId, ScheduledMeeting updatedMeeting, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// summary.
+		/// Modify the details of a Recurring meeting.
 		/// </summary>
-		/// <param name="meetingId">1.</param>
-		/// <param name="updatedMeeting">2.</param>
-		/// <param name="occurrenceId">sd3fs.</param>
-		/// <param name="cancellationToken">4.</param>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="updatedMeeting">The modified RecurringMeeting</param>
+		/// <param name="occurrenceId">The meeting occurrence id.</param> 
+		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>A <see cref="Task"/> representing the result of the asynchronous operation.</returns>
 		Task UpdateRecurringAsync(long meetingId, RecurringMeeting updatedMeeting, string occurrenceId = null, CancellationToken cancellationToken = default);
 
@@ -392,9 +392,7 @@ namespace ZoomNet.Resources
 		/// <param name="cancelMeetingReminder">true: Notify host and alternative host about the meeting cancellation via email. false: Do not send any email notification.</param>
 		/// <param name="occurrenceId">The meeting occurrence id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <returns>A <see cref="Task"/> representing the result of the asynchronous operation.</returns>
 		Task DeleteAsync(long meetingId, bool scheduleForReminder, CancelMeetingReminderType cancelMeetingReminder, string occurrenceId = null, CancellationToken cancellationToken = default);
 	}
 }

@@ -6,7 +6,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <OutputType>Library</OutputType>
     <Version>$(SemVer)</Version>
-    <DebugType>portable</DebugType>
+    <DebugType>full</DebugType>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -53,7 +53,7 @@
   </ItemGroup>
 
   <PropertyGroup Condition=" !$(TargetFramework.StartsWith('netstandard')) ">
-    <DefineConstants>$(DefineConstants);NETFULL</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;NETFULL</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
@@ -74,6 +74,10 @@
 
   <PropertyGroup>
     <CodeAnalysisRuleSet>$(SolutionDir)StyleCopRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net461|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
 </Project>

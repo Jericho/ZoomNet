@@ -681,9 +681,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The <see cref="ScheduledMeeting" />.
 		/// </returns>
-#pragma warning disable SA1202 // Elements should be ordered by access
 		public Task<ScheduledMeeting> GetScheduledAsync(long meetingId, string occurrenceId = null, CancellationToken cancellationToken = default)
-#pragma warning restore SA1202 // Elements should be ordered by access
 		{
 			return _client
 				.GetAsync($"meetings/{meetingId}")
@@ -692,7 +690,14 @@ namespace ZoomNet.Resources
 				.AsObject<ScheduledMeeting>(null, new MeetingConverter());
 		}
 
-		/// <inheritdoc/>
+		/// <summary>
+		/// Modify the details of a Scheduled meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="updatedMeeting">The modified ScheduledMeeting</param>
+		/// <param name="occurrenceId">The meeting occurrence id.</param> 
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A <see cref="Task"/> representing the result of the asynchronous operation.</returns>
 		public Task UpdateScheduledAsync(long meetingId, ScheduledMeeting updatedMeeting, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -703,7 +708,14 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <inheritdoc/>
+		/// <summary>
+		/// Modify the details of a Recurring meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="updatedMeeting">The modified RecurringMeeting</param>
+		/// <param name="occurrenceId">The meeting occurrence id.</param> 
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A <see cref="Task"/> representing the result of the asynchronous operation.</returns>
 		public Task UpdateRecurringAsync(long meetingId, RecurringMeeting updatedMeeting, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			return _client
