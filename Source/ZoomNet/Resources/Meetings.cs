@@ -639,7 +639,7 @@ namespace ZoomNet.Resources
 		/// <summary>
 		/// Stop a meeting’s live stream.
 		/// </summary>
-		/// <param name="meetingId">The meeting ID</param>
+		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
@@ -661,7 +661,7 @@ namespace ZoomNet.Resources
 		/// <summary>
 		/// Retrieve the details of a Scheduled meeting.
 		/// </summary>
-		/// <param name="meetingId">The meeting I.D</param>
+		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="occurrenceId">The meeting occurrence id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
