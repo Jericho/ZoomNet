@@ -515,6 +515,27 @@ namespace ZoomNet
 			return null;
 		}
 
+		internal static IEnumerable<KeyValuePair<string, string>> ParseQuerystring(this Uri uri)
+		{
+			var querystringParameters = uri
+				.Query.TrimStart('?')
+				.Split(new char[] { '&' }, StringSplitOptions.RemoveEmptyEntries)
+				.Select(value => value.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries))
+				.Select(splitValue =>
+				{
+					if (splitValue.Length == 1)
+					{
+						return new KeyValuePair<string, string>(splitValue[0].Trim(), null);
+					}
+					else
+					{
+						return new KeyValuePair<string, string>(splitValue[0].Trim(), splitValue[1].Trim());
+					}
+				});
+
+			return querystringParameters;
+		}
+
 		internal static void CheckForZoomErrors(this IResponse response)
 		{
 			var (isError, errorMessage) = GetErrorMessage(response.Message).GetAwaiter().GetResult();
@@ -575,27 +596,6 @@ namespace ZoomNet
 			}
 
 			return (isError, errorMessage);
-		}
-
-		internal static IEnumerable<KeyValuePair<string, string>> ParseQuerystring(this Uri uri)
-		{
-			var querystringParameters = uri
-				.Query.TrimStart('?')
-				.Split(new char[] { '&' }, StringSplitOptions.RemoveEmptyEntries)
-				.Select(value => value.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries))
-				.Select(splitValue =>
-				{
-					if (splitValue.Length == 1)
-					{
-						return new KeyValuePair<string, string>(splitValue[0].Trim(), null);
-					}
-					else
-					{
-						return new KeyValuePair<string, string>(splitValue[0].Trim(), splitValue[1].Trim());
-					}
-				});
-
-			return querystringParameters;
 		}
 
 		/// <summary>Asynchronously converts the JSON encoded content and convert it to an object of the desired type.</summary>
