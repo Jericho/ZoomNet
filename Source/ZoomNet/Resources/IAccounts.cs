@@ -77,5 +77,20 @@ namespace ZoomNet.Resources
 		/// This will leave the Sub Account intact but it will no longer be associated with the master account.
 		/// </remarks>
 		Task DisassociateAsync(string accountId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update a Sub Account's options under the Master Account.
+		/// </summary>
+		/// <param name="accountId">The account Id.</param>
+		/// <param name="useSharedVirtualRoomConnectors">Enable/disable the option for a sub account to use shared Virtual Room Connector(s).</param>
+		/// <param name="roomConnectorsIpAddresses">The IP addresses of the Room Connectors that you would like to share with the sub account.</param>
+		/// <param name="useSharedMeetingConnectors">Enable/disable the option for a sub account to use shared Meeting Connector(s).</param>
+		/// <param name="meetingConnectorsIpAddresses">The IP addresses of the Meeting Connectors that you would like to share with the sub account.</param>
+		/// <param name="payMode">Payee.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task UpdateOptions(string accountId, bool? useSharedVirtualRoomConnectors = null, IEnumerable<string> roomConnectorsIpAddresses = null, bool? useSharedMeetingConnectors = null, IEnumerable<string> meetingConnectorsIpAddresses = null, PayMode? payMode = null, CancellationToken cancellationToken = default);
 	}
 }
