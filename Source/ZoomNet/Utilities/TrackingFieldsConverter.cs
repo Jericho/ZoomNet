@@ -75,7 +75,7 @@ namespace ZoomNet.Utilities
 				var jArray = JArray.Load(reader);
 				var items = jArray
 					.OfType<JObject>()
-					.Select(item => Convert(item, serializer))
+					.Select(item => Convert(item))
 					.Where(item => !string.IsNullOrEmpty(item.Key))
 					.ToArray();
 
@@ -85,7 +85,7 @@ namespace ZoomNet.Utilities
 			throw new Exception("Unable to convert to tracking fields");
 		}
 
-		private KeyValuePair<string, string> Convert(JObject jsonObject, JsonSerializer serializer)
+		private KeyValuePair<string, string> Convert(JObject jsonObject)
 		{
 			var fieldName = jsonObject.Value<string>("field");
 			var fieldValue = jsonObject.Value<string>("value");
