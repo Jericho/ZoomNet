@@ -359,7 +359,7 @@ namespace ZoomNet
 			{
 				NullValueHandling = NullValueHandling.Ignore
 			};
-			serializerSettings.Converters.Add(converter);
+			if (converter != null) serializerSettings.Converters.Add(converter);
 
 			AddPropertyIfValue(jsonObject, propertyName, value, v => JToken.Parse(JsonConvert.SerializeObject(v, serializerSettings)).ToString());
 		}
