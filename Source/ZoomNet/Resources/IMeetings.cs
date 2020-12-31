@@ -116,11 +116,13 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="occurrenceId">The meeting occurrence id.</param>
+		/// <param name="notifyHost">If true, a notification email is sent to the host and alternative host.</param>
+		/// <param name="notifyRegistrants">If true, a notification email is sent to the registrants.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task DeleteAsync(long meetingId, string occurrenceId = null, CancellationToken cancellationToken = default);
+		Task DeleteAsync(long meetingId, string occurrenceId = null, bool notifyHost = true, bool notifyRegistrants = false, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// End a meeting.
