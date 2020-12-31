@@ -9,7 +9,6 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
-using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
@@ -129,9 +128,9 @@ namespace ZoomNet.Resources
 				.DeleteAsync($"users/{userId}")
 				.WithArgument("action", "delete")
 				.WithArgument("transfer_email", transferEmail)
-				.WithArgument("transfer_meetings", transferMeetings)
-				.WithArgument("transfer_webinars", transferWebinars)
-				.WithArgument("transfer_recordings", transferRecordings)
+				.WithArgument("transfer_meetings", transferMeetings.ToString().ToLower())
+				.WithArgument("transfer_webinars", transferWebinars.ToString().ToLower())
+				.WithArgument("transfer_recordings", transferRecordings.ToString().ToLower())
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
@@ -154,9 +153,9 @@ namespace ZoomNet.Resources
 				.DeleteAsync($"users/{userId}")
 				.WithArgument("action", "disassociate")
 				.WithArgument("transfer_email", transferEmail)
-				.WithArgument("transfer_meetings", transferMeetings)
-				.WithArgument("transfer_webinars", transferWebinars)
-				.WithArgument("transfer_recordings", transferRecordings)
+				.WithArgument("transfer_meetings", transferMeetings.ToString().ToLower())
+				.WithArgument("transfer_webinars", transferWebinars.ToString().ToLower())
+				.WithArgument("transfer_recordings", transferRecordings.ToString().ToLower())
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
