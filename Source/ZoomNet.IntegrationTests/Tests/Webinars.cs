@@ -26,7 +26,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				.Where(m => m.Topic.StartsWith("ZoomNet Integration Testing:"))
 				.Select(async oldWebinar =>
 				{
-					await client.Webinars.DeleteAsync(oldWebinar.Id, null, cancellationToken).ConfigureAwait(false);
+					await client.Webinars.DeleteAsync(oldWebinar.Id, null, false, cancellationToken).ConfigureAwait(false);
 					await log.WriteLineAsync($"Webinar {oldWebinar.Id} deleted").ConfigureAwait(false);
 					await Task.Delay(250, cancellationToken).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
 				});
@@ -48,7 +48,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			var newScheduledWebinar = await client.Webinars.CreateScheduledWebinarAsync(userId, "ZoomNet Integration Testing: scheduled webinar", "The agenda", start, duration, "p@ss!w0rd", settings, trackingFields, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Scheduled webinar {newScheduledWebinar.Id} created").ConfigureAwait(false);
 
-			await client.Webinars.DeleteAsync(newScheduledWebinar.Id, null, cancellationToken).ConfigureAwait(false);
+			await client.Webinars.DeleteAsync(newScheduledWebinar.Id, null, false, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Scheduled webinar {newScheduledWebinar.Id} deleted").ConfigureAwait(false);
 
 			// Recurring webinar
@@ -61,7 +61,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			var newRecurringWebinar = await client.Webinars.CreateRecurringWebinarAsync(userId, "ZoomNet Integration Testing: recurring webinar", "The agenda", start, duration, recurrenceInfo, "p@ss!w0rd", settings, trackingFields, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Recurring webinar {newRecurringWebinar.Id} created").ConfigureAwait(false);
 
-			await client.Webinars.DeleteAsync(newRecurringWebinar.Id, null, cancellationToken).ConfigureAwait(false);
+			await client.Webinars.DeleteAsync(newRecurringWebinar.Id, null, false, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Recurring webinar {newRecurringWebinar.Id} deleted").ConfigureAwait(false);
 		}
 	}

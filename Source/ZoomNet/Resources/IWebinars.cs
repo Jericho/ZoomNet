@@ -92,11 +92,12 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="webinarId">The webinar ID.</param>
 		/// <param name="occurrenceId">The webinar occurrence id.</param>
+		/// <param name="sendNotification">If true, a notification email is sent to the panelists and registrants.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task DeleteAsync(long webinarId, string occurrenceId = null, CancellationToken cancellationToken = default);
+		Task DeleteAsync(long webinarId, string occurrenceId = null, bool sendNotification = false, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// End a webinar.
