@@ -64,7 +64,7 @@ namespace ZoomNet.Resources
 		Task<InstantMeeting> CreateInstantMeetingAsync(string userId, string topic, string agenda, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Creates a scheduled meeting for a user.
+		/// Create a scheduled meeting for a user.
 		/// </summary>
 		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="topic">Meeting topic.</param>
@@ -82,7 +82,7 @@ namespace ZoomNet.Resources
 		Task<ScheduledMeeting> CreateScheduledMeetingAsync(string userId, string topic, string agenda, DateTime start, int duration, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Creates a recurring meeting for a user.
+		/// Create a recurring meeting for a user.
 		/// </summary>
 		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="topic">Meeting topic.</param>
@@ -101,6 +101,58 @@ namespace ZoomNet.Resources
 		Task<RecurringMeeting> CreateRecurringMeetingAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Update the details of a meeting occurrence.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="occurrenceId">The meeting occurrence id.</param>
+		/// <param name="agenda">Meeting description.</param>
+		/// <param name="start">Meeting start time.</param>
+		/// <param name="duration">Meeting duration (minutes).</param>
+		/// <param name="settings">Meeting settings.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task UpdateMeetingOccurrenceAsync(long meetingId, string occurrenceId, string agenda = null, DateTime? start = null, int? duration = null, MeetingSettings settings = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update the details of a scheduled meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="topic">Meeting topic.</param>
+		/// <param name="agenda">Meeting description.</param>
+		/// <param name="start">Meeting start time.</param>
+		/// <param name="duration">Meeting duration (minutes).</param>
+		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
+		/// <param name="settings">Meeting settings.</param>
+		/// <param name="trackingFields">Tracking fields.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task UpdateScheduledMeetingAsync(long meetingId, string userId = null, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update the details of a recurring meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="topic">Meeting topic.</param>
+		/// <param name="agenda">Meeting description.</param>
+		/// <param name="start">Meeting start time. If omitted, a 'Recurring meeting with no fixed time' will be created.</param>
+		/// <param name="duration">Meeting duration (minutes).</param>
+		/// <param name="recurrence">Recurrence information.</param>
+		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
+		/// <param name="settings">Meeting settings.</param>
+		/// <param name="trackingFields">Tracking fields.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task UpdateRecurringMeetingAsync(long meetingId, string userId = null, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, RecurrenceInfo recurrence = null, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Retrieve the details of a meeting.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
@@ -114,14 +166,15 @@ namespace ZoomNet.Resources
 		/// <summary>
 		/// Delete a meeting.
 		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="occurrenceId">The meeting occurrence id.</param>
+		/// <param name="notifyHost">If true, a notification email is sent to the host and alternative host.</param>
+		/// <param name="notifyRegistrants">If true, a notification email is sent to the registrants.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task DeleteAsync(string userId, long meetingId, string occurrenceId = null, CancellationToken cancellationToken = default);
+		Task DeleteAsync(long meetingId, string occurrenceId = null, bool notifyHost = true, bool notifyRegistrants = false, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// End a meeting.

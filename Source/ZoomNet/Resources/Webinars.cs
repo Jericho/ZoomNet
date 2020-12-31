@@ -177,7 +177,7 @@ namespace ZoomNet.Resources
 				.GetAsync($"webinars/{webinarId}")
 				.WithArgument("occurrence_id", occurrenceId)
 				.WithCancellationToken(cancellationToken)
-				.AsObject<Webinar>(null, new WebinarConverter());
+				.AsObject<Webinar>(jsonConverter: new WebinarConverter());
 		}
 
 		/// <summary>
@@ -185,15 +185,17 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="webinarId">The webinar ID.</param>
 		/// <param name="occurrenceId">The webinar occurrence id.</param>
+		/// <param name="sendNotification">If true, a notification email is sent to the panelists and registrants.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task DeleteAsync(long webinarId, string occurrenceId = null, CancellationToken cancellationToken = default)
+		public Task DeleteAsync(long webinarId, string occurrenceId = null, bool sendNotification = false, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.DeleteAsync($"webinars/{webinarId}")
 				.WithArgument("occurrence_id", occurrenceId)
+				.WithArgument("cancel_webinar_reminder", sendNotification.ToString().ToLower())
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
