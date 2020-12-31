@@ -362,7 +362,9 @@ namespace ZoomNet
 		{
 			if (convertValueToJsonToken == null) throw new ArgumentNullException(nameof(convertValueToJsonToken));
 
-			jsonObject.AddDeepProperty(propertyName, value == null ? null : convertValueToJsonToken(value));
+			if (EqualityComparer<T>.Default.Equals(value, default)) return;
+
+			jsonObject.AddDeepProperty(propertyName, convertValueToJsonToken(value));
 		}
 
 		internal static void AddDeepProperty(this JObject jsonObject, string propertyName, JToken value)
