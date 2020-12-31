@@ -246,14 +246,13 @@ namespace ZoomNet.Resources
 		/// <summary>
 		/// Delete a meeting.
 		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="occurrenceId">The meeting occurrence id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task DeleteAsync(string userId, long meetingId, string occurrenceId = null, CancellationToken cancellationToken = default)
+		public Task DeleteAsync(long meetingId, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.DeleteAsync($"meetings/{meetingId}")
