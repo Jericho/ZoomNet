@@ -355,13 +355,7 @@ namespace ZoomNet
 
 		internal static void AddPropertyIfEnumValue<T>(this JObject jsonObject, string propertyName, T value, JsonConverter converter = null)
 		{
-			var jsonSerializer = new JsonSerializer();
-			if (converter != null)
-			{
-				jsonSerializer.Converters.Add(converter);
-			}
-
-			AddPropertyIfValue(jsonObject, propertyName, value, v => JToken.Parse(JsonConvert.SerializeObject(v)).ToString());
+			AddPropertyIfValue(jsonObject, propertyName, value, v => JToken.Parse(JsonConvert.SerializeObject(v, converter)).ToString());
 		}
 
 		internal static void AddPropertyIfValue<T>(this JObject jsonObject, string propertyName, T value, Func<T, JToken> convertValueToJsonToken)
@@ -536,10 +530,8 @@ namespace ZoomNet
 						errorMessage = $"Error code: {codeProperty.Value<string>()}";
 						isError = true;
 					}
-#pragma warning disable RECS0022 // A catch clause that catches System.Exception and has an empty body
 				}
 				catch
-#pragma warning restore RECS0022 // A catch clause that catches System.Exception and has an empty body
 				{
 					// Intentionally ignore parsing errors
 				}
