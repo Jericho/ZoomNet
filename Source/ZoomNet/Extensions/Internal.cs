@@ -355,7 +355,13 @@ namespace ZoomNet
 
 		internal static void AddPropertyIfEnumValue<T>(this JObject jsonObject, string propertyName, T value, JsonConverter converter = null)
 		{
-			AddPropertyIfValue(jsonObject, propertyName, value, v => JToken.Parse(JsonConvert.SerializeObject(v, converter)).ToString());
+			var serializerSettings = new JsonSerializerSettings()
+			{
+				NullValueHandling = NullValueHandling.Ignore
+			};
+			serializerSettings.Converters.Add(converter);
+
+			AddPropertyIfValue(jsonObject, propertyName, value, v => JToken.Parse(JsonConvert.SerializeObject(v, serializerSettings)).ToString());
 		}
 
 		internal static void AddPropertyIfValue<T>(this JObject jsonObject, string propertyName, T value, Func<T, JToken> convertValueToJsonToken)
