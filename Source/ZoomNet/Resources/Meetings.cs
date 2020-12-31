@@ -240,7 +240,7 @@ namespace ZoomNet.Resources
 				.GetAsync($"meetings/{meetingId}")
 				.WithArgument("occurrence_id", occurrenceId)
 				.WithCancellationToken(cancellationToken)
-				.AsObject<Meeting>(null, new MeetingConverter());
+				.AsObject<Meeting>(jsonConverter: new MeetingConverter());
 		}
 
 		/// <summary>

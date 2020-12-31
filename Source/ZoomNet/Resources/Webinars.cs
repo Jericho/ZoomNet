@@ -177,7 +177,7 @@ namespace ZoomNet.Resources
 				.GetAsync($"webinars/{webinarId}")
 				.WithArgument("occurrence_id", occurrenceId)
 				.WithCancellationToken(cancellationToken)
-				.AsObject<Webinar>(null, new WebinarConverter());
+				.AsObject<Webinar>(jsonConverter: new WebinarConverter());
 		}
 
 		/// <summary>
