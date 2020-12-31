@@ -103,9 +103,9 @@ namespace ZoomNet.Resources
 				{ "password", password }
 			};
 			data.AddPropertyIfValue("options/share_rc", useSharedVirtualRoomConnectors);
-			data.AddPropertyIfValue("options/room_connectors", string.Join(",", roomConnectorsIpAddresses ?? Array.Empty<string>()));
+			data.AddPropertyIfValue("options/room_connectors", roomConnectorsIpAddresses, ipAddresses => JToken.Parse(string.Join(",", ipAddresses)));
 			data.AddPropertyIfValue("options/share_mc", useSharedMeetingConnectors);
-			data.AddPropertyIfValue("options/meeting_connectors", string.Join(",", meetingConnectorsIpAddresses ?? Array.Empty<string>()));
+			data.AddPropertyIfValue("options/meeting_connectors", meetingConnectorsIpAddresses, ipAddresses => JToken.Parse(string.Join(",", ipAddresses)));
 			data.AddPropertyIfValue("options/pay_mode", payMode);
 
 			return _client
