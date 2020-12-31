@@ -262,7 +262,7 @@ namespace ZoomNet.Resources
 			return _client
 				.GetAsync($"meetings/{meetingId}/recordings/settings")
 				.WithCancellationToken(cancellationToken)
-				.AsObject<RecordingSettings>(null, null);
+				.AsObject<RecordingSettings>();
 		}
 
 		/// <summary>

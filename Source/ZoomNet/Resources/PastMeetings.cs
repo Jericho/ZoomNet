@@ -40,7 +40,7 @@ namespace ZoomNet.Resources
 			return _client
 				.GetAsync($"past_meetings/{uuid}")
 				.WithCancellationToken(cancellationToken)
-				.AsObject<Meeting>(null, new MeetingConverter());
+				.AsObject<Meeting>(jsonConverter: new MeetingConverter());
 		}
 
 		/// <summary>

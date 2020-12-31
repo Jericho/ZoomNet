@@ -214,7 +214,7 @@ namespace ZoomNet.Resources
 			data.AddPropertyIfValue("start_time", start?.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'"));
 			data.AddPropertyIfValue("duration", duration);
 			data.AddPropertyIfValue("recurrence", recurrence);
-			data.AddPropertyIfValue("timezone", "UTC");
+			if (start.HasValue) data.Add("timezone", "UTC");
 			data.AddPropertyIfValue("settings", settings);
 			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
 
@@ -240,7 +240,109 @@ namespace ZoomNet.Resources
 				.GetAsync($"meetings/{meetingId}")
 				.WithArgument("occurrence_id", occurrenceId)
 				.WithCancellationToken(cancellationToken)
-				.AsObject<Meeting>(null, new MeetingConverter());
+				.AsObject<Meeting>(jsonConverter: new MeetingConverter());
+		}
+
+		/// <summary>
+		/// Update the details of a meeting occurence.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="occurrenceId">The meeting occurrence id.</param>
+		/// <param name="agenda">Meeting description.</param>
+		/// <param name="start">Meeting start time.</param>
+		/// <param name="duration">Meeting duration (minutes).</param>
+		/// <param name="settings">Meeting settings.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task UpdateMeetingOccurrenceAsync(long meetingId, string occurrenceId, string agenda = null, DateTime? start = null, int? duration = null, MeetingSettings settings = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject();
+			data.AddPropertyIfValue("agenda", agenda);
+			data.AddPropertyIfValue("start_time", start?.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+			data.AddPropertyIfValue("duration", duration);
+			if (start.HasValue) data.Add("timezone", "UTC");
+			data.AddPropertyIfValue("settings", settings);
+
+			return _client
+				.PatchAsync($"meetings/{meetingId}")
+				.WithArgument("occurrence_id", occurrenceId)
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Update the details of a scheduled meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="topic">Meeting topic.</param>
+		/// <param name="agenda">Meeting description.</param>
+		/// <param name="start">Meeting start time.</param>
+		/// <param name="duration">Meeting duration (minutes).</param>
+		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
+		/// <param name="settings">Meeting settings.</param>
+		/// <param name="trackingFields">Tracking fields.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task UpdateScheduledMeetingAsync(long meetingId, string userId = null, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject();
+			data.AddPropertyIfValue("topic", topic);
+			data.AddPropertyIfValue("password", password);
+			data.AddPropertyIfValue("agenda", agenda);
+			data.AddPropertyIfValue("start_time", start?.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+			data.AddPropertyIfValue("duration", duration);
+			if (start.HasValue) data.Add("timezone", "UTC");
+			data.AddPropertyIfValue("settings", settings);
+			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
+
+			return _client
+				.PatchAsync($"meetings/{meetingId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Update the details of a recurring meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="topic">Meeting topic.</param>
+		/// <param name="agenda">Meeting description.</param>
+		/// <param name="start">Meeting start time. If omitted, a 'Recurring meeting with no fixed time' will be created.</param>
+		/// <param name="duration">Meeting duration (minutes).</param>
+		/// <param name="recurrence">Recurrence information.</param>
+		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
+		/// <param name="settings">Meeting settings.</param>
+		/// <param name="trackingFields">Tracking fields.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task UpdateRecurringMeetingAsync(long meetingId, string userId = null, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, RecurrenceInfo recurrence = null, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject();
+			data.AddPropertyIfValue("topic", topic);
+			data.AddPropertyIfValue("password", password);
+			data.AddPropertyIfValue("agenda", agenda);
+			data.AddPropertyIfValue("start_time", start?.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+			data.AddPropertyIfValue("duration", duration);
+			data.AddPropertyIfValue("recurrence", recurrence);
+			if (start.HasValue) data.Add("timezone", "UTC");
+			data.AddPropertyIfValue("settings", settings);
+			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
+
+			return _client
+				.PatchAsync($"meetings/{meetingId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
 		}
 
 		/// <summary>
