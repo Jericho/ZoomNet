@@ -126,8 +126,7 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task<Account> GetAsync(long accountId, CancellationToken cancellationToken = default)
 		{
-			//The information returned from this API call is vastly different than what is returned by GetAllAsync
-			//so they can't both return 'Account'
+			// The information returned from this API call is vastly different than what is returned by GetAllAsync
 			return _client
 				.GetAsync($"accounts/{accountId}")
 				.WithCancellationToken(cancellationToken)
@@ -292,7 +291,7 @@ namespace ZoomNet.Resources
 		{
 			var data = new JObject()
 			{
-				{ "email", newOwnerEmail}
+				{ "email", newOwnerEmail }
 			};
 
 			return _client
