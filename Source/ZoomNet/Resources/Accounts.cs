@@ -2,6 +2,7 @@ using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -231,6 +232,35 @@ namespace ZoomNet.Resources
 			};
 
 			return settings;
+		}
+
+		/// <summary>
+		/// Retrieve a sub account's managed domains.
+		/// </summary>
+		/// <param name="accountId">The account Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of managed domains and their status.
+		/// </returns>
+		public async Task<(string Domain, string Status)[]> GetManagedDomainsAsync(long accountId, CancellationToken cancellationToken = default)
+		{
+			var response = await _client
+				.GetAsync($"accounts/{accountId}/managed_domains")
+				.WithCancellationToken(cancellationToken)
+				.AsRawJsonArray("domains")
+				.ConfigureAwait(false);
+
+			var managedDomains = response
+				.Children()
+				.Select(jsonArrayItem =>
+				{
+					var key = jsonArrayItem.GetPropertyValue("domain", string.Empty);
+					var value = jsonArrayItem.GetPropertyValue("status", string.Empty);
+
+					return (key, value);
+				}).ToArray();
+
+			return managedDomains;
 		}
 	}
 }

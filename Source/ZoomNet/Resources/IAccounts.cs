@@ -112,5 +112,15 @@ namespace ZoomNet.Resources
 		/// The <see cref="AuthenticationSettings">settings</see>.
 		/// </returns>
 		Task<AuthenticationSettings> GetRecordingAuthenticationSettingsAsync(long accountId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve a sub account's managed domains.
+		/// </summary>
+		/// <param name="accountId">The account Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of managed domains and their status.
+		/// </returns>
+		Task<(string Domain, string Status)[]> GetManagedDomainsAsync(long accountId, CancellationToken cancellationToken = default);
 	}
 }
