@@ -262,5 +262,44 @@ namespace ZoomNet.Resources
 
 			return managedDomains;
 		}
+
+		/// <summary>
+		/// Retrieve a sub account's trusted domains.
+		/// </summary>
+		/// <param name="accountId">The account Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of trusted domains.
+		/// </returns>
+		public Task<string[]> GetTrustedDomainsAsync(long accountId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"accounts/{accountId}/trusted_domains")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string[]>("trusted_domains");
+		}
+
+		/// <summary>
+		/// Change the owner of a Sub Account to another user on the same account.
+		/// </summary>
+		/// <param name="accountId">The account Id.</param>
+		/// <param name="newOwnerEmail">The new owner's email address.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task UpdateOwnerAsync(long accountId, string newOwnerEmail, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject()
+			{
+				{ "email", newOwnerEmail}
+			};
+
+			return _client
+				.PatchAsync($"accounts/{accountId}/owner")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
 	}
 }

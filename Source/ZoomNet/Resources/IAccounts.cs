@@ -122,5 +122,26 @@ namespace ZoomNet.Resources
 		/// An array of managed domains and their status.
 		/// </returns>
 		Task<(string Domain, string Status)[]> GetManagedDomainsAsync(long accountId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve a sub account's trusted domains.
+		/// </summary>
+		/// <param name="accountId">The account Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of trusted domains.
+		/// </returns>
+		Task<string[]> GetTrustedDomainsAsync(long accountId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Change the owner of a Sub Account to another user on the same account.
+		/// </summary>
+		/// <param name="accountId">The account Id.</param>
+		/// <param name="newOwnerEmail">The new owner's email address.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task UpdateOwnerAsync(long accountId, string newOwnerEmail, CancellationToken cancellationToken = default);
 	}
 }
