@@ -180,5 +180,57 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
+
+		/// <summary>
+		/// Retrieve an account's meeting authentication settings.
+		/// </summary>
+		/// <param name="accountId">The account Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="AuthenticationSettings">settings</see>.
+		/// </returns>
+		public async Task<AuthenticationSettings> GetMeetingAuthenticationSettingsAsync(string accountId, CancellationToken cancellationToken = default)
+		{
+			var response = await _client
+				.GetAsync($"accounts/{accountId}/settings")
+				.WithArgument("option", "meeting_authentication")
+				.WithCancellationToken(cancellationToken)
+				.AsRawJsonObject()
+				.ConfigureAwait(false);
+
+			var settings = new AuthenticationSettings()
+			{
+				RequireAuthentication = response.GetPropertyValue("meeting_authentication", false),
+				AuthenticationOptions = response.GetPropertyValue("authentication_options", Array.Empty<AuthenticationOptions>())
+			};
+
+			return settings;
+		}
+
+		/// <summary>
+		/// Retrieve an account's recording authentication settings.
+		/// </summary>
+		/// <param name="accountId">The account Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="AuthenticationSettings">settings</see>.
+		/// </returns>
+		public async Task<AuthenticationSettings> GetRecordingAuthenticationSettingsAsync(string accountId, CancellationToken cancellationToken = default)
+		{
+			var response = await _client
+				.GetAsync($"accounts/{accountId}/settings")
+				.WithArgument("option", "recording_authentication")
+				.WithCancellationToken(cancellationToken)
+				.AsRawJsonObject()
+				.ConfigureAwait(false);
+
+			var settings = new AuthenticationSettings()
+			{
+				RequireAuthentication = response.GetPropertyValue("recording_authentication", false),
+				AuthenticationOptions = response.GetPropertyValue("authentication_options", Array.Empty<AuthenticationOptions>())
+			};
+
+			return settings;
+		}
 	}
 }

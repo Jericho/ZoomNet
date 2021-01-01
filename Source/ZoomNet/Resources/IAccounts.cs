@@ -92,5 +92,25 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task UpdateOptions(string accountId, bool? useSharedVirtualRoomConnectors = null, IEnumerable<string> roomConnectorsIpAddresses = null, bool? useSharedMeetingConnectors = null, IEnumerable<string> meetingConnectorsIpAddresses = null, PayMode? payMode = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve an account's meeting authentication settings.
+		/// </summary>
+		/// <param name="accountId">The account Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="AuthenticationSettings">settings</see>.
+		/// </returns>
+		Task<AuthenticationSettings> GetMeetingAuthenticationSettingsAsync(string accountId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve an account's recording authentication settings.
+		/// </summary>
+		/// <param name="accountId">The account Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="AuthenticationSettings">settings</see>.
+		/// </returns>
+		Task<AuthenticationSettings> GetRecordingAuthenticationSettingsAsync(string accountId, CancellationToken cancellationToken = default);
 	}
 }
