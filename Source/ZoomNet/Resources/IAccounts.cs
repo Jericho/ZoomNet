@@ -63,7 +63,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The <see cref="Account" />.
 		/// </returns>
-		Task<Account> GetAsync(string accountId, CancellationToken cancellationToken = default);
+		Task<Account> GetAsync(long accountId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Disassociate a Sub Account from the Master Account.
@@ -76,7 +76,7 @@ namespace ZoomNet.Resources
 		/// <remarks>
 		/// This will leave the Sub Account intact but it will no longer be associated with the master account.
 		/// </remarks>
-		Task DisassociateAsync(string accountId, CancellationToken cancellationToken = default);
+		Task DisassociateAsync(long accountId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Update a Sub Account's options under the Master Account.
@@ -91,7 +91,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task UpdateOptions(string accountId, bool? useSharedVirtualRoomConnectors = null, IEnumerable<string> roomConnectorsIpAddresses = null, bool? useSharedMeetingConnectors = null, IEnumerable<string> meetingConnectorsIpAddresses = null, PayMode? payMode = null, CancellationToken cancellationToken = default);
+		Task UpdateOptionsAsync(long accountId, bool? useSharedVirtualRoomConnectors = null, IEnumerable<string> roomConnectorsIpAddresses = null, bool? useSharedMeetingConnectors = null, IEnumerable<string> meetingConnectorsIpAddresses = null, PayMode? payMode = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve an account's meeting authentication settings.
@@ -101,7 +101,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The <see cref="AuthenticationSettings">settings</see>.
 		/// </returns>
-		Task<AuthenticationSettings> GetMeetingAuthenticationSettingsAsync(string accountId, CancellationToken cancellationToken = default);
+		Task<AuthenticationSettings> GetMeetingAuthenticationSettingsAsync(long accountId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve an account's recording authentication settings.
@@ -111,6 +111,6 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The <see cref="AuthenticationSettings">settings</see>.
 		/// </returns>
-		Task<AuthenticationSettings> GetRecordingAuthenticationSettingsAsync(string accountId, CancellationToken cancellationToken = default);
+		Task<AuthenticationSettings> GetRecordingAuthenticationSettingsAsync(long accountId, CancellationToken cancellationToken = default);
 	}
 }

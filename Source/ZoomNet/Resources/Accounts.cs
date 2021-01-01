@@ -123,7 +123,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The <see cref="Account" />.
 		/// </returns>
-		public Task<Account> GetAsync(string accountId, CancellationToken cancellationToken = default)
+		public Task<Account> GetAsync(long accountId, CancellationToken cancellationToken = default)
 		{
 			//The information returned from this API call is vastly different than what is returned by GetAllAsync
 			//so they can't both return 'Account'
@@ -144,7 +144,7 @@ namespace ZoomNet.Resources
 		/// <remarks>
 		/// This will leave the Sub Account intact but it will no longer be associated with the master account.
 		/// </remarks>
-		public Task DisassociateAsync(string accountId, CancellationToken cancellationToken = default)
+		public Task DisassociateAsync(long accountId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.DeleteAsync($"accounts/{accountId}")
@@ -165,7 +165,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task UpdateOptions(string accountId, bool? useSharedVirtualRoomConnectors = null, IEnumerable<string> roomConnectorsIpAddresses = null, bool? useSharedMeetingConnectors = null, IEnumerable<string> meetingConnectorsIpAddresses = null, PayMode? payMode = null, CancellationToken cancellationToken = default)
+		public Task UpdateOptionsAsync(long accountId, bool? useSharedVirtualRoomConnectors = null, IEnumerable<string> roomConnectorsIpAddresses = null, bool? useSharedMeetingConnectors = null, IEnumerable<string> meetingConnectorsIpAddresses = null, PayMode? payMode = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
 			data.AddPropertyIfValue("share_rc", useSharedVirtualRoomConnectors);
@@ -189,7 +189,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The <see cref="AuthenticationSettings">settings</see>.
 		/// </returns>
-		public async Task<AuthenticationSettings> GetMeetingAuthenticationSettingsAsync(string accountId, CancellationToken cancellationToken = default)
+		public async Task<AuthenticationSettings> GetMeetingAuthenticationSettingsAsync(long accountId, CancellationToken cancellationToken = default)
 		{
 			var response = await _client
 				.GetAsync($"accounts/{accountId}/settings")
@@ -215,7 +215,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The <see cref="AuthenticationSettings">settings</see>.
 		/// </returns>
-		public async Task<AuthenticationSettings> GetRecordingAuthenticationSettingsAsync(string accountId, CancellationToken cancellationToken = default)
+		public async Task<AuthenticationSettings> GetRecordingAuthenticationSettingsAsync(long accountId, CancellationToken cancellationToken = default)
 		{
 			var response = await _client
 				.GetAsync($"accounts/{accountId}/settings")
