@@ -57,7 +57,7 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("page", page)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponse<Recording>("meetings", null);
+				.AsPaginatedResponse<Recording>("meetings");
 		}
 
 		/// <summary>
@@ -88,7 +88,7 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<Recording>("meetings", null);
+				.AsPaginatedResponseWithToken<Recording>("meetings");
 		}
 
 		/// <summary>
@@ -114,7 +114,7 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("page", page)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponse<Recording>("meetings", null);
+				.AsPaginatedResponse<Recording>("meetings");
 		}
 
 		/// <summary>
@@ -139,7 +139,7 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<Recording>("meetings", null);
+				.AsPaginatedResponseWithToken<Recording>("meetings");
 		}
 
 		/// <summary>
@@ -288,7 +288,7 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("page", page)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponse<Registrant>("registrants", null);
+				.AsPaginatedResponse<Registrant>("registrants");
 		}
 
 		/// <summary>
@@ -313,7 +313,7 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<Registrant>("registrants", null);
+				.AsPaginatedResponseWithToken<Registrant>("registrants");
 		}
 
 		/// <summary>
