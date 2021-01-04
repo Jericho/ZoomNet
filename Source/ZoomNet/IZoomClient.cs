@@ -8,6 +8,14 @@ namespace ZoomNet
 	public interface IZoomClient
 	{
 		/// <summary>
+		/// Gets the resource which allows you to manage sub accounts.
+		/// </summary>
+		/// <value>
+		/// The accounts resource.
+		/// </value>
+		IAccounts Accounts { get; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage cloud recordings.
 		/// </summary>
 		/// <value>
