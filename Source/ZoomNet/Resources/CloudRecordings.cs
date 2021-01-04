@@ -2,10 +2,13 @@ using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
@@ -421,6 +424,25 @@ namespace ZoomNet.Resources
 		public Task RejectRegistrantsAsync(long meetingId, IEnumerable<string> registrantIds, CancellationToken cancellationToken = default)
 		{
 			return UpdateRegistrantsStatusAsync(meetingId, registrantIds, "deny", cancellationToken);
+		}
+
+		/// <summary>
+		/// Download the recording file.
+		/// </summary>
+		/// <param name="recordingFile">The recording file to download.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>
+		/// The <see cref="Stream"/> containing the file.
+		/// </returns>
+		public async Task<Stream> DownloadFileAsync(RecordingFile recordingFile, CancellationToken cancellationToken = default)
+		{
+			var tokenHandler = _client.Filters.OfType<ITokenHandler>().SingleOrDefault();
+
+			var requestUri = recordingFile.DownloadUrl;
+			if (tokenHandler != null) requestUri += "?access_token=" + tokenHandler.Token;
+
+			var response = await _client.BaseClient.GetAsync(requestUri, cancellationToken).ConfigureAwait(false);
+			return await response.Content.ReadAsStreamAsync();
 		}
 
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<string> registrantIds, string status, CancellationToken cancellationToken = default)
