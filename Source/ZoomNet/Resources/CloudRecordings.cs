@@ -434,15 +434,15 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The <see cref="Stream"/> containing the file.
 		/// </returns>
-		public Task<Stream> DownloadFileAsync(RecordingFile recordingFile, CancellationToken cancellationToken = default)
+		public async Task<Stream> DownloadFileAsync(RecordingFile recordingFile, CancellationToken cancellationToken = default)
 		{
-			var tokenHandler = (ITokenHandler)_client.Filters.OfType<JwtTokenHandler>().SingleOrDefault() ??
-							   (ITokenHandler)_client.Filters.OfType<OAuthTokenHandler>().SingleOrDefault();
+			var tokenHandler = _client.Filters.OfType<ITokenHandler>().SingleOrDefault();
 
 			var requestUri = recordingFile.DownloadUrl;
 			if (tokenHandler != null) requestUri += "?access_token=" + tokenHandler.Token;
 
-			return _client.BaseClient.GetStreamAsync(requestUri);
+			var response = await _client.BaseClient.GetAsync(requestUri, cancellationToken).ConfigureAwait(false);
+			return await response.Content.ReadAsStreamAsync();
 		}
 
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<string> registrantIds, string status, CancellationToken cancellationToken = default)
