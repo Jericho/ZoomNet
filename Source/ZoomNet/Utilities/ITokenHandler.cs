@@ -6,6 +6,11 @@ namespace ZoomNet.Utilities
 	internal interface ITokenHandler
 	{
 		/// <summary>
+		/// Gets the access token.
+		/// </summary>
+		string Token { get; }
+
+		/// <summary>
 		/// Refresh the access token if the previous one has expired.
 		/// </summary>
 		/// <param name="forceRefresh">Indicates if the token should be refreshes even if it's not expired.</param>

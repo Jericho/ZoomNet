@@ -20,6 +20,15 @@ namespace ZoomNet.Utilities
 	/// <seealso cref="Pathoschild.Http.Client.Extensibility.IHttpFilter" />
 	internal class OAuthTokenHandler : IHttpFilter, ITokenHandler
 	{
+		public string Token
+		{
+			get
+			{
+				RefreshTokenIfNecessary(false);
+				return _connectionInfo.AccessToken;
+			}
+		}
+
 		private static readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim();
 
 		private readonly OAuthConnectionInfo _connectionInfo;
@@ -40,8 +49,7 @@ namespace ZoomNet.Utilities
 		/// <param name="request">The HTTP request.</param>
 		public void OnRequest(IRequest request)
 		{
-			RefreshTokenIfNecessary(false);
-			request.WithBearerAuthentication(_connectionInfo.AccessToken);
+			request.WithBearerAuthentication(Token);
 		}
 
 		/// <summary>Method invoked just after the HTTP response is received. This method can modify the incoming HTTP response.</summary>

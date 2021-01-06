@@ -393,7 +393,7 @@ namespace ZoomNet.Resources
 		{
 			var response = await _client
 				.GetAsync($"users/{userId}/settings")
-				.WithArgument("option", "meeting_authentication")
+				.WithArgument("option", "recording_authentication")
 				.WithCancellationToken(cancellationToken)
 				.AsRawJsonObject()
 				.ConfigureAwait(false);

@@ -15,6 +15,17 @@ namespace ZoomNet.Utilities
 	/// <seealso cref="ITokenHandler" />
 	internal class JwtTokenHandler : IHttpFilter, ITokenHandler
 	{
+		public string Token
+		{
+			get
+			{
+				RefreshTokenIfNecessary(false);
+				return _jwtToken;
+			}
+
+			private set => _jwtToken = value;
+		}
+
 		private static readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim();
 
 		private readonly JwtConnectionInfo _connectionInfo;
@@ -39,8 +50,7 @@ namespace ZoomNet.Utilities
 		/// <param name="request">The HTTP request.</param>
 		public void OnRequest(IRequest request)
 		{
-			RefreshTokenIfNecessary(false);
-			request.WithBearerAuthentication(_jwtToken);
+			request.WithBearerAuthentication(Token);
 		}
 
 		/// <summary>Method invoked just after the HTTP response is received. This method can modify the incoming HTTP response.</summary>
