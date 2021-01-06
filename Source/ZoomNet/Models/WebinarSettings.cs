@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using ZoomNet.Resources;
 
 namespace ZoomNet.Models
 {
@@ -145,6 +146,9 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the authentication type for users to join a webinar when <see cref="AuthenticatedUsersOnly"/> is set to true.
 		/// </summary>
+		/// <remarks>
+		/// The value of this field can be retrieved from the <see cref="AuthenticationOptions.Id"/> in the response of <see cref="IUsers.GetMeetingAuthenticationSettingsAsync"/>.
+		/// </remarks>
 		[JsonProperty(PropertyName = "authentication_option")]
 		public string AuthenticationType { get; set; }
 	}
