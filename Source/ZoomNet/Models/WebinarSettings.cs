@@ -146,6 +146,6 @@ namespace ZoomNet.Models
 		/// Gets or sets the authentication type for users to join a webinar when <see cref="AuthenticatedUsersOnly"/> is set to true.
 		/// </summary>
 		[JsonProperty(PropertyName = "authentication_option")]
-		public bool? AuthenticationType { get; set; }
+		public string AuthenticationType { get; set; }
 	}
 }
