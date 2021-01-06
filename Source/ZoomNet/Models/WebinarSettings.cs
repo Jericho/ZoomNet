@@ -150,6 +150,6 @@ namespace ZoomNet.Models
 		/// The value of this field can be retrieved from the <see cref="AuthenticationOptions.Id"/> in the response of <see cref="IUsers.GetMeetingAuthenticationSettingsAsync"/>.
 		/// </remarks>
 		[JsonProperty(PropertyName = "authentication_option")]
-		public string AuthenticationType { get; set; }
+		public string AuthenticationTypeId { get; set; }
 	}
 }
