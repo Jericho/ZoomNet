@@ -211,5 +211,109 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
+
+		/// <summary>
+		/// Retrieve information about a specific chat channel.
+		/// </summary>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// A <see cref="ChatChannel"/>.
+		/// </returns>
+		public Task<ChatChannel> GetChannelAsync(string channelId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"chat/channels/{channelId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ChatChannel>();
+		}
+
+		/// <summary>
+		/// Update a chat channel.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="name">The name of the channel.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task UpdateChannelAsync(string channelId, string name, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject()
+			{
+				{ "name", name }
+			};
+
+			return _client
+				.PatchAsync($"chat/channels/{channelId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Delete a chat channel.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task DeleteChannelAsync(string channelId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"chat/channels/{channelId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Remove a member from a chat channel.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="memberId">The member Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task RemoveMemberFromChannelAsync(string channelId, string memberId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"chat/channels/{channelId}/members/{memberId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Join a chat channel.
+		/// </summary>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The member Id.
+		/// </returns>
+		public Task<string> JoinChannelAsync(string channelId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.PostAsync($"chat/channels/{channelId}/members/me")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("id");
+		}
+
+		/// <summary>
+		/// Leave a chat channel.
+		/// </summary>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task LeaveChannelAsync(string channelId, CancellationToken cancellationToken = default)
+		{
+			return RemoveMemberFromChannelAsync(channelId, "me", cancellationToken);
+		}
 	}
 }

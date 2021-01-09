@@ -113,5 +113,67 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task RemoveMemberFromAccountChannelAsync(string userId, string channelId, string memberId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve information about a specific chat channel.
+		/// </summary>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// A <see cref="ChatChannel"/>.
+		/// </returns>
+		Task<ChatChannel> GetChannelAsync(string channelId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update a chat channel.
+		/// </summary>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="name">The name of the channel.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task UpdateChannelAsync(string userId, string channelId, string name, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a chat channel.
+		/// </summary>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task DeleteChannelAsync(string channelId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Remove a member from a chat channel.
+		/// </summary>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="memberId">The member Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task RemoveMemberFromChannelAsync(string channelId, string memberId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Join a chat channel.
+		/// </summary>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The member Id.
+		/// </returns>
+		Task<string> JoinChannelAsync(string channelId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Leave a chat channel.
+		/// </summary>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task LeaveChannelAsync(string channelId, CancellationToken cancellationToken = default);
 	}
 }
