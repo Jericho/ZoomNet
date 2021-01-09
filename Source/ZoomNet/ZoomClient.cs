@@ -64,6 +64,14 @@ namespace ZoomNet
 		public IAccounts Accounts { get; private set; }
 
 		/// <summary>
+		/// Gets the resource which allows you to manage chat channels, messages, etc.
+		/// </summary>
+		/// <value>
+		/// The chat resource.
+		/// </value>
+		public IChat Chat { get; private set; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage cloud recordings.
 		/// </summary>
 		/// <value>
@@ -201,6 +209,7 @@ namespace ZoomNet
 			_fluentClient.Filters.Add(new ZoomErrorHandler());
 
 			Accounts = new Accounts(_fluentClient);
+			Chat = new Chat(_fluentClient);
 			CloudRecordings = new CloudRecordings(_fluentClient);
 			Meetings = new Meetings(_fluentClient);
 			PastMeetings = new PastMeetings(_fluentClient);

@@ -447,6 +447,12 @@ namespace ZoomNet
 			return item[name].Value<T>();
 		}
 
+		internal static T GetPropertyValue<T>(this JToken item, string name, bool throwIfMissing = true)
+		{
+			if (item[name] == null && throwIfMissing) throw new ArgumentException($"The response does not contain a field called '{name}'", nameof(name));
+			return item.GetPropertyValue(name, default(T));
+		}
+
 		internal static async Task<TResult[]> ForEachAsync<T, TResult>(this IEnumerable<T> items, Func<T, Task<TResult>> action, int maxDegreeOfParalellism)
 		{
 			var allTasks = new List<Task<TResult>>();
@@ -739,19 +745,25 @@ namespace ZoomNet
 			var serializer = new JsonSerializer();
 			if (jsonConverter != null) serializer.Converters.Add(jsonConverter);
 
+			var pageCount = jObject.GetPropertyValue<int>("page_count", 0);
+			var pageNumber = jObject.GetPropertyValue<int>("page_number", 0);
+			var pageSize = jObject.GetPropertyValue<int>("page_size", 0);
+			var totalRecords = jObject.GetPropertyValue<int?>("total_records", null);
+
+			// Make sure the desired property is present. It's ok if the property is missing when there are no records.
 			var jProperty = jObject.Property(propertyName);
-			if (jProperty == null)
+			if (jProperty == null && pageSize > 0)
 			{
 				throw new ArgumentException($"The response does not contain a field called '{propertyName}'", nameof(propertyName));
 			}
 
 			var result = new PaginatedResponse<T>()
 			{
-				PageCount = jObject.Property("page_count").Value.ToObject<int>(),
-				PageNumber = jObject.Property("page_number").Value.ToObject<int>(),
-				PageSize = jObject.Property("page_size").Value.ToObject<int>(),
-				Records = jProperty.Value.ToObject<T[]>(serializer),
-				TotalRecords = jObject.Property("total_records").Value.ToObject<int>()
+				PageCount = pageCount,
+				PageNumber = pageNumber,
+				PageSize = pageSize,
+				Records = jProperty?.Value.ToObject<T[]>(serializer) ?? Array.Empty<T>(),
+				TotalRecords = totalRecords
 			};
 
 			return result;
@@ -772,18 +784,23 @@ namespace ZoomNet
 			var serializer = new JsonSerializer();
 			if (jsonConverter != null) serializer.Converters.Add(jsonConverter);
 
+			var nextPageToken = jObject.GetPropertyValue<string>("next_page_token", string.Empty);
+			var pageSize = jObject.GetPropertyValue<int>("page_size", 0);
+			var totalRecords = jObject.GetPropertyValue<int?>("total_records", null);
+
+			// Make sure the desired property is present. It's ok if the property is missing when there are no records.
 			var jProperty = jObject.Property(propertyName);
-			if (jProperty == null)
+			if (jProperty == null && pageSize > 0)
 			{
 				throw new ArgumentException($"The response does not contain a field called '{propertyName}'", nameof(propertyName));
 			}
 
 			var result = new PaginatedResponseWithToken<T>()
 			{
-				NextPageToken = jObject.Property("next_page_token").Value.ToString(),
-				PageSize = jObject.Property("page_size").Value.ToObject<int>(),
-				Records = jProperty.Value.ToObject<T[]>(serializer),
-				TotalRecords = jObject.Property("total_records").Value.ToObject<int>()
+				NextPageToken = nextPageToken,
+				PageSize = pageSize,
+				Records = jProperty?.Value.ToObject<T[]>(serializer) ?? Array.Empty<T>(),
+				TotalRecords = totalRecords
 			};
 
 			return result;
@@ -804,20 +821,27 @@ namespace ZoomNet
 			var serializer = new JsonSerializer();
 			if (jsonConverter != null) serializer.Converters.Add(jsonConverter);
 
+			var from = DateTime.ParseExact(jObject.GetPropertyValue<string>("from", true), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+			var to = DateTime.ParseExact(jObject.GetPropertyValue<string>("to", true), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+			var nextPageToken = jObject.GetPropertyValue<string>("next_page_token", string.Empty);
+			var pageSize = jObject.GetPropertyValue<int>("page_size", 0);
+			var totalRecords = jObject.GetPropertyValue<int?>("total_records", null);
+
+			// Make sure the desired property is present. It's ok if the property is missing when there are no records.
 			var jProperty = jObject.Property(propertyName);
-			if (jProperty == null)
+			if (jProperty == null && pageSize > 0)
 			{
 				throw new ArgumentException($"The response does not contain a field called '{propertyName}'", nameof(propertyName));
 			}
 
 			var result = new PaginatedResponseWithTokenAndDateRange<T>()
 			{
-				From = DateTime.ParseExact(jObject.Property("from").Value.ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture),
-				To = DateTime.ParseExact(jObject.Property("to").Value.ToString(), "yyyy-MM-dd", CultureInfo.InvariantCulture),
-				NextPageToken = jObject.Property("next_page_token").Value.ToString(),
-				PageSize = jObject.Property("page_size").Value.ToObject<int>(),
-				Records = jProperty.Value.ToObject<T[]>(serializer),
-				TotalRecords = jObject.Property("total_records").Value.ToObject<int>()
+				From = from,
+				To = to,
+				NextPageToken = nextPageToken,
+				PageSize = pageSize,
+				Records = jProperty?.Value.ToObject<T[]>(serializer) ?? Array.Empty<T>(),
+				TotalRecords = totalRecords
 			};
 
 			return result;
