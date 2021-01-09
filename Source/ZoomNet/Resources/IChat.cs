@@ -133,7 +133,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task UpdateChannelAsync(string userId, string channelId, string name, CancellationToken cancellationToken = default);
+		Task UpdateChannelAsync(string channelId, string name, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Delete a chat channel.
