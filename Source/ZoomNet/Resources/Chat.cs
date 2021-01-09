@@ -231,7 +231,6 @@ namespace ZoomNet.Resources
 		/// <summary>
 		/// Update a chat channel.
 		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="channelId">The channel Id.</param>
 		/// <param name="name">The name of the channel.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
@@ -255,7 +254,6 @@ namespace ZoomNet.Resources
 		/// <summary>
 		/// Delete a chat channel.
 		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="channelId">The channel Id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
@@ -272,7 +270,6 @@ namespace ZoomNet.Resources
 		/// <summary>
 		/// Remove a member from a chat channel.
 		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="channelId">The channel Id.</param>
 		/// <param name="memberId">The member Id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
