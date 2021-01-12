@@ -3,6 +3,9 @@ using System.Security.Cryptography;
 
 namespace ZoomNet.Utilities
 {
+	/// <summary>
+	/// Random generator.
+	/// </summary>
 	public static class RandomGenerator
 	{
 		#region PUBLIC METHODS
@@ -14,7 +17,7 @@ namespace ZoomNet.Utilities
 		/// <param name="numberSides">Number of sides of the dice.</param>
 		/// <returns>A random value.</returns>
 		/// <remarks>
-		/// From: https://msdn.microsoft.com/en-us/library/system.security.cryptography.rngcryptoserviceprovider.aspx
+		/// From RNGCryptoServiceProvider <a href="https://msdn.microsoft.com/en-us/library/system.security.cryptography.rngcryptoserviceprovider.aspx">documentation</a>.
 		/// </remarks>
 		public static byte RollDice(byte numberSides)
 		{
