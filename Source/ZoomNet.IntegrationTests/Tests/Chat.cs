@@ -20,8 +20,7 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			// CLEANUP PREVIOUS INTEGRATION TESTS THAT MIGHT HAVE BEEN INTERRUPTED BEFORE THEY HAD TIME TO CLEANUP AFTER THEMSELVES
 			var cleanUpTasks = paginatedChannels.Records
-				.Where(m => m.Name.StartsWith("INTEGRATION TESTING:"))
-				//.Where(m => m.Name.StartsWith("ZoomNet Integration Testing:"))
+				.Where(m => m.Name.StartsWith("ZoomNet Integration Testing:"))
 				.Select(async oldChannel =>
 				{
 					await client.Chat.DeleteChannelAsync(oldChannel.Id, cancellationToken).ConfigureAwait(false);
