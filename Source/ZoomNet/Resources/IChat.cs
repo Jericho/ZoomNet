@@ -85,7 +85,7 @@ namespace ZoomNet.Resources
 		/// <param name="pagingToken">The paging token.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="ChatChannel">channels</see>.
+		/// An array of <see cref="ChatChannelMember">channel members</see>.
 		/// </returns>
 		Task<PaginatedResponseWithToken<ChatChannelMember>> GetAccountChannelMembersAsync(string userId, string channelId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
