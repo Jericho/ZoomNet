@@ -333,6 +333,38 @@ namespace ZoomNet.Resources
 			return SendMessageAsync(userId, null, channelId, message, mentions, cancellationToken);
 		}
 
+		/// <summary>
+		/// Retrieve the chat messages sent/received to/from a contact.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="recipientEmail">The email address of the contact to whom the user conversed.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="ChatMessage">chat messages</see>.
+		/// </returns>
+		public Task<PaginatedResponseWithToken<ChatMessage>> GetMessagesToContactAsync(string userId, string recipientEmail, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return GetMessagesAsync(userId, recipientEmail, null, recordsPerPage, pagingToken, cancellationToken);
+		}
+
+		/// <summary>
+		/// Retrieve the chat messages sent/received in a channel of which the user is a member.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="ChatMessage">chat messages</see>.
+		/// </returns>
+		public Task<PaginatedResponseWithToken<ChatMessage>> GetMessagesToChannelAsync(string userId, string channelId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return GetMessagesAsync(userId, null, channelId, recordsPerPage, pagingToken, cancellationToken);
+		}
+
 		private Task<string> SendMessageAsync(string userId, string recipientEmail, string channelId, string message, IEnumerable<ChatMention> mentions, CancellationToken cancellationToken)
 		{
 			Debug.Assert(recipientEmail != null || channelId != null, "You must provide either recipientEmail or channelId");
@@ -351,6 +383,26 @@ namespace ZoomNet.Resources
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<string>("id");
+		}
+
+		private Task<PaginatedResponseWithToken<ChatMessage>> GetMessagesAsync(string userId, string recipientEmail, string channelId, int recordsPerPage, string pagingToken, CancellationToken cancellationToken)
+		{
+			Debug.Assert(recipientEmail != null || channelId != null, "You must provide either recipientEmail or channelId");
+			Debug.Assert(recipientEmail == null || channelId == null, "You can't provide both recipientEmail and channelId");
+
+			if (recordsPerPage < 1 || recordsPerPage > 300)
+			{
+				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 300");
+			}
+
+			return _client
+				.GetAsync($"chat/users/{userId}/messages")
+				.WithArgument("to_contact", recipientEmail)
+				.WithArgument("to_channel", channelId)
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<ChatMessage>("messages");
 		}
 	}
 }
