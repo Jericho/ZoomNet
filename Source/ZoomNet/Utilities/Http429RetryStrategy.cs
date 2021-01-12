@@ -114,7 +114,17 @@ namespace ZoomNet.Utilities
 				// QPS stands for "Query Per Second".
 				// It means that we have exceeded the number of API calls per second.
 				// Therefore we must wait one second before retrying.
-				waitTime = TimeSpan.FromSeconds(1);
+				var waitMilliseconds = 1000;
+
+				// Edit January 2021: I introduced randomness in the wait time to avoid retrying too quickly
+				// and to avoid requests issued in a tight loop to all be retried at the same time.
+				// Up to one extra second: 250 milliseconds * 4.
+				for (int i = 0; i < 4; i++)
+				{
+					waitMilliseconds += RandomGenerator.RollDice(250);
+				}
+
+				waitTime = TimeSpan.FromMilliseconds(waitMilliseconds);
 			}
 
 			// Make sure the wait time is valid
