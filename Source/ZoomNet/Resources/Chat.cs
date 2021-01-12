@@ -299,18 +299,5 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsObject<string>("id");
 		}
-
-		/// <summary>
-		/// Leave a chat channel.
-		/// </summary>
-		/// <param name="channelId">The channel Id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
-		public Task LeaveChannelAsync(string channelId, CancellationToken cancellationToken = default)
-		{
-			return RemoveMemberFromChannelAsync(channelId, "me", cancellationToken);
-		}
 	}
 }

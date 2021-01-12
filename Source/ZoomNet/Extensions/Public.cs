@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -49,6 +50,20 @@ namespace ZoomNet
 		public static Task AddAssistantByEmailAsync(this IUsers usersResource, string userId, string assistantEmail, CancellationToken cancellationToken = default)
 		{
 			return usersResource.AddAssistantsByIdAsync(userId, new[] { assistantEmail }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Leave a chat channel.
+		/// </summary>
+		/// <param name="chatResource">The chat resource.</param>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public static Task LeaveChannelAsync(this IChat chatResource, string channelId, CancellationToken cancellationToken = default)
+		{
+			return chatResource.RemoveMemberFromChannelAsync(channelId, "me", cancellationToken);
 		}
 	}
 }

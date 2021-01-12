@@ -165,15 +165,5 @@ namespace ZoomNet.Resources
 		/// The member Id.
 		/// </returns>
 		Task<string> JoinChannelAsync(string channelId, CancellationToken cancellationToken = default);
-
-		/// <summary>
-		/// Leave a chat channel.
-		/// </summary>
-		/// <param name="channelId">The channel Id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
-		Task LeaveChannelAsync(string channelId, CancellationToken cancellationToken = default);
 	}
 }
