@@ -493,7 +493,7 @@ namespace ZoomNet.Resources
 			Debug.Assert(recipientEmail == null || channelId == null, "You can't provide both recipientEmail and channelId");
 
 			return _client
-				.PutAsync($"chat/users/{userId}/messages/{messageId}")
+				.DeleteAsync($"chat/users/{userId}/messages/{messageId}")
 				.WithArgument("to_contact", recipientEmail)
 				.WithArgument("to_channel", channelId)
 				.WithCancellationToken(cancellationToken)

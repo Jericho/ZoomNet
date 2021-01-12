@@ -1,4 +1,5 @@
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -17,12 +18,23 @@ namespace ZoomNet.IntegrationTests.Tests
 			var paginatedChannels = await client.Chat.GetAccountChannelsForUserAsync(userId, 100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {paginatedChannels.TotalRecords} account channels for user {userId}").ConfigureAwait(false);
 
+			// CLEANUP PREVIOUS INTEGRATION TESTS THAT MIGHT HAVE BEEN INTERRUPTED BEFORE THEY HAD TIME TO CLEANUP AFTER THEMSELVES
+			var cleanUpTasks = paginatedChannels.Records
+				.Where(m => m.Name.StartsWith("ZoomNet Integration Testing:"))
+				.Select(async oldChannel =>
+				{
+					await client.Chat.DeleteChannelAsync(oldChannel.Id, cancellationToken).ConfigureAwait(false);
+					await log.WriteLineAsync($"Channel {oldChannel.Id} deleted").ConfigureAwait(false);
+					await Task.Delay(250, cancellationToken).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
+				});
+			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
+
 			// CREATE A NEW CHANNEL
-			var channel = await client.Chat.CreateAccountChannelAsync(userId, "INTEGRATION TESTING: new channel", ChatChannelType.Public, null, cancellationToken).ConfigureAwait(false);
+			var channel = await client.Chat.CreateAccountChannelAsync(userId, "ZoomNet Integration Testing: new channel", ChatChannelType.Public, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Account channel \"{channel.Name}\" created (Id={channel.Id}").ConfigureAwait(false);
 
 			// UPDATE THE CHANNEL
-			await client.Chat.UpdateAccountChannelAsync(userId, channel.Id, "INTEGRATION TESTING: updated channel", cancellationToken).ConfigureAwait(false);
+			await client.Chat.UpdateAccountChannelAsync(userId, channel.Id, "ZoomNet Integration Testing: updated channel", cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Account channel \"{channel.Id}\" updated").ConfigureAwait(false);
 
 			// RETRIEVE THE CHANNEL
