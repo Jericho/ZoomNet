@@ -365,6 +365,40 @@ namespace ZoomNet.Resources
 			return GetMessagesAsync(userId, null, channelId, recordsPerPage, pagingToken, cancellationToken);
 		}
 
+		/// <summary>
+		/// Update a message that was previously sent to a user on on the sender's contact list.
+		/// </summary>
+		/// <param name="messageId">The unique identifier of the message.</param>
+		/// <param name="userId">The unique identifier of the sender.</param>
+		/// <param name="recipientEmail">The email address of the contact to whom you would like to send the message.</param>
+		/// <param name="message">The message.</param>
+		/// <param name="mentions">Mentions.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task UpdateMessageToContactAsync(string messageId, string userId, string recipientEmail, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
+		{
+			return UpdateMessageAsync(messageId, userId, recipientEmail, null, message, mentions, cancellationToken);
+		}
+
+		/// <summary>
+		/// Update a message that was previously sent to a channel of which the sender is a member.
+		/// </summary>
+		/// <param name="messageId">The unique identifier of the message.</param>
+		/// <param name="userId">The unique identifier of the sender.</param>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="message">The message.</param>
+		/// <param name="mentions">Mentions.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task UpdateMessageToChannelAsync(string messageId, string userId, string channelId, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
+		{
+			return UpdateMessageAsync(messageId, userId, null, channelId, message, mentions, cancellationToken);
+		}
+
 		private Task<string> SendMessageAsync(string userId, string recipientEmail, string channelId, string message, IEnumerable<ChatMention> mentions, CancellationToken cancellationToken)
 		{
 			Debug.Assert(recipientEmail != null || channelId != null, "You must provide either recipientEmail or channelId");
@@ -403,6 +437,24 @@ namespace ZoomNet.Resources
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<ChatMessage>("messages");
+		}
+
+		private Task UpdateMessageAsync(string messageId, string userId, string recipientEmail, string channelId, string message, IEnumerable<ChatMention> mentions, CancellationToken cancellationToken)
+		{
+			Debug.Assert(recipientEmail != null || channelId != null, "You must provide either recipientEmail or channelId");
+			Debug.Assert(recipientEmail == null || channelId == null, "You can't provide both recipientEmail and channelId");
+
+			var data = new JObject();
+			data.AddPropertyIfValue("message", message);
+			data.AddPropertyIfValue("to_contact", recipientEmail);
+			data.AddPropertyIfValue("to_channel", channelId);
+			data.AddPropertyIfValue("at_items", mentions);
+
+			return _client
+				.PutAsync($"chat/users/{userId}/messages/{messageId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
 		}
 	}
 }
