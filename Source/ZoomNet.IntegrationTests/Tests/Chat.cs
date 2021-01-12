@@ -33,6 +33,22 @@ namespace ZoomNet.IntegrationTests.Tests
 			var paginatedMembers = await client.Chat.GetAccountChannelMembersAsync(userId, channel.Id, 10, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Account channel \"{channel.Id}\" has {paginatedMembers.TotalRecords} members").ConfigureAwait(false);
 
+			// SEND A MESSAGE TO THE CHANNEL
+			var messageId = await client.Chat.SendMessageToChannelAsync(channel.Id, "This is a test from integration test", null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Message \"{messageId}\" sent").ConfigureAwait(false);
+
+			// UPDATE THE MESSAGE
+			await client.Chat.UpdateMessageToChannelAsync(messageId, channel.Id, "This is an updated message from integration testing", null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Message \"{messageId}\" updated").ConfigureAwait(false);
+
+			// RETRIEVE LIST OF MESSAGES
+			var paginatedMessages = await client.Chat.GetMessagesToChannelAsync(channel.Id, 100, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {paginatedMessages.TotalRecords ?? paginatedMessages.Records.Length} messages in channel \"{channel.Id}\"").ConfigureAwait(false);
+
+			// DELETE THE MESSAGE
+			await client.Chat.DeleteMessageToChannelAsync(messageId, channel.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Message \"{messageId}\" deleted").ConfigureAwait(false);
+
 			// DELETE THE CHANNEL
 			await client.Chat.DeleteAccountChannelAsync(userId, channel.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Account channel \"{channel.Id}\" deleted").ConfigureAwait(false);
