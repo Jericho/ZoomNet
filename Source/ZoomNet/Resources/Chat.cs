@@ -2,6 +2,7 @@ using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -296,6 +297,58 @@ namespace ZoomNet.Resources
 		{
 			return _client
 				.PostAsync($"chat/channels/{channelId}/members/me")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("id");
+		}
+
+		/// <summary>
+		/// Send a message to a user on on the sender's contact list.
+		/// </summary>
+		/// <param name="userId">The unique identifier of the sender.</param>
+		/// <param name="recipientEmail">The email address of the contact to whom you would like to send the message.</param>
+		/// <param name="message">The message.</param>
+		/// <param name="mentions">Mentions.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The message Id.
+		/// </returns>
+		public Task<string> SendMessageToContactAsync(string userId, string recipientEmail, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
+		{
+			return SendMessageAsync(userId, recipientEmail, null, message, mentions, cancellationToken);
+		}
+
+		/// <summary>
+		/// Send a message to a channel of which the sender is a member.
+		/// </summary>
+		/// <param name="userId">The unique identifier of the sender.</param>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="message">The message.</param>
+		/// <param name="mentions">Mentions.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The message Id.
+		/// </returns>
+		public Task<string> SendMessageToChannelAsync(string userId, string channelId, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
+		{
+			return SendMessageAsync(userId, null, channelId, message, mentions, cancellationToken);
+		}
+
+		private Task<string> SendMessageAsync(string userId, string recipientEmail, string channelId, string message, IEnumerable<ChatMention> mentions, CancellationToken cancellationToken)
+		{
+			Debug.Assert(recipientEmail != null || channelId != null, "You must provide either recipientEmail or channelId");
+			Debug.Assert(recipientEmail == null || channelId == null, "You can't provide both recipientEmail and channelId");
+
+			var data = new JObject()
+			{
+				{ "message", message }
+			};
+			data.AddPropertyIfValue("to_contact", recipientEmail);
+			data.AddPropertyIfValue("to_channel", channelId);
+			data.AddPropertyIfValue("at_items", mentions);
+
+			return _client
+				.PostAsync($"chat/users/{userId}/messages")
+				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<string>("id");
 		}

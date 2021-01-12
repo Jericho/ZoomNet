@@ -165,5 +165,31 @@ namespace ZoomNet.Resources
 		/// The member Id.
 		/// </returns>
 		Task<string> JoinChannelAsync(string channelId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Send a message to a user on the sender's contact list.
+		/// </summary>
+		/// <param name="userId">The unique identifier of the sender.</param>
+		/// <param name="recipientEmail">The email address of the contact to whom you would like to send the message.</param>
+		/// <param name="message">The message.</param>
+		/// <param name="mentions">Mentions.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The message Id.
+		/// </returns>
+		Task<string> SendMessageToContactAsync(string userId, string recipientEmail, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Send a message to a channel of which the sender is a member.
+		/// </summary>
+		/// <param name="userId">The unique identifier of the sender.</param>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="message">The message.</param>
+		/// <param name="mentions">Mentions.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The message Id.
+		/// </returns>
+		Task<string> SendMessageToChannelAsync(string userId, string channelId, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default);
 	}
 }
