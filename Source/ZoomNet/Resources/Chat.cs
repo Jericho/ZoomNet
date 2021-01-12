@@ -399,6 +399,36 @@ namespace ZoomNet.Resources
 			return UpdateMessageAsync(messageId, userId, null, channelId, message, mentions, cancellationToken);
 		}
 
+		/// <summary>
+		/// Delete a message that was previously sent to a user on on the sender's contact list.
+		/// </summary>
+		/// <param name="messageId">The unique identifier of the message.</param>
+		/// <param name="userId">The unique identifier of the sender.</param>
+		/// <param name="recipientEmail">The email address of the contact to whom you would like to send the message.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task DeleteMessageToContactAsync(string messageId, string userId, string recipientEmail, CancellationToken cancellationToken = default)
+		{
+			return DeleteMessageAsync(messageId, userId, recipientEmail, null, cancellationToken);
+		}
+
+		/// <summary>
+		/// Delete a message that was previously sent to a channel of which the sender is a member.
+		/// </summary>
+		/// <param name="messageId">The unique identifier of the message.</param>
+		/// <param name="userId">The unique identifier of the sender.</param>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task DeleteMessageToChannelAsync(string messageId, string userId, string channelId, CancellationToken cancellationToken = default)
+		{
+			return DeleteMessageAsync(messageId, userId, null, channelId, cancellationToken);
+		}
+
 		private Task<string> SendMessageAsync(string userId, string recipientEmail, string channelId, string message, IEnumerable<ChatMention> mentions, CancellationToken cancellationToken)
 		{
 			Debug.Assert(recipientEmail != null || channelId != null, "You must provide either recipientEmail or channelId");
@@ -453,6 +483,19 @@ namespace ZoomNet.Resources
 			return _client
 				.PutAsync($"chat/users/{userId}/messages/{messageId}")
 				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		private Task DeleteMessageAsync(string messageId, string userId, string recipientEmail, string channelId, CancellationToken cancellationToken)
+		{
+			Debug.Assert(recipientEmail != null || channelId != null, "You must provide either recipientEmail or channelId");
+			Debug.Assert(recipientEmail == null || channelId == null, "You can't provide both recipientEmail and channelId");
+
+			return _client
+				.PutAsync($"chat/users/{userId}/messages/{messageId}")
+				.WithArgument("to_contact", recipientEmail)
+				.WithArgument("to_channel", channelId)
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
