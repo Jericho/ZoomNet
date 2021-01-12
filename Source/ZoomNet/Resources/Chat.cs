@@ -2,6 +2,7 @@ using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -151,7 +152,7 @@ namespace ZoomNet.Resources
 		/// <param name="pagingToken">The paging token.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="ChatChannel">channels</see>.
+		/// An array of <see cref="ChatChannelMember">channel members</see>.
 		/// </returns>
 		public Task<PaginatedResponseWithToken<ChatChannelMember>> GetAccountChannelMembersAsync(string userId, string channelId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
@@ -301,16 +302,202 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
-		/// Leave a chat channel.
+		/// Send a message to a user on on the sender's contact list.
 		/// </summary>
+		/// <param name="userId">The unique identifier of the sender.</param>
+		/// <param name="recipientEmail">The email address of the contact to whom you would like to send the message.</param>
+		/// <param name="message">The message.</param>
+		/// <param name="mentions">Mentions.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The message Id.
+		/// </returns>
+		public Task<string> SendMessageToContactAsync(string userId, string recipientEmail, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
+		{
+			return SendMessageAsync(userId, recipientEmail, null, message, mentions, cancellationToken);
+		}
+
+		/// <summary>
+		/// Send a message to a channel of which the sender is a member.
+		/// </summary>
+		/// <param name="userId">The unique identifier of the sender.</param>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="message">The message.</param>
+		/// <param name="mentions">Mentions.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The message Id.
+		/// </returns>
+		public Task<string> SendMessageToChannelAsync(string userId, string channelId, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
+		{
+			return SendMessageAsync(userId, null, channelId, message, mentions, cancellationToken);
+		}
+
+		/// <summary>
+		/// Retrieve the chat messages sent/received to/from a contact.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="recipientEmail">The email address of the contact to whom the user conversed.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="ChatMessage">chat messages</see>.
+		/// </returns>
+		public Task<PaginatedResponseWithToken<ChatMessage>> GetMessagesToContactAsync(string userId, string recipientEmail, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return GetMessagesAsync(userId, recipientEmail, null, recordsPerPage, pagingToken, cancellationToken);
+		}
+
+		/// <summary>
+		/// Retrieve the chat messages sent/received in a channel of which the user is a member.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="ChatMessage">chat messages</see>.
+		/// </returns>
+		public Task<PaginatedResponseWithToken<ChatMessage>> GetMessagesToChannelAsync(string userId, string channelId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return GetMessagesAsync(userId, null, channelId, recordsPerPage, pagingToken, cancellationToken);
+		}
+
+		/// <summary>
+		/// Update a message that was previously sent to a user on on the sender's contact list.
+		/// </summary>
+		/// <param name="messageId">The unique identifier of the message.</param>
+		/// <param name="userId">The unique identifier of the sender.</param>
+		/// <param name="recipientEmail">The email address of the contact to whom you would like to send the message.</param>
+		/// <param name="message">The message.</param>
+		/// <param name="mentions">Mentions.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task UpdateMessageToContactAsync(string messageId, string userId, string recipientEmail, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
+		{
+			return UpdateMessageAsync(messageId, userId, recipientEmail, null, message, mentions, cancellationToken);
+		}
+
+		/// <summary>
+		/// Update a message that was previously sent to a channel of which the sender is a member.
+		/// </summary>
+		/// <param name="messageId">The unique identifier of the message.</param>
+		/// <param name="userId">The unique identifier of the sender.</param>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="message">The message.</param>
+		/// <param name="mentions">Mentions.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task UpdateMessageToChannelAsync(string messageId, string userId, string channelId, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
+		{
+			return UpdateMessageAsync(messageId, userId, null, channelId, message, mentions, cancellationToken);
+		}
+
+		/// <summary>
+		/// Delete a message that was previously sent to a user on on the sender's contact list.
+		/// </summary>
+		/// <param name="messageId">The unique identifier of the message.</param>
+		/// <param name="userId">The unique identifier of the sender.</param>
+		/// <param name="recipientEmail">The email address of the contact to whom you would like to send the message.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task DeleteMessageToContactAsync(string messageId, string userId, string recipientEmail, CancellationToken cancellationToken = default)
+		{
+			return DeleteMessageAsync(messageId, userId, recipientEmail, null, cancellationToken);
+		}
+
+		/// <summary>
+		/// Delete a message that was previously sent to a channel of which the sender is a member.
+		/// </summary>
+		/// <param name="messageId">The unique identifier of the message.</param>
+		/// <param name="userId">The unique identifier of the sender.</param>
 		/// <param name="channelId">The channel Id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task LeaveChannelAsync(string channelId, CancellationToken cancellationToken = default)
+		public Task DeleteMessageToChannelAsync(string messageId, string userId, string channelId, CancellationToken cancellationToken = default)
 		{
-			return RemoveMemberFromChannelAsync(channelId, "me", cancellationToken);
+			return DeleteMessageAsync(messageId, userId, null, channelId, cancellationToken);
+		}
+
+		private Task<string> SendMessageAsync(string userId, string recipientEmail, string channelId, string message, IEnumerable<ChatMention> mentions, CancellationToken cancellationToken)
+		{
+			Debug.Assert(recipientEmail != null || channelId != null, "You must provide either recipientEmail or channelId");
+			Debug.Assert(recipientEmail == null || channelId == null, "You can't provide both recipientEmail and channelId");
+
+			var data = new JObject()
+			{
+				{ "message", message }
+			};
+			data.AddPropertyIfValue("to_contact", recipientEmail);
+			data.AddPropertyIfValue("to_channel", channelId);
+			data.AddPropertyIfValue("at_items", mentions);
+
+			return _client
+				.PostAsync($"chat/users/{userId}/messages")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("id");
+		}
+
+		private Task<PaginatedResponseWithToken<ChatMessage>> GetMessagesAsync(string userId, string recipientEmail, string channelId, int recordsPerPage, string pagingToken, CancellationToken cancellationToken)
+		{
+			Debug.Assert(recipientEmail != null || channelId != null, "You must provide either recipientEmail or channelId");
+			Debug.Assert(recipientEmail == null || channelId == null, "You can't provide both recipientEmail and channelId");
+
+			if (recordsPerPage < 1 || recordsPerPage > 300)
+			{
+				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 300");
+			}
+
+			return _client
+				.GetAsync($"chat/users/{userId}/messages")
+				.WithArgument("to_contact", recipientEmail)
+				.WithArgument("to_channel", channelId)
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<ChatMessage>("messages");
+		}
+
+		private Task UpdateMessageAsync(string messageId, string userId, string recipientEmail, string channelId, string message, IEnumerable<ChatMention> mentions, CancellationToken cancellationToken)
+		{
+			Debug.Assert(recipientEmail != null || channelId != null, "You must provide either recipientEmail or channelId");
+			Debug.Assert(recipientEmail == null || channelId == null, "You can't provide both recipientEmail and channelId");
+
+			var data = new JObject();
+			data.AddPropertyIfValue("message", message);
+			data.AddPropertyIfValue("to_contact", recipientEmail);
+			data.AddPropertyIfValue("to_channel", channelId);
+			data.AddPropertyIfValue("at_items", mentions);
+
+			return _client
+				.PutAsync($"chat/users/{userId}/messages/{messageId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		private Task DeleteMessageAsync(string messageId, string userId, string recipientEmail, string channelId, CancellationToken cancellationToken)
+		{
+			Debug.Assert(recipientEmail != null || channelId != null, "You must provide either recipientEmail or channelId");
+			Debug.Assert(recipientEmail == null || channelId == null, "You can't provide both recipientEmail and channelId");
+
+			return _client
+				.PutAsync($"chat/users/{userId}/messages/{messageId}")
+				.WithArgument("to_contact", recipientEmail)
+				.WithArgument("to_channel", channelId)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
 		}
 	}
 }

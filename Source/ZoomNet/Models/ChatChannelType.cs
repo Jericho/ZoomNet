@@ -11,7 +11,7 @@ namespace ZoomNet.Models
 		Private = 1,
 
 		/// <summary>
-		/// Members of this chanel should be invited amd the members should be from the same organization.
+		/// Members of this channel should be invited amd the members should be from the same organization.
 		/// </summary>
 		PrivateWithUsersInSameAccount = 2,
 
