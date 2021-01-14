@@ -121,6 +121,14 @@ namespace ZoomNet
 		public IPastWebinars PastWebinars { get; private set; }
 
 		/// <summary>
+		/// Gets the resource which allows you to manage roles.
+		/// </summary>
+		/// <value>
+		/// The roles resource.
+		/// </value>
+		public IRoles Roles { get; private set; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage users.
 		/// </summary>
 		/// <value>
@@ -233,6 +241,7 @@ namespace ZoomNet
 			Meetings = new Meetings(_fluentClient);
 			PastMeetings = new PastMeetings(_fluentClient);
 			PastWebinars = new PastWebinars(_fluentClient);
+			Roles = new Roles(_fluentClient);
 			Users = new Users(_fluentClient);
 			Webinars = new Webinars(_fluentClient);
 			Dashboards = new Dashboards(_fluentClient);
