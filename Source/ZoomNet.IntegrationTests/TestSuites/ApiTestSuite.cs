@@ -21,6 +21,7 @@ namespace ZoomNet.IntegrationTests.TestSuites
 			typeof(Meetings),
 			typeof(Reports),
 			typeof(Roles),
+			typeof(Rooms),
 			typeof(TrackingFields),
 			typeof(Users),
 			typeof(Webinars),
