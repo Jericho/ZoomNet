@@ -139,6 +139,14 @@ namespace ZoomNet
 		public IRoles Roles { get; private set; }
 
 		/// <summary>
+		/// Gets the resource which allows you to manage rooms.
+		/// </summary>
+		/// <value>
+		/// The rooms resource.
+		/// </value>
+		public IRooms Rooms { get; private set; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage users.
 		/// </summary>
 		/// <value>
@@ -279,6 +287,7 @@ namespace ZoomNet
 			PastMeetings = new PastMeetings(_fluentClient);
 			PastWebinars = new PastWebinars(_fluentClient);
 			Roles = new Roles(_fluentClient);
+			Rooms = new Rooms(_fluentClient);
 			Users = new Users(_fluentClient);
 			Webinars = new Webinars(_fluentClient);
 			Dashboards = new Dashboards(_fluentClient);
