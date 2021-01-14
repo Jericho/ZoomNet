@@ -10,7 +10,7 @@ namespace ZoomNet.Resources
 	/// Allows you to manage users.
 	/// </summary>
 	/// <remarks>
-	/// See <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/users/users">Zoom documentation</a> for more information.
+	/// See <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/users/">Zoom documentation</a> for more information.
 	/// </remarks>
 	public interface IUsers
 	{
@@ -23,7 +23,7 @@ namespace ZoomNet.Resources
 		/// <param name="page">The current page number of returned records.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="Users">users</see>.
+		/// An array of <see cref="User">users</see>.
 		/// </returns>
 		Task<PaginatedResponse<User>> GetAllAsync(UserStatus status = UserStatus.Active, string roleId = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
 
