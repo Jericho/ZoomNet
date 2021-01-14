@@ -67,7 +67,7 @@ namespace ZoomNet.Utilities
 				{
 					var responseContent = await response.Content.ReadAsStringAsync(null).ConfigureAwait(false);
 					var jObject = JObject.Parse(responseContent);
-					var message = jObject.GetPropertyValue<string>("message");
+					var message = jObject.GetPropertyValue("message", string.Empty);
 					if (message.StartsWith("access token is expired", StringComparison.OrdinalIgnoreCase))
 					{
 						var refreshedToken = _tokenHandler.RefreshTokenIfNecessary(true);

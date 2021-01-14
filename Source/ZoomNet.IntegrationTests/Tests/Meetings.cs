@@ -90,7 +90,6 @@ namespace ZoomNet.IntegrationTests.Tests
 			var recurringMeeting = (RecurringMeeting)await client.Meetings.GetAsync(newRecurringMeeting.Id, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Recurring meeting {recurringMeeting.Id} retrieved").ConfigureAwait(false);
 
-			await client.Meetings.DeleteAsync(newRecurringMeeting.Id, null, false, false, cancellationToken).ConfigureAwait(false);
 			var occurenceId = recurringMeeting.Occurrences[0].OccurrenceId;
 			await client.Meetings.UpdateMeetingOccurrenceAsync(newRecurringMeeting.Id, occurenceId, duration: 99, cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Recurring meeting {newRecurringMeeting.Id} occurence {occurenceId} updated").ConfigureAwait(false);

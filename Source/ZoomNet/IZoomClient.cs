@@ -16,6 +16,14 @@ namespace ZoomNet
 		IAccounts Accounts { get; }
 
 		/// <summary>
+		/// Gets the resource which allows you to manage chat channels, messages, etc.
+		/// </summary>
+		/// <value>
+		/// The chat resource.
+		/// </value>
+		IChat Chat { get; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage cloud recordings.
 		/// </summary>
 		/// <value>

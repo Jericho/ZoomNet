@@ -51,7 +51,7 @@ var connectionInfo = new JwtConnectionInfo(apiKey, apiSecret);
 ```
 
 #### Connection using OAuth
-Using OAuth is much more complicated than using JWT but at the same time, it is more flexible because you can define which permissions your app requires. When a user installs your app, they are presented with the list of permission your app requires and the are given the opportunity to accept. 
+Using OAuth is much more complicated than using JWT but at the same time, it is more flexible because you can define which permissions your app requires. When a user installs your app, they are presented with the list of permissions your app requires and the are given the opportunity to accept. 
 
 The Zoom documentation has a document about [how to create an OAuth app](https://marketplace.zoom.us/docs/guides/build/oauth-app) and another document about the [OAuth autorization flow](https://marketplace.zoom.us/docs/guides/auth/oauth) but I personnality was very confused by the later document so here is a brief step-by-step summary:
 - you create an OAuth app, define which permissions your app requires and publish the app in the Zoom marketplace.
