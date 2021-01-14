@@ -113,6 +113,9 @@ namespace ZoomNet
 		public IRoles Roles { get; private set; }
 
 		/// <inheritdoc/>
+		public IRooms Rooms { get; private set; }
+
+		/// <inheritdoc/>
 		public ISms Sms { get; private set; }
 
 		/// <inheritdoc/>
@@ -226,6 +229,7 @@ namespace ZoomNet
 			Phone = new Phone(_fluentClient);
 			Reports = new Reports(_fluentClient);
 			Roles = new Roles(_fluentClient);
+			Rooms = new Rooms(_fluentClient);
 			Sms = new Sms(_fluentClient);
 			Users = new Users(_fluentClient);
 			Webinars = new Webinars(_fluentClient);
