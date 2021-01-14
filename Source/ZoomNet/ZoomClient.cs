@@ -97,6 +97,14 @@ namespace ZoomNet
 		public IDataCompliance DataCompliance { get; private set; }
 
 		/// <summary>
+		/// Gets the resource which allows you to manage locations.
+		/// </summary>
+		/// <value>
+		/// The locations resource.
+		/// </value>
+		public ILocations Locations { get; private set; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage meetings.
 		/// </summary>
 		/// <value>
@@ -119,6 +127,14 @@ namespace ZoomNet
 		/// The past webinars resource.
 		/// </value>
 		public IPastWebinars PastWebinars { get; private set; }
+
+		/// <summary>
+		/// Gets the resource which allows you to manage rooms.
+		/// </summary>
+		/// <value>
+		/// The rooms resource.
+		/// </value>
+		public IRooms Rooms { get; private set; }
 
 		/// <summary>
 		/// Gets the resource which allows you to manage users.
@@ -230,9 +246,11 @@ namespace ZoomNet
 			CloudRecordings = new CloudRecordings(_fluentClient);
 			Contacts = new Contacts(_fluentClient);
 			DataCompliance = new DataCompliance(_fluentClient);
+			Locations = new Locations(_fluentClient);
 			Meetings = new Meetings(_fluentClient);
 			PastMeetings = new PastMeetings(_fluentClient);
 			PastWebinars = new PastWebinars(_fluentClient);
+			Rooms = new Rooms(_fluentClient);
 			Users = new Users(_fluentClient);
 			Webinars = new Webinars(_fluentClient);
 			Dashboards = new Dashboards(_fluentClient);
