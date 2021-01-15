@@ -92,6 +92,9 @@ namespace ZoomNet
 		public IDataCompliance DataCompliance { get; private set; }
 
 		/// <inheritdoc/>
+		public IDevices Devices { get; private set; }
+
+		/// <inheritdoc/>
 		public IExternalContacts ExternalContacts { get; private set; }
 
 		/// <inheritdoc/>
@@ -222,6 +225,7 @@ namespace ZoomNet
 			Contacts = new Contacts(_fluentClient);
 			Dashboards = new Dashboards(_fluentClient);
 			DataCompliance = new DataCompliance(_fluentClient);
+			Devices = new Devices(_fluentClient);
 			ExternalContacts = new ExternalContacts(_fluentClient);
 			Groups = new Groups(_fluentClient);
 			Meetings = new Meetings(_fluentClient);
