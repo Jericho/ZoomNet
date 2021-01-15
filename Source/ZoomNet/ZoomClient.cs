@@ -93,6 +93,9 @@ namespace ZoomNet
 		public IDashboards Dashboards { get; private set; }
 
 		/// <inheritdoc/>
+		public IDevices Devices { get; private set; }
+
+		/// <inheritdoc/>
 		public IEvents Events { get; private set; }
 
 		/// <inheritdoc/>
@@ -241,6 +244,7 @@ namespace ZoomNet
 			CloudRecordings = new CloudRecordings(_fluentClient);
 			Contacts = new Contacts(_fluentClient);
 			Dashboards = new Dashboards(_fluentClient);
+			Devices = new Devices(_fluentClient);
 			Events = new Events(_fluentClient);
 			ExternalContacts = new ExternalContacts(_fluentClient);
 			Groups = new Groups(_fluentClient);
