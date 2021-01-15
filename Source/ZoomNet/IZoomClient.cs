@@ -59,6 +59,11 @@ namespace ZoomNet
 		IDashboards Dashboards { get; }
 
 		/// <summary>
+		/// Gets the resource which allows you to manage devices.
+		/// </summary>
+		IDevices Devices { get; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage events.
 		/// </summary>
 		IEvents Events { get; }
