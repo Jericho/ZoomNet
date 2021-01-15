@@ -58,6 +58,11 @@ namespace ZoomNet
 		IDataCompliance DataCompliance { get; }
 
 		/// <summary>
+		/// Gets the resource which allows you to manage devices.
+		/// </summary>
+		IDevices Devices { get; }
+
+		/// <summary>
 		/// Gets the resource that allows you to manage groups.
 		/// </summary>
 		IGroups Groups { get; }
