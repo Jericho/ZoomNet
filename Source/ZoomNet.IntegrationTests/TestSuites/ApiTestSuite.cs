@@ -16,6 +16,7 @@ namespace ZoomNet.IntegrationTests.TestSuites
 			typeof(CloudRecordings),
 			typeof(Contacts),
 			typeof(Dashboards),
+			typeof(Devices),
 			typeof(Events),
 			typeof(ExternalContacts),
 			typeof(Groups),
