@@ -98,7 +98,7 @@ namespace ZoomNet.Resources
 		/// The new webinar.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the webinar.</exception>
-		public Task<ScheduledWebinar> CreateScheduledWebinarAsync(string userId, string topic, string agenda, DateTime start, int duration, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
+		public Task<Webinar> CreateScheduledWebinarAsync(string userId, string topic, string agenda, DateTime start, int duration, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject()
 			{
@@ -117,7 +117,7 @@ namespace ZoomNet.Resources
 				.PostAsync($"users/{userId}/webinars")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
-				.AsObject<ScheduledWebinar>();
+				.AsObject<Webinar>();
 		}
 
 		/// <summary>
