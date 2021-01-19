@@ -90,7 +90,7 @@ namespace ZoomNet.Resources
 		/// <param name="agenda">Webinar description.</param>
 		/// <param name="start">Webinar start time.</param>
 		/// <param name="duration">Webinar duration (minutes).</param>
-		/// <param name="password">Password to join the webinar. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
+		/// <param name="password">Password to join the webinar. By default the password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters. This can be updated within Zoom account settings.</param>
 		/// <param name="settings">Webinar settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
@@ -121,6 +121,45 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
+		/// Updates an existing scheduled webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="topic">Webinar topic.</param>
+		/// <param name="agenda">Webinar description.</param>
+		/// <param name="start">Webinar start time.</param>
+		/// <param name="duration">Webinar duration (minutes).</param>
+		/// <param name="password">Password to join the webinar. By default the password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters. This can be updated within Zoom account settings.</param>
+		/// <param name="settings">Webinar settings.</param>
+		/// <param name="trackingFields">Tracking fields.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// Zoom will return an HTTP 200 response when there is no webinar subscription present.
+		/// A successful update is reported by an HTTP 204 value.
+		/// </returns>
+		public Task<System.Net.Http.HttpResponseMessage> UpdateScheduledWebinarAsync(long webinarId, string topic, string agenda, DateTime start, int duration, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject()
+			{
+				{ "type", 5 }
+			};
+			data.AddPropertyIfValue("topic", topic);
+			data.AddPropertyIfValue("agenda", agenda);
+			data.AddPropertyIfValue("password", password);
+			data.AddPropertyIfValue("start_time", start.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+			data.AddPropertyIfValue("duration", duration);
+			data.AddPropertyIfValue("timezone", "UTC");
+			data.AddPropertyIfValue("settings", settings);
+			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
+
+			return _client
+				.PatchAsync($"webinars/{webinarId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
 		/// Creates a recurring webinar for a user.
 		/// </summary>
 		/// <param name="userId">The user Id or email address.</param>
@@ -129,7 +168,7 @@ namespace ZoomNet.Resources
 		/// <param name="start">Webinar start time.</param>
 		/// <param name="duration">Webinar duration (minutes).</param>
 		/// <param name="recurrence">Recurrence information.</param>
-		/// <param name="password">Password to join the webinar. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
+		/// <param name="password">Password to join the webinar. By default the password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters. This can be updated within Zoom account settings.</param>
 		/// <param name="settings">Webinar settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
@@ -160,6 +199,47 @@ namespace ZoomNet.Resources
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<RecurringWebinar>();
+		}
+
+		/// <summary>
+		/// Creates an existing recurring webinar for a user.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="topic">Webinar topic.</param>
+		/// <param name="agenda">Webinar description.</param>
+		/// <param name="start">Webinar start time.</param>
+		/// <param name="duration">Webinar duration (minutes).</param>
+		/// <param name="recurrence">Recurrence information.</param>
+		/// <param name="password">Password to join the webinar. By default the password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters. This can be updated within Zoom account settings.</param>
+		/// <param name="settings">Webinar settings.</param>
+		/// <param name="trackingFields">Tracking fields.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// Zoom will return an HTTP 200 response when there is no webinar subscription present.
+		/// A successful update is reported by an HTTP 204 value.
+		/// </returns>
+		public Task<System.Net.Http.HttpResponseMessage> UpdateRecurringWebinarAsync(long webinarId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject()
+			{
+				{ "type", start.HasValue ? 9 : 6 }
+			};
+			data.AddPropertyIfValue("topic", topic);
+			data.AddPropertyIfValue("agenda", agenda);
+			data.AddPropertyIfValue("password", password);
+			data.AddPropertyIfValue("start_time", start?.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+			data.AddPropertyIfValue("duration", duration);
+			data.AddPropertyIfValue("recurrence", recurrence);
+			data.AddPropertyIfValue("timezone", "UTC");
+			data.AddPropertyIfValue("settings", settings);
+			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
+
+			return _client
+				.PatchAsync($"webinars/{webinarId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
 		}
 
 		/// <summary>
