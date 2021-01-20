@@ -137,7 +137,7 @@ namespace ZoomNet.Resources
 		/// Zoom will return an HTTP 200 response when there is no webinar subscription present.
 		/// A successful update is reported by an HTTP 204 value.
 		/// </returns>
-		public Task<System.Net.Http.HttpResponseMessage> UpdateScheduledWebinarAsync(long webinarId, string topic, string agenda, DateTime start, int duration, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
+		public Task UpdateScheduledWebinarAsync(long webinarId, string topic, string agenda, DateTime start, int duration, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject()
 			{
@@ -152,11 +152,19 @@ namespace ZoomNet.Resources
 			data.AddPropertyIfValue("settings", settings);
 			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
 
-			return _client
+			var task = _client
 				.PatchAsync($"webinars/{webinarId}")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
+
+			if (task.Result.StatusCode == System.Net.HttpStatusCode.OK)
+			{
+				// Zoom returns an HTTP 200 message when there is no webinar subscription and instead returns a 204 after a successful update
+				throw new NotSupportedException("Webinar subscription plan is missing. Enable webinar for this user once the subscription is added");
+			}
+
+			return task;
 		}
 
 		/// <summary>
@@ -202,7 +210,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
-		/// Creates an existing recurring webinar for a user.
+		/// Updates an existing recurring webinar for a user.
 		/// </summary>
 		/// <param name="webinarId">The webinar ID.</param>
 		/// <param name="topic">Webinar topic.</param>
@@ -219,7 +227,7 @@ namespace ZoomNet.Resources
 		/// Zoom will return an HTTP 200 response when there is no webinar subscription present.
 		/// A successful update is reported by an HTTP 204 value.
 		/// </returns>
-		public Task<System.Net.Http.HttpResponseMessage> UpdateRecurringWebinarAsync(long webinarId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
+		public Task UpdateRecurringWebinarAsync(long webinarId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject()
 			{
@@ -235,11 +243,19 @@ namespace ZoomNet.Resources
 			data.AddPropertyIfValue("settings", settings);
 			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
 
-			return _client
+			var task = _client
 				.PatchAsync($"webinars/{webinarId}")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
+
+			if (task.Result.StatusCode == System.Net.HttpStatusCode.OK)
+			{
+				// Zoom returns an HTTP 200 message when there is no webinar subscription and instead returns a 204 after a successful update
+				throw new NotSupportedException("Webinar subscription plan is missing. Enable webinar for this user once the subscription is added");
+			}
+
+			return task;
 		}
 
 		/// <summary>

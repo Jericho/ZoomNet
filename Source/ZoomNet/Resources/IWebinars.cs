@@ -90,10 +90,8 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
-		/// Zoom will return an HTTP 200 response when there is no webinar subscription present.
-		/// A successful update is reported by an HTTP 204 value.
 		/// </returns>
-		Task<System.Net.Http.HttpResponseMessage> UpdateScheduledWebinarAsync(long webinarId, string topic, string agenda, DateTime start, int duration, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
+		Task UpdateScheduledWebinarAsync(long webinarId, string topic, string agenda, DateTime start, int duration, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve the details of a webinar.
@@ -107,7 +105,7 @@ namespace ZoomNet.Resources
 		Task<Webinar> GetAsync(long webinarId, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Creates an existing recurring webinar for a user.
+		/// Updates an existing recurring webinar for a user.
 		/// </summary>
 		/// <param name="webinarId">The webinar ID.</param>
 		/// <param name="topic">Webinar topic.</param>
@@ -121,10 +119,8 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
-		/// Zoom will return an HTTP 200 response when there is no webinar subscription present.
-		/// A successful update is reported by an HTTP 204 value.
 		/// </returns>
-		Task<System.Net.Http.HttpResponseMessage> UpdateRecurringWebinarAsync(long webinarId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
+		Task UpdateRecurringWebinarAsync(long webinarId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Delete a webinar.
