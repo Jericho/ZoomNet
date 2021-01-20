@@ -77,6 +77,23 @@ namespace ZoomNet.Resources
 		Task<RecurringWebinar> CreateRecurringWebinarAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Updates an existing scheduled webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="topic">Webinar topic.</param>
+		/// <param name="agenda">Webinar description.</param>
+		/// <param name="start">Webinar start time.</param>
+		/// <param name="duration">Webinar duration (minutes).</param>
+		/// <param name="password">Password to join the webinar. By default the password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters. This can be updated within Zoom account settings.</param>
+		/// <param name="settings">Webinar settings.</param>
+		/// <param name="trackingFields">Tracking fields.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task UpdateScheduledWebinarAsync(long webinarId, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Retrieve the details of a webinar.
 		/// </summary>
 		/// <param name="webinarId">The webinar ID.</param>
@@ -86,6 +103,24 @@ namespace ZoomNet.Resources
 		/// The <see cref="Webinar" />.
 		/// </returns>
 		Task<Webinar> GetAsync(long webinarId, string occurrenceId = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Updates an existing recurring webinar for a user.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="topic">Webinar topic.</param>
+		/// <param name="agenda">Webinar description.</param>
+		/// <param name="start">Webinar start time.</param>
+		/// <param name="duration">Webinar duration (minutes).</param>
+		/// <param name="recurrence">Recurrence information.</param>
+		/// <param name="password">Password to join the webinar. By default the password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters. This can be updated within Zoom account settings.</param>
+		/// <param name="settings">Webinar settings.</param>
+		/// <param name="trackingFields">Tracking fields.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task UpdateRecurringWebinarAsync(long webinarId, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, RecurrenceInfo recurrence = null, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Delete a webinar.
