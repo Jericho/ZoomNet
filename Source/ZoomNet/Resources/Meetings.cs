@@ -724,7 +724,7 @@ namespace ZoomNet.Resources
 		{
 			var data = new JObject()
 			{
-				{ "action", "Start" },
+				{ "action", "start" },
 				{
 					"settings", new JObject()
 					{
