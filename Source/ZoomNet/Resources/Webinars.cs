@@ -134,37 +134,31 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
-		/// Zoom will return an HTTP 200 response when there is no webinar subscription present.
-		/// A successful update is reported by an HTTP 204 value.
 		/// </returns>
-		public Task UpdateScheduledWebinarAsync(long webinarId, string topic, string agenda, DateTime start, int duration, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
+		public async Task UpdateScheduledWebinarAsync(long webinarId, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
-			{
-				{ "type", 5 }
-			};
+			var data = new JObject();
 			data.AddPropertyIfValue("topic", topic);
 			data.AddPropertyIfValue("agenda", agenda);
 			data.AddPropertyIfValue("password", password);
-			data.AddPropertyIfValue("start_time", start.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+			data.AddPropertyIfValue("start_time", start?.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'"));
 			data.AddPropertyIfValue("duration", duration);
-			data.AddPropertyIfValue("timezone", "UTC");
+			if (start.HasValue) data.Add("timezone", "UTC");
 			data.AddPropertyIfValue("settings", settings);
 			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
 
-			var task = _client
+			var result = await _client
 				.PatchAsync($"webinars/{webinarId}")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
-				.AsMessage();
+				.AsMessage()
+				.ConfigureAwait(false);
 
-			if (task.Result.StatusCode == System.Net.HttpStatusCode.OK)
+			if (result.StatusCode == System.Net.HttpStatusCode.OK)
 			{
 				// Zoom returns an HTTP 200 message when there is no webinar subscription and instead returns a 204 after a successful update
 				throw new NotSupportedException("Webinar subscription plan is missing. Enable webinar for this user once the subscription is added");
 			}
-
-			return task;
 		}
 
 		/// <summary>
@@ -224,38 +218,38 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
-		/// Zoom will return an HTTP 200 response when there is no webinar subscription present.
-		/// A successful update is reported by an HTTP 204 value.
 		/// </returns>
-		public Task UpdateRecurringWebinarAsync(long webinarId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
+		public async Task UpdateRecurringWebinarAsync(long webinarId, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, RecurrenceInfo recurrence = null, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
-			{
-				{ "type", start.HasValue ? 9 : 6 }
-			};
+			var data = new JObject();
 			data.AddPropertyIfValue("topic", topic);
 			data.AddPropertyIfValue("agenda", agenda);
 			data.AddPropertyIfValue("password", password);
 			data.AddPropertyIfValue("start_time", start?.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'"));
 			data.AddPropertyIfValue("duration", duration);
 			data.AddPropertyIfValue("recurrence", recurrence);
-			data.AddPropertyIfValue("timezone", "UTC");
+			if (start.HasValue) data.Add("timezone", "UTC");
 			data.AddPropertyIfValue("settings", settings);
 			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
 
-			var task = _client
+			var result = await _client
 				.PatchAsync($"webinars/{webinarId}")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
-				.AsMessage();
+				.AsMessage()
+				.ConfigureAwait(false);
 
-			if (task.Result.StatusCode == System.Net.HttpStatusCode.OK)
+			switch (result.StatusCode)
+			{
+				case System.Net.HttpStatusCode.OK:
+					break;
+			}
+
+			if (result.StatusCode == System.Net.HttpStatusCode.OK)
 			{
 				// Zoom returns an HTTP 200 message when there is no webinar subscription and instead returns a 204 after a successful update
 				throw new NotSupportedException("Webinar subscription plan is missing. Enable webinar for this user once the subscription is added");
 			}
-
-			return task;
 		}
 
 		/// <summary>
