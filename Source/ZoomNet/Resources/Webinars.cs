@@ -94,11 +94,12 @@ namespace ZoomNet.Resources
 		/// <param name="settings">Webinar settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <param name="templateId">Template Identifer.</param>
 		/// <returns>
 		/// The new webinar.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the webinar.</exception>
-		public Task<ScheduledWebinar> CreateScheduledWebinarAsync(string userId, string topic, string agenda, DateTime start, int duration, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
+		public Task<ScheduledWebinar> CreateScheduledWebinarAsync(string userId, string topic, string agenda, DateTime start, int duration, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default, string templateId = null)
 		{
 			var data = new JObject()
 			{
@@ -113,8 +114,10 @@ namespace ZoomNet.Resources
 			data.AddPropertyIfValue("settings", settings);
 			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
 
+			string templateIdUrl = string.IsNullOrWhiteSpace(templateId) ? string.Empty : $"?template_id={templateId}";
+
 			return _client
-				.PostAsync($"users/{userId}/webinars")
+				.PostAsync($"users/{userId}/webinars{templateIdUrl}")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<ScheduledWebinar>();
