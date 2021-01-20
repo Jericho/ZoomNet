@@ -239,12 +239,6 @@ namespace ZoomNet.Resources
 				.AsMessage()
 				.ConfigureAwait(false);
 
-			switch (result.StatusCode)
-			{
-				case System.Net.HttpStatusCode.OK:
-					break;
-			}
-
 			if (result.StatusCode == System.Net.HttpStatusCode.OK)
 			{
 				// Zoom returns an HTTP 200 message when there is no webinar subscription and instead returns a 204 after a successful update
