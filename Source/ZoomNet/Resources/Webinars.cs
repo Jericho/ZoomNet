@@ -93,13 +93,13 @@ namespace ZoomNet.Resources
 		/// <param name="password">Password to join the webinar. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
 		/// <param name="settings">Webinar settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <param name="templateId">Template Identifer.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The new webinar.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the webinar.</exception>
-		public Task<ScheduledWebinar> CreateScheduledWebinarAsync(string userId, string topic, string agenda, DateTime start, int duration, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default, string templateId = null)
+		public Task<ScheduledWebinar> CreateScheduledWebinarAsync(string userId, string topic, string agenda, DateTime start, int duration, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject()
 			{
@@ -114,10 +114,9 @@ namespace ZoomNet.Resources
 			data.AddPropertyIfValue("settings", settings);
 			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
 
-			string templateIdUrl = string.IsNullOrWhiteSpace(templateId) ? string.Empty : $"?template_id={templateId}";
-
 			return _client
-				.PostAsync($"users/{userId}/webinars{templateIdUrl}")
+				.PostAsync($"users/{userId}/webinars")
+				.WithArgument("template_id", templateId)
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<ScheduledWebinar>();
