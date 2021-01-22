@@ -77,6 +77,21 @@ namespace ZoomNet.Resources
 		Task<RecurringWebinar> CreateRecurringWebinarAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Update the details of a webinar occurrence.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="occurrenceId">The webinar occurrence id.</param>
+		/// <param name="agenda">Meeting description.</param>
+		/// <param name="start">Meeting start time.</param>
+		/// <param name="duration">Meeting duration (minutes).</param>
+		/// <param name="settings">Meeting settings.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task UpdateWebinarOccurrenceAsync(long webinarId, string occurrenceId, string agenda = null, DateTime? start = null, int? duration = null, WebinarSettings settings = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Updates an existing scheduled webinar.
 		/// </summary>
 		/// <param name="webinarId">The webinar ID.</param>
