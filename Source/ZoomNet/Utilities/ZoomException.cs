@@ -38,6 +38,7 @@ namespace ZoomNet.Utilities
 		/// <param name="message">The exception message.</param>
 		/// <param name="responseMessage">The response message of the non-successful call.</param>
 		/// <param name="diagnosticLog">The human readable representation of the request/response.</param>
+		/// <param name="errorCode">The Zoom error code.</param>
 		/// <param name="innerException">The exception that is the cause of the current exception, or a null reference if no inner exception is specified.</param>
 		public ZoomException(string message, HttpResponseMessage responseMessage, string diagnosticLog, int? errorCode = null, Exception innerException = null)
 			: base(message, innerException)
