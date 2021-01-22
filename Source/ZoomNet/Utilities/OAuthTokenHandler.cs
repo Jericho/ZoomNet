@@ -88,7 +88,7 @@ namespace ZoomNet.Utilities
 
 					if (!response.IsSuccessStatusCode)
 					{
-						throw new ZoomException(jObject.GetPropertyValue("reason", "The Zoom API did not provide a reason"), response, "No diagnostic available");
+						throw new ZoomException(jObject.GetPropertyValue("reason", "The Zoom API did not provide a reason"), response, "No diagnostic available", null);
 					}
 
 					_connectionInfo.RefreshToken = jObject.GetPropertyValue<string>("refresh_token", true);

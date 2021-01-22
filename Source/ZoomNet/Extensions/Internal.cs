@@ -559,24 +559,27 @@ namespace ZoomNet
 
 		internal static void CheckForZoomErrors(this IResponse response)
 		{
-			var (isError, errorMessage) = GetErrorMessage(response.Message).GetAwaiter().GetResult();
+			var (isError, errorMessage, errorCode) = GetErrorMessage(response.Message).GetAwaiter().GetResult();
 			if (!isError) return;
 
 			var diagnosticId = response.Message.RequestMessage.Headers.GetValue(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME);
 			if (DiagnosticHandler.DiagnosticsInfo.TryGetValue(diagnosticId, out (WeakReference<HttpRequestMessage> RequestReference, string Diagnostic, long RequestTimeStamp, long ResponseTimestamp) diagnosticInfo))
 			{
-				throw new ZoomException(errorMessage, response.Message, diagnosticInfo.Diagnostic);
+				throw new ZoomException(errorMessage, response.Message, diagnosticInfo.Diagnostic, errorCode);
 			}
 			else
 			{
-				throw new ZoomException(errorMessage, response.Message, "Diagnostic log unavailable");
+				throw new ZoomException(errorMessage, response.Message, "Diagnostic log unavailable", errorCode);
 			}
 		}
 
-		private static async Task<(bool, string)> GetErrorMessage(HttpResponseMessage message)
+		private static async Task<(bool, string, int?)> GetErrorMessage(HttpResponseMessage message)
 		{
 			// Assume there is no error
 			var isError = false;
+
+			// Default error code
+			int? errorCode = null;
 
 			// Default error message
 			var errorMessage = $"{(int)message.StatusCode}: {message.ReasonPhrase}";
@@ -596,19 +599,11 @@ namespace ZoomNet
 				try
 				{
 					var jObject = JObject.Parse(responseContent);
-					var codeProperty = jObject["code"];
-					var messageProperty = jObject["message"];
 
-					if (messageProperty != null)
-					{
-						errorMessage = messageProperty.Value<string>();
-						isError = true;
-					}
-					else if (codeProperty != null)
-					{
-						errorMessage = $"Error code: {codeProperty.Value<string>()}";
-						isError = true;
-					}
+					errorCode = jObject.GetPropertyValue<int?>("code", false);
+					errorMessage = jObject.GetPropertyValue<string>("message", errorCode.HasValue ? $"Error code: {errorCode}" : null);
+
+					isError = errorCode.HasValue || !string.IsNullOrEmpty(errorMessage);
 				}
 				catch
 				{
@@ -616,7 +611,7 @@ namespace ZoomNet
 				}
 			}
 
-			return (isError, errorMessage);
+			return (isError, errorMessage, errorCode);
 		}
 
 		/// <summary>Asynchronously converts the JSON encoded content and convert it to an object of the desired type.</summary>
