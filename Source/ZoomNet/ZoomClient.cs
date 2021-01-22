@@ -201,7 +201,7 @@ namespace ZoomNet
 			}
 			else
 			{
-				throw new ZoomException($"{connectionInfo.GetType()} is an unknown connection type", null, null, null);
+				throw new ZoomException($"{connectionInfo.GetType()} is an unknown connection type", null, null, null, null);
 			}
 
 			// The list of filters must be kept in sync with the filters in Utils.GetFluentClient in the unit testing project.
