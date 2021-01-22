@@ -45,7 +45,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			// Scheduled webinar
 			var start = DateTime.UtcNow.AddMonths(1);
 			var duration = 30;
-			var newScheduledWebinar = await client.Webinars.CreateScheduledWebinarAsync(userId, "ZoomNet Integration Testing: scheduled webinar", "The agenda", start, duration, "p@ss!w0rd", settings, trackingFields, cancellationToken).ConfigureAwait(false);
+			var newScheduledWebinar = await client.Webinars.CreateScheduledWebinarAsync(userId, "ZoomNet Integration Testing: scheduled webinar", "The agenda", start, duration, "p@ss!w0rd", settings, trackingFields, cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Scheduled webinar {newScheduledWebinar.Id} created").ConfigureAwait(false);
 
 			await client.Webinars.DeleteAsync(newScheduledWebinar.Id, null, false, cancellationToken).ConfigureAwait(false);
