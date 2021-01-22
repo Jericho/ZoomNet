@@ -109,17 +109,6 @@ namespace ZoomNet.Resources
 		Task UpdateScheduledWebinarAsync(long webinarId, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Retrieve the details of a webinar.
-		/// </summary>
-		/// <param name="webinarId">The webinar ID.</param>
-		/// <param name="occurrenceId">The webinar occurrence id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The <see cref="Webinar" />.
-		/// </returns>
-		Task<Webinar> GetAsync(long webinarId, string occurrenceId = null, CancellationToken cancellationToken = default);
-
-		/// <summary>
 		/// Updates an existing recurring webinar for a user.
 		/// </summary>
 		/// <param name="webinarId">The webinar ID.</param>
@@ -136,6 +125,17 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task UpdateRecurringWebinarAsync(long webinarId, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, RecurrenceInfo recurrence = null, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve the details of a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="occurrenceId">The webinar occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="Webinar" />.
+		/// </returns>
+		Task<Webinar> GetAsync(long webinarId, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Delete a webinar.
