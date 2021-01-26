@@ -431,5 +431,15 @@ namespace ZoomNet.Resources
 		/// An array of <see cref="TrackingSource" />.
 		/// </returns>
 		Task<TrackingSource[]> GetTrackingSourcesAsync(long webinarId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve all the templates created for a user.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Template" />.
+		/// </returns>
+		Task<Template[]> GetWebinarTemplatesAsync(string userId, CancellationToken cancellationToken = default);
 	}
 }

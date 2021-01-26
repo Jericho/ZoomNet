@@ -774,6 +774,22 @@ namespace ZoomNet.Resources
 				.AsObject<TrackingSource[]>("tracking_sources");
 		}
 
+		/// <summary>
+		/// Retrieve all the templates created for a user.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Template" />.
+		/// </returns>
+		public Task<Template[]> GetWebinarTemplatesAsync(string userId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"users/{userId}/webinar_templates")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<Template[]>("templates");
+		}
+
 		private Task UpdateRegistrantsStatusAsync(long webinarId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string status, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
