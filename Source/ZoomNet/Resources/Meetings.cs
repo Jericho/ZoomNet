@@ -292,6 +292,7 @@ namespace ZoomNet.Resources
 		public Task UpdateScheduledMeetingAsync(long meetingId, string userId = null, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
+			data.AddPropertyIfValue("schedule_for", userId);
 			data.AddPropertyIfValue("topic", topic);
 			data.AddPropertyIfValue("password", password);
 			data.AddPropertyIfValue("agenda", agenda);
@@ -328,6 +329,7 @@ namespace ZoomNet.Resources
 		public Task UpdateRecurringMeetingAsync(long meetingId, string userId = null, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, RecurrenceInfo recurrence = null, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
+			data.AddPropertyIfValue("schedule_for", userId);
 			data.AddPropertyIfValue("topic", topic);
 			data.AddPropertyIfValue("password", password);
 			data.AddPropertyIfValue("agenda", agenda);
