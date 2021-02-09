@@ -93,7 +93,7 @@ namespace ZoomNet.Resources
 		/// <param name="password">Password to join the webinar. By default the password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters. This can be updated within Zoom account settings.</param>
 		/// <param name="settings">Webinar settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
-		/// <param name="templateId">Template Identifer.</param>
+		/// <param name="templateId">Template Identifer. If passed in, Zoom advise using the userId in the <paramref name="userId"/> field, rather than email address.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The new webinar.
@@ -113,10 +113,10 @@ namespace ZoomNet.Resources
 			data.AddPropertyIfValue("timezone", "UTC");
 			data.AddPropertyIfValue("settings", settings);
 			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
+			data.AddPropertyIfValue("template_id", templateId);
 
 			return _client
 				.PostAsync($"users/{userId}/webinars")
-				.WithArgument("template_id", templateId)
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<ScheduledWebinar>();
