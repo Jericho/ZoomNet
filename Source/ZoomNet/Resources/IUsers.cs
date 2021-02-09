@@ -34,11 +34,12 @@ namespace ZoomNet.Resources
 		/// <param name="firstName">First name.</param>
 		/// <param name="lastName">Last name.</param>
 		/// <param name="type">The type of user.</param>
+		/// <param name="createType">Specify how to create the user.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The new user.
 		/// </returns>
-		Task<User> CreateAsync(string email, string firstName = null, string lastName = null, UserType type = UserType.Basic, CancellationToken cancellationToken = default);
+		Task<User> CreateAsync(string email, string firstName = null, string lastName = null, UserType type = UserType.Basic, UserCreateType createType = UserCreateType.Normal, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve the information of a specific user on a Zoom account.

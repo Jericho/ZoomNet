@@ -16,7 +16,7 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the recording id.</summary>
 		/// <value>The id.</value>
 		[JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-		public long Id { get; set; }
+		public string Id { get; set; }
 
 		/// <summary>Gets or sets the ID of the user account.</summary>
 		/// <value>The account id.</value>
