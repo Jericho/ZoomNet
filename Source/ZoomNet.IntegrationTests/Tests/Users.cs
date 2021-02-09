@@ -60,6 +60,16 @@ namespace ZoomNet.IntegrationTests.Tests
 			// GET MY PERMISSIONS
 			var myPermissions = await client.Users.GetPermissionsAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"My permissions retrieved: I have been granted {myPermissions.Length} permissions").ConfigureAwait(false);
+			//await Task.Delay(500, cancellationToken).ConfigureAwait(false);
+
+			// CREATE NEW USER (commenting out this integration test because I currently do not have permission to create users)
+			//var newUser = await client.Users.CreateAsync("integrationtesting@example.com", "ZoomNet", "Integration Testing", UserType.Basic, UserCreateType.Normal, cancellationToken).ConfigureAwait(false);
+			//await log.WriteLineAsync($"New user created: {newUser.Id}").ConfigureAwait(false);
+			//await Task.Delay(500, cancellationToken).ConfigureAwait(false);
+
+			// DELETE USER
+			//await client.Users.DeleteAsync(newUser.Id, null, false, false, false, cancellationToken).ConfigureAwait(false);
+			//await log.WriteLineAsync($"User {newUser.Id} deleted").ConfigureAwait(false);
 		}
 	}
 }
