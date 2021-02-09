@@ -134,12 +134,13 @@ namespace ZoomNet.Resources
 		/// <param name="password">Password to join the webinar. By default the password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters. This can be updated within Zoom account settings.</param>
 		/// <param name="settings">Webinar settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
+		/// <param name="templateId">Template Identifer. If passed in, Zoom advise using the userId in the <paramref name="userId"/> field, rather than email address.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The new webinar.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the webinar.</exception>
-		public Task<RecurringWebinar> CreateRecurringWebinarAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
+		public Task<RecurringWebinar> CreateRecurringWebinarAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject()
 			{
@@ -156,6 +157,7 @@ namespace ZoomNet.Resources
 			data.AddPropertyIfValue("timezone", "UTC");
 			data.AddPropertyIfValue("settings", settings);
 			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
+			data.AddPropertyIfValue("template_id", templateId);
 
 			return _client
 				.PostAsync($"users/{userId}/webinars")
