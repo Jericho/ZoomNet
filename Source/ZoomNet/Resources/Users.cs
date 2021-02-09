@@ -67,20 +67,16 @@ namespace ZoomNet.Resources
 		/// <param name="firstName">First name.</param>
 		/// <param name="lastName">Last name.</param>
 		/// <param name="type">The type of user.</param>
+		/// <param name="createType">Specify how to create the user.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The new user.
 		/// </returns>
-		/// <remarks>
-		/// User will get an email sent from Zoom. There is a confirmation link in this email.
-		/// The user will then need to use the link to activate their Zoom account.
-		/// The user can then set or change their password.
-		/// </remarks>
-		public Task<User> CreateAsync(string email, string firstName = null, string lastName = null, UserType type = UserType.Basic, CancellationToken cancellationToken = default)
+		public Task<User> CreateAsync(string email, string firstName = null, string lastName = null, UserType type = UserType.Basic, UserCreateType createType = UserCreateType.Normal, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject()
 			{
-				{ "action", "create" }
+				{ "action", JToken.Parse(JsonConvert.SerializeObject(createType)).ToString() }
 			};
 			data.AddPropertyIfValue("user_info/email", email);
 			data.AddPropertyIfEnumValue("user_info/type", type);
@@ -88,7 +84,7 @@ namespace ZoomNet.Resources
 			data.AddPropertyIfValue("user_info/last_name", lastName);
 
 			return _client
-				.PostAsync($"users")
+				.PostAsync("users")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<User>();
