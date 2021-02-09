@@ -32,20 +32,30 @@ namespace ZoomNet.IntegrationTests.Tests
 			// GET MY USER
 			var myUser = await client.Users.GetCurrentAsync(cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"My user retrieved. My email address is {myUser.Email}").ConfigureAwait(false);
+			await Task.Delay(500, cancellationToken).ConfigureAwait(false);
 
 			// GET MY ASSISTANTS
 			var myAssistants = await client.Users.GetAssistantsAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"My user has {myAssistants.Length} assistants").ConfigureAwait(false);
+			await Task.Delay(500, cancellationToken).ConfigureAwait(false);
 
 			// GET MY SCHEDULERS
 			var mySchedulers = await client.Users.GetSchedulersAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"My user has {mySchedulers.Length} schedulers").ConfigureAwait(false);
+			await Task.Delay(500, cancellationToken).ConfigureAwait(false);
 
 			// GET MY SETTINGS
 			var mySettings = await client.Users.GetSettingsAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
-			var myMeetingAuthSettings = await client.Users.GetMeetingAuthenticationSettingsAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
-			var myRecordingAuthSettings = await client.Users.GetRecordingAuthenticationSettingsAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("My settings retrieved").ConfigureAwait(false);
+			await Task.Delay(500, cancellationToken).ConfigureAwait(false);
+
+			var myMeetingAuthSettings = await client.Users.GetMeetingAuthenticationSettingsAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("My meeting settings retrieved").ConfigureAwait(false);
+			await Task.Delay(500, cancellationToken).ConfigureAwait(false);
+
+			var myRecordingAuthSettings = await client.Users.GetRecordingAuthenticationSettingsAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("My recording authentication settings retrieved").ConfigureAwait(false);
+			await Task.Delay(500, cancellationToken).ConfigureAwait(false);
 
 			// GET MY PERMISSIONS
 			var myPermissions = await client.Users.GetPermissionsAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
