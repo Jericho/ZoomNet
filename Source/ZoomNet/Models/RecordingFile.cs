@@ -11,12 +11,12 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the recording file id.</summary>
 		/// <value>The id.</value>
 		[JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
-		public long Id { get; set; }
+		public string Id { get; set; }
 
 		/// <summary>Gets or sets the ID of the meeting.</summary>
 		/// <value>The meeting id.</value>
 		[JsonProperty("meeting_id", NullValueHandling = NullValueHandling.Ignore)]
-		public long MeetingId { get; set; }
+		public string MeetingId { get; set; }
 
 		/// <summary>Gets or sets the date and time when the recording started.</summary>
 		/// <value>The start time.</value>
@@ -26,7 +26,7 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the date and time when the recording ended.</summary>
 		/// <value>The end time.</value>
 		[JsonProperty(PropertyName = "recording_end", NullValueHandling = NullValueHandling.Ignore)]
-		public DateTime EndTime { get; set; }
+		public DateTime? EndTime { get; set; }
 
 		/// <summary>Gets or sets the file type.</summary>
 		/// <value>The file type.</value>
