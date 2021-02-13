@@ -56,5 +56,10 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the recording files.</summary>
 		[JsonProperty(PropertyName = "recording_files", NullValueHandling = NullValueHandling.Ignore)]
 		public RecordingFile[] RecordingFiles { get; set; }
+
+		/// <summary>Gets or sets the URL which can be used to share the recording.</summary>
+		/// <value>The play URL.</value>
+		[JsonProperty(PropertyName = "share_url", NullValueHandling = NullValueHandling.Ignore)]
+		public string ShareUrl { get; set; }
 	}
 }
