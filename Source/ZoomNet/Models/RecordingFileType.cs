@@ -10,6 +10,10 @@ namespace ZoomNet.Models
 	[JsonConverter(typeof(StringEnumConverter))]
 	public enum RecordingFileType
 	{
+		/// <summary>Not specified.</summary>
+		[EnumMember(Value = "")]
+		NotSpecified,
+
 		/// <summary>Video.</summary>
 		[EnumMember(Value = "mp4")]
 		Video,
