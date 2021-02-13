@@ -10,6 +10,10 @@ namespace ZoomNet.Models
 	[JsonConverter(typeof(StringEnumConverter))]
 	public enum RecordingContentType
 	{
+		/// <summary>Not specified.</summary>
+		[EnumMember(Value = "")]
+		NotSpecified,
+
 		/// <summary>Shared screen with speaker view closed captioned.</summary>
 		[EnumMember(Value = "shared_screen_with_speaker_view(CC)")]
 		SharedScreenWithSpeakerViewClosedCaptioned,
