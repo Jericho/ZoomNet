@@ -94,6 +94,11 @@ function MD5HashFile([string] $filePath)
         {
             $file.Dispose()
         }
+        
+        if ($md5 -ne $null)
+        {
+            $md5.Dispose()
+        }
     }
 }
 
