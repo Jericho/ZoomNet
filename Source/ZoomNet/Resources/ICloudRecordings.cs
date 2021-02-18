@@ -46,29 +46,12 @@ namespace ZoomNet.Resources
 		Task<PaginatedResponseWithTokenAndDateRange<Recording>> GetRecordingsForUserAsync(string userId, bool queryTrash = false, DateTime? from = null, DateTime? to = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Retrieve all cloud recordings for a meeting.
+		/// Retrieve all cloud recordings for a meeting or webinar.
 		/// </summary>
 		/// <param name="meetingId">The meeting Id or UUID.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="page">The current page number of returned records.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Recording">recordings</see>.
-		/// </returns>
-		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
-		Task<PaginatedResponse<Recording>> GetRecordingsAsync(string meetingId, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
-
-		/// <summary>
-		/// Retrieve all cloud recordings for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting Id or UUID.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Recording">recordings</see>.
-		/// </returns>
-		Task<PaginatedResponseWithToken<Recording>> GetRecordingsAsync(string meetingId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+		/// <returns>Details of recordings made for a particular meeding or webinar.</returns>
+		Task<Recording> GetRecordingsAsync(string meetingId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Move recording files for a meeting to trash.
