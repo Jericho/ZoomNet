@@ -95,54 +95,17 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
-		/// Retrieve all cloud recordings for a meeting.
+		/// Retrieve all cloud recordings for a meeting or webinar.
 		/// </summary>
 		/// <param name="meetingId">The meeting Id or UUID.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="page">The current page number of returned records.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Recording">recordings</see>.
-		/// </returns>
-		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
-		public Task<PaginatedResponse<Recording>> GetRecordingsAsync(string meetingId, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
+		/// <returns>Details of recordings made for a particular meeding or webinar.</returns>
+		public Task<Recording> GetRecordingsAsync(string meetingId, CancellationToken cancellationToken = default)
 		{
-			if (recordsPerPage < 1 || recordsPerPage > 300)
-			{
-				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 300");
-			}
-
 			return _client
 				.GetAsync($"meetings/{meetingId}/recordings")
-				.WithArgument("page_size", recordsPerPage)
-				.WithArgument("page", page)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponse<Recording>("meetings");
-		}
-
-		/// <summary>
-		/// Retrieve all cloud recordings for a user.
-		/// </summary>
-		/// <param name="meetingId">The meeting Id or UUID.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Recording">recordings</see>.
-		/// </returns>
-		public Task<PaginatedResponseWithToken<Recording>> GetRecordingsAsync(string meetingId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
-		{
-			if (recordsPerPage < 1 || recordsPerPage > 300)
-			{
-				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 300");
-			}
-
-			return _client
-				.GetAsync($"meetings/{meetingId}/recordings")
-				.WithArgument("page_size", recordsPerPage)
-				.WithArgument("next_page_token", pagingToken)
-				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<Recording>("meetings");
+				.AsObject<Recording>();
 		}
 
 		/// <summary>
