@@ -72,7 +72,7 @@ namespace ZoomNet.Utilities
 					switch (_connectionInfo.GrantType)
 					{
 						case OAuthGrantType.AuthorizationCode:
-							requestUrl += $"&code={_connectionInfo.AuthorizationCode}";
+							requestUrl += $"&code={_connectionInfo.AuthorizationCode}&redirect_uri={_connectionInfo.RedirectUri}";
 							break;
 						case OAuthGrantType.RefreshToken:
 							requestUrl += $"&refresh_token={_connectionInfo.RefreshToken}";

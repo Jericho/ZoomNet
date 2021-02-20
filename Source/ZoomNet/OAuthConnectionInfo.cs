@@ -62,6 +62,11 @@ namespace ZoomNet
 		public OnTokenRefreshedDelegate OnTokenRefreshed { get; }
 
 		/// <summary>
+		/// Gets the redirectUri required for refresh of tokens.
+		/// </summary>
+		public string RedirectUri { get; internal set; }
+
+		/// <summary>
 		/// Initializes a new instance of the <see cref="OAuthConnectionInfo"/> class.
 		/// </summary>
 		/// <remarks>
@@ -93,12 +98,14 @@ namespace ZoomNet
 		/// <param name="clientId">Your Client Id.</param>
 		/// <param name="clientSecret">Your Client Secret.</param>
 		/// <param name="authorizationCode">The authorization code.</param>
+		/// <param name="redirectUri">The Redirect Uri.</param>
 		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed.</param>
-		public OAuthConnectionInfo(string clientId, string clientSecret, string authorizationCode, OnTokenRefreshedDelegate onTokenRefreshed)
+		public OAuthConnectionInfo(string clientId, string clientSecret, string authorizationCode, OnTokenRefreshedDelegate onTokenRefreshed, string redirectUri)
 		{
 			ClientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
 			ClientSecret = clientSecret ?? throw new ArgumentNullException(nameof(clientSecret));
 			AuthorizationCode = authorizationCode ?? throw new ArgumentNullException(nameof(authorizationCode));
+			RedirectUri = redirectUri ?? throw new ArgumentNullException(nameof(RedirectUri));
 			TokenExpiration = DateTime.MinValue;
 			GrantType = OAuthGrantType.AuthorizationCode;
 			OnTokenRefreshed = onTokenRefreshed;
