@@ -2,12 +2,12 @@
 #tool nuget:?package=GitVersion.CommandLine&version=5.6.6
 #tool nuget:?package=GitReleaseManager&version=0.11.0
 #tool nuget:?package=OpenCover&version=4.7.922
-#tool nuget:?package=ReportGenerator&version=4.8.5
+#tool nuget:?package=ReportGenerator&version=4.8.6
 #tool nuget:?package=coveralls.io&version=1.4.2
 #tool nuget:?package=xunit.runner.console&version=2.4.1
 
 // Install addins.
-#addin nuget:?package=Cake.Coveralls&version=0.10.2
+#addin nuget:?package=Cake.Coveralls&version=1.0.0
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -230,7 +230,7 @@ Task("Generate-Code-Coverage-Report")
 	.Does(() =>
 {
 	ReportGenerator(
-		$"{codeCoverageDir}coverage.xml",
+		new FilePath($"{codeCoverageDir}coverage.xml"),
 		codeCoverageDir,
 		new ReportGeneratorSettings() {
 			ClassFilters = new[] { "*.UnitTests*" }
@@ -335,17 +335,12 @@ Task("Create-Release-Notes")
 		TargetCommitish   = "main"
 	};
 
-	if (!string.IsNullOrEmpty(gitHubToken))
+	if (string.IsNullOrEmpty(gitHubToken))
 	{
-		GitReleaseManagerCreate(gitHubToken, gitHubRepoOwner, gitHubRepo, settings);
+		throw new InvalidOperationException("GitHub token was not provided.");
 	}
-	else
-	{
-		if(string.IsNullOrEmpty(gitHubUserName)) throw new InvalidOperationException("Could not resolve GitHub user name.");
-		if(string.IsNullOrEmpty(gitHubPassword)) throw new InvalidOperationException("Could not resolve GitHub password.");
 
-		GitReleaseManagerCreate(gitHubUserName, gitHubPassword, gitHubRepoOwner, gitHubRepo, settings);
-	}
+	GitReleaseManagerCreate(gitHubToken, gitHubRepoOwner, gitHubRepo, settings);
 });
 
 Task("Publish-GitHub-Release")
@@ -356,17 +351,12 @@ Task("Publish-GitHub-Release")
 	.WithCriteria(() => isTagged)
 	.Does(() =>
 {
-	if (!string.IsNullOrEmpty(gitHubToken))
+	if (string.IsNullOrEmpty(gitHubToken))
 	{
-		GitReleaseManagerClose(gitHubToken, gitHubRepoOwner, gitHubRepo, milestone);
+		throw new InvalidOperationException("GitHub token was not provided.");
 	}
-	else
-	{
-		if(string.IsNullOrEmpty(gitHubUserName)) throw new InvalidOperationException("Could not resolve GitHub user name.");
-		if(string.IsNullOrEmpty(gitHubPassword)) throw new InvalidOperationException("Could not resolve GitHub password.");
 
-		GitReleaseManagerClose(gitHubUserName, gitHubPassword, gitHubRepoOwner, gitHubRepo, milestone);
-	}
+	GitReleaseManagerClose(gitHubToken, gitHubRepoOwner, gitHubRepo, milestone);
 });
 
 Task("Generate-Benchmark-Report")
