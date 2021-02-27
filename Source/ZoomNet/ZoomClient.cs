@@ -135,7 +135,7 @@ namespace ZoomNet
 		/// <param name="options">Options for the Zoom client.</param>
 		/// <param name="logger">Logger.</param>
 		public ZoomClient(IConnectionInfo connectionInfo, ZoomClientOptions options = null, ILogger logger = null)
-			: this(connectionInfo, null, false, options, logger)
+			: this(connectionInfo, new HttpClient(), true, options, logger)
 		{
 		}
 
@@ -178,7 +178,7 @@ namespace ZoomNet
 		private ZoomClient(IConnectionInfo connectionInfo, HttpClient httpClient, bool disposeClient, ZoomClientOptions options, ILogger logger = null)
 		{
 			_mustDisposeHttpClient = disposeClient;
-			_httpClient = httpClient;
+			_httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
 			_options = options ?? GetDefaultOptions();
 			_logger = logger ?? NullLogger.Instance;
 			_fluentClient = new FluentClient(new Uri(ZOOM_V2_BASE_URI), httpClient)
