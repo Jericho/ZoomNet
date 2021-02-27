@@ -86,11 +86,14 @@ namespace ZoomNet.Utilities
 						request.Headers.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes($"{_connectionInfo.ClientId}:{_connectionInfo.ClientSecret}")));
 						var response = _httpClient.SendAsync(request).GetAwaiter().GetResult();
 						var responseContent = response.Content.ReadAsStringAsync(null).ConfigureAwait(false).GetAwaiter().GetResult();
+
+						if (string.IsNullOrEmpty(responseContent)) throw new Exception(response.ReasonPhrase);
+
 						var jObject = JObject.Parse(responseContent);
 
 						if (!response.IsSuccessStatusCode)
 						{
-						throw new ZoomException(jObject.GetPropertyValue("reason", "The Zoom API did not provide a reason"), response, "No diagnostic available", null);
+							throw new ZoomException(jObject.GetPropertyValue("reason", "The Zoom API did not provide a reason"), response, "No diagnostic available", null);
 						}
 
 						_connectionInfo.RefreshToken = jObject.GetPropertyValue<string>("refresh_token", true);
