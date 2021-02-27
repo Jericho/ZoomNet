@@ -59,60 +59,68 @@ namespace ZoomNet.Utilities
 
 		public string RefreshTokenIfNecessary(bool forceRefresh)
 		{
-			_lock.EnterUpgradeableReadLock();
-
-			if (forceRefresh || TokenIsExpired())
+			try
 			{
-				try
+				_lock.EnterUpgradeableReadLock();
+
+				if (forceRefresh || TokenIsExpired())
 				{
-					_lock.EnterWriteLock();
-
-					var grantType = _connectionInfo.GrantType.GetAttributeOfType<EnumMemberAttribute>().Value;
-					var requestUrl = $"https://api.zoom.us/oauth/token?grant_type={grantType}";
-					switch (_connectionInfo.GrantType)
+					try
 					{
-						case OAuthGrantType.AuthorizationCode:
-							requestUrl += $"&code={_connectionInfo.AuthorizationCode}";
-							break;
-						case OAuthGrantType.RefreshToken:
-							requestUrl += $"&refresh_token={_connectionInfo.RefreshToken}";
-							break;
+						_lock.EnterWriteLock();
+
+						var grantType = _connectionInfo.GrantType.GetAttributeOfType<EnumMemberAttribute>().Value;
+						var requestUrl = $"https://api.zoom.us/oauth/token?grant_type={grantType}";
+						switch (_connectionInfo.GrantType)
+						{
+							case OAuthGrantType.AuthorizationCode:
+								requestUrl += $"&code={_connectionInfo.AuthorizationCode}";
+								break;
+							case OAuthGrantType.RefreshToken:
+								requestUrl += $"&refresh_token={_connectionInfo.RefreshToken}";
+								break;
+						}
+
+						var requestTime = DateTime.UtcNow;
+						var request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
+						request.Headers.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes($"{_connectionInfo.ClientId}:{_connectionInfo.ClientSecret}")));
+						var response = _httpClient.SendAsync(request).GetAwaiter().GetResult();
+						var responseContent = response.Content.ReadAsStringAsync(null).ConfigureAwait(false).GetAwaiter().GetResult();
+
+						if (string.IsNullOrEmpty(responseContent)) throw new Exception(response.ReasonPhrase);
+
+						var jObject = JObject.Parse(responseContent);
+
+						if (!response.IsSuccessStatusCode)
+						{
+							throw new ZoomException(jObject.GetPropertyValue("reason", "The Zoom API did not provide a reason"), response, "No diagnostic available", null);
+						}
+
+						_connectionInfo.RefreshToken = jObject.GetPropertyValue<string>("refresh_token", true);
+						_connectionInfo.AccessToken = jObject.GetPropertyValue<string>("access_token", true);
+						_connectionInfo.GrantType = OAuthGrantType.RefreshToken;
+						_connectionInfo.TokenExpiration = requestTime.AddSeconds(jObject.GetPropertyValue<int>("expires_in", 60 * 60));
+						_connectionInfo.TokenScope = new ReadOnlyDictionary<string, string[]>(
+							jObject.GetPropertyValue<string>("scope", true)
+								.Split(' ')
+								.Select(x => x.Split(new[] { ':' }, 2))
+								.Select(x => new KeyValuePair<string, string[]>(x[0], x.Skip(1).ToArray()))
+								.GroupBy(x => x.Key)
+								.ToDictionary(
+									x => x.Key,
+									x => x.SelectMany(c => c.Value).ToArray()));
+						_connectionInfo.OnTokenRefreshed(_connectionInfo.RefreshToken, _connectionInfo.AccessToken);
 					}
-
-					var requestTime = DateTime.UtcNow;
-					var request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
-					request.Headers.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes($"{_connectionInfo.ClientId}:{_connectionInfo.ClientSecret}")));
-					var response = _httpClient.SendAsync(request).GetAwaiter().GetResult();
-					var responseContent = response.Content.ReadAsStringAsync(null).ConfigureAwait(false).GetAwaiter().GetResult();
-					var jObject = JObject.Parse(responseContent);
-
-					if (!response.IsSuccessStatusCode)
+					finally
 					{
-						throw new ZoomException(jObject.GetPropertyValue("reason", "The Zoom API did not provide a reason"), response, "No diagnostic available", null);
+						_lock.ExitWriteLock();
 					}
-
-					_connectionInfo.RefreshToken = jObject.GetPropertyValue<string>("refresh_token", true);
-					_connectionInfo.AccessToken = jObject.GetPropertyValue<string>("access_token", true);
-					_connectionInfo.GrantType = OAuthGrantType.RefreshToken;
-					_connectionInfo.TokenExpiration = requestTime.AddSeconds(jObject.GetPropertyValue<int>("expires_in", 60 * 60));
-					_connectionInfo.TokenScope = new ReadOnlyDictionary<string, string[]>(
-						jObject.GetPropertyValue<string>("scope", true)
-							.Split(' ')
-							.Select(x => x.Split(new[] { ':' }, 2))
-							.Select(x => new KeyValuePair<string, string[]>(x[0], x.Skip(1).ToArray()))
-							.GroupBy(x => x.Key)
-							.ToDictionary(
-								x => x.Key,
-								x => x.SelectMany(c => c.Value).ToArray()));
-					_connectionInfo.OnTokenRefreshed(_connectionInfo.RefreshToken, _connectionInfo.AccessToken);
-				}
-				finally
-				{
-					_lock.ExitWriteLock();
 				}
 			}
-
-			_lock.ExitUpgradeableReadLock();
+			finally
+			{
+				_lock.ExitUpgradeableReadLock();
+			}
 
 			return _connectionInfo.AccessToken;
 		}
