@@ -179,9 +179,9 @@ namespace ZoomNet.Resources
 		/// <param name="fullName">Panelist's full name.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// A <see cref="Panelist" />.
+		/// The async task.
 		/// </returns>
-		Task<Panelist> AddPanelistAsync(long webinarId, string email, string fullName, CancellationToken cancellationToken = default);
+		Task AddPanelistAsync(long webinarId, string email, string fullName, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Add multiple panelists to a webinar.
@@ -192,7 +192,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task<Panelist[]> AddPanelistsAsync(long webinarId, IEnumerable<(string Email, string FullName)> panelists, CancellationToken cancellationToken = default);
+		Task AddPanelistsAsync(long webinarId, IEnumerable<(string Email, string FullName)> panelists, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Remove a single panelist from a webinar.
@@ -266,9 +266,9 @@ namespace ZoomNet.Resources
 		/// <param name="occurrenceId">The webinar occurrence id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// A <see cref="Registrant" />.
+		/// A <see cref="RegistrantInfo" />.
 		/// </returns>
-		Task<Registrant> AddRegistrantAsync(long webinarId, string email, string firstName, string lastName, string occurrenceId = null, CancellationToken cancellationToken = default);
+		Task<RegistrantInfo> AddRegistrantAsync(long webinarId, string email, string firstName, string lastName, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Approve a registration for a webinar.

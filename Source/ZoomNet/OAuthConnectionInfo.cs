@@ -97,7 +97,7 @@ namespace ZoomNet
 		///
 		/// Also, Zoom's documentation says that the redirect uri must be provided when validating an
 		/// authorization code and converting it into tokens. However I have observed that it's not
-		/// always the case. It seems that some developers get a "REDIRECT URI MISMATCH" exception when
+		/// always necessary. It seems that some developers get a "REDIRECT URI MISMATCH" exception when
 		/// they omit this value but other developers don't. Therefore, the redirectUri parameter is
 		/// marked as optional in ZoomNet which allows you to specify it or omit it depending on your
 		/// situation. See this <a href="">Github issue</a> for more details.

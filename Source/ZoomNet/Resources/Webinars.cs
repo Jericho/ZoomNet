@@ -364,12 +364,11 @@ namespace ZoomNet.Resources
 		/// <param name="fullName">Panelist's full name.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// The unique identifier of the new panelist.
+		/// The async task.
 		/// </returns>
-		public async Task<Panelist> AddPanelistAsync(long webinarId, string email, string fullName, CancellationToken cancellationToken = default)
+		public Task AddPanelistAsync(long webinarId, string email, string fullName, CancellationToken cancellationToken = default)
 		{
-			var panelists = await AddPanelistsAsync(webinarId, new (string Email, string FullName)[] { (email, fullName) }, cancellationToken).ConfigureAwait(false);
-			return panelists.FirstOrDefault();
+			return AddPanelistsAsync(webinarId, new (string Email, string FullName)[] { (email, fullName) }, cancellationToken);
 		}
 
 		/// <summary>
@@ -381,7 +380,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task<Panelist[]> AddPanelistsAsync(long webinarId, IEnumerable<(string Email, string FullName)> panelists, CancellationToken cancellationToken = default)
+		public Task AddPanelistsAsync(long webinarId, IEnumerable<(string Email, string FullName)> panelists, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
 			data.AddPropertyIfValue("panelists", panelists.Select(p => new { email = p.Email, name = p.FullName }).ToArray());
@@ -390,7 +389,7 @@ namespace ZoomNet.Resources
 				.PostAsync($"webinars/{webinarId}/panelists")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
-				.AsObject<Panelist[]>();
+				.AsMessage();
 		}
 
 		/// <summary>
@@ -514,9 +513,9 @@ namespace ZoomNet.Resources
 		/// <param name="occurrenceId">The webinar occurrence id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// A <see cref="Registrant" />.
+		/// A <see cref="RegistrantInfo" />.
 		/// </returns>
-		public Task<Registrant> AddRegistrantAsync(long webinarId, string email, string firstName, string lastName, string occurrenceId = null, CancellationToken cancellationToken = default)
+		public Task<RegistrantInfo> AddRegistrantAsync(long webinarId, string email, string firstName, string lastName, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
 			data.AddPropertyIfValue("email", email);
@@ -528,7 +527,7 @@ namespace ZoomNet.Resources
 				.WithArgument("occurence_id", occurrenceId)
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
-				.AsObject<Registrant>();
+				.AsObject<RegistrantInfo>();
 		}
 
 		/// <summary>
