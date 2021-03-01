@@ -266,9 +266,9 @@ namespace ZoomNet.Resources
 		/// <param name="occurrenceId">The webinar occurrence id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// A <see cref="Registrant" />.
+		/// A <see cref="RegistrantInfo" />.
 		/// </returns>
-		Task<Registrant> AddRegistrantAsync(long webinarId, string email, string firstName, string lastName, string occurrenceId = null, CancellationToken cancellationToken = default);
+		Task<RegistrantInfo> AddRegistrantAsync(long webinarId, string email, string firstName, string lastName, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Approve a registration for a webinar.

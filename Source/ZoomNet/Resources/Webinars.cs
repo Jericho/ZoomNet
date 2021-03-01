@@ -514,9 +514,9 @@ namespace ZoomNet.Resources
 		/// <param name="occurrenceId">The webinar occurrence id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// A <see cref="Registrant" />.
+		/// A <see cref="RegistrantInfo" />.
 		/// </returns>
-		public Task<Registrant> AddRegistrantAsync(long webinarId, string email, string firstName, string lastName, string occurrenceId = null, CancellationToken cancellationToken = default)
+		public Task<RegistrantInfo> AddRegistrantAsync(long webinarId, string email, string firstName, string lastName, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
 			data.AddPropertyIfValue("email", email);
@@ -528,7 +528,7 @@ namespace ZoomNet.Resources
 				.WithArgument("occurence_id", occurrenceId)
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
-				.AsObject<Registrant>();
+				.AsObject<RegistrantInfo>();
 		}
 
 		/// <summary>
