@@ -33,9 +33,9 @@ namespace ZoomNet.Resources
 		/// <param name="pagingToken">The paging token.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="Participant" />.
+		/// An array of <see cref="Registrant" />.
 		/// </returns>
-		public Task<PaginatedResponseWithToken<Participant>> GetAbsenteesAsync(string uuid, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<Registrant>> GetAbsenteesAsync(string uuid, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -47,7 +47,7 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<Participant>("registrants");
+				.AsPaginatedResponseWithToken<Registrant>("registrants");
 		}
 
 		/// <summary>
