@@ -32,6 +32,15 @@ namespace ZoomNet
 		ICloudRecordings CloudRecordings { get; }
 
 		/// <summary>
+		/// Gets the resource which allows you to notify Zoom that you comply with the policy which requires
+		/// you to handle user's data in accordance to the user's preference after the user uninstalls your app.
+		/// </summary>
+		/// <value>
+		/// The data compliance resource.
+		/// </value>
+		IDataCompliance DataCompliance { get; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage meetings.
 		/// </summary>
 		/// <value>

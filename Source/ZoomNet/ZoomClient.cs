@@ -80,6 +80,15 @@ namespace ZoomNet
 		public ICloudRecordings CloudRecordings { get; private set; }
 
 		/// <summary>
+		/// Gets the resource which allows you to notify Zoom that you comply with the policy which requires
+		/// you to handle user's data in accordance to the user's preference after the user uninstalls your app.
+		/// </summary>
+		/// <value>
+		/// The data compliance resource.
+		/// </value>
+		public IDataCompliance DataCompliance { get; private set; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage meetings.
 		/// </summary>
 		/// <value>
@@ -211,6 +220,7 @@ namespace ZoomNet
 			Accounts = new Accounts(_fluentClient);
 			Chat = new Chat(_fluentClient);
 			CloudRecordings = new CloudRecordings(_fluentClient);
+			DataCompliance = new DataCompliance(_fluentClient);
 			Meetings = new Meetings(_fluentClient);
 			PastMeetings = new PastMeetings(_fluentClient);
 			PastWebinars = new PastWebinars(_fluentClient);
