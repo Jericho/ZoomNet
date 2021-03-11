@@ -205,7 +205,7 @@ namespace ZoomNet
 			}
 
 			// The list of filters must be kept in sync with the filters in Utils.GetFluentClient in the unit testing project.
-			_fluentClient.Filters.Add(new DiagnosticHandler(_options.LogLevelSuccessfulCalls, _options.LogLevelFailedCalls));
+			_fluentClient.Filters.Add(new DiagnosticHandler(_options.LogLevelSuccessfulCalls, _options.LogLevelFailedCalls, _logger));
 			_fluentClient.Filters.Add(new ZoomErrorHandler());
 
 			Accounts = new Accounts(_fluentClient);
