@@ -45,7 +45,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			// Scheduled webinar
 			var start = DateTime.UtcNow.AddMonths(1);
 			var duration = 30;
-			var newScheduledWebinar = await client.Webinars.CreateScheduledWebinarAsync(userId, "ZoomNet Integration Testing: scheduled webinar", "The agenda", start, duration, "p@ss!w0rd", settings, trackingFields, cancellationToken: cancellationToken).ConfigureAwait(false);
+			var newScheduledWebinar = await client.Webinars.CreateScheduledWebinarAsync(userId, "ZoomNet Integration Testing: scheduled webinar", "The agenda", start, duration, "UTC", "p@ss!w0rd", settings, trackingFields, cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Scheduled webinar {newScheduledWebinar.Id} created").ConfigureAwait(false);
 
 			await client.Webinars.DeleteAsync(newScheduledWebinar.Id, null, false, cancellationToken).ConfigureAwait(false);
@@ -58,7 +58,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				WeeklyDays = new[] { DayOfWeek.Monday, DayOfWeek.Friday },
 				Type = RecurrenceType.Weekly
 			};
-			var newRecurringWebinar = await client.Webinars.CreateRecurringWebinarAsync(userId, "ZoomNet Integration Testing: recurring webinar", "The agenda", start, duration, recurrenceInfo, "p@ss!w0rd", settings, trackingFields, cancellationToken: cancellationToken).ConfigureAwait(false);
+			var newRecurringWebinar = await client.Webinars.CreateRecurringWebinarAsync(userId, "ZoomNet Integration Testing: recurring webinar", "The agenda", start, duration, recurrenceInfo, "UTC", "p@ss!w0rd", settings, trackingFields, cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Recurring webinar {newRecurringWebinar.Id} created").ConfigureAwait(false);
 
 			await client.Webinars.DeleteAsync(newRecurringWebinar.Id, null, false, cancellationToken).ConfigureAwait(false);

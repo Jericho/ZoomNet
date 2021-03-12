@@ -99,7 +99,7 @@ namespace ZoomNet.Resources
 		/// The new webinar.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the webinar.</exception>
-		public Task<ScheduledWebinar> CreateScheduledWebinarAsync(string userId, string topic, string agenda, DateTime start, int duration, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default)
+		public Task<ScheduledWebinar> CreateScheduledWebinarAsync(string userId, string topic, string agenda, DateTime start, int duration, string timeZone = "UTC", string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject()
 			{
@@ -108,9 +108,9 @@ namespace ZoomNet.Resources
 			data.AddPropertyIfValue("topic", topic);
 			data.AddPropertyIfValue("agenda", agenda);
 			data.AddPropertyIfValue("password", password);
-			data.AddPropertyIfValue("start_time", start.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
 			data.AddPropertyIfValue("duration", duration);
-			data.AddPropertyIfValue("timezone", "UTC");
+			data.AddPropertyIfValue("timezone", timeZone);
 			data.AddPropertyIfValue("settings", settings);
 			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
 			data.AddPropertyIfValue("template_id", templateId);
@@ -140,7 +140,7 @@ namespace ZoomNet.Resources
 		/// The new webinar.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the webinar.</exception>
-		public Task<RecurringWebinar> CreateRecurringWebinarAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default)
+		public Task<RecurringWebinar> CreateRecurringWebinarAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, string timeZone = "UTC", string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject()
 			{
@@ -151,10 +151,10 @@ namespace ZoomNet.Resources
 			data.AddPropertyIfValue("topic", topic);
 			data.AddPropertyIfValue("agenda", agenda);
 			data.AddPropertyIfValue("password", password);
-			data.AddPropertyIfValue("start_time", start?.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
 			data.AddPropertyIfValue("duration", duration);
 			data.AddPropertyIfValue("recurrence", recurrence);
-			data.AddPropertyIfValue("timezone", "UTC");
+			data.AddPropertyIfValue("timezone", timeZone);
 			data.AddPropertyIfValue("settings", settings);
 			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
 			data.AddPropertyIfValue("template_id", templateId);
@@ -179,13 +179,13 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task UpdateWebinarOccurrenceAsync(long webinarId, string occurrenceId, string agenda = null, DateTime? start = null, int? duration = null, WebinarSettings settings = null, CancellationToken cancellationToken = default)
+		public Task UpdateWebinarOccurrenceAsync(long webinarId, string occurrenceId, string agenda = null, DateTime? start = null, int? duration = null, string timeZone = null, WebinarSettings settings = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
 			data.AddPropertyIfValue("agenda", agenda);
-			data.AddPropertyIfValue("start_time", start?.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
 			data.AddPropertyIfValue("duration", duration);
-			if (start.HasValue) data.Add("timezone", "UTC");
+			data.AddPropertyIfValue("timezone", timeZone);
 			data.AddPropertyIfValue("settings", settings);
 
 			return _client
@@ -211,15 +211,15 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public async Task UpdateScheduledWebinarAsync(long webinarId, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
+		public async Task UpdateScheduledWebinarAsync(long webinarId, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, string timeZone = null, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
 			data.AddPropertyIfValue("topic", topic);
 			data.AddPropertyIfValue("agenda", agenda);
 			data.AddPropertyIfValue("password", password);
-			data.AddPropertyIfValue("start_time", start?.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
 			data.AddPropertyIfValue("duration", duration);
-			if (start.HasValue) data.Add("timezone", "UTC");
+			data.AddPropertyIfValue("timezone", timeZone);
 			data.AddPropertyIfValue("settings", settings);
 			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
 
@@ -253,16 +253,16 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public async Task UpdateRecurringWebinarAsync(long webinarId, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, RecurrenceInfo recurrence = null, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
+		public async Task UpdateRecurringWebinarAsync(long webinarId, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, string timeZone = null, RecurrenceInfo recurrence = null, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
 			data.AddPropertyIfValue("topic", topic);
 			data.AddPropertyIfValue("agenda", agenda);
 			data.AddPropertyIfValue("password", password);
-			data.AddPropertyIfValue("start_time", start?.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
 			data.AddPropertyIfValue("duration", duration);
 			data.AddPropertyIfValue("recurrence", recurrence);
-			if (start.HasValue) data.Add("timezone", "UTC");
+			data.AddPropertyIfValue("timezone", timeZone);
 			data.AddPropertyIfValue("settings", settings);
 			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
 
