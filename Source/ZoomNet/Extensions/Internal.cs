@@ -54,6 +54,7 @@ namespace ZoomNet
 		/// Converts a .Net <see cref="DateTime" /> into a string that can be accepted by the Zoom API.
 		/// </summary>
 		/// <param name="date">The date.</param>
+		/// <param name="timeZone">The time zone.</param>
 		/// <returns>
 		/// The string representation of the date expressed in the Zoom format.
 		/// </returns>
@@ -67,6 +68,7 @@ namespace ZoomNet
 		/// Converts a .Net <see cref="DateTime" /> into a string that can be accepted by the Zoom API.
 		/// </summary>
 		/// <param name="date">The date.</param>
+		/// <param name="timeZone">The time zone.</param>
 		/// <returns>
 		/// The string representation of the date expressed in the Zoom format.
 		/// </returns>

@@ -134,6 +134,7 @@ namespace ZoomNet.Resources
 		/// <param name="agenda">Meeting description.</param>
 		/// <param name="start">Meeting start time.</param>
 		/// <param name="duration">Meeting duration (minutes).</param>
+		/// <param name="timeZone">The time zone for start time.</param>
 		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
 		/// <param name="settings">Meeting settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
@@ -183,6 +184,7 @@ namespace ZoomNet.Resources
 		/// <param name="start">Meeting start time. If omitted, a 'Recurring meeting with no fixed time' will be created.</param>
 		/// <param name="duration">Meeting duration (minutes).</param>
 		/// <param name="recurrence">Recurrence information.</param>
+		/// <param name="timeZone">The time zone for start time.</param>
 		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
 		/// <param name="settings">Meeting settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
@@ -253,6 +255,7 @@ namespace ZoomNet.Resources
 		/// <param name="agenda">Meeting description.</param>
 		/// <param name="start">Meeting start time.</param>
 		/// <param name="duration">Meeting duration (minutes).</param>
+		/// <param name="timeZone">The time zone for start time.</param>
 		/// <param name="settings">Meeting settings.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
@@ -284,6 +287,7 @@ namespace ZoomNet.Resources
 		/// <param name="agenda">Meeting description.</param>
 		/// <param name="start">Meeting start time.</param>
 		/// <param name="duration">Meeting duration (minutes).</param>
+		/// <param name="timeZone">The time zone for start time.</param>
 		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
 		/// <param name="settings">Meeting settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
@@ -320,6 +324,7 @@ namespace ZoomNet.Resources
 		/// <param name="agenda">Meeting description.</param>
 		/// <param name="start">Meeting start time. If omitted, a 'Recurring meeting with no fixed time' will be created.</param>
 		/// <param name="duration">Meeting duration (minutes).</param>
+		/// <param name="timeZone">The time zone for start time.</param>
 		/// <param name="recurrence">Recurrence information.</param>
 		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
 		/// <param name="settings">Meeting settings.</param>
