@@ -51,6 +51,32 @@ namespace ZoomNet
 		}
 
 		/// <summary>
+		/// Converts a .Net <see cref="DateTime" /> into a string that can be accepted by the Zoom API.
+		/// </summary>
+		/// <param name="date">The date.</param>
+		/// <returns>
+		/// The string representation of the date expressed in the Zoom format.
+		/// </returns>
+		internal static string ToZoomFormat(this DateTime? date, string timeZone)
+		{
+			if (!date.HasValue) return null;
+			return date.Value.ToZoomFormat(timeZone);
+		}
+
+		/// <summary>
+		/// Converts a .Net <see cref="DateTime" /> into a string that can be accepted by the Zoom API.
+		/// </summary>
+		/// <param name="date">The date.</param>
+		/// <returns>
+		/// The string representation of the date expressed in the Zoom format.
+		/// </returns>
+		internal static string ToZoomFormat(this DateTime date, string timeZone)
+		{
+			if (timeZone.Equals("UTC", StringComparison.OrdinalIgnoreCase)) return date.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'");
+			return date.ToString("yyyy-MM-dd'T'HH:mm:ss");
+		}
+
+		/// <summary>
 		/// Reads the content of the HTTP response as string asynchronously.
 		/// </summary>
 		/// <param name="httpContent">The content.</param>
