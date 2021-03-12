@@ -79,7 +79,7 @@ namespace ZoomNet.Resources
 		/// The new meeting.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the meeting.</exception>
-		Task<ScheduledMeeting> CreateScheduledMeetingAsync(string userId, string topic, string agenda, DateTime start, int duration, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
+		Task<ScheduledMeeting> CreateScheduledMeetingAsync(string userId, string topic, string agenda, DateTime start, int duration, string timeZone = "UTC", string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Create a recurring meeting for a user.
@@ -98,7 +98,7 @@ namespace ZoomNet.Resources
 		/// The new meeting.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the meeting.</exception>
-		Task<RecurringMeeting> CreateRecurringMeetingAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
+		Task<RecurringMeeting> CreateRecurringMeetingAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, string timeZone = "UTC", string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Update the details of a meeting occurrence.
@@ -113,7 +113,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task UpdateMeetingOccurrenceAsync(long meetingId, string occurrenceId, string agenda = null, DateTime? start = null, int? duration = null, MeetingSettings settings = null, CancellationToken cancellationToken = default);
+		Task UpdateMeetingOccurrenceAsync(long meetingId, string occurrenceId, string agenda = null, DateTime? start = null, int? duration = null, string timeZone = null, MeetingSettings settings = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Update the details of a scheduled meeting.
@@ -131,7 +131,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task UpdateScheduledMeetingAsync(long meetingId, string userId = null, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
+		Task UpdateScheduledMeetingAsync(long meetingId, string userId = null, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, string timeZone = null, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Update the details of a recurring meeting.
@@ -150,7 +150,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task UpdateRecurringMeetingAsync(long meetingId, string userId = null, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, RecurrenceInfo recurrence = null, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
+		Task UpdateRecurringMeetingAsync(long meetingId, string userId = null, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, string timeZone = null, RecurrenceInfo recurrence = null, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve the details of a meeting.

@@ -148,6 +148,7 @@ namespace ZoomNet.Resources
 			string agenda,
 			DateTime start,
 			int duration,
+			string timeZone = "UTC",
 			string password = null,
 			MeetingSettings settings = null,
 			IDictionary<string, string> trackingFields = null,
@@ -160,9 +161,9 @@ namespace ZoomNet.Resources
 			data.AddPropertyIfValue("topic", topic);
 			data.AddPropertyIfValue("password", password);
 			data.AddPropertyIfValue("agenda", agenda);
-			data.AddPropertyIfValue("start_time", start.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
 			data.AddPropertyIfValue("duration", duration);
-			data.AddPropertyIfValue("timezone", "UTC");
+			data.AddPropertyIfValue("timezone", timeZone);
 			data.AddPropertyIfValue("settings", settings);
 			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
 
@@ -197,6 +198,7 @@ namespace ZoomNet.Resources
 			DateTime? start,
 			int duration,
 			RecurrenceInfo recurrence,
+			string timeZone = "UTC",
 			string password = null,
 			MeetingSettings settings = null,
 			IDictionary<string, string> trackingFields = null,
@@ -211,10 +213,10 @@ namespace ZoomNet.Resources
 			data.AddPropertyIfValue("topic", topic);
 			data.AddPropertyIfValue("password", password);
 			data.AddPropertyIfValue("agenda", agenda);
-			data.AddPropertyIfValue("start_time", start?.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
 			data.AddPropertyIfValue("duration", duration);
 			data.AddPropertyIfValue("recurrence", recurrence);
-			if (start.HasValue) data.Add("timezone", "UTC");
+			data.AddPropertyIfValue("timezone", timeZone);
 			data.AddPropertyIfValue("settings", settings);
 			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
 
@@ -256,13 +258,13 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task UpdateMeetingOccurrenceAsync(long meetingId, string occurrenceId, string agenda = null, DateTime? start = null, int? duration = null, MeetingSettings settings = null, CancellationToken cancellationToken = default)
+		public Task UpdateMeetingOccurrenceAsync(long meetingId, string occurrenceId, string agenda = null, DateTime? start = null, int? duration = null, string timeZone = null, MeetingSettings settings = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
 			data.AddPropertyIfValue("agenda", agenda);
-			data.AddPropertyIfValue("start_time", start?.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
 			data.AddPropertyIfValue("duration", duration);
-			if (start.HasValue) data.Add("timezone", "UTC");
+			data.AddPropertyIfValue("timezone", "UTC");
 			data.AddPropertyIfValue("settings", settings);
 
 			return _client
@@ -289,16 +291,16 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task UpdateScheduledMeetingAsync(long meetingId, string userId = null, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
+		public Task UpdateScheduledMeetingAsync(long meetingId, string userId = null, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, string timeZone = null, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
 			data.AddPropertyIfValue("schedule_for", userId);
 			data.AddPropertyIfValue("topic", topic);
 			data.AddPropertyIfValue("password", password);
 			data.AddPropertyIfValue("agenda", agenda);
-			data.AddPropertyIfValue("start_time", start?.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
 			data.AddPropertyIfValue("duration", duration);
-			if (start.HasValue) data.Add("timezone", "UTC");
+			data.AddPropertyIfValue("timezone", timeZone);
 			data.AddPropertyIfValue("settings", settings);
 			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
 
@@ -326,17 +328,17 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task UpdateRecurringMeetingAsync(long meetingId, string userId = null, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, RecurrenceInfo recurrence = null, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
+		public Task UpdateRecurringMeetingAsync(long meetingId, string userId = null, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, string timeZone = null, RecurrenceInfo recurrence = null, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
 			data.AddPropertyIfValue("schedule_for", userId);
 			data.AddPropertyIfValue("topic", topic);
 			data.AddPropertyIfValue("password", password);
 			data.AddPropertyIfValue("agenda", agenda);
-			data.AddPropertyIfValue("start_time", start?.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'"));
+			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
 			data.AddPropertyIfValue("duration", duration);
 			data.AddPropertyIfValue("recurrence", recurrence);
-			if (start.HasValue) data.Add("timezone", "UTC");
+			data.AddPropertyIfValue("timezone", timeZone);
 			data.AddPropertyIfValue("settings", settings);
 			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
 
