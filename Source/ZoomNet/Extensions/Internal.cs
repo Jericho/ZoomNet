@@ -58,7 +58,7 @@ namespace ZoomNet
 		/// <returns>
 		/// The string representation of the date expressed in the Zoom format.
 		/// </returns>
-		internal static string ToZoomFormat(this DateTime? date, string timeZone)
+		internal static string ToZoomFormat(this DateTime? date, TimeZones? timeZone)
 		{
 			if (!date.HasValue) return null;
 			return date.Value.ToZoomFormat(timeZone);
@@ -72,10 +72,13 @@ namespace ZoomNet
 		/// <returns>
 		/// The string representation of the date expressed in the Zoom format.
 		/// </returns>
-		internal static string ToZoomFormat(this DateTime date, string timeZone)
+		internal static string ToZoomFormat(this DateTime date, TimeZones? timeZone)
 		{
-			if (timeZone.Equals("UTC", StringComparison.OrdinalIgnoreCase)) return date.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'");
-			return date.ToString("yyyy-MM-dd'T'HH:mm:ss");
+			const string defaultDateFormat = "yyyy-MM-dd'T'HH:mm:ss";
+			const string utcDateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'";
+
+			if (timeZone.HasValue && timeZone.Value == TimeZones.UTC) return date.ToUniversalTime().ToString(utcDateFormat);
+			return date.ToString(defaultDateFormat);
 		}
 
 		/// <summary>
