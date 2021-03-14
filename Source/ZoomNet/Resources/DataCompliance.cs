@@ -2,6 +2,7 @@ using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System.Threading;
 using System.Threading.Tasks;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
@@ -48,11 +49,17 @@ namespace ZoomNet.Resources
 			data.AddPropertyIfValue("deauthorization_event_received", deauthorizationEventReceived);
 			data.AddPropertyIfValue("compliance_completed", "true");
 
-			return _client
+			var request = _client
 				.PostAsync("oauth/data/compliance")
 				.WithBasicAuthentication(clientId, secret)
 				.WithJsonBody(data)
-				.WithCancellationToken(cancellationToken)
+				.WithCancellationToken(cancellationToken);
+
+			// This endpoint relies on clientId+secret for authentication. It does not need tokens.
+			request.Filters.Remove<OAuthTokenHandler>();
+			request.Filters.Remove<JwtTokenHandler>();
+
+			return request
 				.AsMessage();
 		}
 	}
