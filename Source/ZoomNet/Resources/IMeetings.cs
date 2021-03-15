@@ -80,7 +80,7 @@ namespace ZoomNet.Resources
 		/// The new meeting.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the meeting.</exception>
-		Task<ScheduledMeeting> CreateScheduledMeetingAsync(string userId, string topic, string agenda, DateTime start, int duration, TimeZones timeZone = TimeZones.UTC, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
+		Task<ScheduledMeeting> CreateScheduledMeetingAsync(string userId, string topic, string agenda, DateTime start, int duration, TimeZones? timeZone = TimeZones.UTC, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Create a recurring meeting for a user.
@@ -100,7 +100,7 @@ namespace ZoomNet.Resources
 		/// The new meeting.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the meeting.</exception>
-		Task<RecurringMeeting> CreateRecurringMeetingAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, TimeZones timeZone = TimeZones.UTC, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
+		Task<RecurringMeeting> CreateRecurringMeetingAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, TimeZones? timeZone = TimeZones.UTC, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Update the details of a meeting occurrence.

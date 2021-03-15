@@ -57,7 +57,7 @@ namespace ZoomNet.Resources
 		/// The new webinar.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the webinar.</exception>
-		Task<ScheduledWebinar> CreateScheduledWebinarAsync(string userId, string topic, string agenda, DateTime start, int duration, TimeZones timeZone = TimeZones.UTC, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default);
+		Task<ScheduledWebinar> CreateScheduledWebinarAsync(string userId, string topic, string agenda, DateTime start, int duration, TimeZones? timeZone = TimeZones.UTC, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Creates a recurring webinar for a user.
@@ -78,7 +78,7 @@ namespace ZoomNet.Resources
 		/// The new webinar.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the webinar.</exception>
-		Task<RecurringWebinar> CreateRecurringWebinarAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, TimeZones timeZone = TimeZones.UTC, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default);
+		Task<RecurringWebinar> CreateRecurringWebinarAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, TimeZones? timeZone = TimeZones.UTC, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Update the details of a webinar occurrence.
