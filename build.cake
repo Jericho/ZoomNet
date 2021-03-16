@@ -1,5 +1,5 @@
 // Install tools.
-#tool nuget:?package=GitVersion.CommandLine&version=5.6.6
+#tool dotnet:?package=GitVersion.Tool&version=5.6.6
 #tool nuget:?package=GitReleaseManager&version=0.11.0
 #tool nuget:?package=OpenCover&version=4.7.922
 #tool nuget:?package=ReportGenerator&version=4.8.7
@@ -25,7 +25,7 @@ var configuration = Argument<string>("configuration", "Release");
 var libraryName = "ZoomNet";
 var gitHubRepo = "ZoomNet";
 
-var testCoverageFilter = "+[ZoomNet]* -[ZoomNet]ZoomNet.Properties.* -[ZoomNet]ZoomNet.Models.* -[ZoomNet]ZoomNet.Logging.*";
+var testCoverageFilter = "+[ZoomNet]* -[ZoomNet]ZoomNet.Properties.* -[ZoomNet]ZoomNet.Models.*";
 var testCoverageExcludeByAttribute = "*.ExcludeFromCodeCoverage*";
 var testCoverageExcludeByFile = "*/*Designer.cs;*/*AssemblyInfo.cs";
 
@@ -52,8 +52,7 @@ var versionInfo = GitVersion(new GitVersionSettings() { OutputType = GitVersionO
 var milestone = versionInfo.MajorMinorPatch;
 var cakeVersion = typeof(ICakeContext).Assembly.GetName().Version.ToString();
 var isLocalBuild = BuildSystem.IsLocalBuild;
-var isMainBranch = StringComparer.OrdinalIgnoreCase.Equals("main", BuildSystem.AppVeyor.Environment.Repository.Branch) ||
-				   StringComparer.OrdinalIgnoreCase.Equals("master", BuildSystem.AppVeyor.Environment.Repository.Branch);
+var isMainBranch = StringComparer.OrdinalIgnoreCase.Equals("main", BuildSystem.AppVeyor.Environment.Repository.Branch);
 var isMainRepo = StringComparer.OrdinalIgnoreCase.Equals($"{gitHubRepoOwner}/{gitHubRepo}", BuildSystem.AppVeyor.Environment.Repository.Name);
 var isPullRequest = BuildSystem.AppVeyor.Environment.PullRequest.IsPullRequest;
 var isTagged = (
