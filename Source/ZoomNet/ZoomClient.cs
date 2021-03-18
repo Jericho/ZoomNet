@@ -2,6 +2,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Pathoschild.Http.Client;
 using Pathoschild.Http.Client.Extensibility;
+using Pathoschild.Http.Client.Retry;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -191,13 +192,13 @@ namespace ZoomNet
 			{
 				var tokenHandler = new JwtTokenHandler(jwtConnectionInfo);
 				_fluentClient.Filters.Add(tokenHandler);
-				_fluentClient.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), tokenHandler));
+				_fluentClient.SetRequestCoordinator(new IRetryConfig[] { new ExpiredOAuthTokenRetryStrategy(tokenHandler), new Http429RetryStrategy() });
 			}
 			else if (connectionInfo is OAuthConnectionInfo oauthConnectionInfo)
 			{
 				var tokenHandler = new OAuthTokenHandler(oauthConnectionInfo, httpClient);
 				_fluentClient.Filters.Add(tokenHandler);
-				_fluentClient.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), tokenHandler));
+				_fluentClient.SetRequestCoordinator(new IRetryConfig[] { new ExpiredOAuthTokenRetryStrategy(tokenHandler), new Http429RetryStrategy() });
 			}
 			else
 			{
@@ -205,7 +206,7 @@ namespace ZoomNet
 			}
 
 			// The list of filters must be kept in sync with the filters in Utils.GetFluentClient in the unit testing project.
-			_fluentClient.Filters.Add(new DiagnosticHandler(_options.LogLevelSuccessfulCalls, _options.LogLevelFailedCalls));
+			_fluentClient.Filters.Add(new DiagnosticHandler(_options.LogLevelSuccessfulCalls, _options.LogLevelFailedCalls, _logger));
 			_fluentClient.Filters.Add(new ZoomErrorHandler());
 
 			Accounts = new Accounts(_fluentClient);

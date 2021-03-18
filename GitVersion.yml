@@ -1,7 +1,7 @@
 mode: ContinuousDelivery
 branches:
   master:
-    regex: main
+    regex: (master|main)
     mode: ContinuousDelivery
     tag:
     increment: Patch
