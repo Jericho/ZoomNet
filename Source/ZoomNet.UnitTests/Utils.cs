@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Logging;
 using Pathoschild.Http.Client;
 using Pathoschild.Http.Client.Extensibility;
+using Pathoschild.Http.Client.Retry;
 using RichardSzalay.MockHttp;
 using System;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace ZoomNet.UnitTests
 		{
 			var httpClient = httpMessageHandler.ToHttpClient();
 			var client = new FluentClient(new Uri(ZOOM_V2_BASE_URI), httpClient);
-			client.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), null));
+			client.SetRequestCoordinator(new IRetryConfig[] { new ExpiredOAuthTokenRetryStrategy(null), new Http429RetryStrategy() });
 			client.Filters.Remove<DefaultErrorFilter>();
 			client.Filters.Add(new DiagnosticHandler(LogLevel.Debug, LogLevel.Error));
 			client.Filters.Add(new ZoomErrorHandler());
