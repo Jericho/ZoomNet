@@ -47,6 +47,7 @@ namespace ZoomNet.Resources
 		/// <param name="agenda">Webinar description.</param>
 		/// <param name="start">Webinar start time.</param>
 		/// <param name="duration">Webinar duration (minutes).</param>
+		/// <param name="timeZone">The time zone for start time.</param>
 		/// <param name="password">Password to join the webinar. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
 		/// <param name="settings">Webinar settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
@@ -56,7 +57,7 @@ namespace ZoomNet.Resources
 		/// The new webinar.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the webinar.</exception>
-		Task<ScheduledWebinar> CreateScheduledWebinarAsync(string userId, string topic, string agenda, DateTime start, int duration, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default);
+		Task<ScheduledWebinar> CreateScheduledWebinarAsync(string userId, string topic, string agenda, DateTime start, int duration, TimeZones? timeZone = TimeZones.UTC, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Creates a recurring webinar for a user.
@@ -67,6 +68,7 @@ namespace ZoomNet.Resources
 		/// <param name="start">Webinar start time.</param>
 		/// <param name="duration">Webinar duration (minutes).</param>
 		/// <param name="recurrence">Recurrence information.</param>
+		/// <param name="timeZone">The time zone for start time.</param>
 		/// <param name="password">Password to join the webinar. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
 		/// <param name="settings">Webinar settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
@@ -76,7 +78,7 @@ namespace ZoomNet.Resources
 		/// The new webinar.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the webinar.</exception>
-		Task<RecurringWebinar> CreateRecurringWebinarAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default);
+		Task<RecurringWebinar> CreateRecurringWebinarAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, TimeZones? timeZone = TimeZones.UTC, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Update the details of a webinar occurrence.
@@ -86,12 +88,13 @@ namespace ZoomNet.Resources
 		/// <param name="agenda">Meeting description.</param>
 		/// <param name="start">Meeting start time.</param>
 		/// <param name="duration">Meeting duration (minutes).</param>
+		/// <param name="timeZone">The time zone for start time.</param>
 		/// <param name="settings">Meeting settings.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task UpdateWebinarOccurrenceAsync(long webinarId, string occurrenceId, string agenda = null, DateTime? start = null, int? duration = null, WebinarSettings settings = null, CancellationToken cancellationToken = default);
+		Task UpdateWebinarOccurrenceAsync(long webinarId, string occurrenceId, string agenda = null, DateTime? start = null, int? duration = null, TimeZones? timeZone = null, WebinarSettings settings = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Updates an existing scheduled webinar.
@@ -101,6 +104,7 @@ namespace ZoomNet.Resources
 		/// <param name="agenda">Webinar description.</param>
 		/// <param name="start">Webinar start time.</param>
 		/// <param name="duration">Webinar duration (minutes).</param>
+		/// <param name="timeZone">The time zone for start time.</param>
 		/// <param name="password">Password to join the webinar. By default the password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters. This can be updated within Zoom account settings.</param>
 		/// <param name="settings">Webinar settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
@@ -108,7 +112,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task UpdateScheduledWebinarAsync(long webinarId, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
+		Task UpdateScheduledWebinarAsync(long webinarId, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, TimeZones? timeZone = null, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Updates an existing recurring webinar for a user.
@@ -118,6 +122,7 @@ namespace ZoomNet.Resources
 		/// <param name="agenda">Webinar description.</param>
 		/// <param name="start">Webinar start time.</param>
 		/// <param name="duration">Webinar duration (minutes).</param>
+		/// <param name="timeZone">The time zone for start time.</param>
 		/// <param name="recurrence">Recurrence information.</param>
 		/// <param name="password">Password to join the webinar. By default the password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters. This can be updated within Zoom account settings.</param>
 		/// <param name="settings">Webinar settings.</param>
@@ -126,7 +131,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task UpdateRecurringWebinarAsync(long webinarId, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, RecurrenceInfo recurrence = null, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
+		Task UpdateRecurringWebinarAsync(long webinarId, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, TimeZones? timeZone = null, RecurrenceInfo recurrence = null, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve the details of a webinar.
