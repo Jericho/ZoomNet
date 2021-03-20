@@ -114,13 +114,13 @@ namespace ZoomNet.Utilities
 					}
 					finally
 					{
-						_lock.ExitWriteLock();
+						if (_lock.IsWriteLockHeld) _lock.ExitWriteLock();
 					}
 				}
 			}
 			finally
 			{
-				_lock.ExitUpgradeableReadLock();
+				if (_lock.IsUpgradeableReadLockHeld) _lock.ExitUpgradeableReadLock();
 			}
 
 			return _connectionInfo.AccessToken;
