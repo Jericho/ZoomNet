@@ -49,7 +49,7 @@ namespace ZoomNet.Resources
 			return _client
 				.GetAsync($"accounts")
 				.WithArgument("page_size", recordsPerPage)
-				.WithArgument("page", page)
+				.WithArgument("page_number", page)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponse<Account>("accounts");
 		}

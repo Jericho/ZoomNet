@@ -55,7 +55,7 @@ namespace ZoomNet.Resources
 				.WithArgument("status", JToken.Parse(JsonConvert.SerializeObject(status)).ToString())
 				.WithArgument("role_id", roleId)
 				.WithArgument("page_size", recordsPerPage)
-				.WithArgument("page", page)
+				.WithArgument("page_number", page)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponse<User>("users");
 		}
