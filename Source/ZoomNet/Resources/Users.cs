@@ -43,6 +43,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="User">users</see>.
 		/// </returns>
+		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
 		public Task<PaginatedResponse<User>> GetAllAsync(UserStatus status = UserStatus.Active, string roleId = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
@@ -58,6 +59,34 @@ namespace ZoomNet.Resources
 				.WithArgument("page_number", page)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponse<User>("users");
+		}
+
+		/// <summary>
+		/// Retrieve all users on your account.
+		/// </summary>
+		/// <param name="status">The user status. Allowed values: Active, Inactive, pending.</param>
+		/// <param name="roleId">Unique identifier for the role. Provide this parameter if you would like to filter the response by a specific role.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="User">users</see>.
+		/// </returns>
+		public Task<PaginatedResponseWithToken<User>> GetAllAsync(UserStatus status = UserStatus.Active, string roleId = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			if (recordsPerPage < 1 || recordsPerPage > 300)
+			{
+				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 300");
+			}
+
+			return _client
+				.GetAsync($"users")
+				.WithArgument("status", JToken.Parse(JsonConvert.SerializeObject(status)).ToString())
+				.WithArgument("role_id", roleId)
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<User>("users");
 		}
 
 		/// <summary>
