@@ -52,7 +52,7 @@ namespace ZoomNet.Resources
 			return _client
 				.GetAsync($"users/{userId}/webinars")
 				.WithArgument("page_size", recordsPerPage)
-				.WithArgument("page", page)
+				.WithArgument("page_number", page)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponse<Webinar>("webinars", new WebinarConverter());
 		}
@@ -455,7 +455,7 @@ namespace ZoomNet.Resources
 				.WithArgument("status", JToken.Parse(JsonConvert.SerializeObject(status)).ToString())
 				.WithArgument("occurrence_id", occurrenceId)
 				.WithArgument("page_size", recordsPerPage)
-				.WithArgument("page", page)
+				.WithArgument("page_number", page)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponse<Registrant>("registrants");
 		}

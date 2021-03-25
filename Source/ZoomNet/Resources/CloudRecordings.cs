@@ -58,7 +58,7 @@ namespace ZoomNet.Resources
 				.WithArgument("from", from?.ToString("yyyy-mm-dd"))
 				.WithArgument("to", to?.ToString("yyyy-mm-dd"))
 				.WithArgument("page_size", recordsPerPage)
-				.WithArgument("page", page)
+				.WithArgument("page_number", page)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithTokenAndDateRange<Recording>("meetings");
 		}
@@ -252,7 +252,7 @@ namespace ZoomNet.Resources
 			return _client
 				.GetAsync($"meetings/{meetingId}/recordings/registrants")
 				.WithArgument("page_size", recordsPerPage)
-				.WithArgument("page", page)
+				.WithArgument("page_number", page)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponse<Registrant>("registrants");
 		}

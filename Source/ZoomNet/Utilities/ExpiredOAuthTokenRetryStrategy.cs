@@ -3,6 +3,7 @@ using Pathoschild.Http.Client.Retry;
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 
 namespace ZoomNet.Utilities
 {
@@ -14,14 +15,20 @@ namespace ZoomNet.Utilities
 	{
 		#region FIELDS
 
+		private static readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim();
+
 		private readonly ITokenHandler _tokenHandler;
+		private DateTime _lastRefreshed;
 
 		#endregion
 
 		#region PROPERTIES
 
 		/// <summary>Gets the maximum number of times to retry a request before failing.</summary>
-		public int MaxRetries { get; }
+		public int MaxRetries
+		{
+			get { return 1; }
+		}
 
 		#endregion
 
@@ -34,6 +41,7 @@ namespace ZoomNet.Utilities
 		public ExpiredOAuthTokenRetryStrategy(ITokenHandler tokenHandler)
 		{
 			_tokenHandler = tokenHandler;
+			_lastRefreshed = DateTime.MinValue.ToUniversalTime();
 		}
 
 		#endregion
@@ -49,6 +57,8 @@ namespace ZoomNet.Utilities
 		/// </returns>
 		public bool ShouldRetry(HttpResponseMessage response)
 		{
+			var shouldRetry = false;
+
 			if (response.StatusCode == HttpStatusCode.Unauthorized && _tokenHandler != null)
 			{
 				var responseContent = response.Content.ReadAsStringAsync(null).GetAwaiter().GetResult();
@@ -56,13 +66,35 @@ namespace ZoomNet.Utilities
 				var message = jObject.GetPropertyValue("message", string.Empty);
 				if (message.StartsWith("access token is expired", StringComparison.OrdinalIgnoreCase))
 				{
-					_tokenHandler.RefreshTokenIfNecessary(false);
+					try
+					{
+						_lock.EnterUpgradeableReadLock();
 
-					return true;
+						var lastRefreshed = _lastRefreshed;
+
+						try
+						{
+							_lock.EnterWriteLock();
+
+							var forceRefresh = lastRefreshed == _lastRefreshed;
+							_tokenHandler.RefreshTokenIfNecessary(forceRefresh);
+							_lastRefreshed = DateTime.UtcNow;
+
+							shouldRetry = true;
+						}
+						finally
+						{
+							if (_lock.IsWriteLockHeld) _lock.ExitWriteLock();
+						}
+					}
+					finally
+					{
+						if (_lock.IsUpgradeableReadLockHeld) _lock.ExitUpgradeableReadLock();
+					}
 				}
 			}
 
-			return false;
+			return shouldRetry;
 		}
 
 		/// <summary>

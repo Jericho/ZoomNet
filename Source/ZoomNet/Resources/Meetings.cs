@@ -54,7 +54,7 @@ namespace ZoomNet.Resources
 				.GetAsync($"users/{userId}/meetings")
 				.WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
 				.WithArgument("page_size", recordsPerPage)
-				.WithArgument("page", page)
+				.WithArgument("page_number", page)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponse<Meeting>("meetings", new MeetingConverter());
 		}
@@ -423,7 +423,7 @@ namespace ZoomNet.Resources
 				.WithArgument("status", JToken.Parse(JsonConvert.SerializeObject(status)).ToString())
 				.WithArgument("occurrence_id", occurrenceId)
 				.WithArgument("page_size", recordsPerPage)
-				.WithArgument("page", page)
+				.WithArgument("page_number", page)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponse<Registrant>("registrants");
 		}
