@@ -28,6 +28,20 @@ namespace ZoomNet.Resources
 		Task<PaginatedResponse<User>> GetAllAsync(UserStatus status = UserStatus.Active, string roleId = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Retrieve all users on your account.
+		/// </summary>
+		/// <param name="status">The user status. Allowed values: Active, Inactive, pending.</param>
+		/// <param name="roleId">Unique identifier for the role. Provide this parameter if you would like to filter the response by a specific role.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="User">users</see>.
+		/// </returns>
+		Task<PaginatedResponseWithToken<User>> GetAllAsync(UserStatus status = UserStatus.Active, string roleId = null,
+			int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Creates a user.
 		/// </summary>
 		/// <param name="email">The email address.</param>
