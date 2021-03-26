@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
@@ -25,7 +26,21 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="User">users</see>.
 		/// </returns>
+		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
 		Task<PaginatedResponse<User>> GetAllAsync(UserStatus status = UserStatus.Active, string roleId = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve all users on your account.
+		/// </summary>
+		/// <param name="status">The user status. Allowed values: Active, Inactive, pending.</param>
+		/// <param name="roleId">Unique identifier for the role. Provide this parameter if you would like to filter the response by a specific role.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="User">users</see>.
+		/// </returns>
+		Task<PaginatedResponseWithToken<User>> GetAllAsync(UserStatus status = UserStatus.Active, string roleId = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Creates a user.

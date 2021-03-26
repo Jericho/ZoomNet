@@ -15,7 +15,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync("\n***** USERS *****\n").ConfigureAwait(false);
 
 			// GET ALL THE USERS
-			var paginatedUsers = await client.Users.GetAllAsync(UserStatus.Active, null, 100, 1, cancellationToken).ConfigureAwait(false);
+			var paginatedUsers = await client.Users.GetAllAsync(UserStatus.Active, null, 100, (string)null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {paginatedUsers.Records.Length} users").ConfigureAwait(false);
 
 			// CLEANUP PREVIOUS INTEGRATION TESTS THAT MIGHT HAVE BEEN INTERRUPTED BEFORE THEY HAD TIME TO CLEANUP AFTER THEMSELVES
