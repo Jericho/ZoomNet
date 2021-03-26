@@ -91,7 +91,7 @@ namespace ZoomNet.IntegrationTests
 
 			// Ensure the Console is tall enough and centered on the screen
 			Console.WindowHeight = Math.Min(60, Console.LargestWindowHeight);
-			Utils.CenterConsole();
+			ConsoleUtils.CenterConsole();
 
 			// These are the integration tests that we will execute
 			var integrationTests = new Type[]
@@ -157,7 +157,7 @@ namespace ZoomNet.IntegrationTests
 			var promptLog = new StringWriter();
 			await promptLog.WriteLineAsync("\n\n**************************************************").ConfigureAwait(false);
 			await promptLog.WriteLineAsync("Press any key to exit").ConfigureAwait(false);
-			Utils.Prompt(promptLog.ToString());
+			ConsoleUtils.Prompt(promptLog.ToString());
 
 			// Return code indicating success/failure
 			var resultCode = (int)ResultCodes.Success;
