@@ -27,5 +27,11 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "meeting.deleted")]
 		MeetingDeleted,
+
+		/// <summary>
+		/// A meeting has been updated.
+		/// </summary>
+		[EnumMember(Value = "meeting.updated")]
+		MeetingUpdated,
 	}
 }

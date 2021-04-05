@@ -1,6 +1,8 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using ZoomNet.Models.Webhooks;
 using static ZoomNet.Internal;
 
@@ -86,6 +88,16 @@ namespace ZoomNet.Utilities
 					break;
 				case EventType.MeetingDeleted:
 					webHookEvent = payloadJsonProperty.ToObject<MeetingDeletedEvent>(serializer);
+					break;
+				case EventType.MeetingUpdated:
+					webHookEvent = payloadJsonProperty.ToObject<MeetingUpdatedEvent>(serializer);
+
+					var oldValues = payloadJsonProperty.GetPropertyValue<JToken>("old_object", true).ToObject<Dictionary<string, object>>();
+					var newValues = payloadJsonProperty.GetPropertyValue<JToken>("object", true).ToObject<Dictionary<string, object>>();
+
+					((MeetingUpdatedEvent)webHookEvent).ModifiedFields = oldValues.Keys
+						.Select(key => (key, oldValues[key], newValues[key]))
+						.ToArray();
 					break;
 				default:
 					throw new Exception($"{eventTypeJsonProperty} is an unknown event type");
