@@ -84,36 +84,9 @@ namespace ZoomNet.Utilities
 				case EventType.MeetingCreated:
 					webHookEvent = payloadJsonProperty.ToObject<MeetingCreatedEvent>(serializer);
 					break;
-				//	case EventType.Click:
-				//		webHookEvent = jsonObject.ToObject<ClickedEvent>(serializer);
-				//		break;
-				//	case EventType.Deferred:
-				//		webHookEvent = jsonObject.ToObject<DeferredEvent>(serializer);
-				//		break;
-				//	case EventType.Delivered:
-				//		webHookEvent = jsonObject.ToObject<DeliveredEvent>(serializer);
-				//		break;
-				//	case EventType.Dropped:
-				//		webHookEvent = jsonObject.ToObject<DroppedEvent>(serializer);
-				//		break;
-				//	case EventType.GroupResubscribe:
-				//		webHookEvent = jsonObject.ToObject<GroupResubscribeEvent>(serializer);
-				//		break;
-				//	case EventType.GroupUnsubscribe:
-				//		webHookEvent = jsonObject.ToObject<GroupUnsubscribeEvent>(serializer);
-				//		break;
-				//	case EventType.Open:
-				//		webHookEvent = jsonObject.ToObject<OpenedEvent>(serializer);
-				//		break;
-				//	case EventType.Processed:
-				//		webHookEvent = jsonObject.ToObject<ProcessedEvent>(serializer);
-				//		break;
-				//	case EventType.SpamReport:
-				//		webHookEvent = jsonObject.ToObject<SpamReportEvent>(serializer);
-				//		break;
-				//	case EventType.Unsubscribe:
-				//		webHookEvent = jsonObject.ToObject<UnsubscribeEvent>(serializer);
-				//		break;
+				case EventType.MeetingDeleted:
+					webHookEvent = payloadJsonProperty.ToObject<MeetingDeletedEvent>(serializer);
+					break;
 				default:
 					throw new Exception($"{eventTypeJsonProperty} is an unknown event type");
 			}
