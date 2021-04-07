@@ -2,7 +2,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Pathoschild.Http.Client;
 using Pathoschild.Http.Client.Extensibility;
-using Pathoschild.Http.Client.Retry;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -192,13 +191,13 @@ namespace ZoomNet
 			{
 				var tokenHandler = new JwtTokenHandler(jwtConnectionInfo);
 				_fluentClient.Filters.Add(tokenHandler);
-				_fluentClient.SetRequestCoordinator(new IRetryConfig[] { new ExpiredOAuthTokenRetryStrategy(tokenHandler), new Http429RetryStrategy() });
+				_fluentClient.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), tokenHandler));
 			}
 			else if (connectionInfo is OAuthConnectionInfo oauthConnectionInfo)
 			{
 				var tokenHandler = new OAuthTokenHandler(oauthConnectionInfo, httpClient);
 				_fluentClient.Filters.Add(tokenHandler);
-				_fluentClient.SetRequestCoordinator(new IRetryConfig[] { new ExpiredOAuthTokenRetryStrategy(tokenHandler), new Http429RetryStrategy() });
+				_fluentClient.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), tokenHandler));
 			}
 			else
 			{
