@@ -1,10 +1,8 @@
 using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
-using Pathoschild.Http.Client.Internal;
 using Pathoschild.Http.Client.Retry;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
@@ -16,11 +14,10 @@ namespace ZoomNet.Utilities
 	internal class ZoomRetryCoordinator : IRequestCoordinator
 	{
 		private static readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim();
-		private static DateTime _tokenLastRefreshed;
 
+		private readonly IRequestCoordinator _defaultRetryCoordinator;
 		private readonly ITokenHandler _tokenHandler;
-		private readonly List<IRetryConfig> _retryConfigs = new List<IRetryConfig>();
-		private readonly HttpStatusCode _timeoutStatusCode = (HttpStatusCode)589;
+		private DateTime _tokenLastRefreshed;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ZoomRetryCoordinator" /> class.
@@ -40,7 +37,7 @@ namespace ZoomNet.Utilities
 		public ZoomRetryCoordinator(IRetryConfig config, ITokenHandler tokenHandler)
 			: this(tokenHandler)
 		{
-			if (config != null) _retryConfigs.Add(config);
+			_defaultRetryCoordinator = new RetryCoordinator(config);
 		}
 
 		/// <summary>
@@ -51,7 +48,7 @@ namespace ZoomNet.Utilities
 		public ZoomRetryCoordinator(IEnumerable<IRetryConfig> config, ITokenHandler tokenHandler)
 			: this(tokenHandler)
 		{
-			if (config != null) _retryConfigs.AddRange(config.Where(c => c != null));
+			_defaultRetryCoordinator = new RetryCoordinator(config);
 		}
 
 		/// <summary>Dispatch an HTTP request.</summary>
@@ -60,89 +57,51 @@ namespace ZoomNet.Utilities
 		/// <returns>The final HTTP response.</returns>
 		public async Task<HttpResponseMessage> ExecuteAsync(IRequest request, Func<IRequest, Task<HttpResponseMessage>> dispatcher)
 		{
-			int attempt = 0;
-			while (true)
+			// Dispatch the request
+			var response = await _defaultRetryCoordinator.ExecuteAsync(request, dispatcher).ConfigureAwait(false);
+
+			// Check if the token needs to be refreshed
+			if (response.StatusCode == HttpStatusCode.Unauthorized)
 			{
-				// dispatch request
-				attempt++;
-				var response = await DispatchRequest(request, dispatcher).ConfigureAwait(false);
-
-				// check if the token needs to be refreshed
-				if (response.StatusCode == HttpStatusCode.Unauthorized)
+				var responseContent = await response.Content.ReadAsStringAsync(null).ConfigureAwait(false);
+				var jObject = JObject.Parse(responseContent);
+				var message = jObject.GetPropertyValue("message", string.Empty);
+				if (message.StartsWith("access token is expired", StringComparison.OrdinalIgnoreCase))
 				{
-					var responseContent = await response.Content.ReadAsStringAsync(null).ConfigureAwait(false);
-					var jObject = JObject.Parse(responseContent);
-					var message = jObject.GetPropertyValue("message", string.Empty);
-					if (message.StartsWith("access token is expired", StringComparison.OrdinalIgnoreCase))
-					{
-						try
-						{
-							_lock.EnterUpgradeableReadLock();
-
-							var lastRefreshed = _tokenLastRefreshed;
-
-							try
-							{
-								_lock.EnterWriteLock();
-
-								var forceRefresh = lastRefreshed == _tokenLastRefreshed;
-								var refreshedToken = _tokenHandler.RefreshTokenIfNecessary(forceRefresh);
-								request = request.WithBearerAuthentication(refreshedToken);
-								_tokenLastRefreshed = DateTime.UtcNow;
-							}
-							finally
-							{
-								if (_lock.IsWriteLockHeld) _lock.ExitWriteLock();
-							}
-
-							response = await DispatchRequest(request, dispatcher);
-						}
-						finally
-						{
-							if (_lock.IsUpgradeableReadLockHeld) _lock.ExitUpgradeableReadLock();
-						}
-					}
+					var refreshedToken = RefreshToken();
+					response = await _defaultRetryCoordinator.ExecuteAsync(request.WithBearerAuthentication(refreshedToken), dispatcher);
 				}
-
-				// find the applicable retry configuration, if any
-				IRetryConfig retryConfig = RetryConfig.None();
-				bool shouldRetry = false;
-				foreach (var config in _retryConfigs)
-				{
-					if (config.ShouldRetry(response))
-					{
-						retryConfig = config;
-						shouldRetry = true;
-						break;
-					}
-				}
-
-				// exit if there is no need to retry the request
-				if (!shouldRetry)
-					return response;
-
-				int maxAttempt = 1 + retryConfig?.MaxRetries ?? 0;
-
-				// throw an exception if we have reached the maximum number of retries
-				if (attempt > maxAttempt)
-					throw new ApiException(new Response(response, request.Formatters), $"The HTTP request failed, and the retry coordinator gave up after the maximum {maxAttempt} retries");
-
-				// set up retry
-				TimeSpan delay = retryConfig.GetDelay(attempt, response);
-				if (delay.TotalMilliseconds > 0)
-					await Task.Delay(delay).ConfigureAwait(false);
 			}
+
+			return response;
 		}
 
-		private async Task<HttpResponseMessage> DispatchRequest(IRequest request, Func<IRequest, Task<HttpResponseMessage>> dispatcher)
+		private string RefreshToken()
 		{
 			try
 			{
-				return await dispatcher(request).ConfigureAwait(false);
+				_lock.EnterUpgradeableReadLock();
+
+				var lastRefreshed = _tokenLastRefreshed;
+
+				try
+				{
+					_lock.EnterWriteLock();
+
+					var forceRefresh = lastRefreshed == _tokenLastRefreshed;
+					var refreshedToken = _tokenHandler.RefreshTokenIfNecessary(forceRefresh);
+					_tokenLastRefreshed = DateTime.UtcNow;
+
+					return refreshedToken;
+				}
+				finally
+				{
+					if (_lock.IsWriteLockHeld) _lock.ExitWriteLock();
+				}
 			}
-			catch (TaskCanceledException) when (!request.CancellationToken.IsCancellationRequested)
+			finally
 			{
-				return request.Message.CreateResponse(_timeoutStatusCode);
+				if (_lock.IsUpgradeableReadLockHeld) _lock.ExitUpgradeableReadLock();
 			}
 		}
 	}
