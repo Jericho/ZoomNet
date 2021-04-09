@@ -9,16 +9,25 @@ namespace ZoomNet
 	/// <summary>
 	/// Allows parsing of information posted from Zoom.
 	/// </summary>
-	public static class WebhookParser
+	public class WebhookParser
 	{
+		#region PROPERTIES
+
+		/// <summary>
+		/// The name of the HTTP header where Zoom stores the verification token.
+		/// </summary>
+		public const string AUTHORIZATION_HEADER_NAME = "authorization";
+
+		#endregion
+
 		#region PUBLIC METHODS
 
 		/// <summary>
 		/// Parses the event webhook asynchronously.
 		/// </summary>
 		/// <param name="stream">The stream.</param>
-		/// <returns>An <see cref="Event"/>.</returns>
-		public static async Task<Event> ParseEventWebhookAsync(Stream stream)
+		/// <returns>An <see cref="Event" />.</returns>
+		public async Task<Event> ParseEventWebhookAsync(Stream stream)
 		{
 			string requestBody;
 			using (var streamReader = new StreamReader(stream))
@@ -26,16 +35,15 @@ namespace ZoomNet
 				requestBody = await streamReader.ReadToEndAsync().ConfigureAwait(false);
 			}
 
-			var webHookEvents = ParseEventWebhook(requestBody);
-			return webHookEvents;
+			return ParseEventWebhook(requestBody);
 		}
 
 		/// <summary>
 		/// Parses the event webhook.
 		/// </summary>
 		/// <param name="requestBody">The content submitted by Zoom's WebHook.</param>
-		/// <returns>An <see cref="Event"/>.</returns>
-		public static Event ParseEventWebhook(string requestBody)
+		/// <returns>An <see cref="Event" />.</returns>
+		public Event ParseEventWebhook(string requestBody)
 		{
 			var webHookEvent = JsonConvert.DeserializeObject<Event>(requestBody, new WebHookEventConverter());
 			return webHookEvent;

@@ -1,11 +1,13 @@
+using Newtonsoft.Json;
 using System;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>
 	/// Represents a generic event.
 	/// </summary>
-	public class Event
+	public abstract class Event
 	{
 		/// <summary>
 		/// Gets or sets the type of event.
@@ -15,6 +17,14 @@ namespace ZoomNet.Models.Webhooks
 		/// <summary>
 		/// Gets or sets the timestamp at which the event occured.
 		/// </summary>
-		public DateTime TimeStamp { get; set; }
+		/// <remarks>
+		/// This field represents the timestamp for when the associated event occurred.
+		/// If you keep track of notification delivery timestamp in your application, you
+		/// can determine the latency in webhook delivery by calculating the difference
+		/// between the delivery timestamp and the value of the event_ts parameter.
+		/// </remarks>
+		[JsonProperty("timestamp", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonConverter(typeof(EpochConverter))]
+		public DateTime Timestamp { get; set; }
 	}
 }
