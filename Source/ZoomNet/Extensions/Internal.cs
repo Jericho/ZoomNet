@@ -273,8 +273,8 @@ namespace ZoomNet
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
 		internal static async Task<PaginatedResponse<T>> AsPaginatedResponse<T>(this IRequest request, string propertyName, JsonConverter jsonConverter = null)
 		{
-			var response = await request.AsMessage().ConfigureAwait(false);
-			return await response.Content.AsPaginatedResponse<T>(propertyName, jsonConverter).ConfigureAwait(false);
+			var response = await request.AsResponse().ConfigureAwait(false);
+			return await response.AsPaginatedResponse<T>(propertyName, jsonConverter).ConfigureAwait(false);
 		}
 
 		/// <summary>Asynchronously retrieve the JSON encoded response body and convert it to a 'PaginatedResponseWithToken' object.</summary>
@@ -298,8 +298,8 @@ namespace ZoomNet
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
 		internal static async Task<PaginatedResponseWithToken<T>> AsPaginatedResponseWithToken<T>(this IRequest request, string propertyName, JsonConverter jsonConverter = null)
 		{
-			var response = await request.AsMessage().ConfigureAwait(false);
-			return await response.Content.AsPaginatedResponseWithToken<T>(propertyName, jsonConverter).ConfigureAwait(false);
+			var response = await request.AsResponse().ConfigureAwait(false);
+			return await response.AsPaginatedResponseWithToken<T>(propertyName, jsonConverter).ConfigureAwait(false);
 		}
 
 		/// <summary>Asynchronously retrieve the JSON encoded response body and convert it to a 'PaginatedResponseWithToken' object.</summary>
@@ -323,8 +323,8 @@ namespace ZoomNet
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
 		internal static async Task<PaginatedResponseWithTokenAndDateRange<T>> AsPaginatedResponseWithTokenAndDateRange<T>(this IRequest request, string propertyName, JsonConverter jsonConverter = null)
 		{
-			var response = await request.AsMessage().ConfigureAwait(false);
-			return await response.Content.AsPaginatedResponseWithTokenAndDateRange<T>(propertyName, jsonConverter).ConfigureAwait(false);
+			var response = await request.AsResponse().ConfigureAwait(false);
+			return await response.AsPaginatedResponseWithTokenAndDateRange<T>(propertyName, jsonConverter).ConfigureAwait(false);
 		}
 
 		/// <summary>Set the body content of the HTTP request.</summary>
