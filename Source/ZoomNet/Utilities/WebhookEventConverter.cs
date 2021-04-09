@@ -83,6 +83,10 @@ namespace ZoomNet.Utilities
 			Event webHookEvent;
 			switch (eventType)
 			{
+				case EventType.MeetingServiceIssue:
+					webHookEvent = payloadJsonProperty.ToObject<MeetingServiceIssueEvent>(serializer);
+					((MeetingServiceIssueEvent)webHookEvent).Issues = payloadJsonProperty.GetPropertyValue<JToken>("object", true).GetPropertyValue<string>("issues", true);
+					break;
 				case EventType.MeetingCreated:
 					webHookEvent = payloadJsonProperty.ToObject<MeetingCreatedEvent>(serializer);
 					break;
@@ -104,7 +108,7 @@ namespace ZoomNet.Utilities
 			}
 
 			webHookEvent.EventType = eventType;
-			webHookEvent.TimeStamp = timestamptJsonProperty.ToObject<long>().FromUnixTime(UnixTimePrecision.Milliseconds);
+			webHookEvent.Timestamp = timestamptJsonProperty.ToObject<long>().FromUnixTime(UnixTimePrecision.Milliseconds);
 
 			return webHookEvent;
 		}
