@@ -7,7 +7,7 @@
 #tool nuget:?package=xunit.runner.console&version=2.4.1
 
 // Install addins.
-#addin nuget:?package=Cake.Coveralls&version=1.0.0
+#addin nuget:?package=Cake.Coveralls&version=1.0.1
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -17,6 +17,10 @@
 var target = Argument<string>("target", "Default");
 var configuration = Argument<string>("configuration", "Release");
 
+if (target == "AppVeyor" && IsRunningOnUnix())
+{
+	target = "AppVeyor-Ubuntu";
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBAL VARIABLES
@@ -45,6 +49,9 @@ var outputDir = "./artifacts/";
 var codeCoverageDir = $"{outputDir}CodeCoverage/";
 var benchmarkDir = $"{outputDir}Benchmark/";
 
+var solutionFile = $"{sourceFolder}{libraryName}.sln";
+var sourceProject = $"{sourceFolder}{libraryName}/{libraryName}.csproj";
+var integrationTestsProject = $"{sourceFolder}{libraryName}.IntegrationTests/{libraryName}.IntegrationTests.csproj";
 var unitTestsProject = $"{sourceFolder}{libraryName}.UnitTests/{libraryName}.UnitTests.csproj";
 var benchmarkProject = $"{sourceFolder}{libraryName}.Benchmark/{libraryName}.Benchmark.csproj";
 
@@ -140,8 +147,28 @@ Task("AppVeyor-Build_Number")
 	});
 });
 
+Task("Remove-Integration-Tests")
+	.WithCriteria(() => AppVeyor.IsRunningOnAppVeyor)
+	.Does(() =>
+{
+	// Integration tests are intended to be used for debugging purposes and not intended to be executed in CI environment.
+	// Also, the runner for these tests contains windows-specific code (such as resizing window, moving window to center of screen, etc.)
+	// which can cause problems when attempting to run unit tests on an Ubuntu image on AppVeyor.
+
+	Information("Here are the projects in the solution before removing integration tests:");
+	DotNetCoreTool(solutionFile, "sln", "list");
+	Information("");
+
+	DotNetCoreTool(solutionFile, "sln", $"remove {integrationTestsProject.TrimStart(sourceFolder, StringComparison.OrdinalIgnoreCase)}");
+	Information("");
+
+	Information("Here are the projects in the solution after removing integration tests:");
+	DotNetCoreTool(solutionFile, "sln", "list");
+});
+
 Task("Clean")
 	.IsDependentOn("AppVeyor-Build_Number")
+	.IsDependentOn("Remove-Integration-Tests")
 	.Does(() =>
 {
 	// Clean solution directories.
@@ -174,11 +201,12 @@ Task("Build")
 	.IsDependentOn("Restore-NuGet-Packages")
 	.Does(() =>
 {
-	DotNetCoreBuild($"{sourceFolder}{libraryName}.sln", new DotNetCoreBuildSettings
+	DotNetCoreBuild(solutionFile, new DotNetCoreBuildSettings
 	{
 		Configuration = configuration,
 		NoRestore = true,
-		ArgumentCustomization = args => args.Append("/p:SemVer=" + versionInfo.LegacySemVerPadded)
+		ArgumentCustomization = args => args.Append("/p:SemVer=" + versionInfo.LegacySemVerPadded),
+		Framework =  IsRunningOnWindows() ? null : "net5.0"
 	});
 });
 
@@ -190,7 +218,8 @@ Task("Run-Unit-Tests")
 	{
 		NoBuild = true,
 		NoRestore = true,
-		Configuration = configuration
+		Configuration = configuration,
+		Framework = IsRunningOnWindows() ? null : "net5.0"
 	});
 });
 
@@ -220,6 +249,7 @@ Task("Run-Code-Coverage")
 });
 
 Task("Upload-Coverage-Result")
+	.IsDependentOn("Run-Code-Coverage")
 	.Does(() =>
 {
 	CoverallsIo($"{codeCoverageDir}coverage.xml");
@@ -265,7 +295,7 @@ Task("Create-NuGet-Package")
 		}
 	};
 
-	DotNetCorePack($"{sourceFolder}{libraryName}/{libraryName}.csproj", settings);
+	DotNetCorePack(sourceProject, settings);
 });
 
 Task("Upload-AppVeyor-Artifacts")
@@ -425,6 +455,9 @@ Task("AppVeyor")
 	.IsDependentOn("Publish-NuGet")
 	.IsDependentOn("Publish-GitHub-Release");
 
+Task("AppVeyor-Ubuntu")
+	.IsDependentOn("Run-Unit-Tests");
+
 Task("Default")
 	.IsDependentOn("Run-Unit-Tests")
 	.IsDependentOn("Create-NuGet-Package");
@@ -435,3 +468,25 @@ Task("Default")
 ///////////////////////////////////////////////////////////////////////////////
 
 RunTarget(target);
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+// PRIVATE METHODS
+///////////////////////////////////////////////////////////////////////////////
+private static string TrimStart(this string source, string value, StringComparison comparisonType)
+{
+	if (source == null)
+	{
+		throw new ArgumentNullException(nameof(source));
+	}
+
+	int valueLength = value.Length;
+	int startIndex = 0;
+	while (source.IndexOf(value, startIndex, comparisonType) == startIndex)
+	{
+		startIndex += valueLength;
+	}
+
+	return source.Substring(startIndex);
+}
