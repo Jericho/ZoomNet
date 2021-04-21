@@ -1,12 +1,11 @@
 using Newtonsoft.Json;
-using ZoomNet.Utilities;
 
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>
 	/// This event is triggered when a meeting is created.
 	/// </summary>
-	public class MeetingCreatedEvent : Event
+	public class MeetingCreatedEvent : MeetingEvent
 	{
 		/// <summary>
 		/// Gets or sets the email address of the user who created the meeting.
@@ -21,10 +20,9 @@ namespace ZoomNet.Models.Webhooks
 		public string OperatorId { get; set; }
 
 		/// <summary>
-		/// Gets or sets the meeting object.
+		/// Gets or sets the operation (allowed values: all, single).
 		/// </summary>
-		[JsonProperty(PropertyName = "object")]
-		[JsonConverter(typeof(MeetingConverter))]
-		public Meeting Meeting { get; set; }
+		[JsonProperty(PropertyName = "operation")]
+		public string Operation { get; set; }
 	}
 }

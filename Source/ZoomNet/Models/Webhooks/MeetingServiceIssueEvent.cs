@@ -1,6 +1,3 @@
-using Newtonsoft.Json;
-using ZoomNet.Utilities;
-
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>
@@ -12,15 +9,8 @@ namespace ZoomNet.Models.Webhooks
 	/// - High CPU usage.
 	/// - Call reconnection problems.
 	/// </summary>
-	public class MeetingServiceIssueEvent : Event
+	public class MeetingServiceIssueEvent : MeetingEvent
 	{
-		/// <summary>
-		/// Gets or sets the meeting object.
-		/// </summary>
-		[JsonProperty(PropertyName = "object")]
-		[JsonConverter(typeof(MeetingConverter))]
-		public Meeting Meeting { get; set; }
-
 		/// <summary>
 		/// Gets or sets the issues that occured during the meeting.
 		/// </summary>

@@ -33,5 +33,29 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "meeting.updated")]
 		MeetingUpdated,
+
+		/// <summary>
+		/// A meeting has been permanently deleted.
+		/// </summary>
+		[EnumMember(Value = "meeting.permanently_deleted")]
+		MeetingPermanentlyDeleted,
+
+		/// <summary>
+		/// A meeting has started.
+		/// </summary>
+		[EnumMember(Value = "meeting.started")]
+		MeetingStarted,
+
+		/// <summary>
+		/// A meeting has ended.
+		/// </summary>
+		[EnumMember(Value = "meeting.ended")]
+		MeetingEnded,
+
+		/// <summary>
+		/// A meeting has been recovered.
+		/// </summary>
+		[EnumMember(Value = "meeting.recovered")]
+		MeetingRecovered,
 	}
 }

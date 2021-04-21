@@ -84,24 +84,45 @@ namespace ZoomNet.Utilities
 			switch (eventType)
 			{
 				case EventType.MeetingServiceIssue:
-					webHookEvent = payloadJsonProperty.ToObject<MeetingServiceIssueEvent>(serializer);
-					((MeetingServiceIssueEvent)webHookEvent).Issues = payloadJsonProperty.GetPropertyValue<JToken>("object", true).GetPropertyValue<string>("issues", true);
+					var meetingServiceIssueEvent = payloadJsonProperty.ToObject<MeetingServiceIssueEvent>(serializer);
+					meetingServiceIssueEvent.Issues = payloadJsonProperty.GetPropertyValue<JToken>("object", true).GetPropertyValue<string>("issues", true);
+					webHookEvent = meetingServiceIssueEvent;
 					break;
 				case EventType.MeetingCreated:
-					webHookEvent = payloadJsonProperty.ToObject<MeetingCreatedEvent>(serializer);
+					var meetingCreatedEvent = payloadJsonProperty.ToObject<MeetingCreatedEvent>(serializer);
+					webHookEvent = meetingCreatedEvent;
 					break;
 				case EventType.MeetingDeleted:
-					webHookEvent = payloadJsonProperty.ToObject<MeetingDeletedEvent>(serializer);
+					var meetingDeletedEvent = payloadJsonProperty.ToObject<MeetingDeletedEvent>(serializer);
+					webHookEvent = meetingDeletedEvent;
 					break;
 				case EventType.MeetingUpdated:
-					webHookEvent = payloadJsonProperty.ToObject<MeetingUpdatedEvent>(serializer);
+					var meetingUpdatedEvent = payloadJsonProperty.ToObject<MeetingUpdatedEvent>(serializer);
 
 					var oldValues = payloadJsonProperty.GetPropertyValue<JToken>("old_object", true).ToObject<Dictionary<string, object>>();
 					var newValues = payloadJsonProperty.GetPropertyValue<JToken>("object", true).ToObject<Dictionary<string, object>>();
 
-					((MeetingUpdatedEvent)webHookEvent).ModifiedFields = oldValues.Keys
+					meetingUpdatedEvent.ModifiedFields = oldValues.Keys
 						.Select(key => (key, oldValues[key], newValues[key]))
 						.ToArray();
+
+					webHookEvent = meetingUpdatedEvent;
+					break;
+				case EventType.MeetingPermanentlyDeleted:
+					var meetingPermanentlyDeletedEvent = payloadJsonProperty.ToObject<MeetingPermanentlyDeletedEvent>(serializer);
+					webHookEvent = meetingPermanentlyDeletedEvent;
+					break;
+				case EventType.MeetingStarted:
+					var meetingStartedEvent = payloadJsonProperty.ToObject<MeetingStartedEvent>(serializer);
+					webHookEvent = meetingStartedEvent;
+					break;
+				case EventType.MeetingEnded:
+					var meetingEndedEvent = payloadJsonProperty.ToObject<MeetingEndedEvent>(serializer);
+					webHookEvent = meetingEndedEvent;
+					break;
+				case EventType.MeetingRecovered:
+					var meetingRecoveredEvent = payloadJsonProperty.ToObject<MeetingRecoveredEvent>(serializer);
+					webHookEvent = meetingRecoveredEvent;
 					break;
 				default:
 					throw new Exception($"{eventTypeJsonProperty} is an unknown event type");
