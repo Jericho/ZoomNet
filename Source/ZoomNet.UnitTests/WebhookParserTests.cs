@@ -1,5 +1,7 @@
 using Shouldly;
+using System;
 using Xunit;
+using ZoomNet.Models;
 using ZoomNet.Models.Webhooks;
 
 namespace ZoomNet.UnitTests
@@ -76,12 +78,31 @@ namespace ZoomNet.UnitTests
 			'event_ts': 1617628464664
 		}";
 
+		private const string MEETING_STARTED_WEBHOOK = @"
+		{
+			'event':'meeting.started',
+			'payload': {
+				'account_id':'VjZoEArIT5y-HlWxkV-tVA',
+				'object': {
+					'duration':0,
+					'start_time':'2021-04-21T14:49:04Z',
+					'timezone':'America/New_York',
+					'topic':'My Personal Meeting Room',
+					'id':'3479130610',
+					'type':4,
+					'uuid':'mOG8pEaFQqeDm6Vd/3xopA==',
+					'host_id':'8lzIwvZTSOqjndWPbPqzuA'
+				}
+			},
+			'event_ts':1619016544371
+		}";
+
 		#endregion
 
 		[Fact]
 		public void MeetingCreated()
 		{
-			var parsedEvent = (MeetingCreatedEvent)WebhookParser.ParseEventWebhook(MEETING_CREATED_WEBHOOK);
+			var parsedEvent = (MeetingCreatedEvent)new WebhookParser().ParseEventWebhook(MEETING_CREATED_WEBHOOK);
 
 			parsedEvent.EventType.ShouldBe(EventType.MeetingCreated);
 			parsedEvent.Operator.ShouldBe("someone@example.com");
@@ -103,7 +124,7 @@ namespace ZoomNet.UnitTests
 		[Fact]
 		public void MeetingDeleted()
 		{
-			var parsedEvent = (MeetingDeletedEvent)WebhookParser.ParseEventWebhook(MEETING_DELETED_WEBHOOK);
+			var parsedEvent = (MeetingDeletedEvent)new WebhookParser().ParseEventWebhook(MEETING_DELETED_WEBHOOK);
 
 			parsedEvent.EventType.ShouldBe(EventType.MeetingDeleted);
 			parsedEvent.Operator.ShouldBe("someone@example.com");
@@ -122,7 +143,7 @@ namespace ZoomNet.UnitTests
 		[Fact]
 		public void MeetingUpdated()
 		{
-			var parsedEvent = (MeetingUpdatedEvent)WebhookParser.ParseEventWebhook(MEETING_UPDATED_WEBHOOK);
+			var parsedEvent = (MeetingUpdatedEvent)new WebhookParser().ParseEventWebhook(MEETING_UPDATED_WEBHOOK);
 
 			parsedEvent.EventType.ShouldBe(EventType.MeetingUpdated);
 			parsedEvent.Operator.ShouldBe("someone@example.com");
@@ -136,6 +157,24 @@ namespace ZoomNet.UnitTests
 			parsedEvent.ModifiedFields[1].OldValue.ShouldBe("ZoomNet Unit Testing: scheduled meeting");
 			parsedEvent.ModifiedFields[1].NewValue.ShouldBe("ZoomNet Unit Testing: UPDATED scheduled meeting");
 			parsedEvent.ModifiedFields[2].FieldName.ShouldBe("settings");
+		}
+
+		[Fact]
+		public void MeetingStarted()
+		{
+			var parsedEvent = (MeetingStartedEvent)new WebhookParser().ParseEventWebhook(MEETING_STARTED_WEBHOOK);
+
+			parsedEvent.EventType.ShouldBe(EventType.MeetingStarted);
+			parsedEvent.AccountId.ShouldBe("VjZoEArIT5y-HlWxkV-tVA");
+			parsedEvent.Timestamp.ShouldBe(new DateTime(2021, 4, 21, 14, 49, 4, 371, DateTimeKind.Utc));
+
+			parsedEvent.Meeting.GetType().ShouldBe(typeof(InstantMeeting));
+			var parsedMeeting = (InstantMeeting)parsedEvent.Meeting;
+
+			parsedMeeting.Id.ShouldBe(3479130610);
+			parsedMeeting.Topic.ShouldBe("My Personal Meeting Room");
+			parsedMeeting.Uuid.ShouldBe("mOG8pEaFQqeDm6Vd/3xopA==");
+			parsedMeeting.HostId.ShouldBe("8lzIwvZTSOqjndWPbPqzuA");
 		}
 	}
 }
