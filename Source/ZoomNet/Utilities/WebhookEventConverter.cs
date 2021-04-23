@@ -84,6 +84,10 @@ namespace ZoomNet.Utilities
 			Event webHookEvent;
 			switch (eventType)
 			{
+				case EventType.AppDeauthorized:
+					var appDeauthorizedEvent = payloadJsonProperty.ToObject<AppDeauthorizedEvent>(serializer);
+					webHookEvent = appDeauthorizedEvent;
+					break;
 				case EventType.MeetingServiceIssue:
 					var meetingServiceIssueEvent = payloadJsonProperty.ToObject<MeetingServiceIssueEvent>(serializer);
 					meetingServiceIssueEvent.Issues = payloadJsonProperty.GetPropertyValue<string>("object/issues", true);

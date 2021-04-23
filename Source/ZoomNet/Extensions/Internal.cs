@@ -511,7 +511,7 @@ namespace ZoomNet
 		{
 			var property = item.GetProperty(name);
 			if (property == null && throwIfMissing) throw new ArgumentException($"Unable to find '{name}'", nameof(name));
-			if (property == null) return default(T);
+			if (property == null) return default;
 			return property.Value<T>();
 		}
 

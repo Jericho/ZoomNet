@@ -11,6 +11,12 @@ namespace ZoomNet.Models.Webhooks
 	public enum EventType
 	{
 		/// <summary>
+		/// A user has uninstalled or deauthorized your app.
+		/// </summary>
+		[EnumMember(Value = "app_deauthorized")]
+		AppDeauthorized,
+
+		/// <summary>
 		/// A service issue has been encountered during a meeting.
 		/// </summary>
 		[EnumMember(Value = "meeting.alerts")]
