@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Sharing and recording details of participants from live or past meetings.
+	/// Sharing details.
 	/// </summary>
-	public class ParticipantSharingDetails : SharingDetails
+	public class ScreenshareSharingDetails : SharingDetails
 	{
 		/// <summary>
 		/// Gets or sets the sharing details.
@@ -14,6 +14,6 @@ namespace ZoomNet.Models
 		/// An array of sharing and recording details.
 		/// </value>
 		[JsonProperty(PropertyName = "details")]
-		public SharingAndRecordingDetail[] SharingAndRecordingDetails { get; set; }
+		public ScreenshareSharingDetail Details { get; set; }
 	}
 }

@@ -485,16 +485,34 @@ namespace ZoomNet
 			}
 		}
 
+		internal static JToken GetProperty(this JToken item, string name, bool throwIfMissing = true)
+		{
+			var parts = name.Split('/');
+			var property = item[name];
+			if (property == null && throwIfMissing) throw new ArgumentException($"Unable to find '{name}'", nameof(name));
+
+			foreach (var part in parts.Skip(1))
+			{
+				property = property[part];
+				if (property == null && throwIfMissing) throw new ArgumentException($"Unable to find '{part}'", nameof(name));
+			}
+
+			return property;
+		}
+
 		internal static T GetPropertyValue<T>(this JToken item, string name, T defaultValue = default)
 		{
-			if (item[name] == null) return defaultValue;
-			return item[name].Value<T>();
+			var property = item.GetProperty(name);
+			if (property == null) return defaultValue;
+			return property.Value<T>();
 		}
 
 		internal static T GetPropertyValue<T>(this JToken item, string name, bool throwIfMissing = true)
 		{
-			if (item[name] == null && throwIfMissing) throw new ArgumentException($"The response does not contain a field called '{name}'", nameof(name));
-			return item.GetPropertyValue(name, default(T));
+			var property = item.GetProperty(name);
+			if (property == null && throwIfMissing) throw new ArgumentException($"Unable to find '{name}'", nameof(name));
+			if (property == null) return default(T);
+			return property.Value<T>();
 		}
 
 		internal static async Task<TResult[]> ForEachAsync<T, TResult>(this IEnumerable<T> items, Func<T, Task<TResult>> action, int maxDegreeOfParalellism)

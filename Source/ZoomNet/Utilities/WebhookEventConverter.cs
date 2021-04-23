@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ZoomNet.Models;
 using ZoomNet.Models.Webhooks;
 using static ZoomNet.Internal;
 
@@ -85,7 +86,7 @@ namespace ZoomNet.Utilities
 			{
 				case EventType.MeetingServiceIssue:
 					var meetingServiceIssueEvent = payloadJsonProperty.ToObject<MeetingServiceIssueEvent>(serializer);
-					meetingServiceIssueEvent.Issues = payloadJsonProperty.GetPropertyValue<JToken>("object", true).GetPropertyValue<string>("issues", true);
+					meetingServiceIssueEvent.Issues = payloadJsonProperty.GetPropertyValue<string>("object/issues", true);
 					webHookEvent = meetingServiceIssueEvent;
 					break;
 				case EventType.MeetingCreated:
@@ -99,8 +100,8 @@ namespace ZoomNet.Utilities
 				case EventType.MeetingUpdated:
 					var meetingUpdatedEvent = payloadJsonProperty.ToObject<MeetingUpdatedEvent>(serializer);
 
-					var oldValues = payloadJsonProperty.GetPropertyValue<JToken>("old_object", true).ToObject<Dictionary<string, object>>();
-					var newValues = payloadJsonProperty.GetPropertyValue<JToken>("object", true).ToObject<Dictionary<string, object>>();
+					var oldValues = payloadJsonProperty.GetProperty("old_object", true).ToObject<Dictionary<string, object>>();
+					var newValues = payloadJsonProperty.GetProperty("object", true).ToObject<Dictionary<string, object>>();
 
 					meetingUpdatedEvent.ModifiedFields = oldValues.Keys
 						.Select(key => (key, oldValues[key], newValues[key]))
@@ -123,6 +124,32 @@ namespace ZoomNet.Utilities
 				case EventType.MeetingRecovered:
 					var meetingRecoveredEvent = payloadJsonProperty.ToObject<MeetingRecoveredEvent>(serializer);
 					webHookEvent = meetingRecoveredEvent;
+					break;
+				case EventType.MeetingRegistrationCreated:
+					var meetingRegistrationCreatedEvent = payloadJsonProperty.ToObject<MeetingRegistrationCreatedEvent>(serializer);
+					webHookEvent = meetingRegistrationCreatedEvent;
+					break;
+				case EventType.MeetingRegistrationApproved:
+					var meetingRegistrationApprovedEvent = payloadJsonProperty.ToObject<MeetingRegistrationApprovedEvent>(serializer);
+					webHookEvent = meetingRegistrationApprovedEvent;
+					break;
+				case EventType.MeetingRegistrationCancelled:
+					var meetingRegistrationCancelledEvent = payloadJsonProperty.ToObject<MeetingRegistrationCancelledEvent>(serializer);
+					webHookEvent = meetingRegistrationCancelledEvent;
+					break;
+				case EventType.MeetingRegistrationDenied:
+					var meetingRegistrationDeniedEvent = payloadJsonProperty.ToObject<MeetingRegistrationDeniedEvent>(serializer);
+					webHookEvent = meetingRegistrationDeniedEvent;
+					break;
+				case EventType.MeetingSharingStarted:
+					var meetingSharingStartedEvent = payloadJsonProperty.ToObject<MeetingSharingStartedEvent>(serializer);
+					meetingSharingStartedEvent.ScreenshareDetails = payloadJsonProperty.GetProperty("object/participant").ToObject<ScreenshareSharingDetails>();
+					webHookEvent = meetingSharingStartedEvent;
+					break;
+				case EventType.MeetingSharingEnded:
+					var meetingSharingEndedEvent = payloadJsonProperty.ToObject<MeetingSharingEndedEvent>(serializer);
+					meetingSharingEndedEvent.ScreenshareDetails = payloadJsonProperty.GetProperty("object/participant").ToObject<ScreenshareSharingDetails>();
+					webHookEvent = meetingSharingEndedEvent;
 					break;
 				default:
 					throw new Exception($"{eventTypeJsonProperty} is an unknown event type");
