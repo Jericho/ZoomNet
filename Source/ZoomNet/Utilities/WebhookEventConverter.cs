@@ -155,6 +155,40 @@ namespace ZoomNet.Utilities
 					meetingSharingEndedEvent.ScreenshareDetails = payloadJsonProperty.GetProperty("object/participant").ToObject<ScreenshareSharingDetails>();
 					webHookEvent = meetingSharingEndedEvent;
 					break;
+				case EventType.MeetingParticipantWaitingForHost:
+					var meetingParticipantWaitingForHostEvent = payloadJsonProperty.ToObject<MeetingParticipantWaitingForHostEvent>(serializer);
+					meetingParticipantWaitingForHostEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).ToObject<Participant>();
+					webHookEvent = meetingParticipantWaitingForHostEvent;
+					break;
+				case EventType.MeetingParticipantJoinedBeforeHost:
+					var meetingParticipantJoiningBeforeHostEvent = payloadJsonProperty.ToObject<MeetingParticipantJoinedBeforeHostEvent>(serializer);
+					meetingParticipantJoiningBeforeHostEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).ToObject<Participant>();
+					webHookEvent = meetingParticipantJoiningBeforeHostEvent;
+					break;
+				case EventType.MeetingParticipantJoinedWaitingRoom:
+					var meetingParticipantJoinedWaitingRoomEvent = payloadJsonProperty.ToObject<MeetingParticipantJoinedWaitingRoomEvent>(serializer);
+					meetingParticipantJoinedWaitingRoomEvent.JoinedOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/date_time", true);
+					meetingParticipantJoinedWaitingRoomEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).ToObject<Participant>();
+					webHookEvent = meetingParticipantJoinedWaitingRoomEvent;
+					break;
+				case EventType.MeetingParticipantLeftWaitingRoom:
+					var meetingParticipantLeftWaitingRoomEvent = payloadJsonProperty.ToObject<MeetingParticipantLeftWaitingRoomEvent>(serializer);
+					meetingParticipantLeftWaitingRoomEvent.LeftOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/date_time", true);
+					meetingParticipantLeftWaitingRoomEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).ToObject<Participant>();
+					webHookEvent = meetingParticipantLeftWaitingRoomEvent;
+					break;
+				case EventType.MeetingParticipantAdmitted:
+					var meetingParticipantAdmittedEvent = payloadJsonProperty.ToObject<MeetingParticipantAdmittedEvent>(serializer);
+					meetingParticipantAdmittedEvent.AdmittedOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/date_time", true);
+					meetingParticipantAdmittedEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).ToObject<Participant>();
+					webHookEvent = meetingParticipantAdmittedEvent;
+					break;
+				case EventType.MeetingParticipantJoined:
+					var meetingParticipantJoinedEvent = payloadJsonProperty.ToObject<MeetingParticipantJoinedEvent>(serializer);
+					meetingParticipantJoinedEvent.JoinedOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/date_time", true);
+					meetingParticipantJoinedEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).ToObject<Participant>();
+					webHookEvent = meetingParticipantJoinedEvent;
+					break;
 				default:
 					throw new Exception($"{eventTypeJsonProperty} is an unknown event type");
 			}

@@ -99,5 +99,41 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "meeting.sharing_ended")]
 		MeetingSharingEnded,
+
+		/// <summary>
+		/// An attendee is wating for the host to join the meeting.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_jbh_waiting")]
+		MeetingParticipantWaitingForHost,
+
+		/// <summary>
+		/// An attendee has joined the meeting before the host.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_jbh_joined")]
+		MeetingParticipantJoinedBeforeHost,
+
+		/// <summary>
+		/// An attendee has joined a meting waiting room.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_joined_waiting_room")]
+		MeetingParticipantJoinedWaitingRoom,
+
+		/// <summary>
+		/// An attendee has left a meting waiting room.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_left_waiting_room")]
+		MeetingParticipantLeftWaitingRoom,
+
+		/// <summary>
+		/// A meeting host has admitted a participant from a waiting room to the meeting.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_admitted")]
+		MeetingParticipantAdmitted,
+
+		/// <summary>
+		/// A meeting host has admitted a participant from a waiting room to the meeting.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_joined")]
+		MeetingParticipantJoined,
 	}
 }

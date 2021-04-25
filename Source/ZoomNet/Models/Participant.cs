@@ -27,5 +27,23 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonProperty(PropertyName = "name")]
 		public string DisplayName { get; set; }
+
+		/// <summary>
+		/// Sets the participant's email address.
+		/// </summary>
+		/// <remarks>
+		/// The participant-related webhooks use "email" in their JSON payload instead of "user_email".
+		/// </remarks>
+		[JsonProperty(PropertyName = "email")]
+		private string ParticipantEmail { set { Email = value; } }
+
+		/// <summary>
+		/// Sets the participant's display name.
+		/// </summary>
+		/// <remarks>
+		/// The participant-related webhooks use "user_name" in their JSON payload instead of "name".
+		/// </remarks>
+		[JsonProperty(PropertyName = "user_name")]
+		private string ParticipantDisplayName { set { DisplayName = value; } }
 	}
 }
