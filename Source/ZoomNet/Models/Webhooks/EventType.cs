@@ -135,5 +135,29 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "meeting.participant_joined")]
 		MeetingParticipantJoined,
+
+		/// <summary>
+		/// A meeting participant who has already joined a meeting is sent back to the waiting room during the meeting.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_put_in_waiting_room")]
+		MeetingParticipantSentToWaitingRoom,
+
+		/// <summary>
+		/// A meeting participant has left the meeting.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_left")]
+		MeetingParticipantLeft,
+
+		/// <summary>
+		/// A meeting live stream has started.
+		/// </summary>
+		[EnumMember(Value = "meeting.live_streaming_started")]
+		MeetingLiveStreamStarted,
+
+		/// <summary>
+		/// A meeting live stream has stoipped.
+		/// </summary>
+		[EnumMember(Value = "meeting.live_streaming_stopped")]
+		MeetingLiveStreamStopped,
 	}
 }

@@ -189,6 +189,34 @@ namespace ZoomNet.Utilities
 					meetingParticipantJoinedEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).ToObject<Participant>();
 					webHookEvent = meetingParticipantJoinedEvent;
 					break;
+				case EventType.MeetingParticipantSentToWaitingRoom:
+					var meetingParticipantSentToWaitingRoomEvent = payloadJsonProperty.ToObject<MeetingParticipantSentToWaitingRoomEvent>(serializer);
+					meetingParticipantSentToWaitingRoomEvent.SentToWaitingRoomOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/date_time", true);
+					meetingParticipantSentToWaitingRoomEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).ToObject<Participant>();
+					webHookEvent = meetingParticipantSentToWaitingRoomEvent;
+					break;
+				case EventType.MeetingParticipantLeft:
+					var meetingParticipantLeftEvent = payloadJsonProperty.ToObject<MeetingParticipantLeftEvent>(serializer);
+					meetingParticipantLeftEvent.LeftOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/leave_time", true);
+					meetingParticipantLeftEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).ToObject<Participant>();
+					webHookEvent = meetingParticipantLeftEvent;
+					break;
+				case EventType.MeetingLiveStreamStarted:
+					var meetingLiveStreamStartedEvent = payloadJsonProperty.ToObject<MeetingLiveStreamStartedEvent>(serializer);
+					meetingLiveStreamStartedEvent.StartedOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/date_time", true);
+					meetingLiveStreamStartedEvent.Operator = payloadJsonProperty.GetPropertyValue<string>("object/operator", true);
+					meetingLiveStreamStartedEvent.OperatorId = payloadJsonProperty.GetPropertyValue<string>("object/operator_id", true);
+					meetingLiveStreamStartedEvent.StreamingInfo = payloadJsonProperty.GetProperty("object/live_streaming", true).ToObject<LiveStreamingInfo>();
+					webHookEvent = meetingLiveStreamStartedEvent;
+					break;
+				case EventType.MeetingLiveStreamStopped:
+					var meetingLiveStreamStoppedEvent = payloadJsonProperty.ToObject<MeetingLiveStreamStoppedEvent>(serializer);
+					meetingLiveStreamStoppedEvent.StoppedOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/date_time", true);
+					meetingLiveStreamStoppedEvent.Operator = payloadJsonProperty.GetPropertyValue<string>("object/operator", true);
+					meetingLiveStreamStoppedEvent.OperatorId = payloadJsonProperty.GetPropertyValue<string>("object/operator_id", true);
+					meetingLiveStreamStoppedEvent.StreamingInfo = payloadJsonProperty.GetProperty("object/live_streaming", true).ToObject<LiveStreamingInfo>();
+					webHookEvent = meetingLiveStreamStoppedEvent;
+					break;
 				default:
 					throw new Exception($"{eventTypeJsonProperty} is an unknown event type");
 			}
