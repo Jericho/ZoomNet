@@ -8,6 +8,7 @@
 
 // Install addins.
 #addin nuget:?package=Cake.Coveralls&version=1.0.1
+#addin nuget:?package=Cake.Git&version=1.0.1
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -138,7 +139,7 @@ Teardown(context =>
 	if (IsRunningOnUnix())
 	{
 		Information("Restoring integration tests");
-		DotNetCoreTool(solutionFile, "sln", $"add {integrationTestsProject.TrimStart(sourceFolder, StringComparison.OrdinalIgnoreCase)}");
+		GitCheckout(".", new FilePath[] { solutionFile });
 		Information("");
 	}
 
