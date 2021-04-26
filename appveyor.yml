@@ -6,7 +6,6 @@ init:
 build_script:
   - dotnet --info
   - ps: .\build.ps1 --target=AppVeyor
-  - sh: ./build.sh --target=AppVeyor
 
 # Tests
 test: off
