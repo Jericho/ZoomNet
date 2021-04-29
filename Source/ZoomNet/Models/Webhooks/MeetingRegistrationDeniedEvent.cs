@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>
-	/// This event is triggered when a meeting registrsation has been denied.
+	/// This event is triggered when a meeting registration has been denied.
 	/// </summary>
 	public class MeetingRegistrationDeniedEvent : MeetingEvent
 	{
@@ -18,5 +18,10 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[JsonProperty(PropertyName = "operator_id")]
 		public string OperatorId { get; set; }
+
+		/// <summary>
+		/// Gets or sets the registrant information.
+		/// </summary>
+		public Registrant Registrant { get; set; }
 	}
 }

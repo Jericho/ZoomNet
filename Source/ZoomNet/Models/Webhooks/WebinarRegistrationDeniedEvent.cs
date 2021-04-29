@@ -3,18 +3,18 @@ using Newtonsoft.Json;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>
-	/// This event is triggered when a meeting registration has been approved.
+	/// This event is triggered when a webinar registration has been denied.
 	/// </summary>
-	public class MeetingRegistrationApprovedEvent : MeetingEvent
+	public class WebinarRegistrationDeniedEvent : WebinarEvent
 	{
 		/// <summary>
-		/// Gets or sets the email address of the user who approved the registration.
+		/// Gets or sets the email address of the user who denied the registration.
 		/// </summary>
 		[JsonProperty(PropertyName = "operator")]
 		public string Operator { get; set; }
 
 		/// <summary>
-		/// Gets or sets the user ID of the operator who approved the registration.
+		/// Gets or sets the user ID of the operator who denied the registration.
 		/// </summary>
 		[JsonProperty(PropertyName = "operator_id")]
 		public string OperatorId { get; set; }

@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>
-	/// This event is triggered when a meeting registration has been approved.
+	/// This event is triggered when a webinar registration has been approved.
 	/// </summary>
-	public class MeetingRegistrationApprovedEvent : MeetingEvent
+	public class WebinarRegistrationApprovedEvent : WebinarEvent
 	{
 		/// <summary>
 		/// Gets or sets the email address of the user who approved the registration.

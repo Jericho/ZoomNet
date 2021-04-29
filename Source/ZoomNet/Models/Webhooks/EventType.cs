@@ -202,6 +202,30 @@ namespace ZoomNet.Models.Webhooks
 		WebinarServiceIssue,
 
 		/// <summary>
+		/// A participant has registered for a webinar.
+		/// </summary>
+		[EnumMember(Value = "webinar.registration_created")]
+		WebinarRegistrationCreated,
+
+		/// <summary>
+		/// A webinar registration has been approved.
+		/// </summary>
+		[EnumMember(Value = "webinar.registration_approved")]
+		WebinarRegistrationApproved,
+
+		/// <summary>
+		/// A webinar registration has been cancelled.
+		/// </summary>
+		[EnumMember(Value = "webinar.registration_cancelled")]
+		WebinarRegistrationCancelled,
+
+		/// <summary>
+		/// A webinar registration has been denied.
+		/// </summary>
+		[EnumMember(Value = "webinar.registration_denied")]
+		WebinarRegistrationDenied,
+
+		/// <summary>
 		/// An app user or account user has started sharing their screen during a webinar.
 		/// </summary>
 		[EnumMember(Value = "webinar.sharing_started")]
@@ -212,5 +236,17 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "webinar.sharing_ended")]
 		WebinarSharingEnded,
+
+		/// <summary>
+		/// A webinar host or participant joined a webinar.
+		/// </summary>
+		[EnumMember(Value = "webinar.participant_joined")]
+		WebinarParticipantJoined,
+
+		/// <summary>
+		/// A webinar host or participant left a webinar.
+		/// </summary>
+		[EnumMember(Value = "webinar.participant_left")]
+		WebinarParticipantLeft,
 	}
 }
