@@ -8,6 +8,6 @@ namespace ZoomNet.Models.Webhooks
 		/// <summary>
 		/// Gets or sets the participant.
 		/// </summary>
-		public Participant Participant { get; set; }
+		public WebhookParticipant Participant { get; set; }
 	}
 }

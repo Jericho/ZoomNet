@@ -488,7 +488,7 @@ namespace ZoomNet
 		internal static JToken GetProperty(this JToken item, string name, bool throwIfMissing = true)
 		{
 			var parts = name.Split('/');
-			var property = item[name];
+			var property = item[parts[0]];
 			if (property == null && throwIfMissing) throw new ArgumentException($"Unable to find '{name}'", nameof(name));
 
 			foreach (var part in parts.Skip(1))

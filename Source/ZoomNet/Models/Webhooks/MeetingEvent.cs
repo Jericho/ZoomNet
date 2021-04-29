@@ -4,7 +4,7 @@ using ZoomNet.Utilities;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>
-	/// Represents an event related to a metting.
+	/// Represents an event related to a meeting.
 	/// </summary>
 	public class MeetingEvent : Event
 	{

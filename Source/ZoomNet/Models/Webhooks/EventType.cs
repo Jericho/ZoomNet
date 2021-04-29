@@ -11,6 +11,11 @@ namespace ZoomNet.Models.Webhooks
 	public enum EventType
 	{
 		/// <summary>
+		/// Default value.
+		/// </summary>
+		Unknown,
+
+		/// <summary>
 		/// A user has uninstalled or deauthorized your app.
 		/// </summary>
 		[EnumMember(Value = "app_deauthorized")]
@@ -89,13 +94,13 @@ namespace ZoomNet.Models.Webhooks
 		MeetingRegistrationDenied,
 
 		/// <summary>
-		/// An attendee or the host has started sharing their screen.
+		/// An attendee or the host has started sharing their screen during a meeting.
 		/// </summary>
 		[EnumMember(Value = "meeting.sharing_started")]
 		MeetingSharingStarted,
 
 		/// <summary>
-		/// An attendee or the host has stoped sharing their screen.
+		/// An attendee or the host has stoped sharing their screen during a meeting.
 		/// </summary>
 		[EnumMember(Value = "meeting.sharing_ended")]
 		MeetingSharingEnded,
@@ -189,5 +194,23 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "webinar.ended")]
 		WebinarEnded,
+
+		/// <summary>
+		/// A service issue has been encountered during a webinar.
+		/// </summary>
+		[EnumMember(Value = "webinar.alerts")]
+		WebinarServiceIssue,
+
+		/// <summary>
+		/// An app user or account user has started sharing their screen during a webinar.
+		/// </summary>
+		[EnumMember(Value = "webinar.sharing_started")]
+		WebinarSharingStarted,
+
+		/// <summary>
+		/// An app user or account user has stopped sharing their screen during a webinar.
+		/// </summary>
+		[EnumMember(Value = "webinar.sharing_ended")]
+		WebinarSharingEnded,
 	}
 }

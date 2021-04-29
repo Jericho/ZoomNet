@@ -97,6 +97,37 @@ namespace ZoomNet.UnitTests
 			'event_ts':1619016544371
 		}";
 
+		private const string MEETING_SHARING_STARTED_WEBHOOK = @"
+		{
+			'event': 'meeting.sharing_started',
+			'event_ts': 1234566789900,
+			'payload': {
+				'object': {
+					'duration': 60,
+					'start_time': '2019-07-16T17:14:39Z',
+					'timezone': 'America/Los_Angeles',
+					'topic': 'My Meeting',
+					'id': '6962400003',
+					'type': 2,
+					'uuid': '4118UHIiRCAAAtBlDkcVyw==',
+					'host_id': 'z8yCxTTTTSiw02QgCAp8uQ',
+					'participant': {
+						'id': 's0AAAASoSE1V8KIFOCYw',
+						'user_id': '16778000',
+						'user_name': 'Arya Arya',
+						'sharing_details': {
+							'link_source': 'in_meeting',
+							'file_link': '',
+							'source': 'dropbox',
+							'date_time': '2019-07-16T17:19:11Z',
+							'content': 'application'
+						}
+					}
+				},
+				'account_id': 'EPeQtiABC000VYxHMA'
+			}
+		}";
+
 		#endregion
 
 		[Fact]
@@ -170,11 +201,43 @@ namespace ZoomNet.UnitTests
 
 			parsedEvent.Meeting.GetType().ShouldBe(typeof(InstantMeeting));
 			var parsedMeeting = (InstantMeeting)parsedEvent.Meeting;
-
 			parsedMeeting.Id.ShouldBe(3479130610);
 			parsedMeeting.Topic.ShouldBe("My Personal Meeting Room");
 			parsedMeeting.Uuid.ShouldBe("mOG8pEaFQqeDm6Vd/3xopA==");
 			parsedMeeting.HostId.ShouldBe("8lzIwvZTSOqjndWPbPqzuA");
+		}
+
+		[Fact]
+		public void MeetingSharingStarted()
+		{
+			var parsedEvent = (MeetingSharingStartedEvent)new WebhookParser().ParseEventWebhook(MEETING_SHARING_STARTED_WEBHOOK);
+
+			parsedEvent.EventType.ShouldBe(EventType.MeetingSharingStarted);
+			parsedEvent.AccountId.ShouldBe("EPeQtiABC000VYxHMA");
+			parsedEvent.Timestamp.ShouldBe(new DateTime(2009, 2, 13, 23, 13, 9, 900, DateTimeKind.Utc));
+
+			parsedEvent.Participant.ShouldNotBeNull();
+			parsedEvent.Participant.DisplayName.ShouldBe("Arya Arya");
+			parsedEvent.Participant.Email.ShouldBeNullOrEmpty();
+			parsedEvent.Participant.ParticipantId.ShouldBe("16778000");
+			parsedEvent.Participant.UserId.ShouldBe("s0AAAASoSE1V8KIFOCYw");
+
+			parsedEvent.ScreenshareDetails.ShouldNotBeNull();
+			parsedEvent.ScreenshareDetails.ContentType.ShouldBe(ScreenshareContentType.Application);
+			parsedEvent.ScreenshareDetails.Date.ShouldBe(new DateTime(2019, 7, 16, 17, 19, 11, 0, DateTimeKind.Utc));
+			parsedEvent.ScreenshareDetails.SharingMethod.ShouldBe("in_meeting");
+			parsedEvent.ScreenshareDetails.Source.ShouldBe("dropbox");
+			parsedEvent.ScreenshareDetails.Link.ShouldBe("");
+
+			parsedEvent.Meeting.GetType().ShouldBe(typeof(ScheduledMeeting));
+			var parsedMeeting = (ScheduledMeeting)parsedEvent.Meeting;
+			parsedMeeting.Id.ShouldBe(6962400003);
+			parsedMeeting.Topic.ShouldBe("My Meeting");
+			parsedMeeting.Uuid.ShouldBe("4118UHIiRCAAAtBlDkcVyw==");
+			parsedMeeting.HostId.ShouldBe("z8yCxTTTTSiw02QgCAp8uQ");
+			parsedMeeting.StartTime.ShouldBe(new DateTime(2019, 7, 16, 17, 14, 39, 0, DateTimeKind.Utc));
+			parsedMeeting.Duration.ShouldBe(60);
+			parsedMeeting.Timezone.ShouldBe("America/Los_Angeles");
 		}
 	}
 }
