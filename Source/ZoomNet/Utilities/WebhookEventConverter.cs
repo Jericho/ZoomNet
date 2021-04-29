@@ -104,11 +104,11 @@ namespace ZoomNet.Utilities
 				case EventType.MeetingUpdated:
 					var meetingUpdatedEvent = payloadJsonProperty.ToObject<MeetingUpdatedEvent>(serializer);
 
-					var oldValues = payloadJsonProperty.GetProperty("old_object", true).ToObject<Dictionary<string, object>>();
-					var newValues = payloadJsonProperty.GetProperty("object", true).ToObject<Dictionary<string, object>>();
+					var oldMeetingValues = payloadJsonProperty.GetProperty("old_object", true).ToObject<Dictionary<string, object>>();
+					var newMeetingValues = payloadJsonProperty.GetProperty("object", true).ToObject<Dictionary<string, object>>();
 
-					meetingUpdatedEvent.ModifiedFields = oldValues.Keys
-						.Select(key => (key, oldValues[key], newValues[key]))
+					meetingUpdatedEvent.ModifiedFields = oldMeetingValues.Keys
+						.Select(key => (key, oldMeetingValues[key], newMeetingValues[key]))
 						.ToArray();
 
 					webHookEvent = meetingUpdatedEvent;
@@ -216,6 +216,34 @@ namespace ZoomNet.Utilities
 					meetingLiveStreamStoppedEvent.OperatorId = payloadJsonProperty.GetPropertyValue<string>("object/operator_id", true);
 					meetingLiveStreamStoppedEvent.StreamingInfo = payloadJsonProperty.GetProperty("object/live_streaming", true).ToObject<LiveStreamingInfo>();
 					webHookEvent = meetingLiveStreamStoppedEvent;
+					break;
+				case EventType.WebinarCreated:
+					var webinarCreatedEvent = payloadJsonProperty.ToObject<WebinarCreatedEvent>(serializer);
+					webHookEvent = webinarCreatedEvent;
+					break;
+				case EventType.WebinarDeleted:
+					var webinarDeletedEvent = payloadJsonProperty.ToObject<WebinarDeletedEvent>(serializer);
+					webHookEvent = webinarDeletedEvent;
+					break;
+				case EventType.WebinarUpdated:
+					var webinarUpdatedEvent = payloadJsonProperty.ToObject<WebinarUpdatedEvent>(serializer);
+
+					var oldWebinarValues = payloadJsonProperty.GetProperty("old_object", true).ToObject<Dictionary<string, object>>();
+					var newWebinarValues = payloadJsonProperty.GetProperty("object", true).ToObject<Dictionary<string, object>>();
+
+					webinarUpdatedEvent.ModifiedFields = oldWebinarValues.Keys
+						.Select(key => (key, oldWebinarValues[key], newWebinarValues[key]))
+						.ToArray();
+
+					webHookEvent = webinarUpdatedEvent;
+					break;
+				case EventType.WebinarStarted:
+					var webinarStartedEvent = payloadJsonProperty.ToObject<WebinarStartedEvent>(serializer);
+					webHookEvent = webinarStartedEvent;
+					break;
+				case EventType.WebinarEnded:
+					var webinarEndedEvent = payloadJsonProperty.ToObject<WebinarEndedEvent>(serializer);
+					webHookEvent = webinarEndedEvent;
 					break;
 				default:
 					throw new Exception($"{eventTypeJsonProperty} is an unknown event type");

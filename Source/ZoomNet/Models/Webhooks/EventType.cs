@@ -159,5 +159,35 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "meeting.live_streaming_stopped")]
 		MeetingLiveStreamStopped,
+
+		/// <summary>
+		/// A webinar has been created.
+		/// </summary>
+		[EnumMember(Value = "webinar.created")]
+		WebinarCreated,
+
+		/// <summary>
+		/// A webinar has been deleted.
+		/// </summary>
+		[EnumMember(Value = "webinar.deleted")]
+		WebinarDeleted,
+
+		/// <summary>
+		/// A webinar has been updated.
+		/// </summary>
+		[EnumMember(Value = "webinar.updated")]
+		WebinarUpdated,
+
+		/// <summary>
+		/// A webinar has started.
+		/// </summary>
+		[EnumMember(Value = "webinar.started")]
+		WebinarStarted,
+
+		/// <summary>
+		/// A webinar has ended.
+		/// </summary>
+		[EnumMember(Value = "webinar.ended")]
+		WebinarEnded,
 	}
 }
