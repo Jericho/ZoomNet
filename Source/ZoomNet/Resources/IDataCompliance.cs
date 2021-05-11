@@ -1,5 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
+using ZoomNet.Models.Webhooks;
 
 namespace ZoomNet.Resources
 {
@@ -24,6 +25,6 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task NotifyAsync(string userId, long accountId, object deauthorizationEventReceived, CancellationToken cancellationToken = default);
+		Task NotifyAsync(string userId, long accountId, AppDeauthorizedEvent deauthorizationEventReceived, CancellationToken cancellationToken = default);
 	}
 }
