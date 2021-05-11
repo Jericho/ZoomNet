@@ -98,6 +98,7 @@ namespace ZoomNet.Utilities
 			switch (meetingType)
 			{
 				case MeetingType.Instant:
+				case MeetingType.Personal:
 					return jsonObject.ToObject<InstantMeeting>(serializer);
 				case MeetingType.Scheduled:
 					return jsonObject.ToObject<ScheduledMeeting>(serializer);
