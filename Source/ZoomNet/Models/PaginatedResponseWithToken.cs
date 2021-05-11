@@ -8,6 +8,8 @@ namespace ZoomNet.Models
 	/// <typeparam name="T">The type of records.</typeparam>
 	public class PaginatedResponseWithToken<T>
 	{
+		private int? _totalRecords = null;
+
 		/// <summary>
 		/// Gets or sets the number of records returned within a single API call.
 		/// </summary>
@@ -20,7 +22,11 @@ namespace ZoomNet.Models
 		/// </summary>
 		/// <value>The number of all records available across pages.</value>
 		[JsonProperty(PropertyName = "total_records")]
-		public int? TotalRecords { get; set; }
+		public int TotalRecords
+		{
+			get { return _totalRecords ?? Records?.Length ?? 0; }
+			set { _totalRecords = value; }
+		}
 
 		/// <summary>
 		/// Gets or sets the token to retrieve the next page.
