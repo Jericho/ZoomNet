@@ -788,9 +788,9 @@ namespace ZoomNet
 				PageCount = pageCount,
 				PageNumber = pageNumber,
 				PageSize = pageSize,
-				Records = jProperty?.Value.ToObject<T[]>(serializer) ?? Array.Empty<T>(),
-				TotalRecords = totalRecords
+				Records = jProperty?.Value.ToObject<T[]>(serializer) ?? Array.Empty<T>()
 			};
+			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
 			return result;
 		}
@@ -825,9 +825,9 @@ namespace ZoomNet
 			{
 				NextPageToken = nextPageToken,
 				PageSize = pageSize,
-				Records = jProperty?.Value.ToObject<T[]>(serializer) ?? Array.Empty<T>(),
-				TotalRecords = totalRecords
+				Records = jProperty?.Value.ToObject<T[]>(serializer) ?? Array.Empty<T>()
 			};
+			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
 			return result;
 		}
@@ -866,9 +866,9 @@ namespace ZoomNet
 				To = to,
 				NextPageToken = nextPageToken,
 				PageSize = pageSize,
-				Records = jProperty?.Value.ToObject<T[]>(serializer) ?? Array.Empty<T>(),
-				TotalRecords = totalRecords
+				Records = jProperty?.Value.ToObject<T[]>(serializer) ?? Array.Empty<T>()
 			};
+			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
 			return result;
 		}

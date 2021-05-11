@@ -11,6 +11,12 @@ namespace ZoomNet.Models
 	public enum PresenceStatus
 	{
 		/// <summary>
+		/// Unknown.
+		/// </summary>
+		/// <remarks>Default value</remarks>
+		Unknown,
+
+		/// <summary>
 		/// Do not disturb.
 		/// </summary>
 		[EnumMember(Value = "Do_Not_Disturb")]

@@ -55,7 +55,7 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			// RETRIEVE LIST OF MESSAGES
 			var paginatedMessages = await client.Chat.GetMessagesToChannelAsync(channel.Id, 100, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"There are {paginatedMessages.TotalRecords ?? paginatedMessages.Records.Length} messages in channel \"{channel.Id}\"").ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {paginatedMessages.TotalRecords} messages in channel \"{channel.Id}\"").ConfigureAwait(false);
 
 			// DELETE THE MESSAGE
 			await client.Chat.DeleteMessageToChannelAsync(messageId, channel.Id, cancellationToken).ConfigureAwait(false);

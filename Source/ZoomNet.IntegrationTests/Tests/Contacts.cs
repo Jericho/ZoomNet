@@ -1,6 +1,7 @@
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using ZoomNet.Models;
 
 namespace ZoomNet.IntegrationTests.Tests
 {
@@ -13,8 +14,17 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync("\n***** CONTACTS *****\n").ConfigureAwait(false);
 
 			// GET THE CONTACTS FOR THIS USER
-			var paginatedContacts = await client.Contacts.GetUserContactsAsync(userId, 100, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"There are {paginatedContacts.TotalRecords} contacts for user {userId}").ConfigureAwait(false);
+			var paginatedInternalContacts = await client.Contacts.GetAllAsync(ContactType.Internal, 50, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {paginatedInternalContacts.TotalRecords} internal contacts for user {userId}").ConfigureAwait(false);
+
+			var paginatedExternalContacts = await client.Contacts.GetAllAsync(ContactType.External, 50, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {paginatedExternalContacts.TotalRecords} external contacts for user {userId}").ConfigureAwait(false);
+
+			var paginatedSearchedContacts = await client.Contacts.SearchAsync("zzz", true, 1, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Found {paginatedSearchedContacts.TotalRecords} contacts").ConfigureAwait(false);
+
+			var contact = await client.Contacts.GetAsync(userId, true, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"{contact.EmailAddress} is {contact.PresenceStatus}").ConfigureAwait(false);
 		}
 	}
 }
