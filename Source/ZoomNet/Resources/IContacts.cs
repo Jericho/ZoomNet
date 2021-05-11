@@ -16,7 +16,6 @@ namespace ZoomNet.Resources
 		/// <summary>
 		/// Retrieve the current user's contacts.
 		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="type">The type of contacts.</param>
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pagingToken">The paging token.</param>
