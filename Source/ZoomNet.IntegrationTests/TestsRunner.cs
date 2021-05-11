@@ -99,6 +99,7 @@ namespace ZoomNet.IntegrationTests
 				typeof(Accounts),
 				typeof(Chat),
 				typeof(CloudRecordings),
+				typeof(Contacts),
 				typeof(Dashboards),
 				typeof(Meetings),
 				typeof(Users),

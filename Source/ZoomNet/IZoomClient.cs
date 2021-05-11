@@ -32,6 +32,14 @@ namespace ZoomNet
 		ICloudRecordings CloudRecordings { get; }
 
 		/// <summary>
+		/// Gets the resource which allows you to manage contacts.
+		/// </summary>
+		/// <value>
+		/// The contacts resource.
+		/// </value>
+		IContacts Contacts { get; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage meetings.
 		/// </summary>
 		/// <value>
