@@ -15,8 +15,6 @@ namespace ZoomNet.UnitTests.Resources
 	{
 		#region FIELDS
 
-		private const string ENDPOINT = "api_keys";
-
 		private const string SINGLE_CLOUD_RECORDING_JSON = @"{
 			'uuid': 'ODfDKShNRqKkXbGD09Sk4A==',
 			'id': 94488262913,

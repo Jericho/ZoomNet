@@ -26,6 +26,11 @@ namespace ZoomNet.Utilities
 			private set => _jwtToken = value;
 		}
 
+		public IConnectionInfo ConnectionInfo
+		{
+			get => _connectionInfo;
+		}
+
 		private static readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim();
 
 		private readonly JwtConnectionInfo _connectionInfo;

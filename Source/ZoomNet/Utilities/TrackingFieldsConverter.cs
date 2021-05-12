@@ -85,7 +85,7 @@ namespace ZoomNet.Utilities
 			throw new Exception("Unable to convert to tracking fields");
 		}
 
-		private KeyValuePair<string, string> Convert(JObject jsonObject)
+		private static KeyValuePair<string, string> Convert(JObject jsonObject)
 		{
 			var fieldName = jsonObject.Value<string>("field");
 			var fieldValue = jsonObject.Value<string>("value");
