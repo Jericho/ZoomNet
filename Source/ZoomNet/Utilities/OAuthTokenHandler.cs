@@ -29,6 +29,11 @@ namespace ZoomNet.Utilities
 			}
 		}
 
+		public IConnectionInfo ConnectionInfo
+		{
+			get => _connectionInfo;
+		}
+
 		private static readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim();
 
 		private readonly OAuthConnectionInfo _connectionInfo;

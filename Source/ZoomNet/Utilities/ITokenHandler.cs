@@ -11,6 +11,11 @@ namespace ZoomNet.Utilities
 		string Token { get; }
 
 		/// <summary>
+		/// Gets the connection information.
+		/// </summary>
+		IConnectionInfo ConnectionInfo { get; }
+
+		/// <summary>
 		/// Refresh the access token if the previous one has expired.
 		/// </summary>
 		/// <param name="forceRefresh">Indicates if the token should be refreshes even if it's not expired.</param>
