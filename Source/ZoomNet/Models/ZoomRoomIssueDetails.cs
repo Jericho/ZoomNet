@@ -34,7 +34,7 @@ namespace ZoomNet.Models
 		/// * Scheduling Display.<br/>
 		/// </summary>
 		/// <value>The Issue name.</value>
-		[JsonProperty(PropertyName = "issue_name")]
+		[JsonProperty(PropertyName = "issue")]
 		public IssueType IssueType { get; set; }
 
 		/// <summary>
@@ -42,6 +42,6 @@ namespace ZoomNet.Models
 		/// </summary>
 		/// <value>The time the issue appeared.</value>
 		[JsonProperty(PropertyName = "time")]
-		public DateTime ZoomRoomsCount { get; set; }
+		public DateTime Time { get; set; }
 	}
 }
