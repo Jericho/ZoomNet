@@ -502,15 +502,14 @@ namespace ZoomNet
 
 		internal static T GetPropertyValue<T>(this JToken item, string name, T defaultValue = default)
 		{
-			var property = item.GetProperty(name);
+			var property = item.GetProperty(name, false);
 			if (property == null) return defaultValue;
 			return property.Value<T>();
 		}
 
 		internal static T GetPropertyValue<T>(this JToken item, string name, bool throwIfMissing = true)
 		{
-			var property = item.GetProperty(name);
-			if (property == null && throwIfMissing) throw new ArgumentException($"Unable to find '{name}'", nameof(name));
+			var property = item.GetProperty(name, throwIfMissing);
 			if (property == null) return default;
 			return property.Value<T>();
 		}
