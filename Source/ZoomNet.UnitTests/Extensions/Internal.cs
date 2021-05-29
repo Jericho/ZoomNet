@@ -65,13 +65,11 @@ namespace ZoomNet.UnitTests.Utilities
 
 			// Act
 			var property1 = item.GetPropertyValue("aaa", "Default value");
-			var property2 = item.GetPropertyValue<string>("aaa", throwIfMissing: true);
-			var property3 = item.GetPropertyValue<string>("aaa", throwIfMissing: false);
+			var property2 = item.GetPropertyValue<string>("aaa");
 
 			// Assert
 			property1.ShouldBe("123");
 			property2.ShouldBe("123");
-			property3.ShouldBe("123");
 		}
 
 		[Fact]
@@ -91,7 +89,7 @@ namespace ZoomNet.UnitTests.Utilities
 		}
 
 		[Fact]
-		public void GetPropertyValue_throws_when_property_is_missing_and_throwIfMissing_is_true()
+		public void GetPropertyValue_throws_when_property_is_missing()
 		{
 			// Arrange
 			var item = new JObject()
@@ -100,23 +98,7 @@ namespace ZoomNet.UnitTests.Utilities
 			};
 
 			// Act
-			Should.Throw<ArgumentException>(() => item.GetPropertyValue<string>("zzz", throwIfMissing: true));
-		}
-
-		[Fact]
-		public void GetPropertyValue_returns_default_value_when_property_is_missing_and_throwIfMissing_is_false()
-		{
-			// Arrange
-			var item = new JObject()
-			{
-				{ "aaa", "123" }
-			};
-
-			// Act
-			var property = item.GetPropertyValue<string>("zzz", throwIfMissing: false);
-
-			// Assert
-			property.ShouldBeNull();
+			Should.Throw<ArgumentException>(() => item.GetPropertyValue<string>("zzz"));
 		}
 	}
 }

@@ -500,17 +500,16 @@ namespace ZoomNet
 			return property;
 		}
 
-		internal static T GetPropertyValue<T>(this JToken item, string name, T defaultValue = default)
+		internal static T GetPropertyValue<T>(this JToken item, string name, T defaultValue)
 		{
 			var property = item.GetProperty(name, false);
 			if (property == null) return defaultValue;
 			return property.Value<T>();
 		}
 
-		internal static T GetPropertyValue<T>(this JToken item, string name, bool throwIfMissing = true)
+		internal static T GetPropertyValue<T>(this JToken item, string name)
 		{
-			var property = item.GetProperty(name, throwIfMissing);
-			if (property == null) return default;
+			var property = item.GetProperty(name, true);
 			return property.Value<T>();
 		}
 
@@ -661,7 +660,7 @@ namespace ZoomNet
 				{
 					var jObject = JObject.Parse(responseContent);
 
-					errorCode = jObject.GetPropertyValue<int?>("code", false);
+					errorCode = jObject.GetPropertyValue<int?>("code", null);
 					errorMessage = jObject.GetPropertyValue<string>("message", errorCode.HasValue ? $"Error code: {errorCode}" : null);
 
 					isError = errorCode.HasValue || !string.IsNullOrEmpty(errorMessage);
@@ -877,8 +876,8 @@ namespace ZoomNet
 			var serializer = new JsonSerializer();
 			if (jsonConverter != null) serializer.Converters.Add(jsonConverter);
 
-			var from = DateTime.ParseExact(jObject.GetPropertyValue<string>("from", true), "yyyy-MM-dd", CultureInfo.InvariantCulture);
-			var to = DateTime.ParseExact(jObject.GetPropertyValue<string>("to", true), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+			var from = DateTime.ParseExact(jObject.GetPropertyValue<string>("from"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+			var to = DateTime.ParseExact(jObject.GetPropertyValue<string>("to"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
 			var nextPageToken = jObject.GetPropertyValue<string>("next_page_token", string.Empty);
 			var pageSize = jObject.GetPropertyValue<int>("page_size", 0);
 			var totalRecords = jObject.GetPropertyValue<int?>("total_records", null);

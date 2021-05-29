@@ -102,12 +102,12 @@ namespace ZoomNet.Utilities
 							throw new ZoomException(jObject.GetPropertyValue("reason", "The Zoom API did not provide a reason"), response, "No diagnostic available", null);
 						}
 
-						_connectionInfo.RefreshToken = jObject.GetPropertyValue<string>("refresh_token", true);
-						_connectionInfo.AccessToken = jObject.GetPropertyValue<string>("access_token", true);
+						_connectionInfo.RefreshToken = jObject.GetPropertyValue<string>("refresh_token");
+						_connectionInfo.AccessToken = jObject.GetPropertyValue<string>("access_token");
 						_connectionInfo.GrantType = OAuthGrantType.RefreshToken;
 						_connectionInfo.TokenExpiration = requestTime.AddSeconds(jObject.GetPropertyValue<int>("expires_in", 60 * 60));
 						_connectionInfo.TokenScope = new ReadOnlyDictionary<string, string[]>(
-							jObject.GetPropertyValue<string>("scope", true)
+							jObject.GetPropertyValue<string>("scope")
 								.Split(' ')
 								.Select(x => x.Split(new[] { ':' }, 2))
 								.Select(x => new KeyValuePair<string, string[]>(x[0], x.Skip(1).ToArray()))
