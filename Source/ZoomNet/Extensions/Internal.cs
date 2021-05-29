@@ -489,12 +489,20 @@ namespace ZoomNet
 		{
 			var parts = name.Split('/');
 			var property = item[parts[0]];
-			if (property == null && throwIfMissing) throw new ArgumentException($"Unable to find '{name}'", nameof(name));
+			if (property == null)
+			{
+				if (throwIfMissing) throw new ArgumentException($"Unable to find '{name}'", nameof(name));
+				else return null;
+			}
 
 			foreach (var part in parts.Skip(1))
 			{
 				property = property[part];
-				if (property == null && throwIfMissing) throw new ArgumentException($"Unable to find '{part}'", nameof(name));
+				if (property == null)
+				{
+					if (throwIfMissing) throw new ArgumentException($"Unable to find '{name}'", nameof(name));
+					else return null;
+				}
 			}
 
 			return property;
