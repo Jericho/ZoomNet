@@ -95,13 +95,14 @@ namespace ZoomNet.Resources
 		/// <param name="email">The email address.</param>
 		/// <param name="firstName">First name.</param>
 		/// <param name="lastName">Last name.</param>
+		/// <param name="password">User password. Only used when createType is <see cref="UserCreateType.Auto"/>.</param>
 		/// <param name="type">The type of user.</param>
 		/// <param name="createType">Specify how to create the user.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The new user.
 		/// </returns>
-		public Task<User> CreateAsync(string email, string firstName = null, string lastName = null, UserType type = UserType.Basic, UserCreateType createType = UserCreateType.Normal, CancellationToken cancellationToken = default)
+		public Task<User> CreateAsync(string email, string firstName = null, string lastName = null, string password = null, UserType type = UserType.Basic, UserCreateType createType = UserCreateType.Normal, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject()
 			{
@@ -111,6 +112,7 @@ namespace ZoomNet.Resources
 			data.AddPropertyIfEnumValue("user_info/type", type);
 			data.AddPropertyIfValue("user_info/first_name", firstName);
 			data.AddPropertyIfValue("user_info/last_name", lastName);
+			data.AddPropertyIfValue("user_info/password", password);
 
 			return _client
 				.PostAsync("users")

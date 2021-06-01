@@ -63,7 +63,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			//await Task.Delay(500, cancellationToken).ConfigureAwait(false);
 
 			// CREATE NEW USER (commenting out this integration test because I currently do not have permission to create users)
-			//var newUser = await client.Users.CreateAsync("integrationtesting@example.com", "ZoomNet", "Integration Testing", UserType.Basic, UserCreateType.Normal, cancellationToken).ConfigureAwait(false);
+			//var newUser = await client.Users.CreateAsync("integrationtesting@example.com", "ZoomNet", "Integration Testing", null, UserType.Basic, UserCreateType.Normal, cancellationToken).ConfigureAwait(false);
 			//await log.WriteLineAsync($"New user created: {newUser.Id}").ConfigureAwait(false);
 			//await Task.Delay(500, cancellationToken).ConfigureAwait(false);
 
