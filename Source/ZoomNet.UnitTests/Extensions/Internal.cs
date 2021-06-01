@@ -8,7 +8,7 @@ namespace ZoomNet.UnitTests.Utilities
 	public class InternalTests
 	{
 		[Fact]
-		public void GetProperty_when_property_is_present()
+		public void GetProperty_when_property_is_present_and_throwIfMissing_is_true()
 		{
 			// Arrange
 			var item = new JObject()
@@ -17,12 +17,28 @@ namespace ZoomNet.UnitTests.Utilities
 			};
 
 			// Act
-			var property1 = item.GetProperty("aaa", true);
-			var property2 = item.GetProperty("aaa", false);
+			var property = item.GetProperty("aaa", true);
 
 			// Assert
-			property1.ShouldNotBeNull();
-			property2.ShouldNotBeNull();
+			property.ShouldNotBeNull();
+			property.Value<string>().ShouldBe("123");
+		}
+
+		[Fact]
+		public void GetProperty_when_property_is_present_and_throwIfMissing_is_false()
+		{
+			// Arrange
+			var item = new JObject()
+			{
+				{ "aaa", "123" }
+			};
+
+			// Act
+			var property = item.GetProperty("aaa", false);
+
+			// Assert
+			property.ShouldNotBeNull();
+			property.Value<string>().ShouldBe("123");
 		}
 
 		[Fact]
@@ -55,7 +71,7 @@ namespace ZoomNet.UnitTests.Utilities
 		}
 
 		[Fact]
-		public void GetPropertyValue_when_property_is_present()
+		public void GetPropertyValue_when_property_is_present_and_default_value_is_provided()
 		{
 			// Arrange
 			var item = new JObject()
@@ -64,12 +80,26 @@ namespace ZoomNet.UnitTests.Utilities
 			};
 
 			// Act
-			var property1 = item.GetPropertyValue("aaa", "Default value");
-			var property2 = item.GetPropertyValue<string>("aaa");
+			var property = item.GetPropertyValue("aaa", "Default value");
 
 			// Assert
-			property1.ShouldBe("123");
-			property2.ShouldBe("123");
+			property.ShouldBe("123");
+		}
+
+		[Fact]
+		public void GetPropertyValue_when_property_is_present_and_default_value_is_omitted()
+		{
+			// Arrange
+			var item = new JObject()
+			{
+				{ "aaa", "123" }
+			};
+
+			// Act
+			var property = item.GetPropertyValue<string>("aaa");
+
+			// Assert
+			property.ShouldBe("123");
 		}
 
 		[Fact]
