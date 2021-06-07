@@ -170,6 +170,18 @@ namespace ZoomNet.Models
 		/// Scheduling Display is not charging.
 		/// </summary>
 		[EnumMember(Value = "Scheduling Display is not charging")]
-		SchedulingDisplayIsNotCharging
+		SchedulingDisplayIsNotCharging,
+
+		/// <summary>
+		/// No camera.
+		/// </summary>
+		[EnumMember(Value = "No camera")]
+		NoCamera,
+
+		/// <summary>
+		/// No microphone.
+		/// </summary>
+		[EnumMember(Value = "No microphone")]
+		NoMicrophone
 	}
 }
