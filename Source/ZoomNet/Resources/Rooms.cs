@@ -5,6 +5,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
+using ZoomNet.Models.RoomSettings;
 
 namespace ZoomNet.Resources
 {
@@ -171,6 +172,34 @@ namespace ZoomNet.Resources
 			       .WithJsonBody(data)
 			       .WithCancellationToken(cancellationToken)
 			       .AsMessage();
+		}
+
+		/// <summary>
+		/// Get information on meeting or alert settings applied to a specific Zoom Room.
+		/// </summary>
+		/// <param name="roomId">The ID of the room.</param>
+		/// <param name="settingsType">The type of settings to query. Defaults to Meeting.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The <see cref="IRoomSettings">room settings</see>.</returns>
+		public Task<IRoomSettings> GetSettingsAsync(string roomId, SettingsType settingsType = SettingsType.Meeting, CancellationToken cancellationToken = default)
+		{
+			var request =
+				_client
+					.GetAsync($"rooms/{roomId}/settings")
+					.WithArgument("status", JToken.Parse(JsonConvert.SerializeObject(settingsType)).ToString())
+					.WithCancellationToken(cancellationToken);
+
+			switch (settingsType)
+			{
+				case SettingsType.Meeting:
+					return request.AsObject<RoomMeetingSettings>().AsTask<RoomMeetingSettings, IRoomSettings>();
+
+				case SettingsType.Alert:
+					return request.AsObject<RoomAlertSettings>().AsTask<RoomAlertSettings, IRoomSettings>();
+
+				default:
+					throw new ArgumentOutOfRangeException(nameof(settingsType), settingsType, null);
+			}
 		}
 	}
 }

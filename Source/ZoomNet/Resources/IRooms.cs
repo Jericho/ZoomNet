@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
+using ZoomNet.Models.RoomSettings;
 
 namespace ZoomNet.Resources
 {
@@ -80,5 +81,14 @@ namespace ZoomNet.Resources
 		/// <param name="locationId">Parent location ID of the room.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		Task UpdateLocationAsync(string roomId, string locationId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get information on meeting or alert settings applied to a specific Zoom Room.
+		/// </summary>
+		/// <param name="roomId">The ID of the room.</param>
+		/// <param name="settingsType">The type of settings to query. Defaults to Meeting.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The <see cref="IRoomSettings">room settings</see>.</returns>
+		Task<IRoomSettings> GetSettingsAsync(string roomId, SettingsType settingsType = SettingsType.Meeting, CancellationToken cancellationToken = default);
 	}
 }
