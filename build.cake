@@ -265,7 +265,7 @@ Task("Upload-Coverage-Result")
 	}
 	catch (Exception e)
 	{
-		Error(e);
+		Warning(e.Message);
 	}
 });
 
