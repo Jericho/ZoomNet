@@ -260,8 +260,8 @@ Task("Upload-Coverage-Result")
 	.Does(() =>
 {
 	CoverallsIo($"{codeCoverageDir}coverage.xml");
-	//CoverallsIo(new FilePath($"{codeCoverageDir}coverage.xml"));
-});
+})
+.DeferOnError();
 
 Task("Generate-Code-Coverage-Report")
 	.IsDependentOn("Run-Code-Coverage")
@@ -315,6 +315,10 @@ Task("Upload-AppVeyor-Artifacts")
 		AppVeyor.UploadArtifact(file.FullPath);
 	}
 	foreach (var file in GetFiles($"{benchmarkDir}results/*.*"))
+	{
+		AppVeyor.UploadArtifact(file.FullPath);
+	}
+	foreach (var file in GetFiles($"{codeCoverageDir}*.*"))
 	{
 		AppVeyor.UploadArtifact(file.FullPath);
 	}
