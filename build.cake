@@ -74,7 +74,7 @@ var isBenchmarkPresent = FileExists(benchmarkProject);
 
 Setup(context =>
 {
-	if (isMainBranch && (context.Log.Verbosity != Verbosity.Diagnostic))
+	if (!isLocalBuild && context.Log.Verbosity != Verbosity.Diagnostic)
 	{
 		Information("Increasing verbosity to diagnostic.");
 		context.Log.Verbosity = Verbosity.Diagnostic;
