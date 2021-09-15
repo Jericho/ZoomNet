@@ -1,6 +1,6 @@
 // Install tools.
 #tool dotnet:?package=GitVersion.Tool&version=5.6.6
-#tool nuget:?package=GitReleaseManager&version=0.12.0
+#tool nuget:?package=GitReleaseManager&version=0.11.0
 #tool nuget:?package=OpenCover&version=4.7.1221
 #tool nuget:?package=ReportGenerator&version=4.8.12
 #tool nuget:?package=coveralls.io&version=1.4.2
@@ -74,7 +74,7 @@ var isBenchmarkPresent = FileExists(benchmarkProject);
 
 Setup(context =>
 {
-	if (isMainBranch && (context.Log.Verbosity != Verbosity.Diagnostic))
+	if (!isLocalBuild && context.Log.Verbosity != Verbosity.Diagnostic)
 	{
 		Information("Increasing verbosity to diagnostic.");
 		context.Log.Verbosity = Verbosity.Diagnostic;
@@ -259,7 +259,14 @@ Task("Upload-Coverage-Result")
 	.IsDependentOn("Run-Code-Coverage")
 	.Does(() =>
 {
-	CoverallsIo($"{codeCoverageDir}coverage.xml");
+	try
+	{
+		CoverallsIo($"{codeCoverageDir}coverage.xml");
+	}
+	catch (Exception e)
+	{
+		Warning(e.Message);
+	}
 });
 
 Task("Generate-Code-Coverage-Report")
@@ -314,6 +321,10 @@ Task("Upload-AppVeyor-Artifacts")
 		AppVeyor.UploadArtifact(file.FullPath);
 	}
 	foreach (var file in GetFiles($"{benchmarkDir}results/*.*"))
+	{
+		AppVeyor.UploadArtifact(file.FullPath);
+	}
+	foreach (var file in GetFiles($"{codeCoverageDir}*.*"))
 	{
 		AppVeyor.UploadArtifact(file.FullPath);
 	}
