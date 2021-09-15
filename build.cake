@@ -1,14 +1,14 @@
 // Install tools.
 #tool dotnet:?package=GitVersion.Tool&version=5.6.6
-#tool nuget:?package=GitReleaseManager&version=0.11.0
-#tool nuget:?package=OpenCover&version=4.7.1204
-#tool nuget:?package=ReportGenerator&version=4.8.9
+#tool nuget:?package=GitReleaseManager&version=0.12.0
+#tool nuget:?package=OpenCover&version=4.7.1221
+#tool nuget:?package=ReportGenerator&version=4.8.12
 #tool nuget:?package=coveralls.io&version=1.4.2
 #tool nuget:?package=xunit.runner.console&version=2.4.1
 
 // Install addins.
-#addin nuget:?package=Cake.Coveralls&version=1.0.1
-#addin nuget:?package=Cake.Git&version=1.0.1
+#addin nuget:?package=Cake.Coveralls&version=1.1.0
+#addin nuget:?package=Cake.Git&version=1.1.0
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -200,9 +200,14 @@ Task("Build")
 	DotNetCoreBuild(solutionFile, new DotNetCoreBuildSettings
 	{
 		Configuration = configuration,
+		Framework =  IsRunningOnWindows() ? null : "net5.0",
 		NoRestore = true,
-		ArgumentCustomization = args => args.Append("/p:SemVer=" + versionInfo.LegacySemVerPadded),
-		Framework =  IsRunningOnWindows() ? null : "net5.0"
+		ArgumentCustomization = args =>
+		{
+			return args
+				.Append("/p:SemVer={0}", versionInfo.LegacySemVerPadded)
+				.Append("/p:ContinuousIntegrationBuild={0}", BuildSystem.IsLocalBuild ? "false" : "true");
+		}
 	});
 });
 
@@ -285,10 +290,10 @@ Task("Create-NuGet-Package")
 		NoRestore = true,
 		NoDependencies = true,
 		OutputDirectory = outputDir,
+		SymbolPackageFormat = "snupkg",
 		ArgumentCustomization = (args) =>
 		{
 			return args
-				.Append("/p:SymbolPackageFormat=snupkg")
 				.Append("/p:PackageReleaseNotes=\"{0}\"", releaseNotesUrl)
 				.Append("/p:Version={0}", versionInfo.LegacySemVerPadded)
 				.Append("/p:AssemblyVersion={0}", versionInfo.MajorMinorPatch)
@@ -440,8 +445,11 @@ Task("Benchmark")
 	.WithCriteria(isBenchmarkPresent)
 	.Does(() =>
 {
-    var htmlReport = GetFiles($"{benchmarkDir}results/*-report.html", new GlobberSettings { IsCaseSensitive = false }).FirstOrDefault();
-	StartProcess("cmd", $"/c start {htmlReport}");
+    var htmlReports = GetFiles($"{benchmarkDir}results/*-report.html", new GlobberSettings { IsCaseSensitive = false });
+	foreach (var htmlReport in htmlReports)
+	{
+		StartProcess("cmd", $"/c start {htmlReport}");
+	}
 });
 
 Task("ReleaseNotes")
@@ -450,15 +458,11 @@ Task("ReleaseNotes")
 Task("AppVeyor")
 	.IsDependentOn("Run-Code-Coverage")
 	.IsDependentOn("Upload-Coverage-Result")
-    .IsDependentOn("Generate-Benchmark-Report")
 	.IsDependentOn("Create-NuGet-Package")
 	.IsDependentOn("Upload-AppVeyor-Artifacts")
 	.IsDependentOn("Publish-MyGet")
 	.IsDependentOn("Publish-NuGet")
 	.IsDependentOn("Publish-GitHub-Release");
-
-Task("AppVeyor-Ubuntu")
-	.IsDependentOn("Run-Unit-Tests");
 
 Task("Default")
 	.IsDependentOn("Run-Unit-Tests")

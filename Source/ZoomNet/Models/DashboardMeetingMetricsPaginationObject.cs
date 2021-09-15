@@ -11,13 +11,13 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the start date for the report.
 		/// </summary>
-		/// <value> Start date for this report in 'yyyy-mm-dd' format.</value>
+		/// <value> Start date for this report in 'yyyy-MM-dd' format.</value>
 		public string From { get; set; }
 
 		/// <summary>
 		/// Gets or sets the end date for the report.
 		/// </summary>
-		/// <value> End date for this report in 'yyyy-mm-dd' format.</value>
+		/// <value> End date for this report in 'yyyy-MM-dd' format.</value>
 		public string To { get; set; }
 
 		/// <summary>

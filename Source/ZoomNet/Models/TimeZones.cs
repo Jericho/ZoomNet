@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Enumeration pf the time zones supported by Zoom.
+	/// Enumeration of the time zones supported by Zoom.
 	/// </summary>
 	[JsonConverter(typeof(StringEnumConverter))]
 	public enum TimeZones

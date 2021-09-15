@@ -35,7 +35,7 @@ StrongGrid supports the `4.6.1` .NET framework as well as any framework supporti
 Before you start using the ZoomNet client, you must decide how you are going to connect to the Zoom API. ZoomNet supports two distinct ways of connecting to Zoom: JWT and OAuth.
 
 #### Connection using JWT
-This is the simplest way to connect to the Zoom API. Zoom expects you to use a key and a secret to generate a JSON object with a signed payload and to provide this JSON object with every API request. The good news is that ZoomNet takes care of the intricacies of generating this JSON object: you simply provide the key and the secret and ZommNet takes care of the rest. Super easy!
+This is the simplest way to connect to the Zoom API. Zoom expects you to use a key and a secret to generate a JSON object with a signed payload and to provide this JSON object with every API request. The good news is that ZoomNet takes care of the intricacies of generating this JSON object: you simply provide the key and the secret and ZoomNet takes care of the rest. Super easy!
 
 As the Zoom documentation mentions, this is perfect `if you’re looking to build an app that provides server-to-server interaction with Zoom APIs`.
 
@@ -51,7 +51,7 @@ var connectionInfo = new JwtConnectionInfo(apiKey, apiSecret);
 ```
 
 #### Connection using OAuth
-Using OAuth is much more complicated than using JWT but at the same time, it is more flexible because you can define which permissions your app requires. When a user installs your app, they are presented with the list of permissions your app requires and the are given the opportunity to accept. 
+Using OAuth is much more complicated than using JWT but at the same time, it is more flexible because you can define which permissions your app requires. When a user installs your app, they are presented with the list of permissions your app requires and they are given the opportunity to accept. 
 
 The Zoom documentation has a document about [how to create an OAuth app](https://marketplace.zoom.us/docs/guides/build/oauth-app) and another document about the [OAuth autorization flow](https://marketplace.zoom.us/docs/guides/auth/oauth) but I personnality was very confused by the later document so here is a brief step-by-step summary:
 - you create an OAuth app, define which permissions your app requires and publish the app in the Zoom marketplace.
