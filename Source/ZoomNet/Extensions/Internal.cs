@@ -68,13 +68,14 @@ namespace ZoomNet
 		/// </summary>
 		/// <param name="date">The date.</param>
 		/// <param name="timeZone">The time zone.</param>
+		/// <param name="dateOnly">Indicates if you want only the date to be converted to a string (ignoring the time).</param>
 		/// <returns>
 		/// The string representation of the date expressed in the Zoom format.
 		/// </returns>
-		internal static string ToZoomFormat(this DateTime? date, TimeZones? timeZone)
+		internal static string ToZoomFormat(this DateTime? date, TimeZones? timeZone = null, bool dateOnly = false)
 		{
 			if (!date.HasValue) return null;
-			return date.Value.ToZoomFormat(timeZone);
+			return date.Value.ToZoomFormat(timeZone, dateOnly);
 		}
 
 		/// <summary>
@@ -82,16 +83,26 @@ namespace ZoomNet
 		/// </summary>
 		/// <param name="date">The date.</param>
 		/// <param name="timeZone">The time zone.</param>
+		/// <param name="dateOnly">Indicates if you want only the date to be converted to a string (ignoring the time).</param>
 		/// <returns>
 		/// The string representation of the date expressed in the Zoom format.
 		/// </returns>
-		internal static string ToZoomFormat(this DateTime date, TimeZones? timeZone)
+		internal static string ToZoomFormat(this DateTime date, TimeZones? timeZone = null, bool dateOnly = false)
 		{
-			const string defaultDateFormat = "yyyy-MM-dd'T'HH:mm:ss";
-			const string utcDateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'";
+			const string dateOnlyFormat = "yyyy-MM-dd";
+			const string defaultDateFormat = dateOnlyFormat + "'T'HH:mm:ss";
+			const string utcDateFormat = defaultDateFormat + "'Z'";
 
-			if (timeZone.HasValue && timeZone.Value == TimeZones.UTC) return date.ToUniversalTime().ToString(utcDateFormat);
-			return date.ToString(defaultDateFormat);
+			if (dateOnly)
+			{
+				if (timeZone.HasValue && timeZone.Value == TimeZones.UTC) return date.ToUniversalTime().ToString(dateOnlyFormat);
+				else return date.ToString(dateOnlyFormat);
+			}
+			else
+			{
+				if (timeZone.HasValue && timeZone.Value == TimeZones.UTC) return date.ToUniversalTime().ToString(utcDateFormat);
+				else return date.ToString(defaultDateFormat);
+			}
 		}
 
 		/// <summary>

@@ -55,8 +55,8 @@ namespace ZoomNet.Resources
 			return _client
 				.GetAsync($"users/{userId}/recordings")
 				.WithArgument("trash", queryTrash.ToString().ToLower())
-				.WithArgument("from", from?.ToString("yyyy-MM-dd"))
-				.WithArgument("to", to?.ToString("yyyy-MM-dd"))
+				.WithArgument("from", from?.ToZoomFormat(dateOnly: true))
+				.WithArgument("to", to?.ToZoomFormat(dateOnly: true))
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("page_number", page)
 				.WithCancellationToken(cancellationToken)
@@ -86,8 +86,8 @@ namespace ZoomNet.Resources
 			return _client
 				.GetAsync($"users/{userId}/recordings")
 				.WithArgument("trash", queryTrash.ToString().ToLower())
-				.WithArgument("from", from?.ToString("yyyy-MM-dd"))
-				.WithArgument("to", to?.ToString("yyyy-MM-dd"))
+				.WithArgument("from", from?.ToZoomFormat(dateOnly: true))
+				.WithArgument("to", to?.ToZoomFormat(dateOnly: true))
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)

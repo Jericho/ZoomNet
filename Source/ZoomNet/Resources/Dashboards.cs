@@ -56,8 +56,8 @@ namespace ZoomNet.Resources
 			return _client
 				.GetAsync($"metrics/meetings")
 				.WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
-				.WithArgument("from", from.ToString("yyyy-MM-dd"))
-				.WithArgument("to", to.ToString("yyyy-MM-dd"))
+				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
+				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
@@ -226,8 +226,8 @@ namespace ZoomNet.Resources
 			return _client
 				.GetAsync($"metrics/webinars")
 				.WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
-				.WithArgument("from", from.ToString("yyyy-MM-dd"))
-				.WithArgument("to", to.ToString("yyyy-MM-dd"))
+				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
+				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
@@ -415,8 +415,8 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"metrics/zoomrooms/{zoomRoomId}")
-				.WithArgument("from", from.ToString("yyyy-MM-dd"))
-				.WithArgument("to", to.ToString("yyyy-MM-dd"))
+				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
+				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
@@ -438,8 +438,8 @@ namespace ZoomNet.Resources
 		{
 			return _client
 				.GetAsync($"metrics/crc")
-				.WithArgument("from", from.ToString("yyyy-MM-dd"))
-				.WithArgument("to", to.ToString("yyyy-MM-dd"))
+				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
+				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
 				.WithCancellationToken(cancellationToken)
 				.AsObject<CrcPortMetrics>();
 		}
@@ -470,8 +470,8 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"metrics/im")
-				.WithArgument("from", from.ToString("yyyy-MM-dd"))
-				.WithArgument("to", to.ToString("yyyy-MM-dd"))
+				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
+				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
@@ -491,8 +491,8 @@ namespace ZoomNet.Resources
 		{
 			return _client
 				.GetAsync($"metrics/client/feedback")
-				.WithArgument("from", from.ToString("yyyy-MM-dd"))
-				.WithArgument("to", to.ToString("yyyy-MM-dd"))
+				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
+				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
 				.WithCancellationToken(cancellationToken)
 				.AsObject<ClientFeedbackMetricsReport>();
 		}
@@ -510,8 +510,8 @@ namespace ZoomNet.Resources
 		{
 			return _client
 				.GetAsync($"metrics/zoomrooms/issues")
-				.WithArgument("from", from.ToString("yyyy-MM-dd"))
-				.WithArgument("to", to.ToString("yyyy-MM-dd"))
+				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
+				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
 				.WithCancellationToken(cancellationToken)
 				.AsObject<IssuesOfZoomRoomsReport>();
 		}
@@ -529,8 +529,8 @@ namespace ZoomNet.Resources
 		{
 			return _client
 				.GetAsync($"metrics/issues/zoomrooms")
-				.WithArgument("from", from.ToString("yyyy-MM-dd"))
-				.WithArgument("to", to.ToString("yyyy-MM-dd"))
+				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
+				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
 				.WithCancellationToken(cancellationToken)
 				.AsObject<ZoomRoomWithIssuesReport>();
 		}
@@ -562,8 +562,8 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"metrics/issues/zoomrooms/{zoomRoomId}")
-				.WithArgument("from", from.ToString("yyyy-MM-dd"))
-				.WithArgument("to", to.ToString("yyyy-MM-dd"))
+				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
+				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
@@ -597,8 +597,8 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"metrics/client/feedback/{feedbackId}")
-				.WithArgument("from", from.ToString("yyyy-MM-dd"))
-				.WithArgument("to", to.ToString("yyyy-MM-dd"))
+				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
+				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
@@ -621,8 +621,8 @@ namespace ZoomNet.Resources
 		{
 			return _client
 				.GetAsync($"metrics/client/satisfaction")
-				.WithArgument("from", from.ToString("yyyy-MM-dd"))
-				.WithArgument("to", to.ToString("yyyy-MM-dd"))
+				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
+				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
 				.WithCancellationToken(cancellationToken)
 				.AsObject<ClientSatisfactionReport>();
 		}
