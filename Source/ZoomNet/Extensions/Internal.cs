@@ -31,11 +31,11 @@ namespace ZoomNet
 		private static readonly DateTime EPOCH = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
 		/// <summary>
-		/// Converts a 'unix time' (which is expressed as the number of seconds/milliseconds since
-		/// midnight on January 1st 1970) to a .Net <see cref="DateTime" />.
+		/// Converts a 'unix time', which is expressed as the number of seconds (or milliseconds) since
+		/// midnight on January 1st 1970, to a .Net <see cref="DateTime" />.
 		/// </summary>
 		/// <param name="unixTime">The unix time.</param>
-		/// <param name="precision">The desired precision.</param>
+		/// <param name="precision">The precision of the provided unix time.</param>
 		/// <returns>
 		/// The <see cref="DateTime" />.
 		/// </returns>
@@ -47,8 +47,8 @@ namespace ZoomNet
 		}
 
 		/// <summary>
-		/// Converts a .Net <see cref="DateTime" /> into a 'Unix time' (which is expressed as the number
-		/// of seconds/milliseconds since midnight on January 1st 1970).
+		/// Converts a .Net <see cref="DateTime" /> into a 'Unix time', which is expressed as the number
+		/// of seconds (or milliseconds) since midnight on January 1st 1970.
 		/// </summary>
 		/// <param name="date">The date.</param>
 		/// <param name="precision">The desired precision.</param>
