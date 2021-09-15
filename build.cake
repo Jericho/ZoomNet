@@ -257,11 +257,11 @@ Task("Run-Code-Coverage")
 
 Task("Upload-Coverage-Result")
 	.IsDependentOn("Run-Code-Coverage")
+	.ContinueOnError()
 	.Does(() =>
 {
 	CoverallsIo($"{codeCoverageDir}coverage.xml");
-})
-.DeferOnError();
+});
 
 Task("Generate-Code-Coverage-Report")
 	.IsDependentOn("Run-Code-Coverage")
