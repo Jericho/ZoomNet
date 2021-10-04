@@ -214,5 +214,19 @@ namespace ZoomNet
 
 			return parser.ParseEventWebhook(requestBody);
 		}
+
+		/// <summary>
+		/// Download the recording file.
+		/// </summary>
+		/// <param name="cloudRecordingsResource">The cloud recordings resource.</param>
+		/// <param name="recordingFile">The recording file to download.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>
+		/// The <see cref="Stream"/> containing the file.
+		/// </returns>
+		public static Task<Stream> DownloadFileAsync(this ICloudRecordings cloudRecordingsResource, RecordingFile recordingFile, CancellationToken cancellationToken = default)
+		{
+			return cloudRecordingsResource.DownloadFileAsync(recordingFile.DownloadUrl);
+		}
 	}
 }

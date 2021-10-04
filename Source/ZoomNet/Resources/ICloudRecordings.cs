@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -221,5 +222,15 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task RejectRegistrantsAsync(long meetingId, IEnumerable<string> registrantIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Download the recording file.
+		/// </summary>
+		/// <param name="downloadUrl">The URL of the recording file to download.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>
+		/// The <see cref="Stream"/> containing the file.
+		/// </returns>
+		Task<Stream> DownloadFileAsync(string downloadUrl, CancellationToken cancellationToken = default);
 	}
 }
