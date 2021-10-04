@@ -67,6 +67,14 @@ var isTagged = (
 );
 var isBenchmarkPresent = FileExists(benchmarkProject);
 
+// Generally speaking, we want to honor all the TFM configured in the source project and the unit test project.
+// However, there are a few scenarios where a single framework is sufficient. Here are a few examples that come to mind:
+// - when building source project on Ubuntu
+// - when running unit tests on Ubuntu
+// - when calculating code coverage
+// FYI, this will cause an error if the source project and/or the unit test project are not configured to target this desired framework:
+var desiredFramework = IsRunningOnWindows() ? null : "net5.0";
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // SETUP / TEARDOWN
@@ -200,7 +208,7 @@ Task("Build")
 	DotNetCoreBuild(solutionFile, new DotNetCoreBuildSettings
 	{
 		Configuration = configuration,
-		Framework =  IsRunningOnWindows() ? null : "net5.0",
+		Framework =  desiredFramework,
 		NoRestore = true,
 		ArgumentCustomization = args =>
 		{
@@ -220,7 +228,7 @@ Task("Run-Unit-Tests")
 		NoBuild = true,
 		NoRestore = true,
 		Configuration = configuration,
-		Framework = IsRunningOnWindows() ? null : "net5.0"
+		Framework = desiredFramework
 	});
 });
 
@@ -228,11 +236,6 @@ Task("Run-Code-Coverage")
 	.IsDependentOn("Build")
 	.Does(() =>
 {
-	// For the purpose of calculating code coverage, a single target will suffice.
-	// FYI, this will cause an error if the unit test project is not configured
-	// to target this desired framework:
-	var desiredFramework = "net5.0";
-
 	Action<ICakeContext> testAction = ctx => ctx.DotNetCoreTest(unitTestsProject, new DotNetCoreTestSettings
 	{
 		NoBuild = true,
@@ -316,11 +319,11 @@ Task("Upload-AppVeyor-Artifacts")
 	.WithCriteria(() => AppVeyor.IsRunningOnAppVeyor)
 	.Does(() =>
 {
-	foreach (var file in GetFiles($"{outputDir}*.*"))
-	{
-		AppVeyor.UploadArtifact(file.FullPath);
-	}
-	foreach (var file in GetFiles($"{benchmarkDir}results/*.*"))
+	var allFiles = GetFiles($"{outputDir}*.*") +
+		GetFiles($"{benchmarkDir}results/*.*") +
+		GetFiles($"{codeCoverageDir}*.*");
+
+	foreach (var file in allFiles)
 	{
 		AppVeyor.UploadArtifact(file.FullPath);
 	}
