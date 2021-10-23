@@ -132,5 +132,11 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonProperty(PropertyName = "contact_email")]
 		public string ContactEmail { get; set; }
+
+		/// <summary>
+		/// Gets or sets the value indicating whether to ask the permission to unmute partecipants.
+		/// </summary>
+		[JsonProperty(PropertyName = "request_permission_to_unmute_participants")]
+		public bool? RequestPermissionToUnmutePartecipants { get; set; }
 	}
 }
