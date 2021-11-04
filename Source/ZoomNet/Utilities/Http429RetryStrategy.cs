@@ -77,7 +77,7 @@ namespace ZoomNet.Utilities
 			if (response == null) return false;
 			if (response.StatusCode != TOO_MANY_REQUESTS) return false;
 
-			var rateLimitInfo = GetRateLimitInformation(response.Headers);
+			var rateLimitInfo = GetRateLimitInformation(response?.Headers);
 
 			// There's no need to retry when the reset time is too far in the future.
 			// I arbitrarily decided that 15 seconds is the cutoff.
@@ -109,7 +109,7 @@ namespace ZoomNet.Utilities
 			{
 				waitTime = CalculateDelay(rateLimitInfo.RetryAfter, DEFAULT_DELAY);
 			}
-			else if (rateLimitInfo.Type.Equals("QPS", StringComparison.OrdinalIgnoreCase))
+			else if ((rateLimitInfo.Type ?? string.Empty).Equals("QPS", StringComparison.OrdinalIgnoreCase))
 			{
 				// QPS stands for "Query Per Second".
 				// It means that we have exceeded the number of API calls per second.
