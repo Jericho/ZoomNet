@@ -51,6 +51,31 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
+		/// List all the participants who attended a webinar hosted in the past.
+		/// </summary>
+		/// <param name="webinarId">The webinar identifier.</param>
+		/// <param name="recordsPerPage">The number of records to return.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Participant" />.
+		/// </returns>
+		public Task<PaginatedResponseWithToken<Participant>> GetParticipantsAsync(long webinarId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			if (recordsPerPage < 1 || recordsPerPage > 300)
+			{
+				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 300");
+			}
+
+			return _client
+				.GetAsync($"past_webinars/{webinarId}/participants")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<Participant>("participants");
+		}
+
+		/// <summary>
 		/// Get a list of ended webinar instance.
 		/// </summary>
 		/// <param name="webinarId">The webinar identifier.</param>

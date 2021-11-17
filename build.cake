@@ -1,8 +1,8 @@
 // Install tools.
-#tool dotnet:?package=GitVersion.Tool&version=5.6.6
+#tool dotnet:?package=GitVersion.Tool&version=5.8.1
 #tool nuget:?package=GitReleaseManager&version=0.12.1
 #tool nuget:?package=OpenCover&version=4.7.1221
-#tool nuget:?package=ReportGenerator&version=4.8.12
+#tool nuget:?package=ReportGenerator&version=5.0.0
 #tool nuget:?package=coveralls.io&version=1.4.2
 #tool nuget:?package=xunit.runner.console&version=2.4.1
 
@@ -210,11 +210,13 @@ Task("Build")
 		Configuration = configuration,
 		Framework =  desiredFramework,
 		NoRestore = true,
-		ArgumentCustomization = args =>
+		MSBuildSettings = new DotNetCoreMSBuildSettings
 		{
-			return args
-				.Append("/p:SemVer={0}", versionInfo.LegacySemVerPadded)
-				.Append("/p:ContinuousIntegrationBuild={0}", BuildSystem.IsLocalBuild ? "false" : "true");
+			Version = versionInfo.LegacySemVerPadded,
+			AssemblyVersion = versionInfo.MajorMinorPatch,
+			FileVersion = versionInfo.MajorMinorPatch,
+			InformationalVersion = versionInfo.InformationalVersion,
+			ContinuousIntegrationBuild = !BuildSystem.IsLocalBuild
 		}
 	});
 });
@@ -301,14 +303,10 @@ Task("Create-NuGet-Package")
 		NoDependencies = true,
 		OutputDirectory = outputDir,
 		SymbolPackageFormat = "snupkg",
-		ArgumentCustomization = (args) =>
+		MSBuildSettings = new DotNetCoreMSBuildSettings
 		{
-			return args
-				.Append("/p:PackageReleaseNotes=\"{0}\"", releaseNotesUrl)
-				.Append("/p:Version={0}", versionInfo.LegacySemVerPadded)
-				.Append("/p:AssemblyVersion={0}", versionInfo.MajorMinorPatch)
-				.Append("/p:FileVersion={0}", versionInfo.MajorMinorPatch)
-				.Append("/p:AssemblyInformationalVersion={0}", versionInfo.InformationalVersion);
+			PackageReleaseNotes = releaseNotesUrl,
+			PackageVersion = versionInfo.LegacySemVerPadded
 		}
 	};
 

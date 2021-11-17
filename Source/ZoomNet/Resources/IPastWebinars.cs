@@ -25,6 +25,18 @@ namespace ZoomNet.Resources
 		Task<PaginatedResponseWithToken<Registrant>> GetAbsenteesAsync(string uuid, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// List all the participants who attended a webinar hosted in the past.
+		/// </summary>
+		/// <param name="webinarId">The webinar identifier.</param>
+		/// <param name="recordsPerPage">The number of records to return.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Participant" />.
+		/// </returns>
+		Task<PaginatedResponseWithToken<Participant>> GetParticipantsAsync(long webinarId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Get a list of ended webinar instance.
 		/// </summary>
 		/// <param name="webinarId">The webinar identifier.</param>
