@@ -33,7 +33,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The quality of service for audio output.
 		/// </value>
-		[JsonProperty(PropertyName = "audio_input")]
+		[JsonProperty(PropertyName = "audio_output")]
 		public PacketQualityOfServiceMetrics AudioOutput { get; set; }
 
 		/// <summary>
@@ -114,7 +114,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Metrics on video received by a participant who joined the meeting via a Cloud Room Connector.
 		/// </value>
-		[JsonProperty(PropertyName = "audio_device_to_crc")]
+		[JsonProperty(PropertyName = "video_device_to_crc")]
 		public PacketQualityOfServiceMetrics VideoDeviceToCrc { get; set; }
 
 		/// <summary>
