@@ -22,7 +22,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Role">users</see>.
 		/// </returns>
-		Task<PaginatedResponse<Role>> GetAllAsync(int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<Role>> GetAllAsync(int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Creates a role.
@@ -46,7 +46,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="User">users</see>.
 		/// </returns>
-		Task<PaginatedResponse<User>> GetMembersAsync(string roleId, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<User>> GetMembersAsync(string roleId, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Assign users to a role.
