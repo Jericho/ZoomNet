@@ -17,12 +17,12 @@ namespace ZoomNet.Resources
 		/// Retrieve all roles on your account.
 		/// </summary>
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="page">The current page number of returned records.</param>
+		/// <param name="pagingToken">The paging token.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// An array of <see cref="Role">users</see>.
 		/// </returns>
-		Task<PaginatedResponse<Role>> GetAllAsync(int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<Role>> GetAllAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Creates a role.
@@ -41,12 +41,12 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="roleId">The role Id.</param>
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="page">The current page number of returned records.</param>
+		/// <param name="pagingToken">The paging token.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="User">users</see>.
+		/// An array of <see cref="Role">users</see>.
 		/// </returns>
-		Task<PaginatedResponse<User>> GetMembersAsync(string roleId, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<User>> GetMembersAsync(string roleId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Assign users to a role.
