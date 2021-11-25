@@ -34,12 +34,12 @@ namespace ZoomNet.Resources
 		/// Retrieve all roles on your account.
 		/// </summary>
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="page">The current page number of returned records.</param>
+		/// <param name="pagingToken">The paging token.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// An array of <see cref="Role">users</see>.
 		/// </returns>
-		public Task<PaginatedResponse<Role>> GetAllAsync(int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<Role>> GetAllAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -49,9 +49,9 @@ namespace ZoomNet.Resources
 			return _client
 				.GetAsync($"roles")
 				.WithArgument("page_size", recordsPerPage)
-				.WithArgument("page", page)
+				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponse<Role>("roles");
+				.AsPaginatedResponseWithToken<Role>("roles");
 		}
 
 		/// <summary>
@@ -100,12 +100,12 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="roleId">The role Id.</param>
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="page">The current page number of returned records.</param>
+		/// <param name="pagingToken">The paging token.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// An array of <see cref="Role">users</see>.
 		/// </returns>
-		public Task<PaginatedResponse<User>> GetMembersAsync(string roleId, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<User>> GetMembersAsync(string roleId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -115,9 +115,9 @@ namespace ZoomNet.Resources
 			return _client
 				.GetAsync($"roles/{roleId}/members")
 				.WithArgument("page_size", recordsPerPage)
-				.WithArgument("page", page)
+				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponse<User>("members");
+				.AsPaginatedResponseWithToken<User>("members");
 		}
 
 		/// <summary>
