@@ -15,7 +15,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync("\n***** ROLES *****\n").ConfigureAwait(false);
 
 			// GET ALL THE ROLES
-			var paginatedRoles = await client.Roles.GetAllAsync(30, null, cancellationToken).ConfigureAwait(false);
+			var paginatedRoles = await client.Roles.GetAllAsync(300, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {paginatedRoles.Records.Length} roles").ConfigureAwait(false);
 
 			// CLEANUP PREVIOUS INTEGRATION TESTS THAT MIGHT HAVE BEEN INTERRUPTED BEFORE THEY HAD TIME TO CLEANUP AFTER THEMSELVES

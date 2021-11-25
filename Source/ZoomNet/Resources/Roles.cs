@@ -39,7 +39,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Role">users</see>.
 		/// </returns>
-		public Task<PaginatedResponseWithToken<Role>> GetAllAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<Role>> GetAllAsync(int recordsPerPage = 300, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -105,7 +105,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Role">users</see>.
 		/// </returns>
-		public Task<PaginatedResponseWithToken<User>> GetMembersAsync(string roleId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<User>> GetMembersAsync(string roleId, int recordsPerPage = 300, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
