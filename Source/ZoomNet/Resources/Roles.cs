@@ -67,7 +67,6 @@ namespace ZoomNet.Resources
 		public async Task<Role> CreateAsync(string name, string description = null, IEnumerable<string> privileges = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
-
 			data.AddPropertyIfValue("name", name);
 			data.AddPropertyIfValue("description", description);
 			data.AddPropertyIfValue("privileges", privileges);
