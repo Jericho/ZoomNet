@@ -698,8 +698,7 @@ namespace ZoomNet
 		internal static void Replace<T>(this ICollection<T> collection, T oldValue, T newValue)
 		{
 			// In case the collection is ordered, we'll be able to preserve the order
-			var collectionAsList = collection as IList<T>;
-			if (collectionAsList != null)
+			if (collection is IList<T> collectionAsList)
 			{
 				var oldIndex = collectionAsList.IndexOf(oldValue);
 				collectionAsList.RemoveAt(oldIndex);
@@ -711,7 +710,6 @@ namespace ZoomNet
 				collection.Remove(oldValue);
 				collection.Add(newValue);
 			}
-
 		}
 
 		/// <summary>Asynchronously converts the JSON encoded content and convert it to an object of the desired type.</summary>
