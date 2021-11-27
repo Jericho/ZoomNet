@@ -351,6 +351,17 @@ namespace ZoomNet
 			return await response.AsPaginatedResponseWithTokenAndDateRange<T>(propertyName, jsonConverter).ConfigureAwait(false);
 		}
 
+		internal static IRequest WithHttp200TreatedAsFailure(this IRequest request, string customExceptionMessage = null)
+		{
+			var currentErrorHandler = request.Filters.OfType<ZoomErrorHandler>().SingleOrDefault();
+			var newErrorHandler = new ZoomErrorHandler(true, customExceptionMessage);
+
+			// Replace the current error handler which treats HTTP200 as success with a handler that treats HTTP200 as failure
+			request.Filters.Replace(currentErrorHandler, newErrorHandler);
+
+			return request;
+		}
+
 		/// <summary>Set the body content of the HTTP request.</summary>
 		/// <typeparam name="T">The type of object to serialize into a JSON string.</typeparam>
 		/// <param name="request">The request.</param>
@@ -636,23 +647,14 @@ namespace ZoomNet
 			return querystringParameters;
 		}
 
-		internal static void CheckForZoomErrors(this IResponse response)
+		internal static (WeakReference<HttpRequestMessage> RequestReference, string Diagnostic, long RequestTimeStamp, long ResponseTimestamp) GetDiagnosticInfo(this IResponse response)
 		{
-			var (isError, errorMessage, errorCode) = GetErrorMessage(response.Message).GetAwaiter().GetResult();
-			if (!isError) return;
-
 			var diagnosticId = response.Message.RequestMessage.Headers.GetValue(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME);
-			if (DiagnosticHandler.DiagnosticsInfo.TryGetValue(diagnosticId, out (WeakReference<HttpRequestMessage> RequestReference, string Diagnostic, long RequestTimeStamp, long ResponseTimestamp) diagnosticInfo))
-			{
-				throw new ZoomException(errorMessage, response.Message, diagnosticInfo.Diagnostic, errorCode);
-			}
-			else
-			{
-				throw new ZoomException(errorMessage, response.Message, "Diagnostic log unavailable", errorCode);
-			}
+			DiagnosticHandler.DiagnosticsInfo.TryGetValue(diagnosticId, out (WeakReference<HttpRequestMessage> RequestReference, string Diagnostic, long RequestTimeStamp, long ResponseTimestamp) diagnosticInfo);
+			return diagnosticInfo;
 		}
 
-		private static async Task<(bool, string, int?)> GetErrorMessage(HttpResponseMessage message)
+		internal static async Task<(bool, string, int?)> GetErrorMessage(this HttpResponseMessage message)
 		{
 			// Assume there is no error
 			var isError = false;
@@ -691,6 +693,25 @@ namespace ZoomNet
 			}
 
 			return (isError, errorMessage, errorCode);
+		}
+
+		internal static void Replace<T>(this ICollection<T> collection, T oldValue, T newValue)
+		{
+			// In case the collection is ordered, we'll be able to preserve the order
+			var collectionAsList = collection as IList<T>;
+			if (collectionAsList != null)
+			{
+				var oldIndex = collectionAsList.IndexOf(oldValue);
+				collectionAsList.RemoveAt(oldIndex);
+				collectionAsList.Insert(oldIndex, newValue);
+			}
+			else
+			{
+				// No luck, so just remove then add
+				collection.Remove(oldValue);
+				collection.Add(newValue);
+			}
+
 		}
 
 		/// <summary>Asynchronously converts the JSON encoded content and convert it to an object of the desired type.</summary>

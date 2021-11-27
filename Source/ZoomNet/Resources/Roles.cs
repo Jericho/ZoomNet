@@ -74,15 +74,10 @@ namespace ZoomNet.Resources
 			var result = await _client
 				.PostAsync($"roles")
 				.WithJsonBody(data)
+				.WithHttp200TreatedAsFailure("You do not have the permission to create a role.")
 				.WithCancellationToken(cancellationToken)
 				.AsMessage()
 				.ConfigureAwait(false);
-
-			if (result.StatusCode == System.Net.HttpStatusCode.OK)
-			{
-				// Zoom returns an HTTP 200 message when the user doesn't have permission to create a role
-				throw new UnauthorizedAccessException("You do not have the permission to create a role.");
-			}
 
 			if (result.IsSuccessStatusCode)
 			{
@@ -195,7 +190,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public async Task UpdateRole(string id, string name = null, string description = null, IEnumerable<string> privileges = null, CancellationToken cancellationToken = default)
+		public Task UpdateRole(string id, string name = null, string description = null, IEnumerable<string> privileges = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
 			data.AddPropertyIfValue("id", id);
@@ -203,18 +198,12 @@ namespace ZoomNet.Resources
 			data.AddPropertyIfValue("description", description);
 			data.AddPropertyIfValue("privileges", privileges);
 
-			var result = await _client
+			return _client
 				.PatchAsync($"roles/{id}")
 				.WithJsonBody(data)
+				.WithHttp200TreatedAsFailure("The account must be a paid account to update the role.")
 				.WithCancellationToken(cancellationToken)
-				.AsMessage()
-				.ConfigureAwait(false);
-
-			if (result.StatusCode == System.Net.HttpStatusCode.OK)
-			{
-				// Zoom returns an HTTP 200 message to signify that the account doesn't support updating roles.
-				throw new NotSupportedException("The account must be a paid account to update the role.");
-			}
+				.AsMessage();
 		}
 
 		/// <summary>
