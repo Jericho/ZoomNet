@@ -71,6 +71,9 @@ namespace ZoomNet.IntegrationTests.Tests
 			var scheduledMeeting = (ScheduledMeeting)await client.Meetings.GetAsync(newScheduledMeeting.Id, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Scheduled meeting {scheduledMeeting.Id} retrieved").ConfigureAwait(false);
 
+			var registrant = await client.Meetings.AddRegistrantAsync(scheduledMeeting.Id, "test@example.com", "John", "Doe", "123 Main street", "New York City", "FicticiousCountry", "12345", "Florida", "5551234567", "Software", "MyOrg", "CEO", "Right now", "influencer", "Less than 10", "I don't have any questions at this time", null, "English", true, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Added a registrant to meeting {scheduledMeeting.Id}").ConfigureAwait(false);
+
 			await client.Meetings.DeleteAsync(newScheduledMeeting.Id, null, false, false, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Scheduled meeting {newScheduledMeeting.Id} deleted").ConfigureAwait(false);
 

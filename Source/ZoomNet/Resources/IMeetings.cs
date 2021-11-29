@@ -225,14 +225,30 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="email">A valid email address.</param>
-		/// <param name="firstName">User's first name.</param>
-		/// <param name="lastName">User's last name.</param>
+		/// <param name="firstName">Registrant's first name.</param>
+		/// <param name="lastName">Registrant's last name.</param>
+		/// <param name="address">Registrant's address.</param>
+		/// <param name="city">Registrant's city.</param>
+		/// <param name="country">Registrant's country.</param>
+		/// <param name="postalCode">Registrant's zip or postal code.</param>
+		/// <param name="stateOrProvince">Registrant's state or province.</param>
+		/// <param name="phoneNumber">Registrant's phone number.</param>
+		/// <param name="industry">Registrant's industry.</param>
+		/// <param name="organization">Registrant's organization.</param>
+		/// <param name="jobTitle">Registrant's job title.</param>
+		/// <param name="timeFrame">This field can be used to gauge interest of attendees towards buying your product or service.</param>
+		/// <param name="role">Registrant's role in purchase decision.</param>
+		/// <param name="employees">Number of employees.</param>
+		/// <param name="comments">A field that allows registrant to provide any questions or comments that they might have.</param>
+		/// <param name="questionAnswers">Custom questions.</param>
+		/// <param name="language">Registrant's language preference for confirmation emails.</param>
+		/// <param name="autoApprove">Indicates if the registrant should be automatically approved.</param>
 		/// <param name="occurrenceId">The meeting occurrence id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// A <see cref="Registrant" />.
 		/// </returns>
-		Task<Registrant> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string occurrenceId = null, CancellationToken cancellationToken = default);
+		Task<Registrant> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string address, string city, string country, string postalCode, string stateOrProvince, string phoneNumber, string industry, string organization, string jobTitle, string timeFrame, string role, string employees, string comments, IEnumerable<PollAnswer> questionAnswers, string language, bool autoApprove, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Approve a registration for a meeting.
