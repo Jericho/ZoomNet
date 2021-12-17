@@ -47,76 +47,57 @@ namespace ZoomNet.Resources
 		Task<PaginatedResponseWithTokenAndDateRange<Recording>> GetRecordingsForUserAsync(string userId, bool queryTrash = false, DateTime? from = null, DateTime? to = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Retrieve all cloud recordings for a meeting or webinar.
+		/// Retrieve the recording information (which includes recording files and audio files) for a meeting or webinar.
 		/// </summary>
 		/// <param name="meetingId">The meeting Id or UUID.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>Details of recordings made for a particular meeding or webinar.</returns>
-		Task<Recording> GetRecordingsAsync(string meetingId, CancellationToken cancellationToken = default);
+		/// <returns>Details of recording made for a particular meeding or webinar.</returns>
+		Task<Recording> GetRecordingInformationAsync(string meetingId, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Move recording files for a meeting to trash.
+		/// Delete recording files for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting Id or UUID.</param>
+		/// <param name="deletePermanently">When true, files are deleted permanently; when false, files are moved to the trash.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task DeleteRecordingFilesAsync(string meetingId, bool deletePermanently = false, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a specific recording file for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting Id or UUID.</param>
+		/// <param name="recordingFileId">The recording file id.</param>
+		/// <param name="deletePermanently">When true, files are deleted permanently; when false, files are moved to the trash.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task DeleteRecordingFileAsync(string meetingId, string recordingFileId, bool deletePermanently = false, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Recover all deleted recording files of a meeting from trash.
 		/// </summary>
 		/// <param name="meetingId">The meeting Id or UUID.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task MoveRecordingsToTrashAsync(string meetingId, CancellationToken cancellationToken = default);
-
-		/// <summary>
-		/// Permanently delete recording files for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting Id or UUID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
-		Task DeleteRecordingsAsync(string meetingId, CancellationToken cancellationToken = default);
-
-		/// <summary>
-		/// Move a specific recording file for a meeting to trash.
-		/// </summary>
-		/// <param name="meetingId">The meeting Id or UUID.</param>
-		/// <param name="recordingId">The recording id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
-		Task MoveRecordingToTrashAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default);
-
-		/// <summary>
-		/// Permanently delete a specific recording file for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting Id or UUID.</param>
-		/// <param name="recordingId">The recording id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
-		Task DeleteRecordingAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default);
-
-		/// <summary>
-		/// Recover all deleted recordings of a meeting from trash.
-		/// </summary>
-		/// <param name="meetingId">The meeting Id or UUID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
-		/// <remarks>Zoom allows recordings to be recovered from trash for up to 30 days from deletion date.</remarks>
-		Task RecoverRecordingsAsync(string meetingId, CancellationToken cancellationToken = default);
+		/// <remarks>Zoom allows recording files to be recovered from trash for up to 30 days from deletion date.</remarks>
+		Task RecoverRecordingFilesAsync(string meetingId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Recover a specific recording file of a meeting.
 		/// </summary>
 		/// <param name="meetingId">The meeting Id or UUID.</param>
-		/// <param name="recordingId">The recording id.</param>
+		/// <param name="recordingFileId">The recording file id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task RecoverRecordingAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default);
+		Task RecoverRecordingFileAsync(string meetingId, string recordingFileId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve settings applied to a meeting's cloud recording.
