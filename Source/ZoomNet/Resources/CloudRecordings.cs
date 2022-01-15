@@ -95,12 +95,12 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
-		/// Retrieve all cloud recordings for a meeting or webinar.
+		/// Retrieve the recording information (which includes recording files and audio files) for a meeting or webinar.
 		/// </summary>
 		/// <param name="meetingId">The meeting Id or UUID.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>Details of recordings made for a particular meeding or webinar.</returns>
-		public Task<Recording> GetRecordingsAsync(string meetingId, CancellationToken cancellationToken = default)
+		public Task<Recording> GetRecordingInformationAsync(string meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"meetings/{meetingId}/recordings")
@@ -109,85 +109,52 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
-		/// Move recordings for a meeting to trash.
+		/// Delete recording files for a meeting.
 		/// </summary>
 		/// <param name="meetingId">The meeting Id or UUID.</param>
+		/// <param name="deletePermanently">When true, files are deleted permanently; when false, files are moved to the trash.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task MoveRecordingsToTrashAsync(string meetingId, CancellationToken cancellationToken = default)
+		public Task DeleteRecordingFilesAsync(string meetingId, bool deletePermanently = false, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.DeleteAsync($"meetings/{meetingId}/recordings")
-				.WithArgument("action", "trash")
+				.WithArgument("action", deletePermanently ? "delete" : "trash")
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
 
 		/// <summary>
-		/// Permanently delete recordings for a meeting.
+		/// Delete a specific recording file for a meeting.
 		/// </summary>
 		/// <param name="meetingId">The meeting Id or UUID.</param>
+		/// <param name="recordingFileId">The recording file id.</param>
+		/// <param name="deletePermanently">When true, files are deleted permanently; when false, files are moved to the trash.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task DeleteRecordingsAsync(string meetingId, CancellationToken cancellationToken = default)
+		public Task DeleteRecordingFileAsync(string meetingId, string recordingFileId, bool deletePermanently = false, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.DeleteAsync($"meetings/{meetingId}/recordings")
-				.WithArgument("action", "delete")
+				.DeleteAsync($"meetings/{meetingId}/recordings/{recordingFileId}")
+				.WithArgument("action", deletePermanently ? "delete" : "trash")
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
 
 		/// <summary>
-		/// Move a specific recording file for a meeting to trash.
-		/// </summary>
-		/// <param name="meetingId">The meeting Id or UUID.</param>
-		/// <param name="recordingId">The recording id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
-		public Task MoveRecordingToTrashAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default)
-		{
-			return _client
-				.DeleteAsync($"meetings/{meetingId}/recordings/{recordingId}")
-				.WithArgument("action", "trash")
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <summary>
-		/// Permanently delete a specific recording file for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting Id or UUID.</param>
-		/// <param name="recordingId">The recording id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
-		public Task DeleteRecordingAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default)
-		{
-			return _client
-				.DeleteAsync($"meetings/{meetingId}/recordings/{recordingId}")
-				.WithArgument("action", "delete")
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <summary>
-		/// Recover all deleted recordings of a specific meeting from trash.
+		/// Recover all deleted recording files of a meeting from trash.
 		/// </summary>
 		/// <param name="meetingId">The meeting Id or UUID.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		/// <remarks>Zoom allows recordings to be recovered from trash for up to 30 days from deletion date.</remarks>
-		public Task RecoverRecordingsAsync(string meetingId, CancellationToken cancellationToken = default)
+		/// <remarks>Zoom allows recording files to be recovered from trash for up to 30 days from deletion date.</remarks>
+		public Task RecoverRecordingFilesAsync(string meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.PutAsync($"meetings/{meetingId}/recordings/status")
@@ -200,16 +167,15 @@ namespace ZoomNet.Resources
 		/// Recover a specific recording file of a meeting.
 		/// </summary>
 		/// <param name="meetingId">The meeting Id or UUID.</param>
-		/// <param name="recordingId">The recording id.</param>
+		/// <param name="recordingFileId">The recording file id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		/// <remarks>Zoom allows recordings to be recovered from trash for up to 30 days from deletion date.</remarks>
-		public Task RecoverRecordingAsync(string meetingId, string recordingId, CancellationToken cancellationToken = default)
+		public Task RecoverRecordingFileAsync(string meetingId, string recordingFileId, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.PutAsync($"meetings/{meetingId}/recordings/{recordingId}/status")
+				.PutAsync($"meetings/{meetingId}/recordings/{recordingFileId}/status")
 				.WithArgument("action", "recover")
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
