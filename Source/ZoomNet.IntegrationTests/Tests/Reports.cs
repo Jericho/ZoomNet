@@ -22,7 +22,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				.ConfigureAwait(false);
 
 			var scheduledMeetings = totalMeetings.Records.OfType<ScheduledMeeting>()
-				.Where(x => x.StartTime.AddMinutes(x.Duration) < new DateTime(2022, 01, 14)); //DateTime.UtcNow.AddDays(-1));
+				.Where(x => x.StartTime.AddMinutes(x.Duration) < DateTime.UtcNow.AddDays(-1));
 
 			int totalParticipants = 0;
 
