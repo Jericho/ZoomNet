@@ -42,7 +42,6 @@ namespace ZoomNet.IntegrationTests.Tests
 			}
 			
 			await log.WriteLineAsync($"There are {totalMeetings.TotalRecords} meetings with a total of {totalParticipants} participants for meeting this user.").ConfigureAwait(false);
-
 		}
 	}
 }

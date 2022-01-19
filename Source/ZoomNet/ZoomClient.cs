@@ -154,7 +154,6 @@ namespace ZoomNet
 		/// </summary>
 		public IReports Reports { get; private set; }
 
-
 		#endregion
 
 		#region CTOR
