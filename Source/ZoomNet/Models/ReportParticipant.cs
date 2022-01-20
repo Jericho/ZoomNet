@@ -6,19 +6,8 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// Metrics of a participant.
 	/// </summary>
-	public class ReportParticipant
+	public class ReportParticipant : Participant
 	{
-		/// <summary>
-		/// Gets or sets the Universally unique identifier of the participant.
-		/// </summary>
-		/// <value>
-		/// The Universally unique identifier of the participant.<br/>
-		/// It is the same as the User ID of the participant if the participant joins the meeting by logging into Zoom<br/>
-		/// If the participant joins the meeting without logging in the value of this field will be blank.
-		/// </value>
-		[JsonProperty(PropertyName = "id")]
-		public string Id { get; set; }
-
 		/// <summary>
 		/// Gets or sets the participant ID.
 		/// </summary>
@@ -27,24 +16,6 @@ namespace ZoomNet.Models
 		/// </value>
 		[JsonProperty(PropertyName = "user_id")]
 		public string UserId { get; set; }
-
-		/// <summary>
-		/// Gets or sets the participant display name.
-		/// </summary>
-		/// <value>
-		/// The participant display name.
-		/// </value>
-		[JsonProperty(PropertyName = "name")]
-		public string UserName { get; set; }
-
-		/// <summary>
-		/// Gets or sets the Email address of the participant.
-		/// </summary>
-		/// <value>
-		/// The Email address of the participant.
-		/// </value>
-		[JsonProperty(PropertyName = "user_email")]
-		public string Email { get; set; }
 
 		/// <summary>
 		/// Gets or sets the time at which participant joined the meeting.
@@ -72,15 +43,6 @@ namespace ZoomNet.Models
 		/// </value>
 		[JsonProperty(PropertyName = "duration", NullValueHandling = NullValueHandling.Ignore)]
 		public int? Duration { get; set; }
-
-		/// <summary>
-		/// Gets or sets the RegistrantID of the participant.
-		/// </summary>
-		/// <value>
-		/// The RegistrantID of the participant.  Only returned if registrant_id is included in the include_fields query parameter.
-		/// </value>
-		[JsonProperty(PropertyName = "registrant_id")]
-		public string RegistrantID { get; set; }
 
 		/// <summary>
 		/// Gets or sets the CustomerKey of the participant.

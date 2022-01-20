@@ -17,7 +17,6 @@ namespace ZoomNet.Resources
 		/// Get a list of participants from past meetings with two or more participants. To see a list of participants for meetings with one participant use Dashboards.GetMeetingParticipantsAsync.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID or meeting UUID. If given the meeting ID it will take the last meeting instance.</param>
-		/// <param name="includeFields">Participant fields to include. Allowed value: registrant_id.</param>
 		/// <param name="pageSize">The number of records returned within a single API call.</param>
 		/// <param name="pageToken">
 		/// The next page token is used to paginate through large result sets.
@@ -26,8 +25,8 @@ namespace ZoomNet.Resources
 		/// </param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="ReportParticipant">participants</see>.
+		/// An array of <see cref="ReportMeetingParticipant">participants</see>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<ReportParticipant>> GetMeetingParticipantsAsync(string meetingId, string includeFields, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<ReportMeetingParticipant>> GetMeetingParticipantsAsync(string meetingId, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
 	}
 }
