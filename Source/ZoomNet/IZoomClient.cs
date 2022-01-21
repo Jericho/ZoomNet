@@ -100,5 +100,10 @@ namespace ZoomNet
 		/// Gets the resource which allows you to view metrics.
 		/// </summary>
 		IDashboards Dashboards { get; }
+
+		/// <summary>
+		/// Gets the resource which allows you to view reports.
+		/// </summary>
+		IReports Reports { get; }
 	}
 }
