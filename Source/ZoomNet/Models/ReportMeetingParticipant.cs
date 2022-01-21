@@ -15,6 +15,6 @@ namespace ZoomNet.Models
 		/// The RegistrantID of the participant.  Only returned if registrant_id is included in the include_fields query parameter.
 		/// </value>
 		[JsonProperty(PropertyName = "registrant_id")]
-		public string RegistrantID { get; set; }
+		public string RegistrantId { get; set; }
 	}
 }
