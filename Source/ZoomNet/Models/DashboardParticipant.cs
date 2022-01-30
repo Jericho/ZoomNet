@@ -44,7 +44,7 @@ namespace ZoomNet.Models
 		/// The type of device using which the participant joined the meeting.
 		/// </value>
 		[JsonProperty(PropertyName = "device")]
-		public string Device { get; set; }
+		public ParticipantDevice Device { get; set; }
 
 		/// <summary>
 		/// Gets or sets the participant’s IP address.
@@ -71,7 +71,7 @@ namespace ZoomNet.Models
 		/// The participant’s network type.
 		/// </value>
 		[JsonProperty(PropertyName = "network_type")]
-		public string NetworkType { get; set; }
+		public ParticipantNetwork NetworkType { get; set; }
 
 		/// <summary>
 		/// Gets or sets the type of microphone that participant used during the meeting.
@@ -251,7 +251,7 @@ namespace ZoomNet.Models
 		/// score and network alerts on Dashboard option is selected in Account Settings.
 		/// </remarks>
 		[JsonProperty(PropertyName = "audio_quality")]
-		public string AudioQuality { get; set; }
+		public QualityType AudioQuality { get; set; }
 
 		/// <summary>
 		/// Gets or sets the participant's video quality.
@@ -262,7 +262,7 @@ namespace ZoomNet.Models
 		/// score and network alerts on Dashboard option is selected in Account Settings.
 		/// </remarks>
 		[JsonProperty(PropertyName = "video_quality")]
-		public string VideoQuality { get; set; }
+		public QualityType VideoQuality { get; set; }
 
 		/// <summary>
 		/// Gets or sets the participant's screen share quality.
@@ -273,7 +273,7 @@ namespace ZoomNet.Models
 		/// score and network alerts on Dashboard option is selected in Account Settings.
 		/// </remarks>
 		[JsonProperty(PropertyName = "screen_share_quality")]
-		public string ScreenShareQuality { get; set; }
+		public QualityType ScreenShareQuality { get; set; }
 
 		/// <summary>
 		/// Gets or sets a participant identifier.

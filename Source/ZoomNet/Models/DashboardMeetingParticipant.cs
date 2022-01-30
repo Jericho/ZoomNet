@@ -39,6 +39,6 @@ namespace ZoomNet.Models
 		/// Gets or sets the participant's status.
 		/// </summary>
 		[JsonProperty(PropertyName = "status")]
-		public string Status { get; set; }
+		public ParticipantStatus Status { get; set; }
 	}
 }
