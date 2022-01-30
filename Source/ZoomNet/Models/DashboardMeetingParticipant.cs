@@ -25,9 +25,19 @@ namespace ZoomNet.Models
 		[JsonProperty(PropertyName = "in_room_participants")]
 		public int InRoomParticipants { get; set; }
 
+		/// <summary>
+		/// Gets or sets the participant's universally unique ID (UUID).
+		/// </summary>
+		/// <remarks>
+		/// If the participant joins the meeting by logging into Zoom, this value is the id value in the Get a user API response.
+		/// If the participant joins the meeting without logging into Zoom, this returns an empty string value.
+		/// </remarks>
 		[JsonProperty(PropertyName = "participant_user_id")]
 		public string ParticipantUserId { get; set; }
 
+		/// <summary>
+		/// Gets or sets the participant's status.
+		/// </summary>
 		[JsonProperty(PropertyName = "status")]
 		public string Status { get; set; }
 	}

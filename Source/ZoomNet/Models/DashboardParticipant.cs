@@ -100,6 +100,10 @@ namespace ZoomNet.Models
 		[JsonProperty(PropertyName = "data_center")]
 		public string DataCenter { get; set; }
 
+		/// <summary>
+		/// Gets or sets the data center where participant's meeting data is stored.
+		/// This field includes a semicolon-separated list of HTTP Tunnel (HT), Cloud Room Connector (CRC), and Real-Time Web Gateway (RWG) location information.
+		/// </summary>
 		[JsonProperty(PropertyName = "full_data_center")]
 		public string DataCenterFullName { get; set; }
 
@@ -229,27 +233,78 @@ namespace ZoomNet.Models
 		[JsonProperty(PropertyName = "email")]
 		public string Email { get; set; }
 
+		/// <summary>
+		/// Gets or sets the participant's unique registrant ID.
+		/// </summary>
+		/// <remarks>
+		/// This field does not return if the type query parameter is the live value.
+		/// </remarks>
 		[JsonProperty(PropertyName = "registrant_id")]
 		public string RegistrantId { get; set; }
 
+		/// <summary>
+		/// Gets or sets the participant's audio quality.
+		/// </summary>
+		/// <remarks>
+		/// The API only returns this value when the Meeting quality scores and network alerts
+		/// on Dashboard setting is enabled in the Zoom Web Portal and the Show meeting quality
+		/// score and network alerts on Dashboard option is selected in Account Settings.
+		/// </remarks>
 		[JsonProperty(PropertyName = "audio_quality")]
 		public string AudioQuality { get; set; }
 
+		/// <summary>
+		/// Gets or sets the participant's video quality.
+		/// </summary>
+		/// <remarks>
+		/// The API only returns this value when the Meeting quality scores and network alerts
+		/// on Dashboard setting is enabled in the Zoom Web Portal and the Show meeting quality
+		/// score and network alerts on Dashboard option is selected in Account Settings.
+		/// </remarks>
 		[JsonProperty(PropertyName = "video_quality")]
 		public string VideoQuality { get; set; }
 
+		/// <summary>
+		/// Gets or sets the participant's screen share quality.
+		/// </summary>
+		/// <remarks>
+		/// The API only returns this value when the Meeting quality scores and network alerts
+		/// on Dashboard setting is enabled in the Zoom Web Portal and the Show meeting quality
+		/// score and network alerts on Dashboard option is selected in Account Settings.
+		/// </remarks>
 		[JsonProperty(PropertyName = "screen_share_quality")]
 		public string ScreenShareQuality { get; set; }
 
+		/// <summary>
+		/// Gets or sets a participant identifier.
+		/// </summary>
+		/// <remarks>
+		/// This value can be numbers or characters, up to a maximum length of 15 characters.
+		/// </remarks>
 		[JsonProperty(PropertyName = "customer_key")]
 		public string CustomerKey { get; set; }
 
+		/// <summary>
+		/// Gets or sets the meeting participant's SIP (Session Initiation Protocol) Contact header URI.
+		/// </summary>
+		/// <remarks>
+		/// The API only returns this response when the participant joins a meeting via SIP.
+		/// </remarks>
 		[JsonProperty(PropertyName = "sip_uri")]
 		public string SipUri { get; set; }
 
+		/// <summary>
+		/// Gets or sets the meeting participant's SIP From header URI.
+		/// </summary>
+		/// <remarks>
+		/// The API only returns this response when the participant joins a meeting via SIP.
+		/// </remarks>
 		[JsonProperty(PropertyName = "from_sip_uri")]
 		public string FromSipUri { get; set; }
 
+		/// <summary>
+		/// Gets or sets the participant's role.
+		/// </summary>
 		[JsonProperty(PropertyName = "role")]
 		public string Role { get; set; }
 	}
