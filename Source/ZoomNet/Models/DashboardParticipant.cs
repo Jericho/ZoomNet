@@ -100,6 +100,9 @@ namespace ZoomNet.Models
 		[JsonProperty(PropertyName = "data_center")]
 		public string DataCenter { get; set; }
 
+		[JsonProperty(PropertyName = "full_data_center")]
+		public string DataCenterFullName { get; set; }
+
 		/// <summary>
 		/// Gets or sets the participant connection type.
 		/// </summary>
@@ -225,5 +228,29 @@ namespace ZoomNet.Models
 		/// </value>
 		[JsonProperty(PropertyName = "email")]
 		public string Email { get; set; }
+
+		[JsonProperty(PropertyName = "registrant_id")]
+		public string RegistrantId { get; set; }
+
+		[JsonProperty(PropertyName = "audio_quality")]
+		public string AudioQuality { get; set; }
+
+		[JsonProperty(PropertyName = "video_quality")]
+		public string VideoQuality { get; set; }
+
+		[JsonProperty(PropertyName = "screen_share_quality")]
+		public string ScreenShareQuality { get; set; }
+
+		[JsonProperty(PropertyName = "customer_key")]
+		public string CustomerKey { get; set; }
+
+		[JsonProperty(PropertyName = "sip_uri")]
+		public string SipUri { get; set; }
+
+		[JsonProperty(PropertyName = "from_sip_uri")]
+		public string FromSipUri { get; set; }
+
+		[JsonProperty(PropertyName = "role")]
+		public string Role { get; set; }
 	}
 }

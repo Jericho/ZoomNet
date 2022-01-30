@@ -24,5 +24,11 @@ namespace ZoomNet.Models
 		/// </value>
 		[JsonProperty(PropertyName = "in_room_participants")]
 		public int InRoomParticipants { get; set; }
+
+		[JsonProperty(PropertyName = "participant_user_id")]
+		public string ParticipantUserId { get; set; }
+
+		[JsonProperty(PropertyName = "status")]
+		public string Status { get; set; }
 	}
 }
