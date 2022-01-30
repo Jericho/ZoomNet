@@ -109,6 +109,7 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"metrics/meetings/{meetingId}/participants")
+				.WithArgument("include_fields", "registrant_id")
 				.WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", pageToken)
