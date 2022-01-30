@@ -13,7 +13,7 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// An unknown network.
 		/// </summary>
-		[EnumMember(Value = "")]
+		[EnumMember(Value = "Others")]
 		Other,
 
 		/// <summary>
