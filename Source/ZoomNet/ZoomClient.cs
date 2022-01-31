@@ -149,6 +149,11 @@ namespace ZoomNet
 		/// </summary>
 		public IDashboards Dashboards { get; private set; }
 
+		/// <summary>
+		/// Gets the resource which allows you to view reports.
+		/// </summary>
+		public IReports Reports { get; private set; }
+
 		#endregion
 
 		#region CTOR
@@ -245,6 +250,7 @@ namespace ZoomNet
 			Users = new Users(_fluentClient);
 			Webinars = new Webinars(_fluentClient);
 			Dashboards = new Dashboards(_fluentClient);
+			Reports = new Reports(_fluentClient);
 		}
 
 		/// <summary>
