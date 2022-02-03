@@ -44,7 +44,7 @@ namespace ZoomNet.Models
 		/// The type of device using which the participant joined the meeting.
 		/// </value>
 		[JsonProperty(PropertyName = "device")]
-		public ParticipantDevice Device { get; set; }
+		public ParticipantDevice[] Devices { get; set; }
 
 		/// <summary>
 		/// Gets or sets the participant’s IP address.
