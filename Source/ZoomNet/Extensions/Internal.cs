@@ -3,12 +3,14 @@ using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -710,6 +712,49 @@ namespace ZoomNet
 				collection.Remove(oldValue);
 				collection.Add(newValue);
 			}
+		}
+
+		/// <summary>Convert an enum to its string representation.</summary>
+		/// <typeparam name="T">The enum type.</typeparam>
+		/// <param name="enumValue">The value.</param>
+		/// <returns>The string representation of the enum value.</returns>
+		/// <remarks>Inspired by: https://stackoverflow.com/questions/10418651/using-enummemberattribute-and-doing-automatic-string-conversions .</remarks>
+		internal static string ToEnumString<T>(this T enumValue)
+			where T : Enum
+		{
+			var enumMemberAttribute = enumValue.GetAttributeOfType<EnumMemberAttribute>();
+			if (enumMemberAttribute != null) return enumMemberAttribute.Value;
+
+			var descriptionAttribute = enumValue.GetAttributeOfType<DescriptionAttribute>();
+			if (descriptionAttribute != null) return descriptionAttribute.Description;
+
+			return enumValue.ToString();
+		}
+
+		/// <summary>Parses a string into its corresponding enum value.</summary>
+		/// <typeparam name="T">The enum type.</typeparam>
+		/// <param name="str">The string value.</param>
+		/// <returns>The enum representation of the string value.</returns>
+		/// <remarks>Inspired by: https://stackoverflow.com/questions/10418651/using-enummemberattribute-and-doing-automatic-string-conversions .</remarks>
+		internal static T ToEnum<T>(this string str)
+			where T : Enum
+		{
+			var enumType = typeof(T);
+			foreach (var name in Enum.GetNames(enumType))
+			{
+				var customAttributes = enumType.GetField(name).GetCustomAttributes(true);
+
+				// See if there's a matching 'EnumMember' attribute
+				if (customAttributes.OfType<EnumMemberAttribute>().Any(attribute => string.Equals(attribute.Value, str, StringComparison.OrdinalIgnoreCase))) return (T)Enum.Parse(enumType, name);
+
+				// See if there's a matching 'Description' attribute
+				if (customAttributes.OfType<DescriptionAttribute>().Any(attribute => string.Equals(attribute.Description, str, StringComparison.OrdinalIgnoreCase))) return (T)Enum.Parse(enumType, name);
+
+				// See if the value matches the name
+				if (string.Equals(name, str, StringComparison.OrdinalIgnoreCase)) return (T)Enum.Parse(enumType, name);
+			}
+
+			throw new ArgumentException($"There is no value in the {enumType.Name} enum that corresponds to '{str}'.");
 		}
 
 		/// <summary>Asynchronously converts the JSON encoded content and convert it to an object of the desired type.</summary>
