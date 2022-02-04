@@ -75,7 +75,7 @@ namespace ZoomNet.Utilities
 			{
 				var stringValue = (string)reader.Value;
 				var items = stringValue
-					.Split(new[] { "+" }, StringSplitOptions.RemoveEmptyEntries)
+					.Split(new[] { '+' })
 					.Select(item => Convert(item))
 					.ToArray();
 

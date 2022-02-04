@@ -82,11 +82,18 @@ namespace StrongGrid.UnitTests.Utilities
 			result.ShouldBe("\"Unknown + Phone\"");
 		}
 
-		[Fact]
-		public void Read_single()
+		[Theory]
+		[InlineDataAttribute("", ParticipantDevice.Unknown)]
+		[InlineDataAttribute("Unknown", ParticipantDevice.Unknown)]
+		[InlineDataAttribute("Android", ParticipantDevice.Android)]
+		[InlineDataAttribute("Phone", ParticipantDevice.Phone)]
+		[InlineDataAttribute("iOs", ParticipantDevice.IOS)]
+		[InlineDataAttribute("H.323/SIP", ParticipantDevice.Sip)]
+		[InlineDataAttribute("Windows", ParticipantDevice.Windows)]
+		public void Read_single(string value, ParticipantDevice expectedValue)
 		{
 			// Arrange
-			var json = "'Phone'";
+			var json = $"'{value}'";
 
 			var textReader = new StringReader(json);
 			var jsonReader = new JsonTextReader(textReader);
@@ -106,7 +113,7 @@ namespace StrongGrid.UnitTests.Utilities
 
 			var resultAsArray = (ParticipantDevice[])result;
 			resultAsArray.Length.ShouldBe(1);
-			resultAsArray[0].ShouldBe(ParticipantDevice.Phone);
+			resultAsArray[0].ShouldBe(expectedValue);
 		}
 
 		[Fact]
