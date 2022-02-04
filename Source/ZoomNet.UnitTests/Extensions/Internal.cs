@@ -5,7 +5,7 @@ using Xunit;
 
 namespace ZoomNet.UnitTests.Utilities
 {
-	public class InternalTests
+	public class InternalExtensionsTests
 	{
 		[Fact]
 		public void GetProperty_when_property_is_present_and_throwIfMissing_is_true()
