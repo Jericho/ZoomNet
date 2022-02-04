@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using System;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.Models
 {
@@ -38,13 +39,14 @@ namespace ZoomNet.Models
 		public string UserName { get; set; }
 
 		/// <summary>
-		/// Gets or sets the type of device using which the participant joined the meeting.
+		/// Gets or sets the device(s) used by the participant to join the meeting.
 		/// </summary>
 		/// <value>
-		/// The type of device using which the participant joined the meeting.
+		/// The type of device used by the participant to join the meeting.
 		/// </value>
 		[JsonProperty(PropertyName = "device")]
-		public ParticipantDevice Device { get; set; }
+		[JsonConverter(typeof(ParticipantDeviceConverter))]
+		public ParticipantDevice[] Devices { get; set; }
 
 		/// <summary>
 		/// Gets or sets the participant’s IP address.

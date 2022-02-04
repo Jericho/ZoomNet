@@ -1,19 +1,19 @@
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.Models
 {
 	/// <summary>
 	/// Enumeration to indicate the type of device a participant used to join a meeting.
 	/// </summary>
-	[JsonConverter(typeof(StringEnumConverter))]
+	[JsonConverter(typeof(ParticipantDeviceConverter))]
 	public enum ParticipantDevice
 	{
 		/// <summary>
-		/// Unknown
+		/// Unknown.
 		/// </summary>
-		[EnumMember(Value = "")]
+		[EnumMember(Value = "Unknown")]
 		Unknown,
 
 		/// <summary>
