@@ -81,7 +81,15 @@ namespace ZoomNet
 		IPastWebinars PastWebinars { get; }
 
 		/// <summary>
-		/// Gets the resource which allows you to manage rooms.
+		/// Gets the resource which allows you to manage roles.
+		/// </summary>
+		/// <value>
+		/// The roles resource.
+		/// </value>
+		IRoles Roles { get; }
+
+		/// <summary>
+    /// Gets the resource which allows you to manage rooms.
 		/// </summary>
 		/// <value>
 		/// The rooms resource.
@@ -108,5 +116,10 @@ namespace ZoomNet
 		/// Gets the resource which allows you to view metrics.
 		/// </summary>
 		IDashboards Dashboards { get; }
+
+		/// <summary>
+		/// Gets the resource which allows you to view reports.
+		/// </summary>
+		IReports Reports { get; }
 	}
 }

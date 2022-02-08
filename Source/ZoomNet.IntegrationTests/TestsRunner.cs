@@ -103,9 +103,11 @@ namespace ZoomNet.IntegrationTests
 				typeof(Dashboards),
 				typeof(Locations),
 				typeof(Meetings),
+				typeof(Roles),
 				typeof(Rooms),
 				typeof(Users),
 				typeof(Webinars),
+				typeof(Reports)
 			};
 
 			// Execute the async tests in parallel (with max degree of parallelism)

@@ -43,12 +43,12 @@ namespace ZoomNet.Models
 		[JsonProperty("duration", NullValueHandling = NullValueHandling.Ignore)]
 		public long Duration { get; set; }
 
-		/// <summary>Gets or sets the total size of the recording.</summary>
+		/// <summary>Gets or sets the total size of the recording files and audio files.</summary>
 		/// <value>The total size.</value>
 		[JsonProperty(PropertyName = "total_size", NullValueHandling = NullValueHandling.Ignore)]
 		public long TotalSize { get; set; }
 
-		/// <summary>Gets or sets the number of files.</summary>
+		/// <summary>Gets or sets the total number of recording files and audio files.</summary>
 		/// <value>The number of files.</value>
 		[JsonProperty(PropertyName = "recording_count", NullValueHandling = NullValueHandling.Ignore)]
 		public long FilesCount { get; set; }
@@ -61,5 +61,15 @@ namespace ZoomNet.Models
 		/// <value>The play URL.</value>
 		[JsonProperty(PropertyName = "share_url", NullValueHandling = NullValueHandling.Ignore)]
 		public string ShareUrl { get; set; }
+
+		/// <summary>Gets or sets the password of the sharing recording file.</summary>
+		/// <value>Thepassword.</value>
+		[JsonProperty(PropertyName = "password", NullValueHandling = NullValueHandling.Ignore)]
+		public string Password { get; set; }
+
+		/// <summary>Gets or sets the audio files for each participant.</summary>
+		/// <remarks>This is available only when the "Record a seperate audio file of each participant" setting is enabled.</remarks>
+		[JsonProperty(PropertyName = "participant_audio_files", NullValueHandling = NullValueHandling.Ignore)]
+		public RecordingFile[] ParticipantAudioFiles { get; set; }
 	}
 }

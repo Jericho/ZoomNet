@@ -9,7 +9,7 @@ namespace ZoomNet.Models
 	public class ZoomRoomIssueDetails
 	{
 		/// <summary>
-		/// Gets or sets the Issue Name.<br/>
+		/// Gets or sets the issue type.<br/>
 		/// The value of the this field could be one of the following:<br/>
 		/// * `Room Controller disconnected`<br/>
 		/// * `Room Controller connected`<br/>
@@ -33,7 +33,7 @@ namespace ZoomNet.Models
 		/// * Controller<br/>
 		/// * Scheduling Display.<br/>
 		/// </summary>
-		/// <value>The Issue name.</value>
+		/// <value>The issue type.</value>
 		[JsonProperty(PropertyName = "issue")]
 		public IssueType IssueType { get; set; }
 

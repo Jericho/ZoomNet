@@ -3,12 +3,14 @@ using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -31,11 +33,11 @@ namespace ZoomNet
 		private static readonly DateTime EPOCH = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
 		/// <summary>
-		/// Converts a 'unix time' (which is expressed as the number of seconds/milliseconds since
-		/// midnight on January 1st 1970) to a .Net <see cref="DateTime" />.
+		/// Converts a 'unix time', which is expressed as the number of seconds (or milliseconds) since
+		/// midnight on January 1st 1970, to a .Net <see cref="DateTime" />.
 		/// </summary>
 		/// <param name="unixTime">The unix time.</param>
-		/// <param name="precision">The desired precision.</param>
+		/// <param name="precision">The precision of the provided unix time.</param>
 		/// <returns>
 		/// The <see cref="DateTime" />.
 		/// </returns>
@@ -47,8 +49,8 @@ namespace ZoomNet
 		}
 
 		/// <summary>
-		/// Converts a .Net <see cref="DateTime" /> into a 'Unix time' (which is expressed as the number
-		/// of seconds/milliseconds since midnight on January 1st 1970).
+		/// Converts a .Net <see cref="DateTime" /> into a 'Unix time', which is expressed as the number
+		/// of seconds (or milliseconds) since midnight on January 1st 1970.
 		/// </summary>
 		/// <param name="date">The date.</param>
 		/// <param name="precision">The desired precision.</param>
@@ -68,13 +70,14 @@ namespace ZoomNet
 		/// </summary>
 		/// <param name="date">The date.</param>
 		/// <param name="timeZone">The time zone.</param>
+		/// <param name="dateOnly">Indicates if you want only the date to be converted to a string (ignoring the time).</param>
 		/// <returns>
 		/// The string representation of the date expressed in the Zoom format.
 		/// </returns>
-		internal static string ToZoomFormat(this DateTime? date, TimeZones? timeZone)
+		internal static string ToZoomFormat(this DateTime? date, TimeZones? timeZone = null, bool dateOnly = false)
 		{
 			if (!date.HasValue) return null;
-			return date.Value.ToZoomFormat(timeZone);
+			return date.Value.ToZoomFormat(timeZone, dateOnly);
 		}
 
 		/// <summary>
@@ -82,16 +85,26 @@ namespace ZoomNet
 		/// </summary>
 		/// <param name="date">The date.</param>
 		/// <param name="timeZone">The time zone.</param>
+		/// <param name="dateOnly">Indicates if you want only the date to be converted to a string (ignoring the time).</param>
 		/// <returns>
 		/// The string representation of the date expressed in the Zoom format.
 		/// </returns>
-		internal static string ToZoomFormat(this DateTime date, TimeZones? timeZone)
+		internal static string ToZoomFormat(this DateTime date, TimeZones? timeZone = null, bool dateOnly = false)
 		{
-			const string defaultDateFormat = "yyyy-MM-dd'T'HH:mm:ss";
-			const string utcDateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'";
+			const string dateOnlyFormat = "yyyy-MM-dd";
+			const string defaultDateFormat = dateOnlyFormat + "'T'HH:mm:ss";
+			const string utcDateFormat = defaultDateFormat + "'Z'";
 
-			if (timeZone.HasValue && timeZone.Value == TimeZones.UTC) return date.ToUniversalTime().ToString(utcDateFormat);
-			return date.ToString(defaultDateFormat);
+			if (dateOnly)
+			{
+				if (timeZone.HasValue && timeZone.Value == TimeZones.UTC) return date.ToUniversalTime().ToString(dateOnlyFormat);
+				else return date.ToString(dateOnlyFormat);
+			}
+			else
+			{
+				if (timeZone.HasValue && timeZone.Value == TimeZones.UTC) return date.ToUniversalTime().ToString(utcDateFormat);
+				else return date.ToString(defaultDateFormat);
+			}
 		}
 
 		/// <summary>
@@ -338,6 +351,17 @@ namespace ZoomNet
 		{
 			var response = await request.AsResponse().ConfigureAwait(false);
 			return await response.AsPaginatedResponseWithTokenAndDateRange<T>(propertyName, jsonConverter).ConfigureAwait(false);
+		}
+
+		internal static IRequest WithHttp200TreatedAsFailure(this IRequest request, string customExceptionMessage = null)
+		{
+			var currentErrorHandler = request.Filters.OfType<ZoomErrorHandler>().SingleOrDefault();
+			var newErrorHandler = new ZoomErrorHandler(true, customExceptionMessage);
+
+			// Replace the current error handler which treats HTTP200 as success with a handler that treats HTTP200 as failure
+			request.Filters.Replace(currentErrorHandler, newErrorHandler);
+
+			return request;
 		}
 
 		/// <summary>Set the body content of the HTTP request.</summary>
@@ -625,23 +649,14 @@ namespace ZoomNet
 			return querystringParameters;
 		}
 
-		internal static void CheckForZoomErrors(this IResponse response)
+		internal static (WeakReference<HttpRequestMessage> RequestReference, string Diagnostic, long RequestTimeStamp, long ResponseTimestamp) GetDiagnosticInfo(this IResponse response)
 		{
-			var (isError, errorMessage, errorCode) = GetErrorMessage(response.Message).GetAwaiter().GetResult();
-			if (!isError) return;
-
 			var diagnosticId = response.Message.RequestMessage.Headers.GetValue(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME);
-			if (DiagnosticHandler.DiagnosticsInfo.TryGetValue(diagnosticId, out (WeakReference<HttpRequestMessage> RequestReference, string Diagnostic, long RequestTimeStamp, long ResponseTimestamp) diagnosticInfo))
-			{
-				throw new ZoomException(errorMessage, response.Message, diagnosticInfo.Diagnostic, errorCode);
-			}
-			else
-			{
-				throw new ZoomException(errorMessage, response.Message, "Diagnostic log unavailable", errorCode);
-			}
+			DiagnosticHandler.DiagnosticsInfo.TryGetValue(diagnosticId, out (WeakReference<HttpRequestMessage> RequestReference, string Diagnostic, long RequestTimeStamp, long ResponseTimestamp) diagnosticInfo);
+			return diagnosticInfo;
 		}
 
-		private static async Task<(bool, string, int?)> GetErrorMessage(HttpResponseMessage message)
+		internal static async Task<(bool, string, int?)> GetErrorMessage(this HttpResponseMessage message)
 		{
 			// Assume there is no error
 			var isError = false;
@@ -680,6 +695,66 @@ namespace ZoomNet
 			}
 
 			return (isError, errorMessage, errorCode);
+		}
+
+		internal static void Replace<T>(this ICollection<T> collection, T oldValue, T newValue)
+		{
+			// In case the collection is ordered, we'll be able to preserve the order
+			if (collection is IList<T> collectionAsList)
+			{
+				var oldIndex = collectionAsList.IndexOf(oldValue);
+				collectionAsList.RemoveAt(oldIndex);
+				collectionAsList.Insert(oldIndex, newValue);
+			}
+			else
+			{
+				// No luck, so just remove then add
+				collection.Remove(oldValue);
+				collection.Add(newValue);
+			}
+		}
+
+		/// <summary>Convert an enum to its string representation.</summary>
+		/// <typeparam name="T">The enum type.</typeparam>
+		/// <param name="enumValue">The value.</param>
+		/// <returns>The string representation of the enum value.</returns>
+		/// <remarks>Inspired by: https://stackoverflow.com/questions/10418651/using-enummemberattribute-and-doing-automatic-string-conversions .</remarks>
+		internal static string ToEnumString<T>(this T enumValue)
+			where T : Enum
+		{
+			var enumMemberAttribute = enumValue.GetAttributeOfType<EnumMemberAttribute>();
+			if (enumMemberAttribute != null) return enumMemberAttribute.Value;
+
+			var descriptionAttribute = enumValue.GetAttributeOfType<DescriptionAttribute>();
+			if (descriptionAttribute != null) return descriptionAttribute.Description;
+
+			return enumValue.ToString();
+		}
+
+		/// <summary>Parses a string into its corresponding enum value.</summary>
+		/// <typeparam name="T">The enum type.</typeparam>
+		/// <param name="str">The string value.</param>
+		/// <returns>The enum representation of the string value.</returns>
+		/// <remarks>Inspired by: https://stackoverflow.com/questions/10418651/using-enummemberattribute-and-doing-automatic-string-conversions .</remarks>
+		internal static T ToEnum<T>(this string str)
+			where T : Enum
+		{
+			var enumType = typeof(T);
+			foreach (var name in Enum.GetNames(enumType))
+			{
+				var customAttributes = enumType.GetField(name).GetCustomAttributes(true);
+
+				// See if there's a matching 'EnumMember' attribute
+				if (customAttributes.OfType<EnumMemberAttribute>().Any(attribute => string.Equals(attribute.Value, str, StringComparison.OrdinalIgnoreCase))) return (T)Enum.Parse(enumType, name);
+
+				// See if there's a matching 'Description' attribute
+				if (customAttributes.OfType<DescriptionAttribute>().Any(attribute => string.Equals(attribute.Description, str, StringComparison.OrdinalIgnoreCase))) return (T)Enum.Parse(enumType, name);
+
+				// See if the value matches the name
+				if (string.Equals(name, str, StringComparison.OrdinalIgnoreCase)) return (T)Enum.Parse(enumType, name);
+			}
+
+			throw new ArgumentException($"There is no value in the {enumType.Name} enum that corresponds to '{str}'.");
 		}
 
 		/// <summary>Asynchronously converts the JSON encoded content and convert it to an object of the desired type.</summary>
