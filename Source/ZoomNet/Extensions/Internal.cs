@@ -162,7 +162,7 @@ namespace ZoomNet
 
 				// This is important: we must make a copy of the response stream otherwise we would get an
 				// exception on subsequent attempts to read the content of the stream
-				using (var ms = new MemoryStream())
+				using (var ms = Utils.MemoryStreamManager.GetStream())
 				{
 					const int defaultBufferSize = 81920;
 					await contentStream.CopyToAsync(ms, defaultBufferSize, cancellationToken).ConfigureAwait(false);
