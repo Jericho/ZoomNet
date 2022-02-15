@@ -550,50 +550,54 @@ namespace ZoomNet
 		internal static async Task<TResult[]> ForEachAsync<T, TResult>(this IEnumerable<T> items, Func<T, Task<TResult>> action, int maxDegreeOfParalellism)
 		{
 			var allTasks = new List<Task<TResult>>();
-			var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism);
-			foreach (var item in items)
+			using (var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism))
 			{
-				await throttler.WaitAsync();
-				allTasks.Add(
-					Task.Run(async () =>
-					{
-						try
+				foreach (var item in items)
+				{
+					await throttler.WaitAsync();
+					allTasks.Add(
+						Task.Run(async () =>
 						{
-							return await action(item).ConfigureAwait(false);
-						}
-						finally
-						{
-							throttler.Release();
-						}
-					}));
-			}
+							try
+							{
+								return await action(item).ConfigureAwait(false);
+							}
+							finally
+							{
+								throttler.Release();
+							}
+						}));
+				}
 
-			var results = await Task.WhenAll(allTasks).ConfigureAwait(false);
-			return results;
+				var results = await Task.WhenAll(allTasks).ConfigureAwait(false);
+				return results;
+			}
 		}
 
 		internal static async Task ForEachAsync<T>(this IEnumerable<T> items, Func<T, Task> action, int maxDegreeOfParalellism)
 		{
 			var allTasks = new List<Task>();
-			var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism);
-			foreach (var item in items)
+			using (var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism))
 			{
-				await throttler.WaitAsync();
-				allTasks.Add(
-					Task.Run(async () =>
-					{
-						try
+				foreach (var item in items)
+				{
+					await throttler.WaitAsync();
+					allTasks.Add(
+						Task.Run(async () =>
 						{
-							await action(item).ConfigureAwait(false);
-						}
-						finally
-						{
-							throttler.Release();
-						}
-					}));
-			}
+							try
+							{
+								await action(item).ConfigureAwait(false);
+							}
+							finally
+							{
+								throttler.Release();
+							}
+						}));
+				}
 
-			await Task.WhenAll(allTasks).ConfigureAwait(false);
+				await Task.WhenAll(allTasks).ConfigureAwait(false);
+			}
 		}
 
 		/// <summary>
