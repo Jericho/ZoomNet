@@ -115,6 +115,7 @@ namespace ZoomNet
 		/// automatically calculated based on the charset in the response. Also, UTF-8
 		/// encoding will be used if the charset is absent from the response, is blank
 		/// or contains an invalid value.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The string content of the response.</returns>
 		/// <remarks>
 		/// This method is an improvement over the built-in ReadAsStringAsync method
@@ -149,7 +150,7 @@ namespace ZoomNet
 		/// var responseContent = await response.Content.ReadAsStringAsync(null).ConfigureAwait(false);
 		/// </code>
 		/// </example>
-		internal static async Task<string> ReadAsStringAsync(this HttpContent httpContent, Encoding encoding)
+		internal static async Task<string> ReadAsStringAsync(this HttpContent httpContent, Encoding encoding, CancellationToken cancellationToken = default)
 		{
 			var content = string.Empty;
 
@@ -163,7 +164,8 @@ namespace ZoomNet
 				// exception on subsequent attempts to read the content of the stream
 				using (var ms = new MemoryStream())
 				{
-					await contentStream.CopyToAsync(ms).ConfigureAwait(false);
+					const int defaultBufferSize = 81920;
+					await contentStream.CopyToAsync(ms, defaultBufferSize, cancellationToken).ConfigureAwait(false);
 					ms.Position = 0;
 					using (var sr = new StreamReader(ms, encoding))
 					{
