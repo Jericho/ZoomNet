@@ -64,6 +64,13 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync($"Instant meeting {newInstantMeeting.Id} deleted").ConfigureAwait(false);
 
 			// Scheduled meeting
+			var settings = new MeetingSettings()
+			{
+				Audio = AudioType.Telephony,
+				RegistrationType = MeetingRegistrationType.RegisterOnceAttendAll,
+				ApprovalType = MeetingApprovalType.Manual
+			};
+
 			var start = DateTime.UtcNow.AddMonths(1);
 			var duration = 30;
 			var newScheduledMeeting = await client.Meetings.CreateScheduledMeetingAsync(userId, "ZoomNet Integration Testing: scheduled meeting", "The agenda", start, duration, TimeZones.UTC, "p@ss!w0rd", settings, trackingFields, cancellationToken).ConfigureAwait(false);
@@ -133,7 +140,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				new RegistrationAnswer { Title = "Are you happy?", Answer = "No" },
 				new RegistrationAnswer { Title = "Tell us about yourself", Answer = "Don't you know who I am?" },
 			};
-			var registrantInfo2 = await client.Meetings.AddRegistrantAsync(scheduledMeeting.Id, "second@example.com", "Bill", "Murray", "999 5th avanue", "New York City", Country.United_States_of_America, "12345", "Florida", "5551234567", "Entertainment", "Hollywood Industial Complex", "Comedian", "No timeframe", RoleInPurchaseProcess.Not_Involved, NumberOfEmployees.Between_0001_and_0020, "I have many question that I'll ask during the meeting", registrationAnswers2, Language.English_US, false, null, cancellationToken).ConfigureAwait(false);
+			var registrantInfo2 = await client.Meetings.AddRegistrantAsync(scheduledMeeting.Id, "second@example.com", "Bill", "Murray", "999 5th avanue", "New York City", Country.United_States_of_America, "12345", "Florida", "5551234567", "Entertainment", "Hollywood Industrial Complex", "Comedian", "No timeframe", RoleInPurchaseProcess.Not_Involved, NumberOfEmployees.Between_0001_and_0020, "I have many question that I'll ask during the meeting", registrationAnswers2, Language.English_US, false, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Registrant {registrantInfo2.Id} added to meeting {scheduledMeeting.Id}").ConfigureAwait(false);
 
 			var registrant1 = await client.Meetings.GetRegistrantAsync(scheduledMeeting.Id, registrantInfo1.Id, cancellationToken).ConfigureAwait(false);
