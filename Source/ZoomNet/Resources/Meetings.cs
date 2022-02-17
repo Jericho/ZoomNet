@@ -741,22 +741,15 @@ namespace ZoomNet.Resources
 				.AsRawJsonObject()
 				.ConfigureAwait(false);
 
-			var requiredFields = new List<RegistrationField>();
-			var optionalFields = new List<RegistrationField>();
-
-			foreach (var standardField in (JArray)response.Property("questions")?.Value ?? Enumerable.Empty<JToken>())
-			{
-				var field = standardField.GetPropertyValue<RegistrationField>("field_name");
-				var isRequired = standardField.GetPropertyValue<bool>("required");
-
-				if (isRequired) requiredFields.Add(field);
-				else optionalFields.Add(field);
-			}
+			var allFields = ((JArray)response.Property("questions")?.Value ?? Enumerable.Empty<JToken>())
+				.Select(item => (Field: item.GetPropertyValue<string>("field_name").ToEnum<RegistrationField>(), IsRequired: item.GetPropertyValue<bool>("required")));
+			var requiredFields = allFields.Where(f => f.IsRequired).Select(f => f.Field).ToArray();
+			var optionalFields = allFields.Where(f => !f.IsRequired).Select(f => f.Field).ToArray();
 
 			var registrationQuestions = new RegistrationQuestions
 			{
-				RequiredFields = requiredFields.ToArray(),
-				OptionalFields = optionalFields.ToArray(),
+				RequiredFields = requiredFields,
+				OptionalFields = optionalFields,
 				Questions = response.Property("custom_questions")?.Value.ToObject<RegistrationCustomQuestion[]>() ?? Array.Empty<RegistrationCustomQuestion>()
 			};
 			return registrationQuestions;
