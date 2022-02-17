@@ -795,7 +795,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Template" />.
 		/// </returns>
-		public Task<Template[]> GetWebinarTemplatesAsync(string userId, CancellationToken cancellationToken = default)
+		public Task<Template[]> GetTemplatesAsync(string userId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"users/{userId}/webinar_templates")

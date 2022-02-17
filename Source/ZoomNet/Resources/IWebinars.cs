@@ -460,6 +460,6 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Template" />.
 		/// </returns>
-		Task<Template[]> GetWebinarTemplatesAsync(string userId, CancellationToken cancellationToken = default);
+		Task<Template[]> GetTemplatesAsync(string userId, CancellationToken cancellationToken = default);
 	}
 }
