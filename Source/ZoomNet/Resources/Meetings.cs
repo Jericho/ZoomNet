@@ -483,9 +483,9 @@ namespace ZoomNet.Resources
 		/// <param name="occurrenceId">The meeting occurrence id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// A <see cref="Registrant" />.
+		/// A <see cref="RegistrantInfo" />.
 		/// </returns>
-		public Task<Registrant> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string address, string city, string country, string postalCode, string stateOrProvince, string phoneNumber, string industry, string organization, string jobTitle, string timeFrame, string role, string employees, string comments, IEnumerable<PollAnswer> questionAnswers, string language, bool autoApprove, string occurrenceId = null, CancellationToken cancellationToken = default)
+		public Task<RegistrantInfo> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string address, string city, string country, string postalCode, string stateOrProvince, string phoneNumber, string industry, string organization, string jobTitle, string timeFrame, string role, string employees, string comments, IEnumerable<PollAnswer> questionAnswers, string language, bool autoApprove, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
 			data.AddPropertyIfValue("email", email);
