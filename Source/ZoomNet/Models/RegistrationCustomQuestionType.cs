@@ -5,21 +5,21 @@ using System.Runtime.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Enumeration to indicate the type of poll question.
+	/// Enumeration to indicate the type of registration question.
 	/// </summary>
 	[JsonConverter(typeof(StringEnumConverter))]
-	public enum QuestionType
+	public enum RegistrationCustomQuestionType
 	{
+		/// <summary>
+		/// Short.
+		/// </summary>
+		[EnumMember(Value = "short")]
+		Short,
+
 		/// <summary>
 		/// Single.
 		/// </summary>
 		[EnumMember(Value = "single")]
-		SingleChoice,
-
-		/// <summary>
-		/// Multiple.
-		/// </summary>
-		[EnumMember(Value = "multiple")]
-		MultipleChoice
+		Single
 	}
 }

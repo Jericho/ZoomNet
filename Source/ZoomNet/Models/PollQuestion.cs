@@ -23,7 +23,7 @@ namespace ZoomNet.Models
 		/// The type.
 		/// </value>
 		[JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
-		public QuestionType Type { get; set; }
+		public PollQuestionType Type { get; set; }
 
 		/// <summary>
 		/// Gets or sets the answers to the question.
