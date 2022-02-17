@@ -240,7 +240,7 @@ namespace ZoomNet.Resources
 		/// <param name="role">Registrant's role in purchase decision.</param>
 		/// <param name="employees">Number of employees.</param>
 		/// <param name="comments">A field that allows registrant to provide any questions or comments that they might have.</param>
-		/// <param name="questionAnswers">Custom questions.</param>
+		/// <param name="questionAnswers">Answers to the custom registration questions.</param>
 		/// <param name="language">Registrant's language preference for confirmation emails.</param>
 		/// <param name="autoApprove">Indicates if the registrant should be automatically approved.</param>
 		/// <param name="occurrenceId">The meeting occurrence id.</param>
@@ -248,7 +248,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// A <see cref="RegistrantInfo" />.
 		/// </returns>
-		Task<RegistrantInfo> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string address, string city, string country, string postalCode, string stateOrProvince, string phoneNumber, string industry, string organization, string jobTitle, string timeFrame, string role, string employees, string comments, IEnumerable<PollAnswer> questionAnswers, string language, bool autoApprove, string occurrenceId = null, CancellationToken cancellationToken = default);
+		Task<RegistrantInfo> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string address = null, string city = null, Country? country = null, string postalCode = null, string stateOrProvince = null, string phoneNumber = null, string industry = null, string organization = null, string jobTitle = null, string timeFrame = null, RoleInPurchaseProcess? role = null, NumberOfEmployees? employees = null, string comments = null, IEnumerable<RegistrationAnswer> questionAnswers = null, Language? language = null, bool autoApprove = false, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Approve a registration for a meeting.
@@ -381,6 +381,29 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task DeletePollAsync(long meetingId, long pollId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve the questions that are to be answered by users while registering for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="RegistrationCustomQuestion"/>.
+		/// </returns>
+		Task<RegistrationQuestions> GetRegistrationQuestions(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update the questions that are to be answered by users while registering for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="requiredFields">List of fields that must be answer when registering for the meeting.</param>
+		/// <param name="optionalFields">List of fields that can be answer when registering for the meeting.</param>
+		/// <param name="customQuestions">Additional questions to be answered.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task UpdateRegistrationQuestions(long meetingId, IEnumerable<RegistrationField> requiredFields, IEnumerable<RegistrationField> optionalFields, IEnumerable<RegistrationCustomQuestion> customQuestions, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get the meeting invite note that was sent for a specific meeting.

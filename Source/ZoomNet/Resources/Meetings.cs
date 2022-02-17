@@ -477,7 +477,7 @@ namespace ZoomNet.Resources
 		/// <param name="role">Registrant's role in purchase decision.</param>
 		/// <param name="employees">Number of employees.</param>
 		/// <param name="comments">A field that allows registrant to provide any questions or comments that they might have.</param>
-		/// <param name="questionAnswers">Custom questions.</param>
+		/// <param name="questionAnswers">Answers to the custom registration questions.</param>
 		/// <param name="language">Registrant's language preference for confirmation emails.</param>
 		/// <param name="autoApprove">Indicates if the registrant should be automatically approved.</param>
 		/// <param name="occurrenceId">The meeting occurrence id.</param>
@@ -485,7 +485,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// A <see cref="RegistrantInfo" />.
 		/// </returns>
-		public Task<RegistrantInfo> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string address, string city, string country, string postalCode, string stateOrProvince, string phoneNumber, string industry, string organization, string jobTitle, string timeFrame, string role, string employees, string comments, IEnumerable<PollAnswer> questionAnswers, string language, bool autoApprove, string occurrenceId = null, CancellationToken cancellationToken = default)
+		public Task<RegistrantInfo> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string address = null, string city = null, Country? country = null, string postalCode = null, string stateOrProvince = null, string phoneNumber = null, string industry = null, string organization = null, string jobTitle = null, string timeFrame = null, RoleInPurchaseProcess? role = null, NumberOfEmployees? employees = null, string comments = null, IEnumerable<RegistrationAnswer> questionAnswers = null, Language? language = null, bool autoApprove = false, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
 			data.AddPropertyIfValue("email", email);
@@ -496,6 +496,17 @@ namespace ZoomNet.Resources
 			data.AddPropertyIfValue("country", country);
 			data.AddPropertyIfValue("zip", postalCode);
 			data.AddPropertyIfValue("state", stateOrProvince);
+			data.AddPropertyIfValue("phone", phoneNumber);
+			data.AddPropertyIfValue("industry", industry);
+			data.AddPropertyIfValue("org", organization);
+			data.AddPropertyIfValue("job_title", jobTitle);
+			data.AddPropertyIfValue("purchasing_time_frame", timeFrame);
+			data.AddPropertyIfValue("role_in_purchase_process", role);
+			data.AddPropertyIfValue("no_of_employees", employees);
+			data.AddPropertyIfValue("custom_questions", questionAnswers);
+			data.AddPropertyIfValue("language", language);
+			data.AddPropertyIfValue("comments", comments);
+			data.AddPropertyIfValue("auto_approve", autoApprove);
 
 			return _client
 				.PostAsync($"meetings/{meetingId}/registrants")
@@ -503,6 +514,23 @@ namespace ZoomNet.Resources
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<RegistrantInfo>();
+		}
+
+		/// <summary>
+		/// Retrieve a meeting registrant.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="registrantId">The registrant unique identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="Registrant"/>.
+		/// </returns>
+		public Task<Registrant> GetRegistrantAsync(long meetingId, string registrantId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"meetings/{meetingId}/registrants/{registrantId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<Registrant>();
 		}
 
 		/// <summary>
@@ -693,6 +721,71 @@ namespace ZoomNet.Resources
 		{
 			return _client
 				.DeleteAsync($"meetings/{meetingId}/polls/{pollId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Retrieve the questions that are to be answered by users while registering for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="PollQuestion"/>.
+		/// </returns>
+		public async Task<RegistrationQuestions> GetRegistrationQuestions(long meetingId, CancellationToken cancellationToken = default)
+		{
+			var response = await _client
+				.GetAsync($"meetings/{meetingId}/registrants/questions")
+				.WithCancellationToken(cancellationToken)
+				.AsRawJsonObject()
+				.ConfigureAwait(false);
+
+			var requiredFields = new List<RegistrationField>();
+			var optionalFields = new List<RegistrationField>();
+
+			foreach (var standardField in (JArray)response.Property("questions")?.Value ?? Enumerable.Empty<JToken>())
+			{
+				var field = standardField.GetPropertyValue<RegistrationField>("field_name");
+				var isRequired = standardField.GetPropertyValue<bool>("required");
+
+				if (isRequired) requiredFields.Add(field);
+				else optionalFields.Add(field);
+			}
+
+			var registrationQuestions = new RegistrationQuestions
+			{
+				RequiredFields = requiredFields.ToArray(),
+				OptionalFields = optionalFields.ToArray(),
+				Questions = response.Property("custom_questions")?.Value.ToObject<RegistrationCustomQuestion[]>() ?? Array.Empty<RegistrationCustomQuestion>()
+			};
+			return registrationQuestions;
+		}
+
+		/// <summary>
+		/// Update the questions that are to be answered by users while registering for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="requiredFields">List of fields that must be answer when registering for the meeting.</param>
+		/// <param name="optionalFields">List of fields that can be answer when registering for the meeting.</param>
+		/// <param name="customQuestions">Additional questions to be answered.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task UpdateRegistrationQuestions(long meetingId, IEnumerable<RegistrationField> requiredFields, IEnumerable<RegistrationField> optionalFields, IEnumerable<RegistrationCustomQuestion> customQuestions, CancellationToken cancellationToken = default)
+		{
+			var standardFields = (requiredFields ?? Enumerable.Empty<RegistrationField>()).Select(f => new JObject() { { "field_name", JToken.Parse(JsonConvert.SerializeObject(f)).ToString() }, { "required", true } })
+				.Union((optionalFields ?? Enumerable.Empty<RegistrationField>()).Select(f => new JObject() { { "field_name", JToken.Parse(JsonConvert.SerializeObject(f)).ToString() }, { "required", false } }))
+				.ToArray();
+
+			var data = new JObject();
+			data.AddPropertyIfValue("questions", standardFields);
+			data.AddPropertyIfValue("custom_questions", customQuestions);
+
+			return _client
+				.PatchAsync($"meetings/{meetingId}/registrants/questions")
+				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
