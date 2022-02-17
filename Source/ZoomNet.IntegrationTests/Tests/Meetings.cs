@@ -38,7 +38,12 @@ namespace ZoomNet.IntegrationTests.Tests
 				});
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
 
-			var settings = new MeetingSettings() { Audio = AudioType.Telephony };
+			var settings = new MeetingSettings()
+			{
+				Audio = AudioType.Telephony,
+				RegistrationType = MeetingRegistrationType.RegisterOnceAttendAll,
+				ApprovalType = MeetingApprovalType.Manual
+			};
 			var trackingFields = new Dictionary<string, string>()
 			{
 				{ "field1", "value1"},
@@ -71,8 +76,75 @@ namespace ZoomNet.IntegrationTests.Tests
 			var scheduledMeeting = (ScheduledMeeting)await client.Meetings.GetAsync(newScheduledMeeting.Id, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Scheduled meeting {scheduledMeeting.Id} retrieved").ConfigureAwait(false);
 
-			var registrant = await client.Meetings.AddRegistrantAsync(scheduledMeeting.Id, "test@example.com", "John", "Doe", "123 Main street", "New York City", "FicticiousCountry", "12345", "Florida", "5551234567", "Software", "MyOrg", "CEO", "Right now", "influencer", "Less than 10", "I don't have any questions at this time", null, "English", true, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"Added a registrant to meeting {scheduledMeeting.Id}").ConfigureAwait(false);
+			var requiredFields = new[]
+			{
+				RegistrationField.PurchasingTimeFrame,
+				RegistrationField.RoleInPurchaseProcess
+			};
+			var optionalFields = new[]
+			{
+				RegistrationField.Address,
+				RegistrationField.City,
+				RegistrationField.Country,
+				RegistrationField.PostalCode,
+				RegistrationField.State,
+				RegistrationField.Phone,
+				RegistrationField.Industry,
+				RegistrationField.Organization,
+				RegistrationField.JobTitle,
+				RegistrationField.NumberOfEmployees,
+				RegistrationField.Comments
+			};
+			var customQuestions = new[]
+			{
+				new RegistrationCustomQuestion
+				{
+					Title = "Are you happy?",
+					Type = RegistrationCustomQuestionType.Single,
+					IsRequired = true,
+					Answers = new[] { "Yes", "No", "Maybe", "I don't know" }
+				},
+				new RegistrationCustomQuestion
+				{
+					Title = "Tell us about yourself",
+					Type = RegistrationCustomQuestionType.Short,
+					IsRequired = false
+				}
+			};
+			await client.Meetings.UpdateRegistrationQuestions(newScheduledMeeting.Id, requiredFields, optionalFields, customQuestions, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Added {customQuestions.Length} custom registration questions to this meeting.").ConfigureAwait(false);
+
+			var registrationQuestions = await client.Meetings.GetRegistrationQuestions(newScheduledMeeting.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Here's a quick summary of the registration form for meeting {newScheduledMeeting.Id}:").ConfigureAwait(false);
+			await log.WriteLineAsync($"  - there are {registrationQuestions.RequiredFields.Length} required fields.").ConfigureAwait(false);
+			await log.WriteLineAsync($"  - there are {registrationQuestions.OptionalFields.Length} optional fields.").ConfigureAwait(false);
+			await log.WriteLineAsync($"  - there are {registrationQuestions.Questions.Count(q => q.IsRequired)} required custom questions.").ConfigureAwait(false);
+			await log.WriteLineAsync($"  - there are {registrationQuestions.Questions.Count(q => !q.IsRequired)} optional custom questions.").ConfigureAwait(false);
+
+			var registrationAnswers1 = new[]
+			{
+				new RegistrationAnswer { Title = "Are you happy?", Answer = "Yes" }
+			};
+			var registrantInfo1 = await client.Meetings.AddRegistrantAsync(scheduledMeeting.Id, "first@example.com", "John", "Doe", "123 Main street", "Ottawa", Country.Canada, "K1Y 1A1", "Ontario", "5551234567", "Software", "MyOrg", "CEO", "Within a month", RoleInPurchaseProcess.Influencer, NumberOfEmployees.Between_0501_and_1000, "I don't have any questions at this time", registrationAnswers1, Language.French_France, true, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Registrant {registrantInfo1.Id} added to meeting {scheduledMeeting.Id}").ConfigureAwait(false);
+
+			var registrationAnswers2 = new[]
+			{
+				new RegistrationAnswer { Title = "Are you happy?", Answer = "No" },
+				new RegistrationAnswer { Title = "Tell us about yourself", Answer = "Don't you know who I am?" },
+			};
+			var registrantInfo2 = await client.Meetings.AddRegistrantAsync(scheduledMeeting.Id, "second@example.com", "Bill", "Murray", "999 5th avanue", "New York City", Country.United_States_of_America, "12345", "Florida", "5551234567", "Entertainment", "Hollywood Industial Complex", "Comedian", "No timeframe", RoleInPurchaseProcess.Not_Involved, NumberOfEmployees.Between_0001_and_0020, "I have many question that I'll ask during the meeting", registrationAnswers2, Language.English_US, false, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Registrant {registrantInfo2.Id} added to meeting {scheduledMeeting.Id}").ConfigureAwait(false);
+
+			var registrant1 = await client.Meetings.GetRegistrantAsync(scheduledMeeting.Id, registrantInfo1.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Retrieve registrant {registrant1.Id}").ConfigureAwait(false);
+
+			var registrant2 = await client.Meetings.GetRegistrantAsync(scheduledMeeting.Id, registrantInfo2.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Retrieve registrant {registrant2.Id}").ConfigureAwait(false);
+
+			var pendingRegistrations = await client.Meetings.GetRegistrantsAsync(scheduledMeeting.Id, RegistrantStatus.Pending, null, 30, null, cancellationToken).ConfigureAwait(false);
+			var approvedRegistrations = await client.Meetings.GetRegistrantsAsync(scheduledMeeting.Id, RegistrantStatus.Approved, null, 30, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"This meeting has {pendingRegistrations.TotalRecords} registrations awaiting approval and {approvedRegistrations.TotalRecords} approved registrations").ConfigureAwait(false);
 
 			await client.Meetings.DeleteAsync(newScheduledMeeting.Id, null, false, false, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Scheduled meeting {newScheduledMeeting.Id} deleted").ConfigureAwait(false);
