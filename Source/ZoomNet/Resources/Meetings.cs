@@ -502,7 +502,7 @@ namespace ZoomNet.Resources
 				.WithArgument("occurence_id", occurrenceId)
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
-				.AsObject<Registrant>();
+				.AsObject<RegistrantInfo>();
 		}
 
 		/// <summary>
