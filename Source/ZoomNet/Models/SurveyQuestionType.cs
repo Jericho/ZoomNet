@@ -33,6 +33,5 @@ namespace ZoomNet.Models
 		/// </summary>
 		[EnumMember(Value = "long_answer")]
 		Long,
-
 	}
 }
