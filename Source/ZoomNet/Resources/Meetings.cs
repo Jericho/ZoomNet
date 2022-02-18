@@ -517,6 +517,25 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
+		/// Delete a meeting registrant.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="registrantId">The registrant id.</param>
+		/// <param name="occurrenceId">The meeting occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task DeleteRegistrantAsync(long meetingId, string registrantId, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"meetings/{meetingId}/registrants/{registrantId}")
+				.WithArgument("occurence_id", occurrenceId)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
 		/// Retrieve a meeting registrant.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
