@@ -368,7 +368,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task<Poll> CreatePoll(long meetingId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default);
+		Task<Poll> CreatePollAsync(long meetingId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve a poll.
@@ -413,7 +413,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="RegistrationCustomQuestion"/>.
 		/// </returns>
-		Task<RegistrationQuestions> GetRegistrationQuestions(long meetingId, CancellationToken cancellationToken = default);
+		Task<RegistrationQuestions> GetRegistrationQuestionsAsync(long meetingId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Update the questions that are to be answered by users while registering for a meeting.
@@ -426,7 +426,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task UpdateRegistrationQuestions(long meetingId, IEnumerable<RegistrationField> requiredFields, IEnumerable<RegistrationField> optionalFields, IEnumerable<RegistrationCustomQuestion> customQuestions, CancellationToken cancellationToken = default);
+		Task UpdateRegistrationQuestionsAsync(long meetingId, IEnumerable<RegistrationField> requiredFields, IEnumerable<RegistrationField> optionalFields, IEnumerable<RegistrationCustomQuestion> customQuestions, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get the meeting invite note that was sent for a specific meeting.

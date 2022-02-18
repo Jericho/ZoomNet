@@ -671,7 +671,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// A <see cref="Poll"/>.
 		/// </returns>
-		public Task<Poll> CreatePoll(long meetingId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default)
+		public Task<Poll> CreatePollAsync(long meetingId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject()
 			{
@@ -752,7 +752,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="PollQuestion"/>.
 		/// </returns>
-		public async Task<RegistrationQuestions> GetRegistrationQuestions(long meetingId, CancellationToken cancellationToken = default)
+		public async Task<RegistrationQuestions> GetRegistrationQuestionsAsync(long meetingId, CancellationToken cancellationToken = default)
 		{
 			var response = await _client
 				.GetAsync($"meetings/{meetingId}/registrants/questions")
@@ -785,7 +785,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task UpdateRegistrationQuestions(long meetingId, IEnumerable<RegistrationField> requiredFields, IEnumerable<RegistrationField> optionalFields, IEnumerable<RegistrationCustomQuestion> customQuestions, CancellationToken cancellationToken = default)
+		public Task UpdateRegistrationQuestionsAsync(long meetingId, IEnumerable<RegistrationField> requiredFields, IEnumerable<RegistrationField> optionalFields, IEnumerable<RegistrationCustomQuestion> customQuestions, CancellationToken cancellationToken = default)
 		{
 			var required = (requiredFields ?? Enumerable.Empty<RegistrationField>())
 				.GroupBy(f => f).Select(grp => grp.First()); // Remove duplicates

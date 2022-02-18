@@ -113,10 +113,10 @@ namespace ZoomNet.IntegrationTests.Tests
 					IsRequired = false
 				}
 			};
-			await client.Meetings.UpdateRegistrationQuestions(newScheduledMeeting.Id, requiredFields, optionalFields, customQuestions, cancellationToken).ConfigureAwait(false);
+			await client.Meetings.UpdateRegistrationQuestionsAsync(newScheduledMeeting.Id, requiredFields, optionalFields, customQuestions, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Added {customQuestions.Length} custom registration questions to this meeting.").ConfigureAwait(false);
 
-			var registrationQuestions = await client.Meetings.GetRegistrationQuestions(newScheduledMeeting.Id, cancellationToken).ConfigureAwait(false);
+			var registrationQuestions = await client.Meetings.GetRegistrationQuestionsAsync(newScheduledMeeting.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Here's a quick summary of the registration form for meeting {newScheduledMeeting.Id}:").ConfigureAwait(false);
 			await log.WriteLineAsync($"  - there are {registrationQuestions.RequiredFields.Length} required fields.").ConfigureAwait(false);
 			await log.WriteLineAsync($"  - there are {registrationQuestions.OptionalFields.Length} optional fields.").ConfigureAwait(false);
