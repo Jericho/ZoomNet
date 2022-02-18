@@ -485,7 +485,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// A <see cref="RegistrantInfo" />.
 		/// </returns>
-		public Task<RegistrantInfo> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string address = null, string city = null, Country? country = null, string postalCode = null, string stateOrProvince = null, string phoneNumber = null, string industry = null, string organization = null, string jobTitle = null, string timeFrame = null, RoleInPurchaseProcess? role = null, NumberOfEmployees? employees = null, string comments = null, IEnumerable<RegistrationAnswer> questionAnswers = null, Language? language = null, bool autoApprove = false, string occurrenceId = null, CancellationToken cancellationToken = default)
+		public Task<RegistrantInfo> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string address = null, string city = null, Country? country = null, string postalCode = null, string stateOrProvince = null, string phoneNumber = null, string industry = null, string organization = null, string jobTitle = null, PurchasingTimeFrame? timeFrame = null, RoleInPurchaseProcess? role = null, NumberOfEmployees? employees = null, string comments = null, IEnumerable<RegistrationAnswer> questionAnswers = null, Language? language = null, bool autoApprove = false, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
 			data.AddPropertyIfValue("email", email);
@@ -772,7 +772,7 @@ namespace ZoomNet.Resources
 				.GroupBy(f => f).Select(grp => grp.First()); // Remove duplicates
 
 			var optional = (optionalFields ?? Enumerable.Empty<RegistrationField>())
-				.Except(required) // Remove 'optional' fields that are on the 'required' enumerations
+				.Except(required) // Remove 'optional' fields that are on the 'required' enumeration
 				.GroupBy(f => f).Select(grp => grp.First()); // Remove duplicates
 
 			var standardFields = required.Select(f => new JObject() { { "field_name", f.ToEnumString() }, { "required", true } })

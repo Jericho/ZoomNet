@@ -94,7 +94,7 @@ namespace ZoomNet.Models
 		/// Gets or sets the purchasing Time Frame.
 		/// </summary>
 		[JsonProperty(PropertyName = "purchasing_time_frame")]
-		public string PurchasingTimeFrame { get; set; }
+		public PurchasingTimeFrame PurchasingTimeFrame { get; set; }
 
 		/// <summary>
 		/// Gets or sets the role in purchase process.
