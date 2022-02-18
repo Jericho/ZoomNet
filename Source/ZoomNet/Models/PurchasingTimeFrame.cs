@@ -24,6 +24,10 @@ namespace ZoomNet.Models
 
 		/// <summary>More than 6 months</summary>
 		[EnumMember(Value = "More than 6 months")]
-		Nore_than_6_months,
+		More_than_6_months,
+
+		/// <summary>More than 6 months</summary>
+		[EnumMember(Value = "No timeframe")]
+		No_timeframe,
 	}
 }
