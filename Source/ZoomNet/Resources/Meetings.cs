@@ -906,6 +906,15 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task<LiveStreamingSettings> GetLiveStreamSettingsAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"meetings/{meetingId}/livestream")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<LiveStreamingSettings>();
+		}
+
+		/// <inheritdoc/>
 		public Task<MeetingTemplate[]> GetTemplatesAsync(string userId, CancellationToken cancellationToken = default)
 		{
 			return _client

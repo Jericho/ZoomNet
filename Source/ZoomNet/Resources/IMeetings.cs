@@ -439,7 +439,7 @@ namespace ZoomNet.Resources
 		Task<string> GetInvitationAsync(long meetingId, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Update a meeting’s live stream information.
+		/// Update a meeting's live stream information.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="streamUrl">Streaming URL.</param>
@@ -452,7 +452,7 @@ namespace ZoomNet.Resources
 		Task UpdateLiveStreamAsync(long meetingId, string streamUrl, string streamKey, string pageUrl, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Start a meeting’s live stream.
+		/// Start a meeting's live stream.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="displaySpeakerName">Display the name of the active speaker during a live stream.</param>
@@ -464,7 +464,7 @@ namespace ZoomNet.Resources
 		Task StartLiveStreamAsync(long meetingId, bool displaySpeakerName, string speakerName, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Stop a meeting’s live stream.
+		/// Stop a meeting's live stream.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
@@ -472,6 +472,16 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task StopLiveStreamAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the details of a meeting's live stream.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task<LiveStreamingSettings> GetLiveStreamSettingsAsync(long meetingId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve all the templates that are available to be used by a user.
