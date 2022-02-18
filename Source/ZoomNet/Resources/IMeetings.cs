@@ -472,5 +472,15 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task StopLiveStreamAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve all the templates that are available to be used by a user.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="MeetingTemplate" />.
+		/// </returns>
+		Task<MeetingTemplate[]> GetTemplatesAsync(string userId, CancellationToken cancellationToken = default);
 	}
 }

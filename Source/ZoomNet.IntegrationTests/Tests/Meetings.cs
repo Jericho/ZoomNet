@@ -38,6 +38,8 @@ namespace ZoomNet.IntegrationTests.Tests
 				});
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
 
+			var templates = await client.Meetings.GetTemplatesAsync(userId, cancellationToken).ConfigureAwait(false);
+
 			var settings = new MeetingSettings()
 			{
 				Audio = AudioType.Telephony,

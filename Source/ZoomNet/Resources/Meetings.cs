@@ -905,6 +905,15 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
+		/// <inheritdoc/>
+		public Task<MeetingTemplate[]> GetTemplatesAsync(string userId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"users/{userId}/meeting_templates")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<MeetingTemplate[]>("templates");
+		}
+
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string status, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();

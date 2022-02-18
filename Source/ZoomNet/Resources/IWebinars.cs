@@ -458,8 +458,8 @@ namespace ZoomNet.Resources
 		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="Template" />.
+		/// An array of <see cref="WebinarTemplate" />.
 		/// </returns>
-		Task<Template[]> GetTemplatesAsync(string userId, CancellationToken cancellationToken = default);
+		Task<WebinarTemplate[]> GetTemplatesAsync(string userId, CancellationToken cancellationToken = default);
 	}
 }
