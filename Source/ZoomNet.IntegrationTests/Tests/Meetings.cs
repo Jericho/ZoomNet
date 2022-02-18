@@ -149,16 +149,16 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync($"This meeting has {pendingRegistrations.TotalRecords} registrations awaiting approval and {approvedRegistrations.TotalRecords} approved registrations").ConfigureAwait(false);
 
 			await client.Meetings.CancelRegistrantAsync(scheduledMeeting.Id, registrantInfo1.Id, "first@example.com", null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"Regristration {registrant1.Id} was canceled").ConfigureAwait(false);
+			await log.WriteLineAsync($"Registration {registrant1.Id} was canceled").ConfigureAwait(false);
 
 			await client.Meetings.RejectRegistrantAsync(scheduledMeeting.Id, registrantInfo2.Id, "second@example.com", null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"Regristration {registrant2.Id} was rejected").ConfigureAwait(false);
+			await log.WriteLineAsync($"Registration {registrant2.Id} was rejected").ConfigureAwait(false);
 
 			await client.Meetings.DeleteRegistrantAsync(scheduledMeeting.Id, registrantInfo1.Id, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"Regristration {registrant1.Id} was deleted").ConfigureAwait(false);
+			await log.WriteLineAsync($"Registration {registrant1.Id} was deleted").ConfigureAwait(false);
 
 			await client.Meetings.DeleteRegistrantAsync(scheduledMeeting.Id, registrantInfo2.Id, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"Regristration {registrant1.Id} was deleted").ConfigureAwait(false);
+			await log.WriteLineAsync($"Registration {registrant1.Id} was deleted").ConfigureAwait(false);
 
 			await client.Meetings.DeleteAsync(newScheduledMeeting.Id, null, false, false, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Scheduled meeting {newScheduledMeeting.Id} deleted").ConfigureAwait(false);
@@ -178,6 +178,9 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			var recurringMeeting = (RecurringMeeting)await client.Meetings.GetAsync(newRecurringMeeting.Id, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Recurring meeting {recurringMeeting.Id} retrieved").ConfigureAwait(false);
+
+			var inviteLinks = await client.Meetings.CreateInviteLinksAsync(recurringMeeting.Id, new[] { "Bob", "Bill", "John" }, 7200, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"{inviteLinks.Length} invite links created").ConfigureAwait(false);
 
 			var occurenceId = recurringMeeting.Occurrences[0].OccurrenceId;
 			await client.Meetings.UpdateMeetingOccurrenceAsync(newRecurringMeeting.Id, occurenceId, duration: 99, cancellationToken: cancellationToken).ConfigureAwait(false);

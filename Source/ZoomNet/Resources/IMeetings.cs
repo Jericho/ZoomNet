@@ -482,5 +482,17 @@ namespace ZoomNet.Resources
 		/// An array of <see cref="MeetingTemplate" />.
 		/// </returns>
 		Task<MeetingTemplate[]> GetTemplatesAsync(string userId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create a batch of invitation links for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="names">The display name of the attendees.</param>
+		/// <param name="timeToLive">The invite link's expiration time, in seconds.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="InviteLink" />.
+		/// </returns>
+		Task<InviteLink[]> CreateInviteLinksAsync(long meetingId, IEnumerable<string> names, long timeToLive = 7200, CancellationToken cancellationToken = default);
 	}
 }

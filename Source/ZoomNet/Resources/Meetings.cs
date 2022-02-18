@@ -914,6 +914,24 @@ namespace ZoomNet.Resources
 				.AsObject<MeetingTemplate[]>("templates");
 		}
 
+		/// <inheritdoc/>
+		public Task<InviteLink[]> CreateInviteLinksAsync(long meetingId, IEnumerable<string> names, long timeToLive = 7200, CancellationToken cancellationToken = default)
+		{
+			if (names == null || !names.Any()) throw new ArgumentNullException("You must provide at least one name", nameof(names));
+
+			var data = new JObject()
+			{
+				{ "ttl", timeToLive }
+			};
+			data.AddPropertyIfValue("attendees", names?.Select(n => new JObject { { "name", n } }).ToArray());
+
+			return _client
+				.PostAsync($"meetings/{meetingId}/invite_links")
+				.WithBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<InviteLink[]>("attendees");
+		}
+
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string status, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
