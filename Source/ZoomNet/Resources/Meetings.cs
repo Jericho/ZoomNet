@@ -768,8 +768,15 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task UpdateRegistrationQuestions(long meetingId, IEnumerable<RegistrationField> requiredFields, IEnumerable<RegistrationField> optionalFields, IEnumerable<RegistrationCustomQuestion> customQuestions, CancellationToken cancellationToken = default)
 		{
-			var standardFields = (requiredFields ?? Enumerable.Empty<RegistrationField>()).Select(f => new JObject() { { "field_name", f.ToEnumString() }, { "required", true } })
-				.Union((optionalFields ?? Enumerable.Empty<RegistrationField>()).Select(f => new JObject() { { "field_name", f.ToEnumString() }, { "required", false } }))
+			var required = (requiredFields ?? Enumerable.Empty<RegistrationField>())
+				.GroupBy(f => f).Select(grp => grp.First()); // Remove duplicates
+
+			var optional = (optionalFields ?? Enumerable.Empty<RegistrationField>())
+				.Except(required) // Remove 'optional' fields that are on the 'required' enumerations
+				.GroupBy(f => f).Select(grp => grp.First()); // Remove duplicates
+
+			var standardFields = required.Select(f => new JObject() { { "field_name", f.ToEnumString() }, { "required", true } })
+				.Union(optional.Select(f => new JObject() { { "field_name", f.ToEnumString() }, { "required", false } }))
 				.ToArray();
 
 			var data = new JObject();
