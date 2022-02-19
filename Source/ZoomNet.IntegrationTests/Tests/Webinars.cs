@@ -125,8 +125,8 @@ namespace ZoomNet.IntegrationTests.Tests
 			var registrant2 = await client.Webinars.GetRegistrantAsync(scheduledWebinar.Id, registrantInfo2.Id, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Retrieve registrant {registrant2.Id}").ConfigureAwait(false);
 
-			var pendingRegistrations = await client.Webinars.GetRegistrantsAsync(scheduledWebinar.Id, RegistrantStatus.Pending, null, 30, null, cancellationToken).ConfigureAwait(false);
-			var approvedRegistrations = await client.Webinars.GetRegistrantsAsync(scheduledWebinar.Id, RegistrantStatus.Approved, null, 30, null, cancellationToken).ConfigureAwait(false);
+			var pendingRegistrations = await client.Webinars.GetRegistrantsAsync(scheduledWebinar.Id, RegistrantStatus.Pending, null, null, 30, null, cancellationToken).ConfigureAwait(false);
+			var approvedRegistrations = await client.Webinars.GetRegistrantsAsync(scheduledWebinar.Id, RegistrantStatus.Approved, null, null, 30, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"This webinar has {pendingRegistrations.TotalRecords} registrations awaiting approval and {approvedRegistrations.TotalRecords} approved registrations").ConfigureAwait(false);
 
 			var surveyQuestions = new[]
