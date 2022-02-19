@@ -95,9 +95,10 @@ namespace ZoomNet.Resources
 		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
 		/// <param name="settings">Meeting settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
+		/// <param name="templateId">Template Identifer.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// The new meeting.
+		/// The new <see cref="Meeting"/>.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the meeting.</exception>
 		public Task<InstantMeeting> CreateInstantMeetingAsync(
@@ -107,6 +108,7 @@ namespace ZoomNet.Resources
 			string password = null,
 			MeetingSettings settings = null,
 			IDictionary<string, string> trackingFields = null,
+			string templateId = null,
 			CancellationToken cancellationToken = default)
 		{
 			var data = new JObject()
@@ -118,6 +120,7 @@ namespace ZoomNet.Resources
 			data.AddPropertyIfValue("agenda", agenda);
 			data.AddPropertyIfValue("settings", settings);
 			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
+			data.AddPropertyIfValue("template_id", templateId);
 
 			return _client
 				.PostAsync($"users/{userId}/meetings")
@@ -138,9 +141,10 @@ namespace ZoomNet.Resources
 		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
 		/// <param name="settings">Meeting settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
+		/// <param name="templateId">Template Identifer.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// The new meeting.
+		/// The new <see cref="Meeting"/>.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the meeting.</exception>
 		public Task<ScheduledMeeting> CreateScheduledMeetingAsync(
@@ -153,6 +157,7 @@ namespace ZoomNet.Resources
 			string password = null,
 			MeetingSettings settings = null,
 			IDictionary<string, string> trackingFields = null,
+			string templateId = null,
 			CancellationToken cancellationToken = default)
 		{
 			var data = new JObject()
@@ -167,6 +172,7 @@ namespace ZoomNet.Resources
 			data.AddPropertyIfEnumValue("timezone", timeZone);
 			data.AddPropertyIfValue("settings", settings);
 			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
+			data.AddPropertyIfValue("template_id", templateId);
 
 			return _client
 				.PostAsync($"users/{userId}/meetings")
@@ -188,9 +194,10 @@ namespace ZoomNet.Resources
 		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
 		/// <param name="settings">Meeting settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
+		/// <param name="templateId">Template Identifer.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// The new meeting.
+		/// The new <see cref="Meeting"/>.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the meeting.</exception>
 		public Task<RecurringMeeting> CreateRecurringMeetingAsync(
@@ -204,6 +211,7 @@ namespace ZoomNet.Resources
 			string password = null,
 			MeetingSettings settings = null,
 			IDictionary<string, string> trackingFields = null,
+			string templateId = null,
 			CancellationToken cancellationToken = default)
 		{
 			var data = new JObject()
@@ -221,6 +229,7 @@ namespace ZoomNet.Resources
 			data.AddPropertyIfEnumValue("timezone", timeZone);
 			data.AddPropertyIfValue("settings", settings);
 			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
+			data.AddPropertyIfValue("template_id", templateId);
 
 			return _client
 				.PostAsync($"users/{userId}/meetings")
