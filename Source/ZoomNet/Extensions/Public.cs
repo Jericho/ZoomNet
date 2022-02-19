@@ -228,5 +228,20 @@ namespace ZoomNet
 		{
 			return cloudRecordingsResource.DownloadFileAsync(recordingFile.DownloadUrl);
 		}
+
+		/// <summary>
+		/// Invite a participant to join a live meeting.
+		/// </summary>
+		/// <param name="meetingsResource">The meetingds resource.</param>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="emailAddress">The email address of the person you want to invite.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public static Task InviteParticipantAsync(this IMeetings meetingsResource, long meetingId, string emailAddress, CancellationToken cancellationToken = default)
+		{
+			return meetingsResource.InviteParticipantsAsync(meetingId, new[] { emailAddress });
+		}
 	}
 }

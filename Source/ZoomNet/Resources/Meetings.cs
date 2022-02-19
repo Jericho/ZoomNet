@@ -936,7 +936,7 @@ namespace ZoomNet.Resources
 
 			return _client
 				.PostAsync($"meetings/{meetingId}/invite_links")
-				.WithBody(data)
+				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<InviteLink[]>("attendees");
 		}
@@ -970,6 +970,84 @@ namespace ZoomNet.Resources
 
 			return _client
 				.PatchAsync($"meetings/{meetingId}/survey")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task StartCloudRecordingAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject
+			{
+				{ "method", "recording.start" }
+			};
+
+			return _client
+				.PatchAsync($"live_meetings/{meetingId}/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task PauseCloudRecordingAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject
+			{
+				{ "method", "recording.pause" }
+			};
+
+			return _client
+				.PatchAsync($"live_meetings/{meetingId}/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task ResumeCloudRecordingAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject
+			{
+				{ "method", "recording.resume" }
+			};
+
+			return _client
+				.PatchAsync($"live_meetings/{meetingId}/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task StopCloudRecordingAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject
+			{
+				{ "method", "recording.stop" }
+			};
+
+			return _client
+				.PatchAsync($"live_meetings/{meetingId}/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task InviteParticipantsAsync(long meetingId, IEnumerable<string> emailAddresses, CancellationToken cancellationToken = default)
+		{
+			if (emailAddresses == null || !emailAddresses.Any()) throw new ArgumentNullException("You must provide at least one email address", nameof(emailAddresses));
+
+			var data = new JObject
+			{
+				{ "method", "participant.invite" },
+			};
+			data.AddPropertyIfValue("params/contacts", emailAddresses.Select(emailAddress => new JObject { { "email", emailAddress } }).ToArray());
+
+			return _client
+				.PatchAsync($"live_meetings/{meetingId}/events")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();

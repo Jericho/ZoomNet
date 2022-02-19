@@ -538,5 +538,56 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task UpdateSurveyAsync(long meetingId, IEnumerable<SurveyQuestion> questions = null, bool allowAnonymous = true, bool showInBrowser = true, string thirdPartySurveyLink = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Start recording a live meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task StartCloudRecordingAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Pause recording a live meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task PauseCloudRecordingAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Resume recording a live meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task ResumeCloudRecordingAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Stop recording a live meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task StopCloudRecordingAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Invite multiple participants to join a live meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="emailAddresses">The email addresses of the people you want to invite.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task InviteParticipantsAsync(long meetingId, IEnumerable<string> emailAddresses, CancellationToken cancellationToken = default);
 	}
 }
