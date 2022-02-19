@@ -941,6 +941,40 @@ namespace ZoomNet.Resources
 				.AsObject<InviteLink[]>("attendees");
 		}
 
+		/// <inheritdoc/>
+		public Task DeleteSurveyAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"meetings/{meetingId}/survey")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<Survey> GetSurveyAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"meetings/{meetingId}/survey")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<Survey>();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateSurveyAsync(long meetingId, IEnumerable<SurveyQuestion> questions = null, bool allowAnonymous = true, bool showInBrowser = true, string thirdPartySurveyLink = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject();
+			data.AddPropertyIfValue("third_party_survey", thirdPartySurveyLink);
+			data.AddPropertyIfValue("show_in_the_browser", showInBrowser);
+			data.AddPropertyIfValue("custom_survey/anonymous", allowAnonymous);
+			data.AddPropertyIfValue("custom_survey/questions", questions?.ToArray());
+
+			return _client
+				.PatchAsync($"meetings/{meetingId}/survey")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string status, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();

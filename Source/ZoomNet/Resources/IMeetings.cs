@@ -504,5 +504,39 @@ namespace ZoomNet.Resources
 		/// An array of <see cref="InviteLink" />.
 		/// </returns>
 		Task<InviteLink[]> CreateInviteLinksAsync(long meetingId, IEnumerable<string> names, long timeToLive = 7200, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a meeting survey.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task DeleteSurveyAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve the survey for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// A <see cref="Survey"/>.
+		/// </returns>
+		Task<Survey> GetSurveyAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update a meeting's survey.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="questions">The custom questions.</param>
+		/// <param name="allowAnonymous">Whether to allow participants to anonymously answer survey questions.</param>
+		/// <param name="showInBrowser">Whether the survey will be displayed in the attendee's browser.</param>
+		/// <param name="thirdPartySurveyLink">The link to the third party meeting survey.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task UpdateSurveyAsync(long meetingId, IEnumerable<SurveyQuestion> questions = null, bool allowAnonymous = true, bool showInBrowser = true, string thirdPartySurveyLink = null, CancellationToken cancellationToken = default);
 	}
 }

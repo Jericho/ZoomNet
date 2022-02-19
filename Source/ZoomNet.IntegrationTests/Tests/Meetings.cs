@@ -148,6 +148,53 @@ namespace ZoomNet.IntegrationTests.Tests
 			var approvedRegistrations = await client.Meetings.GetRegistrantsAsync(scheduledMeeting.Id, RegistrantStatus.Approved, null, 30, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"This meeting has {pendingRegistrations.TotalRecords} registrations awaiting approval and {approvedRegistrations.TotalRecords} approved registrations").ConfigureAwait(false);
 
+			var surveyQuestions = new[]
+			{
+				new SurveyQuestion
+				{
+					Name = "Did you like the meeting?",
+					IsRequired = true,
+					ShowAsDropdown = false,
+					Type = SurveyQuestionType.Single,
+					Answers = new[] { "Yes", "No"}
+				},
+				new SurveyQuestion
+				{
+					Name = "Rate the presenter",
+					IsRequired = true,
+					ShowAsDropdown = false,
+					Type = SurveyQuestionType.Rating_Scale,
+					RatingMinimumValue = 1,
+					RatingMaximumValue = 10,
+					RatingLowScoreLabel = "Mediocre",
+					RatingHighScoreLabel = "Excellent"
+				},
+				new SurveyQuestion
+				{
+					Name = "Select the product(s) that interest you",
+					IsRequired = false,
+					ShowAsDropdown = false,
+					Type = SurveyQuestionType.Multiple,
+					Answers = new[] { "Gizmo number 1", "Gizmo number 2", "SuperDuper Gizmo"}
+				},
+				new SurveyQuestion
+				{
+					Name = "Comment",
+					IsRequired = false,
+					Type = SurveyQuestionType.Long,
+					MinimumNumberOfCharacters = 10,
+					MaximumNumberOfCharacters = 1999
+				},
+			};
+			await client.Meetings.UpdateSurveyAsync(scheduledMeeting.Id, surveyQuestions, true, true, "https://jeremiedesautels.com", cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Survey was updated").ConfigureAwait(false);
+
+			var survey = await client.Meetings.GetSurveyAsync(scheduledMeeting.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Survey was retrieved").ConfigureAwait(false);
+
+			await client.Meetings.DeleteSurveyAsync(scheduledMeeting.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Survey was deleted").ConfigureAwait(false);
+
 			await client.Meetings.CancelRegistrantAsync(scheduledMeeting.Id, registrantInfo1.Id, "first@example.com", null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Registration {registrant1.Id} was canceled").ConfigureAwait(false);
 
