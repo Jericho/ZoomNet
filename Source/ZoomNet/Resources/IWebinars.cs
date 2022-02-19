@@ -225,6 +225,7 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="webinarId">The webinar ID.</param>
 		/// <param name="status">The registrant status.</param>
+		/// <param name="trackingSourceId">The tracking source ID.</param>
 		/// <param name="occurrenceId">The webinar occurrence id.</param>
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="page">The current page number of returned records.</param>
@@ -233,13 +234,14 @@ namespace ZoomNet.Resources
 		/// An array of <see cref="Registrant" />.
 		/// </returns>
 		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
-		Task<PaginatedResponse<Registrant>> GetRegistrantsAsync(long webinarId, RegistrantStatus status, string occurrenceId = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
+		Task<PaginatedResponse<Registrant>> GetRegistrantsAsync(long webinarId, RegistrantStatus status, string trackingSourceId = null, string occurrenceId = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// List the users that have registered for a webinar.
 		/// </summary>
 		/// <param name="webinarId">The webinar ID.</param>
 		/// <param name="status">The registrant status.</param>
+		/// <param name="trackingSourceId">The tracking source ID.</param>
 		/// <param name="occurrenceId">The webinar occurrence id.</param>
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pagingToken">The paging token.</param>
@@ -247,7 +249,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Registrant" />.
 		/// </returns>
-		Task<PaginatedResponseWithToken<Registrant>> GetRegistrantsAsync(long webinarId, RegistrantStatus status, string occurrenceId = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<Registrant>> GetRegistrantsAsync(long webinarId, RegistrantStatus status, string trackingSourceId = null, string occurrenceId = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get details on a specific user who registered for a webinar.
