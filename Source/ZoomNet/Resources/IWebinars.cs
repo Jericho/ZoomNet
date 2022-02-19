@@ -291,6 +291,18 @@ namespace ZoomNet.Resources
 		Task<RegistrantInfo> AddRegistrantAsync(long webinarId, string email, string firstName, string lastName, string address = null, string city = null, Country? country = null, string postalCode = null, string stateOrProvince = null, string phoneNumber = null, string industry = null, string organization = null, string jobTitle = null, PurchasingTimeFrame? timeFrame = null, RoleInPurchaseProcess? role = null, NumberOfEmployees? employees = null, string comments = null, IEnumerable<RegistrationAnswer> questionAnswers = null, Language? language = null, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Delete a webinar registrant.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="registrantId">The registrant id.</param>
+		/// <param name="occurrenceId">The webinar occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task DeleteRegistrantAsync(long webinarId, string registrantId, string occurrenceId = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Approve a registration for a webinar.
 		/// </summary>
 		/// <param name="webinarId">The webinar ID.</param>
@@ -464,5 +476,96 @@ namespace ZoomNet.Resources
 		/// An array of <see cref="WebinarTemplate" />.
 		/// </returns>
 		Task<WebinarTemplate[]> GetTemplatesAsync(string userId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update a webinar's live stream information.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="streamUrl">Streaming URL.</param>
+		/// <param name="streamKey">Stream name and key.</param>
+		/// <param name="pageUrl">The live stream page URL.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task UpdateLiveStreamAsync(long webinarId, string streamUrl, string streamKey, string pageUrl, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Start a webinar's live stream.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="displaySpeakerName">Display the name of the active speaker during a live stream.</param>
+		/// <param name="speakerName">The name of the speaker.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task StartLiveStreamAsync(long webinarId, bool displaySpeakerName, string speakerName, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Stop a webinar's live stream.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task StopLiveStreamAsync(long webinarId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the details of a webinar's live stream.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task<LiveStreamingSettings> GetLiveStreamSettingsAsync(long webinarId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create a batch of invitation links for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="names">The display name of the attendees.</param>
+		/// <param name="timeToLive">The invite link's expiration time, in seconds.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="InviteLink" />.
+		/// </returns>
+		Task<InviteLink[]> CreateInviteLinksAsync(long webinarId, IEnumerable<string> names, long timeToLive = 7200, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a webinar survey.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task DeleteSurveyAsync(long webinarId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve the survey for a webinar.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// A <see cref="Survey"/>.
+		/// </returns>
+		Task<Survey> GetSurveyAsync(long webinarId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update a webinar's survey.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="questions">The custom questions.</param>
+		/// <param name="allowAnonymous">Whether to allow participants to anonymously answer survey questions.</param>
+		/// <param name="showInBrowser">Whether the survey will be displayed in the attendee's browser.</param>
+		/// <param name="thirdPartySurveyLink">The link to the third party webinar survey.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task UpdateSurveyAsync(long webinarId, IEnumerable<SurveyQuestion> questions = null, bool allowAnonymous = true, bool showInBrowser = true, string thirdPartySurveyLink = null, CancellationToken cancellationToken = default);
 	}
 }

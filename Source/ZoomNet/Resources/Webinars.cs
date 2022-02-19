@@ -554,6 +554,25 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
+		/// Delete a webinar registrant.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="registrantId">The registrant id.</param>
+		/// <param name="occurrenceId">The webinar occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task DeleteRegistrantAsync(long webinarId, string registrantId, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"webinars/{webinarId}/registrants/{registrantId}")
+				.WithArgument("occurence_id", occurrenceId)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
 		/// Approve a registration for a webinar.
 		/// </summary>
 		/// <param name="webinarId">The webinar ID.</param>
@@ -833,6 +852,121 @@ namespace ZoomNet.Resources
 				.GetAsync($"users/{userId}/webinar_templates")
 				.WithCancellationToken(cancellationToken)
 				.AsObject<WebinarTemplate[]>("templates");
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateLiveStreamAsync(long webinarId, string streamUrl, string streamKey, string pageUrl, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject()
+			{
+				{ "stream_url", streamUrl },
+				{ "stream_key", streamKey },
+				{ "page_url", pageUrl }
+			};
+
+			return _client
+				.PatchAsync($"webinars/{webinarId}/livestream")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task StartLiveStreamAsync(long webinarId, bool displaySpeakerName, string speakerName, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject()
+			{
+				{ "action", "start" },
+				{
+					"settings", new JObject()
+					{
+						{ "active_speaker_name", displaySpeakerName },
+						{ "display_name", speakerName }
+					}
+				}
+			};
+
+			return _client
+				.PatchAsync($"webinars/{webinarId}/livestream/status")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task StopLiveStreamAsync(long webinarId, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject()
+			{
+				{ "action", "stop" }
+			};
+
+			return _client
+				.PatchAsync($"webinars/{webinarId}/livestream/status")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<LiveStreamingSettings> GetLiveStreamSettingsAsync(long webinarId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"webinars/{webinarId}/livestream")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<LiveStreamingSettings>();
+		}
+
+		/// <inheritdoc/>
+		public Task<InviteLink[]> CreateInviteLinksAsync(long webinarId, IEnumerable<string> names, long timeToLive = 7200, CancellationToken cancellationToken = default)
+		{
+			if (names == null || !names.Any()) throw new ArgumentNullException("You must provide at least one name", nameof(names));
+
+			var data = new JObject()
+			{
+				{ "ttl", timeToLive }
+			};
+			data.AddPropertyIfValue("attendees", names?.Select(n => new JObject { { "name", n } }).ToArray());
+
+			return _client
+				.PostAsync($"webinars/{webinarId}/invite_links")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<InviteLink[]>("attendees");
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteSurveyAsync(long webinarId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"webinars/{webinarId}/survey")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<Survey> GetSurveyAsync(long webinarId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"webinars/{webinarId}/survey")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<Survey>();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateSurveyAsync(long webinarId, IEnumerable<SurveyQuestion> questions = null, bool allowAnonymous = true, bool showInBrowser = true, string thirdPartySurveyLink = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject();
+			data.AddPropertyIfValue("third_party_survey", thirdPartySurveyLink);
+			data.AddPropertyIfValue("show_in_the_browser", showInBrowser);
+			data.AddPropertyIfValue("custom_survey/anonymous", allowAnonymous);
+			data.AddPropertyIfValue("custom_survey/questions", questions?.ToArray());
+
+			return _client
+				.PatchAsync($"webinars/{webinarId}/survey")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
 		}
 
 		private Task UpdateRegistrantsStatusAsync(long webinarId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string status, string occurrenceId = null, CancellationToken cancellationToken = default)
