@@ -85,11 +85,11 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="webinarId">The webinar ID.</param>
 		/// <param name="occurrenceId">The webinar occurrence id.</param>
-		/// <param name="agenda">Meeting description.</param>
-		/// <param name="start">Meeting start time.</param>
-		/// <param name="duration">Meeting duration (minutes).</param>
+		/// <param name="agenda">Webinar description.</param>
+		/// <param name="start">Webinar start time.</param>
+		/// <param name="duration">Webinar duration (minutes).</param>
 		/// <param name="timeZone">The time zone for start time.</param>
-		/// <param name="settings">Meeting settings.</param>
+		/// <param name="settings">Webinar settings.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
@@ -281,13 +281,14 @@ namespace ZoomNet.Resources
 		/// <param name="role">Registrant's role in purchase decision.</param>
 		/// <param name="employees">Number of employees.</param>
 		/// <param name="comments">A field that allows registrant to provide any questions or comments that they might have.</param>
-		/// <param name="questionAnswers">Custom questions.</param>
+		/// <param name="questionAnswers">Answers to the custom registration questions.</param>
+		/// <param name="language">Registrant's language preference for confirmation emails.</param>
 		/// <param name="occurrenceId">The webinar occurrence id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// A <see cref="RegistrantInfo" />.
 		/// </returns>
-		Task<RegistrantInfo> AddRegistrantAsync(long webinarId, string email, string firstName, string lastName, string address, string city, string country, string postalCode, string stateOrProvince, string phoneNumber, string industry, string organization, string jobTitle, string timeFrame, string role, string employees, string comments, IEnumerable<PollAnswer> questionAnswers, string occurrenceId = null, CancellationToken cancellationToken = default);
+		Task<RegistrantInfo> AddRegistrantAsync(long webinarId, string email, string firstName, string lastName, string address = null, string city = null, Country? country = null, string postalCode = null, string stateOrProvince = null, string phoneNumber = null, string industry = null, string organization = null, string jobTitle = null, PurchasingTimeFrame? timeFrame = null, RoleInPurchaseProcess? role = null, NumberOfEmployees? employees = null, string comments = null, IEnumerable<RegistrationAnswer> questionAnswers = null, Language? language = null, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Approve a registration for a webinar.
@@ -427,20 +428,22 @@ namespace ZoomNet.Resources
 		/// <param name="webinarId">The webinar ID.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="PollQuestion"/>.
+		/// An array of <see cref="RegistrationCustomQuestionForWebinar"/>.
 		/// </returns>
-		Task<PollQuestion[]> GetRegistrationQuestions(long webinarId, CancellationToken cancellationToken = default);
+		Task<RegistrationQuestionsForWebinar> GetRegistrationQuestionsAsync(long webinarId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Update the questions that are to be answered by users while registering for a webinar.
 		/// </summary>
 		/// <param name="webinarId">The webinar ID.</param>
-		/// <param name="customQuestions">The questions to be answered.</param>
+		/// <param name="requiredFields">List of fields that must be answer when registering for the webinar.</param>
+		/// <param name="optionalFields">List of fields that can be answer when registering for the webinar.</param>
+		/// <param name="customQuestions">Additional questions to be answered.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task UpdateRegistrationQuestions(long webinarId, IEnumerable<PollQuestion> customQuestions, CancellationToken cancellationToken = default);
+		Task UpdateRegistrationQuestionsAsync(long webinarId, IEnumerable<RegistrationField> requiredFields, IEnumerable<RegistrationField> optionalFields, IEnumerable<RegistrationCustomQuestionForWebinar> customQuestions, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve all the tracking sources of a webinar.

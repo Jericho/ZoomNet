@@ -43,8 +43,8 @@ namespace ZoomNet.IntegrationTests.Tests
 			var settings = new MeetingSettings()
 			{
 				Audio = AudioType.Telephony,
-				RegistrationType = MeetingRegistrationType.RegisterOnceAttendAll,
-				ApprovalType = MeetingApprovalType.Manual
+				RegistrationType = RegistrationType.RegisterOnceAttendAll,
+				ApprovalType = ApprovalType.Manual
 			};
 			var trackingFields = new Dictionary<string, string>()
 			{
@@ -53,7 +53,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			};
 
 			// Instant meeting
-			var newInstantMeeting = await client.Meetings.CreateInstantMeetingAsync(userId, "ZoomNet Integration Testing: instant meeting", "The agenda", "p@ss!w0rd", settings, trackingFields, cancellationToken).ConfigureAwait(false);
+			var newInstantMeeting = await client.Meetings.CreateInstantMeetingAsync(userId, "ZoomNet Integration Testing: instant meeting", "The agenda", "p@ss!w0rd", settings, trackingFields, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Instant meeting {newInstantMeeting.Id} created").ConfigureAwait(false);
 
 			var instantMeeting = (InstantMeeting)await client.Meetings.GetAsync(newInstantMeeting.Id, null, cancellationToken).ConfigureAwait(false);
@@ -68,7 +68,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			// Scheduled meeting
 			var start = DateTime.UtcNow.AddMonths(1);
 			var duration = 30;
-			var newScheduledMeeting = await client.Meetings.CreateScheduledMeetingAsync(userId, "ZoomNet Integration Testing: scheduled meeting", "The agenda", start, duration, TimeZones.UTC, "p@ss!w0rd", settings, trackingFields, cancellationToken).ConfigureAwait(false);
+			var newScheduledMeeting = await client.Meetings.CreateScheduledMeetingAsync(userId, "ZoomNet Integration Testing: scheduled meeting", "The agenda", start, duration, TimeZones.UTC, "p@ss!w0rd", settings, trackingFields, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Scheduled meeting {newScheduledMeeting.Id} created").ConfigureAwait(false);
 
 			var updatedSettings = new MeetingSettings() { Audio = AudioType.Voip };
@@ -99,17 +99,17 @@ namespace ZoomNet.IntegrationTests.Tests
 			};
 			var customQuestions = new[]
 			{
-				new RegistrationCustomQuestion
+				new RegistrationCustomQuestionForMeeting
 				{
 					Title = "Are you happy?",
-					Type = RegistrationCustomQuestionType.Single,
+					Type = RegistrationCustomQuestionTypeForMeeting.Single,
 					IsRequired = true,
 					Answers = new[] { "Yes", "No", "Maybe", "I don't know" }
 				},
-				new RegistrationCustomQuestion
+				new RegistrationCustomQuestionForMeeting
 				{
 					Title = "Tell us about yourself",
-					Type = RegistrationCustomQuestionType.Short,
+					Type = RegistrationCustomQuestionTypeForMeeting.Short,
 					IsRequired = false
 				}
 			};
@@ -186,7 +186,7 @@ namespace ZoomNet.IntegrationTests.Tests
 					MaximumNumberOfCharacters = 1999
 				},
 			};
-			await client.Meetings.UpdateSurveyAsync(scheduledMeeting.Id, surveyQuestions, true, true, "https://jeremiedesautels.com", cancellationToken).ConfigureAwait(false);
+			await client.Meetings.UpdateSurveyAsync(scheduledMeeting.Id, surveyQuestions, true, true, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Survey was updated").ConfigureAwait(false);
 
 			var survey = await client.Meetings.GetSurveyAsync(scheduledMeeting.Id, cancellationToken).ConfigureAwait(false);
@@ -217,7 +217,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				WeeklyDays = new[] { DayOfWeek.Monday, DayOfWeek.Friday },
 				Type = RecurrenceType.Weekly
 			};
-			var newRecurringMeeting = await client.Meetings.CreateRecurringMeetingAsync(userId, "ZoomNet Integration Testing: recurring meeting", "The agenda", start, duration, recurrenceInfo, TimeZones.UTC, "p@ss!w0rd", settings, trackingFields, cancellationToken).ConfigureAwait(false);
+			var newRecurringMeeting = await client.Meetings.CreateRecurringMeetingAsync(userId, "ZoomNet Integration Testing: recurring meeting", "The agenda", start, duration, recurrenceInfo, TimeZones.UTC, "p@ss!w0rd", settings, trackingFields, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Recurring meeting {newRecurringMeeting.Id} created").ConfigureAwait(false);
 
 			await client.Meetings.UpdateRecurringMeetingAsync(newRecurringMeeting.Id, topic: "ZoomNet Integration Testing: UPDATED recurring meeting", cancellationToken: cancellationToken).ConfigureAwait(false);

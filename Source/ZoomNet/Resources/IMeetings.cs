@@ -411,9 +411,9 @@ namespace ZoomNet.Resources
 		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="RegistrationCustomQuestion"/>.
+		/// An array of <see cref="RegistrationCustomQuestionForMeeting"/>.
 		/// </returns>
-		Task<RegistrationQuestions> GetRegistrationQuestionsAsync(long meetingId, CancellationToken cancellationToken = default);
+		Task<RegistrationQuestionsForMeeting> GetRegistrationQuestionsAsync(long meetingId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Update the questions that are to be answered by users while registering for a meeting.
@@ -426,7 +426,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task UpdateRegistrationQuestionsAsync(long meetingId, IEnumerable<RegistrationField> requiredFields, IEnumerable<RegistrationField> optionalFields, IEnumerable<RegistrationCustomQuestion> customQuestions, CancellationToken cancellationToken = default);
+		Task UpdateRegistrationQuestionsAsync(long meetingId, IEnumerable<RegistrationField> requiredFields, IEnumerable<RegistrationField> optionalFields, IEnumerable<RegistrationCustomQuestionForMeeting> customQuestions, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get the meeting invite note that was sent for a specific meeting.

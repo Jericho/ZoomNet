@@ -5,10 +5,10 @@ using System.Runtime.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Enumeration to indicate the type of registration question.
+	/// Enumeration to indicate the type of registration question for meetings.
 	/// </summary>
 	[JsonConverter(typeof(StringEnumConverter))]
-	public enum RegistrationCustomQuestionType
+	public enum RegistrationCustomQuestionTypeForMeeting
 	{
 		/// <summary>
 		/// Short.

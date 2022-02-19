@@ -3,7 +3,7 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// The questions on the registration form.
 	/// </summary>
-	public class RegistrationQuestions
+	public class RegistrationQuestionsForMeeting
 	{
 		/// <summary>
 		/// Gets or sets the required fields.
@@ -27,6 +27,6 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The type.
 		/// </value>
-		public RegistrationCustomQuestion[] Questions { get; set; }
+		public RegistrationCustomQuestionForMeeting[] Questions { get; set; }
 	}
 }

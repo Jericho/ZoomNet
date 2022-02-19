@@ -510,7 +510,7 @@ namespace ZoomNet.Resources
 
 			return _client
 				.PostAsync($"meetings/{meetingId}/registrants")
-				.WithArgument("occurence_id", occurrenceId)
+				.WithArgument("occurence_ids", occurrenceId)
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<RegistrantInfo>();
@@ -752,7 +752,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="PollQuestion"/>.
 		/// </returns>
-		public async Task<RegistrationQuestions> GetRegistrationQuestionsAsync(long meetingId, CancellationToken cancellationToken = default)
+		public async Task<RegistrationQuestionsForMeeting> GetRegistrationQuestionsAsync(long meetingId, CancellationToken cancellationToken = default)
 		{
 			var response = await _client
 				.GetAsync($"meetings/{meetingId}/registrants/questions")
@@ -765,11 +765,11 @@ namespace ZoomNet.Resources
 			var requiredFields = allFields.Where(f => f.IsRequired).Select(f => f.Field).ToArray();
 			var optionalFields = allFields.Where(f => !f.IsRequired).Select(f => f.Field).ToArray();
 
-			var registrationQuestions = new RegistrationQuestions
+			var registrationQuestions = new RegistrationQuestionsForMeeting
 			{
 				RequiredFields = requiredFields,
 				OptionalFields = optionalFields,
-				Questions = response.Property("custom_questions")?.Value.ToObject<RegistrationCustomQuestion[]>() ?? Array.Empty<RegistrationCustomQuestion>()
+				Questions = response.Property("custom_questions")?.Value.ToObject<RegistrationCustomQuestionForMeeting[]>() ?? Array.Empty<RegistrationCustomQuestionForMeeting>()
 			};
 			return registrationQuestions;
 		}
@@ -785,7 +785,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task UpdateRegistrationQuestionsAsync(long meetingId, IEnumerable<RegistrationField> requiredFields, IEnumerable<RegistrationField> optionalFields, IEnumerable<RegistrationCustomQuestion> customQuestions, CancellationToken cancellationToken = default)
+		public Task UpdateRegistrationQuestionsAsync(long meetingId, IEnumerable<RegistrationField> requiredFields, IEnumerable<RegistrationField> optionalFields, IEnumerable<RegistrationCustomQuestionForMeeting> customQuestions, CancellationToken cancellationToken = default)
 		{
 			var required = (requiredFields ?? Enumerable.Empty<RegistrationField>())
 				.GroupBy(f => f).Select(grp => grp.First()); // Remove duplicates
@@ -825,17 +825,7 @@ namespace ZoomNet.Resources
 				.AsObject<string>("invitation");
 		}
 
-		/// <summary>
-		/// Update a meeting’s live stream information.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="streamUrl">Streaming URL.</param>
-		/// <param name="streamKey">Stream name and key.</param>
-		/// <param name="pageUrl">The live stream page URL.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task UpdateLiveStreamAsync(long meetingId, string streamUrl, string streamKey, string pageUrl, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject()
@@ -852,16 +842,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Start a meeting’s live stream.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="displaySpeakerName">Display the name of the active speaker during a live stream.</param>
-		/// <param name="speakerName">The name of the speaker.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task StartLiveStreamAsync(long meetingId, bool displaySpeakerName, string speakerName, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject()
@@ -883,14 +864,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Stop a meeting’s live stream.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task StopLiveStreamAsync(long meetingId, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject()

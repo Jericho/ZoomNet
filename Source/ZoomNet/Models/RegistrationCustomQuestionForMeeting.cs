@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// A custom question to be answered during registration process.
+	/// A custom question to be answered during registration process for a meeting.
 	/// </summary>
-	public class RegistrationCustomQuestion
+	public class RegistrationCustomQuestionForMeeting
 	{
 		/// <summary>
 		/// Gets or sets the title of the custom question.
@@ -23,7 +23,7 @@ namespace ZoomNet.Models
 		/// The type.
 		/// </value>
 		[JsonProperty("type")]
-		public RegistrationCustomQuestionType Type { get; set; }
+		public RegistrationCustomQuestionTypeForMeeting Type { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether the registrant must answer this question.

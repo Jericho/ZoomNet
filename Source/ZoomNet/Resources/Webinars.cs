@@ -516,13 +516,14 @@ namespace ZoomNet.Resources
 		/// <param name="role">Registrant's role in purchase decision.</param>
 		/// <param name="employees">Number of employees.</param>
 		/// <param name="comments">A field that allows registrant to provide any questions or comments that they might have.</param>
-		/// <param name="questionAnswers">Custom questions.</param>
+		/// <param name="questionAnswers">Answers to the custom registration questions.</param>
+		/// <param name="language">Registrant's language preference for confirmation emails.</param>
 		/// <param name="occurrenceId">The webinar occurrence id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// A <see cref="RegistrantInfo" />.
 		/// </returns>
-		public Task<RegistrantInfo> AddRegistrantAsync(long webinarId, string email, string firstName, string lastName, string address, string city, string country, string postalCode, string stateOrProvince, string phoneNumber, string industry, string organization, string jobTitle, string timeFrame, string role, string employees, string comments, IEnumerable<PollAnswer> questionAnswers, string occurrenceId = null, CancellationToken cancellationToken = default)
+		public Task<RegistrantInfo> AddRegistrantAsync(long webinarId, string email, string firstName, string lastName, string address = null, string city = null, Country? country = null, string postalCode = null, string stateOrProvince = null, string phoneNumber = null, string industry = null, string organization = null, string jobTitle = null, PurchasingTimeFrame? timeFrame = null, RoleInPurchaseProcess? role = null, NumberOfEmployees? employees = null, string comments = null, IEnumerable<RegistrationAnswer> questionAnswers = null, Language? language = null, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
 			data.AddPropertyIfValue("email", email);
@@ -533,10 +534,20 @@ namespace ZoomNet.Resources
 			data.AddPropertyIfValue("country", country);
 			data.AddPropertyIfValue("zip", postalCode);
 			data.AddPropertyIfValue("state", stateOrProvince);
+			data.AddPropertyIfValue("phone", phoneNumber);
+			data.AddPropertyIfValue("industry", industry);
+			data.AddPropertyIfValue("org", organization);
+			data.AddPropertyIfValue("job_title", jobTitle);
+			data.AddPropertyIfValue("purchasing_time_frame", timeFrame);
+			data.AddPropertyIfValue("role_in_purchase_process", role);
+			data.AddPropertyIfValue("no_of_employees", employees);
+			data.AddPropertyIfValue("custom_questions", questionAnswers);
+			data.AddPropertyIfValue("language", language);
+			data.AddPropertyIfValue("comments", comments);
 
 			return _client
 				.PostAsync($"webinars/{webinarId}/registrants")
-				.WithArgument("occurence_id", occurrenceId)
+				.WithArgument("occurence_ids", occurrenceId)
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<RegistrantInfo>();
@@ -742,30 +753,58 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="PollQuestion"/>.
 		/// </returns>
-		public Task<PollQuestion[]> GetRegistrationQuestions(long webinarId, CancellationToken cancellationToken = default)
+		public async Task<RegistrationQuestionsForWebinar> GetRegistrationQuestionsAsync(long webinarId, CancellationToken cancellationToken = default)
 		{
-			return _client
+			var response = await _client
 				.GetAsync($"webinars/{webinarId}/registrants/questions")
 				.WithCancellationToken(cancellationToken)
-				.AsObject<PollQuestion[]>("custom_questions");
+				.AsRawJsonObject()
+				.ConfigureAwait(false);
+
+			var allFields = ((JArray)response.Property("questions")?.Value ?? Enumerable.Empty<JToken>())
+				.Select(item => (Field: item.GetPropertyValue<string>("field_name").ToEnum<RegistrationField>(), IsRequired: item.GetPropertyValue<bool>("required")));
+			var requiredFields = allFields.Where(f => f.IsRequired).Select(f => f.Field).ToArray();
+			var optionalFields = allFields.Where(f => !f.IsRequired).Select(f => f.Field).ToArray();
+
+			var registrationQuestions = new RegistrationQuestionsForWebinar
+			{
+				RequiredFields = requiredFields,
+				OptionalFields = optionalFields,
+				Questions = response.Property("custom_questions")?.Value.ToObject<RegistrationCustomQuestionForWebinar[]>() ?? Array.Empty<RegistrationCustomQuestionForWebinar>()
+			};
+			return registrationQuestions;
 		}
 
 		/// <summary>
 		/// Update the questions that are to be answered by users while registering for a webinar.
 		/// </summary>
 		/// <param name="webinarId">The webinar ID.</param>
-		/// <param name="customQuestions">The questions to be answered.</param>
+		/// <param name="requiredFields">List of fields that must be answer when registering for the webinar.</param>
+		/// <param name="optionalFields">List of fields that can be answer when registering for the webinar.</param>
+		/// <param name="customQuestions">Additional questions to be answered.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task UpdateRegistrationQuestions(long webinarId, IEnumerable<PollQuestion> customQuestions, CancellationToken cancellationToken = default)
+		public Task UpdateRegistrationQuestionsAsync(long webinarId, IEnumerable<RegistrationField> requiredFields, IEnumerable<RegistrationField> optionalFields, IEnumerable<RegistrationCustomQuestionForWebinar> customQuestions, CancellationToken cancellationToken = default)
 		{
+			var required = (requiredFields ?? Enumerable.Empty<RegistrationField>())
+				.GroupBy(f => f).Select(grp => grp.First()); // Remove duplicates
+
+			var optional = (optionalFields ?? Enumerable.Empty<RegistrationField>())
+				.Except(required) // Remove 'optional' fields that are on the 'required' enumeration
+				.GroupBy(f => f).Select(grp => grp.First()); // Remove duplicates
+
+			var standardFields = required.Select(f => new JObject() { { "field_name", f.ToEnumString() }, { "required", true } })
+				.Union(optional.Select(f => new JObject() { { "field_name", f.ToEnumString() }, { "required", false } }))
+				.ToArray();
+
 			var data = new JObject();
+			data.AddPropertyIfValue("questions", standardFields);
 			data.AddPropertyIfValue("custom_questions", customQuestions);
 
 			return _client
-				.PutAsync($"webinars/{webinarId}/registrants/questions")
+				.PatchAsync($"webinars/{webinarId}/registrants/questions")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
