@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models.Webhooks
 {
@@ -11,19 +11,19 @@ namespace ZoomNet.Models.Webhooks
 		/// <summary>
 		/// Gets or sets the unique identifier of the account in wich the event occured.
 		/// </summary>
-		[JsonProperty(PropertyName = "account_id")]
+		[JsonPropertyName("account_id")]
 		public string AccountId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the user Id.
 		/// </summary>
-		[JsonProperty(PropertyName = "user_id")]
+		[JsonPropertyName("user_id")]
 		public string UserId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the app's client Id.
 		/// </summary>
-		[JsonProperty(PropertyName = "client_id")]
+		[JsonPropertyName("client_id")]
 		public string ClientId { get; set; }
 
 		/// <summary>
@@ -31,19 +31,19 @@ namespace ZoomNet.Models.Webhooks
 		/// If the value is 'false', you must delete the user's data and call the [Data Compliance API](https://marketplace.zoom.us/docs/api-reference/zoom-api/data-compliance/compliance) within ten days of receiving the deauthorization webhook.
 		/// If the value is 'true', no further action is required on your end.
 		/// </summary>
-		[JsonProperty(PropertyName = "user_data_retention")]
+		[JsonPropertyName("user_data_retention")]
 		public bool CanPreserveUserData { get; set; }
 
 		/// <summary>
 		/// Gets or sets the time at which the user uninstalled your app.
 		/// </summary>
-		[JsonProperty(PropertyName = "deauthorization_time")]
+		[JsonPropertyName("deauthorization_time")]
 		public DateTime DeauthorizationTime { get; set; }
 
 		/// <summary>
 		/// Gets or sets the unique identifier for each instance of deauthorization / app uninstallation done by a user.
 		/// </summary>
-		[JsonProperty(PropertyName = "signature")]
+		[JsonPropertyName("signature")]
 		public string Signature { get; set; }
 	}
 }

@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -14,7 +14,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The unique id.
 		/// </value>
-		[JsonProperty(PropertyName = "uuid")]
+		[JsonPropertyName("uuid")]
 		public string Uuid { get; set; }
 
 		/// <summary>
@@ -23,7 +23,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The id.
 		/// </value>
-		[JsonProperty(PropertyName = "id")]
+		[JsonPropertyName("id")]
 		public long Id { get; set; }
 
 		/// <summary>
@@ -32,7 +32,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The topic.
 		/// </value>
-		[JsonProperty(PropertyName = "topic")]
+		[JsonPropertyName("topic")]
 		public string Topic { get; set; }
 
 		/// <summary>
@@ -41,7 +41,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The host display name.
 		/// </value>
-		[JsonProperty(PropertyName = "host")]
+		[JsonPropertyName("host")]
 		public string Host { get; set; }
 
 		/// <summary>
@@ -50,7 +50,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The host email address.
 		/// </value>
-		[JsonProperty(PropertyName = "email")]
+		[JsonPropertyName("email")]
 		public string Email { get; set; }
 
 		/// <summary>
@@ -59,7 +59,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The users license type.
 		/// </value>
-		[JsonProperty(PropertyName = "user_type")]
+		[JsonPropertyName("user_type")]
 		public string UserType { get; set; }
 
 		/// <summary>
@@ -68,7 +68,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The meeting start time.
 		/// </value>
-		[JsonProperty(PropertyName = "start_time")]
+		[JsonPropertyName("start_time")]
 		public DateTime StartTime { get; set; }
 
 		/// <summary>
@@ -77,7 +77,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The meeting end time.
 		/// </value>
-		[JsonProperty(PropertyName = "end_time", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("end_time")]
 		public DateTime? EndTime { get; set; }
 
 		/// <summary>
@@ -86,7 +86,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The meeting duration.
 		/// </value>
-		[JsonProperty(PropertyName = "duration")]
+		[JsonPropertyName("duration")]
 		public string Duration { get; set; }
 
 		/// <summary>
@@ -95,7 +95,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The meeting participant count.
 		/// </value>
-		[JsonProperty(PropertyName = "participants")]
+		[JsonPropertyName("participants")]
 		public int ParticipantCount { get; set; }
 
 		/// <summary>
@@ -104,7 +104,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Indication whether or not the PSTN was used in the meeting.
 		/// </value>
-		[JsonProperty(PropertyName = "has_pstn")]
+		[JsonPropertyName("has_pstn")]
 		public bool HasPstn { get; set; }
 
 		/// <summary>
@@ -113,7 +113,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Indication whether or not VoIP was used in the meeting.
 		/// </value>
-		[JsonProperty(PropertyName = "has_voip")]
+		[JsonPropertyName("has_voip")]
 		public bool HasVoip { get; set; }
 
 		/// <summary>
@@ -122,7 +122,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Indication whether or not 3rd Party audio was used.
 		/// </value>
-		[JsonProperty(PropertyName = "has_3rd_party_audio")]
+		[JsonPropertyName("has_3rd_party_audio")]
 		public bool Has3RdPartyAudio { get; set; }
 
 		/// <summary>
@@ -131,7 +131,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Indication whether or not video was used in the meeting.
 		/// </value>
-		[JsonProperty(PropertyName = "has_video")]
+		[JsonPropertyName("has_video")]
 		public bool HasVideo { get; set; }
 
 		/// <summary>
@@ -140,7 +140,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Indication whether or not screenshare feature was used in the meeting.
 		/// </value>
-		[JsonProperty(PropertyName = "has_screen_share")]
+		[JsonPropertyName("has_screen_share")]
 		public bool HasScreenShare { get; set; }
 
 		/// <summary>
@@ -149,7 +149,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Indication whether or not the recording feature was used in the meeting.
 		/// </value>
-		[JsonProperty(PropertyName = "has_recording")]
+		[JsonPropertyName("has_recording")]
 		public bool HasRecording { get; set; }
 
 		/// <summary>
@@ -158,7 +158,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Indication whether or not someone joined the meeting using SIP.
 		/// </value>
-		[JsonProperty(PropertyName = "has_sip")]
+		[JsonPropertyName("has_sip")]
 		public bool HasSip { get; set; }
 
 		/// <summary>
@@ -167,7 +167,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The department of the host.
 		/// </value>
-		[JsonProperty(PropertyName = "dept")]
+		[JsonPropertyName("dept")]
 		public string Department { get; set; }
 	}
 }

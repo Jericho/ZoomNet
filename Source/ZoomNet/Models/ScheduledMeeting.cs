@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
 using System;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -13,14 +13,14 @@ namespace ZoomNet.Models
 		/// Gets or sets the meeting start time.
 		/// </summary>
 		/// <value>The meeting start time. Only used for scheduled meetings and recurring meetings with fixed time.</value>
-		[JsonProperty(PropertyName = "start_time", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("start_time")]
 		public DateTime StartTime { get; set; }
 
 		/// <summary>
 		/// Gets or sets the meeting duration in minutes.
 		/// </summary>
 		/// <value>The meeting duration in minutes.</value>
-		[JsonProperty(PropertyName = "duration", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("duration")]
 		public int Duration { get; set; }
 
 		/// <summary>
@@ -29,7 +29,7 @@ namespace ZoomNet.Models
 		/// Please reference our <a href="https://marketplace.zoom.us/docs/api-reference/other-references/abbreviation-lists#timezones">timezone list</a> for supported timezones and their formats.
 		/// </summary>
 		/// <value>The meeting timezone. For example, "America/Los_Angeles". Please reference our <a href="https://marketplace.zoom.us/docs/api-reference/other-references/abbreviation-lists#timezones">timezone list</a> for supported timezones and their formats.</value>
-		[JsonProperty(PropertyName = "timezone", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("timezone")]
 		public string Timezone { get; set; }
 	}
 }

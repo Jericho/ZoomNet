@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System;
+using System.Text.Json.Serialization;
 using ZoomNet.Models.QualityOfService;
 
 namespace ZoomNet.Models
@@ -15,7 +15,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The date-time of the quality of service data.
 		/// </value>
-		[JsonProperty(PropertyName = "date_time")]
+		[JsonPropertyName("date_time")]
 		public DateTime DateTime { get; set; }
 
 		/// <summary>
@@ -24,7 +24,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The quality of service for audio input.
 		/// </value>
-		[JsonProperty(PropertyName = "audio_input")]
+		[JsonPropertyName("audio_input")]
 		public PacketQualityOfServiceMetrics AudioInput { get; set; }
 
 		/// <summary>
@@ -33,7 +33,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The quality of service for audio output.
 		/// </value>
-		[JsonProperty(PropertyName = "audio_output")]
+		[JsonPropertyName("audio_output")]
 		public PacketQualityOfServiceMetrics AudioOutput { get; set; }
 
 		/// <summary>
@@ -42,7 +42,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The quality of service for video input.
 		/// </value>
-		[JsonProperty(PropertyName = "video_input")]
+		[JsonPropertyName("video_input")]
 		public VideoQualityOfServiceMetrics VideoInput { get; set; }
 
 		/// <summary>
@@ -51,7 +51,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The quality of service for video output.
 		/// </value>
-		[JsonProperty(PropertyName = "video_output")]
+		[JsonPropertyName("video_output")]
 		public VideoQualityOfServiceMetrics VideoOutput { get; set; }
 
 		/// <summary>
@@ -60,7 +60,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The quality of service for screen share input.
 		/// </value>
-		[JsonProperty(PropertyName = "as_input")]
+		[JsonPropertyName("as_input")]
 		public VideoQualityOfServiceMetrics ScreenShareInput { get; set; }
 
 		/// <summary>
@@ -69,7 +69,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The quality of service for screen share output.
 		/// </value>
-		[JsonProperty(PropertyName = "as_output")]
+		[JsonPropertyName("as_output")]
 		public VideoQualityOfServiceMetrics ScreenShareOutput { get; set; }
 
 		/// <summary>
@@ -78,7 +78,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The CPU usage data.
 		/// </value>
-		[JsonProperty(PropertyName = "cpu_usage")]
+		[JsonPropertyName("cpu_usage")]
 		public CpuUsage CpuUsage { get; set; }
 
 		/// <summary>
@@ -87,7 +87,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Metrics on audio being sent from a Cloud Room Connector used by the participant to join the meeting.
 		/// </value>
-		[JsonProperty(PropertyName = "audio_device_from_crc")]
+		[JsonPropertyName("audio_device_from_crc")]
 		public PacketQualityOfServiceMetrics AudioDeviceFromCrc { get; set; }
 
 		/// <summary>
@@ -96,7 +96,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Metrics on audio received by a participant who joined the meeting via a Cloud Room Connector.
 		/// </value>
-		[JsonProperty(PropertyName = "audio_device_to_crc")]
+		[JsonPropertyName("audio_device_to_crc")]
 		public PacketQualityOfServiceMetrics AudioDeviceToCrc { get; set; }
 
 		/// <summary>
@@ -105,7 +105,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Metrics on video being sent from a Cloud Room Connector used by the participant to join the meeting.
 		/// </value>
-		[JsonProperty(PropertyName = "video_device_from_crc")]
+		[JsonPropertyName("video_device_from_crc")]
 		public PacketQualityOfServiceMetrics VideoDeviceFromCrc { get; set; }
 
 		/// <summary>
@@ -114,7 +114,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Metrics on video received by a participant who joined the meeting via a Cloud Room Connector.
 		/// </value>
-		[JsonProperty(PropertyName = "video_device_to_crc")]
+		[JsonPropertyName("video_device_to_crc")]
 		public PacketQualityOfServiceMetrics VideoDeviceToCrc { get; set; }
 
 		/// <summary>
@@ -123,7 +123,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Metrics on screen share being sent from a Cloud Room Connector used by the participant to join the meeting.
 		/// </value>
-		[JsonProperty(PropertyName = "as_device_from_crc")]
+		[JsonPropertyName("as_device_from_crc")]
 		public PacketQualityOfServiceMetrics ScreenShareDeviceFromCrc { get; set; }
 
 		/// <summary>
@@ -132,7 +132,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Metrics on screen share received by a participant who joined the meeting via a Cloud Room Connector.
 		/// </value>
-		[JsonProperty(PropertyName = "as_device_to_crc")]
+		[JsonPropertyName("as_device_to_crc")]
 		public PacketQualityOfServiceMetrics ScreenShareDeviceToCrc { get; set; }
 	}
 }

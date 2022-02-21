@@ -1,5 +1,3 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
@@ -7,7 +5,6 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// Possible issue types in a Zoom room.
 	/// </summary>
-	[JsonConverter(typeof(StringEnumConverter))]
 	public enum IssueType
 	{
 		/// <summary>

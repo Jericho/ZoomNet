@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -13,7 +13,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The question.
 		/// </value>
-		[JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("name")]
 		public string Question { get; set; }
 
 		/// <summary>
@@ -22,7 +22,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The type.
 		/// </value>
-		[JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("type")]
 		public PollQuestionType Type { get; set; }
 
 		/// <summary>
@@ -43,7 +43,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The answers.
 		/// </value>
-		[JsonProperty("answers", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("answer")]
 		public string[] Answers { get; set; }
 
 		/// <summary>

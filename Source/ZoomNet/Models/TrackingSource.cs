@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -13,19 +13,19 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The id.
 		/// </value>
-		[JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("id")]
 		public string Id { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name of the source (platform) where the registration URL was shared.
 		/// </summary>
-		[JsonProperty(PropertyName = "source_name")]
+		[JsonPropertyName("source_name")]
 		public string Name { get; set; }
 
 		/// <summary>
 		/// Gets or sets the URL that was shared for the registration.
 		/// </summary>
-		[JsonProperty(PropertyName = "tracking_url")]
+		[JsonPropertyName("tracking_url")]
 		public string TrackingUrl { get; set; }
 
 		/// <summary>
@@ -37,7 +37,7 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the number of visitors who visited the registration page from this source.
 		/// </summary>
-		[JsonProperty(PropertyName = "visitor_count")]
+		[JsonPropertyName("visitor_count")]
 		public long VisitorCount { get; set; }
 	}
 }

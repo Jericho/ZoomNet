@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -10,13 +10,13 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the name of the live streaming service.
 		/// </summary>
-		[JsonProperty(PropertyName = "service")]
+		[JsonPropertyName("service")]
 		public string ServiceName { get; set; }
 
 		/// <summary>
 		/// Gets or sets the meeting id, also known as the meeting number.
 		/// </summary>
-		[JsonProperty(PropertyName = "custom_live_streaming_settings")]
+		[JsonPropertyName("custom_live_streaming_settings")]
 		public LiveStreamingSettings Settings { get; set; }
 	}
 }

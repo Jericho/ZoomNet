@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 using ZoomNet.Resources;
 
 namespace ZoomNet.Models
@@ -24,21 +24,21 @@ namespace ZoomNet.Models
 		/// Gets or sets the number of items returned on this page.
 		/// </summary>
 		/// <value>The number of items returned on this page.</value>
-		[JsonProperty(PropertyName = "page_count")]
+		[JsonPropertyName("page_count")]
 		public int PageCount { get; set; }
 
 		/// <summary>
 		/// Gets or sets the number of records returned within a single API call.
 		/// </summary>
 		/// <value>The number of records returned within a single API call.</value>
-		[JsonProperty(PropertyName = "page_size")]
+		[JsonPropertyName("page_size")]
 		public int PageSize { get; set; }
 
 		/// <summary>
 		/// Gets or sets the number of all records available across pages.
 		/// </summary>
 		/// <value>The number of all records available across pages.</value>
-		[JsonProperty(PropertyName = "total_records")]
+		[JsonPropertyName("total_records")]
 		public int? TotalRecords { get; set; }
 
 		/// <summary>
@@ -46,14 +46,14 @@ namespace ZoomNet.Models
 		/// </summary>
 		/// <value>The page token.</value>
 		/// <remarks>This token expires after 15 minutes.</remarks>
-		[JsonProperty(PropertyName = "next_page_token")]
+		[JsonPropertyName("next_page_token")]
 		public string NextPageToken { get; set; }
 
 		/// <summary>
 		/// Gets or sets the metrics for the meetings.
 		/// </summary>
 		/// <value>The metrics for the meetings.</value>
-		[JsonProperty(PropertyName = "meetings")]
+		[JsonPropertyName("meetings")]
 		public DashboardMeetingMetrics[] Records { get; set; }
 	}
 }

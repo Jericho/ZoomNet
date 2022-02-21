@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -13,7 +13,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The number of Zoom Room participants in the meeting.
 		/// </value>
-		[JsonProperty(PropertyName = "in_room_participants")]
+		[JsonPropertyName("in_room_participants")]
 		public int InRoomParticipants { get; set; }
 	}
 }

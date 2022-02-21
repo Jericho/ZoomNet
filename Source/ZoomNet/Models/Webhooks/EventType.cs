@@ -1,5 +1,3 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
 
 namespace ZoomNet.Models.Webhooks
@@ -7,7 +5,6 @@ namespace ZoomNet.Models.Webhooks
 	/// <summary>
 	/// Enumeration to indicate the type of webhook event.
 	/// </summary>
-	[JsonConverter(typeof(StringEnumConverter))]
 	public enum EventType
 	{
 		/// <summary>

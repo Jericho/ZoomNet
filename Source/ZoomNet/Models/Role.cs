@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -10,25 +10,25 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the unique identifier.
 		/// </summary>
-		[JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("id")]
 		public string Id { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name of the role.
 		/// </summary>
-		[JsonProperty(PropertyName = "name")]
+		[JsonPropertyName("name")]
 		public string Name { get; set; }
 
 		/// <summary>
 		/// Gets or sets the description.
 		/// </summary>
-		[JsonProperty(PropertyName = "description")]
+		[JsonPropertyName("description")]
 		public string Description { get; set; }
 
 		/// <summary>
 		/// Gets or sets the number of members in this role.
 		/// </summary>
-		[JsonProperty(PropertyName = "total_members")]
+		[JsonPropertyName("total_members")]
 		public long MembersCount { get; set; }
 	}
 }

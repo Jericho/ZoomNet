@@ -1,5 +1,3 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
 using System.Threading;

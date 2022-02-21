@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -10,133 +10,133 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the value indicating whether to start video when host joins the meeting.
 		/// </summary>
-		[JsonProperty(PropertyName = "host_video")]
+		[JsonPropertyName("host_video")]
 		public bool? StartVideoWhenHostJoins { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value indicating whether to start video when participants join the meeting.
 		/// </summary>
-		[JsonProperty(PropertyName = "participant_video")]
+		[JsonPropertyName("participant_video")]
 		public bool? StartVideoWhenParticipantsJoin { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value indicating whether the meeting should be hosted in China.
 		/// </summary>
-		[JsonProperty(PropertyName = "cn_meeting")]
+		[JsonPropertyName("cn_meeting")]
 		public bool? HostInChina { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value indicating whether the meeting should be hosted in India.
 		/// </summary>
-		[JsonProperty(PropertyName = "in_meeting")]
+		[JsonPropertyName("in_meeting")]
 		public bool? HostInIndia { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value indicating whether participants can join the meeting before the host starts the meeting. Only used for scheduled or recurring meetings.
 		/// </summary>
-		[JsonProperty(PropertyName = "join_before_host")]
+		[JsonPropertyName("join_before_host")]
 		public bool? JoinBeforeHost { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value indicating whether participants are muted upon entry.
 		/// </summary>
-		[JsonProperty(PropertyName = "mute_upon_entry")]
+		[JsonPropertyName("mute_upon_entry")]
 		public bool? MuteUponEntry { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value indicating whether a watermark should be displayed when viewing shared screen.
 		/// </summary>
-		[JsonProperty(PropertyName = "watermark")]
+		[JsonPropertyName("watermark")]
 		public bool? Watermark { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value indicating whether to use Personal Meeting ID. Only used for scheduled meetings and recurring meetings with no fixed time.
 		/// </summary>
-		[JsonProperty(PropertyName = "use_pmi")]
+		[JsonPropertyName("use_pmi")]
 		public bool? UsePmi { get; set; }
 
 		/// <summary>
 		/// Gets or sets the approval type.
 		/// </summary>
-		[JsonProperty(PropertyName = "approval_type")]
+		[JsonPropertyName("approval_type")]
 		public ApprovalType? ApprovalType { get; set; }
 
 		/// <summary>
 		/// Gets or sets the registration type. Used for recurring meeting with fixed time only.
 		/// </summary>
-		[JsonProperty(PropertyName = "registration_type")]
+		[JsonPropertyName("registration_type")]
 		public RegistrationType? RegistrationType { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value indicating how participants can join the audio portion of the meeting.
 		/// </summary>
-		[JsonProperty(PropertyName = "audio")]
+		[JsonPropertyName("audio")]
 		public AudioType? Audio { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value indicating if audio is recorded and if so, when the audio is saved.
 		/// </summary>
-		[JsonProperty(PropertyName = "auto_recording")]
+		[JsonPropertyName("auto_recording")]
 		public RecordingType? AutoRecording { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value indicating that only signed-in users can join this meeting.
 		/// </summary>
-		[JsonProperty(PropertyName = "enforce_login")]
+		[JsonPropertyName("enforce_login")]
 		public bool? EnforceLogin { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value indicating only signed-in users with specified domains can join this meeting.
 		/// </summary>
-		[JsonProperty(PropertyName = "enforce_login_domains")]
+		[JsonPropertyName("enforce_login_domains")]
 		public string EnforceLoginDomains { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value indicating alternative hosts emails or IDs. Multiple value separated by comma.
 		/// </summary>
-		[JsonProperty(PropertyName = "alternative_hosts")]
+		[JsonPropertyName("alternative_hosts")]
 		public string AlternativeHosts { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value indicating whether registration is closed after event date.
 		/// </summary>
-		[JsonProperty(PropertyName = "close_registration")]
+		[JsonPropertyName("close_registration")]
 		public bool? CloseRegistration { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value indicating whether a confirmation email is sent when a participant registers.
 		/// </summary>
-		[JsonProperty(PropertyName = "registrants_confirmation_email")]
+		[JsonPropertyName("registrants_confirmation_email")]
 		public bool? SendRegistrationConfirmationEmail { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value indicating whether to use a waiting room.
 		/// </summary>
-		[JsonProperty(PropertyName = "waiting_room")]
+		[JsonPropertyName("waiting_room")]
 		public bool? WaitingRoom { get; set; }
 
 		/// <summary>
 		/// Gets or sets the list of global dial-in countries.
 		/// </summary>
-		[JsonProperty(PropertyName = "global_dial_in_countries")]
+		[JsonPropertyName("global_dial_in_countries")]
 		public string[] GlobalDialInCountries { get; set; }
 
 		/// <summary>
 		/// Gets or sets the contact name for registration.
 		/// </summary>
-		[JsonProperty(PropertyName = "contact_name")]
+		[JsonPropertyName("contact_name")]
 		public string ContactName { get; set; }
 
 		/// <summary>
 		/// Gets or sets the contact email for registration.
 		/// </summary>
-		[JsonProperty(PropertyName = "contact_email")]
+		[JsonPropertyName("contact_email")]
 		public string ContactEmail { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value indicating whether to ask the permission to unmute partecipants.
 		/// </summary>
-		[JsonProperty(PropertyName = "request_permission_to_unmute_participants")]
+		[JsonPropertyName("request_permission_to_unmute_participants")]
 		public bool? RequestPermissionToUnmutePartecipants { get; set; }
 	}
 }

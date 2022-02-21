@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -13,7 +13,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The Universally unique identifier of the participant.
 		/// </value>
-		[JsonProperty(PropertyName = "id")]
+		[JsonPropertyName("id")]
 		public string Id { get; set; }
 
 		/// <summary>
@@ -22,7 +22,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The participant ID.
 		/// </value>
-		[JsonProperty(PropertyName = "user_id")]
+		[JsonPropertyName("user_id")]
 		public string UserId { get; set; }
 
 		/// <summary>
@@ -31,7 +31,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The participant display name.
 		/// </value>
-		[JsonProperty(PropertyName = "user_name")]
+		[JsonPropertyName("user_name")]
 		public string UserName { get; set; }
 
 		/// <summary>
@@ -40,7 +40,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// An array of sharing and recording details.
 		/// </value>
-		[JsonProperty(PropertyName = "details")]
+		[JsonPropertyName("details")]
 		public SharingAndRecordingDetail[] SharingAndRecordingDetails { get; set; }
 	}
 }

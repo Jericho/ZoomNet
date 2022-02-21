@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -13,31 +13,31 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The id.
 		/// </value>
-		[JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("id")]
 		public string Id { get; set; }
 
 		/// <summary>
 		/// Gets or sets a valid email address.
 		/// </summary>
-		[JsonProperty(PropertyName = "email")]
+		[JsonPropertyName("email")]
 		public string Email { get; set; }
 
 		/// <summary>
 		/// Gets or sets the first name.
 		/// </summary>
-		[JsonProperty(PropertyName = "first_name")]
+		[JsonPropertyName("first_name")]
 		public string FirstName { get; set; }
 
 		/// <summary>
 		/// Gets or sets the last name.
 		/// </summary>
-		[JsonProperty(PropertyName = "last_name")]
+		[JsonPropertyName("last_name")]
 		public string LastName { get; set; }
 
 		/// <summary>
 		/// Gets or sets the role.
 		/// </summary>
-		[JsonProperty(PropertyName = "role")]
+		[JsonPropertyName("role")]
 		public ChatChannelRole Role { get; set; }
 	}
 }

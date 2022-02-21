@@ -1,10 +1,10 @@
-using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -274,23 +274,25 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task<RecordingRegistration> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string address, string city, string country, string zip, string state, string phone, string industry, string organization, string jobTitle, string purchasingTimeFrame, string roleInPurchaseProcess, string numberOfEmployees, string comments, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("email", email);
-			data.AddPropertyIfValue("first_name", firstName);
-			data.AddPropertyIfValue("last_name", lastName);
-			data.AddPropertyIfValue("address", address);
-			data.AddPropertyIfValue("city", city);
-			data.AddPropertyIfValue("country", country);
-			data.AddPropertyIfValue("zip", zip);
-			data.AddPropertyIfValue("state", state);
-			data.AddPropertyIfValue("phone", phone);
-			data.AddPropertyIfValue("industry", industry);
-			data.AddPropertyIfValue("org", organization);
-			data.AddPropertyIfValue("job_title", jobTitle);
-			data.AddPropertyIfValue("purchasing_time_frame", purchasingTimeFrame);
-			data.AddPropertyIfValue("role_in_purchasing_process", roleInPurchaseProcess);
-			data.AddPropertyIfValue("no_of_employees", numberOfEmployees);
-			data.AddPropertyIfValue("comments", comments);
+			var data = new JsonObject
+			{
+				{ "email", email },
+				{ "first_name", firstName },
+				{ "last_name", lastName },
+				{ "address", address },
+				{ "city", city },
+				{ "country", country },
+				{ "zip", zip },
+				{ "state", state },
+				{ "phone", phone },
+				{ "industry", industry },
+				{ "org", organization },
+				{ "job_title", jobTitle },
+				{ "purchasing_time_frame", purchasingTimeFrame },
+				{ "role_in_purchasing_process", roleInPurchaseProcess },
+				{ "no_of_employees", numberOfEmployees },
+				{ "comments", comments }
+			};
 
 			return _client
 				.PostAsync($"meetings/{meetingId}/recordings/registrants")
@@ -374,9 +376,11 @@ namespace ZoomNet.Resources
 
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<string> registrantIds, string status, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("action", status);
-			data.AddPropertyIfValue("registrants", registrantIds.ToArray());
+			var data = new JsonObject
+			{
+				{ "action", status },
+				{ "registrants", registrantIds.ToArray() }
+			};
 
 			return _client
 				.PutAsync($"meetings/{meetingId}/recordings/registrants/status")

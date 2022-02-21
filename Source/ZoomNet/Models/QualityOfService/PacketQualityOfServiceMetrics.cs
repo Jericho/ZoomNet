@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models.QualityOfService
 {
@@ -13,7 +13,7 @@ namespace ZoomNet.Models.QualityOfService
 		/// <value>
 		/// Bitrate: The number of bits per second that can be transmitted along a digital network.
 		/// </value>
-		[JsonProperty(PropertyName = "bitrate")]
+		[JsonPropertyName("bitrate")]
 		public string Bitrate { get; set; }
 
 		/// <summary>
@@ -22,7 +22,7 @@ namespace ZoomNet.Models.QualityOfService
 		/// <value>
 		/// Latency: The amount of time it takes for a pack to travel from one point to another. In Zoom's case, an audio, video, or screen share packet.
 		/// </value>
-		[JsonProperty(PropertyName = "latency")]
+		[JsonPropertyName("latency")]
 		public string Latency { get; set; }
 
 		/// <summary>
@@ -31,7 +31,7 @@ namespace ZoomNet.Models.QualityOfService
 		/// <value>
 		/// Jitter: The variation in the delay of received packets.
 		/// </value>
-		[JsonProperty(PropertyName = "jitter")]
+		[JsonPropertyName("jitter")]
 		public string Jitter { get; set; }
 
 		/// <summary>
@@ -40,7 +40,7 @@ namespace ZoomNet.Models.QualityOfService
 		/// <value>
 		/// Average Loss: The average amount of packet loss, that is the percentage of packets that fail to arrive at their destination.
 		/// </value>
-		[JsonProperty(PropertyName = "avg_loss")]
+		[JsonPropertyName("avg_loss")]
 		public string AverageLoss { get; set; }
 
 		/// <summary>
@@ -49,7 +49,7 @@ namespace ZoomNet.Models.QualityOfService
 		/// <value>
 		/// Max Loss: The max amount of packet loss, that is the max percentage of packets that fail to arrive at their destination.
 		/// </value>
-		[JsonProperty(PropertyName = "max_loss")]
+		[JsonPropertyName("max_loss")]
 		public string MaxLoss { get; set; }
 	}
 }

@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -13,19 +13,19 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The id.
 		/// </value>
-		[JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("id")]
 		public string Uuid { get; set; }
 
 		/// <summary>
 		/// Gets or sets the participant's email address.
 		/// </summary>
-		[JsonProperty(PropertyName = "user_email")]
+		[JsonPropertyName("user_email")]
 		public string Email { get; set; }
 
 		/// <summary>
 		/// Gets or sets the participant's display name.
 		/// </summary>
-		[JsonProperty(PropertyName = "name")]
+		[JsonPropertyName("name")]
 		public string DisplayName { get; set; }
 	}
 }

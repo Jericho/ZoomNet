@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -12,14 +12,14 @@ namespace ZoomNet.Models
 		/// Gets or sets the date and time of the port usage.
 		/// </summary>
 		/// <value>The date and time of the port usage.</value>
-		[JsonProperty(PropertyName = "date_time")]
+		[JsonPropertyName("date_time")]
 		public DateTime DateTime { get; set; }
 
 		/// <summary>
 		/// Gets or sets the hourly metrics for the port usage.
 		/// </summary>
 		/// <value>The hourly port usage.</value>
-		[JsonProperty(PropertyName = "crc_ports_hour_usage")]
+		[JsonPropertyName("crc_ports_hour_usage")]
 		public CrcPortsHourUsage[] HourlyUsage { get; set; }
 	}
 }

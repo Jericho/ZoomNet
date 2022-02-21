@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -16,7 +16,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The name of the participant.
 		/// </value>
-		[JsonProperty("file_name", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("file_name")]
 		public string ParticipantName { get; set; }
 
 		/// <summary>
@@ -25,7 +25,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The email address of the participant.
 		/// </value>
-		[JsonProperty("email", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("email")]
 		public string ParticipantEmail { get; set; }
 
 		/// <summary>
@@ -34,7 +34,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The answers.
 		/// </value>
-		[JsonProperty("question_details", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("question_details")]
 		public PollAnswer[] Details { get; set; }
 	}
 }

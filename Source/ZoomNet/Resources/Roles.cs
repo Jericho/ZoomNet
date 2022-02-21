@@ -1,9 +1,9 @@
-using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -66,10 +66,12 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public async Task<Role> CreateAsync(string name, string description = null, IEnumerable<string> privileges = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("name", name);
-			data.AddPropertyIfValue("description", description);
-			data.AddPropertyIfValue("privileges", privileges);
+			var data = new JsonObject
+			{
+				{ "name", name },
+				{ "description", description },
+				{ "privileges", privileges }
+			};
 
 			var result = await _client
 				.PostAsync($"roles")
@@ -127,17 +129,12 @@ namespace ZoomNet.Resources
 		{
 			if (userIds == null || !userIds.Any()) throw new ArgumentNullException(nameof(userIds), "You must provide at least one user Id or email address.");
 
-			// Zoom requires either the "id" field or the "email" field, if both provided then "id" takes precedence.
-			var users = userIds.Select(id => new JObject()
+			var data = new JsonObject
 			{
-				{
-					(id ?? string.Empty).Contains("@") ? "email" : "id",
-					id
-				}
-			});
-
-			var data = new JObject();
-			data.AddPropertyIfValue("members", users.ToArray());
+				// Zoom requires either the "id" field or the "email" field.
+				// If both are provided, "id" takes precedence.
+				{ "members", userIds.Select(id => new JsonObject { { (id ?? string.Empty).Contains("@") ? "email" : "id", id } }) }
+			};
 
 			return _client
 				.PostAsync($"roles/{roleId}/members")
@@ -192,11 +189,13 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task UpdateRole(string id, string name = null, string description = null, IEnumerable<string> privileges = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("id", id);
-			data.AddPropertyIfValue("name", name);
-			data.AddPropertyIfValue("description", description);
-			data.AddPropertyIfValue("privileges", privileges);
+			var data = new JsonObject
+			{
+				{ "id", id },
+				{ "name", name },
+				{ "description", description },
+				{ "privileges", privileges }
+			};
 
 			return _client
 				.PatchAsync($"roles/{id}")

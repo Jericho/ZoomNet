@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -13,7 +13,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The name.
 		/// </value>
-		[JsonProperty("file_name", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("file_name")]
 		public string Name { get; set; }
 
 		/// <summary>
@@ -22,7 +22,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The URL.
 		/// </value>
-		[JsonProperty("download_url", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("download_url")]
 		public string DownloadUrl { get; set; }
 
 		/// <summary>
@@ -31,7 +31,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The size.
 		/// </value>
-		[JsonProperty("file_size", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("file_size")]
 		public long Size { get; set; }
 	}
 }

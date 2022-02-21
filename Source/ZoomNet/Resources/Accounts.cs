@@ -1,8 +1,8 @@
-using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -96,18 +96,24 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task<Account> CreateAsync(string firstName, string lastName, string email, string password, bool useSharedVirtualRoomConnectors = false, IEnumerable<string> roomConnectorsIpAddresses = null, bool useSharedMeetingConnectors = false, IEnumerable<string> meetingConnectorsIpAddresses = null, PayMode payMode = PayMode.Master, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
 				{ "first_name", firstName },
 				{ "last_name", lastName },
 				{ "email", email },
-				{ "password", password }
+				{ "password", password },
+				{
+					"options",
+					new JsonObject
+					{
+						{ "share_rc", useSharedVirtualRoomConnectors },
+						{ "room_connectors", string.Join(",", roomConnectorsIpAddresses) },
+						{ "share_mc", useSharedMeetingConnectors },
+						{ "meeting_connectors", string.Join(",", meetingConnectorsIpAddresses) },
+						{ "pay_mode", payMode }
+					}
+				}
 			};
-			data.AddPropertyIfValue("options/share_rc", useSharedVirtualRoomConnectors);
-			data.AddPropertyIfValue("options/room_connectors", roomConnectorsIpAddresses, ipAddresses => JToken.Parse(string.Join(",", ipAddresses)));
-			data.AddPropertyIfValue("options/share_mc", useSharedMeetingConnectors);
-			data.AddPropertyIfValue("options/meeting_connectors", meetingConnectorsIpAddresses, ipAddresses => JToken.Parse(string.Join(",", ipAddresses)));
-			data.AddPropertyIfValue("options/pay_mode", payMode);
 
 			return _client
 				.PostAsync($"accounts")
@@ -167,12 +173,14 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task UpdateOptionsAsync(long accountId, bool? useSharedVirtualRoomConnectors = null, IEnumerable<string> roomConnectorsIpAddresses = null, bool? useSharedMeetingConnectors = null, IEnumerable<string> meetingConnectorsIpAddresses = null, PayMode? payMode = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("share_rc", useSharedVirtualRoomConnectors);
-			data.AddPropertyIfValue("room_connectors", roomConnectorsIpAddresses, ipAddresses => JToken.Parse(string.Join(",", ipAddresses)));
-			data.AddPropertyIfValue("share_mc", useSharedMeetingConnectors);
-			data.AddPropertyIfValue("meeting_connectors", meetingConnectorsIpAddresses, ipAddresses => JToken.Parse(string.Join(",", ipAddresses)));
-			data.AddPropertyIfValue("pay_mode", payMode);
+			var data = new JsonObject
+			{
+				{ "share_rc", useSharedVirtualRoomConnectors },
+				{ "room_connectors", string.Join(",", roomConnectorsIpAddresses) },
+				{ "share_mc", useSharedMeetingConnectors },
+				{ "meeting_connectors", string.Join(",", meetingConnectorsIpAddresses) }
+			};
+			if (payMode.HasValue) data.Add("pay_mode", payMode.Value);
 
 			return _client
 				.PatchAsync($"accounts/{accountId}/options")
@@ -195,13 +203,13 @@ namespace ZoomNet.Resources
 				.GetAsync($"accounts/{accountId}/settings")
 				.WithArgument("option", "meeting_authentication")
 				.WithCancellationToken(cancellationToken)
-				.AsRawJsonObject()
+				.AsRawJsonDocument()
 				.ConfigureAwait(false);
 
 			var settings = new AuthenticationSettings()
 			{
-				RequireAuthentication = response.GetPropertyValue("meeting_authentication", false),
-				AuthenticationOptions = response.GetPropertyValue("authentication_options", Array.Empty<AuthenticationOptions>())
+				RequireAuthentication = response.RootElement.GetPropertyValue("meeting_authentication", false),
+				AuthenticationOptions = response.RootElement.GetProperty("authentication_options", false)?.ToObject<AuthenticationOptions[]>() ?? Array.Empty<AuthenticationOptions>()
 			};
 
 			return settings;
@@ -221,13 +229,13 @@ namespace ZoomNet.Resources
 				.GetAsync($"accounts/{accountId}/settings")
 				.WithArgument("option", "recording_authentication")
 				.WithCancellationToken(cancellationToken)
-				.AsRawJsonObject()
+				.AsRawJsonDocument()
 				.ConfigureAwait(false);
 
 			var settings = new AuthenticationSettings()
 			{
-				RequireAuthentication = response.GetPropertyValue("recording_authentication", false),
-				AuthenticationOptions = response.GetPropertyValue("authentication_options", Array.Empty<AuthenticationOptions>())
+				RequireAuthentication = response.RootElement.GetPropertyValue("recording_authentication", false),
+				AuthenticationOptions = response.RootElement.GetProperty("authentication_options", false)?.ToObject<AuthenticationOptions[]>() ?? Array.Empty<AuthenticationOptions>()
 			};
 
 			return settings;
@@ -246,16 +254,15 @@ namespace ZoomNet.Resources
 			var response = await _client
 				.GetAsync($"accounts/{accountId}/managed_domains")
 				.WithCancellationToken(cancellationToken)
-				.AsRawJsonArray("domains")
+				.AsRawJsonDocument("domains")
 				.ConfigureAwait(false);
 
-			var managedDomains = response
-				.Children()
-				.Select(jsonArrayItem =>
+			var managedDomains = response.RootElement
+				.EnumerateArray()
+				.Select(jsonElement =>
 				{
-					var key = jsonArrayItem.GetPropertyValue("domain", string.Empty);
-					var value = jsonArrayItem.GetPropertyValue("status", string.Empty);
-
+					var key = jsonElement.GetPropertyValue("domain", string.Empty);
+					var value = jsonElement.GetPropertyValue("status", string.Empty);
 					return (key, value);
 				}).ToArray();
 
@@ -289,7 +296,7 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task UpdateOwnerAsync(long accountId, string newOwnerEmail, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
 				{ "email", newOwnerEmail }
 			};

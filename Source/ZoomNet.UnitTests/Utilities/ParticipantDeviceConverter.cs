@@ -1,111 +1,90 @@
-using Newtonsoft.Json;
 using Shouldly;
 using System;
 using System.IO;
 using System.Text;
+using System.Text.Json;
 using Xunit;
 using ZoomNet.Models;
 using ZoomNet.Utilities;
 
-namespace StrongGrid.UnitTests.Utilities
+namespace ZoomNet.UnitTests.Utilities
 {
 	public class ParticipantDeviceConverterTests
 	{
 		[Fact]
-		public void Properties()
-		{
-			// Act
-			var converter = new ParticipantDeviceConverter();
-
-			// Assert
-			converter.CanRead.ShouldBeTrue();
-			converter.CanWrite.ShouldBeTrue();
-		}
-
-		[Fact]
-		public void CanConvert()
-		{
-			// Act
-			var converter = new ParticipantDeviceConverter();
-
-			// Assert
-			converter.CanConvert(typeof(string)).ShouldBeTrue();
-		}
-
-		[Fact]
 		public void Write_single()
 		{
 			// Arrange
-			var sb = new StringBuilder();
-			var sw = new StringWriter(sb);
-			var writer = new JsonTextWriter(sw);
-
 			var value = new[]
 			{
 				ParticipantDevice.Windows
 			};
-
-			var serializer = new JsonSerializer();
+			var ms = new MemoryStream();
+			var jsonWriter = new Utf8JsonWriter(ms);
+			var options = new JsonSerializerOptions();
 
 			var converter = new ParticipantDeviceConverter();
 
 			// Act
-			converter.WriteJson(writer, value, serializer);
-			var result = sb.ToString();
+			converter.Write(jsonWriter, value, options);
+			jsonWriter.Flush();
+
+			ms.Position = 0;
+			var sr = new StreamReader(ms);
+			var result = sr.ReadToEnd();
 
 			// Assert
 			result.ShouldBe("\"Windows\"");
 		}
+
 		[Fact]
 		public void Write_multiple()
 		{
 			// Arrange
-			var sb = new StringBuilder();
-			var sw = new StringWriter(sb);
-			var writer = new JsonTextWriter(sw);
-
 			var value = new[]
 			{
 				ParticipantDevice.Unknown,
 				ParticipantDevice.Phone
 			};
-
-			var serializer = new JsonSerializer();
+			var ms = new MemoryStream();
+			var jsonWriter = new Utf8JsonWriter(ms);
+			var options = new JsonSerializerOptions();
 
 			var converter = new ParticipantDeviceConverter();
 
 			// Act
-			converter.WriteJson(writer, value, serializer);
-			var result = sb.ToString();
+			converter.Write(jsonWriter, value, options);
+			jsonWriter.Flush();
+
+			ms.Position = 0;
+			var sr = new StreamReader(ms);
+			var result = sr.ReadToEnd();
 
 			// Assert
-			result.ShouldBe("\"Unknown + Phone\"");
+			result.ShouldBe("\"Unknown \\u002B Phone\"");
 		}
 
 		[Theory]
-		[InlineDataAttribute("", ParticipantDevice.Unknown)]
-		[InlineDataAttribute("Unknown", ParticipantDevice.Unknown)]
-		[InlineDataAttribute("Android", ParticipantDevice.Android)]
-		[InlineDataAttribute("Phone", ParticipantDevice.Phone)]
-		[InlineDataAttribute("iOs", ParticipantDevice.IOS)]
-		[InlineDataAttribute("H.323/SIP", ParticipantDevice.Sip)]
-		[InlineDataAttribute("Windows", ParticipantDevice.Windows)]
+		[InlineData("", ParticipantDevice.Unknown)]
+		[InlineData("Unknown", ParticipantDevice.Unknown)]
+		[InlineData("Android", ParticipantDevice.Android)]
+		[InlineData("Phone", ParticipantDevice.Phone)]
+		[InlineData("iOs", ParticipantDevice.IOS)]
+		[InlineData("H.323/SIP", ParticipantDevice.Sip)]
+		[InlineData("Windows", ParticipantDevice.Windows)]
 		public void Read_single(string value, ParticipantDevice expectedValue)
 		{
 			// Arrange
-			var json = $"'{value}'";
-
-			var textReader = new StringReader(json);
-			var jsonReader = new JsonTextReader(textReader);
+			var json = $"\"{value}\"";
+			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(json);
+			var jsonReader = new Utf8JsonReader(jsonUtf8);
 			var objectType = (Type)null;
-			var existingValue = (object)null;
-			var serializer = new JsonSerializer();
 
 			var converter = new ParticipantDeviceConverter();
 
 			// Act
 			jsonReader.Read();
-			var result = converter.ReadJson(jsonReader, objectType, existingValue, serializer);
+			var result = converter.Read(ref jsonReader, objectType, ZoomNetJsonFormatter.DeserializerOptions);
 
 			// Assert
 			result.ShouldNotBeNull();
@@ -120,19 +99,17 @@ namespace StrongGrid.UnitTests.Utilities
 		public void Read_multiple()
 		{
 			// Arrange
-			var json = "'Unknown + Phone'";
+			var json = "\"Unknown + Phone\"";
 
-			var textReader = new StringReader(json);
-			var jsonReader = new JsonTextReader(textReader);
+			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(json);
+			var jsonReader = new Utf8JsonReader(jsonUtf8);
 			var objectType = (Type)null;
-			var existingValue = (object)null;
-			var serializer = new JsonSerializer();
 
 			var converter = new ParticipantDeviceConverter();
 
 			// Act
 			jsonReader.Read();
-			var result = converter.ReadJson(jsonReader, objectType, existingValue, serializer);
+			var result = converter.Read(ref jsonReader, objectType, ZoomNetJsonFormatter.DeserializerOptions);
 
 			// Assert
 			result.ShouldNotBeNull();
