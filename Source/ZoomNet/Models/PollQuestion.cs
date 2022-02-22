@@ -1,4 +1,3 @@
-using Newtonsoft.Json;
 using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
@@ -53,7 +52,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The answers.
 		/// </value>
-		[JsonProperty("right_answers")]
+		[JsonPropertyName("right_answers")]
 		public string[] CorrectAnswers { get; set; }
 
 		/// <summary>
@@ -61,7 +60,7 @@ namespace ZoomNet.Models
 		/// This field only applies to questions of type 'Matching' and 'Rank'.
 		/// </summary>
 		/// <remarks>You must provide at least two prompts and no more than 10 prompts.</remarks>
-		[JsonProperty("prompts")]
+		[JsonPropertyName("prompts")]
 		public PollPrompt[] Prompts { get; set; }
 
 		/// <summary>

@@ -1,5 +1,3 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
@@ -7,7 +5,6 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// NumberOfEmployees.
 	/// </summary>
-	[JsonConverter(typeof(StringEnumConverter))]
 	public enum NumberOfEmployees
 	{
 		/// <summary>1-20</summary>

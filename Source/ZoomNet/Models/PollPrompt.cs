@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -10,13 +10,13 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the question prompt's title.
 		/// </summary>
-		[JsonProperty("prompt_question")]
+		[JsonPropertyName("prompt_question")]
 		public string Question { get; set; }
 
 		/// <summary>
 		/// Gets or sets the correct answers.
 		/// </summary>
-		[JsonProperty("prompt_right_answer")]
+		[JsonPropertyName("prompt_right_answer")]
 		public string[] CorrectAnswers { get; set; }
 	}
 }
