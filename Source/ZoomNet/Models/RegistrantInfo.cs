@@ -18,10 +18,10 @@ namespace ZoomNet.Models
 		public string Id { get; set; }
 
 		/// <summary>
-		/// Gets or sets the webinar id.
+		/// Gets or sets the unique identifier of the meeting or webinar.
 		/// </summary>
 		[JsonProperty(PropertyName = "id")]
-		public long WebinarId { get; set; }
+		public long EventId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the start time.
@@ -30,7 +30,7 @@ namespace ZoomNet.Models
 		public DateTime StartTime { get; set; }
 
 		/// <summary>
-		/// Gets or sets the URL for this registrant to join the webinar.
+		/// Gets or sets the URL for this registrant to join the meeting or webinar.
 		/// </summary>
 		[JsonProperty(PropertyName = "join_url")]
 		public string JoinUrl { get; set; }

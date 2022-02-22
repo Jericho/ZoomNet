@@ -115,6 +115,7 @@ namespace ZoomNet
 		/// automatically calculated based on the charset in the response. Also, UTF-8
 		/// encoding will be used if the charset is absent from the response, is blank
 		/// or contains an invalid value.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The string content of the response.</returns>
 		/// <remarks>
 		/// This method is an improvement over the built-in ReadAsStringAsync method
@@ -149,7 +150,7 @@ namespace ZoomNet
 		/// var responseContent = await response.Content.ReadAsStringAsync(null).ConfigureAwait(false);
 		/// </code>
 		/// </example>
-		internal static async Task<string> ReadAsStringAsync(this HttpContent httpContent, Encoding encoding)
+		internal static async Task<string> ReadAsStringAsync(this HttpContent httpContent, Encoding encoding, CancellationToken cancellationToken = default)
 		{
 			var content = string.Empty;
 
@@ -161,9 +162,10 @@ namespace ZoomNet
 
 				// This is important: we must make a copy of the response stream otherwise we would get an
 				// exception on subsequent attempts to read the content of the stream
-				using (var ms = new MemoryStream())
+				using (var ms = Utils.MemoryStreamManager.GetStream())
 				{
-					await contentStream.CopyToAsync(ms).ConfigureAwait(false);
+					const int defaultBufferSize = 81920;
+					await contentStream.CopyToAsync(ms, defaultBufferSize, cancellationToken).ConfigureAwait(false);
 					ms.Position = 0;
 					using (var sr = new StreamReader(ms, encoding))
 					{
@@ -548,50 +550,54 @@ namespace ZoomNet
 		internal static async Task<TResult[]> ForEachAsync<T, TResult>(this IEnumerable<T> items, Func<T, Task<TResult>> action, int maxDegreeOfParalellism)
 		{
 			var allTasks = new List<Task<TResult>>();
-			var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism);
-			foreach (var item in items)
+			using (var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism))
 			{
-				await throttler.WaitAsync();
-				allTasks.Add(
-					Task.Run(async () =>
-					{
-						try
+				foreach (var item in items)
+				{
+					await throttler.WaitAsync();
+					allTasks.Add(
+						Task.Run(async () =>
 						{
-							return await action(item).ConfigureAwait(false);
-						}
-						finally
-						{
-							throttler.Release();
-						}
-					}));
-			}
+							try
+							{
+								return await action(item).ConfigureAwait(false);
+							}
+							finally
+							{
+								throttler.Release();
+							}
+						}));
+				}
 
-			var results = await Task.WhenAll(allTasks).ConfigureAwait(false);
-			return results;
+				var results = await Task.WhenAll(allTasks).ConfigureAwait(false);
+				return results;
+			}
 		}
 
 		internal static async Task ForEachAsync<T>(this IEnumerable<T> items, Func<T, Task> action, int maxDegreeOfParalellism)
 		{
 			var allTasks = new List<Task>();
-			var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism);
-			foreach (var item in items)
+			using (var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism))
 			{
-				await throttler.WaitAsync();
-				allTasks.Add(
-					Task.Run(async () =>
-					{
-						try
+				foreach (var item in items)
+				{
+					await throttler.WaitAsync();
+					allTasks.Add(
+						Task.Run(async () =>
 						{
-							await action(item).ConfigureAwait(false);
-						}
-						finally
-						{
-							throttler.Release();
-						}
-					}));
-			}
+							try
+							{
+								await action(item).ConfigureAwait(false);
+							}
+							finally
+							{
+								throttler.Release();
+							}
+						}));
+				}
 
-			await Task.WhenAll(allTasks).ConfigureAwait(false);
+				await Task.WhenAll(allTasks).ConfigureAwait(false);
+			}
 		}
 
 		/// <summary>

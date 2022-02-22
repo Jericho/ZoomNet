@@ -29,6 +29,12 @@ namespace ZoomNet.Models
 		public string TrackingUrl { get; set; }
 
 		/// <summary>
+		/// Gets or sets the number of registrations made from from this source.
+		/// </summary>
+		[JsonProperty(PropertyName = "registration_count")]
+		public long RegistrationCount { get; set; }
+
+		/// <summary>
 		/// Gets or sets the number of visitors who visited the registration page from this source.
 		/// </summary>
 		[JsonProperty(PropertyName = "visitor_count")]

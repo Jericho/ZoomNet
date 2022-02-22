@@ -1,0 +1,37 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.Runtime.Serialization;
+
+namespace ZoomNet.Models
+{
+	/// <summary>
+	/// Enumeration to indicate the type of registration question for webinars.
+	/// </summary>
+	[JsonConverter(typeof(StringEnumConverter))]
+	public enum RegistrationCustomQuestionTypeForWebinar
+	{
+		/// <summary>
+		/// Short.
+		/// </summary>
+		[EnumMember(Value = "short")]
+		Short,
+
+		/// <summary>
+		/// Single.
+		/// </summary>
+		[EnumMember(Value = "single_radio")]
+		SingleRadio,
+
+		/// <summary>
+		/// Single.
+		/// </summary>
+		[EnumMember(Value = "single_dropdown")]
+		SingleDropdown,
+
+		/// <summary>
+		/// Single.
+		/// </summary>
+		[EnumMember(Value = "multiple")]
+		Multiple,
+	}
+}

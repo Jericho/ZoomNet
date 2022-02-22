@@ -1,9 +1,9 @@
-﻿namespace ZoomNet.Models
+namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Enumeration to indicate the type of registration for a meeting.
+	/// Enumeration to indicate the type of registration for a meeting/webinar.
 	/// </summary>
-	public enum MeetingRegistrationType
+	public enum RegistrationType
 	{
 		/// <summary>
 		/// Attendees register once and can attend any of the occurrences.

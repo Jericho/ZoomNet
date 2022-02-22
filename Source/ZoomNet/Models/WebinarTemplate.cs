@@ -5,7 +5,7 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// Details of a webinar template.
 	/// </summary>
-	public class Template
+	public class WebinarTemplate
 	{
 		/// <summary>
 		/// Gets or sets the Id of the template.

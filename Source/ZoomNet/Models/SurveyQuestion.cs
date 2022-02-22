@@ -3,27 +3,22 @@ using Newtonsoft.Json;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// The answer to a question asked during a poll.
+	/// Survey question.
 	/// </summary>
-	public class PollQuestion
+	public class SurveyQuestion
 	{
 		/// <summary>
-		/// Gets or sets the question asked during the poll.
+		/// Gets or sets the survey question.
 		/// </summary>
-		/// <value>
-		/// The question.
-		/// </value>
-		[JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
-		public string Question { get; set; }
+		/// <remarks>Up to 255 characters.</remarks>
+		[JsonProperty("name")]
+		public string Name { get; set; }
 
 		/// <summary>
-		/// Gets or sets the type of question.
+		/// Gets or sets the question type.
 		/// </summary>
-		/// <value>
-		/// The type.
-		/// </value>
-		[JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
-		public PollQuestionType Type { get; set; }
+		[JsonProperty(PropertyName = "type")]
+		public SurveyQuestionType Type { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether the possible answers will be displayed as a drop-down box.
@@ -38,34 +33,14 @@ namespace ZoomNet.Models
 		public bool IsRequired { get; set; }
 
 		/// <summary>
-		/// Gets or sets the answers to the question.
+		/// Gets or sets the possible answers to chose from.
 		/// </summary>
-		/// <value>
-		/// The answers.
-		/// </value>
-		[JsonProperty("answers", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonProperty(PropertyName = "answers")]
 		public string[] Answers { get; set; }
 
 		/// <summary>
-		/// Gets or sets the correct answer(s) to the question.
-		/// </summary>
-		/// <value>
-		/// The answers.
-		/// </value>
-		[JsonProperty("right_answers", NullValueHandling = NullValueHandling.Ignore)]
-		public string[] CorrectAnswers { get; set; }
-
-		/// <summary>
-		/// Gets or sets the information about the prompt questions.
-		/// This field only applies to questions of type 'Matching' and 'Rank'.
-		/// </summary>
-		/// <remarks>You must provide at least two prompts and no more than 10 prompts.</remarks>
-		[JsonProperty("prompts", NullValueHandling = NullValueHandling.Ignore)]
-		public PollPrompt[] Prompts { get; set; }
-
-		/// <summary>
 		/// Gets or sets the minimum number of characters.
-		/// This field only applies to questions of type 'Short' and 'Long'.
+		/// This field only applies to questions of type 'Long'.
 		/// </summary>
 		/// <remarks>Must be greather or equal to 1.</remarks>
 		[JsonProperty(PropertyName = "answer_min_character")]
@@ -73,18 +48,11 @@ namespace ZoomNet.Models
 
 		/// <summary>
 		/// Gets or sets the maximum number of characters.
-		/// This field only applies to questions of type 'Short' and 'Long'.
+		/// This field only applies to questions of type 'Long'.
 		/// </summary>
 		/// <remarks>Must be smaller or equal to 2,000.</remarks>
 		[JsonProperty(PropertyName = "answer_max_character")]
 		public int? MaximumNumberOfCharacters { get; set; }
-
-		/// <summary>
-		/// Gets or sets a value indicating whether the corect answer is case sensitive.
-		/// This field only applies to questions of type 'Fill in the blanks'.
-		/// </summary>
-		[JsonProperty(PropertyName = "case_sensitive")]
-		public bool? IsCaseSensitive { get; set; }
 
 		/// <summary>
 		/// Gets or sets the rating minimum value.

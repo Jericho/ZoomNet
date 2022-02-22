@@ -35,6 +35,21 @@ namespace ZoomNet.Models
 		public string Title { get; set; }
 
 		/// <summary>
+		/// Gets or sets the type of the poll.
+		/// </summary>
+		/// <value>
+		/// The status.
+		/// </value>
+		[JsonProperty("poll_type", NullValueHandling = NullValueHandling.Ignore)]
+		public PollType Type { get; set; }
+
+		/// <summary>
+		/// Gets or sets a value indicating whether to allow participants to anonymously answer poll questions.
+		/// </summary>
+		[JsonProperty("anonymous")]
+		public bool AllowAnonymous { get; set; }
+
+		/// <summary>
 		/// Gets or sets the questions.
 		/// </summary>
 		/// <value>
