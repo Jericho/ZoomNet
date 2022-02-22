@@ -31,7 +31,7 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the number of registrations made from from this source.
 		/// </summary>
-		[JsonProperty(PropertyName = "registration_count")]
+		[JsonPropertyName("registration_count")]
 		public long RegistrationCount { get; set; }
 
 		/// <summary>

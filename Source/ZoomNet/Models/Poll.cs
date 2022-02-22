@@ -40,13 +40,13 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The status.
 		/// </value>
-		[JsonProperty("poll_type", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("poll_type")]
 		public PollType Type { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether to allow participants to anonymously answer poll questions.
 		/// </summary>
-		[JsonProperty("anonymous")]
+		[JsonPropertyName("anonymous")]
 		public bool AllowAnonymous { get; set; }
 
 		/// <summary>

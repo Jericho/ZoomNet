@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
-using ZoomNet;
 using ZoomNet.Models;
 
 namespace ZoomNet.Resources
@@ -538,23 +537,23 @@ namespace ZoomNet.Resources
 			{
 				{ "email", email },
 				{ "first_name", firstName },
-				{ "last_name", lastName }
+				{ "last_name", lastName },
+				{ "address", address },
+				{ "city", city },
+				{ "country", country },
+				{ "zip", postalCode },
+				{ "state", stateOrProvince },
+				{ "phone", phoneNumber },
+				{ "industry", industry },
+				{ "org", organization },
+				{ "job_title", jobTitle },
+				{ "purchasing_time_frame", timeFrame },
+				{ "role_in_purchase_process", role },
+				{ "no_of_employees", employees },
+				{ "custom_questions", questionAnswers },
+				{ "language", language },
+				{ "comments", comments }
 			};
-			data.AddPropertyIfValue("address", address);
-			data.AddPropertyIfValue("city", city);
-			data.AddPropertyIfValue("country", country);
-			data.AddPropertyIfValue("zip", postalCode);
-			data.AddPropertyIfValue("state", stateOrProvince);
-			data.AddPropertyIfValue("phone", phoneNumber);
-			data.AddPropertyIfValue("industry", industry);
-			data.AddPropertyIfValue("org", organization);
-			data.AddPropertyIfValue("job_title", jobTitle);
-			data.AddPropertyIfValue("purchasing_time_frame", timeFrame);
-			data.AddPropertyIfValue("role_in_purchase_process", role);
-			data.AddPropertyIfValue("no_of_employees", employees);
-			data.AddPropertyIfValue("custom_questions", questionAnswers);
-			data.AddPropertyIfValue("language", language);
-			data.AddPropertyIfValue("comments", comments);
 
 			return _client
 				.PostAsync($"webinars/{webinarId}/registrants")
@@ -790,11 +789,12 @@ namespace ZoomNet.Resources
 			var response = await _client
 				.GetAsync($"webinars/{webinarId}/registrants/questions")
 				.WithCancellationToken(cancellationToken)
-				.AsRawJsonObject()
+				.AsRawJsonDocument()
 				.ConfigureAwait(false);
 
-			var allFields = ((JArray)response.Property("questions")?.Value ?? Enumerable.Empty<JToken>())
+			var allFields = response.RootElement.GetProperty("questions").EnumerateArray()
 				.Select(item => (Field: item.GetPropertyValue<string>("field_name").ToEnum<RegistrationField>(), IsRequired: item.GetPropertyValue<bool>("required")));
+
 			var requiredFields = allFields.Where(f => f.IsRequired).Select(f => f.Field).ToArray();
 			var optionalFields = allFields.Where(f => !f.IsRequired).Select(f => f.Field).ToArray();
 
@@ -802,7 +802,7 @@ namespace ZoomNet.Resources
 			{
 				RequiredFields = requiredFields,
 				OptionalFields = optionalFields,
-				Questions = response.Property("custom_questions")?.Value.ToObject<RegistrationCustomQuestionForWebinar[]>() ?? Array.Empty<RegistrationCustomQuestionForWebinar>()
+				Questions = response.RootElement.GetProperty("custom_questions", false)?.ToObject<RegistrationCustomQuestionForWebinar[]>() ?? Array.Empty<RegistrationCustomQuestionForWebinar>()
 			};
 			return registrationQuestions;
 		}
@@ -827,13 +827,15 @@ namespace ZoomNet.Resources
 				.Except(required) // Remove 'optional' fields that are on the 'required' enumeration
 				.GroupBy(f => f).Select(grp => grp.First()); // Remove duplicates
 
-			var standardFields = required.Select(f => new JObject() { { "field_name", f.ToEnumString() }, { "required", true } })
-				.Union(optional.Select(f => new JObject() { { "field_name", f.ToEnumString() }, { "required", false } }))
+			var standardFields = required.Select(f => new JsonObject { { "field_name", f.ToEnumString() }, { "required", true } })
+				.Union(optional.Select(f => new JsonObject { { "field_name", f.ToEnumString() }, { "required", false } }))
 				.ToArray();
 
-			var data = new JObject();
-			data.AddPropertyIfValue("questions", standardFields);
-			data.AddPropertyIfValue("custom_questions", customQuestions);
+			var data = new JsonObject
+			{
+				{ "questions", standardFields },
+				{ "custom_questions", customQuestions }
+			};
 
 			return _client
 				.PatchAsync($"webinars/{webinarId}/registrants/questions")
@@ -870,7 +872,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task UpdateLiveStreamAsync(long webinarId, string streamUrl, string streamKey, string pageUrl, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
 				{ "stream_url", streamUrl },
 				{ "stream_key", streamKey },
@@ -887,11 +889,11 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task StartLiveStreamAsync(long webinarId, bool displaySpeakerName, string speakerName, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
 				{ "action", "start" },
 				{
-					"settings", new JObject()
+					"settings", new JsonObject
 					{
 						{ "active_speaker_name", displaySpeakerName },
 						{ "display_name", speakerName }
@@ -909,7 +911,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task StopLiveStreamAsync(long webinarId, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
 				{ "action", "stop" }
 			};
@@ -935,11 +937,11 @@ namespace ZoomNet.Resources
 		{
 			if (names == null || !names.Any()) throw new ArgumentNullException("You must provide at least one name", nameof(names));
 
-			var data = new JObject()
+			var data = new JsonObject
 			{
-				{ "ttl", timeToLive }
+				{ "ttl", timeToLive },
+				{ "attendees", names?.Select(n => new JsonObject { { "name", n } }).ToArray() }
 			};
-			data.AddPropertyIfValue("attendees", names?.Select(n => new JObject { { "name", n } }).ToArray());
 
 			return _client
 				.PostAsync($"webinars/{webinarId}/invite_links")
@@ -969,11 +971,19 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task UpdateSurveyAsync(long webinarId, IEnumerable<SurveyQuestion> questions = null, bool allowAnonymous = true, bool showInBrowser = true, string thirdPartySurveyLink = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("third_party_survey", thirdPartySurveyLink);
-			data.AddPropertyIfValue("show_in_the_browser", showInBrowser);
-			data.AddPropertyIfValue("custom_survey/anonymous", allowAnonymous);
-			data.AddPropertyIfValue("custom_survey/questions", questions?.ToArray());
+			var data = new JsonObject
+			{
+				{ "third_party_survey", thirdPartySurveyLink },
+				{ "show_in_the_browser", showInBrowser },
+				{
+					"custom_survey",
+					new JsonObject
+					{
+						{ "anonymous", allowAnonymous },
+						{ "questions", questions?.ToArray() }
+					}
+				}
+			};
 
 			return _client
 				.PatchAsync($"webinars/{webinarId}/survey")

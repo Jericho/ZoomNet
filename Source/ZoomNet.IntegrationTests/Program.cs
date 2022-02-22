@@ -14,7 +14,7 @@ namespace ZoomNet.IntegrationTests
 		{
 			/*
 			 * Handy code to generate the 'JsonSerializable' attributes for ZoomNetJsonSerializerContext
-			 * 
+			 *
 			var baseNamespace = "ZoomNet.Models";
 			var allTypes = System.Reflection.Assembly
 				.GetAssembly(typeof(ZoomClient))

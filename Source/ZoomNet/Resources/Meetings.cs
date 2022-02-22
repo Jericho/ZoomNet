@@ -116,9 +116,9 @@ namespace ZoomNet.Resources
 				{ "password", password },
 				{ "agenda", agenda },
 				{ "settings", settings },
-				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }).ToArray() }
+				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }).ToArray() },
+				{ "template_id", templateId }
 			};
-			data.AddPropertyIfValue("template_id", templateId);
 
 			return _client
 				.PostAsync($"users/{userId}/meetings")
@@ -168,9 +168,9 @@ namespace ZoomNet.Resources
 				{ "duration", duration },
 				{ "timezone", timeZone },
 				{ "settings", settings },
-				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }) }
+				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }) },
+				{ "template_id", templateId }
 			};
-			data.AddPropertyIfValue("template_id", templateId);
 
 			return _client
 				.PostAsync($"users/{userId}/meetings")
@@ -223,9 +223,9 @@ namespace ZoomNet.Resources
 				{ "recurrence", recurrence },
 				{ "timezone", timeZone },
 				{ "settings", settings },
-				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }) }
+				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }) },
+				{ "template_id", templateId }
 			};
-			data.AddPropertyIfValue("template_id", templateId);
 
 			return _client
 				.PostAsync($"users/{userId}/meetings")
@@ -502,24 +502,24 @@ namespace ZoomNet.Resources
 			{
 				{ "email", email },
 				{ "first_name", firstName },
-				{ "last_name", lastName }
+				{ "last_name", lastName },
+				{ "address", address },
+				{ "city", city },
+				{ "country", country },
+				{ "zip", postalCode },
+				{ "state", stateOrProvince },
+				{ "phone", phoneNumber },
+				{ "industry", industry },
+				{ "org", organization },
+				{ "job_title", jobTitle },
+				{ "purchasing_time_frame", timeFrame },
+				{ "role_in_purchase_process", role },
+				{ "no_of_employees", employees },
+				{ "custom_questions", questionAnswers },
+				{ "language", language },
+				{ "comments", comments },
+				{ "auto_approve", autoApprove }
 			};
-			data.AddPropertyIfValue("address", address);
-			data.AddPropertyIfValue("city", city);
-			data.AddPropertyIfValue("country", country);
-			data.AddPropertyIfValue("zip", postalCode);
-			data.AddPropertyIfValue("state", stateOrProvince);
-			data.AddPropertyIfValue("phone", phoneNumber);
-			data.AddPropertyIfValue("industry", industry);
-			data.AddPropertyIfValue("org", organization);
-			data.AddPropertyIfValue("job_title", jobTitle);
-			data.AddPropertyIfValue("purchasing_time_frame", timeFrame);
-			data.AddPropertyIfValue("role_in_purchase_process", role);
-			data.AddPropertyIfValue("no_of_employees", employees);
-			data.AddPropertyIfValue("custom_questions", questionAnswers);
-			data.AddPropertyIfValue("language", language);
-			data.AddPropertyIfValue("comments", comments);
-			data.AddPropertyIfValue("auto_approve", autoApprove);
 
 			return _client
 				.PostAsync($"meetings/{meetingId}/registrants")
@@ -772,11 +772,12 @@ namespace ZoomNet.Resources
 			var response = await _client
 				.GetAsync($"meetings/{meetingId}/registrants/questions")
 				.WithCancellationToken(cancellationToken)
-				.AsRawJsonObject()
+				.AsRawJsonDocument()
 				.ConfigureAwait(false);
 
-			var allFields = ((JArray)response.Property("questions")?.Value ?? Enumerable.Empty<JToken>())
+			var allFields = response.RootElement.GetProperty("questions").EnumerateArray()
 				.Select(item => (Field: item.GetPropertyValue<string>("field_name").ToEnum<RegistrationField>(), IsRequired: item.GetPropertyValue<bool>("required")));
+
 			var requiredFields = allFields.Where(f => f.IsRequired).Select(f => f.Field).ToArray();
 			var optionalFields = allFields.Where(f => !f.IsRequired).Select(f => f.Field).ToArray();
 
@@ -784,7 +785,7 @@ namespace ZoomNet.Resources
 			{
 				RequiredFields = requiredFields,
 				OptionalFields = optionalFields,
-				Questions = response.Property("custom_questions")?.Value.ToObject<RegistrationCustomQuestionForMeeting[]>() ?? Array.Empty<RegistrationCustomQuestionForMeeting>()
+				Questions = response.RootElement.GetProperty("custom_questions", false)?.ToObject<RegistrationCustomQuestionForMeeting[]>() ?? Array.Empty<RegistrationCustomQuestionForMeeting>()
 			};
 			return registrationQuestions;
 		}
@@ -809,13 +810,15 @@ namespace ZoomNet.Resources
 				.Except(required) // Remove 'optional' fields that are on the 'required' enumeration
 				.GroupBy(f => f).Select(grp => grp.First()); // Remove duplicates
 
-			var standardFields = required.Select(f => new JObject() { { "field_name", f.ToEnumString() }, { "required", true } })
-				.Union(optional.Select(f => new JObject() { { "field_name", f.ToEnumString() }, { "required", false } }))
+			var standardFields = required.Select(f => new JsonObject { { "field_name", f.ToEnumString() }, { "required", true } })
+				.Union(optional.Select(f => new JsonObject { { "field_name", f.ToEnumString() }, { "required", false } }))
 				.ToArray();
 
-			var data = new JObject();
-			data.AddPropertyIfValue("questions", standardFields);
-			data.AddPropertyIfValue("custom_questions", customQuestions);
+			var data = new JsonObject
+			{
+				{ "questions", standardFields },
+				{ "custom_questions", customQuestions }
+			};
 
 			return _client
 				.PatchAsync($"meetings/{meetingId}/registrants/questions")
@@ -912,11 +915,11 @@ namespace ZoomNet.Resources
 		{
 			if (names == null || !names.Any()) throw new ArgumentNullException("You must provide at least one name", nameof(names));
 
-			var data = new JObject()
+			var data = new JsonObject
 			{
-				{ "ttl", timeToLive }
+				{ "ttl", timeToLive },
+				{ "attendees", names?.Select(n => new JsonObject { { "name", n } }).ToArray() }
 			};
-			data.AddPropertyIfValue("attendees", names?.Select(n => new JObject { { "name", n } }).ToArray());
 
 			return _client
 				.PostAsync($"meetings/{meetingId}/invite_links")
@@ -946,11 +949,19 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task UpdateSurveyAsync(long meetingId, IEnumerable<SurveyQuestion> questions = null, bool allowAnonymous = true, bool showInBrowser = true, string thirdPartySurveyLink = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("third_party_survey", thirdPartySurveyLink);
-			data.AddPropertyIfValue("show_in_the_browser", showInBrowser);
-			data.AddPropertyIfValue("custom_survey/anonymous", allowAnonymous);
-			data.AddPropertyIfValue("custom_survey/questions", questions?.ToArray());
+			var data = new JsonObject
+			{
+				{ "third_party_survey", thirdPartySurveyLink },
+				{ "show_in_the_browser", showInBrowser },
+				{
+					"custom_survey",
+					new JsonObject
+					{
+						{ "anonymous", allowAnonymous },
+						{ "questions", questions?.ToArray() }
+					}
+				}
+			};
 
 			return _client
 				.PatchAsync($"meetings/{meetingId}/survey")
@@ -962,7 +973,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task StartCloudRecordingAsync(long meetingId, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject
+			var data = new JsonObject
 			{
 				{ "method", "recording.start" }
 			};
@@ -977,7 +988,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task PauseCloudRecordingAsync(long meetingId, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject
+			var data = new JsonObject
 			{
 				{ "method", "recording.pause" }
 			};
@@ -992,7 +1003,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task ResumeCloudRecordingAsync(long meetingId, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject
+			var data = new JsonObject
 			{
 				{ "method", "recording.resume" }
 			};
@@ -1007,7 +1018,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task StopCloudRecordingAsync(long meetingId, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject
+			var data = new JsonObject
 			{
 				{ "method", "recording.stop" }
 			};
@@ -1024,11 +1035,11 @@ namespace ZoomNet.Resources
 		{
 			if (emailAddresses == null || !emailAddresses.Any()) throw new ArgumentNullException("You must provide at least one email address", nameof(emailAddresses));
 
-			var data = new JObject
+			var data = new JsonObject
 			{
 				{ "method", "participant.invite" },
+				{ "params", new JsonObject { { "contacts", emailAddresses.Select(emailAddress => new JsonObject { { "email", emailAddress } }).ToArray() } } }
 			};
-			data.AddPropertyIfValue("params/contacts", emailAddresses.Select(emailAddress => new JObject { { "email", emailAddress } }).ToArray());
 
 			return _client
 				.PatchAsync($"live_meetings/{meetingId}/events")

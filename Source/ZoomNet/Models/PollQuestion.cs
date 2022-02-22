@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
@@ -28,13 +29,13 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets a value indicating whether the possible answers will be displayed as a drop-down box.
 		/// </summary>
-		[JsonProperty(PropertyName = "show_as_dropdown")]
+		[JsonPropertyName("show_as_dropdown")]
 		public bool ShowAsDropdown { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether the question must be answered.
 		/// </summary>
-		[JsonProperty(PropertyName = "answer_required")]
+		[JsonPropertyName("answer_required")]
 		public bool IsRequired { get; set; }
 
 		/// <summary>
@@ -52,7 +53,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The answers.
 		/// </value>
-		[JsonProperty("right_answers", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonProperty("right_answers")]
 		public string[] CorrectAnswers { get; set; }
 
 		/// <summary>
@@ -60,7 +61,7 @@ namespace ZoomNet.Models
 		/// This field only applies to questions of type 'Matching' and 'Rank'.
 		/// </summary>
 		/// <remarks>You must provide at least two prompts and no more than 10 prompts.</remarks>
-		[JsonProperty("prompts", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonProperty("prompts")]
 		public PollPrompt[] Prompts { get; set; }
 
 		/// <summary>
@@ -68,7 +69,7 @@ namespace ZoomNet.Models
 		/// This field only applies to questions of type 'Short' and 'Long'.
 		/// </summary>
 		/// <remarks>Must be greather or equal to 1.</remarks>
-		[JsonProperty(PropertyName = "answer_min_character")]
+		[JsonPropertyName("answer_min_character")]
 		public int? MinimumNumberOfCharacters { get; set; }
 
 		/// <summary>
@@ -76,14 +77,14 @@ namespace ZoomNet.Models
 		/// This field only applies to questions of type 'Short' and 'Long'.
 		/// </summary>
 		/// <remarks>Must be smaller or equal to 2,000.</remarks>
-		[JsonProperty(PropertyName = "answer_max_character")]
+		[JsonPropertyName("answer_max_character")]
 		public int? MaximumNumberOfCharacters { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether the corect answer is case sensitive.
 		/// This field only applies to questions of type 'Fill in the blanks'.
 		/// </summary>
-		[JsonProperty(PropertyName = "case_sensitive")]
+		[JsonPropertyName("case_sensitive")]
 		public bool? IsCaseSensitive { get; set; }
 
 		/// <summary>
@@ -91,7 +92,7 @@ namespace ZoomNet.Models
 		/// This field only applies to questions of type 'Rating'.
 		/// </summary>
 		/// <remarks>Must be greather or equal to 0.</remarks>
-		[JsonProperty(PropertyName = "rating_min_value")]
+		[JsonPropertyName("rating_min_value")]
 		public int? RatingMinimumValue { get; set; }
 
 		/// <summary>
@@ -99,21 +100,21 @@ namespace ZoomNet.Models
 		/// This field only applies to questions of type 'Rating'.
 		/// </summary>
 		/// <remarks>Must be smaller or equal to 10.</remarks>
-		[JsonProperty(PropertyName = "rating_max_value")]
+		[JsonPropertyName("rating_max_value")]
 		public int? RatingMaximumValue { get; set; }
 
 		/// <summary>
 		/// Gets or sets the low score label.
 		/// This field only applies to questions of type 'Rating'.
 		/// </summary>
-		[JsonProperty(PropertyName = "rating_min_label")]
+		[JsonPropertyName("rating_min_label")]
 		public string RatingLowScoreLabel { get; set; }
 
 		/// <summary>
 		/// Gets or sets the high score label.
 		/// This field only applies to questions of type 'Rating'.
 		/// </summary>
-		[JsonProperty(PropertyName = "rating_max_label")]
+		[JsonPropertyName("rating_max_label")]
 		public string RatingHighScoreLabel { get; set; }
 	}
 }
