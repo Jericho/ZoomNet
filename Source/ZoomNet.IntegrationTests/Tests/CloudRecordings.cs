@@ -17,7 +17,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			var paginatedRecordings = await client.CloudRecordings.GetRecordingsForUserAsync(userId, false, null, null, 100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"User {userId} has {paginatedRecordings.TotalRecords} recordings stored in the cloud").ConfigureAwait(false);
 
-			// DOWNLOAD THE FILES
+			// Downlaod the files
 			foreach (var recordingFile in paginatedRecordings.Records.SelectMany(record => record.RecordingFiles))
 			{
 				var stream = await client.CloudRecordings.DownloadFileAsync(recordingFile, cancellationToken).ConfigureAwait(false);
