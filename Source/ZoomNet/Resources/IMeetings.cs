@@ -56,12 +56,13 @@ namespace ZoomNet.Resources
 		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
 		/// <param name="settings">Meeting settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
+		/// <param name="templateId">Template Identifer.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The new meeting.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the meeting.</exception>
-		Task<InstantMeeting> CreateInstantMeetingAsync(string userId, string topic, string agenda, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
+		Task<InstantMeeting> CreateInstantMeetingAsync(string userId, string topic, string agenda, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Create a scheduled meeting for a user.
@@ -75,12 +76,13 @@ namespace ZoomNet.Resources
 		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
 		/// <param name="settings">Meeting settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
+		/// <param name="templateId">Template Identifer.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The new meeting.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the meeting.</exception>
-		Task<ScheduledMeeting> CreateScheduledMeetingAsync(string userId, string topic, string agenda, DateTime start, int duration, TimeZones? timeZone = TimeZones.UTC, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
+		Task<ScheduledMeeting> CreateScheduledMeetingAsync(string userId, string topic, string agenda, DateTime start, int duration, TimeZones? timeZone = TimeZones.UTC, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Create a recurring meeting for a user.
@@ -95,12 +97,13 @@ namespace ZoomNet.Resources
 		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
 		/// <param name="settings">Meeting settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
+		/// <param name="templateId">Template Identifer.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The new meeting.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the meeting.</exception>
-		Task<RecurringMeeting> CreateRecurringMeetingAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, TimeZones? timeZone = TimeZones.UTC, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default);
+		Task<RecurringMeeting> CreateRecurringMeetingAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, TimeZones? timeZone = TimeZones.UTC, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Update the details of a meeting occurrence.
@@ -225,14 +228,53 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="email">A valid email address.</param>
-		/// <param name="firstName">User's first name.</param>
-		/// <param name="lastName">User's last name.</param>
+		/// <param name="firstName">Registrant's first name.</param>
+		/// <param name="lastName">Registrant's last name.</param>
+		/// <param name="address">Registrant's address.</param>
+		/// <param name="city">Registrant's city.</param>
+		/// <param name="country">Registrant's country.</param>
+		/// <param name="postalCode">Registrant's zip or postal code.</param>
+		/// <param name="stateOrProvince">Registrant's state or province.</param>
+		/// <param name="phoneNumber">Registrant's phone number.</param>
+		/// <param name="industry">Registrant's industry.</param>
+		/// <param name="organization">Registrant's organization.</param>
+		/// <param name="jobTitle">Registrant's job title.</param>
+		/// <param name="timeFrame">This field can be used to gauge interest of attendees towards buying your product or service.</param>
+		/// <param name="role">Registrant's role in purchase decision.</param>
+		/// <param name="employees">Number of employees.</param>
+		/// <param name="comments">A field that allows registrant to provide any questions or comments that they might have.</param>
+		/// <param name="questionAnswers">Answers to the custom registration questions.</param>
+		/// <param name="language">Registrant's language preference for confirmation emails.</param>
+		/// <param name="autoApprove">Indicates if the registrant should be automatically approved.</param>
 		/// <param name="occurrenceId">The meeting occurrence id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// A <see cref="Registrant" />.
+		/// A <see cref="RegistrantInfo" />.
 		/// </returns>
-		Task<Registrant> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string occurrenceId = null, CancellationToken cancellationToken = default);
+		Task<RegistrantInfo> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string address = null, string city = null, Country? country = null, string postalCode = null, string stateOrProvince = null, string phoneNumber = null, string industry = null, string organization = null, string jobTitle = null, PurchasingTimeFrame? timeFrame = null, RoleInPurchaseProcess? role = null, NumberOfEmployees? employees = null, string comments = null, IEnumerable<RegistrationAnswer> questionAnswers = null, Language? language = null, bool autoApprove = false, string occurrenceId = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a meeting registrant.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="registrantId">The registrant id.</param>
+		/// <param name="occurrenceId">The meeting occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task DeleteRegistrantAsync(long meetingId, string registrantId, string occurrenceId = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve a meeting registrant.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="registrantId">The registrant unique identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="Registrant"/>.
+		/// </returns>
+		Task<Registrant> GetRegistrantAsync(long meetingId, string registrantId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Approve a registration for a meeting.
@@ -329,7 +371,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task<Poll> CreatePoll(long meetingId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default);
+		Task<Poll> CreatePollAsync(long meetingId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve a poll.
@@ -367,6 +409,29 @@ namespace ZoomNet.Resources
 		Task DeletePollAsync(long meetingId, long pollId, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Retrieve the questions that are to be answered by users while registering for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="RegistrationCustomQuestionForMeeting"/>.
+		/// </returns>
+		Task<RegistrationQuestionsForMeeting> GetRegistrationQuestionsAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update the questions that are to be answered by users while registering for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="requiredFields">List of fields that must be answer when registering for the meeting.</param>
+		/// <param name="optionalFields">List of fields that can be answer when registering for the meeting.</param>
+		/// <param name="customQuestions">Additional questions to be answered.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task UpdateRegistrationQuestionsAsync(long meetingId, IEnumerable<RegistrationField> requiredFields, IEnumerable<RegistrationField> optionalFields, IEnumerable<RegistrationCustomQuestionForMeeting> customQuestions, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Get the meeting invite note that was sent for a specific meeting.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
@@ -377,7 +442,7 @@ namespace ZoomNet.Resources
 		Task<string> GetInvitationAsync(long meetingId, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Update a meeting’s live stream information.
+		/// Update a meeting's live stream information.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="streamUrl">Streaming URL.</param>
@@ -390,7 +455,7 @@ namespace ZoomNet.Resources
 		Task UpdateLiveStreamAsync(long meetingId, string streamUrl, string streamKey, string pageUrl, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Start a meeting’s live stream.
+		/// Start a meeting's live stream.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="displaySpeakerName">Display the name of the active speaker during a live stream.</param>
@@ -402,7 +467,7 @@ namespace ZoomNet.Resources
 		Task StartLiveStreamAsync(long meetingId, bool displaySpeakerName, string speakerName, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Stop a meeting’s live stream.
+		/// Stop a meeting's live stream.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
@@ -410,5 +475,122 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task StopLiveStreamAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the details of a meeting's live stream.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task<LiveStreamingSettings> GetLiveStreamSettingsAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve all the templates that are available to be used by a user.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="MeetingTemplate" />.
+		/// </returns>
+		Task<MeetingTemplate[]> GetTemplatesAsync(string userId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create a batch of invitation links for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="names">The display name of the attendees.</param>
+		/// <param name="timeToLive">The invite link's expiration time, in seconds.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="InviteLink" />.
+		/// </returns>
+		Task<InviteLink[]> CreateInviteLinksAsync(long meetingId, IEnumerable<string> names, long timeToLive = 7200, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a meeting survey.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task DeleteSurveyAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve the survey for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// A <see cref="Survey"/>.
+		/// </returns>
+		Task<Survey> GetSurveyAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update a meeting's survey.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="questions">The custom questions.</param>
+		/// <param name="allowAnonymous">Whether to allow participants to anonymously answer survey questions.</param>
+		/// <param name="showInBrowser">Whether the survey will be displayed in the attendee's browser.</param>
+		/// <param name="thirdPartySurveyLink">The link to the third party meeting survey.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task UpdateSurveyAsync(long meetingId, IEnumerable<SurveyQuestion> questions = null, bool allowAnonymous = true, bool showInBrowser = true, string thirdPartySurveyLink = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Start recording a live meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task StartCloudRecordingAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Pause recording a live meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task PauseCloudRecordingAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Resume recording a live meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task ResumeCloudRecordingAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Stop recording a live meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task StopCloudRecordingAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Invite multiple participants to join a live meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="emailAddresses">The email addresses of the people you want to invite.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task InviteParticipantsAsync(long meetingId, IEnumerable<string> emailAddresses, CancellationToken cancellationToken = default);
 	}
 }

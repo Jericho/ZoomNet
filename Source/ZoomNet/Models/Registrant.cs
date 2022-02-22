@@ -94,19 +94,19 @@ namespace ZoomNet.Models
 		/// Gets or sets the purchasing Time Frame.
 		/// </summary>
 		[JsonProperty(PropertyName = "purchasing_time_frame")]
-		public string PurchasingTimeFrame { get; set; }
+		public PurchasingTimeFrame PurchasingTimeFrame { get; set; }
 
 		/// <summary>
 		/// Gets or sets the role in purchase process.
 		/// </summary>
 		[JsonProperty(PropertyName = "role_in_purchase_process")]
-		public string RoleInPurchaseProcess { get; set; }
+		public RoleInPurchaseProcess RoleInPurchaseProcess { get; set; }
 
 		/// <summary>
 		/// Gets or sets the number of employees.
 		/// </summary>
 		[JsonProperty(PropertyName = "no_of_employees")]
-		public string NumberOfEmployees { get; set; }
+		public NumberOfEmployees NumberOfEmployees { get; set; }
 
 		/// <summary>
 		/// Gets or sets the questions &amp; comments.

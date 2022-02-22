@@ -47,7 +47,7 @@ namespace ZoomNet.Models
 		/// Gets or sets the approval type for the registration.
 		/// </summary>
 		[JsonProperty(PropertyName = "approval_type")]
-		public MeetingApprovalType RegistrationApprovalType { get; set; }
+		public ApprovalType RegistrationApprovalType { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether to send an email to the host when someone registers to view the recording.

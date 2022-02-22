@@ -59,13 +59,13 @@ namespace ZoomNet.Models
 		/// Gets or sets the approval type.
 		/// </summary>
 		[JsonProperty(PropertyName = "approval_type")]
-		public MeetingApprovalType? ApprovalType { get; set; }
+		public ApprovalType? ApprovalType { get; set; }
 
 		/// <summary>
 		/// Gets or sets the registration type. Used for recurring meeting with fixed time only.
 		/// </summary>
 		[JsonProperty(PropertyName = "registration_type")]
-		public MeetingRegistrationType? RegistrationType { get; set; }
+		public RegistrationType? RegistrationType { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value indicating how participants can join the audio portion of the meeting.
