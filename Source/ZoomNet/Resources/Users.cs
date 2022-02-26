@@ -434,6 +434,16 @@ namespace ZoomNet.Resources
 			return settings;
 		}
 
+		/// <inheritdoc/>
+		public Task<SecuritySettings> GetSecuritySettingsAsync(string userId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"users/{userId}/settings")
+				.WithArgument("option", "meeting_security")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<SecuritySettings>("meeting_security");
+		}
+
 		/// <summary>
 		/// Deactivate a specific user on a Zoom account.
 		/// </summary>

@@ -225,6 +225,16 @@ namespace ZoomNet.Resources
 		Task<AuthenticationSettings> GetRecordingAuthenticationSettingsAsync(string userId, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Retrieve a user's security settings.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="SecuritySettings">settings</see>.
+		/// </returns>
+		Task<SecuritySettings> GetSecuritySettingsAsync(string userId, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Deactivate a specific user on a Zoom account.
 		/// </summary>
 		/// <param name="userId">The user Id or email address.</param>
