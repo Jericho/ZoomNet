@@ -1,6 +1,6 @@
 # ZoomNet
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://jericho.mit-license.org/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://jericho.mit-license.org/)
 [![Sourcelink](https://img.shields.io/badge/sourcelink-enabled-brightgreen.svg)](https://github.com/dotnet/sourcelink)
 
 [![Build status](https://ci.appveyor.com/api/projects/status/dak6s7m2b002nuf4/branch/develop?svg=true)](https://ci.appveyor.com/project/Jericho/zoomnet)
@@ -10,7 +10,7 @@
 
 | Release Notes| NuGet (stable) | MyGet (prerelease) |
 |--------------|----------------|--------------------|
-| [![GitHub release](https://img.shields.io/github/release/jericho/zoomnet.svg)](https://github.com/Jericho/ZoomNet/releases) | [![NuGet Version](http://img.shields.io/nuget/v/ZoomNet.svg)](https://www.nuget.org/packages/ZoomNet/) | [![MyGet Pre Release](https://img.shields.io/myget/jericho/vpre/ZoomNet.svg)](http://myget.org/gallery/jericho) |
+| [![GitHub release](https://img.shields.io/github/release/jericho/zoomnet.svg)](https://github.com/Jericho/ZoomNet/releases) | [![NuGet Version](https://img.shields.io/nuget/v/ZoomNet.svg)](https://www.nuget.org/packages/ZoomNet/) | [![MyGet Pre Release](https://img.shields.io/myget/jericho/vpre/ZoomNet.svg)](https://myget.org/gallery/jericho) |
 
 
 ## About
