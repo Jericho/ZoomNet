@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -13,19 +13,19 @@ namespace ZoomNet.Models
 		/// <remarks>
 		/// This feature is only available in version 5.2.2 and higher.
 		/// </remarks>
-		[JsonProperty(PropertyName = "allow_webinar_attendees_dial")]
+		[JsonPropertyName("allow_webinar_attendees_dial")]
 		public bool WebinarAttendeesCanDialIn { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether the user has the Toll-free and Fee-based Toll Call setting enabled.
 		/// </summary>
-		[JsonProperty(PropertyName = "enable")]
+		[JsonPropertyName("enable")]
 		public bool Enabled { get; set; }
 
 		/// <summary>
 		/// Gets or sets the user's Toll-free and Fee-based Toll Call phone number information.
 		/// </summary>
-		[JsonProperty(PropertyName = "numbers")]
+		[JsonPropertyName("numbers")]
 		public AudioConferencingPhoneNumberInformation[] Numbers { get; set; }
 	}
 }

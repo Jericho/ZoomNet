@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -10,43 +10,43 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets a value indicating whether a notification is sent when an alternative host is set or removed from a meeting.
 		/// </summary>
-		[JsonProperty(PropertyName = "alternative_host_reminder")]
+		[JsonPropertyName("alternative_host_reminder")]
 		public bool ChangeAlternativeHost { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether a notification is sent when a meeting is cancelled.
 		/// </summary>
-		[JsonProperty(PropertyName = "cancel_meeting_reminder")]
+		[JsonPropertyName("cancel_meeting_reminder")]
 		public bool CancelMeeting { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether a notification is sent to the host when a cloud recording is available.
 		/// </summary>
-		[JsonProperty(PropertyName = "cloud_recording_available_reminder")]
+		[JsonPropertyName("cloud_recording_available_reminder")]
 		public bool CloudRecordingAvailableToHost { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether a notification is sent when attendees join a meeting before the host.
 		/// </summary>
-		[JsonProperty(PropertyName = "jbh_reminder")]
+		[JsonPropertyName("jbh_reminder")]
 		public bool AttendeesJoinBeforeHost { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether a notification is sent to any alternative hosts when a cloud recording is available.
 		/// </summary>
-		[JsonProperty(PropertyName = "recording_available_reminder_alternative_hosts")]
+		[JsonPropertyName("recording_available_reminder_alternative_hosts")]
 		public bool CloudRecordingAvailableToAlternateHosts { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether a notification is sent to the person who scheduled the meeting or webinar for the host when a cloud recording is available.
 		/// </summary>
-		[JsonProperty(PropertyName = "recording_available_reminder_schedulers")]
+		[JsonPropertyName("recording_available_reminder_schedulers")]
 		public bool CloudRecordingAvailableToScheduler { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether a notification is sent to the host when a meeting is scheduled, rescheduled or cancelled.
 		/// </summary>
-		[JsonProperty(PropertyName = "schedule_for_reminder")]
+		[JsonPropertyName("schedule_for_reminder")]
 		public bool MeetingScheduled { get; set; }
 	}
 }

@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -8,23 +8,23 @@ namespace ZoomNet.Models
 	public class PhoneNumber
 	{
 		/// <summary>Gets or sets the country code. For example, for United States phone numbers, this will be a +1 value.</summary>
-		[JsonProperty("code")]
+		[JsonPropertyName("code")]
 		public string CountryCode { get; set; }
 
 		/// <summary>Gets or sets the country.</summary>
-		[JsonProperty(PropertyName = "country")]
+		[JsonPropertyName("country")]
 		public Country Country { get; set; }
 
 		/// <summary>Gets or sets the type.</summary>
-		[JsonProperty(PropertyName = "label")]
+		[JsonPropertyName("label")]
 		public PhoneType Type { get; set; }
 
 		/// <summary>Gets or sets the phone number.</summary>
-		[JsonProperty(PropertyName = "number")]
+		[JsonPropertyName("number")]
 		public string Number { get; set; }
 
 		/// <summary>Gets or sets a value indicating whether Zoom has verified the phone number.</summary>
-		[JsonProperty(PropertyName = "verified")]
+		[JsonPropertyName("verified")]
 		public bool IsVerified { get; set; }
 	}
 }

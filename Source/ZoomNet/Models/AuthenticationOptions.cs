@@ -40,7 +40,7 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets a value indicating whether this is the default authentication option.
 		/// </summary>
-		[JsonProperty(PropertyName = "default_option")]
+		[JsonPropertyName("default_option")]
 		public bool IsDefault { get; set; }
 	}
 }

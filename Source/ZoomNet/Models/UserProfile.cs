@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -10,7 +10,7 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the user's recording storage settings.
 		/// </summary>
-		[JsonProperty(PropertyName = "recording_storage_location")]
+		[JsonPropertyName("recording_storage_location")]
 		public UserRecordingStorageSettings RecordingStorageLocation { get; set; }
 	}
 }
