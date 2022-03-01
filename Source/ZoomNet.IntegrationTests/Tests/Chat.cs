@@ -48,6 +48,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			// SEND A MESSAGE TO THE CHANNEL
 			var messageId = await client.Chat.SendMessageToChannelAsync(channel.Id, "This is a test from integration test", null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Message \"{messageId}\" sent").ConfigureAwait(false);
+			await Task.Delay(1000, cancellationToken).ConfigureAwait(false); // Allow the Zoom system to process this message and avoid subsequent "message doesn't exist" error messages
 
 			// UPDATE THE MESSAGE
 			await client.Chat.UpdateMessageToChannelAsync(messageId, channel.Id, "This is an updated message from integration testing", null, cancellationToken).ConfigureAwait(false);

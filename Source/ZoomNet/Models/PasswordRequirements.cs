@@ -16,20 +16,20 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets a value indicating whether password must contain at least one alphabetical letter.
 		/// </summary>
-		[JsonProperty(PropertyName = "have_letters")]
-		public bool MustHaveLetters { get; set; }
+		[JsonProperty(PropertyName = "have_letter")]
+		public bool AtLeastOneLetter { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether password must contain at least one number.
 		/// </summary>
 		[JsonProperty(PropertyName = "have_number")]
-		public bool MustHaveNumbers { get; set; }
+		public bool AtLeastOneNumber { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether password must contain at least one special character.
 		/// </summary>
 		[JsonProperty(PropertyName = "have_special_character")]
-		public bool MustHaveSpecialCharacter { get; set; }
+		public bool AtLeastOneSpecialCharacter { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether password must contain only numeric characters.
