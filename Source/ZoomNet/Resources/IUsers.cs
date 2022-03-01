@@ -218,7 +218,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task UploadProfilePicture(string userId, string fileName, Stream pictureData, CancellationToken cancellationToken = default);
+		Task UploadProfilePictureAsync(string userId, string fileName, Stream pictureData, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Delete the user's profile picture.

@@ -90,7 +90,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
-		/// Create a user.
+		/// Creates a user.
 		/// </summary>
 		/// <param name="email">The email address.</param>
 		/// <param name="firstName">First name.</param>
@@ -375,7 +375,7 @@ namespace ZoomNet.Resources
 		/// File size cannot exceed 2M.
 		/// Only jpg/jpeg, gif or png image file can be uploaded.
 		/// </remarks>
-		public Task UploadProfilePicture(string userId, string fileName, Stream pictureData, CancellationToken cancellationToken = default)
+		public Task UploadProfilePictureAsync(string userId, string fileName, Stream pictureData, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.PostAsync($"users/{userId}/picture")
@@ -387,8 +387,7 @@ namespace ZoomNet.Resources
 					// must specify the 'fileName' otherwise Zoom will return
 					// a very confusing HTTP 400 error with the following body:
 					// {"code":120,"message":""}
-					var streamContent = new StreamContent(pictureData);
-					content.Add(streamContent, "pic_file", fileName);
+					content.Add(new StreamContent(pictureData), "pic_file", fileName);
 
 					return content;
 				})
