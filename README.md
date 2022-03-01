@@ -36,7 +36,7 @@ Before you start using the ZoomNet client, you must decide how you are going to 
 #### Connection using JWT
 This is the simplest way to connect to the Zoom API. Zoom expects you to use a key and a secret to generate a JSON object with a signed payload and to provide this JSON object with every API request. The good news is that ZoomNet takes care of the intricacies of generating this JSON object: you simply provide the key and the secret and ZoomNet takes care of the rest. Super easy!
 
-As the Zoom documentation mentions, this is perfect `if you’re looking to build an app that provides server-to-server interaction with Zoom APIs`.
+As the Zoom documentation mentions, this is perfect `if you're looking to build an app that provides server-to-server interaction with Zoom APIs`.
 
 Here is an except from the Zoom documentation that explains [how to get your API key and secret](https://marketplace.zoom.us/docs/guides/auth/jwt#key-secret):
 

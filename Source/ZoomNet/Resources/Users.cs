@@ -90,7 +90,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
-		/// Creates a user.
+		/// Create a user.
 		/// </summary>
 		/// <param name="email">The email address.</param>
 		/// <param name="firstName">First name.</param>
@@ -362,7 +362,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
-		/// Upload a user’s profile picture.
+		/// Upload a user's profile picture.
 		/// </summary>
 		/// <param name="userId">The user Id.</param>
 		/// <param name="fileName">The file name.</param>

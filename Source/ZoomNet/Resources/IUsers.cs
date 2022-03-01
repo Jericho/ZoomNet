@@ -43,7 +43,7 @@ namespace ZoomNet.Resources
 		Task<PaginatedResponseWithToken<User>> GetAllAsync(UserStatus status = UserStatus.Active, string roleId = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Creates a user.
+		/// Create a user.
 		/// </summary>
 		/// <param name="email">The email address.</param>
 		/// <param name="firstName">First name.</param>
@@ -209,7 +209,7 @@ namespace ZoomNet.Resources
 		Task DeleteAllSchedulersAsync(string userId, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Upload a user’s profile picture.
+		/// Upload a user's profile picture.
 		/// </summary>
 		/// <param name="userId">The user Id.</param>
 		/// <param name="fileName">The file name.</param>

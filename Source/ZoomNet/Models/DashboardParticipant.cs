@@ -49,28 +49,28 @@ namespace ZoomNet.Models
 		public ParticipantDevice[] Devices { get; set; }
 
 		/// <summary>
-		/// Gets or sets the participant’s IP address.
+		/// Gets or sets the participant's IP address.
 		/// </summary>
 		/// <value>
-		/// The participant’s IP address.
+		/// The participant's IP address.
 		/// </value>
 		[JsonProperty(PropertyName = "ip_address")]
 		public string IpAddress { get; set; }
 
 		/// <summary>
-		/// Gets or sets the participant’s location.
+		/// Gets or sets the participant's location.
 		/// </summary>
 		/// <value>
-		/// The participant’s location.
+		/// The participant's location.
 		/// </value>
 		[JsonProperty(PropertyName = "location")]
 		public string Location { get; set; }
 
 		/// <summary>
-		/// Gets or sets the participant’s network type.
+		/// Gets or sets the participant's network type.
 		/// </summary>
 		/// <value>
-		/// The participant’s network type.
+		/// The participant's network type.
 		/// </value>
 		[JsonProperty(PropertyName = "network_type")]
 		public ParticipantNetwork NetworkType { get; set; }
@@ -94,10 +94,10 @@ namespace ZoomNet.Models
 		public string Speaker { get; set; }
 
 		/// <summary>
-		/// Gets or sets the data center where participant’s meeting data is stored.
+		/// Gets or sets the data center where participant's meeting data is stored.
 		/// </summary>
 		/// <value>
-		/// The data center where participant’s meeting data is stored.
+		/// The data center where participant's meeting data is stored.
 		/// </value>
 		[JsonProperty(PropertyName = "data_center")]
 		public string DataCenter { get; set; }
@@ -173,46 +173,46 @@ namespace ZoomNet.Models
 		public bool Recording { get; set; }
 
 		/// <summary>
-		/// Gets or sets the name of participant’s PC.
+		/// Gets or sets the name of participant's PC.
 		/// </summary>
 		/// <value>
-		/// The name of participant’s PC.
+		/// The name of participant's PC.
 		/// </value>
 		[JsonProperty(PropertyName = "pc_name")]
 		public string PcName { get; set; }
 
 		/// <summary>
-		/// Gets or sets the participant’s PC domain.
+		/// Gets or sets the participant's PC domain.
 		/// </summary>
 		/// <value>
-		/// The participant’s PC domain.
+		/// The participant's PC domain.
 		/// </value>
 		[JsonProperty(PropertyName = "domain")]
 		public string Domain { get; set; }
 
 		/// <summary>
-		/// Gets or sets the participant’s MAC address.
+		/// Gets or sets the participant's MAC address.
 		/// </summary>
 		/// <value>
-		/// The participant’s MAC address.
+		/// The participant's MAC address.
 		/// </value>
 		[JsonProperty(PropertyName = "mac_addr")]
 		public string MacAddress { get; set; }
 
 		/// <summary>
-		/// Gets or sets the participant’s hard disk ID.
+		/// Gets or sets the participant's hard disk ID.
 		/// </summary>
 		/// <value>
-		/// The participant’s hard disk ID.
+		/// The participant's hard disk ID.
 		/// </value>
 		[JsonProperty(PropertyName = "harddisk_id")]
 		public string HardDiskId { get; set; }
 
 		/// <summary>
-		/// Gets or sets the participant’s Zoom Client version.
+		/// Gets or sets the participant's Zoom Client version.
 		/// </summary>
 		/// <value>
-		/// The participant’s Zoom Client version.
+		/// The participant's Zoom Client version.
 		/// </value>
 		[JsonProperty(PropertyName = "version")]
 		public string Version { get; set; }
