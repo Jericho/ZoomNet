@@ -478,7 +478,7 @@ namespace ZoomNet.Models
 		[EnumMember(Value = "KZ")]
 		Kazakhstan,
 
-		/// <summary>Lao People's Democratic Republic</summary>
+		/// <summary>Lao People's Democratic Republic (AKA Laos)</summary>
 		[EnumMember(Value = "LA")]
 		Lao_People_s_Democratic_Republic,
 

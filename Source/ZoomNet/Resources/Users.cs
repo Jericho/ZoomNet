@@ -121,6 +121,36 @@ namespace ZoomNet.Resources
 				.AsObject<User>();
 		}
 
+		/// <inheritdoc/>
+		public Task UpdateAsync(string userId, string firstName = null, string lastName = null, string company = null, string department = null, string groupId = null, string hostKey = null, string jobTitle = null, string language = null, string location = null, string manager = null, IEnumerable<UserPhoneNumber> phoneNumbers = null, string pmi = null, string pronouns = null, PronounDisplayType? pronounsDisplay = null, TimeZones? timezone = null, UserType? type = null, bool? usePmi = null, string personalMeetingRoomName = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JObject();
+			data.AddPropertyIfValue("company", company);
+			data.AddPropertyIfValue("dept", department);
+			data.AddPropertyIfValue("first_name", firstName);
+			data.AddPropertyIfValue("group_id", groupId);
+			data.AddPropertyIfValue("host_key", hostKey);
+			data.AddPropertyIfValue("job_title", jobTitle);
+			data.AddPropertyIfValue("language", language);
+			data.AddPropertyIfValue("last_name", lastName);
+			data.AddPropertyIfValue("location", location);
+			data.AddPropertyIfValue("manager", manager);
+			data.AddPropertyIfValue("phone_numbers", phoneNumbers);
+			data.AddPropertyIfValue("pmi", pmi);
+			data.AddPropertyIfValue("pronouns", pronouns);
+			data.AddPropertyIfEnumValue("pronouns_option", pronounsDisplay);
+			data.AddPropertyIfEnumValue("timezone", timezone);
+			data.AddPropertyIfEnumValue("type", type);
+			data.AddPropertyIfValue("use_pmi", usePmi);
+			data.AddPropertyIfValue("vanity_name", personalMeetingRoomName);
+
+			return _client
+				.PatchAsync($"users/{userId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
 		/// <summary>
 		/// Retrieve the information of a specific user on a Zoom account.
 		/// </summary>
@@ -332,7 +362,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
-		/// Upload a userâ€™s profile picture.
+		/// Upload a user’s profile picture.
 		/// </summary>
 		/// <param name="userId">The user Id.</param>
 		/// <param name="fileName">The file name.</param>
@@ -362,6 +392,15 @@ namespace ZoomNet.Resources
 
 					return content;
 				})
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteProfilePictureAsync(string userId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"users/{userId}/picture")
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
@@ -619,6 +658,64 @@ namespace ZoomNet.Resources
 
 			return _client
 				.PutAsync($"accounts/{currentAccountId}/users/{userId}/account")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<string> GetAccessTokenAsync(string userId, int? ttl = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"users/{userId}/token")
+				.WithArgument("type", "zak")
+				.WithArgument("ttl", ttl)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("token");
+		}
+
+		/// <inheritdoc/>
+		public Task<VirtualBackgroundFile> UploadVirtualBackgroundAsync(string userId, string fileName, Stream pictureData, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.PostAsync($"users/{userId}/settings/virtual_backgrounds")
+				.WithBody(bodyBuilder =>
+				{
+					var content = new MultipartFormDataContent();
+
+					// Zoom requires the 'name' to be 'file'. Also, you
+					// must specify the 'fileName' otherwise Zoom will return
+					// a very confusing HTTP 400 error with the following body:
+					// {"code":-1,"message":"Required request part 'file' is not present"}
+					content.Add(new StreamContent(pictureData), "file", fileName);
+
+					return content;
+				})
+				.WithCancellationToken(cancellationToken)
+				.AsObject<VirtualBackgroundFile>();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteVirtualBackgroundAsync(string userId, string fileId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"users/{userId}/settings/virtual_backgrounds")
+				.WithArgument("file_ids", fileId)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdatePresenceStatusAsync(string userId, PresenceStatus status, int? duration = null, CancellationToken cancellationToken = default)
+		{
+			if (status == PresenceStatus.Unknown) throw new ArgumentOutOfRangeException("You can not change a user's status to Unknown.", nameof(status));
+
+			var data = new JObject();
+			data.AddPropertyIfEnumValue("status", status);
+			if (status == PresenceStatus.DoNotDisturb) data.AddPropertyIfValue("duration", duration);
+
+			return _client
+				.PutAsync($"users/{userId}/presence_status")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();

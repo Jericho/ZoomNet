@@ -58,6 +58,32 @@ namespace ZoomNet.Resources
 		Task<User> CreateAsync(string email, string firstName = null, string lastName = null, string password = null, UserType type = UserType.Basic, UserCreateType createType = UserCreateType.Normal, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Update a user.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="firstName">First name.</param>
+		/// <param name="lastName">Last name.</param>
+		/// <param name="company">User's company.</param>
+		/// <param name="department">Department for user profile. Use for report.</param>
+		/// <param name="groupId">Unique identifier of the group that you would like to add a pending user to.</param>
+		/// <param name="hostKey">Host key. It should be a 6-10 digit number.</param>
+		/// <param name="jobTitle">User's job title.</param>
+		/// <param name="language">Language.</param>
+		/// <param name="location">User's location.</param>
+		/// <param name="manager">The manager for the user.</param>
+		/// <param name="phoneNumbers">The user's phone numbers.</param>
+		/// <param name="pmi">Personal meeting ID: length must be 10.</param>
+		/// <param name="pronouns">The user's pronouns.</param>
+		/// <param name="pronounsDisplay">The user's pronouns display setting.</param>
+		/// <param name="timezone">The time zone ID for a user profile.</param>
+		/// <param name="type">The type of user.</param>
+		/// <param name="usePmi">Use Personal Meeting ID for instant meetings.</param>
+		/// <param name="personalMeetingRoomName">Personal meeting room name.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task UpdateAsync(string userId, string firstName = null, string lastName = null, string company = null, string department = null, string groupId = null, string hostKey = null, string jobTitle = null, string language = null, string location = null, string manager = null, IEnumerable<UserPhoneNumber> phoneNumbers = null, string pmi = null, string pronouns = null, PronounDisplayType? pronounDisplay = null, TimeZones? timezone = null, UserType? type = null, bool? usePmi = null, string personalMeetingRoomName = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Retrieve the information of a specific user on a Zoom account.
 		/// </summary>
 		/// <param name="userId">The user Id or email address.</param>
@@ -183,7 +209,7 @@ namespace ZoomNet.Resources
 		Task DeleteAllSchedulersAsync(string userId, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Upload a userâ€™s profile picture.
+		/// Upload a user’s profile picture.
 		/// </summary>
 		/// <param name="userId">The user Id.</param>
 		/// <param name="fileName">The file name.</param>
@@ -193,6 +219,14 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task UploadProfilePicture(string userId, string fileName, Stream pictureData, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete the user's profile picture.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task DeleteProfilePictureAsync(string userId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve a user's settings.
@@ -327,5 +361,59 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task SwitchAccountAsync(string userId, string currentAccountId, string newAccountId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the user's Zoom Access Token (ZAK).
+		/// </summary>
+		/// <remarks>
+		/// You can use a ZAK to start or join a meeting on behalf of this user.
+		/// </remarks>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="ttl">The ZAK expiration time to live (TTL) expressed in seconds. If you do not specify this value, the default TTL will be 90 days for API users or 2 hours for any other user. The maximum value is one year (i.e.: 60 seconds * 60 minutes * 24 hours * 365 days = 31,536,000).</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The token.</returns>
+		Task<string> GetAccessTokenAsync(string userId, int? ttl = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Upload a virtual background to a user's profile.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="fileName">The file name.</param>
+		/// <param name="pictureData">The binary data.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The newly created <see cref="VirtualBackgroundFile"/>.</returns>
+		/// <remarks>
+		/// - A user profile cannot exceed more than 10 Virtual Background files.
+		/// - You can only upload image files that are in JPG/JPEG, GIF or PNG format.
+		/// - Video files must be in MP4 or MOV file format with a minimum resolution of 480 by 360 pixels (360p) and a maximum resolution of 1920 by 1080 pixels(1080p).
+		/// - The Virtual Background file size cannot exceed 15 megabytes(MB).
+		/// </remarks>
+		Task<VirtualBackgroundFile> UploadVirtualBackgroundAsync(string userId, string fileName, Stream pictureData, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a user's Virtual Background file.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="fileId">The file unique identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task DeleteVirtualBackgroundAsync(string userId, string fileId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update a user's presence status.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="status">The presence status.</param>
+		/// <param name="duration">If you're updating the status to <see cref="PresenceStatus.DoNotDisturb"/>, specify a duration in minutes for which the status should remain as DoNotDisturb. This value is ignored when setting the presence to any other status.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		/// <remarks>
+		/// - A user's status cannot be updated more than once per minute.
+		/// - Note that a user's presence status cannot be updated via this API if the user is not logged in to the Zoom client.
+		/// - If you attempt to change a user's presence status when not logged in, you will get a "Request to update the presence
+		/// status of this user failed." error message from the Zoom API.
+		/// - The maximum value for duration is 1,440 minutes which represents 24 hours (i.e.: 60  * 24 hours = 1,440).
+		/// </remarks>
+		Task UpdatePresenceStatusAsync(string userId, PresenceStatus status, int? duration = null, CancellationToken cancellationToken = default);
 	}
 }

@@ -39,5 +39,29 @@ namespace ZoomNet.Models
 		/// </summary>
 		[EnumMember(Value = "Offline")]
 		Offline,
+
+		/// <summary>
+		/// Offline.
+		/// </summary>
+		[EnumMember(Value = "In_Calendar_Event")]
+		InEvent,
+
+		/// <summary>
+		/// Offline.
+		/// </summary>
+		[EnumMember(Value = "Presenting")]
+		Presenting,
+
+		/// <summary>
+		/// Offline.
+		/// </summary>
+		[EnumMember(Value = "In_A_Zoom_Meeting")]
+		InMeeting,
+
+		/// <summary>
+		/// Offline.
+		/// </summary>
+		[EnumMember(Value = "On_A_Call")]
+		OnCall,
 	}
 }
