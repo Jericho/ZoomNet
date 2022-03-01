@@ -36,5 +36,11 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonProperty(PropertyName = "domains")]
 		public string Domains { get; set; }
+
+		/// <summary>
+		/// Gets or sets a value indicating whether this is the default authentication option.
+		/// </summary>
+		[JsonProperty(PropertyName = "default_option")]
+		public bool IsDefault { get; set; }
 	}
 }

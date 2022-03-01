@@ -71,7 +71,7 @@ namespace ZoomNet
 		/// </summary>
 		/// <remarks>
 		/// This constructor is used to get access token for APIs that do not
-		/// need a user’s permission, but rather a service’s permission.
+		/// need a user's permission, but rather a service's permission.
 		/// Within the realm of Zoom APIs, Client Credentials grant should be
 		/// used to get access token from the Chatbot Service in order to use
 		/// the "Send Chatbot Messages API". See the "Using OAuth 2.0 / Client
