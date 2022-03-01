@@ -440,7 +440,7 @@ namespace ZoomNet.Resources
 			var settings = new AuthenticationSettings()
 			{
 				RequireAuthentication = response.GetPropertyValue("meeting_authentication", false),
-				AuthenticationOptions = response.GetPropertyValue("authentication_options", Array.Empty<AuthenticationOptions>())
+				AuthenticationOptions = response.GetProperty("authentication_options", false)?.ToObject<AuthenticationOptions[]>() ?? Array.Empty<AuthenticationOptions>()
 			};
 
 			return settings;
@@ -466,7 +466,7 @@ namespace ZoomNet.Resources
 			var settings = new AuthenticationSettings()
 			{
 				RequireAuthentication = response.GetPropertyValue("recording_authentication", false),
-				AuthenticationOptions = response.GetPropertyValue("authentication_options", Array.Empty<AuthenticationOptions>())
+				AuthenticationOptions = response.GetProperty("authentication_options", false)?.ToObject<AuthenticationOptions[]>() ?? Array.Empty<AuthenticationOptions>()
 			};
 
 			return settings;
