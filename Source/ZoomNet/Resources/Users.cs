@@ -122,7 +122,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task UpdateAsync(string userId, string firstName = null, string lastName = null, string company = null, string department = null, string groupId = null, string hostKey = null, string jobTitle = null, string language = null, string location = null, string manager = null, IEnumerable<UserPhoneNumber> phoneNumbers = null, string pmi = null, string pronouns = null, PronounDisplayType? pronounsDisplay = null, TimeZones? timezone = null, UserType? type = null, bool? usePmi = null, string personalMeetingRoomName = null, CancellationToken cancellationToken = default)
+		public Task UpdateAsync(string userId, string firstName = null, string lastName = null, string company = null, string department = null, string groupId = null, string hostKey = null, string jobTitle = null, string language = null, string location = null, string manager = null, IEnumerable<PhoneNumber> phoneNumbers = null, string pmi = null, string pronouns = null, PronounDisplayType? pronounsDisplay = null, TimeZones? timezone = null, UserType? type = null, bool? usePmi = null, string personalMeetingRoomName = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JObject();
 			data.AddPropertyIfValue("company", company);

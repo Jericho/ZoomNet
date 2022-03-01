@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// User phone number.
+	/// Phone number.
 	/// </summary>
-	public class UserPhoneNumber
+	public class PhoneNumber
 	{
 		/// <summary>Gets or sets the country code. For example, for United States phone numbers, this will be a +1 value.</summary>
 		[JsonProperty("code")]
@@ -17,7 +17,7 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets the type.</summary>
 		[JsonProperty(PropertyName = "label")]
-		public UserPhoneType Type { get; set; }
+		public PhoneType Type { get; set; }
 
 		/// <summary>Gets or sets the phone number.</summary>
 		[JsonProperty(PropertyName = "number")]

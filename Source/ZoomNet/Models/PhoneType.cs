@@ -8,7 +8,7 @@ namespace ZoomNet.Models
 	/// Enumeration to indicate the type of phone number.
 	/// </summary>
 	[JsonConverter(typeof(StringEnumConverter))]
-	public enum UserPhoneType
+	public enum PhoneType
 	{
 		/// <summary>Mobile.</summary>
 		[EnumMember(Value = "Mobile")]
