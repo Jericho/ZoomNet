@@ -1,5 +1,3 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
 using System.Threading;
@@ -53,7 +51,7 @@ namespace ZoomNet.Resources
 			return _client
 				.GetAsync($"room/locations")
 				.WithArgument("parent_location_id", parentLocationId)
-				.WithArgument("type", type.HasValue ? JToken.Parse(JsonConvert.SerializeObject(type.Value)).ToString() : null)
+				.WithArgument("type", type?.ToEnumString())
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
