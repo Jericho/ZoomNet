@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -12,7 +12,7 @@ namespace ZoomNet.Models
 		/// For example if you want to include the mention at the beginning of the message,
 		/// the value for this field will be 0.
 		/// </summary>
-		[JsonProperty(PropertyName = "start_position")]
+		[JsonPropertyName("start_position")]
 		public int Start { get; set; }
 
 		/// <summary>
@@ -20,20 +20,20 @@ namespace ZoomNet.Models
 		/// Example message: \"@Shrijana How are you?\".
 		/// In this case, the end position of the mention \"@Shrijana\" is 8.
 		/// </summary>
-		[JsonProperty(PropertyName = "end_position")]
+		[JsonPropertyName("end_position")]
 		public int End { get; set; }
 
 		/// <summary>
 		/// Gets or sets the type of mention.
 		/// </summary>
-		[JsonProperty(PropertyName = "at_type")]
+		[JsonPropertyName("at_type")]
 		public ChatMentionType Type { get; set; }
 
 		/// <summary>
 		/// Gets or sets the contact being mentioned.
 		/// </summary>
 		/// <remarks>Will be empty if <see cref="Type"/> is <see cref="ChatMentionType.All"/>.</remarks>
-		[JsonProperty(PropertyName = "at_type")]
+		[JsonPropertyName("at_type")]
 		public string Contact { get; set; }
 	}
 }

@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -8,19 +8,19 @@ namespace ZoomNet.Models
 	public class VirtualBackgroundSettings
 	{
 		/// <summary>Gets or sets a value indicating whether to allow users to upload custom backgrounds.</summary>
-		[JsonProperty(PropertyName = "allow_upload_custom")]
+		[JsonPropertyName("allow_upload_custom")]
 		public bool AllowCustomBackgrounds { get; set; }
 
 		/// <summary>Gets or sets a value indicating whether to allow the use of videos for virtual backgrounds.</summary>
-		[JsonProperty(PropertyName = "allow_videos")]
+		[JsonPropertyName("allow_videos")]
 		public bool AllowVideos { get; set; }
 
 		/// <summary>Gets or sets a value indicating whether to enable virtual backgrounds.</summary>
-		[JsonProperty(PropertyName = "enable")]
+		[JsonPropertyName("enable")]
 		public bool Enabled { get; set; }
 
 		/// <summary>Gets or sets the virtual backgrounds.</summary>
-		[JsonProperty(PropertyName = "files")]
+		[JsonPropertyName("files")]
 		public VirtualBackgroundFile[] VirtualBackgrounds { get; set; }
 	}
 }

@@ -12,6 +12,28 @@ namespace ZoomNet.IntegrationTests
 	{
 		public static async Task<int> Main(string[] args)
 		{
+			/*
+			 * Handy code to generate the 'JsonSerializable' attributes for ZoomNetJsonSerializerContext
+			 *
+			var baseNamespace = "ZoomNet.Models";
+			var allTypes = System.Reflection.Assembly
+				.GetAssembly(typeof(ZoomClient))
+				.GetTypes()
+				.Where(t => t.IsClass)
+				.Where(t => !string.IsNullOrEmpty(t.Namespace))
+				.Where(t => t.Namespace.StartsWith(baseNamespace));
+
+			var typesInBaseNamespace = allTypes
+				.Where(t => t.Namespace.Equals(baseNamespace))
+				.Select(t => new { Type = t, JsonSerializeAttribute = $"[JsonSerializable(typeof({t.FullName}))]" });
+
+			var typesInSubNamespace = allTypes
+				.Where(t => !t.Namespace.Equals(baseNamespace))
+				.Select(t => new { Type = t, JsonSerializeAttribute = $"[JsonSerializable(typeof({t.FullName}), TypeInfoPropertyName = \"{t.FullName.Remove(0, baseNamespace.Length + 1).Replace(".", "")}\")]" });
+
+			var result = string.Join("\r\n", typesInBaseNamespace.Union(typesInSubNamespace).OrderBy(t => t.Type.FullName).Select(t => t.JsonSerializeAttribute));
+			*/
+
 			var services = new ServiceCollection();
 			ConfigureServices(services);
 			await using var serviceProvider = services.BuildServiceProvider();

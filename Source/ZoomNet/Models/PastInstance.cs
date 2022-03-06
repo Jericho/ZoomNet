@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -14,14 +14,14 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The uuid.
 		/// </value>
-		[JsonProperty("uuid", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("uuid")]
 		public string Uuid { get; set; }
 
 		/// <summary>
 		/// Gets or sets the date and time when the instance started.
 		/// </summary>
 		/// <value>The start time.</value>
-		[JsonProperty(PropertyName = "start_time", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("start_time")]
 		public DateTime StartedOn { get; set; }
 	}
 }

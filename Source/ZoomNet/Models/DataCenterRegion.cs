@@ -1,5 +1,3 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
@@ -7,7 +5,6 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// Data center region.
 	/// </summary>
-	[JsonConverter(typeof(StringEnumConverter))]
 	public enum DataCenterRegion
 	{
 		/// <summary>Europe</summary>

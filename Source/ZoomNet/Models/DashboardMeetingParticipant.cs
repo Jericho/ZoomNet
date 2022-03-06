@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -13,7 +13,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The type of camera used by participant during the meeting.
 		/// </value>
-		[JsonProperty(PropertyName = "camera")]
+		[JsonPropertyName("camera")]
 		public string Camera { get; set; }
 
 		/// <summary>
@@ -22,7 +22,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The number of participants who joined via Zoom Room.
 		/// </value>
-		[JsonProperty(PropertyName = "in_room_participants")]
+		[JsonPropertyName("in_room_participants")]
 		public int InRoomParticipants { get; set; }
 
 		/// <summary>
@@ -32,13 +32,13 @@ namespace ZoomNet.Models
 		/// If the participant joins the meeting by logging into Zoom, this value is the id value in the Get a user API response.
 		/// If the participant joins the meeting without logging into Zoom, this returns an empty string value.
 		/// </remarks>
-		[JsonProperty(PropertyName = "participant_user_id")]
+		[JsonPropertyName("participant_user_id")]
 		public string ParticipantUserId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the participant's status.
 		/// </summary>
-		[JsonProperty(PropertyName = "status")]
+		[JsonPropertyName("status")]
 		public ParticipantStatus Status { get; set; }
 	}
 }

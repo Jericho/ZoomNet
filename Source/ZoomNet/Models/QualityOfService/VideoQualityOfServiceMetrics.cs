@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models.QualityOfService
 {
@@ -13,7 +13,7 @@ namespace ZoomNet.Models.QualityOfService
 		/// <value>
 		/// The video resolution.
 		/// </value>
-		[JsonProperty(PropertyName = "resolution")]
+		[JsonPropertyName("resolution")]
 		public string Resolution { get; set; }
 
 		/// <summary>
@@ -22,7 +22,7 @@ namespace ZoomNet.Models.QualityOfService
 		/// <value>
 		/// The frame rate.
 		/// </value>
-		[JsonProperty(PropertyName = "frame_rate")]
+		[JsonPropertyName("frame_rate")]
 		public string FrameRate { get; set; }
 	}
 }

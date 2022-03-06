@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
 using System;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -12,21 +12,21 @@ namespace ZoomNet.Models
 		/// Gets or sets the occurrence Id.
 		/// </summary>
 		/// <value>The ID.</value>
-		[JsonProperty(PropertyName = "occurrence_id")]
+		[JsonPropertyName("occurrence_id")]
 		public string OccurrenceId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the start time.
 		/// </summary>
 		/// <value>The occurrence start time.</value>
-		[JsonProperty(PropertyName = "start_time", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("start_time")]
 		public DateTime StartTime { get; set; }
 
 		/// <summary>
 		/// Gets or sets the duration in minutes.
 		/// </summary>
 		/// <value>The duration in minutes.</value>
-		[JsonProperty(PropertyName = "duration", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("duration")]
 		public int Duration { get; set; }
 
 		/// <summary>
@@ -35,7 +35,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The occurrence status.
 		/// </value>
-		[JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("status")]
 		public string Status { get; set; }
 	}
 }

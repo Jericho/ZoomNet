@@ -1,5 +1,3 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
@@ -7,7 +5,6 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// Enumeration to indicate the type of content in a recording file.
 	/// </summary>
-	[JsonConverter(typeof(StringEnumConverter))]
 	public enum RecordingContentType
 	{
 		/// <summary>Not specified.</summary>

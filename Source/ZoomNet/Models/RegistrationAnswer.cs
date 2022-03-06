@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -13,13 +13,13 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The title.
 		/// </value>
-		[JsonProperty("title")]
+		[JsonPropertyName("title")]
 		public string Title { get; set; }
 
 		/// <summary>Gets or sets the response.</summary>
 		/// <remarks>This has a limit of 128 characters.</remarks>
 		/// <value>The response.</value>
-		[JsonProperty("value")]
+		[JsonPropertyName("value")]
 		public string Answer { get; set; }
 	}
 }

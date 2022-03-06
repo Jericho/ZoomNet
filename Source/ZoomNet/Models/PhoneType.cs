@@ -1,5 +1,3 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
@@ -7,7 +5,6 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// Enumeration to indicate the type of phone number.
 	/// </summary>
-	[JsonConverter(typeof(StringEnumConverter))]
 	public enum PhoneType
 	{
 		/// <summary>Mobile.</summary>

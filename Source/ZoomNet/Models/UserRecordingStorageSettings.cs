@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -10,13 +10,13 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the list of countries where user's recorded content such as meetings, webinars, and phone recordings, as well as voicemail, transcripts, and custom greeting prompts can be stored.
 		/// </summary>
-		[JsonProperty(PropertyName = "allowed_values")]
+		[JsonPropertyName("allowed_values")]
 		public Country[] AllowedCountries { get; set; }
 
 		/// <summary>
 		/// Gets or sets the country where user's recorded content such as meetings, webinars, and phone recordings, as well as voicemail, transcripts, and custom greeting prompts are stored.
 		/// </summary>
-		[JsonProperty(PropertyName = "value")]
+		[JsonPropertyName("value")]
 		public Country Country { get; set; }
 	}
 }

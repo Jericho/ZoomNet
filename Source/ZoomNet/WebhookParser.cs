@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json;
 using ZoomNet.Models.Webhooks;
 using ZoomNet.Utilities;
 
@@ -21,7 +21,7 @@ namespace ZoomNet
 		/// <returns>An <see cref="Event" />.</returns>
 		public Event ParseEventWebhook(string requestBody)
 		{
-			var webHookEvent = JsonConvert.DeserializeObject<Event>(requestBody, new WebHookEventConverter());
+			var webHookEvent = JsonSerializer.Deserialize<Event>(requestBody, ZoomNetJsonFormatter.DeserializerOptions);
 			return webHookEvent;
 		}
 	}

@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -13,7 +13,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The question.
 		/// </value>
-		[JsonProperty("question", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("question")]
 		public string Question { get; set; }
 
 		/// <summary>
@@ -22,7 +22,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The question.
 		/// </value>
-		[JsonProperty("answer", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("answer")]
 		public string Answer { get; set; }
 	}
 }

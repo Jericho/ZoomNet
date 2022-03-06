@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -10,31 +10,31 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the phone number's E.164 country calling code.
 		/// </summary>
-		[JsonProperty(PropertyName = "code")]
+		[JsonPropertyName("code")]
 		public string CallingCode { get; set; }
 
 		/// <summary>
 		/// Gets or sets the phone number's E.164 country calling code.
 		/// </summary>
-		[JsonProperty(PropertyName = "country_code")]
+		[JsonPropertyName("country_code")]
 		public Country CountryCode { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name of the country.
 		/// </summary>
-		[JsonProperty(PropertyName = "country_name")]
+		[JsonPropertyName("country_name")]
 		public string CountryName { get; set; }
 
 		/// <summary>
 		/// Gets or sets the phone number display number.
 		/// </summary>
-		[JsonProperty(PropertyName = "display_number")]
+		[JsonPropertyName("display_number")]
 		public string DisplayNumber { get; set; }
 
 		/// <summary>
 		/// Gets or sets the phone number.
 		/// </summary>
-		[JsonProperty(PropertyName = "number")]
+		[JsonPropertyName("number")]
 		public string Number { get; set; }
 	}
 }

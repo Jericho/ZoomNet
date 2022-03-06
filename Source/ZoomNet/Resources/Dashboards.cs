@@ -1,5 +1,3 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
 using System.Threading;
@@ -55,7 +53,7 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"metrics/meetings")
-				.WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
+				.WithArgument("type", type.ToEnumString())
 				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
 				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
 				.WithArgument("page_size", pageSize)
@@ -77,7 +75,7 @@ namespace ZoomNet.Resources
 		{
 			return _client
 				.GetAsync($"metrics/meetings/{meetingId}")
-				.WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
+				.WithArgument("type", type.ToEnumString())
 				.WithCancellationToken(cancellationToken)
 				.AsObject<DashboardMeetingMetrics>();
 		}
@@ -110,7 +108,7 @@ namespace ZoomNet.Resources
 			return _client
 				.GetAsync($"metrics/meetings/{meetingId}/participants")
 				.WithArgument("include_fields", "registrant_id")
-				.WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
+				.WithArgument("type", type.ToEnumString())
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
@@ -131,7 +129,7 @@ namespace ZoomNet.Resources
 		{
 			return _client
 				.GetAsync($"metrics/meetings/{meetingId}/participants/{participantId}/qos")
-				.WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
+				.WithArgument("type", type.ToEnumString())
 				.WithCancellationToken(cancellationToken)
 				.AsObject<DashboardMeetingParticipantQos>();
 		}
@@ -160,7 +158,7 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"metrics/meetings/{meetingId}/participants/qos")
-				.WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
+				.WithArgument("type", type.ToEnumString())
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
@@ -191,7 +189,7 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"metrics/meetings/{meetingId}/participants/sharing")
-				.WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
+				.WithArgument("type", type.ToEnumString())
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
@@ -226,7 +224,7 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"metrics/webinars")
-				.WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
+				.WithArgument("type", type.ToEnumString())
 				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
 				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
 				.WithArgument("page_size", pageSize)
@@ -248,7 +246,7 @@ namespace ZoomNet.Resources
 		{
 			return _client
 				.GetAsync($"metrics/webinars/{webinarId}")
-				.WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
+				.WithArgument("type", type.ToEnumString())
 				.WithCancellationToken(cancellationToken)
 				.AsObject<DashboardMetricsBase>();
 		}
@@ -277,7 +275,7 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"metrics/webinars/{webinarId}/participants")
-				.WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
+				.WithArgument("type", type.ToEnumString())
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
@@ -298,7 +296,7 @@ namespace ZoomNet.Resources
 		{
 			return _client
 			  .GetAsync($"metrics/webinars/{webinarId}/participants/{participantId}/qos")
-			  .WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
+			  .WithArgument("type", type.ToEnumString())
 			  .WithCancellationToken(cancellationToken)
 			  .AsObject<DashboardMeetingParticipantQos>();
 		}
@@ -327,7 +325,7 @@ namespace ZoomNet.Resources
 
 			return _client
 			  .GetAsync($"metrics/webinars/{webinarId}/participants/qos")
-			  .WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
+			  .WithArgument("type", type.ToEnumString())
 			  .WithArgument("page_size", pageSize)
 			  .WithArgument("next_page_token", pageToken)
 			  .WithCancellationToken(cancellationToken)
@@ -358,7 +356,7 @@ namespace ZoomNet.Resources
 
 			return _client
 			  .GetAsync($"metrics/webinars/{webinarId}/participants/sharing")
-			  .WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
+			  .WithArgument("type", type.ToEnumString())
 			  .WithArgument("page_size", pageSize)
 			  .WithArgument("next_page_token", pageToken)
 			  .WithCancellationToken(cancellationToken)

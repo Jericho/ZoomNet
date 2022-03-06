@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models.Webhooks
 {
@@ -11,25 +11,25 @@ namespace ZoomNet.Models.Webhooks
 		/// <summary>
 		/// Gets or sets the email address of the user who started the live stream.
 		/// </summary>
-		[JsonProperty(PropertyName = "operator")]
+		[JsonPropertyName("operator")]
 		public string Operator { get; set; }
 
 		/// <summary>
 		/// Gets or sets the user ID of the user who started the live stream.
 		/// </summary>
-		[JsonProperty(PropertyName = "operator_id")]
+		[JsonPropertyName("operator_id")]
 		public string OperatorId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the date and time at which the live stream started.
 		/// </summary>
-		[JsonProperty(PropertyName = "date_time")]
+		[JsonPropertyName("date_time")]
 		public DateTime StartedOn { get; set; }
 
 		/// <summary>
 		/// Gets or sets the information about live stream.
 		/// </summary>
-		[JsonProperty(PropertyName = "live_streaming")]
+		[JsonPropertyName("live_streaming")]
 		public LiveStreamingInfo StreamingInfo { get; set; }
 	}
 }

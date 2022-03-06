@@ -1,13 +1,11 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
-using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
@@ -54,7 +52,7 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("page_number", page)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponse<Webinar>("webinars", new WebinarConverter());
+				.AsPaginatedResponse<Webinar>("webinars");
 		}
 
 		/// <summary>
@@ -79,7 +77,7 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<Webinar>("webinars", new WebinarConverter());
+				.AsPaginatedResponseWithToken<Webinar>("webinars");
 		}
 
 		/// <summary>
@@ -102,19 +100,19 @@ namespace ZoomNet.Resources
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the webinar.</exception>
 		public Task<ScheduledWebinar> CreateScheduledWebinarAsync(string userId, string topic, string agenda, DateTime start, int duration, TimeZones? timeZone = TimeZones.UTC, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
-				{ "type", 5 }
+				{ "type", 5 },
+				{ "topic", topic },
+				{ "agenda", agenda },
+				{ "password", password },
+				{ "start_time", start.ToZoomFormat(timeZone) },
+				{ "duration", duration },
+				{ "timezone", timeZone },
+				{ "settings", settings },
+				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }) },
+				{ "template_id", templateId }
 			};
-			data.AddPropertyIfValue("topic", topic);
-			data.AddPropertyIfValue("agenda", agenda);
-			data.AddPropertyIfValue("password", password);
-			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
-			data.AddPropertyIfValue("duration", duration);
-			data.AddPropertyIfEnumValue("timezone", timeZone);
-			data.AddPropertyIfValue("settings", settings);
-			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
-			data.AddPropertyIfValue("template_id", templateId);
 
 			return _client
 				.PostAsync($"users/{userId}/webinars")
@@ -144,22 +142,20 @@ namespace ZoomNet.Resources
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the webinar.</exception>
 		public Task<RecurringWebinar> CreateRecurringWebinarAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, TimeZones? timeZone = TimeZones.UTC, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
-				// 6 = Recurring with no fixed time
-				// 9 = Recurring with fixed time
-				{ "type", start.HasValue ? 9 : 6 }
+				{ "type", start.HasValue ? 9 : 6 }, // 9 = Recurring with fixed time. 6 = Recurring with no fixed time
+				{ "topic", topic },
+				{ "agenda", agenda },
+				{ "password", password },
+				{ "start_time", start.ToZoomFormat(timeZone) },
+				{ "duration", duration },
+				{ "recurrence", recurrence },
+				{ "timezone", timeZone },
+				{ "settings", settings },
+				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }) },
+				{ "template_id", templateId }
 			};
-			data.AddPropertyIfValue("topic", topic);
-			data.AddPropertyIfValue("agenda", agenda);
-			data.AddPropertyIfValue("password", password);
-			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
-			data.AddPropertyIfValue("duration", duration);
-			data.AddPropertyIfValue("recurrence", recurrence);
-			data.AddPropertyIfEnumValue("timezone", timeZone);
-			data.AddPropertyIfValue("settings", settings);
-			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
-			data.AddPropertyIfValue("template_id", templateId);
 
 			return _client
 				.PostAsync($"users/{userId}/webinars")
@@ -184,12 +180,14 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task UpdateWebinarOccurrenceAsync(long webinarId, string occurrenceId, string agenda = null, DateTime? start = null, int? duration = null, TimeZones? timeZone = null, WebinarSettings settings = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("agenda", agenda);
-			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
-			data.AddPropertyIfValue("duration", duration);
-			data.AddPropertyIfEnumValue("timezone", timeZone);
-			data.AddPropertyIfValue("settings", settings);
+			var data = new JsonObject
+			{
+				{ "agenda", agenda },
+				{ "start_time", start.ToZoomFormat(timeZone) },
+				{ "duration", duration },
+				{ "timezone", timeZone },
+				{ "settings", settings }
+			};
 
 			return _client
 				.PatchAsync($"webinars/{webinarId}")
@@ -217,15 +215,17 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task UpdateScheduledWebinarAsync(long webinarId, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, TimeZones? timeZone = null, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("topic", topic);
-			data.AddPropertyIfValue("agenda", agenda);
-			data.AddPropertyIfValue("password", password);
-			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
-			data.AddPropertyIfValue("duration", duration);
-			data.AddPropertyIfEnumValue("timezone", timeZone);
-			data.AddPropertyIfValue("settings", settings);
-			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
+			var data = new JsonObject
+			{
+				{ "topic", topic },
+				{ "agenda", agenda },
+				{ "password", password },
+				{ "start_time", start.ToZoomFormat(timeZone) },
+				{ "duration", duration },
+				{ "timezone", timeZone },
+				{ "settings", settings },
+				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }).ToArray() }
+			};
 
 			return _client
 				.PatchAsync($"webinars/{webinarId}")
@@ -254,16 +254,18 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task UpdateRecurringWebinarAsync(long webinarId, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, TimeZones? timeZone = null, RecurrenceInfo recurrence = null, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("topic", topic);
-			data.AddPropertyIfValue("agenda", agenda);
-			data.AddPropertyIfValue("password", password);
-			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
-			data.AddPropertyIfValue("duration", duration);
-			data.AddPropertyIfValue("recurrence", recurrence);
-			data.AddPropertyIfEnumValue("timezone", timeZone);
-			data.AddPropertyIfValue("settings", settings);
-			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
+			var data = new JsonObject
+			{
+				{ "topic", topic },
+				{ "agenda", agenda },
+				{ "password", password },
+				{ "start_time", start.ToZoomFormat(timeZone) },
+				{ "duration", duration },
+				{ "recurrence", recurrence },
+				{ "timezone", timeZone },
+				{ "settings", settings },
+				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }) }
+			};
 
 			return _client
 				.PatchAsync($"webinars/{webinarId}")
@@ -288,7 +290,7 @@ namespace ZoomNet.Resources
 				.GetAsync($"webinars/{webinarId}")
 				.WithArgument("occurrence_id", occurrenceId)
 				.WithCancellationToken(cancellationToken)
-				.AsObject<Webinar>(jsonConverter: new WebinarConverter());
+				.AsObject<Webinar>();
 		}
 
 		/// <summary>
@@ -321,7 +323,7 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task EndAsync(long webinarId, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
 				{ "action", "end" }
 			};
@@ -375,8 +377,10 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task AddPanelistsAsync(long webinarId, IEnumerable<(string Email, string FullName)> panelists, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("panelists", panelists.Select(p => new { email = p.Email, name = p.FullName }).ToArray());
+			var data = new JsonObject
+			{
+				{ "panelists", panelists.Select(p => new JsonObject { { "email", p.Email }, { "name", p.FullName } }) }
+			};
 
 			return _client
 				.PostAsync($"webinars/{webinarId}/panelists")
@@ -441,7 +445,7 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"webinars/{webinarId}/registrants")
-				.WithArgument("status", JToken.Parse(JsonConvert.SerializeObject(status)).ToString())
+				.WithArgument("status", status.ToEnumString())
 				.WithArgument("tracking_source_id", trackingSourceId)
 				.WithArgument("occurrence_id", occurrenceId)
 				.WithArgument("page_size", recordsPerPage)
@@ -472,7 +476,7 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"webinars/{webinarId}/registrants")
-				.WithArgument("status", JToken.Parse(JsonConvert.SerializeObject(status)).ToString())
+				.WithArgument("status", status.ToEnumString())
 				.WithArgument("tracking_source_id", trackingSourceId)
 				.WithArgument("occurrence_id", occurrenceId)
 				.WithArgument("page_size", recordsPerPage)
@@ -529,25 +533,27 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task<RegistrantInfo> AddRegistrantAsync(long webinarId, string email, string firstName, string lastName, string address = null, string city = null, Country? country = null, string postalCode = null, string stateOrProvince = null, string phoneNumber = null, string industry = null, string organization = null, string jobTitle = null, PurchasingTimeFrame? timeFrame = null, RoleInPurchaseProcess? role = null, NumberOfEmployees? employees = null, string comments = null, IEnumerable<RegistrationAnswer> questionAnswers = null, Language? language = null, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("email", email);
-			data.AddPropertyIfValue("first_name", firstName);
-			data.AddPropertyIfValue("last_name", lastName);
-			data.AddPropertyIfValue("address", address);
-			data.AddPropertyIfValue("city", city);
-			data.AddPropertyIfValue("country", country);
-			data.AddPropertyIfValue("zip", postalCode);
-			data.AddPropertyIfValue("state", stateOrProvince);
-			data.AddPropertyIfValue("phone", phoneNumber);
-			data.AddPropertyIfValue("industry", industry);
-			data.AddPropertyIfValue("org", organization);
-			data.AddPropertyIfValue("job_title", jobTitle);
-			data.AddPropertyIfValue("purchasing_time_frame", timeFrame);
-			data.AddPropertyIfValue("role_in_purchase_process", role);
-			data.AddPropertyIfValue("no_of_employees", employees);
-			data.AddPropertyIfValue("custom_questions", questionAnswers);
-			data.AddPropertyIfValue("language", language);
-			data.AddPropertyIfValue("comments", comments);
+			var data = new JsonObject
+			{
+				{ "email", email },
+				{ "first_name", firstName },
+				{ "last_name", lastName },
+				{ "address", address },
+				{ "city", city },
+				{ "country", country },
+				{ "zip", postalCode },
+				{ "state", stateOrProvince },
+				{ "phone", phoneNumber },
+				{ "industry", industry },
+				{ "org", organization },
+				{ "job_title", jobTitle },
+				{ "purchasing_time_frame", timeFrame },
+				{ "role_in_purchase_process", role },
+				{ "no_of_employees", employees },
+				{ "custom_questions", questionAnswers },
+				{ "language", language },
+				{ "comments", comments }
+			};
 
 			return _client
 				.PostAsync($"webinars/{webinarId}/registrants")
@@ -697,11 +703,11 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task<Poll> CreatePoll(long webinarId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
-				{ "title", title }
+				{ "title", title },
+				{ "questions", questions }
 			};
-			data.AddPropertyIfValue("questions", questions);
 
 			return _client
 				.PostAsync($"webinars/{webinarId}/polls")
@@ -740,9 +746,11 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task UpdatePollAsync(long webinarId, long pollId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("title", title);
-			data.AddPropertyIfValue("questions", questions);
+			var data = new JsonObject
+			{
+				{ "title", title },
+				{ "questions", questions }
+			};
 
 			return _client
 				.PutAsync($"webinars/{webinarId}/polls/{pollId}")
@@ -781,11 +789,12 @@ namespace ZoomNet.Resources
 			var response = await _client
 				.GetAsync($"webinars/{webinarId}/registrants/questions")
 				.WithCancellationToken(cancellationToken)
-				.AsRawJsonObject()
+				.AsRawJsonDocument()
 				.ConfigureAwait(false);
 
-			var allFields = ((JArray)response.Property("questions")?.Value ?? Enumerable.Empty<JToken>())
+			var allFields = response.RootElement.GetProperty("questions").EnumerateArray()
 				.Select(item => (Field: item.GetPropertyValue<string>("field_name").ToEnum<RegistrationField>(), IsRequired: item.GetPropertyValue<bool>("required")));
+
 			var requiredFields = allFields.Where(f => f.IsRequired).Select(f => f.Field).ToArray();
 			var optionalFields = allFields.Where(f => !f.IsRequired).Select(f => f.Field).ToArray();
 
@@ -793,7 +802,7 @@ namespace ZoomNet.Resources
 			{
 				RequiredFields = requiredFields,
 				OptionalFields = optionalFields,
-				Questions = response.Property("custom_questions")?.Value.ToObject<RegistrationCustomQuestionForWebinar[]>() ?? Array.Empty<RegistrationCustomQuestionForWebinar>()
+				Questions = response.RootElement.GetProperty("custom_questions", false)?.ToObject<RegistrationCustomQuestionForWebinar[]>() ?? Array.Empty<RegistrationCustomQuestionForWebinar>()
 			};
 			return registrationQuestions;
 		}
@@ -818,13 +827,15 @@ namespace ZoomNet.Resources
 				.Except(required) // Remove 'optional' fields that are on the 'required' enumeration
 				.GroupBy(f => f).Select(grp => grp.First()); // Remove duplicates
 
-			var standardFields = required.Select(f => new JObject() { { "field_name", f.ToEnumString() }, { "required", true } })
-				.Union(optional.Select(f => new JObject() { { "field_name", f.ToEnumString() }, { "required", false } }))
+			var standardFields = required.Select(f => new JsonObject { { "field_name", f.ToEnumString() }, { "required", true } })
+				.Union(optional.Select(f => new JsonObject { { "field_name", f.ToEnumString() }, { "required", false } }))
 				.ToArray();
 
-			var data = new JObject();
-			data.AddPropertyIfValue("questions", standardFields);
-			data.AddPropertyIfValue("custom_questions", customQuestions);
+			var data = new JsonObject
+			{
+				{ "questions", standardFields },
+				{ "custom_questions", customQuestions }
+			};
 
 			return _client
 				.PatchAsync($"webinars/{webinarId}/registrants/questions")
@@ -861,7 +872,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task UpdateLiveStreamAsync(long webinarId, string streamUrl, string streamKey, string pageUrl, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
 				{ "stream_url", streamUrl },
 				{ "stream_key", streamKey },
@@ -878,11 +889,11 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task StartLiveStreamAsync(long webinarId, bool displaySpeakerName, string speakerName, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
 				{ "action", "start" },
 				{
-					"settings", new JObject()
+					"settings", new JsonObject
 					{
 						{ "active_speaker_name", displaySpeakerName },
 						{ "display_name", speakerName }
@@ -900,7 +911,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task StopLiveStreamAsync(long webinarId, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
 				{ "action", "stop" }
 			};
@@ -926,11 +937,11 @@ namespace ZoomNet.Resources
 		{
 			if (names == null || !names.Any()) throw new ArgumentNullException("You must provide at least one name", nameof(names));
 
-			var data = new JObject()
+			var data = new JsonObject
 			{
-				{ "ttl", timeToLive }
+				{ "ttl", timeToLive },
+				{ "attendees", names?.Select(n => new JsonObject { { "name", n } }).ToArray() }
 			};
-			data.AddPropertyIfValue("attendees", names?.Select(n => new JObject { { "name", n } }).ToArray());
 
 			return _client
 				.PostAsync($"webinars/{webinarId}/invite_links")
@@ -960,11 +971,19 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task UpdateSurveyAsync(long webinarId, IEnumerable<SurveyQuestion> questions = null, bool allowAnonymous = true, bool showInBrowser = true, string thirdPartySurveyLink = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("third_party_survey", thirdPartySurveyLink);
-			data.AddPropertyIfValue("show_in_the_browser", showInBrowser);
-			data.AddPropertyIfValue("custom_survey/anonymous", allowAnonymous);
-			data.AddPropertyIfValue("custom_survey/questions", questions?.ToArray());
+			var data = new JsonObject
+			{
+				{ "third_party_survey", thirdPartySurveyLink },
+				{ "show_in_the_browser", showInBrowser },
+				{
+					"custom_survey",
+					new JsonObject
+					{
+						{ "anonymous", allowAnonymous },
+						{ "questions", questions?.ToArray() }
+					}
+				}
+			};
 
 			return _client
 				.PatchAsync($"webinars/{webinarId}/survey")
@@ -975,9 +994,11 @@ namespace ZoomNet.Resources
 
 		private Task UpdateRegistrantsStatusAsync(long webinarId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string status, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("action", status);
-			data.AddPropertyIfValue("registrants", registrantsInfo.Select(ri => new { id = ri.RegistrantId, email = ri.RegistrantEmail }).ToArray());
+			var data = new JsonObject
+			{
+				{ "action", status },
+				{ "registrants", registrantsInfo.Select(ri => new { id = ri.RegistrantId, email = ri.RegistrantEmail }).ToArray() }
+			};
 
 			return _client
 				.PutAsync($"webinars/{webinarId}/registrants/status")

@@ -1,12 +1,8 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-
 namespace ZoomNet.Models
 {
 	/// <summary>
 	/// Enumeration to specify what type of participants must be admitted to the Waiting room.
 	/// </summary>
-	[JsonConverter(typeof(StringEnumConverter))]
 	public enum ParticipantsToPlaceInWaitingRoom
 	{
 		/// <summary>All attendees.</summary>

@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -8,15 +8,15 @@ namespace ZoomNet.Models
 	public class LanguageInterpretationSettings
 	{
 		/// <summary>Gets or sets the supported user-defined languages.</summary>
-		[JsonProperty(PropertyName = "custom_languages")]
+		[JsonPropertyName("custom_languages")]
 		public string[] SupportedCustomLanguages { get; set; }
 
 		/// <summary>Gets or sets a value indicating whether to allow hosts to assign participants as interpreters who can interpret one language into another in real-time.</summary>
-		[JsonProperty(PropertyName = "enable")]
+		[JsonPropertyName("enable")]
 		public bool Enabled { get; set; }
 
 		/// <summary>Gets or sets the supported system languages.</summary>
-		[JsonProperty(PropertyName = "languages")]
+		[JsonPropertyName("languages")]
 		public InterpretationLanguage[] SupportedLanguages { get; set; }
 	}
 }

@@ -3,7 +3,6 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
-using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
@@ -40,7 +39,7 @@ namespace ZoomNet.Resources
 			return _client
 				.GetAsync($"past_meetings/{uuid}")
 				.WithCancellationToken(cancellationToken)
-				.AsObject<Meeting>(jsonConverter: new MeetingConverter());
+				.AsObject<Meeting>();
 		}
 
 		/// <summary>

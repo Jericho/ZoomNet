@@ -1,9 +1,9 @@
-using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -88,12 +88,12 @@ namespace ZoomNet.Resources
 		{
 			if (emails != null && emails.Count() > 5) throw new ArgumentOutOfRangeException(nameof(emails), "You can invite up to 5 members at once");
 
-			var data = new JObject()
+			var data = new JsonObject
 			{
-				{ "name", name }
+				{ "name", name },
+				{ "type", type },
+				{ "members", emails?.Select(e => new JsonObject { { "email", e } }) }
 			};
-			data.AddPropertyIfEnumValue("type", type);
-			data.AddPropertyIfValue("members", emails?.Select(e => new JObject() { { "email", e } }));
 
 			return _client
 				.PostAsync($"chat/users/{userId}/channels")
@@ -114,7 +114,7 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task UpdateAccountChannelAsync(string userId, string channelId, string name, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
 				{ "name", name }
 			};
@@ -185,8 +185,10 @@ namespace ZoomNet.Resources
 			if (emails == null || !emails.Any()) throw new ArgumentNullException(nameof(emails), "You must specify at least one member to invite");
 			if (emails.Count() > 5) throw new ArgumentOutOfRangeException(nameof(emails), "You can invite up to 5 members at once");
 
-			var data = new JObject();
-			data.AddPropertyIfValue("members", emails.Select(e => new JObject() { { "email", e } }));
+			var data = new JsonObject
+			{
+				{ "members", emails.Select(e => new JsonObject() { { "email", e } }) }
+			};
 
 			return _client
 				.PostAsync($"chat/users/{userId}/channels/{channelId}/members")
@@ -240,7 +242,7 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task UpdateChannelAsync(string channelId, string name, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
 				{ "name", name }
 			};
@@ -434,13 +436,13 @@ namespace ZoomNet.Resources
 			Debug.Assert(recipientEmail != null || channelId != null, "You must provide either recipientEmail or channelId");
 			Debug.Assert(recipientEmail == null || channelId == null, "You can't provide both recipientEmail and channelId");
 
-			var data = new JObject()
+			var data = new JsonObject
 			{
-				{ "message", message }
+				{ "message", message },
+				{ "to_contact", recipientEmail },
+				{ "to_channel", channelId },
+				{ "at_items", mentions }
 			};
-			data.AddPropertyIfValue("to_contact", recipientEmail);
-			data.AddPropertyIfValue("to_channel", channelId);
-			data.AddPropertyIfValue("at_items", mentions);
 
 			return _client
 				.PostAsync($"chat/users/{userId}/messages")
@@ -474,11 +476,13 @@ namespace ZoomNet.Resources
 			Debug.Assert(recipientEmail != null || channelId != null, "You must provide either recipientEmail or channelId");
 			Debug.Assert(recipientEmail == null || channelId == null, "You can't provide both recipientEmail and channelId");
 
-			var data = new JObject();
-			data.AddPropertyIfValue("message", message);
-			data.AddPropertyIfValue("to_contact", recipientEmail);
-			data.AddPropertyIfValue("to_channel", channelId);
-			data.AddPropertyIfValue("at_items", mentions);
+			var data = new JsonObject
+			{
+				{ "message", message },
+				{ "to_contact", recipientEmail },
+				{ "to_channel", channelId },
+				{ "at_items", mentions }
+			};
 
 			return _client
 				.PutAsync($"chat/users/{userId}/messages/{messageId}")

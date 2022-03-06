@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models.Webhooks
 {
@@ -10,13 +10,13 @@ namespace ZoomNet.Models.Webhooks
 		/// <summary>
 		/// Gets or sets the email address of the user who deleted the meeting.
 		/// </summary>
-		[JsonProperty(PropertyName = "operator")]
+		[JsonPropertyName("operator")]
 		public string Operator { get; set; }
 
 		/// <summary>
 		/// Gets or sets the user ID of the operator who deleted the meeting.
 		/// </summary>
-		[JsonProperty(PropertyName = "operator_id")]
+		[JsonPropertyName("operator_id")]
 		public string OperatorId { get; set; }
 
 		/// <summary>
@@ -26,7 +26,7 @@ namespace ZoomNet.Models.Webhooks
 		/// - `all`: All occurrences of the recurring meeting were permanently deleted.
 		/// - `single`: Only one occurrence of the recurring meeting was deleted.
 		/// </summary>
-		[JsonProperty(PropertyName = "operation")]
+		[JsonPropertyName("operation")]
 		public string Operation { get; set; }
 	}
 }

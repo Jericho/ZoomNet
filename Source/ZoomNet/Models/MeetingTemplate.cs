@@ -1,4 +1,5 @@
-using Newtonsoft.Json;
+
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -10,19 +11,19 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the unique identifier of the template.
 		/// </summary>
-		[JsonProperty(PropertyName = "id")]
+		[JsonPropertyName("id")]
 		public string Id { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name of the template.
 		/// </summary>
-		[JsonProperty(PropertyName = "name")]
+		[JsonPropertyName("name")]
 		public string Name { get; set; }
 
 		/// <summary>
 		/// Gets or sets the type of the template.
 		/// </summary>
-		[JsonProperty(PropertyName = "type")]
+		[JsonPropertyName("type")]
 		public MeetingTemplateType Type { get; set; }
 	}
 }
