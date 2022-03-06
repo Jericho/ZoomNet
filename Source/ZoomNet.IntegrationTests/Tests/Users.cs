@@ -7,16 +7,11 @@ namespace ZoomNet.IntegrationTests.Tests
 {
 	public class Users : IIntegrationTest
 	{
-		public async Task RunAsync(string userId, IZoomClient client, TextWriter log, CancellationToken cancellationToken)
+		public async Task RunAsync(User myUser, string[] myPermissions, IZoomClient client, TextWriter log, CancellationToken cancellationToken)
 		{
 			if (cancellationToken.IsCancellationRequested) return;
 
 			await log.WriteLineAsync("\n***** USERS *****\n").ConfigureAwait(false);
-
-			// GET MY USER
-			var myUser = await client.Users.GetCurrentAsync(cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"My user retrieved. My email address is {myUser.Email}").ConfigureAwait(false);
-			await Task.Delay(500, cancellationToken).ConfigureAwait(false);
 
 			// UPDATE MY USER
 			await client.Users.UpdateAsync(myUser.Id,
@@ -56,11 +51,6 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			var myRecordingAuthSettings = await client.Users.GetRecordingAuthenticationSettingsAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("My recording authentication settings retrieved").ConfigureAwait(false);
-			await Task.Delay(500, cancellationToken).ConfigureAwait(false);
-
-			// GET MY PERMISSIONS
-			var myPermissions = await client.Users.GetPermissionsAsync("me", cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"My permissions retrieved: I have been granted {myPermissions.Length} permissions").ConfigureAwait(false);
 			await Task.Delay(500, cancellationToken).ConfigureAwait(false);
 		}
 	}

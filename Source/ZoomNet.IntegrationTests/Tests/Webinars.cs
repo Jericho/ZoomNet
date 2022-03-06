@@ -10,15 +10,15 @@ namespace ZoomNet.IntegrationTests.Tests
 {
 	public class Webinars : IIntegrationTest
 	{
-		public async Task RunAsync(string userId, IZoomClient client, TextWriter log, CancellationToken cancellationToken)
+		public async Task RunAsync(User myUser, string[] myPermissions, IZoomClient client, TextWriter log, CancellationToken cancellationToken)
 		{
 			if (cancellationToken.IsCancellationRequested) return;
 
 			await log.WriteLineAsync("\n***** WEBINARS *****\n").ConfigureAwait(false);
 
 			// GET ALL THE WEBINARS
-			var paginatedWebinars = await client.Webinars.GetAllAsync(userId, 30, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"There are {paginatedWebinars.TotalRecords} webinars for user {userId}").ConfigureAwait(false);
+			var paginatedWebinars = await client.Webinars.GetAllAsync(myUser.Id, 30, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {paginatedWebinars.TotalRecords} webinars for user {myUser.Id}").ConfigureAwait(false);
 
 			// CLEANUP PREVIOUS INTEGRATION TESTS THAT MIGHT HAVE BEEN INTERRUPTED BEFORE THEY HAD TIME TO CLEANUP AFTER THEMSELVES
 			var cleanUpTasks = paginatedWebinars.Records
@@ -32,7 +32,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				});
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
 
-			var templates = await client.Webinars.GetTemplatesAsync(userId, cancellationToken).ConfigureAwait(false);
+			var templates = await client.Webinars.GetTemplatesAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
 
 			var settings = new WebinarSettings()
 			{
@@ -49,7 +49,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			// Scheduled webinar
 			var start = DateTime.UtcNow.AddMonths(1);
 			var duration = 30;
-			var newScheduledWebinar = await client.Webinars.CreateScheduledWebinarAsync(userId, "ZoomNet Integration Testing: scheduled webinar", "The agenda", start, duration, TimeZones.UTC, "p@ss!w0rd", settings, trackingFields, cancellationToken: cancellationToken).ConfigureAwait(false);
+			var newScheduledWebinar = await client.Webinars.CreateScheduledWebinarAsync(myUser.Id, "ZoomNet Integration Testing: scheduled webinar", "The agenda", start, duration, TimeZones.UTC, "p@ss!w0rd", settings, trackingFields, cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Scheduled webinar {newScheduledWebinar.Id} created").ConfigureAwait(false);
 
 			var updatedSettings = new WebinarSettings() { Audio = AudioType.Voip };
@@ -198,7 +198,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				WeeklyDays = new[] { DayOfWeek.Monday, DayOfWeek.Friday },
 				Type = RecurrenceType.Weekly
 			};
-			var newRecurringWebinar = await client.Webinars.CreateRecurringWebinarAsync(userId, "ZoomNet Integration Testing: recurring webinar", "The agenda", start, duration, recurrenceInfo, TimeZones.UTC, "p@ss!w0rd", settings, trackingFields, null, cancellationToken).ConfigureAwait(false);
+			var newRecurringWebinar = await client.Webinars.CreateRecurringWebinarAsync(myUser.Id, "ZoomNet Integration Testing: recurring webinar", "The agenda", start, duration, recurrenceInfo, TimeZones.UTC, "p@ss!w0rd", settings, trackingFields, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Recurring webinar {newRecurringWebinar.Id} created").ConfigureAwait(false);
 
 			await client.Webinars.UpdateRecurringWebinarAsync(newRecurringWebinar.Id, topic: "ZoomNet Integration Testing: UPDATED recurring webinar", cancellationToken: cancellationToken).ConfigureAwait(false);
