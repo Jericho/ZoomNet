@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -10,31 +10,31 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the unique identifier.
 		/// </summary>
-		[JsonProperty("id")]
+		[JsonPropertyName("id")]
 		public string Id { get; set; }
 
 		/// <summary>
 		/// Gets or sets the device name.
 		/// </summary>
-		[JsonProperty("name")]
+		[JsonPropertyName("name")]
 		public string Name { get; set; }
 
 		/// <summary>
 		/// Gets or sets the device protocol.
 		/// </summary>
-		[JsonProperty("protocol")]
+		[JsonPropertyName("protocol")]
 		public Protocol Protocol { get; set; }
 
 		/// <summary>
 		/// Gets or sets the IP address of the device.
 		/// </summary>
-		[JsonProperty("ip")]
+		[JsonPropertyName("ip")]
 		public string IpAddress { get; set; }
 
 		/// <summary>
 		/// Gets or sets the encryption.
 		/// </summary>
-		[JsonProperty("encryption")]
+		[JsonPropertyName("encryption")]
 		public Encryption Encryption { get; set; }
 	}
 }
