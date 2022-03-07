@@ -12,119 +12,119 @@ namespace ZoomNet.UnitTests
 
 		private const string MEETING_CREATED_WEBHOOK = @"
 		{
-			'event': 'meeting.created',
-			'payload': {
-				'account_id': 'VjZoEArIT5y-HlWxkV-tVA',
-				'operator': 'someone@example.com',
-				'operator_id': '8lzIwvZTSOqjndWPbPqzuA',
-				'object': {
-					'uuid': '5yDZGNlQSV6qOjg4NxajHQ==',
-					'id': 98884753832,
-					'host_id': '8lzIwvZTSOqjndWPbPqzuA',
-					'topic': 'ZoomNet Unit Testing: instant meeting',
-					'type': 1,
-					'duration': 60,
-					'timezone': 'America/New_York',
-					'join_url': 'https://zoom.us/j/98884753832?pwd=c21EQzg0SXY2dlNTOFF2TENpSm1aQT09',
-					'password': 'PaSsWoRd',
-					'settings': {
-						'use_pmi': false,
-						'alternative_hosts': ''
+			""event"": ""meeting.created"",
+			""payload"": {
+				""account_id"": ""VjZoEArIT5y-HlWxkV-tVA"",
+				""operator"": ""someone@example.com"",
+				""operator_id"": ""8lzIwvZTSOqjndWPbPqzuA"",
+				""object"": {
+					""uuid"": ""5yDZGNlQSV6qOjg4NxajHQ=="",
+					""id"": 98884753832,
+					""host_id"": ""8lzIwvZTSOqjndWPbPqzuA"",
+					""topic"": ""ZoomNet Unit Testing: instant meeting"",
+					""type"": 1,
+					""duration"": 60,
+					""timezone"": ""America/New_York"",
+					""join_url"": ""https://zoom.us/j/98884753832?pwd=c21EQzg0SXY2dlNTOFF2TENpSm1aQT09"",
+					""password"": ""PaSsWoRd"",
+					""settings"": {
+						""use_pmi"": false,
+						""alternative_hosts"": """"
 					}
 				}
 			},
-			'event_ts': 1617628462392
+			""event_ts"": 1617628462392
 		}";
 
 		private const string MEETING_DELETED_WEBHOOK = @"
 		{
-			'event': 'meeting.deleted',
-			'payload': {
-				'account_id': 'VjZoEArIT5y-HlWxkV-tVA',
-				'operator': 'someone@example.com',
-				'operator_id': '8lzIwvZTSOqjndWPbPqzuA',
-				'object': {
-					'uuid': '5yDZGNlQSV6qOjg4NxajHQ==',
-					'id': 98884753832,
-					'host_id': '8lzIwvZTSOqjndWPbPqzuA',
-					'topic': 'ZoomNet Unit Testing: instant meeting',
-					'type': 1,
-					'duration': 60,
-					'timezone': 'America/New_York'
+			""event"": ""meeting.deleted"",
+			""payload"": {
+				""account_id"": ""VjZoEArIT5y-HlWxkV-tVA"",
+				""operator"": ""someone@example.com"",
+				""operator_id"": ""8lzIwvZTSOqjndWPbPqzuA"",
+				""object"": {
+					""uuid"": ""5yDZGNlQSV6qOjg4NxajHQ=="",
+					""id"": 98884753832,
+					""host_id"": ""8lzIwvZTSOqjndWPbPqzuA"",
+					""topic"": ""ZoomNet Unit Testing: instant meeting"",
+					""type"": 1,
+					""duration"": 60,
+					""timezone"": ""America/New_York""
 				}
 			},
-			'event_ts': 1617628462764
+			""event_ts"": 1617628462764
 		}";
 
 		private const string MEETING_UPDATED_WEBHOOK = @"
 		{
-			'event': 'meeting.updated',
-			'payload': {
-				'account_id': 'VjZoEArIT5y-HlWxkV-tVA',
-				'operator': 'someone@example.com',
-				'operator_id': '8lzIwvZTSOqjndWPbPqzuA',
-				'object': {
-					'id': 94890226305,
-					'topic': 'ZoomNet Unit Testing: UPDATED scheduled meeting',
-					'settings': { 'audio': 'voip' }
+			""event"": ""meeting.updated"",
+			""payload"": {
+				""account_id"": ""VjZoEArIT5y-HlWxkV-tVA"",
+				""operator"": ""someone@example.com"",
+				""operator_id"": ""8lzIwvZTSOqjndWPbPqzuA"",
+				""object"": {
+					""id"": 94890226305,
+					""topic"": ""ZoomNet Unit Testing: UPDATED scheduled meeting"",
+					""settings"": { ""audio"": ""voip"" }
 				},
-				'old_object': {
-					'id': 94890226305,
-					'topic': 'ZoomNet Unit Testing: scheduled meeting',
-					'settings': { 'audio': 'telephony' }
+				""old_object"": {
+					""id"": 94890226305,
+					""topic"": ""ZoomNet Unit Testing: scheduled meeting"",
+					""settings"": { ""audio"": ""telephony"" }
 				},
-				'time_stamp': 1617628464664
+				""time_stamp"": 1617628464664
 			},
-			'event_ts': 1617628464664
+			""event_ts"": 1617628464664
 		}";
 
 		private const string MEETING_STARTED_WEBHOOK = @"
 		{
-			'event':'meeting.started',
-			'payload': {
-				'account_id':'VjZoEArIT5y-HlWxkV-tVA',
-				'object': {
-					'duration':0,
-					'start_time':'2021-04-21T14:49:04Z',
-					'timezone':'America/New_York',
-					'topic':'My Personal Meeting Room',
-					'id':'3479130610',
-					'type':4,
-					'uuid':'mOG8pEaFQqeDm6Vd/3xopA==',
-					'host_id':'8lzIwvZTSOqjndWPbPqzuA'
+			""event"":""meeting.started"",
+			""payload"": {
+				""account_id"":""VjZoEArIT5y-HlWxkV-tVA"",
+				""object"": {
+					""duration"":0,
+					""start_time"":""2021-04-21T14:49:04Z"",
+					""timezone"":""America/New_York"",
+					""topic"":""My Personal Meeting Room"",
+					""id"":3479130610,
+					""type"":4,
+					""uuid"":""mOG8pEaFQqeDm6Vd/3xopA=="",
+					""host_id"":""8lzIwvZTSOqjndWPbPqzuA""
 				}
 			},
-			'event_ts':1619016544371
+			""event_ts"":1619016544371
 		}";
 
 		private const string MEETING_SHARING_STARTED_WEBHOOK = @"
 		{
-			'event': 'meeting.sharing_started',
-			'event_ts': 1234566789900,
-			'payload': {
-				'object': {
-					'duration': 60,
-					'start_time': '2019-07-16T17:14:39Z',
-					'timezone': 'America/Los_Angeles',
-					'topic': 'My Meeting',
-					'id': '6962400003',
-					'type': 2,
-					'uuid': '4118UHIiRCAAAtBlDkcVyw==',
-					'host_id': 'z8yCxTTTTSiw02QgCAp8uQ',
-					'participant': {
-						'id': 's0AAAASoSE1V8KIFOCYw',
-						'user_id': '16778000',
-						'user_name': 'Arya Arya',
-						'sharing_details': {
-							'link_source': 'in_meeting',
-							'file_link': '',
-							'source': 'dropbox',
-							'date_time': '2019-07-16T17:19:11Z',
-							'content': 'application'
+			""event"": ""meeting.sharing_started"",
+			""event_ts"": 1234566789900,
+			""payload"": {
+				""object"": {
+					""duration"": 60,
+					""start_time"": ""2019-07-16T17:14:39Z"",
+					""timezone"": ""America/Los_Angeles"",
+					""topic"": ""My Meeting"",
+					""id"": 6962400003,
+					""type"": 2,
+					""uuid"": ""4118UHIiRCAAAtBlDkcVyw=="",
+					""host_id"": ""z8yCxTTTTSiw02QgCAp8uQ"",
+					""participant"": {
+						""id"": ""s0AAAASoSE1V8KIFOCYw"",
+						""user_id"": ""16778000"",
+						""user_name"": ""Arya Arya"",
+						""sharing_details"": {
+							""link_source"": ""in_meeting"",
+							""file_link"": """",
+							""source"": ""dropbox"",
+							""date_time"": ""2019-07-16T17:19:11Z"",
+							""content"": ""application""
 						}
 					}
 				},
-				'account_id': 'EPeQtiABC000VYxHMA'
+				""account_id"": ""EPeQtiABC000VYxHMA""
 			}
 		}";
 

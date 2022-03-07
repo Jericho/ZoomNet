@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -33,14 +33,14 @@ namespace ZoomNet.Models
 		/// * Scheduling Display.<br/>
 		/// </summary>
 		/// <value>The Issue name.</value>
-		[JsonProperty(PropertyName = "issue_name")]
+		[JsonPropertyName("issue_name")]
 		public IssueType IssueType { get; set; }
 
 		/// <summary>
 		/// Gets or sets the count of Zoom rooms where the issue appeared.
 		/// </summary>
 		/// <value>The count of Zoom rooms where the issue appeared.</value>
-		[JsonProperty(PropertyName = "zoom_rooms_count")]
+		[JsonPropertyName("zoom_rooms_count")]
 		public int ZoomRoomsCount { get; set; }
 	}
 }

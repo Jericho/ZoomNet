@@ -1,4 +1,3 @@
-using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using Pathoschild.Http.Client.Extensibility;
 using System;
@@ -9,6 +8,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Runtime.Serialization;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
 using ZoomNet.Models;
 
@@ -96,19 +96,20 @@ namespace ZoomNet.Utilities
 
 						if (string.IsNullOrEmpty(responseContent)) throw new Exception(response.ReasonPhrase);
 
-						var jObject = JObject.Parse(responseContent);
+						var jsonResponse = JsonDocument.Parse(responseContent).RootElement;
 
 						if (!response.IsSuccessStatusCode)
 						{
-							throw new ZoomException(jObject.GetPropertyValue("reason", "The Zoom API did not provide a reason"), response, "No diagnostic available", null);
+							var reason = jsonResponse.GetPropertyValue("reason", "The Zoom API did not provide a reason");
+							throw new ZoomException(reason, response, "No diagnostic available", null);
 						}
 
-						_connectionInfo.RefreshToken = jObject.GetPropertyValue<string>("refresh_token");
-						_connectionInfo.AccessToken = jObject.GetPropertyValue<string>("access_token");
+						_connectionInfo.RefreshToken = jsonResponse.GetPropertyValue("refresh_token", string.Empty);
+						_connectionInfo.AccessToken = jsonResponse.GetPropertyValue("access_token", string.Empty);
 						_connectionInfo.GrantType = OAuthGrantType.RefreshToken;
-						_connectionInfo.TokenExpiration = requestTime.AddSeconds(jObject.GetPropertyValue<int>("expires_in", 60 * 60));
+						_connectionInfo.TokenExpiration = requestTime.AddSeconds(jsonResponse.GetPropertyValue("expires_in", 60 * 60));
 						_connectionInfo.TokenScope = new ReadOnlyDictionary<string, string[]>(
-							jObject.GetPropertyValue<string>("scope")
+							jsonResponse.GetPropertyValue("scope", string.Empty)
 								.Split(' ')
 								.Select(x => x.Split(new[] { ':' }, 2))
 								.Select(x => new KeyValuePair<string, string[]>(x[0], x.Skip(1).ToArray()))

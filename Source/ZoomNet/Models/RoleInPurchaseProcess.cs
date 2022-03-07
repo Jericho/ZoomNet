@@ -1,5 +1,3 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
@@ -7,7 +5,6 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// Role in purchase process.
 	/// </summary>
-	[JsonConverter(typeof(StringEnumConverter))]
 	public enum RoleInPurchaseProcess
 	{
 		/// <summary>Decision Maker</summary>

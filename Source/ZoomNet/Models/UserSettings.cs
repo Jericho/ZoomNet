@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -10,7 +10,7 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the settings for scheduledaudio conferencing.
 		/// </summary>
-		[JsonProperty("audio_conferencing", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("audio_conferencing")]
 		public AudioConferencingUserSettings AudioConferencing { get; set; }
 
 		/// <summary>
@@ -19,7 +19,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The settings.
 		/// </value>
-		[JsonProperty("email_notification", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("email_notification")]
 		public EmailNotificationUserSettings EmailNotification { get; set; }
 
 		/// <summary>
@@ -28,7 +28,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The settings.
 		/// </value>
-		[JsonProperty("feature", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("feature")]
 		public FeatureUserSettings Feature { get; set; }
 
 		/// <summary>
@@ -37,7 +37,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The settings.
 		/// </value>
-		[JsonProperty("in_meeting", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("in_meeting")]
 		public InstantMeetingUserSettings InstantMeeting { get; set; }
 
 		/// <summary>
@@ -46,7 +46,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The settings.
 		/// </value>
-		[JsonProperty("profile", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("profile")]
 		public UserProfile Profile { get; set; }
 
 		/// <summary>
@@ -55,7 +55,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The settings.
 		/// </value>
-		[JsonProperty("recording", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("recording")]
 		public RecordingUserSettings Recordings { get; set; }
 
 		/// <summary>
@@ -64,7 +64,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The settings.
 		/// </value>
-		[JsonProperty("schedule_meeting", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("schedule_meeting")]
 		public ScheduledMeetingUserSettings ScheduledMeeting { get; set; }
 
 		/// <summary>
@@ -73,7 +73,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The settings.
 		/// </value>
-		[JsonProperty("telephony", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("telephony")]
 		public TelephonyUserSettings Telephony { get; set; }
 
 		/// <summary>
@@ -82,7 +82,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The settings.
 		/// </value>
-		[JsonProperty("tsp", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("tsp")]
 		public TspUserSettings Tsp { get; set; }
 	}
 }

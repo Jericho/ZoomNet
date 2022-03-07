@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -11,13 +11,13 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the occurrences.
 		/// </summary>
-		[JsonProperty(PropertyName = "occurrences", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("occurrences")]
 		public MeetingOccurrence[] Occurrences { get; set; }
 
 		/// <summary>
 		/// Gets or sets the recurrence info.
 		/// </summary>
-		[JsonProperty(PropertyName = "recurrence", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("recurrence")]
 		public RecurrenceInfo RecurrenceInfo { get; set; }
 	}
 }

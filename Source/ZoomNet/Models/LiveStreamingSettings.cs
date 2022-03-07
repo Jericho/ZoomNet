@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -10,19 +10,19 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the stream URL.
 		/// </summary>
-		[JsonProperty(PropertyName = "stream_url")]
+		[JsonPropertyName("stream_url")]
 		public string Url { get; set; }
 
 		/// <summary>
 		/// Gets or sets the stream key.
 		/// </summary>
-		[JsonProperty(PropertyName = "stream_key")]
+		[JsonPropertyName("stream_key")]
 		public string Key { get; set; }
 
 		/// <summary>
 		/// Gets or sets the stream page URL.
 		/// </summary>
-		[JsonProperty(PropertyName = "page_url")]
+		[JsonPropertyName("page_url")]
 		public string PageUrl { get; set; }
 	}
 }

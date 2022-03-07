@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -13,7 +13,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The title.
 		/// </value>
-		[JsonProperty("title")]
+		[JsonPropertyName("title")]
 		public string Title { get; set; }
 
 		/// <summary>
@@ -22,7 +22,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The type.
 		/// </value>
-		[JsonProperty("type")]
+		[JsonPropertyName("type")]
 		public RegistrationCustomQuestionTypeForMeeting Type { get; set; }
 
 		/// <summary>
@@ -31,7 +31,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The type.
 		/// </value>
-		[JsonProperty("required")]
+		[JsonPropertyName("required")]
 		public bool IsRequired { get; set; }
 
 		/// <summary>
@@ -43,7 +43,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The answers.
 		/// </value>
-		[JsonProperty("answers")]
+		[JsonPropertyName("answers")]
 		public string[] Answers { get; set; }
 	}
 }

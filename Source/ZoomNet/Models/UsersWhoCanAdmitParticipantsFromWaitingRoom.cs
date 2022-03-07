@@ -1,12 +1,8 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-
 namespace ZoomNet.Models
 {
 	/// <summary>
 	/// Enumeration to specify what type of users can admit participants from the Waiting Room.
 	/// </summary>
-	[JsonConverter(typeof(StringEnumConverter))]
 	public enum UsersWhoCanAdmitParticipantsFromWaitingRoom
 	{
 		/// <summary>Host and co-hosts only.</summary>

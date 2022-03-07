@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -10,13 +10,13 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets a value indicating whether to allow participants to anonymously answer survey questions.
 		/// </summary>
-		[JsonProperty("anonymous")]
+		[JsonPropertyName("anonymous")]
 		public bool AllowAnonymous { get; set; }
 
 		/// <summary>
 		/// Gets or sets the survey questions.
 		/// </summary>
-		[JsonProperty(PropertyName = "questions")]
+		[JsonPropertyName("questions")]
 		public SurveyQuestion[] Questions { get; set; }
 	}
 }

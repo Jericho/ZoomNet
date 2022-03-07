@@ -1,5 +1,3 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
@@ -7,7 +5,6 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// Enumeration to indicate who the payee is.
 	/// </summary>
-	[JsonConverter(typeof(StringEnumConverter))]
 	public enum PayMode
 	{
 		/// <summary>

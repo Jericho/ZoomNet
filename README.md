@@ -26,7 +26,9 @@ PM> Install-Package ZoomNet
 
 ## .NET framework suport
 
-ZoomNet supports the `4.8` .NET framework, any framework supporting `.NET Standard 2.1` (which includes `.NET Core 3.x`  and `ASP.NET Core 3.x`) as well as `.NET 5.0`.
+ZoomNet supports the `4.8` .NET framework, any framework supporting `.NET Standard 2.1` (which includes `.NET Core 3.x`  and `ASP.NET Core 3.x`) as well as `.NET 5.0` and `.NET 6.0'.
+The last version of ZoomNet that supported `.NET 4.6.1`, `.NET 4.7.2` and `.NET Standard 2.0` was 0.35.0
+
 
 ## Usage
 

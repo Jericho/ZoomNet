@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -9,22 +9,22 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the registrant id.</summary>
 		/// <value>The registrant id.</value>
-		[JsonProperty("registrant_id", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("registrant_id")]
 		public string RegistrantId { get; set; }
 
 		/// <summary>Gets or sets the meeting id.</summary>
 		/// <value>The meeting id.</value>
-		[JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("id")]
 		public long MeetingId { get; set; }
 
 		/// <summary>Gets or sets the meeting topic.</summary>
 		/// <value>The topic.</value>
-		[JsonProperty("topic", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("topic")]
 		public string Topic { get; set; }
 
 		/// <summary>Gets or sets the URL for the on-demand recording.</summary>
 		/// <value>The user id.</value>
-		[JsonProperty("share_url", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("share_url")]
 		public string ShareUrl { get; set; }
 	}
 }

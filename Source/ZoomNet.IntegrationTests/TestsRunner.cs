@@ -77,7 +77,6 @@ namespace ZoomNet.IntegrationTests
 				//	});
 			}
 
-			var userId = Environment.GetEnvironmentVariable("ZOOM_USERID");
 			var proxy = useFiddler ? new WebProxy($"http://localhost:{fiddlerPort}") : null;
 			var client = new ZoomClient(connectionInfo, proxy, null, _loggerFactory.CreateLogger<ZoomClient>());
 
@@ -108,6 +107,10 @@ namespace ZoomNet.IntegrationTests
 				typeof(Reports)
 			};
 
+			// Get my user and permisisons
+			var myUser = await client.Users.GetCurrentAsync(source.Token).ConfigureAwait(false);
+			var myPermissions = await client.Users.GetCurrentPermissionsAsync(source.Token).ConfigureAwait(false);
+
 			// Execute the async tests in parallel (with max degree of parallelism)
 			var results = await integrationTests.ForEachAsync(
 				async testType =>
@@ -117,7 +120,7 @@ namespace ZoomNet.IntegrationTests
 					try
 					{
 						var integrationTest = (IIntegrationTest)Activator.CreateInstance(testType);
-						await integrationTest.RunAsync(userId, client, log, source.Token).ConfigureAwait(false);
+						await integrationTest.RunAsync(myUser, myPermissions, client, log, source.Token).ConfigureAwait(false);
 						return (TestName: testType.Name, ResultCode: ResultCodes.Success, Message: SUCCESSFUL_TEST_MESSAGE);
 					}
 					catch (OperationCanceledException)

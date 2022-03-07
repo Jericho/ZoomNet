@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -10,7 +10,7 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the user's Toll-free and Fee-based Toll Call settings.
 		/// </summary>
-		[JsonProperty(PropertyName = "toll_free_and_fee_based_toll_call")]
+		[JsonPropertyName("toll_free_and_fee_based_toll_call")]
 		public AudioConferencingCallSettings AudioConferencingCallSettings { get; set; }
 	}
 }

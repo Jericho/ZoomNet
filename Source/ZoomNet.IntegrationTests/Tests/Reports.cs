@@ -9,7 +9,7 @@ namespace ZoomNet.IntegrationTests.Tests
 {
 	public class Reports : IIntegrationTest
 	{
-		public async Task RunAsync(string userId, IZoomClient client, TextWriter log, CancellationToken cancellationToken)
+		public async Task RunAsync(User myUser, string[] myPermissions, IZoomClient client, TextWriter log, CancellationToken cancellationToken)
 		{
 			if (cancellationToken.IsCancellationRequested) return;
 
@@ -17,7 +17,7 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			//GET ALL MEETINGS
 			var totalMeetings = await client
-				.Meetings.GetAllAsync(userId, MeetingListType.Scheduled, 30, null, cancellationToken)
+				.Meetings.GetAllAsync(myUser.Id, MeetingListType.Scheduled, 30, null, cancellationToken)
 				.ConfigureAwait(false);
 
 			var pastInstances = new List<PastInstance>();

@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -6,7 +6,7 @@ namespace ZoomNet.Models
 	/// Participant (for webhooks).
 	/// </summary>
 	/// <remarks>
-	/// This class is use to parse the participant information included in webhook JSON payloads.
+	/// This class is used to parse the participant information included in webhook JSON payloads.
 	/// It is very similar to the <see cref="Participant"/> class but there are a few notable differences.
 	///
 	/// For instance:
@@ -23,13 +23,13 @@ namespace ZoomNet.Models
 		/// <remarks>
 		/// This is unique for each meeting participant and is valid only for that meeting.
 		/// </remarks>
-		[JsonProperty(PropertyName = "user_id")]
+		[JsonPropertyName("user_id")]
 		public string ParticipantId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the participant's display name.
 		/// </summary>
-		[JsonProperty(PropertyName = "user_name")]
+		[JsonPropertyName("user_name")]
 		public string DisplayName { get; set; }
 
 		/// <summary>
@@ -38,13 +38,13 @@ namespace ZoomNet.Models
 		/// <remarks>
 		/// Same as the User Id used in the Users API if p[articipant oined the meeting by logging in.
 		/// </remarks>
-		[JsonProperty(PropertyName = "id")]
+		[JsonPropertyName("id")]
 		public string UserId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the participant's email address.
 		/// </summary>
-		[JsonProperty(PropertyName = "email")]
+		[JsonPropertyName("email")]
 		public string Email { get; set; }
 	}
 }

@@ -1,11 +1,10 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -53,7 +52,7 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"users")
-				.WithArgument("status", JToken.Parse(JsonConvert.SerializeObject(status)).ToString())
+				.WithArgument("status", status.ToEnumString())
 				.WithArgument("role_id", roleId)
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("page_number", page)
@@ -81,7 +80,7 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"users")
-				.WithArgument("status", JToken.Parse(JsonConvert.SerializeObject(status)).ToString())
+				.WithArgument("status", status.ToEnumString())
 				.WithArgument("role_id", roleId)
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
@@ -104,15 +103,20 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task<User> CreateAsync(string email, string firstName = null, string lastName = null, string password = null, UserType type = UserType.Basic, UserCreateType createType = UserCreateType.Normal, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
-				{ "action", JToken.Parse(JsonConvert.SerializeObject(createType)).ToString() }
+				{ "action", createType.ToEnumString() },
+				{
+					"user_info", new JsonObject
+					{
+						{ "email", email },
+						{ "type", type },
+						{ "first_name", firstName },
+						{ "last_name", lastName },
+						{ "password", password }
+					}
+				}
 			};
-			data.AddPropertyIfValue("user_info/email", email);
-			data.AddPropertyIfEnumValue("user_info/type", type);
-			data.AddPropertyIfValue("user_info/first_name", firstName);
-			data.AddPropertyIfValue("user_info/last_name", lastName);
-			data.AddPropertyIfValue("user_info/password", password);
 
 			return _client
 				.PostAsync("users")
@@ -124,25 +128,27 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task UpdateAsync(string userId, string firstName = null, string lastName = null, string company = null, string department = null, string groupId = null, string hostKey = null, string jobTitle = null, string language = null, string location = null, string manager = null, IEnumerable<PhoneNumber> phoneNumbers = null, string pmi = null, string pronouns = null, PronounDisplayType? pronounsDisplay = null, TimeZones? timezone = null, UserType? type = null, bool? usePmi = null, string personalMeetingRoomName = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("company", company);
-			data.AddPropertyIfValue("dept", department);
-			data.AddPropertyIfValue("first_name", firstName);
-			data.AddPropertyIfValue("group_id", groupId);
-			data.AddPropertyIfValue("host_key", hostKey);
-			data.AddPropertyIfValue("job_title", jobTitle);
-			data.AddPropertyIfValue("language", language);
-			data.AddPropertyIfValue("last_name", lastName);
-			data.AddPropertyIfValue("location", location);
-			data.AddPropertyIfValue("manager", manager);
-			data.AddPropertyIfValue("phone_numbers", phoneNumbers);
-			data.AddPropertyIfValue("pmi", pmi);
-			data.AddPropertyIfValue("pronouns", pronouns);
-			data.AddPropertyIfEnumValue("pronouns_option", pronounsDisplay);
-			data.AddPropertyIfEnumValue("timezone", timezone);
-			data.AddPropertyIfEnumValue("type", type);
-			data.AddPropertyIfValue("use_pmi", usePmi);
-			data.AddPropertyIfValue("vanity_name", personalMeetingRoomName);
+			var data = new JsonObject
+			{
+				{ "company", company },
+				{ "dept", department },
+				{ "first_name", firstName },
+				{ "group_id", groupId },
+				{ "host_key", hostKey },
+				{ "job_title", jobTitle },
+				{ "language", language },
+				{ "last_name", lastName },
+				{ "location", location },
+				{ "manager", manager },
+				{ "phone_numbers", phoneNumbers },
+				{ "pmi", pmi },
+				{ "pronouns", pronouns },
+				{ "pronouns_option", pronounsDisplay?.ToEnumString() },
+				{ "timezone", timezone?.ToEnumString() },
+				{ "type", type?.ToEnumString() },
+				{ "use_pmi", usePmi },
+				{ "vanity_name", personalMeetingRoomName },
+			};
 
 			return _client
 				.PatchAsync($"users/{userId}")
@@ -246,8 +252,10 @@ namespace ZoomNet.Resources
 		{
 			if (assistantIds == null || !assistantIds.Any()) throw new ArgumentNullException(nameof(assistantIds), "You must provide at least one assistant Id.");
 
-			var data = new JObject();
-			data.AddPropertyIfValue("assistants", assistantIds.Select(id => new JObject() { { "id", id } }).ToArray());
+			var data = new JsonObject
+			{
+				{ "assistants", assistantIds.Select(id => new JsonObject { { "id", id } }).ToArray() }
+			};
 
 			return _client
 				.PostAsync($"users/{userId}/assistants")
@@ -269,8 +277,10 @@ namespace ZoomNet.Resources
 		{
 			if (assistantEmails == null || !assistantEmails.Any()) throw new ArgumentNullException(nameof(assistantEmails), "You must provide at least one assistant email address.");
 
-			var data = new JObject();
-			data.AddPropertyIfValue("assistants", assistantEmails.Select(id => new JObject() { { "email", id } }).ToArray());
+			var data = new JsonObject
+			{
+				{ "assistants", assistantEmails.Select(id => new JsonObject { { "email", id } }).ToArray() }
+			};
 
 			return _client
 				.PostAsync($"users/{userId}/assistants")
@@ -434,13 +444,13 @@ namespace ZoomNet.Resources
 				.GetAsync($"users/{userId}/settings")
 				.WithArgument("option", "meeting_authentication")
 				.WithCancellationToken(cancellationToken)
-				.AsRawJsonObject()
+				.AsRawJsonDocument()
 				.ConfigureAwait(false);
 
 			var settings = new AuthenticationSettings()
 			{
-				RequireAuthentication = response.GetPropertyValue("meeting_authentication", false),
-				AuthenticationOptions = response.GetProperty("authentication_options", false)?.ToObject<AuthenticationOptions[]>() ?? Array.Empty<AuthenticationOptions>()
+				RequireAuthentication = response.RootElement.GetPropertyValue("meeting_authentication", false),
+				AuthenticationOptions = response.RootElement.GetProperty("authentication_options", false)?.ToObject<AuthenticationOptions[]>() ?? Array.Empty<AuthenticationOptions>()
 			};
 
 			return settings;
@@ -460,13 +470,13 @@ namespace ZoomNet.Resources
 				.GetAsync($"users/{userId}/settings")
 				.WithArgument("option", "recording_authentication")
 				.WithCancellationToken(cancellationToken)
-				.AsRawJsonObject()
+				.AsRawJsonDocument()
 				.ConfigureAwait(false);
 
 			var settings = new AuthenticationSettings()
 			{
-				RequireAuthentication = response.GetPropertyValue("recording_authentication", false),
-				AuthenticationOptions = response.GetProperty("authentication_options", false)?.ToObject<AuthenticationOptions[]>() ?? Array.Empty<AuthenticationOptions>()
+				RequireAuthentication = response.RootElement.GetPropertyValue("recording_authentication", false),
+				AuthenticationOptions = response.RootElement.GetProperty("authentication_options", false)?.ToObject<AuthenticationOptions[]>() ?? Array.Empty<AuthenticationOptions>()
 			};
 
 			return settings;
@@ -492,7 +502,7 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task DeactivateAsync(string userId, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
 				{ "action", "deactivate" }
 			};
@@ -514,7 +524,7 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task ReactivateAsync(string userId, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
 				{ "action", "activate" }
 			};
@@ -537,7 +547,7 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task ChangePasswordAsync(string userId, string password, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
 				{ "password", password }
 			};
@@ -609,7 +619,7 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task ChangeEmailAsync(string userId, string email, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
 				{ "email", email }
 			};
@@ -650,7 +660,7 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task SwitchAccountAsync(string userId, string currentAccountId, string newAccountId, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
 				{ "account_id", newAccountId }
 			};
@@ -709,9 +719,11 @@ namespace ZoomNet.Resources
 		{
 			if (status == PresenceStatus.Unknown) throw new ArgumentOutOfRangeException("You can not change a user's status to Unknown.", nameof(status));
 
-			var data = new JObject();
-			data.AddPropertyIfEnumValue("status", status);
-			if (status == PresenceStatus.DoNotDisturb) data.AddPropertyIfValue("duration", duration);
+			var data = new JsonObject
+			{
+				{ "status", status.ToEnumString() }
+			};
+			if (status == PresenceStatus.DoNotDisturb) data.Add("duration", duration);
 
 			return _client
 				.PutAsync($"users/{userId}/presence_status")

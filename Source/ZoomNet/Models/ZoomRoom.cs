@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -13,7 +13,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The room id.
 		/// </value>
-		[JsonProperty(PropertyName = "id")]
+		[JsonPropertyName("id")]
 		public string Id { get; set; }
 
 		/// <summary>
@@ -22,7 +22,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The room name.
 		/// </value>
-		[JsonProperty(PropertyName = "room_name")]
+		[JsonPropertyName("room_name")]
 		public string Name { get; set; }
 
 		/// <summary>
@@ -31,7 +31,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The Zoom calendar name.
 		/// </value>
-		[JsonProperty(PropertyName = "calender_name")]
+		[JsonPropertyName("calender_name")]
 		public string CalendarName { get; set; }
 
 		/// <summary>
@@ -40,7 +40,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The Zoom room email.
 		/// </value>
-		[JsonProperty(PropertyName = "email")]
+		[JsonPropertyName("email")]
 		public string Email { get; set; }
 
 		/// <summary>
@@ -49,7 +49,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Zoom room email type.
 		/// </value>
-		[JsonProperty(PropertyName = "account_type")]
+		[JsonPropertyName("account_type")]
 		public string AccountType { get; set; }
 
 		/// <summary>
@@ -58,7 +58,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The Zoom room status.
 		/// </value>
-		[JsonProperty(PropertyName = "status")]
+		[JsonPropertyName("status")]
 		public string Status { get; set; }
 
 		/// <summary>
@@ -67,7 +67,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The Zoom room device IP.
 		/// </value>
-		[JsonProperty(PropertyName = "device_ip")]
+		[JsonPropertyName("device_ip")]
 		public string DeviceIp { get; set; }
 
 		/// <summary>
@@ -76,7 +76,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The Zoom room camera.
 		/// </value>
-		[JsonProperty(PropertyName = "camera")]
+		[JsonPropertyName("camera")]
 		public string Camera { get; set; }
 
 		/// <summary>
@@ -85,7 +85,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The Zoom room microphone.
 		/// </value>
-		[JsonProperty(PropertyName = "microphone")]
+		[JsonPropertyName("microphone")]
 		public string Microphone { get; set; }
 
 		/// <summary>
@@ -94,7 +94,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The Zoom room speaker.
 		/// </value>
-		[JsonProperty(PropertyName = "speaker")]
+		[JsonPropertyName("speaker")]
 		public string Speaker { get; set; }
 
 		/// <summary>
@@ -103,7 +103,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The last start time of the Zoom room.
 		/// </value>
-		[JsonProperty(PropertyName = "last_start_time")]
+		[JsonPropertyName("last_start_time")]
 		public string LastStartTime { get; set; }
 
 		/// <summary>
@@ -112,7 +112,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The Zoom room location.
 		/// </value>
-		[JsonProperty(PropertyName = "location")]
+		[JsonPropertyName("location")]
 		public string Location { get; set; }
 
 		/// <summary>
@@ -121,7 +121,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The health value.
 		/// </value>
-		[JsonProperty(PropertyName = "health")]
+		[JsonPropertyName("health")]
 		public string Health { get; set; }
 
 		/// <summary>
@@ -130,7 +130,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Zoom room issues.
 		/// </value>
-		[JsonProperty(PropertyName = "issues")]
+		[JsonPropertyName("issues")]
 		public string[] Issues { get; set; }
 
 		/// <summary>
@@ -139,7 +139,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Metrics on the currently live meeting if there is one.
 		/// </value>
-		[JsonProperty(PropertyName = "live_meeting", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("live_meeting")]
 		public DashboardMeetingMetrics LiveMeeting { get; set; }
 
 		/// <summary>
@@ -148,7 +148,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Pagination object to get metrics on previous meetings that happened in this Zoom room.
 		/// </value>
-		[JsonProperty(PropertyName = "past_meetings", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("past_meetings")]
 		public DashboardMeetingMetricsPaginationObject PastMeetings { get; set; }
 	}
 }

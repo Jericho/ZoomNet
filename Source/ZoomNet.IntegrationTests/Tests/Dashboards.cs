@@ -8,7 +8,7 @@ namespace ZoomNet.IntegrationTests.Tests
 {
 	public class Dashboards : IIntegrationTest
 	{
-		public async Task RunAsync(string userId, IZoomClient client, TextWriter log, CancellationToken cancellationToken)
+		public async Task RunAsync(User myUser, string[] myPermissions, IZoomClient client, TextWriter log, CancellationToken cancellationToken)
 		{
 			if (cancellationToken.IsCancellationRequested) return;
 

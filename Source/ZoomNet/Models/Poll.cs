@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -13,7 +13,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The ID.
 		/// </value>
-		[JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("id")]
 		public string Id { get; set; }
 
 		/// <summary>
@@ -22,7 +22,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The status.
 		/// </value>
-		[JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("status")]
 		public PollStatus Status { get; set; }
 
 		/// <summary>
@@ -31,7 +31,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The title.
 		/// </value>
-		[JsonProperty("title", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("title")]
 		public string Title { get; set; }
 
 		/// <summary>
@@ -40,13 +40,13 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The status.
 		/// </value>
-		[JsonProperty("poll_type", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("poll_type")]
 		public PollType Type { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether to allow participants to anonymously answer poll questions.
 		/// </summary>
-		[JsonProperty("anonymous")]
+		[JsonPropertyName("anonymous")]
 		public bool AllowAnonymous { get; set; }
 
 		/// <summary>
@@ -55,7 +55,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The questions.
 		/// </value>
-		[JsonProperty("questions", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("questions")]
 		public PollQuestion[] Questions { get; set; }
 	}
 }

@@ -16,12 +16,38 @@ namespace ZoomNet
 		/// <summary>
 		/// Returns information about the current user.
 		/// </summary>
-		/// <param name="usersResource">The user resource.</param>
+		/// <param name="usersResource">The users resource.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The current user.</returns>
 		public static Task<User> GetCurrentAsync(this IUsers usersResource, CancellationToken cancellationToken)
 		{
 			return usersResource.GetAsync("me", cancellationToken);
+		}
+
+		/// <summary>
+		/// Retrieve the permissions that have been granted to the current user.
+		/// </summary>
+		/// <param name="usersResource">The users resource.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of strings.
+		/// </returns>
+		public static Task<string[]> GetCurrentPermissionsAsync(this IUsers usersResource, CancellationToken cancellationToken = default)
+		{
+			return usersResource.GetPermissionsAsync("me", cancellationToken);
+		}
+
+		/// <summary>
+		/// Retrieve the current user's settings.
+		/// </summary>
+		/// <param name="usersResource">The users resource.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="UserSettings">settings</see>.
+		/// </returns>
+		public static Task<UserSettings> GetCurrentSettingsAsync(this IUsers usersResource, CancellationToken cancellationToken = default)
+		{
+			return usersResource.GetSettingsAsync("me", cancellationToken);
 		}
 
 		/// <summary>

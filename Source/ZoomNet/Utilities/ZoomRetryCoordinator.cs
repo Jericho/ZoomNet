@@ -1,10 +1,10 @@
-using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using Pathoschild.Http.Client.Retry;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -64,8 +64,8 @@ namespace ZoomNet.Utilities
 			if (response.StatusCode == HttpStatusCode.Unauthorized)
 			{
 				var responseContent = await response.Content.ReadAsStringAsync(null).ConfigureAwait(false);
-				var jObject = JObject.Parse(responseContent);
-				var message = jObject.GetPropertyValue("message", string.Empty);
+				var jsonResponse = JsonDocument.Parse(responseContent).RootElement;
+				var message = jsonResponse.GetPropertyValue("message", string.Empty);
 				if (message.StartsWith("access token is expired", StringComparison.OrdinalIgnoreCase))
 				{
 					var refreshedToken = RefreshToken();
