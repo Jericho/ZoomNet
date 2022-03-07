@@ -1,11 +1,13 @@
 using Pathoschild.Http.Client.Formatters;
 using System;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 
 namespace ZoomNet.Utilities
@@ -80,6 +82,23 @@ namespace ZoomNet.Utilities
 
 		public override void Serialize(Type type, object value, Stream stream, HttpContent content, TransportContext transportContext)
 		{
+			if (type == typeof(JsonObject))
+			{
+				// As of .NET 6.0, serializing a JsonObject does NOT respect 'JsonIgnoreCondition.WhenWritingNull'.
+				// This is a documented shortcoming that is currently considered "as designed" by the .NET team.
+				// See: https://github.com/dotnet/runtime/issues/54184 and https://github.com/dotnet/docs/issues/27824
+				// Hopefully, this will be addressed and this workaround will no longer be necessary in .NET 7.0
+				var valueAsJsonObject = (JsonObject)value;
+				var nullProperties = valueAsJsonObject
+					.Where(kvp => kvp.Value == null)
+					.Select(kvp => kvp.Key)
+					.ToArray();
+				foreach (var propertyName in nullProperties)
+				{
+					valueAsJsonObject.Remove(propertyName);
+				}
+			}
+
 			var writer = new StreamWriter(
 				stream,
 				encoding: new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true),
