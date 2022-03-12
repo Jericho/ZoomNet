@@ -7,6 +7,10 @@ namespace ZoomNet.Models
 	/// </summary>
 	public enum RoleInPurchaseProcess
 	{
+		/// <summary>Unknown</summary>
+		[EnumMember(Value = "")]
+		Unknown,
+
 		/// <summary>Decision Maker</summary>
 		[EnumMember(Value = "Decision Maker")]
 		Decision_Maker,
