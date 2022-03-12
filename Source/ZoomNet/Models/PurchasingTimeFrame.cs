@@ -7,6 +7,10 @@ namespace ZoomNet.Models
 	/// </summary>
 	public enum PurchasingTimeFrame
 	{
+		/// <summary>Unknown</summary>
+		[EnumMember(Value = "")]
+		Unknown,
+
 		/// <summary>Within a month</summary>
 		[EnumMember(Value = "Within a month")]
 		Within_a_month,

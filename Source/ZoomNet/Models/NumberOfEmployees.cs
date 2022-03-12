@@ -7,6 +7,10 @@ namespace ZoomNet.Models
 	/// </summary>
 	public enum NumberOfEmployees
 	{
+		/// <summary>Unknown</summary>
+		[EnumMember(Value = "")]
+		Unknown,
+
 		/// <summary>1-20</summary>
 		[EnumMember(Value = "1-20")]
 		Between_0001_and_0020,
