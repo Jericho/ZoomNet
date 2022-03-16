@@ -6,7 +6,7 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace ZoomNet.Utilities
+namespace ZoomNet.Utilities.Json
 {
 	// Inspired by: https://gist.github.com/benmccallum/84ce901122133335ec195e9a62da03b4
 	internal sealed class EnumConverterFactory : JsonConverterFactory

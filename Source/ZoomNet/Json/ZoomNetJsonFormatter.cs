@@ -10,7 +10,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 
-namespace ZoomNet.Utilities
+namespace ZoomNet.Utilities.Json
 {
 	internal class ZoomNetJsonFormatter : MediaTypeFormatterBase
 	{

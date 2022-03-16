@@ -17,6 +17,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
 using ZoomNet.Utilities;
+using ZoomNet.Utilities.Json;
 
 namespace ZoomNet
 {

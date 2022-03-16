@@ -5,6 +5,7 @@ using RichardSzalay.MockHttp;
 using System;
 using System.Linq;
 using ZoomNet.Utilities;
+using ZoomNet.Utilities.Json;
 
 namespace ZoomNet.UnitTests
 {

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace ZoomNet.Utilities
+namespace ZoomNet.Utilities.Json
 {
 	/// <summary>
 	/// Converts a JSON string into and array of <see cref="DayOfWeek">days of the week</see>.

@@ -2,7 +2,7 @@ using Shouldly;
 using System.Text.Json;
 using Xunit;
 using ZoomNet.Models;
-using ZoomNet.Utilities;
+using ZoomNet.Utilities.Json;
 
 namespace ZoomNet.UnitTests.Resources
 {

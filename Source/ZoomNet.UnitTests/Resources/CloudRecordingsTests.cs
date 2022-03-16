@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Xunit;
 using ZoomNet.Models;
 using ZoomNet.Resources;
-using ZoomNet.Utilities;
+using ZoomNet.Utilities.Json;
 
 namespace ZoomNet.UnitTests.Resources
 {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json;
 using Xunit;
 using ZoomNet.Models;
-using ZoomNet.Utilities;
+using ZoomNet.Utilities.Json;
 
 namespace ZoomNet.UnitTests.Utilities
 {

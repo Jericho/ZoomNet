@@ -7,7 +7,7 @@ using ZoomNet.Models;
 using ZoomNet.Models.Webhooks;
 using static ZoomNet.Internal;
 
-namespace ZoomNet.Utilities
+namespace ZoomNet.Utilities.Json
 {
 	/// <summary>
 	/// Converts a JSON string received from a webhook into an <see cref="Event">event</see>.

@@ -4,7 +4,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using ZoomNet.Models;
 
-namespace ZoomNet.Utilities
+namespace ZoomNet.Utilities.Json
 {
 	/// <summary>
 	/// Converts a JSON string into and array of devices.
