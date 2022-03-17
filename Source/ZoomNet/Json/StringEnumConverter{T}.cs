@@ -22,6 +22,10 @@ namespace ZoomNet.Utilities.Json
 					var stringValue = reader.GetString();
 					return stringValue.ToEnum<T>();
 
+				case JsonTokenType.Number:
+					var numberValue = reader.GetInt32();
+					return (T)Enum.ToObject(typeof(T), numberValue);
+
 				case JsonTokenType.Null:
 					var enumType = typeof(T);
 					if (Nullable.GetUnderlyingType(enumType) != null) return default;
@@ -54,10 +58,13 @@ namespace ZoomNet.Utilities.Json
 			{
 				writer.WriteNullValue();
 			}
+			else if (value.TryToEnumString(out var stringValue))
+			{
+				writer.WriteStringValue(stringValue);
+			}
 			else
 			{
-				var stringValue = value.ToEnumString();
-				writer.WriteStringValue(stringValue);
+				writer.WriteNumberValue(Convert.ToInt32(value));
 			}
 		}
 	}
