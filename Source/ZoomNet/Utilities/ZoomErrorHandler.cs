@@ -10,7 +10,7 @@ namespace ZoomNet.Utilities
 	/// <seealso cref="Pathoschild.Http.Client.Extensibility.IHttpFilter" />
 	internal class ZoomErrorHandler : IHttpFilter
 	{
-		private const string DEFAULT_HTTP_200_EXCEPTION_MESSAGE = "The SendGrid API returned a status code that indicates that your request was unseccessful, without providing an explanation. Typically this means that you either lack the necessary permissions or that a paid account is required and you have a free account.";
+		private const string DEFAULT_HTTP_200_EXCEPTION_MESSAGE = "The Zoom API returned a status code that indicates that your request was unseccessful, without providing an explanation. Typically this means that you either lack the necessary permissions or that a paid account is required and you have a free account.";
 
 		/// <summary>
 		/// Gets or sets a value indicating whether HTTP 200 returned by the Zoom API should be treated as a failure.
@@ -56,7 +56,7 @@ namespace ZoomNet.Utilities
 
 			if (TreatHttp200AsException && response.Status == HttpStatusCode.OK)
 			{
-				// We favor the custom message provided by developer or the message in the response from SendGrid.
+				// We favor the custom message provided by developer or the message in the response from Zoom.
 				// If both of these messages are null, we fallback on a generic message.
 				errorMessage = CustomHttp200ExceptionMessage ?? errorMessage ?? DEFAULT_HTTP_200_EXCEPTION_MESSAGE;
 
