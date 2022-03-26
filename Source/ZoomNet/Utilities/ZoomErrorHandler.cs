@@ -50,7 +50,7 @@ namespace ZoomNet.Utilities
 		/// <param name="httpErrorAsException">Whether HTTP error responses should be raised as exceptions.</param>
 		public void OnResponse(IResponse response, bool httpErrorAsException)
 		{
-			var (isError, errorMessage, errorCode) = response.Message.GetErrorMessage().GetAwaiter().GetResult();
+			var (isError, errorMessage, errorCode) = response.Message.GetErrorMessageAsync().GetAwaiter().GetResult();
 			var diagnosticInfo = response.GetDiagnosticInfo();
 			var diagnosticLog = diagnosticInfo.Diagnostic ?? "Diagnostic log unavailable";
 

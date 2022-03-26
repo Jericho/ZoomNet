@@ -610,7 +610,7 @@ namespace ZoomNet
 			return diagnosticInfo;
 		}
 
-		internal static async Task<(bool, string, int?)> GetErrorMessage(this HttpResponseMessage message)
+		internal static async Task<(bool, string, int?)> GetErrorMessageAsync(this HttpResponseMessage message)
 		{
 			// Assume there is no error
 			var isError = false;
