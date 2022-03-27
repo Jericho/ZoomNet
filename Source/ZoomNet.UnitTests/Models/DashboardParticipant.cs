@@ -57,6 +57,7 @@ namespace ZoomNet.UnitTests.Resources
 			result.Devices.ShouldNotBeNull();
 			result.Devices.Length.ShouldBe(1);
 			result.Devices[0].ShouldBe(ParticipantDevice.Unknown);
+			result.Role.ShouldBe("panelist");
 		}
 	}
 }
