@@ -4,13 +4,13 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using ZoomNet.Models;
 
-namespace ZoomNet.Utilities.Json
+namespace ZoomNet.Json
 {
 	/// <summary>
-	/// Converts a JSON string into and array of devices.
+	/// Converts an array of <see cref="ParticipantDevice"/> to or from JSON.
 	/// </summary>
 	/// <seealso cref="JsonConverter" />
-	internal class ParticipantDeviceConverter : JsonConverter<ParticipantDevice[]>
+	internal class ParticipantDeviceConverter : ZoomNetJsonConverter<ParticipantDevice[]>
 	{
 		public override ParticipantDevice[] Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 		{

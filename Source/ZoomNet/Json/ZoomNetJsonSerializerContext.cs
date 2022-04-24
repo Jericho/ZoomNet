@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace ZoomNet.Utilities.Json
+namespace ZoomNet.Json
 {
 	[JsonSerializable(typeof(System.Text.Json.Nodes.JsonObject))]
 

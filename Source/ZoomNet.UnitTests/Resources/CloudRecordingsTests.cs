@@ -6,9 +6,9 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
+using ZoomNet.Json;
 using ZoomNet.Models;
 using ZoomNet.Resources;
-using ZoomNet.Utilities.Json;
 
 namespace ZoomNet.UnitTests.Resources
 {

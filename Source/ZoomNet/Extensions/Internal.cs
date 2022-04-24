@@ -15,9 +15,9 @@ using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
+using ZoomNet.Json;
 using ZoomNet.Models;
 using ZoomNet.Utilities;
-using ZoomNet.Utilities.Json;
 
 namespace ZoomNet
 {

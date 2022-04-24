@@ -2,7 +2,7 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace ZoomNet.Utilities.Json
+namespace ZoomNet.Json
 {
 	internal sealed class EnumConverterFactory : JsonConverterFactory
 	{

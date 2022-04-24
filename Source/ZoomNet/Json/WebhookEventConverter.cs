@@ -2,18 +2,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using ZoomNet.Models;
 using ZoomNet.Models.Webhooks;
 using static ZoomNet.Internal;
 
-namespace ZoomNet.Utilities.Json
+namespace ZoomNet.Json
 {
 	/// <summary>
-	/// Converts a JSON string received from a webhook into an <see cref="Event">event</see>.
+	/// Converts an <see cref="Event"/> to or from JSON.
 	/// </summary>
-	/// <seealso cref="JsonConverter" />
-	internal class WebHookEventConverter : JsonConverter<Event>
+	/// <seealso cref="ZoomNetJsonConverter{T}"/>
+	internal class WebHookEventConverter : ZoomNetJsonConverter<Event>
 	{
 		public override Event Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 		{
@@ -266,11 +265,6 @@ namespace ZoomNet.Utilities.Json
 			webHookEvent.Timestamp = timestamp;
 
 			return webHookEvent;
-		}
-
-		public override void Write(Utf8JsonWriter writer, Event value, JsonSerializerOptions options)
-		{
-			throw new NotImplementedException();
 		}
 
 		private static KeyValuePair<string, object> ConvertJsonPropertyToKeyValuePair(JsonProperty property)

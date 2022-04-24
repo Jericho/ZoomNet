@@ -6,9 +6,9 @@ using System;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
+using ZoomNet.Json;
 using ZoomNet.Resources;
 using ZoomNet.Utilities;
-using ZoomNet.Utilities.Json;
 
 namespace ZoomNet
 {

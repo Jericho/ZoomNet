@@ -1,6 +1,6 @@
 using System;
 using System.Text.Json.Serialization;
-using ZoomNet.Utilities.Json;
+using ZoomNet.Json;
 
 namespace ZoomNet.Models.Webhooks
 {

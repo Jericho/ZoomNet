@@ -1,15 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
-namespace ZoomNet.Utilities.Json
+namespace ZoomNet.Json
 {
 	/// <summary>
-	/// Converts a JSON string into and array of tracking fields.
+	/// Converts an array of <see cref="KeyValuePair{TKey, TValue}"/> to or from JSON.
 	/// </summary>
-	/// <seealso cref="JsonConverter" />
-	internal class TrackingFieldsConverter : JsonConverter<KeyValuePair<string, string>[]>
+	/// <seealso cref="ZoomNetJsonConverter{T}"/>
+	internal class TrackingFieldsConverter : ZoomNetJsonConverter<KeyValuePair<string, string>[]>
 	{
 		public override KeyValuePair<string, string>[] Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 		{
@@ -46,11 +45,6 @@ namespace ZoomNet.Utilities.Json
 			}
 
 			throw new Exception("Unable to convert to tracking fields");
-		}
-
-		public override void Write(Utf8JsonWriter writer, KeyValuePair<string, string>[] value, JsonSerializerOptions options)
-		{
-			throw new NotImplementedException();
 		}
 	}
 }

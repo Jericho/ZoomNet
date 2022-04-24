@@ -1,15 +1,14 @@
 using System;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using ZoomNet.Models;
 
-namespace ZoomNet.Utilities.Json
+namespace ZoomNet.Json
 {
 	/// <summary>
-	/// Converts a JSON string into a <see cref="Webinar">webinar</see>.
+	/// Converts a <see cref="Webinar">webinar</see> to or from JSON.
 	/// </summary>
-	/// <seealso cref="JsonConverter" />
-	internal class WebinarConverter : JsonConverter<Webinar>
+	/// <seealso cref="ZoomNetJsonConverter{T}"/>
+	internal class WebinarConverter : ZoomNetJsonConverter<Webinar>
 	{
 		public override Webinar Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 		{
@@ -28,11 +27,6 @@ namespace ZoomNet.Utilities.Json
 				default:
 					throw new Exception($"{webinarType} is an unknown webinar type");
 			}
-		}
-
-		public override void Write(Utf8JsonWriter writer, Webinar value, JsonSerializerOptions options)
-		{
-			throw new NotImplementedException();
 		}
 	}
 }
