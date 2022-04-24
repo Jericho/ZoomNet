@@ -4,8 +4,8 @@ using Pathoschild.Http.Client.Extensibility;
 using RichardSzalay.MockHttp;
 using System;
 using System.Linq;
+using ZoomNet.Json;
 using ZoomNet.Utilities;
-using ZoomNet.Utilities.Json;
 
 namespace ZoomNet.UnitTests
 {

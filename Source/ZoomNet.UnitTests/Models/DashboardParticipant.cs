@@ -1,8 +1,8 @@
 using Shouldly;
 using System.Text.Json;
 using Xunit;
+using ZoomNet.Json;
 using ZoomNet.Models;
-using ZoomNet.Utilities.Json;
 
 namespace ZoomNet.UnitTests.Resources
 {
