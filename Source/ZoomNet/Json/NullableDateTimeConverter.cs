@@ -1,10 +1,13 @@
 using System;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
-namespace ZoomNet.Utilities.Json
+namespace ZoomNet.Json
 {
-	internal class NullableDateTimeConverter : JsonConverter<DateTime?>
+	/// <summary>
+	/// Converts a <see cref="Nullable{DateTime}">nullable DateTime</see> to or from JSON.
+	/// </summary>
+	/// <seealso cref="ZoomNetJsonConverter{T}"/>
+	internal class NullableDateTimeConverter : ZoomNetJsonConverter<DateTime?>
 	{
 		public override DateTime? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 		{
@@ -19,13 +22,20 @@ namespace ZoomNet.Utilities.Json
 
 					return DateTime.Parse(stringValue);
 				default:
-					throw new Exception("Unable to convert to ParticipantDevice");
+					throw new Exception("Unable to convert to nullable DateTime");
 			}
 		}
 
 		public override void Write(Utf8JsonWriter writer, DateTime? value, JsonSerializerOptions options)
 		{
-			throw new NotImplementedException();
+			if (value.HasValue)
+			{
+				writer.WriteStringValue(value.Value.ToZoomFormat());
+			}
+			else
+			{
+				writer.WriteNullValue();
+			}
 		}
 	}
 }
