@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Text.Json;
 
 namespace ZoomNet.Json
@@ -19,8 +20,7 @@ namespace ZoomNet.Json
 				case JsonTokenType.String:
 					var stringValue = reader.GetString();
 					if (string.IsNullOrEmpty(stringValue)) return null;
-
-					return DateTime.Parse(stringValue);
+					return DateTime.Parse(stringValue, null, DateTimeStyles.AdjustToUniversal);
 				default:
 					throw new Exception("Unable to convert to nullable DateTime");
 			}
@@ -28,14 +28,8 @@ namespace ZoomNet.Json
 
 		public override void Write(Utf8JsonWriter writer, DateTime? value, JsonSerializerOptions options)
 		{
-			if (value.HasValue)
-			{
-				writer.WriteStringValue(value.Value.ToZoomFormat());
-			}
-			else
-			{
-				writer.WriteNullValue();
-			}
+			if (value.HasValue) writer.WriteStringValue(value.Value.ToZoomFormat());
+			else writer.WriteNullValue();
 		}
 	}
 }
