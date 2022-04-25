@@ -1,15 +1,14 @@
 using System;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using ZoomNet.Models;
 
-namespace ZoomNet.Utilities
+namespace ZoomNet.Json
 {
 	/// <summary>
-	/// Converts a JSON string into a <see cref="Meeting">meeting</see>.
+	/// Converts a <see cref="Meeting">meeting</see> to or from JSON.
 	/// </summary>
-	/// <seealso cref="JsonConverter" />
-	internal class MeetingConverter : JsonConverter<Meeting>
+	/// <seealso cref="ZoomNetJsonConverter{T}" />
+	internal class MeetingConverter : ZoomNetJsonConverter<Meeting>
 	{
 		public override Meeting Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 		{
@@ -31,11 +30,6 @@ namespace ZoomNet.Utilities
 				default:
 					throw new Exception($"{meetingType} is an unknown meeting type");
 			}
-		}
-
-		public override void Write(Utf8JsonWriter writer, Meeting value, JsonSerializerOptions options)
-		{
-			throw new NotImplementedException();
 		}
 	}
 }

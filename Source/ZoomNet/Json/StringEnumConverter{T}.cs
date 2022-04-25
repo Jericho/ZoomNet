@@ -5,13 +5,13 @@ using System.Runtime.Serialization;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace ZoomNet.Utilities
+namespace ZoomNet.Json
 {
 	/// <summary>
-	/// Converts a string into an enum value.
+	/// Converts an <see cref="Enum"/> to or from JSON.
 	/// </summary>
-	/// <seealso cref="JsonConverter" />
-	internal class StringEnumConverter<T> : JsonConverter<T>
+	/// <seealso cref="ZoomNetJsonConverter{T}" />
+	internal class StringEnumConverter<T> : ZoomNetJsonConverter<T>
 		where T : Enum
 	{
 		public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -21,6 +21,10 @@ namespace ZoomNet.Utilities
 				case JsonTokenType.String:
 					var stringValue = reader.GetString();
 					return stringValue.ToEnum<T>();
+
+				case JsonTokenType.Number:
+					var numberValue = reader.GetInt32();
+					return (T)Enum.ToObject(typeof(T), numberValue);
 
 				case JsonTokenType.Null:
 					var enumType = typeof(T);
@@ -54,10 +58,13 @@ namespace ZoomNet.Utilities
 			{
 				writer.WriteNullValue();
 			}
+			else if (value.TryToEnumString(out var stringValue))
+			{
+				writer.WriteStringValue(stringValue);
+			}
 			else
 			{
-				var stringValue = value.ToEnumString();
-				writer.WriteStringValue(stringValue);
+				writer.WriteNumberValue(Convert.ToInt32(value));
 			}
 		}
 	}

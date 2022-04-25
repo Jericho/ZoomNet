@@ -1,8 +1,8 @@
 using Shouldly;
 using System.Text.Json;
 using Xunit;
+using ZoomNet.Json;
 using ZoomNet.Models;
-using ZoomNet.Utilities;
 
 namespace ZoomNet.UnitTests.Resources
 {
@@ -57,6 +57,7 @@ namespace ZoomNet.UnitTests.Resources
 			result.Devices.ShouldNotBeNull();
 			result.Devices.Length.ShouldBe(1);
 			result.Devices[0].ShouldBe(ParticipantDevice.Unknown);
+			result.Role.ShouldBe("panelist");
 		}
 	}
 }

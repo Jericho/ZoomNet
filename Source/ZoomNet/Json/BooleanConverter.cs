@@ -2,10 +2,10 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace ZoomNet.Utilities
+namespace ZoomNet.Json
 {
 	/// <summary>
-	/// Converts a JSON string into a <see cref="bool">boolean</see>.
+	/// Converts a <see cref="bool">boolean</see> to or from JSON.
 	/// </summary>
 	/// <seealso cref="JsonConverter" />
 	internal class BooleanConverter : JsonConverter<bool>

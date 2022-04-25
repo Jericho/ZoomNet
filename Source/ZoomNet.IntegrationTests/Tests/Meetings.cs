@@ -216,6 +216,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			// Recurring meeting
 			var recurrenceInfo = new RecurrenceInfo()
 			{
+				EndDateTime = DateTime.Now.AddMonths(2),
 				EndTimes = 2,
 				WeeklyDays = new[] { DayOfWeek.Monday, DayOfWeek.Friday },
 				Type = RecurrenceType.Weekly

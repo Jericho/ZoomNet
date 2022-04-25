@@ -1,15 +1,14 @@
 using System;
 using System.Linq;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
-namespace ZoomNet.Utilities
+namespace ZoomNet.Json
 {
 	/// <summary>
-	/// Converts a JSON string into and array of <see cref="DayOfWeek">days of the week</see>.
+	/// Converts a J<see cref="DayOfWeek">days of the week</see> to or from JSON.
 	/// </summary>
-	/// <seealso cref="JsonConverter" />
-	internal class DaysOfWeekConverter : JsonConverter<DayOfWeek[]>
+	/// <seealso cref="ZoomNetJsonConverter{T}" />
+	internal class DaysOfWeekConverter : ZoomNetJsonConverter<DayOfWeek[]>
 	{
 		public override DayOfWeek[] Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 		{

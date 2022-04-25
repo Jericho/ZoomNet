@@ -15,6 +15,7 @@ using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
+using ZoomNet.Json;
 using ZoomNet.Models;
 using ZoomNet.Utilities;
 
@@ -609,7 +610,7 @@ namespace ZoomNet
 			return diagnosticInfo;
 		}
 
-		internal static async Task<(bool, string, int?)> GetErrorMessage(this HttpResponseMessage message)
+		internal static async Task<(bool, string, int?)> GetErrorMessageAsync(this HttpResponseMessage message)
 		{
 			// Assume there is no error
 			var isError = false;

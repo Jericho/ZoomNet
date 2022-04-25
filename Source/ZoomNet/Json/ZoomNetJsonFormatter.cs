@@ -10,7 +10,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
 
-namespace ZoomNet.Utilities
+namespace ZoomNet.Json
 {
 	internal class ZoomNetJsonFormatter : MediaTypeFormatterBase
 	{
@@ -29,6 +29,7 @@ namespace ZoomNet.Utilities
 				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
 				Converters =
 				{
+					new DateTimeConverter(),
 					new NullableDateTimeConverter(),
 					new DayOfWeekConverter(),
 					new DaysOfWeekConverter(),
@@ -46,6 +47,7 @@ namespace ZoomNet.Utilities
 				PropertyNameCaseInsensitive = false,
 				Converters =
 				{
+					new DateTimeConverter(),
 					new NullableDateTimeConverter(),
 					new DayOfWeekConverter(),
 					new DaysOfWeekConverter(),
