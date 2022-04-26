@@ -180,6 +180,9 @@ namespace ZoomNet
 		/// <inheritdoc/>
 		public ISms Sms { get; private set; }
 
+		/// <inheritdoc/>
+		public IWorkspaces Workspaces { get; private set; }
+
 		#endregion
 
 		#region CTOR
@@ -287,6 +290,7 @@ namespace ZoomNet
 			Chatbot = new Chatbot(_fluentClient);
 			Phone = new Phone(_fluentClient);
 			Sms = new Sms(_fluentClient);
+			Workspaces = new Workspaces(_fluentClient);
 		}
 
 		/// <summary>
