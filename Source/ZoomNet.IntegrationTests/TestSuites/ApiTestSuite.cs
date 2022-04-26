@@ -26,6 +26,7 @@ namespace ZoomNet.IntegrationTests.TestSuites
 			typeof(TrackingFields),
 			typeof(Users),
 			typeof(Webinars),
+			typeof(Workspaces),
 		};
 
 		public ApiTestSuite(IZoomClient client, ILoggerFactory loggerFactory) :
