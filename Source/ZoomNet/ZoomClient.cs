@@ -134,6 +134,9 @@ namespace ZoomNet
 		/// <inheritdoc/>
 		public IWebinars Webinars { get; private set; }
 
+		/// <inheritdoc/>
+		public IWorkspaces Workspaces { get; private set; }
+
 		#endregion
 
 		#region CTOR
@@ -252,6 +255,7 @@ namespace ZoomNet
 			TrackingFields = new TrackingFields(_fluentClient);
 			Users = new Users(_fluentClient);
 			Webinars = new Webinars(_fluentClient);
+			Workspaces = new Workspaces(_fluentClient);
 		}
 
 		/// <summary>
