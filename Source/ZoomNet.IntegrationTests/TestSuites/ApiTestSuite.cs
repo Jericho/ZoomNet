@@ -20,6 +20,7 @@ namespace ZoomNet.IntegrationTests.TestSuites
 			typeof(Users),
 			typeof(Webinars),
 			typeof(Reports),
+			typeof(Workspaces),
 		};
 
 		public ApiTestSuite(IConnectionInfo connectionInfo, IWebProxy proxy, ILoggerFactory loggerFactory) :
