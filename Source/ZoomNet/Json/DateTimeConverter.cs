@@ -1,5 +1,4 @@
 using System;
-using System.Globalization;
 using System.Text.Json;
 
 namespace ZoomNet.Json
@@ -15,10 +14,9 @@ namespace ZoomNet.Json
 			switch (reader.TokenType)
 			{
 				case JsonTokenType.String:
-					var stringValue = reader.GetString();
-					return DateTime.Parse(stringValue, null, DateTimeStyles.AdjustToUniversal);
+					return reader.GetDateTime();
 				default:
-					throw new Exception("Unable to convert to DateTime");
+					throw new Exception($"Unable to convert {reader.TokenType.ToEnumString()} to DateTime");
 			}
 		}
 
