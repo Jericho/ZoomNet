@@ -1,5 +1,4 @@
 using System;
-using System.Globalization;
 using System.Text.Json;
 
 namespace ZoomNet.Json
@@ -16,13 +15,12 @@ namespace ZoomNet.Json
 			{
 				case JsonTokenType.None:
 				case JsonTokenType.Null:
+				case JsonTokenType.String when string.IsNullOrEmpty(reader.GetString()):
 					return null;
 				case JsonTokenType.String:
-					var stringValue = reader.GetString();
-					if (string.IsNullOrEmpty(stringValue)) return null;
-					return DateTime.Parse(stringValue, null, DateTimeStyles.AdjustToUniversal);
+					return reader.GetDateTime();
 				default:
-					throw new Exception("Unable to convert to nullable DateTime");
+					throw new Exception($"Unable to convert {reader.TokenType.ToEnumString()} to nullable DateTime");
 			}
 		}
 
