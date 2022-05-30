@@ -370,8 +370,7 @@ namespace ZoomNet.Resources
 			var tokenHandler = _client.Filters.OfType<ITokenHandler>().SingleOrDefault();
 			var requestUri = downloadUrl + (tokenHandler != null ? "?access_token=" + tokenHandler.Token : string.Empty);
 
-			var response = await _client.BaseClient.GetAsync(requestUri, cancellationToken).ConfigureAwait(false);
-			return await response.Content.ReadAsStreamAsync();
+			return await _client.BaseClient.GetStreamAsync(requestUri).ConfigureAwait(false);
 		}
 
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<string> registrantIds, string status, CancellationToken cancellationToken = default)
