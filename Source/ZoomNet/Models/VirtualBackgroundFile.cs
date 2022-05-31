@@ -21,7 +21,7 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets the size.</summary>
 		[JsonPropertyName("size")]
-		public string Size { get; set; }
+		public int Size { get; set; }
 
 		/// <summary>Gets or sets the type.</summary>
 		[JsonPropertyName("type")]
