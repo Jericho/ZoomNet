@@ -994,13 +994,17 @@ namespace ZoomNet
 
 			if (typeOfT.IsGenericType && typeOfT.GetGenericTypeDefinition() == typeof(Nullable<>))
 			{
-				typeOfT = Nullable.GetUnderlyingType(typeOfT);
+				var underlyingType = Nullable.GetUnderlyingType(typeOfT);
+				var getElementValue = typeof(Internal)
+					.GetMethod(nameof(Internal.GetElementValue), BindingFlags.Static | BindingFlags.NonPublic)
+					.MakeGenericMethod(underlyingType);
+
+				return (T)getElementValue.Invoke(null, new object[] { property.Value });
 			}
 
 			if (typeOfT.IsArray)
 			{
 				var elementType = typeOfT.GetElementType();
-
 				var getElementValue = typeof(Internal)
 					.GetMethod(nameof(Internal.GetElementValue), BindingFlags.Static | BindingFlags.NonPublic)
 					.MakeGenericMethod(elementType);
