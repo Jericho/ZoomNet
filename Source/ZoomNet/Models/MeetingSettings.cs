@@ -92,7 +92,7 @@ namespace ZoomNet.Models
 		public string EnforceLoginDomains { get; set; }
 
 		/// <summary>
-		/// Gets or sets the value indicating alternative hosts emails or IDs. Multiple value separated by comma.
+		/// Gets or sets the value indicating alternative hosts email addresses or IDs. Multiple value separated by semicolon.
 		/// </summary>
 		[JsonPropertyName("alternative_hosts")]
 		public string AlternativeHosts { get; set; }
