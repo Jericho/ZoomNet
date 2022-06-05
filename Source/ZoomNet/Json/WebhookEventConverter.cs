@@ -33,7 +33,7 @@ namespace ZoomNet.Json
 					break;
 				case EventType.MeetingServiceIssue:
 					var meetingServiceIssueEvent = payloadJsonProperty.ToObject<MeetingServiceIssueEvent>(options);
-					meetingServiceIssueEvent.Issues = payloadJsonProperty.GetPropertyValue("object/issues", string.Empty);
+					meetingServiceIssueEvent.Issues = payloadJsonProperty.GetPropertyValue("object/issues", Array.Empty<string>());
 					webHookEvent = meetingServiceIssueEvent;
 					break;
 				case EventType.MeetingCreated:

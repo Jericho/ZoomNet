@@ -14,6 +14,6 @@ namespace ZoomNet.Models.Webhooks
 		/// <summary>
 		/// Gets or sets the issues that occured during the meeting.
 		/// </summary>
-		public string Issues { get; set; }
+		public string[] Issues { get; set; }
 	}
 }
