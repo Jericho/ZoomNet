@@ -21,7 +21,7 @@ namespace ZoomNet.Models.Webhooks
 		/// <summary>
 		/// A service issue has been encountered during a meeting.
 		/// </summary>
-		[EnumMember(Value = "meeting.alerts")]
+		[EnumMember(Value = "meeting.alert")]
 		MeetingServiceIssue,
 
 		/// <summary>
