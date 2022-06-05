@@ -18,6 +18,7 @@ namespace ZoomNet.Resources
 	/// This resource can only be used when you connect to Zoom using OAuth. It cannot be used with a Jwt connection.
 	/// See <a href="https://marketplace.zoom.us/docs/api-reference/data-compliance/">Zoom documentation</a> for more information.
 	/// </remarks>
+	[Obsolete("The Data Complaince API is deprecated")]
 	public class DataCompliance : IDataCompliance
 	{
 		private readonly Pathoschild.Http.Client.IClient _client;
@@ -42,6 +43,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
+		[Obsolete("The Data Complaince API is deprecated")]
 		public Task NotifyAsync(string userId, long accountId, AppDeauthorizedEvent deauthorizationEventReceived, CancellationToken cancellationToken = default)
 		{
 			// Prepare the request (but do not dispatch it yet)

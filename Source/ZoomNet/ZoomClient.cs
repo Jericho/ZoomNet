@@ -95,6 +95,7 @@ namespace ZoomNet
 		/// <value>
 		/// The data compliance resource.
 		/// </value>
+		[Obsolete("The Data Compliance API is deprecated")]
 		public IDataCompliance DataCompliance { get; private set; }
 
 		/// <summary>
