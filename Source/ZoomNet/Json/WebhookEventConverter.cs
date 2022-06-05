@@ -91,7 +91,7 @@ namespace ZoomNet.Json
 					break;
 				case EventType.MeetingRegistrationCancelled:
 					var meetingRegistrationCancelledEvent = payloadJsonProperty.ToObject<MeetingRegistrationCancelledEvent>(options);
-					meetingRegistrationCancelledEvent.Registrant = payloadJsonProperty.GetProperty("objectregistrant", true).Value.ToObject<Registrant>();
+					meetingRegistrationCancelledEvent.Registrant = payloadJsonProperty.GetProperty("object/registrant", true).Value.ToObject<Registrant>();
 					webHookEvent = meetingRegistrationCancelledEvent;
 					break;
 				case EventType.MeetingRegistrationDenied:
