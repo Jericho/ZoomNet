@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -269,5 +270,42 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task DeleteMessageToChannelAsync(string messageId, string userId, string channelId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Send a file on Zoom to either an individual user in your contact list or a channel of which you are a member.
+		/// </summary>
+		/// <param name="messageId">The reply message's ID.</param>
+		/// <param name="userId">The unique identifier of the sender.</param>
+		/// <param name="recipientId">The unique identifier of the contact to whom you would like to send the file.</param>
+		/// <param name="channelId">The unique identifier of the channel to which to send the file.</param>
+		/// <param name="fileName">The file name.</param>
+		/// <param name="fileData">The binary data.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The message ID.
+		/// </returns>
+		/// <remarks>
+		/// Zoom Cloud Storage will store the files sent through this API.
+		/// If you do not use Zoom Cloud Storage, Zoom Cloud will temporarily store these files for 7 day
+		/// You can only send a maximum of 16 megabytes for images and 20 megabytes for all other file types.
+		/// </remarks>
+		Task<string> SendFileAsync(string messageId, string userId, string recipientId, string channelId, string fileName, Stream fileData, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Upload a file to chat.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="fileName">The file name.</param>
+		/// <param name="fileData">The binary data.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The file ID.
+		/// </returns>
+		/// <remarks>
+		/// Zoom Cloud Storage will store the files sent through this API.
+		/// If you do not use Zoom Cloud Storage, Zoom Cloud will temporarily store these files for 7 day
+		/// You can only send a maximum of 16 megabytes for images and 20 megabytes for all other file types.
+		/// </remarks>
+		Task<string> UploadFileAsync(string userId, string fileName, Stream fileData, CancellationToken cancellationToken = default);
 	}
 }

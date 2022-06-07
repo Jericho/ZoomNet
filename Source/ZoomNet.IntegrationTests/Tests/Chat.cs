@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -49,6 +50,21 @@ namespace ZoomNet.IntegrationTests.Tests
 			var messageId = await client.Chat.SendMessageToChannelAsync(channel.Id, "This is a test from integration test", null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Message \"{messageId}\" sent").ConfigureAwait(false);
 			await Task.Delay(1000, cancellationToken).ConfigureAwait(false); // Allow the Zoom system to process this message and avoid subsequent "message doesn't exist" error messages
+
+			// SEND A FILE TO THE CHANNEL
+			var samplePicturesFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "Samples");
+			if (Directory.Exists(samplePicturesFolder))
+			{
+				var samplePicture = Directory.EnumerateFiles(samplePicturesFolder, "*.jpg").FirstOrDefault();
+				if (!string.IsNullOrEmpty(samplePicture))
+				{
+					using (var fileStream = File.OpenRead(samplePicture))
+					{
+						var fileId = await client.Chat.SendFileAsync(null, "me", null, channel.Id, Path.GetFileName(samplePicture), fileStream, cancellationToken).ConfigureAwait(false);
+						await log.WriteLineAsync($"File {fileId} sent").ConfigureAwait(false);
+					}
+				}
+			}
 
 			// UPDATE THE MESSAGE
 			await client.Chat.UpdateMessageToChannelAsync(messageId, channel.Id, "This is an updated message from integration testing", null, cancellationToken).ConfigureAwait(false);

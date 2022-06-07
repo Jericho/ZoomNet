@@ -2,7 +2,9 @@ using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
@@ -431,11 +433,44 @@ namespace ZoomNet.Resources
 			return DeleteMessageAsync(messageId, userId, null, channelId, cancellationToken);
 		}
 
+		/// <inheritdoc/>
+		public Task<string> SendFileAsync(string messageId, string userId, string recipientId, string channelId, string fileName, Stream fileData, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.PostAsync($"https://file.zoom.us/v2/chat/users/{userId}/messages/files")
+				.WithBody(bodyBuilder =>
+				{
+					// The file name as well as the name of the other 'parts' in the request must be quoted otherwise the Zoom API would return the following error message: Invalid 'Content-Disposition' in multipart form
+					var content = new MultipartFormDataContent();
+					content.Add(new StreamContent(fileData), "files", $"\"{fileName}\"");
+					if (!string.IsNullOrEmpty(messageId)) content.Add(new StringContent(messageId), "\"reply_main_message_id\"");
+					if (!string.IsNullOrEmpty(channelId)) content.Add(new StringContent(channelId), "\"to_channel\"");
+					if (!string.IsNullOrEmpty(recipientId)) content.Add(new StringContent(recipientId), "\"to_contact\"");
+
+					return content;
+				})
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("id");
+		}
+
+		/// <inheritdoc/>
+		public Task<string> UploadFileAsync(string userId, string fileName, Stream fileData, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.PostAsync($"https://file.zoom.us/v2/chat/users/{userId}/files")
+				.WithBody(bodyBuilder =>
+				{
+					// The file name must be quoted otherwise the Zoom API would return the following error message: Invalid 'Content-Disposition' in multipart form
+					var content = new MultipartFormDataContent();
+					content.Add(new StreamContent(fileData), "file", $"\"{fileName}\"");
+					return content;
+				})
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("id");
+		}
+
 		private Task<string> SendMessageAsync(string userId, string recipientEmail, string channelId, string message, IEnumerable<ChatMention> mentions, CancellationToken cancellationToken)
 		{
-			Debug.Assert(recipientEmail != null || channelId != null, "You must provide either recipientEmail or channelId");
-			Debug.Assert(recipientEmail == null || channelId == null, "You can't provide both recipientEmail and channelId");
-
 			var data = new JsonObject
 			{
 				{ "message", message },
