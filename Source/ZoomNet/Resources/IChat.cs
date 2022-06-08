@@ -173,12 +173,14 @@ namespace ZoomNet.Resources
 		/// <param name="userId">The unique identifier of the sender.</param>
 		/// <param name="recipientEmail">The email address of the contact to whom you would like to send the message.</param>
 		/// <param name="message">The message.</param>
+		/// <param name="replyMessageId">The reply message's ID. </param>
+		/// <param name="fileIds">A list of the file IDs to send. This field only accepts a maximum of six file IDs.</param>
 		/// <param name="mentions">Mentions.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The message Id.
 		/// </returns>
-		Task<string> SendMessageToContactAsync(string userId, string recipientEmail, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default);
+		Task<string> SendMessageToContactAsync(string userId, string recipientEmail, string message, string replyMessageId = null, IEnumerable<string> fileIds = null, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Send a message to a channel of which the sender is a member.
@@ -186,12 +188,14 @@ namespace ZoomNet.Resources
 		/// <param name="userId">The unique identifier of the sender.</param>
 		/// <param name="channelId">The channel Id.</param>
 		/// <param name="message">The message.</param>
+		/// <param name="replyMessageId">The reply message's ID. </param>
+		/// <param name="fileIds">A list of the file IDs to send. This field only accepts a maximum of six file IDs.</param>
 		/// <param name="mentions">Mentions.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The message Id.
 		/// </returns>
-		Task<string> SendMessageToChannelAsync(string userId, string channelId, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default);
+		Task<string> SendMessageToChannelAsync(string userId, string channelId, string message, string replyMessageId = null, IEnumerable<string> fileIds = null, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve the chat messages sent/received to/from a contact.
