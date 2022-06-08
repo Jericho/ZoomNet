@@ -138,5 +138,11 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonPropertyName("request_permission_to_unmute_participants")]
 		public bool? RequestPermissionToUnmutePartecipants { get; set; }
+
+		/// <summary>
+		/// Gets or sets the value indicating whether the 'Allow host to save video order' feature is enabled.
+		/// </summary>
+		[JsonPropertyName("host_save_video_order")]
+		public bool? HostCanSaveVideoOrder { get; set; }
 	}
 }
