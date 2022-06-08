@@ -357,13 +357,14 @@ namespace ZoomNet.Resources
 		/// <param name="webinarId">The webinar ID.</param>
 		/// <param name="email">Panelist's email address.</param>
 		/// <param name="fullName">Panelist's full name.</param>
+		/// <param name="virtualBackgroundId">The virtual background ID to bind.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task AddPanelistAsync(long webinarId, string email, string fullName, CancellationToken cancellationToken = default)
+		public Task AddPanelistAsync(long webinarId, string email, string fullName, string virtualBackgroundId = null, CancellationToken cancellationToken = default)
 		{
-			return AddPanelistsAsync(webinarId, new (string Email, string FullName)[] { (email, fullName) }, cancellationToken);
+			return AddPanelistsAsync(webinarId, new (string Email, string FullName, string VirtualBackgroundId)[] { (email, fullName, virtualBackgroundId) }, cancellationToken);
 		}
 
 		/// <summary>
@@ -375,11 +376,18 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task AddPanelistsAsync(long webinarId, IEnumerable<(string Email, string FullName)> panelists, CancellationToken cancellationToken = default)
+		public Task AddPanelistsAsync(long webinarId, IEnumerable<(string Email, string FullName, string VirtualBackgroundId)> panelists, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
-				{ "panelists", panelists.Select(p => new JsonObject { { "email", p.Email }, { "name", p.FullName } }) }
+				{
+					"panelists", panelists.Select(p => new JsonObject
+					{
+						{ "email", p.Email },
+						{ "name", p.FullName },
+						{ "virtual_background_id", p.VirtualBackgroundId },
+					})
+				}
 			};
 
 			return _client

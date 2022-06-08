@@ -182,11 +182,12 @@ namespace ZoomNet.Resources
 		/// <param name="webinarId">The webinar ID.</param>
 		/// <param name="email">Panelist's email address.</param>
 		/// <param name="fullName">Panelist's full name.</param>
+		/// <param name="virtualBackgroundId">The virtual background ID to bind.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task AddPanelistAsync(long webinarId, string email, string fullName, CancellationToken cancellationToken = default);
+		Task AddPanelistAsync(long webinarId, string email, string fullName, string virtualBackgroundId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Add multiple panelists to a webinar.
@@ -197,7 +198,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task AddPanelistsAsync(long webinarId, IEnumerable<(string Email, string FullName)> panelists, CancellationToken cancellationToken = default);
+		Task AddPanelistsAsync(long webinarId, IEnumerable<(string Email, string FullName, string VirtualBackgroundId)> panelists, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Remove a single panelist from a webinar.
