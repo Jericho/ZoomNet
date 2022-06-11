@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -66,10 +65,9 @@ namespace ZoomNet.Utilities
 			// Check if the token needs to be refreshed
 			if (response.StatusCode == HttpStatusCode.Unauthorized)
 			{
-				var responseContent = await response.Content.ReadAsStringAsync(null).ConfigureAwait(false);
-				var jsonResponse = JsonDocument.Parse(responseContent).RootElement;
-				var message = jsonResponse.GetPropertyValue("message", string.Empty);
-				if (message.StartsWith("access token is expired", StringComparison.OrdinalIgnoreCase))
+				var (isError, errorMessage, errorCode) = await response.GetErrorMessageAsync().ConfigureAwait(false);
+
+				if (errorMessage.StartsWith("access token is expired", StringComparison.OrdinalIgnoreCase))
 				{
 					var refreshedToken = RefreshToken();
 					response = await _defaultRetryCoordinator.ExecuteAsync(request.WithBearerAuthentication(refreshedToken), dispatcher);
