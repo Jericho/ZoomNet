@@ -732,6 +732,14 @@ namespace ZoomNet
 						}
 					]
 				}
+
+				There are some cases where error information is returned in a JSON string structured slightly differently.
+				For instance, ContactCenter endpoints return error information like this:
+				{
+					"status":false,
+					"errorCode":"401", <-- Notice this node contains a string
+					"errorMessage":"Contact Center has not been enabled for this account."
+				}
 			*/
 
 			var responseContent = await message.Content.ReadAsStringAsync(null).ConfigureAwait(false);
@@ -744,19 +752,20 @@ namespace ZoomNet
 
 					if (rootJsonElement.ValueKind == JsonValueKind.Object)
 					{
-						errorCode = rootJsonElement.TryGetProperty("code", out JsonElement jsonErrorCode) ? jsonErrorCode.GetInt32() : null;
-						errorMessage = rootJsonElement.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : errorCode.HasValue ? $"Error code: {errorCode}" : errorMessage;
+						if (rootJsonElement.TryGetProperty("code", out JsonElement codeJsonProperty)) errorCode = codeJsonProperty.GetInt32();
+						else if (rootJsonElement.TryGetProperty("errorCode", out JsonElement errorCodeJsonProperty)) errorCode = int.Parse(errorCodeJsonProperty.GetString());
+
+						if (rootJsonElement.TryGetProperty("message", out JsonElement messageJsonProperty)) errorMessage = messageJsonProperty.GetString();
+						else if (rootJsonElement.TryGetProperty("errorMessage", out JsonElement errorMessageJsonProperty)) errorMessage = errorMessageJsonProperty.GetString();
+						else if (errorCode.HasValue) errorMessage = $"Error code: {errorCode}";
+
 						if (rootJsonElement.TryGetProperty("errors", out JsonElement jsonErrorDetails))
 						{
 							var errorDetails = string.Join(
 								" ",
 								jsonErrorDetails
 									.EnumerateArray()
-									.Select(jsonErrorDetail =>
-						{
-							var errorDetail = jsonErrorDetail.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : string.Empty;
-							return errorDetail;
-						})
+									.Select(jsonErrorDetail => jsonErrorDetail.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : string.Empty)
 									.Where(message => !string.IsNullOrEmpty(message)));
 
 							if (!string.IsNullOrEmpty(errorDetails)) errorMessage += $" {errorDetails}";
