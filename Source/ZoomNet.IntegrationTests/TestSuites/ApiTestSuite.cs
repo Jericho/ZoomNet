@@ -14,6 +14,7 @@ namespace ZoomNet.IntegrationTests.TestSuites
 			typeof(CallLogs),
 			typeof(Chat),
 			typeof(CloudRecordings),
+			typeof(ContactCenter),
 			typeof(Contacts),
 			typeof(Dashboards),
 			typeof(Events),
