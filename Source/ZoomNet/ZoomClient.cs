@@ -85,6 +85,9 @@ namespace ZoomNet
 		public ICloudRecordings CloudRecordings { get; private set; }
 
 		/// <inheritdoc/>
+		public IContactCenter ContactCenter { get; private set; }
+
+		/// <inheritdoc/>
 		public IContacts Contacts { get; private set; }
 
 		/// <inheritdoc/>
@@ -229,6 +232,7 @@ namespace ZoomNet
 			Chat = new Chat(_fluentClient);
 			Chatbot = new Chatbot(_fluentClient);
 			CloudRecordings = new CloudRecordings(_fluentClient);
+			ContactCenter = new ContactCenter(_fluentClient);
 			Contacts = new Contacts(_fluentClient);
 			Dashboards = new Dashboards(_fluentClient);
 			DataCompliance = new DataCompliance(_fluentClient);
