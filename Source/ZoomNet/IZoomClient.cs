@@ -33,6 +33,14 @@ namespace ZoomNet
 		ICloudRecordings CloudRecordings { get; }
 
 		/// <summary>
+		/// Gets the resource which allows you to manage access to data on Zoom Contact Center.
+		/// </summary>
+		/// <value>
+		/// The contact center resource.
+		/// </value>
+		IContactCenter ContactCenter { get; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage contacts.
 		/// </summary>
 		/// <value>
