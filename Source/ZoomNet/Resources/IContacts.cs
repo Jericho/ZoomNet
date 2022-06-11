@@ -7,7 +7,6 @@ namespace ZoomNet.Resources
 	/// <summary>
 	/// Allows you to manage contacts.
 	/// </summary>
-	/// <seealso cref="ZoomNet.Resources.IContacts" />
 	/// <remarks>
 	/// See <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/contacts/">Zoom documentation</a> for more information.
 	/// </remarks>
@@ -28,7 +27,7 @@ namespace ZoomNet.Resources
 		/// <summary>
 		/// Search contacts.
 		/// </summary>
-		/// <param name="keyword">The search keyword: either first name, last na,me or email of the contact.</param>
+		/// <param name="keyword">The search keyword: either first name, last name or email of the contact.</param>
 		/// <param name="queryPresenceStatus">Indicate whether you want the status of a contact to be included in the response.</param>
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pagingToken">The paging token.</param>
