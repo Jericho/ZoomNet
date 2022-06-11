@@ -858,6 +858,14 @@ namespace ZoomNet
 					]
 				}
 
+				There are some cases where error information is returned in a JSON string structured slightly differently.
+				For instance, ContactCenter endpoints return error information like this:
+				{
+					"status":false,
+					"errorCode":"401", <-- Notice this node contains a string
+					"errorMessage":"Contact Center has not been enabled for this account."
+				}
+
 				Sometimes the JSON looks like this:
 				{
 					"code":0, <-- zero does not indicate an error, it means the call was successful
@@ -872,8 +880,12 @@ namespace ZoomNet
 				var jsonResponse = await message.Content.ParseZoomResponseAsync().ConfigureAwait(false);
 				if (jsonResponse.ValueKind == JsonValueKind.Object)
 				{
-					errorCode = jsonResponse.TryGetProperty("code", out JsonElement jsonErrorCode) ? jsonErrorCode.GetInt32() : null;
-					errorMessage = jsonResponse.GetPropertyValue(new[] { "message", "error_message" }, errorCode.HasValue ? $"Error code: {errorCode}" : errorMessage, false);
+					if (jsonResponse.TryGetProperty("code", out JsonElement codeJsonProperty)) errorCode = codeJsonProperty.GetInt32();
+					else if (jsonResponse.TryGetProperty("errorCode", out JsonElement errorCodeJsonProperty)) errorCode = int.Parse(errorCodeJsonProperty.GetString());
+
+					if (jsonResponse.TryGetProperty(new[] { "message", "error_message" }, out JsonElement messageJsonProperty)) errorMessage = messageJsonProperty.GetString();
+					else if (errorCode.HasValue) errorMessage = $"Error code: {errorCode}";
+
 					if (jsonResponse.TryGetProperty("errors", out JsonElement jsonErrorDetails))
 					{
 						var errorDetails = string.Join(
