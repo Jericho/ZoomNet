@@ -17,6 +17,12 @@ namespace ZoomNet
 	public class OAuthConnectionInfo : IConnectionInfo
 	{
 		/// <summary>
+		/// Gets the account id.
+		/// </summary>
+		/// <remarks>This is relevant only when using Server-to-Server authentication.</remarks>
+		public string AccountId { get; }
+
+		/// <summary>
 		/// Gets the client id.
 		/// </summary>
 		public string ClientId { get; }
@@ -100,7 +106,9 @@ namespace ZoomNet
 		/// always necessary. It seems that some developers get a "REDIRECT URI MISMATCH" exception when
 		/// they omit this value but other developers don't. Therefore, the redirectUri parameter is
 		/// marked as optional in ZoomNet which allows you to specify it or omit it depending on your
-		/// situation. See this <a href="">Github issue</a> for more details.
+		/// situation. See this <a href="https://github.com/Jericho/ZoomNet/issues/104">Github issue</a>
+		/// and this <a href="https://devforum.zoom.us/t/trying-to-integrate-not-understanding-the-need-for-the-second-redirect-uri/43833">support thread</a>
+		/// for more details.
 		/// </remarks>
 		/// <param name="clientId">Your Client Id.</param>
 		/// <param name="clientSecret">Your Client Secret.</param>
@@ -137,6 +145,26 @@ namespace ZoomNet
 			AccessToken = accessToken ?? throw new ArgumentNullException(nameof(accessToken));
 			TokenExpiration = string.IsNullOrEmpty(accessToken) ? DateTime.MinValue : DateTime.MaxValue; // Set expiration to DateTime.MaxValue when an access token is provided because we don't know when it will expire
 			GrantType = OAuthGrantType.RefreshToken;
+			OnTokenRefreshed = onTokenRefreshed;
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="OAuthConnectionInfo"/> class.
+		/// </summary>
+		/// <remarks>
+		/// Use this constructor when you want to use Server-to-Server OAuth authentication.
+		/// </remarks>
+		/// <param name="clientId">Your Client Id.</param>
+		/// <param name="clientSecret">Your Client Secret.</param>
+		/// <param name="accountId">Your Account Id.</param>
+		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed.</param>
+		public OAuthConnectionInfo(string clientId!!, string clientSecret!!, string accountId!!, OnTokenRefreshedDelegate onTokenRefreshed)
+		{
+			ClientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
+			ClientSecret = clientSecret ?? throw new ArgumentNullException(nameof(clientSecret));
+			AccountId = accountId ?? throw new ArgumentNullException(nameof(accountId));
+			TokenExpiration = DateTime.MinValue;
+			GrantType = OAuthGrantType.AccountCredentials;
 			OnTokenRefreshed = onTokenRefreshed;
 		}
 	}
