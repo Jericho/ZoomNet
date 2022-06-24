@@ -405,7 +405,7 @@ namespace ZoomNet
 		/// <returns>Returns the human readable representation of the TimeSpan.</returns>
 		internal static string ToDurationString(this TimeSpan timeSpan)
 		{
-			void AppendFormatIfNecessary(StringBuilder stringBuilder, string timePart, int value)
+			static void AppendFormatIfNecessary(StringBuilder stringBuilder, string timePart, int value)
 			{
 				if (value <= 0) return;
 				stringBuilder.AppendFormat($" {value} {timePart}{(value > 1 ? "s" : string.Empty)}");
