@@ -468,7 +468,7 @@ namespace ZoomNet
 
 		internal static T GetPropertyValue<T>(this JsonElement element, string name, T defaultValue)
 		{
-			return GetPropertyValue<T>(element, name, default, false);
+			return GetPropertyValue<T>(element, name, defaultValue, false);
 		}
 
 		internal static T GetPropertyValue<T>(this JsonElement element, string name)
