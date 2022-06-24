@@ -86,10 +86,10 @@ namespace ZoomNet
 		/// </remarks>
 		/// <param name="clientId">Your Client Id.</param>
 		/// <param name="clientSecret">Your Client Secret.</param>
-		public OAuthConnectionInfo(string clientId, string clientSecret)
+		public OAuthConnectionInfo(string clientId!!, string clientSecret!!)
 		{
-			ClientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
-			ClientSecret = clientSecret ?? throw new ArgumentNullException(nameof(clientSecret));
+			ClientId = clientId;
+			ClientSecret = clientSecret;
 			GrantType = OAuthGrantType.ClientCredentials;
 		}
 
@@ -115,11 +115,11 @@ namespace ZoomNet
 		/// <param name="authorizationCode">The authorization code.</param>
 		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed.</param>
 		/// <param name="redirectUri">The Redirect Uri.</param>
-		public OAuthConnectionInfo(string clientId, string clientSecret, string authorizationCode, OnTokenRefreshedDelegate onTokenRefreshed, string redirectUri = null)
+		public OAuthConnectionInfo(string clientId!!, string clientSecret!!, string authorizationCode!!, OnTokenRefreshedDelegate onTokenRefreshed!!, string redirectUri = null)
 		{
-			ClientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
-			ClientSecret = clientSecret ?? throw new ArgumentNullException(nameof(clientSecret));
-			AuthorizationCode = authorizationCode ?? throw new ArgumentNullException(nameof(authorizationCode));
+			ClientId = clientId;
+			ClientSecret = clientSecret;
+			AuthorizationCode = authorizationCode;
 			RedirectUri = redirectUri;
 			TokenExpiration = DateTime.MinValue;
 			GrantType = OAuthGrantType.AuthorizationCode;
@@ -137,12 +137,12 @@ namespace ZoomNet
 		/// <param name="refreshToken">The refresh token.</param>
 		/// <param name="accessToken">The access token. Access tokens expire after 1 hour. ZoomNet will automatically refresh this token when it expires.</param>
 		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed.</param>
-		public OAuthConnectionInfo(string clientId, string clientSecret, string refreshToken, string accessToken, OnTokenRefreshedDelegate onTokenRefreshed)
+		public OAuthConnectionInfo(string clientId!!, string clientSecret!!, string refreshToken!!, string accessToken!!, OnTokenRefreshedDelegate onTokenRefreshed!!)
 		{
-			ClientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
-			ClientSecret = clientSecret ?? throw new ArgumentNullException(nameof(clientSecret));
-			RefreshToken = refreshToken ?? throw new ArgumentNullException(nameof(refreshToken));
-			AccessToken = accessToken ?? throw new ArgumentNullException(nameof(accessToken));
+			ClientId = clientId;
+			ClientSecret = clientSecret;
+			RefreshToken = refreshToken;
+			AccessToken = accessToken;
 			TokenExpiration = string.IsNullOrEmpty(accessToken) ? DateTime.MinValue : DateTime.MaxValue; // Set expiration to DateTime.MaxValue when an access token is provided because we don't know when it will expire
 			GrantType = OAuthGrantType.RefreshToken;
 			OnTokenRefreshed = onTokenRefreshed;
@@ -157,12 +157,12 @@ namespace ZoomNet
 		/// <param name="clientId">Your Client Id.</param>
 		/// <param name="clientSecret">Your Client Secret.</param>
 		/// <param name="accountId">Your Account Id.</param>
-		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed.</param>
+		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed. In the Server-to-Server scenario, this delegate is optional.</param>
 		public OAuthConnectionInfo(string clientId!!, string clientSecret!!, string accountId!!, OnTokenRefreshedDelegate onTokenRefreshed)
 		{
-			ClientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
-			ClientSecret = clientSecret ?? throw new ArgumentNullException(nameof(clientSecret));
-			AccountId = accountId ?? throw new ArgumentNullException(nameof(accountId));
+			ClientId = clientId;
+			ClientSecret = clientSecret;
+			AccountId = accountId;
 			TokenExpiration = DateTime.MinValue;
 			GrantType = OAuthGrantType.AccountCredentials;
 			OnTokenRefreshed = onTokenRefreshed;

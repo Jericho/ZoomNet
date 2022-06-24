@@ -39,14 +39,13 @@ namespace ZoomNet.Utilities
 		private readonly HttpClient _httpClient;
 		private readonly TimeSpan _clockSkew;
 
-		public OAuthTokenHandler(OAuthConnectionInfo connectionInfo, HttpClient httpClient, TimeSpan? clockSkew = null)
+		public OAuthTokenHandler(OAuthConnectionInfo connectionInfo!!, HttpClient httpClient!!, TimeSpan? clockSkew = null)
 		{
-			if (connectionInfo == null) throw new ArgumentNullException(nameof(connectionInfo));
 			if (string.IsNullOrEmpty(connectionInfo.ClientId)) throw new ArgumentNullException(nameof(connectionInfo.ClientId));
 			if (string.IsNullOrEmpty(connectionInfo.ClientSecret)) throw new ArgumentNullException(nameof(connectionInfo.ClientSecret));
 
 			_connectionInfo = connectionInfo;
-			_httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+			_httpClient = httpClient;
 			_clockSkew = clockSkew.GetValueOrDefault(TimeSpan.FromMinutes(5));
 		}
 
@@ -123,7 +122,7 @@ namespace ZoomNet.Utilities
 						// Therefore change the grant type to 'RefreshToken' only when the response includes a refresh token.
 						if (!string.IsNullOrEmpty(_connectionInfo.RefreshToken)) _connectionInfo.GrantType = OAuthGrantType.RefreshToken;
 
-						_connectionInfo.OnTokenRefreshed(_connectionInfo.RefreshToken, _connectionInfo.AccessToken);
+						_connectionInfo.OnTokenRefreshed?.Invoke(_connectionInfo.RefreshToken, _connectionInfo.AccessToken);
 					}
 					finally
 					{
