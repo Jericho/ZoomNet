@@ -73,7 +73,7 @@ namespace ZoomNet.Utilities
 					{
 						_lock.EnterWriteLock();
 
-						var grantType = _connectionInfo.GrantType.GetAttributeOfType<EnumMemberAttribute>().Value;
+						var grantType = _connectionInfo.GrantType.ToEnumString();
 						var requestUrl = $"https://api.zoom.us/oauth/token?grant_type={grantType}";
 						switch (_connectionInfo.GrantType)
 						{
