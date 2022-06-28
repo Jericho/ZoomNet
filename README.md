@@ -56,16 +56,19 @@ var apiSecret = "... your API secret ...";
 var connectionInfo = new JwtConnectionInfo(apiKey, apiSecret);
 ```
 
+> **Warning:** <a href="https://marketplace.zoom.us/docs/guides/build/jwt-app/jwt-faq/">Zoom has announced</a> that this authentication method would be obsolete in June 2023. The recommendation is to swith to Server-to-Server OAuth.
+
+
 #### Connection using OAuth
 Using OAuth is much more complicated than using JWT but at the same time, it is more flexible because you can define which permissions your app requires. When a user installs your app, they are presented with the list of permissions your app requires and they are given the opportunity to accept. 
 
 The Zoom documentation has a document about [how to create an OAuth app](https://marketplace.zoom.us/docs/guides/build/oauth-app) and another document about the [OAuth autorization flow](https://marketplace.zoom.us/docs/guides/auth/oauth) but I personnality was very confused by the later document so here is a brief step-by-step summary:
 - you create an OAuth app, define which permissions your app requires and publish the app in the Zoom marketplace.
 - user installs your app. During installation, user is presentd with a screen listing the permissons your app requires. User must click `accept`.
-- Zoom generates a "authorization code". This code can be used only once to generate the first access token and refresh token. I CAN'T STRESS THIS ENOUGH: the authorization code can be used only one time. This was the confusing part to me: somehow I didn't understand that this code could be used only one time and I was attempting to use it repeatedly. Zoom would accept the code one time and would reject it subsequently, which lead to many hours of frustration while trying to figure out why the code was sometimes rejected.
+- Zoom generates a "authorization code". This code can be used only once to generate the first access token and refresh token. I CAN'T STRESS THIS ENOUGH: the authorization code can be used only one time. This was the confusing part to me: somehow I didn't understand that this code could be used only one time and I was attempting to use it repeatedly. Zoom would accept the code the first time and would reject it subsequently, which lead to many hours of frustration while trying to figure out why the code was sometimes rejected.
 - The access token is valid for 60 minutes and must therefore be "refreshed" periodically.
 
-ZoomNet takes care of generating the access token and refresh token but it's your responsability to store these generated values. 
+ZoomNet takes care of generating the access token and the refresh token but it's your responsability to store these generated values. 
 
 ```csharp
 var clientId = "... your client ID ...";
@@ -73,15 +76,66 @@ var clientSecret = "... your client secret ...";
 var refreshToken = "... the refresh token previously issued by Zoom ...";
 var accessToken = "... the access token previously issued by Zoom ...";
 var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, refreshToken, accessToken,
-	(newRefreshToken, newAccessToken) =>
-	{
-		/*
+    (newRefreshToken, newAccessToken) =>
+    {
+        /*
             Save the new refresh token and the access token to
             a safe place so you can provide it the next time
-            you need to instantiate an OAuthConnectionInfo
+            you need to instantiate an OAuthConnectionInfo.
+        */
+    });
+```
+
+For demonstration purposes, here's how you could use your operating system's environment variables to store the tokens
+
+```csharp
+var clientId = "... your client ID ...";
+var clientSecret = "... your client secret ...";
+var refreshToken = Environment.GetEnvironmentVariable("ZOOM_OAUTH_REFRESHTOKEN", EnvironmentVariableTarget.User);
+var accessToken = Environment.GetEnvironmentVariable("ZOOM_OAUTH_ACCESSTOKEN", EnvironmentVariableTarget.User);
+var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, refreshToken, accessToken,
+    (newRefreshToken, newAccessToken) =>
+    {
+        Environment.SetEnvironmentVariable("ZOOM_OAUTH_REFRESHTOKEN", newRefreshToken, EnvironmentVariableTarget.User);
+        Environment.SetEnvironmentVariable("ZOOM_OAUTH_ACCESSTOKEN", newAccessToken, EnvironmentVariableTarget.User);
+    });
+```
+
+#### Connection using Server-to-Server OAuth
+
+This authentication method is the replacement for JWT authentication which Zoom announced will be made obsolete in June 2023.
+
+From Zoom's documentation:
+> A Server-to-Server OAuth app enables you to securely integrate with Zoom APIs and get your account owner access token without user interaction. This is different from the OAuth app type, which requires user authentication. See Using OAuth 2.0 for details.
+
+ZoomNet takes care of getting a new access token and it also refreshes a previously issued token when it expires (Server-to-Server access token are valid for one hour).
+Therefore 
+
+```csharp
+var clientId = "... your client ID ...";
+var clientSecret = "... your client secret ...";
+var accountId = "... your account id ...";
+var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, accountId,
+	(_, newAccessToken) =>
+	{
+        /*
+            Server-to-Server OAuth does not use a refresh token. That's why I used '_' as the first parameter
+            in this delegate declaration. Furthermore, ZoomNet will take care of getting a new access token
+            and to refresh it whenever it expires therefore there is no need for you to preserve the token
+            like you must do for the 'standard' OAuth authentication.
+
+            In fact, this delegate is completely optional when using Server-to-Server OAuth. Feel free to pass
+            a null value in lieu of a delegate.
         */
 	});
 ```
+
+The delegate being optional in the server-to-server scenario you can therefore simplify the connection info declaration like so:
+
+```csharp
+var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, accountId, null);
+```
+
 
 ### Client
 
