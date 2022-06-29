@@ -15,7 +15,7 @@ namespace ZoomNet.Resources
 	public interface IMeetings
 	{
 		/// <summary>
-		/// Retrieve all meetings of the specified type for a user.
+		/// Retrieve summary information about all meetings of the specified type for a user.
 		/// </summary>
 		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="type">The type of meetings. Allowed values: Scheduled, Live, Upcoming.</param>
@@ -23,16 +23,16 @@ namespace ZoomNet.Resources
 		/// <param name="page">The current page number of returned records.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="Meeting">meetings</see>.
+		/// An array of <see cref="MeetingSummary">meeting summaries</see>.
 		/// </returns>
 		/// <remarks>
-		/// This call omits 'occurrences'. Therefore the 'Occurrences' property will be empty.
+		/// To obtain the full details about a given meeting you must invoke <see cref="Meetings.GetAsync(long, string, CancellationToken)"/>.
 		/// </remarks>
 		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
-		Task<PaginatedResponse<Meeting>> GetAllAsync(string userId, MeetingListType type = MeetingListType.Scheduled, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
+		Task<PaginatedResponse<MeetingSummary>> GetAllAsync(string userId, MeetingListType type = MeetingListType.Scheduled, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Retrieve all meetings of the specified type for a user.
+		/// Retrieve summary information about all meetings of the specified type for a user.
 		/// </summary>
 		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="type">The type of meetings. Allowed values: Scheduled, Live, Upcoming.</param>
@@ -40,12 +40,13 @@ namespace ZoomNet.Resources
 		/// <param name="pagingToken">The paging token.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="Meeting">meetings</see>.
+		/// An array of <see cref="MeetingSummary">meeting summaries</see>.
 		/// </returns>
 		/// <remarks>
-		/// This call omits 'occurrences'. Therefore the 'Occurrences' property will be empty.
+		/// To obtain the full details about a given meeting you must invoke <see cref="Meetings.GetAsync(long, string, CancellationToken)"/>.
 		/// </remarks>
-		Task<PaginatedResponseWithToken<Meeting>> GetAllAsync(string userId, MeetingListType type = MeetingListType.Scheduled, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		Task<PaginatedResponseWithToken<MeetingSummary>> GetAllAsync(string userId, MeetingListType type = MeetingListType.Scheduled, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Creates an instant meeting for a user.
