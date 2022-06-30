@@ -1,5 +1,6 @@
 using Pathoschild.Http.Client;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
@@ -404,7 +405,7 @@ namespace ZoomNet
 		/// <returns>Returns the human readable representation of the TimeSpan.</returns>
 		internal static string ToDurationString(this TimeSpan timeSpan)
 		{
-			void AppendFormatIfNecessary(StringBuilder stringBuilder, string timePart, int value)
+			static void AppendFormatIfNecessary(StringBuilder stringBuilder, string timePart, int value)
 			{
 				if (value <= 0) return;
 				stringBuilder.AppendFormat($" {value} {timePart}{(value > 1 ? "s" : string.Empty)}");
@@ -467,7 +468,7 @@ namespace ZoomNet
 
 		internal static T GetPropertyValue<T>(this JsonElement element, string name, T defaultValue)
 		{
-			return GetPropertyValue<T>(element, name, default, false);
+			return GetPropertyValue<T>(element, name, defaultValue, false);
 		}
 
 		internal static T GetPropertyValue<T>(this JsonElement element, string name)
@@ -983,40 +984,69 @@ namespace ZoomNet
 
 			if (typeOfT.IsEnum)
 			{
-				switch (property.Value.ValueKind)
+				return property.Value.ValueKind switch
 				{
-					case JsonValueKind.String: return (T)Enum.Parse(typeof(T), property.Value.GetString());
-					case JsonValueKind.Number: return (T)Enum.ToObject(typeof(T), property.Value.GetInt16());
-					default: throw new ArgumentException($"Unable to convert a {property.Value.ValueKind} into a {typeof(T).FullName}", nameof(T));
-				}
+					JsonValueKind.String => (T)Enum.Parse(typeof(T), property.Value.GetString()),
+					JsonValueKind.Number => (T)Enum.ToObject(typeof(T), property.Value.GetInt16()),
+					_ => throw new ArgumentException($"Unable to convert a {property.Value.ValueKind} into a {typeof(T).FullName}", nameof(T)),
+				};
 			}
 
 			if (typeOfT.IsGenericType && typeOfT.GetGenericTypeDefinition() == typeof(Nullable<>))
 			{
-				typeOfT = Nullable.GetUnderlyingType(typeOfT);
+				var underlyingType = Nullable.GetUnderlyingType(typeOfT);
+				var getElementValue = typeof(Internal)
+					.GetMethod(nameof(Internal.GetElementValue), BindingFlags.Static | BindingFlags.NonPublic)
+					.MakeGenericMethod(underlyingType);
+
+				return (T)getElementValue.Invoke(null, new object[] { property.Value });
 			}
 
-			switch (typeOfT)
+			if (typeOfT.IsArray)
 			{
-				case Type boolType when boolType == typeof(bool): return (T)(object)property.Value.GetBoolean();
-				case Type strType when strType == typeof(string): return (T)(object)property.Value.GetString();
-				case Type bytesType when bytesType == typeof(byte[]): return (T)(object)property.Value.GetBytesFromBase64();
-				case Type sbyteType when sbyteType == typeof(sbyte): return (T)(object)property.Value.GetSByte();
-				case Type byteType when byteType == typeof(byte): return (T)(object)property.Value.GetByte();
-				case Type shortType when shortType == typeof(short): return (T)(object)property.Value.GetInt16();
-				case Type ushortType when ushortType == typeof(ushort): return (T)(object)property.Value.GetUInt16();
-				case Type intType when intType == typeof(int): return (T)(object)property.Value.GetInt32();
-				case Type uintType when uintType == typeof(uint): return (T)(object)property.Value.GetUInt32();
-				case Type longType when longType == typeof(long): return (T)(object)property.Value.GetInt64();
-				case Type ulongType when ulongType == typeof(ulong): return (T)(object)property.Value.GetUInt64();
-				case Type doubleType when doubleType == typeof(double): return (T)(object)property.Value.GetDouble();
-				case Type floatType when floatType == typeof(float): return (T)(object)property.Value.GetSingle();
-				case Type decimalType when decimalType == typeof(decimal): return (T)(object)property.Value.GetDecimal();
-				case Type datetimeType when datetimeType == typeof(DateTime): return (T)(object)property.Value.GetDateTime();
-				case Type offsetType when offsetType == typeof(DateTimeOffset): return (T)(object)property.Value.GetDateTimeOffset();
-				case Type guidType when guidType == typeof(Guid): return (T)(object)property.Value.GetGuid();
-				default: throw new ArgumentException($"Unsable to map {typeof(T).FullName} to a corresponding JSON type", nameof(T));
+				var elementType = typeOfT.GetElementType();
+				var getElementValue = typeof(Internal)
+					.GetMethod(nameof(Internal.GetElementValue), BindingFlags.Static | BindingFlags.NonPublic)
+					.MakeGenericMethod(elementType);
+
+				var arrayList = new ArrayList(property.Value.GetArrayLength());
+				foreach (var arrayElement in property.Value.EnumerateArray())
+				{
+					var elementValue = getElementValue.Invoke(null, new object[] { arrayElement });
+					arrayList.Add(elementValue);
+				}
+
+				return (T)Convert.ChangeType(arrayList.ToArray(elementType), typeof(T));
 			}
+
+			return property.Value.GetElementValue<T>();
+		}
+
+		private static T GetElementValue<T>(this JsonElement element)
+		{
+			var typeOfT = typeof(T);
+
+			return typeOfT switch
+			{
+				Type boolType when boolType == typeof(bool) => (T)(object)element.GetBoolean(),
+				Type strType when strType == typeof(string) => (T)(object)element.GetString(),
+				Type bytesType when bytesType == typeof(byte[]) => (T)(object)element.GetBytesFromBase64(),
+				Type sbyteType when sbyteType == typeof(sbyte) => (T)(object)element.GetSByte(),
+				Type byteType when byteType == typeof(byte) => (T)(object)element.GetByte(),
+				Type shortType when shortType == typeof(short) => (T)(object)element.GetInt16(),
+				Type ushortType when ushortType == typeof(ushort) => (T)(object)element.GetUInt16(),
+				Type intType when intType == typeof(int) => (T)(object)element.GetInt32(),
+				Type uintType when uintType == typeof(uint) => (T)(object)element.GetUInt32(),
+				Type longType when longType == typeof(long) => (T)(object)element.GetInt64(),
+				Type ulongType when ulongType == typeof(ulong) => (T)(object)element.GetUInt64(),
+				Type doubleType when doubleType == typeof(double) => (T)(object)element.GetDouble(),
+				Type floatType when floatType == typeof(float) => (T)(object)element.GetSingle(),
+				Type decimalType when decimalType == typeof(decimal) => (T)(object)element.GetDecimal(),
+				Type datetimeType when datetimeType == typeof(DateTime) => (T)(object)element.GetDateTime(),
+				Type offsetType when offsetType == typeof(DateTimeOffset) => (T)(object)element.GetDateTimeOffset(),
+				Type guidType when guidType == typeof(Guid) => (T)(object)element.GetGuid(),
+				_ => throw new ArgumentException($"Unsable to map {typeof(T).FullName} to a corresponding JSON type", nameof(T)),
+			};
 		}
 	}
 }

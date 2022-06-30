@@ -29,18 +29,9 @@ namespace ZoomNet.Resources
 			_client = client;
 		}
 
-		/// <summary>
-		/// Retrieve all webinars for a user.
-		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="page">The current page number of returned records.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Webinar" />.
-		/// </returns>
+		/// <inheritdoc/>
 		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
-		public Task<PaginatedResponse<Webinar>> GetAllAsync(string userId, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponse<WebinarSummary>> GetAllAsync(string userId, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -52,20 +43,11 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("page_number", page)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponse<Webinar>("webinars");
+				.AsPaginatedResponse<WebinarSummary>("webinars");
 		}
 
-		/// <summary>
-		/// Retrieve all webinars for a user.
-		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Webinar" />.
-		/// </returns>
-		public Task<PaginatedResponseWithToken<Webinar>> GetAllAsync(string userId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<WebinarSummary>> GetAllAsync(string userId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -77,7 +59,7 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<Webinar>("webinars");
+				.AsPaginatedResponseWithToken<WebinarSummary>("webinars");
 		}
 
 		/// <summary>
@@ -357,13 +339,14 @@ namespace ZoomNet.Resources
 		/// <param name="webinarId">The webinar ID.</param>
 		/// <param name="email">Panelist's email address.</param>
 		/// <param name="fullName">Panelist's full name.</param>
+		/// <param name="virtualBackgroundId">The virtual background ID to bind.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task AddPanelistAsync(long webinarId, string email, string fullName, CancellationToken cancellationToken = default)
+		public Task AddPanelistAsync(long webinarId, string email, string fullName, string virtualBackgroundId = null, CancellationToken cancellationToken = default)
 		{
-			return AddPanelistsAsync(webinarId, new (string Email, string FullName)[] { (email, fullName) }, cancellationToken);
+			return AddPanelistsAsync(webinarId, new (string Email, string FullName, string VirtualBackgroundId)[] { (email, fullName, virtualBackgroundId) }, cancellationToken);
 		}
 
 		/// <summary>
@@ -375,11 +358,18 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task AddPanelistsAsync(long webinarId, IEnumerable<(string Email, string FullName)> panelists, CancellationToken cancellationToken = default)
+		public Task AddPanelistsAsync(long webinarId, IEnumerable<(string Email, string FullName, string VirtualBackgroundId)> panelists, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
-				{ "panelists", panelists.Select(p => new JsonObject { { "email", p.Email }, { "name", p.FullName } }) }
+				{
+					"panelists", panelists.Select(p => new JsonObject
+					{
+						{ "email", p.Email },
+						{ "name", p.FullName },
+						{ "virtual_background_id", p.VirtualBackgroundId },
+					})
+				}
 			};
 
 			return _client

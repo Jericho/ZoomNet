@@ -15,29 +15,35 @@ namespace ZoomNet.Resources
 	public interface IWebinars
 	{
 		/// <summary>
-		/// Retrieve all webinars for a user.
+		/// Retrieve summary information about all webinars for a user.
 		/// </summary>
 		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="page">The current page number of returned records.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="Webinar">webinars</see>.
+		/// An array of <see cref="WebinarSummary">webinar summaries</see>.
 		/// </returns>
+		/// <remarks>
+		/// To obtain the full details about a given webinar you must invoke <see cref="Webinars.GetAsync(long, string, CancellationToken)"/>.
+		/// </remarks>
 		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
-		Task<PaginatedResponse<Webinar>> GetAllAsync(string userId, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
+		Task<PaginatedResponse<WebinarSummary>> GetAllAsync(string userId, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Retrieve all webinars for a user.
+		/// Retrieve summary information about all webinars for a user.
 		/// </summary>
 		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pagingToken">The paging token.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="Webinar">webinars</see>.
+		/// An array of <see cref="WebinarSummary">webinar summaries</see>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<Webinar>> GetAllAsync(string userId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+		/// <remarks>
+		/// To obtain the full details about a given webinar you must invoke <see cref="Webinars.GetAsync(long, string, CancellationToken)"/>.
+		/// </remarks>
+		Task<PaginatedResponseWithToken<WebinarSummary>> GetAllAsync(string userId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Creates a scheduled webinar for a user.
@@ -182,11 +188,12 @@ namespace ZoomNet.Resources
 		/// <param name="webinarId">The webinar ID.</param>
 		/// <param name="email">Panelist's email address.</param>
 		/// <param name="fullName">Panelist's full name.</param>
+		/// <param name="virtualBackgroundId">The virtual background ID to bind.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task AddPanelistAsync(long webinarId, string email, string fullName, CancellationToken cancellationToken = default);
+		Task AddPanelistAsync(long webinarId, string email, string fullName, string virtualBackgroundId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Add multiple panelists to a webinar.
@@ -197,7 +204,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task AddPanelistsAsync(long webinarId, IEnumerable<(string Email, string FullName)> panelists, CancellationToken cancellationToken = default);
+		Task AddPanelistsAsync(long webinarId, IEnumerable<(string Email, string FullName, string VirtualBackgroundId)> panelists, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Remove a single panelist from a webinar.

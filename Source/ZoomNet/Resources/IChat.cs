@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -172,12 +173,14 @@ namespace ZoomNet.Resources
 		/// <param name="userId">The unique identifier of the sender.</param>
 		/// <param name="recipientEmail">The email address of the contact to whom you would like to send the message.</param>
 		/// <param name="message">The message.</param>
+		/// <param name="replyMessageId">The reply message's ID. </param>
+		/// <param name="fileIds">A list of the file IDs to send. This field only accepts a maximum of six file IDs.</param>
 		/// <param name="mentions">Mentions.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The message Id.
 		/// </returns>
-		Task<string> SendMessageToContactAsync(string userId, string recipientEmail, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default);
+		Task<string> SendMessageToContactAsync(string userId, string recipientEmail, string message, string replyMessageId = null, IEnumerable<string> fileIds = null, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Send a message to a channel of which the sender is a member.
@@ -185,12 +188,14 @@ namespace ZoomNet.Resources
 		/// <param name="userId">The unique identifier of the sender.</param>
 		/// <param name="channelId">The channel Id.</param>
 		/// <param name="message">The message.</param>
+		/// <param name="replyMessageId">The reply message's ID. </param>
+		/// <param name="fileIds">A list of the file IDs to send. This field only accepts a maximum of six file IDs.</param>
 		/// <param name="mentions">Mentions.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The message Id.
 		/// </returns>
-		Task<string> SendMessageToChannelAsync(string userId, string channelId, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default);
+		Task<string> SendMessageToChannelAsync(string userId, string channelId, string message, string replyMessageId = null, IEnumerable<string> fileIds = null, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve the chat messages sent/received to/from a contact.
@@ -269,5 +274,42 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task DeleteMessageToChannelAsync(string messageId, string userId, string channelId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Send a file on Zoom to either an individual user in your contact list or a channel of which you are a member.
+		/// </summary>
+		/// <param name="messageId">The reply message's ID.</param>
+		/// <param name="userId">The unique identifier of the sender.</param>
+		/// <param name="recipientId">The unique identifier of the contact to whom you would like to send the file.</param>
+		/// <param name="channelId">The unique identifier of the channel to which to send the file.</param>
+		/// <param name="fileName">The file name.</param>
+		/// <param name="fileData">The binary data.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The message ID.
+		/// </returns>
+		/// <remarks>
+		/// Zoom Cloud Storage will store the files sent through this API.
+		/// If you do not use Zoom Cloud Storage, Zoom Cloud will temporarily store these files for 7 day
+		/// You can only send a maximum of 16 megabytes for images and 20 megabytes for all other file types.
+		/// </remarks>
+		Task<string> SendFileAsync(string messageId, string userId, string recipientId, string channelId, string fileName, Stream fileData, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Upload a file to chat.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="fileName">The file name.</param>
+		/// <param name="fileData">The binary data.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The file ID.
+		/// </returns>
+		/// <remarks>
+		/// Zoom Cloud Storage will store the files sent through this API.
+		/// If you do not use Zoom Cloud Storage, Zoom Cloud will temporarily store these files for 7 day
+		/// You can only send a maximum of 16 megabytes for images and 20 megabytes for all other file types.
+		/// </remarks>
+		Task<string> UploadFileAsync(string userId, string fileName, Stream fileData, CancellationToken cancellationToken = default);
 	}
 }

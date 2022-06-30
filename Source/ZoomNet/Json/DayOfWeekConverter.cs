@@ -19,8 +19,7 @@ namespace ZoomNet.Json
 
 			if (reader.TokenType == JsonTokenType.Null) return null;
 
-			var rawValue = reader.GetString();
-			var value = Convert.ToInt32(rawValue) - 1;
+			var value = reader.GetInt32() - 1;
 			return (DayOfWeek)value;
 		}
 
@@ -37,8 +36,8 @@ namespace ZoomNet.Json
 			}
 			else
 			{
-				var singleDay = (Convert.ToInt32(value.Value) + 1).ToString();
-				writer.WriteStringValue(singleDay);
+				var singleDay = Convert.ToInt32(value.Value) + 1;
+				writer.WriteNumberValue(singleDay);
 			}
 		}
 	}

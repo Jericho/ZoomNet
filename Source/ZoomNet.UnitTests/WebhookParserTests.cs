@@ -30,8 +30,8 @@ namespace ZoomNet.UnitTests
 					""settings"": {
 						""use_pmi"": false,
 						""alternative_hosts"": """"
-					}
 				}
+			}
 			},
 			""event_ts"": 1617628462392
 		}";
@@ -125,6 +125,28 @@ namespace ZoomNet.UnitTests
 					}
 				},
 				""account_id"": ""EPeQtiABC000VYxHMA""
+			}
+		}";
+
+		private const string MEETING_SERVICE_ISSUE_WEBHOOK = @"
+		{
+			""event"": ""meeting.alert"",
+			""event_ts"": 1626230691572,
+			""payload"": {
+				""account_id"": ""AAAAAABBBB"",
+				""object"": {
+					""id"": 1234567890,
+					""uuid"": ""4444AAAiAAAAAiAiAiiAii=="",
+					""host_id"": ""x1yCzABCDEfg23HiJKl4mN"",
+					""topic"": ""My Meeting"",
+					""type"": 2,
+					""join_time"": ""2021-07-13T21:44:51Z"",
+					""timezone"": ""America/Los_Angeles"",
+					""duration"": 60,
+					""issues"": [
+						""Unstable audio quality""
+					]
+				}
 			}
 		}";
 
@@ -236,6 +258,26 @@ namespace ZoomNet.UnitTests
 			parsedMeeting.Uuid.ShouldBe("4118UHIiRCAAAtBlDkcVyw==");
 			parsedMeeting.HostId.ShouldBe("z8yCxTTTTSiw02QgCAp8uQ");
 			parsedMeeting.StartTime.ShouldBe(new DateTime(2019, 7, 16, 17, 14, 39, 0, DateTimeKind.Utc));
+			parsedMeeting.Duration.ShouldBe(60);
+			parsedMeeting.Timezone.ShouldBe("America/Los_Angeles");
+		}
+
+		[Fact]
+		public void MeetingServiceIssue()
+		{
+			var parsedEvent = (MeetingServiceIssueEvent)new WebhookParser().ParseEventWebhook(MEETING_SERVICE_ISSUE_WEBHOOK);
+
+			parsedEvent.EventType.ShouldBe(EventType.MeetingServiceIssue);
+			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
+			parsedEvent.Timestamp.ShouldBe(new DateTime(2021, 7, 14, 2, 44, 51, 572, DateTimeKind.Utc));
+			parsedEvent.Issues.ShouldBe(new[] { "Unstable audio quality" });
+
+			parsedEvent.Meeting.GetType().ShouldBe(typeof(ScheduledMeeting));
+			var parsedMeeting = (ScheduledMeeting)parsedEvent.Meeting;
+			parsedMeeting.Id.ShouldBe(1234567890L);
+			parsedMeeting.Topic.ShouldBe("My Meeting");
+			parsedMeeting.Uuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
+			parsedMeeting.HostId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
 			parsedMeeting.Duration.ShouldBe(60);
 			parsedMeeting.Timezone.ShouldBe("America/Los_Angeles");
 		}

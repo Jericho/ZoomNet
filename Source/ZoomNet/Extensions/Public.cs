@@ -100,14 +100,16 @@ namespace ZoomNet
 		/// <param name="chatResource">The chat resource.</param>
 		/// <param name="recipientEmail">The email address of the contact to whom you would like to send the message.</param>
 		/// <param name="message">The message.</param>
+		/// <param name="replyMessageId">The reply message's ID. </param>
+		/// <param name="fileIds">A list of the file IDs to send. This field only accepts a maximum of six file IDs.</param>
 		/// <param name="mentions">Mentions.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The message Id.
 		/// </returns>
-		public static Task<string> SendMessageToContactAsync(this IChat chatResource, string recipientEmail, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
+		public static Task<string> SendMessageToContactAsync(this IChat chatResource, string recipientEmail, string message, string replyMessageId = null, IEnumerable<string> fileIds = null, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
 		{
-			return chatResource.SendMessageToContactAsync("me", recipientEmail, message, mentions, cancellationToken);
+			return chatResource.SendMessageToContactAsync("me", recipientEmail, message, replyMessageId, fileIds, mentions, cancellationToken);
 		}
 
 		/// <summary>
@@ -116,14 +118,16 @@ namespace ZoomNet
 		/// <param name="chatResource">The chat resource.</param>
 		/// <param name="channelId">The channel Id.</param>
 		/// <param name="message">The message.</param>
+		/// <param name="replyMessageId">The reply message's ID. </param>
+		/// <param name="fileIds">A list of the file IDs to send. This field only accepts a maximum of six file IDs.</param>
 		/// <param name="mentions">Mentions.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The message Id.
 		/// </returns>
-		public static Task<string> SendMessageToChannelAsync(this IChat chatResource, string channelId, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
+		public static Task<string> SendMessageToChannelAsync(this IChat chatResource, string channelId, string message, string replyMessageId = null, IEnumerable<string> fileIds = null, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
 		{
-			return chatResource.SendMessageToChannelAsync("me", channelId, message, mentions, cancellationToken);
+			return chatResource.SendMessageToChannelAsync("me", channelId, message, replyMessageId, fileIds, mentions, cancellationToken);
 		}
 
 		/// <summary>
@@ -252,7 +256,7 @@ namespace ZoomNet
 		/// </returns>
 		public static Task<Stream> DownloadFileAsync(this ICloudRecordings cloudRecordingsResource, RecordingFile recordingFile, CancellationToken cancellationToken = default)
 		{
-			return cloudRecordingsResource.DownloadFileAsync(recordingFile.DownloadUrl);
+			return cloudRecordingsResource.DownloadFileAsync(recordingFile.DownloadUrl, cancellationToken);
 		}
 
 		/// <summary>
@@ -267,7 +271,7 @@ namespace ZoomNet
 		/// </returns>
 		public static Task InviteParticipantAsync(this IMeetings meetingsResource, long meetingId, string emailAddress, CancellationToken cancellationToken = default)
 		{
-			return meetingsResource.InviteParticipantsAsync(meetingId, new[] { emailAddress });
+			return meetingsResource.InviteParticipantsAsync(meetingId, new[] { emailAddress }, cancellationToken);
 		}
 	}
 }

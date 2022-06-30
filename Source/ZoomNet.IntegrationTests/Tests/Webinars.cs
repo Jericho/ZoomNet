@@ -22,7 +22,6 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			// CLEANUP PREVIOUS INTEGRATION TESTS THAT MIGHT HAVE BEEN INTERRUPTED BEFORE THEY HAD TIME TO CLEANUP AFTER THEMSELVES
 			var cleanUpTasks = paginatedWebinars.Records
-				.Union(paginatedWebinars.Records)
 				.Where(m => m.Topic.StartsWith("ZoomNet Integration Testing:"))
 				.Select(async oldWebinar =>
 				{

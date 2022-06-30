@@ -33,7 +33,7 @@ namespace ZoomNet.Json
 					break;
 				case EventType.MeetingServiceIssue:
 					var meetingServiceIssueEvent = payloadJsonProperty.ToObject<MeetingServiceIssueEvent>(options);
-					meetingServiceIssueEvent.Issues = payloadJsonProperty.GetPropertyValue("object/issues", string.Empty);
+					meetingServiceIssueEvent.Issues = payloadJsonProperty.GetPropertyValue("object/issues", Array.Empty<string>());
 					webHookEvent = meetingServiceIssueEvent;
 					break;
 				case EventType.MeetingCreated:
@@ -91,7 +91,7 @@ namespace ZoomNet.Json
 					break;
 				case EventType.MeetingRegistrationCancelled:
 					var meetingRegistrationCancelledEvent = payloadJsonProperty.ToObject<MeetingRegistrationCancelledEvent>(options);
-					meetingRegistrationCancelledEvent.Registrant = payloadJsonProperty.GetProperty("objectregistrant", true).Value.ToObject<Registrant>();
+					meetingRegistrationCancelledEvent.Registrant = payloadJsonProperty.GetProperty("object/registrant", true).Value.ToObject<Registrant>();
 					webHookEvent = meetingRegistrationCancelledEvent;
 					break;
 				case EventType.MeetingRegistrationDenied:

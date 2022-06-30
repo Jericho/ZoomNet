@@ -33,5 +33,11 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonPropertyName("join_url")]
 		public string JoinUrl { get; set; }
+
+		/// <summary>
+		/// Gets or sets the panelist's virtual background id.
+		/// </summary>
+		[JsonPropertyName("virtual_background_id")]
+		public string VirtualBackgroundId { get; set; }
 	}
 }

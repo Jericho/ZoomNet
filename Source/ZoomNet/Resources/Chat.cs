@@ -2,7 +2,9 @@ using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
@@ -303,36 +305,16 @@ namespace ZoomNet.Resources
 				.AsObject<string>("id");
 		}
 
-		/// <summary>
-		/// Send a message to a user on on the sender's contact list.
-		/// </summary>
-		/// <param name="userId">The unique identifier of the sender.</param>
-		/// <param name="recipientEmail">The email address of the contact to whom you would like to send the message.</param>
-		/// <param name="message">The message.</param>
-		/// <param name="mentions">Mentions.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The message Id.
-		/// </returns>
-		public Task<string> SendMessageToContactAsync(string userId, string recipientEmail, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
+		/// <inheritdoc/>
+		public Task<string> SendMessageToContactAsync(string userId, string recipientEmail, string message, string replyMessageId = null, IEnumerable<string> fileIds = null, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
 		{
-			return SendMessageAsync(userId, recipientEmail, null, message, mentions, cancellationToken);
+			return SendMessageAsync(userId, recipientEmail, null, message, replyMessageId, fileIds, mentions, cancellationToken);
 		}
 
-		/// <summary>
-		/// Send a message to a channel of which the sender is a member.
-		/// </summary>
-		/// <param name="userId">The unique identifier of the sender.</param>
-		/// <param name="channelId">The channel Id.</param>
-		/// <param name="message">The message.</param>
-		/// <param name="mentions">Mentions.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The message Id.
-		/// </returns>
-		public Task<string> SendMessageToChannelAsync(string userId, string channelId, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
+		/// <inheritdoc/>
+		public Task<string> SendMessageToChannelAsync(string userId, string channelId, string message, string replyMessageId = null, IEnumerable<string> fileIds = null, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
 		{
-			return SendMessageAsync(userId, null, channelId, message, mentions, cancellationToken);
+			return SendMessageAsync(userId, null, channelId, message, replyMessageId, fileIds, mentions, cancellationToken);
 		}
 
 		/// <summary>
@@ -431,14 +413,53 @@ namespace ZoomNet.Resources
 			return DeleteMessageAsync(messageId, userId, null, channelId, cancellationToken);
 		}
 
-		private Task<string> SendMessageAsync(string userId, string recipientEmail, string channelId, string message, IEnumerable<ChatMention> mentions, CancellationToken cancellationToken)
+		/// <inheritdoc/>
+		public Task<string> SendFileAsync(string messageId, string userId, string recipientId, string channelId, string fileName, Stream fileData, CancellationToken cancellationToken = default)
 		{
-			Debug.Assert(recipientEmail != null || channelId != null, "You must provide either recipientEmail or channelId");
-			Debug.Assert(recipientEmail == null || channelId == null, "You can't provide both recipientEmail and channelId");
+			return _client
+				.PostAsync($"https://file.zoom.us/v2/chat/users/{userId}/messages/files")
+				.WithBody(bodyBuilder =>
+				{
+					// The file name as well as the name of the other 'parts' in the request must be quoted otherwise the Zoom API would return the following error message: Invalid 'Content-Disposition' in multipart form
+					var content = new MultipartFormDataContent
+					{
+						{ new StreamContent(fileData), "files", $"\"{fileName}\"" }
+					};
+					if (!string.IsNullOrEmpty(messageId)) content.Add(new StringContent(messageId), "\"reply_main_message_id\"");
+					if (!string.IsNullOrEmpty(channelId)) content.Add(new StringContent(channelId), "\"to_channel\"");
+					if (!string.IsNullOrEmpty(recipientId)) content.Add(new StringContent(recipientId), "\"to_contact\"");
 
+					return content;
+				})
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("id");
+		}
+
+		/// <inheritdoc/>
+		public Task<string> UploadFileAsync(string userId, string fileName, Stream fileData, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.PostAsync($"https://file.zoom.us/v2/chat/users/{userId}/files")
+				.WithBody(bodyBuilder =>
+				{
+					// The file name must be quoted otherwise the Zoom API would return the following error message: Invalid 'Content-Disposition' in multipart form
+					var content = new MultipartFormDataContent
+					{
+						{ new StreamContent(fileData), "file", $"\"{fileName}\"" }
+					};
+					return content;
+				})
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("id");
+		}
+
+		private Task<string> SendMessageAsync(string userId, string recipientEmail, string channelId, string message, string replyMessageId = null, IEnumerable<string> fileIds = null, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
+		{
 			var data = new JsonObject
 			{
 				{ "message", message },
+				{ "file_ids", fileIds?.ToArray() },
+				{ "reply_main_message_id", replyMessageId },
 				{ "to_contact", recipientEmail },
 				{ "to_channel", channelId },
 				{ "at_items", mentions }
