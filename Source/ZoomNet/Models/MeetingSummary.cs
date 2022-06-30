@@ -80,8 +80,8 @@ namespace ZoomNet.Models
 		[JsonPropertyName("type")]
 		public MeetingType Type { get; set; }
 
-		/// <summary>G
-		/// ets or sets the unique id.
+		/// <summary>
+		/// Gets or sets the unique id.
 		/// </summary>
 		[JsonPropertyName("uuid")]
 		public string Uuid { get; set; }

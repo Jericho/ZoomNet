@@ -45,7 +45,6 @@ namespace ZoomNet.Resources
 		/// <remarks>
 		/// To obtain the full details about a given meeting you must invoke <see cref="Meetings.GetAsync(long, string, CancellationToken)"/>.
 		/// </remarks>
-
 		Task<PaginatedResponseWithToken<MeetingSummary>> GetAllAsync(string userId, MeetingListType type = MeetingListType.Scheduled, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
