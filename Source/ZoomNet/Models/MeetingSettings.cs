@@ -97,9 +97,9 @@ namespace ZoomNet.Models
 		public bool? HostInIndia { get; set; }
 
 		/// <summary>
-		/// If the value of the <see cref="JoinBeforeHost"/> is true, this field indicates the
-		/// time limits within which a participant can join a meeting before the meeting's host.
+		/// Gets or sets the time limits within which a participant can join a meeting before the meeting's host.
 		/// </summary>
+		/// <remarks>This value is applicable only if <see cref="JoinBeforeHost"/> is true.</remarks>
 		[JsonPropertyName("jbh_time")]
 		public JoinBeforeHostTime? JoinBeforeHostTime { get; set; }
 
