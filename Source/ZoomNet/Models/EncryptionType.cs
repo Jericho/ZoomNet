@@ -9,7 +9,7 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Enhanced encryption.</summary>
 		/// <remarks>Encryption data is stored in the cloud.</remarks>
-		[EnumMember(Value = "enhanced_encryption ")]
+		[EnumMember(Value = "enhanced_encryption")]
 		Enhanced,
 
 		/// <summary>End-to-end encryption.</summary>

@@ -628,6 +628,18 @@ namespace ZoomNet
 					"code": 300,
 					"message": "This meeting has not registration required: 544993922"
 				}
+
+				Sometimes, the JSON string contains additional info like this example:
+				{
+					"code":300,
+					"message":"Validation Failed.",
+					"errors":[
+						{
+							"field":"settings.jbh_time",
+							"message":"Invalid parameter: jbh_time."
+						}
+					]
+				}
 			*/
 
 			var responseContent = await message.Content.ReadAsStringAsync(null).ConfigureAwait(false);
@@ -639,6 +651,21 @@ namespace ZoomNet
 					var rootJsonElement = JsonDocument.Parse(responseContent).RootElement;
 					errorCode = rootJsonElement.TryGetProperty("code", out JsonElement jsonErrorCode) ? (int?)jsonErrorCode.GetInt32() : (int?)null;
 					errorMessage = rootJsonElement.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : (errorCode.HasValue ? $"Error code: {errorCode}" : errorMessage);
+					if (rootJsonElement.TryGetProperty("errors", out JsonElement jsonErrorDetails))
+					{
+						var errorDetails = string.Join(
+							" ",
+							jsonErrorDetails
+								.EnumerateArray()
+								.Select(jsonErrorDetail =>
+								{
+									var errorDetail = jsonErrorDetail.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : string.Empty;
+									return errorDetail;
+								})
+								.Where(errorDetail => !string.IsNullOrEmpty(errorDetail)));
+
+						if (!string.IsNullOrEmpty(errorDetails)) errorMessage += $" {errorDetails}";
+					}
 
 					isError = errorCode.HasValue;
 				}

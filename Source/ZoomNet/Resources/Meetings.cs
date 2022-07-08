@@ -194,7 +194,7 @@ namespace ZoomNet.Resources
 		{
 			var data = new JsonObject
 			{
-				{ "type", start.HasValue ? 8 : 3 }, // 8 = Recurring with fixed time. 3 = Recurring with no fixed time.
+				{ "type", recurrence == null ? MeetingType.RecurringNoFixedTime : MeetingType.RecurringFixedTime },
 				{ "topic", topic },
 				{ "password", password },
 				{ "agenda", agenda },

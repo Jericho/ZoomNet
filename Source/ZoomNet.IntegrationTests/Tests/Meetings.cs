@@ -45,7 +45,9 @@ namespace ZoomNet.IntegrationTests.Tests
 			{
 				Audio = AudioType.Telephony,
 				RegistrationType = RegistrationType.RegisterOnceAttendAll,
-				ApprovalType = ApprovalType.Manual
+				ApprovalType = ApprovalType.Manual,
+				JoinBeforeHost = true,
+				JoinBeforeHostTime = JoinBeforeHostTime.FiveMinutes,
 			};
 			var trackingFields = new Dictionary<string, string>()
 			{
@@ -240,6 +242,13 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			await client.Meetings.DeleteAsync(newRecurringMeeting.Id, null, false, false, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Recurring meeting {newRecurringMeeting.Id} deleted").ConfigureAwait(false);
+
+			// Recurring meeting with no fixed time
+			var newRecurringNoFixTimeMeeting = await client.Meetings.CreateRecurringMeetingAsync(myUser.Id, "ZoomNet Integration Testing: recurring meeting with no fixed time", "The agenda", start, duration, null, TimeZones.UTC, "p@ss!w0rd", settings, null, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Recurring meeting with no fixed time {newRecurringNoFixTimeMeeting.Id} created").ConfigureAwait(false);
+
+			await client.Meetings.DeleteAsync(newRecurringNoFixTimeMeeting.Id, null, false, false, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Recurring meeting with no fixed time  {newRecurringNoFixTimeMeeting.Id} deleted").ConfigureAwait(false);
 		}
 	}
 }
