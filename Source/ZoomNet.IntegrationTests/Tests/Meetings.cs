@@ -45,7 +45,9 @@ namespace ZoomNet.IntegrationTests.Tests
 			{
 				Audio = AudioType.Telephony,
 				RegistrationType = RegistrationType.RegisterOnceAttendAll,
-				ApprovalType = ApprovalType.Manual
+				ApprovalType = ApprovalType.Manual,
+				JoinBeforeHost = true,
+				JoinBeforeHostTime = JoinBeforeHostTime.FiveMinutes,
 			};
 			var trackingFields = new Dictionary<string, string>()
 			{
