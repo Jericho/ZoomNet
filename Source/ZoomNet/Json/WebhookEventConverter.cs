@@ -141,7 +141,7 @@ namespace ZoomNet.Json
 					break;
 				case EventType.MeetingParticipantJoined:
 					var meetingParticipantJoinedEvent = payloadJsonProperty.ToObject<MeetingParticipantJoinedEvent>(options);
-					meetingParticipantJoinedEvent.JoinedOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/date_time");
+					meetingParticipantJoinedEvent.JoinedOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/join_time");
 					meetingParticipantJoinedEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<WebhookParticipant>();
 					webHookEvent = meetingParticipantJoinedEvent;
 					break;

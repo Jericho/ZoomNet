@@ -23,7 +23,7 @@ namespace ZoomNet.UnitTests
 					""host_id"": ""8lzIwvZTSOqjndWPbPqzuA"",
 					""topic"": ""ZoomNet Unit Testing: instant meeting"",
 					""type"": 1,
-					""duration"": 60,
+							""duration"": 60,
 					""timezone"": ""America/New_York"",
 					""join_url"": ""https://zoom.us/j/98884753832?pwd=c21EQzg0SXY2dlNTOFF2TENpSm1aQT09"",
 					""password"": ""PaSsWoRd"",
@@ -51,9 +51,32 @@ namespace ZoomNet.UnitTests
 					""type"": 1,
 					""duration"": 60,
 					""timezone"": ""America/New_York""
-				}
+			}
 			},
 			""event_ts"": 1617628462764
+		}";
+
+		private const string MEETING_ENDED_WEBHOOK = @"
+		{
+			""event"": ""meeting.ended"",
+			""event_ts"": 1626230691572,
+			""payload"": {
+				""account_id"": ""AAAAAABBBB"",
+				""operator"": ""admin@example.com"",
+				""operator_id"": ""z8yCxjabcdEFGHfp8uQ"",
+				""operation"": ""single"",
+				""object"": {
+					""id"": ""1234567890"",
+					""uuid"": ""4444AAAiAAAAAiAiAiiAii=="",
+					""host_id"": ""x1yCzABCDEfg23HiJKl4mN"",
+					""topic"": ""My Meeting"",
+					""type"": 3,
+					""start_time"": ""2021-07-13T21:44:51Z"",
+					""timezone"": ""America/Los_Angeles"",
+					""duration"": 60,
+					""end_time"": ""2021-07-13T23:00:51Z""
+				}
+			}
 		}";
 
 		private const string MEETING_UPDATED_WEBHOOK = @"
@@ -67,8 +90,8 @@ namespace ZoomNet.UnitTests
 					""id"": 94890226305,
 					""topic"": ""ZoomNet Unit Testing: UPDATED scheduled meeting"",
 					""settings"": { ""audio"": ""voip"" }
-				},
-				""old_object"": {
+					},
+					""old_object"": {
 					""id"": 94890226305,
 					""topic"": ""ZoomNet Unit Testing: scheduled meeting"",
 					""settings"": { ""audio"": ""telephony"" }
@@ -122,11 +145,11 @@ namespace ZoomNet.UnitTests
 							""date_time"": ""2019-07-16T17:19:11Z"",
 							""content"": ""application""
 						}
-					}
-				},
+			}
+		},
 				""account_id"": ""EPeQtiABC000VYxHMA""
 			}
-		}";
+	}";
 
 		private const string MEETING_SERVICE_ISSUE_WEBHOOK = @"
 		{
@@ -188,6 +211,24 @@ namespace ZoomNet.UnitTests
 			parsedEvent.Meeting.HostId.ShouldBe("8lzIwvZTSOqjndWPbPqzuA");
 			parsedEvent.Meeting.Topic.ShouldBe("ZoomNet Unit Testing: instant meeting");
 			parsedEvent.Meeting.Type.ShouldBe(Models.MeetingType.Instant);
+			parsedEvent.Meeting.JoinUrl.ShouldBeNull();
+			parsedEvent.Meeting.Password.ShouldBeNull();
+			parsedEvent.Meeting.Settings.ShouldBeNull();
+		}
+
+		[Fact]
+		public void MeetingEnded()
+		{
+			var parsedEvent = (MeetingEndedEvent)new WebhookParser().ParseEventWebhook(MEETING_ENDED_WEBHOOK);
+
+			parsedEvent.EventType.ShouldBe(EventType.MeetingEnded);
+			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
+			parsedEvent.Meeting.ShouldNotBeNull();
+			parsedEvent.Meeting.Uuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
+			parsedEvent.Meeting.Id.ShouldBe(1234567890);
+			parsedEvent.Meeting.HostId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
+			parsedEvent.Meeting.Topic.ShouldBe("My Meeting");
+			parsedEvent.Meeting.Type.ShouldBe(MeetingType.RecurringNoFixedTime);
 			parsedEvent.Meeting.JoinUrl.ShouldBeNull();
 			parsedEvent.Meeting.Password.ShouldBeNull();
 			parsedEvent.Meeting.Settings.ShouldBeNull();
