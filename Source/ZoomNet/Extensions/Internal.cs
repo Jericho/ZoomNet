@@ -468,12 +468,22 @@ namespace ZoomNet
 
 		internal static T GetPropertyValue<T>(this JsonElement element, string name, T defaultValue)
 		{
-			return GetPropertyValue<T>(element, name, defaultValue, false);
+			return GetPropertyValue<T>(element, new[] { name }, defaultValue, false);
+		}
+
+		internal static T GetPropertyValue<T>(this JsonElement element, string[] names, T defaultValue)
+		{
+			return GetPropertyValue<T>(element, names, defaultValue, false);
 		}
 
 		internal static T GetPropertyValue<T>(this JsonElement element, string name)
 		{
-			return GetPropertyValue<T>(element, name, default, true);
+			return GetPropertyValue<T>(element, new[] { name }, default, true);
+		}
+
+		internal static T GetPropertyValue<T>(this JsonElement element, string[] names)
+		{
+			return GetPropertyValue<T>(element, names, default, true);
 		}
 
 		internal static async Task<TResult[]> ForEachAsync<T, TResult>(this IEnumerable<T> items, Func<T, Task<TResult>> action, int maxDegreeOfParalellism)
@@ -1002,9 +1012,16 @@ namespace ZoomNet
 			return result;
 		}
 
-		private static T GetPropertyValue<T>(this JsonElement element, string name, T defaultValue, bool throwIfMissing)
+		private static T GetPropertyValue<T>(this JsonElement element, string[] names, T defaultValue, bool throwIfMissing)
 		{
-			var property = element.GetProperty(name, throwIfMissing);
+			JsonElement? property = null;
+
+			foreach (var name in names)
+			{
+				property = element.GetProperty(name, false);
+				if (property.HasValue) break;
+			}
+
 			if (!property.HasValue) return defaultValue;
 
 			var typeOfT = typeof(T);
