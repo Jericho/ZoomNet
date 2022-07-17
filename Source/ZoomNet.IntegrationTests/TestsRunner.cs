@@ -88,7 +88,8 @@ namespace ZoomNet.IntegrationTests
 					//	{
 					//		Environment.SetEnvironmentVariable("ZOOM_OAUTH_REFRESHTOKEN", newRefreshToken, EnvironmentVariableTarget.User);
 					//		Environment.SetEnvironmentVariable("ZOOM_OAUTH_ACCESSTOKEN", newAccessToken, EnvironmentVariableTarget.User);
-					//	});
+					//	},
+					//	null);
 				}
 			}
 
