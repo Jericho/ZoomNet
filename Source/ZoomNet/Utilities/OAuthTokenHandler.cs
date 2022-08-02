@@ -92,7 +92,7 @@ namespace ZoomNet.Utilities
 						var requestTime = DateTime.UtcNow;
 						var request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
 						request.Headers.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes($"{_connectionInfo.ClientId}:{_connectionInfo.ClientSecret}")));
-						var response = _httpClient.SendAsync(request).GetAwaiter().GetResult();
+						var response = _httpClient.SendAsync(request).ConfigureAwait(false).GetAwaiter().GetResult();
 						var responseContent = response.Content.ReadAsStringAsync(null).ConfigureAwait(false).GetAwaiter().GetResult();
 
 						if (string.IsNullOrEmpty(responseContent)) throw new Exception(response.ReasonPhrase);

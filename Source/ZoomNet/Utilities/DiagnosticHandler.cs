@@ -167,7 +167,7 @@ namespace ZoomNet.Utilities
 				if (contentLength > 0)
 				{
 					diagnostic.AppendLine();
-					diagnostic.AppendLine(httpContent.ReadAsStringAsync(null).GetAwaiter().GetResult() ?? "<NULL>");
+					diagnostic.AppendLine(httpContent.ReadAsStringAsync(null).ConfigureAwait(false).GetAwaiter().GetResult() ?? "<NULL>");
 				}
 			}
 		}
