@@ -57,11 +57,33 @@ namespace ZoomNet.Models
 		public string HostId { get; set; }
 
 		/// <summary>
+		/// Gets or sets the meeting host's department.
+		/// </summary>
+		/// <value>
+		/// The department.
+		/// </value>
+		[JsonPropertyName("dept")]
+		public string Department { get; set; }
+
+		/// <summary>
 		/// Gets or sets the number of participants.
 		/// </summary>
 		/// <value>The number of participants.</value>
 		[JsonPropertyName("participants_count")]
 		public long ParticipantsCount { get; set; }
+
+		/// <summary>
+		/// Gets or sets the value indicating whether the meeting was created directly through Zoom or via an API request.
+		/// </summary>
+		/// <remarks>
+		/// If the meeting was created via an OAuth app, this field returns the OAuth app's name.
+		/// If the meeting was created via JWT or the Zoom Web Portal, this returns the Zoom value.
+		/// </remarks>
+		/// <value>
+		/// The source.
+		/// </value>
+		[JsonPropertyName("source")]
+		public string Source { get; set; }
 
 		/// <summary>
 		/// Gets or sets the topic of the meeting.
