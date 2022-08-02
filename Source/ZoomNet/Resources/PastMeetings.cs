@@ -34,12 +34,12 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The <see cref="Meeting" />.
 		/// </returns>
-		public Task<Meeting> GetAsync(string uuid, CancellationToken cancellationToken = default)
+		public Task<PastMeeting> GetAsync(string uuid, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"past_meetings/{uuid}")
 				.WithCancellationToken(cancellationToken)
-				.AsObject<Meeting>();
+				.AsObject<PastMeeting>();
 		}
 
 		/// <summary>
