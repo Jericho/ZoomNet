@@ -308,7 +308,7 @@ Task("Upload-Coverage-Result")
 	}
 	catch (Exception e)
 	{
-		Warning(e.Message);
+		Information(e.Message);
 	}
 
 	try
@@ -317,7 +317,7 @@ Task("Upload-Coverage-Result")
 	}
 	catch (Exception e)
 	{
-		Warning(e.Message);
+		Information(e.Message);
 	}
 });
 
