@@ -24,7 +24,8 @@ namespace ZoomNet.IntegrationTests.Tests
 				manager: "Bob",
 				phoneNumbers: new[]
 				{
-					new PhoneNumber { Country = Country.Canada, CountryCode = "+1", Number = "555-555-1234", Type = PhoneType.Office  }
+					new PhoneNumber { Country = Country.Canada, CountryCode = "+1", Number = "555-555-1234", Type = PhoneType.Office  },
+					new PhoneNumber { Country = Country.United_States_of_America, CountryCode = "+1", Number = "555-666-1234"  }
 				},
 				cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("My user was updated").ConfigureAwait(false);

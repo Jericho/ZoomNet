@@ -17,7 +17,7 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets the type.</summary>
 		[JsonPropertyName("label")]
-		public PhoneType Type { get; set; }
+		public PhoneType? Type { get; set; }
 
 		/// <summary>Gets or sets the phone number.</summary>
 		[JsonPropertyName("number")]

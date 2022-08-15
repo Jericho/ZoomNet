@@ -1,4 +1,5 @@
 using Pathoschild.Http.Client;
+using Pathoschild.Http.Client.Extensibility;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -343,15 +344,15 @@ namespace ZoomNet
 			return await response.AsRawJsonDocument(propertyName, throwIfPropertyIsMissing).ConfigureAwait(false);
 		}
 
+		/// <summary>
+		/// Replace the current error handler which treats HTTP200 as success with a handler that treats HTTP200 as failure.
+		/// </summary>
+		/// <param name="request">The request.</param>
+		/// <param name="customExceptionMessage">An optional custom error message.</param>
+		/// <returns>Returns the request builder for chaining.</returns>
 		internal static IRequest WithHttp200TreatedAsFailure(this IRequest request, string customExceptionMessage = null)
 		{
-			var currentErrorHandler = request.Filters.OfType<ZoomErrorHandler>().SingleOrDefault();
-			var newErrorHandler = new ZoomErrorHandler(true, customExceptionMessage);
-
-			// Replace the current error handler which treats HTTP200 as success with a handler that treats HTTP200 as failure
-			request.Filters.Replace(currentErrorHandler, newErrorHandler);
-
-			return request;
+			return request.WithFilter(new ZoomErrorHandler(true, customExceptionMessage));
 		}
 
 		/// <summary>Set the body content of the HTTP request.</summary>
@@ -368,6 +369,42 @@ namespace ZoomNet
 		internal static IRequest WithJsonBody<T>(this IRequest request, T body)
 		{
 			return request.WithBody(bodyBuilder => bodyBuilder.Model(body, new MediaTypeHeaderValue("application/json")));
+		}
+
+		/// <summary>Add a filter to a request.</summary>
+		/// <typeparam name="TFilter">The type of filter.</typeparam>
+		/// <param name="request">The request.</param>
+		/// <param name="filter">The filter.</param>
+		/// <param name="replaceExisting">
+		/// When true, the first filter of matching type is replaced with the new filter (thereby preserving the position of the filter in the list of filters) and any other filter of matching type is removed.
+		/// When false, the filter is simply added to the list of filters.
+		/// </param>
+		/// <returns>Returns the request builder for chaining.</returns>
+		internal static IRequest WithFilter<TFilter>(this IRequest request, TFilter filter, bool replaceExisting = true)
+			where TFilter : IHttpFilter
+		{
+			var matchingFilters = request.Filters.OfType<TFilter>().ToArray();
+
+			if (matchingFilters.Length == 0 || !replaceExisting)
+			{
+				request.Filters.Add(filter);
+			}
+			else
+			{
+				// Replace the first matching filter with the new filter
+				var collectionAsList = request.Filters as IList<IHttpFilter>;
+				var indexOfMatchingFilter = collectionAsList.IndexOf(matchingFilters[0]);
+				collectionAsList.RemoveAt(indexOfMatchingFilter);
+				collectionAsList.Insert(indexOfMatchingFilter, filter);
+
+				// Remove any other matching filter
+				for (int i = 1; i < matchingFilters.Length; i++)
+				{
+					request.Filters.Remove(matchingFilters[i]);
+				}
+			}
+
+			return request;
 		}
 
 		/// <summary>Asynchronously retrieve the response body as a <see cref="string"/>.</summary>
@@ -686,23 +723,6 @@ namespace ZoomNet
 			}
 
 			return (isError, errorMessage, errorCode);
-		}
-
-		internal static void Replace<T>(this ICollection<T> collection, T oldValue, T newValue)
-		{
-			// In case the collection is ordered, we'll be able to preserve the order
-			if (collection is IList<T> collectionAsList)
-			{
-				var oldIndex = collectionAsList.IndexOf(oldValue);
-				collectionAsList.RemoveAt(oldIndex);
-				collectionAsList.Insert(oldIndex, newValue);
-			}
-			else
-			{
-				// No luck, so just remove then add
-				collection.Remove(oldValue);
-				collection.Add(newValue);
-			}
 		}
 
 		/// <summary>Convert an enum to its string representation.</summary>

@@ -38,7 +38,7 @@ The last version of ZoomNet that supported `.NET 4.6.1`, `.NET 4.7.2` and `.NET 
 ## Usage
 
 ### Connection Information
-Before you start using the ZoomNet client, you must decide how you are going to connect to the Zoom API. ZoomNet supports two distinct ways of connecting to Zoom: JWT and OAuth.
+Before you start using the ZoomNet client, you must decide how you are going to connect to the Zoom API. ZoomNet supports three ways of connecting to Zoom: JWT, OAuth and Server-to-Server OAuth.
 
 #### Connection using JWT
 This is the simplest way to connect to the Zoom API. Zoom expects you to use a key and a secret to generate a JSON object with a signed payload and to provide this JSON object with every API request. The good news is that ZoomNet takes care of the intricacies of generating this JSON object: you simply provide the key and the secret and ZoomNet takes care of the rest. Super easy!
@@ -54,6 +54,7 @@ When you have the API key and secret, you can instantiate a 'connection info' ob
 var apiKey = "... your API key ...";
 var apiSecret = "... your API secret ...";
 var connectionInfo = new JwtConnectionInfo(apiKey, apiSecret);
+var zoomClient = new ZoomClient(connectionInfo);
 ```
 
 > **Warning:** <a href="https://marketplace.zoom.us/docs/guides/build/jwt-app/jwt-faq/">Zoom has announced</a> that this authentication method would be obsolete in June 2023. The recommendation is to swith to Server-to-Server OAuth.
@@ -68,26 +69,37 @@ The Zoom documentation has a document about [how to create an OAuth app](https:/
 - Zoom generates a "authorization code". This code can be used only once to generate the first access token and refresh token. I CAN'T STRESS THIS ENOUGH: the authorization code can be used only one time. This was the confusing part to me: somehow I didn't understand that this code could be used only one time and I was attempting to use it repeatedly. Zoom would accept the code the first time and would reject it subsequently, which lead to many hours of frustration while trying to figure out why the code was sometimes rejected.
 - The access token is valid for 60 minutes and must therefore be "refreshed" periodically.
 
-ZoomNet takes care of generating the access token and the refresh token but it's your responsability to store these generated values. 
-
+When you initially add an OAuth application to your Zoom account, you will be issued an "authorization code".
+You can provide this autorization code to ZoomNet like so:
 ```csharp
 var clientId = "... your client ID ...";
 var clientSecret = "... your client secret ...";
 var refreshToken = "... the refresh token previously issued by Zoom ...";
-var accessToken = "... the access token previously issued by Zoom ...";
-var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, refreshToken, accessToken,
+var authorizationCode = "... the code that Zoom issued when you added the OAuth app to your account ...";
+var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, authorizationCode,
     (newRefreshToken, newAccessToken) =>
     {
         /*
-            Save the new refresh token and the access token to
-            a safe place so you can provide it the next time
-            you need to instantiate an OAuthConnectionInfo.
+            This callback is invoked when the authorization code
+            is converted into an access token and also when the
+            access token is subsequently refreshed.
+
+            You should use this callback to save the two new tokens
+            to a safe place so you can provide them the next time you
+            need to instantiate an OAuthConnectionInfo.
+
+            For demonstration purposes, here's how you could use your
+            operating system's environment variables to store the tokens:
         */
+        Environment.SetEnvironmentVariable("ZOOM_OAUTH_REFRESHTOKEN", newRefreshToken, EnvironmentVariableTarget.User);
+        Environment.SetEnvironmentVariable("ZOOM_OAUTH_ACCESSTOKEN", newAccessToken, EnvironmentVariableTarget.User);
     });
+var zoomClient = new ZoomClient(connectionInfo);
 ```
 
-For demonstration purposes, here's how you could use your operating system's environment variables to store the tokens
+> **Warning:** This sample I just provided can be used only when Zoom issues a new the autorization code. ZoomNet will take care of converting this code into an access token at which point the autorization code is no longer valid.
 
+Once the autorization code is converted into an access token, you can instantiate a 'connection info' object like so:
 ```csharp
 var clientId = "... your client ID ...";
 var clientSecret = "... your client secret ...";
@@ -99,6 +111,7 @@ var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, refreshToke
         Environment.SetEnvironmentVariable("ZOOM_OAUTH_REFRESHTOKEN", newRefreshToken, EnvironmentVariableTarget.User);
         Environment.SetEnvironmentVariable("ZOOM_OAUTH_ACCESSTOKEN", newAccessToken, EnvironmentVariableTarget.User);
     });
+var zoomClient = new ZoomClient(connectionInfo);
 ```
 
 #### Connection using Server-to-Server OAuth
@@ -109,7 +122,6 @@ From Zoom's documentation:
 > A Server-to-Server OAuth app enables you to securely integrate with Zoom APIs and get your account owner access token without user interaction. This is different from the OAuth app type, which requires user authentication. See Using OAuth 2.0 for details.
 
 ZoomNet takes care of getting a new access token and it also refreshes a previously issued token when it expires (Server-to-Server access token are valid for one hour).
-Therefore 
 
 ```csharp
 var clientId = "... your client ID ...";
@@ -128,18 +140,12 @@ var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, accountId,
             a null value in lieu of a delegate.
         */
 	});
+var zoomClient = new ZoomClient(connectionInfo);
 ```
 
 The delegate being optional in the server-to-server scenario you can therefore simplify the connection info declaration like so:
 
 ```csharp
 var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, accountId, null);
-```
-
-
-### Client
-
-You declare your client variable like so:
-```csharp
 var zoomClient = new ZoomClient(connectionInfo);
 ```
