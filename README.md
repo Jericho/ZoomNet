@@ -76,6 +76,7 @@ var clientId = "... your client ID ...";
 var clientSecret = "... your client secret ...";
 var refreshToken = "... the refresh token previously issued by Zoom ...";
 var authorizationCode = "... the code that Zoom issued when you added the OAuth app to your account ...";
+var redirectUri = "... the URI you have configured when setting up your OAuth app ..."; // Please note that Zoom sometimes accepts a null value and sometimes rejects it with a 'Redirect URI mismatch' error
 var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, authorizationCode,
     (newRefreshToken, newAccessToken) =>
     {
@@ -93,7 +94,8 @@ var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, authorizati
         */
         Environment.SetEnvironmentVariable("ZOOM_OAUTH_REFRESHTOKEN", newRefreshToken, EnvironmentVariableTarget.User);
         Environment.SetEnvironmentVariable("ZOOM_OAUTH_ACCESSTOKEN", newAccessToken, EnvironmentVariableTarget.User);
-    });
+    },
+    redirectUri);
 var zoomClient = new ZoomClient(connectionInfo);
 ```
 
