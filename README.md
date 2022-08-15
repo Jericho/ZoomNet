@@ -54,6 +54,7 @@ When you have the API key and secret, you can instantiate a 'connection info' ob
 var apiKey = "... your API key ...";
 var apiSecret = "... your API secret ...";
 var connectionInfo = new JwtConnectionInfo(apiKey, apiSecret);
+var zoomClient = new ZoomClient(connectionInfo);
 ```
 
 > **Warning:** <a href="https://marketplace.zoom.us/docs/guides/build/jwt-app/jwt-faq/">Zoom has announced</a> that this authentication method would be obsolete in June 2023. The recommendation is to swith to Server-to-Server OAuth.
@@ -93,6 +94,7 @@ var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, authorizati
         Environment.SetEnvironmentVariable("ZOOM_OAUTH_REFRESHTOKEN", newRefreshToken, EnvironmentVariableTarget.User);
         Environment.SetEnvironmentVariable("ZOOM_OAUTH_ACCESSTOKEN", newAccessToken, EnvironmentVariableTarget.User);
     });
+var zoomClient = new ZoomClient(connectionInfo);
 ```
 
 > **Warning:** This sample I just provided can be used only when Zoom issues a new the autorization code. ZoomNet will take care of converting this code into an access token at which point the autorization code is no longer valid.
@@ -109,6 +111,7 @@ var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, refreshToke
         Environment.SetEnvironmentVariable("ZOOM_OAUTH_REFRESHTOKEN", newRefreshToken, EnvironmentVariableTarget.User);
         Environment.SetEnvironmentVariable("ZOOM_OAUTH_ACCESSTOKEN", newAccessToken, EnvironmentVariableTarget.User);
     });
+var zoomClient = new ZoomClient(connectionInfo);
 ```
 
 #### Connection using Server-to-Server OAuth
@@ -137,18 +140,12 @@ var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, accountId,
             a null value in lieu of a delegate.
         */
 	});
+var zoomClient = new ZoomClient(connectionInfo);
 ```
 
 The delegate being optional in the server-to-server scenario you can therefore simplify the connection info declaration like so:
 
 ```csharp
 var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, accountId, null);
-```
-
-
-### Client
-
-You declare your client variable like so:
-```csharp
 var zoomClient = new ZoomClient(connectionInfo);
 ```

@@ -111,16 +111,16 @@ namespace ZoomNet.IntegrationTests
 			// These are the integration tests that we will execute
 			var integrationTests = new Type[]
 			{
-				typeof(Accounts),
-				typeof(Chat),
-				typeof(CloudRecordings),
-				typeof(Contacts),
-				typeof(Dashboards),
-				typeof(Meetings),
-				typeof(Roles),
+				//typeof(Accounts),
+				//typeof(Chat),
+				//typeof(CloudRecordings),
+				//typeof(Contacts),
+				//typeof(Dashboards),
+				//typeof(Meetings),
+				//typeof(Roles),
 				typeof(Users),
-				typeof(Webinars),
-				typeof(Reports)
+				//typeof(Webinars),
+				//typeof(Reports)
 			};
 
 			// Get my user and permisisons
