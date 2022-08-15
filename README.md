@@ -38,7 +38,7 @@ The last version of ZoomNet that supported `.NET 4.6.1`, `.NET 4.7.2` and `.NET 
 ## Usage
 
 ### Connection Information
-Before you start using the ZoomNet client, you must decide how you are going to connect to the Zoom API. ZoomNet supports two distinct ways of connecting to Zoom: JWT and OAuth.
+Before you start using the ZoomNet client, you must decide how you are going to connect to the Zoom API. ZoomNet supports three ways of connecting to Zoom: JWT, OAuth and Server-to-Server OAuth.
 
 #### Connection using JWT
 This is the simplest way to connect to the Zoom API. Zoom expects you to use a key and a secret to generate a JSON object with a signed payload and to provide this JSON object with every API request. The good news is that ZoomNet takes care of the intricacies of generating this JSON object: you simply provide the key and the secret and ZoomNet takes care of the rest. Super easy!
@@ -68,7 +68,7 @@ The Zoom documentation has a document about [how to create an OAuth app](https:/
 - Zoom generates a "authorization code". This code can be used only once to generate the first access token and refresh token. I CAN'T STRESS THIS ENOUGH: the authorization code can be used only one time. This was the confusing part to me: somehow I didn't understand that this code could be used only one time and I was attempting to use it repeatedly. Zoom would accept the code the first time and would reject it subsequently, which lead to many hours of frustration while trying to figure out why the code was sometimes rejected.
 - The access token is valid for 60 minutes and must therefore be "refreshed" periodically.
 
-ZoomNet takes care of generating the access token and the refresh token but it's your responsability to store these generated values. 
+ZoomNet takes care of generating the access token and the refresh token but it's your responsibility to store these generated values. 
 
 ```csharp
 var clientId = "... your client ID ...";
@@ -109,7 +109,6 @@ From Zoom's documentation:
 > A Server-to-Server OAuth app enables you to securely integrate with Zoom APIs and get your account owner access token without user interaction. This is different from the OAuth app type, which requires user authentication. See Using OAuth 2.0 for details.
 
 ZoomNet takes care of getting a new access token and it also refreshes a previously issued token when it expires (Server-to-Server access token are valid for one hour).
-Therefore 
 
 ```csharp
 var clientId = "... your client ID ...";
