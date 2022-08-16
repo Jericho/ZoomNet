@@ -7,6 +7,10 @@ namespace ZoomNet.Models
 	/// </summary>
 	public enum PhoneType
 	{
+		/// <summary>Unspecified.</summary>
+		[EnumMember(Value = "")]
+		Unspecified,
+
 		/// <summary>Mobile.</summary>
 		[EnumMember(Value = "Mobile")]
 		Mobile,
