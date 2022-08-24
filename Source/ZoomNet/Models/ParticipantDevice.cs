@@ -47,6 +47,12 @@ namespace ZoomNet.Models
 		/// The participant joined via VoIP using an Android device.
 		/// </summary>
 		[EnumMember(Value = "Android")]
-		Android
+		Android,
+
+		/// <summary>
+		/// The participant joined via the web.
+		/// </summary>
+		[EnumMember(Value = "Web")]
+		Web
 	}
 }
