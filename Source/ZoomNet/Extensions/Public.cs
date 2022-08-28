@@ -246,6 +246,26 @@ namespace ZoomNet
 		}
 
 		/// <summary>
+		/// Verifies the signature and parses the event webhook asynchronously.
+		/// </summary>
+		/// <param name="parser">The webhook parser.</param>
+		/// <param name="stream">The stream.</param>
+		/// <param name="secretToken">Your secret token. You can obtain this value in the 'Add Feature' configuration section of you Marketplace Zoom app.</param>
+		/// <param name="signature">The signature.</param>
+		/// <param name="timestamp">The timestamp.</param>
+		/// <returns>An <see cref="Event" />.</returns>
+		public static async Task<Event> VerifyAndParseEventWebhookAsync(IWebhookParser parser, Stream stream, string secretToken, string signature, string timestamp)
+		{
+			string requestBody;
+			using (var streamReader = new StreamReader(stream))
+			{
+				requestBody = await streamReader.ReadToEndAsync().ConfigureAwait(false);
+			}
+
+			return parser.VerifyAndParseEventWebhook(requestBody, secretToken, signature, timestamp);
+		}
+
+		/// <summary>
 		/// Download the recording file.
 		/// </summary>
 		/// <param name="cloudRecordingsResource">The cloud recordings resource.</param>
