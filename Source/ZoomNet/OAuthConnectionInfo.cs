@@ -86,8 +86,11 @@ namespace ZoomNet
 		/// </remarks>
 		/// <param name="clientId">Your Client Id.</param>
 		/// <param name="clientSecret">Your Client Secret.</param>
-		public OAuthConnectionInfo(string clientId!!, string clientSecret!!)
+		public OAuthConnectionInfo(string clientId, string clientSecret)
 		{
+			if (string.IsNullOrEmpty(clientId)) throw new ArgumentNullException(nameof(clientId));
+			if (string.IsNullOrEmpty(clientSecret)) throw new ArgumentNullException(nameof(clientSecret));
+
 			ClientId = clientId;
 			ClientSecret = clientSecret;
 			GrantType = OAuthGrantType.ClientCredentials;
@@ -115,8 +118,12 @@ namespace ZoomNet
 		/// <param name="authorizationCode">The authorization code.</param>
 		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed.</param>
 		/// <param name="redirectUri">The Redirect Uri.</param>
-		public OAuthConnectionInfo(string clientId!!, string clientSecret!!, string authorizationCode!!, OnTokenRefreshedDelegate onTokenRefreshed!!, string redirectUri = null)
+		public OAuthConnectionInfo(string clientId, string clientSecret, string authorizationCode, OnTokenRefreshedDelegate onTokenRefreshed, string redirectUri = null)
 		{
+			if (string.IsNullOrEmpty(clientId)) throw new ArgumentNullException(nameof(clientId));
+			if (string.IsNullOrEmpty(clientSecret)) throw new ArgumentNullException(nameof(clientSecret));
+			if (string.IsNullOrEmpty(authorizationCode)) throw new ArgumentNullException(nameof(authorizationCode));
+
 			ClientId = clientId;
 			ClientSecret = clientSecret;
 			AuthorizationCode = authorizationCode;
@@ -137,8 +144,13 @@ namespace ZoomNet
 		/// <param name="refreshToken">The refresh token.</param>
 		/// <param name="accessToken">The access token. Access tokens expire after 1 hour. ZoomNet will automatically refresh this token when it expires.</param>
 		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed.</param>
-		public OAuthConnectionInfo(string clientId!!, string clientSecret!!, string refreshToken!!, string accessToken!!, OnTokenRefreshedDelegate onTokenRefreshed!!)
+		public OAuthConnectionInfo(string clientId, string clientSecret, string refreshToken, string accessToken, OnTokenRefreshedDelegate onTokenRefreshed)
 		{
+			if (string.IsNullOrEmpty(clientId)) throw new ArgumentNullException(nameof(clientId));
+			if (string.IsNullOrEmpty(clientSecret)) throw new ArgumentNullException(nameof(clientSecret));
+			if (string.IsNullOrEmpty(refreshToken)) throw new ArgumentNullException(nameof(refreshToken));
+			if (string.IsNullOrEmpty(accessToken)) throw new ArgumentNullException(nameof(accessToken));
+
 			ClientId = clientId;
 			ClientSecret = clientSecret;
 			RefreshToken = refreshToken;
@@ -158,8 +170,12 @@ namespace ZoomNet
 		/// <param name="clientSecret">Your Client Secret.</param>
 		/// <param name="accountId">Your Account Id.</param>
 		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed. In the Server-to-Server scenario, this delegate is optional.</param>
-		public OAuthConnectionInfo(string clientId!!, string clientSecret!!, string accountId!!, OnTokenRefreshedDelegate onTokenRefreshed)
+		public OAuthConnectionInfo(string clientId, string clientSecret, string accountId, OnTokenRefreshedDelegate onTokenRefreshed)
 		{
+			if (string.IsNullOrEmpty(clientId)) throw new ArgumentNullException(nameof(clientId));
+			if (string.IsNullOrEmpty(clientSecret)) throw new ArgumentNullException(nameof(clientSecret));
+			if (string.IsNullOrEmpty(accountId)) throw new ArgumentNullException(nameof(accountId));
+
 			ClientId = clientId;
 			ClientSecret = clientSecret;
 			AccountId = accountId;
