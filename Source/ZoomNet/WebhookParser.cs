@@ -1,4 +1,4 @@
-using System;
+using System.Security;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -53,7 +53,7 @@ namespace ZoomNet
 			var calculatedSignature = $"v0={hashAsHex}";
 
 			// Compare the signatures
-			if (calculatedSignature != signature) throw new InvalidOperationException("The signature is invalid.");
+			if (calculatedSignature != signature) throw new SecurityException("Webhook signature validation failed.");
 
 			// Parse the webhook event
 			return ParseEventWebhook(requestBody);

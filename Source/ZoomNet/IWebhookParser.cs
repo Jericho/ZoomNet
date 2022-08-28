@@ -1,4 +1,4 @@
-using System;
+using System.Security;
 using ZoomNet.Models.Webhooks;
 
 namespace ZoomNet
@@ -23,7 +23,7 @@ namespace ZoomNet
 		/// <param name="signature">The signature.</param>
 		/// <param name="timestamp">The timestamp.</param>
 		/// <returns>An <see cref="Event" />.</returns>
-		/// <exception cref="InvalidOperationException">The signature is invalid.</exception>
+		/// <exception cref="SecurityException">Webhook signature validation failed.</exception>
 		Event VerifyAndParseEventWebhook(string requestBody, string secretToken, string signature, string timestamp);
 	}
 }
