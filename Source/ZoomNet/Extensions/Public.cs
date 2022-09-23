@@ -234,7 +234,7 @@ namespace ZoomNet
 		/// <param name="parser">The webhook parser.</param>
 		/// <param name="stream">The stream.</param>
 		/// <returns>An <see cref="Event" />.</returns>
-		public static async Task<Event> ParseEventWebhookAsync(IWebhookParser parser, Stream stream)
+		public static async Task<Event> ParseEventWebhookAsync(this IWebhookParser parser, Stream stream)
 		{
 			string requestBody;
 			using (var streamReader = new StreamReader(stream))
@@ -254,7 +254,7 @@ namespace ZoomNet
 		/// <param name="signature">The signature.</param>
 		/// <param name="timestamp">The timestamp.</param>
 		/// <returns>An <see cref="Event" />.</returns>
-		public static async Task<Event> VerifyAndParseEventWebhookAsync(IWebhookParser parser, Stream stream, string secretToken, string signature, string timestamp)
+		public static async Task<Event> VerifyAndParseEventWebhookAsync(this IWebhookParser parser, Stream stream, string secretToken, string signature, string timestamp)
 		{
 			string requestBody;
 			using (var streamReader = new StreamReader(stream))
