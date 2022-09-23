@@ -269,6 +269,11 @@ namespace ZoomNet.Json
 					webinarParticipantLeftEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<WebhookParticipant>();
 					webHookEvent = webinarParticipantLeftEvent;
 					break;
+				case EventType.EndpointUrlValidation:
+					var endpointUrlValidationEvent = payloadJsonProperty.ToObject<EndpointUrlValidationEvent>(options);
+					endpointUrlValidationEvent.PlainToken = payloadJsonProperty.GetPropertyValue<string>("payload/plainToken");
+					webHookEvent = endpointUrlValidationEvent;
+					break;
 				default:
 					throw new Exception($"{eventType} is an unknown event type");
 			}
