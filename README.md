@@ -208,18 +208,18 @@ namespace WebApplication1.Controllers
 		[HttpPost]
 		public async Task<IActionResult> ReceiveEvent()
 		{
-			// Get your secret token
-			var secretToken = "... your app's secret token ...";
-
-			// Get the signature and the timestamp from the request headers
-			var signature = Request.Headers[WebhookParser.SIGNATURE_HEADER_NAME]; // SIGNATURE_HEADER_NAME is a convenient constant provided so you don't have to remember the name of the header
-			var timestamp = Request.Headers[WebhookParser.TIMESTAMP_HEADER_NAME]; // TIMESTAMP_HEADER_NAME is a convenient constant provided so you don't have to remember the name of the header
-
-			// Parse the event. The signature will be automatically validated and a security exception thrown if unable to validate
 			try
 			{
+				// Get your secret token
+				var secretToken = "... your app's secret token ...";
+
+				// Get the signature and the timestamp from the request headers
+				var signature = Request.Headers[WebhookParser.SIGNATURE_HEADER_NAME].SingleOrDefault(); // SIGNATURE_HEADER_NAME is a convenient constant provided by ZoomNet so you don't have to remember the name of the header
+				var timestamp = Request.Headers[WebhookParser.TIMESTAMP_HEADER_NAME].SingleOrDefault(); // TIMESTAMP_HEADER_NAME is a convenient constant provided by ZoomNet so you don't have to remember the name of the header
+
+				// Parse the event. The signature will be automatically validated and a security exception thrown if unable to validate
 				var parser = new WebhookParser();
-				var event = await parser.ValidateAndParseEventWebhookAsync(Request.Body, publicKey, signature, timestamp).ConfigureAwait(false);
+				var event = await parser.VerifyAndParseEventWebhook(Request.Body, secretToken, signature, timestamp).ConfigureAwait(false);
 
 				// ... do something with the event...
 			}
