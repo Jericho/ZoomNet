@@ -192,7 +192,7 @@ When your Marketplace app has a `Secret Token`, Zoom will include two additional
 If you want to know what to do with these two values to determine if a webhook is legitimate or not, please review [this page in the documentation](https://marketplace.zoom.us/docs/api-reference/webhook-reference/#verify-webhook-events).
 But, ZoomNet strives to make your life easier so we have already implemented this logic.
 
-However, if you want to avoid learning how to perform the validation and you simply want this validation to be conveniently performed for you, ZoomNet can help! The `WebhookParser` class has a method called `VerifyAndParseEventWebhookAsync`which will automatically verify the data and throw a security exception if verification fails. If the verification fails, you should consider the webhook data to be invalid. Here's how it works:
+The `WebhookParser` class has a method called `VerifyAndParseEventWebhookAsync`which will automatically verify the data and throw a security exception if verification fails. If the verification fails, you should consider the webhook data to be invalid. Here's how it works:
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;
