@@ -70,7 +70,7 @@ namespace ZoomNet.Resources
 			{
 				{ "name", name },
 				{ "description", description },
-				{ "privileges", privileges }
+				{ "privileges", privileges?.ToArray() }
 			};
 
 			var result = await _client
@@ -133,7 +133,7 @@ namespace ZoomNet.Resources
 			{
 				// Zoom requires either the "id" field or the "email" field.
 				// If both are provided, "id" takes precedence.
-				{ "members", userIds.Select(id => new JsonObject { { (id ?? string.Empty).Contains("@") ? "email" : "id", id } }) }
+				{ "members", userIds.Select(id => new JsonObject { { (id ?? string.Empty).Contains("@") ? "email" : "id", id } }).ToArray() }
 			};
 
 			return _client
@@ -194,7 +194,7 @@ namespace ZoomNet.Resources
 				{ "id", id },
 				{ "name", name },
 				{ "description", description },
-				{ "privileges", privileges }
+				{ "privileges", privileges?.ToArray() }
 			};
 
 			return _client

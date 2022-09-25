@@ -140,7 +140,7 @@ namespace ZoomNet.Resources
 				{ "last_name", lastName },
 				{ "location", location },
 				{ "manager", manager },
-				{ "phone_numbers", phoneNumbers },
+				{ "phone_numbers", phoneNumbers?.ToArray() },
 				{ "pmi", pmi },
 				{ "pronouns", pronouns },
 				{ "pronouns_option", pronounsDisplay?.ToEnumString() },
