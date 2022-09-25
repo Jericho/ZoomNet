@@ -10,7 +10,7 @@ namespace ZoomNet
 		/// <summary>
 		/// Parses the event webhook.
 		/// </summary>
-		/// <param name="requestBody">The content submitted by Zoom's WebHook.</param>
+		/// <param name="requestBody">The content submitted by Zoom's webhook.</param>
 		/// <returns>An <see cref="Event" />.</returns>
 		Event ParseEventWebhook(string requestBody);
 	}

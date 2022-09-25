@@ -151,3 +151,85 @@ The delegate being optional in the server-to-server scenario you can therefore s
 var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, accountId, null);
 var zoomClient = new ZoomClient(connectionInfo);
 ```
+
+### Webhook Parser
+ 
+Here's a basic example of a .net 6.0 API controller which parses the webhook from Zoom:
+```csharp
+using Microsoft.AspNetCore.Mvc;
+using StrongGrid;
+
+namespace WebApplication1.Controllers
+{
+	[Route("api/[controller]")]
+	[ApiController]
+	public class ZoomWebhooksController : ControllerBase
+	{
+		[HttpPost]
+		[Route("Event")]
+		public async Task<IActionResult> ReceiveEvent()
+		{
+			var parser = new WebhookParser();
+			var event = await parser.ParseEventWebhookAsync(Request.Body).ConfigureAwait(false);
+
+			// ... do something with the event ...
+
+			return Ok();
+		}
+    }
+}
+```
+
+### Ensuring that webhooks originated from Zoom before parsing
+
+It is possible for you to verify that a webhook is legitimate and originated from Zoom.
+Any webhook that fails to be verified should be considered suspicious and should be discarded.
+
+To get started, you need to make sure that a `Secret Token` is associated with your Zoom Marketplace app (click the 'Regenerate' button if your app doesn't have such a token already) as demonstrated in this screenshot.
+![Screenshot](https://user-images.githubusercontent.com/112710/187087437-277e1e6f-e0c9-4046-b368-45e6612a781c.png)
+
+When your Marketplace app has a `Secret Token`, Zoom will include two additional headers in the request posted to your endpoint and you must use the values in these headers to verify that the content your received is legitimate.
+If you want to know what to do with these two values to determine if a webhook is legitimate or not, please review [this page in the documentation](https://marketplace.zoom.us/docs/api-reference/webhook-reference/#verify-webhook-events).
+But, ZoomNet strives to make your life easier so we have already implemented this logic.
+
+The `WebhookParser` class has a method called `VerifyAndParseEventWebhookAsync`which will automatically verify the data and throw a security exception if verification fails. If the verification fails, you should consider the webhook data to be invalid. Here's how it works:
+
+```csharp
+using Microsoft.AspNetCore.Mvc;
+using StrongGrid;
+using System.Security;
+
+namespace WebApplication1.Controllers
+{
+	[Route("api/[controller]")]
+	[ApiController]
+	public class ZoomWebhookController : ControllerBase
+	{
+		[HttpPost]
+		public async Task<IActionResult> ReceiveEvent()
+		{
+			try
+			{
+				// Get your secret token
+				var secretToken = "... your app's secret token ...";
+
+				// Get the signature and the timestamp from the request headers
+				var signature = Request.Headers[WebhookParser.SIGNATURE_HEADER_NAME].SingleOrDefault(); // SIGNATURE_HEADER_NAME is a convenient constant provided by ZoomNet so you don't have to remember the name of the header
+				var timestamp = Request.Headers[WebhookParser.TIMESTAMP_HEADER_NAME].SingleOrDefault(); // TIMESTAMP_HEADER_NAME is a convenient constant provided by ZoomNet so you don't have to remember the name of the header
+
+				// Parse the event. The signature will be automatically validated and a security exception thrown if unable to validate
+				var parser = new WebhookParser();
+				var event = await parser.VerifyAndParseEventWebhook(Request.Body, secretToken, signature, timestamp).ConfigureAwait(false);
+
+				// ... do something with the event...
+			}
+			catch (SecurityException e)
+			{
+				// ... unable to validate the data ...
+			}
+
+			return Ok();
+		}
+	}
+}
+```

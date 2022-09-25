@@ -15,6 +15,16 @@ namespace ZoomNet
 		public const string AUTHORIZATION_HEADER_NAME = "authorization";
 
 		/// <summary>
+		/// The name of the HTTP header where Zoom stores the encrypted authorization signature.
+		/// </summary>
+		public const string SIGNATURE_HEADER_NAME = "x-zm-signature";
+
+		/// <summary>
+		/// The name of the HTTP header where Zoom stores the time the request was sent, in epoch format.
+		/// </summary>
+		public const string TIMESTAMP_HEADER_NAME = "x-zm-request-timestamp";
+
+		/// <summary>
 		/// Parses the event webhook.
 		/// </summary>
 		/// <param name="requestBody">The content submitted by Zoom's WebHook.</param>

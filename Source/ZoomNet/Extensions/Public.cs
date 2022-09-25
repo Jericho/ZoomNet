@@ -1,5 +1,8 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Security;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -234,7 +237,7 @@ namespace ZoomNet
 		/// <param name="parser">The webhook parser.</param>
 		/// <param name="stream">The stream.</param>
 		/// <returns>An <see cref="Event" />.</returns>
-		public static async Task<Event> ParseEventWebhookAsync(IWebhookParser parser, Stream stream)
+		public static async Task<Event> ParseEventWebhookAsync(this IWebhookParser parser, Stream stream)
 		{
 			string requestBody;
 			using (var streamReader = new StreamReader(stream))
@@ -242,6 +245,55 @@ namespace ZoomNet
 				requestBody = await streamReader.ReadToEndAsync().ConfigureAwait(false);
 			}
 
+			return parser.ParseEventWebhook(requestBody);
+		}
+
+		/// <summary>
+		/// Verifies the signature and parses the event webhook asynchronously.
+		/// </summary>
+		/// <param name="parser">The webhook parser.</param>
+		/// <param name="stream">The stream.</param>
+		/// <param name="secretToken">Your secret token. You can obtain this value in the 'Add Feature' configuration section of you Marketplace Zoom app.</param>
+		/// <param name="signature">The signature.</param>
+		/// <param name="timestamp">The timestamp.</param>
+		/// <returns>An <see cref="Event" />.</returns>
+		public static async Task<Event> VerifyAndParseEventWebhookAsync(this IWebhookParser parser, Stream stream, string secretToken, string signature, string timestamp)
+		{
+			string requestBody;
+			using (var streamReader = new StreamReader(stream))
+			{
+				requestBody = await streamReader.ReadToEndAsync().ConfigureAwait(false);
+			}
+
+			return parser.VerifyAndParseEventWebhook(requestBody, secretToken, signature, timestamp);
+		}
+
+		/// <summary>
+		/// Verifies the signature and parses the event webhook asynchronously.
+		/// </summary>
+		/// <param name="parser">The webhook parser.</param>
+		/// <param name="requestBody">The content submitted by Zoom's webhook.</param>
+		/// <param name="secretToken">Your secret token. You can obtain this value in the 'Add Feature' configuration section of you Marketplace Zoom app.</param>
+		/// <param name="signature">The signature.</param>
+		/// <param name="timestamp">The timestamp.</param>
+		/// <returns>An <see cref="Event" />.</returns>
+		public static Event VerifyAndParseEventWebhook(this IWebhookParser parser, string requestBody, string secretToken, string signature, string timestamp)
+		{
+			// Construct the message
+			var message = $"v0:{timestamp}:{requestBody}";
+
+			// Hash the message
+			var hmac = new HMACSHA256(Encoding.ASCII.GetBytes(secretToken));
+			var hashAsBytes = hmac.ComputeHash(Encoding.ASCII.GetBytes(message));
+			var hashAsHex = hashAsBytes.ToHexString();
+
+			// Create the signature
+			var calculatedSignature = $"v0={hashAsHex}";
+
+			// Compare the signatures
+			if (calculatedSignature != signature) throw new SecurityException("Webhook signature validation failed.");
+
+			// Parse the webhook event
 			return parser.ParseEventWebhook(requestBody);
 		}
 
