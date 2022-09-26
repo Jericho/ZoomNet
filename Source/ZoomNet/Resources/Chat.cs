@@ -189,7 +189,7 @@ namespace ZoomNet.Resources
 
 			var data = new JsonObject
 			{
-				{ "members", emails.Select(e => new JsonObject() { { "email", e } }) }
+				{ "members", emails.Select(e => new JsonObject() { { "email", e } }).ToArray() }
 			};
 
 			return _client
@@ -462,7 +462,7 @@ namespace ZoomNet.Resources
 				{ "reply_main_message_id", replyMessageId },
 				{ "to_contact", recipientEmail },
 				{ "to_channel", channelId },
-				{ "at_items", mentions }
+				{ "at_items", mentions?.ToArray() }
 			};
 
 			return _client
@@ -502,7 +502,7 @@ namespace ZoomNet.Resources
 				{ "message", message },
 				{ "to_contact", recipientEmail },
 				{ "to_channel", channelId },
-				{ "at_items", mentions }
+				{ "at_items", mentions?.ToArray() }
 			};
 
 			return _client

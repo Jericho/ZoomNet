@@ -39,10 +39,12 @@ namespace ZoomNet.Utilities
 		private readonly HttpClient _httpClient;
 		private readonly TimeSpan _clockSkew;
 
-		public OAuthTokenHandler(OAuthConnectionInfo connectionInfo!!, HttpClient httpClient!!, TimeSpan? clockSkew = null)
+		public OAuthTokenHandler(OAuthConnectionInfo connectionInfo, HttpClient httpClient, TimeSpan? clockSkew = null)
 		{
+			if (connectionInfo == null) throw new ArgumentNullException(nameof(connectionInfo));
 			if (string.IsNullOrEmpty(connectionInfo.ClientId)) throw new ArgumentNullException(nameof(connectionInfo.ClientId));
 			if (string.IsNullOrEmpty(connectionInfo.ClientSecret)) throw new ArgumentNullException(nameof(connectionInfo.ClientSecret));
+			if (httpClient == null) throw new ArgumentNullException(nameof(httpClient));
 
 			_connectionInfo = connectionInfo;
 			_httpClient = httpClient;

@@ -842,6 +842,14 @@ namespace ZoomNet
 			}
 		}
 
+		internal static string ToHexString(this byte[] bytes)
+		{
+			var result = new StringBuilder(bytes.Length * 2);
+			for (int i = 0; i < bytes.Length; i++)
+				result.Append(bytes[i].ToString("x2"));
+			return result.ToString();
+		}
+
 		/// <summary>Asynchronously converts the JSON encoded content and convert it to an object of the desired type.</summary>
 		/// <typeparam name="T">The response model to deserialize into.</typeparam>
 		/// <param name="httpContent">The content.</param>

@@ -92,7 +92,7 @@ namespace ZoomNet.Resources
 				{ "duration", duration },
 				{ "timezone", timeZone },
 				{ "settings", settings },
-				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }) },
+				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }).ToArray() },
 				{ "template_id", templateId }
 			};
 
@@ -135,7 +135,7 @@ namespace ZoomNet.Resources
 				{ "recurrence", recurrence },
 				{ "timezone", timeZone },
 				{ "settings", settings },
-				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }) },
+				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }).ToArray() },
 				{ "template_id", templateId }
 			};
 
@@ -246,7 +246,7 @@ namespace ZoomNet.Resources
 				{ "recurrence", recurrence },
 				{ "timezone", timeZone },
 				{ "settings", settings },
-				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }) }
+				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }).ToArray() }
 			};
 
 			return _client
@@ -363,12 +363,12 @@ namespace ZoomNet.Resources
 			var data = new JsonObject
 			{
 				{
-					"panelists", panelists.Select(p => new JsonObject
+					"panelists", panelists?.Select(p => new JsonObject
 					{
 						{ "email", p.Email },
 						{ "name", p.FullName },
 						{ "virtual_background_id", p.VirtualBackgroundId },
-					})
+					}).ToArray()
 				}
 			};
 
@@ -540,7 +540,7 @@ namespace ZoomNet.Resources
 				{ "purchasing_time_frame", timeFrame },
 				{ "role_in_purchase_process", role },
 				{ "no_of_employees", employees },
-				{ "custom_questions", questionAnswers },
+				{ "custom_questions", questionAnswers?.ToArray() },
 				{ "language", language },
 				{ "comments", comments }
 			};
@@ -696,7 +696,7 @@ namespace ZoomNet.Resources
 			var data = new JsonObject
 			{
 				{ "title", title },
-				{ "questions", questions }
+				{ "questions", questions?.ToArray() }
 			};
 
 			return _client
@@ -739,7 +739,7 @@ namespace ZoomNet.Resources
 			var data = new JsonObject
 			{
 				{ "title", title },
-				{ "questions", questions }
+				{ "questions", questions?.ToArray() }
 			};
 
 			return _client
@@ -824,7 +824,7 @@ namespace ZoomNet.Resources
 			var data = new JsonObject
 			{
 				{ "questions", standardFields },
-				{ "custom_questions", customQuestions }
+				{ "custom_questions", customQuestions?.ToArray() }
 			};
 
 			return _client
