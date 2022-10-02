@@ -83,6 +83,14 @@ namespace ZoomNet
 		IRoles Roles { get; }
 
 		/// <summary>
+		/// Gets the resource which allows you to manage tracking fields.
+		/// </summary>
+		/// <value>
+		/// The tracking fields resource.
+		/// </value>
+		ITrackingFields TrackingFields { get; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage users.
 		/// </summary>
 		/// <value>
