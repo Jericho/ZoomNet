@@ -1,8 +1,7 @@
-using Newtonsoft.Json;
-using StrongGrid.Models;
 using System;
 using System.Collections.Generic;
-using ZoomNet.Utilities;
+using System.Text.Json.Serialization;
+using ZoomNet.Json;
 
 namespace ZoomNet.Models
 {
@@ -17,7 +16,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The unique id.
 		/// </value>
-		[JsonProperty("uuid", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("uuid")]
 		public string Uuid { get; set; }
 
 		/// <summary>
@@ -26,7 +25,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The id.
 		/// </value>
-		[JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("id")]
 		public long Id { get; set; }
 
 		/// <summary>
@@ -35,7 +34,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The user id.
 		/// </value>
-		[JsonProperty("host_id", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("host_id")]
 		public string HostId { get; set; }
 
 		/// <summary>
@@ -44,7 +43,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The user id.
 		/// </value>
-		[JsonProperty("host_email", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("host_email")]
 		public string HostEmail { get; set; }
 
 		/// <summary>
@@ -53,56 +52,56 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The topic.
 		/// </value>
-		[JsonProperty("topic", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("topic")]
 		public string Topic { get; set; }
 
 		/// <summary>
 		/// Gets or sets the webinar type.
 		/// </summary>
 		/// <value>The webinar type.</value>
-		[JsonProperty(PropertyName = "type", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("type")]
 		public WebinarType Type { get; set; }
 
 		/// <summary>
 		/// Gets or sets the duration in minutes.
 		/// </summary>
 		/// <value>The duration in minutes.</value>
-		[JsonProperty(PropertyName = "duration", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("duration")]
 		public int Duration { get; set; }
 
 		/// <summary>
 		/// Gets or sets the webinar agenda.
 		/// </summary>
 		/// <value>The agenda.</value>
-		[JsonProperty(PropertyName = "agenda", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("agenda")]
 		public string Agenda { get; set; }
 
 		/// <summary>
 		/// Gets or sets the date and time when the meeting was created.
 		/// </summary>
 		/// <value>The meeting created time.</value>
-		[JsonProperty(PropertyName = "created_at", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("created_at")]
 		public DateTime CreatedOn { get; set; }
 
 		/// <summary>
 		/// Gets or sets the URL to join the webinar.
 		/// </summary>
 		/// <value>The join URL.</value>
-		[JsonProperty(PropertyName = "join_url", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("join_url")]
 		public string JoinUrl { get; set; }
 
 		/// <summary>
 		/// Gets or sets the URL for the host to start the meeting.
 		/// </summary>
 		/// <value>The start URL.</value>
-		[JsonProperty(PropertyName = "start_url", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("start_url")]
 		public string StartUrl { get; set; }
 
 		/// <summary>
 		/// Gets or sets the tracking fields.
 		/// </summary>
 		/// <value>The tracking fields.</value>
-		[JsonProperty(PropertyName = "tracking_fields", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("tracking_fields")]
 		[JsonConverter(typeof(TrackingFieldsConverter))]
 		public KeyValuePair<string, string>[] TrackingFields { get; set; }
 
@@ -110,14 +109,14 @@ namespace ZoomNet.Models
 		/// Gets or sets the webinar settings.
 		/// </summary>
 		/// <value>The webinar settings.</value>
-		[JsonProperty(PropertyName = "settings", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("settings")]
 		public WebinarSettings Settings { get; set; }
 
 		/// <summary>
 		/// Gets or sets the webinar password.
 		/// </summary>
 		/// <value>The password.</value>
-		[JsonProperty(PropertyName = "password", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("password")]
 		public string Password { get; set; }
 	}
 }

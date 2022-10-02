@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models.Webhooks
 {
@@ -10,13 +10,13 @@ namespace ZoomNet.Models.Webhooks
 		/// <summary>
 		/// Gets or sets the information about the participant.
 		/// </summary>
-		[JsonProperty(PropertyName = "participant")]
+		[JsonPropertyName("participant")]
 		public WebhookParticipant Participant { get; set; }
 
 		/// <summary>
 		/// Gets or sets the information about the screenshare.
 		/// </summary>
-		[JsonProperty(PropertyName = "sharing_details")]
+		[JsonPropertyName("sharing_details")]
 		public ScreenshareDetails ScreenshareDetails { get; set; }
 	}
 }

@@ -1,6 +1,5 @@
-using Newtonsoft.Json;
 using System;
-using ZoomNet.Utilities;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -17,7 +16,7 @@ namespace ZoomNet.Models
 		/// It is the same as the User ID of the participant if the participant joins the meeting by logging into Zoom<br/>
 		/// If the participant joins the meeting without logging in the value of this field will be blank.
 		/// </value>
-		[JsonProperty(PropertyName = "id")]
+		[JsonPropertyName("id")]
 		public string Id { get; set; }
 
 		/// <summary>
@@ -26,7 +25,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The participant ID.
 		/// </value>
-		[JsonProperty(PropertyName = "user_id")]
+		[JsonPropertyName("user_id")]
 		public string UserId { get; set; }
 
 		/// <summary>
@@ -35,7 +34,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The participant display name.
 		/// </value>
-		[JsonProperty(PropertyName = "user_name")]
+		[JsonPropertyName("user_name")]
 		public string UserName { get; set; }
 
 		/// <summary>
@@ -44,35 +43,34 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The type of device used by the participant to join the meeting.
 		/// </value>
-		[JsonProperty(PropertyName = "device")]
-		[JsonConverter(typeof(ParticipantDeviceConverter))]
+		[JsonPropertyName("device")]
 		public ParticipantDevice[] Devices { get; set; }
 
 		/// <summary>
-		/// Gets or sets the participant’s IP address.
+		/// Gets or sets the participant's IP address.
 		/// </summary>
 		/// <value>
-		/// The participant’s IP address.
+		/// The participant's IP address.
 		/// </value>
-		[JsonProperty(PropertyName = "ip_address")]
+		[JsonPropertyName("ip_address")]
 		public string IpAddress { get; set; }
 
 		/// <summary>
-		/// Gets or sets the participant’s location.
+		/// Gets or sets the participant's location.
 		/// </summary>
 		/// <value>
-		/// The participant’s location.
+		/// The participant's location.
 		/// </value>
-		[JsonProperty(PropertyName = "location")]
+		[JsonPropertyName("location")]
 		public string Location { get; set; }
 
 		/// <summary>
-		/// Gets or sets the participant’s network type.
+		/// Gets or sets the participant's network type.
 		/// </summary>
 		/// <value>
-		/// The participant’s network type.
+		/// The participant's network type.
 		/// </value>
-		[JsonProperty(PropertyName = "network_type")]
+		[JsonPropertyName("network_type")]
 		public ParticipantNetwork NetworkType { get; set; }
 
 		/// <summary>
@@ -81,7 +79,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The type of microphone that participant used during the meeting.
 		/// </value>
-		[JsonProperty(PropertyName = "microphone")]
+		[JsonPropertyName("microphone")]
 		public string Microphone { get; set; }
 
 		/// <summary>
@@ -90,23 +88,23 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The type of speaker participant used during the meeting.
 		/// </value>
-		[JsonProperty(PropertyName = "speaker")]
+		[JsonPropertyName("speaker")]
 		public string Speaker { get; set; }
 
 		/// <summary>
-		/// Gets or sets the data center where participant’s meeting data is stored.
+		/// Gets or sets the data center where participant's meeting data is stored.
 		/// </summary>
 		/// <value>
-		/// The data center where participant’s meeting data is stored.
+		/// The data center where participant's meeting data is stored.
 		/// </value>
-		[JsonProperty(PropertyName = "data_center")]
+		[JsonPropertyName("data_center")]
 		public string DataCenter { get; set; }
 
 		/// <summary>
 		/// Gets or sets the data center where participant's meeting data is stored.
 		/// This field includes a semicolon-separated list of HTTP Tunnel (HT), Cloud Room Connector (CRC), and Real-Time Web Gateway (RWG) location information.
 		/// </summary>
-		[JsonProperty(PropertyName = "full_data_center")]
+		[JsonPropertyName("full_data_center")]
 		public string DataCenterFullName { get; set; }
 
 		/// <summary>
@@ -115,7 +113,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The participant connection type.
 		/// </value>
-		[JsonProperty(PropertyName = "connection_type")]
+		[JsonPropertyName("connection_type")]
 		public string ConnectionType { get; set; }
 
 		/// <summary>
@@ -124,7 +122,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The time at which participant joined the meeting.
 		/// </value>
-		[JsonProperty(PropertyName = "join_time")]
+		[JsonPropertyName("join_time")]
 		public DateTime JoinTime { get; set; }
 
 		/// <summary>
@@ -133,7 +131,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The time at which a participant left the meeting. For live meetings this field will only be returned if a participant has left the ongoing meeting.
 		/// </value>
-		[JsonProperty(PropertyName = "leave_time", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("leave_time")]
 		public DateTime? LeaveTime { get; set; }
 
 		/// <summary>
@@ -142,7 +140,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Indicates whether or not a user selected to share an iPhone/iPad application during the screen-share.
 		/// </value>
-		[JsonProperty(PropertyName = "share_application")]
+		[JsonPropertyName("share_application")]
 		public bool ShareApplication { get; set; }
 
 		/// <summary>
@@ -151,7 +149,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Indicates whether or not a user selected to share their desktop during the screen-share.
 		/// </value>
-		[JsonProperty(PropertyName = "share_desktop")]
+		[JsonPropertyName("share_desktop")]
 		public bool ShareDesktop { get; set; }
 
 		/// <summary>
@@ -160,7 +158,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Indicates whether or not a user selected to share their white-board during the screen-share.
 		/// </value>
-		[JsonProperty(PropertyName = "share_whiteboard")]
+		[JsonPropertyName("share_whiteboard")]
 		public bool ShareWhiteboard { get; set; }
 
 		/// <summary>
@@ -169,52 +167,52 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Indicates whether or not recording was used during the meeting.
 		/// </value>
-		[JsonProperty(PropertyName = "recording")]
+		[JsonPropertyName("recording")]
 		public bool Recording { get; set; }
 
 		/// <summary>
-		/// Gets or sets the name of participant’s PC.
+		/// Gets or sets the name of participant's PC.
 		/// </summary>
 		/// <value>
-		/// The name of participant’s PC.
+		/// The name of participant's PC.
 		/// </value>
-		[JsonProperty(PropertyName = "pc_name")]
+		[JsonPropertyName("pc_name")]
 		public string PcName { get; set; }
 
 		/// <summary>
-		/// Gets or sets the participant’s PC domain.
+		/// Gets or sets the participant's PC domain.
 		/// </summary>
 		/// <value>
-		/// The participant’s PC domain.
+		/// The participant's PC domain.
 		/// </value>
-		[JsonProperty(PropertyName = "domain")]
+		[JsonPropertyName("domain")]
 		public string Domain { get; set; }
 
 		/// <summary>
-		/// Gets or sets the participant’s MAC address.
+		/// Gets or sets the participant's MAC address.
 		/// </summary>
 		/// <value>
-		/// The participant’s MAC address.
+		/// The participant's MAC address.
 		/// </value>
-		[JsonProperty(PropertyName = "mac_addr")]
+		[JsonPropertyName("mac_addr")]
 		public string MacAddress { get; set; }
 
 		/// <summary>
-		/// Gets or sets the participant’s hard disk ID.
+		/// Gets or sets the participant's hard disk ID.
 		/// </summary>
 		/// <value>
-		/// The participant’s hard disk ID.
+		/// The participant's hard disk ID.
 		/// </value>
-		[JsonProperty(PropertyName = "harddisk_id")]
+		[JsonPropertyName("harddisk_id")]
 		public string HardDiskId { get; set; }
 
 		/// <summary>
-		/// Gets or sets the participant’s Zoom Client version.
+		/// Gets or sets the participant's Zoom Client version.
 		/// </summary>
 		/// <value>
-		/// The participant’s Zoom Client version.
+		/// The participant's Zoom Client version.
 		/// </value>
-		[JsonProperty(PropertyName = "version")]
+		[JsonPropertyName("version")]
 		public string Version { get; set; }
 
 		/// <summary>
@@ -223,7 +221,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The Possible reasons for why participant left the meeting.
 		/// </value>
-		[JsonProperty(PropertyName = "leave_reason")]
+		[JsonPropertyName("leave_reason")]
 		public string LeaveReason { get; set; }
 
 		/// <summary>
@@ -232,7 +230,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The Email address of the participant.
 		/// </value>
-		[JsonProperty(PropertyName = "email")]
+		[JsonPropertyName("email")]
 		public string Email { get; set; }
 
 		/// <summary>
@@ -241,7 +239,7 @@ namespace ZoomNet.Models
 		/// <remarks>
 		/// This field does not return if the type query parameter is the live value.
 		/// </remarks>
-		[JsonProperty(PropertyName = "registrant_id")]
+		[JsonPropertyName("registrant_id")]
 		public string RegistrantId { get; set; }
 
 		/// <summary>
@@ -252,7 +250,7 @@ namespace ZoomNet.Models
 		/// on Dashboard setting is enabled in the Zoom Web Portal and the Show meeting quality
 		/// score and network alerts on Dashboard option is selected in Account Settings.
 		/// </remarks>
-		[JsonProperty(PropertyName = "audio_quality")]
+		[JsonPropertyName("audio_quality")]
 		public QualityType AudioQuality { get; set; }
 
 		/// <summary>
@@ -263,7 +261,7 @@ namespace ZoomNet.Models
 		/// on Dashboard setting is enabled in the Zoom Web Portal and the Show meeting quality
 		/// score and network alerts on Dashboard option is selected in Account Settings.
 		/// </remarks>
-		[JsonProperty(PropertyName = "video_quality")]
+		[JsonPropertyName("video_quality")]
 		public QualityType VideoQuality { get; set; }
 
 		/// <summary>
@@ -274,7 +272,7 @@ namespace ZoomNet.Models
 		/// on Dashboard setting is enabled in the Zoom Web Portal and the Show meeting quality
 		/// score and network alerts on Dashboard option is selected in Account Settings.
 		/// </remarks>
-		[JsonProperty(PropertyName = "screen_share_quality")]
+		[JsonPropertyName("screen_share_quality")]
 		public QualityType ScreenShareQuality { get; set; }
 
 		/// <summary>
@@ -283,7 +281,7 @@ namespace ZoomNet.Models
 		/// <remarks>
 		/// This value can be numbers or characters, up to a maximum length of 15 characters.
 		/// </remarks>
-		[JsonProperty(PropertyName = "customer_key")]
+		[JsonPropertyName("customer_key")]
 		public string CustomerKey { get; set; }
 
 		/// <summary>
@@ -292,7 +290,7 @@ namespace ZoomNet.Models
 		/// <remarks>
 		/// The API only returns this response when the participant joins a meeting via SIP.
 		/// </remarks>
-		[JsonProperty(PropertyName = "sip_uri")]
+		[JsonPropertyName("sip_uri")]
 		public string SipUri { get; set; }
 
 		/// <summary>
@@ -301,13 +299,13 @@ namespace ZoomNet.Models
 		/// <remarks>
 		/// The API only returns this response when the participant joins a meeting via SIP.
 		/// </remarks>
-		[JsonProperty(PropertyName = "from_sip_uri")]
+		[JsonPropertyName("from_sip_uri")]
 		public string FromSipUri { get; set; }
 
 		/// <summary>
 		/// Gets or sets the participant's role.
 		/// </summary>
-		[JsonProperty(PropertyName = "role")]
+		[JsonPropertyName("role")]
 		public string Role { get; set; }
 	}
 }

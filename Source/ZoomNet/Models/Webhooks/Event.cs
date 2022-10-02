@@ -1,6 +1,6 @@
-using Newtonsoft.Json;
 using System;
-using ZoomNet.Utilities;
+using System.Text.Json.Serialization;
+using ZoomNet.Json;
 
 namespace ZoomNet.Models.Webhooks
 {
@@ -23,7 +23,7 @@ namespace ZoomNet.Models.Webhooks
 		/// can determine the latency in webhook delivery by calculating the difference
 		/// between the delivery timestamp and the value of the event_ts parameter.
 		/// </remarks>
-		[JsonProperty("timestamp", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("timestamp")]
 		[JsonConverter(typeof(EpochConverter))]
 		public DateTime Timestamp { get; set; }
 	}

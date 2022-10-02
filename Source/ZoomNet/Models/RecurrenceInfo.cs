@@ -1,6 +1,5 @@
-using Newtonsoft.Json;
 using System;
-using ZoomNet.Utilities;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -12,7 +11,7 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the recurrence type.
 		/// </summary>
-		[JsonProperty(PropertyName = "type", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("type")]
 		public RecurrenceType Type { get; set; }
 
 		/// <summary>
@@ -21,48 +20,46 @@ namespace ZoomNet.Models
 		/// For a weekly meeting, max of 12 weeks.
 		/// For a monthly meeting, max of 3 months.
 		/// </summary>
-		[JsonProperty(PropertyName = "repeat_interval", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("repeat_interval")]
 		public int? RepeatInterval { get; set; }
 
 		/// <summary>
 		/// Gets or sets the days of the week the meeting should repeat, multiple values separated by comma.
 		/// </summary>
-		[JsonProperty(PropertyName = "weekly_days", NullValueHandling = NullValueHandling.Ignore)]
-		[JsonConverter(typeof(DaysOfWeekConverter))]
+		[JsonPropertyName("weekly_days")]
 		public DayOfWeek[] WeeklyDays { get; set; }
 
 		/// <summary>
 		/// Gets or sets the day of the month for the meeting to be scheduled.
 		/// The value range is from 1 to 31.
 		/// </summary>
-		[JsonProperty(PropertyName = "monthly_day", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("monthly_day")]
 		public int? MonthlyDay { get; set; }
 
 		/// <summary>
 		/// Gets or sets the week for which the meeting should recur each month.
 		/// </summary>
-		[JsonProperty(PropertyName = "monthly_week", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("monthly_week")]
 		public int? MonthlyWeek { get; set; }
 
 		/// <summary>
 		/// Gets or sets the day for which the meeting should recur each month.
 		/// </summary>
-		[JsonProperty(PropertyName = "monthly_week_day", NullValueHandling = NullValueHandling.Ignore)]
-		[JsonConverter(typeof(DaysOfWeekConverter))]
+		[JsonPropertyName("monthly_week_day")]
 		public DayOfWeek? MonthlyWeekDay { get; set; }
 
 		/// <summary>
 		/// Gets or sets the select how many times the meeting will occur before it is canceled.
 		/// Cannot be used with "end_date_time".
 		/// </summary>
-		[JsonProperty(PropertyName = "end_times", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("end_times")]
 		public int? EndTimes { get; set; }
 
 		/// <summary>
 		/// Gets or sets the date the meeting will canceled.
 		/// Cannot be used with "end_times".
 		/// </summary>
-		[JsonProperty(PropertyName = "end_date_time", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("end_date_time")]
 		public DateTime? EndDateTime { get; set; }
 	}
 }

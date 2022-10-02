@@ -1,13 +1,10 @@
-using Newtonsoft.Json;
 using System.Runtime.Serialization;
-using ZoomNet.Utilities;
 
 namespace ZoomNet.Models
 {
 	/// <summary>
 	/// Enumeration to indicate the type of device a participant used to join a meeting.
 	/// </summary>
-	[JsonConverter(typeof(ParticipantDeviceConverter))]
 	public enum ParticipantDevice
 	{
 		/// <summary>
@@ -50,6 +47,12 @@ namespace ZoomNet.Models
 		/// The participant joined via VoIP using an Android device.
 		/// </summary>
 		[EnumMember(Value = "Android")]
-		Android
+		Android,
+
+		/// <summary>
+		/// The participant joined via the web.
+		/// </summary>
+		[EnumMember(Value = "Web")]
+		Web
 	}
 }

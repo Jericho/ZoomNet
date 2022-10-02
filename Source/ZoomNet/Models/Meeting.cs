@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -14,7 +14,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The unique id.
 		/// </value>
-		[JsonProperty("uuid", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("uuid")]
 		public string Uuid { get; set; }
 
 		/// <summary>
@@ -23,7 +23,13 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The id.
 		/// </value>
-		[JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("id")]
+
+		// This allows us to overcome the fact that "id" is sometimes a string and sometimes a number
+		// See: https://devforum.zoom.us/t/the-data-type-of-meetingid-is-inconsistent-in-webhook-documentation/70090
+		// Also, see: https://github.com/Jericho/ZoomNet/issues/228
+		[JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
+
 		public long Id { get; set; }
 
 		/// <summary>
@@ -32,7 +38,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The user id.
 		/// </value>
-		[JsonProperty("host_id", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("host_id")]
 		public string HostId { get; set; }
 
 		/// <summary>
@@ -41,14 +47,14 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The topic.
 		/// </value>
-		[JsonProperty("topic", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("topic")]
 		public string Topic { get; set; }
 
 		/// <summary>
 		/// Gets or sets the meeting type.
 		/// </summary>
 		/// <value>The meeting type.</value>
-		[JsonProperty(PropertyName = "type", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("type")]
 		public MeetingType Type { get; set; }
 
 		/// <summary>
@@ -57,35 +63,35 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The status.
 		/// </value>
-		[JsonProperty("status", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("status")]
 		public MeetingStatus? Status { get; set; }
 
 		/// <summary>
 		/// Gets or sets the meeting description.
 		/// </summary>
 		/// <value>Meeting description.</value>
-		[JsonProperty(PropertyName = "agenda", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("agenda")]
 		public string Agenda { get; set; }
 
 		/// <summary>
 		/// Gets or sets the date and time when the meeting was created.
 		/// </summary>
 		/// <value>The meeting created time.</value>
-		[JsonProperty(PropertyName = "created_at", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("created_at")]
 		public DateTime CreatedOn { get; set; }
 
 		/// <summary>
 		/// Gets or sets the URL for the host to start the meeting.
 		/// </summary>
 		/// <value>The start URL.</value>
-		[JsonProperty(PropertyName = "start_url", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("start_url")]
 		public string StartUrl { get; set; }
 
 		/// <summary>
 		/// Gets or sets the URL to join the meeting.
 		/// </summary>
 		/// <value>The join URL.</value>
-		[JsonProperty(PropertyName = "join_url", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("join_url")]
 		public string JoinUrl { get; set; }
 
 		/// <summary>
@@ -94,7 +100,7 @@ namespace ZoomNet.Models
 		/// Max of 10 characters.
 		/// </summary>
 		/// <value>Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</value>
-		[JsonProperty(PropertyName = "password", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("password")]
 		public string Password { get; set; }
 
 		/// <summary>
@@ -103,7 +109,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The h.323 password.
 		/// </value>
-		[JsonProperty("h323_password", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("h323_password")]
 		public string H323Password { get; set; }
 
 		/// <summary>
@@ -112,13 +118,13 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The pstn password.
 		/// </value>
-		[JsonProperty("pstn_password", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("pstn_password")]
 		public string PstnPassword { get; set; }
 
 		/// <summary>
 		/// Gets or Sets the meeting settings.
 		/// </summary>
-		[JsonProperty(PropertyName = "settings", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("settings")]
 		public MeetingSettings Settings { get; set; }
 	}
 }

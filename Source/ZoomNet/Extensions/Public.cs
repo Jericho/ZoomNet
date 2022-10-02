@@ -1,5 +1,8 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Security;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -16,12 +19,38 @@ namespace ZoomNet
 		/// <summary>
 		/// Returns information about the current user.
 		/// </summary>
-		/// <param name="usersResource">The user resource.</param>
+		/// <param name="usersResource">The users resource.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The current user.</returns>
 		public static Task<User> GetCurrentAsync(this IUsers usersResource, CancellationToken cancellationToken)
 		{
 			return usersResource.GetAsync("me", cancellationToken);
+		}
+
+		/// <summary>
+		/// Retrieve the permissions that have been granted to the current user.
+		/// </summary>
+		/// <param name="usersResource">The users resource.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of strings.
+		/// </returns>
+		public static Task<string[]> GetCurrentPermissionsAsync(this IUsers usersResource, CancellationToken cancellationToken = default)
+		{
+			return usersResource.GetPermissionsAsync("me", cancellationToken);
+		}
+
+		/// <summary>
+		/// Retrieve the current user's settings.
+		/// </summary>
+		/// <param name="usersResource">The users resource.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="UserSettings">settings</see>.
+		/// </returns>
+		public static Task<UserSettings> GetCurrentSettingsAsync(this IUsers usersResource, CancellationToken cancellationToken = default)
+		{
+			return usersResource.GetSettingsAsync("me", cancellationToken);
 		}
 
 		/// <summary>
@@ -74,14 +103,16 @@ namespace ZoomNet
 		/// <param name="chatResource">The chat resource.</param>
 		/// <param name="recipientEmail">The email address of the contact to whom you would like to send the message.</param>
 		/// <param name="message">The message.</param>
+		/// <param name="replyMessageId">The reply message's ID. </param>
+		/// <param name="fileIds">A list of the file IDs to send. This field only accepts a maximum of six file IDs.</param>
 		/// <param name="mentions">Mentions.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The message Id.
 		/// </returns>
-		public static Task<string> SendMessageToContactAsync(this IChat chatResource, string recipientEmail, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
+		public static Task<string> SendMessageToContactAsync(this IChat chatResource, string recipientEmail, string message, string replyMessageId = null, IEnumerable<string> fileIds = null, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
 		{
-			return chatResource.SendMessageToContactAsync("me", recipientEmail, message, mentions, cancellationToken);
+			return chatResource.SendMessageToContactAsync("me", recipientEmail, message, replyMessageId, fileIds, mentions, cancellationToken);
 		}
 
 		/// <summary>
@@ -90,14 +121,16 @@ namespace ZoomNet
 		/// <param name="chatResource">The chat resource.</param>
 		/// <param name="channelId">The channel Id.</param>
 		/// <param name="message">The message.</param>
+		/// <param name="replyMessageId">The reply message's ID. </param>
+		/// <param name="fileIds">A list of the file IDs to send. This field only accepts a maximum of six file IDs.</param>
 		/// <param name="mentions">Mentions.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The message Id.
 		/// </returns>
-		public static Task<string> SendMessageToChannelAsync(this IChat chatResource, string channelId, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
+		public static Task<string> SendMessageToChannelAsync(this IChat chatResource, string channelId, string message, string replyMessageId = null, IEnumerable<string> fileIds = null, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
 		{
-			return chatResource.SendMessageToChannelAsync("me", channelId, message, mentions, cancellationToken);
+			return chatResource.SendMessageToChannelAsync("me", channelId, message, replyMessageId, fileIds, mentions, cancellationToken);
 		}
 
 		/// <summary>
@@ -204,7 +237,7 @@ namespace ZoomNet
 		/// <param name="parser">The webhook parser.</param>
 		/// <param name="stream">The stream.</param>
 		/// <returns>An <see cref="Event" />.</returns>
-		public static async Task<Event> ParseEventWebhookAsync(IWebhookParser parser, Stream stream)
+		public static async Task<Event> ParseEventWebhookAsync(this IWebhookParser parser, Stream stream)
 		{
 			string requestBody;
 			using (var streamReader = new StreamReader(stream))
@@ -212,6 +245,55 @@ namespace ZoomNet
 				requestBody = await streamReader.ReadToEndAsync().ConfigureAwait(false);
 			}
 
+			return parser.ParseEventWebhook(requestBody);
+		}
+
+		/// <summary>
+		/// Verifies the signature and parses the event webhook asynchronously.
+		/// </summary>
+		/// <param name="parser">The webhook parser.</param>
+		/// <param name="stream">The stream.</param>
+		/// <param name="secretToken">Your secret token. You can obtain this value in the 'Add Feature' configuration section of you Marketplace Zoom app.</param>
+		/// <param name="signature">The signature.</param>
+		/// <param name="timestamp">The timestamp.</param>
+		/// <returns>An <see cref="Event" />.</returns>
+		public static async Task<Event> VerifyAndParseEventWebhookAsync(this IWebhookParser parser, Stream stream, string secretToken, string signature, string timestamp)
+		{
+			string requestBody;
+			using (var streamReader = new StreamReader(stream))
+			{
+				requestBody = await streamReader.ReadToEndAsync().ConfigureAwait(false);
+			}
+
+			return parser.VerifyAndParseEventWebhook(requestBody, secretToken, signature, timestamp);
+		}
+
+		/// <summary>
+		/// Verifies the signature and parses the event webhook asynchronously.
+		/// </summary>
+		/// <param name="parser">The webhook parser.</param>
+		/// <param name="requestBody">The content submitted by Zoom's webhook.</param>
+		/// <param name="secretToken">Your secret token. You can obtain this value in the 'Add Feature' configuration section of you Marketplace Zoom app.</param>
+		/// <param name="signature">The signature.</param>
+		/// <param name="timestamp">The timestamp.</param>
+		/// <returns>An <see cref="Event" />.</returns>
+		public static Event VerifyAndParseEventWebhook(this IWebhookParser parser, string requestBody, string secretToken, string signature, string timestamp)
+		{
+			// Construct the message
+			var message = $"v0:{timestamp}:{requestBody}";
+
+			// Hash the message
+			var hmac = new HMACSHA256(Encoding.ASCII.GetBytes(secretToken));
+			var hashAsBytes = hmac.ComputeHash(Encoding.ASCII.GetBytes(message));
+			var hashAsHex = hashAsBytes.ToHexString();
+
+			// Create the signature
+			var calculatedSignature = $"v0={hashAsHex}";
+
+			// Compare the signatures
+			if (calculatedSignature != signature) throw new SecurityException("Webhook signature validation failed.");
+
+			// Parse the webhook event
 			return parser.ParseEventWebhook(requestBody);
 		}
 
@@ -226,7 +308,22 @@ namespace ZoomNet
 		/// </returns>
 		public static Task<Stream> DownloadFileAsync(this ICloudRecordings cloudRecordingsResource, RecordingFile recordingFile, CancellationToken cancellationToken = default)
 		{
-			return cloudRecordingsResource.DownloadFileAsync(recordingFile.DownloadUrl);
+			return cloudRecordingsResource.DownloadFileAsync(recordingFile.DownloadUrl, cancellationToken);
+		}
+
+		/// <summary>
+		/// Invite a participant to join a live meeting.
+		/// </summary>
+		/// <param name="meetingsResource">The meetingds resource.</param>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="emailAddress">The email address of the person you want to invite.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public static Task InviteParticipantAsync(this IMeetings meetingsResource, long meetingId, string emailAddress, CancellationToken cancellationToken = default)
+		{
+			return meetingsResource.InviteParticipantsAsync(meetingId, new[] { emailAddress }, cancellationToken);
 		}
 	}
 }

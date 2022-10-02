@@ -1,11 +1,12 @@
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using ZoomNet.Models;
 
 namespace ZoomNet.IntegrationTests
 {
 	public interface IIntegrationTest
 	{
-		Task RunAsync(string userId, IZoomClient client, TextWriter log, CancellationToken cancellationToken);
+		Task RunAsync(User myUser, string[] myPermissions, IZoomClient client, TextWriter log, CancellationToken cancellationToken);
 	}
 }

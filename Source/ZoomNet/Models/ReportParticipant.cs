@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -14,7 +14,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The participant ID.
 		/// </value>
-		[JsonProperty(PropertyName = "user_id")]
+		[JsonPropertyName("user_id")]
 		public string UserId { get; set; }
 
 		/// <summary>
@@ -23,7 +23,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The time at which participant joined the meeting.
 		/// </value>
-		[JsonProperty(PropertyName = "join_time")]
+		[JsonPropertyName("join_time")]
 		public DateTime JoinTime { get; set; }
 
 		/// <summary>
@@ -32,7 +32,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The time at which a participant left the meeting. For live meetings this field will only be returned if a participant has left the ongoing meeting.
 		/// </value>
-		[JsonProperty(PropertyName = "leave_time", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("leave_time")]
 		public DateTime? LeaveTime { get; set; }
 
 		/// <summary>
@@ -41,7 +41,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Indicates how long a participant has participated.
 		/// </value>
-		[JsonProperty(PropertyName = "duration", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("duration")]
 		public int? Duration { get; set; }
 
 		/// <summary>
@@ -50,7 +50,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The CustomerKey of the participant.  This is another identifier with a max length of 15 characters.
 		/// </value>
-		[JsonProperty(PropertyName = "customer_key")]
+		[JsonPropertyName("customer_key")]
 		public string CustomerKey { get; set; }
 
 		/// <summary>
@@ -59,7 +59,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// Indicates whether or not failover occurred during the meeting.
 		/// </value>
-		[JsonProperty(PropertyName = "failover")]
+		[JsonPropertyName("failover")]
 		public bool Failover { get; set; }
 	}
 }

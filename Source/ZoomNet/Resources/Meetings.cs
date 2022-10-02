@@ -1,13 +1,11 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
-using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
@@ -31,19 +29,9 @@ namespace ZoomNet.Resources
 			_client = client;
 		}
 
-		/// <summary>
-		/// Retrieve all meetings of the specified type for a user.
-		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="type">The type of meetings. Allowed values: Scheduled, Live, Upcoming.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="page">The current page number of returned records.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Meeting" />.
-		/// </returns>
+		/// <inheritdoc/>
 		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
-		public Task<PaginatedResponse<Meeting>> GetAllAsync(string userId, MeetingListType type = MeetingListType.Scheduled, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponse<MeetingSummary>> GetAllAsync(string userId, MeetingListType type = MeetingListType.Scheduled, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -52,25 +40,15 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"users/{userId}/meetings")
-				.WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
+				.WithArgument("type", type.ToEnumString())
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("page_number", page)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponse<Meeting>("meetings", new MeetingConverter());
+				.AsPaginatedResponse<MeetingSummary>("meetings");
 		}
 
-		/// <summary>
-		/// Retrieve all meetings of the specified type for a user.
-		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="type">The type of meetings. Allowed values: Scheduled, Live, Upcoming.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Meeting" />.
-		/// </returns>
-		public Task<PaginatedResponseWithToken<Meeting>> GetAllAsync(string userId, MeetingListType type = MeetingListType.Scheduled, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<MeetingSummary>> GetAllAsync(string userId, MeetingListType type = MeetingListType.Scheduled, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -79,11 +57,11 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"users/{userId}/meetings")
-				.WithArgument("type", JToken.Parse(JsonConvert.SerializeObject(type)).ToString())
+				.WithArgument("type", type.ToEnumString())
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<Meeting>("meetings", new MeetingConverter());
+				.AsPaginatedResponseWithToken<MeetingSummary>("meetings");
 		}
 
 		/// <summary>
@@ -95,9 +73,10 @@ namespace ZoomNet.Resources
 		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
 		/// <param name="settings">Meeting settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
+		/// <param name="templateId">Template Identifer.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// The new meeting.
+		/// The new <see cref="Meeting"/>.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the meeting.</exception>
 		public Task<InstantMeeting> CreateInstantMeetingAsync(
@@ -107,17 +86,19 @@ namespace ZoomNet.Resources
 			string password = null,
 			MeetingSettings settings = null,
 			IDictionary<string, string> trackingFields = null,
+			string templateId = null,
 			CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
-				{ "type", 1 }
+				{ "type", 1 },
+				{ "topic", topic },
+				{ "password", password },
+				{ "agenda", agenda },
+				{ "settings", settings },
+				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }).ToArray() },
+				{ "template_id", templateId }
 			};
-			data.AddPropertyIfValue("topic", topic);
-			data.AddPropertyIfValue("password", password);
-			data.AddPropertyIfValue("agenda", agenda);
-			data.AddPropertyIfValue("settings", settings);
-			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
 
 			return _client
 				.PostAsync($"users/{userId}/meetings")
@@ -138,9 +119,10 @@ namespace ZoomNet.Resources
 		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
 		/// <param name="settings">Meeting settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
+		/// <param name="templateId">Template Identifer.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// The new meeting.
+		/// The new <see cref="Meeting"/>.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the meeting.</exception>
 		public Task<ScheduledMeeting> CreateScheduledMeetingAsync(
@@ -153,20 +135,22 @@ namespace ZoomNet.Resources
 			string password = null,
 			MeetingSettings settings = null,
 			IDictionary<string, string> trackingFields = null,
+			string templateId = null,
 			CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
-				{ "type", 2 }
+				{ "type", 2 },
+				{ "topic", topic },
+				{ "password", password },
+				{ "agenda", agenda },
+				{ "start_time", start.ToZoomFormat(timeZone) },
+				{ "duration", duration },
+				{ "timezone", timeZone },
+				{ "settings", settings },
+				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }).ToArray() },
+				{ "template_id", templateId }
 			};
-			data.AddPropertyIfValue("topic", topic);
-			data.AddPropertyIfValue("password", password);
-			data.AddPropertyIfValue("agenda", agenda);
-			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
-			data.AddPropertyIfValue("duration", duration);
-			data.AddPropertyIfEnumValue("timezone", timeZone);
-			data.AddPropertyIfValue("settings", settings);
-			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
 
 			return _client
 				.PostAsync($"users/{userId}/meetings")
@@ -188,9 +172,10 @@ namespace ZoomNet.Resources
 		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
 		/// <param name="settings">Meeting settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
+		/// <param name="templateId">Template Identifer.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// The new meeting.
+		/// The new <see cref="Meeting"/>.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the meeting.</exception>
 		public Task<RecurringMeeting> CreateRecurringMeetingAsync(
@@ -204,23 +189,23 @@ namespace ZoomNet.Resources
 			string password = null,
 			MeetingSettings settings = null,
 			IDictionary<string, string> trackingFields = null,
+			string templateId = null,
 			CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
-				// 3 = Recurring with no fixed time
-				// 8 = Recurring with fixed time
-				{ "type", start.HasValue ? 8 : 3 }
+				{ "type", recurrence == null ? MeetingType.RecurringNoFixedTime : MeetingType.RecurringFixedTime },
+				{ "topic", topic },
+				{ "password", password },
+				{ "agenda", agenda },
+				{ "start_time", start.ToZoomFormat(timeZone) },
+				{ "duration", duration },
+				{ "recurrence", recurrence },
+				{ "timezone", timeZone },
+				{ "settings", settings },
+				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }).ToArray() },
+				{ "template_id", templateId }
 			};
-			data.AddPropertyIfValue("topic", topic);
-			data.AddPropertyIfValue("password", password);
-			data.AddPropertyIfValue("agenda", agenda);
-			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
-			data.AddPropertyIfValue("duration", duration);
-			data.AddPropertyIfValue("recurrence", recurrence);
-			data.AddPropertyIfEnumValue("timezone", timeZone);
-			data.AddPropertyIfValue("settings", settings);
-			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
 
 			return _client
 				.PostAsync($"users/{userId}/meetings")
@@ -244,7 +229,7 @@ namespace ZoomNet.Resources
 				.GetAsync($"meetings/{meetingId}")
 				.WithArgument("occurrence_id", occurrenceId)
 				.WithCancellationToken(cancellationToken)
-				.AsObject<Meeting>(jsonConverter: new MeetingConverter());
+				.AsObject<Meeting>();
 		}
 
 		/// <summary>
@@ -263,12 +248,14 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task UpdateMeetingOccurrenceAsync(long meetingId, string occurrenceId, string agenda = null, DateTime? start = null, int? duration = null, TimeZones? timeZone = null, MeetingSettings settings = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("agenda", agenda);
-			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
-			data.AddPropertyIfValue("duration", duration);
-			data.AddPropertyIfEnumValue("timezone", timeZone);
-			data.AddPropertyIfValue("settings", settings);
+			var data = new JsonObject
+			{
+				{ "agenda", agenda },
+				{ "start_time", start.ToZoomFormat(timeZone) },
+				{ "duration", duration },
+				{ "timezone", timeZone },
+				{ "settings", settings }
+			};
 
 			return _client
 				.PatchAsync($"meetings/{meetingId}")
@@ -297,16 +284,18 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task UpdateScheduledMeetingAsync(long meetingId, string userId = null, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, TimeZones? timeZone = null, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("schedule_for", userId);
-			data.AddPropertyIfValue("topic", topic);
-			data.AddPropertyIfValue("password", password);
-			data.AddPropertyIfValue("agenda", agenda);
-			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
-			data.AddPropertyIfValue("duration", duration);
-			data.AddPropertyIfEnumValue("timezone", timeZone);
-			data.AddPropertyIfValue("settings", settings);
-			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
+			var data = new JsonObject
+			{
+				{ "schedule_for", userId },
+				{ "topic", topic },
+				{ "password", password },
+				{ "agenda", agenda },
+				{ "start_time", start.ToZoomFormat(timeZone) },
+				{ "duration", duration },
+				{ "timezone", timeZone },
+				{ "settings", settings },
+				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }).ToArray() }
+			};
 
 			return _client
 				.PatchAsync($"meetings/{meetingId}")
@@ -335,17 +324,19 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task UpdateRecurringMeetingAsync(long meetingId, string userId = null, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, TimeZones? timeZone = null, RecurrenceInfo recurrence = null, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("schedule_for", userId);
-			data.AddPropertyIfValue("topic", topic);
-			data.AddPropertyIfValue("password", password);
-			data.AddPropertyIfValue("agenda", agenda);
-			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
-			data.AddPropertyIfValue("duration", duration);
-			data.AddPropertyIfValue("recurrence", recurrence);
-			data.AddPropertyIfEnumValue("timezone", timeZone);
-			data.AddPropertyIfValue("settings", settings);
-			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
+			var data = new JsonObject
+			{
+				{ "schedule_for", userId },
+				{ "topic", topic },
+				{ "password", password },
+				{ "agenda", agenda },
+				{ "start_time", start.ToZoomFormat(timeZone) },
+				{ "duration", duration },
+				{ "recurrence", recurrence },
+				{ "timezone", timeZone },
+				{ "settings", settings },
+				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }).ToArray() }
+			};
 
 			return _client
 				.PatchAsync($"meetings/{meetingId}")
@@ -386,7 +377,7 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task EndAsync(long meetingId, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
 				{ "action", "end" }
 			};
@@ -420,7 +411,7 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"meetings/{meetingId}/registrants")
-				.WithArgument("status", JToken.Parse(JsonConvert.SerializeObject(status)).ToString())
+				.WithArgument("status", status.ToEnumString())
 				.WithArgument("occurrence_id", occurrenceId)
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("page_number", page)
@@ -449,7 +440,7 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"meetings/{meetingId}/registrants")
-				.WithArgument("status", JToken.Parse(JsonConvert.SerializeObject(status)).ToString())
+				.WithArgument("status", status.ToEnumString())
 				.WithArgument("occurrence_id", occurrenceId)
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
@@ -462,24 +453,94 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="email">A valid email address.</param>
-		/// <param name="firstName">User's first name.</param>
-		/// <param name="lastName">User's last name.</param>
+		/// <param name="firstName">Registrant's first name.</param>
+		/// <param name="lastName">Registrant's last name.</param>
+		/// <param name="address">Registrant's address.</param>
+		/// <param name="city">Registrant's city.</param>
+		/// <param name="country">Registrant's country.</param>
+		/// <param name="postalCode">Registrant's zip or postal code.</param>
+		/// <param name="stateOrProvince">Registrant's state or province.</param>
+		/// <param name="phoneNumber">Registrant's phone number.</param>
+		/// <param name="industry">Registrant's industry.</param>
+		/// <param name="organization">Registrant's organization.</param>
+		/// <param name="jobTitle">Registrant's job title.</param>
+		/// <param name="timeFrame">This field can be used to gauge interest of attendees towards buying your product or service.</param>
+		/// <param name="role">Registrant's role in purchase decision.</param>
+		/// <param name="employees">Number of employees.</param>
+		/// <param name="comments">A field that allows registrant to provide any questions or comments that they might have.</param>
+		/// <param name="questionAnswers">Answers to the custom registration questions.</param>
+		/// <param name="language">Registrant's language preference for confirmation emails.</param>
+		/// <param name="autoApprove">Indicates if the registrant should be automatically approved.</param>
 		/// <param name="occurrenceId">The meeting occurrence id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// A <see cref="Registrant" />.
+		/// A <see cref="RegistrantInfo" />.
 		/// </returns>
-		public Task<Registrant> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string occurrenceId = null, CancellationToken cancellationToken = default)
+		public Task<RegistrantInfo> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string address = null, string city = null, Country? country = null, string postalCode = null, string stateOrProvince = null, string phoneNumber = null, string industry = null, string organization = null, string jobTitle = null, PurchasingTimeFrame? timeFrame = null, RoleInPurchaseProcess? role = null, NumberOfEmployees? employees = null, string comments = null, IEnumerable<RegistrationAnswer> questionAnswers = null, Language? language = null, bool autoApprove = false, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("email", email);
-			data.AddPropertyIfValue("first_name", firstName);
-			data.AddPropertyIfValue("last_name", lastName);
+			var data = new JsonObject
+			{
+				{ "email", email },
+				{ "first_name", firstName },
+				{ "last_name", lastName },
+				{ "address", address },
+				{ "city", city },
+				{ "country", country },
+				{ "zip", postalCode },
+				{ "state", stateOrProvince },
+				{ "phone", phoneNumber },
+				{ "industry", industry },
+				{ "org", organization },
+				{ "job_title", jobTitle },
+				{ "purchasing_time_frame", timeFrame },
+				{ "role_in_purchase_process", role },
+				{ "no_of_employees", employees },
+				{ "custom_questions", questionAnswers?.ToArray() },
+				{ "language", language },
+				{ "comments", comments },
+				{ "auto_approve", autoApprove }
+			};
 
 			return _client
 				.PostAsync($"meetings/{meetingId}/registrants")
-				.WithArgument("occurence_id", occurrenceId)
+				.WithArgument("occurence_ids", occurrenceId)
 				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<RegistrantInfo>();
+		}
+
+		/// <summary>
+		/// Delete a meeting registrant.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="registrantId">The registrant id.</param>
+		/// <param name="occurrenceId">The meeting occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task DeleteRegistrantAsync(long meetingId, string registrantId, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"meetings/{meetingId}/registrants/{registrantId}")
+				.WithArgument("occurence_id", occurrenceId)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
+		/// Retrieve a meeting registrant.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="registrantId">The registrant unique identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="Registrant"/>.
+		/// </returns>
+		public Task<Registrant> GetRegistrantAsync(long meetingId, string registrantId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"meetings/{meetingId}/registrants/{registrantId}")
 				.WithCancellationToken(cancellationToken)
 				.AsObject<Registrant>();
 		}
@@ -603,13 +664,13 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// A <see cref="Poll"/>.
 		/// </returns>
-		public Task<Poll> CreatePoll(long meetingId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default)
+		public Task<Poll> CreatePollAsync(long meetingId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
-				{ "title", title }
+				{ "title", title },
+				{ "questions", questions?.ToArray() }
 			};
-			data.AddPropertyIfValue("questions", questions);
 
 			return _client
 				.PostAsync($"meetings/{meetingId}/polls")
@@ -648,9 +709,11 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task UpdatePollAsync(long meetingId, long pollId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("title", title);
-			data.AddPropertyIfValue("questions", questions);
+			var data = new JsonObject
+			{
+				{ "title", title },
+				{ "questions", questions?.ToArray() }
+			};
 
 			return _client
 				.PutAsync($"meetings/{meetingId}/polls/{pollId}")
@@ -677,6 +740,74 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
+		/// Retrieve the questions that are to be answered by users while registering for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="PollQuestion"/>.
+		/// </returns>
+		public async Task<RegistrationQuestionsForMeeting> GetRegistrationQuestionsAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			var response = await _client
+				.GetAsync($"meetings/{meetingId}/registrants/questions")
+				.WithCancellationToken(cancellationToken)
+				.AsRawJsonDocument()
+				.ConfigureAwait(false);
+
+			var allFields = response.RootElement.GetProperty("questions").EnumerateArray()
+				.Select(item => (Field: item.GetPropertyValue<string>("field_name").ToEnum<RegistrationField>(), IsRequired: item.GetPropertyValue<bool>("required")));
+
+			var requiredFields = allFields.Where(f => f.IsRequired).Select(f => f.Field).ToArray();
+			var optionalFields = allFields.Where(f => !f.IsRequired).Select(f => f.Field).ToArray();
+
+			var registrationQuestions = new RegistrationQuestionsForMeeting
+			{
+				RequiredFields = requiredFields,
+				OptionalFields = optionalFields,
+				Questions = response.RootElement.GetProperty("custom_questions", false)?.ToObject<RegistrationCustomQuestionForMeeting[]>() ?? Array.Empty<RegistrationCustomQuestionForMeeting>()
+			};
+			return registrationQuestions;
+		}
+
+		/// <summary>
+		/// Update the questions that are to be answered by users while registering for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="requiredFields">List of fields that must be answer when registering for the meeting.</param>
+		/// <param name="optionalFields">List of fields that can be answer when registering for the meeting.</param>
+		/// <param name="customQuestions">Additional questions to be answered.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task UpdateRegistrationQuestionsAsync(long meetingId, IEnumerable<RegistrationField> requiredFields, IEnumerable<RegistrationField> optionalFields, IEnumerable<RegistrationCustomQuestionForMeeting> customQuestions, CancellationToken cancellationToken = default)
+		{
+			var required = (requiredFields ?? Enumerable.Empty<RegistrationField>())
+				.GroupBy(f => f).Select(grp => grp.First()); // Remove duplicates
+
+			var optional = (optionalFields ?? Enumerable.Empty<RegistrationField>())
+				.Except(required) // Remove 'optional' fields that are on the 'required' enumeration
+				.GroupBy(f => f).Select(grp => grp.First()); // Remove duplicates
+
+			var standardFields = required.Select(f => new JsonObject { { "field_name", f.ToEnumString() }, { "required", true } })
+				.Union(optional.Select(f => new JsonObject { { "field_name", f.ToEnumString() }, { "required", false } }))
+				.ToArray();
+
+			var data = new JsonObject
+			{
+				{ "questions", standardFields },
+				{ "custom_questions", customQuestions?.ToArray() }
+			};
+
+			return _client
+				.PatchAsync($"meetings/{meetingId}/registrants/questions")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
 		/// Get the meeting invite note that was sent for a specific meeting.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
@@ -692,20 +823,10 @@ namespace ZoomNet.Resources
 				.AsObject<string>("invitation");
 		}
 
-		/// <summary>
-		/// Update a meeting’s live stream information.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="streamUrl">Streaming URL.</param>
-		/// <param name="streamKey">Stream name and key.</param>
-		/// <param name="pageUrl">The live stream page URL.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task UpdateLiveStreamAsync(long meetingId, string streamUrl, string streamKey, string pageUrl, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
 				{ "stream_url", streamUrl },
 				{ "stream_key", streamKey },
@@ -719,28 +840,14 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Start a meeting’s live stream.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="displaySpeakerName">Display the name of the active speaker during a live stream.</param>
-		/// <param name="speakerName">The name of the speaker.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task StartLiveStreamAsync(long meetingId, bool displaySpeakerName, string speakerName, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
 				{ "action", "start" },
-				{
-					"settings", new JObject()
-					{
-						{ "active_speaker_name", displaySpeakerName },
-						{ "display_name", speakerName }
-					}
-				}
+				{ "settings/active_speaker_name", displaySpeakerName },
+				{ "settings/display_name", speakerName }
 			};
 
 			return _client
@@ -750,17 +857,10 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Stop a meeting’s live stream.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task StopLiveStreamAsync(long meetingId, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
 				{ "action", "stop" }
 			};
@@ -772,11 +872,169 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
+		/// <inheritdoc/>
+		public Task<LiveStreamingSettings> GetLiveStreamSettingsAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"meetings/{meetingId}/livestream")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<LiveStreamingSettings>();
+		}
+
+		/// <inheritdoc/>
+		public Task<MeetingTemplate[]> GetTemplatesAsync(string userId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"users/{userId}/meeting_templates")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<MeetingTemplate[]>("templates");
+		}
+
+		/// <inheritdoc/>
+		public Task<InviteLink[]> CreateInviteLinksAsync(long meetingId, IEnumerable<string> names, long timeToLive = 7200, CancellationToken cancellationToken = default)
+		{
+			if (names == null || !names.Any()) throw new ArgumentNullException("You must provide at least one name", nameof(names));
+
+			var data = new JsonObject
+			{
+				{ "ttl", timeToLive },
+				{ "attendees", names?.Select(n => new JsonObject { { "name", n } }).ToArray() }
+			};
+
+			return _client
+				.PostAsync($"meetings/{meetingId}/invite_links")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<InviteLink[]>("attendees");
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteSurveyAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"meetings/{meetingId}/survey")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<Survey> GetSurveyAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"meetings/{meetingId}/survey")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<Survey>();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateSurveyAsync(long meetingId, IEnumerable<SurveyQuestion> questions = null, bool allowAnonymous = true, bool showInBrowser = true, string thirdPartySurveyLink = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "third_party_survey", thirdPartySurveyLink },
+				{ "show_in_the_browser", showInBrowser },
+				{
+					"custom_survey",
+					new JsonObject
+					{
+						{ "anonymous", allowAnonymous },
+						{ "questions", questions?.ToArray() }
+					}
+				}
+			};
+
+			return _client
+				.PatchAsync($"meetings/{meetingId}/survey")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task StartCloudRecordingAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "method", "recording.start" }
+			};
+
+			return _client
+				.PatchAsync($"live_meetings/{meetingId}/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task PauseCloudRecordingAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "method", "recording.pause" }
+			};
+
+			return _client
+				.PatchAsync($"live_meetings/{meetingId}/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task ResumeCloudRecordingAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "method", "recording.resume" }
+			};
+
+			return _client
+				.PatchAsync($"live_meetings/{meetingId}/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task StopCloudRecordingAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "method", "recording.stop" }
+			};
+
+			return _client
+				.PatchAsync($"live_meetings/{meetingId}/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task InviteParticipantsAsync(long meetingId, IEnumerable<string> emailAddresses, CancellationToken cancellationToken = default)
+		{
+			if (emailAddresses == null || !emailAddresses.Any()) throw new ArgumentNullException("You must provide at least one email address", nameof(emailAddresses));
+
+			var data = new JsonObject
+			{
+				{ "method", "participant.invite" },
+				{ "params", new JsonObject { { "contacts", emailAddresses.Select(emailAddress => new JsonObject { { "email", emailAddress } }).ToArray() } } }
+			};
+
+			return _client
+				.PatchAsync($"live_meetings/{meetingId}/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string status, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("action", status);
-			data.AddPropertyIfValue("registrants", registrantsInfo.Select(ri => new { id = ri.RegistrantId, email = ri.RegistrantEmail }).ToArray());
+			var data = new JsonObject
+			{
+				{ "action", status },
+				{ "registrants", registrantsInfo?.Select(ri => new { id = ri.RegistrantId, email = ri.RegistrantEmail }).ToArray() }
+			};
 
 			return _client
 				.PutAsync($"meetings/{meetingId}/registrants/status")

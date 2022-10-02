@@ -21,7 +21,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The <see cref="Meeting" />.
 		/// </returns>
-		Task<Meeting> GetAsync(string uuid, CancellationToken cancellationToken = default);
+		Task<PastMeeting> GetAsync(string uuid, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// List participants of a meeting that occured in the past.

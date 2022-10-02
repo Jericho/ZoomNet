@@ -1,5 +1,4 @@
-using Newtonsoft.Json;
-using ZoomNet.Utilities;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models.Webhooks
 {
@@ -11,14 +10,13 @@ namespace ZoomNet.Models.Webhooks
 		/// <summary>
 		/// Gets or sets the unique identifier of the account in wich the event occured.
 		/// </summary>
-		[JsonProperty(PropertyName = "account_id")]
+		[JsonPropertyName("account_id")]
 		public string AccountId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the webinar object.
 		/// </summary>
-		[JsonProperty(PropertyName = "object")]
-		[JsonConverter(typeof(WebinarConverter))]
+		[JsonPropertyName("object")]
 		public Webinar Webinar { get; set; }
 	}
 }

@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -13,7 +13,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The type of content of the sharing/recording.
 		/// </value>
-		[JsonProperty(PropertyName = "content")]
+		[JsonPropertyName("content")]
 		public string Content { get; set; }
 
 		/// <summary>
@@ -22,7 +22,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The start time of the sharing.
 		/// </value>
-		[JsonProperty(PropertyName = "start_time")]
+		[JsonPropertyName("start_time")]
 		public string StartTime { get; set; }
 
 		/// <summary>
@@ -31,7 +31,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The end time of the sharing.
 		/// </value>
-		[JsonProperty(PropertyName = "end_time")]
+		[JsonPropertyName("end_time")]
 		public string EndTime { get; set; }
 	}
 }

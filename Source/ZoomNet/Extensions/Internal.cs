@@ -1,7 +1,7 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
+using Pathoschild.Http.Client.Extensibility;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
@@ -12,8 +12,12 @@ using System.Net.Http.Headers;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Nodes;
+using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
+using ZoomNet.Json;
 using ZoomNet.Models;
 using ZoomNet.Utilities;
 
@@ -115,6 +119,7 @@ namespace ZoomNet
 		/// automatically calculated based on the charset in the response. Also, UTF-8
 		/// encoding will be used if the charset is absent from the response, is blank
 		/// or contains an invalid value.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The string content of the response.</returns>
 		/// <remarks>
 		/// This method is an improvement over the built-in ReadAsStringAsync method
@@ -149,7 +154,7 @@ namespace ZoomNet
 		/// var responseContent = await response.Content.ReadAsStringAsync(null).ConfigureAwait(false);
 		/// </code>
 		/// </example>
-		internal static async Task<string> ReadAsStringAsync(this HttpContent httpContent, Encoding encoding)
+		internal static async Task<string> ReadAsStringAsync(this HttpContent httpContent, Encoding encoding, CancellationToken cancellationToken = default)
 		{
 			var content = string.Empty;
 
@@ -161,9 +166,10 @@ namespace ZoomNet
 
 				// This is important: we must make a copy of the response stream otherwise we would get an
 				// exception on subsequent attempts to read the content of the stream
-				using (var ms = new MemoryStream())
+				using (var ms = Utils.MemoryStreamManager.GetStream())
 				{
-					await contentStream.CopyToAsync(ms).ConfigureAwait(false);
+					const int DefaultBufferSize = 81920;
+					await contentStream.CopyToAsync(ms, DefaultBufferSize, cancellationToken).ConfigureAwait(false);
 					ms.Position = 0;
 					using (var sr = new StreamReader(ms, encoding))
 					{
@@ -226,12 +232,12 @@ namespace ZoomNet
 		/// <param name="response">The response.</param>
 		/// <param name="propertyName">The name of the JSON property (or null if not applicable) where the desired data is stored.</param>
 		/// <param name="throwIfPropertyIsMissing">Indicates if an exception should be thrown when the specified JSON property is missing from the response.</param>
-		/// <param name="jsonConverter">Converter that will be used during deserialization.</param>
+		/// <param name="options">Options to control behavior Converter during parsing.</param>
 		/// <returns>Returns the strongly typed object.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		internal static Task<T> AsObject<T>(this IResponse response, string propertyName = null, bool throwIfPropertyIsMissing = true, JsonConverter jsonConverter = null)
+		internal static Task<T> AsObject<T>(this IResponse response, string propertyName = null, bool throwIfPropertyIsMissing = true, JsonSerializerOptions options = null)
 		{
-			return response.Message.Content.AsObject<T>(propertyName, throwIfPropertyIsMissing, jsonConverter);
+			return response.Message.Content.AsObject<T>(propertyName, throwIfPropertyIsMissing, options);
 		}
 
 		/// <summary>Asynchronously retrieve the JSON encoded response body and convert it to an object of the desired type.</summary>
@@ -239,129 +245,114 @@ namespace ZoomNet
 		/// <param name="request">The request.</param>
 		/// <param name="propertyName">The name of the JSON property (or null if not applicable) where the desired data is stored.</param>
 		/// <param name="throwIfPropertyIsMissing">Indicates if an exception should be thrown when the specified JSON property is missing from the response.</param>
-		/// <param name="jsonConverter">Converter that will be used during deserialization.</param>
+		/// <param name="options">Options to control behavior Converter during parsing.</param>
 		/// <returns>Returns the strongly typed object.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		internal static async Task<T> AsObject<T>(this IRequest request, string propertyName = null, bool throwIfPropertyIsMissing = true, JsonConverter jsonConverter = null)
+		internal static async Task<T> AsObject<T>(this IRequest request, string propertyName = null, bool throwIfPropertyIsMissing = true, JsonSerializerOptions options = null)
 		{
-			var response = await request.AsMessage().ConfigureAwait(false);
-			return await response.Content.AsObject<T>(propertyName, throwIfPropertyIsMissing, jsonConverter).ConfigureAwait(false);
-		}
-
-		/// <summary>Get a raw JSON object representation of the response, which can also be accessed as a <c>dynamic</c> value.</summary>
-		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		internal static Task<JObject> AsRawJsonObject(this IResponse response, string propertyName = null, bool throwIfPropertyIsMissing = true)
-		{
-			return response.Message.Content.AsRawJsonObject(propertyName, throwIfPropertyIsMissing);
-		}
-
-		/// <summary>Get a raw JSON object representation of the response, which can also be accessed as a <c>dynamic</c> value.</summary>
-		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		internal static async Task<JObject> AsRawJsonObject(this IRequest request, string propertyName = null, bool throwIfPropertyIsMissing = true)
-		{
-			var response = await request.AsMessage().ConfigureAwait(false);
-			return await response.Content.AsRawJsonObject(propertyName, throwIfPropertyIsMissing).ConfigureAwait(false);
-		}
-
-		/// <summary>Get a raw JSON object representation of the response, which can also be accessed as a <c>dynamic</c> value.</summary>
-		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		internal static Task<JArray> AsRawJsonArray(this IResponse response, string propertyName = null, bool throwIfPropertyIsMissing = true)
-		{
-			return response.Message.Content.AsRawJsonArray(propertyName, throwIfPropertyIsMissing);
-		}
-
-		/// <summary>Get a raw JSON object representation of the response, which can also be accessed as a <c>dynamic</c> value.</summary>
-		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		internal static async Task<JArray> AsRawJsonArray(this IRequest request, string propertyName = null, bool throwIfPropertyIsMissing = true)
-		{
-			var response = await request.AsMessage().ConfigureAwait(false);
-			return await response.Content.AsRawJsonArray(propertyName, throwIfPropertyIsMissing).ConfigureAwait(false);
+			var response = await request.AsResponse().ConfigureAwait(false);
+			return await response.AsObject<T>(propertyName, throwIfPropertyIsMissing, options).ConfigureAwait(false);
 		}
 
 		/// <summary>Asynchronously retrieve the JSON encoded content and convert it to a 'PaginatedResponse' object.</summary>
 		/// <typeparam name="T">The response model to deserialize into.</typeparam>
 		/// <param name="response">The response.</param>
 		/// <param name="propertyName">The name of the JSON property (or null if not applicable) where the desired data is stored.</param>
-		/// <param name="jsonConverter">Converter that will be used during deserialization.</param>
+		/// <param name="options">Options to control behavior Converter during parsing.</param>
 		/// <returns>Returns the paginated response.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		internal static Task<PaginatedResponse<T>> AsPaginatedResponse<T>(this IResponse response, string propertyName, JsonConverter jsonConverter = null)
+		internal static Task<PaginatedResponse<T>> AsPaginatedResponse<T>(this IResponse response, string propertyName = null, JsonSerializerOptions options = null)
 		{
-			return response.Message.Content.AsPaginatedResponse<T>(propertyName, jsonConverter);
+			return response.Message.Content.AsPaginatedResponse<T>(propertyName, options);
 		}
 
 		/// <summary>Asynchronously retrieve the JSON encoded content and convert it to a 'PaginatedResponse' object.</summary>
 		/// <typeparam name="T">The response model to deserialize into.</typeparam>
 		/// <param name="request">The request.</param>
 		/// <param name="propertyName">The name of the JSON property (or null if not applicable) where the desired data is stored.</param>
-		/// <param name="jsonConverter">Converter that will be used during deserialization.</param>
+		/// <param name="options">Options to control behavior Converter during parsing.</param>
 		/// <returns>Returns the paginated response.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		internal static async Task<PaginatedResponse<T>> AsPaginatedResponse<T>(this IRequest request, string propertyName, JsonConverter jsonConverter = null)
+		internal static async Task<PaginatedResponse<T>> AsPaginatedResponse<T>(this IRequest request, string propertyName = null, JsonSerializerOptions options = null)
 		{
 			var response = await request.AsResponse().ConfigureAwait(false);
-			return await response.AsPaginatedResponse<T>(propertyName, jsonConverter).ConfigureAwait(false);
+			return await response.AsPaginatedResponse<T>(propertyName, options).ConfigureAwait(false);
 		}
 
 		/// <summary>Asynchronously retrieve the JSON encoded response body and convert it to a 'PaginatedResponseWithToken' object.</summary>
 		/// <typeparam name="T">The response model to deserialize into.</typeparam>
 		/// <param name="response">The response.</param>
 		/// <param name="propertyName">The name of the JSON property (or null if not applicable) where the desired data is stored.</param>
-		/// <param name="jsonConverter">Converter that will be used during deserialization.</param>
+		/// <param name="options">Options to control behavior Converter during parsing.</param>
 		/// <returns>Returns the paginated response.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		internal static Task<PaginatedResponseWithToken<T>> AsPaginatedResponseWithToken<T>(this IResponse response, string propertyName, JsonConverter jsonConverter = null)
+		internal static Task<PaginatedResponseWithToken<T>> AsPaginatedResponseWithToken<T>(this IResponse response, string propertyName, JsonSerializerOptions options = null)
 		{
-			return response.Message.Content.AsPaginatedResponseWithToken<T>(propertyName, jsonConverter);
+			return response.Message.Content.AsPaginatedResponseWithToken<T>(propertyName, options);
 		}
 
 		/// <summary>Asynchronously retrieve the JSON encoded response body and convert it to a 'PaginatedResponseWithToken' object.</summary>
 		/// <typeparam name="T">The response model to deserialize into.</typeparam>
 		/// <param name="request">The request.</param>
 		/// <param name="propertyName">The name of the JSON property (or null if not applicable) where the desired data is stored.</param>
-		/// <param name="jsonConverter">Converter that will be used during deserialization.</param>
+		/// <param name="options">Options to control behavior Converter during parsing.</param>
 		/// <returns>Returns the paginated response.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		internal static async Task<PaginatedResponseWithToken<T>> AsPaginatedResponseWithToken<T>(this IRequest request, string propertyName, JsonConverter jsonConverter = null)
+		internal static async Task<PaginatedResponseWithToken<T>> AsPaginatedResponseWithToken<T>(this IRequest request, string propertyName, JsonSerializerOptions options = null)
 		{
 			var response = await request.AsResponse().ConfigureAwait(false);
-			return await response.AsPaginatedResponseWithToken<T>(propertyName, jsonConverter).ConfigureAwait(false);
+			return await response.AsPaginatedResponseWithToken<T>(propertyName, options).ConfigureAwait(false);
 		}
 
 		/// <summary>Asynchronously retrieve the JSON encoded response body and convert it to a 'PaginatedResponseWithToken' object.</summary>
 		/// <typeparam name="T">The response model to deserialize into.</typeparam>
 		/// <param name="response">The response.</param>
 		/// <param name="propertyName">The name of the JSON property (or null if not applicable) where the desired data is stored.</param>
-		/// <param name="jsonConverter">Converter that will be used during deserialization.</param>
+		/// <param name="options">Options to control behavior Converter during parsing.</param>
 		/// <returns>Returns the paginated response.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		internal static Task<PaginatedResponseWithTokenAndDateRange<T>> AsPaginatedResponseWithTokenAndDateRange<T>(this IResponse response, string propertyName, JsonConverter jsonConverter = null)
+		internal static Task<PaginatedResponseWithTokenAndDateRange<T>> AsPaginatedResponseWithTokenAndDateRange<T>(this IResponse response, string propertyName, JsonSerializerOptions options = null)
 		{
-			return response.Message.Content.AsPaginatedResponseWithTokenAndDateRange<T>(propertyName, jsonConverter);
+			return response.Message.Content.AsPaginatedResponseWithTokenAndDateRange<T>(propertyName, options);
 		}
 
 		/// <summary>Asynchronously retrieve the JSON encoded response body and convert it to a 'PaginatedResponseWithToken' object.</summary>
 		/// <typeparam name="T">The response model to deserialize into.</typeparam>
 		/// <param name="request">The request.</param>
 		/// <param name="propertyName">The name of the JSON property (or null if not applicable) where the desired data is stored.</param>
-		/// <param name="jsonConverter">Converter that will be used during deserialization.</param>
+		/// <param name="options">Options to control behavior Converter during parsing.</param>
 		/// <returns>Returns the paginated response.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		internal static async Task<PaginatedResponseWithTokenAndDateRange<T>> AsPaginatedResponseWithTokenAndDateRange<T>(this IRequest request, string propertyName, JsonConverter jsonConverter = null)
+		internal static async Task<PaginatedResponseWithTokenAndDateRange<T>> AsPaginatedResponseWithTokenAndDateRange<T>(this IRequest request, string propertyName, JsonSerializerOptions options = null)
 		{
 			var response = await request.AsResponse().ConfigureAwait(false);
-			return await response.AsPaginatedResponseWithTokenAndDateRange<T>(propertyName, jsonConverter).ConfigureAwait(false);
+			return await response.AsPaginatedResponseWithTokenAndDateRange<T>(propertyName, options).ConfigureAwait(false);
 		}
 
+		/// <summary>Get a raw JSON document representation of the response.</summary>
+		/// <exception cref="ApiException">An error occurred processing the response.</exception>
+		internal static Task<JsonDocument> AsRawJsonDocument(this IResponse response, string propertyName = null, bool throwIfPropertyIsMissing = true)
+		{
+			return response.Message.Content.AsRawJsonDocument(propertyName, throwIfPropertyIsMissing);
+		}
+
+		/// <summary>Get a raw JSON document representation of the response.</summary>
+		/// <exception cref="ApiException">An error occurred processing the response.</exception>
+		internal static async Task<JsonDocument> AsRawJsonDocument(this IRequest request, string propertyName = null, bool throwIfPropertyIsMissing = true)
+		{
+			var response = await request.AsResponse().ConfigureAwait(false);
+			return await response.AsRawJsonDocument(propertyName, throwIfPropertyIsMissing).ConfigureAwait(false);
+		}
+
+		/// <summary>
+		/// Replace the current error handler which treats HTTP200 as success with a handler that treats HTTP200 as failure.
+		/// </summary>
+		/// <param name="request">The request.</param>
+		/// <param name="customExceptionMessage">An optional custom error message.</param>
+		/// <returns>Returns the request builder for chaining.</returns>
 		internal static IRequest WithHttp200TreatedAsFailure(this IRequest request, string customExceptionMessage = null)
 		{
-			var currentErrorHandler = request.Filters.OfType<ZoomErrorHandler>().SingleOrDefault();
-			var newErrorHandler = new ZoomErrorHandler(true, customExceptionMessage);
-
-			// Replace the current error handler which treats HTTP200 as success with a handler that treats HTTP200 as failure
-			request.Filters.Replace(currentErrorHandler, newErrorHandler);
-
-			return request;
+			return request.WithFilter(new ZoomErrorHandler(true, customExceptionMessage));
 		}
 
 		/// <summary>Set the body content of the HTTP request.</summary>
@@ -378,6 +369,42 @@ namespace ZoomNet
 		internal static IRequest WithJsonBody<T>(this IRequest request, T body)
 		{
 			return request.WithBody(bodyBuilder => bodyBuilder.Model(body, new MediaTypeHeaderValue("application/json")));
+		}
+
+		/// <summary>Add a filter to a request.</summary>
+		/// <typeparam name="TFilter">The type of filter.</typeparam>
+		/// <param name="request">The request.</param>
+		/// <param name="filter">The filter.</param>
+		/// <param name="replaceExisting">
+		/// When true, the first filter of matching type is replaced with the new filter (thereby preserving the position of the filter in the list of filters) and any other filter of matching type is removed.
+		/// When false, the filter is simply added to the list of filters.
+		/// </param>
+		/// <returns>Returns the request builder for chaining.</returns>
+		internal static IRequest WithFilter<TFilter>(this IRequest request, TFilter filter, bool replaceExisting = true)
+			where TFilter : IHttpFilter
+		{
+			var matchingFilters = request.Filters.OfType<TFilter>().ToArray();
+
+			if (matchingFilters.Length == 0 || !replaceExisting)
+			{
+				request.Filters.Add(filter);
+			}
+			else
+			{
+				// Replace the first matching filter with the new filter
+				var collectionAsList = request.Filters as IList<IHttpFilter>;
+				var indexOfMatchingFilter = collectionAsList.IndexOf(matchingFilters[0]);
+				collectionAsList.RemoveAt(indexOfMatchingFilter);
+				collectionAsList.Insert(indexOfMatchingFilter, filter);
+
+				// Remove any other matching filter
+				for (int i = 1; i < matchingFilters.Length; i++)
+				{
+					request.Filters.Remove(matchingFilters[i]);
+				}
+			}
+
+			return request;
 		}
 
 		/// <summary>Asynchronously retrieve the response body as a <see cref="string"/>.</summary>
@@ -415,7 +442,7 @@ namespace ZoomNet
 		/// <returns>Returns the human readable representation of the TimeSpan.</returns>
 		internal static string ToDurationString(this TimeSpan timeSpan)
 		{
-			void AppendFormatIfNecessary(StringBuilder stringBuilder, string timePart, int value)
+			static void AppendFormatIfNecessary(StringBuilder stringBuilder, string timePart, int value)
 			{
 				if (value <= 0) return;
 				stringBuilder.AppendFormat($" {value} {timePart}{(value > 1 ? "s" : string.Empty)}");
@@ -433,87 +460,32 @@ namespace ZoomNet
 			return result.ToString().Trim();
 		}
 
-		internal static void AddPropertyIfValue(this JObject jsonObject, string propertyName, string value)
+		/// <summary>
+		/// Ensure that a string starts with a given prefix.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <param name="prefix">The prefix.</param>
+		/// <returns>The value including the prefix.</returns>
+		internal static string EnsureStartsWith(this string value, string prefix)
 		{
-			if (string.IsNullOrEmpty(value)) return;
-			jsonObject.AddDeepProperty(propertyName, value);
+			return !string.IsNullOrEmpty(value) && value.StartsWith(prefix) ? value : string.Concat(prefix, value);
 		}
 
-		internal static void AddPropertyIfValue<T>(this JObject jsonObject, string propertyName, T value, JsonConverter converter = null)
+		/// <summary>
+		/// Ensure that a string ends with a given suffix.
+		/// </summary>
+		/// <param name="value">The value.</param>
+		/// <param name="suffix">The sufix.</param>
+		/// <returns>The value including the suffix.</returns>
+		internal static string EnsureEndsWith(this string value, string suffix)
 		{
-			if (EqualityComparer<T>.Default.Equals(value, default)) return;
-
-			var jsonSerializer = new JsonSerializer() { NullValueHandling = NullValueHandling.Ignore };
-			if (converter != null)
-			{
-				jsonSerializer.Converters.Add(converter);
-			}
-
-			jsonObject.AddDeepProperty(propertyName, JToken.FromObject(value, jsonSerializer));
+			return !string.IsNullOrEmpty(value) && value.EndsWith(suffix) ? value : string.Concat(value, suffix);
 		}
 
-		internal static void AddPropertyIfValue<T>(this JObject jsonObject, string propertyName, IEnumerable<T> value, JsonConverter converter = null)
-		{
-			if (value == null || !value.Any()) return;
-
-			var jsonSerializer = new JsonSerializer() { NullValueHandling = NullValueHandling.Ignore };
-			if (converter != null)
-			{
-				jsonSerializer.Converters.Add(converter);
-			}
-
-			jsonObject.AddDeepProperty(propertyName, JArray.FromObject(value.ToArray(), jsonSerializer));
-		}
-
-		internal static void AddPropertyIfEnumValue<T>(this JObject jsonObject, string propertyName, T value, JsonConverter converter = null)
-		{
-			var serializerSettings = new JsonSerializerSettings()
-			{
-				NullValueHandling = NullValueHandling.Ignore
-			};
-			if (converter != null) serializerSettings.Converters.Add(converter);
-
-			AddPropertyIfValue(jsonObject, propertyName, value, v => JToken.Parse(JsonConvert.SerializeObject(v, serializerSettings)).ToString());
-		}
-
-		internal static void AddPropertyIfValue<T>(this JObject jsonObject, string propertyName, T value, Func<T, JToken> convertValueToJsonToken)
-		{
-			if (convertValueToJsonToken == null) throw new ArgumentNullException(nameof(convertValueToJsonToken));
-
-			if (EqualityComparer<T>.Default.Equals(value, default)) return;
-
-			jsonObject.AddDeepProperty(propertyName, convertValueToJsonToken(value));
-		}
-
-		internal static void AddDeepProperty(this JObject jsonObject, string propertyName, JToken value)
-		{
-			var separatorLocation = propertyName.IndexOf('/');
-
-			if (separatorLocation == -1)
-			{
-				jsonObject.Add(propertyName, value);
-			}
-			else
-			{
-				var name = propertyName.Substring(0, separatorLocation);
-				var childrenName = propertyName.Substring(separatorLocation + 1);
-
-				var property = jsonObject.Value<JObject>(name);
-				if (property == null)
-				{
-					property = new JObject();
-					jsonObject.Add(name, property);
-				}
-
-				property.AddDeepProperty(childrenName, value);
-			}
-		}
-
-		internal static JToken GetProperty(this JToken item, string name, bool throwIfMissing = true)
+		internal static JsonElement? GetProperty(this JsonElement element, string name, bool throwIfMissing = true)
 		{
 			var parts = name.Split('/');
-			var property = item[parts[0]];
-			if (property == null)
+			if (!element.TryGetProperty(parts[0], out var property))
 			{
 				if (throwIfMissing) throw new ArgumentException($"Unable to find '{name}'", nameof(name));
 				else return null;
@@ -521,8 +493,7 @@ namespace ZoomNet
 
 			foreach (var part in parts.Skip(1))
 			{
-				property = property[part];
-				if (property == null)
+				if (!property.TryGetProperty(part, out property))
 				{
 					if (throwIfMissing) throw new ArgumentException($"Unable to find '{name}'", nameof(name));
 					else return null;
@@ -532,66 +503,77 @@ namespace ZoomNet
 			return property;
 		}
 
-		internal static T GetPropertyValue<T>(this JToken item, string name, T defaultValue)
+		internal static T GetPropertyValue<T>(this JsonElement element, string name, T defaultValue)
 		{
-			var property = item.GetProperty(name, false);
-			if (property == null) return defaultValue;
-			return property.Value<T>();
+			return GetPropertyValue<T>(element, new[] { name }, defaultValue, false);
 		}
 
-		internal static T GetPropertyValue<T>(this JToken item, string name)
+		internal static T GetPropertyValue<T>(this JsonElement element, string[] names, T defaultValue)
 		{
-			var property = item.GetProperty(name, true);
-			return property.Value<T>();
+			return GetPropertyValue<T>(element, names, defaultValue, false);
+		}
+
+		internal static T GetPropertyValue<T>(this JsonElement element, string name)
+		{
+			return GetPropertyValue<T>(element, new[] { name }, default, true);
+		}
+
+		internal static T GetPropertyValue<T>(this JsonElement element, string[] names)
+		{
+			return GetPropertyValue<T>(element, names, default, true);
 		}
 
 		internal static async Task<TResult[]> ForEachAsync<T, TResult>(this IEnumerable<T> items, Func<T, Task<TResult>> action, int maxDegreeOfParalellism)
 		{
 			var allTasks = new List<Task<TResult>>();
-			var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism);
-			foreach (var item in items)
+			using (var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism))
 			{
-				await throttler.WaitAsync();
-				allTasks.Add(
-					Task.Run(async () =>
-					{
-						try
+				foreach (var item in items)
+				{
+					await throttler.WaitAsync();
+					allTasks.Add(
+						Task.Run(async () =>
 						{
-							return await action(item).ConfigureAwait(false);
-						}
-						finally
-						{
-							throttler.Release();
-						}
-					}));
-			}
+							try
+							{
+								return await action(item).ConfigureAwait(false);
+							}
+							finally
+							{
+								throttler.Release();
+							}
+						}));
+				}
 
-			var results = await Task.WhenAll(allTasks).ConfigureAwait(false);
-			return results;
+				var results = await Task.WhenAll(allTasks).ConfigureAwait(false);
+				return results;
+			}
 		}
 
 		internal static async Task ForEachAsync<T>(this IEnumerable<T> items, Func<T, Task> action, int maxDegreeOfParalellism)
 		{
 			var allTasks = new List<Task>();
-			var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism);
-			foreach (var item in items)
+			using (var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism))
 			{
-				await throttler.WaitAsync();
-				allTasks.Add(
-					Task.Run(async () =>
-					{
-						try
+				foreach (var item in items)
+				{
+					await throttler.WaitAsync();
+					allTasks.Add(
+						Task.Run(async () =>
 						{
-							await action(item).ConfigureAwait(false);
-						}
-						finally
-						{
-							throttler.Release();
-						}
-					}));
-			}
+							try
+							{
+								await action(item).ConfigureAwait(false);
+							}
+							finally
+							{
+								throttler.Release();
+							}
+						}));
+				}
 
-			await Task.WhenAll(allTasks).ConfigureAwait(false);
+				await Task.WhenAll(allTasks).ConfigureAwait(false);
+			}
 		}
 
 		/// <summary>
@@ -608,6 +590,26 @@ namespace ZoomNet
 				.DeclaredMembers
 				.SingleOrDefault(x => x.Name == enumVal.ToString())
 				?.GetCustomAttribute<T>(false);
+		}
+
+		/// <summary>
+		/// Indicates if an object contain a numerical value.
+		/// </summary>
+		/// <param name="value">The object.</param>
+		/// <returns>A boolean indicating if the object contains a numerical value.</returns>
+		internal static bool IsNumber(this object value)
+		{
+			return value is sbyte
+				   || value is byte
+				   || value is short
+				   || value is ushort
+				   || value is int
+				   || value is uint
+				   || value is long
+				   || value is ulong
+				   || value is float
+				   || value is double
+				   || value is decimal;
 		}
 
 		/// <summary>
@@ -656,7 +658,7 @@ namespace ZoomNet
 			return diagnosticInfo;
 		}
 
-		internal static async Task<(bool, string, int?)> GetErrorMessage(this HttpResponseMessage message)
+		internal static async Task<(bool, string, int?)> GetErrorMessageAsync(this HttpResponseMessage message)
 		{
 			// Assume there is no error
 			var isError = false;
@@ -673,6 +675,18 @@ namespace ZoomNet
 					"code": 300,
 					"message": "This meeting has not registration required: 544993922"
 				}
+
+				Sometimes, the JSON string contains additional info like this example:
+				{
+					"code":300,
+					"message":"Validation Failed.",
+					"errors":[
+						{
+							"field":"settings.jbh_time",
+							"message":"Invalid parameter: jbh_time."
+						}
+					]
+				}
 			*/
 
 			var responseContent = await message.Content.ReadAsStringAsync(null).ConfigureAwait(false);
@@ -681,12 +695,26 @@ namespace ZoomNet
 			{
 				try
 				{
-					var jObject = JObject.Parse(responseContent);
+					var rootJsonElement = JsonDocument.Parse(responseContent).RootElement;
+					errorCode = rootJsonElement.TryGetProperty("code", out JsonElement jsonErrorCode) ? (int?)jsonErrorCode.GetInt32() : (int?)null;
+					errorMessage = rootJsonElement.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : (errorCode.HasValue ? $"Error code: {errorCode}" : errorMessage);
+					if (rootJsonElement.TryGetProperty("errors", out JsonElement jsonErrorDetails))
+					{
+						var errorDetails = string.Join(
+							" ",
+							jsonErrorDetails
+								.EnumerateArray()
+								.Select(jsonErrorDetail =>
+								{
+									var errorDetail = jsonErrorDetail.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : string.Empty;
+									return errorDetail;
+								})
+								.Where(errorDetail => !string.IsNullOrEmpty(errorDetail)));
 
-					errorCode = jObject.GetPropertyValue<int?>("code", null);
-					errorMessage = jObject.GetPropertyValue<string>("message", errorCode.HasValue ? $"Error code: {errorCode}" : null);
+						if (!string.IsNullOrEmpty(errorDetails)) errorMessage += $" {errorDetails}";
+					}
 
-					isError = errorCode.HasValue || !string.IsNullOrEmpty(errorMessage);
+					isError = errorCode.HasValue;
 				}
 				catch
 				{
@@ -697,23 +725,6 @@ namespace ZoomNet
 			return (isError, errorMessage, errorCode);
 		}
 
-		internal static void Replace<T>(this ICollection<T> collection, T oldValue, T newValue)
-		{
-			// In case the collection is ordered, we'll be able to preserve the order
-			if (collection is IList<T> collectionAsList)
-			{
-				var oldIndex = collectionAsList.IndexOf(oldValue);
-				collectionAsList.RemoveAt(oldIndex);
-				collectionAsList.Insert(oldIndex, newValue);
-			}
-			else
-			{
-				// No luck, so just remove then add
-				collection.Remove(oldValue);
-				collection.Add(newValue);
-			}
-		}
-
 		/// <summary>Convert an enum to its string representation.</summary>
 		/// <typeparam name="T">The enum type.</typeparam>
 		/// <param name="enumValue">The value.</param>
@@ -722,13 +733,36 @@ namespace ZoomNet
 		internal static string ToEnumString<T>(this T enumValue)
 			where T : Enum
 		{
+			if (TryToEnumString(enumValue, out string stringValue)) return stringValue;
+			return enumValue.ToString();
+		}
+
+		internal static bool TryToEnumString<T>(this T enumValue, out string stringValue)
+			where T : Enum
+		{
 			var enumMemberAttribute = enumValue.GetAttributeOfType<EnumMemberAttribute>();
-			if (enumMemberAttribute != null) return enumMemberAttribute.Value;
+			if (enumMemberAttribute != null)
+			{
+				stringValue = enumMemberAttribute.Value;
+				return true;
+			}
+
+			var jsonPropertyNameAttribute = enumValue.GetAttributeOfType<JsonPropertyNameAttribute>();
+			if (jsonPropertyNameAttribute != null)
+			{
+				stringValue = jsonPropertyNameAttribute.Name;
+				return true;
+			}
 
 			var descriptionAttribute = enumValue.GetAttributeOfType<DescriptionAttribute>();
-			if (descriptionAttribute != null) return descriptionAttribute.Description;
+			if (descriptionAttribute != null)
+			{
+				stringValue = descriptionAttribute.Description;
+				return true;
+			}
 
-			return enumValue.ToString();
+			stringValue = null;
+			return false;
 		}
 
 		/// <summary>Parses a string into its corresponding enum value.</summary>
@@ -739,22 +773,81 @@ namespace ZoomNet
 		internal static T ToEnum<T>(this string str)
 			where T : Enum
 		{
+			if (TryToEnum(str, out T enumValue)) return enumValue;
+
+			throw new ArgumentException($"There is no value in the {typeof(T).Name} enum that corresponds to '{str}'.");
+		}
+
+		internal static bool TryToEnum<T>(this string str, out T enumValue)
+			where T : Enum
+		{
 			var enumType = typeof(T);
 			foreach (var name in Enum.GetNames(enumType))
 			{
 				var customAttributes = enumType.GetField(name).GetCustomAttributes(true);
 
 				// See if there's a matching 'EnumMember' attribute
-				if (customAttributes.OfType<EnumMemberAttribute>().Any(attribute => string.Equals(attribute.Value, str, StringComparison.OrdinalIgnoreCase))) return (T)Enum.Parse(enumType, name);
+				if (customAttributes.OfType<EnumMemberAttribute>().Any(attribute => string.Equals(attribute.Value, str, StringComparison.OrdinalIgnoreCase)))
+				{
+					enumValue = (T)Enum.Parse(enumType, name);
+					return true;
+				}
+
+				// See if there's a matching 'JsonPropertyName' attribute
+				if (customAttributes.OfType<JsonPropertyNameAttribute>().Any(attribute => string.Equals(attribute.Name, str, StringComparison.OrdinalIgnoreCase)))
+				{
+					enumValue = (T)Enum.Parse(enumType, name);
+					return true;
+				}
 
 				// See if there's a matching 'Description' attribute
-				if (customAttributes.OfType<DescriptionAttribute>().Any(attribute => string.Equals(attribute.Description, str, StringComparison.OrdinalIgnoreCase))) return (T)Enum.Parse(enumType, name);
+				if (customAttributes.OfType<DescriptionAttribute>().Any(attribute => string.Equals(attribute.Description, str, StringComparison.OrdinalIgnoreCase)))
+				{
+					enumValue = (T)Enum.Parse(enumType, name);
+					return true;
+				}
 
 				// See if the value matches the name
-				if (string.Equals(name, str, StringComparison.OrdinalIgnoreCase)) return (T)Enum.Parse(enumType, name);
+				if (string.Equals(name, str, StringComparison.OrdinalIgnoreCase))
+				{
+					enumValue = (T)Enum.Parse(enumType, name);
+					return true;
+				}
 			}
 
-			throw new ArgumentException($"There is no value in the {enumType.Name} enum that corresponds to '{str}'.");
+			enumValue = default;
+			return false;
+		}
+
+		internal static T ToObject<T>(this JsonElement element, JsonSerializerOptions options = null)
+		{
+			return JsonSerializer.Deserialize<T>(element, options ?? ZoomNetJsonFormatter.DeserializerOptions);
+		}
+
+		internal static void Add<T>(this JsonObject jsonObject, string propertyName, T value)
+		{
+			if (value is IEnumerable<T> items)
+			{
+				var jsonArray = new JsonArray();
+				foreach (var item in items)
+				{
+					jsonArray.Add(item);
+				}
+
+				jsonObject.Add(propertyName, jsonArray);
+			}
+			else
+			{
+				jsonObject.Add(propertyName, JsonValue.Create(value));
+			}
+		}
+
+		internal static string ToHexString(this byte[] bytes)
+		{
+			var result = new StringBuilder(bytes.Length * 2);
+			for (int i = 0; i < bytes.Length; i++)
+				result.Append(bytes[i].ToString("x2"));
+			return result.ToString();
 		}
 
 		/// <summary>Asynchronously converts the JSON encoded content and convert it to an object of the desired type.</summary>
@@ -762,109 +855,65 @@ namespace ZoomNet
 		/// <param name="httpContent">The content.</param>
 		/// <param name="propertyName">The name of the JSON property (or null if not applicable) where the desired data is stored.</param>
 		/// <param name="throwIfPropertyIsMissing">Indicates if an exception should be thrown when the specified JSON property is missing from the response.</param>
-		/// <param name="jsonConverter">Converter that will be used during deserialization.</param>
+		/// <param name="options">Options to control behavior Converter during parsing.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>Returns the strongly typed object.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		private static async Task<T> AsObject<T>(this HttpContent httpContent, string propertyName = null, bool throwIfPropertyIsMissing = true, JsonConverter jsonConverter = null)
+		private static async Task<T> AsObject<T>(this HttpContent httpContent, string propertyName = null, bool throwIfPropertyIsMissing = true, JsonSerializerOptions options = null, CancellationToken cancellationToken = default)
 		{
-			var responseContent = await httpContent.ReadAsStringAsync(null).ConfigureAwait(false);
+			var responseContent = await httpContent.ReadAsStringAsync(null, cancellationToken).ConfigureAwait(false);
 
-			var serializer = new JsonSerializer();
-			if (jsonConverter != null) serializer.Converters.Add(jsonConverter);
-
-			if (!string.IsNullOrEmpty(propertyName))
+			if (string.IsNullOrEmpty(propertyName))
 			{
-				var jObject = JObject.Parse(responseContent);
-				var jProperty = jObject.Property(propertyName);
-				if (jProperty == null)
-				{
-					if (throwIfPropertyIsMissing)
-					{
-						throw new ArgumentException($"The response does not contain a field called '{propertyName}'", nameof(propertyName));
-					}
-					else
-					{
-						return default;
-					}
-				}
-
-				return jProperty.Value.ToObject<T>(serializer);
+				return JsonSerializer.Deserialize<T>(responseContent, options ?? ZoomNetJsonFormatter.DeserializerOptions);
 			}
-			else if (typeof(T).IsArray)
+
+			var jsonDoc = JsonDocument.Parse(responseContent, (JsonDocumentOptions)default);
+			if (jsonDoc.RootElement.TryGetProperty(propertyName, out JsonElement property))
 			{
-				return JArray.Parse(responseContent).ToObject<T>(serializer);
+				var propertyContent = property.GetRawText();
+				return JsonSerializer.Deserialize<T>(propertyContent, options ?? ZoomNetJsonFormatter.DeserializerOptions);
+			}
+			else if (throwIfPropertyIsMissing)
+			{
+				throw new ArgumentException($"The response does not contain a field called '{propertyName}'", nameof(propertyName));
 			}
 			else
 			{
-				return JObject.Parse(responseContent).ToObject<T>(serializer);
+				return default;
 			}
 		}
 
-		/// <summary>Get a raw JSON object representation of the response, which can also be accessed as a <c>dynamic</c> value.</summary>
+		/// <summary>Get a raw JSON object representation of the response.</summary>
 		/// <param name="httpContent">The content.</param>
 		/// <param name="propertyName">The name of the JSON property (or null if not applicable) where the desired data is stored.</param>
 		/// <param name="throwIfPropertyIsMissing">Indicates if an exception should be thrown when the specified JSON property is missing from the response.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>Returns the response body, or <c>null</c> if the response has no body.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		private static async Task<JObject> AsRawJsonObject(this HttpContent httpContent, string propertyName = null, bool throwIfPropertyIsMissing = true)
+		private static async Task<JsonDocument> AsRawJsonDocument(this HttpContent httpContent, string propertyName = null, bool throwIfPropertyIsMissing = true, CancellationToken cancellationToken = default)
 		{
-			var responseContent = await httpContent.ReadAsStringAsync(null).ConfigureAwait(false);
+			var responseContent = await httpContent.ReadAsStringAsync(null, cancellationToken).ConfigureAwait(false);
 
-			if (!string.IsNullOrEmpty(propertyName))
+			var jsonDoc = JsonDocument.Parse(responseContent, (JsonDocumentOptions)default);
+
+			if (string.IsNullOrEmpty(propertyName))
 			{
-				var jObject = JObject.Parse(responseContent);
-				var jProperty = jObject.Property(propertyName);
-				if (jProperty == null)
-				{
-					if (throwIfPropertyIsMissing)
-					{
-						throw new ArgumentException($"The response does not contain a field called '{propertyName}'", nameof(propertyName));
-					}
-					else
-					{
-						return default;
-					}
-				}
+				return jsonDoc;
+			}
 
-				return (JObject)jProperty.Value;
+			if (jsonDoc.RootElement.TryGetProperty(propertyName, out JsonElement property))
+			{
+				var propertyContent = property.GetRawText();
+				return JsonDocument.Parse(propertyContent, (JsonDocumentOptions)default);
+			}
+			else if (throwIfPropertyIsMissing)
+			{
+				throw new ArgumentException($"The response does not contain a field called '{propertyName}'", nameof(propertyName));
 			}
 			else
 			{
-				return JObject.Parse(responseContent);
-			}
-		}
-
-		/// <summary>Get a raw JSON object representation of the response, which can also be accessed as a <c>dynamic</c> value.</summary>
-		/// <param name="httpContent">The content.</param>
-		/// <param name="propertyName">The name of the JSON property (or null if not applicable) where the desired data is stored.</param>
-		/// <param name="throwIfPropertyIsMissing">Indicates if an exception should be thrown when the specified JSON property is missing from the response.</param>
-		/// <returns>Returns the response body, or <c>null</c> if the response has no body.</returns>
-		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		private static async Task<JArray> AsRawJsonArray(this HttpContent httpContent, string propertyName = null, bool throwIfPropertyIsMissing = true)
-		{
-			var responseContent = await httpContent.ReadAsStringAsync(null).ConfigureAwait(false);
-
-			if (!string.IsNullOrEmpty(propertyName))
-			{
-				var jObject = JObject.Parse(responseContent);
-				var jProperty = jObject.Property(propertyName);
-				if (jProperty == null)
-				{
-					if (throwIfPropertyIsMissing)
-					{
-						throw new ArgumentException($"The response does not contain a field called '{propertyName}'", nameof(propertyName));
-					}
-					else
-					{
-						return default;
-					}
-				}
-
-				return (JArray)jProperty.Value;
-			}
-			else
-			{
-				return JArray.Parse(responseContent);
+				return default;
 			}
 		}
 
@@ -872,25 +921,27 @@ namespace ZoomNet
 		/// <typeparam name="T">The response model to deserialize into.</typeparam>
 		/// <param name="httpContent">The content.</param>
 		/// <param name="propertyName">The name of the JSON property (or null if not applicable) where the desired data is stored.</param>
-		/// <param name="jsonConverter">Converter that will be used during deserialization.</param>
+		/// <param name="options">Options to control behavior Converter during parsing.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>Returns the response body, or <c>null</c> if the response has no body.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		private static async Task<PaginatedResponse<T>> AsPaginatedResponse<T>(this HttpContent httpContent, string propertyName, JsonConverter jsonConverter = null)
+		private static async Task<PaginatedResponse<T>> AsPaginatedResponse<T>(this HttpContent httpContent, string propertyName, JsonSerializerOptions options = null, CancellationToken cancellationToken = default)
 		{
-			var responseContent = await httpContent.ReadAsStringAsync(null).ConfigureAwait(false);
-			var jObject = JObject.Parse(responseContent);
+			// Get the content as a queryable json document
+			var doc = await httpContent.AsRawJsonDocument(null, false, cancellationToken).ConfigureAwait(false);
+			var rootElement = doc.RootElement;
 
-			var serializer = new JsonSerializer();
-			if (jsonConverter != null) serializer.Converters.Add(jsonConverter);
+			// Get the various metadata properties
+			var pageCount = rootElement.GetPropertyValue("page_count", 0);
+			var pageNumber = rootElement.GetPropertyValue("page_number", 0);
+			var pageSize = rootElement.GetPropertyValue("page_size", 0);
+			var totalRecords = rootElement.GetPropertyValue("total_records", (int?)null);
 
-			var pageCount = jObject.GetPropertyValue<int>("page_count", 0);
-			var pageNumber = jObject.GetPropertyValue<int>("page_number", 0);
-			var pageSize = jObject.GetPropertyValue<int>("page_size", 0);
-			var totalRecords = jObject.GetPropertyValue<int?>("total_records", null);
+			// Get the property that holds the records
+			var jsonProperty = rootElement.GetProperty(propertyName, false);
 
 			// Make sure the desired property is present. It's ok if the property is missing when there are no records.
-			var jProperty = jObject.Property(propertyName);
-			if (jProperty == null && pageSize > 0)
+			if (!jsonProperty.HasValue && pageSize > 0)
 			{
 				throw new ArgumentException($"The response does not contain a field called '{propertyName}'", nameof(propertyName));
 			}
@@ -900,7 +951,7 @@ namespace ZoomNet
 				PageCount = pageCount,
 				PageNumber = pageNumber,
 				PageSize = pageSize,
-				Records = jProperty?.Value.ToObject<T[]>(serializer) ?? Array.Empty<T>()
+				Records = jsonProperty.HasValue ? JsonSerializer.Deserialize<T[]>(jsonProperty.Value, options ?? ZoomNetJsonFormatter.DeserializerOptions) : Array.Empty<T>()
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
@@ -911,24 +962,26 @@ namespace ZoomNet
 		/// <typeparam name="T">The response model to deserialize into.</typeparam>
 		/// <param name="httpContent">The content.</param>
 		/// <param name="propertyName">The name of the JSON property (or null if not applicable) where the desired data is stored.</param>
-		/// <param name="jsonConverter">Converter that will be used during deserialization.</param>
+		/// <param name="options">Options to control behavior Converter during parsing.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>Returns the response body, or <c>null</c> if the response has no body.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		private static async Task<PaginatedResponseWithToken<T>> AsPaginatedResponseWithToken<T>(this HttpContent httpContent, string propertyName, JsonConverter jsonConverter = null)
+		private static async Task<PaginatedResponseWithToken<T>> AsPaginatedResponseWithToken<T>(this HttpContent httpContent, string propertyName, JsonSerializerOptions options = null, CancellationToken cancellationToken = default)
 		{
-			var responseContent = await httpContent.ReadAsStringAsync(null).ConfigureAwait(false);
-			var jObject = JObject.Parse(responseContent);
+			// Get the content as a queryable json document
+			var doc = await httpContent.AsRawJsonDocument(null, false, cancellationToken).ConfigureAwait(false);
+			var rootElement = doc.RootElement;
 
-			var serializer = new JsonSerializer();
-			if (jsonConverter != null) serializer.Converters.Add(jsonConverter);
+			// Get the various metadata properties
+			var nextPageToken = rootElement.GetPropertyValue("next_page_token", string.Empty);
+			var pageSize = rootElement.GetPropertyValue("page_size", 0);
+			var totalRecords = rootElement.GetPropertyValue("total_records", (int?)null);
 
-			var nextPageToken = jObject.GetPropertyValue<string>("next_page_token", string.Empty);
-			var pageSize = jObject.GetPropertyValue<int>("page_size", 0);
-			var totalRecords = jObject.GetPropertyValue<int?>("total_records", null);
+			// Get the property that holds the records
+			var jsonProperty = rootElement.GetProperty(propertyName, false);
 
 			// Make sure the desired property is present. It's ok if the property is missing when there are no records.
-			var jProperty = jObject.Property(propertyName);
-			if (jProperty == null && pageSize > 0)
+			if (!jsonProperty.HasValue && pageSize > 0)
 			{
 				throw new ArgumentException($"The response does not contain a field called '{propertyName}'", nameof(propertyName));
 			}
@@ -937,7 +990,7 @@ namespace ZoomNet
 			{
 				NextPageToken = nextPageToken,
 				PageSize = pageSize,
-				Records = jProperty?.Value.ToObject<T[]>(serializer) ?? Array.Empty<T>()
+				Records = jsonProperty.HasValue ? JsonSerializer.Deserialize<T[]>(jsonProperty.Value, options ?? ZoomNetJsonFormatter.DeserializerOptions) : Array.Empty<T>()
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
@@ -948,26 +1001,28 @@ namespace ZoomNet
 		/// <typeparam name="T">The response model to deserialize into.</typeparam>
 		/// <param name="httpContent">The content.</param>
 		/// <param name="propertyName">The name of the JSON property (or null if not applicable) where the desired data is stored.</param>
-		/// <param name="jsonConverter">Converter that will be used during deserialization.</param>
+		/// <param name="options">Options to control behavior Converter during parsing.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>Returns the response body, or <c>null</c> if the response has no body.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		private static async Task<PaginatedResponseWithTokenAndDateRange<T>> AsPaginatedResponseWithTokenAndDateRange<T>(this HttpContent httpContent, string propertyName, JsonConverter jsonConverter = null)
+		private static async Task<PaginatedResponseWithTokenAndDateRange<T>> AsPaginatedResponseWithTokenAndDateRange<T>(this HttpContent httpContent, string propertyName, JsonSerializerOptions options = null, CancellationToken cancellationToken = default)
 		{
-			var responseContent = await httpContent.ReadAsStringAsync(null).ConfigureAwait(false);
-			var jObject = JObject.Parse(responseContent);
+			// Get the content as a queryable json document
+			var doc = await httpContent.AsRawJsonDocument(null, false, cancellationToken).ConfigureAwait(false);
+			var rootElement = doc.RootElement;
 
-			var serializer = new JsonSerializer();
-			if (jsonConverter != null) serializer.Converters.Add(jsonConverter);
+			// Get the various metadata properties
+			var from = DateTime.ParseExact(rootElement.GetPropertyValue("from", string.Empty), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+			var to = DateTime.ParseExact(rootElement.GetPropertyValue("to", string.Empty), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+			var nextPageToken = rootElement.GetPropertyValue("next_page_token", string.Empty);
+			var pageSize = rootElement.GetPropertyValue("page_size", 0);
+			var totalRecords = rootElement.GetPropertyValue("total_records", (int?)null);
 
-			var from = DateTime.ParseExact(jObject.GetPropertyValue<string>("from"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
-			var to = DateTime.ParseExact(jObject.GetPropertyValue<string>("to"), "yyyy-MM-dd", CultureInfo.InvariantCulture);
-			var nextPageToken = jObject.GetPropertyValue<string>("next_page_token", string.Empty);
-			var pageSize = jObject.GetPropertyValue<int>("page_size", 0);
-			var totalRecords = jObject.GetPropertyValue<int?>("total_records", null);
+			// Get the property that holds the records
+			var jsonProperty = rootElement.GetProperty(propertyName, false);
 
 			// Make sure the desired property is present. It's ok if the property is missing when there are no records.
-			var jProperty = jObject.Property(propertyName);
-			if (jProperty == null && pageSize > 0)
+			if (!jsonProperty.HasValue && pageSize > 0)
 			{
 				throw new ArgumentException($"The response does not contain a field called '{propertyName}'", nameof(propertyName));
 			}
@@ -978,7 +1033,7 @@ namespace ZoomNet
 				To = to,
 				NextPageToken = nextPageToken,
 				PageSize = pageSize,
-				Records = jProperty?.Value.ToObject<T[]>(serializer) ?? Array.Empty<T>()
+				Records = jsonProperty.HasValue ? JsonSerializer.Deserialize<T[]>(jsonProperty.Value, options ?? ZoomNetJsonFormatter.DeserializerOptions) : Array.Empty<T>()
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
@@ -996,6 +1051,86 @@ namespace ZoomNet
 			where TResult : class
 		{
 			return await task;
+
+		private static T GetPropertyValue<T>(this JsonElement element, string[] names, T defaultValue, bool throwIfMissing)
+		{
+			JsonElement? property = null;
+
+			foreach (var name in names)
+			{
+				property = element.GetProperty(name, false);
+				if (property.HasValue) break;
+			}
+
+			if (!property.HasValue) return defaultValue;
+
+			var typeOfT = typeof(T);
+
+			if (typeOfT.IsEnum)
+			{
+				return property.Value.ValueKind switch
+				{
+					JsonValueKind.String => (T)Enum.Parse(typeof(T), property.Value.GetString()),
+					JsonValueKind.Number => (T)Enum.ToObject(typeof(T), property.Value.GetInt16()),
+					_ => throw new ArgumentException($"Unable to convert a {property.Value.ValueKind} into a {typeof(T).FullName}", nameof(T)),
+				};
+			}
+
+			if (typeOfT.IsGenericType && typeOfT.GetGenericTypeDefinition() == typeof(Nullable<>))
+			{
+				var underlyingType = Nullable.GetUnderlyingType(typeOfT);
+				var getElementValue = typeof(Internal)
+					.GetMethod(nameof(Internal.GetElementValue), BindingFlags.Static | BindingFlags.NonPublic)
+					.MakeGenericMethod(underlyingType);
+
+				return (T)getElementValue.Invoke(null, new object[] { property.Value });
+			}
+
+			if (typeOfT.IsArray)
+			{
+				var elementType = typeOfT.GetElementType();
+				var getElementValue = typeof(Internal)
+					.GetMethod(nameof(Internal.GetElementValue), BindingFlags.Static | BindingFlags.NonPublic)
+					.MakeGenericMethod(elementType);
+
+				var arrayList = new ArrayList(property.Value.GetArrayLength());
+				foreach (var arrayElement in property.Value.EnumerateArray())
+				{
+					var elementValue = getElementValue.Invoke(null, new object[] { arrayElement });
+					arrayList.Add(elementValue);
+				}
+
+				return (T)Convert.ChangeType(arrayList.ToArray(elementType), typeof(T));
+			}
+
+			return property.Value.GetElementValue<T>();
+		}
+
+		private static T GetElementValue<T>(this JsonElement element)
+		{
+			var typeOfT = typeof(T);
+
+			return typeOfT switch
+			{
+				Type boolType when boolType == typeof(bool) => (T)(object)element.GetBoolean(),
+				Type strType when strType == typeof(string) => (T)(object)element.GetString(),
+				Type bytesType when bytesType == typeof(byte[]) => (T)(object)element.GetBytesFromBase64(),
+				Type sbyteType when sbyteType == typeof(sbyte) => (T)(object)element.GetSByte(),
+				Type byteType when byteType == typeof(byte) => (T)(object)element.GetByte(),
+				Type shortType when shortType == typeof(short) => (T)(object)element.GetInt16(),
+				Type ushortType when ushortType == typeof(ushort) => (T)(object)element.GetUInt16(),
+				Type intType when intType == typeof(int) => (T)(object)element.GetInt32(),
+				Type uintType when uintType == typeof(uint) => (T)(object)element.GetUInt32(),
+				Type longType when longType == typeof(long) => (T)(object)element.GetInt64(),
+				Type ulongType when ulongType == typeof(ulong) => (T)(object)element.GetUInt64(),
+				Type doubleType when doubleType == typeof(double) => (T)(object)element.GetDouble(),
+				Type floatType when floatType == typeof(float) => (T)(object)element.GetSingle(),
+				Type decimalType when decimalType == typeof(decimal) => (T)(object)element.GetDecimal(),
+				Type datetimeType when datetimeType == typeof(DateTime) => (T)(object)element.GetDateTime(),
+				Type offsetType when offsetType == typeof(DateTimeOffset) => (T)(object)element.GetDateTimeOffset(),
+				Type guidType when guidType == typeof(Guid) => (T)(object)element.GetGuid(),
+				_ => throw new ArgumentException($"Unsable to map {typeof(T).FullName} to a corresponding JSON type", nameof(T)),
+			};
 		}
 	}
 }

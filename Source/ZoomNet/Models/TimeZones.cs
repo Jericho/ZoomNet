@@ -1,5 +1,3 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
@@ -7,547 +5,546 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// Enumeration of the time zones supported by Zoom.
 	/// </summary>
-	[JsonConverter(typeof(StringEnumConverter))]
 	public enum TimeZones
 	{
 		/// <summary>Midway Island, Samoa.</summary>
-		[EnumMember(Value = "Midway Island, Samoa")]
+		[EnumMember(Value = "Pacific/Midway")]
 		Pacific_Midway,
 
 		/// <summary>Pago Pago.</summary>
-		[EnumMember(Value = "Pago Pago")]
+		[EnumMember(Value = "Pacific/Pago_Pago")]
 		Pacific_Pago_Pago,
 
 		/// <summary>Hawaii.</summary>
-		[EnumMember(Value = "Hawaii")]
+		[EnumMember(Value = "Pacific/Honolulu")]
 		Pacific_Honolulu,
 
 		/// <summary>Alaska.</summary>
-		[EnumMember(Value = "Alaska")]
+		[EnumMember(Value = "America/Anchorage")]
 		America_Anchorage,
 
 		/// <summary>Vancouver.</summary>
-		[EnumMember(Value = "Vancouver")]
+		[EnumMember(Value = "America/Vancouver")]
 		America_Vancouver,
 
 		/// <summary>Pacific Time (US and Canada).</summary>
-		[EnumMember(Value = "Pacific Time (US and Canada)")]
+		[EnumMember(Value = "America/Los_Angeles")]
 		America_Los_Angeles,
 
 		/// <summary>Tijuana.</summary>
-		[EnumMember(Value = "Tijuana")]
+		[EnumMember(Value = "America/Tijuana")]
 		America_Tijuana,
 
 		/// <summary>Edmonton.</summary>
-		[EnumMember(Value = "Edmonton")]
+		[EnumMember(Value = "America/Edmonton")]
 		America_Edmonton,
 
 		/// <summary>Mountain Time (US and Canada).</summary>
-		[EnumMember(Value = "Mountain Time (US and Canada)")]
+		[EnumMember(Value = "America/Denver")]
 		America_Denver,
 
 		/// <summary>Arizona.</summary>
-		[EnumMember(Value = "Arizona")]
+		[EnumMember(Value = "America/Phoenix")]
 		America_Phoenix,
 
 		/// <summary>Mazatlan.</summary>
-		[EnumMember(Value = "Mazatlan")]
+		[EnumMember(Value = "America/Mazatlan")]
 		America_Mazatlan,
 
 		/// <summary>Winnipeg.</summary>
-		[EnumMember(Value = "Winnipeg")]
+		[EnumMember(Value = "America/Winnipeg")]
 		America_Winnipeg,
 
 		/// <summary>Saskatchewan.</summary>
-		[EnumMember(Value = "Saskatchewan")]
+		[EnumMember(Value = "America/Regina")]
 		America_Regina,
 
 		/// <summary>Central Time (US and Canada).</summary>
-		[EnumMember(Value = "Central Time (US and Canada)")]
+		[EnumMember(Value = "America/Chicago")]
 		America_Chicago,
 
 		/// <summary>Mexico City.</summary>
-		[EnumMember(Value = "Mexico City")]
+		[EnumMember(Value = "America/Mexico_City")]
 		America_Mexico_City,
 
 		/// <summary>Guatemala.</summary>
-		[EnumMember(Value = "Guatemala")]
+		[EnumMember(Value = "America/Guatemala")]
 		America_Guatemala,
 
 		/// <summary>El Salvador.</summary>
-		[EnumMember(Value = "El Salvador")]
+		[EnumMember(Value = "America/El_Salvador")]
 		America_El_Salvador,
 
 		/// <summary>Managua.</summary>
-		[EnumMember(Value = "Managua")]
+		[EnumMember(Value = "America/Managua")]
 		America_Managua,
 
 		/// <summary>Costa Rica.</summary>
-		[EnumMember(Value = "Costa Rica")]
+		[EnumMember(Value = "America/Costa_Rica")]
 		America_Costa_Rica,
 
 		/// <summary>Montreal.</summary>
-		[EnumMember(Value = "Montreal")]
+		[EnumMember(Value = "America/Montreal")]
 		America_Montreal,
 
 		/// <summary>Eastern Time (US and Canada).</summary>
-		[EnumMember(Value = "Eastern Time (US and Canada)")]
+		[EnumMember(Value = "America/New_York")]
 		America_New_York,
 
 		/// <summary>Indiana (East).</summary>
-		[EnumMember(Value = "Indiana (East)")]
+		[EnumMember(Value = "America/Indianapolis")]
 		America_Indianapolis,
 
 		/// <summary>Panama.</summary>
-		[EnumMember(Value = "Panama")]
+		[EnumMember(Value = "America/Panama")]
 		America_Panama,
 
 		/// <summary>Bogota.</summary>
-		[EnumMember(Value = "Bogota")]
+		[EnumMember(Value = "America/Bogota")]
 		America_Bogota,
 
 		/// <summary>Lima.</summary>
-		[EnumMember(Value = "Lima")]
+		[EnumMember(Value = "America/Lima")]
 		America_Lima,
 
 		/// <summary>Halifax.</summary>
-		[EnumMember(Value = "Halifax")]
+		[EnumMember(Value = "America/Halifax")]
 		America_Halifax,
 
 		/// <summary>Puerto Rico.</summary>
-		[EnumMember(Value = "Puerto Rico")]
+		[EnumMember(Value = "America/Puerto_Rico")]
 		America_Puerto_Rico,
 
 		/// <summary>Caracas.</summary>
-		[EnumMember(Value = "Caracas")]
+		[EnumMember(Value = "America/Caracas")]
 		America_Caracas,
 
 		/// <summary>Santiago.</summary>
-		[EnumMember(Value = "Santiago")]
+		[EnumMember(Value = "America/Santiago")]
 		America_Santiago,
 
 		/// <summary>Newfoundland and Labrador.</summary>
-		[EnumMember(Value = "Newfoundland and Labrador")]
+		[EnumMember(Value = "America/St_Johns")]
 		America_St_Johns,
 
 		/// <summary>Montevideo.</summary>
-		[EnumMember(Value = "Montevideo")]
+		[EnumMember(Value = "America/Montevideo")]
 		America_Montevideo,
 
 		/// <summary>Brasilia.</summary>
-		[EnumMember(Value = "Brasilia")]
+		[EnumMember(Value = "America/Araguaina")]
 		America_Araguaina,
 
 		/// <summary>Buenos Aires, Georgetown.</summary>
-		[EnumMember(Value = "Buenos Aires, Georgetown")]
+		[EnumMember(Value = "America/Argentina/Buenos_Aires")]
 		America_Argentina_Buenos_Aires,
 
 		/// <summary>Greenland.</summary>
-		[EnumMember(Value = "Greenland")]
+		[EnumMember(Value = "America/Godthab")]
 		America_Godthab,
 
 		/// <summary>Sao Paulo.</summary>
-		[EnumMember(Value = "Sao Paulo")]
+		[EnumMember(Value = "America/Sao_Paulo")]
 		America_Sao_Paulo,
 
 		/// <summary>Azores.</summary>
-		[EnumMember(Value = "Azores")]
+		[EnumMember(Value = "Atlantic/Azores")]
 		Atlantic_Azores,
 
 		/// <summary>Atlantic Time (Canada).</summary>
-		[EnumMember(Value = "Atlantic Time (Canada)")]
+		[EnumMember(Value = "Canada/Atlantic")]
 		Canada_Atlantic,
 
 		/// <summary>Cape Verde Islands.</summary>
-		[EnumMember(Value = "Cape Verde Islands")]
+		[EnumMember(Value = "Atlantic/Cape_Verde")]
 		Atlantic_Cape_Verde,
 
 		/// <summary>Universal Time UTC.</summary>
-		[EnumMember(Value = "Universal Time UTC")]
+		[EnumMember(Value = "UTC")]
 		UTC,
 
 		/// <summary>Greenwich Mean Time.</summary>
-		[EnumMember(Value = "Greenwich Mean Time")]
+		[EnumMember(Value = "Etc/Greenwich")]
 		Etc_Greenwich,
 
 		/// <summary>Belgrade, Bratislava, Ljubljana.</summary>
-		[EnumMember(Value = "Belgrade, Bratislava, Ljubljana")]
+		[EnumMember(Value = "Europe/Belgrade")]
 		Europe_Belgrade,
 
 		/// <summary>Sarajevo, Skopje, Zagreb.</summary>
-		[EnumMember(Value = "Sarajevo, Skopje, Zagreb")]
+		[EnumMember(Value = "CET")]
 		CET,
 
 		/// <summary>Reykjavik.</summary>
-		[EnumMember(Value = "Reykjavik")]
+		[EnumMember(Value = "Atlantic/Reykjavik")]
 		Atlantic_Reykjavik,
 
 		/// <summary>Dublin.</summary>
-		[EnumMember(Value = "Dublin")]
+		[EnumMember(Value = "Europe/Dublin")]
 		Europe_Dublin,
 
 		/// <summary>London.</summary>
-		[EnumMember(Value = "London")]
+		[EnumMember(Value = "Europe/London")]
 		Europe_London,
 
 		/// <summary>Lisbon.</summary>
-		[EnumMember(Value = "Lisbon")]
+		[EnumMember(Value = "Europe/Lisbon")]
 		Europe_Lisbon,
 
 		/// <summary>Casablanca.</summary>
-		[EnumMember(Value = "Casablanca")]
+		[EnumMember(Value = "Africa/Casablanca")]
 		Africa_Casablanca,
 
 		/// <summary>Nouakchott.</summary>
-		[EnumMember(Value = "Nouakchott")]
+		[EnumMember(Value = "Africa/Nouakchott")]
 		Africa_Nouakchott,
 
 		/// <summary>Oslo.</summary>
-		[EnumMember(Value = "Oslo")]
+		[EnumMember(Value = "Europe/Oslo")]
 		Europe_Oslo,
 
 		/// <summary>Copenhagen.</summary>
-		[EnumMember(Value = "Copenhagen")]
+		[EnumMember(Value = "Europe/Copenhagen")]
 		Europe_Copenhagen,
 
 		/// <summary>Brussels.</summary>
-		[EnumMember(Value = "Brussels")]
+		[EnumMember(Value = "Europe/Brussels")]
 		Europe_Brussels,
 
 		/// <summary>Amsterdam, Berlin, Rome, Stockholm, Vienna.</summary>
-		[EnumMember(Value = "Amsterdam, Berlin, Rome, Stockholm, Vienna")]
+		[EnumMember(Value = "Europe/Berlin")]
 		Europe_Berlin,
 
 		/// <summary>Helsinki.</summary>
-		[EnumMember(Value = "Helsinki")]
+		[EnumMember(Value = "Europe/Helsinki")]
 		Europe_Helsinki,
 
 		/// <summary>Amsterdam.</summary>
-		[EnumMember(Value = "Amsterdam")]
+		[EnumMember(Value = "Europe/Amsterdam")]
 		Europe_Amsterdam,
 
 		/// <summary>Rome.</summary>
-		[EnumMember(Value = "Rome")]
+		[EnumMember(Value = "Europe/Rome")]
 		Europe_Rome,
 
 		/// <summary>Stockholm.</summary>
-		[EnumMember(Value = "Stockholm")]
+		[EnumMember(Value = "Europe/Stockholm")]
 		Europe_Stockholm,
 
 		/// <summary>Vienna.</summary>
-		[EnumMember(Value = "Vienna")]
+		[EnumMember(Value = "Europe/Vienna")]
 		Europe_Vienna,
 
 		/// <summary>Luxembourg.</summary>
-		[EnumMember(Value = "Luxembourg")]
+		[EnumMember(Value = "Europe/Luxembourg")]
 		Europe_Luxembourg,
 
 		/// <summary>Paris.</summary>
-		[EnumMember(Value = "Paris")]
+		[EnumMember(Value = "Europe/Paris")]
 		Europe_Paris,
 
 		/// <summary>Zurich.</summary>
-		[EnumMember(Value = "Zurich")]
+		[EnumMember(Value = "Europe/Zurich")]
 		Europe_Zurich,
 
 		/// <summary>Madrid.</summary>
-		[EnumMember(Value = "Madrid")]
+		[EnumMember(Value = "Europe/Madrid")]
 		Europe_Madrid,
 
 		/// <summary>West Central Africa.</summary>
-		[EnumMember(Value = "West Central Africa")]
+		[EnumMember(Value = "Africa/Bangui")]
 		Africa_Bangui,
 
 		/// <summary>Algiers.</summary>
-		[EnumMember(Value = "Algiers")]
+		[EnumMember(Value = "Africa/Algiers")]
 		Africa_Algiers,
 
 		/// <summary>Tunis.</summary>
-		[EnumMember(Value = "Tunis")]
+		[EnumMember(Value = "Africa/Tunis")]
 		Africa_Tunis,
 
 		/// <summary>Harare, Pretoria.</summary>
-		[EnumMember(Value = "Harare, Pretoria")]
+		[EnumMember(Value = "Africa/Harare")]
 		Africa_Harare,
 
 		/// <summary>Nairobi.</summary>
-		[EnumMember(Value = "Nairobi")]
+		[EnumMember(Value = "Africa/Nairobi")]
 		Africa_Nairobi,
 
 		/// <summary>Warsaw.</summary>
-		[EnumMember(Value = "Warsaw")]
+		[EnumMember(Value = "Europe/Warsaw")]
 		Europe_Warsaw,
 
 		/// <summary>Prague Bratislava.</summary>
-		[EnumMember(Value = "Prague Bratislava")]
+		[EnumMember(Value = "Europe/Prague")]
 		Europe_Prague,
 
 		/// <summary>Budapest.</summary>
-		[EnumMember(Value = "Budapest")]
+		[EnumMember(Value = "Europe/Budapest")]
 		Europe_Budapest,
 
 		/// <summary>Sofia.</summary>
-		[EnumMember(Value = "Sofia")]
+		[EnumMember(Value = "Europe/Sofia")]
 		Europe_Sofia,
 
 		/// <summary>Istanbul.</summary>
-		[EnumMember(Value = "Istanbul")]
+		[EnumMember(Value = "Europe/Istanbul")]
 		Europe_Istanbul,
 
 		/// <summary>Athens.</summary>
-		[EnumMember(Value = "Athens")]
+		[EnumMember(Value = "Europe/Athens")]
 		Europe_Athens,
 
 		/// <summary>Bucharest.</summary>
-		[EnumMember(Value = "Bucharest")]
+		[EnumMember(Value = "Europe/Bucharest")]
 		Europe_Bucharest,
 
 		/// <summary>Nicosia.</summary>
-		[EnumMember(Value = "Nicosia")]
+		[EnumMember(Value = "Asia/Nicosia")]
 		Asia_Nicosia,
 
 		/// <summary>Beirut.</summary>
-		[EnumMember(Value = "Beirut")]
+		[EnumMember(Value = "Asia/Beirut")]
 		Asia_Beirut,
 
 		/// <summary>Damascus.</summary>
-		[EnumMember(Value = "Damascus")]
+		[EnumMember(Value = "Asia/Damascus")]
 		Asia_Damascus,
 
 		/// <summary>Jerusalem.</summary>
-		[EnumMember(Value = "Jerusalem")]
+		[EnumMember(Value = "Asia/Jerusalem")]
 		Asia_Jerusalem,
 
 		/// <summary>Amman.</summary>
-		[EnumMember(Value = "Amman")]
+		[EnumMember(Value = "Asia/Amman")]
 		Asia_Amman,
 
 		/// <summary>Tripoli.</summary>
-		[EnumMember(Value = "Tripoli")]
+		[EnumMember(Value = "Africa/Tripoli")]
 		Africa_Tripoli,
 
 		/// <summary>Cairo.</summary>
-		[EnumMember(Value = "Cairo")]
+		[EnumMember(Value = "Africa/Cairo")]
 		Africa_Cairo,
 
 		/// <summary>Johannesburg.</summary>
-		[EnumMember(Value = "Johannesburg")]
+		[EnumMember(Value = "Africa/Johannesburg")]
 		Africa_Johannesburg,
 
 		/// <summary>Moscow.</summary>
-		[EnumMember(Value = "Moscow")]
+		[EnumMember(Value = "Europe/Moscow")]
 		Europe_Moscow,
 
 		/// <summary>Baghdad.</summary>
-		[EnumMember(Value = "Baghdad")]
+		[EnumMember(Value = "Asia/Baghdad")]
 		Asia_Baghdad,
 
 		/// <summary>Kuwait.</summary>
-		[EnumMember(Value = "Kuwait")]
+		[EnumMember(Value = "Asia/Kuwait")]
 		Asia_Kuwait,
 
 		/// <summary>Riyadh.</summary>
-		[EnumMember(Value = "Riyadh")]
+		[EnumMember(Value = "Asia/Riyadh")]
 		Asia_Riyadh,
 
 		/// <summary>Bahrain.</summary>
-		[EnumMember(Value = "Bahrain")]
+		[EnumMember(Value = "Asia/Bahrain")]
 		Asia_Bahrain,
 
 		/// <summary>Qatar.</summary>
-		[EnumMember(Value = "Qatar")]
+		[EnumMember(Value = "Asia/Qatar")]
 		Asia_Qatar,
 
 		/// <summary>Aden.</summary>
-		[EnumMember(Value = "Aden")]
+		[EnumMember(Value = "Asia/Aden")]
 		Asia_Aden,
 
 		/// <summary>Tehran.</summary>
-		[EnumMember(Value = "Tehran")]
+		[EnumMember(Value = "Asia/Tehran")]
 		Asia_Tehran,
 
 		/// <summary>Khartoum.</summary>
-		[EnumMember(Value = "Khartoum")]
+		[EnumMember(Value = "Africa/Khartoum")]
 		Africa_Khartoum,
 
 		/// <summary>Djibouti.</summary>
-		[EnumMember(Value = "Djibouti")]
+		[EnumMember(Value = "Africa/Djibouti")]
 		Africa_Djibouti,
 
 		/// <summary>Mogadishu.</summary>
-		[EnumMember(Value = "Mogadishu")]
+		[EnumMember(Value = "Africa/Mogadishu")]
 		Africa_Mogadishu,
 
 		/// <summary>Dubai.</summary>
-		[EnumMember(Value = "Dubai")]
+		[EnumMember(Value = "Asia/Dubai")]
 		Asia_Dubai,
 
 		/// <summary>Muscat.</summary>
-		[EnumMember(Value = "Muscat")]
+		[EnumMember(Value = "Asia/Muscat")]
 		Asia_Muscat,
 
 		/// <summary>Baku, Tbilisi, Yerevan.</summary>
-		[EnumMember(Value = "Baku, Tbilisi, Yerevan")]
+		[EnumMember(Value = "Asia/Baku")]
 		Asia_Baku,
 
 		/// <summary>Kabul.</summary>
-		[EnumMember(Value = "Kabul")]
+		[EnumMember(Value = "Asia/Kabul")]
 		Asia_Kabul,
 
 		/// <summary>Yekaterinburg.</summary>
-		[EnumMember(Value = "Yekaterinburg")]
+		[EnumMember(Value = "Asia/Yekaterinburg")]
 		Asia_Yekaterinburg,
 
 		/// <summary>Islamabad, Karachi, Tashkent.</summary>
-		[EnumMember(Value = "Islamabad, Karachi, Tashkent")]
+		[EnumMember(Value = "Asia/Tashkent")]
 		Asia_Tashkent,
 
 		/// <summary>India.</summary>
-		[EnumMember(Value = "India")]
+		[EnumMember(Value = "Asia/Calcutta")]
 		Asia_Calcutta,
 
 		/// <summary>Kathmandu.</summary>
-		[EnumMember(Value = "Kathmandu")]
+		[EnumMember(Value = "Asia/Kathmandu")]
 		Asia_Kathmandu,
 
 		/// <summary>Novosibirsk.</summary>
-		[EnumMember(Value = "Novosibirsk")]
+		[EnumMember(Value = "Asia/Novosibirsk")]
 		Asia_Novosibirsk,
 
 		/// <summary>Almaty.</summary>
-		[EnumMember(Value = "Almaty")]
+		[EnumMember(Value = "Asia/Almaty")]
 		Asia_Almaty,
 
 		/// <summary>Dacca.</summary>
-		[EnumMember(Value = "Dacca")]
+		[EnumMember(Value = "Asia/Dacca")]
 		Asia_Dacca,
 
 		/// <summary>Krasnoyarsk.</summary>
-		[EnumMember(Value = "Krasnoyarsk")]
+		[EnumMember(Value = "Asia/Krasnoyarsk")]
 		Asia_Krasnoyarsk,
 
 		/// <summary>Astana, Dhaka.</summary>
-		[EnumMember(Value = "Astana, Dhaka")]
+		[EnumMember(Value = "Asia/Dhaka")]
 		Asia_Dhaka,
 
 		/// <summary>Bangkok.</summary>
-		[EnumMember(Value = "Bangkok")]
+		[EnumMember(Value = "Asia/Bangkok")]
 		Asia_Bangkok,
 
 		/// <summary>Vietnam.</summary>
-		[EnumMember(Value = "Vietnam")]
+		[EnumMember(Value = "Asia/Saigon")]
 		Asia_Saigon,
 
 		/// <summary>Jakarta.</summary>
-		[EnumMember(Value = "Jakarta")]
+		[EnumMember(Value = "Asia/Jakarta")]
 		Asia_Jakarta,
 
 		/// <summary>Irkutsk, Ulaanbaatar.</summary>
-		[EnumMember(Value = "Irkutsk, Ulaanbaatar")]
+		[EnumMember(Value = "Asia/Irkutsk")]
 		Asia_Irkutsk,
 
 		/// <summary>Beijing, Shanghai.</summary>
-		[EnumMember(Value = "Beijing, Shanghai")]
+		[EnumMember(Value = "Asia/Shanghai")]
 		Asia_Shanghai,
 
 		/// <summary>Hong Kong.</summary>
-		[EnumMember(Value = "Hong Kong")]
+		[EnumMember(Value = "Asia/Hong_Kong")]
 		Asia_Hong_Kong,
 
 		/// <summary>Taipei.</summary>
-		[EnumMember(Value = "Taipei")]
+		[EnumMember(Value = "Asia/Taipei")]
 		Asia_Taipei,
 
 		/// <summary>Kuala Lumpur.</summary>
-		[EnumMember(Value = "Kuala Lumpur")]
+		[EnumMember(Value = "Asia/Kuala_Lumpur")]
 		Asia_Kuala_Lumpur,
 
 		/// <summary>Singapore.</summary>
-		[EnumMember(Value = "Singapore")]
+		[EnumMember(Value = "Asia/Singapore")]
 		Asia_Singapore,
 
 		/// <summary>Perth.</summary>
-		[EnumMember(Value = "Perth")]
+		[EnumMember(Value = "Australia/Perth")]
 		Australia_Perth,
 
 		/// <summary>Yakutsk.</summary>
-		[EnumMember(Value = "Yakutsk")]
+		[EnumMember(Value = "Asia/Yakutsk")]
 		Asia_Yakutsk,
 
 		/// <summary>Seoul.</summary>
-		[EnumMember(Value = "Seoul")]
+		[EnumMember(Value = "Asia/Seoul")]
 		Asia_Seoul,
 
 		/// <summary>Osaka, Sapporo, Tokyo.</summary>
-		[EnumMember(Value = "Osaka, Sapporo, Tokyo")]
+		[EnumMember(Value = "Asia/Tokyo")]
 		Asia_Tokyo,
 
 		/// <summary>Darwin.</summary>
-		[EnumMember(Value = "Darwin")]
+		[EnumMember(Value = "Australia/Darwin")]
 		Australia_Darwin,
 
 		/// <summary>Adelaide.</summary>
-		[EnumMember(Value = "Adelaide")]
+		[EnumMember(Value = "Australia/Adelaide")]
 		Australia_Adelaide,
 
 		/// <summary>Vladivostok.</summary>
-		[EnumMember(Value = "Vladivostok")]
+		[EnumMember(Value = "Asia/Vladivostok")]
 		Asia_Vladivostok,
 
 		/// <summary>Guam, Port Moresby.</summary>
-		[EnumMember(Value = "Guam, Port Moresby")]
+		[EnumMember(Value = "Pacific/Port_Moresby")]
 		Pacific_Port_Moresby,
 
 		/// <summary>Brisbane.</summary>
-		[EnumMember(Value = "Brisbane")]
+		[EnumMember(Value = "Australia/Brisbane")]
 		Australia_Brisbane,
 
 		/// <summary>Canberra, Melbourne, Sydney.</summary>
-		[EnumMember(Value = "Canberra, Melbourne, Sydney")]
+		[EnumMember(Value = "Australia/Sydney")]
 		Australia_Sydney,
 
 		/// <summary>Hobart.</summary>
-		[EnumMember(Value = "Hobart")]
+		[EnumMember(Value = "Australia/Hobart")]
 		Australia_Hobart,
 
 		/// <summary>Magadan.</summary>
-		[EnumMember(Value = "Magadan")]
+		[EnumMember(Value = "Asia/Magadan")]
 		Asia_Magadan,
 
 		/// <summary>Solomon Islands.</summary>
-		[EnumMember(Value = "Solomon Islands")]
+		[EnumMember(Value = "SST")]
 		SST,
 
 		/// <summary>New Caledonia.</summary>
-		[EnumMember(Value = "New Caledonia")]
+		[EnumMember(Value = "Pacific/Noumea")]
 		Pacific_Noumea,
 
 		/// <summary>Kamchatka.</summary>
-		[EnumMember(Value = "Kamchatka")]
+		[EnumMember(Value = "Asia/Kamchatka")]
 		Asia_Kamchatka,
 
 		/// <summary>Fiji Islands, Marshall Islands.</summary>
-		[EnumMember(Value = "Fiji Islands, Marshall Islands")]
+		[EnumMember(Value = "Pacific/Fiji")]
 		Pacific_Fiji,
 
 		/// <summary>Auckland, Wellington.</summary>
-		[EnumMember(Value = "Auckland, Wellington")]
+		[EnumMember(Value = "Pacific/Auckland")]
 		Pacific_Auckland,
 
 		/// <summary>Mumbai, Kolkata, New Delhi.</summary>
-		[EnumMember(Value = "Mumbai, Kolkata, New Delhi")]
+		[EnumMember(Value = "Asia/Kolkata")]
 		Asia_Kolkata,
 
 		/// <summary>Kiev.</summary>
-		[EnumMember(Value = "Kiev")]
+		[EnumMember(Value = "Europe/Kiev")]
 		Europe_Kiev,
 
 		/// <summary>Tegucigalpa.</summary>
-		[EnumMember(Value = "Tegucigalpa")]
+		[EnumMember(Value = "America/Tegucigalpa")]
 		America_Tegucigalpa,
 
 		/// <summary>Independent State of Samoa.</summary>
-		[EnumMember(Value = "Independent State of Samoa")]
+		[EnumMember(Value = "Pacific/Apia")]
 		Pacific_Apia,
 	}
 }

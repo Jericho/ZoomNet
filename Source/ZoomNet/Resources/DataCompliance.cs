@@ -1,7 +1,7 @@
-using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
 using System.Linq;
+using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models.Webhooks;
@@ -18,6 +18,7 @@ namespace ZoomNet.Resources
 	/// This resource can only be used when you connect to Zoom using OAuth. It cannot be used with a Jwt connection.
 	/// See <a href="https://marketplace.zoom.us/docs/api-reference/data-compliance/">Zoom documentation</a> for more information.
 	/// </remarks>
+	[Obsolete("The Data Compliance API is deprecated")]
 	public class DataCompliance : IDataCompliance
 	{
 		private readonly Pathoschild.Http.Client.IClient _client;
@@ -42,6 +43,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
+		[Obsolete("The Data Compliance API is deprecated")]
 		public Task NotifyAsync(string userId, long accountId, AppDeauthorizedEvent deauthorizationEventReceived, CancellationToken cancellationToken = default)
 		{
 			// Prepare the request (but do not dispatch it yet)
@@ -66,12 +68,14 @@ namespace ZoomNet.Resources
 			}
 
 			// Prepare the payload
-			var data = new JObject();
-			data.AddPropertyIfValue("client_id", clientId);
-			data.AddPropertyIfValue("user_id", userId);
-			data.AddPropertyIfValue("account_id", accountId);
-			data.AddPropertyIfValue("deauthorization_event_received", deauthorizationEventReceived);
-			data.AddPropertyIfValue("compliance_completed", "true");
+			var data = new JsonObject
+			{
+				{ "client_id", clientId },
+				{ "user_id", userId },
+				{ "account_id", accountId },
+				{ "deauthorization_event_received", deauthorizationEventReceived },
+				{ "compliance_completed", "true" }
+			};
 
 			// This endpoint relies on clientId+secret for authentication. It does not need tokens.
 			request.Filters.Remove<OAuthTokenHandler>();

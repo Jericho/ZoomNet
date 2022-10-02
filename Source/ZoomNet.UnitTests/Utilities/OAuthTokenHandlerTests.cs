@@ -25,7 +25,12 @@ namespace ZoomNet.UnitTests.Utilities
 			var clientId = "abc123";
 			var clientSecret = "xyz789";
 			var authorizationCode = "INVALID_AUTH_CODE";
-			var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, authorizationCode, null);
+			var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, authorizationCode,
+				(newRefreshToken, newAccessToken) =>
+				{
+					// Intentionally left blank
+				},
+				null);
 			var apiResponse = "{ \"reason\":\"Invalid authorization code " + authorizationCode + "\",\"error\":\"invalid_request\"}";
 
 			var mockHttp = new MockHttpMessageHandler();

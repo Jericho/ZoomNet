@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -12,28 +12,28 @@ namespace ZoomNet.Models
 		/// Gets or sets the start date for this report.
 		/// </summary>
 		/// <value>The start date for this report.</value>
-		[JsonProperty(PropertyName = "from")]
+		[JsonPropertyName("from")]
 		public DateTime From { get; set; }
 
 		/// <summary>
 		/// Gets or sets the end date for this report.
 		/// </summary>
 		/// <value>The end date for this report.</value>
-		[JsonProperty(PropertyName = "to")]
+		[JsonPropertyName("to")]
 		public DateTime To { get; set; }
 
 		/// <summary>
 		/// Gets or sets the number of all records available across pages.
 		/// </summary>
 		/// <value>The number of all records available across pages.</value>
-		[JsonProperty(PropertyName = "total_records")]
+		[JsonPropertyName("total_records")]
 		public int TotalRecords { get; set; }
 
 		/// <summary>
 		/// Gets or sets the collection of Zoom room issues.
 		/// </summary>
 		/// <value>The collection of Zoom room issues.</value>
-		[JsonProperty(PropertyName = "issues")]
+		[JsonPropertyName("issues")]
 		public IssuesOfZoomRooms[] Issues { get; set; }
 	}
 }

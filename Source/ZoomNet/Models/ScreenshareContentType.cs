@@ -1,5 +1,3 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
@@ -7,7 +5,6 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// Enumeration to indicate the type content share in a meeting/webinar.
 	/// </summary>
-	[JsonConverter(typeof(StringEnumConverter))]
 	public enum ScreenshareContentType
 	{
 		/// <summary>
@@ -26,6 +23,24 @@ namespace ZoomNet.Models
 		/// Desktop.
 		/// </summary>
 		[EnumMember(Value = "desktop")]
-		Desktop
+		Desktop,
+
+		/// <summary>
+		/// Airplay.
+		/// </summary>
+		[EnumMember(Value = "airplay")]
+		Airplay,
+
+		/// <summary>
+		/// Camera.
+		/// </summary>
+		[EnumMember(Value = "camera")]
+		Camera,
+
+		/// <summary>
+		/// An unrecognized application, such as a third party app.
+		/// </summary>
+		[EnumMember(Value = "unknown")]
+		Unknown
 	}
 }

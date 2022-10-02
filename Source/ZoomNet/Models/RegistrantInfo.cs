@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -14,25 +14,25 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The id.
 		/// </value>
-		[JsonProperty("registrant_id")]
+		[JsonPropertyName("registrant_id")]
 		public string Id { get; set; }
 
 		/// <summary>
-		/// Gets or sets the webinar id.
+		/// Gets or sets the unique identifier of the meeting or webinar.
 		/// </summary>
-		[JsonProperty(PropertyName = "id")]
-		public long WebinarId { get; set; }
+		[JsonPropertyName("id")]
+		public long EventId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the start time.
 		/// </summary>
-		[JsonProperty(PropertyName = "start_time")]
+		[JsonPropertyName("start_time")]
 		public DateTime StartTime { get; set; }
 
 		/// <summary>
-		/// Gets or sets the URL for this registrant to join the webinar.
+		/// Gets or sets the URL for this registrant to join the meeting or webinar.
 		/// </summary>
-		[JsonProperty(PropertyName = "join_url")]
+		[JsonPropertyName("join_url")]
 		public string JoinUrl { get; set; }
 	}
 }

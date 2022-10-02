@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -34,14 +34,14 @@ namespace ZoomNet.Models
 		/// * Scheduling Display.<br/>
 		/// </summary>
 		/// <value>The issue type.</value>
-		[JsonProperty(PropertyName = "issue")]
+		[JsonPropertyName("issue")]
 		public IssueType IssueType { get; set; }
 
 		/// <summary>
 		/// Gets or sets the time the issue appeared.
 		/// </summary>
 		/// <value>The time the issue appeared.</value>
-		[JsonProperty(PropertyName = "time")]
+		[JsonPropertyName("time")]
 		public DateTime Time { get; set; }
 	}
 }

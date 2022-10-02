@@ -17,6 +17,12 @@ namespace ZoomNet
 	public class OAuthConnectionInfo : IConnectionInfo
 	{
 		/// <summary>
+		/// Gets the account id.
+		/// </summary>
+		/// <remarks>This is relevant only when using Server-to-Server authentication.</remarks>
+		public string AccountId { get; }
+
+		/// <summary>
 		/// Gets the client id.
 		/// </summary>
 		public string ClientId { get; }
@@ -71,7 +77,7 @@ namespace ZoomNet
 		/// </summary>
 		/// <remarks>
 		/// This constructor is used to get access token for APIs that do not
-		/// need a user’s permission, but rather a service’s permission.
+		/// need a user's permission, but rather a service's permission.
 		/// Within the realm of Zoom APIs, Client Credentials grant should be
 		/// used to get access token from the Chatbot Service in order to use
 		/// the "Send Chatbot Messages API". See the "Using OAuth 2.0 / Client
@@ -82,8 +88,11 @@ namespace ZoomNet
 		/// <param name="clientSecret">Your Client Secret.</param>
 		public OAuthConnectionInfo(string clientId, string clientSecret)
 		{
-			ClientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
-			ClientSecret = clientSecret ?? throw new ArgumentNullException(nameof(clientSecret));
+			if (string.IsNullOrEmpty(clientId)) throw new ArgumentNullException(nameof(clientId));
+			if (string.IsNullOrEmpty(clientSecret)) throw new ArgumentNullException(nameof(clientSecret));
+
+			ClientId = clientId;
+			ClientSecret = clientSecret;
 			GrantType = OAuthGrantType.ClientCredentials;
 		}
 
@@ -100,7 +109,9 @@ namespace ZoomNet
 		/// always necessary. It seems that some developers get a "REDIRECT URI MISMATCH" exception when
 		/// they omit this value but other developers don't. Therefore, the redirectUri parameter is
 		/// marked as optional in ZoomNet which allows you to specify it or omit it depending on your
-		/// situation. See this <a href="">Github issue</a> for more details.
+		/// situation. See this <a href="https://github.com/Jericho/ZoomNet/issues/104">Github issue</a>
+		/// and this <a href="https://devforum.zoom.us/t/trying-to-integrate-not-understanding-the-need-for-the-second-redirect-uri/43833">support thread</a>
+		/// for more details.
 		/// </remarks>
 		/// <param name="clientId">Your Client Id.</param>
 		/// <param name="clientSecret">Your Client Secret.</param>
@@ -109,9 +120,13 @@ namespace ZoomNet
 		/// <param name="redirectUri">The Redirect Uri.</param>
 		public OAuthConnectionInfo(string clientId, string clientSecret, string authorizationCode, OnTokenRefreshedDelegate onTokenRefreshed, string redirectUri = null)
 		{
-			ClientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
-			ClientSecret = clientSecret ?? throw new ArgumentNullException(nameof(clientSecret));
-			AuthorizationCode = authorizationCode ?? throw new ArgumentNullException(nameof(authorizationCode));
+			if (string.IsNullOrEmpty(clientId)) throw new ArgumentNullException(nameof(clientId));
+			if (string.IsNullOrEmpty(clientSecret)) throw new ArgumentNullException(nameof(clientSecret));
+			if (string.IsNullOrEmpty(authorizationCode)) throw new ArgumentNullException(nameof(authorizationCode));
+
+			ClientId = clientId;
+			ClientSecret = clientSecret;
+			AuthorizationCode = authorizationCode;
 			RedirectUri = redirectUri;
 			TokenExpiration = DateTime.MinValue;
 			GrantType = OAuthGrantType.AuthorizationCode;
@@ -131,12 +146,41 @@ namespace ZoomNet
 		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed.</param>
 		public OAuthConnectionInfo(string clientId, string clientSecret, string refreshToken, string accessToken, OnTokenRefreshedDelegate onTokenRefreshed)
 		{
-			ClientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
-			ClientSecret = clientSecret ?? throw new ArgumentNullException(nameof(clientSecret));
-			RefreshToken = refreshToken ?? throw new ArgumentNullException(nameof(refreshToken));
-			AccessToken = accessToken ?? throw new ArgumentNullException(nameof(accessToken));
+			if (string.IsNullOrEmpty(clientId)) throw new ArgumentNullException(nameof(clientId));
+			if (string.IsNullOrEmpty(clientSecret)) throw new ArgumentNullException(nameof(clientSecret));
+			if (string.IsNullOrEmpty(refreshToken)) throw new ArgumentNullException(nameof(refreshToken));
+			if (string.IsNullOrEmpty(accessToken)) throw new ArgumentNullException(nameof(accessToken));
+
+			ClientId = clientId;
+			ClientSecret = clientSecret;
+			RefreshToken = refreshToken;
+			AccessToken = accessToken;
 			TokenExpiration = string.IsNullOrEmpty(accessToken) ? DateTime.MinValue : DateTime.MaxValue; // Set expiration to DateTime.MaxValue when an access token is provided because we don't know when it will expire
 			GrantType = OAuthGrantType.RefreshToken;
+			OnTokenRefreshed = onTokenRefreshed;
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="OAuthConnectionInfo"/> class.
+		/// </summary>
+		/// <remarks>
+		/// Use this constructor when you want to use Server-to-Server OAuth authentication.
+		/// </remarks>
+		/// <param name="clientId">Your Client Id.</param>
+		/// <param name="clientSecret">Your Client Secret.</param>
+		/// <param name="accountId">Your Account Id.</param>
+		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed. In the Server-to-Server scenario, this delegate is optional.</param>
+		public OAuthConnectionInfo(string clientId, string clientSecret, string accountId, OnTokenRefreshedDelegate onTokenRefreshed)
+		{
+			if (string.IsNullOrEmpty(clientId)) throw new ArgumentNullException(nameof(clientId));
+			if (string.IsNullOrEmpty(clientSecret)) throw new ArgumentNullException(nameof(clientSecret));
+			if (string.IsNullOrEmpty(accountId)) throw new ArgumentNullException(nameof(accountId));
+
+			ClientId = clientId;
+			ClientSecret = clientSecret;
+			AccountId = accountId;
+			TokenExpiration = DateTime.MinValue;
+			GrantType = OAuthGrantType.AccountCredentials;
 			OnTokenRefreshed = onTokenRefreshed;
 		}
 	}

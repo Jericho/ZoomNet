@@ -1,9 +1,11 @@
-using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -88,12 +90,12 @@ namespace ZoomNet.Resources
 		{
 			if (emails != null && emails.Count() > 5) throw new ArgumentOutOfRangeException(nameof(emails), "You can invite up to 5 members at once");
 
-			var data = new JObject()
+			var data = new JsonObject
 			{
-				{ "name", name }
+				{ "name", name },
+				{ "type", type },
+				{ "members", emails?.Select(e => new JsonObject { { "email", e } }) }
 			};
-			data.AddPropertyIfEnumValue("type", type);
-			data.AddPropertyIfValue("members", emails?.Select(e => new JObject() { { "email", e } }));
 
 			return _client
 				.PostAsync($"chat/users/{userId}/channels")
@@ -114,7 +116,7 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task UpdateAccountChannelAsync(string userId, string channelId, string name, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
 				{ "name", name }
 			};
@@ -185,8 +187,10 @@ namespace ZoomNet.Resources
 			if (emails == null || !emails.Any()) throw new ArgumentNullException(nameof(emails), "You must specify at least one member to invite");
 			if (emails.Count() > 5) throw new ArgumentOutOfRangeException(nameof(emails), "You can invite up to 5 members at once");
 
-			var data = new JObject();
-			data.AddPropertyIfValue("members", emails.Select(e => new JObject() { { "email", e } }));
+			var data = new JsonObject
+			{
+				{ "members", emails.Select(e => new JsonObject() { { "email", e } }).ToArray() }
+			};
 
 			return _client
 				.PostAsync($"chat/users/{userId}/channels/{channelId}/members")
@@ -240,7 +244,7 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task UpdateChannelAsync(string channelId, string name, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
 				{ "name", name }
 			};
@@ -301,36 +305,16 @@ namespace ZoomNet.Resources
 				.AsObject<string>("id");
 		}
 
-		/// <summary>
-		/// Send a message to a user on on the sender's contact list.
-		/// </summary>
-		/// <param name="userId">The unique identifier of the sender.</param>
-		/// <param name="recipientEmail">The email address of the contact to whom you would like to send the message.</param>
-		/// <param name="message">The message.</param>
-		/// <param name="mentions">Mentions.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The message Id.
-		/// </returns>
-		public Task<string> SendMessageToContactAsync(string userId, string recipientEmail, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
+		/// <inheritdoc/>
+		public Task<string> SendMessageToContactAsync(string userId, string recipientEmail, string message, string replyMessageId = null, IEnumerable<string> fileIds = null, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
 		{
-			return SendMessageAsync(userId, recipientEmail, null, message, mentions, cancellationToken);
+			return SendMessageAsync(userId, recipientEmail, null, message, replyMessageId, fileIds, mentions, cancellationToken);
 		}
 
-		/// <summary>
-		/// Send a message to a channel of which the sender is a member.
-		/// </summary>
-		/// <param name="userId">The unique identifier of the sender.</param>
-		/// <param name="channelId">The channel Id.</param>
-		/// <param name="message">The message.</param>
-		/// <param name="mentions">Mentions.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The message Id.
-		/// </returns>
-		public Task<string> SendMessageToChannelAsync(string userId, string channelId, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
+		/// <inheritdoc/>
+		public Task<string> SendMessageToChannelAsync(string userId, string channelId, string message, string replyMessageId = null, IEnumerable<string> fileIds = null, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
 		{
-			return SendMessageAsync(userId, null, channelId, message, mentions, cancellationToken);
+			return SendMessageAsync(userId, null, channelId, message, replyMessageId, fileIds, mentions, cancellationToken);
 		}
 
 		/// <summary>
@@ -429,18 +413,57 @@ namespace ZoomNet.Resources
 			return DeleteMessageAsync(messageId, userId, null, channelId, cancellationToken);
 		}
 
-		private Task<string> SendMessageAsync(string userId, string recipientEmail, string channelId, string message, IEnumerable<ChatMention> mentions, CancellationToken cancellationToken)
+		/// <inheritdoc/>
+		public Task<string> SendFileAsync(string messageId, string userId, string recipientId, string channelId, string fileName, Stream fileData, CancellationToken cancellationToken = default)
 		{
-			Debug.Assert(recipientEmail != null || channelId != null, "You must provide either recipientEmail or channelId");
-			Debug.Assert(recipientEmail == null || channelId == null, "You can't provide both recipientEmail and channelId");
+			return _client
+				.PostAsync($"https://file.zoom.us/v2/chat/users/{userId}/messages/files")
+				.WithBody(bodyBuilder =>
+				{
+					// The file name as well as the name of the other 'parts' in the request must be quoted otherwise the Zoom API would return the following error message: Invalid 'Content-Disposition' in multipart form
+					var content = new MultipartFormDataContent
+					{
+						{ new StreamContent(fileData), "files", $"\"{fileName}\"" }
+					};
+					if (!string.IsNullOrEmpty(messageId)) content.Add(new StringContent(messageId), "\"reply_main_message_id\"");
+					if (!string.IsNullOrEmpty(channelId)) content.Add(new StringContent(channelId), "\"to_channel\"");
+					if (!string.IsNullOrEmpty(recipientId)) content.Add(new StringContent(recipientId), "\"to_contact\"");
 
-			var data = new JObject()
+					return content;
+				})
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("id");
+		}
+
+		/// <inheritdoc/>
+		public Task<string> UploadFileAsync(string userId, string fileName, Stream fileData, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.PostAsync($"https://file.zoom.us/v2/chat/users/{userId}/files")
+				.WithBody(bodyBuilder =>
+				{
+					// The file name must be quoted otherwise the Zoom API would return the following error message: Invalid 'Content-Disposition' in multipart form
+					var content = new MultipartFormDataContent
+					{
+						{ new StreamContent(fileData), "file", $"\"{fileName}\"" }
+					};
+					return content;
+				})
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("id");
+		}
+
+		private Task<string> SendMessageAsync(string userId, string recipientEmail, string channelId, string message, string replyMessageId = null, IEnumerable<string> fileIds = null, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
 			{
-				{ "message", message }
+				{ "message", message },
+				{ "file_ids", fileIds?.ToArray() },
+				{ "reply_main_message_id", replyMessageId },
+				{ "to_contact", recipientEmail },
+				{ "to_channel", channelId },
+				{ "at_items", mentions?.ToArray() }
 			};
-			data.AddPropertyIfValue("to_contact", recipientEmail);
-			data.AddPropertyIfValue("to_channel", channelId);
-			data.AddPropertyIfValue("at_items", mentions);
 
 			return _client
 				.PostAsync($"chat/users/{userId}/messages")
@@ -474,11 +497,13 @@ namespace ZoomNet.Resources
 			Debug.Assert(recipientEmail != null || channelId != null, "You must provide either recipientEmail or channelId");
 			Debug.Assert(recipientEmail == null || channelId == null, "You can't provide both recipientEmail and channelId");
 
-			var data = new JObject();
-			data.AddPropertyIfValue("message", message);
-			data.AddPropertyIfValue("to_contact", recipientEmail);
-			data.AddPropertyIfValue("to_channel", channelId);
-			data.AddPropertyIfValue("at_items", mentions);
+			var data = new JsonObject
+			{
+				{ "message", message },
+				{ "to_contact", recipientEmail },
+				{ "to_channel", channelId },
+				{ "at_items", mentions?.ToArray() }
+			};
 
 			return _client
 				.PutAsync($"chat/users/{userId}/messages/{messageId}")

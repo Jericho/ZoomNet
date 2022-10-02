@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -9,22 +9,43 @@ namespace ZoomNet.Models
 	public class PastMeeting
 	{
 		/// <summary>
-		/// Gets or sets the unique id.
-		/// </summary>
-		/// <value>
-		/// The unique id.
-		/// </value>
-		[JsonProperty("uuid", NullValueHandling = NullValueHandling.Ignore)]
-		public string Uuid { get; set; }
-
-		/// <summary>
 		/// Gets or sets the meeting id, also known as the meeting number.
 		/// </summary>
 		/// <value>
 		/// The id.
 		/// </value>
-		[JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("id")]
 		public long Id { get; set; }
+
+		/// <summary>
+		/// Gets or sets the unique id.
+		/// </summary>
+		/// <value>
+		/// The unique id.
+		/// </value>
+		[JsonPropertyName("uuid")]
+		public string Uuid { get; set; }
+
+		/// <summary>
+		/// Gets or sets the meeting duration in minutes.
+		/// </summary>
+		/// <value>The meeting duration.</value>
+		[JsonPropertyName("duration")]
+		public long Duration { get; set; }
+
+		/// <summary>
+		/// Gets or sets the date and time when the meeting started.
+		/// </summary>
+		/// <value>The meeting start time.</value>
+		[JsonPropertyName("start_time")]
+		public DateTime StartedOn { get; set; }
+
+		/// <summary>
+		/// Gets or sets the date and time when the meeting ended.
+		/// </summary>
+		/// <value>The meeting end time.</value>
+		[JsonPropertyName("end_time")]
+		public DateTime EndedOn { get; set; }
 
 		/// <summary>
 		/// Gets or sets the ID of the user who is set as the host of the meeting.
@@ -32,8 +53,37 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The user id.
 		/// </value>
-		[JsonProperty("host_id", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("host_id")]
 		public string HostId { get; set; }
+
+		/// <summary>
+		/// Gets or sets the meeting host's department.
+		/// </summary>
+		/// <value>
+		/// The department.
+		/// </value>
+		[JsonPropertyName("dept")]
+		public string Department { get; set; }
+
+		/// <summary>
+		/// Gets or sets the number of participants.
+		/// </summary>
+		/// <value>The number of participants.</value>
+		[JsonPropertyName("participants_count")]
+		public long ParticipantsCount { get; set; }
+
+		/// <summary>
+		/// Gets or sets the value indicating whether the meeting was created directly through Zoom or via an API request.
+		/// </summary>
+		/// <remarks>
+		/// If the meeting was created via an OAuth app, this field returns the OAuth app's name.
+		/// If the meeting was created via JWT or the Zoom Web Portal, this returns the Zoom value.
+		/// </remarks>
+		/// <value>
+		/// The source.
+		/// </value>
+		[JsonPropertyName("source")]
+		public string Source { get; set; }
 
 		/// <summary>
 		/// Gets or sets the topic of the meeting.
@@ -41,63 +91,35 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The topic.
 		/// </value>
-		[JsonProperty("topic", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("topic")]
 		public string Topic { get; set; }
-
-		/// <summary>
-		/// Gets or sets the meeting type.
-		/// </summary>
-		/// <value>The meeting type.</value>
-		[JsonProperty(PropertyName = "type", NullValueHandling = NullValueHandling.Ignore)]
-		public MeetingType Type { get; set; }
-
-		/// <summary>
-		/// Gets or sets the user display name.
-		/// </summary>
-		/// <value>The user display name.</value>
-		[JsonProperty(PropertyName = "user_name", NullValueHandling = NullValueHandling.Ignore)]
-		public string UserName { get; set; }
-
-		/// <summary>
-		/// Gets or sets the user email.
-		/// </summary>
-		/// <value>The user email.</value>
-		[JsonProperty(PropertyName = "user_email", NullValueHandling = NullValueHandling.Ignore)]
-		public string UserEmail { get; set; }
-
-		/// <summary>
-		/// Gets or sets the date and time when the meeting started.
-		/// </summary>
-		/// <value>The meeting start time.</value>
-		[JsonProperty(PropertyName = "start_time", NullValueHandling = NullValueHandling.Ignore)]
-		public DateTime StartedOn { get; set; }
-
-		/// <summary>
-		/// Gets or sets the date and time when the meeting ended.
-		/// </summary>
-		/// <value>The meeting end time.</value>
-		[JsonProperty(PropertyName = "end_time", NullValueHandling = NullValueHandling.Ignore)]
-		public DateTime EndedOn { get; set; }
-
-		/// <summary>
-		/// Gets or sets the meeting duration in minutes.
-		/// </summary>
-		/// <value>The meeting duration.</value>
-		[JsonProperty(PropertyName = "duration", NullValueHandling = NullValueHandling.Ignore)]
-		public long Duration { get; set; }
 
 		/// <summary>
 		/// Gets or sets the sum of meeting minutes from all participants.
 		/// </summary>
 		/// <value>The total meeting minutes.</value>
-		[JsonProperty(PropertyName = "total_minutes", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("total_minutes")]
 		public long TotalMinutes { get; set; }
 
 		/// <summary>
-		/// Gets or sets the number of participants.
+		/// Gets or sets the meeting type.
 		/// </summary>
-		/// <value>The number of participants.</value>
-		[JsonProperty(PropertyName = "participants_count", NullValueHandling = NullValueHandling.Ignore)]
-		public long ParticipantsCount { get; set; }
+		/// <value>The meeting type.</value>
+		[JsonPropertyName("type")]
+		public MeetingType Type { get; set; }
+
+		/// <summary>
+		/// Gets or sets the user email.
+		/// </summary>
+		/// <value>The user email.</value>
+		[JsonPropertyName("user_email")]
+		public string UserEmail { get; set; }
+
+		/// <summary>
+		/// Gets or sets the user display name.
+		/// </summary>
+		/// <value>The user display name.</value>
+		[JsonPropertyName("user_name")]
+		public string UserName { get; set; }
 	}
 }

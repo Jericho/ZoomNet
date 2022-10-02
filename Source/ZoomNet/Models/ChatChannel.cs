@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -13,7 +13,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The id.
 		/// </value>
-		[JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("id")]
 		public string Id { get; set; }
 
 		/// <summary>
@@ -22,25 +22,25 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The JId.
 		/// </value>
-		[JsonProperty("jid", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("jid")]
 		public string JId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name of the channel.
 		/// </summary>
-		[JsonProperty(PropertyName = "name")]
+		[JsonPropertyName("name")]
 		public string Name { get; set; }
 
 		/// <summary>
 		/// Gets or sets the type of the channel.
 		/// </summary>
-		[JsonProperty(PropertyName = "type")]
+		[JsonPropertyName("type")]
 		public ChatChannelType Type { get; set; }
 
 		/// <summary>
 		/// Gets or sets the settings for the channel.
 		/// </summary>
-		[JsonProperty(PropertyName = "channel_settings")]
+		[JsonPropertyName("channel_settings")]
 		public ChatChannelSettings Settings { get; set; }
 	}
 }

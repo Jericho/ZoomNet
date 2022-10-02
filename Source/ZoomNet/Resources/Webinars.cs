@@ -1,13 +1,11 @@
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
-using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
@@ -31,18 +29,9 @@ namespace ZoomNet.Resources
 			_client = client;
 		}
 
-		/// <summary>
-		/// Retrieve all webinars for a user.
-		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="page">The current page number of returned records.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Webinar" />.
-		/// </returns>
+		/// <inheritdoc/>
 		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
-		public Task<PaginatedResponse<Webinar>> GetAllAsync(string userId, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponse<WebinarSummary>> GetAllAsync(string userId, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -54,20 +43,11 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("page_number", page)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponse<Webinar>("webinars", new WebinarConverter());
+				.AsPaginatedResponse<WebinarSummary>("webinars");
 		}
 
-		/// <summary>
-		/// Retrieve all webinars for a user.
-		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Webinar" />.
-		/// </returns>
-		public Task<PaginatedResponseWithToken<Webinar>> GetAllAsync(string userId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<WebinarSummary>> GetAllAsync(string userId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -79,7 +59,7 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<Webinar>("webinars", new WebinarConverter());
+				.AsPaginatedResponseWithToken<WebinarSummary>("webinars");
 		}
 
 		/// <summary>
@@ -102,19 +82,19 @@ namespace ZoomNet.Resources
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the webinar.</exception>
 		public Task<ScheduledWebinar> CreateScheduledWebinarAsync(string userId, string topic, string agenda, DateTime start, int duration, TimeZones? timeZone = TimeZones.UTC, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
-				{ "type", 5 }
+				{ "type", 5 },
+				{ "topic", topic },
+				{ "agenda", agenda },
+				{ "password", password },
+				{ "start_time", start.ToZoomFormat(timeZone) },
+				{ "duration", duration },
+				{ "timezone", timeZone },
+				{ "settings", settings },
+				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }).ToArray() },
+				{ "template_id", templateId }
 			};
-			data.AddPropertyIfValue("topic", topic);
-			data.AddPropertyIfValue("agenda", agenda);
-			data.AddPropertyIfValue("password", password);
-			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
-			data.AddPropertyIfValue("duration", duration);
-			data.AddPropertyIfEnumValue("timezone", timeZone);
-			data.AddPropertyIfValue("settings", settings);
-			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
-			data.AddPropertyIfValue("template_id", templateId);
 
 			return _client
 				.PostAsync($"users/{userId}/webinars")
@@ -144,22 +124,20 @@ namespace ZoomNet.Resources
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the webinar.</exception>
 		public Task<RecurringWebinar> CreateRecurringWebinarAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, TimeZones? timeZone = TimeZones.UTC, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
-				// 6 = Recurring with no fixed time
-				// 9 = Recurring with fixed time
-				{ "type", start.HasValue ? 9 : 6 }
+				{ "type", start.HasValue ? 9 : 6 }, // 9 = Recurring with fixed time. 6 = Recurring with no fixed time
+				{ "topic", topic },
+				{ "agenda", agenda },
+				{ "password", password },
+				{ "start_time", start.ToZoomFormat(timeZone) },
+				{ "duration", duration },
+				{ "recurrence", recurrence },
+				{ "timezone", timeZone },
+				{ "settings", settings },
+				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }).ToArray() },
+				{ "template_id", templateId }
 			};
-			data.AddPropertyIfValue("topic", topic);
-			data.AddPropertyIfValue("agenda", agenda);
-			data.AddPropertyIfValue("password", password);
-			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
-			data.AddPropertyIfValue("duration", duration);
-			data.AddPropertyIfValue("recurrence", recurrence);
-			data.AddPropertyIfEnumValue("timezone", timeZone);
-			data.AddPropertyIfValue("settings", settings);
-			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
-			data.AddPropertyIfValue("template_id", templateId);
 
 			return _client
 				.PostAsync($"users/{userId}/webinars")
@@ -184,12 +162,14 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task UpdateWebinarOccurrenceAsync(long webinarId, string occurrenceId, string agenda = null, DateTime? start = null, int? duration = null, TimeZones? timeZone = null, WebinarSettings settings = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("agenda", agenda);
-			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
-			data.AddPropertyIfValue("duration", duration);
-			data.AddPropertyIfEnumValue("timezone", timeZone);
-			data.AddPropertyIfValue("settings", settings);
+			var data = new JsonObject
+			{
+				{ "agenda", agenda },
+				{ "start_time", start.ToZoomFormat(timeZone) },
+				{ "duration", duration },
+				{ "timezone", timeZone },
+				{ "settings", settings }
+			};
 
 			return _client
 				.PatchAsync($"webinars/{webinarId}")
@@ -217,15 +197,17 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task UpdateScheduledWebinarAsync(long webinarId, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, TimeZones? timeZone = null, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("topic", topic);
-			data.AddPropertyIfValue("agenda", agenda);
-			data.AddPropertyIfValue("password", password);
-			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
-			data.AddPropertyIfValue("duration", duration);
-			data.AddPropertyIfEnumValue("timezone", timeZone);
-			data.AddPropertyIfValue("settings", settings);
-			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
+			var data = new JsonObject
+			{
+				{ "topic", topic },
+				{ "agenda", agenda },
+				{ "password", password },
+				{ "start_time", start.ToZoomFormat(timeZone) },
+				{ "duration", duration },
+				{ "timezone", timeZone },
+				{ "settings", settings },
+				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }).ToArray() }
+			};
 
 			return _client
 				.PatchAsync($"webinars/{webinarId}")
@@ -254,16 +236,18 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task UpdateRecurringWebinarAsync(long webinarId, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, TimeZones? timeZone = null, RecurrenceInfo recurrence = null, string password = null, WebinarSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("topic", topic);
-			data.AddPropertyIfValue("agenda", agenda);
-			data.AddPropertyIfValue("password", password);
-			data.AddPropertyIfValue("start_time", start.ToZoomFormat(timeZone));
-			data.AddPropertyIfValue("duration", duration);
-			data.AddPropertyIfValue("recurrence", recurrence);
-			data.AddPropertyIfEnumValue("timezone", timeZone);
-			data.AddPropertyIfValue("settings", settings);
-			data.AddPropertyIfValue("tracking_fields", trackingFields?.Select(tf => new JObject() { { "field", tf.Key }, { "value", tf.Value } }));
+			var data = new JsonObject
+			{
+				{ "topic", topic },
+				{ "agenda", agenda },
+				{ "password", password },
+				{ "start_time", start.ToZoomFormat(timeZone) },
+				{ "duration", duration },
+				{ "recurrence", recurrence },
+				{ "timezone", timeZone },
+				{ "settings", settings },
+				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }).ToArray() }
+			};
 
 			return _client
 				.PatchAsync($"webinars/{webinarId}")
@@ -288,7 +272,7 @@ namespace ZoomNet.Resources
 				.GetAsync($"webinars/{webinarId}")
 				.WithArgument("occurrence_id", occurrenceId)
 				.WithCancellationToken(cancellationToken)
-				.AsObject<Webinar>(jsonConverter: new WebinarConverter());
+				.AsObject<Webinar>();
 		}
 
 		/// <summary>
@@ -321,7 +305,7 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task EndAsync(long webinarId, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
 				{ "action", "end" }
 			};
@@ -355,13 +339,14 @@ namespace ZoomNet.Resources
 		/// <param name="webinarId">The webinar ID.</param>
 		/// <param name="email">Panelist's email address.</param>
 		/// <param name="fullName">Panelist's full name.</param>
+		/// <param name="virtualBackgroundId">The virtual background ID to bind.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task AddPanelistAsync(long webinarId, string email, string fullName, CancellationToken cancellationToken = default)
+		public Task AddPanelistAsync(long webinarId, string email, string fullName, string virtualBackgroundId = null, CancellationToken cancellationToken = default)
 		{
-			return AddPanelistsAsync(webinarId, new (string Email, string FullName)[] { (email, fullName) }, cancellationToken);
+			return AddPanelistsAsync(webinarId, new (string Email, string FullName, string VirtualBackgroundId)[] { (email, fullName, virtualBackgroundId) }, cancellationToken);
 		}
 
 		/// <summary>
@@ -373,10 +358,19 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task AddPanelistsAsync(long webinarId, IEnumerable<(string Email, string FullName)> panelists, CancellationToken cancellationToken = default)
+		public Task AddPanelistsAsync(long webinarId, IEnumerable<(string Email, string FullName, string VirtualBackgroundId)> panelists, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("panelists", panelists.Select(p => new { email = p.Email, name = p.FullName }).ToArray());
+			var data = new JsonObject
+			{
+				{
+					"panelists", panelists?.Select(p => new JsonObject
+					{
+						{ "email", p.Email },
+						{ "name", p.FullName },
+						{ "virtual_background_id", p.VirtualBackgroundId },
+					}).ToArray()
+				}
+			};
 
 			return _client
 				.PostAsync($"webinars/{webinarId}/panelists")
@@ -423,6 +417,7 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="webinarId">The webinar ID.</param>
 		/// <param name="status">The registrant status.</param>
+		/// <param name="trackingSourceId">The tracking source ID.</param>
 		/// <param name="occurrenceId">The webinar occurrence id.</param>
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="page">The current page number of returned records.</param>
@@ -431,7 +426,7 @@ namespace ZoomNet.Resources
 		/// An array of <see cref="Registrant" />.
 		/// </returns>
 		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
-		public Task<PaginatedResponse<Registrant>> GetRegistrantsAsync(long webinarId, RegistrantStatus status, string occurrenceId = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponse<Registrant>> GetRegistrantsAsync(long webinarId, RegistrantStatus status, string trackingSourceId = null, string occurrenceId = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -440,7 +435,8 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"webinars/{webinarId}/registrants")
-				.WithArgument("status", JToken.Parse(JsonConvert.SerializeObject(status)).ToString())
+				.WithArgument("status", status.ToEnumString())
+				.WithArgument("tracking_source_id", trackingSourceId)
 				.WithArgument("occurrence_id", occurrenceId)
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("page_number", page)
@@ -453,6 +449,7 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="webinarId">The webinar ID.</param>
 		/// <param name="status">The registrant status.</param>
+		/// <param name="trackingSourceId">The tracking source ID.</param>
 		/// <param name="occurrenceId">The webinar occurrence id.</param>
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pagingToken">The paging token.</param>
@@ -460,7 +457,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Registrant" />.
 		/// </returns>
-		public Task<PaginatedResponseWithToken<Registrant>> GetRegistrantsAsync(long webinarId, RegistrantStatus status, string occurrenceId = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<Registrant>> GetRegistrantsAsync(long webinarId, RegistrantStatus status, string trackingSourceId = null, string occurrenceId = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -469,7 +466,8 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"webinars/{webinarId}/registrants")
-				.WithArgument("status", JToken.Parse(JsonConvert.SerializeObject(status)).ToString())
+				.WithArgument("status", status.ToEnumString())
+				.WithArgument("tracking_source_id", trackingSourceId)
 				.WithArgument("occurrence_id", occurrenceId)
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
@@ -501,26 +499,77 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="webinarId">The webinar ID.</param>
 		/// <param name="email">A valid email address.</param>
-		/// <param name="firstName">User's first name.</param>
-		/// <param name="lastName">User's last name.</param>
+		/// <param name="firstName">Registrant's first name.</param>
+		/// <param name="lastName">Registrant's last name.</param>
+		/// <param name="address">Registrant's address.</param>
+		/// <param name="city">Registrant's city.</param>
+		/// <param name="country">Registrant's country.</param>
+		/// <param name="postalCode">Registrant's zip or postal code.</param>
+		/// <param name="stateOrProvince">Registrant's state or province.</param>
+		/// <param name="phoneNumber">Registrant's phone number.</param>
+		/// <param name="industry">Registrant's industry.</param>
+		/// <param name="organization">Registrant's organization.</param>
+		/// <param name="jobTitle">Registrant's job title.</param>
+		/// <param name="timeFrame">This field can be used to gauge interest of attendees towards buying your product or service.</param>
+		/// <param name="role">Registrant's role in purchase decision.</param>
+		/// <param name="employees">Number of employees.</param>
+		/// <param name="comments">A field that allows registrant to provide any questions or comments that they might have.</param>
+		/// <param name="questionAnswers">Answers to the custom registration questions.</param>
+		/// <param name="language">Registrant's language preference for confirmation emails.</param>
 		/// <param name="occurrenceId">The webinar occurrence id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// A <see cref="RegistrantInfo" />.
 		/// </returns>
-		public Task<RegistrantInfo> AddRegistrantAsync(long webinarId, string email, string firstName, string lastName, string occurrenceId = null, CancellationToken cancellationToken = default)
+		public Task<RegistrantInfo> AddRegistrantAsync(long webinarId, string email, string firstName, string lastName, string address = null, string city = null, Country? country = null, string postalCode = null, string stateOrProvince = null, string phoneNumber = null, string industry = null, string organization = null, string jobTitle = null, PurchasingTimeFrame? timeFrame = null, RoleInPurchaseProcess? role = null, NumberOfEmployees? employees = null, string comments = null, IEnumerable<RegistrationAnswer> questionAnswers = null, Language? language = null, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("email", email);
-			data.AddPropertyIfValue("first_name", firstName);
-			data.AddPropertyIfValue("last_name", lastName);
+			var data = new JsonObject
+			{
+				{ "email", email },
+				{ "first_name", firstName },
+				{ "last_name", lastName },
+				{ "address", address },
+				{ "city", city },
+				{ "country", country },
+				{ "zip", postalCode },
+				{ "state", stateOrProvince },
+				{ "phone", phoneNumber },
+				{ "industry", industry },
+				{ "org", organization },
+				{ "job_title", jobTitle },
+				{ "purchasing_time_frame", timeFrame },
+				{ "role_in_purchase_process", role },
+				{ "no_of_employees", employees },
+				{ "custom_questions", questionAnswers?.ToArray() },
+				{ "language", language },
+				{ "comments", comments }
+			};
 
 			return _client
 				.PostAsync($"webinars/{webinarId}/registrants")
-				.WithArgument("occurence_id", occurrenceId)
+				.WithArgument("occurence_ids", occurrenceId)
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<RegistrantInfo>();
+		}
+
+		/// <summary>
+		/// Delete a webinar registrant.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="registrantId">The registrant id.</param>
+		/// <param name="occurrenceId">The webinar occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public Task DeleteRegistrantAsync(long webinarId, string registrantId, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"webinars/{webinarId}/registrants/{registrantId}")
+				.WithArgument("occurence_id", occurrenceId)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
 		}
 
 		/// <summary>
@@ -644,11 +693,11 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task<Poll> CreatePoll(long webinarId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject()
+			var data = new JsonObject
 			{
-				{ "title", title }
+				{ "title", title },
+				{ "questions", questions?.ToArray() }
 			};
-			data.AddPropertyIfValue("questions", questions);
 
 			return _client
 				.PostAsync($"webinars/{webinarId}/polls")
@@ -687,9 +736,11 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task UpdatePollAsync(long webinarId, long pollId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("title", title);
-			data.AddPropertyIfValue("questions", questions);
+			var data = new JsonObject
+			{
+				{ "title", title },
+				{ "questions", questions?.ToArray() }
+			};
 
 			return _client
 				.PutAsync($"webinars/{webinarId}/polls/{pollId}")
@@ -723,30 +774,61 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="PollQuestion"/>.
 		/// </returns>
-		public Task<PollQuestion[]> GetRegistrationQuestions(long webinarId, CancellationToken cancellationToken = default)
+		public async Task<RegistrationQuestionsForWebinar> GetRegistrationQuestionsAsync(long webinarId, CancellationToken cancellationToken = default)
 		{
-			return _client
+			var response = await _client
 				.GetAsync($"webinars/{webinarId}/registrants/questions")
 				.WithCancellationToken(cancellationToken)
-				.AsObject<PollQuestion[]>("custom_questions");
+				.AsRawJsonDocument()
+				.ConfigureAwait(false);
+
+			var allFields = response.RootElement.GetProperty("questions").EnumerateArray()
+				.Select(item => (Field: item.GetPropertyValue<string>("field_name").ToEnum<RegistrationField>(), IsRequired: item.GetPropertyValue<bool>("required")));
+
+			var requiredFields = allFields.Where(f => f.IsRequired).Select(f => f.Field).ToArray();
+			var optionalFields = allFields.Where(f => !f.IsRequired).Select(f => f.Field).ToArray();
+
+			var registrationQuestions = new RegistrationQuestionsForWebinar
+			{
+				RequiredFields = requiredFields,
+				OptionalFields = optionalFields,
+				Questions = response.RootElement.GetProperty("custom_questions", false)?.ToObject<RegistrationCustomQuestionForWebinar[]>() ?? Array.Empty<RegistrationCustomQuestionForWebinar>()
+			};
+			return registrationQuestions;
 		}
 
 		/// <summary>
 		/// Update the questions that are to be answered by users while registering for a webinar.
 		/// </summary>
 		/// <param name="webinarId">The webinar ID.</param>
-		/// <param name="customQuestions">The questions to be answered.</param>
+		/// <param name="requiredFields">List of fields that must be answer when registering for the webinar.</param>
+		/// <param name="optionalFields">List of fields that can be answer when registering for the webinar.</param>
+		/// <param name="customQuestions">Additional questions to be answered.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public Task UpdateRegistrationQuestions(long webinarId, IEnumerable<PollQuestion> customQuestions, CancellationToken cancellationToken = default)
+		public Task UpdateRegistrationQuestionsAsync(long webinarId, IEnumerable<RegistrationField> requiredFields, IEnumerable<RegistrationField> optionalFields, IEnumerable<RegistrationCustomQuestionForWebinar> customQuestions, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("custom_questions", customQuestions);
+			var required = (requiredFields ?? Enumerable.Empty<RegistrationField>())
+				.GroupBy(f => f).Select(grp => grp.First()); // Remove duplicates
+
+			var optional = (optionalFields ?? Enumerable.Empty<RegistrationField>())
+				.Except(required) // Remove 'optional' fields that are on the 'required' enumeration
+				.GroupBy(f => f).Select(grp => grp.First()); // Remove duplicates
+
+			var standardFields = required.Select(f => new JsonObject { { "field_name", f.ToEnumString() }, { "required", true } })
+				.Union(optional.Select(f => new JsonObject { { "field_name", f.ToEnumString() }, { "required", false } }))
+				.ToArray();
+
+			var data = new JsonObject
+			{
+				{ "questions", standardFields },
+				{ "custom_questions", customQuestions?.ToArray() }
+			};
 
 			return _client
-				.PutAsync($"webinars/{webinarId}/registrants/questions")
+				.PatchAsync($"webinars/{webinarId}/registrants/questions")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
@@ -768,27 +850,145 @@ namespace ZoomNet.Resources
 				.AsObject<TrackingSource[]>("tracking_sources");
 		}
 
-		/// <summary>
-		/// Retrieve all the templates created for a user.
-		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Template" />.
-		/// </returns>
-		public Task<Template[]> GetWebinarTemplatesAsync(string userId, CancellationToken cancellationToken = default)
+		/// <inheritdoc/>
+		public Task<WebinarTemplate[]> GetTemplatesAsync(string userId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"users/{userId}/webinar_templates")
 				.WithCancellationToken(cancellationToken)
-				.AsObject<Template[]>("templates");
+				.AsObject<WebinarTemplate[]>("templates");
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateLiveStreamAsync(long webinarId, string streamUrl, string streamKey, string pageUrl, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "stream_url", streamUrl },
+				{ "stream_key", streamKey },
+				{ "page_url", pageUrl }
+			};
+
+			return _client
+				.PatchAsync($"webinars/{webinarId}/livestream")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task StartLiveStreamAsync(long webinarId, bool displaySpeakerName, string speakerName, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "action", "start" },
+				{
+					"settings", new JsonObject
+					{
+						{ "active_speaker_name", displaySpeakerName },
+						{ "display_name", speakerName }
+					}
+				}
+			};
+
+			return _client
+				.PatchAsync($"webinars/{webinarId}/livestream/status")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task StopLiveStreamAsync(long webinarId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "action", "stop" }
+			};
+
+			return _client
+				.PatchAsync($"webinars/{webinarId}/livestream/status")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<LiveStreamingSettings> GetLiveStreamSettingsAsync(long webinarId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"webinars/{webinarId}/livestream")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<LiveStreamingSettings>();
+		}
+
+		/// <inheritdoc/>
+		public Task<InviteLink[]> CreateInviteLinksAsync(long webinarId, IEnumerable<string> names, long timeToLive = 7200, CancellationToken cancellationToken = default)
+		{
+			if (names == null || !names.Any()) throw new ArgumentNullException("You must provide at least one name", nameof(names));
+
+			var data = new JsonObject
+			{
+				{ "ttl", timeToLive },
+				{ "attendees", names?.Select(n => new JsonObject { { "name", n } }).ToArray() }
+			};
+
+			return _client
+				.PostAsync($"webinars/{webinarId}/invite_links")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<InviteLink[]>("attendees");
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteSurveyAsync(long webinarId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"webinars/{webinarId}/survey")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<Survey> GetSurveyAsync(long webinarId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"webinars/{webinarId}/survey")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<Survey>();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateSurveyAsync(long webinarId, IEnumerable<SurveyQuestion> questions = null, bool allowAnonymous = true, bool showInBrowser = true, string thirdPartySurveyLink = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "third_party_survey", thirdPartySurveyLink },
+				{ "show_in_the_browser", showInBrowser },
+				{
+					"custom_survey",
+					new JsonObject
+					{
+						{ "anonymous", allowAnonymous },
+						{ "questions", questions?.ToArray() }
+					}
+				}
+			};
+
+			return _client
+				.PatchAsync($"webinars/{webinarId}/survey")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
 		}
 
 		private Task UpdateRegistrantsStatusAsync(long webinarId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string status, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JObject();
-			data.AddPropertyIfValue("action", status);
-			data.AddPropertyIfValue("registrants", registrantsInfo.Select(ri => new { id = ri.RegistrantId, email = ri.RegistrantEmail }).ToArray());
+			var data = new JsonObject
+			{
+				{ "action", status },
+				{ "registrants", registrantsInfo.Select(ri => new { id = ri.RegistrantId, email = ri.RegistrantEmail }).ToArray() }
+			};
 
 			return _client
 				.PutAsync($"webinars/{webinarId}/registrants/status")

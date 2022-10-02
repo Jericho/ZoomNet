@@ -4,6 +4,7 @@ using Pathoschild.Http.Client.Extensibility;
 using RichardSzalay.MockHttp;
 using System;
 using System.Linq;
+using ZoomNet.Json;
 using ZoomNet.Utilities;
 
 namespace ZoomNet.UnitTests
@@ -18,6 +19,13 @@ namespace ZoomNet.UnitTests
 			var client = new FluentClient(new Uri(ZOOM_V2_BASE_URI), httpClient);
 			client.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), null));
 			client.Filters.Remove<DefaultErrorFilter>();
+
+			// Remove all the built-in formatters and replace them with our custom JSON formatter
+			client.Formatters.Clear();
+			client.Formatters.Add(new ZoomNetJsonFormatter());
+
+			// Order is important: DiagnosticHandler must be first.
+			// Also, the list of filters must be kept in sync with the filters in ZoomClient in the ZoomNet project.
 			client.Filters.Add(new DiagnosticHandler(LogLevel.Debug, LogLevel.Error));
 			client.Filters.Add(new ZoomErrorHandler());
 

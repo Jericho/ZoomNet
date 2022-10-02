@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models.QualityOfService
 {
@@ -13,7 +13,7 @@ namespace ZoomNet.Models.QualityOfService
 		/// <value>
 		/// The minimum value for Zoom CPU usage.
 		/// </value>
-		[JsonProperty(PropertyName ="zoom_min_cpu_usage")]
+		[JsonPropertyName("zoom_min_cpu_usage")]
 		public string MinCpuUsage { get; set; }
 
 		/// <summary>
@@ -22,7 +22,7 @@ namespace ZoomNet.Models.QualityOfService
 		/// <value>
 		/// The average value for Zoom CPU usage.
 		/// </value>
-		[JsonProperty(PropertyName = "zoom_avg_cpu_usage")]
+		[JsonPropertyName("zoom_avg_cpu_usage")]
 		public string AverageCpuUsage { get; set; }
 
 		/// <summary>
@@ -31,7 +31,7 @@ namespace ZoomNet.Models.QualityOfService
 		/// <value>
 		/// The maximum value for Zoom CPU usage.
 		/// </value>
-		[JsonProperty(PropertyName = "zoom_max_cpu_usage")]
+		[JsonPropertyName("zoom_max_cpu_usage")]
 		public string MaxCpuUsage { get; set; }
 
 		/// <summary>
@@ -40,7 +40,7 @@ namespace ZoomNet.Models.QualityOfService
 		/// <value>
 		/// The maximum value for system CPU usage.
 		/// </value>
-		[JsonProperty(PropertyName = "system_max_cpu_usage")]
+		[JsonPropertyName("system_max_cpu_usage")]
 		public string SystemMaxCpuUsage { get; set; }
 	}
 }

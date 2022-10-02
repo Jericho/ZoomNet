@@ -6,6 +6,7 @@ using System;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
+using ZoomNet.Json;
 using ZoomNet.Resources;
 using ZoomNet.Utilities;
 
@@ -94,6 +95,7 @@ namespace ZoomNet
 		/// <value>
 		/// The data compliance resource.
 		/// </value>
+		[Obsolete("The Data Compliance API is deprecated")]
 		public IDataCompliance DataCompliance { get; private set; }
 
 		/// <summary>
@@ -231,6 +233,10 @@ namespace ZoomNet
 				.SetUserAgent($"ZoomNet/{Version} (+https://github.com/Jericho/ZoomNet)");
 
 			_fluentClient.Filters.Remove<DefaultErrorFilter>();
+
+			// Remove all the built-in formatters and replace them with our custom JSON formatter
+			_fluentClient.Formatters.Clear();
+			_fluentClient.Formatters.Add(new ZoomNetJsonFormatter());
 
 			// Order is important: the token handler (either JWT or OAuth) must be first, followed by DiagnosticHandler and then by ErrorHandler.
 			if (connectionInfo is JwtConnectionInfo jwtConnectionInfo)

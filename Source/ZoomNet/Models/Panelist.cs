@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -13,25 +13,31 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The id.
 		/// </value>
-		[JsonProperty("id", NullValueHandling = NullValueHandling.Ignore)]
+		[JsonPropertyName("id")]
 		public string Id { get; set; }
 
 		/// <summary>
 		/// Gets or sets the panelist's email address.
 		/// </summary>
-		[JsonProperty(PropertyName = "email")]
+		[JsonPropertyName("email")]
 		public string Email { get; set; }
 
 		/// <summary>
 		/// Gets or sets the panelist's full name.
 		/// </summary>
-		[JsonProperty(PropertyName = "name")]
+		[JsonPropertyName("name")]
 		public string FullName { get; set; }
 
 		/// <summary>
 		/// Gets or sets the panelist's join URL.
 		/// </summary>
-		[JsonProperty(PropertyName = "join_url")]
+		[JsonPropertyName("join_url")]
 		public string JoinUrl { get; set; }
+
+		/// <summary>
+		/// Gets or sets the panelist's virtual background id.
+		/// </summary>
+		[JsonPropertyName("virtual_background_id")]
+		public string VirtualBackgroundId { get; set; }
 	}
 }
