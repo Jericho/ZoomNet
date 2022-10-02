@@ -130,6 +130,9 @@ namespace ZoomNet
 		/// </value>
 		public IRoles Roles { get; private set; }
 
+		/// <inheritdoc/>
+		public ITrackingFields TrackingFields { get; private set; }
+
 		/// <summary>
 		/// Gets the resource which allows you to manage users.
 		/// </summary>
@@ -271,6 +274,7 @@ namespace ZoomNet
 			PastMeetings = new PastMeetings(_fluentClient);
 			PastWebinars = new PastWebinars(_fluentClient);
 			Roles = new Roles(_fluentClient);
+			TrackingFields = new TrackingFields(_fluentClient);
 			Users = new Users(_fluentClient);
 			Webinars = new Webinars(_fluentClient);
 			Dashboards = new Dashboards(_fluentClient);
