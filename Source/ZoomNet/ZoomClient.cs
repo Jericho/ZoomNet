@@ -116,6 +116,9 @@ namespace ZoomNet
 		public ISms Sms { get; private set; }
 
 		/// <inheritdoc/>
+		public ITrackingFields TrackingFields { get; private set; }
+
+		/// <inheritdoc/>
 		public IUsers Users { get; private set; }
 
 		/// <inheritdoc/>
@@ -227,6 +230,7 @@ namespace ZoomNet
 			Reports = new Reports(_fluentClient);
 			Roles = new Roles(_fluentClient);
 			Sms = new Sms(_fluentClient);
+			TrackingFields = new TrackingFields(_fluentClient);
 			Users = new Users(_fluentClient);
 			Webinars = new Webinars(_fluentClient);
 		}
