@@ -126,6 +126,7 @@ namespace ZoomNet.IntegrationTests
 			// Get my user and permisisons
 			var myUser = await client.Users.GetCurrentAsync(source.Token).ConfigureAwait(false);
 			var myPermissions = await client.Users.GetCurrentPermissionsAsync(source.Token).ConfigureAwait(false);
+			Array.Sort(myPermissions); // Sort permissions alphabetically for convenience
 
 			// Execute the async tests in parallel (with max degree of parallelism)
 			var results = await integrationTests.ForEachAsync(
