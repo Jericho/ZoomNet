@@ -231,7 +231,7 @@ namespace WebApplication1.Controllers
 ### Responding to requests from Zoom to validate your webhook endpoint
 
 When you initially configure the URL where you want Zoom to post the webhooks, Zoom will send a request to this URL and you are expected to respond to this validation challenge in a way that can be validated by the Zoom API. Zoom calls this a "Challenge-Response check (CRC)". Assuming this initial validation is successful, the Zoom API will repeat this validation process every 72 hours. You can of course manually craft this reponse by following Zoom's [instructions](https://marketplace.zoom.us/docs/api-reference/webhook-reference/#validate-your-webhook-endpoint).
-However, if you want to avoid learning the intricacies of the reponse expected by Zoon and you simply want this response to be conveniently generated for you, ZoomNet can help! 
+However, if you want to avoid learning the intricacies of the reponse expected by Zoom and you simply want this response to be conveniently generated for you, ZoomNet can help! 
 The `EndpointUrlValidationEvent` class has a method called `GenerateUrlValidationResponse` which will generate the string that you must include in your HTTP200 response.
 Here's how it works:
 
