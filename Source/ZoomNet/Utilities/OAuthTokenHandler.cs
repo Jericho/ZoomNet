@@ -86,6 +86,7 @@ namespace ZoomNet.Utilities
 							case OAuthGrantType.AuthorizationCode:
 								contentValues.Add("code", _connectionInfo.AuthorizationCode);
 								if (!string.IsNullOrEmpty(_connectionInfo.RedirectUri)) contentValues.Add("redirect_uri", _connectionInfo.RedirectUri);
+								if (!string.IsNullOrEmpty(_connectionInfo.CodeVerifier)) contentValues.Add("code_verifier", _connectionInfo.CodeVerifier);
 								break;
 							case OAuthGrantType.RefreshToken:
 								contentValues.Add("refresh_token", _connectionInfo.RefreshToken);
