@@ -75,25 +75,27 @@ namespace ZoomNet.Utilities
 					{
 						_lock.EnterWriteLock();
 
-						var grantType = _connectionInfo.GrantType.ToEnumString();
-						var requestUrl = $"https://api.zoom.us/oauth/token?grant_type={grantType}";
+						var contentValues = new Dictionary<string, string>();
+						contentValues.Add("grant_type", _connectionInfo.GrantType.ToEnumString());
+
 						switch (_connectionInfo.GrantType)
 						{
 							case OAuthGrantType.AccountCredentials:
-								requestUrl += $"&account_id={_connectionInfo.AccountId}";
+								contentValues.Add("account_id", _connectionInfo.AccountId);
 								break;
 							case OAuthGrantType.AuthorizationCode:
-								requestUrl += $"&code={_connectionInfo.AuthorizationCode}";
-								if (!string.IsNullOrEmpty(_connectionInfo.RedirectUri)) requestUrl += $"&redirect_uri={_connectionInfo.RedirectUri}";
+								contentValues.Add("code", _connectionInfo.AuthorizationCode);
+								if (!string.IsNullOrEmpty(_connectionInfo.RedirectUri)) contentValues.Add("redirect_uri", _connectionInfo.RedirectUri);
 								break;
 							case OAuthGrantType.RefreshToken:
-								requestUrl += $"&refresh_token={_connectionInfo.RefreshToken}";
+								contentValues.Add("refresh_token", _connectionInfo.RefreshToken);
 								break;
 						}
 
 						var requestTime = DateTime.UtcNow;
-						var request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
+						var request = new HttpRequestMessage(HttpMethod.Post, "https://api.zoom.us/oauth/token");
 						request.Headers.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes($"{_connectionInfo.ClientId}:{_connectionInfo.ClientSecret}")));
+						request.Content = new FormUrlEncodedContent(contentValues);
 						var response = _httpClient.SendAsync(request).ConfigureAwait(false).GetAwaiter().GetResult();
 						var responseContent = response.Content.ReadAsStringAsync(null).ConfigureAwait(false).GetAwaiter().GetResult();
 
