@@ -1,5 +1,4 @@
 using Pathoschild.Http.Client;
-using Pathoschild.Http.Client.Extensibility;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -371,42 +370,6 @@ namespace ZoomNet
 			return request.WithBody(bodyBuilder => bodyBuilder.Model(body, new MediaTypeHeaderValue("application/json")));
 		}
 
-		/// <summary>Add a filter to a request.</summary>
-		/// <typeparam name="TFilter">The type of filter.</typeparam>
-		/// <param name="request">The request.</param>
-		/// <param name="filter">The filter.</param>
-		/// <param name="replaceExisting">
-		/// When true, the first filter of matching type is replaced with the new filter (thereby preserving the position of the filter in the list of filters) and any other filter of matching type is removed.
-		/// When false, the filter is simply added to the list of filters.
-		/// </param>
-		/// <returns>Returns the request builder for chaining.</returns>
-		internal static IRequest WithFilter<TFilter>(this IRequest request, TFilter filter, bool replaceExisting = true)
-			where TFilter : IHttpFilter
-		{
-			var matchingFilters = request.Filters.OfType<TFilter>().ToArray();
-
-			if (matchingFilters.Length == 0 || !replaceExisting)
-			{
-				request.Filters.Add(filter);
-			}
-			else
-			{
-				// Replace the first matching filter with the new filter
-				var collectionAsList = request.Filters as IList<IHttpFilter>;
-				var indexOfMatchingFilter = collectionAsList.IndexOf(matchingFilters[0]);
-				collectionAsList.RemoveAt(indexOfMatchingFilter);
-				collectionAsList.Insert(indexOfMatchingFilter, filter);
-
-				// Remove any other matching filter
-				for (int i = 1; i < matchingFilters.Length; i++)
-				{
-					request.Filters.Remove(matchingFilters[i]);
-				}
-			}
-
-			return request;
-		}
-
 		/// <summary>Asynchronously retrieve the response body as a <see cref="string"/>.</summary>
 		/// <param name="response">The response.</param>
 		/// <param name="encoding">The encoding. You can leave this parameter null and the encoding will be
@@ -696,23 +659,23 @@ namespace ZoomNet
 				try
 				{
 					var rootJsonElement = JsonDocument.Parse(responseContent).RootElement;
-					errorCode = rootJsonElement.TryGetProperty("code", out JsonElement jsonErrorCode) ? (int?)jsonErrorCode.GetInt32() : (int?)null;
-					errorMessage = rootJsonElement.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : (errorCode.HasValue ? $"Error code: {errorCode}" : errorMessage);
-					if (rootJsonElement.TryGetProperty("errors", out JsonElement jsonErrorDetails))
-					{
-						var errorDetails = string.Join(
-							" ",
-							jsonErrorDetails
-								.EnumerateArray()
-								.Select(jsonErrorDetail =>
-								{
-									var errorDetail = jsonErrorDetail.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : string.Empty;
-									return errorDetail;
-								})
-								.Where(errorDetail => !string.IsNullOrEmpty(errorDetail)));
+						errorCode = rootJsonElement.TryGetProperty("code", out JsonElement jsonErrorCode) ? (int?)jsonErrorCode.GetInt32() : (int?)null;
+						errorMessage = rootJsonElement.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : (errorCode.HasValue ? $"Error code: {errorCode}" : errorMessage);
+						if (rootJsonElement.TryGetProperty("errors", out JsonElement jsonErrorDetails))
+						{
+							var errorDetails = string.Join(
+								" ",
+								jsonErrorDetails
+									.EnumerateArray()
+									.Select(jsonErrorDetail =>
+									{
+										var errorDetail = jsonErrorDetail.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : string.Empty;
+										return errorDetail;
+									})
+									.Where(errorDetail => !string.IsNullOrEmpty(errorDetail)));
 
-						if (!string.IsNullOrEmpty(errorDetails)) errorMessage += $" {errorDetails}";
-					}
+							if (!string.IsNullOrEmpty(errorDetails)) errorMessage += $" {errorDetails}";
+						}
 
 					isError = errorCode.HasValue;
 				}
