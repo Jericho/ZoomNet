@@ -12,7 +12,7 @@ using System.Text.Json.Serialization;
 
 namespace ZoomNet.Json
 {
-	internal class ZoomNetJsonFormatter : MediaTypeFormatterBase
+	internal class JsonFormatter : MediaTypeFormatterBase
 	{
 		internal static readonly JsonSerializerOptions SerializerOptions;
 		internal static readonly JsonSerializerOptions DeserializerOptions;
@@ -22,7 +22,7 @@ namespace ZoomNet.Json
 
 		private const int DefaultBufferSize = 1024;
 
-		static ZoomNetJsonFormatter()
+		static JsonFormatter()
 		{
 			SerializerOptions = new JsonSerializerOptions()
 			{
@@ -64,7 +64,7 @@ namespace ZoomNet.Json
 			DeserializationContext = new ZoomNetJsonSerializerContext(DeserializerOptions);
 		}
 
-		public ZoomNetJsonFormatter()
+		public JsonFormatter()
 		{
 			this.AddMediaType("application/json");
 		}

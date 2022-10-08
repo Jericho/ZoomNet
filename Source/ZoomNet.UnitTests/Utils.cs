@@ -22,7 +22,7 @@ namespace ZoomNet.UnitTests
 
 			// Remove all the built-in formatters and replace them with our custom JSON formatter
 			client.Formatters.Clear();
-			client.Formatters.Add(new ZoomNetJsonFormatter());
+			client.Formatters.Add(new JsonFormatter());
 
 			// Order is important: DiagnosticHandler must be first.
 			// Also, the list of filters must be kept in sync with the filters in ZoomClient in the ZoomNet project.

@@ -50,7 +50,7 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 
 			// Act
-			var result = JsonSerializer.Deserialize<DashboardParticipant>(SINGLE_DASHBOARDPARTICIPANT_JSON, ZoomNetJsonFormatter.SerializerOptions);
+			var result = JsonSerializer.Deserialize<DashboardParticipant>(SINGLE_DASHBOARDPARTICIPANT_JSON, JsonFormatter.SerializerOptions);
 
 			// Assert
 			result.ShouldNotBeNull();

@@ -31,7 +31,7 @@ namespace ZoomNet
 		/// <returns>An <see cref="Event" />.</returns>
 		public Event ParseEventWebhook(string requestBody)
 		{
-			var webHookEvent = JsonSerializer.Deserialize<Event>(requestBody, ZoomNetJsonFormatter.DeserializerOptions);
+			var webHookEvent = JsonSerializer.Deserialize<Event>(requestBody, JsonFormatter.DeserializerOptions);
 			return webHookEvent;
 		}
 	}

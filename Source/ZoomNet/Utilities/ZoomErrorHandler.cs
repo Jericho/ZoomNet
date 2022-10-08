@@ -62,7 +62,7 @@ namespace ZoomNet.Utilities
 
 				throw new ZoomException(errorMessage, response.Message, diagnosticLog);
 			}
-			else if (!isError && response.IsSuccessStatusCode)
+			else if (!isError)
 			{
 				return;
 			}

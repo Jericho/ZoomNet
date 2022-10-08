@@ -84,7 +84,7 @@ namespace ZoomNet.UnitTests.Utilities
 
 			// Act
 			jsonReader.Read();
-			var result = converter.Read(ref jsonReader, objectType, ZoomNetJsonFormatter.DeserializerOptions);
+			var result = converter.Read(ref jsonReader, objectType, JsonFormatter.DeserializerOptions);
 
 			// Assert
 			result.ShouldNotBeNull();
@@ -109,7 +109,7 @@ namespace ZoomNet.UnitTests.Utilities
 
 			// Act
 			jsonReader.Read();
-			var result = converter.Read(ref jsonReader, objectType, ZoomNetJsonFormatter.DeserializerOptions);
+			var result = converter.Read(ref jsonReader, objectType, JsonFormatter.DeserializerOptions);
 
 			// Assert
 			result.ShouldNotBeNull();
