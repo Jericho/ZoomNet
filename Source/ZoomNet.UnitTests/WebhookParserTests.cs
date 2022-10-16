@@ -243,14 +243,15 @@ namespace ZoomNet.UnitTests
 			parsedEvent.Operator.ShouldBe("someone@example.com");
 			parsedEvent.OperatorId.ShouldBe("8lzIwvZTSOqjndWPbPqzuA");
 			parsedEvent.ModifiedFields.ShouldNotBeNull();
-			parsedEvent.ModifiedFields.Length.ShouldBe(3);
-			parsedEvent.ModifiedFields[0].FieldName.ShouldBe("id");
-			parsedEvent.ModifiedFields[0].OldValue.ShouldBe(94890226305);
-			parsedEvent.ModifiedFields[0].NewValue.ShouldBe(94890226305);
-			parsedEvent.ModifiedFields[1].FieldName.ShouldBe("topic");
-			parsedEvent.ModifiedFields[1].OldValue.ShouldBe("ZoomNet Unit Testing: scheduled meeting");
-			parsedEvent.ModifiedFields[1].NewValue.ShouldBe("ZoomNet Unit Testing: UPDATED scheduled meeting");
-			parsedEvent.ModifiedFields[2].FieldName.ShouldBe("settings");
+			parsedEvent.ModifiedFields.Length.ShouldBe(2);
+			parsedEvent.ModifiedFields[0].FieldName.ShouldBe("topic");
+			parsedEvent.ModifiedFields[0].OldValue.ShouldBe("ZoomNet Unit Testing: scheduled meeting");
+			parsedEvent.ModifiedFields[0].NewValue.ShouldBe("ZoomNet Unit Testing: UPDATED scheduled meeting");
+			parsedEvent.ModifiedFields[1].FieldName.ShouldBe("settings");
+			parsedEvent.MeetingFields.ShouldNotBeNull();
+			parsedEvent.MeetingFields.Length.ShouldBe(1);
+			parsedEvent.MeetingFields[0].FieldName.ShouldBe("id");
+			parsedEvent.MeetingFields[0].Value.ShouldBe(94890226305);
 		}
 
 		[Fact]
