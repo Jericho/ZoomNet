@@ -75,8 +75,10 @@ namespace ZoomNet.Utilities
 					{
 						_lock.EnterWriteLock();
 
-						var contentValues = new Dictionary<string, string>();
-						contentValues.Add("grant_type", _connectionInfo.GrantType.ToEnumString());
+						var contentValues = new Dictionary<string, string>()
+						{
+							{ "grant_type", _connectionInfo.GrantType.ToEnumString() },
+						};
 
 						switch (_connectionInfo.GrantType)
 						{
