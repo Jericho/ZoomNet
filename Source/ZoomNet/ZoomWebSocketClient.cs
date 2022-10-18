@@ -8,6 +8,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Websocket.Client;
+using ZoomNet.Models.Webhooks;
 using ZoomNet.Utilities;
 
 namespace ZoomNet
@@ -23,6 +24,7 @@ namespace ZoomNet
 		private readonly string _subscriptionId;
 		private readonly ILogger _logger;
 		private readonly IWebProxy _proxy;
+		private readonly Action<Event> _eventProcessor;
 
 		private WebsocketClient _websocketClient;
 		private HttpClient _httpClient;
@@ -36,14 +38,16 @@ namespace ZoomNet
 		/// <param name="clientSecret">Your Client Secret.</param>
 		/// <param name="accountId">Your Account Id.</param>
 		/// <param name="subscriptionId">Your subscirption Id.</param>
+		/// <param name="eventProcessor">A delegate that will be invoked when a wehook message is received.</param>
 		/// <param name="proxy">Allows you to specify a proxy.</param>
 		/// <param name="logger">Logger.</param>
-		public ZoomWebSocketClient(string clientId, string clientSecret, string accountId, string subscriptionId, IWebProxy proxy = null, ILogger logger = null)
+		public ZoomWebSocketClient(string clientId, string clientSecret, string accountId, string subscriptionId, Action<Event> eventProcessor, IWebProxy proxy = null, ILogger logger = null)
 		{
-			_clientId = clientId;
-			_clientSecret = clientSecret;
-			_accountId = accountId;
-			_subscriptionId = subscriptionId;
+			_clientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
+			_clientSecret = clientSecret ?? throw new ArgumentNullException(nameof(clientSecret));
+			_accountId = accountId ?? throw new ArgumentNullException(nameof(accountId));
+			_subscriptionId = subscriptionId ?? throw new ArgumentNullException(nameof(subscriptionId));
+			_eventProcessor = eventProcessor ?? throw new ArgumentNullException(nameof(eventProcessor));
 			_proxy = proxy;
 			_logger = logger ?? NullLogger.Instance;
 		}
@@ -161,6 +165,15 @@ namespace ZoomNet
 					var webhookEvent = parser.ParseEventWebhook(content);
 					var eventType = webhookEvent.EventType;
 					_logger.LogTrace("Received webhook event: {eventType}", eventType);
+					try
+					{
+						_eventProcessor.Invoke(webhookEvent);
+					}
+					catch (Exception ex)
+					{
+						_logger.LogError(ex, "An error occurred while processing webhook event: {eventType}", eventType);
+					}
+
 					break;
 				default:
 					_logger.LogError("Received unknown message: {module}", module);
