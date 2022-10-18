@@ -51,8 +51,9 @@ namespace ZoomNet
 		/// <summary>
 		/// Start listening to incoming webhooks from Zoom.
 		/// </summary>
+		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>Asynchronous task.</returns>
-		public Task StartAsync()
+		public Task StartAsync(CancellationToken cancellationToken = default)
 		{
 			_connectionInfo = new OAuthConnectionInfo(_clientId, _clientSecret, _accountId, null);
 			_httpClient = new HttpClient(new HttpClientHandler { Proxy = _proxy, UseProxy = _proxy != null });
@@ -88,7 +89,7 @@ namespace ZoomNet
 			_websocketClient.DisconnectionHappened.Subscribe(info => _logger.LogTrace($"Disconnection happened, type: {info.Type}"));
 			_websocketClient.MessageReceived.Subscribe(ProcessMessage);
 
-			Task.Run(() => SendHeartbeat(_websocketClient));
+			Task.Run(() => SendHeartbeat(_websocketClient, cancellationToken));
 
 			return _websocketClient.Start();
 		}
@@ -124,9 +125,9 @@ namespace ZoomNet
 			ReleaseUnmanagedResources();
 		}
 
-		private async Task SendHeartbeat(IWebsocketClient client)
+		private async Task SendHeartbeat(IWebsocketClient client, CancellationToken cancellationToken)
 		{
-			while (true)
+			while (!cancellationToken.IsCancellationRequested)
 			{
 				await Task.Delay(TimeSpan.FromSeconds(30)); // Zoom requires a heartbeat every 30 seconds
 
