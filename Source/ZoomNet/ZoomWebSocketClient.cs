@@ -61,8 +61,6 @@ namespace ZoomNet
 
 			var clientFactory = new Func<Uri, CancellationToken, Task<WebSocket>>(async (uri, cancellationToken) =>
 			{
-				Console.WriteLine("Client factory invoked");
-
 				// The current value in the uri parameter must be ignored because it contains "access_token" which may have expired.
 				// The following line ensures the "access_token" is refreshed whenever it expires.
 				uri = new Uri($"wss://ws.zoom.us/ws?subscriptionId={_subscriptionId}&access_token={_tokenHandler.Token}");
