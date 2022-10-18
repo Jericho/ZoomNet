@@ -12,6 +12,9 @@ using ZoomNet.Utilities;
 
 namespace ZoomNet
 {
+	/// <summary>
+	/// Client for Zoom's WebSocket webhooks.
+	/// </summary>
 	public class ZoomWebSocketClient : IDisposable
 	{
 		private readonly string _clientId;
@@ -26,6 +29,15 @@ namespace ZoomNet
 		private OAuthConnectionInfo _connectionInfo;
 		private OAuthTokenHandler _tokenHandler;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="ZoomWebSocketClient"/> class.
+		/// </summary>
+		/// <param name="clientId">Your Client Id.</param>
+		/// <param name="clientSecret">Your Client Secret.</param>
+		/// <param name="accountId">Your Account Id.</param>
+		/// <param name="subscriptionId">Your subscirption Id.</param>
+		/// <param name="proxy">Allows you to specify a proxy.</param>
+		/// <param name="logger">Logger.</param>
 		public ZoomWebSocketClient(string clientId, string clientSecret, string accountId, string subscriptionId, IWebProxy proxy = null, ILogger logger = null)
 		{
 			_clientId = clientId;
@@ -36,6 +48,10 @@ namespace ZoomNet
 			_logger = logger ?? NullLogger.Instance;
 		}
 
+		/// <summary>
+		/// Start listening to incoming webhooks from Zoom.
+		/// </summary>
+		/// <returns>Asynchronous task.</returns>
 		public Task StartAsync()
 		{
 			_connectionInfo = new OAuthConnectionInfo(_clientId, _clientSecret, _accountId, null);
@@ -46,7 +62,7 @@ namespace ZoomNet
 			{
 				Console.WriteLine("Client factory invoked");
 
-				// The current value in the uri parameter must be ignored because it contains "access_token" which may or may not be expired.
+				// The current value in the uri parameter must be ignored because it contains "access_token" which may have expired.
 				// The following line ensures the "access_token" is refreshed whenever it expires.
 				uri = new Uri($"wss://ws.zoom.us/ws?subscriptionId={_subscriptionId}&access_token={_tokenHandler.Token}");
 
