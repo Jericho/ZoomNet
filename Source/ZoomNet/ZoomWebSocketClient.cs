@@ -24,7 +24,7 @@ namespace ZoomNet
 		private readonly string _subscriptionId;
 		private readonly ILogger _logger;
 		private readonly IWebProxy _proxy;
-		private readonly Action<Event> _eventProcessor;
+		private readonly Func<Event, CancellationToken, Task> _eventProcessor;
 
 		private WebsocketClient _websocketClient;
 		private HttpClient _httpClient;
@@ -41,7 +41,7 @@ namespace ZoomNet
 		/// <param name="eventProcessor">A delegate that will be invoked when a wehook message is received.</param>
 		/// <param name="proxy">Allows you to specify a proxy.</param>
 		/// <param name="logger">Logger.</param>
-		public ZoomWebSocketClient(string clientId, string clientSecret, string accountId, string subscriptionId, Action<Event> eventProcessor, IWebProxy proxy = null, ILogger logger = null)
+		public ZoomWebSocketClient(string clientId, string clientSecret, string accountId, string subscriptionId, Func<Event, CancellationToken, Task> eventProcessor, IWebProxy proxy = null, ILogger logger = null)
 		{
 			_clientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
 			_clientSecret = clientSecret ?? throw new ArgumentNullException(nameof(clientSecret));
@@ -146,7 +146,7 @@ namespace ZoomNet
 			}
 		}
 
-		private void ProcessMessage(ResponseMessage msg)
+		private async Task ProcessMessage(ResponseMessage msg, CancellationToken cancellationToken)
 		{
 			var jsonDoc = JsonDocument.Parse(msg.Text);
 			var module = jsonDoc.RootElement.GetPropertyValue("module", string.Empty);
@@ -167,7 +167,7 @@ namespace ZoomNet
 					_logger.LogTrace("Received webhook event: {eventType}", eventType);
 					try
 					{
-						_eventProcessor.Invoke(webhookEvent);
+						await _eventProcessor(webhookEvent, cancellationToken).ConfigureAwait(false);
 					}
 					catch (Exception ex)
 					{
