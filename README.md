@@ -324,3 +324,47 @@ namespace WebApplication1.Controllers
     }
 }
 ```
+
+### Webhooks over websockets
+
+As of this writing (October 2022), webhooks over websocket is in public beta testing and you can signup if you want to participate in the beta (see [here](https://marketplace.zoom.us/docs/api-reference/websockets/)). 
+
+ZoomNet offers a convenient client to receive and process webhooks events received over a websocket connection. This websocket client will automatically manage the connection, ensuring it is re-established if it's closed for some reason. Additionaly, it will manage the OAuth token and will automatically refresh it when it expires.
+
+Here's how to use it:
+
+```csharp
+using System.Net;
+using ZoomNet;
+using ZoomNet.Models.Webhooks;
+
+var clientId = "... your client id ...";
+var clientSecret = "... your client secret ...";
+var accountId = "... your account id ...";
+var subscriptionId = "... your subscription id ..."; // See instructions below how to get this value
+
+var eventProcessor = new Func<Event, CancellationToken, Task>(async (webhookEvent, cancellationToken) =>
+{
+	if (!cancellationToken.IsCancellationRequested)
+	{
+		// ... do something with the event ...  
+	}
+});
+
+var exitEvent = new ManualResetEvent(false);
+
+using (var client = new ZoomWebSocketClient(clientId, clientSecret, accountId, subscriptionId, eventProcessor))
+{
+	await client.StartAsync().ConfigureAwait(false);
+
+	exitEvent.WaitOne();
+}
+```
+
+#### How to get your websocket subscription id
+
+When you configure your webhook over websocket in the Zoom Marketplace, Zoom will generate a URL like you can see in this screenshot:
+
+![Screenshot](https://user-images.githubusercontent.com/112710/196733937-7813abdd-9cb5-4a35-ad69-d5f6ac9676e4.png)
+
+Your subscription Id is the last part of the URL. In the example above, the generated URL is similar to `wss://api.zoom.us/v2/webhooks/events?subscription_id=1234567890` and therefore the subscription id is `1234567890`.
