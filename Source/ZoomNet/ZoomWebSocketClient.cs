@@ -4,6 +4,7 @@ using System;
 using System.Net;
 using System.Net.Http;
 using System.Net.WebSockets;
+using System.Reactive.Linq;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
@@ -65,6 +66,8 @@ namespace ZoomNet
 
 			var clientFactory = new Func<Uri, CancellationToken, Task<WebSocket>>(async (uri, cancellationToken) =>
 			{
+				_logger.LogTrace($"Establishing connection to Zoom");
+
 				// The current value in the uri parameter must be ignored because it contains "access_token" which may have expired.
 				// The following line ensures the "access_token" is refreshed whenever it expires.
 				uri = new Uri($"wss://ws.zoom.us/ws?subscriptionId={_subscriptionId}&access_token={_tokenHandler.Token}");
@@ -89,7 +92,11 @@ namespace ZoomNet
 			_websocketClient.ErrorReconnectTimeout = TimeSpan.FromSeconds(45);
 			_websocketClient.ReconnectionHappened.Subscribe(info => _logger.LogTrace($"Reconnection happened, type: {info.Type}"));
 			_websocketClient.DisconnectionHappened.Subscribe(info => _logger.LogTrace($"Disconnection happened, type: {info.Type}"));
-			_websocketClient.MessageReceived.Subscribe(ProcessMessage);
+
+			_websocketClient.MessageReceived
+				.Select(response => Observable.FromAsync(() => ProcessMessage(response, cancellationToken)))
+				.Merge(5) // Allow up to 5 messages to be processed concurently
+				.Subscribe();
 
 			Task.Run(() => SendHeartbeat(_websocketClient, cancellationToken));
 
@@ -141,8 +148,7 @@ namespace ZoomNet
 
 				_logger.LogTrace("Sending heartbeat");
 
-				await client.SendInstant("ping").ConfigureAwait(false);
-				client.Send("{\"module\":\"heartbeat\"}");
+				await client.SendInstant("{\"module\":\"heartbeat\"}").ConfigureAwait(false);
 			}
 		}
 
