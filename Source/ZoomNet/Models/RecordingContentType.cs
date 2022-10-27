@@ -47,12 +47,36 @@ namespace ZoomNet.Models
 		[EnumMember(Value = "chat_file")]
 		ChatFile,
 
+		/// <summary>Active speaker.</summary>
+		[EnumMember(Value = "active_speaker")]
+		ActiveSpeaker,
+
+		/// <summary>Poll.</summary>
+		[EnumMember(Value = "poll")]
+		Poll,
+
 		/// <summary>timeline.</summary>
 		[EnumMember(Value = "timeline")]
 		Timeline,
 
-		/// <summary>Active speaker.</summary>
-		[EnumMember(Value = "active_speaker")]
-		ActiveSpeaker
+		/// <summary>closed_caption.</summary>
+		[EnumMember(Value = "closed_caption")]
+		ClosedCaption,
+
+		/// <summary>Audio interpretation.</summary>
+		[EnumMember(Value = "audio_interpretation")]
+		AudioInterpretation,
+
+		/// <summary>Summary.</summary>
+		[EnumMember(Value = "summary")]
+		Summary,
+
+		/// <summary>Summary next steps.</summary>
+		[EnumMember(Value = "summary_next_steps")]
+		SummaryNextSteps,
+
+		/// <summary>Summary smart chapters.</summary>
+		[EnumMember(Value = "summary_smart_chapters")]
+		SummarySmartChapters,
 	}
 }
