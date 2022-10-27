@@ -35,7 +35,7 @@ namespace ZoomNet.UnitTests.Utilities
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp
-				.When(HttpMethod.Post, $"https://api.zoom.us/oauth/token?grant_type=authorization_code&code={authorizationCode}")
+				.When(HttpMethod.Post, $"https://api.zoom.us/oauth/token")
 				.Respond(HttpStatusCode.BadRequest, "application/json", apiResponse);
 
 			var handler = new OAuthTokenHandler(connectionInfo, mockHttp.ToHttpClient(), null);

@@ -220,7 +220,7 @@ namespace ZoomNet
 
 			// Remove all the built-in formatters and replace them with our custom JSON formatter
 			_fluentClient.Formatters.Clear();
-			_fluentClient.Formatters.Add(new ZoomNetJsonFormatter());
+			_fluentClient.Formatters.Add(new JsonFormatter());
 
 			// Order is important: the token handler (either JWT or OAuth) must be first, followed by DiagnosticHandler and then by ErrorHandler.
 			if (connectionInfo is JwtConnectionInfo jwtConnectionInfo)

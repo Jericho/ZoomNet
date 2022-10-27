@@ -73,6 +73,11 @@ namespace ZoomNet
 		public string RedirectUri { get; }
 
 		/// <summary>
+		/// Gets the cryptographically random string used to correlate the authorization request to the token request.
+		/// </summary>
+		public string CodeVerifier { get; internal set; }
+
+		/// <summary>
 		/// Initializes a new instance of the <see cref="OAuthConnectionInfo"/> class.
 		/// </summary>
 		/// <remarks>
@@ -118,7 +123,8 @@ namespace ZoomNet
 		/// <param name="authorizationCode">The authorization code.</param>
 		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed.</param>
 		/// <param name="redirectUri">The Redirect Uri.</param>
-		public OAuthConnectionInfo(string clientId, string clientSecret, string authorizationCode, OnTokenRefreshedDelegate onTokenRefreshed, string redirectUri = null)
+		/// <param name="codeVerifier">The cryptographically random string used to correlate the authorization request to the token request.</param>
+		public OAuthConnectionInfo(string clientId, string clientSecret, string authorizationCode, OnTokenRefreshedDelegate onTokenRefreshed, string redirectUri = null, string codeVerifier = null)
 		{
 			if (string.IsNullOrEmpty(clientId)) throw new ArgumentNullException(nameof(clientId));
 			if (string.IsNullOrEmpty(clientSecret)) throw new ArgumentNullException(nameof(clientSecret));
@@ -131,6 +137,7 @@ namespace ZoomNet
 			TokenExpiration = DateTime.MinValue;
 			GrantType = OAuthGrantType.AuthorizationCode;
 			OnTokenRefreshed = onTokenRefreshed;
+			CodeVerifier = codeVerifier;
 		}
 
 		/// <summary>

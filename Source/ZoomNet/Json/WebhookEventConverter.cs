@@ -58,7 +58,13 @@ namespace ZoomNet.Json
 						.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
 					meetingUpdatedEvent.ModifiedFields = oldMeetingValues.Keys
-						.Select(key => (key, oldMeetingValues[key], newMeetingValues[key]))
+						.Where(key => !oldMeetingValues[key].Equals(newMeetingValues[key]))
+						.Select(key => (FieldName: key, OldValue: oldMeetingValues[key], NewValue: newMeetingValues[key]))
+						.ToArray();
+
+					meetingUpdatedEvent.MeetingFields = oldMeetingValues.Keys
+						.Where(key => oldMeetingValues[key].Equals(newMeetingValues[key]))
+						.Select(key => (FieldName: key, Value: oldMeetingValues[key]))
 						.ToArray();
 
 					webHookEvent = meetingUpdatedEvent;
@@ -195,7 +201,13 @@ namespace ZoomNet.Json
 						.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
 					webinarUpdatedEvent.ModifiedFields = oldWebinarValues.Keys
-						.Select(key => (key, oldWebinarValues[key], newWebinarValues[key]))
+						.Where(key => !oldWebinarValues[key].Equals(newWebinarValues[key]))
+						.Select(key => (FieldName: key, OldValue: oldWebinarValues[key], NewValue: newWebinarValues[key]))
+						.ToArray();
+
+					webinarUpdatedEvent.WebinarFields = oldWebinarValues.Keys
+						.Where(key => oldWebinarValues[key].Equals(newWebinarValues[key]))
+						.Select(key => (FieldName: key, Value: oldWebinarValues[key]))
 						.ToArray();
 
 					webHookEvent = webinarUpdatedEvent;

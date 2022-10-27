@@ -34,6 +34,14 @@ namespace ZoomNet.Models
 
 		/// <summary>File contains closed captions of the recording in VTT file format.</summary>
 		[EnumMember(Value = "cc")]
-		ClosedCaptioning
+		ClosedCaptioning,
+
+		/// <summary>File containing polling data in csv format.</summary>
+		[EnumMember(Value = "csv")]
+		PollingData,
+
+		/// <summary>Summary file of the recording in JSON file format</summary>
+		[EnumMember(Value = "summary")]
+		Summary,
 	}
 }

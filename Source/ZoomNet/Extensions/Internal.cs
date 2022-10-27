@@ -1,11 +1,12 @@
+using HttpMultipartParser;
 using Pathoschild.Http.Client;
-using Pathoschild.Http.Client.Extensibility;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -227,6 +228,19 @@ namespace ZoomNet
 			return encoding;
 		}
 
+		/// <summary>
+		/// Returns the value of a parameter or the default value if it doesn't exist.
+		/// </summary>
+		/// <param name="parser">The parser.</param>
+		/// <param name="name">The name of the parameter.</param>
+		/// <param name="defaultValue">The default value.</param>
+		/// <returns>The value of the parameter.</returns>
+		internal static string GetParameterValue(this MultipartFormDataParser parser, string name, string defaultValue)
+		{
+			if (parser.HasParameter(name)) return parser.GetParameterValue(name);
+			else return defaultValue;
+		}
+
 		/// <summary>Asynchronously retrieve the JSON encoded response body and convert it to an object of the desired type.</summary>
 		/// <typeparam name="T">The response model to deserialize into.</typeparam>
 		/// <param name="response">The response.</param>
@@ -352,13 +366,16 @@ namespace ZoomNet
 		/// <returns>Returns the request builder for chaining.</returns>
 		internal static IRequest WithHttp200TreatedAsFailure(this IRequest request, string customExceptionMessage = null)
 		{
-			return request.WithFilter(new ZoomErrorHandler(true, customExceptionMessage));
+			return request
+				.WithoutFilter<ZoomErrorHandler>()
+				.WithFilter(new ZoomErrorHandler(true, customExceptionMessage));
 		}
 
 		/// <summary>Set the body content of the HTTP request.</summary>
 		/// <typeparam name="T">The type of object to serialize into a JSON string.</typeparam>
 		/// <param name="request">The request.</param>
 		/// <param name="body">The value to serialize into the HTTP body content.</param>
+		/// <param name="omitCharSet">Indicates if the charset should be omitted from the 'Content-Type' request header.</param>
 		/// <returns>Returns the request builder for chaining.</returns>
 		/// <remarks>
 		/// This method is equivalent to IRequest.AsBody&lt;T&gt;(T body) because omitting the media type
@@ -366,45 +383,19 @@ namespace ZoomNet
 		/// formatter happens to be the JSON formatter. However, I don't feel good about relying on the
 		/// default ordering of the items in the MediaTypeFormatterCollection.
 		/// </remarks>
-		internal static IRequest WithJsonBody<T>(this IRequest request, T body)
+		internal static IRequest WithJsonBody<T>(this IRequest request, T body, bool omitCharSet = false)
 		{
-			return request.WithBody(bodyBuilder => bodyBuilder.Model(body, new MediaTypeHeaderValue("application/json")));
-		}
-
-		/// <summary>Add a filter to a request.</summary>
-		/// <typeparam name="TFilter">The type of filter.</typeparam>
-		/// <param name="request">The request.</param>
-		/// <param name="filter">The filter.</param>
-		/// <param name="replaceExisting">
-		/// When true, the first filter of matching type is replaced with the new filter (thereby preserving the position of the filter in the list of filters) and any other filter of matching type is removed.
-		/// When false, the filter is simply added to the list of filters.
-		/// </param>
-		/// <returns>Returns the request builder for chaining.</returns>
-		internal static IRequest WithFilter<TFilter>(this IRequest request, TFilter filter, bool replaceExisting = true)
-			where TFilter : IHttpFilter
-		{
-			var matchingFilters = request.Filters.OfType<TFilter>().ToArray();
-
-			if (matchingFilters.Length == 0 || !replaceExisting)
+			return request.WithBody(bodyBuilder =>
 			{
-				request.Filters.Add(filter);
-			}
-			else
-			{
-				// Replace the first matching filter with the new filter
-				var collectionAsList = request.Filters as IList<IHttpFilter>;
-				var indexOfMatchingFilter = collectionAsList.IndexOf(matchingFilters[0]);
-				collectionAsList.RemoveAt(indexOfMatchingFilter);
-				collectionAsList.Insert(indexOfMatchingFilter, filter);
+				var httpContent = bodyBuilder.Model(body, new MediaTypeHeaderValue("application/json"));
 
-				// Remove any other matching filter
-				for (int i = 1; i < matchingFilters.Length; i++)
+				if (omitCharSet && !string.IsNullOrEmpty(httpContent.Headers.ContentType.CharSet))
 				{
-					request.Filters.Remove(matchingFilters[i]);
+					httpContent.Headers.ContentType.CharSet = string.Empty;
 				}
-			}
 
-			return request;
+				return httpContent;
+			});
 		}
 
 		/// <summary>Asynchronously retrieve the response body as a <see cref="string"/>.</summary>
@@ -660,9 +651,6 @@ namespace ZoomNet
 
 		internal static async Task<(bool, string, int?)> GetErrorMessageAsync(this HttpResponseMessage message)
 		{
-			// Assume there is no error
-			var isError = false;
-
 			// Default error code
 			int? errorCode = null;
 
@@ -696,25 +684,29 @@ namespace ZoomNet
 				try
 				{
 					var rootJsonElement = JsonDocument.Parse(responseContent).RootElement;
-					errorCode = rootJsonElement.TryGetProperty("code", out JsonElement jsonErrorCode) ? (int?)jsonErrorCode.GetInt32() : (int?)null;
-					errorMessage = rootJsonElement.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : (errorCode.HasValue ? $"Error code: {errorCode}" : errorMessage);
-					if (rootJsonElement.TryGetProperty("errors", out JsonElement jsonErrorDetails))
+
+					if (rootJsonElement.ValueKind == JsonValueKind.Object)
 					{
-						var errorDetails = string.Join(
-							" ",
-							jsonErrorDetails
-								.EnumerateArray()
-								.Select(jsonErrorDetail =>
-								{
-									var errorDetail = jsonErrorDetail.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : string.Empty;
-									return errorDetail;
-								})
-								.Where(errorDetail => !string.IsNullOrEmpty(errorDetail)));
+						errorCode = rootJsonElement.TryGetProperty("code", out JsonElement jsonErrorCode) ? (int?)jsonErrorCode.GetInt32() : (int?)null;
+						errorMessage = rootJsonElement.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : (errorCode.HasValue ? $"Error code: {errorCode}" : errorMessage);
+						if (rootJsonElement.TryGetProperty("errors", out JsonElement jsonErrorDetails))
+						{
+							var errorDetails = string.Join(
+								" ",
+								jsonErrorDetails
+									.EnumerateArray()
+									.Select(jsonErrorDetail =>
+						{
+							var errorDetail = jsonErrorDetail.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : string.Empty;
+							return errorDetail;
+						})
+									.Where(message => !string.IsNullOrEmpty(message)));
 
-						if (!string.IsNullOrEmpty(errorDetails)) errorMessage += $" {errorDetails}";
+							if (!string.IsNullOrEmpty(errorDetails)) errorMessage += $" {errorDetails}";
+						}
+
+						return (errorCode.HasValue, errorMessage, errorCode);
 					}
-
-					isError = errorCode.HasValue;
 				}
 				catch
 				{
@@ -722,7 +714,31 @@ namespace ZoomNet
 				}
 			}
 
-			return (isError, errorMessage, errorCode);
+			return (!message.IsSuccessStatusCode, errorMessage, errorCode);
+		}
+
+		internal static async Task<Stream> CompressAsync(this Stream source)
+		{
+			var compressedStream = new MemoryStream();
+			using (var gzip = new GZipStream(compressedStream, CompressionMode.Compress, true))
+			{
+				await source.CopyToAsync(gzip).ConfigureAwait(false);
+			}
+
+			compressedStream.Position = 0;
+			return compressedStream;
+		}
+
+		internal static async Task<Stream> DecompressAsync(this Stream source)
+		{
+			var decompressedStream = new MemoryStream();
+			using (var gzip = new GZipStream(source, CompressionMode.Decompress, true))
+			{
+				await gzip.CopyToAsync(decompressedStream).ConfigureAwait(false);
+			}
+
+			decompressedStream.Position = 0;
+			return decompressedStream;
 		}
 
 		/// <summary>Convert an enum to its string representation.</summary>
@@ -821,7 +837,7 @@ namespace ZoomNet
 
 		internal static T ToObject<T>(this JsonElement element, JsonSerializerOptions options = null)
 		{
-			return JsonSerializer.Deserialize<T>(element, options ?? ZoomNetJsonFormatter.DeserializerOptions);
+			return JsonSerializer.Deserialize<T>(element.GetRawText(), options ?? JsonFormatter.DeserializerOptions);
 		}
 
 		internal static void Add<T>(this JsonObject jsonObject, string propertyName, T value)
@@ -865,14 +881,13 @@ namespace ZoomNet
 
 			if (string.IsNullOrEmpty(propertyName))
 			{
-				return JsonSerializer.Deserialize<T>(responseContent, options ?? ZoomNetJsonFormatter.DeserializerOptions);
+				return JsonSerializer.Deserialize<T>(responseContent, options ?? JsonFormatter.DeserializerOptions);
 			}
 
 			var jsonDoc = JsonDocument.Parse(responseContent, (JsonDocumentOptions)default);
 			if (jsonDoc.RootElement.TryGetProperty(propertyName, out JsonElement property))
 			{
-				var propertyContent = property.GetRawText();
-				return JsonSerializer.Deserialize<T>(propertyContent, options ?? ZoomNetJsonFormatter.DeserializerOptions);
+				return property.ToObject<T>(options);
 			}
 			else if (throwIfPropertyIsMissing)
 			{
@@ -951,7 +966,7 @@ namespace ZoomNet
 				PageCount = pageCount,
 				PageNumber = pageNumber,
 				PageSize = pageSize,
-				Records = jsonProperty.HasValue ? JsonSerializer.Deserialize<T[]>(jsonProperty.Value, options ?? ZoomNetJsonFormatter.DeserializerOptions) : Array.Empty<T>()
+				Records = jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
@@ -990,7 +1005,7 @@ namespace ZoomNet
 			{
 				NextPageToken = nextPageToken,
 				PageSize = pageSize,
-				Records = jsonProperty.HasValue ? JsonSerializer.Deserialize<T[]>(jsonProperty.Value, options ?? ZoomNetJsonFormatter.DeserializerOptions) : Array.Empty<T>()
+				Records = jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
@@ -1033,7 +1048,7 @@ namespace ZoomNet
 				To = to,
 				NextPageToken = nextPageToken,
 				PageSize = pageSize,
-				Records = jsonProperty.HasValue ? JsonSerializer.Deserialize<T[]>(jsonProperty.Value, options ?? ZoomNetJsonFormatter.DeserializerOptions) : Array.Empty<T>()
+				Records = jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 

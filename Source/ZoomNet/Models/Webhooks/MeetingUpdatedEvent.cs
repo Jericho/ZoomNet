@@ -29,5 +29,11 @@ namespace ZoomNet.Models.Webhooks
 		/// Gets or sets the fields that have been modified.
 		/// </summary>
 		public (string FieldName, object OldValue, object NewValue)[] ModifiedFields { get; set; }
+
+		/// <summary>
+		/// Gets or sets the fields about the meeting.
+		/// </summary>
+		/// <remarks>Typically, this array will contain fields such as Id, Uuid, etc.</remarks>
+		public (string FieldName, object Value)[] MeetingFields { get; set; }
 	}
 }
