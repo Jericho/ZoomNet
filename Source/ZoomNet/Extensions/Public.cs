@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Security;
-using System.Security.Cryptography;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -279,19 +277,8 @@ namespace ZoomNet
 		/// <returns>An <see cref="Event" />.</returns>
 		public static Event VerifyAndParseEventWebhook(this IWebhookParser parser, string requestBody, string secretToken, string signature, string timestamp)
 		{
-			// Construct the message
-			var message = $"v0:{timestamp}:{requestBody}";
-
-			// Hash the message
-			var hmac = new HMACSHA256(Encoding.ASCII.GetBytes(secretToken));
-			var hashAsBytes = hmac.ComputeHash(Encoding.ASCII.GetBytes(message));
-			var hashAsHex = hashAsBytes.ToHexString();
-
-			// Create the signature
-			var calculatedSignature = $"v0={hashAsHex}";
-
 			// Compare the signatures
-			if (calculatedSignature != signature) throw new SecurityException("Webhook signature validation failed.");
+			if (!parser.VerifySignature(requestBody, secretToken, signature, timestamp)) throw new SecurityException("Webhook signature validation failed.");
 
 			// Parse the webhook event
 			return parser.ParseEventWebhook(requestBody);

@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.Json;
 using ZoomNet.Json;
 using ZoomNet.Models.Webhooks;
@@ -24,11 +26,25 @@ namespace ZoomNet
 		/// </summary>
 		public const string TIMESTAMP_HEADER_NAME = "x-zm-request-timestamp";
 
-		/// <summary>
-		/// Parses the event webhook.
-		/// </summary>
-		/// <param name="requestBody">The content submitted by Zoom's WebHook.</param>
-		/// <returns>An <see cref="Event" />.</returns>
+		/// <inheritdoc/>
+		public bool VerifySignature(string requestBody, string secretToken, string signature, string timestamp)
+		{
+			// Construct the message
+			var message = $"v0:{timestamp}:{requestBody}";
+
+			// Hash the message
+			var hmac = new HMACSHA256(Encoding.ASCII.GetBytes(secretToken));
+			var hashAsBytes = hmac.ComputeHash(Encoding.ASCII.GetBytes(message));
+			var hashAsHex = hashAsBytes.ToHexString();
+
+			// Create the signature
+			var calculatedSignature = $"v0={hashAsHex}";
+
+			// Compare the signatures
+			return calculatedSignature == signature;
+		}
+
+		/// <inheritdoc/>
 		public Event ParseEventWebhook(string requestBody)
 		{
 			var webHookEvent = JsonSerializer.Deserialize<Event>(requestBody, JsonFormatter.DeserializerOptions);
