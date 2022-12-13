@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,6 +13,13 @@ namespace ZoomNet.IntegrationTests.Tests
 			if (cancellationToken.IsCancellationRequested) return;
 
 			await log.WriteLineAsync("\n***** USERS *****\n").ConfigureAwait(false);
+
+			// UPDATE CUSTOM ATTRIBUTES
+			await client.Users.UpdateAsync(myUser.Id,
+				customAttributes: new List<CustomAttribute> { new CustomAttribute { Key = "TestKey1", Name = "TestName1", Value = "TestValue1" } },
+				cancellationToken: cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("My user custom attributes were updated").ConfigureAwait(false);
+			await Task.Delay(500, cancellationToken).ConfigureAwait(false);
 
 			// UPDATE MY USER
 			await client.Users.UpdateAsync(myUser.Id,
