@@ -145,18 +145,26 @@ namespace ZoomNet
 		/// </summary>
 		/// <remarks>
 		/// This is the most commonly used grant type for Zoom APIs.
+		///
+		/// Please note that the 'accessToken' parameter is optional.
+		/// In fact, we recommend that you specify a null value which
+		/// will cause ZoomNet to automatically obtain a new access
+		/// token from the Zoom API. The reason we recommend you omit
+		/// this parameter is that access tokens are ephemeral (they
+		/// expire in 60 minutes) and even if you specify a token that
+		/// was previously issued to you and that you preserved, this
+		/// token is very likely to be expired and therefore useless.
 		/// </remarks>
 		/// <param name="clientId">Your Client Id.</param>
 		/// <param name="clientSecret">Your Client Secret.</param>
 		/// <param name="refreshToken">The refresh token.</param>
-		/// <param name="accessToken">The access token. Access tokens expire after 1 hour. ZoomNet will automatically refresh this token when it expires.</param>
+		/// <param name="accessToken">(Optional) The access token. We recommend you specify a null value. See remarks for more details.</param>
 		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed.</param>
 		public OAuthConnectionInfo(string clientId, string clientSecret, string refreshToken, string accessToken, OnTokenRefreshedDelegate onTokenRefreshed)
 		{
 			if (string.IsNullOrEmpty(clientId)) throw new ArgumentNullException(nameof(clientId));
 			if (string.IsNullOrEmpty(clientSecret)) throw new ArgumentNullException(nameof(clientSecret));
 			if (string.IsNullOrEmpty(refreshToken)) throw new ArgumentNullException(nameof(refreshToken));
-			if (string.IsNullOrEmpty(accessToken)) throw new ArgumentNullException(nameof(accessToken));
 
 			ClientId = clientId;
 			ClientSecret = clientSecret;
