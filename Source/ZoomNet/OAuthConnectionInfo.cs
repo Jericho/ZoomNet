@@ -156,7 +156,6 @@ namespace ZoomNet
 			if (string.IsNullOrEmpty(clientId)) throw new ArgumentNullException(nameof(clientId));
 			if (string.IsNullOrEmpty(clientSecret)) throw new ArgumentNullException(nameof(clientSecret));
 			if (string.IsNullOrEmpty(refreshToken)) throw new ArgumentNullException(nameof(refreshToken));
-			if (string.IsNullOrEmpty(accessToken)) throw new ArgumentNullException(nameof(accessToken));
 
 			ClientId = clientId;
 			ClientSecret = clientSecret;
