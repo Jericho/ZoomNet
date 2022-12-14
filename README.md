@@ -66,7 +66,7 @@ Using OAuth is much more complicated than using JWT but at the same time, it is 
 The Zoom documentation has a document about [how to create an OAuth app](https://marketplace.zoom.us/docs/guides/build/oauth-app) and another document about the [OAuth autorization flow](https://marketplace.zoom.us/docs/guides/auth/oauth) but I personnality was very confused by the later document so here is a brief step-by-step summary:
 - you create an OAuth app, define which permissions your app requires and publish the app in the Zoom marketplace.
 - user installs your app. During installation, user is presentd with a screen listing the permissons your app requires. User must click `accept`.
-- Zoom generates a "authorization code". This code can be used only once to generate the first access token and refresh token. I CAN'T STRESS THIS ENOUGH: the authorization code can be used only one time. This was the confusing part to me: somehow I didn't understand that this code could be used only one time and I was attempting to use it repeatedly. Zoom would accept the code the first time and would reject it subsequently, which lead to many hours of frustration while trying to figure out why the code was sometimes rejected.
+- Zoom generates an "authorization code". This code can be used only once to generate the first access token and refresh token. I CAN'T STRESS THIS ENOUGH: the authorization code can be used only one time. This was the confusing part to me: somehow I didn't understand that this code could be used only one time and I was attempting to use it repeatedly. Zoom would accept the code the first time and would reject it subsequently, which lead to many hours of frustration while trying to figure out why the code was sometimes rejected.
 - The access token is valid for 60 minutes and must therefore be "refreshed" periodically.
 
 When you initially add an OAuth application to your Zoom account, you will be issued an "authorization code".
@@ -74,7 +74,6 @@ You can provide this autorization code to ZoomNet like so:
 ```csharp
 var clientId = "... your client ID ...";
 var clientSecret = "... your client secret ...";
-var refreshToken = "... the refresh token previously issued by Zoom ...";
 var authorizationCode = "... the code that Zoom issued when you added the OAuth app to your account ...";
 var redirectUri = "... the URI you have configured when setting up your OAuth app ..."; // Please note that Zoom sometimes accepts a null value and sometimes rejects it with a 'Redirect URI mismatch' error
 var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, authorizationCode,
@@ -85,15 +84,20 @@ var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, authorizati
             is converted into an access token and also when the
             access token is subsequently refreshed.
 
-            You should use this callback to save the two new tokens
-            to a safe place so you can provide them the next time you
+            You should use this callback to save the refresh token
+            to a safe place so you can provide it the next time you
             need to instantiate an OAuthConnectionInfo.
+            
+            The access token on the other hand does not need to be
+            preserved because it is ephemeral (meaning it expires
+            after 60 minutes). Even if you preserve it, it is very
+            likely to be expired (and therefore useless) before the
+            next time you need to instantiate an OAuthConnectionInfo.
 
             For demonstration purposes, here's how you could use your
-            operating system's environment variables to store the tokens:
+            operating system's environment variables to store the token:
         */
         Environment.SetEnvironmentVariable("ZOOM_OAUTH_REFRESHTOKEN", newRefreshToken, EnvironmentVariableTarget.User);
-        Environment.SetEnvironmentVariable("ZOOM_OAUTH_ACCESSTOKEN", newAccessToken, EnvironmentVariableTarget.User);
     },
     redirectUri);
 var zoomClient = new ZoomClient(connectionInfo);
@@ -101,17 +105,15 @@ var zoomClient = new ZoomClient(connectionInfo);
 
 > **Warning:** This sample I just provided can be used only when Zoom issues a new the autorization code. ZoomNet will take care of converting this code into an access token at which point the autorization code is no longer valid.
 
-Once the autorization code is converted into an access token, you can instantiate a 'connection info' object like so:
+Once the autorization code is converted into an access token and a refresh token, you can instantiate a 'connection info' object like so:
 ```csharp
 var clientId = "... your client ID ...";
 var clientSecret = "... your client secret ...";
 var refreshToken = Environment.GetEnvironmentVariable("ZOOM_OAUTH_REFRESHTOKEN", EnvironmentVariableTarget.User);
-var accessToken = Environment.GetEnvironmentVariable("ZOOM_OAUTH_ACCESSTOKEN", EnvironmentVariableTarget.User);
-var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, refreshToken, accessToken,
+var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, refreshToken, null,
     (newRefreshToken, newAccessToken) =>
     {
         Environment.SetEnvironmentVariable("ZOOM_OAUTH_REFRESHTOKEN", newRefreshToken, EnvironmentVariableTarget.User);
-        Environment.SetEnvironmentVariable("ZOOM_OAUTH_ACCESSTOKEN", newAccessToken, EnvironmentVariableTarget.User);
     });
 var zoomClient = new ZoomClient(connectionInfo);
 ```
@@ -135,8 +137,7 @@ var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, accountId,
         /*
             Server-to-Server OAuth does not use a refresh token. That's why I used '_' as the first parameter
             in this delegate declaration. Furthermore, ZoomNet will take care of getting a new access token
-            and to refresh it whenever it expires therefore there is no need for you to preserve the token
-            like you must do for the 'standard' OAuth authentication.
+            and to refresh it whenever it expires therefore there is no need for you to preserve the token.
 
             In fact, this delegate is completely optional when using Server-to-Server OAuth. Feel free to pass
             a null value in lieu of a delegate.
