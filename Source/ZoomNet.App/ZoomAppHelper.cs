@@ -127,7 +127,7 @@ namespace ZoomNet.App
 				.Replace("-", "+")
 				.Replace("_", "/");
 
-			string base64 = base64Pre.PadRight(base64Pre.Length + (4 - base64Pre.Length % 4) % 4, '=');
+			string base64 = base64Pre.PadRight(base64Pre.Length + ((4 - (base64Pre.Length % 4)) % 4), '=');
 
 			return base64;
 		}
