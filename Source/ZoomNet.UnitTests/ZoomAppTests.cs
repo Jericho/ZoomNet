@@ -1,9 +1,6 @@
-#if NET48
-#else
 using Shouldly;
 using Xunit;
 using ZoomNet.App;
-using static Xunit.Assert;
 
 namespace ZoomNet.UnitTests
 {
@@ -30,4 +27,3 @@ namespace ZoomNet.UnitTests
 		}
 	}
 }
-#endif

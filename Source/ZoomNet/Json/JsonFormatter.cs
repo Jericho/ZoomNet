@@ -14,11 +14,11 @@ namespace ZoomNet.Json
 {
 	internal class JsonFormatter : MediaTypeFormatterBase
 	{
-		internal static readonly JsonSerializerOptions SerializerOptions;
-		internal static readonly JsonSerializerOptions DeserializerOptions;
+		internal static JsonSerializerOptions SerializerOptions;
+		internal static JsonSerializerOptions DeserializerOptions;
 
-		internal static readonly ZoomNetJsonSerializerContext SerializationContext;
-		internal static readonly ZoomNetJsonSerializerContext DeserializationContext;
+		internal static JsonSerializerContext SerializationContext;
+		internal static JsonSerializerContext DeserializationContext;
 
 		private const int DefaultBufferSize = 1024;
 

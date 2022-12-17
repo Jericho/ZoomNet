@@ -49,5 +49,29 @@ namespace ZoomNet.App
 		/// </summary>
 		[JsonPropertyName("exp")]
 		public long ExpirationTimestamp { get; set; }
+
+		/// <summary>
+		/// The theme of the host application.
+		/// </summary>
+		[JsonPropertyName("theme")]
+		public string Theme { get; set; }
+
+		/// <summary>
+		/// No idea... it's not documented.
+		/// </summary>
+		[JsonPropertyName("aud")]
+		public string Aud { get; set; }
+
+		/// <summary>
+		/// The issuer of the token.
+		/// </summary>
+		[JsonPropertyName("iss")]
+		public string Issuer { get; set; }
+
+		/// <summary>
+		/// No idea... it's not documented.
+		/// </summary>
+		[JsonPropertyName("entitlements")]
+		public object[] Entitlements { get; set; }
 	}
 }

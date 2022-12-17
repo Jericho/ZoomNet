@@ -1,13 +1,17 @@
 #if NET48
+using Org.BouncyCastle.Crypto;
+using Org.BouncyCastle.Crypto.Engines;
+using Org.BouncyCastle.Crypto.IO;
+using Org.BouncyCastle.Crypto.Modes;
+using Org.BouncyCastle.Crypto.Parameters;
+using System.Linq;
 #else
-using Newtonsoft.Json;
+#endif
+
 using System;
 using System.IO;
-using System.Net.Security;
 using System.Security.Cryptography;
 using System.Text;
-using System.Text.Encodings.Web;
-using System.Web;
 using ZoomNet.Json;
 
 namespace ZoomNet.App
@@ -23,30 +27,48 @@ namespace ZoomNet.App
 		/// </summary>
 		/// <param name="context">The encrypted AppContext</param>
 		/// <param name="clientSecret">Your ZoomApp clientSecret</param>
-		/// <returns>A <see cref="AppContext" /></returns>
+		/// <returns>A <see cref="AppContext" />.</returns>
 		public virtual (AppContext AppContext, string RawJson) DecryptAppContext(string context, string clientSecret)
 		{
 			UnpackedAppContext unpackedContext = Unpack(context);
 
+			byte[] key;
 			using (SHA256 sha256Hash = SHA256.Create())
-			{
-				using (var decryptor = new AesGcm(sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(clientSecret))))
-				{
-					var plaintextBytes = new byte[unpackedContext.Encrypt.Length];
-					decryptor.Decrypt(unpackedContext.Iv, unpackedContext.Encrypt, unpackedContext.Tag, plaintextBytes, unpackedContext.Aad);
-					string json = Encoding.UTF8.GetString(plaintextBytes);
+				key = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(clientSecret));
 
-					var converter = new JsonFormatter();
-					var result = (AppContext)converter.Deserialize(typeof(AppContext), new MemoryStream(plaintextBytes), null, null);
-					return (result, json);
-				}
+			string json;
+			byte[] plaintextBytes;
+			byte[] encrypted;
+#if NET48
+			encrypted = unpackedContext.Encrypt.Concat(unpackedContext.Tag).ToArray();
+			var keyParameter = new KeyParameter(key);
+			var cipherParameters = new AeadParameters(keyParameter, unpackedContext.Tag.Length * 8, unpackedContext.Iv, unpackedContext.Aad);
+			var cipher = new GcmBlockCipher(new AesEngine());
+			cipher.Init(false, cipherParameters);
+			plaintextBytes = new byte[cipher.GetOutputSize(encrypted.Length)];
+			int len = cipher.ProcessBytes(encrypted, 0, encrypted.Length, plaintextBytes, 0);
+			cipher.DoFinal(plaintextBytes, len);
+
+			json = Encoding.UTF8.GetString(plaintextBytes);
+#else
+			encrypted = unpackedContext.Encrypt;
+			plaintextBytes = new byte[unpackedContext.Encrypt.Length];
+			using (var decryptor = new AesGcm(key))
+			{
+				decryptor.Decrypt(unpackedContext.Iv, encrypted, unpackedContext.Tag, plaintextBytes, unpackedContext.Aad);
+				json = Encoding.UTF8.GetString(plaintextBytes);
 			}
+#endif
+
+			var converter = new AppJsonFormatter();
+			var result = (AppContext)converter.Deserialize(typeof(AppContext), new MemoryStream(plaintextBytes), null, null);
+			return (result, json);
 		}
 
-		private static UnpackedAppContext Unpack(string context)
+		private UnpackedAppContext Unpack(string context)
 		{
-			string _context = UrlTokenDecode(context);
-			byte[] contextBytes = Convert.FromBase64String(_context);
+			string decodedContext = UrlTokenDecode(context);
+			byte[] contextBytes = Convert.FromBase64String(decodedContext);
 
 			// [ivLength: 1 byte][iv][aadLength: 2 bytes][aad][cipherTextLength: 4 bytes][cipherText][tag: 16 bytes]
 			using (Stream stream = new MemoryStream(contextBytes))
@@ -92,7 +114,7 @@ namespace ZoomNet.App
 			}
 		}
 
-		private static string UrlTokenDecode(string input)
+		private string UrlTokenDecode(string input)
 		{
 			if (input == null)
 				throw new ArgumentNullException("input");
@@ -111,4 +133,3 @@ namespace ZoomNet.App
 		}
 	}
 }
-#endif
