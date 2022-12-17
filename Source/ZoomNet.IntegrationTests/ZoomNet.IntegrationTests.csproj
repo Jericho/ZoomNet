@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ZoomNet.App\ZoomNet.App.csproj" />
     <ProjectReference Include="..\ZoomNet\ZoomNet.csproj" />
   </ItemGroup>
 

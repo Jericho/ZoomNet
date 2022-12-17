@@ -2,7 +2,6 @@ using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: InternalsVisibleTo("ZoomNet.App")]
 [assembly: InternalsVisibleTo("ZoomNet.UnitTests")]
 [assembly: InternalsVisibleTo("ZoomNet.IntegrationTests")]
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]

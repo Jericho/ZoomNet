@@ -25,8 +25,8 @@ namespace ZoomNet.App
 		/// Decrypts the ZoomAppContext as provided by appssdk.getAppContext
 		/// - see https://marketplace.zoom.us/docs/zoom-apps/js-sdk/reference/#getAppContext .
 		/// </summary>
-		/// <param name="context">The encrypted AppContext</param>
-		/// <param name="clientSecret">Your ZoomApp clientSecret</param>
+		/// <param name="context">The encrypted AppContext.</param>
+		/// <param name="clientSecret">Your ZoomApp clientSecret.</param>
 		/// <returns>A <see cref="AppContext" />.</returns>
 		public virtual (AppContext AppContext, string RawJson) DecryptAppContext(string context, string clientSecret)
 		{

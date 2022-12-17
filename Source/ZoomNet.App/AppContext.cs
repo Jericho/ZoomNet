@@ -9,67 +9,67 @@ namespace ZoomNet.App
 	public class AppContext
 	{
 		/// <summary>
-		/// The context type where this app is opened, could be 'panel', 'meeting', or 'webinar'.
+		/// Gets or sets the context type where this app is opened, could be 'panel', 'meeting', or 'webinar'.
 		/// </summary>
 		[JsonPropertyName("typ")]
 		public string ContextType { get; set; }
 
 		/// <summary>
-		/// The Zoom user id who open this app.
+		/// Gets or sets the Zoom user id who open this app.
 		/// </summary>
 		[JsonPropertyName("uid")]
 		public string UserId { get; set; }
 
 		/// <summary>
-		/// The Zoom meeting uuid identifies the meeting in which this app is opened, only returned when value of typ is 'meeting'.
+		/// Gets or sets the Zoom meeting uuid identifies the meeting in which this app is opened, only returned when value of typ is 'meeting'.
 		/// </summary>
 		[JsonPropertyName("mid")]
 		public string MeetingUuid { get; set; }
 
 		/// <summary>
-		/// Action payload supplied in the deeplink.
+		/// Gets or sets the action payload supplied in the deeplink.
 		/// </summary>
 		[JsonPropertyName("act")]
 		public string Action { get; set; }
 
 		/// <summary>
-		/// No idea... it's not documented.
+		/// Gets or sets something, but I have o idea... it's not documented.
 		/// </summary>
 		[JsonPropertyName("dev")]
 		public string Dev { get; set; }
 
 		/// <summary>
-		/// The create timestamp of this context.
+		/// Gets or sets the create timestamp of this context.
 		/// </summary>
 		[JsonPropertyName("ts")]
 		public long CreatedTimestamp { get; set; }
 
 		/// <summary>
-		/// The expiration timestamp of this context.
+		/// Gets or sets the expiration timestamp of this context.
 		/// </summary>
 		[JsonPropertyName("exp")]
 		public long ExpirationTimestamp { get; set; }
 
 		/// <summary>
-		/// The theme of the host application.
+		/// Gets or sets the theme of the host application.
 		/// </summary>
 		[JsonPropertyName("theme")]
 		public string Theme { get; set; }
 
 		/// <summary>
-		/// No idea... it's not documented.
+		/// Gets or sets something, but I have o idea... it's not documented.
 		/// </summary>
 		[JsonPropertyName("aud")]
 		public string Aud { get; set; }
 
 		/// <summary>
-		/// The issuer of the token.
+		/// Gets or sets the issuer of the token.
 		/// </summary>
 		[JsonPropertyName("iss")]
 		public string Issuer { get; set; }
 
 		/// <summary>
-		/// No idea... it's not documented.
+		/// Gets or sets something, but I have o idea... it's not documented.
 		/// </summary>
 		[JsonPropertyName("entitlements")]
 		public object[] Entitlements { get; set; }
