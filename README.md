@@ -15,6 +15,8 @@
 
 ## About
 
+The ZoomNet library simplifies connecting with the Zoom.us API and interacting with the various endpoints. Additionaly, the library includes a parser that allows you to process inbound webhook messages sent to you by the Zoom API.
+
 
 ## Installation
 
