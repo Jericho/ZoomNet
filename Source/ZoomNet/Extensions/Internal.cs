@@ -649,7 +649,7 @@ namespace ZoomNet
 			return diagnosticInfo;
 		}
 
-		internal static async Task<(bool, string, int?)> GetErrorMessageAsync(this HttpResponseMessage message)
+		internal static async Task<(bool IsError, string ErrorMessage, int? ErrorCode)> GetErrorMessageAsync(this HttpResponseMessage message)
 		{
 			// Default error code
 			int? errorCode = null;
