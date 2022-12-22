@@ -76,7 +76,7 @@ namespace ZoomNet.Resources
 		{
 			if (to < from)
 			{
-				throw new ArgumentOutOfRangeException(nameof(to), $"Should be greater then or equal to {nameof(to)}.");
+				throw new ArgumentOutOfRangeException(nameof(to), $"Should be greater then or equal to {nameof(from)}.");
 			}
 
 			if (to - from > TimeSpan.FromDays(30))
