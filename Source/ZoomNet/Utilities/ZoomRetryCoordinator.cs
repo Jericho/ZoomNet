@@ -13,7 +13,7 @@ namespace ZoomNet.Utilities
 	/// <summary>A request coordinator which retries failed requests with a delay between each attempt.</summary>
 	internal class ZoomRetryCoordinator : IRequestCoordinator
 	{
-		private static readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim();
+		private static readonly ReaderWriterLockSlim _lock = new();
 
 		private readonly IRequestCoordinator _defaultRetryCoordinator;
 		private readonly ITokenHandler _tokenHandler;
@@ -57,6 +57,8 @@ namespace ZoomNet.Utilities
 		/// <returns>The final HTTP response.</returns>
 		public async Task<HttpResponseMessage> ExecuteAsync(IRequest request, Func<IRequest, Task<HttpResponseMessage>> dispatcher)
 		{
+			var requestUri = request.Message.RequestUri;
+
 			// Dispatch the request
 			var response = await _defaultRetryCoordinator.ExecuteAsync(request, dispatcher).ConfigureAwait(false);
 
@@ -71,6 +73,21 @@ namespace ZoomNet.Utilities
 					var refreshedToken = RefreshToken();
 					response = await _defaultRetryCoordinator.ExecuteAsync(request.WithBearerAuthentication(refreshedToken), dispatcher);
 				}
+			}
+
+			// Check if the request was redirected and includes an authorization header.
+			var finalRequestUri = response.RequestMessage.RequestUri;
+			var requestRedirected = finalRequestUri != requestUri;
+			var requestIncludesAuthorization = request.Message.Headers.Authorization != null;
+
+			if (requestRedirected && requestIncludesAuthorization)
+			{
+				// When a redirect occurs, Microsoft's HTTP client strips out the 'Authorization'
+				// header which causes the Zoom API to reject the request. The solution is to
+				// re-issue the original request (including all necessary headers) at the new url.
+				// See https://github.com/Jericho/ZoomNet/issues/257 for details.
+				request.Message.RequestUri = finalRequestUri;
+				response = await _defaultRetryCoordinator.ExecuteAsync(request, dispatcher);
 			}
 
 			return response;
