@@ -271,7 +271,6 @@ namespace ZoomNet.Json
 					break;
 				case EventType.EndpointUrlValidation:
 					var endpointUrlValidationEvent = payloadJsonProperty.ToObject<EndpointUrlValidationEvent>(options);
-					endpointUrlValidationEvent.PlainToken = payloadJsonProperty.GetPropertyValue<string>("payload/plainToken");
 					webHookEvent = endpointUrlValidationEvent;
 					break;
 				default:
