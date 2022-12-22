@@ -26,7 +26,7 @@ namespace ZoomNet.Models
 		Personal = 4,
 
 		/// <summary>
-		/// A PAC (Personal Audio Conference) meeting
+		/// A PAC (Personal Audio Conference) meeting.
 		/// </summary>
 		PersonalAudioConference = 7,
 

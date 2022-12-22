@@ -7,59 +7,59 @@ namespace ZoomNet.Models
 	/// </summary>
 	public enum DataCenterRegion
 	{
-		/// <summary>Europe</summary>
+		/// <summary>Europe.</summary>
 		[EnumMember(Value = "EU")]
 		Europe,
 
-		/// <summary>Hong Kong</summary>
+		/// <summary>Hong Kong.</summary>
 		[EnumMember(Value = "HK")]
 		HongKong,
 
-		/// <summary>Australia</summary>
+		/// <summary>Australia.</summary>
 		[EnumMember(Value = "AU")]
 		Australia,
 
-		/// <summary>India</summary>
+		/// <summary>India.</summary>
 		[EnumMember(Value = "IN")]
 		India,
 
-		/// <summary>Latin America</summary>
+		/// <summary>Latin America.</summary>
 		[EnumMember(Value = "LA")]
 		LatinAmerica,
 
-		/// <summary>Tokyo</summary>
+		/// <summary>Tokyo.</summary>
 		[EnumMember(Value = "TY")]
 		Tokyo,
 
-		/// <summary>China</summary>
+		/// <summary>China.</summary>
 		[EnumMember(Value = "CN")]
 		China,
 
-		/// <summary>United States of America</summary>
+		/// <summary>United States of America.</summary>
 		[EnumMember(Value = "US")]
 		UnitedStatesOfAmerica,
 
-		/// <summary>Canada</summary>
+		/// <summary>Canada.</summary>
 		[EnumMember(Value = "CA")]
 		Canada,
 
-		/// <summary>Canada</summary>
+		/// <summary>Germany.</summary>
 		[EnumMember(Value = "DE")]
 		Germany,
 
-		/// <summary>Canada</summary>
+		/// <summary>Netherlands.</summary>
 		[EnumMember(Value = "NL")]
 		Netherlands,
 
-		/// <summary>Mexico</summary>
+		/// <summary>Mexico.</summary>
 		[EnumMember(Value = "MX")]
 		Mexico,
 
-		/// <summary>Singapore</summary>
+		/// <summary>Singapore.</summary>
 		[EnumMember(Value = "SG")]
 		Singapore,
 
-		/// <summary>Ireland</summary>
+		/// <summary>Ireland.</summary>
 		[EnumMember(Value = "IE")]
 		Ireland,
 	}

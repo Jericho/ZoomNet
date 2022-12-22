@@ -163,7 +163,7 @@ namespace ZoomNet
 			{
 				var contentStream = await httpContent.ReadAsStreamAsync().ConfigureAwait(false);
 
-				if (encoding == null) encoding = httpContent.GetEncoding(Encoding.UTF8);
+				encoding ??= httpContent.GetEncoding(Encoding.UTF8);
 
 				// This is important: we must make a copy of the response stream otherwise we would get an
 				// exception on subsequent attempts to read the content of the stream
