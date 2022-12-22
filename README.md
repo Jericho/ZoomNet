@@ -115,6 +115,9 @@ var refreshToken = Environment.GetEnvironmentVariable("ZOOM_OAUTH_REFRESHTOKEN",
 var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, refreshToken, null,
     (newRefreshToken, newAccessToken) =>
     {
+        /*
+            As previously stated, it's important to preserve the refresh token.
+        */
         Environment.SetEnvironmentVariable("ZOOM_OAUTH_REFRESHTOKEN", newRefreshToken, EnvironmentVariableTarget.User);
     });
 var zoomClient = new ZoomClient(connectionInfo);
