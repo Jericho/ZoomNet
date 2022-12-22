@@ -142,7 +142,7 @@ var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, accountId,
         /*
             Server-to-Server OAuth does not use a refresh token. That's why I used '_' as the first parameter
             in this delegate declaration. Furthermore, ZoomNet will take care of getting a new access token
-            and to refresh it whenever it expires therefore there is no need for you to preserve the token.
+            and to refresh it whenever it expires therefore there is no need for you to preserve it.
 
             In fact, this delegate is completely optional when using Server-to-Server OAuth. Feel free to pass
             a null value in lieu of a delegate.
