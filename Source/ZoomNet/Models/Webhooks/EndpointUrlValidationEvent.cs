@@ -26,8 +26,8 @@ namespace ZoomNet.Models.Webhooks
 		public string GenerateUrlValidationResponse(string secretToken)
 		{
 			// Generate the encrypted token according to Zoom's instructions: https://marketplace.zoom.us/docs/api-reference/webhook-reference/#verify-webhook-events
-			var crypto = new HMACSHA256(Encoding.UTF8.GetBytes(secretToken));
-			var encryptedToken = crypto.ComputeHash(Encoding.UTF8.GetBytes(this.PlainToken)).ToHexString();
+			var crypto = new HMACSHA256(Encoding.ASCII.GetBytes(secretToken));
+			var encryptedToken = crypto.ComputeHash(Encoding.ASCII.GetBytes(this.PlainToken)).ToHexString();
 
 			var data = new JsonObject
 			{
