@@ -14,13 +14,13 @@ namespace ZoomNet.Models
 		Owner,
 
 		/// <summary>
-		/// Past
+		/// Past.
 		/// </summary>
 		[EnumMember(Value = "admin")]
 		Administrator,
 
 		/// <summary>
-		/// PastOne
+		/// PastOne.
 		/// </summary>
 		[EnumMember(Value = "member")]
 		Member

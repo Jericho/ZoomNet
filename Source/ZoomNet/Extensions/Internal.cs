@@ -35,7 +35,7 @@ namespace ZoomNet
 			Milliseconds = 1
 		}
 
-		private static readonly DateTime EPOCH = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+		private static readonly DateTime EPOCH = new(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
 		/// <summary>
 		/// Converts a 'unix time', which is expressed as the number of seconds (or milliseconds) since
@@ -161,9 +161,12 @@ namespace ZoomNet
 
 			if (httpContent != null)
 			{
+#if NET5_0_OR_GREATER
+				var contentStream = await httpContent.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+#else
 				var contentStream = await httpContent.ReadAsStreamAsync().ConfigureAwait(false);
-
-				if (encoding == null) encoding = httpContent.GetEncoding(Encoding.UTF8);
+#endif
+				encoding ??= httpContent.GetEncoding(Encoding.UTF8);
 
 				// This is important: we must make a copy of the response stream otherwise we would get an
 				// exception on subsequent attempts to read the content of the stream
@@ -174,7 +177,11 @@ namespace ZoomNet
 					ms.Position = 0;
 					using (var sr = new StreamReader(ms, encoding))
 					{
+#if NET7_0_OR_GREATER
+						content = await sr.ReadToEndAsync(cancellationToken).ConfigureAwait(false);
+#else
 						content = await sr.ReadToEndAsync().ConfigureAwait(false);
+#endif
 					}
 
 					// It's important to rewind the stream
@@ -649,7 +656,7 @@ namespace ZoomNet
 			return diagnosticInfo;
 		}
 
-		internal static async Task<(bool, string, int?)> GetErrorMessageAsync(this HttpResponseMessage message)
+		internal static async Task<(bool IsError, string ErrorMessage, int? ErrorCode)> GetErrorMessageAsync(this HttpResponseMessage message)
 		{
 			// Default error code
 			int? errorCode = null;

@@ -40,7 +40,7 @@ namespace ZoomNet.Models
 		[EnumMember(Value = "csv")]
 		PollingData,
 
-		/// <summary>Summary file of the recording in JSON file format</summary>
+		/// <summary>Summary file of the recording in JSON file format.</summary>
 		[EnumMember(Value = "summary")]
 		Summary,
 	}

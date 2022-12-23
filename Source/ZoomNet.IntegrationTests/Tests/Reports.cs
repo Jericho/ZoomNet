@@ -16,34 +16,18 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync("\n***** REPORTS *****\n").ConfigureAwait(false);
 
 			//GET ALL MEETINGS
-			var totalMeetings = await client
-				.Meetings.GetAllAsync(myUser.Id, MeetingListType.Scheduled, 30, null, cancellationToken)
-				.ConfigureAwait(false);
-
-			var pastInstances = new List<PastInstance>();
-
-			foreach (var meeting in totalMeetings.Records)
-			{
-				var pastMeetingInstances = await client.PastMeetings.GetInstancesAsync(meeting.Id, cancellationToken);
-
-				foreach (var instance in pastMeetingInstances)
-				{
-					if (instance.StartedOn < DateTime.UtcNow.AddDays(-1) && !instance.Uuid.StartsWith("/"))
-					{
-						pastInstances.Add(instance);
-					}
-				}
-			}
+			var now = DateTime.UtcNow;
+			var pastMeetings = await client.Reports.GetMeetingsAsync(myUser.Id, now.Subtract(TimeSpan.FromDays(30)), now, ReportMeetingType.Past, 30, null, cancellationToken);
 
 			int totalParticipants = 0;
 
-			foreach (var meeting in pastInstances)
+			foreach (var meeting in pastMeetings.Records)
 			{
 				var paginatedParticipants = await client.Reports.GetMeetingParticipantsAsync(meeting.Uuid, 30, null, cancellationToken);
 				totalParticipants += paginatedParticipants.TotalRecords;
 			}
 
-			await log.WriteLineAsync($"There are {pastInstances.Count} past instances of meetings with a total of {totalParticipants} participants for this user.").ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {pastMeetings.Records.Length} past instances of meetings with a total of {totalParticipants} participants for this user.").ConfigureAwait(false);
 		}
 	}
 }

@@ -10,7 +10,7 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Unknown.
 		/// </summary>
-		/// <remarks>Default value</remarks>
+		/// <remarks>Default value.</remarks>
 		Unknown,
 
 		/// <summary>

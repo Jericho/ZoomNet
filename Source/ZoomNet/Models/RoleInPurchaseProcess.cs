@@ -7,23 +7,23 @@ namespace ZoomNet.Models
 	/// </summary>
 	public enum RoleInPurchaseProcess
 	{
-		/// <summary>Unknown</summary>
+		/// <summary>Unknown.</summary>
 		[EnumMember(Value = "")]
 		Unknown,
 
-		/// <summary>Decision Maker</summary>
+		/// <summary>Decision Maker.</summary>
 		[EnumMember(Value = "Decision Maker")]
 		Decision_Maker,
 
-		/// <summary>Evaluator/Recommender</summary>
+		/// <summary>Evaluator/Recommender.</summary>
 		[EnumMember(Value = "Evaluator/Recommender")]
 		Evaluator_or_Recommender,
 
-		/// <summary>Influencer</summary>
+		/// <summary>Influencer.</summary>
 		[EnumMember(Value = "Influencer")]
 		Influencer,
 
-		/// <summary>Not Involved</summary>
+		/// <summary>Not Involved.</summary>
 		[EnumMember(Value = "Not involved")]
 		Not_Involved,
 	}

@@ -7,11 +7,11 @@ namespace ZoomNet.Models
 	/// </summary>
 	public enum VirtualBackgroundType
 	{
-		/// <summary>Image</summary>
+		/// <summary>Image.</summary>
 		[EnumMember(Value = "image")]
 		Image,
 
-		/// <summary>Video</summary>
+		/// <summary>Video.</summary>
 		[EnumMember(Value = "video")]
 		Video
 	}

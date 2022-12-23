@@ -14,13 +14,13 @@ namespace ZoomNet.Models
 		Live,
 
 		/// <summary>
-		/// Past
+		/// Past.
 		/// </summary>
 		[EnumMember(Value = "past")]
 		Past,
 
 		/// <summary>
-		/// PastOne
+		/// PastOne.
 		/// </summary>
 		[EnumMember(Value = "pastOne")]
 		PastOne

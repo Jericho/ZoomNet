@@ -39,7 +39,10 @@ namespace ZoomNet.IntegrationTests.Tests
 				});
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
 
-			var templates = await client.Meetings.GetTemplatesAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
+			// For an unknown reason, using myUser.Id to retrieve meeting templates causes an "Invalid token" exception.
+			// That's why I use "me" on the following line:
+			var templates = await client.Meetings.GetTemplatesAsync("me", cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Retrieved {templates.Length} meeting templates").ConfigureAwait(false);
 
 			var settings = new MeetingSettings()
 			{

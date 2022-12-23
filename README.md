@@ -15,6 +15,8 @@
 
 ## About
 
+The ZoomNet library simplifies connecting with the Zoom.us API and interacting with the various endpoints. Additionaly, the library includes a parser that allows you to process inbound webhook messages sent to you by the Zoom API.
+
 
 ## Installation
 
@@ -113,6 +115,9 @@ var refreshToken = Environment.GetEnvironmentVariable("ZOOM_OAUTH_REFRESHTOKEN",
 var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, refreshToken, null,
     (newRefreshToken, newAccessToken) =>
     {
+        /*
+            As previously stated, it's important to preserve the refresh token.
+        */
         Environment.SetEnvironmentVariable("ZOOM_OAUTH_REFRESHTOKEN", newRefreshToken, EnvironmentVariableTarget.User);
     });
 var zoomClient = new ZoomClient(connectionInfo);
@@ -137,7 +142,7 @@ var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, accountId,
         /*
             Server-to-Server OAuth does not use a refresh token. That's why I used '_' as the first parameter
             in this delegate declaration. Furthermore, ZoomNet will take care of getting a new access token
-            and to refresh it whenever it expires therefore there is no need for you to preserve the token.
+            and to refresh it whenever it expires therefore there is no need for you to preserve it.
 
             In fact, this delegate is completely optional when using Server-to-Server OAuth. Feel free to pass
             a null value in lieu of a delegate.
@@ -158,7 +163,6 @@ var zoomClient = new ZoomClient(connectionInfo);
 Here's a basic example of a .net 6.0 API controller which parses the webhook from Zoom:
 ```csharp
 using Microsoft.AspNetCore.Mvc;
-using StrongGrid;
 
 namespace WebApplication1.Controllers
 {
@@ -167,10 +171,9 @@ namespace WebApplication1.Controllers
 	public class ZoomWebhooksController : ControllerBase
 	{
 		[HttpPost]
-		[Route("Event")]
 		public async Task<IActionResult> ReceiveEvent()
 		{
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 			var event = await parser.ParseEventWebhookAsync(Request.Body).ConfigureAwait(false);
 
 			// ... do something with the event ...
@@ -197,8 +200,6 @@ The `WebhookParser` class has a method called `VerifyAndParseEventWebhookAsync`w
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;
-using StrongGrid;
-using System.Security;
 
 namespace WebApplication1.Controllers
 {
@@ -209,28 +210,117 @@ namespace WebApplication1.Controllers
 		[HttpPost]
 		public async Task<IActionResult> ReceiveEvent()
 		{
-			try
-			{
-				// Get your secret token
-				var secretToken = "... your app's secret token ...";
+			// Your webhook app's secret token
+			var secretToken = "... your app's secret token ...";
 
-				// Get the signature and the timestamp from the request headers
-				var signature = Request.Headers[WebhookParser.SIGNATURE_HEADER_NAME].SingleOrDefault(); // SIGNATURE_HEADER_NAME is a convenient constant provided by ZoomNet so you don't have to remember the name of the header
-				var timestamp = Request.Headers[WebhookParser.TIMESTAMP_HEADER_NAME].SingleOrDefault(); // TIMESTAMP_HEADER_NAME is a convenient constant provided by ZoomNet so you don't have to remember the name of the header
+			// Get the signature and the timestamp from the request headers
+			// SIGNATURE_HEADER_NAME and TIMESTAMP_HEADER_NAME are two convenient constants provided by ZoomNet so you don't have to remember the actual names of the headers
+			var signature = Request.Headers[ZoomNet.WebhookParser.SIGNATURE_HEADER_NAME].SingleOrDefault();
+			var timestamp = Request.Headers[ZoomNet.WebhookParser.TIMESTAMP_HEADER_NAME].SingleOrDefault();
 
-				// Parse the event. The signature will be automatically validated and a security exception thrown if unable to validate
-				var parser = new WebhookParser();
-				var event = await parser.VerifyAndParseEventWebhook(Request.Body, secretToken, signature, timestamp).ConfigureAwait(false);
+			var parser = new ZoomNet.WebhookParser();
 
-				// ... do something with the event...
-			}
-			catch (SecurityException e)
-			{
-				// ... unable to validate the data ...
-			}
+			// The signature will be automatically validated and a security exception thrown if unable to validate
+			var zoomEvent = await parser.VerifyAndParseEventWebhookAsync(Request.Body, secretToken, signature, timestamp).ConfigureAwait(false);
+
+			// ... do something with the event...
 
 			return Ok();
 		}
 	}
+}
+```
+
+### Responding to requests from Zoom to validate your webhook endpoint
+
+When you initially configure the URL where you want Zoom to post the webhooks, Zoom will send a request to this URL and you are expected to respond to this validation challenge in a way that can be validated by the Zoom API. Zoom calls this a "Challenge-Response check (CRC)". Assuming this initial validation is successful, the Zoom API will repeat this validation process every 72 hours. You can of course manually craft this reponse by following Zoom's [instructions](https://marketplace.zoom.us/docs/api-reference/webhook-reference/#validate-your-webhook-endpoint).
+However, if you want to avoid learning the intricacies of the reponse expected by Zoom and you simply want this response to be conveniently generated for you, ZoomNet can help! 
+The `EndpointUrlValidationEvent` class has a method called `GenerateUrlValidationResponse` which will generate the string that you must include in your HTTP200 response.
+Here's how it works:
+
+```csharp
+using Microsoft.AspNetCore.Mvc;
+
+namespace WebApplication1.Controllers
+{
+	[Route("api/[controller]")]
+	[ApiController]
+	public class ZoomWebhooksController : ControllerBase
+	{
+		[HttpPost]
+		public async Task<IActionResult> ReceiveEvent()
+		{
+			// Your webhook app's secret token
+			var secretToken = "... your app's secret token ...";
+
+			var parser = new ZoomNet.WebhookParser();
+			var event = await parser.ParseEventWebhookAsync(Request.Body).ConfigureAwait(false);
+
+			var endpointUrlValidationEvent = zoomEvent as EndpointUrlValidationEvent;
+			var responsePayload = endpointUrlValidationEvent.GenerateUrlValidationResponse(secretToken);
+			return Ok(responsePayload);
+		}
+    }
+}
+```
+
+### The ultimate webhook controller
+
+Here's the "ultimate" webhook controller which combines all the above features:
+
+```csharp
+using Microsoft.AspNetCore.Mvc;
+
+namespace WebApplication1.Controllers
+{
+	[Route("api/[controller]")]
+	[ApiController]
+	public class ZoomWebhooksController : ControllerBase
+	{
+		[HttpPost]
+		public async Task<IActionResult> ReceiveEvent()
+		{
+			// Your webhook app's secret token
+			var secretToken = "... your app's secret token ...";
+
+			// SIGNATURE_HEADER_NAME and TIMESTAMP_HEADER_NAME are two convenient constants provided by ZoomNet so you don't have to remember the actual name of the headers
+			var signature = Request.Headers[ZoomNet.WebhookParser.SIGNATURE_HEADER_NAME].SingleOrDefault();
+			var timestamp = Request.Headers[ZoomNet.WebhookParser.TIMESTAMP_HEADER_NAME].SingleOrDefault();
+
+			var parser = new ZoomNet.WebhookParser();
+			Event zoomEvent;
+
+			if (!string.IsNullOrEmpty(signature) && !string.IsNullOrEmpty(timestamp))
+			{
+				try
+				{
+					zoomEvent = await parser.VerifyAndParseEventWebhookAsync(Request.Body, secretToken, signature, timestamp).ConfigureAwait(false);
+				}
+				catch (SecurityException e)
+				{
+					// Unable to validate the data. Therefore you should consider the request as suspicious
+					throw;
+				}
+			}
+			else
+			{
+				zoomEvent = await parser.ParseEventWebhookAsync(Request.Body).ConfigureAwait(false);
+			}
+
+			if (zoomEvent.EventType == EventType.EndpointUrlValidation)
+			{
+				// It's important to include the payload along with your HTTP200 response. This is how you let Zoom know that your URL is valid
+				var endpointUrlValidationEvent = zoomEvent as EndpointUrlValidationEvent;
+				var responsePayload = endpointUrlValidationEvent.GenerateUrlValidationResponse(secretToken);
+				return Ok(responsePayload);
+			}
+			else
+			{
+				// ... do something with the event ...
+
+				return Ok();
+			}
+		}
+    }
 }
 ```

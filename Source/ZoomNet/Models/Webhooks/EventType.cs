@@ -257,5 +257,11 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "webinar.updated")]
 		WebinarUpdated,
+
+		/// <summary>
+		/// Zoom is requesting that you validate the endpoint.
+		/// </summary>
+		[EnumMember(Value = "endpoint.url_validation")]
+		EndpointUrlValidation,
 	}
 }
