@@ -161,8 +161,11 @@ namespace ZoomNet
 
 			if (httpContent != null)
 			{
+#if NET5_0_OR_GREATER
+				var contentStream = await httpContent.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
+#else
 				var contentStream = await httpContent.ReadAsStreamAsync().ConfigureAwait(false);
-
+#endif
 				encoding ??= httpContent.GetEncoding(Encoding.UTF8);
 
 				// This is important: we must make a copy of the response stream otherwise we would get an
@@ -174,7 +177,11 @@ namespace ZoomNet
 					ms.Position = 0;
 					using (var sr = new StreamReader(ms, encoding))
 					{
+#if NET7_0_OR_GREATER
+						content = await sr.ReadToEndAsync(cancellationToken).ConfigureAwait(false);
+#else
 						content = await sr.ReadToEndAsync().ConfigureAwait(false);
+#endif
 					}
 
 					// It's important to rewind the stream
