@@ -61,6 +61,7 @@ namespace ZoomNet.Utilities
 
 			// Dispatch the request
 			var response = await _defaultRetryCoordinator.ExecuteAsync(request, dispatcher).ConfigureAwait(false);
+			if (response.IsSuccessStatusCode) return response;
 
 			// Check if the token needs to be refreshed
 			if (response.StatusCode == HttpStatusCode.Unauthorized)
