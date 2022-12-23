@@ -2,13 +2,13 @@
 #tool dotnet:?package=GitVersion.Tool&version=5.11.1
 #tool dotnet:?package=coveralls.net&version=4.0.1
 #tool nuget:?package=GitReleaseManager&version=0.13.0
-#tool nuget:?package=ReportGenerator&version=5.1.12
+#tool nuget:?package=ReportGenerator&version=5.1.13
 #tool nuget:?package=xunit.runner.console&version=2.4.2
 #tool nuget:?package=Codecov&version=1.13.0
 
 // Install addins.
 #addin nuget:?package=Cake.Coveralls&version=1.1.0
-#addin nuget:?package=Cake.Git&version=2.0.0
+#addin nuget:?package=Cake.Git&version=3.0.0
 #addin nuget:?package=Cake.Codecov&version=1.0.1
 
 
