@@ -66,7 +66,7 @@ namespace ZoomNet
 
 			var clientFactory = new Func<Uri, CancellationToken, Task<WebSocket>>(async (uri, cancellationToken) =>
 			{
-				_logger.LogTrace($"Establishing connection to Zoom");
+				_logger.LogTrace("Establishing connection to Zoom");
 
 				// The current value in the uri parameter must be ignored because it contains "access_token" which may have expired.
 				// The following line ensures the "access_token" is refreshed whenever it expires.
@@ -86,19 +86,21 @@ namespace ZoomNet
 				return client;
 			});
 
-			_websocketClient = new WebsocketClient(new Uri("wss://ws.zoom.us"), clientFactory);
-			_websocketClient.Name = "ZoomNet";
-			_websocketClient.ReconnectTimeout = TimeSpan.FromSeconds(45); // Greater than 30 seconds because we send a heartbeat every 30 seconds
-			_websocketClient.ErrorReconnectTimeout = TimeSpan.FromSeconds(45);
-			_websocketClient.ReconnectionHappened.Subscribe(info => _logger.LogTrace($"Reconnection happened, type: {info.Type}"));
-			_websocketClient.DisconnectionHappened.Subscribe(info => _logger.LogTrace($"Disconnection happened, type: {info.Type}"));
+			_websocketClient = new WebsocketClient(new Uri("wss://ws.zoom.us"), clientFactory)
+			{
+				Name = "ZoomNet",
+				ReconnectTimeout = TimeSpan.FromSeconds(45), // Greater than 30 seconds because we send a heartbeat every 30 seconds
+				ErrorReconnectTimeout = TimeSpan.FromSeconds(45)
+			};
+			_websocketClient.ReconnectionHappened.Subscribe(info => _logger.LogTrace("Reconnection happened, type: {reconnectionReason}", info.Type));
+			_websocketClient.DisconnectionHappened.Subscribe(info => _logger.LogTrace("Disconnection happened, type: {disconnectionReason}", info.Type));
 
 			_websocketClient.MessageReceived
 				.Select(response => Observable.FromAsync(() => ProcessMessage(response, cancellationToken)))
 				.Merge(5) // Allow up to 5 messages to be processed concurently
 				.Subscribe();
 
-			Task.Run(() => SendHeartbeat(_websocketClient, cancellationToken));
+			Task.Run(() => SendHeartbeat(_websocketClient, cancellationToken), cancellationToken);
 
 			return _websocketClient.Start();
 		}
@@ -138,7 +140,7 @@ namespace ZoomNet
 		{
 			while (!cancellationToken.IsCancellationRequested)
 			{
-				await Task.Delay(TimeSpan.FromSeconds(30)); // Zoom requires a heartbeat every 30 seconds
+				await Task.Delay(TimeSpan.FromSeconds(30), cancellationToken); // Zoom requires a heartbeat every 30 seconds
 
 				if (!client.IsRunning)
 				{
