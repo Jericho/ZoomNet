@@ -1,3 +1,7 @@
+using System.Threading;
+using System.Threading.Tasks;
+using ZoomNet.Models;
+
 namespace ZoomNet.Resources
 {
 	/// <summary>
@@ -8,5 +12,26 @@ namespace ZoomNet.Resources
 	/// </remarks>
 	public interface IMarketplace
 	{
+		/// <summary>
+		/// Retrieve all public apps.
+		/// </summary>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="AppInfo">apps</see>.
+		/// </returns>
+		Task<PaginatedResponseWithToken<AppInfo>> GetPublicAppsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve all apps created by this account.
+		/// </summary>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="AppInfo">apps</see>.
+		/// </returns>
+		Task<PaginatedResponseWithToken<AppInfo>> GetCreatedAppsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 	}
 }
