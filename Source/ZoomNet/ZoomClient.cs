@@ -101,6 +101,9 @@ namespace ZoomNet
 		public IGroups Groups { get; private set; }
 
 		/// <inheritdoc/>
+		public IMarketplace Marketplace { get; private set; }
+
+		/// <inheritdoc/>
 		public IMeetings Meetings { get; private set; }
 
 		/// <inheritdoc/>
@@ -234,6 +237,7 @@ namespace ZoomNet
 			DataCompliance = new DataCompliance(_fluentClient);
 			ExternalContacts = new ExternalContacts(_fluentClient);
 			Groups = new Groups(_fluentClient);
+			Marketplace = new Marketplace(_fluentClient);
 			Meetings = new Meetings(_fluentClient);
 			PastMeetings = new PastMeetings(_fluentClient);
 			PastWebinars = new PastWebinars(_fluentClient);
