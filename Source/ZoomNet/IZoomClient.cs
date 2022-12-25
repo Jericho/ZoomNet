@@ -74,6 +74,12 @@ namespace ZoomNet
 		IGroups Groups { get; }
 
 		/// <summary>
+		/// Gets the resource which allows you to access information from Zoom.
+		/// Also, it allows you to build private services or public applications on the Zoom App Marketplace.
+		/// </summary>
+		IMarketplace Marketplace { get; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage meetings.
 		/// </summary>
 		IMeetings Meetings { get; }
