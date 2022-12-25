@@ -18,6 +18,7 @@ namespace ZoomNet.IntegrationTests.TestSuites
 			typeof(Dashboards),
 			typeof(ExternalContacts),
 			typeof(Groups),
+			typeof(Marketplace),
 			typeof(Meetings),
 			typeof(Reports),
 			typeof(Roles),
