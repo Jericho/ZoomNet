@@ -98,6 +98,9 @@ namespace ZoomNet
 		[Obsolete("The Data Compliance API is deprecated")]
 		public IDataCompliance DataCompliance { get; private set; }
 
+		/// <inheritdoc/>
+		public IMarketplace Marketplace { get; private set; }
+
 		/// <summary>
 		/// Gets the resource which allows you to manage meetings.
 		/// </summary>
@@ -267,6 +270,7 @@ namespace ZoomNet
 			CloudRecordings = new CloudRecordings(_fluentClient);
 			Contacts = new Contacts(_fluentClient);
 			DataCompliance = new DataCompliance(_fluentClient);
+			Marketplace = new Marketplace(_fluentClient);
 			Meetings = new Meetings(_fluentClient);
 			PastMeetings = new PastMeetings(_fluentClient);
 			PastWebinars = new PastWebinars(_fluentClient);
