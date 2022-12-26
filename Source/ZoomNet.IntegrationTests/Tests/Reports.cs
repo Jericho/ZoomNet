@@ -15,9 +15,17 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			await log.WriteLineAsync("\n***** REPORTS *****\n").ConfigureAwait(false);
 
-			//GET ALL MEETINGS
 			var now = DateTime.UtcNow;
-			var pastMeetings = await client.Reports.GetMeetingsAsync(myUser.Id, now.Subtract(TimeSpan.FromDays(30)), now, ReportMeetingType.Past, 30, null, cancellationToken);
+			var from = now.Subtract(TimeSpan.FromDays(30));
+			var to = now;
+
+			//GET ALL HOSTS
+			var activeHosts = await client.Reports.GetHostsAsync(from, to, ReportHostType.Active, 30, null, cancellationToken);
+			var inactiveHosts = await client.Reports.GetHostsAsync(from, to, ReportHostType.Inactive, 30, null, cancellationToken);
+			await log.WriteLineAsync($"Active Hosts: {activeHosts.Records.Length}. Inactive Hosts: {inactiveHosts.Records.Length}").ConfigureAwait(false);
+
+			//GET ALL MEETINGS
+			var pastMeetings = await client.Reports.GetMeetingsAsync(myUser.Id, from, to, ReportMeetingType.Past, 30, null, cancellationToken);
 
 			int totalParticipants = 0;
 
