@@ -32,7 +32,7 @@ namespace ZoomNet.Resources
 
 			var entitlements = result.RootElement
 				.EnumerateArray()
-				.Select(element => element.GetInt64())
+				.Select(element => element.GetPropertyValue<long>("entitlement_id"))
 				.ToArray();
 
 			return entitlements;
