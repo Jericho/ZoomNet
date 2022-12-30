@@ -13,6 +13,10 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			await log.WriteLineAsync("\n***** MARKETPLACE *****\n").ConfigureAwait(false);
 
+			// GET THE USER'S ENTITLEMENTS
+			var entitlements = await client.Marketplace.GetUserEntitlementsAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"This user has {entitlements.Length} entitlements.").ConfigureAwait(false);
+
 			// GET THE APPS
 			var paginatedPublicApps = await client.Marketplace.GetPublicAppsAsync(100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Retrieved {paginatedPublicApps.Records.Length} public apps on the marketplace").ConfigureAwait(false);
