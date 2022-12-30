@@ -1,5 +1,6 @@
 using Pathoschild.Http.Client;
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -21,6 +22,23 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public async Task<long[]> GetUserEntitlementsAsync(string userId, CancellationToken cancellationToken = default)
+		{
+			var result = await _client
+				.GetAsync($"marketplace/users/{userId}/entitlements")
+				.WithCancellationToken(cancellationToken)
+				.AsRawJsonDocument("entitlements")
+				.ConfigureAwait(false);
+
+			var entitlements = result.RootElement
+				.EnumerateArray()
+				.Select(element => element.GetInt64())
+				.ToArray();
+
+			return entitlements;
+		}
+
+		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<AppInfo>> GetPublicAppsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			return GetAppsAsync<AppInfo>("public", recordsPerPage, pagingToken, cancellationToken);
@@ -30,6 +48,21 @@ namespace ZoomNet.Resources
 		public Task<PaginatedResponseWithToken<AppInfo>> GetCreatedAppsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			return GetAppsAsync<AppInfo>("account_created", recordsPerPage, pagingToken, cancellationToken);
+		}
+
+		/// <inheritdoc/>
+		public async Task<AppInfoDetailed> GetAppInfoAsync(string appId, CancellationToken cancellationToken = default)
+		{
+			var appInfo = await _client
+				.GetAsync($"marketplace/apps/{appId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<AppInfoDetailed>()
+				.ConfigureAwait(false);
+
+			// Set the Id because, surprisingly, the Zoom API does not include it in the response.
+			appInfo.Id = appId;
+
+			return appInfo;
 		}
 
 		private Task<PaginatedResponseWithToken<T>> GetAppsAsync<T>(string type, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
