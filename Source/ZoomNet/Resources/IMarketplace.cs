@@ -13,6 +13,14 @@ namespace ZoomNet.Resources
 	public interface IMarketplace
 	{
 		/// <summary>
+		/// Get a user's entitlements.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>An array of entitlement Ids.</returns>
+		Task<long[]> GetUserEntitlementsAsync(string userId, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Retrieve all public apps.
 		/// </summary>
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
