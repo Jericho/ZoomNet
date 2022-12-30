@@ -133,7 +133,7 @@ namespace ZoomNet.Resources
 			{
 				// Zoom requires either the "id" field or the "email" field.
 				// If both are provided, "id" takes precedence.
-				{ "members", userIds.Select(id => new JsonObject { { (id ?? string.Empty).Contains("@") ? "email" : "id", id } }).ToArray() }
+				{ "members", userIds.Select(id => new JsonObject { { (id ?? string.Empty).Contains('@') ? "email" : "id", id } }).ToArray() }
 			};
 
 			return _client
