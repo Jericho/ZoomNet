@@ -145,7 +145,7 @@ namespace ZoomNet.Resources
 				{ "pronouns", pronouns },
 				{ "pronouns_option", pronounsDisplay?.ToEnumString() },
 				{ "timezone", timezone?.ToEnumString() },
-				{ "type", type?.ToEnumString() },
+				{ "type", type },
 				{ "use_pmi", usePmi },
 				{ "vanity_name", personalMeetingRoomName },
 				{ "custom_attributes", customAttributes?.ToArray() }

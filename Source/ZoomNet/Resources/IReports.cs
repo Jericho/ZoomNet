@@ -44,8 +44,32 @@ namespace ZoomNet.Resources
 		/// </param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="PastMeeting">meetings.</see>.
+		/// An array of <see cref="PastMeeting">meetings</see>.
 		/// </returns>
 		Task<PaginatedResponseWithToken<PastMeeting>> GetMeetingsAsync(string userId, DateTime from, DateTime to, ReportMeetingType type = ReportMeetingType.Past, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Gets active/inactive host reports.
+		/// </summary>
+		/// <remarks>
+		/// A user is considered to be an active host during the month specified in the "from" and "to" range, if the user has hosted at least one meeting during this period. If the user didn't host any meetings during this period, the user is considered to be inactive.
+		/// The Active Hosts report displays a list of meetings, participants, and meeting minutes for a specific time range, up to one month. The month should fall within the last six months.
+		/// The Inactive Hosts report pulls a list of users who were not active during a specific period of time.
+		/// Use this method to retrieve an active or inactive host report for a specified period of time. The time range for the report is limited to a month and the month should fall under the past six months.
+		/// </remarks>
+		/// <param name="from">Start date.</param>
+		/// <param name="to">End date.</param>
+		/// <param name="type">Type of report.</param>
+		/// <param name="pageSize">The number of records returned within a single API call.</param>
+		/// <param name="pageToken">
+		/// The next page token is used to paginate through large result sets.
+		/// A next page token will be returned whenever the set of available results exceeds the current page size.
+		/// The expiration period for this token is 15 minutes.
+		/// </param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="ReportHost">report items</see>.
+		/// </returns>
+		Task<PaginatedResponseWithToken<ReportHost>> GetHostsAsync(DateTime from, DateTime to, ReportHostType type = ReportHostType.Active, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
 	}
 }
