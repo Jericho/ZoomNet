@@ -14,6 +14,9 @@ namespace ZoomNet.Models
 		/// <summary>On-premise.</summary>
 		OnPremise = 3,
 
+		/// <summary>No Meetings License.</summary>
+		NoMeetingsLicense = 4,
+
 		/// <summary>None.</summary>
 		/// <remarks>This can only be set with <see cref="UserCreateType.SSo"/>.</remarks>
 		None = 99,
