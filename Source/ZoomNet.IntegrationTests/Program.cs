@@ -13,9 +13,18 @@ namespace ZoomNet.IntegrationTests
 	{
 		public static async Task<int> Main(string[] args)
 		{
-			/*
-			 * Handy code to generate the 'JsonSerializable' attributes for ZoomNetJsonSerializerContext
-			 *
+			//var serializerContext = GenerateAttributesForSerializerContext();
+
+			var services = new ServiceCollection();
+			ConfigureServices(services);
+			await using var serviceProvider = services.BuildServiceProvider();
+			var app = serviceProvider.GetService<TestsRunner>();
+			return await app.RunAsync().ConfigureAwait(false);
+		}
+
+		private static string GenerateAttributesForSerializerContext()
+		{
+			// Handy code to generate the 'JsonSerializable' attributes for ZoomNetJsonSerializerContext
 			var baseNamespace = "ZoomNet.Models";
 			var allTypes = System.Reflection.Assembly
 				.GetAssembly(typeof(ZoomClient))
@@ -51,13 +60,7 @@ namespace ZoomNet.IntegrationTests
 			var nullableAttributes = string.Join("\r\n", typesSortedAlphabetically.Where(t => !string.IsNullOrEmpty(t.JsonSerializeAttributeNullable)).Select(t => t.JsonSerializeAttributeNullable));
 
 			var result = string.Join("\r\n\r\n", new[] { simpleAttributes, arrayAttributes, nullableAttributes });
-			*/
-
-			var services = new ServiceCollection();
-			ConfigureServices(services);
-			await using var serviceProvider = services.BuildServiceProvider();
-			var app = serviceProvider.GetService<TestsRunner>();
-			return await app.RunAsync().ConfigureAwait(false);
+			return result;
 		}
 
 		private static void ConfigureServices(ServiceCollection services)
