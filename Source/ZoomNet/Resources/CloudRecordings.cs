@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
@@ -367,10 +368,20 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public async Task<Stream> DownloadFileAsync(string downloadUrl, CancellationToken cancellationToken = default)
 		{
-			var tokenHandler = _client.Filters.OfType<ITokenHandler>().SingleOrDefault();
-			var requestUri = downloadUrl + (tokenHandler != null ? "?access_token=" + tokenHandler.Token : string.Empty);
+			using (var request = new HttpRequestMessage(HttpMethod.Get, downloadUrl))
+			{
+				var tokenHandler = _client.Filters.OfType<ITokenHandler>().SingleOrDefault();
+				if (tokenHandler != null)
+				{
+					request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", tokenHandler.Token);
+				}
 
-			return await _client.BaseClient.GetStreamAsync(requestUri).ConfigureAwait(false);
+				var response = await _client.BaseClient.SendAsync(request).ConfigureAwait(false);
+
+				response.EnsureSuccessStatusCode();
+
+				return await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+			}
 		}
 
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<string> registrantIds, string status, CancellationToken cancellationToken = default)
