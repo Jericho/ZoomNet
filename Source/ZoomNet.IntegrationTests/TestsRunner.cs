@@ -6,6 +6,7 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.IntegrationTests.Tests;
+using ZoomNet.Models.Webhooks;
 
 namespace ZoomNet.IntegrationTests
 {
@@ -22,10 +23,11 @@ namespace ZoomNet.IntegrationTests
 			Cancelled = 1223
 		}
 
-		private enum ConnectionMethods
+		private enum TestType
 		{
-			Jwt = 0,
-			OAuth = 1
+			WebSockets = 0,
+			ApiWithJwt = 1,
+			ApiWithOAuth = 2
 		}
 
 		private readonly ILoggerFactory _loggerFactory;
@@ -42,24 +44,33 @@ namespace ZoomNet.IntegrationTests
 			var useFiddler = true;
 			var fiddlerPort = 8888; // By default Fiddler4 uses port 8888 and Fiddler Everywhere uses port 8866
 
-			// Do you want to use JWT or OAuth?
-			var connectionMethod = ConnectionMethods.OAuth;
-			// -----------------------------------;------------------------------------------
+			// What test do you want to run?
+			var testType = TestType.ApiWithOAuth;
+			// -----------------------------------------------------------------------------
 
-			// Configure ZoomNet client
-			IConnectionInfo connectionInfo;
-			if (connectionMethod == ConnectionMethods.Jwt)
+			// Ensure the Console is tall enough and centered on the screen
+			if (OperatingSystem.IsWindows()) Console.WindowHeight = Math.Min(60, Console.LargestWindowHeight);
+			ConsoleUtils.CenterConsole();
+
+			// Configure the proxy if desired (very useful for debugging)
+			var proxy = useFiddler ? new WebProxy($"http://localhost:{fiddlerPort}") : null;
+
+			if (testType == TestType.ApiWithJwt)
 			{
 				var apiKey = Environment.GetEnvironmentVariable("ZOOM_JWT_APIKEY", EnvironmentVariableTarget.User);
 				var apiSecret = Environment.GetEnvironmentVariable("ZOOM_JWT_APISECRET", EnvironmentVariableTarget.User);
-				connectionInfo = new JwtConnectionInfo(apiKey, apiSecret);
+				var connectionInfo = new JwtConnectionInfo(apiKey, apiSecret);
+				var resultCode = await RunApiTestsAsync(connectionInfo, proxy).ConfigureAwait(false);
+				return resultCode;
+
 			}
-			else
+			else if (testType == TestType.ApiWithOAuth)
 			{
 				var clientId = Environment.GetEnvironmentVariable("ZOOM_OAUTH_CLIENTID", EnvironmentVariableTarget.User);
 				var clientSecret = Environment.GetEnvironmentVariable("ZOOM_OAUTH_CLIENTSECRET", EnvironmentVariableTarget.User);
 				var accountId = Environment.GetEnvironmentVariable("ZOOM_OAUTH_ACCOUNTID", EnvironmentVariableTarget.User);
 				var refreshToken = Environment.GetEnvironmentVariable("ZOOM_OAUTH_REFRESHTOKEN", EnvironmentVariableTarget.User);
+				IConnectionInfo connectionInfo;
 
 				// Server-to-Server OAuth
 				if (!string.IsNullOrEmpty(accountId))
@@ -88,22 +99,37 @@ namespace ZoomNet.IntegrationTests
 					//	},
 					//	null);
 				}
+
+				var resultCode = await RunApiTestsAsync(connectionInfo, proxy).ConfigureAwait(false);
+				return resultCode;
 			}
+			else if (testType == TestType.WebSockets)
+			{
+				var clientId = Environment.GetEnvironmentVariable("ZOOM_OAUTH_CLIENTID", EnvironmentVariableTarget.User);
+				var clientSecret = Environment.GetEnvironmentVariable("ZOOM_OAUTH_CLIENTSECRET", EnvironmentVariableTarget.User);
+				var accountId = Environment.GetEnvironmentVariable("ZOOM_OAUTH_ACCOUNTID", EnvironmentVariableTarget.User);
+				var subscriptionId = Environment.GetEnvironmentVariable("ZOOM_WEBSOCKET_SUBSCRIPTIONID", EnvironmentVariableTarget.User);
+				var resultCode = await RunWebSocketTestsAsync(clientId, clientSecret, accountId, subscriptionId, proxy).ConfigureAwait(false);
+				return resultCode;
+			}
+			else
+			{
+				throw new Exception("Unknwon test type");
+			}
+		}
 
-			var proxy = useFiddler ? new WebProxy($"http://localhost:{fiddlerPort}") : null;
-			var client = new ZoomClient(connectionInfo, proxy, null, _loggerFactory.CreateLogger<ZoomClient>());
-
-			// Configure Console
-			var source = new CancellationTokenSource();
+		private async Task<int> RunApiTestsAsync(IConnectionInfo connectionInfo, IWebProxy proxy)
+		{
+			// Configure cancellation
+			var cts = new CancellationTokenSource();
 			Console.CancelKeyPress += (s, e) =>
 			{
 				e.Cancel = true;
-				source.Cancel();
+				cts.Cancel();
 			};
 
-			// Ensure the Console is tall enough and centered on the screen
-			if (OperatingSystem.IsWindows()) Console.WindowHeight = Math.Min(60, Console.LargestWindowHeight);
-			ConsoleUtils.CenterConsole();
+			// Configure ZoomNet client
+			var client = new ZoomClient(connectionInfo, proxy, null, _loggerFactory.CreateLogger<ZoomClient>());
 
 			// These are the integration tests that we will execute
 			var integrationTests = new Type[]
@@ -121,8 +147,8 @@ namespace ZoomNet.IntegrationTests
 			};
 
 			// Get my user and permisisons
-			var myUser = await client.Users.GetCurrentAsync(source.Token).ConfigureAwait(false);
-			var myPermissions = await client.Users.GetCurrentPermissionsAsync(source.Token).ConfigureAwait(false);
+			var myUser = await client.Users.GetCurrentAsync(cts.Token).ConfigureAwait(false);
+			var myPermissions = await client.Users.GetCurrentPermissionsAsync(cts.Token).ConfigureAwait(false);
 			Array.Sort(myPermissions); // Sort permissions alphabetically for convenience
 
 			// Execute the async tests in parallel (with max degree of parallelism)
@@ -134,7 +160,7 @@ namespace ZoomNet.IntegrationTests
 					try
 					{
 						var integrationTest = (IIntegrationTest)Activator.CreateInstance(testType);
-						await integrationTest.RunAsync(myUser, myPermissions, client, log, source.Token).ConfigureAwait(false);
+						await integrationTest.RunAsync(myUser, myPermissions, client, log, cts.Token).ConfigureAwait(false);
 						return (TestName: testType.Name, ResultCode: ResultCodes.Success, Message: SUCCESSFUL_TEST_MESSAGE);
 					}
 					catch (OperationCanceledException)
@@ -188,7 +214,43 @@ namespace ZoomNet.IntegrationTests
 				else resultCode = (int)results.First(result => result.ResultCode != ResultCodes.Success).ResultCode;
 			}
 
-			return await Task.FromResult(resultCode);
+			return resultCode;
+		}
+
+		private async Task<int> RunWebSocketTestsAsync(string clientId, string clientSecret, string accountId, string subscriptionId, IWebProxy proxy)
+		{
+			// Change the minimum logging level so we can see the traces from ZoomWebSocketClient
+			var config = NLog.LogManager.Configuration;
+			config.FindRuleByName("ColoredConsoleRule").EnableLoggingForLevel(NLog.LogLevel.Trace);
+			NLog.LogManager.Configuration = config; // Apply new config
+
+			var logger = _loggerFactory.CreateLogger<ZoomWebSocketClient>();
+			var eventProcessor = new Func<Event, CancellationToken, Task>(async (webhookEvent, cancellationToken) =>
+			{
+				if (!cancellationToken.IsCancellationRequested)
+				{
+					logger.LogInformation("Processing {eventType} event...", webhookEvent.EventType);
+				}
+			});
+
+			// Configure cancellation (this allows you to press CTRL+C or CTRL+Break to stop the websocket client)
+			var cts = new CancellationTokenSource();
+			var exitEvent = new ManualResetEvent(false);
+			Console.CancelKeyPress += (s, e) =>
+			{
+				e.Cancel = true;
+				cts.Cancel();
+				exitEvent.Set();
+			};
+
+			// Start the websocket client
+			using (var client = new ZoomWebSocketClient(clientId, clientSecret, accountId, subscriptionId, eventProcessor, proxy, logger))
+			{
+				await client.StartAsync(cts.Token).ConfigureAwait(false);
+				exitEvent.WaitOne();
+			}
+
+			return (int)ResultCodes.Success;
 		}
 	}
 }
