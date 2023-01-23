@@ -233,7 +233,7 @@ namespace ZoomNet.IntegrationTests
 				}
 			});
 
-			// Configure cancellation
+			// Configure cancellation (this allows you to press CTRL+C or CTRL+Break to stop the websocket client)
 			var cts = new CancellationTokenSource();
 			var exitEvent = new ManualResetEvent(false);
 			Console.CancelKeyPress += (s, e) =>
