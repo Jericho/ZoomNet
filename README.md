@@ -331,7 +331,7 @@ As of this writing (October 2022), webhooks over websocket is in public beta tes
 
 ZoomNet offers a convenient client to receive and process webhooks events received over a websocket connection. This websocket client will automatically manage the connection, ensuring it is re-established if it's closed for some reason. Additionaly, it will manage the OAuth token and will automatically refresh it when it expires.
 
-Here's how to use it:
+Here's how to use it in a C# console application:
 
 ```csharp
 using System.Net;
@@ -343,20 +343,29 @@ var clientSecret = "... your client secret ...";
 var accountId = "... your account id ...";
 var subscriptionId = "... your subscription id ..."; // See instructions below how to get this value
 
+// This is the async delegate that gets invoked when a webhook event is received
 var eventProcessor = new Func<Event, CancellationToken, Task>(async (webhookEvent, cancellationToken) =>
 {
 	if (!cancellationToken.IsCancellationRequested)
 	{
-		// ... do something with the event ...  
+		// Add your custom logic to process this event
 	}
 });
 
+// Configure cancellation (this allows you to press CTRL+C or CTRL+Break to stop the websocket client)
+var cts = new CancellationTokenSource();
 var exitEvent = new ManualResetEvent(false);
-
-using (var client = new ZoomWebSocketClient(clientId, clientSecret, accountId, subscriptionId, eventProcessor))
+Console.CancelKeyPress += (s, e) =>
 {
-	await client.StartAsync().ConfigureAwait(false);
+	e.Cancel = true;
+	cts.Cancel();
+	exitEvent.Set();
+};
 
+// Start the websocket client
+using (var client = new ZoomWebSocketClient(clientId, clientSecret, accountId, subscriptionId, eventProcessor, proxy, logger))
+{
+	await client.StartAsync(cts.Token).ConfigureAwait(false);
 	exitEvent.WaitOne();
 }
 ```
