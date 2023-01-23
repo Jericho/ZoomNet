@@ -1,18 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30011.22
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{466D9D6F-B72C-4239-8293-9F00CFCD7F53}"
 	ProjectSection(SolutionItems) = preProject
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZoomNet", "ZoomNet\ZoomNet.csproj", "{DBEC5425-7E6D-49C7-BAA2-81971DA8ED8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZoomNet", "ZoomNet\ZoomNet.csproj", "{DBEC5425-7E6D-49C7-BAA2-81971DA8ED8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZoomNet.UnitTests", "ZoomNet.UnitTests\ZoomNet.UnitTests.csproj", "{605D7C37-6C78-45DE-B19B-8EF172687DBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZoomNet.UnitTests", "ZoomNet.UnitTests\ZoomNet.UnitTests.csproj", "{605D7C37-6C78-45DE-B19B-8EF172687DBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZoomNet.IntegrationTests", "ZoomNet.IntegrationTests\ZoomNet.IntegrationTests.csproj", "{270D6775-D07D-43A6-BDB5-845B6E2C6D0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZoomNet.IntegrationTests", "ZoomNet.IntegrationTests\ZoomNet.IntegrationTests.csproj", "{270D6775-D07D-43A6-BDB5-845B6E2C6D0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
