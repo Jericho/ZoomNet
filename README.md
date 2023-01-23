@@ -137,8 +137,8 @@ var clientId = "... your client ID ...";
 var clientSecret = "... your client secret ...";
 var accountId = "... your account id ...";
 var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, accountId,
-	(_, newAccessToken) =>
-	{
+    (_, newAccessToken) =>
+    {
         /*
             Server-to-Server OAuth does not use a refresh token. That's why I used '_' as the first parameter
             in this delegate declaration. Furthermore, ZoomNet will take care of getting a new access token
@@ -147,7 +147,7 @@ var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, accountId,
             In fact, this delegate is completely optional when using Server-to-Server OAuth. Feel free to pass
             a null value in lieu of a delegate.
         */
-	});
+    });
 var zoomClient = new ZoomClient(connectionInfo);
 ```
 
@@ -166,20 +166,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication1.Controllers
 {
-	[Route("api/[controller]")]
-	[ApiController]
-	public class ZoomWebhooksController : ControllerBase
-	{
-		[HttpPost]
-		public async Task<IActionResult> ReceiveEvent()
-		{
-			var parser = new ZoomNet.WebhookParser();
-			var event = await parser.ParseEventWebhookAsync(Request.Body).ConfigureAwait(false);
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ZoomWebhooksController : ControllerBase
+    {
+        [HttpPost]
+        public async Task<IActionResult> ReceiveEvent()
+        {
+            var parser = new ZoomNet.WebhookParser();
+            var event = await parser.ParseEventWebhookAsync(Request.Body).ConfigureAwait(false);
 
-			// ... do something with the event ...
+            // ... do something with the event ...
 
-			return Ok();
-		}
+            return Ok();
+        }
     }
 }
 ```
@@ -203,31 +203,31 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication1.Controllers
 {
-	[Route("api/[controller]")]
-	[ApiController]
-	public class ZoomWebhookController : ControllerBase
-	{
-		[HttpPost]
-		public async Task<IActionResult> ReceiveEvent()
-		{
-			// Your webhook app's secret token
-			var secretToken = "... your app's secret token ...";
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ZoomWebhookController : ControllerBase
+    {
+        [HttpPost]
+        public async Task<IActionResult> ReceiveEvent()
+        {
+            // Your webhook app's secret token
+            var secretToken = "... your app's secret token ...";
 
-			// Get the signature and the timestamp from the request headers
-			// SIGNATURE_HEADER_NAME and TIMESTAMP_HEADER_NAME are two convenient constants provided by ZoomNet so you don't have to remember the actual names of the headers
-			var signature = Request.Headers[ZoomNet.WebhookParser.SIGNATURE_HEADER_NAME].SingleOrDefault();
-			var timestamp = Request.Headers[ZoomNet.WebhookParser.TIMESTAMP_HEADER_NAME].SingleOrDefault();
+            // Get the signature and the timestamp from the request headers
+            // SIGNATURE_HEADER_NAME and TIMESTAMP_HEADER_NAME are two convenient constants provided by ZoomNet so you don't have to remember the actual names of the headers
+            var signature = Request.Headers[ZoomNet.WebhookParser.SIGNATURE_HEADER_NAME].SingleOrDefault();
+            var timestamp = Request.Headers[ZoomNet.WebhookParser.TIMESTAMP_HEADER_NAME].SingleOrDefault();
 
-			var parser = new ZoomNet.WebhookParser();
+            var parser = new ZoomNet.WebhookParser();
 
-			// The signature will be automatically validated and a security exception thrown if unable to validate
-			var zoomEvent = await parser.VerifyAndParseEventWebhookAsync(Request.Body, secretToken, signature, timestamp).ConfigureAwait(false);
+            // The signature will be automatically validated and a security exception thrown if unable to validate
+            var zoomEvent = await parser.VerifyAndParseEventWebhookAsync(Request.Body, secretToken, signature, timestamp).ConfigureAwait(false);
 
-			// ... do something with the event...
+            // ... do something with the event...
 
-			return Ok();
-		}
-	}
+            return Ok();
+        }
+    }
 }
 ```
 
@@ -243,23 +243,23 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication1.Controllers
 {
-	[Route("api/[controller]")]
-	[ApiController]
-	public class ZoomWebhooksController : ControllerBase
-	{
-		[HttpPost]
-		public async Task<IActionResult> ReceiveEvent()
-		{
-			// Your webhook app's secret token
-			var secretToken = "... your app's secret token ...";
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ZoomWebhooksController : ControllerBase
+    {
+        [HttpPost]
+        public async Task<IActionResult> ReceiveEvent()
+        {
+            // Your webhook app's secret token
+            var secretToken = "... your app's secret token ...";
 
-			var parser = new ZoomNet.WebhookParser();
-			var event = await parser.ParseEventWebhookAsync(Request.Body).ConfigureAwait(false);
+            var parser = new ZoomNet.WebhookParser();
+            var event = await parser.ParseEventWebhookAsync(Request.Body).ConfigureAwait(false);
 
-			var endpointUrlValidationEvent = zoomEvent as EndpointUrlValidationEvent;
-			var responsePayload = endpointUrlValidationEvent.GenerateUrlValidationResponse(secretToken);
-			return Ok(responsePayload);
-		}
+            var endpointUrlValidationEvent = zoomEvent as EndpointUrlValidationEvent;
+            var responsePayload = endpointUrlValidationEvent.GenerateUrlValidationResponse(secretToken);
+            return Ok(responsePayload);
+        }
     }
 }
 ```
@@ -273,54 +273,54 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication1.Controllers
 {
-	[Route("api/[controller]")]
-	[ApiController]
-	public class ZoomWebhooksController : ControllerBase
-	{
-		[HttpPost]
-		public async Task<IActionResult> ReceiveEvent()
-		{
-			// Your webhook app's secret token
-			var secretToken = "... your app's secret token ...";
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ZoomWebhooksController : ControllerBase
+    {
+        [HttpPost]
+        public async Task<IActionResult> ReceiveEvent()
+        {
+            // Your webhook app's secret token
+            var secretToken = "... your app's secret token ...";
 
-			// SIGNATURE_HEADER_NAME and TIMESTAMP_HEADER_NAME are two convenient constants provided by ZoomNet so you don't have to remember the actual name of the headers
-			var signature = Request.Headers[ZoomNet.WebhookParser.SIGNATURE_HEADER_NAME].SingleOrDefault();
-			var timestamp = Request.Headers[ZoomNet.WebhookParser.TIMESTAMP_HEADER_NAME].SingleOrDefault();
+            // SIGNATURE_HEADER_NAME and TIMESTAMP_HEADER_NAME are two convenient constants provided by ZoomNet so you don't have to remember the actual name of the headers
+            var signature = Request.Headers[ZoomNet.WebhookParser.SIGNATURE_HEADER_NAME].SingleOrDefault();
+            var timestamp = Request.Headers[ZoomNet.WebhookParser.TIMESTAMP_HEADER_NAME].SingleOrDefault();
 
-			var parser = new ZoomNet.WebhookParser();
-			Event zoomEvent;
+            var parser = new ZoomNet.WebhookParser();
+            Event zoomEvent;
 
-			if (!string.IsNullOrEmpty(signature) && !string.IsNullOrEmpty(timestamp))
-			{
-				try
-				{
-					zoomEvent = await parser.VerifyAndParseEventWebhookAsync(Request.Body, secretToken, signature, timestamp).ConfigureAwait(false);
-				}
-				catch (SecurityException e)
-				{
-					// Unable to validate the data. Therefore you should consider the request as suspicious
-					throw;
-				}
-			}
-			else
-			{
-				zoomEvent = await parser.ParseEventWebhookAsync(Request.Body).ConfigureAwait(false);
-			}
+            if (!string.IsNullOrEmpty(signature) && !string.IsNullOrEmpty(timestamp))
+            {
+                try
+                {
+                    zoomEvent = await parser.VerifyAndParseEventWebhookAsync(Request.Body, secretToken, signature, timestamp).ConfigureAwait(false);
+                }
+                catch (SecurityException e)
+                {
+                    // Unable to validate the data. Therefore you should consider the request as suspicious
+                    throw;
+                }
+            }
+            else
+            {
+                zoomEvent = await parser.ParseEventWebhookAsync(Request.Body).ConfigureAwait(false);
+            }
 
-			if (zoomEvent.EventType == EventType.EndpointUrlValidation)
-			{
-				// It's important to include the payload along with your HTTP200 response. This is how you let Zoom know that your URL is valid
-				var endpointUrlValidationEvent = zoomEvent as EndpointUrlValidationEvent;
-				var responsePayload = endpointUrlValidationEvent.GenerateUrlValidationResponse(secretToken);
-				return Ok(responsePayload);
-			}
-			else
-			{
-				// ... do something with the event ...
+            if (zoomEvent.EventType == EventType.EndpointUrlValidation)
+            {
+                // It's important to include the payload along with your HTTP200 response. This is how you let Zoom know that your URL is valid
+                var endpointUrlValidationEvent = zoomEvent as EndpointUrlValidationEvent;
+                var responsePayload = endpointUrlValidationEvent.GenerateUrlValidationResponse(secretToken);
+                return Ok(responsePayload);
+            }
+            else
+            {
+                // ... do something with the event ...
 
-				return Ok();
-			}
-		}
+                return Ok();
+            }
+        }
     }
 }
 ```
@@ -346,10 +346,10 @@ var subscriptionId = "... your subscription id ..."; // See instructions below h
 // This is the async delegate that gets invoked when a webhook event is received
 var eventProcessor = new Func<Event, CancellationToken, Task>(async (webhookEvent, cancellationToken) =>
 {
-	if (!cancellationToken.IsCancellationRequested)
-	{
-		// Add your custom logic to process this event
-	}
+    if (!cancellationToken.IsCancellationRequested)
+    {
+        // Add your custom logic to process this event
+    }
 });
 
 // Configure cancellation (this allows you to press CTRL+C or CTRL+Break to stop the websocket client)
@@ -357,16 +357,16 @@ var cts = new CancellationTokenSource();
 var exitEvent = new ManualResetEvent(false);
 Console.CancelKeyPress += (s, e) =>
 {
-	e.Cancel = true;
-	cts.Cancel();
-	exitEvent.Set();
+    e.Cancel = true;
+    cts.Cancel();
+    exitEvent.Set();
 };
 
 // Start the websocket client
 using (var client = new ZoomWebSocketClient(clientId, clientSecret, accountId, subscriptionId, eventProcessor, proxy, logger))
 {
-	await client.StartAsync(cts.Token).ConfigureAwait(false);
-	exitEvent.WaitOne();
+    await client.StartAsync(cts.Token).ConfigureAwait(false);
+    exitEvent.WaitOne();
 }
 ```
 
