@@ -219,11 +219,6 @@ namespace ZoomNet.IntegrationTests
 
 		private async Task<int> RunWebSocketTestsAsync(string clientId, string clientSecret, string accountId, string subscriptionId, IWebProxy proxy)
 		{
-			// Change the minimum logging level so we can see the traces from ZoomWebSocketClient
-			var config = NLog.LogManager.Configuration;
-			config.FindRuleByName("ColoredConsoleRule").EnableLoggingForLevel(NLog.LogLevel.Trace);
-			NLog.LogManager.Configuration = config; // Apply new config
-
 			var logger = _loggerFactory.CreateLogger<ZoomWebSocketClient>();
 			var eventProcessor = new Func<Event, CancellationToken, Task>(async (webhookEvent, cancellationToken) =>
 			{

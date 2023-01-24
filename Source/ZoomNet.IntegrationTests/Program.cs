@@ -90,7 +90,8 @@ namespace ZoomNet.IntegrationTests
 			// Send logs to console
 			var consoleTarget = new ColoredConsoleTarget();
 			nLogConfig.AddTarget("ColoredConsole", consoleTarget);
-			nLogConfig.AddRule(new LoggingRule("*", NLog.LogLevel.Warn, NLog.LogLevel.Fatal, consoleTarget) { RuleName = "ColoredConsoleRule" });
+			nLogConfig.AddRule(NLog.LogLevel.Warn, NLog.LogLevel.Fatal, consoleTarget, "*");
+			nLogConfig.AddRule(NLog.LogLevel.Trace, NLog.LogLevel.Fatal, consoleTarget, "ZoomNet.ZoomWebSocketClient");
 
 			return nLogConfig;
 		}
