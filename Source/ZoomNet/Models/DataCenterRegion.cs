@@ -226,5 +226,9 @@ namespace ZoomNet.Models
 		/// <summary>New Jersey Gov.</summary>
 		[EnumMember(Value = "NJ")]
 		NewJerseyGov,
+
+		/// <summary>Taiwan.</summary>
+		[EnumMember(Value = "TW")]
+		Taiwan,
 	}
 }
