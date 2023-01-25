@@ -65,6 +65,9 @@ namespace ZoomNet.IntegrationTests.Tests
 			var instantMeeting = (InstantMeeting)await client.Meetings.GetAsync(newInstantMeeting.Id, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Instant meeting {instantMeeting.Id} retrieved").ConfigureAwait(false);
 
+			var localRecordingToken = await client.Meetings.GetTokenForLocalRecordingAsync(newInstantMeeting.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"The token for local recording is: {localRecordingToken}").ConfigureAwait(false);
+
 			await client.Meetings.EndAsync(newInstantMeeting.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Instant meeting {newInstantMeeting.Id} ended").ConfigureAwait(false);
 

@@ -1066,6 +1066,42 @@ namespace ZoomNet.Resources
 				.AsObject<string>("id");
 		}
 
+		/// <inheritdoc/>
+		public Task<string> GetTokenForClosedCaptioningAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"meetings/{meetingId}/token?type=closed_caption_token")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("token");
+		}
+
+		/// <inheritdoc/>
+		public Task<string> GetTokenForLocalRecordingAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"meetings/{meetingId}/jointoken/local_recording")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("token");
+		}
+
+		/// <inheritdoc/>
+		public Task<string> GetTokenForLocalArchivingAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"meetings/{meetingId}/jointoken/local_archiving")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("token");
+		}
+
+		/// <inheritdoc/>
+		public Task<string> GetTokenForLiveStreamingAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"meetings/{meetingId}/jointoken/live_streaming")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("token");
+		}
+
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string status, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject

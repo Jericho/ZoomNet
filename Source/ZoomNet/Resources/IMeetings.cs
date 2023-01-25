@@ -612,5 +612,44 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">Cancellation token.</param>
 		/// <returns>The template ID.</returns>
 		Task<string> CreateTemplateFromExistingMeeting(string userId, long meetingId, string templateName, bool saveRecurrence = false, bool overwrite = false, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get a meeting's closed caption token.
+		/// This token lets you use a third-party service to stream text to their closed captioning software to the Zoom meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>The token.</returns>
+		Task<string> GetTokenForClosedCaptioningAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get a meeting's join token to allow for local recording.
+		/// The join token lets a recording bot implemented using Zoom Meeting SDK to connect to a Zoom meeting.
+		/// The recording bot can then automatically start locally recording.
+		/// This supports both regular and raw local recording types.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>The join token.</returns>
+		Task<string> GetTokenForLocalRecordingAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get a meeting's archive token to allow local archiving.
+		/// The archive token allows a meeting SDK app or bot to get archive permission to access the meeting's raw audio and video media stream in real-time.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>The token.</returns>
+		Task<string> GetTokenForLocalArchivingAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get a meeting's join token to allow live streaming.
+		/// The join token allows a recording bot implemented using Zoom meeting SDK to connect to a Zoom meeting "hosted by the issuer of the token", and can call the streaming method automatically.
+		/// It supports both regular live streaming, and raw streaming.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>The token.</returns>
+		Task<string> GetTokenForLiveStreamingAsync(long meetingId, CancellationToken cancellationToken = default);
 	}
 }
