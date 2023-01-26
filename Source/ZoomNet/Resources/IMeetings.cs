@@ -195,6 +195,14 @@ namespace ZoomNet.Resources
 		Task EndAsync(long meetingId, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Recover a deleted meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task RecoverAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// List registrants of a meeting.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>

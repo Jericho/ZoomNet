@@ -390,6 +390,26 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
+		/// Recover a deleted meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		public Task RecoverAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "action", "recover" }
+			};
+
+			return _client
+				.PutAsync($"meetings/{meetingId}/status")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
 		/// List registrants of a meeting.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
