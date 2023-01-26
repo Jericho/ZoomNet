@@ -390,6 +390,26 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
+		/// Recover a deleted meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		public Task RecoverAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "action", "recover" }
+			};
+
+			return _client
+				.PutAsync($"meetings/{meetingId}/status")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <summary>
 		/// List registrants of a meeting.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
@@ -893,7 +913,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task<InviteLink[]> CreateInviteLinksAsync(long meetingId, IEnumerable<string> names, long timeToLive = 7200, CancellationToken cancellationToken = default)
 		{
-			if (names == null || !names.Any()) throw new ArgumentNullException("You must provide at least one name", nameof(names));
+			if (names == null || !names.Any()) throw new ArgumentNullException(nameof(names), "You must provide at least one name");
 
 			var data = new JsonObject
 			{
@@ -1013,7 +1033,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task InviteParticipantsAsync(long meetingId, IEnumerable<string> emailAddresses, CancellationToken cancellationToken = default)
 		{
-			if (emailAddresses == null || !emailAddresses.Any()) throw new ArgumentNullException("You must provide at least one email address", nameof(emailAddresses));
+			if (emailAddresses == null || !emailAddresses.Any()) throw new ArgumentNullException(nameof(emailAddresses), "You must provide at least one email address");
 
 			var data = new JsonObject
 			{
