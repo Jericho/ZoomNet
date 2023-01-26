@@ -913,7 +913,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task<InviteLink[]> CreateInviteLinksAsync(long meetingId, IEnumerable<string> names, long timeToLive = 7200, CancellationToken cancellationToken = default)
 		{
-			if (names == null || !names.Any()) throw new ArgumentNullException("You must provide at least one name", nameof(names));
+			if (names == null || !names.Any()) throw new ArgumentNullException(nameof(names), "You must provide at least one name");
 
 			var data = new JsonObject
 			{
@@ -1033,7 +1033,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task InviteParticipantsAsync(long meetingId, IEnumerable<string> emailAddresses, CancellationToken cancellationToken = default)
 		{
-			if (emailAddresses == null || !emailAddresses.Any()) throw new ArgumentNullException("You must provide at least one email address", nameof(emailAddresses));
+			if (emailAddresses == null || !emailAddresses.Any()) throw new ArgumentNullException(nameof(emailAddresses), "You must provide at least one email address");
 
 			var data = new JsonObject
 			{
