@@ -228,10 +228,12 @@ namespace ZoomNet.Models
 		NewJerseyGov,
 
 		/// <summary>Taiwan.</summary>
+		/// <remarks>This is an undocumented value. See <a href="https://github.com/Jericho/ZoomNet/issues/267">this GitHub issue</a> for details.</remarks>
 		[EnumMember(Value = "TW")]
 		Taiwan,
 
 		/// <summary>Switzerland.</summary>
+		/// <remarks>This is an undocumented value. See <a href="https://github.com/Jericho/ZoomNet/issues/267">this GitHub issue</a> for details.</remarks>
 		[EnumMember(Value = "CH")]
 		Switzerland,
 	}
