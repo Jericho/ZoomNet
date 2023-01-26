@@ -230,5 +230,9 @@ namespace ZoomNet.Models
 		/// <summary>Taiwan.</summary>
 		[EnumMember(Value = "TW")]
 		Taiwan,
+
+		/// <summary>Switzerland.</summary>
+		[EnumMember(Value = "CH")]
+		Switzerland,
 	}
 }
