@@ -1048,6 +1048,24 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
+		/// <inheritdoc/>
+		public Task<string> CreateTemplateFromExistingMeeting(string userId, long meetingId, string templateName, bool saveRecurrence = false, bool overwrite = false, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "meeting_id", meetingId },
+				{ "name", templateName },
+				{ "save_recurrence", saveRecurrence },
+				{ "overwrite", overwrite },
+			};
+
+			return _client
+				.PostAsync($"users/{userId}/meeting_templates")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("id");
+		}
+
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string status, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject

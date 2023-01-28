@@ -600,5 +600,17 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task InviteParticipantsAsync(long meetingId, IEnumerable<string> emailAddresses, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create a meeting template from an existing meeting.
+		/// </summary>
+		/// <param name="userId">The user ID.</param>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="templateName">The template name.</param>
+		/// <param name="saveRecurrence">Indicates whether the recurrence meeting template will be saved as the scheduled meeting or not.</param>
+		/// <param name="overwrite">Indicates whether an existing meeting template from the same meeting should be overwritten or not.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>The template ID.</returns>
+		Task<string> CreateTemplateFromExistingMeeting(string userId, long meetingId, string templateName, bool saveRecurrence = false, bool overwrite = false, CancellationToken cancellationToken = default);
 	}
 }
