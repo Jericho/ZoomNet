@@ -225,6 +225,7 @@ namespace ZoomNet.IntegrationTests
 				if (!cancellationToken.IsCancellationRequested)
 				{
 					logger.LogInformation("Processing {eventType} event...", webhookEvent.EventType);
+					await Task.Delay(1, cancellationToken).ConfigureAwait(false); // This async call gets rid of "CS1998 This async method lacks 'await' operators and will run synchronously".
 				}
 			});
 
