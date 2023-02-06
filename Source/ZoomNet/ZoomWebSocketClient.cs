@@ -9,6 +9,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Websocket.Client;
+using ZoomNet.Models;
 using ZoomNet.Models.Webhooks;
 using ZoomNet.Utilities;
 
@@ -19,9 +20,6 @@ namespace ZoomNet
 	/// </summary>
 	public class ZoomWebSocketClient : IDisposable
 	{
-		private readonly string _clientId;
-		private readonly string _clientSecret;
-		private readonly string _accountId;
 		private readonly string _subscriptionId;
 		private readonly ILogger _logger;
 		private readonly IWebProxy _proxy;
@@ -29,40 +27,31 @@ namespace ZoomNet
 
 		private WebsocketClient _websocketClient;
 		private HttpClient _httpClient;
-		private OAuthConnectionInfo _connectionInfo;
-		private OAuthTokenHandler _tokenHandler;
+		private ITokenHandler _tokenHandler;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ZoomWebSocketClient"/> class.
 		/// </summary>
-		/// <param name="clientId">Your Client Id.</param>
-		/// <param name="clientSecret">Your Client Secret.</param>
-		/// <param name="accountId">Your Account Id.</param>
+		/// <param name="connectionInfo">Connection information.</param>
 		/// <param name="subscriptionId">Your subscirption Id.</param>
 		/// <param name="eventProcessor">A delegate that will be invoked when a wehook message is received.</param>
 		/// <param name="proxy">Allows you to specify a proxy.</param>
 		/// <param name="logger">Logger.</param>
-		public ZoomWebSocketClient(string clientId, string clientSecret, string accountId, string subscriptionId, Func<Event, CancellationToken, Task> eventProcessor, IWebProxy proxy = null, ILogger logger = null)
+		public ZoomWebSocketClient(IConnectionInfo connectionInfo, string subscriptionId, Func<Event, CancellationToken, Task> eventProcessor, IWebProxy proxy = null, ILogger logger = null)
 		{
-			_clientId = clientId ?? throw new ArgumentNullException(nameof(clientId));
-			_clientSecret = clientSecret ?? throw new ArgumentNullException(nameof(clientSecret));
-			_accountId = accountId ?? throw new ArgumentNullException(nameof(accountId));
+			// According to https://marketplace.zoom.us/docs/api-reference/websockets/, only Server-to-Server OAuth connections are supported
+			if (connectionInfo == null) throw new ArgumentNullException(nameof(connectionInfo));
+			if (connectionInfo is not OAuthConnectionInfo oAuthConnectionInfo || oAuthConnectionInfo.GrantType != OAuthGrantType.AccountCredentials)
+			{
+				throw new ArgumentException("WebSocket client only supports Server-to-Server OAuth connections");
+			}
+
 			_subscriptionId = subscriptionId ?? throw new ArgumentNullException(nameof(subscriptionId));
 			_eventProcessor = eventProcessor ?? throw new ArgumentNullException(nameof(eventProcessor));
 			_proxy = proxy;
 			_logger = logger ?? NullLogger.Instance;
-		}
-
-		/// <summary>
-		/// Start listening to incoming webhooks from Zoom.
-		/// </summary>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>Asynchronous task.</returns>
-		public Task StartAsync(CancellationToken cancellationToken = default)
-		{
-			_connectionInfo = new OAuthConnectionInfo(_clientId, _clientSecret, _accountId, null);
 			_httpClient = new HttpClient(new HttpClientHandler { Proxy = _proxy, UseProxy = _proxy != null });
-			_tokenHandler = new OAuthTokenHandler(_connectionInfo, _httpClient);
+			_tokenHandler = new OAuthTokenHandler(oAuthConnectionInfo, _httpClient);
 
 			var clientFactory = new Func<Uri, CancellationToken, Task<WebSocket>>(async (uri, cancellationToken) =>
 			{
@@ -94,10 +83,18 @@ namespace ZoomNet
 			};
 			_websocketClient.ReconnectionHappened.Subscribe(info => _logger.LogTrace("Reconnection happened, type: {reconnectionReason}", info.Type));
 			_websocketClient.DisconnectionHappened.Subscribe(info => _logger.LogTrace("Disconnection happened, type: {disconnectionReason}", info.Type));
+		}
 
+		/// <summary>
+		/// Start listening to incoming webhooks from Zoom.
+		/// </summary>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>Asynchronous task.</returns>
+		public Task StartAsync(CancellationToken cancellationToken = default)
+		{
 			_websocketClient.MessageReceived
 				.Select(response => Observable.FromAsync(() => ProcessMessage(response, cancellationToken)))
-				.Merge(5) // Allow up to 5 messages to be processed concurently
+				.Merge(5) // Allow up to 5 messages to be processed concurently. This number is arbitrary but it seems reasonable.
 				.Subscribe();
 
 			Task.Run(() => SendHeartbeat(_websocketClient, cancellationToken), cancellationToken);
@@ -191,7 +188,6 @@ namespace ZoomNet
 
 		private void ReleaseManagedResources()
 		{
-			_connectionInfo = null;
 			_tokenHandler = null;
 
 			if (_websocketClient != null)

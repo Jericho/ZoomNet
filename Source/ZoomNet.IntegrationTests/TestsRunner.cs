@@ -240,7 +240,8 @@ namespace ZoomNet.IntegrationTests
 			};
 
 			// Start the websocket client
-			using (var client = new ZoomWebSocketClient(clientId, clientSecret, accountId, subscriptionId, eventProcessor, proxy, logger))
+			var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, accountId, null);
+			using (var client = new ZoomWebSocketClient(connectionInfo, subscriptionId, eventProcessor, proxy, logger))
 			{
 				await client.StartAsync(cts.Token).ConfigureAwait(false);
 				exitEvent.WaitOne();
