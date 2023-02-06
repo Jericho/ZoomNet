@@ -111,6 +111,7 @@ namespace ZoomNet
 
 		private ZoomGraphQLClient(IConnectionInfo connectionInfo, HttpClient httpClient, bool disposeClient, ZoomClientOptions options, ILogger logger = null)
 		{
+			// According to https://marketplace.zoom.us/docs/graphql/using-graphql/, any OAuth connection is supported
 			if (connectionInfo == null) throw new ArgumentNullException(nameof(connectionInfo));
 			if (connectionInfo is not OAuthConnectionInfo oAuthConnectionInfo)
 			{
