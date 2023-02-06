@@ -18,7 +18,7 @@
 - The ZoomNet library simplifies connecting with the Zoom.us API and interacting with the various endpoints.
 - The library also includes a parser that allows you to process inbound webhook messages sent to you by the Zoom API over HTTP.
 - Zoom is working on a new server that will deliver the webhook messages over websockets rather than HTTP. This server was introduced in beta during summer 2022 and, as of January 2023, it is still in beta. The ZoomNet library has a convenient client that allows you to receive and process these messages.
-
+- ZoomNet has a client that allows you to issue GraphQL queries to the Zoom API.
 
 ## Installation
 
@@ -27,6 +27,7 @@ The easiest way to include ZoomNet in your C# project is by adding the nuget pac
 ```
 PM> Install-Package ZoomNet
 ```
+
 
 ## .NET framework suport
 
@@ -62,7 +63,6 @@ var zoomClient = new ZoomClient(connectionInfo);
 ```
 
 > **Warning:** <a href="https://marketplace.zoom.us/docs/guides/build/jwt-app/jwt-faq/">Zoom has announced</a> that this authentication method would be obsolete in June 2023. The recommendation is to swith to Server-to-Server OAuth.
-
 
 #### Connection using OAuth
 Using OAuth is much more complicated than using JWT but at the same time, it is more flexible because you can define which permissions your app requires. When a user installs your app, they are presented with the list of permissions your app requires and they are given the opportunity to accept. 
