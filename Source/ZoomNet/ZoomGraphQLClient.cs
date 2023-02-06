@@ -65,60 +65,58 @@ namespace ZoomNet
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ZoomGraphQLClient"/> class.
 		/// </summary>
-		/// <param name="clientId">Your Client Id.</param>
-		/// <param name="clientSecret">Your Client Secret.</param>
-		/// <param name="accountId">Your Account Id.</param>
+		/// <param name="connectionInfo">Connection information.</param>
 		/// <param name="options">Options for the Zoom GraphQL client.</param>
 		/// <param name="logger">Logger.</param>
-		public ZoomGraphQLClient(string clientId, string clientSecret, string accountId, ZoomClientOptions options = null, ILogger logger = null)
-			: this(clientId, clientSecret, accountId, new HttpClient(), true, options, logger)
+		public ZoomGraphQLClient(IConnectionInfo connectionInfo, ZoomClientOptions options = null, ILogger logger = null)
+			: this(connectionInfo, new HttpClient(), true, options, logger)
 		{
 		}
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ZoomGraphQLClient"/> class with a specific proxy.
 		/// </summary>
-		/// <param name="clientId">Your Client Id.</param>
-		/// <param name="clientSecret">Your Client Secret.</param>
-		/// <param name="accountId">Your Account Id.</param>
+		/// <param name="connectionInfo">Connection information.</param>
 		/// <param name="proxy">Allows you to specify a proxy.</param>
 		/// <param name="options">Options for the Zoom GraphQL client.</param>
 		/// <param name="logger">Logger.</param>
-		public ZoomGraphQLClient(string clientId, string clientSecret, string accountId, IWebProxy proxy, ZoomClientOptions options = null, ILogger logger = null)
-			: this(clientId, clientSecret, accountId, new HttpClient(new HttpClientHandler { Proxy = proxy, UseProxy = proxy != null }), true, options, logger)
+		public ZoomGraphQLClient(IConnectionInfo connectionInfo, IWebProxy proxy, ZoomClientOptions options = null, ILogger logger = null)
+			: this(connectionInfo, new HttpClient(new HttpClientHandler { Proxy = proxy, UseProxy = proxy != null }), true, options, logger)
 		{
 		}
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ZoomGraphQLClient"/> class with a specific handler.
 		/// </summary>
-		/// <param name="clientId">Your Client Id.</param>
-		/// <param name="clientSecret">Your Client Secret.</param>
-		/// <param name="accountId">Your Account Id.</param>
+		/// <param name="connectionInfo">Connection information.</param>
 		/// <param name="handler">TThe HTTP handler stack to use for sending requests.</param>
 		/// <param name="options">Options for the Zoom GraphQL client.</param>
 		/// <param name="logger">Logger.</param>
-		public ZoomGraphQLClient(string clientId, string clientSecret, string accountId, HttpMessageHandler handler, ZoomClientOptions options = null, ILogger logger = null)
-			: this(clientId, clientSecret, accountId, new HttpClient(handler), true, options, logger)
+		public ZoomGraphQLClient(IConnectionInfo connectionInfo, HttpMessageHandler handler, ZoomClientOptions options = null, ILogger logger = null)
+			: this(connectionInfo, new HttpClient(handler), true, options, logger)
 		{
 		}
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ZoomGraphQLClient"/> class with a specific http client.
 		/// </summary>
-		/// <param name="clientId">Your Client Id.</param>
-		/// <param name="clientSecret">Your Client Secret.</param>
-		/// <param name="accountId">Your Account Id.</param>
+		/// <param name="connectionInfo">Connection information.</param>
 		/// <param name="httpClient">Allows you to inject your own HttpClient. This is useful, for example, to setup the HtppClient with a proxy.</param>
 		/// <param name="options">Options for the Zoom GraphQL client.</param>
 		/// <param name="logger">Logger.</param>
-		public ZoomGraphQLClient(string clientId, string clientSecret, string accountId, HttpClient httpClient, ZoomClientOptions options = null, ILogger logger = null)
-			: this(clientId, clientSecret, accountId, httpClient, false, options, logger)
+		public ZoomGraphQLClient(IConnectionInfo connectionInfo, HttpClient httpClient, ZoomClientOptions options = null, ILogger logger = null)
+			: this(connectionInfo, httpClient, false, options, logger)
 		{
 		}
 
-		private ZoomGraphQLClient(string clientId, string clientSecret, string accountId, HttpClient httpClient, bool disposeClient, ZoomClientOptions options, ILogger logger = null)
+		private ZoomGraphQLClient(IConnectionInfo connectionInfo, HttpClient httpClient, bool disposeClient, ZoomClientOptions options, ILogger logger = null)
 		{
+			if (connectionInfo == null) throw new ArgumentNullException(nameof(connectionInfo));
+			if (connectionInfo is not OAuthConnectionInfo oAuthConnectionInfo)
+			{
+				throw new ArgumentException("GraphQL client only supports OAuth connections");
+			}
+
 			_mustDisposeHttpClient = disposeClient;
 			_httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
 			_options = options ?? GetDefaultOptions();
@@ -132,9 +130,8 @@ namespace ZoomNet
 			_fluentClient.Formatters.Clear();
 			_fluentClient.Formatters.Add(new JsonFormatter());
 
-			// Order is important: the token handler must be first, followed by DiagnosticHandler and then by ErrorHandler.
-			var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, accountId, null);
-			var tokenHandler = new OAuthTokenHandler(connectionInfo, httpClient);
+			// Order is important: the token handler (either JWT or OAuth) must be first, followed by DiagnosticHandler and then by ErrorHandler.
+			var tokenHandler = new OAuthTokenHandler(oAuthConnectionInfo, httpClient);
 			_fluentClient.Filters.Add(tokenHandler);
 			_fluentClient.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), tokenHandler));
 
@@ -211,6 +208,15 @@ namespace ZoomNet
 
 		#region PRIVATE METHODS
 
+		private static ZoomClientOptions GetDefaultOptions()
+		{
+			return new ZoomClientOptions()
+			{
+				LogLevelSuccessfulCalls = LogLevel.Debug,
+				LogLevelFailedCalls = LogLevel.Error
+			};
+		}
+
 		private void ReleaseManagedResources()
 		{
 			if (_fluentClient != null)
@@ -229,15 +235,6 @@ namespace ZoomNet
 		private void ReleaseUnmanagedResources()
 		{
 			// We do not hold references to unmanaged resources
-		}
-
-		private ZoomClientOptions GetDefaultOptions()
-		{
-			return new ZoomClientOptions()
-			{
-				LogLevelSuccessfulCalls = LogLevel.Debug,
-				LogLevelFailedCalls = LogLevel.Error
-			};
 		}
 
 		#endregion
