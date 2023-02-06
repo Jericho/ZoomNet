@@ -209,6 +209,8 @@ namespace ZoomNet
 
 		private ZoomClient(IConnectionInfo connectionInfo, HttpClient httpClient, bool disposeClient, ZoomClientOptions options, ILogger logger = null)
 		{
+			if (connectionInfo == null) throw new ArgumentNullException(nameof(connectionInfo));
+
 			_mustDisposeHttpClient = disposeClient;
 			_httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
 			_options = options ?? GetDefaultOptions();
@@ -229,9 +231,9 @@ namespace ZoomNet
 				_fluentClient.Filters.Add(tokenHandler);
 				_fluentClient.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), tokenHandler));
 			}
-			else if (connectionInfo is OAuthConnectionInfo oauthConnectionInfo)
+			else if (connectionInfo is OAuthConnectionInfo oAuthConnectionInfo)
 			{
-				var tokenHandler = new OAuthTokenHandler(oauthConnectionInfo, httpClient);
+				var tokenHandler = new OAuthTokenHandler(oAuthConnectionInfo, httpClient);
 				_fluentClient.Filters.Add(tokenHandler);
 				_fluentClient.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), tokenHandler));
 			}
@@ -309,6 +311,15 @@ namespace ZoomNet
 
 		#region PRIVATE METHODS
 
+		private static ZoomClientOptions GetDefaultOptions()
+		{
+			return new ZoomClientOptions()
+			{
+				LogLevelSuccessfulCalls = LogLevel.Debug,
+				LogLevelFailedCalls = LogLevel.Error
+			};
+		}
+
 		private void ReleaseManagedResources()
 		{
 			if (_fluentClient != null)
@@ -327,15 +338,6 @@ namespace ZoomNet
 		private void ReleaseUnmanagedResources()
 		{
 			// We do not hold references to unmanaged resources
-		}
-
-		private ZoomClientOptions GetDefaultOptions()
-		{
-			return new ZoomClientOptions()
-			{
-				LogLevelSuccessfulCalls = LogLevel.Debug,
-				LogLevelFailedCalls = LogLevel.Error
-			};
 		}
 
 		#endregion
