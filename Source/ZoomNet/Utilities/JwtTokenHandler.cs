@@ -31,7 +31,7 @@ namespace ZoomNet.Utilities
 			get => _connectionInfo;
 		}
 
-		private static readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim();
+		private static readonly ReaderWriterLockSlim _lock = new();
 
 		private readonly JwtConnectionInfo _connectionInfo;
 		private readonly TimeSpan _clockSkew;
@@ -43,8 +43,8 @@ namespace ZoomNet.Utilities
 		public JwtTokenHandler(JwtConnectionInfo connectionInfo, TimeSpan? tokenLifeSpan = null, TimeSpan? clockSkew = null)
 		{
 			if (connectionInfo == null) throw new ArgumentNullException(nameof(connectionInfo));
-			if (string.IsNullOrEmpty(connectionInfo.ApiKey)) throw new ArgumentNullException(nameof(connectionInfo.ApiKey));
-			if (string.IsNullOrEmpty(connectionInfo.ApiSecret)) throw new ArgumentNullException(nameof(connectionInfo.ApiSecret));
+			if (string.IsNullOrEmpty(connectionInfo.ApiKey)) throw new ArgumentNullException("connectionInfo.ApiKey");
+			if (string.IsNullOrEmpty(connectionInfo.ApiSecret)) throw new ArgumentNullException("connectionInfo.ApiSecret");
 
 			_connectionInfo = connectionInfo;
 			_tokenLifeSpan = tokenLifeSpan.GetValueOrDefault(TimeSpan.FromMinutes(30));

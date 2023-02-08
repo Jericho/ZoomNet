@@ -33,7 +33,7 @@ namespace ZoomNet.Utilities
 			get => _connectionInfo;
 		}
 
-		private static readonly ReaderWriterLockSlim _lock = new ReaderWriterLockSlim();
+		private static readonly ReaderWriterLockSlim _lock = new();
 
 		private readonly OAuthConnectionInfo _connectionInfo;
 		private readonly HttpClient _httpClient;
@@ -42,8 +42,8 @@ namespace ZoomNet.Utilities
 		public OAuthTokenHandler(OAuthConnectionInfo connectionInfo, HttpClient httpClient, TimeSpan? clockSkew = null)
 		{
 			if (connectionInfo == null) throw new ArgumentNullException(nameof(connectionInfo));
-			if (string.IsNullOrEmpty(connectionInfo.ClientId)) throw new ArgumentNullException(nameof(connectionInfo.ClientId));
-			if (string.IsNullOrEmpty(connectionInfo.ClientSecret)) throw new ArgumentNullException(nameof(connectionInfo.ClientSecret));
+			if (string.IsNullOrEmpty(connectionInfo.ClientId)) throw new ArgumentNullException("connectionInfo.ClientId");
+			if (string.IsNullOrEmpty(connectionInfo.ClientSecret)) throw new ArgumentNullException("connectionInfo.ClientSecret");
 			if (httpClient == null) throw new ArgumentNullException(nameof(httpClient));
 
 			_connectionInfo = connectionInfo;
