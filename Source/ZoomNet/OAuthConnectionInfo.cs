@@ -167,7 +167,7 @@ namespace ZoomNet
 		/// <param name="refreshToken">The refresh token.</param>
 		/// <param name="accessToken">(Optional) The access token. We recommend you specify a null value. See remarks for more details.</param>
 		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed.</param>
-		[Obsolete("This constructor has been replaced with OAuthConnectionInfo.WithAccessToken")]
+		[Obsolete("This constructor has been replaced with OAuthConnectionInfo.WithRefreshToken")]
 		public OAuthConnectionInfo(string clientId, string clientSecret, string refreshToken, string accessToken, OnTokenRefreshedDelegate onTokenRefreshed)
 		{
 			if (string.IsNullOrEmpty(clientId)) throw new ArgumentNullException(nameof(clientId));
