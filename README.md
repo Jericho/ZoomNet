@@ -78,7 +78,7 @@ var clientId = "... your client ID ...";
 var clientSecret = "... your client secret ...";
 var authorizationCode = "... the code that Zoom issued when you added the OAuth app to your account ...";
 var redirectUri = "... the URI you have configured when setting up your OAuth app ..."; // Please note that Zoom sometimes accepts a null value and sometimes rejects it with a 'Redirect URI mismatch' error
-var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, authorizationCode,
+var connectionInfo = OAuthConnectionInfo.WithAuthorizationCode(clientId, clientSecret, authorizationCode,
     (newRefreshToken, newAccessToken) =>
     {
         /*
@@ -112,7 +112,7 @@ Once the autorization code is converted into an access token and a refresh token
 var clientId = "... your client ID ...";
 var clientSecret = "... your client secret ...";
 var refreshToken = Environment.GetEnvironmentVariable("ZOOM_OAUTH_REFRESHTOKEN", EnvironmentVariableTarget.User);
-var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, refreshToken, null,
+var connectionInfo = OAuthConnectionInfo.WithRefreshToken(clientId, clientSecret, refreshToken, null,
     (newRefreshToken, newAccessToken) =>
     {
         /*
@@ -136,7 +136,7 @@ ZoomNet takes care of getting a new access token and it also refreshes a previou
 var clientId = "... your client ID ...";
 var clientSecret = "... your client secret ...";
 var accountId = "... your account id ...";
-var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, accountId,
+var connectionInfo = OAuthConnectionInfo.ForServerToServer(clientId, clientSecret, accountId,
     (_, newAccessToken) =>
     {
         /*
@@ -154,7 +154,7 @@ var zoomClient = new ZoomClient(connectionInfo);
 The delegate being optional in the server-to-server scenario you can therefore simplify the connection info declaration like so:
 
 ```csharp
-var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, accountId, null);
+var connectionInfo = OAuthConnectionInfo.ForServerToServer(clientId, clientSecret, accountId);
 var zoomClient = new ZoomClient(connectionInfo);
 ```
 
@@ -363,7 +363,8 @@ Console.CancelKeyPress += (s, e) =>
 };
 
 // Start the websocket client
-using (var client = new ZoomWebSocketClient(clientId, clientSecret, accountId, subscriptionId, eventProcessor, proxy, logger))
+var connectionInfo = OAuthConnectionInfo.ForServerToServer(clientId, clientSecret, accountId);
+using (var client = new ZoomWebSocketClient(connectionInfo, subscriptionId, eventProcessor, proxy, logger))
 {
     await client.StartAsync(cts.Token).ConfigureAwait(false);
     exitEvent.WaitOne();

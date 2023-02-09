@@ -75,7 +75,7 @@ namespace ZoomNet.IntegrationTests
 				// Server-to-Server OAuth
 				if (!string.IsNullOrEmpty(accountId))
 				{
-					connectionInfo = OAuthConnectionInfo.WithAccountId(clientId, clientSecret, accountId,
+					connectionInfo = OAuthConnectionInfo.ForServerToServer(clientId, clientSecret, accountId,
 						(_, newAccessToken) =>
 						{
 							Console.Out.WriteLine($"A new access token was issued: {newAccessToken}");
@@ -85,7 +85,7 @@ namespace ZoomNet.IntegrationTests
 				// Standard OAuth
 				else
 				{
-					connectionInfo = OAuthConnectionInfo.WithRefreshToken(clientId, clientSecret, refreshToken, null,
+					connectionInfo = OAuthConnectionInfo.WithRefreshToken(clientId, clientSecret, refreshToken,
 						(newRefreshToken, newAccessToken) =>
 						{
 							Environment.SetEnvironmentVariable("ZOOM_OAUTH_REFRESHTOKEN", newRefreshToken, EnvironmentVariableTarget.User);
@@ -239,7 +239,7 @@ namespace ZoomNet.IntegrationTests
 			};
 
 			// Start the websocket client
-			var connectionInfo = OAuthConnectionInfo.WithAccountId(clientId, clientSecret, accountId);
+			var connectionInfo = OAuthConnectionInfo.ForServerToServer(clientId, clientSecret, accountId);
 			using (var client = new ZoomWebSocketClient(connectionInfo, subscriptionId, eventProcessor, proxy, logger))
 			{
 				await client.StartAsync(cts.Token).ConfigureAwait(false);
