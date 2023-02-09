@@ -286,6 +286,22 @@ namespace ZoomNet
 		/// </summary>
 		/// <remarks>
 		/// This is the most commonly used grant type for Zoom APIs.
+		/// </remarks>
+		/// <param name="clientId">Your Client Id.</param>
+		/// <param name="clientSecret">Your Client Secret.</param>
+		/// <param name="refreshToken">The refresh token.</param>
+		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed.</param>
+		/// <returns>The connection info.</returns>
+		public static OAuthConnectionInfo WithRefreshToken(string clientId, string clientSecret, string refreshToken, OnTokenRefreshedDelegate onTokenRefreshed)
+		{
+			return WithRefreshToken(clientId, clientSecret, refreshToken, null, onTokenRefreshed);
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="OAuthConnectionInfo"/> class.
+		/// </summary>
+		/// <remarks>
+		/// This is the most commonly used grant type for Zoom APIs.
 		///
 		/// Please note that the 'accessToken' parameter is optional.
 		/// In fact, we recommend that you specify a null value which
@@ -334,6 +350,33 @@ namespace ZoomNet
 		/// <returns>The connection info.</returns>
 		public static OAuthConnectionInfo ForServerToServer(string clientId, string clientSecret, string accountId, OnTokenRefreshedDelegate onTokenRefreshed = null, int tokenIndex = 0)
 		{
+			return ForServerToServer(clientId, clientSecret, accountId, null, onTokenRefreshed, tokenIndex);
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="OAuthConnectionInfo"/> class.
+		/// </summary>
+		/// <remarks>
+		/// Use this constructor when you want to use Server-to-Server OAuth authentication.
+		///
+		/// Please note that the 'accessToken' parameter is optional.
+		/// In fact, we recommend that you specify a null value which
+		/// will cause ZoomNet to automatically obtain a new access
+		/// token from the Zoom API. The reason we recommend you omit
+		/// this parameter is that access tokens are ephemeral (they
+		/// expire in 60 minutes) and even if you specify a token that
+		/// was previously issued to you and that you preserved, this
+		/// token is very likely to be expired and therefore useless.
+		/// </remarks>
+		/// <param name="clientId">Your Client Id.</param>
+		/// <param name="clientSecret">Your Client Secret.</param>
+		/// <param name="accountId">Your Account Id.</param>
+		/// <param name="accessToken">(Optional) The access token. We recommend you specify a null value. See remarks for more details.</param>
+		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed. In the Server-to-Server scenario, this delegate is optional.</param>
+		/// <param name="tokenIndex">The token index.</param>
+		/// <returns>The connection info.</returns>
+		public static OAuthConnectionInfo ForServerToServer(string clientId, string clientSecret, string accountId, string accessToken, OnTokenRefreshedDelegate onTokenRefreshed = null, int tokenIndex = 0)
+		{
 			if (string.IsNullOrEmpty(clientId)) throw new ArgumentNullException(nameof(clientId));
 			if (string.IsNullOrEmpty(clientSecret)) throw new ArgumentNullException(nameof(clientSecret));
 			if (string.IsNullOrEmpty(accountId)) throw new ArgumentNullException(nameof(accountId));
@@ -343,7 +386,8 @@ namespace ZoomNet
 				ClientId = clientId,
 				ClientSecret = clientSecret,
 				AccountId = accountId,
-				TokenExpiration = DateTime.MinValue,
+				AccessToken = accessToken,
+				TokenExpiration = string.IsNullOrEmpty(accessToken) ? DateTime.MinValue : DateTime.MaxValue, // Set expiration to DateTime.MaxValue when an access token is provided because we don't know when it will expire
 				GrantType = OAuthGrantType.AccountCredentials,
 				OnTokenRefreshed = onTokenRefreshed,
 				TokenIndex = tokenIndex,
