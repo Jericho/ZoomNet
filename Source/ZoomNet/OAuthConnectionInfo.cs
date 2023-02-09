@@ -193,7 +193,7 @@ namespace ZoomNet
 		/// <param name="clientSecret">Your Client Secret.</param>
 		/// <param name="accountId">Your Account Id.</param>
 		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed. In the Server-to-Server scenario, this delegate is optional.</param>
-		[Obsolete("This constructor has been replaced with OAuthConnectionInfo.WithAccountId")]
+		[Obsolete("This constructor has been replaced with OAuthConnectionInfo.ForServerToServer")]
 		public OAuthConnectionInfo(string clientId, string clientSecret, string accountId, OnTokenRefreshedDelegate onTokenRefreshed)
 		{
 			if (string.IsNullOrEmpty(clientId)) throw new ArgumentNullException(nameof(clientId));
@@ -332,7 +332,7 @@ namespace ZoomNet
 		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed. In the Server-to-Server scenario, this delegate is optional.</param>
 		/// <param name="tokenIndex">The token index.</param>
 		/// <returns>The connection info.</returns>
-		public static OAuthConnectionInfo WithAccountId(string clientId, string clientSecret, string accountId, OnTokenRefreshedDelegate onTokenRefreshed = null, int tokenIndex = 0)
+		public static OAuthConnectionInfo ForServerToServer(string clientId, string clientSecret, string accountId, OnTokenRefreshedDelegate onTokenRefreshed = null, int tokenIndex = 0)
 		{
 			if (string.IsNullOrEmpty(clientId)) throw new ArgumentNullException(nameof(clientId));
 			if (string.IsNullOrEmpty(clientSecret)) throw new ArgumentNullException(nameof(clientSecret));
