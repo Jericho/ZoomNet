@@ -112,7 +112,7 @@ Once the autorization code is converted into an access token and a refresh token
 var clientId = "... your client ID ...";
 var clientSecret = "... your client secret ...";
 var refreshToken = Environment.GetEnvironmentVariable("ZOOM_OAUTH_REFRESHTOKEN", EnvironmentVariableTarget.User);
-var connectionInfo = OAuthConnectionInfo.WithRefreshToken(clientId, clientSecret, refreshToken, null,
+var connectionInfo = OAuthConnectionInfo.WithRefreshToken(clientId, clientSecret, refreshToken,
     (newRefreshToken, newAccessToken) =>
     {
         /*
