@@ -472,7 +472,7 @@ namespace ZoomNet.Resources
 				.AsObject<string>("id");
 		}
 
-		private Task<PaginatedResponseWithToken<ChatMessage>> GetMessagesAsync(string userId, string recipientEmail, string channelId, int recordsPerPage, string pagingToken, CancellationToken cancellationToken)
+		private Task<PaginatedResponseWithToken<ChatMessage>> GetMessagesAsync(string userId, string recipientEmail, string channelId, int recordsPerPage, string pagingToken, CancellationToken cancellationToken = default)
 		{
 			Debug.Assert(recipientEmail != null || channelId != null, "You must provide either recipientEmail or channelId");
 			Debug.Assert(recipientEmail == null || channelId == null, "You can't provide both recipientEmail and channelId");
@@ -492,7 +492,7 @@ namespace ZoomNet.Resources
 				.AsPaginatedResponseWithToken<ChatMessage>("messages");
 		}
 
-		private Task UpdateMessageAsync(string messageId, string userId, string recipientEmail, string channelId, string message, IEnumerable<ChatMention> mentions, CancellationToken cancellationToken)
+		private Task UpdateMessageAsync(string messageId, string userId, string recipientEmail, string channelId, string message, IEnumerable<ChatMention> mentions, CancellationToken cancellationToken = default)
 		{
 			Debug.Assert(recipientEmail != null || channelId != null, "You must provide either recipientEmail or channelId");
 			Debug.Assert(recipientEmail == null || channelId == null, "You can't provide both recipientEmail and channelId");
@@ -512,7 +512,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		private Task DeleteMessageAsync(string messageId, string userId, string recipientEmail, string channelId, CancellationToken cancellationToken)
+		private Task DeleteMessageAsync(string messageId, string userId, string recipientEmail, string channelId, CancellationToken cancellationToken = default)
 		{
 			Debug.Assert(recipientEmail != null || channelId != null, "You must provide either recipientEmail or channelId");
 			Debug.Assert(recipientEmail == null || channelId == null, "You can't provide both recipientEmail and channelId");

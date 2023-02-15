@@ -133,7 +133,7 @@ namespace ZoomNet
 			ReleaseUnmanagedResources();
 		}
 
-		private async Task SendHeartbeat(IWebsocketClient client, CancellationToken cancellationToken)
+		private async Task SendHeartbeat(IWebsocketClient client, CancellationToken cancellationToken = default)
 		{
 			while (!cancellationToken.IsCancellationRequested)
 			{
@@ -151,7 +151,7 @@ namespace ZoomNet
 			}
 		}
 
-		private async Task ProcessMessage(ResponseMessage msg, CancellationToken cancellationToken)
+		private async Task ProcessMessage(ResponseMessage msg, CancellationToken cancellationToken = default)
 		{
 			var jsonDoc = JsonDocument.Parse(msg.Text);
 			var module = jsonDoc.RootElement.GetPropertyValue("module", string.Empty);
