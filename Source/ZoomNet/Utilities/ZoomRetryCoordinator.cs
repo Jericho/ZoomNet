@@ -13,11 +13,8 @@ namespace ZoomNet.Utilities
 	/// <summary>A request coordinator which retries failed requests with a delay between each attempt.</summary>
 	internal class ZoomRetryCoordinator : IRequestCoordinator
 	{
-		private static readonly ReaderWriterLockSlim _lock = new();
-
 		private readonly IRequestCoordinator _defaultRetryCoordinator;
 		private readonly ITokenHandler _tokenHandler;
-		private DateTime _tokenLastRefreshed;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ZoomRetryCoordinator" /> class.
@@ -26,7 +23,6 @@ namespace ZoomNet.Utilities
 		public ZoomRetryCoordinator(ITokenHandler tokenHandler)
 		{
 			_tokenHandler = tokenHandler;
-			_tokenLastRefreshed = DateTime.MinValue.ToUniversalTime();
 		}
 
 		/// <summary>
@@ -71,8 +67,8 @@ namespace ZoomNet.Utilities
 				var message = jsonResponse.GetPropertyValue("message", string.Empty);
 				if (message.StartsWith("access token is expired", StringComparison.OrdinalIgnoreCase))
 				{
-					var refreshedToken = RefreshToken();
-					response = await _defaultRetryCoordinator.ExecuteAsync(request.WithBearerAuthentication(refreshedToken), dispatcher);
+					var refreshedTokenInfo = await _tokenHandler.RefreshTokenIfNecessaryAsync(false, CancellationToken.None).ConfigureAwait(false);
+					response = await _defaultRetryCoordinator.ExecuteAsync(request.WithBearerAuthentication(refreshedTokenInfo.AccessToken), dispatcher);
 				}
 			}
 
@@ -92,35 +88,6 @@ namespace ZoomNet.Utilities
 			}
 
 			return response;
-		}
-
-		private string RefreshToken()
-		{
-			try
-			{
-				_lock.EnterUpgradeableReadLock();
-
-				var lastRefreshed = _tokenLastRefreshed;
-
-				try
-				{
-					_lock.EnterWriteLock();
-
-					var forceRefresh = lastRefreshed == _tokenLastRefreshed;
-					var refreshedToken = _tokenHandler.RefreshTokenIfNecessary(forceRefresh);
-					_tokenLastRefreshed = DateTime.UtcNow;
-
-					return refreshedToken;
-				}
-				finally
-				{
-					if (_lock.IsWriteLockHeld) _lock.ExitWriteLock();
-				}
-			}
-			finally
-			{
-				if (_lock.IsUpgradeableReadLockHeld) _lock.ExitUpgradeableReadLock();
-			}
 		}
 	}
 }

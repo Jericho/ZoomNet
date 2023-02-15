@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using ZoomNet.Models;
+using ZoomNet.Utilities;
 
 namespace ZoomNet
 {
@@ -16,6 +17,11 @@ namespace ZoomNet
 	/// </summary>
 	public class OAuthConnectionInfo : IConnectionInfo
 	{
+		/// <summary>
+		/// Gets the token management strategy.
+		/// </summary>
+		public ITokenManagementStrategy TokenManagementStrategy { get; private set; }
+
 		/// <summary>
 		/// Gets the account id.
 		/// </summary>
@@ -43,24 +49,9 @@ namespace ZoomNet
 		public string AuthorizationCode { get; private set; }
 
 		/// <summary>
-		/// Gets the refresh token.
-		/// </summary>
-		public string RefreshToken { get; internal set; }
-
-		/// <summary>
-		/// Gets the access token.
-		/// </summary>
-		public string AccessToken { get; internal set; }
-
-		/// <summary>
 		/// Gets the token scope.
 		/// </summary>
 		public IReadOnlyDictionary<string, string[]> TokenScope { get; internal set; }
-
-		/// <summary>
-		/// Gets the token expiration time.
-		/// </summary>
-		public DateTime TokenExpiration { get; internal set; }
 
 		/// <summary>
 		/// Gets the delegate invoked when the token is refreshed.
@@ -100,6 +91,7 @@ namespace ZoomNet
 			ClientId = clientId;
 			ClientSecret = clientSecret;
 			GrantType = OAuthGrantType.ClientCredentials;
+			TokenManagementStrategy = new MemoryTokenManagementStrategy(null, null, DateTime.MinValue, 0);
 		}
 
 		/// <summary>
@@ -136,10 +128,10 @@ namespace ZoomNet
 			ClientSecret = clientSecret;
 			AuthorizationCode = authorizationCode;
 			RedirectUri = redirectUri;
-			TokenExpiration = DateTime.MinValue;
 			GrantType = OAuthGrantType.AuthorizationCode;
 			OnTokenRefreshed = onTokenRefreshed;
 			CodeVerifier = codeVerifier;
+			TokenManagementStrategy = new MemoryTokenManagementStrategy(null, null, DateTime.MinValue, 0);
 		}
 
 		/// <summary>
@@ -171,11 +163,9 @@ namespace ZoomNet
 
 			ClientId = clientId;
 			ClientSecret = clientSecret;
-			RefreshToken = refreshToken;
-			AccessToken = accessToken;
-			TokenExpiration = string.IsNullOrEmpty(accessToken) ? DateTime.MinValue : DateTime.MaxValue; // Set expiration to DateTime.MaxValue when an access token is provided because we don't know when it will expire
 			GrantType = OAuthGrantType.RefreshToken;
 			OnTokenRefreshed = onTokenRefreshed;
+			TokenManagementStrategy = new MemoryTokenManagementStrategy(refreshToken, accessToken, string.IsNullOrEmpty(accessToken) ? DateTime.MinValue : DateTime.MaxValue, 0);
 		}
 
 		/// <summary>
@@ -198,9 +188,9 @@ namespace ZoomNet
 			ClientId = clientId;
 			ClientSecret = clientSecret;
 			AccountId = accountId;
-			TokenExpiration = DateTime.MinValue;
 			GrantType = OAuthGrantType.AccountCredentials;
 			OnTokenRefreshed = onTokenRefreshed;
+			TokenManagementStrategy = new MemoryTokenManagementStrategy(null, null, DateTime.MinValue, 0);
 		}
 
 		private OAuthConnectionInfo() { }
@@ -272,10 +262,9 @@ namespace ZoomNet
 			{
 				ClientId = clientId,
 				ClientSecret = clientSecret,
-				AccessToken = accessToken,
-				TokenExpiration = string.IsNullOrEmpty(accessToken) ? DateTime.MinValue : DateTime.MaxValue, // Set expiration to DateTime.MaxValue when an access token is provided because we don't know when it will expire
 				GrantType = OAuthGrantType.ClientCredentials,
 				OnTokenRefreshed = onTokenRefreshed,
+				TokenManagementStrategy = new MemoryTokenManagementStrategy(null, accessToken, string.IsNullOrEmpty(accessToken) ? DateTime.MinValue : DateTime.MaxValue, 0),
 			};
 		}
 
@@ -315,10 +304,10 @@ namespace ZoomNet
 				ClientSecret = clientSecret,
 				AuthorizationCode = authorizationCode,
 				RedirectUri = redirectUri,
-				TokenExpiration = DateTime.MinValue,
 				GrantType = OAuthGrantType.AuthorizationCode,
 				OnTokenRefreshed = onTokenRefreshed,
 				CodeVerifier = codeVerifier,
+				TokenManagementStrategy = new MemoryTokenManagementStrategy(null, null, DateTime.MinValue, 0),
 			};
 		}
 
@@ -369,11 +358,9 @@ namespace ZoomNet
 			{
 				ClientId = clientId,
 				ClientSecret = clientSecret,
-				RefreshToken = refreshToken,
-				AccessToken = accessToken,
-				TokenExpiration = string.IsNullOrEmpty(accessToken) ? DateTime.MinValue : DateTime.MaxValue, // Set expiration to DateTime.MaxValue when an access token is provided because we don't know when it will expire
 				GrantType = OAuthGrantType.RefreshToken,
 				OnTokenRefreshed = onTokenRefreshed,
+				TokenManagementStrategy = new MemoryTokenManagementStrategy(refreshToken, accessToken, string.IsNullOrEmpty(accessToken) ? DateTime.MinValue : DateTime.MaxValue, 0),
 			};
 		}
 
@@ -390,7 +377,8 @@ namespace ZoomNet
 		/// <returns>The connection info.</returns>
 		public static OAuthConnectionInfo ForServerToServer(string clientId, string clientSecret, string accountId, OnTokenRefreshedDelegate onTokenRefreshed = null)
 		{
-			return ForServerToServer(clientId, clientSecret, accountId, null, onTokenRefreshed);
+			var tokenManagementStrategy = new MemoryTokenManagementStrategy(null, null, DateTime.MinValue, 0);
+			return ForServerToServer(clientId, clientSecret, accountId, tokenManagementStrategy, onTokenRefreshed);
 		}
 
 		/// <summary>
@@ -416,19 +404,46 @@ namespace ZoomNet
 		/// <returns>The connection info.</returns>
 		public static OAuthConnectionInfo ForServerToServer(string clientId, string clientSecret, string accountId, string accessToken, OnTokenRefreshedDelegate onTokenRefreshed = null)
 		{
+			var tokenManagementStrategy = new MemoryTokenManagementStrategy(null, accessToken, string.IsNullOrEmpty(accessToken) ? DateTime.MinValue : DateTime.MaxValue, 0);
+			return ForServerToServer(clientId, clientSecret, accountId, tokenManagementStrategy, onTokenRefreshed);
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="OAuthConnectionInfo"/> class.
+		/// </summary>
+		/// <remarks>
+		/// Use this constructor when you want to use Server-to-Server OAuth authentication.
+		///
+		/// Please note that the 'accessToken' parameter is optional.
+		/// In fact, we recommend that you specify a null value which
+		/// will cause ZoomNet to automatically obtain a new access
+		/// token from the Zoom API. The reason we recommend you omit
+		/// this parameter is that access tokens are ephemeral (they
+		/// expire in 60 minutes) and even if you specify a token that
+		/// was previously issued to you and that you preserved, this
+		/// token is very likely to be expired and therefore useless.
+		/// </remarks>
+		/// <param name="clientId">Your Client Id.</param>
+		/// <param name="clientSecret">Your Client Secret.</param>
+		/// <param name="accountId">Your Account Id.</param>
+		/// <param name="tokenManagementStrategy">The token management strategy.</param>
+		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed. In the Server-to-Server scenario, this delegate is optional.</param>
+		/// <returns>The connection info.</returns>
+		public static OAuthConnectionInfo ForServerToServer(string clientId, string clientSecret, string accountId, ITokenManagementStrategy tokenManagementStrategy, OnTokenRefreshedDelegate onTokenRefreshed = null)
+		{
 			if (string.IsNullOrEmpty(clientId)) throw new ArgumentNullException(nameof(clientId));
 			if (string.IsNullOrEmpty(clientSecret)) throw new ArgumentNullException(nameof(clientSecret));
 			if (string.IsNullOrEmpty(accountId)) throw new ArgumentNullException(nameof(accountId));
+			if (tokenManagementStrategy == null) throw new ArgumentNullException(nameof(tokenManagementStrategy));
 
 			return new OAuthConnectionInfo
 			{
 				ClientId = clientId,
 				ClientSecret = clientSecret,
 				AccountId = accountId,
-				AccessToken = accessToken,
-				TokenExpiration = string.IsNullOrEmpty(accessToken) ? DateTime.MinValue : DateTime.MaxValue, // Set expiration to DateTime.MaxValue when an access token is provided because we don't know when it will expire
 				GrantType = OAuthGrantType.AccountCredentials,
 				OnTokenRefreshed = onTokenRefreshed,
+				TokenManagementStrategy = tokenManagementStrategy,
 			};
 		}
 	}

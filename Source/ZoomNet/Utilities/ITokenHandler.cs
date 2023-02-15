@@ -1,3 +1,7 @@
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
 namespace ZoomNet.Utilities
 {
 	/// <summary>
@@ -19,7 +23,8 @@ namespace ZoomNet.Utilities
 		/// Refresh the access token if the previous one has expired.
 		/// </summary>
 		/// <param name="forceRefresh">Indicates if the token should be refreshes even if it's not expired.</param>
-		/// <returns>The refreshed access token or the current token if we determined that it didn't need to be refreshed.</returns>
-		string RefreshTokenIfNecessary(bool forceRefresh);
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The refreshed token information or the current token information if we determined that it didn't need to be refreshed.</returns>
+		Task<(string RefreshToken, string AccessToken, DateTime TokenExpiration, int TokenIndex)> RefreshTokenIfNecessaryAsync(bool forceRefresh, CancellationToken cancellationToken = default);
 	}
 }

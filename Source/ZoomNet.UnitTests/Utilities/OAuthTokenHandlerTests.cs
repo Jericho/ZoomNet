@@ -2,6 +2,8 @@ using RichardSzalay.MockHttp;
 using Shouldly;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 using Xunit;
 using ZoomNet.Utilities;
 
@@ -19,7 +21,7 @@ namespace ZoomNet.UnitTests.Utilities
 		/// and to subsequently demonstrate that the bug was fixed.
 		/// </remarks>
 		[Fact]
-		public void Attempt_to_refresh_token_multiple_times_despite_exception()
+		public async Task Attempt_to_refresh_token_multiple_times_despite_exception()
 		{
 			// Arrange
 			var clientId = "abc123";
@@ -41,8 +43,8 @@ namespace ZoomNet.UnitTests.Utilities
 			var handler = new OAuthTokenHandler(connectionInfo, mockHttp.ToHttpClient(), null);
 
 			// Act
-			Should.Throw<ZoomException>(() => handler.RefreshTokenIfNecessary(true));
-			Should.Throw<ZoomException>(() => handler.RefreshTokenIfNecessary(true));
+			await Should.ThrowAsync<ZoomException>(() => handler.RefreshTokenIfNecessaryAsync(true, CancellationToken.None));
+			await Should.ThrowAsync<ZoomException>(() => handler.RefreshTokenIfNecessaryAsync(true, CancellationToken.None));
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace ZoomNet.Utilities
 {
@@ -19,11 +20,9 @@ namespace ZoomNet.Utilities
 		{
 			get
 			{
-				RefreshTokenIfNecessary(false);
+				RefreshTokenIfNecessaryAsync(false, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
 				return _jwtToken;
 			}
-
-			private set => _jwtToken = value;
 		}
 
 		public IConnectionInfo ConnectionInfo
@@ -64,7 +63,7 @@ namespace ZoomNet.Utilities
 		/// <param name="httpErrorAsException">Whether HTTP error responses should be raised as exceptions.</param>
 		public void OnResponse(IResponse response, bool httpErrorAsException) { }
 
-		public string RefreshTokenIfNecessary(bool forceRefresh)
+		public Task<(string RefreshToken, string AccessToken, DateTime TokenExpiration, int TokenIndex)> RefreshTokenIfNecessaryAsync(bool forceRefresh, CancellationToken cancellationToken = default)
 		{
 			_lock.EnterUpgradeableReadLock();
 
@@ -90,7 +89,7 @@ namespace ZoomNet.Utilities
 
 			_lock.ExitUpgradeableReadLock();
 
-			return _jwtToken;
+			return Task.FromResult<(string, string, DateTime, int)>((null, _jwtToken, _tokenExpiration, 0));
 		}
 
 		private bool TokenIsExpired()
