@@ -1,6 +1,5 @@
 using Pathoschild.Http.Client;
 using System;
-using System.Linq;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
@@ -52,16 +51,16 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken);
 
 			// Figure out the client id and secret for authentication purposes
-			var tokenHandler = (ITokenHandler)request.Filters.Single(f => f.GetType().IsAssignableFrom(typeof(ITokenHandler)));
-			var secret = string.Empty;
-			var clientId = string.Empty;
+			var tokenHandler = ((ZoomRetryCoordinator)((FluentClient)_client).RequestCoordinator).TokenHandler;
+			string secret;
+			string clientId;
 			switch (tokenHandler.ConnectionInfo)
 			{
 				case OAuthConnectionInfo oauthConnectionInfo:
 					secret = oauthConnectionInfo.ClientSecret;
 					clientId = oauthConnectionInfo.ClientId;
 					break;
-				case JwtConnectionInfo jwtConnectionInfo:
+				case JwtConnectionInfo:
 					throw new Exception($"The DataCompliance resource cannot be use with a Jwt connection.");
 				default:
 					throw new Exception($"Unable to determine the connection secret and cient Id. {tokenHandler.ConnectionInfo.GetType()} is an unknown connection type.");
@@ -76,10 +75,6 @@ namespace ZoomNet.Resources
 				{ "deauthorization_event_received", deauthorizationEventReceived },
 				{ "compliance_completed", "true" }
 			};
-
-			// This endpoint relies on clientId+secret for authentication. It does not need tokens.
-			request.Filters.Remove<OAuthTokenHandler>();
-			request.Filters.Remove<JwtTokenHandler>();
 
 			// Authenticate using clientId+secret and also specify the payload
 			request = request

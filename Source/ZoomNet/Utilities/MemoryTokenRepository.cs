@@ -7,7 +7,7 @@ namespace ZoomNet.Utilities
 	/// <summary>
 	/// Store token in memory.
 	/// </summary>
-	internal class MemoryTokenManagementStrategy : ITokenManagementStrategy
+	internal class MemoryTokenRepository : ITokenRepository
 	{
 		private static readonly SemaphoreSlim _lock = new(1, 1);
 
@@ -16,7 +16,7 @@ namespace ZoomNet.Utilities
 		private DateTime _tokenExpiration;
 		private int _tokenIndex;
 
-		public MemoryTokenManagementStrategy(string refreshToken, string accessToken, DateTime tokenExpiration, int tokenIndex)
+		public MemoryTokenRepository(string refreshToken, string accessToken, DateTime tokenExpiration, int tokenIndex)
 		{
 			_refreshToken = refreshToken;
 			_accessToken = accessToken;
@@ -34,7 +34,7 @@ namespace ZoomNet.Utilities
 		public async Task AcquireLeaseAsync(CancellationToken cancellationToken)
 		{
 			// 2.5 seconds should more than enough time for previous lock to be released
-			var lockAcquired = await _lock.WaitAsync(2500).ConfigureAwait(false);
+			var lockAcquired = await _lock.WaitAsync(2500, cancellationToken).ConfigureAwait(false);
 			if (!lockAcquired) throw new TimeoutException("Unable to acquire an exclusive lease for the purpose of updating token information");
 		}
 

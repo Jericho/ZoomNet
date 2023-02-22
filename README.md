@@ -69,7 +69,7 @@ Using OAuth is much more complicated than using JWT but at the same time, it is 
 
 The Zoom documentation has a document about [how to create an OAuth app](https://marketplace.zoom.us/docs/guides/build/oauth-app) and another document about the [OAuth autorization flow](https://marketplace.zoom.us/docs/guides/auth/oauth) but I personnality was very confused by the later document so here is a brief step-by-step summary:
 - you create an OAuth app, define which permissions your app requires and publish the app in the Zoom marketplace.
-- user installs your app. During installation, user is presentd with a screen listing the permissons your app requires. User must click `accept`.
+- user installs your app. During installation, user is presented with a screen listing the permissons your app requires. User must click `accept`.
 - Zoom generates an "authorization code". This code can be used only once to generate the first access token and refresh token. I CAN'T STRESS THIS ENOUGH: the authorization code can be used only one time. This was the confusing part to me: somehow I didn't understand that this code could be used only one time and I was attempting to use it repeatedly. Zoom would accept the code the first time and would reject it subsequently, which lead to many hours of frustration while trying to figure out why the code was sometimes rejected.
 - The access token is valid for 60 minutes and must therefore be "refreshed" periodically.
 
@@ -199,9 +199,55 @@ But what if you have more instances of your application than the number of indic
 
 
 Solution number 3:
-You can make sure that all instances share the same token by storing the token information in a common repository that all your instances have access to. Examples of such repositories are: Azure blob storage, SQL server, Redis, MySQL, etc. For this solution to be effective, we must also make sure that your instances don't request new tokens at the same time because that would again tigger the problem described earlier where each new token invalidates the previous one. 
+You can make sure that all instances share the same token by storing the token information in a common repository that all your instances have access to. Examples of such repositories are: Azure blob storage, SQL server, Resis, etc. For this solution to be effective, we must also make sure that your instances don't request new tokens at the same time because that would again tigger the problem described earlier where each new token invalidates the previous one. 
 
-If this solution sounds like a good option for your scenario, you're in luck: there's a beta version of ZoomNet that provides the necessary infrastructure and all you have to do is to write an implementation of a provided interface to provide the logic for the repository of your choice where token information information will be preserved and make accessible to all your application instances. ZoomNet takes care of allowing only one of your instances to be allowed to refresh a token at any given moment. If you are interrested in testing this beta version, leave a comment [here](https://github.com/Jericho/ZoomNet/issues/269).
+If this solution sounds like a good option for your scenario, you're in luck: ZoomNet has the necessary infrastructure and all you have to do is to write an implementation of a provided interface to provide the logic for the repository of your choice where token information information will be preserved and make accessible to all your application instances. ZoomNet takes care of allowing only one of your instances to be allowed to refresh a token at any given moment.
+
+A typical implementation would look something like this:
+```csharp
+// You need to implent the ITokenRepository interface
+public MyTokenRepository: ITokenRepository
+{
+    public async Task<(string RefreshToken, string AccessToken, DateTime TokenExpiration, int TokenIndex)> GetTokenInfoAsync(CancellationToken cancellationToken = default)}
+    {
+       ... your custom logic here ...
+    }
+
+    public async Task AcquireLeaseAsync(CancellationToken cancellationToken = default)
+    {
+       ... your custom logic here ...
+    }
+
+    public async Task SaveTokenInfoAsync(string refreshToken, string accessToken, DateTime tokenExpiration, int tokenIndex, CancellationToken cancellationToken = default)
+    {
+       ... your custom logic here ...
+    }
+
+    public Task ReleaseLeaseAsync(CancellationToken cancellationToken = default)
+    {
+       ... your custom logic here ...
+    }
+}
+
+// You configure the connection like so:
+var tokenIndex = 0;
+var tokenRepository = new MyTokenRepository();
+var connectionInfo = OAuthConnectionInfo.ForServerToServer(clientId, clientSecret, accountId, tokenIndex, tokenRepository);
+var zoomClient = new ZoomClient(connectionInfo);
+```
+
+
+Solution number 4:
+This is a slight variation on the previous solution. You still provide your implementation of the `ITokenRepository` interface but rather than specifying a single token index, you specify an array of indices.
+```csharp
+// You configure the connection like so:
+var tokenIndices = new[] { 0, 1, 2 };
+var tokenRepository = new MyTokenRepository();
+var connectionInfo = OAuthConnectionInfo.ForServerToServer(clientId, clientSecret, accountId, tokenIndices, tokenRepository);
+var zoomClient = new ZoomClient(connectionInfo);
+```
+
+The benefit of using multiple indices, is that ZoomNet will automatically cycle through these indices whenever it requests a new token from the Zoom API further reducing the possibility of interfering with other instances of your app that may still be using the token that was previously issued in a different index in the cycle.
 
 </strike>
 

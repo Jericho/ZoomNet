@@ -20,6 +20,8 @@ namespace ZoomNet
 	/// </summary>
 	public class ZoomWebSocketClient : IDisposable
 	{
+		private static bool _pauseHeartbeat = false;
+
 		private readonly string _subscriptionId;
 		private readonly ILogger _logger;
 		private readonly IWebProxy _proxy;
@@ -28,6 +30,7 @@ namespace ZoomNet
 		private WebsocketClient _websocketClient;
 		private HttpClient _httpClient;
 		private ITokenHandler _tokenHandler;
+		private (string RefreshToken, string AccessToken, DateTime TokenExpiration, int TokenIndex) _previousTokenInfo = (null, null, DateTime.MinValue, 0);
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ZoomWebSocketClient"/> class.
@@ -55,11 +58,16 @@ namespace ZoomNet
 
 			var clientFactory = new Func<Uri, CancellationToken, Task<WebSocket>>(async (uri, cancellationToken) =>
 			{
+				// Don't attempt to reconnect if we are in the process of refreshing the token
+				await WaitWhileRefreshingToken("Connection", cancellationToken).ConfigureAwait(false);
+
 				_logger.LogTrace("Establishing connection to Zoom");
 
 				// The current value in the uri parameter must be ignored because it contains "access_token" which may have expired.
-				// The following line ensures the "access_token" is refreshed whenever it expires.
-				uri = new Uri($"wss://ws.zoom.us/ws?subscriptionId={_subscriptionId}&access_token={_tokenHandler.Token}");
+				// The following logic ensures the "access_token" is refreshed whenever it expires.
+				var tokenInfo = await _tokenHandler.GetTokenInfoAsync(false, _previousTokenInfo, cancellationToken).ConfigureAwait(false);
+				uri = new Uri($"wss://ws.zoom.us/ws?subscriptionId={_subscriptionId}&access_token={tokenInfo.AccessToken}");
+				_previousTokenInfo = tokenInfo;
 
 				var client = new ClientWebSocket()
 				{
@@ -90,16 +98,22 @@ namespace ZoomNet
 		/// </summary>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>Asynchronous task.</returns>
-		public Task StartAsync(CancellationToken cancellationToken = default)
+		public async Task StartAsync(CancellationToken cancellationToken = default)
 		{
+			// Don't start attempt to start the ZoomWebsocket client if we are in the process of refreshing the token
+			await WaitWhileRefreshingToken("ZoomWebSocketClient", cancellationToken).ConfigureAwait(false);
+
+			// Configure the message handler
 			_websocketClient.MessageReceived
 				.Select(response => Observable.FromAsync(() => ProcessMessage(response, cancellationToken)))
 				.Merge(5) // Allow up to 5 messages to be processed concurently. This number is arbitrary but it seems reasonable.
 				.Subscribe();
 
-			Task.Run(() => SendHeartbeat(_websocketClient, cancellationToken), cancellationToken);
+			// Start the heartbeat process
+			await Task.Run(() => SendHeartbeat(_websocketClient, cancellationToken), cancellationToken).ConfigureAwait(false);
 
-			return _websocketClient.Start();
+			// Start the websocket client
+			await _websocketClient.Start().ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -139,6 +153,9 @@ namespace ZoomNet
 			{
 				await Task.Delay(TimeSpan.FromSeconds(30), cancellationToken); // Zoom requires a heartbeat every 30 seconds
 
+				// Don't attempt to send heartbeat if we are in the process of refreshing the token
+				await WaitWhileRefreshingToken("Heartbeat", cancellationToken).ConfigureAwait(false);
+
 				if (!client.IsRunning)
 				{
 					_logger.LogTrace("Client is not running. Skipping heartbeat");
@@ -160,10 +177,23 @@ namespace ZoomNet
 			switch (module)
 			{
 				case "build_connection":
-					_logger.LogTrace("Received message: {module}. Connection has been established.", module);
+					if (content.Equals("Invalid Token", StringComparison.OrdinalIgnoreCase))
+					{
+						_pauseHeartbeat = true;
+						_logger.LogTrace("{content}. Refreshing the OAuth token", content);
+						var tokenInfo = await _tokenHandler.GetTokenInfoAsync(true, _previousTokenInfo, cancellationToken).ConfigureAwait(false);
+						_previousTokenInfo = tokenInfo;
+						_logger.LogTrace("OAuth token has been refreshed");
+						_pauseHeartbeat = false;
+					}
+					else
+					{
+						_logger.LogTrace("Connection has been established: {content}", content);
+					}
+
 					break;
 				case "heartbeat":
-					_logger.LogTrace("Received message: {module}. Server is acknowledging heartbeat.", module);
+					_logger.LogTrace("Server is acknowledging heartbeat: {content}", content);
 					break;
 				case "message":
 					var parser = new WebhookParser();
@@ -183,6 +213,15 @@ namespace ZoomNet
 				default:
 					_logger.LogError("Received unknown message: {module}", module);
 					break;
+			}
+		}
+
+		private async Task WaitWhileRefreshingToken(string operationDescription, CancellationToken cancellation = default)
+		{
+			while (_pauseHeartbeat)
+			{
+				_logger.LogTrace("{operationDescription}: brief pause while we wait for the token to be refreshed", operationDescription);
+				await Task.Delay(TimeSpan.FromSeconds(1), cancellation).ConfigureAwait(false);
 			}
 		}
 

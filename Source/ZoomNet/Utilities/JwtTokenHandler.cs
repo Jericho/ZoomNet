@@ -1,6 +1,4 @@
 using Jose;
-using Pathoschild.Http.Client;
-using Pathoschild.Http.Client.Extensibility;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,17 +12,8 @@ namespace ZoomNet.Utilities
 	/// </summary>
 	/// <seealso cref="Pathoschild.Http.Client.Extensibility.IHttpFilter" />
 	/// <seealso cref="ITokenHandler" />
-	internal class JwtTokenHandler : IHttpFilter, ITokenHandler
+	internal class JwtTokenHandler : ITokenHandler
 	{
-		public string Token
-		{
-			get
-			{
-				RefreshTokenIfNecessaryAsync(false, CancellationToken.None).ConfigureAwait(false).GetAwaiter().GetResult();
-				return _jwtToken;
-			}
-		}
-
 		public IConnectionInfo ConnectionInfo
 		{
 			get => _connectionInfo;
@@ -51,19 +40,7 @@ namespace ZoomNet.Utilities
 			_tokenExpiration = DateTime.MinValue;
 		}
 
-		/// <summary>Method invoked just before the HTTP request is submitted. This method can modify the outgoing HTTP request.</summary>
-		/// <param name="request">The HTTP request.</param>
-		public void OnRequest(IRequest request)
-		{
-			request.WithBearerAuthentication(Token);
-		}
-
-		/// <summary>Method invoked just after the HTTP response is received. This method can modify the incoming HTTP response.</summary>
-		/// <param name="response">The HTTP response.</param>
-		/// <param name="httpErrorAsException">Whether HTTP error responses should be raised as exceptions.</param>
-		public void OnResponse(IResponse response, bool httpErrorAsException) { }
-
-		public Task<(string RefreshToken, string AccessToken, DateTime TokenExpiration, int TokenIndex)> RefreshTokenIfNecessaryAsync(bool forceRefresh, CancellationToken cancellationToken = default)
+		public Task<(string RefreshToken, string AccessToken, DateTime TokenExpiration, int TokenIndex)> GetTokenInfoAsync(bool forceRefresh, (string RefreshToken, string AccessToken, DateTime TokenExpiration, int TokenIndex) currentTokenInfo, CancellationToken cancellationToken = default)
 		{
 			_lock.EnterUpgradeableReadLock();
 
@@ -73,13 +50,16 @@ namespace ZoomNet.Utilities
 				{
 					_lock.EnterWriteLock();
 
-					_tokenExpiration = DateTime.UtcNow.Add(_tokenLifeSpan);
-					var jwtPayload = new Dictionary<string, object>()
+					if (forceRefresh || TokenIsExpired())
 					{
-						{ "iss", _connectionInfo.ApiKey },
-						{ "exp", _tokenExpiration.ToUnixTime() }
-					};
-					_jwtToken = JWT.Encode(jwtPayload, Encoding.ASCII.GetBytes(_connectionInfo.ApiSecret), JwsAlgorithm.HS256);
+						_tokenExpiration = DateTime.UtcNow.Add(_tokenLifeSpan);
+						var jwtPayload = new Dictionary<string, object>()
+						{
+							{ "iss", _connectionInfo.ApiKey },
+							{ "exp", _tokenExpiration.ToUnixTime() }
+						};
+						_jwtToken = JWT.Encode(jwtPayload, Encoding.ASCII.GetBytes(_connectionInfo.ApiSecret), JwsAlgorithm.HS256);
+					}
 				}
 				finally
 				{

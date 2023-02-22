@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 namespace ZoomNet
 {
 	/// <summary>
-	/// Interface for the token management strategy.
+	/// Interface for token repository.
 	/// </summary>
-	public interface ITokenManagementStrategy
+	public interface ITokenRepository
 	{
 		/// <summary>
 		/// Retrieve token information from your central repository.

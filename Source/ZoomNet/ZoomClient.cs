@@ -231,31 +231,30 @@ namespace ZoomNet
 			_fluentClient = new FluentClient(new Uri(ZOOM_V2_BASE_URI), httpClient)
 				.SetUserAgent($"ZoomNet/{Version} (+https://github.com/Jericho/ZoomNet)");
 
-			_fluentClient.Filters.Remove<DefaultErrorFilter>();
-
 			// Remove all the built-in formatters and replace them with our custom JSON formatter
 			_fluentClient.Formatters.Clear();
 			_fluentClient.Formatters.Add(new JsonFormatter());
 
-			// Order is important: the token handler (either JWT or OAuth) must be first, followed by DiagnosticHandler and then by ErrorHandler.
+			// Configure the token handler
+			ITokenHandler tokenHandler;
 			if (connectionInfo is JwtConnectionInfo jwtConnectionInfo)
 			{
-				var tokenHandler = new JwtTokenHandler(jwtConnectionInfo);
-				_fluentClient.Filters.Add(tokenHandler);
-				_fluentClient.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), tokenHandler));
+				tokenHandler = new JwtTokenHandler(jwtConnectionInfo);
 			}
 			else if (connectionInfo is OAuthConnectionInfo oAuthConnectionInfo)
 			{
-				var tokenHandler = new OAuthTokenHandler(oAuthConnectionInfo, httpClient);
-				_fluentClient.Filters.Add(tokenHandler);
-				_fluentClient.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), tokenHandler));
+				tokenHandler = new OAuthTokenHandler(oAuthConnectionInfo, httpClient);
 			}
 			else
 			{
 				throw new ZoomException($"{connectionInfo.GetType()} is an unknown connection type", null, null, null, null);
 			}
 
+			_fluentClient.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), tokenHandler));
+
+			// Order is important: the DiagnosticHandler must be first, followed by the ErrorHandler.
 			// The list of filters must be kept in sync with the filters in Utils.GetFluentClient in the unit testing project.
+			_fluentClient.Filters.Remove<DefaultErrorFilter>();
 			_fluentClient.Filters.Add(new DiagnosticHandler(_options.LogLevelSuccessfulCalls, _options.LogLevelFailedCalls, _logger));
 			_fluentClient.Filters.Add(new ZoomErrorHandler());
 
