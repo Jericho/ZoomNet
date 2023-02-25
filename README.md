@@ -158,6 +158,39 @@ var connectionInfo = OAuthConnectionInfo.ForServerToServer(clientId, clientSecre
 var zoomClient = new ZoomClient(connectionInfo);
 ```
 
+#### Mutliple instances of your application in Server-to-Server OAuth scenarios
+
+One important detail about Server-to-Server OAuth which is not widely known is that requesting a new token automatically invalidates a previously issued token EVEN THOUGH IT HASN'T REACHED ITS EXPIRATION DATE/TIME. This will affect you if you have multiple instances of your application running at the same time. To illustrate what this means, let's say that you have two instances of your application running at the same time. What is going to happen is that instance number 1 will request a new token which it will successfully use for some time until instance number 2 requests its own token. When this second token is issued, the token for instance 1 is invalidated which will cause instance 1 to request a new token. This new token will invalidate token number 2 which will cause instance 2 to request a new token, and so on. As you can see, instance 1 and 2 are fighting each other for a token.
+
+There are a few ways you can overcome this problem:
+
+Solution number 1:
+You can create mutiple OAuth apps in Zoom's management dashboard, one for each instance of your app. This means that each instance will have their own clientId, clientSecret and accountId and therefore they can independently request tokens without interfering with each other.
+
+This puts the onus is on you to create and manage these Zoom apps. Additionally, you are responsible for ensuring that the `OAuthConnectionInfo` in your C# code is initialized with the appropriate values for each instance.
+
+This is a simple and effective solution when you have a relatively small number of instances but, in my opinion, it becomes overwhelming when your number of instances becomes too large.
+
+
+Solution number 2:
+Create a single Zoom OAuth app. Contact Zoom support and request additional "token indices" (also known as "group numbers") for this OAuth app. Subsequently, new tokens can be "scoped" to a given index which means that a token issued for a specific index does not invalidate token for any other index. Hopefully, Zoom will grant you enough token indices and you will be able to dedicate one index for each instance of your application and you can subsequently modify your C# code to "scope"" you OAuth connection to a desired index, like so:
+
+```csharp
+// you initialize the connection info for your first instance like this:
+var connectionInfo = OAuthConnectionInfo.ForServerToServer(clientId, clientSecret, accountId, 0);
+
+// for your second instance, like this:
+var connectionInfo = OAuthConnectionInfo.ForServerToServer(clientId, clientSecret, accountId, 1);
+
+// instance number 3:
+var connectionInfo = OAuthConnectionInfo.ForServerToServer(clientId, clientSecret, accountId, 2);
+
+... and so on ...
+```
+
+Just like solution number 1, this solution works well for scenarios where you have a relatively small number of instances and where Zoom has granted you enough indices.
+
+
 ### Webhook Parser
  
 Here's a basic example of a .net 6.0 API controller which parses the webhook from Zoom:
