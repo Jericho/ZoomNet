@@ -75,11 +75,7 @@ namespace ZoomNet.IntegrationTests
 				// Server-to-Server OAuth
 				if (!string.IsNullOrEmpty(accountId))
 				{
-					connectionInfo = OAuthConnectionInfo.ForServerToServer(clientId, clientSecret, accountId,
-						(_, newAccessToken) =>
-						{
-							Console.Out.WriteLine($"A new access token was issued: {newAccessToken}");
-						});
+					connectionInfo = OAuthConnectionInfo.ForServerToServer(clientId, clientSecret, accountId);
 				}
 
 				// Standard OAuth
