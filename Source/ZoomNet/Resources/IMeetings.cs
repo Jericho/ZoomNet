@@ -262,6 +262,16 @@ namespace ZoomNet.Resources
 		Task<RegistrantInfo> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string address = null, string city = null, Country? country = null, string postalCode = null, string stateOrProvince = null, string phoneNumber = null, string industry = null, string organization = null, string jobTitle = null, PurchasingTimeFrame? timeFrame = null, RoleInPurchaseProcess? role = null, NumberOfEmployees? employees = null, string comments = null, IEnumerable<RegistrationAnswer> questionAnswers = null, Language? language = null, bool autoApprove = false, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="meetingId"></param>
+		/// <param name="registrants"></param>
+		/// <param name="autoApprove"></param>
+		/// <param name="cancellationToken"></param>
+		/// <returns></returns>
+		Task<RegistrantInfo[]> PerformBatchRegistration(long meetingId, BatchRegistrant[] registrants, bool autoApprove = false, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Delete a meeting registrant.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>

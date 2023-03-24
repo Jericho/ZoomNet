@@ -1,11 +1,15 @@
 using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Linq;
+using System.Net;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using ZoomNet.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace ZoomNet.Resources
 {
@@ -530,6 +534,31 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
+		/// Register up to 30 registrants at once for a meeting that requires registration.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="registrants">An array of registrants.</param>
+		/// <param name="autoApprove">Indicates if the registrant should be automatically approved.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="RegistrantInfo" />.
+		/// </returns>
+		public Task<RegistrantInfo[]> PerformBatchRegistration(long meetingId, BatchRegistrant[] registrants, bool autoApprove = false, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "registrants", registrants },
+				{ "auto_approve", autoApprove }
+			};
+
+			return _client
+				.PostAsync($"meetings/{meetingId}/registrants")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<RegistrantInfo[]>();
+		}
+
+		/// <summary>
 		/// Delete a meeting registrant.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
@@ -671,7 +700,7 @@ namespace ZoomNet.Resources
 			return _client
 				.GetAsync($"meetings/{meetingId}/polls")
 				.WithCancellationToken(cancellationToken)
-				.AsObject<Poll[]>("polls");
+				.AsObject<Poll[]>(propertyName: "polls");
 		}
 
 		/// <summary>
