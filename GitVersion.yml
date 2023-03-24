@@ -10,6 +10,7 @@ branches:
   feature:
     regex: feature(s)?[/-]
     mode: ContinuousDeployment
+    tag: mytag99
   develop:
     regex: dev(elop)?(ment)?$
     mode: ContinuousDeployment
