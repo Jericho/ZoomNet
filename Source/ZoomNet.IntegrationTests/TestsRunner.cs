@@ -114,7 +114,7 @@ namespace ZoomNet.IntegrationTests
 				//	});
 			}
 
-			// Execute either the API of Websocket tests
+			// Execute either the API or Websocket tests
 			return testType switch
 			{
 				TestType.Api => RunApiTestsAsync(connectionInfo, proxy),
