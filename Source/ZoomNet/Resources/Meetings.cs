@@ -545,6 +545,9 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task<BatchRegistrantInfo> PerformBatchRegistration(long meetingId, BatchRegistrant[] registrants, bool autoApprove = false, bool registrantsConfirmationEmail = false, CancellationToken cancellationToken = default)
 		{
+			if (registrants.Count() > 30)
+				throw new ArgumentOutOfRangeException("The batch registants count must not exceed 30 at once.");
+
 			var data = new JsonObject
 			{
 				{ "registrants", registrants },
