@@ -562,20 +562,8 @@ namespace ZoomNet.Resources
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<BatchRegistrantInfo>();
-				//.AsMessage();
-
-			//using(var ms = new MemoryStream())
-			//{
-			//	d.Content.CopyToAsync(ms);
-			//	ms.Seek(0, SeekOrigin.Begin);
-			//	var sr = new StreamReader(ms);
-
-			//	var x = sr.ReadToEnd();
-			//}
 
 			return d;
-
-			//return new BatchRegistrantInfo[] { };
 		}
 
 		/// <summary>
