@@ -125,6 +125,8 @@ namespace ZoomNet.Json
 	[JsonSerializable(typeof(ZoomNet.Models.RecurringMeeting))]
 	[JsonSerializable(typeof(ZoomNet.Models.RecurringWebinar))]
 	[JsonSerializable(typeof(ZoomNet.Models.Registrant))]
+	[JsonSerializable(typeof(ZoomNet.Models.BatchRegistrant))]
+	[JsonSerializable(typeof(ZoomNet.Models.BatchRegistrantInfo))]
 	[JsonSerializable(typeof(ZoomNet.Models.RegistrantInfo))]
 	[JsonSerializable(typeof(ZoomNet.Models.RegistrantStatus))]
 	[JsonSerializable(typeof(ZoomNet.Models.RegistrationAnswer))]

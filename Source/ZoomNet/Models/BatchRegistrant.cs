@@ -24,5 +24,20 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonPropertyName("last_name")]
 		public string LastName { get; set; }
+
+		/// <summary>
+		/// Gets or sets the registrant id.
+		/// </summary>
+		/// <value>
+		/// The id.
+		/// </value>
+		[JsonPropertyName("registrant_id")]
+		public string Id { get; set; }
+
+		/// <summary>
+		/// Gets or sets the URL for this registrant to join the meeting or webinar.
+		/// </summary>
+		[JsonPropertyName("join_url")]
+		public string JoinUrl { get; set; }
 	}
 }
