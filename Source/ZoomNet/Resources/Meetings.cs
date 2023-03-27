@@ -541,21 +541,36 @@ namespace ZoomNet.Resources
 		/// <param name="autoApprove">Indicates if the registrant should be automatically approved.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="RegistrantInfo" />.
+		/// An array of <see cref="BatchRegistrantInfo" />.
 		/// </returns>
-		public Task<RegistrantInfo[]> PerformBatchRegistration(long meetingId, BatchRegistrant[] registrants, bool autoApprove = false, CancellationToken cancellationToken = default)
+		public Task<BatchRegistrantInfo> PerformBatchRegistration(long meetingId, BatchRegistrant[] registrants, bool autoApprove = false, bool registrantsConfirmationEmail = false, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
 				{ "registrants", registrants },
-				{ "auto_approve", autoApprove }
+				{ "auto_approve", autoApprove },
+				{ "registrants_confirmation_email", registrantsConfirmationEmail }
 			};
 
-			return _client
-				.PostAsync($"meetings/{meetingId}/registrants")
+			var d = _client
+				.PostAsync($"meetings/{meetingId}/batch_registrants")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
-				.AsObject<RegistrantInfo[]>();
+				.AsObject<BatchRegistrantInfo>();
+				//.AsMessage();
+
+			//using(var ms = new MemoryStream())
+			//{
+			//	d.Content.CopyToAsync(ms);
+			//	ms.Seek(0, SeekOrigin.Begin);
+			//	var sr = new StreamReader(ms);
+
+			//	var x = sr.ReadToEnd();
+			//}
+
+			return d;
+
+			//return new BatchRegistrantInfo[] { };
 		}
 
 		/// <summary>
