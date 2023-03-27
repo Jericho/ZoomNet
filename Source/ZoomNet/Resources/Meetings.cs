@@ -2,6 +2,7 @@ using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text.Json.Nodes;
@@ -9,7 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using ZoomNet.Models;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+//using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace ZoomNet.Resources
 {
@@ -539,11 +540,12 @@ namespace ZoomNet.Resources
 		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="registrants">An array of registrants.</param>
 		/// <param name="autoApprove">Indicates if the registrant should be automatically approved.</param>
+		/// <param name="registrantsConfirmationEmail">Indicates if send confirmation Email to Registrants.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// An array of <see cref="BatchRegistrantInfo" />.
 		/// </returns>
-		public Task<BatchRegistrantInfo> PerformBatchRegistration(long meetingId, BatchRegistrant[] registrants, bool autoApprove = false, bool registrantsConfirmationEmail = false, CancellationToken cancellationToken = default)
+		public Task<BatchRegistrantInfo> PerformBatchRegistrationAsync(long meetingId, BatchRegistrant[] registrants, bool autoApprove = false, bool registrantsConfirmationEmail = false, CancellationToken cancellationToken = default)
 		{
 			if (registrants.Any() == false || registrants.Count() > 30)
 				throw new ArgumentOutOfRangeException("The registants count must must be between 1 and 30.");
