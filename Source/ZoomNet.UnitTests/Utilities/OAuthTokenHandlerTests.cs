@@ -25,7 +25,7 @@ namespace ZoomNet.UnitTests.Utilities
 			var clientId = "abc123";
 			var clientSecret = "xyz789";
 			var authorizationCode = "INVALID_AUTH_CODE";
-			var connectionInfo = new OAuthConnectionInfo(clientId, clientSecret, authorizationCode,
+			var connectionInfo = OAuthConnectionInfo.WithAuthorizationCode(clientId, clientSecret, authorizationCode,
 				(newRefreshToken, newAccessToken) =>
 				{
 					// Intentionally left blank

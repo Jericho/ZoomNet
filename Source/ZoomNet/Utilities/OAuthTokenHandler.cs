@@ -80,6 +80,8 @@ namespace ZoomNet.Utilities
 							{ "grant_type", _connectionInfo.GrantType.ToEnumString() },
 						};
 
+						if (_connectionInfo.TokenIndex != 0) contentValues.Add("token_index", _connectionInfo.TokenIndex.ToString());
+
 						switch (_connectionInfo.GrantType)
 						{
 							case OAuthGrantType.AccountCredentials:
