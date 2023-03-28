@@ -13,7 +13,7 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets the extension type.</summary>
 		[JsonPropertyName("extension_type")]
-		public string ExtensionType { get; set; }
+		public CallLogTransferInfoExtensionType? ExtensionType { get; set; }
 
 		/// <summary>Gets or sets the location.</summary>
 		[JsonPropertyName("location")]
@@ -25,7 +25,7 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets the number type.</summary>
 		[JsonPropertyName("number_type")]
-		public int NumberType { get; set; }
+		public CallLogTransferInfoNumberType? NumberType { get; set; }
 
 		/// <summary>Gets or sets the phone number.</summary>
 		[JsonPropertyName("phone_number")]

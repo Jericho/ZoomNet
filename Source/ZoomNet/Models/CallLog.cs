@@ -58,7 +58,7 @@ namespace ZoomNet.Models
 		/// </summary>
 		/// <value>ISO alpha2 country code.</value>
 		[JsonPropertyName("callee_country_iso_code")]
-		public string CalleeCountryIsoCode { get; set; }
+		public Country? CalleeCountryIsoCode { get; set; }
 
 		/// <summary>
 		/// Gets or sets the callee did number.
@@ -86,14 +86,14 @@ namespace ZoomNet.Models
 		/// </summary>
 		/// <value>The callee number type.</value>
 		[JsonPropertyName("callee_number_type")]
-		public int CalleeNumberType { get; set; }
+		public CallLogCalleeNumberType? CalleeNumberType { get; set; }
 
 		/// <summary>
 		/// Gets or sets the number source of the callee.
 		/// </summary>
 		/// <value>Indicates where the phone number comes from: internal | external | byop.</value>
 		[JsonPropertyName("callee_number_source")]
-		public string CalleeNumberSource { get; set; }
+		public CallLogNumberSource? CalleeNumberSource { get; set; }
 
 		/// <summary>
 		/// Gets or sets the caller country code.
@@ -107,7 +107,7 @@ namespace ZoomNet.Models
 		/// </summary>
 		/// <value>ISO alpha2 country code.</value>
 		[JsonPropertyName("caller_country_iso_code")]
-		public string CallerCountryIsoCode { get; set; }
+		public Country? CallerCountryIsoCode { get; set; }
 
 		/// <summary>
 		/// Gets or sets the caller did number.
@@ -135,14 +135,14 @@ namespace ZoomNet.Models
 		/// </summary>
 		/// <value>The caller number type.</value>
 		[JsonPropertyName("caller_number_type")]
-		public int CallerNumberType { get; set; }
+		public CallLogCallerNumberType? CallerNumberType { get; set; }
 
 		/// <summary>
 		/// Gets or sets the number source of the caller.
 		/// </summary>
 		/// <value>Indicates where the phone number comes from: internal | external | byop.</value>
 		[JsonPropertyName("caller_number_source")]
-		public string CallerNumberSource { get; set; }
+		public CallLogNumberSource? CallerNumberSource { get; set; }
 
 		/// <summary>
 		/// Gets or sets the billing referenceId of the caller.
@@ -177,7 +177,7 @@ namespace ZoomNet.Models
 		/// </summary>
 		/// <value>The call direction. Inbound or Outbound.</value>
 		[JsonPropertyName("direction")]
-		public string Direction { get; set; }
+		public CallLogDirection Direction { get; set; }
 
 		/// <summary>
 		/// Gets or sets the call duration.
@@ -233,7 +233,7 @@ namespace ZoomNet.Models
 		/// </summary>
 		/// <value>The Result of the call.</value>
 		[JsonPropertyName("result")]
-		public string Result { get; set; }
+		public CallLogResult Result { get; set; }
 
 		/// <summary>
 		/// Gets or sets the site information.

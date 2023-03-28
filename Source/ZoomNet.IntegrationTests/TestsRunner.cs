@@ -135,6 +135,7 @@ namespace ZoomNet.IntegrationTests
 			var integrationTests = new Type[]
 			{
 				typeof(Accounts),
+				typeof(CallLogs),
 				typeof(Chat),
 				typeof(CloudRecordings),
 				typeof(Contacts),
