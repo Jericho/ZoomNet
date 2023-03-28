@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -19,7 +18,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			var from = now.Subtract(TimeSpan.FromDays(30));
 			var to = now;
 
-			//GET USER'S CALL LOGS
+			// GET USER'S CALL LOGS
 			var allCallLogs = await client.CallLogs.GetAsync(myUser.Email, from, to, CallLogType.All, null, 100, null, cancellationToken);
 			var missedCalllogs = await client.CallLogs.GetAsync(myUser.Email, from, to, CallLogType.Missed, null, 100, null, cancellationToken);
 			await log.WriteLineAsync($"All call Logs: {allCallLogs.Records.Length}. Missed call logs: {missedCalllogs.Records.Length}").ConfigureAwait(false);

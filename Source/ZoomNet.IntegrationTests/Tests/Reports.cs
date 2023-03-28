@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,12 +18,12 @@ namespace ZoomNet.IntegrationTests.Tests
 			var from = now.Subtract(TimeSpan.FromDays(30));
 			var to = now;
 
-			//GET ALL HOSTS
+			// GET ALL HOSTS
 			var activeHosts = await client.Reports.GetHostsAsync(from, to, ReportHostType.Active, 30, null, cancellationToken);
 			var inactiveHosts = await client.Reports.GetHostsAsync(from, to, ReportHostType.Inactive, 30, null, cancellationToken);
 			await log.WriteLineAsync($"Active Hosts: {activeHosts.Records.Length}. Inactive Hosts: {inactiveHosts.Records.Length}").ConfigureAwait(false);
 
-			//GET ALL MEETINGS
+			// GET ALL MEETINGS
 			var pastMeetings = await client.Reports.GetMeetingsAsync(myUser.Id, from, to, ReportMeetingType.Past, 30, null, cancellationToken);
 
 			int totalParticipants = 0;
