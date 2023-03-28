@@ -6,7 +6,7 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// A call log item.
 	/// </summary>
-	public class CallLog
+	public abstract class CallLog
 	{
 		/// <summary>
 		/// Gets or sets the call Id.
@@ -14,13 +14,6 @@ namespace ZoomNet.Models
 		/// <value>The call id.</value>
 		[JsonPropertyName("id")]
 		public string Id { get; set; }
-
-		/// <summary>
-		/// Gets or sets the "accepted by" information.
-		/// </summary>
-		/// <value>Indicates who accepted the call.</value>
-		[JsonPropertyName("accepted_by")]
-		public CallLogTransferInfo AcceptedBy { get; set; }
 
 		/// <summary>
 		/// Gets or sets the call answer time.
@@ -45,6 +38,13 @@ namespace ZoomNet.Models
 		/// <value>Unique identifier of the phone call.</value>
 		[JsonPropertyName("call_id")]
 		public string CallId { get; set; }
+
+		/// <summary>
+		/// Gets or sets the call type.
+		/// </summary>
+		/// <value>The type of call: voip | pstn | tollfree | international | contactCenter.</value>
+		[JsonPropertyName("call_type")]
+		public CallLogCallType? CallType { get; set; }
 
 		/// <summary>
 		/// Gets or sets the callee country code.
@@ -185,27 +185,6 @@ namespace ZoomNet.Models
 		/// <value>The call duration in seconds.</value>
 		[JsonPropertyName("duration")]
 		public int Duration { get; set; }
-
-		/// <summary>
-		/// Gets or sets the "forwarded from" information.
-		/// </summary>
-		/// <value>Indicates where the call was forwarded from.</value>
-		[JsonPropertyName("forwarded_by")]
-		public CallLogTransferInfo ForwardedBy { get; set; }
-
-		/// <summary>
-		/// Gets or sets the "forwarded to" information.
-		/// </summary>
-		/// <value>Indicates who the call was forwarded to.</value>
-		[JsonPropertyName("forwarded_to")]
-		public CallLogTransferInfo ForwardedTo { get; set; }
-
-		/// <summary>
-		/// Gets or sets the "outgoing by" information.
-		/// </summary>
-		/// <value>Call "outgoing by" information.</value>
-		[JsonPropertyName("outgoing_by")]
-		public CallLogTransferInfo OutgoingBy { get; set; }
 
 		/// <summary>
 		/// Gets or sets the path of the call log.
