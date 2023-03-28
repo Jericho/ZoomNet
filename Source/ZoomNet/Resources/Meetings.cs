@@ -544,7 +544,7 @@ namespace ZoomNet.Resources
 		{
 			if (registrants.Any() == false || registrants.Count() > 30)
 			{
-				throw new ArgumentOutOfRangeException("The registants count must must be between 1 and 30.");
+				throw new ArgumentOutOfRangeException("The registants count must be between 1 and 30.");
 			}
 
 			var data = new JsonObject
