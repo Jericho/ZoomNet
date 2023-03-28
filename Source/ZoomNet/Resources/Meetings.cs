@@ -1,17 +1,11 @@
 using Pathoschild.Http.Client;
-using Pathoschild.Http.Client.Internal;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.Metrics;
-using System.IO;
 using System.Linq;
-using System.Net;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 using ZoomNet.Models;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace ZoomNet.Resources
 {
