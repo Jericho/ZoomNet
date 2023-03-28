@@ -1,4 +1,5 @@
 using Pathoschild.Http.Client;
+using Pathoschild.Http.Client.Internal;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
@@ -10,7 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using ZoomNet.Models;
-//using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace ZoomNet.Resources
 {
@@ -545,25 +546,30 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="BatchRegistrantInfo" />.
 		/// </returns>
-		public Task<BatchRegistrantInfo> PerformBatchRegistrationAsync(long meetingId, BatchRegistrant[] registrants, bool autoApprove = false, bool registrantsConfirmationEmail = false, CancellationToken cancellationToken = default)
+		public async Task<BatchRegistrantInfo[]> PerformBatchRegistrationAsync(long meetingId, BatchRegistrant[] registrants, bool autoApprove = false, bool registrantsConfirmationEmail = false, CancellationToken cancellationToken = default)
 		{
 			if (registrants.Any() == false || registrants.Count() > 30)
+			{
 				throw new ArgumentOutOfRangeException("The registants count must must be between 1 and 30.");
+			}
 
 			var data = new JsonObject
 			{
 				{ "registrants", registrants },
 				{ "auto_approve", autoApprove },
-				{ "registrants_confirmation_email", registrantsConfirmationEmail }
+				{ "registrants_confirmation_email", registrantsConfirmationEmail },
 			};
 
-			var d = _client
+			var response = await _client
 				.PostAsync($"meetings/{meetingId}/batch_registrants")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
-				.AsObject<BatchRegistrantInfo>();
+				.AsRawJsonDocument()
+			.ConfigureAwait(false);
 
-			return d;
+			var responseRegistrants = response.RootElement.GetProperty("registrants").ToObject<BatchRegistrantInfo[]>();
+
+			return responseRegistrants;
 		}
 
 		/// <summary>
