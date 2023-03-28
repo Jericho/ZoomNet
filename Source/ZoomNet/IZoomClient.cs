@@ -107,5 +107,10 @@ namespace ZoomNet
 		/// Gets the resource which allows you to view reports.
 		/// </summary>
 		IReports Reports { get; }
+
+		/// <summary>
+		/// Gets the resource which allows you to manage call logs.
+		/// </summary>
+		ICallLogs CallLogs { get; }
 	}
 }
