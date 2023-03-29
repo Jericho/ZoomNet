@@ -563,7 +563,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="BatchRegistrantInfo" />.
 		/// </returns>
-		public async Task<BatchRegistrantInfo[]> PerformBatchRegistrationAsync(long webinarId, IEnumerable<BatchRegistrant> registrants, bool autoApprove = false, CancellationToken cancellationToken = default)
+		public Task<BatchRegistrantInfo[]> PerformBatchRegistrationAsync(long webinarId, IEnumerable<BatchRegistrant> registrants, bool autoApprove = false, CancellationToken cancellationToken = default)
 		{
 			if (registrants == null || registrants.Any() == false || registrants.Count() > 30)
 			{
@@ -576,16 +576,13 @@ namespace ZoomNet.Resources
 				{ "registrants", registrants },
 			};
 
-			var response = await _client
+			var response = _client
 				.PostAsync($"webinars/{webinarId}/batch_registrants")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
-				.AsRawJsonDocument()
-				.ConfigureAwait(false);
+				.AsObject<BatchRegistrantInfo[]>("registrants");
 
-			var responseRegistrants = response.RootElement.GetProperty("registrants").ToObject<BatchRegistrantInfo[]>();
-
-			return responseRegistrants;
+			return response;
 		}
 
 		/// <summary>
