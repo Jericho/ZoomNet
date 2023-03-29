@@ -565,7 +565,7 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public async Task<BatchRegistrantInfo[]> PerformBatchRegistrationAsync(long webinarId, IEnumerable<BatchRegistrant> registrants, bool autoApprove = false, CancellationToken cancellationToken = default)
 		{
-			if (registrants.Any() == false || registrants.Count() > 30)
+			if (registrants == null || registrants.Any() == false || registrants.Count() > 30)
 			{
 				throw new ArgumentOutOfRangeException("The registants count must be between 1 and 30.");
 			}
