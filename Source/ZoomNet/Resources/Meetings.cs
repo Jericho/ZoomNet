@@ -542,10 +542,8 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task<BatchRegistrantInfo[]> PerformBatchRegistrationAsync(long meetingId, IEnumerable<BatchRegistrant> registrants, bool autoApprove = false, bool registrantsConfirmationEmail = false, CancellationToken cancellationToken = default)
 		{
-			if (registrants == null || registrants.Any() == false || registrants.Count() > 30)
-			{
-				throw new ArgumentOutOfRangeException("The registants count must be between 1 and 30.");
-			}
+			if (registrants == null || !registrants.Any()) throw new ArgumentNullException(nameof(registrants), "You must provide at least one registrant");
+			if (registrants.Count() > 30) throw new ArgumentOutOfRangeException(nameof(registrants), "You can register up to 30 registrants at once");
 
 			var data = new JsonObject
 			{
@@ -554,13 +552,11 @@ namespace ZoomNet.Resources
 				{ "registrants_confirmation_email", registrantsConfirmationEmail },
 			};
 
-			var response = _client
+			return _client
 				.PostAsync($"meetings/{meetingId}/batch_registrants")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<BatchRegistrantInfo[]>("registrants");
-
-			return response;
 		}
 
 		/// <summary>
