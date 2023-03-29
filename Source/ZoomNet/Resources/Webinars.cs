@@ -554,6 +554,38 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
+		/// Register up to 30 registrants at once for a webinar that requires registration.
+		/// </summary>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="registrants">An array of registrants.</param>
+		/// <param name="autoApprove">Indicates if the registrant should be automatically approved.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="BatchRegistrantInfo" />.
+		/// </returns>
+		public Task<BatchRegistrantInfo[]> PerformBatchRegistrationAsync(long webinarId, IEnumerable<BatchRegistrant> registrants, bool autoApprove = false, CancellationToken cancellationToken = default)
+		{
+			if (registrants == null || registrants.Any() == false || registrants.Count() > 30)
+			{
+				throw new ArgumentOutOfRangeException("The registants count must be between 1 and 30.");
+			}
+
+			var data = new JsonObject
+			{
+				{ "auto_approve", autoApprove },
+				{ "registrants", registrants },
+			};
+
+			var response = _client
+				.PostAsync($"webinars/{webinarId}/batch_registrants")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<BatchRegistrantInfo[]>("registrants");
+
+			return response;
+		}
+
+		/// <summary>
 		/// Delete a webinar registrant.
 		/// </summary>
 		/// <param name="webinarId">The webinar ID.</param>

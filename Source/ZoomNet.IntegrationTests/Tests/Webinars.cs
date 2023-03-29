@@ -103,6 +103,14 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync($"  - there are {registrationQuestions.Questions.Count(q => q.IsRequired)} required custom questions.").ConfigureAwait(false);
 			await log.WriteLineAsync($"  - there are {registrationQuestions.Questions.Count(q => !q.IsRequired)} optional custom questions.").ConfigureAwait(false);
 
+			var registrants = new List<BatchRegistrant>
+				{
+					new BatchRegistrant { Email = "firstBatchRegistrant@example.com", FirstName = "Mariful", LastName = "Maruf" },
+					new BatchRegistrant { Email = "secondBatchRegistrant@example.com", FirstName = "Abdullah", LastName = "Galib" }
+				};
+			var registrantsInfo = await client.Webinars.PerformBatchRegistrationAsync(scheduledWebinar.Id, registrants, true).ConfigureAwait(false);
+			await log.WriteLineAsync($"Registrants {registrantsInfo} added to meeting {scheduledWebinar.Id}").ConfigureAwait(false);
+
 			var registrationAnswers1 = new[]
 			{
 				new RegistrationAnswer { Title = "Are you happy?", Answer = "Yes" }

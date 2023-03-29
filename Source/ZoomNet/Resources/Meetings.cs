@@ -530,6 +530,40 @@ namespace ZoomNet.Resources
 		}
 
 		/// <summary>
+		/// Register up to 30 registrants at once for a meeting that requires registration.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="registrants">An array of registrants.</param>
+		/// <param name="autoApprove">Indicates if the registrant should be automatically approved.</param>
+		/// <param name="registrantsConfirmationEmail">Indicates if send confirmation Email to Registrants.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="BatchRegistrantInfo" />.
+		/// </returns>
+		public Task<BatchRegistrantInfo[]> PerformBatchRegistrationAsync(long meetingId, IEnumerable<BatchRegistrant> registrants, bool autoApprove = false, bool registrantsConfirmationEmail = false, CancellationToken cancellationToken = default)
+		{
+			if (registrants == null || registrants.Any() == false || registrants.Count() > 30)
+			{
+				throw new ArgumentOutOfRangeException("The registants count must be between 1 and 30.");
+			}
+
+			var data = new JsonObject
+			{
+				{ "registrants", registrants },
+				{ "auto_approve", autoApprove },
+				{ "registrants_confirmation_email", registrantsConfirmationEmail },
+			};
+
+			var response = _client
+				.PostAsync($"meetings/{meetingId}/batch_registrants")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<BatchRegistrantInfo[]>("registrants");
+
+			return response;
+		}
+
+		/// <summary>
 		/// Delete a meeting registrant.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>

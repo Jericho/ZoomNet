@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace ZoomNet.Json
@@ -17,6 +18,10 @@ namespace ZoomNet.Json
 	[JsonSerializable(typeof(ZoomNet.Models.AuthenticationOptions))]
 	[JsonSerializable(typeof(ZoomNet.Models.AuthenticationSettings))]
 	[JsonSerializable(typeof(ZoomNet.Models.AuthenticationType))]
+	[JsonSerializable(typeof(ZoomNet.Models.BatchRegistrant))]
+	[JsonSerializable(typeof(IEnumerable<ZoomNet.Models.BatchRegistrant>))]
+	[JsonSerializable(typeof(ZoomNet.Models.BatchRegistrantInfo))]
+	[JsonSerializable(typeof(ZoomNet.Models.BatchRegistrantInfo[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.CallLog))]
 	[JsonSerializable(typeof(ZoomNet.Models.CallLogCalleeNumberType))]
 	[JsonSerializable(typeof(ZoomNet.Models.CallLogCallerNumberType))]
