@@ -156,6 +156,11 @@ namespace ZoomNet
 		/// </summary>
 		public IReports Reports { get; private set; }
 
+		/// <summary>
+		/// Gets the resource which allows you to manage call logs.
+		/// </summary>
+		public ICallLogs CallLogs { get; private set; }
+
 		#endregion
 
 		#region CTOR
@@ -259,6 +264,7 @@ namespace ZoomNet
 			Webinars = new Webinars(_fluentClient);
 			Dashboards = new Dashboards(_fluentClient);
 			Reports = new Reports(_fluentClient);
+			CallLogs = new CallLogs(_fluentClient);
 		}
 
 		/// <summary>
