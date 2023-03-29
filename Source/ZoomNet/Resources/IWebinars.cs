@@ -309,7 +309,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="BatchRegistrantInfo" />.
 		/// </returns>
-		Task<BatchRegistrantInfo[]> PerformBatchRegistrationAsync(long webinarId, BatchRegistrant[] registrants, bool autoApprove = false, CancellationToken cancellationToken = default);
+		Task<BatchRegistrantInfo[]> PerformBatchRegistrationAsync(long webinarId, IEnumerable<BatchRegistrant> registrants, bool autoApprove = false, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Delete a webinar registrant.

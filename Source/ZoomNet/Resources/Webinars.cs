@@ -563,7 +563,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="BatchRegistrantInfo" />.
 		/// </returns>
-		public async Task<BatchRegistrantInfo[]> PerformBatchRegistrationAsync(long webinarId, BatchRegistrant[] registrants, bool autoApprove = false, CancellationToken cancellationToken = default)
+		public async Task<BatchRegistrantInfo[]> PerformBatchRegistrationAsync(long webinarId, IEnumerable<BatchRegistrant> registrants, bool autoApprove = false, CancellationToken cancellationToken = default)
 		{
 			if (registrants.Any() == false || registrants.Count() > 30)
 			{

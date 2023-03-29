@@ -272,7 +272,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="BatchRegistrantInfo" />.
 		/// </returns>
-		Task<BatchRegistrantInfo[]> PerformBatchRegistrationAsync(long meetingId, BatchRegistrant[] registrants, bool autoApprove = false, bool registrantsConfirmationEmail = false, CancellationToken cancellationToken = default);
+		Task<BatchRegistrantInfo[]> PerformBatchRegistrationAsync(long meetingId, IEnumerable<BatchRegistrant> registrants, bool autoApprove = false, bool registrantsConfirmationEmail = false, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Delete a meeting registrant.
