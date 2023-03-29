@@ -32,6 +32,6 @@ namespace ZoomNet.Models
 		/// Gets or sets she participant PIN code. Which is used to authenticate audio participants before they join the meeting.
 		/// </summary>
 		[JsonPropertyName("participant_pin_code")]
-		public string ParticipantPinCode { get; set; }
+		public int ParticipantPinCode { get; set; }
 	}
 }
