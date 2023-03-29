@@ -65,6 +65,9 @@ namespace ZoomNet.IntegrationTests.Tests
 			var instantMeeting = (InstantMeeting)await client.Meetings.GetAsync(newInstantMeeting.Id, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Instant meeting {instantMeeting.Id} retrieved").ConfigureAwait(false);
 
+			var localRecordingToken = await client.Meetings.GetTokenForLocalRecordingAsync(newInstantMeeting.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"The token for local recording is: {localRecordingToken}").ConfigureAwait(false);
+
 			await client.Meetings.EndAsync(newInstantMeeting.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Instant meeting {newInstantMeeting.Id} ended").ConfigureAwait(false);
 
@@ -131,6 +134,14 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			if (myUser.Type == UserType.Licensed)
 			{
+				var registrants = new List<BatchRegistrant>
+				{
+					new BatchRegistrant { Email = "firstBatchRegistrant@example.com", FirstName = "Mariful", LastName = "Maruf" },
+					new BatchRegistrant { Email = "secondBatchRegistrant@example.com", FirstName = "Abdullah", LastName = "Galib" }
+				};
+				var registrantsInfo = await client.Meetings.PerformBatchRegistrationAsync(scheduledMeeting.Id, registrants, true).ConfigureAwait(false);
+				await log.WriteLineAsync($"Registrants {registrantsInfo} added to meeting {scheduledMeeting.Id}").ConfigureAwait(false);
+
 				var registrationAnswers1 = new[]
 				{
 					new RegistrationAnswer { Title = "Are you happy?", Answer = "Yes" }

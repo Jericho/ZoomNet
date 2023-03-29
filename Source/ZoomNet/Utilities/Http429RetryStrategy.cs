@@ -142,11 +142,11 @@ namespace ZoomNet.Utilities
 
 		private static (string Category, string Type, string Limit, string Remaining, string RetryAfter) GetRateLimitInformation(HttpResponseHeaders headers)
 		{
-			var category = headers.GetValue("X-RateLimit-Category");
-			var type = headers.GetValue("X-RateLimit-Type");
-			var limit = headers.GetValue("X-RateLimit-Limit");
-			var remaining = headers.GetValue("X-RateLimit-Remaining");
-			var retryAfter = headers.GetValue("Retry-After");
+			var category = headers?.GetValue("X-RateLimit-Category");
+			var type = headers?.GetValue("X-RateLimit-Type");
+			var limit = headers?.GetValue("X-RateLimit-Limit");
+			var remaining = headers?.GetValue("X-RateLimit-Remaining");
+			var retryAfter = headers?.GetValue("Retry-After");
 
 			return (category, type, limit, remaining, retryAfter);
 		}

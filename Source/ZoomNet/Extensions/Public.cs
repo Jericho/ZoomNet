@@ -20,7 +20,7 @@ namespace ZoomNet
 		/// <param name="usersResource">The users resource.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The current user.</returns>
-		public static Task<User> GetCurrentAsync(this IUsers usersResource, CancellationToken cancellationToken)
+		public static Task<User> GetCurrentAsync(this IUsers usersResource, CancellationToken cancellationToken = default)
 		{
 			return usersResource.GetAsync("me", cancellationToken);
 		}

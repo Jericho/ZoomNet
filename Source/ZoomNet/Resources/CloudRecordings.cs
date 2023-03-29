@@ -4,12 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
-using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
@@ -366,22 +364,12 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The <see cref="Stream"/> containing the file.
 		/// </returns>
-		public async Task<Stream> DownloadFileAsync(string downloadUrl, CancellationToken cancellationToken = default)
+		public Task<Stream> DownloadFileAsync(string downloadUrl, CancellationToken cancellationToken = default)
 		{
-			using (var request = new HttpRequestMessage(HttpMethod.Get, downloadUrl))
-			{
-				var tokenHandler = _client.Filters.OfType<ITokenHandler>().SingleOrDefault();
-				if (tokenHandler != null)
-				{
-					request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", tokenHandler.Token);
-				}
-
-				var response = await _client.BaseClient.SendAsync(request).ConfigureAwait(false);
-
-				response.EnsureSuccessStatusCode();
-
-				return await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
-			}
+			return _client
+				.GetAsync(downloadUrl)
+				.WithCancellationToken(cancellationToken)
+				.AsStream();
 		}
 
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<string> registrantIds, string status, CancellationToken cancellationToken = default)

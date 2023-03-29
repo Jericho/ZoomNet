@@ -262,6 +262,19 @@ namespace ZoomNet.Resources
 		Task<RegistrantInfo> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string address = null, string city = null, Country? country = null, string postalCode = null, string stateOrProvince = null, string phoneNumber = null, string industry = null, string organization = null, string jobTitle = null, PurchasingTimeFrame? timeFrame = null, RoleInPurchaseProcess? role = null, NumberOfEmployees? employees = null, string comments = null, IEnumerable<RegistrationAnswer> questionAnswers = null, Language? language = null, bool autoApprove = false, string occurrenceId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Register up to 30 registrants at once for a meeting that requires registration.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="registrants">An array of registrants.</param>
+		/// <param name="autoApprove">Indicates if the registrant should be automatically approved.</param>
+		/// <param name="registrantsConfirmationEmail">Indicates if send confirmation Email to Registrants.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="BatchRegistrantInfo" />.
+		/// </returns>
+		Task<BatchRegistrantInfo[]> PerformBatchRegistrationAsync(long meetingId, IEnumerable<BatchRegistrant> registrants, bool autoApprove = false, bool registrantsConfirmationEmail = false, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Delete a meeting registrant.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
@@ -600,5 +613,56 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task InviteParticipantsAsync(long meetingId, IEnumerable<string> emailAddresses, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create a meeting template from an existing meeting.
+		/// </summary>
+		/// <param name="userId">The user ID.</param>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="templateName">The template name.</param>
+		/// <param name="saveRecurrence">Indicates whether the recurrence meeting template will be saved as the scheduled meeting or not.</param>
+		/// <param name="overwrite">Indicates whether an existing meeting template from the same meeting should be overwritten or not.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>The template ID.</returns>
+		Task<string> CreateTemplateFromExistingMeeting(string userId, long meetingId, string templateName, bool saveRecurrence = false, bool overwrite = false, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get a meeting's closed caption token.
+		/// This token lets you use a third-party service to stream text to their closed captioning software to the Zoom meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>The token.</returns>
+		Task<string> GetTokenForClosedCaptioningAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get a meeting's join token to allow for local recording.
+		/// The join token lets a recording bot implemented using Zoom Meeting SDK to connect to a Zoom meeting.
+		/// The recording bot can then automatically start locally recording.
+		/// This supports both regular and raw local recording types.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>The join token.</returns>
+		Task<string> GetTokenForLocalRecordingAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get a meeting's archive token to allow local archiving.
+		/// The archive token allows a meeting SDK app or bot to get archive permission to access the meeting's raw audio and video media stream in real-time.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>The token.</returns>
+		Task<string> GetTokenForLocalArchivingAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get a meeting's join token to allow live streaming.
+		/// The join token allows a recording bot implemented using Zoom meeting SDK to connect to a Zoom meeting "hosted by the issuer of the token", and can call the streaming method automatically.
+		/// It supports both regular live streaming, and raw streaming.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>The token.</returns>
+		Task<string> GetTokenForLiveStreamingAsync(long meetingId, CancellationToken cancellationToken = default);
 	}
 }
