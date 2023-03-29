@@ -705,7 +705,7 @@ namespace ZoomNet.Resources
 			return _client
 				.GetAsync($"meetings/{meetingId}/polls")
 				.WithCancellationToken(cancellationToken)
-				.AsObject<Poll[]>(propertyName: "polls");
+				.AsObject<Poll[]>("polls");
 		}
 
 		/// <summary>
