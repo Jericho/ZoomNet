@@ -571,7 +571,7 @@ namespace ZoomNet.Resources
 			var data = new JsonObject
 			{
 				{ "auto_approve", autoApprove },
-				{ "registrants", registrants },
+				{ "registrants", registrants.ToArray() },
 			};
 
 			return _client
