@@ -70,6 +70,20 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<ReportWebinarParticipant>> GetWebinarParticipantsAsync(string webinarId, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		{
+			VerifyPageSize(pageSize);
+
+			return _client
+				   .GetAsync($"report/webinars/{webinarId}/participants")
+				   .WithArgument("include_fields", "registrant_id")
+				   .WithArgument("page_size", pageSize)
+				   .WithArgument("next_page_token", pageToken)
+				   .WithCancellationToken(cancellationToken)
+				   .AsPaginatedResponseWithToken<ReportWebinarParticipant>("participants");
+		}
+
+		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<ReportHost>> GetHostsAsync(DateTime from, DateTime to, ReportHostType type = ReportHostType.Active, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			VerifyReportDatesRange(from, to);
