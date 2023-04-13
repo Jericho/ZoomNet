@@ -35,6 +35,19 @@ namespace ZoomNet.IntegrationTests.Tests
 			}
 
 			await log.WriteLineAsync($"There are {pastMeetings.Records.Length} past instances of meetings with a total of {totalParticipants} participants for this user.").ConfigureAwait(false);
+
+			// GET ALL THE WEBINARS
+			var pastWebinars = await client.Webinars.GetAllAsync(myUser.Id, 30, null, cancellationToken).ConfigureAwait(false);
+
+			totalParticipants = 0;
+			foreach (var webinar in pastWebinars.Records)
+			{
+				var paginatedParticipants = await client.Reports.GetWebinarParticipantsAsync(webinar.Uuid, 30, null, cancellationToken);
+				totalParticipants += paginatedParticipants.TotalRecords;
+			}
+
+			await log.WriteLineAsync($"There are {pastWebinars.Records.Length} past instances of webinar with a total of {totalParticipants} participants for this user.").ConfigureAwait(false);
+
 		}
 	}
 }
