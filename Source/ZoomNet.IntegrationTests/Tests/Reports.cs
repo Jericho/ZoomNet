@@ -47,7 +47,6 @@ namespace ZoomNet.IntegrationTests.Tests
 			}
 
 			await log.WriteLineAsync($"There are {pastWebinars.Records.Length} past instances of webinar with a total of {totalParticipants} participants for this user.").ConfigureAwait(false);
-
 		}
 	}
 }
