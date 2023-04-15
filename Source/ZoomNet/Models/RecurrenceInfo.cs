@@ -49,7 +49,7 @@ namespace ZoomNet.Models
 		public DayOfWeek? MonthlyWeekDay { get; set; }
 
 		/// <summary>
-		/// Gets or sets the select how many times the meeting will occur before it is canceled.
+		/// Gets or sets the number of times the meeting will occur before it is canceled.
 		/// Cannot be used with "end_date_time".
 		/// </summary>
 		[JsonPropertyName("end_times")]
