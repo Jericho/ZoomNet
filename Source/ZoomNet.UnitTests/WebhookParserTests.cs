@@ -173,6 +173,26 @@ namespace ZoomNet.UnitTests
 			}
 		}";
 
+		private const string WEBINAR_ENDED_WEBHOOK = @"
+		{
+			""event"": ""webinar.ended"",
+			""event_ts"": 1626230691572,
+			""payload"": {
+				""account_id"": ""AAAAAABBBB"",
+				""object"": {
+					""id"": ""1234567890"",
+					""uuid"": ""4444AAAiAAAAAiAiAiiAii=="",
+					""host_id"": ""x1yCzABCDEfg23HiJKl4mN"",
+					""topic"": ""My Webinar"",
+					""type"": 5,
+					""start_time"": ""2021-07-13T21:44:51Z"",
+					""timezone"": ""America/Los_Angeles"",
+					""duration"": 60,
+					""end_time"": ""2021-07-13T23:00:51Z""
+				}
+			}
+		}";
+
 		#endregion
 
 		[Fact]
@@ -322,6 +342,24 @@ namespace ZoomNet.UnitTests
 			parsedMeeting.HostId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
 			parsedMeeting.Duration.ShouldBe(60);
 			parsedMeeting.Timezone.ShouldBe("America/Los_Angeles");
+		}
+
+		[Fact]
+		public void WebinarEnded()
+		{
+			var parsedEvent = (WebinarEndedEvent)new WebhookParser().ParseEventWebhook(WEBINAR_ENDED_WEBHOOK);
+
+			parsedEvent.EventType.ShouldBe(EventType.WebinarEnded);
+			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
+			parsedEvent.Webinar.ShouldNotBeNull();
+			parsedEvent.Webinar.Uuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
+			parsedEvent.Webinar.Id.ShouldBe(1234567890);
+			parsedEvent.Webinar.HostId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
+			parsedEvent.Webinar.Topic.ShouldBe("My Webinar");
+			parsedEvent.Webinar.Type.ShouldBe(WebinarType.Regular);
+			parsedEvent.Webinar.JoinUrl.ShouldBeNull();
+			parsedEvent.Webinar.Password.ShouldBeNull();
+			parsedEvent.Webinar.Settings.ShouldBeNull();
 		}
 	}
 }
