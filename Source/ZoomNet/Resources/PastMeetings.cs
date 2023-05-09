@@ -26,33 +26,17 @@ namespace ZoomNet.Resources
 			_client = client;
 		}
 
-		/// <summary>
-		/// Retrieve the details of a meeting that occured in the past.
-		/// </summary>
-		/// <param name="uuid">The meeting UUID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The <see cref="Meeting" />.
-		/// </returns>
-		public Task<PastMeeting> GetAsync(string uuid, CancellationToken cancellationToken = default)
+		/// <inheritdoc/>
+		public Task<PastMeeting> GetAsync(string meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.GetAsync($"past_meetings/{uuid}")
+				.GetAsync($"past_meetings/{meetingId}")
 				.WithCancellationToken(cancellationToken)
 				.AsObject<PastMeeting>();
 		}
 
-		/// <summary>
-		/// List participants of a meeting that occured in the past.
-		/// </summary>
-		/// <param name="uuid">The meeting UUID.</param>
-		/// <param name="recordsPerPage">The number of records to return.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Participant" />.
-		/// </returns>
-		public Task<PaginatedResponseWithToken<Participant>> GetParticipantsAsync(string uuid, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<Participant>> GetParticipantsAsync(string meetingId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -60,7 +44,7 @@ namespace ZoomNet.Resources
 			}
 
 			return _client
-				.GetAsync($"past_meetings/{uuid}/participants")
+				.GetAsync($"past_meetings/{meetingId}/participants")
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)

@@ -25,9 +25,9 @@ namespace ZoomNet.Resources
 		/// </param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="ReportMeetingParticipant">participants</see>.
+		/// An array of <see cref="ReportParticipant">participants</see>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<ReportMeetingParticipant>> GetMeetingParticipantsAsync(string meetingId, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<ReportParticipant>> GetMeetingParticipantsAsync(string meetingId, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get a list past meetings and webinars for a specified time period. The time range for the report is limited to a month and the month must fall within the past six months.
@@ -60,9 +60,9 @@ namespace ZoomNet.Resources
 		/// </param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="ReportWebinarParticipant">participants</see>.
+		/// An array of <see cref="ReportParticipant">participants</see>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<ReportWebinarParticipant>> GetWebinarParticipantsAsync(string webinarId, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<ReportParticipant>> GetWebinarParticipantsAsync(string webinarId, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Gets active/inactive host reports.
