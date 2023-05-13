@@ -25,21 +25,8 @@ namespace ZoomNet.Resources
 			_client = client;
 		}
 
-		/// <summary>
-		/// Get a list of participants from past meetings with two or more participants. To see a list of participants for meetings with one participant use Dashboards.GetMeetingParticipantsAsync.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID or meeting UUID. If given the meeting ID it will take the last meeting instance.</param>
-		/// <param name="pageSize">The number of records returned within a single API call.</param>
-		/// <param name="pageToken">
-		/// The next page token is used to paginate through large result sets.
-		/// A next page token will be returned whenever the set of available results exceeds the current page size.
-		/// The expiration period for this token is 15 minutes.
-		/// </param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="ReportParticipant">participants</see>.
-		/// </returns>
-		public Task<PaginatedResponseWithToken<ReportMeetingParticipant>> GetMeetingParticipantsAsync(string meetingId, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<ReportParticipant>> GetMeetingParticipantsAsync(string meetingId, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			VerifyPageSize(pageSize);
 
@@ -49,7 +36,7 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<ReportMeetingParticipant>("participants");
+				.AsPaginatedResponseWithToken<ReportParticipant>("participants");
 		}
 
 		/// <inheritdoc/>
@@ -70,7 +57,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<ReportWebinarParticipant>> GetWebinarParticipantsAsync(string webinarId, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<ReportParticipant>> GetWebinarParticipantsAsync(string webinarId, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			VerifyPageSize(pageSize);
 
@@ -80,7 +67,7 @@ namespace ZoomNet.Resources
 				   .WithArgument("page_size", pageSize)
 				   .WithArgument("next_page_token", pageToken)
 				   .WithCancellationToken(cancellationToken)
-				   .AsPaginatedResponseWithToken<ReportWebinarParticipant>("participants");
+				   .AsPaginatedResponseWithToken<ReportParticipant>("participants");
 		}
 
 		/// <inheritdoc/>
