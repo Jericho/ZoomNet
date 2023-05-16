@@ -147,5 +147,11 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonPropertyName("host_email")]
 		public string HostEmail { get; set; }
+
+		/// <summary>
+		/// Gets or sets the encrypted passcode for third party endpoints (H323/SIP).
+		/// </summary>
+		[JsonPropertyName("encrypted_password")]
+		public string EncryptedPassword { get; set; }
 	}
 }
