@@ -141,5 +141,11 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonPropertyName("assistant_id")]
 		public string AssistantId { get; set; }
+
+		/// <summary>
+		/// Gets or sets the email address of the meeting host.
+		/// </summary>
+		[JsonPropertyName("host_email")]
+		public string HostEmail { get; set; }
 	}
 }
