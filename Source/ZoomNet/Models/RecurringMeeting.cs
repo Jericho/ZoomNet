@@ -19,5 +19,17 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonPropertyName("recurrence")]
 		public RecurrenceInfo RecurrenceInfo { get; set; }
+
+		/// <summary>
+		/// Gets or sets the personal meeting id.
+		/// </summary>
+		[JsonPropertyName("pmi")]
+		public string PersonalMeetingId { get; set; }
+
+		/// <summary>
+		/// Gets or sets a value indicating whether the prescheduled meeting was created via the GSuite app.
+		/// </summary>
+		[JsonPropertyName("pre_scheduled")]
+		public bool PreScheduled { get; set; } = false;
 	}
 }
