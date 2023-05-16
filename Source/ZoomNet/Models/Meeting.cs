@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using ZoomNet.Json;
 
 namespace ZoomNet.Models
 {
@@ -153,5 +155,13 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonPropertyName("encrypted_password")]
 		public string EncryptedPassword { get; set; }
+
+		/// <summary>
+		/// Gets or sets the tracking fields.
+		/// </summary>
+		/// <value>The tracking fields.</value>
+		[JsonPropertyName("tracking_fields")]
+		[JsonConverter(typeof(TrackingFieldsConverter))]
+		public KeyValuePair<string, string>[] TrackingFields { get; set; } = Array.Empty<KeyValuePair<string, string>>();
 	}
 }

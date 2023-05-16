@@ -109,7 +109,7 @@ namespace ZoomNet.Models
 		/// <value>The tracking fields.</value>
 		[JsonPropertyName("tracking_fields")]
 		[JsonConverter(typeof(TrackingFieldsConverter))]
-		public KeyValuePair<string, string>[] TrackingFields { get; set; }
+		public KeyValuePair<string, string>[] TrackingFields { get; set; } = Array.Empty<KeyValuePair<string, string>>();
 
 		/// <summary>
 		/// Gets or sets the webinar settings.
