@@ -51,6 +51,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				ApprovalType = ApprovalType.Manual,
 				JoinBeforeHost = true,
 				JoinBeforeHostTime = JoinBeforeHostTime.FiveMinutes,
+				UsePmi = true,
 			};
 			var trackingFields = new Dictionary<string, string>()
 			{
