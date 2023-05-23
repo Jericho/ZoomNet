@@ -188,6 +188,14 @@ var connectionInfo = OAuthConnectionInfo.ForServerToServer(clientId, clientSecre
 
 Just like solution number 1, this solution works well for scenarios where you have a relatively small number of instances and where Zoom has granted you enough indices.
 
+But what if you have more instances of your application than the number of indices that Zoom has granted you? For instance, what if you have 100 instances of your application running in the cloud (Azure, AWS, etc.) but Zoom granted you only 5 indices? If you are in this situation, the solutions I presented so far won't solve the problem. Keep reading, the next solution is a much better option for you.
+
+
+Solution number 3:
+You can make sure that all instances share the same token by storing the token information in a common repository that all your instances have access to. Examples of such repositories are: Azure blob storage, SQL server, Redis, MySQL, etc. For this solution to be effective, we must also make sure that your instances don't request new tokens at the same time because that would again tigger the problem described earlier where each new token invalidates the previous one. 
+
+If this solution sounds like a good option for your scenario, you're in luck: there's a beta version of ZoomNet that provides the necessary infrastructure and all you have to do is to write an implementation of a provided interface to provide the logic for the repository of your choice where token information information will be preserved and make accessible to all your application instances. ZoomNet takes care of allowing only one of your instances to be allowed to refresh a token at any given moment. If you are interrested in testing this beta version, leave a comment [here](https://github.com/Jericho/ZoomNet/issues/269).
+
 
 ### Webhook Parser
  
