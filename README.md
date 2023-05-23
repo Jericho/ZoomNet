@@ -167,13 +167,11 @@ There are a few ways you can overcome this problem:
 Solution number 1:
 You can create mutiple OAuth apps in Zoom's management dashboard, one for each instance of your app. This means that each instance will have their own clientId, clientSecret and accountId and therefore they can independently request tokens without interfering with each other.
 
-This puts the onus is on you to create and manage these Zoom apps. Additionally, you are responsible for ensuring that the `OAuthConnectionInfo` in your C# code is initialized with the appropriate values for each instance.
-
-This is a simple and effective solution when you have a relatively small number of instances but, in my opinion, it becomes overwhelming when your number of instances becomes too large.
+This puts the onus on you to create and manage these Zoom apps. Additionally, you are responsible for ensuring that the `OAuthConnectionInfo` in your C# code is initialized with the appropriate values for each instance. This is a simple and effective solution when you have a relatively small number of instances but, in my opinion, it becomes overwhelming when your number of instances becomes too large.
 
 
 Solution number 2:
-Create a single Zoom OAuth app. Contact Zoom support and request additional "token indices" (also known as "group numbers") for this OAuth app. Subsequently, new tokens can be "scoped" to a given index which means that a token issued for a specific index does not invalidate token for any other index. Hopefully, Zoom will grant you enough token indices and you will be able to dedicate one index for each instance of your application and you can subsequently modify your C# code to "scope"" you OAuth connection to a desired index, like so:
+Create a single Zoom OAuth app. Contact Zoom support and request additional "token indices" (also known as "group numbers") for this OAuth app. Subsequently, new tokens can be "scoped" to a given index which means that a token issued for a specific index does not invalidate token for any other index. Hopefully, Zoom will grant you enough token indices and you will be able to dedicate one index for each instance of your application and you can subsequently modify your C# code to "scope" you OAuth connection to a desired index, like so:
 
 ```csharp
 // you initialize the connection info for your first instance like this:
