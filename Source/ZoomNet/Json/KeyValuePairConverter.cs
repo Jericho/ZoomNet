@@ -5,7 +5,7 @@ using System.Text.Json;
 namespace ZoomNet.Json
 {
 	/// <summary>
-	/// Converts an array of <see cref="KeyValuePair{TKey, TValue}"/> to or from JSON.
+	/// Converts an array of <see cref="KeyValuePair{String, String}"/> to or from JSON.
 	/// </summary>
 	/// <seealso cref="ZoomNetJsonConverter{T}"/>
 	internal class KeyValuePairConverter : ZoomNetJsonConverter<KeyValuePair<string, string>[]>
@@ -33,16 +33,14 @@ namespace ZoomNet.Json
 			{
 				var values = new List<KeyValuePair<string, string>>();
 
-				reader.Read();
-
-				while ((reader.TokenType != JsonTokenType.EndArray) && reader.Read())
+				while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
 				{
 					if (reader.TokenType == JsonTokenType.StartObject)
 					{
 						var fieldName = string.Empty;
 						var fieldValue = string.Empty;
 
-						while ((reader.TokenType != JsonTokenType.EndObject) && reader.Read())
+						while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 						{
 							if (reader.TokenType == JsonTokenType.PropertyName)
 							{
@@ -54,7 +52,7 @@ namespace ZoomNet.Json
 							}
 						}
 
-						values.Add(new KeyValuePair<string, string>(fieldName, fieldValue));
+						if (!string.IsNullOrEmpty(fieldName)) values.Add(new KeyValuePair<string, string>(fieldName, fieldValue));
 					}
 				}
 
