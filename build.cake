@@ -2,7 +2,7 @@
 #tool dotnet:?package=GitVersion.Tool&version=5.12.0
 #tool dotnet:?package=coveralls.net&version=4.0.1
 #tool nuget:?package=GitReleaseManager&version=0.13.0
-#tool nuget:?package=ReportGenerator&version=5.1.20
+#tool nuget:?package=ReportGenerator&version=5.1.21
 #tool nuget:?package=xunit.runner.console&version=2.4.2
 #tool nuget:?package=Codecov&version=1.13.0
 
@@ -91,7 +91,7 @@ var isBenchmarkProjectPresent = FileExists(benchmarkProject);
 // - when running unit tests on Ubuntu
 // - when calculating code coverage
 // FYI, this will cause an error if the source project and/or the unit test project are not configured to target this desired framework:
-const string DefaultFramework = "net6.0";
+const string DefaultFramework = "net7.0";
 var desiredFramework = (
 		!IsRunningOnWindows() ||
 		target.Equals("Coverage", StringComparison.OrdinalIgnoreCase) ||
