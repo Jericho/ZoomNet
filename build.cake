@@ -66,6 +66,7 @@ var sourceFolder = "./Source/";
 var outputDir = "./artifacts/";
 var codeCoverageDir = $"{outputDir}CodeCoverage/";
 var benchmarkDir = $"{outputDir}Benchmark/";
+var coverageFile = $"{codeCoverageDir}coverage.{DefaultFramework}.xml";
 
 var solutionFile = $"{sourceFolder}{libraryName}.sln";
 var sourceProject = $"{sourceFolder}{libraryName}/{libraryName}.csproj";
@@ -299,21 +300,29 @@ Task("Run-Code-Coverage")
 
 Task("Upload-Coverage-Result-Coveralls")
 	.IsDependentOn("Run-Code-Coverage")
-	.OnError(exception => Information($"ONERROR: Failed to upload coverage result to Coveralls: {exception.Message}"))
+    .WithCriteria(() => FileExists(coverageFile))
+	.WithCriteria(() => !isLocalBuild)
+	.WithCriteria(() => !isPullRequest)
+	.WithCriteria(() => isMainRepo)
+	.OnError(exception => Information($"ERROR: Failed to upload coverage result to Coveralls: {exception.Message}"))
 	.Does(() =>
 {
-	//CoverallsNet(new FilePath($"{codeCoverageDir}coverage.{DefaultFramework}.xml"), CoverallsNetReportType.OpenCover, new CoverallsNetSettings()
-	//{
-	//	RepoToken = coverallsToken
-	//});
+	CoverallsNet(new FilePath(coverageFile), CoverallsNetReportType.OpenCover, new CoverallsNetSettings()
+	{
+		RepoToken = coverallsToken
+	});
 });
 
 Task("Upload-Coverage-Result-Codecov")
 	.IsDependentOn("Run-Code-Coverage")
-	.OnError(exception => Information($"ONERROR: Failed to upload coverage result to Codecov: {exception.Message}"))
+    .WithCriteria(() => FileExists(coverageFile))
+	.WithCriteria(() => !isLocalBuild)
+	.WithCriteria(() => !isPullRequest)
+	.WithCriteria(() => isMainRepo)
+	.OnError(exception => Information($"ERROR: Failed to upload coverage result to Codecov: {exception.Message}"))
 	.Does(() =>
 {
-	//Codecov($"{codeCoverageDir}coverage.{DefaultFramework}.xml", codecovToken);
+	Codecov(coverageFile, codecovToken);
 });
 
 Task("Generate-Code-Coverage-Report")
@@ -321,7 +330,7 @@ Task("Generate-Code-Coverage-Report")
 	.Does(() =>
 {
 	ReportGenerator(
-		new FilePath($"{codeCoverageDir}coverage.{DefaultFramework}.xml"),
+		new FilePath(coverageFile),
 		codeCoverageDir,
 		new ReportGeneratorSettings() {
 			ClassFilters = new[] { "*.UnitTests*" }
