@@ -415,7 +415,6 @@ namespace ZoomNet.UnitTests
 			parsedMeeting.Timezone.ShouldBe("America/Los_Angeles");
 		}
 
-
 		[Fact]
 		public void RecordingCompleted()
 		{
@@ -484,7 +483,6 @@ namespace ZoomNet.UnitTests
 			participantAudioFile.PlayUrl.ShouldBe("https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngAAAA");
 			participantAudioFile.DownloadUrl.ShouldBe("https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngAAAA");
 			participantAudioFile.Status.ShouldBe("completed");
-
 		}
 
 		[Fact]
