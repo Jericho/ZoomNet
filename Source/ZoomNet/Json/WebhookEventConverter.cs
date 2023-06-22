@@ -182,7 +182,7 @@ namespace ZoomNet.Json
 				case EventType.RecordingCompleted:
 					var recordingCompletedEvent = payloadJsonProperty.ToObject<RecordingCompletedEvent>(options);
 					recordingCompletedEvent.DownloadToken = rootElement.GetPropertyValue<string>("download_token", string.Empty);
-					recordingCompletedEvent.Recording = payloadJsonProperty.GetProperty("object",true).Value.ToObject<Recording>();
+					recordingCompletedEvent.Recording = payloadJsonProperty.GetProperty("object", true).Value.ToObject<Recording>();
 					webHookEvent = recordingCompletedEvent;
 					break;
 				case EventType.WebinarCreated:

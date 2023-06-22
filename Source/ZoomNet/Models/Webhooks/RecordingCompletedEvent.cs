@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks;
 
 /// <summary>
-/// This event is triggered when all recordings for an event are completed
+/// This event is triggered when all recordings for an event are completed.
 /// </summary>
 public class RecordingCompletedEvent : RecordingEvent
 {
@@ -22,7 +22,7 @@ public class RecordingCompletedEvent : RecordingEvent
 	public string DownloadToken { get; set; }
 
 	/// <summary>
-	/// Gets or sets information about the meeting or webinar recording. 
+	/// Gets or sets information about the meeting or webinar recording.
 	/// </summary>
 	[JsonPropertyName("object")]
 	public Recording Recording { get; set; }

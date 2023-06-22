@@ -269,7 +269,5 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "recording.completed")]
 		RecordingCompleted,
-
-
 	}
 }
