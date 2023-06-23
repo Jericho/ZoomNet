@@ -3,9 +3,9 @@ using System.Runtime.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Enumeration to indicate where the audio recording is saved.
+	/// Enumeration to indicate whether a meeting (or webinar) is recorded and if so, where the file is saved.
 	/// </summary>
-	public enum RecordingType
+	public enum AutoRecordingType
 	{
 		/// <summary>
 		/// Record on local.
