@@ -69,5 +69,16 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonPropertyName("file_extension")]
 		public RecordingFileExtension FileExtension { get; set; }
+
+		/// <summary>Gets or sets the file name.</summary>
+		/// <value>The file name.</value>
+		[JsonPropertyName("file_name")]
+		public string FileName { get; set; }
+
+		/// <summary>Gets or sets the file path to the on-premise account recording.</summary>
+		/// <remarks>For Zoom On-Premise accounts.</remarks>
+		/// <value>The file path.</value>
+		[JsonPropertyName("file_path")]
+		public string FilePath { get; set; }
 	}
 }
