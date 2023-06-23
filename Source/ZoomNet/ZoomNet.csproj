@@ -36,6 +36,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="GraphQL.Client" Version="6.0.0" />
+    <PackageReference Include="GraphQL.Client.Serializer.SystemTextJson" Version="6.0.0" />
     <PackageReference Include="HttpMultipartParser" Version="8.4.0" />
     <PackageReference Include="jose-jwt" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.1" />
