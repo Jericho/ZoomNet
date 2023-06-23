@@ -15,7 +15,9 @@
 
 ## About
 
-The ZoomNet library simplifies connecting with the Zoom.us API and interacting with the various endpoints. Additionaly, the library includes a parser that allows you to process inbound webhook messages sent to you by the Zoom API.
+- The ZoomNet library simplifies connecting with the Zoom.us API and interacting with the various endpoints.
+- The library also includes a parser that allows you to process inbound webhook messages sent to you by the Zoom API over HTTP.
+- Zoom is working on a new server that will deliver the webhook messages over websockets rather than HTTP. This server was introduced in beta during summer 2022 and, as of January 2023, it is still in beta. The ZoomNet library has a convenient client that allows you to receive and process these messages.
 
 
 ## Installation
