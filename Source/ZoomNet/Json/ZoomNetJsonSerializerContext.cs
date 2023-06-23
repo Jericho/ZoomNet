@@ -216,7 +216,6 @@ namespace ZoomNet.Json
 	[JsonSerializable(typeof(ZoomNet.Models.Webhooks.MeetingSharingStartedEvent), TypeInfoPropertyName = "WebhooksMeetingSharingStartedEvent")]
 	[JsonSerializable(typeof(ZoomNet.Models.Webhooks.MeetingStartedEvent), TypeInfoPropertyName = "WebhooksMeetingStartedEvent")]
 	[JsonSerializable(typeof(ZoomNet.Models.Webhooks.MeetingUpdatedEvent), TypeInfoPropertyName = "WebhooksMeetingUpdatedEvent")]
-	[JsonSerializable(typeof(ZoomNet.Models.Webhooks.MeetingUpdatedEvent), TypeInfoPropertyName = "WebhooksMeetingUpdatedEvent")]
 	[JsonSerializable(typeof(ZoomNet.Models.Webhooks.RecordingCompletedEvent), TypeInfoPropertyName = "WebhooksRecordingCompletedEvent")]
 	[JsonSerializable(typeof(ZoomNet.Models.Webhooks.WebinarDeletedEvent), TypeInfoPropertyName = "WebhooksWebinarDeletedEvent")]
 	[JsonSerializable(typeof(ZoomNet.Models.Webhooks.WebinarEndedEvent), TypeInfoPropertyName = "WebhooksWebinarEndedEvent")]
