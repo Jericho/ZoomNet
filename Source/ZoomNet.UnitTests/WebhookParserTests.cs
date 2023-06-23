@@ -453,7 +453,7 @@ namespace ZoomNet.UnitTests
 			audioFile.FileExtension.ShouldBe(RecordingFileExtension.M4A);
 			audioFile.PlayUrl.ShouldBe("https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngBBBB");
 			audioFile.DownloadUrl.ShouldBe("https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngBBBB");
-			audioFile.Status.ShouldBe("completed");
+			audioFile.Status.ShouldBe(RecordingStatus.Completed);
 
 			var videoFile = parsedEvent.Recording.RecordingFiles
 				.FirstOrDefault(f => f.ContentType == RecordingContentType.SharedScreenWithSpeakerView);
@@ -469,7 +469,7 @@ namespace ZoomNet.UnitTests
 			videoFile.FileExtension.ShouldBe(RecordingFileExtension.MP4);
 			videoFile.PlayUrl.ShouldBe("https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngCCCC");
 			videoFile.DownloadUrl.ShouldBe("https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngCCCC");
-			videoFile.Status.ShouldBe("completed");
+			videoFile.Status.ShouldBe(RecordingStatus.Completed);
 
 			parsedEvent.Recording.ParticipantAudioFiles.ShouldNotBeNull();
 			parsedEvent.Recording.ParticipantAudioFiles.ShouldHaveSingleItem();
@@ -482,7 +482,7 @@ namespace ZoomNet.UnitTests
 			participantAudioFile.Size.ShouldBe(246560);
 			participantAudioFile.PlayUrl.ShouldBe("https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngAAAA");
 			participantAudioFile.DownloadUrl.ShouldBe("https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngAAAA");
-			participantAudioFile.Status.ShouldBe("completed");
+			participantAudioFile.Status.ShouldBe(RecordingStatus.Completed);
 		}
 
 		[Fact]

@@ -51,7 +51,7 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the recording status.</summary>
 		/// <value>The status.</value>
 		[JsonPropertyName("status")]
-		public string Status { get; set; }
+		public RecordingStatus Status { get; set; }
 
 		/// <summary>Gets or sets the date and time when the recording was deleted.</summary>
 		/// <value>The delete time.</value>
