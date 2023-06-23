@@ -434,7 +434,7 @@ namespace ZoomNet.UnitTests
 			parsedEvent.Recording.Password.ShouldBe("132456");
 			parsedEvent.Recording.Duration.ShouldBe(60);
 			parsedEvent.Recording.ShareUrl.ShouldBe("https://example.com");
-			//parsedEvent.Recording.Type.ShouldBe(MeetingRecordingType.Personal); // property not implemented
+			parsedEvent.Recording.Type.ShouldBe(RecordingType.PersonnalMeeting);
 			parsedEvent.Recording.TotalSize.ShouldBe(3328371);
 			parsedEvent.Recording.FilesCount.ShouldBe(2);
 			parsedEvent.Recording.RecordingFiles.ShouldNotBeNull();

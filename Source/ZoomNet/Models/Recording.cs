@@ -71,5 +71,9 @@ namespace ZoomNet.Models
 		/// <remarks>This is available only when the "Record a seperate audio file of each participant" setting is enabled.</remarks>
 		[JsonPropertyName("participant_audio_files")]
 		public RecordingFile[] ParticipantAudioFiles { get; set; }
+
+		/// <summary>Gets or sets the type of recorded meeting or webinar.</summary>
+		[JsonPropertyName("type")]
+		public RecordingType Type { get; set; }
 	}
 }
