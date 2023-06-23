@@ -63,5 +63,11 @@ namespace ZoomNet.Models
 		/// <value>The content type.</value>
 		[JsonPropertyName("recording_type")]
 		public RecordingContentType ContentType { get; set; }
+
+		/// <summary>
+		/// Gets or sets the file extension of the recording file.
+		/// </summary>
+		[JsonPropertyName("file_extension")]
+		public string FileExtension { get; set; }
 	}
 }
