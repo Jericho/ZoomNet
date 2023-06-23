@@ -450,7 +450,7 @@ namespace ZoomNet.UnitTests
 			audioFile.ContentType.ShouldBe(RecordingContentType.AudioOnly);
 			audioFile.FileType.ShouldBe(RecordingFileType.Audio);
 			audioFile.Size.ShouldBe(246560); 
-			//audioFile.FileExtension.ShouldBe("M4A"); // property not implemented
+			audioFile.FileExtension.ShouldBe("M4A");
 			audioFile.PlayUrl.ShouldBe("https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngBBBB");
 			audioFile.DownloadUrl.ShouldBe("https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngBBBB");
 			audioFile.Status.ShouldBe("completed");
@@ -466,7 +466,7 @@ namespace ZoomNet.UnitTests
 			videoFile.ContentType.ShouldBe(RecordingContentType.SharedScreenWithSpeakerView);
 			videoFile.FileType.ShouldBe(RecordingFileType.Video);
 			videoFile.Size.ShouldBe(282825);
-			//videoFile.FileExtension.ShouldBe("M4A"); // property not implemented
+			videoFile.FileExtension.ShouldBe("MP4");
 			videoFile.PlayUrl.ShouldBe("https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngCCCC");
 			videoFile.DownloadUrl.ShouldBe("https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngCCCC");
 			videoFile.Status.ShouldBe("completed");
