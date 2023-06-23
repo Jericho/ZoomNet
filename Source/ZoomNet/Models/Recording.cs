@@ -63,7 +63,7 @@ namespace ZoomNet.Models
 		public string ShareUrl { get; set; }
 
 		/// <summary>Gets or sets the password of the sharing recording file.</summary>
-		/// <value>Thepassword.</value>
+		/// <value>The password.</value>
 		[JsonPropertyName("password")]
 		public string Password { get; set; }
 
