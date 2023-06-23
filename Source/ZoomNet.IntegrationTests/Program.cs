@@ -24,6 +24,7 @@ namespace ZoomNet.IntegrationTests
 			Api,
 			WebSockets,
 			Chatbot,
+			GraphQL,
 		}
 
 		private enum ConnectionType
@@ -141,6 +142,7 @@ namespace ZoomNet.IntegrationTests
 							var subscriptionId = Environment.GetEnvironmentVariable("ZOOM_WEBSOCKET_SUBSCRIPTIONID", EnvironmentVariableTarget.User);
 							return new WebSocketsTestSuite(connectionInfo, subscriptionId, proxy, loggerFactory);
 						}
+					case TestType.GraphQL: return new GraphQLTestSuite(connectionInfo, proxy, loggerFactory);
 					default: throw new Exception("Unknwon test type");
 				}
 			});
