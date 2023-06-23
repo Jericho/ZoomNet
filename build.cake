@@ -2,9 +2,9 @@
 #tool dotnet:?package=GitVersion.Tool&version=5.12.0
 #tool dotnet:?package=coveralls.net&version=4.0.1
 #tool nuget:?package=GitReleaseManager&version=0.13.0
-#tool nuget:?package=ReportGenerator&version=5.1.21
+#tool nuget:?package=ReportGenerator&version=5.1.22
 #tool nuget:?package=xunit.runner.console&version=2.4.2
-#tool nuget:?package=Codecov&version=1.13.0
+#tool nuget:?package=CodecovUploader&version=0.5.0
 
 // Install addins.
 #addin nuget:?package=Cake.Coveralls&version=1.1.0
@@ -85,6 +85,8 @@ var isTagged = BuildSystem.AppVeyor.Environment.Repository.Tag.IsTag && !string.
 var isIntegrationTestsProjectPresent = FileExists(integrationTestsProject);
 var isUnitTestsProjectPresent = FileExists(unitTestsProject);
 var isBenchmarkProjectPresent = FileExists(benchmarkProject);
+
+var publishingError = false;
 
 // Generally speaking, we want to honor all the TFM configured in the source project and the unit test project.
 // However, there are a few scenarios where a single framework is sufficient. Here are a few examples that come to mind:
@@ -304,13 +306,21 @@ Task("Upload-Coverage-Result-Coveralls")
 	.WithCriteria(() => !isLocalBuild)
 	.WithCriteria(() => !isPullRequest)
 	.WithCriteria(() => isMainRepo)
-	.OnError(exception => Information($"ERROR: Failed to upload coverage result to Coveralls: {exception.Message}"))
 	.Does(() =>
 {
-	CoverallsNet(new FilePath(coverageFile), CoverallsNetReportType.OpenCover, new CoverallsNetSettings()
+	using (DiagnosticVerbosity())
 	{
-		RepoToken = coverallsToken
-	});
+		CoverallsNet(new FilePath(coverageFile), CoverallsNetReportType.OpenCover, new CoverallsNetSettings()
+		{
+			RepoToken = coverallsToken,
+			UseRelativePaths = true
+		});
+	}
+}).OnError (exception =>
+{
+    Information(exception.Message);
+    Information($"Failed to upload coverage result to Coveralls, but continuing with next Task...");
+    publishingError = true;
 });
 
 Task("Upload-Coverage-Result-Codecov")
@@ -319,10 +329,23 @@ Task("Upload-Coverage-Result-Codecov")
 	.WithCriteria(() => !isLocalBuild)
 	.WithCriteria(() => !isPullRequest)
 	.WithCriteria(() => isMainRepo)
-	.OnError(exception => Information($"ERROR: Failed to upload coverage result to Codecov: {exception.Message}"))
 	.Does(() =>
 {
-	Codecov(coverageFile, codecovToken);
+    var codecovSettings = new CodecovSettings
+    {
+        Files = new[] { coverageFile },
+        Token = codecovToken
+    };
+
+	using (DiagnosticVerbosity())
+	{
+		Codecov(codecovSettings);
+	}
+}).OnError (exception =>
+{
+    Information(exception.Message);
+    Information($"Failed to upload coverage result to Codecov, but continuing with next Task...");
+    publishingError = true;
 });
 
 Task("Generate-Code-Coverage-Report")
@@ -524,7 +547,14 @@ Task("AppVeyor")
 	.IsDependentOn("Upload-AppVeyor-Artifacts")
 	.IsDependentOn("Publish-MyGet")
 	.IsDependentOn("Publish-NuGet")
-	.IsDependentOn("Publish-GitHub-Release");
+	.IsDependentOn("Publish-GitHub-Release")
+    .Finally(() =>
+{
+    if (publishingError)
+    {
+         Warning("At least one exception occurred when executing non-essential tasks. These exceptions were ignored in order to allow the build script to complete.");
+    }
+});
 
 Task("Default")
 	.IsDependentOn("Run-Unit-Tests")
