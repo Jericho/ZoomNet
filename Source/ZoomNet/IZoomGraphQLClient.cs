@@ -1,4 +1,3 @@
-using GraphQL;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -9,6 +8,14 @@ namespace ZoomNet
 	/// </summary>
 	public interface IZoomGraphQLClient
 	{
-		Task<T> SendQueryAsync<T>(GraphQLRequest request, CancellationToken cancellationToken = default);
+		/// <summary>
+		/// Send a request to Zoom's GrapgQL server.
+		/// </summary>
+		/// <typeparam name="T">The type of object returned from the query.</typeparam>
+		/// <param name="request">The GraphQL request.</param>
+		/// <param name="variables">The variables.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The result of the request.</returns>
+		Task<T> SendQueryAsync<T>(string request, object variables = null, CancellationToken cancellationToken = default);
 	}
 }

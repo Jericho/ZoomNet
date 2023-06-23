@@ -36,6 +36,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="GraphQL.Client" Version="6.0.0" />
+    <PackageReference Include="GraphQL.Client.Serializer.SystemTextJson" Version="6.0.0" />
     <PackageReference Include="HttpMultipartParser" Version="9.2.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="[8.0.0,11)" /> <!-- DO NOT UPGRADE. Reasoning is same as explained in GH issue 387 -->
     <PackageReference Include="Microsoft.Extensions.Logging" Version="[8.0.0,11)" /> <!-- DO NOT UPGRADE See https://github.com/Jericho/ZoomNet/issues/387 -->

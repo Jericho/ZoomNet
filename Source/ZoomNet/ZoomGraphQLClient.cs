@@ -1,15 +1,14 @@
-using GraphQL;
+using GraphQL.Client.Http;
+using GraphQL.Client.Serializer.SystemTextJson;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
-using Pathoschild.Http.Client;
-using Pathoschild.Http.Client.Extensibility;
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using ZoomNet.Json;
 using ZoomNet.Utilities;
 
 namespace ZoomNet
@@ -29,8 +28,9 @@ namespace ZoomNet
 		private readonly ZoomClientOptions _options;
 		private readonly ILogger _logger;
 
+		private GraphQLHttpClient _graphQLClient;
 		private HttpClient _httpClient;
-		private Pathoschild.Http.Client.IClient _fluentClient;
+		private OAuthTokenHandler _tokenHandler;
 
 		#endregion
 
@@ -122,23 +122,16 @@ namespace ZoomNet
 			_httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
 			_options = options ?? GetDefaultOptions();
 			_logger = logger ?? NullLogger.Instance;
-			_fluentClient = new FluentClient(new Uri(ZOOM_GRAPHQL_BASE_URL), httpClient)
-				.SetUserAgent($"ZoomNet/{Version} (+https://github.com/Jericho/ZoomNet)");
 
-			_fluentClient.Filters.Remove<DefaultErrorFilter>();
+			_tokenHandler = new OAuthTokenHandler(oAuthConnectionInfo, httpClient, null);
 
-			// Remove all the built-in formatters and replace them with our custom JSON formatter
-			_fluentClient.Formatters.Clear();
-			_fluentClient.Formatters.Add(new JsonFormatter());
+			var graphQLClientOptions = new GraphQLHttpClientOptions
+			{
+				DefaultUserAgentRequestHeader = new ProductInfoHeaderValue("ZoomNet", Version),
+				EndPoint = new Uri(ZOOM_GRAPHQL_BASE_URL),
+			};
 
-			// Order is important: the token handler (either JWT or OAuth) must be first, followed by DiagnosticHandler and then by ErrorHandler.
-			var tokenHandler = new OAuthTokenHandler(oAuthConnectionInfo, httpClient);
-			_fluentClient.Filters.Add(tokenHandler);
-			_fluentClient.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), tokenHandler));
-
-			// The list of filters must be kept in sync with the filters in Utils.GetFluentClient in the unit testing project.
-			_fluentClient.Filters.Add(new DiagnosticHandler(_options.LogLevelSuccessfulCalls, _options.LogLevelFailedCalls, _logger));
-			_fluentClient.Filters.Add(new ZoomErrorHandler());
+			_graphQLClient = new GraphQLHttpClient(graphQLClientOptions, new SystemTextJsonSerializer(), httpClient);
 		}
 
 		/// <summary>
@@ -157,12 +150,38 @@ namespace ZoomNet
 		#region PUBLIC METHODS
 
 		/// <inheritdoc/>
-		public Task<T> SendQueryAsync<T>(GraphQLRequest request, CancellationToken cancellationToken = default)
+		public async Task<T> SendQueryAsync<T>(string query, object variables = null, CancellationToken cancellationToken = default)
 		{
-			return _fluentClient
-				.PostAsync(string.Empty)
-				.WithCancellationToken(cancellationToken)
-				.AsObject<T>("data");
+			var request = new GraphQLHttpRequestWithAuthSupport
+			{
+				Query = query.Replace("\r\n", string.Empty),
+				Variables = variables,
+				Authentication = new AuthenticationHeaderValue("Bearer", _tokenHandler.Token),
+			};
+
+			var graphQLResponse = await _graphQLClient.SendQueryAsync<T>(request).ConfigureAwait(false);
+
+			//var serializer = new GraphQL.SystemTextJson.GraphQLSerializer(false);
+			//var serializedQuery = serializer.Serialize(new
+			//{
+			//	query = query,
+			//	variables = variables,
+			//});
+			//var content = new StringContent(serializedQuery, Encoding.UTF8, "application/json");
+
+			//var responseString = await response.Content.ReadAsStringAsync().ConfigureAwait(false); //cancellationToken supported for .NET 5/6
+			//return DeserializeGraphQLCall<TResponse>(responseString);
+
+			//return await _fluentClient
+			//	.PostAsync(string.Empty)
+			//	.WithJsonBody(new
+			//	{
+			//		query = query,
+			//		variables = variables,
+			//	})
+			//	//.WithBody(content)
+			//	.WithCancellationToken(cancellationToken)
+			//	.AsObject<T>("data");
 		}
 
 		/// <inheritdoc/>
@@ -220,10 +239,15 @@ namespace ZoomNet
 
 		private void ReleaseManagedResources()
 		{
-			if (_fluentClient != null)
+			if (_graphQLClient != null)
 			{
-				_fluentClient.Dispose();
-				_fluentClient = null;
+				_graphQLClient.Dispose();
+				_graphQLClient = null;
+			}
+
+			if (_tokenHandler != null)
+			{
+				_tokenHandler = null;
 			}
 
 			if (_httpClient != null && _mustDisposeHttpClient)
