@@ -446,7 +446,7 @@ namespace ZoomNet.UnitTests
 			audioFile.Id.ShouldBe("ed6c2f27-2ae7-42f4-b3d0-835b493e4fa8");
 			audioFile.MeetingId.ShouldBe("098765ABCD");
 			audioFile.StartTime.ShouldBe(new DateTime(2021, 3, 23, 22, 14, 57, 0, DateTimeKind.Utc)); 
-			audioFile.EndTime.ShouldBe(new DateTime(2021, 3, 23, 23, 15, 41, 0, DateTimeKind.Utc)); // property not implemented
+			audioFile.EndTime.ShouldBe(new DateTime(2021, 3, 23, 23, 15, 41, 0, DateTimeKind.Utc)); 
 			audioFile.ContentType.ShouldBe(RecordingContentType.AudioOnly);
 			audioFile.FileType.ShouldBe(RecordingFileType.Audio);
 			audioFile.Size.ShouldBe(246560); 
