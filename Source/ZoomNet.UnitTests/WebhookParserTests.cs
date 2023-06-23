@@ -430,13 +430,13 @@ namespace ZoomNet.UnitTests
 			parsedEvent.Recording.HostId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
 			parsedEvent.Recording.AccountId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
 			parsedEvent.Recording.Topic.ShouldBe("My Personal Recording");
-			parsedEvent.Recording.StartTime.ShouldBe(new DateTime(2021,7,13,21,44,51, DateTimeKind.Utc));
+			parsedEvent.Recording.StartTime.ShouldBe(new DateTime(2021, 7, 13, 21, 44, 51, DateTimeKind.Utc));
 			parsedEvent.Recording.Password.ShouldBe("132456");
 			parsedEvent.Recording.Duration.ShouldBe(60);
 			parsedEvent.Recording.ShareUrl.ShouldBe("https://example.com");
 			//parsedEvent.Recording.Type.ShouldBe(MeetingRecordingType.Personal); // property not implemented
 			parsedEvent.Recording.TotalSize.ShouldBe(3328371);
-			parsedEvent.Recording.FilesCount.ShouldBe(2); 
+			parsedEvent.Recording.FilesCount.ShouldBe(2);
 			parsedEvent.Recording.RecordingFiles.ShouldNotBeNull();
 
 			var audioFile = parsedEvent.Recording.RecordingFiles
@@ -445,11 +445,11 @@ namespace ZoomNet.UnitTests
 			audioFile.ShouldNotBeNull();
 			audioFile.Id.ShouldBe("ed6c2f27-2ae7-42f4-b3d0-835b493e4fa8");
 			audioFile.MeetingId.ShouldBe("098765ABCD");
-			audioFile.StartTime.ShouldBe(new DateTime(2021, 3, 23, 22, 14, 57, 0, DateTimeKind.Utc)); 
-			audioFile.EndTime.ShouldBe(new DateTime(2021, 3, 23, 23, 15, 41, 0, DateTimeKind.Utc)); 
+			audioFile.StartTime.ShouldBe(new DateTime(2021, 3, 23, 22, 14, 57, 0, DateTimeKind.Utc));
+			audioFile.EndTime.ShouldBe(new DateTime(2021, 3, 23, 23, 15, 41, 0, DateTimeKind.Utc));
 			audioFile.ContentType.ShouldBe(RecordingContentType.AudioOnly);
 			audioFile.FileType.ShouldBe(RecordingFileType.Audio);
-			audioFile.Size.ShouldBe(246560); 
+			audioFile.Size.ShouldBe(246560);
 			audioFile.FileExtension.ShouldBe("M4A");
 			audioFile.PlayUrl.ShouldBe("https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngBBBB");
 			audioFile.DownloadUrl.ShouldBe("https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngBBBB");
@@ -462,7 +462,7 @@ namespace ZoomNet.UnitTests
 			videoFile.Id.ShouldBe("388ffb46-1541-460d-8447-4624451a1db7");
 			videoFile.MeetingId.ShouldBe("098765ABCD");
 			videoFile.StartTime.ShouldBe(new DateTime(2021, 3, 23, 22, 14, 57, 0, DateTimeKind.Utc));
-			videoFile.EndTime.ShouldBe(new DateTime(2021, 3, 23, 23, 15, 41, 0, DateTimeKind.Utc)); 
+			videoFile.EndTime.ShouldBe(new DateTime(2021, 3, 23, 23, 15, 41, 0, DateTimeKind.Utc));
 			videoFile.ContentType.ShouldBe(RecordingContentType.SharedScreenWithSpeakerView);
 			videoFile.FileType.ShouldBe(RecordingFileType.Video);
 			videoFile.Size.ShouldBe(282825);
