@@ -436,7 +436,7 @@ namespace ZoomNet.UnitTests
 			parsedEvent.Recording.ShareUrl.ShouldBe("https://example.com");
 			//parsedEvent.Recording.RecordingType.ShouldBe(RecordingType.Personal); // property not implemented
 			parsedEvent.Recording.TotalSize.ShouldBe(3328371);
-			//parsedEvent.Recording.RecordingCount.ShouldBe(2); // property not implemented
+			parsedEvent.Recording.FilesCount.ShouldBe(2); 
 			parsedEvent.Recording.RecordingFiles.ShouldNotBeNull();
 
 			var audioFile = parsedEvent.Recording.RecordingFiles
