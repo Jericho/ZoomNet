@@ -308,14 +308,11 @@ Task("Upload-Coverage-Result-Coveralls")
 	.WithCriteria(() => isMainRepo)
 	.Does(() =>
 {
-	using (DiagnosticVerbosity())
+	CoverallsNet(new FilePath(coverageFile), CoverallsNetReportType.OpenCover, new CoverallsNetSettings()
 	{
-		CoverallsNet(new FilePath(coverageFile), CoverallsNetReportType.OpenCover, new CoverallsNetSettings()
-		{
-			RepoToken = coverallsToken,
-			UseRelativePaths = true
-		});
-	}
+		RepoToken = coverallsToken,
+		UseRelativePaths = true
+	});
 }).OnError (exception =>
 {
     Information(exception.Message);
@@ -331,16 +328,11 @@ Task("Upload-Coverage-Result-Codecov")
 	.WithCriteria(() => isMainRepo)
 	.Does(() =>
 {
-    var codecovSettings = new CodecovSettings
+	Codecov(codecovSettings, new CodecovSettings
     {
         Files = new[] { coverageFile },
         Token = codecovToken
-    };
-
-	using (DiagnosticVerbosity())
-	{
-		Codecov(codecovSettings);
-	}
+    });
 }).OnError (exception =>
 {
     Information(exception.Message);
