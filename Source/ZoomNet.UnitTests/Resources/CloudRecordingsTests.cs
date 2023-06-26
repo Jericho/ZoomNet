@@ -495,7 +495,7 @@ namespace ZoomNet.UnitTests.Resources
 			result.RecordingFiles[0].Size.ShouldBe(0);
 			result.RecordingFiles[0].PlayUrl.ShouldBe("https://zoom.us/rec/play/3YUQu4dKV9c_sAwj-X33a_IGBr5V57LQFaTSwubo9R-hl3Gj_z-wSBSJNX9p5MFS8VsCEll4iAMyrDZi.h6gWLE07kjtTpZtX");
 			result.RecordingFiles[0].DownloadUrl.ShouldBe("https://zoom.us/rec/download/3YUQu4dKV9c_sAwj-X33a_IGBr5V57LQFaTSwubo9R-hl3Gj_z-wSBSJNX9p5MFS8VsCEll4iAMyrDZi.h6gWLE07kjtTpZtX");
-			result.RecordingFiles[0].Status.ShouldBe("processing");
+			result.RecordingFiles[0].Status.ShouldBe(RecordingStatus.Processing);
 			result.RecordingFiles[0].DeleteTime.ShouldBeNull();
 			result.RecordingFiles[0].ContentType.ShouldBe(RecordingContentType.NotSpecified);
 		}
