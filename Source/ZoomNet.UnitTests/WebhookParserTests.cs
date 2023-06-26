@@ -1,5 +1,6 @@
 using Shouldly;
 using System;
+using System.Linq;
 using Xunit;
 using ZoomNet.Models;
 using ZoomNet.Models.Webhooks;
@@ -193,6 +194,76 @@ namespace ZoomNet.UnitTests
 			}
 		}";
 
+		private const string RECORDING_COMPLETED_WEBHOOK = @"
+		{
+		  ""event"": ""recording.completed"",
+		  ""event_ts"": 1626230691572,
+		  ""payload"": {
+		    ""account_id"": ""AAAAAABBBB"",
+		    ""object"": {
+		      ""id"": 1234567890,
+		      ""uuid"": ""4444AAAiAAAAAiAiAiiAii=="",
+		      ""host_id"": ""x1yCzABCDEfg23HiJKl4mN"",
+		      ""account_id"": ""x1yCzABCDEfg23HiJKl4mN"",
+		      ""topic"": ""My Personal Recording"",
+		      ""type"": 4,
+		      ""start_time"": ""2021-07-13T21:44:51Z"",
+		      ""password"": ""132456"",
+		      ""timezone"": ""America/Los_Angeles"",
+		      ""host_email"": ""jchill@example.com"",
+		      ""duration"": 60,
+		      ""share_url"": ""https://example.com"",
+		      ""total_size"": 3328371,
+		      ""recording_count"": 2,
+		      ""on_prem"": false,
+		      ""recording_play_passcode"": ""yNYIS408EJygs7rE5vVsJwXIz4-VW7MH"",
+		      ""recording_files"": [
+		        {
+		          ""id"": ""ed6c2f27-2ae7-42f4-b3d0-835b493e4fa8"",
+		          ""meeting_id"": ""098765ABCD"",
+		          ""recording_start"": ""2021-03-23T22:14:57Z"",
+		          ""recording_end"": ""2021-03-23T23:15:41Z"",
+		          ""recording_type"": ""audio_only"",
+		          ""file_type"": ""M4A"",
+		          ""file_size"": 246560,
+		          ""file_extension"": ""M4A"",
+		          ""play_url"": ""https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngBBBB"",
+		          ""download_url"": ""https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngBBBB"",
+		          ""status"": ""completed""
+		        },
+		        {
+		          ""id"": ""388ffb46-1541-460d-8447-4624451a1db7"",
+		          ""meeting_id"": ""098765ABCD"",
+		          ""recording_start"": ""2021-03-23T22:14:57Z"",
+		          ""recording_end"": ""2021-03-23T23:15:41Z"",
+		          ""recording_type"": ""shared_screen_with_speaker_view"",
+		          ""file_type"": ""MP4"",
+		          ""file_size"": 282825,
+		          ""file_extension"": ""MP4"",
+		          ""play_url"": ""https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngCCCC"",
+		          ""download_url"": ""https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngCCCC"",
+		          ""status"": ""completed""
+		        }
+		      ],
+		      ""participant_audio_files"": [
+		        {
+		          ""id"": ""ed6c2f27-2ae7-42f4-b3d0-835b493e4fa8"",
+		          ""recording_start"": ""2021-03-23T22:14:57Z"",
+		          ""recording_end"": ""2021-03-23T23:15:41Z"",
+		          ""file_type"": ""M4A"",
+		          ""file_name"": ""MyRecording"",
+		          ""file_size"": 246560,
+		          ""file_extension"": ""MP4"",
+		          ""play_url"": ""https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngAAAA"",
+		          ""download_url"": ""https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngAAAA"",
+		          ""status"": ""completed""
+		        }
+		      ]
+		    }
+		  },
+		  ""download_token"": ""abJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJodHRwczovL2V2ZW50Lnpvb20udXMiLCJhY2NvdW50SWQiOiJNdDZzdjR1MFRBeVBrd2dzTDJseGlBIiwiYXVkIjoiaHR0cHM6Ly9vYXV0aC56b29tLnVzIiwibWlkIjoieFp3SEc0c3BRU2VuekdZWG16dnpiUT09IiwiZXhwIjoxNjI2MTM5NTA3LCJ1c2VySWQiOiJEWUhyZHBqclMzdWFPZjdkUGtrZzh3In0.a6KetiC6BlkDhf1dP4KBGUE1bb2brMeraoD45yhFx0eSSSTFdkHQnsKmlJQ-hdo9Zy-4vQw3rOxlyoHv583JyZ""
+		}";
+
 		#endregion
 
 		[Fact]
@@ -342,6 +413,76 @@ namespace ZoomNet.UnitTests
 			parsedMeeting.HostId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
 			parsedMeeting.Duration.ShouldBe(60);
 			parsedMeeting.Timezone.ShouldBe("America/Los_Angeles");
+		}
+
+		[Fact]
+		public void RecordingCompleted()
+		{
+			var parsedEvent = (RecordingCompletedEvent)new WebhookParser().ParseEventWebhook(RECORDING_COMPLETED_WEBHOOK);
+
+			parsedEvent.EventType.ShouldBe(EventType.RecordingCompleted);
+			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
+			parsedEvent.DownloadToken.ShouldBe("abJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJodHRwczovL2V2ZW50Lnpvb20udXMiLCJhY2NvdW50SWQiOiJNdDZzdjR1MFRBeVBrd2dzTDJseGlBIiwiYXVkIjoiaHR0cHM6Ly9vYXV0aC56b29tLnVzIiwibWlkIjoieFp3SEc0c3BRU2VuekdZWG16dnpiUT09IiwiZXhwIjoxNjI2MTM5NTA3LCJ1c2VySWQiOiJEWUhyZHBqclMzdWFPZjdkUGtrZzh3In0.a6KetiC6BlkDhf1dP4KBGUE1bb2brMeraoD45yhFx0eSSSTFdkHQnsKmlJQ-hdo9Zy-4vQw3rOxlyoHv583JyZ");
+			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
+			parsedEvent.Recording.ShouldNotBeNull();
+			parsedEvent.Recording.Id.ShouldBe(1234567890);
+			parsedEvent.Recording.Uuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
+			parsedEvent.Recording.HostId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
+			parsedEvent.Recording.AccountId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
+			parsedEvent.Recording.Topic.ShouldBe("My Personal Recording");
+			parsedEvent.Recording.StartTime.ShouldBe(new DateTime(2021, 7, 13, 21, 44, 51, DateTimeKind.Utc));
+			parsedEvent.Recording.Password.ShouldBe("132456");
+			parsedEvent.Recording.Duration.ShouldBe(60);
+			parsedEvent.Recording.ShareUrl.ShouldBe("https://example.com");
+			parsedEvent.Recording.Type.ShouldBe(RecordingType.PersonnalMeeting);
+			parsedEvent.Recording.TotalSize.ShouldBe(3328371);
+			parsedEvent.Recording.FilesCount.ShouldBe(2);
+			parsedEvent.Recording.RecordingFiles.ShouldNotBeNull();
+
+			var audioFile = parsedEvent.Recording.RecordingFiles
+				.FirstOrDefault(f => f.ContentType == RecordingContentType.AudioOnly);
+
+			audioFile.ShouldNotBeNull();
+			audioFile.Id.ShouldBe("ed6c2f27-2ae7-42f4-b3d0-835b493e4fa8");
+			audioFile.MeetingId.ShouldBe("098765ABCD");
+			audioFile.StartTime.ShouldBe(new DateTime(2021, 3, 23, 22, 14, 57, 0, DateTimeKind.Utc));
+			audioFile.EndTime.ShouldBe(new DateTime(2021, 3, 23, 23, 15, 41, 0, DateTimeKind.Utc));
+			audioFile.ContentType.ShouldBe(RecordingContentType.AudioOnly);
+			audioFile.FileType.ShouldBe(RecordingFileType.Audio);
+			audioFile.Size.ShouldBe(246560);
+			audioFile.FileExtension.ShouldBe(RecordingFileExtension.M4A);
+			audioFile.PlayUrl.ShouldBe("https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngBBBB");
+			audioFile.DownloadUrl.ShouldBe("https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngBBBB");
+			audioFile.Status.ShouldBe(RecordingStatus.Completed);
+
+			var videoFile = parsedEvent.Recording.RecordingFiles
+				.FirstOrDefault(f => f.ContentType == RecordingContentType.SharedScreenWithSpeakerView);
+
+			videoFile.ShouldNotBeNull();
+			videoFile.Id.ShouldBe("388ffb46-1541-460d-8447-4624451a1db7");
+			videoFile.MeetingId.ShouldBe("098765ABCD");
+			videoFile.StartTime.ShouldBe(new DateTime(2021, 3, 23, 22, 14, 57, 0, DateTimeKind.Utc));
+			videoFile.EndTime.ShouldBe(new DateTime(2021, 3, 23, 23, 15, 41, 0, DateTimeKind.Utc));
+			videoFile.ContentType.ShouldBe(RecordingContentType.SharedScreenWithSpeakerView);
+			videoFile.FileType.ShouldBe(RecordingFileType.Video);
+			videoFile.Size.ShouldBe(282825);
+			videoFile.FileExtension.ShouldBe(RecordingFileExtension.MP4);
+			videoFile.PlayUrl.ShouldBe("https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngCCCC");
+			videoFile.DownloadUrl.ShouldBe("https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngCCCC");
+			videoFile.Status.ShouldBe(RecordingStatus.Completed);
+
+			parsedEvent.Recording.ParticipantAudioFiles.ShouldNotBeNull();
+			parsedEvent.Recording.ParticipantAudioFiles.ShouldHaveSingleItem();
+			var participantAudioFile = parsedEvent.Recording.ParticipantAudioFiles.First();
+			participantAudioFile.ShouldNotBeNull();
+			participantAudioFile.Id.ShouldBe("ed6c2f27-2ae7-42f4-b3d0-835b493e4fa8");
+			participantAudioFile.StartTime.ShouldBe(new DateTime(2021, 3, 23, 22, 14, 57, 0, DateTimeKind.Utc));
+			participantAudioFile.EndTime.ShouldBe(new DateTime(2021, 3, 23, 23, 15, 41, 0, DateTimeKind.Utc));
+			participantAudioFile.FileType.ShouldBe(RecordingFileType.Audio);
+			participantAudioFile.Size.ShouldBe(246560);
+			participantAudioFile.PlayUrl.ShouldBe("https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngAAAA");
+			participantAudioFile.DownloadUrl.ShouldBe("https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngAAAA");
+			participantAudioFile.Status.ShouldBe(RecordingStatus.Completed);
 		}
 
 		[Fact]

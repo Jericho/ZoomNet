@@ -179,6 +179,12 @@ namespace ZoomNet.Json
 					meetingLiveStreamStoppedEvent.StreamingInfo = payloadJsonProperty.GetProperty("object/live_streaming", true).Value.ToObject<LiveStreamingInfo>();
 					webHookEvent = meetingLiveStreamStoppedEvent;
 					break;
+				case EventType.RecordingCompleted:
+					var recordingCompletedEvent = payloadJsonProperty.ToObject<RecordingCompletedEvent>(options);
+					recordingCompletedEvent.DownloadToken = rootElement.GetPropertyValue<string>("download_token", string.Empty);
+					recordingCompletedEvent.Recording = payloadJsonProperty.GetProperty("object", true).Value.ToObject<Recording>();
+					webHookEvent = recordingCompletedEvent;
+					break;
 				case EventType.WebinarCreated:
 					var webinarCreatedEvent = payloadJsonProperty.ToObject<WebinarCreatedEvent>(options);
 					webHookEvent = webinarCreatedEvent;

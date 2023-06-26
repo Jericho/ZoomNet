@@ -31,7 +31,7 @@ namespace ZoomNet.Json
 		{
 			if (value == null) return;
 
-			var typeOfValue = typeof(T);
+			var typeOfValue = value.GetType(); // Do not use typeof(T). See https://github.com/Jericho/StrongGrid/issues/492
 			if (typeOfValue.IsArray)
 			{
 				var typeOfItems = typeOfValue.GetElementType();
@@ -47,11 +47,16 @@ namespace ZoomNet.Json
 			}
 			else
 			{
-				Serialize(writer, value, options, null);
+				Serialize(writer, value, typeOfValue, options, null);
 			}
 		}
 
-		internal void Serialize(Utf8JsonWriter writer, T value, JsonSerializerOptions options, Action<string, object, Type, JsonSerializerOptions, JsonConverterAttribute> propertySerializer = null)
+		internal static void Serialize(Utf8JsonWriter writer, T value, JsonSerializerOptions options, Action<string, object, Type, JsonSerializerOptions, JsonConverterAttribute> propertySerializer = null)
+		{
+			Serialize(writer, value, value.GetType(), options, propertySerializer);
+		}
+
+		internal static void Serialize(Utf8JsonWriter writer, T value, Type typeOfValue, JsonSerializerOptions options, Action<string, object, Type, JsonSerializerOptions, JsonConverterAttribute> propertySerializer = null)
 		{
 			if (value == null)
 			{
@@ -66,7 +71,7 @@ namespace ZoomNet.Json
 
 			writer.WriteStartObject();
 
-			var allProperties = typeof(T).GetProperties();
+			var allProperties = typeOfValue.GetProperties();
 
 			foreach (var propertyInfo in allProperties)
 			{
@@ -90,7 +95,7 @@ namespace ZoomNet.Json
 			writer.WriteEndObject();
 		}
 
-		internal void WriteJsonProperty(Utf8JsonWriter writer, string propertyName, object propertyValue, Type propertyType, JsonSerializerOptions options, JsonConverterAttribute propertyConverterAttribute)
+		internal static void WriteJsonProperty(Utf8JsonWriter writer, string propertyName, object propertyValue, Type propertyType, JsonSerializerOptions options, JsonConverterAttribute propertyConverterAttribute)
 		{
 			writer.WritePropertyName(propertyName);
 

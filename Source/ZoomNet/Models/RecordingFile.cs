@@ -51,7 +51,7 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the recording status.</summary>
 		/// <value>The status.</value>
 		[JsonPropertyName("status")]
-		public string Status { get; set; }
+		public RecordingStatus Status { get; set; }
 
 		/// <summary>Gets or sets the date and time when the recording was deleted.</summary>
 		/// <value>The delete time.</value>
@@ -63,5 +63,22 @@ namespace ZoomNet.Models
 		/// <value>The content type.</value>
 		[JsonPropertyName("recording_type")]
 		public RecordingContentType ContentType { get; set; }
+
+		/// <summary>
+		/// Gets or sets the file extension of the recording file.
+		/// </summary>
+		[JsonPropertyName("file_extension")]
+		public RecordingFileExtension FileExtension { get; set; }
+
+		/// <summary>Gets or sets the file name.</summary>
+		/// <value>The file name.</value>
+		[JsonPropertyName("file_name")]
+		public string FileName { get; set; }
+
+		/// <summary>Gets or sets the file path to the on-premise account recording.</summary>
+		/// <remarks>For Zoom On-Premise accounts.</remarks>
+		/// <value>The file path.</value>
+		[JsonPropertyName("file_path")]
+		public string FilePath { get; set; }
 	}
 }
