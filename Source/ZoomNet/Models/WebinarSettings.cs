@@ -51,10 +51,10 @@ namespace ZoomNet.Models
 		public AudioType? Audio { get; set; }
 
 		/// <summary>
-		/// Gets or sets the value indicating if audio is recorded and if so, when the audio is saved.
+		/// Gets or sets the value indicating if audio is recorded and if so, where the audio is saved.
 		/// </summary>
 		[JsonPropertyName("auto_recording")]
-		public RecordingType AutoRecording { get; set; }
+		public AutoRecordingType AutoRecording { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value indicating that only signed-in users can join this meeting.
