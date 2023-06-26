@@ -328,7 +328,7 @@ Task("Upload-Coverage-Result-Codecov")
 	.WithCriteria(() => isMainRepo)
 	.Does(() =>
 {
-	Codecov(codecovSettings, new CodecovSettings
+	Codecov(new CodecovSettings
     {
         Files = new[] { coverageFile },
         Token = codecovToken
