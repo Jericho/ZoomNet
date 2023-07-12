@@ -35,6 +35,12 @@ namespace ZoomNet.Models
 		/// sharedLineGroup.
 		/// </summary>
 		[EnumMember(Value = "sharedLineGroup")]
-		SharedLineGroup
+		SharedLineGroup,
+
+		/// <summary>
+		/// pstn.
+		/// </summary>
+		[EnumMember(Value = "pstn")]
+		Pstn
 	}
 }
