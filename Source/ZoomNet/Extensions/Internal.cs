@@ -971,7 +971,7 @@ namespace ZoomNet
 			var jsonProperty = rootElement.GetProperty(propertyName, false);
 
 			// Make sure the desired property is present. It's ok if the property is missing when there are no records.
-			if (!jsonProperty.HasValue && pageSize > 0)
+			if (!jsonProperty.HasValue && totalRecords is > 0)
 			{
 				throw new ArgumentException($"The response does not contain a field called '{propertyName}'", nameof(propertyName));
 			}
@@ -1011,7 +1011,7 @@ namespace ZoomNet
 			var jsonProperty = rootElement.GetProperty(propertyName, false);
 
 			// Make sure the desired property is present. It's ok if the property is missing when there are no records.
-			if (!jsonProperty.HasValue && pageSize > 0)
+			if (!jsonProperty.HasValue && totalRecords is > 0)
 			{
 				throw new ArgumentException($"The response does not contain a field called '{propertyName}'", nameof(propertyName));
 			}
@@ -1052,7 +1052,7 @@ namespace ZoomNet
 			var jsonProperty = rootElement.GetProperty(propertyName, false);
 
 			// Make sure the desired property is present. It's ok if the property is missing when there are no records.
-			if (!jsonProperty.HasValue && pageSize > 0)
+			if (!jsonProperty.HasValue && totalRecords is > 0)
 			{
 				throw new ArgumentException($"The response does not contain a field called '{propertyName}'", nameof(propertyName));
 			}
