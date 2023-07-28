@@ -112,5 +112,10 @@ namespace ZoomNet
 		/// Gets the resource which allows you to manage call logs.
 		/// </summary>
 		ICallLogs CallLogs { get; }
+
+		/// <summary>
+		/// Gets the resource which allows you to manage chatbot messages.
+		/// </summary>
+		IChatbot Chatbot { get; }
 	}
 }
