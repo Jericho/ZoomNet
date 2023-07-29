@@ -14,20 +14,18 @@ namespace ZoomNet.Utilities
 		private string _refreshToken;
 		private string _accessToken;
 		private DateTime _tokenExpiration;
-		private int _tokenIndex;
 
-		public MemoryTokenRepository(string refreshToken, string accessToken, DateTime tokenExpiration, int tokenIndex)
+		public MemoryTokenRepository(string refreshToken, string accessToken, DateTime tokenExpiration)
 		{
 			_refreshToken = refreshToken;
 			_accessToken = accessToken;
 			_tokenExpiration = tokenExpiration;
-			_tokenIndex = tokenIndex;
 		}
 
 		/// <inheritdoc/>
-		public Task<(string RefreshToken, string AccessToken, DateTime TokenExpiration, int TokenIndex)> GetTokenInfoAsync(CancellationToken cancellationToken)
+		public Task<(string RefreshToken, string AccessToken, DateTime TokenExpiration)> GetTokenInfoAsync(CancellationToken cancellationToken)
 		{
-			return Task.FromResult((_refreshToken, _accessToken, _tokenExpiration, _tokenIndex));
+			return Task.FromResult((_refreshToken, _accessToken, _tokenExpiration));
 		}
 
 		/// <inheritdoc/>
@@ -39,12 +37,11 @@ namespace ZoomNet.Utilities
 		}
 
 		/// <inheritdoc/>
-		public Task SaveTokenInfoAsync(string refreshToken, string accessToken, DateTime tokenExpiration, int tokenIndex, CancellationToken cancellationToken = default)
+		public Task SaveTokenInfoAsync(string refreshToken, string accessToken, DateTime tokenExpiration, CancellationToken cancellationToken = default)
 		{
 			_refreshToken = refreshToken;
 			_accessToken = accessToken;
 			_tokenExpiration = tokenExpiration;
-			_tokenIndex = tokenIndex;
 
 			return Task.CompletedTask;
 		}

@@ -22,6 +22,6 @@ namespace ZoomNet.Utilities
 		/// <param name="previousTokenInfo">The token information that was used in the previous API call.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The refreshed token information or the current token information if we determined that it didn't need to be refreshed.</returns>
-		Task<(string RefreshToken, string AccessToken, DateTime TokenExpiration, int TokenIndex)> GetTokenInfoAsync(bool forceRefresh, (string RefreshToken, string AccessToken, DateTime TokenExpiration, int TokenIndex) previousTokenInfo, CancellationToken cancellationToken = default);
+		Task<(string RefreshToken, string AccessToken, DateTime TokenExpiration)> GetTokenInfoAsync(bool forceRefresh, (string RefreshToken, string AccessToken, DateTime TokenExpiration) previousTokenInfo, CancellationToken cancellationToken = default);
 	}
 }

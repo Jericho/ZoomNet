@@ -69,11 +69,6 @@ namespace ZoomNet
 		public string CodeVerifier { get; private set; }
 
 		/// <summary>
-		/// Gets indices (also known as 'group numbers') that have been enabled by Zoom on your account.
-		/// </summary>
-		public int[] TokenIndices { get; private set; }
-
-		/// <summary>
 		/// Initializes a new instance of the <see cref="OAuthConnectionInfo"/> class.
 		/// </summary>
 		/// <remarks>
@@ -96,7 +91,7 @@ namespace ZoomNet
 			ClientId = clientId;
 			ClientSecret = clientSecret;
 			GrantType = OAuthGrantType.ClientCredentials;
-			TokenRepository = new MemoryTokenRepository(null, null, DateTime.MinValue, 0);
+			TokenRepository = new MemoryTokenRepository(null, null, DateTime.MinValue);
 		}
 
 		/// <summary>
@@ -136,7 +131,7 @@ namespace ZoomNet
 			GrantType = OAuthGrantType.AuthorizationCode;
 			OnTokenRefreshed = onTokenRefreshed;
 			CodeVerifier = codeVerifier;
-			TokenRepository = new MemoryTokenRepository(null, null, DateTime.MinValue, 0);
+			TokenRepository = new MemoryTokenRepository(null, null, DateTime.MinValue);
 		}
 
 		/// <summary>
@@ -170,7 +165,7 @@ namespace ZoomNet
 			ClientSecret = clientSecret;
 			GrantType = OAuthGrantType.RefreshToken;
 			OnTokenRefreshed = onTokenRefreshed;
-			TokenRepository = new MemoryTokenRepository(refreshToken, accessToken, string.IsNullOrEmpty(accessToken) ? DateTime.MinValue : DateTime.MaxValue, 0);
+			TokenRepository = new MemoryTokenRepository(refreshToken, accessToken, string.IsNullOrEmpty(accessToken) ? DateTime.MinValue : DateTime.MaxValue);
 		}
 
 		/// <summary>
@@ -195,7 +190,7 @@ namespace ZoomNet
 			AccountId = accountId;
 			GrantType = OAuthGrantType.AccountCredentials;
 			OnTokenRefreshed = onTokenRefreshed;
-			TokenRepository = new MemoryTokenRepository(null, null, DateTime.MinValue, 0);
+			TokenRepository = new MemoryTokenRepository(null, null, DateTime.MinValue);
 		}
 
 		private OAuthConnectionInfo() { }
@@ -269,7 +264,7 @@ namespace ZoomNet
 				ClientSecret = clientSecret,
 				GrantType = OAuthGrantType.ClientCredentials,
 				OnTokenRefreshed = onTokenRefreshed,
-				TokenRepository = new MemoryTokenRepository(null, accessToken, string.IsNullOrEmpty(accessToken) ? DateTime.MinValue : DateTime.MaxValue, 0),
+				TokenRepository = new MemoryTokenRepository(null, accessToken, string.IsNullOrEmpty(accessToken) ? DateTime.MinValue : DateTime.MaxValue),
 			};
 		}
 
@@ -312,8 +307,7 @@ namespace ZoomNet
 				GrantType = OAuthGrantType.AuthorizationCode,
 				OnTokenRefreshed = onTokenRefreshed,
 				CodeVerifier = codeVerifier,
-				TokenIndices = new[] { 0 },
-				TokenRepository = new MemoryTokenRepository(null, null, DateTime.MinValue, 0),
+				TokenRepository = new MemoryTokenRepository(null, null, DateTime.MinValue),
 			};
 		}
 
@@ -366,8 +360,7 @@ namespace ZoomNet
 				ClientSecret = clientSecret,
 				GrantType = OAuthGrantType.RefreshToken,
 				OnTokenRefreshed = onTokenRefreshed,
-				TokenIndices = new[] { 0 },
-				TokenRepository = new MemoryTokenRepository(refreshToken, accessToken, string.IsNullOrEmpty(accessToken) ? DateTime.MinValue : DateTime.MaxValue, 0),
+				TokenRepository = new MemoryTokenRepository(refreshToken, accessToken, string.IsNullOrEmpty(accessToken) ? DateTime.MinValue : DateTime.MaxValue),
 			};
 		}
 
@@ -376,9 +369,6 @@ namespace ZoomNet
 		/// </summary>
 		/// <remarks>
 		/// Use this constructor when you want to use Server-to-Server OAuth authentication.
-		///
-		/// Also note that by default the only 'token index' available on a Zoom account is zero.
-		/// You have to contact Zoom support to enable additional indices if desired.
 		/// </remarks>
 		/// <param name="clientId">Your Client Id.</param>
 		/// <param name="clientSecret">Your Client Secret.</param>
@@ -387,9 +377,8 @@ namespace ZoomNet
 		/// <returns>The connection info.</returns>
 		public static OAuthConnectionInfo ForServerToServer(string clientId, string clientSecret, string accountId, OnTokenRefreshedDelegate onTokenRefreshed = null)
 		{
-			var tokenIndices = new[] { 0 };
-			var tokenRepository = new MemoryTokenRepository(null, null, DateTime.MinValue, 0);
-			return ForServerToServer(clientId, clientSecret, accountId, tokenIndices, tokenRepository, onTokenRefreshed);
+			var tokenRepository = new MemoryTokenRepository(null, null, DateTime.MinValue);
+			return ForServerToServer(clientId, clientSecret, accountId, tokenRepository, onTokenRefreshed);
 		}
 
 		/// <summary>
@@ -397,9 +386,6 @@ namespace ZoomNet
 		/// </summary>
 		/// <remarks>
 		/// Use this constructor when you want to use Server-to-Server OAuth authentication.
-		///
-		/// Also note that by default the only 'token index' available on a Zoom account is 0 (zero).
-		/// You have to contact Zoom support to enable additional indices if desired.
 		/// </remarks>
 		/// <param name="clientId">Your Client Id.</param>
 		/// <param name="clientSecret">Your Client Secret.</param>
@@ -409,9 +395,8 @@ namespace ZoomNet
 		/// <returns>The connection info.</returns>
 		public static OAuthConnectionInfo ForServerToServer(string clientId, string clientSecret, string accountId, string accessToken, OnTokenRefreshedDelegate onTokenRefreshed = null)
 		{
-			var tokenIndices = new[] { 0 };
-			var tokenRepository = new MemoryTokenRepository(null, accessToken, string.IsNullOrEmpty(accessToken) ? DateTime.MinValue : DateTime.MaxValue, 0);
-			return ForServerToServer(clientId, clientSecret, accountId, tokenIndices, tokenRepository, onTokenRefreshed);
+			var tokenRepository = new MemoryTokenRepository(null, accessToken, string.IsNullOrEmpty(accessToken) ? DateTime.MinValue : DateTime.MaxValue);
+			return ForServerToServer(clientId, clientSecret, accountId, tokenRepository, onTokenRefreshed);
 		}
 
 		/// <summary>
@@ -426,16 +411,14 @@ namespace ZoomNet
 		/// <param name="clientId">Your Client Id.</param>
 		/// <param name="clientSecret">Your Client Secret.</param>
 		/// <param name="accountId">Your Account Id.</param>
-		/// <param name="tokenIndices">The indices (also known as 'group numbers') that have been enabled by Zoom on your account.</param>
 		/// <param name="tokenRepository">The token repository.</param>
 		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed. In the Server-to-Server scenario, this delegate is optional.</param>
 		/// <returns>The connection info.</returns>
-		public static OAuthConnectionInfo ForServerToServer(string clientId, string clientSecret, string accountId, int[] tokenIndices, ITokenRepository tokenRepository, OnTokenRefreshedDelegate onTokenRefreshed = null)
+		public static OAuthConnectionInfo ForServerToServer(string clientId, string clientSecret, string accountId, ITokenRepository tokenRepository, OnTokenRefreshedDelegate onTokenRefreshed = null)
 		{
 			if (string.IsNullOrEmpty(clientId)) throw new ArgumentNullException(nameof(clientId));
 			if (string.IsNullOrEmpty(clientSecret)) throw new ArgumentNullException(nameof(clientSecret));
 			if (string.IsNullOrEmpty(accountId)) throw new ArgumentNullException(nameof(accountId));
-			if (tokenIndices == null || tokenIndices.Length == 0) throw new ArgumentNullException(nameof(tokenIndices));
 			if (tokenRepository == null) throw new ArgumentNullException(nameof(tokenRepository));
 
 			return new OAuthConnectionInfo
@@ -445,7 +428,6 @@ namespace ZoomNet
 				AccountId = accountId,
 				GrantType = OAuthGrantType.AccountCredentials,
 				OnTokenRefreshed = onTokenRefreshed,
-				TokenIndices = tokenIndices,
 				TokenRepository = tokenRepository,
 			};
 		}

@@ -43,7 +43,7 @@ namespace ZoomNet.Utilities
 		}
 
 		/// <inheritdoc/>
-		public async Task<(string RefreshToken, string AccessToken, DateTime TokenExpiration, int TokenIndex)> GetTokenInfoAsync(bool forceRefresh, (string RefreshToken, string AccessToken, DateTime TokenExpiration, int TokenIndex) previousTokenInfo, CancellationToken cancellationToken = default)
+		public async Task<(string RefreshToken, string AccessToken, DateTime TokenExpiration)> GetTokenInfoAsync(bool forceRefresh, (string RefreshToken, string AccessToken, DateTime TokenExpiration) previousTokenInfo, CancellationToken cancellationToken = default)
 		{
 			// Check if the previous token appears to be valid for a reasonable period of time (unless forceRefresh is true).
 			// The clock scew represents the "reasonable period of time" and is 5 minutes by default.
@@ -74,11 +74,6 @@ namespace ZoomNet.Utilities
 					{ "grant_type", _connectionInfo.GrantType.ToEnumString() },
 				};
 
-				// Switch to the next available token index
-				var nextArrayIndex = (Array.IndexOf(_connectionInfo.TokenIndices, currentTokenInfo.TokenIndex) + 1) % _connectionInfo.TokenIndices.Length;
-				var tokenIndex = _connectionInfo.TokenIndices[nextArrayIndex];
-				if (tokenIndex != 0) contentValues.Add("token_index", tokenIndex.ToString());
-
 				var requestTime = DateTime.UtcNow;
 				var request = new HttpRequestMessage(HttpMethod.Post, "https://api.zoom.us/oauth/token");
 				request.Headers.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes($"{_connectionInfo.ClientId}:{_connectionInfo.ClientSecret}")));
@@ -99,7 +94,7 @@ namespace ZoomNet.Utilities
 				var newRefreshToken = jsonResponse.GetPropertyValue("refresh_token", string.Empty);
 				var newAccessToken = jsonResponse.GetPropertyValue("access_token", string.Empty);
 				var newTokenExpiration = requestTime.AddSeconds(jsonResponse.GetPropertyValue("expires_in", 60 * 60));
-				currentTokenInfo = (newRefreshToken, newAccessToken, newTokenExpiration, tokenIndex);
+				currentTokenInfo = (newRefreshToken, newAccessToken, newTokenExpiration);
 
 				_connectionInfo.TokenScope = new ReadOnlyDictionary<string, string[]>(
 					jsonResponse.GetPropertyValue("scope", string.Empty)
@@ -115,7 +110,7 @@ namespace ZoomNet.Utilities
 				// Therefore change the grant type to 'RefreshToken' only when the response includes a refresh token.
 				if (!string.IsNullOrEmpty(newRefreshToken)) _connectionInfo.GrantType = OAuthGrantType.RefreshToken;
 
-				await _connectionInfo.TokenRepository.SaveTokenInfoAsync(newRefreshToken, newAccessToken, newTokenExpiration, tokenIndex, cancellationToken).ConfigureAwait(false);
+				await _connectionInfo.TokenRepository.SaveTokenInfoAsync(newRefreshToken, newAccessToken, newTokenExpiration, cancellationToken).ConfigureAwait(false);
 			}
 			catch (Exception e)
 			{
