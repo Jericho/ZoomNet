@@ -222,6 +222,49 @@ namespace ZoomNet
 		/// <returns>The connection info.</returns>
 		public static OAuthConnectionInfo WithClientCredentials(string clientId, string clientSecret)
 		{
+			return WithClientCredentials(clientId, clientSecret, null, null);
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="OAuthConnectionInfo"/> class.
+		/// </summary>
+		/// <remarks>
+		/// This constructor is used to get access token for APIs that do not
+		/// need a user's permission, but rather a service's permission.
+		/// Within the realm of Zoom APIs, Client Credentials grant should be
+		/// used to get access token from the Chatbot Service in order to use
+		/// the "Send Chatbot Messages API". See the "Using OAuth 2.0 / Client
+		/// Credentials" section in the "Using Zoom APIs" document for more details
+		/// (https://marketplace.zoom.us/docs/api-reference/using-zoom-apis).
+		/// </remarks>
+		/// <param name="clientId">Your Client Id.</param>
+		/// <param name="clientSecret">Your Client Secret.</param>
+		/// <param name="onTokenRefreshed">The delegate invoked when a token is issued.</param>
+		/// <returns>The connection info.</returns>
+		public static OAuthConnectionInfo WithClientCredentials(string clientId, string clientSecret, OnTokenRefreshedDelegate onTokenRefreshed)
+		{
+			return WithClientCredentials(clientId, clientSecret, null, onTokenRefreshed);
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="OAuthConnectionInfo"/> class.
+		/// </summary>
+		/// <remarks>
+		/// This constructor is used to get access token for APIs that do not
+		/// need a user's permission, but rather a service's permission.
+		/// Within the realm of Zoom APIs, Client Credentials grant should be
+		/// used to get access token from the Chatbot Service in order to use
+		/// the "Send Chatbot Messages API". See the "Using OAuth 2.0 / Client
+		/// Credentials" section in the "Using Zoom APIs" document for more details
+		/// (https://marketplace.zoom.us/docs/api-reference/using-zoom-apis).
+		/// </remarks>
+		/// <param name="clientId">Your Client Id.</param>
+		/// <param name="clientSecret">Your Client Secret.</param>
+		/// <param name="accessToken">The access token.</param>
+		/// <param name="onTokenRefreshed">The delegate invoked when a token is issued.</param>
+		/// <returns>The connection info.</returns>
+		public static OAuthConnectionInfo WithClientCredentials(string clientId, string clientSecret, string accessToken, OnTokenRefreshedDelegate onTokenRefreshed)
+		{
 			if (string.IsNullOrEmpty(clientId)) throw new ArgumentNullException(nameof(clientId));
 			if (string.IsNullOrEmpty(clientSecret)) throw new ArgumentNullException(nameof(clientSecret));
 
@@ -229,7 +272,10 @@ namespace ZoomNet
 			{
 				ClientId = clientId,
 				ClientSecret = clientSecret,
+				AccessToken = accessToken,
+				TokenExpiration = string.IsNullOrEmpty(accessToken) ? DateTime.MinValue : DateTime.MaxValue, // Set expiration to DateTime.MaxValue when an access token is provided because we don't know when it will expire
 				GrantType = OAuthGrantType.ClientCredentials,
+				OnTokenRefreshed = onTokenRefreshed,
 			};
 		}
 
@@ -253,7 +299,7 @@ namespace ZoomNet
 		/// <param name="clientId">Your Client Id.</param>
 		/// <param name="clientSecret">Your Client Secret.</param>
 		/// <param name="authorizationCode">The authorization code.</param>
-		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed.</param>
+		/// <param name="onTokenRefreshed">The delegate invoked when a token is issued.</param>
 		/// <param name="redirectUri">The Redirect Uri.</param>
 		/// <param name="codeVerifier">The cryptographically random string used to correlate the authorization request to the token request.</param>
 		/// <returns>The connection info.</returns>
@@ -285,7 +331,7 @@ namespace ZoomNet
 		/// <param name="clientId">Your Client Id.</param>
 		/// <param name="clientSecret">Your Client Secret.</param>
 		/// <param name="refreshToken">The refresh token.</param>
-		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed.</param>
+		/// <param name="onTokenRefreshed">The delegate invoked when a token is issued or refreshed.</param>
 		/// <returns>The connection info.</returns>
 		public static OAuthConnectionInfo WithRefreshToken(string clientId, string clientSecret, string refreshToken, OnTokenRefreshedDelegate onTokenRefreshed)
 		{
@@ -311,7 +357,7 @@ namespace ZoomNet
 		/// <param name="clientSecret">Your Client Secret.</param>
 		/// <param name="refreshToken">The refresh token.</param>
 		/// <param name="accessToken">(Optional) The access token. We recommend you specify a null value. See remarks for more details.</param>
-		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed.</param>
+		/// <param name="onTokenRefreshed">The delegate invoked when a token is issued or refreshed.</param>
 		/// <returns>The connection info.</returns>
 		public static OAuthConnectionInfo WithRefreshToken(string clientId, string clientSecret, string refreshToken, string accessToken, OnTokenRefreshedDelegate onTokenRefreshed)
 		{
@@ -340,7 +386,7 @@ namespace ZoomNet
 		/// <param name="clientId">Your Client Id.</param>
 		/// <param name="clientSecret">Your Client Secret.</param>
 		/// <param name="accountId">Your Account Id.</param>
-		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed. In the Server-to-Server scenario, this delegate is optional.</param>
+		/// <param name="onTokenRefreshed">The delegate invoked when a token is issued. In the Server-to-Server scenario, this delegate is optional.</param>
 		/// <returns>The connection info.</returns>
 		public static OAuthConnectionInfo ForServerToServer(string clientId, string clientSecret, string accountId, OnTokenRefreshedDelegate onTokenRefreshed = null)
 		{
@@ -366,7 +412,7 @@ namespace ZoomNet
 		/// <param name="clientSecret">Your Client Secret.</param>
 		/// <param name="accountId">Your Account Id.</param>
 		/// <param name="accessToken">(Optional) The access token. We recommend you specify a null value. See remarks for more details.</param>
-		/// <param name="onTokenRefreshed">The delegate invoked when the token is refreshed. In the Server-to-Server scenario, this delegate is optional.</param>
+		/// <param name="onTokenRefreshed">The delegate invoked when a token is issued. In the Server-to-Server scenario, this delegate is optional.</param>
 		/// <returns>The connection info.</returns>
 		public static OAuthConnectionInfo ForServerToServer(string clientId, string clientSecret, string accountId, string accessToken, OnTokenRefreshedDelegate onTokenRefreshed = null)
 		{
