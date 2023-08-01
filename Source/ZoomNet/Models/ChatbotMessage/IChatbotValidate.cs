@@ -3,7 +3,7 @@ using System;
 namespace ZoomNet.Models.ChatbotMessage;
 
 /// <summary>
-/// A Chatbot validator
+/// A Chatbot message validator.
 /// </summary>
 public interface IChatbotValidate
 {
