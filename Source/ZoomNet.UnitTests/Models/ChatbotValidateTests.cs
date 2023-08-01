@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using Xunit;
-using ZoomNet.Models;
 using ZoomNet.Models.ChatbotMessage;
 
-namespace ZoomNet.UnitTests.Models
+namespace ZoomNet.UnitTests.Resources
 {
 	public class ChatbotValidateTests
 	{
