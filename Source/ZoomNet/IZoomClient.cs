@@ -51,6 +51,14 @@ namespace ZoomNet
 		IDataCompliance DataCompliance { get; }
 
 		/// <summary>
+		/// Gets the resource which allows you to manage locations.
+		/// </summary>
+		/// <value>
+		/// The locations resource.
+		/// </value>
+		ILocations Locations { get; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage meetings.
 		/// </summary>
 		/// <value>
@@ -81,6 +89,14 @@ namespace ZoomNet
 		/// The roles resource.
 		/// </value>
 		IRoles Roles { get; }
+
+		/// <summary>
+    /// Gets the resource which allows you to manage rooms.
+		/// </summary>
+		/// <value>
+		/// The rooms resource.
+		/// </value>
+		IRooms Rooms { get; }
 
 		/// <summary>
 		/// Gets the resource which allows you to manage users.
