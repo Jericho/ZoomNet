@@ -149,7 +149,8 @@ namespace ZoomNet.IntegrationTests
 				typeof(Roles),
 				typeof(Users),
 				typeof(Webinars),
-				typeof(Reports)
+				typeof(Reports),
+				typeof(Chatbot)
 			};
 
 			// Get my user and permisisons
