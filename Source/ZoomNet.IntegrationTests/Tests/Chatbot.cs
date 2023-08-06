@@ -12,20 +12,22 @@ namespace ZoomNet.IntegrationTests.Tests;
 public class Chatbot : IIntegrationTest
 {
 	/// <inheritdoc />
-	public async Task RunAsync(User myUser, string[] myPermissions, IZoomClient client, TextWriter log,
-		CancellationToken cancellationToken)
+	public async Task RunAsync(User myUser, string[] myPermissions, IZoomClient client, TextWriter log, CancellationToken cancellationToken)
 	{
-		var accountId = myUser?.AccountId ?? "{accountId}";
-		var robotJId = "{robotId}@xmpp.zoom.us";
-		var toJId = "{userId}@xmpp.zoom.us"; // User
-		//var toJId = "{channelId}@conference.xmpp.zoom.us"; // Channel
+		var accountId = Environment.GetEnvironmentVariable("ZOOM_OAUTH_ACCOUNTID", EnvironmentVariableTarget.User);
+		var robotJId = Environment.GetEnvironmentVariable("ZOOM_CHATBOT_ROBOTJID", EnvironmentVariableTarget.User);
+		var toJId = Environment.GetEnvironmentVariable("ZOOM_CHATBOT_TOJID", EnvironmentVariableTarget.User);
+
 		var response = await client.Chatbot.SendMessageAsync(accountId, toJId, robotJId, "Test message", false, cancellationToken);
 		await log.WriteLineAsync(response.MessageId);
 		await Task.Delay(1000, cancellationToken);
+
 		response = await client.Chatbot.EditMessageAsync(response.MessageId, accountId, toJId, robotJId, "*Updated test message*", true, cancellationToken);
 		await Task.Delay(1000, cancellationToken);
+
 		response = await client.Chatbot.DeleteMessageAsync(response.MessageId, accountId, toJId, robotJId, cancellationToken);
 		await Task.Delay(1000, cancellationToken);
+
 		response = await client.Chatbot.SendMessageAsync(accountId, toJId, robotJId,
 			new ChatbotContent()
 			{
@@ -126,6 +128,7 @@ public class Chatbot : IIntegrationTest
 			}, true, cancellationToken);
 		await log.WriteLineAsync(response.MessageId);
 		await Task.Delay(1000, cancellationToken);
+
 		response = await client.Chatbot.EditMessageAsync(response.MessageId, accountId, toJId, robotJId,
 			new ChatbotContent()
 			{
@@ -228,7 +231,7 @@ public class Chatbot : IIntegrationTest
 				}
 			}, true, cancellationToken);
 		await Task.Delay(1000, cancellationToken);
-		response = await client.Chatbot.DeleteMessageAsync(response.MessageId, accountId, toJId, robotJId,
-			cancellationToken);
+
+		response = await client.Chatbot.DeleteMessageAsync(response.MessageId, accountId, toJId, robotJId, cancellationToken);
 	}
 }
