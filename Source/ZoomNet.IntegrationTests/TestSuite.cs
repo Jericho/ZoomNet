@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using ZoomNet.Models;
 
 namespace ZoomNet.IntegrationTests
 {
@@ -22,12 +23,15 @@ namespace ZoomNet.IntegrationTests
 
 		public Type[] Tests { get; init; }
 
-		public TestSuite(IConnectionInfo connectionInfo, IWebProxy proxy, ILoggerFactory loggerFactory, Type[] tests)
+		public bool FetchCurrentUserInfo { get; init; }
+
+		public TestSuite(IConnectionInfo connectionInfo, IWebProxy proxy, ILoggerFactory loggerFactory, Type[] tests, bool fetchCurrentUserInfo)
 		{
 			ConnectionInfo = connectionInfo;
 			Proxy = proxy;
 			LoggerFactory = loggerFactory;
 			Tests = tests;
+			FetchCurrentUserInfo = fetchCurrentUserInfo;
 		}
 
 		public virtual async Task<ResultCodes> RunTestsAsync()
@@ -44,9 +48,15 @@ namespace ZoomNet.IntegrationTests
 			var client = new ZoomClient(ConnectionInfo, Proxy, null, LoggerFactory.CreateLogger<ZoomClient>());
 
 			// Get my user and permisisons
-			var myUser = await client.Users.GetCurrentAsync(cts.Token).ConfigureAwait(false);
-			var myPermissions = await client.Users.GetCurrentPermissionsAsync(cts.Token).ConfigureAwait(false);
-			Array.Sort(myPermissions); // Sort permissions alphabetically for convenience
+			User currentUser = null;
+			string[] currentUserPermissions = Array.Empty<string>();
+
+			if (FetchCurrentUserInfo)
+			{
+				currentUser = await client.Users.GetCurrentAsync(cts.Token).ConfigureAwait(false);
+				currentUserPermissions = await client.Users.GetCurrentPermissionsAsync(cts.Token).ConfigureAwait(false);
+				Array.Sort(currentUserPermissions); // Sort permissions alphabetically for convenience
+			}
 
 			// Execute the async tests in parallel (with max degree of parallelism)
 			var results = await Tests.ForEachAsync(
@@ -57,7 +67,7 @@ namespace ZoomNet.IntegrationTests
 					try
 					{
 						var integrationTest = (IIntegrationTest)Activator.CreateInstance(testType);
-						await integrationTest.RunAsync(myUser, myPermissions, client, log, cts.Token).ConfigureAwait(false);
+						await integrationTest.RunAsync(currentUser, currentUserPermissions, client, log, cts.Token).ConfigureAwait(false);
 						return (TestName: testType.Name, ResultCode: ResultCodes.Success, Message: SUCCESSFUL_TEST_MESSAGE);
 					}
 					catch (OperationCanceledException)

@@ -23,7 +23,7 @@ namespace ZoomNet.IntegrationTests.TestSuites
 		};
 
 		public ApiTestSuite(IConnectionInfo connectionInfo, IWebProxy proxy, ILoggerFactory loggerFactory) :
-			base(connectionInfo, proxy, loggerFactory, _tests)
+			base(connectionInfo, proxy, loggerFactory, _tests, true)
 		{
 		}
 	}

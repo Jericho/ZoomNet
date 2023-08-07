@@ -13,7 +13,7 @@ namespace ZoomNet.IntegrationTests.TestSuites
 		};
 
 		public ChatbotTestSuite(IConnectionInfo connectionInfo, IWebProxy proxy, ILoggerFactory loggerFactory) :
-				base(connectionInfo, proxy, loggerFactory, _tests)
+				base(connectionInfo, proxy, loggerFactory, _tests, false)
 		{
 		}
 	}

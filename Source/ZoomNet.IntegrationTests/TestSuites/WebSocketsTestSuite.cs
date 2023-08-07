@@ -12,7 +12,7 @@ namespace ZoomNet.IntegrationTests.TestSuites
 		private readonly string _subscriptionId;
 
 		public WebSocketsTestSuite(IConnectionInfo connectionInfo, string subscriptionId, IWebProxy proxy, ILoggerFactory loggerFactory) :
-			base(connectionInfo, proxy, loggerFactory, Array.Empty<Type>())
+			base(connectionInfo, proxy, loggerFactory, Array.Empty<Type>(), false)
 		{
 			_subscriptionId = subscriptionId;
 		}
