@@ -2,7 +2,6 @@ using Pathoschild.Http.Client;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 using ZoomNet.Models;
 using ZoomNet.Models.ChatbotMessage;
 
