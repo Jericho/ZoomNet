@@ -29,6 +29,8 @@ namespace ZoomNet.IntegrationTests.TestSuites
 			// Configure ZoomNet GraphQL client
 			using var graphQLClient = new ZoomGraphQLClient(base.ConnectionInfo, base.Proxy, null, logger);
 
+			//var query = "{ user(userId:\"me\") { profile{id} } }";
+
 			var query = @"
 {
    user(userId:""me"", ){
