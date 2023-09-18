@@ -279,7 +279,7 @@ namespace ZoomNet.UnitTests
 			parsedEvent.Meeting.Id.ShouldBe(98884753832);
 			parsedEvent.Meeting.HostId.ShouldBe("8lzIwvZTSOqjndWPbPqzuA");
 			parsedEvent.Meeting.Topic.ShouldBe("ZoomNet Unit Testing: instant meeting");
-			parsedEvent.Meeting.Type.ShouldBe(Models.MeetingType.Instant);
+			parsedEvent.Meeting.Type.ShouldBe(MeetingType.Instant);
 			parsedEvent.Meeting.JoinUrl.ShouldBe("https://zoom.us/j/98884753832?pwd=c21EQzg0SXY2dlNTOFF2TENpSm1aQT09");
 			parsedEvent.Meeting.Password.ShouldBe("PaSsWoRd");
 			parsedEvent.Meeting.Settings.ShouldNotBeNull();
@@ -301,7 +301,7 @@ namespace ZoomNet.UnitTests
 			parsedEvent.Meeting.Id.ShouldBe(98884753832);
 			parsedEvent.Meeting.HostId.ShouldBe("8lzIwvZTSOqjndWPbPqzuA");
 			parsedEvent.Meeting.Topic.ShouldBe("ZoomNet Unit Testing: instant meeting");
-			parsedEvent.Meeting.Type.ShouldBe(Models.MeetingType.Instant);
+			parsedEvent.Meeting.Type.ShouldBe(MeetingType.Instant);
 			parsedEvent.Meeting.JoinUrl.ShouldBeNull();
 			parsedEvent.Meeting.Password.ShouldBeNull();
 			parsedEvent.Meeting.Settings.ShouldBeNull();
