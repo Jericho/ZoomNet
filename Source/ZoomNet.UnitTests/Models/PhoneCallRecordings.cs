@@ -79,12 +79,53 @@ namespace ZoomNet.UnitTests.Models
 			""disclaimer_status"": 1
 		}";
 
+		internal const string PHONE_CALL_RECORDING_TRANSCRIPT = @"{
+			""type"": ""zoom_transcript"",
+			""ver"": 1,
+			""recording_id"": ""1234abcd5678efgh9012ijkl3456mnop"",
+			""meeting_id"": ""abcdefghijklmnop1234567890123456"",
+			""account_id"": ""yIuKOPVYTg7FU0cIpgErD3"",
+			""host_id"": ""yg6gFTJIu88fdrtUOIGft5"",
+			""recording_start"": ""2023-09-16T12:34:56Z"",
+			""recording_end"": ""2023-09-16T12:35:21Z"",
+			""timeline"": [
+				{
+					""text"": ""Lorem Ipsum."",
+					""end_ts"": ""00:00:02.584"",
+					""ts"": ""00:00:00.789"",
+					""users"": [
+						{
+							""username"": ""+12345678901"",
+							""multiple_people"": false,
+							""user_id"": ""+12345678901"",
+							""zoom_userid"": ""Unknown Speaker"",
+							""client_type"": 2
+						}
+					]
+				},
+				{
+					""text"": ""Dolor sit amet."",
+					""end_ts"": ""00:00:04.923"",
+					""ts"": ""00:00:03.172"",
+					""users"": [
+						{
+							""username"": ""Callee Name"",
+							""multiple_people"": false,
+							""user_id"": ""123"",
+							""zoom_userid"": ""hYU_fr-6tdVBN0IPvvTxeR"",
+							""client_type"": 1
+						}
+					]
+				}
+			]
+		}";
+
 		#endregion
 
 		#region tests
 
 		[Fact]
-		public void Parse_json()
+		public void Parse_Json_PhoneCallRecording()
 		{
 			// Arrange
 
@@ -123,7 +164,7 @@ namespace ZoomNet.UnitTests.Models
 		}
 
 		[Fact]
-		public void Parse_json_2()
+		public void Parse_Json_PhoneCallRecording_Extended()
 		{
 			// Arrange
 
