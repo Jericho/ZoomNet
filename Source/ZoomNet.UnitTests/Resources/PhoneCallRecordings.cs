@@ -15,7 +15,7 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			string callId = "1234567890123456789";
-			
+
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp
 				.Expect(
@@ -68,9 +68,8 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.ShouldContainKey("recording_id");
-			result["recording_id"].GetValue<string>().ShouldBe(recordingId);
-			result.ShouldContainKey("timeline");
+			result.RecordingId.ShouldBe(recordingId);
+			result.TimelineFractions.ShouldNotBeNull();
 		}
 	}
 }

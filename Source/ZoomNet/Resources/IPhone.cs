@@ -1,4 +1,3 @@
-using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -37,13 +36,13 @@ namespace ZoomNet.Resources
 		/// <param name="recordingId">The call recording ID.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// The requested <see cref="JsonObject"/>, if any.
+		/// The requested <see cref="PhoneCallRecordingTranscript"/>, if any.
 		/// </returns>
 		/// <remarks>
 		/// See <a href="https://developers.zoom.us/docs/api/rest/reference/phone/methods/#operation/phoneDownloadRecordingTranscript">
 		/// Zoom endpoint documentation</a> for more information.
 		/// </remarks>
-		Task<JsonObject> GetRecordingTranscriptAsync(
+		Task<PhoneCallRecordingTranscript> GetRecordingTranscriptAsync(
 			string recordingId, CancellationToken cancellationToken = default);
 
 		#endregion

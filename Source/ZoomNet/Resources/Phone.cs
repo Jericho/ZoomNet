@@ -1,5 +1,4 @@
 using Pathoschild.Http.Client;
-using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -41,13 +40,13 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc cref="IPhone.GetRecordingTranscriptAsync" select="remarks"/>
-		public Task<JsonObject> GetRecordingTranscriptAsync(
+		public Task<PhoneCallRecordingTranscript> GetRecordingTranscriptAsync(
 			string recordingId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"phone/recording_transcript/download/{recordingId}")
 				.WithCancellationToken(cancellationToken)
-				.AsObject<JsonObject>();
+				.AsObject<PhoneCallRecordingTranscript>();
 		}
 
 		#endregion

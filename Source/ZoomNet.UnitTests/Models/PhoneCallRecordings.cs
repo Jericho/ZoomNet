@@ -99,7 +99,7 @@ namespace ZoomNet.UnitTests.Models
 							""multiple_people"": false,
 							""user_id"": ""+12345678901"",
 							""zoom_userid"": ""Unknown Speaker"",
-							""client_type"": 2
+							""client_type"": 0
 						}
 					]
 				},
@@ -110,12 +110,25 @@ namespace ZoomNet.UnitTests.Models
 					""users"": [
 						{
 							""username"": ""Callee Name"",
-							""multiple_people"": false,
+							""multiple_people"": true,
 							""user_id"": ""123"",
 							""zoom_userid"": ""hYU_fr-6tdVBN0IPvvTxeR"",
 							""client_type"": 1
+						},
+						{
+							""username"": ""+12345678901"",
+							""multiple_people"": false,
+							""user_id"": ""+12345678901"",
+							""zoom_userid"": ""Unknown Speaker"",
+							""client_type"": 0
 						}
 					]
+				},
+				{
+					""text"": ""Consectetur adipiscing elit."",
+					""end_ts"": ""00:00:05.000"",
+					""ts"": ""00:00:08.435"",
+					""users"": []
 				}
 			]
 		}";
@@ -202,6 +215,59 @@ namespace ZoomNet.UnitTests.Models
 			result.Site.Name.ShouldBe("Site Name");
 			result.EndDateTime.ShouldBe(new DateTime(2023, 9, 16, 12, 35, 21, DateTimeKind.Utc));
 			result.DisclaimerStatus.ShouldBe(PhoneCallRecordingDisclaimerStatus.Agree);
+		}
+
+		[Fact]
+		public void Parse_Json_PhoneCallRecordingTranscript()
+		{
+			// Arrange
+
+			// Act
+			var result = JsonSerializer.Deserialize<PhoneCallRecordingTranscript>(
+				PHONE_CALL_RECORDING_TRANSCRIPT, JsonFormatter.SerializerOptions);
+
+			// Assert
+			result.ShouldNotBeNull();
+			result.Type.ShouldBe("zoom_transcript");
+			result.Version.ShouldBe(1);
+			result.RecordingId.ShouldBe("1234abcd5678efgh9012ijkl3456mnop");
+			result.MeetingId.ShouldBe("abcdefghijklmnop1234567890123456");
+			result.AccountId.ShouldBe("yIuKOPVYTg7FU0cIpgErD3");
+			result.HostId.ShouldBe("yg6gFTJIu88fdrtUOIGft5");
+			result.StartDateTime.ShouldBe(new DateTime(2023, 9, 16, 12, 34, 56, DateTimeKind.Utc));
+			result.EndDateTime.ShouldBe(new DateTime(2023, 9, 16, 12, 35, 21, DateTimeKind.Utc));
+			result.TimelineFractions.ShouldNotBeNull();
+			result.TimelineFractions.Length.ShouldBe(3);
+			result.TimelineFractions[0].Text.ShouldBe("Lorem Ipsum.");
+			result.TimelineFractions[0].StartTimeSpan.ShouldBe(TimeSpan.Parse("00:00:00.789"));
+			result.TimelineFractions[0].EndTimeSpan.ShouldBe(TimeSpan.Parse("00:00:02.584"));
+			result.TimelineFractions[0].Users.ShouldNotBeNull();
+			result.TimelineFractions[0].Users.Length.ShouldBe(1);
+			result.TimelineFractions[0].Users[0].Username.ShouldBe("+12345678901");
+			result.TimelineFractions[0].Users[0].IsMultiplePeople.ShouldBeFalse();
+			result.TimelineFractions[0].Users[0].UserId.ShouldBe("+12345678901");
+			result.TimelineFractions[0].Users[0].ZoomUserId.ShouldBe("Unknown Speaker");
+			result.TimelineFractions[0].Users[0].ClientType.ShouldBe(0);
+			result.TimelineFractions[1].Text.ShouldBe("Dolor sit amet.");
+			result.TimelineFractions[1].StartTimeSpan.ShouldBe(TimeSpan.Parse("00:00:03.172"));
+			result.TimelineFractions[1].EndTimeSpan.ShouldBe(TimeSpan.Parse("00:00:04.923"));
+			result.TimelineFractions[1].Users.ShouldNotBeNull();
+			result.TimelineFractions[1].Users.Length.ShouldBe(2);
+			result.TimelineFractions[1].Users[0].Username.ShouldBe("Callee Name");
+			result.TimelineFractions[1].Users[0].IsMultiplePeople.ShouldBeTrue();
+			result.TimelineFractions[1].Users[0].UserId.ShouldBe("123");
+			result.TimelineFractions[1].Users[0].ZoomUserId.ShouldBe("hYU_fr-6tdVBN0IPvvTxeR");
+			result.TimelineFractions[1].Users[0].ClientType.ShouldBe(1);
+			result.TimelineFractions[1].Users[1].Username.ShouldBe("+12345678901");
+			result.TimelineFractions[1].Users[1].IsMultiplePeople.ShouldBeFalse();
+			result.TimelineFractions[1].Users[1].UserId.ShouldBe("+12345678901");
+			result.TimelineFractions[1].Users[1].ZoomUserId.ShouldBe("Unknown Speaker");
+			result.TimelineFractions[1].Users[1].ClientType.ShouldBe(0);
+			result.TimelineFractions[2].Text.ShouldBe("Consectetur adipiscing elit.");
+			result.TimelineFractions[2].StartTimeSpan.ShouldBe(TimeSpan.Parse("00:00:08.435"));
+			result.TimelineFractions[2].EndTimeSpan.ShouldBe(TimeSpan.Parse("00:00:05.000"));
+			result.TimelineFractions[2].Users.ShouldNotBeNull();
+			result.TimelineFractions[2].Users.Length.ShouldBe(0);
 		}
 
 		#endregion
