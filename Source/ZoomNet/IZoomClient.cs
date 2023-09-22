@@ -117,5 +117,10 @@ namespace ZoomNet
 		/// Gets the resource which allows you to manage chatbot messages.
 		/// </summary>
 		IChatbot Chatbot { get; }
+
+		/// <summary>
+		/// Gets the resource which allows you to access Zoom Phone API endpoints.
+		/// </summary>
+		IPhone Phone { get; }
 	}
 }
