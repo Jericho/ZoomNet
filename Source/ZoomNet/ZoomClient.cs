@@ -161,6 +161,14 @@ namespace ZoomNet
 		/// </summary>
 		public ICallLogs CallLogs { get; private set; }
 
+		/// <summary>
+		/// Gets the resource which allows you to manage chatbot messages.
+		/// </summary>
+		public IChatbot Chatbot { get; private set; }
+
+		/// <inheritdoc/>
+		public IPhone Phone { get; private set; }
+
 		#endregion
 
 		#region CTOR
@@ -265,6 +273,8 @@ namespace ZoomNet
 			Dashboards = new Dashboards(_fluentClient);
 			Reports = new Reports(_fluentClient);
 			CallLogs = new CallLogs(_fluentClient);
+			Chatbot = new Chatbot(_fluentClient);
+			Phone = new Phone(_fluentClient);
 		}
 
 		/// <summary>
