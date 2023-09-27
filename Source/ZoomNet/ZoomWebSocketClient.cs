@@ -155,7 +155,20 @@ namespace ZoomNet
 		{
 			var jsonDoc = JsonDocument.Parse(msg.Text);
 			var module = jsonDoc.RootElement.GetPropertyValue("module", string.Empty);
+			var success = jsonDoc.RootElement.GetPropertyValue("success", true);
 			var content = jsonDoc.RootElement.GetPropertyValue("content", string.Empty);
+
+			if (content.Equals("Invalid Token", StringComparison.OrdinalIgnoreCase))
+			{
+				_logger.LogTrace("{module}. Token is invalid (presumably expired). Requesting a new token...", module);
+				_tokenHandler.RefreshTokenIfNecessary(true);
+				return;
+			}
+			else if (!success)
+			{
+				_logger.LogTrace("FAILURE: Received message: {module}. {content}", module, content);
+				return;
+			}
 
 			switch (module)
 			{
