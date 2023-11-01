@@ -756,6 +756,13 @@ namespace ZoomNet
 		internal static bool TryToEnumString<T>(this T enumValue, out string stringValue)
 			where T : Enum
 		{
+			var multipleValuesEnumMemberAttribute = enumValue.GetAttributeOfType<MultipleValuesEnumMemberAttribute>();
+			if (multipleValuesEnumMemberAttribute != null)
+			{
+				stringValue = multipleValuesEnumMemberAttribute.DefaultValue;
+				return true;
+			}
+
 			var enumMemberAttribute = enumValue.GetAttributeOfType<EnumMemberAttribute>();
 			if (enumMemberAttribute != null)
 			{
@@ -801,6 +808,14 @@ namespace ZoomNet
 			foreach (var name in Enum.GetNames(enumType))
 			{
 				var customAttributes = enumType.GetField(name).GetCustomAttributes(true);
+
+				// See if there's a matching 'MultipleValuesEnumMember' attribute
+				if (customAttributes.OfType<MultipleValuesEnumMemberAttribute>().Any(attribute => string.Equals(attribute.DefaultValue, str, StringComparison.OrdinalIgnoreCase) ||
+					(attribute.OtherValues ?? Array.Empty<string>()).Any(otherValue => string.Equals(otherValue, str, StringComparison.OrdinalIgnoreCase))))
+				{
+					enumValue = (T)Enum.Parse(enumType, name);
+					return true;
+				}
 
 				// See if there's a matching 'EnumMember' attribute
 				if (customAttributes.OfType<EnumMemberAttribute>().Any(attribute => string.Equals(attribute.Value, str, StringComparison.OrdinalIgnoreCase)))

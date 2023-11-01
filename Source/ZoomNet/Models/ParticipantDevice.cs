@@ -1,4 +1,5 @@
 using System.Runtime.Serialization;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.Models
 {
@@ -28,7 +29,7 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// The participant joined via VoIP using a Windows device.
 		/// </summary>
-		[EnumMember(Value = "Windows")]
+		[MultipleValuesEnumMember(DefaultValue = "Windows", OtherValues = new[] { "WIN" })]
 		Windows,
 
 		/// <summary>
