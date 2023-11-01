@@ -205,6 +205,11 @@ namespace ZoomNet
 
 			if (_websocketClient != null)
 			{
+				if (_websocketClient.IsRunning)
+				{
+					_websocketClient.Stop(WebSocketCloseStatus.NormalClosure, "Shutting down").GetAwaiter().GetResult();
+				}
+
 				_websocketClient.Dispose();
 				_websocketClient = null;
 			}
