@@ -516,7 +516,7 @@ namespace ZoomNet.UnitTests.Resources
 			var recordings = new CloudRecordings(client);
 
 			// Act
-			var result = await recordings.GetRecordingsForUserAsync(userId, false, from, to, recordsPerPage, null, CancellationToken.None).ConfigureAwait(false);
+			var result = await recordings.GetRecordingsForUserAsync(userId, false, from, to, recordsPerPage, null, CancellationToken.None).ConfigureAwait(true);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();

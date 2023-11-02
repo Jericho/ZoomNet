@@ -171,23 +171,19 @@ namespace ZoomNet
 
 				// This is important: we must make a copy of the response stream otherwise we would get an
 				// exception on subsequent attempts to read the content of the stream
-				using (var ms = Utils.MemoryStreamManager.GetStream())
-				{
-					const int DefaultBufferSize = 81920;
-					await contentStream.CopyToAsync(ms, DefaultBufferSize, cancellationToken).ConfigureAwait(false);
-					ms.Position = 0;
-					using (var sr = new StreamReader(ms, encoding))
-					{
+				using var ms = Utils.MemoryStreamManager.GetStream();
+				const int DefaultBufferSize = 81920;
+				await contentStream.CopyToAsync(ms, DefaultBufferSize, cancellationToken).ConfigureAwait(false);
+				ms.Position = 0;
+				using var sr = new StreamReader(ms, encoding);
 #if NET7_0_OR_GREATER
-						content = await sr.ReadToEndAsync(cancellationToken).ConfigureAwait(false);
+				content = await sr.ReadToEndAsync(cancellationToken).ConfigureAwait(false);
 #else
-						content = await sr.ReadToEndAsync().ConfigureAwait(false);
+				content = await sr.ReadToEndAsync().ConfigureAwait(false);
 #endif
-					}
 
-					// It's important to rewind the stream
-					if (contentStream.CanSeek) contentStream.Position = 0;
-				}
+				// It's important to rewind the stream
+				if (contentStream.CanSeek) contentStream.Position = 0;
 			}
 
 			return content;
@@ -525,54 +521,50 @@ namespace ZoomNet
 		internal static async Task<TResult[]> ForEachAsync<T, TResult>(this IEnumerable<T> items, Func<T, Task<TResult>> action, int maxDegreeOfParalellism)
 		{
 			var allTasks = new List<Task<TResult>>();
-			using (var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism))
+			using var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism);
+			foreach (var item in items)
 			{
-				foreach (var item in items)
-				{
-					await throttler.WaitAsync();
-					allTasks.Add(
-						Task.Run(async () =>
+				await throttler.WaitAsync();
+				allTasks.Add(
+					Task.Run(async () =>
+					{
+						try
 						{
-							try
-							{
-								return await action(item).ConfigureAwait(false);
-							}
-							finally
-							{
-								throttler.Release();
-							}
-						}));
-				}
-
-				var results = await Task.WhenAll(allTasks).ConfigureAwait(false);
-				return results;
+							return await action(item).ConfigureAwait(false);
+						}
+						finally
+						{
+							throttler.Release();
+						}
+					}));
 			}
+
+			var results = await Task.WhenAll(allTasks).ConfigureAwait(false);
+			return results;
 		}
 
 		internal static async Task ForEachAsync<T>(this IEnumerable<T> items, Func<T, Task> action, int maxDegreeOfParalellism)
 		{
 			var allTasks = new List<Task>();
-			using (var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism))
+			using var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism);
+			foreach (var item in items)
 			{
-				foreach (var item in items)
-				{
-					await throttler.WaitAsync();
-					allTasks.Add(
-						Task.Run(async () =>
+				await throttler.WaitAsync();
+				allTasks.Add(
+					Task.Run(async () =>
+					{
+						try
 						{
-							try
-							{
-								await action(item).ConfigureAwait(false);
-							}
-							finally
-							{
-								throttler.Release();
-							}
-						}));
-				}
-
-				await Task.WhenAll(allTasks).ConfigureAwait(false);
+							await action(item).ConfigureAwait(false);
+						}
+						finally
+						{
+							throttler.Release();
+						}
+					}));
 			}
+
+			await Task.WhenAll(allTasks).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -764,6 +756,13 @@ namespace ZoomNet
 		internal static bool TryToEnumString<T>(this T enumValue, out string stringValue)
 			where T : Enum
 		{
+			var multipleValuesEnumMemberAttribute = enumValue.GetAttributeOfType<MultipleValuesEnumMemberAttribute>();
+			if (multipleValuesEnumMemberAttribute != null)
+			{
+				stringValue = multipleValuesEnumMemberAttribute.DefaultValue;
+				return true;
+			}
+
 			var enumMemberAttribute = enumValue.GetAttributeOfType<EnumMemberAttribute>();
 			if (enumMemberAttribute != null)
 			{
@@ -809,6 +808,14 @@ namespace ZoomNet
 			foreach (var name in Enum.GetNames(enumType))
 			{
 				var customAttributes = enumType.GetField(name).GetCustomAttributes(true);
+
+				// See if there's a matching 'MultipleValuesEnumMember' attribute
+				if (customAttributes.OfType<MultipleValuesEnumMemberAttribute>().Any(attribute => string.Equals(attribute.DefaultValue, str, StringComparison.OrdinalIgnoreCase) ||
+					(attribute.OtherValues ?? Array.Empty<string>()).Any(otherValue => string.Equals(otherValue, str, StringComparison.OrdinalIgnoreCase))))
+				{
+					enumValue = (T)Enum.Parse(enumType, name);
+					return true;
+				}
 
 				// See if there's a matching 'EnumMember' attribute
 				if (customAttributes.OfType<EnumMemberAttribute>().Any(attribute => string.Equals(attribute.Value, str, StringComparison.OrdinalIgnoreCase)))

@@ -22,11 +22,8 @@ namespace ZoomNet.IntegrationTests.TestSuites
 			var logger = base.LoggerFactory.CreateLogger<ZoomWebSocketClient>();
 			var eventProcessor = new Func<Event, CancellationToken, Task>(async (webhookEvent, cancellationToken) =>
 			{
-				if (!cancellationToken.IsCancellationRequested)
-				{
-					logger.LogInformation("Processing {eventType} event...", webhookEvent.EventType);
-					await Task.Delay(1, cancellationToken).ConfigureAwait(false); // This async call gets rid of "CS1998 This async method lacks 'await' operators and will run synchronously".
-				}
+				logger.LogInformation("Processing {eventType} event...", webhookEvent.EventType);
+				await Task.Delay(1, cancellationToken).ConfigureAwait(false); // This async call gets rid of "CS1998 This async method lacks 'await' operators and will run synchronously".
 			});
 
 			// Configure cancellation (this allows you to press CTRL+C or CTRL+Break to stop the websocket client)
