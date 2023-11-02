@@ -54,6 +54,12 @@ namespace ZoomNet.Models
 		/// The participant joined via the web.
 		/// </summary>
 		[EnumMember(Value = "Web")]
-		Web
+		Web,
+
+		/// <summary>
+		/// The participant joined via a Zoom Room.
+		/// </summary>
+		[EnumMember(Value = "Zoom Rooms")]
+		ZoomRoom
 	}
 }
