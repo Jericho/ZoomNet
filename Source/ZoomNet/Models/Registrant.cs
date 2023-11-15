@@ -130,7 +130,7 @@ namespace ZoomNet.Models
 		/// Gets or sets the date and time when the registrant was created.
 		/// </summary>
 		/// <value>The registrant created time.</value>
-		[JsonPropertyName("created_time")]
+		[JsonPropertyName("create_time")]
 		public DateTime CreatedOn { get; set; }
 
 		/// <summary>
