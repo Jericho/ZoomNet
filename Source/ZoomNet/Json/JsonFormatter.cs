@@ -86,10 +86,19 @@ namespace ZoomNet.Json
 		{
 			if (type == typeof(JsonObject))
 			{
-				// As of .NET 6.0, serializing a JsonObject does NOT respect 'JsonIgnoreCondition.WhenWritingNull'.
-				// This is a documented shortcoming that is currently considered "as designed" by the .NET team.
-				// See: https://github.com/dotnet/runtime/issues/54184 and https://github.com/dotnet/docs/issues/27824
-				// Hopefully, this will be addressed and this workaround will no longer be necessary in .NET 7.0
+				/*
+					When upgrading to .NET 6.0, I discovered that serializing a JsonObject does NOT respect 'JsonIgnoreCondition.WhenWritingNull'.
+					This is a documented shortcoming that is currently considered "as designed" by the .NET team.
+					See: https://github.com/dotnet/runtime/issues/54184 and https://github.com/dotnet/docs/issues/27824
+
+					This behavior has not changed in .NET 7.0.
+
+					Microsoft made the decision to keep the behavior but improve the documentation to ensure developers are aware of it:
+					https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/use-dom#jsonnode-with-jsonserializeroptions
+
+					That's why I wrote the following workaround which removes properties that contain a null value prior to serializing the JsonObject.
+				*/
+
 				var valueAsJsonObject = (JsonObject)value;
 				var nullProperties = valueAsJsonObject
 					.Where(kvp => kvp.Value == null)
