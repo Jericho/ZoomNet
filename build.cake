@@ -3,7 +3,7 @@
 #tool dotnet:?package=coveralls.net&version=4.0.1
 #tool nuget:?package=GitReleaseManager&version=0.16.0
 #tool nuget:?package=ReportGenerator&version=5.2.0
-#tool nuget:?package=xunit.runner.console&version=2.6.1
+#tool nuget:?package=xunit.runner.console&version=2.6.2
 #tool nuget:?package=CodecovUploader&version=0.7.1
 
 // Install addins.
