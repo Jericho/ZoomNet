@@ -68,8 +68,8 @@ var zoomClient = new ZoomClient(connectionInfo);
 Using OAuth is much more complicated than using JWT but at the same time, it is more flexible because you can define which permissions your app requires. When a user installs your app, they are presented with the list of permissions your app requires and they are given the opportunity to accept. 
 
 The Zoom documentation has a document about [how to create an OAuth app](https://marketplace.zoom.us/docs/guides/build/oauth-app) and another document about the [OAuth autorization flow](https://marketplace.zoom.us/docs/guides/auth/oauth) but I personnality was very confused by the later document so here is a brief step-by-step summary:
-- you create an OAuth app, define which permissions your app requires and publish the app in the Zoom marketplace.
-- user installs your app. During installation, user is presentd with a screen listing the permissons your app requires. User must click `accept`.
+- you create an OAuth app, define which permissions your app requires and publish the app to the Zoom marketplace.
+- user installs your app. During installation, user is presented with a screen listing the permissons your app requires. User must click `accept`.
 - Zoom generates an "authorization code". This code can be used only once to generate the first access token and refresh token. I CAN'T STRESS THIS ENOUGH: the authorization code can be used only one time. This was the confusing part to me: somehow I didn't understand that this code could be used only one time and I was attempting to use it repeatedly. Zoom would accept the code the first time and would reject it subsequently, which lead to many hours of frustration while trying to figure out why the code was sometimes rejected.
 - The access token is valid for 60 minutes and must therefore be "refreshed" periodically.
 
