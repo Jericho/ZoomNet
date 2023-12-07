@@ -6,6 +6,7 @@ namespace ZoomNet.Json
 	[JsonSerializable(typeof(System.Text.Json.Nodes.JsonObject[]))]
 
 	[JsonSerializable(typeof(ZoomNet.Models.Account))]
+	[JsonSerializable(typeof(ZoomNet.Models.AccountCallLog))]
 	[JsonSerializable(typeof(ZoomNet.Models.ApprovalType))]
 	[JsonSerializable(typeof(ZoomNet.Models.Assistant))]
 	[JsonSerializable(typeof(ZoomNet.Models.AttendeeChatSaveType))]
@@ -27,8 +28,12 @@ namespace ZoomNet.Json
 	[JsonSerializable(typeof(ZoomNet.Models.CallLogCallType))]
 	[JsonSerializable(typeof(ZoomNet.Models.CallLogDirection))]
 	[JsonSerializable(typeof(ZoomNet.Models.CallLogNumberSource))]
+	[JsonSerializable(typeof(ZoomNet.Models.CallLogOwnerInfo))]
+	[JsonSerializable(typeof(ZoomNet.Models.CallLogOwnerType))]
+	[JsonSerializable(typeof(ZoomNet.Models.CallLogPathType))]
 	[JsonSerializable(typeof(ZoomNet.Models.CallLogResult))]
 	[JsonSerializable(typeof(ZoomNet.Models.CallLogSite))]
+	[JsonSerializable(typeof(ZoomNet.Models.CallLogTimeType))]
 	[JsonSerializable(typeof(ZoomNet.Models.CallLogTransferInfo))]
 	[JsonSerializable(typeof(ZoomNet.Models.CallLogTransferInfoExtensionType))]
 	[JsonSerializable(typeof(ZoomNet.Models.CallLogTransferInfoNumberType))]
@@ -282,6 +287,7 @@ namespace ZoomNet.Json
 	[JsonSerializable(typeof(ZoomNet.Models.ZoomRoomWithIssuesReport))]
 
 	[JsonSerializable(typeof(ZoomNet.Models.Account[]))]
+	[JsonSerializable(typeof(ZoomNet.Models.AccountCallLog[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.ApprovalType[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.Assistant[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.AttendeeChatSaveType[]))]
