@@ -66,15 +66,16 @@ namespace ZoomNet.Resources
 		/// <param name="to">The end date.</param>
 		/// <param name="type">Type of call log.</param>
 		/// <param name="pathType">Filter the API response by path of the call.</param>
-		/// <param name="recordsPerPage">The number of records to return.</param>
-		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="timeType">Enables you to search call logs by start or end time.</param>
 		/// <param name="siteId">Unique identifier of the site. Use this query parameter if you have enabled multiple sites and would like to filter the response of this API call by call logs of a specific phone site.</param>
 		/// <param name="chargedCallLogs">Whether to filter API responses to include call logs that only have a non-zero charge.</param>
+		/// <param name="recordsPerPage">The number of records to return.</param>
+		/// <param name="pagingToken">The paging token.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// An array of <see cref="AccountCallLog" />.
 		/// </returns>
-		public Task<PaginatedResponseWithTokenAndDateRange<AccountCallLog>> GetAsync(DateTime? from = null, DateTime? to = null, CallLogType type = CallLogType.All, CallLogPathType? pathType = null, int recordsPerPage = 30, string pagingToken = null, string siteId = null, bool chargedCallLogs = false, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithTokenAndDateRange<AccountCallLog>> GetAsync(DateTime? from = null, DateTime? to = null, CallLogType type = CallLogType.All, CallLogPathType? pathType = null, CallLogTimeType? timeType = CallLogTimeType.StartTime, string siteId = null, bool chargedCallLogs = false, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 			{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -87,6 +88,7 @@ namespace ZoomNet.Resources
 				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
 				.WithArgument("type", type.ToEnumString())
 				.WithArgument("path", pathType?.ToEnumString())
+				.WithArgument("timeType", timeType?.ToEnumString())
 				.WithArgument("site_id", siteId)
 				.WithArgument("charged_call_logs", chargedCallLogs)
 				.WithArgument("page_size", recordsPerPage)

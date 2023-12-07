@@ -33,6 +33,7 @@ namespace ZoomNet.Json
 	[JsonSerializable(typeof(ZoomNet.Models.CallLogPathType))]
 	[JsonSerializable(typeof(ZoomNet.Models.CallLogResult))]
 	[JsonSerializable(typeof(ZoomNet.Models.CallLogSite))]
+	[JsonSerializable(typeof(ZoomNet.Models.CallLogTimeType))]
 	[JsonSerializable(typeof(ZoomNet.Models.CallLogTransferInfo))]
 	[JsonSerializable(typeof(ZoomNet.Models.CallLogTransferInfoExtensionType))]
 	[JsonSerializable(typeof(ZoomNet.Models.CallLogTransferInfoNumberType))]
