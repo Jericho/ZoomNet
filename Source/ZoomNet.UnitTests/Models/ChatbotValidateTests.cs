@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Xunit;
 using ZoomNet.Models.ChatbotMessage;
 
-namespace ZoomNet.UnitTests.Resources
+namespace ZoomNet.UnitTests.Models
 {
 	public class ChatbotValidateTests
 	{

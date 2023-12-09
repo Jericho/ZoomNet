@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using ZoomNet.Json;
 
 namespace ZoomNet.Models
 {
@@ -118,6 +119,7 @@ namespace ZoomNet.Models
 		/// Gets or sets the custom questions.
 		/// </summary>
 		[JsonPropertyName("custom_questions")]
+		[JsonConverter(typeof(CustomQuestionsAnswersConverter))]
 		public KeyValuePair<string, string>[] CustomQuestions { get; set; }
 
 		/// <summary>
