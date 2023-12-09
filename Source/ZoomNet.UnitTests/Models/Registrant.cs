@@ -4,7 +4,7 @@ using Xunit;
 using ZoomNet.Json;
 using ZoomNet.Models;
 
-namespace ZoomNet.UnitTests.Resources
+namespace ZoomNet.UnitTests.Models
 {
 	public class RegistrantTests
 	{
