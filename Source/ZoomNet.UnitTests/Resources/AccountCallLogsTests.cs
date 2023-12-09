@@ -12,7 +12,8 @@ using ZoomNet.Resources;
 
 namespace ZoomNet.UnitTests.Resources
 {
-	public class AccountCallLogsTests {
+	public class AccountCallLogsTests
+	{
 		#region FIELDS
 
 		private const string SINGLE_ACCOUNT_CALL_LOGS_JSON = @"
@@ -237,7 +238,7 @@ namespace ZoomNet.UnitTests.Resources
   ]
 }
 ";
-		
+
 		#endregion
 
 		[Fact]
