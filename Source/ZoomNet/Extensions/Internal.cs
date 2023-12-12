@@ -51,7 +51,7 @@ namespace ZoomNet
 		{
 			if (precision == UnixTimePrecision.Seconds) return EPOCH.AddSeconds(unixTime);
 			if (precision == UnixTimePrecision.Milliseconds) return EPOCH.AddMilliseconds(unixTime);
-			throw new Exception($"Unknown precision: {precision}");
+			throw new ArgumentException($"Unknown precision: {precision}");
 		}
 
 		/// <summary>
@@ -68,7 +68,7 @@ namespace ZoomNet
 			var diff = date.ToUniversalTime() - EPOCH;
 			if (precision == UnixTimePrecision.Seconds) return Convert.ToInt64(diff.TotalSeconds);
 			if (precision == UnixTimePrecision.Milliseconds) return Convert.ToInt64(diff.TotalMilliseconds);
-			throw new Exception($"Unknown precision: {precision}");
+			throw new ArgumentException($"Unknown precision: {precision}");
 		}
 
 		/// <summary>
