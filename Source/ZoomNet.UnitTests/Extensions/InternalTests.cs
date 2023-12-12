@@ -115,6 +115,62 @@ namespace ZoomNet.UnitTests.Extensions
 			}
 		}
 
+		public class ToZoomFormat
+		{
+			// Note to self:
+			// I'm using TheoryData because can't use DateTime with InlineData: 
+			// Error CS0182  An attribute argument must be a constant expression, typeof expression or array creation expression of an attribute parameter type
+			public static TheoryData<DateTime, string, string> SampleUtcDates = new TheoryData<DateTime, string, string>()
+			{
+				{ new DateTime(2023, 12, 12, 12, 14, 0, 0, DateTimeKind.Utc), "2023-12-12", "2023-12-12T12:14:00Z" },
+			};
+
+			[Theory, MemberData(nameof(SampleUtcDates))]
+			public void Successfully_converts_UTC_to_string(DateTime date, string expectedDateOnly, string expectedWithTime)
+			{
+				// Act
+				var resultDateOnly = date.ToZoomFormat(TimeZones.UTC, true);
+				var resultWithTime = date.ToZoomFormat(TimeZones.UTC, false);
+
+				// Assert
+				resultDateOnly.ShouldBe(expectedDateOnly);
+				resultWithTime.ShouldBe(expectedWithTime);
+			}
+
+			// Note to self:
+			// I'm using TheoryData because can't use DateTime with InlineData: 
+			// Error CS0182  An attribute argument must be a constant expression, typeof expression or array creation expression of an attribute parameter type
+			public static TheoryData<DateTime, string, string> SampleLocalDates = new TheoryData<DateTime, string, string>()
+			{
+				{ new DateTime(2023, 12, 12, 12, 14, 0, 0, DateTimeKind.Local), "2023-12-12", "2023-12-12T12:14:00" },
+			};
+
+			[Theory, MemberData(nameof(SampleLocalDates))]
+			public void Successfully_converts_Local_to_string(DateTime date, string expectedDateOnly, string expectedWithTime)
+			{
+				// Act
+				var resultDateOnly = date.ToZoomFormat(TimeZones.America_Montreal, true);
+				var resultWithTime = date.ToZoomFormat(TimeZones.America_Montreal, false);
+
+				// Assert
+				resultDateOnly.ShouldBe(expectedDateOnly);
+				resultWithTime.ShouldBe(expectedWithTime);
+			}
+
+			[Fact]
+			public void Returns_null_when_null()
+			{
+				// Arrange
+				var date = (DateTime?)null;
+
+				// Act
+				var result = date.ToZoomFormat();
+
+				// Assert
+				result.ShouldBeNull();
+			}
+		}
+
 		public class AsPaginatedResponse
 		{
 			[Fact]
