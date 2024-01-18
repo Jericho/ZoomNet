@@ -46,5 +46,18 @@ namespace ZoomNet.Resources
 			string recordingId, CancellationToken cancellationToken = default);
 
 		#endregion
+
+		#region Users Endpoints
+
+		/// <summary>
+		/// Retrieves the phone call user profile for the specified user ID asynchronously.
+		/// </summary>
+		/// <param name="userId">The ID of the user for which to retrieve the phone call user profile.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task representing the asynchronous operation. The task result contains the phone call user profile.</returns>
+		Task<PhoneCallUserProfile> GetPhoneCallUserProfileAsync(
+			string userId, CancellationToken cancellationToken = default);
+
+		#endregion
 	}
 }

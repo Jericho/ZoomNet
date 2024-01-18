@@ -50,5 +50,18 @@ namespace ZoomNet.Resources
 		}
 
 		#endregion
+
+		#region Users Endpoints
+
+		/// <inheritdoc cref="IPhone.GetPhoneCallUserProfileAsync" select="remarks" />
+		public Task<PhoneCallUserProfile> GetPhoneCallUserProfileAsync(string userId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"phone/users/{userId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<PhoneCallUserProfile>();
+		}
+
+		#endregion
 	}
 }
