@@ -260,7 +260,7 @@ namespace ZoomNet.UnitTests.Models
 			// Assert
 			result.CallingPlans.ShouldNotBeNull();
 			result.CallingPlans.ShouldNotBeEmpty();
-			result.CallingPlans[0].Type.ShouldBe(CallingPlanType.BETA);
+			result.CallingPlans[0].Type.ShouldBe(CallingPlanType.Beta);
 			result.CallingPlans[0].BillingAccountId.ShouldBe("3WWAEiEjTj2IQuyDiKMd_A");
 			result.CallingPlans[0].BillingAccountName.ShouldBe("Delhi billing");
 			result.CostCenter.ShouldBe("testCostCenter");
@@ -284,7 +284,7 @@ namespace ZoomNet.UnitTests.Models
 			result.PhoneUserId.ShouldBe("u7pnC468TaS46OuNoEw6GA");
 			result.SiteAdmin.ShouldBeTrue();
 			result.SiteId.ShouldBe("8f71O6rWT8KFUGQmJIFAdQ");
-			result.Status.ShouldBe(PhoneCallUserStatus.Activate);
+			result.Status.ShouldBe(PhoneCallUserStatus.Active);
 		}
 
 		#endregion

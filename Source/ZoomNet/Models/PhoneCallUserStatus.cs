@@ -11,11 +11,11 @@ public enum PhoneCallUserStatus
 	/// An active user.
 	/// </summary>
 	[EnumMember(Value = "activate")]
-	Activate,
+	Active,
 
 	/// <summary>
 	/// User has been deactivated from the Zoom Phone system.
 	/// </summary>
 	[EnumMember(Value = "deactivate")]
-	Deactivate
+	Inactive
 }
