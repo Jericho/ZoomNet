@@ -160,6 +160,12 @@ namespace ZoomNet.Models
 		public bool? Watermark { get; set; }
 
 		/// <summary>
+		/// Gets or sets information about the Enable continuous meeting chat feature.
+		/// </summary>
+		[JsonPropertyName("continuous_meeting_chat")]
+		public ContinuousMeetingChatSettings ContinuousMeetingChat { get; set; }
+
+		/// <summary>
 		/// Gets or sets the value indicating whether to allow attendees to join the meeting from multiple devices.
 		/// This setting only works for meetings that require registration.
 		/// </summary>
