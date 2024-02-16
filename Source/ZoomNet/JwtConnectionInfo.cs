@@ -1,8 +1,11 @@
+using System;
+
 namespace ZoomNet
 {
 	/// <summary>
 	/// Connect using JWT.
 	/// </summary>
+	[Obsolete("As of September 8, 2023, the JWT app type has been deprecated. Use Server-to-Server OAuth or OAuth apps to replace the functionality of all JWT apps in your account. See the JWT deprecation FAQ and migration guide for details.")]
 	public class JwtConnectionInfo : IConnectionInfo
 	{
 		/// <summary>

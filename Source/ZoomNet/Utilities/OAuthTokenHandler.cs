@@ -75,61 +75,64 @@ namespace ZoomNet.Utilities
 					{
 						_lock.EnterWriteLock();
 
-						var contentValues = new Dictionary<string, string>()
+						if (forceRefresh || TokenIsExpired())
 						{
-							{ "grant_type", _connectionInfo.GrantType.ToEnumString() },
-						};
+							var contentValues = new Dictionary<string, string>()
+							{
+								{ "grant_type", _connectionInfo.GrantType.ToEnumString() },
+							};
 
-						switch (_connectionInfo.GrantType)
-						{
-							case OAuthGrantType.AccountCredentials:
-								contentValues.Add("account_id", _connectionInfo.AccountId);
-								break;
-							case OAuthGrantType.AuthorizationCode:
-								contentValues.Add("code", _connectionInfo.AuthorizationCode);
-								if (!string.IsNullOrEmpty(_connectionInfo.RedirectUri)) contentValues.Add("redirect_uri", _connectionInfo.RedirectUri);
-								if (!string.IsNullOrEmpty(_connectionInfo.CodeVerifier)) contentValues.Add("code_verifier", _connectionInfo.CodeVerifier);
-								break;
-							case OAuthGrantType.RefreshToken:
-								contentValues.Add("refresh_token", _connectionInfo.RefreshToken);
-								break;
+							switch (_connectionInfo.GrantType)
+							{
+								case OAuthGrantType.AccountCredentials:
+									contentValues.Add("account_id", _connectionInfo.AccountId);
+									break;
+								case OAuthGrantType.AuthorizationCode:
+									contentValues.Add("code", _connectionInfo.AuthorizationCode);
+									if (!string.IsNullOrEmpty(_connectionInfo.RedirectUri)) contentValues.Add("redirect_uri", _connectionInfo.RedirectUri);
+									if (!string.IsNullOrEmpty(_connectionInfo.CodeVerifier)) contentValues.Add("code_verifier", _connectionInfo.CodeVerifier);
+									break;
+								case OAuthGrantType.RefreshToken:
+									contentValues.Add("refresh_token", _connectionInfo.RefreshToken);
+									break;
+							}
+
+							var requestTime = DateTime.UtcNow;
+							var request = new HttpRequestMessage(HttpMethod.Post, "https://api.zoom.us/oauth/token");
+							request.Headers.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes($"{_connectionInfo.ClientId}:{_connectionInfo.ClientSecret}")));
+							request.Content = new FormUrlEncodedContent(contentValues);
+							var response = _httpClient.SendAsync(request).ConfigureAwait(false).GetAwaiter().GetResult();
+							var responseContent = response.Content.ReadAsStringAsync(null).ConfigureAwait(false).GetAwaiter().GetResult();
+
+							if (string.IsNullOrEmpty(responseContent)) throw new Exception(response.ReasonPhrase);
+
+							var jsonResponse = JsonDocument.Parse(responseContent).RootElement;
+
+							if (!response.IsSuccessStatusCode)
+							{
+								var reason = jsonResponse.GetPropertyValue("reason", "The Zoom API did not provide a reason");
+								throw new ZoomException(reason, response, "No diagnostic available", null);
+							}
+
+							_connectionInfo.RefreshToken = jsonResponse.GetPropertyValue("refresh_token", string.Empty);
+							_connectionInfo.AccessToken = jsonResponse.GetPropertyValue("access_token", string.Empty);
+							_connectionInfo.TokenExpiration = requestTime.AddSeconds(jsonResponse.GetPropertyValue("expires_in", 60 * 60));
+							_connectionInfo.TokenScope = new ReadOnlyDictionary<string, string[]>(
+								jsonResponse.GetPropertyValue("scope", string.Empty)
+									.Split(' ')
+									.Select(x => x.Split(new[] { ':' }, 2))
+									.Select(x => new KeyValuePair<string, string[]>(x[0], x.Skip(1).ToArray()))
+									.GroupBy(x => x.Key)
+									.ToDictionary(
+										x => x.Key,
+										x => x.SelectMany(c => c.Value).ToArray()));
+
+							// Please note that Server-to-Server OAuth does not use the refresh token.
+							// Therefore change the grant type to 'RefreshToken' only when the response includes a refresh token.
+							if (!string.IsNullOrEmpty(_connectionInfo.RefreshToken)) _connectionInfo.GrantType = OAuthGrantType.RefreshToken;
+
+							_connectionInfo.OnTokenRefreshed?.Invoke(_connectionInfo.RefreshToken, _connectionInfo.AccessToken);
 						}
-
-						var requestTime = DateTime.UtcNow;
-						var request = new HttpRequestMessage(HttpMethod.Post, "https://api.zoom.us/oauth/token");
-						request.Headers.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(Encoding.ASCII.GetBytes($"{_connectionInfo.ClientId}:{_connectionInfo.ClientSecret}")));
-						request.Content = new FormUrlEncodedContent(contentValues);
-						var response = _httpClient.SendAsync(request).ConfigureAwait(false).GetAwaiter().GetResult();
-						var responseContent = response.Content.ReadAsStringAsync(null).ConfigureAwait(false).GetAwaiter().GetResult();
-
-						if (string.IsNullOrEmpty(responseContent)) throw new Exception(response.ReasonPhrase);
-
-						var jsonResponse = JsonDocument.Parse(responseContent).RootElement;
-
-						if (!response.IsSuccessStatusCode)
-						{
-							var reason = jsonResponse.GetPropertyValue("reason", "The Zoom API did not provide a reason");
-							throw new ZoomException(reason, response, "No diagnostic available", null);
-						}
-
-						_connectionInfo.RefreshToken = jsonResponse.GetPropertyValue("refresh_token", string.Empty);
-						_connectionInfo.AccessToken = jsonResponse.GetPropertyValue("access_token", string.Empty);
-						_connectionInfo.TokenExpiration = requestTime.AddSeconds(jsonResponse.GetPropertyValue("expires_in", 60 * 60));
-						_connectionInfo.TokenScope = new ReadOnlyDictionary<string, string[]>(
-							jsonResponse.GetPropertyValue("scope", string.Empty)
-								.Split(' ')
-								.Select(x => x.Split(new[] { ':' }, 2))
-								.Select(x => new KeyValuePair<string, string[]>(x[0], x.Skip(1).ToArray()))
-								.GroupBy(x => x.Key)
-								.ToDictionary(
-									x => x.Key,
-									x => x.SelectMany(c => c.Value).ToArray()));
-
-						// Please note that Server-to-Server OAuth does not use the refresh token.
-						// Therefore change the grant type to 'RefreshToken' only when the response includes a refresh token.
-						if (!string.IsNullOrEmpty(_connectionInfo.RefreshToken)) _connectionInfo.GrantType = OAuthGrantType.RefreshToken;
-
-						_connectionInfo.OnTokenRefreshed?.Invoke(_connectionInfo.RefreshToken, _connectionInfo.AccessToken);
 					}
 					finally
 					{
