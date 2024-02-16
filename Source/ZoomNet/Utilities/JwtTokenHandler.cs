@@ -74,13 +74,16 @@ namespace ZoomNet.Utilities
 				{
 					_lock.EnterWriteLock();
 
-					_tokenExpiration = DateTime.UtcNow.Add(_tokenLifeSpan);
-					var jwtPayload = new Dictionary<string, object>()
+					if (forceRefresh || TokenIsExpired())
 					{
-						{ "iss", _connectionInfo.ApiKey },
-						{ "exp", _tokenExpiration.ToUnixTime() }
-					};
-					_jwtToken = JWT.Encode(jwtPayload, Encoding.ASCII.GetBytes(_connectionInfo.ApiSecret), JwsAlgorithm.HS256);
+						_tokenExpiration = DateTime.UtcNow.Add(_tokenLifeSpan);
+						var jwtPayload = new Dictionary<string, object>()
+						{
+							{ "iss", _connectionInfo.ApiKey },
+							{ "exp", _tokenExpiration.ToUnixTime() }
+						};
+						_jwtToken = JWT.Encode(jwtPayload, Encoding.ASCII.GetBytes(_connectionInfo.ApiSecret), JwsAlgorithm.HS256);
+					}
 				}
 				finally
 				{
