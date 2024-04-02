@@ -67,7 +67,7 @@ namespace ZoomNet.Resources
 		/// Get details about an SMS session.
 		/// </summary>
 		/// <param name="sessionId">SMS session ID.</param>
-		/// <param name="from">The start time and date. The date range defined by the <paramref name="to"/> and <paramref name="from"/> parameters should be a month as the response only includes one month's worth of data at once. If unspecified, returns data from the past 30 days</param>
+		/// <param name="from">The start time and date. The date range defined by the <paramref name="to"/> and <paramref name="from"/> parameters should be a month as the response only includes one month's worth of data at once. If unspecified, returns data from the past 30 days.</param>
 		/// <param name="to">Required only when the from parameter is specified.</param>
 		/// <param name="orderAscending">Order of SMS to return based on creation time. True - ascending, false - descending, null - doesn't sort.</param>
 		/// <param name="recordsPerPage">The number of records returned within a single API call. Max value 100.</param>

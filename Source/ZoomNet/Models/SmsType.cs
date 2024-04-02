@@ -31,7 +31,7 @@ namespace ZoomNet.Models
 		InternationalSms = 5,
 
 		/// <summary>
-		/// MSG_ON_NET
+		/// MSG_ON_NET.
 		/// </summary>
 		MsgOnNet = 6
 	}
