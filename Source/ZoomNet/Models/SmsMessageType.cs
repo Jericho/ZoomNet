@@ -3,7 +3,7 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// SMS message types.
 	/// </summary>
-	public enum SmsType
+	public enum SmsMessageType
 	{
 		/// <summary>
 		/// SMS.

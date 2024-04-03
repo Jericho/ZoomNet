@@ -7,7 +7,7 @@ using ZoomNet.Models;
 
 namespace ZoomNet.UnitTests.Models
 {
-	public class SmsHistoryTests
+	public class SmsSessionTests
 	{
 		#region constants
 
@@ -63,7 +63,7 @@ namespace ZoomNet.UnitTests.Models
 			// Arrange
 
 			// Act
-			var result = JsonSerializer.Deserialize<SmsHistory>(
+			var result = JsonSerializer.Deserialize<SmsMessage>(
 				SMS_HISTORY, JsonFormatter.SerializerOptions);
 
 			// Assert
@@ -85,7 +85,7 @@ namespace ZoomNet.UnitTests.Models
 			result.Direction.ShouldBe(SmsDirection.Inbound);
 			result.Message.ShouldBe("welcome");
 			result.MessageId.ShouldBe("IQ-cRH5P5EiTWCwpNzScnECJw");
-			result.MessageType.ShouldBe(SmsType.Mms);
+			result.MessageType.ShouldBe(SmsMessageType.Mms);
 			result.Sender.ShouldNotBeNull();
 			result.Sender.PhoneNumber.ShouldBe("18108001001");
 			result.Sender.DisplayName.ShouldBe("test api");

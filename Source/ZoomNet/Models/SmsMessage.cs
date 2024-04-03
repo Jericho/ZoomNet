@@ -4,9 +4,9 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// SMS history information.
+	/// SMS message information.
 	/// </summary>
-	public class SmsHistory
+	public class SmsMessage
 	{
 		/// <summary>
 		/// Gets or sets the SMS attachment array.
@@ -42,7 +42,7 @@ namespace ZoomNet.Models
 		/// Gets or sets the SMS message type.
 		/// </summary>
 		[JsonPropertyName("message_type")]
-		public SmsType MessageType { get; set; }
+		public SmsMessageType MessageType { get; set; }
 
 		/// <summary>
 		/// Gets or sets the SMS sender.
