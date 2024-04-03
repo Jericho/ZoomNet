@@ -12,13 +12,7 @@ using ZoomNet.Models;
 
 namespace ZoomNet.Resources
 {
-	/// <summary>
-	/// Allows you to manage sub accounts under the master account.
-	/// </summary>
-	/// <seealso cref="ZoomNet.Resources.IAccounts" />
-	/// <remarks>
-	/// See <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/accounts/accounts">Zoom documentation</a> for more information.
-	/// </remarks>
+	/// <inheritdoc/>
 	public class Chat : IChat
 	{
 		private readonly Pathoschild.Http.Client.IClient _client;
@@ -32,16 +26,7 @@ namespace ZoomNet.Resources
 			_client = client;
 		}
 
-		/// <summary>
-		/// Retrieve a user's chat channels.
-		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="ChatChannel">channels</see>.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<ChatChannel>> GetAccountChannelsForUserAsync(string userId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
@@ -57,15 +42,7 @@ namespace ZoomNet.Resources
 				.AsPaginatedResponseWithToken<ChatChannel>("channels");
 		}
 
-		/// <summary>
-		/// Retrieve information about a specific chat channel.
-		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="channelId">The channel Id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// A <see cref="ChatChannel"/>.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<ChatChannel> GetAccountChannelAsync(string userId, string channelId, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -74,18 +51,7 @@ namespace ZoomNet.Resources
 				.AsObject<ChatChannel>();
 		}
 
-		/// <summary>
-		/// Create a chat channel that allows users to communicate via chat in private or public groups.
-		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="name">The name of the channel.</param>
-		/// <param name="type">The type of channel.</param>
-		/// <param name="emails">The email addresses of the members to include in the channel.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <remarks>Zoom allows a maximum of 5 members to be added at once.</remarks>
-		/// <returns>
-		/// The new <see cref="ChatChannel"/>.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<ChatChannel> CreateAccountChannelAsync(string userId, string name, ChatChannelType type, IEnumerable<string> emails = null, CancellationToken cancellationToken = default)
 		{
 			if (emails != null && emails.Count() > 5) throw new ArgumentOutOfRangeException(nameof(emails), "You can invite up to 5 members at once");
@@ -104,16 +70,7 @@ namespace ZoomNet.Resources
 				.AsObject<ChatChannel>();
 		}
 
-		/// <summary>
-		/// Update a chat channel.
-		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="channelId">The channel Id.</param>
-		/// <param name="name">The name of the channel.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task UpdateAccountChannelAsync(string userId, string channelId, string name, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
@@ -128,15 +85,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Delete a chat channel.
-		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="channelId">The channel Id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task DeleteAccountChannelAsync(string userId, string channelId, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -145,17 +94,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Retrieve the members of a chat channel.
-		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="channelId">The channel Id.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="ChatChannelMember">channel members</see>.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<ChatChannelMember>> GetAccountChannelMembersAsync(string userId, string channelId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
@@ -171,17 +110,7 @@ namespace ZoomNet.Resources
 				.AsPaginatedResponseWithToken<ChatChannelMember>("members");
 		}
 
-		/// <summary>
-		/// Invite members to join a chat channel.
-		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="channelId">The channel Id.</param>
-		/// <param name="emails">The email addresses of the members to include in the channel.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <remarks>Zoom allows a maximum of 5 members to be added at once.</remarks>
-		/// <returns>
-		/// An array containing the unique identifiers of the new members.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<string[]> InviteMembersToAccountChannelAsync(string userId, string channelId, IEnumerable<string> emails, CancellationToken cancellationToken = default)
 		{
 			if (emails == null || !emails.Any()) throw new ArgumentNullException(nameof(emails), "You must specify at least one member to invite");
@@ -199,16 +128,7 @@ namespace ZoomNet.Resources
 				.AsObject<string[]>("ids");
 		}
 
-		/// <summary>
-		/// Remove a member from a chat channel.
-		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="channelId">The channel Id.</param>
-		/// <param name="memberId">The member Id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task RemoveMemberFromAccountChannelAsync(string userId, string channelId, string memberId, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -217,14 +137,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Retrieve information about a specific chat channel.
-		/// </summary>
-		/// <param name="channelId">The channel Id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// A <see cref="ChatChannel"/>.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<ChatChannel> GetChannelAsync(string channelId, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -233,15 +146,7 @@ namespace ZoomNet.Resources
 				.AsObject<ChatChannel>();
 		}
 
-		/// <summary>
-		/// Update a chat channel.
-		/// </summary>
-		/// <param name="channelId">The channel Id.</param>
-		/// <param name="name">The name of the channel.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task UpdateChannelAsync(string channelId, string name, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
@@ -256,14 +161,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Delete a chat channel.
-		/// </summary>
-		/// <param name="channelId">The channel Id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task DeleteChannelAsync(string channelId, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -272,15 +170,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Remove a member from a chat channel.
-		/// </summary>
-		/// <param name="channelId">The channel Id.</param>
-		/// <param name="memberId">The member Id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task RemoveMemberFromChannelAsync(string channelId, string memberId, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -289,14 +179,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Join a chat channel.
-		/// </summary>
-		/// <param name="channelId">The channel Id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The member Id.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<string> JoinChannelAsync(string channelId, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -317,97 +200,37 @@ namespace ZoomNet.Resources
 			return SendMessageAsync(userId, null, channelId, message, replyMessageId, fileIds, mentions, cancellationToken);
 		}
 
-		/// <summary>
-		/// Retrieve the chat messages sent/received to/from a contact.
-		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="recipientEmail">The email address of the contact to whom the user conversed.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="ChatMessage">chat messages</see>.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<ChatMessage>> GetMessagesToContactAsync(string userId, string recipientEmail, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			return GetMessagesAsync(userId, recipientEmail, null, recordsPerPage, pagingToken, cancellationToken);
 		}
 
-		/// <summary>
-		/// Retrieve the chat messages sent/received in a channel of which the user is a member.
-		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="channelId">The channel Id.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="ChatMessage">chat messages</see>.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<ChatMessage>> GetMessagesToChannelAsync(string userId, string channelId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			return GetMessagesAsync(userId, null, channelId, recordsPerPage, pagingToken, cancellationToken);
 		}
 
-		/// <summary>
-		/// Update a message that was previously sent to a user on on the sender's contact list.
-		/// </summary>
-		/// <param name="messageId">The unique identifier of the message.</param>
-		/// <param name="userId">The unique identifier of the sender.</param>
-		/// <param name="recipientEmail">The email address of the contact to whom you would like to send the message.</param>
-		/// <param name="message">The message.</param>
-		/// <param name="mentions">Mentions.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task UpdateMessageToContactAsync(string messageId, string userId, string recipientEmail, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
 		{
 			return UpdateMessageAsync(messageId, userId, recipientEmail, null, message, mentions, cancellationToken);
 		}
 
-		/// <summary>
-		/// Update a message that was previously sent to a channel of which the sender is a member.
-		/// </summary>
-		/// <param name="messageId">The unique identifier of the message.</param>
-		/// <param name="userId">The unique identifier of the sender.</param>
-		/// <param name="channelId">The channel Id.</param>
-		/// <param name="message">The message.</param>
-		/// <param name="mentions">Mentions.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task UpdateMessageToChannelAsync(string messageId, string userId, string channelId, string message, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
 		{
 			return UpdateMessageAsync(messageId, userId, null, channelId, message, mentions, cancellationToken);
 		}
 
-		/// <summary>
-		/// Delete a message that was previously sent to a user on on the sender's contact list.
-		/// </summary>
-		/// <param name="messageId">The unique identifier of the message.</param>
-		/// <param name="userId">The unique identifier of the sender.</param>
-		/// <param name="recipientEmail">The email address of the contact to whom you would like to send the message.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task DeleteMessageToContactAsync(string messageId, string userId, string recipientEmail, CancellationToken cancellationToken = default)
 		{
 			return DeleteMessageAsync(messageId, userId, recipientEmail, null, cancellationToken);
 		}
 
-		/// <summary>
-		/// Delete a message that was previously sent to a channel of which the sender is a member.
-		/// </summary>
-		/// <param name="messageId">The unique identifier of the message.</param>
-		/// <param name="userId">The unique identifier of the sender.</param>
-		/// <param name="channelId">The channel Id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task DeleteMessageToChannelAsync(string messageId, string userId, string channelId, CancellationToken cancellationToken = default)
 		{
 			return DeleteMessageAsync(messageId, userId, null, channelId, cancellationToken);
