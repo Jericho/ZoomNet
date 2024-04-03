@@ -18,7 +18,7 @@ namespace ZoomNet.Models
 		/// Gets or sets the UTC time when the message was created.
 		/// </summary>
 		[JsonPropertyName("date_time")]
-		public DateTime CreationTime { get; set; }
+		public DateTime CreatedOn { get; set; }
 
 		/// <summary>
 		/// Gets or sets the SMS direction.
@@ -42,7 +42,7 @@ namespace ZoomNet.Models
 		/// Gets or sets the SMS message type.
 		/// </summary>
 		[JsonPropertyName("message_type")]
-		public SmsMessageType MessageType { get; set; }
+		public SmsMessageType Type { get; set; }
 
 		/// <summary>
 		/// Gets or sets the SMS sender.
@@ -54,6 +54,6 @@ namespace ZoomNet.Models
 		/// Gets or sets the SMS receivers.
 		/// </summary>
 		[JsonPropertyName("to_members")]
-		public SmsHistoryParticipant[] ToMembers { get; set; }
+		public SmsHistoryParticipant[] Recipients { get; set; }
 	}
 }

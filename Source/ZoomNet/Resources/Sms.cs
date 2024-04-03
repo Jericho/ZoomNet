@@ -9,13 +9,7 @@ namespace ZoomNet.Resources
 	/// <inheritdoc cref="ISms" select="remarks"/>
 	public class Sms : ISms
 	{
-		#region private fields
-
 		private readonly IClient _client;
-
-		#endregion
-
-		#region constructor
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Sms" /> class.
@@ -25,10 +19,6 @@ namespace ZoomNet.Resources
 		{
 			_client = client;
 		}
-
-		#endregion
-
-		#region SMS endpoints
 
 		/// <inheritdoc cref="ISms.GetSmsSessionDetailsAsync" select="remarks" />
 		public Task<PaginatedResponseWithToken<SmsMessage>> GetSmsSessionDetailsAsync(
@@ -49,7 +39,5 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<SmsMessage>("sms_histories");
 		}
-
-		#endregion
 	}
 }

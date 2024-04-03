@@ -29,7 +29,6 @@ namespace ZoomNet.Resources
 		/// See <a href="https://developers.zoom.us/docs/api/rest/reference/phone/methods/#operation/smsSessionDetails">
 		/// Zoom endpoint documentation</a> for more information.
 		/// </remarks>
-		Task<PaginatedResponseWithToken<SmsMessage>> GetSmsSessionDetailsAsync(
-			string sessionId, DateTime? from, DateTime? to, bool? orderAscending = true, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<SmsMessage>> GetSmsSessionDetailsAsync(string sessionId, DateTime? from, DateTime? to, bool? orderAscending = true, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 	}
 }

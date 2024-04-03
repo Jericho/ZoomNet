@@ -35,6 +35,6 @@ namespace ZoomNet.Models
 		/// Gets or sets the file type.
 		/// </summary>
 		[JsonPropertyName("type")]
-		public SmsAttachmentType SmsAttachmentType { get; set; }
+		public SmsAttachmentType Type { get; set; }
 	}
 }

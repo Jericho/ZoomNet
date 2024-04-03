@@ -8,39 +8,39 @@ namespace ZoomNet.Models
 	public enum SmsAttachmentType
 	{
 		/// <summary>
-		/// OTHER.
+		/// Other.
 		/// </summary>
 		[EnumMember(Value = "OTHER")]
-		OTHER,
+		Other,
 
 		/// <summary>
-		/// PNG.
+		/// Png.
 		/// </summary>
 		[EnumMember(Value = "PNG")]
-		PNG,
+		Png,
 
 		/// <summary>
-		/// GIF.
+		/// Gif.
 		/// </summary>
 		[EnumMember(Value = "GIF")]
-		GIF,
+		Gif,
 
 		/// <summary>
-		/// JPG.
+		/// Jpg.
 		/// </summary>
 		[EnumMember(Value = "JPG")]
-		JPG,
+		Jpg,
 
 		/// <summary>
-		/// AUDIO.
+		/// Audio.
 		/// </summary>
 		[EnumMember(Value = "AUDIO")]
-		AUDIO,
+		Audio,
 
 		/// <summary>
-		/// VIDEO.
+		/// Video.
 		/// </summary>
 		[EnumMember(Value = "VIDEO")]
-		VIDEO
+		Video
 	}
 }
