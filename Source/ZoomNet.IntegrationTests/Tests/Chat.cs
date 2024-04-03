@@ -26,7 +26,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				{
 					await client.Chat.DeleteChannelAsync(oldChannel.Id, cancellationToken).ConfigureAwait(false);
 					await log.WriteLineAsync($"Channel {oldChannel.Id} deleted").ConfigureAwait(false);
-					await Task.Delay(250, cancellationToken).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
+					await Task.Delay(1000, cancellationToken).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
 				});
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
 
