@@ -1,5 +1,4 @@
 using Pathoschild.Http.Client;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
