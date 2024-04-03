@@ -34,16 +34,8 @@ namespace ZoomNet.IntegrationTests
 			FetchCurrentUserInfo = fetchCurrentUserInfo;
 		}
 
-		public virtual async Task<ResultCodes> RunTestsAsync()
+		public virtual async Task<ResultCodes> RunTestsAsync(CancellationToken cancellationToken)
 		{
-			// Configure cancellation
-			var cts = new CancellationTokenSource();
-			Console.CancelKeyPress += (s, e) =>
-			{
-				e.Cancel = true;
-				cts.Cancel();
-			};
-
 			// Configure ZoomNet client
 			var client = new ZoomClient(ConnectionInfo, Proxy, null, LoggerFactory.CreateLogger<ZoomClient>());
 
@@ -53,8 +45,8 @@ namespace ZoomNet.IntegrationTests
 
 			if (FetchCurrentUserInfo)
 			{
-				currentUser = await client.Users.GetCurrentAsync(cts.Token).ConfigureAwait(false);
-				currentUserPermissions = await client.Users.GetCurrentPermissionsAsync(cts.Token).ConfigureAwait(false);
+				currentUser = await client.Users.GetCurrentAsync(cancellationToken).ConfigureAwait(false);
+				currentUserPermissions = await client.Users.GetCurrentPermissionsAsync(cancellationToken).ConfigureAwait(false);
 				Array.Sort(currentUserPermissions); // Sort permissions alphabetically for convenience
 			}
 
@@ -67,7 +59,7 @@ namespace ZoomNet.IntegrationTests
 					try
 					{
 						var integrationTest = (IIntegrationTest)Activator.CreateInstance(testType);
-						await integrationTest.RunAsync(currentUser, currentUserPermissions, client, log, cts.Token).ConfigureAwait(false);
+						await integrationTest.RunAsync(currentUser, currentUserPermissions, client, log, cancellationToken).ConfigureAwait(false);
 						return (TestName: testType.Name, ResultCode: ResultCodes.Success, Message: SUCCESSFUL_TEST_MESSAGE);
 					}
 					catch (OperationCanceledException)
@@ -105,12 +97,6 @@ namespace ZoomNet.IntegrationTests
 
 			await summary.WriteLineAsync("**************************************************").ConfigureAwait(false);
 			await Console.Out.WriteLineAsync(summary.ToString()).ConfigureAwait(false);
-
-			// Prompt user to press a key in order to allow reading the log in the console
-			var promptLog = new StringWriter();
-			await promptLog.WriteLineAsync("\n\n**************************************************").ConfigureAwait(false);
-			await promptLog.WriteLineAsync("Press any key to exit").ConfigureAwait(false);
-			ConsoleUtils.Prompt(promptLog.ToString());
 
 			// Return code indicating success/failure
 			var resultCode = ResultCodes.Success;

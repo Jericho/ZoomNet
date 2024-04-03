@@ -1,12 +1,14 @@
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.IntegrationTests.TestSuites;
 
 namespace ZoomNet.IntegrationTests
 {
-	internal class TestsRunner
+	internal class TestsRunner : IHostedService
 	{
 		private enum TestType
 		{
@@ -31,7 +33,7 @@ namespace ZoomNet.IntegrationTests
 			_loggerFactory = loggerFactory;
 		}
 
-		public async Task<int> RunAsync()
+		public async Task StartAsync(CancellationToken cancellationToken)
 		{
 			// -----------------------------------------------------------------------------
 			// Do you want to proxy requests through a tool such as Fiddler? Very useful for debugging.
@@ -47,10 +49,6 @@ namespace ZoomNet.IntegrationTests
 			var connectionType = ConnectionType.OAuthServerToServer;
 			// -----------------------------------------------------------------------------
 
-			// Ensure the Console is tall enough and centered on the screen
-			if (OperatingSystem.IsWindows()) Console.WindowHeight = Math.Min(60, Console.LargestWindowHeight);
-			ConsoleUtils.CenterConsole();
-
 			// Configure the proxy if desired
 			var proxy = useProxy ? new WebProxy($"http://localhost:{proxyPort}") : null;
 
@@ -59,10 +57,12 @@ namespace ZoomNet.IntegrationTests
 			var testSuite = GetTestSuite(connectionInfo, testType, proxy, _loggerFactory);
 
 			// Run the tests
-			var resultCode = await testSuite.RunTestsAsync().ConfigureAwait(false);
+			await testSuite.RunTestsAsync(cancellationToken).ConfigureAwait(false);
+		}
 
-			// Return result
-			return (int)resultCode;
+		public Task StopAsync(CancellationToken cancellationToken)
+		{
+			return Task.CompletedTask;
 		}
 
 		private static IConnectionInfo GetConnectionInfo(ConnectionType connectionType)
