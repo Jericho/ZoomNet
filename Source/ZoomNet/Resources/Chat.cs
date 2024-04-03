@@ -71,11 +71,31 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task UpdateAccountChannelAsync(string userId, string channelId, string name, CancellationToken cancellationToken = default)
+		public Task UpdateAccountChannelAsync(string userId, string channelId, string name, ChatChannelSettings settings, ChatChannelType? type = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
-				{ "name", name }
+				{ "name", name },
+				{ "type", type },
+				{
+					// I am hard-coding the properties of the channel_settings rather than simply passing
+					// a reference to the settings object because the ChatChannelSettings model class has
+					// additional properties and Zoom does not allow us to update these additional
+					// properties (e.g.: "allow_to_add_external_users").
+					//
+					// If we include the addtional properties, the Zoom API responds with a misleading
+					// error message: {"code":300,"message":"Request Body should be a valid JSON object."}
+					//
+					// Contrary to what the error message says, the body contains a valid JSON object but
+					// it includes properties that should not be included.
+					"channel_settings", new JsonObject
+					{
+						{ "add_member_permissions", settings.AddMemberPermissions },
+						{ "new_members_can_see_previous_messages_files", settings.NewMembersCanSeePreviousMessageFiles },
+						{ "posting_permissions", settings.PostingPermissions },
+						{ "mention_all_permissions", settings.MentionAllPermissions },
+					}
+				}
 			};
 
 			return _client
