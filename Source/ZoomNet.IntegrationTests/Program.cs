@@ -92,18 +92,25 @@ namespace ZoomNet.IntegrationTests
 			var logzioToken = Environment.GetEnvironmentVariable("LOGZIO_TOKEN");
 			if (!string.IsNullOrEmpty(logzioToken))
 			{
-				var logzioTarget = new LogzioTarget { Token = logzioToken };
-				logzioTarget.ContextProperties.Add(new TargetPropertyWithContext("source", "ZoomNet_integration_tests"));
+				var logzioTarget = new LogzioTarget
+				{
+					Name = "Logzio",
+					Token = logzioToken,
+					LogzioType = "nlog",
+					JsonKeysCamelCase = true,
+					// ProxyAddress = "http://localhost:8888",
+				};
+				logzioTarget.ContextProperties.Add(new TargetPropertyWithContext("Source", "ZoomNet_integration_tests"));
 				logzioTarget.ContextProperties.Add(new TargetPropertyWithContext("ZoomNet-Version", ZoomNet.ZoomClient.Version));
 
 				nLogConfig.AddTarget("Logzio", logzioTarget);
-				nLogConfig.AddRule(NLog.LogLevel.Debug, NLog.LogLevel.Fatal, "Logzio", "*");
+				nLogConfig.AddRule(NLog.LogLevel.Info, NLog.LogLevel.Fatal, logzioTarget, "*");
 			}
 
 			// Send logs to console
 			var consoleTarget = new ColoredConsoleTarget();
 			nLogConfig.AddTarget("ColoredConsole", consoleTarget);
-			nLogConfig.AddRule(NLog.LogLevel.Warn, NLog.LogLevel.Fatal, consoleTarget, "*");
+			nLogConfig.AddRule(NLog.LogLevel.Debug, NLog.LogLevel.Fatal, consoleTarget, "*");
 			nLogConfig.AddRule(NLog.LogLevel.Trace, NLog.LogLevel.Fatal, consoleTarget, "ZoomNet.ZoomWebSocketClient");
 
 			return nLogConfig;
