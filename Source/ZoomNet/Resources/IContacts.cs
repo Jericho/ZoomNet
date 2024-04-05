@@ -51,6 +51,11 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The <see cref="Contact"/>.
 		/// </returns>
+		/// <remarks>
+		/// There's a note in the Zoom API documentation that say: "This API only supports user-managed OAuth app."
+		/// When invoking this method and using any other type of app, such as a Server-to-server oauth app for example,
+		/// the Zoom api returns the following message: Invalid access token, does not contain scopes:[chat_contact:read].
+		/// </remarks>
 		Task<Contact> GetAsync(string contactId, bool queryPresenceStatus = true, CancellationToken cancellationToken = default);
 	}
 }

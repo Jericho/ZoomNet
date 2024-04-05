@@ -13,11 +13,11 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			await log.WriteLineAsync("\n***** CONTACTS *****\n").ConfigureAwait(false);
 
-			var contact = await client.Contacts.GetAsync(myUser.Id, true, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"{contact.EmailAddress} is {contact.PresenceStatus}").ConfigureAwait(false);
-
 			var paginatedSearchedContacts = await client.Contacts.SearchAsync("zzz", true, 1, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Found {paginatedSearchedContacts.TotalRecords} contacts").ConfigureAwait(false);
+
+			var contact = await client.Contacts.GetAsync(myUser.Id, true, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"{contact.EmailAddress} is {contact.PresenceStatus}").ConfigureAwait(false);
 
 			var paginatedInternalContacts = await client.Contacts.GetAllAsync(ContactType.Internal, 50, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {paginatedInternalContacts.TotalRecords} internal contacts for user {myUser.Id}").ConfigureAwait(false);
