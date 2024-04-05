@@ -346,7 +346,7 @@ namespace ZoomNet.Resources
 		/// </returns>
 		public Task AddPanelistAsync(long webinarId, string email, string fullName, string virtualBackgroundId = null, CancellationToken cancellationToken = default)
 		{
-			return AddPanelistsAsync(webinarId, [(email, fullName, virtualBackgroundId)], cancellationToken);
+			return AddPanelistsAsync(webinarId, new[] { (email, fullName, virtualBackgroundId) }, cancellationToken);
 		}
 
 		/// <summary>
