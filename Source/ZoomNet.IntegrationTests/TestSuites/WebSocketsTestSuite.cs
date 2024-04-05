@@ -17,7 +17,7 @@ namespace ZoomNet.IntegrationTests.TestSuites
 			_subscriptionId = subscriptionId;
 		}
 
-		public override async Task<ResultCodes> RunTestsAsync()
+		public override async Task<ResultCodes> RunTestsAsync(CancellationToken cancellationToken)
 		{
 			var logger = base.LoggerFactory.CreateLogger<ZoomWebSocketClient>();
 			var eventProcessor = new Func<Event, CancellationToken, Task>(async (webhookEvent, cancellationToken) =>
@@ -27,18 +27,16 @@ namespace ZoomNet.IntegrationTests.TestSuites
 			});
 
 			// Configure cancellation (this allows you to press CTRL+C or CTRL+Break to stop the websocket client)
-			var cts = new CancellationTokenSource();
 			var exitEvent = new ManualResetEvent(false);
 			Console.CancelKeyPress += (s, e) =>
 			{
 				e.Cancel = true;
-				cts.Cancel();
 				exitEvent.Set();
 			};
 
 			// Start the websocket client
 			using var client = new ZoomWebSocketClient(base.ConnectionInfo, _subscriptionId, eventProcessor, base.Proxy, logger);
-			await client.StartAsync(cts.Token).ConfigureAwait(false);
+			await client.StartAsync(cancellationToken).ConfigureAwait(false);
 			exitEvent.WaitOne();
 
 			return ResultCodes.Success;
