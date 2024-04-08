@@ -169,6 +169,9 @@ namespace ZoomNet
 		/// <inheritdoc/>
 		public IPhone Phone { get; private set; }
 
+		/// <inheritdoc/>
+		public ISms Sms { get; private set; }
+
 		#endregion
 
 		#region CTOR
@@ -275,6 +278,7 @@ namespace ZoomNet
 			CallLogs = new CallLogs(_fluentClient);
 			Chatbot = new Chatbot(_fluentClient);
 			Phone = new Phone(_fluentClient);
+			Sms = new Sms(_fluentClient);
 		}
 
 		/// <summary>
