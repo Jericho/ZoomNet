@@ -32,8 +32,8 @@ namespace ZoomNet.Resources
 			return _client
 				.GetAsync($"phone/sms/sessions/{sessionId}")
 				.WithArgument("sort", orderAscending.HasValue ? orderAscending.Value ? 1 : 2 : null)
-				.WithArgument("from", from?.ToZoomFormat(dateOnly: false))
-				.WithArgument("to", to?.ToZoomFormat(dateOnly: false))
+				.WithArgument("from", from?.ToZoomFormat(timeZone: TimeZones.UTC, dateOnly: false))
+				.WithArgument("to", to?.ToZoomFormat(timeZone: TimeZones.UTC, dateOnly: false))
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)

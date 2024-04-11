@@ -28,7 +28,7 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Jpg.
 		/// </summary>
-		[EnumMember(Value = "JPG")]
+		[EnumMember(Value = "JPG/JPEG")]
 		Jpg,
 
 		/// <summary>
