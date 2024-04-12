@@ -28,7 +28,7 @@ namespace ZoomNet.Json
 				case MeetingType.RecurringNoFixedTime:
 					return rootElement.ToObject<RecurringMeeting>(options);
 				default:
-					throw new Exception($"{meetingType} is an unknown meeting type");
+					throw new JsonException($"{meetingType} is an unknown meeting type");
 			}
 		}
 	}

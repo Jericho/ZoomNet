@@ -280,7 +280,7 @@ namespace ZoomNet.Json
 					webHookEvent = endpointUrlValidationEvent;
 					break;
 				default:
-					throw new Exception($"{eventType} is an unknown event type");
+					throw new JsonException($"{eventType} is an unknown event type");
 			}
 
 			webHookEvent.EventType = eventType;
@@ -306,7 +306,7 @@ namespace ZoomNet.Json
 					if (value.TryGetInt64(out var longValue)) return new KeyValuePair<string, object>(key, longValue);
 					if (value.TryGetInt32(out var intValue)) return new KeyValuePair<string, object>(key, intValue);
 					if (value.TryGetInt16(out var shortValue)) return new KeyValuePair<string, object>(key, shortValue);
-					throw new Exception($"Property {key} appears to contain a numerical value but we are unable to determine to exact type");
+					throw new JsonException($"Property {key} appears to contain a numerical value but we are unable to determine to exact type");
 				default: return new KeyValuePair<string, object>(key, value.GetRawText());
 			}
 		}

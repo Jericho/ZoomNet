@@ -13,10 +13,16 @@ namespace ZoomNet.Json
 		{
 			switch (reader.TokenType)
 			{
+				case JsonTokenType.None:
+				case JsonTokenType.Null:
+				case JsonTokenType.String when string.IsNullOrEmpty(reader.GetString()):
+					throw new JsonException($"Unable to convert a null value to DateTime");
+
 				case JsonTokenType.String:
 					return reader.GetDateTime();
+
 				default:
-					throw new Exception($"Unable to convert {reader.TokenType.ToEnumString()} to DateTime");
+					throw new JsonException($"Unable to convert {reader.TokenType.ToEnumString()} to DateTime");
 			}
 		}
 

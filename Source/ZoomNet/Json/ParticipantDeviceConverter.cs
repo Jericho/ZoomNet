@@ -28,7 +28,7 @@ namespace ZoomNet.Json
 
 					return items;
 				default:
-					throw new Exception("Unable to convert to ParticipantDevice");
+					throw new JsonException("Unable to convert to ParticipantDevice");
 			}
 		}
 

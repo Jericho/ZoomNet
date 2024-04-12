@@ -20,26 +20,28 @@ public class NullableHexColorConverter : JsonConverter<Color?>
 	/// <inheritdoc />
 	public override Color? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 	{
-		var str = reader.GetString();
-		if (string.IsNullOrEmpty(str))
-			return null;
-		str = str.Replace("#", string.Empty);
-		if (str.Length == 6)
-			str = $"FF{str}";
-		return int.TryParse(str, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out var argB)
-			? Color.FromArgb(argB)
-			: null;
+		switch (reader.TokenType)
+		{
+			case JsonTokenType.None:
+			case JsonTokenType.Null:
+			case JsonTokenType.String when string.IsNullOrEmpty(reader.GetString()):
+				return null;
+
+			default:
+				{
+					var str = reader.GetString().Replace("#", string.Empty);
+					if (str.Length == 6) str = $"FF{str}";
+					return int.TryParse(str, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out var argB)
+						? Color.FromArgb(argB)
+						: null;
+				}
+		}
 	}
 
 	/// <inheritdoc />
 	public override void Write(Utf8JsonWriter writer, Color? value, JsonSerializerOptions options)
 	{
-		if (value == null)
-		{
-			writer.WriteNullValue();
-			return;
-		}
-
-		writer.WriteStringValue($"#{value.Value.R:X2}{value.Value.G:X2}{value.Value.B:X2}");
+		if (!value.HasValue) writer.WriteNullValue();
+		else writer.WriteStringValue($"#{value.Value.R:X2}{value.Value.G:X2}{value.Value.B:X2}");
 	}
 }

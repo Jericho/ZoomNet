@@ -59,7 +59,7 @@ namespace ZoomNet.Json
 				return values.ToArray();
 			}
 
-			throw new Exception("Unable to read Key/Value pair");
+			throw new JsonException("Unable to read Key/Value pair");
 		}
 
 		public override void Write(Utf8JsonWriter writer, KeyValuePair<string, string>[] value, JsonSerializerOptions options)
