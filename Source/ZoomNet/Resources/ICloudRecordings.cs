@@ -221,9 +221,10 @@ namespace ZoomNet.Resources
 		/// Download the recording file without buffering.
 		/// </summary>
 		/// <param name="downloadUrl">The URL of the recording file to download.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
 		/// <returns>
 		/// The <see cref="Stream"/> containing the file.
 		/// </returns>
-		Task<Stream> DownloadFileWithouBufferingAsync(string downloadUrl);
+		Task<Stream> DownloadFileWithouBufferingAsync(string downloadUrl, CancellationToken cancellationToken = default);
 	}
 }

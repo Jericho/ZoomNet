@@ -368,7 +368,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public async Task<Stream> DownloadFileWithouBufferingAsync(string downloadUrl)
+		public async Task<Stream> DownloadFileWithouBufferingAsync(string downloadUrl, CancellationToken cancellationToken)
 		{
 			using (var request = new HttpRequestMessage(HttpMethod.Get, downloadUrl))
 			{
@@ -378,7 +378,7 @@ namespace ZoomNet.Resources
 					request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", tokenHandler.Token);
 				}
 
-				var response = await _client.BaseClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+				var response = await _client.BaseClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
 
 				response.EnsureSuccessStatusCode();
 
