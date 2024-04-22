@@ -359,17 +359,29 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<Stream> DownloadFileAsync(string downloadUrl, CancellationToken cancellationToken = default)
+		public async Task<Stream> DownloadFileAsync(string downloadUrl, CancellationToken cancellationToken = default)
 		{
-			return _client
+			/*
+			 * PLEASE NOTE:
+			 *
+			 * The HttpRequestMessage in this method is dispatched with its completion option set to "ResponseHeadersRead".
+			 * This ensures the content of the response is streamed rather than buffered in memory.
+			 * This is important in cases where the downloaded file is quite large.
+			 * In this scenario, we don't want the entirety of the file to be buffered in a MemoryStream because
+			 * it could lead to "out of memory" exceptions if the file is large enough.
+			 * See https://github.com/Jericho/ZoomNet/pull/342 for a discussion on this topic.
+			 *
+			 * Forthermore, as of this writing, the FluentHttp library does not allow us to stream the content of responses
+			 * which means that the code in this method cannot be simplified like so:
+			 return _client
 				.GetAsync(downloadUrl)
 				.WithCancellationToken(cancellationToken)
 				.AsStream();
-		}
+			 *
+			 * The downside of not using the FluentHttp library to dispatch the request is that we lose automatic retries,
+			 * error handling, logging, etc.
+			 */
 
-		/// <inheritdoc/>
-		public async Task<Stream> DownloadFileWithouBufferingAsync(string downloadUrl, CancellationToken cancellationToken)
-		{
 			using (var request = new HttpRequestMessage(HttpMethod.Get, downloadUrl))
 			{
 				var tokenHandler = _client.Filters.OfType<ITokenHandler>().SingleOrDefault();

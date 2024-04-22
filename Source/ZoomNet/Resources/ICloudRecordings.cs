@@ -205,26 +205,13 @@ namespace ZoomNet.Resources
 		Task RejectRegistrantsAsync(long meetingId, IEnumerable<string> registrantIds, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Download the recording file into the memory buffer and return the stream from this buffer.
+		/// Download the recording file.
 		/// </summary>
 		/// <param name="downloadUrl">The URL of the recording file to download.</param>
 		/// <param name="cancellationToken">Cancellation token.</param>
 		/// <returns>
 		/// The <see cref="Stream"/> containing the file.
 		/// </returns>
-		/// <remarks>
-		/// Be careful, because if the recording file is too large, it can lead to buffer overflow and an OutOfMemoryException throwing.
-		/// </remarks>
 		Task<Stream> DownloadFileAsync(string downloadUrl, CancellationToken cancellationToken = default);
-
-		/// <summary>
-		/// Download the recording file without buffering.
-		/// </summary>
-		/// <param name="downloadUrl">The URL of the recording file to download.</param>
-		/// <param name="cancellationToken">Cancellation token.</param>
-		/// <returns>
-		/// The <see cref="Stream"/> containing the file.
-		/// </returns>
-		Task<Stream> DownloadFileWithouBufferingAsync(string downloadUrl, CancellationToken cancellationToken = default);
 	}
 }
