@@ -58,6 +58,36 @@ namespace ZoomNet.Resources
 		Task<PhoneCallUserProfile> GetPhoneCallUserProfileAsync(
 			string userId, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Retrieves a list of all of an account's users who are assigned a Zoom Phone license.
+		/// </summary>
+		/// <param name="pageSize">The number of records returned from a single API call.</param>
+		/// <param name="nextPageToken">
+		/// The next page token paginates through a large set of results.
+		/// A next page token is returned whenever the set of available results exceeds the current page size.
+		/// The expiration period for this token is 15 minutes.
+		/// </param>
+		/// <param name="siteId">The unique identifier of the site.</param>
+		/// <param name="callingType">The type of calling plan.</param>
+		/// <param name="status">The status of the Zoom Phone user.</param>
+		/// <param name="department">The department where the user belongs.</param>
+		/// <param name="costCenter">The cost center where the user belongs.</param>
+		/// <param name="keyword">The partial string of user's name, extension number, or phone number.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>
+		/// A task representing the asynchronous operation. The task result contains an array of <see cref="PhoneCallUserProfile"/>meetings.
+		/// </returns>
+		Task<PhoneCallUserProfilesPaginationObject> ListPhoneCallUserProfilesAsync(
+			int? pageSize = null,
+			string nextPageToken = null,
+			string siteId = null,
+			int? callingType = null,
+			UserStatus? status = null,
+			string department = null,
+			string costCenter = null,
+			string keyword = null,
+			CancellationToken cancellationToken = default);
+
 		#endregion
 	}
 }

@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models;
 
@@ -54,6 +54,12 @@ public class PhoneCallUserProfile
 	/// </summary>
 	[JsonPropertyName("id")]
 	public string Id { get; set; }
+
+	/// <summary>
+	/// Gets or sets the Zoom user name.
+	/// </summary>
+	[JsonPropertyName("name")]
+	public string Name { get; set; }
 
 	/// <summary>
 	/// Gets or sets the phone numbers.

@@ -62,6 +62,32 @@ namespace ZoomNet.Resources
 				.AsObject<PhoneCallUserProfile>();
 		}
 
+		/// <inheritdoc cref="IPhone.ListPhoneCallUserProfilesAsync" select="remarks" />
+		public Task<PhoneCallUserProfilesPaginationObject> ListPhoneCallUserProfilesAsync(
+			int? pageSize = null,
+			string nextPageToken = null,
+			string siteId = null,
+			int? callingType = null,
+			UserStatus? status = null,
+			string department = null,
+			string costCenter = null,
+			string keyword = null,
+			CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"phone/users")
+				.WithArgument("page_size", pageSize)
+				.WithArgument("next_page_token", nextPageToken)
+				.WithArgument("site_id", siteId)
+				.WithArgument("calling_type", callingType)
+				.WithArgument("status", status)
+				.WithArgument("department", department)
+				.WithArgument("cost_center", costCenter)
+				.WithArgument("keyword", keyword)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<PhoneCallUserProfilesPaginationObject>();
+		}
+
 		#endregion
 	}
 }
