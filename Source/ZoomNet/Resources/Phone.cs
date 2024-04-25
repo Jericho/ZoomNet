@@ -1,4 +1,5 @@
 using Pathoschild.Http.Client;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -64,7 +65,7 @@ namespace ZoomNet.Resources
 
 		/// <inheritdoc cref="IPhone.ListPhoneCallUserProfilesAsync" select="remarks" />
 		public Task<PhoneCallUserProfilesPaginationObject> ListPhoneCallUserProfilesAsync(
-			int? pageSize = null,
+			int pageSize = 30,
 			string nextPageToken = null,
 			string siteId = null,
 			int? callingType = null,
@@ -74,6 +75,11 @@ namespace ZoomNet.Resources
 			string keyword = null,
 			CancellationToken cancellationToken = default)
 		{
+			if (pageSize < 1 || pageSize > 100)
+			{
+				throw new ArgumentOutOfRangeException(nameof(pageSize), "Records per page must be between 1 and 100");
+			}
+
 			return _client
 				.GetAsync($"phone/users")
 				.WithArgument("page_size", pageSize)

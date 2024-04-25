@@ -78,7 +78,7 @@ namespace ZoomNet.Resources
 		/// A task representing the asynchronous operation. The task result contains an array of <see cref="PhoneCallUserProfile"/>meetings.
 		/// </returns>
 		Task<PhoneCallUserProfilesPaginationObject> ListPhoneCallUserProfilesAsync(
-			int? pageSize = null,
+			int pageSize = 30,
 			string nextPageToken = null,
 			string siteId = null,
 			int? callingType = null,

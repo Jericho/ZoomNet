@@ -1,3 +1,4 @@
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using RichardSzalay.MockHttp;
@@ -43,6 +44,26 @@ namespace ZoomNet.UnitTests.Resources
 			result.Users[0].Id.ShouldBe("NL3cEpSdRc-c2t8aLoZqiw");
 			result.Users[0].PhoneNumbers[0].PhoneNumberId.ShouldBe("---M1padRvSUtw7YihN7sA");
 			result.Users[0].PhoneNumbers[0].PhoneNumber.ShouldBe("14232058798");
+		}
+
+		[Theory]
+		[InlineData(0)]
+		[InlineData(101)]
+		public void InvalidPageSize_PhoneCallUserProfilesPaginationObjectTests(int pageSize)
+		{
+			// Arrange
+			var mockHttp = new MockHttpMessageHandler();
+
+			var client = Utils.GetFluentClient(mockHttp);
+			var phone = new Phone(client);
+
+			// Act and Assert
+			var exception = Assert.Throws<ArgumentOutOfRangeException>(() => phone
+				.ListPhoneCallUserProfilesAsync(pageSize: pageSize)
+				.ConfigureAwait(true));
+
+			exception.ParamName.ShouldBe(nameof(pageSize));
+			exception.Message.ShouldBe($"Records per page must be between 1 and 100 (Parameter '{nameof(pageSize)}')");
 		}
 	}
 }
