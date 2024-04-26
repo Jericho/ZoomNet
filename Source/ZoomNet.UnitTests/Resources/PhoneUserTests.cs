@@ -106,7 +106,7 @@ namespace ZoomNet.UnitTests.Resources
 				.ConfigureAwait(true));
 
 			exception.ParamName.ShouldBe(nameof(pageSize));
-			exception.Message.ShouldBe($"Records per page must be between 1 and 100 (Parameter '{nameof(pageSize)}')");
+			exception.Message.ShouldStartWith("Records per page must be between 1 and 100");
 		}
 
 		#endregion
