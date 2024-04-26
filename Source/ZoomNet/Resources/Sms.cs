@@ -6,7 +6,7 @@ using ZoomNet.Models;
 
 namespace ZoomNet.Resources
 {
-	/// <inheritdoc cref="ISms" select="remarks"/>
+	/// <inheritdoc/>
 	public class Sms : ISms
 	{
 		private readonly IClient _client;
@@ -20,7 +20,7 @@ namespace ZoomNet.Resources
 			_client = client;
 		}
 
-		/// <inheritdoc cref="ISms.GetSmsSessionDetailsAsync" select="remarks" />
+		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<SmsMessage>> GetSmsSessionDetailsAsync(
 			string sessionId, DateTime? from, DateTime? to, bool? orderAscending = true, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{

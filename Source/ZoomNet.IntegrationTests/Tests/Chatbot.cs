@@ -11,7 +11,7 @@ namespace ZoomNet.IntegrationTests.Tests;
 
 public class Chatbot : IIntegrationTest
 {
-	/// <inheritdoc />
+	/// <inheritdoc/>
 	public async Task RunAsync(User myUser, string[] myPermissions, IZoomClient client, TextWriter log, CancellationToken cancellationToken)
 	{
 		var accountId = Environment.GetEnvironmentVariable("ZOOM_OAUTH_ACCOUNTID", EnvironmentVariableTarget.User);

@@ -1,11 +1,12 @@
 using Pathoschild.Http.Client;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
 
 namespace ZoomNet.Resources
 {
-	/// <inheritdoc cref="IPhone" select="remarks"/>
+	/// <inheritdoc/>
 	public class Phone : IPhone
 	{
 		#region private fields
@@ -29,7 +30,7 @@ namespace ZoomNet.Resources
 
 		#region Recordings endpoints
 
-		/// <inheritdoc cref="IPhone.GetRecordingAsync" select="remarks"/>
+		/// <inheritdoc/>
 		public Task<PhoneCallRecording> GetRecordingAsync(
 			string callId, CancellationToken cancellationToken = default)
 		{
@@ -39,7 +40,7 @@ namespace ZoomNet.Resources
 				.AsObject<PhoneCallRecording>();
 		}
 
-		/// <inheritdoc cref="IPhone.GetRecordingTranscriptAsync" select="remarks"/>
+		/// <inheritdoc/>
 		public Task<PhoneCallRecordingTranscript> GetRecordingTranscriptAsync(
 			string recordingId, CancellationToken cancellationToken = default)
 		{
@@ -53,13 +54,44 @@ namespace ZoomNet.Resources
 
 		#region Users Endpoints
 
-		/// <inheritdoc cref="IPhone.GetPhoneCallUserProfileAsync" select="remarks" />
+		/// <inheritdoc/>
 		public Task<PhoneCallUserProfile> GetPhoneCallUserProfileAsync(string userId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"phone/users/{userId}")
 				.WithCancellationToken(cancellationToken)
 				.AsObject<PhoneCallUserProfile>();
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<PhoneUser>> ListPhoneUsersAsync(
+			int pageSize = 30,
+			string nextPageToken = null,
+			string siteId = null,
+			int? callingType = null,
+			PhoneCallUserStatus? status = null,
+			string department = null,
+			string costCenter = null,
+			string keyword = null,
+			CancellationToken cancellationToken = default)
+		{
+			if (pageSize < 1 || pageSize > 100)
+			{
+				throw new ArgumentOutOfRangeException(nameof(pageSize), "Records per page must be between 1 and 100");
+			}
+
+			return _client
+				.GetAsync($"phone/users")
+				.WithArgument("page_size", pageSize)
+				.WithArgument("next_page_token", nextPageToken)
+				.WithArgument("site_id", siteId)
+				.WithArgument("calling_type", callingType)
+				.WithArgument("status", status)
+				.WithArgument("department", department)
+				.WithArgument("cost_center", costCenter)
+				.WithArgument("keyword", keyword)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<PhoneUser>("users");
 		}
 
 		#endregion

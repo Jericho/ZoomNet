@@ -14,11 +14,17 @@ namespace ZoomNet.Json
 		{
 			switch (reader.TokenType)
 			{
+				case JsonTokenType.None:
+				case JsonTokenType.Null:
+					throw new JsonException($"Unable to convert a null value into a boolean value");
+
 				case JsonTokenType.True:
 				case JsonTokenType.False:
 					return reader.GetBoolean();
+
 				case JsonTokenType.Number:
 					return reader.GetByte() == 1;
+
 				default:
 					throw new JsonException($"Unable to convert the content of {reader.TokenType.ToEnumString()} JSON node into a boolean value");
 			}

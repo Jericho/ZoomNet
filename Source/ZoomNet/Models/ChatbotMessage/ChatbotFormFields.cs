@@ -14,7 +14,7 @@ public class ChatbotFormFields : IChatbotBody, IChatbotSection, IChatbotValidate
 	[JsonPropertyName("items")]
 	public ICollection<ChatbotFormField> Items { get; set; }
 
-	/// <inheritdoc />
+	/// <inheritdoc/>
 	public void Validate(bool enableMarkdownSupport)
 	{
 		foreach (var item in Items)

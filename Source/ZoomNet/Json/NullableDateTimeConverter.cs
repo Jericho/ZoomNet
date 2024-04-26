@@ -9,6 +9,8 @@ namespace ZoomNet.Json
 	/// <seealso cref="ZoomNetJsonConverter{T}"/>
 	internal class NullableDateTimeConverter : ZoomNetJsonConverter<DateTime?>
 	{
+		private readonly DateTimeConverter _dateTimeConverter = new DateTimeConverter();
+
 		public override DateTime? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 		{
 			switch (reader.TokenType)
@@ -17,17 +19,16 @@ namespace ZoomNet.Json
 				case JsonTokenType.Null:
 				case JsonTokenType.String when string.IsNullOrEmpty(reader.GetString()):
 					return null;
-				case JsonTokenType.String:
-					return reader.GetDateTime();
+
 				default:
-					throw new Exception($"Unable to convert {reader.TokenType.ToEnumString()} to nullable DateTime");
+					return _dateTimeConverter.Read(ref reader, typeToConvert, options);
 			}
 		}
 
 		public override void Write(Utf8JsonWriter writer, DateTime? value, JsonSerializerOptions options)
 		{
-			if (value.HasValue) writer.WriteStringValue(value.Value.ToZoomFormat());
-			else writer.WriteNullValue();
+			if (!value.HasValue) writer.WriteNullValue();
+			else _dateTimeConverter.Write(writer, value.Value, options);
 		}
 	}
 }
