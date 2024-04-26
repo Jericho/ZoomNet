@@ -64,7 +64,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc cref="IPhone.ListPhoneCallUserProfilesAsync" select="remarks" />
-		public Task<PhoneCallUserProfilesPaginationObject> ListPhoneCallUserProfilesAsync(
+		public Task<PaginatedResponseWithToken<PhoneCallUserProfile>> ListPhoneCallUserProfilesAsync(
 			int pageSize = 30,
 			string nextPageToken = null,
 			string siteId = null,
@@ -91,7 +91,7 @@ namespace ZoomNet.Resources
 				.WithArgument("cost_center", costCenter)
 				.WithArgument("keyword", keyword)
 				.WithCancellationToken(cancellationToken)
-				.AsObject<PhoneCallUserProfilesPaginationObject>();
+				.AsPaginatedResponseWithToken<PhoneCallUserProfile>("users");
 		}
 
 		#endregion

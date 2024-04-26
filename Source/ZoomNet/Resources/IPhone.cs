@@ -61,7 +61,7 @@ namespace ZoomNet.Resources
 		/// <summary>
 		/// Retrieves a list of all of an account's users who are assigned a Zoom Phone license.
 		/// </summary>
-		/// <param name="pageSize">The number of records returned from a single API call.</param>
+		/// <param name="pageSize">The number of records returned from a single API call. Default is 30.</param>
 		/// <param name="nextPageToken">
 		/// The next page token paginates through a large set of results.
 		/// A next page token is returned whenever the set of available results exceeds the current page size.
@@ -75,9 +75,9 @@ namespace ZoomNet.Resources
 		/// <param name="keyword">The partial string of user's name, extension number, or phone number.</param>
 		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
 		/// <returns>
-		/// A task representing the asynchronous operation. The task result contains an array of <see cref="PhoneCallUserProfile"/>meetings.
+		/// A task representing the asynchronous operation. The task result contains an array of Zoom Phone users in type of <see cref="PhoneCallUserProfile"/>.
 		/// </returns>
-		Task<PhoneCallUserProfilesPaginationObject> ListPhoneCallUserProfilesAsync(
+		Task<PaginatedResponseWithToken<PhoneCallUserProfile>> ListPhoneCallUserProfilesAsync(
 			int pageSize = 30,
 			string nextPageToken = null,
 			string siteId = null,
