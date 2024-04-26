@@ -1,5 +1,5 @@
-using System.Text.Json;
 using Shouldly;
+using System.Text.Json;
 using Xunit;
 using ZoomNet.Json;
 using ZoomNet.Models;

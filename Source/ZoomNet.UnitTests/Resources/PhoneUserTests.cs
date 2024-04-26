@@ -1,8 +1,8 @@
+using RichardSzalay.MockHttp;
+using Shouldly;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using RichardSzalay.MockHttp;
-using Shouldly;
 using Xunit;
 using ZoomNet.Resources;
 
