@@ -3,9 +3,9 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models;
 
 /// <summary>
-/// Phone call user profile information.
+/// Zoom Phone user information.
 /// </summary>
-public class PhoneCallUserProfile
+public class PhoneUser
 {
 	/// <summary>
 	/// Gets or sets the calling plans.
@@ -32,12 +32,6 @@ public class PhoneCallUserProfile
 	public string Email { get; set; }
 
 	/// <summary>
-	/// Gets or sets the emergency address.
-	/// </summary>
-	[JsonPropertyName("emergency_address")]
-	public EmergencyAddress EmergencyAddress { get; set; }
-
-	/// <summary>
 	/// Gets or sets the extension ID.
 	/// </summary>
 	[JsonPropertyName("extension_id")]
@@ -56,6 +50,12 @@ public class PhoneCallUserProfile
 	public string Id { get; set; }
 
 	/// <summary>
+	/// Gets or sets the Zoom user name.
+	/// </summary>
+	[JsonPropertyName("name")]
+	public string Name { get; set; }
+
+	/// <summary>
 	/// Gets or sets the phone numbers.
 	/// </summary>
 	[JsonPropertyName("phone_numbers")]
@@ -68,16 +68,10 @@ public class PhoneCallUserProfile
 	public string PhoneUserId { get; set; }
 
 	/// <summary>
-	/// Gets or sets a value indicating whether the user is a site admin.
+	/// Gets or sets a site.
 	/// </summary>
-	[JsonPropertyName("site_admin")]
-	public bool SiteAdmin { get; set; }
-
-	/// <summary>
-	/// Gets or sets the site id.
-	/// </summary>
-	[JsonPropertyName("site_id")]
-	public string SiteId { get; set; }
+	[JsonPropertyName("site")]
+	public Site Site { get; set; }
 
 	/// <summary>
 	/// Gets or sets the status of the user.
