@@ -75,14 +75,14 @@ namespace ZoomNet.Resources
 		/// <param name="keyword">The partial string of user's name, extension number, or phone number.</param>
 		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
 		/// <returns>
-		/// A task representing the asynchronous operation. The task result contains an array of Zoom Phone users in type of <see cref="PhoneCallUserProfile"/>.
+		/// A task representing the asynchronous operation. The task result contains an array of Zoom Phone users in type of <see cref="PhoneUser"/>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<PhoneCallUserProfile>> ListPhoneCallUserProfilesAsync(
+		Task<PaginatedResponseWithToken<PhoneUser>> ListPhoneUsersAsync(
 			int pageSize = 30,
 			string nextPageToken = null,
 			string siteId = null,
 			int? callingType = null,
-			UserStatus? status = null,
+			PhoneCallUserStatus? status = null,
 			string department = null,
 			string costCenter = null,
 			string keyword = null,

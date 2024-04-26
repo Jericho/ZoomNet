@@ -63,13 +63,13 @@ namespace ZoomNet.Resources
 				.AsObject<PhoneCallUserProfile>();
 		}
 
-		/// <inheritdoc cref="IPhone.ListPhoneCallUserProfilesAsync" select="remarks" />
-		public Task<PaginatedResponseWithToken<PhoneCallUserProfile>> ListPhoneCallUserProfilesAsync(
+		/// <inheritdoc cref="IPhone.ListPhoneUsersAsync" select="remarks" />
+		public Task<PaginatedResponseWithToken<PhoneUser>> ListPhoneUsersAsync(
 			int pageSize = 30,
 			string nextPageToken = null,
 			string siteId = null,
 			int? callingType = null,
-			UserStatus? status = null,
+			PhoneCallUserStatus? status = null,
 			string department = null,
 			string costCenter = null,
 			string keyword = null,
@@ -91,7 +91,7 @@ namespace ZoomNet.Resources
 				.WithArgument("cost_center", costCenter)
 				.WithArgument("keyword", keyword)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<PhoneCallUserProfile>("users");
+				.AsPaginatedResponseWithToken<PhoneUser>("users");
 		}
 
 		#endregion

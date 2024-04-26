@@ -8,9 +8,11 @@ using ZoomNet.Resources;
 
 namespace ZoomNet.UnitTests.Resources
 {
-	public class PhoneCallUserProfilesPaginatedResponseWithTokenTests
+	public class PhoneUserTests
 	{
-		internal const string PHONE_CALL_USER_PROFILES_PAGINATED_OBJECT = @"{
+		#region constants
+
+		internal const string PHONE_USERS_PAGINATED_OBJECT = @"{
 			""next_page_token"": ""F2qwertyg5eIqRRgC2YMauur8ZHUaJqtS3i"",
 			""page_size"": 1,
 			""total_records"": 10,
@@ -47,8 +49,12 @@ namespace ZoomNet.UnitTests.Resources
 			]
 		}";
 
+		#endregion
+
+		#region tests
+
 		[Fact]
-		public async Task PhoneCallUserProfilesPaginatedResponseTestsAsync()
+		public async Task GetPhoneUsersPaginatedResponseTestsAsync()
 		{
 			// Arrange
 			var pageSize = 1;
@@ -60,14 +66,14 @@ namespace ZoomNet.UnitTests.Resources
 					Utils.GetZoomApiUri("phone/users"))
 				.Respond(
 					"application/json",
-					PHONE_CALL_USER_PROFILES_PAGINATED_OBJECT);
+					PHONE_USERS_PAGINATED_OBJECT);
 
 			var client = Utils.GetFluentClient(mockHttp);
 			var phone = new Phone(client);
 
 			// Act
 			var result = await phone
-				.ListPhoneCallUserProfilesAsync(pageSize: pageSize)
+				.ListPhoneUsersAsync(pageSize: pageSize)
 				.ConfigureAwait(true);
 
 			// Assert
@@ -86,7 +92,7 @@ namespace ZoomNet.UnitTests.Resources
 		[Theory]
 		[InlineData(0)]
 		[InlineData(101)]
-		public void InvalidPageSize_PhoneCallUserProfilesPaginatedResponseTests(int pageSize)
+		public void InvalidPageSize_GetPhoneUsersPaginatedResponseTests(int pageSize)
 		{
 			// Arrange
 			var mockHttp = new MockHttpMessageHandler();
@@ -96,11 +102,13 @@ namespace ZoomNet.UnitTests.Resources
 
 			// Act and Assert
 			var exception = Assert.Throws<ArgumentOutOfRangeException>(() => phone
-				.ListPhoneCallUserProfilesAsync(pageSize: pageSize)
+				.ListPhoneUsersAsync(pageSize: pageSize)
 				.ConfigureAwait(true));
 
 			exception.ParamName.ShouldBe(nameof(pageSize));
 			exception.Message.ShouldBe($"Records per page must be between 1 and 100 (Parameter '{nameof(pageSize)}')");
 		}
+
+		#endregion
 	}
 }
