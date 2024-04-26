@@ -64,7 +64,7 @@ public class ChatbotSection : IChatbotBody, IChatbotValidate
 		set => TimeStamp = value.ToUnixTime(Internal.UnixTimePrecision.Milliseconds);
 	}
 
-	/// <inheritdoc />
+	/// <inheritdoc/>
 	public void Validate(bool enableMarkdownSupport)
 	{
 		foreach (var section in Sections.OfType<IChatbotValidate>())

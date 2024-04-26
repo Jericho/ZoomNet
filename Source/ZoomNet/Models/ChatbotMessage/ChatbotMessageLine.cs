@@ -54,7 +54,7 @@ public class ChatbotMessageLine : IChatbotBody, IChatbotSection, IChatbotValidat
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
 	public string Link { get; set; }
 
-	/// <inheritdoc />
+	/// <inheritdoc/>
 	public void Validate(bool enableMarkdownSupport)
 	{
 		if (enableMarkdownSupport && Link != null)

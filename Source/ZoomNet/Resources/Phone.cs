@@ -6,7 +6,7 @@ using ZoomNet.Models;
 
 namespace ZoomNet.Resources
 {
-	/// <inheritdoc cref="IPhone" select="remarks"/>
+	/// <inheritdoc/>
 	public class Phone : IPhone
 	{
 		#region private fields
@@ -30,7 +30,7 @@ namespace ZoomNet.Resources
 
 		#region Recordings endpoints
 
-		/// <inheritdoc cref="IPhone.GetRecordingAsync" select="remarks"/>
+		/// <inheritdoc/>
 		public Task<PhoneCallRecording> GetRecordingAsync(
 			string callId, CancellationToken cancellationToken = default)
 		{
@@ -40,7 +40,7 @@ namespace ZoomNet.Resources
 				.AsObject<PhoneCallRecording>();
 		}
 
-		/// <inheritdoc cref="IPhone.GetRecordingTranscriptAsync" select="remarks"/>
+		/// <inheritdoc/>
 		public Task<PhoneCallRecordingTranscript> GetRecordingTranscriptAsync(
 			string recordingId, CancellationToken cancellationToken = default)
 		{
@@ -54,7 +54,7 @@ namespace ZoomNet.Resources
 
 		#region Users Endpoints
 
-		/// <inheritdoc cref="IPhone.GetPhoneCallUserProfileAsync" select="remarks" />
+		/// <inheritdoc/>
 		public Task<PhoneCallUserProfile> GetPhoneCallUserProfileAsync(string userId, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -63,7 +63,7 @@ namespace ZoomNet.Resources
 				.AsObject<PhoneCallUserProfile>();
 		}
 
-		/// <inheritdoc cref="IPhone.ListPhoneUsersAsync" select="remarks" />
+		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<PhoneUser>> ListPhoneUsersAsync(
 			int pageSize = 30,
 			string nextPageToken = null,

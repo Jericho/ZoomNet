@@ -11,13 +11,13 @@ namespace ZoomNet.Json;
 /// </summary>
 public class NullableHexColorConverter : JsonConverter<Color?>
 {
-	/// <inheritdoc />
+	/// <inheritdoc/>
 	public override bool CanConvert(Type typeToConvert)
 	{
 		return typeToConvert == typeof(Color?);
 	}
 
-	/// <inheritdoc />
+	/// <inheritdoc/>
 	public override Color? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 	{
 		switch (reader.TokenType)
@@ -38,7 +38,7 @@ public class NullableHexColorConverter : JsonConverter<Color?>
 		}
 	}
 
-	/// <inheritdoc />
+	/// <inheritdoc/>
 	public override void Write(Utf8JsonWriter writer, Color? value, JsonSerializerOptions options)
 	{
 		if (!value.HasValue) writer.WriteNullValue();
