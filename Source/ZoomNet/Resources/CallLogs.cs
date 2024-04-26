@@ -76,7 +76,7 @@ namespace ZoomNet.Resources
 		/// An array of <see cref="AccountCallLog" />.
 		/// </returns>
 		public Task<PaginatedResponseWithTokenAndDateRange<AccountCallLog>> GetAsync(DateTime? from = null, DateTime? to = null, CallLogType type = CallLogType.All, CallLogPathType? pathType = null, CallLogTimeType? timeType = CallLogTimeType.StartTime, string siteId = null, bool chargedCallLogs = false, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
-			{
+		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
 				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 300");

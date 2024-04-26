@@ -500,22 +500,22 @@ namespace ZoomNet
 
 		internal static T GetPropertyValue<T>(this JsonElement element, string name, T defaultValue)
 		{
-			return GetPropertyValue<T>(element, new[] { name }, defaultValue, false);
+			return element.GetPropertyValue(new[] { name }, defaultValue, false);
 		}
 
 		internal static T GetPropertyValue<T>(this JsonElement element, string[] names, T defaultValue)
 		{
-			return GetPropertyValue<T>(element, names, defaultValue, false);
+			return element.GetPropertyValue(names, defaultValue, false);
 		}
 
 		internal static T GetPropertyValue<T>(this JsonElement element, string name)
 		{
-			return GetPropertyValue<T>(element, new[] { name }, default, true);
+			return element.GetPropertyValue<T>(new[] { name }, default, true);
 		}
 
 		internal static T GetPropertyValue<T>(this JsonElement element, string[] names)
 		{
-			return GetPropertyValue<T>(element, names, default, true);
+			return element.GetPropertyValue<T>(names, default, true);
 		}
 
 		internal static async Task<TResult[]> ForEachAsync<T, TResult>(this IEnumerable<T> items, Func<T, Task<TResult>> action, int maxDegreeOfParalellism)
@@ -644,8 +644,8 @@ namespace ZoomNet
 
 		internal static DiagnosticInfo GetDiagnosticInfo(this IResponse response)
 		{
-			var diagnosticId = response.Message.RequestMessage.Headers.GetValue(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME);
-			DiagnosticHandler.DiagnosticsInfo.TryGetValue(diagnosticId, out DiagnosticInfo diagnosticInfo);
+			var diagnosticId = response.Message.RequestMessage.Headers.GetValue(DIAGNOSTIC_ID_HEADER_NAME);
+			DiagnosticsInfo.TryGetValue(diagnosticId, out DiagnosticInfo diagnosticInfo);
 			return diagnosticInfo;
 		}
 
@@ -687,8 +687,8 @@ namespace ZoomNet
 
 					if (rootJsonElement.ValueKind == JsonValueKind.Object)
 					{
-						errorCode = rootJsonElement.TryGetProperty("code", out JsonElement jsonErrorCode) ? (int?)jsonErrorCode.GetInt32() : (int?)null;
-						errorMessage = rootJsonElement.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : (errorCode.HasValue ? $"Error code: {errorCode}" : errorMessage);
+						errorCode = rootJsonElement.TryGetProperty("code", out JsonElement jsonErrorCode) ? jsonErrorCode.GetInt32() : null;
+						errorMessage = rootJsonElement.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : errorCode.HasValue ? $"Error code: {errorCode}" : errorMessage;
 						if (rootJsonElement.TryGetProperty("errors", out JsonElement jsonErrorDetails))
 						{
 							var errorDetails = string.Join(
@@ -749,7 +749,7 @@ namespace ZoomNet
 		internal static string ToEnumString<T>(this T enumValue)
 			where T : Enum
 		{
-			if (TryToEnumString(enumValue, out string stringValue)) return stringValue;
+			if (enumValue.TryToEnumString(out string stringValue)) return stringValue;
 			return enumValue.ToString();
 		}
 
@@ -796,7 +796,7 @@ namespace ZoomNet
 		internal static T ToEnum<T>(this string str)
 			where T : Enum
 		{
-			if (TryToEnum(str, out T enumValue)) return enumValue;
+			if (str.TryToEnum(out T enumValue)) return enumValue;
 
 			throw new ArgumentException($"There is no value in the {typeof(T).Name} enum that corresponds to '{str}'.");
 		}
@@ -907,7 +907,7 @@ namespace ZoomNet
 				return JsonSerializer.Deserialize<T>(responseContent, options ?? JsonFormatter.DeserializerOptions);
 			}
 
-			var jsonDoc = JsonDocument.Parse(responseContent, (JsonDocumentOptions)default);
+			var jsonDoc = JsonDocument.Parse(responseContent, default);
 			if (jsonDoc.RootElement.TryGetProperty(propertyName, out JsonElement property))
 			{
 				return property.ToObject<T>(options);
@@ -933,7 +933,7 @@ namespace ZoomNet
 		{
 			var responseContent = await httpContent.ReadAsStringAsync(null, cancellationToken).ConfigureAwait(false);
 
-			var jsonDoc = JsonDocument.Parse(responseContent, (JsonDocumentOptions)default);
+			var jsonDoc = JsonDocument.Parse(responseContent, default);
 
 			if (string.IsNullOrEmpty(propertyName))
 			{
@@ -943,7 +943,7 @@ namespace ZoomNet
 			if (jsonDoc.RootElement.TryGetProperty(propertyName, out JsonElement property))
 			{
 				var propertyContent = property.GetRawText();
-				return JsonDocument.Parse(propertyContent, (JsonDocumentOptions)default);
+				return JsonDocument.Parse(propertyContent, default);
 			}
 			else if (throwIfPropertyIsMissing)
 			{
@@ -1106,7 +1106,7 @@ namespace ZoomNet
 			{
 				var underlyingType = Nullable.GetUnderlyingType(typeOfT);
 				var getElementValue = typeof(Internal)
-					.GetMethod(nameof(Internal.GetElementValue), BindingFlags.Static | BindingFlags.NonPublic)
+					.GetMethod(nameof(GetElementValue), BindingFlags.Static | BindingFlags.NonPublic)
 					.MakeGenericMethod(underlyingType);
 
 				return (T)getElementValue.Invoke(null, new object[] { property.Value });
@@ -1116,7 +1116,7 @@ namespace ZoomNet
 			{
 				var elementType = typeOfT.GetElementType();
 				var getElementValue = typeof(Internal)
-					.GetMethod(nameof(Internal.GetElementValue), BindingFlags.Static | BindingFlags.NonPublic)
+					.GetMethod(nameof(GetElementValue), BindingFlags.Static | BindingFlags.NonPublic)
 					.MakeGenericMethod(elementType);
 
 				var arrayList = new ArrayList(property.Value.GetArrayLength());
