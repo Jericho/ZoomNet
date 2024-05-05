@@ -1,15 +1,14 @@
 using Pathoschild.Http.Client;
+using Pathoschild.Http.Client.Internal;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
-using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
@@ -382,20 +381,72 @@ namespace ZoomNet.Resources
 			 * error handling, logging, etc.
 			 */
 
-			using (var request = new HttpRequestMessage(HttpMethod.Get, downloadUrl))
+			using (var requestMessage = new HttpRequestMessage(HttpMethod.Get, downloadUrl))
 			{
-				var tokenHandler = _client.Filters.OfType<ITokenHandler>().SingleOrDefault();
-				if (tokenHandler != null)
-				{
-					request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", tokenHandler.Token);
-				}
+				IRequest request = new Request(
+					requestMessage,
+					_client.Formatters,
+					async (IRequest req) =>
+					{
+						// clone request (to avoid issues when resending messages)
+						var requestMessage = await CloneAsync(req.Message, req.CancellationToken).ConfigureAwait(false);
 
-				var response = await _client.BaseClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+						// dispatch request
+						return await _client.BaseClient
+							.SendAsync(requestMessage, HttpCompletionOption.ResponseHeadersRead, req.CancellationToken)
+							.ConfigureAwait(false);
+					},
+					_client.Filters);
 
-				response.EnsureSuccessStatusCode();
+				request = request.WithRequestCoordinator(_client.RequestCoordinator);
 
-				return await response.Content.ReadAsStreamAsync();
+				return await request.AsStream().ConfigureAwait(false);
 			}
+		}
+
+		private static async Task<HttpRequestMessage> CloneAsync(HttpRequestMessage request, CancellationToken cancellationToken = default)
+		{
+			HttpRequestMessage clone = new(request.Method, request.RequestUri)
+			{
+				Content = await CloneAsync(request.Content, cancellationToken).ConfigureAwait(false),
+				Version = request.Version
+			};
+
+#if NET5_0_OR_GREATER
+			
+		   foreach ((string key, object? value) in request.Options)
+					clone.Options.Set(new HttpRequestOptionsKey<object>(key), value);
+#else
+			foreach (var prop in request.Properties)
+				clone.Properties.Add(prop);
+#endif
+
+			foreach (var header in request.Headers)
+				clone.Headers.TryAddWithoutValidation(header.Key, header.Value);
+
+			return clone;
+		}
+
+		private static async Task<HttpContent> CloneAsync(HttpContent content, CancellationToken cancellationToken = default)
+		{
+			if (content == null)
+				return null;
+
+			Stream stream = new MemoryStream();
+			await content
+#if NET5_0_OR_GREATER
+				.CopyToAsync(stream, cancellationToken)
+#else
+				.CopyToAsync(stream)
+#endif
+			   .ConfigureAwait(false);
+			stream.Position = 0;
+
+			StreamContent clone = new(stream);
+			foreach (var header in content.Headers)
+				clone.Headers.Add(header.Key, header.Value);
+
+			return clone;
 		}
 
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<string> registrantIds, string status, CancellationToken cancellationToken = default)
