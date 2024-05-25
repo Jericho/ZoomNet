@@ -1,3 +1,4 @@
+using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,12 +18,15 @@ namespace ZoomNet.Utilities
 
 		public long ResponseTimestamp { get; set; }
 
-		public DiagnosticInfo(WeakReference<HttpRequestMessage> requestReference, long requestTimestamp, WeakReference<HttpResponseMessage> responseReference, long responseTimestamp)
+		public RequestOptions Options { get; set; }
+
+		public DiagnosticInfo(WeakReference<HttpRequestMessage> requestReference, long requestTimestamp, WeakReference<HttpResponseMessage> responseReference, long responseTimestamp, RequestOptions options)
 		{
 			RequestReference = requestReference;
 			RequestTimestamp = requestTimestamp;
 			ResponseReference = responseReference;
 			ResponseTimestamp = responseTimestamp;
+			Options = options;
 		}
 
 		public string GetLoggingTemplate()
@@ -84,12 +88,15 @@ namespace ZoomNet.Utilities
 
 			// Get the content to the request/response and calculate how long it took to get the response
 			var elapsed = TimeSpan.FromTicks(ResponseTimestamp - RequestTimestamp);
+			var isStreaming = Options.CompleteWhen == HttpCompletionOption.ResponseHeadersRead;
 			var requestContent = request?.Content?.ReadAsStringAsync(null).GetAwaiter().GetResult();
-			var responseContent = response?.Content?.ReadAsStringAsync(null).GetAwaiter().GetResult();
+			var responseContent = isStreaming
+				? "... content omitted from this log because the response is streaming ..."
+				: response?.Content?.ReadAsStringAsync(null).GetAwaiter().GetResult();
 
 			// Calculate the content size
 			var requestContentLength = requestContent?.Length ?? 0;
-			var responseContentLength = responseContent?.Length ?? 0;
+			var responseContentLength = isStreaming ? -1 : (responseContent?.Length ?? 0); // "-1" means the response is streaming therefore we can't calculate the length
 
 			// Get the request headers (please note: intentionally getting headers from "response.RequestMessage" rather than "request")
 			var requestHeaders = response?.RequestMessage?.Headers ?? Enumerable.Empty<KeyValuePair<string, IEnumerable<string>>>();
