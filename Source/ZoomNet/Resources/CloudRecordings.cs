@@ -366,51 +366,6 @@ namespace ZoomNet.Resources
 			   .AsStream();
 		}
 
-		private static async Task<HttpRequestMessage> CloneAsync(HttpRequestMessage request, CancellationToken cancellationToken = default)
-		{
-			HttpRequestMessage clone = new(request.Method, request.RequestUri)
-			{
-				Content = await CloneAsync(request.Content, cancellationToken).ConfigureAwait(false),
-				Version = request.Version
-			};
-
-#if NET5_0_OR_GREATER
-			
-		   foreach ((string key, object? value) in request.Options)
-					clone.Options.Set(new HttpRequestOptionsKey<object>(key), value);
-#else
-			foreach (var prop in request.Properties)
-				clone.Properties.Add(prop);
-#endif
-
-			foreach (var header in request.Headers)
-				clone.Headers.TryAddWithoutValidation(header.Key, header.Value);
-
-			return clone;
-		}
-
-		private static async Task<HttpContent> CloneAsync(HttpContent content, CancellationToken cancellationToken = default)
-		{
-			if (content == null)
-				return null;
-
-			Stream stream = new MemoryStream();
-			await content
-#if NET5_0_OR_GREATER
-				.CopyToAsync(stream, cancellationToken)
-#else
-				.CopyToAsync(stream)
-#endif
-			   .ConfigureAwait(false);
-			stream.Position = 0;
-
-			StreamContent clone = new(stream);
-			foreach (var header in content.Headers)
-				clone.Headers.Add(header.Key, header.Value);
-
-			return clone;
-		}
-
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<string> registrantIds, string status, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
