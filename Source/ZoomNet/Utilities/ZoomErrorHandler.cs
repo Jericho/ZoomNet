@@ -51,6 +51,8 @@ namespace ZoomNet.Utilities
 		public void OnResponse(IResponse response, bool httpErrorAsException)
 		{
 			var (isError, errorMessage, errorCode) = response.Message.GetErrorMessageAsync().GetAwaiter().GetResult();
+			if (!isError) return;
+
 			var diagnosticLog = response.GetDiagnosticInfo()?.GetFormattedLog() ?? "Diagnostic log unavailable";
 
 			if (TreatHttp200AsException && response.Status == HttpStatusCode.OK)
@@ -61,12 +63,10 @@ namespace ZoomNet.Utilities
 
 				throw new ZoomException(errorMessage, response.Message, diagnosticLog);
 			}
-			else if (!isError)
+			else
 			{
-				return;
+				throw new ZoomException(errorMessage, response.Message, diagnosticLog, errorCode);
 			}
-
-			throw new ZoomException(errorMessage, response.Message, diagnosticLog, errorCode);
 		}
 
 		#endregion

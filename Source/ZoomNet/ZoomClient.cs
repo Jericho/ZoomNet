@@ -229,7 +229,7 @@ namespace ZoomNet
 
 			_mustDisposeHttpClient = disposeClient;
 			_httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
-			_options = options ?? GetDefaultOptions();
+			_options = options ?? new();
 			_logger = logger ?? NullLogger.Instance;
 			_fluentClient = new FluentClient(new Uri(ZOOM_V2_BASE_URI), httpClient)
 				.SetUserAgent($"ZoomNet/{Version} (+https://github.com/Jericho/ZoomNet)");
@@ -330,15 +330,6 @@ namespace ZoomNet
 		#endregion
 
 		#region PRIVATE METHODS
-
-		private static ZoomClientOptions GetDefaultOptions()
-		{
-			return new ZoomClientOptions()
-			{
-				LogLevelSuccessfulCalls = LogLevel.Debug,
-				LogLevelFailedCalls = LogLevel.Error
-			};
-		}
 
 		private void ReleaseManagedResources()
 		{
