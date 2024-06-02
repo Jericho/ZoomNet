@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 
-namespace ZoomNet.Utilities
+namespace ZoomNet.Utilities.Log
 {
 	/// <summary>
 	/// Formatter to convert the named format items like {NamedformatItem} to <see cref="M:string.Format"/> format.
