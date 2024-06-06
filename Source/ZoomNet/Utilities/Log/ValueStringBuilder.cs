@@ -32,8 +32,8 @@ namespace ZoomNet.Utilities.Log
 			get => _pos;
 			set
 			{
-				Debug.Assert(value >= 0);
-				Debug.Assert(value <= _chars.Length);
+				Debug.Assert(value >= 0, "Value must be greater than zero");
+				Debug.Assert(value <= _chars.Length, "Value cannot exceed the size of the buffer");
 				_pos = value;
 			}
 		}
@@ -43,7 +43,7 @@ namespace ZoomNet.Utilities.Log
 		public void EnsureCapacity(int capacity)
 		{
 			// This is not expected to be called this with negative capacity
-			Debug.Assert(capacity >= 0);
+			Debug.Assert(capacity >= 0, "Capacity must be greater than zero");
 
 			// If the caller has a bug and calls this with negative capacity, make sure to call Grow to throw an exception.
 			if ((uint)capacity > (uint)_chars.Length)
@@ -80,7 +80,7 @@ namespace ZoomNet.Utilities.Log
 		{
 			get
 			{
-				Debug.Assert(index < _pos);
+				Debug.Assert(index < _pos, "Index must less than the number of items currently in the buffer");
 				return ref _chars[index];
 			}
 		}
@@ -194,8 +194,10 @@ namespace ZoomNet.Utilities.Log
 			}
 
 			int pos = _pos;
-			if (s.Length == 1 && (uint)pos < (uint)_chars.Length) // very common case, e.g. appending strings from NumberFormatInfo like separators, percent symbols, etc.
+
+			if (s.Length == 1 && (uint)pos < (uint)_chars.Length)
 			{
+				// very common case, e.g. appending strings from NumberFormatInfo like separators, percent symbols, etc.
 				_chars[pos] = s[0];
 				_pos = pos + 1;
 			}
@@ -275,7 +277,7 @@ namespace ZoomNet.Utilities.Log
 		[MethodImpl(MethodImplOptions.NoInlining)]
 		private void Grow(int additionalCapacityBeyondPos)
 		{
-			Debug.Assert(additionalCapacityBeyondPos > 0);
+			Debug.Assert(additionalCapacityBeyondPos > 0, "Value must be greater than zero");
 			Debug.Assert(_pos > _chars.Length - additionalCapacityBeyondPos, "Grow called incorrectly, no resize is needed.");
 
 			const uint ArrayMaxLength = 0x7FFFFFC7; // same as Array.MaxLength
