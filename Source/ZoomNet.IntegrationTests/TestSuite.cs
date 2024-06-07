@@ -6,6 +6,7 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.IntegrationTests
 {
@@ -37,7 +38,13 @@ namespace ZoomNet.IntegrationTests
 		public virtual async Task<ResultCodes> RunTestsAsync(CancellationToken cancellationToken)
 		{
 			// Configure ZoomNet client
-			var client = new ZoomClient(ConnectionInfo, Proxy, null, LoggerFactory.CreateLogger<ZoomClient>());
+			var options = new ZoomClientOptions
+			{
+				// A successful API call will trigger a 'Trace' log (rather than the default 'Debug').
+				// This is to ensure that we don't get overwhelmed by too many debug messages in the console.
+				LogLevelSuccessfulCalls = LogLevel.Trace
+			};
+			var client = new ZoomClient(ConnectionInfo, Proxy, options, LoggerFactory.CreateLogger<ZoomClient>());
 
 			// Get my user and permisisons
 			User currentUser = null;

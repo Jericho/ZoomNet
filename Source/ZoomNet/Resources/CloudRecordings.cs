@@ -1,10 +1,10 @@
 using Pathoschild.Http.Client;
+using Pathoschild.Http.Client.Extensibility;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
@@ -361,41 +361,26 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public async Task<Stream> DownloadFileAsync(string downloadUrl, CancellationToken cancellationToken = default)
 		{
-			/*
-			 * PLEASE NOTE:
-			 *
-			 * The HttpRequestMessage in this method is dispatched with its completion option set to "ResponseHeadersRead".
-			 * This ensures the content of the response is streamed rather than buffered in memory.
-			 * This is important in cases where the downloaded file is quite large.
-			 * In this scenario, we don't want the entirety of the file to be buffered in a MemoryStream because
-			 * it could lead to "out of memory" exceptions if the file is large enough.
-			 * See https://github.com/Jericho/ZoomNet/pull/342 for a discussion on this topic.
-			 *
-			 * Forthermore, as of this writing, the FluentHttp library does not allow us to stream the content of responses
-			 * which means that the code in this method cannot be simplified like so:
-			 return _client
-				.GetAsync(downloadUrl)
-				.WithCancellationToken(cancellationToken)
-				.AsStream();
-			 *
-			 * The downside of not using the FluentHttp library to dispatch the request is that we lose automatic retries,
-			 * error handling, logging, etc.
-			 */
+			// Prepare the request
+			var request = _client
+			   .GetAsync(downloadUrl)
+			   .WithOptions(completeWhen: HttpCompletionOption.ResponseHeadersRead)
+			   .WithCancellationToken(cancellationToken);
 
-			using (var request = new HttpRequestMessage(HttpMethod.Get, downloadUrl))
-			{
-				var tokenHandler = _client.Filters.OfType<ITokenHandler>().SingleOrDefault();
-				if (tokenHandler != null)
-				{
-					request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", tokenHandler.Token);
-				}
+			// Remove our custom error handler because it reads the content of the response to check for error messages returned from the Zoom API.
+			// This is problematic because we want the content of the response to be streamed.
+			request = request.WithoutFilter<ZoomErrorHandler>();
 
-				var response = await _client.BaseClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+			// We need to add the default error filter to throw an exception if the request fails.
+			// The error handler is safe to use with streaming responses because it does not read the content to determine if an error occured.
+			request = request.WithFilter(new DefaultErrorFilter());
 
-				response.EnsureSuccessStatusCode();
+			// Dispatch the request
+			var response = await request
+				.AsStream()
+				.ConfigureAwait(false);
 
-				return await response.Content.ReadAsStreamAsync();
-			}
+			return response;
 		}
 
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<string> registrantIds, string status, CancellationToken cancellationToken = default)

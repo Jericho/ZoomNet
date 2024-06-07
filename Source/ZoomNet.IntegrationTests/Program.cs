@@ -104,14 +104,14 @@ namespace ZoomNet.IntegrationTests
 				logzioTarget.ContextProperties.Add(new TargetPropertyWithContext("ZoomNet-Version", ZoomNet.ZoomClient.Version));
 
 				nLogConfig.AddTarget("Logzio", logzioTarget);
-				nLogConfig.AddRule(NLog.LogLevel.Info, NLog.LogLevel.Fatal, logzioTarget, "*");
+				nLogConfig.AddRule(NLog.LogLevel.Trace, NLog.LogLevel.Fatal, logzioTarget, "*"); // Send all logs to logz.io, no matther the 'level'
 			}
 
 			// Send logs to console
 			var consoleTarget = new ColoredConsoleTarget();
 			nLogConfig.AddTarget("ColoredConsole", consoleTarget);
-			nLogConfig.AddRule(NLog.LogLevel.Debug, NLog.LogLevel.Fatal, consoleTarget, "*");
-			nLogConfig.AddRule(NLog.LogLevel.Trace, NLog.LogLevel.Fatal, consoleTarget, "ZoomNet.ZoomWebSocketClient");
+			nLogConfig.AddRule(NLog.LogLevel.Debug, NLog.LogLevel.Fatal, consoleTarget, "*"); // Only display logs with 'Debug' level or higher in the console
+			nLogConfig.AddRule(NLog.LogLevel.Trace, NLog.LogLevel.Fatal, consoleTarget, "ZoomNet.ZoomWebSocketClient"); // Display all logs to console when testing the WebSocket client, no matther the 'level'
 
 			return nLogConfig;
 		}
