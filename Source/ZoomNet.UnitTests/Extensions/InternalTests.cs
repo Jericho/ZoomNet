@@ -178,11 +178,11 @@ namespace ZoomNet.UnitTests.Extensions
 			{
 				// Arrange
 				var responseContent = @"{
-				""next_page_token"": """",
-				""page_number"": 1,
-				""page_size"": 100,
-				""total_records"": 5
-			}";
+					""next_page_token"": """",
+					""page_number"": 1,
+					""page_size"": 100,
+					""total_records"": 5
+				}";
 				var message = new HttpResponseMessage(HttpStatusCode.OK)
 				{
 					Content = new StringContent(responseContent)
