@@ -1,4 +1,5 @@
 using Pathoschild.Http.Client;
+using Pathoschild.Http.Client.Extensibility;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -8,6 +9,7 @@ using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
@@ -357,13 +359,28 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<Stream> DownloadFileAsync(string downloadUrl, CancellationToken cancellationToken = default)
+		public async Task<Stream> DownloadFileAsync(string downloadUrl, CancellationToken cancellationToken = default)
 		{
-			return _client
+			// Prepare the request
+			var request = _client
 			   .GetAsync(downloadUrl)
 			   .WithOptions(completeWhen: HttpCompletionOption.ResponseHeadersRead)
-			   .WithCancellationToken(cancellationToken)
-			   .AsStream();
+			   .WithCancellationToken(cancellationToken);
+
+			// Remove our custom error handler because it reads the content of the response to check for error messages returned from the Zoom API.
+			// This is problematic because we want the content of the response to be streamed.
+			request = request.WithoutFilter<ZoomErrorHandler>();
+
+			// We need to add the default error filter to throw an exception if the request fails.
+			// The error handler is safe to use with streaming responses because it does not read the content to determine if an error occured.
+			request = request.WithFilter(new DefaultErrorFilter());
+
+			// Dispatch the request
+			var response = await request
+				.AsStream()
+				.ConfigureAwait(false);
+
+			return response;
 		}
 
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<string> registrantIds, string status, CancellationToken cancellationToken = default)
