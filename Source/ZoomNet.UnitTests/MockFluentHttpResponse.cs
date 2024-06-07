@@ -72,7 +72,7 @@ namespace ZoomNet.UnitTests
 #endif
 				)
 				.ConfigureAwait(false);
-			stream.Position = 0;
+			if (stream.CanSeek) stream.Position = 0;
 			return stream;
 		}
 
