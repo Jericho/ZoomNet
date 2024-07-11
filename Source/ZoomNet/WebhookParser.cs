@@ -33,8 +33,9 @@ namespace ZoomNet
 			var message = $"v0:{timestamp}:{requestBody}";
 
 			// Hash the message
-			var hmac = new HMACSHA256(Encoding.ASCII.GetBytes(secretToken));
-			var hashAsBytes = hmac.ComputeHash(Encoding.ASCII.GetBytes(message));
+			var hashingEncoding = Encoding.UTF8; // Switched from ASCII to UTF8 in July 2024. See https://github.com/Jericho/ZoomNet/issues/349 for more information.
+			var hmac = new HMACSHA256(hashingEncoding.GetBytes(secretToken));
+			var hashAsBytes = hmac.ComputeHash(hashingEncoding.GetBytes(message));
 			var hashAsHex = hashAsBytes.ToHexString();
 
 			// Create the signature
