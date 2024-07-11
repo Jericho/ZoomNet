@@ -1,13 +1,13 @@
 // Install tools.
 #tool dotnet:?package=GitVersion.Tool&version=5.12.0
 #tool dotnet:?package=coveralls.net&version=4.0.1
-#tool nuget:https://f.feedz.io/jericho/jericho/nuget/?package=GitReleaseManager&version=0.17.0-collaborators0004
-#tool nuget:?package=ReportGenerator&version=5.3.5
-#tool nuget:?package=xunit.runner.console&version=2.8.1
+#tool nuget:https://f.feedz.io/jericho/jericho/nuget/?package=GitReleaseManager&version=0.17.0-collaborators0007
+#tool nuget:?package=ReportGenerator&version=5.3.7
+#tool nuget:?package=xunit.runner.console&version=2.9.0
 #tool nuget:?package=CodecovUploader&version=0.7.3
 
 // Install addins.
-#addin nuget:?package=Cake.Coveralls&version=1.1.0
+#addin nuget:?package=Cake.Coveralls&version=4.0.0
 #addin nuget:?package=Cake.Git&version=4.0.0
 #addin nuget:?package=Cake.Codecov&version=3.0.0
 
@@ -86,6 +86,8 @@ var isTagged = BuildSystem.AppVeyor.Environment.Repository.Tag.IsTag && !string.
 var isIntegrationTestsProjectPresent = FileExists(integrationTestsProject);
 var isUnitTestsProjectPresent = FileExists(unitTestsProject);
 var isBenchmarkProjectPresent = FileExists(benchmarkProject);
+var removeIntegrationTests = isIntegrationTestsProjectPresent && (!isLocalBuild || target == "coverage");
+var removeBenchmarks = isBenchmarkProjectPresent && (!isLocalBuild || target == "coverage");
 
 var publishingError = false;
 
@@ -162,7 +164,7 @@ Setup(context =>
 	// Integration tests are intended to be used for debugging purposes and not intended to be executed in CI environment.
 	// Also, the runner for these tests contains windows-specific code (such as resizing window, moving window to center of screen, etc.)
 	// which can cause problems when attempting to run unit tests on an Ubuntu image on AppVeyor.
-	if (!isLocalBuild && isIntegrationTestsProjectPresent)
+	if (removeIntegrationTests)
 	{
 		Information("");
 		Information("Removing integration tests");
@@ -172,7 +174,7 @@ Setup(context =>
 	// Similarly, benchmarking can causes problems similar to this one:
 	// error NETSDK1005: Assets file '/home/appveyor/projects/stronggrid/Source/StrongGrid.Benchmark/obj/project.assets.json' doesn't have a target for 'net5.0'.
 	// Ensure that restore has run and that you have included 'net5.0' in the TargetFrameworks for your project.
-	if (!isLocalBuild && isBenchmarkProjectPresent)
+	if (removeBenchmarks)
 	{
 		Information("");
 		Information("Removing benchmark project");
@@ -182,7 +184,7 @@ Setup(context =>
 
 Teardown(context =>
 {
-	if (!isLocalBuild)
+	if (removeIntegrationTests || removeBenchmarks)
 	{
 		Information("Restoring projects that may have been removed during build script setup");
 		GitCheckout(".", new FilePath[] { solutionFile });
@@ -352,7 +354,7 @@ Task("Generate-Code-Coverage-Report")
 		new FilePath(coverageFile),
 		codeCoverageDir,
 		new ReportGeneratorSettings() {
-			ClassFilters = new[] { "*.UnitTests*" }
+			ClassFilters = new[] { "+*" }
 		}
 	);
 });
