@@ -13,11 +13,12 @@ namespace ZoomNet.UnitTests
 	{
 		private const string ZOOM_V2_BASE_URI = "https://api.zoom.us/v2";
 
-		public static Pathoschild.Http.Client.IClient GetFluentClient(MockHttpMessageHandler httpMessageHandler)
+		public static Pathoschild.Http.Client.IClient GetFluentClient(MockHttpMessageHandler httpMessageHandler, MockHttpMessageHandler tokenMessageHandler = null)
 		{
-			var httpClient = httpMessageHandler.ToHttpClient();
-			var client = new FluentClient(new Uri(ZOOM_V2_BASE_URI), httpClient);
-			client.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), null));
+			var client = new FluentClient(new Uri(ZOOM_V2_BASE_URI), httpMessageHandler.ToHttpClient());
+			var tokenHandler = tokenMessageHandler == null ? null : new OAuthTokenHandler(OAuthConnectionInfo.ForServerToServer("bogus clientId", "bogus secret", "bogus accountId"), tokenMessageHandler.ToHttpClient(), null);
+
+			client.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), tokenHandler));
 			client.Filters.Remove<DefaultErrorFilter>();
 
 			// Remove all the built-in formatters and replace them with our custom JSON formatter
