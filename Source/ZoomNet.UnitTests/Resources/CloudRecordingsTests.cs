@@ -1,6 +1,7 @@
 using RichardSzalay.MockHttp;
 using Shouldly;
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading;
@@ -530,6 +531,42 @@ namespace ZoomNet.UnitTests.Resources
 			result.To.ShouldBe(to);
 			result.Records.ShouldNotBeNull();
 			result.Records.Length.ShouldBe(10);
+		}
+
+		/// <summary>
+		/// This unit test simulates a scenario where we attempt to download a file but our oAuth token has expired.
+		/// In this situation, we expect the token to be refreshed and the download request to be reissued.
+		/// See <a href="https://github.com/Jericho/ZoomNet/issues/348">Issue 348</a> for more details.
+		/// </summary>
+		[Fact]
+		public async Task DownloadFileAsync_with_expired_token()
+		{
+			// Arrange
+			var downloadUrl = "http://dummywebsite.com/dummyfile.txt";
+
+			var mockTokenHttp = new MockHttpMessageHandler();
+			mockTokenHttp // Issue a new token
+				.When(HttpMethod.Post, "https://api.zoom.us/oauth/token")
+				.Respond(HttpStatusCode.OK, "application/json", "{\"refresh_token\":\"new refresh token\",\"access_token\":\"new access token\"}");
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp // The first time the file is requested, we return "401 Unauthorized" to simulate an expired token.
+				.Expect(HttpMethod.Get, downloadUrl)
+				.Respond(HttpStatusCode.Unauthorized, new StringContent("{\"message\":\"access token is expired\"}"));
+			mockHttp // The second time the file is requested, we return "200 OK" with the file content.
+				.Expect(HttpMethod.Get, downloadUrl)
+				.Respond(HttpStatusCode.OK, new StringContent("This is the content of the file"));
+
+			var client = Utils.GetFluentClient(mockHttp, mockTokenHttp);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+			var result = await recordings.DownloadFileAsync(downloadUrl, CancellationToken.None).ConfigureAwait(true);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
 		}
 	}
 }
