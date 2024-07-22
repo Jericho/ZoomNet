@@ -73,6 +73,7 @@ namespace ZoomNet.UnitTests.Json
 		[InlineData("H.323/SIP", ParticipantDevice.Sip)]
 		[InlineData("Windows", ParticipantDevice.Windows)]
 		[InlineData("WIN", ParticipantDevice.Windows)]
+		[InlineData("win 11", ParticipantDevice.Windows)]
 		[InlineData("Zoom Rooms", ParticipantDevice.ZoomRoom)]
 		public void Read_single(string value, ParticipantDevice expectedValue)
 		{
