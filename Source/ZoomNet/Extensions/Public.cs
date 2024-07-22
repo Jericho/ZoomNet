@@ -312,5 +312,43 @@ namespace ZoomNet
 		{
 			return meetingsResource.InviteParticipantsAsync(meetingId, new[] { emailAddress }, cancellationToken);
 		}
+
+		/// <summary>
+		/// Retrieve the details of a meeting.
+		/// </summary>
+		/// <param name="meetingResource">The meeting resource.</param>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="occurrenceId">The meeting occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="Meeting" />.
+		/// </returns>
+		/// <remarks>
+		/// Please note that when retrieving a recurring meeting, this method will omit previous occurrences.
+		/// Use <see cref="IMeetings.GetAsync(long, string, bool, CancellationToken)"/> if you want past occurrences to be included.
+		/// </remarks>
+		public static Task<Meeting> GetAsync(this IMeetings meetingResource, long meetingId, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			return meetingResource.GetAsync(meetingId, occurrenceId, false, cancellationToken);
+		}
+
+		/// <summary>
+		/// Retrieve the details of a webinar.
+		/// </summary>
+		/// <param name="webinarResource">The webinar resource.</param>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="occurrenceId">The webinar occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="Webinar" />.
+		/// </returns>
+		/// <remarks>
+		/// Please note that when retrieving a recurring meeting, this method will omit previous occurrences.
+		/// Use <see cref="IWebinars.GetAsync(long, string, bool, CancellationToken)"/> if you want past occurrences to be included.
+		/// </remarks>
+		public static Task<Webinar> GetAsync(this IWebinars webinarResource, long webinarId, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			return webinarResource.GetAsync(webinarId, occurrenceId, false, cancellationToken);
+		}
 	}
 }

@@ -165,11 +165,16 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
 		/// <param name="occurrenceId">The meeting occurrence id.</param>
+		/// <param name="includePreviousOccurrences">Set this parameter to true to view meeting details of all previous occurrences of a recurring meeting.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The <see cref="Meeting" />.
 		/// </returns>
-		Task<Meeting> GetAsync(long meetingId, string occurrenceId = null, CancellationToken cancellationToken = default);
+		/// <remarks>
+		/// Please note that 'includePreviousOccurences' is applicable only when fetching a recurring meeting.
+		/// It will be ignored if you are fetching any other type of meeting such as scheduled, personal or instant for example.
+		/// </remarks>
+		Task<Meeting> GetAsync(long meetingId, string occurrenceId = null, bool includePreviousOccurrences = false, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Delete a meeting.
