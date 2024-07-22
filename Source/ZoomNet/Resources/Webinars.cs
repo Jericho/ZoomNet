@@ -283,7 +283,7 @@ namespace ZoomNet.Resources
 			return _client
 				.DeleteAsync($"webinars/{webinarId}")
 				.WithArgument("occurrence_id", occurrenceId)
-				.WithArgument("cancel_webinar_reminder", sendNotification.ToString().ToLower())
+				.WithArgument("cancel_webinar_reminder", sendNotification.ToString().ToLowerInvariant())
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}

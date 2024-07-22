@@ -192,9 +192,9 @@ namespace ZoomNet.Resources
 				.DeleteAsync($"users/{userId}")
 				.WithArgument("action", "delete")
 				.WithArgument("transfer_email", transferEmail)
-				.WithArgument("transfer_meetings", transferMeetings.ToString().ToLower())
-				.WithArgument("transfer_webinars", transferWebinars.ToString().ToLower())
-				.WithArgument("transfer_recordings", transferRecordings.ToString().ToLower())
+				.WithArgument("transfer_meetings", transferMeetings.ToString().ToLowerInvariant())
+				.WithArgument("transfer_webinars", transferWebinars.ToString().ToLowerInvariant())
+				.WithArgument("transfer_recordings", transferRecordings.ToString().ToLowerInvariant())
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
@@ -217,9 +217,9 @@ namespace ZoomNet.Resources
 				.DeleteAsync($"users/{userId}")
 				.WithArgument("action", "disassociate")
 				.WithArgument("transfer_email", transferEmail)
-				.WithArgument("transfer_meetings", transferMeetings.ToString().ToLower())
-				.WithArgument("transfer_webinars", transferWebinars.ToString().ToLower())
-				.WithArgument("transfer_recordings", transferRecordings.ToString().ToLower())
+				.WithArgument("transfer_meetings", transferMeetings.ToString().ToLowerInvariant())
+				.WithArgument("transfer_webinars", transferWebinars.ToString().ToLowerInvariant())
+				.WithArgument("transfer_recordings", transferRecordings.ToString().ToLowerInvariant())
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}

@@ -354,8 +354,8 @@ namespace ZoomNet.Resources
 			return _client
 				.DeleteAsync($"meetings/{meetingId}")
 				.WithArgument("occurrence_id", occurrenceId)
-				.WithArgument("schedule_for_reminder", notifyHost.ToString().ToLower())
-				.WithArgument("cancel_meeting_reminder", notifyRegistrants.ToString().ToLower())
+				.WithArgument("schedule_for_reminder", notifyHost.ToString().ToLowerInvariant())
+				.WithArgument("cancel_meeting_reminder", notifyRegistrants.ToString().ToLowerInvariant())
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
