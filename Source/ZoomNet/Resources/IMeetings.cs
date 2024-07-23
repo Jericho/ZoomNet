@@ -26,7 +26,7 @@ namespace ZoomNet.Resources
 		/// An array of <see cref="MeetingSummary">meeting summaries</see>.
 		/// </returns>
 		/// <remarks>
-		/// To obtain the full details about a given meeting you must invoke <see cref="Meetings.GetAsync(long, string, CancellationToken)"/>.
+		/// To obtain the full details about a given meeting you must invoke <see cref="Meetings.GetAsync(long, string, bool, CancellationToken)"/>.
 		/// </remarks>
 		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
 		Task<PaginatedResponse<MeetingSummary>> GetAllAsync(string userId, MeetingListType type = MeetingListType.Scheduled, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
@@ -43,7 +43,7 @@ namespace ZoomNet.Resources
 		/// An array of <see cref="MeetingSummary">meeting summaries</see>.
 		/// </returns>
 		/// <remarks>
-		/// To obtain the full details about a given meeting you must invoke <see cref="Meetings.GetAsync(long, string, CancellationToken)"/>.
+		/// To obtain the full details about a given meeting you must invoke <see cref="Meetings.GetAsync(long, string, bool, CancellationToken)"/>.
 		/// </remarks>
 		Task<PaginatedResponseWithToken<MeetingSummary>> GetAllAsync(string userId, MeetingListType type = MeetingListType.Scheduled, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
