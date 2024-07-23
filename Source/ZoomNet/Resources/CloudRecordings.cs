@@ -55,7 +55,7 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"users/{userId}/recordings")
-				.WithArgument("trash", queryTrash.ToString().ToLower())
+				.WithArgument("trash", queryTrash.ToString().ToLowerInvariant())
 				.WithArgument("from", from?.ToZoomFormat(dateOnly: true))
 				.WithArgument("to", to?.ToZoomFormat(dateOnly: true))
 				.WithArgument("page_size", recordsPerPage)
@@ -86,7 +86,7 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"users/{userId}/recordings")
-				.WithArgument("trash", queryTrash.ToString().ToLower())
+				.WithArgument("trash", queryTrash.ToString().ToLowerInvariant())
 				.WithArgument("from", from?.ToZoomFormat(dateOnly: true))
 				.WithArgument("to", to?.ToZoomFormat(dateOnly: true))
 				.WithArgument("page_size", recordsPerPage)

@@ -257,20 +257,13 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Retrieve the details of a webinar.
-		/// </summary>
-		/// <param name="webinarId">The webinar ID.</param>
-		/// <param name="occurrenceId">The webinar occurrence id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The <see cref="Webinar" />.
-		/// </returns>
-		public Task<Webinar> GetAsync(long webinarId, string occurrenceId = null, CancellationToken cancellationToken = default)
+		/// <inheritdoc/>
+		public Task<Webinar> GetAsync(long webinarId, string occurrenceId = null, bool includePreviousOccurrences = false, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"webinars/{webinarId}")
 				.WithArgument("occurrence_id", occurrenceId)
+				.WithArgument("show_previous_occurrences", includePreviousOccurrences.ToString().ToLowerInvariant())
 				.WithCancellationToken(cancellationToken)
 				.AsObject<Webinar>();
 		}
@@ -290,7 +283,7 @@ namespace ZoomNet.Resources
 			return _client
 				.DeleteAsync($"webinars/{webinarId}")
 				.WithArgument("occurrence_id", occurrenceId)
-				.WithArgument("cancel_webinar_reminder", sendNotification.ToString().ToLower())
+				.WithArgument("cancel_webinar_reminder", sendNotification.ToString().ToLowerInvariant())
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}

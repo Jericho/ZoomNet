@@ -214,20 +214,13 @@ namespace ZoomNet.Resources
 				.AsObject<RecurringMeeting>();
 		}
 
-		/// <summary>
-		/// Retrieve the details of a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="occurrenceId">The meeting occurrence id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The <see cref="Meeting" />.
-		/// </returns>
-		public Task<Meeting> GetAsync(long meetingId, string occurrenceId = null, CancellationToken cancellationToken = default)
+		/// <inheritdoc/>
+		public Task<Meeting> GetAsync(long meetingId, string occurrenceId = null, bool includePreviousOccurrences = false, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"meetings/{meetingId}")
 				.WithArgument("occurrence_id", occurrenceId)
+				.WithArgument("show_previous_occurrences", includePreviousOccurrences.ToString().ToLowerInvariant())
 				.WithCancellationToken(cancellationToken)
 				.AsObject<Meeting>();
 		}
@@ -361,8 +354,8 @@ namespace ZoomNet.Resources
 			return _client
 				.DeleteAsync($"meetings/{meetingId}")
 				.WithArgument("occurrence_id", occurrenceId)
-				.WithArgument("schedule_for_reminder", notifyHost.ToString().ToLower())
-				.WithArgument("cancel_meeting_reminder", notifyRegistrants.ToString().ToLower())
+				.WithArgument("schedule_for_reminder", notifyHost.ToString().ToLowerInvariant())
+				.WithArgument("cancel_meeting_reminder", notifyRegistrants.ToString().ToLowerInvariant())
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}

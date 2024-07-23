@@ -23,6 +23,7 @@ namespace ZoomNet.Json
 					var stringValue = reader.GetString();
 					var items = stringValue
 						.Split(new[] { '+' })
+						.Where(item => !long.TryParse(item, out _)) // Filter out values like "17763" which is a Windows build number. See https://github.com/Jericho/ZoomNet/issues/354 for details
 						.Select(item => Convert(item))
 						.ToArray();
 
