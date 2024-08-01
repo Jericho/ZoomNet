@@ -75,5 +75,13 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the type of recorded meeting or webinar.</summary>
 		[JsonPropertyName("type")]
 		public RecordingType Type { get; set; }
+
+		/// <summary>Gets or sets the cloud recording's passcode to be used in the URL. Directly splice this recording's passcode in play_url or share_url with ?pwd= to access and play.</summary>
+		[JsonPropertyName("recording_play_passcode")]
+		public string PlayPasscode { get; set; }
+
+		/// <summary>The token to download the meeting's recording.</summary>
+		[JsonPropertyName("download_access_token")]
+		public string DownloadAccessToken { get; set; }
 	}
 }
