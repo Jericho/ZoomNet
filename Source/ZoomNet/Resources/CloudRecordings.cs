@@ -95,16 +95,13 @@ namespace ZoomNet.Resources
 				.AsPaginatedResponseWithTokenAndDateRange<Recording>("meetings");
 		}
 
-		/// <summary>
-		/// Retrieve the recording information (which includes recording files and audio files) for a meeting or webinar.
-		/// </summary>
-		/// <param name="meetingId">The meeting Id or UUID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>Details of recordings made for a particular meeding or webinar.</returns>
-		public Task<Recording> GetRecordingInformationAsync(string meetingId, CancellationToken cancellationToken = default)
+		/// <inheritdoc/>
+		public Task<Recording> GetRecordingInformationAsync(string meetingId, int ttl = 60 * 5, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"meetings/{meetingId}/recordings")
+				.WithArgument("include_fields", "download_access_token")
+				.WithArgument("ttl", ttl)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<Recording>();
 		}
@@ -359,13 +356,19 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public async Task<Stream> DownloadFileAsync(string downloadUrl, CancellationToken cancellationToken = default)
+		public Task<Stream> DownloadFileAsync(string downloadUrl, string accessToken = null, CancellationToken cancellationToken = default)
 		{
 			// Prepare the request
 			var request = _client
 			   .GetAsync(downloadUrl)
 			   .WithOptions(completeWhen: HttpCompletionOption.ResponseHeadersRead)
 			   .WithCancellationToken(cancellationToken);
+
+			// Use an alternate token if provided. Otherwise, the oAuth token for the current session will be used.
+			if (!string.IsNullOrEmpty(accessToken))
+			{
+				request = request.WithBearerAuthentication(accessToken);
+			}
 
 			// Remove our custom error handler because it reads the content of the response to check for error messages returned from the Zoom API.
 			// This is problematic because we want the content of the response to be streamed.
@@ -376,11 +379,7 @@ namespace ZoomNet.Resources
 			request = request.WithFilter(new DefaultErrorFilter());
 
 			// Dispatch the request
-			var response = await request
-				.AsStream()
-				.ConfigureAwait(false);
-
-			return response;
+			return request.AsStream();
 		}
 
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<string> registrantIds, string status, CancellationToken cancellationToken = default)
