@@ -561,7 +561,7 @@ namespace ZoomNet.UnitTests.Resources
 			var recordings = new CloudRecordings(client);
 
 			// Act
-			var result = await recordings.DownloadFileAsync(downloadUrl, CancellationToken.None).ConfigureAwait(true);
+			var result = await recordings.DownloadFileAsync(downloadUrl, null, CancellationToken.None).ConfigureAwait(true);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
