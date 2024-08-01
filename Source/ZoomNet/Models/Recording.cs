@@ -80,7 +80,7 @@ namespace ZoomNet.Models
 		[JsonPropertyName("recording_play_passcode")]
 		public string PlayPasscode { get; set; }
 
-		/// <summary>The token to download the meeting's recording.</summary>
+		/// <summary>Gets or sets the token to download the meeting's recording.</summary>
 		[JsonPropertyName("download_access_token")]
 		public string DownloadAccessToken { get; set; }
 	}
