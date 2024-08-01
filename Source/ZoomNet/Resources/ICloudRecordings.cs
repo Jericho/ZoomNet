@@ -53,7 +53,7 @@ namespace ZoomNet.Resources
 		/// <param name="ttl">The download access token Time to Live (TTL) value expressed in seconds. The default value is 604800 which also is the max value allowed by Zoom. This default value represents 7 days (60 seconds * 60 minutes * 24 hours * 7 days = 604,800).</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>Details of recording made for a particular meeding or webinar.</returns>
-		Task<Recording> GetRecordingInformationAsync(string meetingId, int ttl = 60 * 5, CancellationToken cancellationToken = default);
+		Task<Recording> GetRecordingInformationAsync(string meetingId, int ttl = 604800, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Delete recording files for a meeting.
