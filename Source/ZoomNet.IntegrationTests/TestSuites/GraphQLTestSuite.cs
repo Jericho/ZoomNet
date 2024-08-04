@@ -14,16 +14,16 @@ namespace ZoomNet.IntegrationTests.TestSuites
 		{
 		}
 
-		public override async Task<ResultCodes> RunTestsAsync()
+		public override async Task<ResultCodes> RunTestsAsync(CancellationToken cancellationToken)
 		{
 			var logger = base.LoggerFactory.CreateLogger<ZoomGraphQLClient>();
 
-			// Configure cancellation
-			var cts = new CancellationTokenSource();
+			// Configure cancellation (this allows you to press CTRL+C or CTRL+Break to stop the websocket client)
+			var exitEvent = new ManualResetEvent(false);
 			Console.CancelKeyPress += (s, e) =>
 			{
 				e.Cancel = true;
-				cts.Cancel();
+				exitEvent.Set();
 			};
 
 			// Configure ZoomNet GraphQL client
@@ -64,7 +64,7 @@ namespace ZoomNet.IntegrationTests.TestSuites
    }
 }";
 
-			await graphQLClient.SendQueryAsync<Meeting>(query, null, cts.Token).ConfigureAwait(false);
+			await graphQLClient.SendQueryAsync<Meeting>(query, null, cancellationToken).ConfigureAwait(false);
 
 			return ResultCodes.Success;
 		}
