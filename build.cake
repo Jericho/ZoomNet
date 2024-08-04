@@ -1,10 +1,10 @@
 // Install tools.
-#tool dotnet:?package=GitVersion.Tool&version=5.12.0
+#tool dotnet:?package=GitVersion.Tool&version=6.0.0
 #tool dotnet:?package=coveralls.net&version=4.0.1
-#tool nuget:https://f.feedz.io/jericho/jericho/nuget/?package=GitReleaseManager&version=0.17.0-collaborators0007
-#tool nuget:?package=ReportGenerator&version=5.3.7
+#tool nuget:https://f.feedz.io/jericho/jericho/nuget/?package=GitReleaseManager&version=0.17.0-collaborators0008
+#tool nuget:?package=ReportGenerator&version=5.3.8
 #tool nuget:?package=xunit.runner.console&version=2.9.0
-#tool nuget:?package=CodecovUploader&version=0.7.3
+#tool nuget:?package=CodecovUploader&version=0.8.0
 
 // Install addins.
 #addin nuget:?package=Cake.Coveralls&version=4.0.0
@@ -124,7 +124,7 @@ Setup(context =>
 	milestone = versionInfo.MajorMinorPatch;
 
 	Information("Building version {0} of {1} ({2}, {3}) using version {4} of Cake",
-		versionInfo.LegacySemVerPadded,
+		versionInfo.FullSemVer,
 		libraryName,
 		configuration,
 		target,
@@ -252,7 +252,7 @@ Task("Build")
 		NoRestore = true,
 		MSBuildSettings = new DotNetMSBuildSettings
 		{
-			Version = versionInfo.LegacySemVerPadded,
+			Version = versionInfo.SemVer,
 			AssemblyVersion = versionInfo.MajorMinorPatch,
 			FileVersion = versionInfo.MajorMinorPatch,
 			InformationalVersion = versionInfo.InformationalVersion,
@@ -378,7 +378,7 @@ Task("Create-NuGet-Package")
 		MSBuildSettings = new DotNetMSBuildSettings
 		{
 			PackageReleaseNotes = releaseNotesUrl,
-			PackageVersion = versionInfo.LegacySemVerPadded
+			PackageVersion = versionInfo.SemVer
 		}
 	};
 
