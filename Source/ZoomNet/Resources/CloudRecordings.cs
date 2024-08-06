@@ -92,16 +92,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Delete a specific recording file for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting Id or UUID.</param>
-		/// <param name="recordingFileId">The recording file id.</param>
-		/// <param name="deletePermanently">When true, files are deleted permanently; when false, files are moved to the trash.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task DeleteRecordingFileAsync(string meetingId, string recordingFileId, bool deletePermanently = false, CancellationToken cancellationToken = default)
 		{
 			return _client
