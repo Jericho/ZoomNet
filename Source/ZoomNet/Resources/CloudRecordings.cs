@@ -102,15 +102,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Recover all deleted recording files of a meeting from trash.
-		/// </summary>
-		/// <param name="meetingId">The meeting Id or UUID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
-		/// <remarks>Zoom allows recording files to be recovered from trash for up to 30 days from deletion date.</remarks>
+		/// <inheritdoc/>
 		public Task RecoverRecordingFilesAsync(string meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client
