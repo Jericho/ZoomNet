@@ -568,5 +568,39 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
 		}
+
+		/// <summary>
+		/// While researching <a href="https://github.com/Jericho/ZoomNet/issues/348">Issue 348</a>, it was discovered
+		/// that the OAuth session token took precendence over the alternate token specified when invoking DownloadFileAsync.
+		/// This unit test was used to demonstrate the problem and ultimately to demonstrate that it was fixed.
+		/// </summary>
+		[Fact]
+		public async Task DownloadFileAsync_with_alternate_token()
+		{
+			// Arrange
+			var downloadUrl = "http://dummywebsite.com/dummyfile.txt";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp
+				.Expect(HttpMethod.Get, downloadUrl)
+				.With(request => request.Headers.Authorization?.Parameter == "alternate_download_token")
+				.Respond(HttpStatusCode.OK, new StringContent("This is the content of the file"));
+
+			var connectionInfo = OAuthConnectionInfo.ForServerToServer(
+				"MyClientId",
+				"MyClientSecret",
+				"MyAccountId",
+				accessToken: "Expired_token");
+
+			var client = new ZoomClient(connectionInfo, mockHttp.ToHttpClient(), null, null);
+
+			// Act
+			var result = await client.CloudRecordings.DownloadFileAsync(downloadUrl, "alternate_download_token", CancellationToken.None).ConfigureAwait(true);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
 	}
 }
