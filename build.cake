@@ -378,7 +378,7 @@ Task("Create-NuGet-Package")
 		MSBuildSettings = new DotNetMSBuildSettings
 		{
 			PackageReleaseNotes = releaseNotesUrl,
-			PackageVersion = $"{versionInfo.MajorMinorPatch}-{versionInfo.PreReleaseLabel}-{versionInfo.CommitsSinceVersionSource}".Replace('_', '-')
+			PackageVersion = versionInfo.FullSemVer
 		}
 	};
 
