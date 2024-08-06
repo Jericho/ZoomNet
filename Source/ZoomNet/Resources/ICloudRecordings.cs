@@ -44,6 +44,10 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Recording">recordings</see>.
 		/// </returns>
+		/// <remarks>
+		/// The Zoom API response omits DownloadAccessToken, Password as well as the audio files.
+		/// To get the missing fields, use the <see cref="GetRecordingInformationAsync(string, int, CancellationToken)"/> method.
+		/// </remarks>
 		Task<PaginatedResponseWithTokenAndDateRange<Recording>> GetRecordingsForUserAsync(string userId, bool queryTrash = false, DateTime? from = null, DateTime? to = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
