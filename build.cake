@@ -364,7 +364,6 @@ Task("Create-NuGet-Package")
 	.Does(() =>
 {
 	var releaseNotesUrl = @$"https://github.com/{gitHubRepoOwner}/{gitHubRepo}/releases/tag/{milestone}";
-	var packageVersion = (isMainRepo && isMainBranch && isTagged) ? versionInfo.MajorMinorPatch : versionInfo.FullSemVer.Replace('+', '-');
 
 	var settings = new DotNetPackSettings
 	{
@@ -379,7 +378,7 @@ Task("Create-NuGet-Package")
 		MSBuildSettings = new DotNetMSBuildSettings
 		{
 			PackageReleaseNotes = releaseNotesUrl,
-			PackageVersion = packageVersion
+			PackageVersion = versionInfo.FullSemVer.Replace('+', '-')
 		}
 	};
 
