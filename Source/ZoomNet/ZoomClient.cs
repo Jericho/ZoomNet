@@ -15,6 +15,14 @@ namespace ZoomNet
 	/// <summary>
 	/// REST client for interacting with Zoom's API.
 	/// </summary>
+	/// <remarks>
+	/// Don't be fooled by the fact that this class implements the IDisposable interface: it is not meant to be short-lived and instantiated with every request.
+	/// It is meant to be long-lived and re-used throughout the life of an application.
+	/// The reason is: we use Microsoft's HttpClient to dispatch requests which itself is meant to be long-lived and re-used.
+	/// Instantiating an HttpClient class for every request will exhaust the number of sockets available under heavy loads and will result in SocketException errors.
+	///
+	/// See <a href="https://github.com/Jericho/ZoomNet/issues/35">this discussion</a> for more information about managing the lifetime of your client instance.
+	/// </remarks>
 	public class ZoomClient : IZoomClient, IDisposable
 	{
 		#region FIELDS

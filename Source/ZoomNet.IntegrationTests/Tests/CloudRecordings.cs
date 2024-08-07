@@ -18,11 +18,23 @@ namespace ZoomNet.IntegrationTests.Tests
 			var paginatedRecordings = await client.CloudRecordings.GetRecordingsForUserAsync(myUser.Id, false, null, null, 100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"User {myUser.Id} has {paginatedRecordings.TotalRecords} recordings stored in the cloud").ConfigureAwait(false);
 
+			// GROUP THE RECORDINGS BY MEETING
+			var recordingFilesGroupedByMeeting = paginatedRecordings.Records
+				.SelectMany(record => record.RecordingFiles)
+				.GroupBy(recordingFile => recordingFile.MeetingId);
+
 			// DOWNLOAD THE FILES
-			foreach (var recordingFile in paginatedRecordings.Records.SelectMany(record => record.RecordingFiles))
+			foreach (var group in recordingFilesGroupedByMeeting)
 			{
-				var stream = await client.CloudRecordings.DownloadFileAsync(recordingFile, cancellationToken).ConfigureAwait(false);
-				await log.WriteLineAsync($"Downloaded {recordingFile.DownloadUrl}").ConfigureAwait(false);
+				const int ttl = 60 * 5; // 5 minutes
+				var recordingInfo = await client.CloudRecordings.GetRecordingInformationAsync(group.Key, ttl, cancellationToken).ConfigureAwait(false);
+
+				foreach (var recordingFile in group)
+				{
+					var stream = await client.CloudRecordings.DownloadFileAsync(recordingFile.DownloadUrl, recordingInfo.DownloadAccessToken, cancellationToken).ConfigureAwait(false);
+					await log.WriteLineAsync($"Downloaded {recordingFile.DownloadUrl}").ConfigureAwait(false);
+				}
+
 			}
 		}
 	}

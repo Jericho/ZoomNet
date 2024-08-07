@@ -21,7 +21,6 @@ using System.Threading.Tasks;
 using ZoomNet.Json;
 using ZoomNet.Models;
 using ZoomNet.Utilities;
-using static ZoomNet.Utilities.DiagnosticHandler;
 
 namespace ZoomNet
 {
@@ -37,6 +36,7 @@ namespace ZoomNet
 		}
 
 		private static readonly DateTime EPOCH = new(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+		private static readonly int DEFAULT_DEGREE_OF_PARALLELISM = Environment.ProcessorCount > 1 ? Environment.ProcessorCount / 2 : 1;
 
 		/// <summary>
 		/// Converts a 'unix time', which is expressed as the number of seconds (or milliseconds) since
@@ -518,6 +518,10 @@ namespace ZoomNet
 			return element.GetPropertyValue<T>(names, default, true);
 		}
 
+		internal static Task<TResult[]> ForEachAsync<T, TResult>(this IEnumerable<T> items, Func<T, Task<TResult>> action) => ForEachAsync(items, action, DEFAULT_DEGREE_OF_PARALLELISM);
+
+		internal static Task<TResult[]> ForEachAsync<T, TResult>(this IEnumerable<T> items, Func<T, int, Task<TResult>> action) => ForEachAsync(items, action, DEFAULT_DEGREE_OF_PARALLELISM);
+
 		internal static async Task<TResult[]> ForEachAsync<T, TResult>(this IEnumerable<T> items, Func<T, Task<TResult>> action, int maxDegreeOfParalellism)
 		{
 			var allTasks = new List<Task<TResult>>();
@@ -543,6 +547,35 @@ namespace ZoomNet
 			return results;
 		}
 
+		internal static async Task<TResult[]> ForEachAsync<T, TResult>(this IEnumerable<T> items, Func<T, int, Task<TResult>> action, int maxDegreeOfParalellism)
+		{
+			var allTasks = new List<Task<TResult>>();
+			using var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism);
+			foreach (var (item, index) in items.Select((value, i) => (value, i)))
+			{
+				await throttler.WaitAsync();
+				allTasks.Add(
+					Task.Run(async () =>
+					{
+						try
+						{
+							return await action(item, index).ConfigureAwait(false);
+						}
+						finally
+						{
+							throttler.Release();
+						}
+					}));
+			}
+
+			var results = await Task.WhenAll(allTasks).ConfigureAwait(false);
+			return results;
+		}
+
+		internal static Task ForEachAsync<T>(this IEnumerable<T> items, Func<T, Task> action) => ForEachAsync(items, action, DEFAULT_DEGREE_OF_PARALLELISM);
+
+		internal static Task ForEachAsync<T>(this IEnumerable<T> items, Func<T, int, Task> action) => ForEachAsync(items, action, DEFAULT_DEGREE_OF_PARALLELISM);
+
 		internal static async Task ForEachAsync<T>(this IEnumerable<T> items, Func<T, Task> action, int maxDegreeOfParalellism)
 		{
 			var allTasks = new List<Task>();
@@ -556,6 +589,30 @@ namespace ZoomNet
 						try
 						{
 							await action(item).ConfigureAwait(false);
+						}
+						finally
+						{
+							throttler.Release();
+						}
+					}));
+			}
+
+			await Task.WhenAll(allTasks).ConfigureAwait(false);
+		}
+
+		internal static async Task ForEachAsync<T>(this IEnumerable<T> items, Func<T, int, Task> action, int maxDegreeOfParalellism)
+		{
+			var allTasks = new List<Task>();
+			using var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism);
+			foreach (var (item, index) in items.Select((value, i) => (value, i)))
+			{
+				await throttler.WaitAsync();
+				allTasks.Add(
+					Task.Run(async () =>
+					{
+						try
+						{
+							await action(item, index).ConfigureAwait(false);
 						}
 						finally
 						{
@@ -644,8 +701,8 @@ namespace ZoomNet
 
 		internal static DiagnosticInfo GetDiagnosticInfo(this IResponse response)
 		{
-			var diagnosticId = response.Message.RequestMessage.Headers.GetValue(DIAGNOSTIC_ID_HEADER_NAME);
-			DiagnosticsInfo.TryGetValue(diagnosticId, out DiagnosticInfo diagnosticInfo);
+			var diagnosticId = response.Message.RequestMessage.Headers.GetValue(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME);
+			DiagnosticHandler.DiagnosticsInfo.TryGetValue(diagnosticId, out DiagnosticInfo diagnosticInfo);
 			return diagnosticInfo;
 		}
 
@@ -889,6 +946,11 @@ namespace ZoomNet
 			return result;
 		}
 
+		internal static bool IsNullableType(this Type type)
+		{
+			return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>);
+		}
+
 		/// <summary>Asynchronously converts the JSON encoded content and convert it to an object of the desired type.</summary>
 		/// <typeparam name="T">The response model to deserialize into.</typeparam>
 		/// <param name="httpContent">The content.</param>
@@ -1102,8 +1164,10 @@ namespace ZoomNet
 				};
 			}
 
-			if (typeOfT.IsGenericType && typeOfT.GetGenericTypeDefinition() == typeof(Nullable<>))
+			if (typeOfT.IsNullableType())
 			{
+				if (property.Value.ValueKind == JsonValueKind.Null) return (T)default;
+
 				var underlyingType = Nullable.GetUnderlyingType(typeOfT);
 				var getElementValue = typeof(Internal)
 					.GetMethod(nameof(GetElementValue), BindingFlags.Static | BindingFlags.NonPublic)
@@ -1114,6 +1178,8 @@ namespace ZoomNet
 
 			if (typeOfT.IsArray)
 			{
+				if (property.Value.ValueKind == JsonValueKind.Null) return (T)default;
+
 				var elementType = typeOfT.GetElementType();
 				var getElementValue = typeof(Internal)
 					.GetMethod(nameof(GetElementValue), BindingFlags.Static | BindingFlags.NonPublic)
@@ -1135,6 +1201,13 @@ namespace ZoomNet
 		private static T GetElementValue<T>(this JsonElement element)
 		{
 			var typeOfT = typeof(T);
+
+			if (element.ValueKind == JsonValueKind.Null)
+			{
+				return typeOfT.IsNullableType()
+					? (T)default
+					: throw new Exception($"JSON contains a null value but {typeOfT.FullName} is not nullable");
+			}
 
 			return typeOfT switch
 			{

@@ -44,15 +44,20 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Recording">recordings</see>.
 		/// </returns>
+		/// <remarks>
+		/// The Zoom API response omits DownloadAccessToken, Password as well as the audio files.
+		/// To get the missing fields, use the <see cref="GetRecordingInformationAsync(string, int, CancellationToken)"/> method.
+		/// </remarks>
 		Task<PaginatedResponseWithTokenAndDateRange<Recording>> GetRecordingsForUserAsync(string userId, bool queryTrash = false, DateTime? from = null, DateTime? to = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve the recording information (which includes recording files and audio files) for a meeting or webinar.
 		/// </summary>
 		/// <param name="meetingId">The meeting Id or UUID.</param>
+		/// <param name="ttl">The download access token Time to Live (TTL) value expressed in seconds. The default value is 604800 which also is the max value allowed by Zoom. This default value represents 7 days (60 seconds * 60 minutes * 24 hours * 7 days = 604,800).</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>Details of recording made for a particular meeding or webinar.</returns>
-		Task<Recording> GetRecordingInformationAsync(string meetingId, CancellationToken cancellationToken = default);
+		Task<Recording> GetRecordingInformationAsync(string meetingId, int ttl = 604800, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Delete recording files for a meeting.
@@ -208,10 +213,11 @@ namespace ZoomNet.Resources
 		/// Download the recording file.
 		/// </summary>
 		/// <param name="downloadUrl">The URL of the recording file to download.</param>
+		/// <param name="accessToken">The token to download the recording file. If this value is omitted, the token for the current session will be used.</param>
 		/// <param name="cancellationToken">Cancellation token.</param>
 		/// <returns>
 		/// The <see cref="Stream"/> containing the file.
 		/// </returns>
-		Task<Stream> DownloadFileAsync(string downloadUrl, CancellationToken cancellationToken = default);
+		Task<Stream> DownloadFileAsync(string downloadUrl, string accessToken = null, CancellationToken cancellationToken = default);
 	}
 }
