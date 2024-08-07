@@ -32,19 +32,7 @@ namespace ZoomNet.Resources
 			_client = client;
 		}
 
-		/// <summary>
-		/// Retrieve all cloud recordings for a user.
-		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="queryTrash">Indicates if you want to list recordings from trash.</param>
-		/// <param name="from">The start date.</param>
-		/// <param name="to">The end date.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="page">The current page number of returned records.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Recording">recordings</see>.
-		/// </returns>
+		/// <inheritdoc/>
 		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
 		public Task<PaginatedResponseWithTokenAndDateRange<Recording>> GetRecordingsForUserAsync(string userId, bool queryTrash = false, DateTime? from = null, DateTime? to = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
 		{
@@ -64,19 +52,7 @@ namespace ZoomNet.Resources
 				.AsPaginatedResponseWithTokenAndDateRange<Recording>("meetings");
 		}
 
-		/// <summary>
-		/// Retrieve all cloud recordings for a user.
-		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="queryTrash">Indicates if you want to list recordings from trash.</param>
-		/// <param name="from">The start date.</param>
-		/// <param name="to">The end date.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Recording">recordings</see>.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<PaginatedResponseWithTokenAndDateRange<Recording>> GetRecordingsForUserAsync(string userId, bool queryTrash = false, DateTime? from = null, DateTime? to = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
@@ -95,29 +71,18 @@ namespace ZoomNet.Resources
 				.AsPaginatedResponseWithTokenAndDateRange<Recording>("meetings");
 		}
 
-		/// <summary>
-		/// Retrieve the recording information (which includes recording files and audio files) for a meeting or webinar.
-		/// </summary>
-		/// <param name="meetingId">The meeting Id or UUID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>Details of recordings made for a particular meeding or webinar.</returns>
-		public Task<Recording> GetRecordingInformationAsync(string meetingId, CancellationToken cancellationToken = default)
+		/// <inheritdoc/>
+		public Task<Recording> GetRecordingInformationAsync(string meetingId, int ttl = 60 * 5, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"meetings/{meetingId}/recordings")
+				.WithArgument("include_fields", "download_access_token")
+				.WithArgument("ttl", ttl)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<Recording>();
 		}
 
-		/// <summary>
-		/// Delete recording files for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting Id or UUID.</param>
-		/// <param name="deletePermanently">When true, files are deleted permanently; when false, files are moved to the trash.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task DeleteRecordingFilesAsync(string meetingId, bool deletePermanently = false, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -127,16 +92,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Delete a specific recording file for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting Id or UUID.</param>
-		/// <param name="recordingFileId">The recording file id.</param>
-		/// <param name="deletePermanently">When true, files are deleted permanently; when false, files are moved to the trash.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task DeleteRecordingFileAsync(string meetingId, string recordingFileId, bool deletePermanently = false, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -146,15 +102,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Recover all deleted recording files of a meeting from trash.
-		/// </summary>
-		/// <param name="meetingId">The meeting Id or UUID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
-		/// <remarks>Zoom allows recording files to be recovered from trash for up to 30 days from deletion date.</remarks>
+		/// <inheritdoc/>
 		public Task RecoverRecordingFilesAsync(string meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -359,13 +307,19 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public async Task<Stream> DownloadFileAsync(string downloadUrl, CancellationToken cancellationToken = default)
+		public Task<Stream> DownloadFileAsync(string downloadUrl, string accessToken = null, CancellationToken cancellationToken = default)
 		{
 			// Prepare the request
 			var request = _client
 			   .GetAsync(downloadUrl)
 			   .WithOptions(completeWhen: HttpCompletionOption.ResponseHeadersRead)
 			   .WithCancellationToken(cancellationToken);
+
+			// Use an alternate token if provided. Otherwise, the oAuth token for the current session will be used.
+			if (!string.IsNullOrEmpty(accessToken))
+			{
+				request = request.WithBearerAuthentication(accessToken);
+			}
 
 			// Remove our custom error handler because it reads the content of the response to check for error messages returned from the Zoom API.
 			// This is problematic because we want the content of the response to be streamed.
@@ -376,11 +330,7 @@ namespace ZoomNet.Resources
 			request = request.WithFilter(new DefaultErrorFilter());
 
 			// Dispatch the request
-			var response = await request
-				.AsStream()
-				.ConfigureAwait(false);
-
-			return response;
+			return request.AsStream();
 		}
 
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<string> registrantIds, string status, CancellationToken cancellationToken = default)

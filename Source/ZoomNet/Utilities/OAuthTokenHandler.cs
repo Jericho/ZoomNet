@@ -55,7 +55,11 @@ namespace ZoomNet.Utilities
 		/// <param name="request">The HTTP request.</param>
 		public void OnRequest(IRequest request)
 		{
-			request.WithBearerAuthentication(Token);
+			// Do not overwrite the Authorization header if it is already set.
+			// One example where it's important to preserve the Authorization
+			// header is CloudRecordings.DownloadFileAsync where developers can
+			// specify a custom bearer token which must take precedence.
+			if (request.Message.Headers.Authorization == null) request.WithBearerAuthentication(Token);
 		}
 
 		/// <summary>Method invoked just after the HTTP response is received. This method can modify the incoming HTTP response.</summary>
