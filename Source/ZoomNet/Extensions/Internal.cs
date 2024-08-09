@@ -1150,7 +1150,11 @@ namespace ZoomNet
 				if (property.HasValue) break;
 			}
 
-			if (!property.HasValue) return defaultValue;
+			if (!property.HasValue)
+			{
+				if (throwIfMissing) throw new Exception($"Unable to find {string.Join(", ", names)} in the Json document");
+				else return defaultValue;
+			}
 
 			var typeOfT = typeof(T);
 
