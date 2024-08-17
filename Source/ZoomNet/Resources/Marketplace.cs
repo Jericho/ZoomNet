@@ -22,6 +22,18 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<AppInfo>> GetActiveUserAppRequestsAsync(string userId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return GetAppsAsync($"marketplace/users/{userId}/apps", "active_requests", recordsPerPage, pagingToken, cancellationToken);
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<AppInfo>> GetPastUserAppRequestsAsync(string userId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return GetAppsAsync($"marketplace/users/{userId}/apps", "past_requests", recordsPerPage, pagingToken, cancellationToken);
+		}
+
+		/// <inheritdoc/>
 		public async Task<long[]> GetUserEntitlementsAsync(string userId, CancellationToken cancellationToken = default)
 		{
 			var result = await _client
@@ -41,28 +53,28 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<AppInfo>> GetPublicAppsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
-			return GetAppsAsync<AppInfo>("public", recordsPerPage, pagingToken, cancellationToken);
+			return GetAppsAsync("marketplace/apps", "public", recordsPerPage, pagingToken, cancellationToken);
 		}
 
 		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<AppInfo>> GetCreatedAppsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
-			return GetAppsAsync<AppInfo>("account_created", recordsPerPage, pagingToken, cancellationToken);
+			return GetAppsAsync("marketplace/apps", "account_created", recordsPerPage, pagingToken, cancellationToken);
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<AppInfo>> GetAppsActiveRequestsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<AppInfo>> GetActiveAppRequestsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
-			return GetAppsAsync<AppInfo>("active_requests", recordsPerPage, pagingToken, cancellationToken);
+			return GetAppsAsync("marketplace/apps", "active_requests", recordsPerPage, pagingToken, cancellationToken);
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<AppInfo>> GetAppsPastRequestsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<AppInfo>> GetPastAppRequestsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
-			return GetAppsAsync<AppInfo>("past_requests", recordsPerPage, pagingToken, cancellationToken);
+			return GetAppsAsync("marketplace/apps", "past_requests", recordsPerPage, pagingToken, cancellationToken);
 		}
 
-		private Task<PaginatedResponseWithToken<T>> GetAppsAsync<T>(string type, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		private Task<PaginatedResponseWithToken<AppInfo>> GetAppsAsync(string resource, string type, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -70,12 +82,12 @@ namespace ZoomNet.Resources
 			}
 
 			return _client
-				.GetAsync($"marketplace/apps")
+				.GetAsync(resource)
 				.WithArgument("type", type)
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<T>("apps");
+				.AsPaginatedResponseWithToken<AppInfo>("apps");
 		}
 	}
 }
