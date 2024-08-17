@@ -41,5 +41,27 @@ namespace ZoomNet.Resources
 		/// An array of <see cref="AppInfo">apps</see>.
 		/// </returns>
 		Task<PaginatedResponseWithToken<AppInfo>> GetCreatedAppsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve all active app requests.
+		/// </summary>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="AppInfo">apps</see>.
+		/// </returns>
+		Task<PaginatedResponseWithToken<AppInfo>> GetAppsActiveRequestsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve all past app requests.
+		/// </summary>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="AppInfo">apps</see>.
+		/// </returns>
+		Task<PaginatedResponseWithToken<AppInfo>> GetAppsPastRequestsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 	}
 }
