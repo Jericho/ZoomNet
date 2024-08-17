@@ -127,5 +127,10 @@ namespace ZoomNet
 		/// Gets the resource which allows you to manage SMS messages and sessions.
 		/// </summary>
 		ISms Sms { get; }
+
+		/// <summary>
+		/// Gets the resource which allows you to manage events.
+		/// </summary>
+		IEvents Events { get; }
 	}
 }
