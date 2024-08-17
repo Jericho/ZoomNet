@@ -12,9 +12,9 @@ namespace ZoomNet.Json
 	/// Converts an <see cref="Event"/> to or from JSON.
 	/// </summary>
 	/// <seealso cref="ZoomNetJsonConverter{T}"/>
-	internal class WebHookEventConverter : ZoomNetJsonConverter<Event>
+	internal class WebHookEventConverter : ZoomNetJsonConverter<Models.Webhooks.Event>
 	{
-		public override Event Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+		public override Models.Webhooks.Event Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 		{
 			var doc = JsonDocument.ParseValue(ref reader);
 			var rootElement = doc.RootElement;
@@ -24,7 +24,7 @@ namespace ZoomNet.Json
 
 			var payloadJsonProperty = rootElement.GetProperty("payload", true).Value;
 
-			Event webHookEvent;
+			Models.Webhooks.Event webHookEvent;
 			switch (eventType)
 			{
 				case EventType.AppDeauthorized:
