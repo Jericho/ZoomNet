@@ -51,18 +51,15 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public async Task<AppInfoDetailed> GetAppInfoAsync(string appId, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<AppInfo>> GetAppsActiveRequestsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
-			var appInfo = await _client
-				.GetAsync($"marketplace/apps/{appId}")
-				.WithCancellationToken(cancellationToken)
-				.AsObject<AppInfoDetailed>()
-				.ConfigureAwait(false);
+			return GetAppsAsync<AppInfo>("active_requests", recordsPerPage, pagingToken, cancellationToken);
+		}
 
-			// Set the Id because, surprisingly, the Zoom API does not include it in the response.
-			appInfo.Id = appId;
-
-			return appInfo;
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<AppInfo>> GetAppsPastRequestsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return GetAppsAsync<AppInfo>("past_requests", recordsPerPage, pagingToken, cancellationToken);
 		}
 
 		private Task<PaginatedResponseWithToken<T>> GetAppsAsync<T>(string type, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
