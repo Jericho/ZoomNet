@@ -10,7 +10,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Websocket.Client;
 using ZoomNet.Models;
-using ZoomNet.Models.Webhooks;
 using ZoomNet.Utilities;
 
 namespace ZoomNet
@@ -23,7 +22,7 @@ namespace ZoomNet
 		private readonly string _subscriptionId;
 		private readonly ILogger _logger;
 		private readonly IWebProxy _proxy;
-		private readonly Func<Event, CancellationToken, Task> _eventProcessor;
+		private readonly Func<Models.Webhooks.Event, CancellationToken, Task> _eventProcessor;
 
 		private WebsocketClient _websocketClient;
 		private HttpClient _httpClient;
@@ -37,7 +36,7 @@ namespace ZoomNet
 		/// <param name="eventProcessor">A delegate that will be invoked when a wehook message is received.</param>
 		/// <param name="proxy">Allows you to specify a proxy.</param>
 		/// <param name="logger">Logger.</param>
-		public ZoomWebSocketClient(IConnectionInfo connectionInfo, string subscriptionId, Func<Event, CancellationToken, Task> eventProcessor, IWebProxy proxy = null, ILogger logger = null)
+		public ZoomWebSocketClient(IConnectionInfo connectionInfo, string subscriptionId, Func<Models.Webhooks.Event, CancellationToken, Task> eventProcessor, IWebProxy proxy = null, ILogger logger = null)
 		{
 			// According to https://marketplace.zoom.us/docs/api-reference/websockets/, only Server-to-Server OAuth connections are supported
 			if (connectionInfo == null) throw new ArgumentNullException(nameof(connectionInfo));
