@@ -7,6 +7,8 @@ namespace ZoomNet.Json
 
 	[JsonSerializable(typeof(ZoomNet.Models.Account))]
 	[JsonSerializable(typeof(ZoomNet.Models.AccountCallLog))]
+	[JsonSerializable(typeof(ZoomNet.Models.AppCategorization))]
+	[JsonSerializable(typeof(ZoomNet.Models.AppInfo))]
 	[JsonSerializable(typeof(ZoomNet.Models.ApprovalType))]
 	[JsonSerializable(typeof(ZoomNet.Models.AppStatus))]
 	[JsonSerializable(typeof(ZoomNet.Models.AppType))]
@@ -328,6 +330,8 @@ namespace ZoomNet.Json
 
 	[JsonSerializable(typeof(ZoomNet.Models.Account[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.AccountCallLog[]))]
+	[JsonSerializable(typeof(ZoomNet.Models.AppCategorization[]))]
+	[JsonSerializable(typeof(ZoomNet.Models.AppInfo[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.ApprovalType[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.AppStatus[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.AppType[]))]
