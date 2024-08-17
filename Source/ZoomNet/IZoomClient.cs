@@ -37,9 +37,6 @@ namespace ZoomNet
 		/// <summary>
 		/// Gets the resource which allows you to manage cloud recordings.
 		/// </summary>
-		/// <value>
-		/// The cloud recordings resource.
-		/// </value>
 		ICloudRecordings CloudRecordings { get; }
 
 		/// <summary>
@@ -61,6 +58,11 @@ namespace ZoomNet
 		/// </summary>
 		[Obsolete("The Data Compliance API is deprecated")]
 		IDataCompliance DataCompliance { get; }
+
+		/// <summary>
+		/// Gets the resource which allows you to manage events.
+		/// </summary>
+		IEvents Events { get; }
 
 		/// <summary>
 		/// Gets the resource which allows you to handle Zoom phone external contacts.
