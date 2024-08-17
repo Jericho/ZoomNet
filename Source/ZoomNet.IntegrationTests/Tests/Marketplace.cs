@@ -23,6 +23,15 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			var paginatedCreatedApps = await client.Marketplace.GetCreatedAppsAsync(100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"This account created {paginatedCreatedApps.TotalRecords} apps.").ConfigureAwait(false);
+
+			// GET THE APPS REQUESTS
+			var paginatedPastRequests = await client.Marketplace.GetAppsPastRequestsAsync(100, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {paginatedPastRequests.TotalRecords} past app requests.").ConfigureAwait(false);
+
+			var paginatedActiveRequests = await client.Marketplace.GetAppsActiveRequestsAsync(100, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {paginatedActiveRequests.TotalRecords} active app requests.").ConfigureAwait(false);
+
+
 		}
 	}
 }
