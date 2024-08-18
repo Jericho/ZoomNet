@@ -18,24 +18,30 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync($"This user has {entitlements.Length} entitlements.").ConfigureAwait(false);
 
 			// GET THE APPS
-			var paginatedPublicApps = await client.Marketplace.GetPublicAppsAsync(100, null, cancellationToken).ConfigureAwait(false);
+			var paginatedPublicApps = await client.Marketplace.GetPublicAppsAsync(300, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Retrieved {paginatedPublicApps.Records.Length} public apps on the marketplace").ConfigureAwait(false);
 
-			var paginatedCreatedApps = await client.Marketplace.GetCreatedAppsAsync(100, null, cancellationToken).ConfigureAwait(false);
+			var paginatedCreatedApps = await client.Marketplace.GetAccountAppsAsync(100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"This account created {paginatedCreatedApps.TotalRecords} apps.").ConfigureAwait(false);
 
-			// GET THE APP REQUESTS
-			var paginatedPastRequests = await client.Marketplace.GetPastAppRequestsAsync(100, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"There are {paginatedPastRequests.TotalRecords} past app requests.").ConfigureAwait(false);
-
-			var paginatedActiveRequests = await client.Marketplace.GetActiveAppRequestsAsync(100, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"There are {paginatedActiveRequests.TotalRecords} active app requests.").ConfigureAwait(false);
+			// GET APP REQUESTS
+			if (paginatedCreatedApps.TotalRecords > 0)
+			{
+				var app = paginatedCreatedApps.Records[0];
+				var approvedAppRequests = await client.Marketplace.GetAppRequestsAsync(app.Id, AppRequestStatus.Approved, 100, null, cancellationToken).ConfigureAwait(false);
+				var pendingAppRequests = await client.Marketplace.GetAppRequestsAsync(app.Id, AppRequestStatus.Pending, 100, null, cancellationToken).ConfigureAwait(false);
+				var rejectedAppRequests = await client.Marketplace.GetAppRequestsAsync(app.Id, AppRequestStatus.Rejected, 100, null, cancellationToken).ConfigureAwait(false);
+				await log.WriteLineAsync($"Requests for app {app.Name}:").ConfigureAwait(false);
+				await log.WriteLineAsync($"  - Approved: {approvedAppRequests.TotalRecords}").ConfigureAwait(false);
+				await log.WriteLineAsync($"  - Pending: {pendingAppRequests.TotalRecords}").ConfigureAwait(false);
+				await log.WriteLineAsync($"  - Rejected: {rejectedAppRequests.TotalRecords}").ConfigureAwait(false);
+			}
 
 			// GET THE USER APP REQUESTS
-			var paginatedPastUserRequests = await client.Marketplace.GetPastUserAppRequestsAsync(myUser.Id, 100, null, cancellationToken).ConfigureAwait(false);
+			var paginatedPastUserRequests = await client.Marketplace.GetUserAppRequestsAsync(myUser.Id, AppRequestType.Active, 100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {paginatedPastUserRequests.TotalRecords} past user app requests.").ConfigureAwait(false);
 
-			var paginatedActiveUserRequests = await client.Marketplace.GetActiveUserAppRequestsAsync(myUser.Id, 100, null, cancellationToken).ConfigureAwait(false);
+			var paginatedActiveUserRequests = await client.Marketplace.GetUserAppRequestsAsync(myUser.Id, AppRequestType.Past, 100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {paginatedActiveUserRequests.TotalRecords} active user app requests.").ConfigureAwait(false);
 		}
 	}
