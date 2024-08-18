@@ -22,15 +22,20 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<AppInfo>> GetActiveUserAppRequestsAsync(string userId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<AppInfo>> GetUserAppRequestsAsync(string userId, AppRequestType requestType, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
-			return GetAppsAsync($"marketplace/users/{userId}/apps", "active_requests", recordsPerPage, pagingToken, cancellationToken);
-		}
+			if (recordsPerPage < 1 || recordsPerPage > 300)
+			{
+				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 300");
+			}
 
-		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<AppInfo>> GetPastUserAppRequestsAsync(string userId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
-		{
-			return GetAppsAsync($"marketplace/users/{userId}/apps", "past_requests", recordsPerPage, pagingToken, cancellationToken);
+			return _client
+				.GetAsync($"marketplace/users/{userId}/apps")
+				.WithArgument("type", requestType.ToEnumString())
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<AppInfo>("apps");
 		}
 
 		/// <inheritdoc/>
@@ -51,30 +56,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<AppInfo>> GetPublicAppsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
-		{
-			return GetAppsAsync("marketplace/apps", "public", recordsPerPage, pagingToken, cancellationToken);
-		}
-
-		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<AppInfo>> GetCreatedAppsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
-		{
-			return GetAppsAsync("marketplace/apps", "account_created", recordsPerPage, pagingToken, cancellationToken);
-		}
-
-		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<AppInfo>> GetActiveAppRequestsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
-		{
-			return GetAppsAsync("marketplace/apps", "active_requests", recordsPerPage, pagingToken, cancellationToken);
-		}
-
-		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<AppInfo>> GetPastAppRequestsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
-		{
-			return GetAppsAsync("marketplace/apps", "past_requests", recordsPerPage, pagingToken, cancellationToken);
-		}
-
-		private Task<PaginatedResponseWithToken<AppInfo>> GetAppsAsync(string resource, string type, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<AppRequest>> GetAppRequestsAsync(string appId, AppRequestStatus status, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -82,7 +64,37 @@ namespace ZoomNet.Resources
 			}
 
 			return _client
-				.GetAsync(resource)
+				.GetAsync($"marketplace/apps/{appId}/requests")
+				.WithArgument("status", status.ToEnumString())
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<AppRequest>("requests");
+		}
+
+
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<AppInfo>> GetPublicAppsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return GetAppsAsync("public", recordsPerPage, pagingToken, cancellationToken);
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<AppInfo>> GetAccountAppsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return GetAppsAsync("account_created", recordsPerPage, pagingToken, cancellationToken);
+		}
+
+		private Task<PaginatedResponseWithToken<AppInfo>> GetAppsAsync(string type, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			if (recordsPerPage < 1 || recordsPerPage > 300)
+			{
+				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 300");
+			}
+
+			return _client
+				.GetAsync("marketplace/apps")
 				.WithArgument("type", type)
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
