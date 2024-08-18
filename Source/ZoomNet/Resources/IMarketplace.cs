@@ -13,24 +13,15 @@ namespace ZoomNet.Resources
 	public interface IMarketplace
 	{
 		/// <summary>
-		/// Retrieve all of a user's active app requests.
+		/// Retrieve all of a user's app requests.
 		/// </summary>
 		/// <param name="userId">The user Id.</param>
+		/// <param name="requestType">The type of app request to retrieve.</param>
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pagingToken">The paging token.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns></returns>
-		Task<PaginatedResponseWithToken<AppInfo>> GetActiveUserAppRequestsAsync(string userId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
-
-		/// <summary>
-		/// Retrieve all of a user's past app requests.
-		/// </summary>
-		/// <param name="userId">The user Id.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns></returns>
-		Task<PaginatedResponseWithToken<AppInfo>> GetPastUserAppRequestsAsync(string userId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<AppInfo>> GetUserAppRequestsAsync(string userId, AppRequestType requestType, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get a user's entitlements.
@@ -39,6 +30,19 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>An array of entitlement Ids.</returns>
 		Task<long[]> GetUserEntitlementsAsync(string userId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve an app's user requests and the status of their approval.
+		/// </summary>
+		/// <param name="appId">The app Id.</param>
+		/// <param name="status">The status of the app request.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="AppInfo">apps</see>.
+		/// </returns>
+		Task<PaginatedResponseWithToken<AppRequest>> GetAppRequestsAsync(string appId, AppRequestStatus status, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve all public apps.
@@ -60,28 +64,6 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="AppInfo">apps</see>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<AppInfo>> GetCreatedAppsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
-
-		/// <summary>
-		/// Retrieve all active app requests.
-		/// </summary>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="AppInfo">apps</see>.
-		/// </returns>
-		Task<PaginatedResponseWithToken<AppInfo>> GetActiveAppRequestsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
-
-		/// <summary>
-		/// Retrieve all past app requests.
-		/// </summary>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="AppInfo">apps</see>.
-		/// </returns>
-		Task<PaginatedResponseWithToken<AppInfo>> GetPastAppRequestsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<AppInfo>> GetAccountAppsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 	}
 }
