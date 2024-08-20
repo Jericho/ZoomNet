@@ -25,7 +25,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync($"This account created {paginatedCreatedApps.TotalRecords} apps.").ConfigureAwait(false);
 
 			// GET APP REQUESTS
-			if (paginatedCreatedApps.TotalRecords > 0)
+			if (paginatedCreatedApps.Records.Length > 0)
 			{
 				var app = paginatedCreatedApps.Records[0];
 				var approvedAppRequests = await client.Marketplace.GetAppRequestsAsync(app.Id, AppRequestStatus.Approved, 100, null, cancellationToken).ConfigureAwait(false);
