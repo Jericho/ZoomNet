@@ -289,13 +289,14 @@ namespace ZoomNet
 		/// </summary>
 		/// <param name="cloudRecordingsResource">The cloud recordings resource.</param>
 		/// <param name="recordingFile">The recording file to download.</param>
+		/// <param name="accessToken">The access token. If this parameter is omitted, the token for the current oAuth session will be used.</param>
 		/// <param name="cancellationToken">Cancellation token.</param>
 		/// <returns>
 		/// The <see cref="Stream"/> containing the file.
 		/// </returns>
-		public static Task<Stream> DownloadFileAsync(this ICloudRecordings cloudRecordingsResource, RecordingFile recordingFile, CancellationToken cancellationToken = default)
+		public static Task<Stream> DownloadFileAsync(this ICloudRecordings cloudRecordingsResource, RecordingFile recordingFile, string accessToken = null, CancellationToken cancellationToken = default)
 		{
-			return cloudRecordingsResource.DownloadFileAsync(recordingFile.DownloadUrl, cancellationToken);
+			return cloudRecordingsResource.DownloadFileAsync(recordingFile.DownloadUrl, accessToken, cancellationToken);
 		}
 
 		/// <summary>

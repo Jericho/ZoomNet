@@ -629,7 +629,7 @@ namespace ZoomNet.Resources
 		/// <param name="overwrite">Indicates whether an existing meeting template from the same meeting should be overwritten or not.</param>
 		/// <param name="cancellationToken">Cancellation token.</param>
 		/// <returns>The template ID.</returns>
-		Task<string> CreateTemplateFromExistingMeeting(string userId, long meetingId, string templateName, bool saveRecurrence = false, bool overwrite = false, CancellationToken cancellationToken = default);
+		Task<string> CreateTemplateFromExistingMeetingAsync(string userId, long meetingId, string templateName, bool saveRecurrence = false, bool overwrite = false, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get a meeting's closed caption token.
