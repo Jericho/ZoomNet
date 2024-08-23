@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <PackageId>PowerDiary.ZoomNet</PackageId>
     <Authors>Jeremie Desautels;PowerDiary</Authors>
     <Company>PowerDiary</Company>
@@ -29,7 +29,7 @@
     <RepositoryUrl>https://github.com/powerdiary/ZoomNet</RepositoryUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>ZoomNet zoom meeting webinar</PackageTags>
-    <PackageReleaseNotes>1.0.0</PackageReleaseNotes>
+    <PackageReleaseNotes>1.0.1</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
