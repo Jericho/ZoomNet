@@ -66,7 +66,7 @@ namespace ZoomNet.Models
 		/// The status.
 		/// </value>
 		[JsonPropertyName("status")]
-		public MeetingStatus? Status { get; set; }
+		public MeetingStatus Status { get; set; }
 
 		/// <summary>
 		/// Gets or sets the meeting description.
