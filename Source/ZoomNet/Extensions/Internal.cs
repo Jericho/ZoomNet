@@ -16,6 +16,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Json;
@@ -347,19 +348,19 @@ namespace ZoomNet
 			return await response.AsPaginatedResponseWithTokenAndDateRange<T>(propertyName, options).ConfigureAwait(false);
 		}
 
-		/// <summary>Get a raw JSON document representation of the response.</summary>
+		/// <summary>Get a JSON representation of the response.</summary>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		internal static Task<JsonDocument> AsRawJsonDocument(this IResponse response, string propertyName = null, bool throwIfPropertyIsMissing = true)
+		internal static Task<JsonElement> AsJson(this IResponse response, string propertyName = null, bool throwIfPropertyIsMissing = true)
 		{
-			return response.Message.Content.AsRawJsonDocument(propertyName, throwIfPropertyIsMissing);
+			return response.Message.Content.AsJson(propertyName, throwIfPropertyIsMissing);
 		}
 
-		/// <summary>Get a raw JSON document representation of the response.</summary>
+		/// <summary>Get a JSON representation of the response.</summary>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		internal static async Task<JsonDocument> AsRawJsonDocument(this IRequest request, string propertyName = null, bool throwIfPropertyIsMissing = true)
+		internal static async Task<JsonElement> AsJson(this IRequest request, string propertyName = null, bool throwIfPropertyIsMissing = true)
 		{
 			var response = await request.AsResponse().ConfigureAwait(false);
-			return await response.AsRawJsonDocument(propertyName, throwIfPropertyIsMissing).ConfigureAwait(false);
+			return await response.AsJson(propertyName, throwIfPropertyIsMissing).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -734,41 +735,35 @@ namespace ZoomNet
 				}
 			*/
 
-			var responseContent = await message.Content.ReadAsStringAsync(null).ConfigureAwait(false);
-
-			if (!string.IsNullOrEmpty(responseContent))
+			try
 			{
-				try
+				var jsonResponse = await message.Content.ParseZoomResponseAsync().ConfigureAwait(false);
+				if (jsonResponse.ValueKind == JsonValueKind.Object)
 				{
-					var rootJsonElement = JsonDocument.Parse(responseContent).RootElement;
-
-					if (rootJsonElement.ValueKind == JsonValueKind.Object)
+					errorCode = jsonResponse.TryGetProperty("code", out JsonElement jsonErrorCode) ? jsonErrorCode.GetInt32() : null;
+					errorMessage = jsonResponse.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : errorCode.HasValue ? $"Error code: {errorCode}" : errorMessage;
+					if (jsonResponse.TryGetProperty("errors", out JsonElement jsonErrorDetails))
 					{
-						errorCode = rootJsonElement.TryGetProperty("code", out JsonElement jsonErrorCode) ? jsonErrorCode.GetInt32() : null;
-						errorMessage = rootJsonElement.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : errorCode.HasValue ? $"Error code: {errorCode}" : errorMessage;
-						if (rootJsonElement.TryGetProperty("errors", out JsonElement jsonErrorDetails))
-						{
-							var errorDetails = string.Join(
-								" ",
-								jsonErrorDetails
-									.EnumerateArray()
-									.Select(jsonErrorDetail =>
-						{
-							var errorDetail = jsonErrorDetail.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : string.Empty;
-							return errorDetail;
-						})
-									.Where(message => !string.IsNullOrEmpty(message)));
+						var errorDetails = string.Join(
+							" ",
+							jsonErrorDetails
+								.EnumerateArray()
+								.Select(jsonErrorDetail =>
+								{
+									var errorDetail = jsonErrorDetail.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : string.Empty;
+									return errorDetail;
+								})
+								.Where(message => !string.IsNullOrEmpty(message)));
 
-							if (!string.IsNullOrEmpty(errorDetails)) errorMessage += $" {errorDetails}";
-						}
-
-						return (errorCode.HasValue, errorMessage, errorCode);
+						if (!string.IsNullOrEmpty(errorDetails)) errorMessage += $" {errorDetails}";
 					}
+
+					return (errorCode.HasValue, errorMessage, errorCode);
 				}
-				catch
-				{
-					// Intentionally ignore parsing errors
-				}
+			}
+			catch
+			{
+				// Intentionally ignore parsing errors
 			}
 
 			return (!message.IsSuccessStatusCode, errorMessage, errorCode);
@@ -951,6 +946,34 @@ namespace ZoomNet
 			return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>);
 		}
 
+		internal static async Task<JsonElement> ParseZoomResponseAsync(this HttpContent responseFromZoomApi, CancellationToken cancellationToken = default)
+		{
+			var responseContent = await responseFromZoomApi.ReadAsStringAsync(null, cancellationToken).ConfigureAwait(false);
+			if (string.IsNullOrEmpty(responseContent)) return default; // the 'ValueKind' property of the default JsonElement is JsonValueKind.Undefined
+
+			const string pattern = @"(.*?)(?<=""message"":"")(.*?)(?=""})(.*?$)";
+			var matches = Regex.Match(responseContent, pattern, RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.Compiled);
+			var prefix = matches.Groups[1].Value;
+			var message = matches.Groups[2].Value;
+			var postfix = matches.Groups[3].Value;
+
+			if (string.IsNullOrEmpty(message)) return JsonDocument.Parse(responseContent).RootElement;
+
+			/*
+				Sometimes the error message is malformed due to the presence of double quotes that are not properly escaped.
+				See: https://devforum.zoom.us/t/list-events-endpoint-returns-invalid-json-in-the-payload/115792 for more info.
+				One instance where this problem was observed is when retrieving the list of events without having the necessary permissions to do so.
+				The result is the following response with unescaped double-quotes in the error message:
+				{
+					"code": 104,
+					"message": "Invalid access token, does not contain scopes:["zoom_events_basic:read","zoom_events_basic:read:admin"]"
+				}
+			*/
+			var escapedMessage = Regex.Replace(message, @"(?<!\\)""", "\\\"", RegexOptions.Compiled); // Replace un-escaped double-quotes with properly escaped double-quotes
+			var result = $"{prefix}{escapedMessage}{postfix}";
+			return JsonDocument.Parse(result).RootElement;
+		}
+
 		/// <summary>Asynchronously converts the JSON encoded content and convert it to an object of the desired type.</summary>
 		/// <typeparam name="T">The response model to deserialize into.</typeparam>
 		/// <param name="httpContent">The content.</param>
@@ -984,28 +1007,30 @@ namespace ZoomNet
 			}
 		}
 
-		/// <summary>Get a raw JSON object representation of the response.</summary>
+		/// <summary>Get a JSON representation of the response.</summary>
 		/// <param name="httpContent">The content.</param>
 		/// <param name="propertyName">The name of the JSON property (or null if not applicable) where the desired data is stored.</param>
 		/// <param name="throwIfPropertyIsMissing">Indicates if an exception should be thrown when the specified JSON property is missing from the response.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>Returns the response body, or <c>null</c> if the response has no body.</returns>
+		/// <returns>Returns the response body, or a JsonElement with its 'ValueKind' set to 'Undefined' if the response has no body.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		private static async Task<JsonDocument> AsRawJsonDocument(this HttpContent httpContent, string propertyName = null, bool throwIfPropertyIsMissing = true, CancellationToken cancellationToken = default)
+		private static async Task<JsonElement> AsJson(this HttpContent httpContent, string propertyName = null, bool throwIfPropertyIsMissing = true, CancellationToken cancellationToken = default)
 		{
-			var responseContent = await httpContent.ReadAsStringAsync(null, cancellationToken).ConfigureAwait(false);
-
-			var jsonDoc = JsonDocument.Parse(responseContent, default);
+			var jsonResponse = await httpContent.ParseZoomResponseAsync(cancellationToken).ConfigureAwait(false);
 
 			if (string.IsNullOrEmpty(propertyName))
 			{
-				return jsonDoc;
+				return jsonResponse;
 			}
 
-			if (jsonDoc.RootElement.TryGetProperty(propertyName, out JsonElement property))
+			if (jsonResponse.ValueKind != JsonValueKind.Object)
+			{
+				throw new Exception("The response from the Zomm API does not contain a valid JSON string");
+			}
+			else if (jsonResponse.TryGetProperty(propertyName, out JsonElement property))
 			{
 				var propertyContent = property.GetRawText();
-				return JsonDocument.Parse(propertyContent, default);
+				return JsonDocument.Parse(propertyContent, default).RootElement;
 			}
 			else if (throwIfPropertyIsMissing)
 			{
@@ -1027,9 +1052,8 @@ namespace ZoomNet
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
 		private static async Task<PaginatedResponse<T>> AsPaginatedResponse<T>(this HttpContent httpContent, string propertyName, JsonSerializerOptions options = null, CancellationToken cancellationToken = default)
 		{
-			// Get the content as a queryable json document
-			var doc = await httpContent.AsRawJsonDocument(null, false, cancellationToken).ConfigureAwait(false);
-			var rootElement = doc.RootElement;
+			// Get the content as a JSON element
+			var rootElement = await httpContent.AsJson(null, false, cancellationToken).ConfigureAwait(false);
 
 			// Get the various metadata properties
 			var pageCount = rootElement.GetPropertyValue("page_count", 0);
@@ -1068,9 +1092,8 @@ namespace ZoomNet
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
 		private static async Task<PaginatedResponseWithToken<T>> AsPaginatedResponseWithToken<T>(this HttpContent httpContent, string propertyName, JsonSerializerOptions options = null, CancellationToken cancellationToken = default)
 		{
-			// Get the content as a queryable json document
-			var doc = await httpContent.AsRawJsonDocument(null, false, cancellationToken).ConfigureAwait(false);
-			var rootElement = doc.RootElement;
+			// Get the content as a JSON element
+			var rootElement = await httpContent.AsJson(null, false, cancellationToken).ConfigureAwait(false);
 
 			// Get the various metadata properties
 			var nextPageToken = rootElement.GetPropertyValue("next_page_token", string.Empty);
@@ -1107,9 +1130,8 @@ namespace ZoomNet
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
 		private static async Task<PaginatedResponseWithTokenAndDateRange<T>> AsPaginatedResponseWithTokenAndDateRange<T>(this HttpContent httpContent, string propertyName, JsonSerializerOptions options = null, CancellationToken cancellationToken = default)
 		{
-			// Get the content as a queryable json document
-			var doc = await httpContent.AsRawJsonDocument(null, false, cancellationToken).ConfigureAwait(false);
-			var rootElement = doc.RootElement;
+			// Get the content as a JSON element
+			var rootElement = await httpContent.AsJson(null, false, cancellationToken).ConfigureAwait(false);
 
 			// Get the various metadata properties
 			var from = DateTime.ParseExact(rootElement.GetPropertyValue("from", string.Empty), "yyyy-MM-dd", CultureInfo.InvariantCulture);
