@@ -718,7 +718,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task UpdatePresenceStatusAsync(string userId, PresenceStatus status, int? duration = null, CancellationToken cancellationToken = default)
 		{
-			if (status == PresenceStatus.Unknown) throw new ArgumentOutOfRangeException("You can not change a user's status to Unknown.", nameof(status));
+			if (status == PresenceStatus.Unknown) throw new ArgumentOutOfRangeException(nameof(status), "You can not change a user's status to Unknown.");
 
 			var data = new JsonObject
 			{
