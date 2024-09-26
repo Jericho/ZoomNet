@@ -748,11 +748,7 @@ namespace ZoomNet
 							" ",
 							jsonErrorDetails
 								.EnumerateArray()
-								.Select(jsonErrorDetail =>
-								{
-									var errorDetail = jsonErrorDetail.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : string.Empty;
-									return errorDetail;
-								})
+								.Select(jsonErrorDetail => jsonErrorDetail.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : string.Empty)
 								.Where(message => !string.IsNullOrEmpty(message)));
 
 						if (!string.IsNullOrEmpty(errorDetails)) errorMessage += $" {errorDetails}";
@@ -946,7 +942,7 @@ namespace ZoomNet
 			return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>);
 		}
 
-		internal static async Task<JsonElement> ParseZoomResponseAsync(this HttpContent responseFromZoomApi, CancellationToken cancellationToken = default)
+		private static async Task<JsonElement> ParseZoomResponseAsync(this HttpContent responseFromZoomApi, CancellationToken cancellationToken = default)
 		{
 			var responseContent = await responseFromZoomApi.ReadAsStringAsync(null, cancellationToken).ConfigureAwait(false);
 			if (string.IsNullOrEmpty(responseContent)) return default; // the 'ValueKind' property of the default JsonElement is JsonValueKind.Undefined
