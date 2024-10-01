@@ -87,5 +87,17 @@ namespace ZoomNet.Resources
 		/// An array of <see cref="ReportHost">report items</see>.
 		/// </returns>
 		Task<PaginatedResponseWithToken<ReportHost>> GetHostsAsync(DateTime from, DateTime to, ReportHostType type = ReportHostType.Active, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Gets daily report to access the account-wide usage of Zoom services for each day in a given month. It lists the number of new users, meetings, participants, and meeting minutes.
+		/// </summary>
+		/// <param name="year">Year for this report.</param>
+		/// <param name="month">Month for this report.</param>
+		/// <param name="groupId">The group ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The object of <see cref="DailyUsageReport"></see>.
+		/// </returns>
+		public Task<DailyUsageReport> GetDailyUsageReportAsync(int year, int month, string groupId = null, CancellationToken cancellationToken = default(CancellationToken));
 	}
 }

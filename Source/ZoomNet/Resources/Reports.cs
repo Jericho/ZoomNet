@@ -87,6 +87,15 @@ namespace ZoomNet.Resources
 				.AsPaginatedResponseWithToken<ReportHost>("users");
 		}
 
+		/// <inheritdoc/>
+		public Task<DailyUsageReport> GetDailyUsageReportAsync(int year, int month, string groupId = null, CancellationToken cancellationToken = default(CancellationToken))
+		{
+			return _client.GetAsync("report/daily").WithArgument("year", year).WithArgument("month", month)
+				.WithArgument("groupId", groupId)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<DailyUsageReport>();
+		}
+
 		private static void VerifyPageSize(int pageSize)
 		{
 			if (pageSize < 1 || pageSize > 300)
