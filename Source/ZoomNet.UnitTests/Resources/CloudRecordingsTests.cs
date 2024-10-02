@@ -552,7 +552,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp // The first time the file is requested, we return "401 Unauthorized" to simulate an expired token.
 				.Expect(HttpMethod.Get, downloadUrl)
-				.Respond(HttpStatusCode.Unauthorized, new StringContent("{\"message\":\"access token is expired\"}"));
+				.Respond(HttpStatusCode.Unauthorized, new StringContent("{\"code\":123456,\"message\":\"access token is expired\"}"));
 			mockHttp // The second time the file is requested, we return "200 OK" with the file content.
 				.Expect(HttpMethod.Get, downloadUrl)
 				.Respond(HttpStatusCode.OK, new StringContent("This is the content of the file"));
