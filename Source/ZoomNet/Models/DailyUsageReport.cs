@@ -9,7 +9,7 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the dates.</summary>
 		[JsonPropertyName("dates")]
-		public DateObject[] Dates { get; set; }
+		public DailyUsageSummary[] Dates { get; set; }
 
 		/// <summary>Gets or sets the month.</summary>
 		[JsonPropertyName("month")]

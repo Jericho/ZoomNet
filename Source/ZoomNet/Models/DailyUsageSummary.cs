@@ -5,7 +5,7 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// Date Object.
 	/// </summary>
-	public class DateObject
+	public class DailyUsageSummary
 	{
 		/// <summary>Gets or sets the date.</summary>
 		[JsonPropertyName("date")]

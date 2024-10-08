@@ -395,7 +395,7 @@ namespace ZoomNet.Json
 	[JsonSerializable(typeof(ZoomNet.Models.DashboardParticipant[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.DashboardParticipantQos[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.DataCenterRegion[]))]
-	[JsonSerializable(typeof(ZoomNet.Models.DateObject[]))]
+	[JsonSerializable(typeof(ZoomNet.Models.DailyUsageSummary[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.EmailNotificationUserSettings[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.EmergencyAddress[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.EncryptionType[]))]
