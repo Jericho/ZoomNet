@@ -98,6 +98,6 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The object of <see cref="DailyUsageReport"></see>.
 		/// </returns>
-		public Task<DailyUsageReport> GetDailyUsageReportAsync(int year, int month, string groupId = null, CancellationToken cancellationToken = default(CancellationToken));
+		public Task<DailyUsageReport> GetDailyUsageReportAsync(int year, int month, string groupId = null, CancellationToken cancellationToken = default);
 	}
 }

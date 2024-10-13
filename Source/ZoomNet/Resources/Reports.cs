@@ -88,9 +88,11 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<DailyUsageReport> GetDailyUsageReportAsync(int year, int month, string groupId = null, CancellationToken cancellationToken = default(CancellationToken))
+		public Task<DailyUsageReport> GetDailyUsageReportAsync(int year, int month, string groupId = null, CancellationToken cancellationToken = default)
 		{
-			return _client.GetAsync("report/daily").WithArgument("year", year).WithArgument("month", month)
+			return _client.GetAsync("report/daily")
+				.WithArgument("year", year)
+				.WithArgument("month", month)
 				.WithArgument("groupId", groupId)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<DailyUsageReport>();
