@@ -7,9 +7,9 @@ namespace ZoomNet.Models
 	/// </summary>
 	public class DailyUsageReport
 	{
-		/// <summary>Gets or sets the dates.</summary>
+		/// <summary>Gets or sets the daily usage summaries.</summary>
 		[JsonPropertyName("dates")]
-		public DailyUsageSummary[] Dates { get; set; }
+		public DailyUsageSummary[] DailyUsageSummaries { get; set; }
 
 		/// <summary>Gets or sets the month.</summary>
 		[JsonPropertyName("month")]
