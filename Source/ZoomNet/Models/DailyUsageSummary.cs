@@ -1,5 +1,5 @@
-using System;
 using System.Text.Json.Serialization;
+using ZoomNet.Json;
 
 namespace ZoomNet.Models
 {
@@ -10,7 +10,8 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the date.</summary>
 		[JsonPropertyName("date")]
-		public DateOnly Date { get; set; }
+		[JsonConverter(typeof(DateOnlyConverter))]
+		public (int Year, int Month, int Day) Date { get; set; }
 
 		/// <summary>Gets or sets number of meeting minutes.</summary>
 		[JsonPropertyName("meeting_minutes")]
