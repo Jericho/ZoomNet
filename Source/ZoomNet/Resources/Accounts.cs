@@ -203,13 +203,13 @@ namespace ZoomNet.Resources
 				.GetAsync($"accounts/{accountId}/settings")
 				.WithArgument("option", "meeting_authentication")
 				.WithCancellationToken(cancellationToken)
-				.AsRawJsonDocument()
+				.AsJson()
 				.ConfigureAwait(false);
 
 			var settings = new AuthenticationSettings()
 			{
-				RequireAuthentication = response.RootElement.GetPropertyValue("meeting_authentication", false),
-				AuthenticationOptions = response.RootElement.GetProperty("authentication_options", false)?.ToObject<AuthenticationOptions[]>() ?? Array.Empty<AuthenticationOptions>()
+				RequireAuthentication = response.GetPropertyValue("meeting_authentication", false),
+				AuthenticationOptions = response.GetProperty("authentication_options", false)?.ToObject<AuthenticationOptions[]>() ?? Array.Empty<AuthenticationOptions>()
 			};
 
 			return settings;
@@ -229,13 +229,13 @@ namespace ZoomNet.Resources
 				.GetAsync($"accounts/{accountId}/settings")
 				.WithArgument("option", "recording_authentication")
 				.WithCancellationToken(cancellationToken)
-				.AsRawJsonDocument()
+				.AsJson()
 				.ConfigureAwait(false);
 
 			var settings = new AuthenticationSettings()
 			{
-				RequireAuthentication = response.RootElement.GetPropertyValue("recording_authentication", false),
-				AuthenticationOptions = response.RootElement.GetProperty("authentication_options", false)?.ToObject<AuthenticationOptions[]>() ?? Array.Empty<AuthenticationOptions>()
+				RequireAuthentication = response.GetPropertyValue("recording_authentication", false),
+				AuthenticationOptions = response.GetProperty("authentication_options", false)?.ToObject<AuthenticationOptions[]>() ?? Array.Empty<AuthenticationOptions>()
 			};
 
 			return settings;
@@ -254,10 +254,10 @@ namespace ZoomNet.Resources
 			var response = await _client
 				.GetAsync($"accounts/{accountId}/managed_domains")
 				.WithCancellationToken(cancellationToken)
-				.AsRawJsonDocument("domains")
+				.AsJson("domains")
 				.ConfigureAwait(false);
 
-			var managedDomains = response.RootElement
+			var managedDomains = response
 				.EnumerateArray()
 				.Select(jsonElement =>
 				{

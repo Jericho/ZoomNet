@@ -445,13 +445,13 @@ namespace ZoomNet.Resources
 				.GetAsync($"users/{userId}/settings")
 				.WithArgument("option", "meeting_authentication")
 				.WithCancellationToken(cancellationToken)
-				.AsRawJsonDocument()
+				.AsJson()
 				.ConfigureAwait(false);
 
 			var settings = new AuthenticationSettings()
 			{
-				RequireAuthentication = response.RootElement.GetPropertyValue("meeting_authentication", false),
-				AuthenticationOptions = response.RootElement.GetProperty("authentication_options", false)?.ToObject<AuthenticationOptions[]>() ?? Array.Empty<AuthenticationOptions>()
+				RequireAuthentication = response.GetPropertyValue("meeting_authentication", false),
+				AuthenticationOptions = response.GetProperty("authentication_options", false)?.ToObject<AuthenticationOptions[]>() ?? Array.Empty<AuthenticationOptions>()
 			};
 
 			return settings;
@@ -471,13 +471,13 @@ namespace ZoomNet.Resources
 				.GetAsync($"users/{userId}/settings")
 				.WithArgument("option", "recording_authentication")
 				.WithCancellationToken(cancellationToken)
-				.AsRawJsonDocument()
+				.AsJson()
 				.ConfigureAwait(false);
 
 			var settings = new AuthenticationSettings()
 			{
-				RequireAuthentication = response.RootElement.GetPropertyValue("recording_authentication", false),
-				AuthenticationOptions = response.RootElement.GetProperty("authentication_options", false)?.ToObject<AuthenticationOptions[]>() ?? Array.Empty<AuthenticationOptions>()
+				RequireAuthentication = response.GetPropertyValue("recording_authentication", false),
+				AuthenticationOptions = response.GetProperty("authentication_options", false)?.ToObject<AuthenticationOptions[]>() ?? Array.Empty<AuthenticationOptions>()
 			};
 
 			return settings;
@@ -718,7 +718,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task UpdatePresenceStatusAsync(string userId, PresenceStatus status, int? duration = null, CancellationToken cancellationToken = default)
 		{
-			if (status == PresenceStatus.Unknown) throw new ArgumentOutOfRangeException("You can not change a user's status to Unknown.", nameof(status));
+			if (status == PresenceStatus.Unknown) throw new ArgumentOutOfRangeException(nameof(status), "You can not change a user's status to Unknown.");
 
 			var data = new JsonObject
 			{
