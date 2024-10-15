@@ -800,10 +800,10 @@ namespace ZoomNet.Resources
 			var response = await _client
 				.GetAsync($"webinars/{webinarId}/registrants/questions")
 				.WithCancellationToken(cancellationToken)
-				.AsRawJsonDocument()
+				.AsJson()
 				.ConfigureAwait(false);
 
-			var allFields = response.RootElement.GetProperty("questions").EnumerateArray()
+			var allFields = response.GetProperty("questions").EnumerateArray()
 				.Select(item => (Field: item.GetPropertyValue<string>("field_name").ToEnum<RegistrationField>(), IsRequired: item.GetPropertyValue<bool>("required")));
 
 			var requiredFields = allFields.Where(f => f.IsRequired).Select(f => f.Field).ToArray();
@@ -813,7 +813,7 @@ namespace ZoomNet.Resources
 			{
 				RequiredFields = requiredFields,
 				OptionalFields = optionalFields,
-				Questions = response.RootElement.GetProperty("custom_questions", false)?.ToObject<RegistrationCustomQuestionForWebinar[]>() ?? Array.Empty<RegistrationCustomQuestionForWebinar>()
+				Questions = response.GetProperty("custom_questions", false)?.ToObject<RegistrationCustomQuestionForWebinar[]>() ?? Array.Empty<RegistrationCustomQuestionForWebinar>()
 			};
 			return registrationQuestions;
 		}
