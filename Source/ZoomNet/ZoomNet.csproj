@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Version>1.0.2</Version>
+    <Version>1.0.4</Version>
     <PackageId>PowerDiary.ZoomNet</PackageId>
     <Authors>Jeremie Desautels;PowerDiary</Authors>
     <Company>PowerDiary</Company>
