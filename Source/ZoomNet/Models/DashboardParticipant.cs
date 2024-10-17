@@ -44,7 +44,7 @@ namespace ZoomNet.Models
 		/// The type of device used by the participant to join the meeting.
 		/// </value>
 		[JsonPropertyName("device")]
-		public ParticipantDevice[] Devices { get; set; }
+		public string Devices { get; set; }
 
 		/// <summary>
 		/// Gets or sets the device operation system.
