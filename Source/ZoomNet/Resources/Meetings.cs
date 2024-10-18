@@ -117,6 +117,7 @@ namespace ZoomNet.Resources
 		/// <param name="duration">Meeting duration (minutes).</param>
 		/// <param name="timeZone">The time zone for start time.</param>
 		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
+		/// <param name="default_password">Whether to generate a default password using the user's settings.</param>
 		/// <param name="settings">Meeting settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
 		/// <param name="templateId">Template Identifer.</param>
@@ -133,6 +134,7 @@ namespace ZoomNet.Resources
 			int duration,
 			TimeZones? timeZone = TimeZones.UTC,
 			string password = null,
+			bool default_password = false,
 			MeetingSettings settings = null,
 			IDictionary<string, string> trackingFields = null,
 			string templateId = null,
@@ -143,6 +145,7 @@ namespace ZoomNet.Resources
 				{ "type", 2 },
 				{ "topic", topic },
 				{ "password", password },
+				{ "default_password", default_password },
 				{ "agenda", agenda },
 				{ "start_time", start.ToZoomFormat(timeZone) },
 				{ "duration", duration },
@@ -170,6 +173,7 @@ namespace ZoomNet.Resources
 		/// <param name="recurrence">Recurrence information.</param>
 		/// <param name="timeZone">The time zone for start time.</param>
 		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
+		/// <param name="default_password">Whether to generate a default password using the user's settings.</param>
 		/// <param name="settings">Meeting settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
 		/// <param name="templateId">Template Identifer.</param>
@@ -187,6 +191,7 @@ namespace ZoomNet.Resources
 			RecurrenceInfo recurrence,
 			TimeZones? timeZone = TimeZones.UTC,
 			string password = null,
+			bool default_password = false,
 			MeetingSettings settings = null,
 			IDictionary<string, string> trackingFields = null,
 			string templateId = null,
@@ -197,6 +202,7 @@ namespace ZoomNet.Resources
 				{ "type", recurrence == null ? MeetingType.RecurringNoFixedTime : MeetingType.RecurringFixedTime },
 				{ "topic", topic },
 				{ "password", password },
+				{ "default_password", default_password },
 				{ "agenda", agenda },
 				{ "start_time", start.ToZoomFormat(timeZone) },
 				{ "duration", duration },
