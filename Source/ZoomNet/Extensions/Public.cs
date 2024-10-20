@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
@@ -350,6 +351,22 @@ namespace ZoomNet
 		public static Task<Webinar> GetAsync(this IWebinars webinarResource, long webinarId, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			return webinarResource.GetAsync(webinarId, occurrenceId, false, cancellationToken);
+		}
+
+		/// <summary>
+		/// Adds user to a group.
+		/// </summary>
+		/// <param name="groupsResource">The group resource.</param>
+		/// <param name="groupId">The ID of the group.</param>
+		/// <param name="emailAddress">An email address of user to add to the group.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task representing the operation. The result will be a string representing the ID of the added user.</returns>
+		public static async Task<string> AddUserToGroupAsync(this IGroups groupsResource, string groupId, string emailAddress, CancellationToken cancellationToken = default)
+		{
+			var result = await groupsResource.AddUsersToGroupAsync(groupId, new[] { emailAddress }, cancellationToken).ConfigureAwait(false);
+
+			// We added a single member to a group therefore the array returned from the Zoom API contains a single element
+			return result.Single();
 		}
 	}
 }
