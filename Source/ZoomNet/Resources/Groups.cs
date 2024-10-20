@@ -1,5 +1,4 @@
 using Pathoschild.Http.Client;
-using System;
 using System.Collections.Generic;
 using System.Text.Json.Nodes;
 using System.Threading;
@@ -7,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace ZoomNet.Resources;
 
-/// <summary>
-/// Allows you to manage Groups.
-/// </summary>
+/// <inheritdoc/>
 public class Groups : IGroups
 {
 	private readonly IClient _client;
@@ -37,22 +34,9 @@ public class Groups : IGroups
 			.PostAsync($"groups/{groupId}/members")
 			.WithJsonBody(data)
 			.WithCancellationToken(cancellationToken)
-			.AsMessage()
+			.AsJson()
 			.ConfigureAwait(false);
 
-		if (!response.IsSuccessStatusCode)
-		{
-			return Array.Empty<string>();
-		}
-
-		var jsonResponse = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-
-		if (JsonNode.Parse(jsonResponse) is JsonObject jsonObject && jsonObject["ids"] is JsonValue idsValue)
-		{
-			return idsValue.ToString().Split(',');
-		}
-
-		return Array.Empty<string>();
+		return response.GetPropertyValue("ids", string.Empty).Split(',');
 	}
 }
-
