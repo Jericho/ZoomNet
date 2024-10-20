@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -9,11 +10,11 @@ namespace ZoomNet.Resources;
 public interface IGroups
 {
 	/// <summary>
-	/// Adds a user to a group.
+	/// Adds users to a group.
 	/// </summary>
 	/// <param name="groupId">The ID of the group.</param>
-	/// <param name="userEmail">The email of the user to add to the group.</param>
+	/// <param name="emails">An enumeration of email addresses of users to add to the group.</param>
 	/// <param name="cancellationToken">The cancellation token.</param>
-	/// <returns>A task representing the operation. The result will be true if the user was added successfully, false otherwise.</returns>
-	Task<bool> AddUserToGroupAsync(string groupId, string userEmail, CancellationToken cancellationToken = default);
+	/// <returns>A task representing the operation. The result will be an array of strings representing the IDs of the added users.</returns>
+	public Task<string[]> AddUsersToGroupAsync(string groupId, IEnumerable<string> emails, CancellationToken cancellationToken = default);
 }
