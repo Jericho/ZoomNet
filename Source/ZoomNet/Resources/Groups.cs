@@ -1,5 +1,6 @@
 using Pathoschild.Http.Client;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
@@ -19,15 +20,9 @@ public class Groups : IGroups
 	/// <inheritdoc/>
 	public async Task<string[]> AddUsersToGroupAsync(string groupId, IEnumerable<string> emails, CancellationToken cancellationToken = default)
 	{
-		var membersArray = new JsonArray();
-		foreach (var email in emails)
-		{
-			membersArray.Add(new JsonObject { { "email", email } });
-		}
-
 		var data = new JsonObject
 		{
-			{ "members", membersArray },
+			{ "members", emails?.Select(e => new JsonObject { { "email", e } }).ToArray() }
 		};
 
 		var response = await _client

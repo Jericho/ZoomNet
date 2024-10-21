@@ -60,7 +60,7 @@ namespace ZoomNet.Resources
 			{
 				{ "name", name },
 				{ "type", type },
-				{ "members", emails?.Select(e => new JsonObject { { "email", e } }) }
+				{ "members", emails?.Select(e => new JsonObject { { "email", e } }).ToArray() }
 			};
 
 			return _client
