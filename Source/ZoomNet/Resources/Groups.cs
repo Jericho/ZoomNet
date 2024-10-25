@@ -1,4 +1,7 @@
 using Pathoschild.Http.Client;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -7,7 +10,6 @@ namespace ZoomNet.Resources
 {
 	/// <inheritdoc/>
 	public class Groups : IGroups
-
 	/// <summary>
 	/// Initializes a new instance of the <see cref="Groups" /> class.
 	/// </summary>
@@ -42,15 +44,8 @@ namespace ZoomNet.Resources
 
 			return response.GetPropertyValue("ids", string.Empty).Split(',');
 		}
-	
+
 		/// <inheritdoc/>
-		/// <summary>
-		/// Retrieve all groups on your account.
-		/// </summary>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Group">groups</see>.
-		/// </returns>
 		public Task<Group[]> GetAllAsync(CancellationToken cancellationToken = default)
 		{
 			return _client
