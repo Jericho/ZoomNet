@@ -12,6 +12,10 @@ public class Groups : IGroups
 {
 	private readonly IClient _client;
 
+	/// <summary>
+	/// Initializes a new instance of the <see cref="Groups" /> class.
+	/// </summary>
+	/// <param name="client">The HTTP client.</param>
 	internal Groups(IClient client)
 	{
 		_client = client;
