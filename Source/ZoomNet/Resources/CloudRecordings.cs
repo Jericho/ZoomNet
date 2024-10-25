@@ -13,12 +13,7 @@ using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
-	/// <summary>
-	/// Allows you to manage cloud recordings.
-	/// </summary>
-	/// <remarks>
-	/// See <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/cloud-recording/">Zoom documentation</a> for more information.
-	/// </remarks>
+	/// <inheritdoc/>
 	public class CloudRecordings : ICloudRecordings
 	{
 		private readonly Pathoschild.Http.Client.IClient _client;
@@ -112,15 +107,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Recover a specific recording file of a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting Id or UUID.</param>
-		/// <param name="recordingFileId">The recording file id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task RecoverRecordingFileAsync(string meetingId, string recordingFileId, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -130,14 +117,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Retrieve settings applied to a meeting's cloud recording.
-		/// </summary>
-		/// <param name="meetingId">The meeting Id or UUID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The <see cref="RecordingSettings" />.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<RecordingSettings> GetRecordingSettingsAsync(string meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -146,16 +126,7 @@ namespace ZoomNet.Resources
 				.AsObject<RecordingSettings>();
 		}
 
-		/// <summary>
-		/// Retrieve all registrants for a recording.
-		/// </summary>
-		/// <param name="meetingId">The meeting Id or UUID.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="page">The current page number of returned records.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Registrant">registrants</see>.
-		/// </returns>
+		/// <inheritdoc/>
 		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
 		public Task<PaginatedResponse<Registrant>> GetRecordingRegistrantsAsync(string meetingId, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
 		{
@@ -172,16 +143,7 @@ namespace ZoomNet.Resources
 				.AsPaginatedResponse<Registrant>("registrants");
 		}
 
-		/// <summary>
-		/// Retrieve all registrants for a recording.
-		/// </summary>
-		/// <param name="meetingId">The meeting Id or UUID.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Registrant">registrants</see>.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<Registrant>> GetRecordingRegistrantsAsync(string meetingId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
@@ -197,30 +159,7 @@ namespace ZoomNet.Resources
 				.AsPaginatedResponseWithToken<Registrant>("registrants");
 		}
 
-		/// <summary>
-		/// Add a registrant to an on-demand recording.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="email">Registrant's email address.</param>
-		/// <param name="firstName">Registrant's first name.</param>
-		/// <param name="lastName">Registrant's last name.</param>
-		/// <param name="address">Registrant's address.</param>
-		/// <param name="city">Registrant's city.</param>
-		/// <param name="country">Registrant's country.</param>
-		/// <param name="zip">Registrant's zip/postal code.</param>
-		/// <param name="state">Registrant's state/province.</param>
-		/// <param name="phone">Registrant's phone number.</param>
-		/// <param name="industry">Registrant's industry.</param>
-		/// <param name="organization">Registrant's organization.</param>
-		/// <param name="jobTitle">Registrant's job title.</param>
-		/// <param name="purchasingTimeFrame">This field can be included to gauge interest of attendees towards buying your product or service.</param>
-		/// <param name="roleInPurchaseProcess">Registrant's role in purchase decision.</param>
-		/// <param name="numberOfEmployees">Number of employees.</param>
-		/// <param name="comments">A field that allows registrants to provide any questions or comments that they might have.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// A <see cref="RecordingRegistration" />.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<RecordingRegistration> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string address, string city, string country, string zip, string state, string phone, string industry, string organization, string jobTitle, string purchasingTimeFrame, string roleInPurchaseProcess, string numberOfEmployees, string comments, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
@@ -250,29 +189,13 @@ namespace ZoomNet.Resources
 				.AsObject<RecordingRegistration>();
 		}
 
-		/// <summary>
-		/// Approve a registration for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="registrantId">The registrant ID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task ApproveRegistrantAsync(long meetingId, string registrantId, CancellationToken cancellationToken = default)
 		{
 			return ApproveRegistrantsAsync(meetingId, new[] { registrantId }, cancellationToken);
 		}
 
-		/// <summary>
-		/// Approve multiple registrations for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="registrantIds">ID for each registrant to be approved.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task ApproveRegistrantsAsync(long meetingId, IEnumerable<string> registrantIds, CancellationToken cancellationToken = default)
 		{
 			return UpdateRegistrantsStatusAsync(meetingId, registrantIds, "approve", cancellationToken);
@@ -292,15 +215,7 @@ namespace ZoomNet.Resources
 			return RejectRegistrantsAsync(meetingId, new[] { registrantId }, cancellationToken);
 		}
 
-		/// <summary>
-		/// Reject multiple registrations for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="registrantIds">ID for each registrant to be rejected.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task RejectRegistrantsAsync(long meetingId, IEnumerable<string> registrantIds, CancellationToken cancellationToken = default)
 		{
 			return UpdateRegistrantsStatusAsync(meetingId, registrantIds, "deny", cancellationToken);

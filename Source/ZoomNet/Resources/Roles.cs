@@ -10,13 +10,7 @@ using ZoomNet.Models;
 
 namespace ZoomNet.Resources
 {
-	/// <summary>
-	/// Allows you to manage roles.
-	/// </summary>
-	/// <seealso cref="ZoomNet.Resources.IUsers" />
-	/// <remarks>
-	/// See <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/roles">Zoom documentation</a> for more information.
-	/// </remarks>
+	/// <inheritdoc/>
 	public class Roles : IRoles
 	{
 		private readonly Pathoschild.Http.Client.IClient _client;
@@ -30,15 +24,7 @@ namespace ZoomNet.Resources
 			_client = client;
 		}
 
-		/// <summary>
-		/// Retrieve all roles on your account.
-		/// </summary>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Role">users</see>.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<Role>> GetAllAsync(int recordsPerPage = 300, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
@@ -54,16 +40,7 @@ namespace ZoomNet.Resources
 				.AsPaginatedResponseWithToken<Role>("roles");
 		}
 
-		/// <summary>
-		/// Creates a role.
-		/// </summary>
-		/// <param name="name">The role name.</param>
-		/// <param name="description">Role description.</param>
-		/// <param name="privileges">Array of assigned access rights as defined <see href="https://marketplace.zoom.us/docs/api-reference/other-references/privileges">HERE</see>.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The new role.
-		/// </returns>
+		/// <inheritdoc/>
 		public async Task<Role> CreateAsync(string name, string description = null, IEnumerable<string> privileges = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
@@ -91,16 +68,7 @@ namespace ZoomNet.Resources
 			}
 		}
 
-		/// <summary>
-		/// Retrieve all users assigned to the specified role.
-		/// </summary>
-		/// <param name="roleId">The role Id.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Role">users</see>.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<User>> GetMembersAsync(string roleId, int recordsPerPage = 300, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
@@ -116,15 +84,7 @@ namespace ZoomNet.Resources
 				.AsPaginatedResponseWithToken<User>("members");
 		}
 
-		/// <summary>
-		/// Assign users to a role.
-		/// </summary>
-		/// <param name="roleId">The role Id.</param>
-		/// <param name="userIds">A list of user ids or email addresses.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task AssignUsersAsync(string roleId, IEnumerable<string> userIds, CancellationToken cancellationToken = default)
 		{
 			if (userIds == null || !userIds.Any()) throw new ArgumentNullException(nameof(userIds), "You must provide at least one user Id or email address.");
@@ -143,15 +103,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Remove user from a role.
-		/// </summary>
-		/// <param name="roleId">The role Id.</param>
-		/// <param name="userId">The user id or email address.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task UnassignUserAsync(string roleId, string userId, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -160,14 +112,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Retrieve the information of a specific role on a Zoom account.
-		/// </summary>
-		/// <param name="roleId">The role Id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The <see cref="Role" />.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<Role> GetAsync(string roleId, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -176,17 +121,7 @@ namespace ZoomNet.Resources
 				.AsObject<Role>();
 		}
 
-		/// <summary>
-		/// Updates an existing role.
-		/// </summary>
-		/// <param name="id">The role ID.</param>
-		/// <param name="name">The role name.</param>
-		/// <param name="description">Role description.</param>
-		/// <param name="privileges">Array of assigned access rights as defined <see href="https://marketplace.zoom.us/docs/api-reference/other-references/privileges">HERE</see>.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task UpdateRole(string id, string name = null, string description = null, IEnumerable<string> privileges = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
@@ -205,14 +140,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Delete a role.
-		/// </summary>
-		/// <param name="roleId">The role Id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task DeleteAsync(string roleId, CancellationToken cancellationToken = default)
 		{
 			return _client
