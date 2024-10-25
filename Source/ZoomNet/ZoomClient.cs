@@ -64,114 +64,50 @@ namespace ZoomNet
 			}
 		}
 
-		/// <summary>
-		/// Gets the resource which allows you to manage sub accounts.
-		/// </summary>
-		/// <value>
-		/// The accounts resource.
-		/// </value>
+		/// <inheritdoc/>
 		public IAccounts Accounts { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to manage chat channels, messages, etc.
-		/// </summary>
-		/// <value>
-		/// The chat resource.
-		/// </value>
+		/// <inheritdoc/>
 		public IChat Chat { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to manage cloud recordings.
-		/// </summary>
-		/// <value>
-		/// The recordings resource.
-		/// </value>
+		/// <inheritdoc/>
 		public ICloudRecordings CloudRecordings { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to manage contacts.
-		/// </summary>
-		/// <value>
-		/// The contacts resource.
-		/// </value>
+		/// <inheritdoc/>
 		public IContacts Contacts { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to notify Zoom that you comply with the policy which requires
-		/// you to handle user's data in accordance to the user's preference after the user uninstalls your app.
-		/// </summary>
-		/// <value>
-		/// The data compliance resource.
-		/// </value>
+		/// <inheritdoc/>
 		[Obsolete("The Data Compliance API is deprecated")]
 		public IDataCompliance DataCompliance { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to manage meetings.
-		/// </summary>
-		/// <value>
-		/// The meetings resource.
-		/// </value>
+		/// <inheritdoc/>
 		public IMeetings Meetings { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to manage meetings that occured in the past.
-		/// </summary>
-		/// <value>
-		/// The past meetings resource.
-		/// </value>
+		/// <inheritdoc/>
 		public IPastMeetings PastMeetings { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to manage webinars that occured in the past.
-		/// </summary>
-		/// <value>
-		/// The past webinars resource.
-		/// </value>
+		/// <inheritdoc/>
 		public IPastWebinars PastWebinars { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to manage roles.
-		/// </summary>
-		/// <value>
-		/// The roles resource.
-		/// </value>
+		/// <inheritdoc/>
 		public IRoles Roles { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to manage users.
-		/// </summary>
-		/// <value>
-		/// The users resource.
-		/// </value>
+		/// <inheritdoc/>
 		public IUsers Users { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to manage webinars.
-		/// </summary>
-		/// <value>
-		/// The webinars resource.
-		/// </value>
+		/// <inheritdoc/>
 		public IWebinars Webinars { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to view metrics.
-		/// </summary>
+		/// <inheritdoc/>
 		public IDashboards Dashboards { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to view reports.
-		/// </summary>
+		/// <inheritdoc/>
 		public IReports Reports { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to manage call logs.
-		/// </summary>
+		/// <inheritdoc/>
 		public ICallLogs CallLogs { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to manage chatbot messages.
-		/// </summary>
+		/// <inheritdoc/>
 		public IChatbot Chatbot { get; private set; }
 
 		/// <inheritdoc/>
@@ -180,9 +116,7 @@ namespace ZoomNet
 		/// <inheritdoc/>
 		public ISms Sms { get; private set; }
 
-		/// <summary>
-		/// Gets the resource that allows you to manage groups.
-		/// </summary>
+		/// <inheritdoc/>
 		public IGroups Groups { get; private set; }
 
 		#endregion
@@ -310,9 +244,7 @@ namespace ZoomNet
 
 		#region PUBLIC METHODS
 
-		/// <summary>
-		/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-		/// </summary>
+		/// <inheritdoc/>
 		public void Dispose()
 		{
 			// Call 'Dispose' to release resources
