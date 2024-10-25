@@ -945,29 +945,39 @@ namespace ZoomNet
 		private static async Task<JsonElement> ParseZoomResponseAsync(this HttpContent responseFromZoomApi, CancellationToken cancellationToken = default)
 		{
 			var responseContent = await responseFromZoomApi.ReadAsStringAsync(null, cancellationToken).ConfigureAwait(false);
-			if (string.IsNullOrEmpty(responseContent)) return default; // the 'ValueKind' property of the default JsonElement is JsonValueKind.Undefined
+			if (string.IsNullOrEmpty(responseContent)) return default; // FYI: the 'ValueKind' property of the default JsonElement is JsonValueKind.Undefined
 
-			const string pattern = @"(.*?)(?<=""message"":"")(.*?)(?=""})(.*?$)";
-			var matches = Regex.Match(responseContent, pattern, RegexOptions.IgnoreCase | RegexOptions.Singleline | RegexOptions.Compiled);
-			var prefix = matches.Groups[1].Value;
-			var message = matches.Groups[2].Value;
-			var postfix = matches.Groups[3].Value;
+			try
+			{
+				// Attempt to parse the response with the assumption that JSON is well-formed
+				// If the JSON is malformed, a JsonException will be thrown
+				return JsonDocument.Parse(responseContent).RootElement;
+			}
+			catch (JsonException)
+			{
+				/*
+					Sometimes the error message is malformed due to the presence of double quotes that are not properly escaped.
+					See: https://devforum.zoom.us/t/list-events-endpoint-returns-invalid-json-in-the-payload/115792 for more info.
+					One instance where this problem was observed is when retrieving the list of events without having the necessary permissions to do so.
+					The result is the following response with unescaped double-quotes in the error message:
+					{
+						"code": 104,
+						"message": "Invalid access token, does not contain scopes:["zoom_events_basic:read","zoom_events_basic:read:admin"]"
+					}
+				*/
+				const string pattern = @"(.*?)(?<=""message"":"")(.*?)(?=""})(.*?$)";
+				var matches = Regex.Match(responseContent, pattern, RegexOptions.Compiled | RegexOptions.Singleline);
+				if (matches.Groups.Count != 4) throw;
 
-			if (string.IsNullOrEmpty(message)) return JsonDocument.Parse(responseContent).RootElement;
+				var prefix = matches.Groups[1].Value;
+				var message = matches.Groups[2].Value;
+				var postfix = matches.Groups[3].Value;
+				if (string.IsNullOrEmpty(message)) throw;
 
-			/*
-				Sometimes the error message is malformed due to the presence of double quotes that are not properly escaped.
-				See: https://devforum.zoom.us/t/list-events-endpoint-returns-invalid-json-in-the-payload/115792 for more info.
-				One instance where this problem was observed is when retrieving the list of events without having the necessary permissions to do so.
-				The result is the following response with unescaped double-quotes in the error message:
-				{
-					"code": 104,
-					"message": "Invalid access token, does not contain scopes:["zoom_events_basic:read","zoom_events_basic:read:admin"]"
-				}
-			*/
-			var escapedMessage = Regex.Replace(message, @"(?<!\\)""", "\\\"", RegexOptions.Compiled); // Replace un-escaped double-quotes with properly escaped double-quotes
-			var result = $"{prefix}{escapedMessage}{postfix}";
-			return JsonDocument.Parse(result).RootElement;
+				var escapedMessage = Regex.Replace(message, @"(?<!\\)""", "\\\"", RegexOptions.Compiled); // Replace un-escaped double-quotes with properly escaped double-quotes
+				var result = $"{prefix}{escapedMessage}{postfix}";
+				return JsonDocument.Parse(result).RootElement;
+			}
 		}
 
 		/// <summary>Asynchronously converts the JSON encoded content and convert it to an object of the desired type.</summary>

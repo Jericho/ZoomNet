@@ -374,5 +374,26 @@ namespace ZoomNet.UnitTests.Extensions
 
 			}
 		}
+
+
+		public class GetErrorMessageAsync
+		{
+			[Fact]
+			public async Task CanHandleUnescapedDoubleQuotesInErrorMessage()
+			{
+				// Arrange
+				const string responseContent = @"{""code"":104, ""message"":""Invalid access token, does not contain scopes:[""zoom_events_basic:read"",""zoom_events_basic:read:admin""]""}";
+				var message = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(responseContent) };
+				var response = new MockFluentHttpResponse(message, null, CancellationToken.None);
+
+				// Act
+				var (isError, errorMessage, errorCode) = await response.Message.GetErrorMessageAsync();
+
+				// Assert
+				isError.ShouldBeTrue();
+				errorMessage.ShouldStartWith("Invalid access token, does not contain scopes");
+				errorCode.ShouldBe(104);
+			}
+		}
 	}
 }
