@@ -68,7 +68,13 @@ namespace ZoomNet
 		public IAccounts Accounts { get; private set; }
 
 		/// <inheritdoc/>
+		public ICallLogs CallLogs { get; private set; }
+
+		/// <inheritdoc/>
 		public IChat Chat { get; private set; }
+
+		/// <inheritdoc/>
+		public IChatbot Chatbot { get; private set; }
 
 		/// <inheritdoc/>
 		public ICloudRecordings CloudRecordings { get; private set; }
@@ -77,8 +83,14 @@ namespace ZoomNet
 		public IContacts Contacts { get; private set; }
 
 		/// <inheritdoc/>
+		public IDashboards Dashboards { get; private set; }
+
+		/// <inheritdoc/>
 		[Obsolete("The Data Compliance API is deprecated")]
 		public IDataCompliance DataCompliance { get; private set; }
+
+		/// <inheritdoc/>
+		public IGroups Groups { get; private set; }
 
 		/// <inheritdoc/>
 		public IMeetings Meetings { get; private set; }
@@ -90,34 +102,22 @@ namespace ZoomNet
 		public IPastWebinars PastWebinars { get; private set; }
 
 		/// <inheritdoc/>
+		public IPhone Phone { get; private set; }
+
+		/// <inheritdoc/>
+		public IReports Reports { get; private set; }
+
+		/// <inheritdoc/>
 		public IRoles Roles { get; private set; }
+
+		/// <inheritdoc/>
+		public ISms Sms { get; private set; }
 
 		/// <inheritdoc/>
 		public IUsers Users { get; private set; }
 
 		/// <inheritdoc/>
 		public IWebinars Webinars { get; private set; }
-
-		/// <inheritdoc/>
-		public IDashboards Dashboards { get; private set; }
-
-		/// <inheritdoc/>
-		public IReports Reports { get; private set; }
-
-		/// <inheritdoc/>
-		public ICallLogs CallLogs { get; private set; }
-
-		/// <inheritdoc/>
-		public IChatbot Chatbot { get; private set; }
-
-		/// <inheritdoc/>
-		public IPhone Phone { get; private set; }
-
-		/// <inheritdoc/>
-		public ISms Sms { get; private set; }
-
-		/// <inheritdoc/>
-		public IGroups Groups { get; private set; }
 
 		#endregion
 
@@ -210,23 +210,23 @@ namespace ZoomNet
 			_fluentClient.Filters.Add(new ZoomErrorHandler());
 
 			Accounts = new Accounts(_fluentClient);
+			CallLogs = new CallLogs(_fluentClient);
 			Chat = new Chat(_fluentClient);
+			Chatbot = new Chatbot(_fluentClient);
 			CloudRecordings = new CloudRecordings(_fluentClient);
 			Contacts = new Contacts(_fluentClient);
+			Dashboards = new Dashboards(_fluentClient);
 			DataCompliance = new DataCompliance(_fluentClient);
+			Groups = new Groups(_fluentClient);
 			Meetings = new Meetings(_fluentClient);
 			PastMeetings = new PastMeetings(_fluentClient);
 			PastWebinars = new PastWebinars(_fluentClient);
+			Phone = new Phone(_fluentClient);
+			Reports = new Reports(_fluentClient);
 			Roles = new Roles(_fluentClient);
+			Sms = new Sms(_fluentClient);
 			Users = new Users(_fluentClient);
 			Webinars = new Webinars(_fluentClient);
-			Dashboards = new Dashboards(_fluentClient);
-			Reports = new Reports(_fluentClient);
-			CallLogs = new CallLogs(_fluentClient);
-			Chatbot = new Chatbot(_fluentClient);
-			Phone = new Phone(_fluentClient);
-			Sms = new Sms(_fluentClient);
-			Groups = new Groups(_fluentClient);
 		}
 
 		/// <summary>
