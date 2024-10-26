@@ -42,6 +42,11 @@ namespace ZoomNet.Json
 		private static ParticipantDevice Convert(string deviceAsString)
 		{
 			if (string.IsNullOrWhiteSpace(deviceAsString)) return ParticipantDevice.Unknown;
+
+			// See https://github.com/Jericho/ZoomNet/issues/369 for details about the underlying problem
+			// See https://github.com/Jericho/ZoomNet/issues/370 for details about this workaround
+			if (deviceAsString.StartsWith("Web Browser", StringComparison.OrdinalIgnoreCase)) return ParticipantDevice.Web;
+
 			return deviceAsString.Trim().ToEnum<ParticipantDevice>();
 		}
 	}

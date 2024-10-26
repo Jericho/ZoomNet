@@ -7,7 +7,7 @@ using ZoomNet.Models.Webhooks;
 namespace ZoomNet
 {
 	/// <summary>
-	/// Allows parsing of information posted from Zoom.
+	/// Allows parsing of Webhooks posted from Zoom.
 	/// </summary>
 	public class WebhookParser : IWebhookParser
 	{

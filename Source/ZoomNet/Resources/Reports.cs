@@ -6,12 +6,7 @@ using ZoomNet.Models;
 
 namespace ZoomNet.Resources
 {
-	/// <summary>
-	/// Allows you to view various metrics.
-	/// </summary>
-	/// <remarks>
-	/// See <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/reports">Zoom documentation</a> for more information.
-	/// </remarks>
+	/// <inheritdoc/>
 	public class Reports : IReports
 	{
 		private readonly IClient _client;

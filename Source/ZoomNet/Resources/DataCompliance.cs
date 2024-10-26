@@ -9,15 +9,7 @@ using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
-	/// <summary>
-	/// Allows you to notify Zoom that you comply with the policy which requires you to handle
-	/// user's data in accordance to the user's preference after the user uninstalls your app.
-	/// </summary>
-	/// <seealso cref="ZoomNet.Resources.IDataCompliance" />
-	/// <remarks>
-	/// This resource can only be used when you connect to Zoom using OAuth. It cannot be used with a Jwt connection.
-	/// See <a href="https://marketplace.zoom.us/docs/api-reference/data-compliance/">Zoom documentation</a> for more information.
-	/// </remarks>
+	/// <inheritdoc/>
 	[Obsolete("The Data Compliance API is deprecated")]
 	public class DataCompliance : IDataCompliance
 	{
@@ -32,17 +24,7 @@ namespace ZoomNet.Resources
 			_client = client;
 		}
 
-		/// <summary>
-		/// Notify Zoom that you comply with the policy which requires you to handle user's
-		/// data in accordance to the user's preference after the user uninstalls your app.
-		/// </summary>
-		/// <param name="userId">The Zoom user's id who uninstalled your app.</param>
-		/// <param name="accountId">The account Id.</param>
-		/// <param name="deauthorizationEventReceived">This object represents the payload of the webhook event sent by Zoom in your Deauthorization Endpoint Url after a user uninstalls your app. The values of the parameters in this object should be the same as that of the deauthorization event that you receive.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		[Obsolete("The Data Compliance API is deprecated")]
 		public Task NotifyAsync(string userId, long accountId, AppDeauthorizedEvent deauthorizationEventReceived, CancellationToken cancellationToken = default)
 		{
