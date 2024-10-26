@@ -10,11 +10,6 @@ namespace ZoomNet.Resources
 {
 	/// <inheritdoc/>
 	public class Groups : IGroups
-	/// <summary>
-	/// Initializes a new instance of the <see cref="Groups" /> class.
-	/// </summary>
-	/// <param name="client">The HTTP client.</param>
-	internal Groups(IClient client)
 	{
 		private readonly IClient _client;
 
@@ -22,7 +17,7 @@ namespace ZoomNet.Resources
 		/// Initializes a new instance of the <see cref="Groups" /> class.
 		/// </summary>
 		/// <param name="client">The HTTP client.</param>
-		internal Groups(Pathoschild.Http.Client.IClient client)
+		internal Groups(IClient client)
 		{
 			_client = client;
 		}
