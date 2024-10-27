@@ -107,7 +107,7 @@ namespace ZoomNet.Resources
 				{ "type", 2 },
 				{ "topic", topic },
 				{ "password", password },
-				{ "default_password", default_password },
+				{ "default_password", generatePassword },
 				{ "agenda", agenda },
 				{ "start_time", start.ToZoomFormat(timeZone) },
 				{ "duration", duration },
