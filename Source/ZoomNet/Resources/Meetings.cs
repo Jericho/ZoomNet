@@ -96,7 +96,7 @@ namespace ZoomNet.Resources
 			int duration,
 			TimeZones? timeZone = TimeZones.UTC,
 			string password = null,
-			bool default_password = false,
+			bool generatePassword = false,
 			MeetingSettings settings = null,
 			IDictionary<string, string> trackingFields = null,
 			string templateId = null,
