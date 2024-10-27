@@ -145,7 +145,7 @@ namespace ZoomNet.Resources
 				{ "type", recurrence == null ? MeetingType.RecurringNoFixedTime : MeetingType.RecurringFixedTime },
 				{ "topic", topic },
 				{ "password", password },
-				{ "default_password", default_password },
+				{ "default_password", generatePassword },
 				{ "agenda", agenda },
 				{ "start_time", start.ToZoomFormat(timeZone) },
 				{ "duration", duration },
