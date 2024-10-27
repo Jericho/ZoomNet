@@ -83,7 +83,7 @@ namespace ZoomNet.Resources
 		/// The new meeting.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the meeting.</exception>
-		Task<ScheduledMeeting> CreateScheduledMeetingAsync(string userId, string topic, string agenda, DateTime start, int duration, TimeZones? timeZone = TimeZones.UTC, string password = null, bool default_password = false, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default);
+		Task<ScheduledMeeting> CreateScheduledMeetingAsync(string userId, string topic, string agenda, DateTime start, int duration, TimeZones? timeZone = TimeZones.UTC, string password = null, bool generatePassword = false, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Create a recurring meeting for a user.
