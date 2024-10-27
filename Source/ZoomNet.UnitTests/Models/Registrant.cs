@@ -4,7 +4,7 @@ using Xunit;
 using ZoomNet.Json;
 using ZoomNet.Models;
 
-namespace ZoomNet.UnitTests.Resources
+namespace ZoomNet.UnitTests.Models
 {
 	public class RegistrantTests
 	{
@@ -57,6 +57,10 @@ namespace ZoomNet.UnitTests.Resources
 			result.RoleInPurchaseProcess.ShouldBe(RoleInPurchaseProcess.Influencer);
 			result.State.ShouldBe("CA");
 			result.Status.ShouldBe(RegistrantStatus.Approved);
+			result.CustomQuestions.ShouldNotBeNull();
+			result.CustomQuestions.Length.ShouldBe(1);
+			result.CustomQuestions[0].Key.ShouldBe("What do you hope to learn from this Webinar?");
+			result.CustomQuestions[0].Value.ShouldStartWith("Look forward to learning");
 		}
 	}
 }

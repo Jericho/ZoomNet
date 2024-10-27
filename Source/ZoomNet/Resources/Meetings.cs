@@ -9,13 +9,7 @@ using ZoomNet.Models;
 
 namespace ZoomNet.Resources
 {
-	/// <summary>
-	/// Allows you to manage meetings.
-	/// </summary>
-	/// <seealso cref="ZoomNet.Resources.IMeetings" />
-	/// <remarks>
-	/// See <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/meetings">Zoom documentation</a> for more information.
-	/// </remarks>
+	/// <inheritdoc/>
 	public class Meetings : IMeetings
 	{
 		private readonly Pathoschild.Http.Client.IClient _client;
@@ -64,21 +58,7 @@ namespace ZoomNet.Resources
 				.AsPaginatedResponseWithToken<MeetingSummary>("meetings");
 		}
 
-		/// <summary>
-		/// Creates an instant meeting for a user.
-		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="topic">Meeting topic.</param>
-		/// <param name="agenda">Meeting description.</param>
-		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
-		/// <param name="settings">Meeting settings.</param>
-		/// <param name="trackingFields">Tracking fields.</param>
-		/// <param name="templateId">Template Identifer.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The new <see cref="Meeting"/>.
-		/// </returns>
-		/// <exception cref="System.Exception">Thrown when an exception occured while creating the meeting.</exception>
+		/// <inheritdoc/>
 		public Task<InstantMeeting> CreateInstantMeetingAsync(
 			string userId,
 			string topic,
@@ -107,25 +87,7 @@ namespace ZoomNet.Resources
 				.AsObject<InstantMeeting>();
 		}
 
-		/// <summary>
-		/// Creates a scheduled meeting for a user.
-		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="topic">Meeting topic.</param>
-		/// <param name="agenda">Meeting description.</param>
-		/// <param name="start">Meeting start time.</param>
-		/// <param name="duration">Meeting duration (minutes).</param>
-		/// <param name="timeZone">The time zone for start time.</param>
-		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
-		/// <param name="default_password">Whether to generate a default password using the user's settings.</param>
-		/// <param name="settings">Meeting settings.</param>
-		/// <param name="trackingFields">Tracking fields.</param>
-		/// <param name="templateId">Template Identifer.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The new <see cref="Meeting"/>.
-		/// </returns>
-		/// <exception cref="System.Exception">Thrown when an exception occured while creating the meeting.</exception>
+		/// <inheritdoc/>
 		public Task<ScheduledMeeting> CreateScheduledMeetingAsync(
 			string userId,
 			string topic,
@@ -162,26 +124,7 @@ namespace ZoomNet.Resources
 				.AsObject<ScheduledMeeting>();
 		}
 
-		/// <summary>
-		/// Creates a recurring meeting for a user.
-		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="topic">Meeting topic.</param>
-		/// <param name="agenda">Meeting description.</param>
-		/// <param name="start">Meeting start time. If omitted, a 'Recurring meeting with no fixed time' will be created.</param>
-		/// <param name="duration">Meeting duration (minutes).</param>
-		/// <param name="recurrence">Recurrence information.</param>
-		/// <param name="timeZone">The time zone for start time.</param>
-		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
-		/// <param name="default_password">Whether to generate a default password using the user's settings.</param>
-		/// <param name="settings">Meeting settings.</param>
-		/// <param name="trackingFields">Tracking fields.</param>
-		/// <param name="templateId">Template Identifer.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The new <see cref="Meeting"/>.
-		/// </returns>
-		/// <exception cref="System.Exception">Thrown when an exception occured while creating the meeting.</exception>
+		/// <inheritdoc/>
 		public Task<RecurringMeeting> CreateRecurringMeetingAsync(
 			string userId,
 			string topic,
@@ -220,38 +163,18 @@ namespace ZoomNet.Resources
 				.AsObject<RecurringMeeting>();
 		}
 
-		/// <summary>
-		/// Retrieve the details of a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="occurrenceId">The meeting occurrence id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The <see cref="Meeting" />.
-		/// </returns>
-		public Task<Meeting> GetAsync(long meetingId, string occurrenceId = null, CancellationToken cancellationToken = default)
+		/// <inheritdoc/>
+		public Task<Meeting> GetAsync(long meetingId, string occurrenceId = null, bool includePreviousOccurrences = false, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"meetings/{meetingId}")
 				.WithArgument("occurrence_id", occurrenceId)
+				.WithArgument("show_previous_occurrences", includePreviousOccurrences.ToString().ToLowerInvariant())
 				.WithCancellationToken(cancellationToken)
 				.AsObject<Meeting>();
 		}
 
-		/// <summary>
-		/// Update the details of a meeting occurence.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="occurrenceId">The meeting occurrence id.</param>
-		/// <param name="agenda">Meeting description.</param>
-		/// <param name="start">Meeting start time.</param>
-		/// <param name="duration">Meeting duration (minutes).</param>
-		/// <param name="timeZone">The time zone for start time.</param>
-		/// <param name="settings">Meeting settings.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task UpdateMeetingOccurrenceAsync(long meetingId, string occurrenceId, string agenda = null, DateTime? start = null, int? duration = null, TimeZones? timeZone = null, MeetingSettings settings = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
@@ -271,23 +194,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Update the details of a scheduled meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="topic">Meeting topic.</param>
-		/// <param name="agenda">Meeting description.</param>
-		/// <param name="start">Meeting start time.</param>
-		/// <param name="duration">Meeting duration (minutes).</param>
-		/// <param name="timeZone">The time zone for start time.</param>
-		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
-		/// <param name="settings">Meeting settings.</param>
-		/// <param name="trackingFields">Tracking fields.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task UpdateScheduledMeetingAsync(long meetingId, string userId = null, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, TimeZones? timeZone = null, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
@@ -310,24 +217,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Update the details of a recurring meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="userId">The user Id or email address.</param>
-		/// <param name="topic">Meeting topic.</param>
-		/// <param name="agenda">Meeting description.</param>
-		/// <param name="start">Meeting start time. If omitted, a 'Recurring meeting with no fixed time' will be created.</param>
-		/// <param name="duration">Meeting duration (minutes).</param>
-		/// <param name="timeZone">The time zone for start time.</param>
-		/// <param name="recurrence">Recurrence information.</param>
-		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
-		/// <param name="settings">Meeting settings.</param>
-		/// <param name="trackingFields">Tracking fields.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task UpdateRecurringMeetingAsync(long meetingId, string userId = null, string topic = null, string agenda = null, DateTime? start = null, int? duration = null, TimeZones? timeZone = null, RecurrenceInfo recurrence = null, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
@@ -351,36 +241,19 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Delete a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="occurrenceId">The meeting occurrence id.</param>
-		/// <param name="notifyHost">If true, a notification email is sent to the host and alternative host.</param>
-		/// <param name="notifyRegistrants">If true, a notification email is sent to the registrants.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task DeleteAsync(long meetingId, string occurrenceId = null, bool notifyHost = true, bool notifyRegistrants = false, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.DeleteAsync($"meetings/{meetingId}")
 				.WithArgument("occurrence_id", occurrenceId)
-				.WithArgument("schedule_for_reminder", notifyHost.ToString().ToLower())
-				.WithArgument("cancel_meeting_reminder", notifyRegistrants.ToString().ToLower())
+				.WithArgument("schedule_for_reminder", notifyHost.ToString().ToLowerInvariant())
+				.WithArgument("cancel_meeting_reminder", notifyRegistrants.ToString().ToLowerInvariant())
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// End a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task EndAsync(long meetingId, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
@@ -395,12 +268,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Recover a deleted meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>The async task.</returns>
+		/// <inheritdoc/>
 		public Task RecoverAsync(long meetingId, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
@@ -415,18 +283,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// List registrants of a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="status">The registrant status.</param>
-		/// <param name="occurrenceId">The meeting occurrence id.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="page">The current page number of returned records.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Registrant" />.
-		/// </returns>
+		/// <inheritdoc/>
 		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
 		public Task<PaginatedResponse<Registrant>> GetRegistrantsAsync(long meetingId, RegistrantStatus status, string occurrenceId = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
 		{
@@ -445,18 +302,7 @@ namespace ZoomNet.Resources
 				.AsPaginatedResponse<Registrant>("registrants");
 		}
 
-		/// <summary>
-		/// List registrants of a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="status">The registrant status.</param>
-		/// <param name="occurrenceId">The meeting occurrence id.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Registrant" />.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<Registrant>> GetRegistrantsAsync(long meetingId, RegistrantStatus status, string occurrenceId = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
@@ -474,34 +320,7 @@ namespace ZoomNet.Resources
 				.AsPaginatedResponseWithToken<Registrant>("registrants");
 		}
 
-		/// <summary>
-		/// Add a registrant to a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="email">A valid email address.</param>
-		/// <param name="firstName">Registrant's first name.</param>
-		/// <param name="lastName">Registrant's last name.</param>
-		/// <param name="address">Registrant's address.</param>
-		/// <param name="city">Registrant's city.</param>
-		/// <param name="country">Registrant's country.</param>
-		/// <param name="postalCode">Registrant's zip or postal code.</param>
-		/// <param name="stateOrProvince">Registrant's state or province.</param>
-		/// <param name="phoneNumber">Registrant's phone number.</param>
-		/// <param name="industry">Registrant's industry.</param>
-		/// <param name="organization">Registrant's organization.</param>
-		/// <param name="jobTitle">Registrant's job title.</param>
-		/// <param name="timeFrame">This field can be used to gauge interest of attendees towards buying your product or service.</param>
-		/// <param name="role">Registrant's role in purchase decision.</param>
-		/// <param name="employees">Number of employees.</param>
-		/// <param name="comments">A field that allows registrant to provide any questions or comments that they might have.</param>
-		/// <param name="questionAnswers">Answers to the custom registration questions.</param>
-		/// <param name="language">Registrant's language preference for confirmation emails.</param>
-		/// <param name="autoApprove">Indicates if the registrant should be automatically approved.</param>
-		/// <param name="occurrenceId">The meeting occurrence id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// A <see cref="RegistrantInfo" />.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<RegistrantInfo> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string address = null, string city = null, Country? country = null, string postalCode = null, string stateOrProvince = null, string phoneNumber = null, string industry = null, string organization = null, string jobTitle = null, PurchasingTimeFrame? timeFrame = null, RoleInPurchaseProcess? role = null, NumberOfEmployees? employees = null, string comments = null, IEnumerable<RegistrationAnswer> questionAnswers = null, Language? language = null, bool autoApprove = false, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
@@ -535,17 +354,7 @@ namespace ZoomNet.Resources
 				.AsObject<RegistrantInfo>();
 		}
 
-		/// <summary>
-		/// Register up to 30 registrants at once for a meeting that requires registration.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="registrants">An array of registrants.</param>
-		/// <param name="autoApprove">Indicates if the registrant should be automatically approved.</param>
-		/// <param name="registrantsConfirmationEmail">Indicates if send confirmation Email to Registrants.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="BatchRegistrantInfo" />.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<BatchRegistrantInfo[]> PerformBatchRegistrationAsync(long meetingId, IEnumerable<BatchRegistrant> registrants, bool autoApprove = false, bool registrantsConfirmationEmail = false, CancellationToken cancellationToken = default)
 		{
 			if (registrants == null || !registrants.Any()) throw new ArgumentNullException(nameof(registrants), "You must provide at least one registrant");
@@ -565,16 +374,7 @@ namespace ZoomNet.Resources
 				.AsObject<BatchRegistrantInfo[]>("registrants");
 		}
 
-		/// <summary>
-		/// Delete a meeting registrant.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="registrantId">The registrant id.</param>
-		/// <param name="occurrenceId">The meeting occurrence id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task DeleteRegistrantAsync(long meetingId, string registrantId, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -584,15 +384,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Retrieve a meeting registrant.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="registrantId">The registrant unique identifier.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The <see cref="Registrant"/>.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<Registrant> GetRegistrantAsync(long meetingId, string registrantId, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -601,107 +393,43 @@ namespace ZoomNet.Resources
 				.AsObject<Registrant>();
 		}
 
-		/// <summary>
-		/// Approve a registration for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="registrantId">The registrant ID.</param>
-		/// <param name="registrantEmail">The registrant's email address.</param>
-		/// <param name="occurrenceId">The meeting occurrence id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task ApproveRegistrantAsync(long meetingId, string registrantId, string registrantEmail, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			return ApproveRegistrantsAsync(meetingId, new[] { (registrantId, registrantEmail) }, occurrenceId, cancellationToken);
 		}
 
-		/// <summary>
-		/// Approve multiple registrations for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="registrantsInfo">ID and email for each registrant to be approved.</param>
-		/// <param name="occurrenceId">The meeting occurrence id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task ApproveRegistrantsAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			return UpdateRegistrantsStatusAsync(meetingId, registrantsInfo, "approve", occurrenceId, cancellationToken);
 		}
 
-		/// <summary>
-		/// Reject a registration for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="registrantId">The registrant ID.</param>
-		/// <param name="registrantEmail">The registrant's email address.</param>
-		/// <param name="occurrenceId">The meeting occurrence id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task RejectRegistrantAsync(long meetingId, string registrantId, string registrantEmail, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			return RejectRegistrantsAsync(meetingId, new[] { (registrantId, registrantEmail) }, occurrenceId, cancellationToken);
 		}
 
-		/// <summary>
-		/// Reject multiple registrations for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="registrantsInfo">ID and email for each registrant to be rejected.</param>
-		/// <param name="occurrenceId">The meeting occurrence id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task RejectRegistrantsAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			return UpdateRegistrantsStatusAsync(meetingId, registrantsInfo, "deny", occurrenceId, cancellationToken);
 		}
 
-		/// <summary>
-		/// Cancel a previously approved registration for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="registrantId">The registrant ID.</param>
-		/// <param name="registrantEmail">The registrant's email address.</param>
-		/// <param name="occurrenceId">The meeting occurrence id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task CancelRegistrantAsync(long meetingId, string registrantId, string registrantEmail, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			return CancelRegistrantsAsync(meetingId, new[] { (registrantId, registrantEmail) }, occurrenceId, cancellationToken);
 		}
 
-		/// <summary>
-		/// Cancel multiple previously approved registrations for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="registrantsInfo">ID and email for each registrant to be cancelled.</param>
-		/// <param name="occurrenceId">The meeting occurrence id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task CancelRegistrantsAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			return UpdateRegistrantsStatusAsync(meetingId, registrantsInfo, "cancel", occurrenceId, cancellationToken);
 		}
 
-		/// <summary>
-		/// Retrieve all polls for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Poll" />.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<Poll[]> GetPollsAsync(long meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -710,16 +438,7 @@ namespace ZoomNet.Resources
 				.AsObject<Poll[]>("polls");
 		}
 
-		/// <summary>
-		/// Create a poll for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="title">Title for the poll.</param>
-		/// <param name="questions">The poll questions.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// A <see cref="Poll"/>.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<Poll> CreatePollAsync(long meetingId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
@@ -735,15 +454,7 @@ namespace ZoomNet.Resources
 				.AsObject<Poll>();
 		}
 
-		/// <summary>
-		/// Retrieve a poll.
-		/// </summary>
-		/// <param name="meetingId">The meeting id.</param>
-		/// <param name="pollId">The poll id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The <see cref="Poll" />.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<Poll> GetPollAsync(long meetingId, long pollId, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -752,17 +463,7 @@ namespace ZoomNet.Resources
 				.AsObject<Poll>();
 		}
 
-		/// <summary>
-		/// Update a poll for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="pollId">The poll id.</param>
-		/// <param name="title">Title for the poll.</param>
-		/// <param name="questions">The poll questions.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task UpdatePollAsync(long meetingId, long pollId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
@@ -778,15 +479,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Delete a poll for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="pollId">The poll id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task DeletePollAsync(long meetingId, long pollId, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -795,23 +488,16 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Retrieve the questions that are to be answered by users while registering for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="PollQuestion"/>.
-		/// </returns>
+		/// <inheritdoc/>
 		public async Task<RegistrationQuestionsForMeeting> GetRegistrationQuestionsAsync(long meetingId, CancellationToken cancellationToken = default)
 		{
 			var response = await _client
 				.GetAsync($"meetings/{meetingId}/registrants/questions")
 				.WithCancellationToken(cancellationToken)
-				.AsRawJsonDocument()
+				.AsJson()
 				.ConfigureAwait(false);
 
-			var allFields = response.RootElement.GetProperty("questions").EnumerateArray()
+			var allFields = response.GetProperty("questions").EnumerateArray()
 				.Select(item => (Field: item.GetPropertyValue<string>("field_name").ToEnum<RegistrationField>(), IsRequired: item.GetPropertyValue<bool>("required")));
 
 			var requiredFields = allFields.Where(f => f.IsRequired).Select(f => f.Field).ToArray();
@@ -821,22 +507,12 @@ namespace ZoomNet.Resources
 			{
 				RequiredFields = requiredFields,
 				OptionalFields = optionalFields,
-				Questions = response.RootElement.GetProperty("custom_questions", false)?.ToObject<RegistrationCustomQuestionForMeeting[]>() ?? Array.Empty<RegistrationCustomQuestionForMeeting>()
+				Questions = response.GetProperty("custom_questions", false)?.ToObject<RegistrationCustomQuestionForMeeting[]>() ?? Array.Empty<RegistrationCustomQuestionForMeeting>()
 			};
 			return registrationQuestions;
 		}
 
-		/// <summary>
-		/// Update the questions that are to be answered by users while registering for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="requiredFields">List of fields that must be answer when registering for the meeting.</param>
-		/// <param name="optionalFields">List of fields that can be answer when registering for the meeting.</param>
-		/// <param name="customQuestions">Additional questions to be answered.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task UpdateRegistrationQuestionsAsync(long meetingId, IEnumerable<RegistrationField> requiredFields, IEnumerable<RegistrationField> optionalFields, IEnumerable<RegistrationCustomQuestionForMeeting> customQuestions, CancellationToken cancellationToken = default)
 		{
 			var required = (requiredFields ?? Enumerable.Empty<RegistrationField>())
@@ -863,14 +539,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
-		/// <summary>
-		/// Get the meeting invite note that was sent for a specific meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The invite note.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<string> GetInvitationAsync(long meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -1085,7 +754,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<string> CreateTemplateFromExistingMeeting(string userId, long meetingId, string templateName, bool saveRecurrence = false, bool overwrite = false, CancellationToken cancellationToken = default)
+		public Task<string> CreateTemplateFromExistingMeetingAsync(string userId, long meetingId, string templateName, bool saveRecurrence = false, bool overwrite = false, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{

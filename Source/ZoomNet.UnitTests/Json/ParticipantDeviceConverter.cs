@@ -7,7 +7,7 @@ using Xunit;
 using ZoomNet.Json;
 using ZoomNet.Models;
 
-namespace ZoomNet.UnitTests.Utilities
+namespace ZoomNet.UnitTests.Json
 {
 	public class ParticipantDeviceConverterTests
 	{
@@ -72,6 +72,11 @@ namespace ZoomNet.UnitTests.Utilities
 		[InlineData("iOs", ParticipantDevice.IOS)]
 		[InlineData("H.323/SIP", ParticipantDevice.Sip)]
 		[InlineData("Windows", ParticipantDevice.Windows)]
+		[InlineData("WIN", ParticipantDevice.Windows)]
+		[InlineData("win 11", ParticipantDevice.Windows)]
+		[InlineData("Zoom Rooms", ParticipantDevice.ZoomRoom)]
+		[InlineData("win 10+ 17763", ParticipantDevice.Windows)]
+		[InlineData("Web Browser Chrome 129", ParticipantDevice.Web)]
 		public void Read_single(string value, ParticipantDevice expectedValue)
 		{
 			// Arrange
@@ -89,10 +94,8 @@ namespace ZoomNet.UnitTests.Utilities
 			// Assert
 			result.ShouldNotBeNull();
 			result.ShouldBeOfType<ParticipantDevice[]>();
-
-			var resultAsArray = (ParticipantDevice[])result;
-			resultAsArray.Length.ShouldBe(1);
-			resultAsArray[0].ShouldBe(expectedValue);
+			result.Length.ShouldBe(1);
+			result[0].ShouldBe(expectedValue);
 		}
 
 		[Fact]
@@ -114,11 +117,9 @@ namespace ZoomNet.UnitTests.Utilities
 			// Assert
 			result.ShouldNotBeNull();
 			result.ShouldBeOfType<ParticipantDevice[]>();
-
-			var resultAsArray = (ParticipantDevice[])result;
-			resultAsArray.Length.ShouldBe(2);
-			resultAsArray[0].ShouldBe(ParticipantDevice.Unknown);
-			resultAsArray[1].ShouldBe(ParticipantDevice.Phone);
+			result.Length.ShouldBe(2);
+			result[0].ShouldBe(ParticipantDevice.Unknown);
+			result[1].ShouldBe(ParticipantDevice.Phone);
 		}
 	}
 }

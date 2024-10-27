@@ -60,11 +60,13 @@ namespace ZoomNet.Resources
 		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="channelId">The channel Id.</param>
 		/// <param name="name">The name of the channel.</param>
+		/// <param name="settings">The settings of the chat channel.</param>
+		/// <param name="type">This field changes the channel type.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task UpdateAccountChannelAsync(string userId, string channelId, string name, CancellationToken cancellationToken = default);
+		Task UpdateAccountChannelAsync(string userId, string channelId, string name, ChatChannelSettings settings, ChatChannelType? type = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Delete a chat channel.

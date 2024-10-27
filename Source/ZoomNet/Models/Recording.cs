@@ -63,7 +63,7 @@ namespace ZoomNet.Models
 		public string ShareUrl { get; set; }
 
 		/// <summary>Gets or sets the password of the sharing recording file.</summary>
-		/// <value>Thepassword.</value>
+		/// <value>The password.</value>
 		[JsonPropertyName("password")]
 		public string Password { get; set; }
 
@@ -71,5 +71,17 @@ namespace ZoomNet.Models
 		/// <remarks>This is available only when the "Record a seperate audio file of each participant" setting is enabled.</remarks>
 		[JsonPropertyName("participant_audio_files")]
 		public RecordingFile[] ParticipantAudioFiles { get; set; }
+
+		/// <summary>Gets or sets the type of recorded meeting or webinar.</summary>
+		[JsonPropertyName("type")]
+		public RecordingType Type { get; set; }
+
+		/// <summary>Gets or sets the cloud recording's passcode to be used in the URL. Directly splice this recording's passcode in play_url or share_url with ?pwd= to access and play.</summary>
+		[JsonPropertyName("recording_play_passcode")]
+		public string PlayPasscode { get; set; }
+
+		/// <summary>Gets or sets the token to download the meeting's recording.</summary>
+		[JsonPropertyName("download_access_token")]
+		public string DownloadAccessToken { get; set; }
 	}
 }

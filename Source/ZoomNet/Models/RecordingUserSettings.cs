@@ -27,7 +27,7 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets the auto recording.</summary>
 		[JsonPropertyName("auto_recording")]
-		public RecordingType AutoRecording { get; set; }
+		public AutoRecordingType AutoRecording { get; set; }
 
 		/// <summary>Gets or sets a value indicating whether to enable cloud recording.</summary>
 		[JsonPropertyName("cloud_recording")]

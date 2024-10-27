@@ -1,6 +1,7 @@
 using RichardSzalay.MockHttp;
 using Shouldly;
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading;
@@ -495,7 +496,7 @@ namespace ZoomNet.UnitTests.Resources
 			result.RecordingFiles[0].Size.ShouldBe(0);
 			result.RecordingFiles[0].PlayUrl.ShouldBe("https://zoom.us/rec/play/3YUQu4dKV9c_sAwj-X33a_IGBr5V57LQFaTSwubo9R-hl3Gj_z-wSBSJNX9p5MFS8VsCEll4iAMyrDZi.h6gWLE07kjtTpZtX");
 			result.RecordingFiles[0].DownloadUrl.ShouldBe("https://zoom.us/rec/download/3YUQu4dKV9c_sAwj-X33a_IGBr5V57LQFaTSwubo9R-hl3Gj_z-wSBSJNX9p5MFS8VsCEll4iAMyrDZi.h6gWLE07kjtTpZtX");
-			result.RecordingFiles[0].Status.ShouldBe("processing");
+			result.RecordingFiles[0].Status.ShouldBe(RecordingStatus.Processing);
 			result.RecordingFiles[0].DeleteTime.ShouldBeNull();
 			result.RecordingFiles[0].ContentType.ShouldBe(RecordingContentType.NotSpecified);
 		}
@@ -516,7 +517,7 @@ namespace ZoomNet.UnitTests.Resources
 			var recordings = new CloudRecordings(client);
 
 			// Act
-			var result = await recordings.GetRecordingsForUserAsync(userId, false, from, to, recordsPerPage, null, CancellationToken.None).ConfigureAwait(false);
+			var result = await recordings.GetRecordingsForUserAsync(userId, false, from, to, recordsPerPage, null, CancellationToken.None).ConfigureAwait(true);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -530,6 +531,76 @@ namespace ZoomNet.UnitTests.Resources
 			result.To.ShouldBe(to);
 			result.Records.ShouldNotBeNull();
 			result.Records.Length.ShouldBe(10);
+		}
+
+		/// <summary>
+		/// This unit test simulates a scenario where we attempt to download a file but our oAuth token has expired.
+		/// In this situation, we expect the token to be refreshed and the download request to be reissued.
+		/// See <a href="https://github.com/Jericho/ZoomNet/issues/348">Issue 348</a> for more details.
+		/// </summary>
+		[Fact]
+		public async Task DownloadFileAsync_with_expired_token()
+		{
+			// Arrange
+			var downloadUrl = "http://dummywebsite.com/dummyfile.txt";
+
+			var mockTokenHttp = new MockHttpMessageHandler();
+			mockTokenHttp // Issue a new token
+				.When(HttpMethod.Post, "https://api.zoom.us/oauth/token")
+				.Respond(HttpStatusCode.OK, "application/json", "{\"refresh_token\":\"new refresh token\",\"access_token\":\"new access token\"}");
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp // The first time the file is requested, we return "401 Unauthorized" to simulate an expired token.
+				.Expect(HttpMethod.Get, downloadUrl)
+				.Respond(HttpStatusCode.Unauthorized, new StringContent("{\"code\":123456,\"message\":\"access token is expired\"}"));
+			mockHttp // The second time the file is requested, we return "200 OK" with the file content.
+				.Expect(HttpMethod.Get, downloadUrl)
+				.Respond(HttpStatusCode.OK, new StringContent("This is the content of the file"));
+
+			var client = Utils.GetFluentClient(mockHttp, mockTokenHttp);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+			var result = await recordings.DownloadFileAsync(downloadUrl, null, CancellationToken.None).ConfigureAwait(true);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		/// <summary>
+		/// While researching <a href="https://github.com/Jericho/ZoomNet/issues/348">Issue 348</a>, it was discovered
+		/// that the OAuth session token took precendence over the alternate token specified when invoking DownloadFileAsync.
+		/// This unit test was used to demonstrate the problem and ultimately to demonstrate that it was fixed.
+		/// </summary>
+		[Fact]
+		public async Task DownloadFileAsync_with_alternate_token()
+		{
+			// Arrange
+			var downloadUrl = "http://dummywebsite.com/dummyfile.txt";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp
+				.Expect(HttpMethod.Get, downloadUrl)
+				.With(request => request.Headers.Authorization?.Parameter == "alternate_download_token")
+				.Respond(HttpStatusCode.OK, new StringContent("This is the content of the file"));
+
+			var connectionInfo = OAuthConnectionInfo.ForServerToServer(
+				"MyClientId",
+				"MyClientSecret",
+				"MyAccountId",
+				accessToken: "Expired_token");
+
+			var client = new ZoomClient(connectionInfo, mockHttp.ToHttpClient(), null, null);
+
+			// Act
+			var result = await client.CloudRecordings.DownloadFileAsync(downloadUrl, "alternate_download_token", CancellationToken.None).ConfigureAwait(true);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
 		}
 	}
 }

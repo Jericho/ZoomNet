@@ -1,5 +1,7 @@
 using System;
+using System.Collections.Generic;
 using System.Text.Json.Serialization;
+using ZoomNet.Json;
 
 namespace ZoomNet.Models
 {
@@ -27,10 +29,10 @@ namespace ZoomNet.Models
 		public AudioType? Audio { get; set; }
 
 		/// <summary>
-		/// Gets or sets the value indicating if audio is recorded and if so, when the audio is saved.
+		/// Gets or sets the value indicating if audio is recorded and if so, where the audio is saved.
 		/// </summary>
 		[JsonPropertyName("auto_recording")]
-		public RecordingType? AutoRecording { get; set; }
+		public AutoRecordingType? AutoRecording { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value indicating whether registration is closed after event date.
@@ -156,5 +158,115 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonPropertyName("watermark")]
 		public bool? Watermark { get; set; }
+
+		/// <summary>
+		/// Gets or sets information about the Enable continuous meeting chat feature.
+		/// </summary>
+		[JsonPropertyName("continuous_meeting_chat")]
+		public ContinuousMeetingChatSettings ContinuousMeetingChat { get; set; }
+
+		/// <summary>
+		/// Gets or sets the value indicating whether to allow attendees to join the meeting from multiple devices.
+		/// This setting only works for meetings that require registration.
+		/// </summary>
+		[JsonPropertyName("allow_multiple_devices")]
+		public bool? AllowMultipleDevices { get; set; }
+
+		/// <summary>
+		/// Gets or sets the value indicating whether to send email notifications to alternative hosts, default value is true.
+		/// </summary>
+		[JsonPropertyName("alternative_hosts_email_notification")]
+		public bool? SendNotificationsToAlternativeHosts { get; set; }
+
+		/// <summary>
+		/// Gets or sets the value indicating whether to allow alternative hosts to add or edit polls.
+		/// This requires Zoom version 5.8.0 or higher.
+		/// </summary>
+		[JsonPropertyName("alternative_host_update_polls")]
+		public bool? AllowAlternativeHostToUpdatePolls { get; set; }
+
+		/// <summary>
+		/// Gets or sets the third party audio conference info.
+		/// Constraints: Max 2048 chars.
+		/// </summary>
+		[JsonPropertyName("audio_conference_info")]
+		public string ThirdPartyAudioConferenceInfo { get; set; }
+
+		/// <summary>
+		/// Gets or sets the list the domains that are authenticated if user has configured "Sign Into Zoom with Specified Domains" option.
+		/// </summary>
+		[JsonPropertyName("authentication_domains")]
+		public string AuthenticationDomains { get; set; }
+
+		/// <summary>
+		/// Gets or sets the authentication name set in the authentication profile.
+		/// </summary>
+		[JsonPropertyName("authentication_name")]
+		public string AuthenticationName { get; set; }
+
+		/// <summary>
+		/// Gets or Sets the authentication option id.
+		/// </summary>
+		[JsonPropertyName("authentication_option")]
+		public string AuthenticationOptionId { get; set; }
+
+		/// <summary>
+		/// Gets or sets the type of calendar integration used to schedule the meeting.
+		/// Works with the private_meeting field to determine whether to share details of meetings or not.
+		/// </summary>
+		[JsonPropertyName("calendar_type")]
+		public CalendarIntegrationType? CalendarIntegrationType { get; set; }
+
+		/// <summary>
+		/// Gets or sets the custom keys and values assigned to the meeting.
+		/// </summary>
+		[JsonPropertyName("custom_keys")]
+		[JsonConverter(typeof(KeyValuePairConverter))]
+		public KeyValuePair<string, string>[] CustomKeys { get; set; }
+
+		/// <summary>
+		/// Gets or sets the value indicating whether to send email notifications to alternative hosts and users with <a href="https://support.zoom.us/hc/en-us/articles/201362803-Scheduling-privilege">scheduling privileges</a>.
+		/// This value defaults to true.
+		/// </summary>
+		[JsonPropertyName("email_notification")]
+		public bool? SendEmailNotifications { get; set; }
+
+		/// <summary>
+		/// Gets or sets the encryption type.
+		/// When using end-to-end encryption, several features (e.g. cloud recording, phone/SIP/H.323 dial-in) will be automatically disabled.
+		/// </summary>
+		[JsonPropertyName("encryption_type")]
+		public EncryptionType? EncryptionType { get; set; }
+
+		/// <summary>
+		/// Gets or sets the value indicating whether the Focus Mode feature is enabled when the meeting starts.
+		/// </summary>
+		[JsonPropertyName("focus_mode")]
+		public bool? FocusModeEnabled { get; set; }
+
+		/// <summary>
+		/// Gets or sets the value indicating whether only authenticated users can join meetings.
+		/// </summary>
+		[JsonPropertyName("meeting_authentication")]
+		public bool? AuthenticationRequired { get; set; }
+
+		/// <summary>
+		/// Gets or sets the value indicating whether the meeting is set as private.
+		/// </summary>
+		[JsonPropertyName("private_meeting")]
+		public bool? Private { get; set; }
+
+		/// <summary>
+		/// Gets or sets the value indicating whether to send registrants an email confirmation.
+		/// </summary>
+		[JsonPropertyName("registrants_email_notification")]
+		public bool? SendConfirmationEmailToRegistrants { get; set; }
+
+		/// <summary>
+		/// Gets or sets the value indicating whether to show social share buttons on the meeting registration page.
+		/// This setting only works for meetings that require registration.
+		/// </summary>
+		[JsonPropertyName("show_share_button")]
+		public bool? ShowShareButton { get; set; }
 	}
 }

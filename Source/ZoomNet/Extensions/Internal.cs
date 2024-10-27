@@ -16,6 +16,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Text.Json.Serialization;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Json;
@@ -36,6 +37,7 @@ namespace ZoomNet
 		}
 
 		private static readonly DateTime EPOCH = new(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+		private static readonly int DEFAULT_DEGREE_OF_PARALLELISM = Environment.ProcessorCount > 1 ? Environment.ProcessorCount / 2 : 1;
 
 		/// <summary>
 		/// Converts a 'unix time', which is expressed as the number of seconds (or milliseconds) since
@@ -50,7 +52,7 @@ namespace ZoomNet
 		{
 			if (precision == UnixTimePrecision.Seconds) return EPOCH.AddSeconds(unixTime);
 			if (precision == UnixTimePrecision.Milliseconds) return EPOCH.AddMilliseconds(unixTime);
-			throw new Exception($"Unknown precision: {precision}");
+			throw new ArgumentException($"Unknown precision: {precision}");
 		}
 
 		/// <summary>
@@ -67,7 +69,7 @@ namespace ZoomNet
 			var diff = date.ToUniversalTime() - EPOCH;
 			if (precision == UnixTimePrecision.Seconds) return Convert.ToInt64(diff.TotalSeconds);
 			if (precision == UnixTimePrecision.Milliseconds) return Convert.ToInt64(diff.TotalMilliseconds);
-			throw new Exception($"Unknown precision: {precision}");
+			throw new ArgumentException($"Unknown precision: {precision}");
 		}
 
 		/// <summary>
@@ -170,23 +172,19 @@ namespace ZoomNet
 
 				// This is important: we must make a copy of the response stream otherwise we would get an
 				// exception on subsequent attempts to read the content of the stream
-				using (var ms = Utils.MemoryStreamManager.GetStream())
-				{
-					const int DefaultBufferSize = 81920;
-					await contentStream.CopyToAsync(ms, DefaultBufferSize, cancellationToken).ConfigureAwait(false);
-					ms.Position = 0;
-					using (var sr = new StreamReader(ms, encoding))
-					{
+				using var ms = Utils.MemoryStreamManager.GetStream();
+				const int DefaultBufferSize = 81920;
+				await contentStream.CopyToAsync(ms, DefaultBufferSize, cancellationToken).ConfigureAwait(false);
+				ms.Position = 0;
+				using var sr = new StreamReader(ms, encoding);
 #if NET7_0_OR_GREATER
-						content = await sr.ReadToEndAsync(cancellationToken).ConfigureAwait(false);
+				content = await sr.ReadToEndAsync(cancellationToken).ConfigureAwait(false);
 #else
-						content = await sr.ReadToEndAsync().ConfigureAwait(false);
+				content = await sr.ReadToEndAsync().ConfigureAwait(false);
 #endif
-					}
 
-					// It's important to rewind the stream
-					if (contentStream.CanSeek) contentStream.Position = 0;
-				}
+				// It's important to rewind the stream
+				if (contentStream.CanSeek) contentStream.Position = 0;
 			}
 
 			return content;
@@ -350,19 +348,19 @@ namespace ZoomNet
 			return await response.AsPaginatedResponseWithTokenAndDateRange<T>(propertyName, options).ConfigureAwait(false);
 		}
 
-		/// <summary>Get a raw JSON document representation of the response.</summary>
+		/// <summary>Get a JSON representation of the response.</summary>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		internal static Task<JsonDocument> AsRawJsonDocument(this IResponse response, string propertyName = null, bool throwIfPropertyIsMissing = true)
+		internal static Task<JsonElement> AsJson(this IResponse response, string propertyName = null, bool throwIfPropertyIsMissing = true)
 		{
-			return response.Message.Content.AsRawJsonDocument(propertyName, throwIfPropertyIsMissing);
+			return response.Message.Content.AsJson(propertyName, throwIfPropertyIsMissing);
 		}
 
-		/// <summary>Get a raw JSON document representation of the response.</summary>
+		/// <summary>Get a JSON representation of the response.</summary>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		internal static async Task<JsonDocument> AsRawJsonDocument(this IRequest request, string propertyName = null, bool throwIfPropertyIsMissing = true)
+		internal static async Task<JsonElement> AsJson(this IRequest request, string propertyName = null, bool throwIfPropertyIsMissing = true)
 		{
 			var response = await request.AsResponse().ConfigureAwait(false);
-			return await response.AsRawJsonDocument(propertyName, throwIfPropertyIsMissing).ConfigureAwait(false);
+			return await response.AsJson(propertyName, throwIfPropertyIsMissing).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -503,75 +501,128 @@ namespace ZoomNet
 
 		internal static T GetPropertyValue<T>(this JsonElement element, string name, T defaultValue)
 		{
-			return GetPropertyValue<T>(element, new[] { name }, defaultValue, false);
+			return element.GetPropertyValue(new[] { name }, defaultValue, false);
 		}
 
 		internal static T GetPropertyValue<T>(this JsonElement element, string[] names, T defaultValue)
 		{
-			return GetPropertyValue<T>(element, names, defaultValue, false);
+			return element.GetPropertyValue(names, defaultValue, false);
 		}
 
 		internal static T GetPropertyValue<T>(this JsonElement element, string name)
 		{
-			return GetPropertyValue<T>(element, new[] { name }, default, true);
+			return element.GetPropertyValue<T>(new[] { name }, default, true);
 		}
 
 		internal static T GetPropertyValue<T>(this JsonElement element, string[] names)
 		{
-			return GetPropertyValue<T>(element, names, default, true);
+			return element.GetPropertyValue<T>(names, default, true);
 		}
+
+		internal static Task<TResult[]> ForEachAsync<T, TResult>(this IEnumerable<T> items, Func<T, Task<TResult>> action) => ForEachAsync(items, action, DEFAULT_DEGREE_OF_PARALLELISM);
+
+		internal static Task<TResult[]> ForEachAsync<T, TResult>(this IEnumerable<T> items, Func<T, int, Task<TResult>> action) => ForEachAsync(items, action, DEFAULT_DEGREE_OF_PARALLELISM);
 
 		internal static async Task<TResult[]> ForEachAsync<T, TResult>(this IEnumerable<T> items, Func<T, Task<TResult>> action, int maxDegreeOfParalellism)
 		{
 			var allTasks = new List<Task<TResult>>();
-			using (var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism))
+			using var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism);
+			foreach (var item in items)
 			{
-				foreach (var item in items)
-				{
-					await throttler.WaitAsync();
-					allTasks.Add(
-						Task.Run(async () =>
+				await throttler.WaitAsync();
+				allTasks.Add(
+					Task.Run(async () =>
+					{
+						try
 						{
-							try
-							{
-								return await action(item).ConfigureAwait(false);
-							}
-							finally
-							{
-								throttler.Release();
-							}
-						}));
-				}
-
-				var results = await Task.WhenAll(allTasks).ConfigureAwait(false);
-				return results;
+							return await action(item).ConfigureAwait(false);
+						}
+						finally
+						{
+							throttler.Release();
+						}
+					}));
 			}
+
+			var results = await Task.WhenAll(allTasks).ConfigureAwait(false);
+			return results;
 		}
+
+		internal static async Task<TResult[]> ForEachAsync<T, TResult>(this IEnumerable<T> items, Func<T, int, Task<TResult>> action, int maxDegreeOfParalellism)
+		{
+			var allTasks = new List<Task<TResult>>();
+			using var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism);
+			foreach (var (item, index) in items.Select((value, i) => (value, i)))
+			{
+				await throttler.WaitAsync();
+				allTasks.Add(
+					Task.Run(async () =>
+					{
+						try
+						{
+							return await action(item, index).ConfigureAwait(false);
+						}
+						finally
+						{
+							throttler.Release();
+						}
+					}));
+			}
+
+			var results = await Task.WhenAll(allTasks).ConfigureAwait(false);
+			return results;
+		}
+
+		internal static Task ForEachAsync<T>(this IEnumerable<T> items, Func<T, Task> action) => ForEachAsync(items, action, DEFAULT_DEGREE_OF_PARALLELISM);
+
+		internal static Task ForEachAsync<T>(this IEnumerable<T> items, Func<T, int, Task> action) => ForEachAsync(items, action, DEFAULT_DEGREE_OF_PARALLELISM);
 
 		internal static async Task ForEachAsync<T>(this IEnumerable<T> items, Func<T, Task> action, int maxDegreeOfParalellism)
 		{
 			var allTasks = new List<Task>();
-			using (var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism))
+			using var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism);
+			foreach (var item in items)
 			{
-				foreach (var item in items)
-				{
-					await throttler.WaitAsync();
-					allTasks.Add(
-						Task.Run(async () =>
+				await throttler.WaitAsync();
+				allTasks.Add(
+					Task.Run(async () =>
+					{
+						try
 						{
-							try
-							{
-								await action(item).ConfigureAwait(false);
-							}
-							finally
-							{
-								throttler.Release();
-							}
-						}));
-				}
-
-				await Task.WhenAll(allTasks).ConfigureAwait(false);
+							await action(item).ConfigureAwait(false);
+						}
+						finally
+						{
+							throttler.Release();
+						}
+					}));
 			}
+
+			await Task.WhenAll(allTasks).ConfigureAwait(false);
+		}
+
+		internal static async Task ForEachAsync<T>(this IEnumerable<T> items, Func<T, int, Task> action, int maxDegreeOfParalellism)
+		{
+			var allTasks = new List<Task>();
+			using var throttler = new SemaphoreSlim(initialCount: maxDegreeOfParalellism);
+			foreach (var (item, index) in items.Select((value, i) => (value, i)))
+			{
+				await throttler.WaitAsync();
+				allTasks.Add(
+					Task.Run(async () =>
+					{
+						try
+						{
+							await action(item, index).ConfigureAwait(false);
+						}
+						finally
+						{
+							throttler.Release();
+						}
+					}));
+			}
+
+			await Task.WhenAll(allTasks).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -649,10 +700,10 @@ namespace ZoomNet
 			return querystringParameters;
 		}
 
-		internal static (WeakReference<HttpRequestMessage> RequestReference, string Diagnostic, long RequestTimeStamp, long ResponseTimestamp) GetDiagnosticInfo(this IResponse response)
+		internal static DiagnosticInfo GetDiagnosticInfo(this IResponse response)
 		{
 			var diagnosticId = response.Message.RequestMessage.Headers.GetValue(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME);
-			DiagnosticHandler.DiagnosticsInfo.TryGetValue(diagnosticId, out (WeakReference<HttpRequestMessage> RequestReference, string Diagnostic, long RequestTimeStamp, long ResponseTimestamp) diagnosticInfo);
+			DiagnosticHandler.DiagnosticsInfo.TryGetValue(diagnosticId, out DiagnosticInfo diagnosticInfo);
 			return diagnosticInfo;
 		}
 
@@ -684,41 +735,31 @@ namespace ZoomNet
 				}
 			*/
 
-			var responseContent = await message.Content.ReadAsStringAsync(null).ConfigureAwait(false);
-
-			if (!string.IsNullOrEmpty(responseContent))
+			try
 			{
-				try
+				var jsonResponse = await message.Content.ParseZoomResponseAsync().ConfigureAwait(false);
+				if (jsonResponse.ValueKind == JsonValueKind.Object)
 				{
-					var rootJsonElement = JsonDocument.Parse(responseContent).RootElement;
-
-					if (rootJsonElement.ValueKind == JsonValueKind.Object)
+					errorCode = jsonResponse.TryGetProperty("code", out JsonElement jsonErrorCode) ? jsonErrorCode.GetInt32() : null;
+					errorMessage = jsonResponse.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : errorCode.HasValue ? $"Error code: {errorCode}" : errorMessage;
+					if (jsonResponse.TryGetProperty("errors", out JsonElement jsonErrorDetails))
 					{
-						errorCode = rootJsonElement.TryGetProperty("code", out JsonElement jsonErrorCode) ? (int?)jsonErrorCode.GetInt32() : (int?)null;
-						errorMessage = rootJsonElement.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : (errorCode.HasValue ? $"Error code: {errorCode}" : errorMessage);
-						if (rootJsonElement.TryGetProperty("errors", out JsonElement jsonErrorDetails))
-						{
-							var errorDetails = string.Join(
-								" ",
-								jsonErrorDetails
-									.EnumerateArray()
-									.Select(jsonErrorDetail =>
-						{
-							var errorDetail = jsonErrorDetail.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : string.Empty;
-							return errorDetail;
-						})
-									.Where(message => !string.IsNullOrEmpty(message)));
+						var errorDetails = string.Join(
+							" ",
+							jsonErrorDetails
+								.EnumerateArray()
+								.Select(jsonErrorDetail => jsonErrorDetail.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : string.Empty)
+								.Where(message => !string.IsNullOrEmpty(message)));
 
-							if (!string.IsNullOrEmpty(errorDetails)) errorMessage += $" {errorDetails}";
-						}
-
-						return (errorCode.HasValue, errorMessage, errorCode);
+						if (!string.IsNullOrEmpty(errorDetails)) errorMessage += $" {errorDetails}";
 					}
+
+					return (errorCode.HasValue, errorMessage, errorCode);
 				}
-				catch
-				{
-					// Intentionally ignore parsing errors
-				}
+			}
+			catch
+			{
+				// Intentionally ignore parsing errors
 			}
 
 			return (!message.IsSuccessStatusCode, errorMessage, errorCode);
@@ -756,13 +797,20 @@ namespace ZoomNet
 		internal static string ToEnumString<T>(this T enumValue)
 			where T : Enum
 		{
-			if (TryToEnumString(enumValue, out string stringValue)) return stringValue;
+			if (enumValue.TryToEnumString(out string stringValue)) return stringValue;
 			return enumValue.ToString();
 		}
 
 		internal static bool TryToEnumString<T>(this T enumValue, out string stringValue)
 			where T : Enum
 		{
+			var multipleValuesEnumMemberAttribute = enumValue.GetAttributeOfType<MultipleValuesEnumMemberAttribute>();
+			if (multipleValuesEnumMemberAttribute != null)
+			{
+				stringValue = multipleValuesEnumMemberAttribute.DefaultValue;
+				return true;
+			}
+
 			var enumMemberAttribute = enumValue.GetAttributeOfType<EnumMemberAttribute>();
 			if (enumMemberAttribute != null)
 			{
@@ -796,7 +844,7 @@ namespace ZoomNet
 		internal static T ToEnum<T>(this string str)
 			where T : Enum
 		{
-			if (TryToEnum(str, out T enumValue)) return enumValue;
+			if (str.TryToEnum(out T enumValue)) return enumValue;
 
 			throw new ArgumentException($"There is no value in the {typeof(T).Name} enum that corresponds to '{str}'.");
 		}
@@ -808,6 +856,14 @@ namespace ZoomNet
 			foreach (var name in Enum.GetNames(enumType))
 			{
 				var customAttributes = enumType.GetField(name).GetCustomAttributes(true);
+
+				// See if there's a matching 'MultipleValuesEnumMember' attribute
+				if (customAttributes.OfType<MultipleValuesEnumMemberAttribute>().Any(attribute => string.Equals(attribute.DefaultValue, str, StringComparison.OrdinalIgnoreCase) ||
+					(attribute.OtherValues ?? Array.Empty<string>()).Any(otherValue => string.Equals(otherValue, str, StringComparison.OrdinalIgnoreCase))))
+				{
+					enumValue = (T)Enum.Parse(enumType, name);
+					return true;
+				}
 
 				// See if there's a matching 'EnumMember' attribute
 				if (customAttributes.OfType<EnumMemberAttribute>().Any(attribute => string.Equals(attribute.Value, str, StringComparison.OrdinalIgnoreCase)))
@@ -881,6 +937,49 @@ namespace ZoomNet
 			return result;
 		}
 
+		internal static bool IsNullableType(this Type type)
+		{
+			return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>);
+		}
+
+		private static async Task<JsonElement> ParseZoomResponseAsync(this HttpContent responseFromZoomApi, CancellationToken cancellationToken = default)
+		{
+			var responseContent = await responseFromZoomApi.ReadAsStringAsync(null, cancellationToken).ConfigureAwait(false);
+			if (string.IsNullOrEmpty(responseContent)) return default; // FYI: the 'ValueKind' property of the default JsonElement is JsonValueKind.Undefined
+
+			try
+			{
+				// Attempt to parse the response with the assumption that JSON is well-formed
+				// If the JSON is malformed, a JsonException will be thrown
+				return JsonDocument.Parse(responseContent).RootElement;
+			}
+			catch (JsonException)
+			{
+				/*
+					Sometimes the error message is malformed due to the presence of double quotes that are not properly escaped.
+					See: https://devforum.zoom.us/t/list-events-endpoint-returns-invalid-json-in-the-payload/115792 for more info.
+					One instance where this problem was observed is when retrieving the list of events without having the necessary permissions to do so.
+					The result is the following response with unescaped double-quotes in the error message:
+					{
+						"code": 104,
+						"message": "Invalid access token, does not contain scopes:["zoom_events_basic:read","zoom_events_basic:read:admin"]"
+					}
+				*/
+				const string pattern = @"(.*?)(?<=""message"":"")(.*?)(?=""})(.*?$)";
+				var matches = Regex.Match(responseContent, pattern, RegexOptions.Compiled | RegexOptions.Singleline);
+				if (matches.Groups.Count != 4) throw;
+
+				var prefix = matches.Groups[1].Value;
+				var message = matches.Groups[2].Value;
+				var postfix = matches.Groups[3].Value;
+				if (string.IsNullOrEmpty(message)) throw;
+
+				var escapedMessage = Regex.Replace(message, @"(?<!\\)""", "\\\"", RegexOptions.Compiled); // Replace un-escaped double-quotes with properly escaped double-quotes
+				var result = $"{prefix}{escapedMessage}{postfix}";
+				return JsonDocument.Parse(result).RootElement;
+			}
+		}
+
 		/// <summary>Asynchronously converts the JSON encoded content and convert it to an object of the desired type.</summary>
 		/// <typeparam name="T">The response model to deserialize into.</typeparam>
 		/// <param name="httpContent">The content.</param>
@@ -899,7 +998,7 @@ namespace ZoomNet
 				return JsonSerializer.Deserialize<T>(responseContent, options ?? JsonFormatter.DeserializerOptions);
 			}
 
-			var jsonDoc = JsonDocument.Parse(responseContent, (JsonDocumentOptions)default);
+			var jsonDoc = JsonDocument.Parse(responseContent, default);
 			if (jsonDoc.RootElement.TryGetProperty(propertyName, out JsonElement property))
 			{
 				return property.ToObject<T>(options);
@@ -914,28 +1013,30 @@ namespace ZoomNet
 			}
 		}
 
-		/// <summary>Get a raw JSON object representation of the response.</summary>
+		/// <summary>Get a JSON representation of the response.</summary>
 		/// <param name="httpContent">The content.</param>
 		/// <param name="propertyName">The name of the JSON property (or null if not applicable) where the desired data is stored.</param>
 		/// <param name="throwIfPropertyIsMissing">Indicates if an exception should be thrown when the specified JSON property is missing from the response.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>Returns the response body, or <c>null</c> if the response has no body.</returns>
+		/// <returns>Returns the response body, or a JsonElement with its 'ValueKind' set to 'Undefined' if the response has no body.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
-		private static async Task<JsonDocument> AsRawJsonDocument(this HttpContent httpContent, string propertyName = null, bool throwIfPropertyIsMissing = true, CancellationToken cancellationToken = default)
+		private static async Task<JsonElement> AsJson(this HttpContent httpContent, string propertyName = null, bool throwIfPropertyIsMissing = true, CancellationToken cancellationToken = default)
 		{
-			var responseContent = await httpContent.ReadAsStringAsync(null, cancellationToken).ConfigureAwait(false);
-
-			var jsonDoc = JsonDocument.Parse(responseContent, (JsonDocumentOptions)default);
+			var jsonResponse = await httpContent.ParseZoomResponseAsync(cancellationToken).ConfigureAwait(false);
 
 			if (string.IsNullOrEmpty(propertyName))
 			{
-				return jsonDoc;
+				return jsonResponse;
 			}
 
-			if (jsonDoc.RootElement.TryGetProperty(propertyName, out JsonElement property))
+			if (jsonResponse.ValueKind != JsonValueKind.Object)
+			{
+				throw new Exception("The response from the Zomm API does not contain a valid JSON string");
+			}
+			else if (jsonResponse.TryGetProperty(propertyName, out JsonElement property))
 			{
 				var propertyContent = property.GetRawText();
-				return JsonDocument.Parse(propertyContent, (JsonDocumentOptions)default);
+				return JsonDocument.Parse(propertyContent, default).RootElement;
 			}
 			else if (throwIfPropertyIsMissing)
 			{
@@ -957,9 +1058,8 @@ namespace ZoomNet
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
 		private static async Task<PaginatedResponse<T>> AsPaginatedResponse<T>(this HttpContent httpContent, string propertyName, JsonSerializerOptions options = null, CancellationToken cancellationToken = default)
 		{
-			// Get the content as a queryable json document
-			var doc = await httpContent.AsRawJsonDocument(null, false, cancellationToken).ConfigureAwait(false);
-			var rootElement = doc.RootElement;
+			// Get the content as a JSON element
+			var rootElement = await httpContent.AsJson(null, false, cancellationToken).ConfigureAwait(false);
 
 			// Get the various metadata properties
 			var pageCount = rootElement.GetPropertyValue("page_count", 0);
@@ -971,7 +1071,7 @@ namespace ZoomNet
 			var jsonProperty = rootElement.GetProperty(propertyName, false);
 
 			// Make sure the desired property is present. It's ok if the property is missing when there are no records.
-			if (!jsonProperty.HasValue && pageSize > 0)
+			if (!jsonProperty.HasValue && totalRecords is > 0)
 			{
 				throw new ArgumentException($"The response does not contain a field called '{propertyName}'", nameof(propertyName));
 			}
@@ -998,9 +1098,8 @@ namespace ZoomNet
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
 		private static async Task<PaginatedResponseWithToken<T>> AsPaginatedResponseWithToken<T>(this HttpContent httpContent, string propertyName, JsonSerializerOptions options = null, CancellationToken cancellationToken = default)
 		{
-			// Get the content as a queryable json document
-			var doc = await httpContent.AsRawJsonDocument(null, false, cancellationToken).ConfigureAwait(false);
-			var rootElement = doc.RootElement;
+			// Get the content as a JSON element
+			var rootElement = await httpContent.AsJson(null, false, cancellationToken).ConfigureAwait(false);
 
 			// Get the various metadata properties
 			var nextPageToken = rootElement.GetPropertyValue("next_page_token", string.Empty);
@@ -1011,7 +1110,7 @@ namespace ZoomNet
 			var jsonProperty = rootElement.GetProperty(propertyName, false);
 
 			// Make sure the desired property is present. It's ok if the property is missing when there are no records.
-			if (!jsonProperty.HasValue && pageSize > 0)
+			if (!jsonProperty.HasValue && totalRecords is > 0)
 			{
 				throw new ArgumentException($"The response does not contain a field called '{propertyName}'", nameof(propertyName));
 			}
@@ -1037,9 +1136,8 @@ namespace ZoomNet
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
 		private static async Task<PaginatedResponseWithTokenAndDateRange<T>> AsPaginatedResponseWithTokenAndDateRange<T>(this HttpContent httpContent, string propertyName, JsonSerializerOptions options = null, CancellationToken cancellationToken = default)
 		{
-			// Get the content as a queryable json document
-			var doc = await httpContent.AsRawJsonDocument(null, false, cancellationToken).ConfigureAwait(false);
-			var rootElement = doc.RootElement;
+			// Get the content as a JSON element
+			var rootElement = await httpContent.AsJson(null, false, cancellationToken).ConfigureAwait(false);
 
 			// Get the various metadata properties
 			var from = DateTime.ParseExact(rootElement.GetPropertyValue("from", string.Empty), "yyyy-MM-dd", CultureInfo.InvariantCulture);
@@ -1052,7 +1150,7 @@ namespace ZoomNet
 			var jsonProperty = rootElement.GetProperty(propertyName, false);
 
 			// Make sure the desired property is present. It's ok if the property is missing when there are no records.
-			if (!jsonProperty.HasValue && pageSize > 0)
+			if (!jsonProperty.HasValue && totalRecords is > 0)
 			{
 				throw new ArgumentException($"The response does not contain a field called '{propertyName}'", nameof(propertyName));
 			}
@@ -1080,7 +1178,11 @@ namespace ZoomNet
 				if (property.HasValue) break;
 			}
 
-			if (!property.HasValue) return defaultValue;
+			if (!property.HasValue)
+			{
+				if (throwIfMissing) throw new Exception($"Unable to find {string.Join(", ", names)} in the Json document");
+				else return defaultValue;
+			}
 
 			var typeOfT = typeof(T);
 
@@ -1094,11 +1196,13 @@ namespace ZoomNet
 				};
 			}
 
-			if (typeOfT.IsGenericType && typeOfT.GetGenericTypeDefinition() == typeof(Nullable<>))
+			if (typeOfT.IsNullableType())
 			{
+				if (property.Value.ValueKind == JsonValueKind.Null) return (T)default;
+
 				var underlyingType = Nullable.GetUnderlyingType(typeOfT);
 				var getElementValue = typeof(Internal)
-					.GetMethod(nameof(Internal.GetElementValue), BindingFlags.Static | BindingFlags.NonPublic)
+					.GetMethod(nameof(GetElementValue), BindingFlags.Static | BindingFlags.NonPublic)
 					.MakeGenericMethod(underlyingType);
 
 				return (T)getElementValue.Invoke(null, new object[] { property.Value });
@@ -1106,9 +1210,11 @@ namespace ZoomNet
 
 			if (typeOfT.IsArray)
 			{
+				if (property.Value.ValueKind == JsonValueKind.Null) return (T)default;
+
 				var elementType = typeOfT.GetElementType();
 				var getElementValue = typeof(Internal)
-					.GetMethod(nameof(Internal.GetElementValue), BindingFlags.Static | BindingFlags.NonPublic)
+					.GetMethod(nameof(GetElementValue), BindingFlags.Static | BindingFlags.NonPublic)
 					.MakeGenericMethod(elementType);
 
 				var arrayList = new ArrayList(property.Value.GetArrayLength());
@@ -1127,6 +1233,13 @@ namespace ZoomNet
 		private static T GetElementValue<T>(this JsonElement element)
 		{
 			var typeOfT = typeof(T);
+
+			if (element.ValueKind == JsonValueKind.Null)
+			{
+				return typeOfT.IsNullableType()
+					? (T)default
+					: throw new Exception($"JSON contains a null value but {typeOfT.FullName} is not nullable");
+			}
 
 			return typeOfT switch
 			{

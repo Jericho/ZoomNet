@@ -16,24 +16,25 @@ namespace ZoomNet.Resources
 		/// <summary>
 		/// Retrieve the details of a meeting that occured in the past.
 		/// </summary>
-		/// <param name="uuid">The meeting UUID.</param>
+		/// <param name="meetingId">The meeting's ID or universally unique ID (UUID).</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The <see cref="Meeting" />.
 		/// </returns>
-		Task<PastMeeting> GetAsync(string uuid, CancellationToken cancellationToken = default);
+		Task<PastMeeting> GetAsync(string meetingId, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// List participants of a meeting that occured in the past.
+		/// Retrieve information on participants from a past meeting.
 		/// </summary>
-		/// <param name="uuid">The meeting UUID.</param>
+		/// <remarks>The API doesn't return results if there's only one participant in a meeting.</remarks>
+		/// <param name="meetingId">The meeting's ID or universally unique ID (UUID).</param>
 		/// <param name="recordsPerPage">The number of records to return.</param>
 		/// <param name="pagingToken">The paging token.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// An array of <see cref="Participant" />.
 		/// </returns>
-		Task<PaginatedResponseWithToken<Participant>> GetParticipantsAsync(string uuid, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<Participant>> GetParticipantsAsync(string meetingId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get a list of ended meeting instance.

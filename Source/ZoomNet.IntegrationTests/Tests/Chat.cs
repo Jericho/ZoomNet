@@ -26,7 +26,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				{
 					await client.Chat.DeleteChannelAsync(oldChannel.Id, cancellationToken).ConfigureAwait(false);
 					await log.WriteLineAsync($"Channel {oldChannel.Id} deleted").ConfigureAwait(false);
-					await Task.Delay(250, cancellationToken).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
+					await Task.Delay(1000, cancellationToken).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
 				});
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
 
@@ -34,13 +34,13 @@ namespace ZoomNet.IntegrationTests.Tests
 			var channel = await client.Chat.CreateAccountChannelAsync(myUser.Id, "ZoomNet Integration Testing: new channel", ChatChannelType.Public, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Account channel \"{channel.Name}\" created (Id={channel.Id}").ConfigureAwait(false);
 
-			// UPDATE THE CHANNEL
-			await client.Chat.UpdateAccountChannelAsync(myUser.Id, channel.Id, "ZoomNet Integration Testing: updated channel", cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"Account channel \"{channel.Id}\" updated").ConfigureAwait(false);
-
 			// RETRIEVE THE CHANNEL
 			channel = await client.Chat.GetAccountChannelAsync(myUser.Id, channel.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Account channel \"{channel.Id}\" retrieved").ConfigureAwait(false);
+
+			// UPDATE THE CHANNEL
+			await client.Chat.UpdateAccountChannelAsync(myUser.Id, channel.Id, "ZoomNet Integration Testing: updated channel", channel.Settings, channel.Type, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Account channel \"{channel.Id}\" updated").ConfigureAwait(false);
 
 			// RETRIEVE THE CHANNEL MEMBERS
 			var paginatedMembers = await client.Chat.GetAccountChannelMembersAsync(myUser.Id, channel.Id, 10, null, cancellationToken).ConfigureAwait(false);

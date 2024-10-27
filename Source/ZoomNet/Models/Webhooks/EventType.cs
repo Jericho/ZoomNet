@@ -263,5 +263,11 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "endpoint.url_validation")]
 		EndpointUrlValidation,
+
+		/// <summary>
+		/// The recording of meeting or webinar is available to view or download.
+		/// </summary>
+		[EnumMember(Value = "recording.completed")]
+		RecordingCompleted,
 	}
 }

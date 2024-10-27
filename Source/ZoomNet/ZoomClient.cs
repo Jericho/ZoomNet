@@ -15,6 +15,14 @@ namespace ZoomNet
 	/// <summary>
 	/// REST client for interacting with Zoom's API.
 	/// </summary>
+	/// <remarks>
+	/// Don't be fooled by the fact that this class implements the IDisposable interface: it is not meant to be short-lived and instantiated with every request.
+	/// It is meant to be long-lived and re-used throughout the life of an application.
+	/// The reason is: we use Microsoft's HttpClient to dispatch requests which itself is meant to be long-lived and re-used.
+	/// Instantiating an HttpClient class for every request will exhaust the number of sockets available under heavy loads and will result in SocketException errors.
+	///
+	/// See <a href="https://github.com/Jericho/ZoomNet/issues/35">this discussion</a> for more information about managing the lifetime of your client instance.
+	/// </remarks>
 	public class ZoomClient : IZoomClient, IDisposable
 	{
 		#region FIELDS
@@ -56,110 +64,60 @@ namespace ZoomNet
 			}
 		}
 
-		/// <summary>
-		/// Gets the resource which allows you to manage sub accounts.
-		/// </summary>
-		/// <value>
-		/// The accounts resource.
-		/// </value>
+		/// <inheritdoc/>
 		public IAccounts Accounts { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to manage chat channels, messages, etc.
-		/// </summary>
-		/// <value>
-		/// The chat resource.
-		/// </value>
+		/// <inheritdoc/>
+		public ICallLogs CallLogs { get; private set; }
+
+		/// <inheritdoc/>
 		public IChat Chat { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to manage cloud recordings.
-		/// </summary>
-		/// <value>
-		/// The recordings resource.
-		/// </value>
+		/// <inheritdoc/>
+		public IChatbot Chatbot { get; private set; }
+
+		/// <inheritdoc/>
 		public ICloudRecordings CloudRecordings { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to manage contacts.
-		/// </summary>
-		/// <value>
-		/// The contacts resource.
-		/// </value>
+		/// <inheritdoc/>
 		public IContacts Contacts { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to notify Zoom that you comply with the policy which requires
-		/// you to handle user's data in accordance to the user's preference after the user uninstalls your app.
-		/// </summary>
-		/// <value>
-		/// The data compliance resource.
-		/// </value>
+		/// <inheritdoc/>
+		public IDashboards Dashboards { get; private set; }
+
+		/// <inheritdoc/>
 		[Obsolete("The Data Compliance API is deprecated")]
 		public IDataCompliance DataCompliance { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to manage meetings.
-		/// </summary>
-		/// <value>
-		/// The meetings resource.
-		/// </value>
+		/// <inheritdoc/>
+		public IGroups Groups { get; private set; }
+
+		/// <inheritdoc/>
 		public IMeetings Meetings { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to manage meetings that occured in the past.
-		/// </summary>
-		/// <value>
-		/// The past meetings resource.
-		/// </value>
+		/// <inheritdoc/>
 		public IPastMeetings PastMeetings { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to manage webinars that occured in the past.
-		/// </summary>
-		/// <value>
-		/// The past webinars resource.
-		/// </value>
+		/// <inheritdoc/>
 		public IPastWebinars PastWebinars { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to manage roles.
-		/// </summary>
-		/// <value>
-		/// The roles resource.
-		/// </value>
-		public IRoles Roles { get; private set; }
+		/// <inheritdoc/>
+		public IPhone Phone { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to manage users.
-		/// </summary>
-		/// <value>
-		/// The users resource.
-		/// </value>
-		public IUsers Users { get; private set; }
-
-		/// <summary>
-		/// Gets the resource which allows you to manage webinars.
-		/// </summary>
-		/// <value>
-		/// The webinars resource.
-		/// </value>
-		public IWebinars Webinars { get; private set; }
-
-		/// <summary>
-		/// Gets the resource which allows you to view metrics.
-		/// </summary>
-		public IDashboards Dashboards { get; private set; }
-
-		/// <summary>
-		/// Gets the resource which allows you to view reports.
-		/// </summary>
+		/// <inheritdoc/>
 		public IReports Reports { get; private set; }
 
-		/// <summary>
-		/// Gets the resource which allows you to manage call logs.
-		/// </summary>
-		public ICallLogs CallLogs { get; private set; }
+		/// <inheritdoc/>
+		public IRoles Roles { get; private set; }
+
+		/// <inheritdoc/>
+		public ISms Sms { get; private set; }
+
+		/// <inheritdoc/>
+		public IUsers Users { get; private set; }
+
+		/// <inheritdoc/>
+		public IWebinars Webinars { get; private set; }
 
 		#endregion
 
@@ -218,7 +176,7 @@ namespace ZoomNet
 
 			_mustDisposeHttpClient = disposeClient;
 			_httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
-			_options = options ?? GetDefaultOptions();
+			_options = options ?? new();
 			_logger = logger ?? NullLogger.Instance;
 			_fluentClient = new FluentClient(new Uri(ZOOM_V2_BASE_URI), httpClient)
 				.SetUserAgent($"ZoomNet/{Version} (+https://github.com/Jericho/ZoomNet)");
@@ -252,19 +210,23 @@ namespace ZoomNet
 			_fluentClient.Filters.Add(new ZoomErrorHandler());
 
 			Accounts = new Accounts(_fluentClient);
+			CallLogs = new CallLogs(_fluentClient);
 			Chat = new Chat(_fluentClient);
+			Chatbot = new Chatbot(_fluentClient);
 			CloudRecordings = new CloudRecordings(_fluentClient);
 			Contacts = new Contacts(_fluentClient);
+			Dashboards = new Dashboards(_fluentClient);
 			DataCompliance = new DataCompliance(_fluentClient);
+			Groups = new Groups(_fluentClient);
 			Meetings = new Meetings(_fluentClient);
 			PastMeetings = new PastMeetings(_fluentClient);
 			PastWebinars = new PastWebinars(_fluentClient);
+			Phone = new Phone(_fluentClient);
+			Reports = new Reports(_fluentClient);
 			Roles = new Roles(_fluentClient);
+			Sms = new Sms(_fluentClient);
 			Users = new Users(_fluentClient);
 			Webinars = new Webinars(_fluentClient);
-			Dashboards = new Dashboards(_fluentClient);
-			Reports = new Reports(_fluentClient);
-			CallLogs = new CallLogs(_fluentClient);
 		}
 
 		/// <summary>
@@ -282,9 +244,7 @@ namespace ZoomNet
 
 		#region PUBLIC METHODS
 
-		/// <summary>
-		/// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-		/// </summary>
+		/// <inheritdoc/>
 		public void Dispose()
 		{
 			// Call 'Dispose' to release resources
@@ -316,15 +276,6 @@ namespace ZoomNet
 		#endregion
 
 		#region PRIVATE METHODS
-
-		private static ZoomClientOptions GetDefaultOptions()
-		{
-			return new ZoomClientOptions()
-			{
-				LogLevelSuccessfulCalls = LogLevel.Debug,
-				LogLevelFailedCalls = LogLevel.Error
-			};
-		}
 
 		private void ReleaseManagedResources()
 		{

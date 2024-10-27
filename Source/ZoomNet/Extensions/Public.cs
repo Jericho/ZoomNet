@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
@@ -289,13 +290,14 @@ namespace ZoomNet
 		/// </summary>
 		/// <param name="cloudRecordingsResource">The cloud recordings resource.</param>
 		/// <param name="recordingFile">The recording file to download.</param>
+		/// <param name="accessToken">The access token. If this parameter is omitted, the token for the current oAuth session will be used.</param>
 		/// <param name="cancellationToken">Cancellation token.</param>
 		/// <returns>
 		/// The <see cref="Stream"/> containing the file.
 		/// </returns>
-		public static Task<Stream> DownloadFileAsync(this ICloudRecordings cloudRecordingsResource, RecordingFile recordingFile, CancellationToken cancellationToken = default)
+		public static Task<Stream> DownloadFileAsync(this ICloudRecordings cloudRecordingsResource, RecordingFile recordingFile, string accessToken = null, CancellationToken cancellationToken = default)
 		{
-			return cloudRecordingsResource.DownloadFileAsync(recordingFile.DownloadUrl, cancellationToken);
+			return cloudRecordingsResource.DownloadFileAsync(recordingFile.DownloadUrl, accessToken, cancellationToken);
 		}
 
 		/// <summary>
@@ -311,6 +313,60 @@ namespace ZoomNet
 		public static Task InviteParticipantAsync(this IMeetings meetingsResource, long meetingId, string emailAddress, CancellationToken cancellationToken = default)
 		{
 			return meetingsResource.InviteParticipantsAsync(meetingId, new[] { emailAddress }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Retrieve the details of a meeting.
+		/// </summary>
+		/// <param name="meetingResource">The meeting resource.</param>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="occurrenceId">The meeting occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="Meeting" />.
+		/// </returns>
+		/// <remarks>
+		/// Please note that when retrieving a recurring meeting, this method will omit previous occurrences.
+		/// Use <see cref="IMeetings.GetAsync(long, string, bool, CancellationToken)"/> if you want past occurrences to be included.
+		/// </remarks>
+		public static Task<Meeting> GetAsync(this IMeetings meetingResource, long meetingId, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			return meetingResource.GetAsync(meetingId, occurrenceId, false, cancellationToken);
+		}
+
+		/// <summary>
+		/// Retrieve the details of a webinar.
+		/// </summary>
+		/// <param name="webinarResource">The webinar resource.</param>
+		/// <param name="webinarId">The webinar ID.</param>
+		/// <param name="occurrenceId">The webinar occurrence id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The <see cref="Webinar" />.
+		/// </returns>
+		/// <remarks>
+		/// Please note that when retrieving a recurring meeting, this method will omit previous occurrences.
+		/// Use <see cref="IWebinars.GetAsync(long, string, bool, CancellationToken)"/> if you want past occurrences to be included.
+		/// </remarks>
+		public static Task<Webinar> GetAsync(this IWebinars webinarResource, long webinarId, string occurrenceId = null, CancellationToken cancellationToken = default)
+		{
+			return webinarResource.GetAsync(webinarId, occurrenceId, false, cancellationToken);
+		}
+
+		/// <summary>
+		/// Adds user to a group.
+		/// </summary>
+		/// <param name="groupsResource">The group resource.</param>
+		/// <param name="groupId">The ID of the group.</param>
+		/// <param name="emailAddress">An email address of user to add to the group.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task representing the operation. The result will be a string representing the ID of the added user.</returns>
+		public static async Task<string> AddUserToGroupAsync(this IGroups groupsResource, string groupId, string emailAddress, CancellationToken cancellationToken = default)
+		{
+			var result = await groupsResource.AddUsersToGroupAsync(groupId, new[] { emailAddress }, cancellationToken).ConfigureAwait(false);
+
+			// We added a single member to a group therefore the array returned from the Zoom API contains a single element
+			return result.Single();
 		}
 	}
 }

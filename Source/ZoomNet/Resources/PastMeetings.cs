@@ -6,13 +6,7 @@ using ZoomNet.Models;
 
 namespace ZoomNet.Resources
 {
-	/// <summary>
-	/// Allows you to manage meetings that occured in the past.
-	/// </summary>
-	/// <seealso cref="ZoomNet.Resources.IMeetings" />
-	/// <remarks>
-	/// See <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/meetings/meetings">Zoom documentation</a> for more information.
-	/// </remarks>
+	/// <inheritdoc/>
 	public class PastMeetings : IPastMeetings
 	{
 		private readonly Pathoschild.Http.Client.IClient _client;
@@ -26,33 +20,17 @@ namespace ZoomNet.Resources
 			_client = client;
 		}
 
-		/// <summary>
-		/// Retrieve the details of a meeting that occured in the past.
-		/// </summary>
-		/// <param name="uuid">The meeting UUID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The <see cref="Meeting" />.
-		/// </returns>
-		public Task<PastMeeting> GetAsync(string uuid, CancellationToken cancellationToken = default)
+		/// <inheritdoc/>
+		public Task<PastMeeting> GetAsync(string meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.GetAsync($"past_meetings/{uuid}")
+				.GetAsync($"past_meetings/{meetingId}")
 				.WithCancellationToken(cancellationToken)
 				.AsObject<PastMeeting>();
 		}
 
-		/// <summary>
-		/// List participants of a meeting that occured in the past.
-		/// </summary>
-		/// <param name="uuid">The meeting UUID.</param>
-		/// <param name="recordsPerPage">The number of records to return.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Participant" />.
-		/// </returns>
-		public Task<PaginatedResponseWithToken<Participant>> GetParticipantsAsync(string uuid, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<Participant>> GetParticipantsAsync(string meetingId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
 			{
@@ -60,21 +38,14 @@ namespace ZoomNet.Resources
 			}
 
 			return _client
-				.GetAsync($"past_meetings/{uuid}/participants")
+				.GetAsync($"past_meetings/{meetingId}/participants")
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<Participant>("participants");
 		}
 
-		/// <summary>
-		/// Get a list of ended meeting instance.
-		/// </summary>
-		/// <param name="meetingId">The meeting identifier.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="PastInstance" />.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<PastInstance[]> GetInstancesAsync(long meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -83,14 +54,7 @@ namespace ZoomNet.Resources
 				.AsObject<PastInstance[]>("meetings");
 		}
 
-		/// <summary>
-		/// Get a list of poll results for a meeting that occured in the past.
-		/// </summary>
-		/// <param name="meetingId">The meeting identifier.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="PollResult" />.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<PollResult[]> GetPollResultsAsync(long meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -99,17 +63,7 @@ namespace ZoomNet.Resources
 				.AsObject<PollResult[]>("questions");
 		}
 
-		/// <summary>
-		/// Get a list of files sent via in-meeting chat during a meeting.
-		/// </summary>
-		/// <remarks>
-		/// The in-meeting files are deleted after 24 hours of the meeting completion time.
-		/// </remarks>
-		/// <param name="meetingId">The meeting identifier.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="MeetingFile" />.
-		/// </returns>
+		/// <inheritdoc/>
 		[Obsolete("This method has been deprecated and is no longer supported due to GCM encryption updates for security purposes")]
 		public Task<MeetingFile[]> GetFilesAsync(long meetingId, CancellationToken cancellationToken = default)
 		{

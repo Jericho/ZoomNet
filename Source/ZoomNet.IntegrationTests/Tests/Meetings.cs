@@ -51,6 +51,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				ApprovalType = ApprovalType.Manual,
 				JoinBeforeHost = true,
 				JoinBeforeHostTime = JoinBeforeHostTime.FiveMinutes,
+				UsePmi = true,
 			};
 			var trackingFields = new Dictionary<string, string>()
 			{
@@ -139,7 +140,7 @@ namespace ZoomNet.IntegrationTests.Tests
 					new BatchRegistrant { Email = "firstBatchRegistrant@example.com", FirstName = "Mariful", LastName = "Maruf" },
 					new BatchRegistrant { Email = "secondBatchRegistrant@example.com", FirstName = "Abdullah", LastName = "Galib" }
 				};
-				var registrantsInfo = await client.Meetings.PerformBatchRegistrationAsync(scheduledMeeting.Id, registrants, true).ConfigureAwait(false);
+				var registrantsInfo = await client.Meetings.PerformBatchRegistrationAsync(scheduledMeeting.Id, registrants, true, false, cancellationToken).ConfigureAwait(false);
 				await log.WriteLineAsync($"Registrants {registrantsInfo} added to meeting {scheduledMeeting.Id}").ConfigureAwait(false);
 
 				var registrationAnswers1 = new[]
@@ -262,7 +263,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync($"Recurring meeting with no fixed time {newRecurringNoFixTimeMeeting.Id} created").ConfigureAwait(false);
 
 			await client.Meetings.DeleteAsync(newRecurringNoFixTimeMeeting.Id, null, false, false, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"Recurring meeting with no fixed time  {newRecurringNoFixTimeMeeting.Id} deleted").ConfigureAwait(false);
+			await log.WriteLineAsync($"Recurring meeting with no fixed time {newRecurringNoFixTimeMeeting.Id} deleted").ConfigureAwait(false);
 		}
 	}
 }

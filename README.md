@@ -15,7 +15,9 @@
 
 ## About
 
-The ZoomNet library simplifies connecting with the Zoom.us API and interacting with the various endpoints. Additionaly, the library includes a parser that allows you to process inbound webhook messages sent to you by the Zoom API.
+- The ZoomNet library simplifies connecting with the Zoom.us API and interacting with the various endpoints.
+- The library also includes a parser that allows you to process inbound webhook messages sent to you by the Zoom API over HTTP.
+- Zoom is working on a new server that will deliver the webhook messages over websockets rather than HTTP. This server was introduced in beta during summer 2022 and, as of January 2023, it is still in beta. The ZoomNet library has a convenient client that allows you to receive and process these messages.
 
 
 ## Installation
@@ -66,8 +68,8 @@ var zoomClient = new ZoomClient(connectionInfo);
 Using OAuth is much more complicated than using JWT but at the same time, it is more flexible because you can define which permissions your app requires. When a user installs your app, they are presented with the list of permissions your app requires and they are given the opportunity to accept. 
 
 The Zoom documentation has a document about [how to create an OAuth app](https://marketplace.zoom.us/docs/guides/build/oauth-app) and another document about the [OAuth autorization flow](https://marketplace.zoom.us/docs/guides/auth/oauth) but I personnality was very confused by the later document so here is a brief step-by-step summary:
-- you create an OAuth app, define which permissions your app requires and publish the app in the Zoom marketplace.
-- user installs your app. During installation, user is presentd with a screen listing the permissons your app requires. User must click `accept`.
+- you create an OAuth app, define which permissions your app requires and publish the app to the Zoom marketplace.
+- user installs your app. During installation, user is presented with a screen listing the permissons your app requires. User must click `accept`.
 - Zoom generates an "authorization code". This code can be used only once to generate the first access token and refresh token. I CAN'T STRESS THIS ENOUGH: the authorization code can be used only one time. This was the confusing part to me: somehow I didn't understand that this code could be used only one time and I was attempting to use it repeatedly. Zoom would accept the code the first time and would reject it subsequently, which lead to many hours of frustration while trying to figure out why the code was sometimes rejected.
 - The access token is valid for 60 minutes and must therefore be "refreshed" periodically.
 
@@ -158,22 +160,25 @@ var connectionInfo = OAuthConnectionInfo.ForServerToServer(clientId, clientSecre
 var zoomClient = new ZoomClient(connectionInfo);
 ```
 
-#### Mutliple instances of your application in Server-to-Server OAuth scenarios
+#### Multiple instances of your application in Server-to-Server OAuth scenarios
+
+> :exclamation: **Important Note**
+> The following discussion about how to prevent multiple apps (or multiple instances of a single app) from invalidating each other's OAuth token is obsolete since June 2023. See this [announcement](https://devforum.zoom.us/t/multi-access-tokens-launched-for-s2s-apps/90527). All three potential solutions mentioned in the discussion are now unnecessary because Zoom has changed the behavior of their platform that was the root of this problem. In particular, the "token index" mentioned in solution number 2 has been removed in ZoomNet version 0.64.0 and the much more advanced solution mentioned in solution number 3 (which was available as a beta) has been abandoned.
+
+<strike>
 
 One important detail about Server-to-Server OAuth which is not widely known is that requesting a new token automatically invalidates a previously issued token EVEN THOUGH IT HASN'T REACHED ITS EXPIRATION DATE/TIME. This will affect you if you have multiple instances of your application running at the same time. To illustrate what this means, let's say that you have two instances of your application running at the same time. What is going to happen is that instance number 1 will request a new token which it will successfully use for some time until instance number 2 requests its own token. When this second token is issued, the token for instance 1 is invalidated which will cause instance 1 to request a new token. This new token will invalidate token number 2 which will cause instance 2 to request a new token, and so on. As you can see, instance 1 and 2 are fighting each other for a token.
 
 There are a few ways you can overcome this problem:
 
 Solution number 1:
-You can create mutiple OAuth apps in Zoom's management dashboard, one for each instance of your app. This means that each instance will have their own clientId, clientSecret and accountId and therefore they can independently request tokens without interfering with each other.
+You can create multiple OAuth apps in Zoom's management dashboard, one for each instance of your app. This means that each instance will have their own clientId, clientSecret and accountId and therefore they can independently request tokens without interfering with each other.
 
-This puts the onus is on you to create and manage these Zoom apps. Additionally, you are responsible for ensuring that the `OAuthConnectionInfo` in your C# code is initialized with the appropriate values for each instance.
-
-This is a simple and effective solution when you have a relatively small number of instances but, in my opinion, it becomes overwhelming when your number of instances becomes too large.
+This puts the onus on you to create and manage these Zoom apps. Additionally, you are responsible for ensuring that the `OAuthConnectionInfo` in your C# code is initialized with the appropriate values for each instance. This is a simple and effective solution when you have a relatively small number of instances but, in my opinion, it becomes overwhelming when your number of instances becomes too large.
 
 
 Solution number 2:
-Create a single Zoom OAuth app. Contact Zoom support and request additional "token indices" (also known as "group numbers") for this OAuth app. Subsequently, new tokens can be "scoped" to a given index which means that a token issued for a specific index does not invalidate token for any other index. Hopefully, Zoom will grant you enough token indices and you will be able to dedicate one index for each instance of your application and you can subsequently modify your C# code to "scope"" you OAuth connection to a desired index, like so:
+Create a single Zoom OAuth app. Contact Zoom support and request additional "token indices" (also known as "group numbers") for this OAuth app. Subsequently, new tokens can be "scoped" to a given index which means that a token issued for a specific index does not invalidate token for any other index. Hopefully, Zoom will grant you enough token indices and you will be able to dedicate one index for each instance of your application and you can subsequently modify your C# code to "scope" you OAuth connection to a desired index, like so:
 
 ```csharp
 // you initialize the connection info for your first instance like this:
@@ -189,6 +194,16 @@ var connectionInfo = OAuthConnectionInfo.ForServerToServer(clientId, clientSecre
 ```
 
 Just like solution number 1, this solution works well for scenarios where you have a relatively small number of instances and where Zoom has granted you enough indices.
+
+But what if you have more instances of your application than the number of indices that Zoom has granted you? For instance, what if you have 100 instances of your application running in the cloud (Azure, AWS, etc.) but Zoom granted you only 5 indices? If you are in this situation, the solutions I presented so far won't solve the problem. Keep reading, the next solution is a much better option for you.
+
+
+Solution number 3:
+You can make sure that all instances share the same token by storing the token information in a common repository that all your instances have access to. Examples of such repositories are: Azure blob storage, SQL server, Redis, MySQL, etc. For this solution to be effective, we must also make sure that your instances don't request new tokens at the same time because that would again tigger the problem described earlier where each new token invalidates the previous one. 
+
+If this solution sounds like a good option for your scenario, you're in luck: there's a beta version of ZoomNet that provides the necessary infrastructure and all you have to do is to write an implementation of a provided interface to provide the logic for the repository of your choice where token information information will be preserved and make accessible to all your application instances. ZoomNet takes care of allowing only one of your instances to be allowed to refresh a token at any given moment. If you are interrested in testing this beta version, leave a comment [here](https://github.com/Jericho/ZoomNet/issues/269).
+
+</strike>
 
 
 ### Webhook Parser

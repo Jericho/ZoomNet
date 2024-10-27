@@ -25,7 +25,7 @@ namespace ZoomNet.Resources
 		/// An array of <see cref="WebinarSummary">webinar summaries</see>.
 		/// </returns>
 		/// <remarks>
-		/// To obtain the full details about a given webinar you must invoke <see cref="Webinars.GetAsync(long, string, CancellationToken)"/>.
+		/// To obtain the full details about a given webinar you must invoke <see cref="Webinars.GetAsync(long, string, bool, CancellationToken)"/>.
 		/// </remarks>
 		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
 		Task<PaginatedResponse<WebinarSummary>> GetAllAsync(string userId, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default);
@@ -41,7 +41,7 @@ namespace ZoomNet.Resources
 		/// An array of <see cref="WebinarSummary">webinar summaries</see>.
 		/// </returns>
 		/// <remarks>
-		/// To obtain the full details about a given webinar you must invoke <see cref="Webinars.GetAsync(long, string, CancellationToken)"/>.
+		/// To obtain the full details about a given webinar you must invoke <see cref="Webinars.GetAsync(long, string, bool, CancellationToken)"/>.
 		/// </remarks>
 		Task<PaginatedResponseWithToken<WebinarSummary>> GetAllAsync(string userId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
@@ -144,11 +144,16 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="webinarId">The webinar ID.</param>
 		/// <param name="occurrenceId">The webinar occurrence id.</param>
+		/// <param name="includePreviousOccurrences">Set this parameter to true to view meeting details of all previous occurrences of a recurring meeting.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The <see cref="Webinar" />.
 		/// </returns>
-		Task<Webinar> GetAsync(long webinarId, string occurrenceId = null, CancellationToken cancellationToken = default);
+		/// <remarks>
+		/// Please note that 'includePreviousOccurences' is applicable only when fetching a recurring webinar.
+		/// It will be ignored if you are fetching any other type of meeting such as scheduled, personal or instant for example.
+		/// </remarks>
+		Task<Webinar> GetAsync(long webinarId, string occurrenceId = null, bool includePreviousOccurrences = false, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Delete a webinar.

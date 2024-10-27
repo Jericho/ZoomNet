@@ -47,6 +47,18 @@ namespace ZoomNet.Models
 		public ParticipantDevice[] Devices { get; set; }
 
 		/// <summary>
+		/// Gets or sets the device operation system.
+		/// </summary>
+		[JsonPropertyName("os")]
+		public string OperatingSystem { get; set; }
+
+		/// <summary>
+		/// Gets or sets the device operation system version.
+		/// </summary>
+		[JsonPropertyName("os_version")]
+		public string OperatingSystemVersion { get; set; }
+
+		/// <summary>
 		/// Gets or sets the participant's IP address.
 		/// </summary>
 		/// <value>

@@ -11,18 +11,22 @@ namespace ZoomNet
 		/// <summary>
 		/// Gets the resource which allows you to manage sub accounts.
 		/// </summary>
-		/// <value>
-		/// The accounts resource.
-		/// </value>
 		IAccounts Accounts { get; }
+
+		/// <summary>
+		/// Gets the resource which allows you to manage call logs.
+		/// </summary>
+		ICallLogs CallLogs { get; }
 
 		/// <summary>
 		/// Gets the resource which allows you to manage chat channels, messages, etc.
 		/// </summary>
-		/// <value>
-		/// The chat resource.
-		/// </value>
 		IChat Chat { get; }
+
+		/// <summary>
+		/// Gets the resource which allows you to manage chatbot messages.
+		/// </summary>
+		IChatbot Chatbot { get; }
 
 		/// <summary>
 		/// Gets the resource which allows you to manage cloud recordings.
@@ -41,67 +45,41 @@ namespace ZoomNet
 		IContacts Contacts { get; }
 
 		/// <summary>
+		/// Gets the resource which allows you to view metrics.
+		/// </summary>
+		IDashboards Dashboards { get; }
+
+		/// <summary>
 		/// Gets the resource which allows you to notify Zoom that you comply with the policy which requires
 		/// you to handle user's data in accordance to the user's preference after the user uninstalls your app.
 		/// </summary>
-		/// <value>
-		/// The data compliance resource.
-		/// </value>
 		[Obsolete("The Data Compliance API is deprecated")]
 		IDataCompliance DataCompliance { get; }
 
 		/// <summary>
+		/// Gets the resource that allows you to manage groups.
+		/// </summary>
+		IGroups Groups { get; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage meetings.
 		/// </summary>
-		/// <value>
-		/// The meetings resource.
-		/// </value>
 		IMeetings Meetings { get; }
 
 		/// <summary>
 		/// Gets the resource which allows you to manage meetings that occured in the past.
 		/// </summary>
-		/// <value>
-		/// The past meetings resource.
-		/// </value>
 		IPastMeetings PastMeetings { get; }
 
 		/// <summary>
 		/// Gets the resource which allows you to manage webinars that occured in the past.
 		/// </summary>
-		/// <value>
-		/// The past webinars resource.
-		/// </value>
 		IPastWebinars PastWebinars { get; }
 
 		/// <summary>
-		/// Gets the resource which allows you to manage roles.
+		/// Gets the resource which allows you to access Zoom Phone API endpoints.
 		/// </summary>
-		/// <value>
-		/// The roles resource.
-		/// </value>
-		IRoles Roles { get; }
-
-		/// <summary>
-		/// Gets the resource which allows you to manage users.
-		/// </summary>
-		/// <value>
-		/// The users resource.
-		/// </value>
-		IUsers Users { get; }
-
-		/// <summary>
-		/// Gets the resource which allows you to manage webinars.
-		/// </summary>
-		/// <value>
-		/// The webinars resource.
-		/// </value>
-		IWebinars Webinars { get; }
-
-		/// <summary>
-		/// Gets the resource which allows you to view metrics.
-		/// </summary>
-		IDashboards Dashboards { get; }
+		IPhone Phone { get; }
 
 		/// <summary>
 		/// Gets the resource which allows you to view reports.
@@ -109,8 +87,23 @@ namespace ZoomNet
 		IReports Reports { get; }
 
 		/// <summary>
-		/// Gets the resource which allows you to manage call logs.
+		/// Gets the resource which allows you to manage roles.
 		/// </summary>
-		ICallLogs CallLogs { get; }
+		IRoles Roles { get; }
+
+		/// <summary>
+		/// Gets the resource which allows you to manage SMS messages and sessions.
+		/// </summary>
+		ISms Sms { get; }
+
+		/// <summary>
+		/// Gets the resource which allows you to manage users.
+		/// </summary>
+		IUsers Users { get; }
+
+		/// <summary>
+		/// Gets the resource which allows you to manage webinars.
+		/// </summary>
+		IWebinars Webinars { get; }
 	}
 }
