@@ -74,7 +74,7 @@ namespace ZoomNet.Resources
 		/// <param name="duration">Meeting duration (minutes).</param>
 		/// <param name="timeZone">The time zone for start time.</param>
 		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
-		/// <param name="default_password">Whether to generate a default password using the user's settings.</param>
+		/// <param name="generatePassword">Whether to generate a default password using the user's settings.</param>
 		/// <param name="settings">Meeting settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
 		/// <param name="templateId">Template Identifer.</param>
