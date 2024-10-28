@@ -26,22 +26,29 @@ namespace ZoomNet.IntegrationTests.Tests
 			var paginatedUpcomingMeetings = await client.Meetings.GetAllAsync(myUser.Id, MeetingListType.Upcoming, 100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {paginatedUpcomingMeetings.TotalRecords} upcoming meetings").ConfigureAwait(false);
 
+			var paginatedUpcomingMeetingsMeetings = await client.Meetings.GetAllAsync(myUser.Id, MeetingListType.UpcomingMeetings, 100, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {paginatedUpcomingMeetingsMeetings.TotalRecords} UpcomingMeetings meetings").ConfigureAwait(false);
+
+			var paginatedPreviousMeetings = await client.Meetings.GetAllAsync(myUser.Id, MeetingListType.PreviousMeetings, 100, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {paginatedPreviousMeetings.TotalRecords} previous meetings").ConfigureAwait(false);
+
 			// CLEANUP PREVIOUS INTEGRATION TESTS THAT MIGHT HAVE BEEN INTERRUPTED BEFORE THEY HAD TIME TO CLEANUP AFTER THEMSELVES
 			var cleanUpTasks = paginatedScheduledMeetings.Records
 				.Union(paginatedLiveMeetings.Records)
 				.Union(paginatedUpcomingMeetings.Records)
+				.Union(paginatedUpcomingMeetingsMeetings.Records)
+				.Union(paginatedPreviousMeetings.Records)
 				.Where(m => m.Topic.StartsWith("ZoomNet Integration Testing:"))
-				.Select(async oldMeeting =>
+				.GroupBy(m => m.Id)
+				.Select(async grp =>
 				{
-					await client.Meetings.DeleteAsync(oldMeeting.Id, null, false, false, cancellationToken).ConfigureAwait(false);
-					await log.WriteLineAsync($"Meeting {oldMeeting.Id} deleted").ConfigureAwait(false);
+					await client.Meetings.DeleteAsync(grp.Key, null, false, false, cancellationToken).ConfigureAwait(false);
+					await log.WriteLineAsync($"Meeting {grp.Key} deleted").ConfigureAwait(false);
 					await Task.Delay(250, cancellationToken).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
 				});
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
 
-			// For an unknown reason, using myUser.Id to retrieve meeting templates causes an "Invalid token" exception.
-			// That's why I use "me" on the following line:
-			var templates = await client.Meetings.GetTemplatesAsync("me", cancellationToken).ConfigureAwait(false);
+			var templates = await client.Meetings.GetTemplatesAsync(myUser.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Retrieved {templates.Length} meeting templates").ConfigureAwait(false);
 
 			var settings = new MeetingSettings()
