@@ -95,53 +95,54 @@ namespace ZoomNet.IntegrationTests.Tests
 			var scheduledMeeting = (ScheduledMeeting)await client.Meetings.GetAsync(newScheduledMeeting.Id, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Scheduled meeting {scheduledMeeting.Id} retrieved").ConfigureAwait(false);
 
-			var requiredFields = new[]
-			{
-				RegistrationField.PurchasingTimeFrame,
-				RegistrationField.RoleInPurchaseProcess
-			};
-			var optionalFields = new[]
-			{
-				RegistrationField.Address,
-				RegistrationField.City,
-				RegistrationField.Country,
-				RegistrationField.PostalCode,
-				RegistrationField.State,
-				RegistrationField.Phone,
-				RegistrationField.Industry,
-				RegistrationField.Organization,
-				RegistrationField.JobTitle,
-				RegistrationField.NumberOfEmployees,
-				RegistrationField.Comments
-			};
-			var customQuestions = new[]
-			{
-				new RegistrationCustomQuestionForMeeting
-				{
-					Title = "Are you happy?",
-					Type = RegistrationCustomQuestionTypeForMeeting.Single,
-					IsRequired = true,
-					Answers = new[] { "Yes", "No", "Maybe", "I don't know" }
-				},
-				new RegistrationCustomQuestionForMeeting
-				{
-					Title = "Tell us about yourself",
-					Type = RegistrationCustomQuestionTypeForMeeting.Short,
-					IsRequired = false
-				}
-			};
-			await client.Meetings.UpdateRegistrationQuestionsAsync(newScheduledMeeting.Id, requiredFields, optionalFields, customQuestions, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"Added {customQuestions.Length} custom registration questions to this meeting.").ConfigureAwait(false);
-
-			var registrationQuestions = await client.Meetings.GetRegistrationQuestionsAsync(newScheduledMeeting.Id, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"Here's a quick summary of the registration form for meeting {newScheduledMeeting.Id}:").ConfigureAwait(false);
-			await log.WriteLineAsync($"  - there are {registrationQuestions.RequiredFields.Length} required fields.").ConfigureAwait(false);
-			await log.WriteLineAsync($"  - there are {registrationQuestions.OptionalFields.Length} optional fields.").ConfigureAwait(false);
-			await log.WriteLineAsync($"  - there are {registrationQuestions.Questions.Count(q => q.IsRequired)} required custom questions.").ConfigureAwait(false);
-			await log.WriteLineAsync($"  - there are {registrationQuestions.Questions.Count(q => !q.IsRequired)} optional custom questions.").ConfigureAwait(false);
 
 			if (myUser.Type == UserType.Licensed)
 			{
+				var requiredFields = new[]
+				{
+					RegistrationField.PurchasingTimeFrame,
+					RegistrationField.RoleInPurchaseProcess
+				};
+				var optionalFields = new[]
+				{
+					RegistrationField.Address,
+					RegistrationField.City,
+					RegistrationField.Country,
+					RegistrationField.PostalCode,
+					RegistrationField.State,
+					RegistrationField.Phone,
+					RegistrationField.Industry,
+					RegistrationField.Organization,
+					RegistrationField.JobTitle,
+					RegistrationField.NumberOfEmployees,
+					RegistrationField.Comments
+				};
+				var customQuestions = new[]
+				{
+					new RegistrationCustomQuestionForMeeting
+					{
+						Title = "Are you happy?",
+						Type = RegistrationCustomQuestionTypeForMeeting.Single,
+						IsRequired = true,
+						Answers = new[] { "Yes", "No", "Maybe", "I don't know" }
+					},
+					new RegistrationCustomQuestionForMeeting
+					{
+						Title = "Tell us about yourself",
+						Type = RegistrationCustomQuestionTypeForMeeting.Short,
+						IsRequired = false
+					}
+				};
+				await client.Meetings.UpdateRegistrationQuestionsAsync(newScheduledMeeting.Id, requiredFields, optionalFields, customQuestions, cancellationToken).ConfigureAwait(false);
+				await log.WriteLineAsync($"Added {customQuestions.Length} custom registration questions to this meeting.").ConfigureAwait(false);
+
+				var registrationQuestions = await client.Meetings.GetRegistrationQuestionsAsync(newScheduledMeeting.Id, cancellationToken).ConfigureAwait(false);
+				await log.WriteLineAsync($"Here's a quick summary of the registration form for meeting {newScheduledMeeting.Id}:").ConfigureAwait(false);
+				await log.WriteLineAsync($"  - there are {registrationQuestions.RequiredFields.Length} required fields.").ConfigureAwait(false);
+				await log.WriteLineAsync($"  - there are {registrationQuestions.OptionalFields.Length} optional fields.").ConfigureAwait(false);
+				await log.WriteLineAsync($"  - there are {registrationQuestions.Questions.Count(q => q.IsRequired)} required custom questions.").ConfigureAwait(false);
+				await log.WriteLineAsync($"  - there are {registrationQuestions.Questions.Count(q => !q.IsRequired)} optional custom questions.").ConfigureAwait(false);
+
 				var registrants = new List<BatchRegistrant>
 				{
 					new BatchRegistrant { Email = "firstBatchRegistrant@example.com", FirstName = "Mariful", LastName = "Maruf" },
