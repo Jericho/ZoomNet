@@ -70,6 +70,11 @@ namespace ZoomNet.Resources
 			string templateId = null,
 			CancellationToken cancellationToken = default)
 		{
+			if (generatePassword && !string.IsNullOrEmpty(password))
+			{
+				throw new ArgumentException($"{nameof(generatePassword)} and {nameof(password)} are mutually exclusive. Either specify a password and set {nameof(generatePassword)} to false or set {nameof(password)} to null and set {nameof(generatePassword)} to true.");
+			}
+
 			var data = new JsonObject
 			{
 				{ "type", 1 },
@@ -104,6 +109,11 @@ namespace ZoomNet.Resources
 			string templateId = null,
 			CancellationToken cancellationToken = default)
 		{
+			if (generatePassword && !string.IsNullOrEmpty(password))
+			{
+				throw new ArgumentException($"{nameof(generatePassword)} and {nameof(password)} are mutually exclusive. Either specify a password and set {nameof(generatePassword)} to false or set {nameof(password)} to null and set {nameof(generatePassword)} to true.");
+			}
+
 			var data = new JsonObject
 			{
 				{ "type", 2 },
@@ -142,6 +152,11 @@ namespace ZoomNet.Resources
 			string templateId = null,
 			CancellationToken cancellationToken = default)
 		{
+			if (generatePassword && !string.IsNullOrEmpty(password))
+			{
+				throw new ArgumentException($"{nameof(generatePassword)} and {nameof(password)} are mutually exclusive. Either specify a password and set {nameof(generatePassword)} to false or set {nameof(password)} to null and set {nameof(generatePassword)} to true.");
+			}
+
 			var data = new JsonObject
 			{
 				{ "type", recurrence == null ? MeetingType.RecurringNoFixedTime : MeetingType.RecurringFixedTime },
