@@ -77,7 +77,7 @@ namespace ZoomNet.Resources
 
 			var data = new JsonObject
 			{
-				{ "type", 1 },
+				{ "type", MeetingType.Instant },
 				{ "topic", topic },
 				{ "password", password },
 				{ "default_password", generatePassword },
@@ -116,7 +116,7 @@ namespace ZoomNet.Resources
 
 			var data = new JsonObject
 			{
-				{ "type", 2 },
+				{ "type", MeetingType.Scheduled },
 				{ "topic", topic },
 				{ "password", password },
 				{ "default_password", generatePassword },
