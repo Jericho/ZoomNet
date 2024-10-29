@@ -107,6 +107,7 @@ namespace ZoomNet.Resources
 			MeetingSettings settings = null,
 			IDictionary<string, string> trackingFields = null,
 			string templateId = null,
+			bool preSchedule = false,
 			CancellationToken cancellationToken = default)
 		{
 			if (generatePassword && !string.IsNullOrEmpty(password))
@@ -126,7 +127,8 @@ namespace ZoomNet.Resources
 				{ "timezone", timeZone },
 				{ "settings", settings },
 				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }).ToArray() },
-				{ "template_id", templateId }
+				{ "template_id", templateId },
+				{ "pre_schedule", preSchedule },
 			};
 
 			return _client
@@ -150,12 +152,14 @@ namespace ZoomNet.Resources
 			MeetingSettings settings = null,
 			IDictionary<string, string> trackingFields = null,
 			string templateId = null,
+			bool preSchedule = false,
 			CancellationToken cancellationToken = default)
 		{
 			if (generatePassword && !string.IsNullOrEmpty(password))
 			{
 				throw new ArgumentException($"{nameof(generatePassword)} and {nameof(password)} are mutually exclusive. Either specify a password and set {nameof(generatePassword)} to false or set {nameof(password)} to null and set {nameof(generatePassword)} to true.");
 			}
+			if (preSchedule && recurrence != null) throw new ArgumentException($"{nameof(preSchedule)} can be set to true only when {nameof(recurrence)} is null.", nameof(preSchedule));
 
 			var data = new JsonObject
 			{
@@ -170,7 +174,8 @@ namespace ZoomNet.Resources
 				{ "timezone", timeZone },
 				{ "settings", settings },
 				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }).ToArray() },
-				{ "template_id", templateId }
+				{ "template_id", templateId },
+				{ "pre_schedule", preSchedule },
 			};
 
 			return _client
