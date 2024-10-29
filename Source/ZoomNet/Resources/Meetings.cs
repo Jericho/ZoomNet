@@ -70,10 +70,7 @@ namespace ZoomNet.Resources
 			string templateId = null,
 			CancellationToken cancellationToken = default)
 		{
-			if (generatePassword && !string.IsNullOrEmpty(password))
-			{
-				throw new ArgumentException($"{nameof(generatePassword)} and {nameof(password)} are mutually exclusive. Either specify a password and set {nameof(generatePassword)} to false or set {nameof(password)} to null and set {nameof(generatePassword)} to true.");
-			}
+			if (generatePassword && !string.IsNullOrEmpty(password)) throw new ArgumentException($"{nameof(generatePassword)} and {nameof(password)} are mutually exclusive. Either specify a password and set {nameof(generatePassword)} to false or set {nameof(password)} to null and set {nameof(generatePassword)} to true.");
 
 			var data = new JsonObject
 			{
@@ -110,10 +107,7 @@ namespace ZoomNet.Resources
 			bool preSchedule = false,
 			CancellationToken cancellationToken = default)
 		{
-			if (generatePassword && !string.IsNullOrEmpty(password))
-			{
-				throw new ArgumentException($"{nameof(generatePassword)} and {nameof(password)} are mutually exclusive. Either specify a password and set {nameof(generatePassword)} to false or set {nameof(password)} to null and set {nameof(generatePassword)} to true.");
-			}
+			if (generatePassword && !string.IsNullOrEmpty(password)) throw new ArgumentException($"{nameof(generatePassword)} and {nameof(password)} are mutually exclusive. Either specify a password and set {nameof(generatePassword)} to false or set {nameof(password)} to null and set {nameof(generatePassword)} to true.");
 
 			var data = new JsonObject
 			{
@@ -155,10 +149,7 @@ namespace ZoomNet.Resources
 			bool preSchedule = false,
 			CancellationToken cancellationToken = default)
 		{
-			if (generatePassword && !string.IsNullOrEmpty(password))
-			{
-				throw new ArgumentException($"{nameof(generatePassword)} and {nameof(password)} are mutually exclusive. Either specify a password and set {nameof(generatePassword)} to false or set {nameof(password)} to null and set {nameof(generatePassword)} to true.");
-			}
+			if (generatePassword && !string.IsNullOrEmpty(password)) throw new ArgumentException($"{nameof(generatePassword)} and {nameof(password)} are mutually exclusive. Either specify a password and set {nameof(generatePassword)} to false or set {nameof(password)} to null and set {nameof(generatePassword)} to true.");
 			if (preSchedule && recurrence != null) throw new ArgumentException($"{nameof(preSchedule)} can be set to true only when {nameof(recurrence)} is null.", nameof(preSchedule));
 
 			var data = new JsonObject
