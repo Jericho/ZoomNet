@@ -67,7 +67,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			};
 
 			// Instant meeting
-			var newInstantMeeting = await client.Meetings.CreateInstantMeetingAsync(myUser.Id, "ZoomNet Integration Testing: instant meeting", "The agenda", null, true, settings, trackingFields, null, cancellationToken).ConfigureAwait(false);
+			var newInstantMeeting = await client.Meetings.CreateInstantMeetingAsync(myUser.Id, "ZoomNet Integration Testing: instant meeting", "The agenda", null, settings, trackingFields, null, true, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Instant meeting {newInstantMeeting.Id} created").ConfigureAwait(false);
 
 			var instantMeeting = (InstantMeeting)await client.Meetings.GetAsync(newInstantMeeting.Id, null, cancellationToken).ConfigureAwait(false);
@@ -85,7 +85,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			// Scheduled meeting
 			var start = DateTime.UtcNow.AddMonths(1);
 			var duration = 30;
-			var newScheduledMeeting = await client.Meetings.CreateScheduledMeetingAsync(myUser.Id, "ZoomNet Integration Testing: scheduled meeting", "The agenda", start, duration, TimeZones.UTC, null, true, settings, trackingFields, null, false, cancellationToken).ConfigureAwait(false);
+			var newScheduledMeeting = await client.Meetings.CreateScheduledMeetingAsync(myUser.Id, "ZoomNet Integration Testing: scheduled meeting", "The agenda", start, duration, TimeZones.UTC, null, settings, trackingFields, null, true, false, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Scheduled meeting {newScheduledMeeting.Id} created").ConfigureAwait(false);
 
 			var updatedSettings = new MeetingSettings() { Audio = AudioType.Voip };
@@ -94,7 +94,6 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			var scheduledMeeting = (ScheduledMeeting)await client.Meetings.GetAsync(newScheduledMeeting.Id, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Scheduled meeting {scheduledMeeting.Id} retrieved").ConfigureAwait(false);
-
 
 			if (myUser.Type == UserType.Licensed)
 			{
@@ -247,7 +246,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				WeeklyDays = new[] { DayOfWeek.Monday, DayOfWeek.Friday },
 				Type = RecurrenceType.Weekly
 			};
-			var newRecurringMeeting = await client.Meetings.CreateRecurringMeetingAsync(myUser.Id, "ZoomNet Integration Testing: recurring meeting", "The agenda", start, duration, recurrenceInfo, TimeZones.UTC, "p@ss!w0rd", false, settings, trackingFields, null, false, cancellationToken).ConfigureAwait(false);
+			var newRecurringMeeting = await client.Meetings.CreateRecurringMeetingAsync(myUser.Id, "ZoomNet Integration Testing: recurring meeting", "The agenda", start, duration, recurrenceInfo, TimeZones.UTC, "p@ss!w0rd", settings, trackingFields, null, false, false, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Recurring meeting {newRecurringMeeting.Id} created").ConfigureAwait(false);
 
 			await client.Meetings.UpdateRecurringMeetingAsync(newRecurringMeeting.Id, topic: "ZoomNet Integration Testing: UPDATED recurring meeting", cancellationToken: cancellationToken).ConfigureAwait(false);
@@ -267,7 +266,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync($"Recurring meeting {newRecurringMeeting.Id} deleted").ConfigureAwait(false);
 
 			// Recurring meeting with no fixed time
-			var newRecurringNoFixTimeMeeting = await client.Meetings.CreateRecurringMeetingAsync(myUser.Id, "ZoomNet Integration Testing: recurring meeting with no fixed time", "The agenda", start, duration, null, TimeZones.UTC, "p@ss!w0rd", false, settings, null, null, false, cancellationToken).ConfigureAwait(false);
+			var newRecurringNoFixTimeMeeting = await client.Meetings.CreateRecurringMeetingAsync(myUser.Id, "ZoomNet Integration Testing: recurring meeting with no fixed time", "The agenda", start, duration, null, TimeZones.UTC, "p@ss!w0rd", settings, null, null, false, false, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Recurring meeting with no fixed time {newRecurringNoFixTimeMeeting.Id} created").ConfigureAwait(false);
 
 			await client.Meetings.DeleteAsync(newRecurringNoFixTimeMeeting.Id, null, false, false, cancellationToken).ConfigureAwait(false);

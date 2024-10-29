@@ -64,10 +64,10 @@ namespace ZoomNet.Resources
 			string topic,
 			string agenda,
 			string password = null,
-			bool generatePassword = false,
 			MeetingSettings settings = null,
 			IDictionary<string, string> trackingFields = null,
 			string templateId = null,
+			bool generatePassword = false,
 			CancellationToken cancellationToken = default)
 		{
 			if (generatePassword && !string.IsNullOrEmpty(password)) throw new ArgumentException($"{nameof(generatePassword)} and {nameof(password)} are mutually exclusive. Either specify a password and set {nameof(generatePassword)} to false or set {nameof(password)} to null and set {nameof(generatePassword)} to true.");
@@ -77,11 +77,11 @@ namespace ZoomNet.Resources
 				{ "type", MeetingType.Instant },
 				{ "topic", topic },
 				{ "password", password },
-				{ "default_password", generatePassword },
 				{ "agenda", agenda },
 				{ "settings", settings },
 				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }).ToArray() },
-				{ "template_id", templateId }
+				{ "template_id", templateId },
+				{ "default_password", generatePassword },
 			};
 
 			return _client
@@ -100,10 +100,10 @@ namespace ZoomNet.Resources
 			int duration,
 			TimeZones? timeZone = TimeZones.UTC,
 			string password = null,
-			bool generatePassword = false,
 			MeetingSettings settings = null,
 			IDictionary<string, string> trackingFields = null,
 			string templateId = null,
+			bool generatePassword = false,
 			bool preSchedule = false,
 			CancellationToken cancellationToken = default)
 		{
@@ -114,7 +114,6 @@ namespace ZoomNet.Resources
 				{ "type", MeetingType.Scheduled },
 				{ "topic", topic },
 				{ "password", password },
-				{ "default_password", generatePassword },
 				{ "agenda", agenda },
 				{ "start_time", start.ToZoomFormat(timeZone) },
 				{ "duration", duration },
@@ -122,6 +121,7 @@ namespace ZoomNet.Resources
 				{ "settings", settings },
 				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }).ToArray() },
 				{ "template_id", templateId },
+				{ "default_password", generatePassword },
 				{ "pre_schedule", preSchedule },
 			};
 
@@ -142,10 +142,10 @@ namespace ZoomNet.Resources
 			RecurrenceInfo recurrence,
 			TimeZones? timeZone = TimeZones.UTC,
 			string password = null,
-			bool generatePassword = false,
 			MeetingSettings settings = null,
 			IDictionary<string, string> trackingFields = null,
 			string templateId = null,
+			bool generatePassword = false,
 			bool preSchedule = false,
 			CancellationToken cancellationToken = default)
 		{
@@ -157,7 +157,6 @@ namespace ZoomNet.Resources
 				{ "type", recurrence == null ? MeetingType.RecurringNoFixedTime : MeetingType.RecurringFixedTime },
 				{ "topic", topic },
 				{ "password", password },
-				{ "default_password", generatePassword },
 				{ "agenda", agenda },
 				{ "start_time", start.ToZoomFormat(timeZone) },
 				{ "duration", duration },
@@ -166,6 +165,7 @@ namespace ZoomNet.Resources
 				{ "settings", settings },
 				{ "tracking_fields", trackingFields?.Select(tf => new JsonObject { { "field", tf.Key }, { "value", tf.Value } }).ToArray() },
 				{ "template_id", templateId },
+				{ "default_password", generatePassword },
 				{ "pre_schedule", preSchedule },
 			};
 

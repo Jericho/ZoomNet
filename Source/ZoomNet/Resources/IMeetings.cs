@@ -54,16 +54,16 @@ namespace ZoomNet.Resources
 		/// <param name="topic">Meeting topic.</param>
 		/// <param name="agenda">Meeting description.</param>
 		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
-		/// <param name="generatePassword">Whether to generate a default passcode using the user's settings. If this value is true and the user has the PMI setting enabled with a passcode, then the user's meetings will use the PMI passcode.</param>
 		/// <param name="settings">Meeting settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
 		/// <param name="templateId">Template Identifer.</param>
+		/// <param name="generatePassword">Whether to generate a default passcode using the user's settings. If this value is true and the user has the PMI setting enabled with a passcode, then the user's meetings will use the PMI passcode.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The new meeting.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the meeting.</exception>
-		Task<InstantMeeting> CreateInstantMeetingAsync(string userId, string topic, string agenda, string password = null, bool generatePassword = false, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, CancellationToken cancellationToken = default);
+		Task<InstantMeeting> CreateInstantMeetingAsync(string userId, string topic, string agenda, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, bool generatePassword = false, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Create a scheduled meeting for a user.
@@ -75,17 +75,17 @@ namespace ZoomNet.Resources
 		/// <param name="duration">Meeting duration (minutes).</param>
 		/// <param name="timeZone">The time zone for start time.</param>
 		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
-		/// <param name="generatePassword">Whether to generate a default passcode using the user's settings. If this value is true and the user has the PMI setting enabled with a passcode, then the user's meetings will use the PMI passcode.</param>
 		/// <param name="settings">Meeting settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
 		/// <param name="templateId">Template Identifer.</param>
+		/// <param name="generatePassword">Whether to generate a default passcode using the user's settings. If this value is true and the user has the PMI setting enabled with a passcode, then the user's meetings will use the PMI passcode.</param>
 		/// <param name="preSchedule">Whether to create a prescheduled meeting via the GSuite app.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The new meeting.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the meeting.</exception>
-		Task<ScheduledMeeting> CreateScheduledMeetingAsync(string userId, string topic, string agenda, DateTime start, int duration, TimeZones? timeZone = TimeZones.UTC, string password = null, bool generatePassword = false, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, bool preSchedule = false, CancellationToken cancellationToken = default);
+		Task<ScheduledMeeting> CreateScheduledMeetingAsync(string userId, string topic, string agenda, DateTime start, int duration, TimeZones? timeZone = TimeZones.UTC, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, bool generatePassword = false, bool preSchedule = false, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Create a recurring meeting for a user.
@@ -98,17 +98,17 @@ namespace ZoomNet.Resources
 		/// <param name="recurrence">Recurrence information.</param>
 		/// <param name="timeZone">The time zone for start time.</param>
 		/// <param name="password">Password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</param>
-		/// <param name="generatePassword">Whether to generate a default passcode using the user's settings. If this value is true and the user has the PMI setting enabled with a passcode, then the user's meetings will use the PMI passcode.</param>
 		/// <param name="settings">Meeting settings.</param>
 		/// <param name="trackingFields">Tracking fields.</param>
 		/// <param name="templateId">Template Identifer.</param>
+		/// <param name="generatePassword">Whether to generate a default passcode using the user's settings. If this value is true and the user has the PMI setting enabled with a passcode, then the user's meetings will use the PMI passcode.</param>
 		/// <param name="preSchedule">Whether to create a prescheduled meeting via the GSuite app. This only applies to recurring meetings with no fixed time.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The new meeting.
 		/// </returns>
 		/// <exception cref="System.Exception">Thrown when an exception occured while creating the meeting.</exception>
-		Task<RecurringMeeting> CreateRecurringMeetingAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, TimeZones? timeZone = TimeZones.UTC, string password = null, bool generatePassword = false, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, bool preSchedule = false, CancellationToken cancellationToken = default);
+		Task<RecurringMeeting> CreateRecurringMeetingAsync(string userId, string topic, string agenda, DateTime? start, int duration, RecurrenceInfo recurrence, TimeZones? timeZone = TimeZones.UTC, string password = null, MeetingSettings settings = null, IDictionary<string, string> trackingFields = null, string templateId = null, bool generatePassword = false, bool preSchedule = false, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Update the details of a meeting occurrence.
