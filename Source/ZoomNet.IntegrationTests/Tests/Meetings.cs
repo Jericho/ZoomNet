@@ -85,7 +85,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			// Scheduled meeting
 			var start = DateTime.UtcNow.AddMonths(1);
 			var duration = 30;
-			var newScheduledMeeting = await client.Meetings.CreateScheduledMeetingAsync(myUser.Id, "ZoomNet Integration Testing: scheduled meeting", "The agenda", start, duration, TimeZones.UTC, null, settings, trackingFields, null, true, false, cancellationToken).ConfigureAwait(false);
+			var newScheduledMeeting = await client.Meetings.CreateScheduledMeetingAsync(myUser.Id, "ZoomNet Integration Testing: scheduled meeting", "The agenda", start, duration, TimeZones.UTC, "pass@word!", settings, trackingFields, null, true, false, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Scheduled meeting {newScheduledMeeting.Id} created").ConfigureAwait(false);
 
 			var updatedSettings = new MeetingSettings() { Audio = AudioType.Voip };
