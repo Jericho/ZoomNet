@@ -504,5 +504,14 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
+
+		/// <inheritdoc/>
+		public Task<PresenceStatusResponse> GetPresenceStatusAsync(string userId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"users/{userId}/presence_status")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<PresenceStatusResponse>();
+		}
 	}
 }

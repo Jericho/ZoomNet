@@ -416,5 +416,14 @@ namespace ZoomNet.Resources
 		/// - The maximum value for duration is 1,440 minutes which represents 24 hours (i.e.: 60  * 24 hours = 1,440).
 		/// </remarks>
 		Task UpdatePresenceStatusAsync(string userId, PresenceStatus status, int? duration = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Returns a user's current status.
+		/// </summary>
+		/// <param name="userId">The user Id/member Id or email address.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>Current user's status.</returns>
+		/// <remarks>If the presence status is Do not disturb, end_time and remaining_time properties are only visible if the user being queried is also the current user.</remarks>
+		Task<PresenceStatusResponse> GetPresenceStatusAsync(string userId, CancellationToken cancellationToken = default);
 	}
 }
