@@ -83,7 +83,7 @@ namespace ZoomNet.Resources
 					// additional properties and Zoom does not allow us to update these additional
 					// properties (e.g.: "allow_to_add_external_users").
 					//
-					// If we include the addtional properties, the Zoom API responds with a misleading
+					// If we include the additional properties, the Zoom API responds with a misleading
 					// error message: {"code":300,"message":"Request Body should be a valid JSON object."}
 					//
 					// Contrary to what the error message says, the body contains a valid JSON object but
