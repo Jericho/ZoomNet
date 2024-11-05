@@ -1,6 +1,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
+using ZoomNet.Models.CallHandlingSettings;
 
 namespace ZoomNet.Resources
 {
@@ -87,6 +88,27 @@ namespace ZoomNet.Resources
 			string costCenter = null,
 			string keyword = null,
 			CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Updates a Zoom Phone's call handling setting.
+		/// Call handling settings allow you to control how your system routes calls during business, closed, or holiday hours.
+		/// </summary>
+		/// <param name="extensionId">Extension id.</param>
+		/// <param name="settingType">Call handling setting type.</param>
+		/// <param name="subsettins">Call handling subsettings. Allowed subsettings:
+		/// <list type="bullet">
+		/// <item><see cref="CallHandlingSubsettings"/></item>
+		/// <item><see cref="CallForwardingSubsettings"/></item>
+		/// <item><see cref="HolidaySubsettings"/></item>
+		/// <item><see cref="CustomHoursSubsettings"/></item>
+		/// </list></param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A Task representing the asynchronous operation.</returns>
+		Task UpdateCallHandlingSettingsAsync(
+			string extensionId,
+			CallHandlingSettingType settingType,
+			CallHandlingSubsettingsBase subsettins,
+			CancellationToken cancellationToken);
 
 		#endregion
 	}
