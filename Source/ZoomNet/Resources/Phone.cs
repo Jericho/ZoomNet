@@ -103,24 +103,14 @@ namespace ZoomNet.Resources
 			CallHandlingSubsettingsBase subsettings,
 			CancellationToken cancellationToken)
 		{
-			if (!settingType.TryToEnumString(out string settingTypeString))
-			{
-				throw new ArgumentException("Unknown call handling setting type.", nameof(settingType));
-			}
-
-			if (!subsettings.SubsettingType.TryToEnumString(out string subsettingTypeString))
-			{
-				throw new ArgumentException("Unknown call handling sub-setting type.", nameof(subsettings.SubsettingType));
-			}
-
 			var data = new JsonObject
 			{
 				{ "settings", subsettings },
-				{ "sub_setting_type", subsettingTypeString }
+				{ "sub_setting_type", subsettings?.SubsettingType }
 			};
 
 			return _client
-				.PatchAsync($"/phone/extension/{extensionId}/call_handling/settings/{settingTypeString}")
+				.PatchAsync($"/phone/extension/{extensionId}/call_handling/settings/{settingType.ToEnumString()}")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
