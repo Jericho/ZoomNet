@@ -13,7 +13,7 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// Gets or sets a value indicating whether to allow the callers to check voicemails.
 		/// This field is only available in the following scenarios:
 		/// - The <see cref="CallNotAnswerAction"/> is set to 1 (Forward to a voicemail).
-		/// - The <see cref="BusyOnAnotherCallAction"/> is set to 1 (Forward to a voicemail).(Only applicable to the User)
+		/// - The <see cref="BusyOnAnotherCallAction"/> is set to 1 (Forward to a voicemail).(Only applicable to the User).
 		/// </summary>
 		[JsonPropertyName("allow_callers_check_voicemail")]
 		public bool? AllowCallersCheckVoicemail { get; set; }
