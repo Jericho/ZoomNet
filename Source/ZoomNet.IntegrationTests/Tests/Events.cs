@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -28,6 +29,13 @@ namespace ZoomNet.IntegrationTests.Tests
 					await Task.Delay(250, cancellationToken).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
 				});
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
+
+			// SIMPLE EVENT
+			var start = DateTime.UtcNow.AddMonths(1);
+			var end = start.AddMinutes(35);
+			var newSimpleEvent = await client.Events.CreateSimpleAsync("ZoomNet Integration Testing: simple event", "The description", start, end, TimeZones.America_New_York, "abc123", true, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Simple event {newSimpleEvent.Id} created").ConfigureAwait(false);
+
 		}
 	}
 }
