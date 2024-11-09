@@ -9,7 +9,7 @@ using static ZoomNet.Internal;
 namespace ZoomNet.Json
 {
 	/// <summary>
-	/// Converts an <see cref="Event"/> to or from JSON.
+	/// Converts an <see cref="Models.Webhooks.Event"/> to or from JSON.
 	/// </summary>
 	/// <seealso cref="ZoomNetJsonConverter{T}"/>
 	internal class WebHookEventConverter : ZoomNetJsonConverter<Models.Webhooks.Event>
