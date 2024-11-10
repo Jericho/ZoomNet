@@ -127,9 +127,10 @@ namespace ZoomNet.Utilities
 									.Select(x => x.Split(new[] { ':' }, 2))
 									.Select(x => new KeyValuePair<string, string[]>(x[0], x.Skip(1).ToArray()))
 									.GroupBy(x => x.Key)
+									.OrderBy(x => x.Key)
 									.ToDictionary(
 										x => x.Key,
-										x => x.SelectMany(c => c.Value).ToArray()));
+										x => x.SelectMany(c => c.Value).OrderBy(c => c).ToArray()));
 
 							// Please note that Server-to-Server OAuth does not use the refresh token.
 							// Therefore change the grant type to 'RefreshToken' only when the response includes a refresh token.
