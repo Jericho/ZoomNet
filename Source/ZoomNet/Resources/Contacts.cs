@@ -9,13 +9,13 @@ namespace ZoomNet.Resources
 	/// <inheritdoc />
 	public class Contacts : IContacts
 	{
-		private readonly Pathoschild.Http.Client.IClient _client;
+		private readonly IClient _client;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Contacts" /> class.
 		/// </summary>
 		/// <param name="client">The HTTP client.</param>
-		internal Contacts(Pathoschild.Http.Client.IClient client)
+		internal Contacts(IClient client)
 		{
 			_client = client;
 		}

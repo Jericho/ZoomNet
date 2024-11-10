@@ -36,7 +36,7 @@ namespace ZoomNet
 		private readonly ILogger _logger;
 
 		private HttpClient _httpClient;
-		private Pathoschild.Http.Client.IClient _fluentClient;
+		private IClient _fluentClient;
 
 		#endregion
 

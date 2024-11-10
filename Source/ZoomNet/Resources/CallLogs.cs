@@ -9,13 +9,13 @@ namespace ZoomNet.Resources
 	/// <inheritdoc/>
 	public class CallLogs : ICallLogs
 	{
-		private readonly Pathoschild.Http.Client.IClient _client;
+		private readonly IClient _client;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="CallLogs" /> class.
 		/// </summary>
 		/// <param name="client">The HTTP client.</param>
-		internal CallLogs(Pathoschild.Http.Client.IClient client)
+		internal CallLogs(IClient client)
 		{
 			_client = client;
 		}

@@ -16,7 +16,7 @@ namespace ZoomNet.Utilities
 	/// <summary>
 	/// Handler to ensure requests to the Zoom API include a valid OAuth token.
 	/// </summary>
-	/// <seealso cref="Pathoschild.Http.Client.Extensibility.IHttpFilter" />
+	/// <seealso cref="IHttpFilter" />
 	internal class OAuthTokenHandler : IHttpFilter, ITokenHandler
 	{
 		public string Token

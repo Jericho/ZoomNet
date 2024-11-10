@@ -13,7 +13,7 @@ namespace ZoomNet.Utilities
 	/// <summary>
 	/// Diagnostic handler for requests dispatched to the Zoom API.
 	/// </summary>
-	/// <seealso cref="Pathoschild.Http.Client.Extensibility.IHttpFilter" />
+	/// <seealso cref="IHttpFilter" />
 	internal class DiagnosticHandler : IHttpFilter
 	{
 		#region FIELDS
