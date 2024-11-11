@@ -748,29 +748,25 @@ namespace ZoomNet
 				var jsonResponse = await message.Content.ParseZoomResponseAsync().ConfigureAwait(false);
 				if (jsonResponse.ValueKind == JsonValueKind.Object)
 				{
-					errorCode = jsonResponse.TryGetProperty("code", out JsonElement jsonErrorCode) ? jsonErrorCode.GetInt32() : null;
-					errorMessage = jsonResponse.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : errorCode.HasValue ? $"Error code: {errorCode}" : errorMessage;
+					if (jsonResponse.TryGetProperty("code", out JsonElement codeJsonProperty)) errorCode = codeJsonProperty.GetInt32();
+					else if (jsonResponse.TryGetProperty("errorCode", out JsonElement errorCodeJsonProperty)) errorCode = int.Parse(errorCodeJsonProperty.GetString());
+
+					if (jsonResponse.TryGetProperty("message", out JsonElement messageJsonProperty)) errorMessage = messageJsonProperty.GetString();
+					else if (jsonResponse.TryGetProperty("errorMessage", out JsonElement errorMessageJsonProperty)) errorMessage = errorMessageJsonProperty.GetString();
+					else if (errorCode.HasValue) errorMessage = $"Error code: {errorCode}";
+
 					if (jsonResponse.TryGetProperty("errors", out JsonElement jsonErrorDetails))
 					{
-						if (rootJsonElement.TryGetProperty("code", out JsonElement codeJsonProperty)) errorCode = codeJsonProperty.GetInt32();
-						else if (rootJsonElement.TryGetProperty("errorCode", out JsonElement errorCodeJsonProperty)) errorCode = int.Parse(errorCodeJsonProperty.GetString());
-
-						if (rootJsonElement.TryGetProperty("message", out JsonElement messageJsonProperty)) errorMessage = messageJsonProperty.GetString();
-						else if (rootJsonElement.TryGetProperty("errorMessage", out JsonElement errorMessageJsonProperty)) errorMessage = errorMessageJsonProperty.GetString();
-						else if (errorCode.HasValue) errorMessage = $"Error code: {errorCode}";
-
-						if (rootJsonElement.TryGetProperty("errors", out JsonElement jsonErrorDetails))
-						{
-							var errorDetails = string.Join(
-								" ",
-								jsonErrorDetails
-									.EnumerateArray()
-									.Select(jsonErrorDetail =>
-									{
-										var errorDetail = jsonErrorDetail.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : string.Empty;
-										return errorDetail;
-									})
-									.Where(message => !string.IsNullOrEmpty(message)));
+						var errorDetails = string.Join(
+							" ",
+							jsonErrorDetails
+								.EnumerateArray()
+								.Select(jsonErrorDetail =>
+								{
+									var errorDetail = jsonErrorDetail.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : string.Empty;
+									return errorDetail;
+								})
+								.Where(message => !string.IsNullOrEmpty(message)));
 
 						if (!string.IsNullOrEmpty(errorDetails)) errorMessage += $" {errorDetails}";
 					}
