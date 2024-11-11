@@ -368,5 +368,22 @@ namespace ZoomNet
 			// We added a single member to a group therefore the array returned from the Zoom API contains a single element
 			return result.Single();
 		}
+
+		/// <summary>
+		/// Determines if the specified scope has been granted.
+		/// </summary>
+		/// <param name="client">The ZoomNet client.</param>
+		/// <param name="scope">The name of the scope.</param>
+		/// <returns>True if the scope has been granted, False otherwise.</returns>
+		/// <remarks>
+		/// The concept of "scopes" only applies to OAuth connections.
+		/// Therefore an exeption will be thrown if you invoke this method while using
+		/// a JWT connection (you shouldn't be using JWT in the first place since this
+		/// type of connection has been deprecated in the Zoom API since September 2023).
+		/// </remarks>
+		public static bool HasPermission(this IZoomClient client, string scope)
+		{
+			return client.HasPermissions(new[] { scope });
+		}
 	}
 }

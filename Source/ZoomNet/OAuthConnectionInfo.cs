@@ -53,9 +53,9 @@ namespace ZoomNet
 		public string AccessToken { get; internal set; }
 
 		/// <summary>
-		/// Gets the token scope.
+		/// Gets the scopes.
 		/// </summary>
-		public IReadOnlyDictionary<string, string[]> TokenScope { get; internal set; }
+		public IReadOnlyList<string> Scopes { get; internal set; }
 
 		/// <summary>
 		/// Gets the token expiration time.
