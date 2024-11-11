@@ -25,6 +25,14 @@ namespace ZoomNet.Resources
 		Task<PaginatedResponseWithToken<Contact>> SearchUserProfilesAsync(string keyword, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Retrieve a user's profile information.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The user.</returns>
+		Task<User> GetUserProfileAsync(string userId, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Creates a user.
 		/// </summary>
 		/// <param name="email">The email address.</param>
