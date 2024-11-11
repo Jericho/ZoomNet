@@ -13,7 +13,7 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			await log.WriteLineAsync("\n***** CONTACT CENTER *****\n").ConfigureAwait(false);
 
-			var paginatedUserProfiles = await client.ContactCenter.SearchUserProfilesAsync("zzz", 10, null, cancellationToken).ConfigureAwait(false);
+			var paginatedUserProfiles = await client.ContactCenter.SearchUserProfilesAsync("*", 10, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Found {paginatedUserProfiles.TotalRecords} user profiles").ConfigureAwait(false);
 
 			var user = await client.ContactCenter.CreateUserAsync("zzz@example.com", cancellationToken).ConfigureAwait(false);

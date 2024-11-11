@@ -28,14 +28,24 @@ namespace ZoomNet.Resources
 			{
 				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 300");
 			}
-
+// Return type: 'Contact' is just a placeholder until I can figure out the appropriate type
 			return _client
-				.GetAsync($"contacts")
+				.GetAsync($"contact_center/users")
 				.WithArgument("search_key", keyword)
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<Contact>("users");
+		}
+
+		/// <inheritdoc/>
+		public Task<User> GetUserProfileAsync(string userId, CancellationToken cancellationToken = default)
+		{
+// Return type: 'User' is just a placeholder until I can figure out the appropriate type
+			return _client
+				.GetAsync($"contact_center/users/{userId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<User>();
 		}
 
 		/// <inheritdoc/>
@@ -46,6 +56,7 @@ namespace ZoomNet.Resources
 				{ "user_email", email },
 			};
 
+// Return type: 'User' is just a placeholder until I can figure out the appropriate type
 			return _client
 				.PostAsync("contact_center/users")
 				.WithJsonBody(data)
