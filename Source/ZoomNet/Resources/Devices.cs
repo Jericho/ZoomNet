@@ -6,35 +6,21 @@ using ZoomNet.Models;
 
 namespace ZoomNet.Resources
 {
-	/// <summary>
-	/// Allows you to manage devices.
-	/// </summary>
-	/// <seealso cref="ZoomNet.Resources.IDevices" />
-	/// <remarks>
-	/// See <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/devices/">Zoom documentation</a> for more information.
-	/// </remarks>
+	/// <inheritdoc/>
 	public class Devices : IDevices
 	{
-		private readonly Pathoschild.Http.Client.IClient _client;
+		private readonly IClient _client;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Devices" /> class.
 		/// </summary>
 		/// <param name="client">The HTTP client.</param>
-		internal Devices(Pathoschild.Http.Client.IClient client)
+		internal Devices(IClient client)
 		{
 			_client = client;
 		}
 
-		/// <summary>
-		/// Retrieve all H.323/SIP devices on a Zoom account.
-		/// </summary>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Device">devices</see>.
-		/// </returns>
+		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<Device>> GetAllAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
