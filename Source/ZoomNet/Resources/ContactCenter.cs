@@ -7,22 +7,16 @@ using ZoomNet.Models;
 
 namespace ZoomNet.Resources
 {
-	/// <summary>
-	/// Allows you to manage data on the Zoom Contact Center.
-	/// </summary>
-	/// <seealso cref="ZoomNet.Resources.IContactCenter" />
-	/// <remarks>
-	/// See <a href="https://marketplace.zoom.us/docs/api-reference/contact-center/methods/">Zoom documentation</a> for more information.
-	/// </remarks>
+	/// <inheritdoc/>
 	public class ContactCenter : IContactCenter
 	{
-		private readonly Pathoschild.Http.Client.IClient _client;
+		private readonly IClient _client;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ContactCenter" /> class.
 		/// </summary>
 		/// <param name="client">The HTTP client.</param>
-		internal ContactCenter(Pathoschild.Http.Client.IClient client)
+		internal ContactCenter(IClient client)
 		{
 			_client = client;
 		}
