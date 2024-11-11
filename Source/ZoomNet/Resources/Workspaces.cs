@@ -6,22 +6,16 @@ using ZoomNet.Models;
 
 namespace ZoomNet.Resources
 {
-	/// <summary>
-	/// Allows you to manage workspaces.
-	/// </summary>
-	/// <seealso cref="ZoomNet.Resources.IWorkspaces" />
-	/// <remarks>
-	/// See <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/methods/#tag/Workspaces">Zoom documentation</a> for more information.
-	/// </remarks>
+	/// <inheritdoc/>
 	public class Workspaces : IWorkspaces
 	{
-		private readonly Pathoschild.Http.Client.IClient _client;
+		private readonly IClient _client;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Workspaces" /> class.
 		/// </summary>
 		/// <param name="client">The HTTP client.</param>
-		internal Workspaces(Pathoschild.Http.Client.IClient client)
+		internal Workspaces(IClient client)
 		{
 			_client = client;
 		}
