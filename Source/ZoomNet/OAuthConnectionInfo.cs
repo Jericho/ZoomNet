@@ -53,7 +53,7 @@ namespace ZoomNet
 		public string AccessToken { get; internal set; }
 
 		/// <summary>
-		/// Gets the scopes.
+		/// Gets the scopes granted to the OAuth app linked to the access token.
 		/// </summary>
 		public IReadOnlyList<string> Scopes { get; internal set; }
 
