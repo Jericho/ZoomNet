@@ -1,6 +1,8 @@
 using Pathoschild.Http.Client;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -44,10 +46,10 @@ namespace ZoomNet.Resources
 			var result = await _client
 				.GetAsync($"marketplace/users/{userId}/entitlements")
 				.WithCancellationToken(cancellationToken)
-				.AsRawJsonDocument("entitlements")
+				.AsJson("entitlements")
 				.ConfigureAwait(false);
 
-			var entitlements = result.RootElement
+			var entitlements = result
 				.EnumerateArray()
 				.Select(element => element.GetPropertyValue<long>("entitlement_id"))
 				.ToArray();
@@ -70,6 +72,26 @@ namespace ZoomNet.Resources
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<AppRequest>("requests");
+		}
+
+		/// <inheritdoc/>
+		public Task<string> CreateEventSubscriptionAsync(IEnumerable<string> events, string subscriptionName, Uri webhookUrl, IEnumerable<string> userIds, string subscriptionScope, string accountId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "events", events.ToArray() },
+				{ "event_subscription_name", subscriptionName },
+				{ "event_webhook_url", webhookUrl.AbsoluteUri },
+				{ "user_ids", userIds?.ToArray() },
+				{ "subscription_scope",subscriptionScope },
+				{ "account_id", accountId },
+			};
+
+			return _client
+				.PostAsync("marketplace/app/event_subscription")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("event_subscription_id");
 		}
 
 
