@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -65,5 +68,19 @@ namespace ZoomNet.Resources
 		/// An array of <see cref="AppInfo">apps</see>.
 		/// </returns>
 		Task<PaginatedResponseWithToken<AppInfo>> GetAccountAppsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create an event subscription.
+		/// </summary>
+		/// <param name="events">The events.</param>
+		/// <param name="subscriptionName">The name of the event subsciption to be created.</param>
+		/// <param name="webhookUrl">The event notification endpoint URL.</param>
+		/// <param name="userIds">The usr Ids.</param>
+		/// <param name="subscriptionScope">The app event subscription's scope.</param>
+		/// <param name="accountId">The account Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The event subscription Id.</returns>
+		/// <remarks>If the events parameter contains invalid event names, the Zoom API will return a HTTP 404 response.</remarks>
+		Task<string> CreateEventSubscriptionAsync(IEnumerable<string> events, string subscriptionName, Uri webhookUrl, IEnumerable<string> userIds, string subscriptionScope, string accountId, CancellationToken cancellationToken = default);
 	}
 }
