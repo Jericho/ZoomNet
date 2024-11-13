@@ -52,7 +52,7 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// If Sequential or Rotating ring mode is selected <see cref="CallDistributionSettings.RingMode"/>,
 		/// calls will ring for a specific time before trying the next available queue member.
 		/// </summary>
-		[JsonPropertyName("busy_on_another_call_action")]
+		[JsonPropertyName("call_distribution")]
 		public CallDistributionSettings CallDistribution { get; set; }
 
 		/// <summary>

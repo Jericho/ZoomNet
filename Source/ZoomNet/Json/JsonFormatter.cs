@@ -38,7 +38,8 @@ namespace ZoomNet.Json
 					new WebHookEventConverter(),
 					new WebinarConverter(),
 					new BooleanConverter(),
-					new EnumConverterFactory()
+					new EnumConverterFactory(),
+					new CallHandlingSubsettingsConverter(),
 				}
 			};
 
