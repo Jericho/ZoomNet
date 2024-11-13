@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -23,7 +22,12 @@ namespace ZoomNet.Resources
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pagingToken">The paging token.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns></returns>
+		/// <returns>An array of <see cref="AppInfo">apps</see>.</returns>
+		/// <remarks>
+		/// Please note that this API returns summary information about the apps.
+		/// For instance, it doesn't include the requirements, scopes or permissions for the apps.
+		/// If you want detailed info, you need to invoke the <see cref="GetAppInfoAsync(string, CancellationToken)"/> method.
+		/// </remarks>
 		Task<PaginatedResponseWithToken<AppInfo>> GetUserAppRequestsAsync(string userId, AppRequestType requestType, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
@@ -53,9 +57,12 @@ namespace ZoomNet.Resources
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pagingToken">The paging token.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="AppInfo">apps</see>.
-		/// </returns>
+		/// <returns>An array of <see cref="AppInfo">apps</see>.</returns>
+		/// <remarks>
+		/// Please note that this API returns summary information about the apps.
+		/// For instance, it doesn't include the requirements, scopes or permissions for the apps.
+		/// If you want detailed info, you need to invoke the <see cref="GetAppInfoAsync(string, CancellationToken)"/> method.
+		/// </remarks>
 		Task<PaginatedResponseWithToken<AppInfo>> GetPublicAppsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
@@ -64,9 +71,12 @@ namespace ZoomNet.Resources
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pagingToken">The paging token.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="AppInfo">apps</see>.
-		/// </returns>
+		/// <returns>An array of <see cref="AppInfo">apps</see>.</returns>
+		/// <remarks>
+		/// Please note that this API returns summary information about the apps.
+		/// For instance, it doesn't include the requirements, scopes or permissions for the apps.
+		/// If you want detailed info, you need to invoke the <see cref="GetAppInfoAsync(string, CancellationToken)"/> method.
+		/// </remarks>
 		Task<PaginatedResponseWithToken<AppInfo>> GetAccountAppsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
@@ -82,5 +92,13 @@ namespace ZoomNet.Resources
 		/// <returns>The event subscription Id.</returns>
 		/// <remarks>If the events parameter contains invalid event names, the Zoom API will return a HTTP 404 response.</remarks>
 		Task<string> CreateEventSubscriptionAsync(IEnumerable<string> events, string subscriptionName, Uri webhookUrl, IEnumerable<string> userIds, string subscriptionScope, string accountId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get app information.
+		/// </summary>
+		/// <param name="appId">The app's ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The <see cref="AppInfo">app information</see>.</returns>
+		Task<AppInfo> GetAppInfoAsync(string appId, CancellationToken cancellationToken = default);
 	}
 }

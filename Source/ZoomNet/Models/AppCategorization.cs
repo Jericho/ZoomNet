@@ -5,6 +5,9 @@ namespace ZoomNet.Models
 	/// </summary>
 	public enum AppCategorization
 	{
+		/// <summary>Unknown.</summary>
+		Unknown = 0,
+
 		/// <summary>The app is under admin management.</summary>
 		UnderAdminManagement = 1,
 
