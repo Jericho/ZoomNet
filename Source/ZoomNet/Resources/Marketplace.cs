@@ -94,6 +94,15 @@ namespace ZoomNet.Resources
 				.AsObject<string>("event_subscription_id");
 		}
 
+		/// <inheritdoc/>
+		public Task<AppInfo> GetAppInfoAsync(string appId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"marketplace/apps/{appId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<AppInfo>();
+		}
+
 
 
 		/// <inheritdoc/>

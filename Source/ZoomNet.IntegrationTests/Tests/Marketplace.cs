@@ -1,5 +1,5 @@
-using System;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -25,18 +25,19 @@ namespace ZoomNet.IntegrationTests.Tests
 			var paginatedCreatedApps = await client.Marketplace.GetAccountAppsAsync(100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"This account created {paginatedCreatedApps.TotalRecords} apps.").ConfigureAwait(false);
 
+			// GET DETAILED INFO ABOUT AN APP
+			if (paginatedCreatedApps.Records.Length > 0)
+			{
+				var appId = paginatedCreatedApps.Records.First().Id;
+				var appInfo = await client.Marketplace.GetAppInfoAsync(appId, cancellationToken).ConfigureAwait(false);
+			}
+
 			// GET THE USER APP REQUESTS
 			var paginatedPastUserRequests = await client.Marketplace.GetUserAppRequestsAsync(myUser.Id, AppRequestType.Active, 100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {paginatedPastUserRequests.TotalRecords} past user app requests.").ConfigureAwait(false);
 
 			var paginatedActiveUserRequests = await client.Marketplace.GetUserAppRequestsAsync(myUser.Id, AppRequestType.Past, 100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {paginatedActiveUserRequests.TotalRecords} active user app requests.").ConfigureAwait(false);
-
-			// SUBSCRIBE TO EVENTS
-			var subscriptionUri = (new UriBuilder("http://example.com/WebhookListener")).Uri;
-			var subscriptionId = await client.Marketplace.CreateEventSubscriptionAsync(new[] { "meeting.started" }, "Integration testing: sample event subsciption", subscriptionUri, null, "account", null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"Subscription {subscriptionId} created").ConfigureAwait(false);
-
 		}
 	}
 }
