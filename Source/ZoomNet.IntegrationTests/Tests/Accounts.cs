@@ -14,20 +14,23 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			await log.WriteLineAsync("\n***** ACCOUNTS *****\n").ConfigureAwait(false);
 
-			// GET ALL THE ACCOUNTS
-			var paginatedAccounts = await client.Accounts.GetAllAsync(100, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"There are {paginatedAccounts.TotalRecords} sub accounts under the main account").ConfigureAwait(false);
-
-			// GET SETTINGS
-			if (paginatedAccounts.Records.Any())
+			if (client.HasPermission("account:read:list_sub_accounts:master"))
 			{
-				var accountId = paginatedAccounts.Records.First().Id;
+				// GET ALL THE ACCOUNTS
+				var paginatedAccounts = await client.Accounts.GetAllAsync(100, null, cancellationToken).ConfigureAwait(false);
+				await log.WriteLineAsync($"There are {paginatedAccounts.TotalRecords} sub accounts under the main account").ConfigureAwait(false);
 
-				var meetingAuthenticationSettings = await client.Accounts.GetMeetingAuthenticationSettingsAsync(accountId, cancellationToken).ConfigureAwait(false);
-				await log.WriteLineAsync("Meeting authentication settings retrieved").ConfigureAwait(false);
+				// GET SETTINGS
+				if (paginatedAccounts.Records.Any())
+				{
+					var accountId = paginatedAccounts.Records.First().Id;
 
-				var recordingAuthenticationSettings = await client.Accounts.GetRecordingAuthenticationSettingsAsync(accountId, cancellationToken).ConfigureAwait(false);
-				await log.WriteLineAsync("Recording authentication settings retrieved").ConfigureAwait(false);
+					var meetingAuthenticationSettings = await client.Accounts.GetMeetingAuthenticationSettingsAsync(accountId, cancellationToken).ConfigureAwait(false);
+					await log.WriteLineAsync("Meeting authentication settings retrieved").ConfigureAwait(false);
+
+					var recordingAuthenticationSettings = await client.Accounts.GetRecordingAuthenticationSettingsAsync(accountId, cancellationToken).ConfigureAwait(false);
+					await log.WriteLineAsync("Recording authentication settings retrieved").ConfigureAwait(false);
+				}
 			}
 		}
 	}

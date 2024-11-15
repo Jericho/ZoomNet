@@ -15,13 +15,13 @@ namespace ZoomNet.Resources
 	/// <inheritdoc/>
 	public class Chat : IChat
 	{
-		private readonly Pathoschild.Http.Client.IClient _client;
+		private readonly IClient _client;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Chat" /> class.
 		/// </summary>
 		/// <param name="client">The HTTP client.</param>
-		internal Chat(Pathoschild.Http.Client.IClient client)
+		internal Chat(IClient client)
 		{
 			_client = client;
 		}
@@ -83,7 +83,7 @@ namespace ZoomNet.Resources
 					// additional properties and Zoom does not allow us to update these additional
 					// properties (e.g.: "allow_to_add_external_users").
 					//
-					// If we include the addtional properties, the Zoom API responds with a misleading
+					// If we include the additional properties, the Zoom API responds with a misleading
 					// error message: {"code":300,"message":"Request Body should be a valid JSON object."}
 					//
 					// Contrary to what the error message says, the body contains a valid JSON object but

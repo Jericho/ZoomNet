@@ -11,7 +11,7 @@ namespace ZoomNet.Utilities
 	/// "Retry-After" response header. The value in this header contains the date
 	/// and time when the next attempt can take place.
 	/// </summary>
-	/// <seealso cref="Pathoschild.Http.Client.Retry.IRetryConfig" />
+	/// <seealso cref="IRetryConfig" />
 	internal class Http429RetryStrategy : IRetryConfig
 	{
 		#region FIELDS

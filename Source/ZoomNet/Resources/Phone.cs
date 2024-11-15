@@ -1,8 +1,10 @@
 using Pathoschild.Http.Client;
 using System;
+using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
+using ZoomNet.Models.CallHandlingSettings;
 
 namespace ZoomNet.Resources
 {
@@ -92,6 +94,26 @@ namespace ZoomNet.Resources
 				.WithArgument("keyword", keyword)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<PhoneUser>("users");
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateCallHandlingSettingsAsync(
+			string extensionId,
+			CallHandlingSettingType settingType,
+			CallHandlingSubsettingsBase subsettings,
+			CancellationToken cancellationToken)
+		{
+			var data = new JsonObject
+			{
+				{ "settings", subsettings },
+				{ "sub_setting_type", subsettings?.SubsettingType }
+			};
+
+			return _client
+				.PatchAsync($"phone/extension/{extensionId}/call_handling/settings/{settingType.ToEnumString()}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
 		}
 
 		#endregion

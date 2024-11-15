@@ -748,7 +748,12 @@ namespace ZoomNet
 							" ",
 							jsonErrorDetails
 								.EnumerateArray()
-								.Select(jsonErrorDetail => jsonErrorDetail.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : string.Empty)
+								.Select(jsonErrorDetail =>
+								{
+									var field = jsonErrorDetail.TryGetProperty("field", out JsonElement jsonField) ? jsonField.GetString() : string.Empty;
+									var message = jsonErrorDetail.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : string.Empty;
+									return $"{field} {message}".Trim();
+								})
 								.Where(message => !string.IsNullOrEmpty(message)));
 
 						if (!string.IsNullOrEmpty(errorDetails)) errorMessage += $" {errorDetails}";
@@ -801,9 +806,18 @@ namespace ZoomNet
 			return enumValue.ToString();
 		}
 
-		internal static bool TryToEnumString<T>(this T enumValue, out string stringValue)
+		internal static bool TryToEnumString<T>(this T enumValue, out string stringValue, bool throwWhenUndefined = true)
 			where T : Enum
 		{
+			if (throwWhenUndefined)
+			{
+				var typeOfT = typeof(T);
+				if (!Enum.IsDefined(typeOfT, enumValue))
+				{
+					throw new ArgumentException($"{enumValue} is not a valid value for {typeOfT.Name}", nameof(enumValue));
+				}
+			}
+
 			var multipleValuesEnumMemberAttribute = enumValue.GetAttributeOfType<MultipleValuesEnumMemberAttribute>();
 			if (multipleValuesEnumMemberAttribute != null)
 			{

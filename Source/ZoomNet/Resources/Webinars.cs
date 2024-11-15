@@ -12,13 +12,13 @@ namespace ZoomNet.Resources
 	/// <inheritdoc/>
 	public class Webinars : IWebinars
 	{
-		private readonly Pathoschild.Http.Client.IClient _client;
+		private readonly IClient _client;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Webinars" /> class.
 		/// </summary>
 		/// <param name="client">The HTTP client.</param>
-		internal Webinars(Pathoschild.Http.Client.IClient client)
+		internal Webinars(IClient client)
 		{
 			_client = client;
 		}
