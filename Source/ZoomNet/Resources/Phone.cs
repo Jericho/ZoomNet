@@ -110,7 +110,7 @@ namespace ZoomNet.Resources
 			};
 
 			return _client
-				.PatchAsync($"/phone/extension/{extensionId}/call_handling/settings/{settingType.ToEnumString()}")
+				.PatchAsync($"phone/extension/{extensionId}/call_handling/settings/{settingType.ToEnumString()}")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
