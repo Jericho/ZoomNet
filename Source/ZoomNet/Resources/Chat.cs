@@ -15,13 +15,13 @@ namespace ZoomNet.Resources
 	/// <inheritdoc/>
 	public class Chat : IChat
 	{
-		private readonly Pathoschild.Http.Client.IClient _client;
+		private readonly IClient _client;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Chat" /> class.
 		/// </summary>
 		/// <param name="client">The HTTP client.</param>
-		internal Chat(Pathoschild.Http.Client.IClient client)
+		internal Chat(IClient client)
 		{
 			_client = client;
 		}

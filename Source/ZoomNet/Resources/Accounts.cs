@@ -12,13 +12,13 @@ namespace ZoomNet.Resources
 	/// <inheritdoc/>
 	public class Accounts : IAccounts
 	{
-		private readonly Pathoschild.Http.Client.IClient _client;
+		private readonly IClient _client;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Accounts" /> class.
 		/// </summary>
 		/// <param name="client">The HTTP client.</param>
-		internal Accounts(Pathoschild.Http.Client.IClient client)
+		internal Accounts(IClient client)
 		{
 			_client = client;
 		}

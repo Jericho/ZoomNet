@@ -3,6 +3,8 @@ using Microsoft.Extensions.Logging.Abstractions;
 using Pathoschild.Http.Client;
 using Pathoschild.Http.Client.Extensibility;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
@@ -36,7 +38,7 @@ namespace ZoomNet
 		private readonly ILogger _logger;
 
 		private HttpClient _httpClient;
-		private Pathoschild.Http.Client.IClient _fluentClient;
+		private IClient _fluentClient;
 
 		#endregion
 
@@ -243,6 +245,25 @@ namespace ZoomNet
 		#endregion
 
 		#region PUBLIC METHODS
+
+		/// <inheritdoc/>
+		public bool HasPermissions(IEnumerable<string> scopes)
+		{
+			var tokenHandler = _fluentClient.Filters.OfType<OAuthTokenHandler>().SingleOrDefault();
+			if (tokenHandler == null) throw new Exception("The concept of scopes only applies when using an OAuth connection.");
+
+			// Ensure the token (and by extension the scopes) is not expired
+			tokenHandler.RefreshTokenIfNecessary(false);
+
+			// The list of scopes can be empty if a previously issued token was specified when the OAuthConnectionInfo was instantiated.
+			// I am not aware of any way to fetch the list of scopes which would enable me to populate the list of scopes in the OAuthConnectionInfo.
+			// Therefore in this scenario the only workaround I can think of is to force the token to be refreshed.
+			var oAuthConnectionInfo = (OAuthConnectionInfo)tokenHandler.ConnectionInfo;
+			if (oAuthConnectionInfo.Scopes == null) tokenHandler.RefreshTokenIfNecessary(true); // Force the token to be refreshed wich will have the side-effect of populating the '.Scopes'
+
+			var missingScopes = scopes.Except(((OAuthConnectionInfo)tokenHandler.ConnectionInfo).Scopes).ToArray();
+			return !missingScopes.Any();
+		}
 
 		/// <inheritdoc/>
 		public void Dispose()

@@ -7,7 +7,7 @@ namespace ZoomNet.Utilities
 	/// <summary>
 	/// Error handler for requests dispatched to the Zoom API.
 	/// </summary>
-	/// <seealso cref="Pathoschild.Http.Client.Extensibility.IHttpFilter" />
+	/// <seealso cref="IHttpFilter" />
 	internal class ZoomErrorHandler : IHttpFilter
 	{
 		private const string DEFAULT_HTTP_200_EXCEPTION_MESSAGE = "The Zoom API returned a status code that indicates that your request was unseccessful, without providing an explanation. Typically this means that you either lack the necessary permissions or that a paid account is required and you have a free account.";

@@ -327,18 +327,18 @@ namespace ZoomNet.UnitTests.Extensions
 			public enum MyEnum
 			{
 				[EnumMember(Value = "One")]
-				First,
+				First = 1,
 
 				[MultipleValuesEnumMember(DefaultValue = "Two", OtherValues = new[] { "Second", "Alternative" })]
-				Second,
+				Second = 2,
 
 				[JsonPropertyName("Three")]
-				Third,
+				Third = 3,
 
 				[Description("Four")]
-				Fourth,
+				Fourth = 4,
 
-				Fifth
+				Fifth = 5
 			}
 
 			[Theory]
@@ -373,8 +373,31 @@ namespace ZoomNet.UnitTests.Extensions
 				result.ShouldBe(expected);
 
 			}
-		}
 
+			[Fact]
+			public void ThrowsWhenUndefinedValue()
+			{
+				// Arrange
+				var myInvalidEnumValue = (MyEnum)9999;
+
+				// Act
+				Should.Throw<ArgumentException>(() => myInvalidEnumValue.TryToEnumString(out string stringValue, true));
+			}
+
+			[Fact]
+			public void UndefinedValueCanBeIgnored()
+			{
+				// Arrange
+				var myInvalidEnumValue = (MyEnum)9999;
+
+				// Act
+				var result = myInvalidEnumValue.TryToEnumString(out string stringValue, false);
+
+				// Asert
+				result.ShouldBeFalse();
+				stringValue.ShouldBeNull();
+			}
+		}
 
 		public class GetErrorMessageAsync
 		{

@@ -16,13 +16,13 @@ namespace ZoomNet.Resources
 	/// <inheritdoc/>
 	public class CloudRecordings : ICloudRecordings
 	{
-		private readonly Pathoschild.Http.Client.IClient _client;
+		private readonly IClient _client;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="CloudRecordings" /> class.
 		/// </summary>
 		/// <param name="client">The HTTP client.</param>
-		internal CloudRecordings(Pathoschild.Http.Client.IClient client)
+		internal CloudRecordings(IClient client)
 		{
 			_client = client;
 		}

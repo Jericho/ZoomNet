@@ -16,7 +16,7 @@ namespace ZoomNet.Utilities
 	/// <summary>
 	/// Handler to ensure requests to the Zoom API include a valid OAuth token.
 	/// </summary>
-	/// <seealso cref="Pathoschild.Http.Client.Extensibility.IHttpFilter" />
+	/// <seealso cref="IHttpFilter" />
 	internal class OAuthTokenHandler : IHttpFilter, ITokenHandler
 	{
 		public string Token
@@ -121,15 +121,7 @@ namespace ZoomNet.Utilities
 							_connectionInfo.RefreshToken = jsonResponse.GetPropertyValue("refresh_token", string.Empty);
 							_connectionInfo.AccessToken = jsonResponse.GetPropertyValue("access_token", string.Empty);
 							_connectionInfo.TokenExpiration = requestTime.AddSeconds(jsonResponse.GetPropertyValue("expires_in", 60 * 60));
-							_connectionInfo.TokenScope = new ReadOnlyDictionary<string, string[]>(
-								jsonResponse.GetPropertyValue("scope", string.Empty)
-									.Split(' ')
-									.Select(x => x.Split(new[] { ':' }, 2))
-									.Select(x => new KeyValuePair<string, string[]>(x[0], x.Skip(1).ToArray()))
-									.GroupBy(x => x.Key)
-									.ToDictionary(
-										x => x.Key,
-										x => x.SelectMany(c => c.Value).ToArray()));
+							_connectionInfo.Scopes = new ReadOnlyCollection<string>(jsonResponse.GetPropertyValue("scope", string.Empty).Split(' ').OrderBy(x => x).ToList());
 
 							// Please note that Server-to-Server OAuth does not use the refresh token.
 							// Therefore change the grant type to 'RefreshToken' only when the response includes a refresh token.

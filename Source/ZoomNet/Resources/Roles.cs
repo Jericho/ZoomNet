@@ -13,13 +13,13 @@ namespace ZoomNet.Resources
 	/// <inheritdoc/>
 	public class Roles : IRoles
 	{
-		private readonly Pathoschild.Http.Client.IClient _client;
+		private readonly IClient _client;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Roles" /> class.
 		/// </summary>
 		/// <param name="client">The HTTP client.</param>
-		internal Roles(Pathoschild.Http.Client.IClient client)
+		internal Roles(IClient client)
 		{
 			_client = client;
 		}
