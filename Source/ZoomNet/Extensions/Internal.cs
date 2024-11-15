@@ -748,7 +748,12 @@ namespace ZoomNet
 							" ",
 							jsonErrorDetails
 								.EnumerateArray()
-								.Select(jsonErrorDetail => jsonErrorDetail.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : string.Empty)
+								.Select(jsonErrorDetail =>
+								{
+									var field = jsonErrorDetail.TryGetProperty("field", out JsonElement jsonField) ? jsonField.GetString() : string.Empty;
+									var message = jsonErrorDetail.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : string.Empty;
+									return $"{field} {message}".Trim();
+								})
 								.Where(message => !string.IsNullOrEmpty(message)));
 
 						if (!string.IsNullOrEmpty(errorDetails)) errorMessage += $" {errorDetails}";

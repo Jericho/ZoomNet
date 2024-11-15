@@ -417,6 +417,23 @@ namespace ZoomNet.UnitTests.Extensions
 				errorMessage.ShouldStartWith("Invalid access token, does not contain scopes");
 				errorCode.ShouldBe(104);
 			}
+
+			[Fact]
+			public async Task IncludesFieldNameInErrorMessage()
+			{
+				// Arrange
+				const string responseContent = @"{""code"":300,""message"":""Validation Failed."",""errors"":[{""field"":""settings.jbh_time"",""message"":""Invalid parameter: jbh_time.""}]}";
+				var message = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(responseContent) };
+				var response = new MockFluentHttpResponse(message, null, CancellationToken.None);
+
+				// Act
+				var (isError, errorMessage, errorCode) = await response.Message.GetErrorMessageAsync();
+
+				// Assert
+				isError.ShouldBeTrue();
+				errorMessage.ShouldBe("Validation Failed. settings.jbh_time Invalid parameter: jbh_time.");
+				errorCode.ShouldBe(300);
+			}
 		}
 	}
 }
