@@ -95,7 +95,7 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="extensionId">Extension id.</param>
 		/// <param name="settingType">Call handling setting type.</param>
-		/// <param name="subsettins">Call handling subsettings. Allowed subsettings:
+		/// <param name="subsettings">Call handling subsettings. Allowed subsettings:
 		/// <list type="bullet">
 		/// <item><see cref="CallHandlingSubsettings"/></item>
 		/// <item><see cref="CallForwardingSubsettings"/></item>
@@ -107,7 +107,7 @@ namespace ZoomNet.Resources
 		Task UpdateCallHandlingSettingsAsync(
 			string extensionId,
 			CallHandlingSettingType settingType,
-			CallHandlingSubsettingsBase subsettins,
+			CallHandlingSubsettingsBase subsettings,
 			CancellationToken cancellationToken);
 
 		#endregion
