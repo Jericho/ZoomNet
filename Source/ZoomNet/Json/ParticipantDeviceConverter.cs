@@ -20,9 +20,16 @@ namespace ZoomNet.Json
 				case JsonTokenType.Null:
 					return Array.Empty<ParticipantDevice>();
 				case JsonTokenType.String:
+					var splitOption =
+#if NET5_0_OR_GREATER
+						StringSplitOptions.TrimEntries;
+#else
+						StringSplitOptions.None;
+#endif
+
 					var stringValue = reader.GetString();
 					var items = stringValue
-						.Split(new[] { '+' })
+						.Split(new[] { " + " }, splitOption)
 						.Where(item => !long.TryParse(item, out _)) // Filter out values like "17763" which is a Windows build number. See https://github.com/Jericho/ZoomNet/issues/354 for details
 						.Select(item => Convert(item))
 						.ToArray();
@@ -46,6 +53,10 @@ namespace ZoomNet.Json
 			// See https://github.com/Jericho/ZoomNet/issues/369 for details about the underlying problem
 			// See https://github.com/Jericho/ZoomNet/issues/370 for details about this workaround
 			if (deviceAsString.StartsWith("Web Browser", StringComparison.OrdinalIgnoreCase)) return ParticipantDevice.Web;
+
+			// Ensure values such as "win 10+ 17763" are treated as "win 10"
+			var plusSignIndex = deviceAsString.IndexOf('+');
+			if (plusSignIndex > 0) deviceAsString = deviceAsString.Substring(0, plusSignIndex);
 
 			return deviceAsString.Trim().ToEnum<ParticipantDevice>();
 		}

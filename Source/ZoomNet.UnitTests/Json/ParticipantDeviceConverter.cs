@@ -77,6 +77,8 @@ namespace ZoomNet.UnitTests.Json
 		[InlineData("Zoom Rooms", ParticipantDevice.ZoomRoom)]
 		[InlineData("win 10+ 17763", ParticipantDevice.Windows)]
 		[InlineData("Web Browser Chrome 129", ParticipantDevice.Web)]
+		[InlineData("Web Browser Chrome 130", ParticipantDevice.Web)]
+		[InlineData("Windows 10", ParticipantDevice.Windows)]
 		public void Read_single(string value, ParticipantDevice expectedValue)
 		{
 			// Arrange
