@@ -32,20 +32,6 @@ public interface IChatbot
 	/// <param name="accountId">The account ID to which the message was sent.</param>
 	/// <param name="toJId">The JID of group channel or user to whom the message should be sent.</param>
 	/// <param name="robotJId">The robot JID.</param>
-	/// <param name="message">The simple text message to send.</param>
-	/// <param name="enableMarkdownSupport">True if the message contains markdown syntax.</param>
-	/// <param name="cancellationToken">The cancellation token.</param>
-	/// <returns>
-	/// The async task.
-	/// </returns>
-	public Task<ChatbotMessageInformation> SendMessageAsync(string accountId, string toJId, string robotJId, string message, bool enableMarkdownSupport = false, CancellationToken cancellationToken = default);
-
-	/// <summary>
-	/// Send a Chatbot message.
-	/// </summary>
-	/// <param name="accountId">The account ID to which the message was sent.</param>
-	/// <param name="toJId">The JID of group channel or user to whom the message should be sent.</param>
-	/// <param name="robotJId">The robot JID.</param>
 	/// <param name="content">The content of the message.</param>
 	/// <param name="enableMarkdownSupport">True if the content contains markdown syntax.</param>
 	/// <param name="cancellationToken">The cancellation token.</param>
@@ -53,21 +39,6 @@ public interface IChatbot
 	/// The async task.
 	/// </returns>
 	public Task<ChatbotMessageInformation> SendMessageAsync(string accountId, string toJId, string robotJId, ChatbotContent content, bool enableMarkdownSupport = false, CancellationToken cancellationToken = default);
-
-	/// <summary>
-	/// Edit a Chatbot message.
-	/// </summary>
-	/// <param name="messageId">The message ID of the message to edit.</param>
-	/// <param name="accountId">The account ID to which the message was sent.</param>
-	/// <param name="toJId">The JID of group channel or user to whom the message should be sent.</param>
-	/// <param name="robotJId">The robot JID.</param>
-	/// <param name="message">The simple text message to send.</param>
-	/// <param name="enableMarkdownSupport">True if the message contains markdown syntax.</param>
-	/// <param name="cancellationToken">The cancellation token.</param>
-	/// <returns>
-	/// The async task.
-	/// </returns>
-	public Task<ChatbotMessageInformation> EditMessageAsync(string messageId, string accountId, string toJId, string robotJId, string message, bool enableMarkdownSupport = false, CancellationToken cancellationToken = default);
 
 	/// <summary>
 	/// Edit a Chatbot message.

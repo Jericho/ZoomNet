@@ -5,6 +5,7 @@ using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
+using ZoomNet.Models.ChatbotMessage;
 using ZoomNet.Models.Webhooks;
 using ZoomNet.Resources;
 
@@ -384,6 +385,43 @@ namespace ZoomNet
 		public static bool HasPermission(this IZoomClient client, string scope)
 		{
 			return client.HasPermissions(new[] { scope });
+		}
+
+		/// <summary>
+		/// Send a Chatbot message.
+		/// </summary>
+		/// <param name="chatbotResource">The chatbot resource.</param>
+		/// <param name="accountId">The account ID to which the message was sent.</param>
+		/// <param name="toJId">The JID of group channel or user to whom the message should be sent.</param>
+		/// <param name="robotJId">The robot JID.</param>
+		/// <param name="message">The simple text message to send.</param>
+		/// <param name="enableMarkdownSupport">True if the message contains markdown syntax.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public static Task<ChatbotMessageInformation> SendMessageAsync(this IChatbot chatbotResource, string accountId, string toJId, string robotJId, string message, bool enableMarkdownSupport = false, CancellationToken cancellationToken = default)
+		{
+			return chatbotResource.SendMessageAsync(accountId, toJId, robotJId, new ChatbotContent() { Head = new ChatbotHeader(message) }, enableMarkdownSupport, cancellationToken);
+		}
+
+		/// <summary>
+		/// Edit a Chatbot message.
+		/// </summary>
+		/// <param name="chatbotResource">The chatbot resource.</param>
+		/// <param name="messageId">The message ID of the message to edit.</param>
+		/// <param name="accountId">The account ID to which the message was sent.</param>
+		/// <param name="toJId">The JID of group channel or user to whom the message should be sent.</param>
+		/// <param name="robotJId">The robot JID.</param>
+		/// <param name="message">The simple text message to send.</param>
+		/// <param name="enableMarkdownSupport">True if the message contains markdown syntax.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public static Task<ChatbotMessageInformation> EditMessageAsync(this IChatbot chatbotResource, string messageId, string accountId, string toJId, string robotJId, string message, bool enableMarkdownSupport = false, CancellationToken cancellationToken = default)
+		{
+			return chatbotResource.EditMessageAsync(messageId, accountId, toJId, robotJId, new ChatbotContent() { Head = new ChatbotHeader(message) }, enableMarkdownSupport, cancellationToken);
 		}
 	}
 }
