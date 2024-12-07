@@ -49,11 +49,17 @@ namespace ZoomNet.IntegrationTests
 			var connectionType = ConnectionType.OAuthServerToServer;
 			// -----------------------------------------------------------------------------
 
+			// As far as I know, Zoom only supports ClientCredentials when invoking the methods on the ChatBot endpoint
+			if (testType == TestType.Chatbot && connectionType != ConnectionType.OAuthClientCredentials)
+			{
+				throw new Exception("Zoom only support client credentials when invoking the ChatBot endpoint.");
+			}
+
 			// Configure the proxy if desired
 			var proxy = useProxy ? new WebProxy($"http://localhost:{proxyPort}") : null;
 
 			// Get the connection info and test suite
-			var connectionInfo = GetConnectionInfo(connectionType);
+			var connectionInfo = GetConnectionInfo(connectionType, testType);
 			var testSuite = GetTestSuite(connectionInfo, testType, proxy, _loggerFactory);
 
 			// Run the tests
@@ -65,7 +71,7 @@ namespace ZoomNet.IntegrationTests
 			return Task.CompletedTask;
 		}
 
-		private static IConnectionInfo GetConnectionInfo(ConnectionType connectionType)
+		private static IConnectionInfo GetConnectionInfo(ConnectionType connectionType, TestType testType)
 		{
 			// Jwt
 			if (connectionType == ConnectionType.Jwt)
@@ -76,11 +82,14 @@ namespace ZoomNet.IntegrationTests
 			}
 
 			// OAuth
-			var clientId = Environment.GetEnvironmentVariable("ZOOM_OAUTH_CLIENTID", EnvironmentVariableTarget.User);
-			var clientSecret = Environment.GetEnvironmentVariable("ZOOM_OAUTH_CLIENTSECRET", EnvironmentVariableTarget.User);
+			var clientIdVariableName = testType == TestType.Chatbot ? "ZOOM_CHATBOT_CLIENTID" : "ZOOM_OAUTH_CLIENTID";
+			var clientSecretVariableName = testType == TestType.Chatbot ? "ZOOM_CHATBOT_CLIENTSECRET" : "ZOOM_OAUTH_CLIENTSECRET";
 
-			if (string.IsNullOrEmpty(clientId)) throw new Exception("You must set the ZOOM_OAUTH_CLIENTID environment variable before you can run integration tests.");
-			if (string.IsNullOrEmpty(clientSecret)) throw new Exception("You must set the ZOOM_OAUTH_CLIENTSECRET environment variable before you can run integration tests.");
+			var clientId = Environment.GetEnvironmentVariable(clientIdVariableName, EnvironmentVariableTarget.User);
+			var clientSecret = Environment.GetEnvironmentVariable(clientSecretVariableName, EnvironmentVariableTarget.User);
+
+			if (string.IsNullOrEmpty(clientId)) throw new Exception($"You must set the {clientIdVariableName} environment variable before you can run integration tests.");
+			if (string.IsNullOrEmpty(clientSecret)) throw new Exception($"You must set the {clientSecretVariableName} environment variable before you can run integration tests.");
 
 			switch (connectionType)
 			{
@@ -111,12 +120,13 @@ namespace ZoomNet.IntegrationTests
 					}
 				case ConnectionType.OAuthClientCredentials:
 					{
-						var accessToken = Environment.GetEnvironmentVariable("ZOOM_OAUTH_CLIENTCREDENTIALS_ACCESSTOKEN", EnvironmentVariableTarget.User);
+						var accessTokenVariableName = testType == TestType.Chatbot ? "ZOOM_OAUTH_CHATBOT_ACCESSTOKEN" : "ZOOM_OAUTH_CLIENTCREDENTIALS_ACCESSTOKEN";
+						var accessToken = Environment.GetEnvironmentVariable(accessTokenVariableName, EnvironmentVariableTarget.User);
 
 						return OAuthConnectionInfo.WithClientCredentials(clientId, clientSecret, accessToken,
 							(newRefreshToken, newAccessToken) =>
 							{
-								Environment.SetEnvironmentVariable("ZOOM_OAUTH_CLIENTCREDENTIALS_ACCESSTOKEN", newAccessToken, EnvironmentVariableTarget.User);
+								Environment.SetEnvironmentVariable(accessTokenVariableName, newAccessToken, EnvironmentVariableTarget.User);
 							});
 					}
 				case ConnectionType.OAuthServerToServer:
