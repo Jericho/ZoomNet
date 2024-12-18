@@ -40,7 +40,7 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// In calendar event.
 		/// </summary>
-		[EnumMember(Value = "In_Calendar_Event")]
+		[EnumMember(Value = "In_A_Calendar_Event")]
 		InEvent,
 
 		/// <summary>
@@ -52,13 +52,13 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// In a Zoom meeting.
 		/// </summary>
-		[EnumMember(Value = "In_A_Zoom_Meeting")]
+		[EnumMember(Value = "In_A_Meeting")]
 		InMeeting,
 
 		/// <summary>
 		/// On a call.
 		/// </summary>
-		[EnumMember(Value = "On_A_Call")]
+		[EnumMember(Value = "In_A_Call")]
 		OnCall,
 
 		/// <summary>
