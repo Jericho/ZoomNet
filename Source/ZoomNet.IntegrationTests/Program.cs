@@ -1,11 +1,7 @@
-using Logzio.DotNet.NLog;
+using Formitable.BetterStack.Logger.Microsoft;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using NLog;
-using NLog.Config;
-using NLog.Extensions.Logging;
-using NLog.Targets;
 using System;
 using System.Linq;
 using System.Threading;
@@ -15,12 +11,9 @@ namespace ZoomNet.IntegrationTests
 {
 	public class Program
 	{
-		public static async Task Main(string[] args)
+		public static async Task Main()
 		{
 			//var serializerContext = GenerateAttributesForSerializerContext();
-
-			var builder = Host.CreateApplicationBuilder();
-			builder.Services.AddHostedService<TestsRunner>();
 
 			// Configure cancellation (this allows you to press CTRL+C or CTRL+Break to stop the integration tests)
 			var cts = new CancellationTokenSource();
@@ -30,16 +23,40 @@ namespace ZoomNet.IntegrationTests
 				cts.Cancel();
 			};
 
-			// Configure logging
-			builder.Logging.ClearProviders(); // Remove the built-in providers (which include the Console)
-			builder.Logging.AddNLog(GetNLogConfiguration()); // Add our desired custom providers (which include the Colored Console)
+			var services = new ServiceCollection();
+			ConfigureServices(services);
+			using var serviceProvider = services.BuildServiceProvider();
+			var app = serviceProvider.GetService<IHostedService>();
+			await app.StartAsync(cts.Token).ConfigureAwait(false);
+		}
 
-			// Run the tests
-			var host = builder.Build();
-			await host.StartAsync(cts.Token).ConfigureAwait(false);
+		private static void ConfigureServices(ServiceCollection services)
+		{
+			services.AddHostedService<TestsRunner>();
 
-			// Stop NLog (which has the desirable side-effect of flushing any pending logs)
-			LogManager.Shutdown();
+
+			services
+				.AddLogging(logging =>
+				{
+					var betterStackToken = Environment.GetEnvironmentVariable("BETTERSTACK_TOKEN");
+					if (!string.IsNullOrEmpty(betterStackToken))
+					{
+						logging.AddBetterStackLogger(options =>
+						{
+							options.SourceToken = betterStackToken;
+							options.Context["source"] = "ZoomNet_integration_tests";
+							options.Context["ZoomNet-Version"] = ZoomClient.Version;
+						});
+					}
+
+					logging.AddSimpleConsole(options =>
+					{
+						options.SingleLine = true;
+						options.TimestampFormat = "yyyy-MM-dd HH:mm:ss ";
+					});
+
+					logging.AddFilter("*", LogLevel.Debug);
+				});
 		}
 
 		private static string GenerateAttributesForSerializerContext()
@@ -81,39 +98,6 @@ namespace ZoomNet.IntegrationTests
 
 			var result = string.Join("\r\n\r\n", [simpleAttributes, arrayAttributes, nullableAttributes]);
 			return result;
-		}
-
-		private static LoggingConfiguration GetNLogConfiguration()
-		{
-			// Configure logging
-			var nLogConfig = new LoggingConfiguration();
-
-			// Send logs to logz.io
-			var logzioToken = Environment.GetEnvironmentVariable("LOGZIO_TOKEN");
-			if (!string.IsNullOrEmpty(logzioToken))
-			{
-				var logzioTarget = new LogzioTarget
-				{
-					Name = "Logzio",
-					Token = logzioToken,
-					LogzioType = "nlog",
-					JsonKeysCamelCase = true,
-					// ProxyAddress = "http://localhost:8888",
-				};
-				logzioTarget.ContextProperties.Add(new TargetPropertyWithContext("Source", "ZoomNet_integration_tests"));
-				logzioTarget.ContextProperties.Add(new TargetPropertyWithContext("ZoomNet-Version", ZoomNet.ZoomClient.Version));
-
-				nLogConfig.AddTarget("Logzio", logzioTarget);
-				nLogConfig.AddRule(NLog.LogLevel.Trace, NLog.LogLevel.Fatal, logzioTarget, "*"); // Send all logs to logz.io, no matther the 'level'
-			}
-
-			// Send logs to console
-			var consoleTarget = new ColoredConsoleTarget();
-			nLogConfig.AddTarget("ColoredConsole", consoleTarget);
-			nLogConfig.AddRule(NLog.LogLevel.Debug, NLog.LogLevel.Fatal, consoleTarget, "*"); // Only display logs with 'Debug' level or higher in the console
-			nLogConfig.AddRule(NLog.LogLevel.Trace, NLog.LogLevel.Fatal, consoleTarget, "ZoomNet.ZoomWebSocketClient"); // Display all logs to console when testing the WebSocket client, no matther the 'level'
-
-			return nLogConfig;
 		}
 	}
 }
