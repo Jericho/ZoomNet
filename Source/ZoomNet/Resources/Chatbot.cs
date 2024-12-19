@@ -34,12 +34,6 @@ public class Chatbot : IChatbot
 	}
 
 	/// <inheritdoc/>
-	public Task<ChatbotMessageInformation> SendMessageAsync(string accountId, string toJId, string robotJId, string message, bool enableMarkdownSupport = false, CancellationToken cancellationToken = default)
-	{
-		return SendMessageAsync(accountId, toJId, robotJId, new ChatbotContent() { Head = new ChatbotHeader(message) }, enableMarkdownSupport, cancellationToken);
-	}
-
-	/// <inheritdoc/>
 	public Task<ChatbotMessageInformation> SendMessageAsync(string accountId, string toJId, string robotJId, ChatbotContent content, bool enableMarkdownSupport = false, CancellationToken cancellationToken = default)
 	{
 		content.Validate(enableMarkdownSupport);
@@ -58,12 +52,6 @@ public class Chatbot : IChatbot
 			.WithJsonBody(data)
 			.WithCancellationToken(cancellationToken)
 			.AsObject<ChatbotMessageInformation>();
-	}
-
-	/// <inheritdoc/>
-	public Task<ChatbotMessageInformation> EditMessageAsync(string messageId, string accountId, string toJId, string robotJId, string message, bool enableMarkdownSupport = false, CancellationToken cancellationToken = default)
-	{
-		return EditMessageAsync(messageId, accountId, toJId, robotJId, new ChatbotContent() { Head = new ChatbotHeader(message) }, enableMarkdownSupport, cancellationToken);
 	}
 
 	/// <inheritdoc/>

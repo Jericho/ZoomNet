@@ -1,5 +1,5 @@
 // Install tools.
-#tool dotnet:?package=GitVersion.Tool&version=6.0.5
+#tool dotnet:?package=GitVersion.Tool&version=6.1.0
 #tool dotnet:?package=coveralls.net&version=4.0.1
 #tool nuget:https://f.feedz.io/jericho/jericho/nuget/?package=GitReleaseManager&version=0.17.0-collaborators0008
 #tool nuget:?package=ReportGenerator&version=5.4.1
@@ -8,7 +8,7 @@
 
 // Install addins.
 #addin nuget:?package=Cake.Coveralls&version=4.0.0
-#addin nuget:?package=Cake.Git&version=4.0.0
+#addin nuget:?package=Cake.Git&version=5.0.1
 #addin nuget:?package=Cake.Codecov&version=3.0.0
 
 
@@ -96,15 +96,13 @@ var publishingError = false;
 // - when building source project on Ubuntu
 // - when running unit tests on Ubuntu
 // - when calculating code coverage
-// FYI, this will cause an error if the source project and/or the unit test project are not configured to target this desired framework:
-const string DefaultFramework = "net7.0";
-var desiredFramework = (
-		!IsRunningOnWindows() ||
+const string DefaultFramework = "net9.0";
+var isSingleTfmMode = !IsRunningOnWindows() ||
 		target.Equals("Coverage", StringComparison.OrdinalIgnoreCase) ||
 		target.Equals("Run-Code-Coverage", StringComparison.OrdinalIgnoreCase) ||
 		target.Equals("Generate-Code-Coverage-Report", StringComparison.OrdinalIgnoreCase) ||
-		target.Equals("Upload-Coverage-Result", StringComparison.OrdinalIgnoreCase)
-	) ? DefaultFramework : null;
+		target.Equals("Upload-Coverage-Result", StringComparison.OrdinalIgnoreCase);
+var desiredFramework = isSingleTfmMode ? DefaultFramework : null;
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -180,6 +178,18 @@ Setup(context =>
 		Information("Removing benchmark project");
 		DotNetTool(solutionFile, "sln", $"remove {benchmarkProject.TrimStart(sourceFolder, StringComparison.OrdinalIgnoreCase)}");
 	}
+
+	// In single TFM mode we want to override the framework(s) with our desired framework
+	if (isSingleTfmMode)
+	{
+		var peekSettings = new XmlPeekSettings { SuppressWarning = true };
+		foreach(var projectFile in GetFiles("./Source/**/*.csproj"))
+		{
+			Information("Updating TFM in: {0}", projectFile.ToString());
+			if (XmlPeek(projectFile, "/Project/PropertyGroup/TargetFramework", peekSettings) != null) XmlPoke(projectFile, "/Project/PropertyGroup/TargetFramework", desiredFramework);
+			if (XmlPeek(projectFile, "/Project/PropertyGroup/TargetFrameworks", peekSettings) != null) XmlPoke(projectFile, "/Project/PropertyGroup/TargetFrameworks", desiredFramework);
+		}
+	}
 });
 
 Teardown(context =>
@@ -188,6 +198,18 @@ Teardown(context =>
 	{
 		Information("Restoring projects that may have been removed during build script setup");
 		GitCheckout(".", new FilePath[] { solutionFile });
+		Information("  Restored {0}", solutionFile.ToString());
+		Information("");
+	}
+
+	if (isSingleTfmMode)
+	{
+		Information("Restoring project files that may have been modified during build script setup");
+		foreach(var projectFile in GetFiles("./Source/**/*.csproj"))
+		{
+			GitCheckout(".", new FilePath[] { projectFile });
+			Information("  Restored {0}", projectFile.ToString());
+		}
 		Information("");
 	}
 
