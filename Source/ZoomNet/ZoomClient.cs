@@ -70,6 +70,9 @@ namespace ZoomNet
 		public IAccounts Accounts { get; private set; }
 
 		/// <inheritdoc/>
+		public IBilling Billing { get; private set; }
+
+		/// <inheritdoc/>
 		public ICallLogs CallLogs { get; private set; }
 
 		/// <inheritdoc/>
@@ -215,6 +218,7 @@ namespace ZoomNet
 			_fluentClient.Filters.Add(new ZoomErrorHandler());
 
 			Accounts = new Accounts(_fluentClient);
+			Billing = new Billing(_fluentClient);
 			CallLogs = new CallLogs(_fluentClient);
 			Chat = new Chat(_fluentClient);
 			Chatbot = new Chatbot(_fluentClient);
