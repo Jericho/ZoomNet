@@ -34,7 +34,6 @@ namespace ZoomNet.IntegrationTests
 		{
 			services.AddHostedService<TestsRunner>();
 
-
 			services
 				.AddLogging(logging =>
 				{
