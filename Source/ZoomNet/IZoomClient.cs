@@ -58,6 +58,11 @@ namespace ZoomNet
 		IDataCompliance DataCompliance { get; }
 
 		/// <summary>
+		/// Gets the resource which allows you to handle Zoom phone external contacts.
+		/// </summary>
+		IExternalContacts ExternalContacts { get; }
+
+		/// <summary>
 		/// Gets the resource that allows you to manage groups.
 		/// </summary>
 		IGroups Groups { get; }
