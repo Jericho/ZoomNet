@@ -30,7 +30,7 @@ namespace ZoomNet.Resources
 			}
 
 			return _client
-				.GetAsync($"phone/external_contacts")
+				.GetAsync("phone/external_contacts")
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", nextPageToken)
 				.WithCancellationToken(cancellationToken)
@@ -55,7 +55,7 @@ namespace ZoomNet.Resources
 		public Task<ExternalContact> AddExternalContactAsync(ExternalContactDetails externalContact, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.PostAsync($"phone/external_contacts")
+				.PostAsync("phone/external_contacts")
 				.WithJsonBody(externalContact)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<ExternalContact>();
