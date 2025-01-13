@@ -22,7 +22,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<ExternalContactDetails>> ListExternalContactsAsync(int pageSize = 30, string nextPageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<ExternalContactDetails>> GetAllAsync(int pageSize = 30, string nextPageToken = null, CancellationToken cancellationToken = default)
 		{
 			if (pageSize < 1 || pageSize > 300)
 			{
@@ -38,7 +38,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<ExternalContactDetails> GetExternalContactDetailsAsync(string externalContactId, CancellationToken cancellationToken = default)
+		public Task<ExternalContactDetails> GetDetailsAsync(string externalContactId, CancellationToken cancellationToken = default)
 		{
 			if (string.IsNullOrEmpty(externalContactId))
 			{
@@ -52,7 +52,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<ExternalContact> AddExternalContactAsync(ExternalContactDetails externalContact, CancellationToken cancellationToken = default)
+		public Task<ExternalContact> AddAsync(ExternalContactDetails externalContact, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.PostAsync("phone/external_contacts")
@@ -62,7 +62,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task DeleteExternalContactAsync(string externalContactId, CancellationToken cancellationToken = default)
+		public Task DeleteAsync(string externalContactId, CancellationToken cancellationToken = default)
 		{
 			if (string.IsNullOrEmpty(externalContactId))
 			{
@@ -76,7 +76,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task UpdateExternalContactAsync(
+		public Task UpdateAsync(
 			ExternalContactDetails externalContact, CancellationToken cancellationToken = default)
 		{
 			if (string.IsNullOrEmpty(externalContact.ExternalContactId))

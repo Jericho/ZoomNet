@@ -25,7 +25,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// A task representing the asynchronous operation. The task result contains an array of external contacts in type of <see cref="ExternalContact"/>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<ExternalContactDetails>> ListExternalContactsAsync(
+		Task<PaginatedResponseWithToken<ExternalContactDetails>> GetAllAsync(
 			int pageSize = 30,
 			string nextPageToken = null,
 			CancellationToken cancellationToken = default);
@@ -36,7 +36,7 @@ namespace ZoomNet.Resources
 		/// <param name="externalContactId">The external contact id.</param>
 		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
 		/// <returns>A task representing the asynchronous operation. The task result contains external contact details.</returns>
-		Task<ExternalContactDetails> GetExternalContactDetailsAsync(
+		Task<ExternalContactDetails> GetDetailsAsync(
 			string externalContactId, CancellationToken cancellationToken = default);
 
 		/// <summary>
@@ -45,7 +45,7 @@ namespace ZoomNet.Resources
 		/// <param name="externalContact">The external contact information.</param>
 		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
 		/// <returns>A task representing the asynchronous operation. The task result contains external contact details.</returns>
-		Task<ExternalContact> AddExternalContactAsync(
+		Task<ExternalContact> AddAsync(
 			ExternalContactDetails externalContact, CancellationToken cancellationToken = default);
 
 		/// <summary>
@@ -54,7 +54,7 @@ namespace ZoomNet.Resources
 		/// <param name="externalContactId">The external contact id.</param>
 		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
 		/// <returns>A task representing the asynchronous operation.</returns>
-		Task DeleteExternalContactAsync(
+		Task DeleteAsync(
 			string externalContactId, CancellationToken cancellationToken = default);
 
 		/// <summary>
@@ -63,7 +63,7 @@ namespace ZoomNet.Resources
 		/// <param name="externalContact">External contact information.</param>
 		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
 		/// <returns>A task representing the asynchronous operation.</returns>
-		Task UpdateExternalContactAsync(
+		Task UpdateAsync(
 			ExternalContactDetails externalContact, CancellationToken cancellationToken = default);
 	}
 }
