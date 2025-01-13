@@ -79,9 +79,13 @@ namespace ZoomNet.Resources
 		public Task UpdateAsync(
 			ExternalContactDetails externalContact, CancellationToken cancellationToken = default)
 		{
-			if (string.IsNullOrEmpty(externalContact.ExternalContactId))
+			if (externalContact == null)
 			{
-				throw new ArgumentNullException($"{nameof(externalContact)}.{nameof(externalContact.Id)}");
+				throw new ArgumentNullException(nameof(externalContact));
+			}
+			else if (string.IsNullOrEmpty(externalContact.ExternalContactId))
+			{
+				throw new ArgumentNullException($"{nameof(externalContact)}.{nameof(externalContact.ExternalContactId)}");
 			}
 
 			return _client
