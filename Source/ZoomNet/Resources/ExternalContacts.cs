@@ -42,7 +42,7 @@ namespace ZoomNet.Resources
 		{
 			if (string.IsNullOrEmpty(externalContactId))
 			{
-				throw new ArgumentException(nameof(externalContactId), "External contact id is not set.");
+				throw new ArgumentNullException(nameof(externalContactId));
 			}
 
 			return _client
@@ -66,7 +66,7 @@ namespace ZoomNet.Resources
 		{
 			if (string.IsNullOrEmpty(externalContactId))
 			{
-				throw new ArgumentException(nameof(externalContactId), "External contact id is not set.");
+				throw new ArgumentNullException(nameof(externalContactId));
 			}
 
 			return _client
@@ -81,7 +81,7 @@ namespace ZoomNet.Resources
 		{
 			if (string.IsNullOrEmpty(externalContact.ExternalContactId))
 			{
-				throw new ArgumentException(nameof(externalContact.ExternalContactId), "External contact id is not set.");
+				throw new ArgumentNullException($"{nameof(externalContact)}.{nameof(externalContact.Id)}");
 			}
 
 			return _client
