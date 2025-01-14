@@ -2,8 +2,8 @@
 #tool dotnet:?package=GitVersion.Tool&version=6.1.0
 #tool dotnet:?package=coveralls.net&version=4.0.1
 #tool nuget:https://f.feedz.io/jericho/jericho/nuget/?package=GitReleaseManager&version=0.17.0-collaborators0008
-#tool nuget:?package=ReportGenerator&version=5.4.1
-#tool nuget:?package=xunit.runner.console&version=2.9.2
+#tool nuget:?package=ReportGenerator&version=5.4.3
+#tool nuget:?package=xunit.runner.console&version=2.9.3
 #tool nuget:?package=CodecovUploader&version=0.8.0
 
 // Install addins.
@@ -63,7 +63,7 @@ var sourceFolder = "./Source/";
 var outputDir = "./artifacts/";
 var codeCoverageDir = $"{outputDir}CodeCoverage/";
 var benchmarkDir = $"{outputDir}Benchmark/";
-var coverageFile = $"{codeCoverageDir}coverage.{DefaultFramework}.xml";
+var coverageFile = $"{codeCoverageDir}coverage.{DEFAULT_FRAMEWORK}.xml";
 
 var solutionFile = $"{sourceFolder}{libraryName}.sln";
 var sourceProject = $"{sourceFolder}{libraryName}/{libraryName}.csproj";
@@ -96,13 +96,12 @@ var publishingError = false;
 // - when building source project on Ubuntu
 // - when running unit tests on Ubuntu
 // - when calculating code coverage
-const string DefaultFramework = "net9.0";
+const string DEFAULT_FRAMEWORK = "net9.0";
 var isSingleTfmMode = !IsRunningOnWindows() ||
 		target.Equals("Coverage", StringComparison.OrdinalIgnoreCase) ||
 		target.Equals("Run-Code-Coverage", StringComparison.OrdinalIgnoreCase) ||
 		target.Equals("Generate-Code-Coverage-Report", StringComparison.OrdinalIgnoreCase) ||
 		target.Equals("Upload-Coverage-Result", StringComparison.OrdinalIgnoreCase);
-var desiredFramework = isSingleTfmMode ? DefaultFramework : null;
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -186,8 +185,8 @@ Setup(context =>
 		foreach(var projectFile in GetFiles("./Source/**/*.csproj"))
 		{
 			Information("Updating TFM in: {0}", projectFile.ToString());
-			if (XmlPeek(projectFile, "/Project/PropertyGroup/TargetFramework", peekSettings) != null) XmlPoke(projectFile, "/Project/PropertyGroup/TargetFramework", desiredFramework);
-			if (XmlPeek(projectFile, "/Project/PropertyGroup/TargetFrameworks", peekSettings) != null) XmlPoke(projectFile, "/Project/PropertyGroup/TargetFrameworks", desiredFramework);
+			if (XmlPeek(projectFile, "/Project/PropertyGroup/TargetFramework", peekSettings) != null) XmlPoke(projectFile, "/Project/PropertyGroup/TargetFramework", DEFAULT_FRAMEWORK);
+			if (XmlPeek(projectFile, "/Project/PropertyGroup/TargetFrameworks", peekSettings) != null) XmlPoke(projectFile, "/Project/PropertyGroup/TargetFrameworks", DEFAULT_FRAMEWORK);
 		}
 	}
 });
@@ -205,11 +204,7 @@ Teardown(context =>
 	if (isSingleTfmMode)
 	{
 		Information("Restoring project files that may have been modified during build script setup");
-		foreach(var projectFile in GetFiles("./Source/**/*.csproj"))
-		{
-			GitCheckout(".", new FilePath[] { projectFile });
-			Information("  Restored {0}", projectFile.ToString());
-		}
+		GitCheckout(".", GetFiles("./Source/**/*.csproj").ToArray());
 		Information("");
 	}
 
@@ -270,7 +265,7 @@ Task("Build")
 	DotNetBuild(solutionFile, new DotNetBuildSettings
 	{
 		Configuration = configuration,
-		Framework =  desiredFramework,
+		Framework =  isSingleTfmMode ? DEFAULT_FRAMEWORK : null,
 		NoRestore = true,
 		MSBuildSettings = new DotNetMSBuildSettings
 		{
@@ -293,7 +288,7 @@ Task("Run-Unit-Tests")
 		NoBuild = true,
 		NoRestore = true,
 		Configuration = configuration,
-		Framework = desiredFramework
+		Framework = isSingleTfmMode ? DEFAULT_FRAMEWORK : null
 	});
 });
 
@@ -307,7 +302,7 @@ Task("Run-Code-Coverage")
 		NoBuild = true,
 		NoRestore = true,
 		Configuration = configuration,
-		Framework = DefaultFramework,
+		Framework = isSingleTfmMode ? DEFAULT_FRAMEWORK : null,
 
 		// The following assumes that coverlet.msbuild has been added to the unit testing project
 		ArgumentCustomization = args => args
