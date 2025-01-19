@@ -29,7 +29,7 @@ namespace ZoomNet.Resources
 			}
 
 			return _client
-				.GetAsync($"chat/users/me/contacts")
+				.GetAsync("chat/users/me/contacts")
 				.WithArgument("type", type.ToEnumString())
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
@@ -46,7 +46,7 @@ namespace ZoomNet.Resources
 			}
 
 			return _client
-				.GetAsync($"contacts")
+				.GetAsync("contacts")
 				.WithArgument("search_key", keyword)
 				.WithArgument("query_presence_status", queryPresenceStatus)
 				.WithArgument("page_size", recordsPerPage)

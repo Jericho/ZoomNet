@@ -33,7 +33,7 @@ namespace ZoomNet.Resources
 			}
 
 			return _client
-				.GetAsync($"accounts")
+				.GetAsync("accounts")
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("page_number", page)
 				.WithCancellationToken(cancellationToken)
@@ -49,7 +49,7 @@ namespace ZoomNet.Resources
 			}
 
 			return _client
-				.GetAsync($"accounts")
+				.GetAsync("accounts")
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
@@ -79,7 +79,7 @@ namespace ZoomNet.Resources
 			};
 
 			return _client
-				.PostAsync($"accounts")
+				.PostAsync("accounts")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<Account>();

@@ -83,7 +83,7 @@ namespace ZoomNet.Resources
 			}
 
 			return _client
-				.GetAsync($"phone/users")
+				.GetAsync("phone/users")
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", nextPageToken)
 				.WithArgument("site_id", siteId)

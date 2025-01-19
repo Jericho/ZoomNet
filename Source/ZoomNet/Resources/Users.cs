@@ -35,7 +35,7 @@ namespace ZoomNet.Resources
 			}
 
 			return _client
-				.GetAsync($"users")
+				.GetAsync("users")
 				.WithArgument("status", status.ToEnumString())
 				.WithArgument("role_id", roleId)
 				.WithArgument("page_size", recordsPerPage)
@@ -53,7 +53,7 @@ namespace ZoomNet.Resources
 			}
 
 			return _client
-				.GetAsync($"users")
+				.GetAsync("users")
 				.WithArgument("status", status.ToEnumString())
 				.WithArgument("role_id", roleId)
 				.WithArgument("page_size", recordsPerPage)
@@ -399,7 +399,7 @@ namespace ZoomNet.Resources
 		public Task<bool> CheckEmailInUseAsync(string email, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.GetAsync($"users/email")
+				.GetAsync("users/email")
 				.WithArgument("email", email)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<bool>("existed_email");
@@ -424,7 +424,7 @@ namespace ZoomNet.Resources
 		public Task<bool> CheckPersonalMeetingRoomNameInUseAsync(string name, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.GetAsync($"users/vanity_name")
+				.GetAsync("users/vanity_name")
 				.WithArgument("vanity_name", name)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<bool>("existed");

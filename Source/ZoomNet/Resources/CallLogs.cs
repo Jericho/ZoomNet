@@ -49,7 +49,7 @@ namespace ZoomNet.Resources
 			}
 
 			return _client
-				.GetAsync($"phone/call_logs")
+				.GetAsync("phone/call_logs")
 				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
 				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
 				.WithArgument("type", type.ToEnumString())
