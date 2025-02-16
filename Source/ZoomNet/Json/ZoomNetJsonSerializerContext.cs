@@ -752,6 +752,7 @@ namespace ZoomNet.Json
 	[JsonSerializable(typeof(ZoomNet.Models.WebinarChatType?))]
 	[JsonSerializable(typeof(ZoomNet.Models.WebinarType?))]
 	[JsonSerializable(typeof(ZoomNet.Models.WhoCanShare?))]
+	[JsonSerializable(typeof(ZoomNet.Models.ChatMembersEditResult))]
 	internal partial class ZoomNetJsonSerializerContext : JsonSerializerContext
 	{
 	}
