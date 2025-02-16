@@ -1,8 +1,8 @@
-using System;
-using System.Text.Json.Serialization;
-
 namespace ZoomNet.Models
 {
+	using System;
+	using System.Text.Json.Serialization;
+
 	/// <summary>
 	/// Chat channel invitation result.
 	/// </summary>
