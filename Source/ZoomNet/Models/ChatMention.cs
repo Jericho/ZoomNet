@@ -33,7 +33,7 @@ namespace ZoomNet.Models
 		/// Gets or sets the contact being mentioned.
 		/// </summary>
 		/// <remarks>Will be empty if <see cref="Type"/> is <see cref="ChatMentionType.All"/>.</remarks>
-		[JsonPropertyName("at_type")]
+		[JsonPropertyName("at_contact")]
 		public string Contact { get; set; }
 	}
 }
