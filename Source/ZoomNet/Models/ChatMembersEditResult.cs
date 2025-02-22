@@ -9,8 +9,8 @@ namespace ZoomNet.Models
 	public class ChatMembersEditResult
 	{
 		/// <summary>
-		/// Gets or sets the user IDs of the members added to the channel.
-		/// The user IDs of those who are not from the same account will be omitted from the list.
+		/// Gets or sets the user ids of the members added to the channel.
+		/// The user ids of those who are not from the same account will be omitted from the list.
 		/// </summary>
 		[JsonIgnore]
 		public string[] Ids
@@ -30,8 +30,8 @@ namespace ZoomNet.Models
 		}
 
 		/// <summary>
-		/// Gets or sets the comma-separated user IDs of the members added to the channel.
-		/// The user IDs of those who are not from the same account will be omitted from the list.
+		/// Gets or sets the comma-separated user ids of the members added to the channel.
+		/// The user ids of those who are not from the same account will be omitted from the list.
 		/// </summary>
 		[JsonPropertyName("ids")]
 		public string CommaSeparatedIds { get; set; }

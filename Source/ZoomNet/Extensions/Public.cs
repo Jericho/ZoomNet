@@ -235,9 +235,9 @@ namespace ZoomNet
 		/// Demotes administrators in an account channel by user id.
 		/// </summary>
 		/// <param name="chatResource">The chat resource.</param>
-		/// <param name="channelOwnerUserId">The user ID of the channel owner.</param>
+		/// <param name="channelOwnerUserId">The user id or email of the channel owner.</param>
 		/// <param name="channelId">The channel Id.</param>
-		/// <param name="userId">The user ID with channel admin privileges.</param>
+		/// <param name="userId">The user id or email with channel admin privileges.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
@@ -251,7 +251,7 @@ namespace ZoomNet
 		/// Demotes administrators in an account channel by user id.
 		/// </summary>
 		/// <param name="chatResource">The chat resource.</param>
-		/// <param name="channelOwnerUserId">The user ID of the channel owner.</param>
+		/// <param name="channelOwnerUserId">The user id or email of the channel owner.</param>
 		/// <param name="channelId">The channel Id.</param>
 		/// <param name="adminId">The admin ID with channel admin privileges.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
@@ -268,7 +268,7 @@ namespace ZoomNet
 		/// </summary>
 		/// <param name="chatResource">The chat resource.</param>
 		/// <param name="channelId">The channel Id.</param>
-		/// <param name="userId">The user ID with channel admin privileges.</param>
+		/// <param name="userId">The user id or email with channel admin privileges.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.

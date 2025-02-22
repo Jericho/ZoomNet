@@ -143,11 +143,11 @@ namespace ZoomNet.Resources
 		Task DemoteAdminsInAccountChannelByIdAsync(string userId, string channelId, IEnumerable<string> adminIds, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Demotes administrators in an account channel by user ids.
+		/// Demotes administrators in an account channel by user ids or emails.
 		/// </summary>
-		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="userId">The user id or email address.</param>
 		/// <param name="channelId">The channel Id.</param>
-		/// <param name="userIds">The user IDs with channel admin privileges. Use commas (,) to separate a maximum of 10 IDs in a call.</param>
+		/// <param name="userIds">The user ids or emails with channel admin privileges. Use commas (,) to separate a maximum of 10 IDs in a call.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
