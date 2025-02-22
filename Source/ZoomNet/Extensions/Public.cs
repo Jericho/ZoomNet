@@ -232,6 +232,68 @@ namespace ZoomNet
 		}
 
 		/// <summary>
+		/// Demotes administrators in an account channel by user id.
+		/// </summary>
+		/// <param name="chatResource">The chat resource.</param>
+		/// <param name="channelOwnerUserId">The user ID of the channel owner.</param>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="userId">The user ID with channel admin privileges.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public static Task DemoteAdminInAccountChannelByUserIdAsync(this IChat chatResource, string channelOwnerUserId, string channelId, string userId, CancellationToken cancellationToken = default)
+		{
+			return chatResource.DemoteAdminsInAccountChannelByUserIdAsync(channelId, channelOwnerUserId, [userId], cancellationToken);
+		}
+
+		/// <summary>
+		/// Demotes administrators in an account channel by user id.
+		/// </summary>
+		/// <param name="chatResource">The chat resource.</param>
+		/// <param name="channelOwnerUserId">The user ID of the channel owner.</param>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="adminId">The admin ID with channel admin privileges.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public static Task DemoteAdminInAccountChannelByIdAsync(this IChat chatResource, string channelOwnerUserId, string channelId, string adminId, CancellationToken cancellationToken = default)
+		{
+			return chatResource.DemoteAdminsInAccountChannelByIdAsync(channelId, channelOwnerUserId, [adminId], cancellationToken);
+		}
+
+		/// <summary>
+		/// Demotes administrators in an account channel by user id.
+		/// </summary>
+		/// <param name="chatResource">The chat resource.</param>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="userId">The user ID with channel admin privileges.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public static Task DemoteAdminInAccountChannelByUserIdAsync(this IChat chatResource, string channelId, string userId, CancellationToken cancellationToken = default)
+		{
+			return chatResource.DemoteAdminsInAccountChannelByUserIdAsync(channelId, "me", [userId], cancellationToken);
+		}
+
+		/// <summary>
+		/// Demotes administrators in an account channel by user id.
+		/// </summary>
+		/// <param name="chatResource">The chat resource.</param>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="adminId">The admin ID with channel admin privileges.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public static Task DemoteAdminInAccountChannelByIdAsync(this IChat chatResource, string channelId, string adminId, CancellationToken cancellationToken = default)
+		{
+			return chatResource.DemoteAdminsInAccountChannelByIdAsync(channelId, "me", [adminId], cancellationToken);
+		}
+
+		/// <summary>
 		/// Parses the event webhook asynchronously.
 		/// </summary>
 		/// <param name="parser">The webhook parser.</param>
