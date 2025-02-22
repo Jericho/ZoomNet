@@ -176,17 +176,26 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task BatchDemoteAdminsInAccountChannelAsync(string userId, string channelId, IEnumerable<string> adminIds = null, IEnumerable<string> userIds = null, CancellationToken cancellationToken = default)
+		public Task DemoteAdminsInAccountChannelAsync(string userId, string channelId, IEnumerable<string> adminIds = null, CancellationToken cancellationToken = default)
 		{
 			if (adminIds == null || !adminIds.Any()) throw new ArgumentNullException(nameof(adminIds), "You must specify at least one admin to demote");
-			if (userIds == null || !userIds.Any()) throw new ArgumentNullException(nameof(userIds), "You must specify at least one user to demote");
-
 			if (adminIds.Count() > 10) throw new ArgumentOutOfRangeException(nameof(adminIds), "You can demote up to 10 admins at once");
-			if (userIds.Count() > 10) throw new ArgumentOutOfRangeException(nameof(userIds), "You can demote up to 10 users at once");
 
 			return _client
 				.DeleteAsync($"chat/users/{userId}/channels/{channelId}/admins")
 				.WithArgument("admin_ids", string.Join(",", adminIds))
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DemoteUsersInAccountChannelAsync(string userId, string channelId, IEnumerable<string> userIds = null, CancellationToken cancellationToken = default)
+		{
+			if (userIds == null || !userIds.Any()) throw new ArgumentNullException(nameof(userIds), "You must specify at least one user to demote");
+			if (userIds.Count() > 10) throw new ArgumentOutOfRangeException(nameof(userIds), "You can demote up to 10 users at once");
+
+			return _client
+				.DeleteAsync($"chat/users/{userId}/channels/{channelId}/admins")
 				.WithArgument("user_ids", string.Join(",", userIds))
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();

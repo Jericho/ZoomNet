@@ -135,13 +135,24 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="channelId">The channel Id.</param>
-		/// <param name="adminIds">The member IDs with channel admin privileges. Use commas (,) to separate a maximum of 10 IDs in a call.</param>
-		/// <param name="userIds">The member IDs or user IDs with channel admin privileges. Use commas (,) to separate a maximum of 10 IDs in a call.</param>
+		/// <param name="adminIds">The admin IDs with channel admin privileges. Use commas (,) to separate a maximum of 10 IDs in a call.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task BatchDemoteAdminsInAccountChannelAsync(string userId, string channelId, IEnumerable<string> adminIds = null, IEnumerable<string> userIds = null, CancellationToken cancellationToken = default);
+		Task DemoteAdminsInAccountChannelAsync(string userId, string channelId, IEnumerable<string> adminIds = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Demotes administrators in a channel in batch.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="userIds">The user IDs with channel admin privileges. Use commas (,) to separate a maximum of 10 IDs in a call.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task DemoteUsersInAccountChannelAsync(string userId, string channelId, IEnumerable<string> userIds = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve information about a specific chat channel.
