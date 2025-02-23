@@ -241,7 +241,7 @@ namespace ZoomNet
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public static Task<ChatMembersEditResult> PromoteToAdminsInAccountChannelByEmailAsync(this IChat chatResource, string channelId, string email, CancellationToken cancellationToken = default)
+		public static Task<ChatMembersEditResult> PromoteToAdminInAccountChannelByEmailAsync(this IChat chatResource, string channelId, string email, CancellationToken cancellationToken = default)
 		{
 			return chatResource.PromoteMembersToAdminsInAccountChannelByEmailAsync(channelId, "me", [email], cancellationToken);
 		}
@@ -257,7 +257,7 @@ namespace ZoomNet
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public static Task<ChatMembersEditResult> PromoteToAdminsInAccountChannelByEmailAsync(this IChat chatResource, string channelOwnerUserId, string channelId, string email, CancellationToken cancellationToken = default)
+		public static Task<ChatMembersEditResult> PromoteToAdminInAccountChannelByEmailAsync(this IChat chatResource, string channelOwnerUserId, string channelId, string email, CancellationToken cancellationToken = default)
 		{
 			return chatResource.PromoteMembersToAdminsInAccountChannelByEmailAsync(channelId, channelOwnerUserId, [email], cancellationToken);
 		}
