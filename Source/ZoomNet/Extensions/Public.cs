@@ -235,6 +235,37 @@ namespace ZoomNet
 		/// Demotes administrators in an account channel by user id.
 		/// </summary>
 		/// <param name="chatResource">The chat resource.</param>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="email">The email address of the member to promote.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public static Task<ChatMembersEditResult> PromoteToAdminsInAccountChannelByEmailAsync(this IChat chatResource, string channelId, string email, CancellationToken cancellationToken = default)
+		{
+			return chatResource.PromoteMembersToAdminsInAccountChannelByEmailAsync(channelId, "me", [email], cancellationToken);
+		}
+
+		/// <summary>
+		/// Demotes administrators in an account channel by user id.
+		/// </summary>
+		/// <param name="chatResource">The chat resource.</param>
+		/// <param name="channelOwnerUserId">The user id or email of the channel owner.</param>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="email">The email address of the member to promote.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public static Task<ChatMembersEditResult> PromoteToAdminsInAccountChannelByEmailAsync(this IChat chatResource, string channelOwnerUserId, string channelId, string email, CancellationToken cancellationToken = default)
+		{
+			return chatResource.PromoteMembersToAdminsInAccountChannelByEmailAsync(channelId, channelOwnerUserId, [email], cancellationToken);
+		}
+
+		/// <summary>
+		/// Demotes administrators in an account channel by user id.
+		/// </summary>
+		/// <param name="chatResource">The chat resource.</param>
 		/// <param name="channelOwnerUserId">The user id or email of the channel owner.</param>
 		/// <param name="channelId">The channel Id.</param>
 		/// <param name="userId">The user id or email with channel admin privileges.</param>

@@ -48,7 +48,7 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			// PROMOTE MEMBER TO ADMIN
 			var memberToPromoteEmail = paginatedMembers.Records.LastOrDefault().Email;
-			var chatMemberPromotion = await client.Chat.PromoteMembersToAdminsInAccountChannelAsync(myUser.Id, channel.Id, [memberToPromoteEmail], cancellationToken).ConfigureAwait(false);
+			var chatMemberPromotion = await client.Chat.PromoteMembersToAdminsInAccountChannelByEmailAsync(myUser.Id, channel.Id, [memberToPromoteEmail], cancellationToken).ConfigureAwait(false);
 
 			// DEMOTE ADMIN TO MEMBER
 			await client.Chat.DemoteAdminsInAccountChannelByUserIdAsync(myUser.Id, channel.Id, [memberToPromoteEmail], cancellationToken);
