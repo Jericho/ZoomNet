@@ -99,11 +99,11 @@ namespace ZoomNet.Resources
 		/// <param name="channelId">The channel Id.</param>
 		/// <param name="emails">The email addresses of the members to include in the channel.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <remarks>Zoom allows a maximum of 5 members to be added at once.</remarks>
+		/// <remarks>Zoom allows a maximum of 20 members to be added at once.</remarks>
 		/// <returns>
-		/// An array containing the unique identifiers of the new members.
+		/// A <see cref="ChatMembersEditResult"/> containing members invited to the channel.
 		/// </returns>
-		Task<string[]> InviteMembersToAccountChannelAsync(string userId, string channelId, IEnumerable<string> emails, CancellationToken cancellationToken = default);
+		Task<ChatMembersEditResult> InviteMembersToAccountChannelAsync(string userId, string channelId, IEnumerable<string> emails, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Remove a member from a chat channel.
@@ -116,6 +116,43 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task RemoveMemberFromAccountChannelAsync(string userId, string channelId, string memberId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Promotes members to admin a chat channel by email.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="emails">The email addresses of the members to promote.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <remarks>Zoom allows a maximum of 10 members to be added at once.</remarks>
+		/// <returns>
+		/// A <see cref="ChatMembersEditResult"/> containing members promoted to the admins.
+		/// </returns>
+		Task<ChatMembersEditResult> PromoteMembersToAdminsInAccountChannelByEmailAsync(string userId, string channelId, IEnumerable<string> emails, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Demotes administrators in an account channel by admin ids.
+		/// </summary>
+		/// <param name="userId">The user Id or email address.</param>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="adminIds">The admin IDs with channel admin privileges. You can specify up to 10 values in this array.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task DemoteAdminsInAccountChannelByIdAsync(string userId, string channelId, IEnumerable<string> adminIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Demotes administrators in an account channel by user ids or emails.
+		/// </summary>
+		/// <param name="userId">The user id or email address.</param>
+		/// <param name="channelId">The channel Id.</param>
+		/// <param name="userIds">The user ids or emails with channel admin privileges. Use commas (,) to separate a maximum of 10 IDs in a call.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task DemoteAdminsInAccountChannelByUserIdAsync(string userId, string channelId, IEnumerable<string> userIds, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve information about a specific chat channel.
