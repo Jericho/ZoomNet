@@ -135,7 +135,7 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="channelId">The channel Id.</param>
-		/// <param name="adminIds">The admin IDs with channel admin privileges. Use commas (,) to separate a maximum of 10 IDs in a call.</param>
+		/// <param name="adminIds">The admin IDs with channel admin privileges. You can specify up to 10 values in this array.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// The async task.

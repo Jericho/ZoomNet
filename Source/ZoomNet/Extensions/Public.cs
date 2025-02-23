@@ -232,7 +232,7 @@ namespace ZoomNet
 		}
 
 		/// <summary>
-		/// Demotes administrators in an account channel by user id.
+		/// Demotes administrators in an account channel by email address.
 		/// </summary>
 		/// <param name="chatResource">The chat resource.</param>
 		/// <param name="channelId">The channel Id.</param>
@@ -247,7 +247,7 @@ namespace ZoomNet
 		}
 
 		/// <summary>
-		/// Demotes administrators in an account channel by user id.
+		/// Demotes administrators in an account channel by email address.
 		/// </summary>
 		/// <param name="chatResource">The chat resource.</param>
 		/// <param name="channelOwnerUserId">The user id or email of the channel owner.</param>
@@ -279,7 +279,7 @@ namespace ZoomNet
 		}
 
 		/// <summary>
-		/// Demotes administrators in an account channel by user id.
+		/// Demotes administrators in an account channel by admin id.
 		/// </summary>
 		/// <param name="chatResource">The chat resource.</param>
 		/// <param name="channelOwnerUserId">The user id or email of the channel owner.</param>
@@ -310,7 +310,7 @@ namespace ZoomNet
 		}
 
 		/// <summary>
-		/// Demotes administrators in an account channel by user id.
+		/// Demotes administrators in an account channel by admin id.
 		/// </summary>
 		/// <param name="chatResource">The chat resource.</param>
 		/// <param name="channelId">The channel Id.</param>

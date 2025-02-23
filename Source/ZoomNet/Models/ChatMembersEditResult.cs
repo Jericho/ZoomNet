@@ -1,6 +1,7 @@
 namespace ZoomNet.Models
 {
 	using System;
+	using System.Diagnostics;
 	using System.Text.Json.Serialization;
 
 	/// <summary>
@@ -34,12 +35,14 @@ namespace ZoomNet.Models
 		/// The user ids of those who are not from the same account will be omitted from the list.
 		/// </summary>
 		[JsonPropertyName("ids")]
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public string CommaSeparatedIds { get; set; }
 
 		/// <summary>
 		/// Gets or sets the comma-separated member IDs of the members added to the channel.
 		/// </summary>
 		[JsonPropertyName("member_ids")]
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public string CommaSeparatedMemberIds { get; set; }
 
 		/// <summary>
