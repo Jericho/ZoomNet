@@ -124,7 +124,7 @@ namespace ZoomNet.Resources
 		/// <param name="channelId">The channel Id.</param>
 		/// <param name="emails">The email addresses of the members to promote.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <remarks>Zoom allows a maximum of 10 members to be added at once.</remarks>
+		/// <remarks>Zoom allows a maximum of 10 members to be promoted at once.</remarks>
 		/// <returns>
 		/// A <see cref="ChatMembersEditResult"/> containing members promoted to the admins.
 		/// </returns>
@@ -135,8 +135,9 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="channelId">The channel Id.</param>
-		/// <param name="adminIds">The admin IDs with channel admin privileges. You can specify up to 10 values in this array.</param>
+		/// <param name="adminIds">The admin IDs with channel admin privileges.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <remarks>Zoom allows a maximum of 10 members to be demoted at once.</remarks>
 		/// <returns>
 		/// The async task.
 		/// </returns>
@@ -147,8 +148,9 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="userId">The user id or email address.</param>
 		/// <param name="channelId">The channel Id.</param>
-		/// <param name="userIds">The user ids or emails with channel admin privileges. Use commas (,) to separate a maximum of 10 IDs in a call.</param>
+		/// <param name="userIds">The user ids or emails with channel admin privileges.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <remarks>Zoom allows a maximum of 10 members to be demoted at once.</remarks>
 		/// <returns>
 		/// The async task.
 		/// </returns>

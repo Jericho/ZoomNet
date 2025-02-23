@@ -161,7 +161,7 @@ namespace ZoomNet.Resources
 		public Task<ChatMembersEditResult> PromoteMembersToAdminsInAccountChannelByEmailAsync(string userId, string channelId, IEnumerable<string> emails, CancellationToken cancellationToken = default)
 		{
 			if (emails == null || !emails.Any()) throw new ArgumentNullException(nameof(emails), "You must specify at least one member to invite");
-			if (emails.Count() > 10) throw new ArgumentOutOfRangeException(nameof(emails), "You can invite up to 10 members at once");
+			if (emails.Count() > 10) throw new ArgumentOutOfRangeException(nameof(emails), "You can promote up to 10 members at once");
 
 			var data = new JsonObject
 			{
