@@ -10,10 +10,7 @@ namespace ZoomNet.Resources
 	/// Allows you to manage chat channels, messages, etc.
 	/// </summary>
 	/// <remarks>
-	/// See Zoom documentation <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/chat-channels-account-level/">here</a>,
-	/// <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/chat-channels/">here</a>,
-	/// <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/chat-messages/">here</a>
-	/// and <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/chatbot-messages/">here</a> for more information.
+	/// See Zoom documentation <a href="https://developers.zoom.us/docs/api/team-chat/">here</a> for more information.
 	/// </remarks>
 	public interface IChat
 	{
