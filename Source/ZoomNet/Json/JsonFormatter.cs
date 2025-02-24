@@ -29,16 +29,16 @@ namespace ZoomNet.Json
 				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
 				Converters =
 				{
+					new BooleanConverter(),
 					new DateTimeConverter(),
-					new NullableDateTimeConverter(),
 					new DayOfWeekConverter(),
 					new DaysOfWeekConverter(),
+					new EnumConverterFactory(),
 					new MeetingConverter(),
+					new NullableDateTimeConverter(),
 					new ParticipantDeviceConverter(),
 					new WebHookEventConverter(),
 					new WebinarConverter(),
-					new BooleanConverter(),
-					new EnumConverterFactory()
 				}
 			};
 
@@ -47,16 +47,16 @@ namespace ZoomNet.Json
 				PropertyNameCaseInsensitive = false,
 				Converters =
 				{
+					new BooleanConverter(),
 					new DateTimeConverter(),
-					new NullableDateTimeConverter(),
 					new DayOfWeekConverter(),
 					new DaysOfWeekConverter(),
+					new EnumConverterFactory(),
 					new MeetingConverter(),
+					new NullableDateTimeConverter(),
 					new ParticipantDeviceConverter(),
 					new WebHookEventConverter(),
 					new WebinarConverter(),
-					new BooleanConverter(),
-					new EnumConverterFactory()
 				}
 			};
 

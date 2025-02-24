@@ -29,7 +29,7 @@ namespace ZoomNet.Resources
 			}
 
 			return _client
-				.GetAsync($"metrics/meetings")
+				.GetAsync("metrics/meetings")
 				.WithArgument("type", type.ToEnumString())
 				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
 				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
@@ -120,7 +120,7 @@ namespace ZoomNet.Resources
 			}
 
 			return _client
-				.GetAsync($"metrics/webinars")
+				.GetAsync("metrics/webinars")
 				.WithArgument("type", type.ToEnumString())
 				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
 				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
@@ -210,7 +210,7 @@ namespace ZoomNet.Resources
 			}
 
 			return _client
-				.GetAsync($"metrics/zoomrooms")
+				.GetAsync("metrics/zoomrooms")
 				.WithArgument("page_size", pageSize)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
@@ -239,7 +239,7 @@ namespace ZoomNet.Resources
 		public Task<CrcPortMetrics> GetCrcPortUsageAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.GetAsync($"metrics/crc")
+				.GetAsync("metrics/crc")
 				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
 				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
 				.WithCancellationToken(cancellationToken)
@@ -255,7 +255,7 @@ namespace ZoomNet.Resources
 			}
 
 			return _client
-				.GetAsync($"metrics/im")
+				.GetAsync("metrics/im")
 				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
 				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
 				.WithArgument("page_size", pageSize)
@@ -268,7 +268,7 @@ namespace ZoomNet.Resources
 		public Task<ClientFeedbackMetricsReport> GetClientFeedbackMetricsAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.GetAsync($"metrics/client/feedback")
+				.GetAsync("metrics/client/feedback")
 				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
 				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
 				.WithCancellationToken(cancellationToken)
@@ -279,7 +279,7 @@ namespace ZoomNet.Resources
 		public Task<IssuesOfZoomRoomsReport> GetIssuesOfZoomRoomsAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.GetAsync($"metrics/zoomrooms/issues")
+				.GetAsync("metrics/zoomrooms/issues")
 				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
 				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
 				.WithCancellationToken(cancellationToken)
@@ -290,7 +290,7 @@ namespace ZoomNet.Resources
 		public Task<ZoomRoomWithIssuesReport> GetZoomRoomsWithIssuesAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.GetAsync($"metrics/issues/zoomrooms")
+				.GetAsync("metrics/issues/zoomrooms")
 				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
 				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
 				.WithCancellationToken(cancellationToken)
@@ -337,7 +337,7 @@ namespace ZoomNet.Resources
 		public Task<ClientSatisfactionReport> GetClientMeetingSatisfactionMetrics(DateTime from, DateTime to, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.GetAsync($"metrics/client/satisfaction")
+				.GetAsync("metrics/client/satisfaction")
 				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
 				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
 				.WithCancellationToken(cancellationToken)

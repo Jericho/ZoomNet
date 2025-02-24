@@ -33,7 +33,7 @@ namespace ZoomNet.Resources
 			}
 
 			return _client
-				.GetAsync($"roles")
+				.GetAsync("roles")
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
@@ -51,7 +51,7 @@ namespace ZoomNet.Resources
 			};
 
 			var result = await _client
-				.PostAsync($"roles")
+				.PostAsync("roles")
 				.WithJsonBody(data)
 				.WithHttp200TreatedAsFailure("You do not have the permission to create a role.")
 				.WithCancellationToken(cancellationToken)

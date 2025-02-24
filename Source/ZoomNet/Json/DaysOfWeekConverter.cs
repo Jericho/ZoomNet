@@ -5,7 +5,7 @@ using System.Text.Json;
 namespace ZoomNet.Json
 {
 	/// <summary>
-	/// Converts a J<see cref="DayOfWeek">days of the week</see> to or from JSON.
+	/// Converts an array of <see cref="DayOfWeek">day of the week</see> to or from JSON.
 	/// </summary>
 	/// <seealso cref="ZoomNetJsonConverter{T}" />
 	internal class DaysOfWeekConverter : ZoomNetJsonConverter<DayOfWeek[]>
