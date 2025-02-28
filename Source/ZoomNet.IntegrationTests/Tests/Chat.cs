@@ -51,7 +51,8 @@ namespace ZoomNet.IntegrationTests.Tests
 			var chatMemberPromotion = await client.Chat.PromoteMembersToAdminsInAccountChannelByEmailAsync(myUser.Id, channel.Id, [memberToPromoteEmail], cancellationToken).ConfigureAwait(false);
 
 			// DEMOTE ADMIN TO MEMBER
-			await client.Chat.DemoteAdminsInAccountChannelByUserIdAsync(myUser.Id, channel.Id, [memberToPromoteEmail], cancellationToken);
+			var memberIdToDemote = chatMemberPromotion.MemberIds.First();
+			await client.Chat.DemoteAdminsInAccountChannelByUserIdAsync(myUser.Id, channel.Id, [memberIdToDemote], cancellationToken);
 
 			// SEND A MESSAGE TO THE CHANNEL
 			var messageId = await client.Chat.SendMessageToChannelAsync(channel.Id, "This is a test from integration test", null, null, null, cancellationToken).ConfigureAwait(false);
