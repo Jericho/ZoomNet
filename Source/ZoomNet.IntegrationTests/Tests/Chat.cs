@@ -24,7 +24,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				.Where(m => m.Name.StartsWith("ZoomNet Integration Testing:"))
 				.Select(async oldChannel =>
 				{
-					await client.Chat.DeleteChannelAsync(oldChannel.Id, cancellationToken).ConfigureAwait(false);
+					await client.Chat.DeleteAccountChannelAsync(myUser.Id, oldChannel.Id, cancellationToken).ConfigureAwait(false);
 					await log.WriteLineAsync($"Channel {oldChannel.Id} deleted").ConfigureAwait(false);
 					await Task.Delay(1000, cancellationToken).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
 				});
