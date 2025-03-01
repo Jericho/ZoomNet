@@ -232,7 +232,7 @@ namespace ZoomNet
 		}
 
 		/// <summary>
-		/// Demotes administrators in an account channel by email address.
+		/// Promote a chat channel member to admin.
 		/// </summary>
 		/// <param name="chatResource">The chat resource.</param>
 		/// <param name="channelId">The channel Id.</param>
@@ -241,13 +241,13 @@ namespace ZoomNet
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public static Task<ChatMembersEditResult> PromoteToAdminInAccountChannelByEmailAsync(this IChat chatResource, string channelId, string email, CancellationToken cancellationToken = default)
+		public static Task<ChatMembersEditResult> PromoteMemberInAccountChannelByEmailAsync(this IChat chatResource, string channelId, string email, CancellationToken cancellationToken = default)
 		{
-			return chatResource.PromoteMembersToAdminsInAccountChannelByEmailAsync(channelId, "me", [email], cancellationToken);
+			return chatResource.PromoteMembersInAccountChannelByEmailAsync(channelId, "me", [email], cancellationToken);
 		}
 
 		/// <summary>
-		/// Demotes administrators in an account channel by email address.
+		/// Promote a chat channel member to admin.
 		/// </summary>
 		/// <param name="chatResource">The chat resource.</param>
 		/// <param name="channelOwnerUserId">The user id or email of the channel owner.</param>
@@ -257,9 +257,9 @@ namespace ZoomNet
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		public static Task<ChatMembersEditResult> PromoteToAdminInAccountChannelByEmailAsync(this IChat chatResource, string channelOwnerUserId, string channelId, string email, CancellationToken cancellationToken = default)
+		public static Task<ChatMembersEditResult> PromoteMemberInAccountChannelByEmailAsync(this IChat chatResource, string channelOwnerUserId, string channelId, string email, CancellationToken cancellationToken = default)
 		{
-			return chatResource.PromoteMembersToAdminsInAccountChannelByEmailAsync(channelId, channelOwnerUserId, [email], cancellationToken);
+			return chatResource.PromoteMembersInAccountChannelByEmailAsync(channelId, channelOwnerUserId, [email], cancellationToken);
 		}
 
 		/// <summary>

@@ -115,7 +115,7 @@ namespace ZoomNet.Resources
 		Task RemoveMemberFromAccountChannelAsync(string userId, string channelId, string memberId, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Promotes members to admin a chat channel by email.
+		/// Promote chat channel members to admin.
 		/// </summary>
 		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="channelId">The channel Id.</param>
@@ -125,10 +125,10 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// A <see cref="ChatMembersEditResult"/> containing members promoted to the admins.
 		/// </returns>
-		Task<ChatMembersEditResult> PromoteMembersToAdminsInAccountChannelByEmailAsync(string userId, string channelId, IEnumerable<string> emails, CancellationToken cancellationToken = default);
+		Task<ChatMembersEditResult> PromoteMembersInAccountChannelByEmailAsync(string userId, string channelId, IEnumerable<string> emails, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Demotes administrators in an account channel by admin ids.
+		/// Demote administrators in an account channel by admin ids.
 		/// </summary>
 		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="channelId">The channel Id.</param>
@@ -141,7 +141,7 @@ namespace ZoomNet.Resources
 		Task DemoteAdminsInAccountChannelByIdAsync(string userId, string channelId, IEnumerable<string> adminIds, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Demotes administrators in an account channel by user ids or emails.
+		/// Demote administrators in an account channel by user ids or emails.
 		/// </summary>
 		/// <param name="userId">The user id or email address.</param>
 		/// <param name="channelId">The channel Id.</param>
