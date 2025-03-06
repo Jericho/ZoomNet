@@ -243,7 +243,7 @@ namespace ZoomNet
 		/// </returns>
 		public static Task<ChatMembersEditResult> PromoteMemberInAccountChannelByEmailAsync(this IChat chatResource, string channelId, string email, CancellationToken cancellationToken = default)
 		{
-			return chatResource.PromoteMembersInAccountChannelByEmailAsync(channelId, "me", [email], cancellationToken);
+			return chatResource.PromoteMembersInAccountChannelByEmailAsync("me", channelId, [email], cancellationToken);
 		}
 
 		/// <summary>
@@ -259,7 +259,7 @@ namespace ZoomNet
 		/// </returns>
 		public static Task<ChatMembersEditResult> PromoteMemberInAccountChannelByEmailAsync(this IChat chatResource, string channelOwnerUserId, string channelId, string email, CancellationToken cancellationToken = default)
 		{
-			return chatResource.PromoteMembersInAccountChannelByEmailAsync(channelId, channelOwnerUserId, [email], cancellationToken);
+			return chatResource.PromoteMembersInAccountChannelByEmailAsync(channelOwnerUserId, channelId, [email], cancellationToken);
 		}
 
 		/// <summary>
@@ -275,7 +275,7 @@ namespace ZoomNet
 		/// </returns>
 		public static Task DemoteAdminInAccountChannelByUserIdAsync(this IChat chatResource, string channelOwnerUserId, string channelId, string userId, CancellationToken cancellationToken = default)
 		{
-			return chatResource.DemoteAdminsInAccountChannelByUserIdAsync(channelId, channelOwnerUserId, [userId], cancellationToken);
+			return chatResource.DemoteAdminsInAccountChannelByUserIdAsync(channelOwnerUserId, channelId, [userId], cancellationToken);
 		}
 
 		/// <summary>
@@ -291,7 +291,7 @@ namespace ZoomNet
 		/// </returns>
 		public static Task DemoteAdminInAccountChannelByIdAsync(this IChat chatResource, string channelOwnerUserId, string channelId, string adminId, CancellationToken cancellationToken = default)
 		{
-			return chatResource.DemoteAdminsInAccountChannelByIdAsync(channelId, channelOwnerUserId, [adminId], cancellationToken);
+			return chatResource.DemoteAdminsInAccountChannelByIdAsync(channelOwnerUserId, channelId, [adminId], cancellationToken);
 		}
 
 		/// <summary>
@@ -306,7 +306,7 @@ namespace ZoomNet
 		/// </returns>
 		public static Task DemoteAdminInAccountChannelByUserIdAsync(this IChat chatResource, string channelId, string userId, CancellationToken cancellationToken = default)
 		{
-			return chatResource.DemoteAdminsInAccountChannelByUserIdAsync(channelId, "me", [userId], cancellationToken);
+			return chatResource.DemoteAdminsInAccountChannelByUserIdAsync("me", channelId, [userId], cancellationToken);
 		}
 
 		/// <summary>
@@ -321,7 +321,7 @@ namespace ZoomNet
 		/// </returns>
 		public static Task DemoteAdminInAccountChannelByIdAsync(this IChat chatResource, string channelId, string adminId, CancellationToken cancellationToken = default)
 		{
-			return chatResource.DemoteAdminsInAccountChannelByIdAsync(channelId, "me", [adminId], cancellationToken);
+			return chatResource.DemoteAdminsInAccountChannelByIdAsync("me", channelId, [adminId], cancellationToken);
 		}
 
 		/// <summary>
