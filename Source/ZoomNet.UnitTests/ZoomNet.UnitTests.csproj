@@ -6,6 +6,7 @@
     <RootNamespace>ZoomNet.UnitTests</RootNamespace>
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+    <OutputType>Exe</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
