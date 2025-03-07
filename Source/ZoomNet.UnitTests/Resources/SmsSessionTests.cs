@@ -32,7 +32,8 @@ namespace ZoomNet.UnitTests.Resources
 				.GetSmsSessionDetailsAsync(
 					sessionId,
 					from: null,
-					to: null)
+					to: null,
+					cancellationToken: TestContext.Current.CancellationToken)
 				.ConfigureAwait(true);
 
 			// Assert
