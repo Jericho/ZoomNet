@@ -73,7 +73,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			// Act
 			var result = await phone
-				.ListPhoneUsersAsync(pageSize: pageSize)
+				.ListPhoneUsersAsync(pageSize: pageSize, cancellationToken: TestContext.Current.CancellationToken)
 				.ConfigureAwait(true);
 
 			// Assert
@@ -102,7 +102,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			// Act and Assert
 			var exception = Assert.Throws<ArgumentOutOfRangeException>(() => phone
-				.ListPhoneUsersAsync(pageSize: pageSize)
+				.ListPhoneUsersAsync(pageSize: pageSize, cancellationToken: TestContext.Current.CancellationToken)
 				.ConfigureAwait(true));
 
 			exception.ParamName.ShouldBe(nameof(pageSize));
