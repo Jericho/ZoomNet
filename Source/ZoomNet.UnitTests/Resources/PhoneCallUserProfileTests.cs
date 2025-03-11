@@ -1,4 +1,4 @@
-﻿using RichardSzalay.MockHttp;
+using RichardSzalay.MockHttp;
 using Shouldly;
 using System.Net.Http;
 using System.Threading;
@@ -30,7 +30,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			// Act
 			var result = await phone
-				.GetPhoneCallUserProfileAsync(userId, CancellationToken.None)
+				.GetPhoneCallUserProfileAsync(userId, TestContext.Current.CancellationToken)
 				.ConfigureAwait(true);
 
 			// Assert

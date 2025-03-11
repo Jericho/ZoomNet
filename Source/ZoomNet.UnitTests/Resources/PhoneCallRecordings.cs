@@ -30,7 +30,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			// Act
 			var result = await phone
-				.GetRecordingAsync(callId, CancellationToken.None)
+				.GetRecordingAsync(callId, TestContext.Current.CancellationToken)
 				.ConfigureAwait(true);
 
 			// Assert
@@ -61,7 +61,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			// Act
 			var result = await phone
-				.GetRecordingTranscriptAsync(recordingId, CancellationToken.None)
+				.GetRecordingTranscriptAsync(recordingId, TestContext.Current.CancellationToken)
 				.ConfigureAwait(true);
 
 			// Assert
