@@ -100,6 +100,10 @@ var publishingError = false;
 const string DEFAULT_FRAMEWORK = "net9.0";
 var isSingleTfmMode = (IsRunningOnWindows() && !isLocalBuild) || isCodeCoverageTarget;
 
+// The terminal logger introduced but turned off by default in .NET8 and turned on by default in .NET9 doesn't work right on Linux
+// and causes a lot of noise in the build log on Ubuntu in AppVeyor.
+var terminalLogger = IsRunningOnWindows() ? "on" : "off";
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // SETUP / TEARDOWN
@@ -239,9 +243,12 @@ Task("Restore-NuGet-Packages")
 {
 	DotNetRestore("./Source/", new DotNetRestoreSettings
 	{
-		Sources = new [] {
+		Sources = new []
+		{
 			"https://api.nuget.org/v3/index.json",
-		}
+		},
+		ArgumentCustomization = args => args
+			.Append($"-tl:{terminalLogger}")
 	});
 });
 
@@ -260,7 +267,9 @@ Task("Build")
 			FileVersion = versionInfo.MajorMinorPatch,
 			InformationalVersion = versionInfo.InformationalVersion,
 			ContinuousIntegrationBuild = true
-		}
+		},
+		ArgumentCustomization = args => args
+			.Append($"-tl:{terminalLogger}")
 	});
 });
 
@@ -274,6 +283,8 @@ Task("Run-Unit-Tests")
 		NoBuild = true,
 		NoRestore = true,
 		Configuration = configuration,
+		ArgumentCustomization = args => args
+			.Append($"-tl:{terminalLogger}")
 	});
 });
 
@@ -290,6 +301,7 @@ Task("Run-Code-Coverage")
 
 		// The following assumes that coverlet.msbuild has been added to the unit testing project
 		ArgumentCustomization = args => args
+			.Append($"-tl:{terminalLogger}")
 			.Append("/p:CollectCoverage=true")
 			.Append("/p:CoverletOutputFormat=opencover")
 			.Append($"/p:CoverletOutput={MakeAbsolute(Directory(codeCoverageDir))}/coverage.xml")	// The name of the framework will be inserted between "coverage" and "xml". This is important to know when uploading the XML file to coveralls/codecov and when generating the HTML report
@@ -381,7 +393,9 @@ Task("Create-NuGet-Package")
 		{
 			PackageReleaseNotes = releaseNotesUrl,
 			PackageVersion = versionInfo.FullSemVer.Replace('+', '-')
-		}
+		},
+		ArgumentCustomization = args => args
+			.Append($"-tl:{terminalLogger}")
 	};
 
 	DotNetPack(sourceProject, settings);
@@ -416,7 +430,9 @@ Task("Publish-NuGet")
 	var settings = new DotNetNuGetPushSettings
 	{
     	Source = nuGetApiUrl,
-	    ApiKey = nuGetApiKey
+	    ApiKey = nuGetApiKey,
+		ArgumentCustomization = args => args
+			.Append($"-tl:{terminalLogger}")
 	};
 
 	foreach(var package in GetFiles(outputDir + "*.nupkg"))
@@ -476,7 +492,9 @@ Task("Generate-Benchmark-Report")
         Configuration = configuration,
 		NoRestore = true,
         NoBuild = true,
-        OutputDirectory = publishDirectory
+        OutputDirectory = publishDirectory,
+		ArgumentCustomization = args => args
+			.Append($"-tl:{terminalLogger}")
     });
 
 	using (DiagnosticVerbosity())
