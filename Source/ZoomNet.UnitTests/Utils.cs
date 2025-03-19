@@ -13,7 +13,7 @@ namespace ZoomNet.UnitTests
 	{
 		private const string ZOOM_V2_BASE_URI = "https://api.zoom.us/v2";
 
-		public static Pathoschild.Http.Client.IClient GetFluentClient(MockHttpMessageHandler httpMessageHandler, MockHttpMessageHandler tokenMessageHandler = null)
+		public static Pathoschild.Http.Client.IClient GetFluentClient(MockHttpMessageHandler httpMessageHandler, MockHttpMessageHandler tokenMessageHandler = null, ILogger logger = null)
 		{
 			var client = new FluentClient(new Uri(ZOOM_V2_BASE_URI), httpMessageHandler.ToHttpClient());
 			var tokenHandler = tokenMessageHandler == null ? null : new OAuthTokenHandler(OAuthConnectionInfo.ForServerToServer("bogus clientId", "bogus secret", "bogus accountId"), tokenMessageHandler.ToHttpClient(), null);
@@ -27,7 +27,7 @@ namespace ZoomNet.UnitTests
 
 			// Order is important: DiagnosticHandler must be first.
 			// Also, the list of filters must be kept in sync with the filters in ZoomClient in the ZoomNet project.
-			client.Filters.Add(new DiagnosticHandler(LogLevel.Debug, LogLevel.Error));
+			client.Filters.Add(new DiagnosticHandler(LogLevel.Debug, LogLevel.Error, logger));
 			client.Filters.Add(new ZoomErrorHandler());
 
 			return client;

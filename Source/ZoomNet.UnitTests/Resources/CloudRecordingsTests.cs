@@ -4,7 +4,6 @@ using System;
 using System.Net;
 using System.Net.Http;
 using System.Text.Json;
-using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using ZoomNet.Json;
@@ -15,8 +14,6 @@ namespace ZoomNet.UnitTests.Resources
 {
 	public class CloudRecordingsTests
 	{
-		#region FIELDS
-
 		private const string SINGLE_CLOUD_RECORDING_JSON = @"{
 			""uuid"": ""ODfDKShNRqKkXbGD09Sk4A=="",
 			""id"": 94488262913,
@@ -464,7 +461,12 @@ namespace ZoomNet.UnitTests.Resources
 			}
 		]}";
 
-		#endregion
+		private readonly ITestOutputHelper _outputHelper;
+
+		public CloudRecordingsTests(ITestOutputHelper outputHelper)
+		{
+			_outputHelper = outputHelper;
+		}
 
 		[Fact]
 		public void Parse_json()
@@ -513,7 +515,8 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "recordings")).Respond("application/json", MULTIPLE_CLOUD_RECORDINGS_JSON);
 
-			var client = Utils.GetFluentClient(mockHttp);
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
 			var recordings = new CloudRecordings(client);
 
 			// Act
@@ -557,7 +560,8 @@ namespace ZoomNet.UnitTests.Resources
 				.Expect(HttpMethod.Get, downloadUrl)
 				.Respond(HttpStatusCode.OK, new StringContent("This is the content of the file"));
 
-			var client = Utils.GetFluentClient(mockHttp, mockTokenHttp);
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, mockTokenHttp, logger: logger);
 			var recordings = new CloudRecordings(client);
 
 			// Act

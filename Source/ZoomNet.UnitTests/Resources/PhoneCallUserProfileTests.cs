@@ -1,7 +1,6 @@
 using RichardSzalay.MockHttp;
 using Shouldly;
 using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using ZoomNet.Resources;
@@ -10,6 +9,13 @@ namespace ZoomNet.UnitTests.Resources
 {
 	public class PhoneCallUserProfileTests
 	{
+		private readonly ITestOutputHelper _outputHelper;
+
+		public PhoneCallUserProfileTests(ITestOutputHelper outputHelper)
+		{
+			_outputHelper = outputHelper;
+		}
+
 		[Fact]
 		public async Task GetPhoneCallUserProfileAsync()
 		{
@@ -25,7 +31,8 @@ namespace ZoomNet.UnitTests.Resources
 					"application/json",
 					Models.PhoneCallUserProfileTests.PHONE_CALL_USER_PROFILE);
 
-			var client = Utils.GetFluentClient(mockHttp);
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
 			var phone = new Phone(client);
 
 			// Act
