@@ -1,8 +1,8 @@
 using Pathoschild.Http.Client;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
@@ -23,10 +23,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc />
 		public Task<PaginatedResponseWithToken<Contact>> GetAllAsync(ContactType type = ContactType.Internal, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
-			if (recordsPerPage < 1 || recordsPerPage > 50)
-			{
-				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 50");
-			}
+			Utils.ValidateRecordPerPage(recordsPerPage, max: 50);
 
 			return _client
 				.GetAsync("chat/users/me/contacts")
@@ -40,10 +37,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc />
 		public Task<PaginatedResponseWithToken<Contact>> SearchAsync(string keyword, bool queryPresenceStatus = true, int recordsPerPage = 1, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
-			if (recordsPerPage < 1 || recordsPerPage > 25)
-			{
-				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 25");
-			}
+			Utils.ValidateRecordPerPage(recordsPerPage, max: 25);
 
 			return _client
 				.GetAsync("contacts")

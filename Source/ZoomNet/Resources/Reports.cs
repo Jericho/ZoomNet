@@ -3,6 +3,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
@@ -23,7 +24,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<ReportParticipant>> GetMeetingParticipantsAsync(string meetingId, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
-			VerifyPageSize(pageSize);
+			Utils.ValidateRecordPerPage(pageSize);
 
 			return _client
 				.GetAsync($"report/meetings/{meetingId}/participants")
@@ -38,7 +39,7 @@ namespace ZoomNet.Resources
 		public Task<PaginatedResponseWithToken<PastMeeting>> GetMeetingsAsync(string userId, DateTime from, DateTime to, ReportMeetingType type, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			VerifyReportDatesRange(from, to);
-			VerifyPageSize(pageSize);
+			Utils.ValidateRecordPerPage(pageSize);
 
 			return _client
 				.GetAsync($"report/users/{userId}/meetings")
@@ -54,7 +55,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<ReportParticipant>> GetWebinarParticipantsAsync(string webinarId, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
-			VerifyPageSize(pageSize);
+			Utils.ValidateRecordPerPage(pageSize);
 
 			return _client
 				   .GetAsync($"report/webinars/{webinarId}/participants")
@@ -69,7 +70,7 @@ namespace ZoomNet.Resources
 		public Task<PaginatedResponseWithToken<ReportHost>> GetHostsAsync(DateTime from, DateTime to, ReportHostType type = ReportHostType.Active, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			VerifyReportDatesRange(from, to);
-			VerifyPageSize(pageSize);
+			Utils.ValidateRecordPerPage(pageSize);
 
 			return _client
 				.GetAsync("report/users")
@@ -93,19 +94,11 @@ namespace ZoomNet.Resources
 				.AsObject<DailyUsageReport>();
 		}
 
-		private static void VerifyPageSize(int pageSize)
-		{
-			if (pageSize < 1 || pageSize > 300)
-			{
-				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 300");
-			}
-		}
-
 		private static void VerifyReportDatesRange(DateTime from, DateTime to)
 		{
 			if (to < from)
 			{
-				throw new ArgumentOutOfRangeException(nameof(to), $"Should be greater then or equal to {nameof(from)}.");
+				throw new ArgumentOutOfRangeException(nameof(to), $"Should be greater than or equal to {from.ToZoomFormat()}.");
 			}
 
 			if (to - from > TimeSpan.FromDays(30))
