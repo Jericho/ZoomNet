@@ -307,7 +307,7 @@ namespace ZoomNet.Resources
 				.PostAsync($"https://file.zoom.us/v2/chat/users/{userId}/messages/files")
 				.WithBody(bodyBuilder =>
 				{
-					// The file name as well as the name of the other 'parts' in the request must be quoted otherwise the Zoom API would return the following error message: Invalid 'Content-Disposition' in multipart form
+					// The file name as well as the name of the other 'parts' in the request must be quoted otherwise the Zoom API returns the following error message: Invalid 'Content-Disposition' in multipart form
 					var content = new MultipartFormDataContent
 					{
 						{ new StreamContent(fileData), "files", $"\"{fileName}\"" }
@@ -329,7 +329,7 @@ namespace ZoomNet.Resources
 				.PostAsync($"https://file.zoom.us/v2/chat/users/{userId}/files")
 				.WithBody(bodyBuilder =>
 				{
-					// The file name must be quoted otherwise the Zoom API would return the following error message: Invalid 'Content-Disposition' in multipart form
+					// The file name must be quoted otherwise the Zoom API returns the following error message: Invalid 'Content-Disposition' in multipart form
 					var content = new MultipartFormDataContent
 					{
 						{ new StreamContent(fileData), "file", $"\"{fileName}\"" }
