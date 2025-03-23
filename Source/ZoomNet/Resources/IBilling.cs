@@ -33,5 +33,18 @@ namespace ZoomNet.Resources
 		/// PLACEHOLDER: this method must return a strongly-typed response.
 		/// </returns>
 		Task<HttpResponseMessage> GetPlanUsageAsync(string accountId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Download a Zoom account's billed invoice file, in PDF format.
+		/// </summary>
+		/// <param name="invoiceId">The account's invoice ID.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>
+		/// The <see cref="Stream"/> containing the file.
+		/// </returns>
+		/// <remarks>
+		/// You may send one request to this API every 30 minutes until you reach the daily limit of 100 requests per account.
+		/// </remarks>
+		Task<Stream> DownloadInvoiceAsync(string invoiceId, CancellationToken cancellationToken = default);
 	}
 }

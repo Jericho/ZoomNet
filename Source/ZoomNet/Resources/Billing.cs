@@ -1,8 +1,11 @@
 using Pathoschild.Http.Client;
+using Pathoschild.Http.Client.Extensibility;
+using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
@@ -36,6 +39,27 @@ namespace ZoomNet.Resources
 				.GetAsync($"accounts/{accountId}/plans/usage")
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<Stream> DownloadInvoiceAsync(string invoiceId, CancellationToken cancellationToken = default)
+		{
+			// Prepare the request
+			var request = _client
+			   .GetAsync($"billing/invoices/{invoiceId}/download")
+			   .WithOptions(completeWhen: HttpCompletionOption.ResponseHeadersRead)
+			   .WithCancellationToken(cancellationToken);
+
+			// Remove our custom error handler because it reads the content of the response to check for error messages returned from the Zoom API.
+			// This is problematic because we want the content of the response to be streamed.
+			request = request.WithoutFilter<ZoomErrorHandler>();
+
+			// We need to add the default error filter to throw an exception if the request fails.
+			// The error handler is safe to use with streaming responses because it does not read the content to determine if an error occured.
+			request = request.WithFilter(new DefaultErrorFilter());
+
+			// Dispatch the request
+			return request.AsStream();
 		}
 	}
 }
