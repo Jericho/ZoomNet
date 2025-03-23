@@ -1,6 +1,8 @@
+using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using ZoomNet.Models;
 
 namespace ZoomNet.Resources
 {
@@ -13,12 +15,22 @@ namespace ZoomNet.Resources
 	public interface IBilling
 	{
 		/// <summary>
+		/// Get a subaccount's billing information.
+		/// </summary>
+		/// <param name="accountId">Unique identifier of the account.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The billing information.
+		/// </returns>
+		Task<BillingInfo> GetInfoAsync(string accountId, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Retrieve information on plan usage for an account.
 		/// </summary>
 		/// <param name="accountId">Unique identifier of the account.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// PLACEHOLDER: this method mus treturn a strongly-typed response.
+		/// PLACEHOLDER: this method must return a strongly-typed response.
 		/// </returns>
 		Task<HttpResponseMessage> GetPlanUsageAsync(string accountId, CancellationToken cancellationToken = default);
 	}

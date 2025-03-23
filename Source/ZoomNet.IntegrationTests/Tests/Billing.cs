@@ -13,6 +13,9 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			await log.WriteLineAsync("\n***** BILLING *****\n").ConfigureAwait(false);
 
+			// GET BILLING INFO
+			var billingInfo = await client.Billing.GetInfoAsync("me", cancellationToken).ConfigureAwait(false);
+
 			// GET PLAN USAGE
 			var planUsage = await client.Billing.GetPlanUsageAsync("me", cancellationToken).ConfigureAwait(false);
 		}
