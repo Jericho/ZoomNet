@@ -814,7 +814,7 @@ namespace ZoomNet.Resources
 			var data = new JsonObject
 			{
 				{ "action", status },
-				{ "registrants", registrantsInfo?.Select(ri => new { id = ri.RegistrantId, email = ri.RegistrantEmail }).ToArray() }
+				{ "registrants", registrantsInfo?.Select(ri => new JsonObject { { "id", ri.RegistrantId }, { "email", ri.RegistrantEmail } }).ToArray() },
 			};
 
 			return _client
