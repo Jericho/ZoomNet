@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,9 +16,16 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			// GET BILLING INFO
 			var billingInfo = await client.Billing.GetInfoAsync("me", cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"The billing contact is: {billingInfo.FirstName} {billingInfo.LastName}").ConfigureAwait(false);
 
 			// GET PLAN USAGE
 			var planUsage = await client.Billing.GetPlanUsageAsync("me", cancellationToken).ConfigureAwait(false);
+
+			// GET INVOICES
+			var from = DateTime.UtcNow.AddYears(-1);
+			var to = DateTime.UtcNow;
+			var invoicesInfo = await client.Billing.GetInvoicesAsync("me", from, to, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"{invoicesInfo.Invoices.Length} invoices were issued in the last year. The currency used is {invoicesInfo.Currency}").ConfigureAwait(false);
 		}
 	}
 }

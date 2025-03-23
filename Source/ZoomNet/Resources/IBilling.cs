@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Net.Http;
 using System.Threading;
@@ -23,6 +24,18 @@ namespace ZoomNet.Resources
 		/// The billing information.
 		/// </returns>
 		Task<BillingInfo> GetInfoAsync(string accountId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// List a Zoom account's invoices.
+		/// </summary>
+		/// <param name="accountId">Unique identifier of the account.</param>
+		/// <param name="from">Start date for the invoice query. The date range defined by the "from" and "to" parameters should not exceed one year. The range defined should fall within the past three years.</param>
+		/// <param name="to">End date for the invoice query.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The currency used in the invoices and an array containing summary information about invoices.
+		/// </returns>
+		Task<(string Currency, BillingInvoiceInfo[] Invoices)> GetInvoicesAsync(string accountId, DateTime from, DateTime to, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve information on plan usage for an account.

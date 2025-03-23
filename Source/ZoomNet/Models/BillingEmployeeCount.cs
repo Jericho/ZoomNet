@@ -54,8 +54,8 @@ namespace ZoomNet.Models
 		Between5001And10000,
 
 		/// <summary>More than 10000.</summary>
-		[EnumMember(Value = "10000+")]
+		[EnumMember(Value = "10001+")]
 		[Display(Order = 9)]
-		MoreThan10000,
+		MoreThan10001,
 	}
 }

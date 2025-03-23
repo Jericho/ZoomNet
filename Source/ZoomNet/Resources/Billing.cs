@@ -1,5 +1,6 @@
 using Pathoschild.Http.Client;
 using Pathoschild.Http.Client.Extensibility;
+using System;
 using System.IO;
 using System.Net.Http;
 using System.Threading;
@@ -30,6 +31,23 @@ namespace ZoomNet.Resources
 				.GetAsync($"accounts/{accountId}/billing")
 				.WithCancellationToken(cancellationToken)
 				.AsObject<BillingInfo>();
+		}
+
+		/// <inheritdoc/>
+		public async Task<(string Currency, BillingInvoiceInfo[] Invoices)> GetInvoicesAsync(string accountId, DateTime from, DateTime to, CancellationToken cancellationToken = default)
+		{
+			var response = await _client
+				.GetAsync($"accounts/{accountId}/billing/invoices")
+				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
+				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
+				.WithCancellationToken(cancellationToken)
+				.AsJson()
+				.ConfigureAwait(false);
+
+			var currency = response.GetPropertyValue("currency", string.Empty);
+			var invoices = response.GetProperty("invoices", false)?.ToObject<BillingInvoiceInfo[]>() ?? Array.Empty<BillingInvoiceInfo>();
+
+			return (currency, invoices);
 		}
 
 		/// <inheritdoc/>
