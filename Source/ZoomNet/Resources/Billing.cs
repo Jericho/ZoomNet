@@ -34,7 +34,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public async Task<(string Currency, BillingInvoiceInfo[] Invoices)> GetInvoicesAsync(string accountId, DateTime from, DateTime to, CancellationToken cancellationToken = default)
+		public async Task<BillingInvoiceSummary[]> GetInvoicesAsync(string accountId, DateTime from, DateTime to, CancellationToken cancellationToken = default)
 		{
 			var response = await _client
 				.GetAsync($"accounts/{accountId}/billing/invoices")
@@ -45,9 +45,19 @@ namespace ZoomNet.Resources
 				.ConfigureAwait(false);
 
 			var currency = response.GetPropertyValue("currency", string.Empty);
-			var invoices = response.GetProperty("invoices", false)?.ToObject<BillingInvoiceInfo[]>() ?? Array.Empty<BillingInvoiceInfo>();
+			var invoices = response.GetProperty("invoices", false)?.ToObject<BillingInvoiceSummary[]>() ?? Array.Empty<BillingInvoiceSummary>();
+			Array.ForEach(invoices, invoice => invoice.Currency = currency);
 
-			return (currency, invoices);
+			return invoices;
+		}
+
+		/// <inheritdoc/>
+		public Task<BillingInvoiceDetails> GetInvoiceDetailsAsync(string accountId, string invoiceId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"accounts/{accountId}/billing/invoices/{invoiceId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<BillingInvoiceDetails>();
 		}
 
 		/// <inheritdoc/>

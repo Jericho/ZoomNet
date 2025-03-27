@@ -35,7 +35,18 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The currency used in the invoices and an array containing summary information about invoices.
 		/// </returns>
-		Task<(string Currency, BillingInvoiceInfo[] Invoices)> GetInvoicesAsync(string accountId, DateTime from, DateTime to, CancellationToken cancellationToken = default);
+		Task<BillingInvoiceSummary[]> GetInvoicesAsync(string accountId, DateTime from, DateTime to, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get detailed information about an invoice.
+		/// </summary>
+		/// <param name="accountId">Unique identifier of the account.</param>
+		/// <param name="invoiceId">Unique identifier of the invoice.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The details about the invoice.
+		/// </returns>
+		Task<BillingInvoiceDetails> GetInvoiceDetailsAsync(string accountId, string invoiceId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve information on plan usage for an account.

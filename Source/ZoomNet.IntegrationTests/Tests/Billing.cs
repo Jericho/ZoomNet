@@ -24,8 +24,8 @@ namespace ZoomNet.IntegrationTests.Tests
 			// GET INVOICES
 			var from = DateTime.UtcNow.AddYears(-1);
 			var to = DateTime.UtcNow;
-			var invoicesInfo = await client.Billing.GetInvoicesAsync("me", from, to, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"{invoicesInfo.Invoices.Length} invoices were issued in the last year. The currency used is {invoicesInfo.Currency}").ConfigureAwait(false);
+			var invoices = await client.Billing.GetInvoicesAsync("me", from, to, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"{invoices.Length} invoices were issued in the last year.").ConfigureAwait(false);
 		}
 	}
 }

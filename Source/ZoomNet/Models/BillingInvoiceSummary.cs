@@ -4,10 +4,16 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Information regarding an invoice.
+	/// Summary information regarding an invoice.
 	/// </summary>
-	public class BillingInvoiceInfo
+	public class BillingInvoiceSummary
 	{
+		/// <summary>
+		/// Gets or sets the billing currency.
+		/// </summary>
+		[JsonPropertyName("currency")]
+		public string Currency { get; set; }
+
 		/// <summary>
 		/// Gets or sets the remaining balance of the invoice after all payments and refunds are applied.
 		/// </summary>
