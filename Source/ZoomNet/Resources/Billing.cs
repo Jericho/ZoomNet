@@ -35,6 +35,29 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task UpdateInfoAsync(string accountId, string address = null, string suite = null, string city = null, string country = null, string email = null, string firstName = null, string lastName = null, string phoneNumber = null, string state = null, string zip = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "address", address },
+				{ "apt", suite },
+				{ "city", city },
+				{ "email", email },
+				{ "first_name", firstName },
+				{ "last_name", lastName },
+				{ "phone_number", phoneNumber },
+				{ "state", state },
+				{ "zip", zip }
+			};
+
+			return _client
+				.PatchAsync($"accounts/{accountId}/billing")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
 		public async Task<BillingInvoiceSummary[]> GetInvoicesAsync(string accountId, DateTime from, DateTime to, CancellationToken cancellationToken = default)
 		{
 			var response = await _client

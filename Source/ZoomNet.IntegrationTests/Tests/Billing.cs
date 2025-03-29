@@ -14,6 +14,11 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			await log.WriteLineAsync("\n***** BILLING *****\n").ConfigureAwait(false);
 
+			// UPDATE BILLING INFO
+			// For some reason, neither of these calls work. The response from Zoom is: "Account does not exist"
+			//await client.Billing.UpdateInfoAsync("me", firstName: "This is a test", lastName: "Test", cancellationToken: cancellationToken).ConfigureAwait(false);
+			//await client.Billing.UpdateInfoAsync(myUser.AccountId, firstName: "This is a test", lastName: "Test", cancellationToken: cancellationToken).ConfigureAwait(false);
+
 			// GET BILLING INFO
 			var billingInfo = await client.Billing.GetInfoAsync("me", cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"The billing contact is: {billingInfo.FirstName} {billingInfo.LastName}").ConfigureAwait(false);
