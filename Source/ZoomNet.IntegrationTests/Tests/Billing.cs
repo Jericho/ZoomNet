@@ -20,6 +20,7 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			// GET PLAN USAGE
 			var planUsage = await client.Billing.GetPlanUsageAsync("me", cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Your base plan type is: {planUsage.BasePlan.Type}").ConfigureAwait(false);
 
 			// GET INVOICES
 			var from = DateTime.UtcNow.AddYears(-1);

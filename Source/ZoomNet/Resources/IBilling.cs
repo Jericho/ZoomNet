@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -56,7 +55,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// PLACEHOLDER: this method must return a strongly-typed response.
 		/// </returns>
-		Task<HttpResponseMessage> GetPlanUsageAsync(string accountId, CancellationToken cancellationToken = default);
+		Task<BillingPlanUsageInfo> GetPlanUsageAsync(string accountId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Download a Zoom account's billed invoice file, in PDF format.

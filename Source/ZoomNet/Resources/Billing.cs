@@ -3,6 +3,7 @@ using Pathoschild.Http.Client.Extensibility;
 using System;
 using System.IO;
 using System.Net.Http;
+using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -61,12 +62,12 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<HttpResponseMessage> GetPlanUsageAsync(string accountId, CancellationToken cancellationToken = default)
+		public Task<BillingPlanUsageInfo> GetPlanUsageAsync(string accountId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"accounts/{accountId}/plans/usage")
 				.WithCancellationToken(cancellationToken)
-				.AsMessage();
+				.AsObject<BillingPlanUsageInfo>();
 		}
 
 		/// <inheritdoc/>
