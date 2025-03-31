@@ -15,6 +15,11 @@ namespace ZoomNet
 		IAccounts Accounts { get; }
 
 		/// <summary>
+		/// Gets the resource which allows developers with master accounts (also known as "primary accounts") to get information about billing plans of their accounts and subaccounts.
+		/// </summary>
+		IBilling Billing { get; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage call logs.
 		/// </summary>
 		ICallLogs CallLogs { get; }
