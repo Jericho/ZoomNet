@@ -73,7 +73,7 @@ namespace ZoomNet.Resources
 		/// <param name="accountId">Unique identifier of the account.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// PLACEHOLDER: this method must return a strongly-typed response.
+		/// The plan usage information.
 		/// </returns>
 		Task<BillingPlanUsageInfo> GetPlanUsageAsync(string accountId, CancellationToken cancellationToken = default);
 
