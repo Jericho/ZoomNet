@@ -448,16 +448,64 @@ namespace ZoomNet
 		}
 
 		/// <summary>
-		/// Adds user to a group.
+		/// Add user to a group.
 		/// </summary>
 		/// <param name="groupsResource">The group resource.</param>
 		/// <param name="groupId">The ID of the group.</param>
 		/// <param name="emailAddress">An email address of user to add to the group.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>A task representing the operation. The result will be a string representing the ID of the added user.</returns>
-		public static async Task<string> AddUserToGroupAsync(this IGroups groupsResource, string groupId, string emailAddress, CancellationToken cancellationToken = default)
+		/// <returns>The ID of the added user.</returns>
+		public static async Task<string> AddMemberByEmailAsync(this IGroups groupsResource, string groupId, string emailAddress, CancellationToken cancellationToken = default)
 		{
-			var result = await groupsResource.AddUsersToGroupAsync(groupId, new[] { emailAddress }, cancellationToken).ConfigureAwait(false);
+			var result = await groupsResource.AddMembersByEmailAsync(groupId, new[] { emailAddress }, cancellationToken).ConfigureAwait(false);
+
+			// We added a single member to a group therefore the array returned from the Zoom API contains a single element
+			return result.Single();
+		}
+
+		/// <summary>
+		/// Add user to a group.
+		/// </summary>
+		/// <param name="groupsResource">The group resource.</param>
+		/// <param name="groupId">The ID of the group.</param>
+		/// <param name="userId">The user unique identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The ID of the added user.</returns>
+		public static async Task<string> AddMemberByIdAsync(this IGroups groupsResource, string groupId, string userId, CancellationToken cancellationToken = default)
+		{
+			var result = await groupsResource.AddMembersByIdAsync(groupId, new[] { userId }, cancellationToken).ConfigureAwait(false);
+
+			// We added a single member to a group therefore the array returned from the Zoom API contains a single element
+			return result.Single();
+		}
+
+		/// <summary>
+		/// Add an administrator to a group.
+		/// </summary>
+		/// <param name="groupsResource">The group resource.</param>
+		/// <param name="groupId">The ID of the group.</param>
+		/// <param name="emailAddress">An email address of user to add as an administrator to the group.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The ID of the added user.</returns>
+		public static async Task<string> AddAdministratorByEmailAsync(this IGroups groupsResource, string groupId, string emailAddress, CancellationToken cancellationToken = default)
+		{
+			var result = await groupsResource.AddAdministratorsByEmailAsync(groupId, new[] { emailAddress }, cancellationToken).ConfigureAwait(false);
+
+			// We added a single member to a group therefore the array returned from the Zoom API contains a single element
+			return result.Single();
+		}
+
+		/// <summary>
+		/// Add an administrator to a group.
+		/// </summary>
+		/// <param name="groupsResource">The group resource.</param>
+		/// <param name="groupId">The ID of the group.</param>
+		/// <param name="userId">The user unique identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The ID of the added user.</returns>
+		public static async Task<string> AddAdministratorByIdAsync(this IGroups groupsResource, string groupId, string userId, CancellationToken cancellationToken = default)
+		{
+			var result = await groupsResource.AddAdministratorsByIdAsync(groupId, new[] { userId }, cancellationToken).ConfigureAwait(false);
 
 			// We added a single member to a group therefore the array returned from the Zoom API contains a single element
 			return result.Single();
@@ -515,6 +563,19 @@ namespace ZoomNet
 		public static Task<ChatbotMessageInformation> EditMessageAsync(this IChatbot chatbotResource, string messageId, string accountId, string toJId, string robotJId, string message, bool enableMarkdownSupport = false, CancellationToken cancellationToken = default)
 		{
 			return chatbotResource.EditMessageAsync(messageId, accountId, toJId, robotJId, new ChatbotContent() { Head = new ChatbotHeader(message) }, enableMarkdownSupport, cancellationToken);
+		}
+
+		/// <summary>
+		/// Delete a group's Virtual Background file.
+		/// </summary>
+		/// <param name="groupsResource">The groups ressource.</param>
+		/// <param name="groupId">The group unique identifier.</param>
+		/// <param name="fileId">A file unique identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		public static Task DeleteVirtualBackgroundAsync(IGroups groupsResource, string groupId, string fileId, CancellationToken cancellationToken = default)
+		{
+			return groupsResource.DeleteVirtualBackgroundsAsync(groupId, new[] { fileId }, cancellationToken);
 		}
 	}
 }
