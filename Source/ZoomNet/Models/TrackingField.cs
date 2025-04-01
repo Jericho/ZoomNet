@@ -14,7 +14,7 @@ namespace ZoomNet.Models
 		/// The id.
 		/// </value>
 		[JsonPropertyName("id")]
-		public long Id { get; set; }
+		public string Id { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name of the tracking field.
