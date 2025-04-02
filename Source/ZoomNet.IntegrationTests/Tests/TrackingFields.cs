@@ -33,7 +33,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			var trackingField = await client.TrackingFields.CreateAsync("ZoomNet Integration Testing: My Tracking Field", new[] { "Value 1", "Value 2" }, false, true, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Tracking field {trackingField.Id} created").ConfigureAwait(false);
 
-			await client.TrackingFields.UpdateAsync(trackingField.Id, name: "ZoomNet Integration Testing: UPDATED Tracking Field", cancellationToken: cancellationToken).ConfigureAwait(false);
+			await client.TrackingFields.UpdateAsync(trackingField.Id, name: "ZoomNet Integration Testing: UPDATED Field", cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Tracking field {trackingField.Id} updated").ConfigureAwait(false);
 
 			trackingField = await client.TrackingFields.GetAsync(trackingField.Id, cancellationToken).ConfigureAwait(false);
