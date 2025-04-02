@@ -108,6 +108,11 @@ namespace ZoomNet
 		ISms Sms { get; }
 
 		/// <summary>
+		/// Gets the resource which allows you to manage tracking fields.
+		/// </summary>
+		ITrackingFields TrackingFields { get; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage users.
 		/// </summary>
 		IUsers Users { get; }
