@@ -3,12 +3,12 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Room.
+	/// Room location.
 	/// </summary>
-	public class Room
+	public class RoomLocation
 	{
 		/// <summary>
-		/// Gets or sets the room id.
+		/// Gets or sets the room location id.
 		/// </summary>
 		[JsonPropertyName("id")]
 		public string Id { get; set; }
