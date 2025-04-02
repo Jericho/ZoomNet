@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet;
 using ZoomNet.Models;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
@@ -24,10 +25,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<ExternalContactDetails>> GetAllAsync(int pageSize = 30, string nextPageToken = null, CancellationToken cancellationToken = default)
 		{
-			if (pageSize < 1 || pageSize > 300)
-			{
-				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 300");
-			}
+			Utils.ValidateRecordPerPage(pageSize);
 
 			return _client
 				.GetAsync("phone/external_contacts")
