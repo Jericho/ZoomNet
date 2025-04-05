@@ -58,7 +58,7 @@ namespace ZoomNet.UnitTests.Resources
 		public async Task GetPhoneUsersPaginatedResponseTestsAsync()
 		{
 			// Arrange
-			var pageSize = 1;
+			var recordsPerPage = 1;
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp
@@ -75,7 +75,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			// Act
 			var result = await phone
-				.ListPhoneUsersAsync(pageSize: pageSize, cancellationToken: TestContext.Current.CancellationToken)
+				.ListPhoneUsersAsync(recordsPerPage: recordsPerPage, cancellationToken: TestContext.Current.CancellationToken)
 				.ConfigureAwait(true);
 
 			// Assert
@@ -94,7 +94,7 @@ namespace ZoomNet.UnitTests.Resources
 		[Theory]
 		[InlineData(0)]
 		[InlineData(101)]
-		public void InvalidPageSize_GetPhoneUsersPaginatedResponseTests(int pageSize)
+		public void InvalidPageSize_GetPhoneUsersPaginatedResponseTests(int recordsPerPage)
 		{
 			// Arrange
 			var mockHttp = new MockHttpMessageHandler();
@@ -105,10 +105,10 @@ namespace ZoomNet.UnitTests.Resources
 
 			// Act and Assert
 			var exception = Assert.Throws<ArgumentOutOfRangeException>(() => phone
-				.ListPhoneUsersAsync(pageSize: pageSize, cancellationToken: TestContext.Current.CancellationToken)
+				.ListPhoneUsersAsync(recordsPerPage: recordsPerPage, cancellationToken: TestContext.Current.CancellationToken)
 				.ConfigureAwait(true));
 
-			exception.ParamName.ShouldBe(nameof(pageSize));
+			exception.ParamName.ShouldBe(nameof(recordsPerPage));
 			exception.Message.ShouldStartWith("Records per page must be between 1 and 100");
 		}
 	}

@@ -23,13 +23,13 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<ExternalContactDetails>> GetAllAsync(int pageSize = 30, string nextPageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<ExternalContactDetails>> GetAllAsync(int recordsPerPage = 30, string nextPageToken = null, CancellationToken cancellationToken = default)
 		{
-			Utils.ValidateRecordPerPage(pageSize);
+			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync("phone/external_contacts")
-				.WithArgument("page_size", pageSize)
+				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", nextPageToken)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<ExternalContactDetails>("external_contacts");

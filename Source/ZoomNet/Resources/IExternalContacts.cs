@@ -16,7 +16,7 @@ namespace ZoomNet.Resources
 		/// <summary>
 		/// Retrieves a list of all of an account's external contacts.
 		/// </summary>
-		/// <param name="pageSize">The number of records returned from a single API call. Default is 30.</param>
+		/// <param name="recordsPerPage">The number of records returned from a single API call. Default is 30.</param>
 		/// <param name="nextPageToken">
 		/// The next page token paginates through a large set of results.
 		/// A next page token is returned whenever the set of available results exceeds the current page size.
@@ -26,7 +26,7 @@ namespace ZoomNet.Resources
 		/// A task representing the asynchronous operation. The task result contains an array of external contacts in type of <see cref="ExternalContact"/>.
 		/// </returns>
 		Task<PaginatedResponseWithToken<ExternalContactDetails>> GetAllAsync(
-			int pageSize = 30,
+			int recordsPerPage = 30,
 			string nextPageToken = null,
 			CancellationToken cancellationToken = default);
 
