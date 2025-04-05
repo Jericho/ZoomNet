@@ -41,7 +41,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync($"Group {group.Id} retrieved").ConfigureAwait(false);
 
 			// UPLOAD BAKGROUND IMAGES
-			// Check that this computer has a folder containing sample images which we can use to send files to the channel
+			// Check that this computer has a folder containing sample images
 			var samplePicturesFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "Samples");
 			if (Directory.Exists(samplePicturesFolder))
 			{
