@@ -31,6 +31,6 @@ namespace ZoomNet.Models
 		/// Gets or sets the type.
 		/// </summary>
 		[JsonPropertyName("type")]
-		public RoomType Type { get; set; }
+		public RoomLocationType Type { get; set; }
 	}
 }

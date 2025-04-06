@@ -3,9 +3,9 @@ using System.Runtime.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Enumeration to indicate the type of a room.
+	/// Enumeration to indicate room location type.
 	/// </summary>
-	public enum RoomType
+	public enum RoomLocationType
 	{
 		/// <summary>
 		/// Country.
@@ -41,6 +41,12 @@ namespace ZoomNet.Models
 		/// Floor.
 		/// </summary>
 		[EnumMember(Value = "floor")]
-		Floor
+		Floor,
+
+		/// <summary>
+		/// Room.
+		/// </summary>
+		[EnumMember(Value = "room")]
+		Room
 	}
 }

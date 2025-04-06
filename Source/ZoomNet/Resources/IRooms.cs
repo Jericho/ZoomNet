@@ -28,7 +28,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Room">rooms</see>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<RoomLocation>> GetAllLocationsAsync(string parentLocationId = null, RoomType? type = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<RoomLocation>> GetAllLocationsAsync(string parentLocationId = null, RoomLocationType? type = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve all rooms on your account.
@@ -45,7 +45,14 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Room">rooms</see>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<Room>> GetAllAsync(string parentLocationId = null, RoomType? type = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<Room>> GetAllAsync(string parentLocationId = null, RoomLocationType? type = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the location hierarchial structure(s) applied on the Zoom Rooms in an account.
+		/// </summary>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The room location structure expressed as an array of <see cref="RoomLocationType">room location type</see>.</returns>
+		Task<RoomLocationType[]> GetRoomLocationStructureAsync(CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Update the location hierarchial structure(s) applied on the Zoom Rooms in an account.
@@ -53,7 +60,23 @@ namespace ZoomNet.Resources
 		/// <param name="structure">Location structure.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The async task.</returns>
-		Task UpdateRoomsStructureAsync(IEnumerable<RoomType> structure, CancellationToken cancellationToken = default);
+		Task UpdateRoomLocationStructureAsync(IEnumerable<RoomLocationType> structure, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a room.
+		/// </summary>
+		/// <param name="roomId">The room unique identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The asyc task.</returns>
+		Task DeleteAsync(string roomId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a room location.
+		/// </summary>
+		/// <param name="locationId">The location unique identifier.</param>
+		/// <param name="cancellationToken">Thecancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task DeleteLocationAsync(string locationId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Create a new room location.
@@ -65,6 +88,11 @@ namespace ZoomNet.Resources
 		/// </param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The newly created <see cref="RoomLocation">room location</see>.</returns>
+		/// <remarks>
+		/// A few imporant notes to keep in mind:
+		/// - You must <see cref="UpdateRoomLocationStructureAsync">define the location structure</see> before creating a location. I haven't seen this mentioned in the documentation and I struggled for a long to figure out why I couldn't create any new locations until I realized that I hadn't defined a structure. As soon as I defined my desired structure, I was able to create new locations without any problem.
+		/// - When you create a top-level location (such as a country for exmaple), you must specify your account ID for the parentId.
+		/// </remarks>
 		Task<RoomLocation> CreateLocationAsync(string name, string parentId = null, CancellationToken cancellationToken = default);
 	}
 }

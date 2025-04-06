@@ -16,7 +16,7 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the name.
 		/// </summary>
-		[JsonPropertyName("email")]
+		[JsonPropertyName("name")]
 		public string Name { get; set; }
 
 		/// <summary>
@@ -31,6 +31,6 @@ namespace ZoomNet.Models
 		/// Gets or sets the type.
 		/// </summary>
 		[JsonPropertyName("type")]
-		public RoomType Type { get; set; }
+		public RoomLocationType Type { get; set; }
 	}
 }

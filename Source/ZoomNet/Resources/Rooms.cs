@@ -24,7 +24,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<Room>> GetAllAsync(string parentLocationId = null, RoomType? type = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<Room>> GetAllAsync(string parentLocationId = null, RoomLocationType? type = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
@@ -39,7 +39,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<RoomLocation>> GetAllLocationsAsync(string parentLocationId = null, RoomType? type = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<RoomLocation>> GetAllLocationsAsync(string parentLocationId = null, RoomLocationType? type = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
@@ -54,7 +54,16 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task UpdateRoomsStructureAsync(IEnumerable<RoomType> structure, CancellationToken cancellationToken = default)
+		public Task<RoomLocationType[]> GetRoomLocationStructureAsync(CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync("rooms/locations/structure")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<RoomLocationType[]>("structures");
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateRoomLocationStructureAsync(IEnumerable<RoomLocationType> structure, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
@@ -82,6 +91,24 @@ namespace ZoomNet.Resources
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<RoomLocation>();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteLocationAsync(string locationId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"rooms/locations/{locationId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteAsync(string roomId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"rooms/{roomId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
 		}
 	}
 }
