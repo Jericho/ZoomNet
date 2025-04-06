@@ -100,9 +100,10 @@ var publishingError = false;
 const string DEFAULT_FRAMEWORK = "net9.0";
 var isSingleTfmMode = (IsRunningOnWindows() && !isLocalBuild) || isCodeCoverageTarget;
 
-// The terminal logger introduced but turned off by default in .NET8 and turned on by default in .NET9 doesn't work right on Linux
-// and causes a lot of noise in the build log on Ubuntu in AppVeyor.
-var terminalLogger = IsRunningOnWindows() ? "on" : "off";
+// The terminal logger introduced but turned off by default in .NET8 and turned on by default in .NET9
+// doesn't work right on Linux and causes a lot of noise in the build log on Ubuntu in AppVeyor.
+// As of March 2025, the terminal logger doesn't seem to work right in AppVeyor, no matter the OS.
+var terminalLogger = (isLocalBuild && IsRunningOnWindows()) ? "on" : "off";
 
 
 ///////////////////////////////////////////////////////////////////////////////
