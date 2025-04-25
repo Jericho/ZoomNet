@@ -50,6 +50,7 @@ namespace ZoomNet.Resources
 			{
 				{ "name", name }
 			};
+			
 			return _client
 				.PostAsync($"groups")
 				.WithJsonBody(data)
@@ -107,8 +108,9 @@ namespace ZoomNet.Resources
 		{
 			var data = new JsonObject
 			{
-				{ "members", emails?.Select(e => new JsonObject { { "email", e } }).ToArray() }
+				{ "admins", emails?.Select(e => new JsonObject { { "email", e } }).ToArray() }
 			};
+			
 			var response = await _client
 				.PostAsync($"groups/{groupId}/admins")
 				.WithJsonBody(data)
@@ -124,8 +126,9 @@ namespace ZoomNet.Resources
 		{
 			var data = new JsonObject
 			{
-				{ "members", userIds?.Select(e => new JsonObject { { "id", e } }).ToArray() }
+				{ "admins", userIds?.Select(e => new JsonObject { { "id", e } }).ToArray() }
 			};
+
 			var response = await _client
 				.PostAsync($"groups/{groupId}/admins")
 				.WithJsonBody(data)
@@ -187,6 +190,7 @@ namespace ZoomNet.Resources
 			{
 				{ "name", name }
 			};
+			
 			return _client
 				.PatchAsync($"groups/{groupId}")
 				.WithJsonBody(data)

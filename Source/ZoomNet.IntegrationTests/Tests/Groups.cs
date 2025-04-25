@@ -52,8 +52,11 @@ namespace ZoomNet.IntegrationTests.Tests
 					// UPLOAD A FILE
 					var samplePicture = samplePictures.ElementAt(rnd.Next(0, samplePictures.Count()));
 					using var fileToUploadStream = File.OpenRead(samplePicture);
-					var uploadedFileId = await client.Groups.UploadVirtualBackgroundAsync(group.Id, Path.GetFileName(samplePicture), fileToUploadStream, cancellationToken).ConfigureAwait(false);
-					await log.WriteLineAsync($"File {uploadedFileId} uploaded").ConfigureAwait(false);
+					var uploadedFile = await client.Groups.UploadVirtualBackgroundAsync(group.Id, Path.GetFileName(samplePicture), fileToUploadStream, cancellationToken).ConfigureAwait(false);
+					await log.WriteLineAsync($"File {uploadedFile.Id} uploaded").ConfigureAwait(false);
+
+					// DELETE THE VIRTUAL BACKGROUND
+					await client.Groups.DeleteVirtualBackgroundAsync(group.Id, uploadedFile.Id, cancellationToken).ConfigureAwait(false);
 				}
 			}
 

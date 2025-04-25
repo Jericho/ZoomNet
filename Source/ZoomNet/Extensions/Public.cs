@@ -573,7 +573,7 @@ namespace ZoomNet
 		/// <param name="fileId">A file unique identifier.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The async task.</returns>
-		public static Task DeleteVirtualBackgroundAsync(IGroups groupsResource, string groupId, string fileId, CancellationToken cancellationToken = default)
+		public static Task DeleteVirtualBackgroundAsync(this IGroups groupsResource, string groupId, string fileId, CancellationToken cancellationToken = default)
 		{
 			return groupsResource.DeleteVirtualBackgroundsAsync(groupId, new[] { fileId }, cancellationToken);
 		}
