@@ -14,23 +14,6 @@ namespace ZoomNet.Resources
 	public interface IRooms
 	{
 		/// <summary>
-		/// Retrieve all room locations on your account.
-		/// </summary>
-		/// <param name="parentLocationId">
-		/// A unique identifier for the parent location.
-		/// For instance, if a Zoom Room is located in Floor 1 of Building A, the location of Building A will be the parent location of Floor 1.
-		/// Use this parameter to filter the response by a specific location hierarchy level.
-		/// </param>
-		/// <param name="type">Use this parameter to filter the response by the type of location.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Room">rooms</see>.
-		/// </returns>
-		Task<PaginatedResponseWithToken<RoomLocation>> GetAllLocationsAsync(string parentLocationId = null, RoomLocationType? type = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
-
-		/// <summary>
 		/// Retrieve all rooms on your account.
 		/// </summary>
 		/// <param name="parentLocationId">
@@ -48,19 +31,14 @@ namespace ZoomNet.Resources
 		Task<PaginatedResponseWithToken<Room>> GetAllAsync(string parentLocationId = null, RoomLocationType? type = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Get the location hierarchial structure(s) applied on the Zoom Rooms in an account.
+		/// Create a new room.
 		/// </summary>
+		/// <param name="name">The name of the room.</param>
+		/// <param name="type">The type of the room.</param>
+		/// <param name="parentLocationId">Location ID of the lowest level location in the location hierarchy where the Zoom Room is to be added. For instance if the structure of the location hierarchy is set up as “country, states, city, campus, building, floor”, a room can only be added under the floor level location.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>The room location structure expressed as an array of <see cref="RoomLocationType">room location type</see>.</returns>
-		Task<RoomLocationType[]> GetRoomLocationStructureAsync(CancellationToken cancellationToken = default);
-
-		/// <summary>
-		/// Update the location hierarchial structure(s) applied on the Zoom Rooms in an account.
-		/// </summary>
-		/// <param name="structure">Location structure.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>The async task.</returns>
-		Task UpdateRoomLocationStructureAsync(IEnumerable<RoomLocationType> structure, CancellationToken cancellationToken = default);
+		/// <returns>The new <see cref="Room">Room</see>.</returns>
+		Task<Room> CreateAsync(string name, RoomType type, string parentLocationId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Delete a room.
@@ -71,12 +49,36 @@ namespace ZoomNet.Resources
 		Task DeleteAsync(string roomId, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Delete a room location.
+		/// Retrieve all room locations on your account.
 		/// </summary>
-		/// <param name="locationId">The location unique identifier.</param>
-		/// <param name="cancellationToken">Thecancellation token.</param>
+		/// <param name="parentLocationId">
+		/// A unique identifier for the parent location.
+		/// For instance, if a Zoom Room is located in Floor 1 of Building A, the location of Building A will be the parent location of Floor 1.
+		/// Use this parameter to filter the response by a specific location hierarchy level.
+		/// </param>
+		/// <param name="type">Use this parameter to filter the response by the type of location.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Room">rooms</see>.
+		/// </returns>
+		Task<PaginatedResponseWithToken<RoomLocation>> GetAllLocationsAsync(string parentLocationId = null, RoomLocationType? type = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the location hierarchial structure(s) applied on the Zoom Rooms in an account.
+		/// </summary>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The room location structure expressed as an array of <see cref="RoomLocationType">room location type</see>.</returns>
+		Task<RoomLocationType[]> GetLocationStructureAsync(CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update the location hierarchial structure(s) applied on the Zoom Rooms in an account.
+		/// </summary>
+		/// <param name="structure">Location structure.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The async task.</returns>
-		Task DeleteLocationAsync(string locationId, CancellationToken cancellationToken = default);
+		Task UpdateLocationStructureAsync(IEnumerable<RoomLocationType> structure, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Create a new room location.
@@ -90,9 +92,58 @@ namespace ZoomNet.Resources
 		/// <returns>The newly created <see cref="RoomLocation">room location</see>.</returns>
 		/// <remarks>
 		/// A few imporant notes to keep in mind:
-		/// - You must <see cref="UpdateRoomLocationStructureAsync">define the location structure</see> before creating a location. I haven't seen this mentioned in the documentation and I struggled for a long to figure out why I couldn't create any new locations until I realized that I hadn't defined a structure. As soon as I defined my desired structure, I was able to create new locations without any problem.
+		/// - You must <see cref="UpdateLocationStructureAsync">define the location structure</see> before creating a location. I haven't seen this mentioned in the documentation and I struggled for a long to figure out why I couldn't create any new locations until I realized that I hadn't defined a structure. As soon as I defined my desired structure, I was able to create new locations without any problem.
 		/// - When you create a top-level location (such as a country for exmaple), you must specify your account ID for the parentId.
 		/// </remarks>
 		Task<RoomLocation> CreateLocationAsync(string name, string parentId = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a room location.
+		/// </summary>
+		/// <param name="locationId">The location unique identifier.</param>
+		/// <param name="cancellationToken">Thecancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task DeleteLocationAsync(string locationId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Change the assigned parent location.
+		/// </summary>
+		/// <param name="locationId">The location unique identifier.</param>
+		/// <param name="parentId">Location ID of the new Parent Location under which you the child location will be positioned.</param>
+		/// <param name="cancellationToken">Thecancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task MoveLocationASync(string locationId, string parentId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the alert settings applied to Zoom Rooms located in a specific location.
+		/// </summary>
+		/// <param name="locationId">The location unique identifier.</param>
+		/// <param name="cancellationToken">Thecancellation token.</param>
+		/// <returns>The alert settings.</returns>
+		Task<(RoomLocationAlertSettings AlertSettings, RoomLocationNotificationSettings NotificationSettings)> GetLocationAlertSettingsAsync(string locationId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the general settings applied to Zoom Rooms located in a specific location.
+		/// </summary>
+		/// <param name="locationId">The location unique identifier.</param>
+		/// <param name="cancellationToken">Thecancellation token.</param>
+		/// <returns>The meeting settings.</returns>
+		Task<(RoomLocationSecuritySettings SecuritySettings, RoomLocationSettings RoomSettings)> GetLocationSettingsAsync(string locationId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the signage settings applied to Zoom Rooms located in a specific location.
+		/// </summary>
+		/// <param name="locationId">The location unique identifier.</param>
+		/// <param name="cancellationToken">Thecancellation token.</param>
+		/// <returns>The signage settings.</returns>
+		Task<RoomLocationSignageSettings> GetLocationSignageSettingsAsync(string locationId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the scheduling display settings applied to Zoom Rooms located in a specific location.
+		/// </summary>
+		/// <param name="locationId">The location unique identifier.</param>
+		/// <param name="cancellationToken">Thecancellation token.</param>
+		/// <returns>The scheduling display settings.</returns>
+		Task<RoomLocationSchedulingDisplaySettings> GetLocationSchedulingDisplaySettingsAsync(string locationId, CancellationToken cancellationToken = default);
 	}
 }
