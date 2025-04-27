@@ -103,6 +103,11 @@ namespace ZoomNet
 		IRoles Roles { get; }
 
 		/// <summary>
+		/// Gets the resource which allows you to manage rooms.
+		/// </summary>
+		IRooms Rooms { get; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage SMS messages and sessions.
 		/// </summary>
 		ISms Sms { get; }
