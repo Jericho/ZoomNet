@@ -526,7 +526,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.PageSize.ShouldBe(recordsPerPage);
+			result.RecordsPerPage.ShouldBe(recordsPerPage);
 			result.NextPageToken.ShouldBeEmpty();
 			result.MoreRecordsAvailable.ShouldBeFalse();
 			result.TotalRecords.ShouldBe(10);

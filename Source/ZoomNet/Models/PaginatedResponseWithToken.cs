@@ -1,3 +1,4 @@
+using System;
 using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
@@ -14,8 +15,20 @@ namespace ZoomNet.Models
 		/// Gets or sets the number of records returned within a single API call.
 		/// </summary>
 		/// <value>The number of records returned within a single API call.</value>
+		[JsonIgnore]
+		[Obsolete("Use RecordsPerPage instead.")]
+		public int PageSize
+		{
+			get => RecordsPerPage;
+			set => RecordsPerPage = value;
+		}
+
+		/// <summary>
+		/// Gets or sets the number of records returned within a single API call.
+		/// </summary>
+		/// <value>The number of records returned within a single API call.</value>
 		[JsonPropertyName("page_size")]
-		public int PageSize { get; set; }
+		public int RecordsPerPage { get; set; }
 
 		/// <summary>
 		/// Gets or sets the number of all records available across pages.

@@ -82,7 +82,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.NextPageToken.ShouldNotBeNullOrEmpty();
-			result.PageSize.ShouldBe(1);
+			result.RecordsPerPage.ShouldBe(1);
 			result.TotalRecords.ShouldBe(10);
 			result.Records.ShouldNotBeNull();
 			result.Records.Length.ShouldBe(1);
@@ -94,7 +94,7 @@ namespace ZoomNet.UnitTests.Resources
 		[Theory]
 		[InlineData(0)]
 		[InlineData(101)]
-		public void InvalidPageSize_GetPhoneUsersPaginatedResponseTests(int recordsPerPage)
+		public void InvalidRecordsPerPage_GetPhoneUsersPaginatedResponseTests(int recordsPerPage)
 		{
 			// Arrange
 			var mockHttp = new MockHttpMessageHandler();

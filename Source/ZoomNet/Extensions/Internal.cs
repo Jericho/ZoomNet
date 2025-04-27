@@ -1078,7 +1078,7 @@ namespace ZoomNet
 			// Get the various metadata properties
 			var pageCount = rootElement.GetPropertyValue("page_count", 0);
 			var pageNumber = rootElement.GetPropertyValue("page_number", 0);
-			var pageSize = rootElement.GetPropertyValue("page_size", 0);
+			var recordsPerPage = rootElement.GetPropertyValue("page_size", 0);
 			var totalRecords = rootElement.GetPropertyValue("total_records", (int?)null);
 
 			// Get the property that holds the records
@@ -1094,7 +1094,7 @@ namespace ZoomNet
 			{
 				PageCount = pageCount,
 				PageNumber = pageNumber,
-				PageSize = pageSize,
+				RecordsPerPage = recordsPerPage,
 				Records = jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
@@ -1117,7 +1117,7 @@ namespace ZoomNet
 
 			// Get the various metadata properties
 			var nextPageToken = rootElement.GetPropertyValue("next_page_token", string.Empty);
-			var pageSize = rootElement.GetPropertyValue("page_size", 0);
+			var recordsPerPage = rootElement.GetPropertyValue("page_size", 0);
 			var totalRecords = rootElement.GetPropertyValue("total_records", (int?)null);
 
 			// Get the property that holds the records
@@ -1132,7 +1132,7 @@ namespace ZoomNet
 			var result = new PaginatedResponseWithToken<T>()
 			{
 				NextPageToken = nextPageToken,
-				PageSize = pageSize,
+				RecordsPerPage = recordsPerPage,
 				Records = jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
@@ -1157,7 +1157,7 @@ namespace ZoomNet
 			var from = DateTime.ParseExact(rootElement.GetPropertyValue("from", string.Empty), "yyyy-MM-dd", CultureInfo.InvariantCulture);
 			var to = DateTime.ParseExact(rootElement.GetPropertyValue("to", string.Empty), "yyyy-MM-dd", CultureInfo.InvariantCulture);
 			var nextPageToken = rootElement.GetPropertyValue("next_page_token", string.Empty);
-			var pageSize = rootElement.GetPropertyValue("page_size", 0);
+			var recordsPerPage = rootElement.GetPropertyValue("page_size", 0);
 			var totalRecords = rootElement.GetPropertyValue("total_records", (int?)null);
 
 			// Get the property that holds the records
@@ -1174,7 +1174,7 @@ namespace ZoomNet
 				From = from,
 				To = to,
 				NextPageToken = nextPageToken,
-				PageSize = pageSize,
+				RecordsPerPage = recordsPerPage,
 				Records = jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;

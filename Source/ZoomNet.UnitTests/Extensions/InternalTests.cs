@@ -5,7 +5,6 @@ using System.Net;
 using System.Net.Http;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
-using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using ZoomNet.Models;
@@ -214,7 +213,7 @@ namespace ZoomNet.UnitTests.Extensions
 				// Assert
 				paginatedResponse.PageCount.ShouldBe(0);
 				paginatedResponse.PageNumber.ShouldBe(0);
-				paginatedResponse.PageSize.ShouldBe(100);
+				paginatedResponse.RecordsPerPage.ShouldBe(100);
 				paginatedResponse.Records.ShouldBeEmpty();
 				paginatedResponse.TotalRecords.ShouldBe(0);
 			}
@@ -265,7 +264,7 @@ namespace ZoomNet.UnitTests.Extensions
 				var paginatedResponse = await response.AsPaginatedResponseWithToken<UserCallLog>("call_logs").ConfigureAwait(true);
 
 				// Assert
-				paginatedResponse.PageSize.ShouldBe(100);
+				paginatedResponse.RecordsPerPage.ShouldBe(100);
 				paginatedResponse.Records.ShouldBeEmpty();
 				paginatedResponse.TotalRecords.ShouldBe(0);
 			}
@@ -316,7 +315,7 @@ namespace ZoomNet.UnitTests.Extensions
 				var paginatedResponse = await response.AsPaginatedResponseWithTokenAndDateRange<UserCallLog>("call_logs").ConfigureAwait(true);
 
 				// Assert
-				paginatedResponse.PageSize.ShouldBe(100);
+				paginatedResponse.RecordsPerPage.ShouldBe(100);
 				paginatedResponse.Records.ShouldBeEmpty();
 				paginatedResponse.TotalRecords.ShouldBe(0);
 			}
