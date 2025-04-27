@@ -392,7 +392,7 @@ namespace ZoomNet.UnitTests
 			parsedMeeting.HostId.ShouldBe("z8yCxTTTTSiw02QgCAp8uQ");
 			parsedMeeting.StartTime.ShouldBe(new DateTime(2019, 7, 16, 17, 14, 39, 0, DateTimeKind.Utc));
 			parsedMeeting.Duration.ShouldBe(60);
-			parsedMeeting.Timezone.ShouldBe("America/Los_Angeles");
+			parsedMeeting.Timezone.ShouldBe(TimeZones.America_Los_Angeles);
 		}
 
 		[Fact]
@@ -412,7 +412,7 @@ namespace ZoomNet.UnitTests
 			parsedMeeting.Uuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
 			parsedMeeting.HostId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
 			parsedMeeting.Duration.ShouldBe(60);
-			parsedMeeting.Timezone.ShouldBe("America/Los_Angeles");
+			parsedMeeting.Timezone.ShouldBe(TimeZones.America_Los_Angeles);
 		}
 
 		[Fact]

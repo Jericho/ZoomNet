@@ -50,7 +50,7 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets the timezone.</summary>
 		[JsonPropertyName("timezone")]
-		public string Timezone { get; set; }
+		public TimeZones Timezone { get; set; }
 
 		/// <summary>Gets or sets the type.</summary>
 		[JsonPropertyName("type")]

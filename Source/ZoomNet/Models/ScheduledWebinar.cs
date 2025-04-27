@@ -18,11 +18,8 @@ namespace ZoomNet.Models
 
 		/// <summary>
 		/// Gets or sets the timezone.
-		/// For example, "America/Los_Angeles".
-		/// Please reference our <a href="https://marketplace.zoom.us/docs/api-reference/other-references/abbreviation-lists#timezones">timezone list</a> for supported timezones and their formats.
 		/// </summary>
-		/// <value>The webinar timezone. For example, "America/Los_Angeles". Please reference our <a href="https://marketplace.zoom.us/docs/api-reference/other-references/abbreviation-lists#timezones">timezone list</a> for supported timezones and their formats.</value>
 		[JsonPropertyName("timezone")]
-		public string Timezone { get; set; }
+		public TimeZones Timezone { get; set; }
 	}
 }
