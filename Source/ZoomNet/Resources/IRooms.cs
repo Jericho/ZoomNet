@@ -101,7 +101,7 @@ namespace ZoomNet.Resources
 		/// Delete a room location.
 		/// </summary>
 		/// <param name="locationId">The location unique identifier.</param>
-		/// <param name="cancellationToken">Thecancellation token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The async task.</returns>
 		Task DeleteLocationAsync(string locationId, CancellationToken cancellationToken = default);
 
@@ -110,7 +110,7 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="locationId">The location unique identifier.</param>
 		/// <param name="parentId">Location ID of the new Parent Location under which you the child location will be positioned.</param>
-		/// <param name="cancellationToken">Thecancellation token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The async task.</returns>
 		Task MoveLocationASync(string locationId, string parentId, CancellationToken cancellationToken = default);
 
@@ -118,7 +118,7 @@ namespace ZoomNet.Resources
 		/// Get the alert settings applied to Zoom Rooms located in a specific location.
 		/// </summary>
 		/// <param name="locationId">The location unique identifier.</param>
-		/// <param name="cancellationToken">Thecancellation token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The alert settings.</returns>
 		Task<(RoomLocationAlertSettings AlertSettings, RoomLocationNotificationSettings NotificationSettings)> GetLocationAlertSettingsAsync(string locationId, CancellationToken cancellationToken = default);
 
@@ -126,7 +126,7 @@ namespace ZoomNet.Resources
 		/// Get the general settings applied to Zoom Rooms located in a specific location.
 		/// </summary>
 		/// <param name="locationId">The location unique identifier.</param>
-		/// <param name="cancellationToken">Thecancellation token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The meeting settings.</returns>
 		Task<(RoomLocationSecuritySettings SecuritySettings, RoomLocationSettings RoomSettings)> GetLocationSettingsAsync(string locationId, CancellationToken cancellationToken = default);
 
@@ -134,7 +134,7 @@ namespace ZoomNet.Resources
 		/// Get the signage settings applied to Zoom Rooms located in a specific location.
 		/// </summary>
 		/// <param name="locationId">The location unique identifier.</param>
-		/// <param name="cancellationToken">Thecancellation token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The signage settings.</returns>
 		Task<RoomLocationSignageSettings> GetLocationSignageSettingsAsync(string locationId, CancellationToken cancellationToken = default);
 
@@ -142,8 +142,34 @@ namespace ZoomNet.Resources
 		/// Get the scheduling display settings applied to Zoom Rooms located in a specific location.
 		/// </summary>
 		/// <param name="locationId">The location unique identifier.</param>
-		/// <param name="cancellationToken">Thecancellation token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The scheduling display settings.</returns>
 		Task<RoomLocationSchedulingDisplaySettings> GetLocationSchedulingDisplaySettingsAsync(string locationId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the information such as the location name, address, support email, and more.
+		/// </summary>
+		/// <param name="locationId">The location unique identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The location profile information.</returns>
+		Task<(RoomLocationBasicProfile Basic, RoomLocationSetupProfile Setup)> GetLocationProfileAsync(string locationId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update the basic profile for a room location.
+		/// </summary>
+		/// <param name="locationId">The location unique identifier.</param>
+		/// <param name="address">The address of the location.</param>
+		/// <param name="description">The description of the location.</param>
+		/// <param name="name">The name of the location.</param>
+		/// <param name="codeIsRequiredToExit">Indicates whether a code is required to exit out of your Zoom Rooms application to switch between other apps.</param>
+		/// <param name="passcode">The 1-16 digit number or characters used to secure your Zoom Rooms application.</param>
+		/// <param name="supportEmail">The email address to be used for reporting Zoom Room issues.</param>
+		/// <param name="supportPhone">The phone number to be used for reporting Zoom Room issues.</param>
+		/// <param name="timezone">Timezone (only returned for location type - city).</param>
+		/// <param name="applyBackgroundImageToAllDisplays">Indicates if the same background image is applied to all displays of the Zoom Room. If the value of the this field is true, the backgroundImageInfos parameter can only contain background image information of zoom_rooms_display1.</param>
+		/// <param name="backgroundImageInfos">The background image info for each display.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task UpdateLocationProfileAsync(string locationId, string address = null, string description = null, string name = null, bool? codeIsRequiredToExit = null, string passcode = null, string supportEmail = null, string supportPhone = null, TimeZones? timezone = null, bool? applyBackgroundImageToAllDisplays = null, IEnumerable<RoomLocationBackgroundImageInfo> backgroundImageInfos = null, CancellationToken cancellationToken = default);
 	}
 }

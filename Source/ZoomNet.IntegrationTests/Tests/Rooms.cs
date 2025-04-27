@@ -110,6 +110,12 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			var schedulingDisplaySettings = await client.Rooms.GetLocationSchedulingDisplaySettingsAsync(buildingA.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Scheduling display settings for a location have been retrieved").ConfigureAwait(false);
+
+			await client.Rooms.UpdateLocationProfileAsync(buildingA.Id, description: "This is a test", cancellationToken: cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Profile for a location has been updated").ConfigureAwait(false);
+
+			var profile = await client.Rooms.GetLocationProfileAsync(buildingA.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Profile for a location has been retrieved").ConfigureAwait(false);
 		}
 
 		private static async Task CleanUpLocations(RoomLocationType locationType, IZoomClient client, TextWriter log, CancellationToken cancellationToken)

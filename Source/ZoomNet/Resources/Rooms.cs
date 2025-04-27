@@ -194,5 +194,55 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsObject<RoomLocationSchedulingDisplaySettings>("scheduling_display");
 		}
+
+		/// <inheritdoc/>
+		public async Task<(RoomLocationBasicProfile Basic, RoomLocationSetupProfile Setup)> GetLocationProfileAsync(string locationId, CancellationToken cancellationToken = default)
+		{
+			var response = await _client
+				.GetAsync($"rooms/locations/{locationId}")
+				.WithArgument("setting_type", RoomLocationSettingsType.Meeting.ToEnumString())
+				.WithCancellationToken(cancellationToken)
+				.AsJson()
+				.ConfigureAwait(false);
+
+			var basicProfile = response.GetProperty("basic", true)?.ToObject<RoomLocationBasicProfile>();
+			var setupProfiule = response.GetProperty("setup", true)?.ToObject<RoomLocationSetupProfile>();
+
+			return (basicProfile, setupProfiule);
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateLocationProfileAsync(string locationId, string address = null, string description = null, string name = null, bool? codeIsRequiredToExit = null, string passcode = null, string supportEmail = null, string supportPhone = null, TimeZones? timezone = null, bool? applyBackgroundImageToAllDisplays = null, IEnumerable<RoomLocationBackgroundImageInfo> backgroundImageInfos = null, CancellationToken cancellationToken = default)
+		{
+			var basicProfile = new JsonObject
+			{
+				{ "address", address },
+				{ "description", description },
+				{ "name", name },
+				{ "required_code_to_ext", codeIsRequiredToExit },
+				{ "room_passcode", passcode },
+				{ "support_email", supportEmail },
+				{ "support_phone", supportPhone },
+				{ "timezone", timezone?.ToEnumString() }
+			};
+
+			var setupProfile = new JsonObject
+			{
+				{ "apply_background_image_to_all_displays", applyBackgroundImageToAllDisplays },
+				{ "background_image_info", backgroundImageInfos?.ToArray() },
+			};
+
+			var data = new JsonObject
+			{
+				{ "basic", basicProfile },
+				{ "setup", setupProfile }
+			};
+
+			return _client
+				.PatchAsync($"rooms/locations/{locationId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
 	}
 }
