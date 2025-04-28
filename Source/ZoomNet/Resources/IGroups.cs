@@ -145,6 +145,6 @@ namespace ZoomNet.Resources
 		/// <param name="fileIds">An enumeration of file unique identifiers.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The async task.</returns>
-		Task DeleteVirtualBackgroundsAsync(string groupId, string[] fileIds, CancellationToken cancellationToken = default);
+		Task DeleteVirtualBackgroundsAsync(string groupId, IEnumerable<string> fileIds, CancellationToken cancellationToken = default);
 	}
 }

@@ -220,7 +220,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task DeleteVirtualBackgroundsAsync(string groupId, string[] fileIds, CancellationToken cancellationToken = default)
+		public Task DeleteVirtualBackgroundsAsync(string groupId, IEnumerable<string> fileIds, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.DeleteAsync($"groups/{groupId}/settings/virtual_backgrounds")
