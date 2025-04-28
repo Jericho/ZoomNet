@@ -13,6 +13,8 @@ namespace ZoomNet.Resources
 	/// </remarks>
 	public interface IRooms
 	{
+		#region ZOOM ROOMS
+
 		/// <summary>
 		/// Retrieve all rooms on your account.
 		/// </summary>
@@ -47,6 +49,20 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The asyc task.</returns>
 		Task DeleteAsync(string roomId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Change a Zoom Room's location​.
+		/// </summary>
+		/// <param name="roomId">The room unique identifier.</param>
+		/// <param name="locationId">Unique identifier of the location where Zoom Room is to be assigned.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The asyc task.</returns>
+		/// <remarks>The Zoom Room can be assigned only to the lowest level location available in the hierarchy.</remarks>
+		Task MoveAsync(string roomId, string locationId, CancellationToken cancellationToken = default);
+
+		#endregion
+
+		#region ZOOM ROOM LOCATIONS
 
 		/// <summary>
 		/// Retrieve all room locations on your account.
@@ -172,6 +188,10 @@ namespace ZoomNet.Resources
 		/// <returns>The async task.</returns>
 		Task UpdateLocationProfileAsync(string locationId, string address = null, string description = null, string name = null, bool? codeIsRequiredToExit = null, string passcode = null, string supportEmail = null, string supportPhone = null, TimeZones? timezone = null, bool? applyBackgroundImageToAllDisplays = null, IEnumerable<RoomLocationBackgroundImageInfo> backgroundImageInfos = null, CancellationToken cancellationToken = default);
 
+		#endregion
+
+		#region ZOOM ROOMS TAGS
+
 		/// <summary>
 		/// Create a new Zoom Rooms Tag.
 		/// </summary>
@@ -236,5 +256,7 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The async task.</returns>
 		Task DeleteTagAsync(string tagId, CancellationToken cancellationToken = default);
+
+		#endregion
 	}
 }

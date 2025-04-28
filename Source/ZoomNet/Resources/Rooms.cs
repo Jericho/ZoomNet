@@ -23,6 +23,8 @@ namespace ZoomNet.Resources
 			_client = client;
 		}
 
+		#region ZOOM ROOMS
+
 		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<Room>> GetAllAsync(string parentLocationId = null, RoomLocationType? type = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
@@ -39,13 +41,13 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<Room> CreateAsync(string name, RoomType type, string locationtId = null, CancellationToken cancellationToken = default)
+		public Task<Room> CreateAsync(string name, RoomType type, string locationId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
 				{ "name", name },
 				{ "type", type.ToEnumString() },
-				{ "location_id", locationtId }
+				{ "location_id", locationId }
 			};
 
 			return _client
@@ -63,6 +65,25 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
+
+		/// <inheritdoc/>
+		public Task MoveAsync(string roomId, string locationId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "location_id", locationId }
+			};
+
+			return _client
+				.PutAsync($"rooms/{roomId}/location")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<Room>();
+		}
+
+		#endregion
+
+		#region ZOOM LOCATIONS
 
 		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<RoomLocation>> GetAllLocationsAsync(string parentLocationId = null, RoomLocationType? type = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
@@ -245,6 +266,10 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
+		#endregion
+
+		#region ZOOM ROOMS TAGS
+
 		/// <inheritdoc/>
 		public Task<string> CreateTagAsync(string name, string description, CancellationToken cancellationToken = default)
 		{
@@ -338,5 +363,7 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
+
+		#endregion
 	}
 }
