@@ -35,10 +35,10 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="name">The name of the room.</param>
 		/// <param name="type">The type of the room.</param>
-		/// <param name="parentLocationId">Location ID of the lowest level location in the location hierarchy where the Zoom Room is to be added. For instance if the structure of the location hierarchy is set up as “country, states, city, campus, building, floor”, a room can only be added under the floor level location.</param>
+		/// <param name="locationId">Location ID of the lowest level location in the location hierarchy where the Zoom Room is to be added. For instance if the structure of the location hierarchy is set up as “country, states, city, campus, building, floor”, a room can only be added under the floor level location.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The new <see cref="Room">Room</see>.</returns>
-		Task<Room> CreateAsync(string name, RoomType type, string parentLocationId = null, CancellationToken cancellationToken = default);
+		Task<Room> CreateAsync(string name, RoomType type, string locationId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Delete a room.
