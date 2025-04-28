@@ -171,5 +171,70 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The async task.</returns>
 		Task UpdateLocationProfileAsync(string locationId, string address = null, string description = null, string name = null, bool? codeIsRequiredToExit = null, string passcode = null, string supportEmail = null, string supportPhone = null, TimeZones? timezone = null, bool? applyBackgroundImageToAllDisplays = null, IEnumerable<RoomLocationBackgroundImageInfo> backgroundImageInfos = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create a new Zoom Rooms Tag.
+		/// </summary>
+		/// <param name="name">The name of the Tag.</param>
+		/// <param name="description">The short description of the Zoom Rooms Tag.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The unique identifier of the newly create tag.</returns>
+		Task<string> CreateTagAsync(string name, string description, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Edit an existing tag.
+		/// </summary>
+		/// <param name="tagId">Tag unique identifier.</param>
+		/// <param name="name">The name of the Tag.</param>
+		/// <param name="description">The short description of the Zoom Rooms Tag.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task UpdateTagAsync(string tagId, string name = null, string description = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Assign multiple tags to a Zoom Room.
+		/// </summary>
+		/// <param name="roomId">The unique identifier of the Zoom Room.</param>
+		/// <param name="tagIds">The Tag IDs to assign to the Zoom Room.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task AssignTagsToRoom(string roomId, IEnumerable<string> tagIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Assign multiple tags to Zoom Rooms by location ID.
+		/// </summary>
+		/// <param name="locationId">The unique identifier of the location where all Zoom Rooms under this location to be assigned with tags.</param>
+		/// <param name="tagIds">The Tag IDs to assign to all the Zoom Rooms in the given location.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task AssignTagsToRoomsInLocation(string locationId, IEnumerable<string> tagIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Un-assign a tag from a Zoom Room.
+		/// </summary>
+		/// <param name="roomId">The unique identifier of the Zoom Room.</param>
+		/// <param name="tagId">The Tag ID to unassign from the Zoom Room.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task UnAssignTagFromRoom(string roomId, string tagId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieve all room tags on your account.
+		/// </summary>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="RoomTag">tags</see>.
+		/// </returns>
+		Task<PaginatedResponseWithToken<RoomTag>> GetAllTagsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create a new Zoom Rooms Tag.
+		/// </summary>
+		/// <param name="tagId">The unique identifier the tag to be deleted.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task DeleteTagAsync(string tagId, CancellationToken cancellationToken = default);
 	}
 }

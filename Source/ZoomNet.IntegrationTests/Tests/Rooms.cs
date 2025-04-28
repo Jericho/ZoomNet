@@ -19,12 +19,26 @@ namespace ZoomNet.IntegrationTests.Tests
 			var paginatedRooms = await client.Rooms.GetAllAsync(null, null, 100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {paginatedRooms.Records.Length} rooms").ConfigureAwait(false);
 
+			// GET ALL THE TAGS
+			var paginatedTags = await client.Rooms.GetAllTagsAsync(100, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {paginatedTags.Records.Length} tags").ConfigureAwait(false);
+
 			// GET THE LOCATION STRUCTURE
 			var currentStructure = await client.Rooms.GetLocationStructureAsync(cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Current location structure: {string.Join(", ", currentStructure.Select(s => s.ToEnumString()))}").ConfigureAwait(false);
 
 			// CLEANUP PREVIOUS INTEGRATION TESTS THAT MIGHT HAVE BEEN INTERRUPTED BEFORE THEY HAD TIME TO CLEANUP AFTER THEMSELVES
-			var cleanUpTasks = paginatedRooms.Records
+			var cleanUpTasks = paginatedTags.Records
+				.Where(r => r.Name.StartsWith("ZoomNet Integration Testing:", StringComparison.OrdinalIgnoreCase))
+				.Select(async oldTag =>
+				{
+					await client.Rooms.DeleteTagAsync(oldTag.Id, cancellationToken).ConfigureAwait(false);
+					await log.WriteLineAsync($"Tag {oldTag.Id} deleted").ConfigureAwait(false);
+					await Task.Delay(250, cancellationToken).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
+				});
+			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
+
+			cleanUpTasks = paginatedRooms.Records
 				.Where(r => r.Name.StartsWith("ZoomNet Integration Testing:", StringComparison.OrdinalIgnoreCase))
 				.Select(async oldRoom =>
 				{
@@ -111,11 +125,35 @@ namespace ZoomNet.IntegrationTests.Tests
 			var schedulingDisplaySettings = await client.Rooms.GetLocationSchedulingDisplaySettingsAsync(buildingA.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Scheduling display settings for a location have been retrieved").ConfigureAwait(false);
 
+			var tagId = await client.Rooms.CreateTagAsync("ZoomNet Integration Testing: Tag", "This is a test", cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("A new room tag was created").ConfigureAwait(false);
+
+			await client.Rooms.UpdateTagAsync(tagId, "ZoomNet Integration Testing: UPDATED Tag", "This is still a test", cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Tag was updated").ConfigureAwait(false);
+
 			await client.Rooms.UpdateLocationProfileAsync(buildingA.Id, description: "This is a test", cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Profile for a location has been updated").ConfigureAwait(false);
 
 			var profile = await client.Rooms.GetLocationProfileAsync(buildingA.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Profile for a location has been retrieved").ConfigureAwait(false);
+
+			var room = await client.Rooms.CreateAsync("ZoomNet Integration Testing: Room", RoomType.Room, floorA1.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("A new room was created").ConfigureAwait(false);
+
+			//await client.Rooms.UpdateAsync(room.Id, "ZoomNet Integration Testing: UPDATED Room", floorA2.Id, cancellationToken).ConfigureAwait(false);
+			//await log.WriteLineAsync("Room was updated").ConfigureAwait(false);
+
+			await client.Rooms.AssignTagToRoom(room.Id, tagId, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Room tag has been assigned").ConfigureAwait(false);
+
+			await client.Rooms.UnAssignTagFromRoom(room.Id, tagId, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Room tag has been removed from room").ConfigureAwait(false);
+
+			await client.Rooms.DeleteTagAsync(tagId, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Room tag has been deleted").ConfigureAwait(false);
+
+			await client.Rooms.DeleteAsync(room.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Room has been deleted").ConfigureAwait(false);
 		}
 
 		private static async Task CleanUpLocations(RoomLocationType locationType, IZoomClient client, TextWriter log, CancellationToken cancellationToken)

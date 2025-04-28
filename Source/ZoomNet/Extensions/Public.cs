@@ -577,5 +577,31 @@ namespace ZoomNet
 		{
 			return groupsResource.DeleteVirtualBackgroundsAsync(groupId, new[] { fileId }, cancellationToken);
 		}
+
+		/// <summary>
+		/// Assign a tag to a Zoom Room.
+		/// </summary>
+		/// <param name="roomsResource">The rooms ressource.</param>
+		/// <param name="roomId">The unique identifier of the Zoom Room. </param>
+		/// <param name="tagId">The Tag ID to assign to the Zoom Room.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		public static Task AssignTagToRoom(this IRooms roomsResource, string roomId, string tagId, CancellationToken cancellationToken = default)
+		{
+			return roomsResource.AssignTagsToRoom(roomId, new[] { tagId }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Assign multiple tags to Zoom Rooms by location ID.
+		/// </summary>
+		/// <param name="roomsResource">The rooms ressource.</param>
+		/// <param name="locationId">The unique identifier of the location where all Zoom Rooms under this location to be assigned with tags.</param>
+		/// <param name="tagId">The Tag ID to assign to all the Zoom Rooms in the given location.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		public static Task AssignTagToRoomsInLocation(this IRooms roomsResource, string locationId, string tagId, CancellationToken cancellationToken = default)
+		{
+			return roomsResource.AssignTagsToRoomsInLocation(locationId, new[] { tagId }, cancellationToken);
+		}
 	}
 }

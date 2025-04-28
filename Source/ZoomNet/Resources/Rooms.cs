@@ -39,13 +39,13 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<Room> CreateAsync(string name, RoomType type, string parenLocationtId = null, CancellationToken cancellationToken = default)
+		public Task<Room> CreateAsync(string name, RoomType type, string locationtId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
 				{ "name", name },
 				{ "type", type.ToEnumString() },
-				{ "parent_location_id", parenLocationtId }
+				{ "location_id", locationtId }
 			};
 
 			return _client
@@ -241,6 +241,100 @@ namespace ZoomNet.Resources
 			return _client
 				.PatchAsync($"rooms/locations/{locationId}")
 				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<string> CreateTagAsync(string name, string description, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "name", name },
+				{ "description", description }
+			};
+
+			return _client
+				.PostAsync("rooms/tags")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("id");
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateTagAsync(string tagId, string name = null, string description = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "name", name },
+				{ "description", description }
+			};
+
+			return _client
+				.PatchAsync($"rooms/tags/{tagId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task AssignTagsToRoom(string roomId, IEnumerable<string> tagIds, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "tag_ids", tagIds.ToArray() }
+			};
+
+			return _client
+				.PatchAsync($"rooms/{roomId}/tags")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task AssignTagsToRoomsInLocation(string locationId, IEnumerable<string> tagIds, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "tag_ids", tagIds.ToArray() }
+			};
+
+			return _client
+				.PatchAsync($"rooms/locations/{locationId}/tags")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task UnAssignTagFromRoom(string roomId, string tagId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"rooms/{roomId}/tags")
+				.WithArgument("tag_ids", tagId) // The name of the parameter is "tag_ids" (plural) but the value is a single tagId. Documentation sauys: "Currently, only one Tag ID per request is allowed."
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<RoomTag>> GetAllTagsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			Utils.ValidateRecordPerPage(recordsPerPage);
+
+			return _client
+				.GetAsync("rooms/tags")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<RoomTag>("tags");
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteTagAsync(string tagId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"rooms/tags/{tagId}")
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
