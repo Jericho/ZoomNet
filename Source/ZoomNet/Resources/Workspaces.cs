@@ -1,8 +1,8 @@
 using Pathoschild.Http.Client;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
@@ -23,13 +23,11 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<Workspace>> GetAllAsync(string locationId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
-			if (recordsPerPage < 1 || recordsPerPage > 300)
-			{
-				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 300");
-			}
+			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync($"workspaces")
+				.WithArgument("location_id", locationId)
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
