@@ -38,9 +38,13 @@ namespace ZoomNet.Resources
 		/// <param name="name">The name of the room.</param>
 		/// <param name="type">The type of the room.</param>
 		/// <param name="locationId">Location ID of the lowest level location in the location hierarchy where the Zoom Room is to be added. For instance if the structure of the location hierarchy is set up as “country, states, city, campus, building, floor”, a room can only be added under the floor level location.</param>
+		/// <param name="calendarId">The calendar resource's ID.</param>
+		/// <param name="tagIds">The tag IDs that will be associated with the Zoom Room.</param>
+		/// <param name="userId">The user ID of the user assigned to a Personal Zoom Room. Note: this field will only be accepted when the zoom_room_type is PersonalZoomRoom.</param>
+		/// <param name="isProDevice">Indicates whether the Personal Zoom Room will consume a Zoom Rooms license and have access to "Pro" features. Note: this field will only be present for Personal Zoom Rooms.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The new <see cref="Room">Room</see>.</returns>
-		Task<Room> CreateAsync(string name, RoomType type, string locationId = null, CancellationToken cancellationToken = default);
+		Task<Room> CreateAsync(string name, RoomType type, string locationId = null, string calendarId = null, string[] tagIds = null, string userId = null, bool? isProDevice = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Delete a room.
@@ -59,6 +63,14 @@ namespace ZoomNet.Resources
 		/// <returns>The asyc task.</returns>
 		/// <remarks>The Zoom Room can be assigned only to the lowest level location available in the hierarchy.</remarks>
 		Task MoveAsync(string roomId, string locationId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get detailed information on a specific Zoom Room in a Zoom account.
+		/// </summary>
+		/// <param name="roomId">The room unique identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The room profile information.</returns>
+		Task<(RoomBasicProfile Basic, string DeviceProfileId, RoomSetupProfile Setup)> GetProfileAsync(string roomId, CancellationToken cancellationToken = default);
 
 		#endregion
 
@@ -256,6 +268,42 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The async task.</returns>
 		Task DeleteTagAsync(string tagId, CancellationToken cancellationToken = default);
+
+		#endregion
+
+		#region ZOOM ROOM DEVICES
+
+		/// <summary>
+		/// List information about the devices that are being used for a specific Zoom Room in an account.
+		/// </summary>
+		/// <param name="roomId">The room unique identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>An aray of <see cref="RoomDevice"/>.</returns>
+		Task<RoomDevice[]> GetAllDevicesAsync(string roomId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Returns information about a Zoom Room devices.
+		/// </summary>
+		/// <param name="roomId">The Zoom Room's ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns></returns>
+		Task GetDevicesInformationAsync(string roomId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create a new Zoom Room device profile.
+		/// </summary>
+		/// <param name="roomId">The room unique identifier.</param>
+		/// <param name="enableAudioProcessing">Whether to enable audio processing.</param>
+		/// <param name="autoAdjustMicrophoneLevel">Whether to enable microphone level auto adjust.</param>
+		/// <param name="cameraId">The camera's device ID.</param>
+		/// <param name="enableEchoCancellation">Whether to enable echo cancellation.</param>
+		/// <param name="microphoneId">The microphone's device ID.</param>
+		/// <param name="name">The device profile's name.</param>
+		/// <param name="noiseSuppressionType">The noise suppression setting.</param>
+		/// <param name="speakerId">The speaker's device ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task CreateDeviceProfileAsync(string roomId, bool? enableAudioProcessing = null, bool? autoAdjustMicrophoneLevel = null, string cameraId = null, bool? enableEchoCancellation = null, string microphoneId = null, string name = null, RoomDeviceNoiseSuppressionType? noiseSuppressionType = null, string speakerId = null, CancellationToken cancellationToken = default);
 
 		#endregion
 	}

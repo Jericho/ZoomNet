@@ -38,6 +38,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				});
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
 
+			// Clean up rooms before locations is important because Zoom won't let you delete a location if there are rooms assigned to it.
 			cleanUpTasks = paginatedRooms.Records
 				.Where(r => r.Name.StartsWith("ZoomNet Integration Testing:", StringComparison.OrdinalIgnoreCase))
 				.Select(async oldRoom =>
@@ -137,11 +138,20 @@ namespace ZoomNet.IntegrationTests.Tests
 			var profile = await client.Rooms.GetLocationProfileAsync(buildingA.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Profile for a location has been retrieved").ConfigureAwait(false);
 
-			var room = await client.Rooms.CreateAsync("ZoomNet Integration Testing: Room", RoomType.Room, floorA1.Id, cancellationToken).ConfigureAwait(false);
+			var room = await client.Rooms.CreateAsync("ZoomNet Integration Testing: Room", RoomType.Room, floorA1.Id, cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("A new room was created").ConfigureAwait(false);
 
 			await client.Rooms.MoveAsync(room.Id, floorB1.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Room has been moved to a different location").ConfigureAwait(false);
+
+			var devices = await client.Rooms.GetAllDevicesAsync(room.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {devices.Length} devices in the room").ConfigureAwait(false);
+
+			await client.Rooms.GetDevicesInformationAsync(room.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Retrieved devices information").ConfigureAwait(false);
+
+			await client.Rooms.CreateDeviceProfileAsync(room.Id, true, cancellationToken: cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("A new device profile was created").ConfigureAwait(false);
 
 			//await client.Rooms.UpdateAsync(room.Id, "ZoomNet Integration Testing: UPDATED Room", floorA2.Id, cancellationToken).ConfigureAwait(false);
 			//await log.WriteLineAsync("Room was updated").ConfigureAwait(false);

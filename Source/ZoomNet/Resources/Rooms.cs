@@ -41,13 +41,17 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<Room> CreateAsync(string name, RoomType type, string locationId = null, CancellationToken cancellationToken = default)
+		public Task<Room> CreateAsync(string name, RoomType type, string locationId = null, string calendarId = null, string[] tagIds = null, string userId = null, bool? isProDevice = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
 				{ "name", name },
 				{ "type", type.ToEnumString() },
-				{ "location_id", locationId }
+				{ "location_id", locationId },
+				{ "calendar_resource_id", calendarId },
+				{ "tag_ids", tagIds?.ToArray() },
+				{ "user_id", userId },
+				{ "pro_device", isProDevice }
 			};
 
 			return _client
@@ -78,7 +82,24 @@ namespace ZoomNet.Resources
 				.PutAsync($"rooms/{roomId}/location")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
-				.AsObject<Room>();
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public async Task<(RoomBasicProfile Basic, string DeviceProfileId, RoomSetupProfile Setup)> GetProfileAsync(string roomId, bool regenerateActivationCode = false, CancellationToken cancellationToken = default)
+		{
+			var response = await _client
+				.GetAsync($"rooms/{roomId}")
+				.WithArgument("regenerate_activation_code", regenerateActivationCode)
+				.WithCancellationToken(cancellationToken)
+				.AsJson()
+				.ConfigureAwait(false);
+
+			var basicProfile = response.GetProperty("basic", true)?.ToObject<RoomBasicProfile>();
+			var deviceProfileId = response.GetPropertyValue<string>("device/device_profile_id", null);
+			var setupProfile = response.GetProperty("setup", true)?.ToObject<RoomSetupProfile>();
+
+			return (basicProfile, deviceProfileId, setupProfile);
 		}
 
 		#endregion
@@ -227,9 +248,9 @@ namespace ZoomNet.Resources
 				.ConfigureAwait(false);
 
 			var basicProfile = response.GetProperty("basic", true)?.ToObject<RoomLocationBasicProfile>();
-			var setupProfiule = response.GetProperty("setup", true)?.ToObject<RoomLocationSetupProfile>();
+			var setupProfile = response.GetProperty("setup", true)?.ToObject<RoomLocationSetupProfile>();
 
-			return (basicProfile, setupProfiule);
+			return (basicProfile, setupProfile);
 		}
 
 		/// <inheritdoc/>
@@ -363,6 +384,54 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
+
+		#endregion
+
+		#region ZOOM ROOM DEVICES
+
+		/// <inheritdoc/>
+		public Task<RoomDevice[]> GetAllDevicesAsync(string roomId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/{roomId}/devices")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<RoomDevice[]>("devices");
+		}
+
+		/// <inheritdoc/>
+		public Task GetDevicesInformationAsync(string roomId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/{roomId}/device_profiles/devices")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task CreateDeviceProfileAsync(string roomId, bool? enableAudioProcessing = null, bool? autoAdjustMicrophoneLevel = null, string cameraId = null, bool? enableEchoCancellation = null, string microphoneId = null, string name = null, RoomDeviceNoiseSuppressionType? noiseSuppressionType = null, string speakerId = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "audio_processing", enableAudioProcessing },
+				{ "auto_adjust_mic_level", autoAdjustMicrophoneLevel },
+				{ "camera_id", cameraId },
+				{ "echo_cancellation", enableEchoCancellation },
+				{ "microphone_id", microphoneId },
+				{ "name", name },
+				{ "noise_suppression", noiseSuppressionType?.ToEnumString() },
+				{ "speaker_id", speakerId }
+			};
+
+			return _client
+				.PostAsync($"rooms/{roomId}/device_profiles")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		//Task ChangeAppVersionAsync(CancellationToken cancellationToken = default);
+
+		//Task DeleteDeviceAsync(CancellationToken cancellationToken = default);
 
 		#endregion
 	}
