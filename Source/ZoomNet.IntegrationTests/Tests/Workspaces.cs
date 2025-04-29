@@ -1,4 +1,5 @@
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -13,9 +14,18 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			await log.WriteLineAsync("\n***** WORKSPACES *****\n").ConfigureAwait(false);
 
+			var paginatedLocations = await client.Rooms.GetAllLocationsAsync(cancellationToken: cancellationToken).ConfigureAwait(false);
+			if (paginatedLocations.TotalRecords == 0)
+			{
+				await log.WriteLineAsync("No locations found. Skipping workspaces test.").ConfigureAwait(false);
+				return;
+			}
+
+			var location = paginatedLocations.Records.First();
+
 			// GET ALL THE WORKSPACES
-			var paginatedWorkspaces = await client.Workspaces.GetAllAsync(locationId, 30, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"There are {paginatedWorkspaces.TotalRecords} workspaces for location {locationId}").ConfigureAwait(false);
+			var paginatedWorkspaces = await client.Workspaces.GetAllAsync(location.Id, 30, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {paginatedWorkspaces.TotalRecords} workspaces for location {location.Id}").ConfigureAwait(false);
 
 			//// CLEANUP PREVIOUS INTEGRATION TESTS THAT MIGHT HAVE BEEN INTERRUPTED BEFORE THEY HAD TIME TO CLEANUP AFTER THEMSELVES
 			//var cleanUpTasks = paginatedWebinars.Records
