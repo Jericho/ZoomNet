@@ -21,23 +21,14 @@ namespace ZoomNet.IntegrationTests.Tests
 				return;
 			}
 
-			var location = paginatedLocations.Records.First();
+			var location = paginatedLocations.Records.First(l => l.Type == RoomLocationType.Floor);
+
+			var workspaceId = await client.Workspaces.CreateAsync("ZoomNet Integration Testing 1", WorkspaceType.Desk, location.Id, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Workspace {workspaceId} created").ConfigureAwait(false);
 
 			// GET ALL THE WORKSPACES
 			var paginatedWorkspaces = await client.Workspaces.GetAllAsync(location.Id, 30, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {paginatedWorkspaces.TotalRecords} workspaces for location {location.Id}").ConfigureAwait(false);
-
-			//// CLEANUP PREVIOUS INTEGRATION TESTS THAT MIGHT HAVE BEEN INTERRUPTED BEFORE THEY HAD TIME TO CLEANUP AFTER THEMSELVES
-			//var cleanUpTasks = paginatedWebinars.Records
-			//	.Union(paginatedWebinars.Records)
-			//	.Where(m => m.Topic.StartsWith("ZoomNet Integration Testing:"))
-			//	.Select(async oldWebinar =>
-			//	{
-			//		await client.Webinars.DeleteAsync(oldWebinar.Id, null, false, cancellationToken).ConfigureAwait(false);
-			//		await log.WriteLineAsync($"Webinar {oldWebinar.Id} deleted").ConfigureAwait(false);
-			//		await Task.Delay(250, cancellationToken).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
-			//	});
-			//await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
 		}
 	}
 }
