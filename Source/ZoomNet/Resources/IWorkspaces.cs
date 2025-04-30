@@ -23,5 +23,16 @@ namespace ZoomNet.Resources
 		/// An array of <see cref="Workspace">workspaces</see>.
 		/// </returns>
 		Task<PaginatedResponseWithToken<Workspace>> GetAllAsync(string locationId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create a new workspace.
+		/// </summary>
+		/// <param name="name">The workspace's name.</param>
+		/// <param name="type">The type of workspace</param>
+		/// <param name="locationId">Location ID of the lowest level location in the location hierarchy where the workspace is to be added. For instance if the structure of the location hierarchy is set up as “country, states, city, campus, building, floor”, a workspace can only be added under the floor level location.</param>
+		/// <param name="calendarId">The calendar resource's ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The unique identifier of the newly create workspace.</returns>
+		Task<string> CreateAsync(string name, WorkspaceType type = WorkspaceType.Desk, string locationId = null, string calendarId = null, CancellationToken cancellationToken = default);
 	}
 }
