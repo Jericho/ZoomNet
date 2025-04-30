@@ -25,7 +25,7 @@ namespace ZoomNet.Models
 		/// The value of parent_location_id of the top-level location (country) is the Account ID of the Zoom account.
 		/// </summary>
 		[JsonPropertyName("parent_location_id")]
-		public string ParentId { get; set; }
+		public string LocationId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the type.
