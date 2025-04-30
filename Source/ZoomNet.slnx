@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="../README.md" />
+  </Folder>
+  <Project Path="ZoomNet.IntegrationTests/ZoomNet.IntegrationTests.csproj" />
+  <Project Path="ZoomNet.UnitTests/ZoomNet.UnitTests.csproj" />
+  <Project Path="ZoomNet/ZoomNet.csproj" />
+</Solution>
