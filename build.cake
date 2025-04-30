@@ -44,7 +44,7 @@ var codeCoverageDir = $"{outputDir}CodeCoverage/";
 var benchmarkDir = $"{outputDir}Benchmark/";
 var coverageFile = $"{codeCoverageDir}coverage.xml";
 
-var solutionFile = $"{sourceFolder}{gitHubRepoName}.sln";
+var solutionFile = $"{sourceFolder}{gitHubRepoName}.slnx";
 var sourceProject = $"{sourceFolder}{gitHubRepoName}/{gitHubRepoName}.csproj";
 var integrationTestsProject = $"{sourceFolder}{gitHubRepoName}.IntegrationTests/{gitHubRepoName}.IntegrationTests.csproj";
 var unitTestsProject = $"{sourceFolder}{gitHubRepoName}.UnitTests/{gitHubRepoName}.UnitTests.csproj";
