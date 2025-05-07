@@ -91,9 +91,13 @@ var removeBenchmarks = isBenchmarkProjectPresent && !isLocalBuild;
 
 var publishingError = false;
 
+// A single framework is sufficient when calculating code coverage.
+const string DESIRED_FRAMEWORK_FOR_CODE_COVERAGE = "net9.0";
+
 // The terminal logger introduced but turned off by default in .NET8 and turned on by default in .NET9
 // doesn't work right on Linux and causes a lot of noise in the build log on Ubuntu in AppVeyor.
-// As of March 2025, the terminal logger doesn't seem to work right in AppVeyor, no matter the OS.
+// As of March 2025, the terminal logger doesn't seem to work right on Windows in AppVeyor either.
+// Therefore I am enabling it when building on my machine but turning it off in any other environment.
 var terminalLogger = (isLocalBuild && IsRunningOnWindows()) ? "on" : "off";
 
 
@@ -271,9 +275,6 @@ Task("Run-Code-Coverage")
 	.IsDependentOn("Build")
 	.Does(() =>
 {
-	// A single framework is sufficient when calculating code coverage.
-	const string DESIRED_FRAMEWORK_FOR_CODE_COVERAGE = "net9.0";
-
 	var testSettings = new DotNetTestSettings
 	{
 		NoBuild = true,
