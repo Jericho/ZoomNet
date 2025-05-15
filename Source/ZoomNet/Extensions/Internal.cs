@@ -211,7 +211,7 @@ namespace ZoomNet
 		/// </example>
 		internal static Encoding GetEncoding(this HttpContent content, Encoding fallbackEncoding)
 		{
-			var encoding = fallbackEncoding ?? Encoding.UTF8;
+			Encoding encoding = null;
 			try
 			{
 				var charset = content?.Headers?.ContentType?.CharSet;
@@ -225,7 +225,7 @@ namespace ZoomNet
 				// Ignore exceptions caused by invalid charset in the response
 			}
 
-			return encoding;
+			return encoding ?? fallbackEncoding ?? Encoding.UTF8;
 		}
 
 		/// <summary>
