@@ -19,7 +19,8 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Number has been assigned to a user, call queue, auto-receptionist, or common area.
 		/// </summary>
-		assigned,
+		[EnumMember(Value = "assigned")]
+		Assigned,
 
 		/// <summary>
 		/// Number is not assigned to anyone.
