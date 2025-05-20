@@ -11,7 +11,6 @@ namespace ZoomNet.Models
 	/// <item><term>tollfree</term><description>Toll-free number.</description></item>
 	/// </list>
 	/// </remarks>
-	[JsonConverter(typeof(JsonStringEnumConverter))]
 	public enum PhoneDetailNumberType
 	{
 		/// <summary>

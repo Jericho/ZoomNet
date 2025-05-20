@@ -37,7 +37,6 @@ namespace ZoomNet.Models
 		/// </summary>
 		[EnumMember(Value = "companyLocation")]
 		CompanyLocation,
-		
 		/// <summary>
 		/// meetingService.
 		/// </summary>

@@ -13,7 +13,6 @@ namespace ZoomNet.Models
 	/// <item><term>byoc</term><description>Include Bring Your Own Carrier (BYOC) numbers only in the response.</description></item>
 	/// </list>
 	/// </remarks>
-	[JsonConverter(typeof(JsonStringEnumConverter))]
 	public enum PhoneDetailAssignmentType
 	{
 		/// <summary>
