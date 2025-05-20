@@ -36,6 +36,7 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Include Bring Your Own Carrier (BYOC) numbers only in the response.
 		/// </summary>
-		byoc
+		[EnumMember(Value = "byoc")]
+		BringYourOwnCarrier,
 	}
 }

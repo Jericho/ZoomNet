@@ -12,21 +12,25 @@ namespace ZoomNet.Models
 		/// </summary>
 		[EnumMember(Value = "user")]
 		User,
+		
 		/// <summary>
 		/// callQueue.
 		/// </summary>
 		[EnumMember(Value = "callQueue")]
 		CallQueue,
+		
 		/// <summary>
 		/// autoReceptionist.
 		/// </summary>
 		[EnumMember(Value = "autoReceptionist")]
 		AutoReceptionist,
+		
 		/// <summary>
 		/// commonArea.
 		/// </summary>
 		[EnumMember(Value = "commonArea")]
 		CommonArea,
+		
 		/// <summary>
 		/// emergencyNumberPool.
 		/// </summary>
