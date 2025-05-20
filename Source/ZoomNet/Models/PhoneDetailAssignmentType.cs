@@ -31,7 +31,8 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Include both assigned and unassigned numbers in the response.
 		/// </summary>
-		all,
+		[EnumMember(Value = "all")]
+		All,
 
 		/// <summary>
 		/// Include Bring Your Own Carrier (BYOC) numbers only in the response.
