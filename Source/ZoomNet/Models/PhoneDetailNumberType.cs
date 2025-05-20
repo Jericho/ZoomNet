@@ -17,7 +17,8 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Toll number.
 		/// </summary>
-		toll,
+		[EnumMember(Value = "toll")]
+		Toll,
 
 		/// <summary>
 		/// Toll-free number.
