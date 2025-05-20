@@ -116,6 +116,7 @@ namespace ZoomNet.Resources
 			bool? pendingNumbers = null,
 			string keyword = null,
 			CancellationToken cancellationToken = default);
+			
 		/// <summary>
 		/// Updates a Zoom Phone's call handling setting.
 		/// Call handling settings allow you to control how your system routes calls during business, closed, or holiday hours.
