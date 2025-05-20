@@ -12,6 +12,7 @@ namespace ZoomNet.Models
 		/// </summary>
 		[EnumMember(Value = "user")]
 		User,
+		
 		/// <summary>
 		/// callQueue.
 		/// </summary>
