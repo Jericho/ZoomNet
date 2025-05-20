@@ -18,6 +18,7 @@ namespace ZoomNet.Models
 		/// </summary>
 		[EnumMember(Value = "callQueue")]
 		CallQueue,
+		
 		/// <summary>
 		/// autoReceptionist.
 		/// </summary>
