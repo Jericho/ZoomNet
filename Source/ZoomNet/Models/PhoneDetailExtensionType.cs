@@ -30,6 +30,7 @@ namespace ZoomNet.Models
 		/// </summary>
 		[EnumMember(Value = "commonArea")]
 		CommonArea,
+		
 		/// <summary>
 		/// emergencyNumberPool.
 		/// </summary>
