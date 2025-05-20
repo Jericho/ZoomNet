@@ -25,7 +25,8 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Number is not assigned to anyone.
 		/// </summary>
-		unassigned,
+		[EnumMember(Value = "unassigned")]
+		Unassigned,
 
 		/// <summary>
 		/// Include both assigned and unassigned numbers in the response.
