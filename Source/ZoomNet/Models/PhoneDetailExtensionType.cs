@@ -24,6 +24,7 @@ namespace ZoomNet.Models
 		/// </summary>
 		[EnumMember(Value = "autoReceptionist")]
 		AutoReceptionist,
+		
 		/// <summary>
 		/// commonArea.
 		/// </summary>
