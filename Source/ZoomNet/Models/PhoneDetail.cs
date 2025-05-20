@@ -51,38 +51,4 @@ namespace ZoomNet.Models
 		[JsonPropertyName("status")]
 		public string Status { get; set; }
 	}
-
-	public class PhoneDetailAssignee
-	{
-		[JsonPropertyName("extension_number")]
-		public long? ExtensionNumber { get; set; }
-
-		[JsonPropertyName("id")]
-		public string Id { get; set; }
-
-		[JsonPropertyName("name")]
-		public string Name { get; set; }
-
-		[JsonPropertyName("type")]
-		public string Type { get; set; }
-	}
-
-	public class PhoneDetailCarrier
-	{
-		[JsonPropertyName("code")]
-		public int? Code { get; set; }
-
-		[JsonPropertyName("name")]
-		public string Name { get; set; }
-	}
-
-	public class PhoneDetailSipGroup
-	{
-		[JsonPropertyName("display_name")]
-		public string DisplayName { get; set; }
-
-		[JsonPropertyName("id")]
-		public string Id { get; set; }
-	}
-
 }
