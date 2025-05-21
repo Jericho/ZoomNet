@@ -1,4 +1,4 @@
-using System.Text.Json.Serialization;
+using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -13,27 +13,30 @@ namespace ZoomNet.Models
 	/// <item><term>byoc</term><description>Include Bring Your Own Carrier (BYOC) numbers only in the response.</description></item>
 	/// </list>
 	/// </remarks>
-	[JsonConverter(typeof(JsonStringEnumConverter))]
 	public enum PhoneNumberAssignmentType
 	{
 		/// <summary>
 		/// Number has been assigned to a user, call queue, auto-receptionist, or common area.
 		/// </summary>
-		assigned,
+		[EnumMember(Value = "assigned")]
+		Assigned,
 
 		/// <summary>
 		/// Number is not assigned to anyone.
 		/// </summary>
-		unassigned,
+		[EnumMember(Value = "unassigned")]
+		Unassigned,
 
 		/// <summary>
 		/// Include both assigned and unassigned numbers in the response.
 		/// </summary>
-		all,
+		[EnumMember(Value = "all")]
+		All,
 
 		/// <summary>
 		/// Include Bring Your Own Carrier (BYOC) numbers only in the response.
 		/// </summary>
-		byoc
+		[EnumMember(Value = "byoc")]
+		BringYourOwnCarrier
 	}
 }

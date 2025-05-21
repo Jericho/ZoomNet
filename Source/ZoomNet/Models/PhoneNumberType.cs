@@ -1,3 +1,4 @@
+using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
@@ -17,11 +18,13 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Toll number.
 		/// </summary>
-		toll,
+		[EnumMember(Value = "toll")]
+		Toll,
 
 		/// <summary>
 		/// Toll-free number.
 		/// </summary>
-		tollfree
+		[EnumMember(Value = "tollfree")]
+		TollFree
 	}
 }
