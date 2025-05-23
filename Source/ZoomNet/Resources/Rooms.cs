@@ -401,6 +401,10 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task GetDevicesInformationAsync(string roomId, CancellationToken cancellationToken = default)
 		{
+			/*
+				NOTE TO SELF: I haven't been able to test this functionality. The response to this endpoint is always empty.
+			*/
+
 			return _client
 				.GetAsync($"rooms/{roomId}/device_profiles/devices")
 				.WithCancellationToken(cancellationToken)
@@ -421,6 +425,11 @@ namespace ZoomNet.Resources
 				{ "noise_suppression", noiseSuppressionType?.ToEnumString() },
 				{ "speaker_id", speakerId }
 			};
+
+			/*
+				NOTE TO SELF: I haven't been able to test this functionality because I get the following error message:
+				"Unable to create device profile because there is no microphone/speaker/camera available in the following Zoom Room: aDLGFI6hRvaXkISCUXzUOA."
+			*/
 
 			return _client
 				.PostAsync($"rooms/{roomId}/device_profiles")

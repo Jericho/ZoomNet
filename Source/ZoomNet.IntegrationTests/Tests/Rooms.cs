@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -39,6 +40,8 @@ namespace ZoomNet.IntegrationTests.Tests
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
 
 			// Clean up rooms before locations is important because Zoom won't let you delete a location if there are rooms assigned to it.
+			// To make matters worse, the error message returned from the API when you attempt to delete a location with a room assigned to
+			// it is "Access restricted" which is not helpful and, in my opinion, misleading.
 			cleanUpTasks = paginatedRooms.Records
 				.Where(r => r.Name.StartsWith("ZoomNet Integration Testing:", StringComparison.OrdinalIgnoreCase))
 				.Select(async oldRoom =>
@@ -49,13 +52,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				});
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
 
-			// Order is important: you must delete floors before buildings, buildings before campuses, campuses before cities, and so on.
-			if (currentStructure.Any(l => l == RoomLocationType.Floor)) await CleanUpLocations(RoomLocationType.Floor, client, log, cancellationToken).ConfigureAwait(false);
-			if (currentStructure.Any(l => l == RoomLocationType.Building)) await CleanUpLocations(RoomLocationType.Building, client, log, cancellationToken).ConfigureAwait(false);
-			if (currentStructure.Any(l => l == RoomLocationType.Campus)) await CleanUpLocations(RoomLocationType.Campus, client, log, cancellationToken).ConfigureAwait(false);
-			if (currentStructure.Any(l => l == RoomLocationType.City)) await CleanUpLocations(RoomLocationType.City, client, log, cancellationToken).ConfigureAwait(false);
-			if (currentStructure.Any(l => l == RoomLocationType.State)) await CleanUpLocations(RoomLocationType.State, client, log, cancellationToken).ConfigureAwait(false);
-			if (currentStructure.Any(l => l == RoomLocationType.Country)) await CleanUpLocations(RoomLocationType.Country, client, log, cancellationToken).ConfigureAwait(false);
+			await CleanUpAllLocations(client, log, cancellationToken).ConfigureAwait(false);
 
 			// CREATE A LOCATION HIERARCHY
 			var desiredStructure = currentStructure
@@ -147,17 +144,19 @@ namespace ZoomNet.IntegrationTests.Tests
 			var devices = await client.Rooms.GetAllDevicesAsync(room.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {devices.Length} devices in the room").ConfigureAwait(false);
 
+			/*
 			await client.Rooms.GetDevicesInformationAsync(room.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Retrieved devices information").ConfigureAwait(false);
 
 			await client.Rooms.CreateDeviceProfileAsync(room.Id, true, cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("A new device profile was created").ConfigureAwait(false);
-
-			//await client.Rooms.UpdateAsync(room.Id, "ZoomNet Integration Testing: UPDATED Room", floorA2.Id, cancellationToken).ConfigureAwait(false);
-			//await log.WriteLineAsync("Room was updated").ConfigureAwait(false);
+			*/
 
 			await client.Rooms.AssignTagToRoom(room.Id, tagId, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Room tag has been assigned").ConfigureAwait(false);
+
+			paginatedTags = await client.Rooms.GetAllTagsAsync(100, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Tag {tagId} is assigned to {paginatedTags.Records.Single(t => t.Id == tagId).NumberOfRooms} room(s)").ConfigureAwait(false);
 
 			await client.Rooms.UnAssignTagFromRoom(room.Id, tagId, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Room tag has been removed from room").ConfigureAwait(false);
@@ -167,15 +166,31 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			await client.Rooms.DeleteAsync(room.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Room has been deleted").ConfigureAwait(false);
+
+			await CleanUpAllLocations(client, log, cancellationToken).ConfigureAwait(false);
 		}
 
-		private static async Task CleanUpLocations(RoomLocationType locationType, IZoomClient client, TextWriter log, CancellationToken cancellationToken)
+		private static async Task CleanUpAllLocations(IZoomClient client, TextWriter log, CancellationToken cancellationToken)
 		{
-			var paginatedLocations = await client.Rooms.GetAllLocationsAsync(null, locationType, 100, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"There are {paginatedLocations.TotalRecords} locations of type '{locationType.ToEnumString()}'").ConfigureAwait(false);
+			var paginatedLocations = await client.Rooms.GetAllLocationsAsync(null, null, 100, null, cancellationToken).ConfigureAwait(false);
 
-			var cleanUpTasks = paginatedLocations.Records
+			var locationsToBeDeleted = paginatedLocations.Records
 				.Where(l => l.Name.StartsWith("ZoomNet Integration Testing:", StringComparison.OrdinalIgnoreCase))
+				.ToArray();
+			await log.WriteLineAsync($"There are {locationsToBeDeleted.Length} locations to be deleted").ConfigureAwait(false);
+
+			// Order is important: floors must be deleted before buildings, buildings before campuses, campuses before cities, and so on.
+			await CleanUpLocations(locationsToBeDeleted.Where(l => l.Type == RoomLocationType.Floor), client, log, cancellationToken).ConfigureAwait(false);
+			await CleanUpLocations(locationsToBeDeleted.Where(l => l.Type == RoomLocationType.Building), client, log, cancellationToken).ConfigureAwait(false);
+			await CleanUpLocations(locationsToBeDeleted.Where(l => l.Type == RoomLocationType.Campus), client, log, cancellationToken).ConfigureAwait(false);
+			await CleanUpLocations(locationsToBeDeleted.Where(l => l.Type == RoomLocationType.City), client, log, cancellationToken).ConfigureAwait(false);
+			await CleanUpLocations(locationsToBeDeleted.Where(l => l.Type == RoomLocationType.State), client, log, cancellationToken).ConfigureAwait(false);
+			await CleanUpLocations(locationsToBeDeleted.Where(l => l.Type == RoomLocationType.Country), client, log, cancellationToken).ConfigureAwait(false);
+		}
+
+		private static async Task CleanUpLocations(IEnumerable<RoomLocation> locations, IZoomClient client, TextWriter log, CancellationToken cancellationToken)
+		{
+			var cleanUpTasks = locations
 				.Select(async oldLocation =>
 				{
 					await client.Rooms.DeleteLocationAsync(oldLocation.Id, cancellationToken).ConfigureAwait(false);
