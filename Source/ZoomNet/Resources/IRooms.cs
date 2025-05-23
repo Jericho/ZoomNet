@@ -68,9 +68,10 @@ namespace ZoomNet.Resources
 		/// Get detailed information on a specific Zoom Room in a Zoom account.
 		/// </summary>
 		/// <param name="roomId">The room unique identifier.</param>
+		/// <param name="regenerateActivationCode">Whether to regenerate an activation code for a Zoom Room. Default is false.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The room profile information.</returns>
-		Task<(RoomBasicProfile Basic, string DeviceProfileId, RoomSetupProfile Setup)> GetProfileAsync(string roomId, CancellationToken cancellationToken = default);
+		Task<(RoomBasicProfile Basic, string DeviceProfileId, RoomSetupProfile Setup)> GetProfileAsync(string roomId, bool regenerateActivationCode = false, CancellationToken cancellationToken = default);
 
 		#endregion
 
