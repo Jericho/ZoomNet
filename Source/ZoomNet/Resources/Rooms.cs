@@ -37,7 +37,7 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<Room>("locations");
+				.AsPaginatedResponseWithToken<Room>("rooms");
 		}
 
 		/// <inheritdoc/>
