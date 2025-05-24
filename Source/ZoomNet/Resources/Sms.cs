@@ -37,5 +37,15 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<SmsMessage>("sms_histories");
 		}
+
+		/// <inheritdoc/>
+		public Task<SmsMessage> GetSmsByMessageIdAsync(
+			string sessionId, string messageId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"phone/sms/sessions/{sessionId}/messages/{messageId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<SmsMessage>();
+		}
 	}
 }
