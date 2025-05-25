@@ -14,7 +14,7 @@ namespace ZoomNet.Models
 		public string AppVersion { get; set; }
 
 		/// <summary>
-		/// Gets or sets the operating system of the device..
+		/// Gets or sets the operating system of the device.
 		/// </summary>
 		[JsonPropertyName("device_system")]
 		public string OperatingSystem { get; set; }

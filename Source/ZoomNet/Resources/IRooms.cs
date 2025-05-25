@@ -306,6 +306,24 @@ namespace ZoomNet.Resources
 		/// <returns>The async task.</returns>
 		Task CreateDeviceProfileAsync(string roomId, bool? enableAudioProcessing = null, bool? autoAdjustMicrophoneLevel = null, string cameraId = null, bool? enableEchoCancellation = null, string microphoneId = null, string name = null, RoomDeviceNoiseSuppressionType? noiseSuppressionType = null, string speakerId = null, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Delete a Zoom Room device profile.
+		/// </summary>
+		/// <param name="roomId">The Zoom Room's ID.</param>
+		/// <param name="deviceProfileId">The Zoom Room device profile's ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task DeleteDeviceProfileAsync(string roomId, string deviceProfileId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Returns information about a Zoom Room devices.
+		/// </summary>
+		/// <param name="roomId">The Zoom Room's ID.</param>
+		/// <param name="deviceProfileId">The Zoom Room device profile's ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The device profile.</returns>
+		Task<RoomDeviceProfile> GetDeviceProfileAsync(string roomId, string deviceProfileId, CancellationToken cancellationToken = default);
+
 		#endregion
 	}
 }

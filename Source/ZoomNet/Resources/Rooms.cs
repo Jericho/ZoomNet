@@ -438,6 +438,24 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
+		/// <inheritdoc/>
+		public Task DeleteDeviceProfileAsync(string roomId, string deviceProfileId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"rooms/{roomId}/device_profiles/{deviceProfileId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<RoomDeviceProfile> GetDeviceProfileAsync(string roomId, string deviceProfileId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/{roomId}/device_profiles/{deviceProfileId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<RoomDeviceProfile>();
+		}
+
 		//Task ChangeAppVersionAsync(CancellationToken cancellationToken = default);
 
 		//Task DeleteDeviceAsync(CancellationToken cancellationToken = default);
