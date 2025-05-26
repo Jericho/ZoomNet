@@ -102,6 +102,138 @@ namespace ZoomNet.Resources
 			return (basicProfile, deviceProfileId, setupProfile);
 		}
 
+		/// <inheritdoc/>
+		public Task DisplayEmergencyContentToAccountsAsync(string content, IEnumerable<string> accountIds, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "method", "zoomroom.emergency_alert_displayed" },
+				{ "params", new JsonObject
+					{
+						{ "content", content },
+						{ "target_ids", accountIds.ToArray() },
+						{ "target_type", "account" }
+					}
+				}
+			};
+
+			return _client
+				.PatchAsync($"rooms/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DisplayEmergencyContentToLocationsAsync(string content, IEnumerable<string> locationIds, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "method", "zoomroom.emergency_alert_displayed" },
+				{ "params", new JsonObject
+					{
+						{ "content", content },
+						{ "target_ids", locationIds.ToArray() },
+						{ "target_type", "location" }
+					}
+				}
+			};
+
+			return _client
+				.PatchAsync($"rooms/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DisplayEmergencyContentToRoomsAsync(string content, IEnumerable<string> roomIds, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "method", "zoomroom.emergency_alert_displayed" },
+				{ "params", new JsonObject
+					{
+						{ "content", content },
+						{ "target_ids", roomIds.ToArray() },
+						{ "target_type", "room" }
+					}
+				}
+			};
+
+			return _client
+				.PatchAsync($"rooms/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task RemoveEmergencyContentFromAccountsAsync(IEnumerable<string> accountIds, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "method", "zoomroom.emergency_alert_removed" },
+				{ "params", new JsonObject
+					{
+						{ "target_ids", accountIds.ToArray() },
+						{ "target_type", "account" },
+						{ "force_remove", true }
+					}
+				}
+			};
+
+			return _client
+				.PatchAsync($"rooms/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task RemoveEmergencyContentFromLocationsAsync(IEnumerable<string> locationIds, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "method", "zoomroom.emergency_alert_removed" },
+				{ "params", new JsonObject
+					{
+						{ "target_ids", locationIds.ToArray() },
+						{ "target_type", "location" },
+						{ "force_remove", true }
+					}
+				}
+			};
+
+			return _client
+				.PatchAsync($"rooms/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task RemoveEmergencyContentFromRoomsAsync(IEnumerable<string> roomIds, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "method", "zoomroom.emergency_alert_removed" },
+				{ "params", new JsonObject
+					{
+						{ "target_ids", roomIds.ToArray() },
+						{ "target_type", "room" },
+						{ "force_remove", true }
+					}
+				}
+			};
+
+			return _client
+				.PatchAsync($"rooms/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
 		#endregion
 
 		#region ZOOM LOCATIONS

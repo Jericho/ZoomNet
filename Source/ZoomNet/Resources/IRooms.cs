@@ -73,6 +73,57 @@ namespace ZoomNet.Resources
 		/// <returns>The room profile information.</returns>
 		Task<(RoomBasicProfile Basic, string DeviceProfileId, RoomSetupProfile Setup)> GetProfileAsync(string roomId, bool regenerateActivationCode = false, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Displays the specified emergency content on all Zoom Rooms' displays in the accounts.
+		/// </summary>
+		/// <param name="content">The emergency content to be displayed.</param>
+		/// <param name="accountIds">An enumeration of account identifiers.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task DisplayEmergencyContentToAccountsAsync(string content, IEnumerable<string> accountIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Displays the specified emergency content on all Zoom Rooms' displays in the specified locations.
+		/// </summary>
+		/// <param name="content">The emergency content to be displayed.</param>
+		/// <param name="locationIds">An enumeration of location identifiers.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task DisplayEmergencyContentToLocationsAsync(string content, IEnumerable<string> locationIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Displays the specified emergency content on the Zoom Rooms digital signage display.
+		/// </summary>
+		/// <param name="content">The emergency content to be displayed.</param>
+		/// <param name="roomIds">An enumeration of Zoom room identifiers.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task DisplayEmergencyContentToRoomsAsync(string content, IEnumerable<string> roomIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Remove the specified emergency content from all Zoom Rooms' displays in the accounts.
+		/// </summary>
+		/// <param name="accountIds">An enumeration of account identifiers.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task RemoveEmergencyContentFromAccountsAsync(IEnumerable<string> accountIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Remove the specified emergency content from all Zoom Rooms' displays in the specified locations.
+		/// </summary>
+		/// <param name="locationIds">An enumeration of location identifiers.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task RemoveEmergencyContentFromLocationsAsync(IEnumerable<string> locationIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Remove the specified emergency content from the Zoom Rooms digital signage display.
+		/// </summary>
+		/// <param name="roomIds">An enumeration of Zoom room identifiers.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task RemoveEmergencyContentFromRoomsAsync(IEnumerable<string> roomIds, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region ZOOM ROOM LOCATIONS
