@@ -375,6 +375,42 @@ namespace ZoomNet.Resources
 		/// <returns>The device profile.</returns>
 		Task<RoomDeviceProfile> GetDeviceProfileAsync(string roomId, string deviceProfileId, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Upgrade the version of your installed Zoom Rooms app on your Mac or Windows device.
+		/// </summary>
+		/// <param name="roomId">Unique Identifier of the Zoom Room.</param>
+		/// <param name="deviceId">Unique Identifier of the Mac or the Windows device.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task UpgradeAppVersionAsync(string roomId, string deviceId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Downgrade the version of your installed Zoom Rooms app on your Mac or Windows device.
+		/// </summary>
+		/// <param name="roomId">Unique Identifier of the Zoom Room.</param>
+		/// <param name="deviceId">Unique Identifier of the Mac or the Windows device.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task DowngradeAppVersionAsync(string roomId, string deviceId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Cancel an ongoing upgrade or downgrade processof the version of your installed Zoom Rooms app on your Mac or Windows device.
+		/// </summary>
+		/// <param name="roomId">Unique Identifier of the Zoom Room.</param>
+		/// <param name="deviceId">Unique Identifier of the Mac or the Windows device.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task CancelAppVersionChangeAsync(string roomId, string deviceId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a Zoom Room device.
+		/// </summary>
+		/// <param name="roomId">Unique Identifier of the Zoom Room.</param>
+		/// <param name="deviceId">Unique Identifier of the Mac or the Windows device.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task DeleteDeviceAsync(string roomId, string deviceId, CancellationToken cancellationToken = default);
+
 		#endregion
 	}
 }

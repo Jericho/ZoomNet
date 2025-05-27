@@ -588,9 +588,59 @@ namespace ZoomNet.Resources
 				.AsObject<RoomDeviceProfile>();
 		}
 
-		//Task ChangeAppVersionAsync(CancellationToken cancellationToken = default);
+		/// <inheritdoc/>
+		public Task UpgradeAppVersionAsync(string roomId, string deviceId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "action", "upgrade" }
+			};
 
-		//Task DeleteDeviceAsync(CancellationToken cancellationToken = default);
+			return _client
+				.PutAsync($"rooms/{roomId}/devices/{deviceId}/app_version")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DowngradeAppVersionAsync(string roomId, string deviceId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "action", "downgrade" }
+			};
+
+			return _client
+				.PutAsync($"rooms/{roomId}/devices/{deviceId}/app_version")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task CancelAppVersionChangeAsync(string roomId, string deviceId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "action", "cancel" }
+			};
+
+			return _client
+				.PutAsync($"rooms/{roomId}/devices/{deviceId}/app_version")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteDeviceAsync(string roomId, string deviceId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"rooms/{roomId}/devices/{deviceId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
 
 		#endregion
 	}
