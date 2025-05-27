@@ -605,14 +605,14 @@ namespace ZoomNet
 		}
 
 		/// <summary>
-		/// Displays the specified emergency content on all Zoom Rooms' displays in the account.
+		/// Displays the specified emergency content on all Zoom Rooms' displays in the specified account.
 		/// </summary>
 		/// <param name="roomsResource">The rooms ressource.</param>
 		/// <param name="content">The emergency content to be displayed.</param>
 		/// <param name="accountId">The account identifier.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>A task that represents the asynchronous operation.</returns>
-		public static Task DisplayEmergencyContentToAccountsAsync(this IRooms roomsResource, string content, string accountId, CancellationToken cancellationToken = default)
+		public static Task DisplayEmergencyContentToAccountAsync(this IRooms roomsResource, string content, string accountId, CancellationToken cancellationToken = default)
 		{
 			return roomsResource.DisplayEmergencyContentToAccountsAsync(content, new[] { accountId }, cancellationToken);
 		}
@@ -625,7 +625,7 @@ namespace ZoomNet
 		/// <param name="locationId">Thelocation identifiers.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>A task that represents the asynchronous operation.</returns>
-		public static Task DisplayEmergencyContentToLocationsAsync(this IRooms roomsResource, string content, string locationId, CancellationToken cancellationToken = default)
+		public static Task DisplayEmergencyContentToLocationAsync(this IRooms roomsResource, string content, string locationId, CancellationToken cancellationToken = default)
 		{
 			return roomsResource.DisplayEmergencyContentToLocationsAsync(content, new[] { locationId }, cancellationToken);
 		}
@@ -638,43 +638,43 @@ namespace ZoomNet
 		/// <param name="roomId">The  Zoom room identifier.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>A task that represents the asynchronous operation.</returns>
-		public static Task DisplayEmergencyContentToRoomsAsync(this IRooms roomsResource, string content, string roomId, CancellationToken cancellationToken = default)
+		public static Task DisplayEmergencyContentToRoomAsync(this IRooms roomsResource, string content, string roomId, CancellationToken cancellationToken = default)
 		{
 			return roomsResource.DisplayEmergencyContentToRoomsAsync(content, new[] { roomId }, cancellationToken);
 		}
 
 		/// <summary>
-		/// Remove the specified emergency content from all Zoom Rooms' displays in the accounts.
+		/// Remove the specified emergency content from all Zoom Rooms' displays in the specified account.
 		/// </summary>
 		/// <param name="roomsResource">The rooms ressource.</param>
 		/// <param name="accountId">The account identifier.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>A task that represents the asynchronous operation.</returns>
-		public static Task RemoveEmergencyContentFromAccountsAsync(this IRooms roomsResource, string accountId, CancellationToken cancellationToken = default)
+		public static Task RemoveEmergencyContentFromAccountAsync(this IRooms roomsResource, string accountId, CancellationToken cancellationToken = default)
 		{
 			return roomsResource.RemoveEmergencyContentFromAccountsAsync(new[] { accountId }, cancellationToken);
 		}
 
 		/// <summary>
-		/// Remove the specified emergency content from all Zoom Rooms' displays in the specified locations.
+		/// Remove the specified emergency content from all Zoom Rooms' displays in the specified location.
 		/// </summary>
 		/// <param name="roomsResource">The rooms ressource.</param>
 		/// <param name="locationId">The location identifier.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>A task that represents the asynchronous operation.</returns>
-		public static Task RemoveEmergencyContentFromLocationsAsync(this IRooms roomsResource, string locationId, CancellationToken cancellationToken = default)
+		public static Task RemoveEmergencyContentFromLocationAsync(this IRooms roomsResource, string locationId, CancellationToken cancellationToken = default)
 		{
 			return roomsResource.RemoveEmergencyContentFromLocationsAsync(new[] { locationId }, cancellationToken);
 		}
 
 		/// <summary>
-		/// Remove the specified emergency content from the Zoom Rooms digital signage display.
+		/// Remove the specified emergency content from the Zoom Room digital signage display.
 		/// </summary>
 		/// <param name="roomsResource">The rooms ressource.</param>
 		/// <param name="roomId">The Zoom room identifier.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>A task that represents the asynchronous operation.</returns>
-		public static Task RemoveEmergencyContentFromRoomsAsync(this IRooms roomsResource, string roomId, CancellationToken cancellationToken = default)
+		public static Task RemoveEmergencyContentFromRoomAsync(this IRooms roomsResource, string roomId, CancellationToken cancellationToken = default)
 		{
 			return roomsResource.RemoveEmergencyContentFromRoomsAsync(new[] { roomId }, cancellationToken);
 		}
