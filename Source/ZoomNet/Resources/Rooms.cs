@@ -293,6 +293,22 @@ namespace ZoomNet.Resources
 				.AsObject<RoomSchedulingDisplaySettings>("scheduling_display");
 		}
 
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithTokenAndDateRange<RoomSensorData>> GetSensorDataAsync(string roomId, string deviceId = null, RoomSensorType? sensorType = null, DateTime? from = null, DateTime? to = null, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		{
+			Utils.ValidateRecordPerPage(recordsPerPage);
+
+			return _client
+				.GetAsync($"rooms/{roomId}/sensor_data")
+				.WithArgument("device_id", deviceId)
+				.WithArgument("sensor_type", sensorType?.ToEnumString())
+				.WithArgument("from", from?.ToZoomFormat())
+				.WithArgument("to", to?.ToZoomFormat())
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pageToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithTokenAndDateRange<RoomSensorData>("sensor_data");
+		}
 		#endregion
 
 		#region ZOOM LOCATIONS

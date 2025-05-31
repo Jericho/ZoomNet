@@ -157,6 +157,23 @@ namespace ZoomNet.Resources
 		/// <returns>The scheduling display settings.</returns>
 		Task<RoomSchedulingDisplaySettings> GetSchedulingDisplaySettingsAsync(string roomId, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Retrieves paginated sensor data for a specified room and optional device, filtered by sensor type and date range.
+		/// </summary>
+		/// <remarks>This method supports filtering by device, sensor type, and date range to narrow down the results.
+		/// Use the <paramref name="pageToken"/> parameter to retrieve subsequent pages of data.</remarks>
+		/// <param name="roomId">The unique identifier of the room for which sensor data is requested. This parameter cannot be null or empty.</param>
+		/// <param name="deviceId">The unique identifier of the device within the room. If null, data from all devices in the room is included.</param>
+		/// <param name="sensorType">The type of sensor data to retrieve. If null, data from all sensor types is included.</param>
+		/// <param name="from">The start of the date range for the sensor data. If null, data is retrieved from the earliest available date.</param>
+		/// <param name="to">The end of the date range for the sensor data. If null, data is retrieved up to the latest available date.</param>
+		/// <param name="recordsPerPage">The maximum number of records to include in each page of the response. Must be greater than zero.</param>
+		/// <param name="pageToken">A token indicating the page of results to retrieve. If null, the first page is returned.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Defaults to <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A paginated response containing sensor data for the specified room and filters, along with metadata such as the
+		/// next page token and the date range covered.</returns>
+		Task<PaginatedResponseWithTokenAndDateRange<RoomSensorData>> GetSensorDataAsync(string roomId, string deviceId = null, RoomSensorType? sensorType = null, DateTime? from = null, DateTime? to = null, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region ZOOM ROOM LOCATIONS
