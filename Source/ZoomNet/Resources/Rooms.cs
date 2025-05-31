@@ -1,4 +1,5 @@
 using Pathoschild.Http.Client;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json.Nodes;
@@ -108,10 +109,11 @@ namespace ZoomNet.Resources
 			var data = new JsonObject
 			{
 				{ "method", "zoomroom.emergency_alert_displayed" },
-				{ "params", new JsonObject
+				{
+					"params", new JsonObject
 					{
 						{ "content", content },
-						{ "target_ids", accountIds.ToArray() },
+						{ "target_ids", accountIds?.ToArray() },
 						{ "target_type", "account" }
 					}
 				}
@@ -130,10 +132,11 @@ namespace ZoomNet.Resources
 			var data = new JsonObject
 			{
 				{ "method", "zoomroom.emergency_alert_displayed" },
-				{ "params", new JsonObject
+				{
+					"params", new JsonObject
 					{
 						{ "content", content },
-						{ "target_ids", locationIds.ToArray() },
+						{ "target_ids", locationIds?.ToArray() },
 						{ "target_type", "location" }
 					}
 				}
@@ -152,10 +155,11 @@ namespace ZoomNet.Resources
 			var data = new JsonObject
 			{
 				{ "method", "zoomroom.emergency_alert_displayed" },
-				{ "params", new JsonObject
+				{
+					"params", new JsonObject
 					{
 						{ "content", content },
-						{ "target_ids", roomIds.ToArray() },
+						{ "target_ids", roomIds?.ToArray() },
 						{ "target_type", "room" }
 					}
 				}
@@ -174,9 +178,10 @@ namespace ZoomNet.Resources
 			var data = new JsonObject
 			{
 				{ "method", "zoomroom.emergency_alert_removed" },
-				{ "params", new JsonObject
+				{
+					"params", new JsonObject
 					{
-						{ "target_ids", accountIds.ToArray() },
+						{ "target_ids", accountIds?.ToArray() },
 						{ "target_type", "account" },
 						{ "force_remove", true }
 					}
@@ -196,9 +201,10 @@ namespace ZoomNet.Resources
 			var data = new JsonObject
 			{
 				{ "method", "zoomroom.emergency_alert_removed" },
-				{ "params", new JsonObject
+				{
+					"params", new JsonObject
 					{
-						{ "target_ids", locationIds.ToArray() },
+						{ "target_ids", locationIds?.ToArray() },
 						{ "target_type", "location" },
 						{ "force_remove", true }
 					}
@@ -218,9 +224,10 @@ namespace ZoomNet.Resources
 			var data = new JsonObject
 			{
 				{ "method", "zoomroom.emergency_alert_removed" },
-				{ "params", new JsonObject
+				{
+					"params", new JsonObject
 					{
-						{ "target_ids", roomIds.ToArray() },
+						{ "target_ids", roomIds?.ToArray() },
 						{ "target_type", "room" },
 						{ "force_remove", true }
 					}
@@ -232,6 +239,58 @@ namespace ZoomNet.Resources
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public async Task<(RoomAlertSettings AlertSettings, RoomNotificationSettings NotificationSettings)> GetAlertSettingsAsync(string roomId, CancellationToken cancellationToken = default)
+		{
+			var response = await _client
+				.GetAsync($"rooms/{roomId}/settings")
+				.WithArgument("setting_type", RoomLocationSettingsType.Alert.ToEnumString())
+				.WithCancellationToken(cancellationToken)
+				.AsJson()
+				.ConfigureAwait(false);
+
+			var alertSettings = response.GetProperty("client_alert", true)?.ToObject<RoomAlertSettings>();
+			var notificationSettings = response.GetProperty("notification", true)?.ToObject<RoomNotificationSettings>();
+
+			return (alertSettings, notificationSettings);
+		}
+
+		/// <inheritdoc/>
+		public async Task<(RoomSecuritySettings SecuritySettings, RoomSettings RoomSettings)> GetSettingsAsync(string roomId, CancellationToken cancellationToken = default)
+		{
+			var response = await _client
+				.GetAsync($"rooms/{roomId}/settings")
+				.WithArgument("setting_type", RoomLocationSettingsType.Meeting.ToEnumString())
+				.WithCancellationToken(cancellationToken)
+				.AsJson()
+				.ConfigureAwait(false);
+
+			var securitySettings = response.GetProperty("meeting_security", true)?.ToObject<RoomSecuritySettings>();
+			var roomSettings = response.GetProperty("zoom_rooms", true)?.ToObject<RoomSettings>();
+
+			return (securitySettings, roomSettings);
+		}
+
+		/// <inheritdoc/>
+		public Task<RoomSignageSettings> GetSignageSettingsAsync(string roomId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/{roomId}/settings")
+				.WithArgument("setting_type", RoomLocationSettingsType.Signage.ToEnumString())
+				.WithCancellationToken(cancellationToken)
+				.AsObject<RoomSignageSettings>("digital_signage");
+		}
+
+		/// <inheritdoc/>
+		public Task<RoomSchedulingDisplaySettings> GetSchedulingDisplaySettingsAsync(string roomId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/{roomId}/settings")
+				.WithArgument("setting_type", RoomLocationSettingsType.SchedulingDisplay.ToEnumString())
+				.WithCancellationToken(cancellationToken)
+				.AsObject<RoomSchedulingDisplaySettings>("scheduling_display");
 		}
 
 		#endregion
@@ -318,7 +377,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public async Task<(RoomLocationAlertSettings AlertSettings, RoomLocationNotificationSettings NotificationSettings)> GetLocationAlertSettingsAsync(string locationId, CancellationToken cancellationToken = default)
+		public async Task<(RoomAlertSettings AlertSettings, RoomNotificationSettings NotificationSettings)> GetLocationAlertSettingsAsync(string locationId, CancellationToken cancellationToken = default)
 		{
 			var response = await _client
 				.GetAsync($"rooms/locations/{locationId}/settings")
@@ -327,14 +386,14 @@ namespace ZoomNet.Resources
 				.AsJson()
 				.ConfigureAwait(false);
 
-			var alertSettings = response.GetProperty("client_alert", true)?.ToObject<RoomLocationAlertSettings>();
-			var notificationSettings = response.GetProperty("notification", true)?.ToObject<RoomLocationNotificationSettings>();
+			var alertSettings = response.GetProperty("client_alert", true)?.ToObject<RoomAlertSettings>();
+			var notificationSettings = response.GetProperty("notification", true)?.ToObject<RoomNotificationSettings>();
 
 			return (alertSettings, notificationSettings);
 		}
 
 		/// <inheritdoc/>
-		public async Task<(RoomLocationSecuritySettings SecuritySettings, RoomLocationSettings RoomSettings)> GetLocationSettingsAsync(string locationId, CancellationToken cancellationToken = default)
+		public async Task<(RoomSecuritySettings SecuritySettings, RoomSettings RoomSettings)> GetLocationSettingsAsync(string locationId, CancellationToken cancellationToken = default)
 		{
 			var response = await _client
 				.GetAsync($"rooms/locations/{locationId}/settings")
@@ -343,30 +402,30 @@ namespace ZoomNet.Resources
 				.AsJson()
 				.ConfigureAwait(false);
 
-			var securitySettings = response.GetProperty("meeting_security", true)?.ToObject<RoomLocationSecuritySettings>();
-			var roomSettings = response.GetProperty("zoom_rooms", true)?.ToObject<RoomLocationSettings>();
+			var securitySettings = response.GetProperty("meeting_security", true)?.ToObject<RoomSecuritySettings>();
+			var roomSettings = response.GetProperty("zoom_rooms", true)?.ToObject<RoomSettings>();
 
 			return (securitySettings, roomSettings);
 		}
 
 		/// <inheritdoc/>
-		public Task<RoomLocationSignageSettings> GetLocationSignageSettingsAsync(string locationId, CancellationToken cancellationToken = default)
+		public Task<RoomSignageSettings> GetLocationSignageSettingsAsync(string locationId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"rooms/locations/{locationId}/settings")
 				.WithArgument("setting_type", RoomLocationSettingsType.Signage.ToEnumString())
 				.WithCancellationToken(cancellationToken)
-				.AsObject<RoomLocationSignageSettings>("digital_signage");
+				.AsObject<RoomSignageSettings>("digital_signage");
 		}
 
 		/// <inheritdoc/>
-		public Task<RoomLocationSchedulingDisplaySettings> GetLocationSchedulingDisplaySettingsAsync(string locationId, CancellationToken cancellationToken = default)
+		public Task<RoomSchedulingDisplaySettings> GetLocationSchedulingDisplaySettingsAsync(string locationId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"rooms/locations/{locationId}/settings")
 				.WithArgument("setting_type", RoomLocationSettingsType.SchedulingDisplay.ToEnumString())
 				.WithCancellationToken(cancellationToken)
-				.AsObject<RoomLocationSchedulingDisplaySettings>("scheduling_display");
+				.AsObject<RoomSchedulingDisplaySettings>("scheduling_display");
 		}
 
 		/// <inheritdoc/>

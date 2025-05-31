@@ -114,13 +114,13 @@ namespace ZoomNet.IntegrationTests.Tests
 			var locationSettings = await client.Rooms.GetLocationSettingsAsync(buildingA.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("General settings for a location have been retrieved").ConfigureAwait(false);
 
-			var alertSettings = await client.Rooms.GetLocationAlertSettingsAsync(buildingA.Id, cancellationToken).ConfigureAwait(false);
+			var locationAlertSettings = await client.Rooms.GetLocationAlertSettingsAsync(buildingA.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Alert settings for a location have been retrieved").ConfigureAwait(false);
 
-			var signageSettings = await client.Rooms.GetLocationSignageSettingsAsync(buildingA.Id, cancellationToken).ConfigureAwait(false);
+			var locationSignageSettings = await client.Rooms.GetLocationSignageSettingsAsync(buildingA.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Signage settings for a location have been retrieved").ConfigureAwait(false);
 
-			var schedulingDisplaySettings = await client.Rooms.GetLocationSchedulingDisplaySettingsAsync(buildingA.Id, cancellationToken).ConfigureAwait(false);
+			var locationSchedulingDisplaySettings = await client.Rooms.GetLocationSchedulingDisplaySettingsAsync(buildingA.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Scheduling display settings for a location have been retrieved").ConfigureAwait(false);
 
 			var tagId = await client.Rooms.CreateTagAsync("ZoomNet Integration Testing: Tag", "This is a test", cancellationToken).ConfigureAwait(false);
@@ -143,6 +143,18 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			var devices = await client.Rooms.GetAllDevicesAsync(room.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {devices.Length} devices in the room").ConfigureAwait(false);
+
+			var roomSettings = await client.Rooms.GetSettingsAsync(room.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("General settings for a room have been retrieved").ConfigureAwait(false);
+
+			var roomAlertSettings = await client.Rooms.GetAlertSettingsAsync(room.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Alert settings for a room have been retrieved").ConfigureAwait(false);
+
+			var roomSignageSettings = await client.Rooms.GetSignageSettingsAsync(room.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Signage settings for a room have been retrieved").ConfigureAwait(false);
+
+			var roomSchedulingDisplaySettings = await client.Rooms.GetSchedulingDisplaySettingsAsync(room.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Scheduling display settings for a room have been retrieved").ConfigureAwait(false);
 
 			/*
 			await client.Rooms.GetDevicesInformationAsync(room.Id, cancellationToken).ConfigureAwait(false);

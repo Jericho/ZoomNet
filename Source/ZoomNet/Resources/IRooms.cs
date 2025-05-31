@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -124,6 +125,38 @@ namespace ZoomNet.Resources
 		/// <returns>A task that represents the asynchronous operation.</returns>
 		Task RemoveEmergencyContentFromRoomsAsync(IEnumerable<string> roomIds, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Get the alert settings applied to the specified Zoom Room.
+		/// </summary>
+		/// <param name="roomId">The room unique identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The alert settings.</returns>
+		Task<(RoomAlertSettings AlertSettings, RoomNotificationSettings NotificationSettings)> GetAlertSettingsAsync(string roomId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the general settings applied to the specified Zoom Room.
+		/// </summary>
+		/// <param name="roomId">The room unique identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The meeting settings.</returns>
+		Task<(RoomSecuritySettings SecuritySettings, RoomSettings RoomSettings)> GetSettingsAsync(string roomId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the signage settings applied to the specified Zoom Room.
+		/// </summary>
+		/// <param name="roomId">The room unique identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The signage settings.</returns>
+		Task<RoomSignageSettings> GetSignageSettingsAsync(string roomId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the scheduling display settings applied to the specified Zoom Room.
+		/// </summary>
+		/// <param name="roomId">The room unique identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The scheduling display settings.</returns>
+		Task<RoomSchedulingDisplaySettings> GetSchedulingDisplaySettingsAsync(string roomId, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region ZOOM ROOM LOCATIONS
@@ -200,7 +233,7 @@ namespace ZoomNet.Resources
 		/// <param name="locationId">The location unique identifier.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The alert settings.</returns>
-		Task<(RoomLocationAlertSettings AlertSettings, RoomLocationNotificationSettings NotificationSettings)> GetLocationAlertSettingsAsync(string locationId, CancellationToken cancellationToken = default);
+		Task<(RoomAlertSettings AlertSettings, RoomNotificationSettings NotificationSettings)> GetLocationAlertSettingsAsync(string locationId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get the general settings applied to Zoom Rooms located in a specific location.
@@ -208,7 +241,7 @@ namespace ZoomNet.Resources
 		/// <param name="locationId">The location unique identifier.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The meeting settings.</returns>
-		Task<(RoomLocationSecuritySettings SecuritySettings, RoomLocationSettings RoomSettings)> GetLocationSettingsAsync(string locationId, CancellationToken cancellationToken = default);
+		Task<(RoomSecuritySettings SecuritySettings, RoomSettings RoomSettings)> GetLocationSettingsAsync(string locationId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get the signage settings applied to Zoom Rooms located in a specific location.
@@ -216,7 +249,7 @@ namespace ZoomNet.Resources
 		/// <param name="locationId">The location unique identifier.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The signage settings.</returns>
-		Task<RoomLocationSignageSettings> GetLocationSignageSettingsAsync(string locationId, CancellationToken cancellationToken = default);
+		Task<RoomSignageSettings> GetLocationSignageSettingsAsync(string locationId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get the scheduling display settings applied to Zoom Rooms located in a specific location.
@@ -224,7 +257,7 @@ namespace ZoomNet.Resources
 		/// <param name="locationId">The location unique identifier.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The scheduling display settings.</returns>
-		Task<RoomLocationSchedulingDisplaySettings> GetLocationSchedulingDisplaySettingsAsync(string locationId, CancellationToken cancellationToken = default);
+		Task<RoomSchedulingDisplaySettings> GetLocationSchedulingDisplaySettingsAsync(string locationId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get the information such as the location name, address, support email, and more.

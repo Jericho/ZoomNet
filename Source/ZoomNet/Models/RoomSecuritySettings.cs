@@ -3,9 +3,9 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Room location security settings.
+	/// Room security settings.
 	/// </summary>
-	public class RoomLocationSecuritySettings
+	public class RoomSecuritySettings
 	{
 		/// <summary>
 		/// Gets or sets a value indicating whether the meeting password is encrypted and included in the invitation link.
