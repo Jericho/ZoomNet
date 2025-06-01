@@ -309,6 +309,17 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithTokenAndDateRange<RoomSensorData>("sensor_data");
 		}
+
+		/// <inheritdoc/>
+		public Task<string> GetVirtualControllerUrlAsync(string roomId, bool preAuthenticatedLink = false, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/{roomId}/virtual_controller")
+				.WithArgument("pre_authenticated_link", preAuthenticatedLink)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("url");
+		}
+
 		#endregion
 
 		#region ZOOM LOCATIONS

@@ -138,6 +138,9 @@ namespace ZoomNet.IntegrationTests.Tests
 			var room = await client.Rooms.CreateAsync("ZoomNet Integration Testing: Room", RoomType.Room, floorA1.Id, cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("A new room was created").ConfigureAwait(false);
 
+			var controllerUrl = await client.Rooms.GetVirtualControllerUrlAsync(room.Id, true, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"The controller URL is: {controllerUrl}").ConfigureAwait(false);
+
 			await client.Rooms.MoveAsync(room.Id, floorB1.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Room has been moved to a different location").ConfigureAwait(false);
 

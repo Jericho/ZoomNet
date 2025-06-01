@@ -174,6 +174,17 @@ namespace ZoomNet.Resources
 		/// next page token and the date range covered.</returns>
 		Task<PaginatedResponseWithTokenAndDateRange<RoomSensorData>> GetSensorDataAsync(string roomId, string deviceId = null, RoomSensorType? sensorType = null, DateTime? from = null, DateTime? to = null, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Retrieves the URL for accessing the virtual controller associated with a specified room.
+		/// </summary>
+		/// <param name="roomId">The unique identifier of the room for which the virtual controller URL is requested. Must not be null or empty.</param>
+		/// <param name="preAuthenticatedLink">A value indicating whether the returned URL should be pre-authenticated. If <see langword="true"/>, the URL will
+		/// contain a time-limited authentication token (10 minute lifetime) that will permit to the virtual controller without requiring login to Zoom admin portal. Default is false.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The operation will be canceled if the token is triggered.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the virtual controller URL as a
+		/// string.</returns>
+		Task<string> GetVirtualControllerUrlAsync(string roomId, bool preAuthenticatedLink = false, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region ZOOM ROOM LOCATIONS
