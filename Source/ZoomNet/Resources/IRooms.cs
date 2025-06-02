@@ -185,6 +185,17 @@ namespace ZoomNet.Resources
 		/// string.</returns>
 		Task<string> GetVirtualControllerUrlAsync(string roomId, bool preAuthenticatedLink = false, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Retrieves a paginated list of device profiles for a specified room.
+		/// </summary>
+		/// <param name="roomId">The unique identifier of the room for which device profiles are being requested. This parameter cannot be null or
+		/// empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Optional; defaults to <see langword="default"/>.</param>
+		/// <returns>A <see cref="PaginatedResponseWithTokenAndDateRange{RoomDeviceProfile}"/> containing the device profiles for the
+		/// specified room. The response includes pagination details, a continuation token, and the date range of the
+		/// profiles.</returns>
+		Task<RoomDeviceProfile[]> GetDeviceProfilesAsync(string roomId, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region ZOOM ROOM LOCATIONS

@@ -320,6 +320,15 @@ namespace ZoomNet.Resources
 				.AsObject<string>("url");
 		}
 
+		/// <inheritdoc/>
+		public Task<RoomDeviceProfile[]> GetDeviceProfilesAsync(string roomId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/{roomId}/device_profiles")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<RoomDeviceProfile[]>();
+		}
+
 		#endregion
 
 		#region ZOOM LOCATIONS
