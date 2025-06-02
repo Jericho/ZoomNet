@@ -196,6 +196,23 @@ namespace ZoomNet.Resources
 		/// profiles.</returns>
 		Task<RoomDeviceProfile[]> GetDeviceProfilesAsync(string roomId, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Retrieves a paginated list of signage content items for the specified resource type.
+		/// </summary>
+		/// <remarks>Use the <paramref name="pagingToken"/> from the response to retrieve additional pages of results.
+		/// If <paramref name="folderId"/> is specified, only content items within the specified folder are
+		/// returned.</remarks>
+		/// <param name="resourceType">The type of digital signage resource.</param>
+		/// <param name="folderId">The identifier of the folder to filter the content items. If <see langword="null"/>, content items from all
+		/// folders are included.</param>
+		/// <param name="recordsPerPage">The maximum number of records to include per page in the response. Must be a positive integer. Defaults to 30.</param>
+		/// <param name="pagingToken">A token used to retrieve the next page of results. If <see langword="null"/>, the first page of results is
+		/// returned.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Defaults to <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A <see cref="PaginatedResponseWithToken{T}"/> containing a collection of <see cref="SignageContentItem"/> objects
+		/// and a paging token for retrieving subsequent pages.</returns>
+		Task<PaginatedResponseWithToken<SignageContentItem>> GetSignageContentsAsync(SignageResourceType resourceType, string folderId = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region ZOOM ROOM LOCATIONS

@@ -20,10 +20,10 @@ namespace ZoomNet.Models
 		public int Duration { get; set; }
 
 		/// <summary>
-		/// Gets or sets how the id.
+		/// Gets or sets the id.
 		/// </summary>
 		[JsonPropertyName("id")]
-		public int Id { get; set; }
+		public string Id { get; set; }
 
 		/// <summary>
 		/// Gets or sets the name of the content.
