@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -38,9 +39,13 @@ namespace ZoomNet.Resources
 		/// <param name="name">The name of the room.</param>
 		/// <param name="type">The type of the room.</param>
 		/// <param name="locationId">Location ID of the lowest level location in the location hierarchy where the Zoom Room is to be added. For instance if the structure of the location hierarchy is set up as “country, states, city, campus, building, floor”, a room can only be added under the floor level location.</param>
+		/// <param name="calendarId">The calendar resource's ID.</param>
+		/// <param name="tagIds">The tag IDs that will be associated with the Zoom Room.</param>
+		/// <param name="userId">The user ID of the user assigned to a Personal Zoom Room. Note: this field will only be accepted when the zoom_room_type is PersonalZoomRoom.</param>
+		/// <param name="isProDevice">Indicates whether the Personal Zoom Room will consume a Zoom Rooms license and have access to "Pro" features. Note: this field will only be present for Personal Zoom Rooms.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The new <see cref="Room">Room</see>.</returns>
-		Task<Room> CreateAsync(string name, RoomType type, string locationId = null, CancellationToken cancellationToken = default);
+		Task<Room> CreateAsync(string name, RoomType type, string locationId = null, string calendarId = null, string[] tagIds = null, string userId = null, bool? isProDevice = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Delete a room.
@@ -59,6 +64,154 @@ namespace ZoomNet.Resources
 		/// <returns>The asyc task.</returns>
 		/// <remarks>The Zoom Room can be assigned only to the lowest level location available in the hierarchy.</remarks>
 		Task MoveAsync(string roomId, string locationId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get detailed information on a specific Zoom Room in a Zoom account.
+		/// </summary>
+		/// <param name="roomId">The room unique identifier.</param>
+		/// <param name="regenerateActivationCode">Whether to regenerate an activation code for a Zoom Room. Default is false.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The room profile information.</returns>
+		Task<(RoomBasicProfile Basic, string DeviceProfileId, RoomSetupProfile Setup)> GetProfileAsync(string roomId, bool regenerateActivationCode = false, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Displays the specified emergency content on all Zoom Rooms' displays in the accounts.
+		/// </summary>
+		/// <param name="content">The emergency content to be displayed.</param>
+		/// <param name="accountIds">An enumeration of account identifiers.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task DisplayEmergencyContentToAccountsAsync(string content, IEnumerable<string> accountIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Displays the specified emergency content on all Zoom Rooms' displays in the specified locations.
+		/// </summary>
+		/// <param name="content">The emergency content to be displayed.</param>
+		/// <param name="locationIds">An enumeration of location identifiers.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task DisplayEmergencyContentToLocationsAsync(string content, IEnumerable<string> locationIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Displays the specified emergency content on the Zoom Rooms digital signage display.
+		/// </summary>
+		/// <param name="content">The emergency content to be displayed.</param>
+		/// <param name="roomIds">An enumeration of Zoom room identifiers.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task DisplayEmergencyContentToRoomsAsync(string content, IEnumerable<string> roomIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Remove the specified emergency content from all Zoom Rooms' displays in the accounts.
+		/// </summary>
+		/// <param name="accountIds">An enumeration of account identifiers.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task RemoveEmergencyContentFromAccountsAsync(IEnumerable<string> accountIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Remove the specified emergency content from all Zoom Rooms' displays in the specified locations.
+		/// </summary>
+		/// <param name="locationIds">An enumeration of location identifiers.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task RemoveEmergencyContentFromLocationsAsync(IEnumerable<string> locationIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Remove the specified emergency content from the Zoom Rooms digital signage display.
+		/// </summary>
+		/// <param name="roomIds">An enumeration of Zoom room identifiers.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task RemoveEmergencyContentFromRoomsAsync(IEnumerable<string> roomIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the alert settings applied to the specified Zoom Room.
+		/// </summary>
+		/// <param name="roomId">The room unique identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The alert settings.</returns>
+		Task<(RoomAlertSettings AlertSettings, RoomNotificationSettings NotificationSettings)> GetAlertSettingsAsync(string roomId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the general settings applied to the specified Zoom Room.
+		/// </summary>
+		/// <param name="roomId">The room unique identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The meeting settings.</returns>
+		Task<(RoomSecuritySettings SecuritySettings, RoomSettings RoomSettings)> GetSettingsAsync(string roomId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the signage settings applied to the specified Zoom Room.
+		/// </summary>
+		/// <param name="roomId">The room unique identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The signage settings.</returns>
+		Task<RoomSignageSettings> GetSignageSettingsAsync(string roomId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the scheduling display settings applied to the specified Zoom Room.
+		/// </summary>
+		/// <param name="roomId">The room unique identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The scheduling display settings.</returns>
+		Task<RoomSchedulingDisplaySettings> GetSchedulingDisplaySettingsAsync(string roomId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieves paginated sensor data for a specified room and optional device, filtered by sensor type and date range.
+		/// </summary>
+		/// <remarks>This method supports filtering by device, sensor type, and date range to narrow down the results.
+		/// Use the <paramref name="pageToken"/> parameter to retrieve subsequent pages of data.</remarks>
+		/// <param name="roomId">The unique identifier of the room for which sensor data is requested. This parameter cannot be null or empty.</param>
+		/// <param name="deviceId">The unique identifier of the device within the room. If null, data from all devices in the room is included.</param>
+		/// <param name="sensorType">The type of sensor data to retrieve. If null, data from all sensor types is included.</param>
+		/// <param name="from">The start of the date range for the sensor data. If null, data is retrieved from the earliest available date.</param>
+		/// <param name="to">The end of the date range for the sensor data. If null, data is retrieved up to the latest available date.</param>
+		/// <param name="recordsPerPage">The maximum number of records to include in each page of the response. Must be greater than zero.</param>
+		/// <param name="pageToken">A token indicating the page of results to retrieve. If null, the first page is returned.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Defaults to <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A paginated response containing sensor data for the specified room and filters, along with metadata such as the
+		/// next page token and the date range covered.</returns>
+		Task<PaginatedResponseWithTokenAndDateRange<RoomSensorData>> GetSensorDataAsync(string roomId, string deviceId = null, RoomSensorType? sensorType = null, DateTime? from = null, DateTime? to = null, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieves the URL for accessing the virtual controller associated with a specified room.
+		/// </summary>
+		/// <param name="roomId">The unique identifier of the room for which the virtual controller URL is requested. Must not be null or empty.</param>
+		/// <param name="preAuthenticatedLink">A value indicating whether the returned URL should be pre-authenticated. If <see langword="true"/>, the URL will
+		/// contain a time-limited authentication token (10 minute lifetime) that will permit to the virtual controller without requiring login to Zoom admin portal. Default is false.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The operation will be canceled if the token is triggered.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the virtual controller URL as a
+		/// string.</returns>
+		Task<string> GetVirtualControllerUrlAsync(string roomId, bool preAuthenticatedLink = false, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieves a paginated list of device profiles for a specified room.
+		/// </summary>
+		/// <param name="roomId">The unique identifier of the room for which device profiles are being requested. This parameter cannot be null or
+		/// empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Optional; defaults to <see langword="default"/>.</param>
+		/// <returns>A <see cref="PaginatedResponseWithTokenAndDateRange{RoomDeviceProfile}"/> containing the device profiles for the
+		/// specified room. The response includes pagination details, a continuation token, and the date range of the
+		/// profiles.</returns>
+		Task<RoomDeviceProfile[]> GetDeviceProfilesAsync(string roomId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieves a paginated list of signage content items for the specified resource type.
+		/// </summary>
+		/// <remarks>Use the <paramref name="pagingToken"/> from the response to retrieve additional pages of results.
+		/// If <paramref name="folderId"/> is specified, only content items within the specified folder are
+		/// returned.</remarks>
+		/// <param name="resourceType">The type of digital signage resource.</param>
+		/// <param name="folderId">The identifier of the folder to filter the content items. If <see langword="null"/>, content items from all
+		/// folders are included.</param>
+		/// <param name="recordsPerPage">The maximum number of records to include per page in the response. Must be a positive integer. Defaults to 30.</param>
+		/// <param name="pagingToken">A token used to retrieve the next page of results. If <see langword="null"/>, the first page of results is
+		/// returned.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Defaults to <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A <see cref="PaginatedResponseWithToken{T}"/> containing a collection of <see cref="SignageContentItem"/> objects
+		/// and a paging token for retrieving subsequent pages.</returns>
+		Task<PaginatedResponseWithToken<SignageContentItem>> GetSignageContentsAsync(SignageResourceType resourceType, string folderId = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		#endregion
 
@@ -136,7 +289,7 @@ namespace ZoomNet.Resources
 		/// <param name="locationId">The location unique identifier.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The alert settings.</returns>
-		Task<(RoomLocationAlertSettings AlertSettings, RoomLocationNotificationSettings NotificationSettings)> GetLocationAlertSettingsAsync(string locationId, CancellationToken cancellationToken = default);
+		Task<(RoomAlertSettings AlertSettings, RoomNotificationSettings NotificationSettings)> GetLocationAlertSettingsAsync(string locationId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get the general settings applied to Zoom Rooms located in a specific location.
@@ -144,7 +297,7 @@ namespace ZoomNet.Resources
 		/// <param name="locationId">The location unique identifier.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The meeting settings.</returns>
-		Task<(RoomLocationSecuritySettings SecuritySettings, RoomLocationSettings RoomSettings)> GetLocationSettingsAsync(string locationId, CancellationToken cancellationToken = default);
+		Task<(RoomSecuritySettings SecuritySettings, RoomSettings RoomSettings)> GetLocationSettingsAsync(string locationId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get the signage settings applied to Zoom Rooms located in a specific location.
@@ -152,7 +305,7 @@ namespace ZoomNet.Resources
 		/// <param name="locationId">The location unique identifier.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The signage settings.</returns>
-		Task<RoomLocationSignageSettings> GetLocationSignageSettingsAsync(string locationId, CancellationToken cancellationToken = default);
+		Task<RoomSignageSettings> GetLocationSignageSettingsAsync(string locationId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get the scheduling display settings applied to Zoom Rooms located in a specific location.
@@ -160,7 +313,7 @@ namespace ZoomNet.Resources
 		/// <param name="locationId">The location unique identifier.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The scheduling display settings.</returns>
-		Task<RoomLocationSchedulingDisplaySettings> GetLocationSchedulingDisplaySettingsAsync(string locationId, CancellationToken cancellationToken = default);
+		Task<RoomSchedulingDisplaySettings> GetLocationSchedulingDisplaySettingsAsync(string locationId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get the information such as the location name, address, support email, and more.
@@ -256,6 +409,96 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The async task.</returns>
 		Task DeleteTagAsync(string tagId, CancellationToken cancellationToken = default);
+
+		#endregion
+
+		#region ZOOM ROOM DEVICES
+
+		/// <summary>
+		/// List information about the devices that are being used for a specific Zoom Room in an account.
+		/// </summary>
+		/// <param name="roomId">The room unique identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>An aray of <see cref="RoomDevice"/>.</returns>
+		Task<RoomDevice[]> GetAllDevicesAsync(string roomId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Returns information about a Zoom Room devices.
+		/// </summary>
+		/// <param name="roomId">The Zoom Room's ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns></returns>
+		Task GetDevicesInformationAsync(string roomId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create a new Zoom Room device profile.
+		/// </summary>
+		/// <param name="roomId">The room unique identifier.</param>
+		/// <param name="enableAudioProcessing">Whether to enable audio processing.</param>
+		/// <param name="autoAdjustMicrophoneLevel">Whether to enable microphone level auto adjust.</param>
+		/// <param name="cameraId">The camera's device ID.</param>
+		/// <param name="enableEchoCancellation">Whether to enable echo cancellation.</param>
+		/// <param name="microphoneId">The microphone's device ID.</param>
+		/// <param name="name">The device profile's name.</param>
+		/// <param name="noiseSuppressionType">The noise suppression setting.</param>
+		/// <param name="speakerId">The speaker's device ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task CreateDeviceProfileAsync(string roomId, bool? enableAudioProcessing = null, bool? autoAdjustMicrophoneLevel = null, string cameraId = null, bool? enableEchoCancellation = null, string microphoneId = null, string name = null, RoomDeviceNoiseSuppressionType? noiseSuppressionType = null, string speakerId = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a Zoom Room device profile.
+		/// </summary>
+		/// <param name="roomId">The Zoom Room's ID.</param>
+		/// <param name="deviceProfileId">The Zoom Room device profile's ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task DeleteDeviceProfileAsync(string roomId, string deviceProfileId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Returns information about a Zoom Room devices.
+		/// </summary>
+		/// <param name="roomId">The Zoom Room's ID.</param>
+		/// <param name="deviceProfileId">The Zoom Room device profile's ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The device profile.</returns>
+		Task<RoomDeviceProfile> GetDeviceProfileAsync(string roomId, string deviceProfileId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Upgrade the version of your installed Zoom Rooms app on your Mac or Windows device.
+		/// </summary>
+		/// <param name="roomId">Unique Identifier of the Zoom Room.</param>
+		/// <param name="deviceId">Unique Identifier of the Mac or the Windows device.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task UpgradeAppVersionAsync(string roomId, string deviceId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Downgrade the version of your installed Zoom Rooms app on your Mac or Windows device.
+		/// </summary>
+		/// <param name="roomId">Unique Identifier of the Zoom Room.</param>
+		/// <param name="deviceId">Unique Identifier of the Mac or the Windows device.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task DowngradeAppVersionAsync(string roomId, string deviceId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Cancel an ongoing upgrade or downgrade processof the version of your installed Zoom Rooms app on your Mac or Windows device.
+		/// </summary>
+		/// <param name="roomId">Unique Identifier of the Zoom Room.</param>
+		/// <param name="deviceId">Unique Identifier of the Mac or the Windows device.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task CancelAppVersionChangeAsync(string roomId, string deviceId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a Zoom Room device.
+		/// </summary>
+		/// <param name="roomId">Unique Identifier of the Zoom Room.</param>
+		/// <param name="deviceId">Unique Identifier of the Mac or the Windows device.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task DeleteDeviceAsync(string roomId, string deviceId, CancellationToken cancellationToken = default);
 
 		#endregion
 	}
