@@ -3,7 +3,6 @@ using Shouldly;
 using System;
 using System.Net.Http;
 using System.Text.Json;
-using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using ZoomNet.Json;
@@ -14,8 +13,6 @@ namespace ZoomNet.UnitTests.Resources
 {
 	public class AccountCallLogsTests
 	{
-		#region FIELDS
-
 		private const string SINGLE_ACCOUNT_CALL_LOGS_JSON = @"
     {
       ""id"": ""c82112cd-0916-412c-8d2d-4620c93edfa6"",
@@ -239,7 +236,12 @@ namespace ZoomNet.UnitTests.Resources
 }
 ";
 
-		#endregion
+		private readonly ITestOutputHelper _outputHelper;
+
+		public AccountCallLogsTests(ITestOutputHelper outputHelper)
+		{
+			_outputHelper = outputHelper;
+		}
 
 		[Fact]
 		public void Parse_json()
@@ -294,17 +296,18 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "call_logs")).Respond("application/json", MULTIPLE_ACCOUNT_CALL_LOGS_JSON);
 
-			var client = Utils.GetFluentClient(mockHttp);
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
 			var calllogs = new CallLogs(client);
 
 			// Act
-			var result = await calllogs.GetAsync(from, to, CallLogType.All, null, CallLogTimeType.StartTime, null, false, recordsPerPage, null, CancellationToken.None).ConfigureAwait(true);
+			var result = await calllogs.GetAsync(from, to, CallLogType.All, null, CallLogTimeType.StartTime, null, false, recordsPerPage, null, TestContext.Current.CancellationToken).ConfigureAwait(true);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.PageSize.ShouldBe(recordsPerPage);
+			result.RecordsPerPage.ShouldBe(recordsPerPage);
 			result.NextPageToken.ShouldNotBeNullOrEmpty();
 			result.MoreRecordsAvailable.ShouldBeTrue();
 			result.TotalRecords.ShouldBe(95);

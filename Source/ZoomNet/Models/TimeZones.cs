@@ -7,6 +7,10 @@ namespace ZoomNet.Models
 	/// </summary>
 	public enum TimeZones
 	{
+		/// <summary>Not specified.</summary>
+		[EnumMember(Value = "")]
+		NotSpecified,
+
 		/// <summary>Midway Island, Samoa.</summary>
 		[EnumMember(Value = "Pacific/Midway")]
 		Pacific_Midway,

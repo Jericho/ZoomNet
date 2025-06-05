@@ -9,6 +9,13 @@ namespace ZoomNet.UnitTests.Resources
 {
 	public class SmsSessionTests
 	{
+		private readonly ITestOutputHelper _outputHelper;
+
+		public SmsSessionTests(ITestOutputHelper outputHelper)
+		{
+			_outputHelper = outputHelper;
+		}
+
 		[Fact]
 		public async Task GetSmsSessionAsync()
 		{
@@ -24,7 +31,8 @@ namespace ZoomNet.UnitTests.Resources
 					"application/json",
 					Models.SmsSessionTests.SMS_HISTORY);
 
-			var client = Utils.GetFluentClient(mockHttp);
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
 			var sms = new Sms(client);
 
 			// Act

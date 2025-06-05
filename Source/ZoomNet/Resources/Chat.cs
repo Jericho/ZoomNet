@@ -9,6 +9,7 @@ using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
@@ -29,10 +30,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<ChatChannel>> GetAccountChannelsForUserAsync(string userId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
-			if (recordsPerPage < 1 || recordsPerPage > 300)
-			{
-				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 300");
-			}
+			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync($"chat/users/{userId}/channels")
@@ -117,10 +115,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<ChatChannelMember>> GetAccountChannelMembersAsync(string userId, string channelId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
-			if (recordsPerPage < 1 || recordsPerPage > 300)
-			{
-				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 300");
-			}
+			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync($"chat/users/{userId}/channels/{channelId}/members")
@@ -307,7 +302,7 @@ namespace ZoomNet.Resources
 				.PostAsync($"https://file.zoom.us/v2/chat/users/{userId}/messages/files")
 				.WithBody(bodyBuilder =>
 				{
-					// The file name as well as the name of the other 'parts' in the request must be quoted otherwise the Zoom API would return the following error message: Invalid 'Content-Disposition' in multipart form
+					// The file name as well as the name of the other 'parts' in the request must be quoted otherwise the Zoom API returns the following error message: Invalid 'Content-Disposition' in multipart form
 					var content = new MultipartFormDataContent
 					{
 						{ new StreamContent(fileData), "files", $"\"{fileName}\"" }
@@ -329,7 +324,7 @@ namespace ZoomNet.Resources
 				.PostAsync($"https://file.zoom.us/v2/chat/users/{userId}/files")
 				.WithBody(bodyBuilder =>
 				{
-					// The file name must be quoted otherwise the Zoom API would return the following error message: Invalid 'Content-Disposition' in multipart form
+					// The file name must be quoted otherwise the Zoom API returns the following error message: Invalid 'Content-Disposition' in multipart form
 					var content = new MultipartFormDataContent
 					{
 						{ new StreamContent(fileData), "file", $"\"{fileName}\"" }
@@ -364,10 +359,7 @@ namespace ZoomNet.Resources
 			Debug.Assert(recipientEmail != null || channelId != null, "You must provide either recipientEmail or channelId");
 			Debug.Assert(recipientEmail == null || channelId == null, "You can't provide both recipientEmail and channelId");
 
-			if (recordsPerPage < 1 || recordsPerPage > 300)
-			{
-				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 300");
-			}
+			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync($"chat/users/{userId}/messages")

@@ -3,6 +3,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
@@ -21,19 +22,16 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithTokenAndDateRange<DashboardMeetingMetrics>> GetAllMeetingsAsync(DateTime from, DateTime to, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithTokenAndDateRange<DashboardMeetingMetrics>> GetAllMeetingsAsync(DateTime from, DateTime to, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
-			if (pageSize < 1 || pageSize > 300)
-			{
-				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 300");
-			}
+			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync("metrics/meetings")
 				.WithArgument("type", type.ToEnumString())
 				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
 				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
-				.WithArgument("page_size", pageSize)
+				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithTokenAndDateRange<DashboardMeetingMetrics>("meetings");
@@ -50,18 +48,15 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<DashboardMeetingParticipant>> GetMeetingParticipantsAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<DashboardMeetingParticipant>> GetMeetingParticipantsAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
-			if (pageSize < 1 || pageSize > 300)
-			{
-				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 300");
-			}
+			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync($"metrics/meetings/{meetingId}/participants")
 				.WithArgument("include_fields", "registrant_id")
 				.WithArgument("type", type.ToEnumString())
-				.WithArgument("page_size", pageSize)
+				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<DashboardMeetingParticipant>("participants");
@@ -78,53 +73,44 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<DashboardMeetingParticipantQos>> GetAllMeetingParticipantsQosAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 1, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<DashboardMeetingParticipantQos>> GetAllMeetingParticipantsQosAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 1, string pageToken = null, CancellationToken cancellationToken = default)
 		{
-			if (pageSize < 1 || pageSize > 10)
-			{
-				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 10");
-			}
+			Utils.ValidateRecordPerPage(recordsPerPage, max: 10);
 
 			return _client
 				.GetAsync($"metrics/meetings/{meetingId}/participants/qos")
 				.WithArgument("type", type.ToEnumString())
-				.WithArgument("page_size", pageSize)
+				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<DashboardMeetingParticipantQos>("participants");
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<ParticipantSharingDetails>> GetAllMeetingParticipantSharingDetailsAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<ParticipantSharingDetails>> GetAllMeetingParticipantSharingDetailsAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
-			if (pageSize < 1 || pageSize > 300)
-			{
-				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 300");
-			}
+			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync($"metrics/meetings/{meetingId}/participants/sharing")
 				.WithArgument("type", type.ToEnumString())
-				.WithArgument("page_size", pageSize)
+				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<ParticipantSharingDetails>("participants");
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithTokenAndDateRange<DashboardMetricsBase>> GetAllWebinarsAsync(DateTime from, DateTime to, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithTokenAndDateRange<DashboardMetricsBase>> GetAllWebinarsAsync(DateTime from, DateTime to, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
-			if (pageSize < 1 || pageSize > 300)
-			{
-				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 300");
-			}
+			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync("metrics/webinars")
 				.WithArgument("type", type.ToEnumString())
 				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
 				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
-				.WithArgument("page_size", pageSize)
+				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithTokenAndDateRange<DashboardMetricsBase>("webinars");
@@ -141,17 +127,14 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<DashboardParticipant>> GetWebinarParticipantsAsync(string webinarId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<DashboardParticipant>> GetWebinarParticipantsAsync(string webinarId, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
-			if (pageSize < 1 || pageSize > 300)
-			{
-				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 300");
-			}
+			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync($"metrics/webinars/{webinarId}/participants")
 				.WithArgument("type", type.ToEnumString())
-				.WithArgument("page_size", pageSize)
+				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<DashboardParticipant>("participants");
@@ -168,68 +151,56 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<DashboardMeetingParticipantQos>> GetAllWebinarParticipantQosAsync(string webinarId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 1, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<DashboardMeetingParticipantQos>> GetAllWebinarParticipantQosAsync(string webinarId, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 1, string pageToken = null, CancellationToken cancellationToken = default)
 		{
-			if (pageSize < 1 || pageSize > 10)
-			{
-				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 10");
-			}
+			Utils.ValidateRecordPerPage(recordsPerPage, max: 10);
 
 			return _client
 			  .GetAsync($"metrics/webinars/{webinarId}/participants/qos")
 			  .WithArgument("type", type.ToEnumString())
-			  .WithArgument("page_size", pageSize)
+			  .WithArgument("page_size", recordsPerPage)
 			  .WithArgument("next_page_token", pageToken)
 			  .WithCancellationToken(cancellationToken)
 			  .AsPaginatedResponseWithToken<DashboardMeetingParticipantQos>("participants");
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<ParticipantSharingDetails>> GetAllWebinarParticipantSharingDetailsAsync(string webinarId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<ParticipantSharingDetails>> GetAllWebinarParticipantSharingDetailsAsync(string webinarId, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
-			if (pageSize < 1 || pageSize > 300)
-			{
-				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 300");
-			}
+			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 			  .GetAsync($"metrics/webinars/{webinarId}/participants/sharing")
 			  .WithArgument("type", type.ToEnumString())
-			  .WithArgument("page_size", pageSize)
+			  .WithArgument("page_size", recordsPerPage)
 			  .WithArgument("next_page_token", pageToken)
 			  .WithCancellationToken(cancellationToken)
 			  .AsPaginatedResponseWithToken<ParticipantSharingDetails>("participants");
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<ZoomRoom>> GetAllZoomRoomsAsync(int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<ZoomRoom>> GetAllZoomRoomsAsync(int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
-			if (pageSize < 1 || pageSize > 300)
-			{
-				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 300");
-			}
+			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync("metrics/zoomrooms")
-				.WithArgument("page_size", pageSize)
+				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<ZoomRoom>("zoom_rooms");
 		}
 
 		/// <inheritdoc/>
-		public Task<ZoomRoom> GetRoomDetailsAsync(string zoomRoomId, DateTime from, DateTime to, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<ZoomRoom> GetRoomDetailsAsync(string zoomRoomId, DateTime from, DateTime to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
-			if (pageSize < 1 || pageSize > 300)
-			{
-				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 300");
-			}
+			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync($"metrics/zoomrooms/{zoomRoomId}")
 				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
 				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
-				.WithArgument("page_size", pageSize)
+				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<ZoomRoom>();
@@ -247,18 +218,15 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithTokenAndDateRange<ImMetric>> GetImMetricsAsync(DateTime from, DateTime to, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithTokenAndDateRange<ImMetric>> GetImMetricsAsync(DateTime from, DateTime to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
-			if (pageSize < 1 || pageSize > 300)
-			{
-				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 300");
-			}
+			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync("metrics/im")
 				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
 				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
-				.WithArgument("page_size", pageSize)
+				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithTokenAndDateRange<ImMetric>("users");
@@ -298,36 +266,30 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithTokenAndDateRange<ZoomRoomIssueDetails>> GetIssuesOfZoomRoomAsync(string zoomRoomId, DateTime from, DateTime to, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithTokenAndDateRange<ZoomRoomIssueDetails>> GetIssuesOfZoomRoomAsync(string zoomRoomId, DateTime from, DateTime to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
-			if (pageSize < 1 || pageSize > 300)
-			{
-				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 300");
-			}
+			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync($"metrics/issues/zoomrooms/{zoomRoomId}")
 				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
 				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
-				.WithArgument("page_size", pageSize)
+				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithTokenAndDateRange<ZoomRoomIssueDetails>("issue_details");
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithTokenAndDateRange<ClientFeedbackDetail>> GetZoomMeetingsClientFeedbackAsync(string feedbackId, DateTime from, DateTime to, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithTokenAndDateRange<ClientFeedbackDetail>> GetZoomMeetingsClientFeedbackAsync(string feedbackId, DateTime from, DateTime to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
-			if (pageSize < 1 || pageSize > 300)
-			{
-				throw new ArgumentOutOfRangeException(nameof(pageSize), "Page size must be between 1 and 300");
-			}
+			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync($"metrics/client/feedback/{feedbackId}")
 				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
 				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
-				.WithArgument("page_size", pageSize)
+				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithTokenAndDateRange<ClientFeedbackDetail>("client_feedback_details");

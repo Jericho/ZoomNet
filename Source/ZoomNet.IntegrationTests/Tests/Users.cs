@@ -23,9 +23,7 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			// UPDATE MY USER
 			await client.Users.UpdateAsync(myUser.Id,
-				firstName: "Hello",
-				lastName: "World",
-				company: "Microsoft",
+				company: "My Company",
 				department: "Accounting",
 				jobTitle: "CFO",
 				location: "3rd floor",

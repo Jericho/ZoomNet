@@ -5,7 +5,6 @@ using System.Net;
 using System.Net.Http;
 using System.Runtime.Serialization;
 using System.Text.Json.Serialization;
-using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using ZoomNet.Models;
@@ -187,7 +186,7 @@ namespace ZoomNet.UnitTests.Extensions
 				{
 					Content = new StringContent(responseContent)
 				};
-				var response = new MockFluentHttpResponse(message, null, CancellationToken.None);
+				var response = new MockFluentHttpResponse(message, null, TestContext.Current.CancellationToken);
 
 				// Act
 				await Should.ThrowAsync<ArgumentException>(() => response.AsPaginatedResponse<UserCallLog>("call_logs")).ConfigureAwait(true);
@@ -206,7 +205,7 @@ namespace ZoomNet.UnitTests.Extensions
 				{
 					Content = new StringContent(responseContent)
 				};
-				var response = new MockFluentHttpResponse(message, null, CancellationToken.None);
+				var response = new MockFluentHttpResponse(message, null, TestContext.Current.CancellationToken);
 
 				// Act
 				var paginatedResponse = await response.AsPaginatedResponse<UserCallLog>("call_logs").ConfigureAwait(true);
@@ -214,7 +213,7 @@ namespace ZoomNet.UnitTests.Extensions
 				// Assert
 				paginatedResponse.PageCount.ShouldBe(0);
 				paginatedResponse.PageNumber.ShouldBe(0);
-				paginatedResponse.PageSize.ShouldBe(100);
+				paginatedResponse.RecordsPerPage.ShouldBe(100);
 				paginatedResponse.Records.ShouldBeEmpty();
 				paginatedResponse.TotalRecords.ShouldBe(0);
 			}
@@ -238,7 +237,7 @@ namespace ZoomNet.UnitTests.Extensions
 				{
 					Content = new StringContent(responseContent)
 				};
-				var response = new MockFluentHttpResponse(message, null, CancellationToken.None);
+				var response = new MockFluentHttpResponse(message, null, TestContext.Current.CancellationToken);
 
 				// Act
 				await Should.ThrowAsync<ArgumentException>(() => response.AsPaginatedResponseWithToken<UserCallLog>("call_logs")).ConfigureAwait(true);
@@ -259,13 +258,13 @@ namespace ZoomNet.UnitTests.Extensions
 				{
 					Content = new StringContent(responseContent)
 				};
-				var response = new MockFluentHttpResponse(message, null, CancellationToken.None);
+				var response = new MockFluentHttpResponse(message, null, TestContext.Current.CancellationToken);
 
 				// Act
 				var paginatedResponse = await response.AsPaginatedResponseWithToken<UserCallLog>("call_logs").ConfigureAwait(true);
 
 				// Assert
-				paginatedResponse.PageSize.ShouldBe(100);
+				paginatedResponse.RecordsPerPage.ShouldBe(100);
 				paginatedResponse.Records.ShouldBeEmpty();
 				paginatedResponse.TotalRecords.ShouldBe(0);
 			}
@@ -289,7 +288,7 @@ namespace ZoomNet.UnitTests.Extensions
 				{
 					Content = new StringContent(responseContent)
 				};
-				var response = new MockFluentHttpResponse(message, null, CancellationToken.None);
+				var response = new MockFluentHttpResponse(message, null, TestContext.Current.CancellationToken);
 
 				// Act
 				await Should.ThrowAsync<ArgumentException>(() => response.AsPaginatedResponseWithTokenAndDateRange<UserCallLog>("call_logs")).ConfigureAwait(true);
@@ -310,13 +309,13 @@ namespace ZoomNet.UnitTests.Extensions
 				{
 					Content = new StringContent(responseContent)
 				};
-				var response = new MockFluentHttpResponse(message, null, CancellationToken.None);
+				var response = new MockFluentHttpResponse(message, null, TestContext.Current.CancellationToken);
 
 				// Act
 				var paginatedResponse = await response.AsPaginatedResponseWithTokenAndDateRange<UserCallLog>("call_logs").ConfigureAwait(true);
 
 				// Assert
-				paginatedResponse.PageSize.ShouldBe(100);
+				paginatedResponse.RecordsPerPage.ShouldBe(100);
 				paginatedResponse.Records.ShouldBeEmpty();
 				paginatedResponse.TotalRecords.ShouldBe(0);
 			}
@@ -407,7 +406,7 @@ namespace ZoomNet.UnitTests.Extensions
 				// Arrange
 				const string responseContent = @"{""code"":104, ""message"":""Invalid access token, does not contain scopes:[""zoom_events_basic:read"",""zoom_events_basic:read:admin""]""}";
 				var message = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(responseContent) };
-				var response = new MockFluentHttpResponse(message, null, CancellationToken.None);
+				var response = new MockFluentHttpResponse(message, null, TestContext.Current.CancellationToken);
 
 				// Act
 				var (isError, errorMessage, errorCode) = await response.Message.GetErrorMessageAsync();
@@ -424,7 +423,7 @@ namespace ZoomNet.UnitTests.Extensions
 				// Arrange
 				const string responseContent = @"{""code"":300,""message"":""Validation Failed."",""errors"":[{""field"":""settings.jbh_time"",""message"":""Invalid parameter: jbh_time.""}]}";
 				var message = new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(responseContent) };
-				var response = new MockFluentHttpResponse(message, null, CancellationToken.None);
+				var response = new MockFluentHttpResponse(message, null, TestContext.Current.CancellationToken);
 
 				// Act
 				var (isError, errorMessage, errorCode) = await response.Message.GetErrorMessageAsync();

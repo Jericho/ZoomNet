@@ -58,7 +58,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				ApprovalType = ApprovalType.Manual,
 				JoinBeforeHost = true,
 				JoinBeforeHostTime = JoinBeforeHostTime.FiveMinutes,
-				UsePmi = true,
+				UsePmi = false,
 			};
 			var trackingFields = new Dictionary<string, string>()
 			{
@@ -148,7 +148,7 @@ namespace ZoomNet.IntegrationTests.Tests
 					new BatchRegistrant { Email = "secondBatchRegistrant@example.com", FirstName = "Abdullah", LastName = "Galib" }
 				};
 				var registrantsInfo = await client.Meetings.PerformBatchRegistrationAsync(scheduledMeeting.Id, registrants, true, false, cancellationToken).ConfigureAwait(false);
-				await log.WriteLineAsync($"Registrants {registrantsInfo} added to meeting {scheduledMeeting.Id}").ConfigureAwait(false);
+				await log.WriteLineAsync($"{registrantsInfo.Length} registrants added to meeting {scheduledMeeting.Id}").ConfigureAwait(false);
 
 				var registrationAnswers1 = new[]
 				{
@@ -166,10 +166,10 @@ namespace ZoomNet.IntegrationTests.Tests
 				await log.WriteLineAsync($"Registrant {registrantInfo2.Id} added to meeting {scheduledMeeting.Id}").ConfigureAwait(false);
 
 				var registrant1 = await client.Meetings.GetRegistrantAsync(scheduledMeeting.Id, registrantInfo1.Id, cancellationToken).ConfigureAwait(false);
-				await log.WriteLineAsync($"Retrieve registrant {registrant1.Id}").ConfigureAwait(false);
+				await log.WriteLineAsync($"Retrieved registrant {registrant1.Id}").ConfigureAwait(false);
 
 				var registrant2 = await client.Meetings.GetRegistrantAsync(scheduledMeeting.Id, registrantInfo2.Id, cancellationToken).ConfigureAwait(false);
-				await log.WriteLineAsync($"Retrieve registrant {registrant2.Id}").ConfigureAwait(false);
+				await log.WriteLineAsync($"Retrieved registrant {registrant2.Id}").ConfigureAwait(false);
 
 				var pendingRegistrations = await client.Meetings.GetRegistrantsAsync(scheduledMeeting.Id, RegistrantStatus.Pending, null, 30, null, cancellationToken).ConfigureAwait(false);
 				var approvedRegistrations = await client.Meetings.GetRegistrantsAsync(scheduledMeeting.Id, RegistrantStatus.Approved, null, 30, null, cancellationToken).ConfigureAwait(false);
@@ -185,7 +185,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				await log.WriteLineAsync($"Registration {registrant1.Id} was deleted").ConfigureAwait(false);
 
 				await client.Meetings.DeleteRegistrantAsync(scheduledMeeting.Id, registrantInfo2.Id, null, cancellationToken).ConfigureAwait(false);
-				await log.WriteLineAsync($"Registration {registrant1.Id} was deleted").ConfigureAwait(false);
+				await log.WriteLineAsync($"Registration {registrantInfo2.Id} was deleted").ConfigureAwait(false);
 
 				var surveyQuestions = new[]
 				{

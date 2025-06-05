@@ -15,6 +15,11 @@ namespace ZoomNet
 		IAccounts Accounts { get; }
 
 		/// <summary>
+		/// Gets the resource which allows developers with master accounts (also known as "primary accounts") to get information about billing plans of their accounts and subaccounts.
+		/// </summary>
+		IBilling Billing { get; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage call logs.
 		/// </summary>
 		ICallLogs CallLogs { get; }
@@ -63,7 +68,7 @@ namespace ZoomNet
 		IExternalContacts ExternalContacts { get; }
 
 		/// <summary>
-		/// Gets the resource that allows you to manage groups.
+		/// Gets the resource which allows you to manage groups under an account.
 		/// </summary>
 		IGroups Groups { get; }
 
@@ -98,9 +103,19 @@ namespace ZoomNet
 		IRoles Roles { get; }
 
 		/// <summary>
+		/// Gets the resource which allows you to manage rooms.
+		/// </summary>
+		IRooms Rooms { get; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage SMS messages and sessions.
 		/// </summary>
 		ISms Sms { get; }
+
+		/// <summary>
+		/// Gets the resource which allows you to manage tracking fields.
+		/// </summary>
+		ITrackingFields TrackingFields { get; }
 
 		/// <summary>
 		/// Gets the resource which allows you to manage users.

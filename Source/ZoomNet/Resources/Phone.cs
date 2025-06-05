@@ -1,10 +1,10 @@
 using Pathoschild.Http.Client;
-using System;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
 using ZoomNet.Models.CallHandlingSettings;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
@@ -67,7 +67,7 @@ namespace ZoomNet.Resources
 
 		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<PhoneUser>> ListPhoneUsersAsync(
-			int pageSize = 30,
+			int recordsPerPage = 30,
 			string nextPageToken = null,
 			string siteId = null,
 			int? callingType = null,
@@ -77,14 +77,11 @@ namespace ZoomNet.Resources
 			string keyword = null,
 			CancellationToken cancellationToken = default)
 		{
-			if (pageSize < 1 || pageSize > 100)
-			{
-				throw new ArgumentOutOfRangeException(nameof(pageSize), "Records per page must be between 1 and 100");
-			}
+			Utils.ValidateRecordPerPage(recordsPerPage, max: 100);
 
 			return _client
 				.GetAsync("phone/users")
-				.WithArgument("page_size", pageSize)
+				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", nextPageToken)
 				.WithArgument("site_id", siteId)
 				.WithArgument("calling_type", callingType)

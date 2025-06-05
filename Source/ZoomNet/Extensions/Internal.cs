@@ -118,10 +118,7 @@ namespace ZoomNet
 		/// Reads the content of the HTTP response as string asynchronously.
 		/// </summary>
 		/// <param name="httpContent">The content.</param>
-		/// <param name="encoding">The encoding. You can leave this parameter null and the encoding will be
-		/// automatically calculated based on the charset in the response. Also, UTF-8
-		/// encoding will be used if the charset is absent from the response, is blank
-		/// or contains an invalid value.</param>
+		/// <param name="fallbackEncoding">Optional. The encoding to use in case the encoding cannot be automatically determined. UTF-8 is used if this parameter is omitted.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The string content of the response.</returns>
 		/// <remarks>
@@ -157,7 +154,7 @@ namespace ZoomNet
 		/// var responseContent = await response.Content.ReadAsStringAsync(null).ConfigureAwait(false);
 		/// </code>
 		/// </example>
-		internal static async Task<string> ReadAsStringAsync(this HttpContent httpContent, Encoding encoding, CancellationToken cancellationToken = default)
+		internal static async Task<string> ReadAsStringAsync(this HttpContent httpContent, Encoding fallbackEncoding, CancellationToken cancellationToken = default)
 		{
 			var content = string.Empty;
 
@@ -168,7 +165,7 @@ namespace ZoomNet
 #else
 				var contentStream = await httpContent.ReadAsStreamAsync().ConfigureAwait(false);
 #endif
-				encoding ??= httpContent.GetEncoding(Encoding.UTF8);
+				var encoding = httpContent.GetEncoding(fallbackEncoding);
 
 				// This is important: we must make a copy of the response stream otherwise we would get an
 				// exception on subsequent attempts to read the content of the stream
@@ -194,13 +191,11 @@ namespace ZoomNet
 		/// Gets the encoding.
 		/// </summary>
 		/// <param name="content">The content.</param>
-		/// <param name="defaultEncoding">The default encoding.</param>
-		/// <returns>
-		/// The encoding.
-		/// </returns>
+		/// <param name="fallbackEncoding">The encoding to fallback on if we can't determine how to response was encoded.</param>
+		/// <returns>The encoding.</returns>
 		/// <remarks>
 		/// This method tries to get the encoding based on the charset or uses the
-		/// 'defaultEncoding' if the charset is empty or contains an invalid value.
+		/// 'fallbackEncoding' if the charset is empty or contains an invalid value.
 		/// </remarks>
 		/// <example>
 		///   <code>
@@ -214,9 +209,9 @@ namespace ZoomNet
 		/// var encoding = response.Content.GetEncoding(Encoding.UTF8);
 		/// </code>
 		/// </example>
-		internal static Encoding GetEncoding(this HttpContent content, Encoding defaultEncoding)
+		internal static Encoding GetEncoding(this HttpContent content, Encoding fallbackEncoding)
 		{
-			var encoding = defaultEncoding;
+			Encoding encoding = null;
 			try
 			{
 				var charset = content?.Headers?.ContentType?.CharSet;
@@ -227,10 +222,10 @@ namespace ZoomNet
 			}
 			catch
 			{
-				encoding = defaultEncoding;
+				// Ignore exceptions caused by invalid charset in the response
 			}
 
-			return encoding;
+			return encoding ?? fallbackEncoding ?? Encoding.UTF8;
 		}
 
 		/// <summary>
@@ -1078,7 +1073,7 @@ namespace ZoomNet
 			// Get the various metadata properties
 			var pageCount = rootElement.GetPropertyValue("page_count", 0);
 			var pageNumber = rootElement.GetPropertyValue("page_number", 0);
-			var pageSize = rootElement.GetPropertyValue("page_size", 0);
+			var recordsPerPage = rootElement.GetPropertyValue("page_size", 0);
 			var totalRecords = rootElement.GetPropertyValue("total_records", (int?)null);
 
 			// Get the property that holds the records
@@ -1094,7 +1089,7 @@ namespace ZoomNet
 			{
 				PageCount = pageCount,
 				PageNumber = pageNumber,
-				PageSize = pageSize,
+				RecordsPerPage = recordsPerPage,
 				Records = jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
@@ -1117,7 +1112,7 @@ namespace ZoomNet
 
 			// Get the various metadata properties
 			var nextPageToken = rootElement.GetPropertyValue("next_page_token", string.Empty);
-			var pageSize = rootElement.GetPropertyValue("page_size", 0);
+			var recordsPerPage = rootElement.GetPropertyValue("page_size", 0);
 			var totalRecords = rootElement.GetPropertyValue("total_records", (int?)null);
 
 			// Get the property that holds the records
@@ -1132,7 +1127,7 @@ namespace ZoomNet
 			var result = new PaginatedResponseWithToken<T>()
 			{
 				NextPageToken = nextPageToken,
-				PageSize = pageSize,
+				RecordsPerPage = recordsPerPage,
 				Records = jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
@@ -1157,7 +1152,7 @@ namespace ZoomNet
 			var from = DateTime.ParseExact(rootElement.GetPropertyValue("from", string.Empty), "yyyy-MM-dd", CultureInfo.InvariantCulture);
 			var to = DateTime.ParseExact(rootElement.GetPropertyValue("to", string.Empty), "yyyy-MM-dd", CultureInfo.InvariantCulture);
 			var nextPageToken = rootElement.GetPropertyValue("next_page_token", string.Empty);
-			var pageSize = rootElement.GetPropertyValue("page_size", 0);
+			var recordsPerPage = rootElement.GetPropertyValue("page_size", 0);
 			var totalRecords = rootElement.GetPropertyValue("total_records", (int?)null);
 
 			// Get the property that holds the records
@@ -1174,7 +1169,7 @@ namespace ZoomNet
 				From = from,
 				To = to,
 				NextPageToken = nextPageToken,
-				PageSize = pageSize,
+				RecordsPerPage = recordsPerPage,
 				Records = jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;

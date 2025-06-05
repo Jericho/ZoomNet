@@ -79,12 +79,20 @@ namespace ZoomNet.Utilities
 
 			var rateLimitInfo = GetRateLimitInformation(response?.Headers);
 
-			// There's no need to retry when the reset time is too far in the future.
-			// I arbitrarily decided that 15 seconds is the cutoff.
-			var delay = CalculateDelay(_systemClock, rateLimitInfo.RetryAfter, DEFAULT_DELAY);
-			if (delay.TotalSeconds > 15) return false;
-
-			return true;
+			if (DateTime.TryParse(rateLimitInfo.RetryAfter, out DateTime nextRetryDateTime))
+			{
+				// There's no need to retry when the reset time is too far in the future.
+				// I arbitrarily decided that 15 seconds is the cutoff.
+				return nextRetryDateTime.Subtract(_systemClock.UtcNow).TotalSeconds < 15;
+			}
+			else if ((rateLimitInfo.Type ?? string.Empty).Equals("QPS", StringComparison.OrdinalIgnoreCase))
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 
 		/// <summary>
@@ -105,9 +113,9 @@ namespace ZoomNet.Utilities
 			// https://marketplace.zoom.us/docs/api-reference/rate-limits#best-practices-for-handling-errors
 			var rateLimitInfo = GetRateLimitInformation(response?.Headers);
 
-			if (!string.IsNullOrEmpty(rateLimitInfo.RetryAfter))
+			if (DateTime.TryParse(rateLimitInfo.RetryAfter, out DateTime nextRetryDateTime))
 			{
-				waitTime = CalculateDelay(_systemClock, rateLimitInfo.RetryAfter, DEFAULT_DELAY);
+				waitTime = nextRetryDateTime.Subtract(_systemClock.UtcNow);
 			}
 			else if ((rateLimitInfo.Type ?? string.Empty).Equals("QPS", StringComparison.OrdinalIgnoreCase))
 			{
@@ -149,16 +157,6 @@ namespace ZoomNet.Utilities
 			var retryAfter = headers?.GetValue("Retry-After");
 
 			return (category, type, limit, remaining, retryAfter);
-		}
-
-		private static TimeSpan CalculateDelay(ISystemClock clock, string retryAfter, TimeSpan defaultDelay)
-		{
-			if (DateTime.TryParse(retryAfter, out DateTime nextRetryDateTime))
-			{
-				return nextRetryDateTime.Subtract(clock.UtcNow);
-			}
-
-			return defaultDelay;
 		}
 
 		#endregion

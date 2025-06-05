@@ -10,15 +10,19 @@ namespace ZoomNet.IntegrationTests.TestSuites
 		private static readonly Type[] _tests = new Type[]
 		{
 			typeof(Accounts),
+			typeof(Billing),
 			typeof(CallLogs),
 			typeof(Chat),
 			typeof(CloudRecordings),
 			typeof(Contacts),
 			typeof(Dashboards),
 			typeof(ExternalContacts),
+			typeof(Groups),
 			typeof(Meetings),
 			typeof(Reports),
 			typeof(Roles),
+			typeof(Rooms),
+			typeof(TrackingFields),
 			typeof(Users),
 			typeof(Webinars),
 		};

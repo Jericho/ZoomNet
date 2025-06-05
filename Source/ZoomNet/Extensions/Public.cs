@@ -448,16 +448,64 @@ namespace ZoomNet
 		}
 
 		/// <summary>
-		/// Adds user to a group.
+		/// Add user to a group.
 		/// </summary>
 		/// <param name="groupsResource">The group resource.</param>
 		/// <param name="groupId">The ID of the group.</param>
 		/// <param name="emailAddress">An email address of user to add to the group.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>A task representing the operation. The result will be a string representing the ID of the added user.</returns>
-		public static async Task<string> AddUserToGroupAsync(this IGroups groupsResource, string groupId, string emailAddress, CancellationToken cancellationToken = default)
+		/// <returns>The ID of the added user.</returns>
+		public static async Task<string> AddMemberByEmailAsync(this IGroups groupsResource, string groupId, string emailAddress, CancellationToken cancellationToken = default)
 		{
-			var result = await groupsResource.AddUsersToGroupAsync(groupId, new[] { emailAddress }, cancellationToken).ConfigureAwait(false);
+			var result = await groupsResource.AddMembersByEmailAsync(groupId, new[] { emailAddress }, cancellationToken).ConfigureAwait(false);
+
+			// We added a single member to a group therefore the array returned from the Zoom API contains a single element
+			return result.Single();
+		}
+
+		/// <summary>
+		/// Add user to a group.
+		/// </summary>
+		/// <param name="groupsResource">The group resource.</param>
+		/// <param name="groupId">The ID of the group.</param>
+		/// <param name="userId">The user unique identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The ID of the added user.</returns>
+		public static async Task<string> AddMemberByIdAsync(this IGroups groupsResource, string groupId, string userId, CancellationToken cancellationToken = default)
+		{
+			var result = await groupsResource.AddMembersByIdAsync(groupId, new[] { userId }, cancellationToken).ConfigureAwait(false);
+
+			// We added a single member to a group therefore the array returned from the Zoom API contains a single element
+			return result.Single();
+		}
+
+		/// <summary>
+		/// Add an administrator to a group.
+		/// </summary>
+		/// <param name="groupsResource">The group resource.</param>
+		/// <param name="groupId">The ID of the group.</param>
+		/// <param name="emailAddress">An email address of user to add as an administrator to the group.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The ID of the added user.</returns>
+		public static async Task<string> AddAdministratorByEmailAsync(this IGroups groupsResource, string groupId, string emailAddress, CancellationToken cancellationToken = default)
+		{
+			var result = await groupsResource.AddAdministratorsByEmailAsync(groupId, new[] { emailAddress }, cancellationToken).ConfigureAwait(false);
+
+			// We added a single member to a group therefore the array returned from the Zoom API contains a single element
+			return result.Single();
+		}
+
+		/// <summary>
+		/// Add an administrator to a group.
+		/// </summary>
+		/// <param name="groupsResource">The group resource.</param>
+		/// <param name="groupId">The ID of the group.</param>
+		/// <param name="userId">The user unique identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The ID of the added user.</returns>
+		public static async Task<string> AddAdministratorByIdAsync(this IGroups groupsResource, string groupId, string userId, CancellationToken cancellationToken = default)
+		{
+			var result = await groupsResource.AddAdministratorsByIdAsync(groupId, new[] { userId }, cancellationToken).ConfigureAwait(false);
 
 			// We added a single member to a group therefore the array returned from the Zoom API contains a single element
 			return result.Single();
@@ -515,6 +563,120 @@ namespace ZoomNet
 		public static Task<ChatbotMessageInformation> EditMessageAsync(this IChatbot chatbotResource, string messageId, string accountId, string toJId, string robotJId, string message, bool enableMarkdownSupport = false, CancellationToken cancellationToken = default)
 		{
 			return chatbotResource.EditMessageAsync(messageId, accountId, toJId, robotJId, new ChatbotContent() { Head = new ChatbotHeader(message) }, enableMarkdownSupport, cancellationToken);
+		}
+
+		/// <summary>
+		/// Delete a group's Virtual Background file.
+		/// </summary>
+		/// <param name="groupsResource">The groups ressource.</param>
+		/// <param name="groupId">The group unique identifier.</param>
+		/// <param name="fileId">A file unique identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		public static Task DeleteVirtualBackgroundAsync(this IGroups groupsResource, string groupId, string fileId, CancellationToken cancellationToken = default)
+		{
+			return groupsResource.DeleteVirtualBackgroundsAsync(groupId, new[] { fileId }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Assign a tag to a Zoom Room.
+		/// </summary>
+		/// <param name="roomsResource">The rooms ressource.</param>
+		/// <param name="roomId">The unique identifier of the Zoom Room. </param>
+		/// <param name="tagId">The Tag ID to assign to the Zoom Room.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		public static Task AssignTagToRoom(this IRooms roomsResource, string roomId, string tagId, CancellationToken cancellationToken = default)
+		{
+			return roomsResource.AssignTagsToRoom(roomId, new[] { tagId }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Assign multiple tags to Zoom Rooms by location ID.
+		/// </summary>
+		/// <param name="roomsResource">The rooms ressource.</param>
+		/// <param name="locationId">The unique identifier of the location where all Zoom Rooms under this location to be assigned with tags.</param>
+		/// <param name="tagId">The Tag ID to assign to all the Zoom Rooms in the given location.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		public static Task AssignTagToRoomsInLocation(this IRooms roomsResource, string locationId, string tagId, CancellationToken cancellationToken = default)
+		{
+			return roomsResource.AssignTagsToRoomsInLocation(locationId, new[] { tagId }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Displays the specified emergency content on all Zoom Rooms' displays in the specified account.
+		/// </summary>
+		/// <param name="roomsResource">The rooms ressource.</param>
+		/// <param name="content">The emergency content to be displayed.</param>
+		/// <param name="accountId">The account identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		public static Task DisplayEmergencyContentToAccountAsync(this IRooms roomsResource, string content, string accountId, CancellationToken cancellationToken = default)
+		{
+			return roomsResource.DisplayEmergencyContentToAccountsAsync(content, new[] { accountId }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Displays the specified emergency content on all Zoom Rooms' displays in the specified location.
+		/// </summary>
+		/// <param name="roomsResource">The rooms ressource.</param>
+		/// <param name="content">The emergency content to be displayed.</param>
+		/// <param name="locationId">Thelocation identifiers.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		public static Task DisplayEmergencyContentToLocationAsync(this IRooms roomsResource, string content, string locationId, CancellationToken cancellationToken = default)
+		{
+			return roomsResource.DisplayEmergencyContentToLocationsAsync(content, new[] { locationId }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Displays the specified emergency content on the Zoom Rooms digital signage display.
+		/// </summary>
+		/// <param name="roomsResource">The rooms ressource.</param>
+		/// <param name="content">The emergency content to be displayed.</param>
+		/// <param name="roomId">The  Zoom room identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		public static Task DisplayEmergencyContentToRoomAsync(this IRooms roomsResource, string content, string roomId, CancellationToken cancellationToken = default)
+		{
+			return roomsResource.DisplayEmergencyContentToRoomsAsync(content, new[] { roomId }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Remove the specified emergency content from all Zoom Rooms' displays in the specified account.
+		/// </summary>
+		/// <param name="roomsResource">The rooms ressource.</param>
+		/// <param name="accountId">The account identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		public static Task RemoveEmergencyContentFromAccountAsync(this IRooms roomsResource, string accountId, CancellationToken cancellationToken = default)
+		{
+			return roomsResource.RemoveEmergencyContentFromAccountsAsync(new[] { accountId }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Remove the specified emergency content from all Zoom Rooms' displays in the specified location.
+		/// </summary>
+		/// <param name="roomsResource">The rooms ressource.</param>
+		/// <param name="locationId">The location identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		public static Task RemoveEmergencyContentFromLocationAsync(this IRooms roomsResource, string locationId, CancellationToken cancellationToken = default)
+		{
+			return roomsResource.RemoveEmergencyContentFromLocationsAsync(new[] { locationId }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Remove the specified emergency content from the Zoom Room digital signage display.
+		/// </summary>
+		/// <param name="roomsResource">The rooms ressource.</param>
+		/// <param name="roomId">The Zoom room identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		public static Task RemoveEmergencyContentFromRoomAsync(this IRooms roomsResource, string roomId, CancellationToken cancellationToken = default)
+		{
+			return roomsResource.RemoveEmergencyContentFromRoomsAsync(new[] { roomId }, cancellationToken);
 		}
 	}
 }

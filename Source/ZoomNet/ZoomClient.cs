@@ -70,6 +70,9 @@ namespace ZoomNet
 		public IAccounts Accounts { get; private set; }
 
 		/// <inheritdoc/>
+		public IBilling Billing { get; private set; }
+
+		/// <inheritdoc/>
 		public ICallLogs CallLogs { get; private set; }
 
 		/// <inheritdoc/>
@@ -116,7 +119,13 @@ namespace ZoomNet
 		public IRoles Roles { get; private set; }
 
 		/// <inheritdoc/>
+		public IRooms Rooms { get; private set; }
+
+		/// <inheritdoc/>
 		public ISms Sms { get; private set; }
+
+		/// <inheritdoc/>
+		public ITrackingFields TrackingFields { get; private set; }
 
 		/// <inheritdoc/>
 		public IUsers Users { get; private set; }
@@ -215,6 +224,7 @@ namespace ZoomNet
 			_fluentClient.Filters.Add(new ZoomErrorHandler());
 
 			Accounts = new Accounts(_fluentClient);
+			Billing = new Billing(_fluentClient);
 			CallLogs = new CallLogs(_fluentClient);
 			Chat = new Chat(_fluentClient);
 			Chatbot = new Chatbot(_fluentClient);
@@ -230,7 +240,9 @@ namespace ZoomNet
 			Phone = new Phone(_fluentClient);
 			Reports = new Reports(_fluentClient);
 			Roles = new Roles(_fluentClient);
+			Rooms = new Rooms(_fluentClient);
 			Sms = new Sms(_fluentClient);
+			TrackingFields = new TrackingFields(_fluentClient);
 			Users = new Users(_fluentClient);
 			Webinars = new Webinars(_fluentClient);
 		}

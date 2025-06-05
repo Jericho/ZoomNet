@@ -3,6 +3,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
@@ -24,10 +25,7 @@ namespace ZoomNet.Resources
 		public Task<PaginatedResponseWithToken<SmsMessage>> GetSmsSessionDetailsAsync(
 			string sessionId, DateTime? from, DateTime? to, bool? orderAscending = true, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
-			if (recordsPerPage < 1 || recordsPerPage > 100)
-			{
-				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 100");
-			}
+			Utils.ValidateRecordPerPage(recordsPerPage, max: 100);
 
 			return _client
 				.GetAsync($"phone/sms/sessions/{sessionId}")
@@ -38,6 +36,16 @@ namespace ZoomNet.Resources
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<SmsMessage>("sms_histories");
+		}
+
+		/// <inheritdoc/>
+		public Task<SmsMessage> GetSmsByMessageIdAsync(
+			string sessionId, string messageId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"phone/sms/sessions/{sessionId}/messages/{messageId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<SmsMessage>();
 		}
 	}
 }

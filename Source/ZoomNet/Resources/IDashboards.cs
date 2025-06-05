@@ -22,7 +22,7 @@ namespace ZoomNet.Resources
 		/// </param>
 		/// <param name="to">Date to end search.</param>
 		/// <param name="type">The type of meetings. Allowed values: Past, PastOne, Live.</param>
-		/// <param name="pageSize">The number of records returned within a single API call.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pageToken">
 		/// The next page token is used to paginate through large result sets.
 		/// A next page token will be returned whenever the set of available results exceeds the current page size.
@@ -32,7 +32,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="DashboardMeetingMetrics">meetings</see>.
 		/// </returns>
-		Task<PaginatedResponseWithTokenAndDateRange<DashboardMeetingMetrics>> GetAllMeetingsAsync(DateTime from, DateTime to, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithTokenAndDateRange<DashboardMeetingMetrics>> GetAllMeetingsAsync(DateTime from, DateTime to, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve the details of a meeting.
@@ -53,7 +53,7 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="meetingId">The meeting ID or meeting UUID. If given the meeting ID it will take the last meeting instance.</param>
 		/// <param name="type">The type of meetings. Allowed values: Past, PastOne, Live.</param>
-		/// <param name="pageSize">The number of records returned within a single API call.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pageToken">
 		/// The next page token is used to paginate through large result sets.
 		/// A next page token will be returned whenever the set of available results exceeds the current page size.
@@ -63,7 +63,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="DashboardMeetingParticipant">participants</see>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<DashboardMeetingParticipant>> GetMeetingParticipantsAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<DashboardMeetingParticipant>> GetMeetingParticipantsAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve the quality of service for participants from live or past meetings.
@@ -82,7 +82,7 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="meetingId">The meeting ID or meeting UUID. If given the meeting ID it will take the last meeting instance.</param>
 		/// <param name="type">The type of meetings. Allowed values: Past, PastOne, Live.</param>
-		/// <param name="pageSize">The number of records returned within a single API call.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pageToken">
 		/// The next page token is used to paginate through large result sets.
 		/// A next page token will be returned whenever the set of available results exceeds the current page size.
@@ -92,14 +92,14 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="DashboardMeetingParticipantQos">participants</see>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<DashboardMeetingParticipantQos>> GetAllMeetingParticipantsQosAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 1, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<DashboardMeetingParticipantQos>> GetAllMeetingParticipantsQosAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 1, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve the sharing and recording details of participants from live or past meetings.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID or meeting UUID. If given the meeting ID it will take the last meeting instance.</param>
 		/// <param name="type">The type of meetings. Allowed values: Past, PastOne, Live.</param>
-		/// <param name="pageSize">The number of records returned within a single API call.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pageToken">
 		/// The next page token is used to paginate through large result sets.
 		/// A next page token will be returned whenever the set of available results exceeds the current page size.
@@ -109,7 +109,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The <see cref="ParticipantSharingDetails">sharing details for the meetings participants.</see>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<ParticipantSharingDetails>> GetAllMeetingParticipantSharingDetailsAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<ParticipantSharingDetails>> GetAllMeetingParticipantSharingDetailsAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve data on total live or past webinars that occurred during a specified period of time.
@@ -120,7 +120,7 @@ namespace ZoomNet.Resources
 		/// </param>
 		/// <param name="to">Date to end search.</param>
 		/// <param name="type">The type of webinar. Allowed values: Past, PastOne, Live.</param>
-		/// <param name="pageSize">The number of records returned within a single API call.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pageToken">
 		/// The next page token is used to paginate through large result sets.
 		/// A next page token will be returned whenever the set of available results exceeds the current page size.
@@ -130,7 +130,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="DashboardMetricsBase">webinars.</see>.
 		/// </returns>
-		Task<PaginatedResponseWithTokenAndDateRange<DashboardMetricsBase>> GetAllWebinarsAsync(DateTime from, DateTime to, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithTokenAndDateRange<DashboardMetricsBase>> GetAllWebinarsAsync(DateTime from, DateTime to, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve the details of a webinar.
@@ -148,7 +148,7 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="webinarId">The webinar ID or webinar UUID. If given the webinar ID it will take the last webinar instance.</param>
 		/// <param name="type">The type of webinar. Allowed values: Past, PastOne, Live.</param>
-		/// <param name="pageSize">The number of records returned within a single API call.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pageToken">
 		/// The next page token is used to paginate through large result sets.
 		/// A next page token will be returned whenever the set of available results exceeds the current page size.
@@ -158,7 +158,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="DashboardParticipant">participants</see>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<DashboardParticipant>> GetWebinarParticipantsAsync(string webinarId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<DashboardParticipant>> GetWebinarParticipantsAsync(string webinarId, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve the quality of service for participants from live or past webinars.
@@ -177,7 +177,7 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="webinarId">The webinar ID or webinar UUID. If given the webinar ID it will take the last webinar instance.</param>
 		/// <param name="type">The type of webinars. Allowed values: Past, PastOne, Live.</param>
-		/// <param name="pageSize">The number of records returned within a single API call.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pageToken">
 		/// The next page token is used to paginate through large result sets.
 		/// A next page token will be returned whenever the set of available results exceeds the current page size.
@@ -187,14 +187,14 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="DashboardMeetingParticipantQos">participants</see>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<DashboardMeetingParticipantQos>> GetAllWebinarParticipantQosAsync(string webinarId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 1, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<DashboardMeetingParticipantQos>> GetAllWebinarParticipantQosAsync(string webinarId, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 1, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve the sharing and recording details of participants from live or past webinars.
 		/// </summary>
 		/// <param name="webinarId">The webinar ID or webinar UUID. If given the webinar ID it will take the last webinar instance.</param>
 		/// <param name="type">The type of webinars. Allowed values: Past, PastOne, Live.</param>
-		/// <param name="pageSize">The number of records returned within a single API call.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pageToken">
 		/// The next page token is used to paginate through large result sets.
 		/// A next page token will be returned whenever the set of available results exceeds the current page size.
@@ -204,12 +204,12 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The <see cref="ParticipantSharingDetails">sharing details for the webinars participants.</see>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<ParticipantSharingDetails>> GetAllWebinarParticipantSharingDetailsAsync(string webinarId, DashboardMeetingType type = DashboardMeetingType.Live, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<ParticipantSharingDetails>> GetAllWebinarParticipantSharingDetailsAsync(string webinarId, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// List information on all Zoom Rooms in an account.
 		/// </summary>
-		/// <param name="pageSize">The number of records returned within a single API call.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pageToken">
 		/// The next page token is used to paginate through large result sets.
 		/// A next page token will be returned whenever the set of available results exceeds the current page size.
@@ -217,7 +217,7 @@ namespace ZoomNet.Resources
 		/// </param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>An array of <see cref="ZoomRoom"/> Zoom rooms.</returns>
-		Task<PaginatedResponseWithToken<ZoomRoom>> GetAllZoomRoomsAsync(int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<ZoomRoom>> GetAllZoomRoomsAsync(int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// The Zoom Rooms dashboard metrics lets you know the type of configuration a Zoom room has and details on the meetings held in that room.
@@ -227,7 +227,7 @@ namespace ZoomNet.Resources
 		/// Date to start searching from. Should be within a month of "to" as only a months worth of data is returned at a time.
 		/// </param>
 		/// <param name="to">Date to end search.</param>
-		/// <param name="pageSize">The number of records returned within a single API call.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pageToken">
 		/// The next page token is used to paginate through large result sets.
 		/// A next page token will be returned whenever the set of available results exceeds the current page size.
@@ -235,7 +235,7 @@ namespace ZoomNet.Resources
 		/// </param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>A <see cref="ZoomRoom"/> Zoom room with details on current and past meetings.</returns>
-		Task<ZoomRoom> GetRoomDetailsAsync(string roomId, DateTime from, DateTime to, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<ZoomRoom> GetRoomDetailsAsync(string roomId, DateTime from, DateTime to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// A Cloud Room Connector allows H.323/SIP endpoints to connect to a Zoom meeting. <br/>
@@ -257,7 +257,7 @@ namespace ZoomNet.Resources
 		/// Date to start searching from. Should be within a month of "to" as only a months worth of data is returned at a time.
 		/// </param>
 		/// <param name="to">Date to end search.</param>
-		/// <param name="pageSize">The number of records returned within a single API call.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pageToken">
 		/// The next page token is used to paginate through large result sets.
 		/// A next page token will be returned whenever the set of available results exceeds the current page size.
@@ -267,7 +267,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="ImMetric">chat room usage metrics</see>.
 		/// </returns>
-		Task<PaginatedResponseWithTokenAndDateRange<ImMetric>> GetImMetricsAsync(DateTime from, DateTime to, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithTokenAndDateRange<ImMetric>> GetImMetricsAsync(DateTime from, DateTime to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve survey results from <a href="https://support.zoom.us/hc/en-us/articles/115005855266-End-of-Meeting-Feedback-Survey#h_e30d552b-6d8e-4e0a-a588-9ca8180c4dbf">Zoom meetings client feedback.</a>.
@@ -310,7 +310,7 @@ namespace ZoomNet.Resources
 		/// Date to start searching from. Should be within a month of "to" as only a months worth of data is returned at a time.
 		/// </param>
 		/// <param name="to">Date to end search.</param>
-		/// <param name="pageSize">The number of records returned within a single API call.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pageToken">
 		/// The next page token is used to paginate through large result sets.
 		/// A next page token will be returned whenever the set of available results exceeds the current page size.
@@ -320,7 +320,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="ZoomRoomIssueDetails">Zoom room issue details</see>.
 		/// </returns>
-		Task<PaginatedResponseWithTokenAndDateRange<ZoomRoomIssueDetails>> GetIssuesOfZoomRoomAsync(string zoomRoomId, DateTime from, DateTime to, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithTokenAndDateRange<ZoomRoomIssueDetails>> GetIssuesOfZoomRoomAsync(string zoomRoomId, DateTime from, DateTime to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve detailed information on a <a href="https://support.zoom.us/hc/en-us/articles/115005855266-End-of-Meeting-Feedback-Survey#h_e30d552b-6d8e-4e0a-a588-9ca8180c4dbf">Zoom meetings client feedback.</a>.
@@ -330,7 +330,7 @@ namespace ZoomNet.Resources
 		/// Date to start searching from. Should be within a month of "to" as only a months worth of data is returned at a time.
 		/// </param>
 		/// <param name="to">Date to end search.</param>
-		/// <param name="pageSize">The number of records returned within a single API call.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pageToken">
 		/// The next page token is used to paginate through large result sets.
 		/// A next page token will be returned whenever the set of available results exceeds the current page size.
@@ -340,7 +340,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="ClientFeedbackDetail">client feedback details</see>.
 		/// </returns>
-		Task<PaginatedResponseWithTokenAndDateRange<ClientFeedbackDetail>> GetZoomMeetingsClientFeedbackAsync(string feedbackId, DateTime from, DateTime to, int pageSize = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithTokenAndDateRange<ClientFeedbackDetail>> GetZoomMeetingsClientFeedbackAsync(string feedbackId, DateTime from, DateTime to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// If the <a href="https://support.zoom.us/hc/en-us/articles/115005855266">End of Meeting Feedback Survey</a> option is enabled, attendees will be prompted with a survey window where they can tap either the Thumbs Up or Thumbs Down button that indicates their Zoom meeting experience. <br/>
