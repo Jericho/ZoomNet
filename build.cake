@@ -390,9 +390,7 @@ Task("Publish-NuGet")
 	var settings = new DotNetNuGetPushSettings
 	{
     	Source = nuGetApiUrl,
-	    ApiKey = nuGetApiKey,
-		ArgumentCustomization = args => args
-			.Append($"-tl:{terminalLogger}")
+	    ApiKey = nuGetApiKey
 	};
 
 	foreach(var package in GetFiles(outputDir + "*.nupkg"))
