@@ -90,6 +90,36 @@ namespace ZoomNet.Resources
 			CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Retrieves a list of all of an account's phone numbers.
+		/// </summary>
+		/// <param name="recordsPerPage">The number of records returned from a single API call. Default is 30.</param>
+		/// <param name="nextPageToken">
+		/// The next page token paginates through a large set of results.
+		/// A next page token is returned whenever the set of available results exceeds the current page size.
+		/// The expiration period for this token is 15 minutes.
+		/// </param>
+		/// <param name="siteId">The unique identifier of the site.</param>
+		/// <param name="assignmentType">The assignment status of the phone number.</param>
+		/// <param name="extensionType">The type of extension.</param>
+		/// <param name="numberType">The type of phone number.</param>
+		/// <param name="pendingNumbers">Indicates whether to include pending numbers.</param>
+		/// <param name="keyword">The partial string of phone number.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>
+		/// A task representing the asynchronous operation. The task result contains an array of phone numbers in type of <see cref="PhoneDetail"/>.
+		/// </returns>
+		Task<PaginatedResponseWithToken<PhoneDetail>> ListPhonesAsync(
+			int recordsPerPage = 30,
+			string nextPageToken = null,
+			string siteId = null,
+			PhoneDetailAssignmentType? assignmentType = null,
+			PhoneDetailExtensionType? extensionType = null,
+			PhoneDetailNumberType? numberType = null,
+			bool? pendingNumbers = null,
+			string keyword = null,
+			CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Updates a Zoom Phone's call handling setting.
 		/// Call handling settings allow you to control how your system routes calls during business, closed, or holiday hours.
 		/// </summary>
