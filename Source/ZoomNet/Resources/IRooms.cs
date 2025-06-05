@@ -427,7 +427,11 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="roomId">The Zoom Room's ID.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns></returns>
+		/// <returns>The async task.</returns>
+		/// <remarks>
+		/// I haven't been able to test this functionality.
+		/// The response to this endpoint is always empty.
+		/// </remarks>
 		Task GetDevicesInformationAsync(string roomId, CancellationToken cancellationToken = default);
 
 		/// <summary>
@@ -444,6 +448,10 @@ namespace ZoomNet.Resources
 		/// <param name="speakerId">The speaker's device ID.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The async task.</returns>
+		/// <remarks>
+		/// I haven't been able to test this functionality because I get the following error message:
+		/// "Unable to create device profile because there is no microphone/speaker/camera available in the following Zoom Room: aDLGFI6hRvaXkISCUXzUOA.".
+		/// </remarks>
 		Task CreateDeviceProfileAsync(string roomId, bool? enableAudioProcessing = null, bool? autoAdjustMicrophoneLevel = null, string cameraId = null, bool? enableEchoCancellation = null, string microphoneId = null, string name = null, RoomDeviceNoiseSuppressionType? noiseSuppressionType = null, string speakerId = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
