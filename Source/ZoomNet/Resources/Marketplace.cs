@@ -75,6 +75,18 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<AppInfo>> GetPublicAppsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return GetAppsAsync("public", recordsPerPage, pagingToken, cancellationToken);
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<AppInfo>> GetAccountAppsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return GetAppsAsync("account_created", recordsPerPage, pagingToken, cancellationToken);
+		}
+
+		/// <inheritdoc/>
 		public Task<string> CreateEventSubscriptionAsync(IEnumerable<string> events, string subscriptionName, Uri webhookUrl, IEnumerable<string> userIds, string subscriptionScope, string accountId, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
@@ -103,18 +115,36 @@ namespace ZoomNet.Resources
 				.AsObject<AppInfo>();
 		}
 
-
-
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<AppInfo>> GetPublicAppsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task AddAllowRequestForUsers(string appId, IEnumerable<string> userIds, CancellationToken cancellationToken = default)
 		{
-			return GetAppsAsync("public", recordsPerPage, pagingToken, cancellationToken);
+			var data = new JsonObject
+			{
+				{ "action", "add_user" },
+				{ "user_ids", userIds?.ToArray() }
+			};
+
+			return _client
+				.PostAsync($"marketplace/apps/{appId}/requests")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<AppInfo>> GetAccountAppsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task AddAllowRequestForGroups(string appId, IEnumerable<string> groupIds, CancellationToken cancellationToken = default)
 		{
-			return GetAppsAsync("account_created", recordsPerPage, pagingToken, cancellationToken);
+			var data = new JsonObject
+			{
+				{ "action", "add_group" },
+				{ "user_ids", groupIds?.ToArray() }
+			};
+
+			return _client
+				.PostAsync($"marketplace/apps/{appId}/requests")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
 		}
 
 		private Task<PaginatedResponseWithToken<AppInfo>> GetAppsAsync(string type, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
