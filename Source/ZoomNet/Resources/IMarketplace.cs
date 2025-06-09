@@ -10,7 +10,7 @@ namespace ZoomNet.Resources
 	/// Allows you to to access information from Zoom. Also, allows you to build private services or public applications on the Zoom App Marketplace.
 	/// </summary>
 	/// <remarks>
-	/// See Zoom documentation <a href="https://marketplace.zoom.us/docs/api-reference/marketplace-api/">here</a> for more information.
+	/// See Zoom documentation <a href="https://developers.zoom.us/docs/api/marketplace/">here</a> for more information.
 	/// </remarks>
 	public interface IMarketplace
 	{
@@ -100,5 +100,23 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The <see cref="AppInfo">app information</see>.</returns>
 		Task<AppInfo> GetAppInfoAsync(string appId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Add app allow requests for users​.
+		/// </summary>
+		/// <param name="appId">The app's ID.</param>
+		/// <param name="userIds">The user Ids.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task AddAllowRequestForUsers(string appId, IEnumerable<string> userIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Add app allow requests for groups​.
+		/// </summary>
+		/// <param name="appId">The app's ID.</param>
+		/// <param name="groupIds">The group Ids.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task AddAllowRequestForGroups(string appId, IEnumerable<string> groupIds, CancellationToken cancellationToken = default);
 	}
 }
