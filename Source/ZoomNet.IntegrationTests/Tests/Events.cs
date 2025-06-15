@@ -15,6 +15,12 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			await log.WriteLineAsync("\n***** EVENTS *****\n").ConfigureAwait(false);
 
+			// GET ALL THE HUBS
+			var hubs = await client.Events.GetAllHubsAsync(UserRoleType.Host, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {hubs.Length} hubs").ConfigureAwait(false);
+
+			var hub = hubs.First(h => h.IsActive);
+
 			// GET ALL THE EVENTS
 			var events = await client.Events.GetAllAsync(100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {events.TotalRecords} events").ConfigureAwait(false);
@@ -33,7 +39,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			// SIMPLE EVENT
 			var start = DateTime.UtcNow.AddMonths(1);
 			var end = start.AddMinutes(35);
-			var newSimpleEvent = await client.Events.CreateSimpleAsync("ZoomNet Integration Testing: simple event", "The description", start, end, TimeZones.America_New_York, "abc123", true, cancellationToken).ConfigureAwait(false);
+			var newSimpleEvent = await client.Events.CreateSimpleAsync("ZoomNet Integration Testing: simple event", "The description", start, end, TimeZones.America_New_York, EventMeetingType.Meeting, hub.Id, true, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Simple event {newSimpleEvent.Id} created").ConfigureAwait(false);
 
 		}
