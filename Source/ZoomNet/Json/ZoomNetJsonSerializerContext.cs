@@ -1,5 +1,8 @@
+// This file is maintained by ZoomNet.IntegrationTests.Program.
+
 using System.Text.Json.Serialization;
 
+#pragma warning disable CS0618 // Type or member is obsolete
 namespace ZoomNet.Json
 {
 	[JsonSerializable(typeof(System.Text.Json.Nodes.JsonObject))]
@@ -279,8 +282,10 @@ namespace ZoomNet.Json
 	[JsonSerializable(typeof(ZoomNet.Models.SignageBannerDisplayPeriod))]
 	[JsonSerializable(typeof(ZoomNet.Models.SignageBannerSettings))]
 	[JsonSerializable(typeof(ZoomNet.Models.SignageContentItem))]
+	[JsonSerializable(typeof(ZoomNet.Models.SignageContentItemSummary))]
 	[JsonSerializable(typeof(ZoomNet.Models.SignageContentList))]
 	[JsonSerializable(typeof(ZoomNet.Models.SignageLayout))]
+	[JsonSerializable(typeof(ZoomNet.Models.SignageResourceType))]
 	[JsonSerializable(typeof(ZoomNet.Models.Site))]
 	[JsonSerializable(typeof(ZoomNet.Models.SmsAttachment))]
 	[JsonSerializable(typeof(ZoomNet.Models.SmsAttachmentType))]
@@ -650,8 +655,10 @@ namespace ZoomNet.Json
 	[JsonSerializable(typeof(ZoomNet.Models.SignageBannerDisplayPeriod[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.SignageBannerSettings[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.SignageContentItem[]))]
+	[JsonSerializable(typeof(ZoomNet.Models.SignageContentItemSummary[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.SignageContentList[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.SignageLayout[]))]
+	[JsonSerializable(typeof(ZoomNet.Models.SignageResourceType[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.Site[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.SmsAttachment[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.SmsAttachmentType[]))]
@@ -850,6 +857,7 @@ namespace ZoomNet.Json
 	[JsonSerializable(typeof(ZoomNet.Models.RoomType?))]
 	[JsonSerializable(typeof(ZoomNet.Models.ScreenshareContentType?))]
 	[JsonSerializable(typeof(ZoomNet.Models.SignageLayout?))]
+	[JsonSerializable(typeof(ZoomNet.Models.SignageResourceType?))]
 	[JsonSerializable(typeof(ZoomNet.Models.SmsAttachmentType?))]
 	[JsonSerializable(typeof(ZoomNet.Models.SmsDirection?))]
 	[JsonSerializable(typeof(ZoomNet.Models.SmsMessageType?))]
@@ -870,3 +878,4 @@ namespace ZoomNet.Json
 	{
 	}
 }
+#pragma warning restore CS0618 // Type or member is obsolete
