@@ -23,6 +23,18 @@ namespace ZoomNet.Resources
 		Task<Hub[]> GetAllHubsAsync(UserRoleType userRole, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Retrieve a list of hub hosts.
+		/// </summary>
+		/// <param name="hubId">The ID of the event hub.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Event">events</see>.
+		/// </returns>
+		Task<PaginatedResponseWithToken<HubHost>> GetAllHubHostsAsync(string hubId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Retrieve summary information about all meetings of the specified type for a user.
 		/// </summary>
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
