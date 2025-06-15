@@ -19,7 +19,7 @@ namespace ZoomNet.Models
 		[JsonPropertyName("name")]
 		public string Name { get; set; }
 
-		/// <summary>Gets or sets the description</summary>
+		/// <summary>Gets or sets the description.</summary>
 		[JsonPropertyName("description")]
 		public string Description { get; set; }
 

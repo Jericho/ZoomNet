@@ -23,7 +23,11 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			// GET ALL THE HUB HOSTS
 			var hubHosts = await client.Events.GetAllHubHostsAsync(hub.Id, 100, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"There are {hubHosts.TotalRecords} hub hosts for hub {hub.Id}").ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {hubHosts.TotalRecords} hosts for hub {hub.Id}").ConfigureAwait(false);
+
+			// GET ALL THE HUB VIDEOS
+			var hubVideos = await client.Events.GetAllHubVideosAsync(hub.Id, null, 100, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {hubVideos.TotalRecords} videos for hub {hub.Id}").ConfigureAwait(false);
 
 			// GET ALL THE EVENTS
 			var events = await client.Events.GetAllAsync(100, null, cancellationToken).ConfigureAwait(false);
