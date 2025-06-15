@@ -48,6 +48,15 @@ namespace ZoomNet.Resources
 		Task<PaginatedResponseWithToken<HubVideo>> GetAllHubVideosAsync(string hubId, string folderId = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Removes the host from the specified hub.
+		/// </summary>
+		/// <param name="hubId">The unique identifier of the hub from which the host will be removed. Cannot be null or empty.</param>
+		/// <param name="userId">The unique identifier of the user to be removed from the hub. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The operation will be canceled if the token is triggered.</param>
+		/// <returns>A task that represents the asynchronous operation. The task completes when the host is successfully removed.</returns>
+		Task RemoveHostFromHubAsync(string hubId, string userId, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Retrieve summary information about all meetings of the specified type for a user.
 		/// </summary>
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>

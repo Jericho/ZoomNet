@@ -61,6 +61,15 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task RemoveHostFromHubAsync(string hubId, string userId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"zoom_events/hubs/{hubId}/hosts/{userId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<Event>> GetAllAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);
