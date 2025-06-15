@@ -47,6 +47,20 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<HubVideo>> GetAllHubVideosAsync(string hubId, string folderId = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			Utils.ValidateRecordPerPage(recordsPerPage);
+
+			return _client
+				.GetAsync($"zoom_events/hubs/{hubId}/videos")
+				.WithArgument("folder_id", folderId)
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<HubVideo>("videos");
+		}
+
+		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<Event>> GetAllAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);

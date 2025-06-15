@@ -35,6 +35,19 @@ namespace ZoomNet.Resources
 		Task<PaginatedResponseWithToken<HubHost>> GetAllHubHostsAsync(string hubId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Retrieve a list of video/recording resources of a hub.
+		/// </summary>
+		/// <param name="hubId">The ID of the event hub.</param>
+		/// <param name="folderId">Optional folder ID to filter the videos by a specific folder.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Event">events</see>.
+		/// </returns>
+		Task<PaginatedResponseWithToken<HubVideo>> GetAllHubVideosAsync(string hubId, string folderId = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Retrieve summary information about all meetings of the specified type for a user.
 		/// </summary>
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
