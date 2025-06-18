@@ -85,5 +85,16 @@ namespace ZoomNet.Resources
 
 		//Task<Event> CreateConferenceAsync(string name, string description, DateTime? start, DateTime? end, DateTime? lobbyStart, DateTime? lobbyEnd, accessLevel, IEnumerable<string tags, string hubId, string contactName, IEnumerable<Country> blockedCountries = null, attendenceType, string tagLine = null, CancellationToken cancellationToken = default);
 		//Task<Event> CreateRecurringAsync(string name, string description, DateTime? start, DateTime? end, DateTime? lobbyStart, DateTime? lobbyEnd, RecurrenceInfo recurrence, accessLevel, IEnumerable<string tags, string hubId, string contactName, IEnumerable<Country> blockedCountries = null, attendenceType, string tagLine = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieves all registrants for the specified event.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event for which registrants are to be retrieved. This parameter cannot be null or empty.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">A token that can be used to cancel the operation.</param>
+		/// <returns>A task representing the asynchronous operation. When completed, the task contains a collection of registrants for
+		/// the specified event.</returns>
+		Task<PaginatedResponseWithToken<EventRegistrant>> GetAllRegistrantsAsync(string eventId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 	}
 }
