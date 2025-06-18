@@ -75,7 +75,7 @@ namespace ZoomNet.Resources
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
-				.GetAsync($"zoom_events/events")
+				.GetAsync("zoom_events/events")
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
@@ -110,6 +110,19 @@ namespace ZoomNet.Resources
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<SimpleEvent>();
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<EventRegistrant>> GetAllRegistrantsAsync(string eventId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			Utils.ValidateRecordPerPage(recordsPerPage);
+
+			return _client
+				.GetAsync($"zoom_events/events/{eventId}/registrants")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<EventRegistrant>("registrants");
 		}
 	}
 }
