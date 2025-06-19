@@ -14,19 +14,47 @@ namespace ZoomNet.Json
 	/// <seealso cref="ZoomNetJsonConverter{T}"/>
 	internal class WebHookEventConverter : ZoomNetJsonConverter<Models.Webhooks.Event>
 	{
+		private readonly bool _throwWhenUnknownEvent;
+
+		public WebHookEventConverter(bool throwWhenUnknownEventType = true)
+		{
+			_throwWhenUnknownEvent = throwWhenUnknownEventType;
+		}
+
 		public override Models.Webhooks.Event Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 		{
 			var doc = JsonDocument.ParseValue(ref reader);
 			var rootElement = doc.RootElement;
 
-			var eventType = rootElement.GetPropertyValue<string>("event").ToEnum<Models.Webhooks.EventType>();
 			var timestamp = rootElement.GetPropertyValue<long>("event_ts").FromUnixTime(UnixTimePrecision.Milliseconds);
-
 			var payloadJsonProperty = rootElement.GetProperty("payload", true).Value;
+			var eventTypeName = rootElement.GetPropertyValue("event", string.Empty);
+			var eventType = Models.Webhooks.EventType.Unknown;
+
+			if (!eventTypeName.TryToEnum(out eventType))
+			{
+				if (_throwWhenUnknownEvent)
+				{
+					throw new ArgumentException($"{eventTypeName} is not a recognized event type.", nameof(eventTypeName));
+				}
+				else
+				{
+					eventType = Models.Webhooks.EventType.Unknown;
+				}
+			}
 
 			Models.Webhooks.Event webHookEvent;
 			switch (eventType)
 			{
+				case Models.Webhooks.EventType.Unknown:
+					webHookEvent = new UnknownEvent
+					{
+						EventType = Models.Webhooks.EventType.Unknown,
+						EventTypeName = eventTypeName,
+						Timestamp = timestamp,
+						Payload = payloadJsonProperty
+					};
+					break;
 				case Models.Webhooks.EventType.AppDeauthorized:
 					var appDeauthorizedEvent = payloadJsonProperty.ToObject<AppDeauthorizedEvent>(options);
 					webHookEvent = appDeauthorizedEvent;
