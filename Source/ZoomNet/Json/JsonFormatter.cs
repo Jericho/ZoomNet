@@ -37,7 +37,6 @@ namespace ZoomNet.Json
 					new MeetingConverter(),
 					new NullableDateTimeConverter(),
 					new ParticipantDeviceConverter(),
-					new WebHookEventConverter(),
 					new WebinarConverter(),
 				}
 			};
@@ -55,7 +54,6 @@ namespace ZoomNet.Json
 					new MeetingConverter(),
 					new NullableDateTimeConverter(),
 					new ParticipantDeviceConverter(),
-					new WebHookEventConverter(),
 					new WebinarConverter(),
 				}
 			};

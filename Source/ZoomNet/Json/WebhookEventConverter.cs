@@ -14,19 +14,48 @@ namespace ZoomNet.Json
 	/// <seealso cref="ZoomNetJsonConverter{T}"/>
 	internal class WebHookEventConverter : ZoomNetJsonConverter<Event>
 	{
+		private readonly bool _throwWhenUnknownEvent;
+
+		public WebHookEventConverter(bool throwWhenUnknownEventType = true)
+		{
+			_throwWhenUnknownEvent = throwWhenUnknownEventType;
+		}
+
 		public override Event Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 		{
 			var doc = JsonDocument.ParseValue(ref reader);
 			var rootElement = doc.RootElement;
 
-			var eventType = rootElement.GetPropertyValue<string>("event").ToEnum<EventType>();
 			var timestamp = rootElement.GetPropertyValue<long>("event_ts").FromUnixTime(UnixTimePrecision.Milliseconds);
-
 			var payloadJsonProperty = rootElement.GetProperty("payload", true).Value;
+
+			var eventTypeName = rootElement.GetPropertyValue("event", string.Empty);
+			var eventType = EventType.Unknown;
+
+			if (!eventTypeName.TryToEnum(out eventType))
+			{
+				if (_throwWhenUnknownEvent)
+				{
+					throw new ArgumentException($"{eventTypeName} is not a recognized event type.", nameof(eventTypeName));
+				}
+				else
+				{
+					eventType = EventType.Unknown;
+				}
+			}
 
 			Event webHookEvent;
 			switch (eventType)
 			{
+				case EventType.Unknown:
+					webHookEvent = new UnknownEvent
+					{
+						EventType = EventType.Unknown,
+						EventTypeName = eventTypeName,
+						Timestamp = timestamp,
+						Payload = payloadJsonProperty
+					};
+					break;
 				case EventType.AppDeauthorized:
 					var appDeauthorizedEvent = payloadJsonProperty.ToObject<AppDeauthorizedEvent>(options);
 					webHookEvent = appDeauthorizedEvent;
