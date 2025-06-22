@@ -93,8 +93,18 @@ namespace ZoomNet.Resources
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pagingToken">The paging token.</param>
 		/// <param name="cancellationToken">A token that can be used to cancel the operation.</param>
-		/// <returns>A task representing the asynchronous operation. When completed, the task contains a collection of registrants for
-		/// the specified event.</returns>
+		/// <returns>A task representing the asynchronous operation. When completed, the task contains a collection of registrants for the specified event.</returns>
 		Task<PaginatedResponseWithToken<EventRegistrant>> GetAllRegistrantsAsync(string eventId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieves all attendees for the specified session.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event for which registrants are to be retrieved. This parameter cannot be null or empty.</param>
+		/// <param name="sessionId">The ID of the session.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">A token that can be used to cancel the operation.</param>
+		/// <returns>A task representing the asynchronous operation. When completed, the task contains a collection of attendees for the specified session.</returns>
+		Task<PaginatedResponseWithToken<EventSessionAttendee>> GetAllSessionAttendeesAsync(string eventId, string sessionId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 	}
 }
