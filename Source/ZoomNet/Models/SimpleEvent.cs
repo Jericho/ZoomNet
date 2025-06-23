@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// A sinlge session event.
+	/// A single session event.
 	/// </summary>
 	/// <seealso cref="ZoomNet.Models.Event" />
 	public class SimpleEvent : Event
