@@ -16,6 +16,16 @@ namespace ZoomNet.Resources
 	{
 		#region ATTENDEE ACTIONS
 
+		/// <summary>
+		/// Marks the specified attendees as checked in for the given event.
+		/// </summary>
+		/// <remarks>You can perform onsite check-in for up to 300 attendees in a single call.</remarks>
+		/// <param name="eventId">The unique identifier of the event for which attendees are being checked in.</param>
+		/// <param name="attendeeEmailAddresses">A collection of email addresses representing the attendees to check in.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task CheckInAttendeesAsync(string eventId, IEnumerable<string> attendeeEmailAddresses, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region COEDITORS
@@ -53,6 +63,23 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The new <see cref="SimpleEvent"/>.</returns>
 		Task<SimpleEvent> CreateSimpleEventAsync(string name, string description, DateTime start, DateTime end, TimeZones timeZone, EventMeetingType meetingType, string hubId, bool isRestricted = false, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create a conference event.
+		/// </summary>
+		/// <param name="name">The name of the event.</param>
+		/// <param name="description">The description of the event.</param>
+		/// <param name="start">The start time of the event in UTC.</param>
+		/// <param name="end">The end time of the event in UTC.</param>
+		/// <param name="timeZone">The timezone of the event.</param>
+		/// <param name="meetingType">The type of the meeting.</param>
+		/// <param name="hubId">The ID of the event hub.</param>
+		/// <param name="isRestricted">Indicates whether the event is restricted or not.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The new <see cref="SimpleEvent"/>.</returns>
+		Task<Conference> CreateConferenceAsync(string name, string description, DateTime start, DateTime end, TimeZones timeZone, string hubId, bool isRestricted = false, CancellationToken cancellationToken = default);
+
+		//Task<Event> CreateRecurringEventAsync(string name, string description, DateTime? start, DateTime? end, DateTime? lobbyStart, DateTime? lobbyEnd, RecurrenceInfo recurrence, accessLevel, IEnumerable<string tags, string hubId, string contactName, IEnumerable<Country> blockedCountries = null, attendenceType, string tagLine = null, CancellationToken cancellationToken = default);
 
 		#endregion
 
