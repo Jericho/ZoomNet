@@ -14,6 +14,86 @@ namespace ZoomNet.Resources
 	/// </remarks>
 	public interface IEvents
 	{
+		#region ATTENDEE ACTIONS
+
+		#endregion
+
+		#region COEDITORS
+
+		#endregion
+
+		#region EVENT ACCES
+
+		#endregion
+
+		#region EVENTS
+
+		/// <summary>
+		/// Retrieve summary information about all meetings of the specified type for a user.
+		/// </summary>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Event">events</see>.
+		/// </returns>
+		Task<PaginatedResponseWithToken<Event>> GetAllAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create a simple event.
+		/// </summary>
+		/// <param name="name">The name of the event.</param>
+		/// <param name="description">The description of the event.</param>
+		/// <param name="start">The start time of the event in UTC.</param>
+		/// <param name="end">The end time of the event in UTC.</param>
+		/// <param name="timeZone">The timezone of the event.</param>
+		/// <param name="meetingType">The type of the meeting.</param>
+		/// <param name="hubId">The ID of the event hub.</param>
+		/// <param name="isRestricted">Indicates whether the event is restricted or not.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The new <see cref="SimpleEvent"/>.</returns>
+		Task<SimpleEvent> CreateSimpleEventAsync(string name, string description, DateTime start, DateTime end, TimeZones timeZone, EventMeetingType meetingType, string hubId, bool isRestricted = false, CancellationToken cancellationToken = default);
+
+		#endregion
+
+		#region EXHIBITORS
+
+		/// <summary>
+		/// Creates an exhibitor for a multi-session and conference type event.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event to which the exhibitor will be added. Cannot be null or empty.</param>
+		/// <param name="name">The name of the exhibitor. Cannot be null or empty.</param>
+		/// <param name="contactFullName">The full name of the exhibitor's primary contact. Cannot be null or empty.</param>
+		/// <param name="contactEmail">The email address of the exhibitor's primary contact. Must be a valid email address. Cannot be null or empty.</param>
+		/// <param name="isSponsor">Indicates whether the exhibitor is a sponsor of the event. If true, the <paramref name="sponsorTierId"/> must also be provided.</param>
+		/// <param name="sponsorTierId">The sponsor tier ID for the exhibitor. This is required if <paramref name="isSponsor"/> is true; otherwise, it can be null or empty.</param>
+		/// <param name="description">A description of the exhibitor. Can be null or empty.</param>
+		/// <param name="sessionIds">A collection of session IDs associated with the exhibitor. Can be null or empty.</param>
+		/// <param name="website">The URL of the exhibitor's website. Can be null or empty.</param>
+		/// <param name="privacyPolicyUrl">The URL of the exhibitor's privacy policy. Can be null or empty.</param>
+		/// <param name="linkedInUrl">The URL of the exhibitor's LinkedIn profile. Can be null or empty.</param>
+		/// <param name="twitterUrl">The URL of the exhibitor's Twitter profile. Can be null or empty.</param>
+		/// <param name="youtubeUrl">The URL of the exhibitor's YouTube channel. Can be null or empty.</param>
+		/// <param name="instagramUrl">The URL of the exhibitor's Instagram profile. Can be null or empty.</param>
+		/// <param name="facebookUrl">The URL of the exhibitor's Facebook profile. Can be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Defaults to <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the created <see
+		/// cref="EventExhibitor"/> object.</returns>
+		Task<EventExhibitor> CreateExhibitorAsync(string eventId, string name, string contactFullName, string contactEmail, bool isSponsor, string sponsorTierId, string description = null, IEnumerable<string> sessionIds = null, string website = null, string privacyPolicyUrl = null, string linkedInUrl = null, string twitterUrl = null, string youtubeUrl = null, string instagramUrl = null, string facebookUrl = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieves all sponsor tiers associated with the specified event.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event for which sponsor tiers are to be retrieved. This value cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>An array of <see cref="SponsorTier"/> objects representing the sponsor tiers for the specified event. The array
+		/// will be empty if no sponsor tiers are found.</returns>
+		Task<SponsorTier[]> GetAllSponsorTiersAsync(string eventId, CancellationToken cancellationToken = default);
+
+		#endregion
+
+		#region HUBS
+
 		/// <summary>
 		/// Retrieves a list of all hubs.
 		/// </summary>
@@ -57,33 +137,9 @@ namespace ZoomNet.Resources
 		/// <returns>A task that represents the asynchronous operation. The task completes when the host is successfully removed.</returns>
 		Task RemoveHostFromHubAsync(string hubId, string userId, CancellationToken cancellationToken = default);
 
-		/// <summary>
-		/// Retrieve summary information about all meetings of the specified type for a user.
-		/// </summary>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Event">events</see>.
-		/// </returns>
-		Task<PaginatedResponseWithToken<Event>> GetAllAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+		#endregion
 
-		/// <summary>
-		/// Create a simple event.
-		/// </summary>
-		/// <param name="name">The name of the event.</param>
-		/// <param name="description">The description of the event.</param>
-		/// <param name="start">The start time of the event in UTC.</param>
-		/// <param name="end">The end time of the event in UTC.</param>
-		/// <param name="timeZone">The timezone of the event.</param>
-		/// <param name="meetingType">The type of the meeting.</param>
-		/// <param name="hubId">The ID of the event hub.</param>
-		/// <param name="isRestricted">Indicates whether the event is restricted or not.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>The new <see cref="SimpleEvent"/>.</returns>
-		Task<SimpleEvent> CreateSimpleEventAsync(string name, string description, DateTime start, DateTime end, TimeZones timeZone, EventMeetingType meetingType, string hubId, bool isRestricted = false, CancellationToken cancellationToken = default);
-
-		//Task<Event> CreateRecurringAsync(string name, string description, DateTime? start, DateTime? end, DateTime? lobbyStart, DateTime? lobbyEnd, RecurrenceInfo recurrence, accessLevel, IEnumerable<string tags, string hubId, string contactName, IEnumerable<Country> blockedCountries = null, attendenceType, string tagLine = null, CancellationToken cancellationToken = default);
+		#region REGISTRANTS
 
 		/// <summary>
 		/// Retrieves all registrants for the specified event.
@@ -106,28 +162,13 @@ namespace ZoomNet.Resources
 		/// <returns>A task representing the asynchronous operation. When completed, the task contains a collection of attendees for the specified session.</returns>
 		Task<PaginatedResponseWithToken<EventSessionAttendee>> GetAllSessionAttendeesAsync(string eventId, string sessionId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
-		/// <summary>
-		/// Creates an exhibitor for a multi-session and conference type event.
-		/// </summary>
-		/// <param name="eventId">The unique identifier of the event to which the exhibitor will be added. Cannot be null or empty.</param>
-		/// <param name="name">The name of the exhibitor. Cannot be null or empty.</param>
-		/// <param name="contactFullName">The full name of the exhibitor's primary contact. Cannot be null or empty.</param>
-		/// <param name="contactEmail">The email address of the exhibitor's primary contact. Must be a valid email address. Cannot be null or empty.</param>
-		/// <param name="isSponsor">Indicates whether the exhibitor is a sponsor of the event. If true, the <paramref name="sponsorTierId"/> must also be provided.</param>
-		/// <param name="sponsorTierId">The sponsor tier ID for the exhibitor. This is required if <paramref name="isSponsor"/> is true; otherwise, it can be null or empty.</param>
-		/// <param name="description">A description of the exhibitor. Can be null or empty.</param>
-		/// <param name="sessionIds">A collection of session IDs associated with the exhibitor. Can be null or empty.</param>
-		/// <param name="website">The URL of the exhibitor's website. Can be null or empty.</param>
-		/// <param name="privacyPolicyUrl">The URL of the exhibitor's privacy policy. Can be null or empty.</param>
-		/// <param name="linkedInUrl">The URL of the exhibitor's LinkedIn profile. Can be null or empty.</param>
-		/// <param name="twitterUrl">The URL of the exhibitor's Twitter profile. Can be null or empty.</param>
-		/// <param name="youtubeUrl">The URL of the exhibitor's YouTube channel. Can be null or empty.</param>
-		/// <param name="instagramUrl">The URL of the exhibitor's Instagram profile. Can be null or empty.</param>
-		/// <param name="facebookUrl">The URL of the exhibitor's Facebook profile. Can be null or empty.</param>
-		/// <param name="cancellationToken">A token to monitor for cancellation requests. Defaults to <see cref="CancellationToken.None"/>.</param>
-		/// <returns>A task that represents the asynchronous operation. The task result contains the created <see
-		/// cref="EventExhibitor"/> object.</returns>
-		Task<EventExhibitor> CreateExhibitorAsync(string eventId, string name, string contactFullName, string contactEmail, bool isSponsor, string sponsorTierId, string description = null, IEnumerable<string> sessionIds = null, string website = null, string privacyPolicyUrl = null, string linkedInUrl = null, string twitterUrl = null, string youtubeUrl = null, string instagramUrl = null, string facebookUrl = null, CancellationToken cancellationToken = default);
+		#endregion
+
+		#region REPORTS
+
+		#endregion
+
+		#region SESSIONS
 
 		/// <summary>Creates a new event session.</summary>
 		/// <remarks>This operation is not available for single session event type.</remarks>
@@ -188,13 +229,26 @@ namespace ZoomNet.Resources
 			int maxCapacity = 0,
 			CancellationToken cancellationToken = default);
 
-		/// <summary>
-		/// Retrieves all sponsor tiers associated with the specified event.
-		/// </summary>
-		/// <param name="eventId">The unique identifier of the event for which sponsor tiers are to be retrieved. This value cannot be null or empty.</param>
-		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-		/// <returns>An array of <see cref="SponsorTier"/> objects representing the sponsor tiers for the specified event. The array
-		/// will be empty if no sponsor tiers are found.</returns>
-		Task<SponsorTier[]> GetAllSponsorTiersAsync(string eventId, CancellationToken cancellationToken = default);
+		#endregion
+
+		#region SPEAKERS
+
+		#endregion
+
+		#region TICKET TYPES
+
+		#endregion
+
+		#region TICKETS
+
+		#endregion
+
+		#region VIDEO_ON_DEMAND
+
+		#endregion
+
+		#region VIDEO_ON_DEMAND REGISTRATION
+
+		#endregion
 	}
 }
