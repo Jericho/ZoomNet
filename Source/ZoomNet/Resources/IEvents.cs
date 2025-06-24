@@ -72,7 +72,6 @@ namespace ZoomNet.Resources
 		/// <param name="start">The start time of the event in UTC.</param>
 		/// <param name="end">The end time of the event in UTC.</param>
 		/// <param name="timeZone">The timezone of the event.</param>
-		/// <param name="meetingType">The type of the meeting.</param>
 		/// <param name="hubId">The ID of the event hub.</param>
 		/// <param name="isRestricted">Indicates whether the event is restricted or not.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>

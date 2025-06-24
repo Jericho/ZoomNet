@@ -309,7 +309,8 @@ namespace ZoomNet.Resources
 				{ "panelists", panelists?.ToArray() },
 				{ "attendance_type", attendanceType.ToEnumString() },
 				{ "physical_location", physicalLocation },
-				{ "session_reservation", new JsonObject
+				{
+					"session_reservation", new JsonObject
 					{
 						{ "max_capacity", maxCapacity },
 						{ "allow_reservations", allowReservations }
