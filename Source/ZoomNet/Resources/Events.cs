@@ -28,15 +28,32 @@ namespace ZoomNet.Resources
 		#region ATTENDEE ACTIONS
 
 		/// <inheritdoc/>
-		public Task CheckInAttendeesAsync(string eventId, IEnumerable<string> attendeeEmailAddresses, CancellationToken cancellationToken = default)
+		public Task CheckInAttendeesAsync(string eventId, IEnumerable<string> attendeeEmailAddresses, string source, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
-				{ "attendees", attendeeEmailAddresses?.Select(e => new JsonObject { { "email", e }, { "action", "check-in" } }).ToArray() }
+				{ "attendees", attendeeEmailAddresses?.Select(e => new JsonObject { { "email", e }, { "action", "check-in" } }).ToArray() },
+				{ "source", source }
 			};
 
 			return _client
 				.PatchAsync($"zoom_events/events/{eventId}/attendee_action")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task CheckInAttendeesAsync(string eventId, string sessionId, IEnumerable<string> attendeeEmailAddresses, string source, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "attendees", attendeeEmailAddresses?.Select(e => new JsonObject { { "email", e }, { "action", "check-in" } }).ToArray() },
+				{ "source", source }
+			};
+
+			return _client
+				.PatchAsync($"zoom_events/events/{eventId}/sessions/{sessionId}/attendee_action")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();

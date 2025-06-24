@@ -22,9 +22,22 @@ namespace ZoomNet.Resources
 		/// <remarks>You can perform onsite check-in for up to 300 attendees in a single call.</remarks>
 		/// <param name="eventId">The unique identifier of the event for which attendees are being checked in.</param>
 		/// <param name="attendeeEmailAddresses">A collection of email addresses representing the attendees to check in.</param>
+		/// <param name="source">The source of the check-in request, such as "onsite" or "api". This is used for tracking purposes.</param>
 		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
 		/// <returns>A task that represents the asynchronous operation.</returns>
-		Task CheckInAttendeesAsync(string eventId, IEnumerable<string> attendeeEmailAddresses, CancellationToken cancellationToken = default);
+		Task CheckInAttendeesAsync(string eventId, IEnumerable<string> attendeeEmailAddresses, string source, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Marks the specified attendees as checked in for the given event session.
+		/// </summary>
+		/// <remarks>You can perform onsite check-in for up to 300 attendees in a single call.</remarks>
+		/// <param name="eventId">The unique identifier of the event for which attendees are being checked in.</param>
+		/// <param name="sessionId">The unique identifier of the session for which attendees are being checked in.</param>
+		/// <param name="attendeeEmailAddresses">A collection of email addresses representing the attendees to check in.</param>
+		/// <param name="source">The source of the check-in request, such as "onsite" or "api". This is used for tracking purposes.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task CheckInAttendeesAsync(string eventId, string sessionId, IEnumerable<string> attendeeEmailAddresses, string source, CancellationToken cancellationToken = default);
 
 		#endregion
 
