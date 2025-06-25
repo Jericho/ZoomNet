@@ -62,6 +62,24 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			var newSession = await client.Events.CreateSessionAsync(newConference.Id, "ZoomNet Integration Testing: Session", start, end, TimeZones.America_New_York, "This is the desciption", EventSessionType.Webinar, true, cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Session {newSession.Id} created").ConfigureAwait(false);
+
+			var checkInErrors = await client.Events.CheckInAttendeesAsync(newConference.Id, newSession.Id, new[] { "bob@example.com", "john@example.com" }, "integration_tests", cancellationToken).ConfigureAwait(false);
+			if (checkInErrors.Length > 0)
+			{
+				await log.WriteLineAsync($"There were {checkInErrors.Length} errors while checking in attendees:").ConfigureAwait(false);
+				foreach (var error in checkInErrors)
+				{
+					await log.WriteLineAsync($"- {error.Email}: {error.ErrorMessage}").ConfigureAwait(false);
+				}
+			}
+			else
+			{
+				await log.WriteLineAsync("All attendees checked in successfully").ConfigureAwait(false);
+			}
+
+			var actions = await client.Events.GetAllAttendeeActionsAsync(newConference.Id, newSession.Id, 100, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Retrieved {actions.Records.Length} attendee actions").ConfigureAwait(false);
+
 		}
 	}
 }

@@ -17,6 +17,19 @@ namespace ZoomNet.Resources
 		#region ATTENDEE ACTIONS
 
 		/// <summary>
+		/// Retrieves a paginated list of actions performed by a specific attendee for a given event.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event for which attendee actions are being retrieved. Cannot be null or empty.</param>
+		/// <param name="attendeeEmailAddress">The email address of the attendee whose actions are being retrieved. Cannot be null or empty.</param>
+		/// <param name="recordsPerPage">The maximum number of records to include in each page of results. Must be greater than zero. Defaults to 30.</param>
+		/// <param name="pagingToken">An optional token used to retrieve the next page of results. Pass <see langword="null"/> to retrieve the first
+		/// page.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Defaults to <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the paginated list of attendee
+		/// actions.</returns>
+		Task<PaginatedResponseWithToken<AttendeeAction>> GetAllAttendeeActionsAsync(string eventId, string attendeeEmailAddress, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Marks the specified attendees as checked in for the given event.
 		/// </summary>
 		/// <remarks>You can perform onsite check-in for up to 300 attendees in a single call.</remarks>
@@ -24,8 +37,8 @@ namespace ZoomNet.Resources
 		/// <param name="attendeeEmailAddresses">A collection of email addresses representing the attendees to check in.</param>
 		/// <param name="source">The source of the check-in request, such as "onsite" or "api". This is used for tracking purposes.</param>
 		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-		/// <returns>A task that represents the asynchronous operation.</returns>
-		Task CheckInAttendeesAsync(string eventId, IEnumerable<string> attendeeEmailAddresses, string source, CancellationToken cancellationToken = default);
+		/// <returns>An array with information about check-in failures. If all attendees are successfuly checked-in, this array will be empty.</returns>
+		Task<(string Email, string ErrorMessage)[]> CheckInAttendeesAsync(string eventId, IEnumerable<string> attendeeEmailAddresses, string source, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Marks the specified attendees as checked in for the given event session.
@@ -36,8 +49,8 @@ namespace ZoomNet.Resources
 		/// <param name="attendeeEmailAddresses">A collection of email addresses representing the attendees to check in.</param>
 		/// <param name="source">The source of the check-in request, such as "onsite" or "api". This is used for tracking purposes.</param>
 		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-		/// <returns>A task that represents the asynchronous operation.</returns>
-		Task CheckInAttendeesAsync(string eventId, string sessionId, IEnumerable<string> attendeeEmailAddresses, string source, CancellationToken cancellationToken = default);
+		/// <returns>An array with information about check-in failures. If all attendees are successfuly checked-in, this array will be empty.</returns>
+		Task<(string Email, string ErrorMessage)[]> CheckInAttendeesAsync(string eventId, string sessionId, IEnumerable<string> attendeeEmailAddresses, string source, CancellationToken cancellationToken = default);
 
 		#endregion
 

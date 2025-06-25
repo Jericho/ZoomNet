@@ -28,23 +28,19 @@ namespace ZoomNet.Resources
 		#region ATTENDEE ACTIONS
 
 		/// <inheritdoc/>
-		public Task CheckInAttendeesAsync(string eventId, IEnumerable<string> attendeeEmailAddresses, string source, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<AttendeeAction>> GetAllAttendeeActionsAsync(string eventId, string attendeeEmailAddress, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
-			var data = new JsonObject
-			{
-				{ "attendees", attendeeEmailAddresses?.Select(e => new JsonObject { { "email", e }, { "action", "check-in" } }).ToArray() },
-				{ "source", source }
-			};
-
 			return _client
-				.PatchAsync($"zoom_events/events/{eventId}/attendee_action")
-				.WithJsonBody(data)
+				.GetAsync($"zoom_events/events/{eventId}/attendee_action")
+				.WithArgument("email", attendeeEmailAddress)
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
-				.AsMessage();
+				.AsPaginatedResponseWithToken<AttendeeAction>("attendees");
 		}
 
 		/// <inheritdoc/>
-		public Task CheckInAttendeesAsync(string eventId, string sessionId, IEnumerable<string> attendeeEmailAddresses, string source, CancellationToken cancellationToken = default)
+		public async Task<(string Email, string ErrorMessage)[]> CheckInAttendeesAsync(string eventId, IEnumerable<string> attendeeEmailAddresses, string source, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
@@ -52,11 +48,37 @@ namespace ZoomNet.Resources
 				{ "source", source }
 			};
 
-			return _client
+			var response = await _client
+				.PatchAsync($"zoom_events/events/{eventId}/attendee_action")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsJson("errors");
+
+			return response
+				.EnumerateArray()
+				.Select(a => (a.GetPropertyValue<string>("email"), a.GetPropertyValue<string>("error_message")))
+				.ToArray();
+		}
+
+		/// <inheritdoc/>
+		public async Task<(string Email, string ErrorMessage)[]> CheckInAttendeesAsync(string eventId, string sessionId, IEnumerable<string> attendeeEmailAddresses, string source, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "attendees", attendeeEmailAddresses?.Select(e => new JsonObject { { "email", e }, { "action", "check-in" } }).ToArray() },
+				{ "source", source }
+			};
+
+			var response = await _client
 				.PatchAsync($"zoom_events/events/{eventId}/sessions/{sessionId}/attendee_action")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
-				.AsMessage();
+				.AsJson("errors");
+
+			return response
+				.EnumerateArray()
+				.Select(a => (a.GetPropertyValue<string>("email"), a.GetPropertyValue<string>("error_message")))
+				.ToArray();
 		}
 
 		#endregion
