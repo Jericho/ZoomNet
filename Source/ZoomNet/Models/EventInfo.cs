@@ -4,9 +4,9 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// An event.
+	/// Info about an event.
 	/// </summary>
-	public abstract class Event
+	public class EventInfo
 	{
 		/// <summary>Gets or sets the event id.</summary>
 		[JsonPropertyName("event_id")]
@@ -39,9 +39,6 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the tags.</summary>
 		[JsonPropertyName("tags")]
 		public string[] Tags { get; set; }
-
-		/// <summary>Gets or sets the status.</summary>
-		public EventStatus Status { get; set; }
 
 		/// <summary>Gets or sets the unique identifier of the hub.</summary>
 		[JsonPropertyName("hub_id")]

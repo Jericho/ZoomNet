@@ -40,6 +40,7 @@ namespace ZoomNet.Json
 					new ParticipantDeviceConverter(),
 					new WebHookEventConverter(),
 					new WebinarConverter(),
+					new EventConverter(),
 				}
 			};
 
@@ -59,6 +60,7 @@ namespace ZoomNet.Json
 					new ParticipantDeviceConverter(),
 					new WebHookEventConverter(),
 					new WebinarConverter(),
+					new EventConverter(),
 				}
 			};
 

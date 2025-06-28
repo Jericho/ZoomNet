@@ -94,12 +94,14 @@ namespace ZoomNet.Resources
 		#region EVENTS
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<Event>> GetAllAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<Event>> GetAllAsync(UserRoleType role = UserRoleType.Host, EventListStatus status = EventListStatus.Upcoming, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync("zoom_events/events")
+				.WithArgument("role_type", role.ToEnumString())
+				.WithArgument("event_status_type", status.ToEnumString())
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
@@ -107,7 +109,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<SimpleEvent> CreateSimpleEventAsync(string name, string description, DateTime start, DateTime end, TimeZones timeZone, EventMeetingType meetingType, string hubId, bool isRestricted = false, CancellationToken cancellationToken = default)
+		public Task<SimpleEvent> CreateSimpleEventAsync(string name, string description, DateTime start, DateTime end, TimeZones timeZone, EventMeetingType meetingType, string hubId, bool isRestricted = false, EventAttendanceType attendanceType = EventAttendanceType.Virtual, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
@@ -126,7 +128,8 @@ namespace ZoomNet.Resources
 					})
 				},
 				{ "meeting_type", meetingType.ToEnumString() },
-				{ "hub_id", hubId }
+				{ "hub_id", hubId },
+				{ "attendance_type", attendanceType.ToEnumString() }
 			};
 
 			return _client
@@ -137,7 +140,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<Conference> CreateConferenceAsync(string name, string description, DateTime start, DateTime end, TimeZones timeZone, string hubId, bool isRestricted = false, CancellationToken cancellationToken = default)
+		public Task<Conference> CreateConferenceAsync(string name, string description, DateTime start, DateTime end, TimeZones timeZone, string hubId, bool isRestricted = false, EventAttendanceType attendanceType = EventAttendanceType.Virtual, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
@@ -155,7 +158,8 @@ namespace ZoomNet.Resources
 						{ "end_time", end.ToZoomFormat(TimeZones.UTC) },
 					})
 				},
-				{ "hub_id", hubId }
+				{ "hub_id", hubId },
+				{ "attendance_type", attendanceType.ToEnumString() }
 			};
 
 			return _client
@@ -164,6 +168,51 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsObject<Conference>();
 		}
+
+		/// <inheritdoc/>
+		public Task PublishEventAsync(string eventId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				 // Documentation says the operation name is "Publish", but the API rejects it with the following message: "Invalid Event operation".
+				 // API accepts "publish", all lower case.
+				{ "operation", "publish" },
+			};
+
+			return _client
+				.PostAsync($"zoom_events/events/{eventId}/event_actions")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task CancelEventAsync(string eventId, string cancellationMessage, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				 // Documentation says the operation name is "Cancel", but the API rejects it with the following message: "Invalid Event operation".
+				 // API accepts "cancel", all lower case.
+				{ "operation", "cancel" },
+				{ "cancel_message", cancellationMessage }
+			};
+
+			return _client
+				.PostAsync($"zoom_events/events/{eventId}/event_actions")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteEventAsync(string eventId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"zoom_events/events/{eventId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
 		#endregion
 
 		#region EXHIBITORS
@@ -372,9 +421,60 @@ namespace ZoomNet.Resources
 
 		#region TICKET TYPES
 
+		/// <inheritdoc/>
+		public Task<EventTicketType[]> GetAllTicketTypesAsync(string eventId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"zoom_events/events/{eventId}/ticket_types")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<EventTicketType[]>("ticket_types");
+		}
+
 		#endregion
 
 		#region TICKETS
+
+		/// <inheritdoc/>
+		public Task<EventTicket[]> CreateTicketsAsync(string eventId, IEnumerable<EventTicket> tickets, string source = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "registration_source", source },
+				{
+					"tickets", tickets?
+						.Select(t => new JsonObject
+						{
+							{ "email", t.Email },
+							{ "ticket_type_id", t.TypeId },
+							{ "external_ticket_id", t.ExternalTicketId },
+							{ "send_notification", t.SendNotifications },
+							{ "fast_join", t.FastJoin },
+							{ "registration_needed", t.RegistrationNeeded },
+							{ "session_ids", t.SessionIds?.ToArray() },
+							{ "first_name", t.FirstName },
+							{ "last_name", t.LastName },
+							{ "address", t.Address },
+							{ "city", t.City },
+							{ "state", t.State },
+							{ "country", t.Country },
+							{ "zip", t.Zip },
+							{ "phone", t.Phone },
+							{ "industry", t.Industry },
+							{ "job_title", t.JobTitle },
+							{ "organization", t.Organization },
+							{ "comments", t.Comments },
+							{ "custom_questions", t.CustomQuestions?.Select(q => new JsonObject { { "title", q.Key }, { "answer", q.Value } }).ToArray() }
+						}).ToArray()
+				}
+			};
+
+			return _client
+				.PostAsync($"zoom_events/events/{eventId}/tickets")
+				.WithArgument("validation_level", "standard")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<EventTicket[]>("tickets");
+		}
 
 		#endregion
 

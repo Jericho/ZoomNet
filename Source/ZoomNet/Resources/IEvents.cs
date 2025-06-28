@@ -64,16 +64,17 @@ namespace ZoomNet.Resources
 
 		#region EVENTS
 
-		/// <summary>
-		/// Retrieve summary information about all meetings of the specified type for a user.
-		/// </summary>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Event">events</see>.
-		/// </returns>
-		Task<PaginatedResponseWithToken<Event>> GetAllAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+		/// <summary>Retrieves a paginated list of events based on the specified role, status, and pagination parameters.</summary>
+		/// <param name="role">The role of the user requesting the events. Defaults to <see cref="UserRoleType.Host"/>.</param>
+		/// <param name="status">The status of the events to retrieve. Defaults to <see cref="EventListStatus.Upcoming"/>.</param>
+		/// <param name="recordsPerPage">The maximum number of records to include in each page. Defaults to 30.</param>
+		/// <param name="pagingToken">A token representing the position in the paginated sequence. Pass <see langword="null"/> to start from the
+		/// beginning.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Defaults to <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a <see
+		/// cref="PaginatedResponseWithToken{T}"/> object with the list of events and a token for retrieving the next page of
+		/// results.</returns>
+		Task<PaginatedResponseWithToken<Event>> GetAllAsync(UserRoleType role = UserRoleType.Host, EventListStatus status = EventListStatus.Upcoming, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Create a simple event.
@@ -86,9 +87,10 @@ namespace ZoomNet.Resources
 		/// <param name="meetingType">The type of the meeting.</param>
 		/// <param name="hubId">The ID of the event hub.</param>
 		/// <param name="isRestricted">Indicates whether the event is restricted or not.</param>
+		/// <param name="attendanceType">The type of attendee experience for the event.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The new <see cref="SimpleEvent"/>.</returns>
-		Task<SimpleEvent> CreateSimpleEventAsync(string name, string description, DateTime start, DateTime end, TimeZones timeZone, EventMeetingType meetingType, string hubId, bool isRestricted = false, CancellationToken cancellationToken = default);
+		Task<SimpleEvent> CreateSimpleEventAsync(string name, string description, DateTime start, DateTime end, TimeZones timeZone, EventMeetingType meetingType, string hubId, bool isRestricted = false, EventAttendanceType attendanceType = EventAttendanceType.Virtual, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Create a conference event.
@@ -100,11 +102,41 @@ namespace ZoomNet.Resources
 		/// <param name="timeZone">The timezone of the event.</param>
 		/// <param name="hubId">The ID of the event hub.</param>
 		/// <param name="isRestricted">Indicates whether the event is restricted or not.</param>
+		/// <param name="attendanceType">The type of attendee experience for the event.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The new <see cref="SimpleEvent"/>.</returns>
-		Task<Conference> CreateConferenceAsync(string name, string description, DateTime start, DateTime end, TimeZones timeZone, string hubId, bool isRestricted = false, CancellationToken cancellationToken = default);
+		Task<Conference> CreateConferenceAsync(string name, string description, DateTime start, DateTime end, TimeZones timeZone, string hubId, bool isRestricted = false, EventAttendanceType attendanceType = EventAttendanceType.Virtual, CancellationToken cancellationToken = default);
 
 		//Task<Event> CreateRecurringEventAsync(string name, string description, DateTime? start, DateTime? end, DateTime? lobbyStart, DateTime? lobbyEnd, RecurrenceInfo recurrence, accessLevel, IEnumerable<string tags, string hubId, string contactName, IEnumerable<Country> blockedCountries = null, attendenceType, string tagLine = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Publishes an event to make it available for attendees.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event to be published. This cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The operation will be canceled if the token is triggered.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task PublishEventAsync(string eventId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Cancels the specified event asynchronously.
+		/// </summary>
+		/// <remarks>Use this method to cancel an event identified by its unique ID. Ensure that the event ID is valid
+		/// and that the event is in a state that allows cancellation.</remarks>
+		/// <param name="eventId">The unique identifier of the event to cancel. Cannot be null or empty.</param>
+		/// <param name="cancellationMessage">The cancellation message.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task CancelEventAsync(string eventId, string cancellationMessage, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Deletes the event with the specified identifier asynchronously.
+		/// </summary>
+		/// <remarks>Use this method to remove an event from the system. Ensure that the event ID is valid and that
+		/// the  operation is not canceled via the <paramref name="cancellationToken"/>.</remarks>
+		/// <param name="eventId">The unique identifier of the event to delete. This value cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task DeleteEventAsync(string eventId, CancellationToken cancellationToken = default);
 
 		#endregion
 
@@ -289,9 +321,26 @@ namespace ZoomNet.Resources
 
 		#region TICKET TYPES
 
+		Task<EventTicketType[]> GetAllTicketTypesAsync(string eventId, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region TICKETS
+
+		/// <summary>
+		/// Creates multiple tickets for the specified event asynchronously.
+		/// </summary>
+		/// <remarks>
+		/// The Zoom platform will not let you create tickets for 'Online' events and will return an error message like "No access" which, unfortunately, is not clear at all.
+		/// You can add up to 30 tickets in a batch operation.
+		/// </remarks>
+		/// <param name="eventId">The unique identifier of the event for which tickets are being created. Cannot be null or empty.</param>
+		/// <param name="tickets">A collection of <see cref="EventTicket"/> objects representing the tickets to be created. Cannot be null or empty.</param>
+		/// <param name="source">An optional string indicating the source of the ticket creation request. Can be null.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains an array of <see cref="EventTicket"/>
+		/// objects  representing the created tickets.</returns>
+		Task<EventTicket[]> CreateTicketsAsync(string eventId, IEnumerable<EventTicket> tickets, string source = null, CancellationToken cancellationToken = default);
 
 		#endregion
 
