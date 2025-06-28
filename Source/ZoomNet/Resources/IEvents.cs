@@ -77,6 +77,15 @@ namespace ZoomNet.Resources
 		Task<PaginatedResponseWithToken<Event>> GetAllAsync(UserRoleType role = UserRoleType.Host, EventListStatus status = EventListStatus.Upcoming, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Asynchronously retrieves an event by its unique identifier.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event to retrieve. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the <see cref="Event"/> associated
+		/// with the specified <paramref name="eventId"/>.</returns>
+		Task<Event> GetAsync(string eventId, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Create a simple event.
 		/// </summary>
 		/// <param name="name">The name of the event.</param>

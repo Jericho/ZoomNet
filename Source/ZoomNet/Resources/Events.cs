@@ -109,6 +109,15 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task<Event> GetAsync(string eventId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"zoom_events/events/{eventId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<Event>();
+		}
+
+		/// <inheritdoc/>
 		public Task<SimpleEvent> CreateSimpleEventAsync(string name, string description, DateTime start, DateTime end, TimeZones timeZone, EventMeetingType meetingType, string hubId, bool isRestricted = false, EventAttendanceType attendanceType = EventAttendanceType.Virtual, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject

@@ -64,11 +64,14 @@ namespace ZoomNet.IntegrationTests.Tests
 			var newSimpleEvent = await client.Events.CreateSimpleEventAsync("ZoomNet Integration Testing: simple event", "The description", start, end, TimeZones.America_New_York, EventMeetingType.Meeting, hub.Id, true, attendanceType, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Simple event {newSimpleEvent.Id} created").ConfigureAwait(false);
 
+			newSimpleEvent = (SimpleEvent)await client.Events.GetAsync(newSimpleEvent.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Simple event retrieved").ConfigureAwait(false);
+
 			await client.Events.PublishEventAsync(newSimpleEvent.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("The simple event has been published").ConfigureAwait(false);
 
 			await client.Events.CancelEventAsync(newSimpleEvent.Id, "Cancelled for testing purposes", cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync("The simnple event has been cancelled").ConfigureAwait(false);
+			await log.WriteLineAsync("The simple event has been cancelled").ConfigureAwait(false);
 
 			// CONFERENCE
 			start = DateTime.UtcNow.AddDays(14);
@@ -76,7 +79,10 @@ namespace ZoomNet.IntegrationTests.Tests
 			attendanceType = EventAttendanceType.InPerson;
 
 			var newConference = await client.Events.CreateConferenceAsync("ZoomNet Integration Testing: conference", "The description", start, end, TimeZones.America_New_York, hub.Id, true, attendanceType, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"Conferencet {newConference.Id} created").ConfigureAwait(false);
+			await log.WriteLineAsync($"Conference {newConference.Id} created").ConfigureAwait(false);
+
+			newConference = (Conference)await client.Events.GetAsync(newConference.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Conference retrieved").ConfigureAwait(false);
 
 			var sponsorTiers = await client.Events.GetAllSponsorTiersAsync(newConference.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {sponsorTiers.Length} sponsor tiers").ConfigureAwait(false);
