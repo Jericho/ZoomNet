@@ -184,6 +184,25 @@ namespace ZoomNet.Resources
 		Task DeleteExhibitorAsync(string eventId, string exhibitorId, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Retrieves the details of a specific exhibitor for a given event.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event. This cannot be null or empty.</param>
+		/// <param name="exhibitorId">The unique identifier of the exhibitor. This cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the <see cref="EventExhibitor"/>
+		/// object representing the exhibitor's details.</returns>
+		Task<EventExhibitor> GetExhibitorAsync(string eventId, string exhibitorId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieves all exhibitors associated with the specified event.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event for which to retrieve exhibitors.  This value cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>An array of <see cref="EventExhibitor"/> objects representing the exhibitors for the specified event.  The array
+		/// will be empty if no exhibitors are found.</returns>
+		Task<EventExhibitor[]> GetAllExhibitorsAsync(string eventId, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Retrieves all sponsor tiers associated with the specified event.
 		/// </summary>
 		/// <param name="eventId">The unique identifier of the event for which sponsor tiers are to be retrieved. This value cannot be null or empty.</param>

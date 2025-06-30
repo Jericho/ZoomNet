@@ -264,6 +264,24 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task<EventExhibitor> GetExhibitorAsync(string eventId, string exhibitorId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"zoom_events/events/{eventId}/exhibitors/{exhibitorId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<EventExhibitor>();
+		}
+
+		/// <inheritdoc/>
+		public Task<EventExhibitor[]> GetAllExhibitorsAsync(string eventId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"zoom_events/events/{eventId}/exhibitors")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<EventExhibitor[]>("exhibitors");
+		}
+
+		/// <inheritdoc/>
 		public Task<SponsorTier[]> GetAllSponsorTiersAsync(string eventId, CancellationToken cancellationToken = default)
 		{
 			return _client
