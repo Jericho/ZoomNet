@@ -211,6 +211,33 @@ namespace ZoomNet.Resources
 		/// will be empty if no sponsor tiers are found.</returns>
 		Task<SponsorTier[]> GetAllSponsorTiersAsync(string eventId, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Updates the details of an exhibitor for a specified event.
+		/// </summary>
+		/// <remarks>This method allows partial updates to the exhibitor's details. Any parameter that is null will
+		/// leave the corresponding property unchanged.</remarks>
+		/// <param name="eventId">The unique identifier of the event to which the exhibitor belongs. Cannot be null or empty.</param>
+		/// <param name="exhibitorId">The unique identifier of the exhibitor to update. Cannot be null or empty.</param>
+		/// <param name="name">The updated name of the exhibitor. If null, the name will remain unchanged.</param>
+		/// <param name="contactFullName">The updated full name of the exhibitor's contact person. If null, the contact name will remain unchanged.</param>
+		/// <param name="contactEmail">The updated email address of the exhibitor's contact person. If null, the contact email will remain unchanged.</param>
+		/// <param name="isSponsor">Indicates whether the exhibitor is a sponsor. If null, the sponsorship status will remain unchanged.</param>
+		/// <param name="sponsorTierId">The unique identifier of the sponsor tier associated with the exhibitor. If null, the sponsor tier will remain
+		/// unchanged.</param>
+		/// <param name="description">The updated description of the exhibitor. If null, the description will remain unchanged.</param>
+		/// <param name="sessionIds">A collection of session IDs associated with the exhibitor. If null, the session associations will remain
+		/// unchanged.</param>
+		/// <param name="website">The updated website URL of the exhibitor. If null, the website will remain unchanged.</param>
+		/// <param name="privacyPolicyUrl">The updated URL of the exhibitor's privacy policy. If null, the privacy policy URL will remain unchanged.</param>
+		/// <param name="linkedInUrl">The updated LinkedIn profile URL of the exhibitor. If null, the LinkedIn URL will remain unchanged.</param>
+		/// <param name="twitterUrl">The updated Twitter profile URL of the exhibitor. If null, the Twitter URL will remain unchanged.</param>
+		/// <param name="youtubeUrl">The updated YouTube channel URL of the exhibitor. If null, the YouTube URL will remain unchanged.</param>
+		/// <param name="instagramUrl">The updated Instagram profile URL of the exhibitor. If null, the Instagram URL will remain unchanged.</param>
+		/// <param name="facebookUrl">The updated Facebook profile URL of the exhibitor. If null, the Facebook URL will remain unchanged.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Defaults to <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task UpdateExhibitorAsync(string eventId, string exhibitorId, string name = null, string contactFullName = null, string contactEmail = null, bool? isSponsor = null, string sponsorTierId = null, string description = null, IEnumerable<string> sessionIds = null, string website = null, string privacyPolicyUrl = null, string linkedInUrl = null, string twitterUrl = null, string youtubeUrl = null, string instagramUrl = null, string facebookUrl = null, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region HUBS

@@ -290,6 +290,34 @@ namespace ZoomNet.Resources
 				.AsObject<SponsorTier[]>("sponsor_tiers");
 		}
 
+		/// <inheritdoc/>
+		public Task UpdateExhibitorAsync(string eventId, string exhibitorId, string name = null, string contactFullName = null, string contactEmail = null, bool? isSponsor = null, string sponsorTierId = null, string description = null, IEnumerable<string> sessionIds = null, string website = null, string privacyPolicyUrl = null, string linkedInUrl = null, string twitterUrl = null, string youtubeUrl = null, string instagramUrl = null, string facebookUrl = null, CancellationToken cancellationToken = default)
+		{
+
+			var data = new JsonObject
+			{
+				{ "name", name },
+				{ "contact_name", contactFullName },
+				{ "contact_email", contactEmail },
+				{ "is_sponsor", isSponsor },
+				{ "tier_id", sponsorTierId },
+				{ "description", description },
+				{ "associated_sessions", sessionIds?.ToArray() },
+				{ "website", website },
+				{ "privacy_policy", privacyPolicyUrl },
+				{ "linkedin_url", linkedInUrl },
+				{ "twitter_url", twitterUrl },
+				{ "youtube_url", youtubeUrl },
+				{ "instagram_url", instagramUrl },
+				{ "facebook_url", facebookUrl }
+			};
+
+			return _client
+				.PatchAsync($"zoom_events/events/{eventId}/exhibitors/{exhibitorId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
 		#endregion
 
 		#region HUBS
