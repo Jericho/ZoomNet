@@ -255,6 +255,15 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task DeleteExhibitorAsync(string eventId, string exhibitorId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"zoom_events/events/{eventId}/exhibitors/{exhibitorId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
 		public Task<SponsorTier[]> GetAllSponsorTiersAsync(string eventId, CancellationToken cancellationToken = default)
 		{
 			return _client

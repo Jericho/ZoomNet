@@ -175,6 +175,15 @@ namespace ZoomNet.Resources
 		Task<EventExhibitor> CreateExhibitorAsync(string eventId, string name, string contactFullName, string contactEmail, bool isSponsor, string sponsorTierId, string description = null, IEnumerable<string> sessionIds = null, string website = null, string privacyPolicyUrl = null, string linkedInUrl = null, string twitterUrl = null, string youtubeUrl = null, string instagramUrl = null, string facebookUrl = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Deletes an exhibitor from the specified event.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event from which the exhibitor will be deleted. Cannot be null or empty.</param>
+		/// <param name="exhibitorId">The unique identifier of the exhibitor to delete. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task DeleteExhibitorAsync(string eventId, string exhibitorId, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Retrieves all sponsor tiers associated with the specified event.
 		/// </summary>
 		/// <param name="eventId">The unique identifier of the event for which sponsor tiers are to be retrieved. This value cannot be null or empty.</param>
