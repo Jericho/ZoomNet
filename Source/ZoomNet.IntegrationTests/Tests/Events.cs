@@ -57,11 +57,29 @@ namespace ZoomNet.IntegrationTests.Tests
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
 
 			// SIMPLE EVENT
-			var start = DateTime.UtcNow.AddDays(1);
-			var end = start.AddMinutes(30);
+			var eventCalendar = new[] // the event is a one-day event
+			{
+				(Start: DateTime.UtcNow.AddDays(1), End: DateTime.UtcNow.AddDays(1).AddMinutes(30))
+			};
 			var attendanceType = EventAttendanceType.Virtual;
 
-			var newSimpleEvent = await client.Events.CreateSimpleEventAsync("ZoomNet Integration Testing: simple event", "The description", start, end, TimeZones.America_New_York, EventMeetingType.Meeting, hub.Id, true, attendanceType, cancellationToken).ConfigureAwait(false);
+			var newSimpleEvent = await client.Events.CreateSimpleEventAsync(
+				"ZoomNet Integration Testing: simple event",
+				"The description",
+				eventCalendar,
+				TimeZones.America_New_York,
+				EventMeetingType.Meeting,
+				hub.Id,
+				true,
+				attendanceType,
+				new[] { EventCategory.CommunityAndSpirituality },
+				new[] { "category1", "cat2" },
+				"Rembrandt van Rijn",
+				eventCalendar.First().Start.AddMinutes(-15), // Lobby opens 15 minutes before the first session
+				eventCalendar.Last().End.AddMinutes(15), // Lobby closes 15 minutes after the last session
+				new[] { Country.France, Country.Germany },
+				"The best conference ever !!!",
+				cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Simple event {newSimpleEvent.Id} created").ConfigureAwait(false);
 
 			newSimpleEvent = (SimpleEvent)await client.Events.GetAsync(newSimpleEvent.Id, cancellationToken).ConfigureAwait(false);
@@ -73,12 +91,68 @@ namespace ZoomNet.IntegrationTests.Tests
 			await client.Events.CancelEventAsync(newSimpleEvent.Id, "Cancelled for testing purposes", cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("The simple event has been cancelled").ConfigureAwait(false);
 
+			await client.Events.DeleteEventAsync(newSimpleEvent.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("The simple event has been deleted").ConfigureAwait(false);
+
+			// RECURRING EVENT
+			var recurrenceInfo = new RecurrenceInfo()
+			{
+				EndDateTime = DateTime.Now.AddMonths(2),
+				WeeklyDays = new[] { DayOfWeek.Monday, DayOfWeek.Friday },
+				Type = RecurrenceType.Weekly,
+			};
+			var recurringEventCalendar = new[]
+			{
+				(Start: DateTime.UtcNow.AddDays(2), End: DateTime.UtcNow.AddDays(2).AddHours(2)),
+			};
+			attendanceType = EventAttendanceType.Hybrid;
+
+			var newRecurringEvent = await client.Events.CreateRecurringEventAsync(
+				"ZoomNet Integration Testing: recurring event",
+				"The description",
+				recurringEventCalendar,
+				recurrenceInfo,
+				TimeZones.America_New_York,
+				hub.Id,
+				true,
+				attendanceType,
+				new[] { EventCategory.BusinessAndNetworking },
+				new[] { "cat2", "cat3" },
+				"Jan Vermeer",
+				recurringEventCalendar.OrderBy(c => c.Start).First().Start.AddMinutes(-15), // Lobby opens 15 minutes before the first session
+				recurringEventCalendar.OrderBy(c => c.End).Last().End.AddMinutes(15), // Lobby closes 15 minutes after the last session
+				new[] { Country.Chad, Country.Norway },
+				"The best recurring event ever !!!",
+				cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Recurring event {newRecurringEvent.Id} created").ConfigureAwait(false);
+
+			await client.Events.DeleteEventAsync(newRecurringEvent.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("The recurring event has been deleted").ConfigureAwait(false);
+
 			// CONFERENCE
-			start = DateTime.UtcNow.AddDays(14);
-			end = start.AddMinutes(90);
+			var conferenceCalendar = new[] // The conference is a two-day event
+			{
+				(Start: DateTime.UtcNow.AddDays(7), End: DateTime.UtcNow.AddDays(7).AddHours(2)),
+				(Start: DateTime.UtcNow.AddDays(8), End: DateTime.UtcNow.AddDays(8).AddHours(3))
+			};
 			attendanceType = EventAttendanceType.InPerson;
 
-			var newConference = await client.Events.CreateConferenceAsync("ZoomNet Integration Testing: conference", "The description", start, end, TimeZones.America_New_York, hub.Id, true, attendanceType, cancellationToken).ConfigureAwait(false);
+			var newConference = await client.Events.CreateConferenceAsync(
+				"ZoomNet Integration Testing: conference",
+				"The description",
+				conferenceCalendar,
+				TimeZones.America_New_York,
+				hub.Id,
+				true,
+				attendanceType,
+				new[] { EventCategory.BusinessAndNetworking },
+				new[] { "cat2", "cat3" },
+				"Frans Hals",
+				conferenceCalendar.OrderBy(c => c.Start).First().Start.AddMinutes(-15), // Lobby opens 15 minutes before the first session
+				conferenceCalendar.OrderBy(c => c.End).Last().End.AddMinutes(15), // Lobby closes 15 minutes after the last session
+				new[] { Country.Chad, Country.Norway },
+				"The best conference ever !!!",
+				cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Conference {newConference.Id} created").ConfigureAwait(false);
 
 			newConference = (Conference)await client.Events.GetAsync(newConference.Id, cancellationToken).ConfigureAwait(false);
@@ -90,7 +164,16 @@ namespace ZoomNet.IntegrationTests.Tests
 			var newExhibitor = await client.Events.CreateExhibitorAsync(newConference.Id, "ZoomNet Integration Testing: Exhibitor", "John Doe", "john@example.com", true, sponsorTiers.First().Id, "This is the description", new[] { "QnjbUW7ORu2sjvjNfjf_zQ", "iERy5vUPRW259kk9l0zNbQ" }, "https://mywebsite.com/example", "https://mywebsite.com/example", "https://linkedin.com/example", "https://twitter.com/example", "https://youtube.com/example", "https://instagram.com/profile", "https://facebook.com/profile", cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Exhibitor created").ConfigureAwait(false);
 
-			var newSession = await client.Events.CreateSessionAsync(newConference.Id, "ZoomNet Integration Testing: Session", start, end, TimeZones.America_New_York, "This is the desciption", EventSessionType.Webinar, true, attendanceType: attendanceType, cancellationToken: cancellationToken).ConfigureAwait(false);
+			var newSession = await client.Events.CreateSessionAsync(
+				newConference.Id,
+				"ZoomNet Integration Testing: First day session",
+				conferenceCalendar.OrderBy(c => c.Start).First().Start,
+				conferenceCalendar.OrderBy(c => c.Start).First().End,
+				TimeZones.America_New_York,
+				"Session that takes place on the first day of the conference",
+				EventSessionType.Webinar,
+				attendanceType: attendanceType,
+				cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Session {newSession.Id} created").ConfigureAwait(false);
 
 			var ticketTypes = await client.Events.GetAllTicketTypesAsync(newConference.Id, cancellationToken).ConfigureAwait(false);
@@ -104,7 +187,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				new EventTicket
 				{
 					TypeId = ticketTypes.First(t => t.IsFree).Id,
-					SendNotifications = true,
+					SendNotifications = false,
 					FastJoin = true,
 					RegistrationNeeded = false,
 					FirstName = "Bob",
@@ -114,7 +197,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				new EventTicket
 				{
 					TypeId = ticketTypes.First(t => t.IsFree).Id,
-					SendNotifications = true,
+					SendNotifications = false,
 					FastJoin = false,
 					RegistrationNeeded = true,
 					FirstName = "John",
@@ -144,6 +227,9 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			actions = await client.Events.GetAllAttendeeActionsAsync(newConference.Id, "john@example.com", 100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Retrieved {actions.Records.Length} attendee actions for John Doe Smith").ConfigureAwait(false);
+
+			await client.Events.DeleteEventAsync(newConference.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("The conference has been deleted").ConfigureAwait(false);
 		}
 	}
 }

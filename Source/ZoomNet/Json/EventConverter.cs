@@ -23,6 +23,8 @@ namespace ZoomNet.Json
 					return rootElement.ToObject<SimpleEvent>(options);
 				case EventType.Conference:
 					return rootElement.ToObject<Conference>(options);
+				case EventType.Reccuring:
+					return rootElement.ToObject<RecurringEvent>(options);
 				default:
 					throw new JsonException($"{eventType} is an unknown event type");
 			}

@@ -15,7 +15,7 @@ namespace ZoomNet.Models
 		[EnumMember(Value = "in-person")]
 		InPerson,
 
-		/// <summary>oth in-person and virtual attendees.</summary>
+		/// <summary>Both in-person and virtual attendees.</summary>
 		[EnumMember(Value = "hybrid")]
 		Hybrid
 	}

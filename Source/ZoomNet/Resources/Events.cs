@@ -375,25 +375,18 @@ namespace ZoomNet.Resources
 		#region HUBS
 
 		/// <inheritdoc/>
-		public async Task<HubHost> CreateHubHostAsync(string hubId, string emailAddress, CancellationToken cancellationToken = default)
+		public Task<string> CreateHubHostAsync(string hubId, string emailAddress, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
 				{ "email", emailAddress },
 			};
 
-			var hostId = await _client
+			return _client
 				.PostAsync($"zoom_events/hubs/{hubId}/hosts")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
-				.AsObject<string>("host_user_id")
-				.ConfigureAwait(false);
-
-			return new HubHost
-			{
-				Email = emailAddress,
-				Id = hostId
-			};
+				.AsObject<string>("host_user_id");
 		}
 
 		/// <inheritdoc/>

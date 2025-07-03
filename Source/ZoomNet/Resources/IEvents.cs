@@ -90,33 +90,65 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="name">The name of the event.</param>
 		/// <param name="description">The description of the event.</param>
-		/// <param name="start">The start time of the event in UTC.</param>
-		/// <param name="end">The end time of the event in UTC.</param>
+		/// <param name="calendar">An enumeration of start/end dates. Each item in the enumeration represents one day for the event.</param>
 		/// <param name="timeZone">The timezone of the event.</param>
 		/// <param name="meetingType">The type of the meeting.</param>
 		/// <param name="hubId">The ID of the event hub.</param>
 		/// <param name="isRestricted">Indicates whether the event is restricted or not.</param>
 		/// <param name="attendanceType">The type of attendee experience for the event.</param>
+		/// <param name="categories">The category of the event.</param>
+		/// <param name="tags">The tags for the event.</param>
+		/// <param name="contactName">Optional contact name for the event. Can be null.</param>
+		/// <param name="lobbyStart">The start time of the lobby.</param>
+		/// <param name="lobbyEnd">The end time of the lobby.</param>
+		/// <param name="blockedCountries">Optional list of countries to block from attending the event. Can be null.</param>
+		/// <param name="tagLine">This field displays under the event detail page image.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The new <see cref="SimpleEvent"/>.</returns>
-		Task<SimpleEvent> CreateSimpleEventAsync(string name, string description, DateTime start, DateTime end, TimeZones timeZone, EventMeetingType meetingType, string hubId, bool isRestricted = false, EventAttendanceType attendanceType = EventAttendanceType.Virtual, CancellationToken cancellationToken = default);
+		Task<SimpleEvent> CreateSimpleEventAsync(string name, string description, IEnumerable<(DateTime Start, DateTime End)> calendar, TimeZones timeZone, EventMeetingType meetingType, string hubId, bool isRestricted = false, EventAttendanceType attendanceType = EventAttendanceType.Virtual, IEnumerable<EventCategory> categories = null, IEnumerable<string> tags = null, string contactName = null, DateTime? lobbyStart = null, DateTime? lobbyEnd = null, IEnumerable<Country> blockedCountries = null, string tagLine = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Create a conference event.
 		/// </summary>
 		/// <param name="name">The name of the event.</param>
 		/// <param name="description">The description of the event.</param>
-		/// <param name="start">The start time of the event in UTC.</param>
-		/// <param name="end">The end time of the event in UTC.</param>
+		/// <param name="calendar">An enumeration of start/end dates. Each item in the enumeration represents one day for the conference.</param>
 		/// <param name="timeZone">The timezone of the event.</param>
 		/// <param name="hubId">The ID of the event hub.</param>
 		/// <param name="isRestricted">Indicates whether the event is restricted or not.</param>
 		/// <param name="attendanceType">The type of attendee experience for the event.</param>
+		/// <param name="categories">The category of the event.</param>
+		/// <param name="tags">The tags for the event.</param>
+		/// <param name="contactName">Optional contact name for the event. Can be null.</param>
+		/// <param name="lobbyStart">The start time of the lobby.</param>
+		/// <param name="lobbyEnd">The end time of the lobby.</param>
+		/// <param name="blockedCountries">Optional list of countries to block from attending the event. Can be null.</param>
+		/// <param name="tagLine">This field displays under the event detail page image.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>The new <see cref="SimpleEvent"/>.</returns>
-		Task<Conference> CreateConferenceAsync(string name, string description, DateTime start, DateTime end, TimeZones timeZone, string hubId, bool isRestricted = false, EventAttendanceType attendanceType = EventAttendanceType.Virtual, CancellationToken cancellationToken = default);
+		/// <returns>The new <see cref="Conference"/>.</returns>
+		Task<Conference> CreateConferenceAsync(string name, string description, IEnumerable<(DateTime Start, DateTime End)> calendar, TimeZones timeZone, string hubId, bool isRestricted = false, EventAttendanceType attendanceType = EventAttendanceType.Virtual, IEnumerable<EventCategory> categories = null, IEnumerable<string> tags = null, string contactName = null, DateTime? lobbyStart = null, DateTime? lobbyEnd = null, IEnumerable<Country> blockedCountries = null, string tagLine = null, CancellationToken cancellationToken = default);
 
-		//Task<Event> CreateRecurringEventAsync(string name, string description, DateTime? start, DateTime? end, DateTime? lobbyStart, DateTime? lobbyEnd, RecurrenceInfo recurrence, accessLevel, IEnumerable<string tags, string hubId, string contactName, IEnumerable<Country> blockedCountries = null, attendenceType, string tagLine = null, CancellationToken cancellationToken = default);
+		/// <summary>
+		/// Create an event with recurring sessions.
+		/// </summary>
+		/// <param name="name">The name of the event.</param>
+		/// <param name="description">The description of the event.</param>
+		/// <param name="calendar">An enumeration of start/end dates. Each item in the enumeration represents one day for the conference.</param>
+		/// <param name="recurrence">Information about recurring sessions.</param>
+		/// <param name="timeZone">The timezone of the event.</param>
+		/// <param name="hubId">The ID of the event hub.</param>
+		/// <param name="isRestricted">Indicates whether the event is restricted or not.</param>
+		/// <param name="attendanceType">The type of attendee experience for the event.</param>
+		/// <param name="categories">The category of the event.</param>
+		/// <param name="tags">The tags for the event.</param>
+		/// <param name="contactName">Optional contact name for the event. Can be null.</param>
+		/// <param name="lobbyStart">The start time of the lobby.</param>
+		/// <param name="lobbyEnd">The end time of the lobby.</param>
+		/// <param name="blockedCountries">Optional list of countries to block from attending the event. Can be null.</param>
+		/// <param name="tagLine">This field displays under the event detail page image.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The new <see cref="RecurringEvent"/>.</returns>
+		Task<RecurringEvent> CreateRecurringEventAsync(string name, string description, IEnumerable<(DateTime Start, DateTime End)> calendar, RecurrenceInfo recurrence, TimeZones timeZone, string hubId, bool isRestricted = false, EventAttendanceType attendanceType = EventAttendanceType.Virtual, IEnumerable<EventCategory> categories = null, IEnumerable<string> tags = null, string contactName = null, DateTime? lobbyStart = null, DateTime? lobbyEnd = null, IEnumerable<Country> blockedCountries = null, string tagLine = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Publishes an event to make it available for attendees.
@@ -248,8 +280,8 @@ namespace ZoomNet.Resources
 		/// <param name="hubId">The unique identifier of the hub where the host will be added. Cannot be null or empty.</param>
 		/// <param name="emailAddress">The email address of the host.</param>
 		/// <param name="cancellationToken">A token to monitor for cancellation requests. The operation will be canceled if the token is triggered.</param>
-		/// <returns>A task representing the asynchronous operation. The task result contains the created <see cref="HubHost"/> object.</returns>
-		Task<HubHost> CreateHubHostAsync(string hubId, string emailAddress, CancellationToken cancellationToken = default);
+		/// <returns>A task representing the asynchronous operation. The task result contains the unique identifier of the newly created hub host.</returns>
+		Task<string> CreateHubHostAsync(string hubId, string emailAddress, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieves a list of all hubs.
@@ -394,6 +426,14 @@ namespace ZoomNet.Resources
 
 		#region TICKET TYPES
 
+		Task CreateTicketTypeAsync(string eventId, string name, string currencyCode, bool isFree, double price, int quantity, DateTime start, DateTime end, string description, int quantitySold, IEnumerable<string> sessionIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Lists all ticket types associated with an event.
+		/// </summary>
+		/// <param name="eventId">The ID of the event.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>An array of <see cref="EventTicketType"/> objects.</returns>
 		Task<EventTicketType[]> GetAllTicketTypesAsync(string eventId, CancellationToken cancellationToken = default);
 
 		#endregion
