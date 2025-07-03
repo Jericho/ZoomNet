@@ -243,6 +243,15 @@ namespace ZoomNet.Resources
 		#region HUBS
 
 		/// <summary>
+		/// Create a new hub host.
+		/// </summary>
+		/// <param name="hubId">The unique identifier of the hub where the host will be added. Cannot be null or empty.</param>
+		/// <param name="emailAddress">The email address of the host.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The operation will be canceled if the token is triggered.</param>
+		/// <returns>A task representing the asynchronous operation. The task result contains the created <see cref="HubHost"/> object.</returns>
+		Task<HubHost> CreateHubHostAsync(string hubId, string emailAddress, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Retrieves a list of all hubs.
 		/// </summary>
 		/// <param name="userRole">The role of the user, which determines the scope of hubs that can be retrieved.</param>
