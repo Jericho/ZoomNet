@@ -118,7 +118,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<SimpleEvent> CreateSimpleEventAsync(string name, string description, IEnumerable<(DateTime Start, DateTime End)> calendar, TimeZones timeZone, EventMeetingType meetingType, string hubId, bool isRestricted = false, EventAttendanceType attendanceType = EventAttendanceType.Virtual, IEnumerable<EventCategory> categories = null, IEnumerable<string> tags = null, string contactName = null, DateTime? lobbyStart = null, DateTime? lobbyEnd = null, IEnumerable<Country> blockedCountries = null, string tagLine = null, CancellationToken cancellationToken = default)
+		public Task<SimpleEvent> CreateSimpleEventAsync(string name, string description, DateTime start, DateTime end, TimeZones timeZone, EventMeetingType meetingType, string hubId, bool isRestricted = false, EventAttendanceType attendanceType = EventAttendanceType.Virtual, IEnumerable<EventCategory> categories = null, IEnumerable<string> tags = null, string contactName = null, DateTime? lobbyStart = null, DateTime? lobbyEnd = null, IEnumerable<Country> blockedCountries = null, string tagLine = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
@@ -128,13 +128,16 @@ namespace ZoomNet.Resources
 				{ "event_type", EventType.Simple.ToEnumString() },
 				{ "access_level", isRestricted ? "PRIVATE_RESTRICTED" : "PRIVATE_UNRESTRICTED" },
 				{
-					"calendar", calendar?.Select(c => new JsonObject
+					"calendar", new[]
 					{
-						// It's important to convert these two dates to UTC otherwise Zoom will reject them
-						// with the following unhelpful message: "Calender must contains start_time and end_time".
-						{ "start_time", c.Start.ToZoomFormat(TimeZones.UTC) },
-						{ "end_time", c.End.ToZoomFormat(TimeZones.UTC) },
-					}).ToArray()
+						new JsonObject
+						{
+							// It's important to convert these two dates to UTC otherwise Zoom will reject them
+							// with the following unhelpful message: "Calender must contains start_time and end_time".
+							{ "start_time", start.ToZoomFormat(TimeZones.UTC) },
+							{ "end_time", end.ToZoomFormat(TimeZones.UTC) },
+						}
+					}
 				},
 				{ "meeting_type", meetingType.ToEnumString() },
 				{ "hub_id", hubId },
@@ -193,7 +196,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<RecurringEvent> CreateRecurringEventAsync(string name, string description, IEnumerable<(DateTime Start, DateTime End)> calendar, RecurrenceInfo recurrence, TimeZones timeZone, string hubId, bool isRestricted = false, EventAttendanceType attendanceType = EventAttendanceType.Virtual, IEnumerable<EventCategory> categories = null, IEnumerable<string> tags = null, string contactName = null, DateTime? lobbyStart = null, DateTime? lobbyEnd = null, IEnumerable<Country> blockedCountries = null, string tagLine = null, CancellationToken cancellationToken = default)
+		public Task<RecurringEvent> CreateRecurringEventAsync(string name, string description, DateTime start, DateTime end, EventRecurrenceInfo recurrence, TimeZones timeZone, string hubId, bool isRestricted = false, EventAttendanceType attendanceType = EventAttendanceType.Virtual, IEnumerable<EventCategory> categories = null, IEnumerable<string> tags = null, string contactName = null, DateTime? lobbyStart = null, DateTime? lobbyEnd = null, IEnumerable<Country> blockedCountries = null, string tagLine = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
@@ -203,23 +206,26 @@ namespace ZoomNet.Resources
 				{ "event_type", EventType.Reccuring.ToEnumString() },
 				{ "access_level", isRestricted ? "PRIVATE_RESTRICTED" : "PRIVATE_UNRESTRICTED" },
 				{
-					"calendar", calendar?.Select(c => new JsonObject
+					"calendar", new[]
 					{
-						// It's important to convert these two dates to UTC otherwise Zoom will reject them
-						// with the following unhelpful message: "Calender must contains start_time and end_time".
-						{ "start_time", c.Start.ToZoomFormat(TimeZones.UTC) },
-						{ "end_time", c.End.ToZoomFormat(TimeZones.UTC) },
-					}).ToArray()
+						new JsonObject
+						{
+							// It's important to convert these two dates to UTC otherwise Zoom will reject them
+							// with the following unhelpful message: "Calender must contains start_time and end_time".
+							{ "start_time", start.ToZoomFormat(TimeZones.UTC) },
+							{ "end_time", end.ToZoomFormat(TimeZones.UTC) },
+						}
+					}
 				},
 				{ "recurrence", recurrence },
 				{ "hub_id", hubId },
 				{ "attendance_type", attendanceType.ToEnumString() },
-				//{ "categories", categories?.Select(c => c.ToEnumString()).ToArray() },
-				//{ "tags", tags?.ToArray() },
-				//{ "contact_name", contactName },
-				//{ "lobby_start_time", lobbyStart?.ToZoomFormat(TimeZones.UTC) },
-				//{ "lobby_end_time", lobbyEnd?.ToZoomFormat(TimeZones.UTC) },
-				//{ "blocked_countries", blockedCountries?.Select(bc => bc.ToEnumString()).ToArray() },
+				{ "categories", categories?.Select(c => c.ToEnumString()).ToArray() },
+				{ "tags", tags?.ToArray() },
+				{ "contact_name", contactName },
+				//{ "lobby_start_time", lobbyStart?.ToZoomFormat(TimeZones.UTC) },	// Commented out for the time being.
+				//{ "lobby_end_time", lobbyEnd?.ToZoomFormat(TimeZones.UTC) },		// For more details, see: https://devforum.zoom.us/t/event-outside-lobby-time-range/134883
+				{ "blocked_countries", blockedCountries?.Select(bc => bc.ToEnumString()).ToArray() },
 				{ "tagline", tagLine },
 			};
 
@@ -551,6 +557,40 @@ namespace ZoomNet.Resources
 		#endregion
 
 		#region TICKET TYPES
+
+		/// <inheritdoc/>
+		public Task<string> CreateTicketTypeAsync(string eventId, string name, string currencyCode, double? price, int quantity, DateTime start, DateTime end, string description = null, int quantitySold = 0, IEnumerable<string> sessionIds = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "name", name },
+				{ "currency", currencyCode },
+				{ "free", !price.HasValue },
+				{ "price", price?.ToString() }, // The Zoom API requires a string even though the value is numerical
+				{ "quantity", quantity },
+				{ "start_time", start.ToZoomFormat(TimeZones.UTC) },
+				{ "end_time", end.ToZoomFormat(TimeZones.UTC) },
+				{ "description", description },
+				{ "sold_quantity", quantitySold },
+				{ "sessions", sessionIds?.ToArray() },
+				{ "attendance_type", "in-person" } // Zoom only allows tickets for in-person events
+			};
+
+			return _client
+				.PostAsync($"zoom_events/events/{eventId}/ticket_types")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("ticket_type_id");
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteTicketTypeAsync(string eventId, string ticketTypeId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"zoom_events/events/{eventId}/ticket_types/{ticketTypeId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
 
 		/// <inheritdoc/>
 		public Task<EventTicketType[]> GetAllTicketTypesAsync(string eventId, CancellationToken cancellationToken = default)

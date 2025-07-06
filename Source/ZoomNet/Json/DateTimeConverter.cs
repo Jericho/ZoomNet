@@ -1,5 +1,6 @@
 using System;
 using System.Text.Json;
+using ZoomNet.Models;
 
 namespace ZoomNet.Json
 {
@@ -28,7 +29,7 @@ namespace ZoomNet.Json
 
 		public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
 		{
-			writer.WriteStringValue(value.ToZoomFormat());
+			writer.WriteStringValue(value.ToZoomFormat(TimeZones.UTC));
 		}
 	}
 }

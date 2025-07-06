@@ -57,16 +57,15 @@ namespace ZoomNet.IntegrationTests.Tests
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
 
 			// SIMPLE EVENT
-			var eventCalendar = new[] // the event is a one-day event
-			{
-				(Start: DateTime.UtcNow.AddDays(1), End: DateTime.UtcNow.AddDays(1).AddMinutes(30))
-			};
+			var eventStart = DateTime.UtcNow.AddDays(1);
+			var eventEnd = eventStart.AddMinutes(30);
 			var attendanceType = EventAttendanceType.Virtual;
 
 			var newSimpleEvent = await client.Events.CreateSimpleEventAsync(
 				"ZoomNet Integration Testing: simple event",
 				"The description",
-				eventCalendar,
+				eventStart,
+				eventEnd,
 				TimeZones.America_New_York,
 				EventMeetingType.Meeting,
 				hub.Id,
@@ -75,8 +74,8 @@ namespace ZoomNet.IntegrationTests.Tests
 				new[] { EventCategory.CommunityAndSpirituality },
 				new[] { "category1", "cat2" },
 				"Rembrandt van Rijn",
-				eventCalendar.First().Start.AddMinutes(-15), // Lobby opens 15 minutes before the first session
-				eventCalendar.Last().End.AddMinutes(15), // Lobby closes 15 minutes after the last session
+				eventStart.AddMinutes(-15), // Lobby opens 15 minutes before the event starts
+				eventEnd.AddMinutes(15), // Lobby closes 15 minutes after the event ends
 				new[] { Country.France, Country.Germany },
 				"The best conference ever !!!",
 				cancellationToken).ConfigureAwait(false);
@@ -95,22 +94,23 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync("The simple event has been deleted").ConfigureAwait(false);
 
 			// RECURRING EVENT
-			var recurrenceInfo = new RecurrenceInfo()
+			var recurrenceInfo = new EventRecurrenceInfo()
 			{
 				EndDateTime = DateTime.Now.AddMonths(2),
 				WeeklyDays = new[] { DayOfWeek.Monday, DayOfWeek.Friday },
 				Type = RecurrenceType.Weekly,
+				RepeatInterval = 1,
+				Duration = 45
 			};
-			var recurringEventCalendar = new[]
-			{
-				(Start: DateTime.UtcNow.AddDays(2), End: DateTime.UtcNow.AddDays(2).AddHours(2)),
-			};
+			eventStart = DateTime.UtcNow.AddDays(2);
+			eventEnd = eventStart.AddHours(2);
 			attendanceType = EventAttendanceType.Hybrid;
 
 			var newRecurringEvent = await client.Events.CreateRecurringEventAsync(
 				"ZoomNet Integration Testing: recurring event",
 				"The description",
-				recurringEventCalendar,
+				eventStart,
+				eventEnd,
 				recurrenceInfo,
 				TimeZones.America_New_York,
 				hub.Id,
@@ -119,8 +119,8 @@ namespace ZoomNet.IntegrationTests.Tests
 				new[] { EventCategory.BusinessAndNetworking },
 				new[] { "cat2", "cat3" },
 				"Jan Vermeer",
-				recurringEventCalendar.OrderBy(c => c.Start).First().Start.AddMinutes(-15), // Lobby opens 15 minutes before the first session
-				recurringEventCalendar.OrderBy(c => c.End).Last().End.AddMinutes(15), // Lobby closes 15 minutes after the last session
+				eventStart.AddMinutes(-15), // Lobby opens 15 minutes before the event starts
+				eventEnd.AddMinutes(15), // Lobby closes 15 minutes after the event ends
 				new[] { Country.Chad, Country.Norway },
 				"The best recurring event ever !!!",
 				cancellationToken).ConfigureAwait(false);
@@ -150,7 +150,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				"Frans Hals",
 				conferenceCalendar.OrderBy(c => c.Start).First().Start.AddMinutes(-15), // Lobby opens 15 minutes before the first session
 				conferenceCalendar.OrderBy(c => c.End).Last().End.AddMinutes(15), // Lobby closes 15 minutes after the last session
-				new[] { Country.Chad, Country.Norway },
+				new[] { Country.Chad, Country.Norway, Country.India },
 				"The best conference ever !!!",
 				cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Conference {newConference.Id} created").ConfigureAwait(false);
@@ -176,6 +176,21 @@ namespace ZoomNet.IntegrationTests.Tests
 				cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Session {newSession.Id} created").ConfigureAwait(false);
 
+			var newTicketTypeId = await client.Events.CreateTicketTypeAsync(
+				newConference.Id,
+				"VIP backstage pass",
+				"CAD",
+				null,
+				50,
+				DateTime.Now, // Can start selling these tickets right away
+				conferenceCalendar.OrderBy(c => c.Start).First().Start, // Stop selling these tickets when the conference starts
+				"Allows backstage access during the conference",
+				0,
+				null,
+				cancellationToken
+			).ConfigureAwait(false);
+			await log.WriteLineAsync($"Ticket type {newTicketTypeId} created").ConfigureAwait(false);
+
 			var ticketTypes = await client.Events.GetAllTicketTypesAsync(newConference.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {ticketTypes.Length} ticket types").ConfigureAwait(false);
 
@@ -186,7 +201,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			{
 				new EventTicket
 				{
-					TypeId = ticketTypes.First(t => t.IsFree).Id,
+					TypeId = newTicketTypeId,
 					SendNotifications = false,
 					FastJoin = true,
 					RegistrationNeeded = false,
@@ -196,7 +211,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				},
 				new EventTicket
 				{
-					TypeId = ticketTypes.First(t => t.IsFree).Id,
+					TypeId = newTicketTypeId,
 					SendNotifications = false,
 					FastJoin = false,
 					RegistrationNeeded = true,

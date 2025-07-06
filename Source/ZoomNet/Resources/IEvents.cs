@@ -90,7 +90,8 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="name">The name of the event.</param>
 		/// <param name="description">The description of the event.</param>
-		/// <param name="calendar">An enumeration of start/end dates. Each item in the enumeration represents one day for the event.</param>
+		/// <param name="start">The date and time when the event ends.</param>
+		/// <param name="end">The date and time when the event starts.</param>
 		/// <param name="timeZone">The timezone of the event.</param>
 		/// <param name="meetingType">The type of the meeting.</param>
 		/// <param name="hubId">The ID of the event hub.</param>
@@ -105,7 +106,7 @@ namespace ZoomNet.Resources
 		/// <param name="tagLine">This field displays under the event detail page image.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The new <see cref="SimpleEvent"/>.</returns>
-		Task<SimpleEvent> CreateSimpleEventAsync(string name, string description, IEnumerable<(DateTime Start, DateTime End)> calendar, TimeZones timeZone, EventMeetingType meetingType, string hubId, bool isRestricted = false, EventAttendanceType attendanceType = EventAttendanceType.Virtual, IEnumerable<EventCategory> categories = null, IEnumerable<string> tags = null, string contactName = null, DateTime? lobbyStart = null, DateTime? lobbyEnd = null, IEnumerable<Country> blockedCountries = null, string tagLine = null, CancellationToken cancellationToken = default);
+		Task<SimpleEvent> CreateSimpleEventAsync(string name, string description, DateTime start, DateTime end, TimeZones timeZone, EventMeetingType meetingType, string hubId, bool isRestricted = false, EventAttendanceType attendanceType = EventAttendanceType.Virtual, IEnumerable<EventCategory> categories = null, IEnumerable<string> tags = null, string contactName = null, DateTime? lobbyStart = null, DateTime? lobbyEnd = null, IEnumerable<Country> blockedCountries = null, string tagLine = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Create a conference event.
@@ -133,7 +134,8 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="name">The name of the event.</param>
 		/// <param name="description">The description of the event.</param>
-		/// <param name="calendar">An enumeration of start/end dates. Each item in the enumeration represents one day for the conference.</param>
+		/// <param name="start">The date and time when the event ends.</param>
+		/// <param name="end">The date and time when the event starts.</param>
 		/// <param name="recurrence">Information about recurring sessions.</param>
 		/// <param name="timeZone">The timezone of the event.</param>
 		/// <param name="hubId">The ID of the event hub.</param>
@@ -148,7 +150,7 @@ namespace ZoomNet.Resources
 		/// <param name="tagLine">This field displays under the event detail page image.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The new <see cref="RecurringEvent"/>.</returns>
-		Task<RecurringEvent> CreateRecurringEventAsync(string name, string description, IEnumerable<(DateTime Start, DateTime End)> calendar, RecurrenceInfo recurrence, TimeZones timeZone, string hubId, bool isRestricted = false, EventAttendanceType attendanceType = EventAttendanceType.Virtual, IEnumerable<EventCategory> categories = null, IEnumerable<string> tags = null, string contactName = null, DateTime? lobbyStart = null, DateTime? lobbyEnd = null, IEnumerable<Country> blockedCountries = null, string tagLine = null, CancellationToken cancellationToken = default);
+		Task<RecurringEvent> CreateRecurringEventAsync(string name, string description, DateTime start, DateTime end, EventRecurrenceInfo recurrence, TimeZones timeZone, string hubId, bool isRestricted = false, EventAttendanceType attendanceType = EventAttendanceType.Virtual, IEnumerable<EventCategory> categories = null, IEnumerable<string> tags = null, string contactName = null, DateTime? lobbyStart = null, DateTime? lobbyEnd = null, IEnumerable<Country> blockedCountries = null, string tagLine = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Publishes an event to make it available for attendees.
@@ -426,7 +428,34 @@ namespace ZoomNet.Resources
 
 		#region TICKET TYPES
 
-		Task CreateTicketTypeAsync(string eventId, string name, string currencyCode, bool isFree, double price, int quantity, DateTime start, DateTime end, string description, int quantitySold, IEnumerable<string> sessionIds, CancellationToken cancellationToken = default);
+		/// <summary>
+		/// Create a ticket type for a specified event.
+		/// </summary>
+		/// <remarks>This API is not allowed for single session and recurring event type.</remarks>
+		/// <param name="eventId">The ID of the event.</param>
+		/// <param name="name">The name of the ticket type.</param>
+		/// <param name="currencyCode">The currency of the ticket type.</param>
+		/// <param name="price">The price of the ticket type. A null value indicates that the ticket is free.</param>
+		/// <param name="quantity">The quantity of the ticket type.</param>
+		/// <param name="start">The start time of ticket sales.</param>
+		/// <param name="end">The end time of ticket sales.</param>
+		/// <param name="description">The description of the ticket type.</param>
+		/// <param name="quantitySold">The total number of tickets sold.</param>
+		/// <param name="sessionIds">The list of session IDs allowed for this ticket type. If this value is omitted, this ticket type will be valid for all the sessions in the event.</param>
+		/// <param name="cancellationToken">The cancellation token,</param>
+		/// <returns>The unique identifier of the newly created ticket type.</returns>
+		Task<string> CreateTicketTypeAsync(string eventId, string name, string currencyCode, double? price, int quantity, DateTime start, DateTime end, string description = null, int quantitySold = 0, IEnumerable<string> sessionIds = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Deletes a specific ticket type associated with the given event.
+		/// </summary>
+		/// <remarks>Use this method to remove a ticket type from an event. Ensure that the ticket type is not in use
+		/// or associated with active sales before calling this method.</remarks>
+		/// <param name="eventId">The unique identifier of the event to which the ticket type belongs. Cannot be null or empty.</param>
+		/// <param name="ticketTypeId">The unique identifier of the ticket type to delete. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task DeleteTicketTypeAsync(string eventId, string ticketTypeId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Lists all ticket types associated with an event.
