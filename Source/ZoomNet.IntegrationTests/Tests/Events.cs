@@ -176,6 +176,15 @@ namespace ZoomNet.IntegrationTests.Tests
 				cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Session {newSession.Id} created").ConfigureAwait(false);
 
+			var ticketTypes = await client.Events.GetAllTicketTypesAsync(newConference.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {ticketTypes.Length} ticket types").ConfigureAwait(false);
+
+			foreach (var ticketType in ticketTypes)
+			{
+				await client.Events.DeleteTicketTypeAsync(newConference.Id, ticketType.Id, cancellationToken).ConfigureAwait(false);
+				await log.WriteLineAsync($"Toicket type {ticketType.Name} deleted").ConfigureAwait(false);
+			}
+
 			var newTicketTypeId = await client.Events.CreateTicketTypeAsync(
 				newConference.Id,
 				"VIP backstage pass",
@@ -190,9 +199,6 @@ namespace ZoomNet.IntegrationTests.Tests
 				cancellationToken
 			).ConfigureAwait(false);
 			await log.WriteLineAsync($"Ticket type {newTicketTypeId} created").ConfigureAwait(false);
-
-			var ticketTypes = await client.Events.GetAllTicketTypesAsync(newConference.Id, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"There are {ticketTypes.Length} ticket types").ConfigureAwait(false);
 
 			await client.Events.PublishEventAsync(newConference.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("The conference has been published").ConfigureAwait(false);
