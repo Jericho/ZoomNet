@@ -434,17 +434,17 @@ namespace ZoomNet.Resources
 		/// <remarks>This API is not allowed for single session and recurring event type.</remarks>
 		/// <param name="eventId">The ID of the event.</param>
 		/// <param name="name">The name of the ticket type.</param>
+		/// <param name="start">The start time of ticket sales.</param>
+		/// <param name="end">The end time of ticket sales.</param>
 		/// <param name="currencyCode">The currency of the ticket type.</param>
 		/// <param name="price">The price of the ticket type. A null value indicates that the ticket is free.</param>
 		/// <param name="quantity">The quantity of the ticket type.</param>
-		/// <param name="start">The start time of ticket sales.</param>
-		/// <param name="end">The end time of ticket sales.</param>
 		/// <param name="description">The description of the ticket type.</param>
 		/// <param name="quantitySold">The total number of tickets sold.</param>
 		/// <param name="sessionIds">The list of session IDs allowed for this ticket type. If this value is omitted, this ticket type will be valid for all the sessions in the event.</param>
-		/// <param name="cancellationToken">The cancellation token,</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The unique identifier of the newly created ticket type.</returns>
-		Task<string> CreateTicketTypeAsync(string eventId, string name, string currencyCode, double? price, int quantity, DateTime start, DateTime end, string description = null, int quantitySold = 0, IEnumerable<string> sessionIds = null, CancellationToken cancellationToken = default);
+		Task<string> CreateTicketTypeAsync(string eventId, string name, DateTime start, DateTime end, string currencyCode, double? price = null, int? quantity = null, string description = null, int? quantitySold = null, IEnumerable<string> sessionIds = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Deletes a specific ticket type associated with the given event.
@@ -464,6 +464,25 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>An array of <see cref="EventTicketType"/> objects.</returns>
 		Task<EventTicketType[]> GetAllTicketTypesAsync(string eventId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update a ticket type for a specified event.
+		/// </summary>
+		/// <remarks>This API is not allowed for single session and recurring event type.</remarks>
+		/// <param name="eventId">The ID of the event.</param>
+		/// <param name="ticketTypeId">The unique identifier of the ticket type to delete. Cannot be null or empty.</param>
+		/// <param name="name">The name of the ticket type.</param>
+		/// <param name="start">The start time of ticket sales.</param>
+		/// <param name="end">The end time of ticket sales.</param>
+		/// <param name="currencyCode">The currency of the ticket type.</param>
+		/// <param name="price">The price of the ticket type. A null value indicates that the ticket is free.</param>
+		/// <param name="quantity">The quantity of the ticket type.</param>
+		/// <param name="description">The description of the ticket type.</param>
+		/// <param name="quantitySold">The total number of tickets sold.</param>
+		/// <param name="sessionIds">The list of session IDs allowed for this ticket type. If this value is omitted, this ticket type will be valid for all the sessions in the event.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task UpdateTicketTypeAsync(string eventId, string ticketTypeId, string name = null, DateTime? start = null, DateTime? end = null, string currencyCode = null, double? price = null, int? quantity = null, string description = null, int quantitySold = 0, IEnumerable<string> sessionIds = null, CancellationToken cancellationToken = default);
 
 		#endregion
 

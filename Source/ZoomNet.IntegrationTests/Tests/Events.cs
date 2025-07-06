@@ -15,20 +15,6 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			await log.WriteLineAsync("\n***** EVENTS *****\n").ConfigureAwait(false);
 
-			// GET ALL THE HUBS
-			var hubs = await client.Events.GetAllHubsAsync(UserRoleType.Host, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"There are {hubs.Length} hubs").ConfigureAwait(false);
-
-			var hub = hubs.First(h => h.IsActive);
-
-			// GET ALL THE HUB HOSTS
-			var hubHosts = await client.Events.GetAllHubHostsAsync(hub.Id, 100, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"There are {hubHosts.TotalRecords} hosts for hub {hub.Id}").ConfigureAwait(false);
-
-			// GET ALL THE HUB VIDEOS
-			var hubVideos = await client.Events.GetAllHubVideosAsync(hub.Id, null, 100, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"There are {hubVideos.TotalRecords} videos for hub {hub.Id}").ConfigureAwait(false);
-
 			// CANCEL UPCOMING EVENTS
 			var upComingEvents = await client.Events.GetAllAsync(UserRoleType.Host, EventListStatus.Upcoming, 100, null, cancellationToken).ConfigureAwait(false);
 			var cleanUpTasks = upComingEvents.Records
@@ -55,6 +41,20 @@ namespace ZoomNet.IntegrationTests.Tests
 					await Task.Delay(250, cancellationToken).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
 				});
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
+
+			// GET ALL THE HUBS
+			var hubs = await client.Events.GetAllHubsAsync(UserRoleType.Host, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {hubs.Length} hubs").ConfigureAwait(false);
+
+			var hub = hubs.First(h => h.IsActive);
+
+			// GET ALL THE HUB HOSTS
+			var hubHosts = await client.Events.GetAllHubHostsAsync(hub.Id, 100, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {hubHosts.TotalRecords} hosts for hub {hub.Id}").ConfigureAwait(false);
+
+			// GET ALL THE HUB VIDEOS
+			var hubVideos = await client.Events.GetAllHubVideosAsync(hub.Id, null, 100, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {hubVideos.TotalRecords} videos for hub {hub.Id}").ConfigureAwait(false);
 
 			// SIMPLE EVENT
 			var eventStart = DateTime.UtcNow.AddDays(1);
@@ -187,18 +187,21 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			var newTicketTypeId = await client.Events.CreateTicketTypeAsync(
 				newConference.Id,
-				"VIP backstage pass",
+				"Backstage pass",
+				DateTime.Now, // Can start selling these tickets right away
+				conferenceCalendar.OrderBy(c => c.Start).First().Start, // Stop selling these tickets when the conference starts
 				"CAD",
 				null,
 				50,
-				DateTime.Now, // Can start selling these tickets right away
-				conferenceCalendar.OrderBy(c => c.Start).First().Start, // Stop selling these tickets when the conference starts
 				"Allows backstage access during the conference",
 				0,
 				null,
 				cancellationToken
 			).ConfigureAwait(false);
 			await log.WriteLineAsync($"Ticket type {newTicketTypeId} created").ConfigureAwait(false);
+
+			await client.Events.UpdateTicketTypeAsync(newConference.Id, newTicketTypeId, name: "VIP pass", cancellationToken: cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Ticket type {newTicketTypeId} updated").ConfigureAwait(false);
 
 			await client.Events.PublishEventAsync(newConference.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("The conference has been published").ConfigureAwait(false);
@@ -248,6 +251,9 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			actions = await client.Events.GetAllAttendeeActionsAsync(newConference.Id, "john@example.com", 100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Retrieved {actions.Records.Length} attendee actions for John Doe Smith").ConfigureAwait(false);
+
+			await client.Events.CancelEventAsync(newConference.Id, "Cancelled for testing purposes", cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("The conference has been cancelled").ConfigureAwait(false);
 
 			await client.Events.DeleteEventAsync(newConference.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("The conference has been deleted").ConfigureAwait(false);

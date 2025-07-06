@@ -559,17 +559,17 @@ namespace ZoomNet.Resources
 		#region TICKET TYPES
 
 		/// <inheritdoc/>
-		public Task<string> CreateTicketTypeAsync(string eventId, string name, string currencyCode, double? price, int quantity, DateTime start, DateTime end, string description = null, int quantitySold = 0, IEnumerable<string> sessionIds = null, CancellationToken cancellationToken = default)
+		public Task<string> CreateTicketTypeAsync(string eventId, string name, DateTime start, DateTime end, string currencyCode, double? price = null, int? quantity = null, string description = null, int? quantitySold = null, IEnumerable<string> sessionIds = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
 				{ "name", name },
+				{ "start_time", start.ToZoomFormat(TimeZones.UTC) },
+				{ "end_time", end.ToZoomFormat(TimeZones.UTC) },
 				{ "currency", currencyCode },
 				{ "free", !price.HasValue },
 				{ "price", price?.ToString() }, // The Zoom API requires a string even though the value is numerical
 				{ "quantity", quantity },
-				{ "start_time", start.ToZoomFormat(TimeZones.UTC) },
-				{ "end_time", end.ToZoomFormat(TimeZones.UTC) },
 				{ "description", description },
 				{ "sold_quantity", quantitySold },
 				{ "sessions", sessionIds?.ToArray() },
@@ -599,6 +599,30 @@ namespace ZoomNet.Resources
 				.GetAsync($"zoom_events/events/{eventId}/ticket_types")
 				.WithCancellationToken(cancellationToken)
 				.AsObject<EventTicketType[]>("ticket_types");
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateTicketTypeAsync(string eventId, string ticketTypeId, string name = null, DateTime? start = null, DateTime? end = null, string currencyCode = null, double? price = null, int? quantity = null, string description = null, int quantitySold = 0, IEnumerable<string> sessionIds = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "name", name },
+				{ "start_time", start?.ToZoomFormat(TimeZones.UTC) },
+				{ "end_time", end?.ToZoomFormat(TimeZones.UTC) },
+				{ "currency", currencyCode },
+				{ "free", !price.HasValue },
+				{ "price", price?.ToString() }, // The Zoom API requires a string even though the value is numerical
+				{ "quantity", quantity },
+				{ "description", description },
+				{ "sold_quantity", quantitySold },
+				{ "sessions", sessionIds?.ToArray() },
+			};
+
+			return _client
+				.PatchAsync($"zoom_events/events/{eventId}/ticket_types/{ticketTypeId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
 		}
 
 		#endregion
