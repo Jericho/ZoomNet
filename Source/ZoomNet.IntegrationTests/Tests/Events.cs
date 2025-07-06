@@ -222,8 +222,8 @@ namespace ZoomNet.IntegrationTests.Tests
 				{
 					TypeId = newTicketTypeId,
 					SendNotifications = false,
-					FastJoin = false,
-					RegistrationNeeded = true,
+					FastJoin = true,
+					RegistrationNeeded = false,
 					FirstName = "John",
 					LastName = "Doe",
 					Email = "john@example.com"
@@ -231,8 +231,9 @@ namespace ZoomNet.IntegrationTests.Tests
 			};
 
 			tickets = await client.Events.CreateTicketsAsync(newConference.Id, tickets, "integration_test", cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Tickets created").ConfigureAwait(false);
 
-			var checkInErrors = await client.Events.CheckInAttendeesAsync(newConference.Id, newSession.Id, new[] { "bob@example.com", "john@example.com" }, "integration_tests", cancellationToken).ConfigureAwait(false);
+			var checkInErrors = await client.Events.CheckInAttendeesAsync(newConference.Id, new[] { "bob@example.com", "john@example.com" }, "integration_tests", cancellationToken).ConfigureAwait(false);
 			if (checkInErrors.Length > 0)
 			{
 				await log.WriteLineAsync($"There were {checkInErrors.Length} errors while checking in attendees:").ConfigureAwait(false);
@@ -250,13 +251,10 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync($"Retrieved {actions.Records.Length} attendee actions for Bob Smith").ConfigureAwait(false);
 
 			actions = await client.Events.GetAllAttendeeActionsAsync(newConference.Id, "john@example.com", 100, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"Retrieved {actions.Records.Length} attendee actions for John Doe Smith").ConfigureAwait(false);
+			await log.WriteLineAsync($"Retrieved {actions.Records.Length} attendee actions for John Doe").ConfigureAwait(false);
 
 			await client.Events.CancelEventAsync(newConference.Id, "Cancelled for testing purposes", cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("The conference has been cancelled").ConfigureAwait(false);
-
-			await client.Events.DeleteEventAsync(newConference.Id, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync("The conference has been deleted").ConfigureAwait(false);
 		}
 	}
 }
