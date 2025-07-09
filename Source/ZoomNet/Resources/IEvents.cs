@@ -424,6 +424,28 @@ namespace ZoomNet.Resources
 
 		#region SPEAKERS
 
+		/// <summary>
+		/// Asynchronously creates a new speaker for the specified event.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event to which the speaker will be added. Cannot be null or empty.</param>
+		/// <param name="name">The name of the speaker. Cannot be null or empty.</param>
+		/// <param name="emailAddress">The email address of the speaker. Optional.</param>
+		/// <param name="jobTitle">The job title of the speaker. Optional.</param>
+		/// <param name="biography">A brief biography of the speaker. Optional.</param>
+		/// <param name="companyName">The name of the company the speaker is associated with. Optional.</param>
+		/// <param name="companyWebsite">The website of the company the speaker is associated with. Optional.</param>
+		/// <param name="linkedInUrl">The LinkedIn profile URL of the speaker. Optional.</param>
+		/// <param name="twitterUrl">The Twitter profile URL of the speaker. Optional.</param>
+		/// <param name="youtubeUrl">The YouTube channel URL of the speaker. Optional.</param>
+		/// <param name="featuredInEventDetailPage">Indicates whether the speaker is featured on the event detail page. Defaults to <see langword="false"/>.</param>
+		/// <param name="visibleInEventDetailPage">Indicates whether the speaker is visible on the event detail page. Defaults to <see langword="true"/>.</param>
+		/// <param name="featuredInLobby">Indicates whether the speaker is featured in the event lobby. Defaults to <see langword="false"/>.</param>
+		/// <param name="visibleInLobby">Indicates whether the speaker is visible in the event lobby. Defaults to <see langword="true"/>.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Optional.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the created <see cref="EventSpeaker"/>
+		/// object.</returns>
+		Task<EventSpeaker> CreateSpeakerAsync(string eventId, string name, string emailAddress = null, string jobTitle = null, string biography = null, string companyName = null, string companyWebsite = null, string linkedInUrl = null, string twitterUrl = null, string youtubeUrl = null, bool featuredInEventDetailPage = false, bool visibleInEventDetailPage = true, bool featuredInLobby = false, bool visibleInLobby = true, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region TICKET TYPES
