@@ -677,5 +677,52 @@ namespace ZoomNet
 		{
 			return roomsResource.RemoveEmergencyContentFromRoomsAsync(new[] { roomId }, cancellationToken);
 		}
+
+		/// <summary>
+		/// Asynchronously creates a ticket for a specified event with optional attendee details.
+		/// </summary>
+		/// <param name="eventsResource">The event resource interface used to create the ticket.</param>
+		/// <param name="eventId">The unique identifier of the event for which the ticket is being created. Cannot be null or empty.</param>
+		/// <param name="firstName">The first name of the attendee. Optional.</param>
+		/// <param name="lastName">The last name of the attendee. Optional.</param>
+		/// <param name="address">The address of the attendee. Optional.</param>
+		/// <param name="city">The city of the attendee. Optional.</param>
+		/// <param name="state">The state of the attendee. Optional.</param>
+		/// <param name="zip">The ZIP code of the attendee. Optional.</param>
+		/// <param name="country">The country of the attendee. Optional.</param>
+		/// <param name="phone">The phone number of the attendee. Optional.</param>
+		/// <param name="industry">The industry of the attendee. Optional.</param>
+		/// <param name="jobTitle">The job title of the attendee. Optional.</param>
+		/// <param name="organization">The organization of the attendee. Optional.</param>
+		/// <param name="comments">Additional comments about the attendee. Optional.</param>
+		/// <param name="externalTicketId">An external identifier for the ticket. Optional.</param>
+		/// <param name="customQuestions">A collection of custom questions and answers for the attendee. Optional.</param>
+		/// <param name="source">The source of the ticket creation request. Optional.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Optional.</param>
+		/// <returns>A task that represents the asynchronous operation of creating a ticket.</returns>
+		public static async Task<EventTicket> CreateTicketAsync(this IEvents eventsResource, string eventId, string firstName = null, string lastName = null, string address = null, string city = null, string state = null, string zip = null, string country = null, string phone = null, string industry = null, string jobTitle = null, string organization = null, string comments = null, string externalTicketId = null, IEnumerable<KeyValuePair<string, string>> customQuestions = null, string source = null, CancellationToken cancellationToken = default)
+		{
+			var ticket = new EventTicket
+			{
+				FirstName = firstName,
+				LastName = lastName,
+				Address = address,
+				City = city,
+				State = state,
+				Zip = zip,
+				Country = country,
+				Phone = phone,
+				Industry = industry,
+				JobTitle = jobTitle,
+				Organization = organization,
+				Comments = comments,
+				ExternalTicketId = externalTicketId,
+				CustomQuestions = customQuestions?.ToArray()
+			};
+
+			var result = await eventsResource.CreateTicketsAsync(eventId, new[] { ticket }, source, cancellationToken).ConfigureAwait(false);
+
+			return result.FirstOrDefault();
+		}
 	}
 }

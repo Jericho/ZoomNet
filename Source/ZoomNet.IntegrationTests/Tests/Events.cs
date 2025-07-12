@@ -236,6 +236,14 @@ namespace ZoomNet.IntegrationTests.Tests
 			tickets = await client.Events.CreateTicketsAsync(newConference.Id, tickets, "integration_test", cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Tickets created").ConfigureAwait(false);
 
+			var bobTicket = tickets.First(t => t.Email == "bob@example.com");
+			await client.Events.DeleteTicketAsync(newConference.Id, bobTicket.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Ticket {bobTicket.Id} deleted").ConfigureAwait(false);
+
+			var johnTicket = tickets.First(t => t.Email == "john@example.com");
+			johnTicket = await client.Events.GetTicketAsync(newConference.Id, johnTicket.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Ticket {johnTicket.Id} retrieved").ConfigureAwait(false);
+
 			var checkInErrors = await client.Events.CheckInAttendeesAsync(newConference.Id, new[] { "bob@example.com", "john@example.com" }, "integration_tests", cancellationToken).ConfigureAwait(false);
 			if (checkInErrors.Length > 0)
 			{

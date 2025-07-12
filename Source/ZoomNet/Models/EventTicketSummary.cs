@@ -3,9 +3,9 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Ticket assigned to an event registrant.
+	/// Basic information about a ticket assigned to an event registrant.
 	/// </summary>
-	public class EventRegistrantTicket
+	public class EventTicketSummary
 	{
 		/// <summary>Gets or sets the id of the registrant ticket.</summary>
 		[JsonPropertyName("ticket_id")]
@@ -15,7 +15,7 @@ namespace ZoomNet.Models
 		/// Gets or sets the role.
 		/// </summary>
 		[JsonPropertyName("role")]
-		public EventTicketRole Role { get; set; }
+		public EventTicketRole? Role { get; set; }
 
 		/// <summary>
 		/// Gets or sets the event authentication method for the ticket.

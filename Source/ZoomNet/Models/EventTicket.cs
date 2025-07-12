@@ -5,17 +5,13 @@ using ZoomNet.Json;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Someone who has registered for an Event.
+	/// The full details about a ticket assigned to a registrant.
 	/// </summary>
-	public class EventTicket
+	public class EventTicket : EventTicketSummary
 	{
 		/// <summary>Gets or sets a valid email address.</summary>
 		[JsonPropertyName("email")]
 		public string Email { get; set; }
-
-		/// <summary>Gets or sets the ticket id.</summary>
-		[JsonPropertyName("ticket_id")]
-		public string Id { get; set; }
 
 		/// <summary>Gets or sets the ticket type id.</summary>
 		[JsonPropertyName("ticket_type_id")]
@@ -32,6 +28,10 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets a value indicating whether to send email notifications.</summary>
 		[JsonPropertyName("send_notification")]
 		public bool SendNotifications { get; set; }
+
+		/// <summary>Gets or sets the source of registration.</summary>
+		[JsonPropertyName("registration_source")]
+		public string RegistrationSource { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether to support guest join i.e. Non-Zoom users (Fast join without upfront authentication).

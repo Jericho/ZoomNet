@@ -525,6 +525,63 @@ namespace ZoomNet.Resources
 		/// objects  representing the created tickets.</returns>
 		Task<EventTicket[]> CreateTicketsAsync(string eventId, IEnumerable<EventTicket> tickets, string source = null, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Asynchronously deletes a ticket for a specified event.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event associated with the ticket. Cannot be null or empty.</param>
+		/// <param name="ticketId">The unique identifier of the ticket to be deleted. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous delete operation.</returns>
+		Task DeleteTicketAsync(string eventId, string ticketId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously retrieves the event ticket specified by the event and ticket identifiers.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event for which the ticket is requested. Cannot be null or empty.</param>
+		/// <param name="ticketId">The unique identifier of the ticket to retrieve. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the <see cref="EventTicket"/>
+		/// associated with the specified identifiers.</returns>
+		Task<EventTicket> GetTicketAsync(string eventId, string ticketId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously retrieves a paginated list of event tickets for a specified event.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event for which tickets are being retrieved. Cannot be null or empty.</param>
+		/// <param name="ticketTypeId">The optional identifier of the ticket type to filter the results. If null, tickets of all types are retrieved.</param>
+		/// <param name="recordsPerPage">The number of tickets to include per page. Must be a positive integer. Defaults to 30.</param>
+		/// <param name="pagingToken">The token used to retrieve the next set of results in a paginated response. If null, the first page is retrieved.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Defaults to <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task representing the asynchronous operation. The task result contains a <see
+		/// cref="PaginatedResponseWithToken{EventTicket}"/> with the list of event tickets and a token for the next page of
+		/// results.</returns>
+		Task<PaginatedResponseWithToken<EventTicket>> GetAllTicketsAsync(string eventId, string ticketTypeId = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Updates the details of a ticket for a specified event asynchronously.
+		/// </summary>
+		/// <remarks>This method allows partial updates of ticket information. Only non-null parameters will be
+		/// updated.</remarks>
+		/// <param name="eventId">The unique identifier of the event associated with the ticket.</param>
+		/// <param name="ticketId">The unique identifier of the ticket to be updated.</param>
+		/// <param name="firstName">The first name of the ticket holder. Can be null to leave unchanged.</param>
+		/// <param name="lastName">The last name of the ticket holder. Can be null to leave unchanged.</param>
+		/// <param name="address">The address of the ticket holder. Can be null to leave unchanged.</param>
+		/// <param name="city">The city of the ticket holder. Can be null to leave unchanged.</param>
+		/// <param name="state">The state of the ticket holder. Can be null to leave unchanged.</param>
+		/// <param name="zip">The ZIP code of the ticket holder. Can be null to leave unchanged.</param>
+		/// <param name="country">The country of the ticket holder. Can be null to leave unchanged.</param>
+		/// <param name="phone">The phone number of the ticket holder. Can be null to leave unchanged.</param>
+		/// <param name="industry">The industry of the ticket holder. Can be null to leave unchanged.</param>
+		/// <param name="jobTitle">The job title of the ticket holder. Can be null to leave unchanged.</param>
+		/// <param name="organization">The organization of the ticket holder. Can be null to leave unchanged.</param>
+		/// <param name="comments">Additional comments about the ticket. Can be null to leave unchanged.</param>
+		/// <param name="externalTicketId">An external identifier for the ticket. Can be null to leave unchanged.</param>
+		/// <param name="customQuestions">A collection of custom question and answer pairs related to the ticket. Can be null to leave unchanged.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+		/// <returns>A task that represents the asynchronous update operation.</returns>
+		Task UpdateTicketAsync(string eventId, string ticketId, string firstName = null, string lastName = null, string address = null, string city = null, string state = null, string zip = null, string country = null, string phone = null, string industry = null, string jobTitle = null, string organization = null, string comments = null, string externalTicketId = null, IEnumerable<KeyValuePair<string, string>> customQuestions = null, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region VIDEO_ON_DEMAND

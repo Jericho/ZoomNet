@@ -351,7 +351,6 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task UpdateExhibitorAsync(string eventId, string exhibitorId, string name = null, string contactFullName = null, string contactEmail = null, bool? isSponsor = null, string sponsorTierId = null, string description = null, IEnumerable<string> sessionIds = null, string website = null, string privacyPolicyUrl = null, string linkedInUrl = null, string twitterUrl = null, string youtubeUrl = null, string instagramUrl = null, string facebookUrl = null, CancellationToken cancellationToken = default)
 		{
-
 			var data = new JsonObject
 			{
 				{ "name", name },
@@ -637,13 +636,13 @@ namespace ZoomNet.Resources
 				{ "start_time", start?.ToZoomFormat(TimeZones.UTC) },
 				{ "end_time", end?.ToZoomFormat(TimeZones.UTC) },
 				{ "currency", currencyCode },
-				{ "free", !price.HasValue },
 				{ "price", price?.ToString() }, // The Zoom API requires a string even though the value is numerical
 				{ "quantity", quantity },
 				{ "description", description },
 				{ "sold_quantity", quantitySold },
 				{ "sessions", sessionIds?.ToArray() },
 			};
+			if (price.HasValue) data.Add("free", false); // Change the 'free' property if (and only if) the price has been specified.
 
 			return _client
 				.PatchAsync($"zoom_events/events/{eventId}/ticket_types/{ticketTypeId}")
@@ -685,7 +684,11 @@ namespace ZoomNet.Resources
 							{ "job_title", t.JobTitle },
 							{ "organization", t.Organization },
 							{ "comments", t.Comments },
-							{ "custom_questions", t.CustomQuestions?.Select(q => new JsonObject { { "title", q.Key }, { "answer", q.Value } }).ToArray() }
+							{
+								"custom_questions", t.CustomQuestions?
+									.Select(q => new JsonObject { { "title", q.Key }, { "answer", q.Value } })
+									.ToArray()
+							}
 						}).ToArray()
 				}
 			};
@@ -696,6 +699,68 @@ namespace ZoomNet.Resources
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<EventTicket[]>("tickets");
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteTicketAsync(string eventId, string ticketId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"zoom_events/events/{eventId}/tickets/{ticketId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<EventTicket> GetTicketAsync(string eventId, string ticketId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"zoom_events/events/{eventId}/tickets/{ticketId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<EventTicket>();
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<EventTicket>> GetAllTicketsAsync(string eventId, string ticketTypeId = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"zoom_events/events/{eventId}/tickets")
+				.WithArgument("ticket_type_id", ticketTypeId)
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<EventTicket>("tickets");
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateTicketAsync(string eventId, string ticketId, string firstName = null, string lastName = null, string address = null, string city = null, string state = null, string zip = null, string country = null, string phone = null, string industry = null, string jobTitle = null, string organization = null, string comments = null, string externalTicketId = null, IEnumerable<KeyValuePair<string, string>> customQuestions = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "first_name", firstName },
+				{ "last_name", lastName },
+				{ "address", address },
+				{ "city", city },
+				{ "state", state },
+				{ "zip", zip },
+				{ "country", country },
+				{ "phone", phone },
+				{ "industry", industry },
+				{ "job_title", jobTitle },
+				{ "organization", organization },
+				{ "comments", comments },
+				{ "external_ticket_id", externalTicketId },
+				{
+					"custom_questions", customQuestions?
+						.Select(q => new JsonObject { { "title", q.Key }, { "answer", q.Value } })
+						.ToArray()
+				}
+			};
+
+			return _client
+				.PatchAsync($"zoom_events/events/{eventId}/tickets/{ticketId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
 		}
 
 		#endregion

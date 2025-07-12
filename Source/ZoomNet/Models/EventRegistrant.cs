@@ -21,6 +21,6 @@ namespace ZoomNet.Models
 		/// Gets or sets the last name.
 		/// </summary>
 		[JsonPropertyName("tickets")]
-		public EventRegistrantTicket[] Tickets { get; set; }
+		public EventTicketSummary[] Tickets { get; set; }
 	}
 }
