@@ -663,6 +663,15 @@ namespace ZoomNet.Resources
 				.AsObject<EventSession>();
 		}
 
+		/// <inheritdoc/>
+		public Task<EventSession[]> GetAllSessionsAsync(string eventId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"zoom_events/events/{eventId}/sessions")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<EventSession[]>("sessions");
+		}
+
 		#endregion
 
 		#region SPEAKERS

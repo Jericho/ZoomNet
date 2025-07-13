@@ -197,6 +197,9 @@ namespace ZoomNet.IntegrationTests.Tests
 			newSession = await client.Events.GetSessionAsync(newConference.Id, newSession.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Session {newSession.Id} retrieved").ConfigureAwait(false);
 
+			var allSessions = await client.Events.GetAllSessionsAsync(newConference.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"All sessions retrieved. There are {allSessions.Length} sessions.").ConfigureAwait(false);
+
 			var ticketTypes = await client.Events.GetAllTicketTypesAsync(newConference.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {ticketTypes.Length} ticket types").ConfigureAwait(false);
 
