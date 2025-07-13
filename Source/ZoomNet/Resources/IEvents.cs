@@ -465,6 +465,15 @@ namespace ZoomNet.Resources
 		/// with the speaker's details.</returns>
 		Task<EventSpeaker> GetSpeakerAsync(string eventId, string speakerId, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Asynchronously retrieves all speakers for a specified event.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event for which to retrieve speakers. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains an array of <see cref="EventSpeaker"/>
+		/// objects representing the speakers for the specified event. The array will be empty if no speakers are found.</returns>
+		Task<EventSpeaker[]> GetAllSpeakersAsync(string eventId, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region TICKET TYPES
