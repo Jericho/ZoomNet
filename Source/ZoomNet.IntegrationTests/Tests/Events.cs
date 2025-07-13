@@ -167,6 +167,9 @@ namespace ZoomNet.IntegrationTests.Tests
 			var newSpeaker = await client.Events.CreateSpeakerAsync(newConference.Id, "ZoomNet Integration Testing: Speaker", "joe@example.com", cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Speaker created").ConfigureAwait(false);
 
+			await client.Events.UpdateSpeakerAsync(newConference.Id, newSpeaker.Id, name: "ZoomNet Integration Testing: updated speaker name", cancellationToken: cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Speaker updated").ConfigureAwait(false);
+
 			newSpeaker = await client.Events.GetSpeakerAsync(newConference.Id, newSpeaker.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Speaker {newSpeaker.Id} retrieved").ConfigureAwait(false);
 
@@ -247,6 +250,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			johnTicket = await client.Events.GetTicketAsync(newConference.Id, johnTicket.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Ticket {johnTicket.Id} retrieved").ConfigureAwait(false);
 
+			// We previously deleted Bob's ticket, so we expect an error when trying check in this attendee
 			var checkInErrors = await client.Events.CheckInAttendeesAsync(newConference.Id, new[] { "bob@example.com", "john@example.com" }, "integration_tests", cancellationToken).ConfigureAwait(false);
 			if (checkInErrors.Length > 0)
 			{

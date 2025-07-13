@@ -607,6 +607,33 @@ namespace ZoomNet.Resources
 				.AsObject<EventSpeaker[]>("speakers");
 		}
 
+		/// <inheritdoc/>
+		public Task UpdateSpeakerAsync(string eventId, string speakerId, string name = null, string emailAddress = null, string jobTitle = null, string biography = null, string companyName = null, string companyWebsite = null, string linkedInUrl = null, string twitterUrl = null, string youtubeUrl = null, bool? featuredInEventDetailPage = null, bool? visibleInEventDetailPage = null, bool? featuredInLobby = null, bool? visibleInLobby = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "name", name },
+				{ "email", emailAddress },
+				{ "job_title", jobTitle },
+				{ "biography", biography },
+				{ "company_name", companyName },
+				{ "company_website", companyWebsite },
+				{ "linkedin_url", linkedInUrl },
+				{ "twitter_url", twitterUrl },
+				{ "youtube_url", youtubeUrl },
+				{ "featured_in_event_detail_page", featuredInEventDetailPage },
+				{ "visible_in_event_detail_page", visibleInEventDetailPage },
+				{ "featured_in_lobby", featuredInLobby },
+				{ "visible_in_lobby", visibleInLobby },
+			};
+
+			return _client
+				.PatchAsync($"zoom_events/events/{eventId}/speakers/{speakerId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
 		#endregion
 
 		#region TICKET TYPES

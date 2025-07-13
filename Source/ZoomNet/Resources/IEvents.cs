@@ -474,6 +474,31 @@ namespace ZoomNet.Resources
 		/// objects representing the speakers for the specified event. The array will be empty if no speakers are found.</returns>
 		Task<EventSpeaker[]> GetAllSpeakersAsync(string eventId, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Asynchronously updates the details of a speaker for a specified event.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event to which the speaker belongs. Cannot be null or empty.</param>
+		/// <param name="speakerId">The unique identifier of the speaker to update. Cannot be null or empty.</param>
+		/// <param name="name">The updated name of the speaker. If null, the name will not be changed.</param>
+		/// <param name="emailAddress">The updated email address of the speaker. If null, the email address will not be changed.</param>
+		/// <param name="jobTitle">The updated job title of the speaker. If null, the job title will not be changed.</param>
+		/// <param name="biography">The updated biography of the speaker. If null, the biography will not be changed.</param>
+		/// <param name="companyName">The updated company name of the speaker. If null, the company name will not be changed.</param>
+		/// <param name="companyWebsite">The updated company website of the speaker. If null, the company website will not be changed.</param>
+		/// <param name="linkedInUrl">The updated LinkedIn URL of the speaker. If null, the LinkedIn URL will not be changed.</param>
+		/// <param name="twitterUrl">The updated Twitter URL of the speaker. If null, the Twitter URL will not be changed.</param>
+		/// <param name="youtubeUrl">The updated YouTube URL of the speaker. If null, the YouTube URL will not be changed.</param>
+		/// <param name="featuredInEventDetailPage">Indicates whether the speaker should be featured on the event detail page. If null, this setting will not be
+		/// changed.</param>
+		/// <param name="visibleInEventDetailPage">Indicates whether the speaker should be visible on the event detail page. If null, this setting will not be
+		/// changed.</param>
+		/// <param name="featuredInLobby">Indicates whether the speaker should be featured in the event lobby. If null, this setting will not be changed.</param>
+		/// <param name="visibleInLobby">Indicates whether the speaker should be visible in the event lobby. If null, this setting will not be changed.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the updated <see cref="EventSpeaker"/>
+		/// object.</returns>
+		Task UpdateSpeakerAsync(string eventId, string speakerId, string name = null, string emailAddress = null, string jobTitle = null, string biography = null, string companyName = null, string companyWebsite = null, string linkedInUrl = null, string twitterUrl = null, string youtubeUrl = null, bool? featuredInEventDetailPage = null, bool? visibleInEventDetailPage = null, bool? featuredInLobby = null, bool? visibleInLobby = null, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region TICKET TYPES
