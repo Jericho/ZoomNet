@@ -589,6 +589,15 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
+		/// <inheritdoc/>
+		public Task<EventSpeaker> GetSpeakerAsync(string eventId, string speakerId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"zoom_events/events/{eventId}/speakers/{speakerId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<EventSpeaker>();
+		}
+
 		#endregion
 
 		#region TICKET TYPES

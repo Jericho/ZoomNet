@@ -167,6 +167,9 @@ namespace ZoomNet.IntegrationTests.Tests
 			var newSpeaker = await client.Events.CreateSpeakerAsync(newConference.Id, "ZoomNet Integration Testing: Speaker", "joe@example.com", cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Speaker created").ConfigureAwait(false);
 
+			newSpeaker = await client.Events.GetSpeakerAsync(newConference.Id, newSpeaker.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Speaker {newSpeaker.Id} retrieved").ConfigureAwait(false);
+
 			var newSession = await client.Events.CreateSessionAsync(
 				newConference.Id,
 				"ZoomNet Integration Testing: First day session",
