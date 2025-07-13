@@ -580,6 +580,15 @@ namespace ZoomNet.Resources
 				.AsObject<EventSpeaker>();
 		}
 
+		/// <inheritdoc/>
+		public Task DeleteSpeakerAsync(string eventId, string speakerId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"zoom_events/events/{eventId}/speakers/{speakerId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
 		#endregion
 
 		#region TICKET TYPES

@@ -446,6 +446,15 @@ namespace ZoomNet.Resources
 		/// object.</returns>
 		Task<EventSpeaker> CreateSpeakerAsync(string eventId, string name, string emailAddress = null, string jobTitle = null, string biography = null, string companyName = null, string companyWebsite = null, string linkedInUrl = null, string twitterUrl = null, string youtubeUrl = null, bool featuredInEventDetailPage = false, bool visibleInEventDetailPage = true, bool featuredInLobby = false, bool visibleInLobby = true, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Asynchronously deletes a speaker from the specified event.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event from which the speaker will be removed. Cannot be null or empty.</param>
+		/// <param name="speakerId">The unique identifier of the speaker to be deleted. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous delete operation.</returns>
+		Task DeleteSpeakerAsync(string eventId, string speakerId, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region TICKET TYPES

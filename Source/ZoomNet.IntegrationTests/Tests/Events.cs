@@ -264,6 +264,9 @@ namespace ZoomNet.IntegrationTests.Tests
 			actions = await client.Events.GetAllAttendeeActionsAsync(newConference.Id, "john@example.com", 100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Retrieved {actions.Records.Length} attendee actions for John Doe").ConfigureAwait(false);
 
+			await client.Events.DeleteSpeakerAsync(newConference.Id, newSpeaker.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Speaker deleted").ConfigureAwait(false);
+
 			await client.Events.CancelEventAsync(newConference.Id, "Cancelled for testing purposes", cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("The conference has been cancelled").ConfigureAwait(false);
 		}
