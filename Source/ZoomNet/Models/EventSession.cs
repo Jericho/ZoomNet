@@ -28,6 +28,14 @@ namespace ZoomNet.Models
 		[JsonPropertyName("type")]
 		public EventSessionType Type { get; set; }
 
+		/// <summary>Gets or sets the meeting number.</summary>
+		/// <remarks>Applicable if the session type is of meeting ( i.e type = 0). This ID is null for an unpublished event.</remarks>
+		public long? MeetingId { get; set; }
+
+		/// <summary>Gets or sets the webinar number.</summary>
+		/// <remarks>Applicable if the session type is of webinar ( i.e type = 2). This ID is null for an unpublished event.</remarks>
+		public long? WebinarId { get; set; }
+
 		/// <summary>Gets or sets the start date and time.</summary>
 		[JsonPropertyName("start_time")]
 		public DateTime StartTime { get; set; }

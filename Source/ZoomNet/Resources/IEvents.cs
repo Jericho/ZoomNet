@@ -492,6 +492,16 @@ namespace ZoomNet.Resources
 			int? maxCapacity = null,
 			CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Asynchronously retrieves the session details for a specified event and session identifier.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event for which the session details are requested. Cannot be null or empty.</param>
+		/// <param name="sessionId">The unique identifier of the session to retrieve. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the <see cref="EventSession"/> object
+		/// with the session details.</returns>
+		Task<EventSession> GetSessionAsync(string eventId, string sessionId, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region SPEAKERS
