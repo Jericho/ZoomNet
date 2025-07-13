@@ -370,6 +370,7 @@ namespace ZoomNet.Resources
 		/// <param name="timeZone">The time zone in which the session's start and end times are defined.</param>
 		/// <param name="description">An optional description of the session. Can be null.</param>
 		/// <param name="type">The type of the session, such as a meeting or webinar. Defaults to <see cref="EventSessionType.Meeting"/>.</param>
+		/// <param name="speakers">A collection of speakers for the session, each represented by a tuple containing the speaker's ID, whether they can edit the session, whether they are displayed in session details, and whether they can act as an alternative host. Can be null.</param>
 		/// <param name="isFeatured">Indicates whether the session is featured. Defaults to <see langword="false"/>.</param>
 		/// <param name="isVisibleInLandingPage">Indicates whether the session is visible on the event's landing page. Defaults to <see langword="true"/>.</param>
 		/// <param name="isFeaturedInLobby">Indicates whether the session is featured in the event lobby. Defaults to <see langword="false"/>.</param>
@@ -399,7 +400,7 @@ namespace ZoomNet.Resources
 			TimeZones timeZone,
 			string description = null,
 			EventSessionType type = EventSessionType.Meeting,
-			//IEnumerable<EventSessionSpeaker> speakers = null,
+			IEnumerable<(string Id, bool CanEditSession, bool IsDisplayedInSessionDetails, bool CanActAsAlternativeHost)> speakers = null,
 			bool isFeatured = false,
 			bool isVisibleInLandingPage = true,
 			bool isFeaturedInLobby = false,
@@ -418,6 +419,77 @@ namespace ZoomNet.Resources
 			string physicalLocation = null,
 			bool allowReservations = false,
 			int maxCapacity = 0,
+			CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously deletes a session associated with the specified event.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event to which the session belongs. Cannot be null or empty.</param>
+		/// <param name="sessionId">The unique identifier of the session to be deleted. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous delete operation.</returns>
+		Task DeleteSessionAsync(string eventId, string sessionId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously updates the details of a session within an event.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event containing the session to update. Cannot be null or empty.</param>
+		/// <param name="sessionId">The unique identifier of the session to update. Cannot be null or empty.</param>
+		/// <param name="name">The new name of the session. If null, the name will not be updated.</param>
+		/// <param name="start">The new start time of the session. If null, the start time will not be updated.</param>
+		/// <param name="end">The new end time of the session. If null, the end time will not be updated.</param>
+		/// <param name="timeZone">The time zone of the session. If null, the time zone will not be updated.</param>
+		/// <param name="description">The new description of the session. If null, the description will not be updated.</param>
+		/// <param name="type">The type of the session. If null, the type will not be updated.</param>
+		/// <param name="speakers">A collection of speakers associated with the session, including their permissions. If null, the speakers will not be updated.</param>
+		/// <param name="isFeatured">Indicates whether the session is featured. If null, this property will not be updated.</param>
+		/// <param name="isVisibleInLandingPage">Indicates whether the session is visible on the landing page. If null, this property will not be updated.</param>
+		/// <param name="isFeaturedInLobby">Indicates whether the session is featured in the lobby. If null, this property will not be updated.</param>
+		/// <param name="isVisibleInLobby">Indicates whether the session is visible in the lobby. If null, this property will not be updated.</param>
+		/// <param name="isSimulive">Indicates whether the session is simulive. If null, this property will not be updated.</param>
+		/// <param name="recordingFileId">The identifier of the recording file associated with the session. If null, the recording file will not be updated.</param>
+		/// <param name="isChatInLobbyEnabled">Indicates whether chat is enabled in the lobby for the session. If null, this property will not be updated.</param>
+		/// <param name="isLedBySponsor">Indicates whether the session is led by a sponsor. If null, this property will not be updated.</param>
+		/// <param name="trackLabels">A collection of track labels associated with the session. If null, the track labels will not be updated.</param>
+		/// <param name="audienceLabels">A collection of audience labels associated with the session. If null, the audience labels will not be updated.</param>
+		/// <param name="productLabels">A collection of product labels associated with the session. If null, the product labels will not be updated.</param>
+		/// <param name="levels">A collection of levels associated with the session. If null, the levels will not be updated.</param>
+		/// <param name="alternativeHosts">A collection of alternative hosts for the session. If null, the alternative hosts will not be updated.</param>
+		/// <param name="panelists">A collection of panelists for the session. If null, the panelists will not be updated.</param>
+		/// <param name="attendanceType">The attendance type of the session. If null, the attendance type will not be updated.</param>
+		/// <param name="physicalLocation">The physical location of the session. If null, the location will not be updated.</param>
+		/// <param name="allowReservations">Indicates whether reservations are allowed for the session. If null, this property will not be updated.</param>
+		/// <param name="maxCapacity">The maximum capacity of the session. If null, the capacity will not be updated.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+		/// <returns>A task that represents the asynchronous update operation.</returns>
+		Task UpdateSessionAsync(
+			string eventId,
+			string sessionId,
+			string name = null,
+			DateTime? start = null,
+			DateTime? end = null,
+			TimeZones? timeZone = null,
+			string description = null,
+			EventSessionType? type = null,
+			IEnumerable<(string Id, bool CanEditSession, bool IsDisplayedInSessionDetails, bool CanActAsAlternativeHost)> speakers = null,
+			bool? isFeatured = null,
+			bool? isVisibleInLandingPage = null,
+			bool? isFeaturedInLobby = null,
+			bool? isVisibleInLobby = null,
+			bool? isSimulive = null,
+			string recordingFileId = null,
+			bool? isChatInLobbyEnabled = null,
+			bool? isLedBySponsor = null,
+			IEnumerable<string> trackLabels = null,
+			IEnumerable<string> audienceLabels = null,
+			IEnumerable<string> productLabels = null,
+			IEnumerable<string> levels = null,
+			IEnumerable<string> alternativeHosts = null,
+			IEnumerable<string> panelists = null,
+			EventAttendanceType? attendanceType = null,
+			string physicalLocation = null,
+			bool? allowReservations = null,
+			int? maxCapacity = null,
 			CancellationToken cancellationToken = default);
 
 		#endregion

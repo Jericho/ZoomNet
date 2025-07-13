@@ -185,13 +185,22 @@ namespace ZoomNet.IntegrationTests.Tests
 				cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Session {newSession.Id} created").ConfigureAwait(false);
 
+			await client.Events.UpdateSessionAsync(
+				newConference.Id,
+				newSession.Id,
+				name: "ZoomNet Integration Testing: updated session name",
+				description: "Updated session description",
+				speakers: new[] { (newSpeaker.Id, false, true, true) },
+				cancellationToken: cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Session {newSession.Id} updated").ConfigureAwait(false);
+
 			var ticketTypes = await client.Events.GetAllTicketTypesAsync(newConference.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {ticketTypes.Length} ticket types").ConfigureAwait(false);
 
 			foreach (var ticketType in ticketTypes)
 			{
 				await client.Events.DeleteTicketTypeAsync(newConference.Id, ticketType.Id, cancellationToken).ConfigureAwait(false);
-				await log.WriteLineAsync($"Toicket type {ticketType.Name} deleted").ConfigureAwait(false);
+				await log.WriteLineAsync($"Ticket type {ticketType.Name} deleted").ConfigureAwait(false);
 			}
 
 			var newTicketTypeId = await client.Events.CreateTicketTypeAsync(

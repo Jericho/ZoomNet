@@ -487,7 +487,7 @@ namespace ZoomNet.Resources
 			TimeZones timeZone,
 			string description = null,
 			EventSessionType type = EventSessionType.Meeting,
-			//IEnumerable<EventSessionSpeaker> speakers = null,
+			IEnumerable<(string Id, bool CanEditSession, bool IsDisplayedInSessionDetails, bool CanActAsAlternativeHost)> speakers = null,
 			bool isFeatured = false,
 			bool isVisibleInLandingPage = true,
 			bool isFeaturedInLobby = false,
@@ -516,7 +516,18 @@ namespace ZoomNet.Resources
 				{ "end_time", end.ToZoomFormat(TimeZones.UTC) },
 				{ "timezone", timeZone.ToEnumString() },
 				{ "type", (int)type },
-				//{ "session_speakers", speakers?.ToArray() }, // Not implemented yet
+				{
+					"session_speakers",
+					speakers?
+						.Select(s => new JsonObject
+						{
+							{ "speaker_id", s.Id },
+							{ "access_to_edit_session", s.CanEditSession },
+							{ "show_in_session_detail", s.IsDisplayedInSessionDetails },
+							{ "has_alternative_host_permission", s.CanActAsAlternativeHost }
+						})
+						.ToArray()
+				},
 				{ "featured", isFeatured },
 				{ "visible_in_landing_page", isVisibleInLandingPage },
 				{ "featured_in_lobby", isFeaturedInLobby },
@@ -547,6 +558,100 @@ namespace ZoomNet.Resources
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<EventSession>();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteSessionAsync(string eventId, string sessionId, CancellationToken cancellationToken = default)
+		{
+			return _client
+					.DeleteAsync($"zoom_events/events/{eventId}/sessions/{sessionId}")
+					.WithCancellationToken(cancellationToken)
+					.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateSessionAsync(
+			string eventId,
+			string sessionId,
+			string name = null,
+			DateTime? start = null,
+			DateTime? end = null,
+			TimeZones? timeZone = null,
+			string description = null,
+			EventSessionType? type = null,
+			IEnumerable<(string Id, bool CanEditSession, bool IsDisplayedInSessionDetails, bool CanActAsAlternativeHost)> speakers = null,
+			bool? isFeatured = null,
+			bool? isVisibleInLandingPage = null,
+			bool? isFeaturedInLobby = null,
+			bool? isVisibleInLobby = null,
+			bool? isSimulive = null,
+			string recordingFileId = null,
+			bool? isChatInLobbyEnabled = null,
+			bool? isLedBySponsor = null,
+			IEnumerable<string> trackLabels = null,
+			IEnumerable<string> audienceLabels = null,
+			IEnumerable<string> productLabels = null,
+			IEnumerable<string> levels = null,
+			IEnumerable<string> alternativeHosts = null,
+			IEnumerable<string> panelists = null,
+			EventAttendanceType? attendanceType = null,
+			string physicalLocation = null,
+			bool? allowReservations = null,
+			int? maxCapacity = null,
+			CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "name", name },
+				{ "description", description },
+				{ "start_time", start?.ToZoomFormat(TimeZones.UTC) }, // For some reason the Zoom API requires the start and end dates to be in UTC format and returns an error message if you format the dates in any other time zone
+				{ "end_time", end?.ToZoomFormat(TimeZones.UTC) },
+				{ "timezone", timeZone?.ToEnumString() },
+				{ "type", (int?)type },
+				{
+					"session_speakers",
+					speakers?
+						.Select(s => new JsonObject
+						{
+							{ "speaker_id", s.Id },
+							{ "access_to_edit_session", s.CanEditSession },
+							{ "show_in_session_detail", s.IsDisplayedInSessionDetails },
+							{ "has_alternative_host_permission", s.CanActAsAlternativeHost }
+						})
+						.ToArray()
+				},
+				{ "featured", isFeatured },
+				{ "visible_in_landing_page", isVisibleInLandingPage },
+				{ "featured_in_lobby", isFeaturedInLobby },
+				{ "visible_in_lobby", isVisibleInLobby },
+				{ "is_simulive", isSimulive },
+				{ "record_file_id", recordingFileId },
+				{ "chat_channel", isChatInLobbyEnabled },
+				{ "led_by_sponsor", isLedBySponsor },
+				{ "track_labels", trackLabels?.ToArray() },
+				{ "audience_labels", audienceLabels?.ToArray() },
+				{ "product_labels", productLabels?.ToArray() },
+				{ "levels", levels?.ToArray() },
+				{ "alternative_hosts", alternativeHosts?.ToArray() },
+				{ "panelists", panelists?.ToArray() },
+				{ "attendance_type", attendanceType?.ToEnumString() },
+				{ "physical_location", physicalLocation },
+			};
+
+			if (maxCapacity.HasValue || allowReservations.HasValue)
+			{
+				data["session_reservation"] = new JsonObject
+				{
+					{ "max_capacity", maxCapacity },
+					{ "allow_reservations", allowReservations }
+				};
+			}
+
+			return _client
+				.PatchAsync($"zoom_events/events/{eventId}/sessions/{sessionId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
 		}
 
 		#endregion
