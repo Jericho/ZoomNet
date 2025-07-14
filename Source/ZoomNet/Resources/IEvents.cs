@@ -522,6 +522,16 @@ namespace ZoomNet.Resources
 		/// <returns>A task that represents the asynchronous operation.</returns>
 		Task AddSessionReservationAsync(string eventId, string sessionId, string emailAddress, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Remove reservation spot for a user to the given session.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event associated with the session reservation.</param>
+		/// <param name="sessionId">The unique identifier of the session to be deleted.</param>
+		/// <param name="emailAddress">The email address associated with the session reservation.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task DeleteSessionReservationAsync(string eventId, string sessionId, string emailAddress, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region SPEAKERS

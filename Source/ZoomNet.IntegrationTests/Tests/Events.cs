@@ -291,6 +291,9 @@ namespace ZoomNet.IntegrationTests.Tests
 			await client.Events.AddSessionReservationAsync(newConference.Id, newSession.Id, johnTicket.Email, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Reserved a spot for {johnTicket.Email} in session {newSession.Id}").ConfigureAwait(false);
 
+			await client.Events.DeleteSessionReservationAsync(newConference.Id, newSession.Id, johnTicket.Email, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Deleted reservation for {johnTicket.Email} in session {newSession.Id}").ConfigureAwait(false);
+
 			await client.Events.DeleteSpeakerAsync(newConference.Id, newSpeaker.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Speaker deleted").ConfigureAwait(false);
 
