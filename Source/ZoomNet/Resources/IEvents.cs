@@ -533,6 +533,22 @@ namespace ZoomNet.Resources
 		Task DeleteSessionReservationAsync(string eventId, string sessionId, string emailAddress, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Retrieves a paginated list of all session reservations for a specified event session.
+		/// </summary>
+		/// <remarks>Use this method to retrieve reservations for a specific session within an event. The method
+		/// supports pagination through the <paramref name="pagingToken"/> parameter.</remarks>
+		/// <param name="eventId">The unique identifier of the event for which reservations are being retrieved. Cannot be null or empty.</param>
+		/// <param name="sessionId">The unique identifier of the session within the event. Cannot be null or empty.</param>
+		/// <param name="recordsPerPage">The number of reservation records to include per page. Must be a positive integer. The default is 30.</param>
+		/// <param name="pagingToken">An optional token used to retrieve the next set of results in a paginated response. Can be null for the first
+		/// page.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a <see
+		/// cref="PaginatedResponseWithToken{EventSessionReservation}"/> with the session reservations and a token for the
+		/// next page of results, if available.</returns>
+		Task<PaginatedResponseWithToken<EventSessionReservation>> GetAllSessionReservationsAsync(string eventId, string sessionId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Updates the livestream configuration for a specified session within an event.
 		/// </summary>
 		/// <remarks>This method allows you to enable or disable incoming livestreams for a specific session within an

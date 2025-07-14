@@ -693,6 +693,17 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<EventSessionReservation>> GetAllSessionReservationsAsync(string eventId, string sessionId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"zoom_events/events/{eventId}/sessions/{sessionId}/reservations")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<EventSessionReservation>("reservations");
+		}
+
+		/// <inheritdoc/>
 		public Task UpdateSessionLivestreamConfigurationAsync(string eventId, string sessionId, bool incomingEnabled, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
