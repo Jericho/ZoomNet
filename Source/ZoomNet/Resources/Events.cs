@@ -692,6 +692,32 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
+		/// <inheritdoc/>
+		public Task UpdateSessionLivestreamConfigurationAsync(string eventId, string sessionId, bool incomingEnabled, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "incoming_enabled", incomingEnabled },
+			};
+
+			if (incomingEnabled)
+			{
+				data["incoming_config"] = new JsonObject
+				{
+					// Generated key, specific to a session.
+					// If a generated key already exist for this sessionId, then it is reused.
+					// This is the only type supported as of now and this is a mandatory field when the incoming_enabled field is set to true.
+					{ "stream_key_type", "GENERATED" },
+				};
+			}
+
+			return _client
+				.PatchAsync($"zoom_events/events/{eventId}/sessions/{sessionId}/livestream")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
 		#endregion
 
 		#region SPEAKERS

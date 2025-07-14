@@ -291,6 +291,12 @@ namespace ZoomNet.IntegrationTests.Tests
 			await client.Events.AddSessionReservationAsync(newConference.Id, newSession.Id, johnTicket.Email, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Reserved a spot for {johnTicket.Email} in session {newSession.Id}").ConfigureAwait(false);
 
+			await client.Events.UpdateSessionLivestreamConfigurationAsync(newConference.Id, newSession.Id, true, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Session livestream enabled").ConfigureAwait(false);
+
+			await client.Events.UpdateSessionLivestreamConfigurationAsync(newConference.Id, newSession.Id, false, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Session livestream disabled").ConfigureAwait(false);
+
 			await client.Events.DeleteSessionReservationAsync(newConference.Id, newSession.Id, johnTicket.Email, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Deleted reservation for {johnTicket.Email} in session {newSession.Id}").ConfigureAwait(false);
 

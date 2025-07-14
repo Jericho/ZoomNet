@@ -532,6 +532,20 @@ namespace ZoomNet.Resources
 		/// <returns>A task that represents the asynchronous operation.</returns>
 		Task DeleteSessionReservationAsync(string eventId, string sessionId, string emailAddress, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Updates the livestream configuration for a specified session within an event.
+		/// </summary>
+		/// <remarks>This method allows you to enable or disable incoming livestreams for a specific session within an
+		/// event. Ensure that the <paramref name="eventId"/> and <paramref name="sessionId"/> are valid and correspond to an
+		/// existing event and session.</remarks>
+		/// <param name="eventId">The unique identifier of the event containing the session to update.</param>
+		/// <param name="sessionId">The unique identifier of the session whose livestream configuration is to be updated.</param>
+		/// <param name="incomingEnabled">A value indicating whether incoming livestreams are enabled for the session. <see langword="true"/> to enable
+		/// incoming livestreams; otherwise, <see langword="false"/>.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task UpdateSessionLivestreamConfigurationAsync(string eventId, string sessionId, bool incomingEnabled, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region SPEAKERS
