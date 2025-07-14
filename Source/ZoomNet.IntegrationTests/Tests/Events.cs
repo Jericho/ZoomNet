@@ -294,6 +294,9 @@ namespace ZoomNet.IntegrationTests.Tests
 			await client.Events.UpdateSessionLivestreamConfigurationAsync(newConference.Id, newSession.Id, true, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Session livestream enabled").ConfigureAwait(false);
 
+			var livestreamConfig = await client.Events.GetSessionLivestreamConfgurationAsync(newConference.Id, newSession.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Session livestream configuration retrieved").ConfigureAwait(false);
+
 			await client.Events.UpdateSessionLivestreamConfigurationAsync(newConference.Id, newSession.Id, false, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Session livestream disabled").ConfigureAwait(false);
 

@@ -719,6 +719,15 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task<EventSessionLivestreamConfiguration> GetSessionLivestreamConfgurationAsync(string eventId, string sessionId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"zoom_events/events/{eventId}/sessions/{sessionId}/livestream")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<EventSessionLivestreamConfiguration>("incoming_config", false);
+		}
+
+		/// <inheritdoc/>
 		public Task<string> GetSessionJoinTokenAsync(string eventId, string sessionId, CancellationToken cancellationToken = default)
 		{
 			return _client
