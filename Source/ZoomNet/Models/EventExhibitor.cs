@@ -7,6 +7,10 @@ namespace ZoomNet.Models
 	/// </summary>
 	public class EventExhibitor
 	{
+		/// <summary>Gets or sets the exhibitor ID.</summary>
+		[JsonPropertyName("exhibitor_id")]
+		public string Id { get; set; }
+
 		/// <summary>Gets or sets the name of the exhibitor.</summary>
 		[JsonPropertyName("name")]
 		public string Name { get; set; }

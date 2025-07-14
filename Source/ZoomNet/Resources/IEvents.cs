@@ -511,6 +511,17 @@ namespace ZoomNet.Resources
 		/// objects representing the sessions for the specified event. The array will be empty if no sessions are found.</returns>
 		Task<EventSession[]> GetAllSessionsAsync(string eventId, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Reserve a spot for a user to the given session.
+		/// </summary>
+		/// <remarks>Session reservation needs to be enabled before using this API.</remarks>
+		/// <param name="eventId">The unique identifier of the event to which the session belongs. Cannot be null or empty.</param>
+		/// <param name="sessionId">The unique identifier of the session to reserve. Cannot be null or empty.</param>
+		/// <param name="emailAddress">The email address of the user making the reservation. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Optional.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task AddSessionReservationAsync(string eventId, string sessionId, string emailAddress, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region SPEAKERS

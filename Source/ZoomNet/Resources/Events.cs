@@ -672,6 +672,16 @@ namespace ZoomNet.Resources
 				.AsObject<EventSession[]>("sessions");
 		}
 
+		/// <inheritdoc/>
+		public Task AddSessionReservationAsync(string eventId, string sessionId, string emailAddress, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.PostAsync($"zoom_events/events/{eventId}/sessions/{sessionId}/reservations")
+				.WithJsonBody(new JsonObject { { "email", emailAddress } })
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
 		#endregion
 
 		#region SPEAKERS
