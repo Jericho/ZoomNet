@@ -718,6 +718,15 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
+		/// <inheritdoc/>
+		public Task<string> GetSessionJoinTokenAsync(string eventId, string sessionId, CancellationToken cancellationToken = default)
+		{
+			return _client
+			   .GetAsync($"zoom_events/events/{eventId}/sessions/{sessionId}/join_token")
+			   .WithCancellationToken(cancellationToken)
+			   .AsObject<string>("join_token");
+		}
+
 		#endregion
 
 		#region SPEAKERS

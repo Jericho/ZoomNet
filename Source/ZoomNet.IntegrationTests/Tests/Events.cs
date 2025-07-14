@@ -297,6 +297,9 @@ namespace ZoomNet.IntegrationTests.Tests
 			await client.Events.UpdateSessionLivestreamConfigurationAsync(newConference.Id, newSession.Id, false, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Session livestream disabled").ConfigureAwait(false);
 
+			var joinToken = await client.Events.GetSessionJoinTokenAsync(newConference.Id, newSession.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Session join token: {joinToken}").ConfigureAwait(false);
+
 			await client.Events.DeleteSessionReservationAsync(newConference.Id, newSession.Id, johnTicket.Email, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Deleted reservation for {johnTicket.Email} in session {newSession.Id}").ConfigureAwait(false);
 

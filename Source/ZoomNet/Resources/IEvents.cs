@@ -546,6 +546,16 @@ namespace ZoomNet.Resources
 		/// <returns>A task that represents the asynchronous operation.</returns>
 		Task UpdateSessionLivestreamConfigurationAsync(string eventId, string sessionId, bool incomingEnabled, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Retrieves the join token to join an event session.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event containing the session to update.</param>
+		/// <param name="sessionId">The unique identifier of the session whose livestream configuration is to be updated.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the join token.</returns>
+		Task<string> GetSessionJoinTokenAsync(string eventId, string sessionId, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region SPEAKERS
