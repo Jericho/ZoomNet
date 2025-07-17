@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
@@ -871,12 +872,109 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public async Task<(EventRegistrationQuestion[] StandardQuestions, EventRegistrationCustomQuestion[] CustomQuestions)> GetRegistrationQuestionsForEventAsync(string eventId, CancellationToken cancellationToken = default)
+		{
+			var response = await _client
+				.GetAsync($"zoom_events/events/{eventId}/questions")
+				.WithCancellationToken(cancellationToken)
+				.AsJson()
+				.ConfigureAwait(false);
+
+			var standardQuestions = Array.Empty<EventRegistrationQuestion>();
+			if (response.TryGetProperty("questions", out JsonElement standardQuestionsJsonElement))
+			{
+				standardQuestions = standardQuestionsJsonElement.EnumerateArray()
+					.Select(item => item.ToObject<EventRegistrationQuestion>())
+					.ToArray();
+			}
+
+			var customQuestions = Array.Empty<EventRegistrationCustomQuestion>();
+			if (response.TryGetProperty("custom_questions", out JsonElement customQuestionsJsonElement))
+			{
+				customQuestions = customQuestionsJsonElement.EnumerateArray()
+					.Select(item => item.ToObject<EventRegistrationCustomQuestion>())
+					.ToArray();
+			}
+
+			return (standardQuestions, customQuestions);
+		}
+
+		/// <inheritdoc/>
+		public async Task<(EventRegistrationQuestion[] StandardQuestions, EventRegistrationCustomQuestion[] CustomQuestions)> GetRegistrationQuestionsForTicketTypeAsync(string eventId, string ticketTypeId, CancellationToken cancellationToken = default)
+		{
+			var response = await _client
+				.GetAsync($"zoom_events/events/{eventId}/ticket_types/{ticketTypeId}/questions")
+				.WithCancellationToken(cancellationToken)
+				.AsJson()
+				.ConfigureAwait(false);
+
+			var standardQuestions = Array.Empty<EventRegistrationQuestion>();
+			if (response.TryGetProperty("questions", out JsonElement standardQuestionsJsonElement))
+			{
+				standardQuestions = standardQuestionsJsonElement.EnumerateArray()
+					.Select(item => item.ToObject<EventRegistrationQuestion>())
+					.ToArray();
+			}
+
+			var customQuestions = Array.Empty<EventRegistrationCustomQuestion>();
+			if (response.TryGetProperty("custom_questions", out JsonElement customQuestionsJsonElement))
+			{
+				customQuestions = customQuestionsJsonElement.EnumerateArray()
+					.Select(item => item.ToObject<EventRegistrationCustomQuestion>())
+					.ToArray();
+			}
+
+			return (standardQuestions, customQuestions);
+		}
+
+		/// <inheritdoc/>
 		public Task<EventTicketType[]> GetAllTicketTypesAsync(string eventId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"zoom_events/events/{eventId}/ticket_types")
 				.WithCancellationToken(cancellationToken)
 				.AsObject<EventTicketType[]>("ticket_types");
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateRegistrationQuestionsForEventAsync(
+			string eventId,
+			IEnumerable<EventRegistrationQuestion> standardQuestions = null,
+			IEnumerable<EventRegistrationCustomQuestion> customQuestions = null,
+			CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "questions", standardQuestions?.ToArray() },
+				{ "custom_questions", customQuestions?.ToArray() }
+			};
+
+			return _client
+				.PutAsync($"zoom_events/events/{eventId}/questions")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateRegistrationQuestionsForTicketTypeAsync(
+			string eventId,
+			string ticketTypeId,
+			IEnumerable<EventRegistrationQuestion> standardQuestions = null,
+			IEnumerable<EventRegistrationCustomQuestion> customQuestions = null,
+			CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "questions", standardQuestions?.ToArray() },
+				{ "custom_questions", customQuestions?.ToArray() }
+			};
+
+			return _client
+				.PutAsync($"zoom_events/events/{eventId}/ticket_types/{ticketTypeId}/questions")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
 		}
 
 		/// <inheritdoc/>

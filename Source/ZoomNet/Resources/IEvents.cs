@@ -697,12 +697,76 @@ namespace ZoomNet.Resources
 		Task DeleteTicketTypeAsync(string eventId, string ticketTypeId, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Asynchronously retrieves the registration questions for a specified event.
+		/// </summary>
+		/// <remarks>Use this method to obtain both standard and custom registration questions associated with a
+		/// specific event.</remarks>
+		/// <param name="eventId">The unique identifier of the event for which to retrieve registration questions. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a tuple with two elements: <see
+		/// cref="EventRegistrationQuestion"/> array of standard questions and <see cref="EventRegistrationCustomQuestion"/>
+		/// array of custom questions.</returns>
+		Task<(EventRegistrationQuestion[] StandardQuestions, EventRegistrationCustomQuestion[] CustomQuestions)> GetRegistrationQuestionsForEventAsync(string eventId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously retrieves the registration questions associated with a specified ticket type.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event for which to retrieve registration questions. Cannot be null or empty.</param>
+		/// <param name="ticketTypeId">The identifier of the ticket type for which to retrieve registration questions. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a tuple with two elements: <see
+		/// cref="EventRegistrationQuestion"/> array of standard questions and <see cref="EventRegistrationCustomQuestion"/>
+		/// array of custom questions.</returns>
+		Task<(EventRegistrationQuestion[] StandardQuestions, EventRegistrationCustomQuestion[] CustomQuestions)> GetRegistrationQuestionsForTicketTypeAsync(string eventId, string ticketTypeId, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Lists all ticket types associated with an event.
 		/// </summary>
 		/// <param name="eventId">The ID of the event.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>An array of <see cref="EventTicketType"/> objects.</returns>
 		Task<EventTicketType[]> GetAllTicketTypesAsync(string eventId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Updates the registration questions for a specified event.
+		/// </summary>
+		/// <remarks>This method allows updating both standard and custom registration questions for an event. If
+		/// either <paramref name="standardQuestions"/> or <paramref name="customQuestions"/> is provided as null, the
+		/// corresponding set of questions will not be modified.</remarks>
+		/// <param name="eventId">The unique identifier of the event for which the registration questions are being updated. Cannot be null or 
+		/// empty.</param>
+		/// <param name="standardQuestions">An optional collection of standard registration questions to be associated with the event. If null, existing
+		/// standard questions remain unchanged.</param>
+		/// <param name="customQuestions">An optional collection of custom registration questions to be associated with the event. If null, existing custom
+		/// questions remain unchanged.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task UpdateRegistrationQuestionsForEventAsync(
+			string eventId,
+			IEnumerable<EventRegistrationQuestion> standardQuestions = null,
+			IEnumerable<EventRegistrationCustomQuestion> customQuestions = null,
+			CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Updates the registration questions for a specified ticket type within an event.
+		/// </summary>
+		/// <remarks>This method allows updating both standard and custom registration questions for a specific ticket
+		/// type within an event. If either <paramref name="standardQuestions"/> or <paramref name="customQuestions"/> is <see
+		/// langword="null"/>, the corresponding questions will not be updated.</remarks>
+		/// <param name="eventId">The unique identifier of the event containing the ticket type.</param>
+		/// <param name="ticketTypeId">The unique identifier of the ticket type for which to update registration questions.</param>
+		/// <param name="standardQuestions">An optional collection of standard registration questions to associate with the ticket type. Can be <see
+		/// langword="null"/> if no standard questions are to be updated.</param>
+		/// <param name="customQuestions">An optional collection of custom registration questions to associate with the ticket type. Can be <see
+		/// langword="null"/> if no custom questions are to be updated.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task UpdateRegistrationQuestionsForTicketTypeAsync(
+			string eventId,
+			string ticketTypeId,
+			IEnumerable<EventRegistrationQuestion> standardQuestions = null,
+			IEnumerable<EventRegistrationCustomQuestion> customQuestions = null,
+			CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Update a ticket type for a specified event.

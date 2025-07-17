@@ -229,6 +229,46 @@ namespace ZoomNet.IntegrationTests.Tests
 			await client.Events.UpdateTicketTypeAsync(newConference.Id, newTicketTypeId, name: "VIP pass", cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Ticket type {newTicketTypeId} updated").ConfigureAwait(false);
 
+			var registrationQuestions = new[]
+			{
+				new EventRegistrationQuestion
+				{
+					FieldName = EventRegistrationField.City,
+					IsRequired = true,
+					Title = "What city do you live in?",
+				},
+				new EventRegistrationQuestion
+				{
+					FieldName = EventRegistrationField.JobTitle,
+					IsRequired = true,
+					Title = "What is your job title?",
+				},
+			};
+
+			var customQuestions = new[]
+			{
+				new EventRegistrationCustomQuestion
+				{
+					FieldName = "favorite_color",
+					IsRequired = false,
+					Title = "What is your favorite color?",
+					Type = RegistrationCustomQuestionTypeForEvent.ShortText
+				},
+				new EventRegistrationCustomQuestion
+				{
+					FieldName = "favorite_food",
+					IsRequired = false,
+					Title = "What is your favorite food?",
+					Type = RegistrationCustomQuestionTypeForEvent.ShortText
+				}
+			};
+
+			await client.Events.UpdateRegistrationQuestionsForTicketTypeAsync(newConference.Id, newTicketTypeId, registrationQuestions, customQuestions, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Registration questions for the ticket type updated").ConfigureAwait(false);
+
+			var conferenceRegistrationQuestions = await client.Events.GetRegistrationQuestionsForTicketTypeAsync(newConference.Id, newTicketTypeId, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Registration contains {conferenceRegistrationQuestions.StandardQuestions.Length} standard questions and {conferenceRegistrationQuestions.CustomQuestions.Length} custom questions").ConfigureAwait(false);
+
 			await client.Events.PublishEventAsync(newConference.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("The conference has been published").ConfigureAwait(false);
 
