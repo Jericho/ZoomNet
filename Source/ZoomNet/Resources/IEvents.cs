@@ -533,6 +533,17 @@ namespace ZoomNet.Resources
 		Task DeleteSessionReservationAsync(string eventId, string sessionId, string emailAddress, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Retrieve all polls for a sessions.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event associated with the session reservation.</param>
+		/// <param name="sessionId">The unique identifier of the session to be deleted.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+		/// <returns>
+		/// An array of <see cref="Poll" />.
+		/// </returns>
+		Task<Poll[]> GetAllSessionPollsAsync(string eventId, string sessionId, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Retrieves a paginated list of all session reservations for a specified event session.
 		/// </summary>
 		/// <remarks>Use this method to retrieve reservations for a specific session within an event. The method
@@ -792,7 +803,7 @@ namespace ZoomNet.Resources
 		#region TICKETS
 
 		/// <summary>
-		/// Creates multiple tickets for the specified event asynchronously.
+		/// Asynchronously creates multiple tickets for a specified event.
 		/// </summary>
 		/// <remarks>
 		/// The Zoom platform will not let you create tickets for 'Online' events and will return an error message like "No access" which, unfortunately, is not clear at all.

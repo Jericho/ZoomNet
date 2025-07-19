@@ -43,7 +43,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The answers.
 		/// </value>
-		[JsonPropertyName("answer")]
+		[JsonPropertyName("answers")]
 		public string[] Answers { get; set; }
 
 		/// <summary>
@@ -115,5 +115,17 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonPropertyName("rating_max_label")]
 		public string RatingHighScoreLabel { get; set; }
+
+		/// <summary>Gets or sets the question prompt's correct answers.</summary>
+		/// <remarks>
+		/// - For matching polls, you must provide a minimum of two correct answers, up to a maximum of 10 correct answers.
+		/// - For rank_order polls, you can only provide one correct answer.
+		/// </remarks>
+		[JsonPropertyName("prompt_right_answers")]
+		public string[] PromptCorrectAnswers { get; set; }
+
+		/// <summary>Gets or sets the poll's title, up to 64 characters.</summary>
+		[JsonPropertyName("title")]
+		public string Title { get; set; }
 	}
 }

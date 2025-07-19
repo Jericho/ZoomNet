@@ -367,6 +367,9 @@ namespace ZoomNet.IntegrationTests.Tests
 			var joinToken = await client.Events.GetSessionJoinTokenAsync(newConference.Id, newSession.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Session join token: {joinToken}").ConfigureAwait(false);
 
+			var polls = await client.Events.GetAllSessionPollsAsync(newConference.Id, newSession.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {polls.Length} polls for session {newSession.Id}").ConfigureAwait(false);
+
 			await client.Events.DeleteSessionReservationAsync(newConference.Id, newSession.Id, johnTicket.Email, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Deleted reservation for {johnTicket.Email} in session {newSession.Id}").ConfigureAwait(false);
 

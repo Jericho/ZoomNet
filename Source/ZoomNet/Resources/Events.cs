@@ -694,6 +694,15 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task<Poll[]> GetAllSessionPollsAsync(string eventId, string sessionId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"zoom_events/events/{eventId}/sessions/{sessionId}/polls")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<Poll[]>("polls");
+		}
+
+		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<EventSessionReservation>> GetAllSessionReservationsAsync(string eventId, string sessionId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			return _client
