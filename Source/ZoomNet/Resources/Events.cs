@@ -1006,7 +1006,7 @@ namespace ZoomNet.Resources
 		#region TICKETS
 
 		/// <inheritdoc/>
-		public Task<EventTicket[]> CreateTicketsAsync(string eventId, IEnumerable<EventTicket> tickets, string source = null, CancellationToken cancellationToken = default)
+		public async Task<(EventTicket[] Tickets, EventTicketError[] Errors)> CreateTicketsAsync(string eventId, IEnumerable<EventTicket> tickets, string source = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
@@ -1043,12 +1043,18 @@ namespace ZoomNet.Resources
 				}
 			};
 
-			return _client
+			var response = await _client
 				.PostAsync($"zoom_events/events/{eventId}/tickets")
 				.WithArgument("validation_level", "standard")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
-				.AsObject<EventTicket[]>("tickets");
+				.AsJson()
+				.ConfigureAwait(false);
+
+			var createdTickets = response.GetProperty("tickets", false)?.ToObject<EventTicket[]>() ?? Array.Empty<EventTicket>();
+			var errors = response.GetProperty("errors", false)?.ToObject<EventTicketError[]>() ?? Array.Empty<EventTicketError>();
+
+			return (createdTickets, errors);
 		}
 
 		/// <inheritdoc/>

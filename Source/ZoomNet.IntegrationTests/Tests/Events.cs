@@ -282,6 +282,8 @@ namespace ZoomNet.IntegrationTests.Tests
 					RegistrationNeeded = false,
 					FirstName = "Bob",
 					LastName = "Smith",
+					City = "Paris",
+					JobTitle = "Software Engineer",
 					Email = "bob@example.com"
 				},
 				new EventTicket
@@ -292,20 +294,39 @@ namespace ZoomNet.IntegrationTests.Tests
 					RegistrationNeeded = false,
 					FirstName = "John",
 					LastName = "Doe",
+					City = "Berlin",
+					JobTitle = "Product Manager",
 					Email = "john@example.com"
 				}
 			};
 
-			tickets = await client.Events.CreateTicketsAsync(newConference.Id, tickets, "integration_test", cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync("Tickets created").ConfigureAwait(false);
+			var createTicketsResult = await client.Events.CreateTicketsAsync(newConference.Id, tickets, "integration_test", cancellationToken).ConfigureAwait(false);
+			if (createTicketsResult.Errors.Length > 0)
+			{
+				await log.WriteLineAsync($"There were {createTicketsResult.Errors.Length} errors when creating tickets:").ConfigureAwait(false);
+				foreach (var error in createTicketsResult.Errors)
+				{
+					await log.WriteLineAsync($"- {error.Email}: ({error.ErrorCode}) {error.Message}").ConfigureAwait(false);
+				}
+			}
+			else
+			{
+				await log.WriteLineAsync("All tickets created successfully").ConfigureAwait(false);
+			}
 
-			var bobTicket = tickets.First(t => t.Email == "bob@example.com");
-			await client.Events.DeleteTicketAsync(newConference.Id, bobTicket.Id, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"Ticket {bobTicket.Id} deleted").ConfigureAwait(false);
+			var bobTicket = createTicketsResult.Tickets.FirstOrDefault(t => t.Email == "bob@example.com");
+			if (bobTicket != null)
+			{
+				await client.Events.DeleteTicketAsync(newConference.Id, bobTicket.Id, cancellationToken).ConfigureAwait(false);
+				await log.WriteLineAsync($"Ticket {bobTicket.Id} deleted").ConfigureAwait(false);
+			}
 
-			var johnTicket = tickets.First(t => t.Email == "john@example.com");
-			johnTicket = await client.Events.GetTicketAsync(newConference.Id, johnTicket.Id, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"Ticket {johnTicket.Id} retrieved").ConfigureAwait(false);
+			var johnTicket = createTicketsResult.Tickets.FirstOrDefault(t => t.Email == "john@example.com");
+			if (johnTicket != null)
+			{
+				johnTicket = await client.Events.GetTicketAsync(newConference.Id, johnTicket.Id, cancellationToken).ConfigureAwait(false);
+				await log.WriteLineAsync($"Ticket {johnTicket.Id} retrieved").ConfigureAwait(false);
+			}
 
 			// We previously deleted Bob's ticket, so we expect an error when trying check in this attendee
 			var checkInErrors = await client.Events.CheckInAttendeesAsync(newConference.Id, new[] { "bob@example.com", "john@example.com" }, "integration_tests", cancellationToken).ConfigureAwait(false);

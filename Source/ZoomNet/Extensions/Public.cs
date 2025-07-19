@@ -700,7 +700,7 @@ namespace ZoomNet
 		/// <param name="source">The source of the ticket creation request. Optional.</param>
 		/// <param name="cancellationToken">A token to monitor for cancellation requests. Optional.</param>
 		/// <returns>A task that represents the asynchronous operation of creating a ticket.</returns>
-		public static async Task<EventTicket> CreateTicketAsync(this IEvents eventsResource, string eventId, string firstName = null, string lastName = null, string address = null, string city = null, string state = null, string zip = null, string country = null, string phone = null, string industry = null, string jobTitle = null, string organization = null, string comments = null, string externalTicketId = null, IEnumerable<KeyValuePair<string, string>> customQuestions = null, string source = null, CancellationToken cancellationToken = default)
+		public static async Task<(EventTicket Ticket, EventTicketError Error)> CreateTicketAsync(this IEvents eventsResource, string eventId, string firstName = null, string lastName = null, string address = null, string city = null, string state = null, string zip = null, string country = null, string phone = null, string industry = null, string jobTitle = null, string organization = null, string comments = null, string externalTicketId = null, IEnumerable<KeyValuePair<string, string>> customQuestions = null, string source = null, CancellationToken cancellationToken = default)
 		{
 			var ticket = new EventTicket
 			{
@@ -722,7 +722,7 @@ namespace ZoomNet
 
 			var result = await eventsResource.CreateTicketsAsync(eventId, new[] { ticket }, source, cancellationToken).ConfigureAwait(false);
 
-			return result.FirstOrDefault();
+			return (result.Tickets.FirstOrDefault(), result.Errors.FirstOrDefault());
 		}
 	}
 }

@@ -801,10 +801,12 @@ namespace ZoomNet.Resources
 		/// <param name="eventId">The unique identifier of the event for which tickets are being created. Cannot be null or empty.</param>
 		/// <param name="tickets">A collection of <see cref="EventTicket"/> objects representing the tickets to be created. Cannot be null or empty.</param>
 		/// <param name="source">An optional string indicating the source of the ticket creation request. Can be null.</param>
-		/// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
-		/// <returns>A task that represents the asynchronous operation. The task result contains an array of <see cref="EventTicket"/>
-		/// objects  representing the created tickets.</returns>
-		Task<EventTicket[]> CreateTicketsAsync(string eventId, IEnumerable<EventTicket> tickets, string source = null, CancellationToken cancellationToken = default);
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Defaults to <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a tuple with two elements: <list
+		/// type="bullet"> <item> <description>An array of <see cref="EventTicket"/> objects that were successfully
+		/// created.</description> </item> <item> <description>An array of <see cref="EventTicketError"/> objects detailing
+		/// any errors encountered during the creation process.</description> </item> </list></returns>
+		Task<(EventTicket[] Tickets, EventTicketError[] Errors)> CreateTicketsAsync(string eventId, IEnumerable<EventTicket> tickets, string source = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Asynchronously deletes a ticket for a specified event.
