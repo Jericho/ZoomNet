@@ -562,6 +562,80 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task CreateSessionPollAsync(string eventId, string sessionId, string title, PollType type = PollType.Basic, PollStatusForEventSession status = PollStatusForEventSession.Active, bool allowAnonymous = true, IEnumerable<PollQuestionForEventSession> questions = null, CancellationToken cancellationToken = default)
+		{
+			return UpdateSessionPollAsync(
+				eventId,
+				sessionId,
+				pollId: null, // must be null when creating a new poll
+				title: title,
+				type: type,
+				status: status,
+				allowAnonymous: allowAnonymous,
+				questions: questions,
+				cancellationToken: cancellationToken);
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateSessionPollAsync(
+			string eventId,
+			string sessionId,
+			string pollId,
+			string title = null,
+			PollType? type = null,
+			PollStatusForEventSession? status = null,
+			bool? allowAnonymous = null,
+			IEnumerable<PollQuestionForEventSession> questions = null,
+			CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{
+					"polls",
+					new[]
+					{
+						new JsonObject
+						{
+							{ "id", pollId },
+							{ "title", title },
+							{ "poll_type", (int?)type },
+							{ "status", status?.ToEnumString() },
+							{ "anonymous", allowAnonymous },
+							{
+								"questions",
+								questions?
+									.Select(q => new JsonObject
+									{
+										{ "answer_max_character", q.MaximumNumberOfCharacters },
+										{ "answer_min_character", q.MinimumNumberOfCharacters },
+										//{ "answer_required", q.IsRequired }, // <-- causes: AN EXCEPTION OCCURRED: The poll contains advanced poll questions
+										{ "answers", q.Answers?.ToArray() },
+										{ "case_sensitive", q.IsCaseSensitive },
+										{ "name", q.Question },
+										{ "prompts", q.Prompts?.ToArray() },
+										{ "prompt_right_answers", q.PromptCorrectAnswers?.ToArray() },
+										{ "rating_max_label", q.RatingHighScoreLabel },
+										{ "rating_max_value", q.RatingMaximumValue },
+										{ "rating_min_label", q.RatingHighScoreLabel },
+										{ "rating_min_value", q.RatingMinimumValue },
+										{ "right_answers", q.CorrectAnswers?.ToArray() },
+										{ "show_as_dropdown", false }, // Hardcoding to false until we figure out why the API throws an exception when this value is set to true. See: https://devforum.zoom.us/t/unable-to-create-poll-for-an-event-session-the-poll-contains-advanced-poll-questions/135561
+										{ "type", q.Type.ToEnumString() },
+										{ "title", q.Title },
+									}).ToArray()
+							}
+						}
+					}
+				}
+			};
+
+			return _client
+				.PutAsync($"zoom_events/events/{eventId}/sessions/{sessionId}/polls")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+		/// <inheritdoc/>
 		public Task DeleteSessionAsync(string eventId, string sessionId, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -694,12 +768,12 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<Poll[]> GetAllSessionPollsAsync(string eventId, string sessionId, CancellationToken cancellationToken = default)
+		public Task<PollForEventSession[]> GetAllSessionPollsAsync(string eventId, string sessionId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"zoom_events/events/{eventId}/sessions/{sessionId}/polls")
 				.WithCancellationToken(cancellationToken)
-				.AsObject<Poll[]>("polls");
+				.AsObject<PollForEventSession[]>("polls");
 		}
 
 		/// <inheritdoc/>

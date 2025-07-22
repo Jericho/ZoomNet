@@ -41,7 +41,7 @@ namespace ZoomNet.Models
 		public bool FastJoin { get; set; }
 
 		/// <summary>
-		/// Gets or sets a value indicating whether egistrant needs to fill an online registration form.
+		/// Gets or sets a value indicating whether registrant needs to fill an online registration form.
 		/// If true then the registration questions fields such as first_name, last_name, and address are not needed in the request body and are ignored if present.
 		/// Also, if true then event_registration_link is returned instead of event_join_link in the response.
 		/// </summary>

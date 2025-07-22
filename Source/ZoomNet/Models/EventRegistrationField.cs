@@ -7,6 +7,14 @@ namespace ZoomNet.Models
 	/// </summary>
 	public enum EventRegistrationField
 	{
+		/// <summary>First name.</summary>
+		[EnumMember(Value = "first_name")]
+		FirstName,
+
+		/// <summary>Last name.</summary>
+		[EnumMember(Value = "last_name")]
+		LastName,
+
 		/// <summary>Address.</summary>
 		[EnumMember(Value = "address")]
 		Address,

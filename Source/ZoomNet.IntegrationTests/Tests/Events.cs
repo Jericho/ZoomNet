@@ -367,6 +367,35 @@ namespace ZoomNet.IntegrationTests.Tests
 			var joinToken = await client.Events.GetSessionJoinTokenAsync(newConference.Id, newSession.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Session join token: {joinToken}").ConfigureAwait(false);
 
+			await client.Events.CreateSessionPollAsync(
+				newConference.Id,
+				newSession.Id,
+				title: "ZoomNet Integration Testing: Poll",
+				type: PollType.Basic,
+				status: PollStatusForEventSession.Active,
+				allowAnonymous: false,
+				questions: new[]
+				{
+					new PollQuestionForEventSession
+					{
+						Question = "What is your favorite programming language?",
+						Type = PollQuestionType.SingleChoice,
+						Answers = new[] { "C#", "JavaScript", "Python" },
+						ShowAsDropdown = true,
+						IsRequired = false
+					},
+					new PollQuestionForEventSession
+					{
+						Question = "What is your favorite IDE?",
+						Type = PollQuestionType.SingleChoice,
+						Answers = new[] { "Visual Studio", "VS Code", "IntelliJ IDEA" },
+						ShowAsDropdown = false,
+						IsRequired = true
+					},
+				},
+				cancellationToken: cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Session poll created").ConfigureAwait(false);
+
 			var polls = await client.Events.GetAllSessionPollsAsync(newConference.Id, newSession.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {polls.Length} polls for session {newSession.Id}").ConfigureAwait(false);
 
