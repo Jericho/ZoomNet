@@ -272,6 +272,8 @@ namespace ZoomNet.IntegrationTests.Tests
 			await client.Events.PublishEventAsync(newConference.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("The conference has been published").ConfigureAwait(false);
 
+			await Task.Delay(500, cancellationToken).ConfigureAwait(false); // Wait a bit to ensure the event is published
+
 			var tickets = new[]
 			{
 				new EventTicket
@@ -371,7 +373,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				newConference.Id,
 				newSession.Id,
 				title: "ZoomNet Integration Testing: Poll",
-				type: PollType.Basic,
+				type: PollType.Advanced, // Poll must be 'Advanced' because we have a question with a dropdown answer and a required question. See: https://devforum.zoom.us/t/unable-to-create-poll-for-an-event-session-the-poll-contains-advanced-poll-questions/135561
 				status: PollStatusForEventSession.Active,
 				allowAnonymous: false,
 				questions: new[]

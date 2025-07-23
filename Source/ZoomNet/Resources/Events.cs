@@ -608,7 +608,7 @@ namespace ZoomNet.Resources
 									{
 										{ "answer_max_character", q.MaximumNumberOfCharacters },
 										{ "answer_min_character", q.MinimumNumberOfCharacters },
-										//{ "answer_required", q.IsRequired }, // <-- causes: AN EXCEPTION OCCURRED: The poll contains advanced poll questions
+										{ "answer_required", q.IsRequired },
 										{ "answers", q.Answers?.ToArray() },
 										{ "case_sensitive", q.IsCaseSensitive },
 										{ "name", q.Question },
@@ -619,7 +619,7 @@ namespace ZoomNet.Resources
 										{ "rating_min_label", q.RatingHighScoreLabel },
 										{ "rating_min_value", q.RatingMinimumValue },
 										{ "right_answers", q.CorrectAnswers?.ToArray() },
-										{ "show_as_dropdown", false }, // Hardcoding to false until we figure out why the API throws an exception when this value is set to true. See: https://devforum.zoom.us/t/unable-to-create-poll-for-an-event-session-the-poll-contains-advanced-poll-questions/135561
+										{ "show_as_dropdown", q.ShowAsDropdown },
 										{ "type", q.Type.ToEnumString() },
 										{ "title", q.Title },
 									}).ToArray()
@@ -635,6 +635,7 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
+
 		/// <inheritdoc/>
 		public Task DeleteSessionAsync(string eventId, string sessionId, CancellationToken cancellationToken = default)
 		{
