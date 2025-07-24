@@ -153,7 +153,7 @@ namespace ZoomNet.Resources
 			};
 
 			return _client
-				.PostAsync($"zoom_events/events")
+				.PostAsync("zoom_events/events")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<SimpleEvent>();
@@ -190,7 +190,7 @@ namespace ZoomNet.Resources
 			};
 
 			return _client
-				.PostAsync($"zoom_events/events")
+				.PostAsync("zoom_events/events")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<Conference>();
@@ -231,10 +231,135 @@ namespace ZoomNet.Resources
 			};
 
 			return _client
-				.PostAsync($"zoom_events/events")
+				.PostAsync("zoom_events/events")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<RecurringEvent>();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateSimpleEventAsync(string eventId, string name = null, string description = null, DateTime? start = null, DateTime? end = null, TimeZones? timeZone = null, EventMeetingType? meetingType = null, string hubId = null, bool? isRestricted = null, EventAttendanceType? attendanceType = null, IEnumerable<EventCategory> categories = null, IEnumerable<string> tags = null, string contactName = null, DateTime? lobbyStart = null, DateTime? lobbyEnd = null, IEnumerable<Country> blockedCountries = null, string tagLine = null, CancellationToken cancellationToken = default)
+		{
+			IEnumerable<(DateTime? Start, DateTime? End)> calendar = null;
+			if (start.HasValue || end.HasValue)
+			{
+				calendar = new[] { (Start: start, End: end) };
+			}
+
+			var data = new JsonObject
+			{
+				{ "name", name },
+				{ "description", description },
+				{ "timezone", timeZone },
+				{ "event_type", EventType.Simple.ToEnumString() },
+				{ "access_level", isRestricted.HasValue ? (isRestricted.Value ? "PRIVATE_RESTRICTED" : "PRIVATE_UNRESTRICTED") : null },
+				{
+					"calendar", calendar?.Select(c => new JsonObject
+					{
+						// It's important to convert these two dates to UTC otherwise Zoom will reject them
+						// with the following unhelpful message: "Calender must contains start_time and end_time".
+						{ "start_time", c.Start?.ToZoomFormat(TimeZones.UTC) },
+						{ "end_time", c.End?.ToZoomFormat(TimeZones.UTC) },
+					}).ToArray()
+				},
+				{ "meeting_type", meetingType?.ToEnumString() },
+				{ "hub_id", hubId },
+				{ "attendance_type", attendanceType?.ToEnumString() },
+				{ "categories", categories?.Select(c => c.ToEnumString()).ToArray() },
+				{ "tags", tags?.ToArray() },
+				{ "contact_name", contactName },
+				{ "lobby_start_time", lobbyStart?.ToZoomFormat(TimeZones.UTC) },
+				{ "lobby_end_time", lobbyEnd?.ToZoomFormat(TimeZones.UTC) },
+				{ "blocked_countries", blockedCountries?.Select(bc => bc.ToEnumString()).ToArray() },
+				{ "tagline", tagLine },
+			};
+
+			return _client
+				.PatchAsync($"zoom_events/events/{eventId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateConferenceAsync(string eventId, string name = null, string description = null, IEnumerable<(DateTime? Start, DateTime? End)> calendar = null, TimeZones? timeZone = null, string hubId = null, bool? isRestricted = null, EventAttendanceType? attendanceType = null, IEnumerable<EventCategory> categories = null, IEnumerable<string> tags = null, string contactName = null, DateTime? lobbyStart = null, DateTime? lobbyEnd = null, IEnumerable<Country> blockedCountries = null, string tagLine = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "name", name },
+				{ "description", description },
+				{ "timezone", timeZone },
+				{ "event_type", EventType.Conference.ToEnumString() },
+				{ "access_level", isRestricted.HasValue ? (isRestricted.Value ? "PRIVATE_RESTRICTED" : "PRIVATE_UNRESTRICTED") : null },
+				{
+					"calendar", calendar?.Select(c => new JsonObject
+					{
+						// It's important to convert these two dates to UTC otherwise Zoom will reject them
+						// with the following unhelpful message: "Calender must contains start_time and end_time".
+						{ "start_time", c.Start?.ToZoomFormat(TimeZones.UTC) },
+						{ "end_time", c.End?.ToZoomFormat(TimeZones.UTC) },
+					}).ToArray()
+				},
+				{ "hub_id", hubId },
+				{ "attendance_type", attendanceType?.ToEnumString() },
+				{ "categories", categories?.Select(c => c.ToEnumString()).ToArray() },
+				{ "tags", tags?.ToArray() },
+				{ "contact_name", contactName },
+				{ "lobby_start_time", lobbyStart?.ToZoomFormat(TimeZones.UTC) },
+				{ "lobby_end_time", lobbyEnd?.ToZoomFormat(TimeZones.UTC) },
+				{ "blocked_countries", blockedCountries?.Select(bc => bc.ToEnumString()).ToArray() },
+				{ "tagline", tagLine },
+			};
+
+			return _client
+				.PatchAsync($"zoom_events/events/{eventId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateRecurringEventAsync(string eventId, string name = null, string description = null, DateTime? start = null, DateTime? end = null, EventRecurrenceInfo recurrence = null, TimeZones? timeZone = null, string hubId = null, bool? isRestricted = null, EventAttendanceType? attendanceType = null, IEnumerable<EventCategory> categories = null, IEnumerable<string> tags = null, string contactName = null, DateTime? lobbyStart = null, DateTime? lobbyEnd = null, IEnumerable<Country> blockedCountries = null, string tagLine = null, CancellationToken cancellationToken = default)
+		{
+			IEnumerable<(DateTime? Start, DateTime? End)> calendar = null;
+			if (start.HasValue || end.HasValue)
+			{
+				calendar = new[] { (Start: start, End: end) };
+			}
+
+			var data = new JsonObject
+			{
+				{ "name", name },
+				{ "description", description },
+				{ "timezone", timeZone },
+				{ "event_type", EventType.Reccuring.ToEnumString() },
+				{ "access_level", isRestricted.HasValue ? (isRestricted.Value ? "PRIVATE_RESTRICTED" : "PRIVATE_UNRESTRICTED") : null },
+				{
+					"calendar", calendar?.Select(c => new JsonObject
+					{
+						// It's important to convert these two dates to UTC otherwise Zoom will reject them
+						// with the following unhelpful message: "Calender must contains start_time and end_time".
+						{ "start_time", c.Start?.ToZoomFormat(TimeZones.UTC) },
+						{ "end_time", c.End?.ToZoomFormat(TimeZones.UTC) },
+					}).ToArray()
+				},
+				{ "recurrence", recurrence },
+				{ "hub_id", hubId },
+				{ "attendance_type", attendanceType?.ToEnumString() },
+				{ "categories", categories?.Select(c => c.ToEnumString()).ToArray() },
+				{ "tags", tags?.ToArray() },
+				{ "contact_name", contactName },
+				//{ "lobby_start_time", lobbyStart?.ToZoomFormat(TimeZones.UTC) },	// Commented out for the time being.
+				//{ "lobby_end_time", lobbyEnd?.ToZoomFormat(TimeZones.UTC) },		// For more details, see: https://devforum.zoom.us/t/event-outside-lobby-time-range/134883
+				{ "blocked_countries", blockedCountries?.Select(bc => bc.ToEnumString()).ToArray() },
+				{ "tagline", tagLine },
+			};
+
+			return _client
+				.PatchAsync($"zoom_events/events/{eventId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
 		}
 
 		/// <inheritdoc/>
@@ -588,6 +713,12 @@ namespace ZoomNet.Resources
 			IEnumerable<PollQuestionForEventSession> questions = null,
 			CancellationToken cancellationToken = default)
 		{
+			// A poll with required questions or question displayed as a dropdown is considered "advanced" which means that 'poll_type' cannot be 'Basic'
+			// See: https://devforum.zoom.us/t/unable-to-create-poll-for-an-event-session-the-poll-contains-advanced-poll-questions/135561
+			var pollContainsAdvancedQuestions = questions?.Any(q => q.IsRequired || q.ShowAsDropdown) ?? false;
+			var isBasicPoll = type.GetValueOrDefault(PollType.Basic) == PollType.Basic;
+			if (pollContainsAdvancedQuestions && isBasicPoll) type = PollType.Advanced;
+
 			var data = new JsonObject
 			{
 				{

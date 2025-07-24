@@ -81,6 +81,9 @@ namespace ZoomNet.IntegrationTests.Tests
 				cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Simple event {newSimpleEvent.Id} created").ConfigureAwait(false);
 
+			await client.Events.UpdateSimpleEventAsync(newSimpleEvent.Id, description: "This description has been updated", cancellationToken: cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Simple event updated").ConfigureAwait(false);
+
 			newSimpleEvent = (SimpleEvent)await client.Events.GetAsync(newSimpleEvent.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Simple event retrieved").ConfigureAwait(false);
 
@@ -126,6 +129,9 @@ namespace ZoomNet.IntegrationTests.Tests
 				cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Recurring event {newRecurringEvent.Id} created").ConfigureAwait(false);
 
+			await client.Events.UpdateRecurringEventAsync(newRecurringEvent.Id, description: "This description has been updated", cancellationToken: cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Recurring event updated").ConfigureAwait(false);
+
 			await client.Events.DeleteEventAsync(newRecurringEvent.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("The recurring event has been deleted").ConfigureAwait(false);
 
@@ -154,6 +160,9 @@ namespace ZoomNet.IntegrationTests.Tests
 				"The best conference ever !!!",
 				cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Conference {newConference.Id} created").ConfigureAwait(false);
+
+			await client.Events.UpdateConferenceAsync(newConference.Id, description: "This description has been updated", cancellationToken: cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Conference updated").ConfigureAwait(false);
 
 			newConference = (Conference)await client.Events.GetAsync(newConference.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Conference retrieved").ConfigureAwait(false);
@@ -373,7 +382,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				newConference.Id,
 				newSession.Id,
 				title: "ZoomNet Integration Testing: Poll",
-				type: PollType.Advanced, // Poll must be 'Advanced' because we have a question with a dropdown answer and a required question. See: https://devforum.zoom.us/t/unable-to-create-poll-for-an-event-session-the-poll-contains-advanced-poll-questions/135561
+				type: PollType.Basic, // I am deliberatly setting the poll type to a value that I know full well it's not valid (due to the questions being considered 'Advanced') to verify that this value gets overridden in CreateSessionPollAsync
 				status: PollStatusForEventSession.Active,
 				allowAnonymous: false,
 				questions: new[]

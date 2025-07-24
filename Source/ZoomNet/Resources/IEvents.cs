@@ -153,6 +153,80 @@ namespace ZoomNet.Resources
 		Task<RecurringEvent> CreateRecurringEventAsync(string name, string description, DateTime start, DateTime end, EventRecurrenceInfo recurrence, TimeZones timeZone, string hubId, bool isRestricted = false, EventAttendanceType attendanceType = EventAttendanceType.Virtual, IEnumerable<EventCategory> categories = null, IEnumerable<string> tags = null, string contactName = null, DateTime? lobbyStart = null, DateTime? lobbyEnd = null, IEnumerable<Country> blockedCountries = null, string tagLine = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Updates the details of a simple event asynchronously.
+		/// </summary>
+		/// <remarks>This method allows partial updates to an event. Only the fields provided with non-null values
+		/// will be updated.</remarks>
+		/// <param name="eventId">The unique identifier of the event to update. Cannot be null or empty.</param>
+		/// <param name="name">The new name of the event. If null, the name will not be updated.</param>
+		/// <param name="description">The new description of the event. If null, the description will not be updated.</param>
+		/// <param name="start">The new start date and time of the event. If null, the start time will not be updated.</param>
+		/// <param name="end">The new end date and time of the event. If null, the end time will not be updated.</param>
+		/// <param name="timeZone">The time zone of the event. If null, the time zone will not be updated.</param>
+		/// <param name="meetingType">The type of meeting for the event. If null, the meeting type will not be updated.</param>
+		/// <param name="hubId">The identifier of the hub associated with the event. If null, the hub will not be updated.</param>
+		/// <param name="isRestricted">Indicates whether the event is restricted. If null, the restriction status will not be updated.</param>
+		/// <param name="attendanceType">The type of attendance for the event. If null, the attendance type will not be updated.</param>
+		/// <param name="categories">The categories associated with the event. If null, the categories will not be updated.</param>
+		/// <param name="tags">The tags associated with the event. If null, the tags will not be updated.</param>
+		/// <param name="contactName">The contact name for the event. If null, the contact name will not be updated.</param>
+		/// <param name="lobbyStart">The start time for the event lobby. If null, the lobby start time will not be updated.</param>
+		/// <param name="lobbyEnd">The end time for the event lobby. If null, the lobby end time will not be updated.</param>
+		/// <param name="blockedCountries">The countries where the event is blocked. If null, the blocked countries will not be updated.</param>
+		/// <param name="tagLine">The tagline for the event. If null, the tagline will not be updated.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+		/// <returns>A task that represents the asynchronous update operation.</returns>
+		Task UpdateSimpleEventAsync(string eventId, string name = null, string description = null, DateTime? start = null, DateTime? end = null, TimeZones? timeZone = null, EventMeetingType? meetingType = null, string hubId = null, bool? isRestricted = null, EventAttendanceType? attendanceType = null, IEnumerable<EventCategory> categories = null, IEnumerable<string> tags = null, string contactName = null, DateTime? lobbyStart = null, DateTime? lobbyEnd = null, IEnumerable<Country> blockedCountries = null, string tagLine = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Updates the details of an existing conference asynchronously.
+		/// </summary>
+		/// <remarks>This method allows partial updates to the conference details. Only the non-null parameters will
+		/// be updated.</remarks>
+		/// <param name="eventId">The unique identifier of the event to update. Cannot be null or empty.</param>
+		/// <param name="name">The new name of the conference. If null, the name will not be updated.</param>
+		/// <param name="description">The new description of the conference. If null, the description will not be updated.</param>
+		/// <param name="calendar">A collection of date and time ranges representing the conference schedule. If null, the schedule will not be updated.</param>
+		/// <param name="timeZone">The time zone of the conference. If null, the time zone will not be updated.</param>
+		/// <param name="hubId">The identifier of the hub associated with the conference. If null, the hub will not be updated.</param>
+		/// <param name="isRestricted">Indicates whether the conference is restricted. If null, the restriction status will not be updated.</param>
+		/// <param name="attendanceType">The type of attendance for the conference. If null, the attendance type will not be updated.</param>
+		/// <param name="categories">A collection of categories associated with the conference. If null, the categories will not be updated.</param>
+		/// <param name="tags">A collection of tags associated with the conference. If null, the tags will not be updated.</param>
+		/// <param name="contactName">The name of the contact person for the conference. If null, the contact name will not be updated.</param>
+		/// <param name="lobbyStart">The start time for the conference lobby. If null, the lobby start time will not be updated.</param>
+		/// <param name="lobbyEnd">The end time for the conference lobby. If null, the lobby end time will not be updated.</param>
+		/// <param name="blockedCountries">A collection of countries where access to the conference is blocked. If null, the blocked countries will not be updated.</param>
+		/// <param name="tagLine">The tagline for the conference. If null, the tagline will not be updated.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Defaults to <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous update operation.</returns>
+		Task UpdateConferenceAsync(string eventId, string name = null, string description = null, IEnumerable<(DateTime? Start, DateTime? End)> calendar = null, TimeZones? timeZone = null, string hubId = null, bool? isRestricted = null, EventAttendanceType? attendanceType = null, IEnumerable<EventCategory> categories = null, IEnumerable<string> tags = null, string contactName = null, DateTime? lobbyStart = null, DateTime? lobbyEnd = null, IEnumerable<Country> blockedCountries = null, string tagLine = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Updates the details of a recurring event asynchronously.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event to update. Cannot be null or empty.</param>
+		/// <param name="name">The new name of the event. If null, the name remains unchanged.</param>
+		/// <param name="description">The new description of the event. If null, the description remains unchanged.</param>
+		/// <param name="start">The new start date and time of the event. If null, the start time remains unchanged.</param>
+		/// <param name="end">The new end date and time of the event. If null, the end time remains unchanged.</param>
+		/// <param name="recurrence">The recurrence pattern for the event. If null, the recurrence pattern remains unchanged.</param>
+		/// <param name="timeZone">The time zone of the event. If null, the time zone remains unchanged.</param>
+		/// <param name="hubId">The identifier of the hub associated with the event. If null, the hub remains unchanged.</param>
+		/// <param name="isRestricted">Indicates whether the event is restricted. If null, the restriction status remains unchanged.</param>
+		/// <param name="attendanceType">The type of attendance for the event. If null, the attendance type remains unchanged.</param>
+		/// <param name="categories">The categories associated with the event. If null, the categories remain unchanged.</param>
+		/// <param name="tags">The tags associated with the event. If null, the tags remain unchanged.</param>
+		/// <param name="contactName">The contact name for the event. If null, the contact name remains unchanged.</param>
+		/// <param name="lobbyStart">The start time for the event lobby. If null, the lobby start time remains unchanged.</param>
+		/// <param name="lobbyEnd">The end time for the event lobby. If null, the lobby end time remains unchanged.</param>
+		/// <param name="blockedCountries">The countries where the event is blocked. If null, the blocked countries remain unchanged.</param>
+		/// <param name="tagLine">The tagline for the event. If null, the tagline remains unchanged.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+		/// <returns>A task that represents the asynchronous update operation.</returns>
+		Task UpdateRecurringEventAsync(string eventId, string name = null, string description = null, DateTime? start = null, DateTime? end = null, EventRecurrenceInfo recurrence = null, TimeZones? timeZone = null, string hubId = null, bool? isRestricted = null, EventAttendanceType? attendanceType = null, IEnumerable<EventCategory> categories = null, IEnumerable<string> tags = null, string contactName = null, DateTime? lobbyStart = null, DateTime? lobbyEnd = null, IEnumerable<Country> blockedCountries = null, string tagLine = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Publishes an event to make it available for attendees.
 		/// </summary>
 		/// <param name="eventId">The unique identifier of the event to be published. This cannot be null or empty.</param>
