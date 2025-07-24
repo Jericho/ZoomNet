@@ -255,6 +255,18 @@ namespace ZoomNet.Resources
 		/// <returns>A task that represents the asynchronous operation.</returns>
 		Task DeleteEventAsync(string eventId, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Duplicates an existing event with a new name and start time.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event to duplicate. Cannot be null or empty.</param>
+		/// <param name="name">The new name for the duplicated event. Cannot be null or empty.</param>
+		/// <param name="start">The start date and time for the duplicated event.</param>
+		/// <param name="timeZone">The time zone in which the event will occur.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the unique identifier of the newly
+		/// created event.</returns>
+		Task<string> DuplicateEventAsync(string eventId, string name, DateTime start, TimeZones timeZone, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region EXHIBITORS
@@ -847,12 +859,9 @@ namespace ZoomNet.Resources
 		/// <remarks>This method allows updating both standard and custom registration questions for an event. If
 		/// either <paramref name="standardQuestions"/> or <paramref name="customQuestions"/> is provided as null, the
 		/// corresponding set of questions will not be modified.</remarks>
-		/// <param name="eventId">The unique identifier of the event for which the registration questions are being updated. Cannot be null or 
-		/// empty.</param>
-		/// <param name="standardQuestions">An optional collection of standard registration questions to be associated with the event. If null, existing
-		/// standard questions remain unchanged.</param>
-		/// <param name="customQuestions">An optional collection of custom registration questions to be associated with the event. If null, existing custom
-		/// questions remain unchanged.</param>
+		/// <param name="eventId">The unique identifier of the event for which the registration questions are being updated. Cannot be null or empty.</param>
+		/// <param name="standardQuestions">An optional collection of standard registration questions to be associated with the event. If null, existing standard questions remain unchanged.</param>
+		/// <param name="customQuestions">An optional collection of custom registration questions to be associated with the event. If null, existing custom questions remain unchanged.</param>
 		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
 		/// <returns>A task that represents the asynchronous operation.</returns>
 		Task UpdateRegistrationQuestionsForEventAsync(
@@ -869,10 +878,8 @@ namespace ZoomNet.Resources
 		/// langword="null"/>, the corresponding questions will not be updated.</remarks>
 		/// <param name="eventId">The unique identifier of the event containing the ticket type.</param>
 		/// <param name="ticketTypeId">The unique identifier of the ticket type for which to update registration questions.</param>
-		/// <param name="standardQuestions">An optional collection of standard registration questions to associate with the ticket type. Can be <see
-		/// langword="null"/> if no standard questions are to be updated.</param>
-		/// <param name="customQuestions">An optional collection of custom registration questions to associate with the ticket type. Can be <see
-		/// langword="null"/> if no custom questions are to be updated.</param>
+		/// <param name="standardQuestions">An optional collection of standard registration questions to associate with the ticket type. Can be <see langword="null"/> if no standard questions are to be updated.</param>
+		/// <param name="customQuestions">An optional collection of custom registration questions to associate with the ticket type. Can be <see langword="null"/> if no custom questions are to be updated.</param>
 		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
 		/// <returns>A task that represents the asynchronous operation.</returns>
 		Task UpdateRegistrationQuestionsForTicketTypeAsync(

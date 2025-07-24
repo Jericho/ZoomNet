@@ -87,6 +87,9 @@ namespace ZoomNet.IntegrationTests.Tests
 			newSimpleEvent = (SimpleEvent)await client.Events.GetAsync(newSimpleEvent.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Simple event retrieved").ConfigureAwait(false);
 
+			var duplicatedSimpleEventId = await client.Events.DuplicateEventAsync(newSimpleEvent.Id, "ZoomNet Integration Testing: duplicated simple event", eventStart.AddDays(1), TimeZones.America_New_York, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Simple event duplicated").ConfigureAwait(false);
+
 			await client.Events.PublishEventAsync(newSimpleEvent.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("The simple event has been published").ConfigureAwait(false);
 
@@ -95,6 +98,9 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			await client.Events.DeleteEventAsync(newSimpleEvent.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("The simple event has been deleted").ConfigureAwait(false);
+
+			await client.Events.DeleteEventAsync(duplicatedSimpleEventId, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("The duplicated simple event has been deleted").ConfigureAwait(false);
 
 			// RECURRING EVENT
 			var recurrenceInfo = new EventRecurrenceInfo()

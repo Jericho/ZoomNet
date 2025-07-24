@@ -406,6 +406,27 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
+		/// <inheritdoc/>
+		public Task<string> DuplicateEventAsync(string eventId, string name, DateTime start, TimeZones timeZone, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.PostAsync($"zoom_events/events/{eventId}/event_actions")
+				.WithJsonBody(new JsonObject
+				{
+					{ "operation", "duplicate" },
+					{
+						"duplicate_event", new JsonObject
+						{
+							{ "name", name },
+							{ "start_time", start.ToZoomFormat(timeZone) },
+							{ "timezone", timeZone }
+						}
+					}
+				})
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("event_id");
+		}
+
 		#endregion
 
 		#region EXHIBITORS
