@@ -81,6 +81,15 @@ namespace ZoomNet.Resources
 		/// <returns>A task that represents the asynchronous operation.</returns>
 		Task<EventAccessLink> CreateEventAccessLinkAsync(string eventId, string name, EventAccessLinkType type = EventAccessLinkType.Registration, EventAuthenticationMethod authenticationMethod = EventAuthenticationMethod.ZoomAccount, bool isDefault = false, IEnumerable<string> allowDomainList = null, IEnumerable<string> emailRestrictList = null, bool emailAuthentication = true, bool securityCodeVerification = true, string ticketTypeId = null, RecurringEventRegistrationType recurringRegistrationType = RecurringEventRegistrationType.AllSessions, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Deletes the access link associated with a specified event.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event for which the access link is to be deleted. Cannot be null or empty.</param>
+		/// <param name="accessLinkId">The unique identifier of the access link to delete. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task DeleteEventAccessLinkAsync(string eventId, string accessLinkId, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region EVENTS
