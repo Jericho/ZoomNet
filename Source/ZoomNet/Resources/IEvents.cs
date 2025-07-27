@@ -60,6 +60,27 @@ namespace ZoomNet.Resources
 
 		#region EVENT ACCES
 
+		/// <summary>
+		/// Asynchronously creates an access link for an event with specified parameters.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event for which the access link is being created. Cannot be null or empty.</param>
+		/// <param name="name">The name of the access link. This is used for identification purposes.</param>
+		/// <param name="type">The type of access link to create. Defaults to <see cref="EventAccessLinkType.Registration"/>.</param>
+		/// <param name="authenticationMethod">The method of authentication required for accessing the event. Defaults to <see
+		/// cref="EventAuthenticationMethod.ZoomAccount"/>.</param>
+		/// <param name="isDefault">A value indicating whether this access link is the default for the event. Defaults to <see langword="false"/>.</param>
+		/// <param name="allowDomainList">A list of domains that are allowed access. If null, no domain restrictions are applied.</param>
+		/// <param name="emailRestrictList">A list of email addresses that are restricted from accessing the event. If null, no email restrictions are
+		/// applied.</param>
+		/// <param name="emailAuthentication">A value indicating whether email authentication is required. Defaults to <see langword="true"/>.</param>
+		/// <param name="securityCodeVerification">A value indicating whether security code verification is required. Defaults to <see langword="true"/>.</param>
+		/// <param name="ticketTypeId">The identifier of the ticket type associated with the access link. Can be null if not applicable.</param>
+		/// <param name="recurringRegistrationType">Specifies the registration option for recurring events. Defaults to <see
+		/// cref="RecurringEventRegistrationType.AllSessions"/>.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Defaults to <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task<EventAccessLink> CreateEventAccessLinkAsync(string eventId, string name, EventAccessLinkType type = EventAccessLinkType.Registration, EventAuthenticationMethod authenticationMethod = EventAuthenticationMethod.ZoomAccount, bool isDefault = false, IEnumerable<string> allowDomainList = null, IEnumerable<string> emailRestrictList = null, bool emailAuthentication = true, bool securityCodeVerification = true, string ticketTypeId = null, RecurringEventRegistrationType recurringRegistrationType = RecurringEventRegistrationType.AllSessions, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region EVENTS

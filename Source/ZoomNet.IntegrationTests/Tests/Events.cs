@@ -289,6 +289,12 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			await Task.Delay(500, cancellationToken).ConfigureAwait(false); // Wait a bit to ensure the event is published
 
+			var accessLink = await client.Events.CreateEventAccessLinkAsync(newConference.Id,
+				"ZoomNet Integration Testing: Access Link",
+				authenticationMethod: EventAuthenticationMethod.ZoomAccount,
+				cancellationToken: cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Access link created: {accessLink}").ConfigureAwait(false);
+
 			var tickets = new[]
 			{
 				new EventTicket

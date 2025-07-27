@@ -90,6 +90,32 @@ namespace ZoomNet.Resources
 
 		#region EVENT ACCES
 
+		/// <inheritdoc/>
+		public Task<EventAccessLink> CreateEventAccessLinkAsync(string eventId, string name, EventAccessLinkType type = EventAccessLinkType.Registration, EventAuthenticationMethod authenticationMethod = EventAuthenticationMethod.ZoomAccount, bool isDefault = false, IEnumerable<string> allowDomainList = null, IEnumerable<string> emailRestrictList = null, bool emailAuthentication = true, bool securityCodeVerification = true, string ticketTypeId = null, RecurringEventRegistrationType recurringRegistrationType = RecurringEventRegistrationType.AllSessions, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.PostAsync($"zoom_events/events/{eventId}/access_links")
+				.WithJsonBody(new JsonObject
+				{
+					{ "name", name },
+					{ "type", type.ToEnumString() },
+					{ "authentication_method", authenticationMethod.ToEnumString() },
+					{ "is_default", isDefault },
+					{ "allow_domain_list", allowDomainList?.ToArray() },
+					{ "email_restrict_list", emailRestrictList?.ToArray() },
+					{ "security_at_join", new JsonObject
+						{
+							{ "email_authentication", emailAuthentication },
+							{ "security_code_verification", securityCodeVerification }
+						}
+					},
+					{ "ticket_type_id", ticketTypeId },
+					{ "recurring_registration_option", recurringRegistrationType.ToEnumString() }
+				})
+				.WithCancellationToken(cancellationToken)
+				.AsObject<EventAccessLink>();
+		}
+
 		#endregion
 
 		#region EVENTS
