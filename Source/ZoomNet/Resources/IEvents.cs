@@ -100,6 +100,15 @@ namespace ZoomNet.Resources
 		/// associated with the specified event and access link identifiers.</returns>
 		Task<EventAccessLink> GetEventAccessLinkAsync(string eventId, string accessLinkId, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Asynchronously retrieves access links for a specified event.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event for which to retrieve access links. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>An array of <see cref="EventAccessLink"/> objects representing the access links for the specified event. The array
+		/// will be empty if no access links are available.</returns>
+		Task<EventAccessLink[]> GetAllEventAccessLinksAsync(string eventId, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region EVENTS

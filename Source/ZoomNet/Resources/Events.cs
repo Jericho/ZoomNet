@@ -134,6 +134,15 @@ namespace ZoomNet.Resources
 				.AsObject<EventAccessLink>();
 		}
 
+		/// <inheritdoc/>
+		public Task<EventAccessLink[]> GetAllEventAccessLinksAsync(string eventId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"zoom_events/events/{eventId}/access_links")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<EventAccessLink[]>("access_links");
+		}
+
 		#endregion
 
 		#region EVENTS

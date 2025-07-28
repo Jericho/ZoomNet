@@ -298,6 +298,9 @@ namespace ZoomNet.IntegrationTests.Tests
 			accessLink = await client.Events.GetEventAccessLinkAsync(newConference.Id, accessLink.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Access link retrieved").ConfigureAwait(false);
 
+			var accessLinks = await client.Events.GetAllEventAccessLinksAsync(newConference.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Access links retrieved. There are {accessLinks.Length} links.").ConfigureAwait(false);
+
 			await client.Events.DeleteEventAccessLinkAsync(newConference.Id, accessLink.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Access link deleted").ConfigureAwait(false);
 
