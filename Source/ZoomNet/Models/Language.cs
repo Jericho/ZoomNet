@@ -62,5 +62,21 @@ namespace ZoomNet.Models
 		/// <summary>Portuguese (Brazil).</summary>
 		[EnumMember(Value = "pt-BR")]
 		Portuguese_Brazil,
+
+		/// <summary>Portuguese (Portugal).</summary>
+		[EnumMember(Value = "pt-PT")]
+		Portuguese_Portugal,
+
+		/// <summary>Russian.</summary>
+		[EnumMember(Value = "ru")]
+		Russian,
+
+		/// <summary>Chinese (PRC).</summary>
+		[EnumMember(Value = "zh-CN")]
+		Chinese_PRC,
+
+		/// <summary>Chinese (Hong Kong).</summary>
+		[EnumMember(Value = "zh-HK")]
+		Chinese_HongKong,
 	}
 }

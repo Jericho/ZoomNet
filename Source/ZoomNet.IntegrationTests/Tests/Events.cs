@@ -310,6 +310,12 @@ namespace ZoomNet.IntegrationTests.Tests
 			await client.Events.DeleteEventAccessLinkAsync(newConference.Id, accessLink.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Access link deleted").ConfigureAwait(false);
 
+			await client.Events.UpsertSessionLanguageInterpreterAsync(newConference.Id, newSession.Id, "interpreter1@example.com", InterpretationLanguageForEventSession.English, InterpretationLanguageForEventSession.Portuguese, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Session language interpreter added: English --> Portuguese").ConfigureAwait(false);
+
+			await client.Events.UpsertSessionSignLanguageInterpreterAsync(newConference.Id, newSession.Id, "interpreter2@example.com", InterpretationSignLanguage.French, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Session language interpreter added: French Sign Language").ConfigureAwait(false);
+
 			var tickets = new[]
 			{
 				new EventTicket

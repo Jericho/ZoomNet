@@ -791,6 +791,59 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task UpsertSessionLanguageInterpreterAsync(string eventId, string sessionId, string interpreterEmailAddress, InterpretationLanguageForEventSession sourceLanguage, InterpretationLanguageForEventSession targetLanguage, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{
+					"interpreters",
+					new[]
+					{
+						new JsonObject
+						{
+							{ "email", interpreterEmailAddress },
+							{ "type", (int)InterpreterType.Language },
+							{ "source_language_id", sourceLanguage.ToEnumString() },
+							{ "target_language_id", targetLanguage.ToEnumString() },
+						}
+					}
+				}
+			};
+
+			return _client
+				.PutAsync($"zoom_events/events/{eventId}/sessions/{sessionId}/interpreters")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task UpsertSessionSignLanguageInterpreterAsync(string eventId, string sessionId, string interpreterEmailAddress, InterpretationSignLanguage targetLanguage, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{
+					"interpreters",
+					new[]
+					{
+						new JsonObject
+						{
+							{ "email", interpreterEmailAddress },
+							{ "type", (int)InterpreterType.Sign },
+							{ "target_language_id", targetLanguage.ToEnumString() },
+						}
+					}
+				}
+			};
+
+			return _client
+				.PutAsync($"zoom_events/events/{eventId}/sessions/{sessionId}/interpreters")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
 		public Task CreateSessionPollAsync(string eventId, string sessionId, string title, PollType type = PollType.Basic, PollStatusForEventSession status = PollStatusForEventSession.Active, bool allowAnonymous = true, IEnumerable<PollQuestionForEventSession> questions = null, CancellationToken cancellationToken = default)
 		{
 			return UpdateSessionPollAsync(
