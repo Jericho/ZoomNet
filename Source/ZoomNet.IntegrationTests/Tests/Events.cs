@@ -293,7 +293,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				"ZoomNet Integration Testing: Access Link",
 				authenticationMethod: EventAuthenticationMethod.ZoomAccount,
 				cancellationToken: cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"Access link created: {accessLink}").ConfigureAwait(false);
+			await log.WriteLineAsync($"Access link created: {accessLink.Url}").ConfigureAwait(false);
 
 			accessLink = await client.Events.GetEventAccessLinkAsync(newConference.Id, accessLink.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Access link retrieved").ConfigureAwait(false);

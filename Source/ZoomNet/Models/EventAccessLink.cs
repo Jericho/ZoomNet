@@ -27,6 +27,10 @@ namespace ZoomNet.Models
 		[JsonPropertyName("is_default")]
 		public bool IsDefault { get; set; }
 
+		/// <summary>Gets or sets the event access link.</summary>
+		[JsonPropertyName("url")]
+		public string Url { get; set; }
+
 		/// <summary>Gets or sets the event authentication method during registration or during join, depending on the access link type.</summary>
 		[JsonPropertyName("authentication_method")]
 		public EventAuthenticationMethod AuthenticationMethod { get; set; }
