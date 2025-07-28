@@ -791,49 +791,28 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task UpsertSessionLanguageInterpreterAsync(string eventId, string sessionId, string interpreterEmailAddress, InterpretationLanguageForEventSession sourceLanguage, InterpretationLanguageForEventSession targetLanguage, CancellationToken cancellationToken = default)
+		public Task UpsertSessionInterpretersAsync(string eventId, string sessionId, IEnumerable<(string EmailAddress, InterpretationLanguageForEventSession SourceLanguage, InterpretationLanguageForEventSession TargetLanguage)> languageInterpreters, IEnumerable<(string EmailAddress, InterpretationSignLanguage TargetLanguage)> signLanguageInterpreters, CancellationToken cancellationToken = default)
 		{
+			var languageInterpretersAsJson = languageInterpreters?.Select(i =>
+				new JsonObject
+				{
+					{ "email", i.EmailAddress },
+					{ "type", (int)InterpreterType.Language },
+					{ "source_language_id", i.SourceLanguage.ToEnumString() },
+					{ "target_language_id", i.TargetLanguage.ToEnumString() },
+				});
+
+			var signLanguageInterpretersAsJson = signLanguageInterpreters?.Select(i =>
+				new JsonObject
+				{
+					{ "email", i.EmailAddress },
+					{ "type", (int)InterpreterType.Sign },
+					{ "target_language_id", i.TargetLanguage.ToEnumString() },
+				});
+
 			var data = new JsonObject
 			{
-				{
-					"interpreters",
-					new[]
-					{
-						new JsonObject
-						{
-							{ "email", interpreterEmailAddress },
-							{ "type", (int)InterpreterType.Language },
-							{ "source_language_id", sourceLanguage.ToEnumString() },
-							{ "target_language_id", targetLanguage.ToEnumString() },
-						}
-					}
-				}
-			};
-
-			return _client
-				.PutAsync($"zoom_events/events/{eventId}/sessions/{sessionId}/interpreters")
-				.WithJsonBody(data)
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <inheritdoc/>
-		public Task UpsertSessionSignLanguageInterpreterAsync(string eventId, string sessionId, string interpreterEmailAddress, InterpretationSignLanguage targetLanguage, CancellationToken cancellationToken = default)
-		{
-			var data = new JsonObject
-			{
-				{
-					"interpreters",
-					new[]
-					{
-						new JsonObject
-						{
-							{ "email", interpreterEmailAddress },
-							{ "type", (int)InterpreterType.Sign },
-							{ "target_language_id", targetLanguage.ToEnumString() },
-						}
-					}
-				}
+				{ "interpreters", languageInterpretersAsJson.Union(signLanguageInterpretersAsJson).ToArray() }
 			};
 
 			return _client
@@ -1054,6 +1033,15 @@ namespace ZoomNet.Resources
 				.WithJsonBody(new JsonObject { { "email", emailAddress } })
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<Interpreter[]> GetAllSessionInterpretersAsync(string eventId, string sessionId, CancellationToken cancellationToken = default)
+		{
+			return _client
+					.GetAsync($"zoom_events/events/{eventId}/sessions/{sessionId}/interpreters")
+					.WithCancellationToken(cancellationToken)
+					.AsObject<Interpreter[]>("interpreters");
 		}
 
 		/// <inheritdoc/>

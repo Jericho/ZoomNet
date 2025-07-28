@@ -310,11 +310,25 @@ namespace ZoomNet.IntegrationTests.Tests
 			await client.Events.DeleteEventAccessLinkAsync(newConference.Id, accessLink.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Access link deleted").ConfigureAwait(false);
 
-			await client.Events.UpsertSessionLanguageInterpreterAsync(newConference.Id, newSession.Id, "interpreter1@example.com", InterpretationLanguageForEventSession.English, InterpretationLanguageForEventSession.Portuguese, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync("Session language interpreter added: English --> Portuguese").ConfigureAwait(false);
+			await client.Events.UpsertSessionInterpretersAsync(
+				newConference.Id,
+				newSession.Id,
+				new[]
+				{
+					("languageInterpreter1@example.com", InterpretationLanguageForEventSession.English, InterpretationLanguageForEventSession.Portuguese),
+					("languageInterpreter2@example.com", InterpretationLanguageForEventSession.English, InterpretationLanguageForEventSession.German),
+					("languageInterpreter3@example.com", InterpretationLanguageForEventSession.English, InterpretationLanguageForEventSession.Spanish),
+				},
+				new[]
+				{
+					("signInterpreter1@example.com", InterpretationSignLanguage.French),
+					("signInterpreter2@example.com", InterpretationSignLanguage.British),
+				},
+				cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Session language interpreters added").ConfigureAwait(false);
 
-			await client.Events.UpsertSessionSignLanguageInterpreterAsync(newConference.Id, newSession.Id, "interpreter2@example.com", InterpretationSignLanguage.French, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync("Session language interpreter added: French Sign Language").ConfigureAwait(false);
+			var interpreters = await client.Events.GetAllSessionInterpretersAsync(newConference.Id, newSession.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Retrieved all interpreters. There are {interpreters.Length} interpreters").ConfigureAwait(false);
 
 			var tickets = new[]
 			{

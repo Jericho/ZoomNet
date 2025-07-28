@@ -579,31 +579,19 @@ namespace ZoomNet.Resources
 			CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Updates or inserts a language interpreter for a specific session within an event.
+		/// Updates or inserts interpreters for a specified session within an event.
 		/// </summary>
-		/// <remarks>This method ensures that the specified interpreter is associated with the given session, either
-		/// by updating an existing record or inserting a new one.</remarks>
-		/// <param name="eventId">The unique identifier of the event to which the session belongs. Cannot be null or empty.</param>
-		/// <param name="sessionId">The unique identifier of the session within the event. Cannot be null or empty.</param>
-		/// <param name="interpreterEmailAddress">The email address of the interpreter to be assigned to the session. Cannot be null or empty.</param>
-		/// <param name="sourceLanguage">The source language for the interpretation session.</param>
-		/// <param name="targetLanguage">The target language for the interpretation session.</param>
-		/// <param name="cancellationToken">A token to monitor for cancellation requests. Defaults to <see cref="CancellationToken.None"/>.</param>
+		/// <remarks>This method ensures that the specified interpreters are associated with the session, either by
+		/// updating existing records or inserting new ones as necessary.</remarks>
+		/// <param name="eventId">The unique identifier of the event containing the session.</param>
+		/// <param name="sessionId">The unique identifier of the session to update or insert interpreters for.</param>
+		/// <param name="languageInterpreters">A collection of tuples, each containing the email address of the interpreter and the source and target languages
+		/// for spoken language interpretation.</param>
+		/// <param name="signLanguageInterpreters">A collection of tuples, each containing the email address of the interpreter and the target language for sign
+		/// language interpretation.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
 		/// <returns>A task that represents the asynchronous operation.</returns>
-		Task UpsertSessionLanguageInterpreterAsync(string eventId, string sessionId, string interpreterEmailAddress, InterpretationLanguageForEventSession sourceLanguage, InterpretationLanguageForEventSession targetLanguage, CancellationToken cancellationToken = default);
-
-		/// <summary>
-		/// Updates or inserts a sign language interpreter for a specific session within an event.
-		/// </summary>
-		/// <remarks>This method ensures that the specified interpreter is associated with the given session, either
-		/// by updating an existing record or inserting a new one.</remarks>
-		/// <param name="eventId">The unique identifier of the event to which the session belongs. Cannot be null or empty.</param>
-		/// <param name="sessionId">The unique identifier of the session within the event. Cannot be null or empty.</param>
-		/// <param name="interpreterEmailAddress">The email address of the interpreter to be assigned to the session. Cannot be null or empty.</param>
-		/// <param name="targetLanguage">The target sign language for the interpretation session.</param>
-		/// <param name="cancellationToken">A token to monitor for cancellation requests. Defaults to <see cref="CancellationToken.None"/>.</param>
-		/// <returns>A task that represents the asynchronous operation.</returns>
-		Task UpsertSessionSignLanguageInterpreterAsync(string eventId, string sessionId, string interpreterEmailAddress, InterpretationSignLanguage targetLanguage, CancellationToken cancellationToken = default);
+		Task UpsertSessionInterpretersAsync(string eventId, string sessionId, IEnumerable<(string EmailAddress, InterpretationLanguageForEventSession SourceLanguage, InterpretationLanguageForEventSession TargetLanguage)> languageInterpreters, IEnumerable<(string EmailAddress, InterpretationSignLanguage TargetLanguage)> signLanguageInterpreters, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Asynchronously creates a new poll for a specified event session.
@@ -744,6 +732,17 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
 		/// <returns>A task that represents the asynchronous operation.</returns>
 		Task DeleteSessionReservationAsync(string eventId, string sessionId, string emailAddress, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously retrieves all interpreters for a specified event session.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event for which interpreters are being retrieved. Cannot be null or empty.</param>
+		/// <param name="sessionId">The unique identifier of the session within the event. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains an array of <see
+		/// cref="Interpreter"/> objects representing the interpreters for the specified session. The array will
+		/// be empty if no interpreters are found.</returns>
+		Task<Interpreter[]> GetAllSessionInterpretersAsync(string eventId, string sessionId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve all polls for a sessions.
