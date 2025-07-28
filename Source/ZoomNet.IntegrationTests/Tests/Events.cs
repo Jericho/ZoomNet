@@ -295,6 +295,9 @@ namespace ZoomNet.IntegrationTests.Tests
 				cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Access link created: {accessLink}").ConfigureAwait(false);
 
+			accessLink = await client.Events.GetEventAccessLinkAsync(newConference.Id, accessLink.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Access link retrieved").ConfigureAwait(false);
+
 			await client.Events.DeleteEventAccessLinkAsync(newConference.Id, accessLink.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Access link deleted").ConfigureAwait(false);
 

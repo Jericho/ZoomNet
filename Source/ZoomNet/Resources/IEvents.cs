@@ -90,6 +90,16 @@ namespace ZoomNet.Resources
 		/// <returns>A task that represents the asynchronous operation.</returns>
 		Task DeleteEventAccessLinkAsync(string eventId, string accessLinkId, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Asynchronously retrieves the access link for a specified event.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event for which the access link is requested. Cannot be null or empty.</param>
+		/// <param name="accessLinkId">The unique identifier of the access link to retrieve. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the <see cref="EventAccessLink"/>
+		/// associated with the specified event and access link identifiers.</returns>
+		Task<EventAccessLink> GetEventAccessLinkAsync(string eventId, string accessLinkId, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region EVENTS
