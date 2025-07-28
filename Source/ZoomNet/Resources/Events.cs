@@ -143,6 +143,36 @@ namespace ZoomNet.Resources
 				.AsObject<EventAccessLink[]>("access_links");
 		}
 
+		/// <inheritdoc/>
+		public Task UpdateEventAccessLinkAsync(string eventId, string accessLinkId, string name = null, bool? isDefault = null, EventAuthenticationMethod? authenticationMethod = null, IEnumerable<string> allowDomainList = null, IEnumerable<string> emailRestrictList = null, bool? emailAuthentication = null, bool? securityCodeVerification = null, string ticketTypeId = null, RecurringEventRegistrationType? recurringRegistrationType = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "name", name },
+				{ "is_default", isDefault },
+				{ "authentication_method", authenticationMethod?.ToEnumString() },
+				{ "allow_domain_list", allowDomainList?.ToArray() },
+				{ "email_restrict_list", emailRestrictList?.ToArray() },
+				{ "ticket_type_id", ticketTypeId },
+				{ "recurring_registration_option", recurringRegistrationType?.ToEnumString() }
+			};
+
+			if (emailAuthentication.HasValue || securityCodeVerification.HasValue)
+			{
+				data["security_at_join"] = new JsonObject
+				{
+					{ "email_authentication", emailAuthentication },
+					{ "security_code_verification", securityCodeVerification }
+				};
+			}
+
+			return _client
+				.PatchAsync($"zoom_events/events/{eventId}/access_links/{accessLinkId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
 		#endregion
 
 		#region EVENTS

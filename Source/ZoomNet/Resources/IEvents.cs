@@ -109,6 +109,28 @@ namespace ZoomNet.Resources
 		/// will be empty if no access links are available.</returns>
 		Task<EventAccessLink[]> GetAllEventAccessLinksAsync(string eventId, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Updates an existing event access link with the specified parameters.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event to which the access link belongs. Cannot be null or empty.</param>
+		/// <param name="accessLinkId">The unique identifier of the access link to update. Cannot be null or empty.</param>
+		/// <param name="name">The new name for the access link. Can be null to retain the current name.</param>
+		/// <param name="isDefault">Indicates whether the access link should be set as the default link. If <see langword="true"/>, the link is set as
+		/// default; otherwise, it is not changed.</param>
+		/// <param name="authenticationMethod">The authentication method to be used for the access link. Can be null to retain the current method.</param>
+		/// <param name="allowDomainList">A list of domains that are allowed access. Can be null to retain the current list.</param>
+		/// <param name="emailRestrictList">A list of email addresses that are restricted from access. Can be null to retain the current list.</param>
+		/// <param name="emailAuthentication">Indicates whether email authentication is required. If <see langword="true"/>, email authentication is enabled;
+		/// otherwise, it is not changed.</param>
+		/// <param name="securityCodeVerification">Indicates whether security code verification is required. If <see langword="true"/>, security code verification is
+		/// enabled; otherwise, it is not changed.</param>
+		/// <param name="ticketTypeId">The identifier of the ticket type associated with the access link. Can be null to retain the current association.</param>
+		/// <param name="recurringRegistrationType">The type of recurring event registration. Can be null to retain the current type.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Defaults to <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the updated <see
+		/// cref="EventAccessLink"/>.</returns>
+		Task UpdateEventAccessLinkAsync(string eventId, string accessLinkId, string name = null, bool? isDefault = null, EventAuthenticationMethod? authenticationMethod = null, IEnumerable<string> allowDomainList = null, IEnumerable<string> emailRestrictList = null, bool? emailAuthentication = null, bool? securityCodeVerification = null, string ticketTypeId = null, RecurringEventRegistrationType? recurringRegistrationType = null, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region EVENTS
