@@ -56,6 +56,49 @@ namespace ZoomNet.Resources
 
 		#region COEDITORS
 
+		/// <summary>
+		/// Asynchronously retrieves all co-editors associated with a specified event.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event for which to retrieve co-editors. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains an array of <see
+		/// cref="EventCoEditor"/> objects representing the co-editors of the event. The array will be empty if no co-editors
+		/// are found.</returns>
+		Task<EventCoEditor[]> GetAllCoEditorsAsync(string eventId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously adds co-editors to a specified event with defined permissions.
+		/// </summary>
+		/// <remarks>This method allows you to add multiple co-editors to an event, each with specific permissions.</remarks>
+		/// <param name="eventId">The unique identifier of the event to which co-editors will be added. Cannot be null or empty.</param>
+		/// <param name="coeditors">A collection of tuples, each containing an email address and a set of permission groups. The email address
+		/// specifies the co-editor, and the permissions define the access level for the event.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>An array of error messages to inform you of the operations that failed. If all co-editors are successfully added to the event, this array will be empty.</returns>
+		Task AddCoEditorsAsync(string eventId, IEnumerable<(string EmailAddress, EventCoEditorPermissionGroup[] Permissions)> coeditors, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Updates the co-editors for a specified event asynchronously.
+		/// </summary>
+		/// <remarks>This method updates the permissions of co-editors for the specified event.</remarks>
+		/// <param name="eventId">The unique identifier of the event for which co-editors are being updated. Cannot be null or empty.</param>
+		/// <param name="coeditors">A collection of tuples, each containing an email address and a set of permission groups for the co-editor. The
+		/// email address must be valid, and the permissions must be a valid set of <see cref="EventCoEditorPermissionGroup"/>
+		/// values.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>An array of error messages to inform you of the operations that failed. If all co-editors are successfully updated, this array will be empty.</returns>
+		Task UpdateCoEditorsAsync(string eventId, IEnumerable<(string EmailAddress, IEnumerable<EventCoEditorPermissionGroup> Permissions)> coeditors, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously removes co-editors from a specified event.
+		/// </summary>
+		/// <param name="eventId">The unique identifier of the event from which co-editors will be removed. Cannot be null or empty.</param>
+		/// <param name="emailAddresses">A collection of email addresses representing the co-editors to be removed. Cannot be null or contain null or empty
+		/// values.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>An array of error messages to inform you of the operations that failed. If all co-editors are successfully removed from the event, this array will be empty.</returns>
+		Task DeleteCoEditorsAsync(string eventId, IEnumerable<string> emailAddresses, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region EVENT ACCES

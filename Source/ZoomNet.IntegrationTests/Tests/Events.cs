@@ -330,6 +330,19 @@ namespace ZoomNet.IntegrationTests.Tests
 			var interpreters = await client.Events.GetAllSessionInterpretersAsync(newConference.Id, newSession.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Retrieved all interpreters. There are {interpreters.Length} interpreters").ConfigureAwait(false);
 
+			await client.Events.AddCoEditorsAsync(
+				newConference.Id,
+				new[]
+				{
+					("coeditor1@example.com", new EventCoEditorPermissionGroup[] { EventCoEditorPermissionGroup.Venue }),
+					("anothereditor@example.com", new[] { EventCoEditorPermissionGroup.EventPlanning, EventCoEditorPermissionGroup.EventConfiguration }),
+				},
+				cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Co-editors added").ConfigureAwait(false);
+
+			var coeditors = await client.Events.GetAllCoEditorsAsync(newConference.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Retrieved all co-editors. There are {coeditors.Length} co-editors").ConfigureAwait(false);
+
 			var tickets = new[]
 			{
 				new EventTicket

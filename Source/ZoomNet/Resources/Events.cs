@@ -86,6 +86,83 @@ namespace ZoomNet.Resources
 
 		#region COEDITORS
 
+		/// <inheritdoc/>
+		public Task<EventCoEditor[]> GetAllCoEditorsAsync(string eventId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"zoom_events/events/{eventId}/coeditors")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<EventCoEditor[]>("coeditors");
+		}
+
+		/// <inheritdoc/>
+		public Task AddCoEditorsAsync(string eventId, IEnumerable<(string EmailAddress, EventCoEditorPermissionGroup[] Permissions)> coeditors, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "operation", "add" },
+				{
+					"coeditors",
+					coeditors?.Select(c => new JsonObject
+					{
+						{ "email", c.EmailAddress },
+						{ "permission_groups", c.Permissions?.Select(p => p.ToEnumString()).ToArray() }
+					}).ToArray()
+				}
+			};
+
+			return _client
+				.PatchAsync($"zoom_events/events/{eventId}/coeditors")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateCoEditorsAsync(string eventId, IEnumerable<(string EmailAddress, IEnumerable<EventCoEditorPermissionGroup> Permissions)> coeditors, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "operation", "update" },
+				{
+					"coeditors",
+					coeditors?.Select(c => new JsonObject
+					{
+						{ "email", c.EmailAddress },
+						{ "permission_groups", c.Permissions?.Select(p => p.ToEnumString()).ToArray() }
+					}).ToArray()
+				}
+			};
+
+			return _client
+				.PatchAsync($"zoom_events/events/{eventId}/coeditors")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteCoEditorsAsync(string eventId, IEnumerable<string> emailAddresses, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "operation", "delete" },
+				{
+					"coeditors",
+					emailAddresses?.Select(emailAddress => new JsonObject
+					{
+						{ "email", emailAddress },
+					}).ToArray()
+				}
+			};
+
+			return _client
+				.PatchAsync($"zoom_events/events/{eventId}/coeditors")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
 		#endregion
 
 		#region EVENT ACCES
@@ -103,7 +180,8 @@ namespace ZoomNet.Resources
 					{ "is_default", isDefault },
 					{ "allow_domain_list", allowDomainList?.ToArray() },
 					{ "email_restrict_list", emailRestrictList?.ToArray() },
-					{ "security_at_join", new JsonObject
+					{
+						"security_at_join", new JsonObject
 						{
 							{ "email_authentication", emailAuthentication },
 							{ "security_code_verification", securityCodeVerification }
