@@ -17,7 +17,7 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets a value indicating whether the possible answers will be displayed as a drop-down box.</summary>
 		[JsonPropertyName("show_as_dropdown")]
-		public bool ShowAsDropdown { get; set; }
+		public bool? ShowAsDropdown { get; set; }
 
 		/// <summary>Gets or sets a value indicating whether the question must be answered.</summary>
 		[JsonPropertyName("answer_required")]
@@ -42,7 +42,8 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the maximum number of characters.</summary>
 		/// <remarks>
 		/// This field only applies to questions of type 'Short' and 'Long'.
-		/// Must be smaller or equal to 2,000.
+		/// For short_answer polls, a maximum of 500 characters.
+		/// For long_answer polls, a maximum of 2,000 characters.
 		/// </remarks>
 		[JsonPropertyName("answer_max_character")]
 		public int? MaximumNumberOfCharacters { get; set; }

@@ -849,11 +849,36 @@ namespace ZoomNet.Resources
 			IEnumerable<PollQuestionForEventSession> questions = null,
 			CancellationToken cancellationToken = default)
 		{
-			// A poll with required questions or question displayed as a dropdown is considered "advanced" which means that 'poll_type' cannot be 'Basic'
+			// There are a number of scenarios where questions are deemed to be "advanced". When a poll contains advanced questions, it's "poll_type" cannot be "Basic".
 			// See: https://devforum.zoom.us/t/unable-to-create-poll-for-an-event-session-the-poll-contains-advanced-poll-questions/135561
-			var pollContainsAdvancedQuestions = questions?.Any(q => q.IsRequired || q.ShowAsDropdown) ?? false;
+
+			// So far, the scenarios I have been able to onfirm to cause a question to be considered "advanced" are:
+			// - The question is required (IsRequired == true)
+			// - The question is a dropdown (ShowAsDropdown == true)
+			// - The type of question is anything other than single choice (Type != PollQuestionType.SingleChoice)
+			var pollContainsAdvancedQuestions = questions?.Any(q =>
+				q.IsRequired ||
+				q.ShowAsDropdown.GetValueOrDefault(false) ||
+				q.Type != PollQuestionType.SingleChoice) ?? false;
 			var isBasicPoll = type.GetValueOrDefault(PollType.Basic) == PollType.Basic;
 			if (pollContainsAdvancedQuestions && isBasicPoll) type = PollType.Advanced;
+
+			// If the max and/or min number of characters are not configured, the API will return the following error message:
+			// Short/Long answers can not exceed character length.
+
+			// Make sure the min and max character limits are within the allowed range for short answers
+			foreach (var item in questions.Where(q => q.Type == PollQuestionType.Short))
+			{
+				item.MinimumNumberOfCharacters = Math.Max(item.MinimumNumberOfCharacters ?? 1, 1);
+				item.MaximumNumberOfCharacters = Math.Min(item.MaximumNumberOfCharacters ?? 500, 500);
+			}
+
+			// Make sure the min and max character limits are within the allowed range for long answers
+			foreach (var item in questions.Where(q => q.Type == PollQuestionType.Long))
+			{
+				item.MinimumNumberOfCharacters = Math.Max(item.MinimumNumberOfCharacters ?? 1, 1);
+				item.MaximumNumberOfCharacters = Math.Min(item.MaximumNumberOfCharacters ?? 2000, 2000);
+			}
 
 			var data = new JsonObject
 			{
@@ -883,7 +908,7 @@ namespace ZoomNet.Resources
 										{ "prompt_right_answers", q.PromptCorrectAnswers?.ToArray() },
 										{ "rating_max_label", q.RatingHighScoreLabel },
 										{ "rating_max_value", q.RatingMaximumValue },
-										{ "rating_min_label", q.RatingHighScoreLabel },
+										{ "rating_min_label", q.RatingLowScoreLabel },
 										{ "rating_min_value", q.RatingMinimumValue },
 										{ "right_answers", q.CorrectAnswers?.ToArray() },
 										{ "show_as_dropdown", q.ShowAsDropdown },

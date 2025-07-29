@@ -429,26 +429,62 @@ namespace ZoomNet.IntegrationTests.Tests
 				newConference.Id,
 				newSession.Id,
 				title: "ZoomNet Integration Testing: Poll",
-				type: PollType.Basic, // I am deliberatly setting the poll type to a value that I know full well it's not valid (due to the questions being considered 'Advanced') to verify that this value gets overridden in CreateSessionPollAsync
+				type: PollType.Basic, // I am deliberatly setting the poll type to a value that I know is not valid (due to the fact the poll contains 'Advanced' questions) to verify that this value gets overridden in CreateSessionPollAsync
 				status: PollStatusForEventSession.Active,
 				allowAnonymous: false,
 				questions: new[]
 				{
 					new PollQuestionForEventSession
 					{
+						Question = "What is your pet's name?",
+						Type = PollQuestionType.Short,
+					},
+					new PollQuestionForEventSession
+					{
+						Question = "Tell us about yourself",
+						Type = PollQuestionType.Long,
+					},
+					new PollQuestionForEventSession
+					{
 						Question = "What is your favorite programming language?",
 						Type = PollQuestionType.SingleChoice,
 						Answers = new[] { "C#", "JavaScript", "Python" },
 						ShowAsDropdown = true,
-						IsRequired = false
 					},
 					new PollQuestionForEventSession
 					{
-						Question = "What is your favorite IDE?",
-						Type = PollQuestionType.SingleChoice,
-						Answers = new[] { "Visual Studio", "VS Code", "IntelliJ IDEA" },
-						ShowAsDropdown = false,
-						IsRequired = true
+						Question = "Which colors do you like?",
+						Type = PollQuestionType.MultipleChoice,
+						Answers = new[] { "Red", "Green", "Blue", "Yellow" },
+					},
+					new PollQuestionForEventSession
+					{
+						Question = "Rank these movies",
+						Type = PollQuestionType.RankOrder,
+						Prompts = new[] { "Zoolander", "Dodge Ball", "Old School", "Elf", "Anchorman" },
+						PromptCorrectAnswers = new[] { "Funny", "Neutral", "Boring" },
+					},
+					new PollQuestionForEventSession
+					{
+						Question = "The quick brown <blank1 /> jumps over the lazy <blank2 />",
+						Answers = new[] { "Answer 1", "Answer 2" },
+						Type = PollQuestionType.FillInTheBlanks,
+					},
+					new PollQuestionForEventSession
+					{
+						Question = "Match the cars to their style",
+						Prompts = new[] { "Ford F150", "Tesla Model 3", "Ford Explorer" },
+						PromptCorrectAnswers = new[] { "Pickup truck", "Electric Vehicule", "SUV" },
+						Type = PollQuestionType.Matching,
+					},
+					new PollQuestionForEventSession
+					{
+						Question = "How likely are you to recommend us?",
+						RatingLowScoreLabel = "Not likely",
+						RatingHighScoreLabel = "Very likely",
+						RatingMinimumValue = 1,
+						RatingMaximumValue = 10,
+						Type = PollQuestionType.RatingScale,
 					},
 				},
 				cancellationToken: cancellationToken).ConfigureAwait(false);
