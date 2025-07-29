@@ -823,101 +823,75 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task CreateSessionPollAsync(string eventId, string sessionId, string title, PollType type = PollType.Basic, PollStatusForEventSession status = PollStatusForEventSession.Active, bool allowAnonymous = true, IEnumerable<PollQuestionForEventSession> questions = null, CancellationToken cancellationToken = default)
+		public Task UpsertSessionPollsAsync(string eventId, string sessionId, IEnumerable<PollForEventSession> polls, CancellationToken cancellationToken = default)
 		{
-			return UpdateSessionPollAsync(
-				eventId,
-				sessionId,
-				pollId: null, // must be null when creating a new poll
-				title: title,
-				type: type,
-				status: status,
-				allowAnonymous: allowAnonymous,
-				questions: questions,
-				cancellationToken: cancellationToken);
-		}
-
-		/// <inheritdoc/>
-		public Task UpdateSessionPollAsync(
-			string eventId,
-			string sessionId,
-			string pollId,
-			string title = null,
-			PollType? type = null,
-			PollStatusForEventSession? status = null,
-			bool? allowAnonymous = null,
-			IEnumerable<PollQuestionForEventSession> questions = null,
-			CancellationToken cancellationToken = default)
-		{
-			// There are a number of scenarios where questions are deemed to be "advanced". When a poll contains advanced questions, it's "poll_type" cannot be "Basic".
-			// See: https://devforum.zoom.us/t/unable-to-create-poll-for-an-event-session-the-poll-contains-advanced-poll-questions/135561
-
-			// So far, the scenarios I have been able to onfirm to cause a question to be considered "advanced" are:
-			// - The question is required (IsRequired == true)
-			// - The question is a dropdown (ShowAsDropdown == true)
-			// - The type of question is anything other than single choice (Type != PollQuestionType.SingleChoice)
-			var pollContainsAdvancedQuestions = questions?.Any(q =>
-				q.IsRequired ||
-				q.ShowAsDropdown.GetValueOrDefault(false) ||
-				q.Type != PollQuestionType.SingleChoice) ?? false;
-			var isBasicPoll = type.GetValueOrDefault(PollType.Basic) == PollType.Basic;
-			if (pollContainsAdvancedQuestions && isBasicPoll) type = PollType.Advanced;
-
-			// If the max and/or min number of characters are not configured, the API will return the following error message:
-			// Short/Long answers can not exceed character length.
-
-			// Make sure the min and max character limits are within the allowed range for short answers
-			foreach (var item in questions.Where(q => q.Type == PollQuestionType.Short))
+			foreach (var poll in polls)
 			{
-				item.MinimumNumberOfCharacters = Math.Max(item.MinimumNumberOfCharacters ?? 1, 1);
-				item.MaximumNumberOfCharacters = Math.Min(item.MaximumNumberOfCharacters ?? 500, 500);
-			}
+				// There are a number of scenarios where questions are deemed to be "advanced". When a poll contains advanced questions, it's "poll_type" cannot be "Basic".
+				// See: https://devforum.zoom.us/t/unable-to-create-poll-for-an-event-session-the-poll-contains-advanced-poll-questions/135561
 
-			// Make sure the min and max character limits are within the allowed range for long answers
-			foreach (var item in questions.Where(q => q.Type == PollQuestionType.Long))
-			{
-				item.MinimumNumberOfCharacters = Math.Max(item.MinimumNumberOfCharacters ?? 1, 1);
-				item.MaximumNumberOfCharacters = Math.Min(item.MaximumNumberOfCharacters ?? 2000, 2000);
+				// So far, the scenarios I have been able to onfirm to cause a question to be considered "advanced" are:
+				// - The question is required (IsRequired == true)
+				// - The question is a dropdown (ShowAsDropdown == true)
+				// - The type of question is anything other than single choice (Type != PollQuestionType.SingleChoice)
+				var pollContainsAdvancedQuestions = poll.Questions?.Any(q =>
+					q.IsRequired ||
+					q.ShowAsDropdown.GetValueOrDefault(false) ||
+					q.Type != PollQuestionType.SingleChoice) ?? false;
+				var isBasicPoll = poll.Type == PollType.Basic;
+				if (pollContainsAdvancedQuestions && isBasicPoll) poll.Type = PollType.Advanced;
+
+				// If the max and/or min number of characters are not configured, the API will return the following error message:
+				// Short/Long answers can not exceed character length.
+
+				// Make sure the min and max character limits are within the allowed range for short answers
+				foreach (var item in poll.Questions.Where(q => q.Type == PollQuestionType.Short))
+				{
+					item.MinimumNumberOfCharacters = Math.Max(item.MinimumNumberOfCharacters ?? 1, 1);
+					item.MaximumNumberOfCharacters = Math.Min(item.MaximumNumberOfCharacters ?? 500, 500);
+				}
+
+				// Make sure the min and max character limits are within the allowed range for long answers
+				foreach (var item in poll.Questions.Where(q => q.Type == PollQuestionType.Long))
+				{
+					item.MinimumNumberOfCharacters = Math.Max(item.MinimumNumberOfCharacters ?? 1, 1);
+					item.MaximumNumberOfCharacters = Math.Min(item.MaximumNumberOfCharacters ?? 2000, 2000);
+				}
 			}
 
 			var data = new JsonObject
 			{
 				{
 					"polls",
-					new[]
+					polls?.Select(p => new JsonObject
 					{
-						new JsonObject
+						{ "title", p.Title },
+						{ "poll_type", (int)p.Type },
+						{ "status", p.Status.ToEnumString() },
+						{ "anonymous", p.AllowAnonymous },
 						{
-							{ "id", pollId },
-							{ "title", title },
-							{ "poll_type", (int?)type },
-							{ "status", status?.ToEnumString() },
-							{ "anonymous", allowAnonymous },
+							"questions",
+							p.Questions?.Select(q => new JsonObject
 							{
-								"questions",
-								questions?
-									.Select(q => new JsonObject
-									{
-										{ "answer_max_character", q.MaximumNumberOfCharacters },
-										{ "answer_min_character", q.MinimumNumberOfCharacters },
-										{ "answer_required", q.IsRequired },
-										{ "answers", q.Answers?.ToArray() },
-										{ "case_sensitive", q.IsCaseSensitive },
-										{ "name", q.Question },
-										{ "prompts", q.Prompts?.ToArray() },
-										{ "prompt_right_answers", q.PromptCorrectAnswers?.ToArray() },
-										{ "rating_max_label", q.RatingHighScoreLabel },
-										{ "rating_max_value", q.RatingMaximumValue },
-										{ "rating_min_label", q.RatingLowScoreLabel },
-										{ "rating_min_value", q.RatingMinimumValue },
-										{ "right_answers", q.CorrectAnswers?.ToArray() },
-										{ "show_as_dropdown", q.ShowAsDropdown },
-										{ "type", q.Type.ToEnumString() },
-										{ "title", q.Title },
-									}).ToArray()
-							}
+								{ "answer_max_character", q.MaximumNumberOfCharacters },
+								{ "answer_min_character", q.MinimumNumberOfCharacters },
+								{ "answer_required", p.Type == PollType.Basic ? null : q.IsRequired },
+								{ "answers", q.Answers?.ToArray() },
+								{ "case_sensitive", q.IsCaseSensitive },
+								{ "name", q.Question },
+								{ "prompts", q.Prompts?.ToArray() },
+								{ "prompt_right_answers", q.PromptCorrectAnswers?.ToArray() },
+								{ "rating_max_label", q.RatingHighScoreLabel },
+								{ "rating_max_value", q.RatingMaximumValue },
+								{ "rating_min_label", q.RatingLowScoreLabel },
+								{ "rating_min_value", q.RatingMinimumValue },
+								{ "right_answers", q.CorrectAnswers?.ToArray() },
+								{ "show_as_dropdown", q.ShowAsDropdown },
+								{ "type", q.Type.ToEnumString() },
+								{ "title", q.Title }
+							}).ToArray()
 						}
-					}
+					}).ToArray()
 				}
 			};
 

@@ -594,33 +594,14 @@ namespace ZoomNet.Resources
 		Task UpsertSessionInterpretersAsync(string eventId, string sessionId, IEnumerable<(string EmailAddress, InterpretationLanguageForEventSession SourceLanguage, InterpretationLanguageForEventSession TargetLanguage)> languageInterpreters, IEnumerable<(string EmailAddress, InterpretationSignLanguage TargetLanguage)> signLanguageInterpreters, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Asynchronously creates a new poll for a specified event session.
+		/// Asynchronously updates or inserts polls for a specified event session.
 		/// </summary>
-		/// <param name="eventId">The unique identifier of the event to which the poll belongs. Cannot be null or empty.</param>
-		/// <param name="sessionId">The unique identifier of the session within the event. Cannot be null or empty.</param>
-		/// <param name="title">The title of the poll. Cannot be null or empty.</param>
-		/// <param name="type">The type of the poll, specifying its format. Defaults to <see cref="PollType.Basic"/>.</param>
-		/// <param name="status">The initial status of the poll within the session. Defaults to <see cref="PollStatusForEventSession.Active"/>.</param>
-		/// <param name="allowAnonymous">A value indicating whether anonymous responses are allowed. Defaults to <see langword="true"/>.</param>
-		/// <param name="questions">A collection of questions to include in the poll. Can be null if no questions are to be added initially.</param>
-		/// <param name="cancellationToken">A token to monitor for cancellation requests. Defaults to <see cref="CancellationToken.None"/>.</param>
-		/// <returns>A task that represents the asynchronous operation.</returns>
-		Task CreateSessionPollAsync(string eventId, string sessionId, string title, PollType type = PollType.Basic, PollStatusForEventSession status = PollStatusForEventSession.Active, bool allowAnonymous = true, IEnumerable<PollQuestionForEventSession> questions = null, CancellationToken cancellationToken = default);
-
-		/// <summary>
-		/// Updates a poll associated with a specific session within an event.
-		/// </summary>
-		/// <param name="eventId">The unique identifier of the event containing the session.</param>
-		/// <param name="sessionId">The unique identifier of the session whose poll is to be updated.</param>
-		/// <param name="pollId">The unique identifier of the poll.</param>
-		/// <param name="title">The title of the poll.</param>
-		/// <param name="type">The type of the poll, specifying its format.</param>
-		/// <param name="status">The status of the poll within the session.</param>
-		/// <param name="allowAnonymous">A value indicating whether anonymous responses are allowed.</param>
-		/// <param name="questions">A collection of questions to include in the poll. Can be null if no questions are to be added initially.</param>
+		/// <param name="eventId">The unique identifier of the event to which the session belongs. Cannot be null or empty.</param>
+		/// <param name="sessionId">The unique identifier of the session for which polls are being upserted. Cannot be null or empty.</param>
+		/// <param name="polls">A collection of <see cref="PollForEventSession"/> objects representing the polls to be upserted. Cannot be null.</param>
 		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
-		/// <returns>A task that represents the asynchronous operation.</returns>
-		Task UpdateSessionPollAsync(string eventId, string sessionId, string pollId, string title = null, PollType? type = null, PollStatusForEventSession? status = null, bool? allowAnonymous = null, IEnumerable<PollQuestionForEventSession> questions = null, CancellationToken cancellationToken = default);
+		/// <returns>A task that represents the asynchronous upsert operation.</returns>
+		Task UpsertSessionPollsAsync(string eventId, string sessionId, IEnumerable<PollForEventSession> polls, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Asynchronously deletes a session associated with the specified event.

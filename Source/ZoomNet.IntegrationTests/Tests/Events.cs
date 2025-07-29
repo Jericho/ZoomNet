@@ -425,14 +425,36 @@ namespace ZoomNet.IntegrationTests.Tests
 			var joinToken = await client.Events.GetSessionJoinTokenAsync(newConference.Id, newSession.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Session join token: {joinToken}").ConfigureAwait(false);
 
-			await client.Events.CreateSessionPollAsync(
-				newConference.Id,
-				newSession.Id,
-				title: "ZoomNet Integration Testing: Poll",
-				type: PollType.Basic, // I am deliberatly setting the poll type to a value that I know is not valid (due to the fact the poll contains 'Advanced' questions) to verify that this value gets overridden in CreateSessionPollAsync
-				status: PollStatusForEventSession.Active,
-				allowAnonymous: false,
-				questions: new[]
+			var poll1 = new PollForEventSession
+			{
+				Title = "ZoomNet Integration Testing: Basic Poll",
+				Type = PollType.Basic,
+				Status = PollStatusForEventSession.Active,
+				AllowAnonymous = false,
+				Questions = new[]
+				{
+					new PollQuestionForEventSession
+					{
+						Question = "What is your favorite programming language?",
+						Type = PollQuestionType.SingleChoice,
+						Answers = new[] { "C#", "JavaScript", "Python" },
+					},
+					new PollQuestionForEventSession
+					{
+						Question = "What is your favorite IDE?",
+						Type = PollQuestionType.SingleChoice,
+						Answers = new[] { "Visual Studio", "VS Code", "IntelliJ IDEA" },
+					},
+				}
+			};
+
+			var poll2 = new PollForEventSession
+			{
+				Title = "ZoomNet Integration Testing: Advanced Poll",
+				Type = PollType.Basic, // I am deliberatly setting the poll type to a value that I know is not valid (due to the fact the poll contains 'Advanced' questions) to verify that this value gets overridden in CreateSessionPollAsync
+				Status = PollStatusForEventSession.Active,
+				AllowAnonymous = false,
+				Questions = new[]
 				{
 					new PollQuestionForEventSession
 					{
@@ -443,13 +465,6 @@ namespace ZoomNet.IntegrationTests.Tests
 					{
 						Question = "Tell us about yourself",
 						Type = PollQuestionType.Long,
-					},
-					new PollQuestionForEventSession
-					{
-						Question = "What is your favorite programming language?",
-						Type = PollQuestionType.SingleChoice,
-						Answers = new[] { "C#", "JavaScript", "Python" },
-						ShowAsDropdown = true,
 					},
 					new PollQuestionForEventSession
 					{
@@ -485,8 +500,14 @@ namespace ZoomNet.IntegrationTests.Tests
 						RatingMinimumValue = 1,
 						RatingMaximumValue = 10,
 						Type = PollQuestionType.RatingScale,
-					},
-				},
+					}
+				}
+			};
+
+			await client.Events.UpsertSessionPollsAsync(
+				newConference.Id,
+				newSession.Id,
+				new[] { poll1, poll2 },
 				cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Session poll created").ConfigureAwait(false);
 
