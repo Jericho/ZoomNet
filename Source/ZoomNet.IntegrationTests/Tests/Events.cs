@@ -56,6 +56,18 @@ namespace ZoomNet.IntegrationTests.Tests
 			var hubVideos = await client.Events.GetAllHubVideosAsync(hub.Id, null, 100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {hubVideos.TotalRecords} videos for hub {hub.Id}").ConfigureAwait(false);
 
+			// VOD
+			var newVodChannel = await client.Events.CreateVideoOnDemandChannelAsync(
+				hub.Id,
+				"ZoomNet Integration Testing: VOD Channel",
+				"The description of the VOD channel",
+				VideoOnDemandChannelType.VideoListHub,
+				cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"VOD channel {newVodChannel.Id} created").ConfigureAwait(false);
+
+			var vodChannels = await client.Events.GetAllVidoOnDemandChannelsAsync(hub.Id, 30, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {vodChannels.TotalRecords} VOD channels for hub {hub.Id}").ConfigureAwait(false);
+
 			// SIMPLE EVENT
 			var eventStart = DateTime.UtcNow.AddDays(1);
 			var eventEnd = eventStart.AddMinutes(30);

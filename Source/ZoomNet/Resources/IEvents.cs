@@ -1111,6 +1111,33 @@ namespace ZoomNet.Resources
 
 		#region VIDEO_ON_DEMAND
 
+		/// <summary>
+		/// Creates a new video-on-demand channel within the specified hub.
+		/// </summary>
+		/// <remarks>Use this method to create a new video-on-demand channel for organizing and managing video
+		/// content. Ensure that the <paramref name="name"/> is unique within the specified hub to avoid conflicts.</remarks>
+		/// <param name="hubId">The unique identifier of the hub where the channel will be created. Cannot be null or empty.</param>
+		/// <param name="name">The name of the video-on-demand channel. Must be unique within the hub and cannot be null or empty.</param>
+		/// <param name="description">A description of the video-on-demand channel. Can be null or empty.</param>
+		/// <param name="type">The type of the video-on-demand channel, specifying its purpose or behavior.</param>
+		/// <param name="cancellation">A token to monitor for cancellation requests. Defaults to <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the created <see
+		/// cref="VideoOnDemandChannel"/>.</returns>
+		Task<VideoOnDemandChannel> CreateVideoOnDemandChannelAsync(string hubId, string name, string description, VideoOnDemandChannelType type, CancellationToken cancellation = default);
+
+		/// <summary>
+		/// Retrieves a paginated list of video-on-demand channels for the specified hub.
+		/// </summary>
+		/// <remarks>Use the <paramref name="pagingToken"/> parameter to retrieve subsequent pages of results.  If the
+		/// token is <see langword="null"/> in the response, there are no more pages available.</remarks>
+		/// <param name="hubId">The unique identifier of the hub for which to retrieve video-on-demand channels. This parameter cannot be null or empty.</param>
+		/// <param name="recordsPerPage">The maximum number of records to include in each page of the response. The default value is 30. Must be a positive integer.</param>
+		/// <param name="pagingToken">An optional token used to retrieve the next page of results.  Pass <see langword="null"/> to retrieve the first page.</param>
+		/// <param name="cancellation">A <see cref="CancellationToken"/> that can be used to cancel the operation.</param>
+		/// <returns>A <see cref="PaginatedResponseWithToken{T}"/> containing a collection of  <see cref="VideoOnDemandChannel"/>
+		/// objects and a token for retrieving the next page of results, if available.</returns>
+		Task<PaginatedResponseWithToken<VideoOnDemandChannel>> GetAllVidoOnDemandChannelsAsync(string hubId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellation = default);
+
 		#endregion
 
 		#region VIDEO_ON_DEMAND REGISTRATION

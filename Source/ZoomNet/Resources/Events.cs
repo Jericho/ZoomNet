@@ -1560,6 +1560,34 @@ namespace ZoomNet.Resources
 
 		#region VIDEO_ON_DEMAND
 
+		/// <inheritdoc/>
+		public Task<VideoOnDemandChannel> CreateVideoOnDemandChannelAsync(string hubId, string name, string description, VideoOnDemandChannelType type, CancellationToken cancellation = default)
+		{
+			var data = new JsonObject
+			{
+				{ "name", name },
+				{ "description", description },
+				{ "type", type.ToEnumString() }
+			};
+
+			return _client
+				.PostAsync($"zoom_events/hubs/{hubId}/vod_channels")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellation)
+				.AsObject<VideoOnDemandChannel>();
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<VideoOnDemandChannel>> GetAllVidoOnDemandChannelsAsync(string hubId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellation = default)
+		{
+			return _client
+				.GetAsync($"zoom_events/hubs/{hubId}/vod_channels")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellation)
+				.AsPaginatedResponseWithToken<VideoOnDemandChannel>("vod_channels");
+		}
+
 		#endregion
 
 		#region VIDEO_ON_DEMAND REGISTRATION
