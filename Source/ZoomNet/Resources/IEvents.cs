@@ -1112,6 +1112,15 @@ namespace ZoomNet.Resources
 		#region VIDEO_ON_DEMAND
 
 		/// <summary>
+		/// Publishes a video-on-demand channel to the specified hub.
+		/// </summary>
+		/// <param name="hubId">The unique identifier of the hub where the channel will be published. Cannot be null or empty.</param>
+		/// <param name="channelId">The unique identifier of the video-on-demand channel to publish. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">An optional <see cref="CancellationToken"/> to observe while waiting for the task to complete.</param>
+		/// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
+		Task PublishVideoOnDemandChannelAsync(string hubId, string channelId, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Creates a new video-on-demand channel within the specified hub.
 		/// </summary>
 		/// <remarks>Use this method to create a new video-on-demand channel for organizing and managing video
@@ -1120,10 +1129,10 @@ namespace ZoomNet.Resources
 		/// <param name="name">The name of the video-on-demand channel. Must be unique within the hub and cannot be null or empty.</param>
 		/// <param name="description">A description of the video-on-demand channel. Can be null or empty.</param>
 		/// <param name="type">The type of the video-on-demand channel, specifying its purpose or behavior.</param>
-		/// <param name="cancellation">A token to monitor for cancellation requests. Defaults to <see cref="CancellationToken.None"/>.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Defaults to <see cref="CancellationToken.None"/>.</param>
 		/// <returns>A task that represents the asynchronous operation. The task result contains the created <see
 		/// cref="VideoOnDemandChannel"/>.</returns>
-		Task<VideoOnDemandChannel> CreateVideoOnDemandChannelAsync(string hubId, string name, string description, VideoOnDemandChannelType type, CancellationToken cancellation = default);
+		Task<VideoOnDemandChannel> CreateVideoOnDemandChannelAsync(string hubId, string name, string description, VideoOnDemandChannelType type, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieves a paginated list of video-on-demand channels for the specified hub.
@@ -1133,10 +1142,10 @@ namespace ZoomNet.Resources
 		/// <param name="hubId">The unique identifier of the hub for which to retrieve video-on-demand channels. This parameter cannot be null or empty.</param>
 		/// <param name="recordsPerPage">The maximum number of records to include in each page of the response. The default value is 30. Must be a positive integer.</param>
 		/// <param name="pagingToken">An optional token used to retrieve the next page of results.  Pass <see langword="null"/> to retrieve the first page.</param>
-		/// <param name="cancellation">A <see cref="CancellationToken"/> that can be used to cancel the operation.</param>
+		/// <param name="cancellationToken">A <see cref="CancellationToken"/> that can be used to cancel the operation.</param>
 		/// <returns>A <see cref="PaginatedResponseWithToken{T}"/> containing a collection of  <see cref="VideoOnDemandChannel"/>
 		/// objects and a token for retrieving the next page of results, if available.</returns>
-		Task<PaginatedResponseWithToken<VideoOnDemandChannel>> GetAllVidoOnDemandChannelsAsync(string hubId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellation = default);
+		Task<PaginatedResponseWithToken<VideoOnDemandChannel>> GetAllVidoOnDemandChannelsAsync(string hubId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		#endregion
 

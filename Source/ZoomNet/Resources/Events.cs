@@ -1561,7 +1561,22 @@ namespace ZoomNet.Resources
 		#region VIDEO_ON_DEMAND
 
 		/// <inheritdoc/>
-		public Task<VideoOnDemandChannel> CreateVideoOnDemandChannelAsync(string hubId, string name, string description, VideoOnDemandChannelType type, CancellationToken cancellation = default)
+		public Task PublishVideoOnDemandChannelAsync(string hubId, string channelId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "operation", "publish" }
+			};
+
+			return _client
+				.PostAsync($"zoom_events/hubs/{hubId}/vod_channels/{channelId}/actions")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<VideoOnDemandChannel> CreateVideoOnDemandChannelAsync(string hubId, string name, string description, VideoOnDemandChannelType type, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
@@ -1573,18 +1588,18 @@ namespace ZoomNet.Resources
 			return _client
 				.PostAsync($"zoom_events/hubs/{hubId}/vod_channels")
 				.WithJsonBody(data)
-				.WithCancellationToken(cancellation)
+				.WithCancellationToken(cancellationToken)
 				.AsObject<VideoOnDemandChannel>();
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<VideoOnDemandChannel>> GetAllVidoOnDemandChannelsAsync(string hubId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellation = default)
+		public Task<PaginatedResponseWithToken<VideoOnDemandChannel>> GetAllVidoOnDemandChannelsAsync(string hubId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"zoom_events/hubs/{hubId}/vod_channels")
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
-				.WithCancellationToken(cancellation)
+				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<VideoOnDemandChannel>("vod_channels");
 		}
 
