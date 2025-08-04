@@ -56,6 +56,18 @@ namespace ZoomNet.IntegrationTests.Tests
 			var hubVideos = await client.Events.GetAllHubVideosAsync(hub.Id, null, 100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {hubVideos.TotalRecords} videos for hub {hub.Id}").ConfigureAwait(false);
 
+			// VOD: CLEAN UP PREVIOUS INTEGRATION TESTS THAT MIGHT HAVE BEEN INTERRUPTED BEFORE THEY HAD TIME TO CLEANUP AFTER THEMSELVES
+			var vodChannels = await client.Events.GetAllVidoOnDemandChannelsAsync(hub.Id, 30, null, cancellationToken).ConfigureAwait(false);
+			cleanUpTasks = vodChannels.Records
+				.Where(m => m.Name.StartsWith("ZoomNet Integration Testing:"))
+				.Select(async oldChannel =>
+				{
+					await client.Events.DeleteVideoOnDemandChannelAsync(hub.Id, oldChannel.Id, cancellationToken).ConfigureAwait(false);
+					await log.WriteLineAsync($"VOD channel {oldChannel.Id} deleted").ConfigureAwait(false);
+					await Task.Delay(250, cancellationToken).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
+				});
+			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
+
 			// VOD
 			var newVodChannel = await client.Events.CreateVideoOnDemandChannelAsync(
 				hub.Id,
@@ -67,9 +79,6 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			await client.Events.PublishVideoOnDemandChannelAsync(hub.Id, newVodChannel.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("VOD channel published").ConfigureAwait(false);
-
-			var vodChannels = await client.Events.GetAllVidoOnDemandChannelsAsync(hub.Id, 30, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"There are {vodChannels.TotalRecords} VOD channels for hub {hub.Id}").ConfigureAwait(false);
 
 			// SIMPLE EVENT
 			var eventStart = DateTime.UtcNow.AddDays(1);
@@ -120,7 +129,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			// RECURRING EVENT
 			var recurrenceInfo = new EventRecurrenceInfo()
 			{
-				EndDateTime = DateTime.Now.AddMonths(2),
+				EndDateTime = DateTime.Now.AddMonths(1),
 				WeeklyDays = new[] { DayOfWeek.Monday, DayOfWeek.Friday },
 				Type = RecurrenceType.Weekly,
 				RepeatInterval = 1,
@@ -556,6 +565,9 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			await client.Events.CancelEventAsync(newConference.Id, "Cancelled for testing purposes", cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("The conference has been cancelled").ConfigureAwait(false);
+
+			await client.Events.DeleteVideoOnDemandChannelAsync(hub.Id, newVodChannel.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"VOD channel {newVodChannel.Id} deleted").ConfigureAwait(false);
 		}
 	}
 }
