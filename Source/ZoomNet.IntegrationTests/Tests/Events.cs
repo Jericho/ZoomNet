@@ -80,6 +80,9 @@ namespace ZoomNet.IntegrationTests.Tests
 			await client.Events.PublishVideoOnDemandChannelAsync(hub.Id, newVodChannel.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("VOD channel published").ConfigureAwait(false);
 
+			newVodChannel = await client.Events.GetVideoOnDemandChannelAsync(hub.Id, newVodChannel.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("VOD channel retrieved").ConfigureAwait(false);
+
 			// SIMPLE EVENT
 			var eventStart = DateTime.UtcNow.AddDays(1);
 			var eventEnd = eventStart.AddMinutes(30);

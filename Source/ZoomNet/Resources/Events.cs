@@ -1593,6 +1593,15 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task<VideoOnDemandChannel> GetVideoOnDemandChannelAsync(string hubId, string channelId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"zoom_events/hubs/{hubId}/vod_channels/{channelId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<VideoOnDemandChannel>();
+		}
+
+		/// <inheritdoc/>
 		public Task DeleteVideoOnDemandChannelAsync(string hubId, string channelId, CancellationToken cancellationToken = default)
 		{
 			return _client
