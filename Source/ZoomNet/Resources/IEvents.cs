@@ -1135,6 +1135,17 @@ namespace ZoomNet.Resources
 		Task<VideoOnDemandChannel> CreateVideoOnDemandChannelAsync(string hubId, string name, string description, VideoOnDemandChannelType type, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Updates the details of an existing video-on-demand channel within the specified hub.
+		/// </summary>
+		/// <param name="hubId">The unique identifier of the hub where the channel will be created. Cannot be null or empty.</param>
+		/// <param name="channelId">The unique identifier of the video-on-demand channel to retrieve.</param>
+		/// <param name="name">The name of the video-on-demand channel. Must be unique within the hub and cannot be null or empty.</param>
+		/// <param name="description">A description of the video-on-demand channel. Can be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Defaults to <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task UpdateVideoOnDemandChannelAsync(string hubId, string channelId, string name = null, string description = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Retrieves a video-on-demand channel associated with the specified hub and channel identifiers.
 		/// </summary>
 		/// <param name="hubId">The unique identifier of the hub containing the video-on-demand channel.</param>

@@ -77,6 +77,9 @@ namespace ZoomNet.IntegrationTests.Tests
 				cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"VOD channel {newVodChannel.Id} created").ConfigureAwait(false);
 
+			await client.Events.UpdateVideoOnDemandChannelAsync(hub.Id, newVodChannel.Id, "ZoomNet Integration Testing: updated VOD channel name", "This description has been updated", cancellationToken: cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"VOD channel {newVodChannel.Id} updated").ConfigureAwait(false);
+
 			await client.Events.PublishVideoOnDemandChannelAsync(hub.Id, newVodChannel.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("VOD channel published").ConfigureAwait(false);
 
