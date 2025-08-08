@@ -32,7 +32,7 @@ namespace ZoomNet.Json
 		{
 			/*
 			 * IMPORTANT: the values in System.DayOfWeek start at zero (i.e.: Sunday=0, Monday=1, ..., Saturday=6)
-			 * but the values returned by the Zoom API start at one (i.e.:  Sunday=1, Monday=2, ..., Saturday=7).
+			 * but the values expected by the Zoom API start at one (i.e.:  Sunday=1, Monday=2, ..., Saturday=7).
 			 */
 
 			if (value == null)
