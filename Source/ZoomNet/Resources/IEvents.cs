@@ -1177,6 +1177,16 @@ namespace ZoomNet.Resources
 		/// objects and a token for retrieving the next page of results, if available.</returns>
 		Task<PaginatedResponseWithToken<VideoOnDemandChannel>> GetAllVidoOnDemandChannelsAsync(string hubId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Adds multiple videos to a video-on-demand channel.
+		/// </summary>
+		/// <param name="hubId">The unique identifier of the hub containing the video-on-demand channel.</param>
+		/// <param name="channelId">The unique identifier of the video-on-demand channel to retrieve.</param>
+		/// <param name="videoIds">An enumeration of video Ids to be added to the specified channel.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task AddVideosToVideoOnDemandChannelAsync(string hubId, string channelId, IEnumerable<string> videoIds, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region VIDEO_ON_DEMAND REGISTRATION

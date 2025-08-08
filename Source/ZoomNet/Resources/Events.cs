@@ -1608,6 +1608,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
+		/// <inheritdoc/>
 		public Task<VideoOnDemandChannel> GetVideoOnDemandChannelAsync(string hubId, string channelId, CancellationToken cancellationToken = default)
 		{
 			return _client
@@ -1634,6 +1635,21 @@ namespace ZoomNet.Resources
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<VideoOnDemandChannel>("vod_channels");
+		}
+
+		/// <inheritdoc/>
+		public Task AddVideosToVideoOnDemandChannelAsync(string hubId, string channelId, IEnumerable<string> videoIds, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "video_ids", videoIds?.ToArray() }
+			};
+
+			return _client
+				.PostAsync($"zoom_events/hubs/{hubId}/vod_channels/{channelId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
 		}
 
 		#endregion
