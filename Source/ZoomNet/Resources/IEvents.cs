@@ -1185,7 +1185,7 @@ namespace ZoomNet.Resources
 		/// <param name="videoIds">An enumeration of video Ids to be added to the specified channel.</param>
 		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
 		/// <returns>A task that represents the asynchronous operation.</returns>
-		Task AddVideosToVideoOnDemandChannelAsync(string hubId, string channelId, IEnumerable<string> videoIds, CancellationToken cancellationToken = default);
+		Task AddVideosToChannelAsync(string hubId, string channelId, IEnumerable<string> videoIds, CancellationToken cancellationToken = default);
 
 		#endregion
 

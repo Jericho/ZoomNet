@@ -1638,7 +1638,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task AddVideosToVideoOnDemandChannelAsync(string hubId, string channelId, IEnumerable<string> videoIds, CancellationToken cancellationToken = default)
+		public Task AddVideosToChannelAsync(string hubId, string channelId, IEnumerable<string> videoIds, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
