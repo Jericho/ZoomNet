@@ -1661,6 +1661,17 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<HubVideo>> GetAllVideosAsync(string hubId, string channelId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"zoom_events/hubs/{hubId}/vod_channels/{channelId}/videos")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<HubVideo>("videos");
+		}
+
 		#endregion
 
 		#region VIDEO_ON_DEMAND REGISTRATION

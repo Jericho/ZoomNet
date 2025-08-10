@@ -7,6 +7,10 @@ namespace ZoomNet.Models
 	/// </summary>
 	public enum HubVideoSourceType
 	{
+		/// <summary>Unknown (or not specified).</summary>
+		[EnumMember(Value = "")]
+		Unknown,
+
 		/// <summary>Recording file.</summary>
 		[EnumMember(Value = "RECORDING ")]
 		Recording,

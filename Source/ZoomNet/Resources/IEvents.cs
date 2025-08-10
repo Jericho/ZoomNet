@@ -1197,6 +1197,18 @@ namespace ZoomNet.Resources
 		/// <returns>A task that represents the asynchronous operation.</returns>
 		Task RemoveVideoFromChannelAsync(string hubId, string channelId, string videoId, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="hubId">The unique identifier of the hub containing the video-on-demand channel.</param>
+		/// <param name="channelId">The unique identifier of the video-on-demand channel to retrieve.</param>
+		/// <param name="recordsPerPage">The maximum number of records to include in each page of the response. The default value is 30. Must be a positive integer.</param>
+		/// <param name="pagingToken">An optional token used to retrieve the next page of results.  Pass <see langword="null"/> to retrieve the first page.</param>
+		/// <param name="cancellationToken">A <see cref="CancellationToken"/> that can be used to cancel the operation.</param>
+		/// <returns>A <see cref="PaginatedResponseWithToken{T}"/> containing a collection of  <see cref="HubVideo"/>
+		/// objects and a token for retrieving the next page of results, if available.</returns>
+		Task<PaginatedResponseWithToken<HubVideo>> GetAllVideosAsync(string hubId, string channelId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region VIDEO_ON_DEMAND REGISTRATION
