@@ -1187,6 +1187,16 @@ namespace ZoomNet.Resources
 		/// <returns>A task that represents the asynchronous operation.</returns>
 		Task AddVideosToChannelAsync(string hubId, string channelId, IEnumerable<string> videoIds, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Remove a video from a video-on-demand channel.
+		/// </summary>
+		/// <param name="hubId">The unique identifier of the hub containing the video-on-demand channel.</param>
+		/// <param name="channelId">The unique identifier of the video-on-demand channel to retrieve.</param>
+		/// <param name="videoId">The unique identifier of the video to be removed from the specified channek.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task RemoveVideoFromChannelAsync(string hubId, string channelId, string videoId, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region VIDEO_ON_DEMAND REGISTRATION

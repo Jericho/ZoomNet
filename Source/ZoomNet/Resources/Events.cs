@@ -1652,6 +1652,15 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
+		/// <inheritdoc/>
+		public Task RemoveVideoFromChannelAsync(string hubId, string channelId, string videoId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"zoom_events/hubs/{hubId}/vod_channels/{channelId}/videos/{videoId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
 		#endregion
 
 		#region VIDEO_ON_DEMAND REGISTRATION
