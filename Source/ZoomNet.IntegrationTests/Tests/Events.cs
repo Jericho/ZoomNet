@@ -123,6 +123,8 @@ namespace ZoomNet.IntegrationTests.Tests
 			await client.Events.PublishEventAsync(newSimpleEvent.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("The simple event has been published").ConfigureAwait(false);
 
+			await Task.Delay(500, cancellationToken).ConfigureAwait(false); // Wait a bit to ensure the event is published
+
 			await client.Events.CancelEventAsync(newSimpleEvent.Id, "Cancelled for testing purposes", cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("The simple event has been cancelled").ConfigureAwait(false);
 
