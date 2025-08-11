@@ -86,6 +86,47 @@ namespace ZoomNet.IntegrationTests.Tests
 			newVodChannel = await client.Events.GetVideoOnDemandChannelAsync(hub.Id, newVodChannel.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("VOD channel retrieved").ConfigureAwait(false);
 
+			var vodChannelRegistrationQuestions = new[]
+{
+				new RegistrationStandardQuestion
+				{
+					FieldName = EventRegistrationField.City,
+					IsRequired = true,
+					Title = "What city do you live in?",
+				},
+				new RegistrationStandardQuestion
+				{
+					FieldName = EventRegistrationField.JobTitle,
+					IsRequired = true,
+					Title = "What is your job title?",
+				},
+			};
+
+			var vodChannelCustomQuestions = new[]
+			{
+				new RegistrationCustomQuestionForVodChannel
+				{
+					FieldName = "happiness",
+					IsRequired = false,
+					Title = "Are you happy?",
+					Answers = new[] { "Yes", "No", "I don't know" },
+					Type = RegistrationCustomQuestionTypeForEvent.SingleRadio
+				},
+				new RegistrationCustomQuestionForVodChannel
+				{
+					FieldName = "friendship",
+					IsRequired = false,
+					Title = "Why can't we be friends?",
+					Type = RegistrationCustomQuestionTypeForEvent.ShortText
+				}
+			};
+
+			await client.Events.UpdateChannelRegistrationQuestionsAsync(hub.Id, newVodChannel.Id, vodChannelRegistrationQuestions, vodChannelCustomQuestions, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("VOD channel registration questions updated").ConfigureAwait(false);
+
+			var channelRegistrationQuestions = await client.Events.GetAllVideoOnDemandRegistrationQuestionsAsync(hub.Id, newVodChannel.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"VOD channel registration questions retrieved. There are {channelRegistrationQuestions.StandardQuestions.Length} standard questions and {channelRegistrationQuestions.CustomQuestions.Length} custom questions").ConfigureAwait(false);
+
 			// SIMPLE EVENT
 			var eventStart = DateTime.UtcNow.AddDays(1);
 			var eventEnd = eventStart.AddMinutes(30);
@@ -278,13 +319,13 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			var registrationQuestions = new[]
 			{
-				new EventRegistrationQuestion
+				new RegistrationStandardQuestion
 				{
 					FieldName = EventRegistrationField.City,
 					IsRequired = true,
 					Title = "What city do you live in?",
 				},
-				new EventRegistrationQuestion
+				new RegistrationStandardQuestion
 				{
 					FieldName = EventRegistrationField.JobTitle,
 					IsRequired = true,
@@ -294,14 +335,14 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			var customQuestions = new[]
 			{
-				new EventRegistrationCustomQuestion
+				new RegistrationCustomQuestionForEvent
 				{
 					FieldName = "favorite_color",
 					IsRequired = false,
 					Title = "What is your favorite color?",
 					Type = RegistrationCustomQuestionTypeForEvent.ShortText
 				},
-				new EventRegistrationCustomQuestion
+				new RegistrationCustomQuestionForEvent
 				{
 					FieldName = "favorite_food",
 					IsRequired = false,

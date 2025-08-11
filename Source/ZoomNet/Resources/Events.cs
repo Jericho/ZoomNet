@@ -1309,7 +1309,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public async Task<(EventRegistrationQuestion[] StandardQuestions, EventRegistrationCustomQuestion[] CustomQuestions)> GetRegistrationQuestionsForEventAsync(string eventId, CancellationToken cancellationToken = default)
+		public async Task<(RegistrationStandardQuestion[] StandardQuestions, RegistrationCustomQuestionForEvent[] CustomQuestions)> GetRegistrationQuestionsForEventAsync(string eventId, CancellationToken cancellationToken = default)
 		{
 			var response = await _client
 				.GetAsync($"zoom_events/events/{eventId}/questions")
@@ -1317,19 +1317,19 @@ namespace ZoomNet.Resources
 				.AsJson()
 				.ConfigureAwait(false);
 
-			var standardQuestions = Array.Empty<EventRegistrationQuestion>();
+			var standardQuestions = Array.Empty<RegistrationStandardQuestion>();
 			if (response.TryGetProperty("questions", out JsonElement standardQuestionsJsonElement))
 			{
 				standardQuestions = standardQuestionsJsonElement.EnumerateArray()
-					.Select(item => item.ToObject<EventRegistrationQuestion>())
+					.Select(item => item.ToObject<RegistrationStandardQuestion>())
 					.ToArray();
 			}
 
-			var customQuestions = Array.Empty<EventRegistrationCustomQuestion>();
+			var customQuestions = Array.Empty<RegistrationCustomQuestionForEvent>();
 			if (response.TryGetProperty("custom_questions", out JsonElement customQuestionsJsonElement))
 			{
 				customQuestions = customQuestionsJsonElement.EnumerateArray()
-					.Select(item => item.ToObject<EventRegistrationCustomQuestion>())
+					.Select(item => item.ToObject<RegistrationCustomQuestionForEvent>())
 					.ToArray();
 			}
 
@@ -1337,7 +1337,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public async Task<(EventRegistrationQuestion[] StandardQuestions, EventRegistrationCustomQuestion[] CustomQuestions)> GetRegistrationQuestionsForTicketTypeAsync(string eventId, string ticketTypeId, CancellationToken cancellationToken = default)
+		public async Task<(RegistrationStandardQuestion[] StandardQuestions, RegistrationCustomQuestionForEvent[] CustomQuestions)> GetRegistrationQuestionsForTicketTypeAsync(string eventId, string ticketTypeId, CancellationToken cancellationToken = default)
 		{
 			var response = await _client
 				.GetAsync($"zoom_events/events/{eventId}/ticket_types/{ticketTypeId}/questions")
@@ -1345,19 +1345,19 @@ namespace ZoomNet.Resources
 				.AsJson()
 				.ConfigureAwait(false);
 
-			var standardQuestions = Array.Empty<EventRegistrationQuestion>();
+			var standardQuestions = Array.Empty<RegistrationStandardQuestion>();
 			if (response.TryGetProperty("questions", out JsonElement standardQuestionsJsonElement))
 			{
 				standardQuestions = standardQuestionsJsonElement.EnumerateArray()
-					.Select(item => item.ToObject<EventRegistrationQuestion>())
+					.Select(item => item.ToObject<RegistrationStandardQuestion>())
 					.ToArray();
 			}
 
-			var customQuestions = Array.Empty<EventRegistrationCustomQuestion>();
+			var customQuestions = Array.Empty<RegistrationCustomQuestionForEvent>();
 			if (response.TryGetProperty("custom_questions", out JsonElement customQuestionsJsonElement))
 			{
 				customQuestions = customQuestionsJsonElement.EnumerateArray()
-					.Select(item => item.ToObject<EventRegistrationCustomQuestion>())
+					.Select(item => item.ToObject<RegistrationCustomQuestionForEvent>())
 					.ToArray();
 			}
 
@@ -1376,8 +1376,8 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task UpdateRegistrationQuestionsForEventAsync(
 			string eventId,
-			IEnumerable<EventRegistrationQuestion> standardQuestions = null,
-			IEnumerable<EventRegistrationCustomQuestion> customQuestions = null,
+			IEnumerable<RegistrationStandardQuestion> standardQuestions = null,
+			IEnumerable<RegistrationCustomQuestionForEvent> customQuestions = null,
 			CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
@@ -1397,8 +1397,8 @@ namespace ZoomNet.Resources
 		public Task UpdateRegistrationQuestionsForTicketTypeAsync(
 			string eventId,
 			string ticketTypeId,
-			IEnumerable<EventRegistrationQuestion> standardQuestions = null,
-			IEnumerable<EventRegistrationCustomQuestion> customQuestions = null,
+			IEnumerable<RegistrationStandardQuestion> standardQuestions = null,
+			IEnumerable<RegistrationCustomQuestionForEvent> customQuestions = null,
 			CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
@@ -1675,6 +1675,55 @@ namespace ZoomNet.Resources
 		#endregion
 
 		#region VIDEO_ON_DEMAND REGISTRATION
+
+		/// <inheritdoc/>
+		public async Task<(RegistrationStandardQuestion[] StandardQuestions, RegistrationCustomQuestionForVodChannel[] CustomQuestions)> GetAllVideoOnDemandRegistrationQuestionsAsync(string hubId, string channelId, CancellationToken cancellationToken = default)
+		{
+			var response = await _client
+				.GetAsync($"zoom_events/hubs/{hubId}/vod_channels/{channelId}/registration_questions")
+				.WithCancellationToken(cancellationToken)
+				.AsJson()
+				.ConfigureAwait(false);
+
+			var standardQuestions = Array.Empty<RegistrationStandardQuestion>();
+			if (response.TryGetProperty("questions", out JsonElement standardQuestionsJsonElement))
+			{
+				standardQuestions = standardQuestionsJsonElement.EnumerateArray()
+					.Select(item => item.ToObject<RegistrationStandardQuestion>())
+					.ToArray();
+			}
+
+			var customQuestions = Array.Empty<RegistrationCustomQuestionForVodChannel>();
+			if (response.TryGetProperty("custom_questions", out JsonElement customQuestionsJsonElement))
+			{
+				customQuestions = customQuestionsJsonElement.EnumerateArray()
+					.Select(item => item.ToObject<RegistrationCustomQuestionForVodChannel>())
+					.ToArray();
+			}
+
+			return (standardQuestions, customQuestions);
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateChannelRegistrationQuestionsAsync(
+			string hubId,
+			string channelId,
+			IEnumerable<RegistrationStandardQuestion> standardQuestions = null,
+			IEnumerable<RegistrationCustomQuestionForVodChannel> customQuestions = null,
+			CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "questions", standardQuestions?.ToArray() },
+				{ "custom_questions", customQuestions?.ToArray() },
+			};
+
+			return _client
+				.PutAsync($"zoom_events/hubs/{hubId}/vod_channels/{channelId}/registration_questions")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
 
 		#endregion
 	}

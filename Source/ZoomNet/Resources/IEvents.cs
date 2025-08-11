@@ -953,7 +953,7 @@ namespace ZoomNet.Resources
 		/// <returns>A task that represents the asynchronous operation. The task result contains a tuple with two elements: <see
 		/// cref="EventRegistrationQuestion"/> array of standard questions and <see cref="EventRegistrationCustomQuestion"/>
 		/// array of custom questions.</returns>
-		Task<(EventRegistrationQuestion[] StandardQuestions, EventRegistrationCustomQuestion[] CustomQuestions)> GetRegistrationQuestionsForEventAsync(string eventId, CancellationToken cancellationToken = default);
+		Task<(RegistrationStandardQuestion[] StandardQuestions, RegistrationCustomQuestionForEvent[] CustomQuestions)> GetRegistrationQuestionsForEventAsync(string eventId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Asynchronously retrieves the registration questions associated with a specified ticket type.
@@ -964,7 +964,7 @@ namespace ZoomNet.Resources
 		/// <returns>A task that represents the asynchronous operation. The task result contains a tuple with two elements: <see
 		/// cref="EventRegistrationQuestion"/> array of standard questions and <see cref="EventRegistrationCustomQuestion"/>
 		/// array of custom questions.</returns>
-		Task<(EventRegistrationQuestion[] StandardQuestions, EventRegistrationCustomQuestion[] CustomQuestions)> GetRegistrationQuestionsForTicketTypeAsync(string eventId, string ticketTypeId, CancellationToken cancellationToken = default);
+		Task<(RegistrationStandardQuestion[] StandardQuestions, RegistrationCustomQuestionForEvent[] CustomQuestions)> GetRegistrationQuestionsForTicketTypeAsync(string eventId, string ticketTypeId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Lists all ticket types associated with an event.
@@ -987,8 +987,8 @@ namespace ZoomNet.Resources
 		/// <returns>A task that represents the asynchronous operation.</returns>
 		Task UpdateRegistrationQuestionsForEventAsync(
 			string eventId,
-			IEnumerable<EventRegistrationQuestion> standardQuestions = null,
-			IEnumerable<EventRegistrationCustomQuestion> customQuestions = null,
+			IEnumerable<RegistrationStandardQuestion> standardQuestions = null,
+			IEnumerable<RegistrationCustomQuestionForEvent> customQuestions = null,
 			CancellationToken cancellationToken = default);
 
 		/// <summary>
@@ -1006,8 +1006,8 @@ namespace ZoomNet.Resources
 		Task UpdateRegistrationQuestionsForTicketTypeAsync(
 			string eventId,
 			string ticketTypeId,
-			IEnumerable<EventRegistrationQuestion> standardQuestions = null,
-			IEnumerable<EventRegistrationCustomQuestion> customQuestions = null,
+			IEnumerable<RegistrationStandardQuestion> standardQuestions = null,
+			IEnumerable<RegistrationCustomQuestionForEvent> customQuestions = null,
 			CancellationToken cancellationToken = default);
 
 		/// <summary>
@@ -1198,7 +1198,7 @@ namespace ZoomNet.Resources
 		Task RemoveVideoFromChannelAsync(string hubId, string channelId, string videoId, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// 
+		/// Get all videos in a video-on-demand channel.
 		/// </summary>
 		/// <param name="hubId">The unique identifier of the hub containing the video-on-demand channel.</param>
 		/// <param name="channelId">The unique identifier of the video-on-demand channel to retrieve.</param>
@@ -1212,6 +1212,31 @@ namespace ZoomNet.Resources
 		#endregion
 
 		#region VIDEO_ON_DEMAND REGISTRATION
+
+		/// <summary>
+		/// Get the questions and fields that are to be answered by users while registering for a vod channel.
+		/// </summary>
+		/// <param name="hubId">The unique identifier of the hub containing the video-on-demand channel.</param>
+		/// <param name="channelId">The unique identifier of the video-on-demand channel to retrieve.</param>
+		/// <param name="cancellationToken">A <see cref="CancellationToken"/> that can be used to cancel the operation.</param>
+		/// <returns>An array of <see cref="RegistrationStandardQuestion"/> and also an array of <see cref="RegistrationCustomQuestionForVodChannel"/>.</returns>
+		Task<(RegistrationStandardQuestion[] StandardQuestions, RegistrationCustomQuestionForVodChannel[] CustomQuestions)> GetAllVideoOnDemandRegistrationQuestionsAsync(string hubId, string channelId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Updates registration questions and fields that are to be answered by users while registering for a VOD channel.
+		/// </summary>
+		/// <param name="hubId">The unique identifier of the hub containing the video-on-demand channel.</param>
+		/// <param name="channelId">The unique identifier of the video-on-demand channel.</param>
+		/// <param name="standardQuestions">Enumeration of registration fields whose values should be provided by registrants during registration</param>
+		/// <param name="customQuestions">Enumeration of registrant custom questions.</param>
+		/// <param name="cancellationToken">A <see cref="CancellationToken"/> that can be used to cancel the operation.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task UpdateChannelRegistrationQuestionsAsync(
+			string hubId,
+			string channelId,
+			IEnumerable<RegistrationStandardQuestion> standardQuestions = null,
+			IEnumerable<RegistrationCustomQuestionForVodChannel> customQuestions = null,
+			CancellationToken cancellationToken = default);
 
 		#endregion
 	}

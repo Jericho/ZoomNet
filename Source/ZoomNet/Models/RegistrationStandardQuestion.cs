@@ -3,9 +3,9 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Registration question for an event.
+	/// Standard Registration question.
 	/// </summary>
-	public class EventRegistrationQuestion
+	public class RegistrationStandardQuestion
 	{
 		/// <summary>Gets or sets the field name.</summary>
 		[JsonPropertyName("field_name")]
