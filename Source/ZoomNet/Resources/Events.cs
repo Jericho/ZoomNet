@@ -385,8 +385,6 @@ namespace ZoomNet.Resources
 				{ "categories", categories?.Select(c => c.ToEnumString()).ToArray() },
 				{ "tags", tags?.ToArray() },
 				{ "contact_name", contactName },
-				//{ "lobby_start_time", lobbyStart?.ToZoomFormat(TimeZones.UTC) },	// Commented out for the time being.
-				//{ "lobby_end_time", lobbyEnd?.ToZoomFormat(TimeZones.UTC) },		// For more details, see: https://devforum.zoom.us/t/event-outside-lobby-time-range/134883
 				{ "blocked_countries", blockedCountries?.Select(bc => bc.ToEnumString()).ToArray() },
 				{ "tagline", tagLine },
 			};
@@ -510,8 +508,6 @@ namespace ZoomNet.Resources
 				{ "categories", categories?.Select(c => c.ToEnumString()).ToArray() },
 				{ "tags", tags?.ToArray() },
 				{ "contact_name", contactName },
-				//{ "lobby_start_time", lobbyStart?.ToZoomFormat(TimeZones.UTC) },	// Commented out for the time being.
-				//{ "lobby_end_time", lobbyEnd?.ToZoomFormat(TimeZones.UTC) },		// For more details, see: https://devforum.zoom.us/t/event-outside-lobby-time-range/134883
 				{ "blocked_countries", blockedCountries?.Select(bc => bc.ToEnumString()).ToArray() },
 				{ "tagline", tagLine },
 			};

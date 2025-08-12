@@ -951,7 +951,7 @@ namespace ZoomNet.Resources
 		/// <param name="eventId">The unique identifier of the event for which to retrieve registration questions. Cannot be null or empty.</param>
 		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
 		/// <returns>A task that represents the asynchronous operation. The task result contains a tuple with two elements: <see
-		/// cref="EventRegistrationQuestion"/> array of standard questions and <see cref="EventRegistrationCustomQuestion"/>
+		/// cref="RegistrationStandardQuestion"/> array of standard questions and <see cref="RegistrationCustomQuestionForEvent"/>
 		/// array of custom questions.</returns>
 		Task<(RegistrationStandardQuestion[] StandardQuestions, RegistrationCustomQuestionForEvent[] CustomQuestions)> GetRegistrationQuestionsForEventAsync(string eventId, CancellationToken cancellationToken = default);
 
@@ -962,7 +962,7 @@ namespace ZoomNet.Resources
 		/// <param name="ticketTypeId">The identifier of the ticket type for which to retrieve registration questions. Cannot be null or empty.</param>
 		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
 		/// <returns>A task that represents the asynchronous operation. The task result contains a tuple with two elements: <see
-		/// cref="EventRegistrationQuestion"/> array of standard questions and <see cref="EventRegistrationCustomQuestion"/>
+		/// cref="RegistrationStandardQuestion"/> array of standard questions and <see cref="RegistrationCustomQuestionForEvent"/>
 		/// array of custom questions.</returns>
 		Task<(RegistrationStandardQuestion[] StandardQuestions, RegistrationCustomQuestionForEvent[] CustomQuestions)> GetRegistrationQuestionsForTicketTypeAsync(string eventId, string ticketTypeId, CancellationToken cancellationToken = default);
 
@@ -1227,7 +1227,7 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="hubId">The unique identifier of the hub containing the video-on-demand channel.</param>
 		/// <param name="channelId">The unique identifier of the video-on-demand channel.</param>
-		/// <param name="standardQuestions">Enumeration of registration fields whose values should be provided by registrants during registration</param>
+		/// <param name="standardQuestions">Enumeration of registration fields whose values should be provided by registrants during registration.</param>
 		/// <param name="customQuestions">Enumeration of registrant custom questions.</param>
 		/// <param name="cancellationToken">A <see cref="CancellationToken"/> that can be used to cancel the operation.</param>
 		/// <returns>A task that represents the asynchronous operation.</returns>

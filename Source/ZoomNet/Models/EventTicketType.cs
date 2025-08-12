@@ -58,9 +58,5 @@ namespace ZoomNet.Models
 		/// <remarks>ALL refers to all the sessions in the event.</remarks>
 		[JsonPropertyName("bookmarked_sessions")]
 		public string[] BookmarkedSessions { get; set; }
-
-		/// <summary>Gets or sets a value indicating whether the session is visible in the event lobby.</summary>
-		//[JsonPropertyName("private_visibility_rules")]
-		//public VisibilityRule VisibilityRules { get; set; }
 	}
 }
