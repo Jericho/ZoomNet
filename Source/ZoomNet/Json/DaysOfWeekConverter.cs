@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 
@@ -10,39 +11,75 @@ namespace ZoomNet.Json
 	/// <seealso cref="ZoomNetJsonConverter{T}" />
 	internal class DaysOfWeekConverter : ZoomNetJsonConverter<DayOfWeek[]>
 	{
+		private readonly bool _serializeAsCommaDelimitedString;
+
+		public DaysOfWeekConverter()
+			: this(true)
+		{
+		}
+
+		public DaysOfWeekConverter(bool serializeAsCommaDelimitedString)
+		{
+			_serializeAsCommaDelimitedString = serializeAsCommaDelimitedString;
+		}
+
 		public override DayOfWeek[] Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 		{
-			/*
-			 * IMPORTANT: the values in System.DayOfWeek start at zero (i.e.: Sunday=0, Monday=1, ..., Saturday=6)
-			 * but the values returned by the Zoom API start at one (i.e.:  Sunday=1, Monday=2, ..., Saturday=7).
-			 */
+			if (reader.TokenType == JsonTokenType.Null)
+			{
+				return Array.Empty<DayOfWeek>();
+			}
+			else if (reader.TokenType == JsonTokenType.String)
+			{
+				var rawValue = reader.GetString();
 
-			if (reader.TokenType == JsonTokenType.Null) return null;
+				return rawValue
+					.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+					.Select(value => DayOfWeekConverter.FromJsonValue(value))
+					.ToArray();
+			}
+			else if (reader.TokenType == JsonTokenType.StartArray)
+			{
+				var days = new List<DayOfWeek>();
+				while (reader.Read() && reader.TokenType != JsonTokenType.EndArray)
+				{
+					if (reader.TokenType == JsonTokenType.Number)
+					{
+						days.Add(DayOfWeekConverter.FromJsonValue(reader.GetInt32()));
+					}
+				}
 
-			var rawValue = reader.GetString();
-			var values = rawValue.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-
-			return values
-				.Select(value => Convert.ToInt32(value) - 1)
-				.Select(value => (DayOfWeek)value)
-				.ToArray();
+				return days.ToArray();
+			}
+			else
+			{
+				throw new JsonException($"Unexpected token type: {reader.TokenType}. Unable to convert to Array of DayOfWeek.");
+			}
 		}
 
 		public override void Write(Utf8JsonWriter writer, DayOfWeek[] value, JsonSerializerOptions options)
 		{
-			/*
-			 * IMPORTANT: the values in System.DayOfWeek start at zero (i.e.: Sunday=0, Monday=1, ..., Saturday=6)
-			 * but the values expected by the Zoom API start at one (i.e.:  Sunday=1, Monday=2, ..., Saturday=7).
-			 */
-
 			if (value == null)
 			{
 				writer.WriteNullValue();
 			}
+			else if (_serializeAsCommaDelimitedString)
+			{
+				// Serialize as a comma-delimited string
+				var multipleDays = string.Join(",", value.Select(day => DayOfWeekConverter.ToJsonValue(day).ToString()));
+				writer.WriteStringValue(multipleDays);
+			}
 			else
 			{
-				var multipleDays = string.Join(",", value.Select(day => (Convert.ToInt32(day) + 1).ToString()));
-				writer.WriteStringValue(multipleDays);
+				// Serialize as an array of numbers
+				writer.WriteStartArray();
+
+				foreach (var day in value)
+				{
+					writer.WriteNumberValue(Convert.ToInt32(day) + 1);
+				}
+
+				writer.WriteEndArray();
 			}
 		}
 	}

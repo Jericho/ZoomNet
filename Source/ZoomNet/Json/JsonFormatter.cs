@@ -14,17 +14,119 @@ namespace ZoomNet.Json
 {
 	internal class JsonFormatter : MediaTypeFormatterBase
 	{
-		internal static readonly JsonSerializerOptions SerializerOptions;
-		internal static readonly JsonSerializerOptions DeserializerOptions;
+		internal static readonly JsonSerializerOptions DefaultSerializerOptions;
+		internal static readonly JsonSerializerOptions DefaultDeserializerOptions;
 
-		internal static readonly ZoomNetJsonSerializerContext SerializationContext;
-		internal static readonly ZoomNetJsonSerializerContext DeserializationContext;
+		internal static readonly ZoomNetJsonSerializerContext DefaultSerializationContext;
+		internal static readonly ZoomNetJsonSerializerContext DefaultDeserializationContext;
 
 		private const int DefaultBufferSize = 1024;
 
+		private JsonSerializerOptions _serializerOptions;
+		private JsonSerializerOptions _deserializerOptions;
+
+		private ZoomNetJsonSerializerContext _serializationContext;
+		private ZoomNetJsonSerializerContext _deserializationContext;
+
+		public JsonSerializerOptions SerializerOptions
+		{
+			get
+			{
+				if (_serializerOptions == null)
+				{
+					_serializerOptions = new JsonSerializerOptions
+					{
+						AllowTrailingCommas = DefaultSerializerOptions.AllowTrailingCommas,
+						DefaultIgnoreCondition = DefaultSerializerOptions.DefaultIgnoreCondition,
+						DefaultBufferSize = DefaultSerializerOptions.DefaultBufferSize,
+						DictionaryKeyPolicy = DefaultSerializerOptions.DictionaryKeyPolicy,
+						Encoder = DefaultSerializerOptions.Encoder,
+						IgnoreReadOnlyFields = DefaultSerializerOptions.IgnoreReadOnlyFields,
+						IgnoreReadOnlyProperties = DefaultSerializerOptions.IgnoreReadOnlyProperties,
+						IncludeFields = DefaultSerializerOptions.IncludeFields,
+						MaxDepth = DefaultSerializerOptions.MaxDepth,
+						NumberHandling = DefaultSerializerOptions.NumberHandling,
+						PreferredObjectCreationHandling = DefaultSerializerOptions.PreferredObjectCreationHandling,
+						PropertyNameCaseInsensitive = DefaultSerializerOptions.PropertyNameCaseInsensitive,
+						PropertyNamingPolicy = DefaultSerializerOptions.PropertyNamingPolicy,
+						ReadCommentHandling = DefaultSerializerOptions.ReadCommentHandling,
+						ReferenceHandler = DefaultSerializerOptions.ReferenceHandler,
+						TypeInfoResolver = DefaultSerializerOptions.TypeInfoResolver,
+						UnknownTypeHandling = DefaultSerializerOptions.UnknownTypeHandling,
+						UnmappedMemberHandling = DefaultSerializerOptions.UnmappedMemberHandling,
+						WriteIndented = DefaultSerializerOptions.WriteIndented,
+					};
+
+					foreach (var converter in DefaultSerializerOptions.Converters)
+					{
+						_serializerOptions.Converters.Add(converter);
+					}
+				}
+
+				return _serializerOptions;
+			}
+		}
+
+		public JsonSerializerOptions DeserializerOptions
+		{
+			get
+			{
+				if (_deserializerOptions == null)
+				{
+					_deserializerOptions = new JsonSerializerOptions
+					{
+						AllowTrailingCommas = DefaultDeserializerOptions.AllowTrailingCommas,
+						DefaultIgnoreCondition = DefaultDeserializerOptions.DefaultIgnoreCondition,
+						DefaultBufferSize = DefaultDeserializerOptions.DefaultBufferSize,
+						DictionaryKeyPolicy = DefaultDeserializerOptions.DictionaryKeyPolicy,
+						Encoder = DefaultDeserializerOptions.Encoder,
+						IgnoreReadOnlyFields = DefaultDeserializerOptions.IgnoreReadOnlyFields,
+						IgnoreReadOnlyProperties = DefaultDeserializerOptions.IgnoreReadOnlyProperties,
+						IncludeFields = DefaultDeserializerOptions.IncludeFields,
+						MaxDepth = DefaultDeserializerOptions.MaxDepth,
+						NumberHandling = DefaultDeserializerOptions.NumberHandling,
+						PreferredObjectCreationHandling = DefaultDeserializerOptions.PreferredObjectCreationHandling,
+						PropertyNameCaseInsensitive = DefaultDeserializerOptions.PropertyNameCaseInsensitive,
+						PropertyNamingPolicy = DefaultDeserializerOptions.PropertyNamingPolicy,
+						ReadCommentHandling = DefaultDeserializerOptions.ReadCommentHandling,
+						ReferenceHandler = DefaultDeserializerOptions.ReferenceHandler,
+						TypeInfoResolver = DefaultDeserializerOptions.TypeInfoResolver,
+						UnknownTypeHandling = DefaultDeserializerOptions.UnknownTypeHandling,
+						UnmappedMemberHandling = DefaultDeserializerOptions.UnmappedMemberHandling,
+						WriteIndented = DefaultDeserializerOptions.WriteIndented,
+					};
+
+					foreach (var converter in DefaultDeserializerOptions.Converters)
+					{
+						_deserializerOptions.Converters.Add(converter);
+					}
+				}
+
+				return _deserializerOptions;
+			}
+		}
+
+		public ZoomNetJsonSerializerContext SerializationContext
+		{
+			get
+			{
+				if (_serializationContext == null) _serializationContext = new ZoomNetJsonSerializerContext(SerializerOptions);
+				return _serializationContext;
+			}
+		}
+
+		public ZoomNetJsonSerializerContext DeserializationContext
+		{
+			get
+			{
+				if (_deserializationContext == null) _deserializationContext = new ZoomNetJsonSerializerContext(DeserializerOptions);
+				return _deserializationContext;
+			}
+		}
+
 		static JsonFormatter()
 		{
-			SerializerOptions = new JsonSerializerOptions()
+			DefaultSerializerOptions = new JsonSerializerOptions()
 			{
 				DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
 				Converters =
@@ -45,7 +147,7 @@ namespace ZoomNet.Json
 				}
 			};
 
-			DeserializerOptions = new JsonSerializerOptions()
+			DefaultDeserializerOptions = new JsonSerializerOptions()
 			{
 				PropertyNameCaseInsensitive = false,
 				Converters =
@@ -66,8 +168,8 @@ namespace ZoomNet.Json
 				}
 			};
 
-			SerializationContext = new ZoomNetJsonSerializerContext(SerializerOptions);
-			DeserializationContext = new ZoomNetJsonSerializerContext(DeserializerOptions);
+			DefaultSerializationContext = new ZoomNetJsonSerializerContext(DefaultSerializerOptions);
+			DefaultDeserializationContext = new ZoomNetJsonSerializerContext(DefaultDeserializerOptions);
 		}
 
 		public JsonFormatter()

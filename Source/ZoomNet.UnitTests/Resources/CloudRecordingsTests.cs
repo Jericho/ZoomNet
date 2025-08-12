@@ -474,7 +474,7 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 
 			// Act
-			var result = JsonSerializer.Deserialize<Recording>(SINGLE_CLOUD_RECORDING_JSON, JsonFormatter.SerializerOptions);
+			var result = JsonSerializer.Deserialize<Recording>(SINGLE_CLOUD_RECORDING_JSON, JsonFormatter.DefaultDeserializerOptions);
 
 			// Assert
 			result.ShouldNotBeNull();

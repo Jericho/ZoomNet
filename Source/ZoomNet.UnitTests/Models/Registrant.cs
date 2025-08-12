@@ -47,7 +47,7 @@ namespace ZoomNet.UnitTests.Models
 			// Arrange
 
 			// Act
-			var result = JsonSerializer.Deserialize<Registrant>(SINGLE_REGISTRANT_JSON, JsonFormatter.SerializerOptions);
+			var result = JsonSerializer.Deserialize<Registrant>(SINGLE_REGISTRANT_JSON, JsonFormatter.DefaultDeserializerOptions);
 
 			// Assert
 			result.ShouldNotBeNull();

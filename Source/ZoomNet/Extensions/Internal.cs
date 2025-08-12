@@ -912,7 +912,7 @@ namespace ZoomNet
 
 		internal static T ToObject<T>(this JsonElement element, JsonSerializerOptions options = null)
 		{
-			return JsonSerializer.Deserialize<T>(element.GetRawText(), options ?? JsonFormatter.DeserializerOptions);
+			return JsonSerializer.Deserialize<T>(element.GetRawText(), options ?? JsonFormatter.DefaultDeserializerOptions);
 		}
 
 		internal static void Add<T>(this JsonObject jsonObject, string propertyName, T value)
@@ -1007,7 +1007,7 @@ namespace ZoomNet
 
 			if (string.IsNullOrEmpty(propertyName))
 			{
-				return JsonSerializer.Deserialize<T>(responseContent, options ?? JsonFormatter.DeserializerOptions);
+				return JsonSerializer.Deserialize<T>(responseContent, options ?? JsonFormatter.DefaultDeserializerOptions);
 			}
 
 			var jsonDoc = JsonDocument.Parse(responseContent, default);

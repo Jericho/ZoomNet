@@ -7,6 +7,7 @@ using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
+using ZoomNet.Json;
 using ZoomNet.Models;
 using ZoomNet.Utilities;
 
@@ -358,7 +359,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<RecurringEvent> CreateRecurringEventAsync(string name, string description, DateTime start, DateTime end, EventRecurrenceInfo recurrence, TimeZones timeZone, string hubId, bool isRestricted = false, EventAttendanceType attendanceType = EventAttendanceType.Virtual, IEnumerable<EventCategory> categories = null, IEnumerable<string> tags = null, string contactName = null, DateTime? lobbyStart = null, DateTime? lobbyEnd = null, IEnumerable<Country> blockedCountries = null, string tagLine = null, CancellationToken cancellationToken = default)
+		public async Task<RecurringEvent> CreateRecurringEventAsync(string name, string description, DateTime start, DateTime end, EventRecurrenceInfo recurrence, TimeZones timeZone, string hubId, bool isRestricted = false, EventAttendanceType attendanceType = EventAttendanceType.Virtual, IEnumerable<EventCategory> categories = null, IEnumerable<string> tags = null, string contactName = null, DateTime? lobbyStart = null, DateTime? lobbyEnd = null, IEnumerable<Country> blockedCountries = null, string tagLine = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
@@ -389,8 +390,17 @@ namespace ZoomNet.Resources
 				{ "tagline", tagLine },
 			};
 
-			return _client
-				.PostAsync("zoom_events/events")
+			var response = _client
+				.PostAsync("zoom_events/events");
+
+			var jsonFormatter = new JsonFormatter();
+			jsonFormatter.SerializerOptions.Converters.Remove(jsonFormatter.SerializerOptions.Converters.Single(c => c is DaysOfWeekConverter));
+			jsonFormatter.SerializerOptions.Converters.Add(new DaysOfWeekConverter(false));
+
+			response.Formatters.Remove(response.Formatters.Single(item => item is JsonFormatter));
+			response.Formatters.Add(jsonFormatter);
+
+			return await response
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<RecurringEvent>();
@@ -478,7 +488,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task UpdateRecurringEventAsync(string eventId, string name = null, string description = null, DateTime? start = null, DateTime? end = null, EventRecurrenceInfo recurrence = null, TimeZones? timeZone = null, string hubId = null, bool? isRestricted = null, EventAttendanceType? attendanceType = null, IEnumerable<EventCategory> categories = null, IEnumerable<string> tags = null, string contactName = null, DateTime? lobbyStart = null, DateTime? lobbyEnd = null, IEnumerable<Country> blockedCountries = null, string tagLine = null, CancellationToken cancellationToken = default)
+		public async Task UpdateRecurringEventAsync(string eventId, string name = null, string description = null, DateTime? start = null, DateTime? end = null, EventRecurrenceInfo recurrence = null, TimeZones? timeZone = null, string hubId = null, bool? isRestricted = null, EventAttendanceType? attendanceType = null, IEnumerable<EventCategory> categories = null, IEnumerable<string> tags = null, string contactName = null, DateTime? lobbyStart = null, DateTime? lobbyEnd = null, IEnumerable<Country> blockedCountries = null, string tagLine = null, CancellationToken cancellationToken = default)
 		{
 			IEnumerable<(DateTime? Start, DateTime? End)> calendar = null;
 			if (start.HasValue || end.HasValue)
@@ -512,8 +522,17 @@ namespace ZoomNet.Resources
 				{ "tagline", tagLine },
 			};
 
-			return _client
-				.PatchAsync($"zoom_events/events/{eventId}")
+			var response = _client
+				.PatchAsync($"zoom_events/events/{eventId}");
+
+			var jsonFormatter = new JsonFormatter();
+			jsonFormatter.SerializerOptions.Converters.Remove(jsonFormatter.SerializerOptions.Converters.Single(c => c is DaysOfWeekConverter));
+			jsonFormatter.SerializerOptions.Converters.Add(new DaysOfWeekConverter(false));
+
+			response.Formatters.Remove(response.Formatters.Single(item => item is JsonFormatter));
+			response.Formatters.Add(jsonFormatter);
+
+			await response
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
