@@ -51,7 +51,7 @@ namespace ZoomNet.UnitTests.Models
 
 			// Act
 			var result = JsonSerializer.Deserialize<PhoneUser>(
-				PHONE_USER, JsonFormatter.SerializerOptions);
+				PHONE_USER, JsonFormatter.DefaultDeserializerOptions);
 
 			// Assert
 			result.Id.ShouldBe("NL3cEpSdRc-c2t8aLoZqiw");

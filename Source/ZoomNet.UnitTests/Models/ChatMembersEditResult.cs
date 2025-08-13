@@ -26,7 +26,7 @@ namespace ZoomNet.UnitTests.Models
 			// Arrange
 
 			// Act
-			var result = JsonSerializer.Deserialize<ChatMembersEditResult>(Promote_channel_members_to_administrators_JSON, JsonFormatter.SerializerOptions);
+			var result = JsonSerializer.Deserialize<ChatMembersEditResult>(Promote_channel_members_to_administrators_JSON, JsonFormatter.DefaultDeserializerOptions);
 
 			// Assert
 			result.ShouldNotBeNull();

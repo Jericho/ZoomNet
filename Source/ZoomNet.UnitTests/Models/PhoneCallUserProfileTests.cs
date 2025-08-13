@@ -1,4 +1,4 @@
-﻿using Shouldly;
+using Shouldly;
 using System.Text.Json;
 using Xunit;
 using ZoomNet.Json;
@@ -255,7 +255,7 @@ namespace ZoomNet.UnitTests.Models
 
 			// Act
 			var result = JsonSerializer.Deserialize<PhoneCallUserProfile>(
-				PHONE_CALL_USER_PROFILE, JsonFormatter.SerializerOptions);
+				PHONE_CALL_USER_PROFILE, JsonFormatter.DefaultDeserializerOptions);
 
 			// Assert
 			result.CallingPlans.ShouldNotBeNull();

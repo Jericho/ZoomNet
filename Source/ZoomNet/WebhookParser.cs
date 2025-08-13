@@ -48,7 +48,7 @@ namespace ZoomNet
 		/// <inheritdoc/>
 		public Event ParseEventWebhook(string requestBody)
 		{
-			var webHookEvent = JsonSerializer.Deserialize<Event>(requestBody, JsonFormatter.DeserializerOptions);
+			var webHookEvent = JsonSerializer.Deserialize<Event>(requestBody, JsonFormatter.DefaultDeserializerOptions);
 			return webHookEvent;
 		}
 	}

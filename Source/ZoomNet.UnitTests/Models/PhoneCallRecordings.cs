@@ -144,7 +144,7 @@ namespace ZoomNet.UnitTests.Models
 
 			// Act
 			var result = JsonSerializer.Deserialize<PhoneCallRecording>(
-				PHONE_CALL_RECORDING, JsonFormatter.SerializerOptions);
+				PHONE_CALL_RECORDING, JsonFormatter.DefaultDeserializerOptions);
 
 			// Assert
 			result.ShouldNotBeNull();
@@ -183,7 +183,7 @@ namespace ZoomNet.UnitTests.Models
 
 			// Act
 			var result = JsonSerializer.Deserialize<PhoneCallRecording>(
-				PHONE_CALL_RECORDING_EXTENDED, JsonFormatter.SerializerOptions);
+				PHONE_CALL_RECORDING_EXTENDED, JsonFormatter.DefaultDeserializerOptions);
 
 			// Assert
 			result.ShouldNotBeNull();
@@ -224,7 +224,7 @@ namespace ZoomNet.UnitTests.Models
 
 			// Act
 			var result = JsonSerializer.Deserialize<PhoneCallRecordingTranscript>(
-				PHONE_CALL_RECORDING_TRANSCRIPT, JsonFormatter.SerializerOptions);
+				PHONE_CALL_RECORDING_TRANSCRIPT, JsonFormatter.DefaultDeserializerOptions);
 
 			// Assert
 			result.ShouldNotBeNull();

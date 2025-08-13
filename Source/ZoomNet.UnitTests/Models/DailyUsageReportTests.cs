@@ -32,7 +32,7 @@ namespace ZoomNet.UnitTests.Models
 			// Arrange
 
 			// Act
-			var result = JsonSerializer.Deserialize<DailyUsageReport>(DAILY_USAGE_REPORT_JSON, JsonFormatter.SerializerOptions);
+			var result = JsonSerializer.Deserialize<DailyUsageReport>(DAILY_USAGE_REPORT_JSON, JsonFormatter.DefaultDeserializerOptions);
 
 			// Assert
 			result.ShouldNotBeNull();
