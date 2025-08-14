@@ -5,7 +5,7 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// Enumeration to indicate the extension type.
 	/// </summary>
-	public enum PhoneDetailExtensionType
+	public enum PhoneNumberExtensionType
 	{
 		/// <summary>
 		/// user.

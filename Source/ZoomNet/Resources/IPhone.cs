@@ -112,9 +112,9 @@ namespace ZoomNet.Resources
 			int recordsPerPage = 30,
 			string nextPageToken = null,
 			string siteId = null,
-			PhoneDetailAssignmentType? assignmentType = null,
-			PhoneDetailExtensionType? extensionType = null,
-			PhoneDetailNumberType? numberType = null,
+			PhoneNumberAssignmentType? assignmentType = null,
+			PhoneNumberExtensionType? extensionType = null,
+			PhoneNumberType? numberType = null,
 			bool? pendingNumbers = null,
 			string keyword = null,
 			CancellationToken cancellationToken = default);

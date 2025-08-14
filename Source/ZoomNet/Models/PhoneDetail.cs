@@ -31,7 +31,7 @@ namespace ZoomNet.Models
 		/// Gets or sets the assignee information for the phone.
 		/// </summary>
 		[JsonPropertyName("assignee")]
-		public PhoneDetailAssignee Assignee { get; set; }
+		public PhoneNumberAssignee Assignee { get; set; }
 
 		/// <summary>
 		/// Gets or sets the list of capabilities for the phone (e.g., SMS, voice).
@@ -43,7 +43,7 @@ namespace ZoomNet.Models
 		/// Gets or sets the carrier information for the phone.
 		/// </summary>
 		[JsonPropertyName("carrier")]
-		public PhoneDetailCarrier Carrier { get; set; }
+		public PhoneNumberCarrier Carrier { get; set; }
 
 		/// <summary>
 		/// Gets or sets the display name of the phone.
@@ -97,7 +97,7 @@ namespace ZoomNet.Models
 		/// Gets or sets the SIP group information for the phone.
 		/// </summary>
 		[JsonPropertyName("sip_group")]
-		public PhoneDetailSipGroup SipGroup { get; set; }
+		public PhoneNumberSipGroup SipGroup { get; set; }
 
 		/// <summary>
 		/// Gets or sets the site information associated with the phone.

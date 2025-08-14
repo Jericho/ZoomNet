@@ -11,7 +11,7 @@ namespace ZoomNet.Models
 	/// <item><term>name</term><description>The name of the carrier.</description></item>
 	/// </list>
 	/// </remarks>
-	public class PhoneDetailCarrier
+	public class PhoneNumberCarrier
 	{
 		/// <summary>
 		/// Gets or sets the unique identifier of the carrier.

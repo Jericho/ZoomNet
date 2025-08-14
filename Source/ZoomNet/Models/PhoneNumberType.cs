@@ -1,5 +1,4 @@
 using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -12,7 +11,6 @@ namespace ZoomNet.Models
 	/// <item><term>tollfree</term><description>Toll-free number.</description></item>
 	/// </list>
 	/// </remarks>
-	[JsonConverter(typeof(JsonStringEnumConverter))]
 	public enum PhoneNumberType
 	{
 		/// <summary>

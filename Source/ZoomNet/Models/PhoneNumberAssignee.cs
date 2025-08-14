@@ -13,7 +13,7 @@ namespace ZoomNet.Models
 	/// <item><term>type</term><description>The type of the assignee, which can be one of the following:</description></item>
 	/// </list>
 	/// </remarks>
-	public class PhoneDetailAssignee
+	public class PhoneNumberAssignee
 	{
 		/// <summary>
 		/// Gets or sets the extension number of the assignee.
