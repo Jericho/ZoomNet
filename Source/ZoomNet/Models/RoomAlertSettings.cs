@@ -3,9 +3,9 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// The model of room location alert settings.
+	/// The model of room alert settings.
 	/// </summary>
-	public class RoomLocationAlertSettings
+	public class RoomAlertSettings
 	{
 		/// <summary>
 		/// Gets or sets a value indicating whether to display a notification message on the Zoom Room display when CPU usage is above 90%.

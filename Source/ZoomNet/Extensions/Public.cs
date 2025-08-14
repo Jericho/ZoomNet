@@ -6,7 +6,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
 using ZoomNet.Models.ChatbotMessage;
-using ZoomNet.Models.Webhooks;
 using ZoomNet.Resources;
 
 namespace ZoomNet
@@ -329,8 +328,8 @@ namespace ZoomNet
 		/// </summary>
 		/// <param name="parser">The webhook parser.</param>
 		/// <param name="stream">The stream.</param>
-		/// <returns>An <see cref="Event" />.</returns>
-		public static async Task<Event> ParseEventWebhookAsync(this IWebhookParser parser, Stream stream)
+		/// <returns>An <see cref="Models.Webhooks.Event" />.</returns>
+		public static async Task<Models.Webhooks.Event> ParseEventWebhookAsync(this IWebhookParser parser, Stream stream)
 		{
 			string requestBody;
 			using (var streamReader = new StreamReader(stream))
@@ -349,8 +348,8 @@ namespace ZoomNet
 		/// <param name="secretToken">Your secret token. You can obtain this value in the 'Add Feature' configuration section of you Marketplace Zoom app.</param>
 		/// <param name="signature">The signature.</param>
 		/// <param name="timestamp">The timestamp.</param>
-		/// <returns>An <see cref="Event" />.</returns>
-		public static async Task<Event> VerifyAndParseEventWebhookAsync(this IWebhookParser parser, Stream stream, string secretToken, string signature, string timestamp)
+		/// <returns>An <see cref="Models.Webhooks.Event" />.</returns>
+		public static async Task<Models.Webhooks.Event> VerifyAndParseEventWebhookAsync(this IWebhookParser parser, Stream stream, string secretToken, string signature, string timestamp)
 		{
 			string requestBody;
 			using (var streamReader = new StreamReader(stream))
@@ -369,8 +368,8 @@ namespace ZoomNet
 		/// <param name="secretToken">Your secret token. You can obtain this value in the 'Add Feature' configuration section of you Marketplace Zoom app.</param>
 		/// <param name="signature">The signature.</param>
 		/// <param name="timestamp">The timestamp.</param>
-		/// <returns>An <see cref="Event" />.</returns>
-		public static Event VerifyAndParseEventWebhook(this IWebhookParser parser, string requestBody, string secretToken, string signature, string timestamp)
+		/// <returns>An <see cref="Models.Webhooks.Event" />.</returns>
+		public static Models.Webhooks.Event VerifyAndParseEventWebhook(this IWebhookParser parser, string requestBody, string secretToken, string signature, string timestamp)
 		{
 			// Compare the signatures
 			if (!parser.VerifySignature(requestBody, secretToken, signature, timestamp)) throw new SecurityException("Webhook signature validation failed.");
@@ -602,6 +601,128 @@ namespace ZoomNet
 		public static Task AssignTagToRoomsInLocation(this IRooms roomsResource, string locationId, string tagId, CancellationToken cancellationToken = default)
 		{
 			return roomsResource.AssignTagsToRoomsInLocation(locationId, new[] { tagId }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Displays the specified emergency content on all Zoom Rooms' displays in the specified account.
+		/// </summary>
+		/// <param name="roomsResource">The rooms ressource.</param>
+		/// <param name="content">The emergency content to be displayed.</param>
+		/// <param name="accountId">The account identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		public static Task DisplayEmergencyContentToAccountAsync(this IRooms roomsResource, string content, string accountId, CancellationToken cancellationToken = default)
+		{
+			return roomsResource.DisplayEmergencyContentToAccountsAsync(content, new[] { accountId }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Displays the specified emergency content on all Zoom Rooms' displays in the specified location.
+		/// </summary>
+		/// <param name="roomsResource">The rooms ressource.</param>
+		/// <param name="content">The emergency content to be displayed.</param>
+		/// <param name="locationId">Thelocation identifiers.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		public static Task DisplayEmergencyContentToLocationAsync(this IRooms roomsResource, string content, string locationId, CancellationToken cancellationToken = default)
+		{
+			return roomsResource.DisplayEmergencyContentToLocationsAsync(content, new[] { locationId }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Displays the specified emergency content on the Zoom Rooms digital signage display.
+		/// </summary>
+		/// <param name="roomsResource">The rooms ressource.</param>
+		/// <param name="content">The emergency content to be displayed.</param>
+		/// <param name="roomId">The  Zoom room identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		public static Task DisplayEmergencyContentToRoomAsync(this IRooms roomsResource, string content, string roomId, CancellationToken cancellationToken = default)
+		{
+			return roomsResource.DisplayEmergencyContentToRoomsAsync(content, new[] { roomId }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Remove the specified emergency content from all Zoom Rooms' displays in the specified account.
+		/// </summary>
+		/// <param name="roomsResource">The rooms ressource.</param>
+		/// <param name="accountId">The account identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		public static Task RemoveEmergencyContentFromAccountAsync(this IRooms roomsResource, string accountId, CancellationToken cancellationToken = default)
+		{
+			return roomsResource.RemoveEmergencyContentFromAccountsAsync(new[] { accountId }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Remove the specified emergency content from all Zoom Rooms' displays in the specified location.
+		/// </summary>
+		/// <param name="roomsResource">The rooms ressource.</param>
+		/// <param name="locationId">The location identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		public static Task RemoveEmergencyContentFromLocationAsync(this IRooms roomsResource, string locationId, CancellationToken cancellationToken = default)
+		{
+			return roomsResource.RemoveEmergencyContentFromLocationsAsync(new[] { locationId }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Remove the specified emergency content from the Zoom Room digital signage display.
+		/// </summary>
+		/// <param name="roomsResource">The rooms ressource.</param>
+		/// <param name="roomId">The Zoom room identifier.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		public static Task RemoveEmergencyContentFromRoomAsync(this IRooms roomsResource, string roomId, CancellationToken cancellationToken = default)
+		{
+			return roomsResource.RemoveEmergencyContentFromRoomsAsync(new[] { roomId }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Asynchronously creates a ticket for a specified event with optional attendee details.
+		/// </summary>
+		/// <param name="eventsResource">The event resource interface used to create the ticket.</param>
+		/// <param name="eventId">The unique identifier of the event for which the ticket is being created. Cannot be null or empty.</param>
+		/// <param name="firstName">The first name of the attendee. Optional.</param>
+		/// <param name="lastName">The last name of the attendee. Optional.</param>
+		/// <param name="address">The address of the attendee. Optional.</param>
+		/// <param name="city">The city of the attendee. Optional.</param>
+		/// <param name="state">The state of the attendee. Optional.</param>
+		/// <param name="zip">The ZIP code of the attendee. Optional.</param>
+		/// <param name="country">The country of the attendee. Optional.</param>
+		/// <param name="phone">The phone number of the attendee. Optional.</param>
+		/// <param name="industry">The industry of the attendee. Optional.</param>
+		/// <param name="jobTitle">The job title of the attendee. Optional.</param>
+		/// <param name="organization">The organization of the attendee. Optional.</param>
+		/// <param name="comments">Additional comments about the attendee. Optional.</param>
+		/// <param name="externalTicketId">An external identifier for the ticket. Optional.</param>
+		/// <param name="customQuestions">A collection of custom questions and answers for the attendee. Optional.</param>
+		/// <param name="source">The source of the ticket creation request. Optional.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Optional.</param>
+		/// <returns>A task that represents the asynchronous operation of creating a ticket.</returns>
+		public static async Task<(EventTicket Ticket, EventTicketError Error)> CreateTicketAsync(this IEvents eventsResource, string eventId, string firstName = null, string lastName = null, string address = null, string city = null, string state = null, string zip = null, string country = null, string phone = null, string industry = null, string jobTitle = null, string organization = null, string comments = null, string externalTicketId = null, IEnumerable<KeyValuePair<string, string>> customQuestions = null, string source = null, CancellationToken cancellationToken = default)
+		{
+			var ticket = new EventTicket
+			{
+				FirstName = firstName,
+				LastName = lastName,
+				Address = address,
+				City = city,
+				State = state,
+				Zip = zip,
+				Country = country,
+				Phone = phone,
+				Industry = industry,
+				JobTitle = jobTitle,
+				Organization = organization,
+				Comments = comments,
+				ExternalTicketId = externalTicketId,
+				CustomQuestions = customQuestions?.ToArray()
+			};
+
+			var result = await eventsResource.CreateTicketsAsync(eventId, new[] { ticket }, source, cancellationToken).ConfigureAwait(false);
+
+			return (result.Tickets.FirstOrDefault(), result.Errors.FirstOrDefault());
 		}
 	}
 }

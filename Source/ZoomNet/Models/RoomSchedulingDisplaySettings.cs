@@ -3,9 +3,9 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// The model of room location scheduling display settings.
+	/// The model of room scheduling display settings.
 	/// </summary>
-	public class RoomLocationSchedulingDisplaySettings
+	public class RoomSchedulingDisplaySettings
 	{
 		/// <summary>
 		/// Gets or sets a value indicating whether to allow a user to perform an instant room reservation on the device.

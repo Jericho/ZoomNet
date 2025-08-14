@@ -5,7 +5,7 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// The model of room location notification settings.
 	/// </summary>
-	public class RoomLocationNotificationSettings
+	public class RoomNotificationSettings
 	{
 		/// <summary>
 		/// Gets or sets a value indicating whether to send an alert when the audio echo test result meets usability threshold.
@@ -23,7 +23,7 @@ namespace ZoomNet.Models
 		/// Gets or sets a value indicating whether to send an alert when the battery of the controller or the scheduling display is low (at 20%) and is not being charged.
 		/// </summary>
 		[JsonPropertyName("battery_is_charging")]
-		public bool? Batteryharging { get; set; }
+		public bool? BatteryCharging { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether to send an alert when the battery of the controller or the scheduling display is low (at 20%) and is not being charged.

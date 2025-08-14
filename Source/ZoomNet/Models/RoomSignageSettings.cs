@@ -3,9 +3,9 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// The model of room location signage settings.
+	/// The model of room signage settings.
 	/// </summary>
-	public class RoomLocationSignageSettings
+	public class RoomSignageSettings
 	{
 		/// <summary>
 		/// Gets or sets the elements that you want to display in the top banner.

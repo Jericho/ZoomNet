@@ -3,9 +3,9 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// The model of room location meeting settings.
+	/// The model of room settings.
 	/// </summary>
-	public class RoomLocationSettings
+	public class RoomSettings
 	{
 		/// <summary>
 		/// Gets or sets a value indicating whether to allow multiple content sharing.

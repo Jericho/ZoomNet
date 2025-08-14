@@ -35,7 +35,7 @@ namespace ZoomNet.Models.Webhooks
 				{ "encryptedToken", encryptedToken },
 			};
 
-			var jsonString = JsonSerializer.Serialize(data, typeof(JsonObject), JsonFormatter.SerializationContext);
+			var jsonString = JsonSerializer.Serialize(data, typeof(JsonObject), JsonFormatter.DefaultSerializationContext);
 			return jsonString;
 		}
 	}

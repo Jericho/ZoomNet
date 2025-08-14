@@ -64,7 +64,7 @@ namespace ZoomNet.UnitTests.Models
 
 			// Act
 			var result = JsonSerializer.Deserialize<SmsMessage>(
-				SMS_HISTORY, JsonFormatter.SerializerOptions);
+				SMS_HISTORY, JsonFormatter.DefaultDeserializerOptions);
 
 			// Assert
 			result.ShouldNotBeNull();
