@@ -388,9 +388,9 @@ namespace ZoomNet.Resources
 		/// <param name="meetingId">The meeting id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// An array of <see cref="Poll" />.
+		/// An array of <see cref="PollForMeetingOrWebinar" />.
 		/// </returns>
-		Task<Poll[]> GetPollsAsync(long meetingId, CancellationToken cancellationToken = default);
+		Task<PollForMeetingOrWebinar[]> GetPollsAsync(long meetingId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Create a poll for a meeting.
@@ -402,7 +402,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task<Poll> CreatePollAsync(long meetingId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default);
+		Task<PollForMeetingOrWebinar> CreatePollAsync(long meetingId, string title, IEnumerable<PollQuestionForMeetingOrWebinar> questions, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve a poll.
@@ -411,9 +411,9 @@ namespace ZoomNet.Resources
 		/// <param name="pollId">The poll id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
-		/// The <see cref="Poll" />.
+		/// The <see cref="PollForMeetingOrWebinar" />.
 		/// </returns>
-		Task<Poll> GetPollAsync(long meetingId, long pollId, CancellationToken cancellationToken = default);
+		Task<PollForMeetingOrWebinar> GetPollAsync(long meetingId, long pollId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Update a poll for a meeting.
@@ -426,7 +426,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task UpdatePollAsync(long meetingId, long pollId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default);
+		Task UpdatePollAsync(long meetingId, long pollId, string title, IEnumerable<PollQuestionForMeetingOrWebinar> questions, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Delete a poll for a meeting.

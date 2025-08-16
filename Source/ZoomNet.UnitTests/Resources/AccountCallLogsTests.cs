@@ -249,7 +249,7 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 
 			// Act
-			var result = JsonSerializer.Deserialize<AccountCallLog>(SINGLE_ACCOUNT_CALL_LOGS_JSON, JsonFormatter.SerializerOptions);
+			var result = JsonSerializer.Deserialize<AccountCallLog>(SINGLE_ACCOUNT_CALL_LOGS_JSON, JsonFormatter.DefaultDeserializerOptions);
 
 			// Assert
 			result.ShouldNotBeNull();

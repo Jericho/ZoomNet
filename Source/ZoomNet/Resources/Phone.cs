@@ -94,6 +94,34 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<PhoneDetail>> ListPhonesAsync(
+			int recordsPerPage = 30,
+			string nextPageToken = null,
+			string siteId = null,
+			PhoneNumberAssignmentType? assignmentType = null,
+			PhoneNumberExtensionType? extensionType = null,
+			PhoneNumberType? numberType = null,
+			bool? pendingNumbers = null,
+			string keyword = null,
+			CancellationToken cancellationToken = default)
+		{
+			Utils.ValidateRecordPerPage(recordsPerPage, max: 100);
+
+			return _client
+				.GetAsync("phone/numbers")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", nextPageToken)
+				.WithArgument("site_id", siteId)
+				.WithArgument("type", assignmentType)
+				.WithArgument("extension_type", extensionType)
+				.WithArgument("number_type", numberType)
+				.WithArgument("pending_numbers", pendingNumbers)
+				.WithArgument("keyword", keyword)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<PhoneDetail>("phone_numbers");
+		}
+
+		/// <inheritdoc/>
 		public Task UpdateCallHandlingSettingsAsync(
 			string extensionId,
 			CallHandlingSettingType settingType,

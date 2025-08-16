@@ -271,7 +271,7 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = (MeetingCreatedEvent)new WebhookParser().ParseEventWebhook(MEETING_CREATED_WEBHOOK);
 
-			parsedEvent.EventType.ShouldBe(EventType.MeetingCreated);
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingCreated);
 			parsedEvent.Operator.ShouldBe("someone@example.com");
 			parsedEvent.OperatorId.ShouldBe("8lzIwvZTSOqjndWPbPqzuA");
 			parsedEvent.Meeting.ShouldNotBeNull();
@@ -293,7 +293,7 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = (MeetingDeletedEvent)new WebhookParser().ParseEventWebhook(MEETING_DELETED_WEBHOOK);
 
-			parsedEvent.EventType.ShouldBe(EventType.MeetingDeleted);
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingDeleted);
 			parsedEvent.Operator.ShouldBe("someone@example.com");
 			parsedEvent.OperatorId.ShouldBe("8lzIwvZTSOqjndWPbPqzuA");
 			parsedEvent.Meeting.ShouldNotBeNull();
@@ -312,7 +312,7 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = (MeetingEndedEvent)new WebhookParser().ParseEventWebhook(MEETING_ENDED_WEBHOOK);
 
-			parsedEvent.EventType.ShouldBe(EventType.MeetingEnded);
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingEnded);
 			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
 			parsedEvent.Meeting.ShouldNotBeNull();
 			parsedEvent.Meeting.Uuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
@@ -330,7 +330,7 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = (MeetingUpdatedEvent)new WebhookParser().ParseEventWebhook(MEETING_UPDATED_WEBHOOK);
 
-			parsedEvent.EventType.ShouldBe(EventType.MeetingUpdated);
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingUpdated);
 			parsedEvent.Operator.ShouldBe("someone@example.com");
 			parsedEvent.OperatorId.ShouldBe("8lzIwvZTSOqjndWPbPqzuA");
 			parsedEvent.ModifiedFields.ShouldNotBeNull();
@@ -350,7 +350,7 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = (MeetingStartedEvent)new WebhookParser().ParseEventWebhook(MEETING_STARTED_WEBHOOK);
 
-			parsedEvent.EventType.ShouldBe(EventType.MeetingStarted);
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingStarted);
 			parsedEvent.AccountId.ShouldBe("VjZoEArIT5y-HlWxkV-tVA");
 			parsedEvent.Timestamp.ShouldBe(new DateTime(2021, 4, 21, 14, 49, 4, 371, DateTimeKind.Utc));
 
@@ -367,7 +367,7 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = (MeetingSharingStartedEvent)new WebhookParser().ParseEventWebhook(MEETING_SHARING_STARTED_WEBHOOK);
 
-			parsedEvent.EventType.ShouldBe(EventType.MeetingSharingStarted);
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingSharingStarted);
 			parsedEvent.AccountId.ShouldBe("EPeQtiABC000VYxHMA");
 			parsedEvent.Timestamp.ShouldBe(new DateTime(2009, 2, 13, 23, 13, 9, 900, DateTimeKind.Utc));
 
@@ -400,7 +400,7 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = (MeetingServiceIssueEvent)new WebhookParser().ParseEventWebhook(MEETING_SERVICE_ISSUE_WEBHOOK);
 
-			parsedEvent.EventType.ShouldBe(EventType.MeetingServiceIssue);
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingServiceIssue);
 			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
 			parsedEvent.Timestamp.ShouldBe(new DateTime(2021, 7, 14, 2, 44, 51, 572, DateTimeKind.Utc));
 			parsedEvent.Issues.ShouldBe(new[] { "Unstable audio quality" });
@@ -420,7 +420,7 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = (RecordingCompletedEvent)new WebhookParser().ParseEventWebhook(RECORDING_COMPLETED_WEBHOOK);
 
-			parsedEvent.EventType.ShouldBe(EventType.RecordingCompleted);
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.RecordingCompleted);
 			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
 			parsedEvent.DownloadToken.ShouldBe("abJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJodHRwczovL2V2ZW50Lnpvb20udXMiLCJhY2NvdW50SWQiOiJNdDZzdjR1MFRBeVBrd2dzTDJseGlBIiwiYXVkIjoiaHR0cHM6Ly9vYXV0aC56b29tLnVzIiwibWlkIjoieFp3SEc0c3BRU2VuekdZWG16dnpiUT09IiwiZXhwIjoxNjI2MTM5NTA3LCJ1c2VySWQiOiJEWUhyZHBqclMzdWFPZjdkUGtrZzh3In0.a6KetiC6BlkDhf1dP4KBGUE1bb2brMeraoD45yhFx0eSSSTFdkHQnsKmlJQ-hdo9Zy-4vQw3rOxlyoHv583JyZ");
 			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
@@ -490,7 +490,7 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = (WebinarEndedEvent)new WebhookParser().ParseEventWebhook(WEBINAR_ENDED_WEBHOOK);
 
-			parsedEvent.EventType.ShouldBe(EventType.WebinarEnded);
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarEnded);
 			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
 			parsedEvent.Webinar.ShouldNotBeNull();
 			parsedEvent.Webinar.Uuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");

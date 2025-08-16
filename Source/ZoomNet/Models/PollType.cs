@@ -6,9 +6,9 @@ namespace ZoomNet.Models
 	public enum PollType
 	{
 		/// <summary>
-		/// Poll.
+		/// Basic.
 		/// </summary>
-		Normal = 1,
+		Basic = 1,
 
 		/// <summary>
 		/// Advanced poll.

@@ -682,14 +682,9 @@ namespace ZoomNet
 				.Select(value => value.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries))
 				.Select(splitValue =>
 				{
-					if (splitValue.Length == 1)
-					{
-						return new KeyValuePair<string, string>(splitValue[0].Trim(), null);
-					}
-					else
-					{
-						return new KeyValuePair<string, string>(splitValue[0].Trim(), splitValue[1].Trim());
-					}
+					var key = splitValue[0].Trim();
+					var value = splitValue.Length > 1 ? splitValue[1].Trim() : null;
+					return new KeyValuePair<string, string>(key, value);
 				});
 
 			return querystringParameters;
@@ -728,6 +723,14 @@ namespace ZoomNet
 						}
 					]
 				}
+
+				Sometimes the JSON looks like this:
+				{
+					"code":0, <-- zero does not indicate an error, it means the call was successful
+					"error_message":"success",
+					"join_token":"5x6iLL-zVfunMn2aTqWyGpYtCsycqATNCEWjYjM3jlcr3gDxpMvlUhii312nEz66S77F9AyL9OKjWCje1YZmAw4PGDwjIyWNPK06mmDwVy-YNZ4THcChRA6i_qkBZwGma0Yl3cOaNFHTOxoujXpxCHFLlN0zFfAptN_QWGSFUlm_1BdHV2M6vVl9NWBuLdCUXZfwejRKQRgeLaKMr0YPAckm394PRbKeuRww2n7R67hsOomOucyv9oqYYKM6POlx8L0u2gkLdxs5c63bnqH0ddqdnI6hZWUPE3C3NGA2f89UHn9K7JA1Fr9D3WsIbV1SdX93eleLhu4x8S944-sB6N4k3Kza7Bv02ZtWoiH6Pp0pxjT_xzmgKKoUhqUifFljDZVMe4CZkKmEwXHn_a-aygB1bVuecqX3hzM2YefiZal2ptsPSoFMEUYRrlv6vvfXxWth2S6WqdQpV9xWFZbEG2vfSTalha9hWRH_pglbW9JtRbXcGmSte3ojyg.XkfvFa_R929hCh69"
+				}
+				See: https://developers.zoom.us/docs/api/events/#tag/sessions/GET/zoom_events/events/{eventId}/sessions/{sessionId}/join_token
 			*/
 
 			try
@@ -736,7 +739,7 @@ namespace ZoomNet
 				if (jsonResponse.ValueKind == JsonValueKind.Object)
 				{
 					errorCode = jsonResponse.TryGetProperty("code", out JsonElement jsonErrorCode) ? jsonErrorCode.GetInt32() : null;
-					errorMessage = jsonResponse.TryGetProperty("message", out JsonElement jsonErrorMessage) ? jsonErrorMessage.GetString() : errorCode.HasValue ? $"Error code: {errorCode}" : errorMessage;
+					errorMessage = jsonResponse.GetPropertyValue(new[] { "message", "error_message" }, errorCode.HasValue ? $"Error code: {errorCode}" : errorMessage, false);
 					if (jsonResponse.TryGetProperty("errors", out JsonElement jsonErrorDetails))
 					{
 						var errorDetails = string.Join(
@@ -754,7 +757,7 @@ namespace ZoomNet
 						if (!string.IsNullOrEmpty(errorDetails)) errorMessage += $" {errorDetails}";
 					}
 
-					return (errorCode.HasValue, errorMessage, errorCode);
+					return (errorCode.HasValue && errorCode.Value != 0, errorMessage, errorCode);
 				}
 			}
 			catch
@@ -909,7 +912,7 @@ namespace ZoomNet
 
 		internal static T ToObject<T>(this JsonElement element, JsonSerializerOptions options = null)
 		{
-			return JsonSerializer.Deserialize<T>(element.GetRawText(), options ?? JsonFormatter.DeserializerOptions);
+			return JsonSerializer.Deserialize<T>(element.GetRawText(), options ?? JsonFormatter.DefaultDeserializerOptions);
 		}
 
 		internal static void Add<T>(this JsonObject jsonObject, string propertyName, T value)
@@ -1004,7 +1007,7 @@ namespace ZoomNet
 
 			if (string.IsNullOrEmpty(propertyName))
 			{
-				return JsonSerializer.Deserialize<T>(responseContent, options ?? JsonFormatter.DeserializerOptions);
+				return JsonSerializer.Deserialize<T>(responseContent, options ?? JsonFormatter.DefaultDeserializerOptions);
 			}
 
 			var jsonDoc = JsonDocument.Parse(responseContent, default);

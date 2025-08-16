@@ -12,10 +12,6 @@ namespace ZoomNet.Json
 	/// <seealso cref="JsonConverter" />
 	internal abstract class ZoomNetJsonConverter<T> : JsonConverter<T>
 	{
-		public ZoomNetJsonConverter()
-		{
-		}
-
 		public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 		{
 			if (JsonDocument.TryParseValue(ref reader, out var doc))
@@ -29,26 +25,35 @@ namespace ZoomNet.Json
 
 		public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
 		{
-			if (value == null) return;
-
 			var typeOfValue = value.GetType(); // Do not use typeof(T). See https://github.com/Jericho/StrongGrid/issues/492
 			if (typeOfValue.IsArray)
 			{
-				var typeOfItems = typeOfValue.GetElementType();
-
-				writer.WriteStartArray();
-
-				foreach (var item in (IEnumerable)value)
-				{
-					JsonSerializer.Serialize(writer, item, typeOfItems, options);
-				}
-
-				writer.WriteEndArray();
+				SerializeArray(writer, value, typeOfValue, options);
 			}
 			else
 			{
 				Serialize(writer, value, typeOfValue, options, null);
 			}
+		}
+
+		internal static void SerializeArray(Utf8JsonWriter writer, T value, Type typeOfValue, JsonSerializerOptions options)
+		{
+			if (value is null)
+			{
+				writer.WriteNullValue();
+				return;
+			}
+
+			var typeOfItems = typeOfValue.GetElementType();
+
+			writer.WriteStartArray();
+
+			foreach (var item in (IEnumerable)value)
+			{
+				JsonSerializer.Serialize(writer, item, typeOfItems, options);
+			}
+
+			writer.WriteEndArray();
 		}
 
 		internal static void Serialize(Utf8JsonWriter writer, T value, JsonSerializerOptions options, Action<string, object, Type, JsonSerializerOptions, JsonConverterAttribute> propertySerializer = null)
@@ -58,7 +63,7 @@ namespace ZoomNet.Json
 
 		internal static void Serialize(Utf8JsonWriter writer, T value, Type typeOfValue, JsonSerializerOptions options, Action<string, object, Type, JsonSerializerOptions, JsonConverterAttribute> propertySerializer = null)
 		{
-			if (value == null)
+			if (value is null)
 			{
 				writer.WriteNullValue();
 				return;
@@ -86,7 +91,7 @@ namespace ZoomNet.Json
 				if (propertyIsIgnored) continue;
 
 				// Ignore the property if it contains a null value
-				if (propertyValue == null) continue;
+				if (propertyValue is null) continue;
 
 				// Serialize the property.
 				propertySerializer(propertyName, propertyValue, propertyType, options, propertyConverterAttribute);

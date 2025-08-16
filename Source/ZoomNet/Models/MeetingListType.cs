@@ -28,7 +28,7 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// All upcoming meetings, including live meetings.
 		/// </summary>
-		/// <remarks>I don't know what the distinction between "upcoming" and "upcoming_meetings is.</remarks>
+		/// <remarks>I don't know what the distinction between "upcoming" and "upcoming_meetings" is.</remarks>
 		[EnumMember(Value = "upcoming_meetings")]
 		UpcomingMeetings,
 

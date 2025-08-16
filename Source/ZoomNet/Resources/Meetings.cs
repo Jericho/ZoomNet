@@ -432,16 +432,16 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<Poll[]> GetPollsAsync(long meetingId, CancellationToken cancellationToken = default)
+		public Task<PollForMeetingOrWebinar[]> GetPollsAsync(long meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"meetings/{meetingId}/polls")
 				.WithCancellationToken(cancellationToken)
-				.AsObject<Poll[]>("polls");
+				.AsObject<PollForMeetingOrWebinar[]>("polls");
 		}
 
 		/// <inheritdoc/>
-		public Task<Poll> CreatePollAsync(long meetingId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default)
+		public Task<PollForMeetingOrWebinar> CreatePollAsync(long meetingId, string title, IEnumerable<PollQuestionForMeetingOrWebinar> questions, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
@@ -453,20 +453,20 @@ namespace ZoomNet.Resources
 				.PostAsync($"meetings/{meetingId}/polls")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
-				.AsObject<Poll>();
+				.AsObject<PollForMeetingOrWebinar>();
 		}
 
 		/// <inheritdoc/>
-		public Task<Poll> GetPollAsync(long meetingId, long pollId, CancellationToken cancellationToken = default)
+		public Task<PollForMeetingOrWebinar> GetPollAsync(long meetingId, long pollId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"meetings/{meetingId}/polls/{pollId}")
 				.WithCancellationToken(cancellationToken)
-				.AsObject<Poll>();
+				.AsObject<PollForMeetingOrWebinar>();
 		}
 
 		/// <inheritdoc/>
-		public Task UpdatePollAsync(long meetingId, long pollId, string title, IEnumerable<PollQuestion> questions, CancellationToken cancellationToken = default)
+		public Task UpdatePollAsync(long meetingId, long pollId, string title, IEnumerable<PollQuestionForMeetingOrWebinar> questions, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{

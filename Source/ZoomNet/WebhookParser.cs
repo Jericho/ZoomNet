@@ -26,6 +26,8 @@ namespace ZoomNet
 		/// </summary>
 		public const string TIMESTAMP_HEADER_NAME = "x-zm-request-timestamp";
 
+		private readonly WebHookEventConverter _converter;
+
 		/// <inheritdoc/>
 		public bool VerifySignature(string requestBody, string secretToken, string signature, string timestamp)
 		{
@@ -45,10 +47,20 @@ namespace ZoomNet
 			return calculatedSignature == signature;
 		}
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="WebhookParser"/> class.
+		/// </summary>
+		/// <param name="throwWhenUnknownEvent">Indicates whether an exception should be thrown when an unknown ebent type is encoutered.</param>
+		public WebhookParser(bool throwWhenUnknownEvent = true)
+		{
+			_converter = new WebHookEventConverter(throwWhenUnknownEvent);
+		}
+
 		/// <inheritdoc/>
 		public Event ParseEventWebhook(string requestBody)
 		{
-			var webHookEvent = JsonSerializer.Deserialize<Event>(requestBody, JsonFormatter.DeserializerOptions);
+			var reader = new Utf8JsonReader(Encoding.UTF8.GetBytes(requestBody));
+			var webHookEvent = _converter.Read(ref reader, typeof(Event), JsonFormatter.DefaultDeserializerOptions);
 			return webHookEvent;
 		}
 	}

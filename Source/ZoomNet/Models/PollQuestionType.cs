@@ -46,7 +46,7 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Fill in the blanks.
 		/// </summary>
-		[EnumMember(Value = "fill_in_the_blanks")]
+		[EnumMember(Value = "fill_in_the_blank")]
 		FillInTheBlanks,
 
 		/// <summary>

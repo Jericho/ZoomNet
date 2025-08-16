@@ -32,9 +32,7 @@ PM> Install-Package ZoomNet
 
 ZoomNet currently supports:
 - .NET framework 4.8
-- any framework supporting `.NET Standard 2.1` (which includes `.NET Core 3.x`  and `ASP.NET Core 3.x`)
-- `.NET 6.0`
-- `.NET 7.0`
+- any framework supporting `.NET Standard 2.1` (which includes `.NET Core 3.x`, `ASP.NET Core 3.x`, `.NET 5.0` and any subsequent version of .NET)
 
 The last version of ZoomNet that supported `.NET 4.6.1`, `.NET 4.7.2` and `.NET Standard 2.0` was 0.35.0
 
@@ -64,7 +62,7 @@ var zoomClient = new ZoomClient(connectionInfo);
 > **Warning:** <a href="https://marketplace.zoom.us/docs/guides/build/jwt-app/jwt-faq/">Zoom has announced</a> that this authentication method would be obsolete in June 2023. The recommendation is to swith to Server-to-Server OAuth.
 
 
-#### Connection using OAuth
+#### Connection using OAuth (General App)
 Using OAuth is much more complicated than using JWT but at the same time, it is more flexible because you can define which permissions your app requires. When a user installs your app, they are presented with the list of permissions your app requires and they are given the opportunity to accept. 
 
 The Zoom documentation has a document about [how to create an OAuth app](https://marketplace.zoom.us/docs/guides/build/oauth-app) and another document about the [OAuth autorization flow](https://marketplace.zoom.us/docs/guides/auth/oauth) but I personnality was very confused by the later document so here is a brief step-by-step summary:
@@ -232,6 +230,36 @@ namespace WebApplication1.Controllers
 }
 ```
 
+### How to handle unknown webhook event types
+
+As of this writing, the ZoomNet webhook parser can handle a little over 40 different event types (such as `meeting.created`, `meeting.started`, `webinar.updated` and `recording.completed` for example) but there more than 100 possible event types defined in the Zoom API.
+By default, the ZoomNet webhook parser will throw an exception when it encounters an event type that it doesn't know how to handle. Our intent is to eventually be able to handle every possible event type in the future but, as you can imagine, it's quite a daunting task to add the necessary logic in this library for each and every event type.
+If you encounter one such 'unknown' event type, please raise an issue in our GitHub repo and we will do our best to add the logic for the particular event type you encountered. Better yet: submit a PR with the necessary logic, this would help us out tremendously.
+
+Having said that, you can configure the webhook parser's behavior to avoid the exception. The tradeoff is that you won't get a strongly typed event object (such as `MeetingCreatedEvent`, `MeetingStartedEvent`, `WebinarUpdatedEvent` and `RecordingCompletedEvent` for example) but rather a "generic" `UnknownEvent` object with a `Payload` property which gives you access to the JSON associated with this event and you will have to manually extract the various values out of this JSON object.
+
+Here's an example that demonstrates how to do this:
+
+```csharp
+var throwOnUnknownEventTypes = false; // This means that the parser will not throw an exception when it encounters an unknown event type
+var parser = new ZoomNet.WebhookParser(throwOnUnknownEventTypes);
+var event = await parser.ParseEventWebhookAsync(Request.Body).ConfigureAwait(false);
+
+if (event.EventType == EventType.Unknown)
+{
+    var unknownEvent = event as UnknownEvent;
+    var value1 = unknownEvent.Payload.GetProperty("name_of_desired_property").GetString();
+    var value2 = unknownEvent.Payload.GetProperty("name_of_another_property").GetInt32();
+
+    // ... do something with the values ...
+}
+else
+{
+    // ... do something with the strongly typed event ...
+}
+```
+
+
 ### Ensuring that webhooks originated from Zoom before parsing
 
 It is possible for you to verify that a webhook is legitimate and originated from Zoom.
@@ -361,6 +389,15 @@ namespace WebApplication1.Controllers
                 var endpointUrlValidationEvent = zoomEvent as EndpointUrlValidationEvent;
                 var responsePayload = endpointUrlValidationEvent.GenerateUrlValidationResponse(secretToken);
                 return Ok(responsePayload);
+            }
+            else if (zoomEvent.EventType == EventType.Unknown)
+            {
+                var unknownEvent = event as UnknownEvent;
+            
+                // 1) Raise an issue in ZoomNet's GitHub repo to let us know about this 'unknown' event type you just encountered
+                // 2) ... do something with the values in this event's payload ...
+
+                return Ok();
             }
             else
             {

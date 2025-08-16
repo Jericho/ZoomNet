@@ -6,7 +6,7 @@ using ZoomNet.Json;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Registrant.
+	/// Someone who has registered for a meeting or a webinar.
 	/// </summary>
 	public class Registrant
 	{
