@@ -161,7 +161,7 @@ var zoomClient = new ZoomClient(connectionInfo);
 #### Multiple instances of your application in Server-to-Server OAuth scenarios
 
 > :exclamation: **Important Note**
-> The following discussion about how to prevent multiple apps (or multiple instances of a single app) from invalidating each other's OAuth token is obsolete since June 2023. See this [announcement](https://devforum.zoom.us/t/multi-access-tokens-launched-for-s2s-apps/90527). All three potential solutions mentioned in the discussion are now unnecessary because Zoom has changed the behavior of their platform that was the root of this problem. In particular, the "token index" mentioned in solution number 2 has been removed in ZoomNet version 0.64.0 and the much more advanced solution mentioned in solution number 3 (which was available as a beta) has been abandoned.
+> The following discussion about how to prevent multiple apps (or multiple instances of a single app) from invalidating each other's OAuth token is obsolete since June 2023. See this [announcement](https://devforum.zoom.us/t/multi-access-tokens-launched-for-s2s-apps/90527). All three potential solutions mentioned in the discussion are now unnecessary because Zoom has changed the behavior of their platform which was the root of this problem. In particular, the "token index" mentioned in solution number 2 has been removed in ZoomNet version 0.64.0 and the much more advanced solution mentioned in solution number 3 (which was available as a beta) has been abandoned.
 
 <strike>
 
