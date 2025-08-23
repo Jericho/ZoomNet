@@ -9,8 +9,6 @@ namespace ZoomNet.IntegrationTests.Tests
 	{
 		public async Task RunAsync(User myUser, string[] myPermissions, IZoomClient client, TextWriter log, CancellationToken cancellationToken)
 		{
-			if (cancellationToken.IsCancellationRequested) return;
-
 			await log.WriteLineAsync("\n***** CONTACTS *****\n").ConfigureAwait(false);
 
 			var paginatedSearchedContacts = await client.Contacts.SearchAsync("zzz", true, 1, null, cancellationToken).ConfigureAwait(false);

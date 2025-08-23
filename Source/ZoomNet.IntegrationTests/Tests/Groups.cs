@@ -11,8 +11,6 @@ namespace ZoomNet.IntegrationTests.Tests
 	{
 		public async Task RunAsync(User myUser, string[] myPermissions, IZoomClient client, TextWriter log, CancellationToken cancellationToken)
 		{
-			if (cancellationToken.IsCancellationRequested) return;
-
 			await log.WriteLineAsync("\n***** GROUPS *****\n").ConfigureAwait(false);
 
 			// GET ALL THE GROUPS

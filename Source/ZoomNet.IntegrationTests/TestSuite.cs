@@ -2,11 +2,9 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
-using ZoomNet.Utilities;
 
 namespace ZoomNet.IntegrationTests
 {
@@ -14,22 +12,22 @@ namespace ZoomNet.IntegrationTests
 	{
 		private const int MAX_ZOOM_API_CONCURRENCY = 5;
 		private const int TEST_NAME_MAX_LENGTH = 25;
+
 		private const string SUCCESSFUL_TEST_MESSAGE = "Completed successfully";
+		private const string TASK_CANCELLED = "Task cancelled";
+		private const string SKIPPED_DUE_TO_CANCELATION = "Skipped due to cancelation";
 
 		public ILoggerFactory LoggerFactory { get; init; }
 
-		public IConnectionInfo ConnectionInfo { get; init; }
-
-		public IWebProxy Proxy { get; init; }
+		public IZoomClient Client { get; init; }
 
 		public Type[] Tests { get; init; }
 
 		public bool FetchCurrentUserInfo { get; init; }
 
-		public TestSuite(IConnectionInfo connectionInfo, IWebProxy proxy, ILoggerFactory loggerFactory, Type[] tests, bool fetchCurrentUserInfo)
+		public TestSuite(IZoomClient client, ILoggerFactory loggerFactory, Type[] tests, bool fetchCurrentUserInfo)
 		{
-			ConnectionInfo = connectionInfo;
-			Proxy = proxy;
+			Client = client;
 			LoggerFactory = loggerFactory;
 			Tests = tests;
 			FetchCurrentUserInfo = fetchCurrentUserInfo;
@@ -37,23 +35,14 @@ namespace ZoomNet.IntegrationTests
 
 		public virtual async Task<ResultCodes> RunTestsAsync(CancellationToken cancellationToken)
 		{
-			// Configure ZoomNet client
-			var options = new ZoomClientOptions
-			{
-				// A successful API call will trigger a 'Trace' log (rather than the default 'Debug').
-				// This is to ensure that we don't get overwhelmed by too many debug messages in the console.
-				LogLevelSuccessfulCalls = LogLevel.Trace
-			};
-			var client = new ZoomClient(ConnectionInfo, Proxy, options, LoggerFactory.CreateLogger<ZoomClient>());
-
 			// Get my user and permisisons
 			User currentUser = null;
 			string[] currentUserPermissions = Array.Empty<string>();
 
 			if (FetchCurrentUserInfo)
 			{
-				currentUser = await client.Users.GetCurrentAsync(cancellationToken).ConfigureAwait(false);
-				currentUserPermissions = await client.Users.GetCurrentPermissionsAsync(cancellationToken).ConfigureAwait(false);
+				currentUser = await Client.Users.GetCurrentAsync(cancellationToken).ConfigureAwait(false);
+				currentUserPermissions = await Client.Users.GetCurrentPermissionsAsync(cancellationToken).ConfigureAwait(false);
 				Array.Sort(currentUserPermissions); // Sort permissions alphabetically for convenience
 			}
 
@@ -61,18 +50,23 @@ namespace ZoomNet.IntegrationTests
 			var results = await Tests.ForEachAsync(
 				async testType =>
 				{
+					if (cancellationToken.IsCancellationRequested)
+					{
+						return (TestName: testType.Name, ResultCode: ResultCodes.Skipped, Message: SKIPPED_DUE_TO_CANCELATION);
+					}
+
 					var log = new StringWriter();
 
 					try
 					{
 						var integrationTest = (IIntegrationTest)Activator.CreateInstance(testType);
-						await integrationTest.RunAsync(currentUser, currentUserPermissions, client, log, cancellationToken).ConfigureAwait(false);
+						await integrationTest.RunAsync(currentUser, currentUserPermissions, Client, log, cancellationToken).ConfigureAwait(false);
 						return (TestName: testType.Name, ResultCode: ResultCodes.Success, Message: SUCCESSFUL_TEST_MESSAGE);
 					}
 					catch (OperationCanceledException)
 					{
 						await log.WriteLineAsync($"-----> TASK CANCELLED").ConfigureAwait(false);
-						return (TestName: testType.Name, ResultCode: ResultCodes.Cancelled, Message: "Task cancelled");
+						return (TestName: testType.Name, ResultCode: ResultCodes.Cancelled, Message: TASK_CANCELLED);
 					}
 					catch (Exception e)
 					{

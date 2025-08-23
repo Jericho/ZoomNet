@@ -1,12 +1,17 @@
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
 using ZoomNet.Models.ChatbotMessage;
 using ZoomNet.Resources;
+using ZoomNet.Utilities;
 
 namespace ZoomNet
 {
@@ -723,6 +728,60 @@ namespace ZoomNet
 			var result = await eventsResource.CreateTicketsAsync(eventId, new[] { ticket }, source, cancellationToken).ConfigureAwait(false);
 
 			return (result.Tickets.FirstOrDefault(), result.Errors.FirstOrDefault());
+		}
+
+		/// <summary>
+		/// Adds and configures a ZoomNet client to the specified <see cref="IServiceCollection"/>.
+		/// </summary>
+		/// <remarks>This method registers the ZoomNet client as a singleton service in the dependency injection
+		/// container.</remarks>
+		/// <param name="services">The <see cref="IServiceCollection"/> to which the ZoomNet client will be added.</param>
+		/// <param name="connectionInfo">The connection information used to authenticate with the Zoom API. This parameter cannot be <see
+		/// langword="null"/>.</param>
+		/// <param name="clientOptions">Optional configuration options for the ZoomNet client. If <see langword="null"/>, default options will be used.</param>
+		/// <param name="httpClientName">The name of the <see cref="HttpClient"/> to be created. Defaults to "ZomNet".</param>
+		/// <returns>An <see cref="IHttpClientBuilder"/> that can be used to further configure the underlying <see cref="HttpClient"/>.</returns>
+		public static IHttpClientBuilder AddZoomNet(this IServiceCollection services, IConnectionInfo connectionInfo, ZoomClientOptions clientOptions = null, string httpClientName = "ZoomNet")
+		{
+			return services.AddZoomNet(connectionInfo, null, clientOptions, httpClientName);
+		}
+
+		/// <summary>
+		/// Adds and configures a ZoomNet client to the specified <see cref="IServiceCollection"/>.
+		/// </summary>
+		/// <remarks>This method registers the ZoomNet client as a singleton service in the dependency injection
+		/// container. The <see cref="HttpClient"/> used by the ZoomNet client is configured with the specified proxy
+		/// settings.</remarks>
+		/// <param name="services">The <see cref="IServiceCollection"/> to which the ZoomNet client will be added.</param>
+		/// <param name="connectionInfo">The connection information used to authenticate with the Zoom API. This parameter cannot be <see
+		/// langword="null"/>.</param>
+		/// <param name="proxy">The <see cref="IWebProxy"/> to use for HTTP requests. If <see langword="null"/>, no proxy will be used.</param>
+		/// <param name="clientOptions">Optional configuration options for the ZoomNet client. If <see langword="null"/>, default options will be used.</param>
+		/// <param name="httpClientName">The name of the <see cref="HttpClient"/> to be created. Defaults to "ZomNet".</param>
+		/// <returns>An <see cref="IHttpClientBuilder"/> that can be used to further configure the underlying <see cref="HttpClient"/>.</returns>
+		public static IHttpClientBuilder AddZoomNet(this IServiceCollection services, IConnectionInfo connectionInfo, IWebProxy proxy, ZoomClientOptions clientOptions = null, string httpClientName = "ZomNet")
+		{
+			var httpClientBuilder = services
+				.AddHttpClient(httpClientName)
+				.ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler()
+				{
+					Proxy = proxy,
+					UseProxy = proxy != null,
+				});
+
+			// ConnectionInfo must be a singleton because the state of the connection (including the oAuth token) must be preserved between calls
+			services.AddSingleton(connectionInfo);
+
+			// ZoomClient can be transient since it does not carry state
+			services.AddTransient<IZoomClient>(serviceProvider =>
+			{
+				var connectionInfo = serviceProvider.GetRequiredService<IConnectionInfo>();
+				var httpClient = serviceProvider.GetRequiredService<IHttpClientFactory>().CreateClient(httpClientName);
+				var logger = serviceProvider.GetRequiredService<ILogger<IZoomClient>>();
+				return new ZoomClient(connectionInfo, httpClient, clientOptions, logger);
+			});
+
+			return httpClientBuilder;
 		}
 	}
 }

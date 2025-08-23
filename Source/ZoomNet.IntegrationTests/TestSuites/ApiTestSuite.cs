@@ -1,6 +1,5 @@
 using Microsoft.Extensions.Logging;
 using System;
-using System.Net;
 using ZoomNet.IntegrationTests.Tests;
 
 namespace ZoomNet.IntegrationTests.TestSuites
@@ -28,8 +27,8 @@ namespace ZoomNet.IntegrationTests.TestSuites
 			typeof(Webinars),
 		};
 
-		public ApiTestSuite(IConnectionInfo connectionInfo, IWebProxy proxy, ILoggerFactory loggerFactory) :
-			base(connectionInfo, proxy, loggerFactory, _tests, true)
+		public ApiTestSuite(IZoomClient client, ILoggerFactory loggerFactory) :
+			base(client, loggerFactory, _tests, true)
 		{
 		}
 	}
