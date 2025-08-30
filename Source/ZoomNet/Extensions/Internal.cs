@@ -39,6 +39,29 @@ namespace ZoomNet
 		private static readonly DateTime EPOCH = new(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 		private static readonly int DEFAULT_DEGREE_OF_PARALLELISM = Environment.ProcessorCount > 1 ? Environment.ProcessorCount / 2 : 1;
 
+		private static readonly Dictionary<Type, string> _typeAliases =
+			new Dictionary<Type, string>()
+			{
+				{ typeof(byte), "byte" },
+				{ typeof(sbyte), "sbyte" },
+				{ typeof(short), "short" },
+				{ typeof(ushort), "ushort" },
+				{ typeof(int), "int" },
+				{ typeof(uint), "uint" },
+				{ typeof(long), "long" },
+				{ typeof(ulong), "ulong" },
+				{ typeof(float), "float" },
+				{ typeof(double), "double" },
+				{ typeof(decimal), "decimal" },
+				{ typeof(object), "object" },
+				{ typeof(bool), "bool" },
+				{ typeof(char), "char" },
+				{ typeof(string), "string" },
+				{ typeof(void), "void" },
+				{ typeof(nint), "nint" }, // From C# 11 onwards
+				{ typeof(nuint), "nuint" }, // From C# 11 onwards
+			};
+
 		/// <summary>
 		/// Converts a 'unix time', which is expressed as the number of seconds (or milliseconds) since
 		/// midnight on January 1st 1970, to a .Net <see cref="DateTime" />.
@@ -952,6 +975,11 @@ namespace ZoomNet
 		internal static bool IsNullableType(this Type type)
 		{
 			return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>);
+		}
+
+		internal static string GetFriendlyName(this Type type)
+		{
+			return _typeAliases.ContainsKey(type) ? _typeAliases[type] : type.FullName;
 		}
 
 		private static async Task<JsonElement> ParseZoomResponseAsync(this HttpContent responseFromZoomApi, CancellationToken cancellationToken = default)

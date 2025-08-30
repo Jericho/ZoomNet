@@ -6,6 +6,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Json
 {
 	[JsonSerializable(typeof(System.Text.Json.Nodes.JsonObject))]
+
 	[JsonSerializable(typeof(System.Text.Json.Nodes.JsonObject[]))]
 
 	[JsonSerializable(typeof(ZoomNet.Models.Account))]
@@ -422,6 +423,7 @@ namespace ZoomNet.Json
 	[JsonSerializable(typeof(ZoomNet.Models.Webhooks.MeetingUpdatedEvent), TypeInfoPropertyName = "WebhooksMeetingUpdatedEvent")]
 	[JsonSerializable(typeof(ZoomNet.Models.Webhooks.RecordingCompletedEvent), TypeInfoPropertyName = "WebhooksRecordingCompletedEvent")]
 	[JsonSerializable(typeof(ZoomNet.Models.Webhooks.RecordingEvent), TypeInfoPropertyName = "WebhooksRecordingEvent")]
+	[JsonSerializable(typeof(ZoomNet.Models.Webhooks.UnknownEvent), TypeInfoPropertyName = "WebhooksUnknownEvent")]
 	[JsonSerializable(typeof(ZoomNet.Models.Webhooks.WebinarCreatedEvent), TypeInfoPropertyName = "WebhooksWebinarCreatedEvent")]
 	[JsonSerializable(typeof(ZoomNet.Models.Webhooks.WebinarDeletedEvent), TypeInfoPropertyName = "WebhooksWebinarDeletedEvent")]
 	[JsonSerializable(typeof(ZoomNet.Models.Webhooks.WebinarEndedEvent), TypeInfoPropertyName = "WebhooksWebinarEndedEvent")]
@@ -866,6 +868,7 @@ namespace ZoomNet.Json
 	[JsonSerializable(typeof(ZoomNet.Models.Webhooks.MeetingUpdatedEvent[]), TypeInfoPropertyName = "WebhooksMeetingUpdatedEventArray")]
 	[JsonSerializable(typeof(ZoomNet.Models.Webhooks.RecordingCompletedEvent[]), TypeInfoPropertyName = "WebhooksRecordingCompletedEventArray")]
 	[JsonSerializable(typeof(ZoomNet.Models.Webhooks.RecordingEvent[]), TypeInfoPropertyName = "WebhooksRecordingEventArray")]
+	[JsonSerializable(typeof(ZoomNet.Models.Webhooks.UnknownEvent[]), TypeInfoPropertyName = "WebhooksUnknownEventArray")]
 	[JsonSerializable(typeof(ZoomNet.Models.Webhooks.WebinarCreatedEvent[]), TypeInfoPropertyName = "WebhooksWebinarCreatedEventArray")]
 	[JsonSerializable(typeof(ZoomNet.Models.Webhooks.WebinarDeletedEvent[]), TypeInfoPropertyName = "WebhooksWebinarDeletedEventArray")]
 	[JsonSerializable(typeof(ZoomNet.Models.Webhooks.WebinarEndedEvent[]), TypeInfoPropertyName = "WebhooksWebinarEndedEventArray")]

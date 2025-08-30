@@ -10,8 +10,6 @@ namespace ZoomNet.IntegrationTests.Tests
 	{
 		public async Task RunAsync(User myUser, string[] myPermissions, IZoomClient client, TextWriter log, CancellationToken cancellationToken)
 		{
-			if (cancellationToken.IsCancellationRequested) return;
-
 			await log.WriteLineAsync("\n***** ACCOUNTS *****\n").ConfigureAwait(false);
 
 			if (client.HasPermission("account:read:list_sub_accounts:master"))

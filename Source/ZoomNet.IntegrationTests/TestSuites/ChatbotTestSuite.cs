@@ -1,6 +1,5 @@
 using Microsoft.Extensions.Logging;
 using System;
-using System.Net;
 using ZoomNet.IntegrationTests.Tests;
 
 namespace ZoomNet.IntegrationTests.TestSuites
@@ -12,8 +11,8 @@ namespace ZoomNet.IntegrationTests.TestSuites
 			typeof(Chatbot),
 		};
 
-		public ChatbotTestSuite(IConnectionInfo connectionInfo, IWebProxy proxy, ILoggerFactory loggerFactory) :
-				base(connectionInfo, proxy, loggerFactory, _tests, false)
+		public ChatbotTestSuite(IZoomClient client, ILoggerFactory loggerFactory) :
+				base(client, loggerFactory, _tests, false)
 		{
 		}
 	}

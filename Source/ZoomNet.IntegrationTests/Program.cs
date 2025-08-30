@@ -6,68 +6,142 @@ using Microsoft.Extensions.Logging.Console;
 using System;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using ZoomNet.IntegrationTests.TestSuites;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.IntegrationTests
 {
 	public class Program
 	{
+		private enum TestType
+		{
+			Api,
+			WebSockets,
+			Chatbot,
+		}
+
+		private enum ConnectionType
+		{
+			Jwt, // Zoom disabled the ability to create new JWT apps on June 1, 2023. The projected end-of-life for JWT apps is September 1, 2023. 
+			OAuthAuthorizationCode, // Gets authorization code and sets refresh token.
+			OAuthRefreshToken,      // Gets and sets refresh token and access token.
+			OAuthClientCredentials, // Gets and sets access token. For cleanliness, it should use a different access token environment variable so they don't cross contaminate.
+			OAuthServerToServer,    // Gets the account id and access token and sets access token. Same as above.
+		}
+
+		// ====================================================================================================
+		// Modify the following values to configure the integration tests
+		// ----------------------------------------------------------------------------------------------------
+
+		// Do you want to proxy requests through a tool such as Fiddler? Very useful for debugging.
+		private static bool _useProxy = true;
+
+		// By default Fiddler Classic uses port 8888 and Fiddler Everywhere uses port 8866
+		private static int _proxyPort = 8888;
+
+		// What tests do you want to run
+		private static TestType _testType = TestType.Api;
+
+		// Which connection type do you want to use?
+		private static ConnectionType _connectionType = ConnectionType.OAuthServerToServer;
+
+		// ====================================================================================================
+
 		public static async Task Main()
 		{
 			var serializerContextPath = Path.Combine(Path.GetDirectoryName(GetThisFilePath()), "..\\ZoomNet\\Json\\ZoomNetJsonSerializerContext.cs");
 			var additionalSerializableTypes = new[]
 			{
 				typeof(System.Text.Json.Nodes.JsonObject),
-				typeof(System.Text.Json.Nodes.JsonObject[]),
 			};
 			await UpdateJsonSerializerContextAsync("ZoomNet", "ZoomNet.Models", serializerContextPath, additionalSerializableTypes).ConfigureAwait(false);
 
-			// Configure cancellation (this allows you to press CTRL+C or CTRL+Break to stop the integration tests)
-			var cts = new CancellationTokenSource();
-			Console.CancelKeyPress += (s, e) =>
-			{
-				e.Cancel = true;
-				cts.Cancel();
-			};
+			var builder = Host.CreateApplicationBuilder();
 
-			var services = new ServiceCollection();
-			ConfigureServices(services);
-			using var serviceProvider = services.BuildServiceProvider();
-			var app = serviceProvider.GetService<IHostedService>();
-			await app.StartAsync(cts.Token).ConfigureAwait(false);
+			ConfigureLogging(builder.Logging);
+			ConfigureServices(builder.Services);
+
+			var host = builder.Build();
+			await host.StartAsync().ConfigureAwait(false);
 		}
 
-		private static void ConfigureServices(ServiceCollection services)
+		private static void ConfigureLogging(ILoggingBuilder logging)
 		{
-			services.AddHostedService<TestsRunner>();
+			logging.ClearProviders();
 
-			services
-				.AddLogging(logging =>
+			var betterStackToken = Environment.GetEnvironmentVariable("BETTERSTACK_TOKEN");
+			if (!string.IsNullOrEmpty(betterStackToken))
+			{
+				logging.AddBetterStackLogger(options =>
 				{
-					var betterStackToken = Environment.GetEnvironmentVariable("BETTERSTACK_TOKEN");
-					if (!string.IsNullOrEmpty(betterStackToken))
-					{
-						logging.AddBetterStackLogger(options =>
-						{
-							options.SourceToken = betterStackToken;
-							options.Context["source"] = "ZoomNet_integration_tests";
-							options.Context["ZoomNet-Version"] = ZoomClient.Version;
-						});
-					}
-
-					logging.AddSimpleConsole(options =>
-					{
-						options.SingleLine = true;
-						options.TimestampFormat = "yyyy-MM-dd HH:mm:ss ";
-					});
-
-					logging.AddFilter(logLevel => logLevel >= LogLevel.Debug);
-					logging.AddFilter<ConsoleLoggerProvider>(logLevel => logLevel >= LogLevel.Information);
+					options.SourceToken = betterStackToken;
+					options.Context["source"] = "ZoomNet_integration_tests";
+					options.Context["ZoomNet-Version"] = ZoomClient.Version;
 				});
+			}
+
+			logging.AddSimpleConsole(options =>
+			{
+				options.SingleLine = true;
+				options.TimestampFormat = "yyyy-MM-dd HH:mm:ss ";
+			});
+
+			logging
+				.SetMinimumLevel(LogLevel.Debug) // Set the minimum log level to Debug
+				.AddFilter<ConsoleLoggerProvider>(logLevel => logLevel > LogLevel.Information); // Filter out logs below Information level for ConsoleLoggerProvider
+		}
+
+		private static void ConfigureServices(IServiceCollection services)
+		{
+			// As far as I know, Zoom only supports ClientCredentials when invoking the methods on the ChatBot endpoint
+			if (_testType == TestType.Chatbot && _connectionType != ConnectionType.OAuthClientCredentials)
+			{
+				throw new Exception("Zoom only support client credentials when invoking the ChatBot endpoint.");
+			}
+
+			// Configure the proxy if desired
+			var proxy = _useProxy ? new WebProxy($"http://localhost:{_proxyPort}") : null;
+
+			// Configure options
+			var clientOptions = new ZoomClientOptions
+			{
+				// Trigger a 'Trace' log (rather than the default 'Debug') when a successful call is made.
+				// This is to ensure that we don't get overwhelmed by too many debug messages in the console.
+				LogLevelSuccessfulCalls = LogLevel.Trace,
+				LogLevelFailedCalls = LogLevel.Error,
+			};
+
+			// Get the connection info
+			var connectionInfo = GetConnectionInfo(_connectionType, _testType);
+
+			services.AddZoomNet(connectionInfo, proxy, clientOptions);
+
+			services.AddSingleton<TestSuite>(serviceProvider =>
+			{
+				var loggerFactory = serviceProvider.GetRequiredService<ILoggerFactory>();
+				var zoomClient = serviceProvider.GetRequiredService<IZoomClient>();
+
+				// Create the test suite based on the selected test type
+				switch (_testType)
+				{
+					case TestType.Api: return new ApiTestSuite(zoomClient, loggerFactory);
+					case TestType.Chatbot: return new ChatbotTestSuite(zoomClient, loggerFactory);
+					case TestType.WebSockets:
+						{
+							var subscriptionId = Environment.GetEnvironmentVariable("ZOOM_WEBSOCKET_SUBSCRIPTIONID", EnvironmentVariableTarget.User);
+							return new WebSocketsTestSuite(connectionInfo, subscriptionId, proxy, loggerFactory);
+						}
+					default: throw new Exception("Unknwon test type");
+				}
+			});
+
+			services.AddHostedService<TestsRunner>();
 		}
 
 		private static async Task UpdateJsonSerializerContextAsync(string projectName, string baseNamespace, string serializerContextPath, Type[] additionalSerializableTypes)
@@ -86,6 +160,13 @@ namespace ZoomNet.IntegrationTests
 			foreach (var type in additionalSerializableTypes ?? Enumerable.Empty<Type>())
 			{
 				newSerializerContext.AppendLine($"{tabs}[JsonSerializable(typeof({type.FullName}))]");
+			}
+
+			newSerializerContext.AppendLine();
+
+			foreach (var type in additionalSerializableTypes ?? Enumerable.Empty<Type>())
+			{
+				newSerializerContext.AppendLine($"{tabs}[JsonSerializable(typeof({type.GetFriendlyName()}[]))]");
 			}
 
 			newSerializerContext
@@ -109,7 +190,7 @@ namespace ZoomNet.IntegrationTests
 
 		private static string GenerateAttributesForSerializerContext(string baseNamespace, int tabIndex = 0)
 		{
-			// Handy code to generate the 'JsonSerializable' attributes for ZoomNetJsonSerializerContext
+			// Handy code to generate the 'JsonSerializable' attributes for JsonSerializerContext
 			var allTypes = Assembly
 				.GetAssembly(typeof(ZoomClient))
 				.GetTypes()
@@ -154,6 +235,83 @@ namespace ZoomNet.IntegrationTests
 		private static string GetThisFilePath([CallerFilePath] string path = null)
 		{
 			return path;
+		}
+
+		private static IConnectionInfo GetConnectionInfo(ConnectionType connectionType, TestType testType)
+		{
+			// Jwt
+			if (connectionType == ConnectionType.Jwt)
+			{
+				var apiKey = Environment.GetEnvironmentVariable("ZOOM_JWT_APIKEY", EnvironmentVariableTarget.User);
+				var apiSecret = Environment.GetEnvironmentVariable("ZOOM_JWT_APISECRET", EnvironmentVariableTarget.User);
+				return new JwtConnectionInfo(apiKey, apiSecret);
+			}
+
+			// OAuth
+			var clientIdVariableName = testType == TestType.Chatbot ? "ZOOM_CHATBOT_CLIENTID" : "ZOOM_OAUTH_CLIENTID";
+			var clientSecretVariableName = testType == TestType.Chatbot ? "ZOOM_CHATBOT_CLIENTSECRET" : "ZOOM_OAUTH_CLIENTSECRET";
+
+			var clientId = Environment.GetEnvironmentVariable(clientIdVariableName, EnvironmentVariableTarget.User);
+			var clientSecret = Environment.GetEnvironmentVariable(clientSecretVariableName, EnvironmentVariableTarget.User);
+
+			if (string.IsNullOrEmpty(clientId)) throw new Exception($"You must set the {clientIdVariableName} environment variable before you can run integration tests.");
+			if (string.IsNullOrEmpty(clientSecret)) throw new Exception($"You must set the {clientSecretVariableName} environment variable before you can run integration tests.");
+
+			switch (connectionType)
+			{
+				case ConnectionType.OAuthAuthorizationCode:
+					{
+						var authorizationCode = Environment.GetEnvironmentVariable("ZOOM_OAUTH_AUTHORIZATIONCODE", EnvironmentVariableTarget.User);
+
+						if (string.IsNullOrEmpty(authorizationCode)) throw new Exception("Either the autorization code environment variable has not been set or it's no longer available because you already used it once.");
+
+						return OAuthConnectionInfo.WithAuthorizationCode(clientId, clientSecret, authorizationCode,
+							(newRefreshToken, newAccessToken) =>
+							{
+								// Clear the authorization code because it's intended to be used only once
+								Environment.SetEnvironmentVariable("ZOOM_OAUTH_AUTHORIZATIONCODE", string.Empty, EnvironmentVariableTarget.User);
+								Environment.SetEnvironmentVariable("ZOOM_OAUTH_REFRESHTOKEN", newRefreshToken, EnvironmentVariableTarget.User);
+							});
+					}
+				case ConnectionType.OAuthRefreshToken:
+					{
+						var refreshToken = Environment.GetEnvironmentVariable("ZOOM_OAUTH_REFRESHTOKEN", EnvironmentVariableTarget.User);
+						if (string.IsNullOrEmpty(refreshToken)) throw new Exception("You must set the ZOOM_OAUTH_REFRESHTOKEN environment variable before you can run integration tests.");
+
+						return OAuthConnectionInfo.WithRefreshToken(clientId, clientSecret, refreshToken,
+							(newRefreshToken, newAccessToken) =>
+							{
+								Environment.SetEnvironmentVariable("ZOOM_OAUTH_REFRESHTOKEN", newRefreshToken, EnvironmentVariableTarget.User);
+							});
+					}
+				case ConnectionType.OAuthClientCredentials:
+					{
+						var accessTokenVariableName = testType == TestType.Chatbot ? "ZOOM_OAUTH_CHATBOT_ACCESSTOKEN" : "ZOOM_OAUTH_CLIENTCREDENTIALS_ACCESSTOKEN";
+						var accessToken = Environment.GetEnvironmentVariable(accessTokenVariableName, EnvironmentVariableTarget.User);
+
+						return OAuthConnectionInfo.WithClientCredentials(clientId, clientSecret, accessToken,
+							(newRefreshToken, newAccessToken) =>
+							{
+								Environment.SetEnvironmentVariable(accessTokenVariableName, newAccessToken, EnvironmentVariableTarget.User);
+							});
+					}
+				case ConnectionType.OAuthServerToServer:
+					{
+						var accountId = Environment.GetEnvironmentVariable("ZOOM_OAUTH_ACCOUNTID", EnvironmentVariableTarget.User);
+						var accessToken = Environment.GetEnvironmentVariable("ZOOM_OAUTH_SERVERTOSERVER_ACCESSTOKEN", EnvironmentVariableTarget.User);
+
+						return OAuthConnectionInfo.ForServerToServer(clientId, clientSecret, accountId, accessToken,
+							(newRefreshToken, newAccessToken) =>
+							{
+								Environment.SetEnvironmentVariable("ZOOM_OAUTH_SERVERTOSERVER_ACCESSTOKEN", newAccessToken, EnvironmentVariableTarget.User);
+							});
+					}
+				default:
+					{
+						throw new Exception("Unknwon connection type");
+					}
+			}
+			;
 		}
 	}
 }

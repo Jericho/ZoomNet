@@ -2,6 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://jericho.mit-license.org/)
 [![Sourcelink](https://img.shields.io/badge/sourcelink-enabled-brightgreen.svg)](https://github.com/dotnet/sourcelink)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FJericho%2FZoomNet.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FJericho%2FZoomNet?ref=badge_shield)
 
 [![Build status](https://ci.appveyor.com/api/projects/status/dak6s7m2b002nuf4/branch/develop?svg=true)](https://ci.appveyor.com/project/Jericho/zoomnet)
 [![Tests](https://img.shields.io/appveyor/tests/jericho/zoomnet/master.svg)](https://ci.appveyor.com/project/jericho/zoomnet/build/tests)
@@ -60,7 +61,6 @@ var zoomClient = new ZoomClient(connectionInfo);
 ```
 
 > **Warning:** <a href="https://marketplace.zoom.us/docs/guides/build/jwt-app/jwt-faq/">Zoom has announced</a> that this authentication method would be obsolete in June 2023. The recommendation is to swith to Server-to-Server OAuth.
-
 
 #### Connection using OAuth (General App)
 Using OAuth is much more complicated than using JWT but at the same time, it is more flexible because you can define which permissions your app requires. When a user installs your app, they are presented with the list of permissions your app requires and they are given the opportunity to accept. 
@@ -161,7 +161,7 @@ var zoomClient = new ZoomClient(connectionInfo);
 #### Multiple instances of your application in Server-to-Server OAuth scenarios
 
 > :exclamation: **Important Note**
-> The following discussion about how to prevent multiple apps (or multiple instances of a single app) from invalidating each other's OAuth token is obsolete since June 2023. See this [announcement](https://devforum.zoom.us/t/multi-access-tokens-launched-for-s2s-apps/90527). All three potential solutions mentioned in the discussion are now unnecessary because Zoom has changed the behavior of their platform that was the root of this problem. In particular, the "token index" mentioned in solution number 2 has been removed in ZoomNet version 0.64.0 and the much more advanced solution mentioned in solution number 3 (which was available as a beta) has been abandoned.
+> The following discussion about how to prevent multiple apps (or multiple instances of a single app) from invalidating each other's OAuth token is obsolete since June 2023. See this [announcement](https://devforum.zoom.us/t/multi-access-tokens-launched-for-s2s-apps/90527). All three potential solutions mentioned in the discussion are now unnecessary because Zoom has changed the behavior of their platform which was the root of this problem. In particular, the "token index" mentioned in solution number 2 has been removed in ZoomNet version 0.64.0 and the much more advanced solution mentioned in solution number 3 (which was available as a beta) has been abandoned.
 
 <strike>
 
@@ -203,6 +203,78 @@ If this solution sounds like a good option for your scenario, you're in luck: th
 
 </strike>
 
+### Lifetime management
+By default, the ZoomNet client creates a new instance of HttpClient in order to send requests to the Zoom API. This means that the lifetime guidance for ``ZoomClient`` is the same as the lifetime guidance for HttpClient. Microsoft's documentation states the following:
+
+> HttpClient is intended to be instantiated once and re-used throughout the life of an application. Instantiating an HttpClient class for every request will exhaust the number of sockets available under heavy loads. This will result in SocketException errors.
+
+Keeping Microsoft's guidance in mind, my best advice to developers who are using ZoomNet is to avoid constantly instantiating new `ZoomClient` because it can lead to socket exhaustion under heavy load. In my opinion, one of the best explanation of the problem with short-lived HTTP clients was [written by Simon Simms back in August 2016](https://www.aspnetmonsters.com/2016/08/2016-08-27-httpclientwrong/) but there are many other similar articles you can find with a quick Google search.
+
+Please note that `ZoomClient` has a constructor that allows you to provide your own HttpClient wich means that you could instantiate a new `ZoomClient` as often as you want as long as you provide your own HttpClient and you properly manage the lifetime of this HttpClient.
+
+In summary:
+
+- It's best to instantiate the ZoomClient once and re-use it.
+- You can instantiate a new ZoomClient as often as you desire as long as you provide your own HttpClient and you properly manage the lifetime of this HttpClient.
+
+Having said all this, there's an even better approach if you are using an IoC container (see next section).
+
+### Inversion of Control (IoC)
+If you are using [Microsoft.Extensions.DependencyInjection](https://docs.microsoft.com/en-us/dotnet/core/extensions/dependency-injection), the ZoomNet library contains a convenient extension method that will register and manage the litetime of the `ZoomClient` as well as manage the underlying HttpClient, all with the goal of avoiding socket exhaustion.
+For other IoC containers (Autofac, SimpleInjector, Pure.DI, etc.), you'll need to register services manually using similar patterns.
+
+1. Here's an example showing how to register the ZoomNet client for .NET 8+ web apps:
+```csharp
+var builder = WebApplication.CreateBuilder(args);
+// Add services to the container.
+var connectionInfo = OAuthConnectionInfo.ForServerToServer(clientId, clientSecret, accountId);
+builder.Services.AddZoomNet(connectionInfo);
+// ...
+var app = builder.Build();
+// ...
+app.Run();
+```
+
+and here's how this ZoomNet client would be used in a service:
+```csharp
+public class MyMeetingService
+{
+    private readonly IZoomClient _zoomClient; 
+    
+    public MyEmailService(IZoomClient zoomClient)
+    {
+        _zoomClient = zoomClient;
+    }
+    
+    public async Task GetScheduledMeetingsAsync()
+    {
+        var paginatedScheduledMeetings = await client.Meetings.GetAllAsync(/* ... */);
+
+        /* ... do something with the list of meetings ... */
+    }
+}
+```
+
+2. Here's another example, this one for a console Applications & Worker Services (Using Generic Host):
+```csharp
+var builder = Host.CreateApplicationBuilder(args);
+var connectionInfo = OAuthConnectionInfo.ForServerToServer(clientId, clientSecret, accountId);
+builder.Services.AddZoomNet(connectionInfo);
+
+var host = builder.Build();
+var zoomClient = host.Services.GetRequiredService<IZoomClient>();
+var paginatedScheduledMeetings = await client.Meetings.GetAllAsync(/* ... */);
+```
+
+3. Here's an example for simple console applications or utilities where you don't need the full Generic Host:
+```csharp
+var services = new ServiceCollection();
+var connectionInfo = OAuthConnectionInfo.ForServerToServer(clientId, clientSecret, accountId);
+builder.Services.AddZoomNet(connectionInfo);
+var serviceProvider = services.BuildServiceProvider();
+var zoomClient = host.Services.GetRequiredService<IZoomClient>();
+var paginatedScheduledMeetings = await client.Meetings.GetAllAsync(/* ... */);
+```
 
 ### Webhook Parser
  
@@ -230,7 +302,7 @@ namespace WebApplication1.Controllers
 }
 ```
 
-### How to handle unknown webhook event types
+#### How to handle unknown webhook event types
 
 As of this writing, the ZoomNet webhook parser can handle a little over 40 different event types (such as `meeting.created`, `meeting.started`, `webinar.updated` and `recording.completed` for example) but there more than 100 possible event types defined in the Zoom API.
 By default, the ZoomNet webhook parser will throw an exception when it encounters an event type that it doesn't know how to handle. Our intent is to eventually be able to handle every possible event type in the future but, as you can imagine, it's quite a daunting task to add the necessary logic in this library for each and every event type.
@@ -260,7 +332,7 @@ else
 ```
 
 
-### Ensuring that webhooks originated from Zoom before parsing
+#### Ensuring that webhooks originated from Zoom before parsing
 
 It is possible for you to verify that a webhook is legitimate and originated from Zoom.
 Any webhook that fails to be verified should be considered suspicious and should be discarded.
@@ -307,7 +379,7 @@ namespace WebApplication1.Controllers
 }
 ```
 
-### Responding to requests from Zoom to validate your webhook endpoint
+#### Responding to requests from Zoom to validate your webhook endpoint
 
 When you initially configure the URL where you want Zoom to post the webhooks, Zoom will send a request to this URL and you are expected to respond to this validation challenge in a way that can be validated by the Zoom API. Zoom calls this a "Challenge-Response check (CRC)". Assuming this initial validation is successful, the Zoom API will repeat this validation process every 72 hours. You can of course manually craft this reponse by following Zoom's [instructions](https://marketplace.zoom.us/docs/api-reference/webhook-reference/#validate-your-webhook-endpoint).
 However, if you want to avoid learning the intricacies of the reponse expected by Zoom and you simply want this response to be conveniently generated for you, ZoomNet can help! 
@@ -340,7 +412,7 @@ namespace WebApplication1.Controllers
 }
 ```
 
-### The ultimate webhook controller
+#### The ultimate webhook controller
 
 Here's the "ultimate" webhook controller which combines all the above features:
 
@@ -410,7 +482,7 @@ namespace WebApplication1.Controllers
 }
 ```
 
-### Webhooks over websockets
+#### Webhooks over websockets
 
 As of this writing (October 2022), webhooks over websocket is in public beta testing and you can signup if you want to participate in the beta (see [here](https://marketplace.zoom.us/docs/api-reference/websockets/)). 
 
@@ -463,3 +535,6 @@ When you configure your webhook over websocket in the Zoom Marketplace, Zoom wil
 ![Screenshot](https://user-images.githubusercontent.com/112710/196733937-7813abdd-9cb5-4a35-ad69-d5f6ac9676e4.png)
 
 Your subscription Id is the last part of the URL. In the example above, the generated URL is similar to `wss://api.zoom.us/v2/webhooks/events?subscription_id=1234567890` and therefore the subscription id is `1234567890`.
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FJericho%2FZoomNet.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FJericho%2FZoomNet?ref=badge_large)

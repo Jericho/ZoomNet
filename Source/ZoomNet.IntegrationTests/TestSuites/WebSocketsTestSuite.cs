@@ -9,12 +9,16 @@ namespace ZoomNet.IntegrationTests.TestSuites
 {
 	internal class WebSocketsTestSuite : TestSuite
 	{
+		private readonly IConnectionInfo _connectionInfo;
 		private readonly string _subscriptionId;
+		private readonly IWebProxy _proxy;
 
 		public WebSocketsTestSuite(IConnectionInfo connectionInfo, string subscriptionId, IWebProxy proxy, ILoggerFactory loggerFactory) :
-			base(connectionInfo, proxy, loggerFactory, Array.Empty<Type>(), false)
+			base(null, loggerFactory, Array.Empty<Type>(), false)
 		{
+			_connectionInfo = connectionInfo;
 			_subscriptionId = subscriptionId;
+			_proxy = proxy;
 		}
 
 		public override async Task<ResultCodes> RunTestsAsync(CancellationToken cancellationToken)
@@ -35,7 +39,7 @@ namespace ZoomNet.IntegrationTests.TestSuites
 			};
 
 			// Start the websocket client
-			using var client = new ZoomWebSocketClient(base.ConnectionInfo, _subscriptionId, eventProcessor, base.Proxy, logger);
+			using var client = new ZoomWebSocketClient(_connectionInfo, _subscriptionId, eventProcessor, _proxy, logger);
 			await client.StartAsync(cancellationToken).ConfigureAwait(false);
 			exitEvent.WaitOne();
 
