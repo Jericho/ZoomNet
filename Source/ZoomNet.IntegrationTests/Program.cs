@@ -59,7 +59,6 @@ namespace ZoomNet.IntegrationTests
 			var additionalSerializableTypes = new[]
 			{
 				typeof(System.Text.Json.Nodes.JsonObject),
-				typeof(System.Text.Json.Nodes.JsonObject[]),
 			};
 			await UpdateJsonSerializerContextAsync("ZoomNet", "ZoomNet.Models", serializerContextPath, additionalSerializableTypes).ConfigureAwait(false);
 
@@ -161,6 +160,13 @@ namespace ZoomNet.IntegrationTests
 			foreach (var type in additionalSerializableTypes ?? Enumerable.Empty<Type>())
 			{
 				newSerializerContext.AppendLine($"{tabs}[JsonSerializable(typeof({type.FullName}))]");
+			}
+
+			newSerializerContext.AppendLine();
+
+			foreach (var type in additionalSerializableTypes ?? Enumerable.Empty<Type>())
+			{
+				newSerializerContext.AppendLine($"{tabs}[JsonSerializable(typeof({type.GetFriendlyName()}[]))]");
 			}
 
 			newSerializerContext
