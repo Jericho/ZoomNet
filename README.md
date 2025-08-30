@@ -2,6 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://jericho.mit-license.org/)
 [![Sourcelink](https://img.shields.io/badge/sourcelink-enabled-brightgreen.svg)](https://github.com/dotnet/sourcelink)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FJericho%2FZoomNet.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FJericho%2FZoomNet?ref=badge_shield)
 
 [![Build status](https://ci.appveyor.com/api/projects/status/dak6s7m2b002nuf4/branch/develop?svg=true)](https://ci.appveyor.com/project/Jericho/zoomnet)
 [![Tests](https://img.shields.io/appveyor/tests/jericho/zoomnet/master.svg)](https://ci.appveyor.com/project/jericho/zoomnet/build/tests)
@@ -534,3 +535,6 @@ When you configure your webhook over websocket in the Zoom Marketplace, Zoom wil
 ![Screenshot](https://user-images.githubusercontent.com/112710/196733937-7813abdd-9cb5-4a35-ad69-d5f6ac9676e4.png)
 
 Your subscription Id is the last part of the URL. In the example above, the generated URL is similar to `wss://api.zoom.us/v2/webhooks/events?subscription_id=1234567890` and therefore the subscription id is `1234567890`.
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FJericho%2FZoomNet.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FJericho%2FZoomNet?ref=badge_large)
