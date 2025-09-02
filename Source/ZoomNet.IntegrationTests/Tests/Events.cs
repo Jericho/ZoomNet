@@ -250,6 +250,12 @@ namespace ZoomNet.IntegrationTests.Tests
 			var newExhibitor = await client.Events.CreateExhibitorAsync(newConference.Id, "ZoomNet Integration Testing: Exhibitor", "John Doe", "john@example.com", true, sponsorTiers.First().Id, "This is the description", new[] { "QnjbUW7ORu2sjvjNfjf_zQ", "iERy5vUPRW259kk9l0zNbQ" }, "https://mywebsite.com/example", "https://mywebsite.com/example", "https://linkedin.com/example", "https://twitter.com/example", "https://youtube.com/example", "https://instagram.com/profile", "https://facebook.com/profile", cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Exhibitor created").ConfigureAwait(false);
 
+			await client.Events.UpdateExhibitorAsync(newConference.Id, newExhibitor.Id, "ZoomNet Integration Testing: updated exhibitor name", cancellationToken: cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Exhibitor Updated").ConfigureAwait(false);
+
+			newExhibitor = await client.Events.GetExhibitorAsync(newConference.Id, newExhibitor.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Exhibitor {newExhibitor.Id} retrieved").ConfigureAwait(false);
+
 			var newSpeaker = await client.Events.CreateSpeakerAsync(newConference.Id, "ZoomNet Integration Testing: Speaker", "joe@example.com", cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Speaker created").ConfigureAwait(false);
 
