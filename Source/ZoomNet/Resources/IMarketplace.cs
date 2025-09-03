@@ -108,7 +108,7 @@ namespace ZoomNet.Resources
 		/// <param name="userIds">The user Ids.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The async task.</returns>
-		Task AddAllowRequestForUsers(string appId, IEnumerable<string> userIds, CancellationToken cancellationToken = default);
+		Task AddAllowRequestForUsersAsync(string appId, IEnumerable<string> userIds, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Add app allow requests for groups​.
@@ -117,6 +117,6 @@ namespace ZoomNet.Resources
 		/// <param name="groupIds">The group Ids.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The async task.</returns>
-		Task AddAllowRequestForGroups(string appId, IEnumerable<string> groupIds, CancellationToken cancellationToken = default);
+		Task AddAllowRequestForGroupsAsync(string appId, IEnumerable<string> groupIds, CancellationToken cancellationToken = default);
 	}
 }
