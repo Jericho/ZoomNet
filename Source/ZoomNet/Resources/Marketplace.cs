@@ -95,7 +95,7 @@ namespace ZoomNet.Resources
 				{ "event_subscription_name", subscriptionName },
 				{ "event_webhook_url", webhookUrl.AbsoluteUri },
 				{ "user_ids", userIds?.ToArray() },
-				{ "subscription_scope",subscriptionScope },
+				{ "subscription_scope", subscriptionScope },
 				{ "account_id", accountId },
 			};
 
@@ -116,7 +116,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task AddAllowRequestForUsers(string appId, IEnumerable<string> userIds, CancellationToken cancellationToken = default)
+		public Task AddAllowRequestForUsersAsync(string appId, IEnumerable<string> userIds, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
@@ -132,7 +132,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task AddAllowRequestForGroups(string appId, IEnumerable<string> groupIds, CancellationToken cancellationToken = default)
+		public Task AddAllowRequestForGroupsAsync(string appId, IEnumerable<string> groupIds, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
