@@ -739,7 +739,7 @@ namespace ZoomNet
 		/// <param name="connectionInfo">The connection information used to authenticate with the Zoom API. This parameter cannot be <see
 		/// langword="null"/>.</param>
 		/// <param name="clientOptions">Optional configuration options for the ZoomNet client. If <see langword="null"/>, default options will be used.</param>
-		/// <param name="httpClientName">The name of the <see cref="HttpClient"/> to be created. Defaults to "ZomNet".</param>
+		/// <param name="httpClientName">The name of the <see cref="HttpClient"/> to be created. Defaults to "ZoomNet".</param>
 		/// <returns>An <see cref="IHttpClientBuilder"/> that can be used to further configure the underlying <see cref="HttpClient"/>.</returns>
 		public static IHttpClientBuilder AddZoomNet(this IServiceCollection services, IConnectionInfo connectionInfo, ZoomClientOptions clientOptions = null, string httpClientName = "ZoomNet")
 		{
@@ -757,9 +757,9 @@ namespace ZoomNet
 		/// langword="null"/>.</param>
 		/// <param name="proxy">The <see cref="IWebProxy"/> to use for HTTP requests. If <see langword="null"/>, no proxy will be used.</param>
 		/// <param name="clientOptions">Optional configuration options for the ZoomNet client. If <see langword="null"/>, default options will be used.</param>
-		/// <param name="httpClientName">The name of the <see cref="HttpClient"/> to be created. Defaults to "ZomNet".</param>
+		/// <param name="httpClientName">The name of the <see cref="HttpClient"/> to be created. Defaults to "ZoomNet".</param>
 		/// <returns>An <see cref="IHttpClientBuilder"/> that can be used to further configure the underlying <see cref="HttpClient"/>.</returns>
-		public static IHttpClientBuilder AddZoomNet(this IServiceCollection services, IConnectionInfo connectionInfo, IWebProxy proxy, ZoomClientOptions clientOptions = null, string httpClientName = "ZomNet")
+		public static IHttpClientBuilder AddZoomNet(this IServiceCollection services, IConnectionInfo connectionInfo, IWebProxy proxy, ZoomClientOptions clientOptions = null, string httpClientName = "ZoomNet")
 		{
 			var httpClientBuilder = services
 				.AddHttpClient(httpClientName)
