@@ -763,6 +763,7 @@ namespace ZoomNet
 		{
 			var httpClientBuilder = services
 				.AddHttpClient(httpClientName)
+				.RemoveAllLoggers() // No need for the built-in HttlClient logger(s). We rely on ZoomNet's custom logger instead.
 				.ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler()
 				{
 					Proxy = proxy,
