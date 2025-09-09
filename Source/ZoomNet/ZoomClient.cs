@@ -159,15 +159,8 @@ namespace ZoomNet
 		/// <param name="options">Options for the Zoom client.</param>
 		/// <param name="logger">Logger.</param>
 		public ZoomClient(IConnectionInfo connectionInfo, IWebProxy proxy, ZoomClientOptions options = null, ILogger logger = null)
-			: this(connectionInfo, new HttpClient(new HttpClientHandler { Proxy = proxy, UseProxy = proxy != null, CheckCertificateRevocationList = proxy == null }), true, options, logger)
+			: this(connectionInfo, new HttpClient(new HttpClientHandler { Proxy = proxy, UseProxy = proxy != null }), true, options, logger)
 		{
-			// Please note: SSL certificate revocation check is turned off when a proxy is specified.
-			// This restores the pre .NET 10 behavior and ensures proxy certificates (such as Fiddler's
-			// cert for example) are not declared invalid with this exception:
-			// "The remote certificate is invalid because of errors in the certificate chain: RevocationStatusUnknown".
-			// The breaking change introduced in .NET 10 preview 6 is documented here:
-			// https://learn.microsoft.com/en-us/dotnet/core/compatibility/networking/10.0/ssl-certificate-revocation-check-default
-			// and discussed here: https://github.com/dotnet/runtime/issues/117681
 		}
 
 		/// <summary>
