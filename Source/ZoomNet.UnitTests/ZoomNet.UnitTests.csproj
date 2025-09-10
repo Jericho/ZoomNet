@@ -9,7 +9,6 @@
     <OutputType>Exe</OutputType>
   </PropertyGroup>
 
-  <!-- Enable the MSTest runner -->
   <PropertyGroup>
     <EnableMSTestRunner>true</EnableMSTestRunner>
     <UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
