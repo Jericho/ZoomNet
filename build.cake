@@ -236,13 +236,13 @@ Task("Run-Unit-Tests")
 	.IsDependentOn("Build")
 	.Does(() =>
 {
-	DotNetTest(unitTestsProject, new DotNetTestSettings
+	DotNetTest(null, new DotNetTestSettings
 	{
 		NoBuild = true,
 		NoRestore = true,
 		Configuration = configuration,
 		ArgumentCustomization = args => args
-			.Append($"-tl:{terminalLogger}")
+			.Append($"--project {unitTestsProject}")
 	});
 });
 

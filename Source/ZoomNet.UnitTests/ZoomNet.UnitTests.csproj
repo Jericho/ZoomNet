@@ -17,7 +17,7 @@
 
   <ItemGroup>
     <PackageReference Include="MartinCostello.Logging.XUnit.v3" Version="0.6.0" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.0-rc.1.25451.107" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.10" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.0" />
     <PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" Version="18.1.0" />
@@ -28,7 +28,7 @@
     </PackageReference>
     <PackageReference Include="RichardSzalay.MockHttp" Version="7.0.0" />
     <PackageReference Include="Shouldly" Version="4.3.0" />
-    <PackageReference Include="System.Text.Json" Version="9.0.10" />
+    <PackageReference Include="System.Text.Json" Version="10.0.0-rc.1.25451.107" />
     <PackageReference Include="xunit.v3.mtp-v2" Version="3.2.0" />
   </ItemGroup>
 
