@@ -40,13 +40,16 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<MeetingSummary>> GetAllAsync(string userId, MeetingListType type = MeetingListType.Scheduled, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<MeetingSummary>> GetAllAsync(string userId, MeetingListType? type = null, DateTime? from = null, DateTime? to = null, TimeZones? timeZone = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync($"users/{userId}/meetings")
-				.WithArgument("type", type.ToEnumString())
+				.WithArgument("type", type?.ToEnumString())
+				.WithArgument("from", from?.ToZoomFormat(timeZone))
+				.WithArgument("to", to?.ToZoomFormat(timeZone))
+				.WithArgument("timezone", timeZone?.ToEnumString())
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)

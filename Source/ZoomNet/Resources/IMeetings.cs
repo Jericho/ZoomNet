@@ -36,6 +36,9 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="userId">The user Id or email address.</param>
 		/// <param name="type">The type of meetings. Allowed values: Scheduled, Live, Upcoming.</param>
+		/// <param name="from">The start date.</param>
+		/// <param name="to">The end date.</param>
+		/// <param name="timeZone">The time zone for start and end date. If not specified, the default is UTC.</param>
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pagingToken">The paging token.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
@@ -45,7 +48,7 @@ namespace ZoomNet.Resources
 		/// <remarks>
 		/// To obtain the full details about a given meeting you must invoke <see cref="Meetings.GetAsync(long, string, bool, CancellationToken)"/>.
 		/// </remarks>
-		Task<PaginatedResponseWithToken<MeetingSummary>> GetAllAsync(string userId, MeetingListType type = MeetingListType.Scheduled, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<MeetingSummary>> GetAllAsync(string userId, MeetingListType? type = null, DateTime? from = null, DateTime? to = null, TimeZones? timeZone = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Creates an instant meeting for a user.
