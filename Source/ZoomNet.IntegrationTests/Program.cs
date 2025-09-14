@@ -92,9 +92,14 @@ namespace ZoomNet.IntegrationTests
 				options.TimestampFormat = "yyyy-MM-dd HH:mm:ss ";
 			});
 
+			// During API testing we want to filter out logs below Information level to avoid being overwhelmed with too many messages.
+			// However, during WebSocket testing we want to see all the Trace messages.
+			var consoleMinLoggingLevel = _testType == TestType.WebSockets ? LogLevel.Trace : LogLevel.Information;
+
+			// Set a global minimum log level and then override it for the console provider.
 			logging
-				.SetMinimumLevel(LogLevel.Debug) // Set the minimum log level to Debug
-				.AddFilter<ConsoleLoggerProvider>(logLevel => logLevel > LogLevel.Information); // Filter out logs below Information level for ConsoleLoggerProvider
+				.SetMinimumLevel(LogLevel.Debug)
+				.AddFilter<ConsoleLoggerProvider>(logLevel => logLevel >= consoleMinLoggingLevel);
 		}
 
 		private static void ConfigureServices(IServiceCollection services)

@@ -23,6 +23,7 @@ namespace ZoomNet
 		private readonly ILogger _logger;
 		private readonly IWebProxy _proxy;
 		private readonly Func<Models.Webhooks.Event, CancellationToken, Task> _eventProcessor;
+		private readonly bool _throwWhenUnknownEventType;
 
 		private WebsocketClient _websocketClient;
 		private HttpClient _httpClient;
@@ -37,6 +38,20 @@ namespace ZoomNet
 		/// <param name="proxy">Allows you to specify a proxy.</param>
 		/// <param name="logger">Logger.</param>
 		public ZoomWebSocketClient(IConnectionInfo connectionInfo, string subscriptionId, Func<Models.Webhooks.Event, CancellationToken, Task> eventProcessor, IWebProxy proxy = null, ILogger logger = null)
+			: this(connectionInfo, subscriptionId, eventProcessor, false, proxy, logger)
+		{
+		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="ZoomWebSocketClient"/> class.
+		/// </summary>
+		/// <param name="connectionInfo">Connection information.</param>
+		/// <param name="subscriptionId">Your subscirption Id.</param>
+		/// <param name="eventProcessor">A delegate that will be invoked when a wehook message is received.</param>
+		/// <param name="throwWhenUnknownEventType">Indicates whether an exception should be thrown when an unknown event type is encountered.</param>
+		/// <param name="proxy">Allows you to specify a proxy.</param>
+		/// <param name="logger">Logger.</param>
+		public ZoomWebSocketClient(IConnectionInfo connectionInfo, string subscriptionId, Func<Models.Webhooks.Event, CancellationToken, Task> eventProcessor, bool throwWhenUnknownEventType, IWebProxy proxy = null, ILogger logger = null)
 		{
 			// According to https://marketplace.zoom.us/docs/api-reference/websockets/, only Server-to-Server OAuth connections are supported
 			if (connectionInfo == null) throw new ArgumentNullException(nameof(connectionInfo));
@@ -51,6 +66,7 @@ namespace ZoomNet
 			_logger = logger ?? NullLogger.Instance;
 			_httpClient = new HttpClient(new HttpClientHandler { Proxy = _proxy, UseProxy = _proxy != null });
 			_tokenHandler = new OAuthTokenHandler(oAuthConnectionInfo, _httpClient);
+			_throwWhenUnknownEventType = throwWhenUnknownEventType;
 
 			var clientFactory = new Func<Uri, CancellationToken, Task<WebSocket>>(async (uri, cancellationToken) =>
 			{
@@ -178,7 +194,7 @@ namespace ZoomNet
 					_logger.LogTrace("Received message: {module}. Server is acknowledging heartbeat.", module);
 					break;
 				case "message":
-					var parser = new WebhookParser();
+					var parser = new WebhookParser(_throwWhenUnknownEventType);
 					var webhookEvent = parser.ParseEventWebhook(content);
 					var eventType = webhookEvent.EventType;
 					_logger.LogTrace("Received webhook event: {eventType}", eventType);

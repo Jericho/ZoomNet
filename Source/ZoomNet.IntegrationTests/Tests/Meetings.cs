@@ -15,27 +15,11 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync("\n***** MEETINGS *****\n").ConfigureAwait(false);
 
 			// GET ALL THE MEETINGS
-			var paginatedScheduledMeetings = await client.Meetings.GetAllAsync(myUser.Id, MeetingListType.Scheduled, 100, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"There are {paginatedScheduledMeetings.TotalRecords} scheduled meetings").ConfigureAwait(false);
-
-			var paginatedLiveMeetings = await client.Meetings.GetAllAsync(myUser.Id, MeetingListType.Live, 100, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"There are {paginatedLiveMeetings.TotalRecords} live meetings").ConfigureAwait(false);
-
-			var paginatedUpcomingMeetings = await client.Meetings.GetAllAsync(myUser.Id, MeetingListType.Upcoming, 100, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"There are {paginatedUpcomingMeetings.TotalRecords} upcoming meetings").ConfigureAwait(false);
-
-			var paginatedUpcomingMeetingsMeetings = await client.Meetings.GetAllAsync(myUser.Id, MeetingListType.UpcomingMeetings, 100, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"There are {paginatedUpcomingMeetingsMeetings.TotalRecords} UpcomingMeetings meetings").ConfigureAwait(false);
-
-			var paginatedPreviousMeetings = await client.Meetings.GetAllAsync(myUser.Id, MeetingListType.PreviousMeetings, 100, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"There are {paginatedPreviousMeetings.TotalRecords} previous meetings").ConfigureAwait(false);
+			var allMeetings = await client.Meetings.GetAllAsync(myUser.Id, null, null, null, null, 100, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {allMeetings.TotalRecords} meetings").ConfigureAwait(false);
 
 			// CLEANUP PREVIOUS INTEGRATION TESTS THAT MIGHT HAVE BEEN INTERRUPTED BEFORE THEY HAD TIME TO CLEANUP AFTER THEMSELVES
-			var cleanUpTasks = paginatedScheduledMeetings.Records
-				.Union(paginatedLiveMeetings.Records)
-				.Union(paginatedUpcomingMeetings.Records)
-				.Union(paginatedUpcomingMeetingsMeetings.Records)
-				.Union(paginatedPreviousMeetings.Records)
+			var cleanUpTasks = allMeetings.Records
 				.Where(m => m.Topic.StartsWith("ZoomNet Integration Testing:"))
 				.GroupBy(m => m.Id)
 				.Select(async grp =>

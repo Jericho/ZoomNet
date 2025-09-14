@@ -14,11 +14,11 @@ namespace ZoomNet.Json
 	/// <seealso cref="ZoomNetJsonConverter{T}"/>
 	internal class WebHookEventConverter : ZoomNetJsonConverter<Models.Webhooks.Event>
 	{
-		private readonly bool _throwWhenUnknownEvent;
+		private readonly bool _throwWhenUnknownEventType;
 
 		public WebHookEventConverter(bool throwWhenUnknownEventType = true)
 		{
-			_throwWhenUnknownEvent = throwWhenUnknownEventType;
+			_throwWhenUnknownEventType = throwWhenUnknownEventType;
 		}
 
 		public override Models.Webhooks.Event Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -33,7 +33,7 @@ namespace ZoomNet.Json
 
 			if (!eventTypeName.TryToEnum(out eventType))
 			{
-				if (_throwWhenUnknownEvent)
+				if (_throwWhenUnknownEventType)
 				{
 					throw new ArgumentException($"{eventTypeName} is not a recognized event type.", nameof(eventTypeName));
 				}
