@@ -5,8 +5,8 @@
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FJericho%2FZoomNet.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FJericho%2FZoomNet?ref=badge_shield)
 
 [![Build status](https://ci.appveyor.com/api/projects/status/dak6s7m2b002nuf4/branch/develop?svg=true)](https://ci.appveyor.com/project/Jericho/zoomnet)
-[![Tests](https://img.shields.io/appveyor/tests/jericho/zoomnet/master.svg)](https://ci.appveyor.com/project/jericho/zoomnet/build/tests)
-[![Coverage Status](https://coveralls.io/repos/github/Jericho/ZoomNet/badge.svg?branch=master)](https://coveralls.io/github/Jericho/ZoomNet?branch=master)
+![Tests](https://img.shields.io/appveyor/tests/jericho/zoomnet)
+[![Coverage Status](https://codecov.io/gh/Jericho/ZoomNet/graph/badge.svg?token=5LEzNbBG2O)](https://codecov.io/gh/Jericho/ZoomNet)
 [![CodeFactor](https://www.codefactor.io/repository/github/jericho/zoomnet/badge)](https://www.codefactor.io/repository/github/jericho/zoomnet)
 
 | Release Notes| NuGet (stable) | MyGet (prerelease) |
