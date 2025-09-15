@@ -8,9 +8,9 @@
 [![Coverage Status](https://codecov.io/gh/Jericho/ZoomNet/graph/badge.svg?token=5LEzNbBG2O)](https://codecov.io/gh/Jericho/ZoomNet)
 [![CodeFactor](https://www.codefactor.io/repository/github/jericho/zoomnet/badge)](https://www.codefactor.io/repository/github/jericho/zoomnet)
 
-| Release Notes| NuGet (stable) | MyGet (prerelease) |
-|--------------|----------------|--------------------|
-| [![GitHub release](https://img.shields.io/github/release/jericho/zoomnet.svg)](https://github.com/Jericho/ZoomNet/releases) | [![NuGet Version](https://img.shields.io/nuget/v/ZoomNet.svg)](https://www.nuget.org/packages/ZoomNet/) | [![MyGet Pre Release](https://img.shields.io/myget/jericho/vpre/ZoomNet.svg)](https://myget.org/gallery/jericho) |
+| Release Notes| NuGet (stable) | Feedz.IO (prerelease) |
+|--------------|----------------|-----------------------|
+| [![GitHub release](https://img.shields.io/github/release/jericho/zoomnet.svg)](https://github.com/Jericho/ZoomNet/releases) | [![NuGet Version](https://img.shields.io/nuget/v/ZoomNet.svg)](https://www.nuget.org/packages/ZoomNet/) | [![Feedz Version](https://img.shields.io/feedz/vpre/jericho/jericho/ZoomNet)](https://github.com/Jericho/Jericho/blob/main/MyNugetFeed.md) |
 
 
 ## About
