@@ -110,7 +110,37 @@ namespace ZoomNet.UnitTests.Json
 		}
 
 		[Fact]
-		public void Throws_when_reading_string()
+		public void Throws_when_null_value()
+		{
+			// Arrange
+			var json = "{\"key\": null}";
+			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(json);
+			var jsonReader = new Utf8JsonReader(jsonUtf8);
+			var objectType = (Type)null;
+			var options = new JsonSerializerOptions();
+
+			var converter = new BooleanConverter();
+
+			// Act
+			jsonReader.Read(); // StartObject
+			jsonReader.Read(); // PropertyName (which in this example is "key")
+			jsonReader.Read(); // the Null value
+
+			try
+			{
+				var result = converter.Read(ref jsonReader, objectType, options);
+			}
+			catch (JsonException e)
+			{
+				e.Message.ShouldBe("Unable to convert a null value into a boolean value");
+
+				// Unfortunately, cannot use Should.Throw<JsonException>(() => converter.Read(ref jsonReader, objectType, options));
+				// because we can't use 'ref' arguments in lambda expressions.
+			}
+		}
+
+		[Fact]
+		public void Throws_when_reading_any_other_data_type()
 		{
 			// Arrange
 			var json = "\"Strings are not handled by our boolean converter\"";
@@ -128,9 +158,10 @@ namespace ZoomNet.UnitTests.Json
 			{
 				var result = converter.Read(ref jsonReader, objectType, options);
 			}
-			catch (JsonException)
+			catch (JsonException e)
 			{
-				// Intentionally swallow this exception. This is the expected behavior when attempting to parse a string.
+				e.Message.ShouldBe("Unable to convert the content of String JSON node into a boolean value");
+
 				// Unfortunately, cannot use Should.Throw<JsonException>(() => converter.Read(ref jsonReader, objectType, options));
 				// because we can't use 'ref' arguments in lambda expressions.
 			}
@@ -159,6 +190,5 @@ namespace ZoomNet.UnitTests.Json
 			// Assert
 			result.ShouldBe(expectedValue);
 		}
-
 	}
 }
