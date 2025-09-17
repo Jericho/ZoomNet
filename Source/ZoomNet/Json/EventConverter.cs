@@ -15,7 +15,8 @@ namespace ZoomNet.Json
 			var doc = JsonDocument.ParseValue(ref reader);
 			var rootElement = doc.RootElement;
 
-			var eventType = rootElement.GetPropertyValue<string>("event_type").ToEnum<EventType>();
+			var rawEventType = rootElement.GetPropertyValue<string>("event_type");
+			if (!rawEventType.TryToEnum(out EventType eventType)) throw new JsonException($"{rawEventType} is an unknown event type");
 
 			switch (eventType)
 			{
