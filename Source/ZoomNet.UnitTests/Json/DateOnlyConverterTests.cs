@@ -34,7 +34,7 @@ namespace ZoomNet.UnitTests.Json
 		public void Throws_when_null_value()
 		{
 			// Arrange
-			var json = "{\"key\": null}";
+			var json = "null";
 			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(json);
 			var jsonReader = new Utf8JsonReader(jsonUtf8);
 			var objectType = (Type)null;
@@ -43,9 +43,7 @@ namespace ZoomNet.UnitTests.Json
 			var converter = new DateOnlyConverter();
 
 			// Act
-			jsonReader.Read(); // StartObject
-			jsonReader.Read(); // PropertyName (which in this example is "key")
-			jsonReader.Read(); // the Null value
+			jsonReader.Read();
 
 			try
 			{

@@ -1,5 +1,6 @@
 using Shouldly;
 using System;
+using System.IO;
 using System.Text;
 using System.Text.Json;
 using Xunit;
@@ -13,7 +14,7 @@ namespace ZoomNet.UnitTests.Json
 		public void Returns_empty_aray_when_null_value()
 		{
 			// Arrange
-			var json = "{\"key\": null}";
+			var json = "null";
 			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(json);
 			var jsonReader = new Utf8JsonReader(jsonUtf8);
 			var objectType = (Type)null;
@@ -22,9 +23,7 @@ namespace ZoomNet.UnitTests.Json
 			var converter = new DaysOfWeekConverter();
 
 			// Act
-			jsonReader.Read(); // StartObject
-			jsonReader.Read(); // PropertyName (which in this example is "key")
-			jsonReader.Read(); // the Null value
+			jsonReader.Read();
 
 			var result = converter.Read(ref jsonReader, objectType, options);
 
@@ -65,7 +64,7 @@ namespace ZoomNet.UnitTests.Json
 			var objectType = (Type)null;
 			var options = new JsonSerializerOptions();
 
-			var converter = new DayOfWeekConverter();
+			var converter = new DaysOfWeekConverter();
 
 			// Act
 			jsonReader.Read();
@@ -83,23 +82,19 @@ namespace ZoomNet.UnitTests.Json
 			}
 		}
 
-		/*
 		[Theory]
-		[InlineData(DayOfWeek.Sunday, "1")]
-		[InlineData(DayOfWeek.Monday, "2")]
-		[InlineData(DayOfWeek.Tuesday, "3")]
-		[InlineData(DayOfWeek.Wednesday, "4")]
-		[InlineData(DayOfWeek.Thursday, "5")]
-		[InlineData(DayOfWeek.Friday, "6")]
-		[InlineData(DayOfWeek.Saturday, "7")]
-		public void Write(DayOfWeek value, string expected)
+		[InlineData((DayOfWeek[])null, true, "null")]
+		[InlineData((DayOfWeek[])null, false, "null")]
+		[InlineData(new[] { DayOfWeek.Saturday, DayOfWeek.Sunday }, true, "\"7,1\"")]
+		[InlineData(new[] { DayOfWeek.Saturday, DayOfWeek.Sunday }, false, "[7,1]")]
+		public void Write(DayOfWeek[] value, bool serializeAsCommaDelimitedString, string expected)
 		{
 			// Arrange
 			var ms = new MemoryStream();
 			var jsonWriter = new Utf8JsonWriter(ms);
 			var options = new JsonSerializerOptions();
 
-			var converter = new DayOfWeekConverter();
+			var converter = new DaysOfWeekConverter(serializeAsCommaDelimitedString);
 
 			// Act
 			converter.Write(jsonWriter, value, options);
@@ -112,6 +107,5 @@ namespace ZoomNet.UnitTests.Json
 			// Assert
 			result.ShouldBe(expected);
 		}
-		*/
 	}
 }
