@@ -10,6 +10,7 @@ namespace ZoomNet.UnitTests.Json
 {
 	public class EventConverterTests
 	{
+		// This sample JSON was copied from Zoom's documentation: https://developers.zoom.us/docs/api/events/#tag/events/get/zoom_events/events/{eventId}
 		private const string SAMPLE_EVENT_JSON = @"
   ""event_id"": ""234kj2h34kljgh23lkhj3"",
   ""name"": ""OpenAPI Conference Name"",
