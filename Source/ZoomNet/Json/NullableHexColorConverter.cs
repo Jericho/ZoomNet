@@ -12,12 +12,6 @@ namespace ZoomNet.Json;
 public class NullableHexColorConverter : JsonConverter<Color?>
 {
 	/// <inheritdoc/>
-	public override bool CanConvert(Type typeToConvert)
-	{
-		return typeToConvert == typeof(Color?);
-	}
-
-	/// <inheritdoc/>
 	public override Color? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 	{
 		switch (reader.TokenType)

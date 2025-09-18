@@ -25,6 +25,7 @@ namespace ZoomNet.UnitTests.Json
 		[Theory]
 		[InlineData("\"\"")] // Empty string
 		[InlineData("null")] // Null value
+		[InlineData("\"QWERTY\"")] // Not a valid value
 		public void Read_null(string value)
 		{
 			// Arrange
@@ -85,6 +86,29 @@ namespace ZoomNet.UnitTests.Json
 
 			// Assert
 			result.ShouldBe("null");
+		}
+
+		[Fact]
+		public void Write()
+		{
+			// Arrange
+			var value = Color.Brown;
+			var ms = new MemoryStream();
+			var jsonWriter = new Utf8JsonWriter(ms);
+			var options = new JsonSerializerOptions();
+
+			var converter = new NullableHexColorConverter();
+
+			// Act
+			converter.Write(jsonWriter, value, options);
+			jsonWriter.Flush();
+
+			ms.Position = 0;
+			var sr = new StreamReader(ms);
+			var result = sr.ReadToEnd();
+
+			// Assert
+			result.ShouldBe("\"#A52A2A\"");
 		}
 	}
 }

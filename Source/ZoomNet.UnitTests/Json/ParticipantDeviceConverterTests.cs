@@ -11,6 +11,27 @@ namespace ZoomNet.UnitTests.Json
 {
 	public class ParticipantDeviceConverterTests
 	{
+
+		[Theory]
+		[InlineData("null")] // Null value
+		public void Read_null(string value)
+		{
+			// Arrange
+			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(value);
+			var jsonReader = new Utf8JsonReader(jsonUtf8);
+			var objectType = (Type)null;
+			var options = new JsonSerializerOptions();
+
+			var converter = new ParticipantDeviceConverter();
+
+			// Act
+			jsonReader.Read();
+			var result = converter.Read(ref jsonReader, objectType, options);
+
+			// Assert
+			result.ShouldBeEmpty();
+		}
+
 		[Fact]
 		public void Write_single()
 		{
