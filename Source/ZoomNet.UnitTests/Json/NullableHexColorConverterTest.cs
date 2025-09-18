@@ -47,9 +47,6 @@ namespace ZoomNet.UnitTests.Json
 		[MemberData(nameof(HexColorConverterTestData))]
 		public void Read(string value, Color expected)
 		{
-			var aaa = Color.Azure;
-			var bbb = aaa == expected;
-
 			// Arrange
 			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(value.ToString());
 			var jsonReader = new Utf8JsonReader(jsonUtf8);
