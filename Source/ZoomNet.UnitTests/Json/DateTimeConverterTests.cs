@@ -8,7 +8,7 @@ using ZoomNet.Json;
 
 namespace ZoomNet.UnitTests.Json
 {
-	public class DateOnlyTimeonverterTests
+	public class DateOnlyTimeConverterTests
 	{
 		[Fact]
 		public void Read()
