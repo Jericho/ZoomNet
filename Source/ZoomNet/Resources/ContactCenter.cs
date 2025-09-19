@@ -1,9 +1,9 @@
 using Pathoschild.Http.Client;
-using System;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
 {
@@ -22,20 +22,19 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<Contact>> SearchUserProfilesAsync(string keyword, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<ContactCenterUser>> SearchUserProfilesAsync(string keyword, string regionId = null, UserStatus? status = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
-			if (recordsPerPage < 1 || recordsPerPage > 300)
-			{
-				throw new ArgumentOutOfRangeException(nameof(recordsPerPage), "Records per page must be between 1 and 300");
-			}
-// Return type: 'Contact' is just a placeholder until I can figure out the appropriate type
+			Utils.ValidateRecordPerPage(recordsPerPage);
+
 			return _client
 				.GetAsync($"contact_center/users")
 				.WithArgument("search_key", keyword)
+				.WithArgument("region_id", regionId)
+				.WithArgument("user_access", status?.ToEnumString())
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<Contact>("users");
+				.AsPaginatedResponseWithToken<ContactCenterUser>("users");
 		}
 
 		/// <inheritdoc/>
