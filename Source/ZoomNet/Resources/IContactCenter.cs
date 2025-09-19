@@ -16,13 +16,15 @@ namespace ZoomNet.Resources
 		/// Search users and their information.
 		/// </summary>
 		/// <param name="keyword">The search keyword: either email address or username.</param>
+		/// <param name="regionId">The region Id to filter results by.</param>
+		/// <param name="status">The user status to filter results by.</param>
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pagingToken">The paging token.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// An array of <see cref="Contact">contacts</see>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<Contact>> SearchUserProfilesAsync(string keyword, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<ContactCenterUser>> SearchUserProfilesAsync(string keyword, string regionId = null, UserStatus? status = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve a user's profile information.
