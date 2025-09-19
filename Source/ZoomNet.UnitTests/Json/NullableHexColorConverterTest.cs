@@ -1,6 +1,5 @@
 using Shouldly;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Text;
@@ -12,15 +11,12 @@ namespace ZoomNet.UnitTests.Json
 {
 	public class NullableHexColorConverterTests
 	{
-		public static IEnumerable<object[]> HexColorConverterTestData
+		public static TheoryData<string, Color> HexColorConverterTestData = new TheoryData<string, Color>()
 		{
-			get
-			{
-				yield return new object[] { "\"#FFF0FFFF\"", Color.Azure }; // Long form with leading #
-				yield return new object[] { "\"FFF0FFFF\"", Color.Azure }; // Long form without leading #
-				yield return new object[] { "\"F0FFFF\"", Color.Azure }; // Short form
-			}
-		}
+			{ "\"#FFF0FFFF\"", Color.Azure }, // Long form with leading #
+			{ "\"FFF0FFFF\"", Color.Azure }, // Long form without leading #
+			{ "\"F0FFFF\"", Color.Azure }, // Short form
+		};
 
 		[Theory]
 		[InlineData("\"\"")] // Empty string
