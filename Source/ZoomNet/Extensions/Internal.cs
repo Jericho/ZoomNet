@@ -869,12 +869,15 @@ namespace ZoomNet
 				var jsonResponse = await message.Content.ParseZoomResponseAsync().ConfigureAwait(false);
 				if (jsonResponse.ValueKind == JsonValueKind.Object)
 				{
+					// Determine the 'error code'
 					if (jsonResponse.TryGetProperty("code", out JsonElement codeJsonProperty)) errorCode = codeJsonProperty.GetInt32();
 					else if (jsonResponse.TryGetProperty("errorCode", out JsonElement errorCodeJsonProperty)) errorCode = int.Parse(errorCodeJsonProperty.GetString());
 
+					// Determine the 'error message'
 					if (jsonResponse.TryGetProperty(ERROR_MESSAGE_NODE_NAMES, out JsonElement messageJsonProperty)) errorMessage = messageJsonProperty.GetString();
 					else if (errorCode.HasValue) errorMessage = $"Error code: {errorCode}";
 
+					// Determine the 'error details'
 					if (jsonResponse.TryGetProperty("errors", out JsonElement jsonErrorDetails))
 					{
 						var errorDetails = string.Join(
