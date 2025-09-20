@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -12,6 +13,17 @@ namespace ZoomNet.Resources
 	/// </remarks>
 	public interface IContactCenter
 	{
+		/// <summary>
+		/// Retrieves a paginated list of all contact center user roles asynchronously.
+		/// </summary>
+		/// <param name="recordsPerPage">The maximum number of roles to include in each page of results. Must be a positive integer. The default is 30.</param>
+		/// <param name="pagingToken">An optional token indicating the starting point for the next page of results. Pass null or omit to retrieve the
+		/// first page.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a paginated response with a collection
+		/// of contact center user roles and a token for retrieving the next page, if available.</returns>
+		Task<PaginatedResponseWithToken<ContactCenterUserRole>> GetAllRolesAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
 		/// <summary>
 		/// Search users and their information.
 		/// </summary>
