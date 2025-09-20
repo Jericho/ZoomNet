@@ -1,4 +1,6 @@
 using Pathoschild.Http.Client;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
@@ -22,6 +24,19 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<ContactCenterUserRole>> GetAllRolesAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			Utils.ValidateRecordPerPage(recordsPerPage);
+
+			return _client
+				.GetAsync("contact_center/roles")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<ContactCenterUserRole>("roles");
+		}
+
+		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<ContactCenterUser>> SearchUsersAsync(string keyword, string regionId = null, UserStatus? status = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);
@@ -40,7 +55,6 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task<ContactCenterUser> GetUserAsync(string userId, CancellationToken cancellationToken = default)
 		{
-			// Return type: 'User' is just a placeholder until I can figure out the appropriate type
 			return _client
 				.GetAsync($"contact_center/users/{userId}")
 				.WithCancellationToken(cancellationToken)
@@ -55,7 +69,6 @@ namespace ZoomNet.Resources
 				{ "user_email", email },
 			};
 
-			// Return type: 'User' is just a placeholder until I can figure out the appropriate type
 			return _client
 				.PostAsync("contact_center/users")
 				.WithJsonBody(data)
