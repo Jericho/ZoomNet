@@ -22,7 +22,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<ContactCenterUser>> SearchUserProfilesAsync(string keyword, string regionId = null, UserStatus? status = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<ContactCenterUser>> SearchUsersAsync(string keyword, string regionId = null, UserStatus? status = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
@@ -38,29 +38,29 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<User> GetUserProfileAsync(string userId, CancellationToken cancellationToken = default)
+		public Task<ContactCenterUser> GetUserAsync(string userId, CancellationToken cancellationToken = default)
 		{
-// Return type: 'User' is just a placeholder until I can figure out the appropriate type
+			// Return type: 'User' is just a placeholder until I can figure out the appropriate type
 			return _client
 				.GetAsync($"contact_center/users/{userId}")
 				.WithCancellationToken(cancellationToken)
-				.AsObject<User>();
+				.AsObject<ContactCenterUser>();
 		}
 
 		/// <inheritdoc/>
-		public Task<User> CreateUserAsync(string email, CancellationToken cancellationToken = default)
+		public Task<ContactCenterUser> CreateUserAsync(string email, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
 				{ "user_email", email },
 			};
 
-// Return type: 'User' is just a placeholder until I can figure out the appropriate type
+			// Return type: 'User' is just a placeholder until I can figure out the appropriate type
 			return _client
 				.PostAsync("contact_center/users")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
-				.AsObject<User>();
+				.AsObject<ContactCenterUser>();
 		}
 	}
 }
