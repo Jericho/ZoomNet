@@ -13,14 +13,14 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			await log.WriteLineAsync("\n***** CONTACT CENTER *****\n").ConfigureAwait(false);
 
-			var paginatedUserProfiles = await client.ContactCenter.SearchUserProfilesAsync("*", null, null, 10, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"Found {paginatedUserProfiles.TotalRecords} user profiles").ConfigureAwait(false);
+			var paginatedUsers = await client.ContactCenter.SearchUsersAsync("*", null, null, 10, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Found {paginatedUsers.TotalRecords} user profiles").ConfigureAwait(false);
 
 			var user = await client.ContactCenter.CreateUserAsync("zzz@example.com", cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"User {user.Id} created").ConfigureAwait(false);
 
-			paginatedUserProfiles = await client.ContactCenter.SearchUserProfilesAsync("zzz", null, null, 10, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"Found {paginatedUserProfiles.TotalRecords} user profiles").ConfigureAwait(false);
+			paginatedUsers = await client.ContactCenter.SearchUsersAsync("zzz", null, null, 10, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Found {paginatedUsers.TotalRecords} user profiles").ConfigureAwait(false);
 		}
 	}
 }

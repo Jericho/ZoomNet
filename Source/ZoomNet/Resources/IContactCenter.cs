@@ -24,7 +24,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="Contact">contacts</see>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<ContactCenterUser>> SearchUserProfilesAsync(string keyword, string regionId = null, UserStatus? status = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<ContactCenterUser>> SearchUsersAsync(string keyword, string regionId = null, UserStatus? status = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve a user's profile information.
@@ -32,7 +32,7 @@ namespace ZoomNet.Resources
 		/// <param name="userId">The user Id.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The user.</returns>
-		Task<User> GetUserProfileAsync(string userId, CancellationToken cancellationToken = default);
+		Task<ContactCenterUser> GetUserAsync(string userId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Creates a user.
@@ -42,6 +42,6 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The new user.
 		/// </returns>
-		Task<User> CreateUserAsync(string email, CancellationToken cancellationToken = default);
+		Task<ContactCenterUser> CreateUserAsync(string email, CancellationToken cancellationToken = default);
 	}
 }
