@@ -12,15 +12,11 @@ namespace ZoomNet.Models
 		[JsonPropertyName("add_ons_plan")]
 		public string[] AddonPlans { get; set; }
 
-		/// <summary>
-		/// Gets or sets the information about the channel settings for the contact center user.
-		/// </summary>
+		/// <summary>Gets or sets the information about the channel settings for the contact center user.</summary>
 		[JsonPropertyName("channel_settings")]
 		public ContactCenterUserChannelSettings ChannelSettings { get; set; }
 
-		/// <summary>
-		/// Gets or sets the contact center's client integration.
-		/// </summary>
+		/// <summary>Gets or sets the contact center's client integration.</summary>
 		[JsonPropertyName("client_integration")]
 		public ContactCenterClientIntegration ClientIntegration { get; set; }
 
@@ -71,6 +67,7 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets the user's access status.</summary>
 		[JsonPropertyName("user_access")]
+		//should be enum
 		public string Status { get; set; }
 
 		/// <summary>Gets or sets the user's email address.</summary>
