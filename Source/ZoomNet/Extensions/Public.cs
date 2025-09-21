@@ -874,5 +874,20 @@ namespace ZoomNet
 
 			return httpClientBuilder;
 		}
+
+		/// <summary>
+		/// Assigns a single agent to the specified contact center queue asynchronously.
+		/// </summary>
+		/// <remarks>This method is a convenience extension for assigning a single agent to a queue. For assigning
+		/// multiple agents, use AssignAgentsAsync.</remarks>
+		/// <param name="contactCenterResource">The contact center resource to which the agent will be assigned. Cannot be null.</param>
+		/// <param name="queueId">The unique identifier of the queue to assign the agent to. Cannot be null or empty.</param>
+		/// <param name="userId">The unique identifier of the agent to assign. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous assignment operation.</returns>
+		public static Task AssignAgentAsync(this IContactCenter contactCenterResource, string queueId, string userId, CancellationToken cancellationToken = default)
+		{
+			return contactCenterResource.AssignAgentsAsync(queueId, new[] { userId }, cancellationToken);
+		}
 	}
 }
