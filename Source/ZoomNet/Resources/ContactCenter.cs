@@ -62,11 +62,56 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<ContactCenterUser> CreateUserAsync(string email, CancellationToken cancellationToken = default)
+		public Task<ContactCenterUser> CreateUserAsync(
+			string email,
+			string roleId,
+			IEnumerable<string> addOnsPlan = null,
+			int? maxConcurrentEmailConversations = null,
+			int? maxConcurrentMessagingConversations = null,
+			int? maxEmailLoadPercentage = null,
+			bool enableVoiceAndVideoEngagement = true,
+			int? maxLoadPercentage = null,
+			string clientIntegration = null,
+			string clientIntegrationName = null,
+			string name = null,
+			string packageName = null,
+			string regionId = null,
+			string statusId = null,
+			string statusName = null,
+			string subStatusId = null,
+			string subStatusName = null,
+			string status = null,
+			CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
 				{ "user_email", email },
+				{ "role_id", roleId },
+				{ "add_ons_plan", addOnsPlan?.ToArray() },
+				{
+					"channel_settings", new JsonObject
+					{
+						{ "concurrent_email_capacity", maxConcurrentEmailConversations },
+						{ "concurrent_message_capacity", maxConcurrentMessagingConversations },
+						{ "multi_channel_engagement", new JsonObject
+							{
+								{ "email_max_agent_load", maxEmailLoadPercentage },
+								{ "enabled", enableVoiceAndVideoEngagement },
+								{ "max_agent_load", maxLoadPercentage },
+							}
+						},
+					}
+				},
+				{ "client_integration", clientIntegration },
+				{ "client_integration_name", clientIntegrationName },
+				{ "name", name },
+				{ "package_name", packageName },
+				{ "region_id", regionId },
+				{ "status_id", statusId },
+				{ "status_name", statusName },
+				{ "sub_status_id", subStatusId },
+				{ "sub_status_name", subStatusName },
+				{ "status", status }
 			};
 
 			return _client
