@@ -13,6 +13,140 @@ namespace ZoomNet.Resources
 	/// </remarks>
 	public interface IContactCenter
 	{
+		#region Address Book
+
+		#endregion
+
+		#region Agent Statuses
+
+		#endregion
+
+		#region Asset Library
+
+		#endregion
+
+		#region Call Control
+
+		#endregion
+
+		#region Campaigns
+
+		#endregion
+
+		#region Dispositions
+
+		#endregion
+
+		#region Engagements
+
+		#endregion
+
+		#region Flows
+
+		#endregion
+
+		#region Inboxes
+
+		#endregion
+
+		#region Logs
+
+		#endregion
+
+		#region Notes
+
+		#endregion
+
+		#region Operating Hours
+
+		#endregion
+
+		#region Queues
+
+		/// <summary>
+		/// Retrieves a paginated list of contact center queues, optionally filtered by channel.
+		/// </summary>
+		/// <param name="channel">The channel to filter queues by. If null, queues from all channels are included.</param>
+		/// <param name="recordsPerPage">The maximum number of queues to return in a single page. Must be a positive integer.</param>
+		/// <param name="pagingToken">A token indicating the starting point for pagination. Pass null or an empty string to retrieve the first page.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a paginated response with a collection
+		/// of contact center queues and a token for retrieving the next page, if available.</returns>
+		Task<PaginatedResponseWithToken<ContactCenterQueue>> GetAllQueuesAsync(ContactCenterQueueChannel? channel = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously deletes the queue identified by the specified queue ID.
+		/// </summary>
+		/// <param name="queueId">The unique identifier of the queue to delete. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the delete operation.</param>
+		/// <returns>A task that represents the asynchronous delete operation.</returns>
+		Task DeleteQueueAsync(string queueId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieves a paginated list of agents assigned to the specified contact center queue asynchronously.
+		/// </summary>
+		/// <param name="queueId">The unique identifier of the contact center queue for which agents are to be retrieved. Cannot be null or empty.</param>
+		/// <param name="recordsPerPage">The maximum number of agents to include in each page of results. Must be a positive integer. The default is 30.</param>
+		/// <param name="pagingToken">An optional token indicating the starting point for pagination. If null, retrieval begins from the first page.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a paginated response with a collection
+		/// of queue agents and a token for retrieving the next page, if available.</returns>
+		Task<PaginatedResponseWithToken<ContactCenterQueueAgent>> GetAllQueueAgentsAsync(string queueId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously removes the specified agent from the given queue.
+		/// </summary>
+		/// <remarks>If the agent is not currently assigned to the specified queue, the operation completes without
+		/// error. This method does not throw if the agent or queue does not exist, but no changes will be made in such
+		/// cases.</remarks>
+		/// <param name="queueId">The unique identifier of the queue from which the agent will be unassigned. Cannot be null or empty.</param>
+		/// <param name="userId">The unique identifier of the agent to unassign from the queue. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the unassignment operation.</param>
+		/// <returns>A task that represents the asynchronous unassignment operation.</returns>
+		Task UnassignAgentAsync(string queueId, string userId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously creates a new contact center queue with the specified name, description, and channel.
+		/// </summary>
+		/// <param name="name">The unique name of the queue to create. Cannot be null or empty.</param>
+		/// <param name="description">An optional description for the queue. If null, the queue will be created without a description.</param>
+		/// <param name="channel">The channel type for the queue, such as voice or chat.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the created <see
+		/// cref="ContactCenterQueue"/> instance.</returns>
+		Task<ContactCenterQueue> CreateQueueAsync(string name, string description = null, ContactCenterQueueChannel channel = ContactCenterQueueChannel.Voice, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Assigns the specified agents to the given queue asynchronously.
+		/// </summary>
+		/// <remarks>If any user ID in <paramref name="userIds"/> is already assigned to the queue, it will not be
+		/// reassigned. This method does not remove existing agent assignments from the queue.</remarks>
+		/// <param name="queueId">The unique identifier of the queue to which agents will be assigned. Cannot be null or empty.</param>
+		/// <param name="userIds">A collection of user IDs representing the agents to assign to the queue. Cannot contain null or empty values.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the assignment operation.</param>
+		/// <returns>A task that represents the asynchronous assignment operation.</returns>
+		Task AssignAgentsAsync(string queueId, IEnumerable<string> userIds, CancellationToken cancellationToken = default);
+
+		#endregion
+
+		#region Recordings
+
+		#endregion
+
+		#region Regions
+
+		#endregion
+
+		#region Reports v2 (CX analytics)
+
+		#endregion
+
+		#region Reports (Legacy Reports)
+
+		#endregion
+
+		#region Roles
+
 		/// <summary>
 		/// Retrieves a paginated list of all contact center user roles asynchronously.
 		/// </summary>
@@ -23,6 +157,44 @@ namespace ZoomNet.Resources
 		/// <returns>A task that represents the asynchronous operation. The task result contains a paginated response with a collection
 		/// of contact center user roles and a token for retrieving the next page, if available.</returns>
 		Task<PaginatedResponseWithToken<ContactCenterUserRole>> GetAllRolesAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously deletes the role identified by the specified role ID.
+		/// </summary>
+		/// <param name="roleId">The unique identifier of the role to delete. Cannot be null or empty.</param>
+		/// <param name="transferRoleId">The unique identifier of an existing role to which users assigned to the deleted role will be transferred. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the delete operation.</param>
+		/// <returns>A task that represents the asynchronous delete operation.</returns>
+		Task DeleteRoleAsync(string roleId, string transferRoleId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Creates a new contact center user role with the specified name, description, and set of privileges asynchronously.
+		/// </summary>
+		/// <param name="name">The name of the role to create. Cannot be null or empty.</param>
+		/// <param name="description">The description of the role. Provides additional context for the role's purpose.</param>
+		/// <param name="privileges">A collection of privilege identifiers to assign to the role. Each privilege defines an action or permission
+		/// granted to users with this role.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the created ContactCenterUserRole
+		/// instance.</returns>
+		/// <remarks>The full list of proivileges is available <a href="https://developers.zoom.us/docs/api/references/contact-center-privileges/">here</a>.</remarks>
+		Task<ContactCenterUserRole> CreateRoleAsync(string name, string description, IEnumerable<string> privileges, CancellationToken cancellationToken = default);
+
+		#endregion
+
+		#region Routing Profiles
+
+		#endregion
+
+		#region Skills
+
+		#endregion
+
+		#region SMS
+
+		#endregion
+
+		#region Users
 
 		/// <summary>
 		/// Search users and their information.
@@ -92,5 +264,19 @@ namespace ZoomNet.Resources
 			string subStatusName = null,
 			string status = null,
 			CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously deletes the user identified by the specified user ID.
+		/// </summary>
+		/// <param name="userId">The unique identifier of the user to delete. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the delete operation.</param>
+		/// <returns>A task that represents the asynchronous delete operation.</returns>
+		Task DeleteUserAsync(string userId, CancellationToken cancellationToken = default);
+
+		#endregion
+
+		#region Variables
+
+		#endregion
 	}
 }
