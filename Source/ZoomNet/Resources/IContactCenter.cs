@@ -47,13 +47,50 @@ namespace ZoomNet.Resources
 		Task<ContactCenterUser> GetUserAsync(string userId, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Creates a user.
+		/// Creates a new contact center user with the specified configuration and returns the created user asynchronously.
 		/// </summary>
-		/// <param name="email">The email address.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The new user.
-		/// </returns>
-		Task<ContactCenterUser> CreateUserAsync(string email, CancellationToken cancellationToken = default);
+		/// <param name="email">The email address of the user to create. Cannot be null or empty.</param>
+		/// <param name="roleId">The identifier of the role to assign to the user. Cannot be null or empty.</param>
+		/// <param name="addOnsPlan">A collection of add-on plan identifiers to associate with the user. Optional; pass null to assign no add-ons.</param>
+		/// <param name="maxConcurrentEmailConversations">The maximum number of concurrent email conversations the user can handle. Optional; if not specified, the system
+		/// default is used.</param>
+		/// <param name="maxConcurrentMessagingConversations">The maximum number of concurrent messaging conversations the user can handle. Optional; if not specified, the
+		/// system default is used.</param>
+		/// <param name="maxEmailLoadPercentage">The maximum email load percentage allowed for the user. Optional; must be between 0 and 100 if specified.</param>
+		/// <param name="enableVoiceAndVideoEngagement">A value indicating whether to allow the user to receive voice or video engagements while handling chat and SMS engagements, based on the max_agent_load value. The default is <see langword="true"/>.</param>
+		/// <param name="maxLoadPercentage">The maximum overall load percentage allowed for the user. Optional; must be between 0 and 100 if specified.</param>
+		/// <param name="clientIntegration">The identifier of the client integration to associate with the user. Optional.</param>
+		/// <param name="clientIntegrationName">The name of the client integration to associate with the user. Optional.</param>
+		/// <param name="name">The display name of the user. Optional.</param>
+		/// <param name="packageName">The package name to assign to the user. Optional.</param>
+		/// <param name="regionId">The identifier of the region in which to create the user. Optional.</param>
+		/// <param name="statusId">The identifier of the user's status. Optional.</param>
+		/// <param name="statusName">The name of the user's status. Optional.</param>
+		/// <param name="subStatusId">The identifier of the user's sub-status. Optional.</param>
+		/// <param name="subStatusName">The name of the user's sub-status. Optional.</param>
+		/// <param name="status">The status value to assign to the user. Optional.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the created <see
+		/// cref="ContactCenterUser"/> instance.</returns>
+		Task<ContactCenterUser> CreateUserAsync(
+			string email,
+			string roleId,
+			IEnumerable<string> addOnsPlan = null,
+			int? maxConcurrentEmailConversations = null,
+			int? maxConcurrentMessagingConversations = null,
+			int? maxEmailLoadPercentage = null,
+			bool enableVoiceAndVideoEngagement = true,
+			int? maxLoadPercentage = null,
+			string clientIntegration = null,
+			string clientIntegrationName = null,
+			string name = null,
+			string packageName = null,
+			string regionId = null,
+			string statusId = null,
+			string statusName = null,
+			string subStatusId = null,
+			string subStatusName = null,
+			string status = null,
+			CancellationToken cancellationToken = default);
 	}
 }
