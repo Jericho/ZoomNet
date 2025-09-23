@@ -11,7 +11,7 @@ namespace ZoomNet.Models
 		/// <summary>Opted out by supervisor or admin.</summary>
 		OptedOutBySupervisor = 1,
 
-		/// <summary>pted out by agent himself..</summary>
+		/// <summary>Opted out by agent himself.</summary>
 		OptedOutByAgent = 2,
 	}
 }
