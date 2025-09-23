@@ -889,5 +889,19 @@ namespace ZoomNet
 		{
 			return contactCenterResource.AssignAgentsAsync(queueId, new[] { userId }, cancellationToken);
 		}
+
+		/// <summary>
+		/// Deletes the specified user from the contact center asynchronously.
+		/// </summary>
+		/// <remarks>This method is a convenience extension for deleting a single user. For deleting
+		/// multiple users, use DeleteUsersAsync.</remarks>
+		/// <param name="contactCenterResource">The contact center resource that manages users.</param>
+		/// <param name="userId">The unique identifier of the user to delete. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the delete operation.</param>
+		/// <returns>A task that represents the asynchronous delete operation.</returns>
+		public static Task DeleteUserAsync(this IContactCenter contactCenterResource, string userId, CancellationToken cancellationToken = default)
+		{
+			return contactCenterResource.DeleteUsersAsync(new[] { userId }, cancellationToken);
+		}
 	}
 }
