@@ -91,6 +91,16 @@ namespace ZoomNet.IntegrationTests.Tests
 			// Assign the user to the queue
 			await client.ContactCenter.AssignAgentAsync(newQueue.Id, user.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Contact Center user {user.Id} assigned to queue {newQueue.Id}").ConfigureAwait(false);
+
+			// Clean up
+			await client.ContactCenter.UnassignAgentAsync(newQueue.Id, user.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Contact Center user {user.Id} unassigned from queue {newQueue.Id}").ConfigureAwait(false);
+
+			await client.ContactCenter.DeleteUserAsync(user.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Contact Center user {user.Id} deleted").ConfigureAwait(false);
+
+			await client.ContactCenter.DeleteQueueAsync(newQueue.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Queue {newQueue.Id} deleted").ConfigureAwait(false);
 		}
 	}
 }
