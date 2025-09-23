@@ -317,6 +317,22 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
+		/// <inheritdoc/>
+		public Task UpdateUserStatusAsync(string userId, ContactCenterUserStatus status, ContactCenterUserSubStatus? subStatus = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "status_id", (int)status },
+				{ "sub_status_id", (int)subStatus }
+			};
+
+			return _client
+				.PatchAsync($"contact_center/users/{userId}/status")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
 		#endregion
 
 		#region Variables
