@@ -224,6 +224,21 @@ namespace ZoomNet.Resources
 		#region Users
 
 		/// <inheritdoc/>
+		public Task AssignSkillsAsync(string userId, IEnumerable<string> skills, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "skills", skills?.ToArray() },
+			};
+
+			return _client
+				.PostAsync($"contact_center/users/{userId}/skills")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<ContactCenterUser>> SearchUsersAsync(string keyword, string regionId = null, UserStatus? status = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);

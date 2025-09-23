@@ -197,6 +197,15 @@ namespace ZoomNet.Resources
 		#region Users
 
 		/// <summary>
+		/// Asynchronously assigns the specified skills to the user identified by the given user ID.
+		/// </summary>
+		/// <param name="userId">The unique identifier of the user to whom the skills will be assigned. Cannot be null or empty.</param>
+		/// <param name="skills">A collection of skill names to assign to the user. Cannot be null. Each skill name should be a non-empty string.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Optional.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task AssignSkillsAsync(string userId, IEnumerable<string> skills, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Search users and their information.
 		/// </summary>
 		/// <param name="keyword">The search keyword: either email address or username.</param>
