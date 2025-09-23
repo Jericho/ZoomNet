@@ -236,11 +236,9 @@ namespace ZoomNet.Resources
 		/// <param name="name">The display name of the user. Optional.</param>
 		/// <param name="packageName">The package name to assign to the user. Optional.</param>
 		/// <param name="regionId">The identifier of the region in which to create the user. Optional.</param>
-		/// <param name="statusId">The identifier of the user's status. Optional.</param>
-		/// <param name="statusName">The name of the user's status. Optional.</param>
-		/// <param name="subStatusId">The identifier of the user's sub-status. Optional.</param>
-		/// <param name="subStatusName">The name of the user's sub-status. Optional.</param>
-		/// <param name="status">The status value to assign to the user. Optional.</param>
+		/// <param name="status">The status to assign to the user. Optional.</param>
+		/// <param name="subStatus">The user's reason when the user status is 'Not Ready'. Optional.</param>
+		/// <param name="accessStatus">The use access status. Either active or inactive. Optional.</param>
 		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
 		/// <returns>A task that represents the asynchronous operation. The task result contains the created <see
 		/// cref="ContactCenterUser"/> instance.</returns>
@@ -258,11 +256,9 @@ namespace ZoomNet.Resources
 			string name = null,
 			string packageName = null,
 			string regionId = null,
-			string statusId = null,
-			string statusName = null,
-			string subStatusId = null,
-			string subStatusName = null,
-			string status = null,
+			ContactCenterUserStatus? status = null,
+			ContactCenterUserSubStatus? subStatus = null,
+			ContactCenterUserAccessStatus? accessStatus = null,
 			CancellationToken cancellationToken = default);
 
 		/// <summary>
