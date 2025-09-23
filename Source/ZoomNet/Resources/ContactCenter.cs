@@ -263,11 +263,9 @@ namespace ZoomNet.Resources
 			string name = null,
 			string packageName = null,
 			string regionId = null,
-			string statusId = null,
-			string statusName = null,
-			string subStatusId = null,
-			string subStatusName = null,
-			string status = null,
+			ContactCenterUserStatus? status = null,
+			ContactCenterUserSubStatus? subStatus = null,
+			ContactCenterUserAccessStatus? accessStatus = null,
 			CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
@@ -294,11 +292,9 @@ namespace ZoomNet.Resources
 				{ "name", name },
 				{ "package_name", packageName },
 				{ "region_id", regionId },
-				{ "status_id", statusId },
-				{ "status_name", statusName },
-				{ "sub_status_id", subStatusId },
-				{ "sub_status_name", subStatusName },
-				{ "status", status }
+				{ "status_id", (int?)status },
+				{ "sub_status_id", (int?)subStatus },
+				{ "status", accessStatus?.ToEnumString() },
 			};
 
 			return _client
