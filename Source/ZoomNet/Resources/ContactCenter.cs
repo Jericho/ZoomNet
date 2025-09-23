@@ -239,6 +239,16 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task DeleteUsersAsync(IEnumerable<string> userIds, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync("contact_center/users")
+				.WithArgument("user_ids", string.Join(",", userIds ?? Enumerable.Empty<string>()))
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<ContactCenterUser>> SearchUsersAsync(string keyword, string regionId = null, UserStatus? status = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);

@@ -206,6 +206,16 @@ namespace ZoomNet.Resources
 		Task AssignSkillsAsync(string userId, IEnumerable<string> skills, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Asynchronously deletes the specified users from the system.
+		/// </summary>
+		/// <remarks>If any user identifier does not correspond to an existing user, it will be ignored. The operation
+		/// is performed atomically for all valid user identifiers.</remarks>
+		/// <param name="userIds">A collection of user identifiers representing the users to delete. Cannot contain null or empty values.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the delete operation.</param>
+		/// <returns>A task that represents the asynchronous delete operation.</returns>
+		Task DeleteUsersAsync(IEnumerable<string> userIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Search users and their information.
 		/// </summary>
 		/// <param name="keyword">The search keyword: either email address or username.</param>
