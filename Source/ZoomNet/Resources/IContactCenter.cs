@@ -273,6 +273,16 @@ namespace ZoomNet.Resources
 		/// <returns>A task that represents the asynchronous delete operation.</returns>
 		Task DeleteUserAsync(string userId, CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Asynchronously updates the status and optional sub-status for the specified user.
+		/// </summary>
+		/// <param name="userId">The unique identifier of the user whose status will be updated. Cannot be null or empty.</param>
+		/// <param name="status">The status to assign to the user.</param>
+		/// <param name="subStatus">The user's reason when the user status is 'Not Ready'.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The operation is canceled if the token is triggered.</param>
+		/// <returns>A task that represents the asynchronous update operation.</returns>
+		Task UpdateUserStatusAsync(string userId, ContactCenterUserStatus status, ContactCenterUserSubStatus? subStatus = null, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region Variables
