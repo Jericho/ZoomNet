@@ -14,6 +14,9 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			await log.WriteLineAsync("\n***** CONTACT CENTER *****\n").ConfigureAwait(false);
 
+			//await client.ContactCenter.SendSmsAsync("14383382171", ["14385207808"], "This is a test message from ZoomNet", cancellationToken).ConfigureAwait(false);
+			//await client.ContactCenter.SendSmsAsync("14383381370", ["14385207808"], "This is a test message from ZoomNet", cancellationToken).ConfigureAwait(false);
+
 			var paginatedQueues = await client.ContactCenter.GetAllQueuesAsync(null, 30, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {paginatedQueues.TotalRecords} queues in Contact Center").ConfigureAwait(false);
 
@@ -81,6 +84,9 @@ namespace ZoomNet.IntegrationTests.Tests
 			// Create a new user
 			var user = await client.ContactCenter.CreateUserAsync(availableUsers[0].Email, agentRole.Id, cancellationToken: cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"User {user.EmailAddress} added to Contact Center").ConfigureAwait(false);
+
+			await client.ContactCenter.UpdateUserStatusAsync(user.Id, ContactCenterUserStatus.NotReady, ContactCenterUserSubStatus.Training, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Contact Center user {user.Id} set to 'Not Ready', because the user is in training").ConfigureAwait(false);
 
 			// Assign the user to the queue
 			await client.ContactCenter.AssignAgentAsync(newQueue.Id, user.Id, cancellationToken).ConfigureAwait(false);
