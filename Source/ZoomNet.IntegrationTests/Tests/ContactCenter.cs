@@ -95,6 +95,9 @@ namespace ZoomNet.IntegrationTests.Tests
 			var paginatedUserQueues = await client.ContactCenter.GetUserQueuesAsync(newUser.Id, null, ContactCenterQueueAssignmentType.Any, 30, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Contact Center user {newUser.Id} is assigned to {paginatedUserQueues.TotalRecords} queues").ConfigureAwait(false);
 
+			var paginatedUserSkills = await client.ContactCenter.GetUserSkillsAsync(newUser.Id, null, null, 30, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Contact Center user {newUser.Id} has {paginatedUserSkills.TotalRecords} skills").ConfigureAwait(false);
+
 			// Clean up
 			await client.ContactCenter.UnassignAgentAsync(newQueue.Id, newUser.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Contact Center user {newUser.Id} unassigned from queue {newQueue.Id}").ConfigureAwait(false);

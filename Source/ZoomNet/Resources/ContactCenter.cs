@@ -317,6 +317,19 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<ContactCenterUserSkill>> GetUserSkillsAsync(string userId, string categoryId = null, ContactCenterSkillType? skillType = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"contact_center/users/{userId}/skills")
+				.WithArgument("skill_category_id", categoryId)
+				.WithArgument("skill_type", skillType?.ToEnumString())
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<ContactCenterUserSkill>("skills");
+		}
+
+		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<ContactCenterUser>> SearchUsersAsync(string keyword, string regionId = null, UserStatus? status = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);
