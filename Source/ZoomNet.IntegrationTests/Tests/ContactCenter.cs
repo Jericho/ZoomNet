@@ -78,26 +78,29 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync($"Queue {newQueue.Id} created in Contact Center").ConfigureAwait(false);
 
 			// Create a role
-			var agentRole = await client.ContactCenter.CreateRoleAsync("ZoomNet Integration Testing: Agent role", "This role is for testing purposes", new[] { "OutboundVoiceCall" }, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"Role {agentRole.Id} created in Contact Center").ConfigureAwait(false);
+			var newRole = await client.ContactCenter.CreateRoleAsync("ZoomNet Integration Testing: Agent role", "This role is for testing purposes", new[] { "OutboundVoiceCall" }, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Role {newRole.Id} created in Contact Center").ConfigureAwait(false);
 
 			// Create a new user
-			var user = await client.ContactCenter.CreateUserAsync(availableUsers[0].Email, agentRole.Id, cancellationToken: cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"User {user.EmailAddress} added to Contact Center").ConfigureAwait(false);
+			var newUser = await client.ContactCenter.CreateUserAsync(availableUsers[0].Email, newRole.Id, cancellationToken: cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"User {newUser.EmailAddress} added to Contact Center").ConfigureAwait(false);
 
-			await client.ContactCenter.UpdateUserStatusAsync(user.Id, ContactCenterUserStatus.NotReady, ContactCenterUserSubStatus.Training, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"Contact Center user {user.Id} set to 'Not Ready', because the user is in training").ConfigureAwait(false);
+			await client.ContactCenter.UpdateUserStatusAsync(newUser.Id, ContactCenterUserStatus.NotReady, ContactCenterUserSubStatus.Training, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Contact Center user {newUser.Id} set to 'Not Ready', because the user is in training").ConfigureAwait(false);
 
 			// Assign the user to the queue
-			await client.ContactCenter.AssignAgentAsync(newQueue.Id, user.Id, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"Contact Center user {user.Id} assigned to queue {newQueue.Id}").ConfigureAwait(false);
+			await client.ContactCenter.AssignAgentAsync(newQueue.Id, newUser.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Contact Center user {newUser.Id} assigned to queue {newQueue.Id}").ConfigureAwait(false);
+
+			var paginatedUserQueues = await client.ContactCenter.GetUserQueuesAsync(newUser.Id, null, ContactCenterQueueAssignmentType.Any, 30, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Contact Center user {newUser.Id} is assigned to {paginatedUserQueues.TotalRecords} queues").ConfigureAwait(false);
 
 			// Clean up
-			await client.ContactCenter.UnassignAgentAsync(newQueue.Id, user.Id, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"Contact Center user {user.Id} unassigned from queue {newQueue.Id}").ConfigureAwait(false);
+			await client.ContactCenter.UnassignAgentAsync(newQueue.Id, newUser.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Contact Center user {newUser.Id} unassigned from queue {newQueue.Id}").ConfigureAwait(false);
 
-			await client.ContactCenter.DeleteUserAsync(user.Id, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"Contact Center user {user.Id} deleted").ConfigureAwait(false);
+			await client.ContactCenter.DeleteUserAsync(newUser.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Contact Center user {newUser.Id} deleted").ConfigureAwait(false);
 
 			await client.ContactCenter.DeleteQueueAsync(newQueue.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Queue {newQueue.Id} deleted").ConfigureAwait(false);
