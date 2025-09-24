@@ -239,41 +239,6 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task DeleteUsersAsync(IEnumerable<string> userIds, CancellationToken cancellationToken = default)
-		{
-			return _client
-				.DeleteAsync("contact_center/users")
-				.WithArgument("user_ids", string.Join(",", userIds ?? Enumerable.Empty<string>()))
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<ContactCenterUser>> SearchUsersAsync(string keyword, string regionId = null, UserStatus? status = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
-		{
-			Utils.ValidateRecordPerPage(recordsPerPage);
-
-			return _client
-				.GetAsync($"contact_center/users")
-				.WithArgument("search_key", keyword)
-				.WithArgument("region_id", regionId)
-				.WithArgument("user_access", status?.ToEnumString())
-				.WithArgument("page_size", recordsPerPage)
-				.WithArgument("next_page_token", pagingToken)
-				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<ContactCenterUser>("users");
-		}
-
-		/// <inheritdoc/>
-		public Task<ContactCenterUser> GetUserAsync(string userId, CancellationToken cancellationToken = default)
-		{
-			return _client
-				.GetAsync($"contact_center/users/{userId}")
-				.WithCancellationToken(cancellationToken)
-				.AsObject<ContactCenterUser>();
-		}
-
-		/// <inheritdoc/>
 		public Task<ContactCenterUser> CreateUserAsync(
 			string email,
 			string roleId,
@@ -330,10 +295,58 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task<ContactCenterUser> GetUserAsync(string userId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"contact_center/users/{userId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ContactCenterUser>();
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<ContactCenterQueue>> GetUserQueuesAsync(string userId, ContactCenterQueueChannel? channel = null, ContactCenterQueueAssignmentType assignementType = ContactCenterQueueAssignmentType.Agent, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"contact_center/users/{userId}/queues")
+				.WithArgument("channel", channel?.ToEnumString())
+				.WithArgument("user_assignment_type", assignementType.ToEnumString())
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<ContactCenterQueue>("queues");
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<ContactCenterUser>> SearchUsersAsync(string keyword, string regionId = null, UserStatus? status = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			Utils.ValidateRecordPerPage(recordsPerPage);
+
+			return _client
+				.GetAsync($"contact_center/users")
+				.WithArgument("search_key", keyword)
+				.WithArgument("region_id", regionId)
+				.WithArgument("user_access", status?.ToEnumString())
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<ContactCenterUser>("users");
+		}
+
+		/// <inheritdoc/>
 		public Task DeleteUserAsync(string userId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.DeleteAsync($"contact_center/users/{userId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteUsersAsync(IEnumerable<string> userIds, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync("contact_center/users")
+				.WithArgument("user_ids", string.Join(",", userIds ?? Enumerable.Empty<string>()))
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
