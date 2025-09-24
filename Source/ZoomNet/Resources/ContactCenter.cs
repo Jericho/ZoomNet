@@ -330,7 +330,16 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<ContactCenterUser>> SearchUsersAsync(string keyword, string regionId = null, UserStatus? status = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task UnassignSkillAsync(string userId, string skillId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"contact_center/users/{userId}/skills/{skillId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<ContactCenterUser>> SearchUsersAsync(string keyword, string regionId = null, ContactCenterUserAccessStatus? accessStatus = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
@@ -338,7 +347,7 @@ namespace ZoomNet.Resources
 				.GetAsync($"contact_center/users")
 				.WithArgument("search_key", keyword)
 				.WithArgument("region_id", regionId)
-				.WithArgument("user_access", status?.ToEnumString())
+				.WithArgument("user_access", accessStatus?.ToEnumString())
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
