@@ -68,7 +68,7 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the user's access status.</summary>
 		[JsonPropertyName("user_access")]
 		//should be enum
-		public string Status { get; set; }
+		public UserStatus Status { get; set; }
 
 		/// <summary>Gets or sets the user's email address.</summary>
 		[JsonPropertyName("user_email")]
