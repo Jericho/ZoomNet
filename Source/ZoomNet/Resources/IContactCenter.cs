@@ -206,38 +206,6 @@ namespace ZoomNet.Resources
 		Task AssignSkillsAsync(string userId, IEnumerable<string> skills, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Asynchronously deletes the specified users from the system.
-		/// </summary>
-		/// <remarks>If any user identifier does not correspond to an existing user, it will be ignored. The operation
-		/// is performed atomically for all valid user identifiers.</remarks>
-		/// <param name="userIds">A collection of user identifiers representing the users to delete. Cannot contain null or empty values.</param>
-		/// <param name="cancellationToken">A cancellation token that can be used to cancel the delete operation.</param>
-		/// <returns>A task that represents the asynchronous delete operation.</returns>
-		Task DeleteUsersAsync(IEnumerable<string> userIds, CancellationToken cancellationToken = default);
-
-		/// <summary>
-		/// Search users and their information.
-		/// </summary>
-		/// <param name="keyword">The search keyword: either email address or username.</param>
-		/// <param name="regionId">The region Id to filter results by.</param>
-		/// <param name="status">The user status to filter results by.</param>
-		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
-		/// <param name="pagingToken">The paging token.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// An array of <see cref="Contact">contacts</see>.
-		/// </returns>
-		Task<PaginatedResponseWithToken<ContactCenterUser>> SearchUsersAsync(string keyword, string regionId = null, UserStatus? status = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
-
-		/// <summary>
-		/// Retrieve a user's profile information.
-		/// </summary>
-		/// <param name="userId">The user Id.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>The user.</returns>
-		Task<ContactCenterUser> GetUserAsync(string userId, CancellationToken cancellationToken = default);
-
-		/// <summary>
 		/// Creates a new contact center user with the specified configuration and returns the created user asynchronously.
 		/// </summary>
 		/// <param name="email">The email address of the user to create. Cannot be null or empty.</param>
@@ -281,12 +249,58 @@ namespace ZoomNet.Resources
 			CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Retrieve a user's profile information.
+		/// </summary>
+		/// <param name="userId">The user Id.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The user.</returns>
+		Task<ContactCenterUser> GetUserAsync(string userId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously retrieves a paginated list of queues assigned to the specified user, optionally filtered by channel
+		/// and assignment type.
+		/// </summary>
+		/// <param name="userId">The unique identifier of the user whose queue assignments are to be retrieved. Cannot be null or empty.</param>
+		/// <param name="channel">An optional value specifying the channel to filter queues by. If null, queues from all channels are included.</param>
+		/// <param name="assignementType">The type of queue assignment to filter by, such as Agent or Supervisor. Defaults to Agent.</param>
+		/// <param name="recordsPerPage">The maximum number of records to include in each page of results. Must be greater than zero. Defaults to 30.</param>
+		/// <param name="pagingToken">An optional token indicating the starting point for pagination. If null, retrieval begins from the first page.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The operation is canceled if the token is triggered.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a paginated response with a collection
+		/// of queue assignments for the specified user and a token for retrieving the next page, if available.</returns>
+		Task<PaginatedResponseWithToken<ContactCenterQueue>> GetUserQueuesAsync(string userId, ContactCenterQueueChannel? channel = null, ContactCenterQueueAssignmentType assignementType = ContactCenterQueueAssignmentType.Agent, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Search users and their information.
+		/// </summary>
+		/// <param name="keyword">The search keyword: either email address or username.</param>
+		/// <param name="regionId">The region Id to filter results by.</param>
+		/// <param name="status">The user status to filter results by.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="Contact">contacts</see>.
+		/// </returns>
+		Task<PaginatedResponseWithToken<ContactCenterUser>> SearchUsersAsync(string keyword, string regionId = null, UserStatus? status = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Asynchronously deletes the user identified by the specified user ID.
 		/// </summary>
 		/// <param name="userId">The unique identifier of the user to delete. Cannot be null or empty.</param>
 		/// <param name="cancellationToken">A cancellation token that can be used to cancel the delete operation.</param>
 		/// <returns>A task that represents the asynchronous delete operation.</returns>
 		Task DeleteUserAsync(string userId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously deletes the specified users from the system.
+		/// </summary>
+		/// <remarks>If any user identifier does not correspond to an existing user, it will be ignored. The operation
+		/// is performed atomically for all valid user identifiers.</remarks>
+		/// <param name="userIds">A collection of user identifiers representing the users to delete. Cannot contain null or empty values.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the delete operation.</param>
+		/// <returns>A task that represents the asynchronous delete operation.</returns>
+		Task DeleteUsersAsync(IEnumerable<string> userIds, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Asynchronously updates the status and optional sub-status for the specified user.
