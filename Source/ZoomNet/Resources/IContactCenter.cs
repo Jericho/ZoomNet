@@ -271,6 +271,20 @@ namespace ZoomNet.Resources
 		Task<PaginatedResponseWithToken<ContactCenterQueue>> GetUserQueuesAsync(string userId, ContactCenterQueueChannel? channel = null, ContactCenterQueueAssignmentType assignementType = ContactCenterQueueAssignmentType.Agent, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Retrieves a paginated list of contact center skills assigned to the specified user, optionally filtered by
+		/// category and skill type.
+		/// </summary>
+		/// <param name="userId">The unique identifier of the user whose skills are to be retrieved. Cannot be null or empty.</param>
+		/// <param name="categoryId">The identifier of the skill category to filter results. If null, skills from all categories are included.</param>
+		/// <param name="skillType">The type of skill to filter results. Defaults to proficiency-based skills.</param>
+		/// <param name="recordsPerPage">The maximum number of skill records to include in each page of results. Must be greater than zero.</param>
+		/// <param name="pagingToken">A token indicating the starting point for pagination. If null, retrieval begins from the first page.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Allows the operation to be cancelled.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a paginated response with a collection
+		/// of contact center skills and a token for retrieving the next page, if available.</returns>
+		Task<PaginatedResponseWithToken<ContactCenterUserSkill>> GetUserSkillsAsync(string userId, string categoryId = null, ContactCenterSkillType? skillType = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Search users and their information.
 		/// </summary>
 		/// <param name="keyword">The search keyword: either email address or username.</param>
