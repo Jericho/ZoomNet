@@ -285,18 +285,27 @@ namespace ZoomNet.Resources
 		Task<PaginatedResponseWithToken<ContactCenterUserSkill>> GetUserSkillsAsync(string userId, string categoryId = null, ContactCenterSkillType? skillType = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Asynchronously unassigns the specified skills from the user identified by the given user ID.
+		/// </summary>
+		/// <param name="userId">The unique identifier of the user to whom the skills will be unassigned. Cannot be null or empty.</param>
+		/// <param name="skillId">The unique identifier of the the skill to unassign from the user. Cannot be null.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Optional.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task UnassignSkillAsync(string userId, string skillId, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Search users and their information.
 		/// </summary>
 		/// <param name="keyword">The search keyword: either email address or username.</param>
 		/// <param name="regionId">The region Id to filter results by.</param>
-		/// <param name="status">The user status to filter results by.</param>
+		/// <param name="accessStatus">The user's access status to filter results by.</param>
 		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
 		/// <param name="pagingToken">The paging token.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// An array of <see cref="Contact">contacts</see>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<ContactCenterUser>> SearchUsersAsync(string keyword, string regionId = null, UserStatus? status = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<ContactCenterUser>> SearchUsersAsync(string keyword, string regionId = null, ContactCenterUserAccessStatus? accessStatus = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Asynchronously deletes the user identified by the specified user ID.
