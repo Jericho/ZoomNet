@@ -135,6 +135,81 @@ namespace ZoomNet.Resources
 
 		#region Regions
 
+		/// <summary>
+		/// Assigns the specified users to the given region asynchronously.
+		/// </summary>
+		/// <param name="userIds">A collection of user identifiers representing the users to assign to the region. Cannot contain null or empty
+		/// values.</param>
+		/// <param name="regionId">The identifier of the region to which the users will be assigned. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Optional.</param>
+		/// <returns>A task that represents the asynchronous operation.</returns>
+		Task AssignUsersToRegionAsync(IEnumerable<string> userIds, string regionId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Creates a new contact center region with the specified name and SIP zone.
+		/// </summary>
+		/// <param name="name">The name of the region to create. Cannot be null or empty.</param>
+		/// <param name="sipZoneId">The identifier of the SIP zone to associate with the new region. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the newly created contact center
+		/// region.</returns>
+		Task<ContactCenterRegion> CreateRegionAsync(string name, string sipZoneId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously deletes the region identified by the specified region ID.
+		/// </summary>
+		/// <remarks>If the specified region does not exist, the operation completes without error. This method does
+		/// not block the calling thread.</remarks>
+		/// <param name="regionId">The unique identifier of the region to delete. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the delete operation.</param>
+		/// <returns>A task that represents the asynchronous delete operation.</returns>
+		Task DeleteRegionAsync(string regionId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously retrieves the contact center region associated with the specified region identifier.
+		/// </summary>
+		/// <param name="regionId">The unique identifier of the region to retrieve. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the <see cref="ContactCenterRegion"/>
+		/// corresponding to the specified region identifier.</returns>
+		Task<ContactCenterRegion> GetRegionAsync(string regionId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieves a paginated list of users associated with the specified region asynchronously.
+		/// </summary>
+		/// <param name="regionId">The unique identifier of the region for which users are to be retrieved. Cannot be null or empty.</param>
+		/// <param name="recordsPerPage">The maximum number of user records to include in each page of results. Must be greater than zero. The default is
+		/// 30.</param>
+		/// <param name="pagingToken">An optional token indicating the starting point for the next page of results. Pass null or omit to retrieve the
+		/// first page.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a paginated response with a collection
+		/// of contact center users and a token for retrieving subsequent pages.</returns>
+		Task<PaginatedResponseWithToken<ContactCenterUser>> GetRegionUsersAsync(string regionId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieves a paginated list of all available contact center regions asynchronously.
+		/// </summary>
+		/// <param name="recordsPerPage">The maximum number of regions to include in each page of results. Must be greater than zero.</param>
+		/// <param name="pagingToken">An optional token indicating the starting point for the next page of results. Pass <see langword="null"/> or an
+		/// empty string to retrieve the first page.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a paginated response with a collection
+		/// of contact center regions and a token for retrieving the next page, if available.</returns>
+		Task<PaginatedResponseWithToken<ContactCenterRegion>> GetAllRegionsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously updates the specified contact center region with new values for its name and SIP zone.
+		/// </summary>
+		/// <param name="regionId">The unique identifier of the region to update. Cannot be null or empty.</param>
+		/// <param name="name">The new name to assign to the region. If null, the region's name will remain unchanged.</param>
+		/// <param name="sipZoneId">The identifier of the SIP zone to associate with the region. If null, the SIP zone association will remain
+		/// unchanged.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the updated <see
+		/// cref="ContactCenterRegion"/> object.</returns>
+		Task UpdateRegionAsync(string regionId, string name = null, string sipZoneId = null, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region Reports v2 (CX analytics)
@@ -188,6 +263,121 @@ namespace ZoomNet.Resources
 
 		#region Skills
 
+		/// <summary>
+		/// Creates a new contact center skill with the specified name and category.
+		/// </summary>
+		/// <param name="name">The name of the skill to create. Cannot be null or empty.</param>
+		/// <param name="categoryId">The identifier of the category to associate with the skill. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the created ContactCenterSkill
+		/// instance.</returns>
+		Task<ContactCenterSkill> CreateSkillAsync(string name, string categoryId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Creates a new skill category in the contact center with the specified name and optional attributes.
+		/// </summary>
+		/// <param name="name">The name of the skill category to create. Cannot be null or empty.</param>
+		/// <param name="description">An optional description for the skill category. If null, no description is set.</param>
+		/// <param name="type">An optional skill type that defines the nature of the skill category. If null, the default type is used.</param>
+		/// <param name="maxProficiencyLevel">The skill category's maximum proficiency level, between 1 (low) and 5 (high). Use this value if the skill category's type value is 1 (a proficiency-based skill).</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the created skill category.</returns>
+		Task<ContactCenterSkillCategory> CreateSkillCategoryAsync(string name, string description = null, ContactCenterSkillType? type = null, int? maxProficiencyLevel = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously deletes the skill identified by the specified skill ID.
+		/// </summary>
+		/// <param name="skillId">The unique identifier of the skill to delete. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the delete operation.</param>
+		/// <returns>A task that represents the asynchronous delete operation.</returns>
+		Task DeleteSkillAsync(string skillId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously deletes the skill category identified by the specified skill category ID.
+		/// </summary>
+		/// <param name="skillCategoryId">The unique identifier of the skill category to delete. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the delete operation.</param>
+		/// <returns>A task that represents the asynchronous delete operation.</returns>
+		Task DeleteSkillCategoryAsync(string skillCategoryId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously retrieves the contact center skill identified by the specified skill ID.
+		/// </summary>
+		/// <param name="skillId">The unique identifier of the contact center skill to retrieve. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the requested <see
+		/// cref="ContactCenterSkill"/> if found; otherwise, <c>null</c>.</returns>
+		Task<ContactCenterSkill> GetSkillAsync(string skillId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously retrieves the skill category associated with the specified identifier.
+		/// </summary>
+		/// <param name="skillCategoryId">The unique identifier of the skill category to retrieve. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the <see
+		/// cref="ContactCenterSkillCategory"/> corresponding to the specified identifier, or <c>null</c> if no matching skill
+		/// category is found.</returns>
+		Task<ContactCenterSkillCategory> GetSkillCategoryAsync(string skillCategoryId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieves a paginated list of contact center skills asynchronously.
+		/// </summary>
+		/// <param name="recordsPerPage">The maximum number of skills to include in each page of results. Must be a positive integer. The default is 30.</param>
+		/// <param name="pagingToken">An optional token indicating the starting point for the next page of results. Pass null or omit to retrieve the
+		/// first page.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a paginated response with a collection
+		/// of contact center skills and a token for retrieving the next page, if available.</returns>
+		Task<PaginatedResponseWithToken<ContactCenterSkill>> GetAllSkillsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieves a paginated list of all skill categories available in the contact center asynchronously.
+		/// </summary>
+		/// <param name="recordsPerPage">The maximum number of skill categories to include in each page of results. Must be greater than zero.</param>
+		/// <param name="pagingToken">An optional token indicating the starting point for the next page of results. Pass <see langword="null"/> or an
+		/// empty string to retrieve the first page.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a paginated response with a collection
+		/// of skill categories and a token for retrieving the next page, if available.</returns>
+		Task<PaginatedResponseWithToken<ContactCenterSkillCategory>> GetAllSkillCategoriesAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieves a paginated list of users assigned to the specified skill.
+		/// </summary>
+		/// <remarks>If there are more users than can fit in a single page, use the returned paging token to request
+		/// subsequent pages. The method returns an empty collection if no users are assigned to the skill.</remarks>
+		/// <param name="skillId">The unique identifier of the skill for which to retrieve users. Cannot be null or empty.</param>
+		/// <param name="recordsPerPage">The maximum number of users to include in each page of results. Must be a positive integer. The default is 30.</param>
+		/// <param name="pagingToken">An optional token indicating the starting point for the next page of results. Pass null or omit to retrieve the
+		/// first page.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a paginated response with a collection
+		/// of users assigned to the specified skill and a token for retrieving the next page, if available.</returns>
+		Task<PaginatedResponseWithToken<ContactCenterUser>> GetSkillUsersAsync(string skillId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously updates the name of an existing contact center skill identified by the specified skill ID.
+		/// </summary>
+		/// <param name="skillId">The unique identifier of the skill to update. Cannot be null or empty.</param>
+		/// <param name="name">The new name to assign to the skill. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the updated <see
+		/// cref="ContactCenterSkill"/> object.</returns>
+		Task UpdateSkillAsync(string skillId, string name, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously updates the specified skill category with new values for name, description, or maximum proficiency
+		/// level.
+		/// </summary>
+		/// <param name="skillCategoryId">The unique identifier of the skill category to update. Cannot be null or empty.</param>
+		/// <param name="name">The new name for the skill category, or null to leave the name unchanged.</param>
+		/// <param name="description">The new description for the skill category, or null to leave the description unchanged.</param>
+		/// <param name="maxProficiencyLevel">The skill category's maximum proficiency level, between 1 (low) and 5 (high). Use this value if the skill category's type value is 1 (a proficiency-based skill).</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the updated <see
+		/// cref="ContactCenterSkillCategory"/> object.</returns>
+		Task UpdateSkillCategoryAsync(string skillCategoryId, string name = null, string description = null, int? maxProficiencyLevel = null, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region SMS
@@ -200,10 +390,10 @@ namespace ZoomNet.Resources
 		/// Asynchronously assigns the specified skills to the user identified by the given user ID.
 		/// </summary>
 		/// <param name="userId">The unique identifier of the user to whom the skills will be assigned. Cannot be null or empty.</param>
-		/// <param name="skills">A collection of skill names to assign to the user. Cannot be null. Each skill name should be a non-empty string.</param>
+		/// <param name="skills">A collection of skills to assign to the user. Cannot be null.</param>
 		/// <param name="cancellationToken">A token to monitor for cancellation requests. Optional.</param>
 		/// <returns>A task that represents the asynchronous operation.</returns>
-		Task AssignSkillsAsync(string userId, IEnumerable<string> skills, CancellationToken cancellationToken = default);
+		Task AssignSkillsAsync(string userId, IEnumerable<(string SkillId, int ProficiencyLevel)> skills, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Creates a new contact center user with the specified configuration and returns the created user asynchronously.

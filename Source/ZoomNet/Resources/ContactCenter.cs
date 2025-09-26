@@ -156,6 +156,97 @@ namespace ZoomNet.Resources
 
 		#region Regions
 
+		/// <inheritdoc/>
+		public Task AssignUsersToRegionAsync(IEnumerable<string> userIds, string regionId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "user_ids", userIds?.ToArray() },
+			};
+
+			return _client
+				.PostAsync($"contact_center/regions/{regionId}/users")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<ContactCenterRegion> CreateRegionAsync(string name, string sipZoneId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "region_name", name },
+				{ "sip_zone_id", sipZoneId },
+			};
+
+			return _client
+				.PostAsync("contact_center/regions")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ContactCenterRegion>();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteRegionAsync(string regionId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"contact_center/regions/{regionId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<ContactCenterRegion> GetRegionAsync(string regionId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"contact_center/regions/{regionId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ContactCenterRegion>();
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<ContactCenterUser>> GetRegionUsersAsync(string regionId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			Utils.ValidateRecordPerPage(recordsPerPage);
+
+			return _client
+				.GetAsync($"contact_center/regions/{regionId}/users")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<ContactCenterUser>("users");
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<ContactCenterRegion>> GetAllRegionsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			Utils.ValidateRecordPerPage(recordsPerPage);
+
+			return _client
+				.GetAsync("contact_center/regions")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<ContactCenterRegion>("regions");
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateRegionAsync(string regionId, string name = null, string sipZoneId = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "region_name", name },
+				{ "sip_zone_id", sipZoneId },
+			};
+
+			return _client
+				.PatchAsync($"contact_center/regions/{regionId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
 		#endregion
 
 		#region Reports v2 (CX analytics)
@@ -200,6 +291,7 @@ namespace ZoomNet.Resources
 				{ "role_description", descirption },
 				{ "privileges", privileges?.ToArray() }
 			};
+
 			return _client
 				.PostAsync("contact_center/roles")
 				.WithJsonBody(data)
@@ -215,6 +307,146 @@ namespace ZoomNet.Resources
 
 		#region Skills
 
+		/// <inheritdoc/>
+		public Task<ContactCenterSkill> CreateSkillAsync(string name, string categoryId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "skill_name", name },
+				{ "skill_category_id", categoryId },
+			};
+
+			return _client
+				.PostAsync("contact_center/skills")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ContactCenterSkill>();
+		}
+
+		/// <inheritdoc/>
+		public Task<ContactCenterSkillCategory> CreateSkillCategoryAsync(string name, string description = null, ContactCenterSkillType? type = null, int? maxProficiencyLevel = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "skill_category_name", name },
+				{ "skill_category_description", description },
+				{ "skill_type", type?.ToEnumString() },
+				{ "max_proficiency_level", maxProficiencyLevel },
+			};
+			return _client
+				.PostAsync("contact_center/skills/categories")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ContactCenterSkillCategory>();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteSkillAsync(string skillId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"contact_center/skills/{skillId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteSkillCategoryAsync(string skillCategoryId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"contact_center/skills/categories/{skillCategoryId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<ContactCenterSkill> GetSkillAsync(string skillId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"contact_center/skills/{skillId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ContactCenterSkill>();
+		}
+
+		/// <inheritdoc/>
+		public Task<ContactCenterSkillCategory> GetSkillCategoryAsync(string skillCategoryId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"contact_center/skills/categories/{skillCategoryId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ContactCenterSkillCategory>();
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<ContactCenterSkill>> GetAllSkillsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			Utils.ValidateRecordPerPage(recordsPerPage);
+
+			return _client
+				.GetAsync("contact_center/skills")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<ContactCenterSkill>("skills");
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<ContactCenterSkillCategory>> GetAllSkillCategoriesAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			Utils.ValidateRecordPerPage(recordsPerPage);
+
+			return _client
+				.GetAsync("contact_center/skills/categories")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<ContactCenterSkillCategory>("skill_categories");
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<ContactCenterUser>> GetSkillUsersAsync(string skillId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			Utils.ValidateRecordPerPage(recordsPerPage);
+
+			return _client
+				.GetAsync($"contact_center/skills/{skillId}/users")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<ContactCenterUser>("users");
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateSkillAsync(string skillId, string name, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "skill_name", name },
+			};
+
+			return _client
+				.PatchAsync($"contact_center/skills/{skillId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateSkillCategoryAsync(string skillCategoryId, string name = null, string description = null, int? maxProficiencyLevel = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "skill_category_name", name },
+				{ "skill_category_description", description },
+				{ "max_proficiency_level", maxProficiencyLevel },
+			};
+
+			return _client
+				.PatchAsync($"contact_center/skills/categories/{skillCategoryId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
 		#endregion
 
 		#region SMS
@@ -224,11 +456,12 @@ namespace ZoomNet.Resources
 		#region Users
 
 		/// <inheritdoc/>
-		public Task AssignSkillsAsync(string userId, IEnumerable<string> skills, CancellationToken cancellationToken = default)
+		public Task AssignSkillsAsync(string userId, IEnumerable<(string SkillId, int ProficiencyLevel)> skills, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
-				{ "skills", skills?.ToArray() },
+				// Confusingly, "max_proficiency_level" is intended to contain the user's proficiency level, not the 'max'.
+				{ "skills", skills?.Select(s => new JsonObject { { "skill_id", s.SkillId }, { "max_proficiency_level", s.ProficiencyLevel } }).ToArray() },
 			};
 
 			return _client
