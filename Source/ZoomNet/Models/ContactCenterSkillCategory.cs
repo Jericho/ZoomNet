@@ -4,9 +4,9 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// A Contect Center skill.
+	/// A Contect Center skill category.
 	/// </summary>
-	public class ContactCenterSkill
+	public class ContactCenterSkillCategory
 	{
 		/// <summary>Gets or sets the date and time when the queue was last modified.</summary>
 		[JsonPropertyName("last_modified_time")]
@@ -20,28 +20,20 @@ namespace ZoomNet.Models
 		[JsonPropertyName("modified_by")]
 		public string ModifiedBy { get; set; }
 
-		/// <summary>Gets or sets the category ID.</summary>
-		[JsonPropertyName("skill_category_id")]
-		public string CategoryId { get; set; }
-
-		/// <summary>Gets or sets the category name.</summary>
-		[JsonPropertyName("skill_category_name")]
-		public string CategoryName { get; set; }
+		/// <summary>Gets or sets the description.</summary>
+		[JsonPropertyName("skill_category_description")]
+		public string Description { get; set; }
 
 		/// <summary>Gets or sets the unique identifier.</summary>
-		[JsonPropertyName("skill_id")]
+		[JsonPropertyName("skill_category_id")]
 		public string Id { get; set; }
 
-		/// <summary>Gets or sets the name of the skill.</summary>
-		[JsonPropertyName("skill_name")]
+		/// <summary>Gets or sets the name.</summary>
+		[JsonPropertyName("skill_category_name")]
 		public string Name { get; set; }
 
 		/// <summary>Gets or sets the skill type.</summary>
 		[JsonPropertyName("skill_type")]
 		public ContactCenterSkillType Type { get; set; }
-
-		/// <summary>Gets or sets the total number of users of the skill.</summary>
-		[JsonPropertyName("total_users")]
-		public int UserCount { get; set; }
 	}
 }
