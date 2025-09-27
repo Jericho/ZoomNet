@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// A Contect Center userskill.
+	/// A Contact Center userskill.
 	/// </summary>
 	public class ContactCenterUserSkill
 	{

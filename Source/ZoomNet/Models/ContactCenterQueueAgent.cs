@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// An agent assigned to a given Contect Center queue.
+	/// An agent assigned to a given Contact Center queue.
 	/// </summary>
 	public class ContactCenterQueueAgent
 	{
