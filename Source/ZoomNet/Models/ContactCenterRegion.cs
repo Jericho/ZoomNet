@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// A Contect Center region.
+	/// A Contact Center region.
 	/// </summary>
 	public class ContactCenterRegion
 	{
