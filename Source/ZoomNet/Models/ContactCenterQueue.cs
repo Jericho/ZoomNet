@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// A Contect Center queue.
+	/// A Contact Center queue.
 	/// </summary>
 	public class ContactCenterQueue
 	{

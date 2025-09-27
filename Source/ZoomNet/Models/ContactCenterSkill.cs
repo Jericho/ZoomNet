@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// A Contect Center skill.
+	/// A Contact Center skill.
 	/// </summary>
 	public class ContactCenterSkill
 	{
