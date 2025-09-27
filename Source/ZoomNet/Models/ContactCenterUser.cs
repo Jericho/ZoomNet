@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// A user of the Contect Center.
+	/// A user of the Contact Center.
 	/// </summary>
 	public class ContactCenterUser
 	{
