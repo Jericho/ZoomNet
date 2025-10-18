@@ -19,6 +19,71 @@ namespace ZoomNet.Resources
 
 		#region Agent Statuses
 
+		/// <summary>
+		/// Creates a new agent status in the contact center.
+		/// </summary>
+		/// <param name="name">The name of the agent status. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the created <see cref="ContactCenterAgentStatus"/> instance.</returns>
+		Task<ContactCenterSystemStatus> CreateAgentStatusAsync(string name, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Creates a new agent not ready reason and associates it with the specified queues asynchronously.
+		/// </summary>
+		/// <param name="name">The name of the not ready reason to be created. Cannot be null or empty.</param>
+		/// <param name="queues">A collection of queue identifiers to associate with the not ready reason. Cannot be null or contain null or empty
+		/// elements.</param>
+		/// <param name="enabled">Indicates whether the not ready reason is enabled. The default is <c>true</c>.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the updated contact center system
+		/// status after the not ready reason is created.</returns>
+		Task<ContactCenterSystemStatus> CreateAgentNotReadyReasonAsync(string name, IEnumerable<string> queues, bool enabled = true, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Deletes the agent status identified by the specified status ID.
+		/// </summary>
+		/// <param name="statusId">The unique identifier of the agent status to delete. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the delete operation.</param>
+		/// <returns>A task that represents the asynchronous delete operation.</returns>
+		Task DeleteAgentStatusAsync(string statusId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieves the agent status identified by the specified status ID.
+		/// </summary>
+		/// <param name="statusId">The unique identifier of the agent status to retrieve. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the requested <see cref="ContactCenterAgentStatus"/> if found; otherwise, <c>null</c>.</returns>
+		Task<ContactCenterSystemStatus> GetAgentStatusAsync(string statusId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieves a paginated list of all agent statuses available in the contact center asynchronously.
+		/// </summary>
+		/// <param name="recordsPerPage">The maximum number of agent statuses to include in each page of results. Must be greater than zero.</param>
+		/// <param name="pagingToken">An optional token indicating the starting point for the next page of results. Pass <see langword="null"/> or an empty string to retrieve the first page.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a paginated response with a collection of agent statuses and a token for retrieving the next page, if available.</returns>
+		Task<PaginatedResponseWithToken<ContactCenterSystemStatus>> GetAllAgentStatusesAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Updates the specified agent status with new values for name and description.
+		/// </summary>
+		/// <param name="statusId">The unique identifier of the agent status to update. Cannot be null or empty.</param>
+		/// <param name="name">The new name to assign to the agent status. If null, the name will remain unchanged.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the updated <see cref="ContactCenterAgentStatus"/> object.</returns>
+		Task<ContactCenterSystemStatus> UpdateAgentStatusAsync(string statusId, string name = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously updates the reason an agent is marked as 'Not Ready', including its name and associated queues.
+		/// </summary>
+		/// <param name="statusId">The unique identifier of the system status to update. Cannot be null or empty.</param>
+		/// <param name="name">The new name to assign to the 'Not Ready' reason. Cannot be null or empty.</param>
+		/// <param name="queues">A collection of queue identifiers to associate with the updated 'Not Ready' reason. Cannot be null. Each queue
+		/// identifier must be valid.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the updated system status information.</returns>
+		Task<ContactCenterSystemStatus> UpdateAgentNotReadyReasonAsync(string statusId, string name, IEnumerable<string> queues, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region Asset Library
