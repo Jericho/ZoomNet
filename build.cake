@@ -260,7 +260,6 @@ Task("Run-Code-Coverage")
 		Configuration = configuration,
 		Framework = DESIRED_FRAMEWORK_FOR_CODE_COVERAGE,
 
-		// The following assumes that coverlet.msbuild has been added to the unit testing project
 		ArgumentCustomization = args => args
 			.Append($"--project {unitTestsProject}")
 			.Append(enableTerminalLogger ? "" : "--no-progress")
