@@ -23,8 +23,106 @@ namespace ZoomNet.Resources
 			_client = client;
 		}
 
-
 		#region Agent Statuses
+
+		/// <inheritdoc/>
+		public Task<ContactCenterSystemStatus> CreateAgentStatusAsync(string name, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "status_category", ContactCenterAgentStatusCategory.SystemStatus.ToEnumString() },
+				{ "status_name", name },
+			};
+
+			return _client
+				.PostAsync("contact_center/system_statuses")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ContactCenterSystemStatus>();
+		}
+
+		/// <inheritdoc/>
+		public Task<ContactCenterSystemStatus> CreateAgentNotReadyReasonAsync(string name, IEnumerable<string> queues, bool enabled = true, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "enable", enabled },
+				{ "queues", queues?.Select(id => new JsonObject { { "id", id } }).ToArray() },
+				{ "status_category", ContactCenterAgentStatusCategory.NotReadyReason.ToEnumString() },
+				{ "status_name", name },
+			};
+
+			return _client
+				.PostAsync("contact_center/system_statuses")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ContactCenterSystemStatus>();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteAgentStatusAsync(string statusId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"contact_center/system_statuses/{statusId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<ContactCenterSystemStatus> GetAgentStatusAsync(string statusId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"contact_center/system_statuses/{statusId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ContactCenterSystemStatus>();
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<ContactCenterSystemStatus>> GetAllAgentStatusesAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			Utils.ValidateRecordPerPage(recordsPerPage);
+
+			return _client
+				.GetAsync("contact_center/system_statuses")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<ContactCenterSystemStatus>("statuses");
+		}
+
+		/// <inheritdoc/>
+		public Task<ContactCenterSystemStatus> UpdateAgentStatusAsync(string statusId, string name = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "status_category", ContactCenterAgentStatusCategory.SystemStatus.ToEnumString() },
+				{ "system_status_name", name },
+			};
+
+			return _client
+				.PatchAsync($"contact_center/system_statuses/{statusId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ContactCenterSystemStatus>();
+		}
+
+		/// <inheritdoc/>
+		public Task<ContactCenterSystemStatus> UpdateAgentNotReadyReasonAsync(string statusId, string name, IEnumerable<string> queues, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "enable", "true" },
+				{ "queues", queues?.Select(id => new JsonObject { { "id", id } }).ToArray() },
+				{ "status_category", ContactCenterAgentStatusCategory.NotReadyReason.ToEnumString() },
+				{ "status_name", name },
+			};
+
+			return _client
+				.PatchAsync($"contact_center/system_statuses/{statusId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ContactCenterSystemStatus>();
+		}
 
 		#endregion
 
