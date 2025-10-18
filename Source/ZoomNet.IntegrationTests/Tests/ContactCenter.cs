@@ -27,6 +27,9 @@ namespace ZoomNet.IntegrationTests.Tests
 			var paginatedSkills = await client.ContactCenter.GetAllSkillsAsync(30, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {paginatedSkills.TotalRecords} skills in Contact Center").ConfigureAwait(false);
 
+			var paginatedAgentStatuses = await client.ContactCenter.GetAllAgentStatusesAsync(30, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {paginatedAgentStatuses.TotalRecords} agent statuses in Contact Center").ConfigureAwait(false);
+
 			// CLEANUP PREVIOUS INTEGRATION TESTS THAT MIGHT HAVE BEEN INTERRUPTED BEFORE THEY HAD TIME TO CLEANUP AFTER THEMSELVES
 			var cleanUpTasks = paginatedQueues.Records
 				.Where(m => m.Name.StartsWith("ZoomNet Integration Testing:"))
@@ -78,6 +81,16 @@ namespace ZoomNet.IntegrationTests.Tests
 				});
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
 
+			cleanUpTasks = paginatedAgentStatuses.Records
+				.Where(s => s.Name.StartsWith("ZoomNet"))
+				.Select(async oldStatus =>
+				{
+					await client.ContactCenter.DeleteAgentStatusAsync(oldStatus.Id, cancellationToken).ConfigureAwait(false);
+					await log.WriteLineAsync($"Agent status {oldStatus.Id} deleted").ConfigureAwait(false);
+					await Task.Delay(1000, cancellationToken).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
+				});
+			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
+
 			// Make sure there is at least one Zoom user that can be added to Contact Center
 			var paginatedContactCenterUsers = await client.ContactCenter.SearchUsersAsync(null, null, null, 10, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Found {paginatedContactCenterUsers.TotalRecords} user profiles").ConfigureAwait(false);
@@ -95,6 +108,9 @@ namespace ZoomNet.IntegrationTests.Tests
 			{
 				await log.WriteLineAsync($"There are {availableUsers.Count()} users available to be added to Contact Center").ConfigureAwait(false);
 			}
+
+			var newStatus = await client.ContactCenter.CreateAgentStatusAsync("ZoomNet status", cancellationToken).ConfigureAwait(false);
+			var newNotReadyReason = await client.ContactCenter.CreateAgentNotReadyReasonAsync("ZoomNet Integration Testing: Not Ready reason", null, true, cancellationToken).ConfigureAwait(false);
 
 			// Create a skill category
 			var newSkillCategory = await client.ContactCenter.CreateSkillCategoryAsync("ZoomNet Integration Testing: skill category", "This skill category is for testing purposes", ContactCenterSkillType.Proficiency, 4, cancellationToken).ConfigureAwait(false);
