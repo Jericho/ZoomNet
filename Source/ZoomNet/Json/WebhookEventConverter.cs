@@ -307,6 +307,31 @@ namespace ZoomNet.Json
 					var endpointUrlValidationEvent = payloadJsonProperty.ToObject<EndpointUrlValidationEvent>(options);
 					webHookEvent = endpointUrlValidationEvent;
 					break;
+				case Models.Webhooks.EventType.MeetingParticipantJoinedBreakoutRoom:
+					var meetingParticipantJoinedBreakoutRoomEvent = payloadJsonProperty.ToObject<MeetingParticipantJoinedBreakoutRoomEvent>(options);
+					meetingParticipantJoinedBreakoutRoomEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<BreakoutRoomParticipantInfo>();
+					meetingParticipantJoinedBreakoutRoomEvent.JoinTime = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/join_time");
+					webHookEvent = meetingParticipantJoinedBreakoutRoomEvent;
+					break;
+				case Models.Webhooks.EventType.MeetingParticipantLeftBreakoutRoom:
+					var meetingParticipantLeftBreakoutRoomEvent = payloadJsonProperty.ToObject<MeetingParticipantLeftBreakoutRoomEvent>(options);
+					meetingParticipantLeftBreakoutRoomEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<BreakoutRoomParticipantInfo>();
+					meetingParticipantLeftBreakoutRoomEvent.LeaveTime = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/leave_time");
+					meetingParticipantLeftBreakoutRoomEvent.LeaveReason = payloadJsonProperty.GetPropertyValue("object/participant/leave_reason", string.Empty);
+					webHookEvent = meetingParticipantLeftBreakoutRoomEvent;
+					break;
+				case Models.Webhooks.EventType.MeetingBreakoutRoomSharingStarted:
+					var meetingBreakoutRoomSharingStarted = payloadJsonProperty.ToObject<MeetingBreakoutRoomSharingStartedEvent>(options);
+					meetingBreakoutRoomSharingStarted.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<BreakoutRoomParticipantBasicInfo>();
+					meetingBreakoutRoomSharingStarted.SharingDetails = payloadJsonProperty.GetProperty("object/participant/sharing_details", true).Value.ToObject<ScreenshareDetails>();
+					webHookEvent = meetingBreakoutRoomSharingStarted;
+					break;
+				case Models.Webhooks.EventType.MeetingBreakoutRoomSharingEnded:
+					var meetingBreakoutRoomSharingEnded = payloadJsonProperty.ToObject<MeetingBreakoutRoomSharingEndedEvent>(options);
+					meetingBreakoutRoomSharingEnded.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<BreakoutRoomParticipantBasicInfo>();
+					meetingBreakoutRoomSharingEnded.SharingDetails = payloadJsonProperty.GetProperty("object/participant/sharing_details", true).Value.ToObject<ScreenshareDetails>();
+					webHookEvent = meetingBreakoutRoomSharingEnded;
+					break;
 				default:
 					throw new JsonException($"{eventType} is an unknown event type");
 			}
