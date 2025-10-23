@@ -25,7 +25,7 @@ namespace ZoomNet.Models
 		/// Gets or sets the participant's main meeting user ID (user_id).
 		/// </summary>
 		[JsonPropertyName("parent_user_id")]
-		public string ParentUserId { get;set; }
+		public string ParentUserId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the participant's username.
