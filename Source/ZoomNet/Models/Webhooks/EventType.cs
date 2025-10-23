@@ -73,7 +73,7 @@ namespace ZoomNet.Models.Webhooks
 		MeetingParticipantJoinedBeforeHost,
 
 		/// <summary>
-		/// An attendee is wating for the host to join the meeting.
+		/// An attendee is waiting for the host to join the meeting.
 		/// </summary>
 		[EnumMember(Value = "meeting.participant_jbh_waiting")]
 		MeetingParticipantWaitingForHost,
@@ -269,5 +269,29 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "recording.completed")]
 		RecordingCompleted,
+
+		/// <summary>
+		/// Meeting participant has joined a meeting breakout room.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_joined_breakout_room")]
+		MeetingParticipantJoinedBreakoutRoom,
+
+		/// <summary>
+		/// Meeting participant has left a meeting breakout room.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_left_breakout_room")]
+		MeetingParticipantLeftBreakoutRoom,
+
+		/// <summary>
+		/// User in a breakout room has begun content sharing.
+		/// </summary>
+		[EnumMember(Value = "meeting.breakout_room_sharing_started")]
+		MeetingBreakoutRoomSharingStarted,
+
+		/// <summary>
+		/// User in a breakout room has ended content sharing.
+		/// </summary>
+		[EnumMember(Value = "meeting.breakout_room_sharing_ended")]
+		MeetingBreakoutRoomSharingEnded,
 	}
 }
