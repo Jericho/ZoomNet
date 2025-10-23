@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Net.WebSockets;
@@ -19,6 +20,13 @@ namespace ZoomNet
 	/// </summary>
 	public class ZoomWebSocketClient : IDisposable
 	{
+		// The error message we get from Zoom's WebSocket server when a token has expired is not always the same.
+		private static readonly HashSet<string> _invalidTokenMessages = new(StringComparer.OrdinalIgnoreCase)
+		{
+			"Invalid Token",
+			"Token is invalid"
+		};
+
 		private readonly string _subscriptionId;
 		private readonly ILogger _logger;
 		private readonly IWebProxy _proxy;
@@ -173,7 +181,7 @@ namespace ZoomNet
 			var success = jsonDoc.RootElement.GetPropertyValue("success", true);
 			var content = jsonDoc.RootElement.GetPropertyValue("content", string.Empty);
 
-			if (content.Equals("Invalid Token", StringComparison.OrdinalIgnoreCase))
+			if (_invalidTokenMessages.Contains(content))
 			{
 				_logger.LogTrace("{module}. Token is invalid (presumably expired). Requesting a new token...", module);
 				_tokenHandler.RefreshTokenIfNecessary(true);
