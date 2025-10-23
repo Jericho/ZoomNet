@@ -12,6 +12,8 @@ namespace ZoomNet.Json
 	{
 		public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 		{
+			if (reader.TokenType != JsonTokenType.Number) throw new JsonException($"Unable to convert {reader.TokenType.ToEnumString()} from Epoch to DateTime");
+
 			var secondsSinceEpoch = reader.GetInt64();
 			return secondsSinceEpoch.FromUnixTime();
 		}

@@ -45,7 +45,7 @@ namespace ZoomNet.Json
 						if (customAttributes.OfType<DescriptionAttribute>().Any(attribute => string.IsNullOrEmpty(attribute.Description))) return (T)Enum.Parse(enumType, name);
 					}
 
-					throw new JsonException($"Unable to convert a null value into a {typeToConvert.Name} enum.");
+					throw new JsonException($"Unable to convert a null value into a {typeToConvert?.Name} enum.");
 
 				default:
 					throw new JsonException($"Unexpected token {reader.TokenType} when parsing an enum.");
@@ -54,7 +54,7 @@ namespace ZoomNet.Json
 
 		public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
 		{
-			if (value == null)
+			if (value is null)
 			{
 				writer.WriteNullValue();
 			}

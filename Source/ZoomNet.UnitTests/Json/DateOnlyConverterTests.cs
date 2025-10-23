@@ -8,105 +8,26 @@ using ZoomNet.Json;
 
 namespace ZoomNet.UnitTests.Json
 {
-	public class BooleanConverterTests
+	public class DateOnlyConverterTests
 	{
-		[Theory]
-		[InlineData("true", true)]
-		[InlineData("false", false)]
-		public void Read_Boolean(string value, bool expectedValue)
+		[Fact]
+		public void Read()
 		{
 			// Arrange
-			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(value);
-			var jsonReader = new Utf8JsonReader(jsonUtf8);
-			var objectType = (Type)null;
-			var options = new JsonSerializerOptions();
-
-			var converter = new BooleanConverter();
-
-			// Act
-			jsonReader.Read();
-			var result = converter.Read(ref jsonReader, objectType, options);
-
-			// Assert
-			result.ShouldBe(expectedValue);
-		}
-
-		[Theory]
-		[InlineData(long.MinValue, false)]
-		[InlineData(-1, false)]
-		[InlineData(0, false)]
-		[InlineData(1, true)]
-		[InlineData(2, false)]
-		[InlineData(long.MaxValue, false)]
-		public void Read_Long(long value, bool expectedValue)
-		{
-			// Arrange
-			var json = value.ToString();
+			var json = "\"2025-09-17\"";
 			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(json);
 			var jsonReader = new Utf8JsonReader(jsonUtf8);
 			var objectType = (Type)null;
 			var options = new JsonSerializerOptions();
 
-			var converter = new BooleanConverter();
+			var converter = new DateOnlyConverter();
 
 			// Act
 			jsonReader.Read();
 			var result = converter.Read(ref jsonReader, objectType, options);
 
 			// Assert
-			result.ShouldBe(expectedValue);
-		}
-
-		[Theory]
-		[InlineData(int.MinValue, false)]
-		[InlineData(-1, false)]
-		[InlineData(0, false)]
-		[InlineData(1, true)]
-		[InlineData(2, false)]
-		[InlineData(int.MaxValue, false)]
-		public void Read_Int(int value, bool expectedValue)
-		{
-			// Arrange
-			var json = value.ToString();
-			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(json);
-			var jsonReader = new Utf8JsonReader(jsonUtf8);
-			var objectType = (Type)null;
-			var options = new JsonSerializerOptions();
-
-			var converter = new BooleanConverter();
-
-			// Act
-			jsonReader.Read();
-			var result = converter.Read(ref jsonReader, objectType, options);
-
-			// Assert
-			result.ShouldBe(expectedValue);
-		}
-
-		[Theory]
-		[InlineData(short.MinValue, false)]
-		[InlineData(-1, false)]
-		[InlineData(0, false)]
-		[InlineData(1, true)]
-		[InlineData(2, false)]
-		[InlineData(short.MaxValue, false)]
-		public void Read_Short(short value, bool expectedValue)
-		{
-			// Arrange
-			var json = value.ToString();
-			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(json);
-			var jsonReader = new Utf8JsonReader(jsonUtf8);
-			var objectType = (Type)null;
-			var options = new JsonSerializerOptions();
-
-			var converter = new BooleanConverter();
-
-			// Act
-			jsonReader.Read();
-			var result = converter.Read(ref jsonReader, objectType, options);
-
-			// Assert
-			result.ShouldBe(expectedValue);
+			result.ShouldBe((2025, 9, 17));
 		}
 
 		[Fact]
@@ -119,7 +40,7 @@ namespace ZoomNet.UnitTests.Json
 			var objectType = (Type)null;
 			var options = new JsonSerializerOptions();
 
-			var converter = new BooleanConverter();
+			var converter = new DateOnlyConverter();
 
 			// Act
 			jsonReader.Read();
@@ -130,7 +51,63 @@ namespace ZoomNet.UnitTests.Json
 			}
 			catch (JsonException e)
 			{
-				e.Message.ShouldBe("Unable to convert a null value into a boolean value");
+				e.Message.ShouldBe("Unable to convert a null value to DateOnly");
+
+				// Unfortunately, cannot use Should.Throw<JsonException>(() => converter.Read(ref jsonReader, objectType, options));
+				// because we can't use 'ref' arguments in lambda expressions.
+			}
+		}
+
+		[Fact]
+		public void Throws_when_empty_string()
+		{
+			// Arrange
+			var json = "\"\"";
+			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(json);
+			var jsonReader = new Utf8JsonReader(jsonUtf8);
+			var objectType = (Type)null;
+			var options = new JsonSerializerOptions();
+
+			var converter = new DateOnlyConverter();
+
+			// Act
+			jsonReader.Read();
+
+			try
+			{
+				var result = converter.Read(ref jsonReader, objectType, options);
+			}
+			catch (JsonException e)
+			{
+				e.Message.ShouldBe("Unable to convert a null value to DateOnly");
+
+				// Unfortunately, cannot use Should.Throw<JsonException>(() => converter.Read(ref jsonReader, objectType, options));
+				// because we can't use 'ref' arguments in lambda expressions.
+			}
+		}
+
+		[Fact]
+		public void Throws_when_too_many_parts()
+		{
+			// Arrange
+			var rawValue = "2025-09-17-09";
+			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes($"\"{rawValue}\"");
+			var jsonReader = new Utf8JsonReader(jsonUtf8);
+			var objectType = (Type)null;
+			var options = new JsonSerializerOptions();
+
+			var converter = new DateOnlyConverter();
+
+			// Act
+			jsonReader.Read();
+
+			try
+			{
+				var result = converter.Read(ref jsonReader, objectType, options);
+			}
+			catch (JsonException e)
+			{
+				e.Message.ShouldBe($"Unable to convert {rawValue} to DateOnly");
 
 				// Unfortunately, cannot use Should.Throw<JsonException>(() => converter.Read(ref jsonReader, objectType, options));
 				// because we can't use 'ref' arguments in lambda expressions.
@@ -141,13 +118,13 @@ namespace ZoomNet.UnitTests.Json
 		public void Throws_when_reading_any_other_data_type()
 		{
 			// Arrange
-			var json = "\"Strings are not handled by our boolean converter\"";
+			var json = "2025";
 			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(json);
 			var jsonReader = new Utf8JsonReader(jsonUtf8);
 			var objectType = (Type)null;
 			var options = new JsonSerializerOptions();
 
-			var converter = new BooleanConverter();
+			var converter = new DateOnlyConverter();
 
 			// Act
 			jsonReader.Read();
@@ -158,24 +135,23 @@ namespace ZoomNet.UnitTests.Json
 			}
 			catch (JsonException e)
 			{
-				e.Message.ShouldBe("Unable to convert the content of String JSON node into a boolean value");
+				e.Message.ShouldBe("Unable to convert Number to DateOnly");
 
 				// Unfortunately, cannot use Should.Throw<JsonException>(() => converter.Read(ref jsonReader, objectType, options));
 				// because we can't use 'ref' arguments in lambda expressions.
 			}
 		}
 
-		[Theory]
-		[InlineData(true, "true")]
-		[InlineData(false, "false")]
-		public void Write(bool value, string expectedValue)
+		[Fact]
+		public void Write()
 		{
 			// Arrange
+			var value = (2025, 9, 17);
 			var ms = new MemoryStream();
 			var jsonWriter = new Utf8JsonWriter(ms);
 			var options = new JsonSerializerOptions();
 
-			var converter = new BooleanConverter();
+			var converter = new DateOnlyConverter();
 
 			// Act
 			converter.Write(jsonWriter, value, options);
@@ -186,7 +162,7 @@ namespace ZoomNet.UnitTests.Json
 			var result = sr.ReadToEnd();
 
 			// Assert
-			result.ShouldBe(expectedValue);
+			result.ShouldBe("\"2025-09-17\"");
 		}
 	}
 }

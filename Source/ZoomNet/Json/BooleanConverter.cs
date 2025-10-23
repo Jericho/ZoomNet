@@ -16,20 +16,20 @@ namespace ZoomNet.Json
 			{
 				case JsonTokenType.None:
 				case JsonTokenType.Null:
-					throw new JsonException($"Unable to convert a null value into a boolean value");
+					throw new JsonException("Unable to convert a null value into a boolean value");
 
 				case JsonTokenType.True:
 				case JsonTokenType.False:
 					return reader.GetBoolean();
 
-				case JsonTokenType.Number when reader.TryGetInt64(out long longValue):
-					return longValue == 1L;
+				case JsonTokenType.Number when reader.TryGetInt16(out short shortValue):
+					return shortValue == 1;
 
 				case JsonTokenType.Number when reader.TryGetInt32(out int intValue):
 					return intValue == 1;
 
-				case JsonTokenType.Number when reader.TryGetInt16(out short shortValue):
-					return shortValue == 1;
+				case JsonTokenType.Number when reader.TryGetInt64(out long longValue):
+					return longValue == 1L;
 
 				default:
 					throw new JsonException($"Unable to convert the content of {reader.TokenType.ToEnumString()} JSON node into a boolean value");

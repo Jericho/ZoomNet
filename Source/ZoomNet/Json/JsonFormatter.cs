@@ -225,6 +225,7 @@ namespace ZoomNet.Json
 		*/
 		private static void CleanJsonObject(JsonObject jsonObject)
 		{
+			// STEP 1 - Remove properties containing a null value
 			var nullProperties = jsonObject
 				.Where(kvp => kvp.Value == null)
 				.Select(kvp => kvp.Key)
@@ -234,6 +235,7 @@ namespace ZoomNet.Json
 				jsonObject.Remove(propertyName);
 			}
 
+			// STEP 2 - Recursively process properties containing a JsonObject
 			var jsonObjectProperties = jsonObject
 				.Where(kvp => kvp.Value is JsonObject)
 				.Select(kvp => kvp.Value as JsonObject)
@@ -243,6 +245,7 @@ namespace ZoomNet.Json
 				CleanJsonObject(jsonObjectPropertyValue);
 			}
 
+			// STEP 3 - Recursively process properties containing an array of JsonObjects
 			var arrayOfJsonObjectsProperties = jsonObject
 				.Where(kvp => kvp.Value is JsonValue)
 				.Select(kvp =>
@@ -262,6 +265,17 @@ namespace ZoomNet.Json
 				{
 					CleanJsonObject(item);
 				}
+			}
+
+			// STEP 4 - Remove properties containing an empty JsonObject
+			var emptyJsonObjectProperties = jsonObject
+				.Where(kvp => kvp.Value is JsonObject)
+				.Where(kvp => (kvp.Value as JsonObject).Count == 0)
+				.Select(kvp => kvp.Key)
+				.ToArray();
+			foreach (var propertyName in emptyJsonObjectProperties)
+			{
+				jsonObject.Remove(propertyName);
 			}
 		}
 	}

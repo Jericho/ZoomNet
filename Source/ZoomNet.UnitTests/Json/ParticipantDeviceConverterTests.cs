@@ -11,6 +11,54 @@ namespace ZoomNet.UnitTests.Json
 {
 	public class ParticipantDeviceConverterTests
 	{
+		[Theory]
+		[InlineData("null")] // Null value
+		public void Read_null(string value)
+		{
+			// Arrange
+			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(value);
+			var jsonReader = new Utf8JsonReader(jsonUtf8);
+			var objectType = (Type)null;
+			var options = new JsonSerializerOptions();
+
+			var converter = new ParticipantDeviceConverter();
+
+			// Act
+			jsonReader.Read();
+			var result = converter.Read(ref jsonReader, objectType, options);
+
+			// Assert
+			result.ShouldBeEmpty();
+		}
+
+		[Fact]
+		public void Read_invalid_value()
+		{
+			// Arrange
+			var value = "12345"; // A numeric value which is invalid in this context
+			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(value);
+			var jsonReader = new Utf8JsonReader(jsonUtf8);
+			var objectType = (Type)null;
+			var options = new JsonSerializerOptions();
+
+			var converter = new ParticipantDeviceConverter();
+
+			// Act
+			jsonReader.Read();
+
+			try
+			{
+				var result = converter.Read(ref jsonReader, objectType, options);
+			}
+			catch (JsonException e)
+			{
+				e.Message.ShouldBe("Unable to convert to ParticipantDevice");
+
+				// Unfortunately, cannot use Should.Throw<JsonException>(() => converter.Read(ref jsonReader, objectType, options));
+				// because we can't use 'ref' arguments in lambda expressions.
+			}
+		}
+
 		[Fact]
 		public void Write_single()
 		{

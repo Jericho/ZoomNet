@@ -24,15 +24,15 @@ namespace ZoomNet.UnitTests
 					""host_id"": ""8lzIwvZTSOqjndWPbPqzuA"",
 					""topic"": ""ZoomNet Unit Testing: instant meeting"",
 					""type"": 1,
-							""duration"": 60,
+					""duration"": 60,
 					""timezone"": ""America/New_York"",
 					""join_url"": ""https://zoom.us/j/98884753832?pwd=c21EQzg0SXY2dlNTOFF2TENpSm1aQT09"",
 					""password"": ""PaSsWoRd"",
 					""settings"": {
 						""use_pmi"": false,
 						""alternative_hosts"": """"
+					}
 				}
-			}
 			},
 			""event_ts"": 1617628462392
 		}";
@@ -52,7 +52,7 @@ namespace ZoomNet.UnitTests
 					""type"": 1,
 					""duration"": 60,
 					""timezone"": ""America/New_York""
-			}
+				}
 			},
 			""event_ts"": 1617628462764
 		}";
@@ -92,7 +92,7 @@ namespace ZoomNet.UnitTests
 					""topic"": ""ZoomNet Unit Testing: UPDATED scheduled meeting"",
 					""settings"": { ""audio"": ""voip"" }
 					},
-					""old_object"": {
+				""old_object"": {
 					""id"": 94890226305,
 					""topic"": ""ZoomNet Unit Testing: scheduled meeting"",
 					""settings"": { ""audio"": ""telephony"" }
@@ -146,11 +146,11 @@ namespace ZoomNet.UnitTests
 							""date_time"": ""2019-07-16T17:19:11Z"",
 							""content"": ""application""
 						}
-			}
-		},
+					}
+				},
 				""account_id"": ""EPeQtiABC000VYxHMA""
 			}
-	}";
+		}";
 
 		private const string MEETING_SERVICE_ISSUE_WEBHOOK = @"
 		{
@@ -196,72 +196,205 @@ namespace ZoomNet.UnitTests
 
 		private const string RECORDING_COMPLETED_WEBHOOK = @"
 		{
-		  ""event"": ""recording.completed"",
-		  ""event_ts"": 1626230691572,
-		  ""payload"": {
-		    ""account_id"": ""AAAAAABBBB"",
-		    ""object"": {
-		      ""id"": 1234567890,
-		      ""uuid"": ""4444AAAiAAAAAiAiAiiAii=="",
-		      ""host_id"": ""x1yCzABCDEfg23HiJKl4mN"",
-		      ""account_id"": ""x1yCzABCDEfg23HiJKl4mN"",
-		      ""topic"": ""My Personal Recording"",
-		      ""type"": 4,
-		      ""start_time"": ""2021-07-13T21:44:51Z"",
-		      ""password"": ""132456"",
-		      ""timezone"": ""America/Los_Angeles"",
-		      ""host_email"": ""jchill@example.com"",
-		      ""duration"": 60,
-		      ""share_url"": ""https://example.com"",
-		      ""total_size"": 3328371,
-		      ""recording_count"": 2,
-		      ""on_prem"": false,
-		      ""recording_play_passcode"": ""yNYIS408EJygs7rE5vVsJwXIz4-VW7MH"",
-		      ""recording_files"": [
-		        {
-		          ""id"": ""ed6c2f27-2ae7-42f4-b3d0-835b493e4fa8"",
-		          ""meeting_id"": ""098765ABCD"",
-		          ""recording_start"": ""2021-03-23T22:14:57Z"",
-		          ""recording_end"": ""2021-03-23T23:15:41Z"",
-		          ""recording_type"": ""audio_only"",
-		          ""file_type"": ""M4A"",
-		          ""file_size"": 246560,
-		          ""file_extension"": ""M4A"",
-		          ""play_url"": ""https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngBBBB"",
-		          ""download_url"": ""https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngBBBB"",
-		          ""status"": ""completed""
-		        },
-		        {
-		          ""id"": ""388ffb46-1541-460d-8447-4624451a1db7"",
-		          ""meeting_id"": ""098765ABCD"",
-		          ""recording_start"": ""2021-03-23T22:14:57Z"",
-		          ""recording_end"": ""2021-03-23T23:15:41Z"",
-		          ""recording_type"": ""shared_screen_with_speaker_view"",
-		          ""file_type"": ""MP4"",
-		          ""file_size"": 282825,
-		          ""file_extension"": ""MP4"",
-		          ""play_url"": ""https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngCCCC"",
-		          ""download_url"": ""https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngCCCC"",
-		          ""status"": ""completed""
-		        }
-		      ],
-		      ""participant_audio_files"": [
-		        {
-		          ""id"": ""ed6c2f27-2ae7-42f4-b3d0-835b493e4fa8"",
-		          ""recording_start"": ""2021-03-23T22:14:57Z"",
-		          ""recording_end"": ""2021-03-23T23:15:41Z"",
-		          ""file_type"": ""M4A"",
-		          ""file_name"": ""MyRecording"",
-		          ""file_size"": 246560,
-		          ""file_extension"": ""MP4"",
-		          ""play_url"": ""https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngAAAA"",
-		          ""download_url"": ""https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngAAAA"",
-		          ""status"": ""completed""
-		        }
-		      ]
-		    }
-		  },
-		  ""download_token"": ""abJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJodHRwczovL2V2ZW50Lnpvb20udXMiLCJhY2NvdW50SWQiOiJNdDZzdjR1MFRBeVBrd2dzTDJseGlBIiwiYXVkIjoiaHR0cHM6Ly9vYXV0aC56b29tLnVzIiwibWlkIjoieFp3SEc0c3BRU2VuekdZWG16dnpiUT09IiwiZXhwIjoxNjI2MTM5NTA3LCJ1c2VySWQiOiJEWUhyZHBqclMzdWFPZjdkUGtrZzh3In0.a6KetiC6BlkDhf1dP4KBGUE1bb2brMeraoD45yhFx0eSSSTFdkHQnsKmlJQ-hdo9Zy-4vQw3rOxlyoHv583JyZ""
+			""event"": ""recording.completed"",
+			""event_ts"": 1626230691572,
+			""payload"": {
+				""account_id"": ""AAAAAABBBB"",
+				""object"": {
+					""id"": 1234567890,
+					""uuid"": ""4444AAAiAAAAAiAiAiiAii=="",
+					""host_id"": ""x1yCzABCDEfg23HiJKl4mN"",
+					""account_id"": ""x1yCzABCDEfg23HiJKl4mN"",
+					""topic"": ""My Personal Recording"",
+					""type"": 4,
+					""start_time"": ""2021-07-13T21:44:51Z"",
+					""password"": ""132456"",
+					""timezone"": ""America/Los_Angeles"",
+					""host_email"": ""jchill@example.com"",
+					""duration"": 60,
+					""share_url"": ""https://example.com"",
+					""total_size"": 3328371,
+					""recording_count"": 2,
+					""on_prem"": false,
+					""recording_play_passcode"": ""yNYIS408EJygs7rE5vVsJwXIz4-VW7MH"",
+					""recording_files"": [
+						{
+							""id"": ""ed6c2f27-2ae7-42f4-b3d0-835b493e4fa8"",
+							""meeting_id"": ""098765ABCD"",
+							""recording_start"": ""2021-03-23T22:14:57Z"",
+							""recording_end"": ""2021-03-23T23:15:41Z"",
+							""recording_type"": ""audio_only"",
+							""file_type"": ""M4A"",
+							""file_size"": 246560,
+							""file_extension"": ""M4A"",
+							""play_url"": ""https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngBBBB"",
+							""download_url"": ""https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngBBBB"",
+							""status"": ""completed""
+						},
+						{
+							""id"": ""388ffb46-1541-460d-8447-4624451a1db7"",
+							""meeting_id"": ""098765ABCD"",
+							""recording_start"": ""2021-03-23T22:14:57Z"",
+							""recording_end"": ""2021-03-23T23:15:41Z"",
+							""recording_type"": ""shared_screen_with_speaker_view"",
+							""file_type"": ""MP4"",
+							""file_size"": 282825,
+							""file_extension"": ""MP4"",
+							""play_url"": ""https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngCCCC"",
+							""download_url"": ""https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngCCCC"",
+							""status"": ""completed""
+						}
+					],
+					""participant_audio_files"": [
+						{
+							""id"": ""ed6c2f27-2ae7-42f4-b3d0-835b493e4fa8"",
+							""recording_start"": ""2021-03-23T22:14:57Z"",
+							""recording_end"": ""2021-03-23T23:15:41Z"",
+							""file_type"": ""M4A"",
+							""file_name"": ""MyRecording"",
+							""file_size"": 246560,
+							""file_extension"": ""MP4"",
+							""play_url"": ""https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngAAAA"",
+							""download_url"": ""https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngAAAA"",
+							""status"": ""completed""
+						}
+					]
+				}
+			},
+			""download_token"": ""abJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJodHRwczovL2V2ZW50Lnpvb20udXMiLCJhY2NvdW50SWQiOiJNdDZzdjR1MFRBeVBrd2dzTDJseGlBIiwiYXVkIjoiaHR0cHM6Ly9vYXV0aC56b29tLnVzIiwibWlkIjoieFp3SEc0c3BRU2VuekdZWG16dnpiUT09IiwiZXhwIjoxNjI2MTM5NTA3LCJ1c2VySWQiOiJEWUhyZHBqclMzdWFPZjdkUGtrZzh3In0.a6KetiC6BlkDhf1dP4KBGUE1bb2brMeraoD45yhFx0eSSSTFdkHQnsKmlJQ-hdo9Zy-4vQw3rOxlyoHv583JyZ""
+		}";
+
+		private const string MEETING_PARTICIPANT_JOINED_BREAKOUT_ROOM_WEBHOOK = @"
+		{
+			""event"": ""meeting.participant_joined_breakout_room"",
+			""event_ts"": 1626230691572,
+			""payload"": {
+				""account_id"": ""AAAAAABBBB"",
+				""object"": {
+					""id"": ""1234567890"",
+					""uuid"": ""4444AAAiAAAAAiAiAiiAii=="",
+					""breakout_room_uuid"": ""FkQbpP2UR028mDrwzEahqw=="",
+					""host_id"": ""x1yCzABCDEfg23HiJKl4mN"",
+					""topic"": ""My Meeting"",
+					""type"": 8,
+					""start_time"": ""2021-07-13T21:44:51Z"",
+					""timezone"": ""America/Los_Angeles"",
+					""duration"": 60,
+					""participant"": {
+						""user_id"": ""31228928"",
+						""parent_user_id"": ""1234567890"",
+						""user_name"": ""Jill Chill"",
+						""id"": ""iFxeBPYun6SAiWUzBcEkX"",
+						""participant_uuid"": ""55555AAAiAAAAAiAiAiiAii"",
+						""join_time"": ""2021-07-13T21:45:51Z"",
+						""email"": ""jchill@example.com"",
+						""registrant_id"": ""abcdefghij0-klmnopq23456"",
+						""participant_user_id"": ""rstuvwxyza789-cde"",
+						""phone_number"": ""8615250064084"",
+						""customer_key"": ""349589LkJyeW""
+					}
+				}
+			}
+		}";
+
+		private const string MEETING_PARTICIPANT_LEFT_BREAKOUT_ROOM_WEBHOOK = @"
+		{
+			""event"": ""meeting.participant_left_breakout_room"",
+			""event_ts"": 1626230691572,
+			""payload"": {
+				""account_id"": ""AAAAAABBBB"",
+				""object"": {
+					""id"": ""1234567890"",
+					""uuid"": ""4444AAAiAAAAAiAiAiiAii=="",
+					""breakout_room_uuid"": ""FkQbpP2UR028mDrwzEahqw=="",
+					""host_id"": ""x1yCzABCDEfg23HiJKl4mN"",
+					""topic"": ""My Meeting"",
+					""type"": 8,
+					""start_time"": ""2021-07-13T21:44:51Z"",
+					""timezone"": ""America/Los_Angeles"",
+					""duration"": 60,
+					""participant"": {
+						""user_id"": ""31228928"",
+						""parent_user_id"": ""1234567890"",
+						""user_name"": ""Jill Chill"",
+						""id"": ""iFxeBPYun6SAiWUzBcEkX"",
+						""participant_uuid"": ""55555AAAiAAAAAiAiAiiAii"",
+						""leave_time"": ""2021-07-13T22:50:51Z"",
+						""leave_reason"": ""Jill Chill left the meeting.<br>Reason: Host ended the meeting."",
+						""email"": ""jchill@example.com"",
+						""registrant_id"": ""abcdefghij0-klmnopq23456"",
+						""participant_user_id"": ""rstuvwxyza789-cde"",
+						""phone_number"": ""8615250064084"",
+						""customer_key"": ""349589LkJyeW""
+					}
+				}
+			}
+		}";
+
+		private const string MEETING_BREAKOUT_ROOM_SHARING_STARTED_WEBHOOK = @"
+		{
+			""event"": ""meeting.breakout_room_sharing_started"",
+			""event_ts"": 1626230691572,
+			""payload"": {
+				""account_id"": ""AAAAAABBBB"",
+				""object"": {
+					""id"": ""1234567890"",
+					""uuid"": ""4444AAAiAAAAAiAiAiiAii=="",
+					""breakout_room_uuid"": ""FkQbpP2UR028mDrwzEahqw=="",
+					""host_id"": ""x1yCzABCDEfg23HiJKl4mN"",
+					""topic"": ""My Meeting"",
+					""type"": 8,
+					""start_time"": ""2021-07-13T21:44:51Z"",
+					""timezone"": ""America/Los_Angeles"",
+					""duration"": 60,
+					""participant"": {
+						""user_id"": ""31228928"",
+						""parent_user_id"": ""ABCDE12345"",
+						""user_name"": ""JillChill"",
+						""id"": ""iFxeBPYun6SAiWUzBcEkX"",
+						""sharing_details"": {
+							""content"": ""application"",
+							""link_source"": ""in_meeting"",
+							""file_link"": ""https://shared"",
+							""date_time"": ""2021-07-13T21:55:52Z"",
+							""source"": ""dropbox""
+						}
+					}
+				}
+			}
+		}";
+
+		private const string MEETING_BREAKOUT_ROOM_SHARING_ENDED_WEBHOOK = @"
+		{
+			""event"": ""meeting.breakout_room_sharing_ended"",
+			""event_ts"": 1626230691572,
+			""payload"": {
+				""account_id"": ""AAAAAABBBB"",
+				""object"": {
+					""id"": ""1234567890"",
+					""uuid"": ""4444AAAiAAAAAiAiAiiAii=="",
+					""breakout_room_uuid"": ""FkQbpP2UR028mDrwzEahqw=="",
+					""host_id"": ""x1yCzABCDEfg23HiJKl4mN"",
+					""topic"": ""My Meeting"",
+					""type"": 8,
+					""start_time"": ""2021-07-13T21:44:51Z"",
+					""timezone"": ""America/Los_Angeles"",
+					""duration"": 60,
+					""participant"": {
+						""user_id"": ""31228928"",
+						""parent_user_id"": ""ABCDE12345"",
+						""user_name"": ""JillChill"",
+						""id"": ""iFxeBPYun6SAiWUzBcEkX"",
+						""sharing_details"": {
+							""content"": ""application"",
+							""link_source"": ""in_meeting"",
+							""file_link"": ""https://shared"",
+							""date_time"": ""2021-07-13T21:56:00Z"",
+							""source"": ""dropbox""
+						}
+					}
+				}
+			}
 		}";
 
 		#endregion
@@ -503,12 +636,139 @@ namespace ZoomNet.UnitTests
 			parsedEvent.Webinar.Settings.ShouldBeNull();
 		}
 
+		[Fact]
+		public void MeetingParticipantJoinedBreakoutRoom()
+		{
+			var parsedEvent = (MeetingParticipantJoinedBreakoutRoomEvent)new WebhookParser().ParseEventWebhook(MEETING_PARTICIPANT_JOINED_BREAKOUT_ROOM_WEBHOOK);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingParticipantJoinedBreakoutRoom);
+			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
+			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
+			parsedEvent.Meeting.ShouldNotBeNull();
+			parsedEvent.Meeting.Id.ShouldBe(1234567890);
+			parsedEvent.Meeting.Uuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
+			parsedEvent.Meeting.BreakoutRoomUuid.ShouldBe("FkQbpP2UR028mDrwzEahqw==");
+			parsedEvent.Meeting.HostId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
+			parsedEvent.Meeting.Topic.ShouldBe("My Meeting");
+			parsedEvent.Meeting.Type.ShouldBe(MeetingType.RecurringFixedTime);
+			parsedEvent.Meeting.StartTime.ShouldBe(new DateTime(2021, 7, 13, 21, 44, 51, DateTimeKind.Utc));
+			parsedEvent.Meeting.Timezone.ShouldBe(TimeZones.America_Los_Angeles);
+			parsedEvent.Meeting.Duration.ShouldBe(60);
+			parsedEvent.Participant.ShouldNotBeNull();
+			parsedEvent.Participant.UserId.ShouldBe("31228928");
+			parsedEvent.Participant.ParentUserId.ShouldBe("1234567890");
+			parsedEvent.Participant.UserName.ShouldBe("Jill Chill");
+			parsedEvent.Participant.Id.ShouldBe("iFxeBPYun6SAiWUzBcEkX");
+			parsedEvent.Participant.ParticipantUuid.ShouldBe("55555AAAiAAAAAiAiAiiAii");
+			parsedEvent.Participant.Email.ShouldBe("jchill@example.com");
+			parsedEvent.Participant.RegistrantId.ShouldBe("abcdefghij0-klmnopq23456");
+			parsedEvent.Participant.ParticipantUserId.ShouldBe("rstuvwxyza789-cde");
+			parsedEvent.Participant.PhoneNumber.ShouldBe("8615250064084");
+			parsedEvent.Participant.CustomerKey.ShouldBe("349589LkJyeW");
+			parsedEvent.JoinTime.ShouldBe(new DateTime(2021, 7, 13, 21, 45, 51, DateTimeKind.Utc));
+		}
+
+		[Fact]
+		public void MeetingParticipantLeftBreakoutRoom()
+		{
+			var parsedEvent = (MeetingParticipantLeftBreakoutRoomEvent)new WebhookParser().ParseEventWebhook(MEETING_PARTICIPANT_LEFT_BREAKOUT_ROOM_WEBHOOK);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingParticipantLeftBreakoutRoom);
+			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
+			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
+			parsedEvent.Meeting.ShouldNotBeNull();
+			parsedEvent.Meeting.Id.ShouldBe(1234567890);
+			parsedEvent.Meeting.Uuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
+			parsedEvent.Meeting.BreakoutRoomUuid.ShouldBe("FkQbpP2UR028mDrwzEahqw==");
+			parsedEvent.Meeting.HostId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
+			parsedEvent.Meeting.Topic.ShouldBe("My Meeting");
+			parsedEvent.Meeting.Type.ShouldBe(MeetingType.RecurringFixedTime);
+			parsedEvent.Meeting.StartTime.ShouldBe(new DateTime(2021, 7, 13, 21, 44, 51, DateTimeKind.Utc));
+			parsedEvent.Meeting.Timezone.ShouldBe(TimeZones.America_Los_Angeles);
+			parsedEvent.Meeting.Duration.ShouldBe(60);
+			parsedEvent.Participant.ShouldNotBeNull();
+			parsedEvent.Participant.UserId.ShouldBe("31228928");
+			parsedEvent.Participant.ParentUserId.ShouldBe("1234567890");
+			parsedEvent.Participant.UserName.ShouldBe("Jill Chill");
+			parsedEvent.Participant.Id.ShouldBe("iFxeBPYun6SAiWUzBcEkX");
+			parsedEvent.Participant.ParticipantUuid.ShouldBe("55555AAAiAAAAAiAiAiiAii");
+			parsedEvent.Participant.Email.ShouldBe("jchill@example.com");
+			parsedEvent.Participant.RegistrantId.ShouldBe("abcdefghij0-klmnopq23456");
+			parsedEvent.Participant.ParticipantUserId.ShouldBe("rstuvwxyza789-cde");
+			parsedEvent.Participant.PhoneNumber.ShouldBe("8615250064084");
+			parsedEvent.Participant.CustomerKey.ShouldBe("349589LkJyeW");
+			parsedEvent.LeaveTime.ShouldBe(new DateTime(2021, 7, 13, 22, 50, 51, DateTimeKind.Utc));
+			parsedEvent.LeaveReason.ShouldBe("Jill Chill left the meeting.<br>Reason: Host ended the meeting.");
+		}
+
+		[Fact]
+		public void MeetingBreakoutRoomSharingStarted()
+		{
+			var parsedEvent = (MeetingBreakoutRoomSharingStartedEvent)new WebhookParser().ParseEventWebhook(MEETING_BREAKOUT_ROOM_SHARING_STARTED_WEBHOOK);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingBreakoutRoomSharingStarted);
+			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
+			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
+			parsedEvent.Meeting.ShouldNotBeNull();
+			parsedEvent.Meeting.Id.ShouldBe(1234567890);
+			parsedEvent.Meeting.Uuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
+			parsedEvent.Meeting.BreakoutRoomUuid.ShouldBe("FkQbpP2UR028mDrwzEahqw==");
+			parsedEvent.Meeting.HostId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
+			parsedEvent.Meeting.Topic.ShouldBe("My Meeting");
+			parsedEvent.Meeting.Type.ShouldBe(MeetingType.RecurringFixedTime);
+			parsedEvent.Meeting.StartTime.ShouldBe(new DateTime(2021, 7, 13, 21, 44, 51, DateTimeKind.Utc));
+			parsedEvent.Meeting.Timezone.ShouldBe(TimeZones.America_Los_Angeles);
+			parsedEvent.Meeting.Duration.ShouldBe(60);
+			parsedEvent.Participant.ShouldNotBeNull();
+			parsedEvent.Participant.UserId.ShouldBe("31228928");
+			parsedEvent.Participant.ParentUserId.ShouldBe("ABCDE12345");
+			parsedEvent.Participant.UserName.ShouldBe("JillChill");
+			parsedEvent.Participant.Id.ShouldBe("iFxeBPYun6SAiWUzBcEkX");
+			parsedEvent.SharingDetails.ShouldNotBeNull();
+			parsedEvent.SharingDetails.ContentType.ShouldBe(ScreenshareContentType.Application);
+			parsedEvent.SharingDetails.SharingMethod.ShouldBe("in_meeting");
+			parsedEvent.SharingDetails.Link.ShouldBe("https://shared");
+			parsedEvent.SharingDetails.Date.ShouldBe(new DateTime(2021, 7, 13, 21, 55, 52, DateTimeKind.Utc));
+			parsedEvent.SharingDetails.Source.ShouldBe("dropbox");
+		}
+
+		[Fact]
+		public void MeetingBreakoutRoomSharingEnded()
+		{
+			var parsedEvent = (MeetingBreakoutRoomSharingEndedEvent)new WebhookParser().ParseEventWebhook(MEETING_BREAKOUT_ROOM_SHARING_ENDED_WEBHOOK);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingBreakoutRoomSharingEnded);
+			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
+			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
+			parsedEvent.Meeting.ShouldNotBeNull();
+			parsedEvent.Meeting.Id.ShouldBe(1234567890);
+			parsedEvent.Meeting.Uuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
+			parsedEvent.Meeting.BreakoutRoomUuid.ShouldBe("FkQbpP2UR028mDrwzEahqw==");
+			parsedEvent.Meeting.HostId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
+			parsedEvent.Meeting.Topic.ShouldBe("My Meeting");
+			parsedEvent.Meeting.Type.ShouldBe(MeetingType.RecurringFixedTime);
+			parsedEvent.Meeting.StartTime.ShouldBe(new DateTime(2021, 7, 13, 21, 44, 51, DateTimeKind.Utc));
+			parsedEvent.Meeting.Timezone.ShouldBe(TimeZones.America_Los_Angeles);
+			parsedEvent.Meeting.Duration.ShouldBe(60);
+			parsedEvent.Participant.ShouldNotBeNull();
+			parsedEvent.Participant.UserId.ShouldBe("31228928");
+			parsedEvent.Participant.ParentUserId.ShouldBe("ABCDE12345");
+			parsedEvent.Participant.UserName.ShouldBe("JillChill");
+			parsedEvent.Participant.Id.ShouldBe("iFxeBPYun6SAiWUzBcEkX");
+			parsedEvent.SharingDetails.ShouldNotBeNull();
+			parsedEvent.SharingDetails.ContentType.ShouldBe(ScreenshareContentType.Application);
+			parsedEvent.SharingDetails.SharingMethod.ShouldBe("in_meeting");
+			parsedEvent.SharingDetails.Link.ShouldBe("https://shared");
+			parsedEvent.SharingDetails.Date.ShouldBe(new DateTime(2021, 7, 13, 21, 56, 0, DateTimeKind.Utc));
+			parsedEvent.SharingDetails.Source.ShouldBe("dropbox");
+		}
+
 		public class VerifySignature
 		{
 			[Fact]
 			public void Simple()
 			{
-				// Arange
+				// Arrange
 				var requestBody = "{\"payload\":{\"plainToken\":\"xys8n8PGS7mAU0m5-YJjRA\"},\"event_ts\":1720705455858,\"event\":\"endpoint.url_validation\"}";
 				var secretToken = "4fv1RkqGQUq5sWbEz6hA5A";
 				var signature = "v0=93a1a675965ceb9c5a50c5dfb31f20e50f763be37a54ef74cd2d16a1a8e5c0d6";

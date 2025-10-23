@@ -19,6 +19,7 @@ namespace ZoomNet.Json
 				case JsonTokenType.None:
 				case JsonTokenType.Null:
 					return Array.Empty<ParticipantDevice>();
+
 				case JsonTokenType.String:
 					var splitOption =
 #if NET5_0_OR_GREATER
@@ -35,6 +36,7 @@ namespace ZoomNet.Json
 						.ToArray();
 
 					return items;
+
 				default:
 					throw new JsonException("Unable to convert to ParticipantDevice");
 			}

@@ -5,13 +5,12 @@
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FJericho%2FZoomNet.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FJericho%2FZoomNet?ref=badge_shield)
 
 [![Build status](https://ci.appveyor.com/api/projects/status/dak6s7m2b002nuf4/branch/develop?svg=true)](https://ci.appveyor.com/project/Jericho/zoomnet)
-[![Tests](https://img.shields.io/appveyor/tests/jericho/zoomnet/master.svg)](https://ci.appveyor.com/project/jericho/zoomnet/build/tests)
-[![Coverage Status](https://coveralls.io/repos/github/Jericho/ZoomNet/badge.svg?branch=master)](https://coveralls.io/github/Jericho/ZoomNet?branch=master)
+[![Coverage Status](https://codecov.io/gh/Jericho/ZoomNet/graph/badge.svg?token=5LEzNbBG2O)](https://codecov.io/gh/Jericho/ZoomNet)
 [![CodeFactor](https://www.codefactor.io/repository/github/jericho/zoomnet/badge)](https://www.codefactor.io/repository/github/jericho/zoomnet)
 
-| Release Notes| NuGet (stable) | MyGet (prerelease) |
-|--------------|----------------|--------------------|
-| [![GitHub release](https://img.shields.io/github/release/jericho/zoomnet.svg)](https://github.com/Jericho/ZoomNet/releases) | [![NuGet Version](https://img.shields.io/nuget/v/ZoomNet.svg)](https://www.nuget.org/packages/ZoomNet/) | [![MyGet Pre Release](https://img.shields.io/myget/jericho/vpre/ZoomNet.svg)](https://myget.org/gallery/jericho) |
+| Release Notes| NuGet (stable) | Feedz.IO (prerelease) |
+|--------------|----------------|-----------------------|
+| [![GitHub release](https://img.shields.io/github/release/jericho/zoomnet.svg)](https://github.com/Jericho/ZoomNet/releases) | [![NuGet Version](https://img.shields.io/nuget/v/ZoomNet.svg)](https://www.nuget.org/packages/ZoomNet/) | [![Feedz Version](https://img.shields.io/feedz/vpre/jericho/jericho/ZoomNet)](https://github.com/Jericho/Jericho/blob/main/MyNugetFeed.md) |
 
 
 ## About
@@ -33,7 +32,7 @@ PM> Install-Package ZoomNet
 
 ZoomNet currently supports:
 - .NET framework 4.8
-- any framework supporting `.NET Standard 2.1` (which includes `.NET Core 3.x`, `ASP.NET Core 3.x`, `.NET 5.0` and any subsequent version of .NET)
+- any framework supporting `.NET Standard 2.1` (which includes .NET 5.0 and all subsequent versions as well as some legacy versions such as .NET Core 3.x and ASP.NET Core 3.x).
 
 The last version of ZoomNet that supported `.NET 4.6.1`, `.NET 4.7.2` and `.NET Standard 2.0` was 0.35.0
 
