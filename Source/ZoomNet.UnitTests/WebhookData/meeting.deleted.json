@@ -1,0 +1,18 @@
+{
+	"event": "meeting.deleted",
+	"event_ts": 1617628462764,
+	"payload": {
+		"account_id": "VjZoEArIT5y-HlWxkV-tVA",
+		"operator": "someone@example.com",
+		"operator_id": "8lzIwvZTSOqjndWPbPqzuA",
+		"object": {
+			"uuid": "5yDZGNlQSV6qOjg4NxajHQ==",
+			"id": 98884753832,
+			"host_id": "8lzIwvZTSOqjndWPbPqzuA",
+			"topic": "ZoomNet Unit Testing: instant meeting",
+			"type": 1,
+			"duration": 60,
+			"timezone": "America/New_York"
+		}
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"event": "meeting.started",
+	"event_ts": 1619016544371,
+	"payload": {
+		"account_id": "VjZoEArIT5y-HlWxkV-tVA",
+		"object": {
+			"duration": 0,
+			"start_time": "2021-04-21T14:49:04Z",
+			"timezone": "America/New_York",
+			"topic": "My Personal Meeting Room",
+			"id": 3479130610,
+			"type": 4,
+			"uuid": "mOG8pEaFQqeDm6Vd/3xopA==",
+			"host_id": "8lzIwvZTSOqjndWPbPqzuA"
+		}
+	}
+}
