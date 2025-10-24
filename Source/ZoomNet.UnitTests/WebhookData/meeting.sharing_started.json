@@ -1,0 +1,29 @@
+{
+	"event": "meeting.sharing_started",
+	"event_ts": 1234566789900,
+	"payload": {
+		"account_id": "EPeQtiABC000VYxHMA",
+		"object": {
+			"duration": 60,
+			"start_time": "2019-07-16T17:14:39Z",
+			"timezone": "America/Los_Angeles",
+			"topic": "My Meeting",
+			"id": 6962400003,
+			"type": 2,
+			"uuid": "4118UHIiRCAAAtBlDkcVyw==",
+			"host_id": "z8yCxTTTTSiw02QgCAp8uQ",
+			"participant": {
+				"id": "s0AAAASoSE1V8KIFOCYw",
+				"user_id": "16778000",
+				"user_name": "Arya Arya",
+				"sharing_details": {
+					"link_source": "in_meeting",
+					"file_link": "",
+					"source": "dropbox",
+					"date_time": "2019-07-16T17:19:11Z",
+					"content": "application"
+				}
+			}
+		}
+	}
+}

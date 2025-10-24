@@ -1,0 +1,20 @@
+{
+	"event": "meeting.updated",
+	"event_ts": 1617628464664,
+	"payload": {
+		"account_id": "VjZoEArIT5y-HlWxkV-tVA",
+		"operator": "someone@example.com",
+		"operator_id": "8lzIwvZTSOqjndWPbPqzuA",
+		"object": {
+			"id": 94890226305,
+			"topic": "ZoomNet Unit Testing: UPDATED scheduled meeting",
+			"settings": { "audio": "voip" }
+			},
+		"old_object": {
+			"id": 94890226305,
+			"topic": "ZoomNet Unit Testing: scheduled meeting",
+			"settings": { "audio": "telephony" }
+		},
+		"time_stamp": 1617628464664
+	}
+}
