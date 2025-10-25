@@ -7,8 +7,13 @@ using ZoomNet.Models.Webhooks;
 
 namespace ZoomNet.UnitTests
 {
+	/// <summary>
+	/// Unit tests that verify webhook events parsing.
+	/// </summary>
 	public class WebhookParserTests
 	{
+		#region tests
+
 		[Fact]
 		public void MeetingCreated()
 		{
@@ -416,6 +421,124 @@ namespace ZoomNet.UnitTests
 			parsedEvent.SharingDetails.Date.ShouldBe(new DateTime(2021, 7, 13, 21, 56, 0, DateTimeKind.Utc));
 			parsedEvent.SharingDetails.Source.ShouldBe("dropbox");
 		}
+
+		[Fact]
+		public void MeetingSummaryCompleted()
+		{
+			var parsedEvent = (MeetingSummaryCompletedEvent)new WebhookParser().ParseEventWebhook(Properties.Resource.meeting_summary_completed_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingSummaryCompleted);
+
+			VerifyMeetingSummaryEvent(parsedEvent);
+
+			parsedEvent.MeetingSummary.SummaryContent.ShouldBe("## Key takeaways\n- Mobile app performance issues are affecting user retention.\n- New onboarding flow received positive feedback from beta testers.");
+			parsedEvent.MeetingSummary.SummaryDocUrl.ShouldBe("https://docs.example.com/doc/1aBcDeFgHiJkLmNoPqRsTu");
+			parsedEvent.MeetingSummary.SummaryLastModifiedUserEmail.ShouldBeNull();
+			parsedEvent.MeetingSummary.SummaryLastModifiedUserId.ShouldBeNull();
+		}
+
+		[Fact]
+		public void MeetingSummaryDeleted()
+		{
+			var parsedEvent = (MeetingSummaryDeletedEvent)new WebhookParser().ParseEventWebhook(Properties.Resource.meeting_summary_deleted_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingSummaryDeleted);
+
+			VerifyMeetingSummaryEvent(parsedEvent);
+
+			parsedEvent.Operator.ShouldBe("admin@example.com");
+			parsedEvent.OperatorId.ShouldBe("z8yCxjabcdEFGHfp8uQ");
+		}
+
+		[Fact]
+		public void MeetingSummaryRecovered()
+		{
+			var parsedEvent = (MeetingSummaryRecoveredEvent)new WebhookParser().ParseEventWebhook(Properties.Resource.meeting_summary_recovered_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingSummaryRecovered);
+
+			VerifyMeetingSummaryEvent(parsedEvent);
+
+			parsedEvent.Operator.ShouldBe("admin@example.com");
+			parsedEvent.OperatorId.ShouldBe("z8yCxjabcdEFGHfp8uQ");
+		}
+
+		[Fact]
+		public void MeetingSummaryShared()
+		{
+			var parsedEvent = (MeetingSummarySharedEvent)new WebhookParser().ParseEventWebhook(Properties.Resource.meeting_summary_shared_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingSummaryShared);
+
+			VerifyMeetingSummaryEvent(parsedEvent);
+
+			parsedEvent.Operator.ShouldBe("admin@example.com");
+			parsedEvent.OperatorId.ShouldBe("z8yCxjabcdEFGHfp8uQ");
+
+			parsedEvent.ShareWithUsers.ShouldNotBeNull();
+			parsedEvent.ShareWithUsers.Length.ShouldBe(1);
+			parsedEvent.ShareWithUsers[0].Email.ShouldBe("jchill@example.com");
+		}
+
+		[Fact]
+		public void MeetingSummaryTrashed()
+		{
+			var parsedEvent = (MeetingSummaryTrashedEvent)new WebhookParser().ParseEventWebhook(Properties.Resource.meeting_summary_trashed_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingSummaryTrashed);
+
+			VerifyMeetingSummaryEvent(parsedEvent);
+
+			parsedEvent.Operator.ShouldBe("admin@example.com");
+			parsedEvent.OperatorId.ShouldBe("z8yCxjabcdEFGHfp8uQ");
+		}
+
+		[Fact]
+		public void MeetingSummaryUpdated()
+		{
+			var parsedEvent = (MeetingSummaryUpdatedEvent)new WebhookParser().ParseEventWebhook(Properties.Resource.meeting_summary_updated_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingSummaryUpdated);
+
+			VerifyMeetingSummaryEvent(parsedEvent);
+
+			parsedEvent.Operator.ShouldBe("admin@example.com");
+			parsedEvent.OperatorId.ShouldBe("z8yCxjabcdEFGHfp8uQ");
+
+			parsedEvent.MeetingSummary.SummaryLastModifiedUserId.ShouldBe("Lfi0BlBQTM-bbktE9BRUvA");
+			parsedEvent.MeetingSummary.SummaryLastModifiedUserEmail.ShouldBe("user@example.com");
+			parsedEvent.MeetingSummary.SummaryContent.ShouldBe("## Key takeaways\n- Mobile app performance issues are affecting user retention.\n- New onboarding flow received positive feedback from beta testers.");
+			parsedEvent.MeetingSummary.SummaryDocUrl.ShouldBe("https://docs.example.com/doc/1aBcDeFgHiJkLmNoPqRsTu");
+		}
+
+		#endregion
+
+		#region private methods
+
+		/// <summary>
+		/// Verify <see cref="MeetingSummaryEvent"/> properties.
+		/// </summary>
+		private static void VerifyMeetingSummaryEvent(MeetingSummaryEvent parsedEvent)
+		{
+			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
+			parsedEvent.AccountId.ShouldBe("dzVA4QmMQfyISoRcpFO8CA");
+
+			parsedEvent.MeetingSummary.ShouldNotBeNull();
+			parsedEvent.MeetingSummary.MeetingId.ShouldBe(97763643886);
+			parsedEvent.MeetingSummary.MeetingUuid.ShouldBe("aDYlohsHRtCd4ii1uC2+hA==");
+			parsedEvent.MeetingSummary.MeetingStartTime.ShouldBe(new DateTime(2019, 7, 15, 23, 24, 52, DateTimeKind.Utc));
+			parsedEvent.MeetingSummary.MeetingEndTime.ShouldBe(new DateTime(2019, 7, 15, 23, 30, 19, DateTimeKind.Utc));
+			parsedEvent.MeetingSummary.MeetingHostEmail.ShouldBe("jchill@example.com");
+			parsedEvent.MeetingSummary.MeetingHostId.ShouldBe("30R7kT7bTIKSNUFEuH_Qlg");
+			parsedEvent.MeetingSummary.MeetingTopic.ShouldBe("My Meeting");
+			parsedEvent.MeetingSummary.SummaryCreatedTime.ShouldBe(new DateTime(2019, 7, 15, 23, 31, 47, DateTimeKind.Utc));
+			parsedEvent.MeetingSummary.SummaryStartTime.ShouldBe(new DateTime(2019, 7, 15, 23, 24, 52, DateTimeKind.Utc));
+			parsedEvent.MeetingSummary.SummaryEndTime.ShouldBe(new DateTime(2019, 7, 15, 23, 30, 19, DateTimeKind.Utc));
+			parsedEvent.MeetingSummary.SummaryLastModifiedTime.ShouldBe(new DateTime(2019, 7, 15, 23, 32, 19, DateTimeKind.Utc));
+			parsedEvent.MeetingSummary.SummaryTitle.ShouldBe("Meeting Summary for my meeting");
+		}
+
+		#endregion
 
 		public class VerifySignature
 		{
