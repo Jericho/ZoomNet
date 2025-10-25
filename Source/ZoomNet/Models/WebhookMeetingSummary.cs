@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Meeting summary information as received	in related webhook events.
+	/// Meeting summary information as received in related webhook events.
 	/// </summary>
 	public class WebhookMeetingSummary
 	{
