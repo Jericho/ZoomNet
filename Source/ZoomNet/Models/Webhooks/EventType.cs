@@ -293,5 +293,41 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "meeting.breakout_room_sharing_ended")]
 		MeetingBreakoutRoomSharingEnded,
+
+		/// <summary>
+		/// The summary of the meeting is made available for one of app users or account users.
+		/// </summary>
+		[EnumMember(Value = "meeting.summary_completed")]
+		MeetingSummaryCompleted,
+
+		/// <summary>
+		/// App user or account user has permanently deleted a meeting summary.
+		/// </summary>
+		[EnumMember(Value = "meeting.summary_deleted")]
+		MeetingSummaryDeleted,
+
+		/// <summary>
+		/// App user or account user has recovered a summary from the trash.
+		/// </summary>
+		[EnumMember(Value = "meeting.summary_recovered")]
+		MeetingSummaryRecovered,
+
+		/// <summary>
+		/// App user or account user has shared a meeting summary.
+		/// </summary>
+		[EnumMember(Value = "meeting.summary_shared")]
+		MeetingSummaryShared,
+
+		/// <summary>
+		/// App user or account user has temporarily deleted a meeting summary.
+		/// </summary>
+		[EnumMember(Value = "meeting.summary_trashed")]
+		MeetingSummaryTrashed,
+
+		/// <summary>
+		/// App user or account user has updated a meeting summary.
+		/// </summary>
+		[EnumMember(Value = "meeting.summary_updated")]
+		MeetingSummaryUpdated,
 	}
 }

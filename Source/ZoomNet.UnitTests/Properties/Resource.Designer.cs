@@ -325,6 +325,144 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///	&quot;event&quot;: &quot;meeting.summary_completed&quot;,
+        ///	&quot;event_ts&quot;: 1626230691572,
+        ///	&quot;payload&quot;: {
+        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///		&quot;object&quot;: {
+        ///			&quot;meeting_host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
+        ///			&quot;meeting_host_email&quot;: &quot;jchill@example.com&quot;,
+        ///			&quot;meeting_uuid&quot;: &quot;aDYlohsHRtCd4ii1uC2+hA==&quot;,
+        ///			&quot;meeting_id&quot;: 97763643886,
+        ///			&quot;meeting_topic&quot;: &quot;My Meeting&quot;,
+        ///			&quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
+        ///			&quot;meeting_end_time&quot;: &quot;2019-07-15T23:30:19Z&quot;,
+        ///			&quot;summary_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
+        ///			&quot;summ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string meeting_summary_completed_webhook {
+            get {
+                return ResourceManager.GetString("meeting_summary_completed_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///	&quot;event&quot;: &quot;meeting.summary_deleted&quot;,
+        ///	&quot;event_ts&quot;: 1626230691572,
+        ///	&quot;payload&quot;: {
+        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///		&quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///		&quot;object&quot;: {
+        ///			&quot;meeting_host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
+        ///			&quot;meeting_host_email&quot;: &quot;jchill@example.com&quot;,
+        ///			&quot;meeting_uuid&quot;: &quot;aDYlohsHRtCd4ii1uC2+hA==&quot;,
+        ///			&quot;meeting_id&quot;: 97763643886,
+        ///			&quot;meeting_topic&quot;: &quot;My Meeting&quot;,
+        ///			&quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
+        ///			&quot;meeting_end_time&quot;: &quot;2019-07 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string meeting_summary_deleted_webhook {
+            get {
+                return ResourceManager.GetString("meeting_summary_deleted_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///	&quot;event&quot;: &quot;meeting.summary_recovered&quot;,
+        ///	&quot;event_ts&quot;: 1626230691572,
+        ///	&quot;payload&quot;: {
+        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///		&quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///		&quot;object&quot;: {
+        ///			&quot;meeting_host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
+        ///			&quot;meeting_host_email&quot;: &quot;jchill@example.com&quot;,
+        ///			&quot;meeting_uuid&quot;: &quot;aDYlohsHRtCd4ii1uC2+hA==&quot;,
+        ///			&quot;meeting_id&quot;: 97763643886,
+        ///			&quot;meeting_topic&quot;: &quot;My Meeting&quot;,
+        ///			&quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
+        ///			&quot;meeting_end_time&quot;: &quot;2019- [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string meeting_summary_recovered_webhook {
+            get {
+                return ResourceManager.GetString("meeting_summary_recovered_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///	&quot;event&quot;: &quot;meeting.summary_shared&quot;,
+        ///	&quot;event_ts&quot;: 1626230691572,
+        ///	&quot;payload&quot;: {
+        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///		&quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///		&quot;object&quot;: {
+        ///			&quot;meeting_host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
+        ///			&quot;meeting_host_email&quot;: &quot;jchill@example.com&quot;,
+        ///			&quot;meeting_uuid&quot;: &quot;aDYlohsHRtCd4ii1uC2+hA==&quot;,
+        ///			&quot;meeting_id&quot;: 97763643886,
+        ///			&quot;meeting_topic&quot;: &quot;My Meeting&quot;,
+        ///			&quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
+        ///			&quot;meeting_end_time&quot;: &quot;2019-07- [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string meeting_summary_shared_webhook {
+            get {
+                return ResourceManager.GetString("meeting_summary_shared_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///	&quot;event&quot;: &quot;meeting.summary_trashed&quot;,
+        ///	&quot;event_ts&quot;: 1626230691572,
+        ///	&quot;payload&quot;: {
+        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///		&quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///		&quot;object&quot;: {
+        ///			&quot;meeting_host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
+        ///			&quot;meeting_host_email&quot;: &quot;jchill@example.com&quot;,
+        ///			&quot;meeting_uuid&quot;: &quot;aDYlohsHRtCd4ii1uC2+hA==&quot;,
+        ///			&quot;meeting_id&quot;: 97763643886,
+        ///			&quot;meeting_topic&quot;: &quot;My Meeting&quot;,
+        ///			&quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
+        ///			&quot;meeting_end_time&quot;: &quot;2019-07 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string meeting_summary_trashed_webhook {
+            get {
+                return ResourceManager.GetString("meeting_summary_trashed_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///	&quot;event&quot;: &quot;meeting.summary_updated&quot;,
+        ///	&quot;event_ts&quot;: 1626230691572,
+        ///	&quot;payload&quot;: {
+        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///		&quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///		&quot;object&quot;: {
+        ///			&quot;meeting_host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
+        ///			&quot;meeting_host_email&quot;: &quot;jchill@example.com&quot;,
+        ///			&quot;meeting_uuid&quot;: &quot;aDYlohsHRtCd4ii1uC2+hA==&quot;,
+        ///			&quot;meeting_id&quot;: 97763643886,
+        ///			&quot;meeting_topic&quot;: &quot;My Meeting&quot;,
+        ///			&quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
+        ///			&quot;meeting_end_time&quot;: &quot;2020-07 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string meeting_summary_updated_webhook {
+            get {
+                return ResourceManager.GetString("meeting_summary_updated_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///	&quot;event&quot;: &quot;meeting.updated&quot;,
         ///	&quot;event_ts&quot;: 1617628464664,
         ///	&quot;payload&quot;: {
