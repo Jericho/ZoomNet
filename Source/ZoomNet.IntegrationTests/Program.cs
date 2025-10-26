@@ -316,7 +316,6 @@ namespace ZoomNet.IntegrationTests
 						throw new Exception("Unknwon connection type");
 					}
 			}
-			;
 		}
 	}
 }
