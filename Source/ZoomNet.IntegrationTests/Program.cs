@@ -161,7 +161,7 @@ namespace ZoomNet.IntegrationTests
 				.AppendLine($"namespace {projectName}.Json")
 				.AppendLine("{");
 
-			var tabs = string.Concat(Enumerable.Repeat("\t", tabIndex));
+			var tabs = new string('\t', tabIndex);
 			foreach (var type in additionalSerializableTypes ?? Enumerable.Empty<Type>())
 			{
 				newSerializerContext.AppendLine($"{tabs}[JsonSerializable(typeof({type.FullName}))]");
