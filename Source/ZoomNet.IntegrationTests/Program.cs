@@ -40,16 +40,16 @@ namespace ZoomNet.IntegrationTests
 		// ----------------------------------------------------------------------------------------------------
 
 		// Do you want to proxy requests through a tool such as Fiddler? Very useful for debugging.
-		private static bool _useProxy = true;
+		private static readonly bool _useProxy = true;
 
 		// By default Fiddler Classic uses port 8888 and Fiddler Everywhere uses port 8866
-		private static int _proxyPort = 8888;
+		private static readonly int _proxyPort = 8888;
 
 		// What tests do you want to run
-		private static TestType _testType = TestType.Api;
+		private static readonly TestType _testType = TestType.Api;
 
 		// Which connection type do you want to use?
-		private static ConnectionType _connectionType = ConnectionType.OAuthServerToServer;
+		private static readonly ConnectionType _connectionType = ConnectionType.OAuthServerToServer;
 
 		// ====================================================================================================
 
