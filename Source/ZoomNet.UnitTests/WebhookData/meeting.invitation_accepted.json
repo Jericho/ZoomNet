@@ -1,0 +1,19 @@
+{
+	"event": "meeting.invitation_accepted",
+	"event_ts": 1626230691572,
+	"payload": {
+		"account_id": "dzVA4QmMQfyISoRcpFO8CA",
+		"operator_id": "Hy7YgA-cR4eU8EfWV00tPQ",
+		"operator": "dhill@example.com",
+		"object": {
+			"id": "91578204824",
+			"uuid": "4444AAAiAAAAAiAiAiiAii==",
+			"host_id": "ICuPoX4ERtikRcKqkVxunQ",
+			"topic": "Jill Chill's Zoom Meeting",
+			"participant": {
+				"participant_user_id": "rPwsQrpC6gPuw2zEJqw",
+				"email": "jchill@example.com"
+			}
+		}
+	}
+}

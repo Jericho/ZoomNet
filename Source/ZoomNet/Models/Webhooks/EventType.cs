@@ -293,5 +293,65 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "meeting.breakout_room_sharing_ended")]
 		MeetingBreakoutRoomSharingEnded,
+
+		/// <summary>
+		/// The summary of the meeting is made available for one of app users or account users.
+		/// </summary>
+		[EnumMember(Value = "meeting.summary_completed")]
+		MeetingSummaryCompleted,
+
+		/// <summary>
+		/// App user or account user has permanently deleted a meeting summary.
+		/// </summary>
+		[EnumMember(Value = "meeting.summary_deleted")]
+		MeetingSummaryDeleted,
+
+		/// <summary>
+		/// App user or account user has recovered a summary from the trash.
+		/// </summary>
+		[EnumMember(Value = "meeting.summary_recovered")]
+		MeetingSummaryRecovered,
+
+		/// <summary>
+		/// App user or account user has shared a meeting summary.
+		/// </summary>
+		[EnumMember(Value = "meeting.summary_shared")]
+		MeetingSummaryShared,
+
+		/// <summary>
+		/// App user or account user has temporarily deleted a meeting summary.
+		/// </summary>
+		[EnumMember(Value = "meeting.summary_trashed")]
+		MeetingSummaryTrashed,
+
+		/// <summary>
+		/// App user or account user has updated a meeting summary.
+		/// </summary>
+		[EnumMember(Value = "meeting.summary_updated")]
+		MeetingSummaryUpdated,
+
+		/// <summary>
+		/// Invitation's recipient has accepted an invitation to join a meeting or video call.
+		/// </summary>
+		[EnumMember(Value = "meeting.invitation_accepted")]
+		MeetingInvitationAccepted,
+
+		/// <summary>
+		/// A user has sent an invitation to join a meeting or video call to one or more recipients.
+		/// </summary>
+		[EnumMember(Value = "meeting.invitation_dispatched")]
+		MeetingInvitationDispatched,
+
+		/// <summary>
+		/// Invitation's recipient has rejected an invitation to join a meeting or video call.
+		/// </summary>
+		[EnumMember(Value = "meeting.invitation_rejected")]
+		MeetingInvitationRejected,
+
+		/// <summary>
+		/// An invitation to join a meeting or video call to one or more recipients has timed out.
+		/// </summary>
+		[EnumMember(Value = "meeting.invitation_timeout")]
+		MeetingInvitationTimeout,
 	}
 }

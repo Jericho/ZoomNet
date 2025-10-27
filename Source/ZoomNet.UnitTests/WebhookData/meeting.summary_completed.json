@@ -1,0 +1,23 @@
+{
+	"event": "meeting.summary_completed",
+	"event_ts": 1626230691572,
+	"payload": {
+		"account_id": "dzVA4QmMQfyISoRcpFO8CA",
+		"object": {
+			"meeting_host_id": "30R7kT7bTIKSNUFEuH_Qlg",
+			"meeting_host_email": "jchill@example.com",
+			"meeting_uuid": "aDYlohsHRtCd4ii1uC2+hA==",
+			"meeting_id": 97763643886,
+			"meeting_topic": "My Meeting",
+			"meeting_start_time": "2019-07-15T23:24:52Z",
+			"meeting_end_time": "2019-07-15T23:30:19Z",
+			"summary_start_time": "2019-07-15T23:24:52Z",
+			"summary_end_time": "2019-07-15T23:30:19Z",
+			"summary_created_time": "2019-07-15T23:31:47Z",
+			"summary_last_modified_time": "2019-07-15T23:32:19Z",
+			"summary_title": "Meeting Summary for my meeting",
+			"summary_content": "## Key takeaways\n- Mobile app performance issues are affecting user retention.\n- New onboarding flow received positive feedback from beta testers.",
+			"summary_doc_url": "https://docs.example.com/doc/1aBcDeFgHiJkLmNoPqRsTu"
+		}
+	}
+}

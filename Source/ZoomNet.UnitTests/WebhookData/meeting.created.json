@@ -1,0 +1,24 @@
+{
+	"event": "meeting.created",
+	"event_ts": 1617628462392,
+	"payload": {
+		"account_id": "VjZoEArIT5y-HlWxkV-tVA",
+		"operator": "someone@example.com",
+		"operator_id": "8lzIwvZTSOqjndWPbPqzuA",
+		"object": {
+			"uuid": "5yDZGNlQSV6qOjg4NxajHQ==",
+			"id": 98884753832,
+			"host_id": "8lzIwvZTSOqjndWPbPqzuA",
+			"topic": "ZoomNet Unit Testing: instant meeting",
+			"type": 1,
+			"duration": 60,
+			"timezone": "America/New_York",
+			"join_url": "https://zoom.us/j/98884753832?pwd=c21EQzg0SXY2dlNTOFF2TENpSm1aQT09",
+			"password": "PaSsWoRd",
+			"settings": {
+				"use_pmi": false,
+				"alternative_hosts": ""
+			}
+		}
+	}
+}
