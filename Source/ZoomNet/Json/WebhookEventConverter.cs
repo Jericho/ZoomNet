@@ -352,6 +352,26 @@ namespace ZoomNet.Json
 				case Models.Webhooks.EventType.MeetingSummaryUpdated:
 					webHookEvent = payloadJsonProperty.ToObject<MeetingSummaryUpdatedEvent>(options);
 					break;
+				case Models.Webhooks.EventType.MeetingInvitationAccepted:
+					var meetingInvitationAcceptedEvent = payloadJsonProperty.ToObject<MeetingInvitationAcceptedEvent>(options);
+					meetingInvitationAcceptedEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<InvitedParticipant>();
+					webHookEvent = meetingInvitationAcceptedEvent;
+					break;
+				case Models.Webhooks.EventType.MeetingInvitationDispatched:
+					var meetingInvitationDispatchedEvent = payloadJsonProperty.ToObject<MeetingInvitationDispatchedEvent>(options);
+					meetingInvitationDispatchedEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<InvitedParticipant>();
+					webHookEvent = meetingInvitationDispatchedEvent;
+					break;
+				case Models.Webhooks.EventType.MeetingInvitationRejected:
+					var meetingInvitationRejectedEvent = payloadJsonProperty.ToObject<MeetingInvitationRejectedEvent>(options);
+					meetingInvitationRejectedEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<InvitedParticipant>();
+					webHookEvent = meetingInvitationRejectedEvent;
+					break;
+				case Models.Webhooks.EventType.MeetingInvitationTimeout:
+					var meetingInvitationTimeoutEvent = payloadJsonProperty.ToObject<MeetingInvitationTimeoutEvent>(options);
+					meetingInvitationTimeoutEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<InvitedParticipant>();
+					webHookEvent = meetingInvitationTimeoutEvent;
+					break;
 				default:
 					throw new JsonException($"{eventType} is an unknown event type");
 			}

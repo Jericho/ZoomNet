@@ -220,6 +220,114 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///	&quot;event&quot;: &quot;meeting.invitation_accepted&quot;,
+        ///	&quot;event_ts&quot;: 1626230691572,
+        ///	&quot;payload&quot;: {
+        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///		&quot;operator_id&quot;: &quot;Hy7YgA-cR4eU8EfWV00tPQ&quot;,
+        ///		&quot;operator&quot;: &quot;dhill@example.com&quot;,
+        ///		&quot;object&quot;: {
+        ///			&quot;id&quot;: &quot;91578204824&quot;,
+        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///			&quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///			&quot;topic&quot;: &quot;Jill Chill&apos;s Zoom Meeting&quot;,
+        ///			&quot;participant&quot;: {
+        ///				&quot;participant_user_id&quot;: &quot;rPwsQrpC6gPuw2zEJqw&quot;,
+        ///				&quot;email&quot;: &quot;jchill@example.com&quot;
+        ///			}
+        ///		}
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string meeting_invitation_accepted_webhook {
+            get {
+                return ResourceManager.GetString("meeting_invitation_accepted_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///	&quot;event&quot;: &quot;meeting.invitation_dispatched&quot;,
+        ///	&quot;event_ts&quot;: 1626230691572,
+        ///	&quot;payload&quot;: {
+        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///		&quot;operator_id&quot;: &quot;Hy7YgA-cR4eU8EfWV00tPQ&quot;,
+        ///		&quot;operator&quot;: &quot;dhill@example.com&quot;,
+        ///		&quot;object&quot;: {
+        ///			&quot;id&quot;: &quot;91578204824&quot;,
+        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///			&quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///			&quot;topic&quot;: &quot;Jill Chill&apos;s Zoom Meeting&quot;,
+        ///			&quot;participant&quot;: {
+        ///				&quot;participant_user_id&quot;: &quot;rPwsQrpC6gPuw2zEJqw&quot;,
+        ///				&quot;email&quot;: &quot;jchill@example.com&quot;
+        ///			}
+        ///		}
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string meeting_invitation_dispatched_webhook {
+            get {
+                return ResourceManager.GetString("meeting_invitation_dispatched_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///	&quot;event&quot;: &quot;meeting.invitation_rejected&quot;,
+        ///	&quot;event_ts&quot;: 1626230691572,
+        ///	&quot;payload&quot;: {
+        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///		&quot;operator_id&quot;: &quot;Hy7YgA-cR4eU8EfWV00tPQ&quot;,
+        ///		&quot;operator&quot;: &quot;dhill@example.com&quot;,
+        ///		&quot;object&quot;: {
+        ///			&quot;id&quot;: &quot;91578204824&quot;,
+        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///			&quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///			&quot;topic&quot;: &quot;Jill Chill&apos;s Zoom Meeting&quot;,
+        ///			&quot;participant&quot;: {
+        ///				&quot;participant_user_id&quot;: &quot;rPwsQrpC6gPuw2zEJqw&quot;,
+        ///				&quot;email&quot;: &quot;jchill@example.com&quot;
+        ///			}
+        ///		}
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string meeting_invitation_rejected_webhook {
+            get {
+                return ResourceManager.GetString("meeting_invitation_rejected_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///	&quot;event&quot;: &quot;meeting.invitation_timeout&quot;,
+        ///	&quot;event_ts&quot;: 1626230691572,
+        ///	&quot;payload&quot;: {
+        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///		&quot;operator_id&quot;: &quot;Hy7YgA-cR4eU8EfWV00tPQ&quot;,
+        ///		&quot;operator&quot;: &quot;dhill@example.com&quot;,
+        ///		&quot;object&quot;: {
+        ///			&quot;id&quot;: &quot;91578204824&quot;,
+        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///			&quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///			&quot;topic&quot;: &quot;Jill Chill&apos;s Zoom Meeting&quot;,
+        ///			&quot;participant&quot;: {
+        ///				&quot;participant_user_id&quot;: &quot;rPwsQrpC6gPuw2zEJqw&quot;,
+        ///				&quot;email&quot;: &quot;jchill@example.com&quot;
+        ///			}
+        ///		}
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string meeting_invitation_timeout_webhook {
+            get {
+                return ResourceManager.GetString("meeting_invitation_timeout_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///	&quot;event&quot;: &quot;meeting.participant_joined_breakout_room&quot;,
         ///	&quot;event_ts&quot;: 1626230691572,
         ///	&quot;payload&quot;: {
@@ -453,7 +561,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///			&quot;meeting_id&quot;: 97763643886,
         ///			&quot;meeting_topic&quot;: &quot;My Meeting&quot;,
         ///			&quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
-        ///			&quot;meeting_end_time&quot;: &quot;2020-07 [rest of string was truncated]&quot;;.
+        ///			&quot;meeting_end_time&quot;: &quot;2019-07 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_summary_updated_webhook {
             get {
