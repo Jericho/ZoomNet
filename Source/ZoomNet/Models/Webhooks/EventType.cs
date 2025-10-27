@@ -329,5 +329,29 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "meeting.summary_updated")]
 		MeetingSummaryUpdated,
+
+		/// <summary>
+		/// Invitation's recipient has accepted an invitation to join a meeting or video call.
+		/// </summary>
+		[EnumMember(Value = "meeting.invitation_accepted")]
+		MeetingInvitationAccepted,
+
+		/// <summary>
+		/// A user has sent an invitation to join a meeting or video call to one or more recipients.
+		/// </summary>
+		[EnumMember(Value = "meeting.invitation_dispatched")]
+		MeetingInvitationDispatched,
+
+		/// <summary>
+		/// Invitation's recipient has rejected an invitation to join a meeting or video call.
+		/// </summary>
+		[EnumMember(Value = "meeting.invitation_rejected")]
+		MeetingInvitationRejected,
+
+		/// <summary>
+		/// An invitation to join a meeting or video call to one or more recipients has timed out.
+		/// </summary>
+		[EnumMember(Value = "meeting.invitation_timeout")]
+		MeetingInvitationTimeout,
 	}
 }

@@ -511,6 +511,58 @@ namespace ZoomNet.UnitTests
 			parsedEvent.MeetingSummary.SummaryDocUrl.ShouldBe("https://docs.example.com/doc/1aBcDeFgHiJkLmNoPqRsTu");
 		}
 
+		[Fact]
+		public void MeetingInvitationAccepted()
+		{
+			var parsedEvent = (MeetingInvitationAcceptedEvent)new WebhookParser().ParseEventWebhook(Properties.Resource.meeting_invitation_accepted_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingInvitationAccepted);
+
+			VerifyMeetingInvitationEvent(parsedEvent);
+
+			parsedEvent.Operator.ShouldBe("dhill@example.com");
+			parsedEvent.OperatorId.ShouldBe("Hy7YgA-cR4eU8EfWV00tPQ");
+		}
+
+		[Fact]
+		public void MeetingInvitationDispatched()
+		{
+			var parsedEvent = (MeetingInvitationDispatchedEvent)new WebhookParser().ParseEventWebhook(Properties.Resource.meeting_invitation_dispatched_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingInvitationDispatched);
+
+			VerifyMeetingInvitationEvent(parsedEvent);
+
+			parsedEvent.Operator.ShouldBe("dhill@example.com");
+			parsedEvent.OperatorId.ShouldBe("Hy7YgA-cR4eU8EfWV00tPQ");
+		}
+
+		[Fact]
+		public void MeetingInvitationRejected()
+		{
+			var parsedEvent = (MeetingInvitationRejectedEvent)new WebhookParser().ParseEventWebhook(Properties.Resource.meeting_invitation_rejected_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingInvitationRejected);
+
+			VerifyMeetingInvitationEvent(parsedEvent);
+
+			parsedEvent.Operator.ShouldBe("dhill@example.com");
+			parsedEvent.OperatorId.ShouldBe("Hy7YgA-cR4eU8EfWV00tPQ");
+		}
+
+		[Fact]
+		public void MeetingInvitationTimeout()
+		{
+			var parsedEvent = (MeetingInvitationTimeoutEvent)new WebhookParser().ParseEventWebhook(Properties.Resource.meeting_invitation_timeout_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingInvitationTimeout);
+
+			VerifyMeetingInvitationEvent(parsedEvent);
+
+			parsedEvent.Operator.ShouldBe("dhill@example.com");
+			parsedEvent.OperatorId.ShouldBe("Hy7YgA-cR4eU8EfWV00tPQ");
+		}
+
 		#endregion
 
 		#region private methods
@@ -536,6 +588,22 @@ namespace ZoomNet.UnitTests
 			parsedEvent.MeetingSummary.SummaryEndTime.ShouldBe(new DateTime(2019, 7, 15, 23, 30, 19, DateTimeKind.Utc));
 			parsedEvent.MeetingSummary.SummaryLastModifiedTime.ShouldBe(new DateTime(2019, 7, 15, 23, 32, 19, DateTimeKind.Utc));
 			parsedEvent.MeetingSummary.SummaryTitle.ShouldBe("Meeting Summary for my meeting");
+		}
+
+		private static void VerifyMeetingInvitationEvent(MeetingInvitationEvent parsedEvent)
+		{
+			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
+			parsedEvent.AccountId.ShouldBe("dzVA4QmMQfyISoRcpFO8CA");
+
+			parsedEvent.Meeting.ShouldNotBeNull();
+			parsedEvent.Meeting.Id.ShouldBe(91578204824);
+			parsedEvent.Meeting.Uuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
+			parsedEvent.Meeting.HostId.ShouldBe("ICuPoX4ERtikRcKqkVxunQ");
+			parsedEvent.Meeting.Topic.ShouldBe("Jill Chill's Zoom Meeting");
+
+			parsedEvent.Participant.ShouldNotBeNull();
+			parsedEvent.Participant.Email.ShouldBe("jchill@example.com");
+			parsedEvent.Participant.UserId.ShouldBe("rPwsQrpC6gPuw2zEJqw");
 		}
 
 		#endregion

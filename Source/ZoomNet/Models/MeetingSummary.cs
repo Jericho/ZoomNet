@@ -6,7 +6,7 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// Summary information about a meeting.
 	/// </summary>
-	public class MeetingSummary
+	public class MeetingSummary : MeetingBasicInfo
 	{
 		/// <summary>Gets or sets the meeting description.</summary>
 		/// <remarks>
@@ -29,18 +29,6 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonPropertyName("duration")]
 		public int Duration { get; set; }
-
-		/// <summary>
-		/// Gets or sets the ID of the user who is set as the host of the meeting.
-		/// </summary>
-		[JsonPropertyName("host_id")]
-		public string HostId { get; set; }
-
-		/// <summary>
-		/// Gets or sets the meeting id, also known as the meeting number.
-		/// </summary>
-		[JsonPropertyName("id")]
-		public long Id { get; set; }
 
 		/// <summary>
 		/// Gets or sets the URL for the host to start the meeting.
@@ -67,21 +55,9 @@ namespace ZoomNet.Models
 		public TimeZones Timezone { get; set; }
 
 		/// <summary>
-		/// Gets or sets the topic of the meeting.
-		/// </summary>
-		[JsonPropertyName("topic")]
-		public string Topic { get; set; }
-
-		/// <summary>
 		/// Gets or sets the meeting type.
 		/// </summary>
 		[JsonPropertyName("type")]
 		public MeetingType Type { get; set; }
-
-		/// <summary>
-		/// Gets or sets the unique id.
-		/// </summary>
-		[JsonPropertyName("uuid")]
-		public string Uuid { get; set; }
 	}
 }

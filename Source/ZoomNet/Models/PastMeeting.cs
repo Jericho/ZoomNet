@@ -4,28 +4,10 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// A meeting that occured in the past.
+	/// A meeting that occurred in the past.
 	/// </summary>
-	public class PastMeeting
+	public class PastMeeting : MeetingBasicInfo
 	{
-		/// <summary>
-		/// Gets or sets the meeting id, also known as the meeting number.
-		/// </summary>
-		/// <value>
-		/// The id.
-		/// </value>
-		[JsonPropertyName("id")]
-		public long Id { get; set; }
-
-		/// <summary>
-		/// Gets or sets the unique id.
-		/// </summary>
-		/// <value>
-		/// The unique id.
-		/// </value>
-		[JsonPropertyName("uuid")]
-		public string Uuid { get; set; }
-
 		/// <summary>
 		/// Gets or sets the meeting duration in minutes.
 		/// </summary>
@@ -46,15 +28,6 @@ namespace ZoomNet.Models
 		/// <value>The meeting end time.</value>
 		[JsonPropertyName("end_time")]
 		public DateTime EndedOn { get; set; }
-
-		/// <summary>
-		/// Gets or sets the ID of the user who is set as the host of the meeting.
-		/// </summary>
-		/// <value>
-		/// The user id.
-		/// </value>
-		[JsonPropertyName("host_id")]
-		public string HostId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the meeting host's department.
@@ -84,15 +57,6 @@ namespace ZoomNet.Models
 		/// </value>
 		[JsonPropertyName("source")]
 		public string Source { get; set; }
-
-		/// <summary>
-		/// Gets or sets the topic of the meeting.
-		/// </summary>
-		/// <value>
-		/// The topic.
-		/// </value>
-		[JsonPropertyName("topic")]
-		public string Topic { get; set; }
 
 		/// <summary>
 		/// Gets or sets the sum of meeting minutes from all participants.

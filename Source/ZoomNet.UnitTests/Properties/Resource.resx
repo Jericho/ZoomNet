@@ -148,6 +148,15 @@
   <data name="meeting_started_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\WebhookData\meeting.started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="meeting_updated_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WebhookData\meeting.updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="recording_completed_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WebhookData\recording.completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_ended_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WebhookData\webinar.ended.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="meeting_summary_completed_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\WebhookData\meeting.summary_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -166,13 +175,16 @@
   <data name="meeting_summary_updated_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\WebhookData\meeting.summary_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="meeting_updated_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\WebhookData\meeting.updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="meeting_invitation_accepted_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WebhookData\meeting.invitation_accepted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="recording_completed_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\WebhookData\recording.completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="meeting_invitation_dispatched_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WebhookData\meeting.invitation_dispatched.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="webinar_ended_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\WebhookData\webinar.ended.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="meeting_invitation_rejected_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WebhookData\meeting.invitation_rejected.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_invitation_timeout_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WebhookData\meeting.invitation_timeout.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>
