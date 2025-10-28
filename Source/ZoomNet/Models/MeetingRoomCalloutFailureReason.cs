@@ -78,6 +78,6 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Proxy connection error.
 		/// </summary>
-		ProxyConnectError = 14
+		ProxyConnectError = 14,
 	}
 }
