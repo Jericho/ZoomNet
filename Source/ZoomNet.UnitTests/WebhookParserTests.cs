@@ -738,13 +738,13 @@ namespace ZoomNet.UnitTests
 			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
 			parsedEvent.AccountId.ShouldBe("dzVA4QmMQfyISoRcpFO8CA");
 
-			parsedEvent.MeetingRoomJoinRequest.ShouldNotBeNull();
-			parsedEvent.MeetingRoomJoinRequest.Id.ShouldBe(713592696);
-			parsedEvent.MeetingRoomJoinRequest.Uuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
-			parsedEvent.MeetingRoomJoinRequest.HostId.ShouldBe("ICuPoX4ERtikRcKqkVxunQ");
-			parsedEvent.MeetingRoomJoinRequest.MessageId.ShouldBe("atsXxhSEQWit9t+U02HXNQ==");
-			parsedEvent.MeetingRoomJoinRequest.InviterName.ShouldBe("Jill Chill");
-			parsedEvent.MeetingRoomJoinRequest.Topic.ShouldBeNull();
+			parsedEvent.JoinInvitation.ShouldNotBeNull();
+			parsedEvent.JoinInvitation.Id.ShouldBe(713592696);
+			parsedEvent.JoinInvitation.Uuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
+			parsedEvent.JoinInvitation.HostId.ShouldBe("ICuPoX4ERtikRcKqkVxunQ");
+			parsedEvent.JoinInvitation.MessageId.ShouldBe("atsXxhSEQWit9t+U02HXNQ==");
+			parsedEvent.JoinInvitation.InviterName.ShouldBe("Jill Chill");
+			parsedEvent.JoinInvitation.Topic.ShouldBeNull();
 
 			parsedEvent.Participant.ShouldNotBeNull();
 			parsedEvent.Participant.CallType.ShouldBe("h323");

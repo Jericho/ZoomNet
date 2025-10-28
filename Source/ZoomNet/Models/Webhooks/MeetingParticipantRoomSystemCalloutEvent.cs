@@ -17,7 +17,7 @@ namespace ZoomNet.Models.Webhooks
 		/// Gets or sets the information about the meeting.
 		/// </summary>
 		[JsonPropertyName("object")]
-		public MeetingRoomJoinRequest MeetingRoomJoinRequest { get; set; }
+		public MeetingRoomJoinInvitation JoinInvitation { get; set; }
 
 		/// <summary>
 		/// Gets or sets information about the invited participant.

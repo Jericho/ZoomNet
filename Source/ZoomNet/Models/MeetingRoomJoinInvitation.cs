@@ -5,7 +5,7 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// Represents information from invitation to join a meeting through phone (call out) from a Zoom room.
 	/// </summary>
-	public class MeetingRoomJoinRequest : MeetingBasicInfo
+	public class MeetingRoomJoinInvitation : MeetingBasicInfo
 	{
 		/// <summary>
 		/// Gets or sets the user name of the event's trigger.
