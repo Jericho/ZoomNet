@@ -1,0 +1,16 @@
+{
+	"event": "meeting.participant_phone_callout_rejected",
+	"event_ts": 1626230691572,
+	"payload": {
+		"account_id": "dzVA4QmMQfyISoRcpFO8CA",
+		"object": {
+			"id": 713592696,
+			"uuid": "4444AAAiAAAAAiAiAiiAii==",
+			"host_id": "ICuPoX4ERtikRcKqkVxunQ",
+			"participant": {
+				"invitee_name": "Jill Chill",
+				"phone_number": 1800000000
+			}
+		}
+	}
+}

@@ -353,5 +353,59 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "meeting.invitation_timeout")]
 		MeetingInvitationTimeout,
+
+		/// <summary>
+		/// A user has accepted an invitation to join a meeting through phone (call out).
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_phone_callout_accepted")]
+		MeetingParticipantPhoneCalloutAccepted,
+
+		/// <summary>
+		/// An invitation to join a meeting through phone (call out) has timed out.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_phone_callout_missed")]
+		MeetingParticipantPhoneCalloutMissed,
+
+		/// <summary>
+		/// A user has rejected an invitation to join a meeting through phone (call out).
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_phone_callout_rejected")]
+		MeetingParticipantPhoneCalloutRejected,
+
+		/// <summary>
+		/// A user's phone has started ringing when user is invited to join a meeting through phone (call out).
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_phone_callout_ringing")]
+		MeetingParticipantPhoneCalloutRinging,
+
+		/// <summary>
+		/// A user has joined a meeting through phone (call out) from a Zoom room.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_room_system_callout_accepted")]
+		MeetingParticipantRoomSystemCalloutAccepted,
+
+		/// <summary>
+		/// An invitation to join a meeting through phone (call out) from a Zoom room has failed.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_room_system_callout_failed")]
+		MeetingParticipantRoomSystemCalloutFailed,
+
+		/// <summary>
+		/// An invitation to join a meeting through phone (call out) from a Zoom room has timed out.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_room_system_callout_missed")]
+		MeetingParticipantRoomSystemCalloutMissed,
+
+		/// <summary>
+		/// A user has rejected an invitation to join a meeting through phone (call out) from a Zoom room.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_room_system_callout_rejected")]
+		MeetingParticipantRoomSystemCalloutRejected,
+
+		/// <summary>
+		/// A user's phone has started ringing when user is invited to join a meeting through phone (call out) from a Zoom room.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_room_system_callout_ringing")]
+		MeetingParticipantRoomSystemCalloutRinging,
 	}
 }
