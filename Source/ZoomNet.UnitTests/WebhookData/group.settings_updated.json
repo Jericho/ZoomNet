@@ -1,0 +1,26 @@
+{
+  "event": "group.settings_updated",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator_id": "g4ebA91YR7GPQw6QKvxwVw",
+    "operator": "admin@example.com",
+    "object": {
+      "id": "49D7a0xPQvGQ2DCMZgSe7w",
+      "settings": {
+        "recording": {
+          "auto_recording": true
+        }
+      }
+    },
+    "time_stamp": 1626230691572,
+    "old_object": {
+      "id": "49D7a0xPQvGQ2DCMZgSe7w",
+      "settings": {
+        "recording": {
+          "auto_recording": false
+        }
+      }
+    }
+  }
+}

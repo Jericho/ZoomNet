@@ -1,0 +1,28 @@
+{
+  "event": "quality_management.interaction_analysis_completed",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "interaction_id": "ldl3k52kdfl3hd3",
+      "agent_user_id": "ZWR1C1FB695C654A829FE56553A709E8EBB",
+      "evaluator_user_id": "ZWR1C1FB695C654A829FE56553A709E8EBB",
+      "evaluation_id": "0e73a69f8f104d24a589fa0c615abca8",
+      "agent_info": {
+        "agent_user_id": "httgPnTgTxq0d65-alfYVw",
+        "display_name": "Ashlee York"
+      },
+      "evaluators_info": [
+        {
+          "evaluator_user_id": "b0_yDuNGSq65EF8i1f0PcQ",
+          "display_name": "Rick Arps"
+        }
+      ],
+      "scorecard_name": "Customer Care",
+      "scoring_format": "points",
+      "total_possible_score": 50,
+      "evaluation_score": 10,
+      "evaluation_score_ratio": 0.20
+    }
+  }
+}

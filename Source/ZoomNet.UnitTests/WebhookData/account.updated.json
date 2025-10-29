@@ -1,0 +1,19 @@
+{
+	"event": "account.updated",
+	"event_ts": 1626230691572,
+	"payload": {
+		"account_id": "AAAAAABBBB",
+		"operator": "admin@example.com",
+		"operator_id": "z8yCxjabcdEFGHfp8uQ",
+		"object": {
+			"id": "abcD3ojfdbjfg",
+			"account_name": "Jill Chill",
+			"account_alias": "JChill"
+		},
+		"old_object": {
+			"id": "abcD3ojfdbjfg",
+			"account_name": "Jill Chill",
+			"account_alias": "Jill_Chill"
+		}
+	}
+}

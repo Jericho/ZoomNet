@@ -1,0 +1,84 @@
+{
+  "event": "scheduler.scheduled_event_canceled",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "user_id": "dndhfdjdihd",
+    "object": {
+      "invitee_email": "admin@example.com",
+      "invitee_first_name": "aaa",
+      "invitee_last_name": "bbb",
+      "manage_url": "https://scheduler.zoom.us/manage/m0o1uf25uq89wllenxxxxxxxxxxxx",
+      "cancellation": {
+        "canceled_by": "aa@bb.c",
+        "canceler_type": "host",
+        "cancel_at": "2023-12-21T16:30:00+08:00",
+        "reason": "Time conflict"
+      },
+      "time_zone": "Asia/Shanghai",
+      "questions_and_answers": [
+        {
+          "question": "Please share anything that will help prepare for our meeting.",
+          "position": 0,
+          "answer": [
+            "1111",
+            "222"
+          ]
+        }
+      ],
+      "scheduled_event": {
+        "event_id": "woft7torlatbw8ek24bmit5k60",
+        "attendees": [
+          {
+            "display_name": "green tom",
+            "email": "abc@booker.us"
+          },
+          {
+            "display_name": "red five",
+            "email": "abc@host.us"
+          }
+        ],
+        "end_date_time": "2023-12-21T16:30:00Z",
+        "guests": [
+          "guest1@guest.us",
+          "guest2@guest.us"
+        ],
+        "location_kind": "custom",
+        "location": {
+          "custom_location": "AAA office",
+          "location_type": "custom",
+          "additional_info": "extra info"
+        },
+        "external_location": {
+          "kind": "zoom",
+          "meeting_id": "94777886776",
+          "personal_meeting_id": "98656786887",
+          "meeting_passcode": "958000",
+          "meeting_description": "Invite you to meeting",
+          "meeting_join_url": "https://zoom.us/j/7427752805"
+        },
+        "start_date_time": "2023-12-21T16:00:00Z",
+        "status": "confirmed",
+        "summary": "daily meeting",
+        "updated": "2023-12-21T06:19:28.309Z",
+        "created": "2023-12-21T06:18:28.309Z",
+        "meeting_notes": "meeting notes",
+        "invitee_counters": {
+          "total": 1,
+          "active": 1,
+          "limit": 3
+        }
+      },
+      "tracking": {
+        "utm_source": "zoom",
+        "utm_medium": "meeting arrange",
+        "utm_campaign": "spring sale",
+        "utm_content": "booking link",
+        "utm_term": "learning"
+      },
+      "rescheduled": false,
+      "created": "2023-12-21T06:18:28.309Z",
+      "text_phone_number": "+1 48837847"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "event": "zoom_events.vod_registration_created",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "channel_id": "djsjgkjhfhk",
+      "hub_id": "huCbxjabcdEFGHfp8uQ",
+      "host_id": "z8yCxjabcdEFGHfp8uQ",
+      "registration_id": "iso9Dllddp39dagjLj9j",
+      "email": "email@zoom.us",
+      "registration_date": "2025-05-24T22:30:00Z",
+      "authentication_method": "no_auth",
+      "join_link": "https://events.zoom.us/ejl/xyz",
+      "first_name": "Jill",
+      "last_name": "Chill",
+      "address": "1800 Amphibious Blvd",
+      "city": "Mountain View",
+      "state": "CA",
+      "zip": "94045",
+      "country": "US",
+      "phone": "5550100",
+      "industry": "Food",
+      "job_title": "Chef",
+      "organization": "ABC Ltd.",
+      "organization_size": "150",
+      "comments": "Looking forward to the discussion.",
+      "custom_questions": [
+        {
+          "title": "What do you hope to learn from this?",
+          "answer": "Look forward to learning how you come up with new recipes and what other services you offer."
+        }
+      ]
+    }
+  }
+}

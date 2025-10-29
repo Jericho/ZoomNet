@@ -1,0 +1,11 @@
+{
+  "event": "app_deauthorized",
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "user_id": "abcD3ojfdbjfg",
+    "signature": "827edc3452044f0bc86bdd5684afb7d1e6becfa1a767f24df1b287853cf73000",
+    "deauthorization_time": "2020-06-17T13:52:28.632Z",
+    "client_id": "ABCDEFGHIJKLMNOPQRST!V",
+    "event_ts": "2024-09-08 15:58:40"
+  }
+}

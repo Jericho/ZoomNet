@@ -1,0 +1,34 @@
+{
+  "event": "interactive_message_editable",
+  "event_ts": 1560891135776,
+  "payload": {
+    "accountId": "gVcjZnWWRLWvv_GtyGuaxg",
+    "channelName": "Jill Chill",
+    "editItem": {
+      "origin": "I am a message with editable text",
+      "target": "I am a message with editable text that has been edited"
+    },
+    "messageId": "20190618205205291_tI1CUa6_aw1",
+    "original": {
+      "head": {
+        "sub_head": {
+          "text": "I am a sub header"
+        },
+        "text": "I am a header"
+      },
+      "body": [
+        {
+          "editable": true,
+          "text": "I am a message with editable text",
+          "type": "message"
+        }
+      ]
+    },
+    "robotJid": "v1m0yn1imztuogsxjje8fdew@example.com",
+    "timestamp": 1560891135776,
+    "toJid": "kdykjnimt4kpd8kkdqt9fq@example.com/robot_v1m0yn1imztuogsxjje8fdew@example.com",
+    "userId": "KdYKjnimT4KPd8KKdQt9FQ",
+    "userJid": "kdykjnimt4kpd8kkdqt9fq@example.com",
+    "userName": "Jill Chill"
+  }
+}

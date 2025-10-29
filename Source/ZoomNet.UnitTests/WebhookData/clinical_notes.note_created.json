@@ -1,0 +1,20 @@
+{
+  "event": "clinical_notes.note_created",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "lm5YQGvrQkufX4Z87vVZyQ",
+    "object": {
+      "meeting_id": "I3pHE/RnRbmm+ex2g07sxw==",
+      "meeting_number": "94564522297",
+      "meeting_topic": "Provider John's Zoom Meeting",
+      "meeting_host_id": "dqV7XEpnS5G3rGsvqylmjQ",
+      "note_id": "ArfRXokSTiGTCSYFVtxNa",
+      "note_owner_user_id": "dqV7XEpnS5G3rGsvqylmjQ",
+      "note_start_time": "2025-05-15T03:01:08.608Z",
+      "note_end_time": "2025-05-15T03:25:59.608Z",
+      "note_created_time": "2025-05-15T03:26:08.608Z",
+      "note_title": "Monica, F, 25",
+      "ehr_context_available": false
+    }
+  }
+}

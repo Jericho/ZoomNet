@@ -1,0 +1,25 @@
+{
+  "event": "contact_center.task_created",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "task_id": "ZWTFBC1C663A02CFCDD971EC9B538C49372",
+      "flow_id": "ZWW5670D99C6FC89113D2C1CC95A3E4D1E4",
+      "task_status": "pending",
+      "flow_name": "My Flow",
+      "channel_id": "ZTCBB294D00C3B3B7D6C74777FF24FA937B",
+      "channel_name": "video",
+      "task_priority": 0,
+      "cc_queue_id": "xqJE_cgERLyAJHYYL5LLeg",
+      "queue_name": "My Queue",
+      "created_time_ms": "2022-06-14T15:56:53.987Z",
+      "last_modified_time_ms": "2022-06-14T15:56:53.987Z",
+      "engagement_id": "HdOQ9e_aRdO0lyQutA17qQ",
+      "auto_assign": false,
+      "task_timeout": 86400,
+      "caller_number": "+18005550100",
+      "callee_number": "+18005550101"
+    }
+  }
+}

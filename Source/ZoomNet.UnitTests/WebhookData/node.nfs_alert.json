@@ -1,0 +1,29 @@
+{
+  "event": "node.nfs_alert",
+  "event_ts": 290112312321,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "server": {
+        "id": "4d81d866-f385-458e-88f0-f9bdf0e28d9c",
+        "udid": "58c79d0c04312ff40fb0b2575c60ca18da65bd93bae488ee62279ab9d0e1e1e8",
+        "name": "devint-luke",
+        "location": "Hefei - CN",
+        "os_image": "Ubuntu22.04-20240119123604",
+        "status": "online",
+        "module": "hybrid"
+      },
+      "nfs": {
+        "host": "10.100.56.31",
+        "path": "/mnt/nfs_share",
+        "status": "online"
+      },
+      "metric": "nfs",
+      "field": "used_percent",
+      "value": 90.123874,
+      "threshold": 80.0,
+      "operator": ">",
+      "level": "warn"
+    }
+  }
+}

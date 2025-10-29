@@ -1,0 +1,18 @@
+{
+  "event": "workspace.reservation_created",
+  "event_ts": 290112312321,
+  "payload": {
+    "account_id": "G3NQs8u1Qni4Pc-qBPgsxg",
+    "operator": "admin@example.com",
+    "operator_id": "I7zp-pYbTl22Z29H796Ixg",
+    "object": {
+      "id": "fqtckjhjhee89ruidvc2h6lc4g",
+      "workspace_id": "qwNQb8u1Qbi3Pc-qBPgshy",
+      "topic": "Reserve Zoom Room-01",
+      "start_time": "2022-01-19T02:10:00Z",
+      "end_time": "2022-01-19T03:55:00Z",
+      "reserve_for": "I7zp-pYbTl22Z29H796Ixg",
+      "assignment_checkin": true
+    }
+  }
+}

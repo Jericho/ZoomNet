@@ -1,0 +1,46 @@
+{
+  "event": "contact_center.asset_updated",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "asset_id": "WkdWelkzSnBjSFJwYjI0PQ11",
+      "updates": {
+        "asset_name": "My Asset",
+        "asset_description": "This is an exmaple asset.",
+        "asset_item_added": [
+          {
+            "asset_item_id": "beYjXoDOS_eV1QmTpj63PQ",
+            "asset_item_name": "My Asset Item Added",
+            "asset_item_language": "en-US",
+            "is_default": true,
+            "asset_item_file_url": "https://file.zoom.us/xxxx",
+            "asset_item_content": "My Asset Item Content Added",
+            "asset_item_voice": "Joanna"
+          }
+        ],
+        "asset_item_updated": [
+          {
+            "asset_item_id": "beYjXoDOS_eV1QmTpj63PQ",
+            "asset_item_name": "My Asset Item Updated",
+            "asset_item_language": "es-ES",
+            "is_default": false,
+            "asset_item_file_url": "https://file.zoom.us/xxxx",
+            "asset_item_content": "My Asset Item Content Updated",
+            "asset_item_voice": "Joanna"
+          }
+        ],
+        "asset_item_deleted": [
+          {
+            "asset_item_id": "beYjXoDOS_eV1QmTpj63PQ",
+            "asset_item_name": "My Asset Item Deleted"
+          }
+        ],
+        "category_id": "bnGEj1yrRb6qlNMvyMK08g",
+        "restore": true
+      },
+      "modified_by": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "date_time_ms": "2022-02-15T09:27:15.987Z"
+    }
+  }
+}

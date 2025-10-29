@@ -1,0 +1,22 @@
+{
+  "event": "session.sharing_started",
+  "event_ts": 1626473951859,
+  "payload": {
+    "object": {
+      "id": "4118UHIiRCAAAtBlDkcVyw==",
+      "session_id": "4567UVWxYZABCdEfGhiJkl==",
+      "session_name": "My Session",
+      "session_key": "ABC36jaBI145",
+      "user": {
+        "id": "25508864",
+        "name": "username",
+        "user_key": "ASD74dfDI854",
+        "sharing_details": {
+          "date_time": "2019-07-16T17:19:11Z",
+          "content": "application"
+        }
+      }
+    },
+    "account_id": "EPeQtiABC000VYxHMA"
+  }
+}

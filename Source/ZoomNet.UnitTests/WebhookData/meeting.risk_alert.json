@@ -1,0 +1,32 @@
+{
+  "event": "meeting.risk_alert",
+  "event_ts": 1620872887470,
+  "payload": {
+    "account_id": "XTYf8rirS_W0emt2TlxsYQ",
+    "object": {
+      "id": 1234567890,
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "host_id": "x1yCzABCDEfg23HiJKl4mN",
+      "host_email": "jchill@example.com",
+      "topic": "My Meeting",
+      "type": 2,
+      "start_time": "2021-07-13T21:44:51Z",
+      "timezone": "America/Los_Angeles",
+      "armn_details": {
+        "post_platform": "twitter",
+        "social_link": "https://example.com/user/status/1372556404872069120",
+        "post_time": "2021-05-15T02:28:00Z",
+        "post_user": "user",
+        "meeting_url": "https://example.com/j/82390661051",
+        "recommended_enable_settings": [
+          "enablePassword",
+          "enableWaitingRoom"
+        ],
+        "recommended_disable_settings": [
+          "enableScreenShareHostOnly",
+          "enableMeetingChat"
+        ]
+      }
+    }
+  }
+}

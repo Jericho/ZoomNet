@@ -1,0 +1,29 @@
+{
+  "event": "meeting.participant_joined",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "id": "1234567890",
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "host_id": "x1yCzABCDEfg23HiJKl4mN",
+      "topic": "My Meeting",
+      "type": 8,
+      "start_time": "2021-07-13T21:44:51Z",
+      "timezone": "America/Los_Angeles",
+      "duration": 60,
+      "participant": {
+        "user_id": "1234567890",
+        "user_name": "Jill Chill",
+        "id": "iFxeBPYun6SAiWUzBcEkX",
+        "participant_uuid": "55555AAAiAAAAAiAiAiiAii",
+        "date_time": "2021-07-13T21:44:51Z",
+        "email": "jchill@example.com",
+        "registrant_id": "abcdefghij0-klmnopq23456",
+        "participant_user_id": "rstuvwxyza789-cde",
+        "customer_key": "349589LkJyeW",
+        "phone_number": "8615250064084"
+      }
+    }
+  }
+}

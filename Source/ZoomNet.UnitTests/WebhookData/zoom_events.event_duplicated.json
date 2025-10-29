@@ -1,0 +1,21 @@
+{
+  "event": "zoom_events.event_duplicated",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "hub_id": "1234567890abcd",
+      "event_id": "1234567890abcd",
+      "source_event_id": "1234567890abcd",
+      "host_id": "z8yCxjabcdEFGHfp8uQ",
+      "name": "My Event-1",
+      "description": "This is a test event.",
+      "attendance_type": "virtual",
+      "event_type": "CONFERENCE",
+      "status": "DRAFT",
+      "start_time": "2023-07-13T21:44:51Z",
+      "end_time": "2023-07-13T23:00:51Z",
+      "timezone": "America/Los_Angeles"
+    }
+  }
+}

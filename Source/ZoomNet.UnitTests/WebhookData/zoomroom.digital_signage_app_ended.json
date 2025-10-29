@@ -1,0 +1,14 @@
+{
+	"event": "zoomroom.digital_signage_app_ended",
+	"event_ts": 1626230691572,
+	"payload": {
+		"account_id": "AAAAAABBBB",
+		"object": {
+			"room_id": "abcD3ojfdbjfg",
+			"app_name": "My Zoom Room",
+			"app_id": "NiVvY1NWpE2nulNrhVjgU4jD0swziVrXBbaFZyC3u+o=",
+			"start_time": "2022-06-19T00:00:00Z",
+            "end_time": "2022-06-19T01:01:00Z"
+		}
+	}
+}

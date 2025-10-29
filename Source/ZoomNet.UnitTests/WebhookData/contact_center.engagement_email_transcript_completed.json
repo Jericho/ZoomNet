@@ -1,0 +1,17 @@
+{
+  "event": "contact_center.engagement_email_transcript_completed",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "engagement_id": "u1ASlK83fZb54t5-1YWqgw",
+      "engagement_direction": "inbound",
+      "channel": "email",
+      "channel_source": "email_address",
+      "flow_id": "ZWWC0A840C726C2CE3ACF01041CB8CFD8B9",
+      "flow_name": "Email Flow",
+      "transcript_url": "https://api.zoom.us/v2/contact_center/email/messages?engagement_id=u1ASlK83fZb54t5-1YWqgw&direction=forward&page_size=30",
+      "date_time_ms": "2025-07-15T08:12:15.987Z"
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "event": "app.authorization_request_created",
+  "event_ts": "1641884378841",
+  "payload": {
+    "app_name": "DevSlackBot",
+    "app_type": "SDK OAuth App",
+    "app_status": "published",
+    "app_description": "This is DevSlackBot.",
+    "app_link": {
+      "developer_documentation": "https://devslackbot.example.com/docs",
+      "developer_privacy_policy": "https://devslackbot.example.com/policy",
+      "developer_support": "https://devslackbot.example.com/support",
+      "developer_terms_of_use": "https://devslackbot.example.com/toc"
+    },
+    "app_permissions": {
+      "View": [
+        "Product Usage"
+      ],
+      "Manage": [
+        "Registration & Scheduling",
+        "Content",
+        "Participants"
+      ]
+    },
+    "install_requirements": {
+      "min_client": "5.7.3",
+      "user_role": "Any User",
+      "account_eligibility": {
+        "premium_events": [
+          "Meeting Participant QoS",
+          "Webinar Participant QoS",
+          "Meeting Participant Advanced Data",
+          "Webinar Participant Advanced Data",
+          "Meeting Participant QoS Summary",
+          "Webinar Participant QoS Summary"
+        ],
+        "account_types": [
+          "On Prem",
+          "Education",
+          "Pro",
+          "VIP"
+        ]
+      }
+    },
+    "app_scopes": [
+      "meeting:write"
+    ],
+    "requester_name": "Jill Chill",
+    "requester_department": "Development",
+    "requester_user_groups": [
+      "preappoval"
+    ],
+    "request_reason": "I need to install this app."
+  }
+}

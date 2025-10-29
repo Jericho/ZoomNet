@@ -1,0 +1,81 @@
+{
+  "event": "webinar.updated",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator": "admin@example.com",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "scope": "single",
+    "object": {
+      "id": 1234567890,
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "host_id": "x1yCzABCDEfg23HiJKl4mN",
+      "topic": "My Webinar",
+      "type": 9,
+      "start_time": "2021-07-13T21:44:51Z",
+      "duration": 60,
+      "timezone": "America/Los_Angeles",
+      "password": "XYz@BC!D1087",
+      "agenda": "Overview of Webinar Topics",
+      "registration_url": "https://example.com",
+      "occurrences": [
+        {
+          "occurrence_id": "ABCDE12345",
+          "start_time": "2021-07-13T21:44:51Z",
+          "duration": 60,
+          "status": "available"
+        }
+      ],
+      "settings": {
+        "host_video": true,
+        "language_interpretation": {
+          "enable": true,
+          "interpreters": [
+            {
+              "email": "interpreter@example.com",
+              "interpreter_languages": "English,French"
+            }
+          ]
+        },
+        "sign_language_interpretation": {
+          "enable": true,
+          "interpreters": [
+            {
+              "email": "interpreter@example.com",
+              "sign_language": "American"
+            }
+          ]
+        },
+        "email_in_attendee_report": true,
+        "allow_host_control_participant_mute_state": true
+      },
+      "old_object": {
+        "id": 1234567890,
+        "settings": {
+          "participant_video": false,
+          "join_before_host": true,
+          "language_interpretation": {
+            "enable": true,
+            "interpreters": [
+              {
+                "email": "interpreter@example.com",
+                "interpreter_languages": "English,Japanese"
+              }
+            ]
+          },
+          "sign_language_interpretation": {
+            "enable": true,
+            "interpreters": [
+              {
+                "email": "interpreter@example.com",
+                "sign_language": "French"
+              }
+            ]
+          },
+          "email_in_attendee_report": false,
+          "allow_host_control_participant_mute_state": false
+        }
+      }
+    }
+  }
+}

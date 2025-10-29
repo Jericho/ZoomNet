@@ -1,0 +1,12 @@
+{
+  "event": "contact_center.closure_deleted",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "closure_set_id": "Ixo-Na0bRfCyQ4q2lAryDw",
+      "modified_by": "a4sduuiQ7sdfrrtINNsepp",
+      "date_time_ms": "2023-03-15T09:27:15.987Z"
+    }
+  }
+}

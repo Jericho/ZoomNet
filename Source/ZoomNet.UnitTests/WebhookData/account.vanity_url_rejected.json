@@ -1,0 +1,12 @@
+{
+	"event": "account.vanity_url_rejected",
+	"event_ts": 1626230691572,
+	"payload": {
+		"account_id": "AAAAAABBBB",
+		"operator": "admin@example.com",
+		"object": {
+			"vanity_url": "https://example.com",
+			"id": "eUulMKLnTMKX0pVvMAlB0Q"
+		}
+	}
+}

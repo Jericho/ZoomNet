@@ -1,0 +1,14 @@
+{
+  "event": "contact_center.queue_agent_assigned",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "cc_queue_id": "xqJE_cgERLyAJHYYL5LLeg",
+      "user_id": "ukAAkZKfROKMSw1bj_RDFQ",
+      "display_name": "John Doe",
+      "user_email": "johndoe@example.com",
+      "date_time_ms": "2022-02-15T09:27:15.987Z"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+    "event": "webinar.participant_feedback",
+    "event_ts": 1626230691572,
+    "payload": {
+        "account_id": "q6gBJVO5TzexKYTb_I2rpg",
+        "object": {
+            "id": "7357282288",
+            "uuid": "0AErJTQBTI2bSXKyAxIq5A==",
+            "participant": {
+                "participant_uuid": "I2rpg_q6gBJVO5TzexKYTb",
+                "participant_user_id": "zJKyaiAyTNC-MWjiWC18KQ",
+                "user_name": "jchill",
+                "feedback": {
+                    "satisfied": true,
+                    "feedback_details": [
+                        {
+                            "id": "2",
+                            "name": "Poor audio quality"
+                        }
+                    ],
+                    "comments": "good enough"
+                }
+            }
+        }
+    }
+}

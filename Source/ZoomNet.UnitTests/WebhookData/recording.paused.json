@@ -1,0 +1,21 @@
+{
+  "event": "recording.paused",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "id": 1234567890,
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "host_id": "x1yCzABCDEfg23HiJKl4mN",
+      "topic": "My Personal Recording",
+      "type": 4,
+      "start_time": "2021-07-13T21:44:51Z",
+      "timezone": "America/Los_Angeles",
+      "duration": 60,
+      "recording_file": {
+        "recording_start": "2021-03-23T22:14:57Z",
+        "recording_end": "2021-03-23T23:15:41Z"
+      }
+    }
+  }
+}

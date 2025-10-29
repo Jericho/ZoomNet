@@ -1,0 +1,34 @@
+{
+  "event": "team_chat.shared_spaces_edit",
+  "event_ts": 1706165208977,
+  "payload": {
+    "account_id": "XVJ2mzL6H9cDLKhkeGfyAS",
+    "operator": "user1@example.com",
+    "operator_id": "DvSzT4W6y475vNeE9kukbX",
+    "operator_member_id": "V0xKXVARQVmlXMYVbGoTEA",
+    "object": {
+      "space_id": "8dnjn8uuadijdijS6yqnrc",
+      "new_settings":{
+        "name": "Shared Space Name",
+        "desc": "Shared Space Description",
+        "option": {
+          "add_external_users": "by_any_member",
+          "add_new_channels": "by_owner_and_admins",
+          "add_new_members": "by_any_member",
+          "is_public": false
+        }
+      },
+      "old_settings": {
+        "name": "Old Shared Space Name",
+        "desc": "Old Shared Space Description",
+        "option": {
+          "add_external_users": "by_owner_and_admins",
+          "add_new_channels": "by_any_member",
+          "add_new_members": "by_any_member",
+          "is_public": false
+        }
+      },
+      "timestamp": 1706165208977
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "event" : "session.user_qos_summary",
+  "event_ts" : 1673353332744,
+  "payload" : {
+    "account_id" : "AAAAAABBBB",
+    "object" : {
+      "session_id" : "gkBE2XmnRJq42wHoMox/5g==",
+      "user" : {
+        "id" : "16778240",
+        "name" : "example",
+        "user_key" : "vkgfmFwpQqOftr90XLkeBA",
+        "qos" : [ {
+          "type" : "cpu_usage",
+          "details" : {
+            "zoom_min_cpu_usage" : "0%",
+            "zoom_avg_cpu_usage" : "0%",
+            "zoom_max_cpu_usage" : "0%",
+            "system_max_cpu_usage" : "0%"
+          }
+        } ]
+      },
+      "session_name" : "XdafAKX5RXDACJZXv4xR-w"
+    }
+  }
+}

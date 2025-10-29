@@ -1,0 +1,51 @@
+{
+  "event": "contact_center.queue_created",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "cc_queue_id": "xqJE_cgERLyAJHYYL5LLeg",
+      "queue_name": "My Queue",
+      "queue_description": "This is an example queue.",
+      "dispositions_count": 1,
+      "disposition_sets_count": 1,
+      "channel_types": [
+        "chat"
+      ],
+      "max_wait_time": 50,
+      "wrap_up_time": 50,
+      "max_engagement_in_queue": 50,
+      "short_abandon_enable": false,
+      "short_abandon_threshold": 50,
+      "distribution_type": 1,
+      "distribution_duration_in_seconds": 30,
+      "connecting_media_id": "connectingAudioMp3",
+      "connecting_media_name": "My Connecting Media",
+      "transferring_media_id": "transferringAudioMp3",
+      "transferring_media_name": "My Transferring Media",
+      "holding_media_id": "holdingAudioMp3",
+      "holding_media_name": "My Holding Media",
+      "waiting_room_name": "My Waiting Room",
+      "waiting_room_id": "vPtSZOzBSLWMiorssYWTZw",
+      "message_accept": "manual",
+      "wrap_up_expiration": true,
+      "overflow_to_goodbye_message": true,
+      "overflow_to_cc_queue_id": "xqJE_cgERLyAJHYYL5LLeg",
+      "overflow_to_flow_id": "psjHGHrHQbaX8Zk7ldc81Q",
+      "overflow_to_inbox_id": "cMH8RJA0QsyJBCWIFbWfBQ",
+      "auto_close_message": "This chat has been auto-closed due to inactivity.",
+      "auto_close_message_enabled": true,
+      "auto_close_timeout": 10,
+      "auto_close_alert_message": "Chat will auto-close soon if you don’t reply",
+      "auto_close_alert_message_enabled": true,
+      "auto_close_alert_message_time": 10,
+      "recording_storage_location": "us",
+      "service_level_threshold_in_seconds": 10,
+      "service_level_exclude_short_abandoned_calls": true,
+      "service_level_exclude_long_abandoned_calls": true,
+      "service_level_exclude_abandoned_quit_engagements": true,
+      "service_level_target_in_percentage": 80,
+      "date_time_ms": "2022-02-15T09:27:15.987Z"
+    }
+  }
+}

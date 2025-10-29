@@ -1,0 +1,30 @@
+{
+  "event": "session.user_qos",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "session_id": "4567UVWxYZABCdEfGhiJkl==",
+      "session_name": "My Session",
+      "session_key": "ABC36jaBI145",
+      "user": {
+        "id": "1234567890",
+        "name": "example",
+        "user_key": "ASD74dfDI854",
+        "qos": [
+          {
+            "date_time": "2021-07-13T21:44:51Z",
+            "type": "audio_input",
+            "details": {
+              "bitrate": "63 kbps",
+              "latency": "134 ms",
+              "jitter": "6 ms",
+              "avg_loss": "0.0%",
+              "max_loss": "0.0%"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

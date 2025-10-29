@@ -1,0 +1,44 @@
+{
+  "event": "phone.call_qos_summary",
+  "event_ts": 1626759486127,
+  "payload": {
+    "account_id": "2TP-coFVSnmyvYZogk8gAg",
+    "object": {
+      "call_id": "6971668082545971778",
+      "call_start_time": "2021-06-09T05:42:34Z",
+      "call_end_time": "2021-06-09T05:43:02Z",
+      "call_qos": [
+        {
+          "type": "caller",
+          "user_id": "KLN56y2cSzu0pWxUSec4RQ",
+          "qos": [
+            {
+              "date_time": "2021-04-26T05:26:00Z",
+              "type": "sending",
+              "details": {
+                "bitrate": "6",
+                "avg_loss": "0.0",
+                "max_loss": "0.0",
+                "jitter": "8",
+                "network_delay": "23",
+                "mos": "4.5"
+              }
+            },
+            {
+              "date_time": "2021-04-26T05:26:00Z",
+              "type": "receiving",
+              "details": {
+                "bitrate": "6",
+                "avg_loss": "0.0",
+                "max_loss": "0.0",
+                "jitter": "8",
+                "network_delay": "23",
+                "mos": "4.5"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

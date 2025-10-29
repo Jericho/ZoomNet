@@ -1,0 +1,20 @@
+{
+  "event": "team_chat.channel_message_deleted",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator": "user@example.com",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "operator_member_id": "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ",
+    "by_external_user": false,
+    "object": {
+      "message_id": "508CD4CF-4FFD-4644-BFB2-264C5C5600D7",
+      "date_time": "2020-02-10T21:39:50Z",
+      "timestamp": 1581370790388,
+      "channel_id": "qrstuvwxyz67890",
+      "channel_name": "Team Chat",
+      "channel_owner_account_id": "lmnop12345abcdefghijk",
+      "reply_main_message_id": "AC619306-3DB6-4918-A11F-DB9489BB814E"
+    }
+  }
+}

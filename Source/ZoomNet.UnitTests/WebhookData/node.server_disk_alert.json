@@ -1,0 +1,24 @@
+{
+  "event": "node.server_disk_alert",
+  "event_ts": 290112312321,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+        "server": {
+          "id": "4d81d866-f385-458e-88f0-f9bdf0e28d9c",
+          "udid": "58c79d0c04312ff40fb0b2575c60ca18da65bd93bae488ee62279ab9d0e1e1e8",
+          "name": "devint-luke",
+          "location": "Hefei - CN",
+          "os_image": "Ubuntu22.04-20240119123604",
+          "status": "online",
+          "module": "hybrid"
+        },
+        "metric": "node_disk",
+        "field": "used_percent",
+        "value": 49.972115,
+        "threshold": 2.0,
+        "operator": ">",
+        "level": "error"
+      }
+  }
+}

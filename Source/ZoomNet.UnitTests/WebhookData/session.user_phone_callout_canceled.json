@@ -1,0 +1,18 @@
+{
+  "event": "session.user_phone_callout_canceled",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "dzVA4QmMQfyISoRcpFO8CA",
+    "object": {
+      "session_id": "4444AAAiAAAAAiAiAiiAii==",
+      "session_name": "My Session",
+      "session_key": "ABC36jaBI145",
+      "user_key": "ASD74dfDI854",
+      "participant": {
+        "invitee_name": "Jill Chill",
+        "phone_number": 15555550100,
+        "from_number": 13167900000
+      }
+    }
+  }
+}

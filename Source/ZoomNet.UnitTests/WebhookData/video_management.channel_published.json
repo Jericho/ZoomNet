@@ -1,0 +1,13 @@
+{
+  "event": "video_management.channel_published",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "channel_id": "iso9Dllddp39dagjLj9j",
+      "name": "FoodieFlicks",
+      "description": "A cinematic journey through the world of cuisine!.",
+      "owner_id": "abc9Dllddp39dagjLj9j"
+    }
+  }
+}

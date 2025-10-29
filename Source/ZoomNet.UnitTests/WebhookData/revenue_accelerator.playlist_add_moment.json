@@ -1,0 +1,17 @@
+{
+  "event": "revenue_accelerator.playlist_add_moment",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator_id": "Gtl2Ra0ASfO5wIzYPYceiA",
+    "operator": "test@zoom.us",
+    "object": {
+      "playlist_id": "AAAAAABBBB",
+      "playlist_name": "playlist name",
+      "playlist_detail_id": "323Tl2Ra0ASfO5wIzYPYceiA",
+      "moment_id": "ASfO5wIzYPYceiA",
+      "moment_name": "moment name",
+      "update_time": 1755591952177
+    }
+  }
+}

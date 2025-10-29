@@ -1,0 +1,36 @@
+{
+  "event": "quality_management.interaction_analysis_completed",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "start_time": "2020-05-01T19:13:02Z",
+      "duration": 5,
+      "queue_id": "Je4zLPZ-SBiLCiebE35ALQ",
+      "queue_name": "Demo",
+      "interaction_info": {
+        "from": "+16692520210",
+        "to": "+12364352078",
+        "interaction_id": "X51n17BZQTqKtxwF4mmTIw",
+        "agent_name": "Admin3",
+        "consumer_name": "+16692520210",
+        "channel_type": "AUDIO",
+        "associated_ids": [
+          "xxxx"
+        ]
+      },
+      "engagement_id": "PH6wferlTACAfBzYGAVOYg",
+      "direction": "inbound",
+      "disposition": "dev-disposition",
+      "silence_event_count": 2,
+      "crosstalk_event_count": 2,
+      "hold_event_count": 3,
+      "summary": {
+        "evaluation_score": 58.63,
+        "sentiment_score": 58.63,
+        "engagement_score": 58.63
+      },
+      "primary_language": "en"
+    }
+  }
+}

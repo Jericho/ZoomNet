@@ -1,0 +1,44 @@
+{
+	"event": "information_barriers.policy_updated",
+	"event_ts": 1660013569332,
+	"payload": {
+		"account_id": "Mt6sv4u0TAyPkwgsL2lxiA",
+		"object": {
+            "id": "0r1HpfZYQB6gWNSdlGYS9A",
+			"new_policy": {
+			  "assigned_group_id": "O5FnCpUOSeSzfoBcosSc3A",
+			  "to_group_id": "NCLsKWGUQ0KEdrg3DBQKLQ",
+			  "policy_name": "tes1_test2",
+			  "settings": {
+			  	"meeting": false,
+			  	"screen_share": false,
+			  	"file_transfer": false,
+			  	"in_meeting_chat": false,
+			  	"im": false,
+			  	"recording": false,
+			  	"complete_phone_calls": false,
+			  	"message_via_sms": true
+			  },
+			  "type": 0,
+			  "status": 1
+			},
+            "old_policy": {
+			  "assigned_group_id": "O5FnCpUOSeSzfoBcosSc3A",
+			  "to_group_id": "NCLsKWGUQ0KEdrg3DBQKLQ",
+			  "policy_name": "tes1_test2",
+			  "settings": {
+			  	"meeting": false,
+			  	"screen_share": false,
+			  	"file_transfer": true,
+			  	"in_meeting_chat": false,
+			  	"im": false,
+			  	"recording": false,
+			  	"complete_phone_calls": false,
+			  	"message_via_sms": true
+			  },
+			  "type": 0,
+			  "status": 1
+			}
+		}
+	}
+}

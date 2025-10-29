@@ -1,0 +1,11 @@
+{
+  "event": "video_management.channel_video_removed",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "channel_id": "iso9Dllddp39dagjLj9j",
+      "video_id": "abc9Dllddp39dagjLj9j"
+    }
+  }
+}

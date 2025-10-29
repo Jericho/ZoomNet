@@ -1,0 +1,16 @@
+{
+  "event": "user.deleted",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator": "admin@example.com",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "object": {
+      "id": "abcD3ojfdbjfg",
+      "first_name": "Jill",
+      "last_name": "Chill",
+      "email": "jchill@example.com",
+      "type": 1
+    }
+  }
+}

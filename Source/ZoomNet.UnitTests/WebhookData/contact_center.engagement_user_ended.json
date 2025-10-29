@@ -1,0 +1,24 @@
+{
+  "event": "contact_center.engagement_user_ended",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "engagement_id": "u154t5-ASlK83fZb1YWqgw",
+      "engagement_direction": "outbound",
+      "channel": "video",
+      "channel_source": "web_video",
+      "date_time_ms": "2022-02-15T09:27:15.987Z",
+      "flow_id": "ZWWC0A840C726C2CE3ACF01041CB8CFD8B9",
+      "flow_name": "My Flow",
+      "cc_queue_id": "xqJE_cgERLyAJHYYL5LLeg",
+      "queue_name": "My Queue",
+      "consumer_number": "+18005550100",
+      "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "user_display_name": "John Doe",
+      "flow_number": "+18005550101",
+      "consumer_id": "szCyubr_aQhieHNWYbAGMYg",
+      "consumer_display_name": "Jane Smith"
+    }
+  }
+}

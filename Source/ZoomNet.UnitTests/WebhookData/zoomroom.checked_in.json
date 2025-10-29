@@ -1,0 +1,19 @@
+{
+  "event": "zoomroom.checked_in",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+        "id": "abcD3ojfdbjfg",
+        "room_name": "My Zoom Room",
+        "calendar_name": "mycalendar@example.com",
+        "email": "jchill@example.com",
+        "event_id": "AbbbbbGYxLTc3OTVkMzFmZDc0MwBGAAAAAAD48FI58voYSqDgJePOSZblBwBQ/N0JvB/FRqv5UT2rFfkVAAAAAAENAABQ/N0JvB/FRqv5UT2rFfkVAAE2YC8DAAA=",
+        "change_key": "DwAAABYAAABQ/N0JvB/FRqv5UT2rFfkVAAE2XqVw",
+        "resource_email": "it@example.com",
+        "calendar_id": "mycalendar@example.com",
+        "calendar_type": "2",
+        "api_type": "0"
+    }
+  }
+}

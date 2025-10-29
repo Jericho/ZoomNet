@@ -1,0 +1,26 @@
+{
+  "event": "webinar.recovered",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator": "admin@example.com",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "operation": "single",
+    "object": {
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "id": 1234567890,
+      "host_id": "x1yCzABCDEfg23HiJKl4mN",
+      "topic": "My Webinar",
+      "type": 9,
+      "start_time": "2021-07-13T21:44:51Z",
+      "duration": 60,
+      "timezone": "America/Los_Angeles",
+      "occurrences": [
+        {
+          "occurrence_id": "1677637740000",
+          "start_time": "2023-03-01T02:29:00Z"
+        }
+      ]
+    }
+  }
+}

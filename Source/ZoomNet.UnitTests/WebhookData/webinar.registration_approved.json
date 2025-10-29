@@ -1,0 +1,37 @@
+{
+  "event": "webinar.registration_approved",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator": "admin@example.com",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "object": {
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "id": 1234567890,
+      "host_id": "x1yCzABCDEfg23HiJKl4mN",
+      "topic": "My Webinar",
+      "type": 9,
+      "start_time": "2021-07-13T21:44:51Z",
+      "duration": 60,
+      "timezone": "America/Los_Angeles",
+      "occurrences": [
+        {
+          "occurrence_id": "ABCDE12345",
+          "start_time": "2021-07-13T21:44:51Z"
+        }
+      ],
+      "registrant": {
+        "id": "iFxeBPYun6SAiWUzBcEkX",
+        "first_name": "Jill",
+        "last_name": "Chill",
+        "email": "jchill@example.com",
+        "join_url": "https://example.com",
+        "tracking_source": {
+           "id": "5516482804110",
+           "source_name": "general",
+           "tracking_url": "https://example.com/webinar/register/5516482804110/WN_juM2BGyLQMyQ_ZrqiGRhLg"
+        }
+      }
+    }
+  }
+}

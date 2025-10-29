@@ -1,0 +1,17 @@
+{
+	"event": "zoomroom.sensor_data",
+	"event_ts": 1626230691572,
+	"payload": {
+		"account_id": "AAAAAABBBB",
+		"object": {
+			"id": "abcD3ojfdbjfg",
+			"room_name": "My Zoom Room",
+			"device_id": "NiVvY1NWpE2nulNrhVjgU4jD0swziVrXBbaFZyC3u+o=",
+			"sensor_data": [{
+				"date_time": "2022-06-19T00:00:00Z",
+				"sensor_type": "REAL_TIME_PEOPLE_COUNT",
+				"sensor_value": "20"
+			}]
+		}
+	}
+}

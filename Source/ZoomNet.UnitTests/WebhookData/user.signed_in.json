@@ -1,0 +1,15 @@
+{
+  "event": "user.signed_in",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "id": "abcD3ojfdbjfg",
+      "client_type": "android",
+      "date_time": "2021-07-26T20:13:57Z",
+      "email": "jchill@example.com",
+      "version": "5.7.4.1585",
+      "login_type": "100"
+    }
+  }
+}

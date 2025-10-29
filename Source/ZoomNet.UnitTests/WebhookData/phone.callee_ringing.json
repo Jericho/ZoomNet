@@ -1,0 +1,36 @@
+{
+  "event": "phone.callee_ringing",
+  "payload": {
+    "account_id": "TQTvjT52Tmi_wrhASNNOEw",
+    "object": {
+      "call_id": "6998252113337041462",
+      "caller": {
+        "phone_number": "+12092592844",
+        "connection_type": "voip"
+      },
+      "callee": {
+        "extension_type": "user",
+        "extension_number": 1002,
+        "phone_number": "+12058945456",
+        "user_id": "DnEopNmXQEGU2uvvzjgojw",
+        "timezone": "America/Los_Angeles",
+        "device_type": "MAC_Client(5.7.5.1123)",
+        "device_id": "f7aLLSmqRpiWP0U3U6CaNA",
+        "connection_type": "voip"
+      },
+      "forwarded_by": {
+        "name": "TestCAP01",
+        "extension_type": "callQueue",
+        "extension_number": "1022"
+      },
+      "redirect_forwarded_by": {
+        "name": "TestAR01",
+        "extension_type": "autoReceptionist",
+        "extension_number": "100154",
+        "phone_number": "+12053953655"
+      },
+      "ringing_start_time": "2021-08-19T21:12:28Z"
+    }
+  },
+  "event_ts": 1629407561742
+}

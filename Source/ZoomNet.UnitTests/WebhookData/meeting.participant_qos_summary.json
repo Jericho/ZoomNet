@@ -1,0 +1,64 @@
+{
+  "event": "meeting.participant_qos_summary",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "participant": {
+        "participant_id": "string",
+        "user_name": "JillChill",
+        "id": "iFxeBPYun6SAiWUzBcEkX",
+        "email": "user@example.com",
+        "qos" : [
+          {
+          "type" : "audio_output",
+          "details" : {
+            "min_bitrate" : "6 kbps",
+            "avg_bitrate" : "9 kbps",
+            "max_bitrate" : "27 kbps",
+            "min_latency" : "0 ms",
+            "avg_latency" : "0 ms",
+            "max_latency" : "0 ms",
+            "min_jitter" : "0 ms",
+            "avg_jitter" : "0 ms",
+            "max_jitter" : "1 ms",
+            "min_loss" : "0.0%",
+            "avg_loss" : "0.0%",
+            "max_loss" : "0.0%"
+          }
+        },
+        {
+          "type" : "video_output",
+          "details" : {
+            "min_bitrate" : "200 kbps",
+            "avg_bitrate" : "391 kbps",
+            "max_bitrate" : "898 kbps",
+            "min_latency" : "0 ms",
+            "avg_latency" : "0 ms",
+            "max_latency" : "0 ms",
+            "min_jitter" : "0 ms",
+            "avg_jitter" : "0 ms",
+            "max_jitter" : "1 ms",
+            "min_loss" : "0.0%",
+            "avg_loss" : "0.0%",
+            "max_loss" : "0.0%",
+            "resolution" : "",
+            "min_frame_rate" : "0 fps",
+            "avg_frame_rate" : "0 fps",
+            "max_frame_rate" : "0 fps"
+          }
+        },
+        {
+          "type" : "cpu_usage",
+          "details" : {
+            "zoom_min_cpu_usage" : "1%",
+            "zoom_avg_cpu_usage" : "2%",
+            "zoom_max_cpu_usage" : "5%",
+            "system_max_cpu_usage" : "23%"
+          }
+        } ]
+      }
+    }
+  }
+}

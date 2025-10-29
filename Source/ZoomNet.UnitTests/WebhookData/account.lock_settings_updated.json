@@ -1,0 +1,26 @@
+{
+	"event": "account.lock_settings_updated",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator_id": "g4ebA91YR7GPQw6QKvxwVw",
+    "operator": "admin@example.com",
+    "object": {
+      "settings": {
+        "recording": {
+          "auto_recording": "cloud"
+				}
+			},
+      "id": "eUblMKLnTMKX0pVvNAlA0Q"
+		},
+    "time_stamp": 1626230691572,
+    "old_object": {
+      "id": "zJ4Cu-awQEyypwYtM0HwrA",
+      "settings": {
+        "recording": {
+          "auto_recording": "cloud"
+				}
+			}
+		}
+	}
+}

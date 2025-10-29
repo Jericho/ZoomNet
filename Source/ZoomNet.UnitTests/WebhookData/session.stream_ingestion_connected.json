@@ -1,0 +1,20 @@
+{
+  "event": "session.stream_ingestion_connected",
+  "event_ts": 1627906965803,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "session_id": "4567UVWxYZABCdEfGhiJkl==",
+      "session_name": "My Session",
+      "session_key": "ABC36jaBI145",
+      "stream_ingestion": {
+        "stream_id": "sfk/aOFJSJSYhGwk1hnxgw==",
+        "stream_name": "stream ingestion1",
+        "stream_description": "stream ingestion1",
+        "stream_key": "ABCDEFG12345HIJ6789",
+        "stream_url": "rtmp://a.rtmp.zoomevent.com/live1",
+        "backup_stream_url": "rtmp://a.rtmp.zoomevent.com/live1"
+      }
+    }
+  }
+}

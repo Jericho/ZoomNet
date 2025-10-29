@@ -1,0 +1,29 @@
+{
+  "event": "recording.registration_approved",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator": "admin@example.com",
+    "operator_id": "I7zp-pYbTl22Z29H796Ixg",
+    "object": {
+      "id": 1234567890,
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "host_id": "x1yCzABCDEfg23HiJKl4mN",
+      "topic": "My Personal Recording",
+      "type": 4,
+      "start_time": "2021-07-13T21:44:51Z",
+      "timezone": "America/Los_Angeles",
+      "duration": 60,
+      "occurrences": {
+        "occurrence_id": "ABCDE12345",
+        "start_time": "2021-07-13T21:44:51Z"
+      },
+      "registrant": {
+        "id": "iFxeBPYun6SAiWUzBcEkX",
+        "email": "jchill@example.com",
+        "first_name": "Jill",
+        "last_name": "Chill"
+      }
+    }
+  }
+}

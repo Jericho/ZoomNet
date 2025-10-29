@@ -1,0 +1,36 @@
+{
+	"event": "phone.recording_transcript_completed",
+	"event_ts": 1626230691572,
+	"payload": {
+		"account_id": "AAAAAABBBB",
+		"object": {
+          "recordings": [{
+                "id": "abcD3ojfdbjfg",
+                "user_id": "z8yCxjabcdEFGHfp8uQ",
+                "caller_number": "1026",
+                "caller_number_type": 1,
+                "caller_name": "Caller Name",
+                "callee_number": "1045",
+                "callee_number_type": 1,
+                "callee_name": "Callee Name",
+                "duration": 43,
+                "transcript_download_url": "https://some.url.com",
+                "direction": "outbound",
+                "date_time": "2021-06-09T06:09:24Z",
+                "recording_type": "OnDemand",
+                "call_id": "6971672158469969953",
+                "call_log_id": "a297ae04-a875-4cfd-85ab-4adcead91edb",
+                "end_time": "2021-06-09T06:10:07Z",
+                "site": {
+                    "id": "qORJkxNDTA25_VfJ3GK9KA"
+                },
+                "owner" : {
+                    "type" : "user",
+                    "id" : "z8yCxjabcdEFGHfp8uQ",
+                    "name" : "usersubsetting0001",
+                    "extension_number": 6666
+                }
+          }]
+		}
+	}
+}

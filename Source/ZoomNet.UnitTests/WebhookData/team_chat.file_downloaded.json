@@ -1,0 +1,22 @@
+{
+  "event": "team_chat.file_downloaded",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator": "user@example.com",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "operator_member_id": "1vCFVGsqi_lo8BqWMfmP8hiRn9a37oxCCPYdRWctkgMaE9NWn66sJouoz8opRcsg",
+    "object": {
+      "channel_id": "4c74c0e3763940408cd0515a332ea4f5@conference.xmppdev.zoom.us",
+      "timestamp": 1700515073431,
+      "file": {
+        "file_id": "MS17RDk0QTY3QUQtQkFGQy04QTJFLTI2RUEtNkYxQjRBRTU1MTk5fQ==",
+        "file_name": "example.jpg",
+        "file_size": 3966,
+        "file_type": "jpg",
+        "file_owner_id": "8AmQ0WOoQ1O3a84yYFc2xQ",
+        "file_owner_member_id": "1vRFhZt_2gipkB-SFKkOpnkhWpeSf1wiCPYdRWctkgMaE9NWn66sJouoz8opRcsg"
+      }
+    }
+  }
+}

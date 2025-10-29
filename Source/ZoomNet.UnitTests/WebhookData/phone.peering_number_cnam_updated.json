@@ -1,0 +1,14 @@
+{
+  "event": "phone.peering_number_cnam_updated",
+  "payload": {
+    "account_id": "Mt6sv4u0TAyPkwgsL2lxiA",
+    "object": {
+      "cnam": "name",
+      "carrier_code": 3457,
+      "phone_numbers": [
+       "18008001000"
+      ]
+    }
+  },
+  "event_ts": 1619155436400
+}

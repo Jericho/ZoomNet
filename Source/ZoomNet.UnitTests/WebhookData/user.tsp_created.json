@@ -1,0 +1,35 @@
+{
+  "event": "user.tsp_created",
+  "event_ts": 1234566789900,
+  "payload": {
+    "account_id": "Mtgfdgfgd2lxiA",
+    "operator": "admin@example.com",
+    "operator_id": "DYdgdg64567g8w",
+    "object": {
+      "tsp_credentials": {
+        "id": "2",
+        "conference_code": "123456789",
+        "leader_pin": "123456",
+        "dial_in_numbers": [
+          {
+            "code": "1",
+            "number": "123456789",
+            "type": "toll"
+          },
+          {
+            "code": "93",
+            "number": "980000021",
+            "type": "tollfree"
+          },
+          {
+            "code": "1",
+            "number": "2222456532",
+            "type": "media_link"
+          }
+        ]
+      },
+      "email": "jchill@example.com",
+      "id": "DYbbbbf7dPkkg8w"
+    }
+  }
+}

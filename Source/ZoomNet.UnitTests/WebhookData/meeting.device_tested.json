@@ -1,0 +1,19 @@
+{
+  "event": "meeting.device_tested",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "id": 1234567890,
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "test_result": {
+        "user_id": "1234567890",
+        "user_name": "JillChill",
+        "camera_status": 1,
+        "speaker_status": 1,
+        "microphone_status": 1,
+        "os": "ios"
+      }
+    }
+  }
+}

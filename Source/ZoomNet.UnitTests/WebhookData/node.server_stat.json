@@ -1,0 +1,30 @@
+{
+  "event": "node.server_stat",
+  "event_ts": 290112312321,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "stats": [
+        {
+          "server": {
+            "id": "4444AAAiAAAAAiAiAiiAii==",
+            "udid": "AAAiAiAixdflsdfdfhk",
+            "name": "test-mmr-1",
+            "location": "berlin",
+            "osImage": "Ubuntu22-123",
+            "module": "mc",
+            "status": "online"
+          },
+          "cpu_used_percent": 9.17,
+          "memory_used": 3423242434,
+          "disk_used": 39.17,
+          "disk_total": 39.17,
+          "cpu_used_percent_ts": "2024-05-24T03:45:57Z",
+          "memory_used_ts": "2024-05-24T03:45:57Z",
+          "disk_used_ts": "2024-05-24T03:45:57Z",
+          "disk_total_ts": "2024-05-24T03:45:57Z"
+        }
+      ]
+    }
+  }
+}

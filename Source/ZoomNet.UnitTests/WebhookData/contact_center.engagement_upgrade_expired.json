@@ -1,0 +1,33 @@
+{
+  "event": "contact_center.engagement_upgrade_expired",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "engagement_id": "u154t5-ASlK83fZb1YWqgw",
+      "engagement_direction": "inbound",
+      "channel": "messaging",
+      "channel_source": "sms",
+      "upgrade_to_channel": "video",
+      "upgrade_to_channel_source": "in_app_video",
+      "flow_id": "ZWWC0A840C726C2CE3ACF01041CB8CFD8B9",
+      "flow_name": "My Flow",
+      "cc_queue_id": "xqJE_cgERLyAJHYYL5LLeg",
+      "queue_name": "My Queue",
+      "users": [
+        {
+          "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
+          "user_display_name": "Jane Smith"
+        }
+      ],
+      "consumers": [
+        {
+          "consumer_id": "sFvHUPCcWSby7tIyEc6QMZg",
+          "consumer_number": "+18005550100",
+          "consumer_display_name": "John Smith"
+        }
+      ],
+      "date_time_ms": "2022-02-15T09:27:15.987Z"
+    }
+  }
+}

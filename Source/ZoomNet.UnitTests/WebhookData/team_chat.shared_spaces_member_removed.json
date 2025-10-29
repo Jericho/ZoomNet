@@ -1,0 +1,35 @@
+{
+  "event": "team_chat.shared_spaces_member_removed",
+  "event_ts": 1706165208977,
+  "payload": {
+    "account_id": "XVJ2mzL6H9cDLKhkeGfyAS",
+    "operator": "user1@example.com",
+    "operator_id": "DvSzT4W6y475vNeE9kukbX",
+    "operator_member_id": "V0xKXVARQVmlXMYVbGoTEA",
+    "object": {
+      "space_id": "8Dnjn8uuadijDijS6YqNrC",
+      "space_name": "Shared Space Name",
+      "members": [
+        {
+          "user_id": "CKFRAKc37nfqZr2WiKxaKz",
+          "user_email": "user2@example.com",
+          "display_name": "Kevin Conroy",
+          "member_id": "1vRFhZt_2gipkB-SFKkOpnkhWpeSf1wiCPYdRWctkgMaE9NWn66sJouoz8opRcsg"
+        },
+        {
+          "user_id": "zFEXGGfNXTWRBzj4Mr286T",
+          "user_email": "user3@example.com",
+          "display_name": "Peter Weller",
+          "member_id": "1vRFhZt_2gipkB-SFKkOpnkhWpeSf1wiCPYdRWctkgMaE9NWn66sJouoz8opRcsg"
+        },
+        {
+          "user_id": "m2hWkcLkH52tZto9daw7B2",
+          "user_email": "user4@example.com",
+          "display_name": "Diedrich Bader",
+          "member_id": "1vRFhZt_2gipkB-SFKkOpnkhWpeSf1wiCPYdRWctkgMaE9NWn66sJouoz8opRcsg"
+        }
+      ],
+      "timestamp": 1706165208977
+    }
+  }
+}

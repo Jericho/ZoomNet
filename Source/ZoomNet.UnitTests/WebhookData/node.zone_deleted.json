@@ -1,0 +1,14 @@
+{
+  "event": "node.zone_deleted",
+  "event_ts": 290112312321,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator": "admin@example.com",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "object": {
+      "zone": "test1",
+      "module": "hybrid",
+      "type": "meeting_zone"
+    }
+  }
+}

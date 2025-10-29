@@ -1,0 +1,28 @@
+{
+  "event": "contact_center.engagement_survey_status",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "engagement_id": "u154t5-ASlK83fZb1YWqgw",
+      "channel": "video",
+      "channel_source": "in_app_video",
+      "cc_queue_id": "xqJE_cgERLyAJHYYL5LLeg",
+      "queue_name": "My Queue",
+      "flow_id": "ZWWC0A840C726C2CE3ACF01041CB8CFD8B9",
+      "flow_name": "My Flow",
+      "flow_number": "+18005550100",
+      "survey_status": "completed",
+      "survey_id": "2yWjT4awTumcFKIrvcf4OA",
+      "survey_question_id": "JocDev1cT-mIHREwDtMTVw",
+      "survey_trigger_from": "queue",
+      "consumer_id": "szCyubr_aQhieHNWYbAGMYg",
+      "consumer_number": "+18005550101",
+      "consumer_display_name": "Jane Doe",
+      "consumer_email": "janedoe@example.com",
+      "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "user_display_name": "John Doe",
+      "date_time_ms": "2024-09-11T02:18:11.658Z"
+    }
+  }
+}
