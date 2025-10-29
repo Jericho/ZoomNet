@@ -1,0 +1,14 @@
+{
+  "event": "phone.voicemail_deleted",
+  "payload": {
+    "account_id": "Mt6sv4u0TAyPkwgsL2lxiA",
+    "object": {
+      "voice_mails": [
+        {
+          "id": "0388975092074598b47330a6a87e9a7b"
+        }
+      ]
+    }
+  },
+  "event_ts": 1619155436400
+}

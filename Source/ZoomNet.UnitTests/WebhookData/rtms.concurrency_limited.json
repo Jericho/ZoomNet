@@ -1,0 +1,11 @@
+{
+  "event": "meeting.rtms_concurrency_limited",
+  "event_ts": 1626230691572,
+  "payload": {
+    "operator_id": "30R7kT7bTIKSNUFEuH_Qlg",
+    "concurrency_number": 2001,
+    "id_field": {
+      "meeting_uuid": "4444AAAiAAAAAiAiAiiAii=="
+    }
+  }
+}

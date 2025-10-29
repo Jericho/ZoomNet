@@ -1,0 +1,15 @@
+{
+  "event": "team_chat.shared_spaces_member_left",
+  "event_ts": 1706165208977,
+  "payload": {
+    "account_id": "XVJ2mzL6H9cDLKhkeGfyAS",
+    "operator": "user1@example.com",
+    "operator_id": "DvSzT4W6y475vNeE9kukbX",
+    "operator_member_id": "V0xKXVARQVmlXMYVbGoTEA",
+    "object": {
+      "space_id": "8Dnjn8uuadijDijS6YqNrC",
+      "space_name": "Shared Space Name",
+      "timestamp": 1706165208977
+    }
+  }
+}

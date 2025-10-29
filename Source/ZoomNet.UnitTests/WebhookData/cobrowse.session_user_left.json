@@ -1,0 +1,16 @@
+{
+  "event": "cobrowse.session_user_left",
+  "event_ts": 1743483350000,
+  "payload": {
+    "account_id": "TEODL21kRmehjRceRnyYqw",
+    "object": {
+      "session_id": "4567UVWxYZABCdEfGhiJkl==",
+      "user_connection_id": "Nlg8wgA0TFe3jT87CjQZqg",
+      "user_id": "YZ8uRj9zRf2yY5cshmzrTA",
+      "user_name": "exampleuser",
+      "role_type": "customer",
+      "leave_time": "2025-04-01T12:22:26Z",
+      "leave_reason": "Left the session"
+    }
+  }
+}

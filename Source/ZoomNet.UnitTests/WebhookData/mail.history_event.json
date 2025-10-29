@@ -1,0 +1,12 @@
+{
+  "event": "mail.history_event",
+  "event_ts": 1732336289348,
+  "payload": {
+    "account_id": "iZudq0ta9dafad",
+    "operator": "john.doe@example.com",
+    "object": {
+      "email": "john.doe@example.com",
+      "history_id": 347658
+    }
+  }
+}

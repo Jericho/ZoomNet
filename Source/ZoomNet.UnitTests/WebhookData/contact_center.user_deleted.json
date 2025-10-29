@@ -1,0 +1,15 @@
+{
+  "event": "contact_center.user_deleted",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "date_time_ms": "2023-03-01T00:00:00.987Z",
+      "users": [
+        {
+          "user_id": "IGTRVt3gQ2i-WjoUIjeZxw"
+        }
+      ]
+    }
+  }
+}

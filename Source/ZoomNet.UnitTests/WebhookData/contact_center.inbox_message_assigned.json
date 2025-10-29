@@ -1,0 +1,27 @@
+{
+  "event": "contact_center.inbox_message_assigned",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "engagement_id": "u154t5-ASlK83fZb1YWqgw",
+      "engagement_direction": "inbound",
+      "channel": "voice",
+      "cc_queue_id": "xqJE_cgERLyAJHYYL5LLeg",
+      "queue_name": "My Queue",
+      "flow_id": "ZWWC0A840C726C2CE3ACF01041CB8CFD8B9",
+      "flow_name": "My Flow",
+      "flow_number": "+18005550101",
+      "consumer_number": "+18005550100",
+      "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "user_display_name": "John Doe",
+      "previous_user_id": "KVTRVt3gQ2i-WjoUIjeZxk",
+      "previous_user_display_name": "Jane Doe",
+      "inbox_id": "szCyubr_aQhieHNWYbAGMYg",
+      "inbox_name": "My Inbox",
+      "message_id": "KGTRVt3gQ2i-WjoUIjewXq",
+      "assign_type": "Manual",
+      "date_time_ms": "2024-09-09T02:57:32.719Z"
+    }
+  }
+}

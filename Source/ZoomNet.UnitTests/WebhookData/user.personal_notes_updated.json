@@ -1,0 +1,16 @@
+{
+  "event": "user.personal_notes_updated",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "id": "abcD3ojfdbjfg",
+      "email": "jchill@example.com",
+      "date_time": "",
+      "personal_notes": "New note."
+    },
+    "old_object": {
+      "personal_notes": "Old note."
+    }
+  }
+}

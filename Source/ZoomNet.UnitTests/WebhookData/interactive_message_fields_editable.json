@@ -1,0 +1,50 @@
+{
+  "event": "interactive_message_fields_editable",
+  "event_ts": 1560891222018,
+  "payload": {
+    "accountId": "gVcjZnWWRLWvv_GtyGuaxg",
+    "channelName": "Jill Chill",
+    "fieldEditItem": {
+      "currentValue": "",
+      "key": "Title",
+      "newValue": "Software Engineer"
+    },
+    "messageId": "20190618205323327_EZjIqCQ_aw1",
+    "original": {
+      "head": {
+        "sub_head": {
+          "text": "I am a sub header"
+        },
+        "text": "I am a header"
+      },
+      "body": [
+        {
+          "type": "fields",
+          "items": [
+            {
+              "editable": true,
+              "value": " ",
+              "key": "Name"
+            },
+            {
+              "editable": true,
+              "value": " ",
+              "key": "Title"
+            },
+            {
+              "editable": false,
+              "value": "Example Company",
+              "key": "Company"
+            }
+          ]
+        }
+      ]
+    },
+    "robotJid": "v1m0yn1imztuogsxjje8fdew@example.com",
+    "timestamp": 1560891222018,
+    "toJid": "kdykjnimt4kpd8kkdqt9fq@example.com/robot_v1m0yn1imztuogsxjje8fdew@example.com",
+    "userId": "KdYKjnimT4KPd8KKdQt9FQ",
+    "userJid": "kdykjnimt4kpd8kkdqt9fq@example.com",
+    "userName": "Jill Chill"
+  }
+}

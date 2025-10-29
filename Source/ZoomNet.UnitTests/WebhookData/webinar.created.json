@@ -1,0 +1,40 @@
+{
+  "event": "webinar.created",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator": "admin@example.com",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "operation": "single",
+    "object": {
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "id": 1234567890,
+      "host_id": "x1yCzABCDEfg23HiJKl4mN",
+      "topic": "My Webinar",
+      "type": 9,
+      "start_time": "2021-07-13T21:44:51Z",
+      "duration": 60,
+      "timezone": "America/Los_Angeles",
+      "join_url": "https://example.com",
+      "password": "XYz@BC!D1087",
+      "creation_source": "open_api",
+      "occurrences": [
+        {
+          "occurrence_id": "ABCDE12345",
+          "start_time": "2021-07-13T21:44:51Z",
+          "duration": 60,
+          "status": "available"
+        }
+      ],
+      "settings": {
+        "use_pmi": true,
+        "alternative_hosts": "jchill@example.com"
+      },
+      "recurrence": {
+        "type": 1,
+        "repeat_interval": 2,
+        "end_times": 5
+      }
+    }
+  }
+}

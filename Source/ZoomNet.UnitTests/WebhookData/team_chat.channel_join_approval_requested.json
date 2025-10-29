@@ -1,0 +1,26 @@
+{
+  "event": "team_chat.channel_join_approval_requested",
+  "event_ts": 1705009616546,
+  "payload": {
+    "object": {
+      "organization": {
+        "org_id": "dsdsd",
+        "org_name": "dsdsd"
+      },
+      "channel": {
+        "channel_id": "C12345678",
+        "channel_name": "Test",
+        "type": 5
+      },
+      "requester": {
+        "user_id": "",
+        "display_name": "test",
+        "user_email": "",
+        "member_id": "1vRFhZt_2gipkB-SFKkOpnkhWpeSf1wiCPYdRWctkgMaE9NWn66sJouoz8opRcsg"
+      },
+      "type": "to_channel_admin",
+      "timestamp": 1705009616546,
+      "date_time": "2024-01-11T19:55:26Z"
+    }
+  }
+}

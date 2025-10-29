@@ -1,0 +1,14 @@
+{
+  "event": "session.started",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "id": "BrgGrWeZSwaXkLBTpvmmvg==",
+      "session_id": "4567UVWxYZABCdEfGhiJkl==",
+      "session_name": "My Session",
+      "session_key": "ABC36jaBI145",
+      "start_time": "2021-08-02T12:22:24Z"
+    }
+  }
+}

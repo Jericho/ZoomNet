@@ -1,0 +1,9 @@
+{
+  "event": "webinar.rtms_stopped",
+  "event_ts": 1626230691572,
+  "payload": {
+    "webinar_uuid": "4444AAAiAAAAAiAiAiiAii==",
+    "rtms_stream_id": "609340fb2a7946909659956c8aa9250c",
+    "stop_reason": 1
+  }
+}

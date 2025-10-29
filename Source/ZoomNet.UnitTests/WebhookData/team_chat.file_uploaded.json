@@ -1,0 +1,26 @@
+{
+  "event": "team_chat.file_uploaded",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator": "user@example.com",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "operator_member_id": "V0xKXVARQVmlXMYVbGoTEA",
+    "object": {
+      "files": [
+        {
+          "file_id": "6dfgdfgdg444447b0egga",
+          "file_name": "file1.txt",
+          "file_size": 21,
+          "OS_file_type": "TXT"
+        },
+        {
+          "file_id": "7dfgdfgdg444447b0egga",
+          "file_name": "file2.txt",
+          "file_size": 22,
+          "OS_file_type": "TXT"
+        }
+      ]
+    }
+  }
+}

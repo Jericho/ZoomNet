@@ -1,0 +1,12 @@
+{
+  "event": "revenue_accelerator.conversation_analysis_completed ",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "conversation_id": "abcD3ojfdbjfg",
+      "source": "ZOOM_MEETING",
+      "host_id": "Gtl2Ra0ASfO5wIzYPYceiA"
+    }
+  }
+}

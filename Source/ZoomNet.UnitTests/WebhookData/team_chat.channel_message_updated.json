@@ -1,0 +1,48 @@
+{
+  "event": "team_chat.channel_message_updated",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator": "user@example.com",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "operator_member_id": "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ",
+    "by_external_user": false,
+    "object": {
+      "files": [
+        {
+          "file_id": "56bed9orRnOSEnBoX_HQvA",
+          "file_name": "Screenshot 2023-12-22 at 11.21.38 AM.png",
+          "file_size": 23025,
+          "OS_file_type": "PNG",
+          "file_message_type": "image"
+        }
+      ],
+      "rich_text": [
+        {
+          "start_position": 13,
+          "end_position": 17,
+          "format_type": "Bold"
+        }
+      ],
+      "at_items": [
+        {
+          "at_contact": "jchill@example.com",
+          "at_contact_user_id": "xxxxxx",
+          "at_contact_member_id": "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ",
+          "at_type": 1,
+          "end_position": 11,
+          "start_position": 0
+        }
+      ],
+      "message_id": "508CD4CF-4FFD-4644-BFB2-264C5C5600D7",
+      "session_id": "abcdefghijklmnop12345",
+      "date_time": "2020-02-10T21:39:50Z",
+      "timestamp": 1581370790388,
+      "channel_id": "qrstuvwxyz67890",
+      "channel_owner_account_id": "lmnop12345abcdefghijk",
+      "channel_name": "Team Chat",
+      "message": "@Jill Chill, this is a test message",
+      "reply_main_message_id": "AC619306-3DB6-4918-A11F-DB9489BB814E"
+    }
+  }
+}

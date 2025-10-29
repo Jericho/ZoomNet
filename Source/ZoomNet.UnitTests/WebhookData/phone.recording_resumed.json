@@ -1,0 +1,24 @@
+{
+	"event": "phone.recording_resumed",
+	"event_ts": 1626230691572,
+	"payload": {
+		"account_id": "AAAAAABBBB",
+
+		"object": {
+			"id": "abcD3ojfdbjfg",
+			"user_id": "z8yCxjabcdEFGHfp8uQ",
+            "caller_number": "1026",
+            "callee_number": "1045",
+            "direction": "outbound",
+            "date_time": "2021-06-09T06:09:24Z",
+            "recording_type": "OnDemand",
+            "call_id": "6971672158469969953",
+            "owner" : {
+                "type" : "user",
+                "id" : "z8yCxjabcdEFGHfp8uQ",
+                "name" : "usersubsetting0001",
+                "extension_number": 6666
+            }
+		}
+	}
+}

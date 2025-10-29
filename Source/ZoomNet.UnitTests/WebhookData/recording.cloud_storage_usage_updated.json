@@ -1,0 +1,16 @@
+{
+  "event": "recording.cloud_storage_usage_updated",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "free_storage": "1.65 GB",
+      "plan_storage": "40 GB",
+      "plan_type": "cmr_monthly_commitment_40",
+      "storage_used": "1.65 GB",
+      "storage_used_percentage": 80,
+      "storage_exceed": "0",
+      "max_exceed_date": "2023-03-01"
+    }
+  }
+}

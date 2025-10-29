@@ -1,0 +1,16 @@
+{
+  "event": "recording.batch_trashed",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator": "admin@example.com",
+    "operator_id": "I7zp-pYbTl22Z29H796Ixg",
+    "operation": "trash_user_recordings",
+    "object": {
+      "meeting_uuids": [
+        "atsXxhSEQWit9t+U02HXNQ==",
+        "3KvSP3SHRvyalrGRqZ5+2w=="
+      ]
+    }
+  }
+}

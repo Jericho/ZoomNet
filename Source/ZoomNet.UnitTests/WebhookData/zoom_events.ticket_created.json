@@ -1,0 +1,17 @@
+{
+  "event": "zoom_events.ticket_created",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "event_id": "djsjgkjhfhk",
+      "host_id": "z8yCxjabcdEFGHfp8uQ",
+      "ticket_id": "iso9Dllddp39dagjLj9j",
+      "ticket_type_id": "pfalaof9s83lsLJD9u2d",
+      "external_ticket_id": "abc1231245-adf",
+      "ticket_role_type": "normal",
+      "email": "email@zoom.us",
+      "authentication_method": "no_auth"
+    }
+  }
+}

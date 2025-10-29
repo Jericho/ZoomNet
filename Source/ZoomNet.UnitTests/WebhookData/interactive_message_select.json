@@ -1,0 +1,48 @@
+{
+  "event": "interactive_message_select",
+  "event_ts": 1560891284464,
+  "payload": {
+    "accountId": "gVcjZnWWRLWvv_GtyGuaxg",
+    "channelName": "Jill Chill",
+    "messageId": "20190618205440879_sRHVqf4_aw1",
+    "original": {
+      "head": {
+        "sub_head": {
+          "text": "I am a sub header"
+        },
+        "text": "I am a header"
+      },
+      "body": [
+        {
+          "select_items": [
+            {
+              "text": "Lions",
+              "value": "lions"
+            },
+            {
+              "text": "Tigers",
+              "value": "tigers"
+            },
+            {
+              "text": "Bears",
+              "value": "bears"
+            }
+          ],
+          "text": "Animals",
+          "type": "select"
+        }
+      ]
+    },
+    "robotJid": "v1m0yn1imztuogsxjje8fdew@example.com",
+    "selectedItems": [
+      {
+        "value": "lions"
+      }
+    ],
+    "timestamp": 1560891284464,
+    "toJid": "kdykjnimt4kpd8kkdqt9fq@example.com/robot_v1m0yn1imztuogsxjje8fdew@example.com",
+    "userId": "KdYKjnimT4KPd8KKdQt9FQ",
+    "userJid": "kdykjnimt4kpd8kkdqt9fq@example.com",
+    "userName": "Jill Chill"
+  }
+}

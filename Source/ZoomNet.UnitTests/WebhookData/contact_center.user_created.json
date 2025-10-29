@@ -1,0 +1,27 @@
+{
+  "event": "contact_center.user_created",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "display_name": "John Doe",
+      "user_email": "johndoe@example.com",
+      "role_id": "27302393-4784-11ec-a3cd-122e3e29bb87",
+      "role_name": "Admin",
+      "client_integration": "Salesforce",
+      "status_id": "2",
+      "status_name": "Not Ready",
+      "user_access": "active",
+      "country_iso_code": "US",
+      "channel_settings": {
+        "multi_channel_engagements": {
+          "enable": true,
+          "max_agent_load": 50
+        },
+        "concurrent_message_capacity": 4
+      },
+      "date_time_ms": "2023-03-01T00:00:00.987Z"
+    }
+  }
+}

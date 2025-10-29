@@ -1,0 +1,18 @@
+{
+  "event": "user.created",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator": "admin@example.com",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "creation_type": "create",
+    "object": {
+      "id": "abcD3ojfdbjfg",
+      "first_name": "Jill",
+      "last_name": "Chill",
+      "display_name": "Jill Chill",
+      "email": "jchill@example.com",
+      "type": 3
+    }
+  }
+}

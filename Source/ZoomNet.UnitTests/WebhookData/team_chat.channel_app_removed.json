@@ -1,0 +1,24 @@
+{
+  "event": "team_chat.channel_app_removed",
+  "payload": {
+    "operator_member_id": "1vAtyRzpld8hX3iJ2JbioUhpXjC2A6TW3UWYGocMh6d3rQTla3I0QFtX_CBZu2aA",
+    "account_id": "1SjvF2ujQWu7RhCnTwgT4A",
+    "operator": "xxxxxx@xxx.com",
+    "operator_id": "qF2_be_WRvum8buhfRv7_A",
+    "by_external_user": false,
+    "object": {
+      "channel_name": "test18",
+      "channel_id": "55feed8f37174c11ae4595b8223a932a",
+      "type": 5,
+      "date_time": "2023-12-27T00:54:44Z",
+      "timestamp": 1703638484590,
+      "app_members": [
+        {
+          "id": "v1initnyujsz-sk6c3q7cpxg",
+          "display_name": "test"
+        }
+      ]
+    }
+  },
+  "event_ts": 1703638484596
+}

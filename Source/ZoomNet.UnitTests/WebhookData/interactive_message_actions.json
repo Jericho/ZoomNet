@@ -1,0 +1,54 @@
+{
+  "event": "interactive_message_actions",
+  "event_ts": 1560891332219,
+  "payload": {
+    "accountId": "gVcjZnWWRLWvv_GtyGuaxg",
+    "actionItem": {
+      "text": "Add",
+      "value": "add"
+    },
+    "channelName": "Jill Chill",
+    "messageId": "20190618205516496_ynICmz8_aw1",
+    "original": {
+      "head": {
+        "sub_head": {
+          "text": "I am a sub header"
+        },
+        "text": "I am a header"
+      },
+      "body": [
+        {
+          "type": "actions",
+          "items": [
+            {
+              "style": "Primary",
+              "text": "Add",
+              "value": "add"
+            },
+            {
+              "style": "Default",
+              "text": "Update",
+              "value": "update"
+            },
+            {
+              "style": "Danger",
+              "text": "Delete",
+              "value": "delete"
+            },
+            {
+              "style": "Disabled",
+              "text": "Disabled",
+              "value": "disable"
+            }
+          ]
+        }
+      ]
+    },
+    "robotJid": "v1m0yn1imztuogsxjje8fdew@example.com",
+    "timestamp": 1560891332219,
+    "toJid": "kdykjnimt4kpd8kkdqt9fq@example.com/robot_v1m0yn1imztuogsxjje8fdew@example.com",
+    "userId": "KdYKjnimT4KPd8KKdQt9FQ",
+    "userJid": "kdykjnimt4kpd8kkdqt9fq@example.com",
+    "userName": "Jill Chill"
+  }
+}

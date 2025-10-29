@@ -1,0 +1,15 @@
+{
+  "event": "phone.recording_permanently_deleted",
+  "payload": {
+    "account_id": "Mt6sv4u0TAyPkwgsL2lxiA",
+    "object": {
+      "recordings": [
+        {
+          "id": "9a0887ca-da53-4c62-b32a-563789ef264e",
+          "call_id": "6954218111457544837"
+        }
+      ]
+    }
+  },
+  "event_ts": 1619155281301
+}

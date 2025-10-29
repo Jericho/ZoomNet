@@ -1,0 +1,16 @@
+{
+  "event": "workspace.user_unassigned",
+  "event_ts": 1707848572310,
+  "payload": {
+    "account_id": "VQYZ9ytmTbaXK9Zr2LvIrg",
+    "operator_id": "rZXNXVlVSTaSZDTJvLcBew",
+    "operator": "vic-devint@zoom.us",
+    "object": {
+      "workspace_id": "fqtckjhjhee89ruidvc2h6lc4g",
+      "workspace_name": "test change date - Desk1",
+      "account_id": "bhmIXpdYRcCK6BB3VhMq6w",
+      "user_id": "oyLyxW48QeC3uBBFY2CF3A",
+      "assign_type": "permanent"
+    }
+  }
+}

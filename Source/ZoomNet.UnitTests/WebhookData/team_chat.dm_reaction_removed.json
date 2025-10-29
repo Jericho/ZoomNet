@@ -1,0 +1,21 @@
+{
+  "event": "team_chat.dm_reaction_removed",
+  "payload": {
+    "operator_member_id": "1vRFhZt_2gipkB-SFKkOpnkhWpeSf1wiCPYdRWctkgMaE9NWn66sJouoz8opRcsg",
+    "account_id": "MMSB9iuRTACkjKlV5C2xuw",
+    "operator_id": "8AmQ0WOoQ1O3a84yYFc2xQ",
+    "by_external_user": false,
+    "operator": "test@zoom.us",
+    "object": {
+      "contact_member_id": "1vCFVGsqi_lo8BqWMfmP8hiRn9a37oxCCPYdRWctkgMaE9NWn66sJouoz8opRcsg",
+      "emoji": "test",
+      "emoji_time": 1703821653134,
+      "msg_time": "2023-12-29T03:47:09Z",
+      "msg_id": "33D478F2-108C-41AA-AB2E-E96535AB4C1C",
+      "contact_id": "TlrtEHSyQA-fi-RBu2qKEw",
+      "contact_email": "test@gmail.com",
+      "timestamp": 1703821653134
+    }
+  },
+  "event_ts": 1703821653135
+}

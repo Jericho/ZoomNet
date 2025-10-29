@@ -1,0 +1,28 @@
+{
+  "event": "webinar.sharing_ended",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "id": "1234567890",
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "host_id": "x1yCzABCDEfg23HiJKl4mN",
+      "topic": "My Webinar",
+      "type": 9,
+      "start_time": "2021-07-13T21:44:51Z",
+      "timezone": "America/Los_Angeles",
+      "duration": 60,
+      "participant": {
+        "user_id": "ABCDE12345",
+        "user_name": "JillChill",
+        "sharing_details": {
+          "content": "application",
+          "link_source": "in_meeting",
+          "file_link": "",
+          "date_time": "2021-07-13T21:56:00Z",
+          "source": "dropbox"
+        }
+      }
+    }
+  }
+}

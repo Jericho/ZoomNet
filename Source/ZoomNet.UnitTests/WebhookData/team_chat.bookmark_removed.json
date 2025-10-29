@@ -1,0 +1,54 @@
+{
+  "event": "team_chat.bookmark_removed",
+  "event_ts": 1581370790388,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "operator": "user@example.com",
+    "operator_member_id": "v4ZZWT1LTfy8QvPG4GTvdgLTfy8QvG4GTWT1LTfy8QvPG4AAAA",
+    "object": {
+      "type": "to_channel",
+      "channel_id": "6dfgdfgdg444447b0egga",
+      "message_id": "BFECE135-6A19-4282-9310-5975675DE6EE",
+      "message": "Daily Standup Meeting Agenda:\
+What did you do yesterday?\
+What will you do today?\
+What blockers stand in your way?\
+Here’s a daily stand-up template to get you started.",
+      "message_timestamp": 1571370790388,
+      "sender": "user2@example.com",
+      "sender_id": "bCdMPUWARRWWHL6Cn27tgg",
+      "sender_member_id": "v4iyWT1LTfy8QvPG4GTvdgLTfy8QvG4GTWT1LTfy8QvPG5ZZZZ",
+      "by_external_user": false,
+      "date_time": "2020-02-10T21:39:50Z",
+      "timestamp": 1581370790388,
+      "rich_text": [
+        {
+          "start_position": 0,
+          "end_position": 27,
+          "format_type": "Bold"
+        },
+        {
+          "start_position": 30,
+          "end_position": 113,
+          "format_type": "BulletedList"
+        },
+        {
+          "start_position": 123,
+          "end_position": 145,
+          "format_type": "AddLink",
+          "format_attr": "https://www.example.com/templates/daily-stand-up"
+        }
+      ],
+      "files": [
+        {
+          "file_id": "PhpAGf6NS5-8GmhMQvd5xw",
+          "file_name": "slides.pdf",
+          "file_size": 597108,
+          "OS_file_type": "PDF",
+          "file_message_type": "file"
+        }
+      ]
+    }
+  }
+}

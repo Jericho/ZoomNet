@@ -1,0 +1,37 @@
+{
+  "event": "user.tsp_updated",
+  "event_ts": 1234566789900,
+  "payload": {
+    "account_id": "Mtgfdgfgd2lxiA",
+    "operator": "admin@example.com",
+    "operator_id": "DYdgdg64567g8w",
+    "object": {
+      "id": "DYbbbbf7dPkkg8w",
+      "email": "jchill@example.com",
+      "tsp_credentials": {
+        "conference_code": "0125",
+        "leader_pin": "11189898",
+        "dial_in_numbers": [
+          {
+            "code": "1",
+            "number": "+1 1000200200",
+            "type": "tollfree"
+          }
+        ],
+        "tsp_bridge": "US_TSP_TB"
+      }
+    },
+    "old_object": {
+      "conference_code": "0130",
+      "leader_pin": "11188124",
+      "dial_in_numbers": [
+        {
+          "code": "2",
+          "number": "+355 18899996875",
+          "type": "toll"
+        }
+      ],
+      "tsp_bridge": ""
+    }
+  }
+}

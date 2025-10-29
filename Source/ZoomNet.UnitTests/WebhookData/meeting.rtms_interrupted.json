@@ -1,0 +1,8 @@
+{
+  "event": "meeting.rtms_interrupted",
+  "event_ts": 1626230691572,
+  "payload": {
+    "meeting_uuid": "4444AAAiAAAAAiAiAiiAii==",
+    "rtms_stream_id": "609340fb2a7946909659956c8aa9250c"
+  }
+}

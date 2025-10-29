@@ -1,0 +1,16 @@
+{
+  "event": "bot_notification",
+  "event_ts": 1560796234686,
+  "payload": {
+      "accountId": "asgVcjZnWWRLWvv_GtyGuaxg",
+      "channelName": "Photos",
+      "cmd": "island",
+      "name": "Unsplash",
+      "robotJid": "v10r4uxexurcasg-pwh8hyh7sg@example.com",
+      "timestamp": 1560796234686,
+      "toJid": "b1c841dc7b0b4as69287e6be05c7f93f25@conference.example.com",
+      "userId": "KdYKjnimT4asKPd8KKdQt9FQ",
+      "userJid": "kdykjnimtas4kpd8kkdqt9fq@example.com",
+      "userName": "Jill Chill"
+      }
+}

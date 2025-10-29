@@ -1,0 +1,18 @@
+{
+  "event": "user.updated",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator": "admin@example.com",
+    "operator_id": "eUblMKLnTMKX0pVvNAlA0Q",
+    "time_stamp": 1626230691572,
+    "old_object": {
+      "email": "xxxxxx.old@zoom.us",
+      "id": "abcD3ojfdbjfg"
+    },
+    "object": {
+      "email": "xxxxxx@zoom.us",
+      "id": "eUblMKLnTMKX0pVvNAlA0Q"
+    }
+  }
+}

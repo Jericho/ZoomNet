@@ -1,0 +1,22 @@
+{
+  "event": "session.user_left",
+  "event_ts": 1626473951859,
+  "payload": {
+    "account_id": "EFgHiJABC000DEfGHI",
+    "object": {
+      "id": "4567UVWxYZABCdEfGhiJkl==",
+      "session_id": "4567UVWxYZABCdEfGhiJkl==",
+      "session_name": "My Session",
+      "session_key": "ABC36jaBI145",
+      "user": {
+        "id": "25508864",
+        "name": "example",
+        "leave_time": "2021-07-16T17:19:11Z",
+        "leave_reason": "Jill Chill left the session.<br>Reason: Host ended the session.",
+        "user_key": "ASD74dfDI854",
+        "phone_number": "8615250064084",
+        "participant_uuid": "55555AAAiAAAAAiAiAiiAii"
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "event": "visitor_management.invitation_updated",
+  "event_ts": "290112312321",
+  "payload": {
+    "account_id": "ajdkd-qBPgsxg",
+    "operator": "admin@example.com",
+    "operator_id": "I7zp-pYbTl22Z29H796Ixg",
+    "object": {
+      "invitation_id": "fqtckjhjhee89ruidvc2h6lc4g",
+      "visitor_email": "visitor@example.com",
+      "visitor_name": "visitor",
+      "start_time": 1710153000000,
+      "end_time": 1710172799999,
+      "invite_location_id": "wnFFoWRwTLeww81UuAeW4g",
+      "host_id": "I7zp-pYbTl22Z29H796Ixg",
+      "host_name": "admin",
+      "host_email": "admin@example.com"
+    }
+  }
+}

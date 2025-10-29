@@ -1,0 +1,35 @@
+{
+  "event": "phone.account_settings_updated",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "Mt6sv4u0TAyPkwgsL2lxiA",
+    "object": {
+      "id": "eUblMKLnTMKX0pVvNAlA0Q",
+      "settings": {
+        "call_live_transcription": {
+          "enable": true,
+          "locked": false,
+          "transcription_start_prompt": {
+            "enable": false,
+            "audio_id": "_rG7uKlJRAWn-013nTD1bA",
+            "audio_name": "hello1.mp3"
+          }
+        }
+      }
+    },
+    "old_object": {
+      "id": "eUblMKLnTMKX0pVvNAlA0Q",
+      "settings": {
+        "call_live_transcription": {
+          "enable": true,
+          "locked": false,
+          "transcription_start_prompt": {
+            "enable": false,
+            "audio_id": "tB-zbQ_WTIeYHFT7A9hPvw",
+            "audio_name": "congrats.mp3"
+          }
+        }
+      }
+    }
+  }
+}

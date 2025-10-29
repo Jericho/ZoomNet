@@ -1,0 +1,12 @@
+{
+  "event": "calendar.event_create",
+  "event_ts": "1626230691572",
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator": "abc@zoom.com", // Who initiates the action.
+    "object": {
+      "resource_id": "abc@zoom.com", // Your resource ID.
+      "event_id": "y95rj3e0i54dbz8hstc2q5qoa1" // the event ID.
+    }
+  }
+}

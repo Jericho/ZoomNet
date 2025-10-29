@@ -1,0 +1,19 @@
+{
+	"event": "group.admin_deleted",
+	"event_ts": 1626230691572,
+	"payload": {
+		"account_id": "x1yCzABCDEfg23HiJKl4mN",
+		"operator": "admin@example.com",
+		"operator_id": "z8yCxjabcdEFGHfp8uQ",
+		"object": {
+			"id": "abcD3ojfdbjfg",
+			"admins": [
+				{
+					"id" : "qB1V0HKFQrGODVhJmqUEQw",
+					"email" : "jchill@example.com"
+				}
+			]
+		},
+		"time_stamp": 1626230691572
+	}
+}

@@ -1,0 +1,16 @@
+{
+  "event": "contact_center.engagement_ended",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "engagement_id": "u154t5-ASlK83fZb1YWqgw",
+      "engagement_direction": "inbound",
+      "channel": "video",
+      "channel_source": "in_app_video",
+      "flow_id": "ZWWC0A840C726C2CE3ACF01041CB8CFD8B9",
+      "flow_name": "My Flow",
+      "date_time_ms": "2023-05-01T09:27:15.987Z"
+    }
+  }
+}

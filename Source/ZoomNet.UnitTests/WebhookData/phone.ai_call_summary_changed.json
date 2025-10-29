@@ -1,0 +1,20 @@
+{
+  "event": "phone.ai_call_summary_changed",
+  "payload": {
+    "account_id": "89gnHJQ9SdSmFpI9wmh6fQ",
+    "object": {
+      "edited": true,
+      "deleted": false,
+      "ai_call_summary_id": "iNsfqK6gQOCiILiKhrlLqQ",
+      "user_id": "FvB3CRfOQUuhF1IOB176Tg",
+      "call_id": "066bd0dee0066150033",
+      "call_log_ids": [
+        "6afdf3e3-87e3-47d0-834c-6ee3598e3b96",
+        "6afdf3e3-87e3-47d0-834c-6ee3598e3b00"
+      ],
+      "created_time": "2023-10-08T16:12:04Z",
+      "modified_time": "2023-10-08T16:12:04Z"
+    }
+  },
+  "event_ts": 1724455515040
+}

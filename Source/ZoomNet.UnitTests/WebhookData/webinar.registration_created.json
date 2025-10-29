@@ -1,0 +1,55 @@
+{
+  "event": "webinar.registration_created",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "id": 1234567890,
+      "host_id": "x1yCzABCDEfg23HiJKl4mN",
+      "topic": "My Webinar",
+      "type": 9,
+      "start_time": "2021-07-13T21:44:51Z",
+      "duration": 60,
+      "timezone": "America/Los_Angeles",
+      "occurrences": [
+        {
+          "occurrence_id": "ABCDE12345",
+          "start_time": "2021-07-13T21:44:51Z"
+        }
+      ],
+      "registrant": {
+        "id": "iFxeBPYun6SAiWUzBcEkX",
+        "first_name": "Jill",
+        "last_name": "Chill",
+        "email": "jchill@example.com",
+        "address": "1800 Amphibious Blvd.",
+        "city": "Mountain View",
+        "country": "US",
+        "zip": "94045",
+        "state": "CA",
+        "phone": "5550100",
+        "industry": "Food",
+        "org": "Cooking Org",
+        "job_title": "Chef",
+        "purchasing_time_frame": "1-3 months",
+        "role_in_purchase_process": "Influencer",
+        "no_of_employees": "1-20",
+        "comments": "Looking forward to the Webinar",
+        "custom_questions": [
+          {
+            "title": "What do you hope to learn from this Webinar?",
+            "value": "Look forward to learning how you come up with new recipes and what other services you offer."
+          }
+        ],
+        "status": "approved",
+        "join_url": "https://example.com",
+        "tracking_source": {
+           "id": "5516482804110",
+           "source_name": "general",
+           "tracking_url": "https://example.com/webinar/register/5516482804110/WN_juM2BGyLQMyQ_ZrqiGRhLg"
+        }
+      }
+    }
+  }
+}

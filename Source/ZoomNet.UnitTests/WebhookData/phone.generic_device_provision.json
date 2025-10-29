@@ -1,0 +1,38 @@
+{
+  "event": "phone.generic_device_provision",
+  "payload": {
+    "account_id": "TQTvjT52Tmi_wrhASNNOEw",
+    "object": {
+      "id": "JOZmuJ30Spyrw-v9vUzIrA",
+      "display_name": "test_cap",
+      "device_type": "Other ",
+      "mac_address": "012345678912",
+      "site": {
+        "id": "8f71O6rWT8KFUGQmJIFAdQ",
+        "name": "Main Site"
+      },
+      "provision": {
+        "type": "manual",
+        "sip_accounts": [
+          {
+            "password": "4dL09r0H",
+            "sip_domain": "example.com",
+            "outbound_proxy": "example.com",
+            "secondary_outbound_proxy": "example.com",
+            "user_name": "83600015247557791369",
+            "authorization_id": "875586205903",
+            "shared_line": {
+              "line_subscription": {
+                "phone_number": "+12055433429",
+                "extension_number": 1040,
+                "display_name": "test_cap"
+              },
+              "outbound_caller_id": "+12055433429"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "event_ts": 1625034680324
+}

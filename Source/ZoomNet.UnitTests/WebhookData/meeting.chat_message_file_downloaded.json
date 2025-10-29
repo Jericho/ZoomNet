@@ -1,0 +1,21 @@
+{
+  "event": "meeting.chat_message_file_downloaded",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator": "user@example.com",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "object": {
+      "id": 1234567890,
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "host_account_id": "lmnop12345abcdefghijk",
+      "chat_message_file": {
+        "file_id": "MS17RDk0QTY3QUQtQkFGQy04QTJFLTI2RUEtNkYxQjRBRTU1MTk5fQ==",
+        "file_name": "example.jpg",
+        "file_owner_id": "rw3dIsBRTpOyMOJmeKgdaQ",
+        "file_size": 3966,
+        "file_type": "jpg"
+      }
+    }
+  }
+}

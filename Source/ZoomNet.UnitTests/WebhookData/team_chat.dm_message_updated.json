@@ -1,0 +1,39 @@
+{
+  "event": "team_chat.dm_message_updated",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator": "user@example.com",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "operator_member_id": "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ",
+    "by_external_user": false,
+    "object": {
+      "files": [
+        {
+          "file_id": "56bed9orRnOSEnBoX_HQvA",
+          "file_name": "Screenshot 2023-12-22 at 11.21.38 AM.png",
+          "file_size": 23025,
+          "OS_file_type": "PNG",
+          "file_message_type": "image"
+        }
+      ],
+      "rich_text": [
+        {
+          "start_position": 0,
+          "end_position": 10,
+          "format_type": "Bold"
+        }
+      ],
+      "message_id": "6dfgdfgdg444447b0egga",
+      "session_id": "abcdefghijklmnop12345",
+      "date_time": "2020-02-10T21:39:50Z",
+      "timestamp": 1581370790388,
+      "contact_email": "user2@example.com",
+      "contact_id": "Qc2q-ErlQRaTJAEtu_AV_A",
+      "contact_account_id ": "lmnop12345abcdefghijk",
+      "contact_member_id": "1vCVTt34UdDPaRg8NYyu7YMEEwu74ADW77aLnDON_C0wJiODRLI82vTwVruPu2LQ",
+      "message": "this is a test message.",
+      "reply_main_message_id": "AC619306-3DB6-4918-A11F-DB9489BB814E"
+    }
+  }
+}

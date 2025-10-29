@@ -1,0 +1,28 @@
+{
+  "event": "webinar.chat_message_file_sent",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "webinar_id": 1234567890,
+      "webinar_uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "chat_message_file": {
+        "date_time": "GMT20220110-072010",
+        "sender_session_id": "26219520",
+        "sender_name": "Jill Chill",
+        "sender_email": "dlp.user@example.com",
+        "sender_type": "host",
+        "recipient_session_id": "38681600",
+        "recipient_name": "John Smith",
+        "recipient_email": "guest.user@example",
+        "recipient_type": "guest",
+        "message_id": "MS17MDQ5NjE4QjYtRjk4Ny00REEwLUFBQUItMTg3QTY0RjU2MzhFfQ==",
+        "file_id": "MS17RDk0QTY3QUQtQkFGQy04QTJFLTI2RUEtNkYxQjRBRTU1MTk5fQ==",
+        "file_name": "example.jpg",
+        "file_size": 3966,
+        "file_type": "jpg",
+        "download_url": "https://file.zoomdev.us/file/hsdAXySKRe2KgS-0YNeSXg/attach/format/plain?decryptType=1&filename=example.jpg&jwt=eyJhbGciOiJIUzI1NiJ9.eyJkaWciOiI3Yzg5YzBhYjIzYmZmMjdjNzE3NTQ4YzdjMTc0Njk3MWYzYjNmNjFjMzU5OTliNjE1ZjdjMWJmMzc5YTJiZThlIiwiYXVkIjoiZmlsZSIsImlzcyI6ImNyb3NzZmlsZSIsImV4cCI6MTY0ODI2NDY5N30.2fQxw3F1cEhvFJmnE2zPOdkHnPeZUktv_P0M--e-Tg8&mode=play"
+      }
+    }
+  }
+}
