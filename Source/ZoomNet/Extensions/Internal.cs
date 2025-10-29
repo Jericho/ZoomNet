@@ -496,9 +496,9 @@ namespace ZoomNet
 			return !string.IsNullOrEmpty(value) && value.EndsWith(suffix) ? value : string.Concat(value, suffix);
 		}
 
-		internal static JsonElement? GetProperty(this JsonElement element, string name, bool throwIfMissing = true)
+		internal static JsonElement? GetProperty(this JsonElement element, string name, bool throwIfMissing = true, char splitChar = '/')
 		{
-			var parts = name.Split('/');
+			var parts = name.Split(splitChar);
 			if (!element.TryGetProperty(parts[0], out var property))
 			{
 				if (throwIfMissing) throw new ArgumentException($"Unable to find '{name}'", nameof(name));
