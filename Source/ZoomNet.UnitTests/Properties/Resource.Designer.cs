@@ -380,6 +380,233 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///	&quot;event&quot;: &quot;meeting.participant_phone_callout_accepted&quot;,
+        ///	&quot;event_ts&quot;: 1626230691572,
+        ///	&quot;payload&quot;: {
+        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///		&quot;object&quot;: {
+        ///			&quot;id&quot;: 713592696,
+        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///			&quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///			&quot;participant&quot;: {
+        ///				&quot;invitee_name&quot;: &quot;Jill Chill&quot;,
+        ///				&quot;phone_number&quot;: 1800000000
+        ///			}
+        ///		}
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string meeting_participant_phone_callout_accepted_webhook {
+            get {
+                return ResourceManager.GetString("meeting_participant_phone_callout_accepted_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///	&quot;event&quot;: &quot;meeting.participant_phone_callout_missed&quot;,
+        ///	&quot;event_ts&quot;: 1626230691572,
+        ///	&quot;payload&quot;: {
+        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///		&quot;object&quot;: {
+        ///			&quot;id&quot;: 713592696,
+        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///			&quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///			&quot;participant&quot;: {
+        ///				&quot;invitee_name&quot;: &quot;Jill Chill&quot;,
+        ///				&quot;phone_number&quot;: 1800000000
+        ///			}
+        ///		}
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string meeting_participant_phone_callout_missed_webhook {
+            get {
+                return ResourceManager.GetString("meeting_participant_phone_callout_missed_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///	&quot;event&quot;: &quot;meeting.participant_phone_callout_rejected&quot;,
+        ///	&quot;event_ts&quot;: 1626230691572,
+        ///	&quot;payload&quot;: {
+        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///		&quot;object&quot;: {
+        ///			&quot;id&quot;: 713592696,
+        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///			&quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///			&quot;participant&quot;: {
+        ///				&quot;invitee_name&quot;: &quot;Jill Chill&quot;,
+        ///				&quot;phone_number&quot;: 1800000000
+        ///			}
+        ///		}
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string meeting_participant_phone_callout_rejected_webhook {
+            get {
+                return ResourceManager.GetString("meeting_participant_phone_callout_rejected_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///	&quot;event&quot;: &quot;meeting.participant_phone_callout_ringing&quot;,
+        ///	&quot;event_ts&quot;: 1626230691572,
+        ///	&quot;payload&quot;: {
+        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///		&quot;object&quot;: {
+        ///			&quot;id&quot;: 713592696,
+        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///			&quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///			&quot;participant&quot;: {
+        ///				&quot;invitee_name&quot;: &quot;Jill Chill&quot;,
+        ///				&quot;phone_number&quot;: 1800000000
+        ///			}
+        ///		}
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string meeting_participant_phone_callout_ringing_webhook {
+            get {
+                return ResourceManager.GetString("meeting_participant_phone_callout_ringing_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///	&quot;event&quot;: &quot;meeting.participant_room_system_callout_accepted&quot;,
+        ///	&quot;event_ts&quot;: 1626230691572,
+        ///	&quot;payload&quot;: {
+        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///		&quot;object&quot;: {
+        ///			&quot;id&quot;: 713592696,
+        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///			&quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///			&quot;message_id&quot;: &quot;atsXxhSEQWit9t+U02HXNQ==&quot;,
+        ///			&quot;inviter_name&quot;: &quot;Jill Chill&quot;,
+        ///			&quot;participant&quot;: {
+        ///				&quot;call_type&quot;: &quot;h323&quot;,
+        ///				&quot;device_ip&quot;: &quot;10.100.111.237&quot;
+        ///			}
+        ///		}
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string meeting_participant_room_system_callout_accepted_webhook {
+            get {
+                return ResourceManager.GetString("meeting_participant_room_system_callout_accepted_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///	&quot;event&quot;: &quot;meeting.participant_room_system_callout_failed&quot;,
+        ///	&quot;event_ts&quot;: 1626230691572,
+        ///	&quot;payload&quot;: {
+        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///		&quot;object&quot;: {
+        ///			&quot;id&quot;: 713592696,
+        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///			&quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///			&quot;message_id&quot;: &quot;atsXxhSEQWit9t+U02HXNQ==&quot;,
+        ///			&quot;inviter_name&quot;: &quot;Jill Chill&quot;,
+        ///			&quot;reason_type&quot;: 1,
+        ///			&quot;participant&quot;: {
+        ///				&quot;call_type&quot;: &quot;h323&quot;,
+        ///				&quot;device_ip&quot;: &quot;10.100.111.237&quot;
+        ///			}
+        ///		}
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string meeting_participant_room_system_callout_failed_webhook {
+            get {
+                return ResourceManager.GetString("meeting_participant_room_system_callout_failed_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///	&quot;event&quot;: &quot;meeting.participant_room_system_callout_missed&quot;,
+        ///	&quot;event_ts&quot;: 1626230691572,
+        ///	&quot;payload&quot;: {
+        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///		&quot;object&quot;: {
+        ///			&quot;id&quot;: 713592696,
+        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///			&quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///			&quot;message_id&quot;: &quot;atsXxhSEQWit9t+U02HXNQ==&quot;,
+        ///			&quot;inviter_name&quot;: &quot;Jill Chill&quot;,
+        ///			&quot;participant&quot;: {
+        ///				&quot;call_type&quot;: &quot;h323&quot;,
+        ///				&quot;device_ip&quot;: &quot;10.100.111.237&quot;
+        ///			}
+        ///		}
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string meeting_participant_room_system_callout_missed_webhook {
+            get {
+                return ResourceManager.GetString("meeting_participant_room_system_callout_missed_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///	&quot;event&quot;: &quot;meeting.participant_room_system_callout_rejected&quot;,
+        ///	&quot;event_ts&quot;: 1626230691572,
+        ///	&quot;payload&quot;: {
+        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///		&quot;object&quot;: {
+        ///			&quot;id&quot;: 713592696,
+        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///			&quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///			&quot;message_id&quot;: &quot;atsXxhSEQWit9t+U02HXNQ==&quot;,
+        ///			&quot;inviter_name&quot;: &quot;Jill Chill&quot;,
+        ///			&quot;participant&quot;: {
+        ///				&quot;call_type&quot;: &quot;h323&quot;,
+        ///				&quot;device_ip&quot;: &quot;10.100.111.237&quot;
+        ///			}
+        ///		}
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string meeting_participant_room_system_callout_rejected_webhook {
+            get {
+                return ResourceManager.GetString("meeting_participant_room_system_callout_rejected_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///	&quot;event&quot;: &quot;meeting.participant_room_system_callout_ringing&quot;,
+        ///	&quot;event_ts&quot;: 1626230691572,
+        ///	&quot;payload&quot;: {
+        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///		&quot;object&quot;: {
+        ///			&quot;id&quot;: 713592696,
+        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///			&quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///			&quot;message_id&quot;: &quot;atsXxhSEQWit9t+U02HXNQ==&quot;,
+        ///			&quot;inviter_name&quot;: &quot;Jill Chill&quot;,
+        ///			&quot;participant&quot;: {
+        ///				&quot;call_type&quot;: &quot;h323&quot;,
+        ///				&quot;device_ip&quot;: &quot;10.100.111.237&quot;
+        ///			}
+        ///		}
+        ///	}
+        ///}.
+        /// </summary>
+        internal static string meeting_participant_room_system_callout_ringing_webhook {
+            get {
+                return ResourceManager.GetString("meeting_participant_room_system_callout_ringing_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///	&quot;event&quot;: &quot;meeting.sharing_started&quot;,
         ///	&quot;event_ts&quot;: 1234566789900,
         ///	&quot;payload&quot;: {

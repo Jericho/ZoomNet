@@ -1,0 +1,18 @@
+{
+	"event": "meeting.participant_room_system_callout_ringing",
+	"event_ts": 1626230691572,
+	"payload": {
+		"account_id": "dzVA4QmMQfyISoRcpFO8CA",
+		"object": {
+			"id": 713592696,
+			"uuid": "4444AAAiAAAAAiAiAiiAii==",
+			"host_id": "ICuPoX4ERtikRcKqkVxunQ",
+			"message_id": "atsXxhSEQWit9t+U02HXNQ==",
+			"inviter_name": "Jill Chill",
+			"participant": {
+				"call_type": "h323",
+				"device_ip": "10.100.111.237"
+			}
+		}
+	}
+}
