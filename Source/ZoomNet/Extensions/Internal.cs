@@ -1268,7 +1268,7 @@ namespace ZoomNet
 
 			foreach (var path in paths)
 			{
-				property = element.GetProperty(path, false);
+				property = element.GetProperty(path, false, splitChar);
 				if (property.HasValue) break;
 			}
 
