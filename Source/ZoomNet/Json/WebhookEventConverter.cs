@@ -420,7 +420,7 @@ namespace ZoomNet.Json
 					break;
 				case Models.Webhooks.EventType.MeetingAiCompanionAssetsDeleted:
 					var meetingAiCompanionAssetsDeleted = payloadJsonProperty.ToObject<MeetingAiCompanionAssetsDeletedEvent>(options);
-					meetingAiCompanionAssetsDeleted.DeletedAssets = payloadJsonProperty.GetProperty("object/ai_companion/deleted_assets", true).Value.ToObject<string[]>();
+					meetingAiCompanionAssetsDeleted.DeletedAssets = payloadJsonProperty.GetPropertyValue<string[]>("object/ai_companion/deleted_assets");
 					webHookEvent = meetingAiCompanionAssetsDeleted;
 					break;
 				case Models.Webhooks.EventType.MeetingAiCompanionStarted:
@@ -440,16 +440,16 @@ namespace ZoomNet.Json
 					break;
 				case Models.Webhooks.EventType.MeetingChatMessageFileDownloaded:
 					var meetingChatMessageFileDownloaded = payloadJsonProperty.ToObject<MeetingChatMessageFileDownloadedEvent>(options);
-					meetingChatMessageFileDownloaded.MeetingId = payloadJsonProperty.GetProperty("object/id", true).Value.ToObject<long>();
-					meetingChatMessageFileDownloaded.MeetingUuid = payloadJsonProperty.GetProperty("object/uuid", true).Value.ToObject<string>();
-					meetingChatMessageFileDownloaded.HostAccountId = payloadJsonProperty.GetProperty("object/host_account_id", true).Value.ToObject<string>();
+					meetingChatMessageFileDownloaded.MeetingId = payloadJsonProperty.GetPropertyValue<long>("object/id");
+					meetingChatMessageFileDownloaded.MeetingUuid = payloadJsonProperty.GetPropertyValue<string>("object/uuid");
+					meetingChatMessageFileDownloaded.HostAccountId = payloadJsonProperty.GetPropertyValue<string>("object/host_account_id");
 					meetingChatMessageFileDownloaded.File = payloadJsonProperty.GetProperty("object/chat_message_file", true).Value.ToObject<ChatMessageFile>();
 					webHookEvent = meetingChatMessageFileDownloaded;
 					break;
 				case Models.Webhooks.EventType.MeetingChatMessageFileSent:
 					var meetingChatMessageFileSent = payloadJsonProperty.ToObject<MeetingChatMessageFileSentEvent>(options);
-					meetingChatMessageFileSent.MeetingId = payloadJsonProperty.GetProperty("object/meeting_id", true).Value.ToObject<long>();
-					meetingChatMessageFileSent.MeetingUuid = payloadJsonProperty.GetProperty("object/meeting_uuid", true).Value.ToObject<string>();
+					meetingChatMessageFileSent.MeetingId = payloadJsonProperty.GetPropertyValue<long>("object/meeting_id");
+					meetingChatMessageFileSent.MeetingUuid = payloadJsonProperty.GetPropertyValue<string>("object/meeting_uuid");
 
 					// All properties are under the single node but we group some properties into separate objects.
 					JsonElement chatMessageFileElement = payloadJsonProperty.GetProperty("object/chat_message_file", true).Value;
@@ -462,8 +462,8 @@ namespace ZoomNet.Json
 					break;
 				case Models.Webhooks.EventType.MeetingChatMessageSent:
 					var meetingChatMessageSent = payloadJsonProperty.ToObject<MeetingChatMessageSentEvent>(options);
-					meetingChatMessageSent.MeetingId = payloadJsonProperty.GetProperty("object/id", true).Value.ToObject<long>();
-					meetingChatMessageSent.MeetingUuid = payloadJsonProperty.GetProperty("object/uuid", true).Value.ToObject<string>();
+					meetingChatMessageSent.MeetingId = payloadJsonProperty.GetPropertyValue<long>("object/id");
+					meetingChatMessageSent.MeetingUuid = payloadJsonProperty.GetPropertyValue<string>("object/uuid");
 
 					// All properties are under the single node but we group some properties into separate objects.
 					JsonElement chatMessageElement = payloadJsonProperty.GetProperty("object/chat_message", true).Value;
@@ -523,9 +523,9 @@ namespace ZoomNet.Json
 		{
 			return new ChatMessageParty
 			{
-				Name = payloadJsonProperty.GetProperty("sender_name", true).Value.ToObject<string>(),
+				Name = payloadJsonProperty.GetPropertyValue<string>("sender_name"),
 				Email = payloadJsonProperty.GetPropertyValue("sender_email", string.Empty),
-				SessionId = payloadJsonProperty.GetProperty("sender_session_id", true).Value.ToObject<string>(),
+				SessionId = payloadJsonProperty.GetPropertyValue<string>("sender_session_id"),
 				PartyType = payloadJsonProperty.GetProperty("sender_type", true).Value.ToObject<ChatMessagePartyType>(),
 			};
 		}
