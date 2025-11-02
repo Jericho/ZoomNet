@@ -526,7 +526,7 @@ namespace ZoomNet.Json
 				Name = payloadJsonProperty.GetProperty("sender_name", true).Value.ToObject<string>(),
 				Email = payloadJsonProperty.GetPropertyValue("sender_email", string.Empty),
 				SessionId = payloadJsonProperty.GetProperty("sender_session_id", true).Value.ToObject<string>(),
-				PartyType = payloadJsonProperty.GetProperty("sender_type", true).Value.ToObject<ChatMessagePartyType>()
+				PartyType = payloadJsonProperty.GetProperty("sender_type", true).Value.ToObject<ChatMessagePartyType>(),
 			};
 		}
 
@@ -541,7 +541,7 @@ namespace ZoomNet.Json
 				Name = payloadJsonProperty.GetPropertyValue("recipient_name", string.Empty),
 				Email = payloadJsonProperty.GetPropertyValue("recipient_email", string.Empty),
 				SessionId = payloadJsonProperty.GetPropertyValue("recipient_session_id", string.Empty),
-				PartyType = payloadJsonProperty.GetProperty("recipient_type", true).Value.ToObject<ChatMessagePartyType>()
+				PartyType = payloadJsonProperty.GetProperty("recipient_type", true).Value.ToObject<ChatMessagePartyType>(),
 			};
 		}
 	}

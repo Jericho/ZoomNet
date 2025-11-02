@@ -12,7 +12,7 @@ namespace ZoomNet.Models
 		/// Gets or sets the meeting id.
 		/// </summary>
 		[JsonPropertyName("meeting_id")]
-		public long Id { get;set; }
+		public long Id { get; set; }
 
 		/// <summary>
 		/// Gets or sets the unique meeting id.

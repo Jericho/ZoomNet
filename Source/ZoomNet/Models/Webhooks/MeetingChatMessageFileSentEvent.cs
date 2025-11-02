@@ -36,7 +36,7 @@ namespace ZoomNet.Models.Webhooks
 		/// <summary>
 		/// Gets or sets the chat message file sender.
 		/// </summary>
-		public ChatMessageParty Sender { get;set; }
+		public ChatMessageParty Sender { get; set; }
 
 		/// <summary>
 		/// Gets or sets the chat message file recipient.
