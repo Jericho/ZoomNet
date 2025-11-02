@@ -1,6 +1,6 @@
 {
   "event": "meeting.ai_companion_assets_deleted",
-  "event_ts": 1726155000123,
+  "event_ts": 1726142087123,
   "payload": {
     "account_id": "dzVA4QmMQfyISoRcpFO8CA",
     "object": {

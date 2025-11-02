@@ -1,12 +1,12 @@
 {
   "event": "meeting.ai_companion_started",
-  "event_ts": 1725264900000,
+  "event_ts": 1726142087123,
   "payload": {
-    "account_id": "a1B2c3D4E5f6G7h8I9J0",
+    "account_id": "dzVA4QmMQfyISoRcpFO8CA",
     "object": {
-      "meeting_number": 98273645123,
-      "meeting_uuid": "cXYlohsHRtCd4ii1uC2+hA==",
-      "host_id": "12R7kT7bTIKSNUFEuH_Qlg",
+      "meeting_number": 97763643886,
+      "meeting_uuid": "aDYlohsHRtCd4ii1uC2+hA==",
+      "host_id": "30R7kT7bTIKSNUFEuH_Qlg",
       "ai_companion": {
         "questions": true
       }
