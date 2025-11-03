@@ -443,7 +443,7 @@ namespace ZoomNet.Json
 					meetingChatMessageFileDownloaded.MeetingId = payloadJsonProperty.GetPropertyValue<long>("object/id");
 					meetingChatMessageFileDownloaded.MeetingUuid = payloadJsonProperty.GetPropertyValue<string>("object/uuid");
 					meetingChatMessageFileDownloaded.HostAccountId = payloadJsonProperty.GetPropertyValue<string>("object/host_account_id");
-					meetingChatMessageFileDownloaded.File = payloadJsonProperty.GetProperty("object/chat_message_file", true).Value.ToObject<ChatMessageFile>();
+					meetingChatMessageFileDownloaded.File = payloadJsonProperty.GetPropertyValue<ChatMessageFile>("object/chat_message_file");
 					webHookEvent = meetingChatMessageFileDownloaded;
 					break;
 				case Models.Webhooks.EventType.MeetingChatMessageFileSent:
@@ -526,7 +526,7 @@ namespace ZoomNet.Json
 				Name = payloadJsonProperty.GetPropertyValue<string>("sender_name"),
 				Email = payloadJsonProperty.GetPropertyValue("sender_email", string.Empty),
 				SessionId = payloadJsonProperty.GetPropertyValue<string>("sender_session_id"),
-				PartyType = payloadJsonProperty.GetProperty("sender_type", true).Value.ToObject<ChatMessagePartyType>(),
+				PartyType = payloadJsonProperty.GetPropertyValue<ChatMessagePartyType>("sender_type"),
 			};
 		}
 
@@ -541,7 +541,7 @@ namespace ZoomNet.Json
 				Name = payloadJsonProperty.GetPropertyValue("recipient_name", string.Empty),
 				Email = payloadJsonProperty.GetPropertyValue("recipient_email", string.Empty),
 				SessionId = payloadJsonProperty.GetPropertyValue("recipient_session_id", string.Empty),
-				PartyType = payloadJsonProperty.GetProperty("recipient_type", true).Value.ToObject<ChatMessagePartyType>(),
+				PartyType = payloadJsonProperty.GetPropertyValue<ChatMessagePartyType>("recipient_type"),
 			};
 		}
 	}
