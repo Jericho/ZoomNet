@@ -1280,6 +1280,11 @@ namespace ZoomNet
 
 			var typeOfT = typeof(T);
 
+			if (typeOfT.Namespace == "ZoomNet.Models")
+			{
+				return property.Value.ToObject<T>();
+			}
+
 			if (typeOfT.IsEnum)
 			{
 				return property.Value.ValueKind switch
