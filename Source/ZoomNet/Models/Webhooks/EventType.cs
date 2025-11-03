@@ -407,5 +407,47 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "meeting.participant_room_system_callout_ringing")]
 		MeetingParticipantRoomSystemCalloutRinging,
+
+		/// <summary>
+		/// AI companion meeting assets (transcripts and summaries) have been deleted during a live meeting.
+		/// </summary>
+		[EnumMember(Value = "meeting.ai_companion_assets_deleted")]
+		MeetingAiCompanionAssetsDeleted,
+
+		/// <summary>
+		/// A user has started AI companion during a live meeting.
+		/// </summary>
+		[EnumMember(Value = "meeting.ai_companion_started")]
+		MeetingAiCompanionStarted,
+
+		/// <summary>
+		/// A user has stopped AI companion during a live meeting.
+		/// </summary>
+		[EnumMember(Value = "meeting.ai_companion_stopped")]
+		MeetingAiCompanionStopped,
+
+		/// <summary>
+		/// AI companion has completed the meeting transcript after a meeting or webinar has ended.
+		/// </summary>
+		[EnumMember(Value = "meeting.aic_transcript_completed")]
+		MeetingAicTranscriptCompleted,
+
+		/// <summary>
+		/// A meeting's message file is downloaded.
+		/// </summary>
+		[EnumMember(Value = "meeting.chat_message_file_downloaded")]
+		MeetingChatMessageFileDownloaded,
+
+		/// <summary>
+		/// A meeting's message file is available to view or download.
+		/// </summary>
+		[EnumMember(Value = "meeting.chat_message_file_sent")]
+		MeetingChatMessageFileSent,
+
+		/// <summary>
+		/// A user has sent a public or private chat message during a meeting using the in-meeting Zoom chat feature.
+		/// </summary>
+		[EnumMember(Value = "meeting.chat_message_sent")]
+		MeetingChatMessageSent,
 	}
 }

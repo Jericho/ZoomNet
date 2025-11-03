@@ -7,7 +7,7 @@
       "meeting_id": 1234567890,
       "meeting_uuid": "4444AAAiAAAAAiAiAiiAii==",
       "chat_message_file": {
-        "date_time": "GMT20220110-072010",
+        "date_time": "2022-01-10T07:20:10Z",
         "sender_session_id": "26219520",
         "sender_name": "Jill Chill",
         "sender_email": "dlp.user@example.com",
@@ -21,7 +21,7 @@
         "file_name": "example.jpg",
         "file_size": 3966,
         "file_type": "jpg",
-        "download_url": "https://file.zoomdev.us/file/hsdAXySKRe2KgS-0YNeSXg/attach/format/plain?decryptType=1&filename=example.jpg&jwt=eyJhbGciOiJIUzI1NiJ9.eyJkaWciOiI3Yzg5YzBhYjIzYmZmMjdjNzE3NTQ4YzdjMTc0Njk3MWYzYjNmNjFjMzU5OTliNjE1ZjdjMWJmMzc5YTJiZThlIiwiYXVkIjoiZmlsZSIsImlzcyI6ImNyb3NzZmlsZSIsImV4cCI6MTY0ODI2NDY5N30.2fQxw3F1cEhvFJmnE2zPOdkHnPeZUktv_P0M--e-Tg8&mode=play"
+        "download_url": "https://file.zoomdev.us/file/hsdAXySKRe2KgS-0YNeSXg"
       }
     }
   }

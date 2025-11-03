@@ -656,6 +656,126 @@ namespace ZoomNet.UnitTests
 			VerifyMeetingParticipantRoomSystemCalloutEvent(parsedEvent);
 		}
 
+		[Fact]
+		public void MeetingAiCompanionAssetsDeleted()
+		{
+			var parsedEvent = ParseWebhookEvent<MeetingAiCompanionAssetsDeletedEvent>(Resource.meeting_ai_companion_assets_deleted_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingAiCompanionAssetsDeleted);
+
+			VerifyMeetingAiCompanionEvent(parsedEvent);
+
+			parsedEvent.DeletedAssets.ShouldNotBeNull();
+			parsedEvent.DeletedAssets.Length.ShouldBe(1);
+			parsedEvent.DeletedAssets[0].ShouldBe("transcripts");
+		}
+
+		[Fact]
+		public void MeetingAiCompanionStarted()
+		{
+			var parsedEvent = ParseWebhookEvent<MeetingAiCompanionStartedEvent>(Resource.meeting_ai_companion_started_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingAiCompanionStarted);
+
+			VerifyMeetingAiCompanionEvent(parsedEvent);
+
+			parsedEvent.Questions.ShouldBe(true);
+			parsedEvent.Summary.ShouldBe(false);
+		}
+
+		[Fact]
+		public void MeetingAiCompanionStopped()
+		{
+			var parsedEvent = ParseWebhookEvent<MeetingAiCompanionStoppedEvent>(Resource.meeting_ai_companion_stopped_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingAiCompanionStopped);
+
+			VerifyMeetingAiCompanionEvent(parsedEvent);
+
+			parsedEvent.Questions.ShouldBe(false);
+			parsedEvent.Summary.ShouldBe(true);
+		}
+
+		[Fact]
+		public void MeetingAicTranscriptCompleted()
+		{
+			var parsedEvent = ParseWebhookEvent<MeetingAicTranscriptCompletedEvent>(Resource.meeting_aic_transcript_completed_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingAicTranscriptCompleted);
+
+			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
+			parsedEvent.AccountId.ShouldBe("dzVA4QmMQfyISoRcpFO8CA");
+
+			parsedEvent.MeetingTranscript.ShouldNotBeNull();
+			parsedEvent.MeetingTranscript.Id.ShouldBe(97763643886);
+			parsedEvent.MeetingTranscript.Uuid.ShouldBe("aDYlohsHRtCd4ii1uC2+hA==");
+			parsedEvent.MeetingTranscript.HostId.ShouldBe("30R7kT7bTIKSNUFEuH_Qlg");
+			parsedEvent.MeetingTranscript.Topic.ShouldBe("My Meeting");
+			parsedEvent.MeetingTranscript.StartTime.ShouldBe(new DateTime(2019, 7, 15, 23, 24, 52, DateTimeKind.Utc));
+			parsedEvent.MeetingTranscript.FileId.ShouldBe("97F060CE-B123-4A57-A9E1-CC241BC1C555");
+			parsedEvent.MeetingTranscript.AttachType.ShouldBe("durable_transcript");
+		}
+
+		[Fact]
+		public void MeetingChatMessageFileDownloaded()
+		{
+			var parsedEvent = ParseWebhookEvent<MeetingChatMessageFileDownloadedEvent>(Resource.meeting_chat_message_file_downloaded_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingChatMessageFileDownloaded);
+
+			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
+			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
+			parsedEvent.Operator.ShouldBe("user@example.com");
+			parsedEvent.OperatorId.ShouldBe("z8yCxjabcdEFGHfp8uQ");
+			parsedEvent.MeetingId.ShouldBe(1234567890);
+			parsedEvent.MeetingUuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
+			parsedEvent.HostAccountId.ShouldBe("lmnop12345abcdefghijk");
+
+			VerifyChatMessageFile(parsedEvent.File, "rw3dIsBRTpOyMOJmeKgdaQ", null);
+		}
+
+		[Fact]
+		public void MeetingChatMessageFileSent()
+		{
+			var parsedEvent = ParseWebhookEvent<MeetingChatMessageFileSentEvent>(Resource.meeting_chat_message_file_sent_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingChatMessageFileSent);
+
+			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
+			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
+			parsedEvent.MeetingId.ShouldBe(1234567890);
+			parsedEvent.MeetingUuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
+
+			VerifyChatMessageFile(parsedEvent.File, null, "https://file.zoomdev.us/file/hsdAXySKRe2KgS-0YNeSXg");
+			VerifyWebhookChatMessage(parsedEvent.Message, null, null);
+			VerifyChatMessageSender(parsedEvent.Sender);
+			VerifyChatMessageRecipient(parsedEvent.Recipient);
+		}
+
+		[Fact]
+		public void MeetingChatMessageSent()
+		{
+			var parsedEvent = ParseWebhookEvent<MeetingChatMessageSentEvent>(Resource.meeting_chat_message_sent_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingChatMessageSent);
+
+			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
+			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
+			parsedEvent.MeetingId.ShouldBe(1234567890);
+			parsedEvent.MeetingUuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
+
+			VerifyWebhookChatMessage(
+				parsedEvent.Message,
+				"This is a test message",
+				new[]
+				{
+					"MS17RDk0QTY3QUQtQkFGQy04QTJFLTI2RUEtNkYxQjRBRTU1MTk5fQ==",
+					"MS17NDQ0OEU5MjMtM0JFOS1CMDA1LTQ0NDAtQjdGOTU0Rjk5MTkyfQ=="
+				});
+			VerifyChatMessageSender(parsedEvent.Sender);
+			VerifyChatMessageRecipient(parsedEvent.Recipient);
+		}
+
 		#endregion
 
 		#region private methods
@@ -749,6 +869,79 @@ namespace ZoomNet.UnitTests
 			parsedEvent.Participant.ShouldNotBeNull();
 			parsedEvent.Participant.CallType.ShouldBe("h323");
 			parsedEvent.Participant.DeviceIp.ShouldBe("10.100.111.237");
+		}
+
+		/// <summary>
+		/// Verify <see cref="MeetingAiCompanionEvent"/> properties.
+		/// </summary>
+		private static void VerifyMeetingAiCompanionEvent(MeetingAiCompanionEvent parsedEvent)
+		{
+			parsedEvent.Timestamp.ShouldBe(1726142087123.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
+			parsedEvent.AccountId.ShouldBe("dzVA4QmMQfyISoRcpFO8CA");
+
+			parsedEvent.Meeting.ShouldNotBeNull();
+			parsedEvent.Meeting.Id.ShouldBe(97763643886);
+			parsedEvent.Meeting.Uuid.ShouldBe("aDYlohsHRtCd4ii1uC2+hA==");
+			parsedEvent.Meeting.HostId.ShouldBe("30R7kT7bTIKSNUFEuH_Qlg");
+		}
+
+		/// <summary>
+		/// Verify <see cref="ChatMessageFile"/> properties.
+		/// </summary>
+		private static void VerifyChatMessageFile(ChatMessageFile chatMessageFile, string ownerId, string downloadUrl)
+		{
+			chatMessageFile.ShouldNotBeNull();
+			chatMessageFile.Id.ShouldBe("MS17RDk0QTY3QUQtQkFGQy04QTJFLTI2RUEtNkYxQjRBRTU1MTk5fQ==");
+			chatMessageFile.Name.ShouldBe("example.jpg");
+			chatMessageFile.OwnerId.ShouldBe(ownerId);
+			chatMessageFile.Size.ShouldBe(3966);
+			chatMessageFile.Type.ShouldBe("jpg");
+			chatMessageFile.DownloadUrl.ShouldBe(downloadUrl);
+		}
+
+		/// <summary>
+		/// Verify <see cref="WebhookChatMessage"/> properties.
+		/// </summary>
+		private static void VerifyWebhookChatMessage(WebhookChatMessage chatMessage, string content, string[] fileIds)
+		{
+			chatMessage.ShouldNotBeNull();
+			chatMessage.Id.ShouldBe("MS17MDQ5NjE4QjYtRjk4Ny00REEwLUFBQUItMTg3QTY0RjU2MzhFfQ==");
+			chatMessage.Timestamp.ShouldBe(new DateTime(2022, 1, 10, 7, 20, 10, DateTimeKind.Utc));
+			chatMessage.Content.ShouldBe(content);
+
+			if (fileIds == null)
+			{
+				chatMessage.FileIds.ShouldBeNull();
+			}
+			else
+			{
+				chatMessage.FileIds.Length.ShouldBe(fileIds.Length);
+				chatMessage.FileIds.ShouldBeSubsetOf(fileIds);
+			}
+		}
+
+		/// <summary>
+		/// Verify chat message sender properties.
+		/// </summary>
+		private static void VerifyChatMessageSender(ChatMessageParty chatMessageParty)
+		{
+			chatMessageParty.ShouldNotBeNull();
+			chatMessageParty.Name.ShouldBe("Jill Chill");
+			chatMessageParty.Email.ShouldBe("dlp.user@example.com");
+			chatMessageParty.SessionId.ShouldBe("26219520");
+			chatMessageParty.PartyType.ShouldBe(ChatMessagePartyType.Host);
+		}
+
+		/// <summary>
+		/// Verify chat message recipient properties.
+		/// </summary>
+		private static void VerifyChatMessageRecipient(ChatMessageParty chatMessageParty)
+		{
+			chatMessageParty.ShouldNotBeNull();
+			chatMessageParty.Name.ShouldBe("John Smith");
+			chatMessageParty.Email.ShouldBe("guest.user@example");
+			chatMessageParty.SessionId.ShouldBe("38681600");
+			chatMessageParty.PartyType.ShouldBe(ChatMessagePartyType.Guest);
 		}
 
 		#endregion
