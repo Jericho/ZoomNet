@@ -1738,4 +1738,10 @@
   <data name="app_authorization_request_created_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\WebhookData\app.authorization_request_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="team_chat_app_mention_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WebhookData\team_chat.app_mention.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_team_created_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WebhookData\contact_center.team_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>
