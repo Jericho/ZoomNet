@@ -449,5 +449,23 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "meeting.chat_message_sent")]
 		MeetingChatMessageSent,
+
+		/// <summary>
+		/// A user has converted a meeting into a webinar.
+		/// </summary>
+		[EnumMember(Value = "meeting.converted_to_webinar")]
+		MeetingConvertedToWebinar,
+
+		/// <summary>
+		/// A user has completed a connected device test.
+		/// </summary>
+		[EnumMember(Value = "meeting.device_tested")]
+		MeetingDeviceTested,
+
+		/// <summary>
+		/// A user has posted a Zoom meeting link to a social media account.
+		/// </summary>
+		[EnumMember(Value = "meeting.risk_alert")]
+		MeetingRiskAlert,
 	}
 }

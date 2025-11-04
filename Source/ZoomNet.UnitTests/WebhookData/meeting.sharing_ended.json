@@ -1,26 +1,26 @@
 {
   "event": "meeting.sharing_ended",
-  "event_ts": 1626230691572,
+  "event_ts": 1234566789900,
   "payload": {
-    "account_id": "AAAAAABBBB",
+    "account_id": "EPeQtiABC000VYxHMA",
     "object": {
       "id": "1234567890",
       "uuid": "4444AAAiAAAAAiAiAiiAii==",
       "host_id": "x1yCzABCDEfg23HiJKl4mN",
       "topic": "My Meeting",
-      "type": 8,
+      "type": 2,
       "start_time": "2021-07-13T21:44:51Z",
       "timezone": "America/Los_Angeles",
       "duration": 60,
       "participant": {
-        "user_id": "ABCDE12345",
-        "user_name": "JillChill",
-        "id": "iFxeBPYun6SAiWUzBcEkX",
+        "user_id": "16778000",
+        "user_name": "Arya Arya",
+        "id": "s0AAAASoSE1V8KIFOCYw",
         "sharing_details": {
           "content": "application",
           "link_source": "in_meeting",
-          "file_link": "",
-          "date_time": "2021-07-13T21:56:00Z",
+          "file_link": "https://shared",
+          "date_time": "2021-07-13T21:55:52Z",
           "source": "dropbox"
         }
       }

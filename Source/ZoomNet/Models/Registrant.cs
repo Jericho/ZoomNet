@@ -13,9 +13,6 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the registrant id.
 		/// </summary>
-		/// <value>
-		/// The id.
-		/// </value>
 		[JsonPropertyName("id")]
 		public string Id { get; set; }
 
@@ -56,13 +53,13 @@ namespace ZoomNet.Models
 		public string Country { get; set; }
 
 		/// <summary>
-		/// Gets or sets the zip/postal Code.
+		/// Gets or sets the zip/postal code.
 		/// </summary>
 		[JsonPropertyName("zip")]
 		public string Zip { get; set; }
 
 		/// <summary>
-		/// Gets or sets the state/Province.
+		/// Gets or sets the state/province.
 		/// </summary>
 		[JsonPropertyName("state")]
 		public string State { get; set; }
@@ -131,15 +128,19 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the date and time when the registrant was created.
 		/// </summary>
-		/// <value>The registrant created time.</value>
 		[JsonPropertyName("create_time")]
 		public DateTime CreatedOn { get; set; }
 
 		/// <summary>
 		/// Gets or sets the URL for this registrant to join the meeting.
 		/// </summary>
-		/// <value>The join URL.</value>
 		[JsonPropertyName("join_url")]
 		public string JoinUrl { get; set; }
+
+		/// <summary>
+		/// Gets or sets the participant pin code used to authenticate audio participants before they join the meeting.
+		/// </summary>
+		[JsonPropertyName("participant_pin_code")]
+		public long ParticipantPinCode { get; set; }
 	}
 }
