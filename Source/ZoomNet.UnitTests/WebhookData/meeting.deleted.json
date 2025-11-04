@@ -5,6 +5,7 @@
 		"account_id": "VjZoEArIT5y-HlWxkV-tVA",
 		"operator": "someone@example.com",
 		"operator_id": "8lzIwvZTSOqjndWPbPqzuA",
+		"operation": "single",
 		"object": {
 			"uuid": "5yDZGNlQSV6qOjg4NxajHQ==",
 			"id": 98884753832,

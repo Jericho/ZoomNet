@@ -24,5 +24,11 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonPropertyName("page_url")]
 		public string PageUrl { get; set; }
+
+		/// <summary>
+		/// Gets or sets the number of pixels in each dimension that the video camera can display.
+		/// </summary>
+		[JsonPropertyName("resolution")]
+		public string Resolution { get; set; }
 	}
 }

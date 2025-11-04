@@ -36,7 +36,7 @@ namespace ZoomNet.Models
 		/// Gets or sets the user id of the participant.
 		/// </summary>
 		/// <remarks>
-		/// Same as the User Id used in the Users API if p[articipant oined the meeting by logging in.
+		/// Same as the User Id used in the Users API if participant joined the meeting by logging in.
 		/// </remarks>
 		[JsonPropertyName("id")]
 		public string UserId { get; set; }

@@ -3,9 +3,6 @@
 	"event_ts": 1626230691572,
 	"payload": {
 		"account_id": "AAAAAABBBB",
-		"operator": "admin@example.com",
-		"operator_id": "z8yCxjabcdEFGHfp8uQ",
-		"operation": "single",
 		"object": {
 			"id": "1234567890",
 			"uuid": "4444AAAiAAAAAiAiAiiAii==",

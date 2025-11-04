@@ -9,9 +9,9 @@
       "test_result": {
         "user_id": "1234567890",
         "user_name": "JillChill",
-        "camera_status": 1,
+        "camera_status": 0,
         "speaker_status": 1,
-        "microphone_status": 1,
+        "microphone_status": 2,
         "os": "ios"
       }
     }
