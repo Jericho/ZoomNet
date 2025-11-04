@@ -1,0 +1,17 @@
+{
+  "event": "cobrowse.session_ended",
+  "event_ts": 1743483350000,
+  "payload": {
+    "account_id": "TEODL21kRmehjRceRnyYqw",
+    "object": {
+      "session_id": "4567UVWxYZABCdEfGhiJkl==",
+      "session_pin": "987536",
+      "user_id": "YZ8uRj9zRf2yY5cshmzrTA",
+      "user_name": "exampleuser",
+      "role_type": "customer",
+      "start_time": "2025-04-01T12:22:26Z",
+      "end_time": "2025-04-01T12:32:26Z",
+      "end_reason": "The session ended"
+    }
+  }
+}

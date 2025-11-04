@@ -1,0 +1,19 @@
+{
+  "event": "team_chat.channel_reaction_removed",
+  "payload": {
+    "operator_member_id": "1vCFVGsqi_lo8BqWMfmP8hiRn9a37oxCCPYdRWctkgMaE9NWn66sJouoz8opRcsg",
+    "account_id": "MMSB9iuRTACkjKlV5C2xuw",
+    "operator_id": "TlrtEHSyQA-fi-RBu2qKEw",
+    "operator": "test@gmail.com",
+    "by_external_user": false,
+    "object": {
+      "emoji": "U+1f44c",
+      "emoji_time": "2023-12-29T17:52:23Z",
+      "msg_time": "2023-12-29T17:51:33Z",
+      "msg_id": "B88C3A45-C8BC-4CCD-A4B3-E061A7329B6E",
+      "channel_id": "7886237a99ff44499add640d98606264",
+      "timestamp": 1703872343211
+    }
+  },
+  "event_ts": 1703872343252
+}

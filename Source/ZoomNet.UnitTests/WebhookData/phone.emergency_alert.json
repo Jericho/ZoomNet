@@ -1,0 +1,37 @@
+{
+  "event": "phone.emergency_alert",
+  "payload": {
+    "object": {
+      "caller": {
+        "id": "DnEopNmXQEGU2uvvzjgojw",
+        "extension_number": "1002",
+        "timezone": "America/Los_Angeles",
+        "display_name": "pbxta api",
+        "extension_type": "user",
+        "site_id": "8f71O6rWT8KFUGQmJIFAdQ",
+        "site_name": "Main Site"
+      },
+      "callee": {
+        "phone_number": "933"
+      },
+      "location": {
+        "gps": [
+          "31.29846,120.6645"
+        ],
+        "ip": [
+          "192.0.2.1,192.0.2.2"
+        ],
+        "bssid": [
+          "fc:7f:49:12:45:01"
+        ]
+      },
+      "router": "ZOOM",
+      "call_id": "6998308626516675500",
+      "ringing_start_time": "2021-08-20T00:51:52Z",
+      "emergency_address": {},
+      "deliver_to": "SAFETY_TEAM"
+    },
+    "account_id": "TQTvjT52Tmi_wrhASNNOEw"
+  },
+  "event_ts": 1629420725562
+}

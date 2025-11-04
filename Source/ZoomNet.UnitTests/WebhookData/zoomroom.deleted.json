@@ -1,0 +1,11 @@
+{
+  "event": "zoomroom.deleted",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "G3NQs8u1Qni4Pc-qBPgsxg",
+    "object": {
+      "id": "2muAb65FTZCGjj6ginHIbQ",
+      "room_name": "My Zoom Room"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "event": "contact_center.closure_updated",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "closure_set_id": "Ixo-Na0bRfCyQ4q2lAryDw",
+      "modified_by": "a4sduuiQ7sdfrrtINNsepp",
+      "date_time_ms": "2023-03-15T09:27:15.987Z",
+      "updates": {
+        "closure_set_name": "My Updated Closure Set",
+        "closure_set_description": "This is an example closure set updated.",
+        "timezone": "America/New_York",
+        "account_default": true,
+        "closures": [
+          {
+            "closure_id": "eedtNa0bRfCffrd2lAryDw",
+            "closure_name": "New Year",
+            "closure_hour_type": 1,
+            "start_time": "2023-01-01T00:00:00Z",
+            "end_time": "2023-02-01T23:59:59Z",
+            "recurring_frequency": 0,
+            "recurring_frequency_type": 1,
+            "recurring_month": 1,
+            "recurring_week_interval": 1,
+            "recurring_days_of_week": [
+              1
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "event": "meeting.converted_to_webinar",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator": "admin@example.com",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "object": {
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "id": 1234567890,
+      "host_id": "x1yCzABCDEfg23HiJKl4mN",
+      "topic": "My Meeting Converted",
+      "type": 5,
+      "start_time": "2021-07-13T21:44:51Z",
+      "duration": 60,
+      "timezone": "America/Los_Angeles"
+    }
+  }
+}

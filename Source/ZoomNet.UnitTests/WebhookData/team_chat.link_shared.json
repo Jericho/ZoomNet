@@ -1,0 +1,23 @@
+{
+  "event": "team_chat.link_shared",
+  "event_ts": 1696914490200,
+  "response_url": "https://api.zoom.us/v2/im/chat/users/exampleUserId/unfurls/exampleTriggerId",
+  "payload": {
+    "account_id": "exampleAccountId",
+    "operator_id": "exampleuserId",
+    "operator": "example@zoom.us",
+    "operator_member_id": "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK",
+    "by_external_user": false,
+    "object": {
+      "message_id": "5DD614F4-DD19-4C39-8D03-93C4D0A0C839",
+      "reply_main_message_id": "5DD614F4-DD19-4C39-8D03-93C4D0A0C838",
+      "type": "to_channel",
+      "channel_id": "xxxxxxx",
+      "channel_name": "Team Chat",
+      "link": "https://sg.com/1234w",
+      "trigger_id": "exampleTriggerId",
+      "date_time": "2023-10-10T05:08:10Z",
+      "timestamp": 1696914490157
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "event": "contact_center.recording_completed",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "recording_id": "ghyetrjj_sdfsdgfkdjfl11",
+      "engagement_id": "u154t5-ASlK83fZb1YWqgw",
+      "engagement_direction": "outbound",
+      "channel": "video",
+      "recording_start_time_ms": "2022-02-15T08:12:15.986Z",
+      "recording_end_time_ms": "2022-02-15T09:27:15.987Z",
+      "recording_type": "on_demand",
+      "recording_duration": 150,
+      "flow_id": "ZWWC0A840C726C2CE3ACF01041CB8CFD8B9",
+      "flow_name": "My Flow",
+      "cc_queue_id": "xqJE_cgERLyAJHYYL5LLeg",
+      "queue_name": "My Queue",
+      "owner_id": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "owner_name": "John Smith",
+      "owner_type": "user",
+      "users": [
+        {
+          "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
+          "user_display_name": "John Doe"
+        }
+      ],
+      "consumers": [
+        {
+          "consumer_id": "szCyubr_aQhieHNWYbAGMYg",
+          "consumer_number": "+18005550100",
+          "consumer_display_name": "Jane Doe"
+        }
+      ]
+    }
+  }
+}

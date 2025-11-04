@@ -1,0 +1,20 @@
+{
+  "event": "node.server_confirmed",
+  "event_ts": 290112312321,
+  "payload": {
+    "account_id": "G3NQs8u1Qni4Pc-qBPgsxg",
+    "operator": "admin@example.com",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "object": {
+      "server": {
+        "id": "17b13784-dc2b-4dd7-9b50-0d73352f03dxs4",
+        "udid": "a5967fa5294952a0632e2ec0085c1c897d0be0bf3b3a9668572xxxxx34",
+        "name": "hybrid-dev-int-env",
+        "location": "Hefei - CN",
+        "os_image": "Ubuntu-20221111131438",
+        "status": "offline",
+        "module": "hybrid"
+      }
+    }
+  }
+}

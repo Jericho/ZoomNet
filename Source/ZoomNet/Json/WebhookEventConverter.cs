@@ -56,8 +56,7 @@ namespace ZoomNet.Json
 					};
 					break;
 				case Models.Webhooks.EventType.AppDeauthorized:
-					var appDeauthorizedEvent = payloadJsonProperty.ToObject<AppDeauthorizedEvent>(options);
-					webHookEvent = appDeauthorizedEvent;
+					webHookEvent = payloadJsonProperty.ToObject<AppDeauthorizedEvent>(options);
 					break;
 				case Models.Webhooks.EventType.MeetingServiceIssue:
 					var meetingServiceIssueEvent = payloadJsonProperty.ToObject<MeetingServiceIssueEvent>(options);
@@ -65,12 +64,10 @@ namespace ZoomNet.Json
 					webHookEvent = meetingServiceIssueEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingCreated:
-					var meetingCreatedEvent = payloadJsonProperty.ToObject<MeetingCreatedEvent>(options);
-					webHookEvent = meetingCreatedEvent;
+					webHookEvent = payloadJsonProperty.ToObject<MeetingCreatedEvent>(options);
 					break;
 				case Models.Webhooks.EventType.MeetingDeleted:
-					var meetingDeletedEvent = payloadJsonProperty.ToObject<MeetingDeletedEvent>(options);
-					webHookEvent = meetingDeletedEvent;
+					webHookEvent = payloadJsonProperty.ToObject<MeetingDeletedEvent>(options);
 					break;
 				case Models.Webhooks.EventType.MeetingUpdated:
 					var meetingUpdatedEvent = payloadJsonProperty.ToObject<MeetingUpdatedEvent>(options);
@@ -98,119 +95,110 @@ namespace ZoomNet.Json
 					webHookEvent = meetingUpdatedEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingPermanentlyDeleted:
-					var meetingPermanentlyDeletedEvent = payloadJsonProperty.ToObject<MeetingPermanentlyDeletedEvent>(options);
-					webHookEvent = meetingPermanentlyDeletedEvent;
+					webHookEvent = payloadJsonProperty.ToObject<MeetingPermanentlyDeletedEvent>(options);
 					break;
 				case Models.Webhooks.EventType.MeetingStarted:
-					var meetingStartedEvent = payloadJsonProperty.ToObject<MeetingStartedEvent>(options);
-					webHookEvent = meetingStartedEvent;
+					webHookEvent = payloadJsonProperty.ToObject<MeetingStartedEvent>(options);
 					break;
 				case Models.Webhooks.EventType.MeetingEnded:
-					var meetingEndedEvent = payloadJsonProperty.ToObject<MeetingEndedEvent>(options);
-					webHookEvent = meetingEndedEvent;
+					webHookEvent = payloadJsonProperty.ToObject<MeetingEndedEvent>(options);
 					break;
 				case Models.Webhooks.EventType.MeetingRecovered:
-					var meetingRecoveredEvent = payloadJsonProperty.ToObject<MeetingRecoveredEvent>(options);
-					webHookEvent = meetingRecoveredEvent;
+					webHookEvent = payloadJsonProperty.ToObject<MeetingRecoveredEvent>(options);
 					break;
 				case Models.Webhooks.EventType.MeetingRegistrationCreated:
 					var meetingRegistrationCreatedEvent = payloadJsonProperty.ToObject<MeetingRegistrationCreatedEvent>(options);
-					meetingRegistrationCreatedEvent.Registrant = payloadJsonProperty.GetProperty("object/registrant", true).Value.ToObject<Registrant>();
+					meetingRegistrationCreatedEvent.Registrant = ParseRegistrantProperty<Registrant>(payloadJsonProperty);
 					webHookEvent = meetingRegistrationCreatedEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingRegistrationApproved:
 					var meetingRegistrationApprovedEvent = payloadJsonProperty.ToObject<MeetingRegistrationApprovedEvent>(options);
-					meetingRegistrationApprovedEvent.Registrant = payloadJsonProperty.GetProperty("object/registrant", true).Value.ToObject<Registrant>();
+					meetingRegistrationApprovedEvent.Registrant = ParseRegistrantProperty<Registrant>(payloadJsonProperty);
 					webHookEvent = meetingRegistrationApprovedEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingRegistrationCancelled:
 					var meetingRegistrationCancelledEvent = payloadJsonProperty.ToObject<MeetingRegistrationCancelledEvent>(options);
-					meetingRegistrationCancelledEvent.Registrant = payloadJsonProperty.GetProperty("object/registrant", true).Value.ToObject<Registrant>();
+					meetingRegistrationCancelledEvent.Registrant = ParseRegistrantProperty<Registrant>(payloadJsonProperty);
 					webHookEvent = meetingRegistrationCancelledEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingRegistrationDenied:
 					var meetingRegistrationDeniedEvent = payloadJsonProperty.ToObject<MeetingRegistrationDeniedEvent>(options);
-					meetingRegistrationDeniedEvent.Registrant = payloadJsonProperty.GetProperty("object/registrant", true).Value.ToObject<Registrant>();
+					meetingRegistrationDeniedEvent.Registrant = ParseRegistrantProperty<Registrant>(payloadJsonProperty);
 					webHookEvent = meetingRegistrationDeniedEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingSharingStarted:
 					var meetingSharingStartedEvent = payloadJsonProperty.ToObject<MeetingSharingStartedEvent>(options);
-					meetingSharingStartedEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<WebhookParticipant>();
-					meetingSharingStartedEvent.ScreenshareDetails = payloadJsonProperty.GetProperty("object/participant/sharing_details", true).Value.ToObject<ScreenshareDetails>();
+					meetingSharingStartedEvent.Participant = ParseParticipantProperty<WebhookParticipant>(payloadJsonProperty);
+					meetingSharingStartedEvent.ScreenshareDetails = payloadJsonProperty.GetPropertyValue<ScreenshareDetails>("object/participant/sharing_details");
 					webHookEvent = meetingSharingStartedEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingSharingEnded:
 					var meetingSharingEndedEvent = payloadJsonProperty.ToObject<MeetingSharingEndedEvent>(options);
-					meetingSharingEndedEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<WebhookParticipant>();
-					meetingSharingEndedEvent.ScreenshareDetails = payloadJsonProperty.GetProperty("object/participant/sharing_details", true).Value.ToObject<ScreenshareDetails>();
+					meetingSharingEndedEvent.Participant = ParseParticipantProperty<WebhookParticipant>(payloadJsonProperty);
+					meetingSharingEndedEvent.ScreenshareDetails = payloadJsonProperty.GetPropertyValue<ScreenshareDetails>("object/participant/sharing_details");
 					webHookEvent = meetingSharingEndedEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingParticipantWaitingForHost:
 					var meetingParticipantWaitingForHostEvent = payloadJsonProperty.ToObject<MeetingParticipantWaitingForHostEvent>(options);
-					meetingParticipantWaitingForHostEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<WebhookParticipant>();
+					meetingParticipantWaitingForHostEvent.Participant = ParseParticipantProperty<WebhookParticipant>(payloadJsonProperty);
 					webHookEvent = meetingParticipantWaitingForHostEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingParticipantJoinedBeforeHost:
 					var meetingParticipantJoiningBeforeHostEvent = payloadJsonProperty.ToObject<MeetingParticipantJoinedBeforeHostEvent>(options);
-					meetingParticipantJoiningBeforeHostEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<WebhookParticipant>();
+					meetingParticipantJoiningBeforeHostEvent.Participant = ParseParticipantProperty<WebhookParticipant>(payloadJsonProperty);
 					webHookEvent = meetingParticipantJoiningBeforeHostEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingParticipantJoinedWaitingRoom:
 					var meetingParticipantJoinedWaitingRoomEvent = payloadJsonProperty.ToObject<MeetingParticipantJoinedWaitingRoomEvent>(options);
 					meetingParticipantJoinedWaitingRoomEvent.JoinedOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/date_time");
-					meetingParticipantJoinedWaitingRoomEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<WebhookParticipant>();
+					meetingParticipantJoinedWaitingRoomEvent.Participant = ParseParticipantProperty<WebhookParticipant>(payloadJsonProperty);
 					webHookEvent = meetingParticipantJoinedWaitingRoomEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingParticipantLeftWaitingRoom:
 					var meetingParticipantLeftWaitingRoomEvent = payloadJsonProperty.ToObject<MeetingParticipantLeftWaitingRoomEvent>(options);
 					meetingParticipantLeftWaitingRoomEvent.LeftOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/date_time");
-					meetingParticipantLeftWaitingRoomEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<WebhookParticipant>();
+					meetingParticipantLeftWaitingRoomEvent.Participant = ParseParticipantProperty<WebhookParticipant>(payloadJsonProperty);
 					webHookEvent = meetingParticipantLeftWaitingRoomEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingParticipantAdmitted:
 					var meetingParticipantAdmittedEvent = payloadJsonProperty.ToObject<MeetingParticipantAdmittedEvent>(options);
 					meetingParticipantAdmittedEvent.AdmittedOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/date_time");
-					meetingParticipantAdmittedEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<WebhookParticipant>();
+					meetingParticipantAdmittedEvent.Participant = ParseParticipantProperty<WebhookParticipant>(payloadJsonProperty);
 					webHookEvent = meetingParticipantAdmittedEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingParticipantJoined:
 					var meetingParticipantJoinedEvent = payloadJsonProperty.ToObject<MeetingParticipantJoinedEvent>(options);
 					meetingParticipantJoinedEvent.JoinedOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/join_time");
-					meetingParticipantJoinedEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<WebhookParticipant>();
+					meetingParticipantJoinedEvent.Participant = ParseParticipantProperty<WebhookParticipant>(payloadJsonProperty);
 					webHookEvent = meetingParticipantJoinedEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingParticipantSentToWaitingRoom:
 					var meetingParticipantSentToWaitingRoomEvent = payloadJsonProperty.ToObject<MeetingParticipantSentToWaitingRoomEvent>(options);
 					meetingParticipantSentToWaitingRoomEvent.SentToWaitingRoomOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/date_time");
-					meetingParticipantSentToWaitingRoomEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<WebhookParticipant>();
+					meetingParticipantSentToWaitingRoomEvent.Participant = ParseParticipantProperty<WebhookParticipant>(payloadJsonProperty);
 					webHookEvent = meetingParticipantSentToWaitingRoomEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingParticipantLeft:
 					var meetingParticipantLeftEvent = payloadJsonProperty.ToObject<MeetingParticipantLeftEvent>(options);
 					meetingParticipantLeftEvent.LeftOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/leave_time");
-					meetingParticipantLeftEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<WebhookParticipant>();
+					meetingParticipantLeftEvent.Participant = ParseParticipantProperty<WebhookParticipant>(payloadJsonProperty);
 					webHookEvent = meetingParticipantLeftEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingLiveStreamStarted:
 					var meetingLiveStreamStartedEvent = payloadJsonProperty.ToObject<MeetingLiveStreamStartedEvent>(options);
-					meetingLiveStreamStartedEvent.StartedOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/date_time");
-					meetingLiveStreamStartedEvent.Operator = payloadJsonProperty.GetPropertyValue("object/operator", string.Empty);
-					meetingLiveStreamStartedEvent.OperatorId = payloadJsonProperty.GetPropertyValue("object/operator_id", string.Empty);
-					meetingLiveStreamStartedEvent.StreamingInfo = payloadJsonProperty.GetProperty("object/live_streaming", true).Value.ToObject<LiveStreamingInfo>();
+					meetingLiveStreamStartedEvent.StartedOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/live_streaming/date_time");
+					meetingLiveStreamStartedEvent.StreamingInfo = payloadJsonProperty.GetPropertyValue<LiveStreamingInfo>("object/live_streaming");
 					webHookEvent = meetingLiveStreamStartedEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingLiveStreamStopped:
 					var meetingLiveStreamStoppedEvent = payloadJsonProperty.ToObject<MeetingLiveStreamStoppedEvent>(options);
-					meetingLiveStreamStoppedEvent.StoppedOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/date_time");
-					meetingLiveStreamStoppedEvent.Operator = payloadJsonProperty.GetPropertyValue("object/operator", string.Empty);
-					meetingLiveStreamStoppedEvent.OperatorId = payloadJsonProperty.GetPropertyValue("object/operator_id", string.Empty);
-					meetingLiveStreamStoppedEvent.StreamingInfo = payloadJsonProperty.GetProperty("object/live_streaming", true).Value.ToObject<LiveStreamingInfo>();
+					meetingLiveStreamStoppedEvent.StoppedOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/live_streaming/date_time");
+					meetingLiveStreamStoppedEvent.StreamingInfo = payloadJsonProperty.GetPropertyValue<LiveStreamingInfo>("object/live_streaming");
 					webHookEvent = meetingLiveStreamStoppedEvent;
 					break;
 				case Models.Webhooks.EventType.RecordingCompleted:
 					var recordingCompletedEvent = payloadJsonProperty.ToObject<RecordingCompletedEvent>(options);
-					recordingCompletedEvent.DownloadToken = rootElement.GetPropertyValue<string>("download_token", string.Empty);
-					recordingCompletedEvent.Recording = payloadJsonProperty.GetProperty("object", true).Value.ToObject<Recording>();
+					recordingCompletedEvent.DownloadToken = rootElement.GetPropertyValue("download_token", string.Empty);
 					webHookEvent = recordingCompletedEvent;
 					break;
 				case Models.Webhooks.EventType.WebinarCreated:
@@ -261,46 +249,46 @@ namespace ZoomNet.Json
 					break;
 				case Models.Webhooks.EventType.WebinarRegistrationCreated:
 					var webinarRegistrationCreatedEvent = payloadJsonProperty.ToObject<WebinarRegistrationCreatedEvent>(options);
-					webinarRegistrationCreatedEvent.Registrant = payloadJsonProperty.GetProperty("object/registrant", true).Value.ToObject<Registrant>();
+					webinarRegistrationCreatedEvent.Registrant = ParseRegistrantProperty<Registrant>(payloadJsonProperty);
 					webHookEvent = webinarRegistrationCreatedEvent;
 					break;
 				case Models.Webhooks.EventType.WebinarRegistrationApproved:
 					var webinarRegistrationApprovedEvent = payloadJsonProperty.ToObject<WebinarRegistrationApprovedEvent>(options);
-					webinarRegistrationApprovedEvent.Registrant = payloadJsonProperty.GetProperty("object/registrant", true).Value.ToObject<Registrant>();
+					webinarRegistrationApprovedEvent.Registrant = ParseRegistrantProperty<Registrant>(payloadJsonProperty);
 					webHookEvent = webinarRegistrationApprovedEvent;
 					break;
 				case Models.Webhooks.EventType.WebinarRegistrationCancelled:
 					var webinarRegistrationCancelledEvent = payloadJsonProperty.ToObject<WebinarRegistrationCancelledEvent>(options);
-					webinarRegistrationCancelledEvent.Registrant = payloadJsonProperty.GetProperty("object/registrant", true).Value.ToObject<Registrant>();
+					webinarRegistrationCancelledEvent.Registrant = ParseRegistrantProperty<Registrant>(payloadJsonProperty);
 					webHookEvent = webinarRegistrationCancelledEvent;
 					break;
 				case Models.Webhooks.EventType.WebinarRegistrationDenied:
 					var webinarRegistrationDeniedEvent = payloadJsonProperty.ToObject<WebinarRegistrationDeniedEvent>(options);
-					webinarRegistrationDeniedEvent.Registrant = payloadJsonProperty.GetProperty("object/registrant", true).Value.ToObject<Registrant>();
+					webinarRegistrationDeniedEvent.Registrant = ParseRegistrantProperty<Registrant>(payloadJsonProperty);
 					webHookEvent = webinarRegistrationDeniedEvent;
 					break;
 				case Models.Webhooks.EventType.WebinarSharingStarted:
 					var webinarSharingStartedEvent = payloadJsonProperty.ToObject<WebinarSharingStartedEvent>(options);
-					webinarSharingStartedEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<WebhookParticipant>();
-					webinarSharingStartedEvent.ScreenshareDetails = payloadJsonProperty.GetProperty("object/participant/sharing_details", true).Value.ToObject<ScreenshareDetails>();
+					webinarSharingStartedEvent.Participant = ParseParticipantProperty<WebhookParticipant>(payloadJsonProperty);
+					webinarSharingStartedEvent.ScreenshareDetails = payloadJsonProperty.GetPropertyValue<ScreenshareDetails>("object/participant/sharing_details");
 					webHookEvent = webinarSharingStartedEvent;
 					break;
 				case Models.Webhooks.EventType.WebinarSharingEnded:
 					var webinarSharingEndedEvent = payloadJsonProperty.ToObject<WebinarSharingEndedEvent>(options);
-					webinarSharingEndedEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<WebhookParticipant>();
-					webinarSharingEndedEvent.ScreenshareDetails = payloadJsonProperty.GetProperty("object/participant/sharing_details", true).Value.ToObject<ScreenshareDetails>();
+					webinarSharingEndedEvent.Participant = ParseParticipantProperty<WebhookParticipant>(payloadJsonProperty);
+					webinarSharingEndedEvent.ScreenshareDetails = payloadJsonProperty.GetPropertyValue<ScreenshareDetails>("object/participant/sharing_details");
 					webHookEvent = webinarSharingEndedEvent;
 					break;
 				case Models.Webhooks.EventType.WebinarParticipantJoined:
 					var webinarParticipantJoinedEvent = payloadJsonProperty.ToObject<WebinarParticipantJoinedEvent>(options);
 					webinarParticipantJoinedEvent.JoinedOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/date_time");
-					webinarParticipantJoinedEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<WebhookParticipant>();
+					webinarParticipantJoinedEvent.Participant = ParseParticipantProperty<WebhookParticipant>(payloadJsonProperty);
 					webHookEvent = webinarParticipantJoinedEvent;
 					break;
 				case Models.Webhooks.EventType.WebinarParticipantLeft:
 					var webinarParticipantLeftEvent = payloadJsonProperty.ToObject<WebinarParticipantLeftEvent>(options);
 					webinarParticipantLeftEvent.LeftOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/date_time");
-					webinarParticipantLeftEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<WebhookParticipant>();
+					webinarParticipantLeftEvent.Participant = ParseParticipantProperty<WebhookParticipant>(payloadJsonProperty);
 					webHookEvent = webinarParticipantLeftEvent;
 					break;
 				case Models.Webhooks.EventType.EndpointUrlValidation:
@@ -309,27 +297,27 @@ namespace ZoomNet.Json
 					break;
 				case Models.Webhooks.EventType.MeetingParticipantJoinedBreakoutRoom:
 					var meetingParticipantJoinedBreakoutRoomEvent = payloadJsonProperty.ToObject<MeetingParticipantJoinedBreakoutRoomEvent>(options);
-					meetingParticipantJoinedBreakoutRoomEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<BreakoutRoomParticipantInfo>();
+					meetingParticipantJoinedBreakoutRoomEvent.Participant = ParseParticipantProperty<BreakoutRoomParticipantInfo>(payloadJsonProperty);
 					meetingParticipantJoinedBreakoutRoomEvent.JoinTime = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/join_time");
 					webHookEvent = meetingParticipantJoinedBreakoutRoomEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingParticipantLeftBreakoutRoom:
 					var meetingParticipantLeftBreakoutRoomEvent = payloadJsonProperty.ToObject<MeetingParticipantLeftBreakoutRoomEvent>(options);
-					meetingParticipantLeftBreakoutRoomEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<BreakoutRoomParticipantInfo>();
+					meetingParticipantLeftBreakoutRoomEvent.Participant = ParseParticipantProperty<BreakoutRoomParticipantInfo>(payloadJsonProperty);
 					meetingParticipantLeftBreakoutRoomEvent.LeaveTime = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/leave_time");
 					meetingParticipantLeftBreakoutRoomEvent.LeaveReason = payloadJsonProperty.GetPropertyValue("object/participant/leave_reason", string.Empty);
 					webHookEvent = meetingParticipantLeftBreakoutRoomEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingBreakoutRoomSharingStarted:
 					var meetingBreakoutRoomSharingStartedEvent = payloadJsonProperty.ToObject<MeetingBreakoutRoomSharingStartedEvent>(options);
-					meetingBreakoutRoomSharingStartedEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<BreakoutRoomParticipantBasicInfo>();
-					meetingBreakoutRoomSharingStartedEvent.SharingDetails = payloadJsonProperty.GetProperty("object/participant/sharing_details", true).Value.ToObject<ScreenshareDetails>();
+					meetingBreakoutRoomSharingStartedEvent.Participant = ParseParticipantProperty<BreakoutRoomParticipantBasicInfo>(payloadJsonProperty);
+					meetingBreakoutRoomSharingStartedEvent.SharingDetails = payloadJsonProperty.GetPropertyValue<ScreenshareDetails>("object/participant/sharing_details");
 					webHookEvent = meetingBreakoutRoomSharingStartedEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingBreakoutRoomSharingEnded:
 					var meetingBreakoutRoomSharingEndedEvent = payloadJsonProperty.ToObject<MeetingBreakoutRoomSharingEndedEvent>(options);
-					meetingBreakoutRoomSharingEndedEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<BreakoutRoomParticipantBasicInfo>();
-					meetingBreakoutRoomSharingEndedEvent.SharingDetails = payloadJsonProperty.GetProperty("object/participant/sharing_details", true).Value.ToObject<ScreenshareDetails>();
+					meetingBreakoutRoomSharingEndedEvent.Participant = ParseParticipantProperty<BreakoutRoomParticipantBasicInfo>(payloadJsonProperty);
+					meetingBreakoutRoomSharingEndedEvent.SharingDetails = payloadJsonProperty.GetPropertyValue<ScreenshareDetails>("object/participant/sharing_details");
 					webHookEvent = meetingBreakoutRoomSharingEndedEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingSummaryCompleted:
@@ -343,7 +331,7 @@ namespace ZoomNet.Json
 					break;
 				case Models.Webhooks.EventType.MeetingSummaryShared:
 					var meetingSummarySharedEvent = payloadJsonProperty.ToObject<MeetingSummarySharedEvent>(options);
-					meetingSummarySharedEvent.ShareWithUsers = payloadJsonProperty.GetProperty("object/share_with_users", true).Value.ToObject<SharedUser[]>();
+					meetingSummarySharedEvent.ShareWithUsers = payloadJsonProperty.GetPropertyValue<SharedUser[]>("object/share_with_users");
 					webHookEvent = meetingSummarySharedEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingSummaryTrashed:
@@ -354,23 +342,137 @@ namespace ZoomNet.Json
 					break;
 				case Models.Webhooks.EventType.MeetingInvitationAccepted:
 					var meetingInvitationAcceptedEvent = payloadJsonProperty.ToObject<MeetingInvitationAcceptedEvent>(options);
-					meetingInvitationAcceptedEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<InvitedParticipant>();
+					meetingInvitationAcceptedEvent.Participant = ParseParticipantProperty<InvitedParticipant>(payloadJsonProperty);
 					webHookEvent = meetingInvitationAcceptedEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingInvitationDispatched:
 					var meetingInvitationDispatchedEvent = payloadJsonProperty.ToObject<MeetingInvitationDispatchedEvent>(options);
-					meetingInvitationDispatchedEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<InvitedParticipant>();
+					meetingInvitationDispatchedEvent.Participant = ParseParticipantProperty<InvitedParticipant>(payloadJsonProperty);
 					webHookEvent = meetingInvitationDispatchedEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingInvitationRejected:
 					var meetingInvitationRejectedEvent = payloadJsonProperty.ToObject<MeetingInvitationRejectedEvent>(options);
-					meetingInvitationRejectedEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<InvitedParticipant>();
+					meetingInvitationRejectedEvent.Participant = ParseParticipantProperty<InvitedParticipant>(payloadJsonProperty);
 					webHookEvent = meetingInvitationRejectedEvent;
 					break;
 				case Models.Webhooks.EventType.MeetingInvitationTimeout:
 					var meetingInvitationTimeoutEvent = payloadJsonProperty.ToObject<MeetingInvitationTimeoutEvent>(options);
-					meetingInvitationTimeoutEvent.Participant = payloadJsonProperty.GetProperty("object/participant", true).Value.ToObject<InvitedParticipant>();
+					meetingInvitationTimeoutEvent.Participant = ParseParticipantProperty<InvitedParticipant>(payloadJsonProperty);
 					webHookEvent = meetingInvitationTimeoutEvent;
+					break;
+				case Models.Webhooks.EventType.MeetingParticipantPhoneCalloutAccepted:
+					var meetingParticipantPhoneCalloutAcceptedEvent = payloadJsonProperty.ToObject<MeetingParticipantPhoneCalloutAcceptedEvent>(options);
+					meetingParticipantPhoneCalloutAcceptedEvent.Participant = ParseParticipantProperty<InvitedPhoneParticipant>(payloadJsonProperty);
+					webHookEvent = meetingParticipantPhoneCalloutAcceptedEvent;
+					break;
+				case Models.Webhooks.EventType.MeetingParticipantPhoneCalloutMissed:
+					var meetingParticipantPhoneCalloutMissedEvent = payloadJsonProperty.ToObject<MeetingParticipantPhoneCalloutMissedEvent>(options);
+					meetingParticipantPhoneCalloutMissedEvent.Participant = ParseParticipantProperty<InvitedPhoneParticipant>(payloadJsonProperty);
+					webHookEvent = meetingParticipantPhoneCalloutMissedEvent;
+					break;
+				case Models.Webhooks.EventType.MeetingParticipantPhoneCalloutRejected:
+					var meetingParticipantPhoneCalloutRejectedEvent = payloadJsonProperty.ToObject<MeetingParticipantPhoneCalloutRejectedEvent>(options);
+					meetingParticipantPhoneCalloutRejectedEvent.Participant = ParseParticipantProperty<InvitedPhoneParticipant>(payloadJsonProperty);
+					webHookEvent = meetingParticipantPhoneCalloutRejectedEvent;
+					break;
+				case Models.Webhooks.EventType.MeetingParticipantPhoneCalloutRinging:
+					var meetingParticipantPhoneCalloutRingingEvent = payloadJsonProperty.ToObject<MeetingParticipantPhoneCalloutRingingEvent>(options);
+					meetingParticipantPhoneCalloutRingingEvent.Participant = ParseParticipantProperty<InvitedPhoneParticipant>(payloadJsonProperty);
+					webHookEvent = meetingParticipantPhoneCalloutRingingEvent;
+					break;
+				case Models.Webhooks.EventType.MeetingParticipantRoomSystemCalloutAccepted:
+					var meetingParticipantRoomSystemCalloutAcceptedEvent = payloadJsonProperty.ToObject<MeetingParticipantRoomSystemCalloutAcceptedEvent>(options);
+					meetingParticipantRoomSystemCalloutAcceptedEvent.Participant = ParseParticipantProperty<InvitedRoomParticipant>(payloadJsonProperty);
+					webHookEvent = meetingParticipantRoomSystemCalloutAcceptedEvent;
+					break;
+				case Models.Webhooks.EventType.MeetingParticipantRoomSystemCalloutFailed:
+					var meetingParticipantRoomSystemCalloutFailedEvent = payloadJsonProperty.ToObject<MeetingParticipantRoomSystemCalloutFailedEvent>(options);
+					meetingParticipantRoomSystemCalloutFailedEvent.Participant = ParseParticipantProperty<InvitedRoomParticipant>(payloadJsonProperty);
+					meetingParticipantRoomSystemCalloutFailedEvent.ReasonType = payloadJsonProperty.GetPropertyValue<MeetingRoomCalloutFailureReason>("object/reason_type");
+					webHookEvent = meetingParticipantRoomSystemCalloutFailedEvent;
+					break;
+				case Models.Webhooks.EventType.MeetingParticipantRoomSystemCalloutMissed:
+					var meetingParticipantRoomSystemCalloutMissedEvent = payloadJsonProperty.ToObject<MeetingParticipantRoomSystemCalloutMissedEvent>(options);
+					meetingParticipantRoomSystemCalloutMissedEvent.Participant = ParseParticipantProperty<InvitedRoomParticipant>(payloadJsonProperty);
+					webHookEvent = meetingParticipantRoomSystemCalloutMissedEvent;
+					break;
+				case Models.Webhooks.EventType.MeetingParticipantRoomSystemCalloutRejected:
+					var meetingParticipantRoomSystemCalloutRejectedEvent = payloadJsonProperty.ToObject<MeetingParticipantRoomSystemCalloutRejectedEvent>(options);
+					meetingParticipantRoomSystemCalloutRejectedEvent.Participant = ParseParticipantProperty<InvitedRoomParticipant>(payloadJsonProperty);
+					webHookEvent = meetingParticipantRoomSystemCalloutRejectedEvent;
+					break;
+				case Models.Webhooks.EventType.MeetingParticipantRoomSystemCalloutRinging:
+					var meetingParticipantRoomSystemCalloutRingingEvent = payloadJsonProperty.ToObject<MeetingParticipantRoomSystemCalloutRingingEvent>(options);
+					meetingParticipantRoomSystemCalloutRingingEvent.Participant = ParseParticipantProperty<InvitedRoomParticipant>(payloadJsonProperty);
+					webHookEvent = meetingParticipantRoomSystemCalloutRingingEvent;
+					break;
+				case Models.Webhooks.EventType.MeetingAiCompanionAssetsDeleted:
+					var meetingAiCompanionAssetsDeletedEvent = payloadJsonProperty.ToObject<MeetingAiCompanionAssetsDeletedEvent>(options);
+					meetingAiCompanionAssetsDeletedEvent.DeletedAssets = payloadJsonProperty.GetPropertyValue<string[]>("object/ai_companion/deleted_assets");
+					webHookEvent = meetingAiCompanionAssetsDeletedEvent;
+					break;
+				case Models.Webhooks.EventType.MeetingAiCompanionStarted:
+					var meetingAiCompanionStartedEvent = payloadJsonProperty.ToObject<MeetingAiCompanionStartedEvent>(options);
+					meetingAiCompanionStartedEvent.Questions = payloadJsonProperty.GetPropertyValue("object/ai_companion/questions", false);
+					meetingAiCompanionStartedEvent.Summary = payloadJsonProperty.GetPropertyValue("object/ai_companion/summary", false);
+					webHookEvent = meetingAiCompanionStartedEvent;
+					break;
+				case Models.Webhooks.EventType.MeetingAiCompanionStopped:
+					var meetingAiCompanionStoppedEvent = payloadJsonProperty.ToObject<MeetingAiCompanionStoppedEvent>(options);
+					meetingAiCompanionStoppedEvent.Questions = payloadJsonProperty.GetPropertyValue("object/ai_companion/questions", false);
+					meetingAiCompanionStoppedEvent.Summary = payloadJsonProperty.GetPropertyValue("object/ai_companion/summary", false);
+					webHookEvent = meetingAiCompanionStoppedEvent;
+					break;
+				case Models.Webhooks.EventType.MeetingAicTranscriptCompleted:
+					webHookEvent = payloadJsonProperty.ToObject<MeetingAicTranscriptCompletedEvent>(options);
+					break;
+				case Models.Webhooks.EventType.MeetingChatMessageFileDownloaded:
+					var meetingChatMessageFileDownloadedEvent = payloadJsonProperty.ToObject<MeetingChatMessageFileDownloadedEvent>(options);
+					meetingChatMessageFileDownloadedEvent.MeetingId = payloadJsonProperty.GetPropertyValue<long>("object/id");
+					meetingChatMessageFileDownloadedEvent.MeetingUuid = payloadJsonProperty.GetPropertyValue<string>("object/uuid");
+					meetingChatMessageFileDownloadedEvent.HostAccountId = payloadJsonProperty.GetPropertyValue<string>("object/host_account_id");
+					meetingChatMessageFileDownloadedEvent.File = payloadJsonProperty.GetPropertyValue<ChatMessageFile>("object/chat_message_file");
+					webHookEvent = meetingChatMessageFileDownloadedEvent;
+					break;
+				case Models.Webhooks.EventType.MeetingChatMessageFileSent:
+					var meetingChatMessageFileSentEvent = payloadJsonProperty.ToObject<MeetingChatMessageFileSentEvent>(options);
+					meetingChatMessageFileSentEvent.MeetingId = payloadJsonProperty.GetPropertyValue<long>("object/meeting_id");
+					meetingChatMessageFileSentEvent.MeetingUuid = payloadJsonProperty.GetPropertyValue<string>("object/meeting_uuid");
+
+					// All properties are under the single node but we group some properties into separate objects.
+					JsonElement chatMessageFileElement = payloadJsonProperty.GetProperty("object/chat_message_file", true).Value;
+					meetingChatMessageFileSentEvent.File = chatMessageFileElement.ToObject<ChatMessageFile>();
+					meetingChatMessageFileSentEvent.Message = chatMessageFileElement.ToObject<WebhookChatMessage>();
+					meetingChatMessageFileSentEvent.Sender = ParseChatMessageSender(chatMessageFileElement);
+					meetingChatMessageFileSentEvent.Recipient = ParseChatMessageRecipient(chatMessageFileElement);
+
+					webHookEvent = meetingChatMessageFileSentEvent;
+					break;
+				case Models.Webhooks.EventType.MeetingChatMessageSent:
+					var meetingChatMessageSentEvent = payloadJsonProperty.ToObject<MeetingChatMessageSentEvent>(options);
+					meetingChatMessageSentEvent.MeetingId = payloadJsonProperty.GetPropertyValue<long>("object/id");
+					meetingChatMessageSentEvent.MeetingUuid = payloadJsonProperty.GetPropertyValue<string>("object/uuid");
+
+					// All properties are under the single node but we group some properties into separate objects.
+					JsonElement chatMessageElement = payloadJsonProperty.GetProperty("object/chat_message", true).Value;
+					meetingChatMessageSentEvent.Message = chatMessageElement.ToObject<WebhookChatMessage>();
+					meetingChatMessageSentEvent.Sender = ParseChatMessageSender(chatMessageElement);
+					meetingChatMessageSentEvent.Recipient = ParseChatMessageRecipient(chatMessageElement);
+
+					webHookEvent = meetingChatMessageSentEvent;
+					break;
+				case Models.Webhooks.EventType.MeetingConvertedToWebinar:
+					webHookEvent = payloadJsonProperty.ToObject<MeetingConvertedToWebinarEvent>(options);
+					break;
+				case Models.Webhooks.EventType.MeetingDeviceTested:
+					var meetingDeviceTestedEvent = payloadJsonProperty.ToObject<MeetingDeviceTestedEvent>(options);
+					meetingDeviceTestedEvent.TestResult = payloadJsonProperty.GetPropertyValue<DeviceTestResult>("object/test_result");
+					webHookEvent = meetingDeviceTestedEvent;
+					break;
+				case Models.Webhooks.EventType.MeetingRiskAlert:
+					var meetingRiskAlertEvent = payloadJsonProperty.ToObject<MeetingRiskAlertEvent>(options);
+					meetingRiskAlertEvent.ArmnDetails = payloadJsonProperty.GetPropertyValue<MeetingAtRiskDetails>("object/armn_details");
+					webHookEvent = meetingRiskAlertEvent;
 					break;
 				default:
 					throw new JsonException($"{eventType} is an unknown event type");
@@ -402,6 +504,46 @@ namespace ZoomNet.Json
 					throw new JsonException($"Property {key} appears to contain a numerical value but we are unable to determine the exact type");
 				default: return new KeyValuePair<string, object>(key, value.GetRawText());
 			}
+		}
+
+		private T ParseParticipantProperty<T>(JsonElement payloadJsonProperty)
+		{
+			return payloadJsonProperty.GetPropertyValue<T>("object/participant");
+		}
+
+		private T ParseRegistrantProperty<T>(JsonElement payloadJsonProperty)
+		{
+			return payloadJsonProperty.GetPropertyValue<T>("object/registrant");
+		}
+
+		/// <summary>
+		/// Parse chat message sender properties.
+		/// Name, session id and type are mandatory, email is optional.
+		/// </summary>
+		private ChatMessageParty ParseChatMessageSender(JsonElement payloadJsonProperty)
+		{
+			return new ChatMessageParty
+			{
+				Name = payloadJsonProperty.GetPropertyValue<string>("sender_name"),
+				Email = payloadJsonProperty.GetPropertyValue("sender_email", string.Empty),
+				SessionId = payloadJsonProperty.GetPropertyValue<string>("sender_session_id"),
+				PartyType = payloadJsonProperty.GetPropertyValue<ChatMessagePartyType>("sender_type"),
+			};
+		}
+
+		/// <summary>
+		/// Parse chat message recipient properties.
+		/// Name, email and session id are optional, type is mandatory.
+		/// </summary>
+		private ChatMessageParty ParseChatMessageRecipient(JsonElement payloadJsonProperty)
+		{
+			return new ChatMessageParty
+			{
+				Name = payloadJsonProperty.GetPropertyValue("recipient_name", string.Empty),
+				Email = payloadJsonProperty.GetPropertyValue("recipient_email", string.Empty),
+				SessionId = payloadJsonProperty.GetPropertyValue("recipient_session_id", string.Empty),
+				PartyType = payloadJsonProperty.GetPropertyValue<ChatMessagePartyType>("recipient_type"),
+			};
 		}
 	}
 }

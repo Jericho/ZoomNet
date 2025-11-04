@@ -1,0 +1,15 @@
+{
+  "event": "zoomroom.location_created",
+  "event_ts": "290112312321",
+  "payload": {
+    "account_id": "ajdkd-qBPgsxg",
+    "operator": "admin@example.com",
+    "operator_id": "I7zp-pYbTl22Z29H796Ixg",
+    "object": {
+      "id": "fqtckjhjhee89ruidvc2h6lc4g",
+      "name": "My new Zoom Room Location",
+      "parent_location_id": "aldjflajsd-fasj",
+      "type": "floor"
+    }
+  }
+}

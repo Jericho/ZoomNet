@@ -1,0 +1,29 @@
+{
+  "event": "meeting.live_streaming_started",
+  "event_ts": 1627906965803,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "operator": "admin@example.com",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "object": {
+      "id": 1234567890,
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "host_id": "x1yCzABCDEfg23HiJKl4mN",
+      "topic": "My Meeting",
+      "type": 2,
+      "start_time": "2021-07-13T21:44:51Z",
+      "timezone": "America/Los_Angeles",
+      "duration": 60,
+      "live_streaming": {
+        "service": "Custom_Live_Streaming_Service",
+        "custom_live_streaming_settings": {
+          "stream_url": "https://example.com/livestream",
+          "stream_key": "ABCDEFG12345HIJ6789",
+          "page_url": "https://example.com/livestream/123",
+          "resolution": "1080p"
+        },
+        "date_time": "2021-08-02T12:22:45Z"
+      }
+    }
+  }
+}

@@ -1503,8 +1503,8 @@ namespace ZoomNet.Resources
 				.AsJson()
 				.ConfigureAwait(false);
 
-			var createdTickets = response.GetProperty("tickets", false)?.ToObject<EventTicket[]>() ?? Array.Empty<EventTicket>();
-			var errors = response.GetProperty("errors", false)?.ToObject<EventTicketError[]>() ?? Array.Empty<EventTicketError>();
+			var createdTickets = response.GetPropertyValue<EventTicket[]>("tickets", Array.Empty<EventTicket>());
+			var errors = response.GetPropertyValue<EventTicketError[]>("errors", Array.Empty<EventTicketError>());
 
 			return (createdTickets, errors);
 		}

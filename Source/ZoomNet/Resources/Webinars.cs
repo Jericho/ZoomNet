@@ -478,7 +478,7 @@ namespace ZoomNet.Resources
 			{
 				RequiredFields = requiredFields,
 				OptionalFields = optionalFields,
-				Questions = response.GetProperty("custom_questions", false)?.ToObject<RegistrationCustomQuestionForWebinar[]>() ?? Array.Empty<RegistrationCustomQuestionForWebinar>()
+				Questions = response.GetPropertyValue<RegistrationCustomQuestionForWebinar[]>("custom_questions", Array.Empty<RegistrationCustomQuestionForWebinar>())
 			};
 			return registrationQuestions;
 		}

@@ -1,0 +1,14 @@
+{
+  "event": "revenue_accelerator.playlist_delete",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator_id": "Gtl2Ra0ASfO5wIzYPYceiA",
+    "operator": "test@zoom.us",
+    "object": {
+      "playlist_id": "AAAAAABBBB",
+      "playlist_name": "playlist name",
+      "delete_time": 12132323232
+    }
+  }
+}

@@ -5,7 +5,7 @@ namespace ZoomNet.Models.Webhooks
 	/// <summary>
 	/// This event is triggered when a meeting registration has been cancelled.
 	/// </summary>
-	public class MeetingRegistrationCancelledEvent : MeetingEvent
+	public class MeetingRegistrationCancelledEvent : MeetingRegistrationEvent
 	{
 		/// <summary>
 		/// Gets or sets the email address of the user who cancelled the registration.
@@ -18,10 +18,5 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[JsonPropertyName("operator_id")]
 		public string OperatorId { get; set; }
-
-		/// <summary>
-		/// Gets or sets the registrant information.
-		/// </summary>
-		public Registrant Registrant { get; set; }
 	}
 }

@@ -1,0 +1,33 @@
+{
+  "event": "node.mc_stat_alert",
+  "event_ts": 290112312321,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "server": {
+        "id": "572faedd-7175-4428-9f10-92373175c878",
+        "udid": "e25914cc9765a38fdc8278cec016b5af9b80a3b0bc0ddd731de6ef158169e392",
+        "name": "kvm-0411-meeting",
+        "location": "Hefei - CN",
+        "group": "group-contaact-test",
+        "os_image": "Ubuntu22.04-20240411024129",
+        "status": "online",
+        "module": "hybrid"
+      },
+      "service": {
+        "id": "65f3bfcc-1edd-4902-8599-9c88010df19d",
+        "name": "Hybrid Multimedia Router-1",
+        "version": "5.2.245.0",
+        "type": "MC_MMR",
+        "status": "running",
+        "zone": "batch-install-zone"
+      },
+      "metric": "meeting_stat_per_mmr",
+      "field": "meeting_count",
+      "value": 5.0,
+      "threshold": 3.0,
+      "operator": ">=",
+      "level": "warn"
+    }
+  }
+}

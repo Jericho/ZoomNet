@@ -496,20 +496,32 @@ namespace ZoomNet
 			return !string.IsNullOrEmpty(value) && value.EndsWith(suffix) ? value : string.Concat(value, suffix);
 		}
 
-		internal static JsonElement? GetProperty(this JsonElement element, string name, bool throwIfMissing = true)
+		/// <summary>
+		/// Retrieves a nested property from a <see cref="JsonElement"/> using a path expression, optionally throwing an
+		/// exception if the property is not found.
+		/// </summary>
+		/// <remarks>This method enables traversal of nested JSON properties by specifying a path with segments
+		/// separated by the chosen character. It is useful for accessing deeply nested values without manually iterating
+		/// through each property.</remarks>
+		/// <param name="element">The <see cref="JsonElement"/> to search for the property.</param>
+		/// <param name="path">A path expression specifying the property to retrieve, with segments separated by <paramref name="splitChar"/>.</param>
+		/// <param name="throwIfMissing">Indicates whether to throw an <see cref="ArgumentException"/> if the specified property is not found. If <see
+		/// langword="false"/>, the method returns <see langword="null"/> when the property is missing.</param>
+		/// <param name="splitChar">The character used to separate segments in <paramref name="path"/>. Defaults to '/'.</param>
+		/// <returns>A <see cref="JsonElement"/> representing the requested property if found; otherwise, <see langword="null"/> if
+		/// <paramref name="throwIfMissing"/> is <see langword="false"/> and the property is missing.</returns>
+		/// <exception cref="ArgumentException">Thrown if the specified property path does not exist and <paramref name="throwIfMissing"/> is <see
+		/// langword="true"/>.</exception>
+		internal static JsonElement? GetProperty(this JsonElement element, string path, bool throwIfMissing = true, char splitChar = '/')
 		{
-			var parts = name.Split('/');
-			if (!element.TryGetProperty(parts[0], out var property))
-			{
-				if (throwIfMissing) throw new ArgumentException($"Unable to find '{name}'", nameof(name));
-				else return null;
-			}
+			var parts = path.Split(splitChar);
+			var property = element;
 
-			foreach (var part in parts.Skip(1))
+			foreach (var part in parts)
 			{
 				if (!property.TryGetProperty(part, out property))
 				{
-					if (throwIfMissing) throw new ArgumentException($"Unable to find '{name}'", nameof(name));
+					if (throwIfMissing) throw new ArgumentException($"Unable to find '{path}'", nameof(path));
 					else return null;
 				}
 			}
@@ -517,24 +529,66 @@ namespace ZoomNet
 			return property;
 		}
 
-		internal static T GetPropertyValue<T>(this JsonElement element, string name, T defaultValue)
+		/// <summary>
+		/// Retrieves the value of a property from the specified JSON element using a path expression, returning a default
+		/// value if the property is not found or cannot be converted to the specified type.
+		/// </summary>
+		/// <typeparam name="T">The type to which the property value is converted and returned.</typeparam>
+		/// <param name="element">The JSON element from which to retrieve the property value.</param>
+		/// <param name="path">The path expression identifying the property to retrieve. Path segments are separated by the specified split
+		/// character.</param>
+		/// <param name="defaultValue">The value to return if the property is not found or cannot be converted to the specified type.</param>
+		/// <param name="splitChar">The character used to separate segments in the path expression. Defaults to '/'.</param>
+		/// <returns>The value of the property converted to type T if found and convertible; otherwise, the specified default value.</returns>
+		internal static T GetPropertyValue<T>(this JsonElement element, string path, T defaultValue, char splitChar = '/')
 		{
-			return element.GetPropertyValue(new[] { name }, defaultValue, false);
+			return element.GetPropertyValue(new[] { path }, defaultValue, false, splitChar);
 		}
 
-		internal static T GetPropertyValue<T>(this JsonElement element, string[] names, T defaultValue)
+		/// <summary>
+		/// Retrieves the value of the first property in a JSON element matching one of the specified paths, returning a
+		/// default value if the property is not found or cannot be converted to the specified type.
+		/// </summary>
+		/// <typeparam name="T">The type to which the property value will be converted and returned.</typeparam>
+		/// <param name="element">The JSON element from which to retrieve the property value.</param>
+		/// <param name="paths">An array of property path strings to search for within the JSON element. Each path may represent a nested
+		/// property, separated by the specified split character.</param>
+		/// <param name="defaultValue">The value to return if none of the specified property paths are found or if the value cannot be converted to the
+		/// specified type.</param>
+		/// <param name="splitChar">The character used to separate segments in each property path. Defaults to '/'.</param>
+		/// <returns>The value of the property converted to type T if found; otherwise, the specified default value.</returns>
+		internal static T GetPropertyValue<T>(this JsonElement element, string[] paths, T defaultValue, char splitChar = '/')
 		{
-			return element.GetPropertyValue(names, defaultValue, false);
+			return element.GetPropertyValue(paths, defaultValue, false, splitChar);
 		}
 
-		internal static T GetPropertyValue<T>(this JsonElement element, string name)
+		/// <summary>
+		/// Retrieves the value of a property from a JSON element at the specified path and converts it to the specified type.
+		/// An exception is thrown if the property is not found.
+		/// </summary>
+		/// <typeparam name="T">The type to which the property value will be converted.</typeparam>
+		/// <param name="element">The JSON element from which to retrieve the property value.</param>
+		/// <param name="path">The path to the property within the JSON element. The path should use the specified split character to separate
+		/// levels.</param>
+		/// <param name="splitChar">The character used to separate levels in the property path. Defaults to '/'.</param>
+		/// <returns>The value of the property at the specified path, converted to type T.</returns>
+		internal static T GetPropertyValue<T>(this JsonElement element, string path, char splitChar = '/')
 		{
-			return element.GetPropertyValue<T>(new[] { name }, default, true);
+			return element.GetPropertyValue<T>(new[] { path }, default, true, splitChar);
 		}
 
-		internal static T GetPropertyValue<T>(this JsonElement element, string[] names)
+		/// <summary>
+		/// Retrieves the value of the first property in a JSON element matching one of the specified paths.
+		/// An exception is thrown if none of the properties are found.
+		/// </summary>
+		/// <typeparam name="T">The type to which the property value will be converted and returned.</typeparam>
+		/// <param name="element">The JSON element from which to retrieve the property value.</param>
+		/// <param name="paths">An array of strings representing the segments of the property path to traverse within the JSON element.</param>
+		/// <param name="splitChar">The character used to split each path segment into sub-segments. Defaults to '/'.</param>
+		/// <returns>The value of the property at the specified path, converted to the specified type <typeparamref name="T"/>.</returns>
+		internal static T GetPropertyValue<T>(this JsonElement element, string[] paths, char splitChar = '/')
 		{
-			return element.GetPropertyValue<T>(names, default, true);
+			return element.GetPropertyValue<T>(paths, default, true, splitChar);
 		}
 
 		internal static Task<TResult[]> ForEachAsync<T, TResult>(this IEnumerable<T> items, Func<T, Task<TResult>> action) => ForEachAsync(items, action, DEFAULT_DEGREE_OF_PARALLELISM);
@@ -1208,23 +1262,28 @@ namespace ZoomNet
 			return result;
 		}
 
-		private static T GetPropertyValue<T>(this JsonElement element, string[] names, T defaultValue, bool throwIfMissing)
+		private static T GetPropertyValue<T>(this JsonElement element, string[] paths, T defaultValue, bool throwIfMissing, char splitChar = '/')
 		{
 			JsonElement? property = null;
 
-			foreach (var name in names)
+			foreach (var path in paths)
 			{
-				property = element.GetProperty(name, false);
+				property = element.GetProperty(path, false, splitChar);
 				if (property.HasValue) break;
 			}
 
 			if (!property.HasValue)
 			{
-				if (throwIfMissing) throw new Exception($"Unable to find {string.Join(", ", names)} in the Json document");
+				if (throwIfMissing) throw new Exception($"Unable to find {string.Join(" or ", paths)} in the Json document");
 				else return defaultValue;
 			}
 
 			var typeOfT = typeof(T);
+
+			if (typeOfT.Namespace == "ZoomNet.Models")
+			{
+				return property.Value.ToObject<T>();
+			}
 
 			if (typeOfT.IsEnum)
 			{

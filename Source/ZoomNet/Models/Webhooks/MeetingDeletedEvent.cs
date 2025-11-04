@@ -18,5 +18,11 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[JsonPropertyName("operator_id")]
 		public string OperatorId { get; set; }
+
+		/// <summary>
+		/// Gets or sets the operation (allowed values: all, single).
+		/// </summary>
+		[JsonPropertyName("operation")]
+		public string Operation { get; set; }
 	}
 }

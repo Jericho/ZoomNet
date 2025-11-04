@@ -1,0 +1,15 @@
+{
+  "event": "meeting.ai_companion_started",
+  "event_ts": 1726142087123,
+  "payload": {
+    "account_id": "dzVA4QmMQfyISoRcpFO8CA",
+    "object": {
+      "meeting_number": 97763643886,
+      "meeting_uuid": "aDYlohsHRtCd4ii1uC2+hA==",
+      "host_id": "30R7kT7bTIKSNUFEuH_Qlg",
+      "ai_companion": {
+        "questions": true
+      }
+    }
+  }
+}

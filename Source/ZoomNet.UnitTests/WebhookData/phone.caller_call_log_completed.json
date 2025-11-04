@@ -1,0 +1,43 @@
+{
+  "event": "phone.caller_call_log_completed",
+  "payload": {
+    "account_id": "TQTvjT52Tmi_wrhASNNOEw",
+    "object": {
+      "call_logs": [
+        {
+          "id": "4a4ed8ec-6be4-4e42-96e6-352a4396204d",
+          "call_type": "voip",
+          "caller_number": "1045",
+          "caller_number_type": 1,
+          "caller_name": "usersubsetting0001@testapi.com",
+          "callee_number": "1026",
+          "callee_number_type": 1,
+          "callee_name": "ZOOM_API Test",
+          "caller_did_number" : "+12055967465",
+          "caller_country_code" : "1",
+          "caller_country_iso_code" : "US",
+          "callee_did_number" : "+15104381494",
+          "callee_country_code" : "1",
+          "callee_country_iso_code" : "US",
+          "direction": "inbound",
+          "duration": 0,
+          "result": "outbound",
+          "date_time": "2021-06-09T05:55:07Z",
+          "path": "extension",
+          "has_recording": false,
+          "has_voicemail": false,
+          "call_id": "6971668473388011511",
+          "client_code" : "741",
+          "call_end_time": "2021-06-09T05:55:12Z",
+          "forwarded_by" : {
+            "extension_number" : "820004",
+            "name" : "SLG Test",
+            "extension_type" : "sharedLineGroup"
+          }
+        }
+      ],
+      "user_id": "IqoQmDRqS-aIoXqV_FZ88w"
+    }
+  },
+  "event_ts": 1623218132807
+}

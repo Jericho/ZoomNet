@@ -1,0 +1,19 @@
+{
+  "event": "contact_center.queue_operating_hours_updated",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "date_time_ms": "2024-02-15T09:27:15.987Z",
+      "cc_queue_id": "xqJE_cgERLyAJHYYL5LLeg",
+      "updates": {
+        "business_hour_id": "5bBXuoUKQ6aBwFE8I37qkw",
+        "business_hour_name": "My Business Hours",
+        "account_default_business_hour": false,
+        "closure_set_id": "GQJMxgNBT5mGdOzn-WlQOA",
+        "closure_set_name": "My Closure Hours",
+        "account_default_closure_set": false
+      }
+    }
+  }
+}

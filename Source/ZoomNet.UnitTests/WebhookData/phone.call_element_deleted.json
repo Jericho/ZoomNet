@@ -1,0 +1,16 @@
+{
+  "event": "phone.call_element_deleted",
+  "payload": {
+    "account_id": "Mt6sv4u0TAyPkwgsL2lxiA",
+    "object": {
+      "call_element_ids": [
+        "20240724-9a0887ca-da53-4c62-b32a-563789ef264e"
+      ],
+      "user_id": "DYHrdpjrS3uaOf7dPkkg8w",
+      "execute_time": "2024-10-09T08:10:11.128Z",
+      "move_to_trash": true,
+      "delete_all": false
+    }
+  },
+  "event_ts": 1721799823000
+}

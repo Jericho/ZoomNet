@@ -1,0 +1,11 @@
+{
+  "event": "contact_center.recording_deleted",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "recording_id": "ghyetrjj_sdfsdgfkdjfl11",
+      "date_time_ms": "2023-03-30T14:15:57.987Z"
+    }
+  }
+}

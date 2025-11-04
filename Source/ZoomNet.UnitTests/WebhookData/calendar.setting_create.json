@@ -1,0 +1,12 @@
+{
+  "event": "calendar.setting_create",
+  "event_ts": "1626230691572",
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator": "abc@zoom.com", // Who initiates the action.
+    "object": {
+      "resource_id": "abc@zoom.com", // Your resource ID.
+      "setting_id": "timezone" // the setting ID.
+    }
+  }
+}

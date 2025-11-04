@@ -1,0 +1,14 @@
+{
+  "event": "team_chat.emoji_removed",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator": "user@example.com",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "operator_member_id": "V0xKXVARQVmlXMYVbGoTEA",
+    "object": {
+      "name": "my_emoji",
+      "file_id": "6dfgdfgdg444447b0egga"
+    }
+  }
+}

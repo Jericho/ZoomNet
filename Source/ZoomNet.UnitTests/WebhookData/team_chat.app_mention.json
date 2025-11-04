@@ -1,0 +1,48 @@
+{
+  "event": "team_chat.app_mention",
+  "event_ts": 1696914490200,
+  "payload": {
+    "account_id": "asgVcjZnWWRLWvv_GtyGuaxg",
+    "operator": "example@zoom.us",
+    "operator_member_id": "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "by_external_user": true,
+    "object": {
+      "message_id": "5DD614F4-DD19-4C39-8D03-93C4D0A0C839",
+      "type": "to_channel",
+      "channel_id": "8AmQ0WOoQ1O3a84yYFc2xQ",
+      "channel_name": "Team Chat",
+      "message": "hello",
+      "files": [
+        {
+          "file_id": "56bed9orRnOSEnBoX_HQvA",
+          "file_name": "Screenshot 2023-12-22 at 11.21.38 AM.png",
+          "file_size": 23025,
+          "OS_file_type": "PNG",
+          "file_message_type": "image"
+        }
+      ],
+      "rich_text": [
+        {
+          "start_position": 0,
+          "end_position": 1,
+          "format_type": "Bold"
+        },
+        {
+          "start_position": 1,
+          "end_position": 2,
+          "format_type": "BulletedList"
+        },
+        {
+          "start_position": 2,
+          "end_position": 3,
+          "format_type": "AddLink",
+          "format_attr": "https://www.example.com/templates/daily-stand-up"
+        }
+      ],
+      "reply_main_message_id": "5DD614F4-DD19-4C39-8D03-93C4D0A0C838",
+      "date_time": "2023-10-10T05:08:10Z",
+      "timestamp": 1696914490157
+    }
+  }
+}

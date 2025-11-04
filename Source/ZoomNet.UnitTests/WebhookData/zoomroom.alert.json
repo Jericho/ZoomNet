@@ -1,0 +1,17 @@
+{
+  "event": "zoomroom.alert",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "id": "abcD3ojfdbjfg",
+      "room_name": "My Zoom Room",
+      "calendar_name": "mycalendar@example.com",
+      "email": "jchill@example.com",
+      "issue": "Room Controller disconnected",
+      "alert_type": 1,
+      "component": 2,
+      "alert_kind": 1
+    }
+  }
+}

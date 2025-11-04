@@ -1,0 +1,24 @@
+{
+  "event": "contact_center.voicemail_transcript_completed",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "message_id": "ghyetrjj_sdfsdgfkdjfl11",
+      "inbox_id": "u154t5-ASlK83fZb1YWqgw",
+      "inbox_name": "My Inbox",
+      "engagement_id": "y154t5-BSlK83fZb1YWqgq",
+      "date_time_ms": "2023-05-15T09:27:15.987Z",
+      "flow_id": "My Flow",
+      "flow_name": "zeYjXoDOS_eV1QmTpj63PQ",
+      "queue_name": "My Queue",
+      "cc_queue_id": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "transcript_url": "https://api.zoom.us/v2/contact_center/voicemail/transcripts/download/ghyetrjj_sdfsdgfkdjfl111?type=voice",
+      "message_duration": 150,
+      "consumer_number": "+18005550101",
+      "consumer_id": "ghyetrjj_sdfsdgfkdjfl123",
+      "consumer_display_name": "Jane Doe",
+      "status": "normal"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "event": "phone.warm_transfer_completed",
+  "event_ts": 1626759486127,
+  "payload": {
+    "account_id": "2TP-coFVSnmyvYZogk8gAg",
+    "object": {
+      "failure_reason": "",
+      "call_id": "6986878782238080581",
+      "transfer_phone_number": "+12055432724",
+      "owner": {
+        "type": "user",
+        "id": "z8yCxjabcdEFGHfp8uQ",
+        "name": "usersubsetting0001",
+        "extension_number": 6666
+      },
+      "date_time": "2021-07-20T05:38:04Z"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+	"event": "chat_channel.created",
+	"event_ts": 1626230691572,
+	"payload": {
+		"account_id": "AAAAAABBBB",
+		"operator": "user@example.com",
+		"operator_id": "z8yCxjabcdEFGHfp8uQ",
+		"object": {
+			"name": "Team Chat",
+			"type": 1,
+			"date_time": "2020-02-10T21:39:50Z",
+			"timestamp": 1581370790388,
+			"members": [
+				{
+					"id": "abcD3ojfdbjfg",
+					"display_name": "Tara Smith"
+				},
+				{
+					"id": "hijK4lmnopqrs",
+					"display_name": "Sasha Taylor"
+				}
+			]
+		}
+	}
+}

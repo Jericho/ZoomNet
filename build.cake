@@ -1,7 +1,7 @@
 // Install tools.
 #tool dotnet:?package=GitVersion.Tool&version=6.4.0
 #tool nuget:?package=GitReleaseManager&version=0.20.0
-#tool nuget:?package=ReportGenerator&version=5.4.17
+#tool nuget:?package=ReportGenerator&version=5.4.18
 #tool nuget:?package=xunit.runner.console&version=2.9.3
 #tool nuget:?package=CodecovUploader&version=0.8.0
 
@@ -258,7 +258,6 @@ Task("Run-Code-Coverage")
 		Configuration = configuration,
 		Framework = DESIRED_FRAMEWORK_FOR_CODE_COVERAGE,
 
-		// The following assumes that coverlet.msbuild has been added to the unit testing project
 		ArgumentCustomization = args => args
 			.Append($"-tl:{terminalLogger}")
 			.Append("--")

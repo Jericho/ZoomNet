@@ -1,0 +1,15 @@
+{
+  "event": "revenue_accelerator.playlist_create",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "account_id",
+    "operator_id": "Gtl2Ra0ASfO5wIzYPYceiA",
+    "operator": "test@zoom.us",
+    "object": {
+      "playlist_id": "AAAAAABBBB",
+      "playlist_type": "SMART",
+      "playlist_name": "playlist name",
+      "create_time": 1755591952177
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "event": "contact_center.business_hours_updated",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "business_hour_id": "66ZjSQ7YTOescnINN_4vog",
+      "modified_by": "a4sduuiQ7sdfrrtINNsepp",
+      "date_time_ms": "2023-03-15T09:27:15.987Z",
+      "updates": {
+        "business_hour_name": "My Updated Business Hours",
+        "business_hour_description": "This is an example business hours updated.",
+        "timezone": "America/New_York",
+        "account_default": true,
+        "hours": {
+          "hour_type": 1,
+          "custom_hours": [
+            {
+              "day_of_week": 1,
+              "custom_hour_type": 1,
+              "custom_hour_ranges": [
+                {
+                  "start_time": "09:00",
+                  "end_time": "18:00"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

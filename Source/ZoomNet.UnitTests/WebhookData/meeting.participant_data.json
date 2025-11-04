@@ -1,0 +1,43 @@
+{
+  "event": "meeting.participant_data",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "participant": {
+        "participant_id": "1234567890",
+        "participant_user_id": "rstuvwxyza789-cde",
+        "email": "user@example.com",
+        "data": [
+          {
+            "device": "WIN",
+            "location": "New York",
+            "network_type": "Wired",
+            "microphone": "Plantronics BT600",
+            "speaker": "Plantronics BT600",
+            "camera": "FaceTime HD Camera",
+            "data_center": "SC",
+            "connection_type": "P2P",
+            "pc_name": "My PC",
+            "domain": "my-workspace",
+            "mac_addr": "00:00:5E:00:53:00",
+            "harddisk_id": "Disk01",
+            "version": "4.4.55383.0716",
+            "signaling_ip_address": "192.0.2.1",
+            "signaling_internal_ip_address": "127.0.0.1",
+            "signaling_internal_ip_port": "5060",
+            "audio_internal_ip_address": "127.0.0.1",
+            "audio_internal_ip_port": "5060",
+            "video_internal_ip_address": "127.0.0.1",
+            "video_internal_ip_port": "5060",
+            "as_internal_ip_address": "127.0.0.1",
+            "as_internal_ip_port": "5060",
+            "destination_ip_domain": "example.com",
+            "destination_ip_port": "5000"
+          }
+        ]
+      }
+    }
+  }
+}

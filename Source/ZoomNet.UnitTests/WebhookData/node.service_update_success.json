@@ -1,0 +1,26 @@
+{
+  "event": "node.service_update_success",
+  "event_ts": 290112312321,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "server": {
+        "id": "57744e71-4489-4c56-96ae-447a3afb3687",
+        "udid": "4d9d95e42a59e47924bc1b722185349ba150ee74bf89b56a8d2c65da339df96b",
+        "name": "znodeubuntu",
+        "location": "Hefei - CN",
+        "os_image": "Ubuntu22.04-20240315005804",
+        "status": "online",
+        "module": "phone"
+      },
+      "service": {
+        "id": "4c04128f-b851-40fd-bf46-696649295463",
+        "name": "Local Survivability",
+        "version": "3.4.0.20240410.48",
+        "type": "HYBRID_FS",
+        "status": "stopped"
+      },
+      "target_version": "3.6.0.20240531.54"
+    }
+  }
+}

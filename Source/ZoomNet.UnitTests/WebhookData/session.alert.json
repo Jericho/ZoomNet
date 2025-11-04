@@ -1,0 +1,14 @@
+{
+  "event": "session.alert",
+  "event_ts": 1626473951859,
+  "payload": {
+    "account_id": "EFgHiJABC000DEfGHI",
+    "object": {
+      "id": "4567UVWxYZABCdEfGhiJkl==",
+      "session_id": "4567UVWxYZABCdEfGhiJkl==",
+      "session_name": "My Session",
+      "session_key": "ABC36jaBI145",
+      "issues": "Unstable audio quality"
+    }
+  }
+}

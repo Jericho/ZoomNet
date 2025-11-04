@@ -353,5 +353,119 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "meeting.invitation_timeout")]
 		MeetingInvitationTimeout,
+
+		/// <summary>
+		/// A user has accepted an invitation to join a meeting through phone (call out).
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_phone_callout_accepted")]
+		MeetingParticipantPhoneCalloutAccepted,
+
+		/// <summary>
+		/// An invitation to join a meeting through phone (call out) has timed out.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_phone_callout_missed")]
+		MeetingParticipantPhoneCalloutMissed,
+
+		/// <summary>
+		/// A user has rejected an invitation to join a meeting through phone (call out).
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_phone_callout_rejected")]
+		MeetingParticipantPhoneCalloutRejected,
+
+		/// <summary>
+		/// A user's phone has started ringing when user is invited to join a meeting through phone (call out).
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_phone_callout_ringing")]
+		MeetingParticipantPhoneCalloutRinging,
+
+		/// <summary>
+		/// A user has joined a meeting through phone (call out) from a Zoom room.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_room_system_callout_accepted")]
+		MeetingParticipantRoomSystemCalloutAccepted,
+
+		/// <summary>
+		/// An invitation to join a meeting through phone (call out) from a Zoom room has failed.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_room_system_callout_failed")]
+		MeetingParticipantRoomSystemCalloutFailed,
+
+		/// <summary>
+		/// An invitation to join a meeting through phone (call out) from a Zoom room has timed out.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_room_system_callout_missed")]
+		MeetingParticipantRoomSystemCalloutMissed,
+
+		/// <summary>
+		/// A user has rejected an invitation to join a meeting through phone (call out) from a Zoom room.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_room_system_callout_rejected")]
+		MeetingParticipantRoomSystemCalloutRejected,
+
+		/// <summary>
+		/// A user's phone has started ringing when user is invited to join a meeting through phone (call out) from a Zoom room.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_room_system_callout_ringing")]
+		MeetingParticipantRoomSystemCalloutRinging,
+
+		/// <summary>
+		/// AI companion meeting assets (transcripts and summaries) have been deleted during a live meeting.
+		/// </summary>
+		[EnumMember(Value = "meeting.ai_companion_assets_deleted")]
+		MeetingAiCompanionAssetsDeleted,
+
+		/// <summary>
+		/// A user has started AI companion during a live meeting.
+		/// </summary>
+		[EnumMember(Value = "meeting.ai_companion_started")]
+		MeetingAiCompanionStarted,
+
+		/// <summary>
+		/// A user has stopped AI companion during a live meeting.
+		/// </summary>
+		[EnumMember(Value = "meeting.ai_companion_stopped")]
+		MeetingAiCompanionStopped,
+
+		/// <summary>
+		/// AI companion has completed the meeting transcript after a meeting or webinar has ended.
+		/// </summary>
+		[EnumMember(Value = "meeting.aic_transcript_completed")]
+		MeetingAicTranscriptCompleted,
+
+		/// <summary>
+		/// A meeting's message file is downloaded.
+		/// </summary>
+		[EnumMember(Value = "meeting.chat_message_file_downloaded")]
+		MeetingChatMessageFileDownloaded,
+
+		/// <summary>
+		/// A meeting's message file is available to view or download.
+		/// </summary>
+		[EnumMember(Value = "meeting.chat_message_file_sent")]
+		MeetingChatMessageFileSent,
+
+		/// <summary>
+		/// A user has sent a public or private chat message during a meeting using the in-meeting Zoom chat feature.
+		/// </summary>
+		[EnumMember(Value = "meeting.chat_message_sent")]
+		MeetingChatMessageSent,
+
+		/// <summary>
+		/// A user has converted a meeting into a webinar.
+		/// </summary>
+		[EnumMember(Value = "meeting.converted_to_webinar")]
+		MeetingConvertedToWebinar,
+
+		/// <summary>
+		/// A user has completed a connected device test.
+		/// </summary>
+		[EnumMember(Value = "meeting.device_tested")]
+		MeetingDeviceTested,
+
+		/// <summary>
+		/// A user has posted a Zoom meeting link to a social media account.
+		/// </summary>
+		[EnumMember(Value = "meeting.risk_alert")]
+		MeetingRiskAlert,
 	}
 }

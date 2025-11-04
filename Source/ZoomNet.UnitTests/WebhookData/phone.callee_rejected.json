@@ -1,0 +1,31 @@
+{
+  "event": "phone.callee_rejected",
+  "payload": {
+    "account_id": "TQTvjT52Tmi_wrhASNNOEw",
+    "object": {
+      "call_id": "6998308781135528785",
+      "channel_id": "7bfb20d5-8e50-43b5-b078-b3a5f5972b55",
+      "caller": {
+        "extension_type": "user",
+        "extension_number": 1045,
+        "phone_number": "1045",
+        "device_type": "Windows_Client(5.7.5.939)",
+        "connection_type": "voip"
+      },
+      "callee": {
+        "extension_id": "52OdSKGSSS-EOyJwQncFvA",
+        "extension_type": "user",
+        "extension_number": 1002,
+        "phone_number": "1002",
+        "user_id": "DnEopNmXQEGU2uvvzjgojw",
+        "timezone": "America/Los_Angeles",
+        "device_type": "Windows_Client(5.7.5.939)",
+        "device_id": "f7aLLSmqRpiWP0U3U6CaNA",
+        "connection_type": "voip"
+      },
+      "ringing_start_time": "2021-08-20T00:52:20Z",
+      "call_end_time": "2021-08-20T00:52:22Z"
+    }
+  },
+  "event_ts": 1629420755266
+}

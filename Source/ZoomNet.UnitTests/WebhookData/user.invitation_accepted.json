@@ -1,0 +1,14 @@
+{
+  "event": "user.invitation_accepted",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "id": "abcD3ojfdbjfg",
+      "first_name": "Jill",
+      "last_name": "Chill",
+      "email": "jchill@example.com",
+      "type": 3
+    }
+  }
+}

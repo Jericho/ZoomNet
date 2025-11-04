@@ -96,9 +96,9 @@ namespace ZoomNet.Resources
 				.AsJson()
 				.ConfigureAwait(false);
 
-			var basicProfile = response.GetProperty("basic", true)?.ToObject<RoomBasicProfile>();
+			var basicProfile = response.GetPropertyValue<RoomBasicProfile>("basic");
 			var deviceProfileId = response.GetPropertyValue<string>("device/device_profile_id", null);
-			var setupProfile = response.GetProperty("setup", true)?.ToObject<RoomSetupProfile>();
+			var setupProfile = response.GetPropertyValue<RoomSetupProfile>("setup");
 
 			return (basicProfile, deviceProfileId, setupProfile);
 		}
@@ -251,8 +251,8 @@ namespace ZoomNet.Resources
 				.AsJson()
 				.ConfigureAwait(false);
 
-			var alertSettings = response.GetProperty("client_alert", true)?.ToObject<RoomAlertSettings>();
-			var notificationSettings = response.GetProperty("notification", true)?.ToObject<RoomNotificationSettings>();
+			var alertSettings = response.GetPropertyValue<RoomAlertSettings>("client_alert");
+			var notificationSettings = response.GetPropertyValue<RoomNotificationSettings>("notification");
 
 			return (alertSettings, notificationSettings);
 		}
@@ -267,8 +267,8 @@ namespace ZoomNet.Resources
 				.AsJson()
 				.ConfigureAwait(false);
 
-			var securitySettings = response.GetProperty("meeting_security", true)?.ToObject<RoomSecuritySettings>();
-			var roomSettings = response.GetProperty("zoom_rooms", true)?.ToObject<RoomSettings>();
+			var securitySettings = response.GetPropertyValue<RoomSecuritySettings>("meeting_security");
+			var roomSettings = response.GetPropertyValue<RoomSettings>("zoom_rooms");
 
 			return (securitySettings, roomSettings);
 		}
@@ -437,8 +437,8 @@ namespace ZoomNet.Resources
 				.AsJson()
 				.ConfigureAwait(false);
 
-			var alertSettings = response.GetProperty("client_alert", true)?.ToObject<RoomAlertSettings>();
-			var notificationSettings = response.GetProperty("notification", true)?.ToObject<RoomNotificationSettings>();
+			var alertSettings = response.GetPropertyValue<RoomAlertSettings>("client_alert");
+			var notificationSettings = response.GetPropertyValue<RoomNotificationSettings>("notification");
 
 			return (alertSettings, notificationSettings);
 		}
@@ -453,8 +453,8 @@ namespace ZoomNet.Resources
 				.AsJson()
 				.ConfigureAwait(false);
 
-			var securitySettings = response.GetProperty("meeting_security", true)?.ToObject<RoomSecuritySettings>();
-			var roomSettings = response.GetProperty("zoom_rooms", true)?.ToObject<RoomSettings>();
+			var securitySettings = response.GetPropertyValue<RoomSecuritySettings>("meeting_security");
+			var roomSettings = response.GetPropertyValue<RoomSettings>("zoom_rooms");
 
 			return (securitySettings, roomSettings);
 		}
@@ -489,8 +489,8 @@ namespace ZoomNet.Resources
 				.AsJson()
 				.ConfigureAwait(false);
 
-			var basicProfile = response.GetProperty("basic", true)?.ToObject<RoomLocationBasicProfile>();
-			var setupProfile = response.GetProperty("setup", true)?.ToObject<RoomLocationSetupProfile>();
+			var basicProfile = response.GetPropertyValue<RoomLocationBasicProfile>("basic");
+			var setupProfile = response.GetPropertyValue<RoomLocationSetupProfile>("setup");
 
 			return (basicProfile, setupProfile);
 		}

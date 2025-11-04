@@ -1,0 +1,20 @@
+{
+	"event": "chat_message.deleted",
+	"event_ts": 1626230691572,
+	"payload": {
+		"account_id": "AAAAAABBBB",
+		"operator": "user@example.com",
+		"operator_id": "z8yCxjabcdEFGHfp8uQ",
+		"object": {
+			"id": "6dfgdfgdg444447b0egga",
+			"type": "to_channel",
+			"date_time": "2020-02-10T21:39:50Z",
+			"timestamp": 1581370790388,
+			"session_id": "abcdefghijklmnop12345",
+			"contact_email": "user2@example.com",
+			"channel_id": "qrstuvwxyz67890",
+			"channel_name": "Team Chat",
+			"message": "Hello world."
+		}
+	}
+}

@@ -1,0 +1,14 @@
+{
+  "event": "zoom_events.speaker_updated",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "event_id": "qwerq1243124",
+      "host_id": "z8yCxjabcdEFGHfp8uQ",
+      "speaker_id": "iso9Dllddp39dagjLj9j",
+      "name": "speaker1",
+      "email": "speaker1-email@zoom.us"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "event": "node.service_stat",
+  "event_ts": 290112312321,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "stats": [
+        {
+          "server": {
+            "id": "17b13784-dc2b-4dd7-9b50-0d73352f03dxs4",
+            "udid": "a5967fa5294952a0632e2ec0085c1c897d0be0bf3b3a9668572xxxxx34",
+            "name": "hybrid-dev-int-env",
+            "location": "Hefei - CN",
+            "os_image": "AlmaLinux8.5-20221111131438",
+            "status": "online",
+            "module": "hybrid"
+          },
+          "service": {
+            "id": "4444AAAiAAAAAiAiAiiAii==",
+            "name": "service_1_RC",
+            "version": "4444AAAiAAAAAiAiAiiAii==",
+            "type": "HYBRID_MMR",
+            "zone": "test-zone",
+            "status": "running"
+          },
+          "cpu_used_percent": 9.17,
+          "memory_used": 3423242434,
+          "cpu_used_percent_ts": "2024-05-24T03:45:57Z",
+          "memory_used_ts": "2024-05-24T03:45:57Z"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "event": "session.recording_deleted",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+	"operator" : "user@example.com",
+	"operator_id" : "I7zp-pYbTl22Z29H796Ixg",
+    "object": {
+      "session_id": 1234567890,
+      "session_name": "My Personal Recording",
+      "session_key": "ABC36jaBI145",
+      "start_time": "2021-07-13T21:44:51Z",
+      "timezone": "America/Los_Angeles"
+    }
+  }
+}

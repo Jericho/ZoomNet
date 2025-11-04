@@ -1,0 +1,11 @@
+{
+  "event": "bot_installed",
+  "payload": {
+    "accountId": "CDSCdcsdv",
+    "robotJid": "csvfdvfd@xmpp.zoom.us",
+    "timestamp": 1542796725586,
+    "userId": "fvdfvfdvfd",
+    "userJid": "fvdfvfdvfd@xmpp.zoom.us",
+    "userName": "UserName"
+  }
+}

@@ -69,7 +69,7 @@ namespace ZoomNet.Resources
 				.ConfigureAwait(false);
 
 			var currency = response.GetPropertyValue("currency", string.Empty);
-			var invoices = response.GetProperty("invoices", false)?.ToObject<BillingInvoiceSummary[]>() ?? Array.Empty<BillingInvoiceSummary>();
+			var invoices = response.GetPropertyValue<BillingInvoiceSummary[]>("invoices", Array.Empty<BillingInvoiceSummary>());
 			Array.ForEach(invoices, invoice => invoice.Currency = currency);
 
 			return invoices;

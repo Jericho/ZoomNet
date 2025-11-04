@@ -1,0 +1,16 @@
+{
+	"event": "zoomroom.thirdparty_meeting_attempted",
+	"event_ts": 1626230691572,
+	"payload": {
+		"account_id": "AAAAAABBBB",
+		"object": {
+			"room_id": "abcD3ojfdbjfg",
+            "join_time": "2022-07-27T16:56:34Z",
+            "meeting_source_type": "ZOOM",
+            "join_url": "url",
+            "sip_address": "sip address",
+            "third_party_meeting_id": "12121313123",
+            "passcode": "123"
+		}
+	}
+}

@@ -1,0 +1,35 @@
+{
+  "event": "phone.group_settings_updated",
+  "payload": {
+    "account_id": "Mt6sv4u0TAyPkwgsL2lxiA",
+    "object": {
+      "group_id": "IfRqsMZSSzGBKm2AFJ7r3Q",
+      "settings": {
+        "call_live_transcription": {
+          "enable": true,
+          "locked": false,
+          "transcription_start_prompt": {
+            "enable": true,
+            "audio_id": "N_1FYBsGTE28ACkVN__EiA",
+            "audio_name": "hello1.mp3"
+          }
+        }
+      }
+    },
+    "old_object": {
+      "group_id": "IfRqsMZSSzGBKm2AFJ7r3Q",
+      "settings": {
+        "call_live_transcription": {
+          "enable": true,
+          "locked": false,
+          "transcription_start_prompt": {
+            "enable": true,
+            "audio_id": "P_1FYBsGTE28ACkVNAc5t",
+            "audio_name": "welcome.mp3"
+          }
+        }
+      }
+    }
+  },
+  "event_ts": 1619155281301
+}

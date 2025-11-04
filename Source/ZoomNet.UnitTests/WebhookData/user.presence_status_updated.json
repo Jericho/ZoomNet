@@ -1,0 +1,17 @@
+{
+  "event": "user.presence_status_updated",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "date-time": "2019-11-26T20:13:57Z",
+      "email": "jchill@example.com",
+      "id": "abcD3ojfdbjfg",
+      "presence_status": "Away",
+      "app" : {
+        "type" : "mobile",
+        "presence_status": "Offline"
+	  }
+    }
+  }
+}

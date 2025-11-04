@@ -1,0 +1,14 @@
+{
+	"event": "account.disassociated",
+	"event_ts": 1626230691572,
+	"payload": {
+		"account_id": "AAAAAABBBB",
+		"operator": "admin@example.com",
+		"operator_id": "z8yCxjabcdEFGHfp8uQ",
+		"object": {
+			"id": "abcD3ojfdbjfg",
+			"owner_id": "z8yCxjabcdEFGHfp8uQ",
+			"owner_email": "jchill@example.com"
+		}
+	}
+}

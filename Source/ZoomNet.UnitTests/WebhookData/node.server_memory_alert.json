@@ -1,0 +1,25 @@
+{
+  "event": "node.server_memory_alert",
+  "event_ts": 290112312321,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "server": {
+        "id": "023cacf8-330c-4243-a99b-1fb1acb20d3c",
+        "udid": "39e957684919481dfa3dc0c3e796f68122aa8271c7e9e9b0719d9c6575e4d155",
+        "name": "reno-hybrid-dev",
+        "location": "Hefei - CN",
+        "group": "newYork ",
+        "os_image": "Ubuntu22.04-20240418022929",
+        "status": "online",
+        "module": "hybrid"
+      },
+      "metric": "node_memory",
+      "field": "used",
+      "value": 875692.0,
+      "threshold": 114688.0,
+      "operator": ">",
+      "level": "error"
+    }
+  }
+}

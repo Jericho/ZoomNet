@@ -1,0 +1,24 @@
+{
+  "event": "recording.renamed",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator": "admin@example.com",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "time_stamp": "1628705277325",
+    "object": {
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "id": 1234567890,
+      "topic": "My Old Personal Recording",
+      "type": 4,
+      "host_id": "I6zp-pPbTl22Z29H786Ixg"
+    },
+    "recording_file": {
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "id": 1234567890,
+      "topic": "My New Personal Recording",
+      "type": 4,
+      "host_id": "I6zp-pPbTl22Z29H786Ixg"
+    }
+  }
+}

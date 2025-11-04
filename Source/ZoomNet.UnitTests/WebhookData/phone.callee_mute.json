@@ -1,0 +1,27 @@
+{
+  "event" : "phone.callee_mute",
+  "event_ts" : 1626759486127,
+  "payload" : {
+    "account_id" : "2TP-coFVSnmyvYZogk8gAg",
+    "object" : {
+      "caller" : {
+        "extension_type": "user",
+        "extension_number" : 810003,
+        "phone_number" : "810003",
+        "connection_type": "voip"
+      },
+      "callee" : {
+        "extension_id": "52OdSKGSSS-EOyJwQncFvA",
+        "extension_type": "user",
+        "user_id" : "kRQpbWO5TV6E7wxEYOKFWw",
+        "timezone" : "Asia/Shanghai",
+        "extension_number" : 810005,
+        "phone_number" : "810005",
+        "device_id": "f7aLLSmqRpiWP0U3U6CaNA",
+        "connection_type": "voip"
+      },
+      "date_time" : "2021-07-20T05:38:04Z",
+      "call_id" : "6986878782238080581"
+    }
+  }
+}

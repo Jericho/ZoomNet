@@ -1,0 +1,26 @@
+{
+  "event": "user.settings_updated",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "McvRaRa6RN7gbIdYCSw-Dw",
+    "time_stamp": 1626230691572,
+    "operator": "admin@example.com",
+    "operator_id": "eUblMKLnTMKX0pVvNAlA0Q",
+    "object": {
+      "id": "eUblMKLnTMKX0pVvNAlA0Q",
+      "settings": {
+        "in_meeting": {
+          "custom_live_streaming_service": true
+        }
+      }
+    },
+    "old_object": {
+      "id": "eUulMKLnTMKX0pVvMAlB0Q",
+      "settings": {
+        "in_meeting": {
+          "custom_live_streaming_service": false
+        }
+      }
+    }
+  }
+}

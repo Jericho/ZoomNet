@@ -1,0 +1,18 @@
+{
+  "event": "contact_center.queue_inbound_sla_updated",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "date_time_ms": "2024-02-15T09:27:15.987Z",
+      "cc_queue_id": "zeYjXoDOS_eV1QmTpj63PQ",
+      "updates": {
+        "service_level_threshold_in_seconds": 15,
+        "service_level_exclude_short_abandoned_calls": true,
+        "service_level_exclude_long_abandoned_calls": true,
+        "service_level_exclude_abandoned_quit_engagements": true,
+        "service_level_target_in_percentage": 80
+      }
+    }
+  }
+}

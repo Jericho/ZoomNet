@@ -1,0 +1,16 @@
+{
+  "event": "phone.sms_campaign_number_opt_in",
+  "event_ts": 1626759486127,
+  "payload": {
+    "account_id": "2TP-coFVSnmyvYZogk8gAg",
+    "object": {
+      "phone_number_campaign_opt_statuses": [
+        {
+          "consumer_phone_number": "+15043449240",
+          "zoom_phone_user_number": "+12094436304"
+        }
+      ],
+      "date_time": "2021-07-19T18:43:43Z"
+    }
+  }
+}

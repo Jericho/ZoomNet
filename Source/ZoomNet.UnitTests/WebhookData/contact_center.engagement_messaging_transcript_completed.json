@@ -1,0 +1,17 @@
+{
+  "event": "contact_center.engagement_messaging_transcript_completed",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "engagement_id": "SbgQTc2zS1ieFuCi5tXG6g",
+      "engagement_direction": "inbound",
+      "channel": "messaging",
+      "channel_source": "web_chat",
+      "flow_id": "ZWWC0A840C726C2CE3ACF01041CB8CFD8B9",
+      "flow_name": "My Flow",
+      "transcript_url": "https://api.zoom.us/v2/contact_center/engagements/transcripts/download/SbgQTc2zS1ieFuCi5tXG6g",
+      "date_time_ms": "2023-10-15T08:12:15.987Z"
+    }
+  }
+}

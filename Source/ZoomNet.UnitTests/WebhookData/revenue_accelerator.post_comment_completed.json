@@ -1,0 +1,14 @@
+{
+  "event": "revenue_accelerator.post_comment_completed",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "account_id",
+    "operator_id": "Gtl2Ra0ASfO5wIzYPYceiA",
+    "operator": "test.cheng@zoom.us",
+    "object": {
+      "comment_id": "AAAAAABBBB",
+      "conversation_id": "abcD3ojfdbjfg",
+      "text": "test of this comment"
+    }
+  }
+}

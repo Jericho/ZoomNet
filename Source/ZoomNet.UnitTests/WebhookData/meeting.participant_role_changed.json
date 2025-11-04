@@ -1,0 +1,28 @@
+{
+  "event": "meeting.participant_role_changed",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "id": "1234567890",
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "host_id": "x1yCzABCDEfg23HiJKl4mN",
+      "topic": "My Meeting",
+      "type": 8,
+      "start_time": "2021-07-13T21:44:51Z",
+      "timezone": "America/Los_Angeles",
+      "duration": 60,
+      "participant": {
+        "user_id": "1234567890",
+        "participant_uuid": "55555AAAiAAAAAiAiAiiAii",
+        "user_name": "JillChill",
+        "email": "jchill@example.com",
+        "registrant_id": "abcdefghij0-klmnopq23456",
+        "participant_user_id": "rstuvwxyza789-cde",
+        "date_time": "2021-07-13T21:44:51Z",
+        "old_role": "host",
+        "new_role": "co-host"
+      }
+    }
+  }
+}
