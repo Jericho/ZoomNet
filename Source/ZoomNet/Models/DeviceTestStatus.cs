@@ -18,6 +18,6 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Device working.
 		/// </summary>
-		Working
+		Working,
 	}
 }

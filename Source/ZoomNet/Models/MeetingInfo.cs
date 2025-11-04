@@ -31,6 +31,5 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonPropertyName("duration")]
 		public int Duration { get; set; }
-
 	}
 }
