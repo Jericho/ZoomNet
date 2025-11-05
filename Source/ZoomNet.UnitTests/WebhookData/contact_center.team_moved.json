@@ -1,0 +1,17 @@
+{
+  "event": "contact_center.team_moved",
+  "event_ts": 1754387110151,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "team_id": "2mDPBg3vSYC_l6crQgeCkA",
+      "team_name": "Example Team",
+      "team_description": "This is a example team.",
+      "previous_parent_team_id": "thxZtEzfR4uq0L9RqVJ_bg",
+      "previous_parent_team_name": "Previous Example Team",
+      "new_parent_team_id": "PZy04MG_Q7Gytg9k7CVU6w",
+      "new_parent_team_name": "Parent Example Team",
+      "date_time_ms": "2025-09-15T09:27:15.988Z"
+    }
+  }
+}
