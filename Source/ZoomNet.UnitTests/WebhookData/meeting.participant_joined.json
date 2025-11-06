@@ -13,14 +13,14 @@
       "timezone": "America/Los_Angeles",
       "duration": 60,
       "participant": {
-        "user_id": "1234567890",
+        "user_id": "55555AAAiAAAAAiAiAiiAii",
         "user_name": "Jill Chill",
         "id": "iFxeBPYun6SAiWUzBcEkX",
         "participant_uuid": "55555AAAiAAAAAiAiAiiAii",
-        "date_time": "2021-07-13T21:44:51Z",
+        "join_time": "2021-07-13T21:44:51Z",
         "email": "jchill@example.com",
         "registrant_id": "abcdefghij0-klmnopq23456",
-        "participant_user_id": "rstuvwxyza789-cde",
+        "participant_user_id": "iFxeBPYun6SAiWUzBcEkX",
         "customer_key": "349589LkJyeW",
         "phone_number": "8615250064084"
       }

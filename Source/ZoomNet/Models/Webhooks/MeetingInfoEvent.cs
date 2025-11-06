@@ -5,18 +5,18 @@ namespace ZoomNet.Models.Webhooks
 	/// <summary>
 	/// Represents an event related to a meeting.
 	/// </summary>
-	public class MeetingEvent : Event
+	public abstract class MeetingInfoEvent : Event
 	{
 		/// <summary>
-		/// Gets or sets the unique identifier of the account in which the event occurred.
+		/// Gets or sets the account id of the user who created the meeting.
 		/// </summary>
 		[JsonPropertyName("account_id")]
 		public string AccountId { get; set; }
 
 		/// <summary>
-		/// Gets or sets the meeting object.
+		/// Gets or sets the information about the meeting.
 		/// </summary>
 		[JsonPropertyName("object")]
-		public Meeting Meeting { get; set; }
+		public MeetingInfo Meeting { get; set; }
 	}
 }

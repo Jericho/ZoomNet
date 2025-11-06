@@ -1,13 +1,9 @@
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>
-	/// This event is triggered when a meeting participant is waiting fpor the host to join a meeting.
+	/// This event is triggered when a meeting participant is waiting for the host to join a meeting for at least 30 seconds.
 	/// </summary>
-	public class MeetingParticipantWaitingForHostEvent : MeetingEvent
+	public class MeetingParticipantWaitingForHostEvent : MeetingParticipantEvent
 	{
-		/// <summary>
-		/// Gets or sets the participant.
-		/// </summary>
-		public WebhookParticipant Participant { get; set; }
 	}
 }
