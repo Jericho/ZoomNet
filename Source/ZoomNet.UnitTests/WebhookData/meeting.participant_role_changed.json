@@ -13,12 +13,13 @@
       "timezone": "America/Los_Angeles",
       "duration": 60,
       "participant": {
-        "user_id": "1234567890",
+        "user_id": "55555AAAiAAAAAiAiAiiAii",
         "participant_uuid": "55555AAAiAAAAAiAiAiiAii",
-        "user_name": "JillChill",
+        "user_name": "Jill Chill",
+        "id": "iFxeBPYun6SAiWUzBcEkX",
         "email": "jchill@example.com",
         "registrant_id": "abcdefghij0-klmnopq23456",
-        "participant_user_id": "rstuvwxyza789-cde",
+        "participant_user_id": "iFxeBPYun6SAiWUzBcEkX",
         "date_time": "2021-07-13T21:44:51Z",
         "old_role": "host",
         "new_role": "co-host"

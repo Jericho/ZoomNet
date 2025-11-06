@@ -4,14 +4,14 @@
 	"payload": {
 		"account_id": "VjZoEArIT5y-HlWxkV-tVA",
 		"object": {
-			"duration": 0,
-			"start_time": "2021-04-21T14:49:04Z",
-			"timezone": "America/New_York",
-			"topic": "My Personal Meeting Room",
-			"id": 3479130610,
-			"type": 4,
-			"uuid": "mOG8pEaFQqeDm6Vd/3xopA==",
-			"host_id": "8lzIwvZTSOqjndWPbPqzuA"
+			"duration": 60,
+			"start_time": "2021-07-13T21:44:51Z",
+			"timezone": "America/Los_Angeles",
+			"topic": "My Meeting",
+			"id": 1234567890,
+			"type": 8,
+			"uuid": "4444AAAiAAAAAiAiAiiAii==",
+			"host_id": "x1yCzABCDEfg23HiJKl4mN"
 		}
 	}
 }

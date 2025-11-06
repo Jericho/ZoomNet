@@ -112,7 +112,7 @@ namespace ZoomNet.Models.Webhooks
 		/// A host or meeting attendee changed their role during the meeting.
 		/// </summary>
 		[EnumMember(Value = "meeting.participant_role_changed")]
-		MeetingParticipantRolechanged,
+		MeetingParticipantRoleChanged,
 
 		/// <summary>
 		/// A meeting has been permanently deleted.
@@ -467,5 +467,17 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "meeting.risk_alert")]
 		MeetingRiskAlert,
+
+		/// <summary>
+		/// A phone user has joined a meeting and bound to an attendee in the meeting.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_bind")]
+		MeetingParticipantBind,
+
+		/// <summary>
+		/// An attendee waiting for the host to join the meeting has left.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_jbh_waiting_left")]
+		MeetingParticipantWaitingForHostLeft,
 	}
 }
