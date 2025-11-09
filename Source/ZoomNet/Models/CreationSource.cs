@@ -23,6 +23,6 @@ namespace ZoomNet.Models
 		/// Created through web portal.
 		/// </summary>
 		[EnumMember(Value = "web_portal")]
-		WebPortal
+		WebPortal,
 	}
 }
