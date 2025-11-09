@@ -1,0 +1,15 @@
+{
+  "event": "contact_center.team_deleted",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "team_id": "2mDPBg3vSYC_l6crQgeCkA",
+      "team_name": "Sales Team",
+      "team_description": "This is the sales team",
+      "parent_team_id": "PZy04MG_Q7Gytg9k7CVU6w",
+      "parent_team_name": "Online sales team",
+      "date_time_ms": "2025-02-15T09:27:15.988Z"
+    }
+  }
+}

@@ -5,7 +5,7 @@ namespace ZoomNet.Models.Webhooks
 	/// <summary>
 	/// This event is triggered when a meeting participant leaves the meeting.
 	/// </summary>
-	public class MeetingParticipantLeftEvent : MeetingEvent
+	public class MeetingParticipantLeftEvent : MeetingParticipantEvent
 	{
 		/// <summary>
 		/// Gets or sets the date and time at which the participant left the meeting.
@@ -13,8 +13,8 @@ namespace ZoomNet.Models.Webhooks
 		public DateTime LeftOn { get; set; }
 
 		/// <summary>
-		/// Gets or sets the participant.
+		/// Gets or sets the reason why the participant left the meeting.
 		/// </summary>
-		public WebhookParticipant Participant { get; set; }
+		public string LeaveReason { get; set; }
 	}
 }

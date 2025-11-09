@@ -5,6 +5,8 @@
 		"account_id": "VjZoEArIT5y-HlWxkV-tVA",
 		"operator": "someone@example.com",
 		"operator_id": "8lzIwvZTSOqjndWPbPqzuA",
+		"scope": "single",
+		"time_stamp": 1617628463664,
 		"object": {
 			"id": 94890226305,
 			"topic": "ZoomNet Unit Testing: UPDATED scheduled meeting",
@@ -14,7 +16,6 @@
 			"id": 94890226305,
 			"topic": "ZoomNet Unit Testing: scheduled meeting",
 			"settings": { "audio": "telephony" }
-		},
-		"time_stamp": 1617628464664
+		}
 	}
 }

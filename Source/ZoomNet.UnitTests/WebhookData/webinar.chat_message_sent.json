@@ -7,14 +7,15 @@
             "id": 1234567890,
             "uuid": "4444AAAiAAAAAiAiAiiAii==",
             "chat_message": {
-                "date_time": "GMT20220110-072010",
+                "date_time": "2022-01-10T07:20:10Z",
                 "sender_session_id": "26219520",
                 "sender_name": "Jill Chill",
                 "sender_email": "dlp.user@example.com",
                 "sender_type": "host",
                 "recipient_session_id": "38681600",
                 "recipient_name": "John Smith",
-                "recipient_type": "everyone",
+                "recipient_email": "guest.user@example",
+                "recipient_type": "guest",
                 "message_id": "MS17MDQ5NjE4QjYtRjk4Ny00REEwLUFBQUItMTg3QTY0RjU2MzhFfQ==",
                 "message_content": "This is a test message",
                 "file_ids": [

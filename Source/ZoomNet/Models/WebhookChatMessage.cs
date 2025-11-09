@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Chat message information as received in meeting chat message webhook events.
+	/// Chat message information as received in meeting or webinar chat message webhook events.
 	/// </summary>
 	public class WebhookChatMessage
 	{
@@ -24,7 +24,8 @@ namespace ZoomNet.Models
 		/// Gets or sets the content of the chat message.
 		/// </summary>
 		/// <remarks>
-		/// Available only in <see cref="Webhooks.MeetingChatMessageSentEvent"/>.
+		/// Available only in <see cref="Webhooks.MeetingChatMessageSentEvent"/> and
+		/// <see cref="Webhooks.WebinarChatMessageSentEvent"/>.
 		/// </remarks>
 		[JsonPropertyName("message_content")]
 		public string Content { get; set; }
@@ -33,7 +34,8 @@ namespace ZoomNet.Models
 		/// Gets or sets the chat file uuids, in base64 encoded format.
 		/// </summary>
 		/// <remarks>
-		/// Available only in <see cref="Webhooks.MeetingChatMessageSentEvent"/>.
+		/// Available only in <see cref="Webhooks.MeetingChatMessageSentEvent"/> and
+		/// <see cref="Webhooks.WebinarChatMessageSentEvent"/>.
 		/// </remarks>
 		[JsonPropertyName("file_ids")]
 		public string[] FileIds { get; set; }

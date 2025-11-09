@@ -6,11 +6,12 @@
     "operator": "admin@example.com",
     "operator_id": "z8yCxjabcdEFGHfp8uQ",
     "scope": "single",
+    "time_stamp": 1617628463664,
     "object": {
       "id": 1234567890,
       "uuid": "4444AAAiAAAAAiAiAiiAii==",
       "host_id": "x1yCzABCDEfg23HiJKl4mN",
-      "topic": "My Webinar",
+      "topic": "ZoomNet Unit Testing: UPDATED scheduled webinar",
       "type": 9,
       "start_time": "2021-07-13T21:44:51Z",
       "duration": 60,
@@ -48,33 +49,34 @@
         },
         "email_in_attendee_report": true,
         "allow_host_control_participant_mute_state": true
-      },
-      "old_object": {
-        "id": 1234567890,
-        "settings": {
-          "participant_video": false,
-          "join_before_host": true,
-          "language_interpretation": {
-            "enable": true,
-            "interpreters": [
-              {
-                "email": "interpreter@example.com",
-                "interpreter_languages": "English,Japanese"
-              }
-            ]
-          },
-          "sign_language_interpretation": {
-            "enable": true,
-            "interpreters": [
-              {
-                "email": "interpreter@example.com",
-                "sign_language": "French"
-              }
-            ]
-          },
-          "email_in_attendee_report": false,
-          "allow_host_control_participant_mute_state": false
-        }
+      }
+    },
+    "old_object": {
+      "id": 1234567890,
+      "topic": "ZoomNet Unit Testing: scheduled webinar",
+      "settings": {
+        "participant_video": false,
+        "join_before_host": true,
+        "language_interpretation": {
+          "enable": true,
+          "interpreters": [
+            {
+              "email": "interpreter@example.com",
+              "interpreter_languages": "English,Japanese"
+            }
+          ]
+        },
+        "sign_language_interpretation": {
+          "enable": true,
+          "interpreters": [
+            {
+              "email": "interpreter@example.com",
+              "sign_language": "French"
+            }
+          ]
+        },
+        "email_in_attendee_report": false,
+        "allow_host_control_participant_mute_state": false
       }
     }
   }

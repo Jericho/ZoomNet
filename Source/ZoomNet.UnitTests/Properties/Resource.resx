@@ -1744,4 +1744,22 @@
   <data name="contact_center_team_created_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\WebhookData\contact_center.team_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="rtms_concurrency_near_limit_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WebhookData\rtms.concurrency_near_limit.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_team_deleted_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WebhookData\contact_center.team_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_team_members_assigned_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WebhookData\contact_center.team_members_assigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_team_members_unassigned_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WebhookData\contact_center.team_members_unassigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_team_moved_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WebhookData\contact_center.team_moved.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_team_updated_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WebhookData\contact_center.team_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

@@ -1,0 +1,13 @@
+{
+  "event": "contact_center.team_updated",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "team_id": "2mDPBg3vSYC_l6crQgeCkA",
+      "team_name": "My Team",
+      "team_description": "This is the updated sales team",
+      "date_time_ms": "2025-02-16T09:27:15.988Z"
+    }
+  }
+}

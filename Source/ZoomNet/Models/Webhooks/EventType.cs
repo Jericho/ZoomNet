@@ -112,7 +112,7 @@ namespace ZoomNet.Models.Webhooks
 		/// A host or meeting attendee changed their role during the meeting.
 		/// </summary>
 		[EnumMember(Value = "meeting.participant_role_changed")]
-		MeetingParticipantRolechanged,
+		MeetingParticipantRoleChanged,
 
 		/// <summary>
 		/// A meeting has been permanently deleted.
@@ -177,7 +177,7 @@ namespace ZoomNet.Models.Webhooks
 		/// <summary>
 		/// A service issue has been encountered during a webinar.
 		/// </summary>
-		[EnumMember(Value = "webinar.alerts")]
+		[EnumMember(Value = "webinar.alert")]
 		WebinarServiceIssue,
 
 		/// <summary>
@@ -467,5 +467,71 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "meeting.risk_alert")]
 		MeetingRiskAlert,
+
+		/// <summary>
+		/// A phone user has joined a meeting and bound to an attendee in the meeting.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_bind")]
+		MeetingParticipantBind,
+
+		/// <summary>
+		/// An attendee waiting for the host to join the meeting has left.
+		/// </summary>
+		[EnumMember(Value = "meeting.participant_jbh_waiting_left")]
+		MeetingParticipantWaitingForHostLeft,
+
+		/// <summary>
+		/// A message file from a webinar has been downloaded.
+		/// </summary>
+		[EnumMember(Value = "webinar.chat_message_file_downloaded")]
+		WebinarChatMessageFileDownloaded,
+
+		/// <summary>
+		/// A message file of a webinar is available to view or download.
+		/// </summary>
+		[EnumMember(Value = "webinar.chat_message_file_sent")]
+		WebinarChatMessageFileSent,
+
+		/// <summary>
+		/// A user has sent a public or private chat message during a webinar using chat feature.
+		/// </summary>
+		[EnumMember(Value = "webinar.chat_message_sent")]
+		WebinarChatMessageSent,
+
+		/// <summary>
+		/// A user has converted a webinar into a meeting.
+		/// </summary>
+		[EnumMember(Value = "webinar.converted_to_meeting")]
+		WebinarConvertedToMeeting,
+
+		/// <summary>
+		/// A phone user has joined a webinar and is bound to an attendee in the webinar.
+		/// </summary>
+		[EnumMember(Value = "webinar.participant_bind")]
+		WebinarParticipantBind,
+
+		/// <summary>
+		/// An attendee has completed end-of-webinar feedback survey.
+		/// </summary>
+		[EnumMember(Value = "webinar.participant_feedback")]
+		WebinarParticipantFeedback,
+
+		/// <summary>
+		/// A host or webinar attendee has changed their role during the webinar.
+		/// </summary>
+		[EnumMember(Value = "webinar.participant_role_changed")]
+		WebinarParticipantRoleChanged,
+
+		/// <summary>
+		/// A scheduled webinar is permanently deleted.
+		/// </summary>
+		[EnumMember(Value = "webinar.permanently_deleted")]
+		WebinarPermanentlyDeleted,
+
+		/// <summary>
+		/// A user has recovered a previously deleted webinar.
+		/// </summary>
+		[EnumMember(Value = "webinar.recovered")]
+		WebinarRecovered,
 	}
 }

@@ -11,8 +11,17 @@ namespace ZoomNet.UnitTests
 	/// <summary>
 	/// Unit tests that verify webhook events parsing.
 	/// </summary>
-	public class WebhookParserTests
+	public partial class WebhookParserTests
 	{
+		#region private fields
+
+		/// <summary>
+		/// Timestamp widely used in test data.
+		/// </summary>
+		private static readonly DateTime timestamp = new DateTime(2021, 7, 13, 21, 44, 51, DateTimeKind.Utc);
+
+		#endregion
+
 		#region tests
 
 		[Fact]
@@ -27,19 +36,32 @@ namespace ZoomNet.UnitTests
 			parsedEvent.OperatorId.ShouldBe("8lzIwvZTSOqjndWPbPqzuA");
 			parsedEvent.Operation.ShouldBe("single");
 
-			parsedEvent.Meeting.ShouldNotBeNull();
-			parsedEvent.Meeting.Uuid.ShouldBe("5yDZGNlQSV6qOjg4NxajHQ==");
-			parsedEvent.Meeting.Id.ShouldBe(98884753832);
-			parsedEvent.Meeting.HostId.ShouldBe("8lzIwvZTSOqjndWPbPqzuA");
-			parsedEvent.Meeting.Topic.ShouldBe("ZoomNet Unit Testing: instant meeting");
-			parsedEvent.Meeting.Type.ShouldBe(MeetingType.Instant);
-			parsedEvent.Meeting.Timezone.ShouldBe(TimeZones.America_New_York);
-			parsedEvent.Meeting.JoinUrl.ShouldBe("https://zoom.us/j/98884753832?pwd=c21EQzg0SXY2dlNTOFF2TENpSm1aQT09");
-			parsedEvent.Meeting.Password.ShouldBe("PaSsWoRd");
-			parsedEvent.Meeting.Settings.ShouldNotBeNull();
-			parsedEvent.Meeting.Settings.UsePmi.HasValue.ShouldBeTrue();
-			parsedEvent.Meeting.Settings.UsePmi.Value.ShouldBeFalse();
-			parsedEvent.Meeting.Settings.AlternativeHosts.ShouldBeEmpty();
+			VerifyRecurringMeeting(
+				parsedEvent.Meeting,
+				joinUrl: "https://zoom.us/j/98884753832?pwd=c21EQzg0SXY2dlNTOFF2TENpSm1aQT09",
+				password: "PaSsWoRd",
+				pmi: "ABc$DE@F234",
+				occurrenceDuration: 60,
+				occurrenceStatus: "available");
+
+			var recurringMeeting = (RecurringMeeting)parsedEvent.Meeting;
+
+			recurringMeeting.RecurrenceInfo.ShouldNotBeNull();
+			recurringMeeting.RecurrenceInfo.Type.ShouldBe(RecurrenceType.Daily);
+			recurringMeeting.RecurrenceInfo.RepeatInterval.ShouldBe(2);
+			recurringMeeting.RecurrenceInfo.EndTimes.ShouldBe(5);
+
+			recurringMeeting.Settings.ShouldNotBeNull();
+			recurringMeeting.Settings.UsePmi.ShouldNotBeNull();
+			recurringMeeting.Settings.UsePmi.Value.ShouldBeFalse();
+			recurringMeeting.Settings.AlternativeHosts.ShouldBe("althost1@example.com;althost2@example.com");
+			recurringMeeting.Settings.JoinBeforeHost.ShouldNotBeNull();
+			recurringMeeting.Settings.JoinBeforeHost.Value.ShouldBeTrue();
+			recurringMeeting.Settings.JoinBeforeHostTime.ShouldNotBeNull();
+			recurringMeeting.Settings.JoinBeforeHostTime.Value.ShouldBe(JoinBeforeHostTime.TenMinutes);
+			recurringMeeting.Settings.Invitees.ShouldNotBeNull();
+			recurringMeeting.Settings.Invitees.Length.ShouldBe(1);
+			recurringMeeting.Settings.Invitees[0].Email.ShouldBe("jchill@example.com");
 		}
 
 		[Fact]
@@ -105,16 +127,9 @@ namespace ZoomNet.UnitTests
 			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
 			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
 
-			parsedEvent.Meeting.ShouldNotBeNull();
-			parsedEvent.Meeting.Uuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
-			parsedEvent.Meeting.Id.ShouldBe(1234567890);
-			parsedEvent.Meeting.HostId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
-			parsedEvent.Meeting.Topic.ShouldBe("My Meeting");
-			parsedEvent.Meeting.Type.ShouldBe(MeetingType.RecurringNoFixedTime);
-			parsedEvent.Meeting.Timezone.ShouldBe(TimeZones.America_Los_Angeles);
-			parsedEvent.Meeting.JoinUrl.ShouldBeNull();
-			parsedEvent.Meeting.Password.ShouldBeNull();
-			parsedEvent.Meeting.Settings.ShouldBeNull();
+			VerifyMeetingInfo(parsedEvent.Meeting);
+
+			parsedEvent.EndTime.ShouldBe(new DateTime(2021, 7, 13, 23, 0, 51, DateTimeKind.Utc));
 		}
 
 		[Fact]
@@ -126,12 +141,16 @@ namespace ZoomNet.UnitTests
 			parsedEvent.Timestamp.ShouldBe(1617628464664.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
 			parsedEvent.Operator.ShouldBe("someone@example.com");
 			parsedEvent.OperatorId.ShouldBe("8lzIwvZTSOqjndWPbPqzuA");
+			parsedEvent.Operation.ShouldBe("single");
+			parsedEvent.UpdatedOn.ShouldBe(1617628463664.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
+
 			parsedEvent.ModifiedFields.ShouldNotBeNull();
 			parsedEvent.ModifiedFields.Length.ShouldBe(2);
 			parsedEvent.ModifiedFields[0].FieldName.ShouldBe("topic");
 			parsedEvent.ModifiedFields[0].OldValue.ShouldBe("ZoomNet Unit Testing: scheduled meeting");
 			parsedEvent.ModifiedFields[0].NewValue.ShouldBe("ZoomNet Unit Testing: UPDATED scheduled meeting");
 			parsedEvent.ModifiedFields[1].FieldName.ShouldBe("settings");
+
 			parsedEvent.MeetingFields.ShouldNotBeNull();
 			parsedEvent.MeetingFields.Length.ShouldBe(1);
 			parsedEvent.MeetingFields[0].FieldName.ShouldBe("id");
@@ -147,15 +166,7 @@ namespace ZoomNet.UnitTests
 			parsedEvent.Timestamp.ShouldBe(1619016544371.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
 			parsedEvent.AccountId.ShouldBe("VjZoEArIT5y-HlWxkV-tVA");
 
-			parsedEvent.Meeting.ShouldNotBeNull();
-			parsedEvent.Meeting.ShouldBeOfType<InstantMeeting>();
-			var parsedMeeting = (InstantMeeting)parsedEvent.Meeting;
-			parsedMeeting.Id.ShouldBe(3479130610);
-			parsedMeeting.Topic.ShouldBe("My Personal Meeting Room");
-			parsedMeeting.Uuid.ShouldBe("mOG8pEaFQqeDm6Vd/3xopA==");
-			parsedMeeting.HostId.ShouldBe("8lzIwvZTSOqjndWPbPqzuA");
-			parsedMeeting.Timezone.ShouldBe(TimeZones.America_New_York);
-			parsedMeeting.Type.ShouldBe(MeetingType.Personal);
+			VerifyMeetingInfo(parsedEvent.Meeting);
 		}
 
 		[Fact]
@@ -190,7 +201,7 @@ namespace ZoomNet.UnitTests
 			parsedEvent.Issues.ShouldNotBeNull();
 			parsedEvent.Issues.ShouldBe(new[] { "Unstable audio quality" });
 
-			VerifyScheduledMeeting(parsedEvent.Meeting);
+			VerifyMeetingInfo(parsedEvent.Meeting);
 		}
 
 		[Fact]
@@ -209,7 +220,7 @@ namespace ZoomNet.UnitTests
 			parsedEvent.Recording.HostId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
 			parsedEvent.Recording.AccountId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
 			parsedEvent.Recording.Topic.ShouldBe("My Personal Recording");
-			parsedEvent.Recording.StartTime.ShouldBe(new DateTime(2021, 7, 13, 21, 44, 51, DateTimeKind.Utc));
+			parsedEvent.Recording.StartTime.ShouldBe(timestamp);
 			parsedEvent.Recording.Password.ShouldBe("132456");
 			parsedEvent.Recording.Duration.ShouldBe(60);
 			parsedEvent.Recording.ShareUrl.ShouldBe("https://example.com");
@@ -267,28 +278,194 @@ namespace ZoomNet.UnitTests
 		}
 
 		[Fact]
-		public void WebinarEnded()
+		public void MeetingParticipantAdmitted()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarEndedEvent>(Resource.webinar_ended_webhook);
+			var parsedEvent = ParseWebhookEvent<MeetingParticipantAdmittedEvent>(Resource.meeting_participant_admitted_webhook);
 
-			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarEnded);
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingParticipantAdmitted);
+
+			VerifyMeetingParticipantEvent(parsedEvent);
+
+			VerifyWebhookParticipant(parsedEvent.Participant);
+
+			parsedEvent.AdmittedOn.ShouldBe(timestamp);
+		}
+
+		[Fact]
+		public void MeetingParticipantBind()
+		{
+			var parsedEvent = ParseWebhookEvent<MeetingParticipantBindEvent>(Resource.meeting_participant_bind_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingParticipantBind);
+
+			VerifyMeetingParticipantEvent(parsedEvent);
+
+			VerifyWebhookParticipant(parsedEvent.Participant, customerKey: null);
+
+			parsedEvent.BindUserId.ShouldBe("16778240");
+			parsedEvent.BindParticipantUuid.ShouldBe("B8E2844F-F162-4808-A997-F267BCE8B0BB");
+			parsedEvent.BoundOn.ShouldBe(timestamp);
+		}
+
+		[Fact]
+		public void MeetingParticipantFeedback()
+		{
+			var parsedEvent = ParseWebhookEvent<MeetingParticipantFeedbackEvent>(Resource.meeting_participant_feedback_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingParticipantFeedback);
 			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
-			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
+			parsedEvent.AccountId.ShouldBe("q6gBJVO5TzexKYTb_I2rpg");
 
-			parsedEvent.Webinar.ShouldNotBeNull();
-			parsedEvent.Webinar.ShouldBeOfType<ScheduledWebinar>();
-			var parsedWebinar = (ScheduledWebinar)parsedEvent.Webinar;
-			parsedWebinar.Uuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
-			parsedWebinar.Id.ShouldBe(1234567890);
-			parsedWebinar.HostId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
-			parsedWebinar.Topic.ShouldBe("My Webinar");
-			parsedWebinar.Type.ShouldBe(WebinarType.Regular);
-			parsedWebinar.StartTime.ShouldBe(new DateTime(2021, 7, 13, 21, 44, 51, DateTimeKind.Utc));
-			parsedWebinar.Timezone.ShouldBe(TimeZones.America_Los_Angeles);
-			parsedWebinar.Duration.ShouldBe(60);
-			parsedWebinar.JoinUrl.ShouldBeNull();
-			parsedWebinar.Password.ShouldBeNull();
-			parsedWebinar.Settings.ShouldBeNull();
+			parsedEvent.Meeting.ShouldNotBeNull();
+			parsedEvent.Meeting.Id.ShouldBe(7357282288);
+			parsedEvent.Meeting.Uuid.ShouldBe("0AErJTQBTI2bSXKyAxIq5A==");
+
+			parsedEvent.Participant.ShouldNotBeNull();
+			parsedEvent.Participant.ParticipantUserId.ShouldBe("zJKyaiAyTNC-MWjiWC18KQ");
+			parsedEvent.Participant.ParticipantUuid.ShouldBe("I2rpg_q6gBJVO5TzexKYTb");
+			parsedEvent.Participant.DisplayName.ShouldBe("jchill");
+
+			parsedEvent.Feedback.ShouldNotBeNull();
+			parsedEvent.Feedback.Satisfied.ShouldBeFalse();
+			parsedEvent.Feedback.Comments.ShouldBe("good enough");
+			parsedEvent.Feedback.Details.ShouldNotBeNull();
+			parsedEvent.Feedback.Details.Length.ShouldBe(1);
+			parsedEvent.Feedback.Details[0].Key.ShouldBe("2");
+			parsedEvent.Feedback.Details[0].Value.ShouldBe("Poor audio quality");
+		}
+
+		[Fact]
+		public void MeetingParticipantJoinedBeforeHost()
+		{
+			var parsedEvent = ParseWebhookEvent<MeetingParticipantJoinedBeforeHostEvent>(Resource.meeting_participant_jbh_joined_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingParticipantJoinedBeforeHost);
+
+			VerifyMeetingParticipantEvent(parsedEvent);
+
+			parsedEvent.Participant.ShouldNotBeNull();
+			parsedEvent.Participant.UserId.ShouldBe("iFxeBPYun6SAiWUzBcEkX");
+			parsedEvent.Participant.DisplayName.ShouldBe("Jill Chill");
+			parsedEvent.Participant.CustomerKey.ShouldBe("349589LkJyeW");
+			parsedEvent.Participant.RegistrantId.ShouldBe("abcdefghij0-klmnopq23456");
+		}
+
+		[Fact]
+		public void MeetingParticipantWaitingForHost()
+		{
+			var parsedEvent = ParseWebhookEvent<MeetingParticipantWaitingForHostEvent>(Resource.meeting_participant_jbh_waiting_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingParticipantWaitingForHost);
+
+			VerifyMeetingParticipantEvent(parsedEvent);
+
+			parsedEvent.Participant.ShouldNotBeNull();
+			parsedEvent.Participant.UserId.ShouldBe("iFxeBPYun6SAiWUzBcEkX");
+			parsedEvent.Participant.DisplayName.ShouldBe("Jill Chill");
+			parsedEvent.Participant.CustomerKey.ShouldBe("349589LkJyeW");
+		}
+
+		[Fact]
+		public void MeetingParticipantWaitingForHostLeft()
+		{
+			var parsedEvent = ParseWebhookEvent<MeetingParticipantWaitingForHostLeftEvent>(Resource.meeting_participant_jbh_waiting_left_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingParticipantWaitingForHostLeft);
+
+			VerifyMeetingParticipantEvent(parsedEvent);
+
+			parsedEvent.Participant.ShouldNotBeNull();
+			parsedEvent.Participant.UserId.ShouldBe("iFxeBPYun6SAiWUzBcEkX");
+			parsedEvent.Participant.DisplayName.ShouldBe("Jill Chill");
+			parsedEvent.Participant.CustomerKey.ShouldBe("349589LkJyeW");
+			parsedEvent.Participant.RegistrantId.ShouldBe("abcdefghij0-klmnopq23456");
+		}
+
+		[Fact]
+		public void MeetingParticipantJoined()
+		{
+			var parsedEvent = ParseWebhookEvent<MeetingParticipantJoinedEvent>(Resource.meeting_participant_joined_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingParticipantJoined);
+
+			VerifyMeetingParticipantEvent(parsedEvent);
+
+			VerifyWebhookParticipant(parsedEvent.Participant);
+
+			parsedEvent.JoinedOn.ShouldBe(timestamp);
+		}
+
+		[Fact]
+		public void MeetingParticipantJoinedWaitingRoom()
+		{
+			var parsedEvent = ParseWebhookEvent<MeetingParticipantJoinedWaitingRoomEvent>(Resource.meeting_participant_joined_waiting_room_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingParticipantJoinedWaitingRoom);
+
+			VerifyMeetingParticipantEvent(parsedEvent);
+
+			VerifyWebhookParticipant(parsedEvent.Participant);
+
+			parsedEvent.JoinedOn.ShouldBe(timestamp);
+		}
+
+		[Fact]
+		public void MeetingParticipantLeft()
+		{
+			var parsedEvent = ParseWebhookEvent<MeetingParticipantLeftEvent>(Resource.meeting_participant_left_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingParticipantLeft);
+
+			VerifyMeetingParticipantEvent(parsedEvent);
+
+			VerifyWebhookParticipant(parsedEvent.Participant);
+
+			parsedEvent.LeftOn.ShouldBe(timestamp);
+			parsedEvent.LeaveReason.ShouldBe("Jill Chill left the meeting.<br>Reason: Host ended the meeting.");
+		}
+
+		[Fact]
+		public void MeetingParticipantLeftWaitingRoom()
+		{
+			var parsedEvent = ParseWebhookEvent<MeetingParticipantLeftWaitingRoomEvent>(Resource.meeting_participant_left_waiting_room_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingParticipantLeftWaitingRoom);
+
+			VerifyMeetingParticipantEvent(parsedEvent);
+
+			VerifyWebhookParticipant(parsedEvent.Participant);
+
+			parsedEvent.LeftOn.ShouldBe(timestamp);
+		}
+
+		[Fact]
+		public void MeetingParticipantSentToWaitingRoom()
+		{
+			var parsedEvent = ParseWebhookEvent<MeetingParticipantSentToWaitingRoomEvent>(Resource.meeting_participant_put_in_waiting_room_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingParticipantSentToWaitingRoom);
+
+			VerifyMeetingParticipantEvent(parsedEvent);
+
+			VerifyWebhookParticipant(parsedEvent.Participant);
+
+			parsedEvent.SentToWaitingRoomOn.ShouldBe(timestamp);
+		}
+
+		[Fact]
+		public void MeetingParticipantRoleChanged()
+		{
+			var parsedEvent = ParseWebhookEvent<MeetingParticipantRoleChangedEvent>(Resource.meeting_participant_role_changed_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingParticipantRoleChanged);
+
+			VerifyMeetingParticipantEvent(parsedEvent);
+
+			VerifyWebhookParticipant(parsedEvent.Participant, customerKey: null, phoneNumber: null);
+
+			parsedEvent.ChangedOn.ShouldBe(timestamp);
+			parsedEvent.NewRole.ShouldBe(ParticipantRole.CoHost);
+			parsedEvent.OldRole.ShouldBe(ParticipantRole.Host);
 		}
 
 		[Fact]
@@ -713,15 +890,7 @@ namespace ZoomNet.UnitTests
 			parsedEvent.Operator.ShouldBe("admin@example.com");
 			parsedEvent.OperatorId.ShouldBe("z8yCxjabcdEFGHfp8uQ");
 
-			parsedEvent.Webinar.ShouldNotBeNull();
-			parsedEvent.Webinar.Id.ShouldBe(1234567890);
-			parsedEvent.Webinar.Uuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
-			parsedEvent.Webinar.HostId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
-			parsedEvent.Webinar.Topic.ShouldBe("My Meeting Converted");
-			parsedEvent.Webinar.Type.ShouldBe(WebinarType.Regular);
-			parsedEvent.Webinar.StartTime.ShouldBe(new DateTime(2021, 7, 13, 21, 44, 51, DateTimeKind.Utc));
-			parsedEvent.Webinar.Duration.ShouldBe(60);
-			parsedEvent.Webinar.Timezone.ShouldBe(TimeZones.America_Los_Angeles);
+			VerifyWebinarInfo(parsedEvent.Webinar);
 		}
 
 		[Fact]
@@ -765,7 +934,7 @@ namespace ZoomNet.UnitTests
 			parsedEvent.Meeting.HostId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
 			parsedEvent.Meeting.Topic.ShouldBe("My Meeting");
 			parsedEvent.Meeting.Type.ShouldBe(MeetingType.Scheduled);
-			parsedEvent.Meeting.StartTime.ShouldBe(new DateTime(2021, 7, 13, 21, 44, 51, DateTimeKind.Utc));
+			parsedEvent.Meeting.StartTime.ShouldBe(timestamp);
 			parsedEvent.Meeting.Timezone.ShouldBe(TimeZones.America_Los_Angeles);
 
 			parsedEvent.ArmnDetails.ShouldNotBeNull();
@@ -788,16 +957,10 @@ namespace ZoomNet.UnitTests
 			var parsedEvent = ParseWebhookEvent<MeetingLiveStreamStartedEvent>(Resource.meeting_live_streaming_started_webhook);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingLiveStreamStarted);
-			parsedEvent.Timestamp.ShouldBe(1627906965803.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
-			parsedEvent.AccountId.ShouldBe("D8cJuqWVQ623CI4Q8yQK0Q");
-			parsedEvent.Operator.ShouldBe("admin@example.com");
-			parsedEvent.OperatorId.ShouldBe("z8yCxjabcdEFGHfp8uQ");
 
-			VerifyScheduledMeeting(parsedEvent.Meeting);
+			VerifyMeetingLiveStreamEvent(parsedEvent);
 
 			parsedEvent.StartedOn.ShouldBe(new DateTime(2021, 8, 2, 12, 22, 45, DateTimeKind.Utc));
-
-			VerifyLiveStreamingInfo(parsedEvent.StreamingInfo);
 		}
 
 		[Fact]
@@ -806,16 +969,10 @@ namespace ZoomNet.UnitTests
 			var parsedEvent = ParseWebhookEvent<MeetingLiveStreamStoppedEvent>(Resource.meeting_live_streaming_stopped_webhook);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingLiveStreamStopped);
-			parsedEvent.Timestamp.ShouldBe(1627906965803.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
-			parsedEvent.AccountId.ShouldBe("D8cJuqWVQ623CI4Q8yQK0Q");
-			parsedEvent.Operator.ShouldBe("admin@example.com");
-			parsedEvent.OperatorId.ShouldBe("z8yCxjabcdEFGHfp8uQ");
 
-			VerifyScheduledMeeting(parsedEvent.Meeting);
+			VerifyMeetingLiveStreamEvent(parsedEvent);
 
 			parsedEvent.StoppedOn.ShouldBe(new DateTime(2021, 8, 2, 12, 22, 45, DateTimeKind.Utc));
-
-			VerifyLiveStreamingInfo(parsedEvent.StreamingInfo);
 		}
 
 		[Fact]
@@ -936,6 +1093,55 @@ namespace ZoomNet.UnitTests
 		}
 
 		/// <summary>
+		/// Verify <see cref="MeetingParticipantEvent"/> properties.
+		/// </summary>
+		private static void VerifyMeetingParticipantEvent(MeetingParticipantEvent parsedEvent)
+		{
+			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
+			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
+
+			VerifyMeetingInfo(parsedEvent.Meeting);
+		}
+
+		/// <summary>
+		/// Verify <see cref="MeetingInfo"/> properties.
+		/// </summary>
+		private static void VerifyMeetingInfo(MeetingInfo info)
+		{
+			info.ShouldNotBeNull();
+			info.Id.ShouldBe(1234567890);
+			info.Uuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
+			info.HostId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
+			info.Topic.ShouldBe("My Meeting");
+			info.Type.ShouldBe(MeetingType.RecurringFixedTime);
+			info.StartTime.ShouldBe(timestamp);
+			info.Timezone.ShouldBe(TimeZones.America_Los_Angeles);
+			info.Duration.ShouldBe(60);
+		}
+
+		/// <summary>
+		/// Verify <see cref="WebhookParticipant"/> properties.
+		/// </summary>
+		private static void VerifyWebhookParticipant(
+			WebhookParticipant info,
+			string customerKey = "349589LkJyeW",
+			string phoneNumber = "8615250064084",
+			string email = "jchill@example.com",
+			string participantUserId = "iFxeBPYun6SAiWUzBcEkX")
+		{
+			info.ShouldNotBeNull();
+			info.UserId.ShouldBe("iFxeBPYun6SAiWUzBcEkX");
+			info.DisplayName.ShouldBe("Jill Chill");
+			info.ParticipantId.ShouldBe("55555AAAiAAAAAiAiAiiAii");
+			info.ParticipantUuid.ShouldBe("55555AAAiAAAAAiAiAiiAii");
+			info.Email.ShouldBe(email);
+			info.RegistrantId.ShouldBe("abcdefghij0-klmnopq23456");
+			info.ParticipantUserId.ShouldBe(participantUserId);
+			info.PhoneNumber.ShouldBe(phoneNumber);
+			info.CustomerKey.ShouldBe(customerKey);
+		}
+
+		/// <summary>
 		/// Verify <see cref="MeetingBreakoutRoomEvent"/> properties.
 		/// </summary>
 		private static void VerifyMeetingBreakoutRoomEvent(MeetingBreakoutRoomEvent parsedEvent)
@@ -951,16 +1157,9 @@ namespace ZoomNet.UnitTests
 		/// </summary>
 		private static void VerifyBreakoutRoomMeetingInfo(BreakoutRoomMeetingInfo info)
 		{
-			info.ShouldNotBeNull();
-			info.Id.ShouldBe(1234567890);
-			info.Uuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
+			VerifyMeetingInfo(info);
+
 			info.BreakoutRoomUuid.ShouldBe("FkQbpP2UR028mDrwzEahqw==");
-			info.HostId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
-			info.Topic.ShouldBe("My Meeting");
-			info.Type.ShouldBe(MeetingType.RecurringFixedTime);
-			info.StartTime.ShouldBe(new DateTime(2021, 7, 13, 21, 44, 51, DateTimeKind.Utc));
-			info.Timezone.ShouldBe(TimeZones.America_Los_Angeles);
-			info.Duration.ShouldBe(60);
 		}
 
 		/// <summary>
@@ -1126,29 +1325,15 @@ namespace ZoomNet.UnitTests
 		}
 
 		/// <summary>
-		/// Verify that meeting is a scheduled meeting.
-		/// </summary>
-		private static void VerifyScheduledMeeting(Meeting meeting)
-		{
-			meeting.ShouldNotBeNull();
-			meeting.ShouldBeOfType<ScheduledMeeting>();
-
-			var scheduledMeeting = (ScheduledMeeting)meeting;
-
-			scheduledMeeting.Id.ShouldBe(1234567890L);
-			scheduledMeeting.Topic.ShouldBe("My Meeting");
-			scheduledMeeting.Uuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
-			scheduledMeeting.HostId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
-			scheduledMeeting.StartTime.ShouldBe(new DateTime(2021, 7, 13, 21, 44, 51, 0, DateTimeKind.Utc));
-			scheduledMeeting.Duration.ShouldBe(60);
-			scheduledMeeting.Timezone.ShouldBe(TimeZones.America_Los_Angeles);
-			scheduledMeeting.Type.ShouldBe(MeetingType.Scheduled);
-		}
-
-		/// <summary>
 		/// Verify that meeting is a recurring meeting.
 		/// </summary>
-		private static void VerifyRecurringMeeting(Meeting meeting)
+		private static void VerifyRecurringMeeting(
+			Meeting meeting,
+			string joinUrl = null,
+			string password = null,
+			string pmi = null,
+			int? occurrenceDuration = null,
+			string occurrenceStatus = null)
 		{
 			meeting.ShouldNotBeNull();
 			meeting.ShouldBeOfType<RecurringMeeting>();
@@ -1161,10 +1346,39 @@ namespace ZoomNet.UnitTests
 			recurringMeeting.Topic.ShouldBe("My Meeting");
 			recurringMeeting.Type.ShouldBe(MeetingType.RecurringFixedTime);
 			recurringMeeting.Timezone.ShouldBe(TimeZones.America_Los_Angeles);
-			recurringMeeting.Occurrences.ShouldNotBeNull();
-			recurringMeeting.Occurrences.Length.ShouldBe(1);
-			recurringMeeting.Occurrences[0].OccurrenceId.ShouldBe("ABCDE12345");
-			recurringMeeting.Occurrences[0].StartTime.ShouldBe(new DateTime(2021, 7, 13, 21, 44, 51, DateTimeKind.Utc));
+			recurringMeeting.JoinUrl.ShouldBe(joinUrl);
+			recurringMeeting.Password.ShouldBe(password);
+			recurringMeeting.PersonalMeetingId.ShouldBe(pmi);
+
+			VerifyMeetingOccurrences(recurringMeeting.Occurrences, occurrenceDuration, occurrenceStatus);
+		}
+
+		/// <summary>
+		/// Verify meeting occurrences content.
+		/// </summary>
+		private static void VerifyMeetingOccurrences(MeetingOccurrence[] info, int? duration, string status)
+		{
+			info.ShouldNotBeNull();
+			info.Length.ShouldBe(1);
+			info[0].OccurrenceId.ShouldBe("ABCDE12345");
+			info[0].StartTime.ShouldBe(timestamp);
+			info[0].Duration.ShouldBe(duration);
+			info[0].Status.ShouldBe(status);
+		}
+
+		/// <summary>
+		/// Verify <see cref="MeetingLiveStreamEvent"/> properties.
+		/// </summary>
+		private static void VerifyMeetingLiveStreamEvent(MeetingLiveStreamEvent parsedEvent)
+		{
+			parsedEvent.Timestamp.ShouldBe(1627906965803.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
+			parsedEvent.AccountId.ShouldBe("D8cJuqWVQ623CI4Q8yQK0Q");
+			parsedEvent.Operator.ShouldBe("admin@example.com");
+			parsedEvent.OperatorId.ShouldBe("z8yCxjabcdEFGHfp8uQ");
+
+			VerifyMeetingInfo(parsedEvent.Meeting);
+
+			VerifyLiveStreamingInfo(parsedEvent.StreamingInfo);
 		}
 
 		/// <summary>
@@ -1218,7 +1432,7 @@ namespace ZoomNet.UnitTests
 			parsedEvent.Participant.ParticipantId.ShouldBe("16778000");
 			parsedEvent.Participant.UserId.ShouldBe("s0AAAASoSE1V8KIFOCYw");
 
-			VerifyScheduledMeeting(parsedEvent.Meeting);
+			VerifyMeetingInfo(parsedEvent.Meeting);
 
 			VerifyScreenshareDetails(parsedEvent.ScreenshareDetails);
 		}

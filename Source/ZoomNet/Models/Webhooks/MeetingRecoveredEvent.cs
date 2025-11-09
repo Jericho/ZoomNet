@@ -8,13 +8,13 @@ namespace ZoomNet.Models.Webhooks
 	public class MeetingRecoveredEvent : MeetingEvent
 	{
 		/// <summary>
-		/// Gets or sets the email address of the user who created the meeting.
+		/// Gets or sets the email address of the user who recovered the meeting.
 		/// </summary>
 		[JsonPropertyName("operator")]
 		public string Operator { get; set; }
 
 		/// <summary>
-		/// Gets or sets the user ID of the operator who created the meeting.
+		/// Gets or sets the user ID of the operator who recovered the meeting.
 		/// </summary>
 		[JsonPropertyName("operator_id")]
 		public string OperatorId { get; set; }

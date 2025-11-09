@@ -1,0 +1,16 @@
+{
+  "event": "contact_center.team_members_unassigned",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "team_id": "2mDPBg3vSYC_l6crQgeCkA",
+      "user_ids": [
+        "IGTRVt3gQ2i-WjoUIjeZxw",
+        "T_X0vrroQPO4UwXGNeBS8A"
+      ],
+      "team_role": "supervisor",
+      "date_time_ms": "2025-02-16T09:27:15.987Z"
+    }
+  }
+}

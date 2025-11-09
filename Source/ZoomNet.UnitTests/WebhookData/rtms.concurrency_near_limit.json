@@ -1,0 +1,9 @@
+{
+  "event": "rtms.concurrency_near_limit",
+  "event_ts": 1626230691572,
+  "payload": {
+    "concurrency_limit": 2000,
+    "concurrency_number": 1601,
+    "percentage": 80
+  }
+}
