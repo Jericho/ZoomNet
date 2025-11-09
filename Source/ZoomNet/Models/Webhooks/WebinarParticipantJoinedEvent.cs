@@ -3,18 +3,13 @@ using System;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>
-	/// This event is triggered when a webinar participant joins the webinar.
+	/// This event is triggered when a host or attendee joins a webinar.
 	/// </summary>
-	public class WebinarParticipantJoinedEvent : WebinarEvent
+	public class WebinarParticipantJoinedEvent : WebinarParticipantEvent
 	{
 		/// <summary>
-		/// Gets or sets the date and time at which the participant joined the meeting.
+		/// Gets or sets the date and time at which the participant joined the webinar.
 		/// </summary>
 		public DateTime JoinedOn { get; set; }
-
-		/// <summary>
-		/// Gets or sets the participant.
-		/// </summary>
-		public WebhookParticipant Participant { get; set; }
 	}
 }

@@ -151,5 +151,11 @@ namespace ZoomNet.Models
 		/// </remarks>
 		[JsonPropertyName("authentication_option")]
 		public string AuthenticationTypeId { get; set; }
+
+		/// <summary>
+		/// Gets or sets the value indicating whether to use Personal Meeting ID. Only used for scheduled webinars and recurring webinars with no fixed time.
+		/// </summary>
+		[JsonPropertyName("use_pmi")]
+		public bool? UsePmi { get; set; }
 	}
 }

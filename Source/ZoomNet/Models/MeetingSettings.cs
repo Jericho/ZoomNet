@@ -268,5 +268,11 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonPropertyName("show_share_button")]
 		public bool? ShowShareButton { get; set; }
+
+		/// <summary>
+		/// Gets or sets meeting's invitees.
+		/// </summary>
+		[JsonPropertyName("meeting_invitees")]
+		public InvitedParticipant[] Invitees { get; set; }
 	}
 }

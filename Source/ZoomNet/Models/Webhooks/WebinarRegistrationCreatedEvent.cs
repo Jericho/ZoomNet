@@ -3,11 +3,7 @@ namespace ZoomNet.Models.Webhooks
 	/// <summary>
 	/// This event is triggered when a participant registers for a webinar.
 	/// </summary>
-	public class WebinarRegistrationCreatedEvent : WebinarEvent
+	public class WebinarRegistrationCreatedEvent : WebinarRegistrationEvent
 	{
-		/// <summary>
-		/// Gets or sets the registrant information.
-		/// </summary>
-		public Registrant Registrant { get; set; }
 	}
 }

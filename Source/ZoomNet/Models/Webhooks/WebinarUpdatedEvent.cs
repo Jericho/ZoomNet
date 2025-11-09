@@ -1,3 +1,4 @@
+using System;
 using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models.Webhooks
@@ -18,6 +19,17 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[JsonPropertyName("operator_id")]
 		public string OperatorId { get; set; }
+
+		/// <summary>
+		/// Gets or sets the operation (allowed values: all, single).
+		/// </summary>
+		[JsonPropertyName("scope")]
+		public string Operation { get; set; }
+
+		/// <summary>
+		/// Gets or sets the webinar's update timestamp.
+		/// </summary>
+		public DateTime UpdatedOn { get; set; }
 
 		/// <summary>
 		/// Gets or sets the fields that have been modified.
