@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Chat message information as received in meeting or webhook chat message webhook events.
+	/// Chat message information as received in meeting or webinar chat message webhook events.
 	/// </summary>
 	public class WebhookChatMessage
 	{

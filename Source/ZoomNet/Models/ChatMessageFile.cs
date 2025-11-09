@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Chat message file information as received in meeting or webhook chat message file webhook events.
+	/// Chat message file information as received in meeting or webinar chat message file webhook events.
 	/// </summary>
 	public class ChatMessageFile
 	{

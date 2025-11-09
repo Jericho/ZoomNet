@@ -15,7 +15,7 @@ namespace ZoomNet.Models
 		public string Agenda { get; set; }
 
 		/// <summary>
-		/// Gets or sets the date and time when the meeting was created.
+		/// Gets or sets the date and time when the webinar was created.
 		/// </summary>
 		[JsonPropertyName("created_at")]
 		public DateTime CreatedOn { get; set; }
