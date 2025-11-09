@@ -27,7 +27,7 @@ namespace ZoomNet.Models
 		/// </summary>
 		/// <value>The duration in minutes.</value>
 		[JsonPropertyName("duration")]
-		public int Duration { get; set; }
+		public int? Duration { get; set; }
 
 		/// <summary>
 		/// Gets or sets the status.

@@ -7,18 +7,40 @@
 		"operator_id": "8lzIwvZTSOqjndWPbPqzuA",
 		"operation": "single",
 		"object": {
-			"uuid": "5yDZGNlQSV6qOjg4NxajHQ==",
-			"id": 98884753832,
-			"host_id": "8lzIwvZTSOqjndWPbPqzuA",
-			"topic": "ZoomNet Unit Testing: instant meeting",
-			"type": 1,
+			"uuid": "4444AAAiAAAAAiAiAiiAii==",
+			"id": 1234567890,
+			"host_id": "x1yCzABCDEfg23HiJKl4mN",
+			"topic": "My Meeting",
+			"type": 8,
+			"start_time": "2021-07-13T21:44:51Z",
 			"duration": 60,
-			"timezone": "America/New_York",
+			"timezone": "America/Los_Angeles",
 			"join_url": "https://zoom.us/j/98884753832?pwd=c21EQzg0SXY2dlNTOFF2TENpSm1aQT09",
 			"password": "PaSsWoRd",
+			"pmi": "ABc$DE@F234",
+			"occurrences": [
+				{
+					"occurrence_id": "ABCDE12345",
+					"start_time": "2021-07-13T21:44:51Z",
+					"duration": 60,
+					"status": "available"
+				}
+			],
+			"recurrence": {
+				"type": 1,
+				"repeat_interval": 2,
+				"end_times": 5
+			},
 			"settings": {
 				"use_pmi": false,
-				"alternative_hosts": ""
+				"alternative_hosts": "althost1@example.com;althost2@example.com",
+				"join_before_host": true,
+				"jbh_time": 10,
+				"meeting_invitees": [
+					{
+						"email": "jchill@example.com"
+					}
+				]
 			}
 		}
 	}

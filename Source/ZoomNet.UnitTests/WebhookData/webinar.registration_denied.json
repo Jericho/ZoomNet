@@ -1,8 +1,10 @@
 {
-  "event": "webinar.registration_created",
+  "event": "webinar.registration_denied",
   "event_ts": 1626230691572,
   "payload": {
     "account_id": "AAAAAABBBB",
+    "operator": "admin@example.com",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
     "object": {
       "uuid": "4444AAAiAAAAAiAiAiiAii==",
       "id": 1234567890,

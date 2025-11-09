@@ -29,6 +29,6 @@ namespace ZoomNet.Models.Webhooks
 		/// Gets or sets information about the webinar converted from a meeting.
 		/// </summary>
 		[JsonPropertyName("object")]
-		public WebinarSummary Webinar { get; set; }
+		public WebinarInfo Webinar { get; set; }
 	}
 }

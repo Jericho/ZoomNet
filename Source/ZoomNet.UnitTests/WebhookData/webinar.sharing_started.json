@@ -8,18 +8,18 @@
       "uuid": "4444AAAiAAAAAiAiAiiAii==",
       "host_id": "x1yCzABCDEfg23HiJKl4mN",
       "topic": "My Webinar",
-      "type": 9,
+      "type": 5,
       "start_time": "2021-07-13T21:44:51Z",
       "timezone": "America/Los_Angeles",
       "duration": 60,
       "participant": {
-        "user_id": "ABCDE12345",
-        "user_name": "JillChill",
-        "id": "iFxeBPYun6SAiWUzBcEkX",
+        "user_id": "iFxeBPYun6SAiWUzBcEkX",
+        "user_name": "Jill Chill",
+        "id": "ABCDE12345",
         "sharing_details": {
           "content": "application",
           "link_source": "in_meeting",
-          "file_link": "",
+          "file_link": "https://shared",
           "date_time": "2021-07-13T21:55:52Z",
           "source": "dropbox"
         }

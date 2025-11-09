@@ -39,13 +39,13 @@ namespace ZoomNet.Models
 		public ApprovalType? ApprovalType { get; set; }
 
 		/// <summary>
-		/// Gets or sets the registration type. Used for recurring meeting with fixed time only.
+		/// Gets or sets the registration type. Used for recurring webinar with fixed time only.
 		/// </summary>
 		[JsonPropertyName("registration_type")]
 		public RegistrationType? RegistrationType { get; set; }
 
 		/// <summary>
-		/// Gets or sets the value indicating how participants can join the audio portion of the meeting.
+		/// Gets or sets the value indicating how participants can join the audio portion of the webinar.
 		/// </summary>
 		[JsonPropertyName("audio")]
 		public AudioType? Audio { get; set; }
@@ -57,13 +57,13 @@ namespace ZoomNet.Models
 		public AutoRecordingType AutoRecording { get; set; }
 
 		/// <summary>
-		/// Gets or sets the value indicating that only signed-in users can join this meeting.
+		/// Gets or sets the value indicating that only signed-in users can join this webinar.
 		/// </summary>
 		[JsonPropertyName("enforce_login")]
 		public bool? EnforceLogin { get; set; }
 
 		/// <summary>
-		/// Gets or sets the value indicating only signed-in users with specified domains can join this meeting.
+		/// Gets or sets the value indicating only signed-in users with specified domains can join this webinar.
 		/// </summary>
 		[JsonPropertyName("enforce_login_domains")]
 		public string EnforceLoginDomains { get; set; }
@@ -151,5 +151,12 @@ namespace ZoomNet.Models
 		/// </remarks>
 		[JsonPropertyName("authentication_option")]
 		public string AuthenticationTypeId { get; set; }
+
+		/// <summary>
+		/// Gets or sets the value indicating whether to use Personal Meeting ID.
+		/// Only used for scheduled webinars and recurring webinars with no fixed time.
+		/// </summary>
+		[JsonPropertyName("use_pmi")]
+		public bool? UsePmi { get; set; }
 	}
 }
