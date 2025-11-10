@@ -189,10 +189,11 @@ namespace ZoomNet
 
 		private ZoomClient(IConnectionInfo connectionInfo, HttpClient httpClient, bool disposeClient, ZoomClientOptions options, ILogger logger = null)
 		{
-			if (connectionInfo == null) throw new ArgumentNullException(nameof(connectionInfo));
+			ArgumentNullException.ThrowIfNull(connectionInfo);
+			ArgumentNullException.ThrowIfNull(httpClient);
 
 			_mustDisposeHttpClient = disposeClient;
-			_httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+			_httpClient = httpClient;
 			_options = options ?? new();
 			_logger = logger ?? NullLogger.Instance;
 			_fluentClient = new FluentClient(new Uri(ZOOM_V2_BASE_URI), httpClient)

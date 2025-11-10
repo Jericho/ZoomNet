@@ -338,7 +338,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task<BatchRegistrantInfo[]> PerformBatchRegistrationAsync(long webinarId, IEnumerable<BatchRegistrant> registrants, bool autoApprove = false, CancellationToken cancellationToken = default)
 		{
-			if (registrants == null || !registrants.Any()) throw new ArgumentNullException(nameof(registrants), "You must provide at least one registrant");
+			ArgumentNullException.ThrowIfEmpty(registrants, nameof(registrants), "You must provide at least one registrant");
 			if (registrants.Count() > 30) throw new ArgumentOutOfRangeException(nameof(registrants), "You can register up to 30 registrants at once");
 
 			var data = new JsonObject
@@ -594,7 +594,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task<InviteLink[]> CreateInviteLinksAsync(long webinarId, IEnumerable<string> names, long timeToLive = 7200, CancellationToken cancellationToken = default)
 		{
-			if (names == null || !names.Any()) throw new ArgumentNullException(nameof(names), "You must provide at least one name");
+			ArgumentNullException.ThrowIfEmpty(names, nameof(names), "You must provide at least one name");
 
 			var data = new JsonObject
 			{

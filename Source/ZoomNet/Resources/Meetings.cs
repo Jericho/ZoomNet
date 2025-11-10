@@ -362,7 +362,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task<BatchRegistrantInfo[]> PerformBatchRegistrationAsync(long meetingId, IEnumerable<BatchRegistrant> registrants, bool autoApprove = false, bool registrantsConfirmationEmail = false, CancellationToken cancellationToken = default)
 		{
-			if (registrants == null || !registrants.Any()) throw new ArgumentNullException(nameof(registrants), "You must provide at least one registrant");
+			ArgumentNullException.ThrowIfEmpty(registrants, nameof(registrants), "You must provide at least one registrant");
 			if (registrants.Count() > 30) throw new ArgumentOutOfRangeException(nameof(registrants), "You can register up to 30 registrants at once");
 
 			var data = new JsonObject
@@ -623,7 +623,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task<InviteLink[]> CreateInviteLinksAsync(long meetingId, IEnumerable<string> names, long timeToLive = 7200, CancellationToken cancellationToken = default)
 		{
-			if (names == null || !names.Any()) throw new ArgumentNullException(nameof(names), "You must provide at least one name");
+			ArgumentNullException.ThrowIfEmpty(names, nameof(names), "You must provide at least one name");
 
 			var data = new JsonObject
 			{
@@ -743,7 +743,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task InviteParticipantsAsync(long meetingId, IEnumerable<string> emailAddresses, CancellationToken cancellationToken = default)
 		{
-			if (emailAddresses == null || !emailAddresses.Any()) throw new ArgumentNullException(nameof(emailAddresses), "You must provide at least one email address");
+			ArgumentNullException.ThrowIfEmpty(emailAddresses, nameof(emailAddresses), "You must provide at least one email address");
 
 			var data = new JsonObject
 			{
