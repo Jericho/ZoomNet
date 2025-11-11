@@ -42,9 +42,9 @@ namespace ZoomNet.Utilities
 
 		public JwtTokenHandler(JwtConnectionInfo connectionInfo, TimeSpan? tokenLifeSpan = null, TimeSpan? clockSkew = null)
 		{
-			if (connectionInfo == null) throw new ArgumentNullException(nameof(connectionInfo));
-			if (string.IsNullOrEmpty(connectionInfo.ApiKey)) throw new ArgumentNullException("connectionInfo.ApiKey");
-			if (string.IsNullOrEmpty(connectionInfo.ApiSecret)) throw new ArgumentNullException("connectionInfo.ApiSecret");
+			ArgumentNullException.ThrowIfNull(nameof(connectionInfo));
+			ArgumentNullException.ThrowIfEmpty(connectionInfo.ApiKey, $"{nameof(connectionInfo)}.{connectionInfo.ApiKey}");
+			ArgumentNullException.ThrowIfEmpty(connectionInfo.ApiSecret, $"{nameof(connectionInfo)}.{connectionInfo.ApiSecret}");
 
 			_connectionInfo = connectionInfo;
 			_tokenLifeSpan = tokenLifeSpan.GetValueOrDefault(TimeSpan.FromMinutes(30));

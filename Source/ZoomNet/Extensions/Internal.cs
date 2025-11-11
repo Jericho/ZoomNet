@@ -1359,7 +1359,7 @@ namespace ZoomNet
 				Type datetimeType when datetimeType == typeof(DateTime) => (T)(object)element.GetDateTime(),
 				Type offsetType when offsetType == typeof(DateTimeOffset) => (T)(object)element.GetDateTimeOffset(),
 				Type guidType when guidType == typeof(Guid) => (T)(object)element.GetGuid(),
-				_ => throw new ArgumentException($"Unsable to map {typeof(T).FullName} to a corresponding JSON type", nameof(T)),
+				_ => throw new ArgumentException($"Unsable to map {typeOfT.FullName} to a corresponding JSON type", nameof(T)),
 			};
 		}
 	}
