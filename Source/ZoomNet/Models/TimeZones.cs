@@ -550,5 +550,13 @@ namespace ZoomNet.Models
 		/// <summary>Independent State of Samoa.</summary>
 		[EnumMember(Value = "Pacific/Apia")]
 		Pacific_Apia,
+
+		/// <summary>Manila.</summary>
+		/// <remarks>
+		/// This timezone is undocumented.
+		/// See <a href="https://github.com/Jericho/ZoomNet/issues/443">GH-443</a> for details.
+		/// </remarks>
+		[EnumMember(Value = "Asia/Manila")]
+		Asia_Manila,
 	}
 }
