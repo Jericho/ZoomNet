@@ -41,10 +41,10 @@ namespace ZoomNet.Utilities
 
 		public OAuthTokenHandler(OAuthConnectionInfo connectionInfo, HttpClient httpClient, TimeSpan? clockSkew = null)
 		{
-			if (connectionInfo == null) throw new ArgumentNullException(nameof(connectionInfo));
-			if (string.IsNullOrEmpty(connectionInfo.ClientId)) throw new ArgumentNullException("connectionInfo.ClientId");
-			if (string.IsNullOrEmpty(connectionInfo.ClientSecret)) throw new ArgumentNullException("connectionInfo.ClientSecret");
-			if (httpClient == null) throw new ArgumentNullException(nameof(httpClient));
+			ArgumentNullException.ThrowIfNull(connectionInfo);
+			ArgumentNullException.ThrowIfEmpty(connectionInfo.ClientId, $"{nameof(connectionInfo)}.{connectionInfo.ClientId}");
+			ArgumentNullException.ThrowIfEmpty(connectionInfo.ClientSecret, $"{nameof(connectionInfo)}.{connectionInfo.ClientSecret}");
+			ArgumentNullException.ThrowIfNull(httpClient);
 
 			_connectionInfo = connectionInfo;
 			_httpClient = httpClient;

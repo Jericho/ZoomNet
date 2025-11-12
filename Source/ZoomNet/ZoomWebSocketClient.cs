@@ -61,15 +61,18 @@ namespace ZoomNet
 		/// <param name="logger">Logger.</param>
 		public ZoomWebSocketClient(IConnectionInfo connectionInfo, string subscriptionId, Func<Models.Webhooks.Event, CancellationToken, Task> eventProcessor, bool throwWhenUnknownEventType, IWebProxy proxy = null, ILogger logger = null)
 		{
+			ArgumentNullException.ThrowIfNull(connectionInfo);
+			ArgumentNullException.ThrowIfNull(subscriptionId);
+			ArgumentNullException.ThrowIfNull(eventProcessor);
+
 			// According to https://marketplace.zoom.us/docs/api-reference/websockets/, only Server-to-Server OAuth connections are supported
-			if (connectionInfo == null) throw new ArgumentNullException(nameof(connectionInfo));
 			if (connectionInfo is not OAuthConnectionInfo oAuthConnectionInfo || oAuthConnectionInfo.GrantType != OAuthGrantType.AccountCredentials)
 			{
 				throw new ArgumentException("WebSocket client only supports Server-to-Server OAuth connections");
 			}
 
-			_subscriptionId = subscriptionId ?? throw new ArgumentNullException(nameof(subscriptionId));
-			_eventProcessor = eventProcessor ?? throw new ArgumentNullException(nameof(eventProcessor));
+			_subscriptionId = subscriptionId;
+			_eventProcessor = eventProcessor;
 			_proxy = proxy;
 			_logger = logger ?? NullLogger.Instance;
 			_httpClient = new HttpClient(new HttpClientHandler { Proxy = _proxy, UseProxy = _proxy != null });
