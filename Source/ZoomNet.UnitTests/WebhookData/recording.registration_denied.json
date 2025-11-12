@@ -12,10 +12,6 @@
       "start_time": "2021-07-13T21:44:51Z",
       "timezone": "America/Los_Angeles",
       "duration": 60,
-      "occurrences": {
-        "occurrence_id": "ABCDE12345",
-        "start_time": "2021-07-13T21:44:51Z"
-      },
       "registrant": {
         "id": "iFxeBPYun6SAiWUzBcEkX",
         "email": "jchill@example.com",

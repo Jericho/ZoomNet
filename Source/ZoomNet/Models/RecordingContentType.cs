@@ -59,7 +59,7 @@ namespace ZoomNet.Models
 		[EnumMember(Value = "timeline")]
 		Timeline,
 
-		/// <summary>closed_caption.</summary>
+		/// <summary>Closed caption.</summary>
 		[EnumMember(Value = "closed_caption")]
 		ClosedCaption,
 
@@ -78,5 +78,37 @@ namespace ZoomNet.Models
 		/// <summary>Summary smart chapters.</summary>
 		[EnumMember(Value = "summary_smart_chapters")]
 		SummarySmartChapters,
+
+		/// <summary>Chat message.</summary>
+		[EnumMember(Value = "chat_message")]
+		ChatMessage,
+
+		/// <summary>AI companion conversation summary.</summary>
+		[EnumMember(Value = "aic_conversation")]
+		AicConversation,
+
+		/// <summary>Host video.</summary>
+		[EnumMember(Value = "host_video")]
+		HostVideo,
+
+		/// <summary>Thumbnail.</summary>
+		[EnumMember(Value = "thumbnail")]
+		Thumbnail,
+
+		/// <summary>Sign interpretation.</summary>
+		[EnumMember(Value = "sign_interpretation")]
+		SignInterpretation,
+
+		/// <summary>Production studio.</summary>
+		[EnumMember(Value = "production_studio")]
+		ProductionStudio,
+
+		/// <summary>Audio only each participant.</summary>
+		[EnumMember(Value = "audio_only_each_participant")]
+		AudioOnlyEachParticipant,
+
+		/// <summary>Closed caption transcript.</summary>
+		[EnumMember(Value = "cc_transcript")]
+		ClosedCaptionTranscript,
 	}
 }

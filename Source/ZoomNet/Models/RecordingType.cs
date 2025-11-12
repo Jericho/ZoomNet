@@ -53,6 +53,11 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// A recording uploaded via the Recordings interface on the Zoom Web Portal.
 		/// </summary>
-		ManuallyUploaded = 99
+		ManuallyUploaded = 99,
+
+		/// <summary>
+		/// A recording from a breakout room.
+		/// </summary>
+		BreakoutRoom = 100,
 	}
 }

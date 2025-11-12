@@ -1,14 +1,16 @@
 {
   "event": "recording.recovered",
   "event_ts": 1626230691572,
+  "download_token": "abJhbGciOiJIUzUxMiJ9",
   "payload": {
     "account_id": "AAAAAABBBB",
     "operator": "admin@example.com",
-    "operator_id": "I7zp-pYbTl22Z29H796Ixg",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
     "object": {
       "id": 1234567890,
       "uuid": "4444AAAiAAAAAiAiAiiAii==",
       "host_id": "x1yCzABCDEfg23HiJKl4mN",
+      "account_id": "x1yCzABCDEfg23HiJKl4mN",
       "topic": "My Personal Recording",
       "type": 4,
       "start_time": "2021-07-13T21:44:51Z",
@@ -25,6 +27,7 @@
           "recording_end": "2021-03-23T23:15:41Z",
           "file_type": "M4A",
           "file_size": 246560,
+          "file_extension": "M4A",
           "play_url": "https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngBBBB",
           "download_url": "https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngBBBB",
           "status": "completed",
@@ -37,6 +40,7 @@
           "recording_end": "2021-03-23T23:15:41Z",
           "file_type": "MP4",
           "file_size": 282825,
+          "file_extension": "MP4",
           "play_url": "https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngCCCC",
           "download_url": "https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngCCCC",
           "status": "completed",
@@ -45,20 +49,19 @@
       ],
       "participant_audio_files": [
         {
-          "id": "ed6c2f27-2ae7-42f4-b3d0-835b493e4fa8",
+          "id": "2af3b4b2-d5ad-4b5b-9be2-81b429206b27",
           "recording_start": "2021-03-23T22:14:57Z",
           "recording_end": "2021-03-23T23:15:41Z",
           "recording_type": "audio_only",
           "file_type": "M4A",
           "file_name": "MyRecording",
           "file_size": 246560,
-          "file_extension": "MP4",
+          "file_extension": "M4A",
           "play_url": "https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngAAAA",
           "download_url": "https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngAAAA",
           "status": "completed"
         }
       ]
     }
-  },
-  "download_token": "abJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJodHRwczovL2V2ZW50Lnpvb20udXMiLCJhY2NvdW50SWQiOiJNdDZzdjR1MFRBeVBrd2dzTDJseGlBIiwiYXVkIjoiaHR0cHM6Ly9vYXV0aC56b29tLnVzIiwibWlkIjoieFp3SEc0c3BRU2VuekdZWG16dnpiUT09IiwiZXhwIjoxNjI2MTM5NTA3LCJ1c2VySWQiOiJEWUhyZHBqclMzdWFPZjdkUGtrZzh3In0.a6KetiC6BlkDhf1dP4KBGUE1bb2brMeraoD45yhFx0eSSSTFdkHQnsKmlJQ-hdo9Zy-4vQw3rOxlyoHv583JyZ"
+  }
 }

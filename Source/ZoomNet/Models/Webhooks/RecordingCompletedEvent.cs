@@ -1,11 +1,9 @@
-using System.Text.Json.Serialization;
-
 namespace ZoomNet.Models.Webhooks;
 
 /// <summary>
-/// This event is triggered when all recordings for an event are completed.
+/// This event is triggered when a recording of a meeting or webinar becomes available to view or download.
 /// </summary>
-public class RecordingCompletedEvent : RecordingEvent
+public class RecordingCompletedEvent : RecordingFilesEvent
 {
 	/// <summary>
 	/// Gets or sets authentication token to use to retrieve the recording.
@@ -18,12 +16,5 @@ public class RecordingCompletedEvent : RecordingEvent
 	/// event notification. Pass download_token as a bearer token in
 	/// the authorization header of your HTTP request.
 	/// </remarks>
-	[JsonPropertyName("download_token")]
 	public string DownloadToken { get; set; }
-
-	/// <summary>
-	/// Gets or sets information about the meeting or webinar recording.
-	/// </summary>
-	[JsonPropertyName("object")]
-	public Recording Recording { get; set; }
 }
