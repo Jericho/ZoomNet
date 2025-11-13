@@ -71,7 +71,7 @@ namespace ZoomNet.Json
 					break;
 				case Models.Webhooks.EventType.MeetingUpdated:
 					var meetingUpdatedEvent = payloadJsonProperty.ToObject<MeetingUpdatedEvent>(options);
-					meetingUpdatedEvent.UpdatedOn = payloadJsonProperty.GetPropertyValue<long>("time_stamp").FromUnixTime(UnixTimePrecision.Milliseconds);
+					meetingUpdatedEvent.UpdatedOn = ParseTimestampFromUnixMilliseconds(payloadJsonProperty);
 
 					var oldMeetingValues = payloadJsonProperty.GetProperty("old_object", true).Value
 						.EnumerateObject()
@@ -227,10 +227,105 @@ namespace ZoomNet.Json
 					meetingLiveStreamStoppedEvent.StreamingInfo = payloadJsonProperty.GetPropertyValue<LiveStreamingInfo>("object/live_streaming");
 					webHookEvent = meetingLiveStreamStoppedEvent;
 					break;
+				case Models.Webhooks.EventType.RecordingArchiveFilesCompleted:
+					var recordingArchiveFilesCompletedEvent = payloadJsonProperty.ToObject<RecordingArchiveFilesCompletedEvent>(options);
+					recordingArchiveFilesCompletedEvent.DownloadToken = ParseDownloadToken(rootElement);
+					webHookEvent = recordingArchiveFilesCompletedEvent;
+					break;
+				case Models.Webhooks.EventType.RecordingBatchDeleted:
+					var recordingBatchDeletedEvent = payloadJsonProperty.ToObject<RecordingBatchDeletedEvent>(options);
+					recordingBatchDeletedEvent.Meetings = payloadJsonProperty.GetPropertyValue<RecordingsBatch[]>("object/meetings");
+					webHookEvent = recordingBatchDeletedEvent;
+					break;
+				case Models.Webhooks.EventType.RecordingBatchRecovered:
+					var recordingBatchRecoveredEvent = payloadJsonProperty.ToObject<RecordingBatchRecoveredEvent>(options);
+					recordingBatchRecoveredEvent.Meetings = payloadJsonProperty.GetPropertyValue<RecordingsBatch[]>("object/meetings");
+					webHookEvent = recordingBatchRecoveredEvent;
+					break;
+				case Models.Webhooks.EventType.RecordingBatchTrashed:
+					var recordingBatchTrashedEvent = payloadJsonProperty.ToObject<RecordingBatchTrashedEvent>(options);
+					recordingBatchTrashedEvent.MeetingUuids = payloadJsonProperty.GetPropertyValue<string[]>("object/meeting_uuids");
+					webHookEvent = recordingBatchTrashedEvent;
+					break;
+				case Models.Webhooks.EventType.RecordingCloudStorageUsageUpdated:
+					webHookEvent = payloadJsonProperty.ToObject<RecordingCloudStorageUsageUpdatedEvent>(options);
+					break;
 				case Models.Webhooks.EventType.RecordingCompleted:
 					var recordingCompletedEvent = payloadJsonProperty.ToObject<RecordingCompletedEvent>(options);
-					recordingCompletedEvent.DownloadToken = rootElement.GetPropertyValue("download_token", string.Empty);
+					recordingCompletedEvent.DownloadToken = ParseDownloadToken(rootElement);
 					webHookEvent = recordingCompletedEvent;
+					break;
+				case Models.Webhooks.EventType.RecordingDeleted:
+					webHookEvent = payloadJsonProperty.ToObject<RecordingDeletedEvent>(options);
+					break;
+				case Models.Webhooks.EventType.RecordingPaused:
+					var recordingPausedEvent = payloadJsonProperty.ToObject<RecordingPausedEvent>(options);
+
+					ParseRecordingProgressTimestamps(payloadJsonProperty, recordingPausedEvent);
+
+					webHookEvent = recordingPausedEvent;
+					break;
+				case Models.Webhooks.EventType.RecordingRecovered:
+					var recordingRecoveredEvent = payloadJsonProperty.ToObject<RecordingRecoveredEvent>(options);
+					recordingRecoveredEvent.DownloadToken = ParseDownloadToken(rootElement);
+					webHookEvent = recordingRecoveredEvent;
+					break;
+				case Models.Webhooks.EventType.RecordingRegistrationApproved:
+					var recordingRegistrationApproviedEvent = payloadJsonProperty.ToObject<RecordingRegistrationApprovedEvent>(options);
+					recordingRegistrationApproviedEvent.Registrant = ParseRegistrantProperty<Registrant>(payloadJsonProperty);
+					webHookEvent = recordingRegistrationApproviedEvent;
+					break;
+				case Models.Webhooks.EventType.RecordingRegistrationCreated:
+					var recordingRegistrationCreatedEvent = payloadJsonProperty.ToObject<RecordingRegistrationCreatedEvent>(options);
+					recordingRegistrationCreatedEvent.Registrant = ParseRegistrantProperty<Registrant>(payloadJsonProperty);
+					webHookEvent = recordingRegistrationCreatedEvent;
+					break;
+				case Models.Webhooks.EventType.RecordingRegistrationDenied:
+					var recordingRegistrationDeniedEvent = payloadJsonProperty.ToObject<RecordingRegistrationDeniedEvent>(options);
+					recordingRegistrationDeniedEvent.Registrant = ParseRegistrantProperty<Registrant>(payloadJsonProperty);
+					webHookEvent = recordingRegistrationDeniedEvent;
+					break;
+				case Models.Webhooks.EventType.RecordingRenamed:
+					var recordingRenamedEvent = payloadJsonProperty.ToObject<RecordingRenamedEvent>(options);
+					recordingRenamedEvent.UpdatedOn = ParseTimestampFromUnixMilliseconds(payloadJsonProperty);
+					recordingRenamedEvent.Id = payloadJsonProperty.GetPropertyValue<long>("object/id");
+					recordingRenamedEvent.Uuid = payloadJsonProperty.GetPropertyValue<string>("object/uuid");
+					recordingRenamedEvent.HostId = payloadJsonProperty.GetPropertyValue<string>("object/host_id");
+					recordingRenamedEvent.Type = payloadJsonProperty.GetPropertyValue<RecordingType>("object/type");
+					recordingRenamedEvent.OldTitle = payloadJsonProperty.GetPropertyValue<string>("old_object/topic");
+					recordingRenamedEvent.NewTitle = payloadJsonProperty.GetPropertyValue<string>("object/topic");
+					webHookEvent = recordingRenamedEvent;
+					break;
+				case Models.Webhooks.EventType.RecordingResumed:
+					var recordingResumedEvent = payloadJsonProperty.ToObject<RecordingResumedEvent>(options);
+
+					ParseRecordingProgressTimestamps(payloadJsonProperty, recordingResumedEvent);
+
+					webHookEvent = recordingResumedEvent;
+					break;
+				case Models.Webhooks.EventType.RecordingStarted:
+					var recordingStartedEvent = payloadJsonProperty.ToObject<RecordingStartedEvent>(options);
+
+					ParseRecordingProgressTimestamps(payloadJsonProperty, recordingStartedEvent);
+
+					webHookEvent = recordingStartedEvent;
+					break;
+				case Models.Webhooks.EventType.RecordingStopped:
+					var recordingStoppedEvent = payloadJsonProperty.ToObject<RecordingStoppedEvent>(options);
+
+					ParseRecordingProgressTimestamps(payloadJsonProperty, recordingStoppedEvent);
+
+					webHookEvent = recordingStoppedEvent;
+					break;
+				case Models.Webhooks.EventType.RecordingTranscriptCompleted:
+					var recordingTranscriptCompletedEvent = payloadJsonProperty.ToObject<RecordingTranscriptCompletedEvent>(options);
+					recordingTranscriptCompletedEvent.DownloadToken = ParseDownloadToken(rootElement);
+					webHookEvent = recordingTranscriptCompletedEvent;
+					break;
+				case Models.Webhooks.EventType.RecordingTrashed:
+					var recordingTrashedEvent = payloadJsonProperty.ToObject<RecordingTrashedEvent>(options);
+					recordingTrashedEvent.DownloadToken = ParseDownloadToken(rootElement);
+					webHookEvent = recordingTrashedEvent;
 					break;
 				case Models.Webhooks.EventType.WebinarCreated:
 					var webinarCreatedEvent = payloadJsonProperty.ToObject<WebinarCreatedEvent>(options);
@@ -242,7 +337,7 @@ namespace ZoomNet.Json
 					break;
 				case Models.Webhooks.EventType.WebinarUpdated:
 					var webinarUpdatedEvent = payloadJsonProperty.ToObject<WebinarUpdatedEvent>(options);
-					webinarUpdatedEvent.UpdatedOn = payloadJsonProperty.GetPropertyValue<long>("time_stamp").FromUnixTime(UnixTimePrecision.Milliseconds);
+					webinarUpdatedEvent.UpdatedOn = ParseTimestampFromUnixMilliseconds(payloadJsonProperty);
 
 					var oldWebinarValues = payloadJsonProperty.GetProperty("old_object", true).Value
 						.EnumerateObject()
@@ -661,6 +756,22 @@ namespace ZoomNet.Json
 		private static DateTime ParseParticipantDateTime(JsonElement payloadJsonProperty)
 		{
 			return payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/date_time");
+		}
+
+		private static void ParseRecordingProgressTimestamps(JsonElement payloadJsonProperty, RecordingProgressEvent parsedEvent)
+		{
+			parsedEvent.StartTime = payloadJsonProperty.GetPropertyValue<DateTime>("object/recording_file/recording_start");
+			parsedEvent.EndTime = payloadJsonProperty.GetPropertyValue<DateTime?>("object/recording_file/recording_end", null);
+		}
+
+		private static string ParseDownloadToken(JsonElement rootElement)
+		{
+			return rootElement.GetPropertyValue("download_token", string.Empty);
+		}
+
+		private static DateTime ParseTimestampFromUnixMilliseconds(JsonElement payloadJsonProperty)
+		{
+			return payloadJsonProperty.GetPropertyValue<long>("time_stamp").FromUnixTime(UnixTimePrecision.Milliseconds);
 		}
 	}
 }

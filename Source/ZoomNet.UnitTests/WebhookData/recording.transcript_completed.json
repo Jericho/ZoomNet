@@ -1,6 +1,7 @@
 {
   "event": "recording.transcript_completed",
   "event_ts": 1626230691572,
+  "download_token": "abJhbGciOiJIUzUxMiJ9",
   "payload": {
     "account_id": "AAAAAABBBB",
     "object": {
@@ -20,12 +21,13 @@
       "recording_count": 1,
       "recording_files": [
         {
-          "id": "ed6c2f27-2ae7-42f4-b3d0-835b493e4fa8",
+          "id": "bd5b3ea6-7dd6-484d-9125-b297e0a2f80a",
           "meeting_id": "098765ABCD",
           "recording_start": "2021-03-23T22:14:57Z",
           "recording_end": "2021-03-23T23:15:41Z",
           "file_type": "TRANSCRIPT",
           "file_size": 142,
+          "file_extension": "VTT",
           "play_url": "https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngBBBB",
           "download_url": "https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngBBBB",
           "status": "completed",
@@ -33,6 +35,5 @@
         }
       ]
     }
-  },
-  "download_token": "abJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJodHRwczovL2V2ZW50Lnpvb20udXMiLCJhY2NvdW50SWQiOiJNdDZzdjR1MFRBeVBrd2dzTDJseGlBIiwiYXVkIjoiaHR0cHM6Ly9vYXV0aC56b29tLnVzIiwibWlkIjoieFp3SEc0c3BRU2VuekdZWG16dnpiUT09IiwiZXhwIjoxNjI2MTM5NTA3LCJ1c2VySWQiOiJEWUhyZHBqclMzdWFPZjdkUGtrZzh3In0.a6KetiC6BlkDhf1dP4KBGUE1bb2brMeraoD45yhFx0eSSSTFdkHQnsKmlJQ-hdo9Zy-4vQw3rOxlyoHv583JyZ"
+  }
 }

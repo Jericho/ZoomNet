@@ -1,20 +1,20 @@
 {
-	"event": "recording.batch_recovered",
-	"event_ts": 1626230691572,
-	"payload": {
-		"account_id": "AAAAAABBBB",
-		"operator" : "admin@example.com",
-		"operator_id" : "I7zp-pYbTl22Z29H796Ixg",
-		"object": {
-            "meetings": [
-              {
-                "meeting_uuid": "4444AAAiAAAAAiAiAiiAii==",
-                "recording_file_ids": [
-                  "ed6c2f27-2ae7-42f4-b3d0-835b493e4fa8",
-                  "388ffb46-1541-460d-8447-4624451a1db7"
-                ]
-              }
-            ]
-		}
-	}
+  "event": "recording.batch_recovered",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator" : "admin@example.com",
+    "operator_id" : "z8yCxjabcdEFGHfp8uQ",
+    "object": {
+      "meetings": [
+        {
+          "meeting_uuid": "4444AAAiAAAAAiAiAiiAii==",
+          "recording_file_ids": [
+            "ed6c2f27-2ae7-42f4-b3d0-835b493e4fa8",
+            "388ffb46-1541-460d-8447-4624451a1db7"
+          ]
+        }
+      ]
+    }
+  }
 }
