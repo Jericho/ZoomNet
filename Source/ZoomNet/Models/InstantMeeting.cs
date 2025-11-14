@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models
+namespace ZoomNet.Models
 {
 	/// <summary>
 	/// An instant meeting.

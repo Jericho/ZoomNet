@@ -41,7 +41,7 @@ namespace ZoomNet.Json
 				eventType = Models.Webhooks.EventType.Unknown;
 			}
 
-			Models.Webhooks.Event webHookEvent = ParsePayloadToWebhookEvent(rootElement, eventType, options);
+			var webHookEvent = ParsePayloadToWebhookEvent(rootElement, eventType, options);
 
 			webHookEvent.EventType = eventType;
 			webHookEvent.Timestamp = timestamp;
