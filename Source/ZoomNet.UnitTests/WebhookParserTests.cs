@@ -30,6 +30,7 @@ namespace ZoomNet.UnitTests
 		private const long MeetingId = 1234567890;
 		private const string MeetingUuid = "4444AAAiAAAAAiAiAiiAii==";
 		private const string HostId = "x1yCzABCDEfg23HiJKl4mN";
+		private const string UserEmail = "jchill@example.com";
 
 		#endregion
 
@@ -72,7 +73,7 @@ namespace ZoomNet.UnitTests
 			recurringMeeting.Settings.JoinBeforeHostTime.Value.ShouldBe(JoinBeforeHostTime.TenMinutes);
 			recurringMeeting.Settings.Invitees.ShouldNotBeNull();
 			recurringMeeting.Settings.Invitees.Length.ShouldBe(1);
-			recurringMeeting.Settings.Invitees[0].Email.ShouldBe("jchill@example.com");
+			recurringMeeting.Settings.Invitees[0].Email.ShouldBe(UserEmail);
 		}
 
 		[Fact]
@@ -518,7 +519,7 @@ namespace ZoomNet.UnitTests
 
 			parsedEvent.ShareWithUsers.ShouldNotBeNull();
 			parsedEvent.ShareWithUsers.Length.ShouldBe(1);
-			parsedEvent.ShareWithUsers[0].Email.ShouldBe("jchill@example.com");
+			parsedEvent.ShareWithUsers[0].Email.ShouldBe(UserEmail);
 		}
 
 		[Fact]
@@ -979,6 +980,24 @@ namespace ZoomNet.UnitTests
 			VerifyRegistrant(parsedEvent.Registrant);
 		}
 
+		[Fact]
+		public void EndpointUrlValidation()
+		{
+			string plainToken = "qgg8vlvZRS6UYooatFL8Aw";
+
+			var parsedEvent = ParseWebhookEvent<EndpointUrlValidationEvent>(Resource.endpoint_url_validation_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.EndpointUrlValidation);
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.PlainToken.ShouldBe(plainToken);
+
+			string jsonResponse = parsedEvent.GenerateUrlValidationResponse("UB_rdTwhTruoYCMr6x6-MQ");
+			var parsedResponse = System.Text.Json.Nodes.JsonNode.Parse(jsonResponse);
+
+			parsedResponse["plainToken"]?.ToString().ShouldBe(plainToken);
+			parsedResponse["encryptedToken"]?.ToString().ShouldBe("439d1ed256e8d5513d2acd195e0adc64bbbfeb6b795b9d1880534610b58c674c");
+		}
+
 		#endregion
 
 		#region private methods
@@ -1005,7 +1024,7 @@ namespace ZoomNet.UnitTests
 			parsedEvent.MeetingSummary.MeetingUuid.ShouldBe("aDYlohsHRtCd4ii1uC2+hA==");
 			parsedEvent.MeetingSummary.MeetingStartTime.ShouldBe(new DateTime(2019, 7, 15, 23, 24, 52, DateTimeKind.Utc));
 			parsedEvent.MeetingSummary.MeetingEndTime.ShouldBe(new DateTime(2019, 7, 15, 23, 30, 19, DateTimeKind.Utc));
-			parsedEvent.MeetingSummary.MeetingHostEmail.ShouldBe("jchill@example.com");
+			parsedEvent.MeetingSummary.MeetingHostEmail.ShouldBe(UserEmail);
 			parsedEvent.MeetingSummary.MeetingHostId.ShouldBe("30R7kT7bTIKSNUFEuH_Qlg");
 			parsedEvent.MeetingSummary.MeetingTopic.ShouldBe("My Meeting");
 			parsedEvent.MeetingSummary.SummaryCreatedTime.ShouldBe(new DateTime(2019, 7, 15, 23, 31, 47, DateTimeKind.Utc));
@@ -1049,7 +1068,7 @@ namespace ZoomNet.UnitTests
 			WebhookParticipant info,
 			string customerKey = "349589LkJyeW",
 			string phoneNumber = "8615250064084",
-			string email = "jchill@example.com",
+			string email = UserEmail,
 			string participantUserId = "iFxeBPYun6SAiWUzBcEkX")
 		{
 			info.ShouldNotBeNull();
@@ -1096,7 +1115,7 @@ namespace ZoomNet.UnitTests
 			info.UserName.ShouldBe("Jill Chill");
 			info.Id.ShouldBe("iFxeBPYun6SAiWUzBcEkX");
 			info.ParticipantUuid.ShouldBe("55555AAAiAAAAAiAiAiiAii");
-			info.Email.ShouldBe("jchill@example.com");
+			info.Email.ShouldBe(UserEmail);
 			info.RegistrantId.ShouldBe("abcdefghij0-klmnopq23456");
 			info.ParticipantUserId.ShouldBe("rstuvwxyza789-cde");
 			info.PhoneNumber.ShouldBe("8615250064084");
@@ -1130,7 +1149,7 @@ namespace ZoomNet.UnitTests
 			parsedEvent.Meeting.Topic.ShouldBe("Jill Chill's Zoom Meeting");
 
 			parsedEvent.Participant.ShouldNotBeNull();
-			parsedEvent.Participant.Email.ShouldBe("jchill@example.com");
+			parsedEvent.Participant.Email.ShouldBe(UserEmail);
 			parsedEvent.Participant.UserId.ShouldBe("rPwsQrpC6gPuw2zEJqw");
 		}
 
@@ -1338,7 +1357,7 @@ namespace ZoomNet.UnitTests
 			registrant.Id.ShouldBe("iFxeBPYun6SAiWUzBcEkX");
 			registrant.FirstName.ShouldBe("Jill");
 			registrant.LastName.ShouldBe("Chill");
-			registrant.Email.ShouldBe("jchill@example.com");
+			registrant.Email.ShouldBe(UserEmail);
 		}
 
 		/// <summary>

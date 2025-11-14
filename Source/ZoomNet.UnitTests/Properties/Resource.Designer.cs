@@ -2840,6 +2840,142 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;contact_center.team_created&quot;,
+        ///  &quot;event_ts&quot;: 1627906944384,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;D8cJuqWVQ623CI4Q8yQK0Q&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;team_id&quot;: &quot;2mDPBg3vSYC_l6crQgeCkA&quot;,
+        ///      &quot;team_name&quot;: &quot;Sales Team&quot;,
+        ///      &quot;team_description&quot;: &quot;This is the sales team&quot;,
+        ///      &quot;parent_team_id&quot;: &quot;PZy04MG_Q7Gytg9k7CVU6w&quot;,
+        ///      &quot;parent_team_name&quot;: &quot;Online sales team&quot;,
+        ///      &quot;date_time_ms&quot;: &quot;2025-02-15T09:27:15.988Z&quot;
+        ///    }
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string contact_center_team_created_webhook {
+            get {
+                return ResourceManager.GetString("contact_center_team_created_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;contact_center.team_deleted&quot;,
+        ///  &quot;event_ts&quot;: 1627906944384,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;D8cJuqWVQ623CI4Q8yQK0Q&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;team_id&quot;: &quot;2mDPBg3vSYC_l6crQgeCkA&quot;,
+        ///      &quot;team_name&quot;: &quot;Sales Team&quot;,
+        ///      &quot;team_description&quot;: &quot;This is the sales team&quot;,
+        ///      &quot;parent_team_id&quot;: &quot;PZy04MG_Q7Gytg9k7CVU6w&quot;,
+        ///      &quot;parent_team_name&quot;: &quot;Online sales team&quot;,
+        ///      &quot;date_time_ms&quot;: &quot;2025-02-15T09:27:15.988Z&quot;
+        ///    }
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string contact_center_team_deleted_webhook {
+            get {
+                return ResourceManager.GetString("contact_center_team_deleted_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;contact_center.team_members_assigned&quot;,
+        ///  &quot;event_ts&quot;: 1627906944384,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;D8cJuqWVQ623CI4Q8yQK0Q&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;team_id&quot;: &quot;2mDPBg3vSYC_l6crQgeCkA&quot;,
+        ///      &quot;user_ids&quot;: [
+        ///        &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///        &quot;T_X0vrroQPO4UwXGNeBS8A&quot;
+        ///      ],
+        ///      &quot;team_role&quot;: &quot;supervisor&quot;,
+        ///      &quot;date_time_ms&quot;: &quot;2025-02-16T09:27:15.987Z&quot;
+        ///    }
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string contact_center_team_members_assigned_webhook {
+            get {
+                return ResourceManager.GetString("contact_center_team_members_assigned_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;contact_center.team_members_unassigned&quot;,
+        ///  &quot;event_ts&quot;: 1627906944384,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;D8cJuqWVQ623CI4Q8yQK0Q&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;team_id&quot;: &quot;2mDPBg3vSYC_l6crQgeCkA&quot;,
+        ///      &quot;user_ids&quot;: [
+        ///        &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///        &quot;T_X0vrroQPO4UwXGNeBS8A&quot;
+        ///      ],
+        ///      &quot;team_role&quot;: &quot;supervisor&quot;,
+        ///      &quot;date_time_ms&quot;: &quot;2025-02-16T09:27:15.987Z&quot;
+        ///    }
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string contact_center_team_members_unassigned_webhook {
+            get {
+                return ResourceManager.GetString("contact_center_team_members_unassigned_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;contact_center.team_moved&quot;,
+        ///  &quot;event_ts&quot;: 1754387110151,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;D8cJuqWVQ623CI4Q8yQK0Q&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;team_id&quot;: &quot;2mDPBg3vSYC_l6crQgeCkA&quot;,
+        ///      &quot;team_name&quot;: &quot;Example Team&quot;,
+        ///      &quot;team_description&quot;: &quot;This is a example team.&quot;,
+        ///      &quot;previous_parent_team_id&quot;: &quot;thxZtEzfR4uq0L9RqVJ_bg&quot;,
+        ///      &quot;previous_parent_team_name&quot;: &quot;Previous Example Team&quot;,
+        ///      &quot;new_parent_team_id&quot;: &quot;PZy04MG_Q7Gytg9k7CVU6w&quot;,
+        ///      &quot;new_parent_team_name&quot;: &quot;Parent Example Team [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_team_moved_webhook {
+            get {
+                return ResourceManager.GetString("contact_center_team_moved_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;contact_center.team_updated&quot;,
+        ///  &quot;event_ts&quot;: 1627906944384,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;D8cJuqWVQ623CI4Q8yQK0Q&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;team_id&quot;: &quot;2mDPBg3vSYC_l6crQgeCkA&quot;,
+        ///      &quot;team_name&quot;: &quot;My Team&quot;,
+        ///      &quot;team_description&quot;: &quot;This is the updated sales team&quot;,
+        ///      &quot;date_time_ms&quot;: &quot;2025-02-16T09:27:15.988Z&quot;
+        ///    }
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string contact_center_team_updated_webhook {
+            get {
+                return ResourceManager.GetString("contact_center_team_updated_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;contact_center.user_created&quot;,
         ///  &quot;event_ts&quot;: 1627906944384,
         ///  &quot;payload&quot;: {
@@ -3040,6 +3176,22 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string contact_center_voicemail_transcript_completed_webhook {
             get {
                 return ResourceManager.GetString("contact_center_voicemail_transcript_completed_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;endpoint.url_validation&quot;,
+        ///  &quot;event_ts&quot;: 1654503849680,
+        ///  &quot;payload&quot;: {
+        ///    &quot;plainToken&quot;: &quot;qgg8vlvZRS6UYooatFL8Aw&quot;
+        ///  }
+        ///}
+        ///.
+        /// </summary>
+        internal static string endpoint_url_validation_webhook {
+            get {
+                return ResourceManager.GetString("endpoint_url_validation_webhook", resourceCulture);
             }
         }
         
@@ -3490,7 +3642,7 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;meeting.ai_companion_assets_deleted&quot;,
-        ///  &quot;event_ts&quot;: 1726155000123,
+        ///  &quot;event_ts&quot;: 1726142087123,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
         ///    &quot;object&quot;: {
@@ -3515,13 +3667,13 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;meeting.ai_companion_started&quot;,
-        ///  &quot;event_ts&quot;: 1725264900000,
+        ///  &quot;event_ts&quot;: 1726142087123,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;a1B2c3D4E5f6G7h8I9J0&quot;,
+        ///    &quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;meeting_number&quot;: 98273645123,
-        ///      &quot;meeting_uuid&quot;: &quot;cXYlohsHRtCd4ii1uC2+hA==&quot;,
-        ///      &quot;host_id&quot;: &quot;12R7kT7bTIKSNUFEuH_Qlg&quot;,
+        ///      &quot;meeting_number&quot;: 97763643886,
+        ///      &quot;meeting_uuid&quot;: &quot;aDYlohsHRtCd4ii1uC2+hA==&quot;,
+        ///      &quot;host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
         ///      &quot;ai_companion&quot;: {
         ///        &quot;questions&quot;: true
         ///      }
@@ -3570,7 +3722,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;meeting_id&quot;: 97763643886,
         ///      &quot;meeting_topic&quot;: &quot;My Meeting&quot;,
         ///      &quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
-        ///      &quot;file_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
+        ///      &quot;file_id&quot;: &quot;97F060CE-B123-4A57-A9E1-CC241BC1C555&quot;,
         ///      &quot;attach_type&quot;: &quot;durable_transcript&quot;
         ///    }
         ///  }
@@ -3593,7 +3745,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///			&quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///			&quot;topic&quot;: &quot;My Meeting&quot;,
-        ///			&quot;type&quot;: 2,
+        ///			&quot;type&quot;: 8,
         ///			&quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///			&quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///			&quot;duration&quot;: 60,
@@ -3695,13 +3847,13 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;meeting_id&quot;: 1234567890,
         ///      &quot;meeting_uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;chat_message_file&quot;: {
-        ///        &quot;date_time&quot;: &quot;GMT20220110-072010&quot;,
+        ///        &quot;date_time&quot;: &quot;2022-01-10T07:20:10Z&quot;,
         ///        &quot;sender_session_id&quot;: &quot;26219520&quot;,
         ///        &quot;sender_name&quot;: &quot;Jill Chill&quot;,
         ///        &quot;sender_email&quot;: &quot;dlp.user@example.com&quot;,
         ///        &quot;sender_type&quot;: &quot;host&quot;,
         ///        &quot;recipient_session_id&quot;: &quot;38681600&quot;,
-        ///    [rest of string was truncated]&quot;;.
+        ///  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_chat_message_file_sent_webhook {
             get {
@@ -3719,12 +3871,12 @@ namespace ZoomNet.UnitTests.Properties {
         ///            &quot;id&quot;: 1234567890,
         ///            &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///            &quot;chat_message&quot;: {
-        ///                &quot;date_time&quot;: &quot;GMT20220110-072010&quot;,
+        ///                &quot;date_time&quot;: &quot;2022-01-10T07:20:10Z&quot;,
         ///                &quot;sender_session_id&quot;: &quot;26219520&quot;,
         ///                &quot;sender_name&quot;: &quot;Jill Chill&quot;,
         ///                &quot;sender_email&quot;: &quot;dlp.user@example.com&quot;,
         ///                &quot;sender_type&quot;: &quot;host&quot;,
-        ///   [rest of string was truncated]&quot;;.
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_chat_message_sent_webhook {
             get {
@@ -3744,13 +3896,14 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;id&quot;: 1234567890,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///      &quot;topic&quot;: &quot;My Meeting Converted&quot;,
+        ///      &quot;topic&quot;: &quot;My Webinar&quot;,
         ///      &quot;type&quot;: 5,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;
         ///    }
-        ///   [rest of string was truncated]&quot;;.
+        ///  }
+        ///}.
         /// </summary>
         internal static string meeting_converted_to_webinar_webhook {
             get {
@@ -3766,15 +3919,17 @@ namespace ZoomNet.UnitTests.Properties {
         ///		&quot;account_id&quot;: &quot;VjZoEArIT5y-HlWxkV-tVA&quot;,
         ///		&quot;operator&quot;: &quot;someone@example.com&quot;,
         ///		&quot;operator_id&quot;: &quot;8lzIwvZTSOqjndWPbPqzuA&quot;,
+        ///		&quot;operation&quot;: &quot;single&quot;,
         ///		&quot;object&quot;: {
-        ///			&quot;uuid&quot;: &quot;5yDZGNlQSV6qOjg4NxajHQ==&quot;,
-        ///			&quot;id&quot;: 98884753832,
-        ///			&quot;host_id&quot;: &quot;8lzIwvZTSOqjndWPbPqzuA&quot;,
-        ///			&quot;topic&quot;: &quot;ZoomNet Unit Testing: instant meeting&quot;,
-        ///			&quot;type&quot;: 1,
+        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///			&quot;id&quot;: 1234567890,
+        ///			&quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///			&quot;topic&quot;: &quot;My Meeting&quot;,
+        ///			&quot;type&quot;: 8,
+        ///			&quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///			&quot;duration&quot;: 60,
-        ///			&quot;timezone&quot;: &quot;America/New_York&quot;,
-        ///			&quot;join_url&quot;: &quot;https://zoom.us/j/98884753832?pwd=c21EQzg0SXY2dlNT [rest of string was truncated]&quot;;.
+        ///			&quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///			&quot;join_url&quot;: &quot;https:/ [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_created_webhook {
             get {
@@ -3790,6 +3945,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///		&quot;account_id&quot;: &quot;VjZoEArIT5y-HlWxkV-tVA&quot;,
         ///		&quot;operator&quot;: &quot;someone@example.com&quot;,
         ///		&quot;operator_id&quot;: &quot;8lzIwvZTSOqjndWPbPqzuA&quot;,
+        ///		&quot;operation&quot;: &quot;single&quot;,
         ///		&quot;object&quot;: {
         ///			&quot;uuid&quot;: &quot;5yDZGNlQSV6qOjg4NxajHQ==&quot;,
         ///			&quot;id&quot;: 98884753832,
@@ -3821,9 +3977,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;test_result&quot;: {
         ///        &quot;user_id&quot;: &quot;1234567890&quot;,
         ///        &quot;user_name&quot;: &quot;JillChill&quot;,
-        ///        &quot;camera_status&quot;: 1,
+        ///        &quot;camera_status&quot;: 0,
         ///        &quot;speaker_status&quot;: 1,
-        ///        &quot;microphone_status&quot;: 1,
+        ///        &quot;microphone_status&quot;: 2,
         ///        &quot;os&quot;: &quot;ios&quot;
         ///      }
         ///    }
@@ -3842,20 +3998,19 @@ namespace ZoomNet.UnitTests.Properties {
         ///	&quot;event_ts&quot;: 1626230691572,
         ///	&quot;payload&quot;: {
         ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;operation&quot;: &quot;single&quot;,
         ///		&quot;object&quot;: {
         ///			&quot;id&quot;: &quot;1234567890&quot;,
         ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///			&quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///			&quot;topic&quot;: &quot;My Meeting&quot;,
-        ///			&quot;type&quot;: 3,
+        ///			&quot;type&quot;: 8,
         ///			&quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///			&quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///			&quot;duration&quot;: 60,
         ///			&quot;end_time&quot;: &quot;2021-07-13T23:00:51Z&quot;
-        ///	 [rest of string was truncated]&quot;;.
+        ///		}
+        ///	}
+        ///}.
         /// </summary>
         internal static string meeting_ended_webhook {
             get {
@@ -3984,7 +4139,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///      &quot;topic&quot;: &quot;My Meeting&quot;,
-        ///      &quot;type&quot;: 2,
+        ///      &quot;type&quot;: 8,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
@@ -4009,7 +4164,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///      &quot;topic&quot;: &quot;My Meeting&quot;,
-        ///      &quot;type&quot;: 2,
+        ///      &quot;type&quot;: 8,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
@@ -4027,18 +4182,18 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///    &quot;operation&quot;: &quot;single&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;id&quot;: &quot;1234567890&quot;,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///      &quot;topic&quot;: &quot;My Meeting&quot;,
-        ///      &quot;type&quot;: 2,
+        ///      &quot;type&quot;: 8,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///      &quot;dura [rest of string was truncated]&quot;;.
+        ///      &quot;duration&quot;: 60,
+        ///      &quot;participant&quot;: {
+        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
+        ///        &quot;user_name&quot;: &quot;Jill [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_admitted_webhook {
             get {
@@ -4062,9 +4217,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
-        ///        &quot;bind_user_id&quot;: &quot;16778240&quot;,
-        ///       [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
+        ///        &quot;bind_user_id&quot;: &quot;16778 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_bind_webhook {
             get {
@@ -4161,7 +4315,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;participant&quot;: {
         ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
-        ///        &quot;user_name&quot;: &quot;JillChill [rest of string was truncated]&quot;;.
+        ///        &quot;user_name&quot;: &quot;Jill Chil [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_jbh_joined_webhook {
             get {
@@ -4186,7 +4340,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;participant&quot;: {
         ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
-        ///        &quot;user_name&quot;: &quot;JillC [rest of string was truncated]&quot;;.
+        ///        &quot;user_name&quot;: &quot;Jill  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_jbh_waiting_left_webhook {
             get {
@@ -4211,7 +4365,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;participant&quot;: {
         ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
-        ///        &quot;user_name&quot;: &quot;JillChil [rest of string was truncated]&quot;;.
+        ///        &quot;user_name&quot;: &quot;Jill Chi [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_jbh_waiting_webhook {
             get {
@@ -4261,8 +4415,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill C [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
+        ///        &quot;user_n [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_joined_waiting_room_webhook {
             get {
@@ -4286,9 +4440,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill Chill&quot;,
-        ///      [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
+        ///        &quot;user_name&quot;: &quot;Jill C [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_joined_webhook {
             get {
@@ -4338,8 +4491,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill Chi [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
+        ///        &quot;user_nam [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_left_waiting_room_webhook {
             get {
@@ -4363,9 +4516,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill Chill&quot;,
-        ///        [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
+        ///        &quot;user_name&quot;: &quot;Jill Chi [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_left_webhook {
             get {
@@ -4485,8 +4637,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill C [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
+        ///        &quot;user_n [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_put_in_waiting_room_webhook {
             get {
@@ -4562,8 +4714,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
-        ///        &quot;participant_uuid&quot;: &quot;55555A [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
+        ///        &quot;participant_u [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_role_changed_webhook {
             get {
@@ -4950,9 +5102,9 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;meeting.sharing_ended&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1234566789900,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;EPeQtiABC000VYxHMA&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;id&quot;: &quot;1234567890&quot;,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
@@ -4963,9 +5115,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;ABCDE12345&quot;,
-        ///        &quot;user_name&quot;: &quot;JillChill&quot;,
-        ///        &quot;id [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;16778000&quot;,
+        ///        &quot;user_name&quot;: &quot;Arya Arya&quot;,
+        ///      [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_sharing_ended_webhook {
             get {
@@ -4981,13 +5133,13 @@ namespace ZoomNet.UnitTests.Properties {
         ///		&quot;account_id&quot;: &quot;EPeQtiABC000VYxHMA&quot;,
         ///		&quot;object&quot;: {
         ///			&quot;duration&quot;: 60,
-        ///			&quot;start_time&quot;: &quot;2019-07-16T17:14:39Z&quot;,
+        ///			&quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///			&quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///			&quot;topic&quot;: &quot;My Meeting&quot;,
-        ///			&quot;id&quot;: 6962400003,
-        ///			&quot;type&quot;: 2,
-        ///			&quot;uuid&quot;: &quot;4118UHIiRCAAAtBlDkcVyw==&quot;,
-        ///			&quot;host_id&quot;: &quot;z8yCxTTTTSiw02QgCAp8uQ&quot;,
+        ///			&quot;id&quot;: 1234567890,
+        ///			&quot;type&quot;: 8,
+        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///			&quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///			&quot;participant&quot;: {
         ///				&quot;id&quot;: &quot;s0AAAASoSE1V8KIFOCYw&quot;,
         ///				&quot;user_id&quot;: &quot;16778000&quot;,
@@ -5007,14 +5159,14 @@ namespace ZoomNet.UnitTests.Properties {
         ///	&quot;payload&quot;: {
         ///		&quot;account_id&quot;: &quot;VjZoEArIT5y-HlWxkV-tVA&quot;,
         ///		&quot;object&quot;: {
-        ///			&quot;duration&quot;: 0,
-        ///			&quot;start_time&quot;: &quot;2021-04-21T14:49:04Z&quot;,
-        ///			&quot;timezone&quot;: &quot;America/New_York&quot;,
-        ///			&quot;topic&quot;: &quot;My Personal Meeting Room&quot;,
-        ///			&quot;id&quot;: 3479130610,
-        ///			&quot;type&quot;: 4,
-        ///			&quot;uuid&quot;: &quot;mOG8pEaFQqeDm6Vd/3xopA==&quot;,
-        ///			&quot;host_id&quot;: &quot;8lzIwvZTSOqjndWPbPqzuA&quot;
+        ///			&quot;duration&quot;: 60,
+        ///			&quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
+        ///			&quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///			&quot;topic&quot;: &quot;My Meeting&quot;,
+        ///			&quot;id&quot;: 1234567890,
+        ///			&quot;type&quot;: 8,
+        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///			&quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;
         ///		}
         ///	}
         ///}
@@ -5172,6 +5324,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///		&quot;account_id&quot;: &quot;VjZoEArIT5y-HlWxkV-tVA&quot;,
         ///		&quot;operator&quot;: &quot;someone@example.com&quot;,
         ///		&quot;operator_id&quot;: &quot;8lzIwvZTSOqjndWPbPqzuA&quot;,
+        ///		&quot;scope&quot;: &quot;single&quot;,
+        ///		&quot;time_stamp&quot;: 1617628463664,
         ///		&quot;object&quot;: {
         ///			&quot;id&quot;: 94890226305,
         ///			&quot;topic&quot;: &quot;ZoomNet Unit Testing: UPDATED scheduled meeting&quot;,
@@ -5180,9 +5334,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///		&quot;old_object&quot;: {
         ///			&quot;id&quot;: 94890226305,
         ///			&quot;topic&quot;: &quot;ZoomNet Unit Testing: scheduled meeting&quot;,
-        ///			&quot;settings&quot;: { &quot;audio&quot;: &quot;telephony&quot; }
-        ///		},
-        ///		&quot;time_stamp&quot;: 1617 [rest of string was truncated]&quot;;.
+        ///			&quot;settings&quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_updated_webhook {
             get {
@@ -7858,10 +8010,20 @@ namespace ZoomNet.UnitTests.Properties {
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;recording.archive_files_completed&quot;,
         ///  &quot;event_ts&quot;: 1626230691572,
-        ///  &quot;download_token&quot;: &quot;abJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJodHRwczovL2V2ZW50Lnpvb20udXMiLCJhY2NvdW50SWQiOiJNdDZzdjR1MFRBeVBrd2dzTDJseGlBIiwiYXVkIjoiaHR0cHM6Ly9vYXV0aC56b29tLnVzIiwibWlkIjoieFp3SEc0c3BRU2VuekdZWG16dnpiUT09IiwiZXhwIjoxNjI2MTM5NTA3LCJ1c2VySWQiOiJEWUhyZHBqclMzdWFPZjdkUGtrZzh3In0.a6KetiC6BlkDhf1dP4KBGUE1bb2brMeraoD45yhFx0eSSSTFdkHQnsKmlJQ-hdo9Zy-4vQw3rOxlyoHv583JyZ&quot;,
+        ///  &quot;download_token&quot;: &quot;abJhbGciOiJIUzUxMiJ9&quot;,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///    &quot; [rest of string was truncated]&quot;;.
+        ///    &quot;object&quot;: {
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;id&quot;: 1234567890,
+        ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///      &quot;topic&quot;: &quot;My Personal Recording&quot;,
+        ///      &quot;type&quot;: 4,
+        ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
+        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///      &quot;duration&quot;: 60,
+        ///      &quot;duration_in_second&quot;: 3602,
+        ///    [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string recording_archive_files_completed_webhook {
             get {
@@ -7871,22 +8033,25 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;recording.batch_deleted&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;operator&quot; : &quot;admin@example.com&quot;,
-        ///		&quot;operator_id&quot; : &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
-        ///		&quot;object&quot;: {
-        ///            &quot;meetings&quot;: [
-        ///              {
-        ///                &quot;meeting_uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///                &quot;recording_file_ids&quot;: [
-        ///                  &quot;ed6c2f27-2ae7-42f4-b3d0-835b493e4fa8&quot;,
-        ///                  &quot;388ffb46-1541-460d-8447-4624451a1db7&quot;
-        ///                ]
-        ///              }
-        /// [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;recording.batch_deleted&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot; : &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot; : &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;meetings&quot;: [
+        ///        {
+        ///          &quot;meeting_uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///          &quot;recording_file_ids&quot;: [
+        ///            &quot;ed6c2f27-2ae7-42f4-b3d0-835b493e4fa8&quot;,
+        ///            &quot;388ffb46-1541-460d-8447-4624451a1db7&quot;
+        ///          ]
+        ///        }
+        ///      ]
+        ///    }
+        ///  }
+        ///}.
         /// </summary>
         internal static string recording_batch_deleted_webhook {
             get {
@@ -7896,21 +8061,25 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;recording.batch_recovered&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;operator&quot; : &quot;admin@example.com&quot;,
-        ///		&quot;operator_id&quot; : &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
-        ///		&quot;object&quot;: {
-        ///            &quot;meetings&quot;: [
-        ///              {
-        ///                &quot;meeting_uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///                &quot;recording_file_ids&quot;: [
-        ///                  &quot;ed6c2f27-2ae7-42f4-b3d0-835b493e4fa8&quot;,
-        ///                  &quot;388ffb46-1541-460d-8447-4624451a1db7&quot;
-        ///                ]
-        ///              } [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;recording.batch_recovered&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot; : &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot; : &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;meetings&quot;: [
+        ///        {
+        ///          &quot;meeting_uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///          &quot;recording_file_ids&quot;: [
+        ///            &quot;ed6c2f27-2ae7-42f4-b3d0-835b493e4fa8&quot;,
+        ///            &quot;388ffb46-1541-460d-8447-4624451a1db7&quot;
+        ///          ]
+        ///        }
+        ///      ]
+        ///    }
+        ///  }
+        ///}.
         /// </summary>
         internal static string recording_batch_recovered_webhook {
             get {
@@ -7925,7 +8094,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///    &quot;operator_id&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
         ///    &quot;operation&quot;: &quot;trash_user_recordings&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;meeting_uuids&quot;: [
@@ -7952,8 +8121,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;free_storage&quot;: &quot;1.65 GB&quot;,
         ///      &quot;plan_storage&quot;: &quot;40 GB&quot;,
         ///      &quot;plan_type&quot;: &quot;cmr_monthly_commitment_40&quot;,
-        ///      &quot;storage_used&quot;: &quot;1.65 GB&quot;,
-        ///      &quot;storage_used_percentage&quot;: 80,
+        ///      &quot;storage_used&quot;: &quot;38.35 GB&quot;,
+        ///      &quot;storage_used_percentage&quot;: 95,
         ///      &quot;storage_exceed&quot;: &quot;0&quot;,
         ///      &quot;max_exceed_date&quot;: &quot;2023-03-01&quot;
         ///    }
@@ -7970,11 +8139,20 @@ namespace ZoomNet.UnitTests.Properties {
         ///   Looks up a localized string similar to {
         ///	&quot;event&quot;: &quot;recording.completed&quot;,
         ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;download_token&quot;: &quot;abJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJodHRwczovL2V2ZW50Lnpvb20udXMiLCJhY2NvdW50SWQiOiJNdDZzdjR1MFRBeVBrd2dzTDJseGlBIiwiYXVkIjoiaHR0cHM6Ly9vYXV0aC56b29tLnVzIiwibWlkIjoieFp3SEc0c3BRU2VuekdZWG16dnpiUT09IiwiZXhwIjoxNjI2MTM5NTA3LCJ1c2VySWQiOiJEWUhyZHBqclMzdWFPZjdkUGtrZzh3In0.a6KetiC6BlkDhf1dP4KBGUE1bb2brMeraoD45yhFx0eSSSTFdkHQnsKmlJQ-hdo9Zy-4vQw3rOxlyoHv583JyZ&quot;,
+        ///	&quot;download_token&quot;: &quot;abJhbGciOiJIUzUxMiJ9&quot;,
         ///	&quot;payload&quot;: {
         ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: 1 [rest of string was truncated]&quot;;.
+        ///			&quot;id&quot;: 1234567890,
+        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///			&quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///			&quot;account_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///			&quot;topic&quot;: &quot;My Personal Recording&quot;,
+        ///			&quot;type&quot;: 4,
+        ///			&quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
+        ///			&quot;password&quot;: &quot;132456&quot;,
+        ///			&quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///			&quot;host_email&quot;: &quot;jchill@example.c [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string recording_completed_webhook {
             get {
@@ -7989,7 +8167,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///    &quot;operator_id&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;id&quot;: 1234567890,
@@ -7998,7 +8176,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;topic&quot;: &quot;My Personal Recording&quot;,
         ///      &quot;type&quot;: 4,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///      &quot;timezone&quot;: &quot;America/Los_An [rest of string was truncated]&quot;;.
+        ///      &quot;timezone&quot;: &quot;America/Los_Angel [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string recording_deleted_webhook {
             get {
@@ -8035,20 +8213,19 @@ namespace ZoomNet.UnitTests.Properties {
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;recording.recovered&quot;,
         ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;download_token&quot;: &quot;abJhbGciOiJIUzUxMiJ9&quot;,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///    &quot;operator_id&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;id&quot;: 1234567890,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///      &quot;account_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///      &quot;topic&quot;: &quot;My Personal Recording&quot;,
         ///      &quot;type&quot;: 4,
-        ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///      &quot;duration&quot;: 60,
-        ///      &quot;share_ [rest of string was truncated]&quot;;.
+        ///      &quot;start_time&quot;: &quot;2021-07-13T21 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string recording_recovered_webhook {
             get {
@@ -8063,7 +8240,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///    &quot;operator_id&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;id&quot;: 1234567890,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
@@ -8073,7 +8250,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
-        ///  [rest of string was truncated]&quot;;.
+        ///     [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string recording_registration_approved_webhook {
             get {
@@ -8096,9 +8273,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
-        ///      &quot;occurrences&quot;: {
-        ///        &quot;occurrence_id&quot;: &quot;ABCDE12345&quot;,
-        ///        &quot;start_time&quot;:  [rest of string was truncated]&quot;;.
+        ///      &quot;registrant&quot;: {
+        ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
+        ///        &quot;email&quot;: &quot;jchil [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string recording_registration_created_webhook {
             get {
@@ -8121,9 +8298,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
-        ///      &quot;occurrences&quot;: {
-        ///        &quot;occurrence_id&quot;: &quot;ABCDE12345&quot;,
-        ///        &quot;start_time&quot;: &quot; [rest of string was truncated]&quot;;.
+        ///      &quot;registrant&quot;: {
+        ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
+        ///        &quot;email&quot;: &quot;jchill [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string recording_registration_denied_webhook {
             get {
@@ -8139,17 +8316,17 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
         ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///    &quot;time_stamp&quot;: &quot;1628705277325&quot;,
+        ///    &quot;time_stamp&quot;: 1628705277325,
         ///    &quot;object&quot;: {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;id&quot;: 1234567890,
-        ///      &quot;topic&quot;: &quot;My Old Personal Recording&quot;,
+        ///      &quot;topic&quot;: &quot;My New Personal Recording&quot;,
         ///      &quot;type&quot;: 4,
-        ///      &quot;host_id&quot;: &quot;I6zp-pPbTl22Z29H786Ixg&quot;
+        ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;
         ///    },
-        ///    &quot;recording_file&quot;: {
+        ///    &quot;old_object&quot;: {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///      &quot;id&quot;: 1 [rest of string was truncated]&quot;;.
+        ///      &quot;id&quot;: 1234567 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string recording_renamed_webhook {
             get {
@@ -8236,6 +8413,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;recording.transcript_completed&quot;,
         ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;download_token&quot;: &quot;abJhbGciOiJIUzUxMiJ9&quot;,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
@@ -8247,8 +8425,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;topic&quot;: &quot;My Personal Recording&quot;,
         ///      &quot;type&quot;: 4,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///      &quot;password&quot;: &quot; [rest of string was truncated]&quot;;.
+        ///      &quot;timezone&quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string recording_transcript_completed_webhook {
             get {
@@ -8260,8 +8437,11 @@ namespace ZoomNet.UnitTests.Properties {
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;recording.trashed&quot;,
         ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;download_token&quot;: &quot;abJhbGciOiJIUzUxMiJ9&quot;,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;id&quot;: 1234567890,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
@@ -8269,11 +8449,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;account_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///      &quot;topic&quot;: &quot;My Personal Recording&quot;,
         ///      &quot;type&quot;: 4,
-        ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///      &quot;host_email&quot;: &quot;jchill@example.com&quot;,
-        ///      &quot;duration&quot;: 60,
-        ///      &quot;pa [rest of string was truncated]&quot;;.
+        ///      &quot;start_time&quot;: &quot;2021-07-13T21:4 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string recording_trashed_webhook {
             get {
@@ -8434,6 +8610,23 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string rtms_concurrency_limited_webhook {
             get {
                 return ResourceManager.GetString("rtms_concurrency_limited_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;rtms.concurrency_near_limit&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;concurrency_limit&quot;: 2000,
+        ///    &quot;concurrency_number&quot;: 1601,
+        ///    &quot;percentage&quot;: 80
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string rtms_concurrency_near_limit_webhook {
+            get {
+                return ResourceManager.GetString("rtms_concurrency_near_limit_webhook", resourceCulture);
             }
         }
         
@@ -9399,6 +9592,28 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string session_user_room_system_callout_ringing_webhook {
             get {
                 return ResourceManager.GetString("session_user_room_system_callout_ringing_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;team_chat.app_mention&quot;,
+        ///  &quot;event_ts&quot;: 1696914490200,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;asgVcjZnWWRLWvv_GtyGuaxg&quot;,
+        ///    &quot;operator&quot;: &quot;example@zoom.us&quot;,
+        ///    &quot;operator_member_id&quot;: &quot;R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;by_external_user&quot;: true,
+        ///    &quot;object&quot;: {
+        ///      &quot;message_id&quot;: &quot;5DD614F4-DD19-4C39-8D03-93C4D0A0C839&quot;,
+        ///      &quot;type&quot;: &quot;to_channel&quot;,
+        ///      &quot;channel_id&quot;: &quot;8AmQ0WOoQ1O3a84yYFc2xQ&quot;,
+        ///      &quot;channel_name&quot;: &quot;Team Chat&quot;,        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string team_chat_app_mention_webhook {
+            get {
+                return ResourceManager.GetString("team_chat_app_mention_webhook", resourceCulture);
             }
         }
         
@@ -10709,24 +10924,23 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;user.tsp_created&quot;,
-        ///  &quot;event_ts&quot;: 1234566789900,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;Mtgfdgfgd2lxiA&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///    &quot;operator_id&quot;: &quot;DYdgdg64567g8w&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
         ///    &quot;object&quot;: {
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;id&quot;: &quot;DYbbbbf7dPkkg8w&quot;,
         ///      &quot;tsp_credentials&quot;: {
         ///        &quot;id&quot;: &quot;2&quot;,
         ///        &quot;conference_code&quot;: &quot;123456789&quot;,
         ///        &quot;leader_pin&quot;: &quot;123456&quot;,
+        ///        &quot;tsp_bridge&quot;: &quot;US_TSP_TB&quot;,
         ///        &quot;dial_in_numbers&quot;: [
         ///          {
         ///            &quot;code&quot;: &quot;1&quot;,
-        ///            &quot;number&quot;: &quot;123456789&quot;,
-        ///            &quot;type&quot;: &quot;toll&quot;
-        ///          },
-        ///          {
-        ///            &quot;code&quot;: [rest of string was truncated]&quot;;.
+        ///    [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string user_tsp_created_webhook {
             get {
@@ -10737,24 +10951,23 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;user.tsp_deleted&quot;,
-        ///  &quot;event_ts&quot;: 1234566789900,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;Mtgfdgfgd2lxiA&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///    &quot;operator_id&quot;: &quot;DYdgdg64567g8w&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
         ///    &quot;object&quot;: {
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;id&quot;: &quot;DYbbbbf7dPkkg8w&quot;,
         ///      &quot;tsp_credentials&quot;: {
         ///        &quot;id&quot;: &quot;2&quot;,
         ///        &quot;conference_code&quot;: &quot;123456789&quot;,
         ///        &quot;leader_pin&quot;: &quot;123456&quot;,
+        ///        &quot;tsp_bridge&quot;: &quot;US_TSP_TB&quot;,
         ///        &quot;dial_in_numbers&quot;: [
         ///          {
         ///            &quot;code&quot;: &quot;1&quot;,
-        ///            &quot;number&quot;: &quot;123456789&quot;,
-        ///            &quot;type&quot;: &quot;toll&quot;
-        ///          },
-        ///          {
-        ///            &quot;code&quot;: [rest of string was truncated]&quot;;.
+        ///    [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string user_tsp_deleted_webhook {
             get {
@@ -10765,22 +10978,23 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;user.tsp_updated&quot;,
-        ///  &quot;event_ts&quot;: 1234566789900,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;Mtgfdgfgd2lxiA&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///    &quot;operator_id&quot;: &quot;DYdgdg64567g8w&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;id&quot;: &quot;DYbbbbf7dPkkg8w&quot;,
         ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
         ///      &quot;tsp_credentials&quot;: {
-        ///        &quot;conference_code&quot;: &quot;0125&quot;,
-        ///        &quot;leader_pin&quot;: &quot;11189898&quot;,
+        ///        &quot;id&quot;: &quot;2&quot;,
+        ///        &quot;conference_code&quot;: &quot;123456789&quot;,
+        ///        &quot;leader_pin&quot;: &quot;123456&quot;,
+        ///        &quot;tsp_bridge&quot;: &quot;US_TSP_TB&quot;,
         ///        &quot;dial_in_numbers&quot;: [
         ///          {
         ///            &quot;code&quot;: &quot;1&quot;,
-        ///            &quot;number&quot;: &quot;+1 1000200200&quot;,
-        ///            &quot;type&quot;: &quot;to [rest of string was truncated]&quot;;.
+        ///    [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string user_tsp_updated_webhook {
             get {
@@ -11024,7 +11238,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///      &quot;topic&quot;: &quot;My Webinar&quot;,
-        ///      &quot;type&quot;: 2,
+        ///      &quot;type&quot;: 5,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
@@ -11074,13 +11288,13 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;webinar_id&quot;: 1234567890,
         ///      &quot;webinar_uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;chat_message_file&quot;: {
-        ///        &quot;date_time&quot;: &quot;GMT20220110-072010&quot;,
+        ///        &quot;date_time&quot;: &quot;2022-01-10T07:20:10Z&quot;,
         ///        &quot;sender_session_id&quot;: &quot;26219520&quot;,
         ///        &quot;sender_name&quot;: &quot;Jill Chill&quot;,
         ///        &quot;sender_email&quot;: &quot;dlp.user@example.com&quot;,
         ///        &quot;sender_type&quot;: &quot;host&quot;,
         ///        &quot;recipient_session_id&quot;: &quot;38681600&quot;,
-        ///    [rest of string was truncated]&quot;;.
+        ///  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_chat_message_file_sent_webhook {
             get {
@@ -11098,12 +11312,12 @@ namespace ZoomNet.UnitTests.Properties {
         ///            &quot;id&quot;: 1234567890,
         ///            &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///            &quot;chat_message&quot;: {
-        ///                &quot;date_time&quot;: &quot;GMT20220110-072010&quot;,
+        ///                &quot;date_time&quot;: &quot;2022-01-10T07:20:10Z&quot;,
         ///                &quot;sender_session_id&quot;: &quot;26219520&quot;,
         ///                &quot;sender_name&quot;: &quot;Jill Chill&quot;,
         ///                &quot;sender_email&quot;: &quot;dlp.user@example.com&quot;,
         ///                &quot;sender_type&quot;: &quot;host&quot;,
-        ///   [rest of string was truncated]&quot;;.
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_chat_message_sent_webhook {
             get {
@@ -11121,15 +11335,16 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///      &quot;id&quot;: 9876543210,
+        ///      &quot;id&quot;: 1234567890,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///      &quot;topic&quot;: &quot;My Webinar Converted&quot;,
-        ///      &quot;type&quot;: 2,
+        ///      &quot;topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;type&quot;: 8,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///      &quot;duration&quot;: 45,
+        ///      &quot;duration&quot;: 60,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;
         ///    }
-        ///   [rest of string was truncated]&quot;;.
+        ///  }
+        ///}.
         /// </summary>
         internal static string webinar_converted_to_meeting_webhook {
             get {
@@ -11204,7 +11419,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///			&quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///			&quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///			&quot;duration&quot;: 60,
-        ///			&quot;end_time&quot;: &quot;2021-07-13T23:00:51Z&quot;
+        ///			&quot;end_time&quot;: &quot;2021-07-13T23:00:51Z&quot;,
+        ///			&quot;practice_session&quot;: true
         ///		}
         ///	}
         ///}.
@@ -11225,15 +11441,14 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;id&quot;: &quot;1234567890&quot;,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///      &quot;topic&quot;: &quot;My Meeting&quot;,
-        ///      &quot;type&quot;: 8,
+        ///      &quot;topic&quot;: &quot;My Webinar&quot;,
+        ///      &quot;type&quot;: 5,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
-        ///        &quot;bind_user_id&quot;:&quot;16778240&quot;,
-        ///        [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
+        ///        &quot;bind_user_id&quot;:&quot;167782 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_participant_bind_webhook {
             get {
@@ -11324,14 +11539,13 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///      &quot;topic&quot;: &quot;My Webinar&quot;,
-        ///      &quot;type&quot;: 9,
+        ///      &quot;type&quot;: 5,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill Chill&quot;,
-        ///      [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
+        ///        &quot;user_name&quot;: &quot;Jill C [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_participant_joined_webhook {
             get {
@@ -11350,14 +11564,13 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///      &quot;topic&quot;: &quot;My Webinar&quot;,
-        ///      &quot;type&quot;: 9,
+        ///      &quot;type&quot;: 5,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill Chill&quot;,
-        ///        [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
+        ///        &quot;user_name&quot;: &quot;Jill Chi [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_participant_left_webhook {
             get {
@@ -11427,14 +11640,13 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///      &quot;topic&quot;: &quot;My Webinar&quot;,
-        ///      &quot;type&quot;: 9,
+        ///      &quot;type&quot;: 5,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
-        ///        &quot;user_name&quot;: &quot;JillChill&quot;,
-        /// [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
+        ///        &quot;user_name&quot;: &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_participant_role_changed_webhook {
             get {
@@ -11571,10 +11783,12 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;event&quot;: &quot;webinar.registration_created&quot;,
+        ///  &quot;event&quot;: &quot;webinar.registration_denied&quot;,
         ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;id&quot;: 1234567890,
@@ -11584,10 +11798,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///      &quot;occurrences&quot;: [
-        ///        {
-        ///          &quot;occurrence_id&quot;: &quot;ABCDE12345&quot;,
-        ///          &quot;start_time&quot; [rest of string was truncated]&quot;;.
+        ///      &quot;occurrences&quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_registration_denied_webhook {
             get {
@@ -11657,14 +11868,13 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///      &quot;topic&quot;: &quot;My Webinar&quot;,
-        ///      &quot;type&quot;: 9,
+        ///      &quot;type&quot;: 5,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;ABCDE12345&quot;,
-        ///        &quot;user_name&quot;: &quot;JillChill&quot;,
-        ///        &quot;sh [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
+        ///        &quot;user_name&quot;: &quot;Jill Chill&quot;,        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_sharing_ended_webhook {
             get {
@@ -11683,14 +11893,13 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///      &quot;topic&quot;: &quot;My Webinar&quot;,
-        ///      &quot;type&quot;: 9,
+        ///      &quot;type&quot;: 5,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;ABCDE12345&quot;,
-        ///        &quot;user_name&quot;: &quot;JillChill&quot;,
-        ///        &quot; [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
+        ///        &quot;user_name&quot;: &quot;Jill Chill&quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_sharing_started_webhook {
             get {
@@ -11709,7 +11918,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///      &quot;topic&quot;: &quot;My Webinar&quot;,
-        ///      &quot;type&quot;: 9,
+        ///      &quot;type&quot;: 5,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60
@@ -11732,16 +11941,15 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
         ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
         ///    &quot;scope&quot;: &quot;single&quot;,
+        ///    &quot;time_stamp&quot;: 1617628463664,
         ///    &quot;object&quot;: {
         ///      &quot;id&quot;: 1234567890,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///      &quot;topic&quot;: &quot;My Webinar&quot;,
+        ///      &quot;topic&quot;: &quot;ZoomNet Unit Testing: UPDATED scheduled webinar&quot;,
         ///      &quot;type&quot;: 9,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///      &quot;duration&quot;: 60,
-        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///      &quot; [rest of string was truncated]&quot;;.
+        ///  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_updated_webhook {
             get {

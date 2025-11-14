@@ -1,0 +1,7 @@
+{
+  "event": "endpoint.url_validation",
+  "event_ts": 1626230691572,
+  "payload": {
+    "plainToken": "qgg8vlvZRS6UYooatFL8Aw"
+  }
+}
