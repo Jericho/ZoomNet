@@ -635,5 +635,23 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "recording.trashed")]
 		RecordingTrashed,
+
+		/// <summary>
+		/// TSP (Telephony Service Provider) user account is created in Zoom.
+		/// </summary>
+		[EnumMember(Value = "user.tsp_created")]
+		UserTspCreated,
+
+		/// <summary>
+		/// TSP user account is deleted.
+		/// </summary>
+		[EnumMember(Value = "user.tsp_deleted")]
+		UserTspDeleted,
+
+		/// <summary>
+		/// TSP (Telephony Service Provider) user account information is updated.
+		/// </summary>
+		[EnumMember(Value = "user.tsp_updated")]
+		UserTspUpdated,
 	}
 }

@@ -57,7 +57,7 @@ namespace ZoomNet.UnitTests
 			audioFile.Status.ShouldBe(RecordingArchiveFileStatus.Completed);
 			audioFile.ContentType.ShouldBe(RecordingContentType.AudioOnly);
 			audioFile.Individual.ShouldBeTrue();
-			audioFile.ParticipantEmail.ShouldBe("jchill@example.com");
+			audioFile.ParticipantEmail.ShouldBe(UserEmail);
 			audioFile.ParticipantJoinTime.ShouldBe(new DateTime(2021, 3, 12, 2, 7, 27, DateTimeKind.Utc));
 			audioFile.ParticipantLeaveTime.ShouldBe(new DateTime(2021, 3, 12, 2, 12, 27, DateTimeKind.Utc));
 			audioFile.EncryptionFingerprint.ShouldBe("2123150b921fb1babda81c6156d2711659d37b5d3cbe6957e22e51fbb87e7a87");
@@ -158,7 +158,7 @@ namespace ZoomNet.UnitTests
 			VerifyRecordedMeetingOrWebinarInfo(parsedEvent.Recording);
 
 			parsedEvent.Recording.AccountId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
-			parsedEvent.Recording.HostEmail.ShouldBe("jchill@example.com");
+			parsedEvent.Recording.HostEmail.ShouldBe(UserEmail);
 			parsedEvent.Recording.Password.ShouldBe("132456");
 			parsedEvent.Recording.ShareUrl.ShouldBe("https://example.com");
 			parsedEvent.Recording.TotalSize.ShouldBe(3328371);
@@ -366,7 +366,7 @@ namespace ZoomNet.UnitTests
 			VerifyRecordedMeetingOrWebinarInfo(parsedEvent.Recording);
 
 			parsedEvent.Recording.AccountId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
-			parsedEvent.Recording.HostEmail.ShouldBe("jchill@example.com");
+			parsedEvent.Recording.HostEmail.ShouldBe(UserEmail);
 			parsedEvent.Recording.Password.ShouldBe("123456");
 			parsedEvent.Recording.ShareUrl.ShouldBe("https://example.com");
 			parsedEvent.Recording.TotalSize.ShouldBe(529758);

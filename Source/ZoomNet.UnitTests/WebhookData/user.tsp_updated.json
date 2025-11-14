@@ -1,37 +1,41 @@
 {
   "event": "user.tsp_updated",
-  "event_ts": 1234566789900,
+  "event_ts": 1626230691572,
   "payload": {
-    "account_id": "Mtgfdgfgd2lxiA",
+    "account_id": "AAAAAABBBB",
     "operator": "admin@example.com",
-    "operator_id": "DYdgdg64567g8w",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
     "object": {
       "id": "DYbbbbf7dPkkg8w",
       "email": "jchill@example.com",
       "tsp_credentials": {
-        "conference_code": "0125",
-        "leader_pin": "11189898",
+        "id": "2",
+        "conference_code": "123456789",
+        "leader_pin": "123456",
+        "tsp_bridge": "US_TSP_TB",
         "dial_in_numbers": [
           {
             "code": "1",
+            "country_label": "US",
             "number": "+1 1000200200",
             "type": "tollfree"
           }
-        ],
-        "tsp_bridge": "US_TSP_TB"
+        ]
       }
     },
     "old_object": {
+      "id": "2",
       "conference_code": "0130",
       "leader_pin": "11188124",
+      "tsp_bridge": "",
       "dial_in_numbers": [
         {
-          "code": "2",
-          "number": "+355 18899996875",
-          "type": "toll"
+          "code": "1",
+          "country_label": "US",
+          "number": "+1 1000200200",
+          "type": "tollfree"
         }
-      ],
-      "tsp_bridge": ""
+      ]
     }
   }
 }

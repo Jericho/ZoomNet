@@ -129,7 +129,7 @@ namespace ZoomNet.UnitTests
 			recurringWebinar.Settings.ShouldNotBeNull();
 			recurringWebinar.Settings.UsePmi.ShouldNotBeNull();
 			recurringWebinar.Settings.UsePmi.Value.ShouldBeTrue();
-			recurringWebinar.Settings.AlternativeHosts.ShouldBe("jchill@example.com");
+			recurringWebinar.Settings.AlternativeHosts.ShouldBe(UserEmail);
 		}
 
 		[Fact]

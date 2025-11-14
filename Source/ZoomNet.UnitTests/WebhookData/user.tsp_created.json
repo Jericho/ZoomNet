@@ -1,35 +1,39 @@
 {
   "event": "user.tsp_created",
-  "event_ts": 1234566789900,
+  "event_ts": 1626230691572,
   "payload": {
-    "account_id": "Mtgfdgfgd2lxiA",
+    "account_id": "AAAAAABBBB",
     "operator": "admin@example.com",
-    "operator_id": "DYdgdg64567g8w",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
     "object": {
+      "email": "jchill@example.com",
+      "id": "DYbbbbf7dPkkg8w",
       "tsp_credentials": {
         "id": "2",
         "conference_code": "123456789",
         "leader_pin": "123456",
+        "tsp_bridge": "US_TSP_TB",
         "dial_in_numbers": [
           {
             "code": "1",
+            "country_label": "US",
             "number": "123456789",
             "type": "toll"
           },
           {
-            "code": "93",
+            "code": "91",
+            "country_label": "IN",
             "number": "980000021",
             "type": "tollfree"
           },
           {
             "code": "1",
+            "country_label": "US",
             "number": "2222456532",
             "type": "media_link"
           }
         ]
-      },
-      "email": "jchill@example.com",
-      "id": "DYbbbbf7dPkkg8w"
+      }
     }
   }
 }
