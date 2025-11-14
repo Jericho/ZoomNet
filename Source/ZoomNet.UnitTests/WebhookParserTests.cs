@@ -980,6 +980,24 @@ namespace ZoomNet.UnitTests
 			VerifyRegistrant(parsedEvent.Registrant);
 		}
 
+		[Fact]
+		public void EndpointUrlValidation()
+		{
+			string plainToken = "qgg8vlvZRS6UYooatFL8Aw";
+
+			var parsedEvent = ParseWebhookEvent<EndpointUrlValidationEvent>(Resource.endpoint_url_validation_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.EndpointUrlValidation);
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.PlainToken.ShouldBe(plainToken);
+
+			string jsonResponse = parsedEvent.GenerateUrlValidationResponse("UB_rdTwhTruoYCMr6x6-MQ");
+			var parsedResponse = System.Text.Json.Nodes.JsonNode.Parse(jsonResponse);
+
+			parsedResponse["plainToken"]?.ToString().ShouldBe(plainToken);
+			parsedResponse["encryptedToken"]?.ToString().ShouldBe("439d1ed256e8d5513d2acd195e0adc64bbbfeb6b795b9d1880534610b58c674c");
+		}
+
 		#endregion
 
 		#region private methods
