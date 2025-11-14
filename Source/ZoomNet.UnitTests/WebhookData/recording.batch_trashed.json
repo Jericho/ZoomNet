@@ -4,7 +4,7 @@
   "payload": {
     "account_id": "AAAAAABBBB",
     "operator": "admin@example.com",
-    "operator_id": "I7zp-pYbTl22Z29H796Ixg",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
     "operation": "trash_user_recordings",
     "object": {
       "meeting_uuids": [

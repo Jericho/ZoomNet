@@ -49,7 +49,7 @@ namespace ZoomNet.UnitTests
 		{
 			return this.AssertContent().ReadAsByteArrayAsync(
 #if NET5_0_OR_GREATER
-                this.CancellationToken
+				this.CancellationToken
 #endif
 			);
 		}
@@ -58,7 +58,7 @@ namespace ZoomNet.UnitTests
 		{
 			return this.AssertContent().ReadAsStringAsync(
 #if NET5_0_OR_GREATER
-                this.CancellationToken
+				this.CancellationToken
 #endif
 			);
 		}
@@ -68,7 +68,7 @@ namespace ZoomNet.UnitTests
 			Stream stream = await this.AssertContent()
 				.ReadAsStreamAsync(
 #if NET5_0_OR_GREATER
-                this.CancellationToken
+				this.CancellationToken
 #endif
 				)
 				.ConfigureAwait(false);

@@ -1,5 +1,5 @@
-using System;
 using Shouldly;
+using System;
 using Xunit;
 using ZoomNet.Models;
 using ZoomNet.Models.Webhooks;
@@ -20,8 +20,8 @@ namespace ZoomNet.UnitTests
 			var parsedEvent = ParseWebhookEvent<WebinarServiceIssueEvent>(Resource.webinar_alert_webhook);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarServiceIssue);
-			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
-			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
 
 			VerifyWebinarInfo(parsedEvent.Webinar);
 
@@ -36,12 +36,12 @@ namespace ZoomNet.UnitTests
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarChatMessageFileDownloaded);
 
-			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
-			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
 			parsedEvent.Operator.ShouldBe("user@example.com");
-			parsedEvent.OperatorId.ShouldBe("z8yCxjabcdEFGHfp8uQ");
-			parsedEvent.WebinarId.ShouldBe(1234567890);
-			parsedEvent.WebinarUuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
+			parsedEvent.OperatorId.ShouldBe(OperatorId);
+			parsedEvent.WebinarId.ShouldBe(MeetingId);
+			parsedEvent.WebinarUuid.ShouldBe(MeetingUuid);
 			parsedEvent.HostAccountId.ShouldBe("lmnop12345abcdefghijk");
 
 			VerifyChatMessageFile(parsedEvent.File, "rw3dIsBRTpOyMOJmeKgdaQ", null);
@@ -54,10 +54,10 @@ namespace ZoomNet.UnitTests
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarChatMessageFileSent);
 
-			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
-			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
-			parsedEvent.WebinarId.ShouldBe(1234567890);
-			parsedEvent.WebinarUuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
+			parsedEvent.WebinarId.ShouldBe(MeetingId);
+			parsedEvent.WebinarUuid.ShouldBe(MeetingUuid);
 
 			VerifyChatMessageFile(parsedEvent.File, null, "https://file.zoomdev.us/file/hsdAXySKRe2KgS-0YNeSXg");
 			VerifyWebhookChatMessage(parsedEvent.Message, null, null);
@@ -72,10 +72,10 @@ namespace ZoomNet.UnitTests
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarChatMessageSent);
 
-			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
-			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
-			parsedEvent.WebinarId.ShouldBe(1234567890);
-			parsedEvent.WebinarUuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
+			parsedEvent.WebinarId.ShouldBe(MeetingId);
+			parsedEvent.WebinarUuid.ShouldBe(MeetingUuid);
 
 			VerifyWebhookChatMessage(
 				parsedEvent.Message,
@@ -96,10 +96,10 @@ namespace ZoomNet.UnitTests
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarConvertedToMeeting);
 
-			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
-			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
-			parsedEvent.Operator.ShouldBe("admin@example.com");
-			parsedEvent.OperatorId.ShouldBe("z8yCxjabcdEFGHfp8uQ");
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
+			parsedEvent.Operator.ShouldBe(OperatorEmail);
+			parsedEvent.OperatorId.ShouldBe(OperatorId);
 
 			VerifyMeetingInfo(parsedEvent.Meeting);
 		}
@@ -110,10 +110,10 @@ namespace ZoomNet.UnitTests
 			var parsedEvent = ParseWebhookEvent<WebinarCreatedEvent>(Resource.webinar_created_webhook);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarCreated);
-			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
-			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
-			parsedEvent.Operator.ShouldBe("admin@example.com");
-			parsedEvent.OperatorId.ShouldBe("z8yCxjabcdEFGHfp8uQ");
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
+			parsedEvent.Operator.ShouldBe(OperatorEmail);
+			parsedEvent.OperatorId.ShouldBe(OperatorId);
 			parsedEvent.Operation.ShouldBe("single");
 			parsedEvent.CreationSource.ShouldBe(CreationSource.OpenApi);
 
@@ -129,7 +129,7 @@ namespace ZoomNet.UnitTests
 			recurringWebinar.Settings.ShouldNotBeNull();
 			recurringWebinar.Settings.UsePmi.ShouldNotBeNull();
 			recurringWebinar.Settings.UsePmi.Value.ShouldBeTrue();
-			recurringWebinar.Settings.AlternativeHosts.ShouldBe("jchill@example.com");
+			recurringWebinar.Settings.AlternativeHosts.ShouldBe(UserEmail);
 		}
 
 		[Fact]
@@ -138,10 +138,10 @@ namespace ZoomNet.UnitTests
 			var parsedEvent = ParseWebhookEvent<WebinarDeletedEvent>(Resource.webinar_deleted_webhook);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarDeleted);
-			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
-			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
-			parsedEvent.Operator.ShouldBe("admin@example.com");
-			parsedEvent.OperatorId.ShouldBe("z8yCxjabcdEFGHfp8uQ");
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
+			parsedEvent.Operator.ShouldBe(OperatorEmail);
+			parsedEvent.OperatorId.ShouldBe(OperatorId);
 			parsedEvent.Operation.ShouldBe("single");
 
 			VerifyRecurringWebinar(parsedEvent.Webinar);
@@ -153,8 +153,8 @@ namespace ZoomNet.UnitTests
 			var parsedEvent = ParseWebhookEvent<WebinarEndedEvent>(Resource.webinar_ended_webhook);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarEnded);
-			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
-			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
 
 			VerifyWebinarInfo(parsedEvent.Webinar);
 
@@ -184,7 +184,7 @@ namespace ZoomNet.UnitTests
 			var parsedEvent = ParseWebhookEvent<WebinarParticipantFeedbackEvent>(Resource.webinar_participant_feedback_webhook);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarParticipantFeedback);
-			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
 			parsedEvent.AccountId.ShouldBe("q6gBJVO5TzexKYTb_I2rpg");
 
 			parsedEvent.Webinar.ShouldNotBeNull();
@@ -256,10 +256,10 @@ namespace ZoomNet.UnitTests
 			var parsedEvent = ParseWebhookEvent<WebinarPermanentlyDeletedEvent>(Resource.webinar_permanently_deleted_webhook);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarPermanentlyDeleted);
-			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
-			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
-			parsedEvent.Operator.ShouldBe("admin@example.com");
-			parsedEvent.OperatorId.ShouldBe("z8yCxjabcdEFGHfp8uQ");
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
+			parsedEvent.Operator.ShouldBe(OperatorEmail);
+			parsedEvent.OperatorId.ShouldBe(OperatorId);
 			parsedEvent.Operation.ShouldBe("single");
 
 			VerifyRecurringWebinar(parsedEvent.Webinar);
@@ -271,10 +271,10 @@ namespace ZoomNet.UnitTests
 			var parsedEvent = ParseWebhookEvent<WebinarRecoveredEvent>(Resource.webinar_recovered_webhook);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarRecovered);
-			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
-			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
-			parsedEvent.Operator.ShouldBe("admin@example.com");
-			parsedEvent.OperatorId.ShouldBe("z8yCxjabcdEFGHfp8uQ");
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
+			parsedEvent.Operator.ShouldBe(OperatorEmail);
+			parsedEvent.OperatorId.ShouldBe(OperatorId);
 			parsedEvent.Operation.ShouldBe("single");
 
 			VerifyRecurringWebinar(parsedEvent.Webinar);
@@ -289,8 +289,8 @@ namespace ZoomNet.UnitTests
 
 			VerifyWebinarRegistrationEvent(parsedEvent);
 
-			parsedEvent.Operator.ShouldBe("admin@example.com");
-			parsedEvent.OperatorId.ShouldBe("z8yCxjabcdEFGHfp8uQ");
+			parsedEvent.Operator.ShouldBe(OperatorEmail);
+			parsedEvent.OperatorId.ShouldBe(OperatorId);
 
 			VerifyRegistrant(parsedEvent.Registrant);
 
@@ -306,8 +306,8 @@ namespace ZoomNet.UnitTests
 
 			VerifyWebinarRegistrationEvent(parsedEvent);
 
-			parsedEvent.Operator.ShouldBe("admin@example.com");
-			parsedEvent.OperatorId.ShouldBe("z8yCxjabcdEFGHfp8uQ");
+			parsedEvent.Operator.ShouldBe(OperatorEmail);
+			parsedEvent.OperatorId.ShouldBe(OperatorId);
 
 			VerifyRegistrant(parsedEvent.Registrant);
 		}
@@ -321,27 +321,13 @@ namespace ZoomNet.UnitTests
 
 			VerifyWebinarRegistrationEvent(parsedEvent);
 
-			VerifyRegistrant(parsedEvent.Registrant);
+			VerifyRegistrantExtended(parsedEvent.Registrant);
 
-			parsedEvent.Registrant.Address.ShouldBe("1800 Amphibious Blvd.");
-			parsedEvent.Registrant.City.ShouldBe("Mountain View");
-			parsedEvent.Registrant.Country.ShouldBe("US");
-			parsedEvent.Registrant.Zip.ShouldBe("94045");
-			parsedEvent.Registrant.State.ShouldBe("CA");
-			parsedEvent.Registrant.Phone.ShouldBe("5550100");
-			parsedEvent.Registrant.Industry.ShouldBe("Food");
-			parsedEvent.Registrant.Organization.ShouldBe("Cooking Org");
-			parsedEvent.Registrant.JobTitle.ShouldBe("Chef");
-			parsedEvent.Registrant.PurchasingTimeFrame.ShouldBe(PurchasingTimeFrame.Between_1_and_3_months);
-			parsedEvent.Registrant.RoleInPurchaseProcess.ShouldBe(RoleInPurchaseProcess.Influencer);
-			parsedEvent.Registrant.NumberOfEmployees.ShouldBe(NumberOfEmployees.Between_0001_and_0020);
 			parsedEvent.Registrant.Comments.ShouldBe("Looking forward to the webinar");
 			parsedEvent.Registrant.CustomQuestions.ShouldNotBeNull();
 			parsedEvent.Registrant.CustomQuestions.Length.ShouldBe(1);
 			parsedEvent.Registrant.CustomQuestions[0].Key.ShouldBe("What do you hope to learn from this webinar?");
 			parsedEvent.Registrant.CustomQuestions[0].Value.ShouldBe("Look forward to learning how you come up with new recipes and what other services you offer.");
-			parsedEvent.Registrant.Status.ShouldBe(RegistrantStatus.Approved);
-			parsedEvent.Registrant.JoinUrl.ShouldBe("https://example.com/join");
 		}
 
 		[Fact]
@@ -353,8 +339,8 @@ namespace ZoomNet.UnitTests
 
 			VerifyWebinarRegistrationEvent(parsedEvent);
 
-			parsedEvent.Operator.ShouldBe("admin@example.com");
-			parsedEvent.OperatorId.ShouldBe("z8yCxjabcdEFGHfp8uQ");
+			parsedEvent.Operator.ShouldBe(OperatorEmail);
+			parsedEvent.OperatorId.ShouldBe(OperatorId);
 
 			VerifyRegistrant(parsedEvent.Registrant);
 		}
@@ -385,8 +371,8 @@ namespace ZoomNet.UnitTests
 			var parsedEvent = ParseWebhookEvent<WebinarStartedEvent>(Resource.webinar_started_webhook);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarStarted);
-			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
-			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
 
 			VerifyWebinarInfo(parsedEvent.Webinar);
 		}
@@ -397,9 +383,9 @@ namespace ZoomNet.UnitTests
 			var parsedEvent = ParseWebhookEvent<WebinarUpdatedEvent>(Resource.webinar_updated_webhook);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarUpdated);
-			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
-			parsedEvent.Operator.ShouldBe("admin@example.com");
-			parsedEvent.OperatorId.ShouldBe("z8yCxjabcdEFGHfp8uQ");
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.Operator.ShouldBe(OperatorEmail);
+			parsedEvent.OperatorId.ShouldBe(OperatorId);
 			parsedEvent.Operation.ShouldBe("single");
 			parsedEvent.UpdatedOn.ShouldBe(1617628463664.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
 
@@ -413,7 +399,7 @@ namespace ZoomNet.UnitTests
 			parsedEvent.WebinarFields.ShouldNotBeNull();
 			parsedEvent.WebinarFields.Length.ShouldBe(1);
 			parsedEvent.WebinarFields[0].FieldName.ShouldBe("id");
-			parsedEvent.WebinarFields[0].Value.ShouldBe(1234567890);
+			parsedEvent.WebinarFields[0].Value.ShouldBe(MeetingId);
 		}
 
 		#endregion
@@ -425,8 +411,8 @@ namespace ZoomNet.UnitTests
 		/// </summary>
 		private static void VerifyWebinarParticipantEvent(WebinarParticipantEvent parsedEvent)
 		{
-			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
-			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
 
 			VerifyWebinarInfo(parsedEvent.Webinar);
 		}
@@ -436,8 +422,8 @@ namespace ZoomNet.UnitTests
 		/// </summary>
 		private static void VerifyWebinarRegistrationEvent(WebinarRegistrationEvent parsedEvent)
 		{
-			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
-			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
 
 			VerifyRecurringWebinar(parsedEvent.Webinar);
 
@@ -450,9 +436,9 @@ namespace ZoomNet.UnitTests
 		private static void VerifyWebinarInfo(WebinarInfo info)
 		{
 			info.ShouldNotBeNull();
-			info.Id.ShouldBe(1234567890);
-			info.Uuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
-			info.HostId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
+			info.Id.ShouldBe(MeetingId);
+			info.Uuid.ShouldBe(MeetingUuid);
+			info.HostId.ShouldBe(HostId);
 			info.Topic.ShouldBe("My Webinar");
 			info.Type.ShouldBe(WebinarType.Regular);
 			info.StartTime.ShouldBe(timestamp);
@@ -475,9 +461,9 @@ namespace ZoomNet.UnitTests
 
 			var parsedWebinar = (RecurringWebinar)info;
 
-			parsedWebinar.Id.ShouldBe(1234567890);
-			parsedWebinar.Uuid.ShouldBe("4444AAAiAAAAAiAiAiiAii==");
-			parsedWebinar.HostId.ShouldBe("x1yCzABCDEfg23HiJKl4mN");
+			parsedWebinar.Id.ShouldBe(MeetingId);
+			parsedWebinar.Uuid.ShouldBe(MeetingUuid);
+			parsedWebinar.HostId.ShouldBe(HostId);
 			parsedWebinar.Topic.ShouldBe("My Webinar");
 			parsedWebinar.Type.ShouldBe(WebinarType.RecurringFixedTime);
 			parsedWebinar.Duration.ShouldBe(60);
@@ -503,8 +489,8 @@ namespace ZoomNet.UnitTests
 		/// </summary>
 		private static void VerifyWebinarSharingEvent(WebinarSharingEvent parsedEvent)
 		{
-			parsedEvent.Timestamp.ShouldBe(1626230691572.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
-			parsedEvent.AccountId.ShouldBe("AAAAAABBBB");
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
 
 			parsedEvent.Participant.ShouldNotBeNull();
 			parsedEvent.Participant.DisplayName.ShouldBe("Jill Chill");

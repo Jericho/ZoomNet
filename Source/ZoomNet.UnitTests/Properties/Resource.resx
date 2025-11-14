@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -1761,5 +1761,8 @@
   </data>
   <data name="contact_center_team_updated_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\WebhookData\contact_center.team_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="endpoint_url_validation_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WebhookData\endpoint.url_validation.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

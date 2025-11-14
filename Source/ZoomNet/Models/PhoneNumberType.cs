@@ -9,6 +9,7 @@ namespace ZoomNet.Models
 	/// <list type="table">
 	/// <item><term>toll</term><description>Toll number.</description></item>
 	/// <item><term>tollfree</term><description>Toll-free number.</description></item>
+	/// <item><term>media_link</term><description>Media link.</description></item>
 	/// </list>
 	/// </remarks>
 	public enum PhoneNumberType
@@ -23,6 +24,12 @@ namespace ZoomNet.Models
 		/// Toll-free number.
 		/// </summary>
 		[EnumMember(Value = "tollfree")]
-		TollFree
+		TollFree,
+
+		/// <summary>
+		/// Media link.
+		/// </summary>
+		[EnumMember(Value = "media_link")]
+		MediaLink,
 	}
 }

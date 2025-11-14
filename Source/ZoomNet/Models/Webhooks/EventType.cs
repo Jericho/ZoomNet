@@ -533,5 +533,125 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "webinar.recovered")]
 		WebinarRecovered,
+
+		/// <summary>
+		/// Archived files of a meeting or webinar are available for download.
+		/// </summary>
+		[EnumMember(Value = "recording.archive_files_completed")]
+		RecordingArchiveFilesCompleted,
+
+		/// <summary>
+		/// A user has permanently deleted one or more cloud recordings.
+		/// </summary>
+		[EnumMember(Value = "recording.batch_deleted")]
+		RecordingBatchDeleted,
+
+		/// <summary>
+		/// A user has recovered one or more deleted recordings from the trash.
+		/// </summary>
+		[EnumMember(Value = "recording.batch_recovered")]
+		RecordingBatchRecovered,
+
+		/// <summary>
+		/// A user has temporarily deleted all of their cloud recordings.
+		/// </summary>
+		[EnumMember(Value = "recording.batch_trashed")]
+		RecordingBatchTrashed,
+
+		/// <summary>
+		/// Cloud storage usage has been updated (after e.g. recording has completed, trashed or recovered).
+		/// </summary>
+		[EnumMember(Value = "recording.cloud_storage_usage_updated")]
+		RecordingCloudStorageUsageUpdated,
+
+		/// <summary>
+		/// A user has permanently deleted cloud recording.
+		/// </summary>
+		[EnumMember(Value = "recording.deleted")]
+		RecordingDeleted,
+
+		/// <summary>
+		/// A recording has been paused by a user (host or co-host of a meeting or webinar).
+		/// </summary>
+		[EnumMember(Value = "recording.paused")]
+		RecordingPaused,
+
+		/// <summary>
+		/// A user has recovered deleted cloud recording from the trash.
+		/// </summary>
+		[EnumMember(Value = "recording.recovered")]
+		RecordingRecovered,
+
+		/// <summary>
+		/// A registrant has been approved to view a cloud recording.
+		/// </summary>
+		[EnumMember(Value = "recording.registration_approved")]
+		RecordingRegistrationApproved,
+
+		/// <summary>
+		/// A user has been registered for an on-demand cloud recording.
+		/// </summary>
+		[EnumMember(Value = "recording.registration_created")]
+		RecordingRegistrationCreated,
+
+		/// <summary>
+		/// A registrant has been denied from viewing a cloud recording.
+		/// </summary>
+		[EnumMember(Value = "recording.registration_denied")]
+		RecordingRegistrationDenied,
+
+		/// <summary>
+		/// The title of a cloud recording has been changed.
+		/// </summary>
+		[EnumMember(Value = "recording.renamed")]
+		RecordingRenamed,
+
+		/// <summary>
+		/// A previously paused recording has been resumed by a user (host or co-host of a meeting or webinar).
+		/// </summary>
+		[EnumMember(Value = "recording.resumed")]
+		RecordingResumed,
+
+		/// <summary>
+		/// A recording has been started by a user (host or co-host of a meeting or webinar).
+		/// </summary>
+		[EnumMember(Value = "recording.started")]
+		RecordingStarted,
+
+		/// <summary>
+		/// A recording has been stopped by a user (host or co-host of a meeting or webinar).
+		/// </summary>
+		[EnumMember(Value = "recording.stopped")]
+		RecordingStopped,
+
+		/// <summary>
+		/// The transcript of the recording of meeting or webinar is available to view or download.
+		/// </summary>
+		[EnumMember(Value = "recording.transcript_completed")]
+		RecordingTranscriptCompleted,
+
+		/// <summary>
+		/// A user has deleted a cloud recording to a trash.
+		/// </summary>
+		[EnumMember(Value = "recording.trashed")]
+		RecordingTrashed,
+
+		/// <summary>
+		/// TSP (Telephony Service Provider) user account is created in Zoom.
+		/// </summary>
+		[EnumMember(Value = "user.tsp_created")]
+		UserTspCreated,
+
+		/// <summary>
+		/// TSP user account is deleted.
+		/// </summary>
+		[EnumMember(Value = "user.tsp_deleted")]
+		UserTspDeleted,
+
+		/// <summary>
+		/// TSP (Telephony Service Provider) user account information is updated.
+		/// </summary>
+		[EnumMember(Value = "user.tsp_updated")]
+		UserTspUpdated,
 	}
 }
