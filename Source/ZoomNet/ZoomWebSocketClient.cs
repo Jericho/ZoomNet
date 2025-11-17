@@ -68,7 +68,7 @@ namespace ZoomNet
 			// According to https://marketplace.zoom.us/docs/api-reference/websockets/, only Server-to-Server OAuth connections are supported
 			if (connectionInfo is not OAuthConnectionInfo oAuthConnectionInfo || oAuthConnectionInfo.GrantType != OAuthGrantType.AccountCredentials)
 			{
-				throw new ArgumentException("WebSocket client only supports Server-to-Server OAuth connections");
+				throw new ArgumentException("Zoom's websocket server only supports Server-to-Server OAuth connections");
 			}
 
 			_subscriptionId = subscriptionId;
@@ -91,7 +91,7 @@ namespace ZoomNet
 				{
 					Options =
 					{
-						KeepAliveInterval = TimeSpan.Zero, // Turn off built-in "Keep Alive" feature because Zoom uses proprietary "heartbeat" every 30 seconds rather than standard "pong" messages at regular interval.
+						KeepAliveInterval = TimeSpan.Zero, // Turn off built-in "Keep Alive" feature because Zoom uses proprietary "heartbeat" every 30 seconds rather than standard "ping/pong" messages at regular interval.
 						Proxy = _proxy,
 					}
 				};
