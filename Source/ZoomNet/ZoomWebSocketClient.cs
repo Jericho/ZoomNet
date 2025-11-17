@@ -1,15 +1,14 @@
+using ApiSharp.Models;
+using ApiSharp.WebSocket;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using System.Net.WebSockets;
-using System.Reactive.Linq;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using Websocket.Client;
 using ZoomNet.Models;
 using ZoomNet.Utilities;
 
@@ -33,7 +32,7 @@ namespace ZoomNet
 		private readonly Func<Models.Webhooks.Event, CancellationToken, Task> _eventProcessor;
 		private readonly bool _throwWhenUnknownEventType;
 
-		private WebsocketClient _websocketClient;
+		private WebSocketClient _websocketClient;
 		private HttpClient _httpClient;
 		private ITokenHandler _tokenHandler;
 
@@ -79,36 +78,43 @@ namespace ZoomNet
 			_tokenHandler = new OAuthTokenHandler(oAuthConnectionInfo, _httpClient);
 			_throwWhenUnknownEventType = throwWhenUnknownEventType;
 
-			var clientFactory = new Func<Uri, CancellationToken, Task<WebSocket>>(async (uri, cancellationToken) =>
+			const string zoomWebsocketBaseUrl = "wss://ws.zoom.us/ws";
+			var proxyUri = _proxy?.GetProxy(new Uri(zoomWebsocketBaseUrl));
+			var proxyCredentialsParts = proxyUri?.UserInfo?.Split([':'], StringSplitOptions.RemoveEmptyEntries) ?? Array.Empty<string>();
+			var proxyUserName = proxyCredentialsParts.Length > 0 ? WebUtility.UrlDecode(proxyCredentialsParts[0]) : null;
+			var proxyPassword = proxyCredentialsParts.Length > 1 ? WebUtility.UrlDecode(proxyCredentialsParts[1]) : null;
+
+			var urlFactory = new Func<Task<Uri>>(async () =>
 			{
-				_logger.LogTrace("Establishing connection to Zoom");
-
-				// The current value in the uri parameter must be ignored because it contains "access_token" which may have expired.
 				// The following line ensures the "access_token" is refreshed whenever it expires.
-				uri = new Uri($"wss://ws.zoom.us/ws?subscriptionId={_subscriptionId}&access_token={_tokenHandler.Token}");
-
-				var client = new ClientWebSocket()
-				{
-					Options =
-					{
-						KeepAliveInterval = TimeSpan.Zero, // Turn off built-in "Keep Alive" feature because Zoom uses proprietary "heartbeat" every 30 seconds rather than standard "ping/pong" messages at regular interval.
-						Proxy = _proxy,
-					}
-				};
-				client.Options.SetRequestHeader("ZoomNet-Version", ZoomClient.Version);
-
-				await client.ConnectAsync(uri, cancellationToken).ConfigureAwait(false);
-				return client;
+				return new Uri($"{zoomWebsocketBaseUrl}?subscriptionId={_subscriptionId}&access_token={_tokenHandler.Token}");
 			});
 
-			_websocketClient = new WebsocketClient(new Uri("wss://ws.zoom.us"), clientFactory)
+			var websocketParameters = new WebSocketParameters(urlFactory().GetAwaiter().GetResult(), true)
 			{
-				Name = "ZoomNet",
-				ReconnectTimeout = TimeSpan.FromSeconds(45), // Greater than 30 seconds because we send a heartbeat every 30 seconds
-				ErrorReconnectTimeout = TimeSpan.FromSeconds(45)
+				Headers = new Dictionary<string, string>
+				{
+					{ "ZoomNet-Version", ZoomClient.Version }
+				},
+				KeepAliveInterval = TimeSpan.Zero, // Turn off built-in "Keep Alive" feature because Zoom uses proprietary "heartbeat" every 30 seconds rather than standard "ping/pong" messages at regular interval.
+				ReconnectInterval = TimeSpan.FromSeconds(45), // Greater than 30 seconds because we send a heartbeat every 30 seconds
+				Timeout = TimeSpan.FromSeconds(45), // Greater than 30 seconds because we send a heartbeat every 30 seconds
 			};
-			_websocketClient.ReconnectionHappened.Subscribe(info => _logger.LogTrace("Reconnection happened, type: {reconnectionReason}", info.Type));
-			_websocketClient.DisconnectionHappened.Subscribe(info => _logger.LogTrace("Disconnection happened, type: {disconnectionReason}", info.Type));
+
+			if (proxyUri != null)
+			{
+				websocketParameters.Proxy = new ProxyCredentials(proxyUri.Scheme + "://" + proxyUri.DnsSafeHost, proxyUri.Port, proxyUserName, proxyPassword);
+			}
+
+			_websocketClient = new WebSocketClient(_logger, websocketParameters)
+			{
+				GetReconnectionUrl = urlFactory
+			};
+			_websocketClient.OnReconnected += () => _logger.LogTrace("Connection reconnected");
+			_websocketClient.OnClose += () => _logger.LogWarning("Connection closed");
+			_websocketClient.OnError += ex => _logger.LogError(ex, "An error occurred in the WebSocket client");
+			_websocketClient.OnOpen += () => _logger.LogTrace("Connection opened");
+			_websocketClient.OnMessage += async msg => await ProcessMessage(msg).ConfigureAwait(false);
 		}
 
 		/// <summary>
@@ -118,14 +124,9 @@ namespace ZoomNet
 		/// <returns>Asynchronous task.</returns>
 		public Task StartAsync(CancellationToken cancellationToken = default)
 		{
-			_websocketClient.MessageReceived
-				.Select(response => Observable.FromAsync(() => ProcessMessage(response, cancellationToken)))
-				.Merge(5) // Allow up to 5 messages to be processed concurently. This number is arbitrary but it seems reasonable.
-				.Subscribe();
-
 			Task.Run(() => SendHeartbeat(_websocketClient, cancellationToken), cancellationToken);
 
-			return _websocketClient.Start();
+			return _websocketClient.ConnectAsync();
 		}
 
 		/// <summary>
@@ -159,27 +160,27 @@ namespace ZoomNet
 			ReleaseUnmanagedResources();
 		}
 
-		private async Task SendHeartbeat(IWebsocketClient client, CancellationToken cancellationToken = default)
+		private async Task SendHeartbeat(WebSocketClient webSocketClient, CancellationToken cancellationToken = default)
 		{
 			while (!cancellationToken.IsCancellationRequested)
 			{
 				await Task.Delay(TimeSpan.FromSeconds(30), cancellationToken); // Zoom requires a heartbeat every 30 seconds
 
-				if (!client.IsRunning)
+				if (!webSocketClient.IsOpen)
 				{
-					_logger.LogTrace("Client is not running. Skipping heartbeat");
+					_logger.LogTrace("Web socket connection is not opened. Skipping heartbeat");
 					continue;
 				}
 
 				_logger.LogTrace("Sending heartbeat");
 
-				await client.SendInstant("{\"module\":\"heartbeat\"}").ConfigureAwait(false);
+				webSocketClient.Send("{\"module\":\"heartbeat\"}");
 			}
 		}
 
-		private async Task ProcessMessage(ResponseMessage msg, CancellationToken cancellationToken = default)
+		private async Task ProcessMessage(string msg, CancellationToken cancellationToken = default)
 		{
-			var jsonDoc = JsonDocument.Parse(msg.Text);
+			var jsonDoc = JsonDocument.Parse(msg);
 			var module = jsonDoc.RootElement.GetPropertyValue("module", string.Empty);
 			var success = jsonDoc.RootElement.GetPropertyValue("success", true);
 			var content = jsonDoc.RootElement.GetPropertyValue("content", string.Empty);
@@ -231,9 +232,9 @@ namespace ZoomNet
 
 			if (_websocketClient != null)
 			{
-				if (_websocketClient.IsRunning)
+				if (_websocketClient.IsOpen)
 				{
-					_websocketClient.Stop(WebSocketCloseStatus.NormalClosure, "Shutting down").GetAwaiter().GetResult();
+					_websocketClient.CloseAsync().GetAwaiter().GetResult();
 				}
 
 				_websocketClient.Dispose();
