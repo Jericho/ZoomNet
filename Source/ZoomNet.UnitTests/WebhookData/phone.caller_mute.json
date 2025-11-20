@@ -1,27 +1,27 @@
 {
-  "event" : "phone.caller_mute",
-  "event_ts" : 1626759486127,
-  "payload" : {
-    "account_id" : "2TP-coFVSnmyvYZogk8gAg",
-    "object" : {
-      "callee" : {
+  "event": "phone.caller_mute",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "call_id" : "6998252113337041462",
+      "callee": {
         "extension_type": "user",
-        "extension_number" : 810003,
-        "phone_number" : "810003",
+        "extension_number": 810003,
+        "phone_number": "+12092592844",
         "connection_type": "voip"
       },
-      "caller" : {
+      "caller": {
         "extension_id": "52OdSKGSSS-EOyJwQncFvA",
         "extension_type": "user",
-        "user_id" : "kRQpbWO5TV6E7wxEYOKFWw",
-        "timezone" : "Asia/Shanghai",
-        "extension_number" : 810005,
-        "phone_number" : "810005",
+        "user_id": "DnEopNmXQEGU2uvvzjgojw",
+        "timezone": "America/Los_Angeles",
+        "extension_number": 1002,
+        "phone_number": "+12058945456",
         "device_id": "f7aLLSmqRpiWP0U3U6CaNA",
-        "connection_type": "voip"
+        "connection_type": "pstn_off_net"
       },
-      "date_time" : "2021-07-20T05:38:04Z",
-      "call_id" : "6986878782238080581"
+      "date_time": "2021-07-13T21:44:51Z"
     }
   }
 }
