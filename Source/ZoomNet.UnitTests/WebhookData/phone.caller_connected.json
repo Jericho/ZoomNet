@@ -1,10 +1,15 @@
 {
   "event": "phone.caller_connected",
+  "event_ts": 1626230691572,
   "payload": {
-    "account_id": "TQTvjT52Tmi_wrhASNNOEw",
+    "account_id": "AAAAAABBBB",
     "object": {
-      "call_id": "6997939173429971528",
-      "channel_id": "1df42be1-8420-4396-9e78-0a7ee7bc5aab",
+      "call_id": "6998252113337041462",
+      "callee": {
+        "extension_number": 810003,
+        "phone_number": "+12092592844",
+        "connection_type": "voip"
+      },
       "caller": {
         "extension_id": "52OdSKGSSS-EOyJwQncFvA",
         "extension_type": "user",
@@ -14,16 +19,10 @@
         "timezone": "America/Los_Angeles",
         "device_type": "MAC_Client(5.7.5.1123)",
         "device_id": "f7aLLSmqRpiWP0U3U6CaNA",
-        "connection_type": "voip"
+        "connection_type": "pstn_off_net"
       },
-      "callee": {
-        "extension_number": 12092592844,
-        "phone_number": "+12092592844",
-        "connection_type": "voip"
-      },
-      "ringing_start_time": "2021-08-19T00:58:02Z",
-      "connected_start_time": "2021-08-19T00:58:20Z"
+      "ringing_start_time": "2021-08-19T21:12:28Z",
+      "connected_start_time": "2021-08-19T21:12:38Z"
     }
-  },
-  "event_ts": 1629334712775
+  }
 }
