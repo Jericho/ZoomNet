@@ -4,7 +4,7 @@
   "payload": {
     "account_id": "AAAAAABBBB",
     "object": {
-      "call_id" : "6998252113337041462",
+      "call_id": "6998252113337041462",
       "callee": {
         "extension_type": "user",
         "extension_number": 810003,

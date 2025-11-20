@@ -11,7 +11,7 @@
         "phone_number": "+12092592844",
         "connection_type": "voip"
       },
-      "caller" : {
+      "caller": {
         "extension_id": "52OdSKGSSS-EOyJwQncFvA",
         "extension_type": "user",
         "user_id": "DnEopNmXQEGU2uvvzjgojw",
