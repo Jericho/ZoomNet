@@ -3,7 +3,7 @@ using System;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>
-	/// This event is triggered when the callee terminates a call on Zoom Phone.
+	/// This event is triggered when the callee terminates a Zoom Phone call.
 	/// </summary>
 	public class PhoneCalleeEndedEvent : PhoneCallFlowEvent
 	{
