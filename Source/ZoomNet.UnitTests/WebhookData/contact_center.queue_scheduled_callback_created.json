@@ -1,0 +1,22 @@
+{
+  "event": "contact_center.queue_scheduled_callback_created",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "start_time": "2025-06-18T15:00:00Z",
+      "cc_queue_id": "WkdWelkzSnBjSFJwYjI0PQ11",
+      "queue_name": "My Queue",
+      "queue_channel": "voice",
+      "attendees": [
+        {
+          "attendee_id": "beYjXoDOS_eV1QmTpj63PQ",
+          "first_name": "John",
+          "last_name": "Doe",
+          "email": "jdoe@example.com",
+          "phone_number": "+18005550100"
+        }
+      ]
+    }
+  }
+}
