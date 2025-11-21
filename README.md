@@ -40,30 +40,9 @@ The last version of ZoomNet that supported `.NET 4.6.1`, `.NET 4.7.2` and `.NET 
 ## Usage
 
 ### Connection Information
-Before you start using the ZoomNet client, you must decide how you are going to connect to the Zoom API. ZoomNet supports three ways of connecting to Zoom: JWT, OAuth and Server-to-Server OAuth.
-
-#### Connection using JWT
-This is the simplest way to connect to the Zoom API. Zoom expects you to use a key and a secret to generate a JSON object with a signed payload and to provide this JSON object with every API request. The good news is that ZoomNet takes care of the intricacies of generating this JSON object: you simply provide the key and the secret and ZoomNet takes care of the rest. Super easy!
-
-As the Zoom documentation mentions, this is perfect `if you're looking to build an app that provides server-to-server interaction with Zoom APIs`.
-
-Here is an except from the Zoom documentation that explains [how to get your API key and secret](https://marketplace.zoom.us/docs/guides/auth/jwt#key-secret):
-
-> JWT apps provide an API Key and Secret required to authenticate with JWT. To access the API Key and Secret, Create a JWT App on the Marketplace. After providing basic information about your app, locate your API Key and Secret in the App Credentials page.
-
-When you have the API key and secret, you can instantiate a 'connection info' object like so:
-```csharp
-var apiKey = "... your API key ...";
-var apiSecret = "... your API secret ...";
-var connectionInfo = new JwtConnectionInfo(apiKey, apiSecret);
-var zoomClient = new ZoomClient(connectionInfo);
-```
-
-> **Warning:** <a href="https://marketplace.zoom.us/docs/guides/build/jwt-app/jwt-faq/">Zoom has announced</a> that this authentication method would be obsolete in June 2023. The recommendation is to swith to Server-to-Server OAuth.
+Before you start using the ZoomNet client, you must decide how you are going to connect to the Zoom API. ZoomNet supports thwo ways of connecting to Zoom: OAuth and Server-to-Server OAuth.
 
 #### Connection using OAuth (General App)
-Using OAuth is much more complicated than using JWT but at the same time, it is more flexible because you can define which permissions your app requires. When a user installs your app, they are presented with the list of permissions your app requires and they are given the opportunity to accept. 
-
 The Zoom documentation has a document about [how to create an OAuth app](https://marketplace.zoom.us/docs/guides/build/oauth-app) and another document about the [OAuth autorization flow](https://marketplace.zoom.us/docs/guides/auth/oauth) but I personnality was very confused by the later document so here is a brief step-by-step summary:
 - you create an OAuth app, define which permissions your app requires and publish the app to the Zoom marketplace.
 - user installs your app. During installation, user is presented with a screen listing the permissons your app requires. User must click `accept`.
@@ -123,8 +102,6 @@ var zoomClient = new ZoomClient(connectionInfo);
 ```
 
 #### Connection using Server-to-Server OAuth
-
-This authentication method is the replacement for JWT authentication which Zoom announced will be made obsolete in June 2023.
 
 From Zoom's documentation:
 > A Server-to-Server OAuth app enables you to securely integrate with Zoom APIs and get your account owner access token without user interaction. This is different from the OAuth app type, which requires user authentication. See Using OAuth 2.0 for details.
