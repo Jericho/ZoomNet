@@ -31,6 +31,7 @@ namespace ZoomNet
 		private readonly IWebProxy _proxy;
 		private readonly Func<Models.Webhooks.Event, CancellationToken, Task> _eventProcessor;
 		private readonly bool _throwWhenUnknownEventType;
+		private readonly WebhookParser _parser;
 
 		private WebSocketClient _websocketClient;
 		private HttpClient _httpClient;
@@ -77,6 +78,7 @@ namespace ZoomNet
 			_httpClient = new HttpClient(new HttpClientHandler { Proxy = _proxy, UseProxy = _proxy != null });
 			_tokenHandler = new OAuthTokenHandler(oAuthConnectionInfo, _httpClient);
 			_throwWhenUnknownEventType = throwWhenUnknownEventType;
+			_parser = new WebhookParser(_throwWhenUnknownEventType);
 
 			const string zoomWebsocketBaseUrl = "wss://ws.zoom.us/ws";
 			var proxyUri = _proxy?.GetProxy(new Uri(zoomWebsocketBaseUrl));
@@ -206,8 +208,7 @@ namespace ZoomNet
 					_logger.LogTrace("Received message: {module}. Server is acknowledging heartbeat.", module);
 					break;
 				case "message":
-					var parser = new WebhookParser(_throwWhenUnknownEventType);
-					var webhookEvent = parser.ParseEventWebhook(content);
+					var webhookEvent = _parser.ParseEventWebhook(content);
 					var eventType = webhookEvent.EventType;
 					_logger.LogTrace("Received webhook event: {eventType}", eventType);
 					try
