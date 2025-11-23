@@ -532,6 +532,161 @@ namespace ZoomNet.Json
 					var userTspUpdatedEvent = payloadJsonProperty.ToObject<UserTspUpdatedEvent>(options);
 					userTspUpdatedEvent.OldAccount = payloadJsonProperty.GetPropertyValue<TspAccount>("old_object", null);
 					return userTspUpdatedEvent;
+				case Models.Webhooks.EventType.PhoneCalleeAnswered:
+					var phoneCalleeAnsweredEvent = payloadJsonProperty.ToObject<PhoneCalleeAnsweredEvent>(options);
+					phoneCalleeAnsweredEvent.RingingStartedOn = ParseRingingStartTime(payloadJsonProperty);
+					phoneCalleeAnsweredEvent.AnsweredOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/answer_start_time");
+					phoneCalleeAnsweredEvent.ForwardedBy = ParseForwardedBy(payloadJsonProperty);
+					phoneCalleeAnsweredEvent.RedirectForwardedBy = ParseRedirectForwardedBy(payloadJsonProperty);
+					return phoneCalleeAnsweredEvent;
+				case Models.Webhooks.EventType.PhoneCalleeEnded:
+					var phoneCalleeEndedEvent = payloadJsonProperty.ToObject<PhoneCalleeEndedEvent>(options);
+					phoneCalleeEndedEvent.RingingStartedOn = ParseRingingStartTime(payloadJsonProperty);
+					phoneCalleeEndedEvent.AnsweredOn = payloadJsonProperty.GetPropertyValue<DateTime?>("object/answer_start_time", null);
+					phoneCalleeEndedEvent.EndedOn = ParseCallEndTime(payloadJsonProperty);
+					phoneCalleeEndedEvent.ForwardedBy = ParseForwardedBy(payloadJsonProperty);
+					phoneCalleeEndedEvent.RedirectForwardedBy = ParseRedirectForwardedBy(payloadJsonProperty);
+					return phoneCalleeEndedEvent;
+				case Models.Webhooks.EventType.PhoneCalleeHold:
+					var phoneCalleeHoldEvent = payloadJsonProperty.ToObject<PhoneCalleeHoldEvent>(options);
+					phoneCalleeHoldEvent.HoldStartedOn = ParseDateTime(payloadJsonProperty);
+					return phoneCalleeHoldEvent;
+				case Models.Webhooks.EventType.PhoneCalleeMeetingInviting:
+					var phoneCalleeMeetingInvitingEvent = payloadJsonProperty.ToObject<PhoneCalleeMeetingInvitingEvent>(options);
+					phoneCalleeMeetingInvitingEvent.EscalatedAt = ParseDateTime(payloadJsonProperty);
+					phoneCalleeMeetingInvitingEvent.MeetingId = payloadJsonProperty.GetPropertyValue<string>("object/meeting_id", null);
+					return phoneCalleeMeetingInvitingEvent;
+				case Models.Webhooks.EventType.PhoneCalleeMissed:
+					var phoneCalleeMissedEvent = payloadJsonProperty.ToObject<PhoneCalleeMissedEvent>(options);
+					phoneCalleeMissedEvent.RingingStartedOn = ParseRingingStartTime(payloadJsonProperty);
+					phoneCalleeMissedEvent.EndedOn = ParseCallEndTime(payloadJsonProperty);
+					phoneCalleeMissedEvent.HandupResult = payloadJsonProperty.GetPropertyValue<string>("object/handup_result", null);
+					phoneCalleeMissedEvent.ForwardedBy = ParseForwardedBy(payloadJsonProperty);
+					phoneCalleeMissedEvent.RedirectForwardedBy = ParseRedirectForwardedBy(payloadJsonProperty);
+					return phoneCalleeMissedEvent;
+				case Models.Webhooks.EventType.PhoneCalleeMute:
+					var phoneCalleeMuteEvent = payloadJsonProperty.ToObject<PhoneCalleeMuteEvent>(options);
+					phoneCalleeMuteEvent.MutedOn = ParseDateTime(payloadJsonProperty);
+					return phoneCalleeMuteEvent;
+				case Models.Webhooks.EventType.PhoneCalleeParked:
+					var phoneCalleeParkedEvent = payloadJsonProperty.ToObject<PhoneCalleeParkedEvent>(options);
+					phoneCalleeParkedEvent.ParkedOn = ParseDateTime(payloadJsonProperty);
+					phoneCalleeParkedEvent.ParkCode = payloadJsonProperty.GetPropertyValue<string>("object/park_code", null);
+					phoneCalleeParkedEvent.ParkFailureReason = payloadJsonProperty.GetPropertyValue<string>("object/park_failure_reason", null);
+					return phoneCalleeParkedEvent;
+				case Models.Webhooks.EventType.PhoneCalleeRejected:
+					var phoneCalleeRejectedEvent = payloadJsonProperty.ToObject<PhoneCalleeRejectedEvent>(options);
+					phoneCalleeRejectedEvent.RingingStartedOn = ParseRingingStartTime(payloadJsonProperty);
+					phoneCalleeRejectedEvent.EndedOn = ParseCallEndTime(payloadJsonProperty);
+					phoneCalleeRejectedEvent.HandupResult = payloadJsonProperty.GetPropertyValue<string>("object/handup_result", null);
+					return phoneCalleeRejectedEvent;
+				case Models.Webhooks.EventType.PhoneCalleeRinging:
+					var phoneCalleeRingingEvent = payloadJsonProperty.ToObject<PhoneCalleeRingingEvent>(options);
+					phoneCalleeRingingEvent.RingingStartedOn = ParseRingingStartTime(payloadJsonProperty);
+					phoneCalleeRingingEvent.ForwardedBy = ParseForwardedBy(payloadJsonProperty);
+					phoneCalleeRingingEvent.RedirectForwardedBy = ParseRedirectForwardedBy(payloadJsonProperty);
+					return phoneCalleeRingingEvent;
+				case Models.Webhooks.EventType.PhoneCalleeUnhold:
+					var phoneCalleeUnholdEvent = payloadJsonProperty.ToObject<PhoneCalleeUnholdEvent>(options);
+					phoneCalleeUnholdEvent.HoldEndedOn = ParseDateTime(payloadJsonProperty);
+					return phoneCalleeUnholdEvent;
+				case Models.Webhooks.EventType.PhoneCalleeUnmute:
+					var phoneCalleeUnmuteEvent = payloadJsonProperty.ToObject<PhoneCalleeUnmuteEvent>(options);
+					phoneCalleeUnmuteEvent.UnmutedOn = ParseDateTime(payloadJsonProperty);
+					return phoneCalleeUnmuteEvent;
+				case Models.Webhooks.EventType.PhoneCallerConnected:
+					var phoneCallerConnectedEvent = payloadJsonProperty.ToObject<PhoneCallerConnectedEvent>(options);
+					phoneCallerConnectedEvent.RingingStartedOn = ParseRingingStartTime(payloadJsonProperty);
+					phoneCallerConnectedEvent.ConnectedOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/connected_start_time");
+					return phoneCallerConnectedEvent;
+				case Models.Webhooks.EventType.PhoneCallerEnded:
+					var phoneCallerEndedEvent = payloadJsonProperty.ToObject<PhoneCallerEndedEvent>(options);
+					phoneCallerEndedEvent.RingingStartedOn = ParseRingingStartTime(payloadJsonProperty);
+					phoneCallerEndedEvent.AnsweredOn = payloadJsonProperty.GetPropertyValue<DateTime?>("object/answer_start_time", null);
+					phoneCallerEndedEvent.EndedOn = ParseCallEndTime(payloadJsonProperty);
+					phoneCallerEndedEvent.HandupResult = payloadJsonProperty.GetPropertyValue<string>("object/handup_result", null);
+					return phoneCallerEndedEvent;
+				case Models.Webhooks.EventType.PhoneCallerHold:
+					var phoneCallerHoldEvent = payloadJsonProperty.ToObject<PhoneCallerHoldEvent>(options);
+					phoneCallerHoldEvent.HoldStartedOn = ParseDateTime(payloadJsonProperty);
+					return phoneCallerHoldEvent;
+				case Models.Webhooks.EventType.PhoneCallerMeetingInviting:
+					var phoneCallerMeetingInvitingEvent = payloadJsonProperty.ToObject<PhoneCallerMeetingInvitingEvent>(options);
+					phoneCallerMeetingInvitingEvent.EscalatedAt = ParseDateTime(payloadJsonProperty);
+					phoneCallerMeetingInvitingEvent.MeetingId = payloadJsonProperty.GetPropertyValue<string>("object/meeting_id", null);
+					return phoneCallerMeetingInvitingEvent;
+				case Models.Webhooks.EventType.PhoneCallerMute:
+					var phoneCallerMuteEvent = payloadJsonProperty.ToObject<PhoneCallerMuteEvent>(options);
+					phoneCallerMuteEvent.MutedOn = ParseDateTime(payloadJsonProperty);
+					return phoneCallerMuteEvent;
+				case Models.Webhooks.EventType.PhoneCallerRinging:
+					var phoneCallerRingingEvent = payloadJsonProperty.ToObject<PhoneCallerRingingEvent>(options);
+					phoneCallerRingingEvent.RingingStartedOn = ParseRingingStartTime(payloadJsonProperty);
+					return phoneCallerRingingEvent;
+				case Models.Webhooks.EventType.PhoneCallerUnhold:
+					var phoneCallerUnholdEvent = payloadJsonProperty.ToObject<PhoneCallerUnholdEvent>(options);
+					phoneCallerUnholdEvent.HoldEndedOn = ParseDateTime(payloadJsonProperty);
+					return phoneCallerUnholdEvent;
+				case Models.Webhooks.EventType.PhoneCallerUnmute:
+					var phoneCallerUnmuteEvent = payloadJsonProperty.ToObject<PhoneCallerUnmuteEvent>(options);
+					phoneCallerUnmuteEvent.UnmutedOn = ParseDateTime(payloadJsonProperty);
+					return phoneCallerUnmuteEvent;
+				case Models.Webhooks.EventType.PhoneCallElementDeleted:
+					var phoneCallElementDeletedEvent = payloadJsonProperty.ToObject<PhoneCallElementDeletedEvent>(options);
+					phoneCallElementDeletedEvent.UserId = ParseUserId(payloadJsonProperty);
+					phoneCallElementDeletedEvent.CallElementIds = payloadJsonProperty.GetPropertyValue<string[]>("object/call_element_ids", []);
+					phoneCallElementDeletedEvent.DeleteAll = payloadJsonProperty.GetPropertyValue<bool>("object/delete_all", false);
+					phoneCallElementDeletedEvent.MoveToTrash = payloadJsonProperty.GetPropertyValue<bool>("object/move_to_trash", false);
+					phoneCallElementDeletedEvent.ExecuteTime = payloadJsonProperty.GetPropertyValue<DateTime?>("object/execute_time", null);
+					return phoneCallElementDeletedEvent;
+				case Models.Webhooks.EventType.PhoneCallHistoryDeleted:
+					var phoneCallHistoryDeletedEvent = payloadJsonProperty.ToObject<PhoneCallHistoryDeletedEvent>(options);
+					phoneCallHistoryDeletedEvent.UserId = ParseUserId(payloadJsonProperty);
+					phoneCallHistoryDeletedEvent.CallLogIds = payloadJsonProperty.GetPropertyValue<string[]>("object/call_log_ids", []);
+					phoneCallHistoryDeletedEvent.DeleteAll = payloadJsonProperty.GetPropertyValue<bool>("object/delete_all", false);
+					phoneCallHistoryDeletedEvent.MoveToTrash = payloadJsonProperty.GetPropertyValue<bool>("object/move_to_trash", false);
+					phoneCallHistoryDeletedEvent.ExecuteTime = payloadJsonProperty.GetPropertyValue<DateTime?>("object/execute_time", null);
+					return phoneCallHistoryDeletedEvent;
+				case Models.Webhooks.EventType.PhoneCallLogDeleted:
+					var phoneCallLogDeletedEvent = payloadJsonProperty.ToObject<PhoneCallLogDeletedEvent>(options);
+					phoneCallLogDeletedEvent.UserId = ParseUserId(payloadJsonProperty);
+					phoneCallLogDeletedEvent.CallLogs = ParseCallLogs<CallLogBasicInfo>(payloadJsonProperty);
+					return phoneCallLogDeletedEvent;
+				case Models.Webhooks.EventType.PhoneCallLogPermanentlyDeleted:
+					var phoneCallLogPermanentlyDeletedEvent = payloadJsonProperty.ToObject<PhoneCallLogPermanentlyDeletedEvent>(options);
+					phoneCallLogPermanentlyDeletedEvent.UserId = ParseUserId(payloadJsonProperty);
+					phoneCallLogPermanentlyDeletedEvent.CallLogs = ParseCallLogs<CallLogBasicInfo>(payloadJsonProperty);
+					return phoneCallLogPermanentlyDeletedEvent;
+				case Models.Webhooks.EventType.PhoneCalleeCallElementCompleted:
+					var phoneCalleeCallElementCompletedEvent = payloadJsonProperty.ToObject<PhoneCalleeCallElementCompletedEvent>(options);
+					phoneCalleeCallElementCompletedEvent.UserId = ParseUserId(payloadJsonProperty);
+					phoneCalleeCallElementCompletedEvent.CallElements = payloadJsonProperty.GetPropertyValue<CallElement[]>("object/call_elements");
+					return phoneCalleeCallElementCompletedEvent;
+				case Models.Webhooks.EventType.PhoneCallerCallElementCompleted:
+					var phoneCallerCallElementCompletedEvent = payloadJsonProperty.ToObject<PhoneCallerCallElementCompletedEvent>(options);
+					phoneCallerCallElementCompletedEvent.UserId = ParseUserId(payloadJsonProperty);
+					phoneCallerCallElementCompletedEvent.CallElements = payloadJsonProperty.GetPropertyValue<CallElement[]>("object/call_elements");
+					return phoneCallerCallElementCompletedEvent;
+				case Models.Webhooks.EventType.PhoneCalleeCallHistoryCompleted:
+					var phoneCalleeCallHistoryCompletedEvent = payloadJsonProperty.ToObject<PhoneCalleeCallHistoryCompletedEvent>(options);
+					phoneCalleeCallHistoryCompletedEvent.UserId = ParseUserId(payloadJsonProperty);
+					phoneCalleeCallHistoryCompletedEvent.CallLogs = ParseCallLogs<CallElement>(payloadJsonProperty);
+					return phoneCalleeCallHistoryCompletedEvent;
+				case Models.Webhooks.EventType.PhoneCallerCallHistoryCompleted:
+					var phoneCallerCallHistoryCompletedEvent = payloadJsonProperty.ToObject<PhoneCallerCallHistoryCompletedEvent>(options);
+					phoneCallerCallHistoryCompletedEvent.UserId = ParseUserId(payloadJsonProperty);
+					phoneCallerCallHistoryCompletedEvent.CallLogs = ParseCallLogs<CallElement>(payloadJsonProperty);
+					return phoneCallerCallHistoryCompletedEvent;
+				case Models.Webhooks.EventType.PhoneCalleeCallLogCompleted:
+					var phoneCalleeCallLogCompletedEvent = payloadJsonProperty.ToObject<PhoneCalleeCallLogCompletedEvent>(options);
+					phoneCalleeCallLogCompletedEvent.UserId = ParseUserId(payloadJsonProperty);
+					phoneCalleeCallLogCompletedEvent.CallLogs = ParseCallLogs<UserCallLog>(payloadJsonProperty);
+					return phoneCalleeCallLogCompletedEvent;
+				case Models.Webhooks.EventType.PhoneCallerCallLogCompleted:
+					var phoneCallerCallLogCompletedEvent = payloadJsonProperty.ToObject<PhoneCallerCallLogCompletedEvent>(options);
+					phoneCallerCallLogCompletedEvent.UserId = ParseUserId(payloadJsonProperty);
+					phoneCallerCallLogCompletedEvent.CallLogs = ParseCallLogs<UserCallLog>(payloadJsonProperty);
+					return phoneCallerCallLogCompletedEvent;
 				default:
 					throw new JsonException($"{eventType} is an unknown event type");
 			}
@@ -656,6 +811,41 @@ namespace ZoomNet.Json
 		private static DateTime ParseTimestampFromUnixMilliseconds(JsonElement payloadJsonProperty)
 		{
 			return payloadJsonProperty.GetPropertyValue<long>("time_stamp").FromUnixTime(UnixTimePrecision.Milliseconds);
+		}
+
+		private static DateTime ParseRingingStartTime(JsonElement payloadJsonProperty)
+		{
+			return payloadJsonProperty.GetPropertyValue<DateTime>("object/ringing_start_time");
+		}
+
+		private static DateTime ParseCallEndTime(JsonElement payloadJsonProperty)
+		{
+			return payloadJsonProperty.GetPropertyValue<DateTime>("object/call_end_time");
+		}
+
+		private static DateTime ParseDateTime(JsonElement payloadJsonProperty)
+		{
+			return payloadJsonProperty.GetPropertyValue<DateTime>("object/date_time");
+		}
+
+		private static PhoneCallParty ParseForwardedBy(JsonElement payloadJsonProperty)
+		{
+			return payloadJsonProperty.GetPropertyValue<PhoneCallParty>("object/forwarded_by", null);
+		}
+
+		private static PhoneCallParty ParseRedirectForwardedBy(JsonElement payloadJsonProperty)
+		{
+			return payloadJsonProperty.GetPropertyValue<PhoneCallParty>("object/redirect_forwarded_by", null);
+		}
+
+		private static string ParseUserId(JsonElement payloadJsonProperty)
+		{
+			return payloadJsonProperty.GetPropertyValue<string>("object/user_id");
+		}
+
+		private static T[] ParseCallLogs<T>(JsonElement payloadJsonProperty)
+		{
+			return payloadJsonProperty.GetPropertyValue<T[]>("object/call_logs");
 		}
 	}
 }

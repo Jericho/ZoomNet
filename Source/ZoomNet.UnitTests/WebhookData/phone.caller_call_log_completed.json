@@ -1,8 +1,10 @@
 {
   "event": "phone.caller_call_log_completed",
+  "event_ts": 1626230691572,
   "payload": {
-    "account_id": "TQTvjT52Tmi_wrhASNNOEw",
+    "account_id": "AAAAAABBBB",
     "object": {
+      "user_id": "DYHrdpjrS3uaOf7dPkkg8w",
       "call_logs": [
         {
           "id": "4a4ed8ec-6be4-4e42-96e6-352a4396204d",
@@ -10,34 +12,59 @@
           "caller_number": "1045",
           "caller_number_type": 1,
           "caller_name": "usersubsetting0001@testapi.com",
+          "caller_country_iso_code": "US",
+          "caller_country_code": "1",
+          "caller_did_number": "+12092592844",
+          "caller_number_source": "external",
+          "caller_location": "Washington",
+          "caller_user_id": "NN9rA4fZSsScB2YiCqw7Ig",
           "callee_number": "1026",
-          "callee_number_type": 1,
+          "callee_number_type": 2,
           "callee_name": "ZOOM_API Test",
-          "caller_did_number" : "+12055967465",
-          "caller_country_code" : "1",
-          "caller_country_iso_code" : "US",
-          "callee_did_number" : "+15104381494",
-          "callee_country_code" : "1",
-          "callee_country_iso_code" : "US",
+          "callee_country_code": "1",
+          "callee_country_iso_code": "US",
+          "callee_did_number": "+12058945456",
+          "callee_number_source": "internal",
+          "callee_location": "New York",
+          "callee_user_id": "52OdSKGSSS-EOyJwQncFvA",
           "direction": "inbound",
-          "duration": 0,
-          "result": "outbound",
-          "date_time": "2021-06-09T05:55:07Z",
+          "duration": 30,
+          "result": "Rejected",
+          "date_time": "2021-08-19T21:12:28Z",
+          "answer_start_time": "2021-08-19T21:12:38Z",
           "path": "extension",
-          "has_recording": false,
+          "has_recording": true,
+          "recording_id": "c71b360f6e774e3aa101453117b7e1a7",
+          "recording_type": "Automatic",
           "has_voicemail": false,
-          "call_id": "6971668473388011511",
-          "client_code" : "741",
-          "call_end_time": "2021-06-09T05:55:12Z",
-          "forwarded_by" : {
-            "extension_number" : "820004",
-            "name" : "SLG Test",
-            "extension_type" : "sharedLineGroup"
+          "call_id": "6998252113337041462",
+          "client_code": "741",
+          "cost_center": "cost_center",
+          "department": "My department",
+          "call_end_time": "2021-08-19T21:12:44Z",
+          "hold_time": 20,
+          "waiting_time": 10,
+          "forwarded_by": {
+            "extension_number": "1009",
+            "extension_type": "callQueue",
+            "location": "Glendale CA",
+            "name": "Display name by",
+            "number_type": 1,
+            "phone_number": "+12055432724"
+          },
+          "forwarded_to": {
+            "extension_number": "1019",
+            "extension_type": "user",
+            "location": "Virginia",
+            "name": "Display name to",
+            "number_type": 2,
+            "phone_number": "+12053954669"
+          },
+          "site": {
+            "id": "8f71O6rWT8KFUGQmJIFAdQ"
           }
         }
-      ],
-      "user_id": "IqoQmDRqS-aIoXqV_FZ88w"
+      ]
     }
-  },
-  "event_ts": 1623218132807
+  }
 }

@@ -1,24 +1,24 @@
 {
   "event": "phone.callee_missed",
+  "event_ts": 1626230691572,
   "payload": {
-    "account_id": "TQTvjT52Tmi_wrhASNNOEw",
+    "account_id": "AAAAAABBBB",
     "object": {
-      "call_id": "6998252731812285292",
-      "channel_id": "768efc81-4d27-4d05-ac27-768579b090d4",
+      "call_id": "6998252113337041462",
       "caller": {
         "phone_number": "+12092592844",
         "connection_type": "voip"
       },
       "callee": {
         "extension_id": "52OdSKGSSS-EOyJwQncFvA",
-        "extension_type": "callQueue",
+        "extension_type": "user",
         "extension_number": 1002,
         "phone_number": "+12058945456",
         "user_id": "DnEopNmXQEGU2uvvzjgojw",
         "timezone": "America/Los_Angeles",
         "device_type": "MAC_Client(5.7.5.1123)",
         "device_id": "f7aLLSmqRpiWP0U3U6CaNA",
-        "connection_type": "voip"
+        "connection_type": "pstn_off_net"
       },
       "forwarded_by": {
         "name": "TestCAP01",
@@ -31,9 +31,9 @@
         "extension_number": "100154",
         "phone_number": "+12053953655"
       },
-      "ringing_start_time": "2021-08-19T21:15:29Z",
-      "call_end_time": "2021-08-19T21:15:42Z"
+      "ringing_start_time": "2021-08-19T21:12:28Z",
+      "call_end_time": "2021-08-19T21:12:44Z",
+      "handup_result": "No Answer"
     }
-  },
-  "event_ts": 1629407755259
+  }
 }

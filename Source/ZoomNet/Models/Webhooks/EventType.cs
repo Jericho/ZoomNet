@@ -653,5 +653,179 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "user.tsp_updated")]
 		UserTspUpdated,
+
+		/// <summary>
+		/// The recipient of a Zoom Phone call has answered the incoming call.
+		/// </summary>
+		[EnumMember(Value = "phone.callee_answered")]
+		PhoneCalleeAnswered,
+
+		/// <summary>
+		/// The callee has terminated a Zoom Phone call.
+		/// </summary>
+		[EnumMember(Value = "phone.callee_ended")]
+		PhoneCalleeEnded,
+
+		/// <summary>
+		/// The callee has put a Zoom Phone call on hold.
+		/// </summary>
+		[EnumMember(Value = "phone.callee_hold")]
+		PhoneCalleeHold,
+
+		/// <summary>
+		/// The callee has escalated a Zoom Phone call to a Zoom meeting.
+		/// </summary>
+		[EnumMember(Value = "phone.callee_meeting_inviting")]
+		PhoneCalleeMeetingInviting,
+
+		/// <summary>
+		/// The callee has missed a Zoom Phone call.
+		/// </summary>
+		[EnumMember(Value = "phone.callee_missed")]
+		PhoneCalleeMissed,
+
+		/// <summary>
+		/// The callee has muted themselves during a Zoom Phone call.
+		/// </summary>
+		[EnumMember(Value = "phone.callee_mute")]
+		PhoneCalleeMute,
+
+		/// <summary>
+		/// The callee has parked a Zoom Phone call.
+		/// </summary>
+		[EnumMember(Value = "phone.callee_parked")]
+		PhoneCalleeParked,
+
+		/// <summary>
+		/// The callee has declined an incoming Zoom Phone call.
+		/// </summary>
+		[EnumMember(Value = "phone.callee_rejected")]
+		PhoneCalleeRejected,
+
+		/// <summary>
+		/// The callee has received an incoming Zoom Phone call notification.
+		/// </summary>
+		[EnumMember(Value = "phone.callee_ringing")]
+		PhoneCalleeRinging,
+
+		/// <summary>
+		/// The callee has resumed a Zoom Phone call.
+		/// </summary>
+		[EnumMember(Value = "phone.callee_unhold")]
+		PhoneCalleeUnhold,
+
+		/// <summary>
+		/// The callee has unmuted themselves during a Zoom Phone call.
+		/// </summary>
+		[EnumMember(Value = "phone.callee_unmute")]
+		PhoneCalleeUnmute,
+
+		/// <summary>
+		/// A connection has started between the caller and callee on Zoom Phone.
+		/// </summary>
+		[EnumMember(Value = "phone.caller_connected")]
+		PhoneCallerConnected,
+
+		/// <summary>
+		/// The caller has ended a Zoom Phone call.
+		/// </summary>
+		[EnumMember(Value = "phone.caller_ended")]
+		PhoneCallerEnded,
+
+		/// <summary>
+		/// The caller has put a Zoom Phone call on hold.
+		/// </summary>
+		[EnumMember(Value = "phone.caller_hold")]
+		PhoneCallerHold,
+
+		/// <summary>
+		/// The caller has escalated a Zoom Phone call to a Zoom meeting.
+		/// </summary>
+		[EnumMember(Value = "phone.caller_meeting_inviting")]
+		PhoneCallerMeetingInviting,
+
+		/// <summary>
+		/// The caller has muted themselves during a Zoom Phone call.
+		/// </summary>
+		[EnumMember(Value = "phone.caller_mute")]
+		PhoneCallerMute,
+
+		/// <summary>
+		/// The caller has heard a ringing tone during outgoing call.
+		/// </summary>
+		[EnumMember(Value = "phone.caller_ringing")]
+		PhoneCallerRinging,
+
+		/// <summary>
+		/// The caller has resumed a Zoom Phone call.
+		/// </summary>
+		[EnumMember(Value = "phone.caller_unhold")]
+		PhoneCallerUnhold,
+
+		/// <summary>
+		/// The caller has unmuted themselves during a Zoom Phone call.
+		/// </summary>
+		[EnumMember(Value = "phone.caller_unmute")]
+		PhoneCallerUnmute,
+
+		/// <summary>
+		/// A call element has been deleted.
+		/// </summary>
+		[EnumMember(Value = "phone.call_element_deleted")]
+		PhoneCallElementDeleted,
+
+		/// <summary>
+		/// A call history has been deleted.
+		/// </summary>
+		[EnumMember(Value = "phone.call_history_deleted")]
+		PhoneCallHistoryDeleted,
+
+		/// <summary>
+		/// A call log has been deleted (sent to the trash).
+		/// </summary>
+		[EnumMember(Value = "phone.call_log_deleted")]
+		PhoneCallLogDeleted,
+
+		/// <summary>
+		/// A call log has been permanently deleted from the trash.
+		/// </summary>
+		[EnumMember(Value = "phone.call_log_permanently_deleted")]
+		PhoneCallLogPermanentlyDeleted,
+
+		/// <summary>
+		/// The incoming call element record for a call is made available for the callee to view.
+		/// </summary>
+		[EnumMember(Value = "phone.callee_call_element_completed")]
+		PhoneCalleeCallElementCompleted,
+
+		/// <summary>
+		/// The incoming call history record for a call is made available for the callee to view.
+		/// </summary>
+		[EnumMember(Value = "phone.callee_call_history_completed")]
+		PhoneCalleeCallHistoryCompleted,
+
+		/// <summary>
+		/// The incoming call log record for a call is made available for the callee to view.
+		/// </summary>
+		[EnumMember(Value = "phone.callee_call_log_completed")]
+		PhoneCalleeCallLogCompleted,
+
+		/// <summary>
+		/// The outgoing call element record for a call is made available for the caller to view.
+		/// </summary>
+		[EnumMember(Value = "phone.caller_call_element_completed")]
+		PhoneCallerCallElementCompleted,
+
+		/// <summary>
+		/// The outgoing call history record for a call is made available for the caller to view.
+		/// </summary>
+		[EnumMember(Value = "phone.caller_call_history_completed")]
+		PhoneCallerCallHistoryCompleted,
+
+		/// <summary>
+		/// The outgoing call log record for a call is made available for the Caller to view.
+		/// </summary>
+		[EnumMember(Value = "phone.caller_call_log_completed")]
+		PhoneCallerCallLogCompleted,
 	}
 }

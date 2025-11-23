@@ -2310,6 +2310,30 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;contact_center.queue_scheduled_callback_created&quot;,
+        ///  &quot;event_ts&quot;: 1627906944384,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;D8cJuqWVQ623CI4Q8yQK0Q&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;start_time&quot;: &quot;2025-06-18T15:00:00Z&quot;,
+        ///      &quot;cc_queue_id&quot;: &quot;WkdWelkzSnBjSFJwYjI0PQ11&quot;,
+        ///      &quot;queue_name&quot;: &quot;My Queue&quot;,
+        ///      &quot;queue_channel&quot;: &quot;voice&quot;,
+        ///      &quot;attendees&quot;: [
+        ///        {
+        ///          &quot;attendee_id&quot;: &quot;beYjXoDOS_eV1QmTpj63PQ&quot;,
+        ///          &quot;first_name&quot;: &quot;John&quot;,
+        ///          &quot;last_name&quot;: &quot;Doe&quot;,
+        ///          &quot;email&quot;: &quot;jdoe@exa [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_queue_scheduled_callback_created_webhook {
+            get {
+                return ResourceManager.GetString("contact_center_queue_scheduled_callback_created_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;contact_center.queue_supervisor_assigned&quot;,
         ///  &quot;event_ts&quot;: 1627906944384,
         ///  &quot;payload&quot;: {
@@ -3182,7 +3206,7 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;endpoint.url_validation&quot;,
-        ///  &quot;event_ts&quot;: 1654503849680,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
         ///    &quot;plainToken&quot;: &quot;qgg8vlvZRS6UYooatFL8Aw&quot;
         ///  }
@@ -6529,11 +6553,11 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.callee_answered&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
-        ///      &quot;channel_id&quot;: &quot;b21dee06-ddaa-4578-ab90-1dd6e50ea4ba&quot;,
         ///      &quot;caller&quot;: {
         ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
@@ -6543,7 +6567,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;phone_number&quot;: &quot;+12058945456&quot;,
         ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
         ///        &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///   [rest of string was truncated]&quot;;.
+        ///        &quot;device_type&quot;: &quot;MAC_Client(5.7.5.1123 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_answered_webhook {
             get {
@@ -6623,11 +6647,11 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.callee_ended&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
-        ///      &quot;channel_id&quot;: &quot;b21dee06-ddaa-4578-ab90-1dd6e50ea4ba&quot;,
         ///      &quot;caller&quot;: {
         ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
@@ -6637,7 +6661,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
         ///        &quot;extension_number&quot;: 1002,
         ///        &quot;phone_number&quot;: &quot;+12058945456&quot;,
-        ///        &quot; [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
+        ///       [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_ended_webhook {
             get {
@@ -6647,22 +6672,23 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot; : &quot;phone.callee_hold&quot;,
-        ///	&quot;event_ts&quot; : 1626759486127,
-        ///  &quot;payload&quot; : {
-        ///    &quot;account_id&quot; : &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
-        ///    &quot;object&quot; : {
-        ///      &quot;caller&quot; : {
+        ///  &quot;event&quot;: &quot;phone.callee_hold&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;caller&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;extension_number&quot; : 810003,
-        ///        &quot;phone_number&quot; : &quot;810003&quot;,
+        ///        &quot;extension_number&quot;: 810003,
+        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
-        ///      &quot;callee&quot; : {
+        ///      &quot;callee&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;user_id&quot; : &quot;kRQpbWO5TV6E7wxEYOKFWw&quot;,
-        ///        &quot;timezone&quot; : &quot;Asia/Shanghai&quot;,        /// [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
+        ///        &quot;ti [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_hold_webhook {
             get {
@@ -6672,22 +6698,22 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot; : &quot;phone.callee_meeting_inviting&quot;,
-        ///	&quot;event_ts&quot; : 1626759486127,
-        ///  &quot;payload&quot; : {
-        ///    &quot;account_id&quot; : &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
-        ///    &quot;object&quot; : {
-        ///      &quot;caller&quot; : {
+        ///  &quot;event&quot;: &quot;phone.callee_meeting_inviting&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;caller&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;extension_number&quot; : 555011,
-        ///        &quot;phone_number&quot; : &quot;555011&quot;,
+        ///        &quot;extension_number&quot;: 810003,
+        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
-        ///      &quot;callee&quot; : {
+        ///      &quot;callee&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;user_id&quot; : &quot;kRQpbWO5TV6E7wxEYOKFWw&quot;,
-        ///        &quot;timezone&quot; : &quot;Asia [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_meeting_inviting_webhook {
             get {
@@ -6698,21 +6724,22 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.callee_missed&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;call_id&quot;: &quot;6998252731812285292&quot;,
-        ///      &quot;channel_id&quot;: &quot;768efc81-4d27-4d05-ac27-768579b090d4&quot;,
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;caller&quot;: {
         ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
         ///      &quot;callee&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
-        ///        &quot;extension_type&quot;: &quot;callQueue&quot;,
+        ///        &quot;extension_type&quot;: &quot;user&quot;,
         ///        &quot;extension_number&quot;: 1002,
         ///        &quot;phone_number&quot;: &quot;+12058945456&quot;,
-        ///    [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
+        ///      [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_missed_webhook {
             get {
@@ -6722,22 +6749,23 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;event&quot; : &quot;phone.callee_mute&quot;,
-        ///  &quot;event_ts&quot; : 1626759486127,
-        ///  &quot;payload&quot; : {
-        ///    &quot;account_id&quot; : &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
-        ///    &quot;object&quot; : {
-        ///      &quot;caller&quot; : {
+        ///  &quot;event&quot;: &quot;phone.callee_mute&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;caller&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;extension_number&quot; : 810003,
-        ///        &quot;phone_number&quot; : &quot;810003&quot;,
+        ///        &quot;extension_number&quot;: 810003,
+        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
-        ///      &quot;callee&quot; : {
+        ///      &quot;callee&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;user_id&quot; : &quot;kRQpbWO5TV6E7wxEYOKFWw&quot;,
-        ///        &quot;timezone&quot; : &quot;Asia/Shanghai&quot; [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
+        ///        &quot;ti [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_mute_webhook {
             get {
@@ -6747,22 +6775,23 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;event&quot; : &quot;phone.callee_parked&quot;,
-        ///  &quot;event_ts&quot; : 1626759486127,
-        ///  &quot;payload&quot; : {
-        ///    &quot;account_id&quot; : &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
-        ///    &quot;object&quot; : {
-        ///      &quot;caller&quot; : {
+        ///  &quot;event&quot;: &quot;phone.callee_parked&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;caller&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;extension_number&quot; : 810003,
-        ///        &quot;phone_number&quot; : &quot;810003&quot;,
-        ///        &quot;connection_type&quot;: &quot;pstn_on_net&quot;
+        ///        &quot;extension_number&quot;: 810003,
+        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
+        ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
-        ///      &quot;callee&quot; : {
+        ///      &quot;callee&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;user_id&quot; : &quot;kRQpbWO5TV6E7wxEYOKFWw&quot;,
-        ///        &quot;timezone&quot; : &quot;Asia/ [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
+        ///        &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_parked_webhook {
             get {
@@ -6773,21 +6802,22 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.callee_rejected&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;call_id&quot;: &quot;6998308781135528785&quot;,
-        ///      &quot;channel_id&quot;: &quot;7bfb20d5-8e50-43b5-b078-b3a5f5972b55&quot;,
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;caller&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;extension_number&quot;: 1045,
-        ///        &quot;phone_number&quot;: &quot;1045&quot;,
+        ///        &quot;extension_number&quot;: 810003,
+        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
         ///        &quot;device_type&quot;: &quot;Windows_Client(5.7.5.939)&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
         ///      &quot;callee&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
-        ///   [rest of string was truncated]&quot;;.
+        ///        &quot;extension_type&quot;: &quot;user&quot;,
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_rejected_webhook {
             get {
@@ -6798,8 +6828,9 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.callee_ringing&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;caller&quot;: {
@@ -6812,7 +6843,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;phone_number&quot;: &quot;+12058945456&quot;,
         ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
         ///        &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///        &quot;device_type&quot;: &quot;MAC_C [rest of string was truncated]&quot;;.
+        ///        &quot;de [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_ringing_webhook {
             get {
@@ -6822,22 +6853,23 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot; : &quot;phone.callee_unhold&quot;,
-        ///	&quot;event_ts&quot; : 1626759486127,
-        ///  &quot;payload&quot; : {
-        ///    &quot;account_id&quot; : &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
-        ///    &quot;object&quot; : {
-        ///      &quot;caller&quot; : {
+        ///  &quot;event&quot;: &quot;phone.callee_unhold&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;caller&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;extension_number&quot; : 810003,
-        ///        &quot;phone_number&quot; : &quot;810003&quot;,
+        ///        &quot;extension_number&quot;: 810003,
+        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
-        ///      &quot;callee&quot; : {
+        ///      &quot;callee&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;user_id&quot; : &quot;kRQpbWO5TV6E7wxEYOKFWw&quot;,
-        ///        &quot;timezone&quot; : &quot;Asia/Shanghai&quot; [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
+        ///        &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_unhold_webhook {
             get {
@@ -6847,22 +6879,23 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;event&quot; : &quot;phone.callee_unmute&quot;,
-        ///  &quot;event_ts&quot; : 1626759486127,
-        ///  &quot;payload&quot; : {
-        ///    &quot;account_id&quot; : &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
-        ///    &quot;object&quot; : {
-        ///      &quot;caller&quot; : {
+        ///  &quot;event&quot;: &quot;phone.callee_unmute&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;caller&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;extension_number&quot; : 810003,
-        ///        &quot;phone_number&quot; : &quot;810003&quot;,
+        ///        &quot;extension_number&quot;: 810003,
+        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
-        ///      &quot;callee&quot; : {
+        ///      &quot;callee&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;user_id&quot; : &quot;kRQpbWO5TV6E7wxEYOKFWw&quot;,
-        ///        &quot;timezone&quot; : &quot;Asia/Shangha [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
+        ///        &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_unmute_webhook {
             get {
@@ -6942,19 +6975,22 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.caller_connected&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;call_id&quot;: &quot;6997939173429971528&quot;,
-        ///      &quot;channel_id&quot;: &quot;1df42be1-8420-4396-9e78-0a7ee7bc5aab&quot;,
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;callee&quot;: {
+        ///        &quot;extension_number&quot;: 810003,
+        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
+        ///        &quot;connection_type&quot;: &quot;voip&quot;
+        ///      },
         ///      &quot;caller&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
         ///        &quot;extension_number&quot;: 1002,
         ///        &quot;phone_number&quot;: &quot;+12058945456&quot;,
-        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
-        ///        &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///        &quot;device_type [rest of string was truncated]&quot;;.
+        ///        &quot;us [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_caller_connected_webhook {
             get {
@@ -6965,19 +7001,22 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.caller_ended&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;call_id&quot;: &quot;6997939173429971528&quot;,
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;callee&quot;: {
+        ///        &quot;extension_type&quot;: &quot;user&quot;,
+        ///        &quot;extension_number&quot;: 810003,
+        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
+        ///        &quot;connection_type&quot;: &quot;voip&quot;
+        ///      },
         ///      &quot;caller&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
         ///        &quot;extension_number&quot;: 1002,
-        ///        &quot;phone_number&quot;: &quot;+12058945456&quot;,
-        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
-        ///        &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///        &quot;device_type&quot;: &quot;MAC_Client(5.7.5.1123)&quot;,
-        ///        &quot;device_id&quot;: &quot;f7aLLSmqRpiWP [rest of string was truncated]&quot;;.
+        ///        &quot;phone_number [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_caller_ended_webhook {
             get {
@@ -6987,22 +7026,23 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot; : &quot;phone.caller_hold&quot;,
-        ///	&quot;event_ts&quot; : 1626759486127,
-        ///  &quot;payload&quot; : {
-        ///    &quot;account_id&quot; : &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
-        ///    &quot;object&quot; : {
-        ///      &quot;callee&quot; : {
+        ///  &quot;event&quot;: &quot;phone.caller_hold&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;callee&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;extension_number&quot; : 810003,
-        ///        &quot;phone_number&quot; : &quot;810003&quot;,
+        ///        &quot;extension_number&quot;: 810003,
+        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
-        ///      &quot;caller&quot; : {
+        ///      &quot;caller&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;user_id&quot; : &quot;kRQpbWO5TV6E7wxEYOKFWw&quot;,
-        ///        &quot;timezone&quot; : &quot;Asia/Shanghai&quot;,        /// [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
+        ///        &quot;ti [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_caller_hold_webhook {
             get {
@@ -7012,22 +7052,22 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;event&quot; : &quot;phone.caller_meeting_inviting&quot;,
-        ///  &quot;event_ts&quot; : 1626759486127,
-        ///  &quot;payload&quot; : {
-        ///    &quot;account_id&quot; : &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
-        ///    &quot;object&quot; : {
-        ///      &quot;callee&quot; : {
+        ///  &quot;event&quot;: &quot;phone.caller_meeting_inviting&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;callee&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;extension_number&quot; : 555011,
-        ///        &quot;phone_number&quot; : &quot;555011&quot;,
+        ///        &quot;extension_number&quot;: 810003,
+        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
-        ///      &quot;caller&quot; : {
+        ///      &quot;caller&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;user_id&quot; : &quot;kRQpbWO5TV6E7wxEYOKFWw&quot;,
-        ///        &quot;timezone&quot; : &quot;As [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_caller_meeting_inviting_webhook {
             get {
@@ -7037,22 +7077,23 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;event&quot; : &quot;phone.caller_mute&quot;,
-        ///  &quot;event_ts&quot; : 1626759486127,
-        ///  &quot;payload&quot; : {
-        ///    &quot;account_id&quot; : &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
-        ///    &quot;object&quot; : {
-        ///      &quot;callee&quot; : {
+        ///  &quot;event&quot;: &quot;phone.caller_mute&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;callee&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;extension_number&quot; : 810003,
-        ///        &quot;phone_number&quot; : &quot;810003&quot;,
+        ///        &quot;extension_number&quot;: 810003,
+        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
-        ///      &quot;caller&quot; : {
+        ///      &quot;caller&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;user_id&quot; : &quot;kRQpbWO5TV6E7wxEYOKFWw&quot;,
-        ///        &quot;timezone&quot; : &quot;Asia/Shanghai&quot; [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
+        ///        &quot;ti [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_caller_mute_webhook {
             get {
@@ -7063,19 +7104,22 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.caller_ringing&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;call_id&quot;: &quot;6997939173429971528&quot;,
-        ///      &quot;channel_id&quot;: &quot;1df42be1-8420-4396-9e78-0a7ee7bc5aab&quot;,
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;callee&quot;: {
+        ///        &quot;extension_type&quot;: &quot;user&quot;,
+        ///        &quot;extension_number&quot;: 810003,
+        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
+        ///        &quot;connection_type&quot;: &quot;voip&quot;
+        ///      },
         ///      &quot;caller&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
         ///        &quot;extension_number&quot;: 1002,
-        ///        &quot;phone_number&quot;: &quot;+12058945456&quot;,
-        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
-        ///        &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///        &quot;device_type&quot;: [rest of string was truncated]&quot;;.
+        ///        &quot;phone_numb [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_caller_ringing_webhook {
             get {
@@ -7085,22 +7129,23 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot; : &quot;phone.caller_unhold&quot;,
-        ///	&quot;event_ts&quot; : 1626759486127,
-        ///  &quot;payload&quot; : {
-        ///    &quot;account_id&quot; : &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
-        ///    &quot;object&quot; : {
-        ///      &quot;callee&quot; : {
+        ///  &quot;event&quot;: &quot;phone.caller_unhold&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;callee&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;extension_number&quot; : 810003,
-        ///        &quot;phone_number&quot; : &quot;810003&quot;,
+        ///        &quot;extension_number&quot;: 810003,
+        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
-        ///      &quot;caller&quot; : {
+        ///      &quot;caller&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;user_id&quot; : &quot;kRQpbWO5TV6E7wxEYOKFWw&quot;,
-        ///        &quot;timezone&quot; : &quot;Asia/Shanghai&quot; [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
+        ///        &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_caller_unhold_webhook {
             get {
@@ -7110,22 +7155,23 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;event&quot; : &quot;phone.caller_unmute&quot;,
-        ///  &quot;event_ts&quot; : 1626759486127,
-        ///  &quot;payload&quot; : {
-        ///    &quot;account_id&quot; : &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
-        ///    &quot;object&quot; : {
-        ///      &quot;callee&quot; : {
+        ///  &quot;event&quot;: &quot;phone.caller_unmute&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;callee&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;extension_number&quot; : 810003,
-        ///        &quot;phone_number&quot; : &quot;810003&quot;,
+        ///        &quot;extension_number&quot;: 810003,
+        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
-        ///      &quot;caller&quot; : {
+        ///      &quot;caller&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;user_id&quot; : &quot;kRQpbWO5TV6E7wxEYOKFWw&quot;,
-        ///        &quot;timezone&quot; : &quot;Asia/Shangha [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
+        ///        &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_caller_unmute_webhook {
             get {

@@ -1765,4 +1765,7 @@
   <data name="endpoint_url_validation_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\WebhookData\endpoint.url_validation.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="contact_center_queue_scheduled_callback_created_webhook" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\WebhookData\contact_center.queue_scheduled_callback_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

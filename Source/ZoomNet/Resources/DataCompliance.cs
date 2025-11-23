@@ -43,8 +43,6 @@ namespace ZoomNet.Resources
 					secret = oauthConnectionInfo.ClientSecret;
 					clientId = oauthConnectionInfo.ClientId;
 					break;
-				case JwtConnectionInfo jwtConnectionInfo:
-					throw new Exception($"The DataCompliance resource cannot be use with a Jwt connection.");
 				default:
 					throw new Exception($"Unable to determine the connection secret and cient Id. {tokenHandler.ConnectionInfo.GetType()} is an unknown connection type.");
 			}
@@ -61,7 +59,6 @@ namespace ZoomNet.Resources
 
 			// This endpoint relies on clientId+secret for authentication. It does not need tokens.
 			request.Filters.Remove<OAuthTokenHandler>();
-			request.Filters.Remove<JwtTokenHandler>();
 
 			// Authenticate using clientId+secret and also specify the payload
 			request = request
