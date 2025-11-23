@@ -1,14 +1,17 @@
 using Shouldly;
 using System;
 using System.Net;
+using System.Net.Http;
 using Xunit;
 
 namespace ZoomNet.UnitTests
 {
 	public class ZoomClientTests
 	{
-		private const string API_KEY = "my_api_key";
-		private const string API_SECRET = "my_api_secret";
+		private const string CLIENT_ID = "my_client_id";
+		private const string CLIENT_SECRET = "my_client_secret";
+		private const string ACCOUNT_ID = "my_account_id";
+		private const string ACCESS_TOKEN = null;
 
 		private readonly ITestOutputHelper _outputHelper;
 
@@ -34,7 +37,7 @@ namespace ZoomNet.UnitTests
 		{
 			// Arrange
 			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var connectionInfo = new JwtConnectionInfo(API_KEY, API_SECRET);
+			var connectionInfo = OAuthConnectionInfo.ForServerToServer(CLIENT_ID, CLIENT_SECRET, ACCOUNT_ID, ACCESS_TOKEN);
 			var client = new ZoomClient(connectionInfo, (IWebProxy)null, logger: logger);
 
 			// Act
@@ -45,13 +48,26 @@ namespace ZoomNet.UnitTests
 		}
 
 		[Fact]
-		public void Throws_if_apikey_is_null()
+		public void Throws_if_connectioninfo_is_null()
 		{
 			// Arrange
 			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var connectionInfo = (IConnectionInfo)null;
 
 			// Act
-			Should.Throw<ArgumentNullException>(() => new ZoomClient(new JwtConnectionInfo(null, API_SECRET), logger: logger));
+			Should.Throw<ArgumentNullException>(() => new ZoomClient(connectionInfo, logger: logger));
+		}
+
+		[Fact]
+		public void Throws_if_httpclient_is_null()
+		{
+			// Arrange
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var connectionInfo = OAuthConnectionInfo.ForServerToServer(CLIENT_ID, CLIENT_SECRET, ACCOUNT_ID, ACCESS_TOKEN);
+			var httpClient = (HttpClient)null;
+
+			// Act
+			Should.Throw<ArgumentNullException>(() => new ZoomClient(connectionInfo, httpClient, logger: logger));
 		}
 	}
 }

@@ -205,14 +205,8 @@ namespace ZoomNet
 			_fluentClient.Formatters.Clear();
 			_fluentClient.Formatters.Add(new JsonFormatter());
 
-			// Order is important: the token handler (either JWT or OAuth) must be first, followed by DiagnosticHandler and then by ErrorHandler.
-			if (connectionInfo is JwtConnectionInfo jwtConnectionInfo)
-			{
-				var tokenHandler = new JwtTokenHandler(jwtConnectionInfo);
-				_fluentClient.Filters.Add(tokenHandler);
-				_fluentClient.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), tokenHandler));
-			}
-			else if (connectionInfo is OAuthConnectionInfo oAuthConnectionInfo)
+			// Order is important: the token handler must be first, followed by DiagnosticHandler and then by ErrorHandler.
+			if (connectionInfo is OAuthConnectionInfo oAuthConnectionInfo)
 			{
 				var tokenHandler = new OAuthTokenHandler(oAuthConnectionInfo, httpClient);
 				_fluentClient.Filters.Add(tokenHandler);

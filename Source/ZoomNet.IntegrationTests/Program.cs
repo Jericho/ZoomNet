@@ -244,15 +244,6 @@ namespace ZoomNet.IntegrationTests
 
 		private static IConnectionInfo GetConnectionInfo(ConnectionType connectionType, TestType testType)
 		{
-			// Jwt
-			if (connectionType == ConnectionType.Jwt)
-			{
-				var apiKey = Environment.GetEnvironmentVariable("ZOOM_JWT_APIKEY", EnvironmentVariableTarget.User);
-				var apiSecret = Environment.GetEnvironmentVariable("ZOOM_JWT_APISECRET", EnvironmentVariableTarget.User);
-				return new JwtConnectionInfo(apiKey, apiSecret);
-			}
-
-			// OAuth
 			var clientIdVariableName = testType == TestType.Chatbot ? "ZOOM_CHATBOT_CLIENTID" : "ZOOM_OAUTH_CLIENTID";
 			var clientSecretVariableName = testType == TestType.Chatbot ? "ZOOM_CHATBOT_CLIENTSECRET" : "ZOOM_OAUTH_CLIENTSECRET";
 
