@@ -767,5 +767,65 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "phone.caller_unmute")]
 		PhoneCallerUnmute,
+
+		/// <summary>
+		/// A call element has been deleted.
+		/// </summary>
+		[EnumMember(Value = "phone.call_element_deleted")]
+		PhoneCallElementDeleted,
+
+		/// <summary>
+		/// A call history has been deleted.
+		/// </summary>
+		[EnumMember(Value = "phone.call_history_deleted")]
+		PhoneCallHistoryDeleted,
+
+		/// <summary>
+		/// A call log has been deleted (sent to the trash).
+		/// </summary>
+		[EnumMember(Value = "phone.call_log_deleted")]
+		PhoneCallLogDeleted,
+
+		/// <summary>
+		/// A call log has been permanently deleted from the trash.
+		/// </summary>
+		[EnumMember(Value = "phone.call_log_permanently_deleted")]
+		PhoneCallLogPermanentlyDeleted,
+
+		/// <summary>
+		/// The incoming call element record for a call is made available for the callee to view.
+		/// </summary>
+		[EnumMember(Value = "phone.callee_call_element_completed")]
+		PhoneCalleeCallElementCompleted,
+
+		/// <summary>
+		/// The incoming call history record for a call is made available for the callee to view.
+		/// </summary>
+		[EnumMember(Value = "phone.callee_call_history_completed")]
+		PhoneCalleeCallHistoryCompleted,
+
+		/// <summary>
+		/// The incoming call log record for a call is made available for the callee to view.
+		/// </summary>
+		[EnumMember(Value = "phone.callee_call_log_completed")]
+		PhoneCalleeCallLogCompleted,
+
+		/// <summary>
+		/// The outgoing call element record for a call is made available for the caller to view.
+		/// </summary>
+		[EnumMember(Value = "phone.caller_call_element_completed")]
+		PhoneCallerCallElementCompleted,
+
+		/// <summary>
+		/// The outgoing call history record for a call is made available for the caller to view.
+		/// </summary>
+		[EnumMember(Value = "phone.caller_call_history_completed")]
+		PhoneCallerCallHistoryCompleted,
+
+		/// <summary>
+		/// The outgoing call log record for a call is made available for the Caller to view.
+		/// </summary>
+		[EnumMember(Value = "phone.caller_call_log_completed")]
+		PhoneCallerCallLogCompleted,
 	}
 }

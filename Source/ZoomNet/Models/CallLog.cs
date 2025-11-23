@@ -6,38 +6,22 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// A call log item.
 	/// </summary>
-	public abstract class CallLog
+	public abstract class CallLog : CallLogBasicInfo
 	{
-		/// <summary>
-		/// Gets or sets the call Id.
-		/// </summary>
-		/// <value>The call id.</value>
-		[JsonPropertyName("id")]
-		public string Id { get; set; }
-
 		/// <summary>
 		/// Gets or sets the call answer time.
 		/// </summary>
 		/// <value>
-		/// The call's answer time, in GMT date-time format.
 		/// The API only displays this response if the direction value is inbound.
 		/// </value>
 		[JsonPropertyName("answer_start_time")]
-		public DateTime AnswerStartTime { get; set; }
+		public DateTime? AnswerStartTime { get; set; }
 
 		/// <summary>
 		/// Gets or sets the call end time.
 		/// </summary>
-		/// <value>The call end time, in GMT date-time format.</value>
 		[JsonPropertyName("call_end_time")]
-		public DateTime CallEndTime { get; set; }
-
-		/// <summary>
-		/// Gets or sets the unique id.
-		/// </summary>
-		/// <value>Unique identifier of the phone call.</value>
-		[JsonPropertyName("call_id")]
-		public string CallId { get; set; }
+		public DateTime? CallEndTime { get; set; }
 
 		/// <summary>
 		/// Gets or sets the call type.
@@ -49,42 +33,42 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the callee country code.
 		/// </summary>
-		/// <value>Country calling code.</value>
 		[JsonPropertyName("callee_country_code")]
 		public string CalleeCountryCode { get; set; }
 
 		/// <summary>
-		/// Gets or sets the callee country iso code.
+		/// Gets or sets the callee country ISO code.
 		/// </summary>
-		/// <value>ISO alpha2 country code.</value>
 		[JsonPropertyName("callee_country_iso_code")]
 		public Country? CalleeCountryIsoCode { get; set; }
 
 		/// <summary>
-		/// Gets or sets the callee did number.
+		/// Gets or sets the callee DID (direct inward dial) number, in E.164 format.
 		/// </summary>
-		/// <value>Callee's DID (direct inward dial) number in e164 format.</value>
 		[JsonPropertyName("callee_did_number")]
 		public string CalleeDidNumber { get; set; }
 
 		/// <summary>
+		/// Gets or sets the callee location.
+		/// </summary>
+		[JsonPropertyName("callee_location")]
+		public string CalleeLocation { get; set; }
+
+		/// <summary>
 		/// Gets or sets the callee name.
 		/// </summary>
-		/// <value>The callee name.</value>
 		[JsonPropertyName("callee_name")]
 		public string CalleeName { get; set; }
 
 		/// <summary>
 		/// Gets or sets the callee number.
 		/// </summary>
-		/// <value>The callee number.</value>
 		[JsonPropertyName("callee_number")]
 		public string CalleeNumber { get; set; }
 
 		/// <summary>
 		/// Gets or sets the number type of the callee.
 		/// </summary>
-		/// <value>The callee number type.</value>
 		[JsonPropertyName("callee_number_type")]
 		public CallLogCalleeNumberType? CalleeNumberType { get; set; }
 
@@ -96,44 +80,50 @@ namespace ZoomNet.Models
 		public CallLogNumberSource? CalleeNumberSource { get; set; }
 
 		/// <summary>
+		/// Gets or sets the callee user id.
+		/// </summary>
+		[JsonPropertyName("callee_user_id")]
+		public string CalleeUserId { get; set; }
+
+		/// <summary>
 		/// Gets or sets the caller country code.
 		/// </summary>
-		/// <value>Country calling code.</value>
 		[JsonPropertyName("caller_country_code")]
 		public string CallerCountryCode { get; set; }
 
 		/// <summary>
-		/// Gets or sets the caller country iso code.
+		/// Gets or sets the caller country ISO code.
 		/// </summary>
-		/// <value>ISO alpha2 country code.</value>
 		[JsonPropertyName("caller_country_iso_code")]
 		public Country? CallerCountryIsoCode { get; set; }
 
 		/// <summary>
-		/// Gets or sets the caller did number.
+		/// Gets or sets the caller DID  (direct inward dial) number, in E.164 format.
 		/// </summary>
-		/// <value>Caller's DID (direct inward dial) number in e164 format.</value>
 		[JsonPropertyName("caller_did_number")]
 		public string CallerDidNumber { get; set; }
 
 		/// <summary>
+		/// Gets or sets the caller location.
+		/// </summary>
+		[JsonPropertyName("caller_location")]
+		public string CallerLocation { get; set; }
+
+		/// <summary>
 		/// Gets or sets the caller name.
 		/// </summary>
-		/// <value>The caller name.</value>
 		[JsonPropertyName("caller_name")]
 		public string CallerName { get; set; }
 
 		/// <summary>
 		/// Gets or sets the caller number.
 		/// </summary>
-		/// <value>The caller number.</value>
 		[JsonPropertyName("caller_number")]
 		public string CallerNumber { get; set; }
 
 		/// <summary>
 		/// Gets or sets the number type of the caller.
 		/// </summary>
-		/// <value>The caller number type.</value>
 		[JsonPropertyName("caller_number_type")]
 		public CallLogCallerNumberType? CallerNumberType { get; set; }
 
@@ -145,114 +135,117 @@ namespace ZoomNet.Models
 		public CallLogNumberSource? CallerNumberSource { get; set; }
 
 		/// <summary>
-		/// Gets or sets the billing referenceId of the caller.
+		/// Gets or sets the caller user id.
 		/// </summary>
-		/// <value>Billing reference ID (for peering phone numbers).</value>
+		[JsonPropertyName("caller_user_id")]
+		public string CallerUserId { get; set; }
+
+		/// <summary>
+		/// Gets or sets the billing reference i of the caller (for peering phone numbers).
+		/// </summary>
 		[JsonPropertyName("caller_billing_reference_id")]
 		public string CallerBillingReferenceId { get; set; }
 
 		/// <summary>
-		/// Gets or sets the billing charge.
+		/// Gets or sets the billing charge for the call.
 		/// </summary>
-		/// <value>Billing charge for the call.</value>
 		[JsonPropertyName("charge")]
 		public string Charge { get; set; }
 
 		/// <summary>
 		/// Gets or sets the client code.
 		/// </summary>
-		/// <value>Client code.</value>
 		[JsonPropertyName("client_code")]
 		public string ClientCode { get; set; }
 
 		/// <summary>
 		/// Gets or sets the start time of the call.
 		/// </summary>
-		/// <value>The Start time of the call.</value>
 		[JsonPropertyName("date_time")]
 		public DateTime StartedTime { get; set; }
 
 		/// <summary>
-		/// Gets or sets the call direction.
+		/// Gets or sets the call direction (inbound/outbound).
 		/// </summary>
-		/// <value>The call direction. Inbound or Outbound.</value>
 		[JsonPropertyName("direction")]
-		public CallLogDirection Direction { get; set; }
+		public CallLogDirection? Direction { get; set; }
 
 		/// <summary>
-		/// Gets or sets the call duration.
+		/// Gets or sets the call duration, in seconds.
 		/// </summary>
-		/// <value>The call duration in seconds.</value>
 		[JsonPropertyName("duration")]
-		public int Duration { get; set; }
+		public int? Duration { get; set; }
 
 		/// <summary>
 		/// Gets or sets the path of the call log.
 		/// </summary>
-		/// <value>Path of the call log.</value>
 		[JsonPropertyName("path")]
 		public string Path { get; set; }
 
 		/// <summary>
-		/// Gets or sets the rate.
+		/// Gets or sets the billing rate for the call.
 		/// </summary>
-		/// <value>Billing rate for the call.</value>
 		[JsonPropertyName("rate")]
 		public string Rate { get; set; }
+
+		/// <summary>
+		/// Gets or sets a value indicating whether the call log includes recording.
+		/// </summary>
+		[JsonPropertyName("has_recording")]
+		public bool? HasRecording { get; set; }
+
+		/// <summary>
+		/// Gets or sets the unique identifier of the call recording.
+		/// </summary>
+		[JsonPropertyName("recording_id")]
+		public string RecordingId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the recording type.
 		/// </summary>
 		/// <value>Recording type: 1 - On-demand recording. 2 - Automatic recording.</value>
 		[JsonPropertyName("recording_type")]
-		public string RecordingType { get; set; }
+		public PhoneCallRecordingType? RecordingType { get; set; }
 
 		/// <summary>
 		/// Gets or sets the call result.
 		/// </summary>
-		/// <value>The Result of the call.</value>
 		[JsonPropertyName("result")]
 		public CallLogResult Result { get; set; }
 
 		/// <summary>
 		/// Gets or sets the site information.
 		/// </summary>
-		/// <value>Site information.</value>
 		[JsonPropertyName("site")]
 		public CallLogSite Site { get; set; }
 
 		/// <summary>
-		/// Gets or sets the user Id.
+		/// Gets or sets the user id (or email).
 		/// </summary>
-		/// <value>User ID or user email.</value>
 		[JsonPropertyName("user_id")]
 		public string UserId { get; set; }
 
 		/// <summary>
-		/// Gets or sets the call hold time.
+		/// Gets or sets the call hold time, in seconds.
 		/// </summary>
-		/// <value>Hold time during a call in seconds.</value>
 		[JsonPropertyName("hold_time")]
-		public int HoldTime { get; set; }
+		public int? HoldTime { get; set; }
 
 		/// <summary>
-		/// Gets or sets the call waiting time.
+		/// Gets or sets the call waiting time, in seconds.
 		/// </summary>
-		/// <value>Waiting time for the call, in seconds.</value>
 		[JsonPropertyName("waiting_time")]
-		public int WaitingTime { get; set; }
+		public int? WaitingTime { get; set; }
 
 		/// <summary>
-		/// Gets or sets the user department.
+		/// Gets or sets the user's department name.
 		/// </summary>
-		/// <value>Name of the user's department.</value>
 		[JsonPropertyName("department")]
 		public string UserDepartment { get; set; }
 
 		/// <summary>
-		/// Gets or sets the user cost center.
+		/// Gets or sets the user's cost center name.
 		/// </summary>
-		/// <value>The cost center name to which a user belongs.</value>
 		[JsonPropertyName("cost_center")]
 		public string UserCostCenter { get; set; }
 	}

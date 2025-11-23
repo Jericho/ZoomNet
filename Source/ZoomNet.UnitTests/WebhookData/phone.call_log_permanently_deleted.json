@@ -1,16 +1,16 @@
 {
   "event": "phone.call_log_permanently_deleted",
+  "event_ts": 1626230691572,
   "payload": {
-    "account_id": "Mt6sv4u0TAyPkwgsL2lxiA",
+    "account_id": "AAAAAABBBB",
     "object": {
       "call_logs": [
         {
           "id": "9a0887ca-da53-4c62-b32a-563789ef264e",
-          "call_id": "6954218111457544837"
+          "call_id": "6998252113337041462"
         }
       ],
       "user_id": "DYHrdpjrS3uaOf7dPkkg8w"
     }
-  },
-  "event_ts": 1619155281301
+  }
 }
