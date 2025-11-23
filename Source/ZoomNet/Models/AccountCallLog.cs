@@ -28,12 +28,5 @@ namespace ZoomNet.Models
 		/// <value>Call "owner" information.</value>
 		[JsonPropertyName("owner")]
 		public CallLogOwnerInfo Owner { get; set; }
-
-		/// <summary>
-		/// Gets or sets the unique identifier of the call recording.
-		/// </summary>
-		/// <value>Unique identifier of the call recording.</value>
-		[JsonPropertyName("recording_id")]
-		public string RecordingId { get; set; }
 	}
 }

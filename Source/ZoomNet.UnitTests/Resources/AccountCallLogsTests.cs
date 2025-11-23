@@ -268,7 +268,7 @@ namespace ZoomNet.UnitTests.Resources
 			result.StartedTime.ShouldBe(new DateTime(2023, 12, 6, 3, 10, 6, DateTimeKind.Utc));// DateTime.Parse("2023-12-06T03:10:06Z"));
 			result.Path.ShouldBe("pstn");
 			result.RecordingId.ShouldBe("0b24374d5d687899a021b28334b5e6a7");
-			result.RecordingType.ShouldBe("Automatic");
+			result.RecordingType.ShouldBe(PhoneCallRecordingType.Automatic);
 			result.CallId.ShouldBe("7102333465063798289");
 			result.Owner.ShouldNotBeNull();
 			result.Owner.Type.ShouldBe(CallLogOwnerType.AutoReceptionist);

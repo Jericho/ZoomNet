@@ -1,16 +1,16 @@
 {
   "event": "phone.call_element_deleted",
+  "event_ts": 1626230691572,
   "payload": {
-    "account_id": "Mt6sv4u0TAyPkwgsL2lxiA",
+    "account_id": "AAAAAABBBB",
     "object": {
       "call_element_ids": [
         "20240724-9a0887ca-da53-4c62-b32a-563789ef264e"
       ],
       "user_id": "DYHrdpjrS3uaOf7dPkkg8w",
-      "execute_time": "2024-10-09T08:10:11.128Z",
+      "execute_time": "2021-07-13T21:44:51Z",
       "move_to_trash": true,
       "delete_all": false
     }
-  },
-  "event_ts": 1721799823000
+  }
 }
