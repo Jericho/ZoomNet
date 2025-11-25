@@ -1,15 +1,15 @@
 {
   "event": "phone.recording_deleted",
+  "event_ts": 1626230691572,
   "payload": {
-    "account_id": "Mt6sv4u0TAyPkwgsL2lxiA",
+    "account_id": "AAAAAABBBB",
     "object": {
       "recordings": [
         {
-          "id": "9a0887ca-da53-4c62-b32a-563789ef264e",
-          "call_id": "6954218111457544837"
+          "id": "c71b360f6e774e3aa101453117b7e1a7",
+          "call_id": "6998252113337041462"
         }
       ]
     }
-  },
-  "event_ts": 1619155281301
+  }
 }

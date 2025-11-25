@@ -827,5 +827,65 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "phone.caller_call_log_completed")]
 		PhoneCallerCallLogCompleted,
+
+		/// <summary>
+		/// A recording of a Zoom phone call has completed.
+		/// </summary>
+		[EnumMember(Value = "phone.recording_completed")]
+		PhoneRecordingCompleted,
+
+		/// <summary>
+		/// A recording of a Zoom phone call has completed for access member.
+		/// </summary>
+		[EnumMember(Value = "phone.recording_completed_for_access_member")]
+		PhoneRecordingCompletedForAccessMember,
+
+		/// <summary>
+		/// A recording of a Zoom phone call has been deleted.
+		/// </summary>
+		[EnumMember(Value = "phone.recording_deleted")]
+		PhoneRecordingDeleted,
+
+		/// <summary>
+		/// A recording of a Zoom phone call has failed.
+		/// </summary>
+		[EnumMember(Value = "phone.recording_failed")]
+		PhoneRecordingFailed,
+
+		/// <summary>
+		/// The owner has paused the recording during a Zoom phone call.
+		/// </summary>
+		[EnumMember(Value = "phone.recording_paused")]
+		PhoneRecordingPaused,
+
+		/// <summary>
+		/// A recording has been deleted permanently.
+		/// </summary>
+		[EnumMember(Value = "phone.recording_permanently_deleted")]
+		PhoneRecordingPermanentlyDeleted,
+
+		/// <summary>
+		/// The owner has resumed the recording during a Zoom phone call.
+		/// </summary>
+		[EnumMember(Value = "phone.recording_resumed")]
+		PhoneRecordingResumed,
+
+		/// <summary>
+		/// The recording has been initiated in a Zoom phone call.
+		/// </summary>
+		[EnumMember(Value = "phone.recording_started")]
+		PhoneRecordingStarted,
+
+		/// <summary>
+		/// The recording has been stopped in a Zoom phone call.
+		/// </summary>
+		[EnumMember(Value = "phone.recording_stopped")]
+		PhoneRecordingStopped,
+
+		/// <summary>
+		/// A transcription of a Zoom phone call recording has been completed.
+		/// </summary>
+		[EnumMember(Value = "phone.recording_transcript_completed")]
+		PhoneRecordingTranscriptCompleted,
 	}
 }

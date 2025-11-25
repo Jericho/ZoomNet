@@ -687,6 +687,36 @@ namespace ZoomNet.Json
 					phoneCallerCallLogCompletedEvent.UserId = ParseUserId(payloadJsonProperty);
 					phoneCallerCallLogCompletedEvent.CallLogs = ParseCallLogs<UserCallLog>(payloadJsonProperty);
 					return phoneCallerCallLogCompletedEvent;
+				case Models.Webhooks.EventType.PhoneRecordingCompleted:
+					var phoneRecordingCompletedEvent = payloadJsonProperty.ToObject<PhoneRecordingCompletedEvent>(options);
+					phoneRecordingCompletedEvent.Recordings = ParseRecordings<PhoneCallRecording>(payloadJsonProperty);
+					return phoneRecordingCompletedEvent;
+				case Models.Webhooks.EventType.PhoneRecordingCompletedForAccessMember:
+					var phoneRecordingCompletedForAccessMemberEvent = payloadJsonProperty.ToObject<PhoneRecordingCompletedForAccessMemberEvent>(options);
+					phoneRecordingCompletedForAccessMemberEvent.Recordings = ParseRecordings<PhoneCallRecording>(payloadJsonProperty);
+					return phoneRecordingCompletedForAccessMemberEvent;
+				case Models.Webhooks.EventType.PhoneRecordingDeleted:
+					var phoneRecordingDeletedEvent = payloadJsonProperty.ToObject<PhoneRecordingDeletedEvent>(options);
+					phoneRecordingDeletedEvent.Recordings = ParseRecordings<PhoneCallRecordingBasicInfo>(payloadJsonProperty);
+					return phoneRecordingDeletedEvent;
+				case Models.Webhooks.EventType.PhoneRecordingFailed:
+					return payloadJsonProperty.ToObject<PhoneRecordingFailedEvent>(options);
+				case Models.Webhooks.EventType.PhoneRecordingPaused:
+					return payloadJsonProperty.ToObject<PhoneRecordingPausedEvent>(options);
+				case Models.Webhooks.EventType.PhoneRecordingPermanentlyDeleted:
+					var phoneRecordingPermanentlyDeletedEvent = payloadJsonProperty.ToObject<PhoneRecordingPermanentlyDeletedEvent>(options);
+					phoneRecordingPermanentlyDeletedEvent.Recordings = ParseRecordings<PhoneCallRecordingBasicInfo>(payloadJsonProperty);
+					return phoneRecordingPermanentlyDeletedEvent;
+				case Models.Webhooks.EventType.PhoneRecordingResumed:
+					return payloadJsonProperty.ToObject<PhoneRecordingResumedEvent>(options);
+				case Models.Webhooks.EventType.PhoneRecordingStarted:
+					return payloadJsonProperty.ToObject<PhoneRecordingStartedEvent>(options);
+				case Models.Webhooks.EventType.PhoneRecordingStopped:
+					return payloadJsonProperty.ToObject<PhoneRecordingStoppedEvent>(options);
+				case Models.Webhooks.EventType.PhoneRecordingTranscriptCompleted:
+					var phoneRecordingTranscriptCompletedEvent = payloadJsonProperty.ToObject<PhoneRecordingTranscriptCompletedEvent>(options);
+					phoneRecordingTranscriptCompletedEvent.Recordings = ParseRecordings<PhoneCallRecording>(payloadJsonProperty);
+					return phoneRecordingTranscriptCompletedEvent;
 				default:
 					throw new JsonException($"{eventType} is an unknown event type");
 			}
@@ -846,6 +876,11 @@ namespace ZoomNet.Json
 		private static T[] ParseCallLogs<T>(JsonElement payloadJsonProperty)
 		{
 			return payloadJsonProperty.GetPropertyValue<T[]>("object/call_logs");
+		}
+
+		private static T[] ParseRecordings<T>(JsonElement payloadJsonProperty)
+		{
+			return payloadJsonProperty.GetPropertyValue<T[]>("object/recordings");
 		}
 	}
 }

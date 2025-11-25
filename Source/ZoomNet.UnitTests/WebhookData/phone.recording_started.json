@@ -1,26 +1,27 @@
 {
-	"event": "phone.recording_started",
-	"event_ts": 1626230691572,
-	"payload": {
-		"account_id": "AAAAAABBBB",
-
-		"object": {
-			"id": "abcD3ojfdbjfg",
-			"user_id": "z8yCxjabcdEFGHfp8uQ",
-            "caller_number": "1026",
-            "callee_number": "1045",
-            "direction": "outbound",
-            "date_time": "2021-06-09T06:09:24Z",
-            "recording_type": "OnDemand",
-            "call_id": "6971672158469969953",
-            "channel_id": "5c01a45b-53a8-4773-b244-beb670c13357",
-            "sip_id": "VeSbXj3yttX-ghGskIP_ew..d90446d0@10002222.zoomdev.us",
-            "owner" : {
-                "type" : "user",
-                "id" : "z8yCxjabcdEFGHfp8uQ",
-                "name" : "usersubsetting0001",
-                "extension_number": 6666
-            }
-		}
-	}
+  "event": "phone.recording_started",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "id": "c71b360f6e774e3aa101453117b7e1a7",
+      "user_id": "z8yCxjabcdEFGHfp8uQ",
+      "caller_number": "1026",
+      "caller_account_code": "123",
+      "callee_number": "1045",
+      "callee_account_code": "456",
+      "direction": "outbound",
+      "date_time": "2021-08-19T21:12:38Z",
+      "recording_type": "OnDemand",
+      "call_id": "6998252113337041462",
+      "channel_id": "5c01a45b-53a8-4773-b244-beb670c13357",
+      "sip_id": "VeSbXj3yttX-ghGskIP_ew..d90446d0@10002222.zoomdev.us",
+      "owner": {
+        "type": "user",
+        "id": "rw3dIsBRTpOyMOJmeKgdaQ",
+        "name": "Owner name",
+        "extension_number": 6666
+      }
+    }
+  }
 }

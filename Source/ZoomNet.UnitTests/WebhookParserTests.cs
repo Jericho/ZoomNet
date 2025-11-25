@@ -31,6 +31,7 @@ namespace ZoomNet.UnitTests
 		private const string MeetingUuid = "4444AAAiAAAAAiAiAiiAii==";
 		private const string HostId = "x1yCzABCDEfg23HiJKl4mN";
 		private const string UserEmail = "jchill@example.com";
+		private const string OwnerId = "rw3dIsBRTpOyMOJmeKgdaQ";
 
 		#endregion
 
@@ -772,7 +773,7 @@ namespace ZoomNet.UnitTests
 			parsedEvent.MeetingUuid.ShouldBe(MeetingUuid);
 			parsedEvent.HostAccountId.ShouldBe("lmnop12345abcdefghijk");
 
-			VerifyChatMessageFile(parsedEvent.File, "rw3dIsBRTpOyMOJmeKgdaQ", null);
+			VerifyChatMessageFile(parsedEvent.File, OwnerId, null);
 		}
 
 		[Fact]
