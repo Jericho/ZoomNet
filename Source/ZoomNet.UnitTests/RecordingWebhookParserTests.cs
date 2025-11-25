@@ -25,10 +25,9 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = ParseWebhookEvent<RecordingArchiveFilesCompletedEvent>(Resource.recording_archive_files_completed_webhook);
 
-			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.RecordingArchiveFilesCompleted);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingArchiveFilesCompleted);
+
 			parsedEvent.DownloadToken.ShouldBe(DownloadToken);
-			parsedEvent.AccountId.ShouldBe(AccountId);
 
 			VerifyRecordedMeetingOrWebinarInfo(parsedEvent.Recording);
 
@@ -86,9 +85,8 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = ParseWebhookEvent<RecordingBatchDeletedEvent>(Resource.recording_batch_deleted_webhook);
 
-			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.RecordingBatchDeleted);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
-			parsedEvent.AccountId.ShouldBe(AccountId);
+			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingBatchDeleted);
+
 			parsedEvent.Operator.ShouldBe(OperatorEmail);
 			parsedEvent.OperatorId.ShouldBe(OperatorId);
 
@@ -100,9 +98,8 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = ParseWebhookEvent<RecordingBatchRecoveredEvent>(Resource.recording_batch_recovered_webhook);
 
-			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.RecordingBatchRecovered);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
-			parsedEvent.AccountId.ShouldBe(AccountId);
+			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingBatchRecovered);
+
 			parsedEvent.Operator.ShouldBe(OperatorEmail);
 			parsedEvent.OperatorId.ShouldBe(OperatorId);
 
@@ -114,9 +111,8 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = ParseWebhookEvent<RecordingBatchTrashedEvent>(Resource.recording_batch_trashed_webhook);
 
-			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.RecordingBatchTrashed);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
-			parsedEvent.AccountId.ShouldBe(AccountId);
+			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingBatchTrashed);
+			
 			parsedEvent.Operator.ShouldBe(OperatorEmail);
 			parsedEvent.OperatorId.ShouldBe(OperatorId);
 			parsedEvent.Operation.ShouldBe(RecordingsBatchTrashOperationType.TrashUserRecordings);
@@ -131,9 +127,7 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = ParseWebhookEvent<RecordingCloudStorageUsageUpdatedEvent>(Resource.recording_cloud_storage_usage_updated_webhook);
 
-			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.RecordingCloudStorageUsageUpdated);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
-			parsedEvent.AccountId.ShouldBe(AccountId);
+			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingCloudStorageUsageUpdated);
 
 			parsedEvent.StorageUsage.ShouldNotBeNull();
 			parsedEvent.StorageUsage.FreeStorage.ShouldBe("1.65 GB");
@@ -150,10 +144,9 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = ParseWebhookEvent<RecordingCompletedEvent>(Resource.recording_completed_webhook);
 
-			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.RecordingCompleted);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingCompleted);
+
 			parsedEvent.DownloadToken.ShouldBe(DownloadToken);
-			parsedEvent.AccountId.ShouldBe(AccountId);
 
 			VerifyRecordedMeetingOrWebinarInfo(parsedEvent.Recording);
 
@@ -187,9 +180,8 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = ParseWebhookEvent<RecordingDeletedEvent>(Resource.recording_deleted_webhook);
 
-			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.RecordingDeleted);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
-			parsedEvent.AccountId.ShouldBe(AccountId);
+			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingDeleted);
+
 			parsedEvent.Operator.ShouldBe(OperatorEmail);
 			parsedEvent.OperatorId.ShouldBe(OperatorId);
 
@@ -217,9 +209,7 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = ParseWebhookEvent<RecordingPausedEvent>(Resource.recording_paused_webhook);
 
-			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.RecordingPaused);
-
-			VerifyRecordingProgressEvent(parsedEvent, new DateTime(2021, 3, 23, 23, 15, 41, DateTimeKind.Utc));
+			VerifyRecordingProgressEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingPaused, new DateTime(2021, 3, 23, 23, 15, 41, DateTimeKind.Utc));
 		}
 
 		[Fact]
@@ -227,10 +217,9 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = ParseWebhookEvent<RecordingRecoveredEvent>(Resource.recording_recovered_webhook);
 
-			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.RecordingRecovered);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingRecovered);
+
 			parsedEvent.DownloadToken.ShouldBe(DownloadToken);
-			parsedEvent.AccountId.ShouldBe(AccountId);
 			parsedEvent.Operator.ShouldBe(OperatorEmail);
 			parsedEvent.OperatorId.ShouldBe(OperatorId);
 
@@ -258,9 +247,8 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = ParseWebhookEvent<RecordingRegistrationApprovedEvent>(Resource.recording_registration_approved_webhook);
 
-			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.RecordingRegistrationApproved);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
-			parsedEvent.AccountId.ShouldBe(AccountId);
+			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingRegistrationApproved);
+
 			parsedEvent.Operator.ShouldBe(OperatorEmail);
 			parsedEvent.OperatorId.ShouldBe(OperatorId);
 
@@ -274,9 +262,7 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = ParseWebhookEvent<RecordingRegistrationCreatedEvent>(Resource.recording_registration_created_webhook);
 
-			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.RecordingRegistrationCreated);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
-			parsedEvent.AccountId.ShouldBe(AccountId);
+			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingRegistrationCreated);
 
 			VerifyRecordedMeetingOrWebinarInfo(parsedEvent.SessionInfo);
 
@@ -294,9 +280,7 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = ParseWebhookEvent<RecordingRegistrationDeniedEvent>(Resource.recording_registration_denied_webhook);
 
-			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.RecordingRegistrationDenied);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
-			parsedEvent.AccountId.ShouldBe(AccountId);
+			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingRegistrationDenied);
 
 			VerifyRecordedMeetingOrWebinarInfo(parsedEvent.SessionInfo);
 
@@ -308,9 +292,8 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = ParseWebhookEvent<RecordingRenamedEvent>(Resource.recording_renamed_webhook);
 
-			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.RecordingRenamed);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
-			parsedEvent.AccountId.ShouldBe(AccountId);
+			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingRenamed);
+
 			parsedEvent.Operator.ShouldBe(OperatorEmail);
 			parsedEvent.OperatorId.ShouldBe(OperatorId);
 
@@ -328,9 +311,7 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = ParseWebhookEvent<RecordingResumedEvent>(Resource.recording_resumed_webhook);
 
-			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.RecordingResumed);
-
-			VerifyRecordingProgressEvent(parsedEvent);
+			VerifyRecordingProgressEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingResumed);
 		}
 
 		[Fact]
@@ -338,9 +319,7 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = ParseWebhookEvent<RecordingStartedEvent>(Resource.recording_started_webhook);
 
-			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.RecordingStarted);
-
-			VerifyRecordingProgressEvent(parsedEvent);
+			VerifyRecordingProgressEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingStarted);
 		}
 
 		[Fact]
@@ -348,9 +327,7 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = ParseWebhookEvent<RecordingStoppedEvent>(Resource.recording_stopped_webhook);
 
-			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.RecordingStopped);
-
-			VerifyRecordingProgressEvent(parsedEvent, new DateTime(2021, 3, 23, 23, 15, 41, DateTimeKind.Utc));
+			VerifyRecordingProgressEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingStopped, new DateTime(2021, 3, 23, 23, 15, 41, DateTimeKind.Utc));
 		}
 
 		[Fact]
@@ -358,10 +335,9 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = ParseWebhookEvent<RecordingTranscriptCompletedEvent>(Resource.recording_transcript_completed_webhook);
 
-			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.RecordingTranscriptCompleted);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingTranscriptCompleted);
+
 			parsedEvent.DownloadToken.ShouldBe(DownloadToken);
-			parsedEvent.AccountId.ShouldBe(AccountId);
 
 			VerifyRecordedMeetingOrWebinarInfo(parsedEvent.Recording);
 
@@ -385,8 +361,8 @@ namespace ZoomNet.UnitTests
 		{
 			var parsedEvent = ParseWebhookEvent<RecordingTrashedEvent>(Resource.recording_trashed_webhook);
 
-			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.RecordingTrashed);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingTrashed);
+
 			parsedEvent.DownloadToken.ShouldBe(DownloadToken);
 			parsedEvent.Operator.ShouldBe(OperatorEmail);
 			parsedEvent.OperatorId.ShouldBe(OperatorId);
@@ -413,6 +389,16 @@ namespace ZoomNet.UnitTests
 		#endregion
 
 		#region private methods
+
+		/// <summary>
+		/// Verify <see cref="RecordingEvent"/> properties.
+		/// </summary>
+		private static void VerifyRecordingEvent(RecordingEvent parsedEvent, ZoomNet.Models.Webhooks.EventType eventType)
+		{
+			parsedEvent.EventType.ShouldBe(eventType);
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
+		}
 
 		/// <summary>
 		/// Verify <see cref="RecordedMeetingOrWebinarInfo"/> properties.
@@ -446,10 +432,9 @@ namespace ZoomNet.UnitTests
 		/// <summary>
 		/// Verify <see cref="RecordingProgressEvent"/> properties.
 		/// </summary>
-		private static void VerifyRecordingProgressEvent(RecordingProgressEvent parsedEvent, DateTime? endTime = null)
+		private static void VerifyRecordingProgressEvent(RecordingProgressEvent parsedEvent, ZoomNet.Models.Webhooks.EventType eventType, DateTime? endTime = null)
 		{
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
-			parsedEvent.AccountId.ShouldBe(AccountId);
+			VerifyRecordingEvent(parsedEvent, eventType);
 
 			VerifyRecordedMeetingOrWebinarInfo(parsedEvent.SessionInfo);
 
