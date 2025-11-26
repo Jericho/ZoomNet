@@ -505,14 +505,27 @@ static string TrimStart(this string source, string value, StringComparison compa
 	return source.Substring(startIndex);
 }
 
-static List<string> ExecuteCommand(this ICakeContext context, FilePath exe, string args, bool captureStandardOutput = false)
+static IDisposable GetDisposableVerbosity(this ICakeContext context, Verbosity verbosity)
 {
-	return context.ExecuteCommand(exe, new ProcessArgumentBuilder().Append(args), captureStandardOutput);
+	return verbosity switch
+	{
+		Verbosity.Diagnostic => context.DiagnosticVerbosity(),
+		Verbosity.Minimal => context.MinimalVerbosity(),
+		Verbosity.Normal => context.NormalVerbosity(),
+		Verbosity.Quiet => context.QuietVerbosity(),
+		Verbosity.Verbose => context.VerboseVerbosity(),
+		_ => throw new ArgumentOutOfRangeException(nameof(verbosity), $"Unknown verbosity: {verbosity}"),
+	}; 
 }
 
-static List<string> ExecuteCommand(this ICakeContext context, FilePath exe, ProcessArgumentBuilder argsBuilder, bool captureStandardOutput = false)
+static List<string> ExecuteCommand(this ICakeContext context, FilePath exe, string args, bool captureStandardOutput = false, Verbosity verbosity = Verbosity.Diagnostic)
 {
-	using (context.DiagnosticVerbosity())
+	return context.ExecuteCommand(exe, new ProcessArgumentBuilder().Append(args), captureStandardOutput, verbosity);
+}
+
+static List<string> ExecuteCommand(this ICakeContext context, FilePath exe, ProcessArgumentBuilder argsBuilder, bool captureStandardOutput = false, Verbosity verbosity = Verbosity.Diagnostic)
+{
+	using (context.GetDisposableVerbosity(verbosity))
 	{
 		var processResult = context.StartProcess(
 			exe,
