@@ -507,13 +507,18 @@ static string TrimStart(this string source, string value, StringComparison compa
 
 static List<string> ExecuteCommand(this ICakeContext context, FilePath exe, string args, bool captureStandardOutput = false)
 {
+	return context.ExecuteCommand(exe, new ProcessArgumentBuilder().Append(args), captureStandardOutput);
+}
+
+static List<string> ExecuteCommand(this ICakeContext context, FilePath exe, ProcessArgumentBuilder argsBuilder, bool captureStandardOutput = false)
+{
 	using (context.DiagnosticVerbosity())
-    {
-        var processResult = context.StartProcess(
-            exe,
-            new ProcessSettings()
-            {
-                Arguments = args,
+	{
+		var processResult = context.StartProcess(
+			exe,
+			new ProcessSettings()
+			{
+				Arguments = argsBuilder,
 				RedirectStandardOutput = captureStandardOutput,
 				RedirectStandardError= true
 			},
@@ -529,7 +534,7 @@ static List<string> ExecuteCommand(this ICakeContext context, FilePath exe, stri
 		}
 		
 		return (redirectedOutput ?? Array.Empty<string>()).ToList();
-    }
+	}
 }
 
 static List<string> ExecGitCmd(this ICakeContext context, string cmd)
