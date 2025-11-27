@@ -876,6 +876,28 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task UpdateWaitingRoomAsync(long meetingId, string title = null, string description = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "method", "waiting_room.update" },
+				{
+					"params", new JsonObject
+					{
+						{ "waiting_room_title", title },
+						{ "waiting_room_description", description }
+					}
+				}
+			};
+
+			return _client
+				.PatchAsync($"live_meetings/{meetingId}/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
 		public Task<string> CreateTemplateFromExistingMeetingAsync(string userId, long meetingId, string templateName, bool saveRecurrence = false, bool overwrite = false, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject

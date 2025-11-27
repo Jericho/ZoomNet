@@ -691,6 +691,16 @@ namespace ZoomNet.Resources
 		Task InviteParticipantByRoomSystemSipAsync(long meetingId, string deviceAddress, string fromUri, string fromDisplayName = null, string toDisplayName = null, IEnumerable<KeyValuePair<string, string>> customSipHeaders = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Asynchronously updates the waiting room title and/or description for the specified meeting.
+		/// </summary>
+		/// <param name="meetingId">The unique identifier of the meeting whose waiting room will be updated.</param>
+		/// <param name="title">The new title for the waiting room. If null, the existing title remains unchanged.</param>
+		/// <param name="description">The new description for the waiting room. If null, the existing description remains unchanged.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous update operation.</returns>
+		Task UpdateWaitingRoomAsync(long meetingId, string title = null, string description = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Create a meeting template from an existing meeting.
 		/// </summary>
 		/// <param name="userId">The user ID.</param>
