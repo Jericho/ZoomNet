@@ -1,0 +1,21 @@
+{
+  "event": "whiteboard.file_added",
+  "event_ts": 1722238455000,
+  "payload": {
+    "operator_id": "user_789xyz",
+    "operator_collaborator_id": "collaborator_789xyz",
+    "operator_name": "Jane Doe",
+    "object": {
+      "whiteboard_id": "wb_123456789",
+      "whiteboard_name": "Project Kickoff Board",
+      "whiteboard_owner_name": "Alice Smith",
+      "whiteboard_file": {
+        "file_id": "file_abc123",
+        "file_name": "requirements.pdf",
+        "file_size": 256000,
+        "file_type": "application/pdf",
+        "uploaded_ts": 1722238455000
+      }
+    }
+  }
+}
