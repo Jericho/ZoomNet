@@ -701,6 +701,34 @@ namespace ZoomNet.Resources
 		Task UpdateWaitingRoomAsync(long meetingId, string title = null, string description = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Starts an AI Companion for the specified meeting using the given mode.
+		/// </summary>
+		/// <param name="meetingId">The unique identifier of the meeting for which to start the AI Companion.</param>
+		/// <param name="mode">The mode in which the AI Companion should operate during the meeting.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation of starting the AI Companion.</returns>
+		Task StartAiCompanionAsync(long meetingId, AiCompanionMode mode = AiCompanionMode.All, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Stops the AI Companion for the specified meeting and mode asynchronously.
+		/// </summary>
+		/// <param name="meetingId">The unique identifier of the meeting for which the AI Companion should be stopped.</param>
+		/// <param name="mode">The AI Companion mode to stop. Specifies which type of AI Companion functionality to disable.</param>
+		/// <param name="deleteAssets">Indicates whether to delete all associated AI Companion assets for the meeting. Set to <see langword="true"/> to
+		/// remove assets; otherwise, assets are retained.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation of stopping the AI Companion.</returns>
+		Task StopAiCompanionAsync(long meetingId, AiCompanionMode mode = AiCompanionMode.All, bool deleteAssets = false, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Disables the AI companion feature for the specified meeting asynchronously.
+		/// </summary>
+		/// <param name="meetingId">The unique identifier of the meeting for which to disable the AI companion feature.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation of disabling the AI companion feature.</returns>
+		Task DisableAiCompanionAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Create a meeting template from an existing meeting.
 		/// </summary>
 		/// <param name="userId">The user ID.</param>

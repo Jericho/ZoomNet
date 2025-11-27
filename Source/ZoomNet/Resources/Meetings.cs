@@ -898,6 +898,64 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task StartAiCompanionAsync(long meetingId, AiCompanionMode mode = AiCompanionMode.All, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "method", "ai_companion.start" },
+				{
+					"params", new JsonObject
+					{
+						{ "ai_companion_mode", mode.ToEnumString() },
+					}
+				}
+			};
+
+			return _client
+				.PatchAsync($"live_meetings/{meetingId}/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task StopAiCompanionAsync(long meetingId, AiCompanionMode mode = AiCompanionMode.All, bool deleteAssets = false, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "method", "ai_companion.stop" },
+				{
+					"params", new JsonObject
+					{
+						{ "ai_companion_mode", mode.ToEnumString() },
+						{ "delete_meeting_assets", mode == AiCompanionMode.All ? deleteAssets : null }, // Accoding to documentation: only applicable when mode is 'all'
+					}
+				}
+			};
+
+			return _client
+				.PatchAsync($"live_meetings/{meetingId}/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DisableAiCompanionAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "method", "ai_companion.disable" },
+			};
+
+			return _client
+				.PatchAsync($"live_meetings/{meetingId}/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
 		public Task<string> CreateTemplateFromExistingMeetingAsync(string userId, long meetingId, string templateName, bool saveRecurrence = false, bool overwrite = false, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
