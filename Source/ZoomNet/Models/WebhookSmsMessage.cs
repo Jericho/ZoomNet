@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// SMS message information as provided in webhook events.
+	/// SMS message information (as provided in webhook events).
 	/// </summary>
 	public class WebhookSmsMessage : SmsMessageBase
 	{

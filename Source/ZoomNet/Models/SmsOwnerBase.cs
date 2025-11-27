@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Base information about SMS owner common for API endpoint and webhook events.
+	/// Base information about SMS owner common for API endpoints and webhook events.
 	/// </summary>
 	public abstract class SmsOwnerBase
 	{

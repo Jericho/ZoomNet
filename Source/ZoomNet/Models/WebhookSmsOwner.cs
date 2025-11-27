@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// SMS history participant owner information as provided in webhook events.
+	/// SMS history participant owner information (as provided in webhook events).
 	/// </summary>
 	public class WebhookSmsOwner : SmsOwnerBase
 	{

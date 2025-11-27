@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// SMS message information as provided in API endpoints.
+	/// SMS message information (as provided in API endpoints).
 	/// </summary>
 	public class SmsMessage : SmsMessageBase
 	{
