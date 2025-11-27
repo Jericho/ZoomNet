@@ -1,23 +1,29 @@
 {
   "event": "phone.sms_sent_failed",
-  "event_ts": 1626759486127,
+  "event_ts": 1626230691572,
   "payload": {
-    "account_id": "2TP-coFVSnmyvYZogk8gAg",
+    "account_id": "AAAAAABBBB",
     "object": {
       "failure_reason": "1101-phone message error send",
       "sender": {
         "phone_number": "12132822256",
-        "id": "RMIGplfpSLauTMDMTi3Kfg"
+        "id": "RMIGplfpSLauTMDMTi3Kfg",
+        "type": "user",
+        "display_name": "Jackson"
       },
       "to_members": [
         {
           "phone_number": "12132792348",
+          "id": "RMITfuhuuxyzyuyyi3Kfg",
+          "type": "user",
+          "display_name": "Tom",
           "is_message_owner": true
         }
       ],
       "owner": {
         "type": "callQueue",
-        "id": "29QVgYBGRmOM5VlC0DmLgg"
+        "id": "29QVgYBGRmOM5VlC0DmLgg",
+        "sms_sender_user_id": "JduDVJJXTS6VGXiJiro7ZQ"
       },
       "message": "ttt",
       "attachments": [
@@ -32,20 +38,14 @@
       "session_id": "e5e9b8417c1f2da2cd3006f3d9d4641a",
       "message_id": "72abd192-97ee-4ddb-b498-85048f4c34d7",
       "message_type": 1,
-      "date_time": "2021-07-19T18:43:43Z",
+      "date_time": "2021-07-13T21:44:51Z",
       "phone_number_campaign_opt_statuses": [
-        {
-          "consumer_phone_number": "+120970XXXXX",
-          "zoom_phone_user_number": "+120971XXXXX",
-          "opt_status": "opt_in",
-          "opt_in_status": 0
-        },
         {
           "consumer_phone_number": "+120970XXXXX",
           "zoom_phone_user_number": "+120971XXXXX",
           "opt_status": "pending",
           "opt_in_status": 1,
-          "opt_in_message": "Text START to receive text messages from ZOOM. Message frequency may vary. Message and Data Rates may apply. To end messaging from us, reply with STOP. Reply with HELP for more information."
+          "opt_in_message": "Text START to receive text messages from ZOOM."
         }
       ]
     }

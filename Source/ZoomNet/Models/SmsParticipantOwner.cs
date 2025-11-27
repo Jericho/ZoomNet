@@ -1,22 +1,9 @@
-using System.Text.Json.Serialization;
-
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// SMS history owner.
+	/// SMS history participant owner information as provided in API endpoints.
 	/// </summary>
-	public class SmsParticipantOwner
+	public class SmsParticipantOwner : SmsOwnerBase
 	{
-		/// <summary>
-		/// Gets or sets the owner ID.
-		/// </summary>
-		[JsonPropertyName("id")]
-		public string Id { get; set; }
-
-		/// <summary>
-		/// Gets or sets the owner type.
-		/// </summary>
-		[JsonPropertyName("type")]
-		public SmsParticipantOwnerType Type { get; set; }
 	}
 }
