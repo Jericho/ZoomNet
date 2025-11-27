@@ -741,7 +741,14 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		[Obsolete("Use InviteParticipantsByEmailAsync or InviteParticipantsByIdAsync instead.")]
 		public Task InviteParticipantsAsync(long meetingId, IEnumerable<string> emailAddresses, CancellationToken cancellationToken = default)
+		{
+			return InviteParticipantsByEmailAsync(meetingId, emailAddresses, cancellationToken);
+		}
+
+		/// <inheritdoc/>
+		public Task InviteParticipantsByEmailAsync(long meetingId, IEnumerable<string> emailAddresses, CancellationToken cancellationToken = default)
 		{
 			ArgumentNullException.ThrowIfEmpty(emailAddresses, nameof(emailAddresses), "You must provide at least one email address");
 
@@ -749,6 +756,196 @@ namespace ZoomNet.Resources
 			{
 				{ "method", "participant.invite" },
 				{ "params", new JsonObject { { "contacts", emailAddresses.Select(emailAddress => new JsonObject { { "email", emailAddress } }).ToArray() } } }
+			};
+
+			return _client
+				.PatchAsync($"live_meetings/{meetingId}/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task InviteParticipantsByIdAsync(long meetingId, IEnumerable<string> userIds, CancellationToken cancellationToken = default)
+		{
+			ArgumentNullException.ThrowIfEmpty(userIds, nameof(userIds), "You must provide at least one user ID");
+
+			var data = new JsonObject
+			{
+				{ "method", "participant.invite" },
+				{ "params", new JsonObject { { "contacts", userIds.Select(userId => new JsonObject { { "id", userId } }).ToArray() } } }
+			};
+
+			return _client
+				.PatchAsync($"live_meetings/{meetingId}/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task InviteParticipantByPhoneAsync(long meetingId, string phoneNumber, string inviteeName = null, bool requireGreeting = false, bool requirePressingOne = false, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "method", "participant.invite.callout" },
+				{
+					"params", new JsonObject
+					{
+						{
+							"invite_options", new JsonObject[]
+							{
+								new JsonObject
+								{
+									{ "phone_number", phoneNumber },
+									{ "invitee_name", inviteeName },
+									{ "require_greeting", requireGreeting },
+									{ "require_pressing_one", requirePressingOne }
+								}
+							}
+						}
+					}
+				}
+			};
+
+			return _client
+				.PatchAsync($"live_meetings/{meetingId}/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task InviteParticipantByRoomSystemH323Async(long meetingId, string deviceAddress, string fromDisplayName = null, string toDisplayName = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "method", "participant.invite.room_system_callout" },
+				{
+					"params", new JsonObject
+					{
+						{ "call_type", "h323" },
+						{ "device_id", deviceAddress },
+						{
+							"h323_headers", new JsonObject
+							{
+								{ "from_display_name", fromDisplayName },
+								{ "to_display_name", toDisplayName }
+							}
+						}
+					}
+				}
+			};
+
+			return _client
+				.PatchAsync($"live_meetings/{meetingId}/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task InviteParticipantByRoomSystemSipAsync(long meetingId, string deviceAddress, string fromUri, string fromDisplayName = null, string toDisplayName = null, IEnumerable<KeyValuePair<string, string>> customSipHeaders = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "method", "participant.invite.room_system_callout" },
+				{
+					"params", new JsonObject
+					{
+						{ "call_type", "sip" },
+						{ "device_ip", deviceAddress },
+						{
+							"sip_headers", new JsonObject
+							{
+								{ "additional_headers", customSipHeaders?.Select(kvp => new JsonObject { { "key", kvp.Key }, { "value", kvp.Value } }).ToArray() },
+								{ "from_display_name", fromDisplayName },
+								{ "from_uri", fromUri },
+								{ "to_display_name", toDisplayName },
+							}
+						}
+					}
+				}
+			};
+
+			return _client
+				.PatchAsync($"live_meetings/{meetingId}/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateWaitingRoomAsync(long meetingId, string title = null, string description = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "method", "waiting_room.update" },
+				{
+					"params", new JsonObject
+					{
+						{ "waiting_room_title", title },
+						{ "waiting_room_description", description }
+					}
+				}
+			};
+
+			return _client
+				.PatchAsync($"live_meetings/{meetingId}/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task StartAiCompanionAsync(long meetingId, AiCompanionMode mode = AiCompanionMode.All, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "method", "ai_companion.start" },
+				{
+					"params", new JsonObject
+					{
+						{ "ai_companion_mode", mode.ToEnumString() },
+					}
+				}
+			};
+
+			return _client
+				.PatchAsync($"live_meetings/{meetingId}/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task StopAiCompanionAsync(long meetingId, AiCompanionMode mode = AiCompanionMode.All, bool deleteAssets = false, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "method", "ai_companion.stop" },
+				{
+					"params", new JsonObject
+					{
+						{ "ai_companion_mode", mode.ToEnumString() },
+						{ "delete_meeting_assets", mode == AiCompanionMode.All ? deleteAssets : null }, // Accoding to documentation: only applicable when mode is 'all'
+					}
+				}
+			};
+
+			return _client
+				.PatchAsync($"live_meetings/{meetingId}/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DisableAiCompanionAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "method", "ai_companion.disable" },
 			};
 
 			return _client

@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -408,9 +409,40 @@ namespace ZoomNet
 		/// <returns>
 		/// The async task.
 		/// </returns>
+		[Obsolete("This method has been deprecated. Please use InviteParticipantByEmailAsync instead.")]
 		public static Task InviteParticipantAsync(this IMeetings meetingsResource, long meetingId, string emailAddress, CancellationToken cancellationToken = default)
 		{
-			return meetingsResource.InviteParticipantsAsync(meetingId, new[] { emailAddress }, cancellationToken);
+			return meetingsResource.InviteParticipantByEmailAsync(meetingId, emailAddress, cancellationToken);
+		}
+
+		/// <summary>
+		/// Invite a participant to join a live meeting.
+		/// </summary>
+		/// <param name="meetingsResource">The meetingds resource.</param>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="emailAddress">The email address of the person you want to invite.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public static Task InviteParticipantByEmailAsync(this IMeetings meetingsResource, long meetingId, string emailAddress, CancellationToken cancellationToken = default)
+		{
+			return meetingsResource.InviteParticipantsByEmailAsync(meetingId, new[] { emailAddress }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Invite a participant to join a live meeting.
+		/// </summary>
+		/// <param name="meetingsResource">The meetingds resource.</param>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="userId">The user ID of the person you want to invite.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public static Task InviteParticipantByIdAsync(this IMeetings meetingsResource, long meetingId, string userId, CancellationToken cancellationToken = default)
+		{
+			return meetingsResource.InviteParticipantsByIdAsync(meetingId, new[] { userId }, cancellationToken);
 		}
 
 		/// <summary>
