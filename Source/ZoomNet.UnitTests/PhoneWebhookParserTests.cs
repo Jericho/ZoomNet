@@ -1004,6 +1004,9 @@ namespace ZoomNet.UnitTests
 			policy.PolicyName.ShouldBe(policyName);
 		}
 
+		/// <summary>
+		/// Verify <see cref="WebhookSmsMessage"/> properties.
+		/// </summary>
 		private static void VerifySmsMessage(
 			WebhookSmsMessage message,
 			string ownerTeamId = null,
