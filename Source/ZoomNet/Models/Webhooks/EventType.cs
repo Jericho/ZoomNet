@@ -887,5 +887,47 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "phone.recording_transcript_completed")]
 		PhoneRecordingTranscriptCompleted,
+
+		/// <summary>
+		/// Account user has received an SMS message with text of an opt-in keyword, such as START.
+		/// </summary>
+		[EnumMember(Value = "phone.sms_campaign_number_opt_in")]
+		PhoneSmsCampaignNumberOptIn,
+
+		/// <summary>
+		/// Account user has received an SMS message with text of an opt-out keyword, such as STOP.
+		/// </summary>
+		[EnumMember(Value = "phone.sms_campaign_number_opt_out")]
+		PhoneSmsCampaignNumberOptOut,
+
+		/// <summary>
+		/// Account user's outbound text has violated a SMS etiquette block policy defined in the Zoom phone web admin portal.
+		/// </summary>
+		[EnumMember(Value = "phone.sms_etiquette_block")]
+		PhoneSmsEtiquetteBlock,
+
+		/// <summary>
+		/// Account user's outbound text has violated a SMS etiquette warn policy defined in Zoom phone web admin portal.
+		/// </summary>
+		[EnumMember(Value = "phone.sms_etiquette_warn")]
+		PhoneSmsEtiquetteWarn,
+
+		/// <summary>
+		/// Zoom user account has received an SMS message.
+		/// </summary>
+		[EnumMember(Value = "phone.sms_received")]
+		PhoneSmsReceived,
+
+		/// <summary>
+		/// Zoom user account has sent an SMS message.
+		/// </summary>
+		[EnumMember(Value = "phone.sms_sent")]
+		PhoneSmsSent,
+
+		/// <summary>
+		/// Zoom user account has failed to send an SMS message.
+		/// </summary>
+		[EnumMember(Value = "phone.sms_sent_failed")]
+		PhoneSmsSentFailed,
 	}
 }

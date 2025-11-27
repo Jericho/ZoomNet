@@ -574,6 +574,76 @@ namespace ZoomNet.UnitTests
 			VerifyPhoneCallRecording(parsedEvent.Recordings[0], transcriptRecording: true);
 		}
 
+		[Fact]
+		public void PhoneSmsCampaignNumberOptIn()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneSmsCampaignNumberOptInEvent>(Resource.phone_sms_campaign_number_opt_in_webhook);
+
+			VerifyPhoneSmsEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneSmsCampaignNumberOptIn);
+
+			VerifySmsCampaignOptStatuses(parsedEvent.SmsCampaignNumbers);
+		}
+
+		[Fact]
+		public void PhoneSmsCampaignNumberOptOut()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneSmsCampaignNumberOptOutEvent>(Resource.phone_sms_campaign_number_opt_out_webhook);
+
+			VerifyPhoneSmsEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneSmsCampaignNumberOptOut);
+
+			VerifySmsCampaignOptStatuses(parsedEvent.SmsCampaignNumbers);
+		}
+
+		[Fact]
+		public void PhoneSmsEtiquetteBlock()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneSmsEtiquetteBlockEvent>(Resource.phone_sms_etiquette_block_webhook);
+
+			VerifyPhoneSmsEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneSmsEtiquetteBlock);
+
+			VerifySmsEtiquettePolicy(parsedEvent.Policy, "Company's SSN blocking policy");
+		}
+
+		[Fact]
+		public void PhoneSmsEtiquetteWarn()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneSmsEtiquetteWarnEvent>(Resource.phone_sms_etiquette_warn_webhook);
+
+			VerifyPhoneSmsEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneSmsEtiquetteWarn);
+
+			VerifySmsEtiquettePolicy(parsedEvent.Policy, "Company's SSN warning policy");
+		}
+
+		[Fact]
+		public void PhoneSmsReceived()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneSmsReceivedEvent>(Resource.phone_sms_received_webhook);
+
+			VerifyPhoneSmsEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneSmsReceived);
+
+			VerifySmsMessage(parsedEvent.Message, ownerTeamId: "milmMfm3SYCwkraYIriNiQ", ownerSenderUserId: null, failureReason: null);
+		}
+
+		[Fact]
+		public void PhoneSmsSent()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneSmsSentEvent>(Resource.phone_sms_sent_webhook);
+
+			VerifyPhoneSmsEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneSmsSent);
+
+			VerifySmsMessage(parsedEvent.Message, isMessageOwner: null);
+		}
+
+		[Fact]
+		public void PhoneSmsSentFailed()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneSmsSentFailedEvent>(Resource.phone_sms_sent_failed_webhook);
+
+			VerifyPhoneSmsEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneSmsSentFailed);
+
+			VerifySmsMessage(parsedEvent.Message);
+		}
+
 		#endregion
 
 		#region private methods
@@ -897,6 +967,96 @@ namespace ZoomNet.UnitTests
 			owner.Name.ShouldBe("Owner name");
 			owner.ExtensionNumber.ShouldBe(6666);
 			owner.HasAccessPermission.ShouldBe(hasAccessPermission);
+		}
+
+		/// <summary>
+		/// Verify <see cref="PhoneSmsEvent"/> properties.
+		/// </summary>
+		private static void VerifyPhoneSmsEvent(PhoneSmsEvent parsedEvent, ZoomNet.Models.Webhooks.EventType eventType)
+		{
+			parsedEvent.EventType.ShouldBe(eventType);
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
+		}
+
+		/// <summary>
+		/// Verify <see cref="WebhookSmsCampaignOptStatuses"/> properties.
+		/// </summary>
+		private static void VerifySmsCampaignOptStatuses(WebhookSmsCampaignOptStatuses optStatuses)
+		{
+			optStatuses.ShouldNotBeNull();
+			optStatuses.Timestamp.ShouldBe(timestamp);
+			optStatuses.PhoneNumbers.ShouldNotBeNull();
+			optStatuses.PhoneNumbers.ShouldHaveSingleItem();
+			optStatuses.PhoneNumbers[0].ConsumerPhoneNumber.ShouldBe(PhoneNumberA);
+			optStatuses.PhoneNumbers[0].ZoomPhoneUserNumber.ShouldBe(PhoneNumberB);
+		}
+
+		/// <summary>
+		/// Verify <see cref="WebhookSmsEtiquettePolicy"/> properties.
+		/// </summary>
+		private static void VerifySmsEtiquettePolicy(WebhookSmsEtiquettePolicy policy, string policyName)
+		{
+			policy.ShouldNotBeNull();
+			policy.Timestamp.ShouldBe(timestamp);
+			policy.Email.ShouldBe(UserEmail);
+			policy.Message.ShouldBe("this is my SSN 123-45-6789");
+			policy.PolicyName.ShouldBe(policyName);
+		}
+
+		/// <summary>
+		/// Verify <see cref="WebhookSmsMessage"/> properties.
+		/// </summary>
+		private static void VerifySmsMessage(
+			WebhookSmsMessage message,
+			string ownerTeamId = null,
+			string ownerSenderUserId = "JduDVJJXTS6VGXiJiro7ZQ",
+			bool? isMessageOwner = true,
+			string failureReason = "1101-phone message error send")
+		{
+			message.ShouldNotBeNull();
+			message.MessageId.ShouldBe("72abd192-97ee-4ddb-b498-85048f4c34d7");
+			message.Type.ShouldBe(SmsMessageType.Sms);
+			message.CreatedOn.ShouldBe(timestamp);
+			message.Message.ShouldBe("ttt");
+			message.SessionId.ShouldBe("e5e9b8417c1f2da2cd3006f3d9d4641a");
+			message.FailureReason.ShouldBe(failureReason);
+
+			message.Attachments.ShouldNotBeNull();
+			message.Attachments.ShouldHaveSingleItem();
+			message.Attachments[0].Id.ShouldBe("ux7LtGDPRmqbo0nLQ2v9jQ");
+			message.Attachments[0].Size.ShouldBe(10692);
+			message.Attachments[0].Name.ShouldBe("Screenshot2021_05_17_183842.jpg");
+			message.Attachments[0].Type.ShouldBe(SmsAttachmentType.Jpg);
+			message.Attachments[0].DownloadUrl.ShouldBe("https://downloadUrl.zoom.us");
+
+			message.Owner.ShouldNotBeNull();
+			message.Owner.Id.ShouldBe("29QVgYBGRmOM5VlC0DmLgg");
+			message.Owner.Type.ShouldBe(SmsParticipantOwnerType.CallQueue);
+			message.Owner.TeamId.ShouldBe(ownerTeamId);
+			message.Owner.SenderUserId.ShouldBe(ownerSenderUserId);
+
+			message.Sender.ShouldNotBeNull();
+			message.Sender.Id.ShouldBe("RMIGplfpSLauTMDMTi3Kfg");
+			message.Sender.PhoneNumber.ShouldBe("12132822256");
+			message.Sender.Type.ShouldBe(SmsParticipantOwnerType.User);
+			message.Sender.DisplayName.ShouldBe("Jackson");
+
+			message.Recipients.ShouldNotBeNull();
+			message.Recipients.ShouldHaveSingleItem();
+			message.Recipients[0].Id.ShouldBe("RMITfuhuuxyzyuyyi3Kfg");
+			message.Recipients[0].PhoneNumber.ShouldBe("12132792348");
+			message.Recipients[0].Type.ShouldBe(SmsParticipantOwnerType.User);
+			message.Recipients[0].DisplayName.ShouldBe("Tom");
+			message.Recipients[0].IsMessageOwner.ShouldBe(isMessageOwner);
+
+			message.PhoneNumbersOptStatuses.ShouldNotBeNull();
+			message.PhoneNumbersOptStatuses.ShouldHaveSingleItem();
+			message.PhoneNumbersOptStatuses[0].ConsumerPhoneNumber.ShouldBe("+120970XXXXX");
+			message.PhoneNumbersOptStatuses[0].ZoomPhoneUserNumber.ShouldBe("+120971XXXXX");
+			message.PhoneNumbersOptStatuses[0].OptStatus.ShouldBe(SmsOptStatus.Pending);
+			message.PhoneNumbersOptStatuses[0].OptInStatus.ShouldBe(SmsOptInStatus.NewSession);
+			message.PhoneNumbersOptStatuses[0].OptInMessage.ShouldBe("Text START to receive text messages from ZOOM.");
 		}
 
 		#endregion

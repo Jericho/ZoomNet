@@ -717,6 +717,20 @@ namespace ZoomNet.Json
 					var phoneRecordingTranscriptCompletedEvent = payloadJsonProperty.ToObject<PhoneRecordingTranscriptCompletedEvent>(options);
 					phoneRecordingTranscriptCompletedEvent.Recordings = ParseRecordings<PhoneCallRecording>(payloadJsonProperty);
 					return phoneRecordingTranscriptCompletedEvent;
+				case Models.Webhooks.EventType.PhoneSmsCampaignNumberOptIn:
+					return payloadJsonProperty.ToObject<PhoneSmsCampaignNumberOptInEvent>(options);
+				case Models.Webhooks.EventType.PhoneSmsCampaignNumberOptOut:
+					return payloadJsonProperty.ToObject<PhoneSmsCampaignNumberOptOutEvent>(options);
+				case Models.Webhooks.EventType.PhoneSmsEtiquetteBlock:
+					return payloadJsonProperty.ToObject<PhoneSmsEtiquetteBlockEvent>(options);
+				case Models.Webhooks.EventType.PhoneSmsEtiquetteWarn:
+					return payloadJsonProperty.ToObject<PhoneSmsEtiquetteWarnEvent>(options);
+				case Models.Webhooks.EventType.PhoneSmsReceived:
+					return payloadJsonProperty.ToObject<PhoneSmsReceivedEvent>(options);
+				case Models.Webhooks.EventType.PhoneSmsSent:
+					return payloadJsonProperty.ToObject<PhoneSmsSentEvent>(options);
+				case Models.Webhooks.EventType.PhoneSmsSentFailed:
+					return payloadJsonProperty.ToObject<PhoneSmsSentFailedEvent>(options);
 				default:
 					throw new JsonException($"{eventType} is an unknown event type");
 			}
