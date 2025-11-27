@@ -28,7 +28,6 @@ namespace ZoomNet.IntegrationTests
 
 		private enum ConnectionType
 		{
-			Jwt, // Zoom disabled the ability to create new JWT apps on June 1, 2023. The projected end-of-life for JWT apps is September 1, 2023. 
 			OAuthAuthorizationCode, // Gets authorization code and sets refresh token.
 			OAuthRefreshToken,      // Gets and sets refresh token and access token.
 			OAuthClientCredentials, // Gets and sets access token. For cleanliness, it should use a different access token environment variable so they don't cross contaminate.

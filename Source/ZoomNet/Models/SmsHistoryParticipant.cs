@@ -3,22 +3,10 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// The user who sent it/who received the SMS.
+	/// The user who sent/received the SMS (as provided in API endpoints).
 	/// </summary>
-	public class SmsHistoryParticipant
+	public class SmsHistoryParticipant : SmsParticipantBase
 	{
-		/// <summary>
-		/// Gets or sets sender's/receiver's name.
-		/// </summary>
-		[JsonPropertyName("display_name")]
-		public string DisplayName { get; set; }
-
-		/// <summary>
-		/// Gets or sets sender's/receiver's phone number.
-		/// </summary>
-		[JsonPropertyName("phone_number")]
-		public string PhoneNumber { get; set; }
-
 		/// <summary>
 		/// Gets or sets owner.
 		/// </summary>

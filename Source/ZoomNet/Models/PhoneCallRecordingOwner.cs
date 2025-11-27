@@ -7,31 +7,42 @@ namespace ZoomNet.Models
 	/// </summary>
 	public class PhoneCallRecordingOwner
 	{
-		/// <summary>Gets or sets the extension number.</summary>
-		/// <value>The extension number associated with the call number.</value>
+		/// <summary>
+		/// Gets or sets the extension number.
+		/// </summary>
 		[JsonPropertyName("extension_number")]
 		public int ExtensionNumber { get; set; }
 
-		/// <summary>Gets or sets the owner ID.</summary>
-		/// <value>The owner's ID.</value>
+		/// <summary>
+		/// Gets or sets the owner ID.
+		/// </summary>
 		[JsonPropertyName("id")]
 		public string Id { get; set; }
 
-		/// <summary>Gets or sets the owner name.</summary>
-		/// <value>Name of the owner.</value>
+		/// <summary>
+		/// Gets or sets the owner name.
+		/// </summary>
 		[JsonPropertyName("name")]
 		public string Name { get; set; }
 
-		/// <summary>Gets or sets the owner type.</summary>
-		/// <value>The owner type: user or call queue.</value>
+		/// <summary>
+		/// Gets or sets the owner type.
+		/// </summary>
 		[JsonPropertyName("type")]
 		[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
 		public PhoneCallRecordingOwnerType? Type { get; set; }
 
-		/// <summary>Gets or sets the extension status.</summary>
-		/// <value>The extension status: inactive or deleted.</value>
+		/// <summary>
+		/// Gets or sets the extension status.
+		/// </summary>
 		[JsonPropertyName("extension_status")]
 		[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
 		public PhoneCallRecordingOwnerExtensionStatus? ExtensionStatus { get; set; }
+
+		/// <summary>
+		/// Gets or sets a value indicating whether the owner has the access permission to the recording.
+		/// </summary>
+		[JsonPropertyName("has_access_permission")]
+		public bool? HasAccessPermission { get; set; }
 	}
 }
