@@ -299,6 +299,24 @@ namespace ZoomNet.Resources
 			}
 		}
 
+		/// <inheritdoc/>
+		public Task<TranscriptInfo> GetTranscriptInfoAsync(long meetingId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"meetings/{meetingId}/transcript")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<TranscriptInfo>();
+		}
+
+		/// <inheritdoc/>
+		public Task<TranscriptInfo> GetTranscriptInfoAsync(string uuid, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"meetings/{uuid}/transcript")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<TranscriptInfo>();
+		}
+
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<string> registrantIds, string status, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
@@ -313,5 +331,6 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
+
 	}
 }
