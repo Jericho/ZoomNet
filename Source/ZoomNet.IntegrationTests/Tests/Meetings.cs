@@ -35,7 +35,7 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			var settings = new MeetingSettings()
 			{
-				Audio = AudioType.Telephony,
+				Audio = AudioType.Both,
 				RegistrationType = RegistrationType.RegisterOnceAttendAll,
 				ApprovalType = ApprovalType.Manual,
 				JoinBeforeHost = true,
