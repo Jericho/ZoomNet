@@ -1,0 +1,23 @@
+{
+    "event":"whiteboard.share_setting_updated",
+    "event_ts":1626230691572,
+    "payload":{
+        "account_id":"AAAAAABBBB",
+        "operator":"admin@example.com",
+        "operator_id":"z8yCxjabcdEFGHfp8uQ",
+        "object":{
+            "whiteboard_id":"BK0R3Lg-Toi92viKHhzUVQ",
+            "settings":{
+                "share_link_setting":{
+                    "share_scope":0,
+                    "share_role":4
+                },
+                "advanced_share_setting":{
+                    "can_share":true,
+                    "share_to_external":true,
+                    "external_can_share":false
+                }
+            }
+        }
+    }
+}

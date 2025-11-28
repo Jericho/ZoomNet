@@ -1,0 +1,14 @@
+{
+  "event": "whiteboard.opened",
+  "event_ts": 1626230691572,
+  "payload": {
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "operator_collaborator_id": "Cvftg6789087654443lkhk",
+    "object": {
+      "whiteboard_id": "X4Hy02w3QUOdskKofgb9Jg",
+      "whiteboard_name": "Q3 Plan",
+      "meeting_id": "1234567890",
+      "meeting_uuid": "4444AAAiAAAAAiAiAiiAii=="
+    }
+  }
+}
