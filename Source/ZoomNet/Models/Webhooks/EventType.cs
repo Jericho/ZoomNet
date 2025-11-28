@@ -929,5 +929,35 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "phone.sms_sent_failed")]
 		PhoneSmsSentFailed,
+
+		/// <summary>
+		/// A phone voicemail has been deleted (sent to the trash).
+		/// </summary>
+		[EnumMember(Value = "phone.voicemail_deleted")]
+		PhoneVoicemailDeleted,
+
+		/// <summary>
+		/// A phone voicemail has been permanently deleted from the trash.
+		/// </summary>
+		[EnumMember(Value = "phone.voicemail_permanently_deleted")]
+		PhoneVoicemailPermanentlyDeleted,
+
+		/// <summary>
+		/// A callee has missed a call and received a voicemail from the caller.
+		/// </summary>
+		[EnumMember(Value = "phone.voicemail_received")]
+		PhoneVoicemailReceived,
+
+		/// <summary>
+		/// A callee has received a voicemail from the caller and callee's access member is notified.
+		/// </summary>
+		[EnumMember(Value = "phone.voicemail_received_for_access_member")]
+		PhoneVoicemailReceivedForAccessMember,
+
+		/// <summary>
+		/// A phone voicemail transcript has been completed.
+		/// </summary>
+		[EnumMember(Value = "phone.voicemail_transcript_completed")]
+		PhoneVoicemailTranscriptCompleted,
 	}
 }

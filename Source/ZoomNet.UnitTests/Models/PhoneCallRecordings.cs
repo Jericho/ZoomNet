@@ -150,10 +150,10 @@ namespace ZoomNet.UnitTests.Models
 			result.ShouldNotBeNull();
 			result.Id.ShouldBe("1234abcd5678efgh9012ijkl3456mnop");
 			result.CallerNumber.ShouldBe("+12345678901");
-			result.CallerNumberType.ShouldBe(PhoneCallRecordingCallerNumberType.External);
+			result.CallerNumberType.ShouldBe(PhoneCallNumberType.External);
 			result.CallerName.ShouldBe("12345678901");
 			result.CalleeNumber.ShouldBe("123");
-			result.CalleeNumberType.ShouldBe(PhoneCallRecordingCalleeNumberType.Internal);
+			result.CalleeNumberType.ShouldBe(PhoneCallNumberType.Internal);
 			result.CalleeName.ShouldBe("Callee Name");
 			result.CallInitiator.ShouldBeNull();
 			result.CallReceiver.ShouldBeNull();
@@ -189,10 +189,10 @@ namespace ZoomNet.UnitTests.Models
 			result.ShouldNotBeNull();
 			result.Id.ShouldBe("1234abcd5678efgh9012ijkl3456mnop");
 			result.CallerNumber.ShouldBe("+12345678901");
-			result.CallerNumberType.ShouldBe(PhoneCallRecordingCallerNumberType.External);
+			result.CallerNumberType.ShouldBe(PhoneCallNumberType.External);
 			result.CallerName.ShouldBe("12345678901");
 			result.CalleeNumber.ShouldBe("123");
-			result.CalleeNumberType.ShouldBe(PhoneCallRecordingCalleeNumberType.Internal);
+			result.CalleeNumberType.ShouldBe(PhoneCallNumberType.Internal);
 			result.CalleeName.ShouldBe("Callee Name");
 			result.CallInitiator.Name.ShouldBe("Call Initiator");
 			result.CallInitiator.ExtensionNumber.ShouldBe("100");

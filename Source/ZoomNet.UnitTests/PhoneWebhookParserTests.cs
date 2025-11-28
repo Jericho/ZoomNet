@@ -644,6 +644,65 @@ namespace ZoomNet.UnitTests
 			VerifySmsMessage(parsedEvent.Message);
 		}
 
+		[Fact]
+		public void PhoneVoicemailDeleted()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneVoicemailDeletedEvent>(Resource.phone_voicemail_deleted_webhook);
+
+			VerifyPhoneVoicemailEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneVoicemailDeleted);
+
+			parsedEvent.Voicemails.ShouldNotBeNull();
+			parsedEvent.Voicemails.ShouldHaveSingleItem();
+			parsedEvent.Voicemails[0].Id.ShouldBe("0388975092074598b47330a6a87e9a7b");
+		}
+
+		[Fact]
+		public void PhoneVoicemailPermanentlyDeleted()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneVoicemailPermanentlyDeletedEvent>(Resource.phone_voicemail_permanently_deleted_webhook);
+
+			VerifyPhoneVoicemailEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneVoicemailPermanentlyDeleted);
+
+			parsedEvent.Voicemails.ShouldNotBeNull();
+			parsedEvent.Voicemails.ShouldHaveSingleItem();
+			parsedEvent.Voicemails[0].Id.ShouldBe("0388975092074598b47330a6a87e9a7b");
+		}
+
+		[Fact]
+		public void PhoneVoicemailReceived()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneVoicemailReceivedEvent>(Resource.phone_voicemail_received_webhook);
+
+			VerifyPhoneVoicemailEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneVoicemailReceived);
+
+			VerifyVoicemail(parsedEvent.Voicemail);
+		}
+
+		[Fact]
+		public void PhoneVoicemailReceivedForAccessMember()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneVoicemailReceivedForAccessMemberEvent>(Resource.phone_voicemail_received_for_access_member_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneVoicemailReceivedForAccessMember);
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
+
+			VerifyVoicemail(parsedEvent.Voicemail, callerUserId: null);
+
+			parsedEvent.AccessMemberExtensionType.ShouldBe(PhoneCallExtensionType.User);
+			parsedEvent.AccessMemberId.ShouldBe("z8yCxjabcdEFGHfp8uQ");
+		}
+
+		[Fact]
+		public void PhoneVoicemailTranscriptCompleted()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneVoicemailTranscriptCompletedEvent>(Resource.phone_voicemail_transcript_completed_webhook);
+
+			VerifyPhoneVoicemailEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneVoicemailTranscriptCompleted);
+
+			VerifyVoicemail(parsedEvent.Voicemail, voicemailTranscript: true, callerUserId: null);
+		}
+
 		#endregion
 
 		#region private methods
@@ -805,7 +864,6 @@ namespace ZoomNet.UnitTests
 
 			callElement.RecordingId.ShouldBe(RecordingId);
 			callElement.RecordingType.ShouldBe(CallElementRecordingType.Automatic);
-
 			callElement.VoicemailId.ShouldBe("6cd2da01bcaa47f58e3250a575c5f2bf");
 
 			callElement.TalkTime.ShouldBe(31);
@@ -909,10 +967,10 @@ namespace ZoomNet.UnitTests
 
 			recording.CallLogId.ShouldBe("a297ae04-a875-4cfd-85ab-4adcead91edb");
 
-			recording.CallerNumberType.ShouldBe(PhoneCallRecordingCallerNumberType.Internal);
+			recording.CallerNumberType.ShouldBe(PhoneCallNumberType.Internal);
 			recording.CallerName.ShouldBe("Caller Name");
 
-			recording.CalleeNumberType.ShouldBe(PhoneCallRecordingCalleeNumberType.External);
+			recording.CalleeNumberType.ShouldBe(PhoneCallNumberType.External);
 			recording.CalleeName.ShouldBe("Callee Name");
 
 			recording.Duration.ShouldBe(43);
@@ -1057,6 +1115,68 @@ namespace ZoomNet.UnitTests
 			message.PhoneNumbersOptStatuses[0].OptStatus.ShouldBe(SmsOptStatus.Pending);
 			message.PhoneNumbersOptStatuses[0].OptInStatus.ShouldBe(SmsOptInStatus.NewSession);
 			message.PhoneNumbersOptStatuses[0].OptInMessage.ShouldBe("Text START to receive text messages from ZOOM.");
+		}
+
+		/// <summary>
+		/// Verify <see cref="PhoneVoicemailEvent"/> properties.
+		/// </summary>
+		private static void VerifyPhoneVoicemailEvent(PhoneVoicemailEvent parsedEvent, ZoomNet.Models.Webhooks.EventType eventType)
+		{
+			parsedEvent.EventType.ShouldBe(eventType);
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
+		}
+
+		/// <summary>
+		/// Verify <see cref="WebhookVoicemail"/> properties.
+		/// </summary>
+		private static void VerifyVoicemail(WebhookVoicemail voicemail, bool voicemailTranscript = false, string callerUserId = "9Y0sGVcgRrW_9eV6kwLf7w")
+		{
+			voicemail.ShouldNotBeNull();
+			voicemail.Id.ShouldBe("70ea156dc8414742839569c1556c3314");
+			voicemail.CallId.ShouldBe(CallId);
+			voicemail.CallLogId.ShouldBe("55fd0af0-beb0-433a-be97-388de5e99ab4");
+			voicemail.CallElementId.ShouldBe(CallElementId);
+			voicemail.CallHistoryId.ShouldBe(CallHistoryId);
+			voicemail.CreatedOn.ShouldBe(timestamp);
+
+			// There are some differences in available properties depending on voicemail or its transcript.
+			if (!voicemailTranscript)
+			{
+				voicemail.DownloadUrl.ShouldBe("https://example.com");
+				voicemail.Transcription.ShouldBeNull();
+
+				voicemail.Duration.ShouldBe(3);
+
+				voicemail.CalleeDidNumber.ShouldBe(PhoneNumberA);
+				voicemail.CallerDidNumber.ShouldBe(PhoneNumberB);
+			}
+			else
+			{
+				voicemail.DownloadUrl.ShouldBeNull();
+				voicemail.Transcription.ShouldNotBeNull();
+				voicemail.Transcription.Status.ShouldBe(VoicemailTranscriptStatus.Completed);
+				voicemail.Transcription.Content.ShouldBe("Some Transcript content");
+
+				voicemail.Duration.ShouldBeNull();
+
+				voicemail.CalleeDidNumber.ShouldBeNull();
+				voicemail.CallerDidNumber.ShouldBeNull();
+			}
+
+			voicemail.CalleeId.ShouldBe("s6njoqZLT6aPvUQ0JyydeQ");
+			voicemail.CalleeExtensionType.ShouldBe(PhoneCallExtensionType.User);
+			voicemail.CalleeName.ShouldBe("Jill Chill");
+			voicemail.CalleeNumber.ShouldBe("58011");
+			voicemail.CalleeNumberType.ShouldBe(PhoneCallNumberType.Internal);
+			voicemail.CalleeAccountCode.ShouldBe("123");
+			voicemail.CalleeUserId.ShouldBe("s6njoqZLT6aPvUQ0JyydeQ");
+
+			voicemail.CallerName.ShouldBe("Rascoe Thomas");
+			voicemail.CallerNumber.ShouldBe("12058945456");
+			voicemail.CallerNumberType.ShouldBe(PhoneCallNumberType.External);
+			voicemail.CallerAccountCode.ShouldBe("456");
+			voicemail.CallerUserId.ShouldBe(callerUserId);
 		}
 
 		#endregion

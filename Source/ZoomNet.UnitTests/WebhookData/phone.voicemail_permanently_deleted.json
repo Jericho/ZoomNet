@@ -1,7 +1,8 @@
 {
   "event": "phone.voicemail_permanently_deleted",
+  "event_ts": 1626230691572,
   "payload": {
-    "account_id": "Mt6sv4u0TAyPkwgsL2lxiA",
+    "account_id": "AAAAAABBBB",
     "object": {
       "voice_mails": [
         {
@@ -9,6 +10,5 @@
         }
       ]
     }
-  },
-  "event_ts": 1619155436400
+  }
 }
