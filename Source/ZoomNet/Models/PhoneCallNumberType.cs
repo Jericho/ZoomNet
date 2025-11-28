@@ -1,9 +1,9 @@
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// Enumeration to indicate the phone callee's number type.
+	/// Enumeration to indicate the phone call number type (for callee or caller).
 	/// </summary>
-	public enum PhoneCallRecordingCalleeNumberType
+	public enum PhoneCallNumberType
 	{
 		/// <summary>
 		/// Internal number.
@@ -18,6 +18,6 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Customized emergency number.
 		/// </summary>
-		CustomizedEmergency = 3
+		CustomizedEmergency = 3,
 	}
 }
