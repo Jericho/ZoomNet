@@ -18,6 +18,6 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Customized emergency number.
 		/// </summary>
-		CustomizedEmergency = 3
+		CustomizedEmergency = 3,
 	}
 }
