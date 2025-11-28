@@ -11,6 +11,7 @@ namespace ZoomNet.Json
 
 	[JsonSerializable(typeof(ZoomNet.Models.Account))]
 	[JsonSerializable(typeof(ZoomNet.Models.AccountCallLog))]
+	[JsonSerializable(typeof(ZoomNet.Models.AiCompanionMode))]
 	[JsonSerializable(typeof(ZoomNet.Models.ApprovalType))]
 	[JsonSerializable(typeof(ZoomNet.Models.Assistant))]
 	[JsonSerializable(typeof(ZoomNet.Models.AttendeeAction))]
@@ -669,6 +670,7 @@ namespace ZoomNet.Json
 
 	[JsonSerializable(typeof(ZoomNet.Models.Account[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.AccountCallLog[]))]
+	[JsonSerializable(typeof(ZoomNet.Models.AiCompanionMode[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.ApprovalType[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.Assistant[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.AttendeeAction[]))]
@@ -1325,6 +1327,7 @@ namespace ZoomNet.Json
 	[JsonSerializable(typeof(ZoomNet.Models.ZoomRoomWithIssues[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.ZoomRoomWithIssuesReport[]))]
 
+	[JsonSerializable(typeof(ZoomNet.Models.AiCompanionMode?))]
 	[JsonSerializable(typeof(ZoomNet.Models.ApprovalType?))]
 	[JsonSerializable(typeof(ZoomNet.Models.AttendeeChatSaveType?))]
 	[JsonSerializable(typeof(ZoomNet.Models.AttendeeChatType?))]
