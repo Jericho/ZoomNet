@@ -778,5 +778,26 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">Cancellation token.</param>
 		/// <returns>The token.</returns>
 		Task<string> GetTokenForLiveStreamingAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update a message in a live meeting.
+		/// </summary>
+		/// <param name="meetingId">The unique identifier of the live meeting whose message will be updated.</param>
+		/// <param name="messageId">The unique identifier of the message to be updated.</param>
+		/// <param name="message">The new content for the chat message.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the update operation.</param>
+		/// <returns>A task that represents the asynchronous update operation.</returns>
+		Task UpdateLiveMeetingMessageAsync(long meetingId, string messageId, string message, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a message in a live meeting.
+		/// </summary>
+		/// <param name="meetingId">The unique identifier of the meeting from which the message will be deleted.</param>
+		/// <param name="messageId">The unique identifier of the live meeting message to delete.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous delete operation.</returns>
+		Task DeleteLiveMeetingMessageAsync(long meetingId, string messageId, CancellationToken cancellationToken = default);
+
+		Task DeleteLiveMeetingMessagesAsync(long meetingId, CancellationToken cancellationToken = default);
 	}
 }
