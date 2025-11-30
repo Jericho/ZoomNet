@@ -36,28 +36,23 @@ namespace ZoomNet.UnitTests.Json
 		[InlineData("\"\"", "String")]
 		public void Throws_when_invalid_value(string value, string typeName)
 		{
-			// Arrange
-			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(value);
-			var jsonReader = new Utf8JsonReader(jsonUtf8);
-			var objectType = (Type)null;
-			var options = new JsonSerializerOptions();
-
-			var converter = new EpochConverter();
-
-			// Act
-			jsonReader.Read();
-
-			try
+			Action lambda = () =>
 			{
+				// Arrange
+				var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(value);
+				var jsonReader = new Utf8JsonReader(jsonUtf8);
+				var objectType = (Type)null;
+				var options = new JsonSerializerOptions();
+
+				var converter = new EpochConverter();
+
+				// Act
+				jsonReader.Read();
 				var result = converter.Read(ref jsonReader, objectType, options);
-			}
-			catch (JsonException e)
-			{
-				e.Message.ShouldBe($"Unable to convert {typeName} from Epoch to DateTime");
+			};
 
-				// Unfortunately, cannot use Should.Throw<JsonException>(() => converter.Read(ref jsonReader, objectType, options));
-				// because we can't use 'ref' arguments in lambda expressions.
-			}
+			// Assert
+			lambda.ShouldThrowWithMessage<JsonException>($"Unable to convert {typeName} from Epoch to DateTime");
 		}
 
 		[Fact]
