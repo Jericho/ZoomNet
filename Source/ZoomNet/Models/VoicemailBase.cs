@@ -87,7 +87,7 @@ namespace ZoomNet.Models
 		public string CallHistoryId { get; set; }
 
 		/// <summary>
-		/// Gets or set unique call id.
+		/// Gets or sets unique call id.
 		/// </summary>
 		[JsonPropertyName("call_id")]
 		public string CallId { get; set; }
