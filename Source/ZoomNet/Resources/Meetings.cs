@@ -1010,6 +1010,30 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task UpdateLiveMeetingMessageAsync(long meetingId, string messageId, string message, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "message_content", message }
+			};
+
+			return _client
+				.PatchAsync($"live_meetings/{meetingId}/chat/messages/{messageId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteLiveMeetingMessageAsync(long meetingId, string messageId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"live_meetings/{meetingId}/chat/messages/{messageId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
 		public Task<MeetingAiSummary> GetAiSummaryAsync(string meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client
