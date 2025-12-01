@@ -69,29 +69,24 @@ namespace ZoomNet.UnitTests.Json
 		[Fact]
 		public void Throws_when_not_a_number()
 		{
-			// Arrange
-			var json = "\"Hello World\"";
-			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(json);
-			var jsonReader = new Utf8JsonReader(jsonUtf8);
-			var objectType = (Type)null;
-			var options = new JsonSerializerOptions();
-
-			var converter = new DayOfWeekConverter();
-
-			// Act
-			jsonReader.Read();
-
-			try
+			Action lambda = () =>
 			{
+				// Arrange
+				var json = "\"Hello World\"";
+				var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(json);
+				var jsonReader = new Utf8JsonReader(jsonUtf8);
+				var objectType = (Type)null;
+				var options = new JsonSerializerOptions();
+
+				var converter = new DayOfWeekConverter();
+
+				// Act
+				jsonReader.Read();
 				var result = converter.Read(ref jsonReader, objectType, options);
-			}
-			catch (JsonException e)
-			{
-				e.Message.ShouldBe("Unable to convert String to DayOfWeek");
+			};
 
-				// Unfortunately, cannot use Should.Throw<JsonException>(() => converter.Read(ref jsonReader, objectType, options));
-				// because we can't use 'ref' arguments in lambda expressions.
-			}
+			// Assert
+			lambda.ShouldThrowWithMessage<JsonException>("Unable to convert String to DayOfWeek");
 		}
 
 		[Theory]

@@ -38,29 +38,24 @@ namespace ZoomNet.UnitTests.Json
 		[Fact]
 		public void Anything_other_than_array_throws_an_exception()
 		{
-			// Arrange
-			var value = "\"hello world, this is a string\"";
-			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(value);
-			var jsonReader = new Utf8JsonReader(jsonUtf8);
-			var objectType = (Type)null;
-			var options = new JsonSerializerOptions();
-
-			var converter = new KeyValuePairConverter();
-
-			// Act
-			jsonReader.Read();
-
-			try
+			Action lambda = () =>
 			{
+				// Arrange
+				var value = "\"hello world, this is a string\"";
+				var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(value);
+				var jsonReader = new Utf8JsonReader(jsonUtf8);
+				var objectType = (Type)null;
+				var options = new JsonSerializerOptions();
+
+				var converter = new KeyValuePairConverter();
+
+				// Act
+				jsonReader.Read();
 				var result = converter.Read(ref jsonReader, objectType, options);
-			}
-			catch (JsonException e)
-			{
-				e.Message.ShouldBe("Unable to read Key/Value pair");
+			};
 
-				// Unfortunately, cannot use Should.Throw<JsonException>(() => converter.Read(ref jsonReader, objectType, options));
-				// because we can't use 'ref' arguments in lambda expressions.
-			}
+			// Assert
+			lambda.ShouldThrowWithMessage<JsonException>("Unable to read Key/Value pair");
 		}
 
 		[Fact]

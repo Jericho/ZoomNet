@@ -110,57 +110,47 @@ namespace ZoomNet.UnitTests.Json
 		[Fact]
 		public void Throws_when_enum_does_not_have_default_value_and_JSON_value_is_null()
 		{
-			// Arrange
-			var value = "null";
-			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(value);
-			var jsonReader = new Utf8JsonReader(jsonUtf8);
-			var objectType = typeof(EnumWithoutDefault);
-			var options = new JsonSerializerOptions();
-
-			var converter = new StringEnumConverter<EnumWithoutDefault>();
-
-			// Act
-			jsonReader.Read();
-
-			try
+			Action lambda = () =>
 			{
+				// Arrange
+				var value = "null";
+				var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(value);
+				var jsonReader = new Utf8JsonReader(jsonUtf8);
+				var objectType = typeof(EnumWithoutDefault);
+				var options = new JsonSerializerOptions();
+
+				var converter = new StringEnumConverter<EnumWithoutDefault>();
+
+				// Act
+				jsonReader.Read();
 				var result = converter.Read(ref jsonReader, objectType, options);
-			}
-			catch (JsonException e)
-			{
-				e.Message.ShouldBe("Unable to convert a null value into a EnumWithoutDefault enum.");
+			};
 
-				// Unfortunately, cannot use Should.Throw<JsonException>(() => converter.Read(ref jsonReader, objectType, options));
-				// because we can't use 'ref' arguments in lambda expressions.
-			}
+			// Assert
+			lambda.ShouldThrowWithMessage<JsonException>("Unable to convert a null value into a EnumWithoutDefault enum.");
 		}
 
 		[Fact]
 		public void Throws_when_unexpected_JSON_token()
 		{
-			// Arrange
-			var value = "[]"; // <-- an array is not a valid token for an enum
-			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(value);
-			var jsonReader = new Utf8JsonReader(jsonUtf8);
-			var objectType = typeof(EnumWithoutDefault);
-			var options = new JsonSerializerOptions();
-
-			var converter = new StringEnumConverter<EnumWithoutDefault>();
-
-			// Act
-			jsonReader.Read();
-
-			try
+			Action lambda = () =>
 			{
+				// Arrange
+				var value = "[]"; // <-- an array is not a valid token for an enum
+				var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(value);
+				var jsonReader = new Utf8JsonReader(jsonUtf8);
+				var objectType = typeof(EnumWithoutDefault);
+				var options = new JsonSerializerOptions();
+
+				var converter = new StringEnumConverter<EnumWithoutDefault>();
+
+				// Act
+				jsonReader.Read();
 				var result = converter.Read(ref jsonReader, objectType, options);
-			}
-			catch (JsonException e)
-			{
-				e.Message.ShouldBe("Unexpected token StartArray when parsing an enum.");
+			};
 
-				// Unfortunately, cannot use Should.Throw<JsonException>(() => converter.Read(ref jsonReader, objectType, options));
-				// because we can't use 'ref' arguments in lambda expressions.
-			}
+			// Assert
+			lambda.ShouldThrowWithMessage<JsonException>("Unexpected token StartArray when parsing an enum.");
 		}
 
 		[Theory]
