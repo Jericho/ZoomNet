@@ -731,6 +731,39 @@ namespace ZoomNet.Json
 					return payloadJsonProperty.ToObject<PhoneSmsSentEvent>(options);
 				case Models.Webhooks.EventType.PhoneSmsSentFailed:
 					return payloadJsonProperty.ToObject<PhoneSmsSentFailedEvent>(options);
+				case Models.Webhooks.EventType.PhoneVoicemailDeleted:
+					var phoneVoicemailDeletedEvent = payloadJsonProperty.ToObject<PhoneVoicemailDeletedEvent>(options);
+					phoneVoicemailDeletedEvent.Voicemails = payloadJsonProperty.GetPropertyValue<VoicemailBasicInfo[]>("object/voice_mails");
+					return phoneVoicemailDeletedEvent;
+				case Models.Webhooks.EventType.PhoneVoicemailPermanentlyDeleted:
+					var phoneVoicemailPermanentlyDeletedEvent = payloadJsonProperty.ToObject<PhoneVoicemailPermanentlyDeletedEvent>(options);
+					phoneVoicemailPermanentlyDeletedEvent.Voicemails = payloadJsonProperty.GetPropertyValue<VoicemailBasicInfo[]>("object/voice_mails");
+					return phoneVoicemailPermanentlyDeletedEvent;
+				case Models.Webhooks.EventType.PhoneVoicemailReceived:
+					return payloadJsonProperty.ToObject<PhoneVoicemailReceivedEvent>(options);
+				case Models.Webhooks.EventType.PhoneVoicemailReceivedForAccessMember:
+					var phoneVoicemailReceivedForAccessMemberEvent = payloadJsonProperty.ToObject<PhoneVoicemailReceivedForAccessMemberEvent>(options);
+					phoneVoicemailReceivedForAccessMemberEvent.AccessMemberExtensionType = payloadJsonProperty.GetPropertyValue<PhoneCallExtensionType>("object/access_member_extension_type");
+					phoneVoicemailReceivedForAccessMemberEvent.AccessMemberId = payloadJsonProperty.GetPropertyValue<string>("object/access_member_id", null);
+					return phoneVoicemailReceivedForAccessMemberEvent;
+				case Models.Webhooks.EventType.PhoneVoicemailTranscriptCompleted:
+					return payloadJsonProperty.ToObject<PhoneVoicemailTranscriptCompletedEvent>(options);
+				case Models.Webhooks.EventType.PhoneBlindTransferInitiated:
+					return payloadJsonProperty.ToObject<PhoneBlindTransferInitiatedEvent>(options);
+				case Models.Webhooks.EventType.PhoneTransferCallToVoicemailInitiated:
+					return payloadJsonProperty.ToObject<PhoneTransferCallToVoicemailInitiatedEvent>(options);
+				case Models.Webhooks.EventType.PhoneTransferRecipientUpdated:
+					var phoneTransferRecipientUpdatedEvent = payloadJsonProperty.ToObject<PhoneTransferRecipientUpdatedEvent>(options);
+					phoneTransferRecipientUpdatedEvent.Recipient = payloadJsonProperty.GetPropertyValue<WebhookCallTransferRecipient>("object/recipient");
+					return phoneTransferRecipientUpdatedEvent;
+				case Models.Webhooks.EventType.PhoneWarmTransferCancelled:
+					return payloadJsonProperty.ToObject<PhoneWarmTransferCancelledEvent>(options);
+				case Models.Webhooks.EventType.PhoneWarmTransferCompleted:
+					return payloadJsonProperty.ToObject<PhoneWarmTransferCompletedEvent>(options);
+				case Models.Webhooks.EventType.PhoneWarmTransferInitiated:
+					var phoneWarmTransferInitiatedEvent = payloadJsonProperty.ToObject<PhoneWarmTransferInitiatedEvent>(options);
+					phoneWarmTransferInitiatedEvent.TransferCallId = payloadJsonProperty.GetPropertyValue<string>("object/transfer_call_id", null);
+					return phoneWarmTransferInitiatedEvent;
 				default:
 					throw new JsonException($"{eventType} is an unknown event type");
 			}

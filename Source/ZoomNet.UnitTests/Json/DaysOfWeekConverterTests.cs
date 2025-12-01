@@ -57,29 +57,24 @@ namespace ZoomNet.UnitTests.Json
 		[Fact]
 		public void Throws_when_other_data_type()
 		{
-			// Arrange
-			var value = 12;
-			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(value.ToString());
-			var jsonReader = new Utf8JsonReader(jsonUtf8);
-			var objectType = (Type)null;
-			var options = new JsonSerializerOptions();
-
-			var converter = new DaysOfWeekConverter();
-
-			// Act
-			jsonReader.Read();
-
-			try
+			Action lambda = () =>
 			{
+				// Arrange
+				var value = 12;
+				var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(value.ToString());
+				var jsonReader = new Utf8JsonReader(jsonUtf8);
+				var objectType = (Type)null;
+				var options = new JsonSerializerOptions();
+
+				var converter = new DaysOfWeekConverter();
+
+				// Act
+				jsonReader.Read();
 				var result = converter.Read(ref jsonReader, objectType, options);
-			}
-			catch (JsonException e)
-			{
-				e.Message.ShouldBe($"Unexpected token type: Number. Unable to convert to Array of DayOfWeek.");
+			};
 
-				// Unfortunately, cannot use Should.Throw<JsonException>(() => converter.Read(ref jsonReader, objectType, options));
-				// because we can't use 'ref' arguments in lambda expressions.
-			}
+			// Assert
+			lambda.ShouldThrowWithMessage<JsonException>($"Unexpected token type: Number. Unable to convert to Array of DayOfWeek.");
 		}
 
 		[Theory]

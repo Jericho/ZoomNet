@@ -1,0 +1,35 @@
+{
+  "event": "whiteboard.sharing_updated",
+  "event_ts": 1626230691572,
+  "payload": {
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "operation_type": 1,
+    "operator_collaborator_id": "Cvftg6789087654443lkhk",
+    "object": {
+      "whiteboard_id": "X4Hy02w3QUOdskKofgb9Jg",
+      "collaborators": [
+        {
+          "collaborator_id": "as35hjnh89899fmkl0ou",
+          "collaborator_name": "Jack",
+          "user_id": "er54t67y8ui9o0p0",
+          "email": "user@example.com",
+          "collaborator_type": 0,
+          "role": 2
+        },
+        {
+          "collaborator_id": "x4g6hy789k0o878k",
+          "collaborator_name": "ext***@exa***.com",
+          "collaborator_type": 1,
+          "role": 3
+        },
+        {
+          "collaborator_id": "34g6hy789k0o878k",
+          "channel_id": "example@conference.xmpp.zoom.us",
+          "collaborator_name": "Channel A",
+          "collaborator_type": 2,
+          "role": 2
+        }
+      ]
+    }
+  }
+}

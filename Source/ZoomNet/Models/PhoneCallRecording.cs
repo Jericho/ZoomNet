@@ -31,7 +31,7 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonPropertyName("callee_number_type")]
 		[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-		public PhoneCallRecordingCalleeNumberType? CalleeNumberType { get; set; }
+		public PhoneCallNumberType? CalleeNumberType { get; set; }
 
 		/// <summary>
 		/// Gets or sets the callee account code.
@@ -62,7 +62,7 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonPropertyName("caller_number_type")]
 		[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-		public PhoneCallRecordingCallerNumberType? CallerNumberType { get; set; }
+		public PhoneCallNumberType? CallerNumberType { get; set; }
 
 		/// <summary>
 		/// Gets or sets the caller account code.

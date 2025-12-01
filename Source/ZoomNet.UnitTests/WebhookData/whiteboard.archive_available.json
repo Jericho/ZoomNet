@@ -1,0 +1,15 @@
+{
+  "event": "whiteboard.archive_available",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "session_id": "a2f19f96-9294-4f51-8134-6f0eea108eb2",
+      "start_time": "2021-03-11T05:41:36Z",
+      "end_time": "2021-03-11T05:41:36Z",
+      "whiteboard_id": "1234567890",
+      "whiteboard_name": "Q3 Plan",
+      "expire_time": "2021-03-26T06:41:36Z"
+    }
+  }
+}

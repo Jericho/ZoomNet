@@ -617,6 +617,19 @@ namespace ZoomNet.Resources
 		Task StopCloudRecordingAsync(long meetingId, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Invites the specified participants to join the meeting identified by the given meeting ID.
+		/// </summary>
+		/// <remarks>This method is obsolete. Use InviteParticipantsByEmailAsync or InviteParticipantsByIdAsync
+		/// instead for improved clarity and flexibility.</remarks>
+		/// <param name="meetingId">The unique identifier of the meeting to which participants will be invited.</param>
+		/// <param name="emailAddresses">A collection of email addresses representing the participants to invite. Each email address must be valid and
+		/// non-empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the invitation operation.</param>
+		/// <returns>A task that represents the asynchronous operation of inviting participants.</returns>
+		[Obsolete("Use InviteParticipantsByEmailAsync or InviteParticipantsByIdAsync methods instead.")]
+		Task InviteParticipantsAsync(long meetingId, IEnumerable<string> emailAddresses, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Invite multiple participants to join a live meeting.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
@@ -625,7 +638,95 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task InviteParticipantsAsync(long meetingId, IEnumerable<string> emailAddresses, CancellationToken cancellationToken = default);
+		Task InviteParticipantsByEmailAsync(long meetingId, IEnumerable<string> emailAddresses, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Invite multiple participants to join a live meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="userIds">The user IDs of the people you want to invite.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		Task InviteParticipantsByIdAsync(long meetingId, IEnumerable<string> userIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Invites a participant to join the specified meeting by placing an outbound phone call to the provided phone number.
+		/// </summary>
+		/// <param name="meetingId">The unique identifier of the meeting to which the participant will be invited.</param>
+		/// <param name="phoneNumber">The phone number to call in order to invite the participant. As a best practice, ensure this includes a country code and area code. If you are dialing a phone number that includes an extension, type a hyphen '-' after the phone number and enter the extension. For example, 6032331333-156 dials the extension 156.</param>
+		/// <param name="inviteeName">The user's name to display in the meeting.</param>
+		/// <param name="requireGreeting">Indicates whether a greeting should be played to the invitee before joining the meeting. Set to <see
+		/// langword="true"/> to play a greeting; otherwise, <see langword="false"/>.</param>
+		/// <param name="requirePressingOne">Indicates whether the invitee must press '1' to join the meeting after answering the call. Set to <see
+		/// langword="true"/> to require confirmation; otherwise, <see langword="false"/>.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the invite operation.</param>
+		/// <returns>A task that represents the asynchronous operation of inviting the participant by phone.</returns>
+		Task InviteParticipantByPhoneAsync(long meetingId, string phoneNumber, string inviteeName = null, bool requireGreeting = false, bool requirePressingOne = false, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Invite a participant to the meeting through H.323 call out (room system).
+		/// </summary>
+		/// <param name="meetingId">The unique identifier of the meeting to which the participant will be invited.</param>
+		/// <param name="deviceAddress">The user's device IP address or URI.</param>
+		/// <param name="fromDisplayName">Custom name that will be used within the h323 Header.</param>
+		/// <param name="toDisplayName">Custom remote name that will be used within the meeting.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The operation will be canceled if this token is triggered.</param>
+		/// <returns>A task that represents the asynchronous operation of sending the invitation.</returns>
+		Task InviteParticipantByRoomSystemH323Async(long meetingId, string deviceAddress, string fromDisplayName = null, string toDisplayName = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Invite a participant to the meeting through SIP call out (room system).
+		/// </summary>
+		/// <param name="meetingId">The unique identifier of the meeting to which the participant will be invited.</param>
+		/// <param name="deviceAddress">The user's device IP address or URI.</param>
+		/// <param name="fromUri">The SIP URI to use as the sender of the invitation. The URI must start with 'sip:' or 'sips:' as a valid URI based on parameters defined by the platform.</param>
+		/// <param name="fromDisplayName">Custom name that will be used within the SIP Header.</param>
+		/// <param name="toDisplayName">The display name to use for the recipient in the SIP invitation. If null, the device address will be used.</param>
+		/// <param name="customSipHeaders">A collection of up to 10 custom SIP headers to include in the invitation. Each key-value pair represents a header name and
+		/// value. If null, no custom headers are added. Each header has a maximum length of 256 bytes to comply with SIP standards. Custom headers would leverage header names starting with 'X-' per SIP guidelines.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The operation is canceled if the token is triggered.</param>
+		/// <returns>A task that represents the asynchronous operation of sending the SIP invitation.</returns>
+		Task InviteParticipantByRoomSystemSipAsync(long meetingId, string deviceAddress, string fromUri, string fromDisplayName = null, string toDisplayName = null, IEnumerable<KeyValuePair<string, string>> customSipHeaders = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously updates the waiting room title and/or description for the specified meeting.
+		/// </summary>
+		/// <param name="meetingId">The unique identifier of the meeting whose waiting room will be updated.</param>
+		/// <param name="title">The new title for the waiting room. If null, the existing title remains unchanged.</param>
+		/// <param name="description">The new description for the waiting room. If null, the existing description remains unchanged.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous update operation.</returns>
+		Task UpdateWaitingRoomAsync(long meetingId, string title = null, string description = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Starts an AI Companion for the specified meeting using the given mode.
+		/// </summary>
+		/// <param name="meetingId">The unique identifier of the meeting for which to start the AI Companion.</param>
+		/// <param name="mode">The mode in which the AI Companion should operate during the meeting.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation of starting the AI Companion.</returns>
+		Task StartAiCompanionAsync(long meetingId, AiCompanionMode mode = AiCompanionMode.All, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Stops the AI Companion for the specified meeting and mode asynchronously.
+		/// </summary>
+		/// <param name="meetingId">The unique identifier of the meeting for which the AI Companion should be stopped.</param>
+		/// <param name="mode">The AI Companion mode to stop. Specifies which type of AI Companion functionality to disable.</param>
+		/// <param name="deleteAssets">Indicates whether to delete all associated AI Companion assets for the meeting. Set to <see langword="true"/> to
+		/// remove assets; otherwise, assets are retained.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation of stopping the AI Companion.</returns>
+		Task StopAiCompanionAsync(long meetingId, AiCompanionMode mode = AiCompanionMode.All, bool deleteAssets = false, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Disables the AI companion feature for the specified meeting asynchronously.
+		/// </summary>
+		/// <param name="meetingId">The unique identifier of the meeting for which to disable the AI companion feature.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation of disabling the AI companion feature.</returns>
+		Task DisableAiCompanionAsync(long meetingId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Create a meeting template from an existing meeting.

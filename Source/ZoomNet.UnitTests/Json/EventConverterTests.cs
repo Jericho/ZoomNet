@@ -87,28 +87,23 @@ namespace ZoomNet.UnitTests.Json
 		[Fact]
 		public void Throws_whe_event_type_is_invalid()
 		{
-			// Arrange
-			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(INVALID_EVENT_TYPE_JSON);
-			var jsonReader = new Utf8JsonReader(jsonUtf8);
-			var objectType = (Type)null;
-			var options = JsonFormatter.DefaultDeserializerOptions;
-
-			var converter = new EventConverter();
-
-			// Act
-			jsonReader.Read();
-
-			try
+			Action lambda = () =>
 			{
+				// Arrange
+				var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(INVALID_EVENT_TYPE_JSON);
+				var jsonReader = new Utf8JsonReader(jsonUtf8);
+				var objectType = (Type)null;
+				var options = JsonFormatter.DefaultDeserializerOptions;
+
+				var converter = new EventConverter();
+
+				// Act
+				jsonReader.Read();
 				var result = converter.Read(ref jsonReader, objectType, options);
-			}
-			catch (JsonException e)
-			{
-				e.Message.ShouldBe("HELLO_WORLD is an unknown event type");
+			};
 
-				// Unfortunately, cannot use Should.Throw<JsonException>(() => converter.Read(ref jsonReader, objectType, options));
-				// because we can't use 'ref' arguments in lambda expressions.
-			}
+			// Assert
+			lambda.ShouldThrowWithMessage<JsonException>("HELLO_WORLD is an unknown event type");
 		}
 	}
 }
