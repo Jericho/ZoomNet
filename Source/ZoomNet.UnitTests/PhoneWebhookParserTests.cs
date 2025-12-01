@@ -703,6 +703,70 @@ namespace ZoomNet.UnitTests
 			VerifyVoicemail(parsedEvent.Voicemail, voicemailTranscript: true, callerUserId: null);
 		}
 
+		[Fact]
+		public void PhoneBlindTransferInitiated()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneBlindTransferInitiatedEvent>(Resource.phone_blind_transfer_initiated_webhook);
+
+			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneBlindTransferInitiated);
+
+			VerifyCallTransferInfo(parsedEvent.CallTransfer);
+		}
+
+		[Fact]
+		public void PhoneTransferCallToVoicemailInitiated()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneTransferCallToVoicemailInitiatedEvent>(Resource.phone_transfer_call_to_voicemail_initiated_webhook);
+
+			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneTransferCallToVoicemailInitiated);
+
+			VerifyCallTransferInfo(parsedEvent.CallTransfer);
+		}
+
+		[Fact]
+		public void PhoneTransferRecipientUpdated()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneTransferRecipientUpdatedEvent>(Resource.phone_transfer_recipient_updated_webhook);
+
+			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneTransferRecipientUpdated);
+
+			VerifyCallTransferInfo(parsedEvent.CallTransfer, transferPhoneNumber: null, transferAccountCode: null);
+
+			VerifyCallTransferRecipient(parsedEvent.Recipient);
+		}
+
+		[Fact]
+		public void PhoneWarmTransferCancelled()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneWarmTransferCancelledEvent>(Resource.phone_warm_transfer_cancelled_webhook);
+
+			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneWarmTransferCancelled);
+
+			VerifyCallTransferInfo(parsedEvent.CallTransfer);
+		}
+
+		[Fact]
+		public void PhoneWarmTransferCompleted()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneWarmTransferCompletedEvent>(Resource.phone_warm_transfer_completed_webhook);
+
+			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneWarmTransferCompleted);
+
+			VerifyCallTransferInfo(parsedEvent.CallTransfer);
+		}
+
+		[Fact]
+		public void PhoneWarmTransferInitiated()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneWarmTransferInitiatedEvent>(Resource.phone_warm_transfer_initiated_webhook);
+
+			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneWarmTransferInitiated);
+
+			VerifyCallTransferInfo(parsedEvent.CallTransfer);
+
+			parsedEvent.TransferCallId.ShouldBe("6986878782238080584");
+		}
+
 		#endregion
 
 		#region private methods
@@ -1177,6 +1241,57 @@ namespace ZoomNet.UnitTests
 			voicemail.CallerNumberType.ShouldBe(PhoneCallNumberType.External);
 			voicemail.CallerAccountCode.ShouldBe("456");
 			voicemail.CallerUserId.ShouldBe(callerUserId);
+		}
+
+		/// <summary>
+		/// Verify <see cref="PhoneCallTransferEvent"/> properties.
+		/// </summary>
+		private static void VerifyPhoneCallTransferEvent(PhoneCallTransferEvent parsedEvent, ZoomNet.Models.Webhooks.EventType eventType)
+		{
+			parsedEvent.EventType.ShouldBe(eventType);
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
+		}
+
+		/// <summary>
+		/// Verify <see cref="WebhookCallTransferInfo"/> properties.
+		/// </summary>
+		private static void VerifyCallTransferInfo(
+			WebhookCallTransferInfo info,
+			string transferPhoneNumber = PhoneNumberA,
+			string transferAccountCode = "123")
+		{
+			info.ShouldNotBeNull();
+			info.CallId.ShouldBe(CallId);
+			info.Timestamp.ShouldBe(timestamp);
+			info.TransferPhoneNumber.ShouldBe(transferPhoneNumber);
+			info.TransferAccountCode.ShouldBe(transferAccountCode);
+			info.FailureReason.ShouldBe(string.Empty);
+
+			VerifyCallOwnerInfo(info.Owner);
+		}
+
+		/// <summary>
+		/// Verify <see cref="CallLogOwnerInfo"/> properties.
+		/// </summary>
+		private static void VerifyCallOwnerInfo(CallLogOwnerInfo info)
+		{
+			info.ShouldNotBeNull();
+			info.Type.ShouldBe(CallLogOwnerType.User);
+			info.Id.ShouldBe("z8yCxjabcdEFGHfp8uQ");
+			info.Name.ShouldBe("Jill Chill");
+			info.ExtensionNumber.ShouldBe(6666);
+		}
+
+		/// <summary>
+		/// Verify <see cref="WebhookCallTransferRecipient"/> properties.
+		/// </summary>
+		private static void VerifyCallTransferRecipient(WebhookCallTransferRecipient info)
+		{
+			info.ShouldNotBeNull();
+			info.ExtensionNumber.ShouldBe(1001020);
+			info.PhoneNumber.ShouldBe(PhoneNumberB);
+			info.Name.ShouldBe("Jane Smith");
 		}
 
 		#endregion

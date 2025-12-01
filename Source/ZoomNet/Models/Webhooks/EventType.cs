@@ -959,5 +959,41 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "phone.voicemail_transcript_completed")]
 		PhoneVoicemailTranscriptCompleted,
+
+		/// <summary>
+		/// A call blind transfer has been initiated.
+		/// </summary>
+		[EnumMember(Value = "phone.blind_transfer_initiated")]
+		PhoneBlindTransferInitiated,
+
+		/// <summary>
+		/// A call transfer to voicemail has been initiated.
+		/// </summary>
+		[EnumMember(Value = "phone.transfer_call_to_voicemail_initiated")]
+		PhoneTransferCallToVoicemailInitiated,
+
+		/// <summary>
+		/// The recipient of warm/blind transfer call has been updated.
+		/// </summary>
+		[EnumMember(Value = "phone.transfer_recipient_updated")]
+		PhoneTransferRecipientUpdated,
+
+		/// <summary>
+		/// A call warm transfer has been cancelled.
+		/// </summary>
+		[EnumMember(Value = "phone.warm_transfer_cancelled")]
+		PhoneWarmTransferCancelled,
+
+		/// <summary>
+		/// A call warm transfer has been completed.
+		/// </summary>
+		[EnumMember(Value = "phone.warm_transfer_completed")]
+		PhoneWarmTransferCompleted,
+
+		/// <summary>
+		/// A call warm transfer has been initiated.
+		/// </summary>
+		[EnumMember(Value = "phone.warm_transfer_initiated")]
+		PhoneWarmTransferInitiated,
 	}
 }
