@@ -1,5 +1,6 @@
 using System;
 using System.Text.Json.Serialization;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.Models
 {
@@ -46,7 +47,11 @@ namespace ZoomNet.Models
 		/// </summary>
 		/// <value>The page token.</value>
 		/// <remarks>This token expires after 15 minutes.</remarks>
-		[JsonPropertyName("next_page_token")]
+		/*
+		 * Most of the time, the name of this JSON propery is "next_page_token".
+		 * However, there is one exception: "sync_token is used when invoking the "Sync user's call history" endpoint, documented here: https://developers.zoom.us/docs/api/phone/#tag/call-logs
+		 */
+		[MultipleValuesEnumMember(DefaultValue = "next_page_token", OtherValues = ["sync_token"])]
 		public string NextPageToken { get; set; }
 
 		/// <summary>
