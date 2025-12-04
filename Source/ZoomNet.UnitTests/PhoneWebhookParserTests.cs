@@ -776,18 +776,7 @@ namespace ZoomNet.UnitTests
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
 			parsedEvent.AccountId.ShouldBe(AccountId);
 
-			parsedEvent.CallSummary.ShouldNotBeNull();
-			parsedEvent.CallSummary.Id.ShouldBe("iNsfqK6gQOCiILiKhrlLqQ");
-			parsedEvent.CallSummary.CallId.ShouldBe(CallId);
-			parsedEvent.CallSummary.UserId.ShouldBe("FvB3CRfOQUuhF1IOB176Tg");
-			parsedEvent.CallSummary.CreatedOn.ShouldBe(new DateTime(2023, 10, 8, 16, 12, 4));
-			parsedEvent.CallSummary.ModifiedOn.ShouldBe(new DateTime(2023, 10, 8, 16, 13, 5));
-			parsedEvent.CallSummary.IsModified.ShouldBeTrue();
-			parsedEvent.CallSummary.IsDeleted.ShouldBeFalse();
-
-			parsedEvent.CallSummary.CallLogIds.ShouldNotBeNull();
-			parsedEvent.CallSummary.CallLogIds.Length.ShouldBe(2);
-			parsedEvent.CallSummary.CallLogIds.ShouldBeSubsetOf(new[] { "6afdf3e3-87e3-47d0-834c-6ee3598e3b96", "6afdf3e3-87e3-47d0-834c-6ee3598e3b00" });
+			VerifyAiCallSummary(parsedEvent.CallSummary);
 		}
 
 		[Fact]
@@ -833,37 +822,7 @@ namespace ZoomNet.UnitTests
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
 			parsedEvent.AccountId.ShouldBe(AccountId);
 
-			parsedEvent.Alert.ShouldNotBeNull();
-			parsedEvent.Alert.CallId.ShouldBe(CallId);
-			parsedEvent.Alert.Router.ShouldBe(EmergencyCallSource.Zoom);
-			parsedEvent.Alert.DeliverTo.ShouldBe(EmergencyCallDestination.SafetyTeam);
-			parsedEvent.Alert.RingingStartedOn.ShouldBe(ringingStartedTimestamp);
-
-			parsedEvent.Alert.Callee.ShouldNotBeNull();
-			parsedEvent.Alert.Callee.PhoneNumber.ShouldBe("933");
-
-			parsedEvent.Alert.Caller.ShouldNotBeNull();
-			parsedEvent.Alert.Caller.UserId.ShouldBe("DnEopNmXQEGU2uvvzjgojw");
-			parsedEvent.Alert.Caller.ExtensionNumber.ShouldBe("1002");
-			parsedEvent.Alert.Caller.ExtensionType.ShouldBe(EmergencyCallExtensionType.User);
-			parsedEvent.Alert.Caller.DisplayName.ShouldBe("pbxta api");
-			parsedEvent.Alert.Caller.SiteId.ShouldBe(SiteId);
-			parsedEvent.Alert.Caller.SiteName.ShouldBe("Main Site");
-			parsedEvent.Alert.Caller.PhoneNumber.ShouldBe("+12192818492");
-			parsedEvent.Alert.Caller.Timezone.ShouldBe(TimeZones.America_Los_Angeles);
-
-			parsedEvent.Alert.Location.ShouldNotBeNull();
-			parsedEvent.Alert.Location.BssId.ShouldNotBeNull();
-			parsedEvent.Alert.Location.BssId.ShouldHaveSingleItem();
-			parsedEvent.Alert.Location.BssId[0].ShouldBe("fc:7f:49:12:45:01");
-			parsedEvent.Alert.Location.Gps.ShouldNotBeNull();
-			parsedEvent.Alert.Location.Gps.ShouldHaveSingleItem();
-			parsedEvent.Alert.Location.Gps[0].ShouldBe("31.29846,120.6645");
-			parsedEvent.Alert.Location.IpAddress.ShouldNotBeNull();
-			parsedEvent.Alert.Location.IpAddress.ShouldHaveSingleItem();
-			parsedEvent.Alert.Location.IpAddress[0].ShouldBe("192.0.2.1,192.0.2.2");
-
-			VerifyEmergencyAddress(parsedEvent.Alert.EmergencyAddress);
+			VerifyEmergencyCallAlert(parsedEvent.Alert);
 		}
 
 		[Fact]
@@ -875,39 +834,7 @@ namespace ZoomNet.UnitTests
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
 			parsedEvent.AccountId.ShouldBe(AccountId);
 
-			parsedEvent.Device.ShouldNotBeNull();
-			parsedEvent.Device.Id.ShouldBe("JOZmuJ30Spyrw-v9vUzIrA");
-			parsedEvent.Device.DisplayName.ShouldBe("test_cap");
-			parsedEvent.Device.Type.ShouldBe("Other");
-			parsedEvent.Device.MacAddress.ShouldBe("012345678912");
-
-			parsedEvent.Device.Site.ShouldNotBeNull();
-			parsedEvent.Device.Site.Id.ShouldBe(SiteId);
-			parsedEvent.Device.Site.Name.ShouldBe("Main Site");
-
-			parsedEvent.Device.Provision.ShouldNotBeNull();
-			parsedEvent.Device.Provision.Type.ShouldBe(DeviceProvisioningType.Manual);
-			parsedEvent.Device.Provision.SipAccounts.ShouldNotBeNull();
-			parsedEvent.Device.Provision.SipAccounts.ShouldHaveSingleItem();
-
-			SipAccount sipAccount = parsedEvent.Device.Provision.SipAccounts[0];
-
-			sipAccount.AuthorizationId.ShouldBe("875586205903");
-			sipAccount.OutboundProxy.ShouldBe("example.com");
-			sipAccount.Password.ShouldBe("4dL09r0H");
-			sipAccount.SecondaryOutboundProxy.ShouldBe("example.com");
-			sipAccount.SipDomain.ShouldBe("example.com");
-			sipAccount.UserName.ShouldBe("83600015247557791369");
-
-			SharedLine sharedLine = sipAccount.SharedLine;
-
-			sharedLine.ShouldNotBeNull();
-			sharedLine.Alias.ShouldBe("Example line");
-			sharedLine.OutboundCallerId.ShouldBe(PhoneNumberB);
-			sharedLine.LineSubscription.ShouldNotBeNull();
-			sharedLine.LineSubscription.PhoneNumber.ShouldBe(PhoneNumberA);
-			sharedLine.LineSubscription.ExtensionNumber.ShouldBe(1040);
-			sharedLine.LineSubscription.DisplayName.ShouldBe("test_cap");
+			VerifyPhoneDevice(parsedEvent.Device);
 		}
 
 		[Fact]
@@ -1478,6 +1405,63 @@ namespace ZoomNet.UnitTests
 		}
 
 		/// <summary>
+		/// Verify <see cref="AiCallSummary"/> properties.
+		/// </summary>
+		private static void VerifyAiCallSummary(AiCallSummary summary)
+		{
+			summary.ShouldNotBeNull();
+			summary.Id.ShouldBe("iNsfqK6gQOCiILiKhrlLqQ");
+			summary.CallId.ShouldBe(CallId);
+			summary.UserId.ShouldBe("FvB3CRfOQUuhF1IOB176Tg");
+			summary.CreatedOn.ShouldBe(new DateTime(2023, 10, 8, 16, 12, 4));
+			summary.ModifiedOn.ShouldBe(new DateTime(2023, 10, 8, 16, 13, 5));
+			summary.IsModified.ShouldBeTrue();
+			summary.IsDeleted.ShouldBeFalse();
+
+			summary.CallLogIds.ShouldNotBeNull();
+			summary.CallLogIds.Length.ShouldBe(2);
+			summary.CallLogIds.ShouldBeSubsetOf(new[] { "6afdf3e3-87e3-47d0-834c-6ee3598e3b96", "6afdf3e3-87e3-47d0-834c-6ee3598e3b00" });
+		}
+
+		/// <summary>
+		/// Verify <see cref="EmergencyCallAlert"/> properties.
+		/// </summary>
+		private static void VerifyEmergencyCallAlert(EmergencyCallAlert alert)
+		{
+			alert.ShouldNotBeNull();
+			alert.CallId.ShouldBe(CallId);
+			alert.Router.ShouldBe(EmergencyCallSource.Zoom);
+			alert.DeliverTo.ShouldBe(EmergencyCallDestination.SafetyTeam);
+			alert.RingingStartedOn.ShouldBe(ringingStartedTimestamp);
+
+			alert.Callee.ShouldNotBeNull();
+			alert.Callee.PhoneNumber.ShouldBe("933");
+
+			alert.Caller.ShouldNotBeNull();
+			alert.Caller.UserId.ShouldBe("DnEopNmXQEGU2uvvzjgojw");
+			alert.Caller.ExtensionNumber.ShouldBe("1002");
+			alert.Caller.ExtensionType.ShouldBe(EmergencyCallExtensionType.User);
+			alert.Caller.DisplayName.ShouldBe("pbxta api");
+			alert.Caller.SiteId.ShouldBe(SiteId);
+			alert.Caller.SiteName.ShouldBe("Main Site");
+			alert.Caller.PhoneNumber.ShouldBe("+12192818492");
+			alert.Caller.Timezone.ShouldBe(TimeZones.America_Los_Angeles);
+
+			alert.Location.ShouldNotBeNull();
+			alert.Location.BssId.ShouldNotBeNull();
+			alert.Location.BssId.ShouldHaveSingleItem();
+			alert.Location.BssId[0].ShouldBe("fc:7f:49:12:45:01");
+			alert.Location.Gps.ShouldNotBeNull();
+			alert.Location.Gps.ShouldHaveSingleItem();
+			alert.Location.Gps[0].ShouldBe("31.29846,120.6645");
+			alert.Location.IpAddress.ShouldNotBeNull();
+			alert.Location.IpAddress.ShouldHaveSingleItem();
+			alert.Location.IpAddress[0].ShouldBe("192.0.2.1,192.0.2.2");
+
+			VerifyEmergencyAddress(alert.EmergencyAddress);
+		}
+
+		/// <summary>
 		/// Verify <see cref="EmergencyAddress"/> properties.
 		/// </summary>
 		private static void VerifyEmergencyAddress(EmergencyAddress address)
@@ -1489,6 +1473,46 @@ namespace ZoomNet.UnitTests
 			address.Country.ShouldBe("US");
 			address.StateCode.ShouldBe("CA");
 			address.Zip.ShouldBe("95113");
+		}
+
+		/// <summary>
+		/// Verify <see cref="PhoneDevice"/> properties.
+		/// </summary>
+		private static void VerifyPhoneDevice(PhoneDevice device)
+		{
+			device.ShouldNotBeNull();
+			device.Id.ShouldBe("JOZmuJ30Spyrw-v9vUzIrA");
+			device.DisplayName.ShouldBe("test_cap");
+			device.Type.ShouldBe("Other");
+			device.MacAddress.ShouldBe("012345678912");
+
+			device.Site.ShouldNotBeNull();
+			device.Site.Id.ShouldBe(SiteId);
+			device.Site.Name.ShouldBe("Main Site");
+
+			device.Provision.ShouldNotBeNull();
+			device.Provision.Type.ShouldBe(DeviceProvisioningType.Manual);
+			device.Provision.SipAccounts.ShouldNotBeNull();
+			device.Provision.SipAccounts.ShouldHaveSingleItem();
+
+			SipAccount sipAccount = device.Provision.SipAccounts[0];
+
+			sipAccount.AuthorizationId.ShouldBe("875586205903");
+			sipAccount.OutboundProxy.ShouldBe("example.com");
+			sipAccount.Password.ShouldBe("4dL09r0H");
+			sipAccount.SecondaryOutboundProxy.ShouldBe("example.com");
+			sipAccount.SipDomain.ShouldBe("example.com");
+			sipAccount.UserName.ShouldBe("83600015247557791369");
+
+			SharedLine sharedLine = sipAccount.SharedLine;
+
+			sharedLine.ShouldNotBeNull();
+			sharedLine.Alias.ShouldBe("Example line");
+			sharedLine.OutboundCallerId.ShouldBe(PhoneNumberB);
+			sharedLine.LineSubscription.ShouldNotBeNull();
+			sharedLine.LineSubscription.PhoneNumber.ShouldBe(PhoneNumberA);
+			sharedLine.LineSubscription.ExtensionNumber.ShouldBe(1040);
+			sharedLine.LineSubscription.DisplayName.ShouldBe("test_cap");
 		}
 
 		/// <summary>
