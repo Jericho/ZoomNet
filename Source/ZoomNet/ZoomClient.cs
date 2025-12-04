@@ -71,6 +71,9 @@ namespace ZoomNet
 		public IBilling Billing { get; private set; }
 
 		/// <inheritdoc/>
+		public ICallHistory CallHistory { get; private set; }
+
+		/// <inheritdoc/>
 		[Obsolete("Zoom will sunset the CallLogs API endpoints on fully deprecated and sunset on May 30, 2026. Please use the CallHistory instead. For more information, please refer to https://developers.zoom.us/docs/phone/migrate/")]
 		public ICallLogs CallLogs { get; private set; }
 
@@ -226,6 +229,7 @@ namespace ZoomNet
 
 			Accounts = new Accounts(_fluentClient);
 			Billing = new Billing(_fluentClient);
+			CallHistory = new CallHistory(_fluentClient);
 			CallLogs = new CallLogs(_fluentClient);
 			Chat = new Chat(_fluentClient);
 			Chatbot = new Chatbot(_fluentClient);

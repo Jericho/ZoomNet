@@ -19,6 +19,11 @@ namespace ZoomNet
 		IBilling Billing { get; }
 
 		/// <summary>
+		/// Gets the resource which allows you to manage call history.
+		/// </summary>
+		ICallHistory CallHistory { get; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage call logs.
 		/// </summary>
 		[Obsolete("Zoom will sunset the CallLogs API endpoints on fully deprecated and sunset on May 30, 2026. Please use the CallHistory instead. For more information, please refer to https://developers.zoom.us/docs/phone/migrate/")]
