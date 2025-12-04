@@ -32,7 +32,7 @@
     <PackageReference Include="RichardSzalay.MockHttp" Version="7.0.0" />
     <PackageReference Include="Shouldly" Version="4.3.0" />
     <PackageReference Include="System.Text.Json" Version="10.0.0" />
-    <PackageReference Include="xunit.v3.mtp-v2" Version="3.2.0" />
+    <PackageReference Include="xunit.v3.mtp-v2" Version="3.2.1" />
   </ItemGroup>
 
   <ItemGroup>
