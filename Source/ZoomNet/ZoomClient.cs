@@ -71,6 +71,7 @@ namespace ZoomNet
 		public IBilling Billing { get; private set; }
 
 		/// <inheritdoc/>
+		[Obsolete("Zoom will sunset the CallLogs API endpoints on fully deprecated and sunset on May 30, 2026. Please use the CallHistory instead. For more information, please refer to https://developers.zoom.us/docs/phone/migrate/")]
 		public ICallLogs CallLogs { get; private set; }
 
 		/// <inheritdoc/>
