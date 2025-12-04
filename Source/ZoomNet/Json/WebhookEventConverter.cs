@@ -764,6 +764,24 @@ namespace ZoomNet.Json
 					var phoneWarmTransferInitiatedEvent = payloadJsonProperty.ToObject<PhoneWarmTransferInitiatedEvent>(options);
 					phoneWarmTransferInitiatedEvent.TransferCallId = payloadJsonProperty.GetPropertyValue<string>("object/transfer_call_id", null);
 					return phoneWarmTransferInitiatedEvent;
+				case Models.Webhooks.EventType.PhoneAiCallSummaryChanged:
+					return payloadJsonProperty.ToObject<PhoneAiCallSummaryChangedEvent>(options);
+				case Models.Webhooks.EventType.PhoneConferenceStarted:
+					return payloadJsonProperty.ToObject<PhoneConferenceStartedEvent>(options);
+				case Models.Webhooks.EventType.PhoneDeviceRegistration:
+					return payloadJsonProperty.ToObject<PhoneDeviceRegistrationEvent>(options);
+				case Models.Webhooks.EventType.PhoneEmergencyAlert:
+					return payloadJsonProperty.ToObject<PhoneEmergencyAlertEvent>(options);
+				case Models.Webhooks.EventType.PhoneGenericDeviceProvision:
+					return payloadJsonProperty.ToObject<PhoneGenericDeviceProvisionEvent>(options);
+				case Models.Webhooks.EventType.PhonePeeringNumberCallerIdNameUpdated:
+					return payloadJsonProperty.ToObject<PhonePeeringNumberCallerIdNameUpdatedEvent>(options);
+				case Models.Webhooks.EventType.PhonePeeringNumberEmergencyAddressUpdated:
+					return payloadJsonProperty.ToObject<PhonePeeringNumberEmergencyAddressUpdatedEvent>(options);
+				case Models.Webhooks.EventType.NumberManagementPeeringNumberCallerIdNameUpdated:
+					return payloadJsonProperty.ToObject<NumberManagementPeeringNumberCallerIdNameUpdatedEvent>(options);
+				case Models.Webhooks.EventType.NumberManagementPeeringNumberEmergencyAddressUpdated:
+					return payloadJsonProperty.ToObject<NumberManagementPeeringNumberEmergencyAddressUpdatedEvent>(options);
 				default:
 					throw new JsonException($"{eventType} is an unknown event type");
 			}
