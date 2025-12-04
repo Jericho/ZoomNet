@@ -23,6 +23,6 @@ namespace ZoomNet.Models
 		/// Common area phone.
 		/// </summary>
 		[EnumMember(Value = "commonAreaPhone")]
-		CommonAreaPhone
+		CommonAreaPhone,
 	}
 }
