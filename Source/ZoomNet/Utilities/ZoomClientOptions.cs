@@ -30,18 +30,7 @@ namespace ZoomNet.Utilities
 		/// <summary>
 		/// Gets the base URL of the Zoom API endpoint.
 		/// </summary>
-		public Uri ApiBaseUrl { get; private set; }
-
-		/// <summary>
-		/// Initializes a new instance of the <see cref="ZoomClientOptions"/> class with default settings.
-		/// </summary>
-		/// <remarks>By default, the base URL is set to the 'Global' endpoint. To use a different regional
-		/// endpoint, call the appropriate configuration method after constructing the instance.</remarks>
-		public ZoomClientOptions()
-		{
-			// Set the default base URL
-			WithGlobalBaseUrl();
-		}
+		public Uri ApiBaseUrl { get; private set; } = new Uri(ZOOM_GLOBAL_BASE_URI);
 
 		/// <summary>
 		/// Configures the client to use Zoom's global base URL for API requests.
