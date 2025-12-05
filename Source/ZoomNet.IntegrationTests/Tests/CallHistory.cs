@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -12,16 +13,17 @@ namespace ZoomNet.IntegrationTests.Tests
 		{
 			await log.WriteLineAsync("\n***** CALL HISTORY *****\n").ConfigureAwait(false);
 
-			var now = DateTime.UtcNow;
-			var from = now.Subtract(TimeSpan.FromDays(30));
-			var to = now;
+			var from = DateTime.UtcNow.Subtract(TimeSpan.FromDays(30));
+			var to = DateTime.UtcNow;
 
-			var aaa = await client.CallHistory.GetAccountCallHistoryAsync(from, to, cancellationToken: cancellationToken);
+			var accountCallHistory = await client.CallHistory.GetAccountCallHistoryAsync(from, to, cancellationToken: cancellationToken);
+			await log.WriteLineAsync($"There are {accountCallHistory.TotalRecords} items in the account call history").ConfigureAwait(false);
 
-			// GET USER'S CALL LOGS
-			var allCallLogs = await client.CallLogs.GetAsync(myUser.Email, from, to, CallLogType.All, null, 100, null, cancellationToken);
-			var missedCalllogs = await client.CallLogs.GetAsync(myUser.Email, from, to, CallLogType.Missed, null, 100, null, cancellationToken);
-			await log.WriteLineAsync($"All call Logs: {allCallLogs.Records.Length}. Missed call logs: {missedCalllogs.Records.Length}").ConfigureAwait(false);
+			if (accountCallHistory.Records.Any())
+			{
+				var firstCallElement = await client.CallHistory.GetCallElementAsync(accountCallHistory.Records[0].Id, cancellationToken: cancellationToken);
+				await log.WriteLineAsync($"The first call element was betwee {firstCallElement.CallerName} and {firstCallElement.CalleeName}").ConfigureAwait(false);
+			}
 		}
 	}
 }
