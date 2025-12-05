@@ -29,8 +29,6 @@ namespace ZoomNet
 	{
 		#region FIELDS
 
-		private const string ZOOM_V2_BASE_URI = "https://api.zoom.us/v2";
-
 		private static string _version;
 
 		private readonly bool _mustDisposeHttpClient;
@@ -196,7 +194,7 @@ namespace ZoomNet
 			_httpClient = httpClient;
 			_options = options ?? new();
 			_logger = logger ?? NullLogger.Instance;
-			_fluentClient = new FluentClient(new Uri(ZOOM_V2_BASE_URI), httpClient)
+			_fluentClient = new FluentClient(_options.ApiBaseUrl ?? throw new Exception("You must specify the API base URL"), httpClient)
 				.SetUserAgent($"ZoomNet/{Version} (+https://github.com/Jericho/ZoomNet)");
 
 			_fluentClient.Filters.Remove<DefaultErrorFilter>();
