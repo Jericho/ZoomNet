@@ -106,18 +106,21 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<> GetCallHistoryAsync(string callHistoryUuid, CancellationToken cancellationToken = default)
+		public Task<CallHistory> GetCallHistoryAsync(string callHistoryUuid, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"phone/call_history/{callHistoryUuid}")
 				.WithCancellationToken(cancellationToken)
-				.AsMessage();
+				.AsObject<CallHistory>();
 		}
 
 		/// <inheritdoc/>
-		public Task<> GetUserAICallSummaryDetail​Async(string userId, string aiCallSummaryId, CancellationToken cancellationToken = default)
+		public Task<AiCallSummaryDetail> GetUserAICallSummaryDetail​Async(string userId, string aiCallSummaryId, CancellationToken cancellationToken = default)
 		{
-
+			return _client
+				.GetAsync($"phone/user/{userId}/ai_call_summary/{aiCallSummaryId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<AiCallSummaryDetail>();
 		}
 
 		/// <inheritdoc/>
@@ -170,17 +173,23 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task SynchronizeUserCallHistoryAsync(string userId, SynchronizationType synchronizationType, int recordsPerPage, string pagingToken, CancellationToken cancellationToken = default)
+		public async Task<(CallElement[] CallElements, CallLog[] CallLogs)> SynchronizeUserCallHistoryAsync(string userId, SynchronizationType synchronizationType, int recordsPerPage, string pagingToken, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
-			return _client
-				.PostAsync($"phone/users/{userId}/call_history/sync")
+			var response = await _client
+				.GetAsync($"phone/users/{userId}/call_history/sync")
 				.WithArgument("synchronization_type", synchronizationType.ToEnumString())
-				.WithArgument("page_size", recordsPerPage)
-				.WithArgument("next_page_token", pagingToken)
+				.WithArgument("count", recordsPerPage) // Normally this parameter is called "page_size" but the sync endpoint uses "count"
+				.WithArgument("sync_token", pagingToken) // Normally this parameter is called "next_page_token" but the sync endpoint uses "sync_token"
 				.WithCancellationToken(cancellationToken)
-				.AsMessage();
+				.AsJson()
+				.ConfigureAwait(false);
+
+			var callElements = response.GetPropertyValue("call_elements", Array.Empty<CallElement>());
+			var callLogs = response.GetPropertyValue("call_logs", Array.Empty<CallLog>());
+
+			return (callElements, callLogs);
 		}
 	}
 }

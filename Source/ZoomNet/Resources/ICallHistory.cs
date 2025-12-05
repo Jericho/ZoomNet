@@ -104,12 +104,13 @@ namespace ZoomNet.Resources
 		Task<CallElement> Get​CallElementAsync(string callElementId, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Retrieves the call log associated with the specified call history identifier.
+		/// Asynchronously retrieves the call history record associated with the specified unique identifier.
 		/// </summary>
-		/// <param name="callHistoryUuid">The unique identifier of the call history for which to retrieve the call log. Cannot be null or empty.</param>
-		/// <param name="cancellationToken">A token that can be used to cancel the asynchronous operation.</param>
-		/// <returns>A task that represents the asynchronous operation to retrieve the call log.</returns>
-		Task<> GetCallHistoryAsync(string callHistoryUuid, CancellationToken cancellationToken = default);
+		/// <param name="callHistoryUuid">The unique identifier of the call history record to retrieve. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the call history record if found;
+		/// otherwise, null.</returns>
+		Task<CallHistory> GetCallHistoryAsync(string callHistoryUuid, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Asynchronously retrieves detailed information about a specific AI call summary for a given user.
@@ -118,7 +119,7 @@ namespace ZoomNet.Resources
 		/// <param name="aiCallSummaryId">The unique identifier of the AI call summary to retrieve details for. Cannot be null or empty.</param>
 		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
 		/// <returns>A task that represents the asynchronous operation.</returns>
-		Task<> GetUserAICallSummaryDetail​Async(string userId, string aiCallSummaryId, CancellationToken cancellationToken = default);
+		Task<AiCallSummaryDetail> GetUserAICallSummaryDetail​Async(string userId, string aiCallSummaryId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieves a paginated list of call history records for the specified user, filtered by date range, call
@@ -193,6 +194,6 @@ namespace ZoomNet.Resources
 		/// empty to start from the beginning.</param>
 		/// <param name="cancellationToken">A token to monitor for cancellation requests. The operation is canceled if this token is triggered.</param>
 		/// <returns>A task that represents the asynchronous synchronization operation.</returns>
-		Task SynchronizeUserCallHistoryAsync(string userId, SynchronizationType synchronizationType, int recordsPerPage, string pagingToken, CancellationToken cancellationToken = default);
+		Task<(CallElement[] CallElements, CallLog[] CallLogs)> SynchronizeUserCallHistoryAsync(string userId, SynchronizationType synchronizationType, int recordsPerPage, string pagingToken, CancellationToken cancellationToken = default);
 	}
 }
