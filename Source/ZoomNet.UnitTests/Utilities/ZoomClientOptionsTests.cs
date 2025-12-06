@@ -86,35 +86,5 @@ namespace ZoomNet.UnitTests.Utilities
 			// Assert
 			options.ApiBaseUrl.Host.ShouldBe("api-us.zoom.us");
 		}
-
-		[Fact]
-		public void Can_use_vanity_url()
-		{
-			// Arrange
-			var options = new ZoomClientOptions().WithCustomBaseUrl("https://my-vanity.zoom.us");
-
-			// Assert
-			options.ApiBaseUrl.Host.ShouldBe("my-vanity.zoom.us");
-		}
-
-		[Fact]
-		public void Throws_when_base_url_is_null()
-		{
-			// Arrange
-			Should.Throw<ArgumentNullException>(() =>
-			{
-				var options = new ZoomClientOptions().WithCustomBaseUrl(null);
-			});
-		}
-
-		[Fact]
-		public void Throws_when_base_url_is_blank()
-		{
-			// Arrange
-			Should.Throw<ArgumentNullException>(() =>
-			{
-				var options = new ZoomClientOptions().WithCustomBaseUrl(string.Empty);
-			});
-		}
 	}
 }

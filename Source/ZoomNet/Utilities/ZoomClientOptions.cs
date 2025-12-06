@@ -28,9 +28,9 @@ namespace ZoomNet.Utilities
 		public LogLevel LogLevelFailedCalls { get; set; } = LogLevel.Error;
 
 		/// <summary>
-		/// Gets the base URL of the Zoom API endpoint.
+		/// Gets or sets the base URL of the Zoom API endpoint.
 		/// </summary>
-		public Uri ApiBaseUrl { get; private set; } = new Uri(ZOOM_GLOBAL_BASE_URI);
+		public Uri ApiBaseUrl { get; set; } = new Uri(ZOOM_GLOBAL_BASE_URI);
 
 		/// <summary>
 		/// Configures the client to use Zoom's global base URL for API requests.
@@ -40,7 +40,8 @@ namespace ZoomNet.Utilities
 		/// <returns>A new <see cref="ZoomClientOptions"/> instance with the global base URL applied.</returns>
 		public ZoomClientOptions WithGlobalBaseUrl()
 		{
-			return this.WithCustomBaseUrl(ZOOM_GLOBAL_BASE_URI);
+			ApiBaseUrl = new Uri(ZOOM_GLOBAL_BASE_URI);
+			return this;
 		}
 
 		/// <summary>
@@ -51,7 +52,8 @@ namespace ZoomNet.Utilities
 		/// <returns>A new instance of <see cref="ZoomClientOptions"/> with the Australia base URL applied.</returns>
 		public ZoomClientOptions WithAustraliaBaseUrl()
 		{
-			return this.WithCustomBaseUrl(ZOOM_AUSTRALIA_BASE_URI);
+			ApiBaseUrl = new Uri(ZOOM_AUSTRALIA_BASE_URI);
+			return this;
 		}
 
 		/// <summary>
@@ -62,7 +64,8 @@ namespace ZoomNet.Utilities
 		/// <returns>A new <see cref="ZoomClientOptions"/> instance with the Canada API base URL applied.</returns>
 		public ZoomClientOptions WithCanadaBaseUrl()
 		{
-			return this.WithCustomBaseUrl(ZOOM_CANADA_BASE_URI);
+			ApiBaseUrl = new Uri(ZOOM_CANADA_BASE_URI);
+			return this;
 		}
 
 		/// <summary>
@@ -73,7 +76,8 @@ namespace ZoomNet.Utilities
 		/// <returns>A new <see cref="ZoomClientOptions"/> instance with the base URL set to the European Union endpoint.</returns>
 		public ZoomClientOptions WithEuropeanUnionBaseUrl()
 		{
-			return this.WithCustomBaseUrl(ZOOM_EUROPE_BASE_URI);
+			ApiBaseUrl = new Uri(ZOOM_EUROPE_BASE_URI);
+			return this;
 		}
 
 		/// <summary>
@@ -84,7 +88,8 @@ namespace ZoomNet.Utilities
 		/// <returns>A new <see cref="ZoomClientOptions"/> instance with the India base URL applied.</returns>
 		public ZoomClientOptions WithIndiaBaseUrl()
 		{
-			return this.WithCustomBaseUrl(ZOOM_INDIA_BASE_URI);
+			ApiBaseUrl = new Uri(ZOOM_INDIA_BASE_URI);
+			return this;
 		}
 
 		/// <summary>
@@ -96,7 +101,8 @@ namespace ZoomNet.Utilities
 		/// <returns>A new <see cref="ZoomClientOptions"/> instance with the Saudi Arabia base URL applied.</returns>
 		public ZoomClientOptions WithSaudiArabiaBaseUrl()
 		{
-			return this.WithCustomBaseUrl(ZOOM_SAUDI_ARABIA_BASE_URI);
+			ApiBaseUrl = new Uri(ZOOM_SAUDI_ARABIA_BASE_URI);
+			return this;
 		}
 
 		/// <summary>
@@ -107,7 +113,8 @@ namespace ZoomNet.Utilities
 		/// <returns>A new <see cref="ZoomClientOptions"/> instance with the Singapore API base URL applied.</returns>
 		public ZoomClientOptions WithSingaporeBaseUrl()
 		{
-			return this.WithCustomBaseUrl(ZOOM_SINGAPORE_BASE_URI);
+			ApiBaseUrl = new Uri(ZOOM_SINGAPORE_BASE_URI);
+			return this;
 		}
 
 		/// <summary>
@@ -119,19 +126,7 @@ namespace ZoomNet.Utilities
 		/// <returns>A new <see cref="ZoomClientOptions"/> instance with the United States base URL applied.</returns>
 		public ZoomClientOptions WithUnitedStatesBaseUrl()
 		{
-			return this.WithCustomBaseUrl(ZOOM_UNITED_STATES_URI);
-		}
-
-		/// <summary>
-		/// Sets a custom base URL for API requests and returns the updated options instance.
-		/// </summary>
-		/// <param name="baseUrl">The base URL to use for API requests. Cannot be null or empty. Must be a valid absolute URI.</param>
-		/// <returns>The current <see cref="ZoomClientOptions"/> instance with the updated base URL.</returns>
-		public ZoomClientOptions WithCustomBaseUrl(string baseUrl)
-		{
-			ArgumentNullException.ThrowIfEmpty(baseUrl);
-
-			this.ApiBaseUrl = new Uri(baseUrl);
+			ApiBaseUrl = new Uri(ZOOM_UNITED_STATES_URI);
 			return this;
 		}
 	}
