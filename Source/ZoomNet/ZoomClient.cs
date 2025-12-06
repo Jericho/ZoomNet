@@ -189,13 +189,15 @@ namespace ZoomNet
 		{
 			ArgumentNullException.ThrowIfNull(connectionInfo);
 			ArgumentNullException.ThrowIfNull(httpClient);
-			ArgumentNullException.ThrowIfNull(options.ApiBaseUrl, $"{nameof(options)}.{nameof(options.ApiBaseUrl)}", "You must specify the API base URL");
 
 			_mustDisposeHttpClient = disposeClient;
 			_httpClient = httpClient;
 			_options = options ?? new();
 			_logger = logger ?? NullLogger.Instance;
-			_fluentClient = new FluentClient(_options.ApiBaseUrl, httpClient)
+
+			var baseUrl = _options.ApiBaseUrl ?? throw new ArgumentNullException($"{nameof(options)}.{nameof(options.ApiBaseUrl)}", "You must specify the API base URL");
+
+			_fluentClient = new FluentClient(baseUrl, httpClient)
 				.SetUserAgent($"ZoomNet/{Version} (+https://github.com/Jericho/ZoomNet)");
 
 			_fluentClient.Filters.Remove<DefaultErrorFilter>();
