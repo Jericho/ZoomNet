@@ -1,12 +1,12 @@
 {
   "event": "phone.device_registration",
+  "event_ts": 1626230691572,
   "payload": {
-    "account_id": "TQTvjT52Tmi_wrhASNNOEw",
+    "account_id": "AAAAAABBBB",
     "object": {
       "device_id": "JOZmuJ30Spyrw-v9vUzIrA",
       "device_name": "New_DeskPhone",
       "mac_address": "012345678912"
-      }
-  },
-  "event_ts": 1625034680324
+    }
+  }
 }

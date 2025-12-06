@@ -119,7 +119,7 @@ namespace ZoomNet.IntegrationTests
 				// This is to ensure that we don't get overwhelmed by too many debug messages in the console.
 				LogLevelSuccessfulCalls = LogLevel.Trace,
 				LogLevelFailedCalls = LogLevel.Error,
-			};
+			}.WithCanadaBaseUrl();
 
 			// Get the connection info
 			var connectionInfo = GetConnectionInfo(_connectionType, _testType);

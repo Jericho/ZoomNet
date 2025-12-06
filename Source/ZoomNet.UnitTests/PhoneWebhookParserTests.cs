@@ -767,6 +767,116 @@ namespace ZoomNet.UnitTests
 			parsedEvent.TransferCallId.ShouldBe("6986878782238080584");
 		}
 
+		[Fact]
+		public void PhoneAiCallSummaryChanged()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneAiCallSummaryChangedEvent>(Resource.phone_ai_call_summary_changed_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneAiCallSummaryChanged);
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
+
+			VerifyAiCallSummary(parsedEvent.CallSummary);
+		}
+
+		[Fact]
+		public void PhoneConferenceStarted()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneConferenceStartedEvent>(Resource.phone_conference_started_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneConferenceStarted);
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
+
+			parsedEvent.ConferenceCall.ShouldNotBeNull();
+			parsedEvent.ConferenceCall.Id.ShouldBe("2074969d-621f-41d3-890c-8a44a03fa3e0");
+			parsedEvent.ConferenceCall.CallId.ShouldBe(CallId);
+			parsedEvent.ConferenceCall.StartedOn.ShouldBe(timestamp);
+			parsedEvent.ConferenceCall.EnableMultiplePartyConference.ShouldBeTrue();
+			parsedEvent.ConferenceCall.FailureReason.ShouldBeEmpty();
+
+			VerifyCallOwnerInfo(parsedEvent.ConferenceCall.Owner);
+		}
+
+		[Fact]
+		public void PhoneDeviceRegistration()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneDeviceRegistrationEvent>(Resource.phone_device_registration_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneDeviceRegistration);
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
+
+			parsedEvent.Device.ShouldNotBeNull();
+			parsedEvent.Device.Id.ShouldBe("JOZmuJ30Spyrw-v9vUzIrA");
+			parsedEvent.Device.Name.ShouldBe("New_DeskPhone");
+			parsedEvent.Device.MacAddress.ShouldBe("012345678912");
+		}
+
+		[Fact]
+		public void PhoneEmergencyAlert()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneEmergencyAlertEvent>(Resource.phone_emergency_alert_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneEmergencyAlert);
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
+
+			VerifyEmergencyCallAlert(parsedEvent.Alert);
+		}
+
+		[Fact]
+		public void PhoneGenericDeviceProvision()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneGenericDeviceProvisionEvent>(Resource.phone_generic_device_provision_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneGenericDeviceProvision);
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
+
+			VerifyPhoneDevice(parsedEvent.Device);
+		}
+
+		[Fact]
+		public void PhonePeeringNumberCallerIdNameUpdated()
+		{
+			var parsedEvent = ParseWebhookEvent<PhonePeeringNumberCallerIdNameUpdatedEvent>(Resource.phone_peering_number_cnam_updated_webhook);
+
+			VerifyPeeringNumberUpdatedEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhonePeeringNumberCallerIdNameUpdated);
+
+			VerifyWebhookPeeringNumberUpdate(parsedEvent.PeeringNumber);
+		}
+
+		[Fact]
+		public void PhonePeeringNumberEmergencyAddressUpdated()
+		{
+			var parsedEvent = ParseWebhookEvent<PhonePeeringNumberEmergencyAddressUpdatedEvent>(Resource.phone_peering_number_emergency_address_updated_webhook);
+
+			VerifyPeeringNumberUpdatedEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhonePeeringNumberEmergencyAddressUpdated);
+
+			VerifyWebhookPeeringNumberUpdate(parsedEvent.PeeringNumber, callerIdName: null);
+		}
+
+		[Fact]
+		public void NumberManagementPeeringNumberCallerIdNameUpdated()
+		{
+			var parsedEvent = ParseWebhookEvent<NumberManagementPeeringNumberCallerIdNameUpdatedEvent>(Resource.number_management_peering_number_cnam_updated_webhook);
+
+			VerifyPeeringNumberUpdatedEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.NumberManagementPeeringNumberCallerIdNameUpdated);
+
+			VerifyWebhookPeeringNumberUpdate(parsedEvent.PeeringNumber);
+		}
+
+		[Fact]
+		public void NumberManagementPeeringNumberEmergencyAddressUpdated()
+		{
+			var parsedEvent = ParseWebhookEvent<NumberManagementPeeringNumberEmergencyAddressUpdatedEvent>(Resource.number_management_peering_number_emergency_address_updated_webhook);
+
+			VerifyPeeringNumberUpdatedEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.NumberManagementPeeringNumberEmergencyAddressUpdated);
+
+			VerifyWebhookPeeringNumberUpdate(parsedEvent.PeeringNumber, callerIdName: null);
+		}
+
 		#endregion
 
 		#region private methods
@@ -1292,6 +1402,151 @@ namespace ZoomNet.UnitTests
 			info.ExtensionNumber.ShouldBe(1001020);
 			info.PhoneNumber.ShouldBe(PhoneNumberB);
 			info.Name.ShouldBe("Jane Smith");
+		}
+
+		/// <summary>
+		/// Verify <see cref="AiCallSummary"/> properties.
+		/// </summary>
+		private static void VerifyAiCallSummary(AiCallSummary summary)
+		{
+			summary.ShouldNotBeNull();
+			summary.Id.ShouldBe("iNsfqK6gQOCiILiKhrlLqQ");
+			summary.CallId.ShouldBe(CallId);
+			summary.UserId.ShouldBe("FvB3CRfOQUuhF1IOB176Tg");
+			summary.CreatedOn.ShouldBe(new DateTime(2023, 10, 8, 16, 12, 4));
+			summary.ModifiedOn.ShouldBe(new DateTime(2023, 10, 8, 16, 13, 5));
+			summary.IsModified.ShouldBeTrue();
+			summary.IsDeleted.ShouldBeFalse();
+
+			summary.CallLogIds.ShouldNotBeNull();
+			summary.CallLogIds.Length.ShouldBe(2);
+			summary.CallLogIds.ShouldBeSubsetOf(new[] { "6afdf3e3-87e3-47d0-834c-6ee3598e3b96", "6afdf3e3-87e3-47d0-834c-6ee3598e3b00" });
+		}
+
+		/// <summary>
+		/// Verify <see cref="EmergencyCallAlert"/> properties.
+		/// </summary>
+		private static void VerifyEmergencyCallAlert(EmergencyCallAlert alert)
+		{
+			alert.ShouldNotBeNull();
+			alert.CallId.ShouldBe(CallId);
+			alert.Router.ShouldBe(EmergencyCallSource.Zoom);
+			alert.DeliverTo.ShouldBe(EmergencyCallDestination.SafetyTeam);
+			alert.RingingStartedOn.ShouldBe(ringingStartedTimestamp);
+
+			alert.Callee.ShouldNotBeNull();
+			alert.Callee.PhoneNumber.ShouldBe("933");
+
+			alert.Caller.ShouldNotBeNull();
+			alert.Caller.UserId.ShouldBe("DnEopNmXQEGU2uvvzjgojw");
+			alert.Caller.ExtensionNumber.ShouldBe("1002");
+			alert.Caller.ExtensionType.ShouldBe(EmergencyCallExtensionType.User);
+			alert.Caller.DisplayName.ShouldBe("pbxta api");
+			alert.Caller.SiteId.ShouldBe(SiteId);
+			alert.Caller.SiteName.ShouldBe("Main Site");
+			alert.Caller.PhoneNumber.ShouldBe("+12192818492");
+			alert.Caller.Timezone.ShouldBe(TimeZones.America_Los_Angeles);
+
+			alert.Location.ShouldNotBeNull();
+			alert.Location.BssId.ShouldNotBeNull();
+			alert.Location.BssId.ShouldHaveSingleItem();
+			alert.Location.BssId[0].ShouldBe("fc:7f:49:12:45:01");
+			alert.Location.Gps.ShouldNotBeNull();
+			alert.Location.Gps.ShouldHaveSingleItem();
+			alert.Location.Gps[0].ShouldBe("31.29846,120.6645");
+			alert.Location.IpAddress.ShouldNotBeNull();
+			alert.Location.IpAddress.ShouldHaveSingleItem();
+			alert.Location.IpAddress[0].ShouldBe("192.0.2.1,192.0.2.2");
+
+			VerifyEmergencyAddress(alert.EmergencyAddress);
+		}
+
+		/// <summary>
+		/// Verify <see cref="EmergencyAddress"/> properties.
+		/// </summary>
+		private static void VerifyEmergencyAddress(EmergencyAddress address)
+		{
+			address.ShouldNotBeNull();
+			address.AddressLine1.ShouldBe("55 ALMADEN BLVD");
+			address.AddressLine2.ShouldBe("8 Floor");
+			address.City.ShouldBe("San Jose");
+			address.Country.ShouldBe("US");
+			address.StateCode.ShouldBe("CA");
+			address.Zip.ShouldBe("95113");
+		}
+
+		/// <summary>
+		/// Verify <see cref="PhoneDevice"/> properties.
+		/// </summary>
+		private static void VerifyPhoneDevice(PhoneDevice device)
+		{
+			device.ShouldNotBeNull();
+			device.Id.ShouldBe("JOZmuJ30Spyrw-v9vUzIrA");
+			device.DisplayName.ShouldBe("test_cap");
+			device.Type.ShouldBe("Other");
+			device.MacAddress.ShouldBe("012345678912");
+
+			device.Site.ShouldNotBeNull();
+			device.Site.Id.ShouldBe(SiteId);
+			device.Site.Name.ShouldBe("Main Site");
+
+			device.Provision.ShouldNotBeNull();
+			device.Provision.Type.ShouldBe(DeviceProvisioningType.Manual);
+			device.Provision.SipAccounts.ShouldNotBeNull();
+			device.Provision.SipAccounts.ShouldHaveSingleItem();
+
+			SipAccount sipAccount = device.Provision.SipAccounts[0];
+
+			sipAccount.AuthorizationId.ShouldBe("875586205903");
+			sipAccount.OutboundProxy.ShouldBe("example.com");
+			sipAccount.Password.ShouldBe("4dL09r0H");
+			sipAccount.SecondaryOutboundProxy.ShouldBe("example.com");
+			sipAccount.SipDomain.ShouldBe("example.com");
+			sipAccount.UserName.ShouldBe("83600015247557791369");
+
+			SharedLine sharedLine = sipAccount.SharedLine;
+
+			sharedLine.ShouldNotBeNull();
+			sharedLine.Alias.ShouldBe("Example line");
+			sharedLine.OutboundCallerId.ShouldBe(PhoneNumberB);
+			sharedLine.LineSubscription.ShouldNotBeNull();
+			sharedLine.LineSubscription.PhoneNumber.ShouldBe(PhoneNumberA);
+			sharedLine.LineSubscription.ExtensionNumber.ShouldBe(1040);
+			sharedLine.LineSubscription.DisplayName.ShouldBe("test_cap");
+		}
+
+		/// <summary>
+		/// Verify <see cref="PeeringNumberUpdatedEvent"/> properties.
+		/// </summary>
+		private static void VerifyPeeringNumberUpdatedEvent(PeeringNumberUpdatedEvent parsedEvent, ZoomNet.Models.Webhooks.EventType eventType)
+		{
+			parsedEvent.EventType.ShouldBe(eventType);
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
+		}
+
+		/// <summary>
+		/// Verify <see cref="WebhookPeeringNumberUpdate"/> properties.
+		/// </summary>
+		private static void VerifyWebhookPeeringNumberUpdate(WebhookPeeringNumberUpdate info, string callerIdName = "name")
+		{
+			info.ShouldNotBeNull();
+			info.CarrierCode.ShouldBe(3457);
+			info.PhoneNumbers.ShouldNotBeNull();
+			info.PhoneNumbers.ShouldHaveSingleItem();
+			info.PhoneNumbers[0].ShouldBe("+18008001000");
+
+			if (!string.IsNullOrEmpty(callerIdName))
+			{
+				info.CallerIdName.ShouldBe(callerIdName);
+				info.EmergencyAddress.ShouldBeNull();
+			}
+			else
+			{
+				VerifyEmergencyAddress(info.EmergencyAddress);
+
+				info.CallerIdName.ShouldBeNull();
+			}
 		}
 
 		#endregion

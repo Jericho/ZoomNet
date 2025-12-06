@@ -995,5 +995,71 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "phone.warm_transfer_initiated")]
 		PhoneWarmTransferInitiated,
+
+		/// <summary>
+		/// The system has generated or updated an AI call summary.
+		/// </summary>
+		[EnumMember(Value = "phone.ai_call_summary_changed")]
+		PhoneAiCallSummaryChanged,
+
+		/// <summary>
+		/// A conference call has started.
+		/// </summary>
+		[EnumMember(Value = "phone.conference_started")]
+		PhoneConferenceStarted,
+
+		/// <summary>
+		/// A new desk phone or device has been registered.
+		/// </summary>
+		[EnumMember(Value = "phone.device_registration")]
+		PhoneDeviceRegistration,
+
+		/// <summary>
+		/// Zoom phone user has dialed emergency number.
+		/// </summary>
+		[EnumMember(Value = "phone.emergency_alert")]
+		PhoneEmergencyAlert,
+
+		/// <summary>
+		/// An admin or end user has made a change to a device (e.g. added/removed DID/delegation/shared line group/user, changed line labels/caller id/site/SIP zone etc).
+		/// </summary>
+		[EnumMember(Value = "phone.generic_device_provision")]
+		PhoneGenericDeviceProvision,
+
+		/// <summary>
+		/// The caller id name (CNAM) has been updated for PSTN phone numbers.
+		/// </summary>
+		[EnumMember(Value = "phone.peering_number_cnam_updated")]
+		PhonePeeringNumberCallerIdNameUpdated,
+
+		/// <summary>
+		/// The emergency addresses associated with PSTN phone numbers have been updated.
+		/// </summary>
+		[EnumMember(Value = "phone.peering_number_emergency_address_updated")]
+		PhonePeeringNumberEmergencyAddressUpdated,
+
+		/// <summary>
+		/// Account settings have been updated.
+		/// </summary>
+		[EnumMember(Value = "phone.account_settings_updated")]
+		PhoneAccountSettingsUpdated,
+
+		/// <summary>
+		/// Group settings have been updated.
+		/// </summary>
+		[EnumMember(Value = "phone.group_settings_updated")]
+		PhoneGroupSettingsUpdated,
+
+		/// <summary>
+		/// The caller id name (CNAM) has been updated for PSTN phone numbers.
+		/// </summary>
+		[EnumMember(Value = "number_management.peering_number_cnam_updated")]
+		NumberManagementPeeringNumberCallerIdNameUpdated,
+
+		/// <summary>
+		/// The emergency addresses associated with PSTN phone numbers have been updated.
+		/// </summary>
+		[EnumMember(Value = "number_management.peering_number_emergency_address_updated")]
+		NumberManagementPeeringNumberEmergencyAddressUpdated,
 	}
 }

@@ -11,8 +11,14 @@ namespace ZoomNet.IntegrationTests.Tests
 		{
 			await log.WriteLineAsync("\n***** CONTACTS *****\n").ConfigureAwait(false);
 
-			var paginatedSearchedContacts = await client.Contacts.SearchAsync("zzz", true, 1, null, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync($"Found {paginatedSearchedContacts.TotalRecords} contacts").ConfigureAwait(false);
+			var keyword = "zzz";
+			var paginatedSearchedContacts = await client.Contacts.SearchAsync(keyword, true, 1, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Found {paginatedSearchedContacts.TotalRecords} contacts containing the keyword: {keyword}").ConfigureAwait(false);
+
+			/*
+			 * ===============================================================================
+			 * The `GetAsync` and `GetAllAsync` methods cannot be used by a S2S OAuth app.
+			 * ===============================================================================
 
 			var contact = await client.Contacts.GetAsync(myUser.Id, true, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"{contact.EmailAddress} is {contact.PresenceStatus}").ConfigureAwait(false);
@@ -22,6 +28,7 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			var paginatedExternalContacts = await client.Contacts.GetAllAsync(ContactType.External, 50, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {paginatedExternalContacts.TotalRecords} external contacts for user {myUser.Id}").ConfigureAwait(false);
+			*/
 		}
 	}
 }
