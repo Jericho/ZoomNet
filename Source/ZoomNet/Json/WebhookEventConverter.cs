@@ -777,6 +777,10 @@ namespace ZoomNet.Json
 					return payloadJsonProperty.ToObject<PhonePeeringNumberCallerIdNameUpdatedEvent>(options);
 				case Models.Webhooks.EventType.PhonePeeringNumberEmergencyAddressUpdated:
 					return payloadJsonProperty.ToObject<PhonePeeringNumberEmergencyAddressUpdatedEvent>(options);
+				case Models.Webhooks.EventType.PhoneAccountSettingsUpdated:
+					return payloadJsonProperty.ToObject<PhoneAccountSettingsUpdatedEvent>(options);
+				case Models.Webhooks.EventType.PhoneGroupSettingsUpdated:
+					return payloadJsonProperty.ToObject<PhoneGroupSettingsUpdatedEvent>(options);
 				case Models.Webhooks.EventType.NumberManagementPeeringNumberCallerIdNameUpdated:
 					return payloadJsonProperty.ToObject<NumberManagementPeeringNumberCallerIdNameUpdatedEvent>(options);
 				case Models.Webhooks.EventType.NumberManagementPeeringNumberEmergencyAddressUpdated:
