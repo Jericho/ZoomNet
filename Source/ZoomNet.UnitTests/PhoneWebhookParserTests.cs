@@ -1,5 +1,5 @@
-using System;
 using Shouldly;
+using System;
 using Xunit;
 using ZoomNet.Models;
 using ZoomNet.Models.PhoneAccountSettings;
