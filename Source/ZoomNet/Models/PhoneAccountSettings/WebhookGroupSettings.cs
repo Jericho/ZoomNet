@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>
-	/// Group settings as provided in <see cref="Webhooks.PhoneAccountSettingsUpdatedEvent"/>.
+	/// Group settings as provided in <see cref="Webhooks.PhoneGroupSettingsUpdatedEvent"/>.
 	/// </summary>
 	public class WebhookGroupSettings
 	{
