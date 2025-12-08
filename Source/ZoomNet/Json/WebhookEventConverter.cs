@@ -27,7 +27,6 @@ namespace ZoomNet.Json
 			var rootElement = doc.RootElement;
 
 			var timestamp = rootElement.GetPropertyValue<long>("event_ts").FromUnixTime(UnixTimePrecision.Milliseconds);
-			var payloadJsonProperty = rootElement.GetProperty("payload", true).Value;
 			var eventTypeName = rootElement.GetPropertyValue("event", string.Empty);
 			var eventType = Models.Webhooks.EventType.Unknown;
 
