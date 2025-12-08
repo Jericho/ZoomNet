@@ -94,8 +94,8 @@ namespace ZoomNet
 		[Obsolete("This constructor has been replaced with OAuthConnectionInfo.WithClientCredentials")]
 		public OAuthConnectionInfo(string clientId, string clientSecret)
 		{
-			ArgumentNullException.ThrowIfEmpty(clientId);
-			ArgumentNullException.ThrowIfEmpty(clientSecret);
+			ArgumentNullException.ThrowIfNullOrEmpty(clientId);
+			ArgumentNullException.ThrowIfNullOrEmpty(clientSecret);
 
 			ClientId = clientId;
 			ClientSecret = clientSecret;
@@ -128,9 +128,9 @@ namespace ZoomNet
 		[Obsolete("This constructor has been replaced with OAuthConnectionInfo.WithAuthorizationCode")]
 		public OAuthConnectionInfo(string clientId, string clientSecret, string authorizationCode, OnTokenRefreshedDelegate onTokenRefreshed, string redirectUri = null, string codeVerifier = null)
 		{
-			ArgumentNullException.ThrowIfEmpty(clientId);
-			ArgumentNullException.ThrowIfEmpty(clientSecret);
-			ArgumentNullException.ThrowIfEmpty(authorizationCode);
+			ArgumentNullException.ThrowIfNullOrEmpty(clientId);
+			ArgumentNullException.ThrowIfNullOrEmpty(clientSecret);
+			ArgumentNullException.ThrowIfNullOrEmpty(authorizationCode);
 
 			ClientId = clientId;
 			ClientSecret = clientSecret;
@@ -165,9 +165,9 @@ namespace ZoomNet
 		[Obsolete("This constructor has been replaced with OAuthConnectionInfo.WithRefreshToken")]
 		public OAuthConnectionInfo(string clientId, string clientSecret, string refreshToken, string accessToken, OnTokenRefreshedDelegate onTokenRefreshed)
 		{
-			ArgumentNullException.ThrowIfEmpty(clientId);
-			ArgumentNullException.ThrowIfEmpty(clientSecret);
-			ArgumentNullException.ThrowIfEmpty(refreshToken);
+			ArgumentNullException.ThrowIfNullOrEmpty(clientId);
+			ArgumentNullException.ThrowIfNullOrEmpty(clientSecret);
+			ArgumentNullException.ThrowIfNullOrEmpty(refreshToken);
 
 			ClientId = clientId;
 			ClientSecret = clientSecret;
@@ -191,9 +191,9 @@ namespace ZoomNet
 		[Obsolete("This constructor has been replaced with OAuthConnectionInfo.ForServerToServer")]
 		public OAuthConnectionInfo(string clientId, string clientSecret, string accountId, OnTokenRefreshedDelegate onTokenRefreshed)
 		{
-			ArgumentNullException.ThrowIfEmpty(clientId);
-			ArgumentNullException.ThrowIfEmpty(clientSecret);
-			ArgumentNullException.ThrowIfEmpty(accountId);
+			ArgumentNullException.ThrowIfNullOrEmpty(clientId);
+			ArgumentNullException.ThrowIfNullOrEmpty(clientSecret);
+			ArgumentNullException.ThrowIfNullOrEmpty(accountId);
 
 			ClientId = clientId;
 			ClientSecret = clientSecret;
@@ -265,8 +265,8 @@ namespace ZoomNet
 		/// <returns>The connection info.</returns>
 		public static OAuthConnectionInfo WithClientCredentials(string clientId, string clientSecret, string accessToken, OnTokenRefreshedDelegate onTokenRefreshed)
 		{
-			ArgumentNullException.ThrowIfEmpty(clientId);
-			ArgumentNullException.ThrowIfEmpty(clientSecret);
+			ArgumentNullException.ThrowIfNullOrEmpty(clientId);
+			ArgumentNullException.ThrowIfNullOrEmpty(clientSecret);
 
 			return new OAuthConnectionInfo
 			{
@@ -305,9 +305,9 @@ namespace ZoomNet
 		/// <returns>The connection info.</returns>
 		public static OAuthConnectionInfo WithAuthorizationCode(string clientId, string clientSecret, string authorizationCode, OnTokenRefreshedDelegate onTokenRefreshed, string redirectUri = null, string codeVerifier = null)
 		{
-			ArgumentNullException.ThrowIfEmpty(clientId);
-			ArgumentNullException.ThrowIfEmpty(clientSecret);
-			ArgumentNullException.ThrowIfEmpty(authorizationCode);
+			ArgumentNullException.ThrowIfNullOrEmpty(clientId);
+			ArgumentNullException.ThrowIfNullOrEmpty(clientSecret);
+			ArgumentNullException.ThrowIfNullOrEmpty(authorizationCode);
 
 			return new OAuthConnectionInfo
 			{
@@ -361,9 +361,9 @@ namespace ZoomNet
 		/// <returns>The connection info.</returns>
 		public static OAuthConnectionInfo WithRefreshToken(string clientId, string clientSecret, string refreshToken, string accessToken, OnTokenRefreshedDelegate onTokenRefreshed)
 		{
-			ArgumentNullException.ThrowIfEmpty(clientId);
-			ArgumentNullException.ThrowIfEmpty(clientSecret);
-			ArgumentNullException.ThrowIfEmpty(refreshToken);
+			ArgumentNullException.ThrowIfNullOrEmpty(clientId);
+			ArgumentNullException.ThrowIfNullOrEmpty(clientSecret);
+			ArgumentNullException.ThrowIfNullOrEmpty(refreshToken);
 
 			return new OAuthConnectionInfo
 			{
@@ -416,9 +416,9 @@ namespace ZoomNet
 		/// <returns>The connection info.</returns>
 		public static OAuthConnectionInfo ForServerToServer(string clientId, string clientSecret, string accountId, string accessToken, OnTokenRefreshedDelegate onTokenRefreshed = null)
 		{
-			ArgumentNullException.ThrowIfEmpty(clientId);
-			ArgumentNullException.ThrowIfEmpty(clientSecret);
-			ArgumentNullException.ThrowIfEmpty(accountId);
+			ArgumentNullException.ThrowIfNullOrEmpty(clientId);
+			ArgumentNullException.ThrowIfNullOrEmpty(clientSecret);
+			ArgumentNullException.ThrowIfNullOrEmpty(accountId);
 
 			return new OAuthConnectionInfo
 			{

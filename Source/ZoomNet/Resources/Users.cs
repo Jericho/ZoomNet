@@ -164,7 +164,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task AddAssistantsByIdAsync(string userId, IEnumerable<string> assistantIds, CancellationToken cancellationToken = default)
 		{
-			ArgumentNullException.ThrowIfEmpty(assistantIds, nameof(assistantIds), "You must provide at least one assistant Id.");
+			ArgumentNullException.ThrowIfNullOrEmpty(assistantIds, nameof(assistantIds), "You must provide at least one assistant Id.");
 
 			var data = new JsonObject
 			{
@@ -181,7 +181,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task AddAssistantsByEmailAsync(string userId, IEnumerable<string> assistantEmails, CancellationToken cancellationToken = default)
 		{
-			ArgumentNullException.ThrowIfEmpty(assistantEmails, nameof(assistantEmails), "You must provide at least one assistant email address.");
+			ArgumentNullException.ThrowIfNullOrEmpty(assistantEmails, nameof(assistantEmails), "You must provide at least one assistant email address.");
 
 			var data = new JsonObject
 			{
