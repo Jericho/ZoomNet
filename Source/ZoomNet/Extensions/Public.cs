@@ -14,7 +14,9 @@ using ZoomNet.Models.ChatbotMessage;
 using ZoomNet.Resources;
 using ZoomNet.Utilities;
 
+#pragma warning disable IDE0130 // Namespace does not match folder structure
 namespace ZoomNet
+#pragma warning restore IDE0130 // Namespace does not match folder structure
 {
 	/// <summary>
 	/// Public extension methods.

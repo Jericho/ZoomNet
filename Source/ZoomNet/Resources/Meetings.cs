@@ -362,7 +362,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task<BatchRegistrantInfo[]> PerformBatchRegistrationAsync(long meetingId, IEnumerable<BatchRegistrant> registrants, bool autoApprove = false, bool registrantsConfirmationEmail = false, CancellationToken cancellationToken = default)
 		{
-			ArgumentNullException.ThrowIfEmpty(registrants, nameof(registrants), "You must provide at least one registrant");
+			ArgumentNullException.ThrowIfNullOrEmpty(registrants, nameof(registrants), "You must provide at least one registrant");
 			if (registrants.Count() > 30) throw new ArgumentOutOfRangeException(nameof(registrants), "You can register up to 30 registrants at once");
 
 			var data = new JsonObject
@@ -623,7 +623,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task<InviteLink[]> CreateInviteLinksAsync(long meetingId, IEnumerable<string> names, long timeToLive = 7200, CancellationToken cancellationToken = default)
 		{
-			ArgumentNullException.ThrowIfEmpty(names, nameof(names), "You must provide at least one name");
+			ArgumentNullException.ThrowIfNullOrEmpty(names, nameof(names), "You must provide at least one name");
 
 			var data = new JsonObject
 			{
@@ -750,7 +750,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task InviteParticipantsByEmailAsync(long meetingId, IEnumerable<string> emailAddresses, CancellationToken cancellationToken = default)
 		{
-			ArgumentNullException.ThrowIfEmpty(emailAddresses, nameof(emailAddresses), "You must provide at least one email address");
+			ArgumentNullException.ThrowIfNullOrEmpty(emailAddresses, nameof(emailAddresses), "You must provide at least one email address");
 
 			var data = new JsonObject
 			{
@@ -768,7 +768,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task InviteParticipantsByIdAsync(long meetingId, IEnumerable<string> userIds, CancellationToken cancellationToken = default)
 		{
-			ArgumentNullException.ThrowIfEmpty(userIds, nameof(userIds), "You must provide at least one user ID");
+			ArgumentNullException.ThrowIfNullOrEmpty(userIds, nameof(userIds), "You must provide at least one user ID");
 
 			var data = new JsonObject
 			{

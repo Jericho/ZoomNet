@@ -1,7 +1,8 @@
-using System;
 using Shouldly;
+using System;
 using Xunit;
 using ZoomNet.Models;
+using ZoomNet.Models.PhoneAccountSettings;
 using ZoomNet.Models.Webhooks;
 using ZoomNet.UnitTests.Properties;
 
@@ -858,6 +859,129 @@ namespace ZoomNet.UnitTests
 		}
 
 		[Fact]
+		public void PhoneAccountSettingsUpdated()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneAccountSettingsUpdatedEvent>(Resource.phone_account_settings_updated_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneAccountSettingsUpdated);
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
+
+			parsedEvent.OldSettings.ShouldNotBeNull();
+			parsedEvent.OldSettings.Id.ShouldBe("eUblMKLnTMKX0pVvNAlA0Q");
+			parsedEvent.OldSettings.Settings.ShouldNotBeNull();
+
+			parsedEvent.NewSettings.ShouldNotBeNull();
+			parsedEvent.NewSettings.Id.ShouldBe("eUblMKLnTMKX0pVvNAlA0Q");
+
+			var accountSettings = parsedEvent.NewSettings.Settings;
+			accountSettings.ShouldNotBeNull();
+
+			VerifyAdHocCallRecordingSettings(accountSettings.AdHocCallRecording);
+			VerifyAdvancedEncryptionSettings(accountSettings.AdvancedEncryption);
+			VerifyAllowedCallLocationsSettings(accountSettings.AllowedCallLocations);
+			VerifySettingGroupBase(accountSettings.AudioIntercom);
+			VerifySettingGroupBase(accountSettings.AutoCallFromThirdPartyApps);
+			VerifyAutoCallRecordingSettings(accountSettings.AutoCallRecording);
+			VerifyAutoDeleteDataSetings(accountSettings.AutoDeleteDataAfterRetentionDuration);
+			VerifySettingGroupBase(accountSettings.BlockCallsAsThreat);
+			VerifySettingGroupBase(accountSettings.BlockCallsWithoutCallerId);
+			VerifyBlockExternalCallsSettings(accountSettings.BlockExternalCalls);
+			VerifySettingGroupBase(accountSettings.BlockInboundCallsAndMessaging);
+			VerifyCallForwardingSettings(accountSettings.CallHandlingForwardingToOtherUsers);
+			VerifyCallLiveTranscriptionSettings(accountSettings.CallLiveTranscription);
+			VerifyCallOverflowSettings(accountSettings.CallOverflow);
+			VerifyCallParkSettings(accountSettings.CallPark);
+			VerifyCallQueueOptOutReasonSettings(accountSettings.CallQueueOptOutReason);
+			VerifyCallTransferringSettings(accountSettings.CallTransferring);
+			VerifySettingGroupBase(accountSettings.CheckVoicemailsOverPhone);
+			VerifySettingGroupBase(accountSettings.Delegation);
+			VerifyDisplayCallFeedbackSurveySettings(accountSettings.DisplayCallFeedbackSurvey);
+			VerifySettingGroupBase(accountSettings.EndToEndEncryption);
+			VerifySettingGroupBase(accountSettings.ElevateToMeeting);
+			VerifySettingGroupBase(accountSettings.ExternalCallingOnZoomRoomCommonArea);
+			VerifySettingGroupBase(accountSettings.HandOffToRoom);
+			VerifySettingGroupBase(accountSettings.InternationalCalling);
+			VerifySettingGroupBase(accountSettings.LocalSurvivabilityMode);
+			VerifySettingGroupBase(accountSettings.MobileSwitchToCarrier);
+			VerifySettingGroupBase(accountSettings.OutboundCalling);
+			VerifyOutboundSmsSettings(accountSettings.OutboundSms);
+			VerifyOverrideDefaultPortSettings(accountSettings.OverrideDefaultPort);
+			VerifySettingGroupBase(accountSettings.PeerToPeerMedia);
+			VerifyPersonalAudioLibrarySettings(accountSettings.PersonalAudioLibrary);
+			VerifyRestrictedCallHoursSettings(accountSettings.RestrictedCallHours);
+			VerifySelectOutboundCallerIdSettings(accountSettings.SelectOutboundCallerId);
+			VerifySettingGroupBase(accountSettings.SharedVoicemailNotificationByEmail);
+			VerifySmsSettings(accountSettings.Sms);
+			VerifySmsEtiquetteToolSettings(accountSettings.SmsEtiquetteTool);
+			VerifyVoicemailSettings(accountSettings.Voicemail);
+			VerifyVoicemailNotificationByEmailSettings(accountSettings.VoicemailNotificationByEmail);
+			VerifySettingGroupBase(accountSettings.VoicemailTranscription);
+			VerifyZoomPhoneOnDesktopSettings(accountSettings.ZoomPhoneOnDesktop);
+			VerifyZoomPhoneOnMobileSettings(accountSettings.ZoomPhoneOnMobile);
+			VerifyZoomPhoneOnPwaSettings(accountSettings.ZoomPhoneOnPwa);
+		}
+
+		[Fact]
+		public void PhoneGroupSettingsUpdated()
+		{
+			var parsedEvent = ParseWebhookEvent<PhoneGroupSettingsUpdatedEvent>(Resource.phone_group_settings_updated_webhook);
+
+			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneGroupSettingsUpdated);
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
+
+			parsedEvent.OldSettings.ShouldNotBeNull();
+			parsedEvent.OldSettings.GroupId.ShouldBe("IfRqsMZSSzGBKm2AFJ7r3Q");
+			parsedEvent.OldSettings.Settings.ShouldNotBeNull();
+
+			parsedEvent.NewSettings.ShouldNotBeNull();
+			parsedEvent.NewSettings.GroupId.ShouldBe("IfRqsMZSSzGBKm2AFJ7r3Q");
+
+			var groupSettings = parsedEvent.NewSettings.Settings;
+			groupSettings.ShouldNotBeNull();
+
+			VerifyAdHocCallRecordingSettings(groupSettings.AdHocCallRecording, AdministratorLevel.Site);
+			VerifyAdvancedEncryptionSettings(groupSettings.AdvancedEncryption, AdministratorLevel.UserGroup);
+			VerifyAllowEmergencyCallsSettings(groupSettings.AllowEmergencyCalls);
+			VerifyAllowedCallLocationsSettings(groupSettings.AllowedCallLocations, AdministratorLevel.UserGroup);
+			VerifySettingGroupBase(groupSettings.AudioIntercom, AdministratorLevel.UserGroup);
+			VerifyAutoCallRecordingSettings(groupSettings.AutoCallRecording, AdministratorLevel.UserGroup);
+			VerifySettingGroupBase(groupSettings.BlockCallsWithoutCallerId, AdministratorLevel.UserGroup);
+			VerifyBlockExternalCallsSettings(groupSettings.BlockExternalCalls, AdministratorLevel.UserGroup);
+			VerifySettingGroupBase(groupSettings.BlockInboundCallsAndMessaging, AdministratorLevel.UserGroup);
+			VerifyCallForwardingSettings(groupSettings.CallHandlingForwardingToOtherUsers, AdministratorLevel.UserGroup);
+			VerifyCallLiveTranscriptionSettings(groupSettings.CallLiveTranscription, AdministratorLevel.UserGroup);
+			VerifyCallOverflowSettings(groupSettings.CallOverflow, AdministratorLevel.UserGroup);
+			VerifyCallParkSettings(groupSettings.CallPark, AdministratorLevel.UserGroup);
+			VerifyCallTransferringSettings(groupSettings.CallTransferring, AdministratorLevel.UserGroup);
+			VerifySettingGroupBase(groupSettings.CheckVoicemailsOverPhone, AdministratorLevel.UserGroup);
+			VerifySettingGroupBase(groupSettings.Delegation, AdministratorLevel.UserGroup);
+			VerifyDisplayCallFeedbackSurveySettings(groupSettings.DisplayCallFeedbackSurvey, AdministratorLevel.UserGroup);
+			VerifySettingGroupBase(groupSettings.EndToEndEncryption, AdministratorLevel.UserGroup);
+			VerifySettingGroupBase(groupSettings.ElevateToMeeting, AdministratorLevel.UserGroup);
+			VerifySettingGroupBase(groupSettings.HandOffToRoom, AdministratorLevel.UserGroup);
+			VerifySettingGroupBase(groupSettings.InternationalCalling, AdministratorLevel.UserGroup);
+			VerifySettingGroupBase(groupSettings.LocalSurvivabilityMode, AdministratorLevel.UserGroup);
+			VerifySettingGroupBase(groupSettings.MobileSwitchToCarrier, AdministratorLevel.UserGroup);
+			VerifySettingGroupBase(groupSettings.OutboundCalling, AdministratorLevel.UserGroup);
+			VerifyOutboundSmsSettings(groupSettings.OutboundSms, AdministratorLevel.UserGroup);
+			VerifySettingGroupBase(groupSettings.PeerToPeerMedia, AdministratorLevel.UserGroup);
+			VerifyPersonalAudioLibrarySettings(groupSettings.PersonalAudioLibrary, AdministratorLevel.UserGroup);
+			VerifyRestrictedCallHoursSettings(groupSettings.RestrictedCallHours, AdministratorLevel.UserGroup);
+			VerifySelectOutboundCallerIdSettings(groupSettings.SelectOutboundCallerId, AdministratorLevel.UserGroup);
+			VerifySettingGroupBase(groupSettings.SharedVoicemailNotificationByEmail, AdministratorLevel.UserGroup);
+			VerifySmsSettings(groupSettings.Sms, AdministratorLevel.UserGroup);
+			VerifySmsEtiquetteToolSettings(groupSettings.SmsEtiquetteTool, AdministratorLevel.UserGroup);
+			VerifyVoicemailSettings(groupSettings.Voicemail, AdministratorLevel.UserGroup);
+			VerifyVoicemailNotificationByEmailSettings(groupSettings.VoicemailNotificationByEmail, AdministratorLevel.UserGroup);
+			VerifySettingGroupBase(groupSettings.VoicemailTranscription, AdministratorLevel.UserGroup);
+			VerifyZoomPhoneOnDesktopSettings(groupSettings.ZoomPhoneOnDesktop, AdministratorLevel.Site);
+			VerifyZoomPhoneOnMobileSettings(groupSettings.ZoomPhoneOnMobile, AdministratorLevel.UserGroup);
+			VerifyZoomPhoneOnPwaSettings(groupSettings.ZoomPhoneOnPwa, AdministratorLevel.UserGroup);
+		}
+
+		[Fact]
 		public void NumberManagementPeeringNumberCallerIdNameUpdated()
 		{
 			var parsedEvent = ParseWebhookEvent<NumberManagementPeeringNumberCallerIdNameUpdatedEvent>(Resource.number_management_peering_number_cnam_updated_webhook);
@@ -1547,6 +1671,440 @@ namespace ZoomNet.UnitTests
 
 				info.CallerIdName.ShouldBeNull();
 			}
+		}
+
+		/// <summary>
+		/// Verify <see cref="SettingsGroupBase"/> properties.
+		/// </summary>
+		private static void VerifySettingGroupBase(SettingsGroupBase settings, AdministratorLevel level = AdministratorLevel.Account)
+		{
+			settings.ShouldNotBeNull();
+			settings.Enabled.ShouldBeTrue();
+			settings.LockedBy.ShouldBe(level);
+
+			if (level == AdministratorLevel.Account)
+			{
+				settings.Locked.ShouldBe(false);
+				settings.Modified.ShouldBeNull();
+			}
+			else
+			{
+				settings.Locked.ShouldBe(true);
+				settings.Modified.ShouldBe(true);
+			}
+		}
+
+		/// <summary>
+		/// Verify <see cref="AdHocCallRecordingSettings"/> properties.
+		/// </summary>
+		private static void VerifyAdHocCallRecordingSettings(AdHocCallRecordingSettings settings, AdministratorLevel level = AdministratorLevel.Account)
+		{
+			VerifySettingGroupBase(settings, level);
+
+			settings.AllowDelete.ShouldBe(true);
+			settings.AllowDownload.ShouldBe(true);
+			settings.RecordingExplicitConsent.ShouldBe(true);
+			settings.RecordingStartPrompt.ShouldBe(true);
+			settings.RecordingTranscription.ShouldBe(true);
+
+			VerifyPlayRecordingBeepTone(settings.PlayRecordingBeepTone);
+		}
+
+		/// <summary>
+		/// Verify <see cref="PlayRecordingBeepTone"/> properties.
+		/// </summary>
+		private static void VerifyPlayRecordingBeepTone(PlayRecordingBeepTone tone)
+		{
+			tone.ShouldNotBeNull();
+			tone.Enabled.ShouldBeTrue();
+			tone.PlayBeepMember.ShouldBe(PlayBeepMember.AllMembers);
+			tone.PlayBeepVolume.ShouldBe(60);
+			tone.PlayBeepTimeInterval.ShouldBe(15);
+		}
+
+		/// <summary>
+		/// Verify <see cref="AdvancedEncryptionSettings"/> properties.
+		/// </summary>
+		private static void VerifyAdvancedEncryptionSettings(AdvancedEncryptionSettings settings, AdministratorLevel level = AdministratorLevel.Account)
+		{
+			VerifySettingGroupBase(settings, level);
+
+			settings.DisableIncomingUnencryptedVoicemail.ShouldBe(true);
+		}
+
+		/// <summary>
+		/// Verify <see cref="AllowedCallLocationsSettings"/> properties.
+		/// </summary>
+		private static void VerifyAllowedCallLocationsSettings(AllowedCallLocationsSettings settings, AdministratorLevel level = AdministratorLevel.Account)
+		{
+			VerifySettingGroupBase(settings, level);
+
+			settings.AllowInternalCalls.ShouldBe(true);
+			settings.LocationsApplied.ShouldBe(true);
+		}
+
+		/// <summary>
+		/// Verify <see cref="AutoCallRecordingSettings"/> properties.
+		/// </summary>
+		private static void VerifyAutoCallRecordingSettings(AutoCallRecordingSettings settings, AdministratorLevel level = AdministratorLevel.Account)
+		{
+			VerifySettingGroupBase(settings, level);
+
+			VerifyCallRecordingSettings(settings);
+
+			settings.AllowStopResumeRecording.ShouldBe(true);
+			settings.DisconnectOnRecordingFailure.ShouldBe(true);
+			settings.RecordingCalls.ShouldBe(AutoRecordedCallType.Both);
+			settings.RecordingStartPromptAudioId.ShouldBe("yCT14TwySDGVUypVlKNEyA");
+		}
+
+		/// <summary>
+		/// Verify <see cref="CallRecordingSettings"/> properties.
+		/// </summary>
+		private static void VerifyCallRecordingSettings(CallRecordingSettings settings)
+		{
+			settings.RecordingExplicitConsent.ShouldBe(true);
+			settings.RecordingStartPrompt.ShouldBe(true);
+			settings.RecordingTranscription.ShouldBe(true);
+
+			VerifyPlayRecordingBeepTone(settings.PlayRecordingBeepTone);
+			VerifyRecordingAudioNotification(settings.InboundAudioNotification);
+			VerifyRecordingAudioNotification(settings.OutboundAudioNotification);
+		}
+
+		/// <summary>
+		/// Verify <see cref="RecordingAudioNotification"/> properties.
+		/// </summary>
+		private static void VerifyRecordingAudioNotification(RecordingAudioNotification notification)
+		{
+			notification.ShouldNotBeNull();
+			notification.RecordingExplicitConsent.ShouldBeTrue();
+			notification.RecordingStartPrompt.ShouldBeTrue();
+			notification.RecordingStartPromptAudioId.ShouldBe("ySMexBgBQsioV8KKCUybTA");
+		}
+
+		/// <summary>
+		/// Verify <see cref="AutoDeleteDataSettings"/> properties.
+		/// </summary>
+		private static void VerifyAutoDeleteDataSetings(AutoDeleteDataSettings settings)
+		{
+			VerifySettingGroupBase(settings);
+
+			settings.DeleteType.ShouldBe(DeleteDataPolicy.Soft);
+			settings.Items.ShouldNotBeNull();
+			settings.Items.ShouldHaveSingleItem();
+			settings.Items[0].Type.ShouldBe(DeleteDataType.CallLog);
+			settings.Items[0].RetentionDuration.ShouldBe(-1);
+			settings.Items[0].DurationUnit.ShouldBe(RetentionDurationUnit.Year);
+		}
+
+		/// <summary>
+		/// Verify <see cref="BlockExternalCallsSettings"/> properties.
+		/// </summary>
+		private static void VerifyBlockExternalCallsSettings(BlockExternalCallsSettings settings, AdministratorLevel level = AdministratorLevel.Account)
+		{
+			VerifySettingGroupBase(settings, level);
+
+			settings.BlockBusinessHours.ShouldBe(true);
+			settings.BlockClosedHours.ShouldBe(true);
+			settings.BlockHolidayHours.ShouldBe(true);
+			settings.BlockCallAction.ShouldBe(BlockCallAction.ForwardToVoicemail);
+		}
+
+		/// <summary>
+		/// Verify <see cref="CallForwardingSettings"/> properties.
+		/// </summary>
+		private static void VerifyCallForwardingSettings(CallForwardingSettings settings, AdministratorLevel level = AdministratorLevel.Account)
+		{
+			VerifySettingGroupBase(settings, level);
+
+			settings.CallForwardingType.ShouldBe(CallRestrictionType.Low);
+		}
+
+		/// <summary>
+		/// Verify <see cref="CallLiveTranscriptionSettings"/> properties.
+		/// </summary>
+		private static void VerifyCallLiveTranscriptionSettings(CallLiveTranscriptionSettings settings, AdministratorLevel level = AdministratorLevel.Account)
+		{
+			VerifySettingGroupBase(settings, level);
+
+			VerifyTranscriptionStartPrompt(settings.TranscriptionStartPrompt);
+		}
+
+		/// <summary>
+		/// Verify <see cref="TranscriptionStartPrompt"/> properties.
+		/// </summary>
+		private static void VerifyTranscriptionStartPrompt(TranscriptionStartPrompt prompt)
+		{
+			prompt.ShouldNotBeNull();
+			prompt.Enabled.ShouldBeTrue();
+			prompt.AudioId.ShouldBe("yCT14TwySDGVUypVlKNEyA");
+			prompt.AudioName.ShouldBe("example.mp3");
+		}
+
+		/// <summary>
+		/// Verify <see cref="CallOverflowSettings"/> properties.
+		/// </summary>
+		private static void VerifyCallOverflowSettings(CallOverflowSettings settings, AdministratorLevel level = AdministratorLevel.Account)
+		{
+			VerifySettingGroupBase(settings, level);
+
+			settings.CallOverflowType.ShouldBe(CallRestrictionType.Low);
+		}
+
+		/// <summary>
+		/// Verify <see cref="CallParkSettings"/> properties.
+		/// </summary>
+		private static void VerifyCallParkSettings(CallParkSettings settings, AdministratorLevel level = AdministratorLevel.Account)
+		{
+			VerifySettingGroupBase(settings, level);
+
+			settings.ExpirationPeriod.ShouldBe(3);
+			settings.CallNotPickedUpAction.ShouldBe(CallNotPickedUpAction.ForwardToAnotherExtension);
+			settings.Sequence.ShouldBe(ParkedCallsAssignmentSequence.Random);
+
+			VerifyForwardingExtension(settings.ForwardTo);
+		}
+
+		/// <summary>
+		/// Verify <see cref="ForwardingExtension"/> properties.
+		/// </summary>
+		private static void VerifyForwardingExtension(ForwardingExtension extension)
+		{
+			extension.ShouldNotBeNull();
+			extension.DisplayName.ShouldBe("ZOOM_API Test");
+			extension.ExtensionId.ShouldBe("TO586CYlQFC_WCUvPRXytA");
+			extension.ExtensionNumber.ShouldBe(100014);
+			extension.ExtensionType.ShouldBe(ForwardingExtensionType.User);
+			extension.Id.ShouldBe("oG_nYRFuTJiY1tu0Fur_4Q");
+		}
+
+		/// <summary>
+		/// Verify <see cref="CallQueueOptOutReasonSettings"/> properties.
+		/// </summary>
+		private static void VerifyCallQueueOptOutReasonSettings(CallQueueOptOutReasonSettings settings)
+		{
+			VerifySettingGroupBase(settings);
+
+			settings.OptOutReasons.ShouldNotBeNull();
+			settings.OptOutReasons.ShouldHaveSingleItem();
+			settings.OptOutReasons[0].ShouldNotBeNull();
+			settings.OptOutReasons[0].Enabled.ShouldBeTrue();
+			settings.OptOutReasons[0].Code.ShouldBe("Break");
+			settings.OptOutReasons[0].IsSystem.ShouldBeTrue();
+		}
+
+		/// <summary>
+		/// Verify <see cref="CallTransferringSettings"/> properties.
+		/// </summary>
+		private static void VerifyCallTransferringSettings(CallTransferringSettings settings, AdministratorLevel level = AdministratorLevel.Account)
+		{
+			VerifySettingGroupBase(settings, level);
+
+			settings.CallTransferringType.ShouldBe(CallRestrictionType.Low);
+		}
+
+		/// <summary>
+		/// Verify <see cref="DisplayCallFeedbackSurveySettings"/> properties.
+		/// </summary>
+		private static void VerifyDisplayCallFeedbackSurveySettings(DisplayCallFeedbackSurveySettings settings, AdministratorLevel level = AdministratorLevel.Account)
+		{
+			VerifySettingGroupBase(settings, level);
+
+			settings.FeedbackType.ShouldBe(CallFeedbackType.EveryCall);
+
+			settings.FeedbackDuration.ShouldNotBeNull();
+			settings.FeedbackDuration.Enabled.ShouldBeTrue();
+			settings.FeedbackDuration.Min.ShouldBe(0);
+			settings.FeedbackDuration.Max.ShouldBe(60);
+
+			settings.FeedbackMeanOpinionScore.ShouldNotBeNull();
+			settings.FeedbackMeanOpinionScore.Enabled.ShouldBeTrue();
+			settings.FeedbackMeanOpinionScore.Min.ShouldBe(1.1);
+			settings.FeedbackMeanOpinionScore.Max.ShouldBe(3.0);
+		}
+
+		/// <summary>
+		/// Verify <see cref="OutboundSmsSettings"/> properties.
+		/// </summary>
+		private static void VerifyOutboundSmsSettings(OutboundSmsSettings settings, AdministratorLevel level = AdministratorLevel.Account)
+		{
+			VerifySettingGroupBase(settings, level);
+
+			settings.AllowCopy.ShouldBe(true);
+			settings.AllowPaste.ShouldBe(true);
+		}
+
+		/// <summary>
+		/// Verify <see cref="OverrideDefaultPortSettings"/> properties.
+		/// </summary>
+		private static void VerifyOverrideDefaultPortSettings(OverrideDefaultPortSettings settings)
+		{
+			VerifySettingGroupBase(settings);
+
+			settings.MinPort.ShouldBe(9000);
+			settings.MaxPort.ShouldBe(9998);
+		}
+
+		/// <summary>
+		/// Verify <see cref="PersonalAudioLibrarySettings"/> properties.
+		/// </summary>
+		private static void VerifyPersonalAudioLibrarySettings(PersonalAudioLibrarySettings settings, AdministratorLevel level = AdministratorLevel.Account)
+		{
+			VerifySettingGroupBase(settings, level);
+
+			settings.AllowMusicOnHoldCustomization.ShouldBe(true);
+			settings.AllowVoicemailAndMessageGreetingCustomization.ShouldBe(true);
+		}
+
+		/// <summary>
+		/// Verify <see cref="RestrictedCallHoursSettings"/> properties.
+		/// </summary>
+		private static void VerifyRestrictedCallHoursSettings(RestrictedCallHoursSettings settings, AdministratorLevel level = AdministratorLevel.Account)
+		{
+			VerifySettingGroupBase(settings, level);
+
+			settings.RestrictedHolidayHoursApplied.ShouldBe(true);
+			settings.RestrictedHolidayHoursApplied.ShouldBe(true);
+			settings.AllowInternalCalls.ShouldBe(true);
+
+			settings.Timezone.ShouldNotBeNull();
+			settings.Timezone.Id.ShouldBe(TimeZones.America_Los_Angeles);
+			settings.Timezone.Name.ShouldBe("(GMT-8:00) Los Angeles");
+		}
+
+		/// <summary>
+		/// Verify <see cref="SelectOutboundCallerIdSettings"/> properties.
+		/// </summary>
+		private static void VerifySelectOutboundCallerIdSettings(SelectOutboundCallerIdSettings settings, AdministratorLevel level = AdministratorLevel.Account)
+		{
+			VerifySettingGroupBase(settings, level);
+
+			settings.AllowHideOutboundCallerId.ShouldBe(true);
+		}
+
+		/// <summary>
+		/// Verify <see cref="SmsSettings"/> properties.
+		/// </summary>
+		private static void VerifySmsSettings(SmsSettings settings, AdministratorLevel level = AdministratorLevel.Account)
+		{
+			VerifySettingGroupBase(settings, level);
+
+			settings.AllowCopy.ShouldBe(true);
+			settings.AllowPaste.ShouldBe(true);
+			settings.InternationalSms.ShouldBe(true);
+		}
+
+		/// <summary>
+		/// Verify <see cref="SmsEtiquetteToolSettings"/> properties.
+		/// </summary>
+		private static void VerifySmsEtiquetteToolSettings(SmsEtiquetteToolSettings settings, AdministratorLevel level = AdministratorLevel.Account)
+		{
+			VerifySettingGroupBase(settings, level);
+
+			settings.SmsEtiquettePolicy.ShouldNotBeNull();
+			settings.SmsEtiquettePolicy.ShouldHaveSingleItem();
+
+			VerifySmsEtiquettePolicy(settings.SmsEtiquettePolicy[0]);
+		}
+
+		/// <summary>
+		/// Verify <see cref="SmsEtiquettePolicy"/> properties.
+		/// </summary>
+		private static void VerifySmsEtiquettePolicy(SmsEtiquettePolicy policy)
+		{
+			policy.ShouldNotBeNull();
+			policy.Id.ShouldBe("PdPtFFDbQhKr05WepCHhWQ");
+			policy.Name.ShouldBe("invalid symbol");
+			policy.Description.ShouldBe("invalid symbol description");
+			policy.Rule.ShouldBe(SmsEtiquettePolicyRuleKind.Keywords);
+			policy.Content.ShouldBe("test");
+			policy.Action.ShouldBe(SmsEtiquettePolicyAction.BlockMessage);
+			policy.Active.ShouldBeTrue();
+		}
+
+		/// <summary>
+		/// Verify <see cref="VoicemailSettings"/> properties.
+		/// </summary>
+		private static void VerifyVoicemailSettings(VoicemailSettings settings, AdministratorLevel level = AdministratorLevel.Account)
+		{
+			VerifySettingGroupBase(settings, level);
+
+			settings.AllowDelete.ShouldBe(true);
+			settings.AllowDownload.ShouldBe(true);
+			settings.AllowShare.ShouldBe(true);
+			settings.AllowVideomail.ShouldBe(true);
+			settings.AllowVirtualBackground.ShouldBe(true);
+		}
+
+		/// <summary>
+		/// Verify <see cref="VoicemailNotificationByEmailSettings"/> properties.
+		/// </summary>
+		private static void VerifyVoicemailNotificationByEmailSettings(VoicemailNotificationByEmailSettings settings, AdministratorLevel level = AdministratorLevel.Account)
+		{
+			VerifySettingGroupBase(settings, level);
+
+			settings.IncludeVoicemailFile.ShouldBe(true);
+			settings.IncludeVoicemailTranscription.ShouldBe(true);
+			settings.ForwardVoicemailToEmail.ShouldBe(true);
+		}
+
+		/// <summary>
+		/// Verify <see cref="ZoomPhoneOnDesktopSettings"/> properties.
+		/// </summary>
+		private static void VerifyZoomPhoneOnDesktopSettings(ZoomPhoneOnDesktopSettings settings, AdministratorLevel level = AdministratorLevel.Account)
+		{
+			VerifySettingGroupBase(settings, level);
+
+			settings.AllowCallingClients.ShouldNotBeNull();
+			settings.AllowCallingClients.Length.ShouldBe(2);
+			settings.AllowCallingClients[0].ShouldBe(DesktopClientType.MacOs);
+			settings.AllowCallingClients[1].ShouldBe(DesktopClientType.Windows);
+
+			settings.AllowSmsMmsClients.ShouldNotBeNull();
+			settings.AllowSmsMmsClients.ShouldHaveSingleItem();
+			settings.AllowSmsMmsClients[0].ShouldBe(DesktopClientType.VirtualDesktop);
+		}
+
+		/// <summary>
+		/// Verify <see cref="ZoomPhoneOnMobileSettings"/> properties.
+		/// </summary>
+		private static void VerifyZoomPhoneOnMobileSettings(ZoomPhoneOnMobileSettings settings, AdministratorLevel level = AdministratorLevel.Account)
+		{
+			VerifySettingGroupBase(settings, level);
+
+			settings.AllowCallingSmsMms.ShouldBe(true);
+
+			settings.AllowCallingClients.ShouldNotBeNull();
+			settings.AllowCallingClients.Length.ShouldBe(2);
+			settings.AllowCallingClients[0].ShouldBe(MobileClientType.IOs);
+			settings.AllowCallingClients[1].ShouldBe(MobileClientType.Android);
+
+			settings.AllowSmsMmsClients.ShouldNotBeNull();
+			settings.AllowSmsMmsClients.ShouldHaveSingleItem();
+			settings.AllowSmsMmsClients[0].ShouldBe(MobileClientType.BlackBerry);
+		}
+
+		/// <summary>
+		/// Verify <see cref="ZoomPhoneOnPwaSettings"/> properties.
+		/// </summary>
+		private static void VerifyZoomPhoneOnPwaSettings(ZoomPhoneOnPwaSettings settings, AdministratorLevel level = AdministratorLevel.Account)
+		{
+			VerifySettingGroupBase(settings, level);
+
+			settings.AllowCalling.ShouldBe(true);
+			settings.AllowSmsMms.ShouldBe(true);
+		}
+
+		/// <summary>
+		/// Verify <see cref="AllowEmergencyCallsSettings"/> properties.
+		/// </summary>
+		private static void VerifyAllowEmergencyCallsSettings(AllowEmergencyCallsSettings settings)
+		{
+			VerifySettingGroupBase(settings, AdministratorLevel.UserGroup);
+
+			settings.AllowEmergencyCallsFromClients.ShouldBe(true);
+			settings.AllowEmergencyCallsFromDeskphones.ShouldBe(true);
 		}
 
 		#endregion

@@ -112,7 +112,7 @@ namespace ZoomNet.UnitTests
 			var parsedEvent = ParseWebhookEvent<RecordingBatchTrashedEvent>(Resource.recording_batch_trashed_webhook);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingBatchTrashed);
-			
+
 			parsedEvent.Operator.ShouldBe(OperatorEmail);
 			parsedEvent.OperatorId.ShouldBe(OperatorId);
 			parsedEvent.Operation.ShouldBe(RecordingsBatchTrashOperationType.TrashUserRecordings);

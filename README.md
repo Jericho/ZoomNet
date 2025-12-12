@@ -40,7 +40,7 @@ The last version of ZoomNet that supported `.NET 4.6.1`, `.NET 4.7.2` and `.NET 
 ## Usage
 
 ### Connection Information
-Before you start using the ZoomNet client, you must decide how you are going to connect to the Zoom API. ZoomNet supports thwo ways of connecting to Zoom: OAuth and Server-to-Server OAuth.
+Before you start using the ZoomNet client, you must decide how you are going to connect to the Zoom API. ZoomNet supports two ways of connecting to Zoom: OAuth and Server-to-Server OAuth.
 
 #### Connection using OAuth (General App)
 The Zoom documentation has a document about [how to create an OAuth app](https://developers.zoom.us/docs/integrations/create/) and another document about the [OAuth autorization flow](https://developers.zoom.us/docs/integrations/oauth/) but I personnality was very confused by the later document so here is a brief step-by-step summary:
