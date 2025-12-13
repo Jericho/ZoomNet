@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net48;net10.0</TargetFrameworks>
+    <LangVersion>14.0</LangVersion>
     <AssemblyName>ZoomNet.UnitTests</AssemblyName>
     <RootNamespace>ZoomNet.UnitTests</RootNamespace>
     <IsPackable>false</IsPackable>

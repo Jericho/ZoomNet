@@ -76,7 +76,7 @@ namespace System
 				if (argument is null)
 					throw new ArgumentNullException(paramName, message);
 				else if (!argument.Any())
-					throw new ArgumentException(paramName, message);
+					throw new ArgumentException(message, paramName);
 			}
 		}
 	}
