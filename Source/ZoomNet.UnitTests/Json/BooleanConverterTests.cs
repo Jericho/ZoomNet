@@ -133,7 +133,7 @@ namespace ZoomNet.UnitTests.Json
 		}
 
 		[Fact]
-		public void Throws_when_reading_any_other_data_type()
+		public void Read_Throws_WhenString()
 		{
 			Action lambda = () =>
 			{
@@ -148,12 +148,80 @@ namespace ZoomNet.UnitTests.Json
 
 				// Act
 				jsonReader.Read();
-
 				var result = converter.Read(ref jsonReader, objectType, options);
 			};
 
 			// Assert
 			lambda.ShouldThrowWithMessage<JsonException>("Unable to convert the content of String JSON node into a boolean value");
+		}
+
+		[Fact]
+		public void Read_Throws_WhenArray()
+		{
+			Action lambda = () =>
+			{
+				// Arrange
+				var json = "[true, false]";
+				var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(json);
+				var jsonReader = new Utf8JsonReader(jsonUtf8);
+				var objectType = (Type)null;
+				var options = new JsonSerializerOptions();
+
+				var converter = new BooleanConverter();
+
+				// Act
+				jsonReader.Read();
+				var result = converter.Read(ref jsonReader, objectType, options);
+			};
+
+			// Assert
+			lambda.ShouldThrowWithMessage<JsonException>("Unable to convert the content of StartArray JSON node into a boolean value");
+		}
+
+		[Fact]
+		public void Read_Throws_WhenObject()
+		{
+			Action lambda = () =>
+			{
+				// Arrange
+				var json = "{\"value\": true}";
+				var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(json);
+				var jsonReader = new Utf8JsonReader(jsonUtf8);
+				var objectType = (Type)null;
+				var options = new JsonSerializerOptions();
+
+				var converter = new BooleanConverter();
+
+				// Act
+				jsonReader.Read();
+				var result = converter.Read(ref jsonReader, objectType, options);
+			};
+
+			// Assert
+			lambda.ShouldThrowWithMessage<JsonException>("Unable to convert the content of StartObject JSON node into a boolean value");
+		}
+
+		[Fact]
+		public void Read_Throws_WhenDecimalNumber()
+		{
+			Action lambda = () =>
+			{
+				// Arrange
+				var json = "1.5";
+				var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(json);
+				var jsonReader = new Utf8JsonReader(jsonUtf8);
+				var objectType = (Type)null;
+				var options = new JsonSerializerOptions();
+
+				var converter = new BooleanConverter();
+
+				// Act
+				jsonReader.Read();
+				var result = converter.Read(ref jsonReader, objectType, options);
+			};
+
+			// Assert
+			lambda.ShouldThrowWithMessage<JsonException>("Unable to convert the content of Number JSON node into a boolean value");
 		}
 
 		[Theory]
@@ -178,6 +246,66 @@ namespace ZoomNet.UnitTests.Json
 
 			// Assert
 			result.ShouldBe(expectedValue);
+		}
+
+		[Fact]
+		public void Read_UsesShortWhenNumberFitsInShort()
+		{
+			// Arrange - Testing that the converter tries short first
+			var json = "1";
+			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(json);
+			var jsonReader = new Utf8JsonReader(jsonUtf8);
+			var objectType = (Type)null;
+			var options = new JsonSerializerOptions();
+
+			var converter = new BooleanConverter();
+
+			// Act
+			jsonReader.Read();
+			var result = converter.Read(ref jsonReader, objectType, options);
+
+			// Assert
+			result.ShouldBeTrue();
+		}
+
+		[Fact]
+		public void Read_UsesIntWhenNumberDoesNotFitInShort()
+		{
+			// Arrange - Testing that the converter falls through to int when short fails
+			var json = "40000"; // Larger than short.MaxValue (32767)
+			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(json);
+			var jsonReader = new Utf8JsonReader(jsonUtf8);
+			var objectType = (Type)null;
+			var options = new JsonSerializerOptions();
+
+			var converter = new BooleanConverter();
+
+			// Act
+			jsonReader.Read();
+			var result = converter.Read(ref jsonReader, objectType, options);
+
+			// Assert
+			result.ShouldBeFalse(); // Only 1 returns true
+		}
+
+		[Fact]
+		public void Read_UsesLongWhenNumberDoesNotFitInInt()
+		{
+			// Arrange - Testing that the converter falls through to long when int fails
+			var json = "3000000000"; // Larger than int.MaxValue (2147483647)
+			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(json);
+			var jsonReader = new Utf8JsonReader(jsonUtf8);
+			var objectType = (Type)null;
+			var options = new JsonSerializerOptions();
+
+			var converter = new BooleanConverter();
+
+			// Act
+			jsonReader.Read();
+			var result = converter.Read(ref jsonReader, objectType, options);
+
+			// Assert
+			result.ShouldBeFalse(); // Only 1 returns true
 		}
 	}
 }

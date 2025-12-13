@@ -25,6 +25,12 @@ namespace ZoomNet.Json
 
 		public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
 		{
+			if (value is null)
+			{
+				writer.WriteNullValue();
+				return;
+			}
+
 			var typeOfValue = value.GetType(); // Do not use typeof(T). See https://github.com/Jericho/StrongGrid/issues/492
 			if (typeOfValue.IsArray)
 			{
@@ -58,6 +64,12 @@ namespace ZoomNet.Json
 
 		internal static void Serialize(Utf8JsonWriter writer, T value, JsonSerializerOptions options, Action<string, object, Type, JsonSerializerOptions, JsonConverterAttribute> propertySerializer = null)
 		{
+			if (value is null)
+			{
+				writer.WriteNullValue();
+				return;
+			}
+
 			Serialize(writer, value, value.GetType(), options, propertySerializer);
 		}
 

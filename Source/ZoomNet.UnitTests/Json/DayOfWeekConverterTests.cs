@@ -18,10 +18,11 @@ namespace ZoomNet.UnitTests.Json
 		[InlineData(5, DayOfWeek.Thursday)]
 		[InlineData(6, DayOfWeek.Friday)]
 		[InlineData(7, DayOfWeek.Saturday)]
-		public void Read(int value, DayOfWeek expected)
+		public void Read_ValidNumber(int value, DayOfWeek expected)
 		{
 			// Arrange
-			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(value.ToString());
+			var json = value.ToString();
+			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(json);
 			var jsonReader = new Utf8JsonReader(jsonUtf8);
 			var objectType = (Type)null;
 			var options = new JsonSerializerOptions();
@@ -113,6 +114,23 @@ namespace ZoomNet.UnitTests.Json
 			ms.Position = 0;
 			var sr = new StreamReader(ms);
 			var result = sr.ReadToEnd();
+
+			// Assert
+			result.ShouldBe(expected);
+		}
+
+		[Theory]
+		[InlineData(DayOfWeek.Sunday, 1)]
+		[InlineData(DayOfWeek.Monday, 2)]
+		[InlineData(DayOfWeek.Tuesday, 3)]
+		[InlineData(DayOfWeek.Wednesday, 4)]
+		[InlineData(DayOfWeek.Thursday, 5)]
+		[InlineData(DayOfWeek.Friday, 6)]
+		[InlineData(DayOfWeek.Saturday, 7)]
+		public void ToJsonValue(DayOfWeek value, int expected)
+		{
+			// Act
+			var result = DayOfWeekConverter.ToJsonValue(value);
 
 			// Assert
 			result.ShouldBe(expected);
