@@ -282,7 +282,7 @@ namespace ZoomNet
 			var oAuthConnectionInfo = (OAuthConnectionInfo)tokenHandler.ConnectionInfo;
 			if (oAuthConnectionInfo.Scopes == null) tokenHandler.RefreshTokenIfNecessary(true); // Force the token to be refreshed wich will have the side-effect of populating the '.Scopes'
 
-			var missingScopes = scopes.Except(((OAuthConnectionInfo)tokenHandler.ConnectionInfo).Scopes).ToArray();
+			var missingScopes = scopes.Except(((OAuthConnectionInfo)tokenHandler.ConnectionInfo).Scopes, StringComparer.OrdinalIgnoreCase).ToArray();
 			return !missingScopes.Any();
 		}
 
