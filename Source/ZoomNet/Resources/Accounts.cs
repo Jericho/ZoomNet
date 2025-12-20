@@ -65,9 +65,9 @@ namespace ZoomNet.Resources
 					new JsonObject
 					{
 						{ "share_rc", useSharedVirtualRoomConnectors },
-						{ "room_connectors", string.Join(",", roomConnectorsIpAddresses) },
+						{ "room_connectors", roomConnectorsIpAddresses == null ? null : string.Join(",", roomConnectorsIpAddresses) },
 						{ "share_mc", useSharedMeetingConnectors },
-						{ "meeting_connectors", string.Join(",", meetingConnectorsIpAddresses) },
+						{ "meeting_connectors", meetingConnectorsIpAddresses == null ? null : string.Join(",", meetingConnectorsIpAddresses) },
 						{ "pay_mode", payMode }
 					}
 				}
@@ -105,9 +105,9 @@ namespace ZoomNet.Resources
 			var data = new JsonObject
 			{
 				{ "share_rc", useSharedVirtualRoomConnectors },
-				{ "room_connectors", string.Join(",", roomConnectorsIpAddresses) },
+				{ "room_connectors", roomConnectorsIpAddresses == null ? null : string.Join(",", roomConnectorsIpAddresses) },
 				{ "share_mc", useSharedMeetingConnectors },
-				{ "meeting_connectors", string.Join(",", meetingConnectorsIpAddresses) }
+				{ "meeting_connectors", meetingConnectorsIpAddresses == null ? null : string.Join(",", meetingConnectorsIpAddresses) }
 			};
 			if (payMode.HasValue) data.Add("pay_mode", payMode.Value);
 
