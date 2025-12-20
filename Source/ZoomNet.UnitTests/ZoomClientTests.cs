@@ -91,6 +91,17 @@ namespace ZoomNet.UnitTests
 		}
 
 		[Fact]
+		public void Throws_if_unknown_connection_type()
+		{
+			// Arrange
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var connectionInfo = new MockConnectionInfo();
+
+			// Act
+			Should.Throw<ZoomException>(() => new ZoomClient(connectionInfo, logger: logger));
+		}
+
+		[Fact]
 		public void Constructor_WithConnectionInfo_CreatesClient()
 		{
 			// Arrange
