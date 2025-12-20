@@ -42,8 +42,6 @@ namespace ZoomNet.Utilities
 		public OAuthTokenHandler(OAuthConnectionInfo connectionInfo, HttpClient httpClient, TimeSpan? clockSkew = null)
 		{
 			ArgumentNullException.ThrowIfNull(connectionInfo);
-			ArgumentNullException.ThrowIfNullOrEmpty(connectionInfo.ClientId, $"{nameof(connectionInfo)}.{connectionInfo.ClientId}");
-			ArgumentNullException.ThrowIfNullOrEmpty(connectionInfo.ClientSecret, $"{nameof(connectionInfo)}.{connectionInfo.ClientSecret}");
 			ArgumentNullException.ThrowIfNull(httpClient);
 
 			_connectionInfo = connectionInfo;
