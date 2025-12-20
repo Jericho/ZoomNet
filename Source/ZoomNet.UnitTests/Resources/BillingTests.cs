@@ -569,7 +569,7 @@ namespace ZoomNet.UnitTests.Resources
 			// Read the stream to verify content
 			using (var memoryStream = new MemoryStream())
 			{
-				await result.CopyToAsync(memoryStream);
+				await result.CopyToAsync(memoryStream, 81920, cancellationToken: TestContext.Current.CancellationToken);
 				var downloadedContent = memoryStream.ToArray();
 				downloadedContent.ShouldBe(pdfContent);
 			}
@@ -601,7 +601,7 @@ namespace ZoomNet.UnitTests.Resources
 			// Verify the stream is empty
 			using (var memoryStream = new MemoryStream())
 			{
-				await result.CopyToAsync(memoryStream);
+				await result.CopyToAsync(memoryStream, 81920, TestContext.Current.CancellationToken);
 				memoryStream.Length.ShouldBe(0);
 			}
 		}
@@ -709,7 +709,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			using (var memoryStream = new MemoryStream())
 			{
-				await result.CopyToAsync(memoryStream);
+				await result.CopyToAsync(memoryStream, 81920, TestContext.Current.CancellationToken);
 				memoryStream.Length.ShouldBe(largeContent.Length);
 			}
 		}
