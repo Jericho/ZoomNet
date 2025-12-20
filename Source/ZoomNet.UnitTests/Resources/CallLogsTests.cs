@@ -11,7 +11,7 @@ using ZoomNet.Resources;
 
 namespace ZoomNet.UnitTests.Resources
 {
-	public class AccountCallLogsTests
+	public class CallLogsTests
 	{
 		private const string SINGLE_ACCOUNT_CALL_LOGS_JSON = @"
     {
@@ -238,7 +238,7 @@ namespace ZoomNet.UnitTests.Resources
 
 		private readonly ITestOutputHelper _outputHelper;
 
-		public AccountCallLogsTests(ITestOutputHelper outputHelper)
+		public CallLogsTests(ITestOutputHelper outputHelper)
 		{
 			_outputHelper = outputHelper;
 		}
