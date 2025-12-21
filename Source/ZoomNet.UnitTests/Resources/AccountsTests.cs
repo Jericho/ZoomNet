@@ -1,6 +1,7 @@
 using RichardSzalay.MockHttp;
 using Shouldly;
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
@@ -300,7 +301,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("accounts", accountId))
-				.Respond(System.Net.HttpStatusCode.NoContent);
+				.Respond(HttpStatusCode.NoContent);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -327,7 +328,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("accounts", accountId, "options"))
-				.Respond(System.Net.HttpStatusCode.NoContent);
+				.Respond(HttpStatusCode.NoContent);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -349,7 +350,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("accounts", accountId, "options"))
-				.Respond(System.Net.HttpStatusCode.NoContent);
+				.Respond(HttpStatusCode.NoContent);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -623,7 +624,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("accounts", accountId, "owner"))
-				.Respond(System.Net.HttpStatusCode.NoContent);
+				.Respond(HttpStatusCode.NoContent);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
