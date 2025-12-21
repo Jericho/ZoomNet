@@ -189,7 +189,7 @@ namespace ZoomNet.UnitTests.Extensions
 				var response = new MockFluentHttpResponse(message, null, TestContext.Current.CancellationToken);
 
 				// Act
-				await Should.ThrowAsync<ArgumentException>(() => response.AsPaginatedResponse<UserCallLog>("call_logs")).ConfigureAwait(true);
+				await Should.ThrowAsync<ArgumentException>(() => response.AsPaginatedResponse<UserCallLog>("call_logs"));
 			}
 
 			[Fact]
@@ -208,7 +208,7 @@ namespace ZoomNet.UnitTests.Extensions
 				var response = new MockFluentHttpResponse(message, null, TestContext.Current.CancellationToken);
 
 				// Act
-				var paginatedResponse = await response.AsPaginatedResponse<UserCallLog>("call_logs").ConfigureAwait(true);
+				var paginatedResponse = await response.AsPaginatedResponse<UserCallLog>("call_logs");
 
 				// Assert
 				paginatedResponse.PageCount.ShouldBe(0);
@@ -240,7 +240,7 @@ namespace ZoomNet.UnitTests.Extensions
 				var response = new MockFluentHttpResponse(message, null, TestContext.Current.CancellationToken);
 
 				// Act
-				await Should.ThrowAsync<ArgumentException>(() => response.AsPaginatedResponseWithToken<UserCallLog>("call_logs")).ConfigureAwait(true);
+				await Should.ThrowAsync<ArgumentException>(() => response.AsPaginatedResponseWithToken<UserCallLog>("call_logs"));
 			}
 
 			[Fact]
@@ -261,7 +261,7 @@ namespace ZoomNet.UnitTests.Extensions
 				var response = new MockFluentHttpResponse(message, null, TestContext.Current.CancellationToken);
 
 				// Act
-				var paginatedResponse = await response.AsPaginatedResponseWithToken<UserCallLog>("call_logs").ConfigureAwait(true);
+				var paginatedResponse = await response.AsPaginatedResponseWithToken<UserCallLog>("call_logs");
 
 				// Assert
 				paginatedResponse.RecordsPerPage.ShouldBe(100);
@@ -291,7 +291,7 @@ namespace ZoomNet.UnitTests.Extensions
 				var response = new MockFluentHttpResponse(message, null, TestContext.Current.CancellationToken);
 
 				// Act
-				await Should.ThrowAsync<ArgumentException>(() => response.AsPaginatedResponseWithTokenAndDateRange<UserCallLog>("call_logs")).ConfigureAwait(true);
+				await Should.ThrowAsync<ArgumentException>(() => response.AsPaginatedResponseWithTokenAndDateRange<UserCallLog>("call_logs"));
 			}
 
 			[Fact]
@@ -312,7 +312,7 @@ namespace ZoomNet.UnitTests.Extensions
 				var response = new MockFluentHttpResponse(message, null, TestContext.Current.CancellationToken);
 
 				// Act
-				var paginatedResponse = await response.AsPaginatedResponseWithTokenAndDateRange<UserCallLog>("call_logs").ConfigureAwait(true);
+				var paginatedResponse = await response.AsPaginatedResponseWithTokenAndDateRange<UserCallLog>("call_logs");
 
 				// Assert
 				paginatedResponse.RecordsPerPage.ShouldBe(100);

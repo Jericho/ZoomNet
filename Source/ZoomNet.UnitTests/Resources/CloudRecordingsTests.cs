@@ -520,7 +520,7 @@ namespace ZoomNet.UnitTests.Resources
 			var recordings = new CloudRecordings(client);
 
 			// Act
-			var result = await recordings.GetRecordingsForUserAsync(userId, false, from, to, recordsPerPage, null, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await recordings.GetRecordingsForUserAsync(userId, false, from, to, recordsPerPage, null, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -565,7 +565,7 @@ namespace ZoomNet.UnitTests.Resources
 			var recordings = new CloudRecordings(client);
 
 			// Act
-			var result = await recordings.DownloadFileAsync(downloadUrl, null, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await recordings.DownloadFileAsync(downloadUrl, null, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -599,7 +599,7 @@ namespace ZoomNet.UnitTests.Resources
 			var client = new ZoomClient(connectionInfo, mockHttp.ToHttpClient(), null, null);
 
 			// Act
-			var result = await client.CloudRecordings.DownloadFileAsync(downloadUrl, "alternate_download_token", TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await client.CloudRecordings.DownloadFileAsync(downloadUrl, "alternate_download_token", TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();

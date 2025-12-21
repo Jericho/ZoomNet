@@ -315,7 +315,7 @@ namespace ZoomNet.UnitTests.Resources
 			var billing = new Billing(client);
 
 			// Act
-			var result = await billing.GetInfoAsync(accountId, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await billing.GetInfoAsync(accountId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -358,7 +358,7 @@ namespace ZoomNet.UnitTests.Resources
 			var billing = new Billing(client);
 
 			// Act
-			await billing.UpdateInfoAsync(accountId, address, suite, city, country, email, firstName, lastName, phoneNumber, state, zip, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			await billing.UpdateInfoAsync(accountId, address, suite, city, country, email, firstName, lastName, phoneNumber, state, zip, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -380,7 +380,7 @@ namespace ZoomNet.UnitTests.Resources
 			var billing = new Billing(client);
 
 			// Act
-			await billing.UpdateInfoAsync(accountId, cancellationToken: TestContext.Current.CancellationToken).ConfigureAwait(true);
+			await billing.UpdateInfoAsync(accountId, cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -404,7 +404,7 @@ namespace ZoomNet.UnitTests.Resources
 			var billing = new Billing(client);
 
 			// Act
-			await billing.UpdateInfoAsync(accountId, email: email, phoneNumber: phoneNumber, cancellationToken: TestContext.Current.CancellationToken).ConfigureAwait(true);
+			await billing.UpdateInfoAsync(accountId, email: email, phoneNumber: phoneNumber, cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -430,7 +430,7 @@ namespace ZoomNet.UnitTests.Resources
 			var billing = new Billing(client);
 
 			// Act
-			var result = await billing.GetInvoicesAsync(accountId, from, to, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await billing.GetInvoicesAsync(accountId, from, to, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -480,7 +480,7 @@ namespace ZoomNet.UnitTests.Resources
 			var billing = new Billing(client);
 
 			// Act
-			var result = await billing.GetInvoicesAsync(accountId, from, to, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await billing.GetInvoicesAsync(accountId, from, to, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -505,7 +505,7 @@ namespace ZoomNet.UnitTests.Resources
 			var billing = new Billing(client);
 
 			// Act
-			var result = await billing.GetInvoiceDetailsAsync(accountId, invoiceId, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await billing.GetInvoiceDetailsAsync(accountId, invoiceId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -535,7 +535,7 @@ namespace ZoomNet.UnitTests.Resources
 			var billing = new Billing(client);
 
 			// Act
-			var result = await billing.GetPlanUsageAsync(accountId, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await billing.GetPlanUsageAsync(accountId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -559,7 +559,7 @@ namespace ZoomNet.UnitTests.Resources
 			var billing = new Billing(client);
 
 			// Act
-			var result = await billing.DownloadInvoiceAsync(invoiceId, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await billing.DownloadInvoiceAsync(invoiceId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -591,7 +591,7 @@ namespace ZoomNet.UnitTests.Resources
 			var billing = new Billing(client);
 
 			// Act
-			var result = await billing.DownloadInvoiceAsync(invoiceId, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await billing.DownloadInvoiceAsync(invoiceId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -625,7 +625,7 @@ namespace ZoomNet.UnitTests.Resources
 			var billing = new Billing(client);
 
 			// Act
-			var result = await billing.GetInvoicesAsync(accountId, from, to, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await billing.GetInvoicesAsync(accountId, from, to, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -648,7 +648,7 @@ namespace ZoomNet.UnitTests.Resources
 			var billing = new Billing(client);
 
 			// Act
-			var result = await billing.GetInfoAsync(accountId, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await billing.GetInfoAsync(accountId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -672,7 +672,7 @@ namespace ZoomNet.UnitTests.Resources
 			var billing = new Billing(client);
 
 			// Act
-			var result = await billing.GetInvoiceDetailsAsync(accountId, invoiceId, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await billing.GetInvoiceDetailsAsync(accountId, invoiceId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -700,7 +700,7 @@ namespace ZoomNet.UnitTests.Resources
 			var billing = new Billing(client);
 
 			// Act
-			var result = await billing.DownloadInvoiceAsync(invoiceId, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await billing.DownloadInvoiceAsync(invoiceId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -749,7 +749,7 @@ namespace ZoomNet.UnitTests.Resources
 			var billing = new Billing(client);
 
 			// Act
-			var result = await billing.GetInvoicesAsync(accountId, from, to, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await billing.GetInvoicesAsync(accountId, from, to, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -776,7 +776,7 @@ namespace ZoomNet.UnitTests.Resources
 			var billing = new Billing(client);
 
 			// Act
-			await billing.UpdateInfoAsync(accountId, address: address, cancellationToken: TestContext.Current.CancellationToken).ConfigureAwait(true);
+			await billing.UpdateInfoAsync(accountId, address: address, cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -800,7 +800,7 @@ namespace ZoomNet.UnitTests.Resources
 			var billing = new Billing(client);
 
 			// Act
-			await billing.UpdateInfoAsync(accountId, firstName: firstName, lastName: lastName, cancellationToken: TestContext.Current.CancellationToken).ConfigureAwait(true);
+			await billing.UpdateInfoAsync(accountId, firstName: firstName, lastName: lastName, cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();

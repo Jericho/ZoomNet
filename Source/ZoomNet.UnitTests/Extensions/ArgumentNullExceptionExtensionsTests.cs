@@ -27,11 +27,8 @@ namespace ZoomNet.UnitTests.Extensions
 				// Arrange
 				object nullObject = null;
 
-				// Act
-				void ThrowIfNullCall() => ArgumentNullException.ThrowIfNull(nullObject);
-
-				// Assert
-				Should.Throw<ArgumentNullException>(ThrowIfNullCall)
+				// Act & Assert
+				Should.Throw<ArgumentNullException>(() => ArgumentNullException.ThrowIfNull(nullObject))
 					.ParamName.ShouldBe("nullObject");
 			}
 
@@ -43,10 +40,9 @@ namespace ZoomNet.UnitTests.Extensions
 				var customMessage = "Custom error message";
 
 				// Act
-				void ThrowIfNullCall() => ArgumentNullException.ThrowIfNull(nullObject, message: customMessage);
+				var exception = Should.Throw<ArgumentNullException>(() => ArgumentNullException.ThrowIfNull(nullObject, message: customMessage));
 
 				// Assert
-				var exception = Should.Throw<ArgumentNullException>(ThrowIfNullCall);
 				exception.ParamName.ShouldBe("nullObject");
 				exception.Message.ShouldContain(customMessage);
 			}
@@ -58,12 +54,8 @@ namespace ZoomNet.UnitTests.Extensions
 				object nullObject = null;
 				var customParamName = "myParameter";
 
-				// Act
-				void ThrowIfNullCall() => ArgumentNullException.ThrowIfNull(nullObject, customParamName);
-
-				// Assert
-				Should.Throw<ArgumentNullException>(ThrowIfNullCall)
-					.ParamName.ShouldBe(customParamName);
+				// Act & Assert
+				Should.Throw<ArgumentNullException>(() => ArgumentNullException.ThrowIfNull(nullObject, customParamName));
 			}
 		}
 
@@ -85,11 +77,8 @@ namespace ZoomNet.UnitTests.Extensions
 				// Arrange
 				string nullString = null;
 
-				// Act
-				void ThrowIfNullOrEmptyCall() => ArgumentNullException.ThrowIfNullOrEmpty(nullString);
-
-				// Assert
-				Should.Throw<ArgumentNullException>(ThrowIfNullOrEmptyCall)
+				// Act & Assert
+				Should.Throw<ArgumentNullException>(() => ArgumentNullException.ThrowIfNullOrEmpty(nullString))
 					.ParamName.ShouldBe("nullString");
 			}
 
@@ -99,11 +88,8 @@ namespace ZoomNet.UnitTests.Extensions
 				// Arrange
 				var emptyString = string.Empty;
 
-				// Act
-				void ThrowIfNullOrEmptyCall() => ArgumentNullException.ThrowIfNullOrEmpty(emptyString);
-
-				// Assert
-				Should.Throw<ArgumentException>(ThrowIfNullOrEmptyCall)
+				// Act & Assert
+				Should.Throw<ArgumentException>(() => ArgumentNullException.ThrowIfNullOrEmpty(emptyString))
 					.ParamName.ShouldBe("emptyString");
 			}
 
@@ -115,10 +101,9 @@ namespace ZoomNet.UnitTests.Extensions
 				var customMessage = "String cannot be null";
 
 				// Act
-				void ThrowIfNullOrEmptyCall() => ArgumentNullException.ThrowIfNullOrEmpty(nullString, message: customMessage);
+				var exception = Should.Throw<ArgumentNullException>(() => ArgumentNullException.ThrowIfNullOrEmpty(nullString, message: customMessage));
 
 				// Assert
-				var exception = Should.Throw<ArgumentNullException>(ThrowIfNullOrEmptyCall);
 				exception.ParamName.ShouldBe("nullString");
 				exception.Message.ShouldContain(customMessage);
 			}
@@ -131,10 +116,9 @@ namespace ZoomNet.UnitTests.Extensions
 				var customMessage = "String cannot be empty";
 
 				// Act
-				void ThrowIfNullOrEmptyCall() => ArgumentNullException.ThrowIfNullOrEmpty(emptyString, message: customMessage);
+				var exception = Should.Throw<ArgumentException>(() => ArgumentNullException.ThrowIfNullOrEmpty(emptyString, message: customMessage));
 
 				// Assert
-				var exception = Should.Throw<ArgumentException>(ThrowIfNullOrEmptyCall);
 				exception.ParamName.ShouldBe("emptyString");
 				exception.Message.ShouldContain(customMessage);
 			}
@@ -158,11 +142,8 @@ namespace ZoomNet.UnitTests.Extensions
 				// Arrange
 				string nullString = null;
 
-				// Act
-				void ThrowIfNullOrWhiteSpaceCall() => ArgumentNullException.ThrowIfNullOrWhiteSpace(nullString);
-
-				// Assert
-				Should.Throw<ArgumentNullException>(ThrowIfNullOrWhiteSpaceCall)
+				// Assert & Assert
+				Should.Throw<ArgumentNullException>(() => ArgumentNullException.ThrowIfNullOrWhiteSpace(nullString))
 					.ParamName.ShouldBe("nullString");
 			}
 
@@ -172,11 +153,8 @@ namespace ZoomNet.UnitTests.Extensions
 				// Arrange
 				var emptyString = string.Empty;
 
-				// Act
-				void ThrowIfNullOrWhiteSpaceCall() => ArgumentNullException.ThrowIfNullOrWhiteSpace(emptyString);
-
-				// Assert
-				Should.Throw<ArgumentException>(ThrowIfNullOrWhiteSpaceCall)
+				// Act & Assert
+				Should.Throw<ArgumentException>(() => ArgumentNullException.ThrowIfNullOrWhiteSpace(emptyString))
 					.ParamName.ShouldBe("emptyString");
 			}
 
@@ -186,11 +164,8 @@ namespace ZoomNet.UnitTests.Extensions
 				// Arrange
 				var whiteSpaceString = "   ";
 
-				// Act
-				void ThrowIfNullOrWhiteSpaceCall() => ArgumentNullException.ThrowIfNullOrWhiteSpace(whiteSpaceString);
-
-				// Assert
-				Should.Throw<ArgumentException>(ThrowIfNullOrWhiteSpaceCall)
+				// Act & Assert
+				Should.Throw<ArgumentException>(() => ArgumentNullException.ThrowIfNullOrWhiteSpace(whiteSpaceString))
 					.ParamName.ShouldBe("whiteSpaceString");
 			}
 
@@ -203,11 +178,8 @@ namespace ZoomNet.UnitTests.Extensions
 			[InlineData(" \t \n ")]
 			public void Throws_ArgumentException_WhenStringContainsOnlyWhiteSpaceCharacters(string whiteSpaceString)
 			{
-				// Act
-				void ThrowIfNullOrWhiteSpaceCall() => ArgumentNullException.ThrowIfNullOrWhiteSpace(whiteSpaceString);
-
-				// Assert
-				Should.Throw<ArgumentException>(ThrowIfNullOrWhiteSpaceCall);
+				// Act & Assert
+				Should.Throw<ArgumentException>(() => ArgumentNullException.ThrowIfNullOrWhiteSpace(whiteSpaceString));
 			}
 
 			[Fact]
@@ -218,10 +190,9 @@ namespace ZoomNet.UnitTests.Extensions
 				var customMessage = "String cannot be null";
 
 				// Act
-				void ThrowIfNullOrWhiteSpaceCall() => ArgumentNullException.ThrowIfNullOrWhiteSpace(nullString, message: customMessage);
+				var exception = Should.Throw<ArgumentNullException>(() => ArgumentNullException.ThrowIfNullOrWhiteSpace(nullString, message: customMessage));
 
 				// Assert
-				var exception = Should.Throw<ArgumentNullException>(ThrowIfNullOrWhiteSpaceCall);
 				exception.ParamName.ShouldBe("nullString");
 				exception.Message.ShouldContain(customMessage);
 			}
@@ -234,10 +205,9 @@ namespace ZoomNet.UnitTests.Extensions
 				var customMessage = "String cannot be whitespace";
 
 				// Act
-				void ThrowIfNullOrWhiteSpaceCall() => ArgumentNullException.ThrowIfNullOrWhiteSpace(whiteSpaceString, message: customMessage);
+				var exception = Should.Throw<ArgumentException>(() => ArgumentNullException.ThrowIfNullOrWhiteSpace(whiteSpaceString, message: customMessage));
 
 				// Assert
-				var exception = Should.Throw<ArgumentException>(ThrowIfNullOrWhiteSpaceCall);
 				exception.ParamName.ShouldBe("whiteSpaceString");
 				exception.Message.ShouldContain(customMessage);
 			}
@@ -272,11 +242,8 @@ namespace ZoomNet.UnitTests.Extensions
 				// Arrange
 				IEnumerable<int> nullCollection = null;
 
-				// Act
-				void ThrowIfNullOrEmptyCall() => ArgumentNullException.ThrowIfNullOrEmpty(nullCollection);
-
-				// Assert
-				Should.Throw<ArgumentNullException>(ThrowIfNullOrEmptyCall)
+				// Act & Assert
+				Should.Throw<ArgumentNullException>(() => ArgumentNullException.ThrowIfNullOrEmpty(nullCollection))
 					.ParamName.ShouldBe("nullCollection");
 			}
 
@@ -286,11 +253,8 @@ namespace ZoomNet.UnitTests.Extensions
 				// Arrange
 				var emptyCollection = Enumerable.Empty<int>();
 
-				// Act
-				void ThrowIfNullOrEmptyCall() => ArgumentNullException.ThrowIfNullOrEmpty(emptyCollection);
-
-				// Assert
-				Should.Throw<ArgumentException>(ThrowIfNullOrEmptyCall)
+				// Act & Assert
+				Should.Throw<ArgumentException>(() => ArgumentNullException.ThrowIfNullOrEmpty(emptyCollection))
 					.ParamName.ShouldBe("emptyCollection");
 			}
 
@@ -300,11 +264,8 @@ namespace ZoomNet.UnitTests.Extensions
 				// Arrange
 				var emptyList = new List<string>();
 
-				// Act
-				void ThrowIfNullOrEmptyCall() => ArgumentNullException.ThrowIfNullOrEmpty(emptyList);
-
-				// Assert
-				Should.Throw<ArgumentException>(ThrowIfNullOrEmptyCall)
+				// Act & Assert
+				Should.Throw<ArgumentException>(() => ArgumentNullException.ThrowIfNullOrEmpty(emptyList))
 					.ParamName.ShouldBe("emptyList");
 			}
 
@@ -314,11 +275,8 @@ namespace ZoomNet.UnitTests.Extensions
 				// Arrange
 				var emptyArray = Array.Empty<int>();
 
-				// Act
-				void ThrowIfNullOrEmptyCall() => ArgumentNullException.ThrowIfNullOrEmpty(emptyArray);
-
-				// Assert
-				Should.Throw<ArgumentException>(ThrowIfNullOrEmptyCall)
+				// Act & Assert
+				Should.Throw<ArgumentException>(() => ArgumentNullException.ThrowIfNullOrEmpty(emptyArray))
 					.ParamName.ShouldBe("emptyArray");
 			}
 
@@ -330,10 +288,9 @@ namespace ZoomNet.UnitTests.Extensions
 				var customMessage = "Collection cannot be null";
 
 				// Act
-				void ThrowIfNullOrEmptyCall() => ArgumentNullException.ThrowIfNullOrEmpty(nullCollection, message: customMessage);
+				var exception = Should.Throw<ArgumentNullException>(() => ArgumentNullException.ThrowIfNullOrEmpty(nullCollection, message: customMessage));
 
 				// Assert
-				var exception = Should.Throw<ArgumentNullException>(ThrowIfNullOrEmptyCall);
 				exception.ParamName.ShouldBe("nullCollection");
 				exception.Message.ShouldContain(customMessage);
 			}
@@ -346,10 +303,9 @@ namespace ZoomNet.UnitTests.Extensions
 				var customMessage = "Collection cannot be empty";
 
 				// Act
-				void ThrowIfNullOrEmptyCall() => ArgumentNullException.ThrowIfNullOrEmpty(emptyCollection, message: customMessage);
+				var exception = Should.Throw<ArgumentException>(() => ArgumentNullException.ThrowIfNullOrEmpty(emptyCollection, message: customMessage));
 
 				// Assert
-				var exception = Should.Throw<ArgumentException>(ThrowIfNullOrEmptyCall);
 				exception.ParamName.ShouldBe("emptyCollection");
 				exception.Message.ShouldContain(customMessage);
 			}
@@ -361,11 +317,8 @@ namespace ZoomNet.UnitTests.Extensions
 				IEnumerable<int> nullCollection = null;
 				var customParamName = "myCollection";
 
-				// Act
-				void ThrowIfNullOrEmptyCall() => ArgumentNullException.ThrowIfNullOrEmpty(nullCollection, customParamName);
-
-				// Assert
-				Should.Throw<ArgumentNullException>(ThrowIfNullOrEmptyCall)
+				// Act & Assert
+				Should.Throw<ArgumentNullException>(() => ArgumentNullException.ThrowIfNullOrEmpty(nullCollection, customParamName))
 					.ParamName.ShouldBe(customParamName);
 			}
 

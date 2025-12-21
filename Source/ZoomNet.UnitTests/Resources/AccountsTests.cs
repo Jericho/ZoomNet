@@ -138,7 +138,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			// Act
 #pragma warning disable CS0618 // Type or member is obsolete
-			var result = await accounts.GetAllAsync(recordsPerPage, page, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await accounts.GetAllAsync(recordsPerPage, page, TestContext.Current.CancellationToken);
 #pragma warning restore CS0618 // Type or member is obsolete
 
 			// Assert
@@ -172,7 +172,7 @@ namespace ZoomNet.UnitTests.Resources
 			var accounts = new Accounts(client);
 
 			// Act
-			var result = await accounts.GetAllAsync(recordsPerPage, pagingToken, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await accounts.GetAllAsync(recordsPerPage, pagingToken, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -201,7 +201,7 @@ namespace ZoomNet.UnitTests.Resources
 			var accounts = new Accounts(client);
 
 			// Act
-			var result = await accounts.GetAllAsync(recordsPerPage, null, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await accounts.GetAllAsync(recordsPerPage, null, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -233,7 +233,7 @@ namespace ZoomNet.UnitTests.Resources
 			var accounts = new Accounts(client);
 
 			// Act
-			var result = await accounts.CreateAsync(firstName, lastName, email, password, useSharedVirtualRoomConnectors, roomConnectorsIpAddresses, useSharedMeetingConnectors, meetingConnectorsIpAddresses, payMode, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await accounts.CreateAsync(firstName, lastName, email, password, useSharedVirtualRoomConnectors, roomConnectorsIpAddresses, useSharedMeetingConnectors, meetingConnectorsIpAddresses, payMode, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -260,7 +260,7 @@ namespace ZoomNet.UnitTests.Resources
 			var accounts = new Accounts(client);
 
 			// Act
-			var result = await accounts.CreateAsync(firstName, lastName, email, password, cancellationToken: TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await accounts.CreateAsync(firstName, lastName, email, password, cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -283,7 +283,7 @@ namespace ZoomNet.UnitTests.Resources
 			var accounts = new Accounts(client);
 
 			// Act
-			var result = await accounts.GetAsync(accountId, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await accounts.GetAsync(accountId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -307,7 +307,7 @@ namespace ZoomNet.UnitTests.Resources
 			var accounts = new Accounts(client);
 
 			// Act
-			await accounts.DisassociateAsync(accountId, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			await accounts.DisassociateAsync(accountId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -334,7 +334,7 @@ namespace ZoomNet.UnitTests.Resources
 			var accounts = new Accounts(client);
 
 			// Act
-			await accounts.UpdateOptionsAsync(accountId, useSharedVirtualRoomConnectors, roomConnectorsIpAddresses, useSharedMeetingConnectors, meetingConnectorsIpAddresses, payMode, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			await accounts.UpdateOptionsAsync(accountId, useSharedVirtualRoomConnectors, roomConnectorsIpAddresses, useSharedMeetingConnectors, meetingConnectorsIpAddresses, payMode, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -356,7 +356,7 @@ namespace ZoomNet.UnitTests.Resources
 			var accounts = new Accounts(client);
 
 			// Act
-			await accounts.UpdateOptionsAsync(accountId, cancellationToken: TestContext.Current.CancellationToken).ConfigureAwait(true);
+			await accounts.UpdateOptionsAsync(accountId, cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -379,7 +379,7 @@ namespace ZoomNet.UnitTests.Resources
 			var accounts = new Accounts(client);
 
 			// Act
-			var result = await accounts.GetMeetingAuthenticationSettingsAsync(accountId, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await accounts.GetMeetingAuthenticationSettingsAsync(accountId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -422,7 +422,7 @@ namespace ZoomNet.UnitTests.Resources
 			var accounts = new Accounts(client);
 
 			// Act
-			var result = await accounts.GetMeetingAuthenticationSettingsAsync(accountId, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await accounts.GetMeetingAuthenticationSettingsAsync(accountId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -461,7 +461,7 @@ namespace ZoomNet.UnitTests.Resources
 			var accounts = new Accounts(client);
 
 			// Act
-			var result = await accounts.GetRecordingAuthenticationSettingsAsync(accountId, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await accounts.GetRecordingAuthenticationSettingsAsync(accountId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -494,7 +494,7 @@ namespace ZoomNet.UnitTests.Resources
 			var accounts = new Accounts(client);
 
 			// Act
-			var result = await accounts.GetRecordingAuthenticationSettingsAsync(accountId, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await accounts.GetRecordingAuthenticationSettingsAsync(accountId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -519,7 +519,7 @@ namespace ZoomNet.UnitTests.Resources
 			var accounts = new Accounts(client);
 
 			// Act
-			var result = await accounts.GetManagedDomainsAsync(accountId, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await accounts.GetManagedDomainsAsync(accountId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -551,7 +551,7 @@ namespace ZoomNet.UnitTests.Resources
 			var accounts = new Accounts(client);
 
 			// Act
-			var result = await accounts.GetManagedDomainsAsync(accountId, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await accounts.GetManagedDomainsAsync(accountId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -575,7 +575,7 @@ namespace ZoomNet.UnitTests.Resources
 			var accounts = new Accounts(client);
 
 			// Act
-			var result = await accounts.GetTrustedDomainsAsync(accountId, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await accounts.GetTrustedDomainsAsync(accountId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -605,7 +605,7 @@ namespace ZoomNet.UnitTests.Resources
 			var accounts = new Accounts(client);
 
 			// Act
-			var result = await accounts.GetTrustedDomainsAsync(accountId, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await accounts.GetTrustedDomainsAsync(accountId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -630,7 +630,7 @@ namespace ZoomNet.UnitTests.Resources
 			var accounts = new Accounts(client);
 
 			// Act
-			await accounts.UpdateOwnerAsync(accountId, newOwnerEmail, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			await accounts.UpdateOwnerAsync(accountId, newOwnerEmail, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -638,7 +638,7 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
-		public void GetAllAsync_InvalidRecordsPerPage_ThrowsException()
+		public async Task GetAllAsync_InvalidRecordsPerPage_ThrowsException()
 		{
 			// Arrange
 			var mockHttp = new MockHttpMessageHandler();
@@ -647,16 +647,13 @@ namespace ZoomNet.UnitTests.Resources
 			var accounts = new Accounts(client);
 
 			// Act & Assert
-			Should.Throw<ArgumentOutOfRangeException>(async () =>
-			{
 #pragma warning disable CS0618 // Type or member is obsolete
-				await accounts.GetAllAsync(recordsPerPage: 500, page: 1, cancellationToken: TestContext.Current.CancellationToken).ConfigureAwait(true);
+			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => accounts.GetAllAsync(recordsPerPage: 500, page: 1, cancellationToken: TestContext.Current.CancellationToken));
 #pragma warning restore CS0618 // Type or member is obsolete
-			});
 		}
 
 		[Fact]
-		public void GetAllAsync_WithPagingToken_InvalidRecordsPerPage_ThrowsException()
+		public async Task GetAllAsync_WithPagingToken_InvalidRecordsPerPage_ThrowsException()
 		{
 			// Arrange
 			var mockHttp = new MockHttpMessageHandler();
@@ -665,10 +662,7 @@ namespace ZoomNet.UnitTests.Resources
 			var accounts = new Accounts(client);
 
 			// Act & Assert
-			Should.Throw<ArgumentOutOfRangeException>(async () =>
-			{
-				await accounts.GetAllAsync(recordsPerPage: 500, pagingToken: null, cancellationToken: TestContext.Current.CancellationToken).ConfigureAwait(true);
-			});
+			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => accounts.GetAllAsync(recordsPerPage: 500, pagingToken: null, cancellationToken: TestContext.Current.CancellationToken));
 		}
 	}
 }

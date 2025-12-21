@@ -315,10 +315,15 @@ namespace ZoomNet.UnitTests.Resources
 			var userId = "user123";
 			var channelId = "channel1";
 			var emails = new[] { "newmember1@example.com", "newmember2@example.com" };
+			var responseContent = @"{
+				""added_at"": ""2020-02-10T21:39:50Z"",
+				""ids"": ""D40dy5L7SJiSTayIvRV9Lw,KT6h5SfCSm6YNjZo7i8few"",
+				""member_ids"": ""R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ,R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ""
+			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("chat", "users", userId, "channels", channelId, "members"))
-				.Respond("application/json", CHAT_MEMBERS_EDIT_RESULT_JSON);
+				.Respond("application/json", responseContent);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -335,7 +340,7 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
-		public void InviteMembersToAccountChannelAsync_NoEmails_ThrowsException()
+		public async Task InviteMembersToAccountChannelAsync_NoEmails_ThrowsException()
 		{
 			// Arrange
 			var userId = "user123";
@@ -348,10 +353,7 @@ namespace ZoomNet.UnitTests.Resources
 			var chat = new Chat(client);
 
 			// Act & Assert
-			Should.Throw<ArgumentNullException>(async () =>
-			{
-				await chat.InviteMembersToAccountChannelAsync(userId, channelId, emails, TestContext.Current.CancellationToken);
-			});
+			await Should.ThrowAsync<ArgumentException>(() => chat.InviteMembersToAccountChannelAsync(userId, channelId, emails, TestContext.Current.CancellationToken));
 		}
 
 		[Fact]
@@ -404,11 +406,16 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var userId = "user123";
 			var channelId = "channel1";
-			var emails = new[] { "member1@example.com" };
+			var emails = new[] { "member1@example.com", "member2@example.com" };
+			var responseContent = @"{
+				""added_at"": ""2020-02-10T21:39:50Z"",
+				""ids"": ""D40dy5L7SJiSTayIvRV9Lw,KT6h5SfCSm6YNjZo7i8few"",
+				""member_ids"": ""R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ,R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ""
+			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("chat", "users", userId, "channels", channelId, "admins"))
-				.Respond("application/json", CHAT_MEMBERS_EDIT_RESULT_JSON);
+				.Respond("application/json", responseContent);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -449,7 +456,7 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
-		public void DemoteAdminsInAccountChannelByIdAsync_NoAdminIds_ThrowsException()
+		public async Task DemoteAdminsInAccountChannelByIdAsync_NoAdminIds_ThrowsException()
 		{
 			// Arrange
 			var userId = "user123";
@@ -462,14 +469,11 @@ namespace ZoomNet.UnitTests.Resources
 			var chat = new Chat(client);
 
 			// Act & Assert
-			Should.Throw<ArgumentNullException>(async () =>
-			{
-				await chat.DemoteAdminsInAccountChannelByIdAsync(userId, channelId, adminIds, TestContext.Current.CancellationToken);
-			});
+			await Should.ThrowAsync<ArgumentException>(() => chat.DemoteAdminsInAccountChannelByIdAsync(userId, channelId, adminIds, TestContext.Current.CancellationToken));
 		}
 
 		[Fact]
-		public void DemoteAdminsInAccountChannelByIdAsync_TooManyAdminIds_ThrowsException()
+		public async Task DemoteAdminsInAccountChannelByIdAsync_TooManyAdminIds_ThrowsException()
 		{
 			// Arrange
 			var userId = "user123";
@@ -482,10 +486,7 @@ namespace ZoomNet.UnitTests.Resources
 			var chat = new Chat(client);
 
 			// Act & Assert
-			Should.Throw<ArgumentOutOfRangeException>(async () =>
-			{
-				await chat.DemoteAdminsInAccountChannelByIdAsync(userId, channelId, adminIds, TestContext.Current.CancellationToken);
-			});
+			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => chat.DemoteAdminsInAccountChannelByIdAsync(userId, channelId, adminIds, TestContext.Current.CancellationToken));
 		}
 
 		[Fact]

@@ -41,8 +41,7 @@ namespace ZoomNet.UnitTests.Resources
 					sessionId,
 					from: null,
 					to: null,
-					cancellationToken: TestContext.Current.CancellationToken)
-				.ConfigureAwait(true);
+					cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();

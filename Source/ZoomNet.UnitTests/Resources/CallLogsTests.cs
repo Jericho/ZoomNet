@@ -301,7 +301,7 @@ namespace ZoomNet.UnitTests.Resources
 			var calllogs = new CallLogs(client);
 
 			// Act
-			var result = await calllogs.GetAsync(from, to, CallLogType.All, null, CallLogTimeType.StartTime, null, false, recordsPerPage, null, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await calllogs.GetAsync(from, to, CallLogType.All, null, CallLogTimeType.StartTime, null, false, recordsPerPage, null, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();

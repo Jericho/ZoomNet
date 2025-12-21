@@ -221,13 +221,9 @@ namespace ZoomNet.UnitTests.Json
 			var options = JsonFormatter.DefaultDeserializerOptions;
 
 			// Act
-			void DeserializeMeeting()
-			{
-				JsonSerializer.Deserialize<Meeting>(invalidJson, options);
-			}
+			var exception = Should.Throw<JsonException>(() => JsonSerializer.Deserialize<Meeting>(invalidJson, options));
 
 			// Assert
-			var exception = Should.Throw<JsonException>(DeserializeMeeting);
 			exception.Message.ShouldContain("unknown meeting type");
 		}
 
@@ -244,14 +240,8 @@ namespace ZoomNet.UnitTests.Json
 			}";
 			var options = JsonFormatter.DefaultDeserializerOptions;
 
-			// Act
-			void DeserializeMeeting()
-			{
-				JsonSerializer.Deserialize<Meeting>(invalidJson, options);
-			}
-
-			// Assert
-			Should.Throw<Exception>(DeserializeMeeting);
+			// Act & Assert
+			Should.Throw<Exception>(() => JsonSerializer.Deserialize<Meeting>(invalidJson, options));
 		}
 
 		[Fact]

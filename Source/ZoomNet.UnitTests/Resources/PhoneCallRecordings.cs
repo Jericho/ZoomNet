@@ -36,9 +36,7 @@ namespace ZoomNet.UnitTests.Resources
 			var phone = new Phone(client);
 
 			// Act
-			var result = await phone
-				.GetRecordingAsync(callId, TestContext.Current.CancellationToken)
-				.ConfigureAwait(true);
+			var result = await phone.GetRecordingAsync(callId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -68,9 +66,7 @@ namespace ZoomNet.UnitTests.Resources
 			var phone = new Phone(client);
 
 			// Act
-			var result = await phone
-				.GetRecordingTranscriptAsync(recordingId, TestContext.Current.CancellationToken)
-				.ConfigureAwait(true);
+			var result = await phone.GetRecordingTranscriptAsync(recordingId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
