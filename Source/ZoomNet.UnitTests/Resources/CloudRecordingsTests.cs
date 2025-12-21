@@ -606,5 +606,572 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
 		}
+
+		#region Recording Settings Tests
+
+		[Fact]
+		public async Task GetRecordingSettingsAsync()
+		{
+			// Arrange
+			var meetingId = "meeting123";
+			var settingsJson = @"{
+				""share_recording"": ""publicly"",
+				""recording_authentication"": true,
+				""password"": ""secret123"",
+				""on_demand"": true,
+				""approval_type"": 1,
+				""send_email_to_host"": true
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId, "recordings", "settings"))
+				.Respond("application/json", settingsJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+			var result = await recordings.GetRecordingSettingsAsync(meetingId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task DeleteRecordingFilesAsync_MoveToTrash()
+		{
+			// Arrange
+			var meetingId = "meeting123";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("meetings", meetingId, "recordings"))
+				.WithQueryString("action", "trash")
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+			await recordings.DeleteRecordingFilesAsync(meetingId, false, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task DeleteRecordingFilesAsync_Permanent()
+		{
+			// Arrange
+			var meetingId = "meeting123";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("meetings", meetingId, "recordings"))
+				.WithQueryString("action", "delete")
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+			await recordings.DeleteRecordingFilesAsync(meetingId, true, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task DeleteRecordingFileAsync_SingleFile_Trash()
+		{
+			// Arrange
+			var meetingId = "meeting123";
+			var recordingFileId = "file456";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("meetings", meetingId, "recordings", recordingFileId))
+				.WithQueryString("action", "trash")
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+			await recordings.DeleteRecordingFileAsync(meetingId, recordingFileId, false, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task DeleteRecordingFileAsync_SingleFile_Permanent()
+		{
+			// Arrange
+			var meetingId = "meeting123";
+			var recordingFileId = "file456";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("meetings", meetingId, "recordings", recordingFileId))
+				.WithQueryString("action", "delete")
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+			await recordings.DeleteRecordingFileAsync(meetingId, recordingFileId, true, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task RecoverRecordingFilesAsync_AllFiles()
+		{
+			// Arrange
+			var meetingId = "meeting123";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("meetings", meetingId, "recordings", "status"))
+				.WithQueryString("action", "recover")
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+			await recordings.RecoverRecordingFilesAsync(meetingId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task RecoverRecordingFileAsync_SingleFile()
+		{
+			// Arrange
+			var meetingId = "meeting123";
+			var recordingFileId = "file456";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("meetings", meetingId, "recordings", recordingFileId, "status"))
+				.WithQueryString("action", "recover")
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+			await recordings.RecoverRecordingFileAsync(meetingId, recordingFileId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		#endregion
+
+		#region Registrants Tests
+
+		[Fact]
+		public async Task GetRecordingRegistrantsAsync_WithPageNumber()
+		{
+			// Arrange
+			var meetingId = "meeting123";
+			var recordsPerPage = 30;
+			var page = 1;
+			var registrantsJson = @"{
+				""page_count"": 1,
+				""page_number"": 1,
+				""page_size"": 30,
+				""total_records"": 2,
+				""registrants"": [
+				{
+					""id"": ""reg1"",
+					""email"": ""user1@example.com"",
+					""first_name"": ""John"",
+					""last_name"": ""Doe"",
+					""status"": ""approved""
+				}
+				]
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId, "recordings", "registrants"))
+				.WithQueryString("page_size", recordsPerPage.ToString())
+				.WithQueryString("page_number", page.ToString())
+				.Respond("application/json", registrantsJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+#pragma warning disable CS0618 // Type or member is obsolete
+			var result = await recordings.GetRecordingRegistrantsAsync(meetingId, recordsPerPage, page, TestContext.Current.CancellationToken);
+#pragma warning restore CS0618 // Type or member is obsolete
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task GetRecordingRegistrantsAsync_WithPagingToken()
+		{
+			// Arrange
+			var meetingId = "meeting123";
+			var recordsPerPage = 30;
+			var pagingToken = "token123";
+			var registrantsJson = @"{
+				""page_size"": 30,
+				""next_page_token"": ""token456"",
+				""registrants"": [
+				{
+					""id"": ""reg1"",
+					""email"": ""user1@example.com"",
+					""first_name"": ""John"",
+					""last_name"": ""Doe"",
+					""status"": ""approved""
+				}
+				]
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId, "recordings", "registrants"))
+				.WithQueryString("page_size", recordsPerPage.ToString())
+				.WithQueryString("next_page_token", pagingToken)
+				.Respond("application/json", registrantsJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+			var result = await recordings.GetRecordingRegistrantsAsync(meetingId, recordsPerPage, pagingToken, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task GetRecordingsForUserAsync_InvalidRecordsPerPage_ThrowsException()
+		{
+			// Arrange
+			var userId = "user123";
+			var mockHttp = new MockHttpMessageHandler();
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act & Assert
+			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => recordings.GetRecordingsForUserAsync(userId, recordsPerPage: 500, pagingToken: null, cancellationToken: TestContext.Current.CancellationToken));
+		}
+
+		[Fact]
+		public async Task GetRecordingRegistrantsAsync_InvalidRecordsPerPage_ThrowsException()
+		{
+			// Arrange
+			var meetingId = "meeting123";
+			var mockHttp = new MockHttpMessageHandler();
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act & Assert
+			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => recordings.GetRecordingRegistrantsAsync(meetingId, recordsPerPage: 500, pagingToken: null, cancellationToken: TestContext.Current.CancellationToken));
+		}
+
+		[Fact]
+		public async Task GetRecordingsForUserAsync_QueryTrash_True()
+		{
+			// Arrange
+			var userId = "user123";
+			var recordingsJson = @"{
+				""from"": ""2023-01-01"",
+				""to"": ""2023-01-31"",
+				""page_size"": 30,
+				""meetings"": []
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "recordings"))
+				.WithQueryString("trash", "true")
+				.Respond("application/json", recordingsJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+			var result = await recordings.GetRecordingsForUserAsync(userId, queryTrash: true, recordsPerPage: 50, pagingToken: null, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task GetRecordingsForUserAsync_WithDateRange()
+		{
+			// Arrange
+			var userId = "user123";
+			var from = new DateTime(2023, 1, 1);
+			var to = new DateTime(2023, 1, 31);
+			var recordingsJson = @"{
+				""from"": ""2023-01-01"",
+				""to"": ""2023-01-31"",
+				""page_size"": 30,
+				""meetings"": []
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "recordings"))
+				.WithQueryString("from", "2023-01-01")
+				.WithQueryString("to", "2023-01-31")
+				.Respond("application/json", recordingsJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+			var result = await recordings.GetRecordingsForUserAsync(userId, from: from, to: to, recordsPerPage: 50, pagingToken: null, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.From.ShouldBe(from);
+			result.To.ShouldBe(to);
+		}
+
+		[Fact]
+		public async Task AddRegistrantAsync_MinimalFields()
+		{
+			// Arrange
+			var meetingId = 123456789L;
+			var email = "user@example.com";
+			var firstName = "John";
+			var lastName = "Doe";
+			var registrationJson = @"{
+				""id"": 123456,
+				""registrant_id"": ""reg123"",
+				""topic"": ""Test Meeting"",
+				""start_time"": ""2023-01-15T10:00:00Z"",
+				""join_url"": ""https://zoom.us/rec/join/abc123""
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("meetings", meetingId, "recordings", "registrants"))
+				.Respond("application/json", registrationJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+			var result = await recordings.AddRegistrantAsync(meetingId, email, firstName, lastName,
+				null, null, null, null, null, null, null, null, null, null, null, null, null,
+				TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.RegistrantId.ShouldBe("reg123");
+		}
+
+		[Fact]
+		public async Task AddRegistrantAsync_AllFields()
+		{
+			// Arrange
+			var meetingId = 123456789L;
+			var registrationJson = @"{
+				""id"": 123456,
+				""registrant_id"": ""reg123"",
+				""topic"": ""Test Meeting"",
+				""start_time"": ""2023-01-15T10:00:00Z"",
+				""join_url"": ""https://zoom.us/rec/join/abc123""
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("meetings", meetingId, "recordings", "registrants"))
+				.Respond("application/json", registrationJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+			var result = await recordings.AddRegistrantAsync(
+				meetingId,
+				"user@example.com",
+				"John",
+				"Doe",
+				"123 Main St",
+				"New York",
+				"US",
+				"10001",
+				"NY",
+				"555-1234",
+				"Technology",
+				"Tech Corp",
+				"Developer",
+				"1-3 months",
+				"Decision Maker",
+				"50-100",
+				"Looking forward",
+				TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task ApproveRegistrantAsync_SingleRegistrant()
+		{
+			// Arrange
+			var meetingId = 123456789L;
+			var registrantId = "reg123";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("meetings", meetingId, "recordings", "registrants", "status"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+			await recordings.ApproveRegistrantAsync(meetingId, registrantId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task ApproveRegistrantsAsync_MultipleRegistrants()
+		{
+			// Arrange
+			var meetingId = 123456789L;
+			var registrantIds = new[] { "reg1", "reg2", "reg3" };
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("meetings", meetingId, "recordings", "registrants", "status"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+			await recordings.ApproveRegistrantsAsync(meetingId, registrantIds, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task RejectRegistrantAsync_SingleRegistrant()
+		{
+			// Arrange
+			var meetingId = 123456789L;
+			var registrantId = "reg123";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("meetings", meetingId, "recordings", "registrants", "status"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+			await recordings.RejectRegistrantAsync(meetingId, registrantId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task RejectRegistrantsAsync_MultipleRegistrants()
+		{
+			// Arrange
+			var meetingId = 123456789L;
+			var registrantIds = new[] { "reg1", "reg2" };
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("meetings", meetingId, "recordings", "registrants", "status"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+			await recordings.RejectRegistrantsAsync(meetingId, registrantIds, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		#endregion
+
+		#region Recording Information Tests
+
+		[Fact]
+		public async Task GetRecordingInformationAsync_CustomTtl()
+		{
+			// Arrange
+			var meetingId = "meeting123";
+			var ttl = 600; // 10 minutes
+			var recordingJson = @"{
+				""uuid"": ""meeting-uuid-1"",
+				""id"": 123456789,
+				""download_access_token"": ""token123""
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId, "recordings"))
+				.WithQueryString("include_fields", "download_access_token")
+				.WithQueryString("ttl", ttl.ToString())
+				.Respond("application/json", recordingJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+			var result = await recordings.GetRecordingInformationAsync(meetingId, ttl, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		#endregion
 	}
 }
