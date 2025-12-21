@@ -78,5 +78,5 @@ function Invoke-AppVeyorInstall {
 
     # Display elapsed time in a readable format
     $Elapsed = (Get-Date) - $StartTime
-    Write-Verbose -Verbose "Checking/installing the desired .NET SDK took: $Elapsed.TotalMinutes minutes $Elapsed.Seconds seconds $Elapsed.Milliseconds milliseconds"
+    Write-Verbose -Verbose "Checking/installing the desired .NET SDK took: $Elapsed"
 }
