@@ -72,8 +72,9 @@ namespace ZoomNet.UnitTests.Resources
 		}";
 
 		private const string CHAT_MEMBERS_EDIT_RESULT_JSON = @"{
-			""ids"": [""member1"", ""member2""],
-			""added_at"": ""2023-01-01T12:00:00Z""
+			""added_at"": ""2020-02-10T21:39:50Z"",
+			""ids"": ""D40dy5L7SJiSTayIvRV9Lw,KT6h5SfCSm6YNjZo7i8few"",
+			""member_ids"": ""R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ,R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ""
 		}";
 
 		private const string CHAT_MESSAGES_JSON = @"{
@@ -315,15 +316,10 @@ namespace ZoomNet.UnitTests.Resources
 			var userId = "user123";
 			var channelId = "channel1";
 			var emails = new[] { "newmember1@example.com", "newmember2@example.com" };
-			var responseContent = @"{
-				""added_at"": ""2020-02-10T21:39:50Z"",
-				""ids"": ""D40dy5L7SJiSTayIvRV9Lw,KT6h5SfCSm6YNjZo7i8few"",
-				""member_ids"": ""R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ,R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ""
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("chat", "users", userId, "channels", channelId, "members"))
-				.Respond("application/json", responseContent);
+				.Respond("application/json", CHAT_MEMBERS_EDIT_RESULT_JSON);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -407,15 +403,10 @@ namespace ZoomNet.UnitTests.Resources
 			var userId = "user123";
 			var channelId = "channel1";
 			var emails = new[] { "member1@example.com", "member2@example.com" };
-			var responseContent = @"{
-				""added_at"": ""2020-02-10T21:39:50Z"",
-				""ids"": ""D40dy5L7SJiSTayIvRV9Lw,KT6h5SfCSm6YNjZo7i8few"",
-				""member_ids"": ""R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ,R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ""
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("chat", "users", userId, "channels", channelId, "admins"))
-				.Respond("application/json", responseContent);
+				.Respond("application/json", CHAT_MEMBERS_EDIT_RESULT_JSON);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
