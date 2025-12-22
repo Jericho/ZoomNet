@@ -92,7 +92,567 @@ namespace ZoomNet.UnitTests.Resources
 			_outputHelper = outputHelper;
 		}
 
-		#region Event CRUD Tests
+		#region Attendee Actions Tests
+
+		[Fact]
+		public async Task GetAllAttendeeActionsAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var attendeeEmail = "attendee@example.com";
+			var actionsJson = @"{
+				""page_size"": 30,
+				""next_page_token"": """",
+				""attendees"": [
+					{
+						""email"": ""attendee@example.com"",
+						""action"": ""check-in""
+					}
+				]
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "attendee_action"))
+				.WithQueryString("email", attendeeEmail)
+				.WithQueryString("page_size", "30")
+				.Respond("application/json", actionsJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetAllAttendeeActionsAsync(eventId, attendeeEmail, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task CheckInAttendeesAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var attendeeEmails = new[] { "attendee1@example.com", "attendee2@example.com" };
+			var source = "manual";
+			var errorsJson = @"{""errors"": []}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "attendee_action"))
+				.Respond("application/json", errorsJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.CheckInAttendeesAsync(eventId, attendeeEmails, source, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Length.ShouldBe(0);
+		}
+
+		#endregion
+
+		#region Co-Editors Tests
+
+		[Fact]
+		public async Task GetAllCoEditorsAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var coEditorsJson = @"{
+				""coeditors"": [
+					{
+						""email"": ""coeditor1@example.com"",
+						""permission_groups"": [ ""Publish"", ""EventConfiguration"" ]
+					},
+					{
+						""email"": ""coeditor2@example.com"",
+						""permission_groups"": [ ""EventBranding"", ""Registration & Join"", ""Venue"", ""EventExperience"", ""EventPlanning"" ]
+					}
+				],
+				""total_records"": 2
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "coeditors"))
+				.Respond("application/json", coEditorsJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetAllCoEditorsAsync(eventId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Length.ShouldBe(2);
+		}
+
+		[Fact]
+		public async Task AddCoEditorsAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var coeditors = new[]
+			{
+				(EmailAddress: "coeditor@example.com", Permissions: new[] { EventCoEditorPermissionGroup.Publish })
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "coeditors"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.AddCoEditorsAsync(eventId, coeditors, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task AddCoEditorsAsync_MultipleCoEditorsWithMultiplePermissions()
+		{
+			// Arrange
+			var eventId = "event123";
+			var coeditors = new[]
+			{
+				(EmailAddress: "coeditor1@example.com", Permissions: new[] { EventCoEditorPermissionGroup.Publish, EventCoEditorPermissionGroup.EventConfiguration }),
+				(EmailAddress: "coeditor2@example.com", Permissions: new[] { EventCoEditorPermissionGroup.EventBranding, EventCoEditorPermissionGroup.RegistrationAndJoin })
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "coeditors"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.AddCoEditorsAsync(eventId, coeditors, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateCoEditorsAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var coeditors = new List<(string EmailAddress, IEnumerable<EventCoEditorPermissionGroup> Permissions)>()
+			{
+				(EmailAddress: "coeditor@example.com", Permissions: new[] { EventCoEditorPermissionGroup.EventBranding, EventCoEditorPermissionGroup.Venue })
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "coeditors"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateCoEditorsAsync(eventId, coeditors, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateCoEditorsAsync_MultipleCoEditors()
+		{
+			// Arrange
+			var eventId = "event123";
+			var coeditors = new[]
+			{
+				(EmailAddress: "coeditor1@example.com", Permissions: (IEnumerable<EventCoEditorPermissionGroup>)new[] { EventCoEditorPermissionGroup.Publish }),
+				(EmailAddress: "coeditor2@example.com", Permissions: (IEnumerable<EventCoEditorPermissionGroup>)new[] { EventCoEditorPermissionGroup.EventConfiguration, EventCoEditorPermissionGroup.EventPlanning })
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "coeditors"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateCoEditorsAsync(eventId, coeditors, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task DeleteCoEditorsAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var emailAddresses = new[] { "coeditor@example.com" };
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "coeditors"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.DeleteCoEditorsAsync(eventId, emailAddresses, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task DeleteCoEditorsAsync_MultipleCoEditors()
+		{
+			// Arrange
+			var eventId = "event123";
+			var emailAddresses = new[] { "coeditor1@example.com", "coeditor2@example.com", "coeditor3@example.com" };
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "coeditors"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.DeleteCoEditorsAsync(eventId, emailAddresses, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		#endregion
+
+		#region Event Access Tests
+
+		[Fact]
+		public async Task CreateEventAccessLinkAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var name = "Registration Link";
+			var accessLinkJson = @"{
+				""access_link_id"": ""link123"",
+				""name"": ""Registration Link"",
+				""type"": ""registration"",
+				""is_default"": false,
+				""url"": ""https://zoom.us/events/example"",
+				""authentication_method"": ""zoom_account"",
+				""allow_domain_list"": [ ""example.com"" ],
+				""email_restrict_list"": [ ""user@example.com"" ],
+				""security_at_join"": {
+					""email_authentication"": true,
+					""security_code_verification"": true
+				},
+				""ticket_type_id"": ""ticket123"",
+				""recurring_registration_option"": ""all_sessions""
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "access_links"))
+				.Respond("application/json", accessLinkJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.CreateEventAccessLinkAsync(eventId, name, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Id.ShouldBe("link123");
+			result.Name.ShouldBe("Registration Link");
+		}
+
+		[Fact]
+		public async Task CreateEventAccessLinkAsync_WithAllParameters()
+		{
+			// Arrange
+			var eventId = "event123";
+			var name = "Group Join Link";
+			var type = EventAccessLinkType.GroupJoin;
+			var authMethod = EventAuthenticationMethod.EmailOpt;
+			var isDefault = true;
+			var allowDomains = new[] { "example.com", "test.com" };
+			var emailRestrict = new[] { "user@example.com" };
+			var emailAuth = false;
+			var securityCodeVerification = false;
+			var ticketTypeId = "ticket456";
+			var recurringType = RecurringEventRegistrationType.SingleSession;
+
+			var accessLinkJson = @"{
+				""access_link_id"": ""link456"",
+				""name"": ""Group Join Link"",
+				""type"": ""group-join"",
+				""is_default"": true,
+				""url"": ""https://zoom.us/events/groupjoin"",
+				""authentication_method"": ""public"",
+				""ticket_type_id"": ""ticket456"",
+				""recurring_registration_option"": ""specific_sessions""
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "access_links"))
+				.Respond("application/json", accessLinkJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.CreateEventAccessLinkAsync(
+				eventId,
+				name,
+				type,
+				authMethod,
+				isDefault,
+				allowDomains,
+				emailRestrict,
+				emailAuth,
+				securityCodeVerification,
+				ticketTypeId,
+				recurringType,
+				TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Id.ShouldBe("link456");
+			result.Type.ShouldBe(EventAccessLinkType.GroupJoin);
+		}
+
+		[Fact]
+		public async Task DeleteEventAccessLinkAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var accessLinkId = "link123";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("zoom_events", "events", eventId, "access_links", accessLinkId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.DeleteEventAccessLinkAsync(eventId, accessLinkId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task GetEventAccessLinkAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var accessLinkId = "link123";
+			var accessLinkJson = @"{
+				""access_link_id"": ""link123"",
+				""name"": ""My Access Link"",
+				""type"": ""registration"",
+				""is_default"": false,
+				""url"": ""https://zoom.us/events/mylink"",
+				""authentication_method"": ""zoom_account""
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "access_links", accessLinkId))
+				.Respond("application/json", accessLinkJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetEventAccessLinkAsync(eventId, accessLinkId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Id.ShouldBe("link123");
+			result.Name.ShouldBe("My Access Link");
+			result.Url.ShouldBe("https://zoom.us/events/mylink");
+		}
+
+		[Fact]
+		public async Task GetAllEventAccessLinksAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var accessLinksJson = @"{
+				""access_links"": [
+					{
+						""access_link_id"": ""link1"",
+						""name"": ""Default Link"",
+						""type"": ""registration"",
+						""is_default"": true,
+						""url"": ""https://zoom.us/events/link1""
+					},
+					{
+						""access_link_id"": ""link2"",
+						""name"": ""Group Join Link"",
+						""type"": ""group-join"",
+						""is_default"": false,
+						""url"": ""https://zoom.us/events/link2""
+					}
+				]
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "access_links"))
+				.Respond("application/json", accessLinksJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetAllEventAccessLinksAsync(eventId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Length.ShouldBe(2);
+			result[0].Id.ShouldBe("link1");
+			result[0].IsDefault.ShouldBeTrue();
+			result[1].Id.ShouldBe("link2");
+			result[1].Type.ShouldBe(EventAccessLinkType.GroupJoin);
+		}
+
+		[Fact]
+		public async Task UpdateEventAccessLinkAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var accessLinkId = "link123";
+			var name = "Updated Link Name";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "access_links", accessLinkId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateEventAccessLinkAsync(eventId, accessLinkId, name, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateEventAccessLinkAsync_WithMultipleParameters()
+		{
+			// Arrange
+			var eventId = "event123";
+			var accessLinkId = "link123";
+			var name = "Updated Link";
+			var isDefault = true;
+			var authMethod = EventAuthenticationMethod.ZoomAccount;
+			var allowDomains = new[] { "newdomain.com" };
+			var emailRestrict = new[] { "admin@example.com" };
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "access_links", accessLinkId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateEventAccessLinkAsync(
+				eventId,
+				accessLinkId,
+				name,
+				isDefault,
+				authMethod,
+				allowDomains,
+				emailRestrict,
+				cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateEventAccessLinkAsync_WithSecurityOptions()
+		{
+			// Arrange
+			var eventId = "event123";
+			var accessLinkId = "link123";
+			var emailAuth = false;
+			var securityCode = true;
+			var ticketTypeId = "ticket789";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "access_links", accessLinkId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateEventAccessLinkAsync(
+				eventId,
+				accessLinkId,
+				emailAuthentication: emailAuth,
+				securityCodeVerification: securityCode,
+				ticketTypeId: ticketTypeId,
+				cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		#endregion
+
+		#region Event Tests
 
 		[Fact]
 		public async Task GetAllAsync()
@@ -121,6 +681,19 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
 			result.Records.Length.ShouldBe(1);
+		}
+
+		[Fact]
+		public async Task GetAllAsync_InvalidRecordsPerPage_ThrowsException()
+		{
+			// Arrange
+			var mockHttp = new MockHttpMessageHandler();
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act & Assert
+			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => events.GetAllAsync(recordsPerPage: 500, cancellationToken: TestContext.Current.CancellationToken));
 		}
 
 		[Fact]
@@ -505,146 +1078,65 @@ namespace ZoomNet.UnitTests.Resources
 
 		#endregion
 
-		#region Speaker Tests
+		#region Registrant Tests
 
 		[Fact]
-		public async Task CreateSpeakerAsync()
+		public async Task GetAllRegistrantsAsync()
 		{
 			// Arrange
 			var eventId = "event123";
-			var name = "John Doe";
-			var emailAddress = "john@example.com";
-			var speakerJson = @"{
-				""speaker_id"": ""3935Ug73Sp6S-7K1BHk7qw"",
-				""name"": ""John Joseph Dev"",
-				""email"": ""email@example.com"",
-				""job_title"": ""Product Manager"",
-				""biography"": ""Provide a brief introduction of the speaker."",
-				""company_name"": ""zoom"",
-				""company_website"": ""https://www.example.com"",
-				""linkedin_url"": ""https://linkedin.com/example"",
-				""twitter_url"": ""https://twitter.com/example"",
-				""youtube_url"": ""https://youtube.com/example"",
-				""featured_in_event_detail_page"": true,
-				""visible_in_event_detail_page"": true,
-				""featured_in_lobby"": false,
-				""visible_in_lobby"": true
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "registrants"))
+				.WithQueryString("page_size", "30")
+				.Respond("application/json", REGISTRANTS_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetAllRegistrantsAsync(eventId, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task GetAllSessionAttendeesAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var sessionId = "session789";
+			var attendeesJson = @"{
+				""page_size"": 30,
+				""next_page_token"": """",
+				""attendees"": [
+					{
+						""id"": ""att123"",
+						""email"": ""attendee@example.com""
+					}
+				]
 			}";
 
 			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "speakers"))
-				.Respond("application/json", speakerJson);
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "attendees"))
+				.WithQueryString("page_size", "30")
+				.Respond("application/json", attendeesJson);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
 			var events = new Events(client);
 
 			// Act
-			var result = await events.CreateSpeakerAsync(eventId, name, emailAddress, cancellationToken: TestContext.Current.CancellationToken);
+			var result = await events.GetAllSessionAttendeesAsync(eventId, sessionId, cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-		}
-
-		[Fact]
-		public async Task GetAllSpeakersAsync()
-		{
-			// Arrange
-			var eventId = "event123";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "speakers"))
-				.Respond("application/json", SPEAKERS_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var events = new Events(client);
-
-			// Act
-			var result = await events.GetAllSpeakersAsync(eventId, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Length.ShouldBe(1);
-		}
-
-		[Fact]
-		public async Task GetSpeakerAsync()
-		{
-			// Arrange
-			var eventId = "event123";
-			var speakerId = "speaker456";
-			var speakerJson = @"{
-				""id"": ""speaker456"",
-				""name"": ""John Doe""
-			}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "speakers", speakerId))
-				.Respond("application/json", speakerJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var events = new Events(client);
-
-			// Act
-			var result = await events.GetSpeakerAsync(eventId, speakerId, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-		}
-
-		[Fact]
-		public async Task UpdateSpeakerAsync()
-		{
-			// Arrange
-			var eventId = "event123";
-			var speakerId = "speaker456";
-			var name = "Jane Doe";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "speakers", speakerId))
-				.Respond(HttpStatusCode.NoContent);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var events = new Events(client);
-
-			// Act
-			await events.UpdateSpeakerAsync(eventId, speakerId, name, cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-		}
-
-		[Fact]
-		public async Task DeleteSpeakerAsync()
-		{
-			// Arrange
-			var eventId = "event123";
-			var speakerId = "speaker456";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("zoom_events", "events", eventId, "speakers", speakerId))
-				.Respond(HttpStatusCode.NoContent);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var events = new Events(client);
-
-			// Act
-			await events.DeleteSpeakerAsync(eventId, speakerId, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
 		}
 
 		#endregion
@@ -846,60 +1338,42 @@ namespace ZoomNet.UnitTests.Resources
 
 		#endregion
 
-		#region Registrant Tests
+		#region Speaker Tests
 
 		[Fact]
-		public async Task GetAllRegistrantsAsync()
+		public async Task CreateSpeakerAsync()
 		{
 			// Arrange
 			var eventId = "event123";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "registrants"))
-				.WithQueryString("page_size", "30")
-				.Respond("application/json", REGISTRANTS_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var events = new Events(client);
-
-			// Act
-			var result = await events.GetAllRegistrantsAsync(eventId, cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-		}
-
-		[Fact]
-		public async Task GetAllSessionAttendeesAsync()
-		{
-			// Arrange
-			var eventId = "event123";
-			var sessionId = "session789";
-			var attendeesJson = @"{
-				""page_size"": 30,
-				""next_page_token"": """",
-				""attendees"": [
-					{
-						""id"": ""att123"",
-						""email"": ""attendee@example.com""
-					}
-				]
+			var name = "John Doe";
+			var emailAddress = "john@example.com";
+			var speakerJson = @"{
+				""speaker_id"": ""3935Ug73Sp6S-7K1BHk7qw"",
+				""name"": ""John Joseph Dev"",
+				""email"": ""email@example.com"",
+				""job_title"": ""Product Manager"",
+				""biography"": ""Provide a brief introduction of the speaker."",
+				""company_name"": ""zoom"",
+				""company_website"": ""https://www.example.com"",
+				""linkedin_url"": ""https://linkedin.com/example"",
+				""twitter_url"": ""https://twitter.com/example"",
+				""youtube_url"": ""https://youtube.com/example"",
+				""featured_in_event_detail_page"": true,
+				""visible_in_event_detail_page"": true,
+				""featured_in_lobby"": false,
+				""visible_in_lobby"": true
 			}";
 
 			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "attendees"))
-				.WithQueryString("page_size", "30")
-				.Respond("application/json", attendeesJson);
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "speakers"))
+				.Respond("application/json", speakerJson);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
 			var events = new Events(client);
 
 			// Act
-			var result = await events.GetAllSessionAttendeesAsync(eventId, sessionId, cancellationToken: TestContext.Current.CancellationToken);
+			var result = await events.CreateSpeakerAsync(eventId, name, emailAddress, cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -907,39 +1381,51 @@ namespace ZoomNet.UnitTests.Resources
 			result.ShouldNotBeNull();
 		}
 
-		#endregion
-
-		#region Attendee Actions Tests
-
 		[Fact]
-		public async Task GetAllAttendeeActionsAsync()
+		public async Task GetAllSpeakersAsync()
 		{
 			// Arrange
 			var eventId = "event123";
-			var attendeeEmail = "attendee@example.com";
-			var actionsJson = @"{
-				""page_size"": 30,
-				""next_page_token"": """",
-				""attendees"": [
-					{
-						""email"": ""attendee@example.com"",
-						""action"": ""check-in""
-					}
-				]
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "speakers"))
+				.Respond("application/json", SPEAKERS_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetAllSpeakersAsync(eventId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Length.ShouldBe(1);
+		}
+
+		[Fact]
+		public async Task GetSpeakerAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var speakerId = "speaker456";
+			var speakerJson = @"{
+				""id"": ""speaker456"",
+				""name"": ""John Doe""
 			}";
 
 			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "attendee_action"))
-				.WithQueryString("email", attendeeEmail)
-				.WithQueryString("page_size", "30")
-				.Respond("application/json", actionsJson);
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "speakers", speakerId))
+				.Respond("application/json", speakerJson);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
 			var events = new Events(client);
 
 			// Act
-			var result = await events.GetAllAttendeeActionsAsync(eventId, attendeeEmail, cancellationToken: TestContext.Current.CancellationToken);
+			var result = await events.GetSpeakerAsync(eventId, speakerId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -948,85 +1434,15 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
-		public async Task CheckInAttendeesAsync()
+		public async Task UpdateSpeakerAsync()
 		{
 			// Arrange
 			var eventId = "event123";
-			var attendeeEmails = new[] { "attendee1@example.com", "attendee2@example.com" };
-			var source = "manual";
-			var errorsJson = @"{""errors"": []}";
+			var speakerId = "speaker456";
+			var name = "Jane Doe";
 
 			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "attendee_action"))
-				.Respond("application/json", errorsJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var events = new Events(client);
-
-			// Act
-			var result = await events.CheckInAttendeesAsync(eventId, attendeeEmails, source, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Length.ShouldBe(0);
-		}
-
-		#endregion
-
-		#region Co-Editors Tests
-
-		[Fact]
-		public async Task GetAllCoEditorsAsync()
-		{
-			// Arrange
-			var eventId = "event123";
-			var coEditorsJson = @"{
-				""coeditors"": [
-					{
-						""email"": ""coeditor1@example.com"",
-						""permission_groups"": [ ""Publish"", ""EventConfiguration"" ]
-					},
-					{
-						""email"": ""coeditor2@example.com"",
-						""permission_groups"": [ ""EventBranding"", ""Registration & Join"", ""Venue"", ""EventExperience"", ""EventPlanning"" ]
-					}
-				],
-				""total_records"": 2
-			}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "coeditors"))
-				.Respond("application/json", coEditorsJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var events = new Events(client);
-
-			// Act
-			var result = await events.GetAllCoEditorsAsync(eventId, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Length.ShouldBe(2);
-		}
-
-		[Fact]
-		public async Task AddCoEditorsAsync()
-		{
-			// Arrange
-			var eventId = "event123";
-			var coeditors = new[]
-			{
-				(EmailAddress: "coeditor@example.com", Permissions: new[] { EventCoEditorPermissionGroup.Publish })
-			};
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "coeditors"))
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "speakers", speakerId))
 				.Respond(HttpStatusCode.NoContent);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
@@ -1034,7 +1450,7 @@ namespace ZoomNet.UnitTests.Resources
 			var events = new Events(client);
 
 			// Act
-			await events.AddCoEditorsAsync(eventId, coeditors, TestContext.Current.CancellationToken);
+			await events.UpdateSpeakerAsync(eventId, speakerId, name, cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -1042,18 +1458,14 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
-		public async Task AddCoEditorsAsync_MultipleCoEditorsWithMultiplePermissions()
+		public async Task DeleteSpeakerAsync()
 		{
 			// Arrange
 			var eventId = "event123";
-			var coeditors = new[]
-			{
-				(EmailAddress: "coeditor1@example.com", Permissions: new[] { EventCoEditorPermissionGroup.Publish, EventCoEditorPermissionGroup.EventConfiguration }),
-				(EmailAddress: "coeditor2@example.com", Permissions: new[] { EventCoEditorPermissionGroup.EventBranding, EventCoEditorPermissionGroup.RegistrationAndJoin })
-			};
+			var speakerId = "speaker456";
 
 			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "coeditors"))
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("zoom_events", "events", eventId, "speakers", speakerId))
 				.Respond(HttpStatusCode.NoContent);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
@@ -1061,127 +1473,11 @@ namespace ZoomNet.UnitTests.Resources
 			var events = new Events(client);
 
 			// Act
-			await events.AddCoEditorsAsync(eventId, coeditors, TestContext.Current.CancellationToken);
+			await events.DeleteSpeakerAsync(eventId, speakerId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
-		}
-
-		[Fact]
-		public async Task UpdateCoEditorsAsync()
-		{
-			// Arrange
-			var eventId = "event123";
-			var coeditors = new List<(string EmailAddress, IEnumerable<EventCoEditorPermissionGroup> Permissions)>()
-			{
-				(EmailAddress: "coeditor@example.com", Permissions: new[] { EventCoEditorPermissionGroup.EventBranding, EventCoEditorPermissionGroup.Venue })
-			};
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "coeditors"))
-				.Respond(HttpStatusCode.NoContent);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var events = new Events(client);
-
-			// Act
-			await events.UpdateCoEditorsAsync(eventId, coeditors, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-		}
-
-		[Fact]
-		public async Task UpdateCoEditorsAsync_MultipleCoEditors()
-		{
-			// Arrange
-			var eventId = "event123";
-			var coeditors = new[]
-			{
-				(EmailAddress: "coeditor1@example.com", Permissions: (IEnumerable<EventCoEditorPermissionGroup>)new[] { EventCoEditorPermissionGroup.Publish }),
-				(EmailAddress: "coeditor2@example.com", Permissions: (IEnumerable<EventCoEditorPermissionGroup>)new[] { EventCoEditorPermissionGroup.EventConfiguration, EventCoEditorPermissionGroup.EventPlanning })
-			};
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "coeditors"))
-				.Respond(HttpStatusCode.NoContent);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var events = new Events(client);
-
-			// Act
-			await events.UpdateCoEditorsAsync(eventId, coeditors, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-		}
-
-		[Fact]
-		public async Task DeleteCoEditorsAsync()
-		{
-			// Arrange
-			var eventId = "event123";
-			var emailAddresses = new[] { "coeditor@example.com" };
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "coeditors"))
-				.Respond(HttpStatusCode.NoContent);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var events = new Events(client);
-
-			// Act
-			await events.DeleteCoEditorsAsync(eventId, emailAddresses, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-		}
-
-		[Fact]
-		public async Task DeleteCoEditorsAsync_MultipleCoEditors()
-		{
-			// Arrange
-			var eventId = "event123";
-			var emailAddresses = new[] { "coeditor1@example.com", "coeditor2@example.com", "coeditor3@example.com" };
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "coeditors"))
-				.Respond(HttpStatusCode.NoContent);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var events = new Events(client);
-
-			// Act
-			await events.DeleteCoEditorsAsync(eventId, emailAddresses, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-		}
-
-		#endregion
-
-		#region Validation Tests
-
-		[Fact]
-		public async Task GetAllAsync_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var events = new Events(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => events.GetAllAsync(recordsPerPage: 500, cancellationToken: TestContext.Current.CancellationToken));
 		}
 
 		#endregion
