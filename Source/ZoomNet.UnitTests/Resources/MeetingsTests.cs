@@ -122,6 +122,23 @@ namespace ZoomNet.UnitTests.Resources
 			""join_url"": ""https://zoom.us/w/new_reg_123""
 		}";
 
+		private const string BATCH_REGISTRANTS_JSON = @"{
+			""registrants"": [
+				{
+					""id"": ""batch_reg_001"",
+					""registrant_id"": ""batch_reg_001"",
+					""email"": ""batch1@example.com"",
+					""join_url"": ""https://zoom.us/w/batch_reg_001""
+				},
+				{
+					""id"": ""batch_reg_002"",
+					""registrant_id"": ""batch_reg_002"",
+					""email"": ""batch2@example.com"",
+					""join_url"": ""https://zoom.us/w/batch_reg_002""
+				}
+			]
+		}";
+
 		private const string POLLS_JSON = @"{
 			""polls"": [
 				{
@@ -156,6 +173,64 @@ namespace ZoomNet.UnitTests.Resources
 
 		private const string INVITATION_JSON = @"{
 			""invitation"": ""You are invited to join the meeting.\n\nJoin URL: https://zoom.us/j/1234567890\nMeeting ID: 1234567890\nPassword: secret123""
+		}";
+
+		private const string LIVE_STREAM_SETTINGS_JSON = @"{
+			""stream_url"": ""https://stream.example.com/live"",
+			""stream_key"": ""streamkey123"",
+			""page_url"": ""https://example.com/meeting""
+		}";
+
+		private const string INVITE_LINKS_JSON = @"{
+			""attendees"": [
+				{
+					""name"": ""Attendee One"",
+					""join_url"": ""https://zoom.us/j/invite123""
+				},
+				{
+					""name"": ""Attendee Two"",
+					""join_url"": ""https://zoom.us/j/invite456""
+				}
+			]
+		}";
+
+		private const string SURVEY_JSON = @"{
+			""id"": ""survey123"",
+			""status"": ""notstart"",
+			""show_in_the_browser"": true,
+			""custom_survey"": {
+				""anonymous"": true,
+				""questions"": [
+					{
+						""name"": ""How satisfied are you?"",
+						""type"": ""single"",
+						""answer_required"": true
+					}
+				]
+			}
+		}";
+
+		private const string TEMPLATES_JSON = @"{
+			""templates"": [
+				{
+					""id"": ""template001"",
+					""name"": ""Standard Meeting Template"",
+					""type"": 2
+				},
+				{
+					""id"": ""template002"",
+					""name"": ""Webinar Template"",
+					""type"": 5
+				}
+			]
+		}";
+
+		private const string TOKEN_JSON = @"{
+			""token"": ""eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.test.token""
+		}";
+
+		private const string TEMPLATE_ID_JSON = @"{
+			""id"": ""newtemplate123""
 		}";
 
 		private readonly ITestOutputHelper _outputHelper;
@@ -383,6 +458,90 @@ namespace ZoomNet.UnitTests.Resources
 
 		#endregion
 
+		#region Update Meeting Tests
+
+		[Fact]
+		public async Task UpdateScheduledMeetingAsync_WithValidParameters_Succeeds()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+			var topic = "Updated Meeting Topic";
+			var agenda = "Updated agenda";
+			var duration = 60;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("meetings", meetingId.ToString()))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			await meetings.UpdateScheduledMeetingAsync(meetingId, topic: topic, agenda: agenda, duration: duration, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateRecurringMeetingAsync_WithRecurrence_Succeeds()
+		{
+			// Arrange
+			var meetingId = 3333333333L;
+			var topic = "Updated Recurring Meeting";
+			var recurrence = new RecurrenceInfo
+			{
+				Type = RecurrenceType.Weekly,
+				RepeatInterval = 1,
+				WeeklyDays = new[] { DayOfWeek.Monday, DayOfWeek.Wednesday, DayOfWeek.Friday }
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("meetings", meetingId.ToString()))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			await meetings.UpdateRecurringMeetingAsync(meetingId, topic: topic, recurrence: recurrence, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateMeetingOccurrenceAsync_WithOccurrenceId_Succeeds()
+		{
+			// Arrange
+			var meetingId = 3333333333L;
+			var occurrenceId = "occurrence123";
+			var agenda = "Updated occurrence agenda";
+			var start = new DateTime(2023, 6, 15, 10, 0, 0);
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("meetings", meetingId.ToString()))
+				.WithQueryString("occurrence_id", occurrenceId)
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			await meetings.UpdateMeetingOccurrenceAsync(meetingId, occurrenceId, agenda, start, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		#endregion
+
 		#region Delete and Status Tests
 
 		[Fact]
@@ -425,6 +584,28 @@ namespace ZoomNet.UnitTests.Resources
 
 			// Act
 			await meetings.EndAsync(meetingId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task RecoverAsync_WithMeetingId_Succeeds()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "status"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			await meetings.RecoverAsync(meetingId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -493,6 +674,84 @@ namespace ZoomNet.UnitTests.Resources
 			result.JoinUrl.ShouldNotBeNullOrEmpty();
 		}
 
+		[Fact]
+		public async Task PerformBatchRegistrationAsync_WithMultipleRegistrants_ReturnsRegistrantInfos()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+			var registrants = new[]
+			{
+				new BatchRegistrant { Email = "batch1@example.com", FirstName = "Batch", LastName = "One" },
+				new BatchRegistrant { Email = "batch2@example.com", FirstName = "Batch", LastName = "Two" }
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "batch_registrants"))
+				.Respond("application/json", BATCH_REGISTRANTS_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			var result = await meetings.PerformBatchRegistrationAsync(meetingId, registrants, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Length.ShouldBe(2);
+			result[0].Id.ShouldBe("batch_reg_001");
+			result[1].Id.ShouldBe("batch_reg_002");
+		}
+
+		[Fact]
+		public async Task ApproveRegistrantAsync_WithRegistrantInfo_Succeeds()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+			var registrantId = "reg001";
+			var registrantEmail = "user1@example.com";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "registrants", "status"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			await meetings.ApproveRegistrantAsync(meetingId, registrantId, registrantEmail, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task DeleteRegistrantAsync_WithRegistrantId_Succeeds()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+			var registrantId = "reg001";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "registrants", registrantId))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			await meetings.DeleteRegistrantAsync(meetingId, registrantId, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
 		#endregion
 
 		#region Poll Tests
@@ -558,6 +817,177 @@ namespace ZoomNet.UnitTests.Resources
 			result.Questions.Length.ShouldBe(1);
 		}
 
+		[Fact]
+		public async Task DeletePollAsync_WithPollId_Succeeds()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+			var pollId = 1001L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "polls", pollId.ToString()))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			await meetings.DeletePollAsync(meetingId, pollId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		#endregion
+
+		#region Live Streaming Tests
+
+		[Fact]
+		public async Task GetLiveStreamSettingsAsync_WithMeetingId_ReturnsSettings()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "livestream"))
+				.Respond("application/json", LIVE_STREAM_SETTINGS_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			var result = await meetings.GetLiveStreamSettingsAsync(meetingId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Url.ShouldBe("https://stream.example.com/live");
+			result.Key.ShouldBe("streamkey123");
+		}
+
+		[Fact]
+		public async Task UpdateLiveStreamAsync_WithStreamInfo_Succeeds()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+			var streamUrl = "https://stream.example.com/live";
+			var streamKey = "streamkey123";
+			var pageUrl = "https://example.com/meeting";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("meetings", meetingId.ToString(), "livestream"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			await meetings.UpdateLiveStreamAsync(meetingId, streamUrl, streamKey, pageUrl, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task StartLiveStreamAsync_WithDisplayName_Succeeds()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+			var displaySpeakerName = true;
+			var speakerName = "John Doe";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("meetings", meetingId.ToString(), "livestream", "status"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			await meetings.StartLiveStreamAsync(meetingId, displaySpeakerName, speakerName, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		#endregion
+
+		#region Cloud Recording Tests
+
+		[Fact]
+		public async Task StartCloudRecordingAsync_WithMeetingId_Succeeds()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("live_meetings", meetingId.ToString(), "events"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			await meetings.StartCloudRecordingAsync(meetingId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task PauseCloudRecordingAsync_WithMeetingId_Succeeds()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("live_meetings", meetingId.ToString(), "events"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			await meetings.PauseCloudRecordingAsync(meetingId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task StopCloudRecordingAsync_WithMeetingId_Succeeds()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("live_meetings", meetingId.ToString(), "events"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			await meetings.StopCloudRecordingAsync(meetingId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
 		#endregion
 
 		#region Additional Tests
@@ -585,6 +1015,181 @@ namespace ZoomNet.UnitTests.Resources
 			result.ShouldNotBeNull();
 			result.ShouldContain("You are invited");
 			result.ShouldContain("https://zoom.us/j/1234567890");
+		}
+
+		[Fact]
+		public async Task CreateInviteLinksAsync_WithNames_ReturnsInviteLinks()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+			var names = new[] { "Attendee One", "Attendee Two" };
+			var timeToLive = 3600L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "invite_links"))
+				.Respond("application/json", INVITE_LINKS_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			var result = await meetings.CreateInviteLinksAsync(meetingId, names, timeToLive, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Length.ShouldBe(2);
+			result[0].Name.ShouldBe("Attendee One");
+			result[1].Name.ShouldBe("Attendee Two");
+		}
+
+		[Fact]
+		public async Task GetSurveyAsync_WithMeetingId_ReturnsSurvey()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "survey"))
+				.Respond("application/json", SURVEY_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			var result = await meetings.GetSurveyAsync(meetingId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.ShowInBrowser.ShouldBeTrue();
+		}
+
+		[Fact]
+		public async Task GetTemplatesAsync_WithUserId_ReturnsTemplates()
+		{
+			// Arrange
+			var userId = "user123";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "meeting_templates"))
+				.Respond("application/json", TEMPLATES_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			var result = await meetings.GetTemplatesAsync(userId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Length.ShouldBe(2);
+			result[0].Name.ShouldBe("Standard Meeting Template");
+			result[1].Name.ShouldBe("Webinar Template");
+		}
+
+		[Fact]
+		public async Task CreateTemplateFromExistingMeetingAsync_WithMeetingId_ReturnsTemplateId()
+		{
+			// Arrange
+			var userId = "user123";
+			var meetingId = 1234567890L;
+			var templateName = "My Custom Template";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("users", userId, "meeting_templates"))
+				.Respond("application/json", TEMPLATE_ID_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			var result = await meetings.CreateTemplateFromExistingMeetingAsync(userId, meetingId, templateName, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.ShouldBe("newtemplate123");
+		}
+
+		[Fact]
+		public async Task GetTokenForClosedCaptioningAsync_WithMeetingId_ReturnsToken()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", $"{meetingId}/token?type=closed_caption_token"))
+				.Respond("application/json", TOKEN_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			var result = await meetings.GetTokenForClosedCaptioningAsync(meetingId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.ShouldStartWith("eyJ");
+		}
+
+		[Fact]
+		public async Task GetTokenForLocalRecordingAsync_WithMeetingId_ReturnsToken()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "jointoken", "local_recording"))
+				.Respond("application/json", TOKEN_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			var result = await meetings.GetTokenForLocalRecordingAsync(meetingId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.ShouldStartWith("eyJ");
+		}
+
+		[Fact]
+		public async Task InviteParticipantsByEmailAsync_WithEmailAddresses_Succeeds()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+			var emailAddresses = new[] { "user1@example.com", "user2@example.com" };
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("live_meetings", meetingId.ToString(), "events"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			await meetings.InviteParticipantsByEmailAsync(meetingId, emailAddresses, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
 		}
 
 		#endregion
