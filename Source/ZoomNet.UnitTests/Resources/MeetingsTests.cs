@@ -113,23 +113,6 @@ namespace ZoomNet.UnitTests.Resources
 			]
 		}";
 
-		private const string REGISTRANT_INFO_JSON = @"{
-			""id"": 85746065,
-			""join_url"": ""https://example.com/j/11111"",
-			""registrant_id"": ""fdgsfh2ey82fuh"",
-			""start_time"": ""2021-07-13T21:44:51Z"",
-			""topic"": ""My Meeting"",
-			""occurrences"": [
-				{
-					""duration"": 60,
-					""occurrence_id"": ""1648194360000"",
-					""start_time"": ""2022-03-25T07:46:00Z"",
-					""status"": ""available""
-				}
-			],
-			""participant_pin_code"": 380303
-		}";
-
 		private const string BATCH_REGISTRANTS_JSON = @"{
 			""registrants"": [
 				{
@@ -627,6 +610,61 @@ namespace ZoomNet.UnitTests.Resources
 		#region Registrant Tests
 
 		[Fact]
+		public async Task GetRegistrantAsync_ReturnsRegistrant()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+			var registrantId = "registrant_id";
+
+			var getRegistrantResponseJson = @"{
+				""id"": ""9tboDiHUQAeOnbmudzWa5g"",
+				""address"": ""1800 Amphibious Blvd."",
+				""city"": ""Mountain View"",
+				""comments"": ""Looking forward to the discussion."",
+				""country"": ""US"",
+				""custom_questions"": [
+					{
+						""title"": ""What do you hope to learn from this?"",
+						""value"": ""Look forward to learning how you come up with new recipes and what other services you offer.""
+					}
+				],
+				""email"": ""jchill@example.com"",
+				""first_name"": ""Jill"",
+				""industry"": ""Food"",
+				""job_title"": ""Chef"",
+				""last_name"": ""Chill"",
+				""no_of_employees"": ""1-20"",
+				""org"": ""Cooking Org"",
+				""phone"": ""5550100"",
+				""purchasing_time_frame"": ""1-3 months"",
+				""role_in_purchase_process"": ""Influencer"",
+				""state"": ""CA"",
+				""status"": ""approved"",
+				""zip"": ""94045"",
+				""create_time"": ""2022-03-22T05:58:44Z"",
+				""join_url"": ""https://example.com/j/11111"",
+				""participant_pin_code"": 380303
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "registrants", registrantId))
+				.Respond("application/json", getRegistrantResponseJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			var result = await meetings.GetRegistrantAsync(meetingId, registrantId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Address.ShouldBe("1800 Amphibious Blvd.");
+		}
+
+		[Fact]
 		public async Task GetRegistrantsAsync_WithStatus_ReturnsRegistrants()
 		{
 			// Arrange
@@ -665,9 +703,26 @@ namespace ZoomNet.UnitTests.Resources
 			var firstName = "New";
 			var lastName = "User";
 
+			var addRegistrantResponseJson = @"{
+				""id"": 85746065,
+				""join_url"": ""https://example.com/j/11111"",
+				""registrant_id"": ""fdgsfh2ey82fuh"",
+				""start_time"": ""2021-07-13T21:44:51Z"",
+				""topic"": ""My Meeting"",
+				""occurrences"": [
+					{
+						""duration"": 60,
+						""occurrence_id"": ""1648194360000"",
+						""start_time"": ""2022-03-25T07:46:00Z"",
+						""status"": ""available""
+					}
+				],
+				""participant_pin_code"": 380303
+			}";
+
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "registrants"))
-				.Respond("application/json", REGISTRANT_INFO_JSON);
+				.Respond("application/json", addRegistrantResponseJson);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
