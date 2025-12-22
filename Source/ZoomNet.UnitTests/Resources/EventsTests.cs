@@ -3176,5 +3176,740 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		#endregion
+
+		#region Video On Demand Tests
+
+		[Fact]
+		public async Task PublishVideoOnDemandChannelAsync()
+		{
+			// Arrange
+			var hubId = "hub123";
+			var channelId = "channel456";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels", channelId, "actions"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.PublishVideoOnDemandChannelAsync(hubId, channelId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task CreateVideoOnDemandChannelAsync()
+		{
+			// Arrange
+			var hubId = "hub123";
+			var name = "Tech Talks Channel";
+			var description = "Technical presentations and webinars";
+			var type = VideoOnDemandChannelType.VideoListHub;
+			var channelJson = @"{
+				""channel_id"": ""channel789"",
+				""name"": ""Tech Talks Channel"",
+				""description"": ""Technical presentations and webinars"",
+				""type"": ""VIDEO_LIST_HUB"",
+				""status"": ""DRAFT"",
+				""created_at"": ""2023-06-01T10:00:00Z""
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels"))
+				.Respond("application/json", channelJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.CreateVideoOnDemandChannelAsync(hubId, name, description, type, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Id.ShouldBe("channel789");
+			result.Name.ShouldBe("Tech Talks Channel");
+		}
+
+		[Fact]
+		public async Task CreateVideoOnDemandChannelAsync_MultiVideoEmbedded()
+		{
+			// Arrange
+			var hubId = "hub123";
+			var name = "Embedded Training Videos";
+			var description = "Training videos for embedding";
+			var type = VideoOnDemandChannelType.MultiVideoEmbedded;
+			var channelJson = @"{
+				""channel_id"": ""channel_embedded_123"",
+				""name"": ""Embedded Training Videos"",
+				""description"": ""Training videos for embedding"",
+				""type"": ""MULTI_VIDEO_EMBEDDED"",
+				""status"": ""DRAFT""
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels"))
+				.Respond("application/json", channelJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.CreateVideoOnDemandChannelAsync(hubId, name, description, type, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Id.ShouldBe("channel_embedded_123");
+		}
+
+		[Fact]
+		public async Task UpdateVideoOnDemandChannelAsync()
+		{
+			// Arrange
+			var hubId = "hub123";
+			var channelId = "channel456";
+			var name = "Updated Channel Name";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels", channelId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateVideoOnDemandChannelAsync(hubId, channelId, name, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateVideoOnDemandChannelAsync_WithDescription()
+		{
+			// Arrange
+			var hubId = "hub123";
+			var channelId = "channel456";
+			var name = "Updated Channel";
+			var description = "Updated description with more details";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels", channelId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateVideoOnDemandChannelAsync(hubId, channelId, name, description, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task GetVideoOnDemandChannelAsync()
+		{
+			// Arrange
+			var hubId = "hub123";
+			var channelId = "channel456";
+			var channelJson = @"{
+				""channel_id"": ""channel456"",
+				""name"": ""My VOD Channel"",
+				""description"": ""Channel description"",
+				""type"": ""VIDEO_LIST_HUB"",
+				""status"": ""PUBLISHED"",
+				""created_at"": ""2023-06-01T10:00:00Z"",
+				""published_at"": ""2023-06-02T10:00:00Z""
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels", channelId))
+				.Respond("application/json", channelJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetVideoOnDemandChannelAsync(hubId, channelId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Id.ShouldBe("channel456");
+			result.Name.ShouldBe("My VOD Channel");
+		}
+
+		[Fact]
+		public async Task DeleteVideoOnDemandChannelAsync()
+		{
+			// Arrange
+			var hubId = "hub123";
+			var channelId = "channel456";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels", channelId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.DeleteVideoOnDemandChannelAsync(hubId, channelId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task GetAllVidoOnDemandChannelsAsync()
+		{
+			// Arrange
+			var hubId = "hub123";
+			var channelsJson = @"{
+				""page_size"": 30,
+				""next_page_token"": """",
+				""vod_channels"": [
+					{
+						""channel_id"": ""channel1"",
+						""name"": ""Video List Hub Channel"",
+						""description"": ""Hub content"",
+						""type"": ""VIDEO_LIST_HUB"",
+						""status"": ""PUBLISHED""
+					},
+					{
+						""channel_id"": ""channel2"",
+						""name"": ""Multi Video Embedded Channel"",
+						""description"": ""Embedded content"",
+						""type"": ""MULTI_VIDEO_EMBEDDED"",
+						""status"": ""DRAFT""
+					},
+					{
+						""channel_id"": ""channel3"",
+						""name"": ""Single Video Embedded Channel"",
+						""description"": ""Single embedded content"",
+						""type"": ""SINGLE_VIDEO_EMBEDDED"",
+						""status"": ""PUBLISHED""
+					}
+				]
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels"))
+				.WithQueryString("page_size", "30")
+				.Respond("application/json", channelsJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetAllVidoOnDemandChannelsAsync(hubId, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Records.Length.ShouldBe(3);
+			result.Records[0].Id.ShouldBe("channel1");
+			result.Records[1].Id.ShouldBe("channel2");
+			result.Records[2].Id.ShouldBe("channel3");
+		}
+
+		[Fact]
+		public async Task GetAllVidoOnDemandChannelsAsync_WithPagination()
+		{
+			// Arrange
+			var hubId = "hub123";
+			var recordsPerPage = 50;
+			var pagingToken = "next_token_abc";
+			var channelsJson = @"{
+				""page_size"": 50,
+				""next_page_token"": ""next_token_xyz"",
+				""vod_channels"": [
+					{
+						""channel_id"": ""channel50"",
+						""name"": ""Channel 50"",
+						""type"": ""VIDEO_LIST_HUB"",
+						""status"": ""PUBLISHED""
+					}
+				]
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels"))
+				.WithQueryString("page_size", "50")
+				.WithQueryString("next_page_token", pagingToken)
+				.Respond("application/json", channelsJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetAllVidoOnDemandChannelsAsync(hubId, recordsPerPage, pagingToken, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.RecordsPerPage.ShouldBe(50);
+			result.NextPageToken.ShouldBe("next_token_xyz");
+		}
+
+		[Fact]
+		public async Task AddVideosToChannelAsync()
+		{
+			// Arrange
+			var hubId = "hub123";
+			var channelId = "channel456";
+			var videoIds = new[] { "video1", "video2", "video3" };
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels", channelId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.AddVideosToChannelAsync(hubId, channelId, videoIds, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task AddVideosToChannelAsync_SingleVideo()
+		{
+			// Arrange
+			var hubId = "hub123";
+			var channelId = "channel456";
+			var videoIds = new[] { "video_single_123" };
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels", channelId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.AddVideosToChannelAsync(hubId, channelId, videoIds, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task RemoveVideoFromChannelAsync()
+		{
+			// Arrange
+			var hubId = "hub123";
+			var channelId = "channel456";
+			var videoId = "video789";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels", channelId, "videos", videoId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.RemoveVideoFromChannelAsync(hubId, channelId, videoId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task GetAllVideosAsync()
+		{
+			// Arrange
+			var hubId = "hub123";
+			var channelId = "channel456";
+			var videosJson = @"{
+				""page_size"": 30,
+				""next_page_token"": """",
+				""videos"": [
+					{
+						""video_id"": ""video1"",
+						""title"": ""Introduction to ZoomEvents"",
+						""description"": ""Getting started guide"",
+						""duration"": 1800,
+						""created_at"": ""2023-06-01T10:00:00Z""
+					},
+					{
+						""video_id"": ""video2"",
+						""title"": ""Advanced Features"",
+						""description"": ""Deep dive into features"",
+						""duration"": 2700,
+						""created_at"": ""2023-06-02T10:00:00Z""
+					}
+				]
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels", channelId, "videos"))
+				.WithQueryString("page_size", "30")
+				.Respond("application/json", videosJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetAllVideosAsync(hubId, channelId, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Records.Length.ShouldBe(2);
+		}
+
+		[Fact]
+		public async Task GetAllVideosAsync_WithPagination()
+		{
+			// Arrange
+			var hubId = "hub123";
+			var channelId = "channel456";
+			var recordsPerPage = 100;
+			var pagingToken = "page_token_123";
+			var videosJson = @"{
+				""page_size"": 100,
+				""next_page_token"": ""page_token_456"",
+				""videos"": [
+					{
+						""video_id"": ""video100"",
+						""title"": ""Video 100"",
+						""duration"": 1200
+					}
+				]
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels", channelId, "videos"))
+				.WithQueryString("page_size", "100")
+				.WithQueryString("next_page_token", pagingToken)
+				.Respond("application/json", videosJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetAllVideosAsync(hubId, channelId, recordsPerPage, pagingToken, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.RecordsPerPage.ShouldBe(100);
+			result.NextPageToken.ShouldBe("page_token_456");
+		}
+
+		#endregion
+
+		#region Video On Demand Registration Tests
+
+		[Fact]
+		public async Task GetAllVideoOnDemandRegistrationQuestionsAsync()
+		{
+			// Arrange
+			var hubId = "hub123";
+			var channelId = "channel456";
+			var questionsJson = @"{
+				""questions"": [
+					{
+						""field_name"": ""first_name"",
+						""required"": true,
+						""title"": ""First Name"",
+						""question_id"": ""q1""
+					},
+					{
+						""field_name"": ""last_name"",
+						""required"": true,
+						""title"": ""Last Name"",
+						""question_id"": ""q2""
+					}
+				],
+				""custom_questions"": [
+					{
+						""title"": ""Why are you interested?"",
+						""type"": ""short_answer"",
+						""required"": false,
+						""question_id"": ""cq1"",
+						""min_length"": 10,
+						""max_length"": 500
+					},
+					{
+						""title"": ""Your role"",
+						""type"": ""single_radio"",
+						""required"": true,
+						""question_id"": ""cq2"",
+						""answers"": [ ""Developer"", ""Manager"", ""Executive"", ""Other"" ]
+					}
+				]
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels", channelId, "registration_questions"))
+				.Respond("application/json", questionsJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetAllVideoOnDemandRegistrationQuestionsAsync(hubId, channelId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.StandardQuestions.ShouldNotBeNull();
+			result.StandardQuestions.Length.ShouldBe(2);
+			result.CustomQuestions.ShouldNotBeNull();
+			result.CustomQuestions.Length.ShouldBe(2);
+		}
+
+		[Fact]
+		public async Task GetAllVideoOnDemandRegistrationQuestionsAsync_EmptyQuestions()
+		{
+			// Arrange
+			var hubId = "hub123";
+			var channelId = "channel456";
+			var questionsJson = @"{
+				""questions"": [],
+				""custom_questions"": []
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels", channelId, "registration_questions"))
+				.Respond("application/json", questionsJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetAllVideoOnDemandRegistrationQuestionsAsync(hubId, channelId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.StandardQuestions.Length.ShouldBe(0);
+			result.CustomQuestions.Length.ShouldBe(0);
+		}
+
+		[Fact]
+		public async Task UpdateChannelRegistrationQuestionsAsync()
+		{
+			// Arrange
+			var hubId = "hub123";
+			var channelId = "channel456";
+			var standardQuestions = new[]
+			{
+				new RegistrationStandardQuestion { FieldName = EventRegistrationField.FirstName, IsRequired = true },
+				new RegistrationStandardQuestion { FieldName = EventRegistrationField.LastName, IsRequired = true }
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels", channelId, "registration_questions"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateChannelRegistrationQuestionsAsync(
+				hubId,
+				channelId,
+				standardQuestions,
+				cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateChannelRegistrationQuestionsAsync_WithCustomQuestions()
+		{
+			// Arrange
+			var hubId = "hub123";
+			var channelId = "channel456";
+			var standardQuestions = new[]
+			{
+				new RegistrationStandardQuestion { FieldName = EventRegistrationField.FirstName, IsRequired = true }
+			};
+			var customQuestions = new[]
+			{
+				new RegistrationCustomQuestionForVodChannel
+				{
+					Title = "Company Name",
+					Type = RegistrationCustomQuestionTypeForEvent.ShortText,
+					IsRequired = true
+				},
+				new RegistrationCustomQuestionForVodChannel
+				{
+					Title = "Industry",
+					Type = RegistrationCustomQuestionTypeForEvent.SingleDropdown,
+					IsRequired = true,
+					Answers = new[] { "Technology", "Healthcare", "Finance", "Education", "Other" }
+				}
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels", channelId, "registration_questions"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateChannelRegistrationQuestionsAsync(
+				hubId,
+				channelId,
+				standardQuestions,
+				customQuestions,
+				TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateChannelRegistrationQuestionsAsync_OnlyCustomQuestions()
+		{
+			// Arrange
+			var hubId = "hub123";
+			var channelId = "channel456";
+			var customQuestions = new[]
+			{
+				new RegistrationCustomQuestionForVodChannel
+				{
+					Title = "How did you find this channel?",
+					Type = RegistrationCustomQuestionTypeForEvent.MultipleChoices,
+					IsRequired = false,
+					Answers = new[] { "Search", "Recommendation", "Social Media", "Email" }
+				},
+				new RegistrationCustomQuestionForVodChannel
+				{
+					Title = "Additional Comments",
+					Type = RegistrationCustomQuestionTypeForEvent.LongText,
+					IsRequired = false,
+					MinimumLength = 10,
+					MaximumLength = 2000
+				}
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels", channelId, "registration_questions"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateChannelRegistrationQuestionsAsync(
+				hubId,
+				channelId,
+				customQuestions: customQuestions,
+				cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateChannelRegistrationQuestionsAsync_WithAllQuestionTypes()
+		{
+			// Arrange
+			var hubId = "hub123";
+			var channelId = "channel456";
+			var standardQuestions = new[]
+			{
+				new RegistrationStandardQuestion { FieldName = EventRegistrationField.FirstName, IsRequired = true },
+				new RegistrationStandardQuestion { FieldName = EventRegistrationField.LastName, IsRequired = true },
+				new RegistrationStandardQuestion { FieldName = EventRegistrationField.Organization, IsRequired = false },
+				new RegistrationStandardQuestion { FieldName = EventRegistrationField.JobTitle, IsRequired = false }
+			};
+			var customQuestions = new[]
+			{
+				new RegistrationCustomQuestionForVodChannel
+				{
+					Title = "Experience Level",
+					Type = RegistrationCustomQuestionTypeForEvent.SingleRadio,
+					IsRequired = true,
+					Answers = new[] { "Beginner", "Intermediate", "Advanced", "Expert" }
+				},
+				new RegistrationCustomQuestionForVodChannel
+				{
+					Title = "Areas of Interest",
+					Type = RegistrationCustomQuestionTypeForEvent.MultipleChoices,
+					IsRequired = false,
+					Answers = new[] { "Product Updates", "Technical Deep Dives", "Best Practices", "Case Studies" }
+				},
+				new RegistrationCustomQuestionForVodChannel
+				{
+					Title = "Brief Introduction",
+					Type = RegistrationCustomQuestionTypeForEvent.ShortText,
+					IsRequired = false,
+					MinimumLength = 20,
+					MaximumLength = 500
+				}
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels", channelId, "registration_questions"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateChannelRegistrationQuestionsAsync(
+				hubId,
+				channelId,
+				standardQuestions,
+				customQuestions,
+				TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		#endregion
 	}
 }
