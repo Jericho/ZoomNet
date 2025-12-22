@@ -157,6 +157,34 @@ namespace ZoomNet.UnitTests.Resources
 			result.Length.ShouldBe(0);
 		}
 
+		[Fact]
+		public async Task CheckInAttendeesAsync_ForSession()
+		{
+			// Arrange
+			var eventId = "event123";
+			var sessionId = "session789";
+			var attendeeEmails = new[] { "attendee1@example.com", "attendee2@example.com" };
+			var source = "manual";
+			var errorsJson = @"{""errors"": []}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "attendee_action"))
+				.Respond("application/json", errorsJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.CheckInAttendeesAsync(eventId, sessionId, attendeeEmails, source, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Length.ShouldBe(0);
+		}
+
 		#endregion
 
 		#region Co-Editors Tests
@@ -853,6 +881,58 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
+		public async Task CreateRecurringEventAsync()
+		{
+			// Arrange
+			var name = "Recurring Event";
+			var description = "Recurring Event Description";
+			var start = new DateTime(2023, 6, 1, 10, 0, 0, DateTimeKind.Utc);
+			var end = new DateTime(2023, 6, 1, 11, 0, 0, DateTimeKind.Utc);
+			var timeZone = TimeZones.America_New_York;
+			var hubId = "hub123";
+			var recurrence = new EventRecurrenceInfo
+			{
+				Type = RecurrenceType.Weekly,
+				RepeatInterval = 1,
+				WeeklyDays = new[] { DayOfWeek.Monday, DayOfWeek.Wednesday },
+				EndDateTime = new DateTime(2023, 12, 31, 23, 59, 59, DateTimeKind.Utc)
+			};
+
+			var recurringEventJson = @"{
+				""event_id"": ""recurring_event_123"",
+				""name"": ""Recurring Event"",
+				""description"": ""Recurring Event Description"",
+				""timezone"": ""America/Indianapolis"",
+				""event_type"": ""RECURRING"",
+				""recurrence"": {
+					""type"": 1,
+					""repeat_interval"": 1,
+					""weekly_days"": [ 1, 3 ],
+					""end_date_time"": ""2023-12-31T23:59:59Z""
+				},
+				""status"": ""DRAFT"",
+				""hub_id"": ""hub123""
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events"))
+				.Respond("application/json", recurringEventJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.CreateRecurringEventAsync(name, description, start, end, recurrence, timeZone, hubId, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Id.ShouldBe("recurring_event_123");
+		}
+
+		[Fact]
 		public async Task UpdateSimpleEventAsync()
 		{
 			// Arrange
@@ -869,6 +949,111 @@ namespace ZoomNet.UnitTests.Resources
 
 			// Act
 			await events.UpdateSimpleEventAsync(eventId, name, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateConferenceAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var name = "Updated Conference Name";
+			var description = "Updated conference description";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateConferenceAsync(eventId, name, description, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateConferenceAsync_WithCalendar()
+		{
+			// Arrange
+			var eventId = "event123";
+			var name = "Updated Conference";
+			var calendar = new[]
+			{
+				(Start: (DateTime?)new DateTime(2023, 7, 1, 10, 0, 0, DateTimeKind.Utc), End: (DateTime?)new DateTime(2023, 7, 1, 12, 0, 0, DateTimeKind.Utc)),
+				(Start: (DateTime?)new DateTime(2023, 7, 2, 10, 0, 0, DateTimeKind.Utc), End: (DateTime?)new DateTime(2023, 7, 2, 12, 0, 0, DateTimeKind.Utc))
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateConferenceAsync(eventId, name, calendar: calendar, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateRecurringEventAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var name = "Updated Recurring Event";
+			var description = "Updated description";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateRecurringEventAsync(eventId, name, description, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateRecurringEventAsync_WithFullRecurrence()
+		{
+			// Arrange
+			var eventId = "event123";
+			var name = "Updated Event with Recurrence";
+			var recurrence = new EventRecurrenceInfo
+			{
+				Type = RecurrenceType.Daily,
+				RepeatInterval = 2,
+				EndDateTime = new DateTime(2024, 6, 30, 23, 59, 59, DateTimeKind.Utc)
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateRecurringEventAsync(eventId, name, recurrence: recurrence, cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -1353,29 +1538,6 @@ namespace ZoomNet.UnitTests.Resources
 		#region Hub Tests
 
 		[Fact]
-		public async Task GetAllHubsAsync()
-		{
-			// Arrange
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "hubs"))
-				.WithQueryString("role_type", "host")
-				.Respond("application/json", HUBS_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var events = new Events(client);
-
-			// Act
-			var result = await events.GetAllHubsAsync(UserRoleType.Host, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Length.ShouldBe(1);
-		}
-
-		[Fact]
 		public async Task CreateHubHostAsync()
 		{
 			// Arrange
@@ -1398,6 +1560,29 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldBe("host456");
+		}
+
+		[Fact]
+		public async Task GetAllHubsAsync()
+		{
+			// Arrange
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "hubs"))
+				.WithQueryString("role_type", "host")
+				.Respond("application/json", HUBS_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetAllHubsAsync(UserRoleType.Host, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Length.ShouldBe(1);
 		}
 
 		[Fact]
@@ -1434,6 +1619,88 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task GetAllHubVideosAsync()
+		{
+			// Arrange
+			var hubId = "hub123";
+			var videosJson = @"{
+				""page_size"": 30,
+				""next_page_token"": """",
+				""videos"": [
+					{
+						""video_id"": ""video1"",
+						""title"": ""Hub Video 1"",
+						""duration"": 1800
+					},
+					{
+						""video_id"": ""video2"",
+						""title"": ""Hub Video 2"",
+						""duration"": 2400
+					}
+				]
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "videos"))
+				.WithQueryString("page_size", "30")
+				.Respond("application/json", videosJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetAllHubVideosAsync(hubId, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Records.Length.ShouldBe(2);
+		}
+
+		[Fact]
+		public async Task GetAllHubVideosAsync_WithFolder()
+		{
+			// Arrange
+			var hubId = "hub123";
+			var folderId = "folder456";
+			var recordsPerPage = 50;
+			var pagingToken = "token_abc";
+			var videosJson = @"{
+				""page_size"": 50,
+				""next_page_token"": ""token_xyz"",
+				""videos"": [
+					{
+						""video_id"": ""video3"",
+						""title"": ""Folder Video"",
+						""duration"": 3000
+					}
+				]
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "videos"))
+				.WithQueryString("folder_id", folderId)
+				.WithQueryString("page_size", "50")
+				.WithQueryString("next_page_token", pagingToken)
+				.Respond("application/json", videosJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetAllHubVideosAsync(hubId, folderId, recordsPerPage, pagingToken, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.RecordsPerPage.ShouldBe(50);
+			result.NextPageToken.ShouldBe("token_xyz");
 		}
 
 		[Fact]
