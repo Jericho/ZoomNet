@@ -85,7 +85,7 @@ namespace ZoomNet.UnitTests.Resources
 			var contacts = new Contacts(client);
 
 			// Act
-			var result = await contacts.GetAllAsync(ContactType.Internal, recordsPerPage, pagingToken, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await contacts.GetAllAsync(ContactType.Internal, recordsPerPage, pagingToken, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -118,7 +118,7 @@ namespace ZoomNet.UnitTests.Resources
 			var contacts = new Contacts(client);
 
 			// Act
-			var result = await contacts.GetAllAsync(ContactType.External, recordsPerPage, null, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await contacts.GetAllAsync(ContactType.External, recordsPerPage, null, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -141,7 +141,7 @@ namespace ZoomNet.UnitTests.Resources
 			var contacts = new Contacts(client);
 
 			// Act
-			var result = await contacts.GetAllAsync(cancellationToken: TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await contacts.GetAllAsync(cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -150,7 +150,7 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
-		public void GetAllAsync_InvalidRecordsPerPage_ThrowsException()
+		public async Task GetAllAsync_InvalidRecordsPerPage_ThrowsException()
 		{
 			// Arrange
 			var mockHttp = new MockHttpMessageHandler();
@@ -159,14 +159,11 @@ namespace ZoomNet.UnitTests.Resources
 			var contacts = new Contacts(client);
 
 			// Act & Assert
-			Should.Throw<ArgumentOutOfRangeException>(async () =>
-			{
-				await contacts.GetAllAsync(ContactType.Internal, recordsPerPage: 100, cancellationToken: TestContext.Current.CancellationToken).ConfigureAwait(true);
-			});
+			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => contacts.GetAllAsync(ContactType.Internal, recordsPerPage: 100, cancellationToken: TestContext.Current.CancellationToken));
 		}
 
 		[Fact]
-		public void GetAllAsync_RecordsPerPageTooHigh_ThrowsException()
+		public async Task GetAllAsync_RecordsPerPageTooHigh_ThrowsException()
 		{
 			// Arrange
 			var mockHttp = new MockHttpMessageHandler();
@@ -175,10 +172,7 @@ namespace ZoomNet.UnitTests.Resources
 			var contacts = new Contacts(client);
 
 			// Act & Assert - Max is 50 for contacts
-			Should.Throw<ArgumentOutOfRangeException>(async () =>
-			{
-				await contacts.GetAllAsync(ContactType.Internal, recordsPerPage: 51, cancellationToken: TestContext.Current.CancellationToken).ConfigureAwait(true);
-			});
+			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => contacts.GetAllAsync(ContactType.Internal, recordsPerPage: 51, cancellationToken: TestContext.Current.CancellationToken));
 		}
 
 		#endregion
@@ -206,7 +200,7 @@ namespace ZoomNet.UnitTests.Resources
 			var contacts = new Contacts(client);
 
 			// Act
-			var result = await contacts.SearchAsync(keyword, true, recordsPerPage, pagingToken, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await contacts.SearchAsync(keyword, true, recordsPerPage, pagingToken, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -234,7 +228,7 @@ namespace ZoomNet.UnitTests.Resources
 			var contacts = new Contacts(client);
 
 			// Act
-			var result = await contacts.SearchAsync(keyword, false, cancellationToken: TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await contacts.SearchAsync(keyword, false, cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -260,7 +254,7 @@ namespace ZoomNet.UnitTests.Resources
 			var contacts = new Contacts(client);
 
 			// Act
-			var result = await contacts.SearchAsync(keyword, cancellationToken: TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await contacts.SearchAsync(keyword, cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -269,7 +263,7 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
-		public void SearchAsync_InvalidRecordsPerPage_ThrowsException()
+		public async Task SearchAsync_InvalidRecordsPerPage_ThrowsException()
 		{
 			// Arrange
 			var keyword = "test";
@@ -279,14 +273,11 @@ namespace ZoomNet.UnitTests.Resources
 			var contacts = new Contacts(client);
 
 			// Act & Assert
-			Should.Throw<ArgumentOutOfRangeException>(async () =>
-			{
-				await contacts.SearchAsync(keyword, recordsPerPage: 0, cancellationToken: TestContext.Current.CancellationToken).ConfigureAwait(true);
-			});
+			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => contacts.SearchAsync(keyword, recordsPerPage: 0, cancellationToken: TestContext.Current.CancellationToken));
 		}
 
 		[Fact]
-		public void SearchAsync_RecordsPerPageTooHigh_ThrowsException()
+		public async Task SearchAsync_RecordsPerPageTooHigh_ThrowsException()
 		{
 			// Arrange
 			var keyword = "test";
@@ -296,10 +287,7 @@ namespace ZoomNet.UnitTests.Resources
 			var contacts = new Contacts(client);
 
 			// Act & Assert - Max is 25 for search
-			Should.Throw<ArgumentOutOfRangeException>(async () =>
-			{
-				await contacts.SearchAsync(keyword, recordsPerPage: 26, cancellationToken: TestContext.Current.CancellationToken).ConfigureAwait(true);
-			});
+			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => contacts.SearchAsync(keyword, recordsPerPage: 26, cancellationToken: TestContext.Current.CancellationToken));
 		}
 
 		#endregion
@@ -323,7 +311,7 @@ namespace ZoomNet.UnitTests.Resources
 			var contacts = new Contacts(client);
 
 			// Act
-			var result = await contacts.GetAsync(contactId, true, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await contacts.GetAsync(contactId, true, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -352,7 +340,7 @@ namespace ZoomNet.UnitTests.Resources
 			var contacts = new Contacts(client);
 
 			// Act
-			var result = await contacts.GetAsync(contactId, false, TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await contacts.GetAsync(contactId, false, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -377,7 +365,7 @@ namespace ZoomNet.UnitTests.Resources
 			var contacts = new Contacts(client);
 
 			// Act
-			var result = await contacts.GetAsync(contactId, cancellationToken: TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await contacts.GetAsync(contactId, cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -410,7 +398,7 @@ namespace ZoomNet.UnitTests.Resources
 			var contacts = new Contacts(client);
 
 			// Act
-			var result = await contacts.GetAllAsync(cancellationToken: TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await contacts.GetAllAsync(cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -441,7 +429,7 @@ namespace ZoomNet.UnitTests.Resources
 			var contacts = new Contacts(client);
 
 			// Act
-			var result = await contacts.SearchAsync(keyword, cancellationToken: TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await contacts.SearchAsync(keyword, cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -466,7 +454,7 @@ namespace ZoomNet.UnitTests.Resources
 			var contacts = new Contacts(client);
 
 			// Act
-			var result = await contacts.GetAllAsync(recordsPerPage: recordsPerPage, cancellationToken: TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await contacts.GetAllAsync(recordsPerPage: recordsPerPage, cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -490,7 +478,7 @@ namespace ZoomNet.UnitTests.Resources
 			var contacts = new Contacts(client);
 
 			// Act
-			var result = await contacts.GetAllAsync(recordsPerPage: recordsPerPage, cancellationToken: TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await contacts.GetAllAsync(recordsPerPage: recordsPerPage, cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -516,7 +504,7 @@ namespace ZoomNet.UnitTests.Resources
 			var contacts = new Contacts(client);
 
 			// Act
-			var result = await contacts.SearchAsync(keyword, recordsPerPage: recordsPerPage, cancellationToken: TestContext.Current.CancellationToken).ConfigureAwait(true);
+			var result = await contacts.SearchAsync(keyword, recordsPerPage: recordsPerPage, cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();

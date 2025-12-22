@@ -297,10 +297,7 @@ namespace ZoomNet.UnitTests.Resources
 			var pastMeetings = new PastMeetings(client);
 
 			// Act & Assert
-			Should.Throw<ArgumentOutOfRangeException>(async () =>
-			{
-				await pastMeetings.GetParticipantsAsync(meetingId, recordsPerPage: 0, cancellationToken: TestContext.Current.CancellationToken);
-			});
+			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => pastMeetings.GetParticipantsAsync(meetingId, recordsPerPage: 0, cancellationToken: TestContext.Current.CancellationToken));
 		}
 
 		[Fact]

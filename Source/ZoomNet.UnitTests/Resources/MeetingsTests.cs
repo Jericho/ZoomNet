@@ -413,10 +413,7 @@ namespace ZoomNet.UnitTests.Resources
 			var meetings = new Meetings(client);
 
 			// Act & Assert
-			Should.Throw<ArgumentException>(async () =>
-			{
-				await meetings.CreateInstantMeetingAsync(userId, topic, agenda, password, generatePassword: generatePassword, cancellationToken: TestContext.Current.CancellationToken);
-			});
+			await Should.ThrowAsync<ArgumentException>(() => meetings.CreateInstantMeetingAsync(userId, topic, agenda, password, generatePassword: generatePassword, cancellationToken: TestContext.Current.CancellationToken));
 		}
 
 		#endregion

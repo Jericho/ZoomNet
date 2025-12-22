@@ -446,10 +446,7 @@ namespace ZoomNet.UnitTests.Resources
 			var phone = new Phone(client);
 
 			// Act & Assert
-			Should.Throw<ArgumentOutOfRangeException>(async () =>
-			{
-				await phone.ListPhoneUsersAsync(recordsPerPage: 0, cancellationToken: TestContext.Current.CancellationToken);
-			});
+			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => phone.ListPhoneUsersAsync(recordsPerPage: 0, cancellationToken: TestContext.Current.CancellationToken));
 		}
 
 		[Fact]
@@ -589,10 +586,7 @@ namespace ZoomNet.UnitTests.Resources
 			var phone = new Phone(client);
 
 			// Act & Assert
-			Should.Throw<ArgumentOutOfRangeException>(async () =>
-			{
-				await phone.ListPhonesAsync(recordsPerPage: 0, cancellationToken: TestContext.Current.CancellationToken);
-			});
+			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => phone.ListPhonesAsync(recordsPerPage: 0, cancellationToken: TestContext.Current.CancellationToken));
 		}
 
 		[Fact]

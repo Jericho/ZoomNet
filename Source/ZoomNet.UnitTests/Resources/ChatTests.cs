@@ -200,7 +200,7 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
-		public void CreateAccountChannelAsync_TooManyEmails_ThrowsException()
+		public async Task CreateAccountChannelAsync_TooManyEmails_ThrowsException()
 		{
 			// Arrange
 			var userId = "user123";
@@ -214,10 +214,7 @@ namespace ZoomNet.UnitTests.Resources
 			var chat = new Chat(client);
 
 			// Act & Assert
-			Should.Throw<ArgumentOutOfRangeException>(async () =>
-			{
-				await chat.CreateAccountChannelAsync(userId, name, type, emails, TestContext.Current.CancellationToken);
-			});
+			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => chat.CreateAccountChannelAsync(userId, name, type, emails, TestContext.Current.CancellationToken));
 		}
 
 		[Fact]
@@ -353,7 +350,7 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
-		public void InviteMembersToAccountChannelAsync_TooManyEmails_ThrowsException()
+		public async Task InviteMembersToAccountChannelAsync_TooManyEmails_ThrowsException()
 		{
 			// Arrange
 			var userId = "user123";
@@ -366,10 +363,7 @@ namespace ZoomNet.UnitTests.Resources
 			var chat = new Chat(client);
 
 			// Act & Assert
-			Should.Throw<ArgumentOutOfRangeException>(async () =>
-			{
-				await chat.InviteMembersToAccountChannelAsync(userId, channelId, emails, TestContext.Current.CancellationToken);
-			});
+			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => chat.InviteMembersToAccountChannelAsync(userId, channelId, emails, TestContext.Current.CancellationToken));
 		}
 
 		[Fact]
@@ -900,7 +894,7 @@ namespace ZoomNet.UnitTests.Resources
 		#region Validation Tests
 
 		[Fact]
-		public void GetAccountChannelsForUserAsync_InvalidRecordsPerPage_ThrowsException()
+		public async Task GetAccountChannelsForUserAsync_InvalidRecordsPerPage_ThrowsException()
 		{
 			// Arrange
 			var userId = "user123";
@@ -910,14 +904,11 @@ namespace ZoomNet.UnitTests.Resources
 			var chat = new Chat(client);
 
 			// Act & Assert
-			Should.Throw<ArgumentOutOfRangeException>(async () =>
-			{
-				await chat.GetAccountChannelsForUserAsync(userId, recordsPerPage: 500, cancellationToken: TestContext.Current.CancellationToken);
-			});
+			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => chat.GetAccountChannelsForUserAsync(userId, recordsPerPage: 500, cancellationToken: TestContext.Current.CancellationToken));
 		}
 
 		[Fact]
-		public void GetAccountChannelMembersAsync_InvalidRecordsPerPage_ThrowsException()
+		public async Task GetAccountChannelMembersAsync_InvalidRecordsPerPage_ThrowsException()
 		{
 			// Arrange
 			var userId = "user123";
@@ -928,14 +919,11 @@ namespace ZoomNet.UnitTests.Resources
 			var chat = new Chat(client);
 
 			// Act & Assert
-			Should.Throw<ArgumentOutOfRangeException>(async () =>
-			{
-				await chat.GetAccountChannelMembersAsync(userId, channelId, recordsPerPage: 500, cancellationToken: TestContext.Current.CancellationToken);
-			});
+			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => chat.GetAccountChannelMembersAsync(userId, channelId, recordsPerPage: 500, cancellationToken: TestContext.Current.CancellationToken));
 		}
 
 		[Fact]
-		public void GetMessagesToContactAsync_InvalidRecordsPerPage_ThrowsException()
+		public async Task GetMessagesToContactAsync_InvalidRecordsPerPage_ThrowsException()
 		{
 			// Arrange
 			var userId = "user123";
@@ -946,10 +934,7 @@ namespace ZoomNet.UnitTests.Resources
 			var chat = new Chat(client);
 
 			// Act & Assert
-			Should.Throw<ArgumentOutOfRangeException>(async () =>
-			{
-				await chat.GetMessagesToContactAsync(userId, recipientEmail, recordsPerPage: 500, cancellationToken: TestContext.Current.CancellationToken);
-			});
+			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => chat.GetMessagesToContactAsync(userId, recipientEmail, recordsPerPage: 500, cancellationToken: TestContext.Current.CancellationToken));
 		}
 
 		#endregion

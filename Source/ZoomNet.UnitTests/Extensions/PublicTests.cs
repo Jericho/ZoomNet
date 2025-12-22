@@ -206,8 +206,7 @@ namespace ZoomNet.UnitTests.Extensions
 			var parser = new WebhookParser();
 
 			// Act & Assert
-			Should.Throw<SecurityException>(() =>
-				parser.VerifyAndParseEventWebhook(requestBody, secretToken, signature, timestamp));
+			Should.Throw<SecurityException>(() => parser.VerifyAndParseEventWebhook(requestBody, secretToken, signature, timestamp));
 		}
 
 		[Fact]

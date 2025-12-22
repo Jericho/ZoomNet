@@ -763,7 +763,7 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
-		public void GetMembersAsync_InvalidRecordsPerPage_ThrowsException()
+		public async Task GetMembersAsync_InvalidRecordsPerPage_ThrowsException()
 		{
 			// Arrange
 			var groupId = "group1";
@@ -773,10 +773,7 @@ namespace ZoomNet.UnitTests.Resources
 			var groups = new Groups(client);
 
 			// Act & Assert
-			Should.Throw<ArgumentOutOfRangeException>(async () =>
-			{
-				await groups.GetMembersAsync(groupId, recordsPerPage: 0, cancellationToken: TestContext.Current.CancellationToken);
-			});
+			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => groups.GetMembersAsync(groupId, recordsPerPage: 0, cancellationToken: TestContext.Current.CancellationToken));
 		}
 
 		[Fact]
@@ -875,7 +872,7 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
-		public void GetAdministratorsAsync_InvalidRecordsPerPage_ThrowsException()
+		public async Task GetAdministratorsAsync_InvalidRecordsPerPage_ThrowsException()
 		{
 			// Arrange
 			var groupId = "group1";
@@ -885,10 +882,7 @@ namespace ZoomNet.UnitTests.Resources
 			var groups = new Groups(client);
 
 			// Act & Assert
-			Should.Throw<ArgumentOutOfRangeException>(async () =>
-			{
-				await groups.GetAdministratorsAsync(groupId, recordsPerPage: 0, cancellationToken: TestContext.Current.CancellationToken);
-			});
+			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => groups.GetAdministratorsAsync(groupId, recordsPerPage: 0, cancellationToken: TestContext.Current.CancellationToken));
 		}
 
 		[Fact]
