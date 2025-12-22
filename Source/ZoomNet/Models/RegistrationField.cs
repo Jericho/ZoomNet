@@ -5,6 +5,11 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// Enumeration for the standard registration fields.
 	/// </summary>
+	/// <remarks>
+	/// According to Zoom's documentation, 'First Name' is not a registration field accepted
+	/// by the API despite the fact that 'Last Name' is a defined registration field.
+	/// I find this fact very surprising.
+	/// </remarks>
 	public enum RegistrationField
 	{
 		/// <summary>
