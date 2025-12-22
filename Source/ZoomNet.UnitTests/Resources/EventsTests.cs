@@ -2260,29 +2260,21 @@ namespace ZoomNet.UnitTests.Resources
 			var questionsJson = @"{
 				""questions"": [
 					{
-						""field_name"": ""first_name"",
-						""required"": true
-					},
-					{
 						""field_name"": ""last_name"",
-						""required"": true
-					},
-					{
-						""field_name"": ""email"",
-						""required"": true
+						""required"": true,
+						""title"": ""Last Name"",
+						""question_id"": ""Fn2rBZgJQzi6VIU--uWqnA""
 					}
 				],
 				""custom_questions"": [
 					{
-						""title"": ""Dietary Restrictions"",
-						""type"": ""short"",
-						""required"": false
-					},
-					{
-						""title"": ""T-Shirt Size"",
-						""type"": ""single"",
+						""options"": [ ""Good"" ],
 						""required"": true,
-						""options"": [ ""S"", ""M"", ""L"", ""XL"" ]
+						""title"": ""How are you?"",
+						""question_id"": ""Fn2rBZgJQzi6VIU--uWqnA"",
+						""type"": ""short_answer"",
+						""min_length"": 500,
+						""max_length"": 2000
 					}
 				]
 			}";
@@ -2302,9 +2294,9 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.StandardQuestions.ShouldNotBeNull();
-			result.StandardQuestions.Length.ShouldBe(3);
+			result.StandardQuestions.Length.ShouldBe(1);
 			result.CustomQuestions.ShouldNotBeNull();
-			result.CustomQuestions.Length.ShouldBe(2);
+			result.CustomQuestions.Length.ShouldBe(1);
 		}
 
 		[Fact]
@@ -2346,19 +2338,23 @@ namespace ZoomNet.UnitTests.Resources
 			var questionsJson = @"{
 				""questions"": [
 					{
-						""field_name"": ""first_name"",
-						""required"": true
-					},
-					{
-						""field_name"": ""email"",
-						""required"": true
+						""field_name"": ""last_name"",
+						""required"": true,
+						""title"": ""Last Name"",
+						""question_id"": ""Fn2rBZgJQzi6VIU--uWqnA""
 					}
 				],
 				""custom_questions"": [
 					{
-						""title"": ""Company Name"",
-						""type"": ""short"",
-						""required"": true
+						""options"": [
+						""Good""
+						],
+						""required"": true,
+						""title"": ""How are you?"",
+						""question_id"": ""Fn2rBZgJQzi6VIU--uWqnA"",
+						""type"": ""short_answer"",
+						""min_length"": 500,
+						""max_length"": 2000
 					}
 				]
 			}";
@@ -2378,7 +2374,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.StandardQuestions.ShouldNotBeNull();
-			result.StandardQuestions.Length.ShouldBe(2);
+			result.StandardQuestions.Length.ShouldBe(1);
 			result.CustomQuestions.ShouldNotBeNull();
 			result.CustomQuestions.Length.ShouldBe(1);
 		}
