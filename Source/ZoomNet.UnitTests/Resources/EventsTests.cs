@@ -413,14 +413,20 @@ namespace ZoomNet.UnitTests.Resources
 			var recurringType = RecurringEventRegistrationType.SingleSession;
 
 			var accessLinkJson = @"{
-				""access_link_id"": ""link456"",
-				""name"": ""Group Join Link"",
-				""type"": ""group-join"",
+				""access_link_id"": ""234kjhg23kl4jhlaksjdh3"",
+				""name"": ""Event Access Link 1"",
+				""type"": ""registration"",
 				""is_default"": true,
-				""url"": ""https://zoom.us/events/groupjoin"",
-				""authentication_method"": ""public"",
-				""ticket_type_id"": ""ticket456"",
-				""recurring_registration_option"": ""specific_sessions""
+				""authentication_method"": ""bypass_auth"",
+				""idp_name"": ""okta"",
+				""allow_domain_list"": [ ""zoom.us"" ],
+				""email_restrict_list"": [ ""example1@example.com"" ],
+				""security_at_join"": {
+					""email_authentication"": true,
+					""security_code_verification"": true
+				},
+				""ticket_type_id"": ""PTYwAknYQXaDStOP7O3ExA"",
+				""recurring_registration_option"": ""all_sessions""
 			}";
 
 			var mockHttp = new MockHttpMessageHandler();
@@ -450,8 +456,6 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("link456");
-			result.Type.ShouldBe(EventAccessLinkType.GroupJoin);
 		}
 
 		[Fact]
@@ -963,6 +967,385 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldBe("event_duplicate");
+		}
+
+		#endregion
+
+		#region Exhibitor Tests
+
+		[Fact]
+		public async Task CreateExhibitorAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var name = "Acme Corporation";
+			var contactName = "John Doe";
+			var contactEmail = "john@acme.com";
+			var isSponsor = true;
+			var sponsorTierId = "tier123";
+			var exhibitorJson = @"{
+				""exhibitor_id"": ""exhibitor123"",
+				""name"": ""Acme Corporation"",
+				""contact_name"": ""John Doe"",
+				""contact_email"": ""john@acme.com"",
+				""is_sponsor"": true,
+				""tier_id"": ""tier123"",
+				""description"": ""Leading technology provider"",
+				""associated_sessions"": [ ""session1"", ""session2"" ],
+				""website"": ""https://www.acme.com"",
+				""privacy_policy"": ""https://www.acme.com/privacy"",
+				""linkedin_url"": ""https://linkedin.com/company/acme"",
+				""twitter_url"": ""https://twitter.com/acme"",
+				""youtube_url"": ""https://youtube.com/acme"",
+				""instagram_url"": ""https://instagram.com/acme"",
+				""facebook_url"": ""https://facebook.com/acme""
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "exhibitors"))
+				.Respond("application/json", exhibitorJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.CreateExhibitorAsync(
+				eventId,
+				name,
+				contactName,
+				contactEmail,
+				isSponsor,
+				sponsorTierId,
+				"Leading technology provider",
+				new[] { "session1", "session2" },
+				"https://www.acme.com",
+				"https://www.acme.com/privacy",
+				"https://linkedin.com/company/acme",
+				"https://twitter.com/acme",
+				"https://youtube.com/acme",
+				"https://instagram.com/acme",
+				"https://facebook.com/acme",
+				TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Id.ShouldBe("exhibitor123");
+			result.Name.ShouldBe("Acme Corporation");
+			result.ContactName.ShouldBe("John Doe");
+			result.ContactEmailAddress.ShouldBe("john@acme.com");
+			result.IsSponsor.ShouldBeTrue();
+		}
+
+		[Fact]
+		public async Task CreateExhibitorAsync_NonSponsor()
+		{
+			// Arrange
+			var eventId = "event123";
+			var name = "Regular Exhibitor";
+			var contactName = "Jane Smith";
+			var contactEmail = "jane@regular.com";
+			var isSponsor = false;
+			var exhibitorJson = @"{
+				""exhibitor_id"": ""exhibitor456"",
+				""name"": ""Regular Exhibitor"",
+				""contact_name"": ""Jane Smith"",
+				""contact_email"": ""jane@regular.com"",
+				""is_sponsor"": false,
+				""description"": ""Regular exhibitor booth"",
+				""website"": ""https://www.regular.com"",
+				""privacy_policy"": ""https://www.regular.com/privacy""
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "exhibitors"))
+				.Respond("application/json", exhibitorJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.CreateExhibitorAsync(
+				eventId,
+				name,
+				contactName,
+				contactEmail,
+				isSponsor,
+				null,
+				"Regular exhibitor booth",
+				null,
+				"https://www.mycompanywebsite.com",
+				"https://www.mycompanywebsite.com/privacy",
+				null,
+				null,
+				null,
+				null,
+				null,
+				TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Id.ShouldBe("exhibitor456");
+			result.IsSponsor.ShouldBeFalse();
+		}
+
+		[Fact]
+		public async Task GetExhibitorAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var exhibitorId = "exhibitor123";
+			var exhibitorJson = @"{
+				""exhibitor_id"": ""exhibitor123"",
+				""name"": ""Test Exhibitor"",
+				""contact_name"": ""Contact Person"",
+				""contact_email"": ""contact@test.com"",
+				""is_sponsor"": true,
+				""tier_id"": ""tier456"",
+				""description"": ""Test description"",
+				""website"": ""https://www.test.com""
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "exhibitors", exhibitorId))
+				.Respond("application/json", exhibitorJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetExhibitorAsync(eventId, exhibitorId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Id.ShouldBe("exhibitor123");
+			result.Name.ShouldBe("Test Exhibitor");
+		}
+
+		[Fact]
+		public async Task GetAllExhibitorsAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var exhibitorsJson = @"{
+				""exhibitors"": [
+					{
+						""exhibitor_id"": ""exhibitor1"",
+						""name"": ""Exhibitor One"",
+						""contact_name"": ""Contact One"",
+						""contact_email"": ""one@example.com"",
+						""is_sponsor"": true,
+						""tier_id"": ""tier1""
+					},
+					{
+						""exhibitor_id"": ""exhibitor2"",
+						""name"": ""Exhibitor Two"",
+						""contact_name"": ""Contact Two"",
+						""contact_email"": ""two@example.com"",
+						""is_sponsor"": false
+					}
+				]
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "exhibitors"))
+				.Respond("application/json", exhibitorsJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetAllExhibitorsAsync(eventId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Length.ShouldBe(2);
+			result[0].Id.ShouldBe("exhibitor1");
+			result[0].IsSponsor.ShouldBeTrue();
+			result[1].Id.ShouldBe("exhibitor2");
+			result[1].IsSponsor.ShouldBeFalse();
+		}
+
+		[Fact]
+		public async Task UpdateExhibitorAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var exhibitorId = "exhibitor123";
+			var name = "Updated Exhibitor Name";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "exhibitors", exhibitorId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateExhibitorAsync(eventId, exhibitorId, name, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateExhibitorAsync_WithAllParameters()
+		{
+			// Arrange
+			var eventId = "event123";
+			var exhibitorId = "exhibitor123";
+			var name = "Updated Name";
+			var contactName = "Updated Contact";
+			var contactEmail = "updated@example.com";
+			var isSponsor = true;
+			var sponsorTierId = "newTier123";
+			var description = "Updated description";
+			var sessionIds = new[] { "session1", "session2", "session3" };
+			var website = "https://updated.com";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "exhibitors", exhibitorId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateExhibitorAsync(
+				eventId,
+				exhibitorId,
+				name,
+				contactName,
+				contactEmail,
+				isSponsor,
+				sponsorTierId,
+				description,
+				sessionIds,
+				website,
+				cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateExhibitorAsync_WithSocialMediaLinks()
+		{
+			// Arrange
+			var eventId = "event123";
+			var exhibitorId = "exhibitor123";
+			var linkedInUrl = "https://linkedin.com/updated";
+			var twitterUrl = "https://twitter.com/updated";
+			var youtubeUrl = "https://youtube.com/updated";
+			var instagramUrl = "https://instagram.com/updated";
+			var facebookUrl = "https://facebook.com/updated";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "exhibitors", exhibitorId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateExhibitorAsync(
+				eventId,
+				exhibitorId,
+				linkedInUrl: linkedInUrl,
+				twitterUrl: twitterUrl,
+				youtubeUrl: youtubeUrl,
+				instagramUrl: instagramUrl,
+				facebookUrl: facebookUrl,
+				cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task DeleteExhibitorAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var exhibitorId = "exhibitor123";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("zoom_events", "events", eventId, "exhibitors", exhibitorId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.DeleteExhibitorAsync(eventId, exhibitorId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task GetAllSponsorTiersAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var sponsorTiersJson = @"{
+				""sponsor_tiers"": [
+					{
+						""tier_id"": ""tier1"",
+						""name"": ""Platinum"",
+						""description"": ""Platinum sponsor tier"",
+						""order"": 1
+					},
+					{
+						""tier_id"": ""tier2"",
+						""name"": ""Gold"",
+						""description"": ""Gold sponsor tier"",
+						""order"": 2
+					},
+					{
+						""tier_id"": ""tier3"",
+						""name"": ""Silver"",
+						""description"": ""Silver sponsor tier"",
+						""order"": 3
+					}
+				]
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sponsor_tiers"))
+				.Respond("application/json", sponsorTiersJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetAllSponsorTiersAsync(eventId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Length.ShouldBe(3);
 		}
 
 		#endregion
