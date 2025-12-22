@@ -68,8 +68,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task UpdateAsync(
-			ExternalContactDetails externalContact, CancellationToken cancellationToken = default)
+		public Task UpdateAsync(ExternalContactDetails externalContact, CancellationToken cancellationToken = default)
 		{
 			ArgumentNullException.ThrowIfNull(externalContact);
 			ArgumentNullException.ThrowIfNullOrEmpty(externalContact.ExternalContactId, $"{nameof(externalContact)}.{nameof(externalContact.ExternalContactId)}");

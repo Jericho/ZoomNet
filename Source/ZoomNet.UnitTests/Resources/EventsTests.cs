@@ -39,12 +39,6 @@ namespace ZoomNet.UnitTests.Resources
 			""hub_id"": ""hub123""
 		}";
 
-		private const string SIMPLE_EVENT_JSON = @"{
-			""id"": ""event456"",
-			""name"": ""New Simple Event"",
-			""event_type"": ""simple""
-		}";
-
 		private const string HUBS_JSON = @"{
 			""hubs"": [
 				{
