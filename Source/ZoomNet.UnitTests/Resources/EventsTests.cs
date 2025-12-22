@@ -1942,7 +1942,7 @@ namespace ZoomNet.UnitTests.Resources
 			result.ShouldBe("ticket_free_456");
 		}
 
-				[Fact]
+		[Fact]
 		public async Task CreateTicketTypeAsync_WithSessionIds()
 		{
 			// Arrange
@@ -2996,7 +2996,7 @@ namespace ZoomNet.UnitTests.Resources
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
-			result.PageSize.ShouldBe(50);
+			result.RecordsPerPage.ShouldBe(50);
 			result.NextPageToken.ShouldBe("next_token_456");
 		}
 
