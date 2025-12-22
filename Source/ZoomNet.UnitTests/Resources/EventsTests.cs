@@ -2570,5 +2570,615 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		#endregion
+
+		#region Ticket Tests
+
+		[Fact]
+		public async Task CreateTicketsAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var tickets = new[]
+			{
+				new EventTicket
+				{
+					Email = "attendee1@example.com",
+					TypeId = "ticket_type_1",
+					FirstName = "John",
+					LastName = "Doe",
+					City = "New York"
+				},
+				new EventTicket
+				{
+					Email = "attendee2@example.com",
+					TypeId = "ticket_type_1",
+					FirstName = "Jane",
+					LastName = "Smith",
+					City = "Los Angeles"
+				}
+			};
+			var responseJson = @"{
+				""tickets"": [
+					{
+						""ticket_id"": ""ticket1"",
+						""email"": ""attendee1@example.com"",
+						""ticket_type_id"": ""ticket_type_1"",
+						""first_name"": ""John"",
+						""last_name"": ""Doe"",
+						""city"": ""New York""
+					},
+					{
+						""ticket_id"": ""ticket2"",
+						""email"": ""attendee2@example.com"",
+						""ticket_type_id"": ""ticket_type_1"",
+						""first_name"": ""Jane"",
+						""last_name"": ""Smith"",
+						""city"": ""Los Angeles""
+					}
+				],
+				""errors"": []
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "tickets"))
+				.WithQueryString("validation_level", "standard")
+				.Respond("application/json", responseJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.CreateTicketsAsync(eventId, tickets, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.Tickets.ShouldNotBeNull();
+			result.Tickets.Length.ShouldBe(2);
+			result.Errors.ShouldNotBeNull();
+			result.Errors.Length.ShouldBe(0);
+		}
+
+		[Fact]
+		public async Task CreateTicketsAsync_WithSource()
+		{
+			// Arrange
+			var eventId = "event123";
+			var source = "integration_test";
+			var tickets = new[]
+			{
+				new EventTicket
+				{
+					Email = "test@example.com",
+					TypeId = "ticket_type_1",
+					FirstName = "Test",
+					LastName = "User"
+				}
+			};
+			var responseJson = @"{
+				""tickets"": [
+					{
+						""ticket_id"": ""ticket_abc"",
+						""email"": ""test@example.com"",
+						""ticket_type_id"": ""ticket_type_1""
+					}
+				],
+				""errors"": []
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "tickets"))
+				.Respond("application/json", responseJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.CreateTicketsAsync(eventId, tickets, source, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.Tickets.Length.ShouldBe(1);
+			result.Errors.Length.ShouldBe(0);
+		}
+
+		[Fact]
+		public async Task CreateTicketsAsync_WithErrors()
+		{
+			// Arrange
+			var eventId = "event123";
+			var tickets = new[]
+			{
+				new EventTicket { Email = "valid@example.com", TypeId = "ticket_type_1" },
+				new EventTicket { Email = "invalid@example.com", TypeId = "invalid_type" }
+			};
+			var responseJson = @"{
+				""tickets"": [
+					{
+						""ticket_id"": ""ticket1"",
+						""email"": ""valid@example.com"",
+						""ticket_type_id"": ""ticket_type_1""
+					}
+				],
+				""errors"": [
+					{
+						""email"": ""invalid@example.com"",
+						""error_code"": ""INVALID_TICKET_TYPE"",
+						""message"": ""Invalid ticket type ID""
+					}
+				]
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "tickets"))
+				.WithQueryString("validation_level", "standard")
+				.Respond("application/json", responseJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.CreateTicketsAsync(eventId, tickets, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.Tickets.Length.ShouldBe(1);
+			result.Errors.Length.ShouldBe(1);
+			result.Errors[0].Email.ShouldBe("invalid@example.com");
+			result.Errors[0].ErrorCode.ShouldBe("INVALID_TICKET_TYPE");
+		}
+
+		[Fact]
+		public async Task CreateTicketsAsync_WithAllTicketProperties()
+		{
+			// Arrange
+			var eventId = "event123";
+			var tickets = new[]
+			{
+				new EventTicket
+				{
+					Email = "complete@example.com",
+					TypeId = "ticket_type_1",
+					ExternalTicketId = "ext_123",
+					SendNotifications = true,
+					FastJoin = false,
+					RegistrationNeeded = true,
+					SessionIds = new[] { "session1", "session2" },
+					FirstName = "Complete",
+					LastName = "User",
+					Address = "123 Main St",
+					City = "Boston",
+					State = "MA",
+					Country = "US",
+					Zip = "02101",
+					Phone = "+1-555-0100",
+					Industry = "Finance",
+					JobTitle = "CFO",
+					Organization = "Finance Corp",
+					Comments = "VIP guest",
+					CustomQuestions = new[]
+					{
+						new KeyValuePair<string, string>("Dietary Preference", "Vegetarian"),
+						new KeyValuePair<string, string>("T-Shirt Size", "L")
+					}
+				}
+			};
+			var responseJson = @"{
+				""tickets"": [
+					{
+						""ticket_id"": ""ticket_complete"",
+						""email"": ""complete@example.com"",
+						""ticket_type_id"": ""ticket_type_1"",
+						""external_ticket_id"": ""ext_123""
+					}
+				],
+				""errors"": []
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "tickets"))
+				.WithQueryString("validation_level", "standard")
+				.Respond("application/json", responseJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.CreateTicketsAsync(eventId, tickets, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.Tickets.Length.ShouldBe(1);
+			result.Tickets[0].Id.ShouldBe("ticket_complete");
+		}
+
+		[Fact]
+		public async Task DeleteTicketAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var ticketId = "ticket456";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("zoom_events", "events", eventId, "tickets", ticketId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.DeleteTicketAsync(eventId, ticketId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task GetTicketAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var ticketId = "ticket456";
+			var ticketJson = @"{
+				""ticket_id"": ""ticket456"",
+				""email"": ""attendee@example.com"",
+				""ticket_type_id"": ""type123"",
+				""first_name"": ""John"",
+				""last_name"": ""Doe"",
+				""city"": ""Seattle"",
+				""state"": ""WA"",
+				""country"": ""US"",
+				""phone"": ""+1-206-555-0100"",
+				""job_title"": ""Software Engineer"",
+				""organization"": ""Tech Company"",
+				""event_join_link"": ""https://zoom.us/events/join/abc123""
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "tickets", ticketId))
+				.Respond("application/json", ticketJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetTicketAsync(eventId, ticketId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Id.ShouldBe("ticket456");
+			result.Email.ShouldBe("attendee@example.com");
+			result.FirstName.ShouldBe("John");
+			result.LastName.ShouldBe("Doe");
+		}
+
+		[Fact]
+		public async Task GetAllTicketsAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var ticketsJson = @"{
+				""page_size"": 30,
+				""next_page_token"": """",
+				""tickets"": [
+					{
+						""ticket_id"": ""ticket1"",
+						""email"": ""user1@example.com"",
+						""ticket_type_id"": ""type1"",
+						""first_name"": ""Alice"",
+						""last_name"": ""Johnson""
+					},
+					{
+						""ticket_id"": ""ticket2"",
+						""email"": ""user2@example.com"",
+						""ticket_type_id"": ""type1"",
+						""first_name"": ""Bob"",
+						""last_name"": ""Williams""
+					},
+					{
+						""ticket_id"": ""ticket3"",
+						""email"": ""user3@example.com"",
+						""ticket_type_id"": ""type2"",
+						""first_name"": ""Carol"",
+						""last_name"": ""Brown""
+					}
+				]
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "tickets"))
+				.WithQueryString("page_size", "30")
+				.Respond("application/json", ticketsJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetAllTicketsAsync(eventId, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Records.Length.ShouldBe(3);
+			result.Records[0].Id.ShouldBe("ticket1");
+			result.Records[1].Id.ShouldBe("ticket2");
+			result.Records[2].Id.ShouldBe("ticket3");
+		}
+
+		[Fact]
+		public async Task GetAllTicketsAsync_WithTicketTypeFilter()
+		{
+			// Arrange
+			var eventId = "event123";
+			var ticketTypeId = "type_vip";
+			var ticketsJson = @"{
+				""page_size"": 30,
+				""next_page_token"": """",
+				""tickets"": [
+					{
+						""ticket_id"": ""ticket_vip_1"",
+						""email"": ""vip1@example.com"",
+						""ticket_type_id"": ""type_vip""
+					},
+					{
+						""ticket_id"": ""ticket_vip_2"",
+						""email"": ""vip2@example.com"",
+						""ticket_type_id"": ""type_vip""
+					}
+				]
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "tickets"))
+				.WithQueryString("ticket_type_id", ticketTypeId)
+				.WithQueryString("page_size", "30")
+				.Respond("application/json", ticketsJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetAllTicketsAsync(eventId, ticketTypeId, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.Records.Length.ShouldBe(2);
+		}
+
+		[Fact]
+		public async Task GetAllTicketsAsync_WithPagination()
+		{
+			// Arrange
+			var eventId = "event123";
+			var recordsPerPage = 50;
+			var pagingToken = "next_page_token_123";
+			var ticketsJson = @"{
+				""page_size"": 50,
+				""next_page_token"": ""next_token_456"",
+				""tickets"": [
+					{
+						""ticket_id"": ""ticket50"",
+						""email"": ""user50@example.com"",
+						""ticket_type_id"": ""type1""
+					}
+				]
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "tickets"))
+				.WithQueryString("page_size", "50")
+				.WithQueryString("next_page_token", pagingToken)
+				.Respond("application/json", ticketsJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetAllTicketsAsync(eventId, recordsPerPage: recordsPerPage, pagingToken: pagingToken, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.PageSize.ShouldBe(50);
+			result.NextPageToken.ShouldBe("next_token_456");
+		}
+
+		[Fact]
+		public async Task UpdateTicketAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var ticketId = "ticket456";
+			var firstName = "UpdatedFirstName";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "tickets", ticketId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateTicketAsync(eventId, ticketId, firstName, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateTicketAsync_WithMultipleFields()
+		{
+			// Arrange
+			var eventId = "event123";
+			var ticketId = "ticket456";
+			var firstName = "Jane";
+			var lastName = "Updated";
+			var city = "San Francisco";
+			var phone = "+1-415-555-0100";
+			var jobTitle = "Senior Developer";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "tickets", ticketId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateTicketAsync(
+				eventId,
+				ticketId,
+				firstName,
+				lastName,
+				city: city,
+				phone: phone,
+				jobTitle: jobTitle,
+				cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateTicketAsync_WithAllFields()
+		{
+			// Arrange
+			var eventId = "event123";
+			var ticketId = "ticket456";
+			var firstName = "Complete";
+			var lastName = "Update";
+			var address = "456 Updated St";
+			var city = "Austin";
+			var state = "TX";
+			var zip = "78701";
+			var country = "US";
+			var phone = "+1-512-555-0100";
+			var industry = "Finance";
+			var jobTitle = "CFO";
+			var organization = "Finance Corp";
+			var comments = "VIP guest";
+			var externalTicketId = "ext_updated_123";
+			var customQuestions = new[]
+			{
+				new KeyValuePair<string, string>("Dietary Preference", "Vegetarian"),
+				new KeyValuePair<string, string>("T-Shirt Size", "L")
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "tickets", ticketId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateTicketAsync(
+				eventId,
+				ticketId,
+				firstName,
+				lastName,
+				address,
+				city,
+				state,
+				zip,
+				country,
+				phone,
+				industry,
+				jobTitle,
+				organization,
+				comments,
+				externalTicketId,
+				customQuestions,
+				TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateTicketAsync_WithCustomQuestionsOnly()
+		{
+			// Arrange
+			var eventId = "event123";
+			var ticketId = "ticket456";
+			var customQuestions = new[]
+			{
+				new KeyValuePair<string, string>("Dietary Restriction", "Gluten-free"),
+				new KeyValuePair<string, string>("Accessibility Needs", "Wheelchair access"),
+				new KeyValuePair<string, string>("Preferred Session Track", "Technical")
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "tickets", ticketId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateTicketAsync(
+				eventId,
+				ticketId,
+				customQuestions: customQuestions,
+				cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateTicketAsync_WithExternalTicketId()
+		{
+			// Arrange
+			var eventId = "event123";
+			var ticketId = "ticket456";
+			var externalTicketId = "external_system_ref_789";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "tickets", ticketId))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateTicketAsync(
+				eventId,
+				ticketId,
+				externalTicketId: externalTicketId,
+				cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		#endregion
 	}
 }
