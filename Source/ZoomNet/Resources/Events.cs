@@ -1573,7 +1573,7 @@ namespace ZoomNet.Resources
 
 		#endregion
 
-		#region VIDEO_ON_DEMAND
+		#region VIDEO ON DEMAND
 
 		/// <inheritdoc/>
 		public Task PublishVideoOnDemandChannelAsync(string hubId, string channelId, CancellationToken cancellationToken = default)
@@ -1689,7 +1689,7 @@ namespace ZoomNet.Resources
 
 		#endregion
 
-		#region VIDEO_ON_DEMAND REGISTRATION
+		#region VIDEO ON DEMAND REGISTRATION
 
 		/// <inheritdoc/>
 		public async Task<(RegistrationStandardQuestion[] StandardQuestions, RegistrationCustomQuestionForVodChannel[] CustomQuestions)> GetAllVideoOnDemandRegistrationQuestionsAsync(string hubId, string channelId, CancellationToken cancellationToken = default)
