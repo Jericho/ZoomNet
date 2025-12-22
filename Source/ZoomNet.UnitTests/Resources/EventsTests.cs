@@ -1,6 +1,7 @@
 using RichardSzalay.MockHttp;
 using Shouldly;
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -1041,11 +1042,114 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
+		public async Task AddCoEditorsAsync_MultipleCoEditorsWithMultiplePermissions()
+		{
+			// Arrange
+			var eventId = "event123";
+			var coeditors = new[]
+			{
+				(EmailAddress: "coeditor1@example.com", Permissions: new[] { EventCoEditorPermissionGroup.Publish, EventCoEditorPermissionGroup.EventConfiguration }),
+				(EmailAddress: "coeditor2@example.com", Permissions: new[] { EventCoEditorPermissionGroup.EventBranding, EventCoEditorPermissionGroup.RegistrationAndJoin })
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "coeditors"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.AddCoEditorsAsync(eventId, coeditors, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateCoEditorsAsync()
+		{
+			// Arrange
+			var eventId = "event123";
+			var coeditors = new List<(string EmailAddress, IEnumerable<EventCoEditorPermissionGroup> Permissions)>()
+			{
+				(EmailAddress: "coeditor@example.com", Permissions: new[] { EventCoEditorPermissionGroup.EventBranding, EventCoEditorPermissionGroup.Venue })
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "coeditors"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateCoEditorsAsync(eventId, coeditors, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateCoEditorsAsync_MultipleCoEditors()
+		{
+			// Arrange
+			var eventId = "event123";
+			var coeditors = new[]
+			{
+				(EmailAddress: "coeditor1@example.com", Permissions: (IEnumerable<EventCoEditorPermissionGroup>)new[] { EventCoEditorPermissionGroup.Publish }),
+				(EmailAddress: "coeditor2@example.com", Permissions: (IEnumerable<EventCoEditorPermissionGroup>)new[] { EventCoEditorPermissionGroup.EventConfiguration, EventCoEditorPermissionGroup.EventPlanning })
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "coeditors"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateCoEditorsAsync(eventId, coeditors, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
 		public async Task DeleteCoEditorsAsync()
 		{
 			// Arrange
 			var eventId = "event123";
 			var emailAddresses = new[] { "coeditor@example.com" };
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "coeditors"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.DeleteCoEditorsAsync(eventId, emailAddresses, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task DeleteCoEditorsAsync_MultipleCoEditors()
+		{
+			// Arrange
+			var eventId = "event123";
+			var emailAddresses = new[] { "coeditor1@example.com", "coeditor2@example.com", "coeditor3@example.com" };
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "coeditors"))
