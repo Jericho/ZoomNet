@@ -2,7 +2,6 @@ using RichardSzalay.MockHttp;
 using Shouldly;
 using System;
 using System.Net.Http;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 using ZoomNet.Models;
@@ -556,7 +555,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("type", assignmentType.ToEnumString())
 				.WithQueryString("extension_type", extensionType.ToEnumString())
 				.WithQueryString("number_type", numberType.ToEnumString())
-				.WithQueryString("pending_numbers", pendingNumbers.ToString().ToLowerInvariant())
+				.WithQueryString("pending_numbers", pendingNumbers.ToString())
 				.WithQueryString("keyword", keyword)
 				.Respond("application/json", PHONE_NUMBERS_JSON);
 
