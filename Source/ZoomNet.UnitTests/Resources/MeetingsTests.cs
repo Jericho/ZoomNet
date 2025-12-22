@@ -1,0 +1,592 @@
+using RichardSzalay.MockHttp;
+using Shouldly;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Xunit;
+using ZoomNet.Models;
+using ZoomNet.Resources;
+
+namespace ZoomNet.UnitTests.Resources
+{
+	public class MeetingsTests
+	{
+		private const string MEETINGS_LIST_JSON = @"{
+			""page_size"": 30,
+			""next_page_token"": ""token123"",
+			""meetings"": [
+				{
+					""uuid"": ""meeting1_uuid=="",
+					""id"": 1234567890,
+					""host_id"": ""host123"",
+					""topic"": ""Team Sync"",
+					""type"": 2,
+					""start_time"": ""2023-06-01T10:00:00Z"",
+					""duration"": 60,
+					""timezone"": ""UTC"",
+					""created_at"": ""2023-05-20T08:00:00Z"",
+					""join_url"": ""https://zoom.us/j/1234567890"",
+					""agenda"": ""Weekly team synchronization meeting""
+				},
+				{
+					""uuid"": ""meeting2_uuid=="",
+					""id"": 9876543210,
+					""host_id"": ""host456"",
+					""topic"": ""Project Review"",
+					""type"": 8,
+					""start_time"": ""2023-06-05T14:00:00Z"",
+					""duration"": 90,
+					""timezone"": ""UTC"",
+					""created_at"": ""2023-05-22T09:00:00Z"",
+					""join_url"": ""https://zoom.us/j/9876543210"",
+					""agenda"": ""Monthly project review""
+				}
+			]
+		}";
+
+		private const string INSTANT_MEETING_JSON = @"{
+			""uuid"": ""instant_meeting_uuid=="",
+			""id"": 1111111111,
+			""host_id"": ""host789"",
+			""topic"": ""Instant Discussion"",
+			""type"": 1,
+			""join_url"": ""https://zoom.us/j/1111111111"",
+			""password"": ""secret123"",
+			""h323_password"": ""654321"",
+			""pstn_password"": ""789012"",
+			""encrypted_password"": ""encryptedSecret123""
+		}";
+
+		private const string SCHEDULED_MEETING_JSON = @"{
+			""uuid"": ""scheduled_meeting_uuid=="",
+			""id"": 2222222222,
+			""host_id"": ""host101"",
+			""topic"": ""Scheduled Meeting"",
+			""type"": 2,
+			""start_time"": ""2023-07-01T15:00:00Z"",
+			""duration"": 45,
+			""timezone"": ""America/New_York"",
+			""join_url"": ""https://zoom.us/j/2222222222"",
+			""password"": ""pass456"",
+			""agenda"": ""Quarterly planning session""
+		}";
+
+		private const string RECURRING_MEETING_JSON = @"{
+			""uuid"": ""recurring_meeting_uuid=="",
+			""id"": 3333333333,
+			""host_id"": ""host202"",
+			""topic"": ""Daily Standup"",
+			""type"": 8,
+			""start_time"": ""2023-06-01T09:00:00Z"",
+			""duration"": 15,
+			""timezone"": ""UTC"",
+			""join_url"": ""https://zoom.us/j/3333333333"",
+			""recurrence"": {
+				""type"": 1,
+				""repeat_interval"": 1
+			}
+		}";
+
+		private const string MEETING_REGISTRANTS_JSON = @"{
+			""page_size"": 30,
+			""next_page_token"": ""regtoken123"",
+			""registrants"": [
+				{
+					""id"": ""reg001"",
+					""email"": ""user1@example.com"",
+					""first_name"": ""John"",
+					""last_name"": ""Doe"",
+					""status"": ""approved"",
+					""create_time"": ""2023-05-25T10:00:00Z"",
+					""join_url"": ""https://zoom.us/w/reg001""
+				},
+				{
+					""id"": ""reg002"",
+					""email"": ""user2@example.com"",
+					""first_name"": ""Jane"",
+					""last_name"": ""Smith"",
+					""status"": ""pending"",
+					""create_time"": ""2023-05-26T11:00:00Z"",
+					""join_url"": ""https://zoom.us/w/reg002""
+				}
+			]
+		}";
+
+		private const string REGISTRANT_INFO_JSON = @"{
+			""id"": ""new_reg_123"",
+			""registrant_id"": ""new_reg_123"",
+			""topic"": ""Team Sync"",
+			""start_time"": ""2023-06-01T10:00:00Z"",
+			""join_url"": ""https://zoom.us/w/new_reg_123""
+		}";
+
+		private const string POLLS_JSON = @"{
+			""polls"": [
+				{
+					""id"": ""poll001"",
+					""title"": ""Meeting Feedback"",
+					""status"": ""notstart"",
+					""questions"": [
+						{
+							""name"": ""question1"",
+							""type"": ""single"",
+							""answer_required"": true,
+							""answers"": [""Excellent"", ""Good"", ""Average"", ""Poor""]
+						}
+					]
+				}
+			]
+		}";
+
+		private const string POLL_JSON = @"{
+			""id"": ""poll001"",
+			""title"": ""Meeting Feedback"",
+			""status"": ""notstart"",
+			""questions"": [
+				{
+					""name"": ""question1"",
+					""type"": ""single"",
+					""answer_required"": true,
+					""answers"": [""Excellent"", ""Good"", ""Average"", ""Poor""]
+				}
+			]
+		}";
+
+		private const string INVITATION_JSON = @"{
+			""invitation"": ""You are invited to join the meeting.\n\nJoin URL: https://zoom.us/j/1234567890\nMeeting ID: 1234567890\nPassword: secret123""
+		}";
+
+		private readonly ITestOutputHelper _outputHelper;
+
+		public MeetingsTests(ITestOutputHelper outputHelper)
+		{
+			_outputHelper = outputHelper;
+		}
+
+		#region GetAllAsync Tests
+
+		[Fact]
+		public async Task GetAllAsync_WithPaginationToken_ReturnsMeetings()
+		{
+			// Arrange
+			var userId = "user123";
+			var type = MeetingListType.Scheduled;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "meetings"))
+				.WithQueryString("type", type.ToEnumString())
+				.WithQueryString("page_size", "30")
+				.Respond("application/json", MEETINGS_LIST_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			var result = await meetings.GetAllAsync(userId, type, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.RecordsPerPage.ShouldBe(30);
+			result.Records.Length.ShouldBe(2);
+			result.Records[0].Id.ShouldBe(1234567890);
+			result.Records[0].Topic.ShouldBe("Team Sync");
+			result.Records[1].Id.ShouldBe(9876543210);
+		}
+
+		[Fact]
+		public async Task GetAllAsync_WithDateRange_ReturnsMeetings()
+		{
+			// Arrange
+			var userId = "user456";
+			var from = new DateTime(2023, 6, 1);
+			var to = new DateTime(2023, 6, 30);
+			var timeZone = TimeZones.America_New_York;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "meetings"))
+				.WithQueryString("from", from.ToZoomFormat(timeZone))
+				.WithQueryString("to", to.ToZoomFormat(timeZone))
+				.WithQueryString("timezone", timeZone.ToEnumString())
+				.WithQueryString("page_size", "30")
+				.Respond("application/json", MEETINGS_LIST_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			var result = await meetings.GetAllAsync(userId, from: from, to: to, timeZone: timeZone, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Records.Length.ShouldBe(2);
+		}
+
+		#endregion
+
+		#region Create Meeting Tests
+
+		[Fact]
+		public async Task CreateInstantMeetingAsync_WithValidParameters_ReturnsMeeting()
+		{
+			// Arrange
+			var userId = "user123";
+			var topic = "Instant Discussion";
+			var agenda = "Quick sync meeting";
+			var password = "secret123";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("users", userId, "meetings"))
+				.Respond("application/json", INSTANT_MEETING_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			var result = await meetings.CreateInstantMeetingAsync(userId, topic, agenda, password, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Id.ShouldBe(1111111111);
+			result.Topic.ShouldBe("Instant Discussion");
+			result.Type.ShouldBe(MeetingType.Instant);
+		}
+
+		[Fact]
+		public async Task CreateScheduledMeetingAsync_WithValidParameters_ReturnsMeeting()
+		{
+			// Arrange
+			var userId = "user123";
+			var topic = "Scheduled Meeting";
+			var agenda = "Quarterly planning";
+			var start = new DateTime(2023, 7, 1, 15, 0, 0);
+			var duration = 45;
+			var timeZone = TimeZones.America_New_York;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("users", userId, "meetings"))
+				.Respond("application/json", SCHEDULED_MEETING_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			var result = await meetings.CreateScheduledMeetingAsync(userId, topic, agenda, start, duration, timeZone, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Id.ShouldBe(2222222222);
+			result.Topic.ShouldBe("Scheduled Meeting");
+			result.Type.ShouldBe(MeetingType.Scheduled);
+			result.Duration.ShouldBe(45);
+		}
+
+		[Fact]
+		public async Task CreateRecurringMeetingAsync_WithRecurrence_ReturnsMeeting()
+		{
+			// Arrange
+			var userId = "user123";
+			var topic = "Daily Standup";
+			var agenda = "Daily team standup";
+			var start = new DateTime(2023, 6, 1, 9, 0, 0);
+			var duration = 15;
+			var recurrence = new RecurrenceInfo
+			{
+				Type = RecurrenceType.Daily,
+				RepeatInterval = 1
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("users", userId, "meetings"))
+				.Respond("application/json", RECURRING_MEETING_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			var result = await meetings.CreateRecurringMeetingAsync(userId, topic, agenda, start, duration, recurrence, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Id.ShouldBe(3333333333);
+			result.Topic.ShouldBe("Daily Standup");
+			result.Type.ShouldBe(MeetingType.RecurringFixedTime);
+		}
+
+		[Fact]
+		public async Task CreateInstantMeetingAsync_WithPasswordAndGeneratePassword_ThrowsException()
+		{
+			// Arrange
+			var userId = "user123";
+			var topic = "Test Meeting";
+			var agenda = "Test Agenda";
+			var password = "test123";
+			var generatePassword = true;
+
+			var mockHttp = new MockHttpMessageHandler();
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act & Assert
+			Should.Throw<ArgumentException>(async () =>
+			{
+				await meetings.CreateInstantMeetingAsync(userId, topic, agenda, password, generatePassword: generatePassword, cancellationToken: TestContext.Current.CancellationToken);
+			});
+		}
+
+		#endregion
+
+		#region GetAsync Test
+
+		[Fact]
+		public async Task GetAsync_WithMeetingId_ReturnsMeeting()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId.ToString()))
+				.WithQueryString("show_previous_occurrences", "false")
+				.Respond("application/json", SCHEDULED_MEETING_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			var result = await meetings.GetAsync(meetingId, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Id.ShouldBe(2222222222);
+			result.Topic.ShouldBe("Scheduled Meeting");
+		}
+
+		#endregion
+
+		#region Delete and Status Tests
+
+		[Fact]
+		public async Task DeleteAsync_WithMeetingId_Succeeds()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("meetings", meetingId.ToString()))
+				.WithQueryString("schedule_for_reminder", "true")
+				.WithQueryString("cancel_meeting_reminder", "false")
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			await meetings.DeleteAsync(meetingId, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task EndAsync_WithMeetingId_Succeeds()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "status"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			await meetings.EndAsync(meetingId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		#endregion
+
+		#region Registrant Tests
+
+		[Fact]
+		public async Task GetRegistrantsAsync_WithStatus_ReturnsRegistrants()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+			var status = RegistrantStatus.Approved;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "registrants"))
+				.WithQueryString("status", status.ToEnumString())
+				.WithQueryString("page_size", "30")
+				.Respond("application/json", MEETING_REGISTRANTS_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			var result = await meetings.GetRegistrantsAsync(meetingId, status, recordsPerPage: 30, pagingToken: null, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Records.Length.ShouldBe(2);
+			result.Records[0].Id.ShouldBe("reg001");
+			result.Records[0].Email.ShouldBe("user1@example.com");
+			result.Records[0].Status.ShouldBe(RegistrantStatus.Approved);
+		}
+
+		[Fact]
+		public async Task AddRegistrantAsync_WithRequiredFields_ReturnsRegistrantInfo()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+			var email = "newuser@example.com";
+			var firstName = "New";
+			var lastName = "User";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "registrants"))
+				.Respond("application/json", REGISTRANT_INFO_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			var result = await meetings.AddRegistrantAsync(meetingId, email, firstName, lastName, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Id.ShouldBe("new_reg_123");
+			result.JoinUrl.ShouldNotBeNullOrEmpty();
+		}
+
+		#endregion
+
+		#region Poll Tests
+
+		[Fact]
+		public async Task GetPollsAsync_WithMeetingId_ReturnsPolls()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "polls"))
+				.Respond("application/json", POLLS_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			var result = await meetings.GetPollsAsync(meetingId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Length.ShouldBe(1);
+			result[0].Title.ShouldBe("Meeting Feedback");
+		}
+
+		[Fact]
+		public async Task CreatePollAsync_WithTitleAndQuestions_ReturnsPoll()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+			var title = "Meeting Feedback";
+			var questions = new[]
+			{
+				new PollQuestionForMeetingOrWebinar
+				{
+					Question = "How was the meeting?",
+					Type = PollQuestionType.SingleChoice,
+					IsRequired = true,
+					Answers = new[] { "Excellent", "Good", "Average", "Poor" }
+				}
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "polls"))
+				.Respond("application/json", POLL_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			var result = await meetings.CreatePollAsync(meetingId, title, questions, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Title.ShouldBe("Meeting Feedback");
+			result.Questions.Length.ShouldBe(1);
+		}
+
+		#endregion
+
+		#region Additional Tests
+
+		[Fact]
+		public async Task GetInvitationAsync_WithMeetingId_ReturnsInvitation()
+		{
+			// Arrange
+			var meetingId = 1234567890L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "invitation"))
+				.Respond("application/json", INVITATION_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			var result = await meetings.GetInvitationAsync(meetingId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.ShouldContain("You are invited");
+			result.ShouldContain("https://zoom.us/j/1234567890");
+		}
+
+		#endregion
+	}
+}
