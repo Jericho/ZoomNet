@@ -732,6 +732,8 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
+			result.Id.ShouldBe("fdgsfh2ey82fuh");
+			result.EventId.ShouldBe(85746065);
 		}
 
 		[Fact]
