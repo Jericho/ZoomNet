@@ -22,7 +22,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<SmsMessage>> GetSmsSessionDetailsAsync(string sessionId, DateTime? from, DateTime? to, bool? orderAscending = true, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedSyncResponse<SmsMessage>> GetSmsSessionDetailsAsync(string sessionId, DateTime? from, DateTime? to, bool? orderAscending = true, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage, max: 100);
 
@@ -34,7 +34,7 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<SmsMessage>("sms_histories");
+				.AsPaginatedSyncResponse<SmsMessage>("sms_histories");
 		}
 
 		/// <inheritdoc/>
