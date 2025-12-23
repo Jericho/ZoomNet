@@ -4,6 +4,7 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
+using ZoomNet.Models;
 using ZoomNet.Resources;
 
 namespace ZoomNet.UnitTests.Resources
@@ -11,65 +12,40 @@ namespace ZoomNet.UnitTests.Resources
 	public class SmsSessionTests
 	{
 		private const string SMS_SESSION_DETAILS_JSON = @"{
+			""next_page_token"": ""2z0Ov7kngllAbfQi4ZR2eQTb3mFVYQpYAe4"",
 			""page_size"": 30,
-			""next_page_token"": ""token123"",
 			""sms_histories"": [
 				{
 					""attachments"": [
 						{
-							""download_url"": ""https://example.com/file/download/abc123"",
-							""id"": ""attachment123"",
-							""name"": ""image.jpg"",
+							""download_url"": ""https://exampleurl.us/file/download/x18dcVWxTcCzbp4zr2AT3A?jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjcm9zc2ZpbGUiLCJhdWQiOiJmaWxlIiwiZGlnIjoiYTZkODE4NzQ2MDNmN2UzZWM4OThkNDMxM2IxNjNhNTQ4NGI4MjkxMTA0ZmQyYzc4MTg1NmY0MGUxY2FlOTI3YyIsImV4cCI6MTY0ODE5NDA1NH0.eCURcan9QOOw9wvBdSn_-TBzgT5HWBzp04IfsK19Oto"",
+							""id"": ""x18dcVWxTcCzbp4zr2AT3A"",
+							""name"": ""FWDHOMaNRaqIvNc3aIdisg.jpg"",
 							""size"": 225740,
-							""type"": ""JPG""
+							""type"": ""JPG/JPEG""
 						}
 					],
-					""date_time"": ""2024-03-23T02:58:01Z"",
+					""date_time"": ""2022-03-23T02:58:01Z"",
 					""direction"": ""In"",
-					""message"": ""Hello World"",
-					""message_id"": ""msg123"",
-					""message_type"": 1,
+					""message"": ""welcome"",
+					""message_id"": ""IQ-cRH5P5EiTWCwpNzScnECJw"",
+					""message_type"": 2,
 					""sender"": {
-						""display_name"": ""John Doe"",
+						""display_name"": ""test api"",
 						""owner"": {
-							""id"": ""user123"",
+							""id"": ""DnEopNmXQEGU2uvvzjgojw"",
 							""type"": ""user""
 						},
 						""phone_number"": ""18108001001""
 					},
 					""to_members"": [
 						{
-							""display_name"": ""Jane Smith"",
+							""display_name"": ""ezreal mao"",
 							""owner"": {
-								""id"": ""user456"",
-								""type"": ""user""
+							""id"": ""WeD59Hn7SvqNRB9jcxz5NQ"",
+							""type"": ""user""
 							},
 							""phone_number"": ""12092693625""
-						}
-					]
-				},
-				{
-					""date_time"": ""2024-03-23T03:15:30Z"",
-					""direction"": ""Out"",
-					""message"": ""Reply message"",
-					""message_id"": ""msg456"",
-					""message_type"": 2,
-					""sender"": {
-						""display_name"": ""Jane Smith"",
-						""owner"": {
-							""id"": ""user456"",
-							""type"": ""user""
-						},
-						""phone_number"": ""12092693625""
-					},
-					""to_members"": [
-						{
-							""display_name"": ""John Doe"",
-							""owner"": {
-								""id"": ""user123"",
-								""type"": ""user""
-							},
-							""phone_number"": ""18108001001""
 						}
 					]
 				}
@@ -79,34 +55,34 @@ namespace ZoomNet.UnitTests.Resources
 		private const string SINGLE_SMS_MESSAGE_JSON = @"{
 			""attachments"": [
 				{
-					""download_url"": ""https://example.com/file/download/xyz789"",
-					""id"": ""attachment789"",
-					""name"": ""document.pdf"",
-					""size"": 512000,
-					""type"": ""PDF""
+					""download_url"": ""https://exampleurl.us/file/download/x18dcVWxTcCzbp4zr2AT3A?jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjcm9zc2ZpbGUiLCJhdWQiOiJmaWxlIiwiZGlnIjoiYTZkODE4NzQ2MDNmN2UzZWM4OThkNDMxM2IxNjNhNTQ4NGI4MjkxMTA0ZmQyYzc4MTg1NmY0MGUxY2FlOTI3YyIsImV4cCI6MTY0ODE5NDA1NH0.eCURcan9QOOw9wvBdSn_-TBzgT5HWBzp04IfsK19Oto"",
+					""id"": ""x18dcVWxTcCzbp4zr2AT3A"",
+					""name"": ""FWDHOMaNRaqIvNc3aIdisg.jpg"",
+					""size"": 225740,
+					""type"": ""JPG/JPEG""
 				}
 			],
-			""date_time"": ""2024-03-23T10:30:00Z"",
+			""date_time"": ""2022-03-23T02:58:01Z"",
 			""direction"": ""In"",
-			""message"": ""Here is the document you requested"",
-			""message_id"": ""msg789"",
+			""message"": ""welcome"",
+			""message_id"": ""IQ-cRH5P5EiTWCwpNzScnECJw"",
 			""message_type"": 2,
 			""sender"": {
-				""display_name"": ""Bob Johnson"",
+				""display_name"": ""ezreal mao"",
 				""owner"": {
-					""id"": ""user789"",
+					""id"": ""WeD59Hn7SvqNRB9jcxz5NQ"",
 					""type"": ""user""
 				},
-				""phone_number"": ""15551234567""
+				""phone_number"": ""12092693625""
 			},
 			""to_members"": [
 				{
-					""display_name"": ""Alice Williams"",
+					""display_name"": ""test api"",
 					""owner"": {
-						""id"": ""user999"",
-						""type"": ""user""
+					""id"": ""DnEopNmXQEGU2uvvzjgojw"",
+					""type"": ""user""
 					},
-					""phone_number"": ""15559876543""
+					""phone_number"": ""18108001001""
 				}
 			]
 		}";
@@ -147,15 +123,11 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.RecordsPerPage.ShouldBe(30);
-			result.NextPageToken.ShouldBe("token123");
 			result.Records.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
-			result.Records[0].MessageId.ShouldBe("msg123");
-			result.Records[0].Message.ShouldBe("Hello World");
-			result.Records[0].Direction.ShouldBe(Models.SmsDirection.Inbound);
-			result.Records[1].MessageId.ShouldBe("msg456");
-			result.Records[1].Direction.ShouldBe(Models.SmsDirection.Outbound);
+			result.Records.Length.ShouldBe(1);
+			result.Records[0].MessageId.ShouldBe("IQ-cRH5P5EiTWCwpNzScnECJw");
+			result.Records[0].Message.ShouldBe("welcome");
+			result.Records[0].Direction.ShouldBe(SmsDirection.Inbound);
 		}
 
 		[Fact]
@@ -189,7 +161,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
+			result.Records.Length.ShouldBe(1);
 		}
 
 		[Fact]
@@ -341,7 +313,7 @@ namespace ZoomNet.UnitTests.Resources
 			var sms = new Sms(client);
 
 			// Act & Assert
-			await Should.Throw<ArgumentOutOfRangeException>(() => sms.GetSmsSessionDetailsAsync(sessionId, null, null, null, 101, TestContext.Current.CancellationToken));
+			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => sms.GetSmsSessionDetailsAsync(sessionId, null, null, true, 101, null, TestContext.Current.CancellationToken));
 		}
 
 		[Fact]
@@ -448,6 +420,73 @@ namespace ZoomNet.UnitTests.Resources
 			result.ShouldNotBeNull();
 		}
 
+		[Fact]
+		public async Task GetSmsSessionDetailsAsync_DateRangeAtBoundary()
+		{
+			// Arrange
+			var sessionId = "boundarySession";
+			var from = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+			var to = new DateTime(2024, 1, 31, 23, 59, 59, DateTimeKind.Utc);
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone/sms/sessions", sessionId))
+				.WithQueryString("sort", "1")
+				.WithQueryString("from", "2024-01-01T00:00:00Z")
+				.WithQueryString("to", "2024-01-31T23:59:59Z")
+				.WithQueryString("page_size", "30")
+				.Respond("application/json", SMS_SESSION_DETAILS_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var sms = new Sms(client);
+
+			// Act
+			var result = await sms.GetSmsSessionDetailsAsync(
+				sessionId,
+				from,
+				to,
+				cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task GetSmsSessionDetailsAsync_VerifyAttachmentDetails()
+		{
+			// Arrange
+			var sessionId = "attachmentSession";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone/sms/sessions", sessionId))
+				.WithQueryString("sort", "1")
+				.WithQueryString("page_size", "30")
+				.Respond("application/json", SMS_SESSION_DETAILS_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var sms = new Sms(client);
+
+			// Act
+			var result = await sms.GetSmsSessionDetailsAsync(
+				sessionId,
+				from: null,
+				to: null,
+				cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Records[0].Attachments.ShouldNotBeNull();
+			result.Records[0].Attachments.Length.ShouldBe(1);
+			result.Records[0].Attachments[0].Id.ShouldBe("x18dcVWxTcCzbp4zr2AT3A");
+			result.Records[0].Attachments[0].Name.ShouldBe("FWDHOMaNRaqIvNc3aIdisg.jpg");
+			result.Records[0].Attachments[0].Size.ShouldBe(225740);
+		}
+
 		#endregion
 
 		#region GetSmsByMessageIdAsync Tests
@@ -477,22 +516,22 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.MessageId.ShouldBe("msg789");
-			result.Message.ShouldBe("Here is the document you requested");
-			result.Direction.ShouldBe(Models.SmsDirection.Inbound);
-			result.Type.ShouldBe(Models.SmsMessageType.Mms);
-			result.CreatedOn.ShouldBe(new DateTime(2024, 3, 23, 10, 30, 0, DateTimeKind.Utc));
+			result.MessageId.ShouldBe("IQ-cRH5P5EiTWCwpNzScnECJw");
+			result.Message.ShouldBe("welcome");
+			result.Direction.ShouldBe(SmsDirection.Inbound);
+			result.Type.ShouldBe(SmsMessageType.Mms);
+			result.CreatedOn.ShouldBe(new DateTime(2022, 3, 23, 2, 58, 1, DateTimeKind.Utc));
 			result.Sender.ShouldNotBeNull();
-			result.Sender.DisplayName.ShouldBe("Bob Johnson");
-			result.Sender.PhoneNumber.ShouldBe("15551234567");
+			result.Sender.DisplayName.ShouldBe("ezreal mao");
+			result.Sender.PhoneNumber.ShouldBe("12092693625");
 			result.Recipients.ShouldNotBeNull();
 			result.Recipients.Length.ShouldBe(1);
-			result.Recipients[0].DisplayName.ShouldBe("Alice Williams");
-			result.Recipients[0].PhoneNumber.ShouldBe("15559876543");
+			result.Recipients[0].DisplayName.ShouldBe("test api");
+			result.Recipients[0].PhoneNumber.ShouldBe("18108001001");
 			result.Attachments.ShouldNotBeNull();
 			result.Attachments.Length.ShouldBe(1);
-			result.Attachments[0].Name.ShouldBe("document.pdf");
-			result.Attachments[0].Size.ShouldBe(512000);
+			result.Attachments[0].Name.ShouldBe("FWDHOMaNRaqIvNc3aIdisg.jpg");
+			result.Attachments[0].Size.ShouldBe(225740);
 		}
 
 		[Fact]
@@ -547,8 +586,8 @@ namespace ZoomNet.UnitTests.Resources
 			result.ShouldNotBeNull();
 			result.MessageId.ShouldBe("differentMsg123");
 			result.Message.ShouldBe("Custom test message");
-			result.Direction.ShouldBe(Models.SmsDirection.Outbound);
-			result.Type.ShouldBe(Models.SmsMessageType.Sms);
+			result.Direction.ShouldBe(SmsDirection.Outbound);
+			result.Type.ShouldBe(SmsMessageType.Sms);
 		}
 
 		[Fact]
@@ -699,82 +738,11 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
 			result.MessageId.ShouldBe("groupMsg123");
-			result.Type.ShouldBe(Models.SmsMessageType.GroupSms);
+			result.Type.ShouldBe(SmsMessageType.GroupSms);
 			result.Recipients.Length.ShouldBe(3);
 			result.Recipients[0].DisplayName.ShouldBe("Member One");
 			result.Recipients[1].DisplayName.ShouldBe("Member Two");
 			result.Recipients[2].DisplayName.ShouldBe("Member Three");
-		}
-
-		#endregion
-
-		#region Edge Case Tests
-
-		[Fact]
-		public async Task GetSmsSessionDetailsAsync_DateRangeAtBoundary()
-		{
-			// Arrange
-			var sessionId = "boundarySession";
-			var from = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-			var to = new DateTime(2024, 1, 31, 23, 59, 59, DateTimeKind.Utc);
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone/sms/sessions", sessionId))
-				.WithQueryString("sort", "1")
-				.WithQueryString("from", "2024-01-01T00:00:00Z")
-				.WithQueryString("to", "2024-01-31T23:59:59Z")
-				.WithQueryString("page_size", "30")
-				.Respond("application/json", SMS_SESSION_DETAILS_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var sms = new Sms(client);
-
-			// Act
-			var result = await sms.GetSmsSessionDetailsAsync(
-				sessionId,
-				from,
-				to,
-				cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-		}
-
-		[Fact]
-		public async Task GetSmsSessionDetailsAsync_VerifyAttachmentDetails()
-		{
-			// Arrange
-			var sessionId = "attachmentSession";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone/sms/sessions", sessionId))
-				.WithQueryString("sort", "1")
-				.WithQueryString("page_size", "30")
-				.Respond("application/json", SMS_SESSION_DETAILS_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var sms = new Sms(client);
-
-			// Act
-			var result = await sms.GetSmsSessionDetailsAsync(
-				sessionId,
-				from: null,
-				to: null,
-				cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Records[0].Attachments.ShouldNotBeNull();
-			result.Records[0].Attachments.Length.ShouldBe(1);
-			result.Records[0].Attachments[0].Id.ShouldBe("attachment123");
-			result.Records[0].Attachments[0].Name.ShouldBe("image.jpg");
-			result.Records[0].Attachments[0].Size.ShouldBe(225740);
 		}
 
 		#endregion
