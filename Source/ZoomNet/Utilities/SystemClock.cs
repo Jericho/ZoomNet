@@ -6,6 +6,7 @@ namespace ZoomNet.Utilities
 	/// A replacement for .Net <see cref="DateTime.Now" /> and <see cref="DateTime.UtcNow" />.
 	/// </summary>
 	/// <seealso cref="ZoomNet.Utilities.ISystemClock" />
+	[ZoomNet.Utilities.ExcludeFromCodeCoverage]
 	internal class SystemClock : ISystemClock
 	{
 		#region FIELDS

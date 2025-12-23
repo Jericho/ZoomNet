@@ -6,6 +6,7 @@ namespace ZoomNet.Utilities
 	/// <summary>
 	/// Random generator.
 	/// </summary>
+	[ZoomNet.Utilities.ExcludeFromCodeCoverage]
 	public static class RandomGenerator
 	{
 		#region PUBLIC METHODS
