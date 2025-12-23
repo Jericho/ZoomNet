@@ -1,7 +1,6 @@
 using RichardSzalay.MockHttp;
 using Shouldly;
 using System;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
@@ -379,7 +378,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", roomId))
-				.WithQueryString("regenerate_activation_code", "false")
+				.WithQueryString("regenerate_activation_code", false.ToString())
 				.Respond("application/json", ROOM_PROFILE_JSON);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
@@ -407,7 +406,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", roomId))
-				.WithQueryString("regenerate_activation_code", "true")
+				.WithQueryString("regenerate_activation_code", true.ToString())
 				.Respond("application/json", ROOM_PROFILE_JSON);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
@@ -726,7 +725,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", roomId, "virtual_controller"))
-				.WithQueryString("pre_authenticated_link", "false")
+				.WithQueryString("pre_authenticated_link", false.ToString())
 				.Respond("application/json", VIRTUAL_CONTROLLER_URL_JSON);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
@@ -752,7 +751,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", roomId, "virtual_controller"))
-				.WithQueryString("pre_authenticated_link", "true")
+				.WithQueryString("pre_authenticated_link", true.ToString())
 				.Respond("application/json", VIRTUAL_CONTROLLER_URL_JSON);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
