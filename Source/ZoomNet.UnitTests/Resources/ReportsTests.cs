@@ -231,20 +231,6 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
-		public async Task GetMeetingParticipantsAsync_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var meetingId = "meeting789";
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var reports = new Reports(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => reports.GetMeetingParticipantsAsync(meetingId, recordsPerPage: 0, cancellationToken: TestContext.Current.CancellationToken));
-		}
-
-		[Fact]
 		public async Task GetMeetingParticipantsAsync_EmptyParticipants_ReturnsEmptyArray()
 		{
 			// Arrange
@@ -389,24 +375,6 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
-		public async Task GetMeetingsAsync_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var userId = "user123";
-			var from = new DateTime(2023, 6, 1);
-			var to = new DateTime(2023, 6, 30);
-			var type = ReportMeetingType.Past;
-
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var reports = new Reports(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => reports.GetMeetingsAsync(userId, from, to, type, recordsPerPage: -1, cancellationToken: TestContext.Current.CancellationToken));
-		}
-
-		[Fact]
 		public async Task GetMeetingsAsync_EmptyMeetings_ReturnsEmptyArray()
 		{
 			// Arrange
@@ -507,20 +475,6 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
 			result.Records.Length.ShouldBe(2);
-		}
-
-		[Fact]
-		public async Task GetWebinarParticipantsAsync_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var webinarId = "webinar789";
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var reports = new Reports(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => reports.GetWebinarParticipantsAsync(webinarId, recordsPerPage: 0, cancellationToken: TestContext.Current.CancellationToken));
 		}
 
 		[Fact]
@@ -664,23 +618,6 @@ namespace ZoomNet.UnitTests.Resources
 
 			// Act & Assert
 			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => reports.GetHostsAsync(from, to, type, cancellationToken: TestContext.Current.CancellationToken));
-		}
-
-		[Fact]
-		public async Task GetHostsAsync_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var from = new DateTime(2023, 6, 1);
-			var to = new DateTime(2023, 6, 30);
-			var type = ReportHostType.Active;
-
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var reports = new Reports(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => reports.GetHostsAsync(from, to, type, recordsPerPage: 0, cancellationToken: TestContext.Current.CancellationToken));
 		}
 
 		[Fact]

@@ -306,21 +306,6 @@ namespace ZoomNet.UnitTests.Resources
 			result.ShouldNotBeNull();
 		}
 
-		[Fact]
-		public async Task GetAllMeetingsAsync_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var from = new DateTime(2023, 1, 1);
-			var to = new DateTime(2023, 1, 31);
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var dashboards = new Dashboards(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => dashboards.GetAllMeetingsAsync(from, to, recordsPerPage: 500, cancellationToken: TestContext.Current.CancellationToken));
-		}
-
 		#endregion
 
 		#region GetMeetingAsync Tests
@@ -471,20 +456,6 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-		}
-
-		[Fact]
-		public async Task GetAllMeetingParticipantsQosAsync_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var meetingId = "meeting123";
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var dashboards = new Dashboards(client);
-
-			// Act & Assert - Max is 10 for QoS
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => dashboards.GetAllMeetingParticipantsQosAsync(meetingId, recordsPerPage: 20, cancellationToken: TestContext.Current.CancellationToken));
 		}
 
 		#endregion

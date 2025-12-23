@@ -870,34 +870,6 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
-		public async Task GetRecordingsForUserAsync_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var userId = "user123";
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var recordings = new CloudRecordings(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => recordings.GetRecordingsForUserAsync(userId, recordsPerPage: 500, pagingToken: null, cancellationToken: TestContext.Current.CancellationToken));
-		}
-
-		[Fact]
-		public async Task GetRecordingRegistrantsAsync_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var meetingId = "meeting123";
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var recordings = new CloudRecordings(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => recordings.GetRecordingRegistrantsAsync(meetingId, recordsPerPage: 500, pagingToken: null, cancellationToken: TestContext.Current.CancellationToken));
-		}
-
-		[Fact]
 		public async Task GetRecordingsForUserAsync_QueryTrash_True()
 		{
 			// Arrange

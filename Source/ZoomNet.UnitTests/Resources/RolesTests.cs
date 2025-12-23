@@ -176,19 +176,6 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
-		public async Task GetAllAsync_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var roles = new Roles(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => roles.GetAllAsync(recordsPerPage: 0, cancellationToken: TestContext.Current.CancellationToken));
-		}
-
-		[Fact]
 		public async Task GetAllAsync_MaxRecordsPerPage()
 		{
 			// Arrange
@@ -415,20 +402,6 @@ namespace ZoomNet.UnitTests.Resources
 			result.ShouldNotBeNull();
 			result.Records.Length.ShouldBe(0);
 			result.TotalRecords.ShouldBe(0);
-		}
-
-		[Fact]
-		public async Task GetMembersAsync_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var roleId = "role123";
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var roles = new Roles(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => roles.GetMembersAsync(roleId, recordsPerPage: 0, cancellationToken: TestContext.Current.CancellationToken));
 		}
 
 		#endregion

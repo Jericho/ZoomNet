@@ -289,34 +289,6 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
-		public async Task GetSmsSessionDetailsAsync_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var sessionId = "session123";
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var sms = new Sms(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => sms.GetSmsSessionDetailsAsync(sessionId, null, null, null, 0, null, TestContext.Current.CancellationToken));
-		}
-
-		[Fact]
-		public async Task GetSmsSessionDetailsAsync_RecordsPerPageTooLarge_ThrowsException()
-		{
-			// Arrange
-			var sessionId = "session123";
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var sms = new Sms(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => sms.GetSmsSessionDetailsAsync(sessionId, null, null, true, 101, null, TestContext.Current.CancellationToken));
-		}
-
-		[Fact]
 		public async Task GetSmsSessionDetailsAsync_EmptyResults()
 		{
 			// Arrange

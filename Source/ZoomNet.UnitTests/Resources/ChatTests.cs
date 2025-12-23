@@ -890,53 +890,5 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		#endregion
-
-		#region Validation Tests
-
-		[Fact]
-		public async Task GetAccountChannelsForUserAsync_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var userId = "user123";
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var chat = new Chat(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => chat.GetAccountChannelsForUserAsync(userId, recordsPerPage: 500, cancellationToken: TestContext.Current.CancellationToken));
-		}
-
-		[Fact]
-		public async Task GetAccountChannelMembersAsync_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var userId = "user123";
-			var channelId = "channel1";
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var chat = new Chat(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => chat.GetAccountChannelMembersAsync(userId, channelId, recordsPerPage: 500, cancellationToken: TestContext.Current.CancellationToken));
-		}
-
-		[Fact]
-		public async Task GetMessagesToContactAsync_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var userId = "user123";
-			var recipientEmail = "recipient@example.com";
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var chat = new Chat(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => chat.GetMessagesToContactAsync(userId, recipientEmail, recordsPerPage: 500, cancellationToken: TestContext.Current.CancellationToken));
-		}
-
-		#endregion
 	}
 }

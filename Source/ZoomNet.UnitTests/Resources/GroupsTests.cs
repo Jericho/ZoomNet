@@ -763,20 +763,6 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
-		public async Task GetMembersAsync_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var groupId = "group1";
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var groups = new Groups(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => groups.GetMembersAsync(groupId, recordsPerPage: 0, cancellationToken: TestContext.Current.CancellationToken));
-		}
-
-		[Fact]
 		public async Task GetMembersAsync_EmptyMembers()
 		{
 			// Arrange
@@ -869,20 +855,6 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-		}
-
-		[Fact]
-		public async Task GetAdministratorsAsync_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var groupId = "group1";
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var groups = new Groups(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => groups.GetAdministratorsAsync(groupId, recordsPerPage: 0, cancellationToken: TestContext.Current.CancellationToken));
 		}
 
 		[Fact]

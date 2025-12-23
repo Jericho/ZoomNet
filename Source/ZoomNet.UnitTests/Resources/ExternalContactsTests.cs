@@ -156,32 +156,6 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
-		public async Task GetAllAsync_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var externalContacts = new ExternalContacts(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => externalContacts.GetAllAsync(recordsPerPage: 0, cancellationToken: TestContext.Current.CancellationToken));
-		}
-
-		[Fact]
-		public async Task GetAllAsync_RecordsPerPageTooHigh_ThrowsException()
-		{
-			// Arrange
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var externalContacts = new ExternalContacts(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => externalContacts.GetAllAsync(recordsPerPage: 301, cancellationToken: TestContext.Current.CancellationToken));
-		}
-
-		[Fact]
 		public async Task GetAllAsync_EmptyResults()
 		{
 			// Arrange

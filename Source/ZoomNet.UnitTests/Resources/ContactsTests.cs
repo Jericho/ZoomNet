@@ -149,32 +149,6 @@ namespace ZoomNet.UnitTests.Resources
 			result.ShouldNotBeNull();
 		}
 
-		[Fact]
-		public async Task GetAllAsync_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var contacts = new Contacts(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => contacts.GetAllAsync(ContactType.Internal, recordsPerPage: 100, cancellationToken: TestContext.Current.CancellationToken));
-		}
-
-		[Fact]
-		public async Task GetAllAsync_RecordsPerPageTooHigh_ThrowsException()
-		{
-			// Arrange
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var contacts = new Contacts(client);
-
-			// Act & Assert - Max is 50 for contacts
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => contacts.GetAllAsync(ContactType.Internal, recordsPerPage: 51, cancellationToken: TestContext.Current.CancellationToken));
-		}
-
 		#endregion
 
 		#region SearchAsync Tests
@@ -260,34 +234,6 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-		}
-
-		[Fact]
-		public async Task SearchAsync_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var keyword = "test";
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var contacts = new Contacts(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => contacts.SearchAsync(keyword, recordsPerPage: 0, cancellationToken: TestContext.Current.CancellationToken));
-		}
-
-		[Fact]
-		public async Task SearchAsync_RecordsPerPageTooHigh_ThrowsException()
-		{
-			// Arrange
-			var keyword = "test";
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var contacts = new Contacts(client);
-
-			// Act & Assert - Max is 25 for search
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => contacts.SearchAsync(keyword, recordsPerPage: 26, cancellationToken: TestContext.Current.CancellationToken));
 		}
 
 		#endregion

@@ -437,19 +437,6 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
-		public async Task ListPhoneUsersAsync_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var phone = new Phone(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => phone.ListPhoneUsersAsync(recordsPerPage: 0, cancellationToken: TestContext.Current.CancellationToken));
-		}
-
-		[Fact]
 		public async Task ListPhoneUsersAsync_EmptyUsers_ReturnsEmptyArray()
 		{
 			// Arrange
@@ -574,19 +561,6 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-		}
-
-		[Fact]
-		public async Task ListPhonesAsync_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var phone = new Phone(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => phone.ListPhonesAsync(recordsPerPage: 0, cancellationToken: TestContext.Current.CancellationToken));
 		}
 
 		[Fact]

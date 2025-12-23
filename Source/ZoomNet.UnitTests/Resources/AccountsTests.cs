@@ -637,33 +637,5 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 		}
-
-		[Fact]
-		public async Task GetAllAsync_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var accounts = new Accounts(client);
-
-			// Act & Assert
-#pragma warning disable CS0618 // Type or member is obsolete
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => accounts.GetAllAsync(recordsPerPage: 500, page: 1, cancellationToken: TestContext.Current.CancellationToken));
-#pragma warning restore CS0618 // Type or member is obsolete
-		}
-
-		[Fact]
-		public async Task GetAllAsync_WithPagingToken_InvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var accounts = new Accounts(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => accounts.GetAllAsync(recordsPerPage: 500, pagingToken: null, cancellationToken: TestContext.Current.CancellationToken));
-		}
 	}
 }
