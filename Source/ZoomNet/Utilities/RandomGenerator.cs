@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Security.Cryptography;
 
 namespace ZoomNet.Utilities
@@ -6,7 +7,7 @@ namespace ZoomNet.Utilities
 	/// <summary>
 	/// Random generator.
 	/// </summary>
-	[ZoomNet.Utilities.ExcludeFromCodeCoverage]
+	[ExcludeFromCodeCoverage]
 	public static class RandomGenerator
 	{
 		#region PUBLIC METHODS
