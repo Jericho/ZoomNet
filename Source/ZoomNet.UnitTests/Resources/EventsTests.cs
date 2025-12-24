@@ -4714,8 +4714,17 @@ namespace ZoomNet.UnitTests.Resources
 			var sessionId = "session456";
 			var livestreamConfigJson = @"{
 				""incoming_enabled"": true,
-				""stream_url"": ""rtmps://stream.zoom.us/rtmp/"",
-				""stream_key"": ""abc123def456""
+				""incoming_config"": {
+					""stream_key_id"": ""YwG21kyxkyRO7SOkuwPf7S8B"",
+					""stream_key_name"": ""Stream key 2"",
+					""stream_key_description"": ""Stream key 2 description"",
+					""stream_key_type"": ""SAVED"",
+					""stream_key"": ""ZAEUMvRcI1eq_SRMg3iQBz-U"",
+					""stream_url"": ""rtmp://10.100.125.159:1956/live"",
+					""stream_backup_url"": ""rtmp://10.100.125.159:1976/live?backup=1"",
+					""effective_time"": ""2022-05-31T13:00:00Z"",
+					""expiration_time"": ""2022-05-31T13:00:00Z""
+				}
 			}";
 
 			var mockHttp = new MockHttpMessageHandler();
@@ -4733,8 +4742,8 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.StreamUrl.ShouldBe("rtmps://stream.zoom.us/rtmp/");
-			result.StreamKey.ShouldBe("abc123def456");
+			result.StreamUrl.ShouldBe("rtmp://10.100.125.159:1956/live");
+			result.StreamKey.ShouldBe("ZAEUMvRcI1eq_SRMg3iQBz-U");
 		}
 
 		#endregion
