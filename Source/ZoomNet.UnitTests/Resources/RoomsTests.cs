@@ -736,7 +736,7 @@ namespace ZoomNet.UnitTests.Resources
 			var result = await rooms.GetVirtualControllerUrlAsync(roomId, cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
+		mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
 			result.ShouldBe("https://zoom.us/j/room123/controller");
@@ -844,6 +844,564 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
+		}
+
+		#endregion
+
+		#region Location Structure Tests
+
+		[Fact]
+		public async Task GetLocationStructureAsync_ReturnsStructure()
+		{
+			// Arrange
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", "locations", "structure"))
+				.Respond("application/json", LOCATION_STRUCTURE_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			var result = await rooms.GetLocationStructureAsync(TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Length.ShouldBe(4);
+		}
+
+		[Fact]
+		public async Task UpdateLocationStructureAsync_WithStructure_Succeeds()
+		{
+			// Arrange
+			var structure = new[] { RoomLocationType.Country, RoomLocationType.State, RoomLocationType.City, RoomLocationType.Building };
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("rooms", "locations", "structure"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			await rooms.UpdateLocationStructureAsync(structure, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task CreateLocationAsync_WithName_ReturnsLocation()
+		{
+			// Arrange
+			var name = "New Building";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("rooms", "locations"))
+				.Respond("application/json", LOCATION_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			var result = await rooms.CreateLocationAsync(name, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Name.ShouldBe("New Building");
+		}
+
+		[Fact]
+		public async Task CreateLocationAsync_WithParentId_ReturnsLocation()
+		{
+			// Arrange
+			var name = "Floor 2";
+			var parentId = "building123";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("rooms", "locations"))
+				.Respond("application/json", LOCATION_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			var result = await rooms.CreateLocationAsync(name, parentId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task DeleteLocationAsync_WithLocationId_Succeeds()
+		{
+			// Arrange
+			var locationId = "loc123";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("rooms", "locations", locationId))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			await rooms.DeleteLocationAsync(locationId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task MoveLocationASync_WithLocationIdAndParentId_Succeeds()
+		{
+			// Arrange
+			var locationId = "loc123";
+			var parentId = "newparent456";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("rooms", "locations", locationId, "location"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			await rooms.MoveLocationASync(locationId, parentId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		#endregion
+
+		#region Location Settings Tests
+
+		[Fact]
+		public async Task GetLocationAlertSettingsAsync_WithLocationId_ReturnsSettings()
+		{
+			// Arrange
+			var locationId = "loc123";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", "locations", locationId, "settings"))
+				.WithQueryString("setting_type", "alert")
+				.Respond("application/json", ALERT_SETTINGS_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			var result = await rooms.GetLocationAlertSettingsAsync(locationId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.AlertSettings.ShouldNotBeNull();
+			result.NotificationSettings.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task GetLocationSettingsAsync_WithLocationId_ReturnsSettings()
+		{
+			// Arrange
+			var locationId = "loc123";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", "locations", locationId, "settings"))
+				.WithQueryString("setting_type", "meeting")
+				.Respond("application/json", ROOM_SETTINGS_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			var result = await rooms.GetLocationSettingsAsync(locationId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.SecuritySettings.ShouldNotBeNull();
+			result.RoomSettings.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task GetLocationSignageSettingsAsync_WithLocationId_ReturnsSettings()
+		{
+			// Arrange
+			var locationId = "loc123";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", "locations", locationId, "settings"))
+				.WithQueryString("setting_type", "signage")
+				.Respond("application/json", SIGNAGE_SETTINGS_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			var result = await rooms.GetLocationSignageSettingsAsync(locationId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task GetLocationSchedulingDisplaySettingsAsync_WithLocationId_ReturnsSettings()
+		{
+			// Arrange
+			var locationId = "loc123";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", "locations", locationId, "settings"))
+				.WithQueryString("setting_type", "scheduling_display")
+				.Respond("application/json", SCHEDULING_DISPLAY_SETTINGS_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			var result = await rooms.GetLocationSchedulingDisplaySettingsAsync(locationId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task GetLocationProfileAsync_WithLocationId_ReturnsProfile()
+		{
+			// Arrange
+			var locationId = "loc123";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", "locations", locationId))
+				.WithQueryString("setting_type", "meeting")
+				.Respond("application/json", LOCATION_PROFILE_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			var result = await rooms.GetLocationProfileAsync(locationId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.Basic.ShouldNotBeNull();
+			result.Basic.Name.ShouldBe("Building A");
+			result.Setup.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task GetAllLocationsAsync_ReturnsLocations()
+		{
+			// Arrange
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", "locations"))
+				.WithQueryString("page_size", "30")
+				.Respond("application/json", LOCATIONS_LIST_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			var result = await rooms.GetAllLocationsAsync(cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Records.Length.ShouldBe(2);
+			result.Records[0].Name.ShouldBe("Building A");
+		}
+
+		#endregion
+
+		#region Tags Tests
+
+		[Fact]
+		public async Task CreateTagAsync_WithNameAndDescription_ReturnsTagId()
+		{
+			// Arrange
+			var name = "Conference Rooms";
+			var description = "All conference room facilities";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("rooms", "tags"))
+				.Respond("application/json", TAG_ID_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			var result = await rooms.CreateTagAsync(name, description, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.ShouldBe("tag123");
+		}
+
+		[Fact]
+		public async Task UpdateTagAsync_WithNameAndDescription_Succeeds()
+		{
+			// Arrange
+			var tagId = "tag123";
+			var name = "Updated Tag Name";
+			var description = "Updated description";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("rooms", "tags", tagId))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			await rooms.UpdateTagAsync(tagId, name, description, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task AssignTagsToRoom_WithRoomIdAndTagIds_Succeeds()
+		{
+			// Arrange
+			var roomId = "room123";
+			var tagIds = new[] { "tag1", "tag2", "tag3" };
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("rooms", roomId, "tags"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			await rooms.AssignTagsToRoom(roomId, tagIds, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task AssignTagsToRoomsInLocation_WithLocationIdAndTagIds_Succeeds()
+		{
+			// Arrange
+			var locationId = "loc123";
+			var tagIds = new[] { "tag1", "tag2" };
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("rooms", "locations", locationId, "tags"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			await rooms.AssignTagsToRoomsInLocation(locationId, tagIds, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UnAssignTagFromRoom_WithRoomIdAndTagId_Succeeds()
+		{
+			// Arrange
+			var roomId = "room123";
+			var tagId = "tag1";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("rooms", roomId, "tags"))
+				.WithQueryString("tag_ids", tagId)
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			await rooms.UnAssignTagFromRoom(roomId, tagId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task DeleteTagAsync_WithTagId_Succeeds()
+		{
+			// Arrange
+			var tagId = "tag123";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("rooms", "tags", tagId))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			await rooms.DeleteTagAsync(tagId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		#endregion
+
+		#region Device Management Tests
+
+		[Fact]
+		public async Task GetAllDevicesAsync_WithRoomId_ReturnsDevices()
+		{
+			// Arrange
+			var roomId = "room123";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", roomId, "devices"))
+				.Respond("application/json", ROOM_DEVICES_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			var result = await rooms.GetAllDevicesAsync(roomId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Length.ShouldBe(2);
+		}
+
+		[Fact]
+		public async Task UpgradeAppVersionAsync_WithRoomIdAndDeviceId_Succeeds()
+		{
+			// Arrange
+			var roomId = "room123";
+			var deviceId = "device1";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("rooms", roomId, "devices", deviceId, "app_version"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			await rooms.UpgradeAppVersionAsync(roomId, deviceId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task DowngradeAppVersionAsync_WithRoomIdAndDeviceId_Succeeds()
+		{
+			// Arrange
+			var roomId = "room123";
+			var deviceId = "device1";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("rooms", roomId, "devices", deviceId, "app_version"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			await rooms.DowngradeAppVersionAsync(roomId, deviceId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task CancelAppVersionChangeAsync_WithRoomIdAndDeviceId_Succeeds()
+		{
+			// Arrange
+			var roomId = "room123";
+			var deviceId = "device1";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("rooms", roomId, "devices", deviceId, "app_version"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			await rooms.CancelAppVersionChangeAsync(roomId, deviceId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task DeleteDeviceAsync_WithRoomIdAndDeviceId_Succeeds()
+		{
+			// Arrange
+			var roomId = "room123";
+			var deviceId = "device1";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("rooms", roomId, "devices", deviceId))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			await rooms.DeleteDeviceAsync(roomId, deviceId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
 		}
 
 		#endregion
@@ -1044,6 +1602,30 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
+		public async Task GetAllTagsAsync_WithDefaultParameters_ReturnsTags()
+		{
+			// Arrange
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", "tags"))
+				.WithQueryString("page_size", "30")
+				.Respond("application/json", TAGS_LIST_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var rooms = new Rooms(client);
+
+			// Act
+			var result = await rooms.GetAllTagsAsync(cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Records.Length.ShouldBe(2);
+			result.Records[0].Name.ShouldBe("VIP Rooms");
+		}
+
+		[Fact]
 		public async Task GetAllTagsAsync_WithPagingToken_ReturnsTags()
 		{
 			// Arrange
@@ -1128,76 +1710,6 @@ namespace ZoomNet.UnitTests.Resources
 
 			// Act
 			await rooms.UpdateLocationProfileAsync(locationId, address, description, name, codeIsRequiredToExit, passcode, supportEmail, supportPhone, timezone, applyBackgroundImageToAllDisplays, cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-		}
-
-		[Fact]
-		public async Task GetAllLocationsAsync_ReturnsLocations()
-		{
-			// Arrange
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", "locations"))
-				.WithQueryString("page_size", "30")
-				.Respond("application/json", LOCATIONS_LIST_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var rooms = new Rooms(client);
-
-			// Act
-			var result = await rooms.GetAllLocationsAsync(cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
-			result.Records[0].Name.ShouldBe("Building A");
-		}
-
-		[Fact]
-		public async Task CreateLocationAsync_WithName_ReturnsLocation()
-		{
-			// Arrange
-			var name = "New Building";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("rooms", "locations"))
-				.Respond("application/json", LOCATION_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var rooms = new Rooms(client);
-
-			// Act
-			var result = await rooms.CreateLocationAsync(name, cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Name.ShouldBe("New Building");
-		}
-
-		[Fact]
-		public async Task DeleteLocationAsync_WithLocationId_Succeeds()
-		{
-			// Arrange
-			var locationId = "loc123";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("rooms", "locations", locationId))
-				.Respond(System.Net.HttpStatusCode.NoContent);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var rooms = new Rooms(client);
-
-			// Act
-			await rooms.DeleteLocationAsync(locationId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
