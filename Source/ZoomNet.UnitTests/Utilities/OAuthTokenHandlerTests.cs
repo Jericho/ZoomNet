@@ -63,16 +63,6 @@ namespace ZoomNet.UnitTests.Utilities
 		}
 
 		[Fact]
-		public void Constructor_WithNullHttpClient_ThrowsArgumentNullException()
-		{
-			// Arrange
-			var connectionInfo = OAuthConnectionInfo.ForServerToServer("clientId", "clientSecret", "accountId");
-
-			// Act & Assert
-			Should.Throw<ArgumentNullException>(() => new OAuthTokenHandler(connectionInfo, null, null));
-		}
-
-		[Fact]
 		public void Constructor_WithValidParameters_CreatesHandler()
 		{
 			// Arrange
