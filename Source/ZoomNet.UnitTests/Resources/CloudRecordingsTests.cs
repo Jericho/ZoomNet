@@ -259,7 +259,7 @@ namespace ZoomNet.UnitTests.Resources
 				""id"": 95795500362,
 				""account_id"": ""wTJw8LgeT8GlOSjLjOU9Hw"",
 				""host_id"": ""uET9c2fCR06UoPbeqKed4A"",
-				""topic"": ""ბავშვის განვითარება - 10.2.2021"",
+				""topic"": ""ბავშვების განვითარების მედიკამენტი - 10.2.2021"",
 				""type"": 2,
 				""start_time"": ""2021-02-10T13:02:35Z"",
 				""timezone"": ""UTC"",
@@ -300,7 +300,7 @@ namespace ZoomNet.UnitTests.Resources
 				""id"": 95945730983,
 				""account_id"": ""wTJw8LgeT8GlOSjLjOU9Hw"",
 				""host_id"": ""uET9c2fCR06UoPbeqKed4A"",
-				""topic"": ""ბავშვის განვითარება - 10.2.2021"",
+				""topic"": ""ბავშვის განვითარების მედიკამენტი - 10.2.2021"",
 				""type"": 2,
 				""start_time"": ""2021-02-10T13:02:16Z"",
 				""timezone"": ""UTC"",
@@ -929,6 +929,31 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
+		public async Task GetRecordingsForUserAsync_QueryTrash_False()
+		{
+			// Arrange
+			var userId = "user123";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "recordings"))
+				.WithQueryString("trash", "false")
+				.WithQueryString("page_size", "30")
+				.Respond("application/json", MULTIPLE_CLOUD_RECORDINGS_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+			var result = await recordings.GetRecordingsForUserAsync(userId, false, null, null, 30, null, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		[Fact]
 		public async Task GetRecordingsForUserAsync_WithDateRange()
 		{
 			// Arrange
@@ -1173,7 +1198,7 @@ namespace ZoomNet.UnitTests.Resources
 			result.ShouldNotBeNull();
 		}
 
-			#endregion
+		#endregion
 
 		#region Additional Edge Case and Parameter Variation Tests
 
@@ -1217,8 +1242,8 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var userId = "user123";
 			var recordingsJson = @"{
-				""from"": """",
-				""to"": """",
+				""from"": ""2025-11-01"",
+				""to"": ""2025-12-01"",
 				""page_size"": 30,
 				""meetings"": []
 			}";
@@ -1235,6 +1260,81 @@ namespace ZoomNet.UnitTests.Resources
 
 			// Act
 			var result = await recordings.GetRecordingsForUserAsync(userId, false, null, null, 30, null, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task GetRecordingsForUserAsync_WithMaxRecordsPerPage()
+		{
+			// Arrange
+			var userId = "user123";
+			var recordsPerPage = 300; // Max allowed
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "recordings"))
+				.WithQueryString("page_size", "300")
+				.Respond("application/json", MULTIPLE_CLOUD_RECORDINGS_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+			var result = await recordings.GetRecordingsForUserAsync(userId, false, null, null, recordsPerPage, null, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task GetRecordingsForUserAsync_WithOnlyFromDate()
+		{
+			// Arrange
+			var userId = "user123";
+			var from = new DateTime(2023, 6, 1);
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "recordings"))
+				.WithQueryString("from", "2023-06-01")
+				.Respond("application/json", MULTIPLE_CLOUD_RECORDINGS_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+			var result = await recordings.GetRecordingsForUserAsync(userId, false, from, null, 30, null, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task GetRecordingsForUserAsync_WithOnlyToDate()
+		{
+			// Arrange
+			var userId = "user123";
+			var to = new DateTime(2023, 6, 30);
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "recordings"))
+				.WithQueryString("to", "2023-06-30")
+				.Respond("application/json", MULTIPLE_CLOUD_RECORDINGS_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var recordings = new CloudRecordings(client);
+
+			// Act
+			var result = await recordings.GetRecordingsForUserAsync(userId, false, null, to, 30, null, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
