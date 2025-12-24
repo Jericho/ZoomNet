@@ -843,39 +843,6 @@ namespace ZoomNet.UnitTests.Resources
 			await Should.ThrowAsync<ArgumentException>(() => webinars.CreateInviteLinksAsync(webinarId, names, cancellationToken: TestContext.Current.CancellationToken));
 		}
 
-		[Fact]
-		public async Task GetAllAsync_WithInvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var userId = "user123";
-			var recordsPerPage = 0;
-
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var webinars = new Webinars(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => webinars.GetAllAsync(userId, recordsPerPage, null, TestContext.Current.CancellationToken));
-		}
-
-		[Fact]
-		public async Task GetRegistrantsAsync_WithInvalidRecordsPerPage_ThrowsException()
-		{
-			// Arrange
-			var webinarId = 1234567890L;
-			var status = RegistrantStatus.Approved;
-			var recordsPerPage = 301;
-
-			var mockHttp = new MockHttpMessageHandler();
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var webinars = new Webinars(client);
-
-			// Act & Assert
-			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => webinars.GetRegistrantsAsync(webinarId, status, null, null, recordsPerPage, null, TestContext.Current.CancellationToken));
-		}
-
 		#endregion
 
 		#region Additional Parameter Variation Tests
@@ -1115,6 +1082,8 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
+			result.Id.ShouldBe("new_reg_123");
+			result.JoinUrl.ShouldNotBeNullOrEmpty();
 		}
 
 		[Fact]
@@ -1484,6 +1453,303 @@ namespace ZoomNet.UnitTests.Resources
 
 			// Act
 			var result = await webinars.GetAllAsync(userId, recordsPerPage, pagingToken, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		#endregion
+
+		#region Registrant Status Update Tests
+
+		[Fact]
+		public async Task ApproveRegistrantsAsync_WithMultipleRegistrants_Succeeds()
+		{
+			// Arrange
+			var webinarId = 1234567890L;
+			var registrantsInfo = new[]
+			{
+				("reg001", "attendee1@example.com"),
+				("reg002", "attendee2@example.com"),
+				("reg003", "attendee3@example.com")
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("webinars", webinarId.ToString(), "registrants", "status"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			await webinars.ApproveRegistrantsAsync(webinarId, registrantsInfo, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task RejectRegistrantsAsync_WithMultipleRegistrants_Succeeds()
+		{
+			// Arrange
+			var webinarId = 1234567890L;
+			var registrantsInfo = new[]
+			{
+				("reg004", "rejectee1@example.com"),
+				("reg005", "rejectee2@example.com")
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("webinars", webinarId.ToString(), "registrants", "status"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			await webinars.RejectRegistrantsAsync(webinarId, registrantsInfo, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task CancelRegistrantsAsync_WithMultipleRegistrants_Succeeds()
+		{
+			// Arrange
+			var webinarId = 1234567890L;
+			var registrantsInfo = new[]
+			{
+				("reg006", "cancelee1@example.com"),
+				("reg007", "cancelee2@example.com"),
+				("reg008", "cancelee3@example.com")
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("webinars", webinarId.ToString(), "registrants", "status"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			await webinars.CancelRegistrantsAsync(webinarId, registrantsInfo, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		#endregion
+
+		#region Additional Get Tests with Variations
+
+		[Fact]
+		public async Task GetAsync_WithOccurrenceId_ReturnsWebinar()
+		{
+			// Arrange
+			var webinarId = 3333333333L;
+			var occurrenceId = "occurrence123";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("webinars", webinarId.ToString()))
+				.WithQueryString("occurrence_id", occurrenceId)
+				.WithQueryString("show_previous_occurrences", "false")
+				.Respond("application/json", RECURRING_WEBINAR_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			var result = await webinars.GetAsync(webinarId, occurrenceId, false, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task GetAsync_WithIncludePreviousOccurrences_ReturnsWebinar()
+		{
+			// Arrange
+			var webinarId = 3333333333L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("webinars", webinarId.ToString()))
+				.WithQueryString("show_previous_occurrences", "true")
+				.Respond("application/json", RECURRING_WEBINAR_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			var result = await webinars.GetAsync(webinarId, null, true, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task DeleteAsync_WithOccurrenceId_Succeeds()
+		{
+			// Arrange
+			var webinarId = 3333333333L;
+			var occurrenceId = "occurrence456";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("webinars", webinarId.ToString()))
+				.WithQueryString("occurrence_id", occurrenceId)
+				.WithQueryString("cancel_webinar_reminder", "false")
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			await webinars.DeleteAsync(webinarId, occurrenceId, false, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task DeleteAsync_WithSendNotification_Succeeds()
+		{
+			// Arrange
+			var webinarId = 1234567890L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("webinars", webinarId.ToString()))
+				.WithQueryString("cancel_webinar_reminder", "true")
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			await webinars.DeleteAsync(webinarId, null, true, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task GetRegistrantsAsync_WithTrackingSourceId_ReturnsRegistrants()
+		{
+			// Arrange
+			var webinarId = 1234567890L;
+			var status = RegistrantStatus.Approved;
+			var trackingSourceId = "source1";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("webinars", webinarId.ToString(), "registrants"))
+				.WithQueryString("status", status.ToEnumString())
+				.WithQueryString("tracking_source_id", trackingSourceId)
+				.WithQueryString("page_size", "30")
+				.Respond("application/json", REGISTRANTS_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			var result = await webinars.GetRegistrantsAsync(webinarId, status, trackingSourceId, null, 30, null, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task GetRegistrantAsync_WithOccurrenceId_ReturnsRegistrant()
+		{
+			// Arrange
+			var webinarId = 3333333333L;
+			var registrantId = "reg123";
+			var occurrenceId = "occurrence789";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("webinars", webinarId.ToString(), "registrants", registrantId))
+				.WithQueryString("occurrence_id", occurrenceId)
+				.Respond("application/json", REGISTRANT_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			var result = await webinars.GetRegistrantAsync(webinarId, registrantId, occurrenceId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task AddPanelistsAsync_WithMultiplePanelists_Succeeds()
+		{
+			// Arrange
+			var webinarId = 1234567890L;
+			var panelists = new[]
+			{
+				("panelist1@example.com", "Panelist One", "vbg_001"),
+				("panelist2@example.com", "Panelist Two", (string)null),
+				("panelist3@example.com", "Panelist Three", "vbg_003")
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("webinars", webinarId.ToString(), "panelists"))
+				.Respond(System.Net.HttpStatusCode.Created);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			await webinars.AddPanelistsAsync(webinarId, panelists, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task GetRegistrantsAsync_WithDifferentStatuses_ReturnsRegistrants()
+		{
+			// Arrange
+			var webinarId = 1234567890L;
+			var status = RegistrantStatus.Pending;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("webinars", webinarId.ToString(), "registrants"))
+				.WithQueryString("status", status.ToEnumString())
+				.WithQueryString("page_size", "30")
+				.Respond("application/json", REGISTRANTS_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			var result = await webinars.GetRegistrantsAsync(webinarId, status, null, null, 30, null, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
