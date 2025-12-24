@@ -1190,7 +1190,7 @@ namespace ZoomNet.UnitTests.Resources
 				isSponsor,
 				sponsorTierId,
 				"Leading technology provider",
-				new[] { "session1", "session2" },
+				["session1", "session2"],
 				"https://www.acme.com",
 				"https://www.acme.com/privacy",
 				"https://linkedin.com/company/acme",
@@ -4162,6 +4162,579 @@ namespace ZoomNet.UnitTests.Resources
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		#endregion
+
+		#region Session Reservation Tests
+
+		[Fact]
+		public async Task AddSessionReservationAsync_WithEmailAddress_Succeeds()
+		{
+			// Arrange
+			var eventId = "event123";
+			var sessionId = "session456";
+			var emailAddress = "attendee@example.com";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "reservations"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.AddSessionReservationAsync(eventId, sessionId, emailAddress, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task DeleteSessionReservationAsync_WithEmailAddress_Succeeds()
+		{
+			// Arrange
+			var eventId = "event123";
+			var sessionId = "session456";
+			var emailAddress = "attendee@example.com";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "reservations"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.DeleteSessionReservationAsync(eventId, sessionId, emailAddress, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task GetAllSessionReservationsAsync_WithDefaultParameters_ReturnsReservations()
+		{
+			// Arrange
+			var eventId = "event123";
+			var sessionId = "session456";
+			var reservationsJson = @"{
+				""page_size"": 30,
+				""next_page_token"": """",
+				""reservations"": [
+					{
+						""email"": ""attendee1@example.com"",
+						""first_name"": ""John"",
+						""last_name"": ""Doe"",
+						""registration_time"": ""2023-06-01T10:00:00Z""
+					},
+					{
+						""email"": ""attendee2@example.com"",
+						""first_name"": ""Jane"",
+						""last_name"": ""Smith"",
+						""registration_time"": ""2023-06-01T11:00:00Z""
+					}
+				]
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "reservations"))
+				.WithQueryString("page_size", "30")
+				.Respond("application/json", reservationsJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetAllSessionReservationsAsync(eventId, sessionId, cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Records.Length.ShouldBe(2);
+		}
+
+		[Fact]
+		public async Task GetAllSessionReservationsAsync_WithPagination_ReturnsReservations()
+		{
+			// Arrange
+			var eventId = "event123";
+			var sessionId = "session456";
+			var recordsPerPage = 50;
+			var pagingToken = "token_abc123";
+			var reservationsJson = @"{
+				""page_size"": 50,
+				""next_page_token"": ""token_def456"",
+				""reservations"": [
+					{
+						""email"": ""attendee3@example.com"",
+						""first_name"": ""Bob"",
+						""last_name"": ""Johnson"",
+						""registration_time"": ""2023-06-01T12:00:00Z""
+					}
+				]
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "reservations"))
+				.WithQueryString("page_size", "50")
+				.WithQueryString("next_page_token", pagingToken)
+				.Respond("application/json", reservationsJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetAllSessionReservationsAsync(eventId, sessionId, recordsPerPage, pagingToken, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.RecordsPerPage.ShouldBe(50);
+			result.NextPageToken.ShouldBe("token_def456");
+			result.Records.Length.ShouldBe(1);
+		}
+
+		#endregion
+
+		#region Session Interpreter Tests
+
+		[Fact]
+		public async Task UpsertSessionInterpretersAsync_WithLanguageInterpreters_Succeeds()
+		{
+			// Arrange
+			var eventId = "event123";
+			var sessionId = "session456";
+			var languageInterpreters = new[]
+			{
+				("interpreter1@example.com", InterpretationLanguageForEventSession.English, InterpretationLanguageForEventSession.Spanish),
+				("interpreter2@example.com", InterpretationLanguageForEventSession.English, InterpretationLanguageForEventSession.French)
+			};
+			var signLanguageInterpreters = Array.Empty<(string, InterpretationSignLanguage)>();
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "interpreters"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpsertSessionInterpretersAsync(eventId, sessionId, languageInterpreters, signLanguageInterpreters, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpsertSessionInterpretersAsync_WithSignLanguageInterpreters_Succeeds()
+		{
+			// Arrange
+			var eventId = "event123";
+			var sessionId = "session456";
+			var languageInterpreters = Array.Empty<(string, InterpretationLanguageForEventSession, InterpretationLanguageForEventSession)>();
+			var signLanguageInterpreters = new[]
+			{
+				("signinterpreter1@example.com", InterpretationSignLanguage.American),
+				("signinterpreter2@example.com", InterpretationSignLanguage.British)
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "interpreters"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpsertSessionInterpretersAsync(eventId, sessionId, languageInterpreters, signLanguageInterpreters, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpsertSessionInterpretersAsync_WithBothTypes_Succeeds()
+		{
+			// Arrange
+			var eventId = "event123";
+			var sessionId = "session456";
+			var languageInterpreters = new[]
+			{
+				("interpreter1@example.com", InterpretationLanguageForEventSession.English, InterpretationLanguageForEventSession.German),
+				("interpreter2@example.com", InterpretationLanguageForEventSession.English, InterpretationLanguageForEventSession.Portuguese)
+			};
+			var signLanguageInterpreters = new[]
+			{
+				("signinterpreter1@example.com", InterpretationSignLanguage.French),
+				("signinterpreter2@example.com", InterpretationSignLanguage.Japanese)
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "interpreters"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpsertSessionInterpretersAsync(eventId, sessionId, languageInterpreters, signLanguageInterpreters, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task GetAllSessionInterpretersAsync_ReturnsInterpreters()
+		{
+			// Arrange
+			var eventId = "event123";
+			var sessionId = "session456";
+			var interpretersJson = @"{
+				""interpreters"": [
+					{
+						""email"": ""interpreter1@example.com"",
+						""type"": 1,
+						""source_language_id"": ""US"",
+						""target_language_id"": ""ES"",
+						""name"": ""Spanish Interpreter""
+					},
+					{
+						""email"": ""signinterpreter1@example.com"",
+						""type"": 2,
+						""target_language_id"": ""FSL"",
+						""name"": ""French Sign Language Interpreter""
+					}
+				]
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "interpreters"))
+				.Respond("application/json", interpretersJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetAllSessionInterpretersAsync(eventId, sessionId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Length.ShouldBe(2);
+		}
+
+		#endregion
+
+		#region Session Poll Tests
+
+		[Fact]
+		public async Task UpsertSessionPollsAsync_WithBasicPoll_Succeeds()
+		{
+			// Arrange
+			var eventId = "event123";
+			var sessionId = "session456";
+			var polls = new[]
+			{
+				new PollForEventSession
+				{
+					Title = "Basic Poll",
+					Type = PollType.Basic,
+					Status = PollStatusForEventSession.Active,
+					AllowAnonymous = false,
+					Questions = new[]
+					{
+						new PollQuestionForEventSession
+						{
+							Question = "What is your favorite color?",
+							Type = PollQuestionType.SingleChoice,
+							Answers = new[] { "Red", "Blue", "Green", "Yellow" }
+						}
+					}
+				}
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "polls"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpsertSessionPollsAsync(eventId, sessionId, polls, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpsertSessionPollsAsync_WithAdvancedPoll_Succeeds()
+		{
+			// Arrange
+			var eventId = "event123";
+			var sessionId = "session456";
+			var polls = new[]
+			{
+				new PollForEventSession
+				{
+					Title = "Advanced Poll",
+					Type = PollType.Advanced,
+					Status = PollStatusForEventSession.Active,
+					AllowAnonymous = true,
+					Questions = new[]
+					{
+						new PollQuestionForEventSession
+						{
+							Question = "What is your pet's name?",
+							Type = PollQuestionType.Short,
+							MinimumNumberOfCharacters = 1,
+							MaximumNumberOfCharacters = 500
+						},
+						new PollQuestionForEventSession
+						{
+							Question = "Tell us about yourself",
+							Type = PollQuestionType.Long,
+							MinimumNumberOfCharacters = 1,
+							MaximumNumberOfCharacters = 2000
+						}
+					}
+				}
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "polls"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpsertSessionPollsAsync(eventId, sessionId, polls, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpsertSessionPollsAsync_WithMultiplePolls_Succeeds()
+		{
+			// Arrange
+			var eventId = "event123";
+			var sessionId = "session456";
+			var polls = new[]
+			{
+				new PollForEventSession
+				{
+					Title = "Poll 1",
+					Type = PollType.Basic,
+					Status = PollStatusForEventSession.Active,
+					AllowAnonymous = false,
+					Questions = new[]
+					{
+						new PollQuestionForEventSession
+						{
+							Question = "Question 1",
+							Type = PollQuestionType.SingleChoice,
+							Answers = new[] { "Answer 1", "Answer 2" }
+						}
+					}
+				},
+				new PollForEventSession
+				{
+					Title = "Poll 2",
+					Type = PollType.Advanced,
+					Status = PollStatusForEventSession.Active,
+					AllowAnonymous = true,
+					Questions = new[]
+					{
+						new PollQuestionForEventSession
+						{
+							Question = "Question 2",
+							Type = PollQuestionType.MultipleChoice,
+							Answers = new[] { "Option A", "Option B", "Option C" }
+						}
+					}
+				}
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "polls"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpsertSessionPollsAsync(eventId, sessionId, polls, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task GetAllSessionPollsAsync_ReturnsPolls()
+		{
+			// Arrange
+			var eventId = "event123";
+			var sessionId = "session456";
+			var pollsJson = @"{
+				""polls"": [
+					{
+						""id"": ""poll1"",
+						""title"": ""Session Poll 1"",
+						""poll_type"": 1,
+						""status"": ""active"",
+						""anonymous"": false,
+						""questions"": [
+							{
+								""name"": ""How satisfied are you?"",
+								""type"": ""single"",
+								""answer_required"": true,
+								""answers"": [""Very satisfied"", ""Satisfied"", ""Neutral"", ""Dissatisfied""]
+							}
+						]
+					},
+					{
+						""id"": ""poll2"",
+						""title"": ""Session Poll 2"",
+						""poll_type"": 2,
+						""status"": ""active"",
+						""anonymous"": true,
+						""questions"": [
+							{
+								""name"": ""Additional feedback"",
+								""type"": ""short_answer"",
+								""answer_required"": false,
+								""answer_min_character"": 10,
+								""answer_max_character"": 500
+							}
+						]
+					}
+				]
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "polls"))
+				.Respond("application/json", pollsJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetAllSessionPollsAsync(eventId, sessionId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Length.ShouldBe(2);
+		}
+
+		#endregion
+
+		#region Session Livestream Tests
+
+		[Fact]
+		public async Task UpdateSessionLivestreamConfigurationAsync_EnableIncoming_Succeeds()
+		{
+			// Arrange
+			var eventId = "event123";
+			var sessionId = "session456";
+			var incomingEnabled = true;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "livestream"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateSessionLivestreamConfigurationAsync(eventId, sessionId, incomingEnabled, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateSessionLivestreamConfigurationAsync_DisableIncoming_Succeeds()
+		{
+			// Arrange
+			var eventId = "event123";
+			var sessionId = "session456";
+			var incomingEnabled = false;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "livestream"))
+				.Respond(HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			await events.UpdateSessionLivestreamConfigurationAsync(eventId, sessionId, incomingEnabled, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task GetSessionLivestreamConfgurationAsync_ReturnsConfiguration()
+		{
+			// Arrange
+			var eventId = "event123";
+			var sessionId = "session456";
+			var livestreamConfigJson = @"{
+				""incoming_enabled"": true,
+				""stream_url"": ""rtmps://stream.zoom.us/rtmp/"",
+				""stream_key"": ""abc123def456""
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "livestream"))
+				.Respond("application/json", livestreamConfigJson);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var events = new Events(client);
+
+			// Act
+			var result = await events.GetSessionLivestreamConfgurationAsync(eventId, sessionId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.StreamUrl.ShouldBe("rtmps://stream.zoom.us/rtmp/");
+			result.StreamKey.ShouldBe("abc123def456");
 		}
 
 		#endregion
