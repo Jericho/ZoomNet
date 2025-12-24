@@ -235,7 +235,9 @@ namespace ZoomNet
 			CloudRecordings = new CloudRecordings(_fluentClient);
 			Contacts = new Contacts(_fluentClient);
 			Dashboards = new Dashboards(_fluentClient);
+#pragma warning disable CS0618 // Type or member is obsolete
 			DataCompliance = new DataCompliance(_fluentClient);
+#pragma warning restore CS0618 // Type or member is obsolete
 			Events = new Events(_fluentClient);
 			ExternalContacts = new ExternalContacts(_fluentClient);
 			Groups = new Groups(_fluentClient);
