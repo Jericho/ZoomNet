@@ -89,10 +89,6 @@ namespace ZoomNet
 		public IDashboards Dashboards { get; private set; }
 
 		/// <inheritdoc/>
-		[Obsolete("The Data Compliance API is deprecated")]
-		public IDataCompliance DataCompliance { get; private set; }
-
-		/// <inheritdoc/>
 		public IEvents Events { get; private set; }
 
 		/// <inheritdoc/>
@@ -235,9 +231,6 @@ namespace ZoomNet
 			CloudRecordings = new CloudRecordings(_fluentClient);
 			Contacts = new Contacts(_fluentClient);
 			Dashboards = new Dashboards(_fluentClient);
-#pragma warning disable CS0618 // Type or member is obsolete
-			DataCompliance = new DataCompliance(_fluentClient);
-#pragma warning restore CS0618 // Type or member is obsolete
 			Events = new Events(_fluentClient);
 			ExternalContacts = new ExternalContacts(_fluentClient);
 			Groups = new Groups(_fluentClient);

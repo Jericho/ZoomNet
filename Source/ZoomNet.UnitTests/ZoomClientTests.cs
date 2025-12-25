@@ -121,9 +121,6 @@ namespace ZoomNet.UnitTests
 			client.CloudRecordings.ShouldNotBeNull();
 			client.Contacts.ShouldNotBeNull();
 			client.Dashboards.ShouldNotBeNull();
-#pragma warning disable CS0618 // Type or member is obsolete
-			client.DataCompliance.ShouldNotBeNull();
-#pragma warning restore CS0618 // Type or member is obsolete
 			client.Events.ShouldNotBeNull();
 			client.ExternalContacts.ShouldNotBeNull();
 			client.Groups.ShouldNotBeNull();
@@ -461,9 +458,6 @@ namespace ZoomNet.UnitTests
 			client.CloudRecordings.ShouldNotBeNull();
 			client.Contacts.ShouldNotBeNull();
 			client.Dashboards.ShouldNotBeNull();
-#pragma warning disable CS0618 // Type or member is obsolete
-			client.DataCompliance.ShouldNotBeNull();
-#pragma warning restore CS0618 // Type or member is obsolete
 			client.Events.ShouldNotBeNull();
 			client.ExternalContacts.ShouldNotBeNull();
 			client.Groups.ShouldNotBeNull();
