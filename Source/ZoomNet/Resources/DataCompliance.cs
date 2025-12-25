@@ -34,7 +34,9 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken);
 
 			// Figure out the client id and secret for authentication purposes
-			var tokenHandler = (ITokenHandler)request.Filters.Single(f => f.GetType().IsAssignableFrom(typeof(ITokenHandler)));
+			var tokenHandler = request.Filters.OfType<OAuthTokenHandler>().SingleOrDefault();
+			if (tokenHandler == null) throw new Exception("Unable to determine the connection secret and client Id. No OAuth token handler is associated with the request.");
+
 			var secret = string.Empty;
 			var clientId = string.Empty;
 			switch (tokenHandler.ConnectionInfo)
