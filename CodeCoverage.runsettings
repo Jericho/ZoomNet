@@ -15,9 +15,9 @@
                 <Function>^ZoomNet\.Utilities\.Log\..*</Function>
                 <Function>^System\.Text\.Json\.SourceGeneration\..*</Function>
                 <Function>^System\.Runtime\.CompilerServices\..*</Function>
-             </Exclude>
+              </Exclude>
             </Functions>
- 
+
             <!-- Match attributes on any code element: -->
             <Attributes>
               <Exclude>
