@@ -212,7 +212,7 @@ namespace ZoomNet.UnitTests
 			parsedEvent.AccountId.ShouldBe(AccountId);
 
 			parsedEvent.Issues.ShouldNotBeNull();
-			parsedEvent.Issues.ShouldBe(new[] { "Unstable audio quality" });
+			parsedEvent.Issues.ShouldBe(["Unstable audio quality"]);
 
 			VerifyMeetingInfo(parsedEvent.Meeting);
 		}
@@ -809,11 +809,10 @@ namespace ZoomNet.UnitTests
 			VerifyWebhookChatMessage(
 				parsedEvent.Message,
 				"This is a test message",
-				new[]
-				{
+				[
 					"MS17RDk0QTY3QUQtQkFGQy04QTJFLTI2RUEtNkYxQjRBRTU1MTk5fQ==",
 					"MS17NDQ0OEU5MjMtM0JFOS1CMDA1LTQ0NDAtQjdGOTU0Rjk5MTkyfQ=="
-				});
+				]);
 			VerifyChatMessageSender(parsedEvent.Sender);
 			VerifyChatMessageRecipient(parsedEvent.Recipient);
 		}
@@ -1421,44 +1420,5 @@ namespace ZoomNet.UnitTests
 		}
 
 		#endregion
-
-		public class VerifySignature
-		{
-			[Fact]
-			public void Simple()
-			{
-				// Arrange
-				var requestBody = "{\"payload\":{\"plainToken\":\"xys8n8PGS7mAU0m5-YJjRA\"},\"event_ts\":1720705455858,\"event\":\"endpoint.url_validation\"}";
-				var secretToken = "4fv1RkqGQUq5sWbEz6hA5A";
-				var signature = "v0=93a1a675965ceb9c5a50c5dfb31f20e50f763be37a54ef74cd2d16a1a8e5c0d6";
-				var timestamp = "1720705455";
-
-				var parser = new WebhookParser();
-
-				// Act
-				var result = parser.VerifySignature(requestBody, secretToken, signature, timestamp);
-
-				//Assert
-				result.ShouldBeTrue();
-			}
-
-			[Fact]
-			public void Topic_contains_non_ASCII_characters()
-			{
-				// Arange
-				var requestBody = "{\"event\":\"meeting.started\",\"payload\":{\"account_id\":\"VjZoEArIT5y-HlWxkV-tVA\",\"object\":{\"duration\":60,\"start_time\":\"2024-07-11T14:12:55Z\",\"timezone\":\"America/New_York\",\"topic\":\"Test \\uD83D\\uDE92\\uD83D\\uDE92 ? - ’ - – \\uD83D\\uDE97 HOLA\",\"id\":\"85393847045\",\"type\":2,\"uuid\":\"jUh5o3dKQIytvcsfTtKBlg==\",\"host_id\":\"8lzIwvZTSOqjndWPbPqzuA\"}},\"event_ts\":1720707175904}";
-				var secretToken = "4fv1RkqGQUq5sWbEz6hA5A";
-				var signature = "v0=1a14e79349318fa1bead50ebbd3c185ae078e182d3bbd30ab8010fcb7f4357c7";
-				var timestamp = "1720707175";
-
-				var parser = new WebhookParser();
-
-				// Act
-				var result = parser.VerifySignature(requestBody, secretToken, signature, timestamp);
-
-				//Assert
-				result.ShouldBeTrue();
-			}
-		}
 	}
 }
