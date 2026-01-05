@@ -1,0 +1,20 @@
+# ZoomNet Analyzer Configuration
+
+# Root directory
+root = false
+
+[*.cs]
+
+# ZOOM001: Paginated method without helper extension
+# Severity: info (default)
+# Enable this to get notified about paginated methods that may not have helpers
+dotnet_diagnostic.ZOOM001.severity =  suggestion
+
+# ZOOM002: Pagination API Report
+# Severity: none (disabled by default)
+# Enable this to generate a report of all paginated methods at build time
+# Note: This can make build output verbose, so it's disabled by default
+dotnet_diagnostic.ZOOM002.severity = none
+
+# Enable in CI/CD or for manual analysis:
+# dotnet_diagnostic.ZOOM002.severity = suggestion

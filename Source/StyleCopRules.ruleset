@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <RuleSet Name="Rules for my projects" Description="Code analysis rules for my projects." ToolsVersion="15.0">
   <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
     <Rule Id="CA1001" Action="Warning" />
@@ -78,5 +78,8 @@
     <Rule Id="SA1502" Action="None" />
     <Rule Id="SA1503" Action="None" />
     <Rule Id="SA1633" Action="None" />
+  </Rules>
+  <Rules AnalyzerId="ZoomNet.Analyzers" RuleNamespace="ZoomNet.Analyzers">
+    <Rule Id="ZOOM001" Action="Error" />
   </Rules>
 </RuleSet>
