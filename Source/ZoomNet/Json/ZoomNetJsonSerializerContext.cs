@@ -16,7 +16,6 @@ namespace ZoomNet.Json
 	[JsonSerializable(typeof(ZoomNet.Models.ApprovalType))]
 	[JsonSerializable(typeof(ZoomNet.Models.AssetItem))]
 	[JsonSerializable(typeof(ZoomNet.Models.AssetItemBase))]
-	[JsonSerializable(typeof(ZoomNet.Models.AssetLanguage))]
 	[JsonSerializable(typeof(ZoomNet.Models.AssetType))]
 	[JsonSerializable(typeof(ZoomNet.Models.Assistant))]
 	[JsonSerializable(typeof(ZoomNet.Models.AttendeeAction))]
@@ -800,7 +799,6 @@ namespace ZoomNet.Json
 	[JsonSerializable(typeof(ZoomNet.Models.ApprovalType[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.AssetItem[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.AssetItemBase[]))]
-	[JsonSerializable(typeof(ZoomNet.Models.AssetLanguage[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.AssetType[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.Assistant[]))]
 	[JsonSerializable(typeof(ZoomNet.Models.AttendeeAction[]))]
@@ -1579,7 +1577,6 @@ namespace ZoomNet.Json
 
 	[JsonSerializable(typeof(ZoomNet.Models.AiCompanionMode?))]
 	[JsonSerializable(typeof(ZoomNet.Models.ApprovalType?))]
-	[JsonSerializable(typeof(ZoomNet.Models.AssetLanguage?))]
 	[JsonSerializable(typeof(ZoomNet.Models.AssetType?))]
 	[JsonSerializable(typeof(ZoomNet.Models.AttendeeChatSaveType?))]
 	[JsonSerializable(typeof(ZoomNet.Models.AttendeeChatType?))]

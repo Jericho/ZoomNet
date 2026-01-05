@@ -77,7 +77,7 @@ namespace ZoomNet.UnitTests
 			info.Name.ShouldBe(AssetName);
 			info.Description.ShouldBe(AssetDescription);
 			info.Type.ShouldBe(AssetType.Audio);
-			info.LanguageCode.ShouldBe(AssetLanguage.English_UnitedStates);
+			info.LanguageCode.ShouldBe(Language.English_US);
 			info.CategoryId.ShouldBe(AssetCategoryId);
 			info.CategoryName.ShouldBe("My Category");
 			info.CreatedOn.ShouldBe(assetTimestamp);
@@ -143,7 +143,7 @@ namespace ZoomNet.UnitTests
 		{
 			item.Id.ShouldBe(AssetItemId);
 			item.Name.ShouldBe(AssetItemName);
-			item.Language.ShouldBe(AssetLanguage.English_UnitedStates);
+			item.Language.ShouldBe(Language.English_US);
 			item.FileUrl.ShouldBe("https://file.zoom.us/example.mp3");
 			item.Content.ShouldBe("My Asset Item Content");
 			item.Voice.ShouldBe("Joanna");

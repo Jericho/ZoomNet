@@ -7,17 +7,9 @@ namespace ZoomNet.Models
 	/// </summary>
 	public enum Language
 	{
-		/// <summary>English (UK).</summary>
-		[EnumMember(Value = "en-GB")]
-		English_UK,
-
-		/// <summary>English (US).</summary>
-		[EnumMember(Value = "en-US")]
-		English_US,
-
-		/// <summary>Arabic.</summary>
-		[EnumMember(Value = "ar")]
-		Arabic,
+		/// <summary>Mandarin (PRC).</summary>
+		[EnumMember(Value = "cmn-CN")]
+		Mandarin_PRC,
 
 		/// <summary>Danish (Denmark).</summary>
 		[EnumMember(Value = "da-DK")]
@@ -26,6 +18,22 @@ namespace ZoomNet.Models
 		/// <summary>German (Germany).</summary>
 		[EnumMember(Value = "de-DE")]
 		German_Germany,
+
+		/// <summary>English (Australia).</summary>
+		[EnumMember(Value = "en-AU")]
+		English_Australia,
+
+		/// <summary>English (UK).</summary>
+		[EnumMember(Value = "en-GB")]
+		English_UK,
+
+		/// <summary>English (New Zealand).</summary>
+		[EnumMember(Value = "en-NZ")]
+		English_NewZealand,
+
+		/// <summary>English (US).</summary>
+		[EnumMember(Value = "en-US")]
+		English_US,
 
 		/// <summary>Spanish (Spain).</summary>
 		[EnumMember(Value = "es-ES")]
@@ -47,8 +55,8 @@ namespace ZoomNet.Models
 		[EnumMember(Value = "it-IT")]
 		Italian_Italy,
 
-		/// <summary>Japanese.</summary>
-		[EnumMember(Value = "ja")]
+		/// <summary>Japanese (Japan).</summary>
+		[EnumMember(Value = "ja-JP")]
 		Japanese,
 
 		/// <summary>Korean (Korea).</summary>
@@ -59,6 +67,10 @@ namespace ZoomNet.Models
 		[EnumMember(Value = "nl-NL")]
 		Dutch_Netherlands,
 
+		/// <summary>Polish (Poland).</summary>
+		[EnumMember(Value = "pl-PL")]
+		Polish_Poland,
+
 		/// <summary>Portuguese (Brazil).</summary>
 		[EnumMember(Value = "pt-BR")]
 		Portuguese_Brazil,
@@ -67,9 +79,29 @@ namespace ZoomNet.Models
 		[EnumMember(Value = "pt-PT")]
 		Portuguese_Portugal,
 
-		/// <summary>Russian.</summary>
-		[EnumMember(Value = "ru")]
+		/// <summary>Romanian (Romania).</summary>
+		[EnumMember(Value = "ro-RO")]
+		Romanian_Romania,
+
+		/// <summary>Russian (Russia).</summary>
+		[EnumMember(Value = "ru-RU")]
 		Russian,
+
+		/// <summary>Swedish (Sweden).</summary>
+		[EnumMember(Value = "sv-SE")]
+		Swedish_Sweden,
+
+		/// <summary>Turkish (Turkey).</summary>
+		[EnumMember(Value = "tr-TR")]
+		Turkish_Turkey,
+
+		/// <summary>Vietnamese.</summary>
+		[EnumMember(Value = "vi-VN")]
+		Vietnamese,
+
+		/// <summary>Cantonese (PRC).</summary>
+		[EnumMember(Value = "yue-CN")]
+		Cantonese_PRC,
 
 		/// <summary>Chinese (PRC).</summary>
 		[EnumMember(Value = "zh-CN")]
@@ -78,5 +110,9 @@ namespace ZoomNet.Models
 		/// <summary>Chinese (Hong Kong).</summary>
 		[EnumMember(Value = "zh-HK")]
 		Chinese_HongKong,
+
+		/// <summary>Chinese (Taiwan).</summary>
+		[EnumMember(Value = "zh-TW")]
+		Chinese_Taiwan,
 	}
 }

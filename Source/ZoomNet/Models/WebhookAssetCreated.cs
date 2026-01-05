@@ -30,7 +30,7 @@ namespace ZoomNet.Models
 		/// Gets or sets the asset's language code.
 		/// </summary>
 		[JsonPropertyName("asset_language_code")]
-		public AssetLanguage LanguageCode { get; set; }
+		public Language LanguageCode { get; set; }
 
 		/// <summary>
 		/// Gets or sets the asset's description.
