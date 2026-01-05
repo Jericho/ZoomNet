@@ -11,13 +11,13 @@ namespace ZoomNet.Models
 		/// Gets or sets the phone number in E.164 format.
 		/// </summary>
 		[JsonPropertyName("phone_number")]
-		public string PhoneNumber { get; set;  }
+		public string PhoneNumber { get; set; }
 
 		/// <summary>
 		/// Gets or sets the account code.
 		/// </summary>
 		[JsonPropertyName("account_name")]
-		public string AccountCode { get; set;  }
+		public string AccountCode { get; set; }
 
 		/// <summary>
 		/// Gets or sets connection type.

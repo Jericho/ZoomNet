@@ -39,8 +39,29 @@ The last version of ZoomNet that supported `.NET 4.6.1`, `.NET 4.7.2` and `.NET 
 
 ## Usage
 
+### Creating and Configuring a ZoomNet client
+To start using ZoomNet, you need to create an instance of the `ZoomClient` class. This new instance requires a `connection info` object which contains information necessary to authenticate you with the Zoom platform. This is discussed in the next section in this document.
+You can also specify a few optional parameters:
+- `ZoomClientOptions`: settings that control the behavior of the ZoomNet client. If you don't provide an instance of this class, default settings will be used.
+- `ILogger`: logger instance that will receive log messages from the ZoomNet client. If you don't provide an instance of a logger, no log messages will be generated.
+
+> [!NOTE]
+> In addition to the default "global" URL, Zoom also offers a half-dozen or so "regional" URLs (such as Canada, EU, India and Australia for example). If you want to use one of these regional base URLs rather than the default global URL, you can specify this in the `ZoomClientOptions` by invoking one of the convenient methods: `WithAustraliaBaseUrl()`, `WithCanadaBaseUrl()`, `WithEuropeanUnionBaseUrl()`, etc.
+
+Here's a basic example of how to create a ZoomNet client:
+```csharp
+    var connectionInfo = ...; // See next section for a discussion about setting up your connection info
+    var clientOptions = new ZoomClientOptions().WithCanadaBaseUrl(); // In this example, I'm configuring the client to use Zoom's Canadian URL
+	var zoomClient = new ZoomClient(connectionInfo, clientOptions);
+```
+
+You can also optionaly specify one of the following three parameters:
+- `HttpClient`: by default, ZoomNet will create a new instance of HttpClient to send requests to the Zoom API. If you want to manage the lifetime of the HttpClient yourself, you can provide your own instance here.
+- `IWebProxy`: proxy where all requests are routed before being sent to the Zoom API. This is particularly useful if you want to be able to capture every single request for debugging purposes.
+- `HttpMessageHandler`: custom HTTP message handler that will be used by the underlying HttpClient. This is particularly useful for unit testing purposes when you want to mock the requests being sent to the Zoom API.
+
 ### Connection Information
-Before you start using the ZoomNet client, you must decide how you are going to connect to the Zoom API. ZoomNet supports thwo ways of connecting to Zoom: OAuth and Server-to-Server OAuth.
+Before you start using the ZoomNet client, you must decide how you are going to connect to the Zoom API. ZoomNet supports two ways of connecting to Zoom: OAuth and Server-to-Server OAuth.
 
 #### Connection using OAuth (General App)
 The Zoom documentation has a document about [how to create an OAuth app](https://developers.zoom.us/docs/integrations/create/) and another document about the [OAuth autorization flow](https://developers.zoom.us/docs/integrations/oauth/) but I personnality was very confused by the later document so here is a brief step-by-step summary:

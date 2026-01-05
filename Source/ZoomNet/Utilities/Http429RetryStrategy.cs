@@ -83,7 +83,8 @@ namespace ZoomNet.Utilities
 			{
 				// There's no need to retry when the reset time is too far in the future.
 				// I arbitrarily decided that 15 seconds is the cutoff.
-				return nextRetryDateTime.Subtract(_systemClock.UtcNow).TotalSeconds < 15;
+				var waitTime = nextRetryDateTime.ToUniversalTime().Subtract(_systemClock.UtcNow);
+				return waitTime < TimeSpan.FromSeconds(15);
 			}
 			else if ((rateLimitInfo.Type ?? string.Empty).Equals("QPS", StringComparison.OrdinalIgnoreCase))
 			{
@@ -115,7 +116,7 @@ namespace ZoomNet.Utilities
 
 			if (DateTime.TryParse(rateLimitInfo.RetryAfter, out DateTime nextRetryDateTime))
 			{
-				waitTime = nextRetryDateTime.Subtract(_systemClock.UtcNow);
+				waitTime = nextRetryDateTime.ToUniversalTime().Subtract(_systemClock.UtcNow);
 			}
 			else if ((rateLimitInfo.Type ?? string.Empty).Equals("QPS", StringComparison.OrdinalIgnoreCase))
 			{
@@ -136,10 +137,10 @@ namespace ZoomNet.Utilities
 			}
 
 			// Make sure the wait time is valid
-			if (waitTime.TotalMilliseconds < 0) waitTime = DEFAULT_DELAY;
+			if (waitTime < TimeSpan.FromSeconds(1)) waitTime = DEFAULT_DELAY;
 
 			// Totally arbitrary. Make sure we don't wait more than a 'reasonable' amount of time
-			if (waitTime.TotalSeconds > 5) waitTime = TimeSpan.FromSeconds(5);
+			if (waitTime > TimeSpan.FromSeconds(5)) waitTime = TimeSpan.FromSeconds(5);
 
 			return waitTime;
 		}

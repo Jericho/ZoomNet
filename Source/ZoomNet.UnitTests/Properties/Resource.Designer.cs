@@ -6281,9 +6281,9 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;number_management.peering_number_cnam_updated&quot;,
-        ///  &quot;event_ts&quot;: 1619155436400,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;cnam&quot;: &quot;name&quot;,
         ///      &quot;carrier_code&quot;: 3457,
@@ -6303,14 +6303,14 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;number_management.peering_number_emergency_address_updated&quot;,
-        ///  &quot;event_ts&quot;: 1619155436400,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;emergency_address&quot;: {
         ///        &quot;address_line1&quot;: &quot;55 ALMADEN BLVD&quot;,
-        ///        &quot;address_line2&quot;: &quot;13F&quot;,
-        ///        &quot;city&quot;: &quot;SAN JOSE&quot;,
+        ///        &quot;address_line2&quot;: &quot;8 Floor&quot;,
+        ///        &quot;city&quot;: &quot;San Jose&quot;,
         ///        &quot;country&quot;: &quot;US&quot;,
         ///        &quot;state_code&quot;: &quot;CA&quot;,
         ///        &quot;zip&quot;: &quot;95113&quot;
@@ -6334,21 +6334,19 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;event&quot;: &quot;phone.account_settings_updated&quot;,
         ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;id&quot;: &quot;eUblMKLnTMKX0pVvNAlA0Q&quot;,
         ///      &quot;settings&quot;: {
-        ///        &quot;call_live_transcription&quot;: {
+        ///        &quot;ad_hoc_call_recording&quot;: {
         ///          &quot;enable&quot;: true,
         ///          &quot;locked&quot;: false,
-        ///          &quot;transcription_start_prompt&quot;: {
-        ///            &quot;enable&quot;: false,
-        ///            &quot;audio_id&quot;: &quot;_rG7uKlJRAWn-013nTD1bA&quot;,
-        ///            &quot;audio_name&quot;: &quot;hello1.mp3&quot;
-        ///          }
-        ///        }
-        ///      }
-        ///    } [rest of string was truncated]&quot;;.
+        ///          &quot;locked_by&quot;: &quot;account&quot;,
+        ///          &quot;recording_start_prompt&quot;: true,
+        ///          &quot;recording_explicit_consent&quot;: true,
+        ///          &quot;recording_transcription&quot;: true,
+        ///          &quot;allow_download&quot;: true,
+        ///          &quot;a [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_account_settings_updated_webhook {
             get {
@@ -6359,20 +6357,21 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.ai_call_summary_changed&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;89gnHJQ9SdSmFpI9wmh6fQ&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;edited&quot;: true,
         ///      &quot;deleted&quot;: false,
         ///      &quot;ai_call_summary_id&quot;: &quot;iNsfqK6gQOCiILiKhrlLqQ&quot;,
         ///      &quot;user_id&quot;: &quot;FvB3CRfOQUuhF1IOB176Tg&quot;,
-        ///      &quot;call_id&quot;: &quot;066bd0dee0066150033&quot;,
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;call_log_ids&quot;: [
         ///        &quot;6afdf3e3-87e3-47d0-834c-6ee3598e3b96&quot;,
         ///        &quot;6afdf3e3-87e3-47d0-834c-6ee3598e3b00&quot;
         ///      ],
         ///      &quot;created_time&quot;: &quot;2023-10-08T16:12:04Z&quot;,
-        ///      &quot;modified_tim [rest of string was truncated]&quot;;.
+        ///  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_ai_call_summary_changed_webhook {
             get {
@@ -6382,21 +6381,24 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot; : &quot;phone.blind_transfer_initiated&quot;,
-        ///	&quot;event_ts&quot; : 1626759486127,
-        ///  &quot;payload&quot; : {
-        ///    &quot;account_id&quot; : &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
-        ///    &quot;object&quot; : {
+        ///  &quot;event&quot;: &quot;phone.blind_transfer_initiated&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
         ///      &quot;failure_reason&quot;: &quot;&quot;,
-        ///      &quot;call_id&quot; : &quot;6986878782238080581&quot;,
-        ///      &quot;owner&quot; : {
-        ///                &quot;type&quot; : &quot;user&quot;,
-        ///                &quot;id&quot; : &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///                &quot;name&quot; : &quot;usersubsetting0001&quot;,
-        ///                &quot;extension_number&quot;: 6666
-        ///            },
-        ///      &quot;transfer_phone_number&quot;: &quot;+12055432724&quot;,
-        ///      &quot;date_time&quot; : &quot;2021-0 [rest of string was truncated]&quot;;.
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;owner&quot;: {
+        ///        &quot;type&quot;: &quot;user&quot;,
+        ///        &quot;id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///        &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///        &quot;extension_number&quot;: 6666
+        ///      },
+        ///      &quot;transfer_phone_number&quot;: &quot;+12092592844&quot;,
+        ///      &quot;transfer_account_code&quot;: &quot;123&quot;,
+        ///      &quot;date_time&quot;: &quot;2021-07-13T21:44:51Z&quot;
+        ///    }
+        ///  }        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_blind_transfer_initiated_webhook {
             get {
@@ -7182,20 +7184,22 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot; : &quot;phone.conference_started&quot;,
-        ///	&quot;event_ts&quot; : 1626759486127,
-        ///  &quot;payload&quot; : {
-        ///    &quot;account_id&quot; : &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
-        ///    &quot;object&quot; : {
+        ///  &quot;event&quot;: &quot;phone.conference_started&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
         ///      &quot;failure_reason&quot;: &quot;&quot;,
-        ///      &quot;call_id&quot; : &quot;6986878782238080581&quot;,
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;enable_multiple_party_conference&quot;: true,
         ///      &quot;conference_id&quot;: &quot;2074969d-621f-41d3-890c-8a44a03fa3e0&quot;,
-        ///      &quot;owner&quot; : {
-        ///                &quot;type&quot; : &quot;user&quot;,
-        ///                &quot;id&quot; : &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///                &quot;name&quot; : &quot;usersubsetting0001&quot;,
-        ///                &quot;extension [rest of string was truncated]&quot;;.
+        ///      &quot;owner&quot;: {
+        ///        &quot;type&quot;: &quot;user&quot;,
+        ///        &quot;id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///        &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///        &quot;extension_number&quot;: 6666
+        ///      },
+        ///      &quot;date_time&quot;: &quot;2021-07-13T21: [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_conference_started_webhook {
             get {
@@ -7206,16 +7210,17 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.device_registration&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;device_id&quot;: &quot;JOZmuJ30Spyrw-v9vUzIrA&quot;,
         ///      &quot;device_name&quot;: &quot;New_DeskPhone&quot;,
         ///      &quot;mac_address&quot;: &quot;012345678912&quot;
-        ///      }
-        ///  },
-        ///  &quot;event_ts&quot;: 1625034680324
-        ///}.
+        ///    }
+        ///  }
+        ///}
+        ///.
         /// </summary>
         internal static string phone_device_registration_webhook {
             get {
@@ -7226,7 +7231,9 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.emergency_alert&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;caller&quot;: {
         ///        &quot;id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
@@ -7235,15 +7242,11 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;display_name&quot;: &quot;pbxta api&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
         ///        &quot;site_id&quot;: &quot;8f71O6rWT8KFUGQmJIFAdQ&quot;,
-        ///        &quot;site_name&quot;: &quot;Main Site&quot;
+        ///        &quot;site_name&quot;: &quot;Main Site&quot;,
+        ///        &quot;phone_number&quot;: &quot;+12192818492&quot;
         ///      },
         ///      &quot;callee&quot;: {
-        ///        &quot;phone_number&quot;: &quot;933&quot;
-        ///      },
-        ///      &quot;location&quot;: {
-        ///        &quot;gps&quot;: [
-        ///          &quot;31.29846,120.6645&quot;
-        ///      [rest of string was truncated]&quot;;.
+        ///        &quot;pho [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_emergency_alert_webhook {
             get {
@@ -7254,12 +7257,13 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.generic_device_provision&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;id&quot;: &quot;JOZmuJ30Spyrw-v9vUzIrA&quot;,
         ///      &quot;display_name&quot;: &quot;test_cap&quot;,
-        ///      &quot;device_type&quot;: &quot;Other &quot;,
+        ///      &quot;device_type&quot;: &quot;Other&quot;,
         ///      &quot;mac_address&quot;: &quot;012345678912&quot;,
         ///      &quot;site&quot;: {
         ///        &quot;id&quot;: &quot;8f71O6rWT8KFUGQmJIFAdQ&quot;,
@@ -7270,7 +7274,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;sip_accounts&quot;: [
         ///          {
         ///            &quot;password&quot;: &quot;4dL09r0H&quot;,
-        ///            &quot;sip_d [rest of string was truncated]&quot;;.
+        ///  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_generic_device_provision_webhook {
             get {
@@ -7281,24 +7285,21 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.group_settings_updated&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;group_id&quot;: &quot;IfRqsMZSSzGBKm2AFJ7r3Q&quot;,
         ///      &quot;settings&quot;: {
-        ///        &quot;call_live_transcription&quot;: {
+        ///        &quot;ad_hoc_call_recording&quot;: {
         ///          &quot;enable&quot;: true,
-        ///          &quot;locked&quot;: false,
-        ///          &quot;transcription_start_prompt&quot;: {
-        ///            &quot;enable&quot;: true,
-        ///            &quot;audio_id&quot;: &quot;N_1FYBsGTE28ACkVN__EiA&quot;,
-        ///            &quot;audio_name&quot;: &quot;hello1.mp3&quot;
-        ///          }
-        ///        }
-        ///      }
-        ///    },
-        ///    &quot;old_object&quot;: {
-        ///    [rest of string was truncated]&quot;;.
+        ///          &quot;locked&quot;: true,
+        ///          &quot;locked_by&quot;: &quot;site&quot;,
+        ///          &quot;modified&quot;: true,
+        ///          &quot;recording_start_prompt&quot;: true,
+        ///          &quot;recording_explicit_consent&quot;: true,
+        ///          &quot;recording_transcription&quot;: true,
+        ///          &quot;allow_d [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_group_settings_updated_webhook {
             get {
@@ -7309,17 +7310,17 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.peering_number_cnam_updated&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;cnam&quot;: &quot;name&quot;,
         ///      &quot;carrier_code&quot;: 3457,
         ///      &quot;phone_numbers&quot;: [
-        ///       &quot;18008001000&quot;
+        ///        &quot;+18008001000&quot;
         ///      ]
         ///    }
-        ///  },
-        ///  &quot;event_ts&quot;: 1619155436400
+        ///  }
         ///}.
         /// </summary>
         internal static string phone_peering_number_cnam_updated_webhook {
@@ -7331,24 +7332,24 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.peering_number_emergency_address_updated&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;emergency_address&quot;: {
         ///        &quot;address_line1&quot;: &quot;55 ALMADEN BLVD&quot;,
-        ///        &quot;address_line2&quot;: &quot;13F&quot;,
-        ///        &quot;city&quot;: &quot;SAN JOSE&quot;,
+        ///        &quot;address_line2&quot;: &quot;8 Floor&quot;,
+        ///        &quot;city&quot;: &quot;San Jose&quot;,
         ///        &quot;country&quot;: &quot;US&quot;,
         ///        &quot;state_code&quot;: &quot;CA&quot;,
         ///        &quot;zip&quot;: &quot;95113&quot;
         ///      },
         ///      &quot;carrier_code&quot;: 3457,
         ///      &quot;phone_numbers&quot;: [
-        ///       &quot;18008001000&quot;
+        ///        &quot;+18008001000&quot;
         ///      ]
         ///    }
-        ///  },
-        ///  &quot;event_ts&quot;: 1619155436400
+        ///  }
         ///}.
         /// </summary>
         internal static string phone_peering_number_emergency_address_updated_webhook {
@@ -7771,23 +7772,21 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.transfer_call_to_voicemail_initiated&quot;,
-        ///  &quot;event_ts&quot;: 1626759486127,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;failure_reason&quot;: &quot;&quot;,
-        ///      &quot;call_id&quot;: &quot;6986878782238080581&quot;,
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;owner&quot;: {
         ///        &quot;type&quot;: &quot;user&quot;,
         ///        &quot;id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///        &quot;name&quot;: &quot;usersubsetting0001&quot;,
+        ///        &quot;name&quot;: &quot;Jill Chill&quot;,
         ///        &quot;extension_number&quot;: 6666
         ///      },
-        ///      &quot;transfer_phone_number&quot;: &quot;+12055432724&quot;,
-        ///      &quot;date_time&quot;: &quot;2021-07-20T05:38:04Z&quot;
-        ///    }
-        ///  }
-        ///}.
+        ///      &quot;transfer_phone_number&quot;: &quot;+12092592844&quot;,
+        ///      &quot;transfer_account_code&quot;: &quot;123&quot;,
+        ///      &quot;date_time&quot;: &quot;2021-07-13T21:44:51Z&quot;        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_transfer_call_to_voicemail_initiated_webhook {
             get {
@@ -7798,22 +7797,23 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.transfer_recipient_updated&quot;,
-        ///  &quot;event_ts&quot;: 1712558722775,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;failure_reason&quot;: &quot;&quot;,
-        ///      &quot;call_id&quot;: &quot;6986878782238080581&quot;,
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;owner&quot;: {
         ///        &quot;type&quot;: &quot;user&quot;,
         ///        &quot;id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///        &quot;name&quot;: &quot;Tom Jones&quot;,
-        ///        &quot;extension_number&quot;: 1001019
+        ///        &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///        &quot;extension_number&quot;: 6666
         ///      },
         ///      &quot;recipient&quot;: {
         ///        &quot;extension_number&quot;: 1001020,
-        ///        &quot;phone_number&quot;: &quot;+12192818492&quot;,
-        ///        &quot;name&quot;: &quot;Jane Sm [rest of string was truncated]&quot;;.
+        ///        &quot;phone_number&quot;: &quot;+12058945456&quot;,
+        ///        &quot;name&quot;: &quot;Jane Smith&quot;
+        ///      }, [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_transfer_recipient_updated_webhook {
             get {
@@ -7824,8 +7824,9 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.voicemail_deleted&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;voice_mails&quot;: [
         ///        {
@@ -7833,8 +7834,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///        }
         ///      ]
         ///    }
-        ///  },
-        ///  &quot;event_ts&quot;: 1619155436400
+        ///  }
         ///}.
         /// </summary>
         internal static string phone_voicemail_deleted_webhook {
@@ -7846,8 +7846,9 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.voicemail_permanently_deleted&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;voice_mails&quot;: [
         ///        {
@@ -7855,8 +7856,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///        }
         ///      ]
         ///    }
-        ///  },
-        ///  &quot;event_ts&quot;: 1619155436400
+        ///  }
         ///}.
         /// </summary>
         internal static string phone_voicemail_permanently_deleted_webhook {
@@ -7867,18 +7867,18 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;phone.voicemail_received_for_access_member&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;97IYU62bTpSY66_pir2PgA&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;callee_id&quot;: &quot;s6njoqZLT6aPvUQ0JyydeQ&quot;,
-        ///      &quot;call_id&quot;: &quot;666888666865648555&quot;,
+        ///      &quot;id&quot;: &quot;70ea156dc8414742839569c1556c3314&quot;,
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;call_log_id&quot;: &quot;55fd0af0-beb0-433a-be97-388de5e99ab4&quot;,
-        ///      &quot;call_history_id&quot;: &quot;20210819-55fd0af0-beb0-433a-be97-388de5e99ab4&quot;,
-        ///      &quot;call_element_id&quot;: &quot;20210609-a297ae04-a875-4cfd-85ab-4adcead91edb&quot;,
-        ///      &quot;duration&quot;: 3,
-        ///      &quot;caller_name&quot;: &quot;Rascoe Thomas&quot;,
-        ///      &quot;caller_did_number&quot;: &quot;+12055967465&quot;,
-        ///      &quot;callee_extension_type [rest of string was truncated]&quot;;.
+        ///      &quot;call_history_id&quot;: &quot;20231008-1ac1df2a-912e-d125-8a15-1a1233d10f1a&quot;,
+        ///      &quot;call_element_id&quot;: &quot;20231008-48c1dfd4-91ce-4df5-8495-7c9e33d10869&quot;,
+        ///      &quot;callee_id&quot;: &quot;s6njoqZLT6aPvUQ0JyydeQ&quot;,
+        ///      &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_voicemail_received_for_access_member_webhook {
             get {
@@ -7888,18 +7888,18 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;phone.voicemail_received&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;97IYU62bTpSY66_pir2PgA&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;callee_id&quot;: &quot;s6njoqZLT6aPvUQ0JyydeQ&quot;,
-        ///      &quot;call_id&quot;: &quot;666888666865648555&quot;,
+        ///      &quot;id&quot;: &quot;70ea156dc8414742839569c1556c3314&quot;,
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;call_log_id&quot;: &quot;55fd0af0-beb0-433a-be97-388de5e99ab4&quot;,
-        ///      &quot;call_history_id&quot;: &quot;20210819-55fd0af0-beb0-433a-be97-388de5e99ab4&quot;,
-        ///      &quot;call_element_id&quot;: &quot;20210609-a297ae04-a875-4cfd-85ab-4adcead91edb&quot;,
-        ///      &quot;duration&quot;: 3,
-        ///      &quot;caller_user_id&quot;: &quot;9Y0sGVcgRrW_9eV6kwLf7w&quot;,
-        ///      &quot;caller_name&quot;: &quot;Rascoe Thomas&quot;,
-        ///      &quot;caller_did_num [rest of string was truncated]&quot;;.
+        ///      &quot;call_history_id&quot;: &quot;20231008-1ac1df2a-912e-d125-8a15-1a1233d10f1a&quot;,
+        ///      &quot;call_element_id&quot;: &quot;20231008-48c1dfd4-91ce-4df5-8495-7c9e33d10869&quot;,
+        ///      &quot;callee_id&quot;: &quot;s6njoqZLT6aPvUQ0JyydeQ&quot;,
+        ///      &quot;callee_extension_t [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_voicemail_received_webhook {
             get {
@@ -7909,18 +7909,18 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;phone.voicemail_transcript_completed&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;97IYU62bTpSY66_pir2PgA&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;callee_id&quot;: &quot;s6njoqZLT6aPvUQ0JyydeQ&quot;,
-        ///      &quot;call_id&quot;: &quot;666888666865648555&quot;,
+        ///      &quot;id&quot;: &quot;70ea156dc8414742839569c1556c3314&quot;,
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;call_log_id&quot;: &quot;55fd0af0-beb0-433a-be97-388de5e99ab4&quot;,
-        ///      &quot;call_history_id&quot;: &quot;20210819-55fd0af0-beb0-433a-be97-388de5e99ab4&quot;,
-        ///      &quot;call_element_id&quot;: &quot;20210609-a297ae04-a875-4cfd-85ab-4adcead91edb&quot;,
-        ///      &quot;caller_name&quot;: &quot;Rascoe Thomas&quot;,
-        ///      &quot;callee_extension_type&quot;: &quot;callQueue&quot;,
-        ///      &quot;callee_name&quot;: &quot;Chris&apos;s_CQ01_2_members&quot;,
-        ///  [rest of string was truncated]&quot;;.
+        ///      &quot;call_history_id&quot;: &quot;20231008-1ac1df2a-912e-d125-8a15-1a1233d10f1a&quot;,
+        ///      &quot;call_element_id&quot;: &quot;20231008-48c1dfd4-91ce-4df5-8495-7c9e33d10869&quot;,
+        ///      &quot;callee_id&quot;: &quot;s6njoqZLT6aPvUQ0JyydeQ&quot;,
+        ///      &quot;callee [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_voicemail_transcript_completed_webhook {
             get {
@@ -7931,22 +7931,24 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.warm_transfer_cancelled&quot;,
-        ///  &quot;event_ts&quot;: 1626759486127,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;failure_reason&quot;: &quot;&quot;,
-        ///      &quot;call_id&quot;: &quot;6986878782238080581&quot;,
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;owner&quot;: {
         ///        &quot;type&quot;: &quot;user&quot;,
         ///        &quot;id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///        &quot;name&quot;: &quot;usersubsetting0001&quot;,
+        ///        &quot;name&quot;: &quot;Jill Chill&quot;,
         ///        &quot;extension_number&quot;: 6666
         ///      },
-        ///      &quot;date_time&quot;: &quot;2021-07-20T05:38:04Z&quot;
+        ///      &quot;transfer_phone_number&quot;: &quot;+12092592844&quot;,
+        ///      &quot;transfer_account_code&quot;: &quot;123&quot;,
+        ///      &quot;date_time&quot;: &quot;2021-07-13T21:44:51Z&quot;
         ///    }
         ///  }
-        ///}.
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_warm_transfer_cancelled_webhook {
             get {
@@ -7957,23 +7959,24 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.warm_transfer_completed&quot;,
-        ///  &quot;event_ts&quot;: 1626759486127,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;failure_reason&quot;: &quot;&quot;,
-        ///      &quot;call_id&quot;: &quot;6986878782238080581&quot;,
-        ///      &quot;transfer_phone_number&quot;: &quot;+12055432724&quot;,
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;owner&quot;: {
         ///        &quot;type&quot;: &quot;user&quot;,
         ///        &quot;id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///        &quot;name&quot;: &quot;usersubsetting0001&quot;,
+        ///        &quot;name&quot;: &quot;Jill Chill&quot;,
         ///        &quot;extension_number&quot;: 6666
         ///      },
-        ///      &quot;date_time&quot;: &quot;2021-07-20T05:38:04Z&quot;
+        ///      &quot;transfer_phone_number&quot;: &quot;+12092592844&quot;,
+        ///      &quot;transfer_account_code&quot;: &quot;123&quot;,
+        ///      &quot;date_time&quot;: &quot;2021-07-13T21:44:51Z&quot;
         ///    }
         ///  }
-        ///}.
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_warm_transfer_completed_webhook {
             get {
@@ -7984,21 +7987,22 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.warm_transfer_initiated&quot;,
-        ///  &quot;event_ts&quot;: 1626759486127,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;failure_reason&quot;: &quot;&quot;,
-        ///      &quot;call_id&quot;: &quot;6986878782238080581&quot;,
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;owner&quot;: {
         ///        &quot;type&quot;: &quot;user&quot;,
         ///        &quot;id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///        &quot;name&quot;: &quot;usersubsetting0001&quot;,
+        ///        &quot;name&quot;: &quot;Jill Chill&quot;,
         ///        &quot;extension_number&quot;: 6666
         ///      },
-        ///      &quot;transfer_phone_number&quot;: &quot;+12055432724&quot;,
+        ///      &quot;transfer_phone_number&quot;: &quot;+12092592844&quot;,
+        ///      &quot;transfer_account_code&quot;: &quot;123&quot;,
         ///      &quot;transfer_call_id&quot;: &quot;6986878782238080584&quot;,
-        ///      &quot;date_time&quot;: &quot;2021 [rest of string was truncated]&quot;;.
+        ///      [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_warm_transfer_initiated_webhook {
             get {
@@ -9053,6 +9057,59 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string session_recording_trashed_webhook {
             get {
                 return ResourceManager.GetString("session_recording_trashed_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;session.rtms_interrupted&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;session_id&quot;: &quot;4567UVWxYZABCdEfGhiJkl==&quot;,
+        ///    &quot;session_key&quot;: &quot;ABC36jaBI145&quot;,
+        ///    &quot;rtms_stream_id&quot;: &quot;609340fb2a7946909659956c8aa9250c&quot;
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string session_rtms_interrupted_webhook {
+            get {
+                return ResourceManager.GetString("session_rtms_interrupted_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;session.rtms_started&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;session_id&quot;: &quot;4567UVWxYZABCdEfGhiJkl==&quot;,
+        ///    &quot;session_key&quot;: &quot;ABC36jaBI145&quot;,
+        ///    &quot;rtms_stream_id&quot;: &quot;609340fb2a7946909659956c8aa9250c&quot;,
+        ///    &quot;server_urls&quot;: &quot;wss://127.0.0.1:443&quot;
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string session_rtms_started_webhook {
+            get {
+                return ResourceManager.GetString("session_rtms_started_webhook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;session.rtms_stopped&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;session_id&quot;: &quot;4567UVWxYZABCdEfGhiJkl==&quot;,
+        ///    &quot;session_key&quot;: &quot;ABC36jaBI145&quot;,
+        ///    &quot;rtms_stream_id&quot;: &quot;609340fb2a7946909659956c8aa9250c&quot;,
+        ///    &quot;stop_reason&quot;: 1
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string session_rtms_stopped_webhook {
+            get {
+                return ResourceManager.GetString("session_rtms_stopped_webhook", resourceCulture);
             }
         }
         

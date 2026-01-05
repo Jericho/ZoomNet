@@ -23,7 +23,9 @@ using ZoomNet.Json;
 using ZoomNet.Models;
 using ZoomNet.Utilities;
 
+#pragma warning disable IDE0130 // Namespace does not match folder structure
 namespace ZoomNet
+#pragma warning restore IDE0130 // Namespace does not match folder structure
 {
 	/// <summary>
 	/// Internal extension methods.
@@ -358,12 +360,40 @@ namespace ZoomNet
 		/// <param name="request">The request.</param>
 		/// <param name="propertyName">The name of the JSON property (or null if not applicable) where the desired data is stored.</param>
 		/// <param name="options">Options to control behavior Converter during parsing.</param>
-		/// <returns>Returns the paginated response.</returns>
+		/// <returns>The paginated response.</returns>
 		/// <exception cref="ApiException">An error occurred processing the response.</exception>
 		internal static async Task<PaginatedResponseWithTokenAndDateRange<T>> AsPaginatedResponseWithTokenAndDateRange<T>(this IRequest request, string propertyName, JsonSerializerOptions options = null)
 		{
 			var response = await request.AsResponse().ConfigureAwait(false);
 			return await response.AsPaginatedResponseWithTokenAndDateRange<T>(propertyName, options).ConfigureAwait(false);
+		}
+
+		/// <summary>
+		/// Creates a paginated synchronization response by deserializing the specified property from the response content.
+		/// </summary>
+		/// <typeparam name="T">The type of the items contained in the paginated synchronization response.</typeparam>
+		/// <param name="response">The response containing the content to deserialize.</param>
+		/// <param name="propertyName">The name of the property in the response content to deserialize as a paginated synchronization response.</param>
+		/// <param name="options">The options to use when deserializing the JSON content. If null, default serialization options are used.</param>
+		/// <returns>The paginated response.</returns>
+		internal static Task<PaginatedSyncResponse<T>> AsPaginatedSyncResponse<T>(this IResponse response, string propertyName, JsonSerializerOptions options = null)
+		{
+			return response.Message.Content.AsPaginatedSyncResponse<T>(propertyName, options);
+		}
+
+		/// <summary>
+		/// Asynchronously converts the HTTP request into a paginated synchronization response by deserializing the specified
+		/// property from the response content.
+		/// </summary>
+		/// <typeparam name="T">The type of the items contained in the paginated response.</typeparam>
+		/// <param name="request">The HTTP request to execute and convert into a paginated synchronization response.</param>
+		/// <param name="propertyName">The name of the property in the JSON response that contains the paginated data.</param>
+		/// <param name="options">The options to use when deserializing the JSON response. If null, default serialization options are used.</param>
+		/// <returns>The paginated response.</returns>
+		internal static async Task<PaginatedSyncResponse<T>> AsPaginatedSyncResponse<T>(this IRequest request, string propertyName, JsonSerializerOptions options = null)
+		{
+			var response = await request.AsResponse().ConfigureAwait(false);
+			return await response.AsPaginatedSyncResponse<T>(propertyName, options).ConfigureAwait(false);
 		}
 
 		/// <summary>Get a JSON representation of the response.</summary>
@@ -1258,6 +1288,32 @@ namespace ZoomNet
 				Records = jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
+
+			return result;
+		}
+
+		private static async Task<PaginatedSyncResponse<T>> AsPaginatedSyncResponse<T>(this HttpContent httpContent, string propertyName, JsonSerializerOptions options = null, CancellationToken cancellationToken = default)
+		{
+			// Get the content as a JSON element
+			var rootElement = await httpContent.AsJson(null, false, cancellationToken).ConfigureAwait(false);
+
+			// Get the various metadata properties
+			var syncToken = rootElement.GetPropertyValue("sync_token", string.Empty);
+
+			// Get the property that holds the records
+			var jsonProperty = rootElement.GetProperty(propertyName, false);
+
+			// Make sure the desired property is present.
+			if (!jsonProperty.HasValue)
+			{
+				throw new ArgumentException($"The response does not contain a field called '{propertyName}'", nameof(propertyName));
+			}
+
+			var result = new PaginatedSyncResponse<T>()
+			{
+				SyncToken = syncToken,
+				Records = jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()
+			};
 
 			return result;
 		}

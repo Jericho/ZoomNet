@@ -24,6 +24,8 @@ namespace ZoomNet.Utilities
 		/// <param name="tokenHandler">The handler that takes care of renewing expired tokens.</param>
 		public ZoomRetryCoordinator(ITokenHandler tokenHandler)
 		{
+			ArgumentNullException.ThrowIfNull(tokenHandler);
+
 			_tokenHandler = tokenHandler;
 			_tokenLastRefreshed = DateTime.MinValue.ToUniversalTime();
 		}
@@ -36,6 +38,8 @@ namespace ZoomNet.Utilities
 		public ZoomRetryCoordinator(IRetryConfig config, ITokenHandler tokenHandler)
 			: this(tokenHandler)
 		{
+			ArgumentNullException.ThrowIfNull(config);
+
 			_defaultRetryCoordinator = new RetryCoordinator(config);
 		}
 
@@ -47,6 +51,8 @@ namespace ZoomNet.Utilities
 		public ZoomRetryCoordinator(IEnumerable<IRetryConfig> config, ITokenHandler tokenHandler)
 			: this(tokenHandler)
 		{
+			ArgumentNullException.ThrowIfNullOrEmpty(config);
+
 			_defaultRetryCoordinator = new RetryCoordinator(config);
 		}
 

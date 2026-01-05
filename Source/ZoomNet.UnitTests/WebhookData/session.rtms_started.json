@@ -1,0 +1,10 @@
+{
+  "event": "session.rtms_started",
+  "event_ts": 1626230691572,
+  "payload": {
+    "session_id": "4567UVWxYZABCdEfGhiJkl==",
+    "session_key": "ABC36jaBI145",
+    "rtms_stream_id": "609340fb2a7946909659956c8aa9250c",
+    "server_urls": "wss://127.0.0.1:443"
+  }
+}

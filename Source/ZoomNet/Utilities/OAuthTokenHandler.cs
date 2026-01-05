@@ -42,9 +42,6 @@ namespace ZoomNet.Utilities
 		public OAuthTokenHandler(OAuthConnectionInfo connectionInfo, HttpClient httpClient, TimeSpan? clockSkew = null)
 		{
 			ArgumentNullException.ThrowIfNull(connectionInfo);
-			ArgumentNullException.ThrowIfEmpty(connectionInfo.ClientId, $"{nameof(connectionInfo)}.{connectionInfo.ClientId}");
-			ArgumentNullException.ThrowIfEmpty(connectionInfo.ClientSecret, $"{nameof(connectionInfo)}.{connectionInfo.ClientSecret}");
-			ArgumentNullException.ThrowIfNull(httpClient);
 
 			_connectionInfo = connectionInfo;
 			_httpClient = httpClient;
@@ -146,6 +143,9 @@ namespace ZoomNet.Utilities
 
 		private bool TokenIsExpired()
 		{
+			// If no HttpClient is provided, we assume the token never expires (this is useful for unit testing purposes)
+			if (_httpClient == null) return false;
+
 			return _connectionInfo.TokenExpiration <= DateTime.UtcNow.Add(_clockSkew);
 		}
 	}

@@ -13,10 +13,12 @@ namespace ZoomNet.UnitTests
 	{
 		private const string ZOOM_V2_BASE_URI = "https://api.zoom.us/v2";
 
-		public static Pathoschild.Http.Client.IClient GetFluentClient(MockHttpMessageHandler httpMessageHandler, MockHttpMessageHandler tokenMessageHandler = null, ILogger logger = null)
+		public static IClient GetFluentClient(MockHttpMessageHandler httpMessageHandler, MockHttpMessageHandler tokenMessageHandler = null, ILogger logger = null)
 		{
 			var client = new FluentClient(new Uri(ZOOM_V2_BASE_URI), httpMessageHandler.ToHttpClient());
-			var tokenHandler = tokenMessageHandler == null ? null : new OAuthTokenHandler(OAuthConnectionInfo.ForServerToServer("bogus clientId", "bogus secret", "bogus accountId"), tokenMessageHandler.ToHttpClient(), null);
+			var tokenHandler = tokenMessageHandler == null ?
+				new OAuthTokenHandler(OAuthConnectionInfo.ForServerToServer("bogus clientId", "bogus secret", "bogus accountId", "bogus access token"), null) :
+				new OAuthTokenHandler(OAuthConnectionInfo.ForServerToServer("bogus clientId", "bogus secret", "bogus accountId"), tokenMessageHandler.ToHttpClient(), null);
 
 			client.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), tokenHandler));
 			client.Filters.Remove<DefaultErrorFilter>();
@@ -25,8 +27,12 @@ namespace ZoomNet.UnitTests
 			client.Formatters.Clear();
 			client.Formatters.Add(new JsonFormatter());
 
-			// Order is important: DiagnosticHandler must be first.
+			// Order is important:
+			//   - Token handler must be first
+			//   - Diagnostic handler must be second
+			//   - Error handler must be last
 			// Also, the list of filters must be kept in sync with the filters in ZoomClient in the ZoomNet project.
+			client.Filters.Add(tokenHandler);
 			client.Filters.Add(new DiagnosticHandler(LogLevel.Debug, LogLevel.Error, logger));
 			client.Filters.Add(new ZoomErrorHandler());
 

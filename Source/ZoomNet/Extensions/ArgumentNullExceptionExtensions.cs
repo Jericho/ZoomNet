@@ -1,4 +1,3 @@
-#if NETFRAMEWORK || NETSTANDARD
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +15,7 @@ namespace System
 		// Use the new C# 14 'extension' feature to add static methods to ArgumentNullException
 		extension(ArgumentNullException)
 		{
+#if NETFRAMEWORK || NETSTANDARD
 			/// <summary>
 			/// Throws an exception if the specified argument is null.
 			/// </summary>
@@ -30,20 +30,34 @@ namespace System
 					throw new ArgumentNullException(paramName, message);
 			}
 
-			/// <summary>
-			/// Throws an exception if the specified string argument is null or empty.
-			/// </summary>
-			/// <remarks>Use this method to enforce that a string parameter is not null or empty before proceeding with
-			/// further logic. This is typically used at the start of a method to validate input arguments.</remarks>
-			/// <param name="argument">The string value to validate. Cannot be null or empty.</param>
-			/// <param name="paramName">The name of the parameter being validated. If not specified, the caller's argument expression is used.</param>
-			/// <param name="message">An optional custom error message to include in the exception. If null, a default message is used.</param>
-			/// <exception cref="ArgumentNullException">Thrown if <paramref name="argument"/> is null or an empty string.</exception>
-			public static void ThrowIfEmpty(string argument, [CallerArgumentExpression(nameof(argument))] string paramName = null, string message = null)
+			/// <summary>Throws an exception if <paramref name="argument"/> is null or empty.</summary>
+			/// <param name="argument">The string argument to validate as non-null and non-empty.</param>
+			/// <param name="paramName">The name of the parameter with which <paramref name="argument"/> corresponds.</param>
+			/// <param name="message">An optional custom message to include in the exception. If null, the default exception message is used.</param>
+			/// <exception cref="ArgumentNullException"><paramref name="argument"/> is null.</exception>
+			/// <exception cref="ArgumentException"><paramref name="argument"/> is empty.</exception>
+			public static void ThrowIfNullOrEmpty(string argument, [CallerArgumentExpression(nameof(argument))] string paramName = null, string message = null)
 			{
-				if (string.IsNullOrEmpty(argument))
+				if (argument == null)
 					throw new ArgumentNullException(paramName, message);
+				else if (argument.Length == 0)
+					throw new ArgumentException(message, paramName);
 			}
+
+			/// <summary>Throws an exception if <paramref name="argument"/> is null, empty, or consists only of white-space characters.</summary>
+			/// <param name="argument">The string argument to validate.</param>
+			/// <param name="paramName">The name of the parameter with which <paramref name="argument"/> corresponds.</param>
+			/// <param name="message">An optional custom message to include in the exception. If null, the default exception message is used.</param>
+			/// <exception cref="ArgumentNullException"><paramref name="argument"/> is null.</exception>
+			/// <exception cref="ArgumentException"><paramref name="argument"/> is empty or consists only of white-space characters.</exception>
+			public static void ThrowIfNullOrWhiteSpace(string argument, [CallerArgumentExpression(nameof(argument))] string paramName = null, string message = null)
+			{
+				if (argument == null)
+					throw new ArgumentNullException(paramName, message);
+				else if (argument.Trim().Length == 0)
+					throw new ArgumentException(message, paramName);
+			}
+#endif
 
 			/// <summary>
 			/// Throws an exception if the specified collection is null or contains no elements.
@@ -55,13 +69,15 @@ namespace System
 			/// <param name="paramName">The name of the parameter to include in the exception message. If not specified, the caller's argument expression
 			/// is used.</param>
 			/// <param name="message">An optional custom message to include in the exception if thrown.</param>
-			/// <exception cref="ArgumentNullException">Thrown if <paramref name="argument"/> is null or contains no elements.</exception>
-			public static void ThrowIfEmpty<T>(IEnumerable<T> argument, [CallerArgumentExpression(nameof(argument))] string paramName = null, string message = null)
+			/// <exception cref="ArgumentNullException"><paramref name="argument"/> is null.</exception>
+			/// <exception cref="ArgumentException"><paramref name="argument"/> contains no elements.</exception>
+			public static void ThrowIfNullOrEmpty<T>(IEnumerable<T> argument, [CallerArgumentExpression(nameof(argument))] string paramName = null, string message = null)
 			{
-				if (argument is null || !argument.Any())
+				if (argument is null)
 					throw new ArgumentNullException(paramName, message);
+				else if (!argument.Any())
+					throw new ArgumentException(message, paramName);
 			}
 		}
 	}
 }
-#endif

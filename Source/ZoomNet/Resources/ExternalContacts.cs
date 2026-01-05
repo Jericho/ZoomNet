@@ -38,7 +38,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task<ExternalContactDetails> GetDetailsAsync(string externalContactId, CancellationToken cancellationToken = default)
 		{
-			ArgumentNullException.ThrowIfEmpty(externalContactId);
+			ArgumentNullException.ThrowIfNullOrEmpty(externalContactId);
 
 			return _client
 				.GetAsync($"phone/external_contacts/{externalContactId}")
@@ -59,7 +59,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task DeleteAsync(string externalContactId, CancellationToken cancellationToken = default)
 		{
-			ArgumentNullException.ThrowIfEmpty(externalContactId);
+			ArgumentNullException.ThrowIfNullOrEmpty(externalContactId);
 
 			return _client
 				.DeleteAsync($"phone/external_contacts/{externalContactId}")
@@ -68,11 +68,10 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task UpdateAsync(
-			ExternalContactDetails externalContact, CancellationToken cancellationToken = default)
+		public Task UpdateAsync(ExternalContactDetails externalContact, CancellationToken cancellationToken = default)
 		{
 			ArgumentNullException.ThrowIfNull(externalContact);
-			ArgumentNullException.ThrowIfEmpty(externalContact.ExternalContactId, $"{nameof(externalContact)}.{nameof(externalContact.ExternalContactId)}");
+			ArgumentNullException.ThrowIfNullOrEmpty(externalContact.ExternalContactId, $"{nameof(externalContact)}.{nameof(externalContact.ExternalContactId)}");
 
 			return _client
 				.PatchAsync($"phone/external_contacts/{externalContact.ExternalContactId}")

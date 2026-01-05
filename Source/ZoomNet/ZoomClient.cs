@@ -89,10 +89,6 @@ namespace ZoomNet
 		public IDashboards Dashboards { get; private set; }
 
 		/// <inheritdoc/>
-		[Obsolete("The Data Compliance API is deprecated")]
-		public IDataCompliance DataCompliance { get; private set; }
-
-		/// <inheritdoc/>
 		public IEvents Events { get; private set; }
 
 		/// <inheritdoc/>
@@ -145,7 +141,7 @@ namespace ZoomNet
 		/// <param name="options">Options for the Zoom client.</param>
 		/// <param name="logger">Logger.</param>
 		public ZoomClient(IConnectionInfo connectionInfo, ZoomClientOptions options = null, ILogger logger = null)
-			: this(connectionInfo, new HttpClient(), true, options, logger)
+			: this(connectionInfo, (WebProxy)null, options, logger)
 		{
 		}
 
@@ -157,7 +153,12 @@ namespace ZoomNet
 		/// <param name="options">Options for the Zoom client.</param>
 		/// <param name="logger">Logger.</param>
 		public ZoomClient(IConnectionInfo connectionInfo, IWebProxy proxy, ZoomClientOptions options = null, ILogger logger = null)
-			: this(connectionInfo, new HttpClient(new HttpClientHandler { Proxy = proxy, UseProxy = proxy != null }), true, options, logger)
+#if NET5_0_OR_GREATER
+			// Ensure the HttpClient recreates the connection every 2 minutes to minimize the risk of DNS changes issues
+			: this(connectionInfo, new HttpClient(new SocketsHttpHandler { PooledConnectionLifetime = TimeSpan.FromMinutes(2), Proxy = proxy, UseProxy = proxy != null }, disposeHandler: true), true, options, logger)
+#else
+			: this(connectionInfo, new HttpClient(new HttpClientHandler { Proxy = proxy, UseProxy = proxy != null }, disposeHandler: true), true, options, logger)
+#endif
 		{
 		}
 
@@ -169,7 +170,7 @@ namespace ZoomNet
 		/// <param name="options">Options for the Zoom client.</param>
 		/// <param name="logger">Logger.</param>
 		public ZoomClient(IConnectionInfo connectionInfo, HttpMessageHandler handler, ZoomClientOptions options = null, ILogger logger = null)
-			: this(connectionInfo, new HttpClient(handler), true, options, logger)
+			: this(connectionInfo, new HttpClient(handler, disposeHandler: false), true, options, logger)
 		{
 		}
 
@@ -230,7 +231,6 @@ namespace ZoomNet
 			CloudRecordings = new CloudRecordings(_fluentClient);
 			Contacts = new Contacts(_fluentClient);
 			Dashboards = new Dashboards(_fluentClient);
-			DataCompliance = new DataCompliance(_fluentClient);
 			Events = new Events(_fluentClient);
 			ExternalContacts = new ExternalContacts(_fluentClient);
 			Groups = new Groups(_fluentClient);
@@ -277,7 +277,7 @@ namespace ZoomNet
 			var oAuthConnectionInfo = (OAuthConnectionInfo)tokenHandler.ConnectionInfo;
 			if (oAuthConnectionInfo.Scopes == null) tokenHandler.RefreshTokenIfNecessary(true); // Force the token to be refreshed wich will have the side-effect of populating the '.Scopes'
 
-			var missingScopes = scopes.Except(((OAuthConnectionInfo)tokenHandler.ConnectionInfo).Scopes).ToArray();
+			var missingScopes = scopes.Except(((OAuthConnectionInfo)tokenHandler.ConnectionInfo).Scopes, StringComparer.OrdinalIgnoreCase).ToArray();
 			return !missingScopes.Any();
 		}
 

@@ -82,7 +82,7 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task AssignUsersAsync(string roleId, IEnumerable<string> userIds, CancellationToken cancellationToken = default)
 		{
-			ArgumentNullException.ThrowIfEmpty(userIds, nameof(userIds), "You must provide at least one user Id or email address.");
+			ArgumentNullException.ThrowIfNullOrEmpty(userIds, nameof(userIds), "You must provide at least one user Id or email address.");
 
 			var data = new JsonObject
 			{

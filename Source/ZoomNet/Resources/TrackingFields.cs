@@ -29,7 +29,7 @@ namespace ZoomNet.Resources
 			// Generally speaking, I prefer to defer to the API to enforce validation but in this case, I think it's reasonable to enforce a limit on the name length
 			// because the API returns an error message that does not specify the cause of the error when the name is too long.
 			// See: https://devforum.zoom.us/t/unable-to-update-an-existing-tracking-field/130784
-			if ((name?.Length ?? 0) > 50) throw new ArgumentOutOfRangeException(nameof(name), "You are attempting to set the name of a tracking field with a value that exceeds the 50 character count limit");
+			if ((name?.Length ?? 0) > 50) throw new ArgumentOutOfRangeException(nameof(name), "You are attempting to set the name of a tracking field with a value that exceeds the 50 character limit");
 
 			var data = new JsonObject
 			{
@@ -79,7 +79,7 @@ namespace ZoomNet.Resources
 			// Generally speaking, I prefer to defer to the API to enforce validation but in this case, I think it's reasonable to enforce a limit on the name length
 			// because the API returns an error message that does not specify the cause of the error when the name is too long.
 			// See: https://devforum.zoom.us/t/unable-to-update-an-existing-tracking-field/130784
-			if ((name?.Length ?? 0) > 50) throw new ArgumentOutOfRangeException(nameof(name), "You are attempting to set the name of a tracking field with a value that exceeds the 50 character count limit");
+			if ((name?.Length ?? 0) > 50) throw new ArgumentOutOfRangeException(nameof(name), "You are attempting to set the name of a tracking field with a value that exceeds the 50 character limit");
 
 			var data = new JsonObject
 			{
