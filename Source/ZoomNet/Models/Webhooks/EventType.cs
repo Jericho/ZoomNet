@@ -1061,5 +1061,23 @@ namespace ZoomNet.Models.Webhooks
 		/// </summary>
 		[EnumMember(Value = "number_management.peering_number_emergency_address_updated")]
 		NumberManagementPeeringNumberEmergencyAddressUpdated,
+
+		/// <summary>
+		/// New asset has been created.
+		/// </summary>
+		[EnumMember(Value = "contact_center.asset_created")]
+		ContactCenterAssetCreated,
+
+		/// <summary>
+		/// The asset has been deleted.
+		/// </summary>
+		[EnumMember(Value = "contact_center.asset_deleted")]
+		ContactCenterAssetDeleted,
+
+		/// <summary>
+		/// The asset has been updated.
+		/// </summary>
+		[EnumMember(Value = "contact_center.asset_updated")]
+		ContactCenterAssetUpdated,
 	}
 }
