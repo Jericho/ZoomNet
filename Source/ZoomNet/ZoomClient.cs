@@ -89,10 +89,6 @@ namespace ZoomNet
 		public IDashboards Dashboards { get; private set; }
 
 		/// <inheritdoc/>
-		[Obsolete("The Data Compliance API is deprecated")]
-		public IDataCompliance DataCompliance { get; private set; }
-
-		/// <inheritdoc/>
 		public IEvents Events { get; private set; }
 
 		/// <inheritdoc/>
@@ -235,7 +231,6 @@ namespace ZoomNet
 			CloudRecordings = new CloudRecordings(_fluentClient);
 			Contacts = new Contacts(_fluentClient);
 			Dashboards = new Dashboards(_fluentClient);
-			DataCompliance = new DataCompliance(_fluentClient);
 			Events = new Events(_fluentClient);
 			ExternalContacts = new ExternalContacts(_fluentClient);
 			Groups = new Groups(_fluentClient);
@@ -282,7 +277,7 @@ namespace ZoomNet
 			var oAuthConnectionInfo = (OAuthConnectionInfo)tokenHandler.ConnectionInfo;
 			if (oAuthConnectionInfo.Scopes == null) tokenHandler.RefreshTokenIfNecessary(true); // Force the token to be refreshed wich will have the side-effect of populating the '.Scopes'
 
-			var missingScopes = scopes.Except(((OAuthConnectionInfo)tokenHandler.ConnectionInfo).Scopes).ToArray();
+			var missingScopes = scopes.Except(((OAuthConnectionInfo)tokenHandler.ConnectionInfo).Scopes, StringComparer.OrdinalIgnoreCase).ToArray();
 			return !missingScopes.Any();
 		}
 

@@ -9,7 +9,7 @@ namespace ZoomNet.Resources
 	/// Allows you to view various metrics.
 	/// </summary>
 	/// <remarks>
-	/// See <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/dashboards">Zoom documentation</a> for more information.
+	/// See <a href="https://developers.zoom.us/docs/api/accounts/#tag/dashboards">Zoom documentation</a> for more information.
 	/// </remarks>
 	public interface IDashboards
 	{

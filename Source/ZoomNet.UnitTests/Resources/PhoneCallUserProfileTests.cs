@@ -36,9 +36,7 @@ namespace ZoomNet.UnitTests.Resources
 			var phone = new Phone(client);
 
 			// Act
-			var result = await phone
-				.GetPhoneCallUserProfileAsync(userId, TestContext.Current.CancellationToken)
-				.ConfigureAwait(true);
+			var result = await phone.GetPhoneCallUserProfileAsync(userId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();

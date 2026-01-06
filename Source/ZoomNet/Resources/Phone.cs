@@ -11,13 +11,7 @@ namespace ZoomNet.Resources
 	/// <inheritdoc/>
 	public class Phone : IPhone
 	{
-		#region private fields
-
 		private readonly IClient _client;
-
-		#endregion
-
-		#region constructor
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Phone" /> class.
@@ -28,13 +22,8 @@ namespace ZoomNet.Resources
 			_client = client;
 		}
 
-		#endregion
-
-		#region Recordings endpoints
-
 		/// <inheritdoc/>
-		public Task<PhoneCallRecording> GetRecordingAsync(
-			string callId, CancellationToken cancellationToken = default)
+		public Task<PhoneCallRecording> GetRecordingAsync(string callId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"phone/call_logs/{callId}/recordings")
@@ -43,18 +32,13 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PhoneCallRecordingTranscript> GetRecordingTranscriptAsync(
-			string recordingId, CancellationToken cancellationToken = default)
+		public Task<PhoneCallRecordingTranscript> GetRecordingTranscriptAsync(string recordingId, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"phone/recording_transcript/download/{recordingId}")
 				.WithCancellationToken(cancellationToken)
 				.AsObject<PhoneCallRecordingTranscript>();
 		}
-
-		#endregion
-
-		#region Users Endpoints
 
 		/// <inheritdoc/>
 		public Task<PhoneCallUserProfile> GetPhoneCallUserProfileAsync(string userId, CancellationToken cancellationToken = default)
@@ -85,7 +69,7 @@ namespace ZoomNet.Resources
 				.WithArgument("next_page_token", nextPageToken)
 				.WithArgument("site_id", siteId)
 				.WithArgument("calling_type", callingType)
-				.WithArgument("status", status)
+				.WithArgument("status", status?.ToEnumString())
 				.WithArgument("department", department)
 				.WithArgument("cost_center", costCenter)
 				.WithArgument("keyword", keyword)
@@ -112,9 +96,9 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", nextPageToken)
 				.WithArgument("site_id", siteId)
-				.WithArgument("type", assignmentType)
-				.WithArgument("extension_type", extensionType)
-				.WithArgument("number_type", numberType)
+				.WithArgument("type", assignmentType?.ToEnumString())
+				.WithArgument("extension_type", extensionType?.ToEnumString())
+				.WithArgument("number_type", numberType?.ToEnumString())
 				.WithArgument("pending_numbers", pendingNumbers)
 				.WithArgument("keyword", keyword)
 				.WithCancellationToken(cancellationToken)
@@ -140,7 +124,5 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
-
-		#endregion
 	}
 }

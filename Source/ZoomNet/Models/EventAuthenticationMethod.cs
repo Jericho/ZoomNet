@@ -19,6 +19,14 @@ namespace ZoomNet.Models
 		[EnumMember(Value = "corporate_idp")]
 		CorporateIdp,
 
+		/// <summary>Bypass authentication.</summary>
+		[EnumMember(Value = "bypass_auth")]
+		Bypass,
+
+		/// <summary>Accelerated authentication.</summary>
+		[EnumMember(Value = "accelerated_auth")]
+		Accelerated,
+
 		/// <summary>No authentication.</summary>
 		[EnumMember(Value = "no_auth")]
 		None,

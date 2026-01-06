@@ -46,7 +46,6 @@ namespace ZoomNet.UnitTests.Json
 
 				// Act
 				jsonReader.Read();
-
 				var result = converter.Read(ref jsonReader, objectType, options);
 			};
 

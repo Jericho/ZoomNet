@@ -785,6 +785,12 @@ namespace ZoomNet.Json
 					return payloadJsonProperty.ToObject<NumberManagementPeeringNumberCallerIdNameUpdatedEvent>(options);
 				case Models.Webhooks.EventType.NumberManagementPeeringNumberEmergencyAddressUpdated:
 					return payloadJsonProperty.ToObject<NumberManagementPeeringNumberEmergencyAddressUpdatedEvent>(options);
+				case Models.Webhooks.EventType.ContactCenterAssetCreated:
+					return payloadJsonProperty.ToObject<ContactCenterAssetCreatedEvent>(options);
+				case Models.Webhooks.EventType.ContactCenterAssetDeleted:
+					return payloadJsonProperty.ToObject<ContactCenterAssetDeletedEvent>(options);
+				case Models.Webhooks.EventType.ContactCenterAssetUpdated:
+					return payloadJsonProperty.ToObject<ContactCenterAssetUpdatedEvent>(options);
 				default:
 					throw new JsonException($"{eventType} is an unknown event type");
 			}

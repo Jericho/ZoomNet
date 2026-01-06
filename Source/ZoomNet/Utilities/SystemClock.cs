@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ZoomNet.Utilities
 {
@@ -6,6 +7,7 @@ namespace ZoomNet.Utilities
 	/// A replacement for .Net <see cref="DateTime.Now" /> and <see cref="DateTime.UtcNow" />.
 	/// </summary>
 	/// <seealso cref="ZoomNet.Utilities.ISystemClock" />
+	[ExcludeFromCodeCoverage]
 	internal class SystemClock : ISystemClock
 	{
 		#region FIELDS

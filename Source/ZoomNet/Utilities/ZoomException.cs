@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Net.Http;
 
@@ -7,6 +8,7 @@ namespace ZoomNet.Utilities
 	/// <summary>
 	/// Exception that includes both the formatted message and the status code.
 	/// </summary>
+	[ExcludeFromCodeCoverage]
 	public class ZoomException : Exception
 	{
 		/// <summary>

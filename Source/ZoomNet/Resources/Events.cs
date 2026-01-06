@@ -166,7 +166,7 @@ namespace ZoomNet.Resources
 
 		#endregion
 
-		#region EVENT ACCES
+		#region EVENT ACCESS
 
 		/// <inheritdoc/>
 		public Task<EventAccessLink> CreateEventAccessLinkAsync(string eventId, string name, EventAccessLinkType type = EventAccessLinkType.Registration, EventAuthenticationMethod authenticationMethod = EventAuthenticationMethod.ZoomAccount, bool isDefault = false, IEnumerable<string> allowDomainList = null, IEnumerable<string> emailRestrictList = null, bool emailAuthentication = true, bool securityCodeVerification = true, string ticketTypeId = null, RecurringEventRegistrationType recurringRegistrationType = RecurringEventRegistrationType.AllSessions, CancellationToken cancellationToken = default)
@@ -1573,7 +1573,7 @@ namespace ZoomNet.Resources
 
 		#endregion
 
-		#region VIDEO_ON_DEMAND
+		#region VIDEO ON DEMAND
 
 		/// <inheritdoc/>
 		public Task PublishVideoOnDemandChannelAsync(string hubId, string channelId, CancellationToken cancellationToken = default)
@@ -1689,7 +1689,7 @@ namespace ZoomNet.Resources
 
 		#endregion
 
-		#region VIDEO_ON_DEMAND REGISTRATION
+		#region VIDEO ON DEMAND REGISTRATION
 
 		/// <inheritdoc/>
 		public async Task<(RegistrationStandardQuestion[] StandardQuestions, RegistrationCustomQuestionForVodChannel[] CustomQuestions)> GetAllVideoOnDemandRegistrationQuestionsAsync(string hubId, string channelId, CancellationToken cancellationToken = default)
