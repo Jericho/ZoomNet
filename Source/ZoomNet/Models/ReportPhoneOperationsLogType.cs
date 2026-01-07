@@ -185,5 +185,5 @@ public enum ReportPhoneOperationsLogType
 
 	/// <summary>Zoom Rooms PBX Support.</summary>
 	[EnumMember(Value = "zoom_room")]
-	ZoomRoom
+	ZoomRoom,
 }

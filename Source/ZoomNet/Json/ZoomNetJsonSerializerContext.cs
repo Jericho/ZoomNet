@@ -254,6 +254,8 @@ namespace ZoomNet.Json
 	[JsonSerializable(typeof(ZoomNet.Models.NoiseSuppressionType))]
 	[JsonSerializable(typeof(ZoomNet.Models.NumberOfEmployees))]
 	[JsonSerializable(typeof(ZoomNet.Models.OAuthGrantType))]
+	[JsonSerializable(typeof(ZoomNet.Models.OperationLog[]))]
+	[JsonSerializable(typeof(ZoomNet.Models.ReportPhoneOperationsLogType))]
 	[JsonSerializable(typeof(ZoomNet.Models.Panelist))]
 	[JsonSerializable(typeof(ZoomNet.Models.Participant))]
 	[JsonSerializable(typeof(ZoomNet.Models.ParticipantChatSaveType))]

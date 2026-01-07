@@ -119,6 +119,6 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="OperationLog">report items</see>.
 		/// </returns>
-		public Task<PaginatedResponseWithToken<OperationsLogReport>> GetOperationLogsReportAsync(DateTime from, DateTime to, ReportPhoneOperationsLogType type = ReportPhoneOperationsLogType.All, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		public Task<PaginatedResponseWithToken<OperationLog>> GetOperationLogsReportAsync(DateTime from, DateTime to, ReportPhoneOperationsLogType type = ReportPhoneOperationsLogType.All, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
 	}
 }
