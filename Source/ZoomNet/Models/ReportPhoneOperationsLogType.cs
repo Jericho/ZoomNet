@@ -4,7 +4,7 @@ namespace ZoomNet.Models;
 
 /// <summary>
 /// Phone operation categories and their descriptions from Zoom Phone API.
-/// .</summary>
+/// </summary>
 public enum ReportPhoneOperationsLogType
 {
 	/// <summary>All Operation Types.</summary>
@@ -32,7 +32,7 @@ public enum ReportPhoneOperationsLogType
 	BargeMonitorWhisper,
 
 	/// <summary>Call forwarding.</summary>
-	[EnumMember(Value = "call_forward")] 
+	[EnumMember(Value = "call_forward")]
 	CallForward,
 
 	/// <summary>Call logs.</summary>
