@@ -99,5 +99,26 @@ namespace ZoomNet.Resources
 		/// The object of <see cref="DailyUsageReport"></see>.
 		/// </returns>
 		public Task<DailyUsageReport> GetDailyUsageReportAsync(int year, int month, string groupId = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Gets the phone system operation logs report.
+		/// </summary>
+		/// <remarks>
+		/// The phone system operation logs report allows account owners and admins to view monthly Zoom phone related admin operation details.
+		/// </remarks>
+		/// <param name="from">Start date.</param>
+		/// <param name="to">End date.</param>
+		/// <param name="type">Type of report.</param>
+		/// <param name="recordsPerPage">The number of records returned within a single API call.</param>
+		/// <param name="pageToken">
+		/// The next page token is used to paginate through large result sets.
+		/// A next page token will be returned whenever the set of available results exceeds the current page size.
+		/// The expiration period for this token is 15 minutes.
+		/// </param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// An array of <see cref="OperationLog">report items</see>.
+		/// </returns>
+		public Task<PaginatedResponseWithToken<OperationsLogReport>> GetOperationLogsReportAsync(DateTime from, DateTime to, ReportPhoneOperationsLogType type = ReportPhoneOperationsLogType.All, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
 	}
 }
