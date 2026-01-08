@@ -50,25 +50,4 @@ namespace ZoomNet.Models
 		[JsonPropertyName("status")]
 		public string Status { get; set; }
 	}
-
-	public class CallQueuePhoneNumber
-	{
-		[JsonPropertyName("id")]
-		public string Id { get; set; }
-
-		[JsonPropertyName("number")]
-		public string Number { get; set; }
-
-		[JsonPropertyName("source")]
-		public string Source { get; set; }
-	}
-
-	public class CallQueueSite
-	{
-		[JsonPropertyName("id")]
-		public string Id { get; set; }
-
-		[JsonPropertyName("name")]
-		public string Name { get; set; }
-	}
 }
