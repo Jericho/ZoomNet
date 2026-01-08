@@ -9,7 +9,6 @@ namespace ZoomNet.Resources
 	/// </summary>
 	public interface ICallQueues
 	{
-
 		/// <summary>
 		/// Get call queue details.
 		/// </summary>
@@ -19,6 +18,7 @@ namespace ZoomNet.Resources
 		/// Details about a <see cref="CallQueue"/>.
 		/// </returns>
 		public Task<CallQueue> GetAsync(string callQueueId, CancellationToken cancellationToken = default);
+
 		/// <summary>
 		/// Get call queues.
 		/// </summary>
