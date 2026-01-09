@@ -122,6 +122,11 @@ namespace ZoomNet
 		IWebinars Webinars { get; }
 
 		/// <summary>
+		/// Gets the resource which allows you to manage call queues.
+		/// </summary>
+		ICallQueues CallQueues { get; }
+
+		/// <summary>
 		/// Determines if the specified scopes have been granted.
 		/// </summary>
 		/// <param name="scopes">The name of the scopes.</param>
