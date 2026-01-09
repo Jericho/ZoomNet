@@ -27,7 +27,7 @@ namespace ZoomNet.Resources
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
-				.GetAsync($"report/meetings/{meetingId}/participants")
+				.GetAsync($"report/meetings/{Utils.EncodeUUID(meetingId)}/participants")
 				.WithArgument("include_fields", "registrant_id")
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pageToken)
@@ -58,7 +58,7 @@ namespace ZoomNet.Resources
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
-				   .GetAsync($"report/webinars/{webinarId}/participants")
+				   .GetAsync($"report/webinars/{Utils.EncodeUUID(webinarId)}/participants")
 				   .WithArgument("include_fields", "registrant_id")
 				   .WithArgument("page_size", recordsPerPage)
 				   .WithArgument("next_page_token", pageToken)

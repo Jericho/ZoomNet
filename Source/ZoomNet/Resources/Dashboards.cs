@@ -41,7 +41,7 @@ namespace ZoomNet.Resources
 		public Task<DashboardMeetingMetrics> GetMeetingAsync(string meetingId, DashboardMeetingType type = DashboardMeetingType.Live, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.GetAsync($"metrics/meetings/{meetingId}")
+				.GetAsync($"metrics/meetings/{Utils.EncodeUUID(meetingId)}")
 				.WithArgument("type", type.ToEnumString())
 				.WithCancellationToken(cancellationToken)
 				.AsObject<DashboardMeetingMetrics>();
@@ -53,7 +53,7 @@ namespace ZoomNet.Resources
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
-				.GetAsync($"metrics/meetings/{meetingId}/participants")
+				.GetAsync($"metrics/meetings/{Utils.EncodeUUID(meetingId)}/participants")
 				.WithArgument("include_fields", "registrant_id")
 				.WithArgument("type", type.ToEnumString())
 				.WithArgument("page_size", recordsPerPage)
@@ -66,7 +66,7 @@ namespace ZoomNet.Resources
 		public Task<DashboardMeetingParticipantQos> GetMeetingParticipantQosAsync(string meetingId, string participantId, DashboardMeetingType type = DashboardMeetingType.Live, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.GetAsync($"metrics/meetings/{meetingId}/participants/{participantId}/qos")
+				.GetAsync($"metrics/meetings/{Utils.EncodeUUID(meetingId)}/participants/{participantId}/qos")
 				.WithArgument("type", type.ToEnumString())
 				.WithCancellationToken(cancellationToken)
 				.AsObject<DashboardMeetingParticipantQos>();
@@ -78,7 +78,7 @@ namespace ZoomNet.Resources
 			Utils.ValidateRecordPerPage(recordsPerPage, max: 10);
 
 			return _client
-				.GetAsync($"metrics/meetings/{meetingId}/participants/qos")
+				.GetAsync($"metrics/meetings/{Utils.EncodeUUID(meetingId)}/participants/qos")
 				.WithArgument("type", type.ToEnumString())
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pageToken)
@@ -92,7 +92,7 @@ namespace ZoomNet.Resources
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
-				.GetAsync($"metrics/meetings/{meetingId}/participants/sharing")
+				.GetAsync($"metrics/meetings/{Utils.EncodeUUID(meetingId)}/participants/sharing")
 				.WithArgument("type", type.ToEnumString())
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pageToken)
@@ -120,7 +120,7 @@ namespace ZoomNet.Resources
 		public Task<DashboardMetricsBase> GetWebinarAsync(string webinarId, DashboardMeetingType type = DashboardMeetingType.Live, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.GetAsync($"metrics/webinars/{webinarId}")
+				.GetAsync($"metrics/webinars/{Utils.EncodeUUID(webinarId)}")
 				.WithArgument("type", type.ToEnumString())
 				.WithCancellationToken(cancellationToken)
 				.AsObject<DashboardMetricsBase>();
@@ -132,7 +132,7 @@ namespace ZoomNet.Resources
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
-				.GetAsync($"metrics/webinars/{webinarId}/participants")
+				.GetAsync($"metrics/webinars/{Utils.EncodeUUID(webinarId)}/participants")
 				.WithArgument("type", type.ToEnumString())
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pageToken)
@@ -144,7 +144,7 @@ namespace ZoomNet.Resources
 		public Task<DashboardMeetingParticipantQos> GetWebinarParticipantQosAsync(string webinarId, string participantId, DashboardMeetingType type = DashboardMeetingType.Live, CancellationToken cancellationToken = default)
 		{
 			return _client
-			  .GetAsync($"metrics/webinars/{webinarId}/participants/{participantId}/qos")
+			  .GetAsync($"metrics/webinars/{Utils.EncodeUUID(webinarId)}/participants/{participantId}/qos")
 			  .WithArgument("type", type.ToEnumString())
 			  .WithCancellationToken(cancellationToken)
 			  .AsObject<DashboardMeetingParticipantQos>();
@@ -156,7 +156,7 @@ namespace ZoomNet.Resources
 			Utils.ValidateRecordPerPage(recordsPerPage, max: 10);
 
 			return _client
-			  .GetAsync($"metrics/webinars/{webinarId}/participants/qos")
+			  .GetAsync($"metrics/webinars/{Utils.EncodeUUID(webinarId)}/participants/qos")
 			  .WithArgument("type", type.ToEnumString())
 			  .WithArgument("page_size", recordsPerPage)
 			  .WithArgument("next_page_token", pageToken)
@@ -170,7 +170,7 @@ namespace ZoomNet.Resources
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
-			  .GetAsync($"metrics/webinars/{webinarId}/participants/sharing")
+			  .GetAsync($"metrics/webinars/{Utils.EncodeUUID(webinarId)}/participants/sharing")
 			  .WithArgument("type", type.ToEnumString())
 			  .WithArgument("page_size", recordsPerPage)
 			  .WithArgument("next_page_token", pageToken)

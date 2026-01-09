@@ -26,7 +26,7 @@ namespace ZoomNet.Resources
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
-				.GetAsync($"past_webinars/{uuid}/absentees")
+				.GetAsync($"past_webinars/{Utils.EncodeUUID(uuid)}/absentees")
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
