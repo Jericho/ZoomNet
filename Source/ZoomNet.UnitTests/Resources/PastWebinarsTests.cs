@@ -650,7 +650,7 @@ namespace ZoomNet.UnitTests.Resources
 			var webinarUuid = "special+chars/uuid==";
 
 			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("past_webinars", webinarUuid, "absentees"))
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("past_webinars", ZoomNet.Utilities.Utils.EncodeUUID(webinarUuid), "absentees"))
 				.WithQueryString("page_size", "30")
 				.Respond("application/json", ABSENTEES_JSON);
 
