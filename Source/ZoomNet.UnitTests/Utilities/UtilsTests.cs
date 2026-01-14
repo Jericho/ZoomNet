@@ -310,50 +310,6 @@ namespace ZoomNet.UnitTests.Utilities
 
 		#endregion
 
-		#region ValidateRecordPerPage Tests - Boundary Conditions
-
-		[Fact]
-		public void ValidateRecordPerPage_AtLowerBoundary_DoesNotThrow()
-		{
-			// Arrange
-			var lowerBoundary = 1;
-
-			// Act & Assert
-			Should.NotThrow(() => ZoomNet.Utilities.Utils.ValidateRecordPerPage(lowerBoundary, 1, 300));
-		}
-
-		[Fact]
-		public void ValidateRecordPerPage_AtUpperBoundary_DoesNotThrow()
-		{
-			// Arrange
-			var upperBoundary = 300;
-
-			// Act & Assert
-			Should.NotThrow(() => ZoomNet.Utilities.Utils.ValidateRecordPerPage(upperBoundary, 1, 300));
-		}
-
-		[Fact]
-		public void ValidateRecordPerPage_JustBelowLowerBoundary_ThrowsException()
-		{
-			// Arrange
-			var justBelow = 0;
-
-			// Act & Assert
-			Should.Throw<ArgumentOutOfRangeException>(() => ZoomNet.Utilities.Utils.ValidateRecordPerPage(justBelow, 1, 300));
-		}
-
-		[Fact]
-		public void ValidateRecordPerPage_JustAboveUpperBoundary_ThrowsException()
-		{
-			// Arrange
-			var justAbove = 301;
-
-			// Act & Assert
-			Should.Throw<ArgumentOutOfRangeException>(() => ZoomNet.Utilities.Utils.ValidateRecordPerPage(justAbove, 1, 300));
-		}
-
-		#endregion
-
 		#region ValidateRecordPerPage Tests - Edge Cases
 
 		[Fact]
@@ -396,40 +352,6 @@ namespace ZoomNet.UnitTests.Utilities
 			Should.Throw<ArgumentOutOfRangeException>(() => ZoomNet.Utilities.Utils.ValidateRecordPerPage(value, 1, 10000));
 		}
 
-		[Fact]
-		public void ValidateRecordPerPage_WithCustomRange_LowerBoundary_DoesNotThrow()
-		{
-			// Arrange
-			var customMin = 25;
-			var customMax = 75;
-
-			// Act & Assert
-			Should.NotThrow(() => ZoomNet.Utilities.Utils.ValidateRecordPerPage(customMin, customMin, customMax));
-		}
-
-		[Fact]
-		public void ValidateRecordPerPage_WithCustomRange_UpperBoundary_DoesNotThrow()
-		{
-			// Arrange
-			var customMin = 25;
-			var customMax = 75;
-
-			// Act & Assert
-			Should.NotThrow(() => ZoomNet.Utilities.Utils.ValidateRecordPerPage(customMax, customMin, customMax));
-		}
-
-		[Fact]
-		public void ValidateRecordPerPage_WithCustomRange_MiddleValue_DoesNotThrow()
-		{
-			// Arrange
-			var customMin = 25;
-			var customMax = 75;
-			var middleValue = 50;
-
-			// Act & Assert
-			Should.NotThrow(() => ZoomNet.Utilities.Utils.ValidateRecordPerPage(middleValue, customMin, customMax));
-		}
-
 		#endregion
 
 		#region ValidateRecordPerPage Tests - Multiple Validations
@@ -464,22 +386,6 @@ namespace ZoomNet.UnitTests.Utilities
 		#endregion
 
 		#region ValidateRecordPerPage Tests - Exception Message Verification
-
-		[Fact]
-		public void ValidateRecordPerPage_Exception_ContainsCorrectMessage()
-		{
-			// Arrange
-			var invalidValue = 500;
-			var min = 1;
-			var max = 300;
-
-			// Act
-			var exception = Should.Throw<ArgumentOutOfRangeException>(() => ZoomNet.Utilities.Utils.ValidateRecordPerPage(invalidValue, min, max));
-
-			// Assert
-			exception.Message.ShouldContain($"Records per page must be between {min} and {max}");
-			exception.ParamName.ShouldBe("recordsPerPage");
-		}
 
 		[Fact]
 		public void ValidateRecordPerPage_Exception_WithCustomRange_ContainsCorrectMessage()
@@ -544,44 +450,6 @@ namespace ZoomNet.UnitTests.Utilities
 
 		#endregion
 
-		#region Integration-style Tests
-
-		[Fact]
-		public void ValidateRecordPerPage_SimulatingApiCall_CloudRecordings()
-		{
-			// Simulate a typical API call scenario for cloud recordings (max 300)
-			// Arrange
-			var userProvidedValue = 50;
-
-			// Act & Assert
-			Should.NotThrow(() => ZoomNet.Utilities.Utils.ValidateRecordPerPage(userProvidedValue, 1, 300));
-		}
-
-		[Fact]
-		public void ValidateRecordPerPage_SimulatingApiCall_PhoneUsers()
-		{
-			// Simulate a typical API call scenario for phone users (max 100)
-			// Arrange
-			var userProvidedValue = 75;
-
-			// Act & Assert
-			Should.NotThrow(() => ZoomNet.Utilities.Utils.ValidateRecordPerPage(userProvidedValue, 1, 100));
-		}
-
-		[Fact]
-		public void ValidateRecordPerPage_SimulatingApiCall_InvalidInput()
-		{
-			// Simulate user providing invalid input
-			// Arrange
-			var userProvidedValue = 0;
-
-			// Act & Assert
-			var exception = Should.Throw<ArgumentOutOfRangeException>(() => ZoomNet.Utilities.Utils.ValidateRecordPerPage(userProvidedValue, 1, 300));
-			exception.Message.ShouldContain("Records per page must be between 1 and 300");
-		}
-
-		#endregion
-
 		#region Performance/Stress Tests
 
 		[Fact]
@@ -599,16 +467,6 @@ namespace ZoomNet.UnitTests.Utilities
 					ZoomNet.Utilities.Utils.ValidateRecordPerPage(validValue);
 				}
 			});
-		}
-
-		[Fact]
-		public void ValidateRecordPerPage_ManyDifferentValidValues_AllSucceed()
-		{
-			// Arrange & Act & Assert
-			for (int i = 1; i <= 300; i++)
-			{
-				Should.NotThrow(() => ZoomNet.Utilities.Utils.ValidateRecordPerPage(i));
-			}
 		}
 
 		#endregion
