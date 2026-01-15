@@ -9,27 +9,6 @@ namespace ZoomNet.UnitTests.Utilities
 {
 	public class ZoomErrorHandlerTests
 	{
-		#region Helper Methods
-
-		private static HttpRequestMessage CreateRequestMessage(HttpMethod method, string uri)
-		{
-			var request = new HttpRequestMessage(method, uri);
-			request.Headers.Add("ZoomNet-Diagnostic-Id", "test-diagnostic-id");
-			return request;
-		}
-
-		private static MockFluentHttpResponse CreateResponse(HttpStatusCode statusCode, string content, HttpMethod method = null, string uri = null)
-		{
-			var httpMessage = new HttpResponseMessage(statusCode)
-			{
-				Content = new StringContent(content),
-				RequestMessage = CreateRequestMessage(method ?? HttpMethod.Get, uri ?? "https://api.zoom.us/v2/test")
-			};
-			return new MockFluentHttpResponse(httpMessage, null, TestContext.Current.CancellationToken);
-		}
-
-		#endregion
-
 		#region Constructor Tests
 
 		[Fact]
@@ -77,7 +56,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var handler = new ZoomErrorHandler();
-			var response = CreateResponse(HttpStatusCode.OK, @"{""code"": 0, ""message"": ""success""}");
+			var response = Utils.CreateResponse(HttpStatusCode.OK, @"{""code"": 0, ""message"": ""success""}");
 
 			// Act & Assert
 			Should.NotThrow(() => handler.OnResponse(response, true));
@@ -88,7 +67,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var handler = new ZoomErrorHandler();
-			var response = CreateResponse(HttpStatusCode.Created, @"{""id"": ""123""}", HttpMethod.Post);
+			var response = Utils.CreateResponse(HttpStatusCode.Created, @"{""id"": ""123""}", HttpMethod.Post);
 
 			// Act & Assert
 			Should.NotThrow(() => handler.OnResponse(response, true));
@@ -99,7 +78,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var handler = new ZoomErrorHandler();
-			var response = CreateResponse(HttpStatusCode.OK, @"{""code"": 0, ""message"": ""success""}");
+			var response = Utils.CreateResponse(HttpStatusCode.OK, @"{""code"": 0, ""message"": ""success""}");
 
 			// Act & Assert
 			Should.NotThrow(() => handler.OnResponse(response, true));
@@ -114,7 +93,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var handler = new ZoomErrorHandler(false, null);
-			var response = CreateResponse(HttpStatusCode.OK, @"{""code"": 300, ""message"": ""Validation Failed""}", HttpMethod.Post);
+			var response = Utils.CreateResponse(HttpStatusCode.OK, @"{""code"": 300, ""message"": ""Validation Failed""}", HttpMethod.Post);
 
 			// Act
 			var exception = Should.Throw<ZoomException>(() => handler.OnResponse(response, true));
@@ -130,7 +109,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var handler = new ZoomErrorHandler(true, null);
-			var response = CreateResponse(HttpStatusCode.OK, @"{""code"": 300, ""message"": ""This meeting has not registration required""}", HttpMethod.Post);
+			var response = Utils.CreateResponse(HttpStatusCode.OK, @"{""code"": 300, ""message"": ""This meeting has not registration required""}", HttpMethod.Post);
 
 			// Act
 			var exception = Should.Throw<ZoomException>(() => handler.OnResponse(response, true));
@@ -147,7 +126,7 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var customMessage = "You need a paid account to perform this operation";
 			var handler = new ZoomErrorHandler(true, customMessage);
-			var response = CreateResponse(HttpStatusCode.OK, @"{""code"": 300, ""message"": ""Some error from Zoom""}", HttpMethod.Post);
+			var response = Utils.CreateResponse(HttpStatusCode.OK, @"{""code"": 300, ""message"": ""Some error from Zoom""}", HttpMethod.Post);
 
 			// Act
 			var exception = Should.Throw<ZoomException>(() => handler.OnResponse(response, true));
@@ -163,7 +142,7 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var customMessage = "Custom error message";
 			var handler = new ZoomErrorHandler(true, customMessage);
-			var response = CreateResponse(HttpStatusCode.OK, @"{""code"": 300}", HttpMethod.Post); // No message field
+			var response = Utils.CreateResponse(HttpStatusCode.OK, @"{""code"": 300}", HttpMethod.Post); // No message field
 
 			// Act
 			var exception = Should.Throw<ZoomException>(() => handler.OnResponse(response, true));
@@ -177,7 +156,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var handler = new ZoomErrorHandler(true, null);
-			var response = CreateResponse(HttpStatusCode.OK, @"{""code"": 300}", HttpMethod.Post); // No message field, only error code
+			var response = Utils.CreateResponse(HttpStatusCode.OK, @"{""code"": 300}", HttpMethod.Post); // No message field, only error code
 
 			// Act
 			var exception = Should.Throw<ZoomException>(() => handler.OnResponse(response, true));
@@ -198,7 +177,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var handler = new ZoomErrorHandler();
-			var response = CreateResponse(HttpStatusCode.BadRequest, @"{""code"": 1120, ""message"": ""Invalid page size""}");
+			var response = Utils.CreateResponse(HttpStatusCode.BadRequest, @"{""code"": 1120, ""message"": ""Invalid page size""}");
 
 			// Act
 			var exception = Should.Throw<ZoomException>(() => handler.OnResponse(response, true));
@@ -214,7 +193,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var handler = new ZoomErrorHandler();
-			var response = CreateResponse(HttpStatusCode.Unauthorized, @"{""code"": 124, ""message"": ""Invalid access token""}");
+			var response = Utils.CreateResponse(HttpStatusCode.Unauthorized, @"{""code"": 124, ""message"": ""Invalid access token""}");
 
 			// Act
 			var exception = Should.Throw<ZoomException>(() => handler.OnResponse(response, true));
@@ -230,7 +209,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var handler = new ZoomErrorHandler();
-			var response = CreateResponse(HttpStatusCode.NotFound, @"{""code"": 1001, ""message"": ""User does not exist""}", HttpMethod.Get, "https://api.zoom.us/v2/users/invalid");
+			var response = Utils.CreateResponse(HttpStatusCode.NotFound, @"{""code"": 1001, ""message"": ""User does not exist""}", HttpMethod.Get, "https://api.zoom.us/v2/users/invalid");
 
 			// Act
 			var exception = Should.Throw<ZoomException>(() => handler.OnResponse(response, true));
@@ -246,7 +225,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var handler = new ZoomErrorHandler();
-			var response = CreateResponse((HttpStatusCode)429, @"{""code"": 429, ""message"": ""Too many requests""}");
+			var response = Utils.CreateResponse((HttpStatusCode)429, @"{""code"": 429, ""message"": ""Too many requests""}");
 
 			// Act
 			var exception = Should.Throw<ZoomException>(() => handler.OnResponse(response, true));
@@ -262,7 +241,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var handler = new ZoomErrorHandler();
-			var response = CreateResponse(HttpStatusCode.InternalServerError, @"{""code"": 500, ""message"": ""Internal server error""}");
+			var response = Utils.CreateResponse(HttpStatusCode.InternalServerError, @"{""code"": 500, ""message"": ""Internal server error""}");
 
 			// Act
 			var exception = Should.Throw<ZoomException>(() => handler.OnResponse(response, true));
@@ -291,7 +270,7 @@ namespace ZoomNet.UnitTests.Utilities
 					}
 				]
 			}";
-			var response = CreateResponse(HttpStatusCode.BadRequest, responseContent, new HttpMethod("PATCH"), "https://api.zoom.us/v2/meetings/123");
+			var response = Utils.CreateResponse(HttpStatusCode.BadRequest, responseContent, new HttpMethod("PATCH"), "https://api.zoom.us/v2/meetings/123");
 
 			// Act
 			var exception = Should.Throw<ZoomException>(() => handler.OnResponse(response, true));
@@ -322,7 +301,7 @@ namespace ZoomNet.UnitTests.Utilities
 					}
 				]
 			}";
-			var response = CreateResponse(HttpStatusCode.BadRequest, responseContent, HttpMethod.Post);
+			var response = Utils.CreateResponse(HttpStatusCode.BadRequest, responseContent, HttpMethod.Post);
 
 			// Act
 			var exception = Should.Throw<ZoomException>(() => handler.OnResponse(response, true));
@@ -341,7 +320,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var handler = new ZoomErrorHandler();
-			var response = CreateResponse(HttpStatusCode.BadRequest, string.Empty);
+			var response = Utils.CreateResponse(HttpStatusCode.BadRequest, string.Empty);
 
 			// Act
 			var exception = Should.Throw<ZoomException>(() => handler.OnResponse(response, true));
@@ -356,7 +335,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var handler = new ZoomErrorHandler();
-			var response = CreateResponse(HttpStatusCode.BadRequest, "This is not JSON");
+			var response = Utils.CreateResponse(HttpStatusCode.BadRequest, "This is not JSON");
 
 			// Act
 			var exception = Should.Throw<ZoomException>(() => handler.OnResponse(response, true));
@@ -371,7 +350,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var handler = new ZoomErrorHandler();
-			var response = CreateResponse(HttpStatusCode.OK, @"{""code"": 0, ""error_message"": ""Operation successful""}");
+			var response = Utils.CreateResponse(HttpStatusCode.OK, @"{""code"": 0, ""error_message"": ""Operation successful""}");
 
 			// Act & Assert - Should not throw because code is 0
 			Should.NotThrow(() => handler.OnResponse(response, true));
@@ -386,7 +365,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var handler = new ZoomErrorHandler();
-			var response = CreateResponse(HttpStatusCode.BadRequest, @"{""code"": 300, ""message"": ""Validation Failed""}", HttpMethod.Post);
+			var response = Utils.CreateResponse(HttpStatusCode.BadRequest, @"{""code"": 300, ""message"": ""Validation Failed""}", HttpMethod.Post);
 
 			// Act
 			var exception = Should.Throw<ZoomException>(() => handler.OnResponse(response, true));
@@ -401,7 +380,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var handler = new ZoomErrorHandler();
-			var response = CreateResponse(HttpStatusCode.BadRequest, @"{""code"": 300, ""message"": ""Test error""}");
+			var response = Utils.CreateResponse(HttpStatusCode.BadRequest, @"{""code"": 300, ""message"": ""Test error""}");
 
 			// Act
 			var exception = Should.Throw<ZoomException>(() => handler.OnResponse(response, true));
@@ -425,7 +404,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var handler = new ZoomErrorHandler(treatAsException, customMessage);
-			var response = CreateResponse(HttpStatusCode.OK, @"{""code"": 300, ""message"": ""Zoom error message""}", HttpMethod.Post);
+			var response = Utils.CreateResponse(HttpStatusCode.OK, @"{""code"": 300, ""message"": ""Zoom error message""}", HttpMethod.Post);
 
 			// Act
 			var exception = Should.Throw<ZoomException>(() => handler.OnResponse(response, true));
