@@ -55,7 +55,7 @@ namespace ZoomNet.UnitTests
 				RequestMessage = new HttpRequestMessage(method ?? HttpMethod.Get, uri ?? "https://api.zoom.us/v2/test")
 			};
 
-			httpMessage.Headers.Add("ZoomNet-Diagnostic-Id", "test-diagnostic-id");
+			httpMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, "test-diagnostic-id");
 
 			return new MockFluentHttpResponse(httpMessage, null, TestContext.Current.CancellationToken);
 		}
