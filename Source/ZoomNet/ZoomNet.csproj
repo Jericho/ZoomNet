@@ -39,7 +39,7 @@
     <PackageReference Include="HttpMultipartParser" Version="9.2.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="[8.0.0,11)" /> <!-- DO NOT UPGRADE. Reasoning is same as explained in GH issue 387 -->
     <PackageReference Include="Microsoft.Extensions.Logging" Version="[8.0.0,11)" /> <!-- DO NOT UPGRADE See https://github.com/Jericho/ZoomNet/issues/387 -->
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.102" PrivateAssets="All" />
     <PackageReference Include="Pathoschild.Http.FluentClient" Version="4.4.2" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.556" PrivateAssets="All" />
     <PackageReference Include="System.Text.Json" Version="[8.0.5,11)" /> <!-- DO NOT UPGRADE See https://github.com/Jericho/ZoomNet/issues/387 -->
