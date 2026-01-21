@@ -6,7 +6,7 @@ using ZoomNet.Models.PhoneAccountSettings;
 using ZoomNet.Models.Webhooks;
 using ZoomNet.UnitTests.Properties;
 
-namespace ZoomNet.UnitTests
+namespace ZoomNet.UnitTests.WebhookParser
 {
 	/// <summary>
 	/// Unit tests that verify phone webhook events parsing.

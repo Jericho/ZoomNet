@@ -5,7 +5,7 @@ using ZoomNet.Models;
 using ZoomNet.Models.Webhooks;
 using ZoomNet.UnitTests.Properties;
 
-namespace ZoomNet.UnitTests
+namespace ZoomNet.UnitTests.WebhookParser
 {
 	/// <summary>
 	/// Unit tests that verify webhook events parsing.
@@ -1008,7 +1008,7 @@ namespace ZoomNet.UnitTests
 		private static T ParseWebhookEvent<T>(string webhookBody)
 			where T : ZoomNet.Models.Webhooks.Event
 		{
-			return (T)new WebhookParser().ParseEventWebhook(webhookBody);
+			return (T)new ZoomNet.WebhookParser().ParseEventWebhook(webhookBody);
 		}
 
 		/// <summary>

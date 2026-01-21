@@ -162,7 +162,7 @@ namespace ZoomNet.UnitTests.Extensions
 		{
 			// Arrange
 			var requestBody = @"{""event"":""meeting.started"",""event_ts"":1720705455858,""payload"":{""this_is_a_test"":""hello world""}}";
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 			using var stream = new MemoryStream(Encoding.UTF8.GetBytes(requestBody));
 
 			// Act
@@ -185,7 +185,7 @@ namespace ZoomNet.UnitTests.Extensions
 			var hashAsHex = hashAsBytes.ToHexString();
 			var signature = $"v0={hashAsHex}";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act
 			var result = parser.VerifyAndParseEventWebhook(requestBody, secretToken, signature, timestamp);
@@ -203,7 +203,7 @@ namespace ZoomNet.UnitTests.Extensions
 			var signature = "invalid_signature";
 			var timestamp = "1609459200000";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act & Assert
 			Should.Throw<SecurityException>(() => parser.VerifyAndParseEventWebhook(requestBody, secretToken, signature, timestamp));
@@ -222,7 +222,7 @@ namespace ZoomNet.UnitTests.Extensions
 			var hashAsHex = hashAsBytes.ToHexString();
 			var signature = $"v0={hashAsHex}";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 			using var stream = new MemoryStream(Encoding.UTF8.GetBytes(requestBody));
 
 			// Act
