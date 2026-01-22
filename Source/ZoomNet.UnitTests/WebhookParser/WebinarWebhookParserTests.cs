@@ -5,7 +5,7 @@ using ZoomNet.Models;
 using ZoomNet.Models.Webhooks;
 using ZoomNet.UnitTests.Properties;
 
-namespace ZoomNet.UnitTests
+namespace ZoomNet.UnitTests.WebhookParser
 {
 	/// <summary>
 	/// Unit tests that verify webinar webhook events parsing.
