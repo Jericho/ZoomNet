@@ -1757,6 +1757,583 @@ namespace ZoomNet.UnitTests.Resources
 			result.ShouldNotBeNull();
 		}
 
+
+		#endregion
+
+		#region Poll Tests
+
+		[Fact]
+		public async Task GetPollsAsync_WithWebinarId_ReturnsPolls()
+		{
+			// Arrange
+			var webinarId = 1234567890L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("webinars", webinarId.ToString(), "polls"))
+				.Respond("application/json", POLLS_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			var result = await webinars.GetPollsAsync(webinarId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Length.ShouldBe(1);
+		}
+
+		[Fact]
+		public async Task GetPollAsync_WithPollId_ReturnsPoll()
+		{
+			// Arrange
+			var webinarId = 1234567890L;
+			var pollId = 12345L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("webinars", webinarId.ToString(), "polls", pollId.ToString()))
+				.Respond("application/json", POLL_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			var result = await webinars.GetPollAsync(webinarId, pollId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Title.ShouldBe("Webinar Feedback");
+		}
+
+		[Fact]
+		public async Task CreatePollAsync_WithBasicQuestions_CreatesPoll()
+		{
+			// Arrange
+			var webinarId = 1234567890L;
+			var title = "Webinar Feedback";
+			var questions = new[]
+			{
+				new PollQuestionForMeetingOrWebinar
+				{
+					Question = "How satisfied are you?",
+					Type = PollQuestionType.SingleChoice,
+					IsRequired = true,
+					Answers = new[] { "Excellent", "Good", "Fair", "Poor" }
+				}
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("webinars", webinarId.ToString(), "polls"))
+				.Respond("application/json", POLL_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			var result = await webinars.CreatePollAsync(webinarId, title, questions, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Title.ShouldBe("Webinar Feedback");
+		}
+
+		[Fact]
+		public async Task CreatePollAsync_WithMultipleQuestions_CreatesPoll()
+		{
+			// Arrange
+			var webinarId = 1234567890L;
+			var title = "Comprehensive Survey";
+			var questions = new[]
+			{
+				new PollQuestionForMeetingOrWebinar
+				{
+					Question = "Rate the content",
+					Type = PollQuestionType.SingleChoice,
+					IsRequired = true,
+					Answers = new[] { "Excellent", "Good", "Fair", "Poor" }
+				},
+				new PollQuestionForMeetingOrWebinar
+				{
+					Question = "Would you recommend this?",
+					Type = PollQuestionType.MultipleChoice,
+					IsRequired = false,
+					Answers = new[] { "Yes", "No", "Maybe" }
+				}
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("webinars", webinarId.ToString(), "polls"))
+				.Respond("application/json", POLL_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			var result = await webinars.CreatePollAsync(webinarId, title, questions, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task CreatePollAsync_WithNullQuestions_CreatesPoll()
+		{
+			// Arrange
+			var webinarId = 1234567890L;
+			var title = "Empty Poll";
+			IEnumerable<PollQuestionForMeetingOrWebinar> questions = null;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("webinars", webinarId.ToString(), "polls"))
+				.Respond("application/json", POLL_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			var result = await webinars.CreatePollAsync(webinarId, title, questions, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task UpdatePollAsync_WithUpdatedTitle_Succeeds()
+		{
+			// Arrange
+			var webinarId = 1234567890L;
+			var pollId = 12345L;
+			var title = "Updated Feedback Survey";
+			var questions = new[]
+			{
+				new PollQuestionForMeetingOrWebinar
+				{
+					Question = "How satisfied are you?",
+					Type = PollQuestionType.SingleChoice,
+					IsRequired = true,
+					Answers = new[] { "Excellent", "Good", "Fair", "Poor" }
+				}
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("webinars", webinarId.ToString(), "polls", pollId.ToString()))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			await webinars.UpdatePollAsync(webinarId, pollId, title, questions, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdatePollAsync_WithNewQuestions_Succeeds()
+		{
+			// Arrange
+			var webinarId = 1234567890L;
+			var pollId = 12345L;
+			var title = "Updated Poll";
+			var questions = new[]
+			{
+				new PollQuestionForMeetingOrWebinar
+				{
+					Question = "Rate your experience",
+					Type = PollQuestionType.RatingScale,
+					IsRequired = true,
+					RatingMinimumValue = 1,
+					RatingMaximumValue = 5
+				},
+				new PollQuestionForMeetingOrWebinar
+				{
+					Question = "Additional feedback",
+					Type = PollQuestionType.Short,
+					IsRequired = false,
+					MinimumNumberOfCharacters = 10,
+					MaximumNumberOfCharacters = 500
+				}
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("webinars", webinarId.ToString(), "polls", pollId.ToString()))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			await webinars.UpdatePollAsync(webinarId, pollId, title, questions, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdatePollAsync_WithMultipleChoiceQuestion_Succeeds()
+		{
+			// Arrange
+			var webinarId = 1234567890L;
+			var pollId = 12345L;
+			var title = "Multi-Select Survey";
+			var questions = new[]
+			{
+				new PollQuestionForMeetingOrWebinar
+				{
+					Question = "Which topics interest you?",
+					Type = PollQuestionType.MultipleChoice,
+					IsRequired = false,
+					Answers = new[] { "Technology", "Business", "Marketing", "Design" }
+				}
+			};
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("webinars", webinarId.ToString(), "polls", pollId.ToString()))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			await webinars.UpdatePollAsync(webinarId, pollId, title, questions, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task DeletePollAsync_WithPollId_Succeeds()
+		{
+			// Arrange
+			var webinarId = 1234567890L;
+			var pollId = 12345L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("webinars", webinarId.ToString(), "polls", pollId.ToString()))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			await webinars.DeletePollAsync(webinarId, pollId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task DeletePollAsync_WithDifferentWebinarId_Succeeds()
+		{
+			// Arrange
+			var webinarId = 9876543210L;
+			var pollId = 54321L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("webinars", webinarId.ToString(), "polls", pollId.ToString()))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			await webinars.DeletePollAsync(webinarId, pollId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+
+		[Fact]
+		public async Task GetTrackingSourcesAsync_WithWebinarId_ReturnsTrackingSources()
+		{
+			// Arrange
+			var webinarId = 1234567890L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("webinars", webinarId.ToString(), "tracking_sources"))
+				.Respond("application/json", TRACKING_SOURCES_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			var result = await webinars.GetTrackingSourcesAsync(webinarId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Length.ShouldBe(2);
+		}
+
+		[Fact]
+		public async Task GetLiveStreamSettingsAsync_WithWebinarId_ReturnsSettings()
+		{
+			// Arrange
+			var webinarId = 1234567890L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("webinars", webinarId.ToString(), "livestream"))
+				.Respond("application/json", LIVE_STREAM_SETTINGS_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			var result = await webinars.GetLiveStreamSettingsAsync(webinarId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Url.ShouldBe("https://stream.example.com/live");
+		}
+
+		[Fact]
+		public async Task GetSurveyAsync_WithWebinarId_ReturnsSurvey()
+		{
+			// Arrange
+			var webinarId = 1234567890L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("webinars", webinarId.ToString(), "survey"))
+				.Respond("application/json", SURVEY_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			var result = await webinars.GetSurveyAsync(webinarId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
+		[Fact]
+		public async Task GetTemplatesAsync_WithUserId_ReturnsTemplates()
+		{
+			// Arrange
+			var userId = "user123";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "webinar_templates"))
+				.Respond("application/json", WEBINAR_TEMPLATES_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			var result = await webinars.GetTemplatesAsync(userId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.Length.ShouldBe(2);
+			result[0].Id.ShouldBe("template001");
+			result[0].Name.ShouldBe("Standard Webinar Template");
+			result[1].Id.ShouldBe("template002");
+			result[1].Name.ShouldBe("Training Webinar Template");
+		}
+
+		[Fact]
+		public async Task UpdateLiveStreamAsync_WithAllParameters_Succeeds()
+		{
+			// Arrange
+			var webinarId = 1234567890L;
+			var streamUrl = "https://stream.example.com/live";
+			var streamKey = "streamkey123";
+			var pageUrl = "https://example.com/webinar";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("webinars", webinarId.ToString(), "livestream"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			await webinars.UpdateLiveStreamAsync(webinarId, streamUrl, streamKey, pageUrl, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task UpdateLiveStreamAsync_WithDifferentUrls_Succeeds()
+		{
+			// Arrange
+			var webinarId = 9876543210L;
+			var streamUrl = "rtmp://stream.custom.com/live";
+			var streamKey = "custom-key-456";
+			var pageUrl = "https://custom.com/watch";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("webinars", webinarId.ToString(), "livestream"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			await webinars.UpdateLiveStreamAsync(webinarId, streamUrl, streamKey, pageUrl, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task StopLiveStreamAsync_WithWebinarId_Succeeds()
+		{
+			// Arrange
+			var webinarId = 1234567890L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("webinars", webinarId.ToString(), "livestream", "status"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			await webinars.StopLiveStreamAsync(webinarId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task StopLiveStreamAsync_WithDifferentWebinarId_Succeeds()
+		{
+			// Arrange
+			var webinarId = 9876543210L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("webinars", webinarId.ToString(), "livestream", "status"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			await webinars.StopLiveStreamAsync(webinarId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task DeleteSurveyAsync_WithWebinarId_Succeeds()
+		{
+			// Arrange
+			var webinarId = 1234567890L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("webinars", webinarId.ToString(), "survey"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			await webinars.DeleteSurveyAsync(webinarId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+		[Fact]
+		public async Task DeleteSurveyAsync_WithDifferentWebinarId_Succeeds()
+		{
+			// Arrange
+			var webinarId = 9876543210L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("webinars", webinarId.ToString(), "survey"))
+				.Respond(System.Net.HttpStatusCode.NoContent);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			await webinars.DeleteSurveyAsync(webinarId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+		}
+
+
+
+		[Fact]
+		public async Task GetRegistrationQuestionsAsync_WithWebinarId_ReturnsQuestions()
+		{
+			// Arrange
+			var webinarId = 1234567890L;
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("webinars", webinarId.ToString(), "registrants", "questions"))
+				.Respond("application/json", REGISTRATION_QUESTIONS_JSON);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var webinars = new Webinars(client);
+
+			// Act
+			var result = await webinars.GetRegistrationQuestionsAsync(webinarId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+		}
+
 		#endregion
 	}
 }
+
+
