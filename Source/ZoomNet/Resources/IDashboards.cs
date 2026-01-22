@@ -354,6 +354,6 @@ namespace ZoomNet.Resources
 		/// <param name="to">Date to end search.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>A <see cref="ClientSatisfactionReport"/> report with a list of client satisfaction reports.</returns>
-		Task<ClientSatisfactionReport> GetClientMeetingSatisfactionMetrics(DateTime from, DateTime to, CancellationToken cancellationToken = default);
+		Task<ClientSatisfactionReport> GetClientMeetingSatisfactionMetricsAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default);
 	}
 }

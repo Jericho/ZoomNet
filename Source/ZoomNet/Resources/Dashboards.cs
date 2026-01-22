@@ -296,7 +296,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<ClientSatisfactionReport> GetClientMeetingSatisfactionMetrics(DateTime from, DateTime to, CancellationToken cancellationToken = default)
+		public Task<ClientSatisfactionReport> GetClientMeetingSatisfactionMetricsAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync("metrics/client/satisfaction")

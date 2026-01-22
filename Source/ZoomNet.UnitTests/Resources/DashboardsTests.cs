@@ -950,8 +950,8 @@ namespace ZoomNet.UnitTests.Resources
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
 			var dashboards = new Dashboards(client);
 
-			// Act
-			var result = await dashboards.GetClientMeetingSatisfactionMetrics(from, to, TestContext.Current.CancellationToken);
+		// Act
+			var result = await dashboards.GetClientMeetingSatisfactionMetricsAsync(from, to, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
