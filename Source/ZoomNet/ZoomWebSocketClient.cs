@@ -62,7 +62,7 @@ namespace ZoomNet
 		public ZoomWebSocketClient(IConnectionInfo connectionInfo, string subscriptionId, Func<Models.Webhooks.Event, CancellationToken, Task> eventProcessor, bool throwWhenUnknownEventType, IWebProxy proxy = null, ILogger logger = null)
 		{
 			ArgumentNullException.ThrowIfNull(connectionInfo);
-			ArgumentNullException.ThrowIfNull(subscriptionId);
+			ArgumentNullException.ThrowIfNullOrWhiteSpace(subscriptionId);
 			ArgumentNullException.ThrowIfNull(eventProcessor);
 
 			// According to https://marketplace.zoom.us/docs/api-reference/websockets/, only Server-to-Server OAuth connections are supported
@@ -240,11 +240,8 @@ namespace ZoomNet
 				_websocketClient = null;
 			}
 
-			if (_httpClient != null)
-			{
-				_httpClient.Dispose();
-				_httpClient = null;
-			}
+			_httpClient?.Dispose();
+			_httpClient = null;
 		}
 
 		private void ReleaseUnmanagedResources()
