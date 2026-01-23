@@ -9,8 +9,20 @@ using ZoomNet.Utilities;
 
 namespace ZoomNet.UnitTests.Utilities
 {
-	public class DiagnosticHandlerTests
+	public class DiagnosticHandlerTests : IDisposable
 	{
+		public DiagnosticHandlerTests()
+		{
+			// Clear shared static state before each test to ensure test isolation
+			DiagnosticHandler.DiagnosticsInfo.Clear();
+		}
+
+		public void Dispose()
+		{
+			// Clean up shared state after each test
+			DiagnosticHandler.DiagnosticsInfo.Clear();
+		}
+
 		#region Constructor Tests
 
 		[Fact]
@@ -103,13 +115,11 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
-			var initialCount = DiagnosticHandler.DiagnosticsInfo.Count;
-
 			// Act
 			handler.OnRequest(MockFluentHttpRequest);
 
 			// Assert
-			DiagnosticHandler.DiagnosticsInfo.Count.ShouldBe(initialCount + 1);
+			DiagnosticHandler.DiagnosticsInfo.Count.ShouldBeGreaterThan(0);
 			DiagnosticHandler.DiagnosticsInfo.ContainsKey(MockFluentHttpRequest.HeaderValue).ShouldBeTrue();
 		}
 
@@ -169,15 +179,16 @@ namespace ZoomNet.UnitTests.Utilities
 			var MockFluentHttpRequest1 = new MockFluentHttpRequest();
 			var MockFluentHttpRequest2 = new MockFluentHttpRequest();
 			var MockFluentHttpRequest3 = new MockFluentHttpRequest();
-			var initialCount = DiagnosticHandler.DiagnosticsInfo.Count;
-
 			// Act
 			handler.OnRequest(MockFluentHttpRequest1);
 			handler.OnRequest(MockFluentHttpRequest2);
 			handler.OnRequest(MockFluentHttpRequest3);
 
 			// Assert
-			DiagnosticHandler.DiagnosticsInfo.Count.ShouldBe(initialCount + 3);
+			DiagnosticHandler.DiagnosticsInfo.Count.ShouldBe(3);
+			DiagnosticHandler.DiagnosticsInfo.ContainsKey(MockFluentHttpRequest1.HeaderValue).ShouldBeTrue();
+			DiagnosticHandler.DiagnosticsInfo.ContainsKey(MockFluentHttpRequest2.HeaderValue).ShouldBeTrue();
+			DiagnosticHandler.DiagnosticsInfo.ContainsKey(MockFluentHttpRequest3.HeaderValue).ShouldBeTrue();
 		}
 
 		#endregion
@@ -442,13 +453,12 @@ namespace ZoomNet.UnitTests.Utilities
 			var mockLogger = new MockLogger();
 			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, mockLogger);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
-			var initialCount = DiagnosticHandler.DiagnosticsInfo.Count;
 
 			// Act - Request
 			handler.OnRequest(MockFluentHttpRequest);
 
 			// Assert - After Request
-			DiagnosticHandler.DiagnosticsInfo.Count.ShouldBe(initialCount + 1);
+			DiagnosticHandler.DiagnosticsInfo.ContainsKey(MockFluentHttpRequest.HeaderValue).ShouldBeTrue();
 			var diagnosticInfo = DiagnosticHandler.DiagnosticsInfo[MockFluentHttpRequest.HeaderValue];
 			diagnosticInfo.RequestReference.TryGetTarget(out HttpRequestMessage _).ShouldBeTrue();
 			diagnosticInfo.ResponseReference.ShouldBeNull();
