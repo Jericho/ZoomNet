@@ -22,14 +22,14 @@ namespace ZoomNet.UnitTests.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resource {
+    internal class WebhooksDataResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resource() {
+        internal WebhooksDataResource() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace ZoomNet.UnitTests.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ZoomNet.UnitTests.Properties.Resource", typeof(Resource).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ZoomNet.UnitTests.Properties.WebhooksDataResource", typeof(WebhooksDataResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -76,9 +76,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string account_created_webhook {
+        internal static string account_created {
             get {
-                return ResourceManager.GetString("account_created_webhook", resourceCulture);
+                return ResourceManager.GetString("account_created", resourceCulture);
             }
         }
         
@@ -98,9 +98,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string account_disassociated_webhook {
+        internal static string account_disassociated {
             get {
-                return ResourceManager.GetString("account_disassociated_webhook", resourceCulture);
+                return ResourceManager.GetString("account_disassociated", resourceCulture);
             }
         }
         
@@ -127,9 +127,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;recording&quot;: {
         ///       [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string account_lock_settings_updated_webhook {
+        internal static string account_lock_settings_updated {
             get {
-                return ResourceManager.GetString("account_lock_settings_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("account_lock_settings_updated", resourceCulture);
             }
         }
         
@@ -156,9 +156,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;recording&quot;: {
         ///  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string account_settings_updated_webhook {
+        internal static string account_settings_updated {
             get {
-                return ResourceManager.GetString("account_settings_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("account_settings_updated", resourceCulture);
             }
         }
         
@@ -183,9 +183,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string account_updated_webhook {
+        internal static string account_updated {
             get {
-                return ResourceManager.GetString("account_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("account_updated", resourceCulture);
             }
         }
         
@@ -203,9 +203,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string account_vanity_url_approved_webhook {
+        internal static string account_vanity_url_approved {
             get {
-                return ResourceManager.GetString("account_vanity_url_approved_webhook", resourceCulture);
+                return ResourceManager.GetString("account_vanity_url_approved", resourceCulture);
             }
         }
         
@@ -223,9 +223,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string account_vanity_url_rejected_webhook {
+        internal static string account_vanity_url_rejected {
             get {
-                return ResourceManager.GetString("account_vanity_url_rejected_webhook", resourceCulture);
+                return ResourceManager.GetString("account_vanity_url_rejected", resourceCulture);
             }
         }
         
@@ -244,9 +244,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;developer_support&quot;: &quot;https://devslackbot.example.com/support&quot;,
         ///      &quot;developer_terms_of [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string app_authorization_request_created_webhook {
+        internal static string app_authorization_request_created {
             get {
-                return ResourceManager.GetString("app_authorization_request_created_webhook", resourceCulture);
+                return ResourceManager.GetString("app_authorization_request_created", resourceCulture);
             }
         }
         
@@ -263,9 +263,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string app_deauthorized_webhook {
+        internal static string app_deauthorized {
             get {
-                return ResourceManager.GetString("app_deauthorized_webhook", resourceCulture);
+                return ResourceManager.GetString("app_deauthorized", resourceCulture);
             }
         }
         
@@ -282,9 +282,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string bot_installed_webhook {
+        internal static string bot_installed {
             get {
-                return ResourceManager.GetString("bot_installed_webhook", resourceCulture);
+                return ResourceManager.GetString("bot_installed", resourceCulture);
             }
         }
         
@@ -304,9 +304,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;userJid&quot;: &quot;kdykjnimtas4kpd8kkdqt9fq@example.com&quot;,
         ///      &quot;userName&quot;: &quot;Jill  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string bot_notification_webhook {
+        internal static string bot_notification {
             get {
-                return ResourceManager.GetString("bot_notification_webhook", resourceCulture);
+                return ResourceManager.GetString("bot_notification", resourceCulture);
             }
         }
         
@@ -324,9 +324,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string calendar_acl_create_webhook {
+        internal static string calendar_acl_create {
             get {
-                return ResourceManager.GetString("calendar_acl_create_webhook", resourceCulture);
+                return ResourceManager.GetString("calendar_acl_create", resourceCulture);
             }
         }
         
@@ -344,9 +344,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string calendar_acl_delete_webhook {
+        internal static string calendar_acl_delete {
             get {
-                return ResourceManager.GetString("calendar_acl_delete_webhook", resourceCulture);
+                return ResourceManager.GetString("calendar_acl_delete", resourceCulture);
             }
         }
         
@@ -364,9 +364,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string calendar_acl_update_webhook {
+        internal static string calendar_acl_update {
             get {
-                return ResourceManager.GetString("calendar_acl_update_webhook", resourceCulture);
+                return ResourceManager.GetString("calendar_acl_update", resourceCulture);
             }
         }
         
@@ -384,9 +384,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string calendar_calendarlist_create_webhook {
+        internal static string calendar_calendarlist_create {
             get {
-                return ResourceManager.GetString("calendar_calendarlist_create_webhook", resourceCulture);
+                return ResourceManager.GetString("calendar_calendarlist_create", resourceCulture);
             }
         }
         
@@ -404,9 +404,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string calendar_calendarlist_delete_webhook {
+        internal static string calendar_calendarlist_delete {
             get {
-                return ResourceManager.GetString("calendar_calendarlist_delete_webhook", resourceCulture);
+                return ResourceManager.GetString("calendar_calendarlist_delete", resourceCulture);
             }
         }
         
@@ -424,9 +424,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string calendar_calendarlist_update_webhook {
+        internal static string calendar_calendarlist_update {
             get {
-                return ResourceManager.GetString("calendar_calendarlist_update_webhook", resourceCulture);
+                return ResourceManager.GetString("calendar_calendarlist_update", resourceCulture);
             }
         }
         
@@ -444,9 +444,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string calendar_event_create_webhook {
+        internal static string calendar_event_create {
             get {
-                return ResourceManager.GetString("calendar_event_create_webhook", resourceCulture);
+                return ResourceManager.GetString("calendar_event_create", resourceCulture);
             }
         }
         
@@ -464,9 +464,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string calendar_event_delete_webhook {
+        internal static string calendar_event_delete {
             get {
-                return ResourceManager.GetString("calendar_event_delete_webhook", resourceCulture);
+                return ResourceManager.GetString("calendar_event_delete", resourceCulture);
             }
         }
         
@@ -484,9 +484,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string calendar_event_update_webhook {
+        internal static string calendar_event_update {
             get {
-                return ResourceManager.GetString("calendar_event_update_webhook", resourceCulture);
+                return ResourceManager.GetString("calendar_event_update", resourceCulture);
             }
         }
         
@@ -504,9 +504,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string calendar_setting_create_webhook {
+        internal static string calendar_setting_create {
             get {
-                return ResourceManager.GetString("calendar_setting_create_webhook", resourceCulture);
+                return ResourceManager.GetString("calendar_setting_create", resourceCulture);
             }
         }
         
@@ -524,9 +524,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string calendar_setting_update_webhook {
+        internal static string calendar_setting_update {
             get {
-                return ResourceManager.GetString("calendar_setting_update_webhook", resourceCulture);
+                return ResourceManager.GetString("calendar_setting_update", resourceCulture);
             }
         }
         
@@ -557,9 +557,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string chat_channel_created_webhook {
+        internal static string chat_channel_created {
             get {
-                return ResourceManager.GetString("chat_channel_created_webhook", resourceCulture);
+                return ResourceManager.GetString("chat_channel_created", resourceCulture);
             }
         }
         
@@ -581,9 +581,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string chat_channel_deleted_webhook {
+        internal static string chat_channel_deleted {
             get {
-                return ResourceManager.GetString("chat_channel_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("chat_channel_deleted", resourceCulture);
             }
         }
         
@@ -611,9 +611,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string chat_channel_member_invited_webhook {
+        internal static string chat_channel_member_invited {
             get {
-                return ResourceManager.GetString("chat_channel_member_invited_webhook", resourceCulture);
+                return ResourceManager.GetString("chat_channel_member_invited", resourceCulture);
             }
         }
         
@@ -635,9 +635,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string chat_channel_member_joined_webhook {
+        internal static string chat_channel_member_joined {
             get {
-                return ResourceManager.GetString("chat_channel_member_joined_webhook", resourceCulture);
+                return ResourceManager.GetString("chat_channel_member_joined", resourceCulture);
             }
         }
         
@@ -659,9 +659,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string chat_channel_member_left_webhook {
+        internal static string chat_channel_member_left {
             get {
-                return ResourceManager.GetString("chat_channel_member_left_webhook", resourceCulture);
+                return ResourceManager.GetString("chat_channel_member_left", resourceCulture);
             }
         }
         
@@ -689,9 +689,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string chat_channel_member_removed_webhook {
+        internal static string chat_channel_member_removed {
             get {
-                return ResourceManager.GetString("chat_channel_member_removed_webhook", resourceCulture);
+                return ResourceManager.GetString("chat_channel_member_removed", resourceCulture);
             }
         }
         
@@ -713,9 +713,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string chat_channel_updated_webhook {
+        internal static string chat_channel_updated {
             get {
-                return ResourceManager.GetString("chat_channel_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("chat_channel_updated", resourceCulture);
             }
         }
         
@@ -738,9 +738,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///			&quot;channel_name&quot;: &quot;Team Chat&quot;,
         ///			&quot;message&quot;: &quot;Hell [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string chat_message_deleted_webhook {
+        internal static string chat_message_deleted {
             get {
-                return ResourceManager.GetString("chat_message_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("chat_message_deleted", resourceCulture);
             }
         }
         
@@ -763,9 +763,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///			&quot;channel_name&quot;: &quot;Team Chat&quot;,
         ///			&quot;message&quot;: &quot;Hell [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string chat_message_replied_webhook {
+        internal static string chat_message_replied {
             get {
-                return ResourceManager.GetString("chat_message_replied_webhook", resourceCulture);
+                return ResourceManager.GetString("chat_message_replied", resourceCulture);
             }
         }
         
@@ -788,9 +788,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///			&quot;channel_name&quot;: &quot;Team Chat&quot;,
         ///			&quot;message&quot;: &quot;Hello w [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string chat_message_sent_webhook {
+        internal static string chat_message_sent {
             get {
-                return ResourceManager.GetString("chat_message_sent_webhook", resourceCulture);
+                return ResourceManager.GetString("chat_message_sent", resourceCulture);
             }
         }
         
@@ -813,9 +813,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///			&quot;channel_name&quot;: &quot;Team Chat&quot;,
         ///			&quot;message&quot;: &quot;Hell [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string chat_message_updated_webhook {
+        internal static string chat_message_updated {
             get {
-                return ResourceManager.GetString("chat_message_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("chat_message_updated", resourceCulture);
             }
         }
         
@@ -835,9 +835,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;note_start_time&quot;: &quot;2025-05-15T03:01:08.608Z&quot;,
         ///      &quot;no [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string clinical_notes_note_created_webhook {
+        internal static string clinical_notes_note_created {
             get {
-                return ResourceManager.GetString("clinical_notes_note_created_webhook", resourceCulture);
+                return ResourceManager.GetString("clinical_notes_note_created", resourceCulture);
             }
         }
         
@@ -860,9 +860,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string cobrowse_session_ended_webhook {
+        internal static string cobrowse_session_ended {
             get {
-                return ResourceManager.GetString("cobrowse_session_ended_webhook", resourceCulture);
+                return ResourceManager.GetString("cobrowse_session_ended", resourceCulture);
             }
         }
         
@@ -883,9 +883,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string cobrowse_session_started_webhook {
+        internal static string cobrowse_session_started {
             get {
-                return ResourceManager.GetString("cobrowse_session_started_webhook", resourceCulture);
+                return ResourceManager.GetString("cobrowse_session_started", resourceCulture);
             }
         }
         
@@ -906,9 +906,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string cobrowse_session_user_joined_webhook {
+        internal static string cobrowse_session_user_joined {
             get {
-                return ResourceManager.GetString("cobrowse_session_user_joined_webhook", resourceCulture);
+                return ResourceManager.GetString("cobrowse_session_user_joined", resourceCulture);
             }
         }
         
@@ -930,18 +930,18 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string cobrowse_session_user_left_webhook {
+        internal static string cobrowse_session_user_left {
             get {
-                return ResourceManager.GetString("cobrowse_session_user_left_webhook", resourceCulture);
+                return ResourceManager.GetString("cobrowse_session_user_left", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;contact_center.asset_created&quot;,
-        ///  &quot;event_ts&quot;: 1627906944384,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;D8cJuqWVQ623CI4Q8yQK0Q&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;asset_id&quot;: &quot;WkdWelkzSnBjSFJwYjI0PQ11&quot;,
         ///      &quot;asset_name&quot;: &quot;My Asset&quot;,
@@ -952,20 +952,20 @@ namespace ZoomNet.UnitTests.Properties {
         ///        {
         ///          &quot;asset_item_id&quot;: &quot;beYjXoDOS_eV1QmTpj63PQ&quot;,
         ///          &quot;asset_item_name&quot;: &quot;My Asset Item&quot;,
-        ///          &quot;asse [rest of string was truncated]&quot;;.
+        ///          &quot;asset_item_langu [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_asset_created_webhook {
+        internal static string contact_center_asset_created {
             get {
-                return ResourceManager.GetString("contact_center_asset_created_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_asset_created", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;contact_center.asset_deleted&quot;,
-        ///  &quot;event_ts&quot;: 1627906944384,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;D8cJuqWVQ623CI4Q8yQK0Q&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;asset_id&quot;: &quot;WkdWelkzSnBjSFJwYjI0PQ11&quot;,
         ///      &quot;asset_name&quot;: &quot;My Asset&quot;,
@@ -977,32 +977,33 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string contact_center_asset_deleted_webhook {
+        internal static string contact_center_asset_deleted {
             get {
-                return ResourceManager.GetString("contact_center_asset_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_asset_deleted", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;contact_center.asset_updated&quot;,
-        ///  &quot;event_ts&quot;: 1627906944384,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;D8cJuqWVQ623CI4Q8yQK0Q&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;asset_id&quot;: &quot;WkdWelkzSnBjSFJwYjI0PQ11&quot;,
         ///      &quot;updates&quot;: {
         ///        &quot;asset_name&quot;: &quot;My Asset&quot;,
-        ///        &quot;asset_description&quot;: &quot;This is an exmaple asset.&quot;,
+        ///        &quot;asset_description&quot;: &quot;This is an example asset.&quot;,
         ///        &quot;asset_item_added&quot;: [
         ///          {
         ///            &quot;asset_item_id&quot;: &quot;beYjXoDOS_eV1QmTpj63PQ&quot;,
-        ///            &quot;asset_item_name&quot;: &quot;My Asset Item Added&quot;,
-        ///            &quot;asset_item_language&quot;: &quot;en-US [rest of string was truncated]&quot;;.
+        ///            &quot;asset_item_name&quot;: &quot;My Asset Item&quot;,
+        ///            &quot;asset_item_language&quot;: &quot;en-US&quot;,
+        ///            &quot;i [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_asset_updated_webhook {
+        internal static string contact_center_asset_updated {
             get {
-                return ResourceManager.GetString("contact_center_asset_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_asset_updated", resourceCulture);
             }
         }
         
@@ -1022,9 +1023,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;account_default&quot;: true,
         ///   [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_business_hours_created_webhook {
+        internal static string contact_center_business_hours_created {
             get {
-                return ResourceManager.GetString("contact_center_business_hours_created_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_business_hours_created", resourceCulture);
             }
         }
         
@@ -1042,9 +1043,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string contact_center_business_hours_deleted_webhook {
+        internal static string contact_center_business_hours_deleted {
             get {
-                return ResourceManager.GetString("contact_center_business_hours_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_business_hours_deleted", resourceCulture);
             }
         }
         
@@ -1063,9 +1064,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;business_hour_description&quot;: &quot;This is an example business hours updated.&quot;,
         ///        &quot;timezone&quot;: &quot;America/New [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_business_hours_updated_webhook {
+        internal static string contact_center_business_hours_updated {
             get {
-                return ResourceManager.GetString("contact_center_business_hours_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_business_hours_updated", resourceCulture);
             }
         }
         
@@ -1084,9 +1085,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string contact_center_call_control_make_call_executed_webhook {
+        internal static string contact_center_call_control_make_call_executed {
             get {
-                return ResourceManager.GetString("contact_center_call_control_make_call_executed_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_call_control_make_call_executed", resourceCulture);
             }
         }
         
@@ -1106,9 +1107,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;account_default&quot;: true,
         ///      &quot;closures&quot;: [        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_closure_created_webhook {
+        internal static string contact_center_closure_created {
             get {
-                return ResourceManager.GetString("contact_center_closure_created_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_closure_created", resourceCulture);
             }
         }
         
@@ -1126,9 +1127,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string contact_center_closure_deleted_webhook {
+        internal static string contact_center_closure_deleted {
             get {
-                return ResourceManager.GetString("contact_center_closure_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_closure_deleted", resourceCulture);
             }
         }
         
@@ -1148,9 +1149,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;timezone&quot;: &quot;America/New_York&quot;,
         ///        &quot;a [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_closure_updated_webhook {
+        internal static string contact_center_closure_updated {
             get {
-                return ResourceManager.GetString("contact_center_closure_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_closure_updated", resourceCulture);
             }
         }
         
@@ -1170,9 +1171,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;flow_name&quot;: &quot;My Flow&quot;,
         ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_consumer_answered_webhook {
+        internal static string contact_center_engagement_consumer_answered {
             get {
-                return ResourceManager.GetString("contact_center_engagement_consumer_answered_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_consumer_answered", resourceCulture);
             }
         }
         
@@ -1193,9 +1194,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;queue_name&quot;: &quot;My Queue&quot;,
         ///      [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_consumer_ended_webhook {
+        internal static string contact_center_engagement_consumer_ended {
             get {
-                return ResourceManager.GetString("contact_center_engagement_consumer_ended_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_consumer_ended", resourceCulture);
             }
         }
         
@@ -1215,9 +1216,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;flow_name&quot;: &quot;My Flow&quot;,
         ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_consumer_notified_webhook {
+        internal static string contact_center_engagement_consumer_notified {
             get {
-                return ResourceManager.GetString("contact_center_engagement_consumer_notified_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_consumer_notified", resourceCulture);
             }
         }
         
@@ -1237,9 +1238,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;flow_name&quot;: &quot;My Flow&quot;,
         ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;, [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_consumer_sent_file_webhook {
+        internal static string contact_center_engagement_consumer_sent_file {
             get {
-                return ResourceManager.GetString("contact_center_engagement_consumer_sent_file_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_consumer_sent_file", resourceCulture);
             }
         }
         
@@ -1259,9 +1260,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;flow_name&quot;: &quot;My Flow&quot;,
         ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLe [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_consumer_sent_message_webhook {
+        internal static string contact_center_engagement_consumer_sent_message {
             get {
-                return ResourceManager.GetString("contact_center_engagement_consumer_sent_message_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_consumer_sent_message", resourceCulture);
             }
         }
         
@@ -1280,9 +1281,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
         ///      &quot;engagement_id&quot;: &quot;HdOQ9e_aRdO0lyQutA17qQ&quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_disposition_added_webhook {
+        internal static string contact_center_engagement_disposition_added {
             get {
-                return ResourceManager.GetString("contact_center_engagement_disposition_added_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_disposition_added", resourceCulture);
             }
         }
         
@@ -1301,9 +1302,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;flow_name&quot;: &quot;Email Flow&quot;,
         ///      &quot;transcript_url&quot;: &quot;https://api.zoom.us/v2/contact_center/email/messages?eng [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_email_transcript_completed_webhook {
+        internal static string contact_center_engagement_email_transcript_completed {
             get {
-                return ResourceManager.GetString("contact_center_engagement_email_transcript_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_email_transcript_completed", resourceCulture);
             }
         }
         
@@ -1325,9 +1326,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string contact_center_engagement_ended_webhook {
+        internal static string contact_center_engagement_ended {
             get {
-                return ResourceManager.GetString("contact_center_engagement_ended_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_ended", resourceCulture);
             }
         }
         
@@ -1346,9 +1347,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;flow_name&quot;: &quot;My Flow&quot;,
         ///      &quot;transcript_url&quot;: &quot;https://api.zoom.us/v2/contact_center/engagements/transc [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_messaging_transcript_completed_webhook {
+        internal static string contact_center_engagement_messaging_transcript_completed {
             get {
-                return ResourceManager.GetString("contact_center_engagement_messaging_transcript_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_messaging_transcript_completed", resourceCulture);
             }
         }
         
@@ -1369,9 +1370,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;queue_name&quot;: &quot;My Queue&quot;,
         ///      &quot;user_id&quot;: &quot;IGTRVt3g [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_monitor_ended_webhook {
+        internal static string contact_center_engagement_monitor_ended {
             get {
-                return ResourceManager.GetString("contact_center_engagement_monitor_ended_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_monitor_ended", resourceCulture);
             }
         }
         
@@ -1392,9 +1393,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;queue_name&quot;: &quot;My Queue&quot;,
         ///      &quot;user_id&quot;: &quot;IGTRVt [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_monitor_started_webhook {
+        internal static string contact_center_engagement_monitor_started {
             get {
-                return ResourceManager.GetString("contact_center_engagement_monitor_started_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_monitor_started", resourceCulture);
             }
         }
         
@@ -1414,9 +1415,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;engagement_direction&quot;: &quot;inbound&quot;,
         ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_note_added_webhook {
+        internal static string contact_center_engagement_note_added {
             get {
-                return ResourceManager.GetString("contact_center_engagement_note_added_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_note_added", resourceCulture);
             }
         }
         
@@ -1438,9 +1439,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///    }
         /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_started_webhook {
+        internal static string contact_center_engagement_started {
             get {
-                return ResourceManager.GetString("contact_center_engagement_started_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_started", resourceCulture);
             }
         }
         
@@ -1461,9 +1462,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;flow_number&quot;: &quot;+18005550100&quot;,
         ///      &quot;survey_status&quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_survey_status_webhook {
+        internal static string contact_center_engagement_survey_status {
             get {
-                return ResourceManager.GetString("contact_center_engagement_survey_status_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_survey_status", resourceCulture);
             }
         }
         
@@ -1484,9 +1485,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;user_id&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
         ///      &quot;use [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_takeover_started_webhook {
+        internal static string contact_center_engagement_takeover_started {
             get {
-                return ResourceManager.GetString("contact_center_engagement_takeover_started_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_takeover_started", resourceCulture);
             }
         }
         
@@ -1506,9 +1507,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;transfer_level&quot;: &quot;queue&quot;,
         ///      &quot;transfer_type&quot;: &quot;warm&quot;,        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_transfer_accepted_webhook {
+        internal static string contact_center_engagement_transfer_accepted {
             get {
-                return ResourceManager.GetString("contact_center_engagement_transfer_accepted_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_transfer_accepted", resourceCulture);
             }
         }
         
@@ -1528,9 +1529,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;transfer_level&quot;: &quot;queue&quot;,
         ///      &quot;transfer_type&quot;: &quot;warm&quot;,        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_transfer_canceled_webhook {
+        internal static string contact_center_engagement_transfer_canceled {
             get {
-                return ResourceManager.GetString("contact_center_engagement_transfer_canceled_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_transfer_canceled", resourceCulture);
             }
         }
         
@@ -1550,9 +1551,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;transfer_level&quot;: &quot;queue&quot;,
         ///      &quot;transfer_type&quot;: &quot;warm&quot;, [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_transfer_completed_webhook {
+        internal static string contact_center_engagement_transfer_completed {
             get {
-                return ResourceManager.GetString("contact_center_engagement_transfer_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_transfer_completed", resourceCulture);
             }
         }
         
@@ -1572,9 +1573,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;transfer_level&quot;: &quot;queue&quot;,
         ///      &quot;transfer_type&quot;: &quot;warm&quot;, [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_transfer_initiated_webhook {
+        internal static string contact_center_engagement_transfer_initiated {
             get {
-                return ResourceManager.GetString("contact_center_engagement_transfer_initiated_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_transfer_initiated", resourceCulture);
             }
         }
         
@@ -1595,9 +1596,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;transfer_type&quot;: &quot;warm&quot;,
         ///  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_transfer_queued_webhook {
+        internal static string contact_center_engagement_transfer_queued {
             get {
-                return ResourceManager.GetString("contact_center_engagement_transfer_queued_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_transfer_queued", resourceCulture);
             }
         }
         
@@ -1617,9 +1618,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;transfer_level&quot;: &quot;queue&quot;,
         ///      &quot;transfer_type&quot;: &quot;warm&quot;,        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_transfer_rejected_webhook {
+        internal static string contact_center_engagement_transfer_rejected {
             get {
-                return ResourceManager.GetString("contact_center_engagement_transfer_rejected_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_transfer_rejected", resourceCulture);
             }
         }
         
@@ -1639,9 +1640,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;transfer_level&quot;: &quot;queue&quot;,
         ///      &quot;transfer_type&quot;: &quot;warm&quot;,        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_transfer_reserved_webhook {
+        internal static string contact_center_engagement_transfer_reserved {
             get {
-                return ResourceManager.GetString("contact_center_engagement_transfer_reserved_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_transfer_reserved", resourceCulture);
             }
         }
         
@@ -1661,9 +1662,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;transfer_type&quot;: &quot;warm&quot;,
         ///      &quot;engagement_id&quot;: &quot;HdOQ9e_aRdO0lyQutA17q [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_transfer_timeout_webhook {
+        internal static string contact_center_engagement_transfer_timeout {
             get {
-                return ResourceManager.GetString("contact_center_engagement_transfer_timeout_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_transfer_timeout", resourceCulture);
             }
         }
         
@@ -1684,9 +1685,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;flow_name&quot;: &quot;My Flow&quot;,
         ///      &quot;cc [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_upgrade_completed_webhook {
+        internal static string contact_center_engagement_upgrade_completed {
             get {
-                return ResourceManager.GetString("contact_center_engagement_upgrade_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_upgrade_completed", resourceCulture);
             }
         }
         
@@ -1707,9 +1708,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;flow_name&quot;: &quot;My Flow&quot;,
         ///      &quot;cc_q [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_upgrade_expired_webhook {
+        internal static string contact_center_engagement_upgrade_expired {
             get {
-                return ResourceManager.GetString("contact_center_engagement_upgrade_expired_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_upgrade_expired", resourceCulture);
             }
         }
         
@@ -1730,9 +1731,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;flow_name&quot;: &quot;My Flow&quot;,
         ///      &quot;cc [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_upgrade_initiated_webhook {
+        internal static string contact_center_engagement_upgrade_initiated {
             get {
-                return ResourceManager.GetString("contact_center_engagement_upgrade_initiated_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_upgrade_initiated", resourceCulture);
             }
         }
         
@@ -1752,9 +1753,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;flow_name&quot;: &quot;My Flow&quot;,
         ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;, [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_user_answered_webhook {
+        internal static string contact_center_engagement_user_answered {
             get {
-                return ResourceManager.GetString("contact_center_engagement_user_answered_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_user_answered", resourceCulture);
             }
         }
         
@@ -1775,9 +1776,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;consumer_number&quot;: &quot;+18005550100&quot;,
         ///      &quot;user_id [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_user_dtmf_sent_webhook {
+        internal static string contact_center_engagement_user_dtmf_sent {
             get {
-                return ResourceManager.GetString("contact_center_engagement_user_dtmf_sent_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_user_dtmf_sent", resourceCulture);
             }
         }
         
@@ -1798,9 +1799,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;,
         ///     [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_user_ended_webhook {
+        internal static string contact_center_engagement_user_ended {
             get {
-                return ResourceManager.GetString("contact_center_engagement_user_ended_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_user_ended", resourceCulture);
             }
         }
         
@@ -1821,9 +1822,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;,
         ///   [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_user_hold_webhook {
+        internal static string contact_center_engagement_user_hold {
             get {
-                return ResourceManager.GetString("contact_center_engagement_user_hold_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_user_hold", resourceCulture);
             }
         }
         
@@ -1844,9 +1845,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;queue_name&quot;: &quot;My Queue&quot;,
         ///      &quot;co [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_user_muted_webhook {
+        internal static string contact_center_engagement_user_muted {
             get {
-                return ResourceManager.GetString("contact_center_engagement_user_muted_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_user_muted", resourceCulture);
             }
         }
         
@@ -1867,9 +1868,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;,
         ///   [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_user_sent_file_webhook {
+        internal static string contact_center_engagement_user_sent_file {
             get {
-                return ResourceManager.GetString("contact_center_engagement_user_sent_file_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_user_sent_file", resourceCulture);
             }
         }
         
@@ -1889,9 +1890,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;flow_name&quot;: &quot;My Flow&quot;,
         ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;,        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_user_sent_message_webhook {
+        internal static string contact_center_engagement_user_sent_message {
             get {
-                return ResourceManager.GetString("contact_center_engagement_user_sent_message_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_user_sent_message", resourceCulture);
             }
         }
         
@@ -1912,9 +1913,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;,
         /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_user_unhold_webhook {
+        internal static string contact_center_engagement_user_unhold {
             get {
-                return ResourceManager.GetString("contact_center_engagement_user_unhold_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_user_unhold", resourceCulture);
             }
         }
         
@@ -1935,9 +1936,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;queue_name&quot;: &quot;My Queue&quot;,
         ///      &quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_user_unmuted_webhook {
+        internal static string contact_center_engagement_user_unmuted {
             get {
-                return ResourceManager.GetString("contact_center_engagement_user_unmuted_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_user_unmuted", resourceCulture);
             }
         }
         
@@ -1958,9 +1959,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;queue_name&quot;: &quot;My Queue&quot;,
         ///      &quot;user_id&quot;:  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_wrap_up_ended_webhook {
+        internal static string contact_center_engagement_wrap_up_ended {
             get {
-                return ResourceManager.GetString("contact_center_engagement_wrap_up_ended_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_wrap_up_ended", resourceCulture);
             }
         }
         
@@ -1981,9 +1982,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;queue_name&quot;: &quot;My Queue&quot;,
         ///      &quot;user_id&quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_engagement_wrap_up_started_webhook {
+        internal static string contact_center_engagement_wrap_up_started {
             get {
-                return ResourceManager.GetString("contact_center_engagement_wrap_up_started_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_engagement_wrap_up_started", resourceCulture);
             }
         }
         
@@ -2004,9 +2005,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;flow_number&quot;: &quot;+18005550101&quot;,
         ///      &quot;consumer_number [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_inbox_message_assigned_webhook {
+        internal static string contact_center_inbox_message_assigned {
             get {
-                return ResourceManager.GetString("contact_center_inbox_message_assigned_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_inbox_message_assigned", resourceCulture);
             }
         }
         
@@ -2027,9 +2028,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;flow_number&quot;: &quot;+18005550101&quot;,
         ///      &quot;consumer_number&quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_inbox_message_deleted_webhook {
+        internal static string contact_center_inbox_message_deleted {
             get {
-                return ResourceManager.GetString("contact_center_inbox_message_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_inbox_message_deleted", resourceCulture);
             }
         }
         
@@ -2050,9 +2051,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;flow_number&quot;: &quot;+18005550100&quot;,
         ///      &quot;consumer_numb [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_inbox_message_downloaded_webhook {
+        internal static string contact_center_inbox_message_downloaded {
             get {
-                return ResourceManager.GetString("contact_center_inbox_message_downloaded_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_inbox_message_downloaded", resourceCulture);
             }
         }
         
@@ -2073,9 +2074,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;flow_number&quot;: &quot;+18005550100&quot;,
         ///      &quot;consumer_number&quot;: [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_inbox_message_opened_webhook {
+        internal static string contact_center_inbox_message_opened {
             get {
-                return ResourceManager.GetString("contact_center_inbox_message_opened_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_inbox_message_opened", resourceCulture);
             }
         }
         
@@ -2096,9 +2097,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;flow_number&quot;: &quot;+18005550100&quot;,
         ///      &quot;consumer_number [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_inbox_message_received_webhook {
+        internal static string contact_center_inbox_message_received {
             get {
-                return ResourceManager.GetString("contact_center_inbox_message_received_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_inbox_message_received", resourceCulture);
             }
         }
         
@@ -2119,9 +2120,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;flow_number&quot;: &quot;+18005550100&quot;,
         ///      &quot;consumer_number [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_inbox_message_reopened_webhook {
+        internal static string contact_center_inbox_message_reopened {
             get {
-                return ResourceManager.GetString("contact_center_inbox_message_reopened_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_inbox_message_reopened", resourceCulture);
             }
         }
         
@@ -2142,9 +2143,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;flow_number&quot;: &quot;+18005550100&quot;,
         ///      &quot;consumer_number [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_inbox_message_resolved_webhook {
+        internal static string contact_center_inbox_message_resolved {
             get {
-                return ResourceManager.GetString("contact_center_inbox_message_resolved_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_inbox_message_resolved", resourceCulture);
             }
         }
         
@@ -2163,9 +2164,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string contact_center_outbound_campaign_dialer_status_webhook {
+        internal static string contact_center_outbound_campaign_dialer_status {
             get {
-                return ResourceManager.GetString("contact_center_outbound_campaign_dialer_status_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_outbound_campaign_dialer_status", resourceCulture);
             }
         }
         
@@ -2185,9 +2186,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string contact_center_queue_agent_assigned_webhook {
+        internal static string contact_center_queue_agent_assigned {
             get {
-                return ResourceManager.GetString("contact_center_queue_agent_assigned_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_queue_agent_assigned", resourceCulture);
             }
         }
         
@@ -2207,9 +2208,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string contact_center_queue_agent_unassigned_webhook {
+        internal static string contact_center_queue_agent_unassigned {
             get {
-                return ResourceManager.GetString("contact_center_queue_agent_unassigned_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_queue_agent_unassigned", resourceCulture);
             }
         }
         
@@ -2233,9 +2234,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;max_engagement_in_queue&quot;: 50,
         ///       [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_queue_created_webhook {
+        internal static string contact_center_queue_created {
             get {
-                return ResourceManager.GetString("contact_center_queue_created_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_queue_created", resourceCulture);
             }
         }
         
@@ -2259,9 +2260,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;max_engagement_in_queue&quot;: 50,
         ///       [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_queue_deleted_webhook {
+        internal static string contact_center_queue_deleted {
             get {
-                return ResourceManager.GetString("contact_center_queue_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_queue_deleted", resourceCulture);
             }
         }
         
@@ -2280,9 +2281,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;service_level_exclude_long_abandoned_calls&quot;: true,
         ///        &quot;service_level_exclude_abandoned_quit_engage [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_queue_inbound_sla_updated_webhook {
+        internal static string contact_center_queue_inbound_sla_updated {
             get {
-                return ResourceManager.GetString("contact_center_queue_inbound_sla_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_queue_inbound_sla_updated", resourceCulture);
             }
         }
         
@@ -2302,9 +2303,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;closure_set_id&quot;: &quot;GQJMxgNBT5mGdOzn-WlQOA&quot;,
         ///        &quot;clos [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_queue_operating_hours_updated_webhook {
+        internal static string contact_center_queue_operating_hours_updated {
             get {
-                return ResourceManager.GetString("contact_center_queue_operating_hours_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_queue_operating_hours_updated", resourceCulture);
             }
         }
         
@@ -2326,9 +2327,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;last_name&quot;: &quot;Doe&quot;,
         ///          &quot;email&quot;: &quot;jdoe@exa [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_queue_scheduled_callback_created_webhook {
+        internal static string contact_center_queue_scheduled_callback_created {
             get {
-                return ResourceManager.GetString("contact_center_queue_scheduled_callback_created_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_queue_scheduled_callback_created", resourceCulture);
             }
         }
         
@@ -2348,9 +2349,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string contact_center_queue_supervisor_assigned_webhook {
+        internal static string contact_center_queue_supervisor_assigned {
             get {
-                return ResourceManager.GetString("contact_center_queue_supervisor_assigned_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_queue_supervisor_assigned", resourceCulture);
             }
         }
         
@@ -2370,9 +2371,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string contact_center_queue_supervisor_unassigned_webhook {
+        internal static string contact_center_queue_supervisor_unassigned {
             get {
-                return ResourceManager.GetString("contact_center_queue_supervisor_unassigned_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_queue_supervisor_unassigned", resourceCulture);
             }
         }
         
@@ -2392,9 +2393,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;recording_type&quot;: &quot;on_demand&quot;,
         ///      &quot;recording_dura [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_recording_completed_webhook {
+        internal static string contact_center_recording_completed {
             get {
-                return ResourceManager.GetString("contact_center_recording_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_recording_completed", resourceCulture);
             }
         }
         
@@ -2411,9 +2412,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string contact_center_recording_deleted_webhook {
+        internal static string contact_center_recording_deleted {
             get {
-                return ResourceManager.GetString("contact_center_recording_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_recording_deleted", resourceCulture);
             }
         }
         
@@ -2433,9 +2434,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;recording_type&quot;: &quot;on_demand&quot;,
         ///      &quot;flow_id&quot;: &quot;ZWWC0A840C726C [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_recording_paused_webhook {
+        internal static string contact_center_recording_paused {
             get {
-                return ResourceManager.GetString("contact_center_recording_paused_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_recording_paused", resourceCulture);
             }
         }
         
@@ -2452,9 +2453,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string contact_center_recording_permanently_deleted_webhook {
+        internal static string contact_center_recording_permanently_deleted {
             get {
-                return ResourceManager.GetString("contact_center_recording_permanently_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_recording_permanently_deleted", resourceCulture);
             }
         }
         
@@ -2474,9 +2475,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;recording_type&quot;: &quot;on_demand&quot;,
         ///      &quot;flow_id&quot;: &quot;ZWWC0A840C726 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_recording_resumed_webhook {
+        internal static string contact_center_recording_resumed {
             get {
-                return ResourceManager.GetString("contact_center_recording_resumed_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_recording_resumed", resourceCulture);
             }
         }
         
@@ -2497,9 +2498,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;flow_name&quot;: &quot;My Flow&quot;,
         ///      [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_recording_started_webhook {
+        internal static string contact_center_recording_started {
             get {
-                return ResourceManager.GetString("contact_center_recording_started_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_recording_started", resourceCulture);
             }
         }
         
@@ -2519,9 +2520,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;recording_type&quot;: &quot;on_demand&quot;,
         ///      &quot;flow_id&quot;: &quot;ZWWC0A840C726 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_recording_stopped_webhook {
+        internal static string contact_center_recording_stopped {
             get {
-                return ResourceManager.GetString("contact_center_recording_stopped_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_recording_stopped", resourceCulture);
             }
         }
         
@@ -2541,9 +2542,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;recording_type&quot;: &quot;on_demand&quot;,
         ///      &quot;rec [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_recording_transcript_completed_webhook {
+        internal static string contact_center_recording_transcript_completed {
             get {
-                return ResourceManager.GetString("contact_center_recording_transcript_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_recording_transcript_completed", resourceCulture);
             }
         }
         
@@ -2563,9 +2564,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string contact_center_sms_status_webhook {
+        internal static string contact_center_sms_status {
             get {
-                return ResourceManager.GetString("contact_center_sms_status_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_sms_status", resourceCulture);
             }
         }
         
@@ -2586,9 +2587,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;,
         ///      &quot;que [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_task_canceled_webhook {
+        internal static string contact_center_task_canceled {
             get {
-                return ResourceManager.GetString("contact_center_task_canceled_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_task_canceled", resourceCulture);
             }
         }
         
@@ -2609,9 +2610,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;,
         ///      &quot;qu [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_task_completed_webhook {
+        internal static string contact_center_task_completed {
             get {
-                return ResourceManager.GetString("contact_center_task_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_task_completed", resourceCulture);
             }
         }
         
@@ -2632,9 +2633,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;,
         ///      &quot;queue_ [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_task_created_webhook {
+        internal static string contact_center_task_created {
             get {
-                return ResourceManager.GetString("contact_center_task_created_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_task_created", resourceCulture);
             }
         }
         
@@ -2655,9 +2656,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;,
         ///      &quot;queue [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_task_deleted_webhook {
+        internal static string contact_center_task_deleted {
             get {
-                return ResourceManager.GetString("contact_center_task_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_task_deleted", resourceCulture);
             }
         }
         
@@ -2678,9 +2679,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;queue_description&quot;: &quot;This is an exmaple queue.&quot;,
         ///  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_task_entered_queue_webhook {
+        internal static string contact_center_task_entered_queue {
             get {
-                return ResourceManager.GetString("contact_center_task_entered_queue_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_task_entered_queue", resourceCulture);
             }
         }
         
@@ -2701,9 +2702,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;queue_description&quot;: &quot;This is an example queue.&quot;,
         ///   [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_task_exited_queue_webhook {
+        internal static string contact_center_task_exited_queue {
             get {
-                return ResourceManager.GetString("contact_center_task_exited_queue_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_task_exited_queue", resourceCulture);
             }
         }
         
@@ -2723,9 +2724,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;channel_source&quot;: &quot;in_app_video&quot;,
         ///      &quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_task_reservation_accepted_webhook {
+        internal static string contact_center_task_reservation_accepted {
             get {
-                return ResourceManager.GetString("contact_center_task_reservation_accepted_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_task_reservation_accepted", resourceCulture);
             }
         }
         
@@ -2745,9 +2746,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;channel_source&quot;: &quot;in_app_video&quot;,
         ///      &quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_task_reservation_canceled_webhook {
+        internal static string contact_center_task_reservation_canceled {
             get {
-                return ResourceManager.GetString("contact_center_task_reservation_canceled_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_task_reservation_canceled", resourceCulture);
             }
         }
         
@@ -2767,9 +2768,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;channel_source&quot;: &quot;in_app_video&quot;,
         ///       [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_task_reservation_completed_webhook {
+        internal static string contact_center_task_reservation_completed {
             get {
-                return ResourceManager.GetString("contact_center_task_reservation_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_task_reservation_completed", resourceCulture);
             }
         }
         
@@ -2789,9 +2790,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;channel_source&quot;: &quot;in_app_video&quot;,
         ///      &quot;c [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_task_reservation_created_webhook {
+        internal static string contact_center_task_reservation_created {
             get {
-                return ResourceManager.GetString("contact_center_task_reservation_created_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_task_reservation_created", resourceCulture);
             }
         }
         
@@ -2811,9 +2812,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;channel_source&quot;: &quot;in_app_video&quot;,
         ///      &quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_task_reservation_rejected_webhook {
+        internal static string contact_center_task_reservation_rejected {
             get {
-                return ResourceManager.GetString("contact_center_task_reservation_rejected_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_task_reservation_rejected", resourceCulture);
             }
         }
         
@@ -2833,9 +2834,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;channel_source&quot;: &quot;in_app_video&quot;,
         ///      &quot;c [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_task_reservation_timeout_webhook {
+        internal static string contact_center_task_reservation_timeout {
             get {
-                return ResourceManager.GetString("contact_center_task_reservation_timeout_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_task_reservation_timeout", resourceCulture);
             }
         }
         
@@ -2856,9 +2857,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;,
         ///      &quot;queue [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_task_updated_webhook {
+        internal static string contact_center_task_updated {
             get {
-                return ResourceManager.GetString("contact_center_task_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_task_updated", resourceCulture);
             }
         }
         
@@ -2879,9 +2880,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string contact_center_team_created_webhook {
+        internal static string contact_center_team_created {
             get {
-                return ResourceManager.GetString("contact_center_team_created_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_team_created", resourceCulture);
             }
         }
         
@@ -2902,9 +2903,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string contact_center_team_deleted_webhook {
+        internal static string contact_center_team_deleted {
             get {
-                return ResourceManager.GetString("contact_center_team_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_team_deleted", resourceCulture);
             }
         }
         
@@ -2926,9 +2927,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string contact_center_team_members_assigned_webhook {
+        internal static string contact_center_team_members_assigned {
             get {
-                return ResourceManager.GetString("contact_center_team_members_assigned_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_team_members_assigned", resourceCulture);
             }
         }
         
@@ -2950,9 +2951,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string contact_center_team_members_unassigned_webhook {
+        internal static string contact_center_team_members_unassigned {
             get {
-                return ResourceManager.GetString("contact_center_team_members_unassigned_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_team_members_unassigned", resourceCulture);
             }
         }
         
@@ -2971,9 +2972,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;new_parent_team_id&quot;: &quot;PZy04MG_Q7Gytg9k7CVU6w&quot;,
         ///      &quot;new_parent_team_name&quot;: &quot;Parent Example Team [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_team_moved_webhook {
+        internal static string contact_center_team_moved {
             get {
-                return ResourceManager.GetString("contact_center_team_moved_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_team_moved", resourceCulture);
             }
         }
         
@@ -2992,9 +2993,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string contact_center_team_updated_webhook {
+        internal static string contact_center_team_updated {
             get {
-                return ResourceManager.GetString("contact_center_team_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_team_updated", resourceCulture);
             }
         }
         
@@ -3016,9 +3017,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;user_access&quot;: &quot;active&quot;,
         ///      &quot;countr [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_user_created_webhook {
+        internal static string contact_center_user_created {
             get {
-                return ResourceManager.GetString("contact_center_user_created_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_user_created", resourceCulture);
             }
         }
         
@@ -3039,9 +3040,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string contact_center_user_deleted_webhook {
+        internal static string contact_center_user_deleted {
             get {
-                return ResourceManager.GetString("contact_center_user_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_user_deleted", resourceCulture);
             }
         }
         
@@ -3060,9 +3061,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string contact_center_user_login_webhook {
+        internal static string contact_center_user_login {
             get {
-                return ResourceManager.GetString("contact_center_user_login_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_user_login", resourceCulture);
             }
         }
         
@@ -3081,9 +3082,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string contact_center_user_logout_webhook {
+        internal static string contact_center_user_logout {
             get {
-                return ResourceManager.GetString("contact_center_user_logout_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_user_logout", resourceCulture);
             }
         }
         
@@ -3104,9 +3105,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string contact_center_user_opt_in_webhook {
+        internal static string contact_center_user_opt_in {
             get {
-                return ResourceManager.GetString("contact_center_user_opt_in_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_user_opt_in", resourceCulture);
             }
         }
         
@@ -3127,9 +3128,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string contact_center_user_opt_out_webhook {
+        internal static string contact_center_user_opt_out {
             get {
-                return ResourceManager.GetString("contact_center_user_opt_out_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_user_opt_out", resourceCulture);
             }
         }
         
@@ -3150,9 +3151,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;current_status_id&quot;: &quot;2&quot;,
         ///      &quot;current_status_name&quot;: &quot;Not  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_user_status_changed_webhook {
+        internal static string contact_center_user_status_changed {
             get {
-                return ResourceManager.GetString("contact_center_user_status_changed_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_user_status_changed", resourceCulture);
             }
         }
         
@@ -3174,9 +3175,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;sub_status_name&quot;: &quot;Whispering&quot;,
         ///        &quot;cli [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_user_updated_webhook {
+        internal static string contact_center_user_updated {
             get {
-                return ResourceManager.GetString("contact_center_user_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_user_updated", resourceCulture);
             }
         }
         
@@ -3197,9 +3198,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;queue_name&quot;: &quot;My Queue&quot;,
         ///      [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string contact_center_voicemail_transcript_completed_webhook {
+        internal static string contact_center_voicemail_transcript_completed {
             get {
-                return ResourceManager.GetString("contact_center_voicemail_transcript_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("contact_center_voicemail_transcript_completed", resourceCulture);
             }
         }
         
@@ -3213,9 +3214,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///}
         ///.
         /// </summary>
-        internal static string endpoint_url_validation_webhook {
+        internal static string endpoint_url_validation {
             get {
-                return ResourceManager.GetString("endpoint_url_validation_webhook", resourceCulture);
+                return ResourceManager.GetString("endpoint_url_validation", resourceCulture);
             }
         }
         
@@ -3240,9 +3241,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string group_admin_added_webhook {
+        internal static string group_admin_added {
             get {
-                return ResourceManager.GetString("group_admin_added_webhook", resourceCulture);
+                return ResourceManager.GetString("group_admin_added", resourceCulture);
             }
         }
         
@@ -3267,9 +3268,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string group_admin_deleted_webhook {
+        internal static string group_admin_deleted {
             get {
-                return ResourceManager.GetString("group_admin_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("group_admin_deleted", resourceCulture);
             }
         }
         
@@ -3289,9 +3290,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string group_created_webhook {
+        internal static string group_created {
             get {
-                return ResourceManager.GetString("group_created_webhook", resourceCulture);
+                return ResourceManager.GetString("group_created", resourceCulture);
             }
         }
         
@@ -3311,9 +3312,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string group_deleted_webhook {
+        internal static string group_deleted {
             get {
-                return ResourceManager.GetString("group_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("group_deleted", resourceCulture);
             }
         }
         
@@ -3339,9 +3340,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;settings&quot;: {
         ///        &quot;recording&quot;: { [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string group_lock_settings_updated_webhook {
+        internal static string group_lock_settings_updated {
             get {
-                return ResourceManager.GetString("group_lock_settings_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("group_lock_settings_updated", resourceCulture);
             }
         }
         
@@ -3366,9 +3367,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string group_member_added_webhook {
+        internal static string group_member_added {
             get {
-                return ResourceManager.GetString("group_member_added_webhook", resourceCulture);
+                return ResourceManager.GetString("group_member_added", resourceCulture);
             }
         }
         
@@ -3393,9 +3394,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string group_member_deleted_webhook {
+        internal static string group_member_deleted {
             get {
-                return ResourceManager.GetString("group_member_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("group_member_deleted", resourceCulture);
             }
         }
         
@@ -3422,9 +3423,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;recording&quot;: {
         ///       [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string group_settings_updated_webhook {
+        internal static string group_settings_updated {
             get {
-                return ResourceManager.GetString("group_settings_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("group_settings_updated", resourceCulture);
             }
         }
         
@@ -3448,9 +3449,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string group_updated_webhook {
+        internal static string group_updated {
             get {
-                return ResourceManager.GetString("group_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("group_updated", resourceCulture);
             }
         }
         
@@ -3474,9 +3475,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///				&quot;recording&quot;: false,
         ///				&quot;complete_phone_ [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string information_barriers_policy_created_webhook {
+        internal static string information_barriers_policy_created {
             get {
-                return ResourceManager.GetString("information_barriers_policy_created_webhook", resourceCulture);
+                return ResourceManager.GetString("information_barriers_policy_created", resourceCulture);
             }
         }
         
@@ -3500,9 +3501,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///				&quot;recording&quot;: false,
         ///				&quot;complete_phone_ [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string information_barriers_policy_deleted_webhook {
+        internal static string information_barriers_policy_deleted {
             get {
-                return ResourceManager.GetString("information_barriers_policy_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("information_barriers_policy_deleted", resourceCulture);
             }
         }
         
@@ -3525,9 +3526,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///			  	&quot;in_meeting_chat&quot;: false,
         ///			  	&quot;im&quot;: false, [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string information_barriers_policy_updated_webhook {
+        internal static string information_barriers_policy_updated {
             get {
-                return ResourceManager.GetString("information_barriers_policy_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("information_barriers_policy_updated", resourceCulture);
             }
         }
         
@@ -3555,9 +3556,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;type&quot;: &quot;actions&quot;,
         ///        [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string interactive_message_actions_webhook {
+        internal static string interactive_message_actions {
             get {
-                return ResourceManager.GetString("interactive_message_actions_webhook", resourceCulture);
+                return ResourceManager.GetString("interactive_message_actions", resourceCulture);
             }
         }
         
@@ -3580,9 +3581,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        },
         ///        &quot;text&quot;: &quot;I am a h [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string interactive_message_editable_webhook {
+        internal static string interactive_message_editable {
             get {
-                return ResourceManager.GetString("interactive_message_editable_webhook", resourceCulture);
+                return ResourceManager.GetString("interactive_message_editable", resourceCulture);
             }
         }
         
@@ -3608,9 +3609,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      },
         ///      &quot;bo [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string interactive_message_fields_editable_webhook {
+        internal static string interactive_message_fields_editable {
             get {
-                return ResourceManager.GetString("interactive_message_fields_editable_webhook", resourceCulture);
+                return ResourceManager.GetString("interactive_message_fields_editable", resourceCulture);
             }
         }
         
@@ -3637,9 +3638,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///              &quot;value&quot;: &quot;lions&quot;
         ///    [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string interactive_message_select_webhook {
+        internal static string interactive_message_select {
             get {
-                return ResourceManager.GetString("interactive_message_select_webhook", resourceCulture);
+                return ResourceManager.GetString("interactive_message_select", resourceCulture);
             }
         }
         
@@ -3657,9 +3658,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string mail_history_event_webhook {
+        internal static string mail_history_event {
             get {
-                return ResourceManager.GetString("mail_history_event_webhook", resourceCulture);
+                return ResourceManager.GetString("mail_history_event", resourceCulture);
             }
         }
         
@@ -3682,9 +3683,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string meeting_ai_companion_assets_deleted_webhook {
+        internal static string meeting_ai_companion_assets_deleted {
             get {
-                return ResourceManager.GetString("meeting_ai_companion_assets_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_ai_companion_assets_deleted", resourceCulture);
             }
         }
         
@@ -3705,9 +3706,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string meeting_ai_companion_started_webhook {
+        internal static string meeting_ai_companion_started {
             get {
-                return ResourceManager.GetString("meeting_ai_companion_started_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_ai_companion_started", resourceCulture);
             }
         }
         
@@ -3728,9 +3729,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string meeting_ai_companion_stopped_webhook {
+        internal static string meeting_ai_companion_stopped {
             get {
-                return ResourceManager.GetString("meeting_ai_companion_stopped_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_ai_companion_stopped", resourceCulture);
             }
         }
         
@@ -3752,9 +3753,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string meeting_aic_transcript_completed_webhook {
+        internal static string meeting_aic_transcript_completed {
             get {
-                return ResourceManager.GetString("meeting_aic_transcript_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_aic_transcript_completed", resourceCulture);
             }
         }
         
@@ -3780,9 +3781,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string meeting_alert_webhook {
+        internal static string meeting_alert {
             get {
-                return ResourceManager.GetString("meeting_alert_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_alert", resourceCulture);
             }
         }
         
@@ -3806,9 +3807,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///				&quot;user_id&quot;: &quot;31228928&quot;,
         ///				&quot;parent_user_i [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_breakout_room_sharing_ended_webhook {
+        internal static string meeting_breakout_room_sharing_ended {
             get {
-                return ResourceManager.GetString("meeting_breakout_room_sharing_ended_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_breakout_room_sharing_ended", resourceCulture);
             }
         }
         
@@ -3832,9 +3833,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///				&quot;user_id&quot;: &quot;31228928&quot;,
         ///				&quot;parent_user [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_breakout_room_sharing_started_webhook {
+        internal static string meeting_breakout_room_sharing_started {
             get {
-                return ResourceManager.GetString("meeting_breakout_room_sharing_started_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_breakout_room_sharing_started", resourceCulture);
             }
         }
         
@@ -3855,9 +3856,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;file_name&quot;: &quot;example.jpg&quot;,
         ///        &quot;file_o [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_chat_message_file_downloaded_webhook {
+        internal static string meeting_chat_message_file_downloaded {
             get {
-                return ResourceManager.GetString("meeting_chat_message_file_downloaded_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_chat_message_file_downloaded", resourceCulture);
             }
         }
         
@@ -3879,9 +3880,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;recipient_session_id&quot;: &quot;38681600&quot;,
         ///  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_chat_message_file_sent_webhook {
+        internal static string meeting_chat_message_file_sent {
             get {
-                return ResourceManager.GetString("meeting_chat_message_file_sent_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_chat_message_file_sent", resourceCulture);
             }
         }
         
@@ -3902,9 +3903,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///                &quot;sender_type&quot;: &quot;host&quot;,
         /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_chat_message_sent_webhook {
+        internal static string meeting_chat_message_sent {
             get {
-                return ResourceManager.GetString("meeting_chat_message_sent_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_chat_message_sent", resourceCulture);
             }
         }
         
@@ -3929,9 +3930,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string meeting_converted_to_webinar_webhook {
+        internal static string meeting_converted_to_webinar {
             get {
-                return ResourceManager.GetString("meeting_converted_to_webinar_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_converted_to_webinar", resourceCulture);
             }
         }
         
@@ -3955,9 +3956,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///			&quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///			&quot;join_url&quot;: &quot;https:/ [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_created_webhook {
+        internal static string meeting_created {
             get {
-                return ResourceManager.GetString("meeting_created_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_created", resourceCulture);
             }
         }
         
@@ -3983,9 +3984,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///}
         ///.
         /// </summary>
-        internal static string meeting_deleted_webhook {
+        internal static string meeting_deleted {
             get {
-                return ResourceManager.GetString("meeting_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_deleted", resourceCulture);
             }
         }
         
@@ -4010,9 +4011,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string meeting_device_tested_webhook {
+        internal static string meeting_device_tested {
             get {
-                return ResourceManager.GetString("meeting_device_tested_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_device_tested", resourceCulture);
             }
         }
         
@@ -4036,9 +4037,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string meeting_ended_webhook {
+        internal static string meeting_ended {
             get {
-                return ResourceManager.GetString("meeting_ended_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_ended", resourceCulture);
             }
         }
         
@@ -4063,9 +4064,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string meeting_invitation_accepted_webhook {
+        internal static string meeting_invitation_accepted {
             get {
-                return ResourceManager.GetString("meeting_invitation_accepted_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_invitation_accepted", resourceCulture);
             }
         }
         
@@ -4090,9 +4091,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string meeting_invitation_dispatched_webhook {
+        internal static string meeting_invitation_dispatched {
             get {
-                return ResourceManager.GetString("meeting_invitation_dispatched_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_invitation_dispatched", resourceCulture);
             }
         }
         
@@ -4117,9 +4118,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string meeting_invitation_rejected_webhook {
+        internal static string meeting_invitation_rejected {
             get {
-                return ResourceManager.GetString("meeting_invitation_rejected_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_invitation_rejected", resourceCulture);
             }
         }
         
@@ -4144,9 +4145,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string meeting_invitation_timeout_webhook {
+        internal static string meeting_invitation_timeout {
             get {
-                return ResourceManager.GetString("meeting_invitation_timeout_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_invitation_timeout", resourceCulture);
             }
         }
         
@@ -4169,9 +4170,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;duration&quot;: 60,
         ///     [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_live_streaming_started_webhook {
+        internal static string meeting_live_streaming_started {
             get {
-                return ResourceManager.GetString("meeting_live_streaming_started_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_live_streaming_started", resourceCulture);
             }
         }
         
@@ -4194,9 +4195,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;duration&quot;: 60,
         ///     [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_live_streaming_stopped_webhook {
+        internal static string meeting_live_streaming_stopped {
             get {
-                return ResourceManager.GetString("meeting_live_streaming_stopped_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_live_streaming_stopped", resourceCulture);
             }
         }
         
@@ -4219,9 +4220,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
         ///        &quot;user_name&quot;: &quot;Jill [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_participant_admitted_webhook {
+        internal static string meeting_participant_admitted {
             get {
-                return ResourceManager.GetString("meeting_participant_admitted_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_participant_admitted", resourceCulture);
             }
         }
         
@@ -4244,34 +4245,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
         ///        &quot;bind_user_id&quot;: &quot;16778 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_participant_bind_webhook {
+        internal static string meeting_participant_bind {
             get {
-                return ResourceManager.GetString("meeting_participant_bind_webhook", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {
-        ///  &quot;event&quot;: &quot;meeting.participant_data_summary&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
-        ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///    &quot;object&quot;: {
-        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///      &quot;id&quot;: &quot;1234567890&quot;,
-        ///      &quot;participant&quot;: {
-        ///        &quot;participant_id&quot;: &quot;1234567890&quot;,
-        ///        &quot;participant_user_id&quot;: &quot;rstuvwxyza789-cde&quot;,
-        ///        &quot;email&quot;: &quot;user@example.com&quot;,
-        ///        &quot;data&quot;: [
-        ///          {
-        ///            &quot;device&quot;: &quot;Windows&quot;,
-        ///            &quot;location&quot;: &quot;New York&quot;,
-        ///            &quot;network_type&quot;: &quot;Wired&quot;, [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string meeting_participant_data_summary_webhook {
-            get {
-                return ResourceManager.GetString("meeting_participant_data_summary_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_participant_bind", resourceCulture);
             }
         }
         
@@ -4294,9 +4270,34 @@ namespace ZoomNet.UnitTests.Properties {
         ///            &quot;network_type&quot;: &quot;Wired&quot;,
         ///            &quot;microphone&quot;: &quot;Plantronic [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_participant_data_webhook {
+        internal static string meeting_participant_data {
             get {
-                return ResourceManager.GetString("meeting_participant_data_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_participant_data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;meeting.participant_data_summary&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;id&quot;: &quot;1234567890&quot;,
+        ///      &quot;participant&quot;: {
+        ///        &quot;participant_id&quot;: &quot;1234567890&quot;,
+        ///        &quot;participant_user_id&quot;: &quot;rstuvwxyza789-cde&quot;,
+        ///        &quot;email&quot;: &quot;user@example.com&quot;,
+        ///        &quot;data&quot;: [
+        ///          {
+        ///            &quot;device&quot;: &quot;Windows&quot;,
+        ///            &quot;location&quot;: &quot;New York&quot;,
+        ///            &quot;network_type&quot;: &quot;Wired&quot;, [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string meeting_participant_data_summary {
+            get {
+                return ResourceManager.GetString("meeting_participant_data_summary", resourceCulture);
             }
         }
         
@@ -4316,9 +4317,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///                &quot;feedback&quot;: {
         ///                    &quot;satisfied&quot;: [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_participant_feedback_webhook {
+        internal static string meeting_participant_feedback {
             get {
-                return ResourceManager.GetString("meeting_participant_feedback_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_participant_feedback", resourceCulture);
             }
         }
         
@@ -4341,34 +4342,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
         ///        &quot;user_name&quot;: &quot;Jill Chil [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_participant_jbh_joined_webhook {
+        internal static string meeting_participant_jbh_joined {
             get {
-                return ResourceManager.GetString("meeting_participant_jbh_joined_webhook", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {
-        ///  &quot;event&quot;: &quot;meeting.participant_jbh_waiting_left&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
-        ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///    &quot;object&quot;: {
-        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///      &quot;id&quot;: 1234567890,
-        ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///      &quot;topic&quot;: &quot;My Meeting&quot;,
-        ///      &quot;type&quot;: 8,
-        ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///      &quot;duration&quot;: 60,
-        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///      &quot;participant&quot;: {
-        ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill  [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string meeting_participant_jbh_waiting_left_webhook {
-            get {
-                return ResourceManager.GetString("meeting_participant_jbh_waiting_left_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_participant_jbh_joined", resourceCulture);
             }
         }
         
@@ -4391,9 +4367,59 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
         ///        &quot;user_name&quot;: &quot;Jill Chi [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_participant_jbh_waiting_webhook {
+        internal static string meeting_participant_jbh_waiting {
             get {
-                return ResourceManager.GetString("meeting_participant_jbh_waiting_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_participant_jbh_waiting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;meeting.participant_jbh_waiting_left&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;id&quot;: 1234567890,
+        ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///      &quot;topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;type&quot;: 8,
+        ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
+        ///      &quot;duration&quot;: 60,
+        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///      &quot;participant&quot;: {
+        ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
+        ///        &quot;user_name&quot;: &quot;Jill  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string meeting_participant_jbh_waiting_left {
+            get {
+                return ResourceManager.GetString("meeting_participant_jbh_waiting_left", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;meeting.participant_joined&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;1234567890&quot;,
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///      &quot;topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;type&quot;: 8,
+        ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
+        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///      &quot;duration&quot;: 60,
+        ///      &quot;participant&quot;: {
+        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
+        ///        &quot;user_name&quot;: &quot;Jill C [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string meeting_participant_joined {
+            get {
+                return ResourceManager.GetString("meeting_participant_joined", resourceCulture);
             }
         }
         
@@ -4417,9 +4443,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///				&quot;user_id&quot;: &quot;31228928&quot;,
         ///				&quot;parent_u [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_participant_joined_breakout_room_webhook {
+        internal static string meeting_participant_joined_breakout_room {
             get {
-                return ResourceManager.GetString("meeting_participant_joined_breakout_room_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_participant_joined_breakout_room", resourceCulture);
             }
         }
         
@@ -4442,15 +4468,15 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
         ///        &quot;user_n [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_participant_joined_waiting_room_webhook {
+        internal static string meeting_participant_joined_waiting_room {
             get {
-                return ResourceManager.GetString("meeting_participant_joined_waiting_room_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_participant_joined_waiting_room", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;event&quot;: &quot;meeting.participant_joined&quot;,
+        ///  &quot;event&quot;: &quot;meeting.participant_left&quot;,
         ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
@@ -4465,11 +4491,11 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;duration&quot;: 60,
         ///      &quot;participant&quot;: {
         ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill C [rest of string was truncated]&quot;;.
+        ///        &quot;user_name&quot;: &quot;Jill Chi [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_participant_joined_webhook {
+        internal static string meeting_participant_left {
             get {
-                return ResourceManager.GetString("meeting_participant_joined_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_participant_left", resourceCulture);
             }
         }
         
@@ -4493,9 +4519,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///				&quot;user_id&quot;: &quot;31228928&quot;,
         ///				&quot;parent_use [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_participant_left_breakout_room_webhook {
+        internal static string meeting_participant_left_breakout_room {
             get {
-                return ResourceManager.GetString("meeting_participant_left_breakout_room_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_participant_left_breakout_room", resourceCulture);
             }
         }
         
@@ -4518,34 +4544,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
         ///        &quot;user_nam [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_participant_left_waiting_room_webhook {
+        internal static string meeting_participant_left_waiting_room {
             get {
-                return ResourceManager.GetString("meeting_participant_left_waiting_room_webhook", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {
-        ///  &quot;event&quot;: &quot;meeting.participant_left&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
-        ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///    &quot;object&quot;: {
-        ///      &quot;id&quot;: &quot;1234567890&quot;,
-        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///      &quot;topic&quot;: &quot;My Meeting&quot;,
-        ///      &quot;type&quot;: 8,
-        ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///      &quot;duration&quot;: 60,
-        ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill Chi [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string meeting_participant_left_webhook {
-            get {
-                return ResourceManager.GetString("meeting_participant_left_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_participant_left_waiting_room", resourceCulture);
             }
         }
         
@@ -4567,9 +4568,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string meeting_participant_phone_callout_accepted_webhook {
+        internal static string meeting_participant_phone_callout_accepted {
             get {
-                return ResourceManager.GetString("meeting_participant_phone_callout_accepted_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_participant_phone_callout_accepted", resourceCulture);
             }
         }
         
@@ -4591,9 +4592,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string meeting_participant_phone_callout_missed_webhook {
+        internal static string meeting_participant_phone_callout_missed {
             get {
-                return ResourceManager.GetString("meeting_participant_phone_callout_missed_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_participant_phone_callout_missed", resourceCulture);
             }
         }
         
@@ -4615,9 +4616,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string meeting_participant_phone_callout_rejected_webhook {
+        internal static string meeting_participant_phone_callout_rejected {
             get {
-                return ResourceManager.GetString("meeting_participant_phone_callout_rejected_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_participant_phone_callout_rejected", resourceCulture);
             }
         }
         
@@ -4639,9 +4640,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string meeting_participant_phone_callout_ringing_webhook {
+        internal static string meeting_participant_phone_callout_ringing {
             get {
-                return ResourceManager.GetString("meeting_participant_phone_callout_ringing_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_participant_phone_callout_ringing", resourceCulture);
             }
         }
         
@@ -4664,35 +4665,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
         ///        &quot;user_n [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_participant_put_in_waiting_room_webhook {
+        internal static string meeting_participant_put_in_waiting_room {
             get {
-                return ResourceManager.GetString("meeting_participant_put_in_waiting_room_webhook", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {
-        ///  &quot;event&quot;: &quot;meeting.participant_qos_summary&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
-        ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///    &quot;object&quot;: {
-        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///      &quot;participant&quot;: {
-        ///        &quot;participant_id&quot;: &quot;string&quot;,
-        ///        &quot;user_name&quot;: &quot;JillChill&quot;,
-        ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
-        ///        &quot;email&quot;: &quot;user@example.com&quot;,
-        ///        &quot;qos&quot; : [
-        ///          {
-        ///          &quot;type&quot; : &quot;audio_output&quot;,
-        ///          &quot;details&quot; : {
-        ///            &quot;min_bitrate&quot; : &quot;6 kbps&quot;,
-        ///            &quot;avg_ [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string meeting_participant_qos_summary_webhook {
-            get {
-                return ResourceManager.GetString("meeting_participant_qos_summary_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_participant_put_in_waiting_room", resourceCulture);
             }
         }
         
@@ -4716,9 +4691,35 @@ namespace ZoomNet.UnitTests.Properties {
         ///              &quot;bitrate&quot;: &quot;63 kbps&quot;,
         ///   [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_participant_qos_webhook {
+        internal static string meeting_participant_qos {
             get {
-                return ResourceManager.GetString("meeting_participant_qos_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_participant_qos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;meeting.participant_qos_summary&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;participant&quot;: {
+        ///        &quot;participant_id&quot;: &quot;string&quot;,
+        ///        &quot;user_name&quot;: &quot;JillChill&quot;,
+        ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
+        ///        &quot;email&quot;: &quot;user@example.com&quot;,
+        ///        &quot;qos&quot; : [
+        ///          {
+        ///          &quot;type&quot; : &quot;audio_output&quot;,
+        ///          &quot;details&quot; : {
+        ///            &quot;min_bitrate&quot; : &quot;6 kbps&quot;,
+        ///            &quot;avg_ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string meeting_participant_qos_summary {
+            get {
+                return ResourceManager.GetString("meeting_participant_qos_summary", resourceCulture);
             }
         }
         
@@ -4741,9 +4742,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
         ///        &quot;participant_u [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_participant_role_changed_webhook {
+        internal static string meeting_participant_role_changed {
             get {
-                return ResourceManager.GetString("meeting_participant_role_changed_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_participant_role_changed", resourceCulture);
             }
         }
         
@@ -4767,9 +4768,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string meeting_participant_room_system_callout_accepted_webhook {
+        internal static string meeting_participant_room_system_callout_accepted {
             get {
-                return ResourceManager.GetString("meeting_participant_room_system_callout_accepted_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_participant_room_system_callout_accepted", resourceCulture);
             }
         }
         
@@ -4794,9 +4795,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string meeting_participant_room_system_callout_failed_webhook {
+        internal static string meeting_participant_room_system_callout_failed {
             get {
-                return ResourceManager.GetString("meeting_participant_room_system_callout_failed_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_participant_room_system_callout_failed", resourceCulture);
             }
         }
         
@@ -4820,9 +4821,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string meeting_participant_room_system_callout_missed_webhook {
+        internal static string meeting_participant_room_system_callout_missed {
             get {
-                return ResourceManager.GetString("meeting_participant_room_system_callout_missed_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_participant_room_system_callout_missed", resourceCulture);
             }
         }
         
@@ -4846,9 +4847,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string meeting_participant_room_system_callout_rejected_webhook {
+        internal static string meeting_participant_room_system_callout_rejected {
             get {
-                return ResourceManager.GetString("meeting_participant_room_system_callout_rejected_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_participant_room_system_callout_rejected", resourceCulture);
             }
         }
         
@@ -4872,9 +4873,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string meeting_participant_room_system_callout_ringing_webhook {
+        internal static string meeting_participant_room_system_callout_ringing {
             get {
-                return ResourceManager.GetString("meeting_participant_room_system_callout_ringing_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_participant_room_system_callout_ringing", resourceCulture);
             }
         }
         
@@ -4897,9 +4898,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;duration&quot;: 60,
         ///      &quot;timezone&quot;: &quot;America/Los_An [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_permanently_deleted_webhook {
+        internal static string meeting_permanently_deleted {
             get {
-                return ResourceManager.GetString("meeting_permanently_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_permanently_deleted", resourceCulture);
             }
         }
         
@@ -4923,9 +4924,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_recovered_webhook {
+        internal static string meeting_recovered {
             get {
-                return ResourceManager.GetString("meeting_recovered_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_recovered", resourceCulture);
             }
         }
         
@@ -4948,9 +4949,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;occurrence [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_registration_approved_webhook {
+        internal static string meeting_registration_approved {
             get {
-                return ResourceManager.GetString("meeting_registration_approved_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_registration_approved", resourceCulture);
             }
         }
         
@@ -4973,9 +4974,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;occurrenc [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_registration_cancelled_webhook {
+        internal static string meeting_registration_cancelled {
             get {
-                return ResourceManager.GetString("meeting_registration_cancelled_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_registration_cancelled", resourceCulture);
             }
         }
         
@@ -4999,9 +5000,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;occurrence_id&quot;: &quot;ABCDE12345&quot;,
         ///          &quot;start_time&quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_registration_created_webhook {
+        internal static string meeting_registration_created {
             get {
-                return ResourceManager.GetString("meeting_registration_created_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_registration_created", resourceCulture);
             }
         }
         
@@ -5024,9 +5025,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;occurrences&quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_registration_denied_webhook {
+        internal static string meeting_registration_denied {
             get {
-                return ResourceManager.GetString("meeting_registration_denied_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_registration_denied", resourceCulture);
             }
         }
         
@@ -5049,9 +5050,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;post_platform&quot;: &quot;twitter&quot;,
         ///        &quot;social [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_risk_alert_webhook {
+        internal static string meeting_risk_alert {
             get {
-                return ResourceManager.GetString("meeting_risk_alert_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_risk_alert", resourceCulture);
             }
         }
         
@@ -5066,9 +5067,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string meeting_rtms_concurrency_near_limit_webhook {
+        internal static string meeting_rtms_concurrency_near_limit {
             get {
-                return ResourceManager.GetString("meeting_rtms_concurrency_near_limit_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_rtms_concurrency_near_limit", resourceCulture);
             }
         }
         
@@ -5082,9 +5083,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string meeting_rtms_interrupted_webhook {
+        internal static string meeting_rtms_interrupted {
             get {
-                return ResourceManager.GetString("meeting_rtms_interrupted_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_rtms_interrupted", resourceCulture);
             }
         }
         
@@ -5100,9 +5101,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string meeting_rtms_started_webhook {
+        internal static string meeting_rtms_started {
             get {
-                return ResourceManager.GetString("meeting_rtms_started_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_rtms_started", resourceCulture);
             }
         }
         
@@ -5117,9 +5118,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string meeting_rtms_stopped_webhook {
+        internal static string meeting_rtms_stopped {
             get {
-                return ResourceManager.GetString("meeting_rtms_stopped_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_rtms_stopped", resourceCulture);
             }
         }
         
@@ -5143,9 +5144,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_name&quot;: &quot;Arya Arya&quot;,
         ///      [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_sharing_ended_webhook {
+        internal static string meeting_sharing_ended {
             get {
-                return ResourceManager.GetString("meeting_sharing_ended_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_sharing_ended", resourceCulture);
             }
         }
         
@@ -5170,9 +5171,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///				&quot;user_name&quot;: &quot;Arya Arya&quot;,
         ///				&quot;sharing [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_sharing_started_webhook {
+        internal static string meeting_sharing_started {
             get {
-                return ResourceManager.GetString("meeting_sharing_started_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_sharing_started", resourceCulture);
             }
         }
         
@@ -5196,9 +5197,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///}
         ///.
         /// </summary>
-        internal static string meeting_started_webhook {
+        internal static string meeting_started {
             get {
-                return ResourceManager.GetString("meeting_started_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_started", resourceCulture);
             }
         }
         
@@ -5219,9 +5220,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///			&quot;summary_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
         ///			&quot;summ [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_summary_completed_webhook {
+        internal static string meeting_summary_completed {
             get {
-                return ResourceManager.GetString("meeting_summary_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_summary_completed", resourceCulture);
             }
         }
         
@@ -5242,9 +5243,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///			&quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
         ///			&quot;meeting_end_time&quot;: &quot;2019-07 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_summary_deleted_webhook {
+        internal static string meeting_summary_deleted {
             get {
-                return ResourceManager.GetString("meeting_summary_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_summary_deleted", resourceCulture);
             }
         }
         
@@ -5265,9 +5266,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///			&quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
         ///			&quot;meeting_end_time&quot;: &quot;2019- [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_summary_recovered_webhook {
+        internal static string meeting_summary_recovered {
             get {
-                return ResourceManager.GetString("meeting_summary_recovered_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_summary_recovered", resourceCulture);
             }
         }
         
@@ -5288,9 +5289,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///			&quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
         ///			&quot;meeting_end_time&quot;: &quot;2019-07- [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_summary_shared_webhook {
+        internal static string meeting_summary_shared {
             get {
-                return ResourceManager.GetString("meeting_summary_shared_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_summary_shared", resourceCulture);
             }
         }
         
@@ -5311,9 +5312,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///			&quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
         ///			&quot;meeting_end_time&quot;: &quot;2019-07 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_summary_trashed_webhook {
+        internal static string meeting_summary_trashed {
             get {
-                return ResourceManager.GetString("meeting_summary_trashed_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_summary_trashed", resourceCulture);
             }
         }
         
@@ -5334,9 +5335,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///			&quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
         ///			&quot;meeting_end_time&quot;: &quot;2019-07 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_summary_updated_webhook {
+        internal static string meeting_summary_updated {
             get {
-                return ResourceManager.GetString("meeting_summary_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_summary_updated", resourceCulture);
             }
         }
         
@@ -5360,33 +5361,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///			&quot;topic&quot;: &quot;ZoomNet Unit Testing: scheduled meeting&quot;,
         ///			&quot;settings&quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meeting_updated_webhook {
+        internal static string meeting_updated {
             get {
-                return ResourceManager.GetString("meeting_updated_webhook", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {
-        ///  &quot;event&quot;: &quot;node.mc_stat_alert&quot;,
-        ///  &quot;event_ts&quot;: 290112312321,
-        ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///    &quot;object&quot;: {
-        ///      &quot;server&quot;: {
-        ///        &quot;id&quot;: &quot;572faedd-7175-4428-9f10-92373175c878&quot;,
-        ///        &quot;udid&quot;: &quot;e25914cc9765a38fdc8278cec016b5af9b80a3b0bc0ddd731de6ef158169e392&quot;,
-        ///        &quot;name&quot;: &quot;kvm-0411-meeting&quot;,
-        ///        &quot;location&quot;: &quot;Hefei - CN&quot;,
-        ///        &quot;group&quot;: &quot;group-contaact-test&quot;,
-        ///        &quot;os_image&quot;: &quot;Ubuntu22.04-20240411024129&quot;,
-        ///        &quot;status&quot;: &quot;online&quot;,
-        ///        &quot;module&quot;: &quot;hybrid&quot;
-        /// [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string node_mc_stat_alert_webhook {
-            get {
-                return ResourceManager.GetString("node_mc_stat_alert_webhook", resourceCulture);
+                return ResourceManager.GetString("meeting_updated", resourceCulture);
             }
         }
         
@@ -5411,9 +5388,33 @@ namespace ZoomNet.UnitTests.Properties {
         ///        {
         ///          &quot;zc_service_id&quot;: &quot;4444A [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_mc_stat_webhook {
+        internal static string node_mc_stat {
             get {
-                return ResourceManager.GetString("node_mc_stat_webhook", resourceCulture);
+                return ResourceManager.GetString("node_mc_stat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;node.mc_stat_alert&quot;,
+        ///  &quot;event_ts&quot;: 290112312321,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;server&quot;: {
+        ///        &quot;id&quot;: &quot;572faedd-7175-4428-9f10-92373175c878&quot;,
+        ///        &quot;udid&quot;: &quot;e25914cc9765a38fdc8278cec016b5af9b80a3b0bc0ddd731de6ef158169e392&quot;,
+        ///        &quot;name&quot;: &quot;kvm-0411-meeting&quot;,
+        ///        &quot;location&quot;: &quot;Hefei - CN&quot;,
+        ///        &quot;group&quot;: &quot;group-contaact-test&quot;,
+        ///        &quot;os_image&quot;: &quot;Ubuntu22.04-20240411024129&quot;,
+        ///        &quot;status&quot;: &quot;online&quot;,
+        ///        &quot;module&quot;: &quot;hybrid&quot;
+        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string node_mc_stat_alert {
+            get {
+                return ResourceManager.GetString("node_mc_stat_alert", resourceCulture);
             }
         }
         
@@ -5435,9 +5436,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string node_mc_zone_stat_alert_webhook {
+        internal static string node_mc_zone_stat_alert {
             get {
-                return ResourceManager.GetString("node_mc_zone_stat_alert_webhook", resourceCulture);
+                return ResourceManager.GetString("node_mc_zone_stat_alert", resourceCulture);
             }
         }
         
@@ -5460,33 +5461,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;nfs&quot;: {
         ///        &quot;host&quot;: &quot;10.100. [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_nfs_alert_webhook {
+        internal static string node_nfs_alert {
             get {
-                return ResourceManager.GetString("node_nfs_alert_webhook", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {
-        ///  &quot;event&quot;: &quot;node.rc_stat_alert&quot;,
-        ///  &quot;event_ts&quot;: 290112312321,
-        ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///    &quot;object&quot;: {
-        ///      &quot;server&quot;: {
-        ///        &quot;id&quot;: &quot;572faedd-7175-4428-9f10-92373175c878&quot;,
-        ///        &quot;udid&quot;: &quot;e25914cc9765a38fdc8278cec016b5af9b80a3b0bc0ddd731de6ef158169e392&quot;,
-        ///        &quot;name&quot;: &quot;kvm-0411-meeting&quot;,
-        ///        &quot;location&quot;: &quot;Hefei - CN&quot;,
-        ///        &quot;group&quot;: &quot;group-contaact-test&quot;,
-        ///        &quot;os_image&quot;: &quot;Ubuntu22.04-20240411024129&quot;,
-        ///        &quot;status&quot;: &quot;online&quot;,
-        ///        &quot;module&quot;: &quot;hybrid&quot;
-        /// [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string node_rc_stat_alert_webhook {
-            get {
-                return ResourceManager.GetString("node_rc_stat_alert_webhook", resourceCulture);
+                return ResourceManager.GetString("node_nfs_alert", resourceCulture);
             }
         }
         
@@ -5512,9 +5489,33 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string node_rc_stat_webhook {
+        internal static string node_rc_stat {
             get {
-                return ResourceManager.GetString("node_rc_stat_webhook", resourceCulture);
+                return ResourceManager.GetString("node_rc_stat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;node.rc_stat_alert&quot;,
+        ///  &quot;event_ts&quot;: 290112312321,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;server&quot;: {
+        ///        &quot;id&quot;: &quot;572faedd-7175-4428-9f10-92373175c878&quot;,
+        ///        &quot;udid&quot;: &quot;e25914cc9765a38fdc8278cec016b5af9b80a3b0bc0ddd731de6ef158169e392&quot;,
+        ///        &quot;name&quot;: &quot;kvm-0411-meeting&quot;,
+        ///        &quot;location&quot;: &quot;Hefei - CN&quot;,
+        ///        &quot;group&quot;: &quot;group-contaact-test&quot;,
+        ///        &quot;os_image&quot;: &quot;Ubuntu22.04-20240411024129&quot;,
+        ///        &quot;status&quot;: &quot;online&quot;,
+        ///        &quot;module&quot;: &quot;hybrid&quot;
+        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string node_rc_stat_alert {
+            get {
+                return ResourceManager.GetString("node_rc_stat_alert", resourceCulture);
             }
         }
         
@@ -5536,9 +5537,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      },
         ///      &quot;metric&quot;: &quot;node_bandw [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_server_bandwidth_alert_webhook {
+        internal static string node_server_bandwidth_alert {
             get {
-                return ResourceManager.GetString("node_server_bandwidth_alert_webhook", resourceCulture);
+                return ResourceManager.GetString("node_server_bandwidth_alert", resourceCulture);
             }
         }
         
@@ -5559,9 +5560,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;os_image&quot;: &quot;Ubuntu-20221111131438&quot;,
         ///        &quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_server_confirmed_webhook {
+        internal static string node_server_confirmed {
             get {
-                return ResourceManager.GetString("node_server_confirmed_webhook", resourceCulture);
+                return ResourceManager.GetString("node_server_confirmed", resourceCulture);
             }
         }
         
@@ -5584,9 +5585,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;metric&quot;: &quot;node_cpu&quot;,
         /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_server_cpu_alert_webhook {
+        internal static string node_server_cpu_alert {
             get {
-                return ResourceManager.GetString("node_server_cpu_alert_webhook", resourceCulture);
+                return ResourceManager.GetString("node_server_cpu_alert", resourceCulture);
             }
         }
         
@@ -5607,9 +5608,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;os_image&quot;: &quot;AlmaLinux8.5-20221111131438&quot;,
         ///      [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_server_deleted_webhook {
+        internal static string node_server_deleted {
             get {
-                return ResourceManager.GetString("node_server_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("node_server_deleted", resourceCulture);
             }
         }
         
@@ -5631,9 +5632,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        },
         ///        &quot;metri [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_server_disk_alert_webhook {
+        internal static string node_server_disk_alert {
             get {
-                return ResourceManager.GetString("node_server_disk_alert_webhook", resourceCulture);
+                return ResourceManager.GetString("node_server_disk_alert", resourceCulture);
             }
         }
         
@@ -5655,9 +5656,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;module&quot;: &quot;hybrid&quot;
         ///       [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_server_memory_alert_webhook {
+        internal static string node_server_memory_alert {
             get {
-                return ResourceManager.GetString("node_server_memory_alert_webhook", resourceCulture);
+                return ResourceManager.GetString("node_server_memory_alert", resourceCulture);
             }
         }
         
@@ -5678,9 +5679,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;module&quot;: &quot;hybrid&quot;,
         ///        &quot;group&quot;: &quot;LA-node-g [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_server_offline_webhook {
+        internal static string node_server_offline {
             get {
-                return ResourceManager.GetString("node_server_offline_webhook", resourceCulture);
+                return ResourceManager.GetString("node_server_offline", resourceCulture);
             }
         }
         
@@ -5701,9 +5702,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;module&quot;: &quot;hybrid&quot;,
         ///        &quot;group&quot;: &quot;LA-node-gro [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_server_online_webhook {
+        internal static string node_server_online {
             get {
-                return ResourceManager.GetString("node_server_online_webhook", resourceCulture);
+                return ResourceManager.GetString("node_server_online", resourceCulture);
             }
         }
         
@@ -5724,9 +5725,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;os_image&quot;: &quot;AlmaLinux8.5-20221111131438&quot;,
         ///     [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_server_rebooted_webhook {
+        internal static string node_server_rebooted {
             get {
-                return ResourceManager.GetString("node_server_rebooted_webhook", resourceCulture);
+                return ResourceManager.GetString("node_server_rebooted", resourceCulture);
             }
         }
         
@@ -5749,9 +5750,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string node_server_registered_webhook {
+        internal static string node_server_registered {
             get {
-                return ResourceManager.GetString("node_server_registered_webhook", resourceCulture);
+                return ResourceManager.GetString("node_server_registered", resourceCulture);
             }
         }
         
@@ -5772,9 +5773,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;os_image&quot;: &quot;AlmaLinux8.5-20221111131438&quot;,
         ///     [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_server_shutdown_webhook {
+        internal static string node_server_shutdown {
             get {
-                return ResourceManager.GetString("node_server_shutdown_webhook", resourceCulture);
+                return ResourceManager.GetString("node_server_shutdown", resourceCulture);
             }
         }
         
@@ -5799,9 +5800,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;cpu_used_percent&quot;: 9.17,
         ///          &quot;memory [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_server_stat_webhook {
+        internal static string node_server_stat {
             get {
-                return ResourceManager.GetString("node_server_stat_webhook", resourceCulture);
+                return ResourceManager.GetString("node_server_stat", resourceCulture);
             }
         }
         
@@ -5822,9 +5823,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;module&quot;: &quot;hybrid&quot;,
         ///        &quot;group&quot;: &quot;L [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_server_update_available_webhook {
+        internal static string node_server_update_available {
             get {
-                return ResourceManager.GetString("node_server_update_available_webhook", resourceCulture);
+                return ResourceManager.GetString("node_server_update_available", resourceCulture);
             }
         }
         
@@ -5844,9 +5845,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;location&quot;: &quot;Hefei - CN&quot;,
         ///        &quot;os_image&quot;: &quot;AlmaLinux8.5-20221111131438&quot;,        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_server_update_failed_webhook {
+        internal static string node_server_update_failed {
             get {
-                return ResourceManager.GetString("node_server_update_failed_webhook", resourceCulture);
+                return ResourceManager.GetString("node_server_update_failed", resourceCulture);
             }
         }
         
@@ -5866,9 +5867,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;location&quot;: &quot;Hefei - CN&quot;,
         ///        &quot;os_image&quot;: &quot;AlmaLinux8.5-20221111131438&quot;, [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_server_update_started_webhook {
+        internal static string node_server_update_started {
             get {
-                return ResourceManager.GetString("node_server_update_started_webhook", resourceCulture);
+                return ResourceManager.GetString("node_server_update_started", resourceCulture);
             }
         }
         
@@ -5888,9 +5889,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;location&quot;: &quot;Hefei - CN&quot;,
         ///        &quot;os_image&quot;: &quot;AlmaLinux8.5-20221111131438&quot;, [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_server_update_success_webhook {
+        internal static string node_server_update_success {
             get {
-                return ResourceManager.GetString("node_server_update_success_webhook", resourceCulture);
+                return ResourceManager.GetString("node_server_update_success", resourceCulture);
             }
         }
         
@@ -5912,9 +5913,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;module&quot;: &quot;hybrid&quot;
         ///   [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_service_abnormal_status_webhook {
+        internal static string node_service_abnormal_status {
             get {
-                return ResourceManager.GetString("node_service_abnormal_status_webhook", resourceCulture);
+                return ResourceManager.GetString("node_service_abnormal_status", resourceCulture);
             }
         }
         
@@ -5936,9 +5937,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        },
         ///        &quot;servi [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_service_cpu_alert_webhook {
+        internal static string node_service_cpu_alert {
             get {
-                return ResourceManager.GetString("node_service_cpu_alert_webhook", resourceCulture);
+                return ResourceManager.GetString("node_service_cpu_alert", resourceCulture);
             }
         }
         
@@ -5959,9 +5960,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;os_image&quot;: &quot;Ubuntu22.04-20240418022929&quot;,
         ///        &quot;status&quot;: [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_service_deleted_webhook {
+        internal static string node_service_deleted {
             get {
-                return ResourceManager.GetString("node_service_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("node_service_deleted", resourceCulture);
             }
         }
         
@@ -5984,9 +5985,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;service&quot;: {
         ///        &quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_service_memory_alert_webhook {
+        internal static string node_service_memory_alert {
             get {
-                return ResourceManager.GetString("node_service_memory_alert_webhook", resourceCulture);
+                return ResourceManager.GetString("node_service_memory_alert", resourceCulture);
             }
         }
         
@@ -6008,9 +6009,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        },
         ///        &quot;service&quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_service_started_webhook {
+        internal static string node_service_started {
             get {
-                return ResourceManager.GetString("node_service_started_webhook", resourceCulture);
+                return ResourceManager.GetString("node_service_started", resourceCulture);
             }
         }
         
@@ -6032,9 +6033,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///            &quot;status&quot;: &quot;online&quot;,
         ///            &quot;m [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_service_stat_webhook {
+        internal static string node_service_stat {
             get {
-                return ResourceManager.GetString("node_service_stat_webhook", resourceCulture);
+                return ResourceManager.GetString("node_service_stat", resourceCulture);
             }
         }
         
@@ -6057,9 +6058,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;service&quot;: {
         ///        &quot;id&quot;: &quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_service_stopped_webhook {
+        internal static string node_service_stopped {
             get {
-                return ResourceManager.GetString("node_service_stopped_webhook", resourceCulture);
+                return ResourceManager.GetString("node_service_stopped", resourceCulture);
             }
         }
         
@@ -6082,9 +6083,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;service&quot;: {
         ///       [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_service_update_available_webhook {
+        internal static string node_service_update_available {
             get {
-                return ResourceManager.GetString("node_service_update_available_webhook", resourceCulture);
+                return ResourceManager.GetString("node_service_update_available", resourceCulture);
             }
         }
         
@@ -6107,9 +6108,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;service&quot;: {
         ///        &quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_service_update_failed_webhook {
+        internal static string node_service_update_failed {
             get {
-                return ResourceManager.GetString("node_service_update_failed_webhook", resourceCulture);
+                return ResourceManager.GetString("node_service_update_failed", resourceCulture);
             }
         }
         
@@ -6132,9 +6133,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;service&quot;: {
         ///         [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_service_update_started_webhook {
+        internal static string node_service_update_started {
             get {
-                return ResourceManager.GetString("node_service_update_started_webhook", resourceCulture);
+                return ResourceManager.GetString("node_service_update_started", resourceCulture);
             }
         }
         
@@ -6157,32 +6158,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;service&quot;: {
         ///         [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_service_update_success_webhook {
+        internal static string node_service_update_success {
             get {
-                return ResourceManager.GetString("node_service_update_success_webhook", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {
-        ///  &quot;event&quot;: &quot;node.zhm_stat_alert&quot;,
-        ///  &quot;event_ts&quot;: 290112312321,
-        ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///    &quot;object&quot;: {
-        ///      &quot;server&quot;: {
-        ///        &quot;id&quot;: &quot;572faedd-7175-4428-9f10-92373175c878&quot;,
-        ///        &quot;udid&quot;: &quot;e25914cc9765a38fdc8278cec016b5af9b80a3b0bc0ddd731de6ef158169e392&quot;,
-        ///        &quot;name&quot;: &quot;kvm-0411-meeting&quot;,
-        ///        &quot;location&quot;: &quot;Hefei - CN&quot;,
-        ///        &quot;group&quot;: &quot;group-contaact-test&quot;,
-        ///        &quot;os_image&quot;: &quot;Ubuntu22.04-20240411024129&quot;,
-        ///        &quot;status&quot;: &quot;online&quot;,
-        ///        &quot;module&quot;: &quot;hybrid&quot;        /// [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string node_zhm_stat_alert_webhook {
-            get {
-                return ResourceManager.GetString("node_zhm_stat_alert_webhook", resourceCulture);
+                return ResourceManager.GetString("node_service_update_success", resourceCulture);
             }
         }
         
@@ -6204,9 +6182,32 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;sfu_mode_meeting_count&quot;: 1,
         ///          &quot;private_mode_meeting_count [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string node_zhm_stat_webhook {
+        internal static string node_zhm_stat {
             get {
-                return ResourceManager.GetString("node_zhm_stat_webhook", resourceCulture);
+                return ResourceManager.GetString("node_zhm_stat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;node.zhm_stat_alert&quot;,
+        ///  &quot;event_ts&quot;: 290112312321,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;server&quot;: {
+        ///        &quot;id&quot;: &quot;572faedd-7175-4428-9f10-92373175c878&quot;,
+        ///        &quot;udid&quot;: &quot;e25914cc9765a38fdc8278cec016b5af9b80a3b0bc0ddd731de6ef158169e392&quot;,
+        ///        &quot;name&quot;: &quot;kvm-0411-meeting&quot;,
+        ///        &quot;location&quot;: &quot;Hefei - CN&quot;,
+        ///        &quot;group&quot;: &quot;group-contaact-test&quot;,
+        ///        &quot;os_image&quot;: &quot;Ubuntu22.04-20240411024129&quot;,
+        ///        &quot;status&quot;: &quot;online&quot;,
+        ///        &quot;module&quot;: &quot;hybrid&quot;        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string node_zhm_stat_alert {
+            get {
+                return ResourceManager.GetString("node_zhm_stat_alert", resourceCulture);
             }
         }
         
@@ -6228,9 +6229,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string node_zhm_zone_stat_alert_webhook {
+        internal static string node_zhm_zone_stat_alert {
             get {
-                return ResourceManager.GetString("node_zhm_zone_stat_alert_webhook", resourceCulture);
+                return ResourceManager.GetString("node_zhm_zone_stat_alert", resourceCulture);
             }
         }
         
@@ -6250,9 +6251,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string node_zone_added_webhook {
+        internal static string node_zone_added {
             get {
-                return ResourceManager.GetString("node_zone_added_webhook", resourceCulture);
+                return ResourceManager.GetString("node_zone_added", resourceCulture);
             }
         }
         
@@ -6272,9 +6273,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string node_zone_deleted_webhook {
+        internal static string node_zone_deleted {
             get {
-                return ResourceManager.GetString("node_zone_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("node_zone_deleted", resourceCulture);
             }
         }
         
@@ -6294,9 +6295,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string number_management_peering_number_cnam_updated_webhook {
+        internal static string number_management_peering_number_cnam_updated {
             get {
-                return ResourceManager.GetString("number_management_peering_number_cnam_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("number_management_peering_number_cnam_updated", resourceCulture);
             }
         }
         
@@ -6323,9 +6324,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string number_management_peering_number_emergency_address_updated_webhook {
+        internal static string number_management_peering_number_emergency_address_updated {
             get {
-                return ResourceManager.GetString("number_management_peering_number_emergency_address_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("number_management_peering_number_emergency_address_updated", resourceCulture);
             }
         }
         
@@ -6348,9 +6349,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;allow_download&quot;: true,
         ///          &quot;a [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_account_settings_updated_webhook {
+        internal static string phone_account_settings_updated {
             get {
-                return ResourceManager.GetString("phone_account_settings_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_account_settings_updated", resourceCulture);
             }
         }
         
@@ -6373,9 +6374,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;created_time&quot;: &quot;2023-10-08T16:12:04Z&quot;,
         ///  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_ai_call_summary_changed_webhook {
+        internal static string phone_ai_call_summary_changed {
             get {
-                return ResourceManager.GetString("phone_ai_call_summary_changed_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_ai_call_summary_changed", resourceCulture);
             }
         }
         
@@ -6400,9 +6401,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///    }
         ///  }        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_blind_transfer_initiated_webhook {
+        internal static string phone_blind_transfer_initiated {
             get {
-                return ResourceManager.GetString("phone_blind_transfer_initiated_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_blind_transfer_initiated", resourceCulture);
             }
         }
         
@@ -6424,9 +6425,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string phone_call_element_deleted_webhook {
+        internal static string phone_call_element_deleted {
             get {
-                return ResourceManager.GetString("phone_call_element_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_call_element_deleted", resourceCulture);
             }
         }
         
@@ -6449,9 +6450,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///}
         ///.
         /// </summary>
-        internal static string phone_call_history_deleted_webhook {
+        internal static string phone_call_history_deleted {
             get {
-                return ResourceManager.GetString("phone_call_history_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_call_history_deleted", resourceCulture);
             }
         }
         
@@ -6473,9 +6474,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string phone_call_log_deleted_webhook {
+        internal static string phone_call_log_deleted {
             get {
-                return ResourceManager.GetString("phone_call_log_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_call_log_deleted", resourceCulture);
             }
         }
         
@@ -6497,34 +6498,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string phone_call_log_permanently_deleted_webhook {
+        internal static string phone_call_log_permanently_deleted {
             get {
-                return ResourceManager.GetString("phone_call_log_permanently_deleted_webhook", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {
-        ///  &quot;event&quot;: &quot;phone.call_qos_summary&quot;,
-        ///  &quot;event_ts&quot;: 1626759486127,
-        ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
-        ///    &quot;object&quot;: {
-        ///      &quot;call_id&quot;: &quot;6971668082545971778&quot;,
-        ///      &quot;call_start_time&quot;: &quot;2021-06-09T05:42:34Z&quot;,
-        ///      &quot;call_end_time&quot;: &quot;2021-06-09T05:43:02Z&quot;,
-        ///      &quot;call_qos&quot;: [
-        ///        {
-        ///          &quot;type&quot;: &quot;caller&quot;,
-        ///          &quot;user_id&quot;: &quot;KLN56y2cSzu0pWxUSec4RQ&quot;,
-        ///          &quot;qos&quot;: [
-        ///            {
-        ///              &quot;date_time&quot;: &quot;2021-04-26T05:26:00Z&quot;,
-        ///              &quot;type&quot;: &quot;sendi [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string phone_call_qos_summary_webhook {
-            get {
-                return ResourceManager.GetString("phone_call_qos_summary_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_call_log_permanently_deleted", resourceCulture);
             }
         }
         
@@ -6547,9 +6523,34 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;details&quot;: {
         ///            &quot;bitrate&quot;:  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_call_qos_webhook {
+        internal static string phone_call_qos {
             get {
-                return ResourceManager.GetString("phone_call_qos_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_call_qos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;phone.call_qos_summary&quot;,
+        ///  &quot;event_ts&quot;: 1626759486127,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;call_id&quot;: &quot;6971668082545971778&quot;,
+        ///      &quot;call_start_time&quot;: &quot;2021-06-09T05:42:34Z&quot;,
+        ///      &quot;call_end_time&quot;: &quot;2021-06-09T05:43:02Z&quot;,
+        ///      &quot;call_qos&quot;: [
+        ///        {
+        ///          &quot;type&quot;: &quot;caller&quot;,
+        ///          &quot;user_id&quot;: &quot;KLN56y2cSzu0pWxUSec4RQ&quot;,
+        ///          &quot;qos&quot;: [
+        ///            {
+        ///              &quot;date_time&quot;: &quot;2021-04-26T05:26:00Z&quot;,
+        ///              &quot;type&quot;: &quot;sendi [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_call_qos_summary {
+            get {
+                return ResourceManager.GetString("phone_call_qos_summary", resourceCulture);
             }
         }
         
@@ -6572,9 +6573,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///        &quot;device_type&quot;: &quot;MAC_Client(5.7.5.1123 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_callee_answered_webhook {
+        internal static string phone_callee_answered {
             get {
-                return ResourceManager.GetString("phone_callee_answered_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_callee_answered", resourceCulture);
             }
         }
         
@@ -6594,9 +6595,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;group_id&quot;: &quot;_sj190JDFasa19321_adA7&quot;,
         ///          &quot;connect_type&quot;: &quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_callee_call_element_completed_webhook {
+        internal static string phone_callee_call_element_completed {
             get {
-                return ResourceManager.GetString("phone_callee_call_element_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_callee_call_element_completed", resourceCulture);
             }
         }
         
@@ -6617,9 +6618,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;connect_type&quot;: &quot;internal&quot;,
         ///           [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_callee_call_history_completed_webhook {
+        internal static string phone_callee_call_history_completed {
             get {
-                return ResourceManager.GetString("phone_callee_call_history_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_callee_call_history_completed", resourceCulture);
             }
         }
         
@@ -6641,9 +6642,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;caller_country_iso_code&quot;: &quot;US&quot;,
         ///          &quot;caller_countr [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_callee_call_log_completed_webhook {
+        internal static string phone_callee_call_log_completed {
             get {
-                return ResourceManager.GetString("phone_callee_call_log_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_callee_call_log_completed", resourceCulture);
             }
         }
         
@@ -6667,9 +6668,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
         ///       [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_callee_ended_webhook {
+        internal static string phone_callee_ended {
             get {
-                return ResourceManager.GetString("phone_callee_ended_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_callee_ended", resourceCulture);
             }
         }
         
@@ -6693,9 +6694,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
         ///        &quot;ti [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_callee_hold_webhook {
+        internal static string phone_callee_hold {
             get {
-                return ResourceManager.GetString("phone_callee_hold_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_callee_hold", resourceCulture);
             }
         }
         
@@ -6718,9 +6719,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
         ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_callee_meeting_inviting_webhook {
+        internal static string phone_callee_meeting_inviting {
             get {
-                return ResourceManager.GetString("phone_callee_meeting_inviting_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_callee_meeting_inviting", resourceCulture);
             }
         }
         
@@ -6744,9 +6745,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
         ///      [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_callee_missed_webhook {
+        internal static string phone_callee_missed {
             get {
-                return ResourceManager.GetString("phone_callee_missed_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_callee_missed", resourceCulture);
             }
         }
         
@@ -6770,9 +6771,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
         ///        &quot;ti [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_callee_mute_webhook {
+        internal static string phone_callee_mute {
             get {
-                return ResourceManager.GetString("phone_callee_mute_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_callee_mute", resourceCulture);
             }
         }
         
@@ -6796,9 +6797,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
         ///        &quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_callee_parked_webhook {
+        internal static string phone_callee_parked {
             get {
-                return ResourceManager.GetString("phone_callee_parked_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_callee_parked", resourceCulture);
             }
         }
         
@@ -6822,9 +6823,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
         /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_callee_rejected_webhook {
+        internal static string phone_callee_rejected {
             get {
-                return ResourceManager.GetString("phone_callee_rejected_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_callee_rejected", resourceCulture);
             }
         }
         
@@ -6848,9 +6849,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///        &quot;de [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_callee_ringing_webhook {
+        internal static string phone_callee_ringing {
             get {
-                return ResourceManager.GetString("phone_callee_ringing_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_callee_ringing", resourceCulture);
             }
         }
         
@@ -6874,9 +6875,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
         ///        &quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_callee_unhold_webhook {
+        internal static string phone_callee_unhold {
             get {
-                return ResourceManager.GetString("phone_callee_unhold_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_callee_unhold", resourceCulture);
             }
         }
         
@@ -6900,9 +6901,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
         ///        &quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_callee_unmute_webhook {
+        internal static string phone_callee_unmute {
             get {
-                return ResourceManager.GetString("phone_callee_unmute_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_callee_unmute", resourceCulture);
             }
         }
         
@@ -6922,9 +6923,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;group_id&quot;: &quot;_sj190JDFasa19321_adA7&quot;,
         ///          &quot;connect_type&quot;: &quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_caller_call_element_completed_webhook {
+        internal static string phone_caller_call_element_completed {
             get {
-                return ResourceManager.GetString("phone_caller_call_element_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_caller_call_element_completed", resourceCulture);
             }
         }
         
@@ -6945,9 +6946,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;connect_type&quot;: &quot;internal&quot;,
         ///           [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_caller_call_history_completed_webhook {
+        internal static string phone_caller_call_history_completed {
             get {
-                return ResourceManager.GetString("phone_caller_call_history_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_caller_call_history_completed", resourceCulture);
             }
         }
         
@@ -6969,9 +6970,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;caller_country_iso_code&quot;: &quot;US&quot;,
         ///          &quot;caller_countr [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_caller_call_log_completed_webhook {
+        internal static string phone_caller_call_log_completed {
             get {
-                return ResourceManager.GetString("phone_caller_call_log_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_caller_call_log_completed", resourceCulture);
             }
         }
         
@@ -6995,9 +6996,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;phone_number&quot;: &quot;+12058945456&quot;,
         ///        &quot;us [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_caller_connected_webhook {
+        internal static string phone_caller_connected {
             get {
-                return ResourceManager.GetString("phone_caller_connected_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_caller_connected", resourceCulture);
             }
         }
         
@@ -7021,9 +7022,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;extension_number&quot;: 1002,
         ///        &quot;phone_number [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_caller_ended_webhook {
+        internal static string phone_caller_ended {
             get {
-                return ResourceManager.GetString("phone_caller_ended_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_caller_ended", resourceCulture);
             }
         }
         
@@ -7047,9 +7048,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
         ///        &quot;ti [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_caller_hold_webhook {
+        internal static string phone_caller_hold {
             get {
-                return ResourceManager.GetString("phone_caller_hold_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_caller_hold", resourceCulture);
             }
         }
         
@@ -7072,9 +7073,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
         ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_caller_meeting_inviting_webhook {
+        internal static string phone_caller_meeting_inviting {
             get {
-                return ResourceManager.GetString("phone_caller_meeting_inviting_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_caller_meeting_inviting", resourceCulture);
             }
         }
         
@@ -7098,9 +7099,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
         ///        &quot;ti [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_caller_mute_webhook {
+        internal static string phone_caller_mute {
             get {
-                return ResourceManager.GetString("phone_caller_mute_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_caller_mute", resourceCulture);
             }
         }
         
@@ -7124,9 +7125,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;extension_number&quot;: 1002,
         ///        &quot;phone_numb [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_caller_ringing_webhook {
+        internal static string phone_caller_ringing {
             get {
-                return ResourceManager.GetString("phone_caller_ringing_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_caller_ringing", resourceCulture);
             }
         }
         
@@ -7150,9 +7151,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
         ///        &quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_caller_unhold_webhook {
+        internal static string phone_caller_unhold {
             get {
-                return ResourceManager.GetString("phone_caller_unhold_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_caller_unhold", resourceCulture);
             }
         }
         
@@ -7176,9 +7177,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
         ///        &quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_caller_unmute_webhook {
+        internal static string phone_caller_unmute {
             get {
-                return ResourceManager.GetString("phone_caller_unmute_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_caller_unmute", resourceCulture);
             }
         }
         
@@ -7201,9 +7202,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      },
         ///      &quot;date_time&quot;: &quot;2021-07-13T21: [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_conference_started_webhook {
+        internal static string phone_conference_started {
             get {
-                return ResourceManager.GetString("phone_conference_started_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_conference_started", resourceCulture);
             }
         }
         
@@ -7222,9 +7223,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///}
         ///.
         /// </summary>
-        internal static string phone_device_registration_webhook {
+        internal static string phone_device_registration {
             get {
-                return ResourceManager.GetString("phone_device_registration_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_device_registration", resourceCulture);
             }
         }
         
@@ -7248,9 +7249,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;callee&quot;: {
         ///        &quot;pho [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_emergency_alert_webhook {
+        internal static string phone_emergency_alert {
             get {
-                return ResourceManager.GetString("phone_emergency_alert_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_emergency_alert", resourceCulture);
             }
         }
         
@@ -7276,9 +7277,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///            &quot;password&quot;: &quot;4dL09r0H&quot;,
         ///  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_generic_device_provision_webhook {
+        internal static string phone_generic_device_provision {
             get {
-                return ResourceManager.GetString("phone_generic_device_provision_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_generic_device_provision", resourceCulture);
             }
         }
         
@@ -7301,9 +7302,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;recording_transcription&quot;: true,
         ///          &quot;allow_d [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_group_settings_updated_webhook {
+        internal static string phone_group_settings_updated {
             get {
-                return ResourceManager.GetString("phone_group_settings_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_group_settings_updated", resourceCulture);
             }
         }
         
@@ -7323,9 +7324,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string phone_peering_number_cnam_updated_webhook {
+        internal static string phone_peering_number_cnam_updated {
             get {
-                return ResourceManager.GetString("phone_peering_number_cnam_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_peering_number_cnam_updated", resourceCulture);
             }
         }
         
@@ -7352,33 +7353,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string phone_peering_number_emergency_address_updated_webhook {
+        internal static string phone_peering_number_emergency_address_updated {
             get {
-                return ResourceManager.GetString("phone_peering_number_emergency_address_updated_webhook", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {
-        ///  &quot;event&quot;: &quot;phone.recording_completed_for_access_member&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
-        ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///    &quot;object&quot;: {
-        ///      &quot;recordings&quot;: [
-        ///        {
-        ///          &quot;id&quot;: &quot;c71b360f6e774e3aa101453117b7e1a7&quot;,
-        ///          &quot;user_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///          &quot;caller_number&quot;: &quot;1026&quot;,
-        ///          &quot;caller_number_type&quot;: 1,
-        ///          &quot;caller_name&quot;: &quot;Caller Name&quot;,
-        ///          &quot;caller_did_number&quot;: &quot;+12092592844&quot;,
-        ///          &quot;caller_account_code&quot;: &quot;123&quot;,
-        ///          &quot;callee_nu [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string phone_recording_completed_for_access_member_webhook {
-            get {
-                return ResourceManager.GetString("phone_recording_completed_for_access_member_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_peering_number_emergency_address_updated", resourceCulture);
             }
         }
         
@@ -7401,9 +7378,33 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;callee_number&quot;: &quot;1045&quot;,
         ///   [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_recording_completed_webhook {
+        internal static string phone_recording_completed {
             get {
-                return ResourceManager.GetString("phone_recording_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_recording_completed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;phone.recording_completed_for_access_member&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;recordings&quot;: [
+        ///        {
+        ///          &quot;id&quot;: &quot;c71b360f6e774e3aa101453117b7e1a7&quot;,
+        ///          &quot;user_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///          &quot;caller_number&quot;: &quot;1026&quot;,
+        ///          &quot;caller_number_type&quot;: 1,
+        ///          &quot;caller_name&quot;: &quot;Caller Name&quot;,
+        ///          &quot;caller_did_number&quot;: &quot;+12092592844&quot;,
+        ///          &quot;caller_account_code&quot;: &quot;123&quot;,
+        ///          &quot;callee_nu [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_recording_completed_for_access_member {
+            get {
+                return ResourceManager.GetString("phone_recording_completed_for_access_member", resourceCulture);
             }
         }
         
@@ -7424,9 +7425,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string phone_recording_deleted_webhook {
+        internal static string phone_recording_deleted {
             get {
-                return ResourceManager.GetString("phone_recording_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_recording_deleted", resourceCulture);
             }
         }
         
@@ -7448,9 +7449,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;recording_type&quot;: &quot;OnDemand&quot;,
         ///      &quot;call_id&quot;: &quot;6998252113337041 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_recording_failed_webhook {
+        internal static string phone_recording_failed {
             get {
-                return ResourceManager.GetString("phone_recording_failed_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_recording_failed", resourceCulture);
             }
         }
         
@@ -7472,9 +7473,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;recording_type&quot;: &quot;OnDemand&quot;,
         ///      &quot;call_id&quot;: &quot;6998252113337041 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_recording_paused_webhook {
+        internal static string phone_recording_paused {
             get {
-                return ResourceManager.GetString("phone_recording_paused_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_recording_paused", resourceCulture);
             }
         }
         
@@ -7495,9 +7496,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string phone_recording_permanently_deleted_webhook {
+        internal static string phone_recording_permanently_deleted {
             get {
-                return ResourceManager.GetString("phone_recording_permanently_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_recording_permanently_deleted", resourceCulture);
             }
         }
         
@@ -7519,9 +7520,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;recording_type&quot;: &quot;OnDemand&quot;,
         ///      &quot;call_id&quot;: &quot;699825211333704 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_recording_resumed_webhook {
+        internal static string phone_recording_resumed {
             get {
-                return ResourceManager.GetString("phone_recording_resumed_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_recording_resumed", resourceCulture);
             }
         }
         
@@ -7543,9 +7544,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;recording_type&quot;: &quot;OnDemand&quot;,
         ///      &quot;call_id&quot;: &quot;699825211333704 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_recording_started_webhook {
+        internal static string phone_recording_started {
             get {
-                return ResourceManager.GetString("phone_recording_started_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_recording_started", resourceCulture);
             }
         }
         
@@ -7567,9 +7568,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;recording_type&quot;: &quot;OnDemand&quot;,
         ///      &quot;call_id&quot;: &quot;699825211333704 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_recording_stopped_webhook {
+        internal static string phone_recording_stopped {
             get {
-                return ResourceManager.GetString("phone_recording_stopped_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_recording_stopped", resourceCulture);
             }
         }
         
@@ -7592,9 +7593,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;callee_number_type&quot;: 2,
         ///    [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_recording_transcript_completed_webhook {
+        internal static string phone_recording_transcript_completed {
             get {
-                return ResourceManager.GetString("phone_recording_transcript_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_recording_transcript_completed", resourceCulture);
             }
         }
         
@@ -7616,9 +7617,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string phone_sms_campaign_number_opt_in_webhook {
+        internal static string phone_sms_campaign_number_opt_in {
             get {
-                return ResourceManager.GetString("phone_sms_campaign_number_opt_in_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_sms_campaign_number_opt_in", resourceCulture);
             }
         }
         
@@ -7640,9 +7641,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string phone_sms_campaign_number_opt_out_webhook {
+        internal static string phone_sms_campaign_number_opt_out {
             get {
-                return ResourceManager.GetString("phone_sms_campaign_number_opt_out_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_sms_campaign_number_opt_out", resourceCulture);
             }
         }
         
@@ -7661,9 +7662,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string phone_sms_etiquette_block_webhook {
+        internal static string phone_sms_etiquette_block {
             get {
-                return ResourceManager.GetString("phone_sms_etiquette_block_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_sms_etiquette_block", resourceCulture);
             }
         }
         
@@ -7682,9 +7683,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string phone_sms_etiquette_warn_webhook {
+        internal static string phone_sms_etiquette_warn {
             get {
-                return ResourceManager.GetString("phone_sms_etiquette_warn_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_sms_etiquette_warn", resourceCulture);
             }
         }
         
@@ -7709,36 +7710,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;display_name&quot;: &quot;Tom&quot;,
         ///          &quot;is_message_owner&quot;:  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_sms_received_webhook {
+        internal static string phone_sms_received {
             get {
-                return ResourceManager.GetString("phone_sms_received_webhook", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {
-        ///  &quot;event&quot;: &quot;phone.sms_sent_failed&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
-        ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///    &quot;object&quot;: {
-        ///      &quot;failure_reason&quot;: &quot;1101-phone message error send&quot;,
-        ///      &quot;sender&quot;: {
-        ///        &quot;phone_number&quot;: &quot;12132822256&quot;,
-        ///        &quot;id&quot;: &quot;RMIGplfpSLauTMDMTi3Kfg&quot;,
-        ///        &quot;type&quot;: &quot;user&quot;,
-        ///        &quot;display_name&quot;: &quot;Jackson&quot;
-        ///      },
-        ///      &quot;to_members&quot;: [
-        ///        {
-        ///          &quot;phone_number&quot;: &quot;12132792348&quot;,
-        ///          &quot;id&quot;: &quot;RMITfuhuuxyzyuyyi3Kfg&quot;,
-        ///          &quot;type&quot;: &quot;user&quot;,
-        ///    [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string phone_sms_sent_failed_webhook {
-            get {
-                return ResourceManager.GetString("phone_sms_sent_failed_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_sms_received", resourceCulture);
             }
         }
         
@@ -7763,9 +7737,36 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;type&quot;: &quot;user&quot;,
         ///           [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_sms_sent_webhook {
+        internal static string phone_sms_sent {
             get {
-                return ResourceManager.GetString("phone_sms_sent_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_sms_sent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;phone.sms_sent_failed&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;failure_reason&quot;: &quot;1101-phone message error send&quot;,
+        ///      &quot;sender&quot;: {
+        ///        &quot;phone_number&quot;: &quot;12132822256&quot;,
+        ///        &quot;id&quot;: &quot;RMIGplfpSLauTMDMTi3Kfg&quot;,
+        ///        &quot;type&quot;: &quot;user&quot;,
+        ///        &quot;display_name&quot;: &quot;Jackson&quot;
+        ///      },
+        ///      &quot;to_members&quot;: [
+        ///        {
+        ///          &quot;phone_number&quot;: &quot;12132792348&quot;,
+        ///          &quot;id&quot;: &quot;RMITfuhuuxyzyuyyi3Kfg&quot;,
+        ///          &quot;type&quot;: &quot;user&quot;,
+        ///    [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_sms_sent_failed {
+            get {
+                return ResourceManager.GetString("phone_sms_sent_failed", resourceCulture);
             }
         }
         
@@ -7788,9 +7789,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;transfer_account_code&quot;: &quot;123&quot;,
         ///      &quot;date_time&quot;: &quot;2021-07-13T21:44:51Z&quot;        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_transfer_call_to_voicemail_initiated_webhook {
+        internal static string phone_transfer_call_to_voicemail_initiated {
             get {
-                return ResourceManager.GetString("phone_transfer_call_to_voicemail_initiated_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_transfer_call_to_voicemail_initiated", resourceCulture);
             }
         }
         
@@ -7815,9 +7816,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;name&quot;: &quot;Jane Smith&quot;
         ///      }, [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_transfer_recipient_updated_webhook {
+        internal static string phone_transfer_recipient_updated {
             get {
-                return ResourceManager.GetString("phone_transfer_recipient_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_transfer_recipient_updated", resourceCulture);
             }
         }
         
@@ -7837,9 +7838,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string phone_voicemail_deleted_webhook {
+        internal static string phone_voicemail_deleted {
             get {
-                return ResourceManager.GetString("phone_voicemail_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_voicemail_deleted", resourceCulture);
             }
         }
         
@@ -7859,30 +7860,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string phone_voicemail_permanently_deleted_webhook {
+        internal static string phone_voicemail_permanently_deleted {
             get {
-                return ResourceManager.GetString("phone_voicemail_permanently_deleted_webhook", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {
-        ///  &quot;event&quot;: &quot;phone.voicemail_received_for_access_member&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
-        ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///    &quot;object&quot;: {
-        ///      &quot;id&quot;: &quot;70ea156dc8414742839569c1556c3314&quot;,
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
-        ///      &quot;call_log_id&quot;: &quot;55fd0af0-beb0-433a-be97-388de5e99ab4&quot;,
-        ///      &quot;call_history_id&quot;: &quot;20231008-1ac1df2a-912e-d125-8a15-1a1233d10f1a&quot;,
-        ///      &quot;call_element_id&quot;: &quot;20231008-48c1dfd4-91ce-4df5-8495-7c9e33d10869&quot;,
-        ///      &quot;callee_id&quot;: &quot;s6njoqZLT6aPvUQ0JyydeQ&quot;,
-        ///      &quot; [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string phone_voicemail_received_for_access_member_webhook {
-            get {
-                return ResourceManager.GetString("phone_voicemail_received_for_access_member_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_voicemail_permanently_deleted", resourceCulture);
             }
         }
         
@@ -7901,9 +7881,30 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;callee_id&quot;: &quot;s6njoqZLT6aPvUQ0JyydeQ&quot;,
         ///      &quot;callee_extension_t [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_voicemail_received_webhook {
+        internal static string phone_voicemail_received {
             get {
-                return ResourceManager.GetString("phone_voicemail_received_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_voicemail_received", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;phone.voicemail_received_for_access_member&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;70ea156dc8414742839569c1556c3314&quot;,
+        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;call_log_id&quot;: &quot;55fd0af0-beb0-433a-be97-388de5e99ab4&quot;,
+        ///      &quot;call_history_id&quot;: &quot;20231008-1ac1df2a-912e-d125-8a15-1a1233d10f1a&quot;,
+        ///      &quot;call_element_id&quot;: &quot;20231008-48c1dfd4-91ce-4df5-8495-7c9e33d10869&quot;,
+        ///      &quot;callee_id&quot;: &quot;s6njoqZLT6aPvUQ0JyydeQ&quot;,
+        ///      &quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_voicemail_received_for_access_member {
+            get {
+                return ResourceManager.GetString("phone_voicemail_received_for_access_member", resourceCulture);
             }
         }
         
@@ -7922,9 +7923,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;callee_id&quot;: &quot;s6njoqZLT6aPvUQ0JyydeQ&quot;,
         ///      &quot;callee [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_voicemail_transcript_completed_webhook {
+        internal static string phone_voicemail_transcript_completed {
             get {
-                return ResourceManager.GetString("phone_voicemail_transcript_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_voicemail_transcript_completed", resourceCulture);
             }
         }
         
@@ -7950,9 +7951,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_warm_transfer_cancelled_webhook {
+        internal static string phone_warm_transfer_cancelled {
             get {
-                return ResourceManager.GetString("phone_warm_transfer_cancelled_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_warm_transfer_cancelled", resourceCulture);
             }
         }
         
@@ -7978,9 +7979,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_warm_transfer_completed_webhook {
+        internal static string phone_warm_transfer_completed {
             get {
-                return ResourceManager.GetString("phone_warm_transfer_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_warm_transfer_completed", resourceCulture);
             }
         }
         
@@ -8004,9 +8005,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;transfer_call_id&quot;: &quot;6986878782238080584&quot;,
         ///      [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string phone_warm_transfer_initiated_webhook {
+        internal static string phone_warm_transfer_initiated {
             get {
-                return ResourceManager.GetString("phone_warm_transfer_initiated_webhook", resourceCulture);
+                return ResourceManager.GetString("phone_warm_transfer_initiated", resourceCulture);
             }
         }
         
@@ -8026,9 +8027,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;display_name&quot;: &quot;Ashlee York&quot;
         /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string quality_management_evaluation_completed_webhook {
+        internal static string quality_management_evaluation_completed {
             get {
-                return ResourceManager.GetString("quality_management_evaluation_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("quality_management_evaluation_completed", resourceCulture);
             }
         }
         
@@ -8050,9 +8051,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;agent_name&quot;: &quot;Admin3&quot;,
         ///        &quot;consumer_name&quot;: &quot;+1 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string quality_management_interaction_analysis_completed_webhook {
+        internal static string quality_management_interaction_analysis_completed {
             get {
-                return ResourceManager.GetString("quality_management_interaction_analysis_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("quality_management_interaction_analysis_completed", resourceCulture);
             }
         }
         
@@ -8075,9 +8076,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;duration_in_second&quot;: 3602,
         ///    [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string recording_archive_files_completed_webhook {
+        internal static string recording_archive_files_completed {
             get {
-                return ResourceManager.GetString("recording_archive_files_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("recording_archive_files_completed", resourceCulture);
             }
         }
         
@@ -8103,9 +8104,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string recording_batch_deleted_webhook {
+        internal static string recording_batch_deleted {
             get {
-                return ResourceManager.GetString("recording_batch_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("recording_batch_deleted", resourceCulture);
             }
         }
         
@@ -8131,9 +8132,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string recording_batch_recovered_webhook {
+        internal static string recording_batch_recovered {
             get {
-                return ResourceManager.GetString("recording_batch_recovered_webhook", resourceCulture);
+                return ResourceManager.GetString("recording_batch_recovered", resourceCulture);
             }
         }
         
@@ -8155,9 +8156,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string recording_batch_trashed_webhook {
+        internal static string recording_batch_trashed {
             get {
-                return ResourceManager.GetString("recording_batch_trashed_webhook", resourceCulture);
+                return ResourceManager.GetString("recording_batch_trashed", resourceCulture);
             }
         }
         
@@ -8179,9 +8180,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string recording_cloud_storage_usage_updated_webhook {
+        internal static string recording_cloud_storage_usage_updated {
             get {
-                return ResourceManager.GetString("recording_cloud_storage_usage_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("recording_cloud_storage_usage_updated", resourceCulture);
             }
         }
         
@@ -8204,9 +8205,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///			&quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///			&quot;host_email&quot;: &quot;jchill@example.c [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string recording_completed_webhook {
+        internal static string recording_completed {
             get {
-                return ResourceManager.GetString("recording_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("recording_completed", resourceCulture);
             }
         }
         
@@ -8228,9 +8229,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angel [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string recording_deleted_webhook {
+        internal static string recording_deleted {
             get {
-                return ResourceManager.GetString("recording_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("recording_deleted", resourceCulture);
             }
         }
         
@@ -8253,9 +8254,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;recording_start&quot;: &quot;2021-03-23T22:14:57Z&quot;,
         ///        &quot;recording_en [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string recording_paused_webhook {
+        internal static string recording_paused {
             get {
-                return ResourceManager.GetString("recording_paused_webhook", resourceCulture);
+                return ResourceManager.GetString("recording_paused", resourceCulture);
             }
         }
         
@@ -8277,9 +8278,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;type&quot;: 4,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string recording_recovered_webhook {
+        internal static string recording_recovered {
             get {
-                return ResourceManager.GetString("recording_recovered_webhook", resourceCulture);
+                return ResourceManager.GetString("recording_recovered", resourceCulture);
             }
         }
         
@@ -8302,9 +8303,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;duration&quot;: 60,
         ///     [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string recording_registration_approved_webhook {
+        internal static string recording_registration_approved {
             get {
-                return ResourceManager.GetString("recording_registration_approved_webhook", resourceCulture);
+                return ResourceManager.GetString("recording_registration_approved", resourceCulture);
             }
         }
         
@@ -8327,9 +8328,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
         ///        &quot;email&quot;: &quot;jchil [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string recording_registration_created_webhook {
+        internal static string recording_registration_created {
             get {
-                return ResourceManager.GetString("recording_registration_created_webhook", resourceCulture);
+                return ResourceManager.GetString("recording_registration_created", resourceCulture);
             }
         }
         
@@ -8352,9 +8353,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
         ///        &quot;email&quot;: &quot;jchill [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string recording_registration_denied_webhook {
+        internal static string recording_registration_denied {
             get {
-                return ResourceManager.GetString("recording_registration_denied_webhook", resourceCulture);
+                return ResourceManager.GetString("recording_registration_denied", resourceCulture);
             }
         }
         
@@ -8378,9 +8379,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;id&quot;: 1234567 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string recording_renamed_webhook {
+        internal static string recording_renamed {
             get {
-                return ResourceManager.GetString("recording_renamed_webhook", resourceCulture);
+                return ResourceManager.GetString("recording_renamed", resourceCulture);
             }
         }
         
@@ -8403,9 +8404,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;recording_start&quot;: &quot;2021-03-23T22:14:57Z&quot;,
         ///        &quot;recording_e [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string recording_resumed_webhook {
+        internal static string recording_resumed {
             get {
-                return ResourceManager.GetString("recording_resumed_webhook", resourceCulture);
+                return ResourceManager.GetString("recording_resumed", resourceCulture);
             }
         }
         
@@ -8428,9 +8429,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;recording_start&quot;: &quot;2021-03-23T22:14:57Z&quot;,
         ///        &quot;recording_e [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string recording_started_webhook {
+        internal static string recording_started {
             get {
-                return ResourceManager.GetString("recording_started_webhook", resourceCulture);
+                return ResourceManager.GetString("recording_started", resourceCulture);
             }
         }
         
@@ -8453,9 +8454,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;recording_start&quot;: &quot;2021-03-23T22:14:57Z&quot;,
         ///        &quot;recording_e [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string recording_stopped_webhook {
+        internal static string recording_stopped {
             get {
-                return ResourceManager.GetString("recording_stopped_webhook", resourceCulture);
+                return ResourceManager.GetString("recording_stopped", resourceCulture);
             }
         }
         
@@ -8477,9 +8478,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string recording_transcript_completed_webhook {
+        internal static string recording_transcript_completed {
             get {
-                return ResourceManager.GetString("recording_transcript_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("recording_transcript_completed", resourceCulture);
             }
         }
         
@@ -8501,9 +8502,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;type&quot;: 4,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:4 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string recording_trashed_webhook {
+        internal static string recording_trashed {
             get {
-                return ResourceManager.GetString("recording_trashed_webhook", resourceCulture);
+                return ResourceManager.GetString("recording_trashed", resourceCulture);
             }
         }
         
@@ -8521,9 +8522,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string revenue_accelerator_conversation_analysis_completed_webhook {
+        internal static string revenue_accelerator_conversation_analysis_completed {
             get {
-                return ResourceManager.GetString("revenue_accelerator_conversation_analysis_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("revenue_accelerator_conversation_analysis_completed", resourceCulture);
             }
         }
         
@@ -8546,9 +8547,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string revenue_accelerator_playlist_add_moment_webhook {
+        internal static string revenue_accelerator_playlist_add_moment {
             get {
-                return ResourceManager.GetString("revenue_accelerator_playlist_add_moment_webhook", resourceCulture);
+                return ResourceManager.GetString("revenue_accelerator_playlist_add_moment", resourceCulture);
             }
         }
         
@@ -8569,9 +8570,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string revenue_accelerator_playlist_create_webhook {
+        internal static string revenue_accelerator_playlist_create {
             get {
-                return ResourceManager.GetString("revenue_accelerator_playlist_create_webhook", resourceCulture);
+                return ResourceManager.GetString("revenue_accelerator_playlist_create", resourceCulture);
             }
         }
         
@@ -8591,9 +8592,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string revenue_accelerator_playlist_delete_webhook {
+        internal static string revenue_accelerator_playlist_delete {
             get {
-                return ResourceManager.GetString("revenue_accelerator_playlist_delete_webhook", resourceCulture);
+                return ResourceManager.GetString("revenue_accelerator_playlist_delete", resourceCulture);
             }
         }
         
@@ -8616,9 +8617,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string revenue_accelerator_playlist_remove_moment_webhook {
+        internal static string revenue_accelerator_playlist_remove_moment {
             get {
-                return ResourceManager.GetString("revenue_accelerator_playlist_remove_moment_webhook", resourceCulture);
+                return ResourceManager.GetString("revenue_accelerator_playlist_remove_moment", resourceCulture);
             }
         }
         
@@ -8638,9 +8639,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string revenue_accelerator_post_comment_completed_webhook {
+        internal static string revenue_accelerator_post_comment_completed {
             get {
-                return ResourceManager.GetString("revenue_accelerator_post_comment_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("revenue_accelerator_post_comment_completed", resourceCulture);
             }
         }
         
@@ -8657,9 +8658,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string rtms_concurrency_limited_webhook {
+        internal static string rtms_concurrency_limited {
             get {
-                return ResourceManager.GetString("rtms_concurrency_limited_webhook", resourceCulture);
+                return ResourceManager.GetString("rtms_concurrency_limited", resourceCulture);
             }
         }
         
@@ -8674,9 +8675,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string rtms_concurrency_near_limit_webhook {
+        internal static string rtms_concurrency_near_limit {
             get {
-                return ResourceManager.GetString("rtms_concurrency_near_limit_webhook", resourceCulture);
+                return ResourceManager.GetString("rtms_concurrency_near_limit", resourceCulture);
             }
         }
         
@@ -8697,9 +8698,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;canceler_type&quot;: &quot;host&quot;,
         ///        &quot;cancel_at&quot;: &quot;2023-12-21T16 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string scheduler_scheduled_event_canceled_webhook {
+        internal static string scheduler_scheduled_event_canceled {
             get {
-                return ResourceManager.GetString("scheduler_scheduled_event_canceled_webhook", resourceCulture);
+                return ResourceManager.GetString("scheduler_scheduled_event_canceled", resourceCulture);
             }
         }
         
@@ -8720,9 +8721,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        {
         ///          &quot;question&quot;: &quot;Please share anything tha [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string scheduler_scheduled_event_created_webhook {
+        internal static string scheduler_scheduled_event_created {
             get {
-                return ResourceManager.GetString("scheduler_scheduled_event_created_webhook", resourceCulture);
+                return ResourceManager.GetString("scheduler_scheduled_event_created", resourceCulture);
             }
         }
         
@@ -8742,9 +8743,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string session_alert_webhook {
+        internal static string session_alert {
             get {
-                return ResourceManager.GetString("session_alert_webhook", resourceCulture);
+                return ResourceManager.GetString("session_alert", resourceCulture);
             }
         }
         
@@ -8765,9 +8766,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string session_ended_webhook {
+        internal static string session_ended {
             get {
-                return ResourceManager.GetString("session_ended_webhook", resourceCulture);
+                return ResourceManager.GetString("session_ended", resourceCulture);
             }
         }
         
@@ -8788,9 +8789,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;custom_live_streaming_settings&quot;: {
         ///          &quot;stream_ur [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_live_streaming_started_webhook {
+        internal static string session_live_streaming_started {
             get {
-                return ResourceManager.GetString("session_live_streaming_started_webhook", resourceCulture);
+                return ResourceManager.GetString("session_live_streaming_started", resourceCulture);
             }
         }
         
@@ -8811,9 +8812,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;custom_live_streaming_settings&quot;: {
         ///          &quot;stream_ur [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_live_streaming_stopped_webhook {
+        internal static string session_live_streaming_stopped {
             get {
-                return ResourceManager.GetString("session_live_streaming_stopped_webhook", resourceCulture);
+                return ResourceManager.GetString("session_live_streaming_stopped", resourceCulture);
             }
         }
         
@@ -8826,9 +8827,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_recording_completed_webhook {
+        internal static string session_recording_completed {
             get {
-                return ResourceManager.GetString("session_recording_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("session_recording_completed", resourceCulture);
             }
         }
         
@@ -8850,9 +8851,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string session_recording_deleted_webhook {
+        internal static string session_recording_deleted {
             get {
-                return ResourceManager.GetString("session_recording_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("session_recording_deleted", resourceCulture);
             }
         }
         
@@ -8876,9 +8877,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string session_recording_paused_webhook {
+        internal static string session_recording_paused {
             get {
-                return ResourceManager.GetString("session_recording_paused_webhook", resourceCulture);
+                return ResourceManager.GetString("session_recording_paused", resourceCulture);
             }
         }
         
@@ -8900,9 +8901,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string session_recording_recovered_webhook {
+        internal static string session_recording_recovered {
             get {
-                return ResourceManager.GetString("session_recording_recovered_webhook", resourceCulture);
+                return ResourceManager.GetString("session_recording_recovered", resourceCulture);
             }
         }
         
@@ -8926,9 +8927,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string session_recording_resumed_webhook {
+        internal static string session_recording_resumed {
             get {
-                return ResourceManager.GetString("session_recording_resumed_webhook", resourceCulture);
+                return ResourceManager.GetString("session_recording_resumed", resourceCulture);
             }
         }
         
@@ -8952,9 +8953,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string session_recording_started_webhook {
+        internal static string session_recording_started {
             get {
-                return ResourceManager.GetString("session_recording_started_webhook", resourceCulture);
+                return ResourceManager.GetString("session_recording_started", resourceCulture);
             }
         }
         
@@ -8978,9 +8979,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string session_recording_stopped_webhook {
+        internal static string session_recording_stopped {
             get {
-                return ResourceManager.GetString("session_recording_stopped_webhook", resourceCulture);
+                return ResourceManager.GetString("session_recording_stopped", resourceCulture);
             }
         }
         
@@ -8993,9 +8994,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_recording_summary_completed_webhook {
+        internal static string session_recording_summary_completed {
             get {
-                return ResourceManager.GetString("session_recording_summary_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("session_recording_summary_completed", resourceCulture);
             }
         }
         
@@ -9008,9 +9009,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_recording_transcript_completed_webhook {
+        internal static string session_recording_transcript_completed {
             get {
-                return ResourceManager.GetString("session_recording_transcript_completed_webhook", resourceCulture);
+                return ResourceManager.GetString("session_recording_transcript_completed", resourceCulture);
             }
         }
         
@@ -9030,9 +9031,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string session_recording_transcript_failed_webhook {
+        internal static string session_recording_transcript_failed {
             get {
-                return ResourceManager.GetString("session_recording_transcript_failed_webhook", resourceCulture);
+                return ResourceManager.GetString("session_recording_transcript_failed", resourceCulture);
             }
         }
         
@@ -9054,9 +9055,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string session_recording_trashed_webhook {
+        internal static string session_recording_trashed {
             get {
-                return ResourceManager.GetString("session_recording_trashed_webhook", resourceCulture);
+                return ResourceManager.GetString("session_recording_trashed", resourceCulture);
             }
         }
         
@@ -9071,9 +9072,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string session_rtms_interrupted_webhook {
+        internal static string session_rtms_interrupted {
             get {
-                return ResourceManager.GetString("session_rtms_interrupted_webhook", resourceCulture);
+                return ResourceManager.GetString("session_rtms_interrupted", resourceCulture);
             }
         }
         
@@ -9089,9 +9090,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string session_rtms_started_webhook {
+        internal static string session_rtms_started {
             get {
-                return ResourceManager.GetString("session_rtms_started_webhook", resourceCulture);
+                return ResourceManager.GetString("session_rtms_started", resourceCulture);
             }
         }
         
@@ -9107,9 +9108,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string session_rtms_stopped_webhook {
+        internal static string session_rtms_stopped {
             get {
-                return ResourceManager.GetString("session_rtms_stopped_webhook", resourceCulture);
+                return ResourceManager.GetString("session_rtms_stopped", resourceCulture);
             }
         }
         
@@ -9134,9 +9135,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      }
         /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_sharing_ended_webhook {
+        internal static string session_sharing_ended {
             get {
-                return ResourceManager.GetString("session_sharing_ended_webhook", resourceCulture);
+                return ResourceManager.GetString("session_sharing_ended", resourceCulture);
             }
         }
         
@@ -9160,9 +9161,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        }
         ///      } [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_sharing_started_webhook {
+        internal static string session_sharing_started {
             get {
-                return ResourceManager.GetString("session_sharing_started_webhook", resourceCulture);
+                return ResourceManager.GetString("session_sharing_started", resourceCulture);
             }
         }
         
@@ -9182,9 +9183,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string session_started_webhook {
+        internal static string session_started {
             get {
-                return ResourceManager.GetString("session_started_webhook", resourceCulture);
+                return ResourceManager.GetString("session_started", resourceCulture);
             }
         }
         
@@ -9205,9 +9206,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;stream_key&quot;: &quot;ABCDEFG12345HIJ6789&quot;,
         ///      [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_stream_ingestion_connected_webhook {
+        internal static string session_stream_ingestion_connected {
             get {
-                return ResourceManager.GetString("session_stream_ingestion_connected_webhook", resourceCulture);
+                return ResourceManager.GetString("session_stream_ingestion_connected", resourceCulture);
             }
         }
         
@@ -9228,9 +9229,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;stream_key&quot;: &quot;ABCDEFG12345HIJ6789&quot;,
         ///   [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_stream_ingestion_disconnected_webhook {
+        internal static string session_stream_ingestion_disconnected {
             get {
-                return ResourceManager.GetString("session_stream_ingestion_disconnected_webhook", resourceCulture);
+                return ResourceManager.GetString("session_stream_ingestion_disconnected", resourceCulture);
             }
         }
         
@@ -9251,9 +9252,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;stream_key&quot;: &quot;ABCDEFG12345HIJ6789&quot;,
         ///        [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_stream_ingestion_started_webhook {
+        internal static string session_stream_ingestion_started {
             get {
-                return ResourceManager.GetString("session_stream_ingestion_started_webhook", resourceCulture);
+                return ResourceManager.GetString("session_stream_ingestion_started", resourceCulture);
             }
         }
         
@@ -9274,9 +9275,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;stream_key&quot;: &quot;ABCDEFG12345HIJ6789&quot;,
         ///        [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_stream_ingestion_stopped_webhook {
+        internal static string session_stream_ingestion_stopped {
             get {
-                return ResourceManager.GetString("session_stream_ingestion_stopped_webhook", resourceCulture);
+                return ResourceManager.GetString("session_stream_ingestion_stopped", resourceCulture);
             }
         }
         
@@ -9297,35 +9298,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;stream_key&quot;: &quot;ABCDEFG12345HIJ6789&quot;,
         ///         [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_stream_ingestion_unbind_webhook {
+        internal static string session_stream_ingestion_unbind {
             get {
-                return ResourceManager.GetString("session_stream_ingestion_unbind_webhook", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {
-        ///  &quot;event&quot;: &quot;session.user_data_summary&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
-        ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///    &quot;object&quot;: {
-        ///      &quot;session_id&quot;: &quot;4567UVWxYZABCdEfGhiJkl==&quot;,
-        ///      &quot;session_name&quot;: &quot;My Session&quot;,
-        ///      &quot;session_key&quot;: &quot;ABC36jaBI145&quot;,
-        ///      &quot;user&quot;: {
-        ///        &quot;id&quot;: &quot;25508864&quot;,
-        ///        &quot;name&quot;: &quot;example&quot;,
-        ///        &quot;user_key&quot;: &quot;ASD74dfDI854&quot;,
-        ///        &quot;data&quot;: [
-        ///          {
-        ///            &quot;device&quot;: &quot;Windows&quot;,
-        ///            &quot;location&quot;: &quot;New York&quot;,
-        ///            &quot;network_type&quot;: &quot;Wired&quot;, [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string session_user_data_summary_webhook {
-            get {
-                return ResourceManager.GetString("session_user_data_summary_webhook", resourceCulture);
+                return ResourceManager.GetString("session_stream_ingestion_unbind", resourceCulture);
             }
         }
         
@@ -9350,9 +9325,35 @@ namespace ZoomNet.UnitTests.Properties {
         ///            &quot;network_type&quot;: &quot;Wired&quot;,
         ///           [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_user_data_webhook {
+        internal static string session_user_data {
             get {
-                return ResourceManager.GetString("session_user_data_webhook", resourceCulture);
+                return ResourceManager.GetString("session_user_data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;session.user_data_summary&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;session_id&quot;: &quot;4567UVWxYZABCdEfGhiJkl==&quot;,
+        ///      &quot;session_name&quot;: &quot;My Session&quot;,
+        ///      &quot;session_key&quot;: &quot;ABC36jaBI145&quot;,
+        ///      &quot;user&quot;: {
+        ///        &quot;id&quot;: &quot;25508864&quot;,
+        ///        &quot;name&quot;: &quot;example&quot;,
+        ///        &quot;user_key&quot;: &quot;ASD74dfDI854&quot;,
+        ///        &quot;data&quot;: [
+        ///          {
+        ///            &quot;device&quot;: &quot;Windows&quot;,
+        ///            &quot;location&quot;: &quot;New York&quot;,
+        ///            &quot;network_type&quot;: &quot;Wired&quot;, [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string session_user_data_summary {
+            get {
+                return ResourceManager.GetString("session_user_data_summary", resourceCulture);
             }
         }
         
@@ -9375,9 +9376,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;phone_number&quot;: &quot;8615250064084&quot;,
         ///         [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_user_joined_webhook {
+        internal static string session_user_joined {
             get {
-                return ResourceManager.GetString("session_user_joined_webhook", resourceCulture);
+                return ResourceManager.GetString("session_user_joined", resourceCulture);
             }
         }
         
@@ -9398,9 +9399,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;leave_time&quot;: &quot;2021-07-16T17:19:11Z&quot;,
         ///        &quot;leave_reason&quot;: &quot;Jill Chill left the session.&lt;br&gt;Reason: Host ended the session. [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_user_left_webhook {
+        internal static string session_user_left {
             get {
-                return ResourceManager.GetString("session_user_left_webhook", resourceCulture);
+                return ResourceManager.GetString("session_user_left", resourceCulture);
             }
         }
         
@@ -9422,9 +9423,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;invitee_name&quot;: &quot;Jill Chill&quot;,
         ///        &quot;phone_nu [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_user_phone_callout_accepted_webhook {
+        internal static string session_user_phone_callout_accepted {
             get {
-                return ResourceManager.GetString("session_user_phone_callout_accepted_webhook", resourceCulture);
+                return ResourceManager.GetString("session_user_phone_callout_accepted", resourceCulture);
             }
         }
         
@@ -9448,9 +9449,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string session_user_phone_callout_canceled_webhook {
+        internal static string session_user_phone_callout_canceled {
             get {
-                return ResourceManager.GetString("session_user_phone_callout_canceled_webhook", resourceCulture);
+                return ResourceManager.GetString("session_user_phone_callout_canceled", resourceCulture);
             }
         }
         
@@ -9472,9 +9473,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;invitee_name&quot;: &quot;Jill Chill&quot;,
         ///        &quot;phone_numb [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_user_phone_callout_missed_webhook {
+        internal static string session_user_phone_callout_missed {
             get {
-                return ResourceManager.GetString("session_user_phone_callout_missed_webhook", resourceCulture);
+                return ResourceManager.GetString("session_user_phone_callout_missed", resourceCulture);
             }
         }
         
@@ -9496,9 +9497,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;invitee_name&quot;: &quot;Jill Chill&quot;,
         ///        &quot;phone_nu [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_user_phone_callout_rejected_webhook {
+        internal static string session_user_phone_callout_rejected {
             get {
-                return ResourceManager.GetString("session_user_phone_callout_rejected_webhook", resourceCulture);
+                return ResourceManager.GetString("session_user_phone_callout_rejected", resourceCulture);
             }
         }
         
@@ -9520,34 +9521,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;invitee_name&quot;: &quot;Jill Chill&quot;,
         ///        &quot;phone_num [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_user_phone_callout_ringing_webhook {
+        internal static string session_user_phone_callout_ringing {
             get {
-                return ResourceManager.GetString("session_user_phone_callout_ringing_webhook", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {
-        ///  &quot;event&quot; : &quot;session.user_qos_summary&quot;,
-        ///  &quot;event_ts&quot; : 1673353332744,
-        ///  &quot;payload&quot; : {
-        ///    &quot;account_id&quot; : &quot;AAAAAABBBB&quot;,
-        ///    &quot;object&quot; : {
-        ///      &quot;session_id&quot; : &quot;gkBE2XmnRJq42wHoMox/5g==&quot;,
-        ///      &quot;user&quot; : {
-        ///        &quot;id&quot; : &quot;16778240&quot;,
-        ///        &quot;name&quot; : &quot;example&quot;,
-        ///        &quot;user_key&quot; : &quot;vkgfmFwpQqOftr90XLkeBA&quot;,
-        ///        &quot;qos&quot; : [ {
-        ///          &quot;type&quot; : &quot;cpu_usage&quot;,
-        ///          &quot;details&quot; : {
-        ///            &quot;zoom_min_cpu_usage&quot; : &quot;0%&quot;,
-        ///            &quot;zoom_avg_cpu_usage&quot; : &quot;0%&quot;,
-        ///            &quot;zoom_max_cpu_usage&quot; [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string session_user_qos_summary_webhook {
-            get {
-                return ResourceManager.GetString("session_user_qos_summary_webhook", resourceCulture);
+                return ResourceManager.GetString("session_user_phone_callout_ringing", resourceCulture);
             }
         }
         
@@ -9572,9 +9548,34 @@ namespace ZoomNet.UnitTests.Properties {
         ///            &quot;details&quot;: {
         ///    [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_user_qos_webhook {
+        internal static string session_user_qos {
             get {
-                return ResourceManager.GetString("session_user_qos_webhook", resourceCulture);
+                return ResourceManager.GetString("session_user_qos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot; : &quot;session.user_qos_summary&quot;,
+        ///  &quot;event_ts&quot; : 1673353332744,
+        ///  &quot;payload&quot; : {
+        ///    &quot;account_id&quot; : &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot; : {
+        ///      &quot;session_id&quot; : &quot;gkBE2XmnRJq42wHoMox/5g==&quot;,
+        ///      &quot;user&quot; : {
+        ///        &quot;id&quot; : &quot;16778240&quot;,
+        ///        &quot;name&quot; : &quot;example&quot;,
+        ///        &quot;user_key&quot; : &quot;vkgfmFwpQqOftr90XLkeBA&quot;,
+        ///        &quot;qos&quot; : [ {
+        ///          &quot;type&quot; : &quot;cpu_usage&quot;,
+        ///          &quot;details&quot; : {
+        ///            &quot;zoom_min_cpu_usage&quot; : &quot;0%&quot;,
+        ///            &quot;zoom_avg_cpu_usage&quot; : &quot;0%&quot;,
+        ///            &quot;zoom_max_cpu_usage&quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string session_user_qos_summary {
+            get {
+                return ResourceManager.GetString("session_user_qos_summary", resourceCulture);
             }
         }
         
@@ -9596,9 +9597,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;call_type&quot;: &quot;h323&quot;,
         ///        [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_user_room_system_callout_accepted_webhook {
+        internal static string session_user_room_system_callout_accepted {
             get {
-                return ResourceManager.GetString("session_user_room_system_callout_accepted_webhook", resourceCulture);
+                return ResourceManager.GetString("session_user_room_system_callout_accepted", resourceCulture);
             }
         }
         
@@ -9620,9 +9621,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;participant&quot;: {
         ///        &quot;call_ [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_user_room_system_callout_failed_webhook {
+        internal static string session_user_room_system_callout_failed {
             get {
-                return ResourceManager.GetString("session_user_room_system_callout_failed_webhook", resourceCulture);
+                return ResourceManager.GetString("session_user_room_system_callout_failed", resourceCulture);
             }
         }
         
@@ -9644,9 +9645,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;call_type&quot;: &quot;h323&quot;,
         ///        &quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_user_room_system_callout_missed_webhook {
+        internal static string session_user_room_system_callout_missed {
             get {
-                return ResourceManager.GetString("session_user_room_system_callout_missed_webhook", resourceCulture);
+                return ResourceManager.GetString("session_user_room_system_callout_missed", resourceCulture);
             }
         }
         
@@ -9668,9 +9669,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;call_type&quot;: &quot;h323&quot;,
         ///        [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_user_room_system_callout_rejected_webhook {
+        internal static string session_user_room_system_callout_rejected {
             get {
-                return ResourceManager.GetString("session_user_room_system_callout_rejected_webhook", resourceCulture);
+                return ResourceManager.GetString("session_user_room_system_callout_rejected", resourceCulture);
             }
         }
         
@@ -9692,9 +9693,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;call_type&quot;: &quot;h323&quot;,
         ///         [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string session_user_room_system_callout_ringing_webhook {
+        internal static string session_user_room_system_callout_ringing {
             get {
-                return ResourceManager.GetString("session_user_room_system_callout_ringing_webhook", resourceCulture);
+                return ResourceManager.GetString("session_user_room_system_callout_ringing", resourceCulture);
             }
         }
         
@@ -9714,9 +9715,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;channel_id&quot;: &quot;8AmQ0WOoQ1O3a84yYFc2xQ&quot;,
         ///      &quot;channel_name&quot;: &quot;Team Chat&quot;,        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_app_mention_webhook {
+        internal static string team_chat_app_mention {
             get {
-                return ResourceManager.GetString("team_chat_app_mention_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_app_mention", resourceCulture);
             }
         }
         
@@ -9736,9 +9737,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;message&quot;: &quot;Daily Standup Meeting Agenda:\
         ///What did you do yesterday? [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_bookmark_added_webhook {
+        internal static string team_chat_bookmark_added {
             get {
-                return ResourceManager.GetString("team_chat_bookmark_added_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_bookmark_added", resourceCulture);
             }
         }
         
@@ -9758,9 +9759,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;message&quot;: &quot;Daily Standup Meeting Agenda:\
         ///What did you do yesterda [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_bookmark_removed_webhook {
+        internal static string team_chat_bookmark_removed {
             get {
-                return ResourceManager.GetString("team_chat_bookmark_removed_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_bookmark_removed", resourceCulture);
             }
         }
         
@@ -9780,9 +9781,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;date_time&quot;: &quot;2023-12-27T00:54:44Z&quot;,
         ///      &quot;timestamp&quot;: 17036384 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_channel_app_added_webhook {
+        internal static string team_chat_channel_app_added {
             get {
-                return ResourceManager.GetString("team_chat_channel_app_added_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_channel_app_added", resourceCulture);
             }
         }
         
@@ -9802,9 +9803,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;date_time&quot;: &quot;2023-12-27T00:54:44Z&quot;,
         ///      &quot;timestamp&quot;: 1703638 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_channel_app_removed_webhook {
+        internal static string team_chat_channel_app_removed {
             get {
-                return ResourceManager.GetString("team_chat_channel_app_removed_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_channel_app_removed", resourceCulture);
             }
         }
         
@@ -9828,9 +9829,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string team_chat_channel_archived_webhook {
+        internal static string team_chat_channel_archived {
             get {
-                return ResourceManager.GetString("team_chat_channel_archived_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_channel_archived", resourceCulture);
             }
         }
         
@@ -9852,9 +9853,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;organization&quot;:{
         ///        &quot;org_id&quot;:&quot;d [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_channel_invitation_accepted_webhook {
+        internal static string team_chat_channel_invitation_accepted {
             get {
-                return ResourceManager.GetString("team_chat_channel_invitation_accepted_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_channel_invitation_accepted", resourceCulture);
             }
         }
         
@@ -9879,9 +9880,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_email&quot;: &quot;sssss@ss.com&quot;,
         ///        &quot;member_id&quot;: &quot;1vRFhZt_2gipkB-SFKkOpnkhWpeSf1wiCPY [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_channel_invitation_approval_requested_webhook {
+        internal static string team_chat_channel_invitation_approval_requested {
             get {
-                return ResourceManager.GetString("team_chat_channel_invitation_approval_requested_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_channel_invitation_approval_requested", resourceCulture);
             }
         }
         
@@ -9903,9 +9904,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;channel&quot;: {
         ///        &quot;channel_id [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_channel_invitation_approved_webhook {
+        internal static string team_chat_channel_invitation_approved {
             get {
-                return ResourceManager.GetString("team_chat_channel_invitation_approved_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_channel_invitation_approved", resourceCulture);
             }
         }
         
@@ -9927,9 +9928,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;channel&quot;: {
         ///        &quot;channel_i [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_channel_invitation_created_webhook {
+        internal static string team_chat_channel_invitation_created {
             get {
-                return ResourceManager.GetString("team_chat_channel_invitation_created_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_channel_invitation_created", resourceCulture);
             }
         }
         
@@ -9951,9 +9952,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;channel_id&quot;: &quot;C12345678&quot;,
         ///        &quot;chan [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_channel_invitation_declined_webhook {
+        internal static string team_chat_channel_invitation_declined {
             get {
-                return ResourceManager.GetString("team_chat_channel_invitation_declined_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_channel_invitation_declined", resourceCulture);
             }
         }
         
@@ -9975,9 +9976,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      },
         ///      &quot;chann [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_channel_invitation_rejected_webhook {
+        internal static string team_chat_channel_invitation_rejected {
             get {
-                return ResourceManager.GetString("team_chat_channel_invitation_rejected_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_channel_invitation_rejected", resourceCulture);
             }
         }
         
@@ -9999,9 +10000,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;organization&quot;: {
         ///        &quot;org_id&quot;: &quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_channel_invitation_removed_webhook {
+        internal static string team_chat_channel_invitation_removed {
             get {
-                return ResourceManager.GetString("team_chat_channel_invitation_removed_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_channel_invitation_removed", resourceCulture);
             }
         }
         
@@ -10026,9 +10027,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_email&quot;: &quot;&quot;,
         ///        &quot;member_id&quot;: &quot;1vRFhZt_2gipkB-SFKkOpnkhWpeSf1wiCPYdRWctkgMaE9NWn66 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_channel_join_approval_requested_webhook {
+        internal static string team_chat_channel_join_approval_requested {
             get {
-                return ResourceManager.GetString("team_chat_channel_join_approval_requested_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_channel_join_approval_requested", resourceCulture);
             }
         }
         
@@ -10050,9 +10051,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;channel_id&quot;: &quot;C12345678&quot;,
         ///        &quot;channel_na [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_channel_join_approved_webhook {
+        internal static string team_chat_channel_join_approved {
             get {
-                return ResourceManager.GetString("team_chat_channel_join_approved_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_channel_join_approved", resourceCulture);
             }
         }
         
@@ -10074,9 +10075,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;channel_id&quot;: &quot;C12345678&quot;,
         ///        &quot;channel_na [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_channel_join_declined_webhook {
+        internal static string team_chat_channel_join_declined {
             get {
-                return ResourceManager.GetString("team_chat_channel_join_declined_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_channel_join_declined", resourceCulture);
             }
         }
         
@@ -10098,9 +10099,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      },
         ///      &quot;organizatio [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_channel_join_requested_webhook {
+        internal static string team_chat_channel_join_requested {
             get {
-                return ResourceManager.GetString("team_chat_channel_join_requested_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_channel_join_requested", resourceCulture);
             }
         }
         
@@ -10120,9 +10121,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timestamp&quot;: 1581370790388,
         ///      &quot;channel_id&quot;: &quot;qrstuvwxyz6789 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_channel_message_deleted_webhook {
+        internal static string team_chat_channel_message_deleted {
             get {
-                return ResourceManager.GetString("team_chat_channel_message_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_channel_message_deleted", resourceCulture);
             }
         }
         
@@ -10144,9 +10145,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;file_size&quot;: 23025,
         /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_channel_message_posted_webhook {
+        internal static string team_chat_channel_message_posted {
             get {
-                return ResourceManager.GetString("team_chat_channel_message_posted_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_channel_message_posted", resourceCulture);
             }
         }
         
@@ -10167,9 +10168,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;file_name&quot;: &quot;Screenshot 2023-12-22 at 11.21.38 AM.png&quot;,
         ///          &quot;file_size&quot;: 23025,        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_channel_message_updated_webhook {
+        internal static string team_chat_channel_message_updated {
             get {
-                return ResourceManager.GetString("team_chat_channel_message_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_channel_message_updated", resourceCulture);
             }
         }
         
@@ -10190,9 +10191,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;message_id&quot;: &quot;BFECE135-6A19-4282-9310-5975675DE6EE&quot;,
         ///      &quot;message&quot;: &quot;Daily Standup Meeting Agen [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_channel_pin_added_webhook {
+        internal static string team_chat_channel_pin_added {
             get {
-                return ResourceManager.GetString("team_chat_channel_pin_added_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_channel_pin_added", resourceCulture);
             }
         }
         
@@ -10213,9 +10214,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;message_id&quot;: &quot;BFECE135-6A19-4282-9310-5975675DE6EE&quot;,
         ///      &quot;message&quot;: &quot;Daily Standup Meeting Ag [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_channel_pin_removed_webhook {
+        internal static string team_chat_channel_pin_removed {
             get {
-                return ResourceManager.GetString("team_chat_channel_pin_removed_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_channel_pin_removed", resourceCulture);
             }
         }
         
@@ -10235,9 +10236,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;msg_id&quot;: &quot;B88C3A45-C8BC-4CCD-A4B3-E061A7329B6E&quot;,
         ///    [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_channel_reaction_added_webhook {
+        internal static string team_chat_channel_reaction_added {
             get {
-                return ResourceManager.GetString("team_chat_channel_reaction_added_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_channel_reaction_added", resourceCulture);
             }
         }
         
@@ -10257,9 +10258,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;msg_id&quot;: &quot;B88C3A45-C8BC-4CCD-A4B3-E061A7329B6E&quot;,
         ///  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_channel_reaction_removed_webhook {
+        internal static string team_chat_channel_reaction_removed {
             get {
-                return ResourceManager.GetString("team_chat_channel_reaction_removed_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_channel_reaction_removed", resourceCulture);
             }
         }
         
@@ -10283,9 +10284,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string team_chat_channel_unarchived_webhook {
+        internal static string team_chat_channel_unarchived {
             get {
-                return ResourceManager.GetString("team_chat_channel_unarchived_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_channel_unarchived", resourceCulture);
             }
         }
         
@@ -10306,9 +10307,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;contact_email&quot;: &quot;user2@example.com&quot;,
         ///      &quot;con [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_dm_message_deleted_webhook {
+        internal static string team_chat_dm_message_deleted {
             get {
-                return ResourceManager.GetString("team_chat_dm_message_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_dm_message_deleted", resourceCulture);
             }
         }
         
@@ -10330,9 +10331,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;file_size&quot;: 23025,
         ///      [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_dm_message_posted_webhook {
+        internal static string team_chat_dm_message_posted {
             get {
-                return ResourceManager.GetString("team_chat_dm_message_posted_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_dm_message_posted", resourceCulture);
             }
         }
         
@@ -10354,9 +10355,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;file_size&quot;: 23025,
         ///     [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_dm_message_updated_webhook {
+        internal static string team_chat_dm_message_updated {
             get {
-                return ResourceManager.GetString("team_chat_dm_message_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_dm_message_updated", resourceCulture);
             }
         }
         
@@ -10375,9 +10376,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;emoji_time&quot;: 1703821653134,
         ///      &quot;msg_time&quot;: &quot;2023-12 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_dm_reaction_added_webhook {
+        internal static string team_chat_dm_reaction_added {
             get {
-                return ResourceManager.GetString("team_chat_dm_reaction_added_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_dm_reaction_added", resourceCulture);
             }
         }
         
@@ -10396,9 +10397,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;emoji_time&quot;: 1703821653134,
         ///      &quot;msg_time&quot;: &quot;2023- [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_dm_reaction_removed_webhook {
+        internal static string team_chat_dm_reaction_removed {
             get {
-                return ResourceManager.GetString("team_chat_dm_reaction_removed_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_dm_reaction_removed", resourceCulture);
             }
         }
         
@@ -10418,9 +10419,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string team_chat_emoji_added_webhook {
+        internal static string team_chat_emoji_added {
             get {
-                return ResourceManager.GetString("team_chat_emoji_added_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_emoji_added", resourceCulture);
             }
         }
         
@@ -10440,9 +10441,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string team_chat_emoji_removed_webhook {
+        internal static string team_chat_emoji_removed {
             get {
-                return ResourceManager.GetString("team_chat_emoji_removed_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_emoji_removed", resourceCulture);
             }
         }
         
@@ -10466,9 +10467,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        {
         ///          &quot;file_id&quot;: &quot;7dfgdfgdg444447b0egga&quot;, [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_file_changed_webhook {
+        internal static string team_chat_file_changed {
             get {
-                return ResourceManager.GetString("team_chat_file_changed_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_file_changed", resourceCulture);
             }
         }
         
@@ -10492,9 +10493,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        {
         ///          &quot;file_id&quot;: &quot;7dfgdfgdg444447b0egga&quot;, [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_file_deleted_webhook {
+        internal static string team_chat_file_deleted {
             get {
-                return ResourceManager.GetString("team_chat_file_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_file_deleted", resourceCulture);
             }
         }
         
@@ -10513,9 +10514,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;file&quot;: {
         ///        &quot;file_id&quot;: &quot;MS17RDk0QTY3QUQtQkFGQy04QTJFLTI2RUEtNkYxQ [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_file_downloaded_webhook {
+        internal static string team_chat_file_downloaded {
             get {
-                return ResourceManager.GetString("team_chat_file_downloaded_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_file_downloaded", resourceCulture);
             }
         }
         
@@ -10539,9 +10540,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;file_size&quot;: 21,
         ///  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_file_shared_webhook {
+        internal static string team_chat_file_shared {
             get {
-                return ResourceManager.GetString("team_chat_file_shared_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_file_shared", resourceCulture);
             }
         }
         
@@ -10564,9 +10565,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;file_name&quot;: &quot;file1.txt&quot;,
         ///          &quot;file_size&quot;: 21,        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_file_unshared_webhook {
+        internal static string team_chat_file_unshared {
             get {
-                return ResourceManager.GetString("team_chat_file_unshared_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_file_unshared", resourceCulture);
             }
         }
         
@@ -10590,9 +10591,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        {
         ///          &quot;file_id&quot;: &quot;7dfgdfgdg444447b0egga&quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_file_uploaded_webhook {
+        internal static string team_chat_file_uploaded {
             get {
-                return ResourceManager.GetString("team_chat_file_uploaded_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_file_uploaded", resourceCulture);
             }
         }
         
@@ -10611,9 +10612,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;message_id&quot;: &quot;5DD614F4-DD19-4C39-8D03-93C4D0A0C839&quot;,
         ///      &quot;reply_main_message_ [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_link_shared_webhook {
+        internal static string team_chat_link_shared {
             get {
-                return ResourceManager.GetString("team_chat_link_shared_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_link_shared", resourceCulture);
             }
         }
         
@@ -10634,9 +10635,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;option&quot;: {
         ///          &quot;add_external_users&quot;: &quot;by_any_member&quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_shared_spaces_edited_webhook {
+        internal static string team_chat_shared_spaces_edited {
             get {
-                return ResourceManager.GetString("team_chat_shared_spaces_edited_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_shared_spaces_edited", resourceCulture);
             }
         }
         
@@ -10657,9 +10658,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;user_id&quot;: &quot;CKFRAKc37nfqZr2WiKxaKz&quot;,
         ///          &quot;user_email&quot;: &quot;user2@example.com&quot;, [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_shared_spaces_member_invited_webhook {
+        internal static string team_chat_shared_spaces_member_invited {
             get {
-                return ResourceManager.GetString("team_chat_shared_spaces_member_invited_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_shared_spaces_member_invited", resourceCulture);
             }
         }
         
@@ -10680,9 +10681,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string team_chat_shared_spaces_member_left_webhook {
+        internal static string team_chat_shared_spaces_member_left {
             get {
-                return ResourceManager.GetString("team_chat_shared_spaces_member_left_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_shared_spaces_member_left", resourceCulture);
             }
         }
         
@@ -10703,9 +10704,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;user_id&quot;: &quot;CKFRAKc37nfqZr2WiKxaKz&quot;,
         ///          &quot;user_email&quot;: &quot;user2@example.com&quot;, [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_shared_spaces_member_removed_webhook {
+        internal static string team_chat_shared_spaces_member_removed {
             get {
-                return ResourceManager.GetString("team_chat_shared_spaces_member_removed_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_shared_spaces_member_removed", resourceCulture);
             }
         }
         
@@ -10727,9 +10728,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;contact_email&quot;: &quot;user2@example.com&quot;,
         ///          &quot;contact_member_id&quot;: &quot;1vRRRRt [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_starred_webhook {
+        internal static string team_chat_starred {
             get {
-                return ResourceManager.GetString("team_chat_starred_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_starred", resourceCulture);
             }
         }
         
@@ -10751,9 +10752,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;contact_email&quot;: &quot;user2@example.com&quot;,
         ///          &quot;contact_member_id&quot;: &quot;1vRRR [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string team_chat_unstarred_webhook {
+        internal static string team_chat_unstarred {
             get {
-                return ResourceManager.GetString("team_chat_unstarred_webhook", resourceCulture);
+                return ResourceManager.GetString("team_chat_unstarred", resourceCulture);
             }
         }
         
@@ -10775,9 +10776,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string user_activated_webhook {
+        internal static string user_activated {
             get {
-                return ResourceManager.GetString("user_activated_webhook", resourceCulture);
+                return ResourceManager.GetString("user_activated", resourceCulture);
             }
         }
         
@@ -10801,9 +10802,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string user_created_webhook {
+        internal static string user_created {
             get {
-                return ResourceManager.GetString("user_created_webhook", resourceCulture);
+                return ResourceManager.GetString("user_created", resourceCulture);
             }
         }
         
@@ -10825,9 +10826,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string user_deactivated_webhook {
+        internal static string user_deactivated {
             get {
-                return ResourceManager.GetString("user_deactivated_webhook", resourceCulture);
+                return ResourceManager.GetString("user_deactivated", resourceCulture);
             }
         }
         
@@ -10849,9 +10850,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string user_deleted_webhook {
+        internal static string user_deleted {
             get {
-                return ResourceManager.GetString("user_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("user_deleted", resourceCulture);
             }
         }
         
@@ -10873,9 +10874,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string user_disassociated_webhook {
+        internal static string user_disassociated {
             get {
-                return ResourceManager.GetString("user_disassociated_webhook", resourceCulture);
+                return ResourceManager.GetString("user_disassociated", resourceCulture);
             }
         }
         
@@ -10895,9 +10896,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string user_invitation_accepted_webhook {
+        internal static string user_invitation_accepted {
             get {
-                return ResourceManager.GetString("user_invitation_accepted_webhook", resourceCulture);
+                return ResourceManager.GetString("user_invitation_accepted", resourceCulture);
             }
         }
         
@@ -10919,9 +10920,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string user_personal_notes_updated_webhook {
+        internal static string user_personal_notes_updated {
             get {
-                return ResourceManager.GetString("user_personal_notes_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("user_personal_notes_updated", resourceCulture);
             }
         }
         
@@ -10944,9 +10945,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string user_presence_status_updated_webhook {
+        internal static string user_presence_status_updated {
             get {
-                return ResourceManager.GetString("user_presence_status_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("user_presence_status_updated", resourceCulture);
             }
         }
         
@@ -10972,9 +10973,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;settings&quot;: {
         ///    [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string user_settings_updated_webhook {
+        internal static string user_settings_updated {
             get {
-                return ResourceManager.GetString("user_settings_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("user_settings_updated", resourceCulture);
             }
         }
         
@@ -10995,9 +10996,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string user_signed_in_webhook {
+        internal static string user_signed_in {
             get {
-                return ResourceManager.GetString("user_signed_in_webhook", resourceCulture);
+                return ResourceManager.GetString("user_signed_in", resourceCulture);
             }
         }
         
@@ -11018,9 +11019,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string user_signed_out_webhook {
+        internal static string user_signed_out {
             get {
-                return ResourceManager.GetString("user_signed_out_webhook", resourceCulture);
+                return ResourceManager.GetString("user_signed_out", resourceCulture);
             }
         }
         
@@ -11045,9 +11046,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///            &quot;code&quot;: &quot;1&quot;,
         ///    [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string user_tsp_created_webhook {
+        internal static string user_tsp_created {
             get {
-                return ResourceManager.GetString("user_tsp_created_webhook", resourceCulture);
+                return ResourceManager.GetString("user_tsp_created", resourceCulture);
             }
         }
         
@@ -11072,9 +11073,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///            &quot;code&quot;: &quot;1&quot;,
         ///    [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string user_tsp_deleted_webhook {
+        internal static string user_tsp_deleted {
             get {
-                return ResourceManager.GetString("user_tsp_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("user_tsp_deleted", resourceCulture);
             }
         }
         
@@ -11099,9 +11100,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///            &quot;code&quot;: &quot;1&quot;,
         ///    [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string user_tsp_updated_webhook {
+        internal static string user_tsp_updated {
             get {
-                return ResourceManager.GetString("user_tsp_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("user_tsp_updated", resourceCulture);
             }
         }
         
@@ -11125,9 +11126,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string user_updated_webhook {
+        internal static string user_updated {
             get {
-                return ResourceManager.GetString("user_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("user_updated", resourceCulture);
             }
         }
         
@@ -11146,9 +11147,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string video_management_channel_published_webhook {
+        internal static string video_management_channel_published {
             get {
-                return ResourceManager.GetString("video_management_channel_published_webhook", resourceCulture);
+                return ResourceManager.GetString("video_management_channel_published", resourceCulture);
             }
         }
         
@@ -11167,9 +11168,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string video_management_channel_unpublished_webhook {
+        internal static string video_management_channel_unpublished {
             get {
-                return ResourceManager.GetString("video_management_channel_unpublished_webhook", resourceCulture);
+                return ResourceManager.GetString("video_management_channel_unpublished", resourceCulture);
             }
         }
         
@@ -11186,9 +11187,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string video_management_channel_video_added_webhook {
+        internal static string video_management_channel_video_added {
             get {
-                return ResourceManager.GetString("video_management_channel_video_added_webhook", resourceCulture);
+                return ResourceManager.GetString("video_management_channel_video_added", resourceCulture);
             }
         }
         
@@ -11205,9 +11206,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string video_management_channel_video_removed_webhook {
+        internal static string video_management_channel_video_removed {
             get {
-                return ResourceManager.GetString("video_management_channel_video_removed_webhook", resourceCulture);
+                return ResourceManager.GetString("video_management_channel_video_removed", resourceCulture);
             }
         }
         
@@ -11229,9 +11230,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;host_name&quot;: &quot;admin&quot;,
         ///  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string visitor_management_checked_in_webhook {
+        internal static string visitor_management_checked_in {
             get {
-                return ResourceManager.GetString("visitor_management_checked_in_webhook", resourceCulture);
+                return ResourceManager.GetString("visitor_management_checked_in", resourceCulture);
             }
         }
         
@@ -11253,9 +11254,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;host_name&quot;: &quot;admin&quot;,
         /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string visitor_management_checked_out_webhook {
+        internal static string visitor_management_checked_out {
             get {
-                return ResourceManager.GetString("visitor_management_checked_out_webhook", resourceCulture);
+                return ResourceManager.GetString("visitor_management_checked_out", resourceCulture);
             }
         }
         
@@ -11276,9 +11277,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;invite_location_id&quot;: &quot;wnFFoWRwTLeww81UuAeW4g&quot;,
         ///      &quot;host_ [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string visitor_management_invitation_created_webhook {
+        internal static string visitor_management_invitation_created {
             get {
-                return ResourceManager.GetString("visitor_management_invitation_created_webhook", resourceCulture);
+                return ResourceManager.GetString("visitor_management_invitation_created", resourceCulture);
             }
         }
         
@@ -11301,9 +11302,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string visitor_management_invitation_deleted_webhook {
+        internal static string visitor_management_invitation_deleted {
             get {
-                return ResourceManager.GetString("visitor_management_invitation_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("visitor_management_invitation_deleted", resourceCulture);
             }
         }
         
@@ -11324,9 +11325,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;invite_location_id&quot;: &quot;wnFFoWRwTLeww81UuAeW4g&quot;,
         ///      &quot;host_ [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string visitor_management_invitation_updated_webhook {
+        internal static string visitor_management_invitation_updated {
             get {
-                return ResourceManager.GetString("visitor_management_invitation_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("visitor_management_invitation_updated", resourceCulture);
             }
         }
         
@@ -11352,9 +11353,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string webinar_alert_webhook {
+        internal static string webinar_alert {
             get {
-                return ResourceManager.GetString("webinar_alert_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_alert", resourceCulture);
             }
         }
         
@@ -11375,9 +11376,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;file_name&quot;: &quot;example.jpg&quot;,
         ///        &quot;file_o [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string webinar_chat_message_file_downloaded_webhook {
+        internal static string webinar_chat_message_file_downloaded {
             get {
-                return ResourceManager.GetString("webinar_chat_message_file_downloaded_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_chat_message_file_downloaded", resourceCulture);
             }
         }
         
@@ -11399,9 +11400,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;recipient_session_id&quot;: &quot;38681600&quot;,
         ///  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string webinar_chat_message_file_sent_webhook {
+        internal static string webinar_chat_message_file_sent {
             get {
-                return ResourceManager.GetString("webinar_chat_message_file_sent_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_chat_message_file_sent", resourceCulture);
             }
         }
         
@@ -11422,9 +11423,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///                &quot;sender_type&quot;: &quot;host&quot;,
         /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string webinar_chat_message_sent_webhook {
+        internal static string webinar_chat_message_sent {
             get {
-                return ResourceManager.GetString("webinar_chat_message_sent_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_chat_message_sent", resourceCulture);
             }
         }
         
@@ -11449,9 +11450,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string webinar_converted_to_meeting_webhook {
+        internal static string webinar_converted_to_meeting {
             get {
-                return ResourceManager.GetString("webinar_converted_to_meeting_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_converted_to_meeting", resourceCulture);
             }
         }
         
@@ -11475,9 +11476,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///    [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string webinar_created_webhook {
+        internal static string webinar_created {
             get {
-                return ResourceManager.GetString("webinar_created_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_created", resourceCulture);
             }
         }
         
@@ -11501,9 +11502,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///    [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string webinar_deleted_webhook {
+        internal static string webinar_deleted {
             get {
-                return ResourceManager.GetString("webinar_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_deleted", resourceCulture);
             }
         }
         
@@ -11528,9 +11529,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string webinar_ended_webhook {
+        internal static string webinar_ended {
             get {
-                return ResourceManager.GetString("webinar_ended_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_ended", resourceCulture);
             }
         }
         
@@ -11553,34 +11554,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
         ///        &quot;bind_user_id&quot;:&quot;167782 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string webinar_participant_bind_webhook {
+        internal static string webinar_participant_bind {
             get {
-                return ResourceManager.GetString("webinar_participant_bind_webhook", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {
-        ///  &quot;event&quot;: &quot;webinar.participant_data_summary&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
-        ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///    &quot;object&quot;: {
-        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///      &quot;participant&quot;: {
-        ///        &quot;participant_id&quot;: &quot;123456789036&quot;,
-        ///        &quot;participant_user_id&quot;: &quot;rstuvwxyza789-cde&quot;,
-        ///        &quot;email&quot;: &quot;user@example.com&quot;,
-        ///        &quot;data&quot;: [
-        ///          {
-        ///            &quot;device&quot;: &quot;WIN&quot;,
-        ///            &quot;location&quot;: &quot;New York&quot;,
-        ///            &quot;network_type&quot;: &quot;Wired&quot;,
-        ///            &quot;microphone&quot;: &quot; [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string webinar_participant_data_summary_webhook {
-            get {
-                return ResourceManager.GetString("webinar_participant_data_summary_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_participant_bind", resourceCulture);
             }
         }
         
@@ -11603,9 +11579,34 @@ namespace ZoomNet.UnitTests.Properties {
         ///            &quot;network_type&quot;: &quot;Wired&quot;,
         ///            &quot;microphone&quot;: &quot;Plantron [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string webinar_participant_data_webhook {
+        internal static string webinar_participant_data {
             get {
-                return ResourceManager.GetString("webinar_participant_data_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_participant_data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;webinar.participant_data_summary&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;participant&quot;: {
+        ///        &quot;participant_id&quot;: &quot;123456789036&quot;,
+        ///        &quot;participant_user_id&quot;: &quot;rstuvwxyza789-cde&quot;,
+        ///        &quot;email&quot;: &quot;user@example.com&quot;,
+        ///        &quot;data&quot;: [
+        ///          {
+        ///            &quot;device&quot;: &quot;WIN&quot;,
+        ///            &quot;location&quot;: &quot;New York&quot;,
+        ///            &quot;network_type&quot;: &quot;Wired&quot;,
+        ///            &quot;microphone&quot;: &quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string webinar_participant_data_summary {
+            get {
+                return ResourceManager.GetString("webinar_participant_data_summary", resourceCulture);
             }
         }
         
@@ -11625,9 +11626,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///                &quot;feedback&quot;: {
         ///                    &quot;satisfied&quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string webinar_participant_feedback_webhook {
+        internal static string webinar_participant_feedback {
             get {
-                return ResourceManager.GetString("webinar_participant_feedback_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_participant_feedback", resourceCulture);
             }
         }
         
@@ -11650,9 +11651,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
         ///        &quot;user_name&quot;: &quot;Jill C [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string webinar_participant_joined_webhook {
+        internal static string webinar_participant_joined {
             get {
-                return ResourceManager.GetString("webinar_participant_joined_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_participant_joined", resourceCulture);
             }
         }
         
@@ -11675,34 +11676,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
         ///        &quot;user_name&quot;: &quot;Jill Chi [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string webinar_participant_left_webhook {
+        internal static string webinar_participant_left {
             get {
-                return ResourceManager.GetString("webinar_participant_left_webhook", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {
-        ///  &quot;event&quot;: &quot;webinar.participant_qos_summary&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
-        ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///    &quot;object&quot;: {
-        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///      &quot;id&quot;: &quot;123456ABCDEF&quot;,
-        ///      &quot;participant&quot;: {
-        ///        &quot;participant_id&quot;: &quot;string&quot;,
-        ///        &quot;user_name&quot;: &quot;JillChill&quot;,
-        ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
-        ///        &quot;email&quot;: &quot;user@example.com&quot;,
-        ///         &quot;qos&quot; : [ {
-        ///          &quot;type&quot; : &quot;audio_output&quot;,
-        ///          &quot;details&quot; : {
-        ///            &quot;min_bitrate&quot; : &quot;6 kbps&quot;, [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string webinar_participant_qos_summary_webhook {
-            get {
-                return ResourceManager.GetString("webinar_participant_qos_summary_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_participant_left", resourceCulture);
             }
         }
         
@@ -11726,9 +11702,34 @@ namespace ZoomNet.UnitTests.Properties {
         ///              &quot;bitrate&quot;: &quot;63 kbps&quot;,
         ///   [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string webinar_participant_qos_webhook {
+        internal static string webinar_participant_qos {
             get {
-                return ResourceManager.GetString("webinar_participant_qos_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_participant_qos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;webinar.participant_qos_summary&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;id&quot;: &quot;123456ABCDEF&quot;,
+        ///      &quot;participant&quot;: {
+        ///        &quot;participant_id&quot;: &quot;string&quot;,
+        ///        &quot;user_name&quot;: &quot;JillChill&quot;,
+        ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
+        ///        &quot;email&quot;: &quot;user@example.com&quot;,
+        ///         &quot;qos&quot; : [ {
+        ///          &quot;type&quot; : &quot;audio_output&quot;,
+        ///          &quot;details&quot; : {
+        ///            &quot;min_bitrate&quot; : &quot;6 kbps&quot;, [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string webinar_participant_qos_summary {
+            get {
+                return ResourceManager.GetString("webinar_participant_qos_summary", resourceCulture);
             }
         }
         
@@ -11751,9 +11752,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
         ///        &quot;user_name&quot;: &quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string webinar_participant_role_changed_webhook {
+        internal static string webinar_participant_role_changed {
             get {
-                return ResourceManager.GetString("webinar_participant_role_changed_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_participant_role_changed", resourceCulture);
             }
         }
         
@@ -11776,9 +11777,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;duration&quot;: 60,
         ///      &quot;timezone&quot;: &quot;America/Los_An [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string webinar_permanently_deleted_webhook {
+        internal static string webinar_permanently_deleted {
             get {
-                return ResourceManager.GetString("webinar_permanently_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_permanently_deleted", resourceCulture);
             }
         }
         
@@ -11802,9 +11803,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string webinar_recovered_webhook {
+        internal static string webinar_recovered {
             get {
-                return ResourceManager.GetString("webinar_recovered_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_recovered", resourceCulture);
             }
         }
         
@@ -11827,9 +11828,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;occurrence [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string webinar_registration_approved_webhook {
+        internal static string webinar_registration_approved {
             get {
-                return ResourceManager.GetString("webinar_registration_approved_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_registration_approved", resourceCulture);
             }
         }
         
@@ -11852,9 +11853,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;occurrenc [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string webinar_registration_cancelled_webhook {
+        internal static string webinar_registration_cancelled {
             get {
-                return ResourceManager.GetString("webinar_registration_cancelled_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_registration_cancelled", resourceCulture);
             }
         }
         
@@ -11878,9 +11879,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;occurrence_id&quot;: &quot;ABCDE12345&quot;,
         ///          &quot;start_time&quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string webinar_registration_created_webhook {
+        internal static string webinar_registration_created {
             get {
-                return ResourceManager.GetString("webinar_registration_created_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_registration_created", resourceCulture);
             }
         }
         
@@ -11903,9 +11904,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;occurrences&quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string webinar_registration_denied_webhook {
+        internal static string webinar_registration_denied {
             get {
-                return ResourceManager.GetString("webinar_registration_denied_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_registration_denied", resourceCulture);
             }
         }
         
@@ -11919,9 +11920,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string webinar_rtms_interrupted_webhook {
+        internal static string webinar_rtms_interrupted {
             get {
-                return ResourceManager.GetString("webinar_rtms_interrupted_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_rtms_interrupted", resourceCulture);
             }
         }
         
@@ -11937,9 +11938,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string webinar_rtms_started_webhook {
+        internal static string webinar_rtms_started {
             get {
-                return ResourceManager.GetString("webinar_rtms_started_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_rtms_started", resourceCulture);
             }
         }
         
@@ -11954,9 +11955,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string webinar_rtms_stopped_webhook {
+        internal static string webinar_rtms_stopped {
             get {
-                return ResourceManager.GetString("webinar_rtms_stopped_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_rtms_stopped", resourceCulture);
             }
         }
         
@@ -11979,9 +11980,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
         ///        &quot;user_name&quot;: &quot;Jill Chill&quot;,        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string webinar_sharing_ended_webhook {
+        internal static string webinar_sharing_ended {
             get {
-                return ResourceManager.GetString("webinar_sharing_ended_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_sharing_ended", resourceCulture);
             }
         }
         
@@ -12004,9 +12005,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
         ///        &quot;user_name&quot;: &quot;Jill Chill&quot; [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string webinar_sharing_started_webhook {
+        internal static string webinar_sharing_started {
             get {
-                return ResourceManager.GetString("webinar_sharing_started_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_sharing_started", resourceCulture);
             }
         }
         
@@ -12029,9 +12030,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string webinar_started_webhook {
+        internal static string webinar_started {
             get {
-                return ResourceManager.GetString("webinar_started_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_started", resourceCulture);
             }
         }
         
@@ -12054,9 +12055,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///  [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string webinar_updated_webhook {
+        internal static string webinar_updated {
             get {
-                return ResourceManager.GetString("webinar_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("webinar_updated", resourceCulture);
             }
         }
         
@@ -12077,9 +12078,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string whiteboard_archive_available_webhook {
+        internal static string whiteboard_archive_available {
             get {
-                return ResourceManager.GetString("whiteboard_archive_available_webhook", resourceCulture);
+                return ResourceManager.GetString("whiteboard_archive_available", resourceCulture);
             }
         }
         
@@ -12102,9 +12103,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string whiteboard_created_webhook {
+        internal static string whiteboard_created {
             get {
-                return ResourceManager.GetString("whiteboard_created_webhook", resourceCulture);
+                return ResourceManager.GetString("whiteboard_created", resourceCulture);
             }
         }
         
@@ -12125,9 +12126,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string whiteboard_deleted_webhook {
+        internal static string whiteboard_deleted {
             get {
-                return ResourceManager.GetString("whiteboard_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("whiteboard_deleted", resourceCulture);
             }
         }
         
@@ -12149,9 +12150,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;file_size&quot;: 256000,
         ///        &quot;fi [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string whiteboard_file_added_webhook {
+        internal static string whiteboard_file_added {
             get {
-                return ResourceManager.GetString("whiteboard_file_added_webhook", resourceCulture);
+                return ResourceManager.GetString("whiteboard_file_added", resourceCulture);
             }
         }
         
@@ -12171,9 +12172,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string whiteboard_opened_webhook {
+        internal static string whiteboard_opened {
             get {
-                return ResourceManager.GetString("whiteboard_opened_webhook", resourceCulture);
+                return ResourceManager.GetString("whiteboard_opened", resourceCulture);
             }
         }
         
@@ -12195,9 +12196,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///                &quot;advanced_share_setting&quot;:{
         ///           [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string whiteboard_share_settings_updated_webhook {
+        internal static string whiteboard_share_settings_updated {
             get {
-                return ResourceManager.GetString("whiteboard_share_settings_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("whiteboard_share_settings_updated", resourceCulture);
             }
         }
         
@@ -12219,9 +12220,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;email&quot;: &quot;user@example.com&quot;,
         ///        [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string whiteboard_shared_webhook {
+        internal static string whiteboard_shared {
             get {
-                return ResourceManager.GetString("whiteboard_shared_webhook", resourceCulture);
+                return ResourceManager.GetString("whiteboard_shared", resourceCulture);
             }
         }
         
@@ -12243,9 +12244,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;email&quot;: &quot;user@example.com&quot;,
         ///          &quot;co [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string whiteboard_sharing_updated_webhook {
+        internal static string whiteboard_sharing_updated {
             get {
-                return ResourceManager.GetString("whiteboard_sharing_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("whiteboard_sharing_updated", resourceCulture);
             }
         }
         
@@ -12264,9 +12265,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string workspace_created_webhook {
+        internal static string workspace_created {
             get {
-                return ResourceManager.GetString("workspace_created_webhook", resourceCulture);
+                return ResourceManager.GetString("workspace_created", resourceCulture);
             }
         }
         
@@ -12285,9 +12286,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string workspace_deleted_webhook {
+        internal static string workspace_deleted {
             get {
-                return ResourceManager.GetString("workspace_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("workspace_deleted", resourceCulture);
             }
         }
         
@@ -12307,9 +12308,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;location_id&quot;: &quot;wnFFoWRwTLeww81UuAeW4g&quot;,
         ///   [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string workspace_pre_check_in_questionnaire_response_created_webhook {
+        internal static string workspace_pre_check_in_questionnaire_response_created {
             get {
-                return ResourceManager.GetString("workspace_pre_check_in_questionnaire_response_created_webhook", resourceCulture);
+                return ResourceManager.GetString("workspace_pre_check_in_questionnaire_response_created", resourceCulture);
             }
         }
         
@@ -12332,9 +12333,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string workspace_reservation_checked_in_webhook {
+        internal static string workspace_reservation_checked_in {
             get {
-                return ResourceManager.GetString("workspace_reservation_checked_in_webhook", resourceCulture);
+                return ResourceManager.GetString("workspace_reservation_checked_in", resourceCulture);
             }
         }
         
@@ -12357,9 +12358,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string workspace_reservation_checked_out_webhook {
+        internal static string workspace_reservation_checked_out {
             get {
-                return ResourceManager.GetString("workspace_reservation_checked_out_webhook", resourceCulture);
+                return ResourceManager.GetString("workspace_reservation_checked_out", resourceCulture);
             }
         }
         
@@ -12380,9 +12381,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;reserve_for&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
         ///      [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string workspace_reservation_created_webhook {
+        internal static string workspace_reservation_created {
             get {
-                return ResourceManager.GetString("workspace_reservation_created_webhook", resourceCulture);
+                return ResourceManager.GetString("workspace_reservation_created", resourceCulture);
             }
         }
         
@@ -12405,9 +12406,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string workspace_reservation_deleted_webhook {
+        internal static string workspace_reservation_deleted {
             get {
-                return ResourceManager.GetString("workspace_reservation_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("workspace_reservation_deleted", resourceCulture);
             }
         }
         
@@ -12427,9 +12428,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;location_id&quot;: &quot;wnFFoWRwTLeww81UuAeW4g&quot;,
         ///    [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string workspace_reservation_questionnaire_response_created_webhook {
+        internal static string workspace_reservation_questionnaire_response_created {
             get {
-                return ResourceManager.GetString("workspace_reservation_questionnaire_response_created_webhook", resourceCulture);
+                return ResourceManager.GetString("workspace_reservation_questionnaire_response_created", resourceCulture);
             }
         }
         
@@ -12449,9 +12450,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;location_id&quot;: &quot;wnFFoWRwTLeww81UuAeW4g&quot;,
         ///    [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string workspace_reservation_questionnaire_response_updated_webhook {
+        internal static string workspace_reservation_questionnaire_response_updated {
             get {
-                return ResourceManager.GetString("workspace_reservation_questionnaire_response_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("workspace_reservation_questionnaire_response_updated", resourceCulture);
             }
         }
         
@@ -12474,9 +12475,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string workspace_reservation_update_webhook {
+        internal static string workspace_reservation_update {
             get {
-                return ResourceManager.GetString("workspace_reservation_update_webhook", resourceCulture);
+                return ResourceManager.GetString("workspace_reservation_update", resourceCulture);
             }
         }
         
@@ -12495,9 +12496,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string workspace_updated_webhook {
+        internal static string workspace_updated {
             get {
-                return ResourceManager.GetString("workspace_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("workspace_updated", resourceCulture);
             }
         }
         
@@ -12518,9 +12519,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;user_email&quot;: &quot;vic-01-devint@zoom.us&quot;
         /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string workspace_user_assigned_webhook {
+        internal static string workspace_user_assigned {
             get {
-                return ResourceManager.GetString("workspace_user_assigned_webhook", resourceCulture);
+                return ResourceManager.GetString("workspace_user_assigned", resourceCulture);
             }
         }
         
@@ -12542,9 +12543,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string workspace_user_unassigned_webhook {
+        internal static string workspace_user_unassigned {
             get {
-                return ResourceManager.GetString("workspace_user_unassigned_webhook", resourceCulture);
+                return ResourceManager.GetString("workspace_user_unassigned", resourceCulture);
             }
         }
         
@@ -12566,9 +12567,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2023-07-13T21:44:51Z&quot;,
         ///      &quot;end_time&quot;: &quot;2023-07-13T23:00:51 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string zoom_events_event_cancelled_webhook {
+        internal static string zoom_events_event_cancelled {
             get {
-                return ResourceManager.GetString("zoom_events_event_cancelled_webhook", resourceCulture);
+                return ResourceManager.GetString("zoom_events_event_cancelled", resourceCulture);
             }
         }
         
@@ -12590,9 +12591,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;status&quot;: &quot;DRAFT&quot;,
         ///      &quot;start_time&quot;: &quot;2023-07-13T21:44: [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string zoom_events_event_duplicated_webhook {
+        internal static string zoom_events_event_duplicated {
             get {
-                return ResourceManager.GetString("zoom_events_event_duplicated_webhook", resourceCulture);
+                return ResourceManager.GetString("zoom_events_event_duplicated", resourceCulture);
             }
         }
         
@@ -12614,9 +12615,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2023-07-13T21:44:51Z&quot;,
         ///      &quot;end_time&quot;: &quot;2023-07-13T23:00:51 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string zoom_events_event_published_webhook {
+        internal static string zoom_events_event_published {
             get {
-                return ResourceManager.GetString("zoom_events_event_published_webhook", resourceCulture);
+                return ResourceManager.GetString("zoom_events_event_published", resourceCulture);
             }
         }
         
@@ -12638,9 +12639,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2023-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;, [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string zoom_events_event_updated_webhook {
+        internal static string zoom_events_event_updated {
             get {
-                return ResourceManager.GetString("zoom_events_event_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("zoom_events_event_updated", resourceCulture);
             }
         }
         
@@ -12662,9 +12663,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;contact_email&quot;: &quot;exhibitor1-email@zoom.us&quot;
         ///    } [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string zoom_events_exhibitor_created_webhook {
+        internal static string zoom_events_exhibitor_created {
             get {
-                return ResourceManager.GetString("zoom_events_exhibitor_created_webhook", resourceCulture);
+                return ResourceManager.GetString("zoom_events_exhibitor_created", resourceCulture);
             }
         }
         
@@ -12686,9 +12687,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;contact_email&quot;: &quot;exhibitor1-email@zoom.us&quot;
         ///    } [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string zoom_events_exhibitor_deleted_webhook {
+        internal static string zoom_events_exhibitor_deleted {
             get {
-                return ResourceManager.GetString("zoom_events_exhibitor_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("zoom_events_exhibitor_deleted", resourceCulture);
             }
         }
         
@@ -12710,9 +12711,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;contact_email&quot;: &quot;exhibitor1-email@zoom.us&quot;
         ///    } [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string zoom_events_exhibitor_updated_webhook {
+        internal static string zoom_events_exhibitor_updated {
             get {
-                return ResourceManager.GetString("zoom_events_exhibitor_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("zoom_events_exhibitor_updated", resourceCulture);
             }
         }
         
@@ -12736,9 +12737,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string zoom_events_session_created_webhook {
+        internal static string zoom_events_session_created {
             get {
-                return ResourceManager.GetString("zoom_events_session_created_webhook", resourceCulture);
+                return ResourceManager.GetString("zoom_events_session_created", resourceCulture);
             }
         }
         
@@ -12762,9 +12763,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string zoom_events_session_deleted_webhook {
+        internal static string zoom_events_session_deleted {
             get {
-                return ResourceManager.GetString("zoom_events_session_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("zoom_events_session_deleted", resourceCulture);
             }
         }
         
@@ -12786,9 +12787,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        }
         ///     [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string zoom_events_session_ended_webhook {
+        internal static string zoom_events_session_ended {
             get {
-                return ResourceManager.GetString("zoom_events_session_ended_webhook", resourceCulture);
+                return ResourceManager.GetString("zoom_events_session_ended", resourceCulture);
             }
         }
         
@@ -12812,9 +12813,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string zoom_events_session_updated_webhook {
+        internal static string zoom_events_session_updated {
             get {
-                return ResourceManager.GetString("zoom_events_session_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("zoom_events_session_updated", resourceCulture);
             }
         }
         
@@ -12834,9 +12835,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string zoom_events_speaker_created_webhook {
+        internal static string zoom_events_speaker_created {
             get {
-                return ResourceManager.GetString("zoom_events_speaker_created_webhook", resourceCulture);
+                return ResourceManager.GetString("zoom_events_speaker_created", resourceCulture);
             }
         }
         
@@ -12856,9 +12857,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string zoom_events_speaker_deleted_webhook {
+        internal static string zoom_events_speaker_deleted {
             get {
-                return ResourceManager.GetString("zoom_events_speaker_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("zoom_events_speaker_deleted", resourceCulture);
             }
         }
         
@@ -12878,9 +12879,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string zoom_events_speaker_updated_webhook {
+        internal static string zoom_events_speaker_updated {
             get {
-                return ResourceManager.GetString("zoom_events_speaker_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("zoom_events_speaker_updated", resourceCulture);
             }
         }
         
@@ -12903,9 +12904,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string zoom_events_ticket_created_webhook {
+        internal static string zoom_events_ticket_created {
             get {
-                return ResourceManager.GetString("zoom_events_ticket_created_webhook", resourceCulture);
+                return ResourceManager.GetString("zoom_events_ticket_created", resourceCulture);
             }
         }
         
@@ -12928,9 +12929,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string zoom_events_ticket_deleted_webhook {
+        internal static string zoom_events_ticket_deleted {
             get {
-                return ResourceManager.GetString("zoom_events_ticket_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("zoom_events_ticket_deleted", resourceCulture);
             }
         }
         
@@ -12953,9 +12954,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string zoom_events_ticket_type_created_webhook {
+        internal static string zoom_events_ticket_type_created {
             get {
-                return ResourceManager.GetString("zoom_events_ticket_type_created_webhook", resourceCulture);
+                return ResourceManager.GetString("zoom_events_ticket_type_created", resourceCulture);
             }
         }
         
@@ -12978,9 +12979,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string zoom_events_ticket_type_deleted_webhook {
+        internal static string zoom_events_ticket_type_deleted {
             get {
-                return ResourceManager.GetString("zoom_events_ticket_type_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("zoom_events_ticket_type_deleted", resourceCulture);
             }
         }
         
@@ -13003,9 +13004,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string zoom_events_ticket_type_updated_webhook {
+        internal static string zoom_events_ticket_type_updated {
             get {
-                return ResourceManager.GetString("zoom_events_ticket_type_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("zoom_events_ticket_type_updated", resourceCulture);
             }
         }
         
@@ -13028,9 +13029,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string zoom_events_ticket_updated_webhook {
+        internal static string zoom_events_ticket_updated {
             get {
-                return ResourceManager.GetString("zoom_events_ticket_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("zoom_events_ticket_updated", resourceCulture);
             }
         }
         
@@ -13051,9 +13052,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;join_link&quot;: &quot;https://events.zoom.us/ejl/xyz&quot;,
         ///      &quot;first [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string zoom_events_vod_registration_created_webhook {
+        internal static string zoom_events_vod_registration_created {
             get {
-                return ResourceManager.GetString("zoom_events_vod_registration_created_webhook", resourceCulture);
+                return ResourceManager.GetString("zoom_events_vod_registration_created", resourceCulture);
             }
         }
         
@@ -13076,9 +13077,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string zoomroom_alert_webhook {
+        internal static string zoomroom_alert {
             get {
-                return ResourceManager.GetString("zoomroom_alert_webhook", resourceCulture);
+                return ResourceManager.GetString("zoomroom_alert", resourceCulture);
             }
         }
         
@@ -13096,9 +13097,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;event_id&quot;: &quot;AbbbbbGYxLTc3OTVkMzFmZDc0MwBGAAAAAAD48FI58voYSqDgJePOSZblBwBQ/N0JvB/FRqv5UT2rFfkVAAAAAAENAABQ/N0JvB/FRqv5UT2rFfkVAAE2YC8DAAA=&quot;,
         ///        &quot;change_key&quot;: &quot;DwAAABYAAABQ/N0JvB/FRqv5UT2rFfkVAAE2XqVw&quot;,        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string zoomroom_checked_in_webhook {
+        internal static string zoomroom_checked_in {
             get {
-                return ResourceManager.GetString("zoomroom_checked_in_webhook", resourceCulture);
+                return ResourceManager.GetString("zoomroom_checked_in", resourceCulture);
             }
         }
         
@@ -13117,9 +13118,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;change_key&quot;: &quot;DwAAABYAAABQ/N0JvB/FRqv5UT2rFfkVAAE2XqVw&quot;,
         ///      &quot;res [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string zoomroom_checked_out_webhook {
+        internal static string zoomroom_checked_out {
             get {
-                return ResourceManager.GetString("zoomroom_checked_out_webhook", resourceCulture);
+                return ResourceManager.GetString("zoomroom_checked_out", resourceCulture);
             }
         }
         
@@ -13136,9 +13137,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string zoomroom_created_webhook {
+        internal static string zoomroom_created {
             get {
-                return ResourceManager.GetString("zoomroom_created_webhook", resourceCulture);
+                return ResourceManager.GetString("zoomroom_created", resourceCulture);
             }
         }
         
@@ -13161,9 +13162,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string zoomroom_delayed_alert_webhook {
+        internal static string zoomroom_delayed_alert {
             get {
-                return ResourceManager.GetString("zoomroom_delayed_alert_webhook", resourceCulture);
+                return ResourceManager.GetString("zoomroom_delayed_alert", resourceCulture);
             }
         }
         
@@ -13180,9 +13181,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string zoomroom_deleted_webhook {
+        internal static string zoomroom_deleted {
             get {
-                return ResourceManager.GetString("zoomroom_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("zoomroom_deleted", resourceCulture);
             }
         }
         
@@ -13202,9 +13203,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string zoomroom_digital_signage_app_ended_webhook {
+        internal static string zoomroom_digital_signage_app_ended {
             get {
-                return ResourceManager.GetString("zoomroom_digital_signage_app_ended_webhook", resourceCulture);
+                return ResourceManager.GetString("zoomroom_digital_signage_app_ended", resourceCulture);
             }
         }
         
@@ -13224,9 +13225,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string zoomroom_digital_signage_app_started_webhook {
+        internal static string zoomroom_digital_signage_app_started {
             get {
-                return ResourceManager.GetString("zoomroom_digital_signage_app_started_webhook", resourceCulture);
+                return ResourceManager.GetString("zoomroom_digital_signage_app_started", resourceCulture);
             }
         }
         
@@ -13247,9 +13248,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string zoomroom_location_created_webhook {
+        internal static string zoomroom_location_created {
             get {
-                return ResourceManager.GetString("zoomroom_location_created_webhook", resourceCulture);
+                return ResourceManager.GetString("zoomroom_location_created", resourceCulture);
             }
         }
         
@@ -13270,9 +13271,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string zoomroom_location_deleted_webhook {
+        internal static string zoomroom_location_deleted {
             get {
-                return ResourceManager.GetString("zoomroom_location_deleted_webhook", resourceCulture);
+                return ResourceManager.GetString("zoomroom_location_deleted", resourceCulture);
             }
         }
         
@@ -13293,9 +13294,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string zoomroom_location_updated_webhook {
+        internal static string zoomroom_location_updated {
             get {
-                return ResourceManager.GetString("zoomroom_location_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("zoomroom_location_updated", resourceCulture);
             }
         }
         
@@ -13318,9 +13319,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string zoomroom_sensor_data_webhook {
+        internal static string zoomroom_sensor_data {
             get {
-                return ResourceManager.GetString("zoomroom_sensor_data_webhook", resourceCulture);
+                return ResourceManager.GetString("zoomroom_sensor_data", resourceCulture);
             }
         }
         
@@ -13342,9 +13343,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///	}
         ///}.
         /// </summary>
-        internal static string zoomroom_thirdparty_meeting_attempted_webhook {
+        internal static string zoomroom_thirdparty_meeting_attempted {
             get {
-                return ResourceManager.GetString("zoomroom_thirdparty_meeting_attempted_webhook", resourceCulture);
+                return ResourceManager.GetString("zoomroom_thirdparty_meeting_attempted", resourceCulture);
             }
         }
         
@@ -13361,9 +13362,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///  }
         ///}.
         /// </summary>
-        internal static string zoomroom_updated_webhook {
+        internal static string zoomroom_updated {
             get {
-                return ResourceManager.GetString("zoomroom_updated_webhook", resourceCulture);
+                return ResourceManager.GetString("zoomroom_updated", resourceCulture);
             }
         }
     }
