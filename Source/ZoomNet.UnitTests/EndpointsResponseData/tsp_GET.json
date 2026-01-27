@@ -1,0 +1,16 @@
+{
+  "dial_in_number_unrestricted": false,
+  "dial_in_numbers": [
+    {
+      "code": "1",
+      "number": "\u002B1 1000200200",
+      "type": "toll"
+    }
+  ],
+  "enable": true,
+  "master_account_setting_extended": true,
+  "modify_credential_forbidden": true,
+  "tsp_bridge": "US_TSP_TB",
+  "tsp_enabled": true,
+  "tsp_provider": "someprovidername"
+}

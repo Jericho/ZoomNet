@@ -1,0 +1,13 @@
+{
+  "firmware_versions": [
+    {
+      "vendor": "AudioCodes",
+      "model": "C470HD",
+      "version": "1.19.552",
+      "warn_info": "You are about to perform an Android operating system upgrade. The change is permanent and cannot be reversed."
+    }
+  ],
+  "app_versions": [
+    "5.16.5.3920"
+  ]
+}

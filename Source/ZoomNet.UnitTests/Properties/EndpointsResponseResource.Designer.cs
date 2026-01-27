@@ -110,6 +110,30 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;device_id&quot;: &quot;F1C6E9DF-429E-4FA1-85DA-AC95464F3D18&quot;,
+        ///  &quot;device_name&quot;: &quot;My device&quot;,
+        ///  &quot;mac_address&quot;: &quot;01-23-45-67-89-AB&quot;,
+        ///  &quot;serial_number&quot;: &quot;6NRN2A0&quot;,
+        ///  &quot;vendor&quot;: &quot;Poly&quot;,
+        ///  &quot;model&quot;: &quot;StudioX30&quot;,
+        ///  &quot;platform_os&quot;: &quot;Epos expandvision5 1.2.22315.04&quot;,
+        ///  &quot;app_version&quot;: &quot;5.13.0.5762&quot;,
+        ///  &quot;tag&quot;: &quot;personal rooms&quot;,
+        ///  &quot;enrolled_in_zdm&quot;: true,
+        ///  &quot;connected_to_zdm&quot;: true,
+        ///  &quot;room_id&quot;: &quot;72afdc13-a289-40c3-b358-50c8b8de&quot;,
+        ///  &quot;room_name&quot;: &quot;My Personal Meeting Room&quot;,
+        ///  &quot;device_type&quot;: 0,
+        ///  &quot;sdk_version&quot;: &quot;2. [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string devices__deviceId__GET {
+            get {
+                return ResourceManager.GetString("devices-{deviceId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;next_page_token&quot;: &quot;At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2&quot;,
         ///  &quot;page_size&quot;: 20,
         ///  &quot;devices&quot;: [
@@ -134,6 +158,118 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;groups&quot;: [
+        ///    {
+        ///      &quot;zdm_group_id&quot;: &quot;ff49588c-92c4-4406-99e6-1942d8a61a7b&quot;,
+        ///      &quot;name&quot;: &quot;HeFei-group&quot;,
+        ///      &quot;description&quot;: &quot;Group in Hefei region&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;RaO87FrnwXvFQta5aV8sU5C3c9O8s9Nraq2&quot;,
+        ///  &quot;page_size&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string devices_groups_GET {
+            get {
+                return ResourceManager.GetString("devices-groups_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;language&quot;: &quot;English&quot;,
+        ///  &quot;timezone&quot;: &quot; (GMT\u002B6:00) Astana, Dhaka&quot;,
+        ///  &quot;device_infos&quot;: [
+        ///    {
+        ///      &quot;device_id&quot;: &quot;yealink-249AD8E00476&quot;,
+        ///      &quot;device_type&quot;: &quot;Zoom Phone Appliance&quot;,
+        ///      &quot;vendor&quot;: &quot;Yealink&quot;,
+        ///      &quot;model&quot;: &quot;MP56&quot;,
+        ///      &quot;status&quot;: &quot;string&quot;,
+        ///      &quot;policy&quot;: {
+        ///        &quot;hot_desking&quot;: {
+        ///          &quot;status&quot;: &quot;online&quot;
+        ///        },
+        ///        &quot;call_control&quot;: {
+        ///          &quot;status&quot;: &quot;off&quot;
+        ///        }
+        ///      }
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string devices_zpa_settings_GET {
+            get {
+                return ResourceManager.GetString("devices-zpa-settings_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;firmware_versions&quot;: [
+        ///    {
+        ///      &quot;vendor&quot;: &quot;AudioCodes&quot;,
+        ///      &quot;model&quot;: &quot;C470HD&quot;,
+        ///      &quot;version&quot;: &quot;1.19.552&quot;,
+        ///      &quot;warn_info&quot;: &quot;You are about to perform an Android operating system upgrade. The change is permanent and cannot be reversed.&quot;
+        ///    }
+        ///  ],
+        ///  &quot;app_versions&quot;: [
+        ///    &quot;5.16.5.3920&quot;
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string devices_zpa_zdm_groups__zdmGroupId__versions_GET {
+            get {
+                return ResourceManager.GetString("devices-zpa-zdm_groups-{zdmGroupId}-versions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;assistant_id&quot;: &quot;kFFvsJc-Q1OSxaJQLvaa_A&quot;,
+        ///  &quot;host_email&quot;: &quot;jchill@example.com&quot;,
+        ///  &quot;host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
+        ///  &quot;id&quot;: 97763643886,
+        ///  &quot;uuid&quot;: &quot;aDYlohsHRtCd4ii1uC2\u002BhA==&quot;,
+        ///  &quot;registration_url&quot;: &quot;https://example.com/meeting/register/7ksAkRCoEpt1Jm0wa-E6lICLur9e7Lde5oW6&quot;,
+        ///  &quot;agenda&quot;: &quot;My Meeting&quot;,
+        ///  &quot;created_at&quot;: &quot;2022-03-25T07:29:29.0000000\u002B00:00&quot;,
+        ///  &quot;duration&quot;: 60,
+        ///  &quot;encrypted_password&quot;: &quot;8pEkRweVXPV3Ob2KJYgFTRlDtl1gSn.1&quot;,
+        ///  &quot;pstn_password&quot;: &quot;123456&quot;,
+        ///  &quot;h323_password&quot;: &quot;123 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string meetings__meetingId__GET {
+            get {
+                return ResourceManager.GetString("meetings-{meetingId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;invitation&quot;: &quot;Jill Chill is inviting you to a scheduled Zoom meeting.\r\n\r\nTopic: My Meeting\r\nTime: Mar 25, 2022 03:32 PM America, Los_Angeles\r\n\r\nJoin Zoom Meeting\r\nhttps://zoom.us/j/55544443210?pwd=8pEkRweVXPV3Ob2KJYgFTRlDtl1gSn.1\r\n\r\nMeeting ID: 555 4444 3210\r\nPasscode: 123456\r\nOne tap mobile\r\n\u002B5678901234,,55544443210#,,,,*123456# US (gg)\r\n\r\nDial by your location\r\n\u002B1 15550100 US (gg)\r\nMeeting ID: 555 4444 3210\r\nPasscode: 123456\r\nFind your local number: https: [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string meetings__meetingId__invitation_GET {
+            get {
+                return ResourceManager.GetString("meetings-{meetingId}-invitation_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;expire_in&quot;: 120,
+        ///  &quot;token&quot;: &quot;2njt50mj&quot;
+        ///}.
+        /// </summary>
+        internal static string meetings__meetingId__jointoken_live_streaming_GET {
+            get {
+                return ResourceManager.GetString("meetings-{meetingId}-jointoken-live_streaming_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;expire_in&quot;: 120,
         ///  &quot;token&quot;: &quot;2njt50mj&quot;
         ///}.
@@ -141,6 +277,51 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string meetings__meetingId__jointoken_local_archiving_GET {
             get {
                 return ResourceManager.GetString("meetings-{meetingId}-jointoken-local_archiving_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;expire_in&quot;: 120,
+        ///  &quot;token&quot;: &quot;2njt50mj&quot;
+        ///}.
+        /// </summary>
+        internal static string meetings__meetingId__jointoken_local_recording_GET {
+            get {
+                return ResourceManager.GetString("meetings-{meetingId}-jointoken-local_recording_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_url&quot;: &quot;https://example.com/livestream/123&quot;,
+        ///  &quot;stream_key&quot;: &quot;contact-ic@example.com&quot;,
+        ///  &quot;stream_url&quot;: &quot;https://example.com/livestream&quot;,
+        ///  &quot;resolution&quot;: &quot;720p&quot;
+        ///}.
+        /// </summary>
+        internal static string meetings__meetingId__livestream_GET {
+            get {
+                return ResourceManager.GetString("meetings-{meetingId}-livestream_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;meeting_host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
+        ///  &quot;meeting_host_email&quot;: &quot;jchill@example.com&quot;,
+        ///  &quot;meeting_uuid&quot;: &quot;aDYlohsHRtCd4ii1uC2\u002BhA==&quot;,
+        ///  &quot;meeting_id&quot;: 97763643886,
+        ///  &quot;meeting_topic&quot;: &quot;My Meeting&quot;,
+        ///  &quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52.0000000\u002B00:00&quot;,
+        ///  &quot;meeting_end_time&quot;: &quot;2020-07-15T23:30:19.0000000\u002B00:00&quot;,
+        ///  &quot;summary_start_time&quot;: &quot;2019-07-15T23:24:52.0000000\u002B00:00&quot;,
+        ///  &quot;summary_end_time&quot;: &quot;2020-07-15T23:30:19.0000000\u002B00:00&quot;,
+        ///  &quot;summary_created_time&quot;: &quot;2019-07 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string meetings__meetingId__meeting_summary_GET {
+            get {
+                return ResourceManager.GetString("meetings-{meetingId}-meeting_summary_GET", resourceCulture);
             }
         }
         
@@ -238,6 +419,55 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;sip_dialing&quot;: &quot;9678722567.xxxx....30qonrvgy@zoomcrc.com&quot;,
+        ///  &quot;paid_crc_plan_participant&quot;: true,
+        ///  &quot;participant_identifier_code&quot;: &quot;30qonrvgy&quot;,
+        ///  &quot;expire_in&quot;: 7200
+        ///}.
+        /// </summary>
+        internal static string meetings__meetingId__sip_dialing_POST {
+            get {
+                return ResourceManager.GetString("meetings-{meetingId}-sip_dialing_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;custom_survey&quot;: {
+        ///    &quot;title&quot;: &quot;Learn something new&quot;,
+        ///    &quot;anonymous&quot;: false,
+        ///    &quot;numbered_questions&quot;: false,
+        ///    &quot;show_question_type&quot;: false,
+        ///    &quot;feedback&quot;: &quot;Thank you so much for taking the time to complete the survey. Your feedback really makes a difference.&quot;,
+        ///    &quot;questions&quot;: [
+        ///      {
+        ///        &quot;name&quot;: &quot;How useful was this meeting?&quot;,
+        ///        &quot;type&quot;: &quot;single&quot;,
+        ///        &quot;answer_required&quot;: false,
+        ///        &quot;show_as_dropdown&quot;: false,
+        ///        &quot;answers&quot;: [
+        ///          &quot;Extremely useful&quot;
+        ///       [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string meetings__meetingId__survey_GET {
+            get {
+                return ResourceManager.GetString("meetings-{meetingId}-survey_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;token&quot;: &quot;https://example.com/closedcaption?id=200610693\u0026ns=GZHkEA==\u0026expire=86400\u0026spparams=id%2Cns%2Cexpire\u0026signature=nYtXJqRKCW&quot;
+        ///}.
+        /// </summary>
+        internal static string meetings__meetingId__token_GET {
+            get {
+                return ResourceManager.GetString("meetings-{meetingId}-token_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;meeting_id&quot;: &quot;uaFkQyFCSwya8iNYtkAw3A==&quot;,
         ///  &quot;account_id&quot;: &quot;Cx3wERazSgup7ZWRHQM8-w&quot;,
         ///  &quot;meeting_topic&quot;: &quot;My Personal Meeting&quot;,
@@ -253,6 +483,104 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string meetings__meetingId__transcript_GET {
             get {
                 return ResourceManager.GetString("meetings-{meetingId}-transcript_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;next_page_token&quot;: &quot;Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3&quot;,
+        ///  &quot;from&quot;: &quot;2023-10-19T07:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;to&quot;: &quot;2023-10-20T07:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;summaries&quot;: [
+        ///    {
+        ///      &quot;meeting_host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
+        ///      &quot;meeting_host_email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;meeting_uuid&quot;: &quot;aDYlohsHRtCd4ii1uC2\u002BhA==&quot;,
+        ///      &quot;meeting_id&quot;: 97763643886,
+        ///      &quot;meeting_topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52.0000000\u002B00:00&quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string meetings_meeting_summaries_GET {
+            get {
+                return ResourceManager.GetString("meetings-meeting_summaries_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: 5638296721,
+        ///  &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///  &quot;duration&quot;: 60,
+        ///  &quot;start_time&quot;: &quot;2021-07-13T21:44:51.0000000\u002B00:00&quot;,
+        ///  &quot;end_time&quot;: &quot;2021-07-13T23:00:51.0000000\u002B00:00&quot;,
+        ///  &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///  &quot;dept&quot;: &quot;Developers&quot;,
+        ///  &quot;participants_count&quot;: 2,
+        ///  &quot;source&quot;: &quot;Zoom&quot;,
+        ///  &quot;topic&quot;: &quot;My Meeting&quot;,
+        ///  &quot;total_minutes&quot;: 55,
+        ///  &quot;type&quot;: 1,
+        ///  &quot;user_email&quot;: &quot;jchill@example.com&quot;,
+        ///  &quot;user_name&quot;: &quot;Jill Chill&quot;,
+        ///  &quot;has_meeting_summary&quot;: false
+        ///}.
+        /// </summary>
+        internal static string past_meetings__meetingId__GET {
+            get {
+                return ResourceManager.GetString("past_meetings-{meetingId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: 93398114182,
+        ///  &quot;questions&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;question_details&quot;: [
+        ///        {
+        ///          &quot;answer&quot;: &quot;Good&quot;,
+        ///          &quot;date_time&quot;: &quot;2022-03-26T05:37:59.0000000\u002B00:00&quot;,
+        ///          &quot;polling_id&quot;: &quot;QalIoKWLTJehBJ8e1xRrbQ&quot;,
+        ///          &quot;question&quot;: &quot;How are you?&quot;
+        ///        }
+        ///      ]
+        ///    }
+        ///  ],
+        ///  &quot;start_time&quot;: &quot;2022-03-26T05:37:59.0000000\u002B00:00&quot;,
+        ///  &quot;uuid&quot;: &quot;Vg8IdgluR5WDeWIkpJlElQ==&quot;
+        ///}.
+        /// </summary>
+        internal static string past_meetings__meetingId__polls_GET {
+            get {
+                return ResourceManager.GetString("past_meetings-{meetingId}-polls_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: 95204914252,
+        ///  &quot;questions&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;question_details&quot;: [
+        ///        {
+        ///          &quot;answer&quot;: &quot;Good&quot;,
+        ///          &quot;question&quot;: &quot;How are you?&quot;
+        ///        }
+        ///      ]
+        ///    }
+        ///  ],
+        ///  &quot;start_time&quot;: &quot;2022-03-26T06:44:14.0000000\u002B00:00&quot;,
+        ///  &quot;uuid&quot;: &quot;Bznyg8KZTdCVbQxvS/oZ7w==&quot;
+        ///}.
+        /// </summary>
+        internal static string past_meetings__meetingId__qa_GET {
+            get {
+                return ResourceManager.GetString("past_meetings-{meetingId}-qa_GET", resourceCulture);
             }
         }
         
@@ -275,6 +603,826 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string past_meetings__meetingUUID__archive_files_GET {
             get {
                 return ResourceManager.GetString("past_meetings-{meetingUUID}-archive_files_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3&quot;,
+        ///  &quot;page_count&quot;: 1,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;participants&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
+        ///      &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;user_id&quot;: &quot;ABCDEF123456&quot;,
+        ///      &quot;registrant_id&quot;: &quot;_f08HhPJS82MIVLuuFaJPg&quot;,
+        ///      &quot;user_email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;join_time&quot;: &quot;2019-02-01T12:34:12.6600000\u002B00:00&quot;,
+        ///      &quot;leave_time&quot;: &quot;2019-02-01T12:54:12.6600000\u002B00:00&quot;,
+        ///      &quot;duration&quot;: 20,
+        ///      &quot;failover&quot;: false,
+        ///      &quot;stat [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string past_webinars__webinarId__participants_GET {
+            get {
+                return ResourceManager.GetString("past_webinars-{webinarId}-participants_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: 95204914252,
+        ///  &quot;questions&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;question_details&quot;: [
+        ///        {
+        ///          &quot;answer&quot;: &quot;Good&quot;,
+        ///          &quot;date_time&quot;: &quot;2022-03-26T05:37:59.0000000\u002B00:00&quot;,
+        ///          &quot;polling_id&quot;: &quot;QalIoKWLTJehBJ8e1xRrbQ&quot;,
+        ///          &quot;question&quot;: &quot;How are you?&quot;
+        ///        }
+        ///      ]
+        ///    }
+        ///  ],
+        ///  &quot;start_time&quot;: &quot;2022-03-26T05:37:59.0000000\u002B00:00&quot;,
+        ///  &quot;uuid&quot;: &quot;Bznyg8KZTdCVbQxvS/oZ7w==&quot;
+        ///}.
+        /// </summary>
+        internal static string past_webinars__webinarId__polls_GET {
+            get {
+                return ResourceManager.GetString("past_webinars-{webinarId}-polls_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: 95204914252,
+        ///  &quot;questions&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;question_details&quot;: [
+        ///        {
+        ///          &quot;answer&quot;: &quot;Good&quot;,
+        ///          &quot;question&quot;: &quot;How are you?&quot;
+        ///        }
+        ///      ]
+        ///    }
+        ///  ],
+        ///  &quot;start_time&quot;: &quot;2022-03-26T06:44:14.0000000\u002B00:00&quot;,
+        ///  &quot;uuid&quot;: &quot;Bznyg8KZTdCVbQxvS/oZ7w==&quot;
+        ///}.
+        /// </summary>
+        internal static string past_webinars__webinarId__qa_GET {
+            get {
+                return ResourceManager.GetString("past_webinars-{webinarId}-qa_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;activity_logs&quot;: [
+        ///    {
+        ///      &quot;client_type&quot;: &quot;Browser&quot;,
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;ip_address&quot;: &quot;192.0.2.1&quot;,
+        ///      &quot;time&quot;: &quot;2019-09-15T19:13:41.0000000\u002B00:00&quot;,
+        ///      &quot;type&quot;: &quot;Sign out&quot;,
+        ///      &quot;version&quot;: &quot;5.9.1.2581&quot;
+        ///    }
+        ///  ],
+        ///  &quot;from&quot;: &quot;2019-09-01T00:00:00Z&quot;,
+        ///  &quot;next_page_token&quot;: &quot;b43YBRLJFg3V4vsSpxvGdKIGtNbxn9h9If2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;to&quot;: &quot;2019-09-20T00:00:00Z&quot;
+        ///}.
+        /// </summary>
+        internal static string report_activities_GET {
+            get {
+                return ResourceManager.GetString("report-activities_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;billing_reports&quot;: [
+        ///    {
+        ///      &quot;end_date&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///      &quot;id&quot;: &quot;indfhgfhfho&quot;,
+        ///      &quot;start_date&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///      &quot;tax_amount&quot;: &quot;456&quot;,
+        ///      &quot;total_amount&quot;: &quot;456&quot;,
+        ///      &quot;type&quot;: 1
+        ///    }
+        ///  ],
+        ///  &quot;currency&quot;: &quot;USD&quot;
+        ///}.
+        /// </summary>
+        internal static string report_billing_GET {
+            get {
+                return ResourceManager.GetString("report-billing_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;currency&quot;: &quot;USD&quot;,
+        ///  &quot;invoices&quot;: [
+        ///    {
+        ///      &quot;end_date&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///      &quot;invoice_charge_name&quot;: &quot;Audio Conferencing Options&quot;,
+        ///      &quot;invoice_number&quot;: &quot;3&quot;,
+        ///      &quot;quantity&quot;: 45,
+        ///      &quot;start_date&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///      &quot;tax_amount&quot;: &quot;34&quot;,
+        ///      &quot;total_amount&quot;: &quot;45&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string report_billing_invoices_GET {
+            get {
+                return ResourceManager.GetString("report-billing-invoices_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;dates&quot;: [
+        ///    {
+        ///      &quot;date&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///      &quot;meeting_minutes&quot;: 34,
+        ///      &quot;meetings&quot;: 2,
+        ///      &quot;new_users&quot;: 3,
+        ///      &quot;participants&quot;: 4
+        ///    }
+        ///  ],
+        ///  &quot;month&quot;: 3,
+        ///  &quot;year&quot;: 2022
+        ///}.
+        /// </summary>
+        internal static string report_daily_GET {
+            get {
+                return ResourceManager.GetString("report-daily_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;b43YBRLJFg3V4vsSpxvGdKIGtNbxn9h9If2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;history_meetings&quot;: [
+        ///    {
+        ///      &quot;meeting_uuid&quot;: &quot;gm8s9L\u002BPTEC\u002BFG3sFbd1Cw==&quot;,
+        ///      &quot;meeting_id&quot;: 93201235621,
+        ///      &quot;type&quot;: &quot;Meeting&quot;,
+        ///      &quot;host_display_name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;host_email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;start_time&quot;: &quot;2024-12-23T07:09:03Z&quot;,
+        ///      &quot;end_time&quot;: &quot;2024-12-23T08:09:03Z&quot;,
+        ///      &quot;topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;participants&quot;: 5,
+        ///      &quot;duration&quot;: 60,
+        ///      &quot;total_participan [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string report_history_meetings_GET {
+            get {
+                return ResourceManager.GetString("report-history_meetings_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;meeting_activity_logs&quot;: [
+        ///    {
+        ///      &quot;meeting_number&quot;: &quot;982 610 0285&quot;,
+        ///      &quot;activity_time&quot;: &quot;2024-03-21 07:09:03:216&quot;,
+        ///      &quot;operator&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;operator_email&quot;: &quot;jillchill@example.com&quot;,
+        ///      &quot;activity_category&quot;: &quot;Meeting Started&quot;,
+        ///      &quot;activity_detail&quot;: &quot;Meeting Started&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;z5qFlq5cvH7C46k7PT7BQmpnW6izoOUWWt3&quot;,
+        ///  &quot;page_size&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string report_meeting_activities_GET {
+            get {
+                return ResourceManager.GetString("report-meeting_activities_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;custom_keys&quot;: [
+        ///    {
+        ///      &quot;key&quot;: &quot;Host Nation&quot;,
+        ///      &quot;value&quot;: &quot;US&quot;
+        ///    }
+        ///  ],
+        ///  &quot;dept&quot;: &quot;HR&quot;,
+        ///  &quot;duration&quot;: 2,
+        ///  &quot;end_time&quot;: &quot;2022-03-15T07:42:22.0000000\u002B00:00&quot;,
+        ///  &quot;id&quot;: 3927350525,
+        ///  &quot;participants_count&quot;: 2,
+        ///  &quot;start_time&quot;: &quot;2022-03-15T07:40:46.0000000\u002B00:00&quot;,
+        ///  &quot;topic&quot;: &quot;My Meeting&quot;,
+        ///  &quot;total_minutes&quot;: 3,
+        ///  &quot;tracking_fields&quot;: [
+        ///    {
+        ///      &quot;field&quot;: &quot;Host Nation&quot;,
+        ///      &quot;value&quot;: &quot;US&quot;
+        ///    }
+        ///  ],
+        ///  &quot;type&quot;: 2,
+        ///  &quot;user_email&quot;: &quot;jchill@example.com&quot;,
+        ///  &quot;user_name&quot;: &quot;Jill  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string report_meetings__meetingId__GET {
+            get {
+                return ResourceManager.GetString("report-meetings-{meetingId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: 123456,
+        ///  &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///  &quot;start_time&quot;: &quot;2022-02-01T12:34:12.6600000\u002B00:00&quot;,
+        ///  &quot;questions&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;first_name&quot;: &quot;Jill&quot;,
+        ///      &quot;last_name&quot;: &quot;Chill&quot;,
+        ///      &quot;question_details&quot;: [
+        ///        {
+        ///          &quot;answer&quot;: &quot;I am wonderful.&quot;,
+        ///          &quot;date_time&quot;: &quot;2022-02-01T12:37:12.660Z&quot;,
+        ///          &quot;polling_id&quot;: &quot;798fGJEWrA&quot;,
+        ///          &quot;question&quot;: &quot;How are you?&quot;
+        ///        }
+        ///      ]
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string report_meetings__meetingId__polls_GET {
+            get {
+                return ResourceManager.GetString("report-meetings-{meetingId}-polls_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: 245603123123,
+        ///  &quot;questions&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;hyROrs0TRCSvwmadI7L13w&quot;,
+        ///      &quot;email&quot;: &quot;jchilll@example.com&quot;,
+        ///      &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;question_details&quot;: [
+        ///        {
+        ///          &quot;answer&quot;: &quot;fine&quot;,
+        ///          &quot;question&quot;: &quot;how are you&quot;,
+        ///          &quot;question_id&quot;: &quot;zxU4wOwnlxs&quot;,
+        ///          &quot;create_time&quot;: &quot;2022-03-15T07:48:00Z&quot;,
+        ///          &quot;question_status&quot;: &quot;open&quot;,
+        ///          &quot;answer_details&quot;: [
+        ///            {
+        ///              &quot;user_id&quot;: &quot;Cn_5wJ9mRNGyYOmpjVufBQ&quot;,
+        ///              &quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string report_meetings__meetingId__qa_GET {
+            get {
+                return ResourceManager.GetString("report-meetings-{meetingId}-qa_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;meeting_id&quot;: 123456,
+        ///  &quot;meeting_uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///  &quot;start_time&quot;: &quot;2022-02-01T12:34:12.6600000\u002B00:00&quot;,
+        ///  &quot;survey_id&quot;: &quot;8SFHRTGHAAAiAAAAAiAiAiiAii==&quot;,
+        ///  &quot;survey_name&quot;: &quot;Survey of this meeting&quot;,
+        ///  &quot;survey_answers&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;first_name&quot;: &quot;Jill&quot;,
+        ///      &quot;last_name&quot;: &quot;Chill&quot;,
+        ///      &quot;answer_details&quot;: [
+        ///        {
+        ///          &quot;question&quot;: &quot;How are you?&quot;,
+        ///          &quot;question_id&quot;: &quot;798fGJEWrA&quot;,
+        ///          &quot;ans [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string report_meetings__meetingId__survey_GET {
+            get {
+                return ResourceManager.GetString("report-meetings-{meetingId}-survey_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;remote_support_logs&quot;: [
+        ///    {
+        ///      &quot;meeting_start_time&quot;: &quot;2025-09-15T13:20:12Z&quot;,
+        ///      &quot;meeting_uuid&quot;: &quot;gm8s9L\u002BPTEC\u002BFG3sFbd1Cw==&quot;,
+        ///      &quot;meeting_number&quot;: &quot;93201235621&quot;,
+        ///      &quot;topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;meeting_host_id&quot;: &quot;FyOCGDLEShWSihPcupWHtA&quot;,
+        ///      &quot;supporter_name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;supporter_email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;supportee_name&quot;: &quot;Tom&quot;,
+        ///      &quot;supportee_email&quot;: &quot;tom@example.com&quot;,
+        ///      &quot;request_time&quot;: &quot;2025-09-15T13:21:29Z&quot;,
+        ///      &quot;wait_time&quot;: &quot;01:28&quot;, [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string report_remote_support_GET {
+            get {
+                return ResourceManager.GetString("report-remote_support_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;custom_keys&quot;: [
+        ///    {
+        ///      &quot;key&quot;: &quot;Host Nation&quot;,
+        ///      &quot;value&quot;: &quot;US&quot;
+        ///    }
+        ///  ],
+        ///  &quot;dept&quot;: &quot;HR&quot;,
+        ///  &quot;duration&quot;: 2,
+        ///  &quot;end_time&quot;: &quot;2022-03-15T07:42:22.0000000\u002B00:00&quot;,
+        ///  &quot;id&quot;: 345678902224,
+        ///  &quot;participants_count&quot;: 4,
+        ///  &quot;start_time&quot;: &quot;2022-03-15T07:40:46.0000000\u002B00:00&quot;,
+        ///  &quot;topic&quot;: &quot;My Meeting&quot;,
+        ///  &quot;total_minutes&quot;: 3,
+        ///  &quot;tracking_fields&quot;: [
+        ///    {
+        ///      &quot;field&quot;: &quot;Host Nation&quot;,
+        ///      &quot;value&quot;: &quot;US&quot;
+        ///    }
+        ///  ],
+        ///  &quot;type&quot;: 4,
+        ///  &quot;user_email&quot;: &quot;jchill@example.com&quot;,
+        ///  &quot;user_name&quot;: &quot;Jil [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string report_webinars__webinarId__GET {
+            get {
+                return ResourceManager.GetString("report-webinars-{webinarId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: 123456,
+        ///  &quot;questions&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;first_name&quot;: &quot;Jill&quot;,
+        ///      &quot;last_name&quot;: &quot;Chill&quot;,
+        ///      &quot;question_details&quot;: [
+        ///        {
+        ///          &quot;answer&quot;: &quot;I am wonderful.&quot;,
+        ///          &quot;date_time&quot;: &quot;2022-02-01T12:37:12.660Z&quot;,
+        ///          &quot;polling_id&quot;: &quot;798fGJEWrA&quot;,
+        ///          &quot;question&quot;: &quot;How are you?&quot;
+        ///        }
+        ///      ]
+        ///    }
+        ///  ],
+        ///  &quot;start_time&quot;: &quot;2022-02-01T12:34:12.6600000\u002B00:00&quot;,
+        ///  &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;
+        ///}.
+        /// </summary>
+        internal static string report_webinars__webinarId__polls_GET {
+            get {
+                return ResourceManager.GetString("report-webinars-{webinarId}-polls_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: 245603123123,
+        ///  &quot;questions&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;hyROrs0TRCSvwmadI7L13w&quot;,
+        ///      &quot;email&quot;: &quot;jchilll@example.com&quot;,
+        ///      &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;question_details&quot;: [
+        ///        {
+        ///          &quot;answer&quot;: &quot;fine&quot;,
+        ///          &quot;question&quot;: &quot;how are you&quot;,
+        ///          &quot;question_id&quot;: &quot;zxU4wOwnlxs&quot;,
+        ///          &quot;create_time&quot;: &quot;2022-03-15T07:48:00Z&quot;,
+        ///          &quot;question_status&quot;: &quot;open&quot;,
+        ///          &quot;answer_details&quot;: [
+        ///            {
+        ///              &quot;user_id&quot;: &quot;Cn_5wJ9mRNGyYOmpjVufBQ&quot;,
+        ///              &quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string report_webinars__webinarId__qa_GET {
+            get {
+                return ResourceManager.GetString("report-webinars-{webinarId}-qa_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;webinar_id&quot;: 123456,
+        ///  &quot;webinar_uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///  &quot;start_time&quot;: &quot;2022-02-01T12:34:12.6600000\u002B00:00&quot;,
+        ///  &quot;survey_id&quot;: &quot;8SFHRTGHAAAiAAAAAiAiAiiAii==&quot;,
+        ///  &quot;survey_name&quot;: &quot;Survey of this meeting&quot;,
+        ///  &quot;survey_answers&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;first_name&quot;: &quot;Jill&quot;,
+        ///      &quot;last_name&quot;: &quot;Chill&quot;,
+        ///      &quot;answer_details&quot;: [
+        ///        {
+        ///          &quot;question&quot;: &quot;How are you?&quot;,
+        ///          &quot;question_id&quot;: &quot;798fGJEWrA&quot;,
+        ///          &quot;ans [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string report_webinars__webinarId__survey_GET {
+            get {
+                return ResourceManager.GetString("report-webinars-{webinarId}-survey_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;phones&quot;: [
+        ///    {
+        ///      &quot;authorization_name&quot;: &quot;testname&quot;,
+        ///      &quot;domain&quot;: &quot;example.com&quot;,
+        ///      &quot;phone_id&quot;: &quot;123456&quot;,
+        ///      &quot;password&quot;: &quot;apassword1&quot;,
+        ///      &quot;registration_expire_time&quot;: 60,
+        ///      &quot;user_email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;user_name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;voice_mail&quot;: &quot;4000&quot;,
+        ///      &quot;display_number&quot;: &quot;5551110105&quot;,
+        ///      &quot;server&quot;: {
+        ///        &quot;proxy_server&quot;: &quot;192.0.2.2&quot;,
+        ///        &quot;register_server&quot;: &quot;19 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string sip_phones_phones_GET {
+            get {
+                return ResourceManager.GetString("sip_phones-phones_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;a32CJji-weJ92&quot;,
+        ///  &quot;field&quot;: &quot;field1&quot;,
+        ///  &quot;recommended_values&quot;: [
+        ///    &quot;value1&quot;
+        ///  ],
+        ///  &quot;required&quot;: false,
+        ///  &quot;visible&quot;: true
+        ///}.
+        /// </summary>
+        internal static string tracking_fields__fieldId__GET {
+            get {
+                return ResourceManager.GetString("tracking_fields-{fieldId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;dial_in_number_unrestricted&quot;: false,
+        ///  &quot;dial_in_numbers&quot;: [
+        ///    {
+        ///      &quot;code&quot;: &quot;1&quot;,
+        ///      &quot;number&quot;: &quot;\u002B1 1000200200&quot;,
+        ///      &quot;type&quot;: &quot;toll&quot;
+        ///    }
+        ///  ],
+        ///  &quot;enable&quot;: true,
+        ///  &quot;master_account_setting_extended&quot;: true,
+        ///  &quot;modify_credential_forbidden&quot;: true,
+        ///  &quot;tsp_bridge&quot;: &quot;US_TSP_TB&quot;,
+        ///  &quot;tsp_enabled&quot;: true,
+        ///  &quot;tsp_provider&quot;: &quot;someprovidername&quot;
+        ///}.
+        /// </summary>
+        internal static string tsp_GET {
+            get {
+                return ResourceManager.GetString("tsp_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;templates&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;AdxbhxCzKgSiWAw&quot;,
+        ///      &quot;name&quot;: &quot;My meeting template&quot;,
+        ///      &quot;type&quot;: 1
+        ///    }
+        ///  ],
+        ///  &quot;total_records&quot;: 1
+        ///}.
+        /// </summary>
+        internal static string users__userId__meeting_templates_GET {
+            get {
+                return ResourceManager.GetString("users-{userId}-meeting_templates_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;pac_accounts&quot;: [
+        ///    {
+        ///      &quot;conference_id&quot;: 111111,
+        ///      &quot;dedicated_dial_in_number&quot;: [
+        ///        {
+        ///          &quot;country&quot;: &quot;USA&quot;,
+        ///          &quot;number&quot;: &quot;5550110&quot;
+        ///        }
+        ///      ],
+        ///      &quot;global_dial_in_numbers&quot;: [
+        ///        {
+        ///          &quot;country&quot;: &quot;USA&quot;,
+        ///          &quot;number&quot;: &quot;5550100&quot;
+        ///        }
+        ///      ],
+        ///      &quot;listen_only_password&quot;: &quot;3c2b1a&quot;,
+        ///      &quot;participant_password&quot;: &quot;a1b2c3&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string users__userId__pac_GET {
+            get {
+                return ResourceManager.GetString("users-{userId}-pac_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;conference_code&quot;: &quot;0125&quot;,
+        ///  &quot;dial_in_numbers&quot;: [
+        ///    {
+        ///      &quot;code&quot;: &quot;1&quot;,
+        ///      &quot;country_label&quot;: &quot;America&quot;,
+        ///      &quot;number&quot;: &quot;\u002B1 1000200200&quot;,
+        ///      &quot;type&quot;: &quot;toll&quot;
+        ///    }
+        ///  ],
+        ///  &quot;id&quot;: &quot;1&quot;,
+        ///  &quot;leader_pin&quot;: &quot;11189898&quot;,
+        ///  &quot;tsp_bridge&quot;: &quot;US_TSP_TB&quot;
+        ///}.
+        /// </summary>
+        internal static string users__userId__tsp__tspId__GET {
+            get {
+                return ResourceManager.GetString("users-{userId}-tsp-{tspId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;tsp_accounts&quot;: [
+        ///    {
+        ///      &quot;conference_code&quot;: &quot;0125&quot;,
+        ///      &quot;dial_in_numbers&quot;: [
+        ///        {
+        ///          &quot;code&quot;: &quot;1&quot;,
+        ///          &quot;country_label&quot;: &quot;America&quot;,
+        ///          &quot;number&quot;: &quot;\u002B1 1000200200&quot;,
+        ///          &quot;type&quot;: &quot;toll&quot;
+        ///        }
+        ///      ],
+        ///      &quot;id&quot;: &quot;1&quot;,
+        ///      &quot;leader_pin&quot;: &quot;11189898&quot;,
+        ///      &quot;tsp_bridge&quot;: &quot;US_TSP_TB&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string users__userId__tsp_GET {
+            get {
+                return ResourceManager.GetString("users-{userId}-tsp_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;meetings&quot;: [
+        ///    {
+        ///      &quot;id&quot;: 97763643886,
+        ///      &quot;topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;type&quot;: 2,
+        ///      &quot;start_time&quot;: &quot;2022-03-23T06:00:00.0000000\u002B00:00&quot;,
+        ///      &quot;duration&quot;: 60,
+        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///      &quot;created_at&quot;: &quot;2022-03-23T05:31:16.0000000\u002B00:00&quot;,
+        ///      &quot;join_url&quot;: &quot;https://example.com/j/11111&quot;,
+        ///      &quot;passcode&quot;: &quot;123456&quot;,
+        ///      &quot;use_pmi&quot;: false,
+        ///      &quot;is_host&quot;: true,
+        ///      &quot;is_all_day&quot;: false
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string users__userId__upcoming_meetings_GET {
+            get {
+                return ResourceManager.GetString("users-{userId}-upcoming_meetings_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;templates&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;ull6574eur&quot;,
+        ///      &quot;name&quot;: &quot;Weekly Meeting Template&quot;,
+        ///      &quot;type&quot;: 1
+        ///    }
+        ///  ],
+        ///  &quot;total_records&quot;: 1
+        ///}.
+        /// </summary>
+        internal static string users__userId__webinar_templates_GET {
+            get {
+                return ResourceManager.GetString("users-{userId}-webinar_templates_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;wallpaper&quot;: {
+        ///    &quot;id&quot;: &quot;zazQjwDuQkS3Q2EprNd7jQ&quot;
+        ///  },
+        ///  &quot;virtual_backgrounds&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;zazQjwDuQkS3Q2EprNd7jQ&quot;,
+        ///      &quot;name&quot;: &quot;beach.jpg&quot;,
+        ///      &quot;is_default&quot;: true
+        ///    }
+        ///  ],
+        ///  &quot;name_tags&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;zazQjwDuQkS3Q2EprNd7jQ&quot;,
+        ///      &quot;name&quot;: &quot;name&quot;,
+        ///      &quot;text_color&quot;: &quot;0e72ed&quot;,
+        ///      &quot;accent_color&quot;: &quot;0e72ed&quot;,
+        ///      &quot;background_color&quot;: &quot;0e72ed&quot;,
+        ///      &quot;is_default&quot;: true
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string webinars__webinarId__branding_GET {
+            get {
+                return ResourceManager.GetString("webinars-{webinarId}-branding_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;host_email&quot;: &quot;jchill@example.com&quot;,
+        ///  &quot;host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
+        ///  &quot;id&quot;: 97871060099,
+        ///  &quot;template_id&quot;: &quot;ull6574eur&quot;,
+        ///  &quot;uuid&quot;: &quot;m3WqMkvuRXyYqH\u002BeKWhk9w==&quot;,
+        ///  &quot;agenda&quot;: &quot;My webinar&quot;,
+        ///  &quot;created_at&quot;: &quot;2022-03-26T07:18:32.0000000\u002B00:00&quot;,
+        ///  &quot;duration&quot;: 60,
+        ///  &quot;registration_url&quot;: &quot;https://example.com/webinar/register/7ksAkRCoEpt1Jm0wa-E6lICLur9e7Lde5oW6&quot;,
+        ///  &quot;join_url&quot;: &quot;https://example.com/j/11111&quot;,
+        ///  &quot;occurrences&quot;: [
+        ///    {
+        ///      &quot;duration&quot;: 60,
+        ///      &quot;occurrence_id&quot;: &quot;1648194 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string webinars__webinarId__GET {
+            get {
+                return ResourceManager.GetString("webinars-{webinarId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;expire_in&quot;: 120,
+        ///  &quot;token&quot;: &quot;2njt50mj&quot;
+        ///}.
+        /// </summary>
+        internal static string webinars__webinarId__jointoken_live_streaming_GET {
+            get {
+                return ResourceManager.GetString("webinars-{webinarId}-jointoken-live_streaming_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;expire_in&quot;: 120,
+        ///  &quot;token&quot;: &quot;2njt50mj&quot;
+        ///}.
+        /// </summary>
+        internal static string webinars__webinarId__jointoken_local_archiving_GET {
+            get {
+                return ResourceManager.GetString("webinars-{webinarId}-jointoken-local_archiving_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;expire_in&quot;: 120,
+        ///  &quot;token&quot;: &quot;2njt50mj&quot;
+        ///}.
+        /// </summary>
+        internal static string webinars__webinarId__jointoken_local_recording_GET {
+            get {
+                return ResourceManager.GetString("webinars-{webinarId}-jointoken-local_recording_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_url&quot;: &quot;https://example.com/livestream/123&quot;,
+        ///  &quot;stream_key&quot;: &quot;contact-it@example.com&quot;,
+        ///  &quot;stream_url&quot;: &quot;https://example.com/livestream&quot;,
+        ///  &quot;resolution&quot;: &quot;720p&quot;
+        ///}.
+        /// </summary>
+        internal static string webinars__webinarId__livestream_GET {
+            get {
+                return ResourceManager.GetString("webinars-{webinarId}-livestream_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;custom_survey&quot;: {
+        ///    &quot;title&quot;: &quot;Learn something new&quot;,
+        ///    &quot;anonymous&quot;: false,
+        ///    &quot;numbered_questions&quot;: false,
+        ///    &quot;show_question_type&quot;: false,
+        ///    &quot;feedback&quot;: &quot;Thank you so much for taking the time to complete the survey. Your feedback really makes a difference.&quot;,
+        ///    &quot;questions&quot;: [
+        ///      {
+        ///        &quot;name&quot;: &quot;How useful was this webinar?&quot;,
+        ///        &quot;type&quot;: &quot;single&quot;,
+        ///        &quot;answer_required&quot;: false,
+        ///        &quot;show_as_dropdown&quot;: false,
+        ///        &quot;answers&quot;: [
+        ///          &quot;Extremely useful&quot;
+        ///       [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string webinars__webinarId__survey_GET {
+            get {
+                return ResourceManager.GetString("webinars-{webinarId}-survey_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;token&quot;: &quot;https://example.com/closedcaption?id=200610693\u0026ns=GZHkEA==\u0026expire=86400\u0026spparams=id%2Cns%2Cexpire\u0026signature=nYtXJqRKCW&quot;
+        ///}.
+        /// </summary>
+        internal static string webinars__webinarId__token_GET {
+            get {
+                return ResourceManager.GetString("webinars-{webinarId}-token_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;tracking_sources&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;5516482804110&quot;,
+        ///      &quot;registration_count&quot;: 1,
+        ///      &quot;source_name&quot;: &quot;https://example.com&quot;,
+        ///      &quot;tracking_url&quot;: &quot;https://example.com/webinar/register/5516482804110/WN_juM2BGyLQMyQ_ZrqiGRhLg&quot;,
+        ///      &quot;visitor_count&quot;: 1
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string webinars__webinarId__tracking_sources_GET {
+            get {
+                return ResourceManager.GetString("webinars-{webinarId}-tracking_sources_GET", resourceCulture);
             }
         }
     }

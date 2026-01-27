@@ -148,4 +148,163 @@
   <data name="devices_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\EndpointsResponseData\devices_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="devices-groups_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\devices-groups_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="devices-zpa-settings_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\devices-zpa-settings_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="devices-zpa-zdm_groups-{zdmGroupId}-versions_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\devices-zpa-zdm_groups-{zdmGroupId}-versions_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="devices-{deviceId}_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\devices-{deviceId}_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meetings-{meetingId}-jointoken-local_recording_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\meetings-{meetingId}-jointoken-local_recording_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meetings-{meetingId}-token_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\meetings-{meetingId}-token_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meetings-{meetingId}-invitation_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\meetings-{meetingId}-invitation_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meetings-{meetingId}-jointoken-live_streaming_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\meetings-{meetingId}-jointoken-live_streaming_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meetings-{meetingId}-livestream_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\meetings-{meetingId}-livestream_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meetings-{meetingId}_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\meetings-{meetingId}_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meetings-{meetingId}-sip_dialing_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\meetings-{meetingId}-sip_dialing_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="past_meetings-{meetingId}_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\past_meetings-{meetingId}_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="past_meetings-{meetingId}-qa_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\past_meetings-{meetingId}-qa_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="users-{userId}-upcoming_meetings_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\users-{userId}-upcoming_meetings_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="users-{userId}-pac_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\users-{userId}-pac_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="past_meetings-{meetingId}-polls_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\past_meetings-{meetingId}-polls_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="report-activities_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\report-activities_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="report-billing_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\report-billing_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="report-billing-invoices_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\report-billing-invoices_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="report-daily_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\report-daily_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="report-history_meetings_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\report-history_meetings_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="report-meeting_activities_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\report-meeting_activities_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="report-meetings-{meetingId}_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\report-meetings-{meetingId}_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="report-meetings-{meetingId}-polls_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\report-meetings-{meetingId}-polls_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="report-meetings-{meetingId}-qa_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\report-meetings-{meetingId}-qa_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="report-meetings-{meetingId}-survey_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\report-meetings-{meetingId}-survey_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="report-remote_support_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\report-remote_support_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="report-webinars-{webinarId}_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\report-webinars-{webinarId}_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="report-webinars-{webinarId}-polls_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\report-webinars-{webinarId}-polls_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="report-webinars-{webinarId}-qa_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\report-webinars-{webinarId}-qa_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="report-webinars-{webinarId}-survey_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\report-webinars-{webinarId}-survey_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="sip_phones-phones_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\sip_phones-phones_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meetings-meeting_summaries_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\meetings-meeting_summaries_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meetings-{meetingId}-meeting_summary_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\meetings-{meetingId}-meeting_summary_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meetings-{meetingId}-survey_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\meetings-{meetingId}-survey_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="tsp_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\tsp_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="users-{userId}-tsp_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\users-{userId}-tsp_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="users-{userId}-tsp-{tspId}_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\users-{userId}-tsp-{tspId}_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="users-{userId}-meeting_templates_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\users-{userId}-meeting_templates_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="tracking_fields-{fieldId}_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\tracking_fields-{fieldId}_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="past_webinars-{webinarId}-participants_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\past_webinars-{webinarId}-participants_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="past_webinars-{webinarId}-polls_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\past_webinars-{webinarId}-polls_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="past_webinars-{webinarId}-qa_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\past_webinars-{webinarId}-qa_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="users-{userId}-webinar_templates_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\users-{userId}-webinar_templates_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinars-{webinarId}_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\webinars-{webinarId}_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinars-{webinarId}-branding_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\webinars-{webinarId}-branding_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinars-{webinarId}-jointoken-live_streaming_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\webinars-{webinarId}-jointoken-live_streaming_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinars-{webinarId}-jointoken-local_archiving_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\webinars-{webinarId}-jointoken-local_archiving_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinars-{webinarId}-jointoken-local_recording_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\webinars-{webinarId}-jointoken-local_recording_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinars-{webinarId}-livestream_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\webinars-{webinarId}-livestream_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinars-{webinarId}-survey_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\webinars-{webinarId}-survey_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinars-{webinarId}-token_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\webinars-{webinarId}-token_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinars-{webinarId}-tracking_sources_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\webinars-{webinarId}-tracking_sources_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

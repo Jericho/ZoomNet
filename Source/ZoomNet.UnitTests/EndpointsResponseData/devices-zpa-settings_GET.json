@@ -1,0 +1,21 @@
+{
+  "language": "English",
+  "timezone": " (GMT\u002B6:00) Astana, Dhaka",
+  "device_infos": [
+    {
+      "device_id": "yealink-249AD8E00476",
+      "device_type": "Zoom Phone Appliance",
+      "vendor": "Yealink",
+      "model": "MP56",
+      "status": "string",
+      "policy": {
+        "hot_desking": {
+          "status": "online"
+        },
+        "call_control": {
+          "status": "off"
+        }
+      }
+    }
+  ]
+}

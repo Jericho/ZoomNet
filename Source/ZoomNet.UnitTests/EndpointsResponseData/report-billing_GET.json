@@ -1,0 +1,13 @@
+{
+  "billing_reports": [
+    {
+      "end_date": "Microsoft.OpenApi.Any.OpenApiDate",
+      "id": "indfhgfhfho",
+      "start_date": "Microsoft.OpenApi.Any.OpenApiDate",
+      "tax_amount": "456",
+      "total_amount": "456",
+      "type": 1
+    }
+  ],
+  "currency": "USD"
+}

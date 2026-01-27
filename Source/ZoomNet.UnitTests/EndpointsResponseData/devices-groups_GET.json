@@ -1,0 +1,11 @@
+{
+  "groups": [
+    {
+      "zdm_group_id": "ff49588c-92c4-4406-99e6-1942d8a61a7b",
+      "name": "HeFei-group",
+      "description": "Group in Hefei region"
+    }
+  ],
+  "next_page_token": "RaO87FrnwXvFQta5aV8sU5C3c9O8s9Nraq2",
+  "page_size": 30
+}

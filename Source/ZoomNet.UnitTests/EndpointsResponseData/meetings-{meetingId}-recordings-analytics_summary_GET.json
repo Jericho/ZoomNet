@@ -1,0 +1,11 @@
+{
+  "from": "Microsoft.OpenApi.Any.OpenApiDate",
+  "to": "Microsoft.OpenApi.Any.OpenApiDate",
+  "analytics_summary": [
+    {
+      "date": "2022-07-06",
+      "views_total_count": 2,
+      "downloads_total_count": 2
+    }
+  ]
+}

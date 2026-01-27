@@ -1,0 +1,14 @@
+{
+  "currency": "USD",
+  "invoices": [
+    {
+      "end_date": "Microsoft.OpenApi.Any.OpenApiDate",
+      "invoice_charge_name": "Audio Conferencing Options",
+      "invoice_number": "3",
+      "quantity": 45,
+      "start_date": "Microsoft.OpenApi.Any.OpenApiDate",
+      "tax_amount": "34",
+      "total_amount": "45"
+    }
+  ]
+}
