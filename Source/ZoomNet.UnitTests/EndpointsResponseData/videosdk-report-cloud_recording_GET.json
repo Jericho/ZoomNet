@@ -1,9 +1,9 @@
 {
-  "from": "Microsoft.OpenApi.Any.OpenApiDate",
-  "to": "Microsoft.OpenApi.Any.OpenApiDate",
+  "from": "2021-12-01T00:00:00.0000000",
+  "to": "2021-12-02T00:00:00.0000000",
   "cloud_recording_storage": [
     {
-      "date": "Microsoft.OpenApi.Any.OpenApiDate",
+      "date": "2021-12-01T00:00:00.0000000",
       "usage": "29 MB",
       "plan_usage": "1 GB",
       "free_usage": "1 GB"

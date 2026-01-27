@@ -437,13 +437,24 @@
       "locked_by": "account",
       "modified": true,
       "repeat_type": "weekly",
-      "repeat_setting": null,
+      "repeat_setting": {
+        "weekly_setting": {
+          "weekday": "monday"
+        },
+        "week_and_day": {
+          "week_of_month": 1,
+          "weekday": "monday"
+        },
+        "specific_date": {
+          "day_of_month": 10
+        }
+      },
       "time_period_start": 15,
       "time_period_end": 16,
       "time_zone": "Asia/Shanghai",
       "end_setting": {
         "never_end": true,
-        "end_date": "Microsoft.OpenApi.Any.OpenApiDate"
+        "end_date": "2025-01-01T00:00:00.0000000"
       }
     },
     "zoom_phone_on_desktop": {

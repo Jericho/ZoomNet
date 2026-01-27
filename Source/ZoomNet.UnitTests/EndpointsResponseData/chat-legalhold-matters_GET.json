@@ -3,9 +3,9 @@
     {
       "matter_id": "28c92682-f4fc-47b0-bceb-14cb839e0279",
       "matter_name": "Test17888",
-      "matter_start_date": "Microsoft.OpenApi.Any.OpenApiDate",
-      "matter_end_date": "Microsoft.OpenApi.Any.OpenApiDate",
-      "matter_creation_date": "Microsoft.OpenApi.Any.OpenApiDate",
+      "matter_start_date": "2024-04-01T00:00:00.0000000",
+      "matter_end_date": "2024-04-30T00:00:00.0000000",
+      "matter_creation_date": "2024-05-01T00:00:00.0000000",
       "matter_users": [
         {
           "user_id": "649ad5f12f804cfea7dd7b1c1bb4c337",

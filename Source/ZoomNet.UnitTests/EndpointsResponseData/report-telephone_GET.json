@@ -1,0 +1,29 @@
+{
+  "from": "2019-06-20T00:00:00.0000000",
+  "next_page_token": "w7587w4eiyfsudgk",
+  "page_count": 1,
+  "page_size": 30,
+  "to": "2019-07-20T00:00:00.0000000",
+  "total_records": 1,
+  "telephony_usage": [
+    {
+      "call_in_number": "ZoomGW",
+      "country_name": "US",
+      "dept": "HR",
+      "duration": 2,
+      "end_time": "2022-03-15T07:42:22.0000000\u002B00:00",
+      "host_email": "jchill@example.com",
+      "host_id": "_Rn_hal7ToG5p0AWwIIsjQ",
+      "host_name": "Jill Chill",
+      "meeting_id": 94908911701,
+      "meeting_type": "Meeting",
+      "phone_number": "\u002B1 8243",
+      "rate": 0.03,
+      "signaled_number": "\u002B1 8243",
+      "start_time": "2022-03-15T07:40:46.0000000\u002B00:00",
+      "total": 0.03,
+      "type": "call-out",
+      "uuid": "4444AAAiAAAAAiAiAiiAii=="
+    }
+  ]
+}

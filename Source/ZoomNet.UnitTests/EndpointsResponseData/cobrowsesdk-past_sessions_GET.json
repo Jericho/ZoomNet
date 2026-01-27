@@ -1,6 +1,6 @@
 {
-  "from": "Microsoft.OpenApi.Any.OpenApiDate",
-  "to": "Microsoft.OpenApi.Any.OpenApiDate",
+  "from": "2025-02-14T00:00:00.0000000",
+  "to": "2025-02-14T00:00:00.0000000",
   "page_size": 30,
   "next_page_token": "Tva2CuIdTgsv8wAnhyAdUrm0tY2HuLQtlh4",
   "sessions": [

@@ -1,0 +1,490 @@
+{
+  "audio_conferencing": {
+    "toll_free_and_fee_based_toll_call": {
+      "allow_webinar_attendees_dial": true,
+      "enable": true,
+      "numbers": [
+        {
+          "code": "86",
+          "country_code": "CN",
+          "country_name": "China",
+          "display_number": "\u002B86 7777 777",
+          "number": "7777 777"
+        }
+      ]
+    },
+    "toll_call": {
+      "enable": true,
+      "numbers": [
+        {
+          "code": "86",
+          "country_code": "CN",
+          "country_name": "China",
+          "display_number": "\u002B86 777 777 77",
+          "number": "777 777 77"
+        }
+      ]
+    },
+    "call_me_and_invite_by_phone": {
+      "enable": true,
+      "require_press_1_for_call_me": "auto",
+      "allow_webinar_attendees_call_me": true,
+      "call_out_countries": {
+        "allowed_countries": [
+          {
+            "code": "CN",
+            "name": "China"
+          }
+        ],
+        "selected_countries": [
+          {
+            "code": "CN",
+            "name": "China"
+          }
+        ]
+      }
+    },
+    "personal_audio_conference": true,
+    "participant_phone_masking": {
+      "enable": true,
+      "masking_type": "mask_default"
+    },
+    "global_dial_in_countries": {
+      "allowed_countries": [
+        {
+          "code": "CN",
+          "name": "China"
+        }
+      ],
+      "selected_countries": [
+        {
+          "code": "CN",
+          "name": "China"
+        }
+      ],
+      "include_toll_free": true
+    }
+  },
+  "email_notification": {
+    "alternative_host_reminder": true,
+    "cancel_meeting_reminder": true,
+    "cloud_recording_available_reminder": true,
+    "jbh_reminder": true,
+    "recording_available_reminder_alternative_hosts": true,
+    "recording_available_reminder_schedulers": true,
+    "schedule_for_reminder": true
+  },
+  "in_meeting": {
+    "alert_guest_join": true,
+    "allow_users_to_delete_messages_in_meeting_chat": true,
+    "allow_live_streaming": true,
+    "allow_participants_chat_with": 1,
+    "allow_show_zoom_windows": true,
+    "allow_users_save_chats": 1,
+    "annotation": true,
+    "attendee_on_hold": true,
+    "auto_answer": true,
+    "auto_saving_chat": true,
+    "breakout_room": true,
+    "breakout_room_schedule": true,
+    "chat": true,
+    "meeting_question_answer": true,
+    "closed_caption": true,
+    "closed_captioning": {
+      "auto_transcribing": true,
+      "enable": true,
+      "save_caption": true,
+      "third_party_captioning_service": true,
+      "view_full_transcript": true
+    },
+    "co_host": true,
+    "custom_data_center_regions": true,
+    "custom_live_streaming_service": true,
+    "custom_service_instructions": "The specific instructions",
+    "data_center_regions": [
+      "AU"
+    ],
+    "disable_screen_sharing_for_host_meetings": true,
+    "disable_screen_sharing_for_in_meeting_guests": true,
+    "e2e_encryption": true,
+    "entry_exit_chime": "all",
+    "far_end_camera_control": true,
+    "feedback": true,
+    "file_transfer": true,
+    "group_hd": true,
+    "webinar_group_hd": true,
+    "join_from_desktop": true,
+    "join_from_mobile": true,
+    "auto_generated_translation": {
+      "language_item_pairList": {
+        "trans_lang_config": [
+          {
+            "speak_language": {
+              "name": "Chinese (Simplified)",
+              "code": "zh"
+            },
+            "translate_to": {
+              "all": true,
+              "language_config": [
+                {
+                  "name": "English",
+                  "code": "en"
+                }
+              ]
+            }
+          }
+        ],
+        "all": true
+      },
+      "enable": true
+    },
+    "language_interpretation": {
+      "custom_languages": [
+        "English"
+      ],
+      "enable_language_interpretation_by_default": true,
+      "allow_participants_to_speak_in_listening_channel": true,
+      "allow_up_to_25_custom_languages_when_scheduling_meetings": true,
+      "enable": true,
+      "languages": [
+        "English"
+      ]
+    },
+    "sign_language_interpretation": {
+      "enable": true,
+      "enable_sign_language_interpretation_by_default": true,
+      "languages": [
+        "American"
+      ],
+      "custom_languages": [
+        "Language1"
+      ]
+    },
+    "live_streaming_facebook": true,
+    "live_streaming_youtube": true,
+    "manual_captioning": {
+      "allow_to_type": true,
+      "auto_generated_captions": true,
+      "full_transcript": true,
+      "manual_captions": true,
+      "save_captions": true,
+      "third_party_captioning_service": true
+    },
+    "meeting_reactions": true,
+    "meeting_reactions_emojis": "all",
+    "allow_host_panelists_to_use_audible_clap": true,
+    "webinar_reactions": true,
+    "meeting_survey": true,
+    "non_verbal_feedback": true,
+    "only_host_view_device_list": true,
+    "original_audio": true,
+    "polling": true,
+    "post_meeting_feedback": true,
+    "private_chat": true,
+    "record_play_own_voice": true,
+    "remote_control": true,
+    "remote_support": true,
+    "request_permission_to_unmute_participants": true,
+    "screen_sharing": true,
+    "sending_default_email_invites": true,
+    "show_a_join_from_your_browser_link": true,
+    "show_browser_join_link": true,
+    "show_device_list": true,
+    "show_meeting_control_toolbar": true,
+    "slide_control": true,
+    "stereo_audio": true,
+    "unchecked_data_center_regions": [
+      "EU"
+    ],
+    "use_html_format_email": true,
+    "virtual_background": true,
+    "virtual_background_settings": {
+      "allow_upload_custom": true,
+      "allow_videos": true,
+      "enable": true,
+      "files": [
+        {
+          "id": "fawegw4tq43t35h4nhgfnethswe",
+          "is_default": true,
+          "name": "File name",
+          "size": 1435,
+          "type": "image"
+        }
+      ]
+    },
+    "waiting_room": true,
+    "webinar_chat": {
+      "allow_attendees_chat_with": 1,
+      "allow_auto_save_local_chat_file": true,
+      "allow_panelists_chat_with": 2,
+      "allow_panelists_send_direct_message": true,
+      "allow_users_save_chats": 0,
+      "default_attendees_chat_with": 1,
+      "enable": true
+    },
+    "webinar_live_streaming": {
+      "custom_service_instructions": "The specific instructions test",
+      "enable": true,
+      "live_streaming_reminder": true,
+      "live_streaming_service": [
+        "facebook"
+      ]
+    },
+    "meeting_polling": {
+      "enable": true,
+      "advanced_polls": true,
+      "manage_saved_polls_and_quizzes": true,
+      "require_answers_to_be_anonymous": true,
+      "allow_alternative_host_to_add_edit": true,
+      "allow_host_to_upload_image": true
+    },
+    "webinar_polling": {
+      "enable": true,
+      "advanced_polls": true,
+      "manage_saved_polls_and_quizzes": true,
+      "require_answers_to_be_anonymous": true,
+      "allow_host_to_upload_image": true,
+      "allow_alternative_host_to_add_edit": true
+    },
+    "webinar_question_answer": true,
+    "webinar_survey": true,
+    "whiteboard": true,
+    "who_can_share_screen": "host",
+    "who_can_share_screen_when_someone_is_sharing": "all",
+    "participants_share_simultaneously": "multiple",
+    "workplace_by_facebook": true
+  },
+  "other_options": {
+    "allow_users_contact_support_via_chat": true,
+    "blur_snapshot": true,
+    "webinar_registration_options": {
+      "allow_host_to_enable_join_info": true,
+      "allow_host_to_enable_social_share_buttons": true,
+      "enable_custom_questions": true
+    }
+  },
+  "profile": {
+    "recording_storage_location": {
+      "allowed_values": [
+        "US"
+      ],
+      "value": "US"
+    }
+  },
+  "recording": {
+    "account_user_access_recording": true,
+    "archive": {
+      "enable": true,
+      "settings": {
+        "audio_file": true,
+        "cc_transcript_file": true,
+        "chat_file": true,
+        "chat_with_sender_email": true,
+        "video_file": true,
+        "chat_with_direct_message": true,
+        "archive_retention": 1,
+        "action_when_archive_failed": 1,
+        "notification_when_archiving_starts": "participants",
+        "play_voice_prompt_when_archiving_starts": "guest"
+      },
+      "type": 2
+    },
+    "auto_recording": "local",
+    "cloud_recording": true,
+    "cloud_recording_download": true,
+    "cloud_recording_download_host": true,
+    "host_delete_cloud_recording": true,
+    "record_files_separately": {
+      "active_speaker": true,
+      "gallery_view": true,
+      "shared_screen": true
+    },
+    "display_participant_name": true,
+    "recording_thumbnails": true,
+    "optimize_recording_for_3rd_party_video_editor": true,
+    "recording_highlight": true,
+    "save_panelist_chat": true,
+    "save_poll_results": true,
+    "save_close_caption": true,
+    "ip_address_access_control": {
+      "enable": true,
+      "ip_addresses_or_ranges": "200.181.108.17 - 220.181.108.157"
+    },
+    "local_recording": true,
+    "prevent_host_access_recording": true,
+    "record_audio_file": true,
+    "record_gallery_view": true,
+    "record_speaker_view": true,
+    "recording_audio_transcript": true,
+    "smart_recording": {
+      "create_recording_highlights": true,
+      "create_smart_chapters": true,
+      "create_next_steps": true
+    },
+    "save_chat_text": true,
+    "show_timestamp": true
+  },
+  "schedule_meeting": {
+    "audio_type": "both",
+    "embed_password_in_join_link": true,
+    "force_pmi_jbh_password": true,
+    "host_video": true,
+    "join_before_host": true,
+    "mute_upon_entry": true,
+    "participant_video": true,
+    "personal_meeting": true,
+    "pstn_password_protected": true,
+    "require_password_for_instant_meetings": true,
+    "require_password_for_pmi_meetings": "jbh_only",
+    "require_password_for_scheduled_meetings": true,
+    "require_password_for_scheduling_new_meetings": true,
+    "upcoming_meeting_reminder": true,
+    "use_pmi_for_instant_meetings": true,
+    "use_pmi_for_schedule_meetings": true,
+    "always_display_zoom_meeting_as_topic": {
+      "enable": false,
+      "display_topic_for_scheduled_meetings": false
+    },
+    "always_display_zoom_webinar_as_topic": {
+      "enable": false,
+      "display_topic_for_scheduled_webinars": false
+    },
+    "continuous_meeting_chat": {
+      "enable": true,
+      "can_add_external_users": true,
+      "auto_add_invited_external_users": true
+    }
+  },
+  "telephony": {
+    "audio_conference_info": "test",
+    "telephony_regions": {
+      "selection_values": "CNTB"
+    },
+    "third_party_audio": true
+  },
+  "chat": {
+    "share_files": {
+      "enable": true,
+      "share_option": "true"
+    },
+    "chat_emojis": {
+      "enable": true,
+      "emojis_option": "all"
+    },
+    "record_voice_messages": true,
+    "record_video_messages": true,
+    "screen_capture": true,
+    "create_public_channels": true,
+    "create_private_channels": true,
+    "share_links_in_chat": true,
+    "schedule_meetings_in_chat": true,
+    "set_retention_period_in_cloud": {
+      "enable": true,
+      "retention_period_of_direct_messages_and_group_conversation": "2m",
+      "retention_period_of_channels": "2m"
+    },
+    "set_retention_period_in_local": {
+      "enable": true,
+      "retention_period_of_direct_messages_and_group_conversation": "2m",
+      "retention_period_of_channels": "2m"
+    },
+    "allow_users_to_search_others_options": "1,3",
+    "allow_users_to_add_contacts": {
+      "enable": true,
+      "selected_option": 4,
+      "user_email_addresses": "123@test.com"
+    },
+    "allow_users_to_chat_with_others": {
+      "enable": true,
+      "selected_option": 4,
+      "user_email_addresses": "123@test.com"
+    },
+    "chat_etiquette_tool": {
+      "enable": true,
+      "policies": [
+        {
+          "description": "The policy\u0027s description",
+          "id": "dvgerwe98z8v9vgbug43iubkjn",
+          "is_locked": true,
+          "keywords": [
+            "key"
+          ],
+          "name": "The policy name",
+          "regular_expression": "^test",
+          "status": "Activated",
+          "trigger_action": 2
+        }
+      ]
+    },
+    "send_data_to_third_party_archiving_service": {
+      "enable": true
+    },
+    "translate_messages": true,
+    "search_and_send_animated_gif_images": {
+      "enable": true
+    }
+  },
+  "allow_authentication_exception": true,
+  "authentication_options": [
+    {
+      "default_option": true,
+      "domains": "example.com",
+      "id": "ewf22f42fewf4232fgg4343lki4",
+      "name": "Authentication name",
+      "type": "enforce_login_with_domains",
+      "visible": true
+    }
+  ],
+  "meeting_authentication": true,
+  "recording_authentication": true,
+  "meeting_security": {
+    "auto_security": true,
+    "block_user_domain": true,
+    "block_user_domain_list": [
+      "example.com"
+    ],
+    "chat_etiquette_tool": {
+      "enable": true,
+      "policies": [
+        {
+          "description": "The policy\u0027s description",
+          "id": "dvgerwe98z8v9vgbug43iubkjn",
+          "is_locked": true,
+          "keywords": [
+            "key"
+          ],
+          "name": "The policy name",
+          "regular_expression": "^test",
+          "status": "Activated",
+          "trigger_action": 2
+        }
+      ]
+    },
+    "embed_password_in_join_link": true,
+    "encryption_type": "enhanced_encryption",
+    "end_to_end_encrypted_meetings": true,
+    "meeting_password": true,
+    "meeting_password_requirement": {
+      "consecutive_characters_length": 8,
+      "have_letter": true,
+      "have_number": true,
+      "have_special_character": true,
+      "have_upper_and_lower_characters": true,
+      "length": 10,
+      "only_allow_numeric": true,
+      "weak_enhance_detection": true
+    },
+    "only_authenticated_can_join_from_webclient": true,
+    "phone_password": true,
+    "pmi_password": true,
+    "require_password_for_scheduled_meeting": true,
+    "require_password_for_scheduled_webinar": true,
+    "waiting_room": true,
+    "waiting_room_settings": {
+      "participants_to_place_in_waiting_room": 0,
+      "users_who_can_admit_participants_from_waiting_room": 1,
+      "whitelisted_domains_for_waiting_room": "example.com"
+    },
+    "webinar_password": true
+  }
+}

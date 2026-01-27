@@ -3,7 +3,7 @@
   "slot_duration": 15,
   "booking_days": [
     {
-      "slot_date": "Microsoft.OpenApi.Any.OpenApiDate",
+      "slot_date": "2025-06-19T00:00:00.0000000",
       "slots": [
         {
           "available_count": 2,

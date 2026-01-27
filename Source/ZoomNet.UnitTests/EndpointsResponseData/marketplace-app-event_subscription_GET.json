@@ -1,0 +1,30 @@
+{
+  "next_page_token": "eer587w4eiyfsudgf",
+  "page_size": 30,
+  "event_subscriptions": [
+    {
+      "event_subscription_id": "sFrBezKES3-UdcfMPXFA0A",
+      "events": [
+        "meeting.deleted"
+      ],
+      "event_subscription_name": "Example Event Subscription",
+      "event_webhook_url": "https://www.example.com",
+      "subscription_scope": "user",
+      "created_source": "default",
+      "subscriber_id": "5AATFjiUS0yEnELIMzQO4g",
+      "custom_header": {
+        "custom_header_type": 2,
+        "username": "my_username",
+        "password": "my_password",
+        "client_id": "your_client_id",
+        "client_secret": "your_client_secret",
+        "token_url": "https://auth.example.com/oauth/token",
+        "scope": "read:org write:user",
+        "state": "request-123",
+        "client_authentication": "body",
+        "custom_header_key": "x-api-key",
+        "custom_header_value": "your_api_key_value"
+      }
+    }
+  ]
+}

@@ -1,9 +1,9 @@
 {
   "billing_reports": [
     {
-      "end_date": "Microsoft.OpenApi.Any.OpenApiDate",
+      "end_date": "2022-03-25T00:00:00.0000000",
       "id": "indfhgfhfho",
-      "start_date": "Microsoft.OpenApi.Any.OpenApiDate",
+      "start_date": "2022-03-25T00:00:00.0000000",
       "tax_amount": "456",
       "total_amount": "456",
       "type": 1

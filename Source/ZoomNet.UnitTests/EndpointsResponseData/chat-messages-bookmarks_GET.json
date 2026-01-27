@@ -2,6 +2,21 @@
   "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
   "page_size": 10,
   "bookmarks": [
-    null
+    {
+      "channel_id": "ayxzxi9ttyau5lskqorl1w3rtl1y5ssri",
+      "channel_name": "xBvggqyjQUal6TecwMlYwQ",
+      "message": "Hello",
+      "message_id": "EAB58B01-B35F-4F97-BA69-F9650F54679A",
+      "message_timestamp": 1703307811000,
+      "sender_user_id": "v4iyWT1LTfy8QvPG4GTvdg",
+      "sender_member_id": "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2he",
+      "sender_display_name": "Jane Smith",
+      "is_sent_by_user": false,
+      "reply_main_message_id": "7FDDE92B-042F-429E-B3F3-3A63838C417F",
+      "reply_main_message_timestamp": 1705010505067,
+      "peer_contact_name": "Jane Snith",
+      "peer_contact_user_id": "v4iyWT1LTfy8QvPG4GTvdg",
+      "peer_contact_member_id": "v4iyWT1LTfy8QvPG4GTvdg"
+    }
   ]
 }

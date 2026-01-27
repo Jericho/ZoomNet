@@ -1,0 +1,33 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "summary": "overall summary",
+  "smart_chapters": [
+    {
+      "title": "chapter title",
+      "summary": "chapter summary.",
+      "category": "chapter category",
+      "start_time": "2022-03-23T06:00:00Z",
+      "end_time": "2022-03-23T06:05:00Z"
+    }
+  ],
+  "analysis": [
+    {
+      "section": [
+        {
+          "user_id": "hjficvXtR42vjSABCCS32Q",
+          "display_name": "user name",
+          "text": "text",
+          "utterance": "next steps",
+          "label": "pricing",
+          "indicator_name": "Johnny Dev",
+          "indicator_id": "INTrFEESRUqrdTXgKUIHnw",
+          "key_word": "keyword",
+          "marked_by": "nlp",
+          "start_time": "2022-03-23T06:00:00Z",
+          "end_time": "2022-03-23T06:00:00Z"
+        }
+      ]
+    }
+  ]
+}

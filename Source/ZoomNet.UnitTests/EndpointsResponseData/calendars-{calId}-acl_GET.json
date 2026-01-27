@@ -7,7 +7,10 @@
       "kind": "calendar#aclRule",
       "etag": "\u002200000000000000000000\u0022",
       "id": "user:cba.fed@zoom.com",
-      "scope": null,
+      "scope": {
+        "type": "user",
+        "value": "abc.def@zoom.us"
+      },
       "role": "reader"
     }
   ]

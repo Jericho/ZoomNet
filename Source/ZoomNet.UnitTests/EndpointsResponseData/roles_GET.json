@@ -1,1 +1,12 @@
-{}
+{
+  "roles": [
+    {
+      "description": "my role",
+      "id": "RqBLcd1jLS9a7RBkbGtqn2A",
+      "name": "My Role",
+      "type": "iq",
+      "total_members": 200
+    }
+  ],
+  "total_records": 200
+}

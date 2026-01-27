@@ -1,0 +1,588 @@
+{
+  "security": {
+    "admin_change_name_pic": true,
+    "admin_change_user_info": true,
+    "user_modifiable_info_by_admin": [
+      "[\u0022name\u0022,\u0022host_key\u0022,\u0022sign_in_email\u0022]"
+    ],
+    "signin_with_sso": {
+      "enable": true,
+      "require_sso_for_domains": true,
+      "domains": [
+        "test.com",
+        "example.us"
+      ],
+      "sso_bypass_users": [
+        {
+          "id": "21212_aefwef32233",
+          "email": "123@test.com"
+        }
+      ]
+    },
+    "hide_billing_info": true,
+    "import_photos_from_devices": true,
+    "password_requirement": {
+      "consecutive_characters_length": 8,
+      "have_special_character": true,
+      "minimum_password_length": 8,
+      "weak_enhance_detection": false
+    },
+    "sign_again_period_for_inactivity_on_client": 5,
+    "sign_again_period_for_inactivity_on_web": 10,
+    "sign_in_with_two_factor_auth": "none",
+    "sign_in_with_two_factor_auth_groups": [
+      "group"
+    ],
+    "sign_in_with_two_factor_auth_roles": [
+      "role"
+    ]
+  },
+  "audio_conferencing": {
+    "toll_free_and_fee_based_toll_call": {
+      "allow_webinar_attendees_dial": true,
+      "enable": true,
+      "numbers": [
+        {
+          "code": "86",
+          "country_code": "CN",
+          "country_name": "China",
+          "display_number": "\u002B86 777 777 77",
+          "number": "777 777 77"
+        }
+      ]
+    },
+    "toll_call": {
+      "enable": true,
+      "numbers": [
+        {
+          "code": "86",
+          "country_code": "CN",
+          "country_name": "China",
+          "display_number": "\u002B86 777 777 77",
+          "number": "777 777 77"
+        }
+      ]
+    },
+    "call_me_and_invite_by_phone": {
+      "enable": true,
+      "require_press_1_for_call_me": "auto",
+      "allow_webinar_attendees_call_me": true,
+      "call_out_countries": {
+        "allowed_countries": [
+          {
+            "code": "CN",
+            "name": "China"
+          }
+        ],
+        "selected_countries": [
+          {
+            "code": "CN",
+            "name": "China"
+          }
+        ]
+      }
+    },
+    "personal_audio_conference": true,
+    "participant_phone_masking": {
+      "enable": true,
+      "masking_type": "mask_default"
+    },
+    "global_dial_in_countries": {
+      "allowed_countries": [
+        {
+          "code": "CN",
+          "name": "China"
+        }
+      ],
+      "selected_countries": [
+        {
+          "code": "CN",
+          "name": "China"
+        }
+      ],
+      "include_toll_free": true
+    }
+  },
+  "chat": {
+    "allow_bots_chat": true,
+    "share_files": {
+      "enable": true,
+      "share_option": "account",
+      "view_option": "anyone",
+      "restrictions": {
+        "only_allow_specific_file_types": true,
+        "file_type_restrictions": [
+          ".gz"
+        ],
+        "file_type_restrictions_for_external": [
+          ".gz"
+        ],
+        "maximum_file_size": true,
+        "file_size_restrictions": 100,
+        "file_size_restrictions_for_external": 100,
+        "file_restrictions_apply_to": "sharing_and_viewing"
+      }
+    },
+    "chat_emojis": {
+      "enable": true,
+      "emojis_option": "all"
+    },
+    "record_voice_messages": true,
+    "record_video_messages": true,
+    "screen_capture": true,
+    "create_public_channels": true,
+    "create_private_channels": true,
+    "create_group_chat": true,
+    "share_links_in_chat": true,
+    "schedule_meetings_in_chat": true,
+    "set_retention_period_in_cloud": {
+      "enable": true,
+      "retention_period_of_direct_messages_and_group_conversation": "2m",
+      "retention_period_of_channels": "2m"
+    },
+    "set_retention_period_in_local": {
+      "enable": true,
+      "retention_period_of_direct_messages_and_group_conversation": "2m",
+      "retention_period_of_channels": "2m"
+    },
+    "allow_users_to_add_contacts": {
+      "enable": true,
+      "selected_option": 4,
+      "user_email_addresses": "123@test.com"
+    },
+    "allow_users_to_chat_with_others": {
+      "enable": true,
+      "selected_option": 4,
+      "user_email_addresses": "123@test.com"
+    },
+    "chat_etiquette_tool": {
+      "enable": true,
+      "policies": [
+        {
+          "description": "The policy\u0027s description",
+          "id": "afwef342tr2qfwrg",
+          "is_locked": true,
+          "keywords": [
+            "test"
+          ],
+          "name": "The policy name",
+          "regular_expression": "^test",
+          "status": "activated",
+          "trigger_action": 1
+        }
+      ],
+      "policy_max_count": 50
+    },
+    "send_data_to_third_party_archiving_service": {
+      "enable": true,
+      "type": "global_relay",
+      "smtp_delivery_address": "test@zoom.us",
+      "user_name": "test",
+      "passcode": "111111111",
+      "authorized_channel_token": "as1131zxwrwcssd32r4fkmaksjiajco999999999999a9qef23jr43twn4%^\u0026IBNByeq"
+    },
+    "apply_local_storage_to_personal_channel": {
+      "enable": true,
+      "retention_period": "2m"
+    },
+    "translate_messages": true,
+    "search_and_send_animated_gif_images": {
+      "enable": true,
+      "giphy_content_rating": 1
+    },
+    "external_collab_restrict": {
+      "enable": true,
+      "external_chat": "allowed",
+      "group_id": "QSuHwTcvQoWPoG0ennkRug"
+    },
+    "external_user_control": {
+      "enable": true,
+      "selected_option": 1,
+      "external_account": true
+    },
+    "external_invite_approve": {
+      "enable": true,
+      "selected_option": 1,
+      "channel_id": "5fedbc697f8545aca465b5b114ad4275",
+      "external_account": true
+    },
+    "external_member_join": {
+      "enable": true,
+      "external_account": true
+    },
+    "external_join_approve": {
+      "enable": true,
+      "selected_option": 1,
+      "channel_id": "5fedbc697f8545aca465b5b114ad4275",
+      "external_account": true
+    },
+    "download_file": true,
+    "share_screen_in_chat": true,
+    "code_snippet": true,
+    "personal_channel": true,
+    "store_revise_chat": false,
+    "set_chat_as_default_tab": false,
+    "hyper_link": true,
+    "suppress_removal_notification": true,
+    "suppress_user_group_notification": false,
+    "allow_remove_msg_by_owner_and_admins": true,
+    "allow_huddles_from_channels": true,
+    "shared_spaces": true,
+    "chat_email_address": {
+      "enable": true,
+      "only_allow_specific_domains": false,
+      "specific_domains": [
+        "[\u0022example.com\u0022]"
+      ]
+    },
+    "read_receipts": {
+      "enable": false,
+      "allow_users_opt_out": false
+    },
+    "allow_delete_message": {
+      "enable": true,
+      "time": 5
+    },
+    "allow_edit_message": {
+      "enable": true,
+      "time": 5
+    },
+    "show_status_to_internal_contact": true,
+    "presence_on_meeting": true,
+    "presence_away_when_screen_saver": false,
+    "show_h323_contact_tab": false,
+    "ai_summary": {
+      "enable": false,
+      "shown_in_team_chat": true
+    },
+    "ai_compose": {
+      "enable": false,
+      "shown_in_team_chat": true
+    },
+    "ai_recommend": false,
+    "ai_quick_reply": false,
+    "ai_sentence_completion": false,
+    "ai_quick_schedule": false,
+    "survey_poll": true
+  },
+  "email_notification": {
+    "alternative_host_reminder": true,
+    "cancel_meeting_reminder": true,
+    "cloud_recording_available_reminder": true,
+    "jbh_reminder": true,
+    "low_host_count_reminder": true,
+    "recording_available_reminder_alternative_hosts": true,
+    "recording_available_reminder_schedulers": true,
+    "schedule_for_reminder": true
+  },
+  "feature": {
+    "meeting_capacity": 100
+  },
+  "in_meeting": {
+    "custom_data_center_regions": false,
+    "data_center_regions": [
+      "AU"
+    ],
+    "unchecked_data_center_regions": [
+      "EU"
+    ]
+  },
+  "integration": {
+    "box": true,
+    "dropbox": true,
+    "google_calendar": true,
+    "google_drive": true,
+    "kubi": true,
+    "microsoft_one_drive": true
+  },
+  "other_options": {
+    "allow_auto_active_users": true,
+    "allow_users_contact_support_via_chat": true,
+    "allow_users_enter_and_share_pronouns": true,
+    "blur_snapshot": true,
+    "display_meetings_scheduled_for_others": true,
+    "meeting_qos_and_mos": 0,
+    "show_one_user_meeting_on_dashboard": true,
+    "use_cdn": "none",
+    "webinar_registration_options": {
+      "allow_host_to_enable_join_info": true,
+      "allow_host_to_enable_social_share_buttons": true,
+      "enable_custom_questions": true
+    },
+    "email_in_attendee_report_for_meeting": true
+  },
+  "profile": {
+    "recording_storage_location": {
+      "allowed_values": [
+        "US",
+        "AU",
+        "CA",
+        "DE",
+        "JP",
+        "BR",
+        "SG",
+        "IN"
+      ],
+      "value": "US"
+    }
+  },
+  "recording": {
+    "cloud_recording": true,
+    "record_speaker_view": true,
+    "record_gallery_view": true,
+    "record_audio_file": true,
+    "save_chat_text": false,
+    "show_timestamp": true,
+    "recording_audio_transcript": false,
+    "cloud_recording_download": true,
+    "auto_delete_cmr": true,
+    "auto_delete_cmr_days": 30
+  },
+  "schedule_meeting": {
+    "audio_type": "both",
+    "enforce_login": true,
+    "enforce_login_domains": "example.com",
+    "enforce_login_with_domains": true,
+    "force_pmi_jbh_password": true,
+    "host_video": true,
+    "enable_dedicated_group_chat": true,
+    "jbh_time": 10,
+    "join_before_host": true,
+    "meeting_password_requirement": {
+      "consecutive_characters_length": 5,
+      "have_letter": true,
+      "have_number": true,
+      "have_special_character": true,
+      "have_upper_and_lower_characters": true,
+      "length": 10,
+      "only_allow_numeric": true,
+      "weak_enhance_detection": true
+    },
+    "not_store_meeting_topic": true,
+    "participant_video": true,
+    "allow_host_to_disable_participant_video": true,
+    "personal_meeting": true,
+    "require_password_for_instant_meetings": true,
+    "require_password_for_pmi_meetings": "none",
+    "require_password_for_scheduled_meetings": true,
+    "require_password_for_scheduling_new_meetings": true,
+    "use_pmi_for_instant_meetings": true,
+    "use_pmi_for_scheduled_meetings": true,
+    "always_display_zoom_meeting_as_topic": {
+      "enable": true,
+      "display_topic_for_scheduled_meetings": true
+    },
+    "hide_meeting_description": {
+      "enable": true,
+      "hide_description_for_scheduled_meetings": true
+    },
+    "always_display_zoom_webinar_as_topic": {
+      "enable": true,
+      "display_topic_for_scheduled_webinars": true
+    },
+    "hide_webinar_description": {
+      "enable": true,
+      "hide_description_for_scheduled_webinars": true
+    },
+    "meeting_template": {
+      "enable": true,
+      "templates": [
+        {
+          "id": "ydCUQzzVT6WZ_r_K_2iFzg",
+          "name": "meeting_template_name",
+          "enable": true
+        }
+      ]
+    },
+    "continuous_meeting_chat": {
+      "enable": true,
+      "can_add_external_users": true,
+      "auto_add_invited_external_users": true
+    }
+  },
+  "telephony": {
+    "audio_conference_info": "test",
+    "telephony_regions": {
+      "allowed_values": [
+        "CNTB",
+        "USTB"
+      ],
+      "selection_values": "USTB"
+    },
+    "third_party_audio": false
+  },
+  "tsp": {
+    "call_out": true,
+    "call_out_countries": [
+      "us"
+    ],
+    "allow_webinar_attendees_call_me": true,
+    "display_toll_free_numbers": true,
+    "allow_webinar_attendees_toll_free_dial": true,
+    "show_international_numbers_link": true,
+    "global_dial_in_countries": {
+      "allowed_countries": [
+        {
+          "code": "CN",
+          "name": "China"
+        }
+      ],
+      "selected_countries": [
+        {
+          "code": "CN",
+          "name": "China"
+        }
+      ]
+    }
+  },
+  "zoom_rooms": {
+    "auto_start_stop_scheduled_meetings": true,
+    "cmr_for_instant_meeting": true,
+    "force_private_meeting": true,
+    "hide_host_information": true,
+    "list_meetings_with_calendar": true,
+    "start_airplay_manually": true,
+    "ultrasonic": true,
+    "upcoming_meeting_alert": true,
+    "weekly_system_restart": true,
+    "zr_post_meeting_feedback": true
+  },
+  "smart_recognition": {
+    "personalized_audio_isolation": true,
+    "zoom_rooms": {
+      "video_name_tags": {
+        "enabled": true,
+        "allow_user_photos": true,
+        "allow_enrollment_email": true,
+        "allow_external_identification": true
+      },
+      "voice_name_tags": {
+        "enabled": true,
+        "allow_enrollment_email": true,
+        "allow_external_identification": true
+      }
+    },
+    "workplace_app": {
+      "voice_name_tags": {
+        "enabled": true,
+        "allow_enrollment_email": true
+      }
+    }
+  },
+  "mail_calendar": {
+    "email_calendar_management": true,
+    "email_management": true,
+    "zoom_email_provider": true
+  },
+  "general_setting": {
+    "auto_zoom_room_proximity_connect": true,
+    "show_zoom_room_feature": true
+  },
+  "allow_authentication_exception": true,
+  "authentication_options": [
+    {
+      "default_option": true,
+      "domains": "www.a-b-c.com",
+      "id": "MialYiatQVa8WwEEB5UiXw",
+      "name": "test",
+      "type": "enforce_login_with_domains",
+      "visible": false
+    }
+  ],
+  "meeting_authentication": true,
+  "recording_authentication": true,
+  "meeting_security": {
+    "auto_security": true,
+    "block_user_domain": true,
+    "block_user_domain_list": [
+      "aa.test.com"
+    ],
+    "chat_etiquette_tool": {
+      "enable": true,
+      "policies": [
+        {
+          "description": "policy description",
+          "id": "1eqdqef42r4wfg3g43w",
+          "is_locked": true,
+          "keywords": [
+            "test"
+          ],
+          "name": "policy name",
+          "regular_expression": "^test",
+          "status": "activated",
+          "trigger_action": 2
+        }
+      ],
+      "policy_max_count": 14
+    },
+    "embed_password_in_join_link": true,
+    "encryption_type": "e2ee",
+    "end_to_end_encrypted_meetings": true,
+    "meeting_password": true,
+    "meeting_password_requirement": {
+      "consecutive_characters_length": 8,
+      "have_letter": true,
+      "have_number": true,
+      "have_special_character": true,
+      "have_upper_and_lower_characters": true,
+      "length": 8,
+      "only_allow_numeric": true,
+      "weak_enhance_detection": true
+    },
+    "only_authenticated_can_join_from_webclient": true,
+    "phone_password": true,
+    "pmi_password": true,
+    "require_password_for_scheduled_meeting": true,
+    "require_password_for_scheduled_webinar": true,
+    "waiting_room": true,
+    "waiting_room_settings": {
+      "participants_to_place_in_waiting_room": 2,
+      "users_who_can_admit_participants_from_waiting_room": 0,
+      "whitelisted_domains_for_waiting_room": "example.com"
+    },
+    "webinar_password": true,
+    "waiting_room_options": {
+      "enable": true,
+      "locked": false,
+      "admit_type": 1,
+      "internal_user_auto_admit": 1,
+      "admit_domain_allowlist": "example.com",
+      "who_can_admit_participants": 1,
+      "sort_order_of_people": 1,
+      "more_options": {
+        "user_invited_by_host_can_bypass_waiting_room": true,
+        "move_participants_to_waiting_room_when_host_dropped": true,
+        "allow_participants_to_reply_to_host": true
+      }
+    }
+  },
+  "in_session": {
+    "custom_data_center_regions": false,
+    "data_center_regions": [
+      "AU"
+    ],
+    "unchecked_data_center_regions": [
+      "EU"
+    ],
+    "p2p_connetion": true,
+    "p2p_ports": true,
+    "ports_range": "1;65535",
+    "dscp_audio": 56,
+    "dscp_marking": true,
+    "dscp_video": 40,
+    "dscp_dual": false,
+    "subsession": true
+  },
+  "session_security": {
+    "approved_or_denied_countries_or_regions": {
+      "approved_list": [
+        "CX"
+      ],
+      "denied_list": [
+        "CA"
+      ],
+      "enable": true,
+      "method": "approve"
+    }
+  }
+}

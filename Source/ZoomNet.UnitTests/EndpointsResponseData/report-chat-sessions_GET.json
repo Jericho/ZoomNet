@@ -1,5 +1,5 @@
 {
-  "from": "Microsoft.OpenApi.Any.OpenApiDate",
+  "from": "2022-03-01T00:00:00.0000000",
   "next_page_token": "peU2gkVkRebcqMTzOPnidf0OxlA3WD9Cunrp",
   "page_size": 30,
   "sessions": [
@@ -17,5 +17,5 @@
       "has_external_member": true
     }
   ],
-  "to": "Microsoft.OpenApi.Any.OpenApiDate"
+  "to": "2022-03-25T00:00:00.0000000"
 }

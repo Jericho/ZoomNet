@@ -100,7 +100,7 @@
       ]
     }
   ],
-  "from": "Microsoft.OpenApi.Any.OpenApiDate",
+  "from": "2022-03-17T00:00:00.0000000",
   "messages": [
     {
       "date_time": "2022-03-17T08:27:57.0000000\u002B00:00",
@@ -172,5 +172,5 @@
   ],
   "next_page_token": "b43YBRLJFg3V4vsSpxvGdKIGtNbxn9h9If2",
   "page_size": 30,
-  "to": "Microsoft.OpenApi.Any.OpenApiDate"
+  "to": "2022-03-25T00:00:00.0000000"
 }

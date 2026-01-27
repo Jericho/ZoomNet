@@ -2,6 +2,15 @@
   "total_records": 1,
   "next_page_token": "yqT59YnBSHqvDdNnkeHQsA",
   "channels": [
-    null
+    {
+      "channel_id": "iso9Dllddp39dagjLj9j",
+      "name": "FoodieFlicks",
+      "description": "A cinematic journey through the world of cuisine!.",
+      "owner_id": "abc9Dllddp39dagjLj9j",
+      "status": "PUBLISH",
+      "categories": [
+        "Education"
+      ]
+    }
   ]
 }

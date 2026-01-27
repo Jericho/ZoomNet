@@ -29,7 +29,14 @@
       "updated": "2023-12-21T06:19:28.309Z",
       "meeting_notes": "meeting notes",
       "event_type": "default",
-      "external_location": null,
+      "external_location": {
+        "kind": "zoom",
+        "meeting_id": "94777886776",
+        "personal_meeting_id": "98656786887",
+        "meeting_passcode": "958000",
+        "meeting_description": "Invite you to meeting",
+        "meeting_join_url": "https://zoom.us/j/7427752805"
+      },
       "tracking_params": [
         {
           "key": "utm_source",

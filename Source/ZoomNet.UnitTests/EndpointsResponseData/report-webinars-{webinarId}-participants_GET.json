@@ -1,0 +1,23 @@
+{
+  "next_page_token": "Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3",
+  "page_count": 1,
+  "page_size": 30,
+  "total_records": 1,
+  "participants": [
+    {
+      "customer_key": "349589LkJyeW",
+      "duration": 20,
+      "failover": false,
+      "id": "ABCDEF123456",
+      "join_time": "2019-02-01T12:34:12.6600000\u002B00:00",
+      "leave_time": "2019-02-01T12:54:12.6600000\u002B00:00",
+      "name": "jchill",
+      "registrant_id": "123456FEDCBA",
+      "status": "in_meeting",
+      "user_email": "jchill@example.com",
+      "user_id": "ABCDEF123456",
+      "participant_user_id": "DYHrdpjrS3uaOf7dPkkg8w",
+      "bo_mtg_id": "Dkgwu8nm/ExG1vM\u002BGhLRhA=="
+    }
+  ]
+}

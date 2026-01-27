@@ -1,0 +1,43 @@
+{
+  "next_page_token": "w7587w4eiyfsudgk",
+  "page_count": 1,
+  "page_number": 1,
+  "page_size": 30,
+  "total_records": 20,
+  "from": "2020-07-14T00:00:00.0000000",
+  "meetings": [
+    {
+      "custom_keys": [
+        {
+          "key": "Host Nation",
+          "value": "US"
+        }
+      ],
+      "duration": 6,
+      "end_time": "2020-07-15T23:30:19.0000000\u002B00:00",
+      "id": 12345,
+      "participants_count": 2,
+      "session_key": "ABC36jaBI145",
+      "source": "Zoom",
+      "start_time": "2019-07-15T23:24:52.0000000\u002B00:00",
+      "topic": "My Meeting",
+      "total_minutes": 11,
+      "type": 2,
+      "user_email": "jchill@example.com",
+      "user_name": "Jill Chill",
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "schedule_time": "12/22/2021 16:20",
+      "join_waiting_room_time": "02/11/2022 16:15",
+      "join_time": "12/22/2021 16:20",
+      "leave_time": "12/22/2021 17:13",
+      "host_organization": "org",
+      "host_name": "Jill",
+      "has_screen_share": false,
+      "has_recording": false,
+      "has_chat": false,
+      "meeting_encryption_status": 1,
+      "participants_count_my_account": 2
+    }
+  ],
+  "to": "2020-08-14T00:00:00.0000000"
+}

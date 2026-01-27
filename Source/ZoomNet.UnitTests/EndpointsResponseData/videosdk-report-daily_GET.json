@@ -3,7 +3,7 @@
   "month": 12,
   "dates": [
     {
-      "date": "Microsoft.OpenApi.Any.OpenApiDate",
+      "date": "2021-12-01T00:00:00.0000000",
       "sessions": 20,
       "users": 80,
       "session_minutes": 380

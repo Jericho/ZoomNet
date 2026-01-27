@@ -1,1 +1,88 @@
-{}
+{
+  "account_type": "Work Email",
+  "calender_name": "666555",
+  "camera": "FaceTime HD Camera",
+  "device_ip": "Computer : 10.100.93.138",
+  "email": "user@example.com",
+  "health": "critical",
+  "id": "_hjJhB0cQRi9Xm3HX64Ggw",
+  "issues": [
+    "Zoom room is offline"
+  ],
+  "last_start_time": "2020-11-04T01:06:41Z",
+  "location": "floor1",
+  "microphone": "Built-in Microphone (External Microphone)",
+  "room_name": "jchill room",
+  "speaker": "Built-in Output (Headphones)",
+  "status": "Offline",
+  "live_meeting": {
+    "host": "API",
+    "custom_keys": [
+      {
+        "key": "Host Nation",
+        "value": "US"
+      }
+    ],
+    "dept": "Developers",
+    "duration": "02:21",
+    "email": "user@example.com",
+    "end_time": "2022-03-01T10:17:35.0000000\u002B00:00",
+    "has_3rd_party_audio": true,
+    "has_archiving": true,
+    "has_pstn": true,
+    "has_recording": true,
+    "has_screen_share": true,
+    "has_sip": true,
+    "has_video": true,
+    "has_voip": true,
+    "has_manual_captions": true,
+    "has_automated_captions": true,
+    "id": 575734086,
+    "in_room_participants": 2,
+    "participants": 2,
+    "start_time": "2022-03-01T10:15:14.0000000\u002B00:00",
+    "topic": "API Meeting",
+    "user_type": "Licensed",
+    "uuid": "gaqOKVN9RAaDHKYWEcASXg=="
+  },
+  "past_meetings": {
+    "from": "2022-04-07T00:00:00.0000000",
+    "to": "2022-04-08T00:00:00.0000000",
+    "next_page_token": "Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3",
+    "page_count": 1,
+    "page_size": 30,
+    "total_records": 1,
+    "meetings": [
+      {
+        "host": "API",
+        "custom_keys": [
+          {
+            "key": "Host Nation",
+            "value": "US"
+          }
+        ],
+        "dept": "Developers",
+        "duration": "02:21",
+        "email": "user@example.com",
+        "end_time": "2022-03-01T10:17:35.0000000\u002B00:00",
+        "has_3rd_party_audio": true,
+        "has_archiving": true,
+        "has_pstn": true,
+        "has_recording": true,
+        "has_screen_share": true,
+        "has_sip": true,
+        "has_video": true,
+        "has_voip": true,
+        "has_manual_captions": true,
+        "has_automated_captions": true,
+        "id": 575734086,
+        "in_room_participants": 2,
+        "participants": 2,
+        "start_time": "2022-03-01T10:15:14.0000000\u002B00:00",
+        "topic": "API Meeting",
+        "user_type": "Licensed",
+        "uuid": "gaqOKVN9RAaDHKYWEcASXg=="
+      }
+    ]
+  }
+}

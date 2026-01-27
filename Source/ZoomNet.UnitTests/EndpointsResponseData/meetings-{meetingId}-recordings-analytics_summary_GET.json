@@ -1,6 +1,6 @@
 {
-  "from": "Microsoft.OpenApi.Any.OpenApiDate",
-  "to": "Microsoft.OpenApi.Any.OpenApiDate",
+  "from": "2020-07-30T00:00:00.0000000",
+  "to": "2020-07-30T00:00:00.0000000",
   "analytics_summary": [
     {
       "date": "2022-07-06",

@@ -1,0 +1,44 @@
+{
+  "from": "2022-01-01T00:00:00.0000000",
+  "to": "2022-01-30T00:00:00.0000000",
+  "next_page_token": "Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3",
+  "page_count": 1,
+  "page_size": 30,
+  "total_records": 1,
+  "webinars": [
+    {
+      "host": "user@example.com",
+      "custom_keys": [
+        {
+          "key": "key1",
+          "value": "value1"
+        }
+      ],
+      "dept": "Developers",
+      "duration": "55:01",
+      "email": "user@example.com",
+      "end_time": "2022-01-13T07:00:46.0000000\u002B00:00",
+      "has_3rd_party_audio": true,
+      "has_archiving": true,
+      "has_pstn": true,
+      "has_recording": true,
+      "has_screen_share": true,
+      "has_sip": true,
+      "has_video": true,
+      "has_voip": true,
+      "has_manual_captions": true,
+      "has_automated_captions": true,
+      "id": 99264817135,
+      "participants": 1,
+      "start_time": "2022-01-13T05:27:11.0000000\u002B00:00",
+      "topic": "my webinar",
+      "user_type": "Licensed",
+      "uuid": "NknQtFSgSUSEYt2a9gc13A==",
+      "audio_quality": "good",
+      "video_quality": "good",
+      "screen_share_quality": "good",
+      "has_poll": false,
+      "has_survey": false
+    }
+  ]
+}

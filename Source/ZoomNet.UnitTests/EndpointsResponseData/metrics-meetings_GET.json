@@ -1,0 +1,53 @@
+{
+  "from": "2022-04-01T00:00:00.0000000",
+  "to": "2022-04-07T00:00:00.0000000",
+  "next_page_token": "Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3",
+  "page_count": 1,
+  "page_size": 30,
+  "total_records": 1,
+  "meetings": [
+    {
+      "host": "Jill Chill",
+      "audio_quality": "good",
+      "custom_keys": [
+        {
+          "key": "Host Nation",
+          "value": "US"
+        }
+      ],
+      "dept": "Developers",
+      "duration": "00:56",
+      "email": "jchill@example.com",
+      "end_time": "2022-01-04T07:50:47.0000000\u002B00:00",
+      "has_3rd_party_audio": true,
+      "has_archiving": true,
+      "has_pstn": true,
+      "has_recording": true,
+      "has_screen_share": true,
+      "has_sip": true,
+      "has_video": true,
+      "has_voip": true,
+      "has_manual_captions": true,
+      "has_automated_captions": true,
+      "id": 93201235621,
+      "participants": 2,
+      "screen_share_quality": "good",
+      "session_key": "ABC36jaBI145",
+      "start_time": "2022-01-04T08:04:27.0000000\u002B00:00",
+      "topic": "Share Now",
+      "tracking_fields": [
+        {
+          "field": "Meeting purpose.",
+          "value": "Support"
+        }
+      ],
+      "user_type": "Licensed",
+      "uuid": "gm8s9L\u002BPTEC\u002BFG3sFbd1Cw==",
+      "video_quality": "good",
+      "has_poll": false,
+      "has_qa": false,
+      "has_survey": false,
+      "avg_jointime_cost": 4.55
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "from": "Microsoft.OpenApi.Any.OpenApiDate",
+  "from": "2021-11-01T00:00:00.0000000",
   "next_page_token": "6jqhz348c100oHbw6cVER45YderniREnwr1",
   "page_count": 1,
   "page_size": 30,
@@ -34,6 +34,6 @@
       "callee_account_code": "222"
     }
   ],
-  "to": "Microsoft.OpenApi.Any.OpenApiDate",
+  "to": "2021-11-03T00:00:00.0000000",
   "total_records": 50
 }

@@ -45,7 +45,12 @@
       "locked_by": "account"
     },
     "ad_hoc_call_recording_access_members": [
-      null
+      {
+        "access_user_id": "w0RChiauQeqRlv5fgxYULQ",
+        "allow_delete": false,
+        "allow_download": false,
+        "shared_id": "--e8ugg0SeS-9clgrDkn2w"
+      }
     ],
     "auto_call_recording": {
       "allow_stop_resume_recording": true,
@@ -73,7 +78,12 @@
       }
     },
     "auto_call_recording_access_members": [
-      null
+      {
+        "access_user_id": "w0RChiauQeqRlv5fgxYULQ",
+        "allow_delete": false,
+        "allow_download": false,
+        "shared_id": "--e8ugg0SeS-9clgrDkn2w"
+      }
     ],
     "call_overflow": {
       "call_overflow_type": 1,
@@ -153,7 +163,13 @@
       "enable": true
     },
     "voicemail_access_members": [
-      null
+      {
+        "access_user_id": "w0RChiauQeqRlv5fgxYULQ",
+        "allow_delete": false,
+        "allow_download": false,
+        "allow_sharing": false,
+        "shared_id": "--e8ugg0SeS-9clgrDkn2w"
+      }
     ],
     "zoom_phone_on_mobile": {
       "allow_calling_clients": [

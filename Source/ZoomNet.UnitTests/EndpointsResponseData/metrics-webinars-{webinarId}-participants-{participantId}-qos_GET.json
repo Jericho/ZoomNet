@@ -35,8 +35,24 @@
         "frame_rate": "12 fps",
         "resolution": "1280*720"
       },
-      "as_input": {},
-      "as_output": {},
+      "as_input": {
+        "avg_loss": "0.03%",
+        "bitrate": "27.15 kbps",
+        "jitter": "0 ms",
+        "latency": "126 ms",
+        "max_loss": "0.4%",
+        "frame_rate": "12 fps",
+        "resolution": "1280*720"
+      },
+      "as_output": {
+        "avg_loss": "0.03%",
+        "bitrate": "27.15 kbps",
+        "jitter": "0 ms",
+        "latency": "126 ms",
+        "max_loss": "0.4%",
+        "frame_rate": "12 fps",
+        "resolution": "1280*720"
+      },
       "audio_device_from_crc": {
         "avg_loss": "0.03%",
         "bitrate": "27.15 kbps",
@@ -95,8 +111,24 @@
         "frame_rate": "12 fps",
         "resolution": "1280*720"
       },
-      "video_input": {},
-      "video_output": {},
+      "video_input": {
+        "avg_loss": "0.03%",
+        "bitrate": "27.15 kbps",
+        "jitter": "0 ms",
+        "latency": "126 ms",
+        "max_loss": "0.4%",
+        "frame_rate": "12 fps",
+        "resolution": "1280*720"
+      },
+      "video_output": {
+        "avg_loss": "0.03%",
+        "bitrate": "27.15 kbps",
+        "jitter": "0 ms",
+        "latency": "126 ms",
+        "max_loss": "0.4%",
+        "frame_rate": "12 fps",
+        "resolution": "1280*720"
+      },
       "as_device_from_rwg": {
         "avg_loss": "0.03%",
         "bitrate": "27.15 kbps",

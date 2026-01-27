@@ -1,6 +1,9 @@
 {
   "domains": [
-    null
+    {
+      "domain": "example.com",
+      "status": "verified"
+    }
   ],
   "total_records": 1
 }

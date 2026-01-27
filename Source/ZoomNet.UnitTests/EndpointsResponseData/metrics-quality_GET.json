@@ -1,5 +1,5 @@
 {
-  "from": "Microsoft.OpenApi.Any.OpenApiDate",
+  "from": "2022-02-01T00:00:00.0000000",
   "quality": {
     "audio": {
       "bad": 0,
@@ -20,5 +20,5 @@
       "poor": 0
     }
   },
-  "to": "Microsoft.OpenApi.Any.OpenApiDate"
+  "to": "2022-02-28T00:00:00.0000000"
 }

@@ -1,0 +1,14 @@
+{
+  "total_records": 1,
+  "tracking_fields": [
+    {
+      "id": "a32CJji-weJ92",
+      "field": "field1",
+      "recommended_values": [
+        "value1"
+      ],
+      "required": false,
+      "visible": true
+    }
+  ]
+}

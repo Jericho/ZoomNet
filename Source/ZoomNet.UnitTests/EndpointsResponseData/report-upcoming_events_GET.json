@@ -1,0 +1,16 @@
+{
+  "from": "2022-03-01T00:00:00.0000000",
+  "next_page_token": "b43YBRLJFg3V4vsSpxvGdKIGtNbxn9h9If2",
+  "page_size": 30,
+  "to": "2022-03-25T00:00:00.0000000",
+  "upcoming_events": [
+    {
+      "dept": "HR",
+      "host_id": "Or4-ZeV_SHCOfWRC71O1Fg",
+      "host_name": "chi chi",
+      "id": "vawMH9zAQLytjCnQiQXSUg==",
+      "start_time": "2022-03-15T07:40:46Z",
+      "topic": "My Meeting"
+    }
+  ]
+}

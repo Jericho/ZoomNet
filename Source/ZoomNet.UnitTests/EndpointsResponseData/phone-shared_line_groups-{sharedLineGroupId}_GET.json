@@ -34,7 +34,14 @@
   "timezone": "Pacific/Midway",
   "policy": {
     "voicemail_access_members": [
-      null
+      {
+        "access_user_id": "w0RChiauQeqRlv5fgxYULQ",
+        "allow_download": false,
+        "allow_delete": false,
+        "allow_sharing": false,
+        "shared_id": "--e8ugg0SeS-9clgrDkn2w",
+        "access_user_type": "user"
+      }
     ]
   },
   "cost_center": "Cost center",

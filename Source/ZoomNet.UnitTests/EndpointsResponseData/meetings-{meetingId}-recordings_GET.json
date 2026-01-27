@@ -1,0 +1,48 @@
+{
+  "account_id": "Cx3wERazSgup7ZWRHQM8-w",
+  "duration": 20,
+  "host_id": "_0ctZtY0REqWalTmwvrdIw",
+  "id": "6840331990",
+  "recording_count": 22,
+  "start_time": "2021-03-18T05:41:36.0000000\u002B00:00",
+  "topic": "My Personal Meeting",
+  "total_size": 22,
+  "type": "1",
+  "uuid": "BOKXuumlTAGXuqwr3bLyuQ==",
+  "recording_play_passcode": "yNYIS408EJygs7rE5vVsJwXIz4-VW7MH",
+  "auto_delete": true,
+  "auto_delete_date": "2028-07-12",
+  "recording_files": [
+    {
+      "deleted_time": "2021-03-18T05:41:36Z",
+      "download_url": "https://example.com/rec/download/Qg75t7xZBtEbAkjdlgbfdngBBBB",
+      "file_path": "/9090876528/path01/demo.mp4",
+      "file_size": 7220,
+      "file_type": "MP4",
+      "file_extension": "M4A",
+      "id": "72576a1f-4e66-4a77-87c4-f13f9808bd76",
+      "meeting_id": "L0AGOEPVR9m5WSOOs/d\u002BFQ==",
+      "play_url": "https://example.com/rec/play/Qg75t7xZBtEbAkjdlgbfdngBBBB",
+      "recording_end": "2021-03-18T05:41:36Z",
+      "recording_start": "2021-03-18T05:41:36Z",
+      "recording_type": "shared_screen_with_speaker_view",
+      "status": "completed"
+    }
+  ],
+  "download_access_token": "abJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJodHRwczovL2V2ZW50Lnpvb20udXMiLCJhY2NvdW50SWQiOiJNdDZzdjR1MFRBeVBrd2dzTDJseGlBIiwiYXVkIjoiaHR0cHM6Ly9vYXV0aC56b29tLnVzIiwibWlkIjoieFp3SEc0c3BRU2VuekdZWG16dnpiUT09IiwiZXhwIjoxNjI2MTM5NTA3LCJ1c2VySWQiOiJEWUhyZHBqclMzdWFPZjdkUGtrZzh3In0.a6KetiC6BlkDhf1dP4KBGUE1bb2brMeraoD45yhFx0eSSSTFdkHQnsKmlJQ-hdo9Zy-4vQw3rOxlyoHv583JyZ",
+  "password": "981651",
+  "participant_audio_files": [
+    {
+      "download_url": "https://example.com/rec/download/Qg75t7xZBtEbAkjdlgbfdngBBBB",
+      "file_name": "test.json",
+      "file_path": "/9090876528/path01/demo.mp4",
+      "file_size": 65536,
+      "file_type": "M4A",
+      "id": "a2f19f96-9294-4f51-8134-6f0eea108eb2",
+      "play_url": "https://example.com/rec/play/Qg75t7xZBtEbAkjdlgbfdngBBBB",
+      "recording_end": "2021-06-30T22:14:57.0000000\u002B00:00",
+      "recording_start": "2021-06-30T22:14:57.0000000\u002B00:00",
+      "status": "completed"
+    }
+  ]
+}

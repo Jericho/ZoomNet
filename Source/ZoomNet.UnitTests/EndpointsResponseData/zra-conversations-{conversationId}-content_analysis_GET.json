@@ -1,0 +1,150 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "summary": "overall summary",
+  "smart_chapters": [
+    {
+      "title": "chapter title",
+      "summary": "chapter summary.",
+      "category": "chapter category",
+      "start_time": "2022-03-23T06:00:00Z",
+      "end_time": "2022-03-23T06:05:00Z"
+    }
+  ],
+  "analysis": [
+    {
+      "section": [
+        {
+          "user_id": "hjficvXtR42vjSABCCS32Q",
+          "display_name": "user name",
+          "text": "text",
+          "utterance": "next steps",
+          "label": "pricing",
+          "indicator_name": "Johnny Dev",
+          "indicator_id": "INTrFEESRUqrdTXgKUIHnw",
+          "key_word": "keyword",
+          "marked_by": "nlp",
+          "start_time": "2022-03-23T06:00:00Z",
+          "end_time": "2022-03-23T06:00:00Z"
+        }
+      ]
+    }
+  ],
+  "topics": [
+    {
+      "section": [
+        {
+          "user_id": "hjficvXtR42vjSABCCS32Q",
+          "display_name": "user name",
+          "text": "text",
+          "utterance": "next steps",
+          "label": "pricing",
+          "indicator_name": "Johnny Dev",
+          "indicator_id": "INTrFEESRUqrdTXgKUIHnw",
+          "key_word": "keyword",
+          "marked_by": "nlp",
+          "start_time": "2022-03-23T06:00:00Z",
+          "end_time": "2022-03-23T06:00:00Z"
+        }
+      ]
+    }
+  ],
+  "next_steps": [
+    {
+      "section": [
+        {
+          "user_id": "hjficvXtR42vjSABCCS32Q",
+          "display_name": "user name",
+          "text": "text",
+          "utterance": "next steps",
+          "label": "pricing",
+          "indicator_name": "Johnny Dev",
+          "indicator_id": "INTrFEESRUqrdTXgKUIHnw",
+          "key_word": "keyword",
+          "marked_by": "nlp",
+          "start_time": "2022-03-23T06:00:00Z",
+          "end_time": "2022-03-23T06:00:00Z"
+        }
+      ]
+    }
+  ],
+  "good_questions": [
+    {
+      "section": [
+        {
+          "user_id": "hjficvXtR42vjSABCCS32Q",
+          "display_name": "user name",
+          "text": "text",
+          "utterance": "next steps",
+          "label": "pricing",
+          "indicator_name": "Johnny Dev",
+          "indicator_id": "INTrFEESRUqrdTXgKUIHnw",
+          "key_word": "keyword",
+          "marked_by": "nlp",
+          "start_time": "2022-03-23T06:00:00Z",
+          "end_time": "2022-03-23T06:00:00Z"
+        }
+      ]
+    }
+  ],
+  "indicators": [
+    {
+      "section": [
+        {
+          "user_id": "hjficvXtR42vjSABCCS32Q",
+          "display_name": "user name",
+          "text": "text",
+          "utterance": "next steps",
+          "label": "pricing",
+          "indicator_name": "Johnny Dev",
+          "indicator_id": "INTrFEESRUqrdTXgKUIHnw",
+          "key_word": "keyword",
+          "marked_by": "nlp",
+          "start_time": "2022-03-23T06:00:00Z",
+          "end_time": "2022-03-23T06:00:00Z"
+        }
+      ]
+    }
+  ],
+  "deal_memo": {
+    "potential_wins": [
+      {
+        "factor": "Understanding API feature requests and requirements",
+        "explanation": "The team discussed the need to understand the requirements for API feature requests"
+      }
+    ],
+    "potential_concerns": [
+      {
+        "factor": "API limitations and data retrieval",
+        "explanation": "The team discussed the limitations of their API documentation"
+      }
+    ]
+  },
+  "playbooks": [
+    {
+      "playbook_id": "L3HUHN4BRdmsW88lIDcI-g",
+      "playbook_name": "MEDDPICC",
+      "elements": [
+        {
+          "element_id": "CDdi0jcPSZ-stqiR7pR1tQ",
+          "element_name": "Metrics",
+          "answer": {
+            "summaries": [
+              "summary items"
+            ],
+            "sources": [
+              {
+                "item_id": "12",
+                "speaker_name": "Speaker 1",
+                "start_time": "00:02:59.250",
+                "end_time": "00:03:07.126",
+                "time_s": 179,
+                "text": "Actually, yes..."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
