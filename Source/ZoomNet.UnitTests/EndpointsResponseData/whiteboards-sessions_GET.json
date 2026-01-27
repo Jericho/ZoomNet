@@ -1,0 +1,26 @@
+{
+  "from": "2021-03-12T02:12:27.0000000\u002B00:00",
+  "to": "2021-03-12T02:12:27.0000000\u002B00:00",
+  "page_size": 30,
+  "next_page_token": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2",
+  "sessions": [
+    {
+      "id": "a2f19f96-9294-4f51-8134-6f0eea108eb2",
+      "start_time": "2021-03-11T05:41:36.0000000\u002B00:00",
+      "end_time": "2021-03-11T05:41:36.0000000\u002B00:00",
+      "whiteboard_id": "HY8-AC_HSou4SXY1S-OmOg",
+      "whiteboard_name": "example_whiteboard_name",
+      "expire_time": "2021-03-26T06:41:36.0000000\u002B00:00",
+      "regulated_participants": [
+        {
+          "user_id": "wf3h7uo1dk0v53bl",
+          "user_name": "Jack",
+          "join_whiteboard_time": "2021-03-26T06:41:36.0000000\u002B00:00",
+          "leave_whiteboard_time": "2021-03-26T07:41:36.0000000\u002B00:00",
+          "email": "user@example.com"
+        }
+      ]
+    }
+  ],
+  "total_records": 20
+}

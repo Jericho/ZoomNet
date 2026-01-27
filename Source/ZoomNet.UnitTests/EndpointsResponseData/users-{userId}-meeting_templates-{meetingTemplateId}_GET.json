@@ -1,0 +1,45 @@
+{
+  "id": "Q4COb7QVRVmO0896Ry4XHg",
+  "name": "Meeting template name",
+  "settings": {
+    "in_meeting": {
+      "entry_exit_chime": "none",
+      "feedback": true,
+      "polling": true,
+      "post_meeting_feedback": true,
+      "screen_sharing": true,
+      "who_can_share_screen": "all",
+      "who_can_share_screen_when_someone_is_sharing": "all",
+      "disable_screen_sharing_for_host_meetings": true,
+      "annotation": true,
+      "whiteboard": true,
+      "remote_control": true,
+      "non_verbal_feedback": true,
+      "allow_participants_to_rename": true,
+      "breakout_room": true,
+      "remote_support": true,
+      "manual_captioning": {
+        "auto_generated_captions": true,
+        "allow_to_type": true,
+        "manual_captions": true,
+        "save_captions": true
+      },
+      "closed_captioning": {
+        "auto_transcribing": true,
+        "enable": true,
+        "save_caption": true
+      }
+    },
+    "recording": {
+      "auto_recording": "cloud"
+    },
+    "schedule_meeting": {
+      "host_video": true,
+      "participant_video": true,
+      "mute_upon_entry": false
+    },
+    "meeting_security": {
+      "waiting_room": true
+    }
+  }
+}

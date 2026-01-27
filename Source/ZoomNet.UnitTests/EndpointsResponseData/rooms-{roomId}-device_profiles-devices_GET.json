@@ -1,0 +1,20 @@
+{
+  "cameras": [
+    {
+      "id": "usb#vid_0bda\u0026pid_58fd\u0026mi_00#6\u00261e7cbc97\u00260\u00260000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}global",
+      "name": "Integrated Webcam"
+    }
+  ],
+  "microphones": [
+    {
+      "id": "{0.0.1.00000000}.{eff76542-ac52-4c78-bd90-67f968bab16f}",
+      "name": "Realtek(R) Audio"
+    }
+  ],
+  "speakers": [
+    {
+      "id": "{0.0.0.00000000}.{4f9b30cb-872e-49ed-a1b9-a7ec352bf3e6}",
+      "name": "Realtek(R) Audio"
+    }
+  ]
+}

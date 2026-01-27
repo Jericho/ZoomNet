@@ -1,0 +1,16 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 1,
+  "inboxes": [
+    {
+      "inbox_id": "W_VATTk_Q5aW6z5rZtBxAQ",
+      "inbox_name": "example",
+      "inbox_type": "voicemail",
+      "access_user_count": 5,
+      "access_queue_count": 5,
+      "last_modified_time": "2022-05-23T14:15:57.0000000\u002B00:00",
+      "modified_by": "IGTRVt3gQ2i-WjoUIjeZxw"
+    }
+  ]
+}

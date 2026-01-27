@@ -1,0 +1,14 @@
+{
+  "client_satisfaction": [
+    {
+      "date": "Microsoft.OpenApi.Any.OpenApiDate",
+      "good_count": 0,
+      "none_count": 0,
+      "not_good_count": 0,
+      "satisfaction_percent": 100
+    }
+  ],
+  "from": "Microsoft.OpenApi.Any.OpenApiDate",
+  "to": "Microsoft.OpenApi.Any.OpenApiDate",
+  "total_records": 30
+}

@@ -1,0 +1,18 @@
+{
+  "next_page_token": "8V8HigQkzm2O5r9RUn31D9ZyJHgrmFfbLa2",
+  "page_size": 30,
+  "shared_spaces": [
+    {
+      "space_id": "bb31fa470fdc410cb76527282aa380d4",
+      "space_name": "space name",
+      "space_desc": "learning space",
+      "space_owner": {
+        "user_id": "KDcuGIm1QgePTO8WbOqwIQ",
+        "member_id": "1vuNwCvcgr1mI8WliW1gUKxoA8lozI4LHqDVoRIjMGaQHINfZWxqVHMilvXM8HGA",
+        "email": "jchill@example.com",
+        "display_name": "jchill",
+        "is_external_user": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "labels": [
+    {
+      "id": "Label_1",
+      "name": "MyVacation",
+      "parentId": "Label_0",
+      "labelLevel": 1,
+      "messageListVisibility": "show",
+      "labelListVisibility": "labelShow",
+      "messagesTotal": 100,
+      "messagesUnread": 98,
+      "threadsTotal": 80,
+      "threadsUnread": 78,
+      "color": {
+        "textColor": "#000000",
+        "backgroundColor": "#cccccc"
+      },
+      "type": "user"
+    }
+  ]
+}

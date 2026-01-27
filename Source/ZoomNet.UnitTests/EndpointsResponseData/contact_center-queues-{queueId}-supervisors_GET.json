@@ -1,0 +1,17 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "supervisors": [
+    {
+      "user_id": "ukAAkZKfROKMSw1bj_RDFQ",
+      "display_name": "Jill Chill",
+      "user_email": "jchill@example.com",
+      "role_id": "zeYjXoDOS_eV1QmTpj63PQ",
+      "role_name": "Agent",
+      "status_id": "1",
+      "status_name": "Offline",
+      "user_access": "active"
+    }
+  ]
+}

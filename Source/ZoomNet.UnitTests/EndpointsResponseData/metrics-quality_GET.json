@@ -1,0 +1,24 @@
+{
+  "from": "Microsoft.OpenApi.Any.OpenApiDate",
+  "quality": {
+    "audio": {
+      "bad": 0,
+      "fair": 0,
+      "good": 0,
+      "poor": 0
+    },
+    "screen_share": {
+      "bad": 0,
+      "fair": 0,
+      "good": 0,
+      "poor": 0
+    },
+    "video": {
+      "bad": 0,
+      "fair": 0,
+      "good": 0,
+      "poor": 0
+    }
+  },
+  "to": "Microsoft.OpenApi.Any.OpenApiDate"
+}

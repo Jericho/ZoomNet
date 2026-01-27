@@ -1,0 +1,26 @@
+{
+  "from": "2025-10-01T00:00:00.0000000\u002B00:00",
+  "to": "2025-10-29T23:59:59.0000000\u002B00:00",
+  "next_page_token": "ngLawmAGlYagy37vLJtKMM4TkMnagfqWm73",
+  "page_size": 10,
+  "total_records": 30,
+  "timezone": "UTC",
+  "surveys": [
+    {
+      "survey_id": "r8DUXy4BSbO-UQ5ylOUyLg",
+      "survey_name": "voice survey",
+      "engagement_id": "N-ecLZBoS-ayCabdwDQSrA",
+      "agent_type": "Voice",
+      "virtual_agent": "voice agent",
+      "consumer": "consumer",
+      "start_time": "2025-09-03T05:52:22Z",
+      "submitted_time": "2025-09-03T05:55:22Z",
+      "results": [
+        {
+          "question": "What color do you like?",
+          "answer": "green"
+        }
+      ]
+    }
+  ]
+}

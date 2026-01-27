@@ -1,0 +1,15 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 10,
+  "total_records": 10,
+  "devices": [
+    {
+      "device_id": "ZoomClient-CCITab-Tnxa76dLQ_SZwxmCP3bIOA",
+      "device_version": "6.2.3.40682",
+      "sip_registration_information": {
+        "registration_success": true
+      },
+      "device_type": "pwa"
+    }
+  ]
+}

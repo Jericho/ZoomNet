@@ -1,0 +1,48 @@
+{
+  "event_id": "234kj2h34kljgh23lkhj3",
+  "name": "OpenAPI Conference Name",
+  "description": "This event was created with the OpenAPI.",
+  "timezone": "America/Indianapolis",
+  "event_type": "CONFERENCE",
+  "recurrence": {
+    "type": 0,
+    "repeat_interval": 0,
+    "weekly_days": "string",
+    "monthly_days": 0,
+    "monthly_week_day": 0,
+    "end_times": 0,
+    "end_date_time": "2026-01-27T20:24:35.5404716Z",
+    "monthly_week": 0,
+    "duration": 0
+  },
+  "access_level": "PRIVATE_RESTRICTED",
+  "meeting_type": "MEETING",
+  "categories": [
+    "Food and Drinks"
+  ],
+  "tags": [
+    "Event tag1"
+  ],
+  "calendar": [
+    {
+      "start_time": "2022-06-03T20:51:00.0000000\u002B00:00",
+      "end_time": "2022-06-03T20:51:00.0000000\u002B00:00"
+    }
+  ],
+  "status": "PUBLISHED",
+  "hub_id": "23asdfasdf3asdf",
+  "host_id": "XMgGb1i6Qlah8mn3e5GYMX",
+  "start_time": "2022-06-03T20:51:00.0000000\u002B00:00",
+  "end_time": "2022-06-03T20:51:00.0000000\u002B00:00",
+  "contact_name": "user contact name",
+  "contact_email": "user@zoom.us",
+  "lobby_start_time": "2022-06-03T20:51:00.0000000\u002B00:00",
+  "lobby_end_time": "2022-06-03T20:51:00.0000000\u002B00:00",
+  "event_url": "www.example.com/zoomEvents",
+  "blocked_countries": [
+    "US"
+  ],
+  "attendance_type": "hybrid",
+  "physical_location": "801 Mt Vernon Pl NW, Washington, DC 20001",
+  "tagline": "Unlocking Innovation: Join Us for the Day of Insipiration and Insight!"
+}

@@ -1,0 +1,27 @@
+{
+  "next_page_token": "BJLYC6PABbAHdjwSkGVQeeR6B1juwHqj3G2",
+  "page_size": 20,
+  "total_records": 10,
+  "from": "2021-10-01",
+  "to": "2021-10-12",
+  "sms_charges": [
+    {
+      "session_id": "da21222c4254690b545b305d6616e261",
+      "message_id": "2159E06A-7195-4B54-831E-54DB8FDEC510",
+      "message_type": "SMS",
+      "from_number": "2019980987",
+      "from_extension_number": "1008",
+      "from_display_name": "Sender A",
+      "to_number": "2013450986",
+      "to_extension_number": "1008",
+      "to_display_name": "Receiver A",
+      "sent_time": "2022-03-23T02:58:01Z",
+      "billing_number": "\u002B2100000980",
+      "cost_center": "Phone cost center",
+      "department": "Engineering",
+      "rate": "0.0205",
+      "currency": "USD",
+      "total_charge": "0"
+    }
+  ]
+}

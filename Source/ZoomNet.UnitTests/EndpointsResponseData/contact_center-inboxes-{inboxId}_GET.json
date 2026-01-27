@@ -1,0 +1,37 @@
+{
+  "inbox_id": "W_VATTk_Q5aW6z5rZtBxAQ",
+  "inbox_name": "example",
+  "inbox_description": "This is a inbox.",
+  "inbox_type": "voicemail",
+  "inbox_content_storage_location": "US",
+  "last_modified_time": "2022-02-15T09:27:15.0000000\u002B00:00",
+  "modified_by": "IGTRVt3gQ2i-WjoUIjeZxw",
+  "voicemail": {
+    "soft_delete": true,
+    "soft_delete_days_limit": 20,
+    "voicemail_time_limit": 5,
+    "delete_voicemail_days_limit": 30,
+    "voicemail_transcription": false,
+    "voicemail_notification_by_email": {
+      "enable": false,
+      "include_voicemail_file": false,
+      "include_voicemail_transcription": false,
+      "forward_voicemail_to_emails": false,
+      "emails": [
+        "jchill@example.com"
+      ]
+    },
+    "greeting_audio_asset_id": "testAssetId",
+    "voicemail_auto_assignment": {
+      "enable": false,
+      "voicemail_auto_assignment_type": 1,
+      "voicemail_auto_assignment_during_active_work_session": 0,
+      "voicemail_auto_assignment_content_id": "testUserId",
+      "voicemail_auto_assignment_routine_profile_id": "testRoutineProfileId"
+    },
+    "voicemail_send_reminders_for_unresolved": {
+      "enable": false,
+      "send_alert_for_unresolved_voicemail_timeout": 30
+    }
+  }
+}

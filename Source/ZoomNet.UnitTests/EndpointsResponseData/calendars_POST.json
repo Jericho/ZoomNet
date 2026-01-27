@@ -1,0 +1,9 @@
+{
+  "kind": "calendar#calendar",
+  "etag": "\u002200000000000000000000\u0022",
+  "id": "abc.def@zoom.com",
+  "summary": "My calendar",
+  "timeZone": "America/Los_Angeles",
+  "description": "calendar description",
+  "location": "San Jose"
+}

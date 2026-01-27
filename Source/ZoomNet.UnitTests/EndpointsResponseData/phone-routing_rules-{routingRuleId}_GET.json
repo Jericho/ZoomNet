@@ -1,0 +1,15 @@
+{
+  "name": "testRule",
+  "number_pattern": "testPattern",
+  "order": 1,
+  "routing_path": {
+    "sip_group": {
+      "id": "KrjExB4mSuWYkpIRLEjjpQ",
+      "name": "sip_test_customer_id2"
+    },
+    "type": "sip_group"
+  },
+  "routing_rule_id": "LVkqTcxNQt6d-W45e0Jc6Q",
+  "site_id": "aATWYNqFQDetJQ5tCX6d6g",
+  "translation": "/[1-9]/"
+}

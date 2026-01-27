@@ -1,0 +1,15 @@
+{
+  "byoc_sip_trunk": [
+    {
+      "carrier": "Bandwidth",
+      "carrier_account": "123123131313",
+      "sip_trunk_id": "fVA-LsQhQAC2fTS7NiccFA",
+      "name": "TestSipTrunk",
+      "region": "newqa01sipjp01",
+      "sbc_label": "Test",
+      "source_system": "COMMON"
+    }
+  ],
+  "next_page_token": "Ds6anZEv59aLMmTSrfF4wmHYCMiYXMWhRQ2",
+  "total_records": 30
+}

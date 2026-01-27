@@ -1,0 +1,16 @@
+{
+  "members": [
+    {
+      "email": "jchill@example.com",
+      "first_name": "Jill",
+      "id": "v4iyWT1LTfy8QvPG4GTvdg",
+      "last_name": "Chill",
+      "type": 1
+    }
+  ],
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_count": 20,
+  "page_number": 1,
+  "page_size": 10,
+  "total_records": 200
+}

@@ -1,0 +1,18 @@
+{
+  "next_page_token": "IXIhcpJWscHfISSKTcdl2QpSMLyRE38zH92",
+  "total_records": 88,
+  "sip_groups": [
+    {
+      "description": "test SIP group",
+      "display_name": "RRRR",
+      "sip_group_id": "8MhK7ea4Q4ihIQ4TD_g0kw",
+      "send_sip_group_name": false,
+      "sip_trunk": {
+        "sip_trunk_id": "VWQU-veBQnm08EtBkUGnbw",
+        "name": "TESTAPI01",
+        "type": "BYOC"
+      },
+      "source_system": "ZOOM_PHONE"
+    }
+  ]
+}

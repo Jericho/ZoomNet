@@ -1,0 +1,18 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "dispositions": [
+    {
+      "disposition_id": "W_VATTk_Q5aW6z5rZtBxAQ",
+      "disposition_name": "Inquiry",
+      "disposition_description": "Inquiry dispositions.",
+      "status": "inactive",
+      "last_modified_time": "2022-02-15T09:27:15.0000000\u002B00:00",
+      "modified_by": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "queue_name": "default voice queue",
+      "cc_queue_id": "11Fx7UtNQaaWBM9XBCFX2Q",
+      "assign_type": "inbound"
+    }
+  ]
+}

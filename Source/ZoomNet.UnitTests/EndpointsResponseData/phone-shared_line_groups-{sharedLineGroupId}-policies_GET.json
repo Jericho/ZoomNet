@@ -1,0 +1,8 @@
+{
+  "check_voicemails_over_phone": {
+    "enable": true,
+    "locked": true,
+    "locked_by": "site",
+    "modified": true
+  }
+}

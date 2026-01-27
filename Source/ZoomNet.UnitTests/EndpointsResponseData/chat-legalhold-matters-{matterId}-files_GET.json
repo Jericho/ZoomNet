@@ -1,0 +1,14 @@
+{
+  "data": [
+    {
+      "file_key": "Zmlyc3QubGFzdEBleGFtcGxlLmNvbS0xNjc5NTg5MjMwNzY4",
+      "file_count": 1,
+      "file_start_date": "Microsoft.OpenApi.Any.OpenApiDate",
+      "file_end_date": "Microsoft.OpenApi.Any.OpenApiDate",
+      "ready_for_download": true,
+      "total_file_size": 540123
+    }
+  ],
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30
+}

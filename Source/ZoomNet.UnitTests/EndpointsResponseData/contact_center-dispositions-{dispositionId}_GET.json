@@ -1,0 +1,18 @@
+{
+  "disposition_id": "W_VATTk_Q5aW6z5rZtBxAQ",
+  "disposition_name": "Inquiry",
+  "disposition_description": "Inquiry dispositions.",
+  "status": "inactive",
+  "queue_count": 0,
+  "last_modified_time": "2022-02-15T09:27:15.0000000\u002B00:00",
+  "modified_by": "IGTRVt3gQ2i-WjoUIjeZxw",
+  "disposition_type": "multi_level",
+  "sub_dispositions": [
+    {
+      "sub_disposition_id": "OYTRVt3gQ2iAGjoUIjeZxq",
+      "sub_disposition_name": "Sub-Disposition A",
+      "current_index": 1,
+      "parent_index": 1
+    }
+  ]
+}

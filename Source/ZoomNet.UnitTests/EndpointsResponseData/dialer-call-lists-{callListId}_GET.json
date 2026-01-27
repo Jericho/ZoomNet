@@ -1,0 +1,14 @@
+{
+  "call_list": {
+    "call_list_id": "24n0mXjZSaOrOYJg7sahlA",
+    "name": "Q4 2025 Sales Prospects Contact",
+    "status": "COMPLETE",
+    "owner_user_id": "CeNVNaE9SOWPo5SC_KlZHw",
+    "owner_email": "dev\u002Bjohn_doe_zradialer@zoomsandbox.us",
+    "description": "High-priority contacts for Q5 2025 sales campaign targeting enterprise customers in the technology sector. Focus on companies with 500\u002B employees and annual revenue over $10M.",
+    "prospect_type": "CONTACT",
+    "create_time": "2025-10-17T08:34:58.151\u002B00:00",
+    "import_from": "OPEN_API",
+    "recent_dialed": false
+  }
+}

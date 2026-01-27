@@ -1,0 +1,33 @@
+{
+  "next_page_token": "BJLYC6PABbAHdjwSkGVQeeR6B1juwHqj3G2",
+  "page_size": 30,
+  "rooms": [
+    {
+      "calling_plans": [
+        {
+          "name": "AU/NZ Metered",
+          "type": 100,
+          "billing_account_id": "3WWAEiEjTj2IQuyDiKMd_A",
+          "billing_account_name": "Delhi billing",
+          "billing_subscription_id": "FT-SUBREF-21168178",
+          "billing_subscription_name": "My Subscription"
+        }
+      ],
+      "extension_id": "_zQiBLNDQumOuA_tOnBIrw",
+      "extension_number": 10010,
+      "id": "3JTPXDqTQCuzYJEwH6kN4g",
+      "name": "test",
+      "phone_numbers": [
+        {
+          "id": "CMOXjhb7RHeVeiH0zL0f9A",
+          "number": "12058945544"
+        }
+      ],
+      "site": {
+        "id": "kLD4F3WBT-O9LYE31C0tRQ",
+        "name": "API DZ SITE3"
+      }
+    }
+  ],
+  "total_records": 1
+}

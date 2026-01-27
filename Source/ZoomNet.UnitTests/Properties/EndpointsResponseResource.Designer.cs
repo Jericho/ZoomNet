@@ -62,6 +62,87 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;domains&quot;: [
+        ///    null
+        ///  ],
+        ///  &quot;total_records&quot;: 1
+        ///}.
+        /// </summary>
+        internal static string accounts__accountId__managed_domains_GET {
+            get {
+                return ResourceManager.GetString("accounts-{accountId}-managed_domains_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;options&quot;: {
+        ///    &quot;host_email_notification&quot;: true,
+        ///    &quot;close_registration&quot;: true,
+        ///    &quot;allow_participants_to_join_from_multiple_devices&quot;: true,
+        ///    &quot;show_social_share_buttons&quot;: true
+        ///  },
+        ///  &quot;questions&quot;: [
+        ///    {
+        ///      &quot;field_name&quot;: &quot;last_name&quot;,
+        ///      &quot;required&quot;: true,
+        ///      &quot;selected&quot;: true
+        ///    }
+        ///  ],
+        ///  &quot;approve_type&quot;: 0,
+        ///  &quot;custom_questions&quot;: [
+        ///    {
+        ///      &quot;title&quot;: &quot;true&quot;,
+        ///      &quot;type&quot;: &quot;single_dropdown&quot;,
+        ///      &quot;required&quot;: true,
+        ///      &quot;selected&quot;: true,
+        ///      &quot;answers&quot;: [
+        ///        &quot;op [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string accounts__accountId__settings_registration_GET {
+            get {
+                return ResourceManager.GetString("accounts-{accountId}-settings-registration_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;trusted_domains&quot;: [
+        ///    &quot;example.com&quot;
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string accounts__accountId__trusted_domains_GET {
+            get {
+                return ResourceManager.GetString("accounts-{accountId}-trusted_domains_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;user_id&quot;: &quot;ABCDEF123456&quot;,
+        ///  &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///  &quot;display_name&quot;: &quot;Jill Chill&quot;,
+        ///  &quot;start_time&quot;: &quot;2021-04-26T05:23:18Z&quot;,
+        ///  &quot;end_time&quot;: &quot;2021-05-26T05:23:18Z&quot;,
+        ///  &quot;timezone&quot;: &quot;Asia/Shanghai&quot;,
+        ///  &quot;aic_history_download_url&quot;: &quot;https://aic.zoom.us/rest/v1/aic/archive/conversations/download/Qg75t7xZBtEbAkjdlgbfdngBBBB&quot;,
+        ///  &quot;file_extension&quot;: &quot;JSON&quot;,
+        ///  &quot;file_size&quot;: 165743,
+        ///  &quot;file_type&quot;: &quot;AIC_CONVERSATION&quot;,
+        ///  &quot;physical_files&quot;: [
+        ///    {
+        ///      &quot;file_id&quot;: &quot;pvKocCqVSMygaOcKus5Afw&quot;,
+        ///      &quot;file_ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string aic_users__userId__conversation_archive_GET {
+            get {
+                return ResourceManager.GetString("aic-users-{userId}-conversation_archive_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;from&quot;: &quot;2021-03-12T02:12:27.0000000\u002B00:00&quot;,
         ///  &quot;meetings&quot;: [
         ///    {
@@ -105,6 +186,5182 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string archive_files_statistics_GET {
             get {
                 return ResourceManager.GetString("archive_files-statistics_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;kind&quot;: &quot;calendar#aclRule&quot;,
+        ///  &quot;etag&quot;: &quot;\u002200000000000000000000\u0022&quot;,
+        ///  &quot;id&quot;: &quot;user:cba.fed@zoom.com&quot;,
+        ///  &quot;scope&quot;: null,
+        ///  &quot;role&quot;: &quot;reader&quot;
+        ///}.
+        /// </summary>
+        internal static string calendars__calId__acl__aclId__GET {
+            get {
+                return ResourceManager.GetString("calendars-{calId}-acl-{aclId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;kind&quot;: &quot;calendar#aclRule&quot;,
+        ///  &quot;etag&quot;: &quot;\u002200000000000000000000\u0022&quot;,
+        ///  &quot;id&quot;: &quot;user:cba.fed@zoom.com&quot;,
+        ///  &quot;scope&quot;: null,
+        ///  &quot;role&quot;: &quot;reader&quot;
+        ///}.
+        /// </summary>
+        internal static string calendars__calId__acl__aclId__PATCH {
+            get {
+                return ResourceManager.GetString("calendars-{calId}-acl-{aclId}_PATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;kind&quot;: &quot;calendar#acl&quot;,
+        ///  &quot;etag&quot;: &quot;\u002200000000000000000000\u0022&quot;,
+        ///  &quot;nextPageToken&quot;: &quot;user:abc@example.com!&quot;,
+        ///  &quot;items&quot;: [
+        ///    {
+        ///      &quot;kind&quot;: &quot;calendar#aclRule&quot;,
+        ///      &quot;etag&quot;: &quot;\u002200000000000000000000\u0022&quot;,
+        ///      &quot;id&quot;: &quot;user:cba.fed@zoom.com&quot;,
+        ///      &quot;scope&quot;: null,
+        ///      &quot;role&quot;: &quot;reader&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string calendars__calId__acl_GET {
+            get {
+                return ResourceManager.GetString("calendars-{calId}-acl_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;kind&quot;: &quot;calendar#aclRule&quot;,
+        ///  &quot;etag&quot;: &quot;\u002200000000000000000000\u0022&quot;,
+        ///  &quot;id&quot;: &quot;user:cba.fed@zoom.com&quot;,
+        ///  &quot;scope&quot;: null,
+        ///  &quot;role&quot;: &quot;reader&quot;
+        ///}.
+        /// </summary>
+        internal static string calendars__calId__acl_POST {
+            get {
+                return ResourceManager.GetString("calendars-{calId}-acl_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;attendees&quot;: [
+        ///    {
+        ///      &quot;additionalGuests&quot;: 0,
+        ///      &quot;displayName&quot;: &quot;Mark Joe&quot;,
+        ///      &quot;email&quot;: &quot;mark.joe@zoom.com&quot;,
+        ///      &quot;optional&quot;: false,
+        ///      &quot;resource&quot;: false,
+        ///      &quot;responseStatus&quot;: &quot;needsAction&quot;
+        ///    }
+        ///  ],
+        ///  &quot;colorId&quot;: &quot;5&quot;,
+        ///  &quot;created&quot;: &quot;2020-01-01T00:00:00Z&quot;,
+        ///  &quot;creator&quot;: {
+        ///    &quot;email&quot;: &quot;mark.joe@zoom.com&quot;
+        ///  },
+        ///  &quot;description&quot;: &quot;event description&quot;,
+        ///  &quot;end&quot;: {
+        ///    &quot;date&quot;: &quot;2020-01-01&quot;,
+        ///    &quot;dateTime&quot;: &quot;2020-01-01T00:00:00Z&quot;,
+        ///    &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
+        ///  },
+        ///   [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string calendars__calId__events__eventId__GET {
+            get {
+                return ResourceManager.GetString("calendars-{calId}-events-{eventId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;kind&quot;: &quot;calendar#events&quot;,
+        ///  &quot;etag&quot;: &quot;\u002200000000000000000000\u0022&quot;,
+        ///  &quot;summary&quot;: &quot;calendar summary&quot;,
+        ///  &quot;description&quot;: &quot;calendar description&quot;,
+        ///  &quot;updated&quot;: &quot;2020-01-01T00:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;accessRole&quot;: &quot;owner&quot;,
+        ///  &quot;defaultReminders&quot;: [
+        ///    {
+        ///      &quot;method&quot;: &quot;email&quot;,
+        ///      &quot;minutes&quot;: 5
+        ///    }
+        ///  ],
+        ///  &quot;nextPageToken&quot;: &quot;ffffffffa8b32bff_te7ldipj31fqfo3mw3jjzgz6c0!&quot;,
+        ///  &quot;items&quot;: [
+        ///    {
+        ///      &quot;start&quot;: {
+        ///        &quot;date&quot;: &quot;Microsoft.OpenApi.Any [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string calendars__calId__events__eventId__instances_GET {
+            get {
+                return ResourceManager.GetString("calendars-{calId}-events-{eventId}-instances_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;start&quot;: {
+        ///    &quot;date&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///    &quot;dateTime&quot;: &quot;2020-01-01T00:00:00.0000000\u002B00:00&quot;,
+        ///    &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
+        ///  },
+        ///  &quot;end&quot;: {
+        ///    &quot;date&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///    &quot;dateTime&quot;: &quot;2020-01-01T00:00:00.0000000\u002B00:00&quot;,
+        ///    &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
+        ///  },
+        ///  &quot;attendees&quot;: [
+        ///    {
+        ///      &quot;additionalGuests&quot;: 0,
+        ///      &quot;displayName&quot;: &quot;Mark Joe&quot;,
+        ///      &quot;email&quot;: &quot;mark.joe@zoom.com&quot;,
+        ///      &quot;optional&quot;: false,
+        ///      &quot;resource&quot;: false [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string calendars__calId__events__eventId__move_POST {
+            get {
+                return ResourceManager.GetString("calendars-{calId}-events-{eventId}-move_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;start&quot;: {
+        ///    &quot;dateTime&quot;: &quot;2020-01-01T00:00:00Z&quot;,
+        ///    &quot;date&quot;: &quot;2020-01-01&quot;,
+        ///    &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
+        ///  },
+        ///  &quot;end&quot;: {
+        ///    &quot;dateTime&quot;: &quot;2020-01-01T01:00:00Z&quot;,
+        ///    &quot;date&quot;: &quot;2020-01-02&quot;,
+        ///    &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
+        ///  },
+        ///  &quot;attendees&quot;: [
+        ///    {
+        ///      &quot;additionalGuests&quot;: 0,
+        ///      &quot;displayName&quot;: &quot;Mark Joe&quot;,
+        ///      &quot;email&quot;: &quot;mark.joe@zoom.com&quot;,
+        ///      &quot;optional&quot;: false,
+        ///      &quot;resource&quot;: false,
+        ///      &quot;responseStatus&quot;: &quot;needsAction&quot;
+        ///    }
+        ///  ],
+        ///  &quot;colorId&quot;: &quot;5&quot;,
+        ///  &quot;descr [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string calendars__calId__events__eventId__PATCH {
+            get {
+                return ResourceManager.GetString("calendars-{calId}-events-{eventId}_PATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;kind&quot;: &quot;calendar#events&quot;,
+        ///  &quot;etag&quot;: &quot;\u002200000000000000000000\u0022&quot;,
+        ///  &quot;summary&quot;: &quot;calendar summary&quot;,
+        ///  &quot;description&quot;: &quot;calendar description&quot;,
+        ///  &quot;updated&quot;: &quot;2020-01-01T00:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;accessRole&quot;: &quot;owner&quot;,
+        ///  &quot;defaultReminders&quot;: [
+        ///    {
+        ///      &quot;method&quot;: &quot;email&quot;,
+        ///      &quot;minutes&quot;: 5
+        ///    }
+        ///  ],
+        ///  &quot;nextPageToken&quot;: &quot;ffffffffa8b32bff_te7ldipj31fqfo3mw3jjzgz6c0!&quot;,
+        ///  &quot;items&quot;: [
+        ///    {
+        ///      &quot;start&quot;: {
+        ///        &quot;date&quot;: &quot;Microsoft.OpenApi.Any [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string calendars__calId__events_GET {
+            get {
+                return ResourceManager.GetString("calendars-{calId}-events_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;start&quot;: {
+        ///    &quot;date&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///    &quot;dateTime&quot;: &quot;2020-01-01T00:00:00.0000000\u002B00:00&quot;,
+        ///    &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
+        ///  },
+        ///  &quot;end&quot;: {
+        ///    &quot;date&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///    &quot;dateTime&quot;: &quot;2020-01-01T00:00:00.0000000\u002B00:00&quot;,
+        ///    &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
+        ///  },
+        ///  &quot;attendees&quot;: [
+        ///    {
+        ///      &quot;additionalGuests&quot;: 0,
+        ///      &quot;displayName&quot;: &quot;Mark Joe&quot;,
+        ///      &quot;email&quot;: &quot;mark.joe@zoom.com&quot;,
+        ///      &quot;optional&quot;: false,
+        ///      &quot;resource&quot;: false [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string calendars__calId__events_import_POST {
+            get {
+                return ResourceManager.GetString("calendars-{calId}-events-import_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;start&quot;: {
+        ///    &quot;date&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///    &quot;dateTime&quot;: &quot;2020-01-01T00:00:00.0000000\u002B00:00&quot;,
+        ///    &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
+        ///  },
+        ///  &quot;end&quot;: {
+        ///    &quot;date&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///    &quot;dateTime&quot;: &quot;2020-01-01T00:00:00.0000000\u002B00:00&quot;,
+        ///    &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
+        ///  },
+        ///  &quot;attendees&quot;: [
+        ///    {
+        ///      &quot;additionalGuests&quot;: 0,
+        ///      &quot;displayName&quot;: &quot;Mark Joe&quot;,
+        ///      &quot;organizer&quot;: false,
+        ///      &quot;email&quot;: &quot;mark.joe@zoom.com&quot;,
+        ///      &quot;optional&quot;: fals [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string calendars__calId__events_POST {
+            get {
+                return ResourceManager.GetString("calendars-{calId}-events_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;start&quot;: {
+        ///    &quot;date&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///    &quot;dateTime&quot;: &quot;2020-01-01T00:00:00.0000000\u002B00:00&quot;,
+        ///    &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
+        ///  },
+        ///  &quot;end&quot;: {
+        ///    &quot;date&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///    &quot;dateTime&quot;: &quot;2020-01-01T00:00:00.0000000\u002B00:00&quot;,
+        ///    &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
+        ///  },
+        ///  &quot;attendees&quot;: [
+        ///    {
+        ///      &quot;additionalGuests&quot;: 0,
+        ///      &quot;displayName&quot;: &quot;Mark Joe&quot;,
+        ///      &quot;email&quot;: &quot;mark.joe@zoom.com&quot;,
+        ///      &quot;optional&quot;: false,
+        ///      &quot;resource&quot;: false [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string calendars__calId__events_quickAdd_POST {
+            get {
+                return ResourceManager.GetString("calendars-{calId}-events-quickAdd_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;kind&quot;: &quot;calendar#calendar&quot;,
+        ///  &quot;etag&quot;: &quot;\u002200000000000000000000\u0022&quot;,
+        ///  &quot;id&quot;: &quot;abc.def@zoom.com&quot;,
+        ///  &quot;summary&quot;: &quot;My calendar&quot;,
+        ///  &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;description&quot;: &quot;calendar description&quot;,
+        ///  &quot;location&quot;: &quot;San Jose&quot;
+        ///}.
+        /// </summary>
+        internal static string calendars__calId__GET {
+            get {
+                return ResourceManager.GetString("calendars-{calId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;kind&quot;: &quot;calendar#calendar&quot;,
+        ///  &quot;etag&quot;: &quot;\u002200000000000000000000\u0022&quot;,
+        ///  &quot;id&quot;: &quot;abc.def@zoom.com&quot;,
+        ///  &quot;summary&quot;: &quot;My calendar&quot;,
+        ///  &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;description&quot;: &quot;calendar description&quot;,
+        ///  &quot;location&quot;: &quot;San Jose&quot;
+        ///}.
+        /// </summary>
+        internal static string calendars__calId__PATCH {
+            get {
+                return ResourceManager.GetString("calendars-{calId}_PATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;kind&quot;: &quot;\u0022calendar#colors\u0022&quot;,
+        ///  &quot;updated&quot;: &quot;2012-02-14T00:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;calendar&quot;: [
+        ///    {
+        ///      &quot;color_id&quot;: &quot;\u00221\u0022&quot;,
+        ///      &quot;value&quot;: {
+        ///        &quot;foreground&quot;: &quot;\u0022#FD3D4A\u0022&quot;,
+        ///        &quot;background&quot;: &quot;\u0022#F7F9FA\u0022&quot;
+        ///      }
+        ///    }
+        ///  ],
+        ///  &quot;event&quot;: [
+        ///    {
+        ///      &quot;color_id&quot;: &quot;\u00221\u0022&quot;,
+        ///      &quot;value&quot;: {
+        ///        &quot;foreground&quot;: &quot;\u0022#FD3D4A\u0022&quot;,
+        ///        &quot;background&quot;: &quot;\u0022#F7F9FA\u0022&quot;
+        ///      }
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string calendars_colors_GET {
+            get {
+                return ResourceManager.GetString("calendars-colors_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;kind&quot;: &quot;calendar#freeBusy&quot;,
+        ///  &quot;timeMin&quot;: &quot;2024-01-01T00:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;timeMax&quot;: &quot;2024-02-01T00:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;calendars&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;abc.def@zoom.com&quot;,
+        ///      &quot;errors&quot;: [
+        ///        {
+        ///          &quot;domain&quot;: &quot;global&quot;,
+        ///          &quot;reason&quot;: &quot;notFound&quot;
+        ///        }
+        ///      ],
+        ///      &quot;busy&quot;: [
+        ///        {
+        ///          &quot;start&quot;: &quot;2024-01-20T17:00:00Z&quot;,
+        ///          &quot;end&quot;: &quot;2024-01-20T18:00:00Z&quot;
+        ///        }
+        ///      ]
+        ///    }
+        ///  ],
+        ///  &quot;groups&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;abc.group@zo [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string calendars_freeBusy_POST {
+            get {
+                return ResourceManager.GetString("calendars-freeBusy_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;kind&quot;: &quot;calendar#calendar&quot;,
+        ///  &quot;etag&quot;: &quot;\u002200000000000000000000\u0022&quot;,
+        ///  &quot;id&quot;: &quot;abc.def@zoom.com&quot;,
+        ///  &quot;summary&quot;: &quot;My calendar&quot;,
+        ///  &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;description&quot;: &quot;calendar description&quot;,
+        ///  &quot;location&quot;: &quot;San Jose&quot;
+        ///}.
+        /// </summary>
+        internal static string calendars_POST {
+            get {
+                return ResourceManager.GetString("calendars_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;kind&quot;: &quot;calendar#calendarListEntry&quot;,
+        ///  &quot;etag&quot;: &quot;\u002200000000000000000000\u0022&quot;,
+        ///  &quot;id&quot;: &quot;abc.def@zoom.com&quot;,
+        ///  &quot;summary&quot;: &quot;My calendar&quot;,
+        ///  &quot;description&quot;: &quot;Calendar description&quot;,
+        ///  &quot;location&quot;: &quot;San Jose&quot;,
+        ///  &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;colorId&quot;: &quot;6&quot;,
+        ///  &quot;backgroundColor&quot;: &quot;#0088aa&quot;,
+        ///  &quot;foregroundColor&quot;: &quot;#ffffff&quot;,
+        ///  &quot;hidden&quot;: false,
+        ///  &quot;selected&quot;: false,
+        ///  &quot;accessRole&quot;: &quot;freeBusyReader&quot;,
+        ///  &quot;defaultReminders&quot;: [
+        ///    {
+        ///      &quot;method&quot;: &quot;email&quot;,
+        ///      &quot;minutes&quot;: 5
+        ///    }
+        ///  ],
+        ///  &quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string calendars_users__userIdentifier__calendarList__calendarId__GET {
+            get {
+                return ResourceManager.GetString("calendars-users-{userIdentifier}-calendarList-{calendarId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;kind&quot;: &quot;calendar#calendarListEntry&quot;,
+        ///  &quot;etag&quot;: &quot;\u002200000000000000000000\u0022&quot;,
+        ///  &quot;id&quot;: &quot;abc.def@zoom.com&quot;,
+        ///  &quot;summary&quot;: &quot;My calendar&quot;,
+        ///  &quot;description&quot;: &quot;Calendar description&quot;,
+        ///  &quot;location&quot;: &quot;San Jose&quot;,
+        ///  &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;colorId&quot;: &quot;6&quot;,
+        ///  &quot;backgroundColor&quot;: &quot;#0088aa&quot;,
+        ///  &quot;foregroundColor&quot;: &quot;#ffffff&quot;,
+        ///  &quot;hidden&quot;: false,
+        ///  &quot;selected&quot;: false,
+        ///  &quot;accessRole&quot;: &quot;freeBusyReader&quot;,
+        ///  &quot;defaultReminders&quot;: [
+        ///    {
+        ///      &quot;method&quot;: &quot;email&quot;,
+        ///      &quot;minutes&quot;: 5
+        ///    }
+        ///  ],
+        ///  &quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string calendars_users__userIdentifier__calendarList__calendarId__PATCH {
+            get {
+                return ResourceManager.GetString("calendars-users-{userIdentifier}-calendarList-{calendarId}_PATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;kind&quot;: &quot;calendar#calendarList&quot;,
+        ///  &quot;etag&quot;: &quot;\u002200000000000000000000\u0022&quot;,
+        ///  &quot;nextPageToken&quot;: &quot;c_fn3h8xf6ce6ehefnclpp869700@group.calendar.zoom.us!&quot;,
+        ///  &quot;items&quot;: [
+        ///    {
+        ///      &quot;kind&quot;: &quot;calendar#calendarListEntry&quot;,
+        ///      &quot;etag&quot;: &quot;\u002200000000000000000000\u0022&quot;,
+        ///      &quot;id&quot;: &quot;abc.def@zoom.com&quot;,
+        ///      &quot;summary&quot;: &quot;My calendar&quot;,
+        ///      &quot;description&quot;: &quot;Calendar description&quot;,
+        ///      &quot;location&quot;: &quot;San Jose&quot;,
+        ///      &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;,
+        ///      &quot;colorId&quot;: &quot;6&quot;,
+        ///      &quot;backgroundColor&quot;:  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string calendars_users__userIdentifier__calendarList_GET {
+            get {
+                return ResourceManager.GetString("calendars-users-{userIdentifier}-calendarList_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;kind&quot;: &quot;calendar#calendarListEntry&quot;,
+        ///  &quot;etag&quot;: &quot;\u002200000000000000000000\u0022&quot;,
+        ///  &quot;id&quot;: &quot;abc.def@zoom.com&quot;,
+        ///  &quot;summary&quot;: &quot;My calendar&quot;,
+        ///  &quot;description&quot;: &quot;Calendar description&quot;,
+        ///  &quot;location&quot;: &quot;San Jose&quot;,
+        ///  &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;colorId&quot;: &quot;6&quot;,
+        ///  &quot;backgroundColor&quot;: &quot;#0088aa&quot;,
+        ///  &quot;foregroundColor&quot;: &quot;#ffffff&quot;,
+        ///  &quot;hidden&quot;: false,
+        ///  &quot;selected&quot;: false,
+        ///  &quot;accessRole&quot;: &quot;freeBusyReader&quot;,
+        ///  &quot;defaultReminders&quot;: [
+        ///    {
+        ///      &quot;method&quot;: &quot;email&quot;,
+        ///      &quot;minutes&quot;: 5
+        ///    }
+        ///  ],
+        ///  &quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string calendars_users__userIdentifier__calendarList_POST {
+            get {
+                return ResourceManager.GetString("calendars-users-{userIdentifier}-calendarList_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;timezone&quot;,
+        ///  &quot;value&quot;: &quot;Asia/Shanghai&quot;
+        ///}.
+        /// </summary>
+        internal static string calendars_users__userIdentifier__settings__settingId__PATCH {
+            get {
+                return ResourceManager.GetString("calendars-users-{userIdentifier}-settings-{settingId}_PATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;kind&quot;: &quot;calendar#settings&quot;,
+        ///  &quot;etag&quot;: &quot;\u002200000000000000000000\u0022&quot;,
+        ///  &quot;nextPageToken&quot;: &quot;displaySecondaryTimezone&quot;,
+        ///  &quot;items&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;autoAddZoomMeeting&quot;,
+        ///      &quot;value&quot;: &quot;false&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string calendars_users__userIdentifier__settings_GET {
+            get {
+                return ResourceManager.GetString("calendars-users-{userIdentifier}-settings_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;channel_activity_logs&quot;: [
+        ///    {
+        ///      &quot;channel_id&quot;: &quot;825c9e31f1064c73b394c5e4557d3447&quot;,
+        ///      &quot;activity_type&quot;: &quot;membership&quot;,
+        ///      &quot;activity_timestamp&quot;: 1581370790388,
+        ///      &quot;operator&quot;: {
+        ///        &quot;display_name&quot;: &quot;John Doe&quot;,
+        ///        &quot;user_id&quot;: &quot;37oirnidtk6ije2tsfazbq&quot;,
+        ///        &quot;member_id&quot;: &quot;R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK&quot;
+        ///      },
+        ///      &quot;members&quot;: {
+        ///        &quot;member_status&quot;: &quot;join&quot;,
+        ///        &quot;member_list&quot;: [
+        ///          {
+        ///            &quot;display_name&quot;: &quot;John Doe&quot;,
+        ///            [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string chat_activities_channels_GET {
+            get {
+                return ResourceManager.GetString("chat-activities-channels_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;channel_activity_logs&quot;: [
+        ///    {
+        ///      &quot;activity_type&quot;: &quot;membership&quot;,
+        ///      &quot;activity_timestamp&quot;: 1581370790388,
+        ///      &quot;operator&quot;: {
+        ///        &quot;display_name&quot;: &quot;John Doe&quot;,
+        ///        &quot;user_id&quot;: &quot;37oirnidtk6ije2tsfazbq&quot;,
+        ///        &quot;member_id&quot;: &quot;R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK&quot;
+        ///      },
+        ///      &quot;members&quot;: {
+        ///        &quot;member_status&quot;: &quot;join&quot;,
+        ///        &quot;member_list&quot;: [
+        ///          {
+        ///            &quot;display_name&quot;: &quot;John Doe&quot;,
+        ///            &quot;user_id&quot;: &quot;37oirnidtk6ije2tsfazbq&quot;,
+        ///            &quot;membe [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string chat_channels__channelId__activities_GET {
+            get {
+                return ResourceManager.GetString("chat-channels-{channelId}-activities_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;channel_settings&quot;: {
+        ///    &quot;add_member_permissions&quot;: 2,
+        ///    &quot;new_members_can_see_previous_messages_files&quot;: true,
+        ///    &quot;posting_permissions&quot;: 3,
+        ///    &quot;mention_all_permissions&quot;: 1,
+        ///    &quot;allow_to_add_external_users&quot;: 2,
+        ///    &quot;designated_posting_members&quot;: [
+        ///      {
+        ///        &quot;member_id&quot;: &quot;b8b03c9ed5114ed59e4833cc6cb4921b&quot;,
+        ///        &quot;user_id&quot;: &quot;xvenagdyr6yonp8fhpky0w&quot;
+        ///      }
+        ///    ]
+        ///  },
+        ///  &quot;id&quot;: &quot;cabc1234567defghijkl01234&quot;,
+        ///  &quot;jid&quot;: &quot;cabc1234567defghijkl01234@conference.xmpp.zoom.us&quot;,
+        ///  &quot;name&quot;: &quot;Deve [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string chat_channels__channelId__GET {
+            get {
+                return ResourceManager.GetString("chat-channels-{channelId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;members&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;first_name&quot;: &quot;Jill&quot;,
+        ///      &quot;id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
+        ///      &quot;member_id&quot;: &quot;R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK&quot;,
+        ///      &quot;last_name&quot;: &quot;Chill&quot;,
+        ///      &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;role&quot;: &quot;admin&quot;,
+        ///      &quot;is_external&quot;: true
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 1
+        ///}.
+        /// </summary>
+        internal static string chat_channels__channelId__members_GET {
+            get {
+                return ResourceManager.GetString("chat-channels-{channelId}-members_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;groups&quot;: [
+        ///    {
+        ///      &quot;group_id&quot;: &quot;03dydv46RWKsMzUOdFGdeA&quot;,
+        ///      &quot;group_name&quot;: &quot;Your Group&quot;
+        ///    }
+        ///  ],
+        ///  &quot;channel_id&quot;: &quot;825c9e31f1064c73b394c5e4557d3447&quot;
+        ///}.
+        /// </summary>
+        internal static string chat_channels__channelId__members_groups_GET {
+            get {
+                return ResourceManager.GetString("chat-channels-{channelId}-members-groups_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;mention_group_id&quot;: &quot;a031772aba44466fbc534e4535a70e4e&quot;,
+        ///  &quot;members&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
+        ///      &quot;member_id&quot;: &quot;R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK&quot;,
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;first_name&quot;: &quot;Jill&quot;,
+        ///      &quot;last_name&quot;: &quot;Chill&quot;,
+        ///      &quot;disaplay_name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;is_external&quot;: true
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 20,
+        ///  &quot;has_more&quot;: false
+        ///}.
+        /// </summary>
+        internal static string chat_channels__channelId__mention_group__mentionGroupId__members_GET {
+            get {
+                return ResourceManager.GetString("chat-channels-{channelId}-mention_group-{mentionGroupId}-members_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;mention_group_list&quot;: [
+        ///    {
+        ///      &quot;mention_group_id&quot;: &quot;a031772aba44466fbc534e4535a70e4e&quot;,
+        ///      &quot;mention_group_name&quot;: &quot;Test mention group name&quot;,
+        ///      &quot;mention_group_description&quot;: &quot;Test mention group description&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string chat_channels__channelId__mention_group_GET {
+            get {
+                return ResourceManager.GetString("chat-channels-{channelId}-mention_group_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;messages&quot;: [
+        ///    {
+        ///      &quot;message_id&quot;: &quot;61ACBF3A-8B70-445D-85B2-8EF489F225D&quot;,
+        ///      &quot;message_timestamp&quot;: 1661997628249,
+        ///      &quot;pinner_user_id&quot;: &quot;nldhyzxwqwkwgwdlgry2rq&quot;,
+        ///      &quot;pinner_member_id&quot;: &quot;R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ&quot;,
+        ///      &quot;pinned_time&quot;: &quot;2020-02-10T21:39:50Z&quot;,
+        ///      &quot;currently_pinned&quot;: false,
+        ///      &quot;message&quot;: &quot;hello, world!&quot;,
+        ///      &quot;pinned_by_external_user&quot;: false
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;1707034615202&quot;,
+        ///  &quot;channel_id&quot;: &quot;825c9e31f1064c73b394c5e4557d34 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string chat_channels__channelId__pinned_GET {
+            get {
+                return ResourceManager.GetString("chat-channels-{channelId}-pinned_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;channel_id&quot;: &quot;825c9e31f1064c73b394c5e4557d3447&quot;,
+        ///  &quot;cloud_retention&quot;: {
+        ///    &quot;enable_custom_retention&quot;: true,
+        ///    &quot;retention_period&quot;: &quot;7y&quot;
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string chat_channels__channelId__retention_GET {
+            get {
+                return ResourceManager.GetString("chat-channels-{channelId}-retention_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;failed_channels&quot;: [
+        ///    {
+        ///      &quot;channel_id&quot;: &quot;b8f5e83164ca4e6b8d8abb527c7c35db&quot;,
+        ///      &quot;reason&quot;: &quot;No Permission&quot;,
+        ///      &quot;error_code&quot;: &quot;The error code number&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string chat_channels_events_PATCH {
+            get {
+                return ResourceManager.GetString("chat-channels-events_PATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;channels&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;cabc1234567defghijkl01234&quot;,
+        ///      &quot;name&quot;: &quot;Developers&quot;,
+        ///      &quot;type&quot;: 2,
+        ///      &quot;channel_url&quot;: &quot;https://zoom.us/launch/chat/v2/eyJzaWQiOiIyY2RkZjNyNjU3YTY0ODUzOWVhOThkODFhNjRiODE2YkBjb25mZXJlbmNlLnhtcHBkZXYuem9vbS51cyJ1&quot;,
+        ///      &quot;member_count&quot;: 12
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;qUEQqB1V0HVhJmwKFQrGOD&quot;,
+        ///  &quot;page_size&quot;: 10
+        ///}.
+        /// </summary>
+        internal static string chat_channels_search_POST {
+            get {
+                return ResourceManager.GetString("chat-channels-search_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;emojis&quot;: [
+        ///    {
+        ///      &quot;file_id&quot;: &quot;bKgNq133RoS5TMg99QfZJA&quot;,
+        ///      &quot;name&quot;: &quot;Hello&quot;,
+        ///      &quot;user_id&quot;: &quot;v4iyWT1LTfy8QvPG4GTvdg&quot;,
+        ///      &quot;member_id&quot;: &quot;R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK&quot;,
+        ///      &quot;user_name&quot;: &quot;Jack liu&quot;,
+        ///      &quot;user_email&quot;: &quot;hello@example.com&quot;,
+        ///      &quot;date_added&quot;: &quot;2020-02-10T21:39:50Z&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;32.0,-9223372036854775808,1704438757798,so6Q0cltRtiHe7w_5lM39Q&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;search_key&quot;: &quot;hello&quot;
+        ///}.
+        /// </summary>
+        internal static string chat_emoji_GET {
+            get {
+                return ResourceManager.GetString("chat-emoji_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;file_id&quot;: &quot;LDG2jzoOS2aV4wkyLMaryg&quot;,
+        ///  &quot;file_name&quot;: &quot;fdaiul_IM.txt&quot;,
+        ///  &quot;OS_file_type&quot;: &quot;txt&quot;,
+        ///  &quot;length&quot;: 36,
+        ///  &quot;digest&quot;: &quot;0a6066b576b65730c88dfdf17a24c22c962975420b84a760d181ccc524a2cb80&quot;,
+        ///  &quot;created_time&quot;: 1705472166417,
+        ///  &quot;modified_time&quot;: 1705472166417,
+        ///  &quot;download_url&quot;: &quot;https://zoomdev.us/file/download/wR3p30efRtauNrQbyGHkMg?archive=revision\u0026filename=748F23F1-3728-49C9-8742-CE7AD77BBFAA.opus\u0026jwt=eyJhbGciOiJFUzI1NiIsImsiOiJLSzQxYXo3LyJ9.eyJhdWQiOiJ6ZnMiLCJoZGlnIjpmYWxzZSwiaXNzIjoiZ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string chat_files__fileId__GET {
+            get {
+                return ResourceManager.GetString("chat-files-{fileId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;bot_message&quot;: {},
+        ///  &quot;date_time&quot;: &quot;2020-02-10T21:39:50.0000000\u002B00:00&quot;,
+        ///  &quot;download_url&quot;: &quot;https://example.com/file/download/xt0aNj_DRtqRn041pIfpSQ?filename=Screenshot%202022-03-01%20at%20144337.png\u0026jwt=eyJhbGciOiJIUzI1NiJ9.eyJkaWciOiJkOTllM2QwMjRjNmFiODNiMTNlNjVjYzM3NjJlYjc4ODMwMDE4YTNjNzNiNjc3ZWE3MzNlZDEzMTgxMTE3MzNkIiwiaXNzIjoiY3Jvc3NmaWxlIiwiYXVkIjoiZmlsZSIsImV4cCI6MTY0NjIwMzQ4MX0.7SF4L-xY-mqXgRD-NCzJOIu5nkuy33eKksif2m75Y38&quot;,
+        ///  &quot;file_id&quot;: &quot;XDCDSJNVCDS&quot;,
+        ///  &quot;file_name&quot;: &quot;Screenshot 2022- [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string chat_forwarded_message__forwardId__GET {
+            get {
+                return ResourceManager.GetString("chat-forwarded_message-{forwardId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;data&quot;: [
+        ///    {
+        ///      &quot;file_key&quot;: &quot;Zmlyc3QubGFzdEBleGFtcGxlLmNvbS0xNjc5NTg5MjMwNzY4&quot;,
+        ///      &quot;file_count&quot;: 1,
+        ///      &quot;file_start_date&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///      &quot;file_end_date&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///      &quot;ready_for_download&quot;: true,
+        ///      &quot;total_file_size&quot;: 540123
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string chat_legalhold_matters__matterId__files_GET {
+            get {
+                return ResourceManager.GetString("chat-legalhold-matters-{matterId}-files_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;legal_hold_matters&quot;: [
+        ///    {
+        ///      &quot;matter_id&quot;: &quot;28c92682-f4fc-47b0-bceb-14cb839e0279&quot;,
+        ///      &quot;matter_name&quot;: &quot;Test17888&quot;,
+        ///      &quot;matter_start_date&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///      &quot;matter_end_date&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///      &quot;matter_creation_date&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///      &quot;matter_users&quot;: [
+        ///        {
+        ///          &quot;user_id&quot;: &quot;649ad5f12f804cfea7dd7b1c1bb4c337&quot;,
+        ///          &quot;email&quot;: &quot;first.last@test.com&quot;
+        ///        }
+        ///      ]
+        ///    }
+        ///  ],
+        ///  &quot;next_page_to [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string chat_legalhold_matters_GET {
+            get {
+                return ResourceManager.GetString("chat-legalhold-matters_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;bookmarks&quot;: [
+        ///    null
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string chat_messages_bookmarks_GET {
+            get {
+                return ResourceManager.GetString("chat-messages-bookmarks_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;to_channel&quot;: &quot;qrstuvwxyz67890&quot;,
+        ///  &quot;to_contact&quot;: &quot;hello@example.com&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;messages&quot;: [
+        ///    {
+        ///      &quot;draft_id&quot;: &quot;2d712699-62f3-4114-9fbf-29d40664eb09&quot;,
+        ///      &quot;create_date&quot;: &quot;2020-02-10T21:39:50.0000000\u002B00:00&quot;,
+        ///      &quot;scheduled_time&quot;: &quot;2020-02-10T21:39:50.0000000\u002B00:00&quot;,
+        ///      &quot;download_url&quot;: &quot;https://example.com/file/download/xt0aNj_DRtqRn041pIfpSQ?filename=Screenshot%202022-03-01%20at%20144337.png\u0026jwt= [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string chat_messages_schedule_GET {
+            get {
+                return ResourceManager.GetString("chat-messages-schedule_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;mappings_found&quot;: 15,
+        ///  &quot;mappings_not_found&quot;: 5,
+        ///  &quot;mappings&quot;: [
+        ///    {
+        ///      &quot;origin_channel_id&quot;: &quot;C04JDD2C6TE&quot;,
+        ///      &quot;zm_channel_id&quot;: &quot;8fec3fee90c3454ea5ad6be26f9b88f8&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string chat_migration_mappings_channels_GET {
+            get {
+                return ResourceManager.GetString("chat-migration-mappings-channels_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;mappings_found&quot;: 15,
+        ///  &quot;mappings_not_found&quot;: 5,
+        ///  &quot;mappings&quot;: [
+        ///    {
+        ///      &quot;origin_user_id&quot;: &quot;U04JDD2C6TE&quot;,
+        ///      &quot;zm_user_id&quot;: &quot;mXzBVHPhSlKFoIk5NJOamA&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string chat_migration_mappings_users_GET {
+            get {
+                return ResourceManager.GetString("chat-migration-mappings-users_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;reminders&quot;: [
+        ///    {
+        ///      &quot;reminder_note&quot;: &quot;Hello&quot;,
+        ///      &quot;content&quot;: &quot;Good&quot;,
+        ///      &quot;message_timestamp&quot;: 1707182642932,
+        ///      &quot;create_time&quot;: &quot;2024-02-10T21:39:50.0000000\u002B00:00&quot;,
+        ///      &quot;remind_time&quot;: &quot;2024-02-10T21:39:50.0000000\u002B00:00&quot;,
+        ///      &quot;message_id&quot;: &quot;8cfaf567-bf5a-4acc-b4f2-88b3d371aca5&quot;,
+        ///      &quot;main_message_id&quot;: &quot;8cfaf567-bf5a-4acc-b4f2-88b3d371aca5&quot;,
+        ///      &quot;main_message_timestamp&quot;: 1707182642932
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string chat_reminder_GET {
+            get {
+                return ResourceManager.GetString("chat-reminder_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;successful_operations_count&quot;: 5,
+        ///  &quot;unsuccessful_operations_count&quot;: 3,
+        ///  &quot;users&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;1stlycl8qwcvfubn4dvdca&quot;,
+        ///      &quot;member_id&quot;: &quot;1vRFhZt_2gipkB-SFKkOpnkh&quot;,
+        ///      &quot;is_external_user&quot;: false,
+        ///      &quot;operation_status&quot;: &quot;successful&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string chat_spaces__spaceId__admins_DELETE {
+            get {
+                return ResourceManager.GetString("chat-spaces-{spaceId}-admins_DELETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;8V8HigQkzm2O5r9RUn31D9ZyJHgrmFfbLa2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;channels&quot;: [
+        ///    {
+        ///      &quot;channel_id&quot;: &quot;cabc1234567defghijkl01234&quot;,
+        ///      &quot;channel_name&quot;: &quot;Developers&quot;,
+        ///      &quot;description&quot;: &quot;Learning channel&quot;,
+        ///      &quot;space_channel_type&quot;: &quot;private&quot;,
+        ///      &quot;member_count&quot;: 30
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string chat_spaces__spaceId__channels_GET {
+            get {
+                return ResourceManager.GetString("chat-spaces-{spaceId}-channels_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;space_id&quot;: &quot;9f1b93284a69472387db562d7ba81733&quot;,
+        ///  &quot;move_direction&quot;: &quot;move_into&quot;,
+        ///  &quot;channels&quot;: [
+        ///    {
+        ///      &quot;channel_id&quot;: &quot;d896a8fdf1424df0ae8f13218d2a6f78&quot;,
+        ///      &quot;is_moved&quot;: true
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string chat_spaces__spaceId__channels_PATCH {
+            get {
+                return ResourceManager.GetString("chat-spaces-{spaceId}-channels_PATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;space_id&quot;: &quot;bb31fa470fdc410cb76527282aa380d4&quot;,
+        ///  &quot;space_name&quot;: &quot;space name&quot;,
+        ///  &quot;space_desc&quot;: &quot;learning space&quot;,
+        ///  &quot;owner&quot;: {
+        ///    &quot;user_id&quot;: &quot;KDcuGIm1QgePTO8WbOqwIQ&quot;,
+        ///    &quot;member_id&quot;: &quot;1vuNwCvcgr1mI8WliW1gUKxoA8lozI4LHqDVoRIjMGaQHINfZWxqVHMilvXM8HGA&quot;,
+        ///    &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///    &quot;display_name &quot;: &quot;jchill&quot;,
+        ///    &quot;is_external_user&quot;: true
+        ///  },
+        ///  &quot;space_settings&quot;: {
+        ///    &quot;allow_to_add_external_users&quot;: 0,
+        ///    &quot;add_member_permissions&quot;: 1,
+        ///    &quot;create_channels_permission&quot;: 1
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string chat_spaces__spaceId__GET {
+            get {
+                return ResourceManager.GetString("chat-spaces-{spaceId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;successful_operations_count&quot;: 5,
+        ///  &quot;unsuccessful_operations_count&quot;: 3,
+        ///  &quot;users&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;1stlycl8qwcvfubn4dvdca&quot;,
+        ///      &quot;member_id&quot;: &quot;1vRFhZt_2gipkB-SFKkOpnkh&quot;,
+        ///      &quot;is_external_user&quot;: false,
+        ///      &quot;operation_status&quot;: &quot;successful&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string chat_spaces__spaceId__members_DELETE {
+            get {
+                return ResourceManager.GetString("chat-spaces-{spaceId}-members_DELETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;8V8HigQkzm2O5r9RUn31D9ZyJHgrmFfbLa2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;members&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;KDcuGIm1QgePTO8WbOqwIQ&quot;,
+        ///      &quot;member_id&quot;: &quot;1vuNwCvcgr1mI8WliW1gUKxoA8lozI4LHqDVoRIjMGaQHINfZWxqVHMilvXM8HGA&quot;,
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;role&quot;: &quot;member&quot;,
+        ///      &quot;status&quot;: &quot;active&quot;,
+        ///      &quot;first_name&quot;: &quot;Jill&quot;,
+        ///      &quot;last_name&quot;: &quot;Chill&quot;,
+        ///      &quot;display_name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;is_external_user&quot;: true
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string chat_spaces__spaceId__members_GET {
+            get {
+                return ResourceManager.GetString("chat-spaces-{spaceId}-members_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;8V8HigQkzm2O5r9RUn31D9ZyJHgrmFfbLa2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;shared_spaces&quot;: [
+        ///    {
+        ///      &quot;space_id&quot;: &quot;bb31fa470fdc410cb76527282aa380d4&quot;,
+        ///      &quot;space_name&quot;: &quot;space name&quot;,
+        ///      &quot;space_desc&quot;: &quot;learning space&quot;,
+        ///      &quot;space_owner&quot;: {
+        ///        &quot;user_id&quot;: &quot;KDcuGIm1QgePTO8WbOqwIQ&quot;,
+        ///        &quot;member_id&quot;: &quot;1vuNwCvcgr1mI8WliW1gUKxoA8lozI4LHqDVoRIjMGaQHINfZWxqVHMilvXM8HGA&quot;,
+        ///        &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///        &quot;display_name&quot;: &quot;jchill&quot;,
+        ///        &quot;is_external_user&quot;: true
+        ///  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string chat_spaces_GET {
+            get {
+                return ResourceManager.GetString("chat-spaces_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;admins&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;first_name&quot;: &quot;Jill&quot;,
+        ///      &quot;id&quot;: &quot;v4iyWT1LTfy8QvPG4GTvdg&quot;,
+        ///      &quot;member_id&quot;: &quot;R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK&quot;,
+        ///      &quot;role&quot;: &quot;admin&quot;,
+        ///      &quot;last_name&quot;: &quot;Chill&quot;,
+        ///      &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;is_external&quot;: false
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 10
+        ///}.
+        /// </summary>
+        internal static string chat_users__userId__channels__channelId__admins_GET {
+            get {
+                return ResourceManager.GetString("chat-users-{userId}-channels-{channelId}-admins_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;channel_settings&quot;: {
+        ///    &quot;add_member_permissions&quot;: 2,
+        ///    &quot;new_members_can_see_previous_messages_files&quot;: true,
+        ///    &quot;posting_permissions&quot;: 3,
+        ///    &quot;mention_all_permissions&quot;: 1,
+        ///    &quot;allow_to_add_external_users&quot;: 2,
+        ///    &quot;designated_posting_members&quot;: [
+        ///      {
+        ///        &quot;member_id&quot;: &quot;b8b03c9ed5114ed59e4833cc6cb4921b&quot;,
+        ///        &quot;user_id&quot;: &quot;xvenagdyr6yonp8fhpky0w&quot;
+        ///      }
+        ///    ]
+        ///  },
+        ///  &quot;id&quot;: &quot;cabc1234567defghijkl01234&quot;,
+        ///  &quot;jid&quot;: &quot;cabc1234567defghijkl01234@conference.xmpp.zoom.us&quot;,
+        ///  &quot;name&quot;: &quot;Deve [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string chat_users__userId__channels__channelId__GET {
+            get {
+                return ResourceManager.GetString("chat-users-{userId}-channels-{channelId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;members&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;first_name&quot;: &quot;Jill&quot;,
+        ///      &quot;id&quot;: &quot;v4iyWT1LTfy8QvPG4GTvdg&quot;,
+        ///      &quot;member_id&quot;: &quot;R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK&quot;,
+        ///      &quot;last_name&quot;: &quot;Chill&quot;,
+        ///      &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;role&quot;: &quot;admin&quot;,
+        ///      &quot;is_external&quot;: true
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 50,
+        ///  &quot;total_records&quot;: 100
+        ///}.
+        /// </summary>
+        internal static string chat_users__userId__channels__channelId__members_GET {
+            get {
+                return ResourceManager.GetString("chat-users-{userId}-channels-{channelId}-members_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;bot_message&quot;: {},
+        ///  &quot;date_time&quot;: &quot;2020-02-10T21:39:50.0000000\u002B00:00&quot;,
+        ///  &quot;download_url&quot;: &quot;https://example.com/file/download/xt0aNj_DRtqRn041pIfpSQ?filename=Screenshot%202022-03-01%20at%20144337.png\u0026jwt=eyJhbGciOiJIUzI1NiJ9.eyJkaWciOiJkOTllM2QwMjRjNmFiODNiMTNlNjVjYzM3NjJlYjc4ODMwMDE4YTNjNzNiNjc3ZWE3MzNlZDEzMTgxMTE3MzNkIiwiaXNzIjoiY3Jvc3NmaWxlIiwiYXVkIjoiZmlsZSIsImV4cCI6MTY0NjIwMzQ4MX0.7SF4L-xY-mqXgRD-NCzJOIu5nkuy33eKksif2m75Y38&quot;,
+        ///  &quot;file_id&quot;: &quot;XDCDSJNVCDS&quot;,
+        ///  &quot;file_name&quot;: &quot;Screenshot 2022- [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string chat_users__userId__messages__messageId__GET {
+            get {
+                return ResourceManager.GetString("chat-users-{userId}-messages-{messageId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total&quot;: 5,
+        ///  &quot;messages&quot;: [
+        ///    {
+        ///      &quot;msg_id&quot;: &quot;{90111042-D5E4-7BB5-0F91-B0C9879A30B4}&quot;,
+        ///      &quot;message&quot;: &quot;Hello&quot;,
+        ///      &quot;is_reply&quot;: true,
+        ///      &quot;timestamp&quot;: 1705051497817,
+        ///      &quot;reactions&quot;: [
+        ///        {
+        ///          &quot;emoji_id&quot;: &quot;U\u002B1F600&quot;,
+        ///          &quot;count&quot;: 2,
+        ///          &quot;is_sender&quot;: true
+        ///        }
+        ///      ],
+        ///      &quot;last_reply_time&quot;: 1705051497817,
+        ///      &quot;is_followed&quot;: true,
+        ///      &quot;files&quot;: [
+        ///        {
+        ///          &quot;file_id&quot;: &quot;yXvggqyjCUal6TecwMlYwQ&quot;,
+        ///          &quot;file_name&quot;: &quot;example.j [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string chat_users__userId__messages__messageId__thread_GET {
+            get {
+                return ResourceManager.GetString("chat-users-{userId}-messages-{messageId}-thread_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;date&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///  &quot;from&quot;: &quot;2020-02-10T21:39:50.0000000\u002B00:00&quot;,
+        ///  &quot;messages&quot;: [
+        ///    {
+        ///      &quot;bot_message&quot;: {},
+        ///      &quot;date_time&quot;: &quot;2020-02-10T21:39:50.0000000\u002B00:00&quot;,
+        ///      &quot;files&quot;: [
+        ///        {
+        ///          &quot;download_url&quot;: &quot;https://zoom.us/file/download/xBvggqyjQUal6TecwMlYwQ?filename=example.jpg\u0026jwt=eyJhbGciOiJIUzI1NiJ9.eyJkaWciOiI3Yzg5YzBhYjIzYmZmMjdjNzE3NTQ4YzdjMTc0Njk3MWYzYjNmNjFjMzU5OTliNjE1ZjdjMWJmMzc5YTJiZThlIiwiYXVkIjoiZmlsZSIsImlzcyI6ImNyb3NzZmls [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string chat_users__userId__messages_GET {
+            get {
+                return ResourceManager.GetString("chat-users-{userId}-messages_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;direct_numbers&quot;: [
+        ///    &quot;111111&quot;
+        ///  ],
+        ///  &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///  &quot;extension_number&quot;: &quot;31&quot;,
+        ///  &quot;first_name&quot;: &quot;Jill&quot;,
+        ///  &quot;id&quot;: &quot;v4iyWT1LTfy8QvPG4GTvdg&quot;,
+        ///  &quot;member_id&quot;: &quot;R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK&quot;,
+        ///  &quot;last_name&quot;: &quot;Chill&quot;,
+        ///  &quot;phone_number&quot;: &quot;5550100&quot;,
+        ///  &quot;phone_numbers&quot;: [
+        ///    {
+        ///      &quot;code&quot;: &quot;\u002B1&quot;,
+        ///      &quot;country&quot;: &quot;US&quot;,
+        ///      &quot;label&quot;: &quot;Mobile&quot;,
+        ///      &quot;number&quot;: &quot;5550100&quot;,
+        ///      &quot;verified&quot;: true
+        ///    }
+        ///  ],
+        ///  &quot;presence_status&quot;: &quot;Available&quot;
+        ///}.
+        /// </summary>
+        internal static string chat_users_me_contacts__identifier__GET {
+            get {
+                return ResourceManager.GetString("chat-users-me-contacts-{identifier}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;contacts&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;first_name&quot;: &quot;Jill&quot;,
+        ///      &quot;id&quot;: &quot;v4iyWT1LTfy8QvPG4GTvdg&quot;,
+        ///      &quot;member_id&quot;: &quot;R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK&quot;,
+        ///      &quot;last_name&quot;: &quot;Chill&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 10
+        ///}.
+        /// </summary>
+        internal static string chat_users_me_contacts_GET {
+            get {
+                return ResourceManager.GetString("chat-users-me-contacts_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;meeting_id&quot;: &quot;I3pHE/RnRbmm\u002Bex2g07sxw==&quot;,
+        ///  &quot;meeting_number&quot;: 97763643885,
+        ///  &quot;note_id&quot;: &quot;ArfRXokSTiGTCSYFVtxNa&quot;,
+        ///  &quot;note_owner_user_id&quot;: &quot;dqV7XEpnS5G3rGsvqylmjQ&quot;,
+        ///  &quot;note_start_time&quot;: &quot;2025-05-15T03:01:08.608Z&quot;,
+        ///  &quot;note_end_time&quot;: &quot;2025-05-15T03:25:59.608Z&quot;,
+        ///  &quot;note_created_time&quot;: &quot;2025-05-15T03:26:08.608Z&quot;,
+        ///  &quot;note_last_modified_time&quot;: &quot;2025-05-15T03:26:08.608Z&quot;,
+        ///  &quot;note_last_modified_user_id&quot;: &quot;dqV7XEpnS5G3rGsvqylmjQ&quot;,
+        ///  &quot;note_title&quot;: &quot;lingbo test.cn\u0027s Zoom Meeting - Version A&quot;,
+        ///  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string clinical_notes_notes__noteId__GET {
+            get {
+                return ResourceManager.GetString("clinical_notes-notes-{noteId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;next_page_token&quot;: &quot;ff9d4fb9-8b64-4d6d-93ff-8bc86b18f5c4&quot;,
+        ///  &quot;from&quot;: &quot;2025-01-01T00:00:00Z&quot;,
+        ///  &quot;to&quot;: &quot;2025-01-01T23:59:59Z&quot;,
+        ///  &quot;clinical_notes&quot;: [
+        ///    {
+        ///      &quot;meeting_id&quot;: &quot;I3pHE/RnRbmm\u002Bex2g07sxw==&quot;,
+        ///      &quot;meeting_number&quot;: 97763643885,
+        ///      &quot;note_id&quot;: &quot;ArfRXokSTiGTCSYFVtxNa&quot;,
+        ///      &quot;note_owner_user_id&quot;: &quot;dqV7XEpnS5G3rGsvqylmjQ&quot;,
+        ///      &quot;note_start_time&quot;: &quot;2025-05-15T03:01:08.608Z&quot;,
+        ///      &quot;note_end_time&quot;: &quot;2025-05-15T03:25:59.608Z&quot;,
+        ///      &quot;note_created_time&quot;: &quot;2025- [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string clinical_notes_notes_GET {
+            get {
+                return ResourceManager.GetString("clinical_notes-notes_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;data&quot;: [
+        ///    {
+        ///      &quot;avatar&quot;: &quot;https://filedev.zoomdev.us/p/pRof_6gpQP2YKDxmglRziA/664dcb20-5d05-40da-8fd0-ef32b6f2ee5b-3518&quot;,
+        ///      &quot;email&quot;: &quot;dev_victor_test_main@dispostable.com&quot;,
+        ///      &quot;type&quot;: &quot;ZOOM_USER&quot;,
+        ///      &quot;role&quot;: &quot;VIEWER&quot;,
+        ///      &quot;display_name&quot;: &quot;dev_victor dev_lu&quot;,
+        ///      &quot;channel_id&quot;: &quot;c15e84143a6949568247c2fe1e097bd2&quot;,
+        ///      &quot;user_id&quot;: &quot;4BJ2vryWQg-VZaj0iP4p0w&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;INg1ogDUtBxsvlBiDnZQ8Ik0qpK4XaCjg22&quot;,
+        ///  &quot;page_size&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string clips__clipId__collaborators_GET {
+            get {
+                return ResourceManager.GetString("clips-{clipId}-collaborators_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;data&quot;: [
+        ///    {
+        ///      &quot;comment_id&quot;: &quot;a16eb597-90ed-4e70-8475-4f1e0022c8a7&quot;,
+        ///      &quot;content&quot;: &quot;@[clips clips](user:victor.lu@dev.gg) @[victor.lu](user:devint_test_clips@dispostable.com) here it is&quot;,
+        ///      &quot;created_date&quot;: &quot;2023-11-16T02:50:51Z&quot;,
+        ///      &quot;modified_date&quot;: &quot;2023-11-16T02:50:51Z&quot;,
+        ///      &quot;display_name&quot;: &quot;dev_victor dev_lu&quot;,
+        ///      &quot;avatar&quot;: &quot;https://filedev.zoomdev.us/p/pRof_6gpQP2YKDxmglRziA/664dcb20-5d05-40da-8fd0-ef32b6f2ee5b-3518&quot;,
+        ///      &quot;parent_node_id&quot;: &quot;0b7cdb63-0be1-4a05-b44d-e61 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string clips__clipId__comments_GET {
+            get {
+                return ResourceManager.GetString("clips-{clipId}-comments_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;title&quot;: &quot;clips test title&quot;,
+        ///  &quot;description&quot;: &quot;just for test&quot;,
+        ///  &quot;duration&quot;: 6000,
+        ///  &quot;status&quot;: &quot;RECORD_SUCCESS&quot;,
+        ///  &quot;clip_id&quot;: &quot;A2RldhYyU08zeDNIeFJJVzBOcHFRVlZQWXlRAQ&quot;,
+        ///  &quot;owner_id&quot;: &quot;pRof_6gpQP2YKDxmglRziA&quot;,
+        ///  &quot;file_size&quot;: 639229,
+        ///  &quot;share_link&quot;: &quot;https://dev-integration.zoomdev.us/clips/share/A2RldhYyU08zeDNIeFJJVzBOcHFRVlZQWXlRAQ&quot;,
+        ///  &quot;share_link_settings&quot;: {
+        ///    &quot;passcode&quot;: &quot;Dmpy*xy7&quot;,
+        ///    &quot;share_scope&quot;: &quot;ANYONE&quot;,
+        ///    &quot;enable_passcode&quot;: true
+        ///  },
+        ///  &quot;thumbnail_link&quot;: &quot;https://file.zoomdev [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string clips__clipId__GET {
+            get {
+                return ResourceManager.GetString("clips-{clipId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;data&quot;: [
+        ///    {
+        ///      &quot;title&quot;: &quot;clips test title&quot;,
+        ///      &quot;description&quot;: &quot;just for test&quot;,
+        ///      &quot;duration&quot;: 6000,
+        ///      &quot;status&quot;: &quot;RECORD_SUCCESS&quot;,
+        ///      &quot;clip_id&quot;: &quot;A2RldhYyU08zeDNIeFJJVzBOcHFRVlZQWXlRAQ&quot;,
+        ///      &quot;owner_id&quot;: &quot;pRof_6gpQP2YKDxmglRziA&quot;,
+        ///      &quot;file_size&quot;: 639229,
+        ///      &quot;share_link&quot;: &quot;https://dev-integration.zoomdev.us/clips/share/A2RldhYyU08zeDNIeFJJVzBOcHFRVlZQWXlRAQ&quot;,
+        ///      &quot;share_link_settings&quot;: {
+        ///        &quot;passcode&quot;: &quot;Dmpy*xy7&quot;,
+        ///        &quot;share_scope&quot;: &quot;ANYONE&quot;,
+        ///        &quot;ena [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string clips_GET {
+            get {
+                return ResourceManager.GetString("clips_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;status&quot;: &quot;FAILED&quot;,
+        ///  &quot;transfer_type&quot;: &quot;PARTIAL_TRANSFER&quot;,
+        ///  &quot;source_owner_user_id&quot;: &quot;user_123&quot;,
+        ///  &quot;target_owner_user_id&quot;: &quot;user_234&quot;,
+        ///  &quot;clip_id_list&quot;: [
+        ///    &quot;clip_id_123&quot;
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string clips_transfers__taskId__GET {
+            get {
+                return ResourceManager.GetString("clips-transfers-{taskId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;next_page_token&quot;: &quot;Tva2CuIdTgsv8wAnhyAdUrm0tY2HuLQtlh4&quot;,
+        ///  &quot;sessions&quot;: [
+        ///    {
+        ///      &quot;session_id&quot;: &quot;GDDykmpQQU6MWL3GqLNUkw&quot;,
+        ///      &quot;start_time&quot;: &quot;2025-02-14T19:09:01.0000000\u002B00:00&quot;,
+        ///      &quot;session_pin&quot;: &quot;987536&quot;,
+        ///      &quot;users&quot;: [
+        ///        {
+        ///          &quot;user_id&quot;: &quot;YZ8uRj9zRf2yY5cshmzrTA&quot;,
+        ///          &quot;user_name&quot;: &quot;exampleuser&quot;,
+        ///          &quot;role_type&quot;: &quot;agent&quot;
+        ///        }
+        ///      ]
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string cobrowsesdk_live_sessions_GET {
+            get {
+                return ResourceManager.GetString("cobrowsesdk-live_sessions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;from&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///  &quot;to&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;next_page_token&quot;: &quot;Tva2CuIdTgsv8wAnhyAdUrm0tY2HuLQtlh4&quot;,
+        ///  &quot;sessions&quot;: [
+        ///    {
+        ///      &quot;session_id&quot;: &quot;GDDykmpQQU6MWL3GqLNUkw&quot;,
+        ///      &quot;start_time&quot;: &quot;2025-02-14T19:09:01.0000000\u002B00:00&quot;,
+        ///      &quot;end_time&quot;: &quot;2025-02-14T19:15:01.0000000\u002B00:00&quot;,
+        ///      &quot;duration&quot;: &quot;00:03:19&quot;,
+        ///      &quot;user_count&quot;: 2,
+        ///      &quot;session_pin&quot;: &quot;987536&quot;,
+        ///      &quot;users&quot;: [
+        ///        {
+        ///          &quot;user_id&quot;: &quot;Y [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string cobrowsesdk_past_sessions_GET {
+            get {
+                return ResourceManager.GetString("cobrowsesdk-past_sessions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;next_page_token&quot;: &quot;Tva2CuIdTgsv8wAnhyAdUrm0tY2HuLQtlh4&quot;,
+        ///  &quot;users&quot;: [
+        ///    {
+        ///      &quot;user_connection_id&quot;: &quot;Nlg8wgA0TFe3jT87CjQZqg&quot;,
+        ///      &quot;user_id&quot;: &quot;YZ8uRj9zRf2yY5cshmzrTA&quot;,
+        ///      &quot;user_name&quot;: &quot;exampleuser&quot;,
+        ///      &quot;role_type&quot;: &quot;agent&quot;,
+        ///      &quot;ip_address&quot;: &quot;127.0.0.1&quot;,
+        ///      &quot;data_center&quot;: &quot;US&quot;,
+        ///      &quot;join_time&quot;: &quot;2025-03-18T05:07:13.0000000\u002B00:00&quot;,
+        ///      &quot;leave_time&quot;: &quot;2025-03-18T05:09:13.0000000\u002B00:00&quot;,
+        ///      &quot;duration&quot;: &quot;00:03:19&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string cobrowsesdk_sessions__sessionId__users_GET {
+            get {
+                return ResourceManager.GetString("cobrowsesdk-sessions-{sessionId}-users_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;create_reference_id&quot;: &quot;ACC-2333&quot;,
+        ///  &quot;crm_account_number&quot;: &quot;A-0012&quot;,
+        ///  &quot;status&quot;: &quot;submitted&quot;,
+        ///  &quot;status_detail&quot;: &quot;One or more contact creation failed.&quot;
+        ///}.
+        /// </summary>
+        internal static string commerce_account__accountKey__contacts_POST {
+            get {
+                return ResourceManager.GetString("commerce-account-{accountKey}-contacts_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;crm_account_number&quot;: &quot;A-0012&quot;,
+        ///  &quot;create_reference_id&quot;: &quot;ACC-2333&quot;,
+        ///  &quot;status&quot;: &quot;submitted&quot;,
+        ///  &quot;zoom_account_number&quot;: &quot;1223837102&quot;,
+        ///  &quot;zoom_account_numbers&quot;: [
+        ///    3842618277
+        ///  ],
+        ///  &quot;account_name&quot;: &quot;ABC Pvt Ltd.&quot;,
+        ///  &quot;account_type&quot;: &quot;Customer&quot;,
+        ///  &quot;created_on_date&quot;: &quot;2022-10-18&quot;,
+        ///  &quot;employee_count&quot;: &quot;51-250&quot;,
+        ///  &quot;website&quot;: &quot;www.example.com&quot;,
+        ///  &quot;currency&quot;: &quot;US&quot;,
+        ///  &quot;partner_type&quot;: &quot;Subreseller&quot;,
+        ///  &quot;contacts&quot;: [
+        ///    {
+        ///      &quot;contact_crm_number&quot;: &quot;A-12428&quot;,
+        ///      &quot;first_name&quot;: &quot;Tracy&quot;,
+        ///     [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string commerce_accounts__accountKey__GET {
+            get {
+                return ResourceManager.GetString("commerce-accounts-{accountKey}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_count&quot;: 20,
+        ///  &quot;account_list&quot;: [
+        ///    {
+        ///      &quot;create_reference_id&quot;: &quot;Cust-00123343242&quot;,
+        ///      &quot;crm_account_number&quot;: &quot;A0012&quot;,
+        ///      &quot;account_name&quot;: &quot;John Galt&quot;,
+        ///      &quot;zoom_account_number&quot;: &quot;3842618277&quot;,
+        ///      &quot;zoom_account_numbers&quot;: [
+        ///        3842618277
+        ///      ],
+        ///      &quot;account_type&quot;: &quot;Customer&quot;,
+        ///      &quot;partner_type&quot;: &quot;Subreseller&quot;,
+        ///      &quot;country&quot;: &quot;US&quot;,
+        ///      &quot;currency&quot;: &quot;USD&quot;,
+        ///      &quot;website&quot;: &quot;www.abc.com&quot;,
+        ///      &quot;status&quot;: &quot;submitted&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string commerce_accounts_GET {
+            get {
+                return ResourceManager.GetString("commerce-accounts_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;document_count&quot;: 100,
+        ///  &quot;billing_documents&quot;: [
+        ///    {
+        ///      &quot;document_number&quot;: &quot;INVC10235997&quot;,
+        ///      &quot;document_date&quot;: &quot;2023-10-25T00:00:00.000Z&quot;,
+        ///      &quot;document_type&quot;: &quot;invoice&quot;,
+        ///      &quot;customer_name&quot;: [
+        ///        &quot;ABC Pvt. Ltd.&quot;
+        ///      ],
+        ///      &quot;customer_zoom_account_number&quot;: 4435343789,
+        ///      &quot;sub_reseller_name&quot;: &quot;Subreseller One&quot;,
+        ///      &quot;invoice_owner_name&quot;: &quot;Subreseller One&quot;,
+        ///      &quot;due_date&quot;: &quot;2023-11-25T00:00:00.000Z&quot;,
+        ///      &quot;payment_status&quot;: &quot;Paid&quot;,
+        ///      &quot;balance&quot;: {
+        ///        &quot;amoun [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string commerce_billing_documents_GET {
+            get {
+                return ResourceManager.GetString("commerce-billing_documents_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;campaigns&quot;: [
+        ///    {
+        ///      &quot;campaign_number&quot;: 3423423,
+        ///      &quot;campaign_name&quot;: &quot;Zoom campaign for Education&quot;,
+        ///      &quot;campaign_description&quot;: &quot;Zoom Workplace for Education focus campaign&quot;,
+        ///      &quot;campaign_start_date&quot;: &quot;2023-10-03&quot;,
+        ///      &quot;campaign_end_date&quot;: &quot;2024-10-03&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string commerce_campaigns_GET {
+            get {
+                return ResourceManager.GetString("commerce-campaigns_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;offer_id&quot;: &quot;OFR-0000012&quot;,
+        ///  &quot;offer_name&quot;: &quot;Zoom One Pro&quot;,
+        ///  &quot;offer_desc&quot;: &quot;Zoom One Professional Bundle&quot;,
+        ///  &quot;offer_type&quot;: &quot;plan&quot;,
+        ///  &quot;z_product_category&quot;: &quot;Base Product&quot;,
+        ///  &quot;sku&quot;: &quot;SKU-00000118&quot;,
+        ///  &quot;status&quot;: &quot;Limited&quot;,
+        ///  &quot;start_date&quot;: &quot;2020-10-23&quot;,
+        ///  &quot;end_date&quot;: &quot;2023-10-25&quot;,
+        ///  &quot;offer_products&quot;: [
+        ///    {
+        ///      &quot;product_name&quot;: &quot;Meetings&quot;,
+        ///      &quot;product_id&quot;: &quot;PR-1231&quot;,
+        ///      &quot;product_family_id&quot;: &quot;dfewur3erfdd&quot;,
+        ///      &quot;product_family_name&quot;: &quot;Core Communication&quot;,
+        ///      &quot;product_group_id&quot;: &quot;d [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string commerce_catalog__offerId__GET {
+            get {
+                return ResourceManager.GetString("commerce-catalog-{offerId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;offers&quot;: [
+        ///    {
+        ///      &quot;offer_id&quot;: &quot;OFR-0000012&quot;,
+        ///      &quot;offer_name&quot;: &quot;Zoom One Pro&quot;,
+        ///      &quot;offer_desc&quot;: &quot;Zoom One Professional Bundle&quot;,
+        ///      &quot;offer_type&quot;: &quot;plan&quot;,
+        ///      &quot;z_product_category&quot;: &quot;Base Product&quot;,
+        ///      &quot;sku&quot;: &quot;SKU-00000118&quot;,
+        ///      &quot;status&quot;: &quot;Limited&quot;,
+        ///      &quot;start_date&quot;: &quot;2020-10-01&quot;,
+        ///      &quot;end_date&quot;: &quot;2023-10-25&quot;,
+        ///      &quot;offer_products&quot;: [
+        ///        {
+        ///          &quot;product_name&quot;: &quot;Meetings&quot;,
+        ///          &quot;product_id&quot;: &quot;PR-1323&quot;,
+        ///          &quot;product_family_id&quot;: &quot;dfewur3erfdd&quot;,
+        ///   [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string commerce_catalog_POST {
+            get {
+                return ResourceManager.GetString("commerce-catalog_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;deal_reg_number&quot;: &quot;DL-135621&quot;,
+        ///  &quot;create_reference_id&quot;: &quot;DRR-4834729&quot;,
+        ///  &quot;deal_name&quot;: &quot;New deal for Zoom Phone&quot;,
+        ///  &quot;deal_description&quot;: &quot;New deal for Zoom Phone&quot;,
+        ///  &quot;currency&quot;: &quot;USD&quot;,
+        ///  &quot;program_name&quot;: &quot;TSD Agent Registration&quot;,
+        ///  &quot;opportunity_stage&quot;: &quot;closed-won&quot;,
+        ///  &quot;submitted_date&quot;: &quot;2023-10-25&quot;,
+        ///  &quot;approved_date&quot;: &quot;2023-10-25&quot;,
+        ///  &quot;denied_date&quot;: &quot;2023-10-25&quot;,
+        ///  &quot;expected_close_date&quot;: &quot;2023-10-25&quot;,
+        ///  &quot;partner_role&quot;: &quot;Deal Registration&quot;,
+        ///  &quot;original_expiry_date&quot;: &quot;2023-10-25&quot;,
+        ///  &quot;extended_e [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string commerce_deal_registrations__dealRegKey__GET {
+            get {
+                return ResourceManager.GetString("commerce-deal_registrations-{dealRegKey}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_count&quot;: 20,
+        ///  &quot;deal_registrations&quot;: [
+        ///    {
+        ///      &quot;deal_reg_number&quot;: &quot;DL-135621&quot;,
+        ///      &quot;create_reference_id&quot;: &quot;DRR-4834729&quot;,
+        ///      &quot;deal_name&quot;: &quot;New deal for Zoom Phone&quot;,
+        ///      &quot;invoice_owner_crm_account_number&quot;: &quot;A-4567&quot;,
+        ///      &quot;opportunity_stage&quot;: &quot;Closed-Won&quot;,
+        ///      &quot;submitted_date&quot;: &quot;2023-10-25&quot;,
+        ///      &quot;expected_closed_date&quot;: &quot;2024-10-25&quot;,
+        ///      &quot;estimated_mrr&quot;: 1000000,
+        ///      &quot;currency&quot;: &quot;USD&quot;,
+        ///      &quot;program_name&quot;: &quot;Direct Reseller Registration&quot;,
+        ///      &quot;original_expiry_date&quot;:  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string commerce_deal_registrations_GET {
+            get {
+                return ResourceManager.GetString("commerce-deal_registrations_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [
+        ///  {
+        ///    &quot;associated_object_type&quot;: &quot;Quote&quot;,
+        ///    &quot;associated_reference_id&quot;: &quot;QU-2323&quot;,
+        ///    &quot;description&quot;: &quot;Client approval for a quote.&quot;,
+        ///    &quot;uploaded_on&quot;: &quot;2023-10-03&quot;,
+        ///    &quot;document_reference_id&quot;: &quot;DOC-1234&quot;,
+        ///    &quot;document_name&quot;: &quot;endcustomer_acceptance_12032024.pdf&quot;,
+        ///    &quot;document_type&quot;: &quot;Purchase Order&quot;
+        ///  }
+        ///].
+        /// </summary>
+        internal static string commerce_files__associatedReferenceId__details_GET {
+            get {
+                return ResourceManager.GetString("commerce-files-{associatedReferenceId}-details_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;invoice_number&quot;: &quot;INVC10235997&quot;,
+        ///  &quot;invoice_date&quot;: &quot;2023-10-25T00:00:00.000Z&quot;,
+        ///  &quot;customer_name&quot;: [
+        ///    &quot;ABC Pvt. Ltd.&quot;
+        ///  ],
+        ///  &quot;invoice_owner_account&quot;: {
+        ///    &quot;zoom_account_number&quot;: &quot;3421746588&quot;,
+        ///    &quot;crm_account_number&quot;: &quot;A-1234&quot;,
+        ///    &quot;account_name&quot;: &quot;John Doe LLC&quot;,
+        ///    &quot;address&quot;: {
+        ///      &quot;address_type&quot;: &quot;billTo&quot;,
+        ///      &quot;line_1&quot;: &quot;55 Almaden Blvd&quot;,
+        ///      &quot;line_2&quot;: &quot;Suite 10&quot;,
+        ///      &quot;line_3&quot;: &quot;Tower A&quot;,
+        ///      &quot;city&quot;: &quot;San Jose&quot;,
+        ///      &quot;postal_code&quot;: &quot;95114&quot;,
+        ///      &quot;state&quot;: &quot;PA&quot;,
+        ///       [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string commerce_invoices__invoiceNumber__GET {
+            get {
+                return ResourceManager.GetString("commerce-invoices-{invoiceNumber}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;header&quot;: {
+        ///    &quot;order_reference_id&quot;: &quot;OR-3248714941&quot;,
+        ///    &quot;order_type&quot;: &quot;sale&quot;,
+        ///    &quot;transaction_type&quot;: &quot;New&quot;,
+        ///    &quot;order_description&quot;: &quot;New Contact Center subscription for ABC Pvt. Ltd.&quot;,
+        ///    &quot;status&quot;: &quot;submitted&quot;,
+        ///    &quot;order_number&quot;: &quot;PAR-OR-1012312&quot;,
+        ///    &quot;deal_reg_number&quot;: &quot;DELREG-1002-L1&quot;,
+        ///    &quot;order_date&quot;: &quot;2022-10-25&quot;,
+        ///    &quot;po_number&quot;: &quot;PO-10021-A&quot;,
+        ///    &quot;trade_screening&quot;: false,
+        ///    &quot;order_metrics&quot;: {
+        ///      &quot;tcv&quot;: 120000,
+        ///      &quot;tcb&quot;: 120000,
+        ///      &quot;mrr&quot;: 10000,
+        ///      &quot;total_disco [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string commerce_orders__orderReferenceId__GET {
+            get {
+                return ResourceManager.GetString("commerce-orders-{orderReferenceId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_count&quot;: 20,
+        ///  &quot;order_list&quot;: [
+        ///    {
+        ///      &quot;order_reference_id&quot;: &quot;OR-125613343&quot;,
+        ///      &quot;order_number&quot;: &quot;O-3429342&quot;,
+        ///      &quot;status&quot;: &quot;submitted&quot;,
+        ///      &quot;order_type&quot;: &quot;sale&quot;,
+        ///      &quot;transaction_type&quot;: &quot;New&quot;,
+        ///      &quot;invoice_owner_crm_account_number&quot;: &quot;A-3454374&quot;,
+        ///      &quot;invoice_owner_name&quot;: &quot;ABC Distributors&quot;,
+        ///      &quot;end_customer_account_name&quot;: &quot;dfreABC Pvt. Ltd.&quot;,
+        ///      &quot;end_customer_account_number&quot;: &quot;3842618277&quot;,
+        ///      &quot;end_customer_crm_account_number&quot;: &quot;A-3454334&quot;,
+        ///      &quot;sub_reseller [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string commerce_orders_GET {
+            get {
+                return ResourceManager.GetString("commerce-orders_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;header&quot;: {
+        ///    &quot;quote_reference_id&quot;: &quot;QU-3248714941&quot;,
+        ///    &quot;quote_type&quot;: &quot;sale&quot;,
+        ///    &quot;transaction_type&quot;: &quot;New&quot;,
+        ///    &quot;quote_description&quot;: &quot;New ZCC subscription for ABC Pvt. Ltd.&quot;,
+        ///    &quot;status&quot;: &quot;submitted&quot;,
+        ///    &quot;quote_number&quot;: &quot;Q-1012312&quot;,
+        ///    &quot;deal_reg_number&quot;: &quot;DELREG-1002-L1&quot;,
+        ///    &quot;quote_date&quot;: &quot;2022-10-25&quot;,
+        ///    &quot;quote_expiry_date&quot;: &quot;2023-11-02&quot;,
+        ///    &quot;po_number&quot;: &quot;PO-10021-A&quot;,
+        ///    &quot;trade_screening&quot;: false,
+        ///    &quot;quote_metrics&quot;: {
+        ///      &quot;tcv&quot;: 120000,
+        ///      &quot;tcb&quot;: 120000,
+        ///      &quot;mrr&quot;: 10 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string commerce_quotes__quoteReferenceId__GET {
+            get {
+                return ResourceManager.GetString("commerce-quotes-{quoteReferenceId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;status&quot;: &quot;submitted&quot;,
+        ///  &quot;quote_reference_id&quot;: &quot;QO-3248714941&quot;,
+        ///  &quot;quote_date&quot;: &quot;2023-10-03&quot;,
+        ///  &quot;errors&quot;: [
+        ///    {
+        ///      &quot;error_code&quot;: &quot;5604&quot;,
+        ///      &quot;error_description&quot;: &quot;No pricebook exists with given offer_price_list_id.&quot;
+        ///    }
+        ///  ],
+        ///  &quot;warnings&quot;: [
+        ///    {
+        ///      &quot;error_code&quot;: &quot;5604&quot;,
+        ///      &quot;error_description&quot;: &quot;No pricebook exists with given offer_price_list_id.&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string commerce_quotes__quoteReferenceId__PATCH {
+            get {
+                return ResourceManager.GetString("commerce-quotes-{quoteReferenceId}_PATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_count&quot;: 20,
+        ///  &quot;quote_list&quot;: [
+        ///    {
+        ///      &quot;quote_reference_id&quot;: &quot;OR-125613343&quot;,
+        ///      &quot;quote_number&quot;: &quot;O-3429342&quot;,
+        ///      &quot;status&quot;: &quot;submitted&quot;,
+        ///      &quot;quote_type&quot;: &quot;sale&quot;,
+        ///      &quot;transaction_type&quot;: &quot;New&quot;,
+        ///      &quot;end_customer_account_name&quot;: &quot;dfreABC Pvt. Ltd.&quot;,
+        ///      &quot;end_customer_account_number&quot;: &quot;3842618277&quot;,
+        ///      &quot;end_customer_crm_account_number&quot;: &quot;A-3454334&quot;,
+        ///      &quot;sub_reseller_name&quot;: &quot;John&quot;,
+        ///      &quot;sub_reseller_crm_account_number&quot;: &quot;A-348742&quot;,
+        ///      &quot;invoice_owner_name&quot;: &quot;John&quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string commerce_quotes_GET {
+            get {
+                return ResourceManager.GetString("commerce-quotes_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;subscription_number&quot;: &quot;A-31231322&quot;,
+        ///  &quot;status&quot;: &quot;active&quot;,
+        ///  &quot;payment_term&quot;: &quot;Net30&quot;,
+        ///  &quot;service_start_date&quot;: &quot;2023-10-03&quot;,
+        ///  &quot;paid_period_start_date&quot;: &quot;2023-10-03&quot;,
+        ///  &quot;free_months_included&quot;: false,
+        ///  &quot;free_months_reason_code&quot;: &quot;Standard Free Months&quot;,
+        ///  &quot;deal_reg_number&quot;: &quot;DELREG-1002-L1&quot;,
+        ///  &quot;po_number&quot;: &quot;PO-10021-A&quot;,
+        ///  &quot;currency&quot;: &quot;CAD&quot;,
+        ///  &quot;end_customer_account&quot;: {
+        ///    &quot;zoom_account_number&quot;: &quot;3421746588&quot;,
+        ///    &quot;crm_account_number&quot;: &quot;A-12323&quot;,
+        ///    &quot;account_name&quot;: &quot;John Doe LLC&quot;,
+        ///    &quot;addre [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string commerce_subscriptions__subscriptionNumber__GET {
+            get {
+                return ResourceManager.GetString("commerce-subscriptions-{subscriptionNumber}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;subscription_number&quot;: &quot;A-31231322&quot;,
+        ///  &quot;status&quot;: &quot;active&quot;,
+        ///  &quot;start_date&quot;: &quot;2023-01-07&quot;,
+        ///  &quot;end_date&quot;: &quot;2024-07-02&quot;,
+        ///  &quot;subscription_versions&quot;: [
+        ///    {
+        ///      &quot;sequence&quot;: 1,
+        ///      &quot;version&quot;: 1,
+        ///      &quot;latest_version&quot;: true,
+        ///      &quot;action&quot;: [
+        ///        &quot;create&quot;
+        ///      ],
+        ///      &quot;start_date&quot;: &quot;2023-01-07&quot;,
+        ///      &quot;end_date&quot;: &quot;2024-08-01&quot;,
+        ///      &quot;mrr&quot;: 1000,
+        ///      &quot;currency&quot;: &quot;USD&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string commerce_subscriptions__subscriptionNumber__versions_GET {
+            get {
+                return ResourceManager.GetString("commerce-subscriptions-{subscriptionNumber}-versions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;nfirhf84574fkse&quot;,
+        ///  &quot;subscription_list&quot;: [
+        ///    {
+        ///      &quot;subscription_number&quot;: &quot;A-31231322&quot;,
+        ///      &quot;subscription_status&quot;: &quot;active&quot;,
+        ///      &quot;subscription_owner&quot;: {
+        ///        &quot;crm_account_number&quot;: &quot;A0012&quot;,
+        ///        &quot;account_name&quot;: &quot;John Galt&quot;,
+        ///        &quot;zoom_account_number&quot;: &quot;3842618277&quot;
+        ///      },
+        ///      &quot;invoice_owner&quot;: {
+        ///        &quot;crm_account_number&quot;: &quot;A0012&quot;,
+        ///        &quot;account_name&quot;: &quot;John Galt&quot;,
+        ///        &quot;zoom_account_number&quot;: &quot;3842618277&quot;
+        ///      },
+        ///      &quot;start_date&quot;: &quot;2023-07 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string commerce_subscriptions_GET {
+            get {
+                return ResourceManager.GetString("commerce-subscriptions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;trial_id&quot;: &quot;Z-021462495&quot;,
+        ///  &quot;end_customer_account&quot;: {
+        ///    &quot;zoom_account_number&quot;: &quot;3421746588&quot;,
+        ///    &quot;crm_account_number&quot;: &quot;A-12323&quot;,
+        ///    &quot;account_name&quot;: &quot;John Doe LLC&quot;,
+        ///    &quot;address&quot;: {
+        ///      &quot;address_type&quot;: &quot;billTo&quot;,
+        ///      &quot;line_1&quot;: &quot;55 Almaden Blvd&quot;,
+        ///      &quot;line_2&quot;: &quot;Suite 10&quot;,
+        ///      &quot;line_3&quot;: &quot;Tower A&quot;,
+        ///      &quot;city&quot;: &quot;San Jose&quot;,
+        ///      &quot;postal_code&quot;: &quot;95114&quot;,
+        ///      &quot;state&quot;: &quot;PA&quot;,
+        ///      &quot;country&quot;: &quot;US&quot;
+        ///    }
+        ///  },
+        ///  &quot;invoice_owner_account&quot;: {
+        ///    &quot;zoom_account_number&quot;: &quot;3421746588&quot;,
+        ///  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string commerce_trials__trialReferenceId__GET {
+            get {
+                return ResourceManager.GetString("commerce-trials-{trialReferenceId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_count&quot;: 20,
+        ///  &quot;trial_list&quot;: [
+        ///    {
+        ///      &quot;trial_id&quot;: &quot;Z-021462495&quot;,
+        ///      &quot;subscription_owner&quot;: {
+        ///        &quot;crm_account_number&quot;: &quot;A0012&quot;,
+        ///        &quot;account_name&quot;: &quot;John Galt&quot;,
+        ///        &quot;zoom_account_number&quot;: &quot;3842618277&quot;
+        ///      },
+        ///      &quot;invoice_owner&quot;: {
+        ///        &quot;crm_account_number&quot;: &quot;A0012&quot;,
+        ///        &quot;account_name&quot;: &quot;John Galt&quot;,
+        ///        &quot;zoom_account_number&quot;: &quot;3842618277&quot;
+        ///      },
+        ///      &quot;sub_reseller_name&quot;: &quot;ABC Inc.&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string commerce_trials_GET {
+            get {
+                return ResourceManager.GetString("commerce-trials_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;contact_id&quot;: &quot;zeYjXoDOS_eV1QmTpj63PQ&quot;,
+        ///  &quot;display_name&quot;: &quot;Jill Chill&quot;,
+        ///  &quot;first_name&quot;: &quot;Jill&quot;,
+        ///  &quot;last_name&quot;: &quot;Chill&quot;,
+        ///  &quot;phone_numbers&quot;: [
+        ///    &quot;\u002B12048002447&quot;
+        ///  ],
+        ///  &quot;phones&quot;: [
+        ///    {
+        ///      &quot;phone_number&quot;: &quot;\u002B12048002447&quot;,
+        ///      &quot;phone_type&quot;: &quot;main&quot;
+        ///    }
+        ///  ],
+        ///  &quot;emails&quot;: [
+        ///    &quot;user@example.com&quot;
+        ///  ],
+        ///  &quot;location&quot;: &quot;San Jose&quot;,
+        ///  &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;account_number&quot;: &quot;112233445566&quot;,
+        ///  &quot;company&quot;: &quot;Example&quot;,
+        ///  &quot;role&quot;: &quot;Agent&quot;,
+        ///  &quot;address_book_id&quot;: &quot;jweQeTYDO [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_address_books__addressBookId__contacts__contactId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-address_books-{addressBookId}-contacts-{contactId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;contacts&quot;: [
+        ///    {
+        ///      &quot;contact_id&quot;: &quot;zeYjXoDOS_eV1QmTpj63PQ&quot;,
+        ///      &quot;display_name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;first_name&quot;: &quot;Jill&quot;,
+        ///      &quot;last_name&quot;: &quot;Chill&quot;,
+        ///      &quot;phone_numbers&quot;: [
+        ///        &quot;\u002B12048002447&quot;
+        ///      ],
+        ///      &quot;phones&quot;: [
+        ///        {
+        ///          &quot;phone_number&quot;: &quot;\u002B12048002447&quot;,
+        ///          &quot;phone_type&quot;: &quot;main&quot;
+        ///        }
+        ///      ],
+        ///      &quot;emails&quot;: [
+        ///        &quot;user@example.co [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_address_books__addressBookId__contacts_GET {
+            get {
+                return ResourceManager.GetString("contact_center-address_books-{addressBookId}-contacts_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;address_book_id&quot;: &quot;zeYjXoDOS_eV1QmTpj63PQ&quot;,
+        ///  &quot;address_book_name&quot;: &quot;Address Book&quot;,
+        ///  &quot;address_book_description&quot;: &quot;This is an address book.&quot;,
+        ///  &quot;total_contacts&quot;: 30,
+        ///  &quot;unit_id&quot;: &quot;zeYjXoDOS_eV1QmTpj63PQ&quot;,
+        ///  &quot;unit_name&quot;: &quot;Unit&quot;
+        ///}.
+        /// </summary>
+        internal static string contact_center_address_books__addressBookId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-address_books-{addressBookId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;custom_fields&quot;: [
+        ///    {
+        ///      &quot;custom_field_id&quot;: &quot;7381d210-360e-4fbd-86e4-33eb7109b084&quot;,
+        ///      &quot;custom_field_name&quot;: &quot;Preferred Contact Method&quot;,
+        ///      &quot;data_type&quot;: &quot;pick_list&quot;,
+        ///      &quot;custom_field_value&quot;: &quot;phone&quot;,
+        ///      &quot;outdated&quot;: false
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_address_books_contacts__contactId__custom_fields_GET {
+            get {
+                return ResourceManager.GetString("contact_center-address_books-contacts-{contactId}-custom_fields_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;custom_field_id&quot;: &quot;7381d210-360e-4fbd-86e4-33eb7109b084&quot;,
+        ///  &quot;custom_field_name&quot;: &quot;Preferred Contact Method&quot;,
+        ///  &quot;custom_field_description&quot;: &quot;Custom field for contact method&quot;,
+        ///  &quot;data_type&quot;: &quot;pick_list&quot;,
+        ///  &quot;default_value&quot;: &quot;phone&quot;,
+        ///  &quot;pick_list_values&quot;: [
+        ///    &quot;phone&quot;
+        ///  ],
+        ///  &quot;address_books&quot;: [
+        ///    {
+        ///      &quot;address_book_id&quot;: &quot;X2e_jsLNRkCjI0sQg2kRQQ&quot;,
+        ///      &quot;address_book_name&quot;: &quot;Jill\u0027s address book&quot;
+        ///    }
+        ///  ],
+        ///  &quot;use_as_routing_profile_parameter&quot;: true,
+        ///  &quot;use_as_external_url_parameter&quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_address_books_custom_fields__customFieldId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-address_books-custom_fields-{customFieldId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;custom_fields&quot;: [
+        ///    {
+        ///      &quot;custom_field_id&quot;: &quot;7381d210 Contact Method&quot;,
+        ///      &quot;custom_field_name&quot;: &quot;Preferred Contact Method&quot;,
+        ///      &quot;custom_field_description&quot;: &quot;Custom field for contact method&quot;,
+        ///      &quot;data_type&quot;: &quot;pick_list&quot;,
+        ///      &quot;default_value&quot;: &quot;phone&quot;,
+        ///      &quot;pick_list_values&quot;: [
+        ///        &quot;phone&quot;
+        ///      ],
+        ///      &quot;address_books&quot;: [
+        ///        {
+        ///          &quot;address_book_id&quot;: &quot;X2e_jsLN [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_address_books_custom_fields_GET {
+            get {
+                return ResourceManager.GetString("contact_center-address_books-custom_fields_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;address_books&quot;: [
+        ///    {
+        ///      &quot;address_book_id&quot;: &quot;zeYjXoDOS_eV1QmTpj63PQ&quot;,
+        ///      &quot;address_book_name&quot;: &quot;Address Book&quot;,
+        ///      &quot;address_book_description&quot;: &quot;This is an address book.&quot;,
+        ///      &quot;total_contacts&quot;: 30,
+        ///      &quot;unit_id&quot;: &quot;zeYjXoDOS_eV1QmTpj63PQ&quot;,
+        ///      &quot;unit_name&quot;: &quot;Unit&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_address_books_GET {
+            get {
+                return ResourceManager.GetString("contact_center-address_books_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;unit_id&quot;: &quot;zeYjXoDOS_eV1QmTpj63PQ&quot;,
+        ///  &quot;unit_name&quot;: &quot;Example&quot;,
+        ///  &quot;unit_description&quot;: &quot;This is a unit description.&quot;
+        ///}.
+        /// </summary>
+        internal static string contact_center_address_books_units__unitId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-address_books-units-{unitId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;units&quot;: [
+        ///    {
+        ///      &quot;unit_id&quot;: &quot;zeYjXoDOS_eV1QmTpj63PQ&quot;,
+        ///      &quot;unit_name&quot;: &quot;Example&quot;,
+        ///      &quot;unit_description&quot;: &quot;This is a unit description.&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_address_books_units_GET {
+            get {
+                return ResourceManager.GetString("contact_center-address_books-units_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;agent_routing_profile_id&quot;: &quot;fgjdkhgfieryt7465435kjhdkhg&quot;,
+        ///  &quot;agent_routing_profile_name&quot;: &quot;My agent routing profile&quot;,
+        ///  &quot;agent_routing_profile_description&quot;: &quot;Example routing profile description.&quot;,
+        ///  &quot;wait_time_agent_in_seconds&quot;: 10,
+        ///  &quot;priorities&quot;: [
+        ///    {
+        ///      &quot;priority_id&quot;: &quot;jyuhjknkjgfkjhh9453fjdlg&quot;,
+        ///      &quot;priority_order&quot;: 1,
+        ///      &quot;category_type&quot;: &quot;skill&quot;,
+        ///      &quot;skill_category_id&quot;: &quot;skill_category_id&quot;,
+        ///      &quot;intent_group_id&quot;: &quot;intent_group_id&quot;,
+        ///      &quot;skill_category_name&quot;: &quot;skill_ca [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_agent_routing_profiles__agentRoutingProfileId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-agent_routing_profiles-{agentRoutingProfileId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;agent_routing_profiles&quot;: [
+        ///    {
+        ///      &quot;agent_routing_profile_id&quot;: &quot;pkOWR9aiR1WLvyDJCBi06A&quot;,
+        ///      &quot;agent_routing_profile_name&quot;: &quot;My agent routing profile&quot;,
+        ///      &quot;agent_routing_profile_description&quot;: &quot;This is the agent routing profile\u0027s description.&quot;,
+        ///      &quot;wait_time_agent_in_seconds&quot;: 10,
+        ///      &quot;priorities&quot;: [
+        ///        {
+        ///          &quot;priority_id&quot;: &quot;jyuhjknkjgfkjhh9453fjdlg&quot;,
+        ///           [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_agent_routing_profiles_GET {
+            get {
+                return ResourceManager.GetString("contact_center-agent_routing_profiles_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;from&quot;: &quot;2021-12-10T00:00:00Z&quot;,
+        ///  &quot;to&quot;: &quot;2021-12-10T00:15:00Z&quot;,
+        ///  &quot;users&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;ukAAkZKfROKMSw1bj_RDFQ&quot;,
+        ///      &quot;display_name&quot;: &quot;joe.chill&quot;,
+        ///      &quot;user_email&quot;: &quot;joe.chill@example.com&quot;,
+        ///      &quot;leg_metrics&quot;: [
+        ///        {
+        ///          &quot;channel&quot;: &quot;messaging&quot;,
+        ///          &quot;channel_source&quot;: &quot;in_app_chat&quot;,
+        ///          &quot;engagement_id&quot;: &quot;reRAiabVQ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_analytics_agents_leg_metrics_GET {
+            get {
+                return ResourceManager.GetString("contact_center-analytics-agents-leg_metrics_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;from&quot;: &quot;2021-12-10T00:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;to&quot;: &quot;2021-12-10T00:15:00.0000000\u002B00:00&quot;,
+        ///  &quot;statuses&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;ukAAkZKfROKMSw1bj_RDFQ&quot;,
+        ///      &quot;display_name&quot;: &quot;Jilly&quot;,
+        ///      &quot;status_id&quot;: &quot;1&quot;,
+        ///      &quot;occupied_queue_id&quot;: &quot;ZysV5vnQ_iVKRjfLf-sjg&quot;,
+        ///      &quot;occupied_queue_name&quot;: &quot;voice-queue&quot;,
+        ///      &quot;occupied_engagement_id&quot;: &quot;0xGQzp [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_analytics_agents_status_history_GET {
+            get {
+                return ResourceManager.GetString("contact_center-analytics-agents-status_history_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;jA5csQv1W1oXuYZLspNIZzMOXqTD9r9Rje2&quot;,
+        ///  &quot;page_size&quot;: 1,
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;from&quot;: &quot;2021-12-10T00:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;to&quot;: &quot;2021-12-10T00:15:00.0000000\u002B00:00&quot;,
+        ///  &quot;agents&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;ukAAkZKfROKMSw1bj_RDFQ&quot;,
+        ///      &quot;display_name&quot;: &quot;Jilly&quot;,
+        ///      &quot;ready_duration&quot;: 3600,
+        ///      &quot;ready_percentage&quot;: 85,
+        ///      &quot;not_ready_duration&quot;: 3600,
+        ///      &quot;not_ready_percentage&quot;: 85,
+        ///      &quot;occupied_duration&quot;: 3600,
+        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_analytics_agents_time_sheets_GET {
+            get {
+                return ResourceManager.GetString("contact_center-analytics-agents-time_sheets_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;from&quot;: &quot;2021-12-10T00:00:00Z&quot;,
+        ///  &quot;to&quot;: &quot;2021-12-10T00:00:00Z&quot;,
+        ///  &quot;users&quot;: [
+        ///    {
+        ///      &quot;engagement_id&quot;: &quot;reRAiabVQSqpXxJVDbsy2Q&quot;,
+        ///      &quot;start_time&quot;: &quot;2021-12-10T00:00:00Z&quot;,
+        ///      &quot;end_time&quot;: &quot;2021-12-10T00:00:00Z&quot;,
+        ///      &quot;direction&quot;: &quot;inbound&quot;,
+        ///      &quot;user_id&quot;: &quot;reRAiabVQSqpXxJVDbsy2Q&quot;,
+        ///      &quot;user_name&quot;: &quot;user_name_example&quot;,
+        ///      &quot;channel&quot;: &quot;voice [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_analytics_dataset_historical_agent_performance_GET {
+            get {
+                return ResourceManager.GetString("contact_center-analytics-dataset-historical-agent_performance_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;from&quot;: &quot;2021-12-10T00:00:00Z&quot;,
+        ///  &quot;to&quot;: &quot;2021-12-10T00:00:00Z&quot;,
+        ///  &quot;users&quot;: [
+        ///    {
+        ///      &quot;work_session_id&quot;: &quot;reRAiabVQSqpXxJVDbsy2Q&quot;,
+        ///      &quot;start_time&quot;: &quot;2021-12-10T00:00:00Z&quot;,
+        ///      &quot;end_time&quot;: &quot;2021-12-10T00:00:00Z&quot;,
+        ///      &quot;user_id&quot;: &quot;reRAiabVQSqpXxJVDbsy2Q&quot;,
+        ///      &quot;user_name&quot;: &quot;agent_name_example&quot;,
+        ///      &quot;user_status&quot;: &quot;not_ready&quot;,
+        ///      &quot;user_sub_ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_analytics_dataset_historical_agent_timecard_GET {
+            get {
+                return ResourceManager.GetString("contact_center-analytics-dataset-historical-agent_timecard_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;timezone&quot;: &quot;UTC&quot;,
+        ///  &quot;from&quot;: &quot;2025-05-26T16:30:08.0000000\u002B00:00&quot;,
+        ///  &quot;to&quot;: &quot;2025-07-26T16:30:08.0000000\u002B00:00&quot;,
+        ///  &quot;historical_dispositions&quot;: [
+        ///    {
+        ///      &quot;disposition_name&quot;: &quot;My Disposition&quot;,
+        ///      &quot;tier1_disposition_name&quot;: &quot;Disposition tier1 name&quot;,
+        ///      &quot;tier2_disposition_name&quot;: &quot;Disposition tier2 name&quot;,
+        ///      &quot;tier3_disposition_name&quot;: &quot;Disposition tier3 name&quot;,
+        ///      &quot;tier4_disp [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_analytics_dataset_historical_disposition_GET {
+            get {
+                return ResourceManager.GetString("contact_center-analytics-dataset-historical-disposition_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;from&quot;: &quot;2021-12-10T00:00:00Z&quot;,
+        ///  &quot;to&quot;: &quot;2021-12-10T00:00:00Z&quot;,
+        ///  &quot;engagements&quot;: [
+        ///    {
+        ///      &quot;engagement_id&quot;: &quot;reRAiabVQSqpXxJVDbsy2Q&quot;,
+        ///      &quot;direction&quot;: &quot;inbound&quot;,
+        ///      &quot;start_time&quot;: &quot;2021-12-10T00:00:00Z&quot;,
+        ///      &quot;end_time&quot;: &quot;2021-12-10T00:00:00Z&quot;,
+        ///      &quot;enter_channel&quot;: &quot;messaging&quot;,
+        ///      &quot;enter_channel_source&quot;: &quot;in_app_chat&quot;,
+        ///      &quot;channels&quot;: [ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_analytics_dataset_historical_engagement_GET {
+            get {
+                return ResourceManager.GetString("contact_center-analytics-dataset-historical-engagement_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;from&quot;: &quot;2021-12-10T00:00:00Z&quot;,
+        ///  &quot;to&quot;: &quot;2021-12-10T00:00:00Z&quot;,
+        ///  &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;flows&quot;: [
+        ///    {
+        ///      &quot;flow_id&quot;: &quot;reRAiabVQSqpXxJVDbsy2Q&quot;,
+        ///      &quot;flow_name&quot;: &quot;flow_example_name&quot;,
+        ///      &quot;flow_version&quot;: &quot;2&quot;,
+        ///      &quot;flow_enter_time&quot;: &quot;2021-12-10T00:15:00Z&quot;,
+        ///      &quot;flow_exit_time&quot;: &quot;2021-12-10T00:15:00Z&quot;,
+        ///      &quot;enter_channel&quot;: &quot;messaging&quot;,
+        ///      &quot;enter_channel_source&quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_analytics_dataset_historical_flow_performance_GET {
+            get {
+                return ResourceManager.GetString("contact_center-analytics-dataset-historical-flow_performance_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;from&quot;: &quot;2021-12-10T00:00:00Z&quot;,
+        ///  &quot;to&quot;: &quot;2021-12-10T00:00:00Z&quot;,
+        ///  &quot;engagements&quot;: [
+        ///    {
+        ///      &quot;engagement_id&quot;: &quot;reRAiabVQSqpXxJVDbsy2Q&quot;,
+        ///      &quot;start_time&quot;: &quot;2021-12-10T00:00:00Z&quot;,
+        ///      &quot;end_time&quot;: &quot;2021-12-10T00:00:00Z&quot;,
+        ///      &quot;campaign&quot;: {
+        ///        &quot;campaign_id&quot;: &quot;reRAiabVQSqpXxJVDbsy2Q&quot;,
+        ///        &quot;campaign_name&quot;: &quot;campaign_example&quot;
+        ///      },
+        ///      &quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_analytics_dataset_historical_outbound_dialer_performance_GET {
+            get {
+                return ResourceManager.GetString("contact_center-analytics-dataset-historical-outbound_dialer_performance_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;from&quot;: &quot;2021-12-10T00:00:00Z&quot;,
+        ///  &quot;to&quot;: &quot;2021-12-10T00:00:00Z&quot;,
+        ///  &quot;queues&quot;: [
+        ///    {
+        ///      &quot;engagement_id&quot;: &quot;reRAiabVQSqpXxJVDbsy2Q&quot;,
+        ///      &quot;enter_time&quot;: &quot;2021-12-10T00:00:00Z&quot;,
+        ///      &quot;exit_time&quot;: &quot;2021-12-10T10:30:00Z&quot;,
+        ///      &quot;queue_id&quot;: &quot;reRAiabVQSqpXxJVDbsy2Q&quot;,
+        ///      &quot;queue_name&quot;: &quot;queue_example_name&quot;,
+        ///      &quot;enter_channel&quot;: &quot;messaging&quot;,
+        ///      &quot;enter [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_analytics_dataset_historical_queue_performance_GET {
+            get {
+                return ResourceManager.GetString("contact_center-analytics-dataset-historical-queue_performance_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;from&quot;: &quot;2021-12-10T00:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;to&quot;: &quot;2021-12-10T00:15:00.0000000\u002B00:00&quot;,
+        ///  &quot;details&quot;: [
+        ///    {
+        ///      &quot;engagement_id&quot;: &quot;3XilEfOvQEKRIWMWhX1jDg&quot;,
+        ///      &quot;channels&quot;: [
+        ///        {
+        ///          &quot;channel&quot;: &quot;messaging&quot;,
+        ///          &quot;channel_source&quot;: &quot;in_app_chat&quot;
+        ///        }
+        ///      ],
+        ///      &quot;direction&quot;: &quot;inbound&quot;,
+        ///      &quot;consumer_number&quot;: &quot;\ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_analytics_historical_details_metrics_GET {
+            get {
+                return ResourceManager.GetString("contact_center-analytics-historical-details-metrics_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;from&quot;: &quot;2021-12-10T00:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;to&quot;: &quot;2021-12-10T00:15:00.0000000\u002B00:00&quot;,
+        ///  &quot;agents&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;ukAAkZKfROKMSw1bj_RDFQ&quot;,
+        ///      &quot;display_name&quot;: &quot;Jilly&quot;,
+        ///      &quot;total_inbound&quot;: 1,
+        ///      &quot;total_completed&quot;: 1,
+        ///      &quot;total_transferred_in&quot;: 1,
+        ///      &quot;total_transferred_out&quot;: 1,
+        ///      &quot;voice&quot;: {
+        ///        &quot;upgraded_to_ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_analytics_historical_queues__queueId__agents_metrics_GET {
+            get {
+                return ResourceManager.GetString("contact_center-analytics-historical-queues-{queueId}-agents-metrics_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;from&quot;: &quot;2021-12-10T00:00:00Z&quot;,
+        ///  &quot;to&quot;: &quot;2021-12-10T00:15:00Z&quot;,
+        ///  &quot;agents&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;ukAAkZKfROKMSw1bj_RDFQ&quot;,
+        ///      &quot;display_name&quot;: &quot;Jilly&quot;,
+        ///      &quot;voice&quot;: {
+        ///        &quot;offers_total&quot;: 5,
+        ///        &quot;offers_acd&quot;: 4,
+        ///        &quot;offers_non_acd&quot;: 1,
+        ///        &quot;offers_answered&quot;: 5,
+        ///        &quot;offers_answered_acd_inbound&quot;: 2,
+        ///        &quot;offers_missed&quot;: [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_analytics_historical_queues_agents_metrics_GET {
+            get {
+                return ResourceManager.GetString("contact_center-analytics-historical-queues-agents-metrics_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;from&quot;: &quot;2021-12-10T00:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;to&quot;: &quot;2021-12-10T00:15:00.0000000\u002B00:00&quot;,
+        ///  &quot;queues&quot;: [
+        ///    {
+        ///      &quot;queue_id&quot;: &quot;Ql3qxUWXSHes4PmcOmzyOg&quot;,
+        ///      &quot;cc_queue_id&quot;: &quot;Ql3qxUWXSHes4PmcOmzyOg&quot;,
+        ///      &quot;queue_name&quot;: &quot;agentQueue&quot;,
+        ///      &quot;total_inbound&quot;: 1,
+        ///      &quot;total_completed&quot;: 1,
+        ///      &quot;total_transferred_in&quot;: 1,
+        ///      &quot;total_transferr [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_analytics_historical_queues_metrics_GET {
+            get {
+                return ResourceManager.GetString("contact_center-analytics-historical-queues-metrics_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;timezone&quot;: &quot;UTC&quot;,
+        ///  &quot;engagement_logs&quot;: [
+        ///    {
+        ///      &quot;engagement_id&quot;: &quot;t0VAFD7FDkdfwHxlN40_w&quot;,
+        ///      &quot;direction&quot;: &quot;inbound&quot;,
+        ///      &quot;channels&quot;: [
+        ///        {
+        ///          &quot;channel&quot;: &quot;video&quot;,
+        ///          &quot;channel_source&quot;: &quot;web_video&quot;
+        ///        }
+        ///      ],
+        ///      &quot;enter_channel&quot;: {
+        ///        &quot;channel&quot;: &quot;voice&quot;,
+        ///        &quot;channel_source&quot;: &quot;voice&quot;
+        ///      },
+        ///      &quot;start_time&quot;: &quot;2025-05-26T16:30:08.0000000\u002B00:00&quot;,
+        ///      &quot;end_time&quot;: &quot;2025-05-26T16:32:18.0000000\u002B00:00&quot;,
+        ///      &quot;consumer&quot;: {
+        ///       [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_analytics_log_historical_engagement_GET {
+            get {
+                return ResourceManager.GetString("contact_center-analytics-log-historical-engagement_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;journeys&quot;: [
+        ///    {
+        ///      &quot;global_engagement_id&quot;: &quot;7512200802025393153&quot;,
+        ///      &quot;direction&quot;: &quot;inbound&quot;,
+        ///      &quot;channels&quot;: [
+        ///        &quot;voice&quot;
+        ///      ],
+        ///      &quot;ani_from&quot;: &quot;\u002B19135551212&quot;,
+        ///      &quot;dnis_to&quot;: &quot;\u002B12095551212&quot;,
+        ///      &quot;start_time&quot;: &quot;2025-05-26T16:32:18.0000000\u002B00:00&quot;,
+        ///      &quot;consumer&quot;: {
+        ///        &quot;consumer_number&quot;: &quot;\u002B19135551212&quot;
+        ///      },
+        ///      &quot;queues&quot;: [
+        ///        {
+        ///          &quot;queue_id&quot;: &quot;sfgwHE\u0026gEFHE&quot;,
+        ///          &quot;queue_name&quot;: &quot;callen-voice-queue&quot;
+        ///        }
+        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_analytics_log_historical_journey_GET {
+            get {
+                return ResourceManager.GetString("contact_center-analytics-log-historical-journey_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;asset_id&quot;: &quot;WkdWelkzSnBjSFJwYjI0PQ11&quot;,
+        ///  &quot;asset_name&quot;: &quot;asset name&quot;,
+        ///  &quot;asset_description&quot;: &quot;This is an audio asset.&quot;,
+        ///  &quot;asset_type&quot;: &quot;audio&quot;,
+        ///  &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///  &quot;last_modified_time&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;,
+        ///  &quot;archived&quot;: false,
+        ///  &quot;archived_time&quot;: &quot;2023-08-29T06:12:33.0000000\u002B00:00&quot;,
+        ///  &quot;asset_items&quot;: [
+        ///    {
+        ///      &quot;asset_item_id&quot;: &quot;beYjXoDOS_eV1QmTpj63PQ&quot;,
+        ///      &quot;asset_item_name&quot;: &quot;english audio&quot;,
+        ///      &quot;asset_item_language&quot;: &quot;en-US&quot;,
+        ///     [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_asset_library_assets__assetId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-asset_library-assets-{assetId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;assets&quot;: [
+        ///    {
+        ///      &quot;asset_id&quot;: &quot;zeYjXoDOS_eV1QmTpj63PQ&quot;,
+        ///      &quot;asset_name&quot;: &quot;My asset name.&quot;,
+        ///      &quot;asset_description&quot;: &quot;My asset description.&quot;,
+        ///      &quot;asset_type&quot;: &quot;image&quot;,
+        ///      &quot;asset_category_id&quot;: &quot;8ONs9XW4S9a2Lco9O0GdCw&quot;,
+        ///      &quot;asset_category_name&quot;: &quot;Sales Category&quot;,
+        ///      &quot;asset_language_code&quot;: &quot;zh-CN&quot;,
+        ///      &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///      &quot;last_modified_time&quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_asset_library_assets_GET {
+            get {
+                return ResourceManager.GetString("contact_center-asset_library-assets_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;category_id&quot;: &quot;bnGEj1yrRb6qlNMvyMK08g&quot;,
+        ///  &quot;category_name&quot;: &quot;flows assets&quot;,
+        ///  &quot;category_scope&quot;: &quot;system&quot;
+        ///}.
+        /// </summary>
+        internal static string contact_center_asset_library_categories__categoryId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-asset_library-categories-{categoryId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;categories&quot;: [
+        ///    {
+        ///      &quot;category_id&quot;: &quot;bnGEj1yrRb6qlNMvyMK08g&quot;,
+        ///      &quot;category_name&quot;: &quot;flows assets&quot;,
+        ///      &quot;category_scope&quot;: &quot;system&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_asset_library_categories_GET {
+            get {
+                return ResourceManager.GetString("contact_center-asset_library-categories_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;flows&quot;: [
+        ///    {
+        ///      &quot;flow_id&quot;: &quot;psjHGHrHQbaX8Zk7ldc81Q&quot;,
+        ///      &quot;flow_name&quot;: &quot;Default Flow&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_business_hours__businessHourId__flows_GET {
+            get {
+                return ResourceManager.GetString("contact_center-business_hours-{businessHourId}-flows_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;business_hour_id&quot;: &quot;66ZjSQ7YTOescnINN_4vog&quot;,
+        ///  &quot;business_hour_name&quot;: &quot;Default Business hours&quot;,
+        ///  &quot;business_hour_description&quot;: &quot;This is a description.&quot;,
+        ///  &quot;timezone&quot;: &quot;America/New_York&quot;,
+        ///  &quot;account_default&quot;: true,
+        ///  &quot;hours&quot;: {
+        ///    &quot;hour_type&quot;: 2,
+        ///    &quot;custom_hours&quot;: [
+        ///      {
+        ///        &quot;day_of_week&quot;: 1,
+        ///        &quot;custom_hour_type&quot;: 2,
+        ///        &quot;custom_hour_ranges&quot;: [
+        ///          {
+        ///            &quot;start_time&quot;: &quot;09:00&quot;,
+        ///            &quot;end_time&quot;: &quot;18:00&quot;
+        ///          }
+        ///        ]
+        ///      }
+        ///    ]
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string contact_center_business_hours__businessHourId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-business_hours-{businessHourId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;queues&quot;: [
+        ///    {
+        ///      &quot;queue_id&quot;: &quot;ZWQ33BD1C6E46FFD0D869D32E220D35F4D4&quot;,
+        ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;,
+        ///      &quot;queue_name&quot;: &quot;VoiceQueue&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_business_hours__businessHourId__queues_GET {
+            get {
+                return ResourceManager.GetString("contact_center-business_hours-{businessHourId}-queues_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;business_hours&quot;: [
+        ///    {
+        ///      &quot;business_hour_id&quot;: &quot;66ZjSQ7YTOescnINN_4vog&quot;,
+        ///      &quot;business_hour_name&quot;: &quot;Default Business hours&quot;,
+        ///      &quot;timezone&quot;: &quot;America/New_York&quot;,
+        ///      &quot;account_default&quot;: true,
+        ///      &quot;queues_count&quot;: 1,
+        ///      &quot;flows_count&quot;: 1,
+        ///      &quot;hours&quot;: {
+        ///        &quot;hour_type&quot;: 2,
+        ///        &quot;custom_hours&quot;: [
+        ///          {
+        ///            &quot;day_of_week&quot;: 1,
+        ///            &quot;custom_hour_type&quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_business_hours_GET {
+            get {
+                return ResourceManager.GetString("contact_center-business_hours_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;flows&quot;: [
+        ///    {
+        ///      &quot;flow_id&quot;: &quot;psjHGHrHQbaX8Zk7ldc81Q&quot;,
+        ///      &quot;flow_name&quot;: &quot;Default Flow&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_closures__closureSetId__flows_GET {
+            get {
+                return ResourceManager.GetString("contact_center-closures-{closureSetId}-flows_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;closure_set_id&quot;: &quot;Ixo-Na0bRfCyQ4q2lAryDw&quot;,
+        ///  &quot;closure_set_name&quot;: &quot;Default closure&quot;,
+        ///  &quot;closure_set_description&quot;: &quot;This is a description.&quot;,
+        ///  &quot;timezone&quot;: &quot;America/New_York&quot;,
+        ///  &quot;account_default&quot;: true,
+        ///  &quot;closures&quot;: [
+        ///    {
+        ///      &quot;closure_id&quot;: &quot;ksbJvJ&quot;,
+        ///      &quot;closure_name&quot;: &quot;New Year&quot;,
+        ///      &quot;closure_hour_type&quot;: 2,
+        ///      &quot;start_time&quot;: &quot;2023-01-01T00:00:00-04:00&quot;,
+        ///      &quot;end_time&quot;: &quot;2023-02-01T00:00:00-04:00&quot;,
+        ///      &quot;recurring_frequency&quot;: 2,
+        ///      &quot;recurring_frequency_type&quot;: 2,
+        ///      &quot;recu [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_closures__closureSetId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-closures-{closureSetId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;queues&quot;: [
+        ///    {
+        ///      &quot;queue_id&quot;: &quot;ZWQ33BD1C6E46FFD0D869D32E220D35F4D4&quot;,
+        ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;,
+        ///      &quot;queue_name&quot;: &quot;VoiceQueue&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_closures__closureSetId__queues_GET {
+            get {
+                return ResourceManager.GetString("contact_center-closures-{closureSetId}-queues_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;closure_sets&quot;: [
+        ///    {
+        ///      &quot;closure_set_id&quot;: &quot;Ixo-Na0bRfCyQ4q2lAryDw&quot;,
+        ///      &quot;closure_set_name&quot;: &quot;Default Closure&quot;,
+        ///      &quot;timezone&quot;: &quot;America/New_York&quot;,
+        ///      &quot;account_default&quot;: true,
+        ///      &quot;queues_count&quot;: 1,
+        ///      &quot;flows_count&quot;: 1,
+        ///      &quot;closures&quot;: [
+        ///        {
+        ///          &quot;closure_id&quot;: &quot;ksbJvJ&quot;,
+        ///          &quot;closure_name&quot;: &quot;New Year&quot;,
+        ///          &quot;closure_hour_type&quot;: 2,
+        ///          &quot;start [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_closures_GET {
+            get {
+                return ResourceManager.GetString("contact_center-closures_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;consumer_routing_profile_id&quot;: &quot;-6JPFRKERXymVrf_h2EISQ&quot;,
+        ///  &quot;consumer_routing_profile_name&quot;: &quot;My consumer routing profile&quot;,
+        ///  &quot;consumer_routing_profile_description&quot;: &quot;This is the consumer routing profile\u0027s description.&quot;,
+        ///  &quot;top_priorities&quot;: [
+        ///    {
+        ///      &quot;attribute_type&quot;: &quot;global_variable&quot;,
+        ///      &quot;parameter&quot;: {
+        ///        &quot;ids&quot;: [
+        ///          &quot;mF8W-YRDRHCWyGMl4UNHWA&quot;
+        ///        ],
+        ///        &quot;enter_queue_start_time&quot;: &quot;09:00 AM&quot;,
+        ///        &quot;enter_queue_end_time&quot;: &quot;11:00 PM&quot;,
+        ///        &quot;enter_queue_time [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_consumer_routing_profiles__consumerRoutingProfileId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-consumer_routing_profiles-{consumerRoutingProfileId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;consumer_routing_profiles&quot;: [
+        ///    {
+        ///      &quot;consumer_routing_profile_id&quot;: &quot;-6JPFRKERXymVrf_h2EISQ&quot;,
+        ///      &quot;consumer_routing_profile_name&quot;: &quot;My consumer routing profile&quot;,
+        ///      &quot;consumer_routing_profile_description&quot;: &quot;This is the consumer routing profile\u0027s description.&quot;,
+        ///      &quot;top_priorities&quot;: [
+        ///        {
+        ///          &quot;attribute_type&quot;: &quot;global_variable&quot;,
+        ///          &quot;parameter&quot;: {
+        ///          [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_consumer_routing_profiles_GET {
+            get {
+                return ResourceManager.GetString("contact_center-consumer_routing_profiles_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;disposition_id&quot;: &quot;W_VATTk_Q5aW6z5rZtBxAQ&quot;,
+        ///  &quot;disposition_name&quot;: &quot;Inquiry&quot;,
+        ///  &quot;disposition_description&quot;: &quot;Inquiry dispositions.&quot;,
+        ///  &quot;status&quot;: &quot;inactive&quot;,
+        ///  &quot;queue_count&quot;: 0,
+        ///  &quot;last_modified_time&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;,
+        ///  &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///  &quot;disposition_type&quot;: &quot;multi_level&quot;,
+        ///  &quot;sub_dispositions&quot;: [
+        ///    {
+        ///      &quot;sub_disposition_id&quot;: &quot;OYTRVt3gQ2iAGjoUIjeZxq&quot;,
+        ///      &quot;sub_disposition_name&quot;: &quot;Sub-Disposition A&quot;,
+        ///      &quot;current_index&quot;: 1,
+        ///      &quot;paren [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_dispositions__dispositionId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-dispositions-{dispositionId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;dispositions&quot;: [
+        ///    {
+        ///      &quot;disposition_id&quot;: &quot;W_VATTk_Q5aW6z5rZtBxAQ&quot;,
+        ///      &quot;disposition_name&quot;: &quot;Inquiry&quot;,
+        ///      &quot;disposition_description&quot;: &quot;Inquiry dispositions.&quot;,
+        ///      &quot;status&quot;: &quot;inactive&quot;,
+        ///      &quot;queue_count&quot;: 0,
+        ///      &quot;last_modified_time&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;,
+        ///      &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///      &quot;disposition_type&quot;: &quot;single&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_dispositions_GET {
+            get {
+                return ResourceManager.GetString("contact_center-dispositions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;disposition_set_id&quot;: &quot;saaHWgVMGQU69soco456oNA&quot;,
+        ///  &quot;disposition_set_name&quot;: &quot;Lead created&quot;,
+        ///  &quot;disposition_set_description&quot;: &quot;New leads generated.&quot;,
+        ///  &quot;status&quot;: &quot;inactive&quot;,
+        ///  &quot;last_modified_time&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;,
+        ///  &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///  &quot;dispositions&quot;: [
+        ///    {
+        ///      &quot;disposition_id&quot;: &quot;W_VATTk_Q5aW6z5rZtBxAQ&quot;,
+        ///      &quot;disposition_name&quot;: &quot;Inquiry&quot;
+        ///    }
+        ///  ],
+        ///  &quot;queues&quot;: [
+        ///    {
+        ///      &quot;queue_id&quot;: &quot;d95avl1eRJ-H162PZUJ-qg&quot;,
+        ///      &quot;cc_queue_id&quot;: &quot;d9 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_dispositions_sets__dispositionSetId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-dispositions-sets-{dispositionSetId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;disposition_sets&quot;: [
+        ///    {
+        ///      &quot;disposition_set_id&quot;: &quot;saaHWgVMGQU69soco456oNA&quot;,
+        ///      &quot;disposition_set_name&quot;: &quot;Lead created&quot;,
+        ///      &quot;disposition_set_description&quot;: &quot;New leads generated.&quot;,
+        ///      &quot;status&quot;: &quot;inactive&quot;,
+        ///      &quot;last_modified_time&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;,
+        ///      &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///      &quot;dispositions_count&quot;: 0,
+        ///      &quot;queues_count&quot;: 0
+        ///   [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_dispositions_sets_GET {
+            get {
+                return ResourceManager.GetString("contact_center-dispositions-sets_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;engagement_id&quot;: &quot;DmJzBVygRcaMuPqYar2lxU&quot;,
+        ///  &quot;messages&quot;: [
+        ///    {
+        ///      &quot;content&quot;: &quot;\u003Chtml\u003E\u003Chead\u003E\r\n\u003Cmeta http-equiv=\u0022Content-Type\u0022 content=\u0022text/html; charset=utf-8\u0022\u003E\u003C/head\u003E\u003Cbody\u003E\u003Cdiv dir=\u0022ltr\u0022\u003E\u003Cimg src=\u0022cid:ii_me9niaqb0\u0022 alt=\u0022image.png\u0022 width=\u0022542\u0022 height=\u0022224\u0022\u003E\u003Cbr\u003E\u003C/div\u003E\u003C/body\u003E\u003C/html\u003E&quot;,
+        ///      &quot;text&quot;: &quot;email text&quot;,
+        ///     [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_email_messages_GET {
+            get {
+                return ResourceManager.GetString("contact_center-email-messages_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;attachments&quot;: [
+        ///    {
+        ///      &quot;attachment_id&quot;: &quot;0AYFv9ePSsmPUSJYHorUWQ&quot;,
+        ///      &quot;engagement_id&quot;: &quot;3XilEfOvQEKRIWMWhX1jDg&quot;,
+        ///      &quot;attachment_name&quot;: &quot;GMT20251015-95414_296_lbMMg_boRtaWyHqA87cUuQ_VideoScreenshot.png&quot;,
+        ///      &quot;attachment_url&quot;: &quot;https://api.zoom.us/v2/contact_center/attachment/download/0AYFv9ePSsmPUSJYHorUWQ&quot;,
+        ///      &quot;attachment_alias&quot;: &quot;Screenshot 1.png&quot;,
+        ///      &quot;attachment_size&quot;: 19 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_engagements__engagementId__attachments_GET {
+            get {
+                return ResourceManager.GetString("contact_center-engagements-{engagementId}-attachments_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;engagement_id&quot;: &quot;W_VATTk_Q5aW6z5rZtBxAQ&quot;,
+        ///  &quot;events&quot;: [
+        ///    {
+        ///      &quot;start_time&quot;: &quot;2021-12-03T13:07:46.0000000\u002B00:00&quot;,
+        ///      &quot;event_name&quot;: &quot;Start&quot;,
+        ///      &quot;channel&quot;: &quot;video&quot;,
+        ///      &quot;channel_source&quot;: &quot;in_app_video&quot;,
+        ///      &quot;event_content&quot;: &quot;{\u0022flow_id\u0022: \u0022zwKiV80hQ7CwRg9BEm0Bvw\u0022,\u0022flow_name\u0022: \u0022Demo\u0022}&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_engagements__engagementId__events_GET {
+            get {
+                return ResourceManager.GetString("contact_center-engagements-{engagementId}-events_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;start_time&quot;: &quot;2021-12-03T13:07:46.0000000\u002B00:00&quot;,
+        ///  &quot;end_time&quot;: &quot;2021-12-03T13:07:46.0000000\u002B00:00&quot;,
+        ///  &quot;duration&quot;: 3600,
+        ///  &quot;engagement_id&quot;: &quot;W_VATTk_Q5aW6z5rZtBxAQ&quot;,
+        ///  &quot;channel_types&quot;: [
+        ///    &quot;voice&quot;
+        ///  ],
+        ///  &quot;channels&quot;: [
+        ///    {
+        ///      &quot;channel&quot;: &quot;video&quot;,
+        ///      &quot;channel_source&quot;: &quot;in_app_video&quot;
+        ///    }
+        ///  ],
+        ///  &quot;consumers&quot;: [
+        ///    {
+        ///      &quot;consumer_id&quot;: &quot;zeYjXoDOS_eV1QmTpj63PQ&quot;,
+        ///      &quot;consumer_display_name&quot;: &quot;Jill&quot;,
+        ///      &quot;consumer_number&quot;: &quot;\u002B12058945728&quot;
+        ///    }
+        ///  ],
+        ///  &quot;direct [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_engagements__engagementId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-engagements-{engagementId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;note_id&quot;: &quot;W_VATTk_Q5aW6z5rZtBxAQ&quot;,
+        ///  &quot;engagement_id&quot;: &quot;3XilEfOvQEKRIWMWhX1jDg&quot;,
+        ///  &quot;channel_type&quot;: &quot;voice&quot;,
+        ///  &quot;channel&quot;: &quot;email&quot;,
+        ///  &quot;channel_source&quot;: &quot;email_address&quot;,
+        ///  &quot;note&quot;: &quot;This is the content of the note.&quot;,
+        ///  &quot;last_modified_time&quot;: &quot;2022-05-23T14:15:57.0000000\u002B00:00&quot;,
+        ///  &quot;user_id&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;
+        ///}.
+        /// </summary>
+        internal static string contact_center_engagements__engagementId__notes__noteId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-engagements-{engagementId}-notes-{noteId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;notes&quot;: [
+        ///    {
+        ///      &quot;note_id&quot;: &quot;W_VATTk_Q5aW6z5rZtBxAQ&quot;,
+        ///      &quot;engagement_id&quot;: &quot;3XilEfOvQEKRIWMWhX1jDg&quot;,
+        ///      &quot;channel_type&quot;: &quot;voice&quot;,
+        ///      &quot;channel&quot;: &quot;email&quot;,
+        ///      &quot;channel_source&quot;: &quot;email_address&quot;,
+        ///      &quot;note&quot;: &quot;This is the content of the note.&quot;,
+        ///      &quot;last_modified_time&quot;: &quot;2022-05-23T14:15:57.0000000\u002B00:00&quot;,
+        ///      &quot;user_id&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_engagements__engagementId__notes_GET {
+            get {
+                return ResourceManager.GetString("contact_center-engagements-{engagementId}-notes_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;from&quot;: &quot;2023-01-01T00:00:00-08:00&quot;,
+        ///  &quot;to&quot;: &quot;2023-01-01T01:00:00-08:00&quot;,
+        ///  &quot;recordings&quot;: [
+        ///    {
+        ///      &quot;recording_id&quot;: &quot;ghyetrjj_sdfsdgfkdjfl111&quot;,
+        ///      &quot;queue_id&quot;: &quot;ghyetrjj_2342353rsgfkdjfl&quot;,
+        ///      &quot;cc_queue_id&quot;: &quot;smyko04pSCWt9zLI0nn3AQ&quot;,
+        ///      &quot;queue_name&quot;: &quot;voice&quot;,
+        ///      &quot;recording_duration&quot;: 150,
+        ///      &quot;download_url&quot;: &quot;https://example.com/contact_center/recording/download/01bdb222-9984-4f41-8141-2f760cb398aa [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_engagements__engagementId__recordings_GET {
+            get {
+                return ResourceManager.GetString("contact_center-engagements-{engagementId}-recordings_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;statuses&quot;: [
+        ///    {
+        ///      &quot;status&quot;: &quot;pause&quot;,
+        ///      &quot;last_modified_time&quot;: &quot;2023-01-01T00:00:00Z&quot;
+        ///    }
+        ///  ],
+        ///  &quot;engagement_id&quot;: &quot;W_VATTk_Q5aW6z5rZtBxAQ&quot;,
+        ///  &quot;channel&quot;: &quot;video&quot;,
+        ///  &quot;channel_source&quot;: &quot;live_video&quot;
+        ///}.
+        /// </summary>
+        internal static string contact_center_engagements__engagementId__recordings_status_GET {
+            get {
+                return ResourceManager.GetString("contact_center-engagements-{engagementId}-recordings-status_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;survey_id&quot;: &quot;2yWjT4awTumcFKIrvcf4OA&quot;,
+        ///  &quot;survey_name&quot;: &quot;web chat survey&quot;,
+        ///  &quot;engagement_id&quot;: &quot;I9kVGZJZS5u796LxrKSWWg&quot;,
+        ///  &quot;queue_id&quot;: &quot;2N13_yMTaeYUSYUKqupQQ&quot;,
+        ///  &quot;queue_name&quot;: &quot;queue-chat&quot;,
+        ///  &quot;flow_id&quot;: &quot;--N6BCoPQveeGJSyni57jw&quot;,
+        ///  &quot;flow_name&quot;: &quot;flow-chat&quot;,
+        ///  &quot;survey_trigger_level&quot;: 0,
+        ///  &quot;survey_results&quot;: [
+        ///    {
+        ///      &quot;question_id&quot;: &quot;JocDev1cT-mIHREwDtMTVw&quot;,
+        ///      &quot;question_name&quot;: &quot;What is your suggestion?&quot;,
+        ///      &quot;question_type&quot;: 0,
+        ///      &quot;question_order&quot;: 10,
+        ///      &quot;date_time&quot;: &quot;2024-07- [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_engagements__engagementId__survey_GET {
+            get {
+                return ResourceManager.GetString("contact_center-engagements-{engagementId}-survey_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;from&quot;: &quot;2021-12-10T00:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;to&quot;: &quot;2021-12-10T23:59:59.0000000\u002B00:00&quot;,
+        ///  &quot;engagements&quot;: [
+        ///    {
+        ///      &quot;start_time&quot;: &quot;2021-12-03T13:07:46.0000000\u002B00:00&quot;,
+        ///      &quot;end_time&quot;: &quot;2021-12-03T13:07:46.0000000\u002B00:00&quot;,
+        ///      &quot;duration&quot;: 3600,
+        ///      &quot;engagement_id&quot;: &quot;W_VATTk_Q5aW6z5rZtBxAQ&quot;,
+        ///      &quot;direction&quot;: &quot;inbound&quot;,
+        ///      [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_engagements_GET {
+            get {
+                return ResourceManager.GetString("contact_center-engagements_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;notes&quot;: [
+        ///    {
+        ///      &quot;note_id&quot;: &quot;W_VATTk_Q5aW6z5rZtBxAQ&quot;,
+        ///      &quot;engagement_id&quot;: &quot;3XilEfOvQEKRIWMWhX1jDg&quot;,
+        ///      &quot;channel_type&quot;: &quot;voice&quot;,
+        ///      &quot;channel&quot;: &quot;email&quot;,
+        ///      &quot;channel_source&quot;: &quot;email_address&quot;,
+        ///      &quot;note&quot;: &quot;This is the content of the note.&quot;,
+        ///      &quot;last_modified_time&quot;: &quot;2022-05-23T14:15:57.0000000\u002B00:00&quot;,
+        ///      &quot;user_id&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_engagements_notes_GET {
+            get {
+                return ResourceManager.GetString("contact_center-engagements-notes_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;entry_points&quot;: [
+        ///    {
+        ///      &quot;entry_id&quot;: &quot;xxxxxxxxxx&quot;,
+        ///      &quot;entry_number&quot;: &quot;\u002B1209144732&quot;,
+        ///      &quot;entry_email&quot;: &quot;xxx@example.com&quot;,
+        ///      &quot;entry_name&quot;: &quot;test entry&quot;,
+        ///      &quot;entry_number_type&quot;: 2,
+        ///      &quot;entry_number_country_code&quot;: &quot;US&quot;,
+        ///      &quot;entry_number_area_code&quot;: &quot;209&quot;,
+        ///      &quot;entry_language&quot;: &quot;en-US&quot;
+        ///    }
+        ///  ],
+        ///  &quot;enable_detect_language&quot;: true,
+        ///  &quot;channel&quot;: &quot;messaging&quot;,
+        ///  &quot;channel_source&quot;: &quot;web_chat&quot;
+        ///}.
+        /// </summary>
+        internal static string contact_center_flows__flowId__entry_points_GET {
+            get {
+                return ResourceManager.GetString("contact_center-flows-{flowId}-entry_points_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;flow_id&quot;: &quot;zwKiV80hQ7CwRg9BEm0Bvw&quot;,
+        ///  &quot;flow_name&quot;: &quot;Video Test&quot;,
+        ///  &quot;flow_description&quot;: &quot;A testing flow.&quot;,
+        ///  &quot;channel_type&quot;: &quot;voice&quot;,
+        ///  &quot;channel&quot;: &quot;messaging&quot;,
+        ///  &quot;channel_source&quot;: &quot;web_chat&quot;,
+        ///  &quot;status&quot;: &quot;published&quot;,
+        ///  &quot;modified_by&quot;: &quot;jdhgdhghk376453hjdf&quot;,
+        ///  &quot;last_modified_time&quot;: &quot;2022-08-05T01:55:52Z&quot;,
+        ///  &quot;entry_points&quot;: [
+        ///    {
+        ///      &quot;entry_id&quot;: &quot;x_h7uCj3TtScXWOBnQnKrw&quot;,
+        ///      &quot;entry_name&quot;: &quot;Test video&quot;,
+        ///      &quot;entry_number&quot;: &quot;\u002B16052052430&quot;,
+        ///      &quot;entry_language&quot;: &quot;en-US&quot;,
+        ///      &quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_flows__flowId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-flows-{flowId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;entry_points&quot;: [
+        ///    {
+        ///      &quot;entry_id&quot;: &quot;rDjD-6bvTKyvc7jWuKJOxg&quot;,
+        ///      &quot;entry_number&quot;: &quot;\u002B1209144732&quot;,
+        ///      &quot;entry_name&quot;: &quot;test entry&quot;,
+        ///      &quot;entry_email&quot;: &quot;xxx@example.com&quot;,
+        ///      &quot;entry_number_type&quot;: 2,
+        ///      &quot;entry_number_country_code&quot;: &quot;US&quot;,
+        ///      &quot;entry_number_area_code&quot;: &quot;209&quot;,
+        ///      &quot;channel&quot;: &quot;messaging&quot;,
+        ///      &quot;channel_source&quot;: &quot;web_chat&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_flows_entry_points_GET {
+            get {
+                return ResourceManager.GetString("contact_center-flows_entry_points_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;flows&quot;: [
+        ///    {
+        ///      &quot;flow_id&quot;: &quot;zwKiV80hQ7CwRg9BEm0Bvw&quot;,
+        ///      &quot;flow_name&quot;: &quot;Video Test&quot;,
+        ///      &quot;flow_description&quot;: &quot;A testing flow.&quot;,
+        ///      &quot;channel_type&quot;: &quot;voice&quot;,
+        ///      &quot;channel&quot;: &quot;messaging&quot;,
+        ///      &quot;channel_source&quot;: &quot;web_chat&quot;,
+        ///      &quot;status&quot;: &quot;published&quot;,
+        ///      &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///      &quot;last_modified_time&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;,
+        ///      &quot;ent [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_flows_GET {
+            get {
+                return ResourceManager.GetString("contact_center-flows_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;email_notifications&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///      &quot;email_notification&quot;: true,
+        ///      &quot;display_name&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///      &quot;user_email&quot;: &quot;jchill@example.com&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_inboxes__inboxId__email_notifications_GET {
+            get {
+                return ResourceManager.GetString("contact_center-inboxes-{inboxId}-email_notifications_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;inbox_id&quot;: &quot;W_VATTk_Q5aW6z5rZtBxAQ&quot;,
+        ///  &quot;inbox_name&quot;: &quot;example&quot;,
+        ///  &quot;inbox_description&quot;: &quot;This is a inbox.&quot;,
+        ///  &quot;inbox_type&quot;: &quot;voicemail&quot;,
+        ///  &quot;inbox_content_storage_location&quot;: &quot;US&quot;,
+        ///  &quot;last_modified_time&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;,
+        ///  &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///  &quot;voicemail&quot;: {
+        ///    &quot;soft_delete&quot;: true,
+        ///    &quot;soft_delete_days_limit&quot;: 20,
+        ///    &quot;voicemail_time_limit&quot;: 5,
+        ///    &quot;delete_voicemail_days_limit&quot;: 30,
+        ///    &quot;voicemail_transcription&quot;: false,
+        ///    &quot;voicemail_notific [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_inboxes__inboxId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-inboxes-{inboxId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;messages&quot;: [
+        ///    {
+        ///      &quot;message_id&quot;: &quot;4Q0ILNMfTA2nJolNxhg0Rw&quot;,
+        ///      &quot;inbox_id&quot;: &quot;W_VATTk_Q5aW6z5rZtBxAQ&quot;,
+        ///      &quot;inbox_name&quot;: &quot;example&quot;,
+        ///      &quot;engagement_id&quot;: &quot;xRk0eHNNTGygFDPrWqR9FA&quot;,
+        ///      &quot;created_at&quot;: &quot;2022-05-23T14:15:57.0000000\u002B00:00&quot;,
+        ///      &quot;flow_id&quot;: &quot;1wGgU3HQR8u1wWjPFNXOyA&quot;,
+        ///      &quot;flow_name&quot;: &quot;inbox_message_flow&quot;,
+        ///      &quot;queue_id&quot;: &quot;ZWQ84A20CBBA11AFA5BC55079D5A12A28D7&quot;,
+        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_inboxes__inboxId__messages_GET {
+            get {
+                return ResourceManager.GetString("contact_center-inboxes-{inboxId}-messages_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;queues&quot;: [
+        ///    {
+        ///      &quot;queue_id&quot;: &quot;Ql3qxUWXSHes4PmcOmzyOg&quot;,
+        ///      &quot;cc_queue_id&quot;: &quot;Ql3qxUWXSHes4PmcOmzyOg&quot;,
+        ///      &quot;queue_name&quot;: &quot;queue_661c6e4b-89fc-4b0d-9978-c7394725462&quot;,
+        ///      &quot;agents_count&quot;: 1,
+        ///      &quot;supervisors_count&quot;: 1,
+        ///      &quot;channel_types&quot;: [
+        ///        &quot;voice&quot;
+        ///      ],
+        ///      &quot;channel&quot;: &quot;voice&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_inboxes__inboxId__queues_GET {
+            get {
+                return ResourceManager.GetString("contact_center-inboxes-{inboxId}-queues_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;users&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///      &quot;display_name&quot;: &quot;Jill&quot;,
+        ///      &quot;user_email&quot;: &quot;jchill@example.com&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_inboxes__inboxId__users_GET {
+            get {
+                return ResourceManager.GetString("contact_center-inboxes-{inboxId}-users_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;inboxes&quot;: [
+        ///    {
+        ///      &quot;inbox_id&quot;: &quot;W_VATTk_Q5aW6z5rZtBxAQ&quot;,
+        ///      &quot;inbox_name&quot;: &quot;example&quot;,
+        ///      &quot;inbox_type&quot;: &quot;voicemail&quot;,
+        ///      &quot;access_user_count&quot;: 5,
+        ///      &quot;access_queue_count&quot;: 5,
+        ///      &quot;last_modified_time&quot;: &quot;2022-05-23T14:15:57.0000000\u002B00:00&quot;,
+        ///      &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_inboxes_GET {
+            get {
+                return ResourceManager.GetString("contact_center-inboxes_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;messages&quot;: [
+        ///    {
+        ///      &quot;message_id&quot;: &quot;4Q0ILNMfTA2nJolNxhg0Rw&quot;,
+        ///      &quot;inbox_id&quot;: &quot;W_VATTk_Q5aW6z5rZtBxAQ&quot;,
+        ///      &quot;inbox_name&quot;: &quot;example&quot;,
+        ///      &quot;engagement_id&quot;: &quot;xRk0eHNNTGygFDPrWqR9FA&quot;,
+        ///      &quot;created_at&quot;: &quot;2022-05-23T14:15:57.0000000\u002B00:00&quot;,
+        ///      &quot;flow_id&quot;: &quot;1wGgU3HQR8u1wWjPFNXOyA&quot;,
+        ///      &quot;flow_name&quot;: &quot;inbox_message_flow&quot;,
+        ///      &quot;queue_id&quot;: &quot;ZWQ84A20CBBA11AFA5BC55079D5A12A28D7&quot;,
+        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_inboxes_messages_GET {
+            get {
+                return ResourceManager.GetString("contact_center-inboxes-messages_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;from&quot;: &quot;\u002B12090000000&quot;,
+        ///  &quot;to&quot;: &quot;\u002B12090001111&quot;,
+        ///  &quot;message_id&quot;: &quot;f21b5055-5ec2-4e3f-8dde-916d4f76a2ee&quot;
+        ///}.
+        /// </summary>
+        internal static string contact_center_messages_POST {
+            get {
+                return ResourceManager.GetString("contact_center-messages_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;messages&quot;: [
+        ///    {
+        ///      &quot;message_id&quot;: &quot;lKK_xlqXQWex0mKUYyGHUw&quot;,
+        ///      &quot;content&quot;: {
+        ///        &quot;type&quot;: &quot;text&quot;,
+        ///        &quot;value&quot;: &quot;Hi, I\u0027m your virtual agent!&quot;
+        ///      },
+        ///      &quot;sent_time&quot;: &quot;2024-12-03T13:07:46.1230000\u002B00:00&quot;,
+        ///      &quot;sender_participant_id&quot;: &quot;wMLp6VvjTc6A1mkiwHt3dQ&quot;,
+        ///      &quot;sender_participant_name&quot;: &quot;Agent Alice&quot;,
+        ///      &quot;message_type&quot;: &quot;system&quot;
+        ///    }
+        ///  ],
+        ///  &quot;has_more&quot;: false,
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;
+        ///}.
+        /// </summary>
+        internal static string contact_center_messaging_messages_GET {
+            get {
+                return ResourceManager.GetString("contact_center-messaging-messages_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;outbound_campaign_id&quot;: &quot;TY_XsJuWR9ehXrsf1DSIAQ&quot;,
+        ///  &quot;outbound_campaign_name&quot;: &quot;My outbound campaign&quot;,
+        ///  &quot;outbound_campaign_description&quot;: &quot;My outbound campaign description&quot;,
+        ///  &quot;queue_id&quot;: &quot;TY_XsJuWR9ehXrsf1DSIAQ&quot;,
+        ///  &quot;queue_name&quot;: &quot;My queue name&quot;,
+        ///  &quot;phone_number_id&quot;: &quot;XfTPrZjyR5W6QgNARdtGlw&quot;,
+        ///  &quot;outbound_campaign_status&quot;: &quot;draft&quot;,
+        ///  &quot;dialing_method&quot;: &quot;progressive&quot;,
+        ///  &quot;dialing_method_settings&quot;: null,
+        ///  &quot;outbound_campaign_priority&quot;: 5,
+        ///  &quot;campaign_contact_list&quot;: [
+        ///    {
+        ///      &quot;contact_list_id&quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_outbound_campaign_campaigns__campaignId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-outbound_campaign-campaigns-{campaignId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;outbound_campaign_items&quot;: [
+        ///    {
+        ///      &quot;outbound_campaign_id&quot;: &quot;TY_XsJuWR9ehXrsf1DSIAQ&quot;,
+        ///      &quot;outbound_campaign_name&quot;: &quot;My outbound campaign&quot;,
+        ///      &quot;outbound_campaign_description&quot;: &quot;My outbound campaign description&quot;,
+        ///      &quot;outbound_campaign_status&quot;: &quot;paused&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_outbound_campaign_campaigns_GET {
+            get {
+                return ResourceManager.GetString("contact_center-outbound_campaign-campaigns_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;contact_id&quot;: &quot;07UQHRzvQ02R_o-l9pBB4w&quot;,
+        ///  &quot;contact_display_name&quot;: &quot;Display Name&quot;,
+        ///  &quot;contact_first_name&quot;: &quot;First Name&quot;,
+        ///  &quot;contact_last_name&quot;: &quot;Last Name&quot;,
+        ///  &quot;contact_phones&quot;: [
+        ///    {
+        ///      &quot;contact_phone_number&quot;: &quot;\u002B12345551100&quot;,
+        ///      &quot;contact_phone_type&quot;: &quot;Main&quot;
+        ///    }
+        ///  ],
+        ///  &quot;contact_emails&quot;: [
+        ///    &quot;test@gmail.com&quot;
+        ///  ],
+        ///  &quot;contact_location&quot;: &quot;Location&quot;,
+        ///  &quot;contact_account_number&quot;: &quot;123&quot;,
+        ///  &quot;contact_company&quot;: &quot;zoom&quot;,
+        ///  &quot;contact_role&quot;: &quot;developer&quot;,
+        ///  &quot;contact_timezone&quot;: &quot;America/L [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_outbound_campaign_contact_lists__contactListId__contacts__contactId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-outbound_campaign-contact_lists-{contactListId}-contacts-{contactI" +
+                        "d}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;contacts&quot;: [
+        ///    {
+        ///      &quot;contact_id&quot;: &quot;07UQHRzvQ02R_o-l9pBB4w&quot;,
+        ///      &quot;contact_display_name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;contact_first_name&quot;: &quot;Jill&quot;,
+        ///      &quot;contact_last_name&quot;: &quot;Chill&quot;,
+        ///      &quot;contact_phones&quot;: [
+        ///        {
+        ///          &quot;contact_phone_number&quot;: &quot;\u002B12345551100&quot;,
+        ///          &quot;contact_phone_type&quot;: &quot;Main&quot;
+        ///        }
+        ///      ],
+        ///      &quot;contact_emails&quot;: [
+        ///        &quot;test@example.com&quot;
+        ///     [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_outbound_campaign_contact_lists__contactListId__contacts_GET {
+            get {
+                return ResourceManager.GetString("contact_center-outbound_campaign-contact_lists-{contactListId}-contacts_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;contact_list_id&quot;: &quot;MN2Dtcb2T-yT5CU3clN-AA&quot;,
+        ///  &quot;contact_list_name&quot;: &quot;Contact List&quot;,
+        ///  &quot;contact_list_description&quot;: &quot;Description&quot;,
+        ///  &quot;contacts_count&quot;: 1
+        ///}.
+        /// </summary>
+        internal static string contact_center_outbound_campaign_contact_lists__contactListId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-outbound_campaign-contact_lists-{contactListId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;contact_lists&quot;: [
+        ///    {
+        ///      &quot;contact_list_id&quot;: &quot;MN2Dtcb2T-yT5CU3clN-AA&quot;,
+        ///      &quot;contact_list_name&quot;: &quot;Contact List&quot;,
+        ///      &quot;contact_list_description&quot;: &quot;Description&quot;,
+        ///      &quot;contacts_count&quot;: 1
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_outbound_campaign_contact_lists_GET {
+            get {
+                return ResourceManager.GetString("contact_center-outbound_campaign-contact_lists_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;3Y42JUhtdR7yav3CwXpQxzCA8b8LjPGySQ2&quot;,
+        ///  &quot;page_size&quot;: 5,
+        ///  &quot;total_records&quot;: 5,
+        ///  &quot;queue_templates&quot;: [
+        ///    {
+        ///      &quot;template_id&quot;: &quot;cIInrJZUQWy12qoLPASXLw&quot;,
+        ///      &quot;template_name&quot;: &quot;voice add template 9&quot;,
+        ///      &quot;template_description&quot;: &quot;test voice add template 9&quot;,
+        ///      &quot;channel&quot;: &quot;voice&quot;,
+        ///      &quot;template_type&quot;: &quot;add&quot;,
+        ///      &quot;template_status&quot;: &quot;active&quot;,
+        ///      &quot;template_need_attention&quot;: false,
+        ///      &quot;modified_by&quot;: &quot;CXF7npCJTQ2i3blpn9tSCw&quot;,
+        ///      &quot;last_modified_time&quot;: &quot;2025-05 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_queue_templates_GET {
+            get {
+                return ResourceManager.GetString("contact_center-queue_templates_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;agents&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;ukAAkZKfROKMSw1bj_RDFQ&quot;,
+        ///      &quot;display_name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;user_email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;role_id&quot;: &quot;zeYjXoDOS_eV1QmTpj63PQ&quot;,
+        ///      &quot;role_name&quot;: &quot;Agent&quot;,
+        ///      &quot;status_id&quot;: &quot;1&quot;,
+        ///      &quot;status_name&quot;: &quot;Offline&quot;,
+        ///      &quot;user_access&quot;: &quot;active&quot;,
+        ///      &quot;opt_in_out_status&quot;: 0
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_queues__queueId__agents_GET {
+            get {
+                return ResourceManager.GetString("contact_center-queues-{queueId}-agents_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;dispositions&quot;: [
+        ///    {
+        ///      &quot;disposition_id&quot;: &quot;W_VATTk_Q5aW6z5rZtBxAQ&quot;,
+        ///      &quot;disposition_name&quot;: &quot;Inquiry&quot;,
+        ///      &quot;disposition_description&quot;: &quot;Inquiry dispositions.&quot;,
+        ///      &quot;status&quot;: &quot;inactive&quot;,
+        ///      &quot;last_modified_time&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;,
+        ///      &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///      &quot;queue_name&quot;: &quot;default voice queue&quot;,
+        ///      &quot;cc_queue_id&quot;: &quot;11Fx7UtNQaaWBM [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_queues__queueId__dispositions_GET {
+            get {
+                return ResourceManager.GetString("contact_center-queues-{queueId}-dispositions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;disposition_sets&quot;: [
+        ///    {
+        ///      &quot;disposition_set_id&quot;: &quot;W_VATTk_Q5aW6z5rZtBxAQ&quot;,
+        ///      &quot;disposition_set_name&quot;: &quot;Inquiry&quot;,
+        ///      &quot;disposition_set_description&quot;: &quot;Inquiry dispositions.&quot;,
+        ///      &quot;status&quot;: &quot;inactive&quot;,
+        ///      &quot;last_modified_time&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;,
+        ///      &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///      &quot;queue_name&quot;: &quot;default voice queue&quot;,
+        ///      &quot;cc_queue_id&quot;: [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_queues__queueId__dispositions_sets_GET {
+            get {
+                return ResourceManager.GetString("contact_center-queues-{queueId}-dispositions-sets_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;queue_id&quot;: &quot;zeYjXoDOS_eV1QmTpj63PQ&quot;,
+        ///  &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;,
+        ///  &quot;queue_name&quot;: &quot;queue_661c6e4b-89fc-4b0d-9978-c7394725462&quot;,
+        ///  &quot;queue_description&quot;: &quot;This is a task queue.&quot;,
+        ///  &quot;dispositions_count&quot;: 1,
+        ///  &quot;disposition_sets_count&quot;: 1,
+        ///  &quot;channel_types&quot;: [
+        ///    &quot;voice&quot;
+        ///  ],
+        ///  &quot;channel&quot;: &quot;voice&quot;,
+        ///  &quot;max_wait_time&quot;: 50,
+        ///  &quot;wrap_up_time&quot;: 50,
+        ///  &quot;max_engagement_in_queue&quot;: 50,
+        ///  &quot;short_abandon&quot;: {
+        ///    &quot;enable&quot;: false,
+        ///    &quot;threshold&quot;: 5
+        ///  },
+        ///  &quot;distribution_type&quot;: 1,
+        ///  &quot;distribu [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_queues__queueId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-queues-{queueId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;business_hour_id&quot;: &quot;66ZjSQ7YTOescnINN_4vog&quot;,
+        ///  &quot;business_hour_name&quot;: &quot;Default Business hours&quot;,
+        ///  &quot;closure_set_id&quot;: &quot;Ixo-Na0bRfCyQ4q2lAryDw&quot;,
+        ///  &quot;closure_set_name&quot;: &quot;Default Closure&quot;,
+        ///  &quot;account_default_business_hour&quot;: true,
+        ///  &quot;account_default_closure_set&quot;: true,
+        ///  &quot;operating_hours_overflow_enabled&quot;: true,
+        ///  &quot;overflow_to_default_goodbye_message&quot;: true,
+        ///  &quot;overflow_to_goodbye_message_asset_id&quot;: &quot;dORBRSTxTN6B0vLJ37Kvnw&quot;,
+        ///  &quot;overflow_to_goodbye_message_asset_name&quot;: &quot;message&quot;,
+        ///  &quot;overflow_to_queue [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_queues__queueId__operating_hours_GET {
+            get {
+                return ResourceManager.GetString("contact_center-queues-{queueId}-operating_hours_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;from&quot;: &quot;2023-01-01T00:00:00-08:00&quot;,
+        ///  &quot;to&quot;: &quot;2023-01-01T01:00:00-08:00&quot;,
+        ///  &quot;recordings&quot;: [
+        ///    {
+        ///      &quot;recording_id&quot;: &quot;ghyetrjj_sdfsdgfkdjfl111&quot;,
+        ///      &quot;queue_id&quot;: &quot;ghyetrjj_2342353rsgfkdjfl&quot;,
+        ///      &quot;cc_queue_id&quot;: &quot;smyko04pSCWt9zLI0nn3AQ&quot;,
+        ///      &quot;queue_name&quot;: &quot;voice&quot;,
+        ///      &quot;recording_duration&quot;: 150,
+        ///      &quot;download_url&quot;: &quot;https://example.com/contact_center/recording/download/01bdb222-9984-4f41-8141-2f760cb398aa [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_queues__queueId__recordings_GET {
+            get {
+                return ResourceManager.GetString("contact_center-queues-{queueId}-recordings_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;slot_duration&quot;: 15,
+        ///  &quot;booking_days&quot;: [
+        ///    {
+        ///      &quot;slot_date&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///      &quot;slots&quot;: [
+        ///        {
+        ///          &quot;available_count&quot;: 2,
+        ///          &quot;start_time&quot;: &quot;2025-06-18T15:00:00.0000000\u002B00:00&quot;,
+        ///          &quot;availability_status&quot;: &quot;available&quot;
+        ///        }
+        ///      ]
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_queues__queueId__scheduled_callbacks_supportive_slots_GET {
+            get {
+                return ResourceManager.GetString("contact_center-queues-{queueId}-scheduled_callbacks-supportive_slots_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;supervisors&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;ukAAkZKfROKMSw1bj_RDFQ&quot;,
+        ///      &quot;display_name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;user_email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;role_id&quot;: &quot;zeYjXoDOS_eV1QmTpj63PQ&quot;,
+        ///      &quot;role_name&quot;: &quot;Agent&quot;,
+        ///      &quot;status_id&quot;: &quot;1&quot;,
+        ///      &quot;status_name&quot;: &quot;Offline&quot;,
+        ///      &quot;user_access&quot;: &quot;active&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_queues__queueId__supervisors_GET {
+            get {
+                return ResourceManager.GetString("contact_center-queues-{queueId}-supervisors_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;queues&quot;: [
+        ///    {
+        ///      &quot;queue_id&quot;: &quot;zeYjXoDOS_eV1QmTpj63PQ&quot;,
+        ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;,
+        ///      &quot;queue_name&quot;: &quot;queue_661c6e4b-89fc-4b0d-9978-c7394725462&quot;,
+        ///      &quot;agents_count&quot;: 1,
+        ///      &quot;supervisors_count&quot;: 1,
+        ///      &quot;channel_types&quot;: [
+        ///        &quot;voice&quot;
+        ///      ],
+        ///      &quot;channel&quot;: &quot;voice&quot;,
+        ///      &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///      &quot;last_modified_time&quot;: &quot;2022-02-15 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_queues_GET {
+            get {
+                return ResourceManager.GetString("contact_center-queues_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;from&quot;: &quot;2023-01-01T00:00:00-08:00&quot;,
+        ///  &quot;to&quot;: &quot;2023-01-01T01:00:00-08:00&quot;,
+        ///  &quot;recordings&quot;: [
+        ///    {
+        ///      &quot;recording_id&quot;: &quot;ghyetrjj_sdfsdgfkdjfl111&quot;,
+        ///      &quot;queue_id&quot;: &quot;ghyetrjj_2342353rsgfkdjfl&quot;,
+        ///      &quot;cc_queue_id&quot;: &quot;smyko04pSCWt9zLI0nn3AQ&quot;,
+        ///      &quot;queue_name&quot;: &quot;voice&quot;,
+        ///      &quot;recording_duration&quot;: 150,
+        ///      &quot;download_url&quot;: &quot;https://example.com/contact_center/recording/download/01bdb222-9984-4f41-8141-2f760cb398aa [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_recordings_GET {
+            get {
+                return ResourceManager.GetString("contact_center-recordings_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;region_id&quot;: &quot;36c8dc7c-695f-11ed-a081-0a514d46f86b&quot;,
+        ///  &quot;region_name&quot;: &quot;Main Region&quot;,
+        ///  &quot;sip_zone_id&quot;: &quot;AfgzMEweSQ6tqzC8jhYJ2A&quot;,
+        ///  &quot;sip_zone_name&quot;: &quot;zccsipzone&quot;,
+        ///  &quot;is_main_region&quot;: true
+        ///}.
+        /// </summary>
+        internal static string contact_center_regions__regionId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-regions-{regionId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;users&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;ukAAkZKfROKMSw1bj_RDFQ&quot;,
+        ///      &quot;display_name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;user_email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;role_id&quot;: &quot;27302393-4784-11ec-a3cd-122e3e29bb87&quot;,
+        ///      &quot;role_name&quot;: &quot;Agent&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_regions__regionId__users_GET {
+            get {
+                return ResourceManager.GetString("contact_center-regions-{regionId}-users_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;regions&quot;: [
+        ///    {
+        ///      &quot;region_id&quot;: &quot;36c8dc7c-695f-11ed-a081-0a514d46f86b&quot;,
+        ///      &quot;region_name&quot;: &quot;Main Region&quot;,
+        ///      &quot;is_main_region&quot;: true,
+        ///      &quot;sip_zone_id&quot;: &quot;AfgzMEweSQ6tqzC8jhYJ2A&quot;,
+        ///      &quot;sip_zone_name&quot;: &quot;zccsipzone&quot;,
+        ///      &quot;users_count&quot;: 20,
+        ///      &quot;last_modified_time&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_regions_GET {
+            get {
+                return ResourceManager.GetString("contact_center-regions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;region_name&quot;: &quot;Customer region&quot;,
+        ///  &quot;region_id&quot;: &quot;6c8dc7c-695f-11ed-a081-0a514d46f86b&quot;,
+        ///  &quot;sip_zone_id&quot;: &quot;AfgzMEweSQ6tqzC8jhYJ2A&quot;
+        ///}.
+        /// </summary>
+        internal static string contact_center_regions_POST {
+            get {
+                return ResourceManager.GetString("contact_center-regions_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;operation_logs&quot;: [
+        ///    {
+        ///      &quot;time&quot;: &quot;2024-04-25T07:51:30.0000000\u002B00:00&quot;,
+        ///      &quot;operator&quot;: &quot;test@zoomtest.us&quot;,
+        ///      &quot;category&quot;: &quot;Account&quot;,
+        ///      &quot;object_name&quot;: &quot;test user&quot;,
+        ///      &quot;operation_log_id&quot;: &quot;VD8z8Q4UT4yGWhpiGdk5bw&quot;,
+        ///      &quot;action&quot;: &quot;Create&quot;,
+        ///      &quot;operation_detail&quot;: &quot;Add Flows: [inbox-voicemail]&quot;,
+        ///      &quot;agent_region_id&quot;: &quot;test_region_id&quot;,
+        ///      &quot;agent_region_name&quot;: &quot;te [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_reports_operation_logs_GET {
+            get {
+                return ResourceManager.GetString("contact_center-reports-operation_logs_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;role_id&quot;: &quot;zeYjXoDOS_eV1QmTpj63PQ&quot;,
+        ///  &quot;role_name&quot;: &quot;Agent&quot;,
+        ///  &quot;role_description&quot;: &quot;Agent role.&quot;,
+        ///  &quot;total_users&quot;: 3,
+        ///  &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///  &quot;last_modified_time&quot;: &quot;2022-03-03T05:07:46.0000000\u002B00:00&quot;,
+        ///  &quot;privileges&quot;: {
+        ///    &quot;analytics_settings&quot;: [
+        ///      &quot;RptWallboard:Read&quot;
+        ///    ],
+        ///    &quot;administration_settings&quot;: [
+        ///      &quot;VecUser:Read&quot;
+        ///    ],
+        ///    &quot;general_settings&quot;: [
+        ///      &quot;outbound-voice-call&quot;
+        ///    ]
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string contact_center_roles__roleId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-roles-{roleId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;users&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;ukAAkZKfROKMSw1bj_RDFQ&quot;,
+        ///      &quot;display_name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;user_email&quot;: &quot;user@example.com&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_roles__roleId__users_GET {
+            get {
+                return ResourceManager.GetString("contact_center-roles-{roleId}-users_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;roles&quot;: [
+        ///    {
+        ///      &quot;role_id&quot;: &quot;-7uu_aUQRL-zXybozrSBWw&quot;,
+        ///      &quot;role_name&quot;: &quot;Agent&quot;,
+        ///      &quot;role_description&quot;: &quot;Agent role.&quot;,
+        ///      &quot;total_users&quot;: 3,
+        ///      &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///      &quot;last_modified_time&quot;: &quot;2022-03-03T05:07:46.0000000\u002B00:00&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_roles_GET {
+            get {
+                return ResourceManager.GetString("contact_center-roles_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;skill_id&quot;: &quot;saaHWgVMGQU69soco456oNA&quot;,
+        ///  &quot;skill_name&quot;: &quot;French&quot;,
+        ///  &quot;skill_type&quot;: &quot;text&quot;,
+        ///  &quot;max_proficiency_level&quot;: 5,
+        ///  &quot;skill_category_name&quot;: &quot;Languages&quot;,
+        ///  &quot;skill_category_id&quot;: &quot;rvYVEioQQduHb5iHCj7-kg&quot;,
+        ///  &quot;total_users&quot;: 5,
+        ///  &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///  &quot;last_modified_time&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;
+        ///}.
+        /// </summary>
+        internal static string contact_center_skills__skillId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-skills-{skillId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;users&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///      &quot;display_name&quot;: &quot;Jill&quot;,
+        ///      &quot;user_email&quot;: &quot;jchill@example.com&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_skills__skillId__users_GET {
+            get {
+                return ResourceManager.GetString("contact_center-skills-{skillId}-users_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;skill_category_id&quot;: &quot;Mu_IEZZHQZGMY9avK74kwA&quot;,
+        ///  &quot;skill_category_name&quot;: &quot;Languages&quot;,
+        ///  &quot;skill_category_description&quot;: &quot;Medium proficiency.&quot;,
+        ///  &quot;max_proficiency_level&quot;: 5,
+        ///  &quot;skill_type&quot;: &quot;text&quot;,
+        ///  &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///  &quot;last_modified_time&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;
+        ///}.
+        /// </summary>
+        internal static string contact_center_skills_categories__skillCategoryId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-skills-categories-{skillCategoryId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;H13iGyIFKCICxrYDlrppjJcDvN2jcBnRzD2&quot;,
+        ///  &quot;page_size&quot;: 1,
+        ///  &quot;skill_categories&quot;: [
+        ///    {
+        ///      &quot;skill_category_id&quot;: &quot;Mu_IEZZHQZGMY9avK74kwA&quot;,
+        ///      &quot;skill_category_name&quot;: &quot;Languages&quot;,
+        ///      &quot;skill_category_description&quot;: &quot;Medium proficiency.&quot;,
+        ///      &quot;max_proficiency_level&quot;: 5,
+        ///      &quot;total_agent_routing_profiles&quot;: 5,
+        ///      &quot;skill_type&quot;: &quot;text&quot;,
+        ///      &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///      &quot;last_modified_time&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_skills_categories_GET {
+            get {
+                return ResourceManager.GetString("contact_center-skills-categories_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;jA5csQv1W1oXuYZLspNIZzMOXqTD9r9Rje2&quot;,
+        ///  &quot;page_size&quot;: 1,
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;skills&quot;: [
+        ///    {
+        ///      &quot;skill_id&quot;: &quot;saaHWgVMGQU69soco456oNA&quot;,
+        ///      &quot;skill_name&quot;: &quot;French&quot;,
+        ///      &quot;skill_type&quot;: &quot;text&quot;,
+        ///      &quot;max_proficiency_level&quot;: 5,
+        ///      &quot;skill_category_name&quot;: &quot;Languages&quot;,
+        ///      &quot;skill_category_id&quot;: &quot;rvYVEioQQduHb5iHCj7-kg&quot;,
+        ///      &quot;total_users&quot;: 5,
+        ///      &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///      &quot;last_modified_time&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;
+        ///    [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_skills_GET {
+            get {
+                return ResourceManager.GetString("contact_center-skills_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;from&quot;: &quot;2023-01-01T08:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;to&quot;: &quot;2023-01-01T09:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;sms&quot;: [
+        ///    {
+        ///      &quot;direction&quot;: &quot;inbound&quot;,
+        ///      &quot;engagement_id&quot;: &quot;3XilEfOvQEKRIWMWhX1jDg&quot;,
+        ///      &quot;contact_center_number&quot;: &quot;\u002B18108001001&quot;,
+        ///      &quot;start_time&quot;: &quot;2023-01-01T08:00:00.0000000\u002B00:00&quot;,
+        ///      &quot;end_time&quot;: &quot;2023-01-01T09:00:00.0000000\u002B00:00&quot;,
+        ///      &quot;consumer_number&quot;: [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_sms_GET {
+            get {
+                return ResourceManager.GetString("contact_center-sms_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;status_id&quot;: &quot;1&quot;,
+        ///  &quot;status_name&quot;: &quot;Lunch&quot;,
+        ///  &quot;status_type&quot;: &quot;default&quot;,
+        ///  &quot;status_category&quot;: &quot;agent_status&quot;,
+        ///  &quot;enable&quot;: true,
+        ///  &quot;status_assigned_queues&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;123&quot;,
+        ///      &quot;value&quot;: &quot;customer queue&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_system_statuses__statusId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-system_statuses-{statusId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;statuses&quot;: [
+        ///    {
+        ///      &quot;status_id&quot;: &quot;1&quot;,
+        ///      &quot;status_name&quot;: &quot;Lunch&quot;,
+        ///      &quot;status_type&quot;: &quot;default&quot;,
+        ///      &quot;status_category&quot;: &quot;agent_status&quot;,
+        ///      &quot;enable&quot;: true,
+        ///      &quot;status_assigned_queues&quot;: [
+        ///        {
+        ///          &quot;id&quot;: &quot;123&quot;,
+        ///          &quot;value&quot;: &quot;customer queue&quot;
+        ///        }
+        ///      ]
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_system_statuses_GET {
+            get {
+                return ResourceManager.GetString("contact_center-system_statuses_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;agents&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;T_X0vrroQPO4UwXGNeBS8A&quot;,
+        ///      &quot;user_display_name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;user_email&quot;: &quot;jchill@example.com&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_teams__teamId__agents_GET {
+            get {
+                return ResourceManager.GetString("contact_center-teams-{teamId}-agents_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;level&quot;: 1,
+        ///  &quot;child_teams&quot;: [
+        ///    {
+        ///      &quot;team_id&quot;: &quot;2mDPBg3vSYC_l6crQgeCkA&quot;,
+        ///      &quot;team_name&quot;: &quot;Parent team&quot;,
+        ///      &quot;level&quot;: 1,
+        ///      &quot;parent_team_id&quot;: &quot;CDl0Wx89Tx-2XBoYVz12DF&quot;,
+        ///      &quot;has_children&quot;: true
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_teams__teamId__children_GET {
+            get {
+                return ResourceManager.GetString("contact_center-teams-{teamId}-children_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;team_id&quot;: &quot;2mDPBg3vSYC_l6crQgeCkA&quot;,
+        ///  &quot;team_name&quot;: &quot;Online team&quot;,
+        ///  &quot;parent_team_id&quot;: &quot;CDl0Wx89Tx-2XBoYVz12DF&quot;,
+        ///  &quot;parent_team_name&quot;: &quot;Online sale team&quot;,
+        ///  &quot;team_description&quot;: &quot;This is online team&quot;,
+        ///  &quot;created_time&quot;: &quot;2025-06-09T07:21:57.0000000\u002B00:00&quot;,
+        ///  &quot;modify_time&quot;: &quot;2025-06-09T07:21:57.0000000\u002B00:00&quot;
+        ///}.
+        /// </summary>
+        internal static string contact_center_teams__teamId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-teams-{teamId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;team_id&quot;: &quot;2mDPBg3vSYC_l6crQgeCkA&quot;,
+        ///  &quot;team_name&quot;: &quot;Test team&quot;,
+        ///  &quot;level&quot;: 0,
+        ///  &quot;parent_teams&quot;: [
+        ///    {
+        ///      &quot;team_id&quot;: &quot;2mDPBg3vSYC_l6crQgeCkA&quot;,
+        ///      &quot;team_name&quot;: &quot;Parent team&quot;,
+        ///      &quot;level&quot;: -1,
+        ///      &quot;parent_team_id&quot;: &quot;CDl0Wx89Tx-2XBoYVz12DF&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_teams__teamId__parents_GET {
+            get {
+                return ResourceManager.GetString("contact_center-teams-{teamId}-parents_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;supervisors&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;T_X0vrroQPO4UwXGNeBS8A&quot;,
+        ///      &quot;user_display_name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;user_email&quot;: &quot;jchill@example.com&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_teams__teamId__supervisors_GET {
+            get {
+                return ResourceManager.GetString("contact_center-teams-{teamId}-supervisors_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;teams&quot;: [
+        ///    {
+        ///      &quot;team_id&quot;: &quot;2mDPBg3vSYC_l6crQgeCkA&quot;,
+        ///      &quot;team_name&quot;: &quot;Sales Team&quot;,
+        ///      &quot;team_description&quot;: &quot;This is online team&quot;,
+        ///      &quot;parent_team_id&quot;: &quot;CDl0Wx89Tx-2XBoYVz12DF&quot;,
+        ///      &quot;parent_team_name&quot;: &quot;Online sale team&quot;,
+        ///      &quot;created_time&quot;: &quot;2025-09-09T07:21:57.0000000\u002B00:00&quot;,
+        ///      &quot;modify_time&quot;: &quot;2025-09-09T07:21:57.0000000\u002B00:00&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_teams_GET {
+            get {
+                return ResourceManager.GetString("contact_center-teams_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;devices&quot;: [
+        ///    {
+        ///      &quot;device_id&quot;: &quot;ZoomClient-CCITab-Tnxa76dLQ_SZwxmCP3bIOA&quot;,
+        ///      &quot;device_version&quot;: &quot;6.2.3.40682&quot;,
+        ///      &quot;sip_registration_information&quot;: {
+        ///        &quot;registration_success&quot;: true
+        ///      },
+        ///      &quot;device_type&quot;: &quot;pwa&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_users__userId__devices_GET {
+            get {
+                return ResourceManager.GetString("contact_center-users-{userId}-devices_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;user_id&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///  &quot;display_name&quot;: &quot;Jill&quot;,
+        ///  &quot;user_email&quot;: &quot;jchill@example.com&quot;,
+        ///  &quot;role_id&quot;: &quot;27302393-4784-11ec-a3cd-122e3e29bb87&quot;,
+        ///  &quot;role_name&quot;: &quot;Admin&quot;,
+        ///  &quot;client_integration&quot;: &quot;Salesforce&quot;,
+        ///  &quot;client_integration_name&quot;: &quot;integration-test&quot;,
+        ///  &quot;status_id&quot;: &quot;2&quot;,
+        ///  &quot;status_name&quot;: &quot;Not Ready&quot;,
+        ///  &quot;sub_status_id&quot;: &quot;21&quot;,
+        ///  &quot;sub_status_name&quot;: &quot;Meal&quot;,
+        ///  &quot;user_access&quot;: &quot;active&quot;,
+        ///  &quot;country_iso_code&quot;: &quot;US&quot;,
+        ///  &quot;region_id&quot;: &quot;8f71O6rWT8KFUGQmJIFAdQ&quot;,
+        ///  &quot;region_name&quot;: &quot;Main Regio [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_users__userId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-users-{userId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;queues&quot;: [
+        ///    {
+        ///      &quot;queue_id&quot;: &quot;Ql3qxUWXSHes4PmcOmzyOg&quot;,
+        ///      &quot;queue_name&quot;: &quot;queue_661c6e4b-89fc-4b0d-9978-c7394725462&quot;,
+        ///      &quot;cc_queue_id&quot;: &quot;a4lCNeq2SzKbgkcDVbjCZQ&quot;,
+        ///      &quot;channel&quot;: &quot;voice&quot;,
+        ///      &quot;user_assignment_type&quot;: &quot;agent&quot;,
+        ///      &quot;queue_description&quot;: &quot;test voice queue 500&quot;,
+        ///      &quot;caller_ids&quot;: [
+        ///        &quot;\u002B18667202634&quot;
+        ///      ]
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_users__userId__queues_GET {
+            get {
+                return ResourceManager.GetString("contact_center-users-{userId}-queues_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;from&quot;: &quot;2023-01-01T00:00:00-08:00&quot;,
+        ///  &quot;to&quot;: &quot;2023-01-01T01:00:00-08:00&quot;,
+        ///  &quot;recordings&quot;: [
+        ///    {
+        ///      &quot;recording_id&quot;: &quot;ghyetrjj_sdfsdgfkdjfl111&quot;,
+        ///      &quot;queue_id&quot;: &quot;ghyetrjj_2342353rsgfkdjfl&quot;,
+        ///      &quot;cc_queue_id&quot;: &quot;smyko04pSCWt9zLI0nn3AQ&quot;,
+        ///      &quot;queue_name&quot;: &quot;voice&quot;,
+        ///      &quot;recording_duration&quot;: 150,
+        ///      &quot;download_url&quot;: &quot;https://api.zoom.us/v2/contact_center/recording/download/01bdb222-9984-4f41-8141-2f760cb39 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_users__userId__recordings_GET {
+            get {
+                return ResourceManager.GetString("contact_center-users-{userId}-recordings_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;skills&quot;: [
+        ///    {
+        ///      &quot;skill_id&quot;: &quot;s51M536ZjSgi8o_rzmgQBrA&quot;,
+        ///      &quot;skill_name&quot;: &quot;assign-skill6b6c864b-474a-4843-afed-81bd26b03952&quot;,
+        ///      &quot;skill_type&quot;: &quot;proficiency&quot;,
+        ///      &quot;max_proficiency_level&quot;: 5,
+        ///      &quot;user_proficiency_level&quot;: 3,
+        ///      &quot;skill_category_id&quot;: &quot;s51M536ZjSgi8o_rzmgQBrA&quot;,
+        ///      &quot;skill_category_name&quot;: &quot;Language&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_users__userId__skills_GET {
+            get {
+                return ResourceManager.GetString("contact_center-users-{userId}-skills_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;users&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///      &quot;display_name&quot;: &quot;Jill&quot;,
+        ///      &quot;user_email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;role_id&quot;: &quot;27302393-4784-11ec-a3cd-122e3e29bb87&quot;,
+        ///      &quot;role_name&quot;: &quot;Admin&quot;,
+        ///      &quot;client_integration&quot;: &quot;Salesforce&quot;,
+        ///      &quot;status_id&quot;: &quot;2&quot;,
+        ///      &quot;status_name&quot;: &quot;Not Ready&quot;,
+        ///      &quot;sub_status_id&quot;: &quot;21&quot;,
+        ///      &quot;sub_status_name&quot;: &quot;Meal&quot;,
+        ///      &quot;user_ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_users_GET {
+            get {
+                return ResourceManager.GetString("contact_center-users_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;template_id&quot;: &quot;qmLKCot6QfSGwmPKFCgmCg&quot;,
+        ///  &quot;template_name&quot;: &quot;template name&quot;,
+        ///  &quot;template_description&quot;: &quot;user template.&quot;,
+        ///  &quot;template_type&quot;: &quot;add&quot;,
+        ///  &quot;template_status&quot;: &quot;active&quot;,
+        ///  &quot;selected_blocks&quot;: [
+        ///    &quot;role&quot;
+        ///  ],
+        ///  &quot;role&quot;: &quot;27302393-4784-11ec-a3cd-122e3e29bb87&quot;,
+        ///  &quot;package&quot;: &quot;essentials&quot;,
+        ///  &quot;team&quot;: {
+        ///    &quot;team_id&quot;: &quot;G3AfPPKrQZWEkgUCEzUvhA&quot;,
+        ///    &quot;team_supervisor&quot;: true
+        ///  },
+        ///  &quot;client_integration&quot;: {
+        ///    &quot;client_integration_application&quot;: &quot;Salesforce&quot;,
+        ///    &quot;client_integration_name&quot;: &quot;m [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_users_templates__templateId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-users-templates-{templateId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;user_templates&quot;: [
+        ///    {
+        ///      &quot;template_id&quot;: &quot;OlK7lczzT_e7h6p1Q6wGdg&quot;,
+        ///      &quot;template_name&quot;: &quot;template_update&quot;,
+        ///      &quot;template_type&quot;: &quot;update&quot;,
+        ///      &quot;template_status&quot;: &quot;active&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_users_templates_GET {
+            get {
+                return ResourceManager.GetString("contact_center-users-templates_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;variable_log_id&quot;: &quot;ebe83be-3579-4dc9-8e6e-67dd65a010fe&quot;,
+        ///  &quot;engagement_id&quot;: &quot;3XilEfOvQEKRIWMWhX1jDg&quot;,
+        ///  &quot;flow_id&quot;: &quot;zeYjXoDOS_eV1QmTpj63PQ&quot;,
+        ///  &quot;flow_name&quot;: &quot;Demo&quot;,
+        ///  &quot;widget_name&quot;: &quot;HttpCall1&quot;,
+        ///  &quot;variable_name&quot;: &quot;body&quot;,
+        ///  &quot;variable_value&quot;: &quot;demo&quot;,
+        ///  &quot;group_type&quot;: &quot;system&quot;,
+        ///  &quot;data_type&quot;: &quot;boolean&quot;,
+        ///  &quot;created_at&quot;: &quot;2023-01-01T08:00:00.0000000\u002B00:00&quot;
+        ///}.
+        /// </summary>
+        internal static string contact_center_variable_logs__variableLogId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-variable_logs-{variableLogId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;from&quot;: &quot;2021-12-10T08:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;to&quot;: &quot;2021-12-10T08:15:00.0000000\u002B00:00&quot;,
+        ///  &quot;variable_logs&quot;: [
+        ///    {
+        ///      &quot;variable_log_id&quot;: &quot;ebe83be-3579-4dc9-8e6e-67dd65a010fe&quot;,
+        ///      &quot;engagement_id&quot;: &quot;3XilEfOvQEKRIWMWhX1jDg&quot;,
+        ///      &quot;flow_id&quot;: &quot;zeYjXoDOS_eV1QmTpj63PQ&quot;,
+        ///      &quot;flow_name&quot;: &quot;Demo&quot;,
+        ///      &quot;widget_name&quot;: &quot;HttpCall1&quot;,
+        ///      &quot;variable_name&quot;: &quot;body&quot;,
+        ///      &quot;variable_v [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_variable_logs_GET {
+            get {
+                return ResourceManager.GetString("contact_center-variable_logs_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;variable_id&quot;: &quot;W_VATTk_Q5aW6z5rZtBxAQ&quot;,
+        ///  &quot;variable_group_id&quot;: &quot;afececcd-0c9f-48de-9d19-0c84e8bdfeca&quot;,
+        ///  &quot;variable_name&quot;: &quot;variable demo name&quot;,
+        ///  &quot;variable_description&quot;: &quot;This is a variable description&quot;,
+        ///  &quot;variable_type&quot;: &quot;global_variable&quot;,
+        ///  &quot;address_books&quot;: [
+        ///    {
+        ///      &quot;address_book_id&quot;: &quot;X2e_jsLNRkCjI0sQg2kRQQ&quot;,
+        ///      &quot;address_book_name&quot;: &quot;Jill\u0027s address book&quot;,
+        ///      &quot;unit_id&quot;: &quot;zeYjXoDOS_eV1QmTpj63PQ&quot;,
+        ///      &quot;unit_name&quot;: &quot;Address Book Unit&quot;,
+        ///      &quot;total_contacts&quot;: 3
+        ///    }
+        ///  ] [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_variables__variableId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-variables-{variableId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;variables&quot;: [
+        ///    {
+        ///      &quot;variable_id&quot;: &quot;W_VATTk_Q5aW6z5rZtBxAQ&quot;,
+        ///      &quot;variable_group_id&quot;: &quot;afececcd-0c9f-48de-9d19-0c84e8bdfeca&quot;,
+        ///      &quot;variable_name&quot;: &quot;variable demo name&quot;,
+        ///      &quot;default_value&quot;: &quot;test_value&quot;,
+        ///      &quot;variable_type&quot;: &quot;address_book_variable&quot;,
+        ///      &quot;data_type&quot;: &quot;string&quot;,
+        ///      &quot;variable_description&quot;: &quot;This is a variable description&quot;,
+        ///      &quot;mask_variable_data&quot;: true,
+        ///  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_variables_GET {
+            get {
+                return ResourceManager.GetString("contact_center-variables_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;variable_group_id&quot;: &quot;71ec9348-27db-4fe6-81b9-5b8637ca299b&quot;,
+        ///  &quot;variable_group_name&quot;: &quot;Agent&quot;,
+        ///  &quot;variable_group_description&quot;: &quot;Agent\u0027s first custom group.&quot;,
+        ///  &quot;variable_group_type&quot;: &quot;system&quot;,
+        ///  &quot;variable_group_variables_count&quot;: 1
+        ///}.
+        /// </summary>
+        internal static string contact_center_variables_groups__variableGroupId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-variables-groups-{variableGroupId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;variable_groups&quot;: [
+        ///    {
+        ///      &quot;variable_group_id&quot;: &quot;71ec9348-27db-4fe6-81b9-5b8637ca299b&quot;,
+        ///      &quot;variable_group_name&quot;: &quot;Agent&quot;,
+        ///      &quot;variable_group_description&quot;: &quot;Agent\u0027s first custom group.&quot;,
+        ///      &quot;variable_group_type&quot;: &quot;system&quot;,
+        ///      &quot;variable_group_variables_count&quot;: 1
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_variables_groups_GET {
+            get {
+                return ResourceManager.GetString("contact_center-variables-groups_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;from&quot;: &quot;2023-01-01T08:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;to&quot;: &quot;2023-01-01T09:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;voice_calls&quot;: [
+        ///    {
+        ///      &quot;engagement_id&quot;: &quot;3XilEfOvQEKRIWMWhX1jDg&quot;,
+        ///      &quot;direction&quot;: &quot;inbound&quot;,
+        ///      &quot;call_legs&quot;: [
+        ///        &quot;inbound&quot;
+        ///      ],
+        ///      &quot;distributions&quot;: [
+        ///        &quot;acd&quot;
+        ///      ],
+        ///      &quot;types&quot;: [
+        ///        &quot;external_call&quot;
+        ///      ],
+        ///      &quot;sub_types&quot;: [
+        ///        &quot;extern [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_voice_calls_GET {
+            get {
+                return ResourceManager.GetString("contact_center-voice_calls_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;messages&quot;: [
+        ///    {
+        ///      &quot;message_id&quot;: &quot;lKK_xlqXQWex0mKUYyGHUw&quot;,
+        ///      &quot;content&quot;: {
+        ///        &quot;type&quot;: &quot;text&quot;,
+        ///        &quot;value&quot;: &quot;agent accept&quot;
+        ///      },
+        ///      &quot;sent_time&quot;: &quot;2025-12-03T13:07:46.1230000\u002B00:00&quot;,
+        ///      &quot;sender_participant_id&quot;: &quot;wMLp6VvjTc6A1mkiwHt3dQ&quot;,
+        ///      &quot;sender_participant_name&quot;: &quot;Agent Alice&quot;,
+        ///      &quot;message_type&quot;: &quot;system&quot;
+        ///    }
+        ///  ],
+        ///  &quot;has_more&quot;: false,
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;
+        ///}.
+        /// </summary>
+        internal static string contact_center_work_item_messages_GET {
+            get {
+                return ResourceManager.GetString("contact_center-work_item-messages_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;contacts&quot;: [
+        ///    {
+        ///      &quot;contact_type&quot;: 1,
+        ///      &quot;dept&quot;: &quot;Developer&quot;,
+        ///      &quot;direct_numbers&quot;: [
+        ///        &quot;\u002B1111111&quot;
+        ///      ],
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;extension_number&quot;: &quot;31&quot;,
+        ///      &quot;display_name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;first_name&quot;: &quot;Jill&quot;,
+        ///      &quot;id&quot;: &quot;v4iyWT1LTfy8QvPG4GTvdg&quot;,
+        ///      &quot;member_id&quot;: &quot;R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK&quot;,
+        ///      &quot;im_group_id&quot;: &quot;8jUIm-825c9e31f1064c73b394c5e4557d3447&quot;,
+        ///      &quot;im_group_name&quot;: &quot;Developers&quot;,
+        ///      &quot;job_title&quot;: [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contacts_GET {
+            get {
+                return ResourceManager.GetString("contacts_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;group_id&quot;: &quot;dir.JquKVDGlQ9K6S0QVWGcysw&quot;,
+        ///  &quot;group_name&quot;: &quot;Developers&quot;,
+        ///  &quot;total_members&quot;: 10,
+        ///  &quot;group_privacy&quot;: 1,
+        ///  &quot;description&quot;: &quot;A contact group for office A&quot;
+        ///}.
+        /// </summary>
+        internal static string contacts_groups__groupId__GET {
+            get {
+                return ResourceManager.GetString("contacts-groups-{groupId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;group_members&quot;: [
+        ///    {
+        ///      &quot;type&quot;: 2,
+        ///      &quot;id&quot;: &quot;n22T5G6bQDCugVm1V59TAQ&quot;,
+        ///      &quot;name&quot;: &quot;Developer group&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 10
+        ///}.
+        /// </summary>
+        internal static string contacts_groups__groupId__members_GET {
+            get {
+                return ResourceManager.GetString("contacts-groups-{groupId}-members_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;groups&quot;: [
+        ///    {
+        ///      &quot;group_id&quot;: &quot;dir.JquKVDGlQ9K6S0QVWGcysw&quot;,
+        ///      &quot;group_name&quot;: &quot;Developers&quot;,
+        ///      &quot;group_privacy&quot;: 1,
+        ///      &quot;description&quot;: &quot;A contact group for office A&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 10
+        ///}.
+        /// </summary>
+        internal static string contacts_groups_GET {
+            get {
+                return ResourceManager.GetString("contacts-groups_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;e4d89238-7a58-4003-b45b-dfd892e9b11b&quot;,
+        ///  &quot;description&quot;: &quot;my connector&quot;,
+        ///  &quot;status&quot;: &quot;online&quot;,
+        ///  &quot;networks&quot;: &quot;10.100.209.10&quot;,
+        ///  &quot;log_level&quot;: &quot;DEBUG&quot;,
+        ///  &quot;managed_rooms&quot;: [
+        ///    &quot;598fe412-dee4-4439-bd9a-9f864cab38e2&quot;
+        ///  ],
+        ///  &quot;enable_automatic_update&quot;: true,
+        ///  &quot;version&quot;: &quot;5.8.1&quot;
+        ///}.
+        /// </summary>
+        internal static string crc_api_connectors__connectorId__GET {
+            get {
+                return ResourceManager.GetString("crc-api_connectors-{connectorId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;private_key&quot;: &quot;q3dgdj1mln9x0pne8kjb9y122qatlqoe3k4czeu85fgdgkkq237mhpqe9uh3xam8f7syv1rrm9xb7xute0gzekndn9oy98n3cen4l2t63gggxlivnzsdgcovsy6kwwk3&quot;
+        ///}.
+        /// </summary>
+        internal static string crc_api_connectors__connectorId__private_key_GET {
+            get {
+                return ResourceManager.GetString("crc-api_connectors-{connectorId}-private_key_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;private_key&quot;: &quot;q3dgdj1mln9x0pne8kjb9y122qatlqoe3k4czeu85fgdgkkq237mhpqe9uh3xam8f7syv1rrm9xb7xute0gzekndn9oy98n3cen4l2t63gggxlivnzsdgcovsy6kwwk3&quot;
+        ///}.
+        /// </summary>
+        internal static string crc_api_connectors__connectorId__private_key_PATCH {
+            get {
+                return ResourceManager.GetString("crc-api_connectors-{connectorId}-private_key_PATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;next_page_token&quot;: &quot;IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2&quot;,
+        ///  &quot;page_size&quot;: 1,
+        ///  &quot;api_connectors&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;e4d89238-7a58-4003-b45b-dfd892e9b11b&quot;,
+        ///      &quot;description&quot;: &quot;my connector&quot;,
+        ///      &quot;status&quot;: &quot;online&quot;,
+        ///      &quot;networks&quot;: &quot;10.100.209.10&quot;,
+        ///      &quot;enable_automatic_update&quot;: true,
+        ///      &quot;version&quot;: &quot;5.8.1&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string crc_api_connectors_GET {
+            get {
+                return ResourceManager.GetString("crc-api_connectors_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;device_id&quot;: &quot;be771df1-fcfd-4113-9b9d-423e0d610128&quot;,
+        ///  &quot;connector_id&quot;: &quot;578dfjk1-ffgd-3643-9b9d-423e0d610128&quot;,
+        ///  &quot;name&quot;: &quot;my room&quot;,
+        ///  &quot;device_management&quot;: false,
+        ///  &quot;manage_type&quot;: &quot;Full Management&quot;,
+        ///  &quot;device_type&quot;: &quot;Cisco Series&quot;,
+        ///  &quot;create_time&quot;: &quot;2024-07-10T02:33:59.000\u002B00:00&quot;,
+        ///  &quot;serial_number&quot;: &quot;FF20382199D6D7&quot;,
+        ///  &quot;ip_address&quot;: &quot;10.100.22.34&quot;,
+        ///  &quot;dynamic_ip_address&quot;: &quot;Configured&quot;,
+        ///  &quot;firmware_version&quot;: &quot;ce 9.15.18.5 ed6b7b134c0 2024-03-12&quot;,
+        ///  &quot;hardware_version&quot;: &quot;Cisco TelePresence  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string crc_managed_rooms__deviceId__GET {
+            get {
+                return ResourceManager.GetString("crc-managed_rooms-{deviceId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;account_id&quot;: &quot;8KajEX6-S02l5sgpaT0qpg&quot;,
+        ///  &quot;device_management&quot;: false,
+        ///  &quot;manage_type&quot;: &quot;Full Management&quot;,
+        ///  &quot;dynamic_ip_address&quot;: &quot;Configured&quot;,
+        ///  &quot;time_zone&quot;: &quot;America/Chicago&quot;,
+        ///  &quot;time_format&quot;: &quot;24H&quot;,
+        ///  &quot;time_server&quot;: &quot;pool.ntp.org,time.nist.gov&quot;,
+        ///  &quot;zero_touch_provisioning&quot;: false,
+        ///  &quot;end_user_license_agreement&quot;: false,
+        ///  &quot;join_meeting_with_dtmf&quot;: false,
+        ///  &quot;always_show_join_button&quot;: false,
+        ///  &quot;adhoc_join_meet_now_location&quot;: &quot;Favorites&quot;,
+        ///  &quot;label_for_ad_hoc_button&quot;: &quot;Join Zoom Meeting&quot;,
+        ///   [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string crc_managed_rooms_account_setting_GET {
+            get {
+                return ResourceManager.GetString("crc-managed_rooms-account_setting_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;next_page_token&quot;: &quot;IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2&quot;,
+        ///  &quot;page_size&quot;: 1,
+        ///  &quot;managed_rooms&quot;: [
+        ///    {
+        ///      &quot;device_id&quot;: &quot;be771df1-fcfd-4113-9b9d-423e0d610128&quot;,
+        ///      &quot;name&quot;: &quot;my room&quot;,
+        ///      &quot;device_management&quot;: false,
+        ///      &quot;manage_type&quot;: &quot;Full Management&quot;,
+        ///      &quot;device_type&quot;: &quot;Cisco Series&quot;,
+        ///      &quot;serial_number&quot;: &quot;FOC1825N9DC&quot;,
+        ///      &quot;ip_address&quot;: &quot;10.100.11.12&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string crc_managed_rooms_GET {
+            get {
+                return ResourceManager.GetString("crc-managed_rooms_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;participant_identifier_code&quot;: &quot;41bc4gfs3&quot;,
+        ///  &quot;expire_in&quot;: 7200,
+        ///  &quot;paid_crc_plan_participant&quot;: true
+        ///}.
+        /// </summary>
+        internal static string crc_participant_identifier_code_GET {
+            get {
+                return ResourceManager.GetString("crc-participant_identifier_code_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;template_id&quot;: &quot;be771df1-fcfd-4113-9b9d-423e0d610128&quot;,
+        ///  &quot;name&quot;: &quot;my room&quot;,
+        ///  &quot;device_management&quot;: false,
+        ///  &quot;manage_type&quot;: &quot;Full Management&quot;,
+        ///  &quot;device_type&quot;: &quot;Cisco Series&quot;,
+        ///  &quot;time_zone&quot;: &quot;America/Chicago&quot;,
+        ///  &quot;time_format&quot;: &quot;24H&quot;,
+        ///  &quot;time_server&quot;: &quot;pool.ntp.org,time.nist.gov&quot;,
+        ///  &quot;join_meeting_with_dtmf&quot;: false,
+        ///  &quot;always_show_join_button&quot;: false,
+        ///  &quot;adhoc_join_meet_now_location&quot;: &quot;Favorites&quot;,
+        ///  &quot;label_for_ad_hoc_button&quot;: &quot;Join Zoom Meeting&quot;,
+        ///  &quot;enable_1080p&quot;: false,
+        ///  &quot;unmute_on_entry&quot;:  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string crc_room_templates__templateId__GET {
+            get {
+                return ResourceManager.GetString("crc-room_templates-{templateId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;next_page_token&quot;: &quot;IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2&quot;,
+        ///  &quot;page_size&quot;: 1,
+        ///  &quot;templates&quot;: [
+        ///    {
+        ///      &quot;template_id&quot;: &quot;e4d89238-7a58-4003-b45b-dfd892e9b11b&quot;,
+        ///      &quot;name&quot;: &quot;my template&quot;,
+        ///      &quot;device_type&quot;: &quot;Cisco Series&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string crc_room_templates_GET {
+            get {
+                return ResourceManager.GetString("crc-room_templates_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;download_url&quot;: &quot;https://download-url-path.com&quot;
+        ///}.
+        /// </summary>
+        internal static string data_requests_files__fileId__url_GET {
+            get {
+                return ResourceManager.GetString("data_requests-files-{fileId}-url_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;request_type&quot;: &quot;EXPORT&quot;,
+        ///  &quot;file_records&quot;: [
+        ///    {
+        ///      &quot;file_id&quot;: &quot;M84CPMhmTGqeMMfwrvb6mA&quot;,
+        ///      &quot;file_name&quot;: &quot;EXPORT_2xxx0x0x.zip&quot;,
+        ///      &quot;size&quot;: &quot;15667&quot;,
+        ///      &quot;created_at&quot;: &quot;2025-08-06T17:30:00.0000000\u002B00:00&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;nextPageToken123&quot;
+        ///}.
+        /// </summary>
+        internal static string data_requests_requests__requestId__GET {
+            get {
+                return ResourceManager.GetString("data_requests-requests-{requestId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;records&quot;: [
+        ///    {
+        ///      &quot;request_id&quot;: &quot;1952221087039594498&quot;,
+        ///      &quot;request_type&quot;: &quot;DELETE&quot;,
+        ///      &quot;created_at&quot;: &quot;2000-10-31T01:30:00.0000000-05:00&quot;,
+        ///      &quot;requestor_user_id&quot;: &quot;abcdefghij&quot;,
+        ///      &quot;requestor_name&quot;: &quot;Test User&quot;,
+        ///      &quot;account_id&quot;: &quot;abcdefg&quot;,
+        ///      &quot;user_identifier&quot;: &quot;a@a.com&quot;,
+        ///      &quot;data_type&quot;: [
+        ///        &quot;ALL&quot;
+        ///      ],
+        ///      &quot;state&quot;: &quot;Processing&quot;,
+        ///      &quot;files_count&quot;: 1,
+        ///      &quot;start_at&quot;: &quot;2025-08-05T23:14:10.4480000\u002B00:00&quot;,
+        ///      &quot;end_at&quot;:  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string data_requests_requests_GET {
+            get {
+                return ResourceManager.GetString("data_requests-requests_GET", resourceCulture);
             }
         }
         
@@ -222,6 +5479,1421 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string devices_zpa_zdm_groups__zdmGroupId__versions_GET {
             get {
                 return ResourceManager.GetString("devices-zpa-zdm_groups-{zdmGroupId}-versions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;call_history_id&quot;: &quot;WlLdbYT7R0uWWhJzjBmVVQ&quot;,
+        ///  &quot;primary_name&quot;: &quot;Klay Thompson&quot;,
+        ///  &quot;secondary_name&quot;: &quot;Klay T&quot;,
+        ///  &quot;company&quot;: &quot;GSW&quot;,
+        ///  &quot;disposition&quot;: &quot;Connected - No interest&quot;,
+        ///  &quot;transcript&quot;: &quot;[00:00] 16315423526: Your call has been forwarded to voicemail. The person you\u0027re trying to reach is not available. At the tone.\\n[00:05] 16315423526: Please record your message. When you have finished recording, you may hang up.&quot;,
+        ///  &quot;type&quot;: &quot;HISTORY&quot;,
+        ///  &quot;user_id&quot;: &quot;1W6kwwJQRL-1p9bsjdQvmw&quot;,
+        ///  &quot;call_li [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string dialer_call_histories__callHistoryId__GET {
+            get {
+                return ResourceManager.GetString("dialer-call-histories-{callHistoryId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total&quot;: 50,
+        ///  &quot;page&quot;: 1,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;has_next_page&quot;: true,
+        ///  &quot;call_history&quot;: [
+        ///    {
+        ///      &quot;call_history_id&quot;: &quot;19DBLVM5SHG6cgIeo0vrHQ&quot;,
+        ///      &quot;primary_name&quot;: &quot;Klay Thompson&quot;,
+        ///      &quot;secondary_name&quot;: &quot;Klay&quot;,
+        ///      &quot;company&quot;: &quot;GSW&quot;,
+        ///      &quot;account_name&quot;: &quot;GSW&quot;,
+        ///      &quot;disposition&quot;: &quot;Interested&quot;,
+        ///      &quot;disposition_deleted&quot;: false,
+        ///      &quot;transcript&quot;: &quot;[00:00] 16315423526: Your call has been forwarded to voicemail. The person you\u0027re trying to reach is not available. At the ton [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string dialer_call_history_GET {
+            get {
+                return ResourceManager.GetString("dialer-call-history_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;call_list&quot;: {
+        ///    &quot;call_list_id&quot;: &quot;24n0mXjZSaOrOYJg7sahlA&quot;,
+        ///    &quot;name&quot;: &quot;Q4 2025 Sales Prospects Contact&quot;,
+        ///    &quot;status&quot;: &quot;COMPLETE&quot;,
+        ///    &quot;owner_user_id&quot;: &quot;CeNVNaE9SOWPo5SC_KlZHw&quot;,
+        ///    &quot;owner_email&quot;: &quot;dev\u002Bjohn_doe_zradialer@zoomsandbox.us&quot;,
+        ///    &quot;description&quot;: &quot;High-priority contacts for Q5 2025 sales campaign targeting enterprise customers in the technology sector. Focus on companies with 500\u002B employees and annual revenue over $10M.&quot;,
+        ///    &quot;prospect_type&quot;: &quot;CONTACT&quot;,
+        ///    &quot;create_time&quot;: [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string dialer_call_lists__callListId__GET {
+            get {
+                return ResourceManager.GetString("dialer-call-lists-{callListId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;prospects&quot;: [
+        ///    {
+        ///      &quot;prospect_id&quot;: &quot;mq4XpiQISe6tlhHRwX9a8g&quot;,
+        ///      &quot;type&quot;: &quot;UPCOMING&quot;,
+        ///      &quot;primary_name&quot;: &quot;John Smith&quot;,
+        ///      &quot;secondary_name&quot;: &quot;Johnny&quot;,
+        ///      &quot;title&quot;: &quot;Senior Sales Manager&quot;,
+        ///      &quot;company&quot;: &quot;Acme Corporation&quot;,
+        ///      &quot;department&quot;: &quot;Sales&quot;,
+        ///      &quot;description&quot;: &quot;Experienced sales professional with 10\u002B years in enterprise software&quot;,
+        ///      &quot;assignee_user_id&quot;: &quot;0yT-QeXeQYqW6uizHEFmXA&quot;,
+        ///      &quot;call_list_id&quot;: &quot;c-ncE_MXQACAjn3_I_35gg&quot;,
+        ///      &quot;dialer_status&quot;: &quot;CANC [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string dialer_call_lists__callListId__prospects_GET {
+            get {
+                return ResourceManager.GetString("dialer-call-lists-{callListId}-prospects_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;success_list&quot;: [
+        ///    {
+        ///      &quot;prospect_id&quot;: &quot;ugtO21BNRvSBQshEmRnfEw&quot;
+        ///    }
+        ///  ],
+        ///  &quot;failed_list&quot;: [
+        ///    {
+        ///      &quot;prospect_id&quot;: &quot;GfX0-VReSpKp_bot3UlB8w&quot;,
+        ///      &quot;error_message&quot;: &quot;VALIDATION_ERROR: Prospect does not belong to call list: _Wze-TJqSQODzsRc53tQPg&quot;
+        ///    }
+        ///  ],
+        ///  &quot;total_processed&quot;: 1,
+        ///  &quot;total_failed&quot;: 1,
+        ///  &quot;total_prospects&quot;: 2,
+        ///  &quot;assigned_to_user_id&quot;: &quot;1W6kwwJQRL-1p9bsjdQvmw&quot;,
+        ///  &quot;assigned_to_user_email&quot;: &quot;dev\u002Banupamzradialer@zoomsandbox.us&quot;
+        ///}.
+        /// </summary>
+        internal static string dialer_call_lists__callListId__prospects_PATCH {
+            get {
+                return ResourceManager.GetString("dialer-call-lists-{callListId}-prospects_PATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;call_lists&quot;: [
+        ///    {
+        ///      &quot;call_list_id&quot;: &quot;24n0mXjZSaOrOYJg7sahlA&quot;,
+        ///      &quot;name&quot;: &quot;Q4 2025 Sales Prospects Contact&quot;,
+        ///      &quot;status&quot;: &quot;COMPLETE&quot;,
+        ///      &quot;owner_user_id&quot;: &quot;CeNVNaE9SOWPo5SC_KlZHw&quot;,
+        ///      &quot;owner_email&quot;: &quot;dev\u002Bjohn_doe_zradialer@zoomsandbox.us&quot;,
+        ///      &quot;description&quot;: &quot;High-priority contacts for Q5 2025 sales campaign targeting enterprise customers in the technology sector. Focus on companies with 500\u002B employees and annual revenue over $10M.&quot;,
+        ///      &quot;prospect_type&quot;: &quot;CONTACT [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string dialer_call_lists_GET {
+            get {
+                return ResourceManager.GetString("dialer-call-lists_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;prospect_id&quot;: &quot;mq4XpiQISe6tlhHRwX9a8g&quot;,
+        ///  &quot;type&quot;: &quot;UPCOMING&quot;,
+        ///  &quot;primary_name&quot;: &quot;John Smith&quot;,
+        ///  &quot;secondary_name&quot;: &quot;Johnny&quot;,
+        ///  &quot;title&quot;: &quot;Senior Sales Manager&quot;,
+        ///  &quot;company&quot;: &quot;Acme Corporation&quot;,
+        ///  &quot;department&quot;: &quot;Sales&quot;,
+        ///  &quot;description&quot;: &quot;Experienced sales professional with 10\u002B years in enterprise software&quot;,
+        ///  &quot;assignee_user_id&quot;: &quot;0yT-QeXeQYqW6uizHEFmXA&quot;,
+        ///  &quot;call_list_id&quot;: &quot;c-ncE_MXQACAjn3_I_35gg&quot;,
+        ///  &quot;dialer_status&quot;: &quot;CANCELED&quot;,
+        ///  &quot;dialer_sub_status&quot;: &quot;CANCELED_BY_CALLER&quot;,
+        ///  &quot;create_time&quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string dialer_prospects__prospectId__GET {
+            get {
+                return ResourceManager.GetString("dialer-prospects-{prospectId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;division_id&quot;: &quot;example-TaOOmobxuqLVnw&quot;,
+        ///  &quot;division_name&quot;: &quot;my division&quot;,
+        ///  &quot;division_description&quot;: &quot;this is division&quot;,
+        ///  &quot;is_main_division&quot;: true
+        ///}.
+        /// </summary>
+        internal static string divisions__divisionId__GET {
+            get {
+                return ResourceManager.GetString("divisions-{divisionId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 300,
+        ///  &quot;users&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;example-FLFD4pfkQ4a2nec&quot;,
+        ///      &quot;user_display_name&quot;: &quot;jill chill&quot;,
+        ///      &quot;user_email&quot;: &quot;jchill@example.com&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string divisions__divisionId__users_GET {
+            get {
+                return ResourceManager.GetString("divisions-{divisionId}-users_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 300,
+        ///  &quot;divisions&quot;: [
+        ///    {
+        ///      &quot;division_id&quot;: &quot;example-TaOOmobxuqLVnw&quot;,
+        ///      &quot;division_name&quot;: &quot;my division&quot;,
+        ///      &quot;division_description&quot;: &quot;this is division&quot;,
+        ///      &quot;is_main_division&quot;: true,
+        ///      &quot;total_members&quot;: 100
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string divisions_GET {
+            get {
+                return ResourceManager.GetString("divisions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;files&quot;: [
+        ///    {
+        ///      &quot;file_id&quot;: &quot;61kkJE-rR52UsywN25E0hQ&quot;,
+        ///      &quot;file_name&quot;: &quot;Q3 plan&quot;,
+        ///      &quot;file_type&quot;: &quot;doc&quot;,
+        ///      &quot;file_link&quot;: &quot;https://docs.zoom.us/doc/61kkJE-rR52UsywN25E0hQ&quot;,
+        ///      &quot;created_time&quot;: &quot;2025-06-30T09:47:40.249Z&quot;,
+        ///      &quot;modified_time&quot;: &quot;2025-06-30T09:47:40.249Z&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;eyJ0aW1lQ3Vyc29yIjoiMjAyNS0wNC0yMVQwOTo0NTo1OC45NTJaIiwiaWRDdXJzb3IiOiJzemFsMkpmTlFteTExY1JwdkYxRWhBIn0=&quot;
+        ///}.
+        /// </summary>
+        internal static string docs_files__fileId__children_GET {
+            get {
+                return ResourceManager.GetString("docs-files-{fileId}-children_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;file_id&quot;: &quot;ADuV705lSXW4c6fBgQFarQ&quot;,
+        ///  &quot;file_name&quot;: &quot;Q3 Plan&quot;,
+        ///  &quot;file_type&quot;: &quot;doc&quot;,
+        ///  &quot;file_link&quot;: &quot;https://docs.zoom.us/doc/ADuV705lSXW4c6fBgQFarQ&quot;,
+        ///  &quot;created_time&quot;: &quot;2025-06-30T09:47:40.249Z&quot;,
+        ///  &quot;modified_time&quot;: &quot;2025-06-30T09:47:40.249Z&quot;
+        ///}.
+        /// </summary>
+        internal static string docs_files__fileId__GET {
+            get {
+                return ResourceManager.GetString("docs-files-{fileId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;status&quot;: &quot;processing&quot;,
+        ///  &quot;file_id&quot;: &quot;ch4L4KKgQVesEJcqdt1qIw&quot;,
+        ///  &quot;file_type&quot;: &quot;doc&quot;
+        ///}.
+        /// </summary>
+        internal static string docs_imports__importId__status_GET {
+            get {
+                return ResourceManager.GetString("docs-imports-{importId}-status_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;89f1000000000000_e856432f45a75bea_001&quot;,
+        ///  &quot;message&quot;: {
+        ///    &quot;id&quot;: &quot;01d1000000000000_e8bc79717a36a5ff_006&quot;,
+        ///    &quot;threadId&quot;: &quot;3bc0000000000000_e8572723056fa10d_001&quot;,
+        ///    &quot;labelIds&quot;: [
+        ///      &quot;DRAFT&quot;
+        ///    ],
+        ///    &quot;snippet&quot;: &quot;Hello, Jane Doe, writing to you for next weeks meeting.&quot;,
+        ///    &quot;historyId&quot;: &quot;457889&quot;,
+        ///    &quot;internalDate&quot;: &quot;1705098864740&quot;,
+        ///    &quot;payload&quot;: {
+        ///      &quot;partId&quot;: &quot;1.1&quot;,
+        ///      &quot;mimeType&quot;: &quot;text/html&quot;,
+        ///      &quot;filename&quot;: &quot;cats.jpg&quot;,
+        ///      &quot;headers&quot;: [
+        ///        {
+        ///          &quot;nam [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string emails_mailboxes__email__drafts__draftId__GET {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-drafts-{draftId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;89f1000000000000_e856432f45a75bea_001&quot;,
+        ///  &quot;message&quot;: {
+        ///    &quot;id&quot;: &quot;89f1000000000000_e856432f45a75bea_001&quot;,
+        ///    &quot;threadId&quot;: &quot;89f1000000000000_e856432f45a75bea_001&quot;,
+        ///    &quot;labelIds&quot;: [
+        ///      &quot;DRAFT&quot;
+        ///    ]
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__drafts__draftId__PUT {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-drafts-{draftId}_PUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;drafts&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;89f1000000000000_e856432f45a75bea_001&quot;,
+        ///      &quot;message&quot;: {
+        ///        &quot;id&quot;: &quot;89f1000000000000_e856432f45a75bea_001&quot;,
+        ///        &quot;threadId&quot;: &quot;89f1000000000000_e856432f45a88bea_001&quot;
+        ///      }
+        ///    }
+        ///  ],
+        ///  &quot;nextPageToken&quot;: &quot;e856432f45a75bea&quot;,
+        ///  &quot;resultSizeEstimate&quot;: 1
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__drafts_GET {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-drafts_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;89f1000000000000_e856432f45a75bea_001&quot;,
+        ///  &quot;message&quot;: {
+        ///    &quot;id&quot;: &quot;89f1000000000000_e856432f45a75bea_001&quot;,
+        ///    &quot;threadId&quot;: &quot;89f1000000000000_e856432f45a75bea_001&quot;,
+        ///    &quot;labelIds&quot;: [
+        ///      &quot;DRAFT&quot;
+        ///    ]
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__drafts_POST {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-drafts_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;6ddf401500000000_e8562d8808ecdddf_005&quot;,
+        ///  &quot;threadId&quot;: &quot;6ddf401500000000_e8562d8808ecdddf_005&quot;,
+        ///  &quot;labelIds&quot;: [
+        ///    &quot;SCHEDULED&quot;
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__drafts_send_POST {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-drafts-send_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;history&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;1454&quot;,
+        ///      &quot;cid&quot;: &quot;b35d091400000000_12185&quot;,
+        ///      &quot;messagesAdded&quot;: [
+        ///        {
+        ///          &quot;message&quot;: {
+        ///            &quot;id&quot;: &quot;b35d091400000000_e861880afaf26dc8_604&quot;,
+        ///            &quot;labelIds&quot;: [
+        ///              &quot;INBOX&quot;
+        ///            ],
+        ///            &quot;threadId&quot;: &quot;b35d091400000000_e862202d7e502e95_587&quot;
+        ///          }
+        ///        }
+        ///      ],
+        ///      &quot;messagesDeleted&quot;: [
+        ///        {
+        ///          &quot;message&quot;: {
+        ///            &quot;id&quot;: &quot;b35d091400000000_e861880afaf26dc8_604&quot;,
+        ///            &quot;lab [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string emails_mailboxes__email__history_GET {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-history_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;Label_12&quot;,
+        ///  &quot;name&quot;: &quot;MyVacation&quot;,
+        ///  &quot;parentId&quot;: &quot;Label_1&quot;,
+        ///  &quot;labelLevel&quot;: 2,
+        ///  &quot;messageListVisibility&quot;: &quot;show&quot;,
+        ///  &quot;labelListVisibility&quot;: &quot;labelShow&quot;,
+        ///  &quot;messagesTotal&quot;: 100,
+        ///  &quot;messagesUnread&quot;: 98,
+        ///  &quot;threadsTotal&quot;: 80,
+        ///  &quot;threadsUnread&quot;: 78,
+        ///  &quot;color&quot;: {
+        ///    &quot;textColor&quot;: &quot;#000000&quot;,
+        ///    &quot;backgroundColor&quot;: &quot;#cccccc&quot;
+        ///  },
+        ///  &quot;type&quot;: &quot;user&quot;
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__labels__labelId__GET {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-labels-{labelId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;Label_12&quot;,
+        ///  &quot;name&quot;: &quot;MyVacation&quot;,
+        ///  &quot;parentId&quot;: &quot;Label_1&quot;,
+        ///  &quot;labelLevel&quot;: 2,
+        ///  &quot;messageListVisibility&quot;: &quot;show&quot;,
+        ///  &quot;labelListVisibility&quot;: &quot;labelShow&quot;,
+        ///  &quot;color&quot;: {
+        ///    &quot;textColor&quot;: &quot;#000000&quot;,
+        ///    &quot;backgroundColor&quot;: &quot;#cccccc&quot;
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__labels__labelId__PATCH {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-labels-{labelId}_PATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;Label_12&quot;,
+        ///  &quot;name&quot;: &quot;MyVacation&quot;,
+        ///  &quot;parentId&quot;: &quot;Label_1&quot;,
+        ///  &quot;labelLevel&quot;: 2,
+        ///  &quot;messageListVisibility&quot;: &quot;show&quot;,
+        ///  &quot;labelListVisibility&quot;: &quot;labelShow&quot;,
+        ///  &quot;color&quot;: {
+        ///    &quot;textColor&quot;: &quot;#000000&quot;,
+        ///    &quot;backgroundColor&quot;: &quot;#cccccc&quot;
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__labels__labelId__PUT {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-labels-{labelId}_PUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;labels&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;Label_1&quot;,
+        ///      &quot;name&quot;: &quot;MyVacation&quot;,
+        ///      &quot;parentId&quot;: &quot;Label_0&quot;,
+        ///      &quot;labelLevel&quot;: 1,
+        ///      &quot;messageListVisibility&quot;: &quot;show&quot;,
+        ///      &quot;labelListVisibility&quot;: &quot;labelShow&quot;,
+        ///      &quot;messagesTotal&quot;: 100,
+        ///      &quot;messagesUnread&quot;: 98,
+        ///      &quot;threadsTotal&quot;: 80,
+        ///      &quot;threadsUnread&quot;: 78,
+        ///      &quot;color&quot;: {
+        ///        &quot;textColor&quot;: &quot;#000000&quot;,
+        ///        &quot;backgroundColor&quot;: &quot;#cccccc&quot;
+        ///      },
+        ///      &quot;type&quot;: &quot;user&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__labels_GET {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-labels_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;Label_10&quot;,
+        ///  &quot;name&quot;: &quot;MyVacation&quot;,
+        ///  &quot;parentId&quot;: &quot;Label_0&quot;,
+        ///  &quot;labelLevel&quot;: 2,
+        ///  &quot;messageListVisibilitystring&quot;: &quot;show&quot;,
+        ///  &quot;labelListVisibility&quot;: &quot;labelShow&quot;,
+        ///  &quot;color&quot;: {
+        ///    &quot;textColor&quot;: &quot;#000000&quot;,
+        ///    &quot;backgroundColor&quot;: &quot;#cccccc&quot;
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__labels_POST {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-labels_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;attachmentId&quot;: &quot;6ddf401500000000_e855d2b4b6d35377_010_1&quot;,
+        ///  &quot;size&quot;: 40270,
+        ///  &quot;data&quot;: &quot;YSBzbWFsbCB0ZXN0IHN0cmluZyBmb3IgYmFzZTY0IHVybCBlbmNvZGU=&quot;
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__messages__messageId__attachments__attachmentId__GET {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-messages-{messageId}-attachments-{attachmentId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;7d4d447700000000_e85f09d67065eb70_121&quot;,
+        ///  &quot;threadId&quot;: &quot;7d4d447700000000_e85f09d67065eb70_121&quot;,
+        ///  &quot;labelIds&quot;: [
+        ///    &quot;INBOX&quot;
+        ///  ],
+        ///  &quot;snippet&quot;: &quot;Email text here&quot;,
+        ///  &quot;historyId&quot;: &quot;5153&quot;,
+        ///  &quot;internalDate&quot;: &quot;1702631317509&quot;,
+        ///  &quot;expiration&quot;: &quot;0&quot;,
+        ///  &quot;lastMoved&quot;: &quot;1702866810000&quot;,
+        ///  &quot;sendTime&quot;: &quot;1704828847000&quot;,
+        ///  &quot;userScheduled&quot;: true,
+        ///  &quot;manifest&quot;: &quot;CBYyJAoiAQPOyzaErnwrX3l7Bj2vLxj7uXgqVFxRpmKcR_wMqEFGdjq1AQqy&quot;,
+        ///  &quot;originalMime&quot;: &quot;WCzXU_IiB8DCVzh3_4ORekQuQYDHy2KNn9C_CY4H3gjtv0E74x03Ty&quot;,
+        ///  &quot;pa [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string emails_mailboxes__email__messages__messageId__GET {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-messages-{messageId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;7d4d447700000000_e85f09d67065eb70_121&quot;,
+        ///  &quot;threadId&quot;: &quot;7d4d447700000000_e85f09d67065eb70_121&quot;,
+        ///  &quot;labelIds&quot;: [
+        ///    &quot;TRASH&quot;
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__messages__messageId__modify_POST {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-messages-{messageId}-modify_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;4a1fca9500000000_e85651412799fc3d_934&quot;,
+        ///  &quot;threadId&quot;: &quot;4a1fca9500000000_e85651412799fc3d_934&quot;,
+        ///  &quot;labelIds&quot;: [
+        ///    &quot;TRASH&quot;
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__messages__messageId__trash_POST {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-messages-{messageId}-trash_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;4a1fca9500000000_e85651412799fc3d_934&quot;,
+        ///  &quot;threadId&quot;: &quot;4a1fca9500000000_e85651412799fc3d_934&quot;,
+        ///  &quot;labelIds&quot;: [
+        ///    &quot;INBOX&quot;
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__messages__messageId__untrash_POST {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-messages-{messageId}-untrash_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;messages&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;7d4d447700000000_e85f09d67065eb70_121&quot;,
+        ///      &quot;threadId&quot;: &quot;7d4d447700000000_e85f09d67065eb70_121&quot;
+        ///    }
+        ///  ],
+        ///  &quot;nextPageToken&quot;: &quot;e85f09d67065eb70&quot;,
+        ///  &quot;resultSizeEstimate&quot;: 0
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__messages_GET {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-messages_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;4a1fca9500000000_e856054c90f10a86_940&quot;,
+        ///  &quot;threadId&quot;: &quot;4a1fca9500000000_e856054c90f10a86_940&quot;,
+        ///  &quot;labelIds&quot;: [
+        ///    &quot;INBOX&quot;
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__messages_POST {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-messages_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;4a1fca9500000000_e856054c90f10a86_940&quot;,
+        ///  &quot;threadId&quot;: &quot;4a1fca9500000000_e856054c90f10a86_940&quot;,
+        ///  &quot;labelIds&quot;: [
+        ///    &quot;SCHEDULED&quot;
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__messages_send_POST {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-messages-send_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;emailAddress&quot;: &quot;john.doe@example.com&quot;,
+        ///  &quot;groupEmails&quot;: [
+        ///    &quot;sales@example.com&quot;
+        ///  ],
+        ///  &quot;aliases&quot;: [
+        ///    {
+        ///      &quot;description&quot;: &quot;Alias for Europe sales team.&quot;,
+        ///      &quot;aliasEmail&quot;: &quot;sales.europe@example.com&quot;
+        ///    }
+        ///  ],
+        ///  &quot;createTime&quot;: 1705972326,
+        ///  &quot;status&quot;: &quot;active&quot;,
+        ///  &quot;mboxSize&quot;: 282554,
+        ///  &quot;messagesTotal&quot;: 4588,
+        ///  &quot;threadsTotal&quot;: 4523,
+        ///  &quot;encryptionEnabled&quot;: false,
+        ///  &quot;labelEncryptionEnabled&quot;: false,
+        ///  &quot;historyId&quot;: &quot;10&quot;
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__profile_GET {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-profile_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;delegateEmail&quot;: &quot;john.doe@example.com&quot;,
+        ///  &quot;verificationStatus&quot;: &quot;accepted&quot;,
+        ///  &quot;delegateAccess&quot;: &quot;dlgreviewer&quot;,
+        ///  &quot;accessTime&quot;: &quot;1705098965973&quot;,
+        ///  &quot;creationTime&quot;: &quot;1705098965973&quot;
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__settings_delegates__delegateEmail__GET {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-settings-delegates-{delegateEmail}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;delegates&quot;: [
+        ///    {
+        ///      &quot;delegateEmail&quot;: &quot;john.doe@example.com&quot;,
+        ///      &quot;verificationStatus&quot;: &quot;accepted&quot;,
+        ///      &quot;delegateAccess&quot;: &quot;dlgreviewer&quot;,
+        ///      &quot;accessTime&quot;: &quot;1705098965973&quot;,
+        ///      &quot;creationTime&quot;: &quot;1705098965973&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__settings_delegates_GET {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-settings-delegates_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;delegateEmail&quot;: &quot;john.doe@example.com&quot;,
+        ///  &quot;verificationStatus&quot;: &quot;accepted&quot;,
+        ///  &quot;delegateAccess&quot;: &quot;dlgreviewer&quot;,
+        ///  &quot;accessTime&quot;: &quot;1705098965973&quot;,
+        ///  &quot;creationTime&quot;: &quot;1705098965973&quot;
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__settings_delegates_POST {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-settings-delegates_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;e855dd4a292b18b1&quot;,
+        ///  &quot;criteria&quot;: {
+        ///    &quot;from&quot;: &quot;john.doe@example.com&quot;,
+        ///    &quot;to&quot;: &quot;jane.doe@example.com&quot;,
+        ///    &quot;subject&quot;: &quot;email subject.&quot;,
+        ///    &quot;query&quot;: &quot;from:user@example.com is:unread&quot;,
+        ///    &quot;negatedQuery&quot;: &quot;is:unread&quot;,
+        ///    &quot;hasAttachment&quot;: true,
+        ///    &quot;size&quot;: 1024,
+        ///    &quot;sizeComparison&quot;: &quot;smaller&quot;
+        ///  },
+        ///  &quot;action&quot;: {
+        ///    &quot;addLabelIds&quot;: [
+        ///      &quot;TRASH&quot;
+        ///    ],
+        ///    &quot;removeLabelIds&quot;: [
+        ///      &quot;SPAM&quot;
+        ///    ],
+        ///    &quot;forward&quot;: &quot;john.doe@example.com&quot;
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__settings_filters__filterId__GET {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-settings-filters-{filterId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;filter&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;e855dd4a292b18b1&quot;,
+        ///      &quot;criteria&quot;: {
+        ///        &quot;from&quot;: &quot;john.doe@example.com&quot;,
+        ///        &quot;to&quot;: &quot;jane.doe@example.com&quot;,
+        ///        &quot;subject&quot;: &quot;email subject.&quot;,
+        ///        &quot;query&quot;: &quot;from:user@example.com is:unread&quot;,
+        ///        &quot;negatedQuery&quot;: &quot;is:unread&quot;,
+        ///        &quot;hasAttachment&quot;: true,
+        ///        &quot;size&quot;: 1024,
+        ///        &quot;sizeComparison&quot;: &quot;smaller&quot;
+        ///      },
+        ///      &quot;action&quot;: {
+        ///        &quot;addLabelIds&quot;: [
+        ///          &quot;TRASH&quot;
+        ///        ],
+        ///        &quot;removeLabelIds&quot;: [
+        ///          &quot;SPAM&quot;        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string emails_mailboxes__email__settings_filters_GET {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-settings-filters_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;e855dd4a292b18b1&quot;,
+        ///  &quot;criteria&quot;: {
+        ///    &quot;from&quot;: &quot;john.doe@example.com&quot;,
+        ///    &quot;to&quot;: &quot;jane.doe@example.com&quot;,
+        ///    &quot;subject&quot;: &quot;email subject.&quot;,
+        ///    &quot;query&quot;: &quot;from:user@example.com is:unread&quot;,
+        ///    &quot;negatedQuery&quot;: &quot;is:unread&quot;,
+        ///    &quot;hasAttachment&quot;: true,
+        ///    &quot;size&quot;: 1024,
+        ///    &quot;sizeComparison&quot;: &quot;smaller&quot;
+        ///  },
+        ///  &quot;action&quot;: {
+        ///    &quot;addLabelIds&quot;: [
+        ///      &quot;TRASH&quot;
+        ///    ],
+        ///    &quot;removeLabelIds&quot;: [
+        ///      &quot;SPAM&quot;
+        ///    ],
+        ///    &quot;forward&quot;: &quot;john.doe@example.com&quot;
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__settings_filters_POST {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-settings-filters_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;enableAutoReply&quot;: false,
+        ///  &quot;responseSubject&quot;: &quot;Example Response Subject&quot;,
+        ///  &quot;responseBodyPlainText&quot;: &quot;Example Response Body Plain Text&quot;,
+        ///  &quot;responseBodyHtml&quot;: &quot;Example Response Body Html&quot;,
+        ///  &quot;enableAlwaysRespond&quot;: false,
+        ///  &quot;restrictToContacts&quot;: false,
+        ///  &quot;restrictToDomain&quot;: true,
+        ///  &quot;startTime&quot;: &quot;1704268800000&quot;,
+        ///  &quot;startTimeISO&quot;: &quot;2024-01-03T08:00:00.000Z&quot;,
+        ///  &quot;endTime&quot;: &quot;1705046399000&quot;,
+        ///  &quot;endTimeISO&quot;: &quot;2024-01-12T07:59:59.000Z&quot;
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__settings_vacation_GET {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-settings-vacation_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;enableAutoReply&quot;: false,
+        ///  &quot;responseSubject&quot;: &quot;Example Response Subject&quot;,
+        ///  &quot;responseBodyPlainText&quot;: &quot;Example Response Body Plain Text&quot;,
+        ///  &quot;responseBodyHtml&quot;: &quot;Example Response Body Html&quot;,
+        ///  &quot;enableAlwaysRespond&quot;: false,
+        ///  &quot;restrictToContacts&quot;: false,
+        ///  &quot;restrictToDomain&quot;: true,
+        ///  &quot;startTime&quot;: &quot;1704268800000&quot;,
+        ///  &quot;startTimeISO&quot;: &quot;2024-01-03T08:00:00.000Z&quot;,
+        ///  &quot;endTime&quot;: &quot;1705046399000&quot;,
+        ///  &quot;endTimeISO&quot;: &quot;2024-01-12T07:59:59.000Z&quot;
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__settings_vacation_PUT {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-settings-vacation_PUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;7d4d447700000000_e85f09d67065eb70_121&quot;,
+        ///  &quot;historyId&quot;: &quot;5153&quot;,
+        ///  &quot;threadName&quot;: &quot;The latest status of Project Prometheus.&quot;,
+        ///  &quot;status&quot;: &quot;normal&quot;,
+        ///  &quot;messages&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;7d4d447700000000_e85f09d67065eb70_121&quot;,
+        ///      &quot;threadId&quot;: &quot;7d4d447700000000_e85f09d67065eb70_121&quot;,
+        ///      &quot;labelIds&quot;: [
+        ///        &quot;INBOX&quot;
+        ///      ],
+        ///      &quot;historyId&quot;: &quot;5153&quot;,
+        ///      &quot;internalDate&quot;: &quot;1702631317509&quot;,
+        ///      &quot;expiration&quot;: &quot;0&quot;,
+        ///      &quot;lastMoved&quot;: &quot;1702866810000&quot;,
+        ///      &quot;payload&quot;: {
+        ///        &quot;partI [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string emails_mailboxes__email__threads__threadId__GET {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-threads-{threadId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;6ddf401500000000_e858101177b8152c_001&quot;,
+        ///  &quot;messages&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;6ddf401500000000_e858101177b8152c_001&quot;,
+        ///      &quot;threadId&quot;: &quot;6ddf401500000000_e858101177b8152c_001&quot;,
+        ///      &quot;labelIds&quot;: [
+        ///        &quot;IMPORTANT&quot;
+        ///      ]
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__threads__threadId__modify_POST {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-threads-{threadId}-modify_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;6ddf401500000000_e858101177b8152c_001&quot;,
+        ///  &quot;messages&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;6ddf401500000000_e858101177b8152c_002&quot;,
+        ///      &quot;threadId&quot;: &quot;6ddf401500000000_e858101177b8152c_001&quot;,
+        ///      &quot;labelIds&quot;: [
+        ///        &quot;TRASH&quot;
+        ///      ]
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__threads__threadId__trash_POST {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-threads-{threadId}-trash_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;6ddf401500000000_e858101177b8152c_001&quot;,
+        ///  &quot;messages&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;6ddf401500000000_e858101177b8152c_002&quot;,
+        ///      &quot;threadId&quot;: &quot;6ddf401500000000_e858101177b8152c_001&quot;,
+        ///      &quot;labelIds&quot;: [
+        ///        &quot;INBOX&quot;
+        ///      ]
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__threads__threadId__untrash_POST {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-threads-{threadId}-untrash_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;threads&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;6ddf401500000000_e858101177b8152c_001&quot;,
+        ///      &quot;snippet&quot;: &quot;Based on previous discussion, we reached preliminary&quot;,
+        ///      &quot;historyId&quot;: &quot;1499070&quot;,
+        ///      &quot;threadName&quot;: &quot;The latest status of Project Prometheus&quot;,
+        ///      &quot;status&quot;: &quot;normal&quot;
+        ///    }
+        ///  ],
+        ///  &quot;nextPageToken&quot;: &quot;e8562c0a6ba2b3cd&quot;,
+        ///  &quot;resultSizeEstimate&quot;: 10
+        ///}.
+        /// </summary>
+        internal static string emails_mailboxes__email__threads_GET {
+            get {
+                return ResourceManager.GetString("emails-mailboxes-{email}-threads_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;admins&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;name&quot;: &quot;Jill Chill&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;oMTCmjMRwzSfZtUXDIuWDswdksIQ3dyGUB1&quot;,
+        ///  &quot;page_size&quot;: 1,
+        ///  &quot;total_records&quot;: 20
+        ///}.
+        /// </summary>
+        internal static string groups__groupId__admins_GET {
+            get {
+                return ResourceManager.GetString("groups-{groupId}-admins_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;channels&quot;: [
+        ///    {
+        ///      &quot;channel_id&quot;: &quot;d26fd4dfebfa4aff9f31ee5710529442&quot;,
+        ///      &quot;channel_name&quot;: &quot;Your Channel&quot;,
+        ///      &quot;member_count&quot;: 10
+        ///    }
+        ///  ],
+        ///  &quot;group_id&quot;: &quot;2NEr8QoCSZq4LV6s7jjYQA&quot;
+        ///}.
+        /// </summary>
+        internal static string groups__groupId__channels_GET {
+            get {
+                return ResourceManager.GetString("groups-{groupId}-channels_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;825c9e31f1064c73b394c5e4557d3447&quot;,
+        ///  &quot;name&quot;: &quot;Developers&quot;,
+        ///  &quot;total_members&quot;: 100
+        ///}.
+        /// </summary>
+        internal static string groups__groupId__GET {
+            get {
+                return ResourceManager.GetString("groups-{groupId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;members&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;first_name&quot;: &quot;Jill&quot;,
+        ///      &quot;id&quot;: &quot;v4iyWT1LTfy8QvPG4GTvdg&quot;,
+        ///      &quot;last_name&quot;: &quot;Chill&quot;,
+        ///      &quot;type&quot;: 1
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_count&quot;: 20,
+        ///  &quot;page_number&quot;: 1,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 200
+        ///}.
+        /// </summary>
+        internal static string groups__groupId__members_GET {
+            get {
+                return ResourceManager.GetString("groups-{groupId}-members_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;options&quot;: {
+        ///    &quot;host_email_notification&quot;: true,
+        ///    &quot;close_registration&quot;: true,
+        ///    &quot;allow_participants_to_join_from_multiple_devices&quot;: true,
+        ///    &quot;show_social_share_buttons&quot;: true
+        ///  },
+        ///  &quot;questions&quot;: [
+        ///    {
+        ///      &quot;field_name&quot;: &quot;last_name&quot;,
+        ///      &quot;required&quot;: true,
+        ///      &quot;selected&quot;: true
+        ///    }
+        ///  ],
+        ///  &quot;approve_type&quot;: 0,
+        ///  &quot;custom_questions&quot;: [
+        ///    {
+        ///      &quot;title&quot;: &quot;true&quot;,
+        ///      &quot;type&quot;: &quot;single_dropdown&quot;,
+        ///      &quot;required&quot;: true,
+        ///      &quot;selected&quot;: true,
+        ///      &quot;answers&quot;: [
+        ///        &quot;op [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string groups__groupId__settings_registration_GET {
+            get {
+                return ResourceManager.GetString("groups-{groupId}-settings-registration_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;groups&quot;: [
+        ///    null
+        ///  ],
+        ///  &quot;total_records&quot;: 200,
+        ///  &quot;next_page_token&quot;: &quot;qUEQqB1V0HVhJmwKFQrGOD&quot;
+        ///}.
+        /// </summary>
+        internal static string groups_GET {
+            get {
+                return ResourceManager.GetString("groups_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;message_id&quot;: &quot;201910tryyRFjM_main&quot;,
+        ///  &quot;robot_jid&quot;: &quot;v1pky3tyBBB5pl8q@xmpp.zoom.us&quot;,
+        ///  &quot;sent_time&quot;: &quot;2019-10-17 01:40:24 \u002B0000&quot;,
+        ///  &quot;to_jid&quot;: &quot;xghfd@shj.zoom.us&quot;,
+        ///  &quot;user_jid&quot;: &quot;jnrgfjp6w@xmpp.zoom.us&quot;
+        ///}.
+        /// </summary>
+        internal static string im_chat_messages__message_id__DELETE {
+            get {
+                return ResourceManager.GetString("im-chat-messages-{message_id}_DELETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;message_id&quot;: &quot;201910tryyRFjM_main&quot;,
+        ///  &quot;robot_jid&quot;: &quot;v1pky3tyBBB5pl8q@xmpp.zoom.us&quot;,
+        ///  &quot;sent_time&quot;: &quot;2019-10-17 01:40:24 \u002B0000&quot;,
+        ///  &quot;to_jid&quot;: &quot;xghfd@shj.zoom.us&quot;,
+        ///  &quot;user_jid&quot;: &quot;jnrgfjp6w@xmpp.zoom.us&quot;
+        ///}.
+        /// </summary>
+        internal static string im_chat_messages__message_id__PUT {
+            get {
+                return ResourceManager.GetString("im-chat-messages-{message_id}_PUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;assigned_group_id&quot;: &quot;SsxAmMT7QPOH19Kf9ZHz6g&quot;,
+        ///  &quot;id&quot;: &quot;ErxAmMT7QPOH19Kf9Z55ty&quot;,
+        ///  &quot;policy_name&quot;: &quot;test&quot;,
+        ///  &quot;settings&quot;: {
+        ///    &quot;complete_phone_calls&quot;: false,
+        ///    &quot;file_transfer&quot;: false,
+        ///    &quot;im&quot;: false,
+        ///    &quot;in_meeting_chat&quot;: false,
+        ///    &quot;meeting&quot;: false,
+        ///    &quot;message_via_sms&quot;: false,
+        ///    &quot;recording&quot;: false,
+        ///    &quot;screen_share&quot;: false
+        ///  },
+        ///  &quot;status&quot;: 1,
+        ///  &quot;to_group_id&quot;: &quot;mjLMOSAERBaakF8kSDWB7g&quot;,
+        ///  &quot;type&quot;: 1
+        ///}.
+        /// </summary>
+        internal static string information_barriers_policies__policyId__GET {
+            get {
+                return ResourceManager.GetString("information_barriers-policies-{policyId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;policies&quot;: [
+        ///    {
+        ///      &quot;assigned_group_id&quot;: &quot;SsxAmMT7QPOH19Kf9ZHz6g&quot;,
+        ///      &quot;id&quot;: &quot;ErxAmMT7QPOH19Kf9Z55ty&quot;,
+        ///      &quot;policy_name&quot;: &quot;test&quot;,
+        ///      &quot;chaperone_group_id&quot;: &quot;0P9yYDOFRVeSNvSxwuO8rA&quot;,
+        ///      &quot;settings&quot;: {
+        ///        &quot;complete_phone_calls&quot;: false,
+        ///        &quot;file_transfer&quot;: false,
+        ///        &quot;im&quot;: false,
+        ///        &quot;in_meeting_chat&quot;: false,
+        ///        &quot;meeting&quot;: false,
+        ///        &quot;message_via_sms&quot;: false,
+        ///        &quot;recording&quot;: false,
+        ///        &quot;screen_share&quot;: false
+        ///      },
+        ///      &quot;status&quot;: 1,
+        ///     [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string information_barriers_policies_GET {
+            get {
+                return ResourceManager.GetString("information_barriers-policies_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;conversation_id&quot;: &quot;egLSRuj2SlWet\u002BwLi87LNA==,1667893163000&quot;,
+        ///  &quot;meeting_id&quot;: 896549134891,
+        ///  &quot;meeting_uuid&quot;: &quot;egLSRuj2SlWet\u002BwLi87LNA==&quot;,
+        ///  &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///  &quot;host_email&quot;: &quot;jchill@example.com&quot;,
+        ///  &quot;topic&quot;: &quot;Maximize profits&quot;,
+        ///  &quot;conversation_topic&quot;: &quot;Maximize profits&quot;,
+        ///  &quot;duration&quot;: 60,
+        ///  &quot;summary&quot;: &quot;summary&quot;,
+        ///  &quot;conversation_type&quot;: &quot;meeting&quot;,
+        ///  &quot;stage_during_conversation&quot;: &quot;Perception Analysis&quot;,
+        ///  &quot;start_time&quot;: &quot;2022-03-23T06:00:00Z&quot;,
+        ///  &quot;meeting_start_time&quot;: &quot;2 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string iq_conversations__conversationId__GET {
+            get {
+                return ResourceManager.GetString("iq-conversations-{conversationId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;teams&quot;: [
+        ///    {
+        ///      &quot;team_id&quot;: &quot;aO1RVNBSRC2klMMdco14_g&quot;,
+        ///      &quot;name&quot;: &quot;level 1-10&quot;,
+        ///      &quot;description&quot;: &quot;level 1-10&quot;,
+        ///      &quot;type&quot;: &quot;hierarchical team&quot;,
+        ///      &quot;member_size&quot;: 1,
+        ///      &quot;supervisor_size&quot;: 1,
+        ///      &quot;leaf&quot;: true,
+        ///      &quot;parent_teams&quot;: [
+        ///        {
+        ///          &quot;team_id&quot;: &quot;jeazIFbXSKm4E65_cxxQzA&quot;,
+        ///          &quot;name&quot;: &quot;level 1&quot;
+        ///        }
+        ///      ]
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;gPP6D7Oy6TUyGwpBBtICy03182P6nJp3yQ2&quot;,
+        ///  &quot;page_size&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string iq_teams_GET {
+            get {
+                return ResourceManager.GetString("iq-teams_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;c6o8l4m5xxyyaz0kxiqec6v6&quot;,
+        ///  &quot;kb_id&quot;: &quot;whelb0q6qe1bpqg6jrw3ismo&quot;,
+        ///  &quot;category&quot;: &quot;Foo&quot;,
+        ///  &quot;title&quot;: &quot;Article One&quot;,
+        ///  &quot;url&quot;: &quot;https://example.com/foo/article1&quot;,
+        ///  &quot;created_at&quot;: &quot;2023-03-21T20:21:30.6590000\u002B00:00&quot;,
+        ///  &quot;updated_at&quot;: &quot;2023-03-21T20:21:30.6590000\u002B00:00&quot;,
+        ///  &quot;exclude&quot;: false,
+        ///  &quot;language&quot;: &quot;en-US&quot;,
+        ///  &quot;external_id&quot;: &quot;871b707a-7756-46b6-bfba-36a297ba1e85&quot;,
+        ///  &quot;content&quot;: &quot;\u003Cp\u003Earticle 1 content with \u003Cb\u003Esome\u003C/b\u003E \u003Ci\u003Ehtml\u003C/i\u003E\u0 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string km_kbs__kbId__articles__articleId__GET {
+            get {
+                return ResourceManager.GetString("km-kbs-{kbId}-articles-{articleId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;c6o8l4m5xxyyaz0kxiqec6v6&quot;,
+        ///  &quot;kb_id&quot;: &quot;whelb0q6qe1bpqg6jrw3ismo&quot;,
+        ///  &quot;category&quot;: &quot;Foo&quot;,
+        ///  &quot;title&quot;: &quot;Article One&quot;,
+        ///  &quot;url&quot;: &quot;https://example.com/foo/article1&quot;,
+        ///  &quot;created_at&quot;: &quot;2023-03-21T20:21:30.6590000\u002B00:00&quot;,
+        ///  &quot;updated_at&quot;: &quot;2023-03-21T20:21:30.6590000\u002B00:00&quot;,
+        ///  &quot;exclude&quot;: false,
+        ///  &quot;language&quot;: &quot;en-US&quot;,
+        ///  &quot;external_id&quot;: &quot;871b707a-7756-46b6-bfba-36a297ba1e85&quot;,
+        ///  &quot;content&quot;: &quot;\u003Cp\u003Earticle 1 content with \u003Cb\u003Esome\u003C/b\u003E \u003Ci\u003Ehtml\u003C/i\u003E\u0 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string km_kbs__kbId__articles__articleId__PUT {
+            get {
+                return ResourceManager.GetString("km-kbs-{kbId}-articles-{articleId}_PUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;e9je7r6yxfqlaklt7zz4wzh9&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 100,
+        ///  &quot;articles&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;e9je7r6yxfqlaklt7zz4wzh9&quot;,
+        ///      &quot;external_id&quot;: &quot;871b707a-7756-46b6-bfba-36a297ba1e85&quot;,
+        ///      &quot;kb_id&quot;: &quot;whelb0q6qe1bpqg6jrw3ismo&quot;,
+        ///      &quot;category&quot;: &quot;Foo&quot;,
+        ///      &quot;title&quot;: &quot;Article One&quot;,
+        ///      &quot;url&quot;: &quot;https://example.com/foo/article1&quot;,
+        ///      &quot;content&quot;: &quot;\u003Cp\u003Earticle 1 content with \u003Cb\u003Esome\u003C/b\u003E \u003Ci\u003Ehtml\u003C/i\u003E\u003C/p\u003E&quot;,
+        ///  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string km_kbs__kbId__articles_GET {
+            get {
+                return ResourceManager.GetString("km-kbs-{kbId}-articles_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;sync_id&quot;: &quot;a6w6izgus3qlxz6di0vsrv8s&quot;,
+        ///  &quot;kb_id&quot;: &quot;whelb0q6qe1bpqg6jrw3ismo&quot;,
+        ///  &quot;sync_status&quot;: &quot;IN_PROGRESS&quot;,
+        ///  &quot;progress_percent&quot;: 50,
+        ///  &quot;error_code&quot;: 33009,
+        ///  &quot;error_message&quot;: &quot;The sync failed because no articles had any content&quot;,
+        ///  &quot;created_at&quot;: &quot;2025-01-10T13:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;updated_at&quot;: &quot;2025-01-10T13:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;started_at&quot;: &quot;2025-01-12T15:00:00.0000000\u002B00:00&quot;
+        ///}.
+        /// </summary>
+        internal static string km_kbs__kbId__sync__syncId__GET {
+            get {
+                return ResourceManager.GetString("km-kbs-{kbId}-sync-{syncId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [
+        ///  {
+        ///    &quot;field_id&quot;: &quot;city_name&quot;,
+        ///    &quot;type&quot;: &quot;plain_text_input&quot;,
+        ///    &quot;value&quot;: &quot;San Jose&quot;
+        ///  }
+        ///].
+        /// </summary>
+        internal static string marketplace_app_custom_fields_GET {
+            get {
+                return ResourceManager.GetString("marketplace-app-custom_fields_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;b43YBRLJFg3V4vsSpxvGdKIGtNbxn9h9If2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;call_logs&quot;: [
+        ///    {
+        ///      &quot;url_pattern&quot;: &quot;https://zoom.us/v2/users/_DkLL5iMRW-p_6yhPocD4Q/assistants&quot;,
+        ///      &quot;time&quot;: &quot;1737704112808&quot;,
+        ///      &quot;http_status&quot;: 200,
+        ///      &quot;method&quot;: &quot;GET&quot;,
+        ///      &quot;trace_id&quot;: &quot;v=2.0;clid=aw1;rid=ZTP_10094594754_scenario_10000000934_aw1_20250124T073509485Z&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string marketplace_apps__appId__api_call_logs_GET {
+            get {
+                return ResourceManager.GetString("marketplace-apps-{appId}-api_call_logs_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;app_id&quot;: &quot;nqSreNVsQ2eGzUMGnA8AHA&quot;,
+        ///  &quot;app_name&quot;: &quot;Example App&quot;,
+        ///  &quot;app_description&quot;: &quot;Example App description&quot;,
+        ///  &quot;app_type&quot;: &quot;ZoomApp&quot;,
+        ///  &quot;app_usage&quot;: 1,
+        ///  &quot;app_status&quot;: &quot;PUBLISHED&quot;,
+        ///  &quot;app_links&quot;: {
+        ///    &quot;documentation_url&quot;: &quot;https://xxxx&quot;,
+        ///    &quot;privacy_policy_url&quot;: &quot;https://xxxx&quot;,
+        ///    &quot;support_url&quot;: &quot;https://xxxx&quot;,
+        ///    &quot;terms_of_use_url&quot;: &quot;https://xxxx&quot;
+        ///  },
+        ///  &quot;app_permissions&quot;: [
+        ///    {
+        ///      &quot;group&quot;: &quot;View&quot;,
+        ///      &quot;group_message&quot;: &quot;App can view information&quot;,
+        ///      &quot;title&quot;: &quot;Associat [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string marketplace_apps__appId__GET {
+            get {
+                return ResourceManager.GetString("marketplace-apps-{appId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;manifest&quot;: {}
+        ///}.
+        /// </summary>
+        internal static string marketplace_apps__appId__manifest_GET {
+            get {
+                return ResourceManager.GetString("marketplace-apps-{appId}-manifest_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;b43YBRLJFg3V4vsSpxvGdKIGtNbxn9h9If2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;webhook_logs&quot;: [
+        ///    {
+        ///      &quot;event&quot;: &quot;meeting.deleted&quot;,
+        ///      &quot;status&quot;: 429,
+        ///      &quot;failed_reason_type&quot;: 1,
+        ///      &quot;user_id&quot;: &quot;IYHrdpjrS3ubOf7rPkkg8w&quot;,
+        ///      &quot;endpoint&quot;: &quot;https://example.com&quot;,
+        ///      &quot;subscription_id&quot;: &quot;9qwt8mkBEW2O6fPuxBpXpA&quot;,
+        ///      &quot;request_headers&quot;: &quot;N/A&quot;,
+        ///      &quot;request_body&quot;: &quot;{\u0022event\u0022:\u0022meeting.created\u0022,\u0022payload\u0022:{\u0022account_id\u0022:\u0022oFPqQAp3Q0u3yLXXrWuQ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string marketplace_apps__appId__webhook_logs_GET {
+            get {
+                return ResourceManager.GetString("marketplace-apps-{appId}-webhook_logs_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;ok&quot;: false,
+        ///  &quot;error&quot;: &quot;invalid_manifest&quot;,
+        ///  &quot;errors&quot;: [
+        ///    {
+        ///      &quot;message&quot;: &quot;Event Subscription requires either Request URL or Socket Mode Enabled&quot;,
+        ///      &quot;setting&quot;: &quot;/settings/event_subscriptions&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string marketplace_apps_manifest_validate_POST {
+            get {
+                return ResourceManager.GetString("marketplace-apps-manifest-validate_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [
+        ///  {
+        ///    &quot;id&quot;: &quot;123e4567-e89b-12d3-a456-426655440000&quot;,
+        ///    &quot;plan_name&quot;: &quot;PRO&quot;,
+        ///    &quot;plan_id&quot;: &quot;f3318144-b66c-4c1e-a987-ebc224e2b706&quot;
+        ///  }
+        ///].
+        /// </summary>
+        internal static string marketplace_monetization_entitlements_GET {
+            get {
+                return ResourceManager.GetString("marketplace-monetization-entitlements_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;entitlements&quot;: [
+        ///    {
+        ///      &quot;entitlement_id&quot;: 1
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string marketplace_users__userId__entitlements_GET {
+            get {
+                return ResourceManager.GetString("marketplace-users-{userId}-entitlements_GET", resourceCulture);
             }
         }
         
@@ -509,6 +7181,624 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;client_feedbacks&quot;: [
+        ///    {
+        ///      &quot;feedback_id&quot;: &quot;1&quot;,
+        ///      &quot;feedback_name&quot;: &quot;Others&quot;,
+        ///      &quot;participants_count&quot;: 0
+        ///    }
+        ///  ],
+        ///  &quot;from&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///  &quot;to&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///  &quot;total_records&quot;: 10
+        ///}.
+        /// </summary>
+        internal static string metrics_client_feedback_GET {
+            get {
+                return ResourceManager.GetString("metrics-client-feedback_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;client_satisfaction&quot;: [
+        ///    {
+        ///      &quot;date&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///      &quot;good_count&quot;: 0,
+        ///      &quot;none_count&quot;: 0,
+        ///      &quot;not_good_count&quot;: 0,
+        ///      &quot;satisfaction_percent&quot;: 100
+        ///    }
+        ///  ],
+        ///  &quot;from&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///  &quot;to&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///  &quot;total_records&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string metrics_client_satisfaction_GET {
+            get {
+                return ResourceManager.GetString("metrics-client-satisfaction_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;client_versions&quot;: [
+        ///    {
+        ///      &quot;client_version&quot;: &quot;win_5.1.1697.0821&quot;,
+        ///      &quot;total_count&quot;: 10
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string metrics_client_versions_GET {
+            get {
+                return ResourceManager.GetString("metrics-client_versions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {}.
+        /// </summary>
+        internal static string metrics_crc_GET {
+            get {
+                return ResourceManager.GetString("metrics-crc_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;host&quot;: &quot;API&quot;,
+        ///  &quot;custom_keys&quot;: [
+        ///    {
+        ///      &quot;key&quot;: &quot;Host Nation&quot;,
+        ///      &quot;value&quot;: &quot;US&quot;
+        ///    }
+        ///  ],
+        ///  &quot;dept&quot;: &quot;Developers&quot;,
+        ///  &quot;duration&quot;: &quot;02:21&quot;,
+        ///  &quot;email&quot;: &quot;user@example.com&quot;,
+        ///  &quot;end_time&quot;: &quot;2022-03-01T10:17:35.0000000\u002B00:00&quot;,
+        ///  &quot;has_3rd_party_audio&quot;: true,
+        ///  &quot;has_archiving&quot;: true,
+        ///  &quot;has_pstn&quot;: true,
+        ///  &quot;has_recording&quot;: true,
+        ///  &quot;has_screen_share&quot;: true,
+        ///  &quot;has_sip&quot;: true,
+        ///  &quot;has_video&quot;: true,
+        ///  &quot;has_voip&quot;: true,
+        ///  &quot;has_manual_captions&quot;: true,
+        ///  &quot;has_automated_captions&quot;: true,        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string metrics_meetings__meetingId__GET {
+            get {
+                return ResourceManager.GetString("metrics-meetings-{meetingId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;_f08HhPJS82MIVLuuFaJPg&quot;,
+        ///  &quot;device&quot;: &quot;Phone&quot;,
+        ///  &quot;client&quot;: &quot;Web Meeting SDK 2.18&quot;,
+        ///  &quot;domain&quot;: &quot;example.com&quot;,
+        ///  &quot;harddisk_id&quot;: &quot;Disk01&quot;,
+        ///  &quot;internal_ip_addresses&quot;: [
+        ///    &quot;192.0.2.1&quot;
+        ///  ],
+        ///  &quot;ip_address&quot;: &quot;192.0.2.1&quot;,
+        ///  &quot;join_time&quot;: &quot;2022-03-01T10:15:14.0000000\u002B00:00&quot;,
+        ///  &quot;leave_time&quot;: &quot;2022-03-01T10:15:14.0000000\u002B00:00&quot;,
+        ///  &quot;location&quot;: &quot;United States&quot;,
+        ///  &quot;mac_addr&quot;: &quot;f85e-a012-92d8&quot;,
+        ///  &quot;pc_name&quot;: &quot;HW0010449&quot;,
+        ///  &quot;user_id&quot;: &quot;20161536&quot;,
+        ///  &quot;user_name&quot;: &quot;jchill&quot;,
+        ///  &quot;user_qos&quot;: [ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string metrics_meetings__meetingId__participants__participantId__qos_GET {
+            get {
+                return ResourceManager.GetString("metrics-meetings-{meetingId}-participants-{participantId}-qos_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;ZkFS5lmGLWTjLMqt2IVCBpyKwSnbDrgJzo2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;participants&quot;: [
+        ///    {
+        ///      &quot;date_time&quot;: &quot;2022-01-19T07:34:09.0000000\u002B00:00&quot;,
+        ///      &quot;email&quot;: &quot;user@example.com&quot;,
+        ///      &quot;quality&quot;: &quot;GOOD&quot;,
+        ///      &quot;user_id&quot;: &quot;NJmuvOjlRm2r7yGUPLLOhw&quot;,
+        ///      &quot;comment&quot;: &quot;Meeting got disconnected.&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string metrics_meetings__meetingId__participants_satisfaction_GET {
+            get {
+                return ResourceManager.GetString("metrics-meetings-{meetingId}-participants-satisfaction_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;from&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///  &quot;quality&quot;: {
+        ///    &quot;audio&quot;: {
+        ///      &quot;bad&quot;: 0,
+        ///      &quot;fair&quot;: 0,
+        ///      &quot;good&quot;: 0,
+        ///      &quot;poor&quot;: 0
+        ///    },
+        ///    &quot;screen_share&quot;: {
+        ///      &quot;bad&quot;: 0,
+        ///      &quot;fair&quot;: 0,
+        ///      &quot;good&quot;: 0,
+        ///      &quot;poor&quot;: 0
+        ///    },
+        ///    &quot;video&quot;: {
+        ///      &quot;bad&quot;: 0,
+        ///      &quot;fair&quot;: 0,
+        ///      &quot;good&quot;: 0,
+        ///      &quot;poor&quot;: 0
+        ///    }
+        ///  },
+        ///  &quot;to&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;
+        ///}.
+        /// </summary>
+        internal static string metrics_quality_GET {
+            get {
+                return ResourceManager.GetString("metrics-quality_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;host&quot;: &quot;user@example.com&quot;,
+        ///  &quot;custom_keys&quot;: [
+        ///    {
+        ///      &quot;key&quot;: &quot;key1&quot;,
+        ///      &quot;value&quot;: &quot;value1&quot;
+        ///    }
+        ///  ],
+        ///  &quot;dept&quot;: &quot;Developers&quot;,
+        ///  &quot;duration&quot;: &quot;55:01&quot;,
+        ///  &quot;email&quot;: &quot;user@example.com&quot;,
+        ///  &quot;end_time&quot;: &quot;2022-01-13T07:00:46.0000000\u002B00:00&quot;,
+        ///  &quot;has_3rd_party_audio&quot;: true,
+        ///  &quot;has_archiving&quot;: true,
+        ///  &quot;has_pstn&quot;: true,
+        ///  &quot;has_recording&quot;: true,
+        ///  &quot;has_screen_share&quot;: true,
+        ///  &quot;has_sip&quot;: true,
+        ///  &quot;has_video&quot;: true,
+        ///  &quot;has_voip&quot;: true,
+        ///  &quot;has_manual_captions&quot;: true,
+        ///  &quot;has_automated_caption [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string metrics_webinars__webinarId__GET {
+            get {
+                return ResourceManager.GetString("metrics-webinars-{webinarId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;_f08HhPJS82MIVLuuFaJPg&quot;,
+        ///  &quot;device&quot;: &quot;Phone&quot;,
+        ///  &quot;client&quot;: &quot;Web Meeting SDK 2.18&quot;,
+        ///  &quot;domain&quot;: &quot;example.com&quot;,
+        ///  &quot;harddisk_id&quot;: &quot;Disk01&quot;,
+        ///  &quot;internal_ip_addresses&quot;: [
+        ///    &quot;192.0.2.1&quot;
+        ///  ],
+        ///  &quot;ip_address&quot;: &quot;192.0.2.1&quot;,
+        ///  &quot;join_time&quot;: &quot;2022-03-01T10:15:14.0000000\u002B00:00&quot;,
+        ///  &quot;leave_time&quot;: &quot;2022-03-01T10:15:14.0000000\u002B00:00&quot;,
+        ///  &quot;location&quot;: &quot;United States&quot;,
+        ///  &quot;mac_addr&quot;: &quot;f85e-a012-92d8&quot;,
+        ///  &quot;pc_name&quot;: &quot;HW0010449&quot;,
+        ///  &quot;user_id&quot;: &quot;20161536&quot;,
+        ///  &quot;user_name&quot;: &quot;jchill&quot;,
+        ///  &quot;user_qos&quot;: [ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string metrics_webinars__webinarId__participants__participantId__qos_GET {
+            get {
+                return ResourceManager.GetString("metrics-webinars-{webinarId}-participants-{participantId}-qos_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;ZkFS5lmGLWTjLMqt2IVCBpyKwSnbDrgJzo2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;participants&quot;: [
+        ///    {
+        ///      &quot;date_time&quot;: &quot;2022-01-19T07:34:09.0000000\u002B00:00&quot;,
+        ///      &quot;email&quot;: &quot;user@example.com&quot;,
+        ///      &quot;quality&quot;: &quot;GOOD&quot;,
+        ///      &quot;user_id&quot;: &quot;NJmuvOjlRm2r7yGUPLLOhw&quot;,
+        ///      &quot;comment&quot;: &quot;Webinar got disconnected.&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string metrics_webinars__webinarId__participants_satisfaction_GET {
+            get {
+                return ResourceManager.GetString("metrics-webinars-{webinarId}-participants-satisfaction_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {}.
+        /// </summary>
+        internal static string metrics_zoomrooms__zoomroomId__GET {
+            get {
+                return ResourceManager.GetString("metrics-zoomrooms-{zoomroomId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {}.
+        /// </summary>
+        internal static string metrics_zoomrooms_GET {
+            get {
+                return ResourceManager.GetString("metrics-zoomrooms_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {}.
+        /// </summary>
+        internal static string metrics_zoomrooms_issues_GET {
+            get {
+                return ResourceManager.GetString("metrics-zoomrooms-issues_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;8X8xSdRVKHsabD6Im4tIPODq6GzDOvV5fO1&quot;,
+        ///  &quot;numbers&quot;: [
+        ///    {
+        ///      &quot;customer_account_name&quot;: &quot;Some customer\u0027s account name&quot;,
+        ///      &quot;customer_account_number&quot;: &quot;Some customer\u0027s account number&quot;,
+        ///      &quot;assigned&quot;: true,
+        ///      &quot;billing_ref_id&quot;: &quot;Some billing referenceId&quot;,
+        ///      &quot;phone_number&quot;: &quot;\u002B18108001001&quot;,
+        ///      &quot;service_info&quot;: &quot;Some service info&quot;,
+        ///      &quot;sip_trunk_name&quot;: &quot;test-carrier-sip-trunk&quot;,
+        ///      &quot;status&quot;: true
+        ///    }
+        ///  ],
+        ///  &quot;total_records&quot;: 20
+        ///}.
+        /// </summary>
+        internal static string number_management_carrier_peering_numbers_GET {
+            get {
+                return ResourceManager.GetString("number_management-carrier-peering_numbers_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;iHE1MQAET2iV85MbfaQmwg&quot;,
+        ///  &quot;number&quot;: &quot;\u002B1203030333&quot;,
+        ///  &quot;allocated_product&quot;: &quot;ZOOM_CONTACT_CENTER&quot;,
+        ///  &quot;number_type&quot;: &quot;Toll&quot;,
+        ///  &quot;display_name&quot;: &quot;Alice&quot;,
+        ///  &quot;caller_id_name&quot;: &quot;Bob Company&quot;,
+        ///  &quot;carrier&quot;: {
+        ///    &quot;code&quot;: 2,
+        ///    &quot;name&quot;: &quot;Bandwidth&quot;
+        ///  },
+        ///  &quot;capability&quot;: [
+        ///    &quot;Incoming&quot;
+        ///  ],
+        ///  &quot;source&quot;: &quot;Zoom&quot;,
+        ///  &quot;status&quot;: &quot;Pending&quot;,
+        ///  &quot;emergency_address&quot;: {
+        ///    &quot;address_line1&quot;: &quot;53 Rav Road&quot;,
+        ///    &quot;address_line2&quot;: &quot;Floor 1&quot;,
+        ///    &quot;city&quot;: &quot;San Jose&quot;,
+        ///    &quot;county&quot;: &quot;CO. Cork&quot;,
+        ///    &quot;st [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string number_management_numbers__phoneNumberId__GET {
+            get {
+                return ResourceManager.GetString("number_management-numbers-{phoneNumberId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;xuWXDDeGFkx0dyRtuwQR3M9NWIoMVD9e0a2&quot;,
+        ///  &quot;page_size&quot;: 100,
+        ///  &quot;numbers&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;iHE1MQAET2iV85MbfaQmwg&quot;,
+        ///      &quot;number&quot;: &quot;\u002B1203030333&quot;,
+        ///      &quot;allocated_product&quot;: &quot;ZOOM_CONTACT_CENTER&quot;,
+        ///      &quot;number_type&quot;: &quot;Toll&quot;,
+        ///      &quot;display_name&quot;: &quot;Alice&quot;,
+        ///      &quot;caller_id_name&quot;: &quot;Bob Company&quot;,
+        ///      &quot;carrier&quot;: {
+        ///        &quot;code&quot;: 2,
+        ///        &quot;name&quot;: &quot;Bandwidth&quot;
+        ///      },
+        ///      &quot;capability&quot;: [
+        ///        &quot;Incoming&quot;
+        ///      ],
+        ///      &quot;source&quot;: &quot;Zoom&quot;,
+        ///      &quot;status&quot;: &quot;P [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string number_management_numbers_GET {
+            get {
+                return ResourceManager.GetString("number_management-numbers_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;8X8xSdRVKHsabD6Im4tIPODq6GzDOvV5fO1&quot;,
+        ///  &quot;numbers&quot;: [
+        ///    {
+        ///      &quot;assigned&quot;: true,
+        ///      &quot;billing_ref_id&quot;: &quot;Some billing referenceId&quot;,
+        ///      &quot;allocated_product&quot;: &quot;ZOOM_PHONE&quot;,
+        ///      &quot;phone_number&quot;: &quot;\u002B18108001001&quot;,
+        ///      &quot;service_info&quot;: &quot;Inbound only number\u0027 or \u0027Metered charges apply&quot;,
+        ///      &quot;sip_trunk_name&quot;: &quot;test-carrier-sip-trunk&quot;,
+        ///      &quot;status&quot;: true
+        ///    }
+        ///  ],
+        ///  &quot;total_records&quot;: 20
+        ///}.
+        /// </summary>
+        internal static string number_management_peering_numbers_GET {
+            get {
+                return ResourceManager.GetString("number_management-peering_numbers_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;zi4JE9iWsGMZ92F9xhnlcZRxl2Fh47qio02&quot;,
+        ///  &quot;page_size&quot;: 100,
+        ///  &quot;plans&quot;: [
+        ///    {
+        ///      &quot;assigned&quot;: 10,
+        ///      &quot;available&quot;: 10,
+        ///      &quot;subscribed&quot;: 20,
+        ///      &quot;name&quot;: &quot;US/CA Included Phone Numbers&quot;,
+        ///      &quot;is_unlimited&quot;: true
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string number_management_plan_GET {
+            get {
+                return ResourceManager.GetString("number_management-plan_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;contact_emails&quot;: &quot;example@163.com&quot;,
+        ///  &quot;contact_number&quot;: &quot;2058945753&quot;,
+        ///  &quot;isp&quot;: &quot;Twilio International&quot;,
+        ///  &quot;numbers&quot;: [
+        ///    &quot;\u002B12058945752&quot;
+        ///  ],
+        ///  &quot;order_id&quot;: &quot;2021080307332974349&quot;,
+        ///  &quot;original_billing_info&quot;: {
+        ///    &quot;account_number&quot;: &quot;111223&quot;,
+        ///    &quot;address&quot;: {
+        ///      &quot;city&quot;: &quot;San Jose&quot;,
+        ///      &quot;country&quot;: &quot;US&quot;,
+        ///      &quot;house_number&quot;: &quot;55&quot;,
+        ///      &quot;state_code&quot;: &quot;CA&quot;,
+        ///      &quot;street_name&quot;: &quot;ALMADEN BLVD&quot;,
+        ///      &quot;zip&quot;: &quot;95113&quot;
+        ///    },
+        ///    &quot;authorizing_person&quot;: &quot;zz&quot;,
+        ///    &quot;billing_telephone_num [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string number_management_ported_numbers_orders__orderId__GET {
+            get {
+                return ResourceManager.GetString("number_management-ported_numbers-orders-{orderId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;ported_numbers&quot;: [
+        ///    {
+        ///      &quot;numbers&quot;: [
+        ///        &quot;\u002B12058945752&quot;
+        ///      ],
+        ///      &quot;order_id&quot;: &quot;2021080307332974349&quot;,
+        ///      &quot;replacing_numbers&quot;: [
+        ///        {
+        ///          &quot;source_number&quot;: &quot;\u002B12058945752&quot;,
+        ///          &quot;target_number&quot;: &quot;\u002B12058945755&quot;
+        ///        }
+        ///      ],
+        ///      &quot;status&quot;: &quot;Canceled&quot;,
+        ///      &quot;submission_date_time&quot;: &quot;2021-08-03T07:33:29Z&quot;
+        ///    }
+        ///  ],
+        ///  &quot;total_records&quot;: 2
+        ///}.
+        /// </summary>
+        internal static string number_management_ported_numbers_orders_GET {
+            get {
+                return ResourceManager.GetString("number_management-ported_numbers-orders_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;IXIhcpJWscHfISSKTcdl2QpSMLyRE38zH92&quot;,
+        ///  &quot;total_records&quot;: 88,
+        ///  &quot;sip_groups&quot;: [
+        ///    {
+        ///      &quot;description&quot;: &quot;test SIP group&quot;,
+        ///      &quot;display_name&quot;: &quot;RRRR&quot;,
+        ///      &quot;sip_group_id&quot;: &quot;8MhK7ea4Q4ihIQ4TD_g0kw&quot;,
+        ///      &quot;send_sip_group_name&quot;: false,
+        ///      &quot;sip_trunk&quot;: {
+        ///        &quot;sip_trunk_id&quot;: &quot;VWQU-veBQnm08EtBkUGnbw&quot;,
+        ///        &quot;name&quot;: &quot;TESTAPI01&quot;,
+        ///        &quot;type&quot;: &quot;BYOC&quot;
+        ///      },
+        ///      &quot;source_system&quot;: &quot;ZOOM_PHONE&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string number_management_sip_groups_GET {
+            get {
+                return ResourceManager.GetString("number_management-sip_groups_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;byoc_sip_trunk&quot;: [
+        ///    {
+        ///      &quot;carrier&quot;: &quot;Bandwidth&quot;,
+        ///      &quot;carrier_account&quot;: &quot;123123131313&quot;,
+        ///      &quot;sip_trunk_id&quot;: &quot;fVA-LsQhQAC2fTS7NiccFA&quot;,
+        ///      &quot;name&quot;: &quot;TestSipTrunk&quot;,
+        ///      &quot;region&quot;: &quot;newqa01sipjp01&quot;,
+        ///      &quot;sbc_label&quot;: &quot;Test&quot;,
+        ///      &quot;source_system&quot;: &quot;COMMON&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;Ds6anZEv59aLMmTSrfF4wmHYCMiYXMWhRQ2&quot;,
+        ///  &quot;total_records&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string number_management_sip_trunks_GET {
+            get {
+                return ResourceManager.GetString("number_management-sip_trunks_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;sms_campaign_id&quot;: &quot;C-BlVwSdjvS3WXk5gzfIQFfQ&quot;,
+        ///  &quot;display_name&quot;: &quot;Test SMS Campaign&quot;,
+        ///  &quot;status&quot;: &quot;active&quot;,
+        ///  &quot;service_type&quot;: &quot;zoomPhone&quot;,
+        ///  &quot;brand&quot;: {
+        ///    &quot;brand_id&quot;: &quot;B-c3AN66d_Q4mrQFNUaW-G2w&quot;,
+        ///    &quot;name&quot;: &quot;Test Campaign&quot;
+        ///  },
+        ///  &quot;phone_numbers&quot;: [
+        ///    {
+        ///      &quot;phone_number_id&quot;: &quot;iHE1MQAET2iV85MbfaQmwg&quot;,
+        ///      &quot;number&quot;: &quot;\u002B18887193005&quot;
+        ///    }
+        ///  ],
+        ///  &quot;response_to_opt_in&quot;: &quot;ZOOM: Thank you for opting in for our texting notifications. Message frequency may vary. Message and Data Rates ma [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string number_management_sms_campaigns__smsCampaignId__GET {
+            get {
+                return ResourceManager.GetString("number_management-sms_campaigns-{smsCampaignId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;bkOcmnm6mn6ioYAi10BcgRiEL38WzAo6jP2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;sms_campaigns&quot;: [
+        ///    {
+        ///      &quot;sms_campaign_id&quot;: &quot;C-BlVwSdjvS3WXk5gzfIQFfQ&quot;,
+        ///      &quot;display_name&quot;: &quot;Test SMS Campaign&quot;,
+        ///      &quot;status&quot;: &quot;active&quot;,
+        ///      &quot;brand&quot;: {
+        ///        &quot;brand_id&quot;: &quot;B-c3AN66d_Q4mrQFNUaW-G2w&quot;,
+        ///        &quot;name&quot;: &quot;Test Campaign&quot;
+        ///      }
+        ///    }
+        ///  ],
+        ///  &quot;total_records&quot;: 1
+        ///}.
+        /// </summary>
+        internal static string number_management_sms_campaigns_GET {
+            get {
+                return ResourceManager.GetString("number_management-sms_campaigns_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;consent_id&quot;: &quot;C-91H30r6xTCCpt8nNFSuhWA&quot;,
+        ///  &quot;consent_name&quot;: &quot;ZPconsent&quot;,
+        ///  &quot;description&quot;: &quot;This consent will be used by our employees to schedule events, provide reminders and support to our customers.&quot;,
+        ///  &quot;user_id&quot;: &quot;0GVPDRXiSAaDb73-e2tW0A&quot;,
+        ///  &quot;account_id&quot;: &quot;KGzOF3hCTamb_Xx-bXbgqA&quot;,
+        ///  &quot;in_out_bound&quot;: {
+        ///    &quot;opt_in_message&quot;: {
+        ///      &quot;prompt&quot;: &quot;Text START to receive text messages from ZOOM. Message frequency may vary. Message and Data Rates may apply. To end messaging from us, reply with STOP. Re [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string number_management_sms_consent__consentId__GET {
+            get {
+                return ResourceManager.GetString("number_management-sms_consent-{consentId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 33,
+        ///  &quot;next_page_token&quot;: &quot;bkOcmnm6mn6ioYAi10BcgRiEL38WzAo6jP2&quot;,
+        ///  &quot;sms_consent_number&quot;: [
+        ///    {
+        ///      &quot;phone_number_id&quot;: &quot;-6QPOIFtSU-wjt2Kl2TUng&quot;,
+        ///      &quot;phone_number&quot;: &quot;\u002B12095805275&quot;,
+        ///      &quot;account_id&quot;: &quot;KGzOF3hCTamb_Xx-bXbgqA&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string number_management_sms_consent__consentId__phone_numbers_GET {
+            get {
+                return ResourceManager.GetString("number_management-sms_consent-{consentId}-phone_numbers_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 33,
+        ///  &quot;next_page_token&quot;: &quot;bkOcmnm6mn6ioYAi10BcgRiEL38WzAo6jP2&quot;,
+        ///  &quot;sms_consent&quot;: [
+        ///    {
+        ///      &quot;consent_id&quot;: &quot;C-91H30r6xTCCpt8nNFSuhWA&quot;,
+        ///      &quot;consent_name&quot;: &quot;ZPconsent&quot;,
+        ///      &quot;description&quot;: &quot;This consent will be used by our employees to schedule events, provide reminders and support to our customers.&quot;,
+        ///      &quot;account_id&quot;: &quot;KGzOF3hCTamb_Xx-bXbgqA&quot;,
+        ///      &quot;in_out_bound&quot;: {
+        ///        &quot;opt_in_message&quot;: {
+        ///          &quot;prompt&quot;: &quot;Text START to receive text message [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string number_management_sms_consent_GET {
+            get {
+                return ResourceManager.GetString("number_management-sms_consent_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;id&quot;: 5638296721,
         ///  &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///  &quot;duration&quot;: 60,
@@ -684,6 +7974,3595 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;call_live_transcription&quot;: {},
+        ///  &quot;local_survivability_mode&quot;: {},
+        ///  &quot;external_calling_on_zoom_room_common_area&quot;: {},
+        ///  &quot;select_outbound_caller_id&quot;: {},
+        ///  &quot;personal_audio_library&quot;: {},
+        ///  &quot;voicemail&quot;: {},
+        ///  &quot;voicemail_transcription&quot;: {},
+        ///  &quot;voicemail_notification_by_email&quot;: {},
+        ///  &quot;shared_voicemail_notification_by_email&quot;: {},
+        ///  &quot;restricted_call_hours&quot;: {},
+        ///  &quot;allowed_call_locations&quot;: {},
+        ///  &quot;check_voicemails_over_phone&quot;: {},
+        ///  &quot;auto_call_recording&quot;: {},
+        ///  &quot;ad_hoc_call_recording&quot;: {
+        ///    &quot;record [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_account_settings_GET {
+            get {
+                return ResourceManager.GetString("phone-account_settings_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;alert_setting_id&quot;: &quot;uvsOCaiDQR2M-NviKFHo0w&quot;,
+        ///  &quot;alert_setting_name&quot;: &quot;Call Queue Alert&quot;,
+        ///  &quot;module&quot;: 1,
+        ///  &quot;rule&quot;: 1,
+        ///  &quot;rule_conditions&quot;: [
+        ///    {
+        ///      &quot;rule_condition_type&quot;: 1,
+        ///      &quot;rule_condition_value&quot;: &quot;Warning&quot;
+        ///    }
+        ///  ],
+        ///  &quot;targets&quot;: [
+        ///    {
+        ///      &quot;target_id&quot;: &quot;-GHFnf5WQe-H-_r0Wwx9iQ&quot;,
+        ///      &quot;target_name&quot;: &quot;test api&quot;,
+        ///      &quot;target_type&quot;: 1,
+        ///      &quot;target_extension_number&quot;: 123,
+        ///      &quot;site&quot;: {
+        ///        &quot;id&quot;: &quot;123123&quot;,
+        ///        &quot;name&quot;: &quot;Main Site&quot;
+        ///      },
+        ///      &quot;assignees&quot;:  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_alert_settings__alertSettingId__GET {
+            get {
+                return ResourceManager.GetString("phone-alert_settings-{alertSettingId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;2z0Ov7kngllAbfQi4ZR2eQTb3mFVYQpYAe3&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;alert_settings&quot;: [
+        ///    {
+        ///      &quot;alert_setting_id&quot;: &quot;uvsOCaiDQR2M-NviKFHo0w&quot;,
+        ///      &quot;alert_setting_name&quot;: &quot;Call Queue Alert&quot;,
+        ///      &quot;module&quot;: 1,
+        ///      &quot;rule&quot;: 1,
+        ///      &quot;rule_conditions&quot;: [
+        ///        {
+        ///          &quot;rule_condition_type&quot;: 5,
+        ///          &quot;rule_condition_value&quot;: &quot;Warning&quot;
+        ///        }
+        ///      ],
+        ///      &quot;targets&quot;: [
+        ///        {
+        ///          &quot;target_name&quot;: &quot;test api&quot;
+        ///        }
+        ///      ],
+        ///      &quot;time_frame_type&quot;: &quot;s [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_alert_settings_GET {
+            get {
+                return ResourceManager.GetString("phone-alert_settings_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;audio_id&quot;: &quot;yCT14TwySDGVUypVlKNEyA&quot;,
+        ///  &quot;name&quot;: &quot;hello.mp3&quot;,
+        ///  &quot;play_url&quot;: &quot;https://file.example.com/file?jwt=eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MzY3MjY0MDEsImlzcyI6ImNyb3NzZmlsZSIsImF1ZCI6ImZpbGUiLCJkaWciOiIzM2MyZGFhZjQ2ZDQ2MzFiNGJkMWUzZmRmYmI5OTBjOTUzNTEwZmE5ZDYxZjYyNDAyNGY5OWZiYmY5ZmZlMWU4In0.kPwNFT1C_twZHl3CTeyaiOLhxmJBcHb__SvDBmgGpiQ\u0026mode=download\u0026path=zoomfs%3A%2F%2Fpbx-voice%2F%2Fprompt%2FNNNiWOl7SSmO-qXFOSXPMA%2FhcAjVmo0SVmdSvW2Sm7VrA.mp3&quot;,
+        ///  &quot;text&quot;: &quot;hello&quot;,
+        ///  &quot;voice_language&quot;: &quot;en [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_audios__audioId__GET {
+            get {
+                return ResourceManager.GetString("phone-audios-{audioId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;cost_center&quot;: &quot;testCostCenter&quot;,
+        ///  &quot;department&quot;: &quot;testDepartment&quot;,
+        ///  &quot;extension_id&quot;: &quot;WfsrPERXS8inWrpH1Hi_KQ&quot;,
+        ///  &quot;extension_number&quot;: 555550000000001,
+        ///  &quot;name&quot;: &quot;JamieAuto&quot;,
+        ///  &quot;timezone&quot;: &quot;Pacific/Midway&quot;,
+        ///  &quot;audio_prompt_language&quot;: &quot;en-US&quot;,
+        ///  &quot;holiday_hours&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;i3gP6xFUTHqSFrIE6nHs7Q&quot;,
+        ///      &quot;name&quot;: &quot;Holiday 1&quot;,
+        ///      &quot;from&quot;: &quot;2022-03-08T16:00:00.0000000\u002B00:00&quot;,
+        ///      &quot;to&quot;: &quot;2022-03-09T16:00:00.0000000\u002B00:00&quot;
+        ///    }
+        ///  ],
+        ///  &quot;phone_numbers&quot;: [
+        ///    {
+        ///      &quot;id&quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_auto_receptionists__autoReceptionistId__GET {
+            get {
+                return ResourceManager.GetString("phone-auto_receptionists-{autoReceptionistId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;audio_prompt&quot;: {
+        ///    &quot;id&quot;: &quot;yCT14TwySDGVUypVlKNEyA&quot;,
+        ///    &quot;name&quot;: &quot;example.mp3&quot;
+        ///  },
+        ///  &quot;caller_enters_no_action&quot;: {
+        ///    &quot;action&quot;: 15,
+        ///    &quot;audio_prompt_repeat&quot;: 3,
+        ///    &quot;forward_to&quot;: {
+        ///      &quot;display_name&quot;: &quot;ZOOM_API Test&quot;,
+        ///      &quot;extension_id&quot;: &quot;z97zV9NsSoa846i-ag3uEw&quot;,
+        ///      &quot;extension_number&quot;: &quot;101021&quot;,
+        ///      &quot;id&quot;: &quot;EVqEKnrMRWyPr705Fk5h2w&quot;
+        ///    }
+        ///  },
+        ///  &quot;key_actions&quot;: [
+        ///    {
+        ///      &quot;action&quot;: 200,
+        ///      &quot;key&quot;: &quot;0&quot;,
+        ///      &quot;target&quot;: {
+        ///        &quot;display_name&quot;: &quot;ZOOM_API Test&quot;,
+        ///        &quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_auto_receptionists__autoReceptionistId__ivr_GET {
+            get {
+                return ResourceManager.GetString("phone-auto_receptionists-{autoReceptionistId}-ivr_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;voicemail_access_members&quot;: [
+        ///    {
+        ///      &quot;shared_id&quot;: &quot;--e8ugg0SeS-9clgrDkn2w&quot;,
+        ///      &quot;access_user_id&quot;: &quot;w0RChiauQeqRlv5fgxYULQ&quot;,
+        ///      &quot;access_user_type&quot;: &quot;commonArea&quot;,
+        ///      &quot;delete&quot;: false,
+        ///      &quot;download&quot;: false
+        ///    }
+        ///  ],
+        ///  &quot;voicemail_transcription&quot;: {
+        ///    &quot;enable&quot;: true,
+        ///    &quot;locked&quot;: true,
+        ///    &quot;locked_by&quot;: &quot;site&quot;,
+        ///    &quot;modified&quot;: true
+        ///  },
+        ///  &quot;voicemail_notification_by_email&quot;: {
+        ///    &quot;include_voicemail_file&quot;: true,
+        ///    &quot;include_voicemail_transcription&quot;: false,
+        ///    &quot;forward_voic [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_auto_receptionists__autoReceptionistId__policies_GET {
+            get {
+                return ResourceManager.GetString("phone-auto_receptionists-{autoReceptionistId}-policies_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;auto_receptionists&quot;: [
+        ///    {
+        ///      &quot;cost_center&quot;: &quot;testCostCenter&quot;,
+        ///      &quot;department&quot;: &quot;testDepartment&quot;,
+        ///      &quot;extension_id&quot;: &quot;WfsrPERXS8inWrpH1Hi_KQ&quot;,
+        ///      &quot;extension_number&quot;: 555550000000001,
+        ///      &quot;id&quot;: &quot;nqerMCD0Tu6RPGoCpVbPtA&quot;,
+        ///      &quot;name&quot;: &quot;JamieAuto&quot;,
+        ///      &quot;timezone&quot;: &quot;Pacific/Midway&quot;,
+        ///      &quot;audio_prompt_language&quot;: &quot;en-US&quot;,
+        ///      &quot;holiday_hours&quot;: [
+        ///        {
+        ///          &quot;id&quot;: &quot;i3gP6xFUTHqSFrIE6nHs7Q&quot;,
+        ///          &quot;name&quot;: &quot;Holiday 1&quot;,
+        ///          &quot;from&quot;: &quot;2022-03-08T16:00:00.0000000 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_auto_receptionists_GET {
+            get {
+                return ResourceManager.GetString("phone-auto_receptionists_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;3WWAEiEjTj2IQuyDiKMd_A&quot;,
+        ///  &quot;name&quot;: &quot;Delhi billing&quot;
+        ///}.
+        /// </summary>
+        internal static string phone_billing_accounts__billingAccountId__GET {
+            get {
+                return ResourceManager.GetString("phone-billing_accounts-{billingAccountId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;billing_accounts&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;3WWAEiEjTj2IQuyDiKMd_A&quot;,
+        ///      &quot;name&quot;: &quot;Delhi billing&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_billing_accounts_GET {
+            get {
+                return ResourceManager.GetString("phone-billing_accounts_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;block_type&quot;: &quot;inbound&quot;,
+        ///  &quot;comment&quot;: &quot;test&quot;,
+        ///  &quot;id&quot;: &quot;2ypsHHwTTFK-fzZJkudYwA&quot;,
+        ///  &quot;match_type&quot;: &quot;prefix&quot;,
+        ///  &quot;phone_number&quot;: &quot;\u002B120665558945&quot;,
+        ///  &quot;status&quot;: &quot;active&quot;
+        ///}.
+        /// </summary>
+        internal static string phone_blocked_list__blockedListId__GET {
+            get {
+                return ResourceManager.GetString("phone-blocked_list-{blockedListId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;blocked_list&quot;: [
+        ///    {
+        ///      &quot;block_type&quot;: &quot;inbound&quot;,
+        ///      &quot;comment&quot;: &quot;test&quot;,
+        ///      &quot;id&quot;: &quot;2ypsHHwTTFK-fzZJkudYwA&quot;,
+        ///      &quot;match_type&quot;: &quot;prefix&quot;,
+        ///      &quot;phone_number&quot;: &quot;\u002B12055558945&quot;,
+        ///      &quot;status&quot;: &quot;active&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;OvrVMfenVmKgsH0SqfWQ2jgUsHFGXeanCB2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1
+        ///}.
+        /// </summary>
+        internal static string phone_blocked_list_GET {
+            get {
+                return ResourceManager.GetString("phone-blocked_list_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;call_element_id&quot;: &quot;20211008-fe9c3900-5187-4254-9359-590afbc40bc9&quot;,
+        ///  &quot;call_history_uuid&quot;: &quot;20211008-48c1dfd4-91ce-4df5-8495-7c9e33d10869&quot;,
+        ///  &quot;call_id&quot;: &quot;7018317023722949162&quot;,
+        ///  &quot;connect_type&quot;: &quot;internal&quot;,
+        ///  &quot;call_type&quot;: &quot;general&quot;,
+        ///  &quot;direction&quot;: &quot;inbound&quot;,
+        ///  &quot;hide_caller_id&quot;: true,
+        ///  &quot;end_to_end&quot;: false,
+        ///  &quot;caller_ext_id&quot;: &quot;ATu63--9TjudZetpf4UuQg&quot;,
+        ///  &quot;caller_name&quot;: &quot;Caller name&quot;,
+        ///  &quot;caller_email&quot;: &quot;test@abc.com&quot;,
+        ///  &quot;caller_did_number&quot;: &quot;\u002B12059300920&quot;,
+        ///  &quot;caller_ext_number&quot;: &quot;101229&quot;,        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_call_element__callElementId__GET {
+            get {
+                return ResourceManager.GetString("phone-call_element-{callElementId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;20211008-48c1dfd4-91ce-4df5-8495-7c9e33d10869&quot;,
+        ///  &quot;call_history_uuid&quot;: &quot;20211008-48c1dfd4-91ce-4df5-8495-7c9e33d10869&quot;,
+        ///  &quot;call_id&quot;: &quot;7018317023722949162&quot;,
+        ///  &quot;connect_type&quot;: &quot;internal&quot;,
+        ///  &quot;call_type&quot;: &quot;general&quot;,
+        ///  &quot;direction&quot;: &quot;inbound&quot;,
+        ///  &quot;international&quot;: false,
+        ///  &quot;hide_caller_id&quot;: true,
+        ///  &quot;end_to_end&quot;: false,
+        ///  &quot;caller_ext_id&quot;: &quot;ATu63--9TjudZetpf4UuQg&quot;,
+        ///  &quot;caller_name&quot;: &quot;Caller name&quot;,
+        ///  &quot;caller_did_number&quot;: &quot;\u002B12059300920&quot;,
+        ///  &quot;caller_ext_number&quot;: &quot;101229&quot;,
+        ///  &quot;caller_email&quot;: &quot;t [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_call_history__callHistoryUuid__GET {
+            get {
+                return ResourceManager.GetString("phone-call_history-{callHistoryUuid}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;20211008-fe9c3900-5187-4254-9359-590afbc40bc9&quot;,
+        ///  &quot;call_path_id&quot;: &quot;20211008-48c1dfd4-91ce-4df5-8495-7c9e33d10869&quot;,
+        ///  &quot;call_id&quot;: &quot;7018317023722949162&quot;,
+        ///  &quot;connect_type&quot;: &quot;internal&quot;,
+        ///  &quot;call_type&quot;: &quot;general&quot;,
+        ///  &quot;direction&quot;: &quot;inbound&quot;,
+        ///  &quot;hide_caller_id&quot;: true,
+        ///  &quot;end_to_end&quot;: false,
+        ///  &quot;caller_ext_id&quot;: &quot;ATu63--9TjudZetpf4UuQg&quot;,
+        ///  &quot;caller_name&quot;: &quot;Caller name&quot;,
+        ///  &quot;caller_email&quot;: &quot;test@abc.com&quot;,
+        ///  &quot;caller_did_number&quot;: &quot;\u002B12059300920&quot;,
+        ///  &quot;caller_ext_number&quot;: &quot;101229&quot;,
+        ///  &quot;caller_ext_typ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_call_history_detail__callHistoryId__GET {
+            get {
+                return ResourceManager.GetString("phone-call_history_detail-{callHistoryId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;call_logs&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;20211001-48c1dfd4-91ce-4df5-8495-7c9e33d10869&quot;,
+        ///      &quot;call_id&quot;: &quot;7018317023722949162&quot;,
+        ///      &quot;direction&quot;: &quot;inbound&quot;,
+        ///      &quot;international&quot;: false,
+        ///      &quot;start_time&quot;: &quot;2021-10-08T16:12:04Z&quot;,
+        ///      &quot;answer_time&quot;: &quot;2021-10-08T16:12:10Z&quot;,
+        ///      &quot;end_time&quot;: &quot;2021-10-08T16:12:15Z&quot;,
+        ///      &quot;duration&quot;: 20,
+        ///      &quot;connect_type&quot;: &quot;internal&quot;,
+        ///      &quot;sbc_id&quot;: &quot;20&quot;,
+        ///      &quot;sbc_name&quot;: &quot;20&quot;,
+        ///      &quot;sip_group_id&quot;: &quot;20&quot;,
+        ///      &quot;sip_group_name&quot;: &quot;20&quot;,
+        ///      &quot;call_type&quot;:  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_call_history_GET {
+            get {
+                return ResourceManager.GetString("phone-call_history_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;call_id&quot;: &quot;7018317023722949162&quot;,
+        ///  &quot;call_type&quot;: &quot;voip&quot;,
+        ///  &quot;callee_country_code&quot;: &quot;1&quot;,
+        ///  &quot;callee_country_iso_code&quot;: &quot;US&quot;,
+        ///  &quot;callee_did_number&quot;: &quot;\u002B12055432724&quot;,
+        ///  &quot;callee_name&quot;: &quot;Callee name&quot;,
+        ///  &quot;callee_number&quot;: &quot;1018&quot;,
+        ///  &quot;callee_number_type&quot;: 1,
+        ///  &quot;callee_number_source&quot;: &quot;internal&quot;,
+        ///  &quot;callee_status&quot;: &quot;deleted&quot;,
+        ///  &quot;callee_deleted_time&quot;: &quot;2022-10-14T22:10:54Z&quot;,
+        ///  &quot;caller_country_code&quot;: &quot;1&quot;,
+        ///  &quot;caller_country_iso_code&quot;: &quot;US&quot;,
+        ///  &quot;caller_did_number&quot;: &quot;\u002B12055432724&quot;,
+        ///  &quot;caller_name&quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_call_logs__callLogId__GET {
+            get {
+                return ResourceManager.GetString("phone-call_logs-{callLogId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;call_id&quot;: &quot;7069775907364530379&quot;,
+        ///  &quot;call_log_id&quot;: &quot;1dfe35c0-5f0f-4bf1-b2e4-a8869a731178&quot;,
+        ///  &quot;call_history_id&quot;: &quot;20220308-1dfe35c0-5f0f-4bf1-b2e4-a8869a731178&quot;,
+        ///  &quot;call_element_id&quot;: &quot;20210609-a297ae04-a875-4cfd-85ab-4adcead91edb&quot;,
+        ///  &quot;callee_name&quot;: &quot;User A&quot;,
+        ///  &quot;callee_number&quot;: &quot;1000001004&quot;,
+        ///  &quot;callee_number_type&quot;: 1,
+        ///  &quot;caller_name&quot;: &quot;User B&quot;,
+        ///  &quot;caller_number&quot;: &quot;1000123476&quot;,
+        ///  &quot;caller_number_type&quot;: 1,
+        ///  &quot;outgoing_by&quot;: {
+        ///    &quot;name&quot;: &quot;User B&quot;,
+        ///    &quot;extension_number&quot;: &quot;123476&quot;
+        ///  },
+        ///  &quot;accept [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_call_logs__id__recordings_GET {
+            get {
+                return ResourceManager.GetString("phone-call_logs-{id}-recordings_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;call_logs&quot;: [
+        ///    {
+        ///      &quot;answer_start_time&quot;: &quot;2021-10-12T16:00:08.0000000\u002B00:00&quot;,
+        ///      &quot;call_end_time&quot;: &quot;2021-10-08T16:12:04Z&quot;,
+        ///      &quot;call_id&quot;: &quot;7018210229361148737&quot;,
+        ///      &quot;call_type&quot;: &quot;voip&quot;,
+        ///      &quot;callee_country_code&quot;: &quot;1&quot;,
+        ///      &quot;callee_country_iso_code&quot;: &quot;US&quot;,
+        ///      &quot;callee_did_number&quot;: &quot;\u002B12055432724&quot;,
+        ///      &quot;callee_name&quot;: &quot;Callee name&quot;,
+        ///      &quot;callee_number&quot;: &quot;1001&quot;,
+        ///      &quot;callee_number_type&quot;: 1,
+        ///      &quot;callee_number_source&quot;: &quot;internal&quot;,
+        ///      &quot;caller_country_code&quot;:  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_call_logs_GET {
+            get {
+                return ResourceManager.GetString("phone-call_logs_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;call_queues&quot;: [
+        ///    {
+        ///      &quot;call_queue_id&quot;: &quot;3PNsZB50TNev4pgBjtKeDw&quot;,
+        ///      &quot;call_queue_name&quot;: &quot;test call queue&quot;,
+        ///      &quot;call_queue_ext_id&quot;: &quot;8f71O6rWT8KFUGQmJIFAdQ&quot;,
+        ///      &quot;inbound_calls&quot;: 500,
+        ///      &quot;completed_calls&quot;: 450,
+        ///      &quot;abandoned_calls&quot;: 40,
+        ///      &quot;overflowed_calls&quot;: 10,
+        ///      &quot;avg_handle_time&quot;: 180,
+        ///      &quot;avg_wrap_up_time&quot;: 60,
+        ///      &quot;avg_in_queue_wait_time&quot;: 30,
+        ///      &quot;max_in_queue_wait_time&quot;: 120,
+        ///      &quot;outbound_calls&quot;: 300,
+        ///      &quot;outbound_connected_calls&quot;: 450,
+        ///      [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_call_queue_analytics_GET {
+            get {
+                return ResourceManager.GetString("phone-call_queue_analytics_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;cost_center&quot;: &quot;testCostCenter&quot;,
+        ///  &quot;department&quot;: &quot;testDepartment&quot;,
+        ///  &quot;extension_id&quot;: &quot;DgKe5UPTTlODBvcgmRIlPw&quot;,
+        ///  &quot;extension_number&quot;: 26000026001,
+        ///  &quot;id&quot;: &quot;3PNsZB50TNev4pgBjtKeDw&quot;,
+        ///  &quot;members&quot;: {
+        ///    &quot;users&quot;: [
+        ///      {
+        ///        &quot;id&quot;: &quot;yNCY-HBHQ36rkXEXYTwu2g&quot;,
+        ///        &quot;level&quot;: &quot;user&quot;,
+        ///        &quot;name&quot;: &quot;APITA AUTO&quot;,
+        ///        &quot;receive_call&quot;: true,
+        ///        &quot;extension_id&quot;: &quot;oeDyBe8zT2SzOZW6gQJXUA&quot;
+        ///      }
+        ///    ],
+        ///    &quot;common_areas&quot;: [
+        ///      {
+        ///        &quot;id&quot;: &quot;HIlHzOEzS8ymQPFBZ-39AQ&quot;,
+        ///        &quot;nam [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_call_queues__callQueueId__GET {
+            get {
+                return ResourceManager.GetString("phone-call_queues-{callQueueId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;call_queue_members&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;yNCY-HBHQ36rkXEXYTwu2g&quot;,
+        ///      &quot;level&quot;: &quot;user&quot;,
+        ///      &quot;name&quot;: &quot;APITA AUTO&quot;,
+        ///      &quot;receive_call&quot;: true,
+        ///      &quot;extension_id&quot;: &quot;oeDyBe8zT2SzOZW6gQJXUA&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;OvrVMfenVmKgsH0SqfWQ2jgUsHFGXeanCB2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1
+        ///}.
+        /// </summary>
+        internal static string phone_call_queues__callQueueId__members_GET {
+            get {
+                return ResourceManager.GetString("phone-call_queues-{callQueueId}-members_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;from&quot;: &quot;2022-03-26&quot;,
+        ///  &quot;next_page_token&quot;: &quot;OvrVMfenVmKgsH0SqfWQ2jgUsHFGXeanCB2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;recordings&quot;: [
+        ///    {
+        ///      &quot;callee_name&quot;: &quot;APITA AUTO&quot;,
+        ///      &quot;callee_number&quot;: &quot;\u002B12058945717&quot;,
+        ///      &quot;callee_number_type&quot;: &quot;1&quot;,
+        ///      &quot;caller_name&quot;: &quot;ZOOM_API Test&quot;,
+        ///      &quot;caller_number&quot;: &quot;\u002B12055432724&quot;,
+        ///      &quot;caller_number_type&quot;: 1,
+        ///      &quot;date_time&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///      &quot;direction&quot;: &quot;inbound&quot;,
+        ///      &quot;download_url&quot;: &quot;https://file.zoomdev.us/file?filena [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_call_queues__callQueueId__recordings_GET {
+            get {
+                return ResourceManager.GetString("phone-call_queues-{callQueueId}-recordings_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;call_queues&quot;: [
+        ///    {
+        ///      &quot;extension_id&quot;: &quot;DgKe5UPTTlODBvcgmRIlPw&quot;,
+        ///      &quot;extension_number&quot;: 26000026001,
+        ///      &quot;id&quot;: &quot;3PNsZB50TNev4pgBjtKeDw&quot;,
+        ///      &quot;name&quot;: &quot;ApiTA_2020_12_21_19_54_05_476&quot;,
+        ///      &quot;phone_numbers&quot;: [
+        ///        {
+        ///          &quot;id&quot;: &quot;KsxwNLEhQ0SJ4U4Bor4ShA&quot;,
+        ///          &quot;number&quot;: &quot;\u002B12058945717&quot;,
+        ///          &quot;source&quot;: &quot;internal&quot;
+        ///        }
+        ///      ],
+        ///      &quot;site&quot;: {
+        ///        &quot;id&quot;: &quot;8f71O6rWT8KFUGQmJIFAdQ&quot;,
+        ///        &quot;name&quot;: &quot;Main Site&quot;
+        ///      },
+        ///      &quot;status&quot;: &quot;active&quot;
+        ///    }
+        ///  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_call_queues_GET {
+            get {
+                return ResourceManager.GetString("phone-call_queues_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;calling_plans&quot;: [
+        ///    {
+        ///      &quot;assigned&quot;: 28,
+        ///      &quot;available&quot;: 72,
+        ///      &quot;name&quot;: &quot;US/CA Metered Calling Plan&quot;,
+        ///      &quot;subscribed&quot;: 100,
+        ///      &quot;type&quot;: 100,
+        ///      &quot;billing_account_id&quot;: &quot;3WWAEiEjTj2IQuyDiKMd_A&quot;,
+        ///      &quot;billing_account_name&quot;: &quot;Delhi billing&quot;,
+        ///      &quot;billing_subscription_id&quot;: &quot;FT-SUBREF-21168178&quot;,
+        ///      &quot;billing_subscription_name&quot;: &quot;My Subscription&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_calling_plans_GET {
+            get {
+                return ResourceManager.GetString("phone-calling_plans_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;8X8xSdRVKHsabD6Im4tIPODq6GzDOvV5fO1&quot;,
+        ///  &quot;numbers&quot;: [
+        ///    {
+        ///      &quot;customer_account_name&quot;: &quot;Some customer\u0027s account name&quot;,
+        ///      &quot;customer_account_number&quot;: &quot;Some customer\u0027s account number&quot;,
+        ///      &quot;assigned&quot;: 1,
+        ///      &quot;billing_reference_id&quot;: &quot;Some billing referenceId&quot;,
+        ///      &quot;phone_number&quot;: &quot;\u002B18108001001&quot;,
+        ///      &quot;service_info&quot;: &quot;Some service info&quot;,
+        ///      &quot;sip_trunk_name&quot;: &quot;test-carrier-sip-trunk&quot;,
+        ///      &quot;status&quot;: 0
+        ///    }
+        ///  ],
+        ///  &quot;total_records&quot;: 20
+        ///}.
+        /// </summary>
+        internal static string phone_carrier_peering_numbers_GET {
+            get {
+                return ResourceManager.GetString("phone-carrier_peering-numbers_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;carrier_reseller_numbers&quot;: [
+        ///    {
+        ///      &quot;assigned_status&quot;: &quot;assigned&quot;,
+        ///      &quot;carrier_code&quot;: 9998,
+        ///      &quot;country_iso_code&quot;: &quot;US&quot;,
+        ///      &quot;phone_number&quot;: &quot;\u002B12059535689&quot;,
+        ///      &quot;status&quot;: &quot;active&quot;,
+        ///      &quot;sub_account_id&quot;: &quot;8EVJZPwCTmSZme6fTOcBFg&quot;,
+        ///      &quot;sub_account_name&quot;: &quot;testAccount&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;next_page_token&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1
+        ///}.
+        /// </summary>
+        internal static string phone_carrier_reseller_numbers_GET {
+            get {
+                return ResourceManager.GetString("phone-carrier_reseller-numbers_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;area_code&quot;: &quot;408&quot;,
+        ///  &quot;calling_plans&quot;: [
+        ///    {
+        ///      &quot;name&quot;: &quot;US/CA Metered Calling Plan&quot;,
+        ///      &quot;type&quot;: 100,
+        ///      &quot;billing_account_id&quot;: &quot;3WWAEiEjTj2IQuyDiKMd_A&quot;,
+        ///      &quot;billing_account_name&quot;: &quot;Delhi billing&quot;,
+        ///      &quot;billing_subscription_id&quot;: &quot;FT-SUBREF-21168178&quot;,
+        ///      &quot;billing_subscription_name&quot;: &quot;My Subscription&quot;
+        ///    }
+        ///  ],
+        ///  &quot;cost_center&quot;: &quot;pbx_cost_center&quot;,
+        ///  &quot;country&quot;: {
+        ///    &quot;code&quot;: &quot;US&quot;,
+        ///    &quot;country_code&quot;: &quot;1&quot;,
+        ///    &quot;name&quot;: &quot;United States&quot;
+        ///  },
+        ///  &quot;department&quot;: &quot;department_pbx&quot;, [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_common_areas__commonAreaId__GET {
+            get {
+                return ResourceManager.GetString("phone-common_areas-{commonAreaId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;countries_regions&quot;: [
+        ///    {
+        ///      &quot;name&quot;: &quot;United States&quot;,
+        ///      &quot;code&quot;: 1,
+        ///      &quot;iso_code&quot;: &quot;US&quot;,
+        ///      &quot;rule&quot;: 1,
+        ///      &quot;enabled_carrier&quot;: [
+        ///        &quot;ZOOM&quot;
+        ///      ]
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;uBTK3NzNksdkuCUAQaFVFd86kyOr59zg4U2&quot;,
+        ///  &quot;page_size&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string phone_common_areas__commonAreaId__outbound_calling_countries_regions_GET {
+            get {
+                return ResourceManager.GetString("phone-common_areas-{commonAreaId}-outbound_calling-countries_regions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;exception_rules&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;2ypsHHwTTFK-fzZJkudYwA&quot;,
+        ///      &quot;match_type&quot;: &quot;prefix&quot;,
+        ///      &quot;prefix_number&quot;: &quot;20665558945&quot;,
+        ///      &quot;rule&quot;: 1,
+        ///      &quot;comment&quot;: &quot;test&quot;,
+        ///      &quot;status&quot;: &quot;active&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;uBTK3NzNksdkuCUAQaFVFd86kyOr59zg4U2&quot;,
+        ///  &quot;page_size&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string phone_common_areas__commonAreaId__outbound_calling_exception_rules_GET {
+            get {
+                return ResourceManager.GetString("phone-common_areas-{commonAreaId}-outbound_calling-exception_rules_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;common_areas_activation_codes&quot;: [
+        ///    {
+        ///      &quot;common_area_id&quot;: &quot;JOZmuJ30Spyrw-v9vUzIrA&quot;,
+        ///      &quot;display_name&quot;: &quot;test_ca&quot;,
+        ///      &quot;extension_number&quot;: 100012347,
+        ///      &quot;activation_code&quot;: &quot;5678-2345-1234-1234&quot;,
+        ///      &quot;activation_code_expiration&quot;: &quot;2021-10-08T16:12:04Z&quot;,
+        ///      &quot;status&quot;: &quot;used&quot;,
+        ///      &quot;site&quot;: {
+        ///        &quot;site_id&quot;: &quot;8f71O6rWT8KFUGQmJIFAdQ&quot;,
+        ///        &quot;name&quot;: &quot;Main Site&quot;
+        ///      }
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;RaO87FrnwXvFQta5aV8sU5C3c9O8s9Nraq2&quot;,
+        ///  &quot;page_size&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string phone_common_areas_activation_codes_GET {
+            get {
+                return ResourceManager.GetString("phone-common_areas-activation_codes_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;common_areas&quot;: [
+        ///    {
+        ///      &quot;calling_plans&quot;: [
+        ///        {
+        ///          &quot;name&quot;: &quot;US/CA Metered Calling Plan&quot;,
+        ///          &quot;type&quot;: 100,
+        ///          &quot;billing_account_id&quot;: &quot;3WWAEiEjTj2IQuyDiKMd_A&quot;,
+        ///          &quot;billing_account_name&quot;: &quot;Delhi billing&quot;,
+        ///          &quot;billing_subscription_id&quot;: &quot;FT-SUBREF-21168178&quot;,
+        ///          &quot;billing_subscription_name&quot;: &quot;My Subscription&quot;
+        ///        }
+        ///      ],
+        ///      &quot;display_name&quot;: &quot;test_ca&quot;,
+        ///      &quot;extension_number&quot;: 100012347,
+        ///      &quot;id&quot;: &quot;JOZmuJ30Spyrw-v9vUzIrA&quot;,
+        ///      &quot;pho [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_common_areas_GET {
+            get {
+                return ResourceManager.GetString("phone-common_areas_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;assignee&quot;: {
+        ///    &quot;extension_number&quot;: 123,
+        ///    &quot;id&quot;: &quot;i242djsgrg&quot;,
+        ///    &quot;name&quot;: &quot;Pooja&quot;,
+        ///    &quot;extension_type&quot;: &quot;user&quot;
+        ///  },
+        ///  &quot;assignees&quot;: [
+        ///    {
+        ///      &quot;extension_number&quot;: 123,
+        ///      &quot;id&quot;: &quot;i242djsgrg&quot;,
+        ///      &quot;name&quot;: &quot;Pooja&quot;,
+        ///      &quot;extension_type&quot;: &quot;user&quot;,
+        ///      &quot;extension_id&quot;: &quot;bdkfdler&quot;
+        ///    }
+        ///  ],
+        ///  &quot;device_type&quot;: &quot;Ribbon EdgeMarc302&quot;,
+        ///  &quot;display_name&quot;: &quot;Pooja\u0027s Phone&quot;,
+        ///  &quot;id&quot;: &quot;1234324&quot;,
+        ///  &quot;mac_address&quot;: &quot;203a07240534&quot;,
+        ///  &quot;provision&quot;: {
+        ///    &quot;sip_accounts&quot;: [
+        ///      {
+        ///       [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_devices__deviceId__GET {
+            get {
+                return ResourceManager.GetString("phone-devices-{deviceId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;device_id&quot;: &quot;yfWfRkZ_QPSNGuWKiAGYbQ&quot;,
+        ///  &quot;device_name&quot;: &quot;ATA Device&quot;,
+        ///  &quot;positions&quot;: [
+        ///    {
+        ///      &quot;index&quot;: 1,
+        ///      &quot;owner_extension_name&quot;: &quot;Port owner name&quot;,
+        ///      &quot;owner_extension_number&quot;: 123,
+        ///      &quot;extension_number&quot;: 123,
+        ///      &quot;extension_type&quot;: &quot;User&quot;,
+        ///      &quot;extension_id&quot;: &quot;MjGXQfCxShapaxJDka7&quot;,
+        ///      &quot;display_name&quot;: &quot;Display name&quot;,
+        ///      &quot;phone_number&quot;: &quot;\u002B12055437350&quot;,
+        ///      &quot;outbound_caller_ids&quot;: [
+        ///        {
+        ///          &quot;extension_id&quot;: &quot;MjGXQfCxShapaxJDka7&quot;,
+        ///          &quot;phone [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_devices__deviceId__line_keys_GET {
+            get {
+                return ResourceManager.GetString("phone-devices-{deviceId}-line_keys_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;devices&quot;: [
+        ///    {
+        ///      &quot;assignee&quot;: {
+        ///        &quot;extension_number&quot;: 123,
+        ///        &quot;id&quot;: &quot;-tDdYIstSumpA0L13GztIQ&quot;,
+        ///        &quot;name&quot;: &quot;Pooja&quot;,
+        ///        &quot;extension_type&quot;: &quot;user&quot;
+        ///      },
+        ///      &quot;assignees&quot;: [
+        ///        {
+        ///          &quot;extension_number&quot;: 123,
+        ///          &quot;id&quot;: &quot;-tDdYIstSumpA0L13GztIQ&quot;,
+        ///          &quot;name&quot;: &quot;Pooja&quot;,
+        ///          &quot;extension_type&quot;: &quot;user&quot;,
+        ///          &quot;extension_id&quot;: &quot;MjGXQfCxShapaxJDka7&quot;
+        ///        }
+        ///      ],
+        ///      &quot;device_type&quot;: &quot;AudioCodes405&quot;,
+        ///      &quot;display_name&quot;: &quot;Pooja\u0027 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_devices_GET {
+            get {
+                return ResourceManager.GetString("phone-devices_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;FHBv62&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;result&quot;: [
+        ///    {
+        ///      &quot;extension_id&quot;: &quot;FDFU83j&quot;,
+        ///      &quot;display_name&quot;: &quot;CUSTOMERS&quot;,
+        ///      &quot;email&quot;: &quot;email@example.com&quot;,
+        ///      &quot;extension_number&quot;: &quot;1933&quot;,
+        ///      &quot;site&quot;: {
+        ///        &quot;id&quot;: &quot;flej2f&quot;,
+        ///        &quot;name&quot;: &quot;New Site&quot;
+        ///      }
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_dial_by_name_directory_extensions_GET {
+            get {
+                return ResourceManager.GetString("phone-dial_by_name_directory-extensions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;address_line1&quot;: &quot;55 ALMADEN BLVD&quot;,
+        ///  &quot;address_line2&quot;: &quot;8 Floor&quot;,
+        ///  &quot;city&quot;: &quot;San Jose&quot;,
+        ///  &quot;country&quot;: &quot;US&quot;,
+        ///  &quot;id&quot;: &quot;Qza2T_KATwCeUfTkzGsOmQ&quot;,
+        ///  &quot;is_default&quot;: true,
+        ///  &quot;level&quot;: 1,
+        ///  &quot;owner&quot;: {
+        ///    &quot;extension_number&quot;: 101002,
+        ///    &quot;id&quot;: &quot;y9th648XRfSL9S61p1TsBw&quot;,
+        ///    &quot;name&quot;: &quot;ZOOM_API Test&quot;
+        ///  },
+        ///  &quot;site&quot;: {
+        ///    &quot;id&quot;: &quot;SQv52YtkRLC2dwrDdYtGsA&quot;,
+        ///    &quot;name&quot;: &quot;Main site&quot;
+        ///  },
+        ///  &quot;state_code&quot;: &quot;CA&quot;,
+        ///  &quot;status&quot;: 1,
+        ///  &quot;zip&quot;: &quot;95113&quot;
+        ///}.
+        /// </summary>
+        internal static string phone_emergency_addresses__emergencyAddressId__GET {
+            get {
+                return ResourceManager.GetString("phone-emergency_addresses-{emergencyAddressId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;address_line1&quot;: &quot;55 ALMADEN BLVD&quot;,
+        ///  &quot;address_line2&quot;: &quot;8 Floor&quot;,
+        ///  &quot;city&quot;: &quot;San Jose&quot;,
+        ///  &quot;country&quot;: &quot;US&quot;,
+        ///  &quot;id&quot;: &quot;Qza2T_KATwCeUfTkzGsOmQ&quot;,
+        ///  &quot;is_default&quot;: true,
+        ///  &quot;level&quot;: 1,
+        ///  &quot;owner&quot;: {
+        ///    &quot;extension_number&quot;: 101002,
+        ///    &quot;id&quot;: &quot;y9th648XRfSL9S61p1TsBw&quot;,
+        ///    &quot;name&quot;: &quot;ZOOM_API Test&quot;
+        ///  },
+        ///  &quot;site&quot;: {
+        ///    &quot;id&quot;: &quot;SQv52YtkRLC2dwrDdYtGsA&quot;,
+        ///    &quot;name&quot;: &quot;Main site&quot;
+        ///  },
+        ///  &quot;state_code&quot;: &quot;CA&quot;,
+        ///  &quot;status&quot;: 1,
+        ///  &quot;zip&quot;: &quot;95113&quot;
+        ///}.
+        /// </summary>
+        internal static string phone_emergency_addresses__emergencyAddressId__PATCH {
+            get {
+                return ResourceManager.GetString("phone-emergency_addresses-{emergencyAddressId}_PATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;emergency_addresses&quot;: [
+        ///    {
+        ///      &quot;address_line1&quot;: &quot;55 ALMADEN BLVD&quot;,
+        ///      &quot;address_line2&quot;: &quot;8 Floor&quot;,
+        ///      &quot;city&quot;: &quot;SAN JOSE&quot;,
+        ///      &quot;country&quot;: &quot;US&quot;,
+        ///      &quot;id&quot;: &quot;Qza2T_KATwCeUfTkzGsOmQ&quot;,
+        ///      &quot;is_default&quot;: true,
+        ///      &quot;level&quot;: 1,
+        ///      &quot;owner&quot;: {
+        ///        &quot;extension_number&quot;: 101002,
+        ///        &quot;id&quot;: &quot;y9th648XRfSL9S61p1TsBw&quot;,
+        ///        &quot;name&quot;: &quot;ZOOM_API Test&quot;
+        ///      },
+        ///      &quot;site&quot;: {
+        ///        &quot;id&quot;: &quot;SQv52YtkRLC2dwrDdYtGsA&quot;,
+        ///        &quot;name&quot;: &quot;Main site&quot;
+        ///      },
+        ///      &quot;state_code&quot;: &quot;CA&quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_emergency_addresses_GET {
+            get {
+                return ResourceManager.GetString("phone-emergency_addresses_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;business_hours&quot;: [
+        ///    {
+        ///      &quot;settings&quot;: {
+        ///        &quot;allow_callers_check_voicemail&quot;: true,
+        ///        &quot;allow_members_to_reset&quot;: true,
+        ///        &quot;audio_while_connecting&quot;: {
+        ///          &quot;id&quot;: &quot;qPwtDrrcSua8O0_n0bDRDg&quot;,
+        ///          &quot;name&quot;: &quot;Default&quot;
+        ///        },
+        ///        &quot;call_distribution&quot;: {
+        ///          &quot;handle_multiple_calls&quot;: true,
+        ///          &quot;ring_duration&quot;: 10,
+        ///          &quot;ring_mode&quot;: &quot;simultaneous&quot;,
+        ///          &quot;skip_offline_device_phone_number&quot;: true
+        ///        },
+        ///        &quot;call_forwarding_settings&quot;: [        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_extension__extensionId__call_handling_settings_GET {
+            get {
+                return ResourceManager.GetString("phone-extension-{extensionId}-call_handling-settings_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;w3cCmMNsRc-pMFhksHrRdQ&quot;,
+        ///  &quot;total_records&quot;: 300,
+        ///  &quot;fax_logs&quot;: [
+        ///    {
+        ///      &quot;fax_log_id&quot;: &quot;w2cCmMNsRc-pMFhksHrRdQ&quot;,
+        ///      &quot;fax_id&quot;: &quot;6A2BE84EE494479B9AFA29F4BB8A8EA6&quot;,
+        ///      &quot;site_id&quot;: &quot;rtZRykrtTmKSWXJeW-xsBg&quot;,
+        ///      &quot;site_name&quot;: &quot;Main Site&quot;,
+        ///      &quot;direction&quot;: &quot;outbound&quot;,
+        ///      &quot;extension_id&quot;: &quot;VLhIp1jHR_Sgu96DLJpjag&quot;,
+        ///      &quot;extension_type&quot;: &quot;call_queue&quot;,
+        ///      &quot;sender_extension_id&quot;: &quot;VLhIp1jHR_Sgu96DLJpjag&quot;,
+        ///      &quot;sender_extension_type&quot;: &quot;user&quot;,
+        ///      &quot;sender_exten [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_extension__extensionId__fax_logs_GET {
+            get {
+                return ResourceManager.GetString("phone-extension-{extensionId}-fax-logs_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;extension_blocked_rules&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;N9vmnIOHQMSWSL9mrz9jTw&quot;,
+        ///      &quot;match_type&quot;: &quot;phoneNumber&quot;,
+        ///      &quot;phone_number&quot;: &quot;\u002B120665558945&quot;,
+        ///      &quot;type&quot;: &quot;block_for_other_reasons&quot;,
+        ///      &quot;blocked_number&quot;: &quot;20665558945&quot;,
+        ///      &quot;country&quot;: &quot;US&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;uBTK3NzNksdkuCUAQaFVFd86kyOr59zg4U2&quot;,
+        ///  &quot;page_size&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string phone_extension__extensionId__inbound_blocked_rules_GET {
+            get {
+                return ResourceManager.GetString("phone-extension-{extensionId}-inbound_blocked-rules_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;line_keys&quot;: [
+        ///    {
+        ///      &quot;alias&quot;: &quot;Line1&quot;,
+        ///      &quot;index&quot;: 1,
+        ///      &quot;key_assignment&quot;: {
+        ///        &quot;display_name&quot;: &quot;Test 123&quot;,
+        ///        &quot;extension_id&quot;: &quot;TO586CYlQFC_WCUvPRXytA&quot;,
+        ///        &quot;extension_number&quot;: &quot;1000001004&quot;,
+        ///        &quot;phone_number&quot;: &quot;\u002B12058945795&quot;,
+        ///        &quot;retrieval_code&quot;: &quot;*801&quot;,
+        ///        &quot;speed_dial_number&quot;: &quot;123456&quot;
+        ///      },
+        ///      &quot;line_key_id&quot;: &quot;BH9SHc4YTnWqQ9u0LC3kkg&quot;,
+        ///      &quot;outbound_caller_id&quot;: &quot;\u002B18108001001&quot;,
+        ///      &quot;type&quot;: &quot;line&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_extension__extensionId__line_keys_GET {
+            get {
+                return ResourceManager.GetString("phone-extension-{extensionId}-line_keys_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;description&quot;: &quot;External contact Johnson&quot;,
+        ///  &quot;email&quot;: &quot;example@example.com&quot;,
+        ///  &quot;extension_number&quot;: &quot;101014&quot;,
+        ///  &quot;external_contact_id&quot;: &quot;OJGi5xOFQPmrJbKg68-iWg&quot;,
+        ///  &quot;id&quot;: &quot;external_contact_01&quot;,
+        ///  &quot;name&quot;: &quot;Johnson&quot;,
+        ///  &quot;phone_numbers&quot;: [
+        ///    &quot;\u002B12058945657&quot;
+        ///  ],
+        ///  &quot;auto_call_recorded&quot;: true,
+        ///  &quot;profile_picture_download_url&quot;: &quot;https://file.zoom.us/public/file/NgY6XhB0Q1KUOIpbnjQrTA/MS41Lm3jVUCBCmBzQxZEXUvHcJ_YRtZ-CVuQ68tE7kKC60t_/twP0LQrnQfS7bQ6utANohw.png&quot;,
+        ///  &quot;enable_internal_extension&quot;: true [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_external_contacts__externalContactId__GET {
+            get {
+                return ResourceManager.GetString("phone-external_contacts-{externalContactId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;external_contacts&quot;: [
+        ///    {
+        ///      &quot;description&quot;: &quot;External contact Johnson&quot;,
+        ///      &quot;email&quot;: &quot;example@example.com&quot;,
+        ///      &quot;extension_number&quot;: &quot;101014&quot;,
+        ///      &quot;external_contact_id&quot;: &quot;OJGi5xOFQPmrJbKg68-iWg&quot;,
+        ///      &quot;id&quot;: &quot;external_contact_01&quot;,
+        ///      &quot;name&quot;: &quot;Johnson&quot;,
+        ///      &quot;phone_numbers&quot;: [
+        ///        &quot;\u002B12058945656&quot;
+        ///      ],
+        ///      &quot;auto_call_recorded&quot;: true,
+        ///      &quot;profile_picture_download_url&quot;: &quot;https://file.zoom.us/public/file/NgY6XhB0Q1KUOIpbnjQrTA/MS41Lm3jVUCBCmBzQxZEXUvHcJ_YRtZ-CVuQ6 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_external_contacts_GET {
+            get {
+                return ResourceManager.GetString("phone-external_contacts_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [
+        ///  {
+        ///    &quot;fax_log_id&quot;: &quot;w2cCmMNsRc-pMFhksHrRdQ&quot;,
+        ///    &quot;fax_id&quot;: &quot;6A2BE84EE494479B9AFA29F4BB8A8EA6&quot;,
+        ///    &quot;site_id&quot;: &quot;rtZRykrtTmKSWXJeW-xsBg&quot;,
+        ///    &quot;site_name&quot;: &quot;Main Site&quot;,
+        ///    &quot;direction&quot;: &quot;outbound&quot;,
+        ///    &quot;extension_id&quot;: &quot;VLhIp1jHR_Sgu96DLJpjag&quot;,
+        ///    &quot;extension_type&quot;: &quot;callQueue&quot;,
+        ///    &quot;sender_extension_id&quot;: &quot;VLhIp1jHR_Sgu96DLJpjag&quot;,
+        ///    &quot;sender_extension_type&quot;: &quot;user&quot;,
+        ///    &quot;sender_extension_number&quot;: &quot;123&quot;,
+        ///    &quot;sender_name&quot;: &quot;Tester 1&quot;,
+        ///    &quot;sender_number&quot;: &quot;\u002B12092080933&quot;,
+        ///    &quot;sender_type [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_fax_logs__faxLogId__GET {
+            get {
+                return ResourceManager.GetString("phone-fax-logs-{faxLogId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;w3cCmMNsRc-pMFhksHrRdQ&quot;,
+        ///  &quot;total_records&quot;: 300,
+        ///  &quot;fax_logs&quot;: [
+        ///    {
+        ///      &quot;fax_log_id&quot;: &quot;w2cCmMNsRc-pMFhksHrRdQ&quot;,
+        ///      &quot;fax_id&quot;: &quot;6A2BE84EE494479B9AFA29F4BB8A8EA6&quot;,
+        ///      &quot;site_id&quot;: &quot;rtZRykrtTmKSWXJeW-xsBg&quot;,
+        ///      &quot;site_name&quot;: &quot;Main Site&quot;,
+        ///      &quot;direction&quot;: &quot;outbound&quot;,
+        ///      &quot;extension_id&quot;: &quot;VLhIp1jHR_Sgu96DLJpjag&quot;,
+        ///      &quot;extension_type&quot;: &quot;callQueue&quot;,
+        ///      &quot;sender_extension_id&quot;: &quot;VLhIp1jHR_Sgu96DLJpjag&quot;,
+        ///      &quot;sender_extension_type&quot;: &quot;user&quot;,
+        ///      &quot;sender_extens [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_fax_logs_GET {
+            get {
+                return ResourceManager.GetString("phone-fax-logs_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;device_type&quot;: &quot;AudioCodes&quot;,
+        ///  &quot;device_model&quot;: &quot;445hd&quot;,
+        ///  &quot;version&quot;: &quot;3.4.5.18&quot;,
+        ///  &quot;update_log&quot;: &quot;1. Supports call forwarding for Zoom Phone&quot;
+        ///}.
+        /// </summary>
+        internal static string phone_firmware_update_rules__ruleId__GET {
+            get {
+                return ResourceManager.GetString("phone-firmware_update_rules-{ruleId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;10mHdrdYyMxKi8LQhL7GPI6BWj65IcrbjJ2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;rules&quot;: [
+        ///    {
+        ///      &quot;rule_id&quot;: &quot;3h_bQL5MR_-sCmlJcTclVg&quot;,
+        ///      &quot;version&quot;: &quot;3.4.5.18&quot;,
+        ///      &quot;device_type&quot;: &quot;AudioCodes&quot;,
+        ///      &quot;device_model&quot;: &quot;445hd&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_firmware_update_rules_GET {
+            get {
+                return ResourceManager.GetString("phone-firmware_update_rules_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;firmwares&quot;: [
+        ///    {
+        ///      &quot;device_type&quot;: &quot;AudioCodes&quot;,
+        ///      &quot;device_model&quot;: &quot;445hd&quot;,
+        ///      &quot;versions&quot;: [
+        ///        {
+        ///          &quot;version&quot;: &quot;3.4.5.18&quot;,
+        ///          &quot;update_log&quot;: &quot;1. Supports call forwarding for Zoom Phone&quot;,
+        ///          &quot;expire_time&quot;: &quot;2021-05-29T00:32:16.000Z&quot;,
+        ///          &quot;status&quot;: 1
+        ///        }
+        ///      ]
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_firmwares_GET {
+            get {
+                return ResourceManager.GetString("phone-firmwares_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;qLZ4vXb8RAydayOR5ckYMg&quot;,
+        ///  &quot;display_name&quot;: &quot;testGCP&quot;,
+        ///  &quot;extension_id&quot;: &quot;mLG45gHYSVaeVVc64gp1jQ&quot;,
+        ///  &quot;extension_number&quot;: 10002,
+        ///  &quot;description&quot;: &quot;test&quot;,
+        ///  &quot;delay&quot;: 5,
+        ///  &quot;member_count&quot;: 1,
+        ///  &quot;cost_center&quot;: &quot;test&quot;,
+        ///  &quot;department&quot;: &quot;test&quot;,
+        ///  &quot;site&quot;: {
+        ///    &quot;id&quot;: &quot;8f71O6rWT8KFUGQmJIFAdQ&quot;,
+        ///    &quot;name&quot;: &quot;testGCPSite&quot;
+        ///  },
+        ///  &quot;play_incoming_calls_sound&quot;: {
+        ///    &quot;enable&quot;: true,
+        ///    &quot;ring_tone&quot;: &quot;ringtone_1&quot;,
+        ///    &quot;duration&quot;: 0
+        ///  },
+        ///  &quot;directed_call_pickup&quot;: true
+        ///}.
+        /// </summary>
+        internal static string phone_group_call_pickup__groupId__GET {
+            get {
+                return ResourceManager.GetString("phone-group_call_pickup-{groupId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;group_call_pickup_member&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;F1r_jMw4SGGljLqKdcMsvw&quot;,
+        ///      &quot;display_name&quot;: &quot;testGCPUser&quot;,
+        ///      &quot;extension_id&quot;: &quot;qLZ4vr_jMw4SFUGQmJI&quot;,
+        ///      &quot;extension_type&quot;: &quot;user&quot;,
+        ///      &quot;extension_number&quot;: 10001
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;fefeLbe42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1
+        ///}.
+        /// </summary>
+        internal static string phone_group_call_pickup__groupId__members_GET {
+            get {
+                return ResourceManager.GetString("phone-group_call_pickup-{groupId}-members_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;group_call_pickup&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;qLZ4vXb8RAydayOR5ckYMg&quot;,
+        ///      &quot;display_name&quot;: &quot;testGCP&quot;,
+        ///      &quot;extension_id&quot;: &quot;testGCP&quot;,
+        ///      &quot;extension_number&quot;: 10002,
+        ///      &quot;member_count&quot;: 1,
+        ///      &quot;description&quot;: &quot;test&quot;,
+        ///      &quot;delay&quot;: 0,
+        ///      &quot;cost_center&quot;: &quot;test&quot;,
+        ///      &quot;department&quot;: &quot;test&quot;,
+        ///      &quot;site&quot;: {
+        ///        &quot;id&quot;: &quot;8f71O6rWT8KFUGQmJIFAdQ&quot;,
+        ///        &quot;name&quot;: &quot;testGCPSite&quot;
+        ///      },
+        ///      &quot;directed_call_pickup&quot;: true
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;BJLYC6PABbAHdjwSkGVQeeR6B1juwHq [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_group_call_pickup_GET {
+            get {
+                return ResourceManager.GetString("phone-group_call_pickup_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;call_live_transcription&quot;: {
+        ///    &quot;enable&quot;: true,
+        ///    &quot;locked&quot;: true,
+        ///    &quot;locked_by&quot;: &quot;user_group&quot;,
+        ///    &quot;modified&quot;: true,
+        ///    &quot;transcription_start_prompt&quot;: {
+        ///      &quot;enable&quot;: true,
+        ///      &quot;audio_id&quot;: &quot;yCT14TwySDGVUypVlKNEyA&quot;,
+        ///      &quot;audio_name&quot;: &quot;example.mp3&quot;
+        ///    }
+        ///  },
+        ///  &quot;local_survivability_mode&quot;: {
+        ///    &quot;enable&quot;: true,
+        ///    &quot;locked&quot;: true,
+        ///    &quot;locked_by&quot;: &quot;user_group&quot;,
+        ///    &quot;modified&quot;: true
+        ///  },
+        ///  &quot;select_outbound_caller_id&quot;: {
+        ///    &quot;enable&quot;: true,
+        ///    &quot;locked&quot;: true,
+        ///    &quot;locked_by&quot;: [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_groups__groupId__settings_GET {
+            get {
+                return ResourceManager.GetString("phone-groups-{groupId}-settings_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;blocked_statistic&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;2Iq1GeCiR5WczhV9QgXwFA&quot;,
+        ///      &quot;match_type&quot;: &quot;phoneNumber&quot;,
+        ///      &quot;phone_number&quot;: &quot;\u002B120665558945&quot;,
+        ///      &quot;type&quot;: &quot;1&quot;,
+        ///      &quot;block_count&quot;: 3,
+        ///      &quot;threat_count&quot;: 2,
+        ///      &quot;blocked_number&quot;: &quot;20665558945&quot;,
+        ///      &quot;country&quot;: &quot;US&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;uBTK3NzNksdkuCUAQaFVFd86kyOr59zg4U2&quot;,
+        ///  &quot;page_size&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string phone_inbound_blocked_extension_rules_statistics_GET {
+            get {
+                return ResourceManager.GetString("phone-inbound_blocked-extension_rules-statistics_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;account_blocked_rules&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;N9vmnIOHQMSWSL9mrz9jTw&quot;,
+        ///      &quot;match_type&quot;: &quot;phoneNumber&quot;,
+        ///      &quot;phone_number&quot;: &quot;\u002B120665558945&quot;,
+        ///      &quot;type&quot;: &quot;block_for_other_reasons&quot;,
+        ///      &quot;status&quot;: &quot;active&quot;,
+        ///      &quot;comment&quot;: &quot;test inbound block comment.&quot;,
+        ///      &quot;blocked_number&quot;: &quot;20665558945&quot;,
+        ///      &quot;country&quot;: &quot;US&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;uBTK3NzNksdkuCUAQaFVFd86kyOr59zg4U2&quot;,
+        ///  &quot;page_size&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string phone_inbound_blocked_rules_GET {
+            get {
+                return ResourceManager.GetString("phone-inbound_blocked-rules_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;bssid&quot;: &quot;SA43YjfBTS6gJbUpfvIziQ&quot;,
+        ///  &quot;elin&quot;: {
+        ///    &quot;phone_number&quot;: &quot;\u002B12058945656&quot;,
+        ///    &quot;phone_number_id&quot;: &quot;9h5vTQJ0TmyKs0wItZ3JAw&quot;
+        ///  },
+        ///  &quot;emergency_address&quot;: {
+        ///    &quot;address_line1&quot;: &quot;55 ALMADEN BLVD&quot;,
+        ///    &quot;address_line2&quot;: &quot;6th floor&quot;,
+        ///    &quot;city&quot;: &quot;SAN JOSE&quot;,
+        ///    &quot;country&quot;: &quot;US&quot;,
+        ///    &quot;id&quot;: &quot;Qza2T_KATwCeUfTkzGsOmQ&quot;,
+        ///    &quot;state_code&quot;: &quot;CA&quot;,
+        ///    &quot;zip&quot;: &quot;95113&quot;
+        ///  },
+        ///  &quot;id&quot;: &quot;eRYjZlItQIqlFbCuRA__SQ&quot;,
+        ///  &quot;name&quot;: &quot;example location&quot;,
+        ///  &quot;network_switches&quot;: [
+        ///    {
+        ///      &quot;mac_address&quot;: &quot;6416 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_locations__locationId__GET {
+            get {
+                return ResourceManager.GetString("phone-locations-{locationId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;locations&quot;: [
+        ///    {
+        ///      &quot;bssid&quot;: &quot;SA43YjfBTS6gJbUpfvIziQ&quot;,
+        ///      &quot;elin&quot;: {
+        ///        &quot;phone_number&quot;: &quot;\u002B12058945656&quot;,
+        ///        &quot;phone_number_id&quot;: &quot;9h5vTQJ0TmyKs0wItZ3JAw&quot;
+        ///      },
+        ///      &quot;id&quot;: &quot;eRYjZlItQIqlFbCuRA__SQ&quot;,
+        ///      &quot;identifier&quot;: &quot;FksDtQDfR9qs3gWXNDsfIw&quot;,
+        ///      &quot;name&quot;: &quot;example location&quot;,
+        ///      &quot;network_switches&quot;: [
+        ///        {
+        ///          &quot;mac_address&quot;: &quot;0004f25eec3d&quot;,
+        ///          &quot;port&quot;: &quot;23&quot;,
+        ///          &quot;port_prefix&quot;: &quot;01&quot;,
+        ///          &quot;port_range_from&quot;: &quot;01&quot;,
+        ///          &quot;port_rang [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_locations_GET {
+            get {
+                return ResourceManager.GetString("phone-locations_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;call_id&quot;: &quot;7081466125443483485&quot;,
+        ///  &quot;callee&quot;: {
+        ///    &quot;codec&quot;: &quot;ES8311&quot;,
+        ///    &quot;device_private_ip&quot;: &quot;10.100.111.237&quot;,
+        ///    &quot;device_public_ip&quot;: &quot;38.99.100.2&quot;,
+        ///    &quot;device_type&quot;: &quot;MAC_Client&quot;,
+        ///    &quot;extension_number&quot;: &quot;100994&quot;,
+        ///    &quot;headset&quot;: &quot;Edifier&quot;,
+        ///    &quot;isp&quot;: &quot;Cogent Communications&quot;,
+        ///    &quot;microphone&quot;: &quot;\u002B18889843519&quot;,
+        ///    &quot;phone_number&quot;: &quot;\u002B18889843519&quot;,
+        ///    &quot;site_id&quot;: &quot;ZNWikLeVSjuaMvUoxFqCuw&quot;,
+        ///    &quot;id&quot;: &quot;DYHrdpjrS3uaOf7dPkkg8w&quot;,
+        ///    &quot;extension_type&quot;: &quot;user&quot;,
+        ///    &quot;display_name&quot;: &quot;use [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_metrics_call_logs__call_id__GET {
+            get {
+                return ResourceManager.GetString("phone-metrics-call_logs-{call_id}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;call_id&quot;: &quot;7081466125443483485&quot;,
+        ///  &quot;callee_qos&quot;: {
+        ///    &quot;device_private_ip&quot;: &quot;10.100.111.237&quot;,
+        ///    &quot;device_public_ip&quot;: &quot;38.99.100.2&quot;,
+        ///    &quot;receiving&quot;: [
+        ///      {
+        ///        &quot;date_time&quot;: &quot;2022-04-01T03:05:43.0000000\u002B00:00&quot;,
+        ///        &quot;qos&quot;: {
+        ///          &quot;avg_loss&quot;: &quot;0.82%&quot;,
+        ///          &quot;bitrate&quot;: &quot;14.98kbps&quot;,
+        ///          &quot;jitter&quot;: &quot;7.53ms&quot;,
+        ///          &quot;max_loss&quot;: &quot;1.51%&quot;,
+        ///          &quot;mos&quot;: &quot;3.6&quot;,
+        ///          &quot;network_delay&quot;: &quot;307&quot;
+        ///        }
+        ///      }
+        ///    ],
+        ///    &quot;sending&quot;: [
+        ///      {
+        ///        &quot;date_ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_metrics_call_logs__callId__qos_GET {
+            get {
+                return ResourceManager.GetString("phone-metrics-call_logs-{callId}-qos_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;call_logs&quot;: [
+        ///    {
+        ///      &quot;call_id&quot;: &quot;7081466125443483485&quot;,
+        ///      &quot;callee&quot;: {
+        ///        &quot;codec&quot;: &quot;ES8311&quot;,
+        ///        &quot;device_private_ip&quot;: &quot;10.100.111.237&quot;,
+        ///        &quot;device_public_ip&quot;: &quot;38.99.100.2&quot;,
+        ///        &quot;device_type&quot;: &quot;MAC_Client 5.11.9.9957&quot;,
+        ///        &quot;extension_number&quot;: &quot;100994&quot;,
+        ///        &quot;headset&quot;: &quot;Edifier&quot;,
+        ///        &quot;isp&quot;: &quot;Cogent Communications&quot;,
+        ///        &quot;microphone&quot;: &quot;\u002B12053194087&quot;,
+        ///        &quot;phone_number&quot;: &quot;\u002B12053194087&quot;,
+        ///        &quot;site_id&quot;: &quot;ZNWikLeVSjuaMvUoxFqCuw&quot;
+        ///      }, [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_metrics_call_logs_GET {
+            get {
+                return ResourceManager.GetString("phone-metrics-call_logs_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;6VXOgUaNNeZ7qL7bENvXPgclgeZ3bf3nbj2&quot;,
+        ///  &quot;page_size&quot;: 1,
+        ///  &quot;total_records&quot;: 6,
+        ///  &quot;records&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;test.user@gmail.com&quot;,
+        ///      &quot;user_display_name&quot;: &quot;James Lu&quot;,
+        ///      &quot;extension_id&quot;: &quot;VodZOCkyRM-wfOqr1xmuMQ&quot;,
+        ///      &quot;extension_number&quot;: 10010,
+        ///      &quot;site_name&quot;: &quot;Main Site&quot;,
+        ///      &quot;site_id&quot;: &quot;oB18huSERjqbzrsyL2bD5w&quot;,
+        ///      &quot;status&quot;: &quot;set&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_metrics_emergency_services_default_emergency_address_users_GET {
+            get {
+                return ResourceManager.GetString("phone-metrics-emergency_services-default_emergency_address-users_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;6VXOgUaNNeZ7qL7bENvXPgclgeZ3bf3nbj2&quot;,
+        ///  &quot;page_size&quot;: 1,
+        ///  &quot;total_records&quot;: 6,
+        ///  &quot;records&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;test.user@gmail.com&quot;,
+        ///      &quot;user_display_name&quot;: &quot;James Lu&quot;,
+        ///      &quot;extension_id&quot;: &quot;VodZOCkyRM-wfOqr1xmuMQ&quot;,
+        ///      &quot;extension_number&quot;: 10010,
+        ///      &quot;site_name&quot;: &quot;Main Site&quot;,
+        ///      &quot;site_id&quot;: &quot;oB18huSERjqbzrsyL2bD5w&quot;,
+        ///      &quot;status&quot;: &quot;set&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_metrics_emergency_services_detectable_personal_location_users_GET {
+            get {
+                return ResourceManager.GetString("phone-metrics-emergency_services-detectable_personal_location-users_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;6VXOgUaNNeZ7qL7bENvXPgclgeZ3bf3nbj2&quot;,
+        ///  &quot;page_size&quot;: 1,
+        ///  &quot;total_records&quot;: 6,
+        ///  &quot;user_permissions&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;test.user@gmail.com&quot;,
+        ///      &quot;user_display_name&quot;: &quot;james lu&quot;,
+        ///      &quot;extension_id&quot;: &quot;VodZOCkyRM-wfOqr1xmuMQ&quot;,
+        ///      &quot;extension_number&quot;: 10010,
+        ///      &quot;site_name&quot;: &quot;Main Site&quot;,
+        ///      &quot;site_id&quot;: &quot;oB18huSERjqbzrsyL2bD5w&quot;,
+        ///      &quot;device_permissions&quot;: [
+        ///        {
+        ///          &quot;last_seen_time&quot;: 1730774641337,
+        ///          &quot;location_sharing&quot;: &quot;allowed&quot;,
+        ///        [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_metrics_emergency_services_location_sharing_permission_users_GET {
+            get {
+                return ResourceManager.GetString("phone-metrics-emergency_services-location_sharing_permission-users_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;6VXOgUaNNeZ7qL7bENvXPgclgeZ3bf3nbj2&quot;,
+        ///  &quot;page_size&quot;: 1,
+        ///  &quot;total_records&quot;: 6,
+        ///  &quot;records&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;test.user@gmail.com&quot;,
+        ///      &quot;user_display_name&quot;: &quot;James Lu&quot;,
+        ///      &quot;extension_id&quot;: &quot;VodZOCkyRM-wfOqr1xmuMQ&quot;,
+        ///      &quot;extension_number&quot;: 10010,
+        ///      &quot;site_name&quot;: &quot;Main Site&quot;,
+        ///      &quot;site_id&quot;: &quot;oB18huSERjqbzrsyL2bD5w&quot;,
+        ///      &quot;status&quot;: &quot;enabled&quot;,
+        ///      &quot;reason_for_disabling&quot;: 2
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_metrics_emergency_services_nomadic_emergency_services_users_GET {
+            get {
+                return ResourceManager.GetString("phone-metrics-emergency_services-nomadic_emergency_services-users_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;records&quot;: [
+        ///    {
+        ///      &quot;device_id&quot;: &quot;-tDdYIstSumpA0L13GztIQ&quot;,
+        ///      &quot;device_name&quot;: &quot;Desk Phone&quot;,
+        ///      &quot;site_id&quot;: &quot;NjHmTu16Qfe8yOiNJuekXA&quot;,
+        ///      &quot;site_name&quot;: &quot;HF site&quot;,
+        ///      &quot;public_ip&quot;: &quot;192.168.1.1&quot;,
+        ///      &quot;private_ip&quot;: &quot;192.168.1.1&quot;,
+        ///      &quot;bssid&quot;: &quot;SA43YjfBTS6gJbUpfvIziQ&quot;,
+        ///      &quot;emergency_address&quot;: &quot;55 ALMADEN BLVD&quot;,
+        ///      &quot;mac_address&quot;: &quot;543968a78ee7&quot;,
+        ///      &quot;location_name&quot;: &quot;example location&quot;,
+        ///      &quot;network_switch&quot;: {
+        ///        &quot;port&quot;: &quot;2&quot;,
+        ///        &quot;mac_address&quot;: &quot;543968a78ee7&quot;        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_metrics_emergency_services_realtime_location_devices_GET {
+            get {
+                return ResourceManager.GetString("phone-metrics-emergency_services-realtime_location-devices_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;6VXOgUaNNeZ7qL7bENvXPgclgeZ3bf3nbj2&quot;,
+        ///  &quot;page_size&quot;: 1,
+        ///  &quot;total_records&quot;: 6,
+        ///  &quot;records&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;test.user@gmail.com&quot;,
+        ///      &quot;bssid&quot;: &quot;d0:15:a6:1f:4f:35&quot;,
+        ///      &quot;user_display_name&quot;: &quot;James Lu&quot;,
+        ///      &quot;extension_id&quot;: &quot;VodZOCkyRM-wfOqr1xmuMQ&quot;,
+        ///      &quot;extension_number&quot;: 10010,
+        ///      &quot;site_name&quot;: &quot;Main Site&quot;,
+        ///      &quot;site_id&quot;: &quot;oB18huSERjqbzrsyL2bD5w&quot;,
+        ///      &quot;public_ip&quot;: &quot;66.172.49.116&quot;,
+        ///      &quot;private_ip&quot;: &quot;10.100.161.25&quot;,
+        ///      &quot;emergency_address&quot;: &quot;55 A [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_metrics_emergency_services_realtime_location_users_GET {
+            get {
+                return ResourceManager.GetString("phone-metrics-emergency_services-realtime_location-users_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;location_tracking&quot;: [
+        ///    {
+        ///      &quot;assignees&quot;: [
+        ///        {
+        ///          &quot;extension_number&quot;: 10010,
+        ///          &quot;id&quot;: &quot;IqoQmDRqS-aIoXqV_FZ88w&quot;,
+        ///          &quot;name&quot;: &quot;testUser&quot;
+        ///        }
+        ///      ],
+        ///      &quot;city&quot;: &quot;SAN JOSE&quot;,
+        ///      &quot;country&quot;: &quot;US&quot;,
+        ///      &quot;device&quot;: {
+        ///        &quot;bssid&quot;: &quot;SA43YjfBTS6gJbUpfvIziQ&quot;,
+        ///        &quot;id&quot;: &quot;-tDdYIstSumpA0L13GztIQ&quot;,
+        ///        &quot;mac_address&quot;: &quot;543968a78ee7&quot;,
+        ///        &quot;name&quot;: &quot;Desk Phone&quot;,
+        ///        &quot;private_ip&quot;: &quot;192.168.1.1&quot;,
+        ///        &quot;public_ip&quot;: &quot;192.168.1.1&quot;
+        ///      },
+        ///  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_metrics_location_tracking_GET {
+            get {
+                return ResourceManager.GetString("phone-metrics-location_tracking_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;call_logs&quot;: [
+        ///    {
+        ///      &quot;call_id&quot;: &quot;7081466125443483485&quot;,
+        ///      &quot;callee&quot;: {
+        ///        &quot;codec&quot;: &quot;ES8311&quot;,
+        ///        &quot;device_private_ip&quot;: &quot;10.100.111.237&quot;,
+        ///        &quot;device_public_ip&quot;: &quot;38.99.100.2&quot;,
+        ///        &quot;device_type&quot;: &quot;MAC_Client&quot;,
+        ///        &quot;extension_number&quot;: &quot;100994&quot;,
+        ///        &quot;headset&quot;: &quot;Edifier&quot;,
+        ///        &quot;isp&quot;: &quot;Cogent Communications&quot;,
+        ///        &quot;microphone&quot;: &quot;\u002B12053194087&quot;,
+        ///        &quot;phone_number&quot;: &quot;\u002B12053194087&quot;,
+        ///        &quot;site_id&quot;: &quot;ZNWikLeVSjuaMvUoxFqCuw&quot;
+        ///      },
+        ///      &quot;cal [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_metrics_past_calls_GET {
+            get {
+                return ResourceManager.GetString("phone-metrics-past_calls_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;oDmRjKVTRymXGMtgtBK2Sg&quot;,
+        ///  &quot;monitor_members_count&quot;: 1,
+        ///  &quot;monitored_members_count&quot;: 1,
+        ///  &quot;monitoring_privileges&quot;: [
+        ///    &quot;listen&quot;
+        ///  ],
+        ///  &quot;name&quot;: &quot;pbx_api_test_uacap&quot;,
+        ///  &quot;prompt&quot;: true,
+        ///  &quot;site&quot;: {
+        ///    &quot;id&quot;: &quot;8f71O6rWT8KFUGQmJIFAdQ&quot;,
+        ///    &quot;name&quot;: &quot;Main Site&quot;
+        ///  },
+        ///  &quot;type&quot;: 1
+        ///}.
+        /// </summary>
+        internal static string phone_monitoring_groups__monitoringGroupId__GET {
+            get {
+                return ResourceManager.GetString("phone-monitoring_groups-{monitoringGroupId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;members&quot;: [
+        ///    {
+        ///      &quot;display_name&quot;: &quot;testUser&quot;,
+        ///      &quot;extension_id&quot;: &quot;JpjPXizWTz-l35tFRUK3Gg&quot;,
+        ///      &quot;extension_number&quot;: 10010,
+        ///      &quot;extension_type&quot;: &quot;user&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;ICF5K4lVmGG4kyIyGxSfBU2LH4QQG95cn32&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1
+        ///}.
+        /// </summary>
+        internal static string phone_monitoring_groups__monitoringGroupId__monitor_members_GET {
+            get {
+                return ResourceManager.GetString("phone-monitoring_groups-{monitoringGroupId}-monitor_members_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;monitoring_groups&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;oDmRjKVTRymXGMtgtBK2Sg&quot;,
+        ///      &quot;monitor_members_count&quot;: 1,
+        ///      &quot;monitored_members_count&quot;: 1,
+        ///      &quot;monitoring_privileges&quot;: [
+        ///        &quot;listen&quot;
+        ///      ],
+        ///      &quot;name&quot;: &quot;pbx_api_test_uacap&quot;,
+        ///      &quot;prompt&quot;: true,
+        ///      &quot;site&quot;: {
+        ///        &quot;id&quot;: &quot;8f71O6rWT8KFUGQmJIFAdQ&quot;,
+        ///        &quot;name&quot;: &quot;Main Site&quot;
+        ///      },
+        ///      &quot;type&quot;: 1
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;ICF5K4lVmGG4kyIyGxSfBU2LH4QQG95cn32&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1
+        ///}.
+        /// </summary>
+        internal static string phone_monitoring_groups_GET {
+            get {
+                return ResourceManager.GetString("phone-monitoring_groups_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;assignee&quot;: {
+        ///    &quot;audio_prompt_language&quot;: &quot;en-GB&quot;,
+        ///    &quot;display_number&quot;: &quot;display_name_123&quot;,
+        ///    &quot;extension_number&quot;: 1000001101,
+        ///    &quot;greeting&quot;: {
+        ///      &quot;id&quot;: &quot;4CRwFZtVTa67JcfO37iQqA&quot;,
+        ///      &quot;name&quot;: &quot;TestName&quot;
+        ///    },
+        ///    &quot;id&quot;: &quot;rYgfsrduSXWCxr94poMN5g&quot;,
+        ///    &quot;label&quot;: &quot;abcd&quot;,
+        ///    &quot;meeting_id&quot;: &quot;abcd&quot;,
+        ///    &quot;name&quot;: &quot;Test name&quot;,
+        ///    &quot;on_hold_music&quot;: {
+        ///      &quot;id&quot;: &quot;4CRwFZtVTa67JcfO37iQqA&quot;,
+        ///      &quot;name&quot;: &quot;Audio1&quot;
+        ///    },
+        ///    &quot;type&quot;: &quot;user&quot;
+        ///  },
+        ///  &quot;capability&quot;: [
+        ///    &quot;incoming&quot;
+        ///  ],
+        ///  &quot;carr [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_numbers__phoneNumberId__GET {
+            get {
+                return ResourceManager.GetString("phone-numbers-{phoneNumberId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;bkOcmnm6mn6ioYAi10BcgRiEL38WzAo6jP2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;phone_numbers&quot;: [
+        ///    {
+        ///      &quot;assignee&quot;: {
+        ///        &quot;extension_number&quot;: 1000001101,
+        ///        &quot;id&quot;: &quot;Y40mS72DRamFgGh0V1Ul_Q&quot;,
+        ///        &quot;name&quot;: &quot;User Name&quot;,
+        ///        &quot;type&quot;: &quot;user&quot;
+        ///      },
+        ///      &quot;capability&quot;: [
+        ///        &quot;incoming&quot;
+        ///      ],
+        ///      &quot;carrier&quot;: {
+        ///        &quot;code&quot;: 1,
+        ///        &quot;name&quot;: &quot;Bandwidth&quot;
+        ///      },
+        ///      &quot;display_name&quot;: &quot;abc&quot;,
+        ///      &quot;emergency_address&quot;: {
+        ///        &quot;address_line1&quot;: &quot;55 ALMADEN BLV [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_numbers_GET {
+            get {
+                return ResourceManager.GetString("phone-numbers_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;customize_numbers&quot;: [
+        ///    {
+        ///      &quot;customize_id&quot;: &quot;8_RkKw9OQ42oYsXqJJjs4A&quot;,
+        ///      &quot;phone_number_id&quot;: &quot;55JUZPwERHuGttd_j4qBsQ&quot;,
+        ///      &quot;phone_number&quot;: &quot;\u002B12055437350&quot;,
+        ///      &quot;display_name&quot;: &quot;test abc&quot;,
+        ///      &quot;incoming&quot;: true,
+        ///      &quot;outgoing&quot;: true,
+        ///      &quot;extension_id&quot;: &quot;HaSokHMCSeK8taMdv2vnXQ&quot;,
+        ///      &quot;extension_type&quot;: &quot;callQueue&quot;,
+        ///      &quot;extension_number&quot;: &quot;10001&quot;,
+        ///      &quot;extension_name&quot;: &quot;SJ CQ&quot;,
+        ///      &quot;site&quot;: {
+        ///        &quot;id&quot;: &quot;8f71O6rWT8KFUGQmJIFAdQ&quot;,
+        ///        &quot;name&quot;: &quot;testSite&quot;
+        ///    [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_outbound_caller_id_customized_numbers_GET {
+            get {
+                return ResourceManager.GetString("phone-outbound_caller_id-customized_numbers_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;countries_regions&quot;: [
+        ///    {
+        ///      &quot;name&quot;: &quot;United States&quot;,
+        ///      &quot;code&quot;: 1,
+        ///      &quot;iso_code&quot;: &quot;US&quot;,
+        ///      &quot;rule&quot;: 1,
+        ///      &quot;enabled_carrier&quot;: [
+        ///        &quot;ZOOM&quot;
+        ///      ]
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;uBTK3NzNksdkuCUAQaFVFd86kyOr59zg4U2&quot;,
+        ///  &quot;page_size&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string phone_outbound_calling_countries_regions_GET {
+            get {
+                return ResourceManager.GetString("phone-outbound_calling-countries_regions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;exception_rules&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;2ypsHHwTTFK-fzZJkudYwA&quot;,
+        ///      &quot;match_type&quot;: &quot;prefix&quot;,
+        ///      &quot;prefix_number&quot;: &quot;20665558945&quot;,
+        ///      &quot;rule&quot;: 1,
+        ///      &quot;comment&quot;: &quot;test&quot;,
+        ///      &quot;status&quot;: &quot;active&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;uBTK3NzNksdkuCUAQaFVFd86kyOr59zg4U2&quot;,
+        ///  &quot;page_size&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string phone_outbound_calling_exception_rules_GET {
+            get {
+                return ResourceManager.GetString("phone-outbound_calling-exception_rules_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;unprocessed_numbers&quot;: [
+        ///    {
+        ///      &quot;failure_reason&quot;: &quot;Number not exist.&quot;,
+        ///      &quot;phone_number&quot;: &quot;\u002B15556660100&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_peering_numbers_DELETE {
+            get {
+                return ResourceManager.GetString("phone-peering-numbers_DELETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;8X8xSdRVKHsabD6Im4tIPODq6GzDOvV5fO1&quot;,
+        ///  &quot;numbers&quot;: [
+        ///    {
+        ///      &quot;assigned&quot;: 1,
+        ///      &quot;billing_reference_id&quot;: &quot;Some billing referenceId&quot;,
+        ///      &quot;phone_number&quot;: &quot;\u002B18108001001&quot;,
+        ///      &quot;service_info&quot;: &quot;Some service info&quot;,
+        ///      &quot;sip_trunk_name&quot;: &quot;test-carrier-sip-trunk&quot;,
+        ///      &quot;status&quot;: 0
+        ///    }
+        ///  ],
+        ///  &quot;total_records&quot;: 20
+        ///}.
+        /// </summary>
+        internal static string phone_peering_numbers_GET {
+            get {
+                return ResourceManager.GetString("phone-peering-numbers_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;unprocessed_numbers&quot;: [
+        ///    {
+        ///      &quot;failure_reason&quot;: &quot;Invalid status&quot;,
+        ///      &quot;phone_number&quot;: &quot;\u002B15556660100&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_peering_numbers_PATCH {
+            get {
+                return ResourceManager.GetString("phone-peering-numbers_PATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;calling_plans&quot;: [
+        ///    {
+        ///      &quot;assigned&quot;: 28,
+        ///      &quot;available&quot;: 72,
+        ///      &quot;name&quot;: &quot;US/CA Metered Calling Plan&quot;,
+        ///      &quot;subscribed&quot;: 100,
+        ///      &quot;type&quot;: 100,
+        ///      &quot;billing_subscription_id&quot;: &quot;FT-SUBREF-21168178&quot;,
+        ///      &quot;billing_subscription_name&quot;: &quot;My Subscription&quot;
+        ///    }
+        ///  ],
+        ///  &quot;phone_numbers&quot;: [
+        ///    {
+        ///      &quot;assigned&quot;: 28,
+        ///      &quot;available&quot;: 72,
+        ///      &quot;name&quot;: &quot;US/CA Included Phone Numbers&quot;,
+        ///      &quot;subscribed&quot;: 100
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_plans_GET {
+            get {
+                return ResourceManager.GetString("phone-plans_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;contact_emails&quot;: &quot;example@163.com&quot;,
+        ///  &quot;contact_number&quot;: &quot;2058945753&quot;,
+        ///  &quot;isp&quot;: &quot;Twilio International&quot;,
+        ///  &quot;numbers&quot;: [
+        ///    &quot;\u002B12058945752&quot;
+        ///  ],
+        ///  &quot;order_id&quot;: &quot;2021080307332974349&quot;,
+        ///  &quot;original_billing_info&quot;: {
+        ///    &quot;account_number&quot;: &quot;111223&quot;,
+        ///    &quot;address&quot;: {
+        ///      &quot;city&quot;: &quot;San Jose&quot;,
+        ///      &quot;country&quot;: &quot;US&quot;,
+        ///      &quot;house_number&quot;: &quot;55&quot;,
+        ///      &quot;state_code&quot;: &quot;CA&quot;,
+        ///      &quot;street_name&quot;: &quot;ALMADEN BLVD&quot;,
+        ///      &quot;zip&quot;: &quot;95113&quot;
+        ///    },
+        ///    &quot;authorizing_person&quot;: &quot;zz&quot;,
+        ///    &quot;billing_telephone_num [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_ported_numbers_orders__orderId__GET {
+            get {
+                return ResourceManager.GetString("phone-ported_numbers-orders-{orderId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;ported_numbers&quot;: [
+        ///    {
+        ///      &quot;numbers&quot;: [
+        ///        &quot;\u002B12058945752&quot;
+        ///      ],
+        ///      &quot;order_id&quot;: &quot;2021080307332974349&quot;,
+        ///      &quot;replacing_numbers&quot;: [
+        ///        {
+        ///          &quot;source_number&quot;: &quot;\u002B12058945752&quot;,
+        ///          &quot;target_number&quot;: &quot;\u002B12058945755&quot;
+        ///        }
+        ///      ],
+        ///      &quot;status&quot;: &quot;Canceled&quot;,
+        ///      &quot;submission_date_time&quot;: &quot;2021-08-03T07:33:29Z&quot;
+        ///    }
+        ///  ],
+        ///  &quot;total_records&quot;: 2
+        ///}.
+        /// </summary>
+        internal static string phone_ported_numbers_orders_GET {
+            get {
+                return ResourceManager.GetString("phone-ported_numbers-orders_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;ICF5K4lVmGG4kyIyGxSfBU2LH4QQG95cn32&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;private_directory_members&quot;: [
+        ///    {
+        ///      &quot;extension_id&quot;: &quot;JpjPXizWTz-l35tFRUK3Gg&quot;,
+        ///      &quot;extension_type&quot;: &quot;user&quot;,
+        ///      &quot;extension_number&quot;: 800,
+        ///      &quot;extension_display_name&quot;: &quot;sample extension&quot;,
+        ///      &quot;extension_email&quot;: &quot;sample@zooom.us&quot;,
+        ///      &quot;searchable_on_web_portal&quot;: &quot;everybody&quot;,
+        ///      &quot;site_id&quot;: &quot;vkBoHKaRTxeBiTLRsdEwTQ&quot;,
+        ///      &quot;site_name&quot;: &quot;sample site&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_private_directory_members_GET {
+            get {
+                return ResourceManager.GetString("phone-private_directory-members_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;CLbU64xzTzCUXz58e2Lo-w&quot;,
+        ///  &quot;name&quot;: &quot;Test provision template&quot;,
+        ///  &quot;description&quot;: &quot;provision template&quot;,
+        ///  &quot;content&quot;: &quot;provisioning/firmware/url=https://...&quot;,
+        ///  &quot;bound_device_count&quot;: 2
+        ///}.
+        /// </summary>
+        internal static string phone_provision_templates__templateId__GET {
+            get {
+                return ResourceManager.GetString("phone-provision_templates-{templateId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;bkOcmnm6mn6ioYAi10BcgRiEL38WzAo6jP2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;provision_templates&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;CLbU64xzTzCUXz58e2Lo-w&quot;,
+        ///      &quot;name&quot;: &quot;Test Provision Template&quot;,
+        ///      &quot;description&quot;: &quot;provision template&quot;,
+        ///      &quot;bound_device_count&quot;: 2
+        ///    }
+        ///  ],
+        ///  &quot;total_records&quot;: 1
+        ///}.
+        /// </summary>
+        internal static string phone_provision_templates_GET {
+            get {
+                return ResourceManager.GetString("phone-provision_templates_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;cWiI3vTqdcENiV9RJz3Rh8iP1ksNPheW8c1&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;recordings&quot;: [
+        ///    {
+        ///      &quot;auto_delete_policy&quot;: &quot;1 year&quot;,
+        ///      &quot;call_id&quot;: &quot;7072598989368295984&quot;,
+        ///      &quot;call_log_id&quot;: &quot;6f9c2948-40ad-46bc-8700-34ca2d098098&quot;,
+        ///      &quot;call_element_id&quot;: &quot;20210609-a297ae04-a875-4cfd-85ab-4adcead91edb&quot;,
+        ///      &quot;callee_name&quot;: &quot;User A&quot;,
+        ///      &quot;callee_number&quot;: &quot;1000001004&quot;,
+        ///      &quot;callee_number_type&quot;: 1,
+        ///      &quot;caller_name&quot;: &quot;User B&quot;,
+        ///      &quot;caller_number&quot;: &quot;1000123476&quot;,
+        ///      &quot;caller [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_recordings_GET {
+            get {
+                return ResourceManager.GetString("phone-recordings_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;BJLYC6PABbAHdjwSkGVQeeR6B1juwHqj3G2&quot;,
+        ///  &quot;page_size&quot;: 20,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;from&quot;: &quot;2021-10-01&quot;,
+        ///  &quot;to&quot;: &quot;2021-10-12&quot;,
+        ///  &quot;call_charges&quot;: [
+        ///    {
+        ///      &quot;call_log_id&quot;: &quot;1csf78-e9a8-4e14-859e-94ce323a9eef&quot;,
+        ///      &quot;caller_number&quot;: &quot;1001&quot;,
+        ///      &quot;caller_billing_number&quot;: &quot;\u002B2100000980&quot;,
+        ///      &quot;callee_number&quot;: &quot;1008&quot;,
+        ///      &quot;callee_billing_number&quot;: &quot;\u002B21058945728&quot;,
+        ///      &quot;call_type&quot;: &quot;voip&quot;,
+        ///      &quot;service_type&quot;: &quot;call&quot;,
+        ///      &quot;calling_party_name&quot;: &quot;User&quot;,
+        ///    [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_reports_call_charges_GET {
+            get {
+                return ResourceManager.GetString("phone-reports-call_charges_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;BJLYC6PABbAHdjwSkGVQeeR6B1juwHqj3G2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;from&quot;: &quot;2025-06-01&quot;,
+        ///  &quot;to&quot;: &quot;2025-06-30&quot;,
+        ///  &quot;fax_charges&quot;: [
+        ///    {
+        ///      &quot;fax_id&quot;: &quot;FD361623719B460388970623D2AB808A&quot;,
+        ///      &quot;sender_number&quot;: &quot;\u002B2100000980&quot;,
+        ///      &quot;receiver_number&quot;: &quot;\u002B21058945728&quot;,
+        ///      &quot;billing_number&quot;: &quot;\u002B21058945728&quot;,
+        ///      &quot;end_time&quot;: &quot;2025-07-02T15:51:00Z&quot;,
+        ///      &quot;charge_mode&quot;: &quot;per_page&quot;,
+        ///      &quot;fax_type&quot;: &quot;international&quot;,
+        ///      &quot;unlimited&quot;: false,        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_reports_fax_charges_GET {
+            get {
+                return ResourceManager.GetString("phone-reports-fax_charges_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;BJLYC6PABbAHdjwSkGVQeeR6B1juwHqj3G2&quot;,
+        ///  &quot;page_size&quot;: 20,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;from&quot;: &quot;2021-10-01&quot;,
+        ///  &quot;to&quot;: &quot;2021-10-12&quot;,
+        ///  &quot;sms_charges&quot;: [
+        ///    {
+        ///      &quot;session_id&quot;: &quot;da21222c4254690b545b305d6616e261&quot;,
+        ///      &quot;message_id&quot;: &quot;2159E06A-7195-4B54-831E-54DB8FDEC510&quot;,
+        ///      &quot;message_type&quot;: &quot;SMS&quot;,
+        ///      &quot;from_number&quot;: &quot;2019980987&quot;,
+        ///      &quot;from_extension_number&quot;: &quot;1008&quot;,
+        ///      &quot;from_display_name&quot;: &quot;Sender A&quot;,
+        ///      &quot;to_number&quot;: &quot;2013450986&quot;,
+        ///      &quot;to_extension_number&quot;: &quot;1 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_reports_sms_charges_GET {
+            get {
+                return ResourceManager.GetString("phone-reports-sms_charges_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;description&quot;: &quot;Admin has full privileges to access and manage the Zoom Phone (default).&quot;,
+        ///  &quot;id&quot;: &quot;MRNStlOVS02fJ6pOAzrh0A&quot;,
+        ///  &quot;name&quot;: &quot;Phone Super Admin&quot;,
+        ///  &quot;total_members&quot;: 1,
+        ///  &quot;is_default&quot;: true
+        ///}.
+        /// </summary>
+        internal static string phone_roles__roleId__GET {
+            get {
+                return ResourceManager.GetString("phone-roles-{roleId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;members&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;1PXbl7s6Q52nbePrUxUZTg&quot;,
+        ///      &quot;display_name&quot;: &quot;ZOOM_API Test&quot;,
+        ///      &quot;email&quot;: &quot;2020042400000003@qq.com&quot;,
+        ///      &quot;extension_number&quot;: 1000123460,
+        ///      &quot;site&quot;: {
+        ///        &quot;id&quot;: &quot;8f71O6rWT8KFUGQmJIFAdQ&quot;,
+        ///        &quot;name&quot;: &quot;Main Site&quot;
+        ///      }
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_roles__roleId__members_GET {
+            get {
+                return ResourceManager.GetString("phone-roles-{roleId}-members_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;nav48KOj42vYPSG4f0cCdT575bZ980did22&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 45,
+        ///  &quot;targets&quot;: [
+        ///    {
+        ///      &quot;target_id&quot;: &quot;zSBIkYJzS6KkQqu5nFxvgg&quot;,
+        ///      &quot;target_type&quot;: &quot;user&quot;,
+        ///      &quot;target_name&quot;: &quot;Test name&quot;,
+        ///      &quot;extension_number&quot;: 1234503,
+        ///      &quot;site_id&quot;: &quot;8f71O6rWT8KFUGQmJIFAdQ&quot;,
+        ///      &quot;site_name&quot;: &quot;Main Site&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_roles__roleId__targets_GET {
+            get {
+                return ResourceManager.GetString("phone-roles-{roleId}-targets_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;roles&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;MRNStlOVS02fJ6pOAzrh0A&quot;,
+        ///      &quot;name&quot;: &quot;Phone Super Admin&quot;,
+        ///      &quot;description&quot;: &quot;Admin has full privileges to access and manage the Zoom Phone (default).&quot;,
+        ///      &quot;total_members&quot;: 1,
+        ///      &quot;is_default&quot;: true
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_roles_GET {
+            get {
+                return ResourceManager.GetString("phone-roles_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;calling_plans&quot;: [
+        ///    {
+        ///      &quot;name&quot;: &quot;AU/NZ Metered&quot;,
+        ///      &quot;type&quot;: 100,
+        ///      &quot;billing_account_id&quot;: &quot;3WWAEiEjTj2IQuyDiKMd_A&quot;,
+        ///      &quot;billing_account_name&quot;: &quot;Delhi billing&quot;,
+        ///      &quot;billing_subscription_id&quot;: &quot;FT-SUBREF-21168178&quot;,
+        ///      &quot;billing_subscription_name&quot;: &quot;My Subscription&quot;
+        ///    }
+        ///  ],
+        ///  &quot;emergency_address&quot;: {
+        ///    &quot;address_line1&quot;: &quot;122&quot;,
+        ///    &quot;address_line2&quot;: &quot;122&quot;,
+        ///    &quot;city&quot;: &quot;12&quot;,
+        ///    &quot;country&quot;: &quot;SG&quot;,
+        ///    &quot;id&quot;: &quot;fXEdhQmSQheGaNuLYbm8Wg&quot;,
+        ///    &quot;state_code&quot;: &quot;123&quot;,
+        ///    &quot;zip&quot;: &quot;50 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_rooms__roomId__GET {
+            get {
+                return ResourceManager.GetString("phone-rooms-{roomId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;BJLYC6PABbAHdjwSkGVQeeR6B1juwHqj3G2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;rooms&quot;: [
+        ///    {
+        ///      &quot;calling_plans&quot;: [
+        ///        {
+        ///          &quot;name&quot;: &quot;AU/NZ Metered&quot;,
+        ///          &quot;type&quot;: 100,
+        ///          &quot;billing_account_id&quot;: &quot;3WWAEiEjTj2IQuyDiKMd_A&quot;,
+        ///          &quot;billing_account_name&quot;: &quot;Delhi billing&quot;,
+        ///          &quot;billing_subscription_id&quot;: &quot;FT-SUBREF-21168178&quot;,
+        ///          &quot;billing_subscription_name&quot;: &quot;My Subscription&quot;
+        ///        }
+        ///      ],
+        ///      &quot;extension_id&quot;: &quot;_zQiBLNDQumOuA_tOnBIrw&quot;,
+        ///      &quot;exte [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_rooms_GET {
+            get {
+                return ResourceManager.GetString("phone-rooms_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;rooms&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;_zQiBLNDQumOuA_tOnBIrw&quot;,
+        ///      &quot;display_name&quot;: &quot;room_1&quot;,
+        ///      &quot;location_id&quot;: &quot;3zEOmHchRaWCb7hx9XwROg&quot;,
+        ///      &quot;location_info&quot;: &quot;San Jose City,California State,Unite States Country/Region&quot;,
+        ///      &quot;department&quot;: &quot;pbx department&quot;,
+        ///      &quot;cost_center&quot;: &quot;pbx cost center&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_rooms_unassigned_GET {
+            get {
+                return ResourceManager.GetString("phone-rooms-unassigned_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;name&quot;: &quot;testRule&quot;,
+        ///  &quot;number_pattern&quot;: &quot;testPattern&quot;,
+        ///  &quot;order&quot;: 1,
+        ///  &quot;routing_path&quot;: {
+        ///    &quot;sip_group&quot;: {
+        ///      &quot;id&quot;: &quot;KrjExB4mSuWYkpIRLEjjpQ&quot;,
+        ///      &quot;name&quot;: &quot;sip_test_customer_id2&quot;
+        ///    },
+        ///    &quot;type&quot;: &quot;sip_group&quot;
+        ///  },
+        ///  &quot;routing_rule_id&quot;: &quot;LVkqTcxNQt6d-W45e0Jc6Q&quot;,
+        ///  &quot;site_id&quot;: &quot;aATWYNqFQDetJQ5tCX6d6g&quot;,
+        ///  &quot;translation&quot;: &quot;/[1-9]/&quot;
+        ///}.
+        /// </summary>
+        internal static string phone_routing_rules__routingRuleId__GET {
+            get {
+                return ResourceManager.GetString("phone-routing_rules-{routingRuleId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [
+        ///  {
+        ///    &quot;name&quot;: &quot;testRoutingRule&quot;,
+        ///    &quot;number_pattern&quot;: &quot;testNumberPattern&quot;,
+        ///    &quot;order&quot;: 1,
+        ///    &quot;routing_path&quot;: {
+        ///      &quot;sip_group&quot;: {
+        ///        &quot;id&quot;: &quot;KrjExB4mSuWYkpIRLEjjpQ&quot;,
+        ///        &quot;name&quot;: &quot;sip_test_customer_id2&quot;
+        ///      },
+        ///      &quot;type&quot;: &quot;sip_group&quot;
+        ///    },
+        ///    &quot;routing_rule_id&quot;: &quot;LVkqTcxNQt6d-W45e0Jc6Q&quot;,
+        ///    &quot;site_id&quot;: &quot;NjHmTu16Qfe8yOiNJuekXA&quot;,
+        ///    &quot;translation&quot;: &quot;/[1-9]/&quot;
+        ///  }
+        ///].
+        /// </summary>
+        internal static string phone_routing_rules_GET {
+            get {
+                return ResourceManager.GetString("phone-routing_rules_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;description&quot;: &quot;Main site user template&quot;,
+        ///  &quot;id&quot;: &quot;2kFqiqSlS5udzWB5QqMiNg&quot;,
+        ///  &quot;name&quot;: &quot;user template&quot;,
+        ///  &quot;policy&quot;: {
+        ///    &quot;ad_hoc_call_recording&quot;: {
+        ///      &quot;enable&quot;: true,
+        ///      &quot;recording_start_prompt&quot;: true,
+        ///      &quot;recording_transcription&quot;: true
+        ///    },
+        ///    &quot;auto_call_recording&quot;: {
+        ///      &quot;enable&quot;: true,
+        ///      &quot;recording_calls&quot;: &quot;inbound&quot;,
+        ///      &quot;recording_start_prompt&quot;: true,
+        ///      &quot;recording_transcription&quot;: true,
+        ///      &quot;inbound_audio_notification&quot;: {
+        ///        &quot;recording_start_prompt&quot;: tru [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_setting_templates__templateId__GET {
+            get {
+                return ResourceManager.GetString("phone-setting_templates-{templateId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;nav48KOj42vYPSG4f0cCdT575bZ980did22&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;templates&quot;: [
+        ///    {
+        ///      &quot;description&quot;: &quot;Main site user template&quot;,
+        ///      &quot;id&quot;: &quot;2kFqiqSlS5udzWB5QqMiNg&quot;,
+        ///      &quot;name&quot;: &quot;user_template&quot;,
+        ///      &quot;type&quot;: &quot;user&quot;
+        ///    }
+        ///  ],
+        ///  &quot;total_records&quot;: 2
+        ///}.
+        /// </summary>
+        internal static string phone_setting_templates_GET {
+            get {
+                return ResourceManager.GetString("phone-setting_templates_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;byoc&quot;: {
+        ///    &quot;enable&quot;: true
+        ///  },
+        ///  &quot;country&quot;: {
+        ///    &quot;code&quot;: &quot;US&quot;,
+        ///    &quot;name&quot;: &quot;United States&quot;
+        ///  },
+        ///  &quot;multiple_sites&quot;: {
+        ///    &quot;enabled&quot;: true,
+        ///    &quot;site_code&quot;: true
+        ///  },
+        ///  &quot;show_device_ip_for_call_log&quot;: {
+        ///    &quot;enable&quot;: true
+        ///  },
+        ///  &quot;multiple_party_conference&quot;: {
+        ///    &quot;enable&quot;: true
+        ///  },
+        ///  &quot;billing_account&quot;: {
+        ///    &quot;id&quot;: &quot;3WWAEiEjTj2IQuyDiKMd_A&quot;,
+        ///    &quot;name&quot;: &quot;Delhi billing&quot;
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string phone_settings_GET {
+            get {
+                return ResourceManager.GetString("phone-settings_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;MnriWtiIAzrEfe3EW5ORlj6TFBFqL57AC42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;shared_line_appearances&quot;: [
+        ///    {
+        ///      &quot;executive&quot;: {
+        ///        &quot;name&quot;: &quot;Joan Dev&quot;,
+        ///        &quot;extension_number&quot;: 11407,
+        ///        &quot;extension_type&quot;: &quot;user&quot;
+        ///      },
+        ///      &quot;assistants&quot;: [
+        ///        {
+        ///          &quot;id&quot;: &quot;E8-XliWGT-a7tlKPOnrevw&quot;,
+        ///          &quot;name&quot;: &quot;Joh Dev&quot;,
+        ///          &quot;extension_number&quot;: 11408,
+        ///          &quot;extension_type&quot;: &quot;user&quot;
+        ///        }
+        ///      ],
+        ///      &quot;privileges&quot;: [
+        ///        &quot;place_calls&quot;
+        ///      ]
+        ///  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_shared_line_appearances_GET {
+            get {
+                return ResourceManager.GetString("phone-shared_line_appearances_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;display_name&quot;: &quot;jamieSLGTest&quot;,
+        ///  &quot;extension_id&quot;: &quot;WfsrPERXS8inWrpH1Hi_KQ&quot;,
+        ///  &quot;extension_number&quot;: 1000123471,
+        ///  &quot;id&quot;: &quot;RQinnFtmTJ25mx89tW5Cmw&quot;,
+        ///  &quot;members&quot;: {
+        ///    &quot;users&quot;: [
+        ///      {
+        ///        &quot;id&quot;: &quot;mNlwFK9ISMKC2toK9oDTcg&quot;,
+        ///        &quot;name&quot;: &quot;ZOOM_API Test&quot;,
+        ///        &quot;extension_id&quot;: &quot;oeDyBe8zT2SzOZW6gQJXUA&quot;
+        ///      }
+        ///    ],
+        ///    &quot;common_areas&quot;: [
+        ///      {
+        ///        &quot;id&quot;: &quot;HIlHzOEzS8ymQPFBZ-39AQ&quot;,
+        ///        &quot;name&quot;: &quot;Common Area&quot;,
+        ///        &quot;extension_id&quot;: &quot;HIlHzOEzS8ymQPFBZ-39AQ&quot;
+        ///      }
+        ///    ]
+        ///  },        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_shared_line_groups__sharedLineGroupId__GET {
+            get {
+                return ResourceManager.GetString("phone-shared_line_groups-{sharedLineGroupId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;check_voicemails_over_phone&quot;: {
+        ///    &quot;enable&quot;: true,
+        ///    &quot;locked&quot;: true,
+        ///    &quot;locked_by&quot;: &quot;site&quot;,
+        ///    &quot;modified&quot;: true
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string phone_shared_line_groups__sharedLineGroupId__policies_GET {
+            get {
+                return ResourceManager.GetString("phone-shared_line_groups-{sharedLineGroupId}-policies_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;MnriWtiIAzrEfe3EW5ORlj6TFBFqL57AC42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;shared_line_groups&quot;: [
+        ///    {
+        ///      &quot;display_name&quot;: &quot;jamieSLGTest&quot;,
+        ///      &quot;extension_id&quot;: &quot;FkOFn6d5SGqqqIkyDSXrTg&quot;,
+        ///      &quot;extension_number&quot;: 1000123471,
+        ///      &quot;id&quot;: &quot;RQinnFtmTJ25mx89tW5Cmw&quot;,
+        ///      &quot;phone_numbers&quot;: [
+        ///        {
+        ///          &quot;id&quot;: &quot;55JUZPwERHuGttd_j4qBsQ&quot;,
+        ///          &quot;number&quot;: &quot;\u002B12058945565&quot;,
+        ///          &quot;status&quot;: &quot;available&quot;
+        ///        }
+        ///      ],
+        ///      &quot;site&quot;: {
+        ///        &quot;id&quot;: &quot;8f71O6rWT8KFUGQmJIFA [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_shared_line_groups_GET {
+            get {
+                return ResourceManager.GetString("phone-shared_line_groups_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;IXIhcpJWscHfISSKTcdl2QpSMLyRE38zH92&quot;,
+        ///  &quot;page_size&quot;: 3,
+        ///  &quot;sip_groups&quot;: [
+        ///    {
+        ///      &quot;description&quot;: &quot;test SIP group&quot;,
+        ///      &quot;display_name&quot;: &quot;RRRR&quot;,
+        ///      &quot;id&quot;: &quot;8MhK7ea4Q4ihIQ4TD_g0kw&quot;,
+        ///      &quot;send_sip_group_name&quot;: false,
+        ///      &quot;sip_trunk&quot;: {
+        ///        &quot;id&quot;: &quot;VWQU-veBQnm08EtBkUGnbw&quot;,
+        ///        &quot;name&quot;: &quot;TESTAPI01&quot;
+        ///      }
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_sip_groups_GET {
+            get {
+                return ResourceManager.GetString("phone-sip_groups_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;byoc_sip_trunk&quot;: [
+        ///    {
+        ///      &quot;carrier&quot;: &quot;Bandwidth&quot;,
+        ///      &quot;carrier_account&quot;: &quot;123123131313&quot;,
+        ///      &quot;id&quot;: &quot;fVA-LsQhQAC2fTS7NiccFA&quot;,
+        ///      &quot;name&quot;: &quot;TestSipTrunk&quot;,
+        ///      &quot;region&quot;: &quot;newqa01sipjp01&quot;,
+        ///      &quot;sbc_label&quot;: &quot;Test&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;Ds6anZEv59aLMmTSrfF4wmHYCMiYXMWhRQ2&quot;,
+        ///  &quot;page_size&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string phone_sip_trunk_trunks_GET {
+            get {
+                return ResourceManager.GetString("phone-sip_trunk-trunks_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;lfei3g&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;result&quot;: [
+        ///    {
+        ///      &quot;extension_id&quot;: &quot;feq3g&quot;,
+        ///      &quot;display_name&quot;: &quot;Name&quot;,
+        ///      &quot;email&quot;: &quot;example@example.com&quot;,
+        ///      &quot;extension_number&quot;: &quot;1003&quot;,
+        ///      &quot;site&quot;: {
+        ///        &quot;id&quot;: &quot;fdjl23&quot;,
+        ///        &quot;name&quot;: &quot;New site&quot;
+        ///      }
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_sites__siteId__dial_by_name_directory_extensions_GET {
+            get {
+                return ResourceManager.GetString("phone-sites-{siteId}-dial_by_name_directory-extensions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;country&quot;: {
+        ///    &quot;code&quot;: &quot;US&quot;,
+        ///    &quot;name&quot;: &quot;United States&quot;
+        ///  },
+        ///  &quot;id&quot;: &quot;SQv52YtkRLC2dwrDdYtGsA&quot;,
+        ///  &quot;main_auto_receptionist&quot;: {
+        ///    &quot;extension_id&quot;: &quot;pl1XprjhTQK1CCMVKTqCFA&quot;,
+        ///    &quot;extension_number&quot;: 12345,
+        ///    &quot;id&quot;: &quot;Kbdc9lv_SBCuPMjj_lhxVA&quot;,
+        ///    &quot;name&quot;: &quot;ApiTA_R_2020_07_12_00_41_57_145&quot;
+        ///  },
+        ///  &quot;name&quot;: &quot;ApiTA_Site_2020_07_12_00_41_57_141&quot;,
+        ///  &quot;short_extension&quot;: {
+        ///    &quot;length&quot;: 3
+        ///  },
+        ///  &quot;site_code&quot;: 321,
+        ///  &quot;policy&quot;: {
+        ///    &quot;select_outbound_caller_id&quot;: {
+        ///      &quot;enable&quot;: true,
+        ///      &quot;locked [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_sites__siteId__GET {
+            get {
+                return ResourceManager.GetString("phone-sites-{siteId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;customize_numbers&quot;: [
+        ///    {
+        ///      &quot;customize_id&quot;: &quot;8_RkKw9OQ42oYsXqJJjs4A&quot;,
+        ///      &quot;phone_number_id&quot;: &quot;55JUZPwERHuGttd_j4qBsQ&quot;,
+        ///      &quot;phone_number&quot;: &quot;\u002B12055437350&quot;,
+        ///      &quot;display_name&quot;: &quot;test abc&quot;,
+        ///      &quot;incoming&quot;: true,
+        ///      &quot;outgoing&quot;: true,
+        ///      &quot;extension_id&quot;: &quot;HaSokHMCSeK8taMdv2vnXQ&quot;,
+        ///      &quot;extension_type&quot;: &quot;callQueue&quot;,
+        ///      &quot;extension_number&quot;: &quot;10001&quot;,
+        ///      &quot;extension_name&quot;: &quot;SJ CQ&quot;,
+        ///      &quot;site&quot;: {
+        ///        &quot;id&quot;: &quot;8f71O6rWT8KFUGQmJIFAdQ&quot;,
+        ///        &quot;name&quot;: &quot;testSite&quot;
+        ///    [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_sites__siteId__outbound_caller_id_customized_numbers_GET {
+            get {
+                return ResourceManager.GetString("phone-sites-{siteId}-outbound_caller_id-customized_numbers_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;countries_regions&quot;: [
+        ///    {
+        ///      &quot;name&quot;: &quot;United States&quot;,
+        ///      &quot;code&quot;: 1,
+        ///      &quot;iso_code&quot;: &quot;US&quot;,
+        ///      &quot;rule&quot;: 1,
+        ///      &quot;enabled_carrier&quot;: [
+        ///        &quot;ZOOM&quot;
+        ///      ]
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;uBTK3NzNksdkuCUAQaFVFd86kyOr59zg4U2&quot;,
+        ///  &quot;page_size&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string phone_sites__siteId__outbound_calling_countries_regions_GET {
+            get {
+                return ResourceManager.GetString("phone-sites-{siteId}-outbound_calling-countries_regions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;exception_rules&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;2ypsHHwTTFK-fzZJkudYwA&quot;,
+        ///      &quot;match_type&quot;: &quot;prefix&quot;,
+        ///      &quot;prefix_number&quot;: &quot;20665558945&quot;,
+        ///      &quot;rule&quot;: 1,
+        ///      &quot;comment&quot;: &quot;test&quot;,
+        ///      &quot;status&quot;: &quot;active&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;uBTK3NzNksdkuCUAQaFVFd86kyOr59zg4U2&quot;,
+        ///  &quot;page_size&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string phone_sites__siteId__outbound_calling_exception_rules_GET {
+            get {
+                return ResourceManager.GetString("phone-sites-{siteId}-outbound_calling-exception_rules_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;location_based_routing&quot;: {
+        ///    &quot;enable&quot;: false,
+        ///    &quot;place_receive_pstn_calls&quot;: false,
+        ///    &quot;enable_media_off_load_pstn_calls&quot;: false
+        ///  },
+        ///  &quot;business_hours&quot;: {
+        ///    &quot;custom_hour_type&quot;: 2,
+        ///    &quot;custom_hours&quot;: [
+        ///      {
+        ///        &quot;from&quot;: &quot;09:00&quot;,
+        ///        &quot;to&quot;: &quot;18:00&quot;,
+        ///        &quot;type&quot;: 0,
+        ///        &quot;weekday&quot;: 1
+        ///      }
+        ///    ],
+        ///    &quot;overflow&quot;: {
+        ///      &quot;allow_caller_to_reach_operator&quot;: true,
+        ///      &quot;operator&quot;: {
+        ///        &quot;extension_id&quot;: &quot;FGAMaMWESMCNF0jmEU1emw&quot;,
+        ///        &quot;extension_number&quot;: 10000 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_sites__siteId__settings__settingType__GET {
+            get {
+                return ResourceManager.GetString("phone-sites-{siteId}-settings-{settingType}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;nav48KOj42vYPSG4f0cCdT575bZ980did22&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;sites&quot;: [
+        ///    {
+        ///      &quot;country&quot;: {
+        ///        &quot;code&quot;: &quot;US&quot;,
+        ///        &quot;name&quot;: &quot;United States&quot;
+        ///      },
+        ///      &quot;id&quot;: &quot;SQv52YtkRLC2dwrDdYtGsA&quot;,
+        ///      &quot;main_auto_receptionist&quot;: {
+        ///        &quot;extension_id&quot;: &quot;pl1XprjhTQK1CCMVKTqCFA&quot;,
+        ///        &quot;extension_number&quot;: 12345,
+        ///        &quot;id&quot;: &quot;Kbdc9lv_SBCuPMjj_lhxVA&quot;,
+        ///        &quot;name&quot;: &quot;ApiTA_R_2020_07_12_00_41_57_145&quot;
+        ///      },
+        ///      &quot;name&quot;: &quot;ApiTA_Site_2020_07_12_00_41_57_141&quot;,
+        ///      [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_sites_GET {
+            get {
+                return ResourceManager.GetString("phone-sites_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;smartphones&quot;: [
+        ///    {
+        ///      &quot;smartphone_id&quot;: &quot;3WWAEiEjTj2IQuyDiKMd_A&quot;,
+        ///      &quot;device_name&quot;: &quot;EC50&quot;,
+        ///      &quot;device_type&quot;: &quot;Zebra TechnologiesEC50S&quot;,
+        ///      &quot;serial_number&quot;: &quot;202355225D0174&quot;,
+        ///      &quot;public_ip&quot;: &quot;38.99.100.2&quot;,
+        ///      &quot;activation_status&quot;: &quot;Activated&quot;,
+        ///      &quot;activation_time&quot;: &quot;2021-10-08T16:12:04Z&quot;,
+        ///      &quot;assignee&quot;: {
+        ///        &quot;common_area_id&quot;: &quot;JOZmuJ30Spyrw-v9vUzIrA&quot;,
+        ///        &quot;name&quot;: &quot;test_ca&quot;,
+        ///        &quot;extension_number&quot;: 123
+        ///      },
+        ///      &quot;site&quot;: {
+        ///        &quot;site_id&quot;: &quot;NjH [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_smartphones_GET {
+            get {
+                return ResourceManager.GetString("phone-smartphones_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;C-BlVwSdjvS3WXk5gzfIQFfQ&quot;,
+        ///  &quot;display_name&quot;: &quot;Test SMS Campaign&quot;,
+        ///  &quot;status&quot;: &quot;active&quot;,
+        ///  &quot;service_type&quot;: &quot;zoomPhone&quot;,
+        ///  &quot;brand&quot;: {
+        ///    &quot;id&quot;: &quot;B-c3AN66d_Q4mrQFNUaW-G2w&quot;,
+        ///    &quot;name&quot;: &quot;Test Campaign&quot;
+        ///  },
+        ///  &quot;phone_numbers&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;iHE1MQAET2iV85MbfaQmwg&quot;,
+        ///      &quot;number&quot;: &quot;\u002B18887193005&quot;
+        ///    }
+        ///  ],
+        ///  &quot;auto_renew&quot;: true,
+        ///  &quot;create_time&quot;: &quot;2022-07-21T02:23:25.000Z&quot;,
+        ///  &quot;use_case&quot;: &quot;lowVolumeMixed&quot;,
+        ///  &quot;categories_fit&quot;: true,
+        ///  &quot;content_type&quot;: [
+        ///    &quot;urlLink&quot;
+        ///  ],
+        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_sms_campaigns__smsCampaignId__GET {
+            get {
+                return ResourceManager.GetString("phone-sms_campaigns-{smsCampaignId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;phone_number_campaign_opt_statuses&quot;: [
+        ///    {
+        ///      &quot;consumer_phone_number&quot;: &quot;\u002B15043449240&quot;,
+        ///      &quot;zoom_phone_user_number&quot;: &quot;\u002B12094436304&quot;,
+        ///      &quot;opt_status&quot;: &quot;opt_out&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_sms_campaigns__smsCampaignId__phone_numbers_opt_status_GET {
+            get {
+                return ResourceManager.GetString("phone-sms_campaigns-{smsCampaignId}-phone_numbers-opt_status_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;bkOcmnm6mn6ioYAi10BcgRiEL38WzAo6jP2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;sms_campaigns&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;C-BlVwSdjvS3WXk5gzfIQFfQ&quot;,
+        ///      &quot;display_name&quot;: &quot;Test SMS Campaign&quot;,
+        ///      &quot;status&quot;: &quot;active&quot;,
+        ///      &quot;brand&quot;: {
+        ///        &quot;id&quot;: &quot;B-c3AN66d_Q4mrQFNUaW-G2w&quot;,
+        ///        &quot;name&quot;: &quot;Test Campaign&quot;
+        ///      }
+        ///    }
+        ///  ],
+        ///  &quot;total_records&quot;: 1
+        ///}.
+        /// </summary>
+        internal static string phone_sms_campaigns_GET {
+            get {
+                return ResourceManager.GetString("phone-sms_campaigns_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;phone_number_consent_opt_statuses&quot;: [
+        ///    {
+        ///      &quot;consumer_phone_number&quot;: &quot;\u002B15043449240&quot;,
+        ///      &quot;zoom_phone_user_number&quot;: &quot;\u002B12094436304&quot;,
+        ///      &quot;opt_status&quot;: &quot;opt_out&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_sms_consent__consentId__phone_numbers_opt_status_GET {
+            get {
+                return ResourceManager.GetString("phone-sms_consent-{consentId}-phone_numbers-opt_status_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;2z0Ov7kngllAbfQi4ZR2eQTb3mFVYQpYAe4&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;sms_histories&quot;: [
+        ///    {
+        ///      &quot;attachments&quot;: [
+        ///        {
+        ///          &quot;download_url&quot;: &quot;https://exampleurl.us/file/download/x18dcVWxTcCzbp4zr2AT3A?jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjcm9zc2ZpbGUiLCJhdWQiOiJmaWxlIiwiZGlnIjoiYTZkODE4NzQ2MDNmN2UzZWM4OThkNDMxM2IxNjNhNTQ4NGI4MjkxMTA0ZmQyYzc4MTg1NmY0MGUxY2FlOTI3YyIsImV4cCI6MTY0ODE5NDA1NH0.eCURcan9QOOw9wvBdSn_-TBzgT5HWBzp04IfsK19Oto&quot;,
+        ///          &quot;id&quot;: &quot;x18dcVWxTcCzbp4zr2AT3A&quot;,        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_sms_sessions__sessionId__GET {
+            get {
+                return ResourceManager.GetString("phone-sms-sessions-{sessionId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;attachments&quot;: [
+        ///    {
+        ///      &quot;download_url&quot;: &quot;https://exampleurl.us/file/download/x18dcVWxTcCzbp4zr2AT3A?jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjcm9zc2ZpbGUiLCJhdWQiOiJmaWxlIiwiZGlnIjoiYTZkODE4NzQ2MDNmN2UzZWM4OThkNDMxM2IxNjNhNTQ4NGI4MjkxMTA0ZmQyYzc4MTg1NmY0MGUxY2FlOTI3YyIsImV4cCI6MTY0ODE5NDA1NH0.eCURcan9QOOw9wvBdSn_-TBzgT5HWBzp04IfsK19Oto&quot;,
+        ///      &quot;id&quot;: &quot;x18dcVWxTcCzbp4zr2AT3A&quot;,
+        ///      &quot;name&quot;: &quot;FWDHOMaNRaqIvNc3aIdisg.jpg&quot;,
+        ///      &quot;size&quot;: 225740,
+        ///      &quot;type&quot;: &quot;JPG/JPEG&quot;
+        ///    }
+        ///  ],
+        ///  &quot;date_time&quot;: &quot;20 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_sms_sessions__sessionId__messages__messageId__GET {
+            get {
+                return ResourceManager.GetString("phone-sms-sessions-{sessionId}-messages-{messageId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;sms_histories&quot;: [
+        ///    {
+        ///      &quot;attachments&quot;: [
+        ///        {
+        ///          &quot;download_url&quot;: &quot;https://exampleurl.us/file/download/x18dcVWxTcCzbp4zr2AT3A?jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjcm9zc2ZpbGUiLCJhdWQiOiJmaWxlIiwiZGlnIjoiYTZkODE4NzQ2MDNmN2UzZWM4OThkNDMxM2IxNjNhNTQ4NGI4MjkxMTA0ZmQyYzc4MTg1NmY0MGUxY2FlOTI3YyIsImV4cCI6MTY0ODE5NDk4OH0.kAh1EnCkjpwAOX_GUfWVPLK2xhnVPRiwm8vDbD-oyVY&quot;,
+        ///          &quot;id&quot;: &quot;x18dcVWxTcCzbp4zr2AT3A&quot;,
+        ///          &quot;name&quot;: &quot;FWDHOMaNRaqIvNc3aIdisg.jpg&quot;,
+        ///          &quot;size&quot;: 225740,
+        ///     [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_sms_sessions__sessionId__sync_GET {
+            get {
+                return ResourceManager.GetString("phone-sms-sessions-{sessionId}-sync_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;2z0Ov7kngllAbfQi4ZR2eQTb3mFVYQpYAe3&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;sms_sessions&quot;: [
+        ///    {
+        ///      &quot;last_access_time&quot;: &quot;2022-03-25T02:11:27Z&quot;,
+        ///      &quot;participants&quot;: [
+        ///        {
+        ///          &quot;display_name&quot;: &quot;test api&quot;,
+        ///          &quot;owner&quot;: {
+        ///            &quot;id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
+        ///            &quot;type&quot;: &quot;user&quot;
+        ///          },
+        ///          &quot;phone_number&quot;: &quot;18108001001&quot;,
+        ///          &quot;is_session_owner&quot;: true,
+        ///          &quot;extension_status&quot;: &quot;deleted&quot;,
+        ///          &quot;extension_deleted_time&quot;: &quot;2022-10 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_sms_sessions_GET {
+            get {
+                return ResourceManager.GetString("phone-sms-sessions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;ai_call_summary_id&quot;: &quot;HfBQmSIARZi5zeDMmofwTA&quot;,
+        ///  &quot;account_id&quot;: &quot;A88lsb7WQ46FwTeNe8jsMw&quot;,
+        ///  &quot;call_id&quot;: &quot;7018317023722949162&quot;,
+        ///  &quot;user_id&quot;: &quot;x2ci3VDeQEqJsuHkn5oRzg&quot;,
+        ///  &quot;call_summary_rate&quot;: &quot;thumb_up&quot;,
+        ///  &quot;transcript_language&quot;: &quot;en&quot;,
+        ///  &quot;call_summary&quot;: &quot;Tom discussed his personal beliefs and values, including his support for certain political figures and his advocacy for various social causes.&quot;,
+        ///  &quot;next_steps&quot;: &quot;Tom will provide PPT next Tuesday.&quot;,
+        ///  &quot;detailed_summary&quot;: &quot;Tom discussed ...&quot;,
+        ///  &quot;cre [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_user__userId__ai_call_summary__aiCallSummaryId__GET {
+            get {
+                return ResourceManager.GetString("phone-user-{userId}-ai_call_summary-{aiCallSummaryId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;phone_number_campaign_opt_statuses&quot;: [
+        ///    {
+        ///      &quot;consumer_phone_number&quot;: &quot;\u002B120944XXXXX&quot;,
+        ///      &quot;zoom_phone_user_number&quot;: &quot;\u002B120944XXXXX&quot;,
+        ///      &quot;opt_status&quot;: &quot;opt_out&quot;,
+        ///      &quot;opt_in_status&quot;: 0,
+        ///      &quot;opt_in_message&quot;: &quot;Text START to receive text messages from ZOOM. Message frequency may vary. Message and Data Rates may apply. To end messaging from us, reply with STOP. Reply with HELP for more information.&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_user__userId__sms_campaigns_phone_numbers_opt_status_GET {
+            get {
+                return ResourceManager.GetString("phone-user-{userId}-sms_campaigns-phone_numbers-opt_status_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;audios&quot;: [
+        ///    {
+        ///      &quot;audio_id&quot;: &quot;fPOSdWWqRVqhohLYs7TW9Q&quot;,
+        ///      &quot;name&quot;: &quot;hello.mp3&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_users__userId__audios_GET {
+            get {
+                return ResourceManager.GetString("phone-users-{userId}-audios_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;call_logs&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;20231008-48c1dfd4-91ce-4df5-8495-7c9e33d10869&quot;,
+        ///      &quot;call_path_id&quot;: &quot;20231008-48c1dfd4-91ce-4df5-8495-7c9e33d10869&quot;,
+        ///      &quot;call_id&quot;: &quot;7018317023722949162&quot;,
+        ///      &quot;group_id&quot;: &quot;_sj190JDFasa19321_adA7&quot;,
+        ///      &quot;connect_type&quot;: &quot;internal&quot;,
+        ///      &quot;call_type&quot;: &quot;general&quot;,
+        ///      &quot;direction&quot;: &quot;inbound&quot;,
+        ///      &quot;hide_caller_id&quot;: true,
+        ///      &quot;end_to_end&quot;: false,
+        ///      &quot;caller_ext_id&quot;: &quot;ATu63--9TjudZetpf4UuQg&quot;,
+        ///      &quot;caller_name&quot;: &quot;Caller name&quot;,
+        ///      &quot;caller_email&quot;: [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_users__userId__call_history_GET {
+            get {
+                return ResourceManager.GetString("phone-users-{userId}-call_history_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;call_logs&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;20231008-321adfd4-91ce-4d15-84a5-7c9e33d10c32&quot;,
+        ///      &quot;call_path_id&quot;: &quot;20231008-c12adfdf-93ce-fda5-8ca1-7c5e31d1021c&quot;,
+        ///      &quot;call_id&quot;: &quot;7018317023722949162&quot;,
+        ///      &quot;group_id&quot;: &quot;_sj190JDFasa19321_adA7&quot;,
+        ///      &quot;connect_type&quot;: &quot;internal&quot;,
+        ///      &quot;call_type&quot;: &quot;general&quot;,
+        ///      &quot;direction&quot;: &quot;inbound&quot;,
+        ///      &quot;hide_caller_id&quot;: true,
+        ///      &quot;end_to_end&quot;: false,
+        ///      &quot;caller_ext_id&quot;: &quot;ATu63--9TjudZetpf4UuQg&quot;,
+        ///      &quot;caller_name&quot;: &quot;Caller name&quot;,
+        ///      &quot;caller_email&quot;: [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_users__userId__call_history_sync_GET {
+            get {
+                return ResourceManager.GetString("phone-users-{userId}-call_history-sync_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;call_id&quot;: &quot;876634343743&quot;,
+        ///  &quot;call_log_id&quot;: &quot;55fd0af0-beb0-433a-be97-388de5e99ab4&quot;,
+        ///  &quot;call_history_id&quot;: &quot;20190519-55fd0af0-beb0-433a-be97-388de5e99ab4&quot;,
+        ///  &quot;call_element_id&quot;: &quot;20210609-a297ae04-a875-4cfd-85ab-4adcead91edb&quot;,
+        ///  &quot;callee_name&quot;: &quot;Jane Doe&quot;,
+        ///  &quot;callee_number&quot;: &quot;34567889&quot;,
+        ///  &quot;callee_number_type&quot;: 2,
+        ///  &quot;caller_name&quot;: &quot;John Doe&quot;,
+        ///  &quot;caller_number&quot;: &quot;12345678&quot;,
+        ///  &quot;caller_number_type&quot;: 1,
+        ///  &quot;date_time&quot;: &quot;2019-05-19T20:00:00Z&quot;,
+        ///  &quot;download_url&quot;: &quot;exampleurl.io&quot;,
+        ///  &quot;duration&quot;: 18,
+        ///  &quot;i [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_users__userId__call_logs__id__voice_mail_GET {
+            get {
+                return ResourceManager.GetString("phone-users-{userId}-call_logs-{id}-voice_mail_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;call_logs&quot;: [
+        ///    {
+        ///      &quot;accepted_by&quot;: {
+        ///        &quot;extension_number&quot;: &quot;1009&quot;,
+        ///        &quot;location&quot;: &quot;Pontotoc     MS&quot;,
+        ///        &quot;name&quot;: &quot;Display name&quot;,
+        ///        &quot;number_type&quot;: 1,
+        ///        &quot;phone_number&quot;: &quot;\u002B12055432724&quot;
+        ///      },
+        ///      &quot;answer_start_time&quot;: &quot;2021-10-09T16:52:05Z&quot;,
+        ///      &quot;call_end_time&quot;: &quot;2021-10-09T17:20:53Z&quot;,
+        ///      &quot;call_id&quot;: &quot;7017184835983901126&quot;,
+        ///      &quot;callee_country_code&quot;: &quot;1&quot;,
+        ///      &quot;callee_country_iso_code&quot;: &quot;US&quot;,
+        ///      &quot;callee_did_number&quot;: &quot;\u002B12055432724&quot;,
+        ///    [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_users__userId__call_logs_GET {
+            get {
+                return ResourceManager.GetString("phone-users-{userId}-call_logs_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;call_logs&quot;: [
+        ///    {
+        ///      &quot;accepted_by&quot;: {
+        ///        &quot;extension_number&quot;: &quot;1009&quot;,
+        ///        &quot;location&quot;: &quot;Glendale     CA&quot;,
+        ///        &quot;name&quot;: &quot;Display name&quot;,
+        ///        &quot;number_type&quot;: 1,
+        ///        &quot;phone_number&quot;: &quot;\u002B12055432724&quot;
+        ///      },
+        ///      &quot;answer_start_time&quot;: &quot;2021-10-08T16:10:04Z&quot;,
+        ///      &quot;call_end_time&quot;: &quot;2021-10-08T16:12:04Z&quot;,
+        ///      &quot;call_id&quot;: &quot;7006926284340112376&quot;,
+        ///      &quot;callee_user_id&quot;: &quot;IqoQmDRqS-aIoXqV_FZ88w&quot;,
+        ///      &quot;callee_country_code&quot;: &quot;1&quot;,
+        ///      &quot;callee_country_iso_code&quot;: &quot;US&quot;,
+        ///  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_users__userId__call_logs_sync_GET {
+            get {
+                return ResourceManager.GetString("phone-users-{userId}-call_logs-sync_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;calling_plans&quot;: [
+        ///    {
+        ///      &quot;type&quot;: 600,
+        ///      &quot;billing_account_id&quot;: &quot;3WWAEiEjTj2IQuyDiKMd_A&quot;,
+        ///      &quot;billing_account_name&quot;: &quot;Delhi billing&quot;,
+        ///      &quot;billing_subscription_id&quot;: &quot;FT-SUBREF-21168178&quot;,
+        ///      &quot;billing_subscription_name&quot;: &quot;My Subscription&quot;
+        ///    }
+        ///  ],
+        ///  &quot;cost_center&quot;: &quot;testCostCenter&quot;,
+        ///  &quot;department&quot;: &quot;testDepartment&quot;,
+        ///  &quot;email&quot;: &quot;suesu_test_delete3@testapi.com&quot;,
+        ///  &quot;emergency_address&quot;: {
+        ///    &quot;address_line1&quot;: &quot;55 Almaden Boulevard&quot;,
+        ///    &quot;address_line2&quot;: &quot;1002 Airport Way S&quot;,
+        ///  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_users__userId__GET {
+            get {
+                return ResourceManager.GetString("phone-users-{userId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;customize_numbers&quot;: [
+        ///    {
+        ///      &quot;customize_id&quot;: &quot;8_RkKw9OQ42oYsXqJJjs4A&quot;,
+        ///      &quot;phone_number_id&quot;: &quot;55JUZPwERHuGttd_j4qBsQ&quot;,
+        ///      &quot;phone_number&quot;: &quot;\u002B12055437350&quot;,
+        ///      &quot;display_name&quot;: &quot;test abc&quot;,
+        ///      &quot;incoming&quot;: true,
+        ///      &quot;outgoing&quot;: true,
+        ///      &quot;extension_id&quot;: &quot;HaSokHMCSeK8taMdv2vnXQ&quot;,
+        ///      &quot;extension_type&quot;: &quot;callQueue&quot;,
+        ///      &quot;extension_number&quot;: &quot;10001&quot;,
+        ///      &quot;extension_name&quot;: &quot;SJ CQ&quot;,
+        ///      &quot;site&quot;: {
+        ///        &quot;id&quot;: &quot;8f71O6rWT8KFUGQmJIFAdQ&quot;,
+        ///        &quot;name&quot;: &quot;testSite&quot;
+        ///    [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_users__userId__outbound_caller_id_customized_numbers_GET {
+            get {
+                return ResourceManager.GetString("phone-users-{userId}-outbound_caller_id-customized_numbers_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;countries_regions&quot;: [
+        ///    {
+        ///      &quot;name&quot;: &quot;United States&quot;,
+        ///      &quot;code&quot;: 1,
+        ///      &quot;iso_code&quot;: &quot;US&quot;,
+        ///      &quot;rule&quot;: 1,
+        ///      &quot;enabled_carrier&quot;: [
+        ///        &quot;ZOOM&quot;
+        ///      ]
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;uBTK3NzNksdkuCUAQaFVFd86kyOr59zg4U2&quot;,
+        ///  &quot;page_size&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string phone_users__userId__outbound_calling_countries_regions_GET {
+            get {
+                return ResourceManager.GetString("phone-users-{userId}-outbound_calling-countries_regions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;exception_rules&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;2ypsHHwTTFK-fzZJkudYwA&quot;,
+        ///      &quot;match_type&quot;: &quot;prefix&quot;,
+        ///      &quot;prefix_number&quot;: &quot;20665558945&quot;,
+        ///      &quot;rule&quot;: 1,
+        ///      &quot;comment&quot;: &quot;test&quot;,
+        ///      &quot;status&quot;: &quot;active&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;uBTK3NzNksdkuCUAQaFVFd86kyOr59zg4U2&quot;,
+        ///  &quot;page_size&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string phone_users__userId__outbound_calling_exception_rules_GET {
+            get {
+                return ResourceManager.GetString("phone-users-{userId}-outbound_calling-exception_rules_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;phone_numbers&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;iHE1MQAET2iV85MbfaQmwg&quot;,
+        ///      &quot;number&quot;: &quot;\u002B18887193005&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_users__userId__phone_numbers_POST {
+            get {
+                return ResourceManager.GetString("phone-users-{userId}-phone_numbers_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;from&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///  &quot;next_page_token&quot;: &quot;6jqhz348c100oHbw6cVER45YderniREnwr1&quot;,
+        ///  &quot;page_count&quot;: 1,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;recordings&quot;: [
+        ///    {
+        ///      &quot;call_id&quot;: &quot;7025841973929235024&quot;,
+        ///      &quot;call_log_id&quot;: &quot;8f7345c5-0a65-4182-ab16-72fdb3be61ff&quot;,
+        ///      &quot;call_history_id&quot;: &quot;20211102-8f7345c5-0a65-4182-ab16-72fdb3be61ff&quot;,
+        ///      &quot;call_element_id&quot;: &quot;20210609-a297ae04-a875-4cfd-85ab-4adcead91edb&quot;,
+        ///      &quot;callee_name&quot;: &quot;User A&quot;,
+        ///      &quot;callee_number&quot;: &quot;1000001004&quot;,
+        ///      &quot;call [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_users__userId__recordings_GET {
+            get {
+                return ResourceManager.GetString("phone-users-{userId}-recordings_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;area_code&quot;: &quot;01&quot;,
+        ///  &quot;audio_prompt_language&quot;: &quot;en-US&quot;,
+        ///  &quot;company_number&quot;: &quot;\u002B12058945640&quot;,
+        ///  &quot;country&quot;: {
+        ///    &quot;code&quot;: &quot;US&quot;,
+        ///    &quot;country_code&quot;: &quot;1&quot;,
+        ///    &quot;name&quot;: &quot;United States&quot;
+        ///  },
+        ///  &quot;delegation&quot;: {
+        ///    &quot;assistants&quot;: [
+        ///      {
+        ///        &quot;display_name&quot;: &quot;test user delegation&quot;,
+        ///        &quot;extension_id&quot;: &quot;CcrEGgmeQem1uyJsuIRKwA&quot;,
+        ///        &quot;extension_number&quot;: 1000123477,
+        ///        &quot;extension_type&quot;: &quot;user&quot;,
+        ///        &quot;id&quot;: &quot;fWOgOALdT1ei4vjXK-QYsA&quot;
+        ///      }
+        ///    ],
+        ///    &quot;privacy&quot;: true,
+        ///    &quot;pri [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_users__userId__settings_GET {
+            get {
+                return ResourceManager.GetString("phone-users-{userId}-settings_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;2z0Ov7kngllAbfQi4ZR2eQTb3mFVYQpYAe4&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;sms_sessions&quot;: [
+        ///    {
+        ///      &quot;last_access_time&quot;: &quot;2022-03-25T02:11:27Z&quot;,
+        ///      &quot;participants&quot;: [
+        ///        {
+        ///          &quot;display_name&quot;: &quot;l api&quot;,
+        ///          &quot;owner&quot;: {
+        ///            &quot;id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
+        ///            &quot;type&quot;: &quot;user&quot;
+        ///          },
+        ///          &quot;phone_number&quot;: &quot;18108001001&quot;,
+        ///          &quot;is_session_owner&quot;: true
+        ///        }
+        ///      ],
+        ///      &quot;session_id&quot;: &quot;d39fc7e14ef9f2b6453f5f02524d79a2&quot;,
+        ///      &quot;sessi [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_users__userId__sms_sessions_GET {
+            get {
+                return ResourceManager.GetString("phone-users-{userId}-sms-sessions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;sms_sessions&quot;: [
+        ///    {
+        ///      &quot;last_access_time&quot;: &quot;2022-03-25T02:11:27Z&quot;,
+        ///      &quot;latest_message&quot;: {
+        ///        &quot;attachments&quot;: [
+        ///          {
+        ///            &quot;id&quot;: &quot;ttllslww&quot;,
+        ///            &quot;type&quot;: &quot;GIF&quot;
+        ///          }
+        ///        ],
+        ///        &quot;date_time&quot;: &quot;2022-03-25T02:11:27Z&quot;,
+        ///        &quot;direction&quot;: &quot;Out&quot;,
+        ///        &quot;message&quot;: &quot;hello&quot;,
+        ///        &quot;message_id&quot;: &quot;cfc07047-123e-4097-91d4-ac2635d646af&quot;,
+        ///        &quot;message_type&quot;: 6,
+        ///        &quot;sender&quot;: {
+        ///          &quot;display_name&quot;: &quot;usersubsetting0001@testapi.com&quot;,
+        ///     [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_users__userId__sms_sessions_sync_GET {
+            get {
+                return ResourceManager.GetString("phone-users-{userId}-sms-sessions-sync_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;from&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///  &quot;next_page_token&quot;: &quot;VcXBknJ0MQ7kuXun5WKmSjHC1hOBGS2bbr2&quot;,
+        ///  &quot;page_count&quot;: 10,
+        ///  &quot;page_size&quot;: 15,
+        ///  &quot;to&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///  &quot;total_records&quot;: 150,
+        ///  &quot;voice_mails&quot;: [
+        ///    {
+        ///      &quot;call_id&quot;: &quot;876634343743&quot;,
+        ///      &quot;call_log_id&quot;: &quot;55fd0af0-beb0-433a-be97-388de5e99ab4&quot;,
+        ///      &quot;call_history_id&quot;: &quot;20190519-55fd0af0-beb0-433a-be97-388de5e99ab4&quot;,
+        ///      &quot;call_element_id&quot;: &quot;20210609-a297ae04-a875-4cfd-85ab-4adcead91edb&quot;,
+        ///      &quot;callee_n [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_users__userId__voice_mails_GET {
+            get {
+                return ResourceManager.GetString("phone-users-{userId}-voice_mails_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;nav48KOj42vYPSG4f0cCdT575bZ980did22&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 45,
+        ///  &quot;users&quot;: [
+        ///    {
+        ///      &quot;calling_plans&quot;: [
+        ///        {
+        ///          &quot;name&quot;: &quot;US/CA Metered Calling Plan&quot;,
+        ///          &quot;type&quot;: 100,
+        ///          &quot;billing_account_id&quot;: &quot;3WWAEiEjTj2IQuyDiKMd_A&quot;,
+        ///          &quot;billing_account_name&quot;: &quot;Delhi billing&quot;,
+        ///          &quot;billing_subscription_id&quot;: &quot;FT-SUBREF-21168178&quot;,
+        ///          &quot;billing_subscription_name&quot;: &quot;My Subscription&quot;
+        ///        }
+        ///      ],
+        ///      &quot;email&quot;: &quot;2020071 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_users_GET {
+            get {
+                return ResourceManager.GetString("phone-users_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;call_id&quot;: &quot;876634343743&quot;,
+        ///  &quot;call_log_id&quot;: &quot;55fd0af0-beb0-433a-be97-388de5e99ab4&quot;,
+        ///  &quot;call_history_id&quot;: &quot;20210519-55fd0af0-beb0-433a-be97-388de5e99ab4&quot;,
+        ///  &quot;call_element_id&quot;: &quot;20210609-a297ae04-a875-4cfd-85ab-4adcead91edb&quot;,
+        ///  &quot;callee_name&quot;: &quot;Jane Doe&quot;,
+        ///  &quot;callee_number&quot;: &quot;34567889&quot;,
+        ///  &quot;callee_number_type&quot;: 2,
+        ///  &quot;caller_name&quot;: &quot;John Doe&quot;,
+        ///  &quot;caller_number&quot;: &quot;12345678&quot;,
+        ///  &quot;caller_number_type&quot;: 1,
+        ///  &quot;date_time&quot;: &quot;2021-05-19T20:00:00Z&quot;,
+        ///  &quot;download_url&quot;: &quot;exampleurl.io&quot;,
+        ///  &quot;duration&quot;: 18,
+        ///  &quot;i [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_voice_mails__voicemailId__GET {
+            get {
+                return ResourceManager.GetString("phone-voice_mails-{voicemailId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;from&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///  &quot;next_page_token&quot;: &quot;VcXBknJ0MQ7kuXun5WKmSjHC1hOBGS2bbr2&quot;,
+        ///  &quot;page_count&quot;: 10,
+        ///  &quot;page_size&quot;: 15,
+        ///  &quot;to&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///  &quot;total_records&quot;: 150,
+        ///  &quot;voice_mails&quot;: [
+        ///    {
+        ///      &quot;call_id&quot;: &quot;876634343743&quot;,
+        ///      &quot;call_log_id&quot;: &quot;46541323465&quot;,
+        ///      &quot;call_element_id&quot;: &quot;20210609-a297ae04-a875-4cfd-85ab-4adcead91edb&quot;,
+        ///      &quot;callee_name&quot;: &quot;Jane Doe&quot;,
+        ///      &quot;callee_number&quot;: &quot;34567889&quot;,
+        ///      &quot;callee_number_type&quot;: 2,
+        ///      &quot;caller [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string phone_voice_mails_GET {
+            get {
+                return ResourceManager.GetString("phone-voice_mails_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total&quot;: 51,
+        ///  &quot;page_size&quot;: 20,
+        ///  &quot;data&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;0e73a69f8f104d24a589fa0c615abca8&quot;,
+        ///      &quot;account_id&quot;: &quot;SY-AEWW6Ruqgt89_T2zqBg&quot;,
+        ///      &quot;modify_time&quot;: &quot;2024-05-28T09:52:22Z&quot;,
+        ///      &quot;create_time&quot;: &quot;2024-05-28T09:52:22Z&quot;,
+        ///      &quot;interaction_id&quot;: &quot;q9DyYF8iSXa3PVAhb6nekQ&quot;,
+        ///      &quot;scorecard_id&quot;: &quot;2uJ4u83yQ_qbyyFDmxsMcQ&quot;,
+        ///      &quot;agent_info&quot;: {
+        ///        &quot;user_id&quot;: &quot;httgPnTgTxq0d65-alfYVw&quot;,
+        ///        &quot;display_name&quot;: &quot;Ashlee York&quot;
+        ///      },
+        ///      &quot;scorecard_name&quot;: &quot;Customer Care&quot;,
+        ///      [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string qm_automated_evaluations_GET {
+            get {
+                return ResourceManager.GetString("qm-automated_evaluations_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;scorecard&quot;: {
+        ///    &quot;scorecard_id&quot;: &quot;CaBoBGvDSCmYt5GDDxP4-Q&quot;,
+        ///    &quot;scorecard_name&quot;: &quot;AAAAAAAA Automated DEMO test 1212 TEST 111&quot;,
+        ///    &quot;sections&quot;: [
+        ///      {
+        ///        &quot;name&quot;: &quot;Service Attitude&quot;,
+        ///        &quot;weight&quot;: 34,
+        ///        &quot;order&quot;: 1,
+        ///        &quot;questions&quot;: [
+        ///          {
+        ///            &quot;question_id&quot;: &quot;7jNGHA0QSRGdsi-R03d8tQ&quot;,
+        ///            &quot;type&quot;: &quot;Rating Scale&quot;,
+        ///            &quot;title&quot;: &quot;Did the customer service representative demonstrate patience and friendliness?&quot;,
+        ///            &quot;description&quot;: &quot;Evalua [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string qm_evaluation__evaluationId__GET {
+            get {
+                return ResourceManager.GetString("qm-evaluation-{evaluationId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total&quot;: 51,
+        ///  &quot;page_size&quot;: 20,
+        ///  &quot;data&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;0e73a69f8f104d24a589fa0c615abca8&quot;,
+        ///      &quot;account_id&quot;: &quot;SY-AEWW6Ruqgt89_T2zqBg&quot;,
+        ///      &quot;user_id&quot;: &quot;httgPnTgTxq0d65-alfYVw&quot;,
+        ///      &quot;creator_id&quot;: &quot;b0_yDuNGSq65EF8i1f0PcQ&quot;,
+        ///      &quot;modify_time&quot;: &quot;2024-05-28T09:52:22Z&quot;,
+        ///      &quot;create_time&quot;: &quot;2024-05-28T09:52:22Z&quot;,
+        ///      &quot;channel_type&quot;: &quot;VOICE&quot;,
+        ///      &quot;task_name&quot;: &quot;evaluation_q9DyYF8iSXa3PVAhb6nekQ&quot;,
+        ///      &quot;interaction_id&quot;: &quot;q9DyYF8iSXa3PVAhb6nekQ&quot;,
+        ///      &quot;scorecard_id&quot;: &quot;2uJ4u83yQ_q [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string qm_evaluation_GET {
+            get {
+                return ResourceManager.GetString("qm-evaluation_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;summary&quot;: {
+        ///    &quot;evaluation_score&quot;: 1,
+        ///    &quot;sentiment_score&quot;: 61.19,
+        ///    &quot;engagement_score&quot;: 5.546720115175143
+        ///  },
+        ///  &quot;metrics&quot;: {
+        ///    &quot;talk_to_listen_ratio&quot;: [
+        ///      {
+        ///        &quot;speaker_user_id&quot;: &quot;ycEUjKmDSnuPwF33KLTxJg&quot;,
+        ///        &quot;value&quot;: 0.4311976503861636
+        ///      }
+        ///    ],
+        ///    &quot;longest_monolog&quot;: [
+        ///      {
+        ///        &quot;speaker_user_id&quot;: &quot;ycEUjKmDSnuPwF33KLTxJg&quot;,
+        ///        &quot;value&quot;: 8.430000000000007
+        ///      }
+        ///    ],
+        ///    &quot;talk_speed&quot;: [
+        ///      {
+        ///        &quot;speaker_user_id&quot;: &quot;ycEUjKmDSnuPwF33KLTxJ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string qm_interactions__interactionId__GET {
+            get {
+                return ResourceManager.GetString("qm-interactions-{interactionId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 50,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;interactions&quot;: [
+        ///    {
+        ///      &quot;start_time&quot;: &quot;2020-05-01T19:13:02Z&quot;,
+        ///      &quot;duration&quot;: 5,
+        ///      &quot;queue_id&quot;: &quot;Je4zLPZ-SBiLCiebE35ALQ&quot;,
+        ///      &quot;queue_name&quot;: &quot;Demo&quot;,
+        ///      &quot;interaction_info&quot;: {
+        ///        &quot;from&quot;: &quot;\u002B16692520210&quot;,
+        ///        &quot;to&quot;: &quot;\u002B12364352078&quot;,
+        ///        &quot;interaction_id&quot;: &quot;X51n17BZQTqKtxwF4mmTIw&quot;,
+        ///        &quot;agent_name&quot;: &quot;Admin3&quot;,
+        ///        &quot;consumer_name&quot;: &quot;\u002B16692520210&quot;,
+        ///        &quot;channel_type&quot;: &quot;AUDIO&quot;,
+        ///        &quot;associated_ids&quot;:  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string qm_interactions_GET {
+            get {
+                return ResourceManager.GetString("qm-interactions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;activity_logs&quot;: [
         ///    {
         ///      &quot;client_type&quot;: &quot;Browser&quot;,
@@ -746,6 +11625,51 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string report_billing_invoices_GET {
             get {
                 return ResourceManager.GetString("report-billing-invoices_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;deleted_messages&quot;: [
+        ///    {
+        ///      &quot;date_time&quot;: &quot;2022-03-18T10:16:13.0000000\u002B00:00&quot;,
+        ///      &quot;files&quot;: [
+        ///        {
+        ///          &quot;download_url&quot;: &quot;https://zoom.us/file/download/qreigNgqTk24RNnGJDxpDg?filename=48k.png\u0026jwt=downloadjwt&quot;,
+        ///          &quot;file_id&quot;: &quot;qreigNgqTk24RNnGJDxpDg&quot;,
+        ///          &quot;file_name&quot;: &quot;48k.png&quot;,
+        ///          &quot;file_size&quot;: 224251
+        ///        }
+        ///      ],
+        ///      &quot;giphy_information&quot;: [
+        ///        {
+        ///          &quot;giphy_view_url&quot;: &quot;https://giphy.com/gifs/union-soton-congrats-susu-soton-StRUI [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string report_chat_sessions__sessionId__GET {
+            get {
+                return ResourceManager.GetString("report-chat-sessions-{sessionId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;from&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///  &quot;next_page_token&quot;: &quot;peU2gkVkRebcqMTzOPnidf0OxlA3WD9Cunrp&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;sessions&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;c38230acb7f009282c1b0d367a08102d65d12629bbcca58dfe2168bd335f5849&quot;,
+        ///      &quot;last_message_sent_time&quot;: &quot;2022-03-18T10:16:13.0000000\u002B00:00&quot;,
+        ///      &quot;name&quot;: &quot;Channel One&quot;,
+        ///      &quot;type&quot;: &quot;1:1&quot;,
+        ///      &quot;channel_id&quot;: &quot;7a08102d65d12629bbcca5&quot;,
+        ///      &quot;member_emails&quot;: [
+        ///        &quot;john.doe\u002B123@example.com&quot;,
+        ///        &quot;john.doe\u002B321@examp [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string report_chat_sessions_GET {
+            get {
+                return ResourceManager.GetString("report-chat-sessions_GET", resourceCulture);
             }
         }
         
@@ -1064,6 +11988,1103 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;description&quot;: &quot;My role&quot;,
+        ///  &quot;id&quot;: &quot;2&quot;,
+        ///  &quot;name&quot;: &quot;My role&quot;,
+        ///  &quot;type&quot;: &quot;iq&quot;,
+        ///  &quot;privileges&quot;: [
+        ///    &quot;User:Read&quot;
+        ///  ],
+        ///  &quot;sub_account_privileges&quot;: {
+        ///    &quot;second_level&quot;: 1
+        ///  },
+        ///  &quot;total_members&quot;: 20,
+        ///  &quot;privilege_scopes&quot;: [
+        ///    {
+        ///      &quot;permission_id&quot;: &quot;User:Read&quot;,
+        ///      &quot;group_ids&quot;: [
+        ///        &quot;string&quot;
+        ///      ]
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string roles__roleId__GET {
+            get {
+                return ResourceManager.GetString("roles-{roleId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;members&quot;: [
+        ///    {}
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;TUNTL8kGBvdBSJiX1PaNAVxYbjV7ouJlKS2&quot;,
+        ///  &quot;page_count&quot;: 3,
+        ///  &quot;page_number&quot;: 1,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 22
+        ///}.
+        /// </summary>
+        internal static string roles__roleId__members_GET {
+            get {
+                return ResourceManager.GetString("roles-{roleId}-members_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {}.
+        /// </summary>
+        internal static string roles__roleId__PATCH {
+            get {
+                return ResourceManager.GetString("roles-{roleId}_PATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {}.
+        /// </summary>
+        internal static string roles_GET {
+            get {
+                return ResourceManager.GetString("roles_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {}.
+        /// </summary>
+        internal static string roles_POST {
+            get {
+                return ResourceManager.GetString("roles_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;audio_processing&quot;: false,
+        ///  &quot;auto_adjust_mic_level&quot;: true,
+        ///  &quot;camera_id&quot;: &quot;usb#vid_0bda\u0026pid_58fd\u0026mi_00#6\u00261e7cbc97\u00260\u00260000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}global&quot;,
+        ///  &quot;echo_cancellation&quot;: true,
+        ///  &quot;id&quot;: &quot;Gz_fNcaSPByng-3vsqv_iQ&quot;,
+        ///  &quot;microphone_id&quot;: &quot;{0.0.2.00000000}.{eff76572-ac52-4c79-bd30-67f968bjb15f}&quot;,
+        ///  &quot;name&quot;: &quot;ZR1 Device&quot;,
+        ///  &quot;noise_suppression&quot;: &quot;aggressive&quot;,
+        ///  &quot;speaker_id&quot;: &quot;{0.0.0.00000000}.{4f9b30cb-872e-49ed-a1b9-a7ec352bf3e6}&quot;
+        ///}.
+        /// </summary>
+        internal static string rooms__roomId__device_profiles__deviceProfileId__GET {
+            get {
+                return ResourceManager.GetString("rooms-{roomId}-device_profiles-{deviceProfileId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;cameras&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;usb#vid_0bda\u0026pid_58fd\u0026mi_00#6\u00261e7cbc97\u00260\u00260000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}global&quot;,
+        ///      &quot;name&quot;: &quot;Integrated Webcam&quot;
+        ///    }
+        ///  ],
+        ///  &quot;microphones&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;{0.0.1.00000000}.{eff76542-ac52-4c78-bd90-67f968bab16f}&quot;,
+        ///      &quot;name&quot;: &quot;Realtek(R) Audio&quot;
+        ///    }
+        ///  ],
+        ///  &quot;speakers&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;{0.0.0.00000000}.{4f9b30cb-872e-49ed-a1b9-a7ec352bf3e6}&quot;,
+        ///      &quot;name&quot;: &quot;Realtek(R) Audio&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string rooms__roomId__device_profiles_devices_GET {
+            get {
+                return ResourceManager.GetString("rooms-{roomId}-device_profiles-devices_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [
+        ///  {
+        ///    &quot;audio_processing&quot;: false,
+        ///    &quot;auto_adjust_mic_level&quot;: true,
+        ///    &quot;camera_id&quot;: &quot;usb#vid_0bda\u0026pid_58fd\u0026mi_00#6\u00261e7cbc97\u00260\u00260000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}global&quot;,
+        ///    &quot;echo_cancellation&quot;: true,
+        ///    &quot;id&quot;: &quot;Gz_fNcaSPByng-3vsqv_iQ&quot;,
+        ///    &quot;microphone_id&quot;: &quot;{0.0.2.00000000}.{eff76572-ac52-4c79-bd30-67f968bjb15f}&quot;,
+        ///    &quot;name&quot;: &quot;ZR1 Device&quot;,
+        ///    &quot;noise_suppression&quot;: &quot;aggressive&quot;,
+        ///    &quot;speaker_id&quot;: &quot;{0.0.0.00000000}.{4f9b30cb-872e-49ed-a1b9-a7ec352bf3e6}&quot;
+        ///  }
+        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string rooms__roomId__device_profiles_GET {
+            get {
+                return ResourceManager.GetString("rooms-{roomId}-device_profiles_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;devices&quot;: [
+        ///    {
+        ///      &quot;app_version&quot;: &quot;5.9.1 (2581)&quot;,
+        ///      &quot;device_system&quot;: &quot;Win10 Build 19043.1266&quot;,
+        ///      &quot;device_type&quot;: &quot;Controller&quot;,
+        ///      &quot;id&quot;: &quot;{0.0.1.00000000}.{eff76542-ac52-4c78-bd90-67f968bab16f}&quot;,
+        ///      &quot;room_name&quot;: &quot;My Room&quot;,
+        ///      &quot;status&quot;: &quot;Online&quot;,
+        ///      &quot;device_mac_addresses&quot;: [
+        ///        &quot;01-23-45-67-89-AB&quot;
+        ///      ],
+        ///      &quot;device_hostname&quot;: &quot;Test Computer&quot;,
+        ///      &quot;device_manufacturer&quot;: &quot;Poly&quot;,
+        ///      &quot;device_model&quot;: &quot;MacBookPro14,1&quot;,
+        ///      &quot;device_firmware&quot;: &quot;1.1.1&quot;,
+        ///    [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string rooms__roomId__devices_GET {
+            get {
+                return ResourceManager.GetString("rooms-{roomId}-devices_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;basic&quot;: {
+        ///    &quot;activation_code&quot;: &quot;1315-2376-2198-7926&quot;,
+        ///    &quot;hide_room_in_contacts&quot;: true,
+        ///    &quot;name&quot;: &quot;My Personal Meeting Room&quot;,
+        ///    &quot;display_name&quot;: &quot;My Personal Meeting Room&quot;,
+        ///    &quot;required_code_to_ext&quot;: true,
+        ///    &quot;room_passcode&quot;: &quot;975193018&quot;,
+        ///    &quot;support_email&quot;: &quot;contact-it@example.com&quot;,
+        ///    &quot;support_phone&quot;: &quot;18798769876&quot;,
+        ///    &quot;calendar_resource_id&quot;: &quot;u7GQ3q_zQbqJnNp02-oMjQ&quot;,
+        ///    &quot;zoom_room_type&quot;: &quot;ZoomRoom&quot;,
+        ///    &quot;location_id&quot;: &quot;49D7a0xPQvGQ2DCMZgSe7w&quot;,
+        ///    &quot;tag_ids&quot;: [
+        ///      &quot;Tva2Cu [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string rooms__roomId__GET {
+            get {
+                return ResourceManager.GetString("rooms-{roomId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;from&quot;: &quot;2022-06-19T00:00:00Z&quot;,
+        ///  &quot;to&quot;: &quot;2022-06-19T00:00:00Z&quot;,
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 5,
+        ///  &quot;sensor_data&quot;: [
+        ///    {
+        ///      &quot;date_time&quot;: &quot;2022-06-19T00:00:00Z&quot;,
+        ///      &quot;device_id&quot;: &quot;NiVvY1NWpE2nulNrhVjgU4jD0swziVrXBbaFZyC3u\u002Bo=&quot;,
+        ///      &quot;sensor_type&quot;: &quot;CO2&quot;,
+        ///      &quot;sensor_value&quot;: &quot;102.0&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string rooms__roomId__sensor_data_GET {
+            get {
+                return ResourceManager.GetString("rooms-{roomId}-sensor_data_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;url&quot;: &quot;https://zoom.us/launch/webzrc?nodeId=SnoDt6rcTqi7HIuFZsib9A&quot;,
+        ///  &quot;expire_in&quot;: 600
+        ///}.
+        /// </summary>
+        internal static string rooms__roomId__virtual_controller_GET {
+            get {
+                return ResourceManager.GetString("rooms-{roomId}-virtual_controller_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;basic&quot;: {
+        ///    &quot;required_code_to_ext&quot;: true,
+        ///    &quot;room_passcode&quot;: &quot;111111&quot;,
+        ///    &quot;support_email&quot;: &quot;contact-it@example.com&quot;,
+        ///    &quot;support_phone&quot;: &quot;18798769876&quot;
+        ///  },
+        ///  &quot;setup&quot;: {
+        ///    &quot;apply_background_image_to_all_displays&quot;: true,
+        ///    &quot;background_image_info&quot;: [
+        ///      {
+        ///        &quot;display_id&quot;: &quot;zoom_rooms_display1&quot;,
+        ///        &quot;content_id&quot;: &quot;zrd9DycNSxK6K4dEUS6z-g&quot;,
+        ///        &quot;download_url&quot;: &quot;https://zoom.us/file/Sq2mdxqRQ9eq7wmD5TFD6g?jwt=eyJ0eXAiOiJKV1QiLCJrIjoiaHRlNU05dDciLCJ6bV9za20iOiJ6bV9vMm0iLC [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string rooms_account_profile_GET {
+            get {
+                return ResourceManager.GetString("rooms-account_profile_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;calendar_resource_id&quot;: &quot;rNQUpdDXySFGhVycz7aR-SR&quot;,
+        ///  &quot;calendar_resource_email&quot;: &quot;zroom1@example.com&quot;,
+        ///  &quot;calendar_resource_name&quot;: &quot;zroom1&quot;,
+        ///  &quot;assigned_room_id&quot;: &quot;yLom99u5QuKBTw4Q7_P6Pw&quot;,
+        ///  &quot;sync_status&quot;: &quot;Success&quot;
+        ///}.
+        /// </summary>
+        internal static string rooms_calendar_services__serviceId__resources__resourceId__GET {
+            get {
+                return ResourceManager.GetString("rooms-calendar-services-{serviceId}-resources-{resourceId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2&quot;,
+        ///  &quot;page_size&quot;: 20,
+        ///  &quot;calendar_resources&quot;: [
+        ///    {
+        ///      &quot;calendar_resource_id&quot;: &quot;rNQUpdDXySFGhVycz7aR-SR&quot;,
+        ///      &quot;calendar_resource_email&quot;: &quot;zroom1@example.com&quot;,
+        ///      &quot;calendar_resource_name&quot;: &quot;zroom1&quot;,
+        ///      &quot;assigned_room_id&quot;: &quot;yLom99u5QuKBTw4Q7_P6Pw&quot;,
+        ///      &quot;sync_status&quot;: &quot;Success&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string rooms_calendar_services__serviceId__resources_GET {
+            get {
+                return ResourceManager.GetString("rooms-calendar-services-{serviceId}-resources_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;calendar_services&quot;: [
+        ///    {
+        ///      &quot;calendar_service_id&quot;: &quot;rNQUpdDXySFGhVycz7aR-SR&quot;,
+        ///      &quot;calendar_service_name&quot;: &quot;zroom1@example.com&quot;,
+        ///      &quot;calendar_resource_total_number&quot;: 100,
+        ///      &quot;calendar_resource_assigned_number&quot;: 10,
+        ///      &quot;added_date_time&quot;: &quot;2022-03-31T19:03:03.0000000\u002B00:00&quot;,
+        ///      &quot;latest_synced_date_time&quot;: &quot;2022-03-31T19:03:03.0000000\u002B00:00&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string rooms_calendar_services_GET {
+            get {
+                return ResourceManager.GetString("rooms-calendar-services_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;content_id&quot;: &quot;zrd9DycNSxK6K4dEUS6z&quot;,
+        ///  &quot;content_name&quot;: &quot;Test.jpg&quot;,
+        ///  &quot;download_url&quot;: &quot;https://st1.zoom.us/fe-static/zr-settings/file/digital_signage/ZR_Digital_Guide_Still_Image.jpg&quot;,
+        ///  &quot;download_url_ttl&quot;: &quot;3600&quot;
+        ///}.
+        /// </summary>
+        internal static string rooms_content_background_contents__contentId__GET {
+            get {
+                return ResourceManager.GetString("rooms-content-background-contents-{contentId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2&quot;,
+        ///  &quot;page_size&quot;: &quot;20&quot;,
+        ///  &quot;total_records&quot;: &quot;200&quot;,
+        ///  &quot;contents&quot;: [
+        ///    {
+        ///      &quot;content_id&quot;: &quot;zrd9DycNSxK6K4dEUS6z-g&quot;,
+        ///      &quot;content_name&quot;: &quot;Example.jpg&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string rooms_content_background_contents_GET {
+            get {
+                return ResourceManager.GetString("rooms-content-background-contents_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2&quot;,
+        ///  &quot;page_size&quot;: &quot;20&quot;,
+        ///  &quot;total_records&quot;: &quot;200&quot;,
+        ///  &quot;contents&quot;: [
+        ///    {
+        ///      &quot;content_id&quot;: &quot;zrd9DycNSxK6K4dEUS6z-g&quot;,
+        ///      &quot;content_name&quot;: &quot;golden_gate_bridge.jpg&quot;,
+        ///      &quot;download_url&quot;: &quot;https://st1.zoom.us/fe-static/fe-image-box/images/background-image/golden_gate_bridge.png&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string rooms_content_background_defaults_GET {
+            get {
+                return ResourceManager.GetString("rooms-content-background-defaults_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;folder_id&quot;: &quot;LHMmOOYaRiOA5m5WZjXVPA&quot;,
+        ///  &quot;folder_name&quot;: &quot;Example folder&quot;
+        ///}.
+        /// </summary>
+        internal static string rooms_content_background_folders__folderId__GET {
+            get {
+                return ResourceManager.GetString("rooms-content-background-folders-{folderId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2&quot;,
+        ///  &quot;page_size&quot;: 20,
+        ///  &quot;total_records&quot;: &quot;20&quot;,
+        ///  &quot;folders&quot;: [
+        ///    {
+        ///      &quot;folder_id&quot;: &quot;LHMmOOYaRiOA5m5WZjXVPA&quot;,
+        ///      &quot;folder_name&quot;: &quot;Example Folder&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string rooms_content_background_folders_GET {
+            get {
+                return ResourceManager.GetString("rooms-content-background-folders_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;content_id&quot;: &quot;HE-d7lrSR4qqxC12noVtaA&quot;,
+        ///  &quot;content_type&quot;: &quot;url&quot;,
+        ///  &quot;content_name&quot;: &quot;example url&quot;,
+        ///  &quot;content_url&quot;: &quot;https://zoom.us&quot;,
+        ///  &quot;expires&quot;: false,
+        ///  &quot;expiration_time&quot;: &quot;2026-01-27T20:24:33.3859049Z&quot;,
+        ///  &quot;folder_id&quot;: &quot;7lrSR4qqxC11HQVtaArtvg&quot;,
+        ///  &quot;download_url&quot;: &quot;https://fileserver.zoom.us/rescfdrddvdwssw123&quot;,
+        ///  &quot;download_url_ttl&quot;: 300
+        ///}.
+        /// </summary>
+        internal static string rooms_content_digital_signage_contents__contentId__GET {
+            get {
+                return ResourceManager.GetString("rooms-content-digital_signage-contents-{contentId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2\n&quot;,
+        ///  &quot;page_size&quot;: 1,
+        ///  &quot;contents&quot;: [
+        ///    {
+        ///      &quot;content_id&quot;: &quot;4zOa0MAVGyMEB2&quot;,
+        ///      &quot;content_type&quot;: &quot;image&quot;,
+        ///      &quot;content_name&quot;: &quot;example.jpg&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string rooms_content_digital_signage_contents_GET {
+            get {
+                return ResourceManager.GetString("rooms-content-digital_signage-contents_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;folder_id&quot;: &quot;idV95eT8RdCds23U-NLo-a&quot;,
+        ///  &quot;folder_name&quot;: &quot;testfolder&quot;
+        ///}.
+        /// </summary>
+        internal static string rooms_content_digital_signage_folders__folderId__GET {
+            get {
+                return ResourceManager.GetString("rooms-content-digital_signage-folders-{folderId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;folder_id&quot;: &quot;idV95eT8RdCds23U-NLo-a&quot;
+        ///}.
+        /// </summary>
+        internal static string rooms_content_digital_signage_folders_POST {
+            get {
+                return ResourceManager.GetString("rooms-content-digital_signage-folders_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;contents&quot;: [
+        ///    {
+        ///      &quot;content_id&quot;: &quot;U0V35NT8RdCWUKsU-MLm-g&quot;,
+        ///      &quot;content_name&quot;: &quot;example.jpg&quot;,
+        ///      &quot;content_duration&quot;: 10
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2&quot;,
+        ///  &quot;page_size&quot;: 20
+        ///}.
+        /// </summary>
+        internal static string rooms_content_digital_signage_playlists__playlistId__contents_GET {
+            get {
+                return ResourceManager.GetString("rooms-content-digital_signage-playlists-{playlistId}-contents_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;playlist_id&quot;: &quot;U0V35NT8RdCWUKsU-MLm-g&quot;,
+        ///  &quot;playlist_name&quot;: &quot;myplaylist&quot;
+        ///}.
+        /// </summary>
+        internal static string rooms_content_digital_signage_playlists__playlistId__GET {
+            get {
+                return ResourceManager.GetString("rooms-content-digital_signage-playlists-{playlistId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;rooms&quot;: [
+        ///    {
+        ///      &quot;room_id&quot;: &quot;qMOLd574SIGGVycz8aX_sa&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string rooms_content_digital_signage_playlists__playlistId__rooms_GET {
+            get {
+                return ResourceManager.GetString("rooms-content-digital_signage-playlists-{playlistId}-rooms_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;ecfJX3jsOLW7w3dokmF90czOa0MAVGyMEB2&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;playlists&quot;: [
+        ///    {
+        ///      &quot;playlist_id&quot;: &quot;U0V35NT8RdCWUKsU-MLm-g&quot;,
+        ///      &quot;playlist_name&quot;: &quot;myplaylist&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string rooms_content_digital_signage_playlists_GET {
+            get {
+                return ResourceManager.GetString("rooms-content-digital_signage-playlists_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;code&quot;: 0
+        ///}.
+        /// </summary>
+        internal static string rooms_controller_apps_config_POST {
+            get {
+                return ResourceManager.GetString("rooms-controller-apps-config_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;contents&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;LHMmOOYaRiOA5m5WZjXVPA&quot;,
+        ///      &quot;name&quot;: &quot;content name&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2&quot;,
+        ///  &quot;page_size&quot;: 20
+        ///}.
+        /// </summary>
+        internal static string rooms_digital_signage_GET {
+            get {
+                return ResourceManager.GetString("rooms-digital_signage_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2&quot;,
+        ///  &quot;page_size&quot;: 20,
+        ///  &quot;rooms&quot;: [
+        ///    {
+        ///      &quot;activation_code&quot;: &quot;1315-2376-2198-7926&quot;,
+        ///      &quot;id&quot;: &quot;qMOLddnySIGGVycz8aX_JQ&quot;,
+        ///      &quot;location_id&quot;: &quot;49D7a0xPQvGQ2DCMZgSe7w&quot;,
+        ///      &quot;name&quot;: &quot;My Personal Meeting Room&quot;,
+        ///      &quot;room_id&quot;: &quot;qMOLddnySIGGVycz8aX_JQ&quot;,
+        ///      &quot;status&quot;: &quot;Offline&quot;,
+        ///      &quot;tag_ids&quot;: [
+        ///        &quot;90bdda6c226f4f10a4b9a34be8d69f30&quot;
+        ///      ]
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string rooms_GET {
+            get {
+                return ResourceManager.GetString("rooms_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;basic&quot;: {
+        ///    &quot;address&quot;: &quot;California, USA&quot;,
+        ///    &quot;description&quot;: &quot;California, USA&quot;,
+        ///    &quot;name&quot;: &quot;State&quot;,
+        ///    &quot;required_code_to_ext&quot;: true,
+        ///    &quot;room_passcode&quot;: &quot;975193018&quot;,
+        ///    &quot;support_email&quot;: &quot;contact-it@example.com&quot;,
+        ///    &quot;support_phone&quot;: &quot;18798769876&quot;,
+        ///    &quot;timezone&quot;: &quot;Asia/Shanghai&quot;,
+        ///    &quot;parent_location_id&quot;: &quot;_HaPEsvmRNmOL4xF9ODXdw&quot;
+        ///  },
+        ///  &quot;setup&quot;: {
+        ///    &quot;apply_background_image_to_all_displays&quot;: true,
+        ///    &quot;background_image_info&quot;: [
+        ///      {
+        ///        &quot;display_id&quot;: &quot;zoom_rooms_display1&quot;, [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string rooms_locations__locationId__GET {
+            get {
+                return ResourceManager.GetString("rooms-locations-{locationId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;locations&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;AAAAAAAAAA&quot;,
+        ///      &quot;name&quot;: &quot;BuildingA&quot;,
+        ///      &quot;parent_location_id&quot;: &quot;49D7a0xPQvGQ2DCMZgSe7w&quot;,
+        ///      &quot;type&quot;: &quot;building&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2&quot;,
+        ///  &quot;page_size&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string rooms_locations_GET {
+            get {
+                return ResourceManager.GetString("rooms-locations_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;tgg7a0xPDvFn2DCnZgBe8k&quot;,
+        ///  &quot;name&quot;: &quot;location name&quot;,
+        ///  &quot;parent_location_id&quot;: &quot;49D7a0xPQvGQ2DCMZgSe7w&quot;,
+        ///  &quot;type&quot;: &quot;country&quot;
+        ///}.
+        /// </summary>
+        internal static string rooms_locations_POST {
+            get {
+                return ResourceManager.GetString("rooms-locations_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;structures&quot;: [
+        ///    &quot;country&quot;
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string rooms_locations_structure_GET {
+            get {
+                return ResourceManager.GetString("rooms-locations-structure_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;tags&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;5bfc6df7a11445ef81513b2c3b4c8d5d&quot;,
+        ///      &quot;name&quot;: &quot;Sports&quot;,
+        ///      &quot;description&quot;: &quot;A tag for Zoom Rooms for Sports&quot;,
+        ///      &quot;num_of_rooms&quot;: 11
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string rooms_tags_GET {
+            get {
+                return ResourceManager.GetString("rooms-tags_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event_distribution_by_duration&quot;: [
+        ///    {
+        ///      &quot;Event distribution by duration&quot;: [
+        ///        {
+        ///          &quot;30&quot;: 65
+        ///        },
+        ///        {
+        ///          &quot;45&quot;: 15
+        ///        },
+        ///        {
+        ///          &quot;60&quot;: 35
+        ///        }
+        ///      ]
+        ///    }
+        ///  ],
+        ///  &quot;last_n_days&quot;: &quot;\u0022last_n_days\u0022:{{\u0022created_scheduled_events\u0022:65},{\u0022completed_scheduled_events\u0022:34},{\u0022created_schedules\u0022:20},{\u0022cancelled_scheduled_events\u0022:14},{\u0022rescheduled_scheduled_events\u0022:8},{\u0022cancelled_ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string scheduler_analytics_GET {
+            get {
+                return ResourceManager.GetString("scheduler-analytics_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;availability_id&quot;: &quot;x3h1u4id4liffdyszsp8kpxl80&quot;,
+        ///  &quot;default&quot;: true,
+        ///  &quot;name&quot;: &quot;Working hours&quot;,
+        ///  &quot;owner&quot;: &quot;easonfsxsysks3lgchitiw@scheudler.zoom.us&quot;,
+        ///  &quot;segments_recurrence&quot;: {
+        ///    &quot;sun&quot;: [
+        ///      {
+        ///        &quot;end&quot;: &quot;17:00&quot;,
+        ///        &quot;start&quot;: &quot;09:00&quot;
+        ///      }
+        ///    ],
+        ///    &quot;mon&quot;: [
+        ///      {
+        ///        &quot;end&quot;: &quot;17:00&quot;,
+        ///        &quot;start&quot;: &quot;09:00&quot;
+        ///      }
+        ///    ],
+        ///    &quot;tue&quot;: [
+        ///      {
+        ///        &quot;end&quot;: &quot;17:00&quot;,
+        ///        &quot;start&quot;: &quot;09:00&quot;
+        ///      }
+        ///    ],
+        ///    &quot;wed&quot;: [
+        ///      {
+        ///        &quot;end&quot;: &quot;17:00&quot;,
+        ///     [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string scheduler_availability__availabilityId__GET {
+            get {
+                return ResourceManager.GetString("scheduler-availability-{availabilityId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;Cj8KLwotCgsI3ujvqgYQgIXUGxIeChwKGjBzNzAyZWVtbjBzOTdlZXFhNXE1NWg4ZWJtGgwIzIPVrAYQwM3WrAPAPgE=&quot;,
+        ///  &quot;items&quot;: [
+        ///    {
+        ///      &quot;availability_id&quot;: &quot;x3h1u4id4liffdyszsp8kpxl80&quot;,
+        ///      &quot;default&quot;: true,
+        ///      &quot;name&quot;: &quot;The working hours.&quot;,
+        ///      &quot;owner&quot;: &quot;easonfsxsysks3lgchitiw@scheudler.zoom.us&quot;,
+        ///      &quot;segments_recurrence&quot;: {
+        ///        &quot;sun&quot;: [
+        ///          {
+        ///            &quot;end&quot;: &quot;17:00&quot;,
+        ///            &quot;start&quot;: &quot;09:00&quot;
+        ///          }
+        ///        ],
+        ///        &quot;mon&quot;: [
+        ///          {
+        ///            &quot;en [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string scheduler_availability_GET {
+            get {
+                return ResourceManager.GetString("scheduler-availability_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;attendee_id&quot;: &quot;z7q0q2962w8iyj87249zbi7t10&quot;,
+        ///  &quot;event_id&quot;: &quot;woft7torlatbw8ek24bmit5k60&quot;,
+        ///  &quot;schedule_id&quot;: &quot;woft7torlatbw8ek24bmit5k60&quot;,
+        ///  &quot;created&quot;: &quot;2023-12-21T06:19:23.899Z&quot;,
+        ///  &quot;display_name&quot;: &quot;bob&quot;,
+        ///  &quot;email&quot;: &quot;abc@zoom.us&quot;,
+        ///  &quot;first_name&quot;: &quot;green&quot;,
+        ///  &quot;last_name&quot;: &quot;tom&quot;,
+        ///  &quot;time_zone&quot;: &quot;Asia/Shanghai&quot;,
+        ///  &quot;no_show&quot;: false,
+        ///  &quot;custom_values&quot;: [
+        ///    {
+        ///      &quot;name&quot;: &quot;question1&quot;,
+        ///      &quot;position&quot;: 1,
+        ///      &quot;values&quot;: [
+        ///        &quot;string&quot;
+        ///      ]
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string scheduler_events__eventId__attendees__attendeeId__GET {
+            get {
+                return ResourceManager.GetString("scheduler-events-{eventId}-attendees-{attendeeId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event_id&quot;: &quot;woft7torlatbw8ek24bmit5k60&quot;,
+        ///  &quot;schedule_id&quot;: &quot;ygfx661g9x8dwcgeusdqhsplc0_20231220T160000Z&quot;,
+        ///  &quot;attendees&quot;: [
+        ///    {
+        ///      &quot;booker&quot;: true,
+        ///      &quot;created&quot;: &quot;2023-12-21T06:19:23.899Z&quot;,
+        ///      &quot;display_name&quot;: &quot;bob&quot;,
+        ///      &quot;email&quot;: &quot;abc@zoom.us&quot;,
+        ///      &quot;first_name&quot;: &quot;green&quot;,
+        ///      &quot;attendee_id&quot;: &quot;z7q0q2962w8iyj87249zbi7t10&quot;,
+        ///      &quot;last_name&quot;: &quot;tom&quot;,
+        ///      &quot;time_zone&quot;: &quot;Asia/Shanghai&quot;,
+        ///      &quot;no_show&quot;: false
+        ///    }
+        ///  ],
+        ///  &quot;description&quot;: &quot;15 Minute Meeting&quot;,
+        ///  &quot;end_date_time&quot;: &quot;20 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string scheduler_events__eventId__GET {
+            get {
+                return ResourceManager.GetString("scheduler-events-{eventId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;ffffffff97c5b97f_53slvrhet2n0xkxurl5ybgde40&quot;,
+        ///  &quot;items&quot;: [
+        ///    {
+        ///      &quot;event_id&quot;: &quot;woft7torlatbw8ek24bmit5k60&quot;,
+        ///      &quot;schedule_id&quot;: &quot;ygfx661g9x8dwcgeusdqhsplc0_20231220T160000Z&quot;,
+        ///      &quot;attendees&quot;: [
+        ///        {
+        ///          &quot;booker&quot;: true,
+        ///          &quot;created&quot;: &quot;2023-12-21T06:19:23.899Z&quot;,
+        ///          &quot;display_name&quot;: &quot;bob&quot;,
+        ///          &quot;email&quot;: &quot;abc@zoom.us&quot;,
+        ///          &quot;first_name&quot;: &quot;green&quot;,
+        ///          &quot;attendee_id&quot;: &quot;z7q0q2962w8iyj87249zbi7t10&quot;,
+        ///          &quot;last_name&quot;: &quot;tom&quot;,
+        ///  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string scheduler_events_GET {
+            get {
+                return ResourceManager.GetString("scheduler-events_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;booked&quot;: false,
+        ///  &quot;booking_link&quot;: &quot;https://xyz.com/d/0bedzp07/roundrobin&quot;,
+        ///  &quot;created_time&quot;: &quot;2025-05-01T16:49:55.801Z&quot;,
+        ///  &quot;creator_email&quot;: &quot;abc@def.com&quot;,
+        ///  &quot;form_id&quot;: &quot;s91lg8lb3mhuj4itgtjnd3f440&quot;,
+        ///  &quot;questions_and_answers&quot;: [
+        ///    {
+        ///      &quot;answers&quot;: [
+        ///        &quot;50&quot;
+        ///      ],
+        ///      &quot;question_id&quot;: &quot;17y6gve91og6ftr8qo86vlfz70&quot;,
+        ///      &quot;question_content&quot;: &quot;such as \u0022hobbit\u0022, \u0022email\u0022, \u0022age\u0022&quot;
+        ///    }
+        ///  ],
+        ///  &quot;result_type&quot;: &quot;could be one of \u0022event\u0022, \u0022text\u [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string scheduler_routing_forms__formId__response__responseId__GET {
+            get {
+                return ResourceManager.GetString("scheduler-routing-forms-{formId}-response-{responseId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;schedule_id&quot;: &quot;ygfx661g9x8dwcgeusdqhsplc0&quot;,
+        ///  &quot;add_on_type&quot;: &quot;zoomMeeting&quot;,
+        ///  &quot;availability_override&quot;: false,
+        ///  &quot;availability_rules&quot;: [
+        ///    {
+        ///      &quot;availability_id&quot;: &quot;x3h1u4id4liffdyszsp8kpxl80&quot;,
+        ///      &quot;email&quot;: &quot;easonfsxsysks3lgchitiw@scheduler.zoom.us&quot;,
+        ///      &quot;segments&quot;: [
+        ///        {
+        ///          &quot;start&quot;: &quot;2023-12-21T06:00:00Z&quot;,
+        ///          &quot;end&quot;: &quot;2023-12-21T06:00:00Z&quot;
+        ///        }
+        ///      ],
+        ///      &quot;segments_recurrence&quot;: {
+        ///        &quot;sun&quot;: [
+        ///          {
+        ///            &quot;end&quot;: &quot;17:00&quot;,
+        ///            &quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string scheduler_schedules__scheduleId__GET {
+            get {
+                return ResourceManager.GetString("scheduler-schedules-{scheduleId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;aec369a4fce6ae655749b00fc7260bfd&quot;,
+        ///  &quot;items&quot;: [
+        ///    {
+        ///      &quot;schedule_id&quot;: &quot;ygfx661g9x8dwcgeusdqhsplc0&quot;,
+        ///      &quot;add_on_type&quot;: &quot;zoomMeeting&quot;,
+        ///      &quot;availability_override&quot;: false,
+        ///      &quot;availability_rules&quot;: [
+        ///        {
+        ///          &quot;availability_id&quot;: &quot;x3h1u4id4liffdyszsp8kpxl80&quot;,
+        ///          &quot;email&quot;: &quot;easonfsxsysks3lgchitiw@scheduler.zoom.us&quot;,
+        ///          &quot;segments&quot;: [
+        ///            {
+        ///              &quot;start&quot;: &quot;2023-12-21T06:00:00Z&quot;,
+        ///              &quot;end&quot;: &quot;2023-12-21T06:00:00Z&quot;
+        ///    [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string scheduler_schedules_GET {
+            get {
+                return ResourceManager.GetString("scheduler-schedules_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;teams&quot;: [
+        ///    {
+        ///      &quot;team_id&quot;: &quot;ewayolgveb4bmtzn1ubx1lxe71&quot;,
+        ///      &quot;owner_id&quot;: &quot;pE96RQ1nSbaboXClJS2Gfw&quot;,
+        ///      &quot;member_count&quot;: 500,
+        ///      &quot;name&quot;: &quot;test team&quot;,
+        ///      &quot;slug&quot;: &quot;walmart-vok&quot;,
+        ///      &quot;timezone&quot;: &quot;Asia/Shanghai&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string scheduler_teams_GET {
+            get {
+                return ResourceManager.GetString("scheduler-teams_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;slug&quot;: &quot;zoom_us&quot;,
+        ///  &quot;scheduling_url&quot;: &quot;https://scheduler.zoom.us/zoom_us&quot;,
+        ///  &quot;display_name&quot;: &quot;name&quot;,
+        ///  &quot;picture&quot;: &quot;base64 encoding string&quot;,
+        ///  &quot;logo&quot;: &quot;user logo&quot;,
+        ///  &quot;time_zone&quot;: &quot;America/New York&quot;
+        ///}.
+        /// </summary>
+        internal static string scheduler_users__userId__GET {
+            get {
+                return ResourceManager.GetString("scheduler-users-{userId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;kuWhUCrrT4q9Xy17rSR8js&quot;,
+        ///  &quot;meta&quot;: {
+        ///    &quot;resourceType&quot;: &quot;Group&quot;,
+        ///    &quot;version&quot;: &quot;1.0.0&quot;,
+        ///    &quot;location&quot;: &quot;https://api.zoom.us/scim2/Groups/k\u0026KdKr6TLWuxdDtk0hjSzL&quot;,
+        ///    &quot;created&quot;: &quot;2023-11-24T05:13:15Z&quot;,
+        ///    &quot;lastModified&quot;: &quot;2023-11-27T11:36:20Z&quot;
+        ///  },
+        ///  &quot;schemas&quot;: [
+        ///    &quot;urn:ietf:params:scim:schemas:core:2.0:Group&quot;,
+        ///    &quot;urn:ietf:params:scim:schemas:extension:zoom:2.0:Group&quot;
+        ///  ],
+        ///  &quot;displayName&quot;: &quot;SCIM group&quot;,
+        ///  &quot;urn:ietf:params:scim:schemas:extension:zoom:2.0:Group&quot;: {
+        ///    &quot;e [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string scim2_Groups__groupId__GET {
+            get {
+                return ResourceManager.GetString("scim2-Groups-{groupId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;schemas&quot;: [
+        ///    &quot;urn:ietf:params:scim:api:messages:2.0:ListResponse&quot;
+        ///  ],
+        ///  &quot;totalResults&quot;: 20,
+        ///  &quot;startIndex&quot;: 1,
+        ///  &quot;itemsPerPage&quot;: 10,
+        ///  &quot;Resources&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;kuWhUCrrT4q9Xy17rSR8js&quot;,
+        ///      &quot;meta&quot;: {
+        ///        &quot;resourceType&quot;: &quot;Group&quot;,
+        ///        &quot;version&quot;: &quot;1.0.0&quot;,
+        ///        &quot;location&quot;: &quot;https://api.zoom.us/scim2/Groups/k\u0026KdKr6TLWuxdDtk0hjSzL&quot;,
+        ///        &quot;created&quot;: &quot;2023-11-24T05:13:15Z&quot;,
+        ///        &quot;lastModified&quot;: &quot;2023-11-27T11:36:20Z&quot;
+        ///      },
+        ///      &quot;schemas&quot;: [
+        ///        &quot;urn [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string scim2_Groups_GET {
+            get {
+                return ResourceManager.GetString("scim2-Groups_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;k\u0026KdKr6TLWuxdDtk0hjSzL&quot;,
+        ///  &quot;meta&quot;: {
+        ///    &quot;resourceType&quot;: &quot;User&quot;,
+        ///    &quot;location&quot;: &quot;https://api.zoom.us/scim2/Users/k\u0026KdKr6TLWuxdDtk0hjSzL&quot;,
+        ///    &quot;version&quot;: &quot;1.0.0&quot;,
+        ///    &quot;created&quot;: &quot;2023-11-24T05:13:15Z&quot;,
+        ///    &quot;lastModified&quot;: &quot;2023-11-25T06:23:17Z&quot;
+        ///  },
+        ///  &quot;schemas&quot;: [
+        ///    &quot;urn:ietf:params:scim:api:messages:2.0:ListResponse&quot;
+        ///  ],
+        ///  &quot;name&quot;: {
+        ///    &quot;givenName&quot;: &quot;Jill&quot;,
+        ///    &quot;familyName&quot;: &quot;Chill&quot;
+        ///  },
+        ///  &quot;emails&quot;: [
+        ///    {
+        ///      &quot;type&quot;: &quot;work&quot;,
+        ///      &quot;value&quot;: &quot;jchill@example.com&quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string scim2_Users__userId__GET {
+            get {
+                return ResourceManager.GetString("scim2-Users-{userId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;k\u0026KdKr6TLWuxdDtk0hjSzL&quot;,
+        ///  &quot;meta&quot;: {
+        ///    &quot;resourceType&quot;: &quot;User&quot;,
+        ///    &quot;location&quot;: &quot;https://api.zoom.us/scim2/Users/k\u0026KdKr6TLWuxdDtk0hjSzL&quot;,
+        ///    &quot;version&quot;: &quot;1.0.0&quot;,
+        ///    &quot;created&quot;: &quot;2023-11-24T05:13:15Z&quot;,
+        ///    &quot;lastModified&quot;: &quot;2023-11-24T05:13:15Z&quot;
+        ///  },
+        ///  &quot;schemas&quot;: [
+        ///    &quot;urn:ietf:params:scim:api:messages:2.0:ListResponse&quot;
+        ///  ],
+        ///  &quot;name&quot;: {
+        ///    &quot;givenName&quot;: &quot;Jill&quot;,
+        ///    &quot;familyName&quot;: &quot;Chill&quot;
+        ///  },
+        ///  &quot;emails&quot;: [
+        ///    {
+        ///      &quot;type&quot;: &quot;work&quot;,
+        ///      &quot;value&quot;: &quot;jillchill@example.c [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string scim2_Users__userId__PATCH {
+            get {
+                return ResourceManager.GetString("scim2-Users-{userId}_PATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;k\u0026KdKr6TLWuxdDtk0hjSzL&quot;,
+        ///  &quot;meta&quot;: {
+        ///    &quot;resourceType&quot;: &quot;User&quot;,
+        ///    &quot;location&quot;: &quot;https://api.zoom.us/scim2/Users/k\u0026KdKr6TLWuxdDtk0hjSzL&quot;,
+        ///    &quot;version&quot;: &quot;1.0.0&quot;,
+        ///    &quot;created&quot;: &quot;2023-11-24T05:13:15Z&quot;,
+        ///    &quot;lastModified&quot;: &quot;2023-11-24T05:13:15Z&quot;
+        ///  },
+        ///  &quot;schemas&quot;: [
+        ///    &quot;urn:ietf:params:scim:api:messages:2.0:ListResponse&quot;
+        ///  ],
+        ///  &quot;name&quot;: {
+        ///    &quot;givenName&quot;: &quot;Jill&quot;,
+        ///    &quot;familyName&quot;: &quot;Chill&quot;
+        ///  },
+        ///  &quot;emails&quot;: [
+        ///    {
+        ///      &quot;type&quot;: &quot;work&quot;,
+        ///      &quot;value&quot;: &quot;jchill@example.com&quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string scim2_Users__userId__PUT {
+            get {
+                return ResourceManager.GetString("scim2-Users-{userId}_PUT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;schemas&quot;: [
+        ///    &quot;urn:ietf:params:scim:api:messages:2.0:ListResponse&quot;
+        ///  ],
+        ///  &quot;totalResults&quot;: 20,
+        ///  &quot;startIndex&quot;: 1,
+        ///  &quot;itemsPerPage&quot;: 10,
+        ///  &quot;Resources&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;k\u0026KdKr6TLWuxdDtk0hjSzL&quot;,
+        ///      &quot;meta&quot;: {
+        ///        &quot;resourceType&quot;: &quot;User&quot;,
+        ///        &quot;location&quot;: &quot;https://api.zoom.us/scim2/Users/k\u0026KdKr6TLWuxdDtk0hjSzL&quot;,
+        ///        &quot;version&quot;: &quot;1.0.0&quot;,
+        ///        &quot;created&quot;: &quot;2023-11-24T05:13:15Z&quot;,
+        ///        &quot;lastModified&quot;: &quot;2023-11-25T06:23:17Z&quot;
+        ///      },
+        ///      &quot;schemas&quot;: [
+        ///        &quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string scim2_Users_GET {
+            get {
+                return ResourceManager.GetString("scim2-Users_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;next_page_token&quot;: &quot;Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3&quot;,
         ///  &quot;page_size&quot;: 30,
         ///  &quot;phones&quot;: [
@@ -1084,6 +13105,102 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string sip_phones_phones_GET {
             get {
                 return ResourceManager.GetString("sip_phones-phones_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;survey_answers&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;jchilll@example.com&quot;,
+        ///      &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;instance_id&quot;: &quot;iOTQZPmhTUq5a232ETb9eg==&quot;,
+        ///      &quot;submit_time&quot;: &quot;2024-02-01T12:34:12.66Z&quot;,
+        ///      &quot;anonymous&quot;: false,
+        ///      &quot;questions&quot;: [
+        ///        {
+        ///          &quot;question_id&quot;: &quot;798fGJEWrA&quot;,
+        ///          &quot;question_answers&quot;: [
+        ///            {
+        ///              &quot;option_id&quot;: &quot;HGsx45GsefchY9bYhsdkbq&quot;,
+        ///              &quot;answer&quot;: &quot;abcde&quot;
+        ///            }
+        ///          ],
+        ///          &quot;sub_questions&quot;: [
+        ///            {
+        ///    [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string surveys__surveyId__answers_GET {
+            get {
+                return ResourceManager.GetString("surveys-{surveyId}-answers_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;survey_id&quot;: &quot;WN3chY9bTjOQkbqnSIIhyg&quot;,
+        ///  &quot;survey_name&quot;: &quot;Survey of this meeting&quot;,
+        ///  &quot;survey_type&quot;: &quot;survey&quot;,
+        ///  &quot;published&quot;: true,
+        ///  &quot;anonymous&quot;: false,
+        ///  &quot;survey_questions&quot;: [
+        ///    {
+        ///      &quot;question_name&quot;: &quot;How are you?&quot;,
+        ///      &quot;question_id&quot;: &quot;798fGJEWrA&quot;,
+        ///      &quot;question_order&quot;: 1,
+        ///      &quot;question_type&quot;: &quot;single&quot;,
+        ///      &quot;required&quot;: true,
+        ///      &quot;sub_questions&quot;: [
+        ///        {
+        ///          &quot;sub_question_name&quot;: &quot;Good&quot;,
+        ///          &quot;sub_question_id&quot;: &quot;Sx3chY9bYhsdkbqnqwesdf&quot;,
+        ///          &quot;sub_questio [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string surveys__surveyId__GET {
+            get {
+                return ResourceManager.GetString("surveys-{surveyId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;survey_instances&quot;: [
+        ///    {
+        ///      &quot;instance_name&quot;: &quot;It\u0027s Steve\u0027s meeting &quot;,
+        ///      &quot;instance_id&quot;: &quot;iOTQZPmhTUq5a232ETb9eg==&quot;,
+        ///      &quot;product_type&quot;: &quot;meeting&quot;,
+        ///      &quot;has_response&quot;: true,
+        ///      &quot;survey_id&quot;: &quot;WN3chY9bTjOQkbqnSIIhyg&quot;,
+        ///      &quot;survey_name&quot;: &quot;Survey of this meeting&quot;,
+        ///      &quot;survey_type&quot;: &quot;survey&quot;,
+        ///      &quot;anonymous&quot;: &quot;false&quot;,
+        ///      &quot;survey_questions&quot;: [
+        ///        {
+        ///          &quot;question_name&quot;: &quot;How are you?&quot;,
+        ///          &quot;question_id&quot;: &quot;798fGJEWrA&quot;,
+        ///          &quot;question_order&quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string surveys__surveyId__instances_GET {
+            get {
+                return ResourceManager.GetString("surveys-{surveyId}-instances_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;surveys&quot;: [
+        ///    {
+        ///      &quot;survey_id&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;survey_name&quot;: &quot;The survey of meeting&quot;,
+        ///      &quot;survey_type&quot;: &quot;survey&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2&quot;
+        ///}.
+        /// </summary>
+        internal static string surveys_GET {
+            get {
+                return ResourceManager.GetString("surveys_GET", resourceCulture);
             }
         }
         
@@ -1125,6 +13242,98 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string tsp_GET {
             get {
                 return ResourceManager.GetString("tsp_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;assistants&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;id&quot;: &quot;KDcuGIm1QgePTO8WbOqwIQ&quot;,
+        ///      &quot;can_manage_host_private_event&quot;: true
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string users__userId__assistants_GET {
+            get {
+                return ResourceManager.GetString("users-{userId}-assistants_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;F1C6E9DF-429E-4FA1-85DA-AC95464F3D18&quot;,
+        ///  &quot;device_name&quot;: &quot;Test Computer&quot;,
+        ///  &quot;room_name&quot;: &quot;My Personal Zoom Room&quot;,
+        ///  &quot;room_user_id&quot;: &quot;HgCQF82ZS5GiQ4x_fCx0MB&quot;,
+        ///  &quot;status&quot;: &quot;Online&quot;
+        ///}.
+        /// </summary>
+        internal static string users__userId__collaboration_devices__collaborationDeviceId__GET {
+            get {
+                return ResourceManager.GetString("users-{userId}-collaboration_devices-{collaborationDeviceId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 30,
+        ///  &quot;collaboration_devices&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;F1C6E9DF-429E-4FA1-85DA-AC95464F3D18&quot;,
+        ///      &quot;device_name&quot;: &quot;Test Computer&quot;,
+        ///      &quot;room_name&quot;: &quot;My Personal Zoom Room&quot;,
+        ///      &quot;room_user_id&quot;: &quot;HgCQF82ZS5GiQ4x_fCx0MB&quot;,
+        ///      &quot;status&quot;: &quot;Online&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string users__userId__collaboration_devices_GET {
+            get {
+                return ResourceManager.GetString("users-{userId}-collaboration_devices_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [
+        ///  {
+        ///    &quot;meeting_summary_template_id&quot;: &quot;1e1356ad&quot;,
+        ///    &quot;name&quot;: &quot;General template&quot;,
+        ///    &quot;description&quot;: &quot;Recap and next steps&quot;
+        ///  }
+        ///].
+        /// </summary>
+        internal static string users__userId__meeting_summary_templates_GET {
+            get {
+                return ResourceManager.GetString("users-{userId}-meeting_summary_templates_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;Q4COb7QVRVmO0896Ry4XHg&quot;,
+        ///  &quot;name&quot;: &quot;Meeting template name&quot;,
+        ///  &quot;settings&quot;: {
+        ///    &quot;in_meeting&quot;: {
+        ///      &quot;entry_exit_chime&quot;: &quot;none&quot;,
+        ///      &quot;feedback&quot;: true,
+        ///      &quot;polling&quot;: true,
+        ///      &quot;post_meeting_feedback&quot;: true,
+        ///      &quot;screen_sharing&quot;: true,
+        ///      &quot;who_can_share_screen&quot;: &quot;all&quot;,
+        ///      &quot;who_can_share_screen_when_someone_is_sharing&quot;: &quot;all&quot;,
+        ///      &quot;disable_screen_sharing_for_host_meetings&quot;: true,
+        ///      &quot;annotation&quot;: true,
+        ///      &quot;whiteboard&quot;: true,
+        ///      &quot;remote_control&quot;: true,
+        ///      [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string users__userId__meeting_templates__meetingTemplateId__GET {
+            get {
+                return ResourceManager.GetString("users-{userId}-meeting_templates-{meetingTemplateId}_GET", resourceCulture);
             }
         }
         
@@ -1172,6 +13381,47 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string users__userId__pac_GET {
             get {
                 return ResourceManager.GetString("users-{userId}-pac_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;permissions&quot;: [
+        ///    &quot;Branding:Edit&quot;
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string users__userId__permissions_GET {
+            get {
+                return ResourceManager.GetString("users-{userId}-permissions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;schedulers&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;id&quot;: &quot;KDcuGIm1QgePTO8WbOqwIQ&quot;,
+        ///      &quot;pmi&quot;: 3542471135
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string users__userId__schedulers_GET {
+            get {
+                return ResourceManager.GetString("users-{userId}-schedulers_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;token&quot;: &quot;6IjAwMDAwMSIsInptX3NrbSI6InptX&quot;
+        ///}.
+        /// </summary>
+        internal static string users__userId__token_GET {
+            get {
+                return ResourceManager.GetString("users-{userId}-token_GET", resourceCulture);
             }
         }
         
@@ -1265,6 +13515,770 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string users__userId__webinar_templates_GET {
             get {
                 return ResourceManager.GetString("users-{userId}-webinar_templates_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;existed_email&quot;: true
+        ///}.
+        /// </summary>
+        internal static string users_email_GET {
+            get {
+                return ResourceManager.GetString("users-email_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;8V8HigQkzm2O5r9RUn31D9ZyJHgrmFfbLa2&quot;,
+        ///  &quot;page_count&quot;: 100,
+        ///  &quot;page_number&quot;: 1,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 8482,
+        ///  &quot;users&quot;: [
+        ///    {
+        ///      &quot;user_created_at&quot;: &quot;2019-06-01T07:58:03.0000000\u002B00:00&quot;,
+        ///      &quot;created_at&quot;: &quot;2018-10-31T04:32:37.0000000\u002B00:00&quot;,
+        ///      &quot;custom_attributes&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;cbf_cywdkexrtqc73f97gd4w6g&quot;,
+        ///          &quot;name&quot;: &quot;A1&quot;,
+        ///          &quot;value&quot;: &quot;2323&quot;
+        ///        }
+        ///      ],
+        ///      &quot;dept&quot;: &quot;Developers&quot;,
+        ///      &quot;email&quot;: &quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string users_GET {
+            get {
+                return ResourceManager.GetString("users_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;token&quot;: &quot;eyJ0eXAiOiJKV1QiLCJzdiI6IjAwMDAwMSIsInptX3NrbSI6InptX28ybSIsImFsZyI6IkhTMjU2In0.eyJhdWQiOiJjbGllbnRzbSIsInVpZCI6Im4ya1NtRmdsU2lpRnZjZWJFZTVWRFEiLCJpc3MiOiJ3ZWIiLCJzayI6IjAiLCJzdHkiOjk5LCJ3Y2QiOiJkZXYiLCJjbHQiOjAsImV4cCI6MTY1NzQ0MjI4MSwiaWF0IjoxNjQ5NjY2MjgxddkFMiiOiI0YUZaXzRJa1QzV05LMjMtSFZWSlFnIiwiY2lkIjoiIn0.RmCpEOQVUFXhtEyAaR5UsgEuAUKckcWnfWVMkH-XVGc&quot;
+        ///}.
+        /// </summary>
+        internal static string users_me_zak_GET {
+            get {
+                return ResourceManager.GetString("users-me-zak_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;licensed_users_count&quot;: 30,
+        ///  &quot;basic_users_count&quot;: 30,
+        ///  &quot;on_prem_users_count&quot;: 30,
+        ///  &quot;room_users_count&quot;: 30,
+        ///  &quot;pending_users_count&quot;: 30,
+        ///  &quot;join_only_users_count&quot;: 30,
+        ///  &quot;total_users_count&quot;: 120
+        ///}.
+        /// </summary>
+        internal static string users_summary_GET {
+            get {
+                return ResourceManager.GetString("users-summary_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;existed&quot;: false
+        ///}.
+        /// </summary>
+        internal static string users_vanity_name_GET {
+            get {
+                return ResourceManager.GetString("users-vanity_name_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;channel_id&quot;: &quot;iso9Dllddp39dagjLj9j&quot;,
+        ///  &quot;name&quot;: &quot;FoodieFlicks&quot;,
+        ///  &quot;description&quot;: &quot;A cinematic journey through the world of cuisine!.&quot;,
+        ///  &quot;owner_id&quot;: &quot;abc9Dllddp39dagjLj9j&quot;,
+        ///  &quot;status&quot;: &quot;PUBLISH&quot;,
+        ///  &quot;categories&quot;: [
+        ///    &quot;Education&quot;
+        ///  ],
+        ///  &quot;channel_link&quot;: &quot;https://videocenter.zoom.us/e/channels/MYysLCuzQ0mmk1CvarkaDA&quot;
+        ///}.
+        /// </summary>
+        internal static string video_management_channels__channelId__GET {
+            get {
+                return ResourceManager.GetString("video_management-channels-{channelId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;next_page_token&quot;: &quot;yqT59YnBSHqvDdNnkeHQsA&quot;,
+        ///  &quot;permissions&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;325bde9e82c84a179ac0f612f7688df7&quot;,
+        ///      &quot;chat_channel_id&quot;: &quot;dc1731cf94a842bfb43e8b0fe13d2a46@conference.xmppdev.zoom.us&quot;,
+        ///      &quot;display_name&quot;: &quot;John Doe&quot;,
+        ///      &quot;role&quot;: &quot;VIEWER&quot;,
+        ///      &quot;invite_status&quot;: &quot;PENDING&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string video_management_channels__channelId__permissions_GET {
+            get {
+                return ResourceManager.GetString("video_management-channels-{channelId}-permissions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;yqT59YnBSHqvDdNnkeHQsA&quot;,
+        ///  &quot;playlists&quot;: [
+        ///    {
+        ///      &quot;playlist_id&quot;: &quot;csduzfv3JwTeyR5QpC3PXw52&quot;,
+        ///      &quot;name&quot;: &quot;My Playlist1&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string video_management_channels__channelId__playlists_GET {
+            get {
+                return ResourceManager.GetString("video_management-channels-{channelId}-playlists_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;yqT59YnBSHqvDdNnkeHQsA&quot;,
+        ///  &quot;videos&quot;: [
+        ///    {
+        ///      &quot;video_id&quot;: &quot;csduzfv3JwTeyR5QpC3PXw52&quot;,
+        ///      &quot;video_name&quot;: &quot;My Recording1&quot;,
+        ///      &quot;play_link&quot;: &quot;https://abc/recording/unehd6TtTLuTN40owCOqqK&quot;,
+        ///      &quot;duration&quot;: 3000,
+        ///      &quot;video_status&quot;: &quot;COMPLETED&quot;,
+        ///      &quot;video_source&quot;: &quot;RECORDING&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string video_management_channels__channelId__videos_GET {
+            get {
+                return ResourceManager.GetString("video_management-channels-{channelId}-videos_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;yqT59YnBSHqvDdNnkeHQsA&quot;,
+        ///  &quot;channels&quot;: [
+        ///    null
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string video_management_channels_GET {
+            get {
+                return ResourceManager.GetString("video_management-channels_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;yqT59YnBSHqvDdNnkeHQsA&quot;,
+        ///  &quot;videos&quot;: [
+        ///    {
+        ///      &quot;video_id&quot;: &quot;csduzfv3JwTeyR5QpC3PXw52&quot;,
+        ///      &quot;video_name&quot;: &quot;My Recording1&quot;,
+        ///      &quot;play_link&quot;: &quot;https://abc/recording/unehd6TtTLuTN40owCOqqK&quot;,
+        ///      &quot;duration&quot;: 3000,
+        ///      &quot;video_status&quot;: &quot;COMPLETED&quot;,
+        ///      &quot;video_source&quot;: &quot;RECORDING&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string video_management_playlists__playlistId__videos_GET {
+            get {
+                return ResourceManager.GetString("video_management-playlists-{playlistId}-videos_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;yqT59YnBSHqvDdNnkeHQsA&quot;,
+        ///  &quot;playlists&quot;: [
+        ///    {
+        ///      &quot;playlist_id&quot;: &quot;csduzfv3JwTeyR5QpC3PXw52&quot;,
+        ///      &quot;name&quot;: &quot;My Playlist1&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string video_management_playlists_GET {
+            get {
+                return ResourceManager.GetString("video_management-playlists_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;yqT59YnBSHqvDdNnkeHQsA&quot;,
+        ///  &quot;videos&quot;: [
+        ///    {
+        ///      &quot;video_id&quot;: &quot;csduzfv3JwTeyR5QpC3PXw52&quot;,
+        ///      &quot;video_name&quot;: &quot;My Recording1&quot;,
+        ///      &quot;play_link&quot;: &quot;https://abc/recording/unehd6TtTLuTN40owCOqqK&quot;,
+        ///      &quot;duration&quot;: 3000,
+        ///      &quot;video_status&quot;: &quot;COMPLETED&quot;,
+        ///      &quot;video_source&quot;: &quot;RECORDING&quot;,
+        ///      &quot;owner_name&quot;: &quot;John Doe&quot;,
+        ///      &quot;owner_email&quot;: &quot;john.doe@xyz.com&quot;,
+        ///      &quot;created_time&quot;: &quot;2022-06-03T20:51:00.0000000\u002B00:00&quot;,
+        ///      &quot;modified_time&quot;: &quot;20 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string video_management_videos_GET {
+            get {
+                return ResourceManager.GetString("video_management-videos_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;from&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///  &quot;to&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///  &quot;cloud_recording_storage&quot;: [
+        ///    {
+        ///      &quot;date&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///      &quot;usage&quot;: &quot;29 MB&quot;,
+        ///      &quot;plan_usage&quot;: &quot;1 GB&quot;,
+        ///      &quot;free_usage&quot;: &quot;1 GB&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string videosdk_report_cloud_recording_GET {
+            get {
+                return ResourceManager.GetString("videosdk-report-cloud_recording_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;year&quot;: 2021,
+        ///  &quot;month&quot;: 12,
+        ///  &quot;dates&quot;: [
+        ///    {
+        ///      &quot;date&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///      &quot;sessions&quot;: 20,
+        ///      &quot;users&quot;: 80,
+        ///      &quot;session_minutes&quot;: 380
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string videosdk_report_daily_GET {
+            get {
+                return ResourceManager.GetString("videosdk-report-daily_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;next_page_token&quot;: &quot;suQA5LvDBnH5No5OYD7mqpJuFzJqUOHK8U2&quot;,
+        ///  &quot;from&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///  &quot;to&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///  &quot;operation_logs&quot;: [
+        ///    {
+        ///      &quot;time&quot;: &quot;2019-08-20T19:09:01.0000000\u002B00:00&quot;,
+        ///      &quot;operator&quot;: &quot;someuser@sfksfhksdfsf.com&quot;,
+        ///      &quot;category_type&quot;: &quot;User&quot;,
+        ///      &quot;action&quot;: &quot;update&quot;,
+        ///      &quot;operation_detail&quot;: &quot;Activate User sjkfhdsf@jdfgkhgd.com&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string videosdk_report_operationlogs_GET {
+            get {
+                return ResourceManager.GetString("videosdk-report-operationlogs_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;next_page_token&quot;: &quot;suQA5LvDBnH5No5OYD7mqpJuFzJqUOHK8U2&quot;,
+        ///  &quot;from&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///  &quot;to&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///  &quot;telephony_usage&quot;: [
+        ///    {
+        ///      &quot;session_id&quot;: &quot;sfk/aOFJSJSYhGwk1hnxgw==&quot;,
+        ///      &quot;phone_number&quot;: &quot;18005555555&quot;,
+        ///      &quot;signaled_number&quot;: &quot;18005555555&quot;,
+        ///      &quot;start_time&quot;: &quot;2019-07-15T23:24:52.0000000\u002B00:00&quot;,
+        ///      &quot;end_time&quot;: &quot;2019-07-15T23:30:19.0000000\u002B00:00&quot;,
+        ///      &quot;duration&quot;: 6,
+        ///      &quot;total&quot;: 11,
+        ///      &quot;co [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string videosdk_report_telephone_GET {
+            get {
+                return ResourceManager.GetString("videosdk-report-telephone_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;b43YBRLJFg3V4vsSpxvGdKIGtNbxn9h9If2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;webhook_logs&quot;: [
+        ///    {
+        ///      &quot;event&quot;: &quot;session.started&quot;,
+        ///      &quot;status&quot;: 429,
+        ///      &quot;failed_reason_type&quot;: 1,
+        ///      &quot;endpoint&quot;: &quot;https://example.com&quot;,
+        ///      &quot;subscription_id&quot;: &quot;9qwt8mkBEW2O6fPuxBpXpA&quot;,
+        ///      &quot;request_headers&quot;: &quot;N/A&quot;,
+        ///      &quot;request_body&quot;: &quot;{\u0022event\u0022:\u0022session.started\u0022,\u0022payload\u0022:{\u0022account_id\u0022:\u0022qnFRJ-Q3QxmK2oXXsXSv1A\u0022,\u0022object\u0022:{\u0022session_n [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string videosdk_report_webhook_logs_GET {
+            get {
+                return ResourceManager.GetString("videosdk-report-webhook_logs_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;sfk/aOFJSJSYhGwk1hnxgw==&quot;,
+        ///  &quot;session_number&quot;: 97763643886,
+        ///  &quot;session_name&quot;: &quot;My session&quot;,
+        ///  &quot;passcode&quot;: &quot;123456&quot;,
+        ///  &quot;start_time&quot;: &quot;2019-08-20T19:09:01.0000000\u002B00:00&quot;,
+        ///  &quot;end_time&quot;: &quot;2019-08-20T19:19:01.0000000\u002B00:00&quot;,
+        ///  &quot;duration&quot;: &quot;30:00&quot;,
+        ///  &quot;user_count&quot;: 2,
+        ///  &quot;has_voip&quot;: true,
+        ///  &quot;has_video&quot;: true,
+        ///  &quot;has_screen_share&quot;: true,
+        ///  &quot;has_recording&quot;: true,
+        ///  &quot;has_pstn&quot;: true,
+        ///  &quot;session_key&quot;: &quot;my_session_key&quot;,
+        ///  &quot;has_session_summary&quot;: true,
+        ///  &quot;created_at&quot;: &quot;2022-03-25T07:29 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string videosdk_sessions__sessionId__GET {
+            get {
+                return ResourceManager.GetString("videosdk-sessions-{sessionId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;stream_url&quot;: &quot;https://example.com/livestream&quot;,
+        ///  &quot;stream_key&quot;: &quot;ABCDEFG12345HIJ6789&quot;,
+        ///  &quot;page_url&quot;: &quot;https://example.com/livestream/123&quot;,
+        ///  &quot;resolution&quot;: &quot;720p&quot;
+        ///}.
+        /// </summary>
+        internal static string videosdk_sessions__sessionId__livestream_GET {
+            get {
+                return ResourceManager.GetString("videosdk-sessions-{sessionId}-livestream_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [
+        ///  {
+        ///    &quot;stream_id&quot;: &quot;sfk/aOFJSJSYhGwk1hnxgw==&quot;,
+        ///    &quot;rtmp_connection_status&quot;: 0,
+        ///    &quot;rtmp_stream_push_status&quot;: 0
+        ///  }
+        ///].
+        /// </summary>
+        internal static string videosdk_sessions__sessionId__stream_ingestions_GET {
+            get {
+                return ResourceManager.GetString("videosdk-sessions-{sessionId}-stream_ingestions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;1670000000&quot;,
+        ///  &quot;name&quot;: &quot;User&quot;,
+        ///  &quot;device&quot;: &quot;Android&quot;,
+        ///  &quot;os&quot;: &quot;iOS&quot;,
+        ///  &quot;os_version&quot;: &quot;16.5&quot;,
+        ///  &quot;browser_name&quot;: &quot;Firefox&quot;,
+        ///  &quot;browser_version&quot;: &quot;133&quot;,
+        ///  &quot;client&quot;: &quot;Web Meeting SDK 2.18&quot;,
+        ///  &quot;ip_address&quot;: &quot;192.0.2.0&quot;,
+        ///  &quot;location&quot;: &quot;San Jose (US)&quot;,
+        ///  &quot;network_type&quot;: &quot;Wifi&quot;,
+        ///  &quot;microphone&quot;: &quot;Plantronics BT600&quot;,
+        ///  &quot;speaker&quot;: &quot;Plantronics BT600&quot;,
+        ///  &quot;camera&quot;: &quot;FaceTime HD Camera&quot;,
+        ///  &quot;data_center&quot;: &quot;SC&quot;,
+        ///  &quot;connection_type&quot;: &quot;P2P&quot;,
+        ///  &quot;join_time&quot;: &quot;2019-08-20T19:09:01.0000000\u002B00:00&quot;, [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string videosdk_sessions__sessionId__users__userId__qos_GET {
+            get {
+                return ResourceManager.GetString("videosdk-sessions-{sessionId}-users-{userId}-qos_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;next_page_token&quot;: &quot;suQA5LvDBnH5No5OYD7mqpJuFzJqUOHK8U2&quot;,
+        ///  &quot;users&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;32dsfsd4g5gd&quot;,
+        ///      &quot;name&quot;: &quot;exampleuser&quot;,
+        ///      &quot;device&quot;: &quot;Windows&quot;,
+        ///      &quot;ip_address&quot;: &quot;127.0.0.1&quot;,
+        ///      &quot;location&quot;: &quot;New York&quot;,
+        ///      &quot;network_type&quot;: &quot;Wifi&quot;,
+        ///      &quot;microphone&quot;: &quot;Plantronics BT600&quot;,
+        ///      &quot;speaker&quot;: &quot;Plantronics BT600&quot;,
+        ///      &quot;camera&quot;: &quot;FaceTime HD Camera&quot;,
+        ///      &quot;data_center&quot;: &quot;SC&quot;,
+        ///      &quot;connection_type&quot;: &quot;P2P&quot;,
+        ///      &quot;join_time&quot;: &quot;2019-08-20T19:09:01.000 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string videosdk_sessions__sessionId__users_GET {
+            get {
+                return ResourceManager.GetString("videosdk-sessions-{sessionId}-users_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_size&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;1cyhUewZa419P9F8QUYURck0U3rFWB0d1H2&quot;,
+        ///  &quot;users&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;1670000000&quot;,
+        ///      &quot;name&quot;: &quot;User&quot;,
+        ///      &quot;device&quot;: &quot;Android&quot;,
+        ///      &quot;client&quot;: &quot;Web Meeting SDK 2.18&quot;,
+        ///      &quot;os&quot;: &quot;iOS&quot;,
+        ///      &quot;os_version&quot;: &quot;16.5&quot;,
+        ///      &quot;browser_name&quot;: &quot;Firefox&quot;,
+        ///      &quot;browser_version&quot;: &quot;133&quot;,
+        ///      &quot;ip_address&quot;: &quot;192.0.2.0&quot;,
+        ///      &quot;location&quot;: &quot;San Jose (US)&quot;,
+        ///      &quot;network_type&quot;: &quot;Wifi&quot;,
+        ///      &quot;microphone&quot;: &quot;Plantronics BT600&quot;,
+        ///      &quot;speaker&quot;: &quot;Plantronics  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string videosdk_sessions__sessionId__users_qos_GET {
+            get {
+                return ResourceManager.GetString("videosdk-sessions-{sessionId}-users-qos_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_size&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;1cyhUewZa419P9F8QUYURck0U3rFWB0d1H2&quot;,
+        ///  &quot;users&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;1670000000&quot;,
+        ///      &quot;name&quot;: &quot;User&quot;,
+        ///      &quot;user_key&quot;: &quot;myUserKey&quot;,
+        ///      &quot;details&quot;: [
+        ///        {
+        ///          &quot;content&quot;: &quot;desktop&quot;,
+        ///          &quot;start_time&quot;: &quot;2021-06-17T06:49:06Z&quot;,
+        ///          &quot;end_time&quot;: &quot;2021-06-17T06:49:35Z&quot;
+        ///        }
+        ///      ]
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string videosdk_sessions__sessionId__users_sharing_GET {
+            get {
+                return ResourceManager.GetString("videosdk-sessions-{sessionId}-users-sharing_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;from&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///  &quot;to&quot;: &quot;Microsoft.OpenApi.Any.OpenApiDate&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;next_page_token&quot;: &quot;suQA5LvDBnH5No5OYD7mqpJuFzJqUOHK8U2&quot;,
+        ///  &quot;sessions&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;sfk/aOFJSJSYhGwk1hnxgw==&quot;,
+        ///      &quot;session_name&quot;: &quot;My session&quot;,
+        ///      &quot;start_time&quot;: &quot;2019-08-20T19:09:01.0000000\u002B00:00&quot;,
+        ///      &quot;end_time&quot;: &quot;2019-08-20T19:19:01.0000000\u002B00:00&quot;,
+        ///      &quot;duration&quot;: &quot;30:00&quot;,
+        ///      &quot;user_count&quot;: 2,
+        ///      &quot;has_voip&quot;: true,
+        ///      &quot;has_video&quot;: true,
+        ///      [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string videosdk_sessions_GET {
+            get {
+                return ResourceManager.GetString("videosdk-sessions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;7kdwg5y0Ra6B2vWdtXUJOQ&quot;,
+        ///  &quot;name&quot;: &quot;newpbx123&quot;,
+        ///  &quot;provider&quot;: &quot;aws_s3&quot;,
+        ///  &quot;s3&quot;: {
+        ///    &quot;region&quot;: &quot;us-east-1&quot;,
+        ///    &quot;bucket&quot;: &quot;testpbx&quot;,
+        ///    &quot;authentication_mechanism&quot;: &quot;aws_access_key&quot;
+        ///  },
+        ///  &quot;verify_status&quot;: &quot;success&quot;
+        ///}.
+        /// </summary>
+        internal static string videosdk_settings_storage_location__storageLocationId__GET {
+            get {
+                return ResourceManager.GetString("videosdk-settings-storage-location-{storageLocationId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [
+        ///  {
+        ///    &quot;id&quot;: &quot;9lXuCXgOTIqocq81iotCdQ&quot;,
+        ///    &quot;name&quot;: &quot;11111&quot;,
+        ///    &quot;provider&quot;: &quot;aws_s3&quot;,
+        ///    &quot;selected&quot;: true,
+        ///    &quot;s3&quot;: {
+        ///      &quot;region&quot;: &quot;us-east-2&quot;,
+        ///      &quot;bucket&quot;: &quot;testpbx&quot;,
+        ///      &quot;authentication_mechanism&quot;: &quot;aws_access_key&quot;
+        ///    }
+        ///  }
+        ///].
+        /// </summary>
+        internal static string videosdk_settings_storage_location_GET {
+            get {
+                return ResourceManager.GetString("videosdk-settings-storage-location_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;stream_id&quot;: &quot;sfk/aOFJSJSYhGwk1hnxgw==&quot;,
+        ///  &quot;stream_name&quot;: &quot;stream ingestion1&quot;,
+        ///  &quot;stream_description&quot;: &quot;stream ingestion1&quot;,
+        ///  &quot;stream_key&quot;: &quot;ABCDEFG12345HIJ6789&quot;,
+        ///  &quot;stream_url&quot;: &quot;rtmp://a.rtmp.zoomevent.com/live1&quot;,
+        ///  &quot;backup_stream_url&quot;: &quot;rtmp://a.rtmp.zoomevent.com/live1&quot;
+        ///}.
+        /// </summary>
+        internal static string videosdk_stream_ingestions__streamId__GET {
+            get {
+                return ResourceManager.GetString("videosdk-stream_ingestions-{streamId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;next_page_token&quot;: &quot;Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3&quot;,
+        ///  &quot;stream_ingestions&quot;: [
+        ///    {
+        ///      &quot;stream_id&quot;: &quot;sfk/aOFJSJSYhGwk1hnxgw==&quot;,
+        ///      &quot;stream_name&quot;: &quot;stream ingestion1&quot;,
+        ///      &quot;stream_description&quot;: &quot;stream ingestion1&quot;,
+        ///      &quot;stream_key&quot;: &quot;ABCDEFG12345HIJ6789&quot;,
+        ///      &quot;stream_url&quot;: &quot;rtmp://a.rtmp.zoomevent.com/live1&quot;,
+        ///      &quot;backup_stream_url&quot;: &quot;rtmp://a.rtmp.zoomevent.com/live1&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string videosdk_stream_ingestions_GET {
+            get {
+                return ResourceManager.GetString("videosdk-stream_ingestions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;ngLawmAGlYagy37vLJtKMM4TkMnagfqWm73&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 44,
+        ///  &quot;timezone&quot;: &quot;UTC&quot;,
+        ///  &quot;engagements&quot;: [
+        ///    {
+        ///      &quot;engagement_id&quot;: &quot;NF1kPajwRCGa9-cgHWGAQw&quot;,
+        ///      &quot;start_time&quot;: &quot;2023-07-11T22:17:49.0000000\u002B00:00&quot;,
+        ///      &quot;duration&quot;: 25,
+        ///      &quot;campaign_name&quot;: &quot;campaignA&quot;,
+        ///      &quot;global_variables&quot;: [
+        ///        {
+        ///          &quot;type&quot;: &quot;system&quot;,
+        ///          &quot;value&quot;: &quot;value A&quot;,
+        ///          &quot;group_name&quot;: &quot;group A&quot;,
+        ///          &quot;group_id&quot;: &quot;1688149024708&quot;,
+        ///       [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string virtual_agent_report_engagements_GET {
+            get {
+                return ResourceManager.GetString("virtual_agent-report-engagements_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;from&quot;: &quot;2023-07-01T00:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;to&quot;: &quot;2023-07-02T23:59:59.0000000\u002B00:00&quot;,
+        ///  &quot;next_page_token&quot;: &quot;ngLawmAGlYagy37vLJtKMM4TkMnagfqWm73&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 22,
+        ///  &quot;timezone&quot;: &quot;UTC&quot;,
+        ///  &quot;engagement_query_details&quot;: [
+        ///    {
+        ///      &quot;engagement_id&quot;: &quot;NF1kPajwRCGa9-cgHWGAQw&quot;,
+        ///      &quot;query_details&quot;: [
+        ///        {
+        ///          &quot;query_id&quot;: &quot;0b883910-0783-4383-9dcf-b5c9ba315438&quot;,
+        ///          &quot;bot_id&quot;: &quot;FZOKnPjmTse9ISSvQN4Zjg&quot;,
+        ///          &quot;bot_name&quot;: &quot;Chatbot&quot;,
+        ///        [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string virtual_agent_report_engagements_query_details_GET {
+            get {
+                return ResourceManager.GetString("virtual_agent-report-engagements-query_details_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;from&quot;: &quot;2023-07-01T00:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;to&quot;: &quot;2023-07-02T23:59:59.0000000\u002B00:00&quot;,
+        ///  &quot;next_page_token&quot;: &quot;ngLawmAGlYagy37vLJtKMM4TkMnagfqWm73&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 22,
+        ///  &quot;timezone&quot;: &quot;UTC&quot;,
+        ///  &quot;engagement_variable_details&quot;: [
+        ///    {
+        ///      &quot;engagement_id&quot;: &quot;G9wepeWxQAO7o0M6AJw2AA&quot;,
+        ///      &quot;variable_details&quot;: [
+        ///        {
+        ///          &quot;variable_id&quot;: &quot;f15c3714-4c24-4fc1-b4e6-4f0702b5398f8b2a93e9-3125-4044-8cd6-06ce7f582de8&quot;,
+        ///          &quot;type&quot;: &quot;Number&quot;,
+        ///          &quot;nam [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string virtual_agent_report_engagements_variables_GET {
+            get {
+                return ResourceManager.GetString("virtual_agent-report-engagements-variables_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;from&quot;: &quot;2025-10-01T00:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;to&quot;: &quot;2025-10-29T23:59:59.0000000\u002B00:00&quot;,
+        ///  &quot;next_page_token&quot;: &quot;ngLawmAGlYagy37vLJtKMM4TkMnagfqWm73&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 30,
+        ///  &quot;timezone&quot;: &quot;UTC&quot;,
+        ///  &quot;surveys&quot;: [
+        ///    {
+        ///      &quot;survey_id&quot;: &quot;r8DUXy4BSbO-UQ5ylOUyLg&quot;,
+        ///      &quot;survey_name&quot;: &quot;voice survey&quot;,
+        ///      &quot;engagement_id&quot;: &quot;N-ecLZBoS-ayCabdwDQSrA&quot;,
+        ///      &quot;agent_type&quot;: &quot;Voice&quot;,
+        ///      &quot;virtual_agent&quot;: &quot;voice agent&quot;,
+        ///      &quot;consumer&quot;: &quot;consumer&quot;,
+        ///      &quot;start_time&quot;: &quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string virtual_agent_report_surveys_GET {
+            get {
+                return ResourceManager.GetString("virtual_agent-report-surveys_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;ngLawmAGlYagy37vLJtKMM4TkMnagfqWm73&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 44,
+        ///  &quot;timezone&quot;: &quot;UTC&quot;,
+        ///  &quot;transcripts&quot;: [
+        ///    {
+        ///      &quot;engagement_id&quot;: &quot;akNPVkF0ShCG-X5dY2Nd0Q&quot;,
+        ///      &quot;channel&quot;: &quot;Chat Agent&quot;,
+        ///      &quot;start_time&quot;: &quot;2023-07-11T22:17:30.0000000\u002B00:00&quot;,
+        ///      &quot;total_duration&quot;: 25,
+        ///      &quot;interaction_duration&quot;: 20,
+        ///      &quot;end_time&quot;: &quot;2023-07-12T22:17:55.0000000\u002B00:00&quot;,
+        ///      &quot;messages&quot;: [
+        ///        {
+        ///          &quot;sender&quot;: &quot;AI Agent&quot;,
+        ///          &quot;timestamp [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string virtual_agent_report_transcripts_GET {
+            get {
+                return ResourceManager.GetString("virtual_agent-report-transcripts_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;result&quot;: {
+        ///    &quot;invitation_id&quot;: &quot;feYLmdxtQsqX3kx08ZqxOQ&quot;,
+        ///    &quot;address&quot;: &quot;New York&quot;,
+        ///    &quot;details&quot;: &quot;Notice items&quot;,
+        ///    &quot;start_time&quot;: &quot;2021-03-18T05:41:36Z&quot;,
+        ///    &quot;host_email&quot;: &quot;kim.luo@zoom.us&quot;,
+        ///    &quot;host_name&quot;: &quot;Kim Luo&quot;,
+        ///    &quot;invite_location_id&quot;: &quot;FCTDHSgLTDGbeUY0VOXq0A&quot;,
+        ///    &quot;office_name&quot;: &quot;test-carl-JA01&quot;,
+        ///    &quot;visitor_photo_url&quot;: &quot;https://file.zoomdev.us/file/cFRTpF9IRICHDQZpi5wGcg?business=zr\u0026jwt=eyJ6bV9za20iOiJ6bV9vMm0iLCJ0eXAiOiJKV1QiLCJrIjoiS3F3RGs4UHIiLCJhbGciOiJFUzI1NiJ9.eyJhd [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string visitor_invitation__invitationId__GET {
+            get {
+                return ResourceManager.GetString("visitor-invitation-{invitationId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 200,
+        ///  &quot;invitations&quot;: [
+        ///    {
+        ///      &quot;invitation_id&quot;: &quot;feYLmdxtQsqX3kx08ZqxOQ&quot;,
+        ///      &quot;address&quot;: &quot;New York&quot;,
+        ///      &quot;details&quot;: &quot;Notice items&quot;,
+        ///      &quot;start_time&quot;: &quot;2021-04-18T05:41:36Z&quot;,
+        ///      &quot;host_email&quot;: &quot;example@mail.com&quot;,
+        ///      &quot;host_name&quot;: &quot;Example host name&quot;,
+        ///      &quot;invite_location_id&quot;: &quot;FCTDHSgLTDGbeUY0VOXq0A&quot;,
+        ///      &quot;office_name&quot;: &quot;Example office&quot;,
+        ///      &quot;visitor_photo_url&quot;: &quot;https://file [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string visitor_invitation_GET {
+            get {
+                return ResourceManager.GetString("visitor-invitation_GET", resourceCulture);
             }
         }
         
@@ -1423,6 +14437,1636 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string webinars__webinarId__tracking_sources_GET {
             get {
                 return ResourceManager.GetString("webinars-{webinarId}-tracking_sources_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [
+        ///  {
+        ///    &quot;collaborator_id&quot;: &quot;x4g6hy789k0o878k&quot;,
+        ///    &quot;collaborator_name&quot;: &quot;Jack&quot;,
+        ///    &quot;user_id&quot;: &quot;wf3h7uo1dk0v53bl&quot;,
+        ///    &quot;channel_id&quot;: &quot;cabc1234567defghijkl01234&quot;,
+        ///    &quot;avatar&quot;: &quot;https://content.zoom.us/swerwerw.jpeg&quot;,
+        ///    &quot;role&quot;: 0,
+        ///    &quot;collaborator_type&quot;: 0,
+        ///    &quot;email&quot;: &quot;user@example.com&quot;
+        ///  }
+        ///].
+        /// </summary>
+        internal static string whiteboards__whiteboardId__collaborator_GET {
+            get {
+                return ResourceManager.GetString("whiteboards-{whiteboardId}-collaborator_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;whiteboard_id&quot;: &quot;48Z4ppMfQJWONeVWFCcVzA&quot;,
+        ///  &quot;whiteboard_name&quot;: &quot;Q3 Plan&quot;,
+        ///  &quot;locked&quot;: false,
+        ///  &quot;trashed&quot;: false,
+        ///  &quot;readonly&quot;: false,
+        ///  &quot;non_cloud&quot;: false,
+        ///  &quot;created_date&quot;: &quot;2022-03-25T07:29:29.0000000\u002B00:00&quot;,
+        ///  &quot;modified_date&quot;: &quot;2022-03-25T07:29:29.0000000\u002B00:00&quot;,
+        ///  &quot;share_link_setting&quot;: {
+        ///    &quot;share_scope&quot;: 0,
+        ///    &quot;share_role&quot;: 2
+        ///  },
+        ///  &quot;advanced_share_setting&quot;: {
+        ///    &quot;can_share&quot;: true,
+        ///    &quot;share_to_external&quot;: true,
+        ///    &quot;external_can_share&quot;: true
+        ///  },
+        ///  &quot;share_link&quot;: &quot;ht [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string whiteboards__whiteboardId__GET {
+            get {
+                return ResourceManager.GetString("whiteboards-{whiteboardId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;task_id&quot;: &quot;f7f3cdd37bf74550afe7cdf79128a574&quot;
+        ///}.
+        /// </summary>
+        internal static string whiteboards_export_POST {
+            get {
+                return ResourceManager.GetString("whiteboards-export_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;processed&quot;: [
+        ///    &quot;48Z4ppMfQJWONeVWFCcVzA&quot;
+        ///  ],
+        ///  &quot;status&quot;: &quot;processing&quot;,
+        ///  &quot;total&quot;: 3,
+        ///  &quot;failed&quot;: [
+        ///    &quot;UyKtcVj5REWMFT2qd-4qfg&quot;
+        ///  ],
+        ///  &quot;processing&quot;: [
+        ///    &quot;r2Qr1q4hSxu03MG3hk03uA&quot;
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string whiteboards_export_task__taskId__status_GET {
+            get {
+                return ResourceManager.GetString("whiteboards-export-task-{taskId}-status_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;file_name&quot;: &quot;miro.pdf&quot;,
+        ///  &quot;status&quot;: &quot;succeeded&quot;,
+        ///  &quot;whiteboard_id&quot;: &quot;HY8-AC_HSou4SXY1S-OmOg&quot;,
+        ///  &quot;doc_name&quot;: &quot;Q1 Plan&quot;
+        ///}.
+        /// </summary>
+        internal static string whiteboards_import__taskId__status_GET {
+            get {
+                return ResourceManager.GetString("whiteboards-import-{taskId}-status_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [
+        ///  {
+        ///    &quot;collaborator_id&quot;: &quot;x4g6hy789k0o878k&quot;,
+        ///    &quot;collaborator_name&quot;: &quot;Jack&quot;,
+        ///    &quot;user_id&quot;: &quot;wf3h7uo1dk0v53bl&quot;,
+        ///    &quot;avatar&quot;: &quot;https://content.zoom.us/swerwerw.jpeg&quot;,
+        ///    &quot;role&quot;: 2,
+        ///    &quot;collaborator_type&quot;: 0,
+        ///    &quot;email&quot;: &quot;user@example.com&quot;
+        ///  }
+        ///].
+        /// </summary>
+        internal static string whiteboards_projects__projectId__collaborators_GET {
+            get {
+                return ResourceManager.GetString("whiteboards-projects-{projectId}-collaborators_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;collaborator&quot;: [
+        ///    {
+        ///      &quot;collaborator_id&quot;: &quot;x4g6hy789k0o878k&quot;,
+        ///      &quot;collaborator_name&quot;: &quot;Jack&quot;,
+        ///      &quot;user_id&quot;: &quot;wf3h7uo1dk0v53bl&quot;,
+        ///      &quot;avatar&quot;: &quot;https://content.zoom.us/swerwerw.jpeg&quot;,
+        ///      &quot;role&quot;: 2,
+        ///      &quot;collaborator_type&quot;: 0
+        ///    }
+        ///  ],
+        ///  &quot;created_date&quot;: &quot;2020-03-31T12:02:00.0000000\u002B00:00&quot;,
+        ///  &quot;modified_date&quot;: &quot;2020-03-31T12:02:00.0000000\u002B00:00&quot;,
+        ///  &quot;project_name&quot;: &quot;Untitle&quot;,
+        ///  &quot;project_id&quot;: &quot;The Project ID&quot;,
+        ///  &quot;starred&quot;: false,
+        ///  &quot;owner_display_name&quot;: &quot;Example  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string whiteboards_projects__projectId__GET {
+            get {
+                return ResourceManager.GetString("whiteboards-projects-{projectId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;projects&quot;: [
+        ///    {
+        ///      &quot;collaborator&quot;: [
+        ///        {
+        ///          &quot;collaborator_id&quot;: &quot;x4g6hy789k0o878k&quot;,
+        ///          &quot;collaborator_name&quot;: &quot;Jack&quot;,
+        ///          &quot;user_id&quot;: &quot;wf3h7uo1dk0v53bl&quot;,
+        ///          &quot;avatar&quot;: &quot;https://content.zoom.us/swerwerw.jpeg&quot;,
+        ///          &quot;role&quot;: 2,
+        ///          &quot;collaborator_type&quot;: 0
+        ///        }
+        ///      ],
+        ///      &quot;created_date&quot;: &quot;2020-03-31T12:02:00.0000000\u002B00:00&quot;,
+        ///      &quot;modified_date&quot;: &quot;2020-03-31T12:02:00.0000000\u002B00:00&quot;,
+        ///      &quot;project_name&quot;: &quot;Untitle&quot;,
+        ///      &quot;projec [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string whiteboards_projects_GET {
+            get {
+                return ResourceManager.GetString("whiteboards-projects_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;next_page_token&quot;: &quot;IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2&quot;,
+        ///  &quot;session_id&quot;: &quot;a2f19f96-9294-4f51-8134-6f0eea108eb2&quot;,
+        ///  &quot;whiteboard_id&quot;: &quot;HY8-AC_HSou4SXY1S-OmOg&quot;,
+        ///  &quot;whiteboard_name&quot;: &quot;example_whiteboard_name&quot;,
+        ///  &quot;start_time&quot;: &quot;2021-03-11T05:41:36.0000000\u002B00:00&quot;,
+        ///  &quot;end_time&quot;: &quot;2021-03-11T06:41:36.0000000\u002B00:00&quot;,
+        ///  &quot;expire_time&quot;: &quot;2021-03-26T06:41:36.0000000\u002B00:00&quot;,
+        ///  &quot;activities&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;cc63bce7-cb59-c1dc-fadd-2be734ad1d55&quot;,
+        ///      &quot;type&quot;: &quot;add ob [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string whiteboards_sessions__seesionId__GET {
+            get {
+                return ResourceManager.GetString("whiteboards-sessions-{seesionId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;from&quot;: &quot;2021-03-12T02:12:27.0000000\u002B00:00&quot;,
+        ///  &quot;to&quot;: &quot;2021-03-12T02:12:27.0000000\u002B00:00&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;next_page_token&quot;: &quot;IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2&quot;,
+        ///  &quot;sessions&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;a2f19f96-9294-4f51-8134-6f0eea108eb2&quot;,
+        ///      &quot;start_time&quot;: &quot;2021-03-11T05:41:36.0000000\u002B00:00&quot;,
+        ///      &quot;end_time&quot;: &quot;2021-03-11T05:41:36.0000000\u002B00:00&quot;,
+        ///      &quot;whiteboard_id&quot;: &quot;HY8-AC_HSou4SXY1S-OmOg&quot;,
+        ///      &quot;whiteboard_name&quot;: &quot;example_whiteboard_name&quot;,
+        ///      &quot;expire_time&quot;: [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string whiteboards_sessions_GET {
+            get {
+                return ResourceManager.GetString("whiteboards-sessions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;forecast_id&quot;: &quot;cm2n7z2vl000e9cllp4ckoc45&quot;,
+        ///  &quot;scheduling_group_id&quot;: &quot;cm2n7z2vl000e9cllp4ckoc45&quot;,
+        ///  &quot;forecast_intervals&quot;: [
+        ///    {
+        ///      &quot;timestamp&quot;: &quot;2025-01-01T00:00:00.0000000\u002B00:00&quot;,
+        ///      &quot;forecast&quot;: {
+        ///        &quot;agents&quot;: 5,
+        ///        &quot;voice&quot;: {
+        ///          &quot;aht&quot;: 40,
+        ///          &quot;e_aht&quot;: 38,
+        ///          &quot;vol&quot;: 10,
+        ///          &quot;e_vol&quot;: 12
+        ///        },
+        ///        &quot;messaging&quot;: {
+        ///          &quot;aht&quot;: 40,
+        ///          &quot;e_aht&quot;: 38,
+        ///          &quot;vol&quot;: 10,
+        ///          &quot;e_vol&quot;: 12
+        ///        },
+        ///        &quot;deferrabl [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string workforce_management_forecasts__forecastId__scheduling_groups__schedulingGroupId__GET {
+            get {
+                return ResourceManager.GetString("workforce-management-forecasts-{forecastId}-scheduling-groups-{schedulingGroupId}" +
+                        "_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: null,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 100,
+        ///  &quot;forecasts&quot;: [
+        ///    {
+        ///      &quot;forecast_id&quot;: &quot;cm2n7z2vl000e9cllp4ckoc45&quot;,
+        ///      &quot;name&quot;: &quot;Weekday forecast&quot;,
+        ///      &quot;description&quot;: &quot;Forecast for business days&quot;,
+        ///      &quot;type&quot;: &quot;SHORT_TERM&quot;,
+        ///      &quot;status&quot;: &quot;ready_step_1&quot;,
+        ///      &quot;start&quot;: &quot;2025-01-01T00:00:00.0000000\u002B00:00&quot;,
+        ///      &quot;end&quot;: &quot;2025-01-06T23:59:59.0000000\u002B00:00&quot;,
+        ///      &quot;create_time&quot;: &quot;2024-12-16T04:21:23.2070000\u002B00:00&quot;,
+        ///      &quot;modify_time&quot;: &quot;2024-12-16T [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string workforce_management_forecasts_GET {
+            get {
+                return ResourceManager.GetString("workforce-management-forecasts_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;status&quot;: &quot;SUCCESS&quot;,
+        ///  &quot;create_time&quot;: &quot;2025-11-05T04:13:40.800Z&quot;,
+        ///  &quot;row_processed&quot;: 1000,
+        ///  &quot;total_rows&quot;: 1000,
+        ///  &quot;import_id&quot;: &quot;cmgoyz7mb00002f6obth9ojea&quot;,
+        ///  &quot;file_name&quot;: &quot;HistoricalData.csv&quot;,
+        ///  &quot;timezone&quot;: &quot;America/New_York&quot;,
+        ///  &quot;imported_by&quot;: &quot;3U-_aQo_ROeigseGAQL5_A&quot;
+        ///}.
+        /// </summary>
+        internal static string workforce_management_imports__importId__historical_queue_metrics_GET {
+            get {
+                return ResourceManager.GetString("workforce-management-imports-{importId}-historical-queue-metrics_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;org_group_id&quot;: &quot;cmgoyz7mb00002f6obth9ojea&quot;,
+        ///  &quot;name&quot;: &quot;West Coast Operations&quot;,
+        ///  &quot;description&quot;: &quot;Organizational group for west coast teams&quot;,
+        ///  &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
+        ///  &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
+        ///  &quot;agent_count&quot;: 42,
+        ///  &quot;queue_count&quot;: 8,
+        ///  &quot;scheduling_groups&quot;: [
+        ///    {
+        ///      &quot;scheduling_group_id&quot;: &quot;cmgoyz7mb00002f6obth9ojea&quot;,
+        ///      &quot;name&quot;: &quot;Morning Shift&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string workforce_management_organizational_groups__organizationalGroupId__GET {
+            get {
+                return ResourceManager.GetString("workforce-management-organizational-groups-{organizationalGroupId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;org_group_id&quot;: &quot;cmgoyz7mb00002f6obth9ojea&quot;,
+        ///  &quot;name&quot;: &quot;West Coast Operations&quot;,
+        ///  &quot;description&quot;: &quot;Organizational group for west coast teams&quot;,
+        ///  &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
+        ///  &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;
+        ///}.
+        /// </summary>
+        internal static string workforce_management_organizational_groups__organizationalGroupId__PATCH {
+            get {
+                return ResourceManager.GetString("workforce-management-organizational-groups-{organizationalGroupId}_PATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;cm2n7z2vl000e9cllp4ckoc45&quot;,
+        ///  &quot;page_size&quot;: 15,
+        ///  &quot;total_records&quot;: &quot;45&quot;,
+        ///  &quot;organizational_groups&quot;: [
+        ///    {
+        ///      &quot;org_group_id&quot;: &quot;cmgoyz7mb00002f6obth9ojea&quot;,
+        ///      &quot;name&quot;: &quot;West Coast Operations&quot;,
+        ///      &quot;description&quot;: &quot;Organizational group for west coast teams&quot;,
+        ///      &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
+        ///      &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string workforce_management_organizational_groups_GET {
+            get {
+                return ResourceManager.GetString("workforce-management-organizational-groups_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;jA5csQv1W1oXuYZLspNIZzMOXqTD9r9Rje2&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 100,
+        ///  &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;agents&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;0c30da44bd68aae3b5714abb885a59&quot;,
+        ///      &quot;display_name&quot;: &quot;Alex&quot;,
+        ///      &quot;shifts&quot;: [
+        ///        {
+        ///          &quot;start_time&quot;: &quot;2024-11-06T03:30:00.000Z&quot;,
+        ///          &quot;end_time&quot;: &quot;2024-11-06T03:30:00.000Z&quot;,
+        ///          &quot;start_in_adherence&quot;: 0,
+        ///          &quot;end_in_adherence&quot;: 0
+        ///        }
+        ///      ],
+        ///      &quot;schedule_activities&quot;: [
+        ///     [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string workforce_management_reports_adherence_agents_GET {
+            get {
+                return ResourceManager.GetString("workforce-management-reports-adherence-agents_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;jA5csQv1W1oXuYZLspNIZzMOXqTD9r9Rje2&quot;,
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 100,
+        ///  &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///  &quot;agents&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;0c30da44bd68aae3b5714abb885a59&quot;,
+        ///      &quot;display_name&quot;: &quot;Alex&quot;,
+        ///      &quot;user_email&quot;: &quot;alex@example.com&quot;,
+        ///      &quot;scheduling_group_name&quot;: &quot;Sales&quot;,
+        ///      &quot;total_scheduled_time&quot;: 480,
+        ///      &quot;total_paid_time&quot;: 340,
+        ///      &quot;activities&quot;: [
+        ///        {
+        ///          &quot;schedule_activity_id&quot;: &quot;cll20wknm01cwex0isvewiegl&quot;,
+        ///          &quot;st [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string workforce_management_reports_schedules_agents_GET {
+            get {
+                return ResourceManager.GetString("workforce-management-reports-schedules-agents_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;assign_type&quot;: &quot;permanent&quot;,
+        ///  &quot;permanent_assignment&quot;: {
+        ///    &quot;account_id&quot;: &quot;bhmIXpdYRcCK6BB3VhMq6w&quot;,
+        ///    &quot;user_id&quot;: &quot;oyLyxW48QeC3uBBFY2CF3A&quot;,
+        ///    &quot;user_email&quot;: &quot;example@zoom.us&quot;
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string workspaces__workspaceId__assignment_GET {
+            get {
+                return ResourceManager.GetString("workspaces-{workspaceId}-assignment_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;id&quot;: &quot;qMOLddnySIGGVycz8aX_JQ&quot;,
+        ///  &quot;workspace_name&quot;: &quot;My Room&quot;,
+        ///  &quot;workspace_display_name&quot;: &quot;My Room&quot;,
+        ///  &quot;workspace_type&quot;: &quot;desk&quot;,
+        ///  &quot;workspace_passcode&quot;: &quot;123xyz&quot;,
+        ///  &quot;activation_code&quot;: &quot;3009-7012-8956-5005&quot;,
+        ///  &quot;calendar_resource_id&quot;: &quot;rNQUpdDXySFGhVycz7aR-SR&quot;,
+        ///  &quot;location_id&quot;: &quot;49D7a0xPQvGQ2DCMZgSe7w&quot;,
+        ///  &quot;supportAssignment&quot;: false
+        ///}.
+        /// </summary>
+        internal static string workspaces__workspaceId__GET {
+            get {
+                return ResourceManager.GetString("workspaces-{workspaceId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;qr_code&quot;: &quot;https://example.com/qr_code&quot;,
+        ///  &quot;expire_in&quot;: 10
+        ///}.
+        /// </summary>
+        internal static string workspaces__workspaceId__qr_code_GET {
+            get {
+                return ResourceManager.GetString("workspaces-{workspaceId}-qr_code_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;result&quot;: {
+        ///    &quot;topic&quot;: &quot;Yuki-devintt{{8*8}}\u0027s Reservation&quot;,
+        ///    &quot;timezone&quot;: &quot;UTC&quot;,
+        ///    &quot;id&quot;: &quot;dh1fjff72ffe7v139kn3hlfvl0&quot;,
+        ///    &quot;user_id&quot;: &quot;rZXNXVlVSTaSZDTJvLcBew&quot;,
+        ///    &quot;start_time&quot;: &quot;2023-10-16T19:30:00Z&quot;,
+        ///    &quot;end_time&quot;: &quot;2023-10-17T00:00:00Z&quot;,
+        ///    &quot;status&quot;: &quot;reserved&quot;
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string workspaces__workspaceId__reservations__reservationId__GET {
+            get {
+                return ResourceManager.GetString("workspaces-{workspaceId}-reservations-{reservationId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;reservation_id&quot;: &quot;dxpwbc2fi8tzz7d012rwx9u8c0&quot;,
+        ///  &quot;user_display_name&quot;: &quot;Admin Example&quot;,
+        ///  &quot;workspace_id&quot;: &quot;SJjU1CcGSs2L7odn6PanQw&quot;,
+        ///  &quot;workspace_name&quot;: &quot;Reserve Desk-01&quot;,
+        ///  &quot;fill_time&quot;: &quot;1707848572310&quot;,
+        ///  &quot;questionnaire_response&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;Fl75C43YTmS_IpMzYLipJw&quot;,
+        ///      &quot;title&quot;: &quot;Reservation Questionnaire&quot;,
+        ///      &quot;subject&quot;: &quot;reservation&quot;,
+        ///      &quot;list&quot;: [
+        ///        {
+        ///          &quot;question_id&quot;: &quot;0ds1NFeDQ1WfWlgVK-7OMQ&quot;,
+        ///          &quot;title&quot;: &quot;question single example&quot;,
+        ///          &quot;type&quot;: [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string workspaces__workspaceId__reservations__reservationId__questionnaires_GET {
+            get {
+                return ResourceManager.GetString("workspaces-{workspaceId}-reservations-{reservationId}-questionnaires_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;from&quot;: &quot;2021-03-18T05:41:36.0000000\u002B00:00&quot;,
+        ///  &quot;reservations&quot;: [
+        ///    {
+        ///      &quot;end_time&quot;: &quot;2021-03-18T05:41:36.0000000\u002B00:00&quot;,
+        ///      &quot;id&quot;: &quot;ebrg2b87a6uu9c678qhvsiahsc&quot;,
+        ///      &quot;start_time&quot;: &quot;2021-03-18T05:41:36.0000000\u002B00:00&quot;,
+        ///      &quot;timezone&quot;: &quot;Asia/Shanghai&quot;,
+        ///      &quot;topic&quot;: &quot;My Personal Meeting Room&quot;,
+        ///      &quot;user_id&quot;: &quot;KDcuGIm1QgePTO8WbOqwIQ&quot;,
+        ///      &quot;status&quot;: &quot;reserved&quot;
+        ///    }
+        ///  ],
+        ///  &quot;to&quot;: &quot;2021-03-18T05:41:36.0000000\u002B00:00&quot;
+        ///}.
+        /// </summary>
+        internal static string workspaces__workspaceId__reservations_GET {
+            get {
+                return ResourceManager.GetString("workspaces-{workspaceId}-reservations_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;workspaces&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;qMOLddnySIGGVycz8aX_JQ&quot;,
+        ///      &quot;workspace_status&quot;: &quot;free&quot;,
+        ///      &quot;workspace_name&quot;: &quot;My Room&quot;,
+        ///      &quot;workspace_type&quot;: &quot;desk&quot;,
+        ///      &quot;location_id&quot;: &quot;49D7a0xPQvGQ2DCMZgSe7w&quot;,
+        ///      &quot;capacity&quot;: &quot;30&quot;,
+        ///      &quot;construction_status&quot;: true,
+        ///      &quot;room_images&quot;: [
+        ///        &quot;https://image.url&quot;
+        ///      ],
+        ///      &quot;requires_approval&quot;: true,
+        ///      &quot;available&quot;: true,
+        ///      &quot;reserve_permission&quot;: [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string workspaces_additional_informations_GET {
+            get {
+                return ResourceManager.GetString("workspaces-additional_informations_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;name&quot;: &quot;Monitor&quot;,
+        ///  &quot;asset_id&quot;: &quot;acf7a8844f35426bb993b3db2c0501dd&quot;
+        ///}.
+        /// </summary>
+        internal static string workspaces_assets__assetId__GET {
+            get {
+                return ResourceManager.GetString("workspaces-assets-{assetId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;assets&quot;: [
+        ///    {
+        ///      &quot;name&quot;: &quot;TV223&quot;,
+        ///      &quot;asset_id&quot;: &quot;ab31d714b3644dc79681041709aeb4ab&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;n28bw3MswE5HKRqwrmxuR2aAoAcXZflOw72&quot;,
+        ///  &quot;page_size&quot;: 15
+        ///}.
+        /// </summary>
+        internal static string workspaces_assets_GET {
+            get {
+                return ResourceManager.GetString("workspaces-assets_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 20,
+        ///  &quot;workspaces&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;qMOLddnySIGGVycz8aX_JQ&quot;,
+        ///      &quot;workspace_name&quot;: &quot;My Room&quot;,
+        ///      &quot;workspace_type&quot;: &quot;desk&quot;,
+        ///      &quot;location_id&quot;: &quot;49D7a0xPQvGQ2DCMZgSe7w&quot;,
+        ///      &quot;capacity&quot;: &quot;30&quot;,
+        ///      &quot;construction_status&quot;: true,
+        ///      &quot;room_images&quot;: [
+        ///        &quot;https://image.url&quot;
+        ///      ],
+        ///      &quot;requires_approval&quot;: true,
+        ///      &quot;asset_ids&quot;: [
+        ///        &quot;acf7a8844f35426bb993b3db2c0501dd&quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string workspaces_GET {
+            get {
+                return ResourceManager.GetString("workspaces_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;background_map_url&quot;: &quot;https://file.zoom.us/file/asdwqegthr?business=zr\u0026jwt=srgsrtert&quot;,
+        ///  &quot;background_map_width&quot;: 800,
+        ///  &quot;background_map_height&quot;: 600,
+        ///  &quot;canvas_width&quot;: 1272,
+        ///  &quot;canvas_height&quot;: 720,
+        ///  &quot;point_size&quot;: 10
+        ///}.
+        /// </summary>
+        internal static string workspaces_locations__locationId__floor_map_GET {
+            get {
+                return ResourceManager.GetString("workspaces-locations-{locationId}-floor_map_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 20,
+        ///  &quot;release_events&quot;: [
+        ///    {
+        ///      &quot;event_id&quot;: &quot;qMOLddnySIGGVycz8aX_JQ&quot;,
+        ///      &quot;workspace_id&quot;: &quot;qMOLddnySIGGVycz8aX_JQ&quot;,
+        ///      &quot;location_id&quot;: &quot;6wXGGQvwQb2hpnHekQxMsw&quot;,
+        ///      &quot;workspace_name&quot;: &quot;My Room&quot;,
+        ///      &quot;workspace_type&quot;: &quot;all&quot;,
+        ///      &quot;user_name&quot;: &quot;san zhang&quot;,
+        ///      &quot;user_email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;timezone&quot;: &quot;Asia/Shanghai&quot;,
+        ///      &quot;reservation_start_time&quot;: &quot;2021-03-18T05:00:36 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string workspaces_released_workspaces_by_timeout_GET {
+            get {
+                return ResourceManager.GetString("workspaces-released_workspaces_by_timeout_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;desk_usage&quot;: {
+        ///    &quot;in_use&quot;: 2,
+        ///    &quot;not_in_use&quot;: 1
+        ///  },
+        ///  &quot;room_usage&quot;: {
+        ///    &quot;in_use&quot;: 1,
+        ///    &quot;not_in_use&quot;: 1
+        ///  },
+        ///  &quot;total_usage&quot;: {
+        ///    &quot;in_use&quot;: 1,
+        ///    &quot;not_in_use&quot;: 1
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string workspaces_usage_GET {
+            get {
+                return ResourceManager.GetString("workspaces-usage_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;result&quot;: {
+        ///    &quot;room_status&quot;: &quot;free&quot;,
+        ///    &quot;desk_status&quot;: &quot;free&quot;
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string workspaces_users__userId__calendar_settings_GET {
+            get {
+                return ResourceManager.GetString("workspaces-users-{userId}-calendar-settings_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;reservations&quot;: [
+        ///    {
+        ///      &quot;end_time&quot;: &quot;2021-03-18T05:41:36.0000000\u002B00:00&quot;,
+        ///      &quot;id&quot;: &quot;ebrg2b87a6uu9c678qhvsiahsc&quot;,
+        ///      &quot;start_time&quot;: &quot;2021-03-18T05:41:36.0000000\u002B00:00&quot;,
+        ///      &quot;timezone&quot;: &quot;Asia/Shanghai&quot;,
+        ///      &quot;topic&quot;: &quot;My Personal Meeting Room&quot;,
+        ///      &quot;user_id&quot;: &quot;KDcuGIm1QgePTO8WbOqwIQ&quot;,
+        ///      &quot;status&quot;: &quot;reserved&quot;,
+        ///      &quot;workspace_id&quot;: &quot;qMOLddnySIGGVycz8aX_JQ&quot;,
+        ///      &quot;location_id&quot;: &quot;49D7a0xPQvGQ2DCMZgSe7w&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string workspaces_users__userId__reservations_GET {
+            get {
+                return ResourceManager.GetString("workspaces-users-{userId}-reservations_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;access_link_id&quot;: &quot;234kjhg23kl4jhlaksjdh3&quot;,
+        ///  &quot;name&quot;: &quot;Event Access Link 1&quot;,
+        ///  &quot;type&quot;: &quot;registration&quot;,
+        ///  &quot;is_default&quot;: true,
+        ///  &quot;authentication_method&quot;: &quot;bypass_auth&quot;,
+        ///  &quot;idp_name&quot;: &quot;okta&quot;,
+        ///  &quot;allow_domain_list&quot;: [
+        ///    &quot;zoom.us&quot;
+        ///  ],
+        ///  &quot;email_restrict_list&quot;: [
+        ///    &quot;example1@example.com&quot;
+        ///  ],
+        ///  &quot;security_at_join&quot;: {
+        ///    &quot;email_authentication&quot;: true,
+        ///    &quot;security_code_verification&quot;: true
+        ///  },
+        ///  &quot;ticket_type_id&quot;: &quot;PTYwAknYQXaDStOP7O3ExA&quot;,
+        ///  &quot;recurring_registration_option&quot;: &quot;all_sessions&quot;        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string zoom_events_events__eventId__access_links__accessLinkId__GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-access_links-{accessLinkId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;access_links&quot;: [
+        ///    {
+        ///      &quot;access_link_id&quot;: &quot;234kjhg23kl4jhlaksjdh3&quot;,
+        ///      &quot;name&quot;: &quot;Event Access Link 1&quot;,
+        ///      &quot;type&quot;: &quot;registration&quot;,
+        ///      &quot;is_default&quot;: true,
+        ///      &quot;url&quot;: &quot;https://gobranding.zipow.com/ev/Ar7HuZc3rtKwaVqLz0QdBYN-2jTOMeGGgLe-G7JzOUQZTIBOpBaH~Aq9NeHNgGwwg2eyFH7eEtP4bXRXiiYCM8pDiTuTbrigbqJ1uK2K6Ga-Ghg&quot;,
+        ///      &quot;authentication_method&quot;: &quot;bypass_auth&quot;,
+        ///      &quot;idp_name&quot;: &quot;okta&quot;,
+        ///      &quot;allow_domain_list&quot;: [
+        ///        &quot;zoom.us&quot;
+        ///      ],
+        ///      &quot;email_restrict_list&quot;: [
+        ///         [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string zoom_events_events__eventId__access_links_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-access_links_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;yqT59YnBSHqvDdNnkeHQsA&quot;,
+        ///  &quot;attendees&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;email@zoom.us&quot;,
+        ///      &quot;source&quot;: &quot;Console-1&quot;,
+        ///      &quot;action&quot;: &quot;Check-in&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string zoom_events_events__eventId__attendee_action_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-attendee_action_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;coeditors&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;coeditor@example.com&quot;,
+        ///      &quot;permission_groups&quot;: [
+        ///        &quot;EventConfiguration&quot;
+        ///      ]
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string zoom_events_events__eventId__coeditors_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-coeditors_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2&quot;,
+        ///  &quot;emails&quot;: [
+        ///    {
+        ///      &quot;name&quot;: &quot;John Doe&quot;,
+        ///      &quot;email&quot;: &quot;john.doe@test.com&quot;,
+        ///      &quot;status&quot;: &quot;delivered&quot;,
+        ///      &quot;failure_reason&quot;: &quot;bounced&quot;,
+        ///      &quot;sent_date&quot;: &quot;2025-08-24T22:30:00.0000000\u002B00:00&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string zoom_events_events__eventId__email_types__emailTypeId__send_status_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-email_types-{emailTypeId}-send_status_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 15,
+        ///  &quot;next_page_token&quot;: &quot;oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2&quot;,
+        ///  &quot;email_types&quot;: [
+        ///    {
+        ///      &quot;email_type&quot;: &quot;Free ticket confirmation&quot;,
+        ///      &quot;email_type_id&quot;: &quot;SLar6n5ATsWSqZ_EZv_9jw&quot;,
+        ///      &quot;trigger_overview&quot;: &quot;Sent when user is registered&quot;,
+        ///      &quot;trigger_date&quot;: &quot;2025-08-24T22:30:00.0000000\u002B00:00&quot;,
+        ///      &quot;status&quot;: &quot;scheduled&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string zoom_events_events__eventId__email_types_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-email_types_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;exhibitor_id&quot;: &quot;kNqLPC6hSFiZ9NpgjA549w&quot;,
+        ///  &quot;name&quot;: &quot;Fletchie Doe&quot;,
+        ///  &quot;is_sponsor&quot;: true,
+        ///  &quot;tier_id&quot;: &quot;4fgRIOXjQGmoH6raAzJf8g&quot;,
+        ///  &quot;description&quot;: &quot;&quot;,
+        ///  &quot;associated_sessions&quot;: [
+        ///    &quot;[QnjbUW7ORu2sjvjNfjf_zQ, iERy5vUPRW259kk9l0zNbQ]&quot;
+        ///  ],
+        ///  &quot;contact_name&quot;: &quot;John Doe&quot;,
+        ///  &quot;contact_email&quot;: &quot;abc.def@email.com&quot;,
+        ///  &quot;website&quot;: &quot;https://mywebsite.com/example&quot;,
+        ///  &quot;privacy_policy&quot;: &quot;https://mywebsite.com/example&quot;,
+        ///  &quot;linkedin_url&quot;: &quot;https://linkedin.com/example&quot;,
+        ///  &quot;twitter_url&quot;: &quot;https://twitter.com/ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string zoom_events_events__eventId__exhibitors__exhibitorId__GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-exhibitors-{exhibitorId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;exhibitors&quot;: [
+        ///    {
+        ///      &quot;exhibitor_id&quot;: &quot;kNqLPC6hSFiZ9NpgjA549w&quot;,
+        ///      &quot;name&quot;: &quot;Fletchie Doe&quot;,
+        ///      &quot;is_sponsor&quot;: true,
+        ///      &quot;tier_id&quot;: &quot;4fgRIOXjQGmoH6raAzJf8g&quot;,
+        ///      &quot;description&quot;: &quot;&quot;,
+        ///      &quot;associated_sessions&quot;: [
+        ///        &quot;[QnjbUW7ORu2sjvjNfjf_zQ, iERy5vUPRW259kk9l0zNbQ]&quot;
+        ///      ],
+        ///      &quot;contact_name&quot;: &quot;John Doe&quot;,
+        ///      &quot;contact_email&quot;: &quot;abc.def@email.com&quot;,
+        ///      &quot;website&quot;: &quot;https://mywebsite.com/example&quot;,
+        ///      &quot;privacy_policy&quot;: &quot;https://mywebsite.com/exa [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string zoom_events_events__eventId__exhibitors_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-exhibitors_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event_id&quot;: &quot;234kj2h34kljgh23lkhj3&quot;,
+        ///  &quot;name&quot;: &quot;OpenAPI Conference Name&quot;,
+        ///  &quot;description&quot;: &quot;This event was created with the OpenAPI.&quot;,
+        ///  &quot;timezone&quot;: &quot;America/Indianapolis&quot;,
+        ///  &quot;event_type&quot;: &quot;CONFERENCE&quot;,
+        ///  &quot;recurrence&quot;: {
+        ///    &quot;type&quot;: 0,
+        ///    &quot;repeat_interval&quot;: 0,
+        ///    &quot;weekly_days&quot;: &quot;string&quot;,
+        ///    &quot;monthly_days&quot;: 0,
+        ///    &quot;monthly_week_day&quot;: 0,
+        ///    &quot;end_times&quot;: 0,
+        ///    &quot;end_date_time&quot;: &quot;2026-01-27T20:24:35.5404716Z&quot;,
+        ///    &quot;monthly_week&quot;: 0,
+        ///    &quot;duration&quot;: 0
+        ///  },
+        ///  &quot;access_level&quot;: &quot;PRIVATE_REST [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string zoom_events_events__eventId__GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2&quot;,
+        ///  &quot;registrants&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;email@zoom.us&quot;,
+        ///      &quot;registration_status&quot;: &quot;INVITED&quot;,
+        ///      &quot;tickets&quot;: [
+        ///        {
+        ///          &quot;ticket_id&quot;: &quot;1234567&quot;,
+        ///          &quot;role&quot;: &quot;INTERPRETER&quot;,
+        ///          &quot;authentication_method&quot;: &quot;no_auth&quot;,
+        ///          &quot;qr_code_url&quot;: &quot;https://zoom.us/qr?t=9\u0026ein=AkhZhct94cUqiDfRumcpPf0loI-QAOt5T9yh_vGRn2-BkPDmjfze~AyTxY2Fs9Nw6ADEk-edYyZIyGIzxVAI_v-Mci1S-KeyRhbZOG3-4kWVpYqSxJK-2Ul [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string zoom_events_events__eventId__registrants_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-registrants_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2&quot;,
+        ///  &quot;chat_transcripts&quot;: [
+        ///    {
+        ///      &quot;chat_type&quot;: &quot;Lobby Chat&quot;,
+        ///      &quot;chat_name&quot;: &quot;Lobby Chat - 1&quot;,
+        ///      &quot;sender&quot;: &quot;James Brown&quot;,
+        ///      &quot;sender_email&quot;: &quot;james.brown@zoomtest.us&quot;,
+        ///      &quot;message_time&quot;: &quot;2023-08-22T02:58:56Z&quot;,
+        ///      &quot;message&quot;: &quot;Hi, How are you doing?&quot;,
+        ///      &quot;reset_time&quot;: &quot;2023-08-22T02:58:56Z&quot;,
+        ///      &quot;reset_by_whom&quot;: &quot;Tom Brown&quot;,
+        ///      &quot;chat_channel_id&quot;: &quot;asfasdfasdf12312&quot;,
+        ///      &quot;message_id&quot;:  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string zoom_events_events__eventId__reports_chat_transcripts_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-reports-chat_transcripts_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2&quot;,
+        ///  &quot;registrants&quot;: [
+        ///    {
+        ///      &quot;display_name&quot;: &quot;First Last&quot;,
+        ///      &quot;first_name&quot;: &quot;First&quot;,
+        ///      &quot;last_name&quot;: &quot;Last&quot;,
+        ///      &quot;email&quot;: &quot;email@zoom.us&quot;,
+        ///      &quot;opt_in_marketing&quot;: 1,
+        ///      &quot;registration_date&quot;: &quot;2025-03-24T22:30:00.0000000\u002B00:00&quot;,
+        ///      &quot;event_attendance&quot;: &quot;attended&quot;,
+        ///      &quot;country&quot;: &quot;US&quot;,
+        ///      &quot;lobby_attendance&quot;: &quot;attended&quot;,
+        ///      &quot;surveys_count&quot;: 0,
+        ///      &quot;polls_count&quot;: 0,
+        ///      &quot;resource_ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string zoom_events_events__eventId__reports_custom_reports__customReportId__GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-reports-custom_reports-{customReportId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2&quot;,
+        ///  &quot;attendees&quot;: [
+        ///    {
+        ///      &quot;display_name&quot;: &quot;First Last&quot;,
+        ///      &quot;first_name&quot;: &quot;First&quot;,
+        ///      &quot;last_name&quot;: &quot;Last&quot;,
+        ///      &quot;email&quot;: &quot;email@zoom.us&quot;,
+        ///      &quot;opt_in_marketing&quot;: 1,
+        ///      &quot;marketing_consent_prechecked&quot;: 1,
+        ///      &quot;event_attendance&quot;: &quot;attended&quot;,
+        ///      &quot;attendance_type&quot;: [
+        ///        &quot;hybrid&quot;
+        ///      ],
+        ///      &quot;lobby_attendance&quot;: &quot;attended&quot;,
+        ///      &quot;lobby_chat_sent&quot;: 2,
+        ///      &quot;survey_taken&quot;: 0,
+        ///      &quot;tota [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string zoom_events_events__eventId__reports_event_attendance_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-reports-event_attendance_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2&quot;,
+        ///  &quot;attendees&quot;: [
+        ///    {
+        ///      &quot;session_id&quot;: &quot;IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2&quot;,
+        ///      &quot;first_name&quot;: &quot;First&quot;,
+        ///      &quot;last_name&quot;: &quot;Last&quot;,
+        ///      &quot;email&quot;: &quot;email@zoom.us&quot;,
+        ///      &quot;display_name&quot;: &quot;First Last&quot;,
+        ///      &quot;authentication_method&quot;: &quot;no_auth&quot;,
+        ///      &quot;marketing_consent_prechecked&quot;: 1,
+        ///      &quot;opt_in_marketing&quot;: 1,
+        ///      &quot;check_in_method&quot;: &quot;string&quot;,
+        ///      &quot;attendance_type&quot;: &quot;string&quot;,
+        ///      &quot;session_attendance [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string zoom_events_events__eventId__reports_sessions__sessionId__attendance_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-reports-sessions-{sessionId}-attendance_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2&quot;,
+        ///  &quot;surveys&quot;: [
+        ///    {
+        ///      &quot;session_name&quot;: &quot;Introduction&quot;,
+        ///      &quot;session_id&quot;: &quot;ZALMy1b8RRiK810bVL-wFg&quot;,
+        ///      &quot;email&quot;: &quot;ZALMy1b8RRiK810bVL-wFg&quot;,
+        ///      &quot;question_and_answers&quot;: [
+        ///        {
+        ///          &quot;question&quot;: &quot;What is your favorite type of ice cream flavor?&quot;,
+        ///          &quot;answer&quot;: &quot;Chocolate&quot;
+        ///        }
+        ///      ]
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string zoom_events_events__eventId__reports_survey_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-reports-survey_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2&quot;,
+        ///  &quot;registrations&quot;: [
+        ///    {
+        ///      &quot;display_name&quot;: &quot;First Last&quot;,
+        ///      &quot;first_name&quot;: &quot;First&quot;,
+        ///      &quot;last_name&quot;: &quot;Last&quot;,
+        ///      &quot;email&quot;: &quot;email@zoom.us&quot;,
+        ///      &quot;opt_in_marketing&quot;: 0,
+        ///      &quot;marketing_consent_prechecked&quot;: 0,
+        ///      &quot;register_date&quot;: &quot;2022-03-24T22:30:00.0000000\u002B00:00&quot;,
+        ///      &quot;event_attendance&quot;: &quot;attended&quot;,
+        ///      &quot;attendance_type&quot;: [
+        ///        &quot;hybrid&quot;
+        ///      ],
+        ///      &quot;registration_method&quot;: &quot;Self- [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string zoom_events_events__eventId__reports_ticket_registration_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-reports-ticket_registration_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;yqT59YnBSHqvDdNnkeHQsA&quot;,
+        ///  &quot;attendees&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;email@zoom.us&quot;,
+        ///      &quot;source&quot;: &quot;Console-1&quot;,
+        ///      &quot;action&quot;: &quot;Check-in&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string zoom_events_events__eventId__sessions__sessionId__attendee_action_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-sessions-{sessionId}-attendee_action_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2&quot;,
+        ///  &quot;attendees&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;email@zoom.us&quot;,
+        ///      &quot;authentication_method&quot;: &quot;no_auth&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string zoom_events_events__eventId__sessions__sessionId__attendees_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-sessions-{sessionId}-attendees_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;interpreters&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;abc.def@email.com&quot;,
+        ///      &quot;type&quot;: 1,
+        ///      &quot;source_language_id&quot;: null,
+        ///      &quot;source_language_display_name&quot;: &quot;English&quot;,
+        ///      &quot;target_language_id&quot;: null,
+        ///      &quot;target_language_display_name&quot;: null
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string zoom_events_events__eventId__sessions__sessionId__interpreters_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-sessions-{sessionId}-interpreters_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;code&quot;: 0,
+        ///  &quot;error_message&quot;: &quot;success&quot;,
+        ///  &quot;join_token&quot;: &quot;OIgzlUv99nloE1vFMFssJVZuhFSstmSNd_Pi4WEBUNy0hWK2L6TtrRWscn&quot;
+        ///}.
+        /// </summary>
+        internal static string zoom_events_events__eventId__sessions__sessionId__join_token_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-sessions-{sessionId}-join_token_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;incoming_enabled&quot;: true,
+        ///  &quot;incoming_config&quot;: {
+        ///    &quot;stream_key_id&quot;: &quot;YwG21kyxkyRO7SOkuwPf7S8B&quot;,
+        ///    &quot;stream_key_name&quot;: &quot;Stream key 2&quot;,
+        ///    &quot;stream_key_description&quot;: &quot;Stream key 2 description&quot;,
+        ///    &quot;stream_key_type&quot;: &quot;SAVED&quot;,
+        ///    &quot;stream_key&quot;: &quot;ZAEUMvRcI1eq_SRMg3iQBz-U&quot;,
+        ///    &quot;stream_url&quot;: &quot;rtmp://10.100.125.159:1956/live&quot;,
+        ///    &quot;stream_backup_url&quot;: &quot;rtmp://10.100.125.159:1976/live?backup=1&quot;,
+        ///    &quot;effective_time&quot;: &quot;2022-05-31T13:00:00.0000000\u002B00:00&quot;,
+        ///    &quot;expiration_time&quot;: &quot;2022-05-31T13: [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string zoom_events_events__eventId__sessions__sessionId__livestream_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-sessions-{sessionId}-livestream_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;polls&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;QalIoKWLTJehBJ8e1xRrbQ&quot;,
+        ///      &quot;status&quot;: &quot;active&quot;,
+        ///      &quot;anonymous&quot;: false,
+        ///      &quot;poll_type&quot;: 2,
+        ///      &quot;questions&quot;: [
+        ///        {
+        ///          &quot;answer_max_character&quot;: 200,
+        ///          &quot;answer_min_character&quot;: 1,
+        ///          &quot;answer_required&quot;: false,
+        ///          &quot;answers&quot;: [
+        ///            &quot;Extremely useful&quot;
+        ///          ],
+        ///          &quot;case_sensitive&quot;: false,
+        ///          &quot;name&quot;: &quot;How useful was this meeting?&quot;,
+        ///          &quot;prompts&quot;: [
+        ///            &quot;How are [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string zoom_events_events__eventId__sessions__sessionId__polls_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-sessions-{sessionId}-polls_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2&quot;,
+        ///  &quot;reservations&quot;: [
+        ///    {
+        ///      &quot;first_name&quot;: &quot;First&quot;,
+        ///      &quot;last_name&quot;: &quot;Last&quot;,
+        ///      &quot;email&quot;: &quot;email@zoom.us&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string zoom_events_events__eventId__sessions__sessionId__reservations_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-sessions-{sessionId}-reservations_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;sessions&quot;: [
+        ///    null
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string zoom_events_events__eventId__sessions_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-sessions_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;speaker_id&quot;: &quot;3935Ug73Sp6S-7K1BHk7qw&quot;,
+        ///  &quot;name&quot;: &quot;John Joseph Dev&quot;,
+        ///  &quot;email&quot;: &quot;email@example.com&quot;,
+        ///  &quot;job_title&quot;: &quot;Product Manager&quot;,
+        ///  &quot;biography&quot;: &quot;Provide a brief introduction of the speaker.&quot;,
+        ///  &quot;company_name&quot;: &quot;zoom&quot;,
+        ///  &quot;company_website&quot;: &quot;https://www.example.com&quot;,
+        ///  &quot;linkedin_url&quot;: &quot;https://linkedin.com/example&quot;,
+        ///  &quot;twitter_url&quot;: &quot;https://twitter.com/example&quot;,
+        ///  &quot;youtube_url&quot;: &quot;https://youtube.com/example&quot;,
+        ///  &quot;featured_in_event_detail_page&quot;: true,
+        ///  &quot;visible_in_event_detail_page&quot;: tru [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string zoom_events_events__eventId__speakers__speakerId__GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-speakers-{speakerId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;speakers&quot;: [
+        ///    {
+        ///      &quot;speaker_id&quot;: &quot;3935Ug73Sp6S-7K1BHk7qw&quot;,
+        ///      &quot;name&quot;: &quot;John Joseph Dev&quot;,
+        ///      &quot;email&quot;: &quot;email@example.com&quot;,
+        ///      &quot;job_title&quot;: &quot;Product Manager&quot;,
+        ///      &quot;biography&quot;: &quot;Provide a brief introduction of the speaker.&quot;,
+        ///      &quot;company_name&quot;: &quot;zoom&quot;,
+        ///      &quot;company_website&quot;: &quot;https://www.example.com&quot;,
+        ///      &quot;linkedin_url&quot;: &quot;https://linkedin.com/example&quot;,
+        ///      &quot;twitter_url&quot;: &quot;https://twitter.com/example&quot;,
+        ///      &quot;youtube_url&quot;: &quot;https://youtube.com/exa [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string zoom_events_events__eventId__speakers_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-speakers_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;sponsor_tiers&quot;: [
+        ///    {
+        ///      &quot;tier_id&quot;: &quot;CvY9Azb0QwGid19eI1IlyQ&quot;,
+        ///      &quot;name&quot;: &quot;Updated Sponsor Tier name&quot;,
+        ///      &quot;description&quot;: &quot;Platinum Sponsor Tier&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string zoom_events_events__eventId__sponsor_tiers_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-sponsor_tiers_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;ticket_types&quot;: [
+        ///    {
+        ///      &quot;ticket_type_id&quot;: &quot;234kjhg23kl4jhlaksjdh3&quot;,
+        ///      &quot;name&quot;: &quot;General Admission Ticket&quot;,
+        ///      &quot;currency&quot;: &quot;USD&quot;,
+        ///      &quot;free&quot;: true,
+        ///      &quot;price&quot;: &quot;0&quot;,
+        ///      &quot;quantity&quot;: 50,
+        ///      &quot;start_time&quot;: &quot;2022-03-24T22:30:00Z&quot;,
+        ///      &quot;end_time&quot;: &quot;2023-01-01T06:30:00Z&quot;,
+        ///      &quot;description&quot;: &quot;The description of the ticket type.&quot;,
+        ///      &quot;sold_quantity&quot;: 35,
+        ///      &quot;sessions&quot;: [
+        ///        &quot;ALL&quot;
+        ///      ],
+        ///      &quot;bookmarked_sessions&quot;: [
+        ///        &quot;ALL&quot;
+        ///    [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string zoom_events_events__eventId__ticket_types_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-ticket_types_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;yqT59YnBSHqvDdNnkeHQsA&quot;,
+        ///  &quot;tickets&quot;: [
+        ///    null
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string zoom_events_events__eventId__tickets_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events-{eventId}-tickets_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2&quot;,
+        ///  &quot;events&quot;: [
+        ///    {
+        ///      &quot;event_id&quot;: &quot;234kj2h34kljgh23lkhj3&quot;,
+        ///      &quot;name&quot;: &quot;OpenAPI Conference Name&quot;,
+        ///      &quot;description&quot;: &quot;This event was created with the OpenAPI&quot;,
+        ///      &quot;timezone&quot;: &quot;America/Indianapolis&quot;,
+        ///      &quot;event_type&quot;: &quot;CONFERENCE&quot;,
+        ///      &quot;recurrence&quot;: {
+        ///        &quot;type&quot;: 0,
+        ///        &quot;repeat_interval&quot;: 0,
+        ///        &quot;weekly_days&quot;: &quot;string&quot;,
+        ///        &quot;monthly_days&quot;: 0,
+        ///        &quot;monthly_week_day&quot;: 0,
+        ///       [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string zoom_events_events_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-events_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;yqT59YnBSHqvDdNnkeHQsA&quot;,
+        ///  &quot;hosts&quot;: [
+        ///    {
+        ///      &quot;host_user_id&quot;: &quot;4uzfv3JwTeyR5QpC3PXwMg&quot;,
+        ///      &quot;email&quot;: &quot;host@example.com&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string zoom_events_hubs__hubId__hosts_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-hubs-{hubId}-hosts_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;yqT59YnBSHqvDdNnkeHQsA&quot;,
+        ///  &quot;videos&quot;: [
+        ///    null
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string zoom_events_hubs__hubId__videos_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-hubs-{hubId}-videos_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;status&quot;: &quot;published&quot;
+        ///}.
+        /// </summary>
+        internal static string zoom_events_hubs__hubId__vod_channels__channelId__actions_POST {
+            get {
+                return ResourceManager.GetString("zoom_events-hubs-{hubId}-vod_channels-{channelId}-actions_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;channel_id&quot;: &quot;iso9Dllddp39dagjLj9j&quot;,
+        ///  &quot;name&quot;: &quot;FoodieFlicks&quot;,
+        ///  &quot;description&quot;: &quot;A cinematic journey through the world of cuisine!.&quot;,
+        ///  &quot;status&quot;: &quot;PUBLISHED&quot;,
+        ///  &quot;is_published_to_hub&quot;: true,
+        ///  &quot;type&quot;: &quot;VIDEO_LIST_HUB&quot;,
+        ///  &quot;embed_script&quot;: &quot;\u003Cscript src=\u0022https: //gozestatic.zoom.us/zoomevents-vod-sdk/0.0.8/vod_embed_sdk/zoomVodEmbed.js\u0022\u003E\u003C/script\u003E\u003Cdiv class=\u0022zoom-embed\u0022 style=\u0022width:100%;height:100%;\u0022 data-channel-id=\u0022RAvxS3RWSVOjgchfA1porQ\u [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string zoom_events_hubs__hubId__vod_channels__channelId__GET {
+            get {
+                return ResourceManager.GetString("zoom_events-hubs-{hubId}-vod_channels-{channelId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;yqT59YnBSHqvDdNnkeHQsA&quot;,
+        ///  &quot;registrations&quot;: [
+        ///    null
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string zoom_events_hubs__hubId__vod_channels__channelId__registrations_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-hubs-{hubId}-vod_channels-{channelId}-registrations_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2&quot;,
+        ///  &quot;registrations&quot;: [
+        ///    {
+        ///      &quot;email&quot;: &quot;xyz@example.com&quot;,
+        ///      &quot;first_name&quot;: &quot;First&quot;,
+        ///      &quot;last_name&quot;: &quot;Last&quot;,
+        ///      &quot;video_watch_duration&quot;: [
+        ///        {
+        ///          &quot;video_id&quot;: &quot;LVRGBTZXI6Kt7zv0g&quot;,
+        ///          &quot;video_name&quot;: &quot;tutorial one&quot;,
+        ///          &quot;duration&quot;: 10
+        ///        }
+        ///      ],
+        ///      &quot;authentication_method&quot;: &quot;no_auth&quot;,
+        ///      &quot;questions&quot;: [
+        ///        {
+        ///          &quot;title&quot;: &quot;First Name&quot;,
+        ///          &quot;answer [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string zoom_events_hubs__hubId__vod_channels__channelId__reports_registrations_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-hubs-{hubId}-vod_channels-{channelId}-reports-registrations_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;yqT59YnBSHqvDdNnkeHQsA&quot;,
+        ///  &quot;videos&quot;: [
+        ///    null
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string zoom_events_hubs__hubId__vod_channels__channelId__videos_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-hubs-{hubId}-vod_channels-{channelId}-videos_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;yqT59YnBSHqvDdNnkeHQsA&quot;,
+        ///  &quot;vod_channels&quot;: [
+        ///    null
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string zoom_events_hubs__hubId__vod_channels_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-hubs-{hubId}-vod_channels_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;hubs&quot;: [
+        ///    {
+        ///      &quot;hub_id&quot;: &quot;4uzfv3JwTeyR5QpC3PXwMg&quot;,
+        ///      &quot;access_level&quot;: &quot;PUBLIC&quot;,
+        ///      &quot;name&quot;: &quot;Example Hub Name&quot;,
+        ///      &quot;description&quot;: &quot;Test hub&quot;,
+        ///      &quot;public_url&quot;: &quot;https://example.zoom.us/myhub&quot;,
+        ///      &quot;hidden_hub&quot;: true,
+        ///      &quot;hub_active&quot;: true,
+        ///      &quot;auto_list_events&quot;: true,
+        ///      &quot;landing_hub&quot;: true
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string zoom_events_hubs_GET {
+            get {
+                return ResourceManager.GetString("zoom_events-hubs_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;deeplink&quot;: &quot;https://zoom.us/launch/chatapp/Zx_cSBEZUWRUMIf454A3sRpEzRp8kVmFINKvSBMok37i5bNRqtLbUxy681Qh_wVhFyW2AhyyF2LbtqSz9pFckUUupHg.wEt88YlHQpzp635x&quot;
+        ///}.
+        /// </summary>
+        internal static string zoomapp_deeplink_POST {
+            get {
+                return ResourceManager.GetString("zoomapp-deeplink_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;conversation_id&quot;: &quot;egLSRuj2SlWet\u002BwLi87LNA==,1667893163000&quot;,
+        ///  &quot;meeting_id&quot;: 896549134891,
+        ///  &quot;meeting_uuid&quot;: &quot;egLSRuj2SlWet\u002BwLi87LNA==&quot;,
+        ///  &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///  &quot;host_email&quot;: &quot;jchill@example.com&quot;,
+        ///  &quot;topic&quot;: &quot;Maximize profits&quot;,
+        ///  &quot;conversation_topic&quot;: &quot;Maximize profits&quot;,
+        ///  &quot;duration&quot;: 60,
+        ///  &quot;summary&quot;: &quot;summary&quot;,
+        ///  &quot;conversation_type&quot;: &quot;meeting&quot;,
+        ///  &quot;stage_during_conversation&quot;: &quot;Perception Analysis&quot;,
+        ///  &quot;start_time&quot;: &quot;2022-03-23T06:00:00Z&quot;,
+        ///  &quot;meeting_start_time&quot;: &quot;2 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string zra_conversations__conversationId__GET {
+            get {
+                return ResourceManager.GetString("zra-conversations-{conversationId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;team_id&quot;: &quot;N5nHB8FTSnG56_hyOFPovQ&quot;,
+        ///  &quot;name&quot;: &quot;CEO Team&quot;,
+        ///  &quot;description&quot;: &quot;CEO Office&quot;,
+        ///  &quot;type&quot;: &quot;hierarchical team&quot;,
+        ///  &quot;member_size&quot;: 1,
+        ///  &quot;manager_size&quot;: 1,
+        ///  &quot;leaf&quot;: true
+        ///}.
+        /// </summary>
+        internal static string zra_team__teamId__GET {
+            get {
+                return ResourceManager.GetString("zra-team-{teamId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;managers&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;iL2FL0wsRbOU__OsdO-4Lg&quot;,
+        ///      &quot;email&quot;: &quot;jonathan.zhang03@dispostable.com&quot;,
+        ///      &quot;first_name&quot;: &quot;Jonathan&quot;,
+        ///      &quot;last_name&quot;: &quot;Zhang&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;gPP6D7Oy6TUyGwpBBtICy03182P6nJp3yQ2&quot;,
+        ///  &quot;page_size&quot;: &quot;30&quot;
+        ///}.
+        /// </summary>
+        internal static string zra_team__teamId__team_managers_GET {
+            get {
+                return ResourceManager.GetString("zra-team-{teamId}-team_managers_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;members&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;iL2FL0wsRbOU__OsdO-4Lg&quot;,
+        ///      &quot;email&quot;: &quot;jonathan.zhang03@dispostable.com&quot;,
+        ///      &quot;first_name&quot;: &quot;Jonathan&quot;,
+        ///      &quot;last_name&quot;: &quot;Zhang&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;gPP6D7Oy6TUyGwpBBtICy03182P6nJp3yQ2&quot;,
+        ///  &quot;page_size&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string zra_team__teamId__team_members_GET {
+            get {
+                return ResourceManager.GetString("zra-team-{teamId}-team_members_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;unassigned_users&quot;: [
+        ///    {
+        ///      &quot;user_id&quot;: &quot;iL2FL0wsRbOU__OsdO-4Lg&quot;,
+        ///      &quot;email&quot;: &quot;jonathan.zhang03@dispostable.com&quot;,
+        ///      &quot;first_name&quot;: &quot;Jonathan&quot;,
+        ///      &quot;last_name&quot;: &quot;Zhang&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;gPP6D7Oy6TUyGwpBBtICy03182P6nJp3yQ2&quot;,
+        ///  &quot;page_size&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string zra_team_unassigned_team_users_GET {
+            get {
+                return ResourceManager.GetString("zra-team-unassigned_team_users_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;teams&quot;: [
+        ///    {
+        ///      &quot;team_id&quot;: &quot;aO1RVNBSRC2klMMdco14_g&quot;,
+        ///      &quot;name&quot;: &quot;level 1-10&quot;,
+        ///      &quot;description&quot;: &quot;level 1-10&quot;,
+        ///      &quot;type&quot;: &quot;hierarchical team&quot;,
+        ///      &quot;member_size&quot;: 1,
+        ///      &quot;supervisor_size&quot;: 1,
+        ///      &quot;leaf&quot;: true,
+        ///      &quot;parent_teams&quot;: [
+        ///        {
+        ///          &quot;team_id&quot;: &quot;jeazIFbXSKm4E65_cxxQzA&quot;,
+        ///          &quot;name&quot;: &quot;level 1&quot;
+        ///        }
+        ///      ]
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;gPP6D7Oy6TUyGwpBBtICy03182P6nJp3yQ2&quot;,
+        ///  &quot;page_size&quot;: 30
+        ///}.
+        /// </summary>
+        internal static string zra_teams_GET {
+            get {
+                return ResourceManager.GetString("zra-teams_GET", resourceCulture);
             }
         }
     }

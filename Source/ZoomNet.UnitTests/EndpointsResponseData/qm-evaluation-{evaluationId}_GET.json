@@ -1,0 +1,54 @@
+{
+  "scorecard": {
+    "scorecard_id": "CaBoBGvDSCmYt5GDDxP4-Q",
+    "scorecard_name": "AAAAAAAA Automated DEMO test 1212 TEST 111",
+    "sections": [
+      {
+        "name": "Service Attitude",
+        "weight": 34,
+        "order": 1,
+        "questions": [
+          {
+            "question_id": "7jNGHA0QSRGdsi-R03d8tQ",
+            "type": "Rating Scale",
+            "title": "Did the customer service representative demonstrate patience and friendliness?",
+            "description": "Evaluate the agent\u0027s service attitude.",
+            "options": [
+              {
+                "option_id": "m_DJVk5BS7yqoR2ayN16kw",
+                "label": "Yes",
+                "value": "Yes",
+                "auto_fail": false,
+                "points": 10
+              }
+            ],
+            "answer_id": "m_DJVk5BS7yqoR2ayN16kw",
+            "answer_label": "Yes",
+            "score": 10,
+            "scale": {
+              "has_na_option": true,
+              "high_label": "Excellent",
+              "low_label": "Poor",
+              "scale_max": 10,
+              "scale_min": 1
+            }
+          }
+        ]
+      }
+    ],
+    "score": 90,
+    "total_score": 100,
+    "evaluator": {
+      "name": "Admin3",
+      "user_id": "ycEUjKmDSnuPwF33KLTxJg"
+    },
+    "create_time": "2024-05-28T09:52:22Z",
+    "modify_time": "2024-05-28T09:52:22Z",
+    "acknowledgment_status": "Complete",
+    "dispute_status": "None",
+    "interaction_id": "yBe0fI6kTFG5IyThF8eRXg",
+    "engagement_id": "e59gNVtjTuS--NjwquFKQA",
+    "agent_name": "The agent\u0027s name.",
+    "agent_user_id": "The agent\u0027s ID."
+  }
+}

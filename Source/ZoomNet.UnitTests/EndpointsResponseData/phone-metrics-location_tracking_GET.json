@@ -1,0 +1,38 @@
+{
+  "location_tracking": [
+    {
+      "assignees": [
+        {
+          "extension_number": 10010,
+          "id": "IqoQmDRqS-aIoXqV_FZ88w",
+          "name": "testUser"
+        }
+      ],
+      "city": "SAN JOSE",
+      "country": "US",
+      "device": {
+        "bssid": "SA43YjfBTS6gJbUpfvIziQ",
+        "id": "-tDdYIstSumpA0L13GztIQ",
+        "mac_address": "543968a78ee7",
+        "name": "Desk Phone",
+        "private_ip": "192.168.1.1",
+        "public_ip": "192.168.1.1"
+      },
+      "emergency_address": "55 ALMADEN BLVD",
+      "name": "testLocation",
+      "network_switch": {
+        "mac_address": "543968a78ee7",
+        "port": "2"
+      },
+      "site": {
+        "id": "NjHmTu16Qfe8yOiNJuekXA",
+        "name": "testSite"
+      },
+      "type": "personal",
+      "zip": "95113"
+    }
+  ],
+  "next_page_token": "T6WMY4fJBIAlxPUiqRtwvQS9dvsq8AoRam2",
+  "page_size": 30,
+  "total_records": 1
+}

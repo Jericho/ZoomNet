@@ -1,0 +1,12 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "queues": [
+    {
+      "queue_id": "ZWQ33BD1C6E46FFD0D869D32E220D35F4D4",
+      "cc_queue_id": "xqJE_cgERLyAJHYYL5LLeg",
+      "queue_name": "VoiceQueue"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "description": "My role",
+  "id": "2",
+  "name": "My role",
+  "type": "iq",
+  "privileges": [
+    "User:Read"
+  ],
+  "sub_account_privileges": {
+    "second_level": 1
+  },
+  "total_members": 20,
+  "privilege_scopes": [
+    {
+      "permission_id": "User:Read",
+      "group_ids": [
+        "string"
+      ]
+    }
+  ]
+}

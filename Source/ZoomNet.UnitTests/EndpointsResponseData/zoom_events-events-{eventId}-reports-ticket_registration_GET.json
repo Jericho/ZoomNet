@@ -1,0 +1,36 @@
+{
+  "total_records": 1,
+  "next_page_token": "oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2",
+  "registrations": [
+    {
+      "display_name": "First Last",
+      "first_name": "First",
+      "last_name": "Last",
+      "email": "email@zoom.us",
+      "opt_in_marketing": 0,
+      "marketing_consent_prechecked": 0,
+      "register_date": "2022-03-24T22:30:00.0000000\u002B00:00",
+      "event_attendance": "attended",
+      "attendance_type": [
+        "hybrid"
+      ],
+      "registration_method": "Self-registration",
+      "registration_source": "Pardot",
+      "tickets": [
+        {
+          "ticket_type_name": "General Ticket",
+          "ticket_type_id": "Fn2rBZgJQzi6VIU--uWqnA",
+          "external_ticket_id": "iso9Djldop39dagjLj3j",
+          "ticket_id": "Fn2rBZgJQzi6VIUABuWcqB",
+          "authentication_method": "no_auth",
+          "questions": [
+            {
+              "title": "First Name",
+              "answer": "Michael"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

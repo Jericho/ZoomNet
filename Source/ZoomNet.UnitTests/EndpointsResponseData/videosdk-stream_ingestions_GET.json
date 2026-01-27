@@ -1,0 +1,14 @@
+{
+  "page_size": 30,
+  "next_page_token": "Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3",
+  "stream_ingestions": [
+    {
+      "stream_id": "sfk/aOFJSJSYhGwk1hnxgw==",
+      "stream_name": "stream ingestion1",
+      "stream_description": "stream ingestion1",
+      "stream_key": "ABCDEFG12345HIJ6789",
+      "stream_url": "rtmp://a.rtmp.zoomevent.com/live1",
+      "backup_stream_url": "rtmp://a.rtmp.zoomevent.com/live1"
+    }
+  ]
+}

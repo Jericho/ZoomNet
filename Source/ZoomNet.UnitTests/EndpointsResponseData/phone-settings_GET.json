@@ -1,0 +1,23 @@
+{
+  "byoc": {
+    "enable": true
+  },
+  "country": {
+    "code": "US",
+    "name": "United States"
+  },
+  "multiple_sites": {
+    "enabled": true,
+    "site_code": true
+  },
+  "show_device_ip_for_call_log": {
+    "enable": true
+  },
+  "multiple_party_conference": {
+    "enable": true
+  },
+  "billing_account": {
+    "id": "3WWAEiEjTj2IQuyDiKMd_A",
+    "name": "Delhi billing"
+  }
+}

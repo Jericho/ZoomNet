@@ -1,0 +1,176 @@
+{
+  "deleted_messages": [
+    {
+      "date_time": "2022-03-18T10:16:13.0000000\u002B00:00",
+      "files": [
+        {
+          "download_url": "https://zoom.us/file/download/qreigNgqTk24RNnGJDxpDg?filename=48k.png\u0026jwt=downloadjwt",
+          "file_id": "qreigNgqTk24RNnGJDxpDg",
+          "file_name": "48k.png",
+          "file_size": 224251
+        }
+      ],
+      "giphy_information": [
+        {
+          "giphy_view_url": "https://giphy.com/gifs/union-soton-congrats-susu-soton-StRUIQttj1ewZVYZH2"
+        }
+      ],
+      "id": "7ba4d98b-0a6a-4fb4-a71b-dd13fd689dc8",
+      "message": "How are you",
+      "receiver": "jchill@example.com",
+      "is_sender_external": true,
+      "reply_main_message_id": "{27ED2949-6457-417C-83EA-72515DAF00BD}",
+      "reply_main_message_timestamp": 1647494500135,
+      "sender": "jchill@example.com",
+      "sender_member_id": "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK",
+      "sender_display_name": "Tom",
+      "timestamp": 1647494500135,
+      "action_timestamp": 1747494500135,
+      "forward_id": "6dfgdfgdg444447b0egga",
+      "rich_text": [
+        {
+          "start_position": 0,
+          "end_position": 5,
+          "format_type": "Paragraph",
+          "format_attr": "h1"
+        }
+      ],
+      "reactions": [
+        {
+          "emoji": "U\u002B1F600",
+          "total_count": 1,
+          "user_ids": [
+            "v4iyWT1LTfy8QvPG4GTvdg"
+          ],
+          "member_ids": [
+            "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ"
+          ]
+        }
+      ],
+      "custom_emoji_reactions": [
+        {
+          "custom_emoji_name": "test_custom_emoji_name",
+          "custom_emoji_file_id": "bliAGZfKSqOWev3rCwC99Q",
+          "total_count": 1,
+          "user_ids": [
+            "v4iyWT1LTfy8QvPG4GTvdg"
+          ],
+          "member_ids": [
+            "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ"
+          ]
+        }
+      ]
+    }
+  ],
+  "edited_messages": [
+    {
+      "date_time": "2022-03-17T08:27:57.0000000\u002B00:00",
+      "files": [
+        {
+          "download_url": "https://zoom.us/file/download/qreigNgqTk24RNnGJDxpDg?filename=48k.png\u0026jwt=downloadjwt",
+          "file_id": "qreigNgqTk24RNnGJDxpDg",
+          "file_name": "48k.png",
+          "file_size": 224251
+        }
+      ],
+      "giphy_information": [
+        {
+          "giphy_view_url": "https://giphy.com/gifs/union-soton-congrats-susu-soton-StRUIQttj1ewZVYZH2"
+        }
+      ],
+      "id": "7ba4d98b-0a6a-4fb4-a71b-dd13fd689dc8",
+      "message": "How are you",
+      "receiver": "jchill@example.com",
+      "is_sender_external": true,
+      "reply_main_message_id": "{27ED2949-6457-417C-83EA-72515DAF00BD}",
+      "reply_main_message_timestamp": 1647494500135,
+      "sender_member_id": "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK",
+      "sender": "jchill@example.com",
+      "sender_display_name": "Tom",
+      "timestamp": 1647494500135,
+      "action_timestamp": 1747494500135,
+      "forward_id": "6dfgdfgdg444447b0egga",
+      "rich_text": [
+        {
+          "start_position": 0,
+          "end_position": 5,
+          "format_type": "Paragraph",
+          "format_attr": "h1"
+        }
+      ]
+    }
+  ],
+  "from": "Microsoft.OpenApi.Any.OpenApiDate",
+  "messages": [
+    {
+      "date_time": "2022-03-17T08:27:57.0000000\u002B00:00",
+      "files": [
+        {
+          "download_url": "https://zoom.us/file/download/qreigNgqTk24RNnGJDxpDg?filename=48k.png\u0026jwt=downloadjwt",
+          "file_id": "qreigNgqTk24RNnGJDxpDg",
+          "file_name": "48k.png",
+          "file_size": 224251
+        }
+      ],
+      "giphy_information": [
+        {
+          "giphy_view_url": "https://giphy.com/gifs/union-soton-congrats-susu-soton-StRUIQttj1ewZVYZH2"
+        }
+      ],
+      "id": "7ba4d98b-0a6a-4fb4-a71b-dd13fd689dc8",
+      "message": "How are you",
+      "reactions": [
+        {
+          "emoji": "U\u002B1F600",
+          "total_count": 1,
+          "user_ids": [
+            "v4iyWT1LTfy8QvPG4GTvdg"
+          ],
+          "member_ids": [
+            "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ"
+          ]
+        }
+      ],
+      "custom_emoji_reactions": [
+        {
+          "custom_emoji_name": "test_custom_emoji_name",
+          "custom_emoji_file_id": "bliAGZfKSqOWev3rCwC99Q",
+          "total_count": 1,
+          "user_ids": [
+            "v4iyWT1LTfy8QvPG4GTvdg"
+          ],
+          "member_ids": [
+            "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ"
+          ]
+        }
+      ],
+      "receiver": "jchill@example.com",
+      "is_sender_external": true,
+      "reply_main_message_id": "{27ED2949-6457-417C-83EA-72515DAF00BD}",
+      "reply_main_message_timestamp": 1647494500135,
+      "sender": "jchill@example.com",
+      "sender_member_id": "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK",
+      "sender_display_name": "Tom",
+      "timestamp": 1647494500135,
+      "action_timestamp": 1747494500135,
+      "forward_id": "6dfgdfgdg444447b0egga",
+      "bot_message": {
+        "is_markdown_support": false,
+        "source": "CCCC",
+        "external_sender_email": "user@example.com",
+        "content": "{\u0022head\u0022:{\u0022text\u0022:\u0022This is the head\u0022,\u0022version\u0022:1},\u0022body\u0022:[{\u0022type\u0022:\u0022message\u0022,\u0022version\u0022:1,\u0022text\u0022:\u0022This is the body\u0022,\u0022editable\u0022:false,\u0022event_id\u0022:\u0022message_0000\u0022}],\u0022settings\u0022:{\u0022is_split_sidebar\u0022:true,\u0022default_sidebar_color\u0022:\u0022#0E71EB\u0022}}"
+      },
+      "rich_text": [
+        {
+          "start_position": 0,
+          "end_position": 5,
+          "format_type": "Paragraph",
+          "format_attr": "h1"
+        }
+      ]
+    }
+  ],
+  "next_page_token": "b43YBRLJFg3V4vsSpxvGdKIGtNbxn9h9If2",
+  "page_size": 30,
+  "to": "Microsoft.OpenApi.Any.OpenApiDate"
+}

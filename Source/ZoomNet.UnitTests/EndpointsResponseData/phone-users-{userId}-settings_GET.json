@@ -1,0 +1,119 @@
+{
+  "area_code": "01",
+  "audio_prompt_language": "en-US",
+  "company_number": "\u002B12058945640",
+  "country": {
+    "code": "US",
+    "country_code": "1",
+    "name": "United States"
+  },
+  "delegation": {
+    "assistants": [
+      {
+        "display_name": "test user delegation",
+        "extension_id": "CcrEGgmeQem1uyJsuIRKwA",
+        "extension_number": 1000123477,
+        "extension_type": "user",
+        "id": "fWOgOALdT1ei4vjXK-QYsA"
+      }
+    ],
+    "privacy": true,
+    "privileges": [
+      2
+    ],
+    "locked": true
+  },
+  "desk_phone": {
+    "devices": [
+      {
+        "device_type": "Yealink t42s",
+        "display_name": "ApiTA_Device_2020_12_14_22_59_31_749",
+        "id": "GHFnf5WQe-H-_r0Wwx9iQ",
+        "policy": {
+          "call_control": {
+            "status": "off"
+          },
+          "hot_desking": {
+            "status": "off"
+          }
+        },
+        "status": "online",
+        "mac_address": "203a07240534",
+        "private_ip": "192.168.10.13",
+        "public_ip": "220.148.231.126"
+      }
+    ],
+    "keys_positions": {
+      "primary_number": "\u002B123456789"
+    },
+    "phone_screen_lock": true,
+    "pin_code": "0995"
+  },
+  "extension_number": 1000001036,
+  "music_on_hold_id": "NOZ98sQvTimYi0XxL_x-iQ",
+  "outbound_caller": {
+    "number": "\u002B123456789"
+  },
+  "outbound_caller_ids": [
+    {
+      "is_default": true,
+      "name": "Outbound caller name.",
+      "number": "\u002B2097392651"
+    }
+  ],
+  "status": "Active",
+  "voice_mail": [
+    {
+      "access_user_id": "w0RChiauQeqRlv5fgxYULQ",
+      "access_user_type": "commonArea",
+      "delete": true,
+      "download": true,
+      "shared_id": "--e8ugg0SeS-9clgrDkn2w"
+    }
+  ],
+  "intercom": {
+    "audio_intercoms": [
+      {
+        "extension_id": "52OdSKGSSS-EOyJwQncFvA",
+        "extension_number": "1000001004",
+        "extension_type": "user",
+        "display_name": "test name",
+        "status": "pending",
+        "device_id": "GHFnf5WQe-H-_r0Wwx9iQ",
+        "device_status": "offline"
+      }
+    ],
+    "device": {
+      "id": "JHwOJZ_PRICfVhQlL0x_ww",
+      "name": "Sita\u0027s Phone"
+    }
+  },
+  "auto_call_recording_access_members": [
+    null
+  ],
+  "ad_hoc_call_recording_access_members": [
+    null
+  ],
+  "shared_lines_call_setting": {
+    "shared_line_appearances": {
+      "executives": [
+        {
+          "user_id": "DJPrG46sQPmaMnzFrKecOw",
+          "display_name": "John Doe",
+          "receive_calls": true,
+          "allow_opt_out": true
+        }
+      ]
+    },
+    "shared_line_groups": {
+      "receive_calls": true,
+      "shared_line_group": [
+        {
+          "slg_id": "RQinnFtmTJ25mx89tW5Cmw",
+          "display_name": "jamieSLGTest0",
+          "receive_calls": true
+        }
+      ]
+    }
+  }
+}

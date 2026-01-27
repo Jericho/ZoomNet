@@ -1,0 +1,12 @@
+{
+  "groups": [
+    {
+      "group_id": "dir.JquKVDGlQ9K6S0QVWGcysw",
+      "group_name": "Developers",
+      "group_privacy": 1,
+      "description": "A contact group for office A"
+    }
+  ],
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 10
+}

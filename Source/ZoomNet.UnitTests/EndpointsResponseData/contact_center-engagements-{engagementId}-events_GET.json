@@ -1,0 +1,12 @@
+{
+  "engagement_id": "W_VATTk_Q5aW6z5rZtBxAQ",
+  "events": [
+    {
+      "start_time": "2021-12-03T13:07:46.0000000\u002B00:00",
+      "event_name": "Start",
+      "channel": "video",
+      "channel_source": "in_app_video",
+      "event_content": "{\u0022flow_id\u0022: \u0022zwKiV80hQ7CwRg9BEm0Bvw\u0022,\u0022flow_name\u0022: \u0022Demo\u0022}"
+    }
+  ]
+}

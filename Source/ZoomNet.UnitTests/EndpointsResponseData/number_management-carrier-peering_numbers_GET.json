@@ -1,0 +1,16 @@
+{
+  "next_page_token": "8X8xSdRVKHsabD6Im4tIPODq6GzDOvV5fO1",
+  "numbers": [
+    {
+      "customer_account_name": "Some customer\u0027s account name",
+      "customer_account_number": "Some customer\u0027s account number",
+      "assigned": true,
+      "billing_ref_id": "Some billing referenceId",
+      "phone_number": "\u002B18108001001",
+      "service_info": "Some service info",
+      "sip_trunk_name": "test-carrier-sip-trunk",
+      "status": true
+    }
+  ],
+  "total_records": 20
+}

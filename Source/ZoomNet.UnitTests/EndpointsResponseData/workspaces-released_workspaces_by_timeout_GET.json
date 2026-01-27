@@ -1,0 +1,28 @@
+{
+  "next_page_token": "At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2",
+  "page_size": 30,
+  "total_records": 20,
+  "release_events": [
+    {
+      "event_id": "qMOLddnySIGGVycz8aX_JQ",
+      "workspace_id": "qMOLddnySIGGVycz8aX_JQ",
+      "location_id": "6wXGGQvwQb2hpnHekQxMsw",
+      "workspace_name": "My Room",
+      "workspace_type": "all",
+      "user_name": "san zhang",
+      "user_email": "jchill@example.com",
+      "timezone": "Asia/Shanghai",
+      "reservation_start_time": "2021-03-18T05:00:36Z",
+      "reservation_end_time": "2021-03-18T05:30:36Z",
+      "recurring_meeting": true,
+      "checkin_time": "2021-03-18T05:00:36Z",
+      "checkout_time": "2021-03-18 T05:30:36Z",
+      "release_flag": true,
+      "release_time": "2021-03-18T05:30:36Z",
+      "release_reason": "Cancellation",
+      "release_location": "Scheduling Display",
+      "cons_times_no_check_in": 2,
+      "room_email": "jchill@example.com"
+    }
+  ]
+}

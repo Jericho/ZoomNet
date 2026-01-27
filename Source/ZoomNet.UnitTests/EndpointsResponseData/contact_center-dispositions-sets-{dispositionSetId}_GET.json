@@ -1,0 +1,21 @@
+{
+  "disposition_set_id": "saaHWgVMGQU69soco456oNA",
+  "disposition_set_name": "Lead created",
+  "disposition_set_description": "New leads generated.",
+  "status": "inactive",
+  "last_modified_time": "2022-02-15T09:27:15.0000000\u002B00:00",
+  "modified_by": "IGTRVt3gQ2i-WjoUIjeZxw",
+  "dispositions": [
+    {
+      "disposition_id": "W_VATTk_Q5aW6z5rZtBxAQ",
+      "disposition_name": "Inquiry"
+    }
+  ],
+  "queues": [
+    {
+      "queue_id": "d95avl1eRJ-H162PZUJ-qg",
+      "cc_queue_id": "d95avl1eRJ-H162PZUJ-qg",
+      "queue_name": "Sales"
+    }
+  ]
+}

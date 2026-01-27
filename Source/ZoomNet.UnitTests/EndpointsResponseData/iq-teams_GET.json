@@ -1,0 +1,21 @@
+{
+  "teams": [
+    {
+      "team_id": "aO1RVNBSRC2klMMdco14_g",
+      "name": "level 1-10",
+      "description": "level 1-10",
+      "type": "hierarchical team",
+      "member_size": 1,
+      "supervisor_size": 1,
+      "leaf": true,
+      "parent_teams": [
+        {
+          "team_id": "jeazIFbXSKm4E65_cxxQzA",
+          "name": "level 1"
+        }
+      ]
+    }
+  ],
+  "next_page_token": "gPP6D7Oy6TUyGwpBBtICy03182P6nJp3yQ2",
+  "page_size": 30
+}

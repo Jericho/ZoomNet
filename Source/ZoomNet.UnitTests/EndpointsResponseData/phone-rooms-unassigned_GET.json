@@ -1,0 +1,12 @@
+{
+  "rooms": [
+    {
+      "id": "_zQiBLNDQumOuA_tOnBIrw",
+      "display_name": "room_1",
+      "location_id": "3zEOmHchRaWCb7hx9XwROg",
+      "location_info": "San Jose City,California State,Unite States Country/Region",
+      "department": "pbx department",
+      "cost_center": "pbx cost center"
+    }
+  ]
+}

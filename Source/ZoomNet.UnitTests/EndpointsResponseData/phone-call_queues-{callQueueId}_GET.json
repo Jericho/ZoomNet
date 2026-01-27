@@ -1,0 +1,47 @@
+{
+  "cost_center": "testCostCenter",
+  "department": "testDepartment",
+  "extension_id": "DgKe5UPTTlODBvcgmRIlPw",
+  "extension_number": 26000026001,
+  "id": "3PNsZB50TNev4pgBjtKeDw",
+  "members": {
+    "users": [
+      {
+        "id": "yNCY-HBHQ36rkXEXYTwu2g",
+        "level": "user",
+        "name": "APITA AUTO",
+        "receive_call": true,
+        "extension_id": "oeDyBe8zT2SzOZW6gQJXUA"
+      }
+    ],
+    "common_areas": [
+      {
+        "id": "HIlHzOEzS8ymQPFBZ-39AQ",
+        "name": "Common Area",
+        "extension_id": "HIlHzOEzS8ymQPFBZ-39AQ"
+      }
+    ]
+  },
+  "name": "ApiTA_2020_12_21_19_54_05_476",
+  "phone_numbers": [
+    {
+      "id": "KsxwNLEhQ0SJ4U4Bor4ShA",
+      "number": "\u002B12058945717",
+      "source": "internal"
+    }
+  ],
+  "site": {
+    "id": "lA68sMSVQ6GAUcGg_GH0nQ",
+    "name": "ApiTA_Site_2020_07_12_00_42_50_109"
+  },
+  "status": "active",
+  "policy": {
+    "voicemail_access_members": [
+      null
+    ]
+  },
+  "timezone": "Pacific/Midway",
+  "audio_prompt_language": "en-US",
+  "recording_storage_location": "US",
+  "own_storage_name": "us-oracle-storage"
+}

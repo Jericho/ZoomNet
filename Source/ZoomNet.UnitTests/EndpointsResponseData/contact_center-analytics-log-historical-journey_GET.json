@@ -1,0 +1,88 @@
+{
+  "journeys": [
+    {
+      "global_engagement_id": "7512200802025393153",
+      "direction": "inbound",
+      "channels": [
+        "voice"
+      ],
+      "ani_from": "\u002B19135551212",
+      "dnis_to": "\u002B12095551212",
+      "start_time": "2025-05-26T16:32:18.0000000\u002B00:00",
+      "consumer": {
+        "consumer_number": "\u002B19135551212"
+      },
+      "queues": [
+        {
+          "queue_id": "sfgwHE\u0026gEFHE",
+          "queue_name": "callen-voice-queue"
+        }
+      ],
+      "users": [
+        {
+          "user_id": "sdFHEYF\u0026G*E",
+          "user_name": "callen huang-agent"
+        }
+      ],
+      "teams": [
+        {
+          "team_id": "sdFHEYF\u0026G*E",
+          "team_name": "finlay-child"
+        }
+      ],
+      "call_queues": [
+        {
+          "extension_name": "test call queue",
+          "phone_number": "\u002B12097481234",
+          "extension_number": "7623"
+        }
+      ],
+      "zoom_phone_users": [
+        {
+          "extension_name": "testSite",
+          "phone_number": "\u002B12095551212",
+          "extension_number": "7623"
+        }
+      ],
+      "shared_line_groups": [
+        {
+          "extension_name": "test slg",
+          "phone_number": "\u002B12095551212",
+          "extension_number": "7623"
+        }
+      ],
+      "auto_receptionists": [
+        {
+          "extension_name": "test-ar",
+          "phone_number": "\u002B12095551212",
+          "extension_number": "7623"
+        }
+      ],
+      "common_areas": [
+        {
+          "extension_name": "test common area",
+          "phone_number": "\u002B12095551212",
+          "extension_number": "7623"
+        }
+      ],
+      "zoom_rooms": [
+        {
+          "extension_name": "my room",
+          "phone_number": "\u002B12095551212",
+          "extension_number": "7623"
+        }
+      ],
+      "inter_ops": [
+        {
+          "extension_name": "Cisco room0101",
+          "phone_number": "\u002B12097481234",
+          "extension_number": "26701"
+        }
+      ]
+    }
+  ],
+  "timezone": "UTC",
+  "page_size": 30,
+  "total_records": 10,
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42"
+}

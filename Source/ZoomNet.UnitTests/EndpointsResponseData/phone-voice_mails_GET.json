@@ -1,0 +1,39 @@
+{
+  "from": "Microsoft.OpenApi.Any.OpenApiDate",
+  "next_page_token": "VcXBknJ0MQ7kuXun5WKmSjHC1hOBGS2bbr2",
+  "page_count": 10,
+  "page_size": 15,
+  "to": "Microsoft.OpenApi.Any.OpenApiDate",
+  "total_records": 150,
+  "voice_mails": [
+    {
+      "call_id": "876634343743",
+      "call_log_id": "46541323465",
+      "call_element_id": "20210609-a297ae04-a875-4cfd-85ab-4adcead91edb",
+      "callee_name": "Jane Doe",
+      "callee_number": "34567889",
+      "callee_number_type": 2,
+      "caller_name": "John Doe",
+      "caller_number": "12345678",
+      "caller_number_type": 1,
+      "date_time": "2021-05-19T20:00:00.0000000\u002B00:00",
+      "download_url": "exampleurl.io",
+      "duration": 18,
+      "id": "d43520fc6b7e4b26bbeef58a8a80f235",
+      "status": "read",
+      "owner": {
+        "extension_number": 1000123476,
+        "id": "NL3cEpSdRc-c2t8aLoZqiw",
+        "name": "user@test.com",
+        "type": "user",
+        "extension_status": "deleted",
+        "extension_deleted_time": "2022-10-14T22:10:54Z"
+      },
+      "deleted_time": "2023-04-18T22:10:49.9070000\u002B00:00",
+      "days_left_auto_permantely_delete": 30,
+      "soft_deleted_type": "Manual",
+      "caller_account_code": "111",
+      "callee_account_code": "222"
+    }
+  ]
+}

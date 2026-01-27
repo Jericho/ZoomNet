@@ -1,0 +1,31 @@
+{
+  "next_page_token": "nfirhf84574fkse",
+  "subscription_list": [
+    {
+      "subscription_number": "A-31231322",
+      "subscription_status": "active",
+      "subscription_owner": {
+        "crm_account_number": "A0012",
+        "account_name": "John Galt",
+        "zoom_account_number": "3842618277"
+      },
+      "invoice_owner": {
+        "crm_account_number": "A0012",
+        "account_name": "John Galt",
+        "zoom_account_number": "3842618277"
+      },
+      "start_date": "2023-07-01",
+      "end_date": "2024-07-01",
+      "order_number": "O-132323",
+      "sub_reseller_name": "ABC Inc.",
+      "sold_to_email": "abc@test.com",
+      "mrr": {
+        "gross_amount": 120000,
+        "net_amount": 120000,
+        "currency": "USD"
+      },
+      "auto_renew": true,
+      "trade_screening": false
+    }
+  ]
+}

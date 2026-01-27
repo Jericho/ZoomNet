@@ -1,0 +1,20 @@
+{
+  "subscription_number": "A-31231322",
+  "status": "active",
+  "start_date": "2023-01-07",
+  "end_date": "2024-07-02",
+  "subscription_versions": [
+    {
+      "sequence": 1,
+      "version": 1,
+      "latest_version": true,
+      "action": [
+        "create"
+      ],
+      "start_date": "2023-01-07",
+      "end_date": "2024-08-01",
+      "mrr": 1000,
+      "currency": "USD"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "conversation_id": "egLSRuj2SlWet\u002BwLi87LNA==,1667893163000",
+  "meeting_id": 896549134891,
+  "meeting_uuid": "egLSRuj2SlWet\u002BwLi87LNA==",
+  "host_id": "x1yCzABCDEfg23HiJKl4mN",
+  "host_email": "jchill@example.com",
+  "topic": "Maximize profits",
+  "conversation_topic": "Maximize profits",
+  "duration": 60,
+  "summary": "summary",
+  "conversation_type": "meeting",
+  "stage_during_conversation": "Perception Analysis",
+  "start_time": "2022-03-23T06:00:00Z",
+  "meeting_start_time": "2022-03-23T06:00:00Z",
+  "iq_processed_time": "2022-03-23T06:00:00Z",
+  "engagement_score": 20,
+  "sentiment_score": 80,
+  "conversation_url": "https://zoom.us/iq/conversation?meetingId...",
+  "deal": {
+    "id": "0065g00000DhY3eAAF",
+    "name": "deal name",
+    "stage": "Needs Analysis",
+    "customer_crm_account_name": "customer",
+    "close_date": "2023-04-19"
+  },
+  "calendar_client": "Google/Outlook",
+  "event_id": "6COPSIvrTv2LUS1pvtBokQ",
+  "duration_sec": 20,
+  "conversation_view": {
+    "total_view_counts": 20,
+    "view_user_infos": [
+      {
+        "user_id": "6COPSIvrTv2LUS1pvtBokQ",
+        "user_display_name": "tom",
+        "counts": 10
+      }
+    ]
+  },
+  "participants": [
+    {
+      "display_name": "tom",
+      "email": "tom@example.com",
+      "type": "rep/customer"
+    }
+  ],
+  "moment_info": [
+    {
+      "moment_id": "6COPSIvrTv2LUS1pvtBokQ",
+      "moment_name": "Zoom meeting With someone",
+      "create_user_id": "6COPSIvrTv2LUS1pvtBokQ",
+      "create_user_display_name": "tom",
+      "share_counts": "20",
+      "share_user_infos": [
+        {
+          "user_id": "6COPSIvrTv2LUS1pvtBokQ",
+          "user_display_name": "tom",
+          "counts": 10
+        }
+      ]
+    }
+  ],
+  "downloadUrl": "https://file.zoomdev.us/file/1W9SoktWRY2MX-Zq0Vwrmw?filename=Recording95493255.mp4\u0026jwt=eyJrIjoiS0s0MWF6Ny8iLCJhbGciOiJFUzI1NiJ9.eyJpYXQiOjE3NTI0NjA2MjEsImRpZyI6IjAzMTIxYThlOTYwMjZmZDlmZTc0Zjc1ZjM3OWVjY2E3MzY0MzU1M2U1MTA3NDQwNDgyODM5YmMzNGVmYTA1ODkiLCJoZGlnIjpmYWxzZSwiZXhwIjoxNzUyNDYyNDIwLCJpaWMiOiJkZXYiLCJpc3MiOiJmaWxlIiwiYXVkIjoiemZzIiwib3JpIjoiem9vbV9pcSJ9.JomWh-yCJ_KW18hXeIdlI41bmv9nY8VUoSOiN61VeDMZZMg7PdsYMiMwKW7loiyU-QsUbpjNitZxVKawSmY5qQ",
+  "recording_download_url": "https://file.zoomdev.us/file/1W9SoktWRY2MX-Zq0Vwrmw?filename=Recording95493255.mp4\u0026jwt=eyJrIjoiS0s0MWF6Ny8iLCJhbGciOiJFUzI1NiJ9.eyJpYXQiOjE3NTI0NjA2MjEsImRpZyI6IjAzMTIxYThlOTYwMjZmZDlmZTc0Zjc1ZjM3OWVjY2E3MzY0MzU1M2U1MTA3NDQwNDgyODM5YmMzNGVmYTA1ODkiLCJoZGlnIjpmYWxzZSwiZXhwIjoxNzUyNDYyNDIwLCJpaWMiOiJkZXYiLCJpc3MiOiJmaWxlIiwiYXVkIjoiemZzIiwib3JpIjoiem9vbV9pcSJ9.JomWh-yCJ_KW18hXeIdlI41bmv9nY8VUoSOiN61VeDMZZMg7PdsYMiMwKW7loiyU-QsUbpjNitZxVKawSmY5qQ"
+}

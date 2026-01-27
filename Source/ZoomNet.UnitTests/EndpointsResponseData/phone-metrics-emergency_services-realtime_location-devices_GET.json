@@ -1,0 +1,32 @@
+{
+  "records": [
+    {
+      "device_id": "-tDdYIstSumpA0L13GztIQ",
+      "device_name": "Desk Phone",
+      "site_id": "NjHmTu16Qfe8yOiNJuekXA",
+      "site_name": "HF site",
+      "public_ip": "192.168.1.1",
+      "private_ip": "192.168.1.1",
+      "bssid": "SA43YjfBTS6gJbUpfvIziQ",
+      "emergency_address": "55 ALMADEN BLVD",
+      "mac_address": "543968a78ee7",
+      "location_name": "example location",
+      "network_switch": {
+        "port": "2",
+        "mac_address": "543968a78ee7"
+      },
+      "location_type": "personal",
+      "assigned_info": [
+        {
+          "extension_id": "IqoQmDRqS-aIoXqV_FZ88w",
+          "extension_number": 10010,
+          "user_email": "test.user@gmai.com",
+          "user_display_name": "James Lu"
+        }
+      ]
+    }
+  ],
+  "total_records": 1,
+  "page_size": 30,
+  "next_page_token": "T6WMY4fJBIAlxPUiqRtwvQS9dvsq8AoRam2"
+}

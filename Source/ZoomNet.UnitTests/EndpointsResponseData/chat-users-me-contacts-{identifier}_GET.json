@@ -1,0 +1,22 @@
+{
+  "direct_numbers": [
+    "111111"
+  ],
+  "email": "jchill@example.com",
+  "extension_number": "31",
+  "first_name": "Jill",
+  "id": "v4iyWT1LTfy8QvPG4GTvdg",
+  "member_id": "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK",
+  "last_name": "Chill",
+  "phone_number": "5550100",
+  "phone_numbers": [
+    {
+      "code": "\u002B1",
+      "country": "US",
+      "label": "Mobile",
+      "number": "5550100",
+      "verified": true
+    }
+  ],
+  "presence_status": "Available"
+}

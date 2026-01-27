@@ -1,0 +1,74 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 10,
+  "total_records": 10,
+  "timezone": "America/Los_Angeles",
+  "from": "2021-12-10T00:00:00.0000000\u002B00:00",
+  "to": "2021-12-10T23:59:59.0000000\u002B00:00",
+  "engagements": [
+    {
+      "start_time": "2021-12-03T13:07:46.0000000\u002B00:00",
+      "end_time": "2021-12-03T13:07:46.0000000\u002B00:00",
+      "duration": 3600,
+      "engagement_id": "W_VATTk_Q5aW6z5rZtBxAQ",
+      "direction": "inbound",
+      "channel_types": [
+        "voice"
+      ],
+      "channels": [
+        {
+          "channel": "messaging",
+          "channel_source": "in_app_chat"
+        }
+      ],
+      "consumers": [
+        {
+          "consumer_id": "zeYjXoDOS_eV1QmTpj63PQ",
+          "consumer_display_name": "Jill",
+          "consumer_number": "\u002B12058945728"
+        }
+      ],
+      "flows": [
+        {
+          "flow_id": "zeYjXoDOS_eV1QmTpj63PQ",
+          "flow_name": "Demo",
+          "flow_version": "5"
+        }
+      ],
+      "queues": [
+        {
+          "cc_queue_id": "d95avl1eRJ-H162PZUJ-qg",
+          "queue_name": "agentQueue"
+        }
+      ],
+      "agents": [
+        {
+          "user_id": "ukAAkZKfROKMSw1bj_RDFQ",
+          "display_name": "Jilly"
+        }
+      ],
+      "talk_duration": 10,
+      "flow_duration": 10,
+      "waiting_duration": 10,
+      "handling_duration": 0,
+      "wrap_up_duration": 10,
+      "transfer_count": 10,
+      "dispositions": [
+        {
+          "disposition_id": "W_VATTk_Q5aW6z5rZtBxAQ",
+          "disposition_name": "Inquiry"
+        }
+      ],
+      "notes": [
+        {
+          "user_id": "ukAAkZKfROKMSw1bj_RDFQ",
+          "note_id": "W_VATTk_Q5aW6z5rZtBxAQ",
+          "note": "This is the content of the note.",
+          "last_modified_time": "2022-02-15T09:27:15.0000000\u002B00:00"
+        }
+      ],
+      "transcript_url": "https://api.zoom.us/v2/contact_center/engagements/transcripts/download/W_VATTk_Q5aW6z5rZtBxAQ",
+      "survey_id": "2yWjT4awTumcFKIrvcf4OA"
+    }
+  ]
+}

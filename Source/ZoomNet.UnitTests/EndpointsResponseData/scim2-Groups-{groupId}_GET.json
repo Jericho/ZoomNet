@@ -1,0 +1,18 @@
+{
+  "id": "kuWhUCrrT4q9Xy17rSR8js",
+  "meta": {
+    "resourceType": "Group",
+    "version": "1.0.0",
+    "location": "https://api.zoom.us/scim2/Groups/k\u0026KdKr6TLWuxdDtk0hjSzL",
+    "created": "2023-11-24T05:13:15Z",
+    "lastModified": "2023-11-27T11:36:20Z"
+  },
+  "schemas": [
+    "urn:ietf:params:scim:schemas:core:2.0:Group",
+    "urn:ietf:params:scim:schemas:extension:zoom:2.0:Group"
+  ],
+  "displayName": "SCIM group",
+  "urn:ietf:params:scim:schemas:extension:zoom:2.0:Group": {
+    "emailAlias": "test@example.com"
+  }
+}

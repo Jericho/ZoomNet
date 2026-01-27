@@ -1,0 +1,33 @@
+{
+  "audio_prompt": {
+    "id": "yCT14TwySDGVUypVlKNEyA",
+    "name": "example.mp3"
+  },
+  "caller_enters_no_action": {
+    "action": 15,
+    "audio_prompt_repeat": 3,
+    "forward_to": {
+      "display_name": "ZOOM_API Test",
+      "extension_id": "z97zV9NsSoa846i-ag3uEw",
+      "extension_number": "101021",
+      "id": "EVqEKnrMRWyPr705Fk5h2w"
+    }
+  },
+  "key_actions": [
+    {
+      "action": 200,
+      "key": "0",
+      "target": {
+        "display_name": "ZOOM_API Test",
+        "extension_id": "TO586CYlQFC_WCUvPRXytA",
+        "extension_number": "101002",
+        "id": "oG_nYRFuTJiY1tu0Fur_4Q",
+        "phone_number": "\u002B12055437350"
+      },
+      "voicemail_greeting": {
+        "id": "j2IsurWLRR-yWcbNGqPnaA",
+        "name": "custom.wav"
+      }
+    }
+  ]
+}

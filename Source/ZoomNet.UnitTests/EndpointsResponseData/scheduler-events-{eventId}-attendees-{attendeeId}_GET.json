@@ -1,0 +1,21 @@
+{
+  "attendee_id": "z7q0q2962w8iyj87249zbi7t10",
+  "event_id": "woft7torlatbw8ek24bmit5k60",
+  "schedule_id": "woft7torlatbw8ek24bmit5k60",
+  "created": "2023-12-21T06:19:23.899Z",
+  "display_name": "bob",
+  "email": "abc@zoom.us",
+  "first_name": "green",
+  "last_name": "tom",
+  "time_zone": "Asia/Shanghai",
+  "no_show": false,
+  "custom_values": [
+    {
+      "name": "question1",
+      "position": 1,
+      "values": [
+        "string"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "calling_plans": [
+    {
+      "assigned": 28,
+      "available": 72,
+      "name": "US/CA Metered Calling Plan",
+      "subscribed": 100,
+      "type": 100,
+      "billing_subscription_id": "FT-SUBREF-21168178",
+      "billing_subscription_name": "My Subscription"
+    }
+  ],
+  "phone_numbers": [
+    {
+      "assigned": 28,
+      "available": 72,
+      "name": "US/CA Included Phone Numbers",
+      "subscribed": 100
+    }
+  ]
+}

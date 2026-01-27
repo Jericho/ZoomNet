@@ -1,0 +1,13 @@
+{
+  "next_page_token": "bkOcmnm6mn6ioYAi10BcgRiEL38WzAo6jP2",
+  "page_size": 30,
+  "provision_templates": [
+    {
+      "id": "CLbU64xzTzCUXz58e2Lo-w",
+      "name": "Test Provision Template",
+      "description": "provision template",
+      "bound_device_count": 2
+    }
+  ],
+  "total_records": 1
+}

@@ -1,0 +1,12 @@
+{
+  "client_feedbacks": [
+    {
+      "feedback_id": "1",
+      "feedback_name": "Others",
+      "participants_count": 0
+    }
+  ],
+  "from": "Microsoft.OpenApi.Any.OpenApiDate",
+  "to": "Microsoft.OpenApi.Any.OpenApiDate",
+  "total_records": 10
+}

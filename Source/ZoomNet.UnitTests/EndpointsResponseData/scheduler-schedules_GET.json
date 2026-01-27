@@ -1,0 +1,166 @@
+{
+  "next_page_token": "aec369a4fce6ae655749b00fc7260bfd",
+  "items": [
+    {
+      "schedule_id": "ygfx661g9x8dwcgeusdqhsplc0",
+      "add_on_type": "zoomMeeting",
+      "availability_override": false,
+      "availability_rules": [
+        {
+          "availability_id": "x3h1u4id4liffdyszsp8kpxl80",
+          "email": "easonfsxsysks3lgchitiw@scheduler.zoom.us",
+          "segments": [
+            {
+              "start": "2023-12-21T06:00:00Z",
+              "end": "2023-12-21T06:00:00Z"
+            }
+          ],
+          "segments_recurrence": {
+            "sun": [
+              {
+                "end": "17:00",
+                "start": "09:00"
+              }
+            ],
+            "mon": [
+              {
+                "end": "17:00",
+                "start": "09:00"
+              }
+            ],
+            "tue": [
+              {
+                "end": "17:00",
+                "start": "09:00"
+              }
+            ],
+            "wed": [
+              {
+                "end": "17:00",
+                "start": "09:00"
+              }
+            ],
+            "thu": [
+              {
+                "end": "17:00",
+                "start": "09:00"
+              }
+            ],
+            "fri": [
+              {
+                "end": "17:00",
+                "start": "09:00"
+              }
+            ],
+            "sat": [
+              {
+                "end": "17:00",
+                "start": "09:00"
+              }
+            ]
+          },
+          "time_zone": "Asia/Shanghai",
+          "use_custom": false
+        }
+      ],
+      "booking_limit": 0,
+      "buffer": {
+        "after": 0,
+        "before": 0
+      },
+      "capacity": 1,
+      "color": "#fff200",
+      "creator": {
+        "display_name": "name",
+        "email": "easonfsxsysks3lgchitiw@scheduler.zoom.us",
+        "self": true
+      },
+      "cushion": 0,
+      "custom_fields": [
+        {
+          "custom_field_id": "0l6imf50il8jchyapni3p5ckc0",
+          "enabled": true,
+          "format": "text",
+          "include_other": false,
+          "name": "Please share anything that will help prepare for our meeting.",
+          "position": 0,
+          "required": false,
+          "answer_choices": [
+            "At home"
+          ]
+        }
+      ],
+      "description": "15 Minute Meeting",
+      "duration": 30,
+      "end_date": "2023-12-28",
+      "location": "AAA office",
+      "organizer": {
+        "display_name": "name",
+        "email": "easonfsxsysks3lgchitiw@scheduler.zoom.us",
+        "self": true
+      },
+      "secret": false,
+      "slug": "sales",
+      "scheduling_url": "https://scheduler.zoom.us/zoom_us/sales",
+      "start_date": "2023-12-21",
+      "segments": [
+        {
+          "start": "2023-12-21T06:00:00Z",
+          "end": "2023-12-21T06:00:00Z"
+        }
+      ],
+      "segments_recurrence": {
+        "sun": [
+          {
+            "end": "17:00",
+            "start": "09:00"
+          }
+        ],
+        "mon": [
+          {
+            "end": "17:00",
+            "start": "09:00"
+          }
+        ],
+        "tue": [
+          {
+            "end": "17:00",
+            "start": "09:00"
+          }
+        ],
+        "wed": [
+          {
+            "end": "17:00",
+            "start": "09:00"
+          }
+        ],
+        "thu": [
+          {
+            "end": "17:00",
+            "start": "09:00"
+          }
+        ],
+        "fri": [
+          {
+            "end": "17:00",
+            "start": "09:00"
+          }
+        ],
+        "sat": [
+          {
+            "end": "17:00",
+            "start": "09:00"
+          }
+        ]
+      },
+      "time_zone": "Asia/Shanghai",
+      "start_time_increment": 30,
+      "status": "confirmed",
+      "interval_type": "fixed",
+      "summary": "daily meeting",
+      "schedule_type": "one",
+      "updated": "2023-12-21T06:18:32.087Z",
+      "active": true
+    }
+  ]
+}

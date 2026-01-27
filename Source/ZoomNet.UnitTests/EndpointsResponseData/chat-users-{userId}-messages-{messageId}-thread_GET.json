@@ -1,0 +1,57 @@
+{
+  "total": 5,
+  "messages": [
+    {
+      "msg_id": "{90111042-D5E4-7BB5-0F91-B0C9879A30B4}",
+      "message": "Hello",
+      "is_reply": true,
+      "timestamp": 1705051497817,
+      "reactions": [
+        {
+          "emoji_id": "U\u002B1F600",
+          "count": 2,
+          "is_sender": true
+        }
+      ],
+      "last_reply_time": 1705051497817,
+      "is_followed": true,
+      "files": [
+        {
+          "file_id": "yXvggqyjCUal6TecwMlYwQ",
+          "file_name": "example.jpg",
+          "file_size": 3988,
+          "download_url": "https://example.com/file/download/xBvggvyjQUal6TecwMlYwQ?filename=example.jpg\u0026jwt=eyJhbGciOiJIUzI1NiJ9.eyJkaWciOiI3Yzg5YzBhYjIzYmZmMjdjNzE3NTQ4YzdjMTc0Njk3MWYzYjNmNjFjMzU5OTliNjE1ZjdjMWJmMzc5YTJiZThlIiwiYXVkIjoiZmlsZSIsImlzcyI6ImNyb3NzZmlsZSIsImV4cCI6MTY0ODI2NDY5N30.2fQxw3F1cEhvFJmnE2zPOdkHnbeZUktv_P0M--e-Tg8"
+        }
+      ],
+      "sender_user_id": "6dfgdfgdg444447b0egga",
+      "sender_email": "jchill@example.com",
+      "sender_member_id": "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK",
+      "sender_display_name": "Tom",
+      "rich_text": [
+        {
+          "start_position": 0,
+          "end_position": 5,
+          "format_type": "Paragraph",
+          "format_attr": "h1"
+        }
+      ],
+      "at_items": [
+        {
+          "at_contact": "v4iyWT1LTfy8QvPG4GTvdg",
+          "at_contact_member_id": "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK",
+          "at_type": 2,
+          "end_position": 8,
+          "start_position": 0
+        }
+      ],
+      "bot_message": {},
+      "interactive_cards": [
+        {
+          "card_id": "xBvggqyjQUal6TecwMlYwQ",
+          "card_json": "{   \u0022content\u0022: {     \u0022settings\u0022: {       \u0022default_sidebar_color\u0022: \u0022#0E72ED\u0022,       \u0022is_split_sidebar\u0022: false     }   } }"
+        }
+      ],
+      "message_type": "code_snippet"
+    }
+  ]
+}

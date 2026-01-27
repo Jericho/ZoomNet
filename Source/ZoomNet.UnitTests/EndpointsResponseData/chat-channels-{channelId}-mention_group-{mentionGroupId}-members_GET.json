@@ -1,0 +1,17 @@
+{
+  "mention_group_id": "a031772aba44466fbc534e4535a70e4e",
+  "members": [
+    {
+      "user_id": "6dfgdfgdg444447b0egga",
+      "member_id": "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK",
+      "email": "jchill@example.com",
+      "first_name": "Jill",
+      "last_name": "Chill",
+      "disaplay_name": "Jill Chill",
+      "is_external": true
+    }
+  ],
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 20,
+  "has_more": false
+}

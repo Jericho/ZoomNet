@@ -1,0 +1,28 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 1,
+  "messages": [
+    {
+      "message_id": "4Q0ILNMfTA2nJolNxhg0Rw",
+      "inbox_id": "W_VATTk_Q5aW6z5rZtBxAQ",
+      "inbox_name": "example",
+      "engagement_id": "xRk0eHNNTGygFDPrWqR9FA",
+      "created_at": "2022-05-23T14:15:57.0000000\u002B00:00",
+      "flow_id": "1wGgU3HQR8u1wWjPFNXOyA",
+      "flow_name": "inbox_message_flow",
+      "queue_id": "ZWQ84A20CBBA11AFA5BC55079D5A12A28D7",
+      "cci_queue_id": "LB937Z8oQP2mJxeNj3GxJQ",
+      "queue_name": "inbox_message_queue",
+      "message_type": "voicemail",
+      "download_url": "https://api.zoom.us/v2/contact_center/inbox/message/download/4Q0ILNMfTA2nJolNxhg0Rw?type=voicemail",
+      "playback_url": "https://api.zoom.us/v2/contact_center/inbox/message/playback/4Q0ILNMfTA2nJolNxhg0Rw?type=voicemail",
+      "transcript_url": "https://api.zoom.us/v2/contact_center/inbox/message/transcripts/download/4Q0ILNMfTA2nJolNxhg0Rw",
+      "message_duration": 150,
+      "consumer_number": "\u002B12058945728",
+      "consumer_id": "fsdfere78fserhgfyjb",
+      "consumer_display_name": "Jill",
+      "status": "normal"
+    }
+  ]
+}

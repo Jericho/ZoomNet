@@ -1,0 +1,41 @@
+{
+  "total_records": 1,
+  "next_page_token": "oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2",
+  "attendees": [
+    {
+      "session_id": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2",
+      "first_name": "First",
+      "last_name": "Last",
+      "email": "email@zoom.us",
+      "display_name": "First Last",
+      "authentication_method": "no_auth",
+      "marketing_consent_prechecked": 1,
+      "opt_in_marketing": 1,
+      "check_in_method": "string",
+      "attendance_type": "string",
+      "session_attendance": "string",
+      "start_time": "2024-07-28T13:00:00.0000000\u002B00:00",
+      "end_time": "2024-07-28T13:00:00.0000000\u002B00:00",
+      "duration_spent_in_session": 20,
+      "chat_messages_sent": 20,
+      "material_download": true,
+      "recording_view": false,
+      "live_streaming_view": false,
+      "recording_view_duration": 20,
+      "live_streaming_view_duration": 30,
+      "role_name": "General",
+      "tickets": [
+        {
+          "ticket_type_name": "General Ticket",
+          "ticket_id": "Fn2rBZgJQzi6VIUABuWcqB",
+          "questions": [
+            {
+              "title": "First Name",
+              "answer": "Michael"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

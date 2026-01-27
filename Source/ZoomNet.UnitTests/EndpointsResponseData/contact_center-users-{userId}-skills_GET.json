@@ -1,0 +1,16 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "skills": [
+    {
+      "skill_id": "s51M536ZjSgi8o_rzmgQBrA",
+      "skill_name": "assign-skill6b6c864b-474a-4843-afed-81bd26b03952",
+      "skill_type": "proficiency",
+      "max_proficiency_level": 5,
+      "user_proficiency_level": 3,
+      "skill_category_id": "s51M536ZjSgi8o_rzmgQBrA",
+      "skill_category_name": "Language"
+    }
+  ]
+}

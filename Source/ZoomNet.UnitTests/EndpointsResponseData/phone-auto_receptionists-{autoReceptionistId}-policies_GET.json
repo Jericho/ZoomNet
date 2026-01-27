@@ -1,0 +1,36 @@
+{
+  "voicemail_access_members": [
+    {
+      "shared_id": "--e8ugg0SeS-9clgrDkn2w",
+      "access_user_id": "w0RChiauQeqRlv5fgxYULQ",
+      "access_user_type": "commonArea",
+      "delete": false,
+      "download": false
+    }
+  ],
+  "voicemail_transcription": {
+    "enable": true,
+    "locked": true,
+    "locked_by": "site",
+    "modified": true
+  },
+  "voicemail_notification_by_email": {
+    "include_voicemail_file": true,
+    "include_voicemail_transcription": false,
+    "forward_voicemail_to_email": true,
+    "enable": true,
+    "locked": true,
+    "locked_by": "site",
+    "modified": true
+  },
+  "sms": {
+    "enable": true,
+    "international_sms": true,
+    "international_sms_countries": [
+      "US"
+    ],
+    "locked": true,
+    "locked_by": "site",
+    "modified": true
+  }
+}

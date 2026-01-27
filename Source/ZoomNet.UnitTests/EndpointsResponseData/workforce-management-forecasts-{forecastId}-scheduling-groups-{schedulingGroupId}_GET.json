@@ -1,0 +1,51 @@
+{
+  "forecast_id": "cm2n7z2vl000e9cllp4ckoc45",
+  "scheduling_group_id": "cm2n7z2vl000e9cllp4ckoc45",
+  "forecast_intervals": [
+    {
+      "timestamp": "2025-01-01T00:00:00.0000000\u002B00:00",
+      "forecast": {
+        "agents": 5,
+        "voice": {
+          "aht": 40,
+          "e_aht": 38,
+          "vol": 10,
+          "e_vol": 12
+        },
+        "messaging": {
+          "aht": 40,
+          "e_aht": 38,
+          "vol": 10,
+          "e_vol": 12
+        },
+        "deferrable": {
+          "aht": 40,
+          "e_aht": 38,
+          "vol": 10,
+          "e_vol": 12
+        }
+      },
+      "reforecast": {
+        "agents": 5,
+        "voice": {
+          "aht": 40,
+          "e_aht": 38,
+          "vol": 10,
+          "e_vol": 12
+        },
+        "messaging": {
+          "aht": 40,
+          "e_aht": 38,
+          "vol": 10,
+          "e_vol": 12
+        },
+        "deferrable": {
+          "aht": 40,
+          "e_aht": 38,
+          "vol": 10,
+          "e_vol": 12
+        }
+      }
+    }
+  ]
+}

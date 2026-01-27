@@ -1,0 +1,12 @@
+{
+  "year": 2021,
+  "month": 12,
+  "dates": [
+    {
+      "date": "Microsoft.OpenApi.Any.OpenApiDate",
+      "sessions": 20,
+      "users": 80,
+      "session_minutes": 380
+    }
+  ]
+}

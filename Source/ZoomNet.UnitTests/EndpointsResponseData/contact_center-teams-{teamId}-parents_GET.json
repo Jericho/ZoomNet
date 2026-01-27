@@ -1,0 +1,13 @@
+{
+  "team_id": "2mDPBg3vSYC_l6crQgeCkA",
+  "team_name": "Test team",
+  "level": 0,
+  "parent_teams": [
+    {
+      "team_id": "2mDPBg3vSYC_l6crQgeCkA",
+      "team_name": "Parent team",
+      "level": -1,
+      "parent_team_id": "CDl0Wx89Tx-2XBoYVz12DF"
+    }
+  ]
+}

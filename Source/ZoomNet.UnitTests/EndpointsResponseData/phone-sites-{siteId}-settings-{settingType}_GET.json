@@ -1,0 +1,185 @@
+{
+  "location_based_routing": {
+    "enable": false,
+    "place_receive_pstn_calls": false,
+    "enable_media_off_load_pstn_calls": false
+  },
+  "business_hours": {
+    "custom_hour_type": 2,
+    "custom_hours": [
+      {
+        "from": "09:00",
+        "to": "18:00",
+        "type": 0,
+        "weekday": 1
+      }
+    ],
+    "overflow": {
+      "allow_caller_to_reach_operator": true,
+      "operator": {
+        "extension_id": "FGAMaMWESMCNF0jmEU1emw",
+        "extension_number": 1000001018,
+        "display_name": "Test_callQueue",
+        "extension_type": "callQueue"
+      },
+      "allow_caller_to_check_voicemail": false
+    }
+  },
+  "closed_hours": {
+    "overflow": {
+      "allow_caller_to_reach_operator": true,
+      "operator": {
+        "extension_id": "FGAMaMWESMCNF0jmEU1emw",
+        "extension_number": 1000001018,
+        "display_name": "Test_callQueue",
+        "extension_type": "callQueue"
+      },
+      "allow_caller_to_check_voicemail": false
+    }
+  },
+  "holiday_hours": {
+    "holidays": [
+      {
+        "holiday_id": "i3gP6xFUTHqSFrIE6nHs7Q",
+        "name": "Holiday 1",
+        "from": "2022-03-08T16:00:00.0000000\u002B00:00",
+        "to": "2022-03-09T16:00:00.0000000\u002B00:00"
+      }
+    ],
+    "overflow": {
+      "allow_caller_to_reach_operator": true,
+      "operator": {
+        "extension_id": "FGAMaMWESMCNF0jmEU1emw",
+        "extension_number": 1000001018,
+        "display_name": "Test_callQueue",
+        "extension_type": "callQueue"
+      },
+      "allow_caller_to_check_voicemail": false
+    }
+  },
+  "security": {
+    "device_types": [
+      "Poly trioc60"
+    ]
+  },
+  "outbound_caller_id": {
+    "auto_receptionists_numbers": false,
+    "call_queue_numbers": false,
+    "share_line_group_numbers": false,
+    "show_outbound_caller_id_for_internal_call": false
+  },
+  "audio_prompt": {
+    "language": "en-GB",
+    "greeting_leave_voicemail_instruction": {
+      "business_hours": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "name": "hello.mp3"
+      },
+      "closed_hours": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "name": "hello.mp3"
+      },
+      "holiday_hours": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "name": "hello.mp3"
+      }
+    },
+    "greeting_menu_leave_or_check_voicemail": {
+      "business_hours": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "name": "hello.mp3"
+      },
+      "closed_hours": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "name": "hello.mp3"
+      },
+      "holiday_hours": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "name": "hello.mp3"
+      }
+    },
+    "greeting_menu_connect_to_operator_or_leave_voicemail": {
+      "business_hours": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "name": "hello.mp3"
+      },
+      "closed_hours": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "name": "hello.mp3"
+      },
+      "holiday_hours": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "name": "hello.mp3"
+      }
+    },
+    "greeting_menu_connect_to_operator_leave_or_check_voicemail": {
+      "business_hours": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "name": "hello.mp3"
+      },
+      "closed_hours": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "name": "hello.mp3"
+      },
+      "holiday_hours": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "name": "hello.mp3"
+      }
+    },
+    "leave_voicemail_introduction": {
+      "business_hours": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "name": "hello.mp3"
+      },
+      "closed_hours": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "name": "hello.mp3"
+      },
+      "holiday_hours": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "name": "hello.mp3"
+      }
+    },
+    "message_greeting": {
+      "business_hours": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "name": "hello.mp3"
+      },
+      "closed_hours": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "name": "hello.mp3"
+      },
+      "holiday_hours": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "name": "hello.mp3"
+      }
+    },
+    "audio_while_connecting": {
+      "audio_id": "yCT14TwySDGVUypVlKNEyA",
+      "name": "hello.mp3"
+    },
+    "hold_music": {
+      "audio_id": "yCT14TwySDGVUypVlKNEyA",
+      "name": "hello.mp3"
+    }
+  },
+  "desk_phone": {
+    "hot_desking_session_timeout": {
+      "number": 5,
+      "unit": "minutes"
+    },
+    "general_setting": {
+      "setting_type": "account_setting",
+      "web_interface": false
+    }
+  },
+  "dial_by_name": {
+    "status": true,
+    "inherit": false,
+    "rule": "last_name"
+  },
+  "billing_account": {
+    "id": "3WWAEiEjTj2IQuyDiKMd_A",
+    "name": "Delhi billing"
+  }
+}

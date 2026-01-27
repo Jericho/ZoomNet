@@ -1,0 +1,21 @@
+{
+  "page_size": 30,
+  "next_page_token": "suQA5LvDBnH5No5OYD7mqpJuFzJqUOHK8U2",
+  "from": "Microsoft.OpenApi.Any.OpenApiDate",
+  "to": "Microsoft.OpenApi.Any.OpenApiDate",
+  "telephony_usage": [
+    {
+      "session_id": "sfk/aOFJSJSYhGwk1hnxgw==",
+      "phone_number": "18005555555",
+      "signaled_number": "18005555555",
+      "start_time": "2019-07-15T23:24:52.0000000\u002B00:00",
+      "end_time": "2019-07-15T23:30:19.0000000\u002B00:00",
+      "duration": 6,
+      "total": 11,
+      "country_name": "Macau SAR",
+      "call_in_number": "15555555555",
+      "type": "toll-free",
+      "rate": 12
+    }
+  ]
+}

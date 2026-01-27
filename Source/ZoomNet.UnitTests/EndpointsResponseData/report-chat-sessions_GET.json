@@ -1,0 +1,21 @@
+{
+  "from": "Microsoft.OpenApi.Any.OpenApiDate",
+  "next_page_token": "peU2gkVkRebcqMTzOPnidf0OxlA3WD9Cunrp",
+  "page_size": 30,
+  "sessions": [
+    {
+      "id": "c38230acb7f009282c1b0d367a08102d65d12629bbcca58dfe2168bd335f5849",
+      "last_message_sent_time": "2022-03-18T10:16:13.0000000\u002B00:00",
+      "name": "Channel One",
+      "type": "1:1",
+      "channel_id": "7a08102d65d12629bbcca5",
+      "member_emails": [
+        "john.doe\u002B123@example.com",
+        "john.doe\u002B321@example.com"
+      ],
+      "status": "active",
+      "has_external_member": true
+    }
+  ],
+  "to": "Microsoft.OpenApi.Any.OpenApiDate"
+}

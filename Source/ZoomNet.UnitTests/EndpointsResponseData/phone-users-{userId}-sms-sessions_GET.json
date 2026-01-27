@@ -1,0 +1,22 @@
+{
+  "next_page_token": "2z0Ov7kngllAbfQi4ZR2eQTb3mFVYQpYAe4",
+  "page_size": 30,
+  "sms_sessions": [
+    {
+      "last_access_time": "2022-03-25T02:11:27Z",
+      "participants": [
+        {
+          "display_name": "l api",
+          "owner": {
+            "id": "DnEopNmXQEGU2uvvzjgojw",
+            "type": "user"
+          },
+          "phone_number": "18108001001",
+          "is_session_owner": true
+        }
+      ],
+      "session_id": "d39fc7e14ef9f2b6453f5f02524d79a2",
+      "session_type": "user"
+    }
+  ]
+}

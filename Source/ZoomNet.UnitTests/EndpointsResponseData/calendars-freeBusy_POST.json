@@ -1,0 +1,34 @@
+{
+  "kind": "calendar#freeBusy",
+  "timeMin": "2024-01-01T00:00:00.0000000\u002B00:00",
+  "timeMax": "2024-02-01T00:00:00.0000000\u002B00:00",
+  "calendars": [
+    {
+      "id": "abc.def@zoom.com",
+      "errors": [
+        {
+          "domain": "global",
+          "reason": "notFound"
+        }
+      ],
+      "busy": [
+        {
+          "start": "2024-01-20T17:00:00Z",
+          "end": "2024-01-20T18:00:00Z"
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "abc.group@zoom.com",
+      "errors": {
+        "domain": "global",
+        "reason": "notFound"
+      },
+      "calendars": [
+        "string"
+      ]
+    }
+  ]
+}

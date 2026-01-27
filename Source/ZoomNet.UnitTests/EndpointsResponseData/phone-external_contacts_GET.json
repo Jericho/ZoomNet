@@ -1,0 +1,20 @@
+{
+  "external_contacts": [
+    {
+      "description": "External contact Johnson",
+      "email": "example@example.com",
+      "extension_number": "101014",
+      "external_contact_id": "OJGi5xOFQPmrJbKg68-iWg",
+      "id": "external_contact_01",
+      "name": "Johnson",
+      "phone_numbers": [
+        "\u002B12058945656"
+      ],
+      "auto_call_recorded": true,
+      "profile_picture_download_url": "https://file.zoom.us/public/file/NgY6XhB0Q1KUOIpbnjQrTA/MS41Lm3jVUCBCmBzQxZEXUvHcJ_YRtZ-CVuQ68tE7kKC60t_/twP0LQrnQfS7bQ6utANohw.png",
+      "enable_internal_extension": true
+    }
+  ],
+  "next_page_token": "BJLYC6PABbAHdjwSkGVQeeR6B1juwHqj3G2",
+  "page_size": 30
+}

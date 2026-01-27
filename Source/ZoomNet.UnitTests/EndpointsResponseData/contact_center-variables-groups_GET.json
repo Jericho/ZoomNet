@@ -1,0 +1,14 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 10,
+  "total_records": 10,
+  "variable_groups": [
+    {
+      "variable_group_id": "71ec9348-27db-4fe6-81b9-5b8637ca299b",
+      "variable_group_name": "Agent",
+      "variable_group_description": "Agent\u0027s first custom group.",
+      "variable_group_type": "system",
+      "variable_group_variables_count": 1
+    }
+  ]
+}

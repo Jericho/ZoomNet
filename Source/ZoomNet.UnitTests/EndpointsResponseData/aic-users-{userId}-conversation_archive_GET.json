@@ -1,0 +1,20 @@
+{
+  "user_id": "ABCDEF123456",
+  "email": "jchill@example.com",
+  "display_name": "Jill Chill",
+  "start_time": "2021-04-26T05:23:18Z",
+  "end_time": "2021-05-26T05:23:18Z",
+  "timezone": "Asia/Shanghai",
+  "aic_history_download_url": "https://aic.zoom.us/rest/v1/aic/archive/conversations/download/Qg75t7xZBtEbAkjdlgbfdngBBBB",
+  "file_extension": "JSON",
+  "file_size": 165743,
+  "file_type": "AIC_CONVERSATION",
+  "physical_files": [
+    {
+      "file_id": "pvKocCqVSMygaOcKus5Afw",
+      "file_name": "Screenshot 2025-02-12 at 10.42.27 AM.png",
+      "file_size": 540680,
+      "download_url": "https://aic.zoom.us/rest/v1/aic/archive/attached/download/HBAXbHc15BXbnq0JoDu6tc5MWlww9MAo9JJq2d14VAWkpcT5FEA.AK5calud4EJB7bMq"
+    }
+  ]
+}

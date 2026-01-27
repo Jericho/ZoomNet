@@ -1,0 +1,27 @@
+{
+  "outbound_campaign_id": "TY_XsJuWR9ehXrsf1DSIAQ",
+  "outbound_campaign_name": "My outbound campaign",
+  "outbound_campaign_description": "My outbound campaign description",
+  "queue_id": "TY_XsJuWR9ehXrsf1DSIAQ",
+  "queue_name": "My queue name",
+  "phone_number_id": "XfTPrZjyR5W6QgNARdtGlw",
+  "outbound_campaign_status": "draft",
+  "dialing_method": "progressive",
+  "dialing_method_settings": null,
+  "outbound_campaign_priority": 5,
+  "campaign_contact_list": [
+    {
+      "contact_list_id": "MN2Dtcb2T-yT5CU3clN-AA",
+      "contact_list_name": "Contact List",
+      "contact_list_description": "Description",
+      "contacts_count": "1"
+    }
+  ],
+  "enable_max_ring_time": true,
+  "max_ring_time": 60,
+  "business_hour_source": "queue",
+  "business_hour_id": "h7XtiytFTammquBRlTRiWZ",
+  "enable_closure_hour": true,
+  "closure_set_id": "y9XtiytyQammquBRlTPiWw",
+  "contact_timezone_source": "area_code"
+}

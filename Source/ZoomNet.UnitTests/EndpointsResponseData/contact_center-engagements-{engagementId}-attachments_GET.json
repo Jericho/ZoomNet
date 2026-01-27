@@ -1,0 +1,16 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "attachments": [
+    {
+      "attachment_id": "0AYFv9ePSsmPUSJYHorUWQ",
+      "engagement_id": "3XilEfOvQEKRIWMWhX1jDg",
+      "attachment_name": "GMT20251015-95414_296_lbMMg_boRtaWyHqA87cUuQ_VideoScreenshot.png",
+      "attachment_url": "https://api.zoom.us/v2/contact_center/attachment/download/0AYFv9ePSsmPUSJYHorUWQ",
+      "attachment_alias": "Screenshot 1.png",
+      "attachment_size": 197238,
+      "attachment_type": "image"
+    }
+  ]
+}

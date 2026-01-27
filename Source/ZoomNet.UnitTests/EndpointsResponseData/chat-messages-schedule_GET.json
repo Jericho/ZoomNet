@@ -1,0 +1,45 @@
+{
+  "to_channel": "qrstuvwxyz67890",
+  "to_contact": "hello@example.com",
+  "page_size": 10,
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "messages": [
+    {
+      "draft_id": "2d712699-62f3-4114-9fbf-29d40664eb09",
+      "create_date": "2020-02-10T21:39:50.0000000\u002B00:00",
+      "scheduled_time": "2020-02-10T21:39:50.0000000\u002B00:00",
+      "download_url": "https://example.com/file/download/xt0aNj_DRtqRn041pIfpSQ?filename=Screenshot%202022-03-01%20at%20144337.png\u0026jwt=eyJhbGciOiJIUzI1NiJ9.eyJkaWciOiJkOTllM2QwMjRjNmFiODNiMTNlNjVjYzM3NjJlYjc4ODMwMDE4YTNjNzNiNjc3ZWE3MzNlZDEzMTgxMTE3MzNkIiwiaXNzIjoiY3Jvc3NmaWxlIiwiYXVkIjoiZmlsZSIsImV4cCI6MTY0NjIwMzQ4MX0.7SF4L-xY-mqXgRD-NCzJOIu5nkuy33eKksif2m75Y38",
+      "file_id": "XDCDSJNVCDS",
+      "file_name": "Screenshot 2022-03-01 at 144337.png",
+      "file_size": 89,
+      "rich_text": [
+        {
+          "start_position": 0,
+          "end_position": 5,
+          "format_type": "Paragraph",
+          "format_attr": "h1"
+        }
+      ],
+      "files": [
+        {
+          "download_url": "https://zoom.us/file/download/xBvggqyjQUal6TecwMlYwQ?filename=example.jpg\u0026jwt=eyJhbGciOiJIUzI1NiJ9.eyJkaWciOiI3Yzg5YzBhYjIzYmZmMjdjNzE3NTQ4YzdjMTc0Njk3MWYzYjNmNjFjMzU5OTliNjE1ZjdjMWJmMzc5YTJiZThlIiwiYXVkIjoiZmlsZSIsImlzcyI6ImNyb3NzZmlsZSIsImV4cCI6MTY0ODI2NDY5N30.2fQxw3F1cEhvFJmnE2zPOdkHnPeZUktv_P0M--e-Tg8",
+          "file_id": "xBvggqyjQUal6TecwMlYwQ",
+          "file_name": "example.jpg",
+          "file_size": 3966
+        }
+      ],
+      "message": "hello!",
+      "reply_main_message_id": "d3be6ca7-3a0b-44fb-a429-4d6b30ac64a6",
+      "reply_main_message_timestamp": 1581370790388,
+      "at_items": [
+        {
+          "at_contact": "MO6johaFRIOlYivs3NnyvA",
+          "at_contact_member_id": "R4aF9Oj0fVM2hhezJTEmSKj0fVM2JTEaF9Oj0fVMj0fF9OF9O",
+          "at_type": 2,
+          "end_position": 8,
+          "start_position": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "team_id": "N5nHB8FTSnG56_hyOFPovQ",
+  "name": "CEO Team",
+  "description": "CEO Office",
+  "type": "hierarchical team",
+  "member_size": 1,
+  "manager_size": 1,
+  "leaf": true
+}
