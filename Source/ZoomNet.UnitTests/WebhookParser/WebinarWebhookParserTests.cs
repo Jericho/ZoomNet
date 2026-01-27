@@ -17,7 +17,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void WebinarServiceIssue()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarServiceIssueEvent>(Resource.webinar_alert_webhook);
+			var parsedEvent = ParseWebhookEvent<WebinarServiceIssueEvent>(WebhooksDataResource.webinar_alert);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarServiceIssue);
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
@@ -32,7 +32,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void WebinarChatMessageFileDownloaded()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarChatMessageFileDownloadedEvent>(Resource.webinar_chat_message_file_downloaded_webhook);
+			var parsedEvent = ParseWebhookEvent<WebinarChatMessageFileDownloadedEvent>(WebhooksDataResource.webinar_chat_message_file_downloaded);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarChatMessageFileDownloaded);
 
@@ -50,7 +50,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void WebinarChatMessageFileSent()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarChatMessageFileSentEvent>(Resource.webinar_chat_message_file_sent_webhook);
+			var parsedEvent = ParseWebhookEvent<WebinarChatMessageFileSentEvent>(WebhooksDataResource.webinar_chat_message_file_sent);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarChatMessageFileSent);
 
@@ -68,7 +68,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void WebinarChatMessageSent()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarChatMessageSentEvent>(Resource.webinar_chat_message_sent_webhook);
+			var parsedEvent = ParseWebhookEvent<WebinarChatMessageSentEvent>(WebhooksDataResource.webinar_chat_message_sent);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarChatMessageSent);
 
@@ -92,7 +92,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void WebinarConvertedToMeeting()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarConvertedToMeetingEvent>(Resource.webinar_converted_to_meeting_webhook);
+			var parsedEvent = ParseWebhookEvent<WebinarConvertedToMeetingEvent>(WebhooksDataResource.webinar_converted_to_meeting);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarConvertedToMeeting);
 
@@ -107,7 +107,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void WebinarCreated()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarCreatedEvent>(Resource.webinar_created_webhook);
+			var parsedEvent = ParseWebhookEvent<WebinarCreatedEvent>(WebhooksDataResource.webinar_created);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarCreated);
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
@@ -135,7 +135,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void WebinarDeleted()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarDeletedEvent>(Resource.webinar_deleted_webhook);
+			var parsedEvent = ParseWebhookEvent<WebinarDeletedEvent>(WebhooksDataResource.webinar_deleted);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarDeleted);
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
@@ -150,7 +150,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void WebinarEnded()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarEndedEvent>(Resource.webinar_ended_webhook);
+			var parsedEvent = ParseWebhookEvent<WebinarEndedEvent>(WebhooksDataResource.webinar_ended);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarEnded);
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
@@ -165,7 +165,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void WebinarParticipantBind()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarParticipantBindEvent>(Resource.webinar_participant_bind_webhook);
+			var parsedEvent = ParseWebhookEvent<WebinarParticipantBindEvent>(WebhooksDataResource.webinar_participant_bind);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarParticipantBind);
 
@@ -181,7 +181,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void WebinarParticipantFeedback()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarParticipantFeedbackEvent>(Resource.webinar_participant_feedback_webhook);
+			var parsedEvent = ParseWebhookEvent<WebinarParticipantFeedbackEvent>(WebhooksDataResource.webinar_participant_feedback);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarParticipantFeedback);
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
@@ -208,7 +208,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void WebinarParticipantJoined()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarParticipantJoinedEvent>(Resource.webinar_participant_joined_webhook);
+			var parsedEvent = ParseWebhookEvent<WebinarParticipantJoinedEvent>(WebhooksDataResource.webinar_participant_joined);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarParticipantJoined);
 
@@ -222,7 +222,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void WebinarParticipantLeft()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarParticipantLeftEvent>(Resource.webinar_participant_left_webhook);
+			var parsedEvent = ParseWebhookEvent<WebinarParticipantLeftEvent>(WebhooksDataResource.webinar_participant_left);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarParticipantLeft);
 
@@ -237,7 +237,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void WebinarParticipantRoleChanged()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarParticipantRoleChangedEvent>(Resource.webinar_participant_role_changed_webhook);
+			var parsedEvent = ParseWebhookEvent<WebinarParticipantRoleChangedEvent>(WebhooksDataResource.webinar_participant_role_changed);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarParticipantRoleChanged);
 
@@ -253,7 +253,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void WebinarPermanentlyDeleted()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarPermanentlyDeletedEvent>(Resource.webinar_permanently_deleted_webhook);
+			var parsedEvent = ParseWebhookEvent<WebinarPermanentlyDeletedEvent>(WebhooksDataResource.webinar_permanently_deleted);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarPermanentlyDeleted);
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
@@ -268,7 +268,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void WebinarRecovered()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarRecoveredEvent>(Resource.webinar_recovered_webhook);
+			var parsedEvent = ParseWebhookEvent<WebinarRecoveredEvent>(WebhooksDataResource.webinar_recovered);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarRecovered);
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
@@ -283,7 +283,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void WebinarRegistrationApproved()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarRegistrationApprovedEvent>(Resource.webinar_registration_approved_webhook);
+			var parsedEvent = ParseWebhookEvent<WebinarRegistrationApprovedEvent>(WebhooksDataResource.webinar_registration_approved);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarRegistrationApproved);
 
@@ -300,7 +300,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void WebinarRegistrationCancelled()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarRegistrationCancelledEvent>(Resource.webinar_registration_cancelled_webhook);
+			var parsedEvent = ParseWebhookEvent<WebinarRegistrationCancelledEvent>(WebhooksDataResource.webinar_registration_cancelled);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarRegistrationCancelled);
 
@@ -315,7 +315,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void WebinarRegistrationCreated()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarRegistrationCreatedEvent>(Resource.webinar_registration_created_webhook);
+			var parsedEvent = ParseWebhookEvent<WebinarRegistrationCreatedEvent>(WebhooksDataResource.webinar_registration_created);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarRegistrationCreated);
 
@@ -333,7 +333,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void WebinarRegistrationDenied()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarRegistrationDeniedEvent>(Resource.webinar_registration_denied_webhook);
+			var parsedEvent = ParseWebhookEvent<WebinarRegistrationDeniedEvent>(WebhooksDataResource.webinar_registration_denied);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarRegistrationDenied);
 
@@ -348,7 +348,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void WebinarSharingStarted()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarSharingStartedEvent>(Resource.webinar_sharing_started_webhook);
+			var parsedEvent = ParseWebhookEvent<WebinarSharingStartedEvent>(WebhooksDataResource.webinar_sharing_started);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarSharingStarted);
 
@@ -358,7 +358,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void WebinarSharingEnded()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarSharingEndedEvent>(Resource.webinar_sharing_ended_webhook);
+			var parsedEvent = ParseWebhookEvent<WebinarSharingEndedEvent>(WebhooksDataResource.webinar_sharing_ended);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarSharingEnded);
 
@@ -368,7 +368,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void WebinarStarted()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarStartedEvent>(Resource.webinar_started_webhook);
+			var parsedEvent = ParseWebhookEvent<WebinarStartedEvent>(WebhooksDataResource.webinar_started);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarStarted);
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
@@ -380,7 +380,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void WebinarUpdated()
 		{
-			var parsedEvent = ParseWebhookEvent<WebinarUpdatedEvent>(Resource.webinar_updated_webhook);
+			var parsedEvent = ParseWebhookEvent<WebinarUpdatedEvent>(WebhooksDataResource.webinar_updated);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarUpdated);
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);

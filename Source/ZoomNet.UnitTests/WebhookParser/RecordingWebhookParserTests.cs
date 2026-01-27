@@ -23,7 +23,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void RecordingArchiveFilesCompleted()
 		{
-			var parsedEvent = ParseWebhookEvent<RecordingArchiveFilesCompletedEvent>(Resource.recording_archive_files_completed_webhook);
+			var parsedEvent = ParseWebhookEvent<RecordingArchiveFilesCompletedEvent>(WebhooksDataResource.recording_archive_files_completed);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingArchiveFilesCompleted);
 
@@ -83,7 +83,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void RecordingBatchDeleted()
 		{
-			var parsedEvent = ParseWebhookEvent<RecordingBatchDeletedEvent>(Resource.recording_batch_deleted_webhook);
+			var parsedEvent = ParseWebhookEvent<RecordingBatchDeletedEvent>(WebhooksDataResource.recording_batch_deleted);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingBatchDeleted);
 
@@ -96,7 +96,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void RecordingBatchRecovered()
 		{
-			var parsedEvent = ParseWebhookEvent<RecordingBatchRecoveredEvent>(Resource.recording_batch_recovered_webhook);
+			var parsedEvent = ParseWebhookEvent<RecordingBatchRecoveredEvent>(WebhooksDataResource.recording_batch_recovered);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingBatchRecovered);
 
@@ -109,7 +109,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void RecordingBatchTrashed()
 		{
-			var parsedEvent = ParseWebhookEvent<RecordingBatchTrashedEvent>(Resource.recording_batch_trashed_webhook);
+			var parsedEvent = ParseWebhookEvent<RecordingBatchTrashedEvent>(WebhooksDataResource.recording_batch_trashed);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingBatchTrashed);
 
@@ -125,7 +125,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void RecordingCloudStorageUsageUpdated()
 		{
-			var parsedEvent = ParseWebhookEvent<RecordingCloudStorageUsageUpdatedEvent>(Resource.recording_cloud_storage_usage_updated_webhook);
+			var parsedEvent = ParseWebhookEvent<RecordingCloudStorageUsageUpdatedEvent>(WebhooksDataResource.recording_cloud_storage_usage_updated);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingCloudStorageUsageUpdated);
 
@@ -142,7 +142,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void RecordingCompleted()
 		{
-			var parsedEvent = ParseWebhookEvent<RecordingCompletedEvent>(Resource.recording_completed_webhook);
+			var parsedEvent = ParseWebhookEvent<RecordingCompletedEvent>(WebhooksDataResource.recording_completed);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingCompleted);
 
@@ -178,7 +178,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void RecordingDeleted()
 		{
-			var parsedEvent = ParseWebhookEvent<RecordingDeletedEvent>(Resource.recording_deleted_webhook);
+			var parsedEvent = ParseWebhookEvent<RecordingDeletedEvent>(WebhooksDataResource.recording_deleted);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingDeleted);
 
@@ -207,7 +207,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void RecordingPaused()
 		{
-			var parsedEvent = ParseWebhookEvent<RecordingPausedEvent>(Resource.recording_paused_webhook);
+			var parsedEvent = ParseWebhookEvent<RecordingPausedEvent>(WebhooksDataResource.recording_paused);
 
 			VerifyRecordingProgressEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingPaused, new DateTime(2021, 3, 23, 23, 15, 41, DateTimeKind.Utc));
 		}
@@ -215,7 +215,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void RecordingRecovered()
 		{
-			var parsedEvent = ParseWebhookEvent<RecordingRecoveredEvent>(Resource.recording_recovered_webhook);
+			var parsedEvent = ParseWebhookEvent<RecordingRecoveredEvent>(WebhooksDataResource.recording_recovered);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingRecovered);
 
@@ -245,7 +245,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void RecordingRegistrationApproved()
 		{
-			var parsedEvent = ParseWebhookEvent<RecordingRegistrationApprovedEvent>(Resource.recording_registration_approved_webhook);
+			var parsedEvent = ParseWebhookEvent<RecordingRegistrationApprovedEvent>(WebhooksDataResource.recording_registration_approved);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingRegistrationApproved);
 
@@ -260,7 +260,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void RecordingRegistrationCreated()
 		{
-			var parsedEvent = ParseWebhookEvent<RecordingRegistrationCreatedEvent>(Resource.recording_registration_created_webhook);
+			var parsedEvent = ParseWebhookEvent<RecordingRegistrationCreatedEvent>(WebhooksDataResource.recording_registration_created);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingRegistrationCreated);
 
@@ -278,7 +278,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void RecordingRegistrationDenied()
 		{
-			var parsedEvent = ParseWebhookEvent<RecordingRegistrationDeniedEvent>(Resource.recording_registration_denied_webhook);
+			var parsedEvent = ParseWebhookEvent<RecordingRegistrationDeniedEvent>(WebhooksDataResource.recording_registration_denied);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingRegistrationDenied);
 
@@ -290,7 +290,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void RecordingRenamed()
 		{
-			var parsedEvent = ParseWebhookEvent<RecordingRenamedEvent>(Resource.recording_renamed_webhook);
+			var parsedEvent = ParseWebhookEvent<RecordingRenamedEvent>(WebhooksDataResource.recording_renamed);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingRenamed);
 
@@ -309,7 +309,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void RecordingResumed()
 		{
-			var parsedEvent = ParseWebhookEvent<RecordingResumedEvent>(Resource.recording_resumed_webhook);
+			var parsedEvent = ParseWebhookEvent<RecordingResumedEvent>(WebhooksDataResource.recording_resumed);
 
 			VerifyRecordingProgressEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingResumed);
 		}
@@ -317,7 +317,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void RecordingStarted()
 		{
-			var parsedEvent = ParseWebhookEvent<RecordingStartedEvent>(Resource.recording_started_webhook);
+			var parsedEvent = ParseWebhookEvent<RecordingStartedEvent>(WebhooksDataResource.recording_started);
 
 			VerifyRecordingProgressEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingStarted);
 		}
@@ -325,7 +325,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void RecordingStopped()
 		{
-			var parsedEvent = ParseWebhookEvent<RecordingStoppedEvent>(Resource.recording_stopped_webhook);
+			var parsedEvent = ParseWebhookEvent<RecordingStoppedEvent>(WebhooksDataResource.recording_stopped);
 
 			VerifyRecordingProgressEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingStopped, new DateTime(2021, 3, 23, 23, 15, 41, DateTimeKind.Utc));
 		}
@@ -333,7 +333,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void RecordingTranscriptCompleted()
 		{
-			var parsedEvent = ParseWebhookEvent<RecordingTranscriptCompletedEvent>(Resource.recording_transcript_completed_webhook);
+			var parsedEvent = ParseWebhookEvent<RecordingTranscriptCompletedEvent>(WebhooksDataResource.recording_transcript_completed);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingTranscriptCompleted);
 
@@ -359,7 +359,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void RecordingTrashed()
 		{
-			var parsedEvent = ParseWebhookEvent<RecordingTrashedEvent>(Resource.recording_trashed_webhook);
+			var parsedEvent = ParseWebhookEvent<RecordingTrashedEvent>(WebhooksDataResource.recording_trashed);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingTrashed);
 
