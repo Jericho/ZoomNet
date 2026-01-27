@@ -41,12 +41,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Properties\WebhooksDataResource.Designer.cs">
+    <Compile Update="Properties\EndpointsResponseResource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>WebhooksDataResource.resx</DependentUpon>
+      <DependentUpon>EndpointsResponseResource.resx</DependentUpon>
     </Compile>
-    <Compile Update="WebhooksDataResource.Designer.cs">
+    <Compile Update="Properties\WebhooksDataResource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>WebhooksDataResource.resx</DependentUpon>
@@ -54,11 +54,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Properties\WebhooksDataResource.resx">
+    <EmbeddedResource Update="Properties\EndpointsResponseResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>WebhooksDataResource.Designer.cs</LastGenOutput>
+      <LastGenOutput>EndpointsResponseResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="WebhooksDataResource.resx">
+    <EmbeddedResource Update="Properties\WebhooksDataResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>WebhooksDataResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
