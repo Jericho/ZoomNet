@@ -4,10 +4,10 @@
     {
       "email": "abc.def@email.com",
       "type": 1,
-      "source_language_id": "string",
+      "source_language_id": "US",
       "source_language_display_name": "English",
-      "target_language_id": "string",
-      "target_language_display_name": "string"
+      "target_language_id": "ASE",
+      "target_language_display_name": "American Sign Language"
     }
   ]
 }

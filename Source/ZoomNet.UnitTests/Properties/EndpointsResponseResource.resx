@@ -2611,4 +2611,757 @@
   <data name="marketplace-users-{userId}-apps_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\EndpointsResponseData\marketplace-users-{userId}-apps_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="meetings-{meetingId}-recordings-registrants_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\meetings-{meetingId}-recordings-registrants_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="h323-devices_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\h323-devices_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meetings-{meetingId}-open_apps_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\meetings-{meetingId}-open_apps_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meetings-{meetingId}-batch_registrants_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\meetings-{meetingId}-batch_registrants_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meetings-{meetingId}-invite_links_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\meetings-{meetingId}-invite_links_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meetings-{meetingId}-registrants_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\meetings-{meetingId}-registrants_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="users-{userId}-meetings_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\users-{userId}-meetings_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meetings-{meetingId}-batch_polls_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\meetings-{meetingId}-batch_polls_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meetings-{meetingId}-polls_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\meetings-{meetingId}-polls_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="sip_phones-phones_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\sip_phones-phones_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="users-{userId}-tsp_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\users-{userId}-tsp_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="users-{userId}-meeting_templates_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\users-{userId}-meeting_templates_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="tracking_fields_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\tracking_fields_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="users-{userId}-webinar_templates_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\users-{userId}-webinar_templates_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="users-{userId}-webinars_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\users-{userId}-webinars_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinars-{webinarId}-batch_registrants_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\webinars-{webinarId}-batch_registrants_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinars-{webinarId}-branding-name_tags_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\webinars-{webinarId}-branding-name_tags_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinars-{webinarId}-branding-virtual_backgrounds_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\webinars-{webinarId}-branding-virtual_backgrounds_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinars-{webinarId}-branding-wallpaper_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\webinars-{webinarId}-branding-wallpaper_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinars-{webinarId}-invite_links_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\webinars-{webinarId}-invite_links_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinars-{webinarId}-panelists_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\webinars-{webinarId}-panelists_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinars-{webinarId}-polls_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\webinars-{webinarId}-polls_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinars-{webinarId}-registrants_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\webinars-{webinarId}-registrants_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinars-{webinarId}-sip_dialing_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\webinars-{webinarId}-sip_dialing_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat-channels-{channelId}-mention_group_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\chat-channels-{channelId}-mention_group_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat-channels-{channelId}-members_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\chat-channels-{channelId}-members_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat-channels-{channelId}-members-groups_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\chat-channels-{channelId}-members-groups_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat-channels-{channelId}-members-me_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\chat-channels-{channelId}-members-me_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat-users-{userId}-channels_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\chat-users-{userId}-channels_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat-users-{userId}-channels-{channelId}-admins_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\chat-users-{userId}-channels-{channelId}-admins_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat-users-{userId}-channels-{channelId}-members_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\chat-users-{userId}-channels-{channelId}-members_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat-emoji-files_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\chat-emoji-files_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat-users-{userId}-files_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\chat-users-{userId}-files_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat-users-{userId}-messages-files_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\chat-users-{userId}-messages-files_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat-users-{userId}-messages_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\chat-users-{userId}-messages_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat-migration-messages_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\chat-migration-messages_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat-migration-users-{identifier}-channels_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\chat-migration-users-{identifier}-channels_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="im-users-me-chat-messages_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\im-users-me-chat-messages_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="im-groups-{groupId}-members_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\im-groups-{groupId}-members_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat-legalhold-matters_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\chat-legalhold-matters_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat-spaces_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\chat-spaces_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat-spaces-{spaceId}-admins_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\chat-spaces-{spaceId}-admins_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat-spaces-{spaceId}-members_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\chat-spaces-{spaceId}-members_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-alert_settings_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-alert_settings_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-users-{userId}-audios_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-users-{userId}-audios_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-users-{userId}-audios-batch_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-users-{userId}-audios-batch_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-auto_receptionists_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-auto_receptionists_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-auto_receptionists-{autoReceptionistId}-policies-{policyType}_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-auto_receptionists-{autoReceptionistId}-policies-{policyType}_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-blocked_list_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-blocked_list_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-extension-{extensionId}-call_handling-settings-{settingType}_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-extension-{extensionId}-call_handling-settings-{settingType}_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-call_queues_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-call_queues_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-call_queues-{callQueueId}-policies-{policyType}_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-call_queues-{callQueueId}-policies-{policyType}_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-common_areas_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-common_areas_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-common_areas-activation_code_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-common_areas-activation_code_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-common_areas-{commonAreaId}-calling_plans_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-common_areas-{commonAreaId}-calling_plans_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-common_areas-{commonAreaId}-phone_numbers_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-common_areas-{commonAreaId}-phone_numbers_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-common_areas-{commonAreaId}-settings-{settingType}_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-common_areas-{commonAreaId}-settings-{settingType}_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-emergency_addresses_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-emergency_addresses_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-batch_locations_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-batch_locations_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-locations_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-locations_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-external_contacts_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-external_contacts_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="fax-files_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\fax-files_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-fax-documents_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-fax-documents_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-firmware_update_rules_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-firmware_update_rules_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-group_call_pickup_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-group_call_pickup_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-extension-{extensionId}-inbound_blocked-rules_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-extension-{extensionId}-inbound_blocked-rules_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-inbound_blocked-rules_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-inbound_blocked-rules_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-monitoring_groups_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-monitoring_groups_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-common_areas-{commonAreaId}-outbound_calling-exception_rules_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-common_areas-{commonAreaId}-outbound_calling-exception_rules_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-outbound_calling-exception_rules_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-outbound_calling-exception_rules_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-sites-{siteId}-outbound_calling-exception_rules_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-sites-{siteId}-outbound_calling-exception_rules_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-users-{userId}-outbound_calling-exception_rules_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-users-{userId}-outbound_calling-exception_rules_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-devices_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-devices_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-byoc_numbers_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-byoc_numbers_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-roles_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-roles_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-roles-{roleId}-targets_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-roles-{roleId}-targets_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-peering-numbers_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-peering-numbers_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-provision_templates_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-provision_templates_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-routing_rules_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-routing_rules_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-sms-messages_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-sms-messages_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-sms_campaigns-{smsCampaignId}-phone_numbers_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-sms_campaigns-{smsCampaignId}-phone_numbers_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-setting_templates_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-setting_templates_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-shared_line_groups_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-shared_line_groups_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-shared_line_groups-{slgId}-policies-{policyType}_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-shared_line_groups-{slgId}-policies-{policyType}_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-sites_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-sites_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-sites-{siteId}-settings-{settingType}_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-sites-{siteId}-settings-{settingType}_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-users-batch_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-users-batch_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-users-{userId}-settings-{settingType}_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-users-{userId}-settings-{settingType}_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-rooms-{roomId}-phone_numbers_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\phone-rooms-{roomId}-phone_numbers_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="scheduler-availability_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\scheduler-availability_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="scheduler-schedules_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\scheduler-schedules_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="scheduler-schedules-single_use_link_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\scheduler-schedules-single_use_link_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="scheduler-shares_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\scheduler-shares_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="workspaces_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\workspaces_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="workspaces-assets_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\workspaces-assets_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="workspaces-floormap-files_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\workspaces-floormap-files_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="workspaces-{workspaceId}-reservations_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\workspaces-{workspaceId}-reservations_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="rooms_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\rooms_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="rooms-calendar-services-{serviceId}-resources_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\rooms-calendar-services-{serviceId}-resources_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="rooms-content-background-folders_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\rooms-content-background-folders_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="rooms-content-digital_signage-contents_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\rooms-content-digital_signage-contents_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="rooms-content-digital_signage-playlists_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\rooms-content-digital_signage-playlists_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zrbackground-files_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zrbackground-files_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zrdigitalsignage-files_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zrdigitalsignage-files_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="rooms-tags_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\rooms-tags_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="clips-transfers_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\clips-transfers_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="clips-files_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\clips-files_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="clips-files-multipart_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\clips-files-multipart_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="clips-files-multipart-upload_events_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\clips-files-multipart-upload_events_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="whiteboards-{whiteboardId}-collaborator_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\whiteboards-{whiteboardId}-collaborator_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="whiteboards_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\whiteboards_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="whiteboards-files_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\whiteboards-files_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="whiteboards-import_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\whiteboards-import_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="whiteboards-projects_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\whiteboards-projects_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="whiteboards-projects-{projectId}-collaborators_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\whiteboards-projects-{projectId}-collaborators_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="whiteboards-projects-{projectId}-whiteboards_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\whiteboards-projects-{projectId}-whiteboards_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="crc-api_connectors_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\crc-api_connectors_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="crc-managed_rooms_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\crc-managed_rooms_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="crc-room_templates_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\crc-room_templates_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="im-chat-messages_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\im-chat-messages_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="docs-files_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\docs-files_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="docs-file_uploads_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\docs-file_uploads_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="docs-imports_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\docs-imports_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-address_books_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-address_books_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-address_books-custom_fields_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-address_books-custom_fields_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-address_books-units_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-address_books-units_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-address_books-{addressBookId}-contacts_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-address_books-{addressBookId}-contacts_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-system_statuses_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-system_statuses_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-asset_library-assets_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-asset_library-assets_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-asset_library-assets-{assetId}-duplicate_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-asset_library-assets-{assetId}-duplicate_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-asset_library-categories_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-asset_library-categories_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-users-{userId}-commands_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-users-{userId}-commands_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-outbound_campaign-campaigns_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-outbound_campaign-campaigns_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-outbound_campaign-contact_lists_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-outbound_campaign-contact_lists_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-outbound_campaign-contact_lists-{contactListId}-contacts_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-outbound_campaign-contact_lists-{contactListId}-contacts_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-dispositions_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-dispositions_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-dispositions-sets_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-dispositions-sets_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-engagement_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-engagement_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-flows_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-flows_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-flows-{flowId}-entry_points_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-flows-{flowId}-entry_points_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-inboxes_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-inboxes_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-sms_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-sms_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-business_hours_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-business_hours_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-closures_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-closures_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-queues_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-queues_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-queues-batch_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-queues-batch_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-queues-{queueId}-agents_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-queues-{queueId}-agents_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-queues-{queueId}-dispositions_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-queues-{queueId}-dispositions_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-queues-{queueId}-dispositions-sets_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-queues-{queueId}-dispositions-sets_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-queues-{queueId}-interrupt_menu_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-queues-{queueId}-interrupt_menu_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-queues-{queueId}-scheduled_callbacks-events_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-queues-{queueId}-scheduled_callbacks-events_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-queues-{queueId}-supervisors_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-queues-{queueId}-supervisors_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-queues-{queueId}-teams_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-queues-{queueId}-teams_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-roles_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-roles_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-roles-duplicate_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-roles-duplicate_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-roles-{roleId}-users_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-roles-{roleId}-users_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-agent_routing_profiles_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-agent_routing_profiles_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-consumer_routing_profiles_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-consumer_routing_profiles_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-skills_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-skills_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-skills-categories_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-skills-categories_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-teams_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-teams_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-teams-{teamId}-agents_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-teams-{teamId}-agents_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-teams-{teamId}-supervisors_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-teams-{teamId}-supervisors_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-users_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-users_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-users-batch_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-users-batch_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-users-templates_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-users-templates_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-variables_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-variables_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-variables-groups_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contact_center-variables-groups_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events-events-{eventId}-attendee_action_PATCH" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zoom_events-events-{eventId}-attendee_action_PATCH.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events-events-{eventId}-sessions-{sessionId}-attendee_action_PATCH" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zoom_events-events-{eventId}-sessions-{sessionId}-attendee_action_PATCH.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events-events-{eventId}-coeditors_PATCH" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zoom_events-events-{eventId}-coeditors_PATCH.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events-events-{eventId}-access_links_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zoom_events-events-{eventId}-access_links_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events-events_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zoom_events-events_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events-events-{eventId}-event_actions_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zoom_events-events-{eventId}-event_actions_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events-events-{eventId}-exhibitors_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zoom_events-events-{eventId}-exhibitors_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events-files_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zoom_events-files_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events-files-multipart_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zoom_events-files-multipart_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events-files-multipart-upload_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zoom_events-files-multipart-upload_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events-hubs-{hubId}-hosts_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zoom_events-hubs-{hubId}-hosts_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events-events-{eventId}-sessions_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zoom_events-events-{eventId}-sessions_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events-events-{eventId}-speakers_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zoom_events-events-{eventId}-speakers_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events-events-{eventId}-ticket_types_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zoom_events-events-{eventId}-ticket_types_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events-events-{eventId}-tickets_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zoom_events-events-{eventId}-tickets_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events-hubs-{hubId}-vod_channels_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zoom_events-hubs-{hubId}-vod_channels_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events-hubs-{hubId}-vod_channels-{channelId}-videos_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zoom_events-hubs-{hubId}-vod_channels-{channelId}-videos_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events-hubs-{hubId}-vod_channels-{channelId}-registrations_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zoom_events-hubs-{hubId}-vod_channels-{channelId}-registrations_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="km-kbs-{kbId}-articles_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\km-kbs-{kbId}-articles_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="km-kbs-{kbId}-sync_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\km-kbs-{kbId}-sync_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="iq-conversations_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\iq-conversations_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="iq-conversations-{conversationId}-comments_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\iq-conversations-{conversationId}-comments_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="iq-files_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\iq-files_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="iq-files-multipart_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\iq-files-multipart_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="iq-files-multipart-upload_events_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\iq-files-multipart-upload_events_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="iq-users-{userId}-conversations_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\iq-users-{userId}-conversations_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zra-conversations_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zra-conversations_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zra-conversations-{conversationId}-comments_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zra-conversations-{conversationId}-comments_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zra-files_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zra-files_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zra-files-multipart_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zra-files-multipart_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zra-files-multipart-upload_events_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zra-files-multipart-upload_events_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zra-users-{userId}-conversations_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zra-users-{userId}-conversations_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zra-team_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zra-team_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zra-team-{teamId}-access-granted-from_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zra-team-{teamId}-access-granted-from_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zra-team-{teamId}-access-granted-to_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zra-team-{teamId}-access-granted-to_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zra-team-{teamId}-team_managers_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zra-team-{teamId}-team_managers_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zra-team-{teamId}-team_members_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\zra-team-{teamId}-team_members_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="number_management-sms_consent_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\number_management-sms_consent_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="qm-interactions_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\qm-interactions_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="workforce-management-imports-historical-queue-metrics_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\workforce-management-imports-historical-queue-metrics_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="workforce-management-organizational-groups_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\workforce-management-organizational-groups_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="commerce-account_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\commerce-account_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="commerce-deal_registration_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\commerce-deal_registration_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="commerce-order_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\commerce-order_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="commerce-order-preview_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\commerce-order-preview_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="commerce-file_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\commerce-file_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="commerce-quote_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\commerce-quote_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="commerce-quote-preview_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\commerce-quote-preview_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="video_management-channels_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\video_management-channels_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="video_management-playlists_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\video_management-playlists_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="video_management-files_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\video_management-files_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="dialer-call-lists_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\dialer-call-lists_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="dialer-call-lists-{callListId}-prospects_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\dialer-call-lists-{callListId}-prospects_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="dialer-call-lists-{callListId}-prospects-batch_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\dialer-call-lists-{callListId}-prospects-batch_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contacts-groups_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contacts-groups_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contacts-groups-{groupId}-members_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\contacts-groups-{groupId}-members_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="divisions_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\divisions_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="divisions-{divisionId}-users_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\divisions-{divisionId}-users_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="groups_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\groups_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="groups-{groupId}-admins_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\groups-{groupId}-admins_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="groups-{groupId}-members_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\groups-{groupId}-members_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="groups-{groupId}-settings-virtual_backgrounds_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\groups-{groupId}-settings-virtual_backgrounds_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="users_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\users_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="users-features_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\users-features_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="users-{userId}-assistants_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\users-{userId}-assistants_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="users-{userId}-picture_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\users-{userId}-picture_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="users-{userId}-settings-virtual_backgrounds_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\users-{userId}-settings-virtual_backgrounds_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="accounts-{accountId}-settings-virtual_backgrounds_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\accounts-{accountId}-settings-virtual_backgrounds_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="data_requests-requests_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\data_requests-requests_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="information_barriers-policies_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\information_barriers-policies_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="roles-{roleId}-members_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\roles-{roleId}-members_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="scim2-Groups_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\scim2-Groups_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="scim2-Users_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\scim2-Users_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="videosdk-settings-storage-location_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\videosdk-settings-storage-location_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="videosdk-sessions_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\videosdk-sessions_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="videosdk-sessions-{sessionId}-sip_dialing_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\videosdk-sessions-{sessionId}-sip_dialing_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="videosdk-stream_ingestions_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\videosdk-stream_ingestions_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="marketplace-app-event_subscription_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\marketplace-app-event_subscription_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="marketplace-apps_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\marketplace-apps_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="marketplace-apps-{appId}-deeplink_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\marketplace-apps-{appId}-deeplink_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="marketplace-apps-{appId}-preApprove_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\marketplace-apps-{appId}-preApprove_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="marketplace-apps-{appId}-requests_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\marketplace-apps-{appId}-requests_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="marketplace-apps-{appId}-rotate_client_secret_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\EndpointsResponseData\marketplace-apps-{appId}-rotate_client_secret_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

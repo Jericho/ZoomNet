@@ -23,7 +23,7 @@
     "concurrent_message_capacity": 4,
     "concurrent_email_capacity": 4
   },
-  "package_name": "string",
+  "package_name": "essentials",
   "add_ons_plan": [
     "ai_expert_assist"
   ]

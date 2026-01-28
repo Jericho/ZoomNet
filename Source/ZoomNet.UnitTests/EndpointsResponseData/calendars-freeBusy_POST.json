@@ -27,7 +27,7 @@
         "reason": "notFound"
       },
       "calendars": [
-        "string"
+        null
       ]
     }
   ]

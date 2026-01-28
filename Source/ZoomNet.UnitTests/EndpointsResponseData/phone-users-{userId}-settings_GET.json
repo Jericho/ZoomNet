@@ -18,9 +18,7 @@
       }
     ],
     "privacy": true,
-    "privileges": [
-      2
-    ],
+    "privileges": "1",
     "locked": true
   },
   "desk_phone": {

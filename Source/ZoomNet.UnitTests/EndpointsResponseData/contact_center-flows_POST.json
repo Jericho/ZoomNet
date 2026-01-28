@@ -1,0 +1,29 @@
+{
+  "flow_id": "zwKiV80hQ7CwRg9BEm0Bvw",
+  "flow_name": "test_flow",
+  "flow_description": "test_flow",
+  "channel": "messaging",
+  "channel_source": "web_chat",
+  "status": "draft",
+  "modified_by": "IGTRVt3gQ2i-WjoUIjeZxw",
+  "last_modified_time": "2022-02-15T09:27:15.0000000\u002B00:00",
+  "entry_points": [
+    {
+      "entry_id": "x_h7uCj3TtScXWOBnQnKrw",
+      "entry_name": "my_entry",
+      "entry_number": "\u002B16052052430",
+      "entry_language": "en-US",
+      "email_address": "address@company.com"
+    }
+  ],
+  "flow_versions": [
+    {
+      "flow_version_id": "EWg5URJZRXKwfbLJpeJWyA",
+      "flow_version_description": "My Version Description",
+      "flow_version_status": "draft",
+      "flow_version": 2,
+      "flow_version_modified_by": "jdhgdhghk376453hjdf",
+      "flow_version_last_modified_time": "2023-01-01T00:00:00-04:00"
+    }
+  ]
+}

@@ -7,7 +7,7 @@
       "device_type": "Zoom Phone Appliance",
       "vendor": "Yealink",
       "model": "MP56",
-      "status": "string",
+      "status": "online",
       "policy": {
         "hot_desking": {
           "status": "online"

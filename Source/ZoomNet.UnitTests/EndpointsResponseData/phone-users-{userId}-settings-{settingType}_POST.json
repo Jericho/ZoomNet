@@ -1,0 +1,48 @@
+{
+  "delegation": {
+    "assistants": [
+      {
+        "display_name": "test delegation assistants",
+        "extension_id": "CcrEGgmeQem1uyJsuIRKwA",
+        "extension_number": 1000001036,
+        "extension_type": "user",
+        "id": "w0RChiauQeqRlv5fgxYULQ"
+      }
+    ],
+    "privacy": true,
+    "privileges": "1"
+  },
+  "voice_mail": {
+    "access_user_id": "w0RChiauQeqRlv5fgxYULQ",
+    "access_user_type": "commonArea",
+    "delete": true,
+    "download": true,
+    "shared_id": "--e8ugg0SeS-9clgrDkn2w"
+  },
+  "voicemail_access_members": [
+    {
+      "access_user_id": "w0RChiauQeqRlv5fgxYULQ",
+      "access_user_type": "commonArea",
+      "allow_delete": false,
+      "allow_download": false,
+      "allow_sharing": false,
+      "shared_id": "--e8ugg0SeS-9clgrDkn2w"
+    }
+  ],
+  "auto_call_recording_access_members": [
+    {
+      "access_user_id": "w0RChiauQeqRlv5fgxYULQ",
+      "allow_delete": false,
+      "allow_download": false,
+      "shared_id": "--e8ugg0SeS-9clgrDkn2w"
+    }
+  ],
+  "ad_hoc_call_recording_access_members": [
+    {
+      "access_user_id": "w0RChiauQeqRlv5fgxYULQ",
+      "allow_delete": false,
+      "allow_download": false,
+      "shared_id": "--e8ugg0SeS-9clgrDkn2w"
+    }
+  ]
+}

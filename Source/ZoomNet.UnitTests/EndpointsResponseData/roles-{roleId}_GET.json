@@ -14,7 +14,7 @@
     {
       "permission_id": "User:Read",
       "group_ids": [
-        "string"
+        null
       ]
     }
   ]

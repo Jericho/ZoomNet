@@ -1,0 +1,107 @@
+{
+  "id": "k\u0026KdKr6TLWuxdDtk0hjSzL",
+  "meta": {
+    "resourceType": "User",
+    "location": "https://api.zoom.us/scim2/Users/k\u0026KdKr6TLWuxdDtk0hjSzL",
+    "version": "1.0.0",
+    "created": "2023-11-24T05:13:15Z",
+    "lastModified": "2023-11-24T05:13:15Z"
+  },
+  "schemas": [
+    "urn:ietf:params:scim:api:messages:2.0:ListResponse"
+  ],
+  "name": {
+    "givenName": "Jill",
+    "familyName": "Chill"
+  },
+  "emails": [
+    {
+      "type": "work",
+      "value": "jchill@example.com",
+      "primary": true
+    }
+  ],
+  "displayName": "Jill Chill",
+  "userName": "jchill@example.com",
+  "active": true,
+  "userType": "On-Prem",
+  "title": "Developer",
+  "locale": "San Jose",
+  "phoneNumbers": [
+    {
+      "type": "work",
+      "value": "\u002B015550100"
+    }
+  ],
+  "roles": [
+    {
+      "display": "Developer",
+      "value": "Developer",
+      "primary": true
+    }
+  ],
+  "groups": [
+    {
+      "display": "Developers",
+      "type": "direct",
+      "value": "Developers",
+      "primary": true
+    }
+  ],
+  "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+    "department": "Development",
+    "organization": "Example",
+    "costCenter": "US01",
+    "employeeNumber": "ABCDE12345",
+    "manager": "thill@example.com"
+  },
+  "urn:ietf:params:scim:schemas:extension:zoom:1.0:User": {
+    "{customAttribute}": "\u0022Custom attribute name\u0022 : \u0022custom attribute value\u0022",
+    "personalLinkName": "user001",
+    "transferee": "transferee@example.com",
+    "pronouns": "They/Them/Their",
+    "zoomUnited": "16",
+    "zoomOneBizPlus": "16",
+    "zoomOneEdu": "576460752303423488",
+    "zoomOneSchoolCampusPlus": "137438953472",
+    "zoomOneEntPremier": "13421772",
+    "zoomOneEduEntPremier": "4294967296",
+    "zoomIQ": true,
+    "zoomRevenueAccelerator": true,
+    "zoomCustomerManagedKey": true,
+    "zoomWhiteboard": true,
+    "zoomWhiteboardPlus": true,
+    "zoomTranslatedCaptions": true,
+    "zoomHuddles": true,
+    "zoomWorkforceManagement": true,
+    "zoomQualityManagement": true,
+    "zoomScheduler": true,
+    "zoomClipsPlus": true,
+    "zoomMailAndCalendar": true,
+    "visitorManagement": true,
+    "zoomComplianceManagement": true,
+    "zoomDocs": true,
+    "clinicalNotes": true,
+    "zoomClinicians": true,
+    "zoomCustomAICompanion": true,
+    "zoomAICompanion": true,
+    "zoomRevenueAcceleratorRole": "Sales Manager",
+    "zoomAutoDialer": "1073741824",
+    "zoomFrontline": "2048",
+    "cxInsights": "1099511627776",
+    "zoomWorkplaceSubscription": "2025 Subscription",
+    "zoomRevenueAcceleratorSubscription": "2025 Subscription",
+    "zoomCustomerManagedKeySubscription": "2025 Subscription",
+    "zoomWhiteboardSubscription": "2025 Subscription",
+    "zoomTranslatedCaptionsSubscription": "2025 Subscription",
+    "zoomWorkforceManagementSubscription": "2025 Subscription",
+    "zoomQualityManagementSubscription": "2025 Subscription",
+    "zoomSchedulerSubscription": "2025 Subscription",
+    "zoomClipsPlusSubscription": "2025 Subscription",
+    "visitorManagementSubscription": "2025 Subscription",
+    "zoomComplianceManagementSubscription": "2025 Subscription",
+    "zoomDocsSubscription": "2025 Subscription",
+    "zoomAutoDialerSubscription": "2025 Subscription",
+    "zoomAICompanionSubscription": "2025 Subscription"
+  }
+}

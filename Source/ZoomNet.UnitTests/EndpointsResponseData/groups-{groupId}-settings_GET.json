@@ -146,9 +146,7 @@
       "allow_participants_to_speak_in_listening_channel": true,
       "allow_up_to_25_custom_languages_when_scheduling_meetings": true,
       "enable": true,
-      "languages": [
-        "English"
-      ]
+      "languages": "English"
     },
     "sign_language_interpretation": {
       "enable": true,
@@ -193,9 +191,7 @@
     "show_meeting_control_toolbar": true,
     "slide_control": true,
     "stereo_audio": true,
-    "unchecked_data_center_regions": [
-      "EU"
-    ],
+    "unchecked_data_center_regions": "EU",
     "use_html_format_email": true,
     "virtual_background": true,
     "virtual_background_settings": {
