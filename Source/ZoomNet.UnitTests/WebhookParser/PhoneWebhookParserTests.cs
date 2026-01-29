@@ -36,7 +36,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCalleeAnswered()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCalleeAnsweredEvent>(WebhooksDataResource.phone_callee_answered);
+			var parsedEvent = ParseWebhookEvent<PhoneCalleeAnsweredEvent>(WebhooksResource.phone_callee_answered);
 
 			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeAnswered);
 
@@ -52,7 +52,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCalleeEnded()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCalleeEndedEvent>(WebhooksDataResource.phone_callee_ended);
+			var parsedEvent = ParseWebhookEvent<PhoneCalleeEndedEvent>(WebhooksResource.phone_callee_ended);
 
 			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeEnded);
 
@@ -69,7 +69,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCalleeHold()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCalleeHoldEvent>(WebhooksDataResource.phone_callee_hold);
+			var parsedEvent = ParseWebhookEvent<PhoneCalleeHoldEvent>(WebhooksResource.phone_callee_hold);
 
 			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeHold);
 
@@ -82,7 +82,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCalleeMeetingInviting()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCalleeMeetingInvitingEvent>(WebhooksDataResource.phone_callee_meeting_inviting);
+			var parsedEvent = ParseWebhookEvent<PhoneCalleeMeetingInvitingEvent>(WebhooksResource.phone_callee_meeting_inviting);
 
 			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeMeetingInviting);
 
@@ -96,7 +96,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCalleeMissed()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCalleeMissedEvent>(WebhooksDataResource.phone_callee_missed);
+			var parsedEvent = ParseWebhookEvent<PhoneCalleeMissedEvent>(WebhooksResource.phone_callee_missed);
 
 			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeMissed);
 
@@ -113,7 +113,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCalleeMute()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCalleeMuteEvent>(WebhooksDataResource.phone_callee_mute);
+			var parsedEvent = ParseWebhookEvent<PhoneCalleeMuteEvent>(WebhooksResource.phone_callee_mute);
 
 			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeMute);
 
@@ -126,7 +126,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCalleeParked()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCalleeParkedEvent>(WebhooksDataResource.phone_callee_parked);
+			var parsedEvent = ParseWebhookEvent<PhoneCalleeParkedEvent>(WebhooksResource.phone_callee_parked);
 
 			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeParked);
 
@@ -141,7 +141,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCalleeRejected()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCalleeRejectedEvent>(WebhooksDataResource.phone_callee_rejected);
+			var parsedEvent = ParseWebhookEvent<PhoneCalleeRejectedEvent>(WebhooksResource.phone_callee_rejected);
 
 			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeRejected);
 
@@ -156,7 +156,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCalleeRinging()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCalleeRingingEvent>(WebhooksDataResource.phone_callee_ringing);
+			var parsedEvent = ParseWebhookEvent<PhoneCalleeRingingEvent>(WebhooksResource.phone_callee_ringing);
 
 			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeRinging);
 
@@ -171,7 +171,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCalleeUnhold()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCalleeUnholdEvent>(WebhooksDataResource.phone_callee_unhold);
+			var parsedEvent = ParseWebhookEvent<PhoneCalleeUnholdEvent>(WebhooksResource.phone_callee_unhold);
 
 			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeUnhold);
 
@@ -184,7 +184,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCalleeUnmute()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCalleeUnmuteEvent>(WebhooksDataResource.phone_callee_unmute);
+			var parsedEvent = ParseWebhookEvent<PhoneCalleeUnmuteEvent>(WebhooksResource.phone_callee_unmute);
 
 			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeUnmute);
 
@@ -197,7 +197,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCallerConnected()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCallerConnectedEvent>(WebhooksDataResource.phone_caller_connected);
+			var parsedEvent = ParseWebhookEvent<PhoneCallerConnectedEvent>(WebhooksResource.phone_caller_connected);
 
 			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCallerConnected);
 
@@ -211,7 +211,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCallerEnded()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCallerEndedEvent>(WebhooksDataResource.phone_caller_ended);
+			var parsedEvent = ParseWebhookEvent<PhoneCallerEndedEvent>(WebhooksResource.phone_caller_ended);
 
 			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCallerEnded);
 
@@ -227,7 +227,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCallerHold()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCallerHoldEvent>(WebhooksDataResource.phone_caller_hold);
+			var parsedEvent = ParseWebhookEvent<PhoneCallerHoldEvent>(WebhooksResource.phone_caller_hold);
 
 			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCallerHold);
 
@@ -240,7 +240,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCallerMeetingInviting()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCallerMeetingInvitingEvent>(WebhooksDataResource.phone_caller_meeting_inviting);
+			var parsedEvent = ParseWebhookEvent<PhoneCallerMeetingInvitingEvent>(WebhooksResource.phone_caller_meeting_inviting);
 
 			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCallerMeetingInviting);
 
@@ -254,7 +254,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCallerMute()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCallerMuteEvent>(WebhooksDataResource.phone_caller_mute);
+			var parsedEvent = ParseWebhookEvent<PhoneCallerMuteEvent>(WebhooksResource.phone_caller_mute);
 
 			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCallerMute);
 
@@ -267,7 +267,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCallerRinging()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCallerRingingEvent>(WebhooksDataResource.phone_caller_ringing);
+			var parsedEvent = ParseWebhookEvent<PhoneCallerRingingEvent>(WebhooksResource.phone_caller_ringing);
 
 			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCallerRinging);
 
@@ -280,7 +280,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCallerUnhold()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCallerUnholdEvent>(WebhooksDataResource.phone_caller_unhold);
+			var parsedEvent = ParseWebhookEvent<PhoneCallerUnholdEvent>(WebhooksResource.phone_caller_unhold);
 
 			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCallerUnhold);
 
@@ -293,7 +293,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCallerUnmute()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCallerUnmuteEvent>(WebhooksDataResource.phone_caller_unmute);
+			var parsedEvent = ParseWebhookEvent<PhoneCallerUnmuteEvent>(WebhooksResource.phone_caller_unmute);
 
 			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCallerUnmute);
 
@@ -306,7 +306,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCallElementDeleted()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCallElementDeletedEvent>(WebhooksDataResource.phone_call_element_deleted);
+			var parsedEvent = ParseWebhookEvent<PhoneCallElementDeletedEvent>(WebhooksResource.phone_call_element_deleted);
 
 			VerifyPhoneCallLogOperationEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCallElementDeleted);
 
@@ -322,7 +322,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCallHistoryDeleted()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCallHistoryDeletedEvent>(WebhooksDataResource.phone_call_history_deleted);
+			var parsedEvent = ParseWebhookEvent<PhoneCallHistoryDeletedEvent>(WebhooksResource.phone_call_history_deleted);
 
 			VerifyPhoneCallLogOperationEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCallHistoryDeleted);
 
@@ -338,7 +338,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCallLogDeleted()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCallLogDeletedEvent>(WebhooksDataResource.phone_call_log_deleted);
+			var parsedEvent = ParseWebhookEvent<PhoneCallLogDeletedEvent>(WebhooksResource.phone_call_log_deleted);
 
 			VerifyPhoneCallLogOperationEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCallLogDeleted);
 
@@ -351,7 +351,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCallLogPermanentlyDeletedEvent()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCallLogPermanentlyDeletedEvent>(WebhooksDataResource.phone_call_log_permanently_deleted);
+			var parsedEvent = ParseWebhookEvent<PhoneCallLogPermanentlyDeletedEvent>(WebhooksResource.phone_call_log_permanently_deleted);
 
 			VerifyPhoneCallLogOperationEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCallLogPermanentlyDeleted);
 
@@ -364,7 +364,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCalleeCallElementCompleted()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCalleeCallElementCompletedEvent>(WebhooksDataResource.phone_callee_call_element_completed);
+			var parsedEvent = ParseWebhookEvent<PhoneCalleeCallElementCompletedEvent>(WebhooksResource.phone_callee_call_element_completed);
 
 			VerifyPhoneCallLogOperationEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeCallElementCompleted);
 
@@ -377,7 +377,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCallerCallElementCompleted()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCallerCallElementCompletedEvent>(WebhooksDataResource.phone_caller_call_element_completed);
+			var parsedEvent = ParseWebhookEvent<PhoneCallerCallElementCompletedEvent>(WebhooksResource.phone_caller_call_element_completed);
 
 			VerifyPhoneCallLogOperationEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCallerCallElementCompleted);
 
@@ -390,7 +390,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCalleeCallHistoryCompleted()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCalleeCallHistoryCompletedEvent>(WebhooksDataResource.phone_callee_call_history_completed);
+			var parsedEvent = ParseWebhookEvent<PhoneCalleeCallHistoryCompletedEvent>(WebhooksResource.phone_callee_call_history_completed);
 
 			VerifyPhoneCallLogOperationEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeCallHistoryCompleted);
 
@@ -403,7 +403,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCallerCallHistoryCompleted()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCallerCallHistoryCompletedEvent>(WebhooksDataResource.phone_caller_call_history_completed);
+			var parsedEvent = ParseWebhookEvent<PhoneCallerCallHistoryCompletedEvent>(WebhooksResource.phone_caller_call_history_completed);
 
 			VerifyPhoneCallLogOperationEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCallerCallHistoryCompleted);
 
@@ -416,7 +416,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCalleeCallLogCompleted()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCalleeCallLogCompletedEvent>(WebhooksDataResource.phone_callee_call_log_completed);
+			var parsedEvent = ParseWebhookEvent<PhoneCalleeCallLogCompletedEvent>(WebhooksResource.phone_callee_call_log_completed);
 
 			VerifyPhoneCallLogOperationEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeCallLogCompleted);
 
@@ -429,7 +429,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCallerCallLogCompletd()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCallerCallLogCompletedEvent>(WebhooksDataResource.phone_caller_call_log_completed);
+			var parsedEvent = ParseWebhookEvent<PhoneCallerCallLogCompletedEvent>(WebhooksResource.phone_caller_call_log_completed);
 
 			VerifyPhoneCallLogOperationEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCallerCallLogCompleted);
 
@@ -442,7 +442,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneRecordingCompleted()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneRecordingCompletedEvent>(WebhooksDataResource.phone_recording_completed);
+			var parsedEvent = ParseWebhookEvent<PhoneRecordingCompletedEvent>(WebhooksResource.phone_recording_completed);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneRecordingCompleted);
 
@@ -455,7 +455,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneRecordingCompletedForAccessMember()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneRecordingCompletedForAccessMemberEvent>(WebhooksDataResource.phone_recording_completed_for_access_member);
+			var parsedEvent = ParseWebhookEvent<PhoneRecordingCompletedForAccessMemberEvent>(WebhooksResource.phone_recording_completed_for_access_member);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneRecordingCompletedForAccessMember);
 
@@ -468,7 +468,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneRecordingDeleted()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneRecordingDeletedEvent>(WebhooksDataResource.phone_recording_deleted);
+			var parsedEvent = ParseWebhookEvent<PhoneRecordingDeletedEvent>(WebhooksResource.phone_recording_deleted);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneRecordingDeleted);
 
@@ -482,7 +482,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneRecordingFailed()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneRecordingFailedEvent>(WebhooksDataResource.phone_recording_failed);
+			var parsedEvent = ParseWebhookEvent<PhoneRecordingFailedEvent>(WebhooksResource.phone_recording_failed);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneRecordingFailed);
 
@@ -497,7 +497,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneRecordingPaused()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneRecordingPausedEvent>(WebhooksDataResource.phone_recording_paused);
+			var parsedEvent = ParseWebhookEvent<PhoneRecordingPausedEvent>(WebhooksResource.phone_recording_paused);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneRecordingPaused);
 
@@ -509,7 +509,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneRecordingPermanentlyDeleted()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneRecordingPermanentlyDeletedEvent>(WebhooksDataResource.phone_recording_permanently_deleted);
+			var parsedEvent = ParseWebhookEvent<PhoneRecordingPermanentlyDeletedEvent>(WebhooksResource.phone_recording_permanently_deleted);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneRecordingPermanentlyDeleted);
 
@@ -523,7 +523,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneRecordingResumed()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneRecordingResumedEvent>(WebhooksDataResource.phone_recording_resumed);
+			var parsedEvent = ParseWebhookEvent<PhoneRecordingResumedEvent>(WebhooksResource.phone_recording_resumed);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneRecordingResumed);
 
@@ -535,7 +535,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneRecordingStarted()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneRecordingStartedEvent>(WebhooksDataResource.phone_recording_started);
+			var parsedEvent = ParseWebhookEvent<PhoneRecordingStartedEvent>(WebhooksResource.phone_recording_started);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneRecordingStarted);
 
@@ -550,7 +550,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneRecordingStopped()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneRecordingStoppedEvent>(WebhooksDataResource.phone_recording_stopped);
+			var parsedEvent = ParseWebhookEvent<PhoneRecordingStoppedEvent>(WebhooksResource.phone_recording_stopped);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneRecordingStopped);
 
@@ -565,7 +565,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneRecordingTranscriptCompleted()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneRecordingTranscriptCompletedEvent>(WebhooksDataResource.phone_recording_transcript_completed);
+			var parsedEvent = ParseWebhookEvent<PhoneRecordingTranscriptCompletedEvent>(WebhooksResource.phone_recording_transcript_completed);
 
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneRecordingTranscriptCompleted);
 
@@ -578,7 +578,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneSmsCampaignNumberOptIn()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneSmsCampaignNumberOptInEvent>(WebhooksDataResource.phone_sms_campaign_number_opt_in);
+			var parsedEvent = ParseWebhookEvent<PhoneSmsCampaignNumberOptInEvent>(WebhooksResource.phone_sms_campaign_number_opt_in);
 
 			VerifyPhoneSmsEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneSmsCampaignNumberOptIn);
 
@@ -588,7 +588,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneSmsCampaignNumberOptOut()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneSmsCampaignNumberOptOutEvent>(WebhooksDataResource.phone_sms_campaign_number_opt_out);
+			var parsedEvent = ParseWebhookEvent<PhoneSmsCampaignNumberOptOutEvent>(WebhooksResource.phone_sms_campaign_number_opt_out);
 
 			VerifyPhoneSmsEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneSmsCampaignNumberOptOut);
 
@@ -598,7 +598,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneSmsEtiquetteBlock()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneSmsEtiquetteBlockEvent>(WebhooksDataResource.phone_sms_etiquette_block);
+			var parsedEvent = ParseWebhookEvent<PhoneSmsEtiquetteBlockEvent>(WebhooksResource.phone_sms_etiquette_block);
 
 			VerifyPhoneSmsEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneSmsEtiquetteBlock);
 
@@ -608,7 +608,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneSmsEtiquetteWarn()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneSmsEtiquetteWarnEvent>(WebhooksDataResource.phone_sms_etiquette_warn);
+			var parsedEvent = ParseWebhookEvent<PhoneSmsEtiquetteWarnEvent>(WebhooksResource.phone_sms_etiquette_warn);
 
 			VerifyPhoneSmsEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneSmsEtiquetteWarn);
 
@@ -618,7 +618,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneSmsReceived()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneSmsReceivedEvent>(WebhooksDataResource.phone_sms_received);
+			var parsedEvent = ParseWebhookEvent<PhoneSmsReceivedEvent>(WebhooksResource.phone_sms_received);
 
 			VerifyPhoneSmsEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneSmsReceived);
 
@@ -628,7 +628,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneSmsSent()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneSmsSentEvent>(WebhooksDataResource.phone_sms_sent);
+			var parsedEvent = ParseWebhookEvent<PhoneSmsSentEvent>(WebhooksResource.phone_sms_sent);
 
 			VerifyPhoneSmsEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneSmsSent);
 
@@ -638,7 +638,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneSmsSentFailed()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneSmsSentFailedEvent>(WebhooksDataResource.phone_sms_sent_failed);
+			var parsedEvent = ParseWebhookEvent<PhoneSmsSentFailedEvent>(WebhooksResource.phone_sms_sent_failed);
 
 			VerifyPhoneSmsEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneSmsSentFailed);
 
@@ -648,7 +648,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneVoicemailDeleted()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneVoicemailDeletedEvent>(WebhooksDataResource.phone_voicemail_deleted);
+			var parsedEvent = ParseWebhookEvent<PhoneVoicemailDeletedEvent>(WebhooksResource.phone_voicemail_deleted);
 
 			VerifyPhoneVoicemailEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneVoicemailDeleted);
 
@@ -660,7 +660,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneVoicemailPermanentlyDeleted()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneVoicemailPermanentlyDeletedEvent>(WebhooksDataResource.phone_voicemail_permanently_deleted);
+			var parsedEvent = ParseWebhookEvent<PhoneVoicemailPermanentlyDeletedEvent>(WebhooksResource.phone_voicemail_permanently_deleted);
 
 			VerifyPhoneVoicemailEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneVoicemailPermanentlyDeleted);
 
@@ -672,7 +672,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneVoicemailReceived()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneVoicemailReceivedEvent>(WebhooksDataResource.phone_voicemail_received);
+			var parsedEvent = ParseWebhookEvent<PhoneVoicemailReceivedEvent>(WebhooksResource.phone_voicemail_received);
 
 			VerifyPhoneVoicemailEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneVoicemailReceived);
 
@@ -682,7 +682,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneVoicemailReceivedForAccessMember()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneVoicemailReceivedForAccessMemberEvent>(WebhooksDataResource.phone_voicemail_received_for_access_member);
+			var parsedEvent = ParseWebhookEvent<PhoneVoicemailReceivedForAccessMemberEvent>(WebhooksResource.phone_voicemail_received_for_access_member);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneVoicemailReceivedForAccessMember);
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
@@ -697,7 +697,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneVoicemailTranscriptCompleted()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneVoicemailTranscriptCompletedEvent>(WebhooksDataResource.phone_voicemail_transcript_completed);
+			var parsedEvent = ParseWebhookEvent<PhoneVoicemailTranscriptCompletedEvent>(WebhooksResource.phone_voicemail_transcript_completed);
 
 			VerifyPhoneVoicemailEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneVoicemailTranscriptCompleted);
 
@@ -707,7 +707,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneBlindTransferInitiated()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneBlindTransferInitiatedEvent>(WebhooksDataResource.phone_blind_transfer_initiated);
+			var parsedEvent = ParseWebhookEvent<PhoneBlindTransferInitiatedEvent>(WebhooksResource.phone_blind_transfer_initiated);
 
 			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneBlindTransferInitiated);
 
@@ -717,7 +717,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneTransferCallToVoicemailInitiated()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneTransferCallToVoicemailInitiatedEvent>(WebhooksDataResource.phone_transfer_call_to_voicemail_initiated);
+			var parsedEvent = ParseWebhookEvent<PhoneTransferCallToVoicemailInitiatedEvent>(WebhooksResource.phone_transfer_call_to_voicemail_initiated);
 
 			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneTransferCallToVoicemailInitiated);
 
@@ -727,7 +727,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneTransferRecipientUpdated()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneTransferRecipientUpdatedEvent>(WebhooksDataResource.phone_transfer_recipient_updated);
+			var parsedEvent = ParseWebhookEvent<PhoneTransferRecipientUpdatedEvent>(WebhooksResource.phone_transfer_recipient_updated);
 
 			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneTransferRecipientUpdated);
 
@@ -739,7 +739,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneWarmTransferCancelled()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneWarmTransferCancelledEvent>(WebhooksDataResource.phone_warm_transfer_cancelled);
+			var parsedEvent = ParseWebhookEvent<PhoneWarmTransferCancelledEvent>(WebhooksResource.phone_warm_transfer_cancelled);
 
 			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneWarmTransferCancelled);
 
@@ -749,7 +749,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneWarmTransferCompleted()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneWarmTransferCompletedEvent>(WebhooksDataResource.phone_warm_transfer_completed);
+			var parsedEvent = ParseWebhookEvent<PhoneWarmTransferCompletedEvent>(WebhooksResource.phone_warm_transfer_completed);
 
 			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneWarmTransferCompleted);
 
@@ -759,7 +759,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneWarmTransferInitiated()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneWarmTransferInitiatedEvent>(WebhooksDataResource.phone_warm_transfer_initiated);
+			var parsedEvent = ParseWebhookEvent<PhoneWarmTransferInitiatedEvent>(WebhooksResource.phone_warm_transfer_initiated);
 
 			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneWarmTransferInitiated);
 
@@ -771,7 +771,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneAiCallSummaryChanged()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneAiCallSummaryChangedEvent>(WebhooksDataResource.phone_ai_call_summary_changed);
+			var parsedEvent = ParseWebhookEvent<PhoneAiCallSummaryChangedEvent>(WebhooksResource.phone_ai_call_summary_changed);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneAiCallSummaryChanged);
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
@@ -783,7 +783,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneConferenceStarted()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneConferenceStartedEvent>(WebhooksDataResource.phone_conference_started);
+			var parsedEvent = ParseWebhookEvent<PhoneConferenceStartedEvent>(WebhooksResource.phone_conference_started);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneConferenceStarted);
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
@@ -802,7 +802,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneDeviceRegistration()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneDeviceRegistrationEvent>(WebhooksDataResource.phone_device_registration);
+			var parsedEvent = ParseWebhookEvent<PhoneDeviceRegistrationEvent>(WebhooksResource.phone_device_registration);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneDeviceRegistration);
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
@@ -817,7 +817,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneEmergencyAlert()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneEmergencyAlertEvent>(WebhooksDataResource.phone_emergency_alert);
+			var parsedEvent = ParseWebhookEvent<PhoneEmergencyAlertEvent>(WebhooksResource.phone_emergency_alert);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneEmergencyAlert);
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
@@ -829,7 +829,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneGenericDeviceProvision()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneGenericDeviceProvisionEvent>(WebhooksDataResource.phone_generic_device_provision);
+			var parsedEvent = ParseWebhookEvent<PhoneGenericDeviceProvisionEvent>(WebhooksResource.phone_generic_device_provision);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneGenericDeviceProvision);
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
@@ -841,7 +841,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhonePeeringNumberCallerIdNameUpdated()
 		{
-			var parsedEvent = ParseWebhookEvent<PhonePeeringNumberCallerIdNameUpdatedEvent>(WebhooksDataResource.phone_peering_number_cnam_updated);
+			var parsedEvent = ParseWebhookEvent<PhonePeeringNumberCallerIdNameUpdatedEvent>(WebhooksResource.phone_peering_number_cnam_updated);
 
 			VerifyPeeringNumberUpdatedEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhonePeeringNumberCallerIdNameUpdated);
 
@@ -851,7 +851,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhonePeeringNumberEmergencyAddressUpdated()
 		{
-			var parsedEvent = ParseWebhookEvent<PhonePeeringNumberEmergencyAddressUpdatedEvent>(WebhooksDataResource.phone_peering_number_emergency_address_updated);
+			var parsedEvent = ParseWebhookEvent<PhonePeeringNumberEmergencyAddressUpdatedEvent>(WebhooksResource.phone_peering_number_emergency_address_updated);
 
 			VerifyPeeringNumberUpdatedEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhonePeeringNumberEmergencyAddressUpdated);
 
@@ -861,7 +861,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneAccountSettingsUpdated()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneAccountSettingsUpdatedEvent>(WebhooksDataResource.phone_account_settings_updated);
+			var parsedEvent = ParseWebhookEvent<PhoneAccountSettingsUpdatedEvent>(WebhooksResource.phone_account_settings_updated);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneAccountSettingsUpdated);
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
@@ -925,7 +925,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneGroupSettingsUpdated()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneGroupSettingsUpdatedEvent>(WebhooksDataResource.phone_group_settings_updated);
+			var parsedEvent = ParseWebhookEvent<PhoneGroupSettingsUpdatedEvent>(WebhooksResource.phone_group_settings_updated);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneGroupSettingsUpdated);
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
@@ -984,7 +984,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void NumberManagementPeeringNumberCallerIdNameUpdated()
 		{
-			var parsedEvent = ParseWebhookEvent<NumberManagementPeeringNumberCallerIdNameUpdatedEvent>(WebhooksDataResource.number_management_peering_number_cnam_updated);
+			var parsedEvent = ParseWebhookEvent<NumberManagementPeeringNumberCallerIdNameUpdatedEvent>(WebhooksResource.number_management_peering_number_cnam_updated);
 
 			VerifyPeeringNumberUpdatedEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.NumberManagementPeeringNumberCallerIdNameUpdated);
 
@@ -994,7 +994,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void NumberManagementPeeringNumberEmergencyAddressUpdated()
 		{
-			var parsedEvent = ParseWebhookEvent<NumberManagementPeeringNumberEmergencyAddressUpdatedEvent>(WebhooksDataResource.number_management_peering_number_emergency_address_updated);
+			var parsedEvent = ParseWebhookEvent<NumberManagementPeeringNumberEmergencyAddressUpdatedEvent>(WebhooksResource.number_management_peering_number_emergency_address_updated);
 
 			VerifyPeeringNumberUpdatedEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.NumberManagementPeeringNumberEmergencyAddressUpdated);
 

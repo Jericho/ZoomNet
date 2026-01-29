@@ -30,7 +30,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void ContactCenterAssetCreated()
 		{
-			var parsedEvent = ParseWebhookEvent<ContactCenterAssetCreatedEvent>(WebhooksDataResource.contact_center_asset_created);
+			var parsedEvent = ParseWebhookEvent<ContactCenterAssetCreatedEvent>(WebhooksResource.contact_center_asset_created);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.ContactCenterAssetCreated);
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
@@ -42,7 +42,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void ContactCenterAssetDeleted()
 		{
-			var parsedEvent = ParseWebhookEvent<ContactCenterAssetDeletedEvent>(WebhooksDataResource.contact_center_asset_deleted);
+			var parsedEvent = ParseWebhookEvent<ContactCenterAssetDeletedEvent>(WebhooksResource.contact_center_asset_deleted);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.ContactCenterAssetDeleted);
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
@@ -54,7 +54,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void ContactCenterAssetUpdated()
 		{
-			var parsedEvent = ParseWebhookEvent<ContactCenterAssetUpdatedEvent>(WebhooksDataResource.contact_center_asset_updated);
+			var parsedEvent = ParseWebhookEvent<ContactCenterAssetUpdatedEvent>(WebhooksResource.contact_center_asset_updated);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.ContactCenterAssetUpdated);
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);

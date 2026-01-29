@@ -27,7 +27,7 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 
 			// Act
-			var result = JsonSerializer.Deserialize<AccountCallLog>(EndpointsResponseResource.phone_call_logs__callLogId__GET, JsonFormatter.DefaultDeserializerOptions);
+			var result = JsonSerializer.Deserialize<AccountCallLog>(EndpointsResource.phone_call_logs__callLogId__GET, JsonFormatter.DefaultDeserializerOptions);
 
 			// Assert
 			result.ShouldNotBeNull();
@@ -70,7 +70,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "call_logs"))
-				.Respond("application/json", EndpointsResponseResource.phone_call_logs_GET);
+				.Respond("application/json", EndpointsResource.phone_call_logs_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -105,7 +105,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "users", userId, "call_logs"))
 				.WithQueryString("type", "all")
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", EndpointsResponseResource.phone_users__userId__call_logs_GET);
+				.Respond("application/json", EndpointsResource.phone_users__userId__call_logs_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -135,7 +135,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("to", "2023-12-31")
 				.WithQueryString("type", "all")
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", EndpointsResponseResource.phone_users__userId__call_logs_GET);
+				.Respond("application/json", EndpointsResource.phone_users__userId__call_logs_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -161,7 +161,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "users", userId, "call_logs"))
 				.WithQueryString("type", "missed")
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", EndpointsResponseResource.phone_users__userId__call_logs_GET);
+				.Respond("application/json", EndpointsResource.phone_users__userId__call_logs_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -188,7 +188,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("type", "all")
 				.WithQueryString("phone_number", phoneNumber)
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", EndpointsResponseResource.phone_users__userId__call_logs_GET);
+				.Respond("application/json", EndpointsResource.phone_users__userId__call_logs_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -216,7 +216,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("type", "all")
 				.WithQueryString("page_size", "50")
 				.WithQueryString("next_page_token", "token123")
-				.Respond("application/json", EndpointsResponseResource.phone_users__userId__call_logs_GET);
+				.Respond("application/json", EndpointsResource.phone_users__userId__call_logs_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -252,7 +252,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("phone_number", phoneNumber)
 				.WithQueryString("page_size", "100")
 				.WithQueryString("next_page_token", "full_token")
-				.Respond("application/json", EndpointsResponseResource.phone_users__userId__call_logs_GET);
+				.Respond("application/json", EndpointsResource.phone_users__userId__call_logs_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -277,7 +277,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "users", userId, "call_logs"))
 				.WithQueryString("type", "all")
-				.Respond("application/json", EndpointsResponseResource.phone_users__userId__call_logs_GET);
+				.Respond("application/json", EndpointsResource.phone_users__userId__call_logs_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -302,7 +302,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "users", userId, "call_logs"))
 				.WithQueryString("type", "missed")
-				.Respond("application/json", EndpointsResponseResource.phone_users__userId__call_logs_GET);
+				.Respond("application/json", EndpointsResource.phone_users__userId__call_logs_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -331,7 +331,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("timeType", "startTime")
 				.WithQueryString("charged_call_logs", false.ToString())
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", EndpointsResponseResource.phone_call_logs_GET);
+				.Respond("application/json", EndpointsResource.phone_call_logs_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -355,7 +355,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "call_logs"))
 				.WithQueryString("path", "pstn")
-				.Respond("application/json", EndpointsResponseResource.phone_call_logs_GET);
+				.Respond("application/json", EndpointsResource.phone_call_logs_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -379,7 +379,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "call_logs"))
 				.WithQueryString("timeType", "endTime")
-				.Respond("application/json", EndpointsResponseResource.phone_call_logs_GET);
+				.Respond("application/json", EndpointsResource.phone_call_logs_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -403,7 +403,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "call_logs"))
 				.WithQueryString("site_id", siteId)
-				.Respond("application/json", EndpointsResponseResource.phone_call_logs_GET);
+				.Respond("application/json", EndpointsResource.phone_call_logs_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -427,7 +427,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "call_logs"))
 				.WithQueryString("charged_call_logs", true.ToString())
-				.Respond("application/json", EndpointsResponseResource.phone_call_logs_GET);
+				.Respond("application/json", EndpointsResource.phone_call_logs_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -467,7 +467,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("charged_call_logs", true.ToString())
 				.WithQueryString("page_size", "75")
 				.WithQueryString("next_page_token", "complete_token")
-				.Respond("application/json", EndpointsResponseResource.phone_call_logs_GET);
+				.Respond("application/json", EndpointsResource.phone_call_logs_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -491,7 +491,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "call_logs"))
 				.WithQueryString("path", "autoReceptionist")
-				.Respond("application/json", EndpointsResponseResource.phone_call_logs_GET);
+				.Respond("application/json", EndpointsResource.phone_call_logs_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -515,7 +515,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "call_logs"))
 				.WithQueryString("path", "callQueue")
-				.Respond("application/json", EndpointsResponseResource.phone_call_logs_GET);
+				.Respond("application/json", EndpointsResource.phone_call_logs_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -539,7 +539,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "call_logs"))
 				.WithQueryString("page_size", "200")
-				.Respond("application/json", EndpointsResponseResource.phone_call_logs_GET);
+				.Respond("application/json", EndpointsResource.phone_call_logs_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -563,7 +563,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "call_logs"))
 				.WithQueryString("next_page_token", pagingToken)
-				.Respond("application/json", EndpointsResponseResource.phone_call_logs_GET);
+				.Respond("application/json", EndpointsResource.phone_call_logs_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -587,7 +587,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "call_logs"))
 				.WithQueryString("from", "2023-09-01")
-				.Respond("application/json", EndpointsResponseResource.phone_call_logs_GET);
+				.Respond("application/json", EndpointsResource.phone_call_logs_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -611,7 +611,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "call_logs"))
 				.WithQueryString("to", "2023-09-30")
-				.Respond("application/json", EndpointsResponseResource.phone_call_logs_GET);
+				.Respond("application/json", EndpointsResource.phone_call_logs_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);

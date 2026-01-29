@@ -33,7 +33,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "meetings"))
 				.WithQueryString("type", type.ToEnumString())
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", EndpointsResponseResource.users__userId__meetings_GET);
+				.Respond("application/json", EndpointsResource.users__userId__meetings_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -68,7 +68,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("to", to.ToZoomFormat(timeZone))
 				.WithQueryString("timezone", timeZone.ToEnumString())
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", EndpointsResponseResource.users__userId__meetings_GET);
+				.Respond("application/json", EndpointsResource.users__userId__meetings_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -99,7 +99,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("users", userId, "meetings"))
-				.Respond("application/json", EndpointsResponseResource.users__userId__meetings_POST);
+				.Respond("application/json", EndpointsResource.users__userId__meetings_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -128,7 +128,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("users", userId, "meetings"))
-				.Respond("application/json", EndpointsResponseResource.users__userId__meetings_POST);
+				.Respond("application/json", EndpointsResource.users__userId__meetings_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -161,7 +161,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("users", userId, "meetings"))
-				.Respond("application/json", EndpointsResponseResource.users__userId__meetings_POST);
+				.Respond("application/json", EndpointsResource.users__userId__meetings_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -209,7 +209,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId.ToString()))
 				.WithQueryString("show_previous_occurrences", "false")
-				.Respond("application/json", EndpointsResponseResource.meetings__meetingId__GET);
+				.Respond("application/json", EndpointsResource.meetings__meetingId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -395,7 +395,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "registrants", registrantId))
-				.Respond("application/json", EndpointsResponseResource.meetings__meetingId__registrants__registrantId__GET);
+				.Respond("application/json", EndpointsResource.meetings__meetingId__registrants__registrantId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -422,7 +422,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "registrants"))
 				.WithQueryString("status", status.ToEnumString())
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", EndpointsResponseResource.meetings__meetingId__registrants_GET);
+				.Respond("application/json", EndpointsResource.meetings__meetingId__registrants_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -452,7 +452,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "registrants"))
-				.Respond("application/json", EndpointsResponseResource.meetings__meetingId__registrants_POST);
+				.Respond("application/json", EndpointsResource.meetings__meetingId__registrants_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -482,7 +482,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "batch_registrants"))
-				.Respond("application/json", EndpointsResponseResource.meetings__meetingId__batch_registrants_POST);
+				.Respond("application/json", EndpointsResource.meetings__meetingId__batch_registrants_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -661,7 +661,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "polls"))
-				.Respond("application/json", EndpointsResponseResource.meetings__meetingId__polls_GET);
+				.Respond("application/json", EndpointsResource.meetings__meetingId__polls_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -697,7 +697,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "polls"))
-				.Respond("application/json", EndpointsResponseResource.meetings__meetingId__polls_POST);
+				.Respond("application/json", EndpointsResource.meetings__meetingId__polls_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -746,7 +746,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "polls", pollId.ToString()))
-				.Respond("application/json", EndpointsResponseResource.meetings__meetingId__polls__pollId__GET);
+				.Respond("application/json", EndpointsResource.meetings__meetingId__polls__pollId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -809,7 +809,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "livestream"))
-				.Respond("application/json", EndpointsResponseResource.meetings__meetingId__livestream_GET);
+				.Respond("application/json", EndpointsResource.meetings__meetingId__livestream_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -979,7 +979,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "invitation"))
-				.Respond("application/json", EndpointsResponseResource.meetings__meetingId__invitation_GET);
+				.Respond("application/json", EndpointsResource.meetings__meetingId__invitation_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1006,7 +1006,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "invite_links"))
-				.Respond("application/json", EndpointsResponseResource.meetings__meetingId__invite_links_POST);
+				.Respond("application/json", EndpointsResource.meetings__meetingId__invite_links_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1031,7 +1031,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "survey"))
-				.Respond("application/json", EndpointsResponseResource.meetings__meetingId__survey_GET);
+				.Respond("application/json", EndpointsResource.meetings__meetingId__survey_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1055,7 +1055,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "meeting_templates"))
-				.Respond("application/json", EndpointsResponseResource.users__userId__meeting_templates_GET);
+				.Respond("application/json", EndpointsResource.users__userId__meeting_templates_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1082,7 +1082,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("users", userId, "meeting_templates"))
-				.Respond("application/json", EndpointsResponseResource.users__userId__meeting_templates_POST);
+				.Respond("application/json", EndpointsResource.users__userId__meeting_templates_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1106,7 +1106,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", $"{meetingId}/token?type=closed_caption_token"))
-				.Respond("application/json", EndpointsResponseResource.meetings__meetingId__token_GET);
+				.Respond("application/json", EndpointsResource.meetings__meetingId__token_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1130,7 +1130,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "jointoken", "local_recording"))
-				.Respond("application/json", EndpointsResponseResource.meetings__meetingId__jointoken_local_recording_GET);
+				.Respond("application/json", EndpointsResource.meetings__meetingId__jointoken_local_recording_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1181,7 +1181,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "registrants", "questions"))
-				.Respond("application/json", EndpointsResponseResource.meetings__meetingId__registrants_questions_GET);
+				.Respond("application/json", EndpointsResource.meetings__meetingId__registrants_questions_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1579,7 +1579,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "jointoken", "local_archiving"))
-				.Respond("application/json", EndpointsResponseResource.meetings__meetingId__jointoken_local_archiving_GET);
+				.Respond("application/json", EndpointsResource.meetings__meetingId__jointoken_local_archiving_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1603,7 +1603,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingId.ToString(), "jointoken", "live_streaming"))
-				.Respond("application/json", EndpointsResponseResource.meetings__meetingId__jointoken_live_streaming_GET);
+				.Respond("application/json", EndpointsResource.meetings__meetingId__jointoken_live_streaming_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1666,7 +1666,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("type", type.ToEnumString())
 				.WithQueryString("page_size", recordsPerPage.ToString())
 				.WithQueryString("page_number", page.ToString())
-				.Respond("application/json", EndpointsResponseResource.users__userId__meetings_GET);
+				.Respond("application/json", EndpointsResource.users__userId__meetings_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1697,7 +1697,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("status", status.ToEnumString())
 				.WithQueryString("page_size", recordsPerPage.ToString())
 				.WithQueryString("page_number", page.ToString())
-				.Respond("application/json", EndpointsResponseResource.meetings__meetingId__registrants_GET);
+				.Respond("application/json", EndpointsResource.meetings__meetingId__registrants_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
