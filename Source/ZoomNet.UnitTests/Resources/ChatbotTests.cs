@@ -2,24 +2,17 @@ using RichardSzalay.MockHttp;
 using Shouldly;
 using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 using ZoomNet.Models.ChatbotMessage;
 using ZoomNet.Resources;
+using ZoomNet.UnitTests.Properties;
 
 namespace ZoomNet.UnitTests.Resources
 {
 	public class ChatbotTests
 	{
-		private const string CHATBOT_MESSAGE_INFO_JSON = @"{
-			""message_id"": ""msg123"",
-			""robot_jid"": ""robot@xmpp.zoom.us"",
-			""to_jid"": ""user@xmpp.zoom.us"",
-			""sent_time"": ""2023-01-01T12:00:00Z""
-		}";
-
 		private readonly ITestOutputHelper _outputHelper;
 
 		public ChatbotTests(ITestOutputHelper outputHelper)
@@ -43,7 +36,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("account_id", accountId)
 				.WithQueryString("user_jid", userJId)
 				.WithQueryString("robot_jid", robotJId)
-				.Respond("application/json", CHATBOT_MESSAGE_INFO_JSON);
+				.Respond("application/json", EndpointsResource.im_chat_messages__message_id__DELETE);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -56,10 +49,10 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.MessageId.ShouldBe("msg123");
-			result.RobotJId.ShouldBe("robot@xmpp.zoom.us");
-			result.ToJId.ShouldBe("user@xmpp.zoom.us");
-			result.SentTime.ShouldBe("2023-01-01T12:00:00Z");
+			result.MessageId.ShouldBe("201910tryyRFjM_main");
+			result.RobotJId.ShouldBe("v1pky3tyBBB5pl8q@xmpp.zoom.us");
+			result.ToJId.ShouldBe("xghfd@shj.zoom.us");
+			result.SentTime.ShouldBe("2019-10-17 01:40:24 +0000");
 		}
 
 		[Fact]
@@ -76,7 +69,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("account_id", accountId)
 				.WithQueryString("user_jid", userJId)
 				.WithQueryString("robot_jid", robotJId)
-				.Respond("application/json", CHATBOT_MESSAGE_INFO_JSON);
+				.Respond("application/json", EndpointsResource.im_chat_messages__message_id__DELETE);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -109,7 +102,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("im", "chat", "messages"))
-				.Respond("application/json", CHATBOT_MESSAGE_INFO_JSON);
+				.Respond("application/json", EndpointsResource.im_chat_messages_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -122,7 +115,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.MessageId.ShouldBe("msg123");
+			result.MessageId.ShouldBe("DWQ2A82E-9220-4600-AFB2-A028852E377C");
 		}
 
 		[Fact]
@@ -139,7 +132,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("im", "chat", "messages"))
-				.Respond("application/json", CHATBOT_MESSAGE_INFO_JSON);
+				.Respond("application/json", EndpointsResource.im_chat_messages_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -191,7 +184,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("im", "chat", "messages"))
-				.Respond("application/json", CHATBOT_MESSAGE_INFO_JSON);
+				.Respond("application/json", EndpointsResource.im_chat_messages_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -233,7 +226,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("im", "chat", "messages"))
-				.Respond("application/json", CHATBOT_MESSAGE_INFO_JSON);
+				.Respond("application/json", EndpointsResource.im_chat_messages_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -283,7 +276,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("im", "chat", "messages"))
-				.Respond("application/json", CHATBOT_MESSAGE_INFO_JSON);
+				.Respond("application/json", EndpointsResource.im_chat_messages_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -320,7 +313,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("im", "chat", "messages"))
-				.Respond("application/json", CHATBOT_MESSAGE_INFO_JSON);
+				.Respond("application/json", EndpointsResource.im_chat_messages_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -353,7 +346,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("im", "chat", "messages"))
-				.Respond("application/json", CHATBOT_MESSAGE_INFO_JSON);
+				.Respond("application/json", EndpointsResource.im_chat_messages_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -395,7 +388,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("im", "chat", "messages"))
-				.Respond("application/json", CHATBOT_MESSAGE_INFO_JSON);
+				.Respond("application/json", EndpointsResource.im_chat_messages_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -429,7 +422,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("im", "chat", "messages", messageId))
-				.Respond("application/json", CHATBOT_MESSAGE_INFO_JSON);
+				.Respond("application/json", EndpointsResource.im_chat_messages__message_id__PUT);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -442,7 +435,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.MessageId.ShouldBe("msg123");
+			result.MessageId.ShouldBe("201910tryyRFjM_main");
 		}
 
 		[Fact]
@@ -460,7 +453,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("im", "chat", "messages", messageId))
-				.Respond("application/json", CHATBOT_MESSAGE_INFO_JSON);
+				.Respond("application/json", EndpointsResource.im_chat_messages__message_id__PUT);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -506,7 +499,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("im", "chat", "messages", messageId))
-				.Respond("application/json", CHATBOT_MESSAGE_INFO_JSON);
+				.Respond("application/json", EndpointsResource.im_chat_messages__message_id__PUT);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -551,7 +544,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Put, Utils.GetZoomApiUri("im", "chat", "messages", messageId))
-				.Respond("application/json", CHATBOT_MESSAGE_INFO_JSON);
+				.Respond("application/json", EndpointsResource.im_chat_messages__message_id__PUT);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -616,7 +609,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("im", "chat", "messages"))
-				.Respond("application/json", CHATBOT_MESSAGE_INFO_JSON);
+				.Respond("application/json", EndpointsResource.im_chat_messages_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -657,7 +650,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("im", "chat", "messages"))
-				.Respond("application/json", CHATBOT_MESSAGE_INFO_JSON);
+				.Respond("application/json", EndpointsResource.im_chat_messages_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -690,7 +683,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("im", "chat", "messages"))
-				.Respond("application/json", CHATBOT_MESSAGE_INFO_JSON);
+				.Respond("application/json", EndpointsResource.im_chat_messages_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
