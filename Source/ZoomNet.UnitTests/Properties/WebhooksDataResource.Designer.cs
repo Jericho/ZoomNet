@@ -1157,6 +1157,28 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;contact_center.cx_engagement_end_data_ready&quot;,
+        ///  &quot;event_ts&quot;: 1627906944384,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;D8cJuqWVQ623CI4Q8yQK0Q&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;engagement_id&quot;: &quot;u154t5-ASlK83fZb1YWqgw&quot;,
+        ///      &quot;engagement_direction&quot;: &quot;inbound&quot;,
+        ///      &quot;channel&quot;: &quot;video&quot;,
+        ///      &quot;start_time&quot;: &quot;2023-05-01T09:25:18.264Z&quot;,
+        ///      &quot;date_time_ms&quot;: &quot;2023-05-01T09:27:15.987Z&quot;
+        ///    }
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string contact_center_cx_engagement_end_data_ready {
+            get {
+                return ResourceManager.GetString("contact_center_cx_engagement_end_data_ready", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;contact_center.engagement_consumer_answered&quot;,
         ///  &quot;event_ts&quot;: 1627906944384,
         ///  &quot;payload&quot;: {
@@ -2151,6 +2173,51 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;contact_center.legacy_engagement_end_data_ready&quot;,
+        ///  &quot;event_ts&quot;: 1627906944384,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;D8cJuqWVQ623CI4Q8yQK0Q&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;engagement_id&quot;: &quot;u154t5-ASlK83fZb1YWqgw&quot;,
+        ///      &quot;engagement_direction&quot;: &quot;inbound&quot;,
+        ///      &quot;channel&quot;: &quot;video&quot;,
+        ///      &quot;start_time&quot;: &quot;2023-05-01T09:25:18.264Z&quot;,
+        ///      &quot;date_time_ms&quot;: &quot;2023-05-01T09:27:15.987Z&quot;
+        ///    }
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string contact_center_legacy_engagement_end_data_ready {
+            get {
+                return ResourceManager.GetString("contact_center_legacy_engagement_end_data_ready", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;contact_center.message_status&quot;,
+        ///  &quot;event_ts&quot;: 1764754270736,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;D8cJuqWVQ623CI4Q8yQK0Q&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;message_id&quot;: &quot;f21b5055-5ec2-4e3f-8dde-916d4f76a2ee&quot;,
+        ///      &quot;from&quot;: &quot;+12090000000&quot;,
+        ///      &quot;to&quot;: &quot;+12090001111&quot;,
+        ///      &quot;whatsapp_message&quot;: {
+        ///        &quot;status&quot;: &quot;failed&quot;,
+        ///        &quot;reason&quot;: &quot;WhatsApp platform failed to send message&quot;,
+        ///        &quot;error_detail&quot;: &quot;{\\&quot;code\\&quot;:\\&quot;131026\\&quot;,\\&quot;message\\&quot;:\\&quot;Message Undeliverable.\\&quot;}&quot;
+        ///      },
+        ///      &quot;d [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_message_status {
+            get {
+                return ResourceManager.GetString("contact_center_message_status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;contact_center.outbound_campaign_dialer_status&quot;,
         ///  &quot;event_ts&quot;: 1627906944384,
         ///  &quot;payload&quot;: {
@@ -3131,6 +3198,101 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string contact_center_user_opt_out {
             get {
                 return ResourceManager.GetString("contact_center_user_opt_out", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;contact_center.user_phone_numbers_assigned&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.987Z&quot;,
+        ///      &quot;user_id&quot;: &quot;giudgf_4576385jsdhfsfsd&quot;,
+        ///      &quot;display_name&quot;: &quot;John Doe&quot;,
+        ///      &quot;user_email&quot;: &quot;johndoe@example.com&quot;,
+        ///      &quot;role_id&quot;: &quot;27302393-4784-11ec-a3cd-122e3e29bb87&quot;,
+        ///      &quot;role_name&quot;: &quot;Admin&quot;,
+        ///      &quot;phone_numbers&quot;: [
+        ///        {
+        ///          &quot;phone_number&quot;: &quot;+18005551212&quot;,
+        ///  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_user_phone_numbers_assigned {
+            get {
+                return ResourceManager.GetString("contact_center_user_phone_numbers_assigned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;contact_center.user_phone_numbers_unassigned&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;date_time_ms&quot;: &quot;2025-12-12T09:27:15.987Z&quot;,
+        ///      &quot;user_id&quot;: &quot;giudgf_4576385jsdhfsfsd&quot;,
+        ///      &quot;display_name&quot;: &quot;John Doe&quot;,
+        ///      &quot;user_email&quot;: &quot;johndoe@example.com&quot;,
+        ///      &quot;role_id&quot;: &quot;27302393-4784-11ec-a3cd-122e3e29bb87&quot;,
+        ///      &quot;role_name&quot;: &quot;Admin&quot;,
+        ///      &quot;phone_numbers&quot;: [
+        ///        {
+        ///          &quot;phone_number&quot;: &quot;+12093412723&quot;,        /// [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_user_phone_numbers_unassigned {
+            get {
+                return ResourceManager.GetString("contact_center_user_phone_numbers_unassigned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;contact_center.user_skills_assigned.&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.987Z&quot;,
+        ///      &quot;user_id&quot;: &quot;giudgf_4576385jsdhfsfsd&quot;,
+        ///      &quot;display_name&quot;: &quot;John Doe&quot;,
+        ///      &quot;user_email&quot;: &quot;johndoe@example.com&quot;,
+        ///      &quot;role_id&quot;: &quot;27302393-4784-11ec-a3cd-122e3e29bb87&quot;,
+        ///      &quot;role_name&quot;: &quot;Admin&quot;,
+        ///      &quot;skills&quot;: [
+        ///        {
+        ///          &quot;skill_id&quot;: &quot;s0pP7Z_AcR_6xUiAS2SLE1g&quot;
+        ///         [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_user_skills_assigned {
+            get {
+                return ResourceManager.GetString("contact_center_user_skills_assigned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;contact_center.user_skills_unassigned&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.987Z&quot;,
+        ///      &quot;user_id&quot;: &quot;giudgf_4576385jsdhfsfsd&quot;,
+        ///      &quot;display_name&quot;: &quot;John Doe&quot;,
+        ///      &quot;user_email&quot;: &quot;johndoe@example.com&quot;,
+        ///      &quot;role_id&quot;: &quot;27302393-4784-11ec-a3cd-122e3e29bb87&quot;,
+        ///      &quot;role_name&quot;: &quot;Admin&quot;,
+        ///      &quot;skills&quot;: [
+        ///        {
+        ///          &quot;skill_id&quot;: &quot;s0pP7Z_AcR_6xUiAS2SLE1g&quot;
+        ///        [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_user_skills_unassigned {
+            get {
+                return ResourceManager.GetString("contact_center_user_skills_unassigned", resourceCulture);
             }
         }
         

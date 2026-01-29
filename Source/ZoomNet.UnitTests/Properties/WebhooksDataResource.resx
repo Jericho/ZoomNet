@@ -1801,4 +1801,25 @@
   <data name="session_rtms_stopped" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\SampleData\Webhooks\session.rtms_stopped.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="contact_center_cx_engagement_end_data_ready" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.cx_engagement_end_data_ready.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_legacy_engagement_end_data_ready" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.legacy_engagement_end_data_ready.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_message_status" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.message_status.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_user_phone_numbers_assigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.user_phone_numbers_assigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_user_phone_numbers_unassigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.user_phone_numbers_unassigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_user_skills_assigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.user_skills_assigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_user_skills_unassigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.user_skills_unassigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>
