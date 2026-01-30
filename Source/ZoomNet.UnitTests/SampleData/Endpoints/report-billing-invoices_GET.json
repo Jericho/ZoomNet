@@ -2,11 +2,11 @@
   "currency": "USD",
   "invoices": [
     {
-      "end_date": "2022-03-25T00:00:00.0000000",
+      "end_date": "2022-03-25",
       "invoice_charge_name": "Audio Conferencing Options",
       "invoice_number": "3",
       "quantity": 45,
-      "start_date": "2022-03-25T00:00:00.0000000",
+      "start_date": "2022-03-25",
       "tax_amount": "34",
       "total_amount": "45"
     }

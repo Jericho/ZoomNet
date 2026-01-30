@@ -1,6 +1,6 @@
 {
-  "from": "2022-04-01T00:00:00.0000000",
-  "to": "2022-04-07T00:00:00.0000000",
+  "from": "2022-04-01",
+  "to": "2022-04-07",
   "next_page_token": "Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3",
   "page_count": 1,
   "page_size": 30,

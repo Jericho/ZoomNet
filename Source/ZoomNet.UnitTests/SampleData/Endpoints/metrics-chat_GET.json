@@ -1,8 +1,8 @@
 {
-  "from": "2022-04-06T00:00:00.0000000",
+  "from": "2022-04-06",
   "next_page_token": "LkbB9n92siRxgYkffZ8KhApZCQMZpNrN0d2",
   "page_size": 30,
-  "to": "2022-04-07T00:00:00.0000000",
+  "to": "2022-04-07",
   "users": [
     {
       "audio_sent": 0,

@@ -454,7 +454,7 @@
       "time_zone": "Asia/Shanghai",
       "end_setting": {
         "never_end": true,
-        "end_date": "2025-01-01T00:00:00.0000000"
+        "end_date": "2025-01-01"
       }
     },
     "zoom_phone_on_desktop": {

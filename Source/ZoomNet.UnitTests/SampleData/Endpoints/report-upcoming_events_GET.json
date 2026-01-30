@@ -1,8 +1,8 @@
 {
-  "from": "2022-03-01T00:00:00.0000000",
+  "from": "2022-03-01",
   "next_page_token": "b43YBRLJFg3V4vsSpxvGdKIGtNbxn9h9If2",
   "page_size": 30,
-  "to": "2022-03-25T00:00:00.0000000",
+  "to": "2022-03-25",
   "upcoming_events": [
     {
       "dept": "HR",

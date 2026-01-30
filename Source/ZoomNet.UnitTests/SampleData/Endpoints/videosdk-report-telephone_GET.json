@@ -1,8 +1,8 @@
 {
   "page_size": 30,
   "next_page_token": "suQA5LvDBnH5No5OYD7mqpJuFzJqUOHK8U2",
-  "from": "2019-07-15T00:00:00.0000000",
-  "to": "2019-07-20T00:00:00.0000000",
+  "from": "2019-07-15",
+  "to": "2019-07-20",
   "telephony_usage": [
     {
       "session_id": "sfk/aOFJSJSYhGwk1hnxgw==",

@@ -10,7 +10,7 @@
       "caller_name": "ZOOM_API Test",
       "caller_number": "\u002B12055432724",
       "caller_number_type": 1,
-      "date_time": "2022-04-01T00:00:00.0000000",
+      "date_time": "2022-04-01",
       "direction": "inbound",
       "download_url": "https://file.zoomdev.us/file?filename=call_recording_080e-2cba-4315-a963-81ce9635e_20220401031509.mp3\u0026jwt=eyJhbGciNiJ9.eyJka0NzZiNjQyYjhkZjRlN2E3ZTgxNjU4MmEzMWQ4NjE3NjkyNjNjYmQ0NDJhM2QzYzY3NTZjIiwiaXNzIjoiwiYXVkIjoiZmlsZSIsImlhdCI6MTY0ODV4cCI6MTY0ODc4NTMxN30.azPOfIrODv6v6-7YWwvBWAqysJy_xe_FAI\u0026path=zoomfs%3A%2F%2Fpbx-voice%2Frecording%2F2022%2F4%2F1%2FKxQKamXhQfWQs9BPdvDagA%2F8dunF6uUT1qW3KEe0sgaXA%2F08096c0e-2cba-4315-a963-81=e9635e%2Fcall_recording_080=c0e-2cba-4315-a963-813=635e_20220401031509.mp3",
       "duration": 10,
