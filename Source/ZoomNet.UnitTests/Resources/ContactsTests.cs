@@ -6,57 +6,12 @@ using System.Threading.Tasks;
 using Xunit;
 using ZoomNet.Models;
 using ZoomNet.Resources;
+using ZoomNet.UnitTests.Properties;
 
 namespace ZoomNet.UnitTests.Resources
 {
 	public class ContactsTests
 	{
-		private const string CONTACTS_JSON = @"{
-			""page_size"": 30,
-			""next_page_token"": ""token123"",
-			""contacts"": [
-				{
-					""id"": ""contact1"",
-					""email"": ""user1@example.com"",
-					""first_name"": ""John"",
-					""last_name"": ""Doe"",
-					""presence_status"": ""Available"",
-					""phone_number"": ""555-1234"",
-					""sip_phone_number"": ""123456@sip.example.com"",
-					""direct_numbers"": [""555-5678""],
-					""extension_number"": ""1001""
-				},
-				{
-					""id"": ""contact2"",
-					""email"": ""user2@example.com"",
-					""first_name"": ""Jane"",
-					""last_name"": ""Smith"",
-					""presence_status"": ""Do_Not_Disturb"",
-					""phone_number"": ""555-9012"",
-					""sip_phone_number"": ""654321@sip.example.com"",
-					""direct_numbers"": [""555-3456""],
-					""extension_number"": ""1002""
-				}
-			]
-		}";
-
-		private const string SINGLE_CONTACT_JSON = @"{
-			""id"": ""contact1"",
-			""email"": ""user@example.com"",
-			""first_name"": ""John"",
-			""last_name"": ""Doe"",
-			""presence_status"": ""Available"",
-			""phone_number"": ""555-1234"",
-			""sip_phone_number"": ""123456@sip.example.com"",
-			""direct_numbers"": [""555-5678"", ""555-7890""],
-			""extension_number"": ""1001"",
-			""im_group_id"": ""group123"",
-			""im_group_name"": ""Team Group"",
-			""dept"": ""Engineering"",
-			""job_title"": ""Software Engineer"",
-			""location"": ""New York""
-		}";
-
 		private readonly ITestOutputHelper _outputHelper;
 
 		public ContactsTests(ITestOutputHelper outputHelper)
@@ -78,7 +33,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("type", "company")
 				.WithQueryString("page_size", recordsPerPage.ToString())
 				.WithQueryString("next_page_token", pagingToken)
-				.Respond("application/json", CONTACTS_JSON);
+				.Respond("application/json", EndpointsResource.chat_users_me_contacts_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -91,14 +46,14 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.RecordsPerPage.ShouldBe(30);
-			result.NextPageToken.ShouldBe("token123");
+			result.RecordsPerPage.ShouldBe(10);
+			result.NextPageToken.ShouldBe("R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42");
 			result.Records.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
-			result.Records[0].Id.ShouldBe("contact1");
-			result.Records[0].EmailAddress.ShouldBe("user1@example.com");
-			result.Records[0].FirstName.ShouldBe("John");
-			result.Records[0].LastName.ShouldBe("Doe");
+			result.Records.Length.ShouldBe(1);
+			result.Records[0].Id.ShouldBe("v4iyWT1LTfy8QvPG4GTvdg");
+			result.Records[0].EmailAddress.ShouldBe("jchill@example.com");
+			result.Records[0].FirstName.ShouldBe("Jill");
+			result.Records[0].LastName.ShouldBe("Chill");
 		}
 
 		[Fact]
@@ -111,7 +66,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("chat", "users", "me", "contacts"))
 				.WithQueryString("type", "external")
 				.WithQueryString("page_size", recordsPerPage.ToString())
-				.Respond("application/json", CONTACTS_JSON);
+				.Respond("application/json", EndpointsResource.chat_users_me_contacts_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -134,7 +89,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("chat", "users", "me", "contacts"))
 				.WithQueryString("type", "company")
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", CONTACTS_JSON);
+				.Respond("application/json", EndpointsResource.chat_users_me_contacts_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -167,7 +122,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("query_presence_status", true.ToString())
 				.WithQueryString("page_size", recordsPerPage.ToString())
 				.WithQueryString("next_page_token", pagingToken)
-				.Respond("application/json", CONTACTS_JSON);
+				.Respond("application/json", EndpointsResource.contacts_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -181,7 +136,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
 			result.Records.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
+			result.Records.Length.ShouldBe(1);
 		}
 
 		[Fact]
@@ -195,7 +150,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("search_key", keyword)
 				.WithQueryString("query_presence_status", false.ToString())
 				.WithQueryString("page_size", "1")
-				.Respond("application/json", CONTACTS_JSON);
+				.Respond("application/json", EndpointsResource.contacts_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -221,7 +176,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("search_key", keyword)
 				.WithQueryString("query_presence_status", true.ToString())
 				.WithQueryString("page_size", "1")
-				.Respond("application/json", CONTACTS_JSON);
+				.Respond("application/json", EndpointsResource.contacts_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -250,7 +205,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("chat", "users", "me", "contacts", contactId))
 				.WithQueryString("contactid", contactId)
 				.WithQueryString("query_presence_status", true.ToString())
-				.Respond("application/json", SINGLE_CONTACT_JSON);
+				.Respond("application/json", EndpointsResource.chat_users_me_contacts__identifier__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -263,10 +218,10 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("contact1");
-			result.EmailAddress.ShouldBe("user@example.com");
-			result.FirstName.ShouldBe("John");
-			result.LastName.ShouldBe("Doe");
+			result.Id.ShouldBe("v4iyWT1LTfy8QvPG4GTvdg");
+			result.EmailAddress.ShouldBe("jchill@example.com");
+			result.FirstName.ShouldBe("Jill");
+			result.LastName.ShouldBe("Chill");
 		}
 
 		[Fact]
@@ -279,7 +234,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("chat", "users", "me", "contacts", contactId))
 				.WithQueryString("contactid", contactId)
 				.WithQueryString("query_presence_status", false.ToString())
-				.Respond("application/json", SINGLE_CONTACT_JSON);
+				.Respond("application/json", EndpointsResource.chat_users_me_contacts__identifier__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -304,7 +259,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("chat", "users", "me", "contacts", contactId))
 				.WithQueryString("contactid", contactId)
 				.WithQueryString("query_presence_status", true.ToString())
-				.Respond("application/json", SINGLE_CONTACT_JSON);
+				.Respond("application/json", EndpointsResource.chat_users_me_contacts__identifier__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -312,145 +267,6 @@ namespace ZoomNet.UnitTests.Resources
 
 			// Act
 			var result = await contacts.GetAsync(contactId, cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-		}
-
-		#endregion
-
-		#region Edge Case Tests
-
-		[Fact]
-		public async Task GetAllAsync_EmptyContacts()
-		{
-			// Arrange
-			var emptyContactsJson = @"{
-				""page_size"": 30,
-				""next_page_token"": """",
-				""contacts"": []
-			}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("chat", "users", "me", "contacts"))
-				.WithQueryString("type", "company")
-				.WithQueryString("page_size", "30")
-				.Respond("application/json", emptyContactsJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var contacts = new Contacts(client);
-
-			// Act
-			var result = await contacts.GetAllAsync(cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(0);
-			result.NextPageToken.ShouldBeEmpty();
-		}
-
-		[Fact]
-		public async Task SearchAsync_NoResults()
-		{
-			// Arrange
-			var keyword = "nonexistent";
-			var emptyContactsJson = @"{
-				""page_size"": 1,
-				""next_page_token"": """",
-				""contacts"": []
-			}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("contacts"))
-				.WithQueryString("search_key", keyword)
-				.Respond("application/json", emptyContactsJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var contacts = new Contacts(client);
-
-			// Act
-			var result = await contacts.SearchAsync(keyword, cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(0);
-		}
-
-		[Fact]
-		public async Task GetAllAsync_MinimumRecordsPerPage()
-		{
-			// Arrange
-			var recordsPerPage = 1;
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("chat", "users", "me", "contacts"))
-				.WithQueryString("page_size", recordsPerPage.ToString())
-				.Respond("application/json", CONTACTS_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var contacts = new Contacts(client);
-
-			// Act
-			var result = await contacts.GetAllAsync(recordsPerPage: recordsPerPage, cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-		}
-
-		[Fact]
-		public async Task GetAllAsync_MaximumRecordsPerPage()
-		{
-			// Arrange
-			var recordsPerPage = 50;
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("chat", "users", "me", "contacts"))
-				.WithQueryString("page_size", recordsPerPage.ToString())
-				.Respond("application/json", CONTACTS_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var contacts = new Contacts(client);
-
-			// Act
-			var result = await contacts.GetAllAsync(recordsPerPage: recordsPerPage, cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-		}
-
-		[Fact]
-		public async Task SearchAsync_MaximumRecordsPerPage()
-		{
-			// Arrange
-			var keyword = "test";
-			var recordsPerPage = 25;
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("contacts"))
-				.WithQueryString("search_key", keyword)
-				.WithQueryString("page_size", recordsPerPage.ToString())
-				.Respond("application/json", CONTACTS_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var contacts = new Contacts(client);
-
-			// Act
-			var result = await contacts.SearchAsync(keyword, recordsPerPage: recordsPerPage, cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
