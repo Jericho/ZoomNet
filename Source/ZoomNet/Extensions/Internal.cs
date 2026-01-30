@@ -1014,6 +1014,14 @@ namespace ZoomNet
 					enumValue = (T)Enum.Parse(enumType, name);
 					return true;
 				}
+
+				// In the rare scenario where the numerical value is returned from the API as a string.
+				// In other words, an integer value like 1 for example is returned as the string "1".
+				if (int.TryParse(str, out int numberValue))
+				{
+					enumValue = (T)Enum.ToObject(enumType, numberValue);
+					return true;
+				}
 			}
 
 			enumValue = default;
