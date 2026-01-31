@@ -179,6 +179,10 @@ namespace ZoomNet.Models
 		/// No microphone.
 		/// </summary>
 		[EnumMember(Value = "No microphone")]
-		NoMicrophone
+		NoMicrophone,
+
+		/// <summary>Untrusted certificate is detected.</summary>
+		[EnumMember(Value = "Untrusted certificate is detected")]
+		UntrustedCertificate,
 	}
 }
