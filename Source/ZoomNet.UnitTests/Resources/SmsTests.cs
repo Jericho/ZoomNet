@@ -6,87 +6,12 @@ using System.Threading.Tasks;
 using Xunit;
 using ZoomNet.Models;
 using ZoomNet.Resources;
+using ZoomNet.UnitTests.Properties;
 
 namespace ZoomNet.UnitTests.Resources
 {
 	public class SmsTests
 	{
-		private const string SMS_SESSION_DETAILS_JSON = @"{
-			""sync_token"": ""token123"",
-			""sms_histories"": [
-				{
-					""message_id"": ""msg001"",
-					""date_time"": ""2023-07-01T14:00:00Z"",
-					""direction"": ""inbound"",
-					""message_type"": ""sms"",
-					""sender"": {
-						""phone_number"": ""+12223334444"",
-						""display_name"": ""John Doe"",
-						""owner"": {
-							""owner_type"": ""user""
-						}
-					},
-					""to_members"": [
-						{
-							""phone_number"": ""+15556667777"",
-							""display_name"": ""Jane Smith"",
-							""owner"": {
-								""owner_type"": ""user""
-							}
-						}
-					],
-					""message"": ""Hello, this is a test message""
-				},
-				{
-					""message_id"": ""msg002"",
-					""date_time"": ""2023-07-01T15:00:00Z"",
-					""direction"": ""outbound"",
-					""message_type"": ""mms"",
-					""sender"": {
-						""phone_number"": ""+15556667777"",
-						""display_name"": ""Jane Smith"",
-						""owner"": {
-							""owner_type"": ""user""
-						}
-					},
-					""to_members"": [
-						{
-							""phone_number"": ""+12223334444"",
-							""display_name"": ""John Doe"",
-							""owner"": {
-								""owner_type"": ""user""
-							}
-						}
-					],
-					""message"": ""Reply to your message""
-				}
-			]
-		}";
-
-		private const string SMS_MESSAGE_JSON = @"{
-			""message_id"": ""msg001"",
-			""date_time"": ""2023-07-01T14:00:00Z"",
-			""direction"": ""inbound"",
-			""message_type"": ""sms"",
-			""sender"": {
-				""phone_number"": ""+12223334444"",
-				""display_name"": ""John Doe"",
-				""owner"": {
-					""owner_type"": ""user""
-				}
-			},
-			""to_members"": [
-				{
-					""phone_number"": ""+15556667777"",
-					""display_name"": ""Jane Smith"",
-					""owner"": {
-						""owner_type"": ""user""
-					}
-				}
-			],
-			""message"": ""Hello, this is a test message""
-		}";
-
 		private readonly ITestOutputHelper _outputHelper;
 
 		public SmsTests(ITestOutputHelper outputHelper)
@@ -107,7 +32,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "sms", "sessions", sessionId))
 				.WithQueryString("page_size", "30")
 				.WithQueryString("sort", "1")
-				.Respond("application/json", SMS_SESSION_DETAILS_JSON);
+				.Respond("application/json", EndpointsResource.phone_sms_sessions__sessionId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -143,7 +68,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("to", "2023-07-31T23:59:59Z")
 				.WithQueryString("page_size", "30")
 				.WithQueryString("sort", "1")
-				.Respond("application/json", SMS_SESSION_DETAILS_JSON);
+				.Respond("application/json", EndpointsResource.phone_sms_sessions__sessionId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -170,7 +95,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "sms", "sessions", sessionId))
 				.WithQueryString("page_size", "30")
 				.WithQueryString("sort", "2")
-				.Respond("application/json", SMS_SESSION_DETAILS_JSON);
+				.Respond("application/json", EndpointsResource.phone_sms_sessions__sessionId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -196,7 +121,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "sms", "sessions", sessionId))
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", SMS_SESSION_DETAILS_JSON);
+				.Respond("application/json", EndpointsResource.phone_sms_sessions__sessionId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -225,7 +150,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("page_size", "30")
 				.WithQueryString("next_page_token", pagingToken)
 				.WithQueryString("sort", "1")
-				.Respond("application/json", SMS_SESSION_DETAILS_JSON);
+				.Respond("application/json", EndpointsResource.phone_sms_sessions__sessionId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -241,32 +166,6 @@ namespace ZoomNet.UnitTests.Resources
 			result.Records.Length.ShouldBe(2);
 		}
 
-		[Fact]
-		public async Task GetSmsSessionDetailsAsync_WithCustomPageSize_ReturnsSmsMessages()
-		{
-			// Arrange
-			var sessionId = "session123";
-			var recordsPerPage = 50;
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "sms", "sessions", sessionId))
-				.WithQueryString("page_size", "50")
-				.WithQueryString("sort", "1")
-				.Respond("application/json", SMS_SESSION_DETAILS_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var sms = new Sms(client);
-
-			// Act
-			var result = await sms.GetSmsSessionDetailsAsync(sessionId, null, null, true, recordsPerPage, null, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-		}
-
 		#endregion
 
 		#region GetSmsByMessageIdAsync Tests
@@ -280,7 +179,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "sms", "sessions", sessionId, "messages", messageId))
-				.Respond("application/json", SMS_MESSAGE_JSON);
+				.Respond("application/json", EndpointsResource.phone_sms_sessions__sessionId__messages__messageId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);

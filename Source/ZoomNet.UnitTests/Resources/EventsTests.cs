@@ -8,83 +8,12 @@ using System.Threading.Tasks;
 using Xunit;
 using ZoomNet.Models;
 using ZoomNet.Resources;
+using ZoomNet.UnitTests.Properties;
 
 namespace ZoomNet.UnitTests.Resources
 {
 	public class EventsTests
 	{
-		private const string EVENTS_JSON = @"{
-			""page_size"": 30,
-			""next_page_token"": ""token123"",
-			""events"": [
-				{
-					""id"": ""event123"",
-					""name"": ""Test Event"",
-					""description"": ""Test Description"",
-					""start_time"": ""2023-06-01T10:00:00Z"",
-					""end_time"": ""2023-06-01T11:00:00Z"",
-					""timezone"": ""America/New_York"",
-					""event_type"": ""simple""
-				}
-			]
-		}";
-
-		private const string SINGLE_EVENT_JSON = @"{
-			""id"": ""event123"",
-			""name"": ""Test Event"",
-			""description"": ""Test Description"",
-			""start_time"": ""2023-06-01T10:00:00Z"",
-			""end_time"": ""2023-06-01T11:00:00Z"",
-			""timezone"": ""America/New_York"",
-			""event_type"": ""simple"",
-			""hub_id"": ""hub123""
-		}";
-
-		private const string HUBS_JSON = @"{
-			""hubs"": [
-				{
-					""id"": ""hub123"",
-					""name"": ""Test Hub"",
-					""description"": ""Hub Description""
-				}
-			]
-		}";
-
-		private const string SPEAKERS_JSON = @"{
-			""speakers"": [
-				{
-					""id"": ""speaker123"",
-					""name"": ""John Doe"",
-					""email"": ""john@example.com"",
-					""job_title"": ""CEO""
-				}
-			]
-		}";
-
-		private const string SESSIONS_JSON = @"{
-			""sessions"": [
-				{
-					""id"": ""session123"",
-					""name"": ""Session 1"",
-					""start_time"": ""2023-06-01T10:00:00Z"",
-					""end_time"": ""2023-06-01T11:00:00Z""
-				}
-			]
-		}";
-
-		private const string REGISTRANTS_JSON = @"{
-			""page_size"": 30,
-			""next_page_token"": ""reg_token"",
-			""registrants"": [
-				{
-					""id"": ""reg123"",
-					""email"": ""attendee@example.com"",
-					""first_name"": ""Jane"",
-					""last_name"": ""Smith""
-				}
-			]
-		}";
-
 		private readonly ITestOutputHelper _outputHelper;
 
 		public EventsTests(ITestOutputHelper outputHelper)
@@ -100,22 +29,12 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var eventId = "event123";
 			var attendeeEmail = "attendee@example.com";
-			var actionsJson = @"{
-				""page_size"": 30,
-				""next_page_token"": """",
-				""attendees"": [
-					{
-						""email"": ""attendee@example.com"",
-						""action"": ""check-in""
-					}
-				]
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "attendee_action"))
 				.WithQueryString("email", attendeeEmail)
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", actionsJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__attendee_action_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -137,11 +56,10 @@ namespace ZoomNet.UnitTests.Resources
 			var eventId = "event123";
 			var attendeeEmails = new[] { "attendee1@example.com", "attendee2@example.com" };
 			var source = "manual";
-			var errorsJson = @"{""errors"": []}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "attendee_action"))
-				.Respond("application/json", errorsJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__attendee_action_PATCH);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -154,7 +72,6 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Length.ShouldBe(0);
 		}
 
 		[Fact]
@@ -194,23 +111,10 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var eventId = "event123";
-			var coEditorsJson = @"{
-				""coeditors"": [
-					{
-						""email"": ""coeditor1@example.com"",
-						""permission_groups"": [ ""Publish"", ""EventConfiguration"" ]
-					},
-					{
-						""email"": ""coeditor2@example.com"",
-						""permission_groups"": [ ""EventBranding"", ""Registration & Join"", ""Venue"", ""EventExperience"", ""EventPlanning"" ]
-					}
-				],
-				""total_records"": 2
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "coeditors"))
-				.Respond("application/json", coEditorsJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__coeditors_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -388,26 +292,10 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var eventId = "event123";
 			var name = "Registration Link";
-			var accessLinkJson = @"{
-				""access_link_id"": ""link123"",
-				""name"": ""Registration Link"",
-				""type"": ""registration"",
-				""is_default"": false,
-				""url"": ""https://zoom.us/events/example"",
-				""authentication_method"": ""zoom_account"",
-				""allow_domain_list"": [ ""example.com"" ],
-				""email_restrict_list"": [ ""user@example.com"" ],
-				""security_at_join"": {
-					""email_authentication"": true,
-					""security_code_verification"": true
-				},
-				""ticket_type_id"": ""ticket123"",
-				""recurring_registration_option"": ""all_sessions""
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "access_links"))
-				.Respond("application/json", accessLinkJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__access_links_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -440,26 +328,9 @@ namespace ZoomNet.UnitTests.Resources
 			var ticketTypeId = "ticket456";
 			var recurringType = RecurringEventRegistrationType.SingleSession;
 
-			var accessLinkJson = @"{
-				""access_link_id"": ""234kjhg23kl4jhlaksjdh3"",
-				""name"": ""Event Access Link 1"",
-				""type"": ""registration"",
-				""is_default"": true,
-				""authentication_method"": ""bypass_auth"",
-				""idp_name"": ""okta"",
-				""allow_domain_list"": [ ""zoom.us"" ],
-				""email_restrict_list"": [ ""example1@example.com"" ],
-				""security_at_join"": {
-					""email_authentication"": true,
-					""security_code_verification"": true
-				},
-				""ticket_type_id"": ""PTYwAknYQXaDStOP7O3ExA"",
-				""recurring_registration_option"": ""all_sessions""
-			}";
-
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "access_links"))
-				.Respond("application/json", accessLinkJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__access_links_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -515,18 +386,10 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var eventId = "event123";
 			var accessLinkId = "link123";
-			var accessLinkJson = @"{
-				""access_link_id"": ""link123"",
-				""name"": ""My Access Link"",
-				""type"": ""registration"",
-				""is_default"": false,
-				""url"": ""https://zoom.us/events/mylink"",
-				""authentication_method"": ""zoom_account""
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "access_links", accessLinkId))
-				.Respond("application/json", accessLinkJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__access_links__accessLinkId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -549,28 +412,10 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var eventId = "event123";
-			var accessLinksJson = @"{
-				""access_links"": [
-					{
-						""access_link_id"": ""link1"",
-						""name"": ""Default Link"",
-						""type"": ""registration"",
-						""is_default"": true,
-						""url"": ""https://zoom.us/events/link1""
-					},
-					{
-						""access_link_id"": ""link2"",
-						""name"": ""Group Join Link"",
-						""type"": ""group-join"",
-						""is_default"": false,
-						""url"": ""https://zoom.us/events/link2""
-					}
-				]
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "access_links"))
-				.Respond("application/json", accessLinksJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__access_links_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -699,7 +544,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("event_status_type", "upcoming")
 				.WithQueryString("page_size", recordsPerPage.ToString())
 				.WithQueryString("next_page_token", pagingToken)
-				.Respond("application/json", EVENTS_JSON);
+				.Respond("application/json", EndpointsResource.zoom_events_events_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -723,7 +568,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId))
-				.Respond("application/json", SINGLE_EVENT_JSON);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -750,38 +595,9 @@ namespace ZoomNet.UnitTests.Resources
 			var meetingType = EventMeetingType.Meeting;
 			var hubId = "hub123";
 
-			var simpleEventJson = @"{
-				""event_id"": ""234kj2h34kljgh23lkhj3"",
-				""name"": ""Simple Event Name"",
-				""description"": ""This is a simple event"",
-				""timezone"": ""America/Indianapolis"",
-				""event_type"": ""SIMPLE_EVENT"",
-				""access_level"": ""PRIVATE_RESTRICTED"",
-				""meeting_type"": ""MEETING"",
-				""categories"": [ ""Food and Drinks"" ],
-				""tags"": [ ""Event tag2"" ],
-				""calendar"": [
-					{
-						""start_time"": ""2024-07-28T13:00:00Z"",
-						""end_time"": ""2024-07-30T13:00:00Z""
-					}
-				],
-				""status"": ""PUBLISHED"",
-				""hub_id"": ""23asdfasdf3asdf"",
-				""start_time"": ""2022-06-03T20:51:00Z"",
-				""end_time"": ""2022-06-03T20:51:00Z"",
-				""contact_name"": ""user contact name"",
-				""lobby_start_time"": ""2022-06-03T20:51:00Z"",
-				""lobby_end_time"": ""2022-06-03T20:51:00Z"",
-				""event_url"": ""www.example.com/zoomEvents"",
-				""blocked_countries"": [ ""US"" ],
-				""attendance_type"": ""hybrid"",
-				""tagline"": ""Unlocking Innovation: Join Us for the Day of Insipiration and Insight!""
-			}";
-
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events"))
-				.Respond("application/json", simpleEventJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -810,49 +626,9 @@ namespace ZoomNet.UnitTests.Resources
 			var timeZone = TimeZones.America_New_York;
 			var hubId = "hub123";
 
-			var conferenceJson = @"{
-				""event_id"": ""234kj2h34kljgh23lkhj3"",
-				""name"": ""OpenAPI Conference Name"",
-				""description"": ""This event was created with the OpenAPI"",
-				""timezone"": ""America/Indianapolis"",
-				""event_type"": ""CONFERENCE"",
-				""recurrence"": {
-					""type"": 1,
-					""repeat_interval"": 1,
-					""weekly_days"": [ 1 ],
-					""monthly_days"": [ 1 ],
-					""monthly_week_day"": 1,
-					""end_times"": 1,
-					""end_date_time"": ""2025-12-21T17:38:29.698Z"",
-					""monthly_week"": -1,
-					""duration"": 1
-				},
-				""access_level"": ""PRIVATE_RESTRICTED"",
-				""meeting_type"": ""MEETING"",
-				""categories"": [ ""Food and Drinks"" ],
-				""tags"": [ ""Event tag1"" ],
-				""calendar"": [
-					{
-						""start_time"": ""2024-07-28T13:00:00Z"",
-						""end_time"": ""2024-07-30T13:00:00Z""
-					}
-				],
-				""status"": ""PUBLISHED"",
-				""hub_id"": ""23asdfasdf3asdf"",
-				""start_time"": ""2022-06-03T20:51:00Z"",
-				""end_time"": ""2022-06-03T20:51:00Z"",
-				""contact_name"": ""user contact name"",
-				""lobby_start_time"": ""2022-06-03T20:51:00Z"",
-				""lobby_end_time"": ""2022-06-03T20:51:00Z"",
-				""event_url"": ""www.example.com/zoomEvents"",
-				""blocked_countries"": [ ""US"" ],
-				""attendance_type"": ""hybrid"",
-				""tagline"": ""Unlocking Innovation: Join Us for the Day of Insipiration and Insight!""
-			}";
-
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events"))
-				.Respond("application/json", conferenceJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -885,25 +661,9 @@ namespace ZoomNet.UnitTests.Resources
 				EndDateTime = new DateTime(2023, 12, 31, 23, 59, 59, DateTimeKind.Utc)
 			};
 
-			var recurringEventJson = @"{
-				""event_id"": ""recurring_event_123"",
-				""name"": ""Recurring Event"",
-				""description"": ""Recurring Event Description"",
-				""timezone"": ""America/Indianapolis"",
-				""event_type"": ""RECURRING"",
-				""recurrence"": {
-					""type"": 1,
-					""repeat_interval"": 1,
-					""weekly_days"": [ 1, 3 ],
-					""end_date_time"": ""2023-12-31T23:59:59Z""
-				},
-				""status"": ""DRAFT"",
-				""hub_id"": ""hub123""
-			}";
-
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events"))
-				.Respond("application/json", recurringEventJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1122,11 +882,10 @@ namespace ZoomNet.UnitTests.Resources
 			var name = "Duplicated Event";
 			var start = new DateTime(2023, 7, 1, 10, 0, 0, DateTimeKind.Utc);
 			var timeZone = TimeZones.America_New_York;
-			var duplicateJson = @"{""event_id"": ""event_duplicate""}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "event_actions"))
-				.Respond("application/json", duplicateJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__event_actions_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1155,27 +914,10 @@ namespace ZoomNet.UnitTests.Resources
 			var contactEmail = "john@acme.com";
 			var isSponsor = true;
 			var sponsorTierId = "tier123";
-			var exhibitorJson = @"{
-				""exhibitor_id"": ""exhibitor123"",
-				""name"": ""Acme Corporation"",
-				""contact_name"": ""John Doe"",
-				""contact_email"": ""john@acme.com"",
-				""is_sponsor"": true,
-				""tier_id"": ""tier123"",
-				""description"": ""Leading technology provider"",
-				""associated_sessions"": [ ""session1"", ""session2"" ],
-				""website"": ""https://www.acme.com"",
-				""privacy_policy"": ""https://www.acme.com/privacy"",
-				""linkedin_url"": ""https://linkedin.com/company/acme"",
-				""twitter_url"": ""https://twitter.com/acme"",
-				""youtube_url"": ""https://youtube.com/acme"",
-				""instagram_url"": ""https://instagram.com/acme"",
-				""facebook_url"": ""https://facebook.com/acme""
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "exhibitors"))
-				.Respond("application/json", exhibitorJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__exhibitors_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1220,20 +962,10 @@ namespace ZoomNet.UnitTests.Resources
 			var contactName = "Jane Smith";
 			var contactEmail = "jane@regular.com";
 			var isSponsor = false;
-			var exhibitorJson = @"{
-				""exhibitor_id"": ""exhibitor456"",
-				""name"": ""Regular Exhibitor"",
-				""contact_name"": ""Jane Smith"",
-				""contact_email"": ""jane@regular.com"",
-				""is_sponsor"": false,
-				""description"": ""Regular exhibitor booth"",
-				""website"": ""https://www.regular.com"",
-				""privacy_policy"": ""https://www.regular.com/privacy""
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "exhibitors"))
-				.Respond("application/json", exhibitorJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__exhibitors_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1272,20 +1004,10 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var eventId = "event123";
 			var exhibitorId = "exhibitor123";
-			var exhibitorJson = @"{
-				""exhibitor_id"": ""exhibitor123"",
-				""name"": ""Test Exhibitor"",
-				""contact_name"": ""Contact Person"",
-				""contact_email"": ""contact@test.com"",
-				""is_sponsor"": true,
-				""tier_id"": ""tier456"",
-				""description"": ""Test description"",
-				""website"": ""https://www.test.com""
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "exhibitors", exhibitorId))
-				.Respond("application/json", exhibitorJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__exhibitors__exhibitorId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1307,29 +1029,10 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var eventId = "event123";
-			var exhibitorsJson = @"{
-				""exhibitors"": [
-					{
-						""exhibitor_id"": ""exhibitor1"",
-						""name"": ""Exhibitor One"",
-						""contact_name"": ""Contact One"",
-						""contact_email"": ""one@example.com"",
-						""is_sponsor"": true,
-						""tier_id"": ""tier1""
-					},
-					{
-						""exhibitor_id"": ""exhibitor2"",
-						""name"": ""Exhibitor Two"",
-						""contact_name"": ""Contact Two"",
-						""contact_email"": ""two@example.com"",
-						""is_sponsor"": false
-					}
-				]
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "exhibitors"))
-				.Respond("application/json", exhibitorsJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__exhibitors_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1479,32 +1182,10 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var eventId = "event123";
-			var sponsorTiersJson = @"{
-				""sponsor_tiers"": [
-					{
-						""tier_id"": ""tier1"",
-						""name"": ""Platinum"",
-						""description"": ""Platinum sponsor tier"",
-						""order"": 1
-					},
-					{
-						""tier_id"": ""tier2"",
-						""name"": ""Gold"",
-						""description"": ""Gold sponsor tier"",
-						""order"": 2
-					},
-					{
-						""tier_id"": ""tier3"",
-						""name"": ""Silver"",
-						""description"": ""Silver sponsor tier"",
-						""order"": 3
-					}
-				]
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sponsor_tiers"))
-				.Respond("application/json", sponsorTiersJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__sponsor_tiers_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1530,11 +1211,10 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var hubId = "hub123";
 			var emailAddress = "host@example.com";
-			var responseJson = @"{""host_user_id"": ""host456""}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "hosts"))
-				.Respond("application/json", responseJson);
+				.Respond("application/json", EndpointsResource.zoom_events_hubs__hubId__hosts_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1556,7 +1236,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "hubs"))
 				.WithQueryString("role_type", "host")
-				.Respond("application/json", HUBS_JSON);
+				.Respond("application/json", EndpointsResource.zoom_events_hubs_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1577,23 +1257,11 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var hubId = "hub123";
-			var hostsJson = @"{
-				""page_size"": 30,
-				""next_page_token"": """",
-				""hosts"": [
-					{
-						""user_id"": ""host123"",
-						""email"": ""host@example.com"",
-						""first_name"": ""John"",
-						""last_name"": ""Doe""
-					}
-				]
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "hosts"))
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", hostsJson);
+				.Respond("application/json", EndpointsResource.zoom_events_hubs__hubId__hosts_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1613,27 +1281,11 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var hubId = "hub123";
-			var videosJson = @"{
-				""page_size"": 30,
-				""next_page_token"": """",
-				""videos"": [
-					{
-						""video_id"": ""video1"",
-						""title"": ""Hub Video 1"",
-						""duration"": 1800
-					},
-					{
-						""video_id"": ""video2"",
-						""title"": ""Hub Video 2"",
-						""duration"": 2400
-					}
-				]
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "videos"))
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", videosJson);
+				.Respond("application/json", EndpointsResource.zoom_events_hubs__hubId__videos_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1657,24 +1309,13 @@ namespace ZoomNet.UnitTests.Resources
 			var folderId = "folder456";
 			var recordsPerPage = 50;
 			var pagingToken = "token_abc";
-			var videosJson = @"{
-				""page_size"": 50,
-				""next_page_token"": ""token_xyz"",
-				""videos"": [
-					{
-						""video_id"": ""video3"",
-						""title"": ""Folder Video"",
-						""duration"": 3000
-					}
-				]
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "videos"))
 				.WithQueryString("folder_id", folderId)
 				.WithQueryString("page_size", "50")
 				.WithQueryString("next_page_token", pagingToken)
-				.Respond("application/json", videosJson);
+				.Respond("application/json", EndpointsResource.zoom_events_hubs__hubId__videos_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1726,7 +1367,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "registrants"))
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", REGISTRANTS_JSON);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__registrants_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1747,21 +1388,11 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var eventId = "event123";
 			var sessionId = "session789";
-			var attendeesJson = @"{
-				""page_size"": 30,
-				""next_page_token"": """",
-				""attendees"": [
-					{
-						""id"": ""att123"",
-						""email"": ""attendee@example.com""
-					}
-				]
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "attendees"))
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", attendeesJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__sessions__sessionId__attendees_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1789,51 +1420,10 @@ namespace ZoomNet.UnitTests.Resources
 			var start = new DateTime(2023, 6, 1, 10, 0, 0, DateTimeKind.Utc);
 			var end = new DateTime(2023, 6, 1, 11, 0, 0, DateTimeKind.Utc);
 			var timeZone = TimeZones.America_New_York;
-			var sessionJson = @"{
-				""timezone"": ""America/New_York"",
-				""type"": 2,
-				""session_id"": ""4uzfv3JwTeyR5QpC3PXwMg"",
-				""name"": ""Session 1"",
-				""description"": ""Educational Session on ZoomEvents"",
-				""start_time"": ""2022-05-31T13:00:00Z"",
-				""end_time"": ""2022-05-31T13:00:00Z"",
-				""session_speakers"": [
-					{
-						""speaker_id"": ""4uzfv3JwTeyR5QpC3PXwMg"",
-						""access_to_edit_session"": true,
-						""show_in_session_detail"": true,
-						""has_alternative_host_permission"": true,
-						""meeting_role"": 2,
-						""name"": ""Speaker-1"",
-						""company"": ""Zoom"",
-						""title"": ""Product Lead""
-					}
-				],
-				""featured"": true,
-				""visible_in_landing_page"": true,
-				""featured_in_lobby"": false,
-				""visible_in_lobby"": true,
-				""is_simulive"": true,
-				""record_file_id"": ""f09340e1-cdc3-4eae-9a74-98f9777ed908"",
-				""chat_channel"": true,
-				""led_by_sponsor"": false,
-				""track_labels"": [ ""Technical Track"" ],
-				""audience_labels"": [ ""Family"" ],
-				""product_labels"": [ ""zoomMeeting"" ],
-				""level"": [ ""Level-1"" ],
-				""alternative_host"": [ ""abc.cd@email.com"" ],
-				""panelist"": [ ""abc.cd@email.com"" ],
-				""attendance_type"": ""hybrid"",
-				""physical_location"": ""801 Mt Vernon Pl NW, Washington, DC 20001"",
-				""session_reservation"": {
-					""allow_reservations"": true,
-					""max_capacity"": 20
-				}
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions"))
-				.Respond("application/json", sessionJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__sessions_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1857,7 +1447,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions"))
-				.Respond("application/json", SESSIONS_JSON);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__sessions_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1879,14 +1469,10 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var eventId = "event123";
 			var sessionId = "session789";
-			var sessionJson = @"{
-				""id"": ""session789"",
-				""name"": ""Session 1""
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId))
-				.Respond("application/json", sessionJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__sessions__sessionId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1954,11 +1540,10 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var eventId = "event123";
 			var sessionId = "session789";
-			var tokenJson = @"{""join_token"": ""token_abc123""}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "join_token"))
-				.Respond("application/json", tokenJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__sessions__sessionId__join_token_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1984,26 +1569,10 @@ namespace ZoomNet.UnitTests.Resources
 			var eventId = "event123";
 			var name = "John Doe";
 			var emailAddress = "john@example.com";
-			var speakerJson = @"{
-				""speaker_id"": ""3935Ug73Sp6S-7K1BHk7qw"",
-				""name"": ""John Joseph Dev"",
-				""email"": ""email@example.com"",
-				""job_title"": ""Product Manager"",
-				""biography"": ""Provide a brief introduction of the speaker."",
-				""company_name"": ""zoom"",
-				""company_website"": ""https://www.example.com"",
-				""linkedin_url"": ""https://linkedin.com/example"",
-				""twitter_url"": ""https://twitter.com/example"",
-				""youtube_url"": ""https://youtube.com/example"",
-				""featured_in_event_detail_page"": true,
-				""visible_in_event_detail_page"": true,
-				""featured_in_lobby"": false,
-				""visible_in_lobby"": true
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "speakers"))
-				.Respond("application/json", speakerJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__speakers_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -2026,7 +1595,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "speakers"))
-				.Respond("application/json", SPEAKERS_JSON);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__speakers_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -2048,14 +1617,10 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var eventId = "event123";
 			var speakerId = "speaker456";
-			var speakerJson = @"{
-				""id"": ""speaker456"",
-				""name"": ""John Doe""
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "speakers", speakerId))
-				.Respond("application/json", speakerJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__speakers__speakerId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -2133,11 +1698,10 @@ namespace ZoomNet.UnitTests.Resources
 			var price = 50.00;
 			var quantity = 100;
 			var description = "General admission ticket";
-			var ticketTypeJson = @"{""ticket_type_id"": ""ticket_123""}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "ticket_types"))
-				.Respond("application/json", ticketTypeJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__ticket_types_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -2170,11 +1734,10 @@ namespace ZoomNet.UnitTests.Resources
 			var start = new DateTime(2023, 6, 1, 0, 0, 0, DateTimeKind.Utc);
 			var end = new DateTime(2023, 6, 30, 23, 59, 59, DateTimeKind.Utc);
 			var currencyCode = "USD";
-			var ticketTypeJson = @"{""ticket_type_id"": ""ticket_free_456""}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "ticket_types"))
-				.Respond("application/json", ticketTypeJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__ticket_types_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -2208,11 +1771,10 @@ namespace ZoomNet.UnitTests.Resources
 			var price = 150.00;
 			var quantity = 50;
 			var description = "VIP access ticket";
-			var ticketTypeJson = @"{""ticket_type_id"": ""ticket_vip_789""}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "ticket_types"))
-				.Respond("application/json", ticketTypeJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__ticket_types_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -2251,11 +1813,10 @@ namespace ZoomNet.UnitTests.Resources
 			var description = "Early bird discount ticket";
 			var quantitySold = 10;
 			var sessionIds = new[] { "session1" };
-			var ticketTypeJson = @"{""ticket_type_id"": ""ticket_early_999""}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "ticket_types"))
-				.Respond("application/json", ticketTypeJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__ticket_types_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -2309,48 +1870,10 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var eventId = "event123";
-			var ticketTypesJson = @"{
-				""ticket_types"": [
-					{
-						""ticket_type_id"": ""ticket1"",
-						""name"": ""General Admission"",
-						""start_time"": ""2023-06-01T00:00:00Z"",
-						""end_time"": ""2023-06-30T23:59:59Z"",
-						""currency"": ""USD"",
-						""price"": ""50.00"",
-						""free"": false,
-						""quantity"": 100,
-						""sold_quantity"": 25,
-						""description"": ""Standard ticket""
-					},
-					{
-						""ticket_type_id"": ""ticket2"",
-						""name"": ""VIP"",
-						""start_time"": ""2023-06-01T00:00:00Z"",
-						""end_time"": ""2023-06-30T23:59:59Z"",
-						""currency"": ""USD"",
-						""price"": ""150.00"",
-						""free"": false,
-						""quantity"": 20,
-						""sold_quantity"": 5,
-						""description"": ""VIP access ticket""
-					},
-					{
-						""ticket_type_id"": ""ticket3"",
-						""name"": ""Free Entry"",
-						""start_time"": ""2023-06-01T00:00:00Z"",
-						""end_time"": ""2023-06-30T23:59:59Z"",
-						""currency"": ""USD"",
-						""free"": true,
-						""quantity"": 200,
-						""sold_quantity"": 50
-					}
-				]
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "ticket_types"))
-				.Respond("application/json", ticketTypesJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__ticket_types_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -2511,31 +2034,10 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var eventId = "event123";
-			var questionsJson = @"{
-				""questions"": [
-					{
-						""field_name"": ""last_name"",
-						""required"": true,
-						""title"": ""Last Name"",
-						""question_id"": ""Fn2rBZgJQzi6VIU--uWqnA""
-					}
-				],
-				""custom_questions"": [
-					{
-						""options"": [ ""Good"" ],
-						""required"": true,
-						""title"": ""How are you?"",
-						""question_id"": ""Fn2rBZgJQzi6VIU--uWqnA"",
-						""type"": ""short_answer"",
-						""min_length"": 500,
-						""max_length"": 2000
-					}
-				]
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "questions"))
-				.Respond("application/json", questionsJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__questions_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -2558,14 +2060,10 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var eventId = "event123";
-			var questionsJson = @"{
-				""questions"": [],
-				""custom_questions"": []
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "questions"))
-				.Respond("application/json", questionsJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__questions_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -2589,33 +2087,10 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var eventId = "event123";
 			var ticketTypeId = "ticket_456";
-			var questionsJson = @"{
-				""questions"": [
-					{
-						""field_name"": ""last_name"",
-						""required"": true,
-						""title"": ""Last Name"",
-						""question_id"": ""Fn2rBZgJQzi6VIU--uWqnA""
-					}
-				],
-				""custom_questions"": [
-					{
-						""options"": [
-						""Good""
-						],
-						""required"": true,
-						""title"": ""How are you?"",
-						""question_id"": ""Fn2rBZgJQzi6VIU--uWqnA"",
-						""type"": ""short_answer"",
-						""min_length"": 500,
-						""max_length"": 2000
-					}
-				]
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "ticket_types", ticketTypeId, "questions"))
-				.Respond("application/json", questionsJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__ticket_types__ticketTypeId__questions_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -2847,32 +2322,11 @@ namespace ZoomNet.UnitTests.Resources
 					City = "Los Angeles"
 				}
 			};
-			var responseJson = @"{
-				""tickets"": [
-					{
-						""ticket_id"": ""ticket1"",
-						""email"": ""attendee1@example.com"",
-						""ticket_type_id"": ""ticket_type_1"",
-						""first_name"": ""John"",
-						""last_name"": ""Doe"",
-						""city"": ""New York""
-					},
-					{
-						""ticket_id"": ""ticket2"",
-						""email"": ""attendee2@example.com"",
-						""ticket_type_id"": ""ticket_type_1"",
-						""first_name"": ""Jane"",
-						""last_name"": ""Smith"",
-						""city"": ""Los Angeles""
-					}
-				],
-				""errors"": []
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "tickets"))
 				.WithQueryString("validation_level", "standard")
-				.Respond("application/json", responseJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__tickets_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -2906,20 +2360,10 @@ namespace ZoomNet.UnitTests.Resources
 					LastName = "User"
 				}
 			};
-			var responseJson = @"{
-				""tickets"": [
-					{
-						""ticket_id"": ""ticket_abc"",
-						""email"": ""test@example.com"",
-						""ticket_type_id"": ""ticket_type_1""
-					}
-				],
-				""errors"": []
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "tickets"))
-				.Respond("application/json", responseJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__tickets_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -2945,27 +2389,11 @@ namespace ZoomNet.UnitTests.Resources
 				new EventTicket { Email = "valid@example.com", TypeId = "ticket_type_1" },
 				new EventTicket { Email = "invalid@example.com", TypeId = "invalid_type" }
 			};
-			var responseJson = @"{
-				""tickets"": [
-					{
-						""ticket_id"": ""ticket1"",
-						""email"": ""valid@example.com"",
-						""ticket_type_id"": ""ticket_type_1""
-					}
-				],
-				""errors"": [
-					{
-						""email"": ""invalid@example.com"",
-						""error_code"": ""INVALID_TICKET_TYPE"",
-						""message"": ""Invalid ticket type ID""
-					}
-				]
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "tickets"))
 				.WithQueryString("validation_level", "standard")
-				.Respond("application/json", responseJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__tickets_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -3018,22 +2446,11 @@ namespace ZoomNet.UnitTests.Resources
 					}
 				}
 			};
-			var responseJson = @"{
-				""tickets"": [
-					{
-						""ticket_id"": ""ticket_complete"",
-						""email"": ""complete@example.com"",
-						""ticket_type_id"": ""ticket_type_1"",
-						""external_ticket_id"": ""ext_123""
-					}
-				],
-				""errors"": []
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "events", eventId, "tickets"))
 				.WithQueryString("validation_level", "standard")
-				.Respond("application/json", responseJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__tickets_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -3078,24 +2495,10 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var eventId = "event123";
 			var ticketId = "ticket456";
-			var ticketJson = @"{
-				""ticket_id"": ""ticket456"",
-				""email"": ""attendee@example.com"",
-				""ticket_type_id"": ""type123"",
-				""first_name"": ""John"",
-				""last_name"": ""Doe"",
-				""city"": ""Seattle"",
-				""state"": ""WA"",
-				""country"": ""US"",
-				""phone"": ""+1-206-555-0100"",
-				""job_title"": ""Software Engineer"",
-				""organization"": ""Tech Company"",
-				""event_join_link"": ""https://zoom.us/events/join/abc123""
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "tickets", ticketId))
-				.Respond("application/json", ticketJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__tickets__ticketId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -3119,38 +2522,11 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var eventId = "event123";
-			var ticketsJson = @"{
-				""page_size"": 30,
-				""next_page_token"": """",
-				""tickets"": [
-					{
-						""ticket_id"": ""ticket1"",
-						""email"": ""user1@example.com"",
-						""ticket_type_id"": ""type1"",
-						""first_name"": ""Alice"",
-						""last_name"": ""Johnson""
-					},
-					{
-						""ticket_id"": ""ticket2"",
-						""email"": ""user2@example.com"",
-						""ticket_type_id"": ""type1"",
-						""first_name"": ""Bob"",
-						""last_name"": ""Williams""
-					},
-					{
-						""ticket_id"": ""ticket3"",
-						""email"": ""user3@example.com"",
-						""ticket_type_id"": ""type2"",
-						""first_name"": ""Carol"",
-						""last_name"": ""Brown""
-					}
-				]
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "tickets"))
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", ticketsJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__tickets_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -3175,28 +2551,12 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var eventId = "event123";
 			var ticketTypeId = "type_vip";
-			var ticketsJson = @"{
-				""page_size"": 30,
-				""next_page_token"": """",
-				""tickets"": [
-					{
-						""ticket_id"": ""ticket_vip_1"",
-						""email"": ""vip1@example.com"",
-						""ticket_type_id"": ""type_vip""
-					},
-					{
-						""ticket_id"": ""ticket_vip_2"",
-						""email"": ""vip2@example.com"",
-						""ticket_type_id"": ""type_vip""
-					}
-				]
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "tickets"))
 				.WithQueryString("ticket_type_id", ticketTypeId)
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", ticketsJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__tickets_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -3218,23 +2578,12 @@ namespace ZoomNet.UnitTests.Resources
 			var eventId = "event123";
 			var recordsPerPage = 50;
 			var pagingToken = "next_page_token_123";
-			var ticketsJson = @"{
-				""page_size"": 50,
-				""next_page_token"": ""next_token_456"",
-				""tickets"": [
-					{
-						""ticket_id"": ""ticket50"",
-						""email"": ""user50@example.com"",
-						""ticket_type_id"": ""type1""
-					}
-				]
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "tickets"))
 				.WithQueryString("page_size", "50")
 				.WithQueryString("next_page_token", pagingToken)
-				.Respond("application/json", ticketsJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__tickets_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -3464,18 +2813,10 @@ namespace ZoomNet.UnitTests.Resources
 			var name = "Tech Talks Channel";
 			var description = "Technical presentations and webinars";
 			var type = VideoOnDemandChannelType.VideoListHub;
-			var channelJson = @"{
-				""channel_id"": ""channel789"",
-				""name"": ""Tech Talks Channel"",
-				""description"": ""Technical presentations and webinars"",
-				""type"": ""VIDEO_LIST_HUB"",
-				""status"": ""DRAFT"",
-				""created_at"": ""2023-06-01T10:00:00Z""
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels"))
-				.Respond("application/json", channelJson);
+				.Respond("application/json", EndpointsResource.zoom_events_hubs__hubId__vod_channels_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -3500,17 +2841,10 @@ namespace ZoomNet.UnitTests.Resources
 			var name = "Embedded Training Videos";
 			var description = "Training videos for embedding";
 			var type = VideoOnDemandChannelType.MultiVideoEmbedded;
-			var channelJson = @"{
-				""channel_id"": ""channel_embedded_123"",
-				""name"": ""Embedded Training Videos"",
-				""description"": ""Training videos for embedding"",
-				""type"": ""MULTI_VIDEO_EMBEDDED"",
-				""status"": ""DRAFT""
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels"))
-				.Respond("application/json", channelJson);
+				.Respond("application/json", EndpointsResource.zoom_events_hubs__hubId__vod_channels_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -3581,19 +2915,10 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var hubId = "hub123";
 			var channelId = "channel456";
-			var channelJson = @"{
-				""channel_id"": ""channel456"",
-				""name"": ""My VOD Channel"",
-				""description"": ""Channel description"",
-				""type"": ""VIDEO_LIST_HUB"",
-				""status"": ""PUBLISHED"",
-				""created_at"": ""2023-06-01T10:00:00Z"",
-				""published_at"": ""2023-06-02T10:00:00Z""
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels", channelId))
-				.Respond("application/json", channelJson);
+				.Respond("application/json", EndpointsResource.zoom_events_hubs__hubId__vod_channels__channelId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -3638,38 +2963,11 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var hubId = "hub123";
-			var channelsJson = @"{
-				""page_size"": 30,
-				""next_page_token"": """",
-				""vod_channels"": [
-					{
-						""channel_id"": ""channel1"",
-						""name"": ""Video List Hub Channel"",
-						""description"": ""Hub content"",
-						""type"": ""VIDEO_LIST_HUB"",
-						""status"": ""PUBLISHED""
-					},
-					{
-						""channel_id"": ""channel2"",
-						""name"": ""Multi Video Embedded Channel"",
-						""description"": ""Embedded content"",
-						""type"": ""MULTI_VIDEO_EMBEDDED"",
-						""status"": ""DRAFT""
-					},
-					{
-						""channel_id"": ""channel3"",
-						""name"": ""Single Video Embedded Channel"",
-						""description"": ""Single embedded content"",
-						""type"": ""SINGLE_VIDEO_EMBEDDED"",
-						""status"": ""PUBLISHED""
-					}
-				]
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels"))
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", channelsJson);
+				.Respond("application/json", EndpointsResource.zoom_events_hubs__hubId__vod_channels_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -3686,46 +2984,6 @@ namespace ZoomNet.UnitTests.Resources
 			result.Records[0].Id.ShouldBe("channel1");
 			result.Records[1].Id.ShouldBe("channel2");
 			result.Records[2].Id.ShouldBe("channel3");
-		}
-
-		[Fact]
-		public async Task GetAllVidoOnDemandChannelsAsync_WithPagination()
-		{
-			// Arrange
-			var hubId = "hub123";
-			var recordsPerPage = 50;
-			var pagingToken = "next_token_abc";
-			var channelsJson = @"{
-				""page_size"": 50,
-				""next_page_token"": ""next_token_xyz"",
-				""vod_channels"": [
-					{
-						""channel_id"": ""channel50"",
-						""name"": ""Channel 50"",
-						""type"": ""VIDEO_LIST_HUB"",
-						""status"": ""PUBLISHED""
-					}
-				]
-			}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels"))
-				.WithQueryString("page_size", "50")
-				.WithQueryString("next_page_token", pagingToken)
-				.Respond("application/json", channelsJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var events = new Events(client);
-
-			// Act
-			var result = await events.GetAllVidoOnDemandChannelsAsync(hubId, recordsPerPage, pagingToken, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.RecordsPerPage.ShouldBe(50);
-			result.NextPageToken.ShouldBe("next_token_xyz");
 		}
 
 		[Fact]
@@ -3806,31 +3064,11 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var hubId = "hub123";
 			var channelId = "channel456";
-			var videosJson = @"{
-				""page_size"": 30,
-				""next_page_token"": """",
-				""videos"": [
-					{
-						""video_id"": ""video1"",
-						""title"": ""Introduction to ZoomEvents"",
-						""description"": ""Getting started guide"",
-						""duration"": 1800,
-						""created_at"": ""2023-06-01T10:00:00Z""
-					},
-					{
-						""video_id"": ""video2"",
-						""title"": ""Advanced Features"",
-						""description"": ""Deep dive into features"",
-						""duration"": 2700,
-						""created_at"": ""2023-06-02T10:00:00Z""
-					}
-				]
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels", channelId, "videos"))
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", videosJson);
+				.Respond("application/json", EndpointsResource.zoom_events_hubs__hubId__vod_channels__channelId__videos_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -3846,46 +3084,6 @@ namespace ZoomNet.UnitTests.Resources
 			result.Records.Length.ShouldBe(2);
 		}
 
-		[Fact]
-		public async Task GetAllVideosAsync_WithPagination()
-		{
-			// Arrange
-			var hubId = "hub123";
-			var channelId = "channel456";
-			var recordsPerPage = 100;
-			var pagingToken = "page_token_123";
-			var videosJson = @"{
-				""page_size"": 100,
-				""next_page_token"": ""page_token_456"",
-				""videos"": [
-					{
-						""video_id"": ""video100"",
-						""title"": ""Video 100"",
-						""duration"": 1200
-					}
-				]
-			}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels", channelId, "videos"))
-				.WithQueryString("page_size", "100")
-				.WithQueryString("next_page_token", pagingToken)
-				.Respond("application/json", videosJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var events = new Events(client);
-
-			// Act
-			var result = await events.GetAllVideosAsync(hubId, channelId, recordsPerPage, pagingToken, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.RecordsPerPage.ShouldBe(100);
-			result.NextPageToken.ShouldBe("page_token_456");
-		}
-
 		#endregion
 
 		#region Video On Demand Registration Tests
@@ -3896,43 +3094,10 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var hubId = "hub123";
 			var channelId = "channel456";
-			var questionsJson = @"{
-				""questions"": [
-					{
-						""field_name"": ""first_name"",
-						""required"": true,
-						""title"": ""First Name"",
-						""question_id"": ""q1""
-					},
-					{
-						""field_name"": ""last_name"",
-						""required"": true,
-						""title"": ""Last Name"",
-						""question_id"": ""q2""
-					}
-				],
-				""custom_questions"": [
-					{
-						""title"": ""Why are you interested?"",
-						""type"": ""short_answer"",
-						""required"": false,
-						""question_id"": ""cq1"",
-						""min_length"": 10,
-						""max_length"": 500
-					},
-					{
-						""title"": ""Your role"",
-						""type"": ""single_radio"",
-						""required"": true,
-						""question_id"": ""cq2"",
-						""answers"": [ ""Developer"", ""Manager"", ""Executive"", ""Other"" ]
-					}
-				]
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels", channelId, "registration_questions"))
-				.Respond("application/json", questionsJson);
+				.Respond("application/json", EndpointsResource.zoom_events_hubs__hubId__vod_channels__channelId__registration_questions_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -3948,35 +3113,6 @@ namespace ZoomNet.UnitTests.Resources
 			result.StandardQuestions.Length.ShouldBe(2);
 			result.CustomQuestions.ShouldNotBeNull();
 			result.CustomQuestions.Length.ShouldBe(2);
-		}
-
-		[Fact]
-		public async Task GetAllVideoOnDemandRegistrationQuestionsAsync_EmptyQuestions()
-		{
-			// Arrange
-			var hubId = "hub123";
-			var channelId = "channel456";
-			var questionsJson = @"{
-				""questions"": [],
-				""custom_questions"": []
-			}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "hubs", hubId, "vod_channels", channelId, "registration_questions"))
-				.Respond("application/json", questionsJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var events = new Events(client);
-
-			// Act
-			var result = await events.GetAllVideoOnDemandRegistrationQuestionsAsync(hubId, channelId, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.StandardQuestions.Length.ShouldBe(0);
-			result.CustomQuestions.Length.ShouldBe(0);
 		}
 
 		[Fact]
@@ -4222,29 +3358,11 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var eventId = "event123";
 			var sessionId = "session456";
-			var reservationsJson = @"{
-				""page_size"": 30,
-				""next_page_token"": """",
-				""reservations"": [
-					{
-						""email"": ""attendee1@example.com"",
-						""first_name"": ""John"",
-						""last_name"": ""Doe"",
-						""registration_time"": ""2023-06-01T10:00:00Z""
-					},
-					{
-						""email"": ""attendee2@example.com"",
-						""first_name"": ""Jane"",
-						""last_name"": ""Smith"",
-						""registration_time"": ""2023-06-01T11:00:00Z""
-					}
-				]
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "reservations"))
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", reservationsJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__sessions__sessionId__reservations_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -4258,49 +3376,6 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
 			result.Records.Length.ShouldBe(2);
-		}
-
-		[Fact]
-		public async Task GetAllSessionReservationsAsync_WithPagination_ReturnsReservations()
-		{
-			// Arrange
-			var eventId = "event123";
-			var sessionId = "session456";
-			var recordsPerPage = 50;
-			var pagingToken = "token_abc123";
-			var reservationsJson = @"{
-				""page_size"": 50,
-				""next_page_token"": ""token_def456"",
-				""reservations"": [
-					{
-						""email"": ""attendee3@example.com"",
-						""first_name"": ""Bob"",
-						""last_name"": ""Johnson"",
-						""registration_time"": ""2023-06-01T12:00:00Z""
-					}
-				]
-			}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "reservations"))
-				.WithQueryString("page_size", "50")
-				.WithQueryString("next_page_token", pagingToken)
-				.Respond("application/json", reservationsJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var events = new Events(client);
-
-			// Act
-			var result = await events.GetAllSessionReservationsAsync(eventId, sessionId, recordsPerPage, pagingToken, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.RecordsPerPage.ShouldBe(50);
-			result.NextPageToken.ShouldBe("token_def456");
-			result.Records.Length.ShouldBe(1);
 		}
 
 		#endregion
@@ -4404,27 +3479,10 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var eventId = "event123";
 			var sessionId = "session456";
-			var interpretersJson = @"{
-				""interpreters"": [
-					{
-						""email"": ""interpreter1@example.com"",
-						""type"": 1,
-						""source_language_id"": ""US"",
-						""target_language_id"": ""ES"",
-						""name"": ""Spanish Interpreter""
-					},
-					{
-						""email"": ""signinterpreter1@example.com"",
-						""type"": 2,
-						""target_language_id"": ""FSL"",
-						""name"": ""French Sign Language Interpreter""
-					}
-				]
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "interpreters"))
-				.Respond("application/json", interpretersJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__sessions__sessionId__interpreters_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -4600,45 +3658,10 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var eventId = "event123";
 			var sessionId = "session456";
-			var pollsJson = @"{
-				""polls"": [
-					{
-						""id"": ""poll1"",
-						""title"": ""Session Poll 1"",
-						""poll_type"": 1,
-						""status"": ""active"",
-						""anonymous"": false,
-						""questions"": [
-							{
-								""name"": ""How satisfied are you?"",
-								""type"": ""single"",
-								""answer_required"": true,
-								""answers"": [""Very satisfied"", ""Satisfied"", ""Neutral"", ""Dissatisfied""]
-							}
-						]
-					},
-					{
-						""id"": ""poll2"",
-						""title"": ""Session Poll 2"",
-						""poll_type"": 2,
-						""status"": ""active"",
-						""anonymous"": true,
-						""questions"": [
-							{
-								""name"": ""Additional feedback"",
-								""type"": ""short_answer"",
-								""answer_required"": false,
-								""answer_min_character"": 10,
-								""answer_max_character"": 500
-							}
-						]
-					}
-				]
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "polls"))
-				.Respond("application/json", pollsJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__sessions__sessionId__polls_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -4712,24 +3735,10 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var eventId = "event123";
 			var sessionId = "session456";
-			var livestreamConfigJson = @"{
-				""incoming_enabled"": true,
-				""incoming_config"": {
-					""stream_key_id"": ""YwG21kyxkyRO7SOkuwPf7S8B"",
-					""stream_key_name"": ""Stream key 2"",
-					""stream_key_description"": ""Stream key 2 description"",
-					""stream_key_type"": ""SAVED"",
-					""stream_key"": ""ZAEUMvRcI1eq_SRMg3iQBz-U"",
-					""stream_url"": ""rtmp://10.100.125.159:1956/live"",
-					""stream_backup_url"": ""rtmp://10.100.125.159:1976/live?backup=1"",
-					""effective_time"": ""2022-05-31T13:00:00Z"",
-					""expiration_time"": ""2022-05-31T13:00:00Z""
-				}
-			}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "livestream"))
-				.Respond("application/json", livestreamConfigJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__sessions__sessionId__livestream_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
