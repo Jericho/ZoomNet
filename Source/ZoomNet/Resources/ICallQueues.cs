@@ -23,15 +23,15 @@ namespace ZoomNet.Resources
 		/// Get call queues.
 		/// </summary>
 		/// <param name="department">Filter by department.</param>
-		/// <param name="cost_center">Filter by cost center.</param>
-		/// <param name="site_id">Filter by site id.</param>
+		/// <param name="costCenter">Filter by cost center.</param>
+		/// <param name="siteId">Filter by site id.</param>
 		/// <param name="recordsPerPage">The number of records to return.</param>
 		/// <param name="pagingToken">The paging token.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>
 		/// A paginated response of <see cref="CallQueue"/>.
 		/// </returns>
-		public Task<PaginatedResponseWithToken<CallQueue>> GetAllAsync(string department = null, string cost_center = null, string site_id = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+		public Task<PaginatedResponseWithToken<CallQueue>> GetAllAsync(string department = null, string costCenter = null, string siteId = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get members currently in call queues.

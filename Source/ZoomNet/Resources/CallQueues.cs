@@ -30,15 +30,15 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<CallQueue>> GetAllAsync(string department = null, string cost_center = null, string site_id = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<CallQueue>> GetAllAsync(string department = null, string costCenter = null, string siteId = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage, max: 100);
 
 			return _client
 				.GetAsync($"phone/call_queues")
 				.WithArgument("department", department)
-				.WithArgument("cost_center", cost_center)
-				.WithArgument("site_id", site_id)
+				.WithArgument("cost_center", costCenter)
+				.WithArgument("site_id", siteId)
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)

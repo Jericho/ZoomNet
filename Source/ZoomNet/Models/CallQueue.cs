@@ -42,7 +42,7 @@ namespace ZoomNet.Models
 		/// Gets or sets the site information.
 		/// </summary>
 		[JsonPropertyName("site")]
-		public CallQueueSite Site { get; set; }
+		public Site Site { get; set; }
 
 		/// <summary>
 		/// Gets or sets the status of the call queue.
