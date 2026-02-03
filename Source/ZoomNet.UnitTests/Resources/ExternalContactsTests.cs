@@ -46,16 +46,16 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
 			result.RecordsPerPage.ShouldBe(30);
-			result.NextPageToken.ShouldBe("token123");
+			result.NextPageToken.ShouldBe("BJLYC6PABbAHdjwSkGVQeeR6B1juwHqj3G2");
 			result.Records.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
-			result.Records[0].ExternalContactId.ShouldBe("extContact1");
-			result.Records[0].Name.ShouldBe("John Doe");
-			result.Records[0].Description.ShouldBe("Primary contact");
-			result.Records[0].Email.ShouldBe("john.doe@example.com");
-			result.Records[0].ExtensionNumber.ShouldBe("1001");
+			result.Records.Length.ShouldBe(1);
+			result.Records[0].ExternalContactId.ShouldBe("OJGi5xOFQPmrJbKg68-iWg");
+			result.Records[0].Name.ShouldBe("Johnson");
+			result.Records[0].Description.ShouldBe("External contact Johnson");
+			result.Records[0].Email.ShouldBe("example@example.com");
+			result.Records[0].ExtensionNumber.ShouldBe("101014");
 			result.Records[0].PhoneNumbers.ShouldNotBeNull();
-			result.Records[0].PhoneNumbers.Count.ShouldBe(2);
+			result.Records[0].PhoneNumbers.Count.ShouldBe(1);
 			result.Records[0].AutoCallRecorded.ShouldBeTrue();
 		}
 
@@ -84,16 +84,18 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.ExternalContactId.ShouldBe("extContact1");
-			result.Name.ShouldBe("John Doe");
-			result.Description.ShouldBe("Primary contact");
-			result.Email.ShouldBe("john.doe@example.com");
-			result.ExtensionNumber.ShouldBe("1001");
-			result.Id.ShouldBe("custom001");
+			result.ExternalContactId.ShouldBe("OJGi5xOFQPmrJbKg68-iWg");
+			result.Name.ShouldBe("Johnson");
+			result.Description.ShouldBe("External contact Johnson");
+			result.Email.ShouldBe("example@example.com");
+			result.ExtensionNumber.ShouldBe("101014");
+			result.Id.ShouldBe("external_contact_01");
 			result.PhoneNumbers.ShouldNotBeNull();
-			result.PhoneNumbers.Count.ShouldBe(2);
-			result.RoutingPath.ShouldBe("default");
+			result.PhoneNumbers.Count.ShouldBe(1);
+			result.RoutingPath.ShouldBeNull();
 			result.AutoCallRecorded.ShouldBeTrue();
+			result.ProfilePictureUrl.ShouldBe("https://file.zoom.us/public/file/NgY6XhB0Q1KUOIpbnjQrTA/MS41Lm3jVUCBCmBzQxZEXUvHcJ_YRtZ-CVuQ68tE7kKC60t_/twP0LQrnQfS7bQ6utANohw.png");
+			result.TreatAsInternalExtension.ShouldBeTrue();
 		}
 
 		[Fact]
@@ -156,8 +158,8 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.ExternalContactId.ShouldBe("newExtContact");
-			result.Name.ShouldBe("New Contact");
+			result.ExternalContactId.ShouldBe("nqerMCD0Tu6RPGoCpVbPtA");
+			result.Name.ShouldBe("Johnson");
 		}
 
 		[Fact]

@@ -45,12 +45,10 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
-			result.Records[0].MessageId.ShouldBe("msg001");
+			result.Records.Length.ShouldBe(1);
+			result.Records[0].MessageId.ShouldBe("IQ-cRH5P5EiTWCwpNzScnECJw");
 			result.Records[0].Direction.ShouldBe(SmsDirection.Inbound);
-			result.Records[0].Sender.PhoneNumber.ShouldBe("+12223334444");
-			result.Records[1].MessageId.ShouldBe("msg002");
-			result.Records[1].Direction.ShouldBe(SmsDirection.Outbound);
+			result.Records[0].Sender.PhoneNumber.ShouldBe("18108001001");
 		}
 
 		[Fact]
@@ -81,7 +79,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
+			result.Records.Length.ShouldBe(1);
 		}
 
 		[Fact]
@@ -108,7 +106,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
+			result.Records.Length.ShouldBe(1);
 		}
 
 		[Fact]
@@ -134,7 +132,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
+			result.Records.Length.ShouldBe(1);
 		}
 
 		[Fact]
@@ -163,7 +161,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
+			result.Records.Length.ShouldBe(1);
 		}
 
 		#endregion
@@ -192,15 +190,15 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.MessageId.ShouldBe("msg001");
+			result.MessageId.ShouldBe("IQ-cRH5P5EiTWCwpNzScnECJw");
 			result.Direction.ShouldBe(SmsDirection.Inbound);
 			result.Sender.ShouldNotBeNull();
-			result.Sender.PhoneNumber.ShouldBe("+12223334444");
-			result.Sender.DisplayName.ShouldBe("John Doe");
+			result.Sender.PhoneNumber.ShouldBe("12092693625");
+			result.Sender.DisplayName.ShouldBe("ezreal mao");
 			result.Recipients.ShouldNotBeNull();
 			result.Recipients.Length.ShouldBe(1);
-			result.Recipients[0].PhoneNumber.ShouldBe("+15556667777");
-			result.Recipients[0].DisplayName.ShouldBe("Jane Smith");
+			result.Recipients[0].PhoneNumber.ShouldBe("18108001001");
+			result.Recipients[0].DisplayName.ShouldBe("test api");
 		}
 
 		#endregion

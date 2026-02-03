@@ -41,8 +41,8 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
-			result.Records[0].Name.ShouldBe("Conference Room A");
+			result.Records.Length.ShouldBe(1);
+			result.Records[0].Name.ShouldBe("My Personal Meeting Room");
 		}
 
 		[Fact]
@@ -81,7 +81,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("rooms"))
-				.Respond("application/json", EndpointsResource.rooms_GET);
+				.Respond("application/json", EndpointsResource.rooms_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -94,7 +94,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Name.ShouldBe("New Conference Room");
+			result.Name.ShouldBe("My Personal Meeting Room");
 		}
 
 		[Fact]
@@ -193,8 +193,8 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.Basic.ShouldNotBeNull();
-			result.Basic.Name.ShouldBe("Conference Room A");
-			result.DeviceProfileId.ShouldBe("profile123");
+			result.Basic.Name.ShouldBe("My Personal Meeting Room");
+			result.DeviceProfileId.ShouldBe("J352JVkNRpyAgUaurxmrsh");
 			result.Setup.ShouldNotBeNull();
 		}
 
@@ -540,7 +540,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.ShouldBe("https://zoom.us/j/room123/controller");
+			result.ShouldBe("https://zoom.us/launch/webzrc?nodeId=SnoDt6rcTqi7HIuFZsib9A");
 		}
 
 		[Fact]
@@ -590,7 +590,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
 			result.Length.ShouldBe(1);
-			result[0].Name.ShouldBe("Default Profile");
+			result[0].Name.ShouldBe("ZR1 Device");
 		}
 
 		[Fact]
@@ -617,7 +617,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
 			result.Records.Length.ShouldBe(1);
-			result.Records[0].Name.ShouldBe("Welcome Screen");
+			result.Records[0].Name.ShouldBe("content name");
 		}
 
 		[Fact]
@@ -670,7 +670,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Length.ShouldBe(4);
+			result.Length.ShouldBe(1);
 		}
 
 		[Fact]
@@ -716,7 +716,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Name.ShouldBe("New Building");
+			result.Name.ShouldBe("location name");
 		}
 
 		[Fact]
@@ -912,7 +912,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.Basic.ShouldNotBeNull();
-			result.Basic.Name.ShouldBe("Building A");
+			result.Basic.Name.ShouldBe("State");
 			result.Setup.ShouldNotBeNull();
 		}
 
@@ -936,8 +936,8 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
-			result.Records[0].Name.ShouldBe("Building A");
+			result.Records.Length.ShouldBe(1);
+			result.Records[0].Name.ShouldBe("BuildingA");
 		}
 
 		#endregion
@@ -966,7 +966,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.ShouldBe("tag123");
+			result.ShouldBe("5bfc6df7a11445ef81513b2c3b4c8d5d");
 		}
 
 		[Fact]
@@ -1110,7 +1110,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Length.ShouldBe(2);
+			result.Length.ShouldBe(1);
 		}
 
 		[Fact]
@@ -1231,8 +1231,8 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("profile1");
-			result.Name.ShouldBe("Custom Profile");
+			result.Id.ShouldBe("Gz_fNcaSPByng-3vsqv_iQ");
+			result.Name.ShouldBe("ZR1 Device");
 		}
 
 		[Fact]

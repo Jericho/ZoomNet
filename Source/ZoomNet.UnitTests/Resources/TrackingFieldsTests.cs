@@ -40,17 +40,14 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Length.ShouldBe(2);
-			result[0].Id.ShouldBe("field1");
-			result[0].Name.ShouldBe("Department");
-			result[0].IsRequired.ShouldBeTrue();
+			result.Length.ShouldBe(1);
+			result[0].Id.ShouldBe("a32CJji-weJ92");
+			result[0].Name.ShouldBe("field1");
+			result[0].IsRequired.ShouldBeFalse();
 			result[0].IsVisible.ShouldBeTrue();
 			result[0].RecommendedValues.ShouldNotBeNull();
-			result[0].RecommendedValues.Length.ShouldBe(3);
-			result[0].RecommendedValues[0].ShouldBe("Sales");
-			result[1].Id.ShouldBe("field2");
-			result[1].Name.ShouldBe("Project Code");
-			result[1].IsRequired.ShouldBeFalse();
+			result[0].RecommendedValues.Length.ShouldBe(1);
+			result[0].RecommendedValues[0].ShouldBe("value1");
 		}
 
 		#endregion
@@ -78,15 +75,13 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("field1");
-			result.Name.ShouldBe("Department");
-			result.IsRequired.ShouldBeTrue();
+			result.Id.ShouldBe("a32CJji-weJ92");
+			result.Name.ShouldBe("field1");
+			result.IsRequired.ShouldBeFalse();
 			result.IsVisible.ShouldBeTrue();
 			result.RecommendedValues.ShouldNotBeNull();
-			result.RecommendedValues.Length.ShouldBe(3);
-			result.RecommendedValues[0].ShouldBe("Sales");
-			result.RecommendedValues[1].ShouldBe("Marketing");
-			result.RecommendedValues[2].ShouldBe("Engineering");
+			result.RecommendedValues.Length.ShouldBe(1);
+			result.RecommendedValues[0].ShouldBe("value1");
 		}
 
 		#endregion
@@ -114,8 +109,8 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("newField123");
-			result.Name.ShouldBe("Cost Center");
+			result.Id.ShouldBe("a32CJji-weJ92");
+			result.Name.ShouldBe("field1");
 		}
 
 		[Fact]

@@ -43,13 +43,10 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Length.ShouldBe(2);
-			result[0].Id.ShouldBe("group1");
-			result[0].Name.ShouldBe("Engineering Team");
-			result[0].NumberOfMembers.ShouldBe(25);
-			result[1].Id.ShouldBe("group2");
-			result[1].Name.ShouldBe("Sales Team");
-			result[1].NumberOfMembers.ShouldBe(15);
+			result.Length.ShouldBe(1);
+			result[0].Id.ShouldBe("SobVexyrQjqCkcxjpBWi6w");
+			result[0].Name.ShouldBe("Developers");
+			result[0].NumberOfMembers.ShouldBe(200);
 		}
 
 		#endregion
@@ -77,9 +74,9 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("group1");
-			result.Name.ShouldBe("Engineering Team");
-			result.NumberOfMembers.ShouldBe(25);
+			result.Id.ShouldBe("825c9e31f1064c73b394c5e4557d3447");
+			result.Name.ShouldBe("Developers");
+			result.NumberOfMembers.ShouldBe(100);
 		}
 
 		#endregion
@@ -107,9 +104,9 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("newGroup123");
-			result.Name.ShouldBe("New Group");
-			result.NumberOfMembers.ShouldBe(0);
+			result.Id.ShouldBe("A4ql1FjgL913r");
+			result.Name.ShouldBe("Developers");
+			result.NumberOfMembers.ShouldBe(34);
 		}
 
 		#endregion
@@ -191,10 +188,8 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Length.ShouldBe(3);
-			result[0].ShouldBe("user1");
-			result[1].ShouldBe("user2");
-			result[2].ShouldBe("user3");
+			result.Length.ShouldBe(1);
+			result[0].ShouldBe("v4iyWT1LTfy8QvPG4GTvdg");
 		}
 
 		#endregion
@@ -223,7 +218,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Length.ShouldBe(3);
+			result.Length.ShouldBe(1);
 		}
 
 		#endregion
@@ -252,9 +247,8 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Length.ShouldBe(2);
-			result[0].ShouldBe("admin1");
-			result[1].ShouldBe("admin2");
+			result.Length.ShouldBe(1);
+			result[0].ShouldBe("v4iyWT1LTfy8QvPG4GTvdg");
 		}
 
 		#endregion
@@ -283,7 +277,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Length.ShouldBe(2);
+			result.Length.ShouldBe(1);
 		}
 
 		#endregion
@@ -366,15 +360,15 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.RecordsPerPage.ShouldBe(30);
-			result.NextPageToken.ShouldBe("memberToken123");
-			result.TotalRecords.ShouldBe(2);
-			result.Records.Length.ShouldBe(2);
-			result.Records[0].Id.ShouldBe("member1");
-			result.Records[0].EmailAddress.ShouldBe("member1@example.com");
-			result.Records[0].FirstName.ShouldBe("John");
-			result.Records[0].LastName.ShouldBe("Doe");
-			result.Records[0].Type.ShouldBe(GroupMemberType.Licensed);
+			result.RecordsPerPage.ShouldBe(10);
+			result.NextPageToken.ShouldBe("R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42");
+			result.TotalRecords.ShouldBe(200);
+			result.Records.Length.ShouldBe(1);
+			result.Records[0].Id.ShouldBe("v4iyWT1LTfy8QvPG4GTvdg");
+			result.Records[0].EmailAddress.ShouldBe("jchill@example.com");
+			result.Records[0].FirstName.ShouldBe("Jill");
+			result.Records[0].LastName.ShouldBe("Chill");
+			result.Records[0].Type.ShouldBe(GroupMemberType.Basic);
 		}
 
 		#endregion
@@ -403,14 +397,12 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.RecordsPerPage.ShouldBe(30);
-			result.NextPageToken.ShouldBe("adminToken123");
-			result.TotalRecords.ShouldBe(2);
-			result.Records.Length.ShouldBe(2);
-			result.Records[0].EmailAddress.ShouldBe("admin1@example.com");
-			result.Records[0].Name.ShouldBe("Admin One");
-			result.Records[1].EmailAddress.ShouldBe("admin2@example.com");
-			result.Records[1].Name.ShouldBe("Admin Two");
+			result.RecordsPerPage.ShouldBe(1);
+			result.NextPageToken.ShouldBe("oMTCmjMRwzSfZtUXDIuWDswdksIQ3dyGUB1");
+			result.TotalRecords.ShouldBe(20);
+			result.Records.Length.ShouldBe(1);
+			result.Records[0].EmailAddress.ShouldBe("jchill@example.com");
+			result.Records[0].Name.ShouldBe("Jill Chill");
 		}
 
 		#endregion
@@ -440,10 +432,10 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("bgFile123");
-			result.IsDefault.ShouldBeFalse();
-			result.Name.ShouldBe("background.jpg");
-			result.Size.ShouldBe(1024000);
+			result.Id.ShouldBe("6SEYvTU4SuG257lOHuJKOQ");
+			result.IsDefault.ShouldBeTrue();
+			result.Name.ShouldBe("San Francisco");
+			result.Size.ShouldBe(7221);
 			result.Type.ShouldBe(VirtualBackgroundType.Image);
 		}
 

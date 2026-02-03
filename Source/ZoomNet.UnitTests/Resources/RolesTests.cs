@@ -41,16 +41,14 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.RecordsPerPage.ShouldBe(300);
-			result.NextPageToken.ShouldBe("token123");
+			result.RecordsPerPage.ShouldBe(0);
+			result.NextPageToken.ShouldBe("");
 			result.Records.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
-			result.Records[0].Id.ShouldBe("role123");
-			result.Records[0].Name.ShouldBe("Admin");
+			result.Records.Length.ShouldBe(1);
+			result.Records[0].Id.ShouldBe("RqBLcd1jLS9a7RBkbGtqn2A");
+			result.Records[0].Name.ShouldBe("My Role");
 			result.Records[0].Description.ShouldBe("Administrator role");
 			result.Records[0].MembersCount.ShouldBe(5);
-			result.Records[1].Id.ShouldBe("role456");
-			result.Records[1].Name.ShouldBe("Member");
 		}
 
 		#endregion
@@ -186,16 +184,14 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.RecordsPerPage.ShouldBe(300);
-			result.NextPageToken.ShouldBe("memberToken456");
-			result.TotalRecords.ShouldBe(3);
-			result.Records.Length.ShouldBe(3);
-			result.Records[0].Id.ShouldBe("user123");
+			result.RecordsPerPage.ShouldBe(30);
+			result.NextPageToken.ShouldBe("TUNTL8kGBvdBSJiX1PaNAVxYbjV7ouJlKS2");
+			result.TotalRecords.ShouldBe(22);
+			result.Records.Length.ShouldBe(1);
+			result.Records[0].Id.ShouldBe("49D7a0xPQvGQ2DCMZgSe7w");
 			result.Records[0].Email.ShouldBe("user1@example.com");
 			result.Records[0].FirstName.ShouldBe("John");
 			result.Records[0].LastName.ShouldBe("Doe");
-			result.Records[1].Id.ShouldBe("user456");
-			result.Records[2].Id.ShouldBe("user789");
 		}
 
 		#endregion
@@ -398,10 +394,10 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("role123");
-			result.Name.ShouldBe("Admin");
-			result.Description.ShouldBe("Administrator role with full access");
-			result.MembersCount.ShouldBe(5);
+			result.Id.ShouldBe("2");
+			result.Name.ShouldBe("My role");
+			result.Description.ShouldBe("My role");
+			result.MembersCount.ShouldBe(20);
 		}
 
 		#endregion

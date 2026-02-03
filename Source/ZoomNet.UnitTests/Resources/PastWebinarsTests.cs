@@ -61,14 +61,12 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
 			result.RecordsPerPage.ShouldBe(30);
-			result.NextPageToken.ShouldBe("token123");
-			result.Records.Length.ShouldBe(2);
-			result.Records[0].Id.ShouldBe("absentee1");
-			result.Records[0].Email.ShouldBe("alice@example.com");
-			result.Records[0].FirstName.ShouldBe("Alice");
-			result.Records[0].LastName.ShouldBe("Johnson");
-			result.Records[1].Id.ShouldBe("absentee2");
-			result.Records[1].Email.ShouldBe("bob@example.com");
+			result.NextPageToken.ShouldBe("w7587w4eiyfsudgf");
+			result.Records.Length.ShouldBe(1);
+			result.Records[0].Id.ShouldBe("9tboDiHUQAeOnbmudzWa5g");
+			result.Records[0].Email.ShouldBe("jchill@example.com");
+			result.Records[0].FirstName.ShouldBe("Jill");
+			result.Records[0].LastName.ShouldBe("Chill");
 		}
 
 		#endregion
@@ -98,14 +96,11 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
 			result.RecordsPerPage.ShouldBe(30);
-			result.NextPageToken.ShouldBe("token456");
-			result.Records.Length.ShouldBe(2);
-			result.Records[0].DisplayName.ShouldBe("Carol White");
-			result.Records[0].Email.ShouldBe("carol@example.com");
-			result.Records[0].Duration.ShouldBe(85);
-			result.Records[1].DisplayName.ShouldBe("David Brown");
-			result.Records[1].Email.ShouldBe("david@example.com");
-			result.Records[1].Duration.ShouldBe(75);
+			result.NextPageToken.ShouldBe("Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3");
+			result.Records.Length.ShouldBe(1);
+			result.Records[0].DisplayName.ShouldBe("Jill Chill");
+			result.Records[0].Email.ShouldBe("jchill@example.com");
+			result.Records[0].Duration.ShouldBe(20);
 		}
 
 		#endregion
@@ -133,10 +128,8 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Length.ShouldBe(3);
-			result[0].Uuid.ShouldBe("webinar_instance1==");
-			result[1].Uuid.ShouldBe("webinar_instance2==");
-			result[2].Uuid.ShouldBe("webinar_instance3==");
+			result.Length.ShouldBe(1);
+			result[0].Uuid.ShouldBe("Bznyg8KZTdCVbQxvS/oZ7w==");
 		}
 
 		#endregion
@@ -164,13 +157,10 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Length.ShouldBe(2);
-			result[0].ParticipantName.ShouldBe("Carol White");
-			result[0].ParticipantEmail.ShouldBe("carol@example.com");
-			result[0].Details.Length.ShouldBe(2);
-			result[1].ParticipantName.ShouldBe("David Brown");
-			result[1].ParticipantEmail.ShouldBe("david@example.com");
-			result[1].Details.Length.ShouldBe(2);
+			result.Length.ShouldBe(1);
+			result[0].ParticipantName.ShouldBe("Jill Chill");
+			result[0].ParticipantEmail.ShouldBe("jchill@example.com");
+			result[0].Details.Length.ShouldBe(1);
 		}
 
 		#endregion
@@ -198,13 +188,10 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Length.ShouldBe(2);
-			result[0].ParticipantName.ShouldBe("Attendee1");
-			result[0].ParticipantEmail.ShouldBe("attendee1@example.com");
+			result.Length.ShouldBe(1);
+			result[0].ParticipantName.ShouldBe("Jill Chill");
+			result[0].ParticipantEmail.ShouldBe("jchill@example.com");
 			result[0].Details.Length.ShouldBe(1);
-			result[1].ParticipantName.ShouldBe("Attendee2");
-			result[1].ParticipantEmail.ShouldBe("attendee2@example.com");
-			result[1].Details.Length.ShouldBe(1);
 		}
 
 		#endregion

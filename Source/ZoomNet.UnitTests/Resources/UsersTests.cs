@@ -50,11 +50,11 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
+			result.Records.Length.ShouldBe(1);
 			result.PageNumber.ShouldBe(1);
-			result.PageCount.ShouldBe(1);
+			result.PageCount.ShouldBe(100);
 			result.RecordsPerPage.ShouldBe(30);
-			result.TotalRecords.ShouldBe(2);
+			result.TotalRecords.ShouldBe(8482);
 		}
 
 		[Fact]
@@ -141,7 +141,7 @@ namespace ZoomNet.UnitTests.Resources
 			result.ShouldNotBeNull();
 			result.Records.Length.ShouldBe(1);
 			result.RecordsPerPage.ShouldBe(30);
-			result.NextPageToken.ShouldBe("token123");
+			result.NextPageToken.ShouldBe("8V8HigQkzm2O5r9RUn31D9ZyJHgrmFfbLa2");
 		}
 
 		[Fact]
@@ -195,7 +195,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Email.ShouldBe("john.doe@example.com");
+			result.Email.ShouldBe("jchill@example.com");
 		}
 
 		[Fact]
@@ -398,10 +398,10 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("user123");
-			result.FirstName.ShouldBe("John");
-			result.LastName.ShouldBe("Doe");
-			result.Email.ShouldBe("john.doe@example.com");
+			result.Id.ShouldBe("zJKyaiAyTNC-MWjiWC18KQ");
+			result.FirstName.ShouldBe("Jill");
+			result.LastName.ShouldBe("Chill");
+			result.Email.ShouldBe("jchill@example.com");
 		}
 
 		[Fact]
@@ -544,7 +544,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Length.ShouldBe(2);
+			result.Length.ShouldBe(1);
 		}
 
 		[Fact]
@@ -989,7 +989,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Length.ShouldBe(3);
+			result.Length.ShouldBe(1);
 		}
 
 		[Fact]
@@ -1086,7 +1086,7 @@ namespace ZoomNet.UnitTests.Resources
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldBeTrue();
+			result.ShouldBeFalse();
 		}
 
 		#endregion
@@ -1142,7 +1142,7 @@ namespace ZoomNet.UnitTests.Resources
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldBe("zak_token_123");
+			result.ShouldBe("6IjAwMDAwMSIsInptX3NrbSI6InptX");
 		}
 
 		[Fact]
@@ -1168,7 +1168,7 @@ namespace ZoomNet.UnitTests.Resources
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldBe("zak_token_456");
+			result.ShouldBe("6IjAwMDAwMSIsInptX3NrbSI6InptX");
 		}
 
 		#endregion
@@ -1198,7 +1198,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("bg123");
+			result.Id.ShouldBe("_l0MP1U7Qn2JgJ4oEJbVZQ");
 		}
 
 		[Fact]

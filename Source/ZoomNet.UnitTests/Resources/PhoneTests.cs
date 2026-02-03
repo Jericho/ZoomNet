@@ -1,8 +1,6 @@
 using RichardSzalay.MockHttp;
 using Shouldly;
 using System;
-using System.Collections.Generic;
-using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
@@ -23,8 +21,8 @@ namespace ZoomNet.UnitTests.Resources
 			""meeting_id"": ""MEETING_ID"",
 			""account_id"": ""ACCOUNT_ID"",
 			""host_id"": ""HOST_ID"",
-			""recording_start"": ""YYYY-MM-DDThh:mm:ssZ"",
-			""recording_end"": ""YYYY-MM-DDThh:mm:ssZ"",
+			""recording_start"": ""2026-02-02T13:29:01Z"",
+			""recording_end"": ""2026-02-02T14:02:31Z"",
 			""timeline"": [
 				{
 					""text"": ""TRANSCRIPTED TEXT APPEARS HERE"",
@@ -69,13 +67,13 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("rec123456");
-			result.CallLogId.ShouldBe("log789012");
-			result.CalleeName.ShouldBe("Jane Doe");
-			result.CalleeNumber.ShouldBe("+15551234567");
-			result.CallerName.ShouldBe("John Smith");
-			result.CallerNumber.ShouldBe("+15559876543");
-			result.Duration.ShouldBe(300);
+			result.Id.ShouldBe("1dfe35c05f0f4bf1b2e4a8869a731178");
+			result.CallLogId.ShouldBe("1dfe35c0-5f0f-4bf1-b2e4-a8869a731178");
+			result.CalleeName.ShouldBe("User A");
+			result.CalleeNumber.ShouldBe("1000001004");
+			result.CallerName.ShouldBe("User B");
+			result.CallerNumber.ShouldBe("1000123476");
+			result.Duration.ShouldBe(115);
 		}
 
 		#endregion
@@ -87,16 +85,9 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var recordingId = "rec123456";
-			var redirectUrl = "http://this_is_a_test.com/transcript.txt";
-			var headers = new Dictionary<string, string>()
-			{
-				{ "location", redirectUrl },
-			};
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "recording_transcript", "download", recordingId))
-				.Respond(HttpStatusCode.Found, headers, (HttpContent)null);
-			mockHttp.Expect(HttpMethod.Get, redirectUrl)
 				.Respond("application/json", RECORDING_TRANSCRIPT_JSON);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
@@ -110,7 +101,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.RecordingId.ShouldBe("rec123456");
+			result.RecordingId.ShouldBe("RECORDING_ID");
 			result.Type.ShouldBe("zoom_transcript");
 			result.Version.ShouldBe(1);
 		}
@@ -140,9 +131,9 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("user123");
-			result.Email.ShouldBe("john.smith@example.com");
-			result.ExtensionId.ShouldBe("ext456");
+			result.Id.ShouldBe("NL3cEpSdRc-c2t8aLoZqiw");
+			result.Email.ShouldBe("suesu_test_delete3@testapi.com");
+			result.ExtensionId.ShouldBe("nNGsNx2zRDyiIXWVI23FCQ");
 			result.ExtensionNumber.ShouldBe(1001);
 			result.PhoneUserId.ShouldBe("phoneuser789");
 			result.Department.ShouldBe("Development");
@@ -174,14 +165,12 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
 			result.RecordsPerPage.ShouldBe(30);
-			result.NextPageToken.ShouldBe("token123");
-			result.Records.Length.ShouldBe(2);
-			result.Records[0].Id.ShouldBe("user001");
-			result.Records[0].Name.ShouldBe("Alice Johnson");
-			result.Records[0].Email.ShouldBe("alice@example.com");
-			result.Records[0].Department.ShouldBe("Sales");
-			result.Records[1].Id.ShouldBe("user002");
-			result.Records[1].Name.ShouldBe("Bob Williams");
+			result.NextPageToken.ShouldBe("nav48KOj42vYPSG4f0cCdT575bZ980did22");
+			result.Records.Length.ShouldBe(1);
+			result.Records[0].Id.ShouldBe("w0RChiauQeqRlv5fgxYULQ");
+			result.Records[0].Name.ShouldBe("APITA AUTO");
+			result.Records[0].Email.ShouldBe("202007160003@testapi.com");
+			result.Records[0].Department.ShouldBe("Phone department");
 		}
 
 		[Fact]
@@ -251,8 +240,8 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
 			result.RecordsPerPage.ShouldBe(30);
-			result.NextPageToken.ShouldBe("token456");
-			result.Records.Length.ShouldBe(2);
+			result.NextPageToken.ShouldBe("bkOcmnm6mn6ioYAi10BcgRiEL38WzAo6jP2");
+			result.Records.Length.ShouldBe(1);
 		}
 
 		[Fact]

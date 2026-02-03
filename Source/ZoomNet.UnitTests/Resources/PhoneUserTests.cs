@@ -40,11 +40,11 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.NextPageToken.ShouldNotBeNullOrEmpty();
-			result.RecordsPerPage.ShouldBe(1);
-			result.TotalRecords.ShouldBe(10);
+			result.RecordsPerPage.ShouldBe(30);
+			result.TotalRecords.ShouldBe(45);
 			result.Records.ShouldNotBeNull();
 			result.Records.Length.ShouldBe(1);
-			result.Records[0].Id.ShouldBe("NL3cEpSdRc-c2t8aLoZqiw");
+			result.Records[0].Id.ShouldBe("w0RChiauQeqRlv5fgxYULQ");
 			result.Records[0].PhoneNumbers[0].PhoneNumberId.ShouldBe("---M1padRvSUtw7YihN7sA");
 			result.Records[0].PhoneNumbers[0].PhoneNumber.ShouldBe("14232058798");
 		}
