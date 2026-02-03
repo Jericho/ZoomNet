@@ -50,5 +50,13 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonPropertyName("auto_call_recorded")]
 		public bool AutoCallRecorded { get; set; }
+
+		/// <summary>Gets or sets the profile picture download url.</summary>
+		[JsonPropertyName("profile_picture_download_url")]
+		public string ProfilePictureUrl { get; set; }
+
+		/// <summary>Gets or sets a value indicating whether to treat this contact as an internal extension.</summary>
+		[JsonPropertyName("enable_internal_extension")]
+		public bool TreatAsInternalExtension { get; set; }
 	}
 }
