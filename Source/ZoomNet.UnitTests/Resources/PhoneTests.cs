@@ -134,10 +134,10 @@ namespace ZoomNet.UnitTests.Resources
 			result.Id.ShouldBe("NL3cEpSdRc-c2t8aLoZqiw");
 			result.Email.ShouldBe("suesu_test_delete3@testapi.com");
 			result.ExtensionId.ShouldBe("nNGsNx2zRDyiIXWVI23FCQ");
-			result.ExtensionNumber.ShouldBe(1001);
-			result.PhoneUserId.ShouldBe("phoneuser789");
-			result.Department.ShouldBe("Development");
-			result.CostCenter.ShouldBe("Engineering");
+			result.ExtensionNumber.ShouldBe(100012347);
+			result.PhoneUserId.ShouldBe("u7pnC468TaS46OuNoEw6GA");
+			result.Department.ShouldBe("testDepartment");
+			result.CostCenter.ShouldBe("testCostCenter");
 		}
 
 		#endregion

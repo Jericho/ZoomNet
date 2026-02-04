@@ -12,6 +12,18 @@ namespace ZoomNet.UnitTests.Resources
 {
 	public class RolesTests
 	{
+		// This JSON string is necessary because the response for a successful request to "POST /roles" is currently undocumented.
+		// This seems to be an oversight, and I asked Zoom (see https://devforum.zoom.us/t/documentation-missing-when-a-role-is-successfully-created/141665)
+		// if they could update their documentation. When they do and we can update the genrated sample data, this hard coded JSON string will be removed
+		private const string ROLE_CREATED_JSON = @"{
+			""id"":""R5C7F72v4SZykDvkfVBCcWw"",
+			""name"":""ZoomNet Integration testing: new role"",
+			""description"":""this is a test"",
+			""type"":""common"",
+			""total_members"":0,
+			""privileges"":[]
+		}";
+
 		private readonly ITestOutputHelper _outputHelper;
 
 		public RolesTests(ITestOutputHelper outputHelper)
@@ -47,8 +59,8 @@ namespace ZoomNet.UnitTests.Resources
 			result.Records.Length.ShouldBe(1);
 			result.Records[0].Id.ShouldBe("RqBLcd1jLS9a7RBkbGtqn2A");
 			result.Records[0].Name.ShouldBe("My Role");
-			result.Records[0].Description.ShouldBe("Administrator role");
-			result.Records[0].MembersCount.ShouldBe(5);
+			result.Records[0].Description.ShouldBe("my role");
+			result.Records[0].MembersCount.ShouldBe(200);
 		}
 
 		#endregion
@@ -63,7 +75,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("roles"))
-				.Respond(HttpStatusCode.Created, "application/json", EndpointsResource.roles_POST);
+				.Respond(HttpStatusCode.Created, "application/json", ROLE_CREATED_JSON);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -76,9 +88,9 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("newRole789");
-			result.Name.ShouldBe("Custom Role");
-			result.Description.ShouldBe("Custom role description");
+			result.Id.ShouldBe("R5C7F72v4SZykDvkfVBCcWw");
+			result.Name.ShouldBe("ZoomNet Integration testing: new role");
+			result.Description.ShouldBe("this is a test");
 			result.MembersCount.ShouldBe(0);
 		}
 
@@ -91,7 +103,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("roles"))
-				.Respond(HttpStatusCode.Created, "application/json", EndpointsResource.roles_POST);
+				.Respond(HttpStatusCode.Created, "application/json", ROLE_CREATED_JSON);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -104,7 +116,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("newRole789");
+			result.Id.ShouldBe("R5C7F72v4SZykDvkfVBCcWw");
 		}
 
 		[Fact]
@@ -117,7 +129,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("roles"))
-				.Respond(HttpStatusCode.Created, "application/json", EndpointsResource.roles_POST);
+				.Respond(HttpStatusCode.Created, "application/json", ROLE_CREATED_JSON);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -142,7 +154,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("roles"))
-				.Respond(HttpStatusCode.Created, "application/json", EndpointsResource.roles_POST);
+				.Respond(HttpStatusCode.Created, "application/json", ROLE_CREATED_JSON);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -155,7 +167,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("newRole789");
+			result.Id.ShouldBe("R5C7F72v4SZykDvkfVBCcWw");
 		}
 
 		#endregion
@@ -189,9 +201,9 @@ namespace ZoomNet.UnitTests.Resources
 			result.TotalRecords.ShouldBe(22);
 			result.Records.Length.ShouldBe(1);
 			result.Records[0].Id.ShouldBe("49D7a0xPQvGQ2DCMZgSe7w");
-			result.Records[0].Email.ShouldBe("user1@example.com");
-			result.Records[0].FirstName.ShouldBe("John");
-			result.Records[0].LastName.ShouldBe("Doe");
+			result.Records[0].Email.ShouldBe("jchil.test@example.com");
+			result.Records[0].FirstName.ShouldBe("Jill");
+			result.Records[0].LastName.ShouldBe("Chill");
 		}
 
 		#endregion
