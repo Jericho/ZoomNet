@@ -48,6 +48,6 @@ namespace ZoomNet.Models
 		/// Gets or sets the status of the call queue.
 		/// </summary>
 		[JsonPropertyName("status")]
-		public string Status { get; set; }
+		public CallQueueStatus Status { get; set; }
 	}
 }
