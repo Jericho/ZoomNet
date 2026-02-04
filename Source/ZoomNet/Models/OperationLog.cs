@@ -18,7 +18,7 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets the operation type.</summary>
 		[JsonPropertyName("category_type")]
-		public string CategoryType { get; set; }
+		public ReportPhoneOperationsLogType CategoryType { get; set; }
 
 		/// <summary>Gets or sets the operation detail.</summary>
 		[JsonPropertyName("operation_detail")]
