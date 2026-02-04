@@ -28,6 +28,6 @@ namespace ZoomNet.Models
 		/// gets or sets the source of the phone number.
 		/// </summary>
 		[JsonPropertyName("source")]
-		public string Source { get; set; }
+		public CallQueueNumberSource Source { get; set; }
 	}
 }
