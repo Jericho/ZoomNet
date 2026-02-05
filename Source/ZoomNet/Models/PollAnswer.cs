@@ -1,3 +1,4 @@
+using System;
 using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
@@ -35,6 +36,6 @@ namespace ZoomNet.Models
 		/// Gets or sets the date and time at which the answer to the poll was submitted.
 		/// </summary>
 		[JsonPropertyName("date_time")]
-		public string SubmittedOn { get; set; }
+		public DateTime SubmittedOn { get; set; }
 	}
 }
