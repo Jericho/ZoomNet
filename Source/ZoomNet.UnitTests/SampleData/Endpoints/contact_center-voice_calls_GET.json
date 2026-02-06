@@ -1,0 +1,138 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 10,
+  "total_records": 10,
+  "from": "2023-01-01T08:00:00.0000000\u002B00:00",
+  "to": "2023-01-01T09:00:00.0000000\u002B00:00",
+  "voice_calls": [
+    {
+      "engagement_id": "3XilEfOvQEKRIWMWhX1jDg",
+      "direction": "inbound",
+      "call_legs": [
+        "inbound"
+      ],
+      "distributions": [
+        "acd"
+      ],
+      "types": [
+        "external_call"
+      ],
+      "sub_types": [
+        "external_direct_transfer_call"
+      ],
+      "caller_number": "\u002B18108001001",
+      "caller_number_type": "toll_free_number",
+      "callee_number": "\u002B12055437350",
+      "callee_number_type": "toll_free_number",
+      "start_time": "2023-01-01T00:00:00-08:00",
+      "end_time": "2023-01-01T01:00:00-08:00",
+      "total_duration": 10,
+      "consumer_number": "\u002B12059300920",
+      "consumer_display_name": "Tester",
+      "queues": [
+        {
+          "queue_id": "d95avl1eRJ-H162PZUJ-qg",
+          "cc_queue_id": "d95avl1eRJ-H162PZUJ-qg",
+          "queue_name": "agentQueue"
+        }
+      ],
+      "agents": [
+        {
+          "user_id": "ukAAkZKfROKMSw1bj_RDFQ",
+          "display_name": "Jilly",
+          "user_email": "jakie@zoom.us",
+          "user_ip_address": "38.145.73.4",
+          "user_device_mac_address": "05:FA:15:25:EE:FF",
+          "user_registered_sip_zone": "ams1sbc",
+          "sip_zone_ip_address": "38.145.73.4",
+          "user_region": "Main Region",
+          "team_ids": [
+            "[\u00223XilEfOvQEKRIWMWhX1jDg\u0022]"
+          ],
+          "team_names": [
+            "[\u0022My team\u0022]"
+          ]
+        }
+      ],
+      "flows": [
+        {
+          "flow_id": "zeYjXoDOS_eV1QmTpj63PQ",
+          "flow_name": "Demo"
+        }
+      ],
+      "country_name": "China",
+      "recorded": false,
+      "monitored": false,
+      "inbox": false,
+      "result": "completed",
+      "caller_id": "\u002B12058945728",
+      "calling_party": "consumer",
+      "charge": "$0.019",
+      "rates": [
+        "$0.019"
+      ],
+      "charge_type": "per_minute",
+      "session_border_controller_list": [
+        {
+          "session_border_controller_name": "ams1sbc",
+          "session_border_controller_ip_address": "38.145.73.20",
+          "consumer_zoom_trunk_name": "C10010142296A06",
+          "consumer_sbc_ip_address": "39.15.60.145"
+        }
+      ],
+      "voice_call_details": [
+        {
+          "engagement_id": "3XilEfOvQEKRIWMWhX1jDg",
+          "call_leg": "inbound",
+          "distribution": "acd",
+          "type": "external_call",
+          "caller_number": "\u002B18108001001",
+          "caller_number_type": "toll_free_number",
+          "callee_number": "\u002B12055437350",
+          "callee_number_type": "toll_free_number",
+          "start_time": "2023-01-01T00:00:00-08:00",
+          "end_time": "2023-01-01T01:00:00-08:00",
+          "total_duration": 10,
+          "consumer_number": "\u002B12059300920",
+          "consumer_display_name": "Tester",
+          "queue": {
+            "cc_queue_id": "d95avl1eRJ-H162PZUJ-qg",
+            "queue_name": "agentQueue"
+          },
+          "agents": [
+            {
+              "user_id": "ukAAkZKfROKMSw1bj_RDFQ",
+              "display_name": "Jilly",
+              "user_email": "jakie@zoom.us",
+              "user_ip_address": "38.145.73.4",
+              "user_device_mac_address": "05:FA:15:25:EE:FF",
+              "user_registered_sip_zone": "ams1sbc",
+              "sip_zone_ip_address": "38.145.73.4",
+              "user_region": "Main Region",
+              "team_ids": [
+                "3XilEfOvQEKRIWMWhX1jDg"
+              ],
+              "team_names": [
+                "My team"
+              ]
+            }
+          ],
+          "flow": {
+            "flow_id": "zeYjXoDOS_eV1QmTpj63PQ",
+            "flow_name": "Demo"
+          },
+          "country_name": "China",
+          "recorded": false,
+          "monitored": false,
+          "inbox": false,
+          "result": "completed",
+          "caller_id": "\u002B12058945728",
+          "calling_party": "consumer",
+          "charge": "$0.019",
+          "rate": "$0.019",
+          "charge_type": "per_minute"
+        }
+      ]
+    }
+  ]
+}

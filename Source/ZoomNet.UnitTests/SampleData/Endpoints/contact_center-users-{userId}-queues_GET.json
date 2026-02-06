@@ -1,0 +1,18 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 1,
+  "queues": [
+    {
+      "queue_id": "Ql3qxUWXSHes4PmcOmzyOg",
+      "queue_name": "queue_661c6e4b-89fc-4b0d-9978-c7394725462",
+      "cc_queue_id": "a4lCNeq2SzKbgkcDVbjCZQ",
+      "channel": "voice",
+      "user_assignment_type": "agent",
+      "queue_description": "test voice queue 500",
+      "caller_ids": [
+        "\u002B18667202634"
+      ]
+    }
+  ]
+}

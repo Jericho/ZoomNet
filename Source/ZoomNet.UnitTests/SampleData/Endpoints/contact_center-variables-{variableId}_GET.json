@@ -1,0 +1,30 @@
+{
+  "variable_id": "W_VATTk_Q5aW6z5rZtBxAQ",
+  "variable_group_id": "afececcd-0c9f-48de-9d19-0c84e8bdfeca",
+  "variable_name": "variable demo name",
+  "variable_description": "This is a variable description",
+  "variable_type": "global_variable",
+  "address_books": [
+    {
+      "address_book_id": "X2e_jsLNRkCjI0sQg2kRQQ",
+      "address_book_name": "Jill\u0027s address book",
+      "unit_id": "zeYjXoDOS_eV1QmTpj63PQ",
+      "unit_name": "Address Book Unit",
+      "total_contacts": 3
+    }
+  ],
+  "use_in_reporting": false,
+  "mask_variable_data": true,
+  "use_as_routing_profile_parameters": false,
+  "data_type": "number",
+  "value_category": "default_value",
+  "values": [
+    "X2e_jsLNRkCjI0sQg2kRQQ"
+  ],
+  "linked_value_lock": false,
+  "default_value": "test-value",
+  "use_in_external_url_parameters": true,
+  "client_show_in_client_profile_section": true,
+  "client_show_in_client_engagement_section": true,
+  "client_show_in_inbound_call_notifications": true
+}

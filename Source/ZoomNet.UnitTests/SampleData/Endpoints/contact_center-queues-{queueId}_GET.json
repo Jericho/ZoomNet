@@ -1,0 +1,184 @@
+{
+  "queue_id": "zeYjXoDOS_eV1QmTpj63PQ",
+  "cc_queue_id": "xqJE_cgERLyAJHYYL5LLeg",
+  "queue_name": "queue_661c6e4b-89fc-4b0d-9978-c7394725462",
+  "queue_description": "This is a task queue.",
+  "dispositions_count": 1,
+  "disposition_sets_count": 1,
+  "channel_types": [
+    "voice"
+  ],
+  "channel": "voice",
+  "max_wait_time": 50,
+  "wrap_up_time": 50,
+  "max_engagement_in_queue": 50,
+  "short_abandon": {
+    "enable": false,
+    "threshold": 5
+  },
+  "distribution_type": 1,
+  "distribution_duration_in_seconds": 30,
+  "connecting_media_id": "connectingAudioMp3",
+  "connecting_media_filename": "Connecting Audio",
+  "transferring_media_id": "transferringAudioMp3",
+  "transferring_media_filename": "Transferring Audio",
+  "holding_media_id": "holdingAudioMp3",
+  "holding_media_filename": "Holding Audio",
+  "waiting_room_name": "User Waiting Room",
+  "waiting_room_id": "vPtSZOzBSLWMiorssYWTZw",
+  "message_accept": "manual",
+  "wrap_up_expiration": true,
+  "overflow_type": 0,
+  "overflow_to_goodbye_message": true,
+  "overflow_to_goodbye_message_asset_id": "9gp4iyqUR_qq8tYpWw1EKg",
+  "overflow_to_queue_id": "m8IhNvUyTUmx7Jm8h5ZvLQ",
+  "overflow_to_cc_queue_id": "m8IhNvUyTUmx7Jm8h5ZvLQ",
+  "overflow_to_flow_id": "psjHGHrHQbaX8Zk7ldc81Q",
+  "overflow_to_inbox_id": "cMH8RJA0QsyJBCWIFbWfBQ",
+  "auto_close_message": "This chat has been auto-closed due to inactivity.",
+  "auto_close_message_enabled": true,
+  "auto_close_timeout": 10,
+  "auto_close_alert_message": "Chat will auto-close soon if you don\u0027t reply",
+  "auto_close_alert_message_enabled": true,
+  "auto_close_alert_message_time": 10,
+  "recording_storage_location": "us",
+  "service_level_threshold_in_seconds": 15,
+  "service_level_exclude_short_abandoned_calls": true,
+  "service_level_exclude_long_abandoned_calls": true,
+  "service_level_exclude_abandoned_quit_engagements": true,
+  "service_level_target_in_percentage": 80,
+  "agent_routing_profile_id": "fgjdkhgfieryt7465435kjhdkhg",
+  "agent_routing_profile_name": "My agent routing profile",
+  "consumer_routing_profile_id": "fgjdkhgfieryt7465435kjhdkhg",
+  "consumer_routing_profile_name": "My Consumer Routing Profile",
+  "caller_ids": [
+    "\u002B14155552671"
+  ],
+  "teams": [
+    {
+      "team_id": "qeYjXoDO3_eV1QmTpj63Pz",
+      "team_name": "Sales Team"
+    }
+  ],
+  "engagement_acceptance": {
+    "acceptance_type": "manual",
+    "enable_agent_alert_tone": true,
+    "enable_agent_whisper_announcement": false,
+    "agent_whisper_announcement_asset_id": "9gp4iyqUR_qq8tYpWw1EKg",
+    "enable_agent_greeting": false,
+    "agent_greeting_asset_id": "9gp4iyqUR_qq8tYpWw1EKg",
+    "greeting_filename": "greeting.mp3",
+    "whisper_filename": "whisper.mp3"
+  },
+  "inbound_launch_url_info": {
+    "config": [
+      {
+        "launch_trigger": "ringing",
+        "launch_url": "https://www.example.com"
+      }
+    ],
+    "enable_launch_url": true
+  },
+  "outbound_launch_url_info": {
+    "config": [
+      {
+        "launch_trigger": "connected",
+        "url": "https://www.example.com"
+      }
+    ],
+    "enable_launch_url": true
+  },
+  "queue_waiting_experience": {
+    "default_connecting_music_file_id": "feca393267648418947gswurw70b4e43",
+    "default_connecting_music_name": "Hold the Phone_Mastered",
+    "default_connecting_music_url": "https://device.s3.example.com/default_wait/Hold_the_Phone_Mastered.mp3",
+    "connecting_music_asset_id": "dORBRSTxTN6B0vLJ37Kvnw",
+    "connecting_music_filename": "Connecting Tone",
+    "connecting_music_url": "https://example.com/connecting.mp3",
+    "default_transfer_music_url": "https://example.com/gocci/ringtone_music.wav",
+    "transfer_music_asset_id": "dORBRSTxTN6B0vLJ37Kvnw",
+    "transfer_music_filename": "Transferring Tone",
+    "transfer_music_url": "https://example.com/transferring.mp3",
+    "default_hold_music_file_id": "feca3932676484heud123568970b4e42",
+    "default_hold_music_name": "Calming Hold_Mastered",
+    "default_hold_music_url": "https://example.com/default_wait/Calming_Hold_Mastered.mp3",
+    "holding_music_asset_id": "dORBRSTxTN6B0vLJ37Kvnw",
+    "holding_music_filename": "Holding Tone",
+    "holding_music_url": "https://example.com/holding.mp3"
+  },
+  "inbound_dispositions": {
+    "enable_disposition": true,
+    "queue_disposition_type": 0,
+    "dispositions": [
+      {
+        "disposition_id": "2UiwcOPiS8y1XiQMKYFRfw",
+        "disposition_name": "test disposition 10"
+      }
+    ],
+    "disposition_sets": [
+      {
+        "disposition_set_id": "Q5cXMppKQgm0W_bV72Wrgw",
+        "disposition_set_name": "test disposition set 1"
+      }
+    ],
+    "default_disposition_id": "2UiwcOPiS8y1XiQMKYFRfw",
+    "default_disposition_name": "test disposition 10"
+  },
+  "outbound_dispositions": {
+    "enable_disposition": true,
+    "queue_disposition_type": 0,
+    "dispositions": [
+      {
+        "disposition_id": "2UiwcOPiS8y1XiQMKYFRfw",
+        "disposition_name": "test disposition 10"
+      }
+    ],
+    "disposition_sets": [
+      {
+        "disposition_set_id": "Q5cXMppKQgm0W_bV72Wrgw",
+        "disposition_set_name": "test disposition set 1"
+      }
+    ],
+    "default_disposition_id": "2UiwcOPiS8y1XiQMKYFRfw",
+    "default_disposition_name": "test disposition 10"
+  },
+  "wrap_up_after_transfer": false,
+  "engagement_distribution": "simultaneous",
+  "outbound_settings": {
+    "enable_outbound_calls": true,
+    "queue_caller_ids": [
+      "\u002B14155552671"
+    ],
+    "outbound_launch_url_info": {
+      "enable_launch_url": true,
+      "config": [
+        {
+          "launch_trigger": "connected",
+          "url": "https://www.example.com"
+        }
+      ]
+    },
+    "outbound_labels": {
+      "outbound_call_duration_lower_threshold": 19,
+      "outbound_call_duration_upper_threshold": 300
+    },
+    "outbound_transferring_media_id": "transferringAudioMp3",
+    "outbound_holding_media_id": "holdingAudioMp3",
+    "outbound_notes_asset_id": "notesAsset123",
+    "outbound_disposition_required": true,
+    "outbound_default_disposition_id": "2UiwcOPiS8y1XiQMKYFRfw",
+    "outbound_wrap_up_time": 60,
+    "outbound_wrap_up_expiration": true,
+    "outbound_wrap_up_after_transfer": false
+  },
+  "scheduled_callback_settings": {
+    "enable_scheduled_callback": true,
+    "consumer_inquiry_option": "hello 100",
+    "greeting_message": {
+      "custom_media_asset_id": "9gp4iyqUR_qq8tYpWw1EKg",
+      "language_code": "English (US)",
+      "voice_id": "Joanna",
+      "message_text": "You will be connected to the next available agent in a short moment."
+    }
+  }
+}

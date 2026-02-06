@@ -1,0 +1,39 @@
+{
+  "from": "2021-11-01",
+  "next_page_token": "6jqhz348c100oHbw6cVER45YderniREnwr1",
+  "page_count": 1,
+  "page_size": 30,
+  "recordings": [
+    {
+      "call_id": "7025841973929235024",
+      "call_log_id": "8f7345c5-0a65-4182-ab16-72fdb3be61ff",
+      "call_history_id": "20211102-8f7345c5-0a65-4182-ab16-72fdb3be61ff",
+      "call_element_id": "20210609-a297ae04-a875-4cfd-85ab-4adcead91edb",
+      "callee_name": "User A",
+      "callee_number": "1000001004",
+      "callee_number_type": 1,
+      "caller_name": "User B",
+      "caller_number": "1000001028",
+      "caller_number_type": 1,
+      "outgoing_by": {
+        "name": "User B",
+        "extension_number": "123476"
+      },
+      "accepted_by": {
+        "name": "User A",
+        "extension_number": "101001"
+      },
+      "date_time": "2021-11-02T05:35:20Z",
+      "direction": "inbound",
+      "download_url": "https://domain/recording/download/EvVNLihbQ1WpeG_ALwnNzg",
+      "duration": 11,
+      "id": "8f7345c50a654182ab1672fdb3be61ff",
+      "meeting_uuid": "egLSRuj2SlWet\u002BwLi87LNA==",
+      "transcript_download_url": "https://domain/recording_transcript/download/8f7345c50a654182ab1672fdb3be61ff",
+      "caller_account_code": "111",
+      "callee_account_code": "222"
+    }
+  ],
+  "to": "2021-11-03",
+  "total_records": 50
+}

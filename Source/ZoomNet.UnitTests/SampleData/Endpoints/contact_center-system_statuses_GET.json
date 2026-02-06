@@ -1,0 +1,20 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 1,
+  "statuses": [
+    {
+      "status_id": "1",
+      "status_name": "Lunch",
+      "status_type": "default",
+      "status_category": "agent_status",
+      "enable": true,
+      "status_assigned_queues": [
+        {
+          "id": "123",
+          "value": "customer queue"
+        }
+      ]
+    }
+  ]
+}

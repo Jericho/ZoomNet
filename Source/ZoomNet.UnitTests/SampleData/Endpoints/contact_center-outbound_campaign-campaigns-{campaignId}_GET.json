@@ -1,0 +1,41 @@
+{
+  "outbound_campaign_id": "TY_XsJuWR9ehXrsf1DSIAQ",
+  "outbound_campaign_name": "My outbound campaign",
+  "outbound_campaign_description": "My outbound campaign description",
+  "queue_id": "TY_XsJuWR9ehXrsf1DSIAQ",
+  "queue_name": "My queue name",
+  "phone_number_id": "XfTPrZjyR5W6QgNARdtGlw",
+  "outbound_campaign_status": "draft",
+  "dialing_method": "progressive",
+  "dialing_method_settings": {
+    "enable_amd": true,
+    "amd_settings": {
+      "greeting_asset_id": "zNWo_1M5ScCuKnBb2Z-sfw",
+      "answering_machine_asset_id": "z8XtiytyQammquBRlVPiWw"
+    },
+    "enable_abandonment_timeout": true,
+    "abandonment_timeout": 5,
+    "abandonment_message_asset_id": "z8XtiytyQammquBRlVPiWw",
+    "dialing_strategy": "automatic",
+    "preview_timer": 5,
+    "enable_skip": false,
+    "max_skips": 1,
+    "enable_ignore_preview_notification": false
+  },
+  "outbound_campaign_priority": 5,
+  "campaign_contact_list": [
+    {
+      "contact_list_id": "MN2Dtcb2T-yT5CU3clN-AA",
+      "contact_list_name": "Contact List",
+      "contact_list_description": "Description",
+      "contacts_count": "1"
+    }
+  ],
+  "enable_max_ring_time": true,
+  "max_ring_time": 60,
+  "business_hour_source": "queue",
+  "business_hour_id": "h7XtiytFTammquBRlTRiWZ",
+  "enable_closure_hour": true,
+  "closure_set_id": "y9XtiytyQammquBRlTPiWw",
+  "contact_timezone_source": "area_code"
+}

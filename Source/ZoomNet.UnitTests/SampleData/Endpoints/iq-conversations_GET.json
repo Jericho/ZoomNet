@@ -1,0 +1,25 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "conversations": [
+    {
+      "conversation_id": "egLSRuj2SlWet\u002BwLi87LNA==,1667893163000",
+      "host_id": "x1yCzABCDEfg23HiJKl4mN",
+      "meeting_id": 896549134891,
+      "meeting_uuid": "egLSRuj2SlWet\u002BwLi87LNA==",
+      "deal_id": "0065g00000DgD2QAAV",
+      "topic": "Maximize profits",
+      "conversation_topic": "Maximize profits",
+      "duration": 60,
+      "conversation_type": "meeting",
+      "meeting_start_time": "2022-03-23T06:00:00Z",
+      "iq_processed_time": "2022-03-23T06:00:00Z",
+      "engagement_score": 20,
+      "sentiment_score": 80,
+      "engaging_questions_count": 5,
+      "next_steps_count": 5,
+      "filler_words_count": 5,
+      "processing_analysis": false
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "page_count": 20,
+  "quote_list": [
+    {
+      "quote_reference_id": "OR-125613343",
+      "quote_number": "O-3429342",
+      "status": "submitted",
+      "quote_type": "sale",
+      "transaction_type": "New",
+      "end_customer_account_name": "dfreABC Pvt. Ltd.",
+      "end_customer_account_number": "3842618277",
+      "end_customer_crm_account_number": "A-3454334",
+      "sub_reseller_name": "John",
+      "sub_reseller_crm_account_number": "A-348742",
+      "invoice_owner_name": "John",
+      "invoice_owner_crm_account_number": "A-348742",
+      "creation_date": "2024-07-01",
+      "effective_date": "2024-07-01",
+      "net_amount": {
+        "amount": 100000,
+        "currency": "USD"
+      },
+      "updated_date": "2024-07-01",
+      "trade_screening": false,
+      "deal_reg_number": "DELREG-1002-L1",
+      "po_number": "PO-10021-A"
+    }
+  ]
+}

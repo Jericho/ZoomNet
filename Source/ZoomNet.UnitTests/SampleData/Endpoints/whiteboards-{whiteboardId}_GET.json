@@ -1,0 +1,27 @@
+{
+  "whiteboard_id": "48Z4ppMfQJWONeVWFCcVzA",
+  "whiteboard_name": "Q3 Plan",
+  "locked": false,
+  "trashed": false,
+  "readonly": false,
+  "non_cloud": false,
+  "created_date": "2022-03-25T07:29:29.0000000\u002B00:00",
+  "modified_date": "2022-03-25T07:29:29.0000000\u002B00:00",
+  "share_link_setting": {
+    "share_scope": 0,
+    "share_role": 2
+  },
+  "advanced_share_setting": {
+    "can_share": true,
+    "share_to_external": true,
+    "external_can_share": true
+  },
+  "share_link": "https://zoom.us/wb/doc/T-E0zR9NQWSDuvXd-Crt9A",
+  "preview_link": "https://a01file.zoom.us/file/xxxxx/attach/preview/192x108?jwt=xxx",
+  "created_by_display_name": "Tom",
+  "modified_by_display_name": "Jack",
+  "embedded_content_types": [
+    0
+  ],
+  "project_id": "The Project ID"
+}

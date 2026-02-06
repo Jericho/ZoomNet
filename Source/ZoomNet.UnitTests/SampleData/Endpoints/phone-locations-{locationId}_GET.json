@@ -1,0 +1,39 @@
+{
+  "bssid": "SA43YjfBTS6gJbUpfvIziQ",
+  "elin": {
+    "phone_number": "\u002B12058945656",
+    "phone_number_id": "9h5vTQJ0TmyKs0wItZ3JAw"
+  },
+  "emergency_address": {
+    "address_line1": "55 ALMADEN BLVD",
+    "address_line2": "6th floor",
+    "city": "SAN JOSE",
+    "country": "US",
+    "id": "Qza2T_KATwCeUfTkzGsOmQ",
+    "state_code": "CA",
+    "zip": "95113"
+  },
+  "id": "eRYjZlItQIqlFbCuRA__SQ",
+  "name": "example location",
+  "network_switches": [
+    {
+      "mac_address": "64167f379097",
+      "port": "20",
+      "port_prefix": "2",
+      "port_range_from": "01",
+      "port_range_to": "05"
+    }
+  ],
+  "parent_location_id": "FksDtQDfR9qs3gWXNDsfIw",
+  "private_ip": "192.1.1.2",
+  "public_ip": "192.1.1.1",
+  "sip_group": {
+    "display_name": "band width",
+    "id": "F_WKDH6FRdeddZBcNUlUeA"
+  },
+  "site": {
+    "id": "SQv52YtkRLC2dwrDdYtGsA",
+    "name": "Main site"
+  },
+  "minimum_match_criteria": true
+}

@@ -1,0 +1,25 @@
+{
+  "next_page_token": "MnriWtiIAzrEfe3EW5ORlj6TFBFqL57AC42",
+  "page_size": 30,
+  "shared_line_appearances": [
+    {
+      "executive": {
+        "name": "Joan Dev",
+        "extension_number": 11407,
+        "extension_type": "user"
+      },
+      "assistants": [
+        {
+          "id": "E8-XliWGT-a7tlKPOnrevw",
+          "name": "Joh Dev",
+          "extension_number": 11408,
+          "extension_type": "user"
+        }
+      ],
+      "privileges": [
+        "place_calls"
+      ]
+    }
+  ],
+  "total_records": 14
+}

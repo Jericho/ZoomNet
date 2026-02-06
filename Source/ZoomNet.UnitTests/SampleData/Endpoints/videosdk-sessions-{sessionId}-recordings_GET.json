@@ -1,0 +1,55 @@
+{
+  "session_id": "JZiFOknTQ4yH/tJgaUTlkg==",
+  "session_name": "session_name",
+  "start_time": "2022-03-10T02:27:24.0000000\u002B00:00",
+  "duration": 2,
+  "total_size": 444601,
+  "recording_count": 4,
+  "session_key": "ABC36jaBI145",
+  "recording_files": [
+    {
+      "id": "35497738-9fef-4f8a-97db-0ec34caef065",
+      "recording_start": "2022-03-11T12:34:39Z",
+      "recording_end": "2022-03-11T12:34:42Z",
+      "file_type": "MP4",
+      "file_size": 12125,
+      "download_url": "https://example.com/download_url",
+      "external_storage_url": "s3://cmrpbx/cmr/replay/2024/05/01/77431195-02EC-4B4C-8218-17E716123FCD/cmr_byos/GMT20210906-041233_Recording.m4a",
+      "status": "completed",
+      "deleted_time": "2022-03-28T07:22:22Z",
+      "recording_type": "audio_only"
+    }
+  ],
+  "participant_video_files": [
+    {
+      "id": "24698bd1-589e-4c33-9ba3-bc788b2a0ac2",
+      "recording_start": "2021-12-07T05:42:13.0000000\u002B00:00",
+      "recording_end": "2021-12-07T05:42:28.0000000\u002B00:00",
+      "file_name": "recording_name",
+      "file_type": "MP4",
+      "file_extension": "MP4",
+      "file_size": 900452,
+      "download_url": "https://download.example.com/download_url",
+      "recording_type": "individual_shared_screen",
+      "status": "completed",
+      "user_id": "abcd1234",
+      "user_key": "efgh5678"
+    }
+  ],
+  "download_access_token": "exampleTokenXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "participant_audio_files": [
+    {
+      "id": "24698bd1-589e-4c33-9ba3-bc788b2a0ac2",
+      "recording_start": "2021-12-07T05:42:13.0000000\u002B00:00",
+      "recording_end": "2021-12-07T05:42:28.0000000\u002B00:00",
+      "file_name": "recording_name",
+      "file_type": "MP4",
+      "file_extension": "MP4",
+      "file_size": 900452,
+      "download_url": "https://download.example.com/download_url",
+      "status": "completed",
+      "user_id": "abcd1234",
+      "user_key": "efgh5678"
+    }
+  ]
+}

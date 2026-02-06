@@ -1,0 +1,21 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "from": "2021-12-10T08:00:00.0000000\u002B00:00",
+  "to": "2021-12-10T08:15:00.0000000\u002B00:00",
+  "variable_logs": [
+    {
+      "variable_log_id": "ebe83be-3579-4dc9-8e6e-67dd65a010fe",
+      "engagement_id": "3XilEfOvQEKRIWMWhX1jDg",
+      "flow_id": "zeYjXoDOS_eV1QmTpj63PQ",
+      "flow_name": "Demo",
+      "widget_name": "HttpCall1",
+      "variable_name": "body",
+      "variable_value": "demo",
+      "group_type": "system",
+      "data_type": "boolean",
+      "created_at": "2023-01-01T08:00:00.0000000-08:00"
+    }
+  ]
+}

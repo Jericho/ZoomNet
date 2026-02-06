@@ -1,0 +1,16 @@
+{
+  "total_records": 10,
+  "next_page_token": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2",
+  "page_size": 1,
+  "managed_rooms": [
+    {
+      "device_id": "be771df1-fcfd-4113-9b9d-423e0d610128",
+      "name": "my room",
+      "device_management": false,
+      "manage_type": "Full Management",
+      "device_type": "Cisco Series",
+      "serial_number": "FOC1825N9DC",
+      "ip_address": "10.100.11.12"
+    }
+  ]
+}

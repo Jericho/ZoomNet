@@ -1,0 +1,20 @@
+{
+  "page_count": 20,
+  "account_list": [
+    {
+      "create_reference_id": "Cust-00123343242",
+      "crm_account_number": "A0012",
+      "account_name": "John Galt",
+      "zoom_account_number": "3842618277",
+      "zoom_account_numbers": [
+        3842618277
+      ],
+      "account_type": "Customer",
+      "partner_type": "Subreseller",
+      "country": "US",
+      "currency": "USD",
+      "website": "www.abc.com",
+      "status": "submitted"
+    }
+  ]
+}

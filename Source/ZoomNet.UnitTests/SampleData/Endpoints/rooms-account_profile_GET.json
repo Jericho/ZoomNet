@@ -1,0 +1,19 @@
+{
+  "basic": {
+    "required_code_to_ext": true,
+    "room_passcode": "111111",
+    "support_email": "contact-it@example.com",
+    "support_phone": "18798769876"
+  },
+  "setup": {
+    "apply_background_image_to_all_displays": true,
+    "background_image_info": [
+      {
+        "display_id": "zoom_rooms_display1",
+        "content_id": "zrd9DycNSxK6K4dEUS6z-g",
+        "download_url": "https://zoom.us/file/Sq2mdxqRQ9eq7wmD5TFD6g?jwt=eyJ0eXAiOiJKV1QiLCJrIjoiaHRlNU05dDciLCJ6bV9za20iOiJ6bV9vMm0iLCJhbGc",
+        "download_url_ttl": 3600
+      }
+    ]
+  }
+}

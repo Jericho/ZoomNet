@@ -1,0 +1,15 @@
+{
+  "total_records": 1,
+  "next_page_token": "yqT59YnBSHqvDdNnkeHQsA",
+  "videos": [
+    {
+      "video_id": "iso9Dllddp39dagjLj9j",
+      "name": "My Recording1",
+      "source_type": "RECORDING",
+      "source_event_id": "eabco9Dllddp39dagjLj9j",
+      "status": "processing",
+      "play_link": "https://abc/recording/unehd6TtTLuTN40owCOqqK",
+      "duration": 30
+    }
+  ]
+}

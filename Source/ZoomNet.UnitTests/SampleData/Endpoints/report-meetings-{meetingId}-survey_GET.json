@@ -1,0 +1,23 @@
+{
+  "meeting_id": 123456,
+  "meeting_uuid": "4444AAAiAAAAAiAiAiiAii==",
+  "start_time": "2022-02-01T12:34:12.6600000\u002B00:00",
+  "survey_id": "8SFHRTGHAAAiAAAAAiAiAiiAii==",
+  "survey_name": "Survey of this meeting",
+  "survey_answers": [
+    {
+      "email": "jchill@example.com",
+      "name": "Jill Chill",
+      "first_name": "Jill",
+      "last_name": "Chill",
+      "answer_details": [
+        {
+          "question": "How are you?",
+          "question_id": "798fGJEWrA",
+          "answer": "I am wonderful.",
+          "date_time": "2022-02-01T12:37:12.660Z"
+        }
+      ]
+    }
+  ]
+}

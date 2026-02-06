@@ -1,0 +1,17 @@
+{
+  "space_id": "bb31fa470fdc410cb76527282aa380d4",
+  "space_name": "space name",
+  "space_desc": "learning space",
+  "owner": {
+    "user_id": "KDcuGIm1QgePTO8WbOqwIQ",
+    "member_id": "1vuNwCvcgr1mI8WliW1gUKxoA8lozI4LHqDVoRIjMGaQHINfZWxqVHMilvXM8HGA",
+    "email": "jchill@example.com",
+    "display_name ": "jchill",
+    "is_external_user": true
+  },
+  "space_settings": {
+    "allow_to_add_external_users": 0,
+    "add_member_permissions": 1,
+    "create_channels_permission": 1
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "queue_id": "zeYjXoDOS_eV1QmTpj63PQ",
+  "cc_queue_id": "zeYjXoDOS_eV1QmTpj63PQ",
+  "queue_name": "queue_661c6e4b-89fc-4b0d-9978-c7394725462",
+  "queue_description": "This is a task queue.",
+  "channel_types": [
+    "voice"
+  ],
+  "channel": "voice"
+}

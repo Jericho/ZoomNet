@@ -1,0 +1,26 @@
+{
+  "next_page_token": "At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2",
+  "page_size": 20,
+  "devices": [
+    {
+      "device_id": "F1C6E9DF-429E-4FA1-85DA-AC95464F3D18",
+      "device_name": "My device",
+      "mac_address": "01-23-45-67-89-AB",
+      "serial_number": "6NRN2A0",
+      "vendor": "Poly",
+      "model": "StudioX30",
+      "platform_os": "Epos expandvision5 1.2.22315.04",
+      "app_version": "5.13.0.5762",
+      "tag": "personal rooms",
+      "enrolled_in_zdm": true,
+      "connected_to_zdm": true,
+      "room_id": "72afdc13-a289-40c3-b358-50c8b8de",
+      "room_name": "My Personal Meeting Room",
+      "device_type": 0,
+      "skd_version": "2.0.11",
+      "device_status": 0,
+      "last_online": "2022-10-27T10:23:15Z",
+      "user_email": "test-user@ya.us"
+    }
+  ]
+}

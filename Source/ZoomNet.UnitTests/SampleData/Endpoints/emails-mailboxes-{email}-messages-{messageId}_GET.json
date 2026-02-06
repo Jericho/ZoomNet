@@ -1,0 +1,88 @@
+{
+  "id": "7d4d447700000000_e85f09d67065eb70_121",
+  "threadId": "7d4d447700000000_e85f09d67065eb70_121",
+  "labelIds": [
+    "INBOX"
+  ],
+  "snippet": "Email text here",
+  "historyId": "5153",
+  "internalDate": "1702631317509",
+  "expiration": "0",
+  "lastMoved": "1702866810000",
+  "sendTime": "1704828847000",
+  "userScheduled": true,
+  "manifest": "CBYyJAoiAQPOyzaErnwrX3l7Bj2vLxj7uXgqVFxRpmKcR_wMqEFGdjq1AQqy",
+  "originalMime": "WCzXU_IiB8DCVzh3_4ORekQuQYDHy2KNn9C_CY4H3gjtv0E74x03Ty",
+  "payload": {
+    "partId": "1.1",
+    "mimeType": "text/html",
+    "filename": "cats.jpg",
+    "headers": [
+      {
+        "name": "To",
+        "value": "john.doe@example.com"
+      }
+    ],
+    "body": {
+      "attachmentId": "7d4d447700000000_e85f09d67065eb70_121_1",
+      "size": 5434,
+      "data": "dGhpcyBsaW5lIHVzZXMgbWFpbCBtZXJnZSBAZmlyc3RuYW1lCnRoaXMgbGluZSBkb2VzIG5vdCB1c2UgbWFpbCBtZXJnZSBAZmlyc3RuYW1lCg=="
+    },
+    "parts": [
+      {
+        "partId": "0",
+        "mimeType": "multipart/alternative",
+        "filename": "demo.xls",
+        "headers": [
+          {
+            "name": "Content-Type",
+            "value": "multipart/ALTERNATIVE"
+          }
+        ],
+        "body": {
+          "attachmentId": "7d4d447700000000_e85f09d67065eb70_121_1",
+          "data": "",
+          "size": 0
+        },
+        "parts": [
+          {
+            "partId": "0.0",
+            "mimeType": "text/plain",
+            "filename": "demo1.xls",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "text/PLAIN"
+              }
+            ],
+            "body": {
+              "attachmentId": "7d4d447700000000_e85f09d67065eb70_121_2",
+              "data": "W2ltYWdlOiBTY3JlZW5zaG90IDIwMjQtMDItMDQgYXQgMTAuMjIuMDjigK9QTS5wbmddCgpXaWxsIHRoaXMgZ2VuZXJhdGUgbXVsdGlwbGUgcGFydD8K",
+              "size": 87
+            },
+            "parts": [
+              {
+                "partId": "0.0.0",
+                "mimeType": "multipart/related",
+                "filename": "demo2.xls",
+                "headers": [
+                  {
+                    "name": "Content-Transfer-Encoding",
+                    "value": "7bit"
+                  }
+                ],
+                "body": {
+                  "attachmentId": "7d4d447700000000_e85f09d67065eb70_121_3",
+                  "data": "",
+                  "size": 0
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "sizeEstimate": 25201,
+  "raw": "VG86IGpvaG5AZXhhbXBsZS5jb20KRnJvbTogamFuZUBleGFtcGxlLmNvbQoKaGVsbG8="
+}

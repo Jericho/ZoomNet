@@ -1,0 +1,25 @@
+{
+  "next_page_token": "MnriWtiIAzrEfe3EW5ORlj6TFBFqL57AC42",
+  "page_size": 30,
+  "shared_line_groups": [
+    {
+      "display_name": "jamieSLGTest",
+      "extension_id": "FkOFn6d5SGqqqIkyDSXrTg",
+      "extension_number": 1000123471,
+      "id": "RQinnFtmTJ25mx89tW5Cmw",
+      "phone_numbers": [
+        {
+          "id": "55JUZPwERHuGttd_j4qBsQ",
+          "number": "\u002B12058945565",
+          "status": "available"
+        }
+      ],
+      "site": {
+        "id": "8f71O6rWT8KFUGQmJIFAdQ",
+        "name": "Main Site"
+      },
+      "status": "active"
+    }
+  ],
+  "total_records": 14
+}

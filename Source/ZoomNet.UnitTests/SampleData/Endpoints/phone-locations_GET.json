@@ -1,0 +1,48 @@
+{
+  "locations": [
+    {
+      "bssid": "SA43YjfBTS6gJbUpfvIziQ",
+      "elin": {
+        "phone_number": "\u002B12058945656",
+        "phone_number_id": "9h5vTQJ0TmyKs0wItZ3JAw"
+      },
+      "id": "eRYjZlItQIqlFbCuRA__SQ",
+      "identifier": "FksDtQDfR9qs3gWXNDsfIw",
+      "name": "example location",
+      "network_switches": [
+        {
+          "mac_address": "0004f25eec3d",
+          "port": "23",
+          "port_prefix": "01",
+          "port_range_from": "01",
+          "port_range_to": "02"
+        }
+      ],
+      "parent_location_id": "RTGmTYafRU24RqJunfotSA",
+      "private_ip": "192.1.1.2",
+      "public_ip": "192.1.1.1",
+      "sip_group": {
+        "display_name": "band width",
+        "id": "F_WKDH6FRdeddZBcNUlUeA"
+      },
+      "site": {
+        "id": "SQv52YtkRLC2dwrDdYtGsA",
+        "name": "Main Site"
+      },
+      "emergency_address": {
+        "id": "Qza2T_KATwCeUfTkzGsOmQ",
+        "address_line1": "55 ALMADEN BLVD",
+        "address_line2": "6th floor",
+        "city": "SAN JOSE",
+        "state_code": "CA",
+        "country": "US",
+        "zip": "95113",
+        "vat_number": "123456789B01"
+      },
+      "minimum_match_criteria": true
+    }
+  ],
+  "next_page_token": "T6WMY4fJBIAlxPUiqRtwvQS9dvsq8AoRam2",
+  "page_size": 30,
+  "total_records": 20
+}

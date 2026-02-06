@@ -1,0 +1,22 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "activities": [
+    {
+      "conversation_topic": "Maximize profits",
+      "deal_stage": "Needs Analysis",
+      "sentiment_score": 80,
+      "engagement_score": 20,
+      "host_id": "x1yCzABCDEfg23HiJKl4mN",
+      "direction": "outbound",
+      "start_date": "2022-03-23T06:00:00Z",
+      "activity_type": "call",
+      "stage_during_conversation": "Perception Analysis",
+      "processing_analysis": false,
+      "message_ids": "4c59ed1d-439a-4e0d-a31f-0c130946f10b",
+      "number_of_message_in_thread": 10,
+      "conversation_id": "egLSRuj2SlWet\u002BwLi87LNA==,1667893163000",
+      "duration": 0
+    }
+  ]
+}

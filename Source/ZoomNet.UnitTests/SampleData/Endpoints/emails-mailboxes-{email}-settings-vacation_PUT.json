@@ -1,0 +1,13 @@
+{
+  "enableAutoReply": false,
+  "responseSubject": "Example Response Subject",
+  "responseBodyPlainText": "Example Response Body Plain Text",
+  "responseBodyHtml": "Example Response Body Html",
+  "enableAlwaysRespond": false,
+  "restrictToContacts": false,
+  "restrictToDomain": true,
+  "startTime": "1704268800000",
+  "startTimeISO": "2024-01-03T08:00:00.000Z",
+  "endTime": "1705046399000",
+  "endTimeISO": "2024-01-12T07:59:59.000Z"
+}

@@ -1,0 +1,38 @@
+{
+  "total_records": 1,
+  "next_page_token": "yqT59YnBSHqvDdNnkeHQsA",
+  "tickets": [
+    {
+      "ticket_id": "iso9Dllddp39dagjLj9j",
+      "ticket_type_id": "pfalaof9s83lsLJD9u2d",
+      "external_ticket_id": "iso9Djldop39dagjLj3j",
+      "event_join_link": "https://events.zoom.us/ejl/xyz",
+      "send_notification": false,
+      "email": "email@zoom.us",
+      "ticket_role_type": "normal",
+      "registration_source": "Pardot",
+      "session_id": "iso9Djldop39dagjLj3j",
+      "authentication_method": "no_auth",
+      "qr_code_url": "https://zoom.us/qr?t=9\u0026ein=AkhZhct94cUqiDfRumcpPf0loI-QAOt5T9yh_vGRn2-BkPDmjfze~AyTxY2Fs9Nw6ADEk-edYyZIyGIzxVAI_v-Mci1S-KeyRhbZOG3-4kWVpYqSxJK-2Uls-j_GSHh9L7Ku_zZta-MDu2NCA1Rg",
+      "first_name": "Jill",
+      "last_name": "Chill",
+      "address": "1800 Amphibious Blvd",
+      "city": "Mountain View",
+      "state": "CA",
+      "zip": "94045",
+      "country": "US",
+      "phone": "5550100",
+      "industry": "Food",
+      "job_title": "Chef",
+      "organization": "ABC Ltd.",
+      "organization_size": "150",
+      "comments": "Looking forward to the discussion.",
+      "custom_questions": [
+        {
+          "title": "What do you hope to learn from this?",
+          "answer": "Look forward to learning how you come up with new recipes and what other services you offer."
+        }
+      ]
+    }
+  ]
+}

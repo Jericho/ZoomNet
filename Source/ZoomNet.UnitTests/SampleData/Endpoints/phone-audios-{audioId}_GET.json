@@ -1,0 +1,8 @@
+{
+  "audio_id": "yCT14TwySDGVUypVlKNEyA",
+  "name": "hello.mp3",
+  "play_url": "https://file.example.com/file?jwt=eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MzY3MjY0MDEsImlzcyI6ImNyb3NzZmlsZSIsImF1ZCI6ImZpbGUiLCJkaWciOiIzM2MyZGFhZjQ2ZDQ2MzFiNGJkMWUzZmRmYmI5OTBjOTUzNTEwZmE5ZDYxZjYyNDAyNGY5OWZiYmY5ZmZlMWU4In0.kPwNFT1C_twZHl3CTeyaiOLhxmJBcHb__SvDBmgGpiQ\u0026mode=download\u0026path=zoomfs%3A%2F%2Fpbx-voice%2F%2Fprompt%2FNNNiWOl7SSmO-qXFOSXPMA%2FhcAjVmo0SVmdSvW2Sm7VrA.mp3",
+  "text": "hello",
+  "voice_language": "en-US",
+  "voice_accent": "Joanna-Female"
+}

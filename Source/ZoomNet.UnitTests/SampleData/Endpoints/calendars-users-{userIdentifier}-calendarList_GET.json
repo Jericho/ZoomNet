@@ -1,0 +1,45 @@
+{
+  "kind": "calendar#calendarList",
+  "etag": "\u002200000000000000000000\u0022",
+  "nextPageToken": "c_fn3h8xf6ce6ehefnclpp869700@group.calendar.zoom.us!",
+  "items": [
+    {
+      "kind": "calendar#calendarListEntry",
+      "etag": "\u002200000000000000000000\u0022",
+      "id": "abc.def@zoom.com",
+      "summary": "My calendar",
+      "description": "Calendar description",
+      "location": "San Jose",
+      "timeZone": "America/Los_Angeles",
+      "colorId": "6",
+      "backgroundColor": "#0088aa",
+      "foregroundColor": "#ffffff",
+      "hidden": false,
+      "selected": false,
+      "accessRole": "freeBusyReader",
+      "defaultReminders": [
+        {
+          "method": "email",
+          "minutes": 5
+        }
+      ],
+      "defaultAllDayReminders": [
+        {
+          "method": "email",
+          "minutes": 5
+        }
+      ],
+      "notificationSettings": {
+        "notifications": [
+          {
+            "type": "eventCreation",
+            "method": "email"
+          }
+        ]
+      },
+      "primary": false,
+      "deleted": false,
+      "summaryOverride": "new summary"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "holidays": [
+    {
+      "holiday_id": "i3gP6xFUTHqSFrIE6nHs7Q",
+      "name": "Holiday 1",
+      "from": "2022-03-08T16:00:00.0000000\u002B00:00",
+      "to": "2022-03-09T16:00:00.0000000\u002B00:00"
+    }
+  ]
+}

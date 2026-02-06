@@ -1,0 +1,18 @@
+{
+  "success_list": [
+    {
+      "prospect_id": "ugtO21BNRvSBQshEmRnfEw"
+    }
+  ],
+  "failed_list": [
+    {
+      "prospect_id": "GfX0-VReSpKp_bot3UlB8w",
+      "error_message": "VALIDATION_ERROR: Prospect does not belong to call list: _Wze-TJqSQODzsRc53tQPg"
+    }
+  ],
+  "total_processed": 1,
+  "total_failed": 1,
+  "total_prospects": 2,
+  "assigned_to_user_id": "1W6kwwJQRL-1p9bsjdQvmw",
+  "assigned_to_user_email": "dev\u002Banupamzradialer@zoomsandbox.us"
+}

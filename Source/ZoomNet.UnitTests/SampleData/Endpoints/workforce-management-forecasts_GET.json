@@ -1,0 +1,35 @@
+{
+  "next_page_token": null,
+  "page_size": 10,
+  "total_records": 100,
+  "forecasts": [
+    {
+      "forecast_id": "cm2n7z2vl000e9cllp4ckoc45",
+      "name": "Weekday forecast",
+      "description": "Forecast for business days",
+      "type": "SHORT_TERM",
+      "status": "ready_step_1",
+      "start": "2025-01-01T00:00:00.0000000\u002B00:00",
+      "end": "2025-01-06T23:59:59.0000000\u002B00:00",
+      "create_time": "2024-12-16T04:21:23.2070000\u002B00:00",
+      "modify_time": "2024-12-16T04:21:23.2070000\u002B00:00",
+      "interval_minutes": 15,
+      "forecast_profile_id": null,
+      "scheduling_groups": [
+        {
+          "scheduling_group_id": "cm2n7z2vl000e9cllp4ckoc45",
+          "name": "Infra support",
+          "color_code": null,
+          "sla": 75,
+          "sla_target_time": 30,
+          "asa": 30,
+          "occupancy": 85,
+          "fixed_shrinkage": null,
+          "dynamic_shrinkage": null,
+          "deferrable_sla": 75,
+          "deferrable_sla_target_time": 30
+        }
+      ]
+    }
+  ]
+}

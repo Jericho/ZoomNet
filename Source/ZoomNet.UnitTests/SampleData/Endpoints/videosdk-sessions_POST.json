@@ -1,0 +1,22 @@
+{
+  "session_id": "sfk/aOFJSJSYhGwk1hnxgw==",
+  "session_number": 97763643886,
+  "session_name": "My session",
+  "session_password": "123456",
+  "passcode": "123456",
+  "created_at": "2022-03-25T07:29:29.0000000\u002B00:00",
+  "settings": {
+    "auto_recording": "cloud",
+    "global_dial_in_countries": [
+      "US"
+    ],
+    "global_dial_in_numbers": [
+      {
+        "country": "US",
+        "country_name": "US",
+        "number": "\u002B1 1000200200",
+        "type": "toll"
+      }
+    ]
+  }
+}

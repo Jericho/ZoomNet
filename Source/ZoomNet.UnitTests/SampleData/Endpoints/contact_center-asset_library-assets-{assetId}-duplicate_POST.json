@@ -1,0 +1,10 @@
+{
+  "results": [
+    {
+      "asset_id": "WkdWelkzSnBjSEZwYjI0PQ11",
+      "asset_name": "asset name",
+      "status": "success",
+      "error": "Asset name is too long."
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "invoice_number": "INVC10235997",
+  "invoice_date": "2023-10-25T00:00:00.000Z",
+  "customer_name": [
+    "ABC Pvt. Ltd."
+  ],
+  "invoice_owner_account": {
+    "zoom_account_number": "3421746588",
+    "crm_account_number": "A-1234",
+    "account_name": "John Doe LLC",
+    "address": {
+      "address_type": "billTo",
+      "line_1": "55 Almaden Blvd",
+      "line_2": "Suite 10",
+      "line_3": "Tower A",
+      "city": "San Jose",
+      "postal_code": "95114",
+      "state": "PA",
+      "country": "US"
+    }
+  },
+  "sub_reseller": {
+    "zoom_account_number": "3421746588",
+    "crm_account_number": "A-1232",
+    "account_name": "John Doe LLC",
+    "address": {
+      "address_type": "billTo",
+      "line_1": "55 Almaden Blvd",
+      "line_2": "Suite 10",
+      "line_3": "Tower A",
+      "city": "San Jose",
+      "postal_code": "95114",
+      "state": "PA",
+      "country": "US"
+    }
+  },
+  "sold_to_contact": {
+    "crm_contact_number": "A-1232",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "abc@test.com"
+  },
+  "bill_to_contact": {
+    "crm_contact_number": "A-1232",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "abc@test.com"
+  },
+  "due_date": "2023-11-25T00:00:00.000Z",
+  "payment_status": "Paid",
+  "balance": {
+    "amount": 99.99,
+    "currency": "USD"
+  },
+  "net_amount": {
+    "amount": 99.99,
+    "currency": "USD"
+  },
+  "po_numbers": "PO-10021-A, PO-10021-A1",
+  "billing_description": "Correcting invoice error",
+  "posted_date": "2024-10-25",
+  "reason_detail": "Correcting invoice error",
+  "reference_billing_document_id": "8a8aa183907cc66e01907d722e307bre",
+  "total_tax_amount": {
+    "amount": 99.99,
+    "currency": "USD"
+  },
+  "target_date": "2024-10-25",
+  "invoice_items": [
+    {
+      "end_customer_account": {
+        "zoom_account_number": "3421746588",
+        "crm_account_number": "A-1234",
+        "account_name": "John Doe LLC",
+        "address": {
+          "address_type": "billTo",
+          "line_1": "55 Almaden Blvd",
+          "line_2": "Suite 10",
+          "line_3": "Tower A",
+          "city": "San Jose",
+          "postal_code": "95114",
+          "state": "PA",
+          "country": "US"
+        }
+      },
+      "charge_name": "monthly recurring charge",
+      "charge_type": "recurring",
+      "description": "Invoice for ABC Pvt. Ltd.",
+      "offer_name": "Zoom Workplace Pro",
+      "offer_price_list_name": "Zoom Workplace Pro Annual",
+      "offer_price_list_id": "PRL-342923",
+      "start_date": "2022-10-25",
+      "end_date": "2022-10-25",
+      "subscription_number": "A-31231322",
+      "partner_sku_code": "PAR1-PRO-BASE-NH1Y",
+      "po_number": "PO-10021-A",
+      "quantity": 100,
+      "tax_amount": {
+        "amount": 99.99,
+        "currency": "USD"
+      },
+      "total_amount": {
+        "amount": 99.99,
+        "currency": "USD"
+      }
+    }
+  ]
+}

@@ -17,7 +17,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void UserTspCreated()
 		{
-			var parsedEvent = ParseWebhookEvent<UserTspCreatedEvent>(Resource.user_tsp_created_webhook);
+			var parsedEvent = ParseWebhookEvent<UserTspCreatedEvent>(WebhooksResource.user_tsp_created);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.UserTspCreated);
 
@@ -27,7 +27,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void UserTspDeleted()
 		{
-			var parsedEvent = ParseWebhookEvent<UserTspDeletedEvent>(Resource.user_tsp_deleted_webhook);
+			var parsedEvent = ParseWebhookEvent<UserTspDeletedEvent>(WebhooksResource.user_tsp_deleted);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.UserTspDeleted);
 
@@ -37,7 +37,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void UserTspUpdated()
 		{
-			var parsedEvent = ParseWebhookEvent<UserTspUpdatedEvent>(Resource.user_tsp_updated_webhook);
+			var parsedEvent = ParseWebhookEvent<UserTspUpdatedEvent>(WebhooksResource.user_tsp_updated);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.UserTspUpdated);
 

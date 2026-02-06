@@ -1,0 +1,23 @@
+{
+  "closure_set_id": "Ixo-Na0bRfCyQ4q2lAryDw",
+  "closure_set_name": "Default closure",
+  "closure_set_description": "This is a description.",
+  "timezone": "America/New_York",
+  "account_default": true,
+  "closures": [
+    {
+      "closure_id": "ksbJvJ",
+      "closure_name": "New Year",
+      "closure_hour_type": 2,
+      "start_time": "2023-01-01T00:00:00-04:00",
+      "end_time": "2023-02-01T00:00:00-04:00",
+      "recurring_frequency": 2,
+      "recurring_frequency_type": 2,
+      "recurring_month": 1,
+      "recurring_week_interval": 1,
+      "recurring_days_of_week": [
+        "1"
+      ]
+    }
+  ]
+}

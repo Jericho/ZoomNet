@@ -1,0 +1,152 @@
+{
+  "host_email": "jchill@example.com",
+  "host_id": "30R7kT7bTIKSNUFEuH_Qlg",
+  "id": 97871060099,
+  "template_id": "ull6574eur",
+  "uuid": "m3WqMkvuRXyYqH\u002BeKWhk9w==",
+  "agenda": "My webinar",
+  "created_at": "2022-03-26T07:18:32.0000000\u002B00:00",
+  "duration": 60,
+  "registration_url": "https://example.com/webinar/register/7ksAkRCoEpt1Jm0wa-E6lICLur9e7Lde5oW6",
+  "join_url": "https://example.com/j/11111",
+  "occurrences": [
+    {
+      "duration": 60,
+      "occurrence_id": "1648194360000",
+      "start_time": "2022-03-25T07:46:00.0000000\u002B00:00",
+      "status": "available"
+    }
+  ],
+  "password": "123456",
+  "encrypted_passcode": "8pEkRweVXPV3Ob2KJYgFTRlDtl1gSn.1",
+  "h323_passcode": "123456",
+  "recurrence": {
+    "end_date_time": "2022-04-02T15:59:00.0000000\u002B00:00",
+    "end_times": 7,
+    "monthly_day": 1,
+    "monthly_week": 1,
+    "monthly_week_day": 1,
+    "repeat_interval": 1,
+    "type": 1,
+    "weekly_days": "1"
+  },
+  "settings": {
+    "additional_data_center_regions": [
+      "TY"
+    ],
+    "allow_multiple_devices": true,
+    "alternative_hosts": "jchill@example.com",
+    "alternative_host_update_polls": true,
+    "approval_type": 0,
+    "attendees_and_panelists_reminder_email_notification": {
+      "enable": true,
+      "type": 0
+    },
+    "audio": "telephony",
+    "audio_conference_info": "test",
+    "authentication_domains": "example.com",
+    "authentication_name": "Sign in to Zoom",
+    "authentication_option": "signIn_D8cJuqWVQ623CI4Q8yQK0Q",
+    "auto_recording": "cloud",
+    "close_registration": true,
+    "contact_email": "jchill@example.com",
+    "contact_name": "Jill Chill",
+    "email_language": "en-US",
+    "enforce_login": true,
+    "enforce_login_domains": "example.com",
+    "follow_up_absentees_email_notification": {
+      "enable": true,
+      "type": 0
+    },
+    "follow_up_attendees_email_notification": {
+      "enable": true,
+      "type": 0
+    },
+    "global_dial_in_countries": [
+      "US"
+    ],
+    "global_dial_in_numbers": [
+      {
+        "city": "New York",
+        "country": "US",
+        "country_name": "US",
+        "number": "\u002B1 1000200200",
+        "type": "toll"
+      }
+    ],
+    "hd_video": false,
+    "hd_video_for_attendees": false,
+    "host_video": true,
+    "language_interpretation": {
+      "enable": true,
+      "interpreters": [
+        {
+          "email": "interpreter@example.com",
+          "languages": "US,FR",
+          "interpreter_languages": "English,French"
+        }
+      ]
+    },
+    "sign_language_interpretation": {
+      "enable": true,
+      "interpreters": [
+        {
+          "email": "interpreter@example.com",
+          "sign_language": "American"
+        }
+      ]
+    },
+    "panelist_authentication": true,
+    "meeting_authentication": true,
+    "add_watermark": true,
+    "add_audio_watermark": true,
+    "on_demand": false,
+    "panelists_invitation_email_notification": true,
+    "panelists_video": true,
+    "post_webinar_survey": true,
+    "practice_session": false,
+    "question_and_answer": {
+      "allow_submit_questions": true,
+      "allow_anonymous_questions": true,
+      "answer_questions": "all",
+      "attendees_can_comment": true,
+      "attendees_can_upvote": true,
+      "allow_auto_reply": true,
+      "auto_reply_text": "Thank you for your question. We will get back to you shortly.",
+      "enable": true
+    },
+    "registrants_confirmation_email": true,
+    "registrants_email_notification": true,
+    "registrants_restrict_number": 100,
+    "registration_type": 1,
+    "send_1080p_video_to_attendees": false,
+    "show_share_button": true,
+    "show_join_info": true,
+    "survey_url": "https://example.com",
+    "enable_session_branding": true,
+    "request_permission_to_unmute_participants": true,
+    "allow_host_control_participant_mute_state": false,
+    "email_in_attendee_report": true
+  },
+  "start_time": "2022-03-26T07:18:32.0000000\u002B00:00",
+  "start_url": "https://example.com/s/11111",
+  "timezone": "America/Los_Angeles",
+  "topic": "My Webinar",
+  "tracking_fields": [
+    {
+      "field": "field1",
+      "value": "value1",
+      "visible": true
+    }
+  ],
+  "type": 5,
+  "is_simulive": true,
+  "record_file_id": "f09340e1-cdc3-4eae-9a74-98f9777ed908",
+  "transition_to_live": false,
+  "simulive_delay_start": {
+    "enable": true,
+    "time": 10,
+    "timeunit": "second"
+  },
+  "creation_source": "open_api"
+}

@@ -1,0 +1,26 @@
+{
+  "next_page_token": "jA5csQv1W1oXuYZLspNIZzMOXqTD9r9Rje2",
+  "page_size": 10,
+  "total_records": 100,
+  "timezone": "America/Los_Angeles",
+  "agents": [
+    {
+      "user_id": "0c30da44bd68aae3b5714abb885a59",
+      "display_name": "Alex",
+      "user_email": "alex@example.com",
+      "scheduling_group_name": "Sales",
+      "total_scheduled_time": 480,
+      "total_paid_time": 340,
+      "activities": [
+        {
+          "schedule_activity_id": "cll20wknm01cwex0isvewiegl",
+          "start_time": "2024-07-20T14:00:00-08:00",
+          "end_time": "2024-07-20T14:00:00-08:00",
+          "activity_name": "SMS",
+          "activity_type": "Productive",
+          "is_paid": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "total_records": 1,
+  "hubs": [
+    {
+      "hub_id": "4uzfv3JwTeyR5QpC3PXwMg",
+      "access_level": "PUBLIC",
+      "name": "Example Hub Name",
+      "description": "Test hub",
+      "public_url": "https://example.zoom.us/myhub",
+      "hidden_hub": true,
+      "hub_active": true,
+      "auto_list_events": true,
+      "landing_hub": true
+    }
+  ]
+}

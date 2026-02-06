@@ -1,0 +1,27 @@
+{
+  "page_size": 30,
+  "next_page_token": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2",
+  "session_id": "a2f19f96-9294-4f51-8134-6f0eea108eb2",
+  "whiteboard_id": "HY8-AC_HSou4SXY1S-OmOg",
+  "whiteboard_name": "example_whiteboard_name",
+  "start_time": "2021-03-11T05:41:36.0000000\u002B00:00",
+  "end_time": "2021-03-11T06:41:36.0000000\u002B00:00",
+  "expire_time": "2021-03-26T06:41:36.0000000\u002B00:00",
+  "activities": [
+    {
+      "id": "cc63bce7-cb59-c1dc-fadd-2be734ad1d55",
+      "type": "add object",
+      "download_url": "https://example.com/whiteboards/sessions/activity/download/Qg75t7xZBtEbAkjdlgbfdngBBBB",
+      "create_time": "2021-03-11T05:41:36.0000000\u002B00:00",
+      "user_id": "wf3h7uo1dk0v53bl",
+      "collaborator_id": "x4g6hy789k0o878k",
+      "collaborator_name": "Jack",
+      "email": "user@example.com",
+      "content": "This is a activity content demo",
+      "object_ids": [
+        "wfx4g6s1dk0v53bl"
+      ]
+    }
+  ],
+  "total_records": 30
+}

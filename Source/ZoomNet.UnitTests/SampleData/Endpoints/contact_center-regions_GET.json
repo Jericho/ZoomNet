@@ -1,0 +1,16 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 1,
+  "regions": [
+    {
+      "region_id": "36c8dc7c-695f-11ed-a081-0a514d46f86b",
+      "region_name": "Main Region",
+      "is_main_region": true,
+      "sip_zone_id": "AfgzMEweSQ6tqzC8jhYJ2A",
+      "sip_zone_name": "zccsipzone",
+      "users_count": 20,
+      "last_modified_time": "2022-02-15T09:27:15.0000000\u002B00:00"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "audio_processing": false,
+  "auto_adjust_mic_level": true,
+  "camera_id": "usb#vid_0bda\u0026pid_58fd\u0026mi_00#6\u00261e7cbc97\u00260\u00260000#{65e8773d-8f56-11d0-a3b9-00a0c9223196}global",
+  "echo_cancellation": true,
+  "id": "Gz_fNcaSPByng-3vsqv_iQ",
+  "microphone_id": "{0.0.2.00000000}.{eff76572-ac52-4c79-bd30-67f968bjb15f}",
+  "name": "ZR1 Device",
+  "noise_suppression": "aggressive",
+  "speaker_id": "{0.0.0.00000000}.{4f9b30cb-872e-49ed-a1b9-a7ec352bf3e6}"
+}

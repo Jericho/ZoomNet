@@ -1,0 +1,9 @@
+{
+  "failed_channels": [
+    {
+      "channel_id": "b8f5e83164ca4e6b8d8abb527c7c35db",
+      "reason": "No Permission",
+      "error_code": "The error code number"
+    }
+  ]
+}

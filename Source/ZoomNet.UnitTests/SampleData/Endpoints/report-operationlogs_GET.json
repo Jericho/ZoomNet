@@ -1,0 +1,13 @@
+{
+  "next_page_token": "uBTK3NzNksdkuCUAQaFVFd86kyOr59zg4U2",
+  "page_size": 30,
+  "operation_logs": [
+    {
+      "action": "delete",
+      "category_type": "user",
+      "operation_detail": "delete user - user2@example.com",
+      "operator": "admin@example.com",
+      "time": "2022-01-25T17:52:16.0000000\u002B00:00"
+    }
+  ]
+}

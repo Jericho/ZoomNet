@@ -1,0 +1,185 @@
+{
+  "subscription_number": "A-31231322",
+  "status": "active",
+  "payment_term": "Net30",
+  "service_start_date": "2023-10-03",
+  "paid_period_start_date": "2023-10-03",
+  "free_months_included": false,
+  "free_months_reason_code": "Standard Free Months",
+  "deal_reg_number": "DELREG-1002-L1",
+  "po_number": "PO-10021-A",
+  "currency": "CAD",
+  "end_customer_account": {
+    "zoom_account_number": "3421746588",
+    "crm_account_number": "A-12323",
+    "account_name": "John Doe LLC",
+    "address": {
+      "address_type": "billTo",
+      "line_1": "55 Almaden Blvd",
+      "line_2": "Suite 10",
+      "line_3": "Tower A",
+      "city": "San Jose",
+      "postal_code": "95114",
+      "state": "PA",
+      "country": "US"
+    }
+  },
+  "invoice_owner_account": {
+    "zoom_account_number": "3421746588",
+    "crm_account_number": "A-12323",
+    "account_name": "John Doe LLC",
+    "address": {
+      "address_type": "billTo",
+      "line_1": "55 Almaden Blvd",
+      "line_2": "Suite 10",
+      "line_3": "Tower A",
+      "city": "San Jose",
+      "postal_code": "95114",
+      "state": "PA",
+      "country": "US"
+    }
+  },
+  "sub_reseller": {
+    "zoom_account_number": "3421746588",
+    "crm_account_number": "A-45r33",
+    "account_name": "Novam Corp.",
+    "address": {
+      "address_type": "billTo",
+      "line_1": "55 Almaden Blvd",
+      "line_2": "Suite 10",
+      "line_3": "Tower A",
+      "city": "San Jose",
+      "postal_code": "95114",
+      "state": "PA",
+      "country": "US"
+    }
+  },
+  "agreement_dates": {
+    "contract_effective_date": "2023-10-03",
+    "service_activation_date": "2023-10-03",
+    "customer_acceptance_date": "2023-10-03"
+  },
+  "initial_term": {
+    "term_type": "TERMED",
+    "period_type": "Month",
+    "term_period": 12,
+    "start_date": "2023-10-03",
+    "end_date": "2024-10-03"
+  },
+  "renewal_term": {
+    "term_type": "TERMED",
+    "period_type": "Month",
+    "term_period": 12,
+    "start_date": "2023-10-03",
+    "end_date": "2024-10-03"
+  },
+  "current_term": {
+    "term_type": "TERMED",
+    "period_type": "Month",
+    "term_period": 12,
+    "start_date": "2023-10-03",
+    "end_date": "2024-10-03"
+  },
+  "auto_renew": true,
+  "start_date": "2023-10-03",
+  "end_date": "2024-10-03",
+  "invoice_separately": true,
+  "contracted_mrr": 1000,
+  "mrr": {
+    "amount": 99.99,
+    "currency": "USD"
+  },
+  "bill_to": {
+    "zoom_account_number": "3421746588",
+    "crm_account_number": "A-12323",
+    "account_name": "John Doe LLC",
+    "address": {
+      "line_1": "55 Almaden Blvd",
+      "line_2": "Suite 10",
+      "line_3": "Tower A",
+      "city": "San Jose",
+      "postal_code": "95114",
+      "state": "PA",
+      "country": "US"
+    }
+  },
+  "sold_to": {
+    "zoom_account_number": "3421746588",
+    "crm_account_number": "A-12323",
+    "account_name": "John Doe LLC",
+    "address": {
+      "line_1": "55 Almaden Blvd",
+      "line_2": "Suite 10",
+      "line_3": "Tower A",
+      "city": "San Jose",
+      "postal_code": "95114",
+      "state": "PA",
+      "country": "US"
+    }
+  },
+  "sold_to_contact": {
+    "crm_contact_number": "A-1232",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "abc@test.com"
+  },
+  "bill_to_contact": {
+    "crm_contact_number": "A-1232",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "abc@test.com"
+  },
+  "subscription_lines": [
+    {
+      "offer_id": "PR-2323",
+      "offer_name": "Zoom Workplace Pro",
+      "offer_type": "plan",
+      "sku": "SKU-00000118",
+      "offer_price_list_id": "PRL-2323",
+      "offer_price_list_name": "Zoom Workplace Pro Annual",
+      "quantity": 100,
+      "start_date": "2023-10-03",
+      "end_date": "2024-10-03",
+      "status": "active",
+      "charges": [
+        {
+          "charge_model": "Volume Pricing",
+          "charge_type": "OneTime",
+          "charge_id": "PRLC-3223",
+          "partner_sku_code": "PAR1-ENT-BASE-NH1Y",
+          "sale_price": {
+            "amount": 99.99,
+            "currency": "USD"
+          },
+          "net_price": {
+            "amount": 99.99,
+            "currency": "USD"
+          },
+          "net_amount": {
+            "amount": 99.99,
+            "currency": "USD"
+          },
+          "discounts": [
+            {
+              "discount_type": "DealReg",
+              "percent_value": 0.1,
+              "amount_value": 10,
+              "apply_to": "RECURRING",
+              "discount_level": "subscription"
+            }
+          ]
+        }
+      ],
+      "offer_attributes": [
+        {
+          "name": "Min licenses for purchase",
+          "uom": "count",
+          "value_type": "Integer",
+          "value": "10"
+        }
+      ]
+    }
+  ],
+  "created_date": "2024-10-03",
+  "updated_date": "2024-10-03"
+}

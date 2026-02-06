@@ -1,0 +1,31 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 10,
+  "total_records": 10,
+  "timezone": "America/Los_Angeles",
+  "from": "2021-12-10T00:00:00.0000000\u002B00:00",
+  "to": "2021-12-10T00:15:00.0000000\u002B00:00",
+  "statuses": [
+    {
+      "user_id": "ukAAkZKfROKMSw1bj_RDFQ",
+      "display_name": "Jilly",
+      "status_id": "1",
+      "occupied_queue_id": "ZysV5vnQ_iVKRjfLf-sjg",
+      "occupied_queue_name": "voice-queue",
+      "occupied_engagement_id": "0xGQzpwS-2aR2KZEHRbPw",
+      "occupied_engagements": [
+        {
+          "engagement_id": "zeYjXoDOS_eV1QmTpj63PQ",
+          "cc_queue_id": "beGjiO3_TK2rxi5fh2Zv7A",
+          "queue_name": "Demo"
+        }
+      ],
+      "status_name": "Not Ready",
+      "sub_status_id": "101",
+      "sub_status_name": "Inbound",
+      "start_time": "2022-07-20T14:00:00-08:00",
+      "end_time": "2022-07-20T14:15:00-08:00",
+      "duration": 1
+    }
+  ]
+}

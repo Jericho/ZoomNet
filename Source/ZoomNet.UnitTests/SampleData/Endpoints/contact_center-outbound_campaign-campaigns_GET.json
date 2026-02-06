@@ -1,0 +1,13 @@
+{
+  "page_size": 10,
+  "total_records": 10,
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "outbound_campaign_items": [
+    {
+      "outbound_campaign_id": "TY_XsJuWR9ehXrsf1DSIAQ",
+      "outbound_campaign_name": "My outbound campaign",
+      "outbound_campaign_description": "My outbound campaign description",
+      "outbound_campaign_status": "paused"
+    }
+  ]
+}

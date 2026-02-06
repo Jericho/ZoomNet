@@ -1,0 +1,12 @@
+{
+  "total_records": 1,
+  "tracking_sources": [
+    {
+      "id": "5516482804110",
+      "registration_count": 1,
+      "source_name": "https://example.com",
+      "tracking_url": "https://example.com/webinar/register/5516482804110/WN_juM2BGyLQMyQ_ZrqiGRhLg",
+      "visitor_count": 1
+    }
+  ]
+}

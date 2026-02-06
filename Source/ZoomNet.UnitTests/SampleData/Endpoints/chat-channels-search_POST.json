@@ -1,0 +1,13 @@
+{
+  "channels": [
+    {
+      "id": "cabc1234567defghijkl01234",
+      "name": "Developers",
+      "type": 2,
+      "channel_url": "https://zoom.us/launch/chat/v2/eyJzaWQiOiIyY2RkZjNyNjU3YTY0ODUzOWVhOThkODFhNjRiODE2YkBjb25mZXJlbmNlLnhtcHBkZXYuem9vbS51cyJ1",
+      "member_count": 12
+    }
+  ],
+  "next_page_token": "qUEQqB1V0HVhJmwKFQrGOD",
+  "page_size": 10
+}

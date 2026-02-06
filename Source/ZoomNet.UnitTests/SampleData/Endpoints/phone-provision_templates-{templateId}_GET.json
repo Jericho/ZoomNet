@@ -1,0 +1,7 @@
+{
+  "id": "CLbU64xzTzCUXz58e2Lo-w",
+  "name": "Test provision template",
+  "description": "provision template",
+  "content": "provisioning/firmware/url=https://...",
+  "bound_device_count": 2
+}

@@ -1,0 +1,25 @@
+{
+  "projects": [
+    {
+      "collaborator": [
+        {
+          "collaborator_id": "x4g6hy789k0o878k",
+          "collaborator_name": "Jack",
+          "user_id": "wf3h7uo1dk0v53bl",
+          "avatar": "https://content.zoom.us/swerwerw.jpeg",
+          "role": 2,
+          "collaborator_type": 0
+        }
+      ],
+      "created_date": "2020-03-31T12:02:00.0000000\u002B00:00",
+      "modified_date": "2020-03-31T12:02:00.0000000\u002B00:00",
+      "project_name": "Untitle",
+      "project_id": "The Project ID",
+      "starred": false,
+      "owner_display_name": "Example Name"
+    }
+  ],
+  "next_page_token": "qUEQqB1V0HVhJmwKFQrGOD",
+  "page_size": 10,
+  "total_records": 100
+}

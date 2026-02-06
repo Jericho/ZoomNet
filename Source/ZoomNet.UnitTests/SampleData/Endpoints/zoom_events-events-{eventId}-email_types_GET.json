@@ -1,0 +1,13 @@
+{
+  "total_records": 15,
+  "next_page_token": "oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2",
+  "email_types": [
+    {
+      "email_type": "Free ticket confirmation",
+      "email_type_id": "SLar6n5ATsWSqZ_EZv_9jw",
+      "trigger_overview": "Sent when user is registered",
+      "trigger_date": "2025-08-24T22:30:00.0000000\u002B00:00",
+      "status": "scheduled"
+    }
+  ]
+}

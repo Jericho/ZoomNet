@@ -1,0 +1,633 @@
+{
+  "header": {
+    "quote_reference_id": "QU-3248714941",
+    "quote_type": "sale",
+    "transaction_type": "New",
+    "quote_description": "New ZCC subscription for ABC Pvt. Ltd.",
+    "status": "submitted",
+    "quote_number": "Q-1012312",
+    "deal_reg_number": "DELREG-1002-L1",
+    "quote_date": "2022-10-25",
+    "quote_expiry_date": "2023-11-02",
+    "po_number": "PO-10021-A",
+    "trade_screening": false,
+    "quote_metrics": {
+      "tcv": 120000,
+      "tcb": 120000,
+      "mrr": 10000,
+      "total_discount_pct": 0.1
+    },
+    "negotiations": [
+      {
+        "partner_note": "Need additional information for approving exception discount",
+        "zoom_note": "Exception discount not matching promo code.",
+        "action_by": "Zoom COPS",
+        "as_of_date": "2022-10-25T12:10:234Z",
+        "status": "Rejected",
+        "quote_number": "Q-1012312"
+      }
+    ],
+    "documents": [
+      {
+        "document_reference_id": "DOC-1234",
+        "document_note": "Latest purchase order.",
+        "document_type": "Purchase Order"
+      }
+    ],
+    "additional_attributes": [
+      {
+        "name": "Tracking number",
+        "value_type": "Boolean",
+        "value": "TR28483"
+      }
+    ]
+  },
+  "create_subscriptions": [
+    {
+      "subscription_number": "A-1232632",
+      "end_customer_account": {
+        "zoom_account_number": "3421746588",
+        "crm_account_number": "A-1234",
+        "account_name": "John Doe LLC",
+        "address": {
+          "address_type": "billTo",
+          "line_1": "55 Almaden Blvd",
+          "line_2": "Suite 10",
+          "line_3": "Tower A",
+          "city": "San Jose",
+          "postal_code": "95114",
+          "state": "PA",
+          "country": "US"
+        }
+      },
+      "invoice_owner_account": {
+        "zoom_account_number": "3421746588",
+        "crm_account_number": "A-1234",
+        "account_name": "John Doe LLC",
+        "address": {
+          "address_type": "billTo",
+          "line_1": "55 Almaden Blvd",
+          "line_2": "Suite 10",
+          "line_3": "Tower A",
+          "city": "San Jose",
+          "postal_code": "95114",
+          "state": "PA",
+          "country": "US"
+        }
+      },
+      "sub_reseller": {
+        "zoom_account_number": "3421746588",
+        "crm_account_number": "A-1232",
+        "account_name": "John Doe LLC",
+        "address": {
+          "address_type": "billTo",
+          "line_1": "55 Almaden Blvd",
+          "line_2": "Suite 10",
+          "line_3": "Tower A",
+          "city": "San Jose",
+          "postal_code": "95114",
+          "state": "PA",
+          "country": "US"
+        }
+      },
+      "sold_to_contact": {
+        "crm_contact_number": "A-1232",
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "abc@test.com"
+      },
+      "bill_to_contact": {
+        "crm_contact_number": "A-1232",
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "abc@example.com"
+      },
+      "initial_term": {
+        "term_type": "TERMED",
+        "term_period": 12,
+        "start_date": "2022-10-25",
+        "end_date": "2022-10-25"
+      },
+      "renewal_term": {
+        "term_type": "TERMED",
+        "term_period": 12,
+        "start_date": "2022-10-25",
+        "end_date": "2022-10-25"
+      },
+      "agreement_dates": {
+        "contract_effective_date": "2022-10-25",
+        "service_activation_date": "2022-10-25",
+        "customer_acceptance_date": "2022-10-25"
+      },
+      "sold_to_crm_contact_number": "C-34267",
+      "end_customer_language": "es-ES;",
+      "payment_term": "Net30",
+      "service_start_date": "2022-10-25",
+      "paid_period_start_date": "2022-10-25",
+      "free_months_included": false,
+      "free_months_reason_code": "Billing at Later Date for Other Reason",
+      "auto_renew": true,
+      "currency": "CAD",
+      "deal_reg_number": "DELREG-1002-L1",
+      "po_number": "PO-10021-A",
+      "subscription_metrics": {
+        "subscription_number": "A2324323",
+        "tcv": 120000,
+        "tcb": 120000,
+        "mrr": 10000,
+        "total_discount_pct": 10
+      },
+      "offers": [
+        {
+          "offer_id": "Off-34213",
+          "offer_name": "Zoom Workplace Pro",
+          "sku": "SKU-10000120",
+          "offer_price_list_id": "PRL-2323",
+          "partner_sku_code": "PAR1-ENT-BASE-NH1Y",
+          "offer_price_list_name": "Zoom Workplace Pro Annual",
+          "quantity": 100,
+          "start_date": "2022-10-25",
+          "end_date": "2022-10-25",
+          "charges": [
+            {
+              "charge_model": "Volume Pricing",
+              "charge_type": "OneTime",
+              "charge_id": "PRLC-3223",
+              "partner_sku_code": "PAR1-ENT-BASE-NH1Y",
+              "sale_price": {
+                "amount": 99.99,
+                "currency": "USD"
+              },
+              "net_price": {
+                "amount": 99.99,
+                "currency": "USD"
+              },
+              "net_amount": {
+                "amount": 99.99,
+                "currency": "USD"
+              },
+              "total_discount": 20,
+              "discounts": [
+                {
+                  "discount_type": "DealReg",
+                  "percent_value": 0.1,
+                  "amount_value": 10,
+                  "apply_to": "RECURRING",
+                  "apply_to_charge": "PRLC-3223",
+                  "discount_level": "subscription",
+                  "discount_program": "VLA program"
+                }
+              ]
+            }
+          ],
+          "usage_based_charge": true
+        }
+      ],
+      "add_ons": [
+        {
+          "offer_id": "OFF-4556",
+          "offer_name": "Zoom Workplace Pro",
+          "sku": "SKU-10000120",
+          "offer_price_list_id": "PRL-2323",
+          "partner_sku_code": "PAR1-ENT-BASE-NH1Y",
+          "offer_price_list_name": "Zoom Workplace Pro Annual",
+          "quantity": 100,
+          "start_date": "2022-10-25",
+          "end_date": "2022-10-25",
+          "charges": [
+            {
+              "charge_model": "Volume Pricing",
+              "charge_type": "OneTime",
+              "charge_id": "PRLC-3223",
+              "partner_sku_code": "PAR1-ENT-BASE-NH1Y",
+              "sale_price": {
+                "amount": 99.99,
+                "currency": "USD"
+              },
+              "net_price": {
+                "amount": 99.99,
+                "currency": "USD"
+              },
+              "net_amount": {
+                "amount": 99.99,
+                "currency": "USD"
+              },
+              "total_discount": 20,
+              "discounts": [
+                {
+                  "discount_type": "DealReg",
+                  "percent_value": 0.1,
+                  "amount_value": 10,
+                  "apply_to": "RECURRING",
+                  "apply_to_charge": "PRLC-3223",
+                  "discount_level": "subscription",
+                  "discount_program": "VLA program"
+                }
+              ]
+            }
+          ],
+          "usage_based_charge": true
+        }
+      ],
+      "additional_attributes": [
+        {
+          "name": "Tracking number",
+          "value_type": "Boolean",
+          "value": "TR28483"
+        }
+      ],
+      "professional_services": {
+        "requires_professional_services": "Yes, Zoom will do the deployment",
+        "is_zoom_pso_org_engaged": "Yes and I have a PSO Engagement Request ID",
+        "pso_engagement_request_id": "SRE-351262",
+        "deployment_partner": {
+          "deployment_partner_name": "ABC LLC",
+          "deployment_partner_crm_account_number": "A-1234241",
+          "deployment_partner_address": {
+            "line_1": "55 Almaden Blvd",
+            "city": "San Jose",
+            "postal_code": "95114",
+            "state": "PA",
+            "country": "US"
+          }
+        },
+        "professional_services_description": "false"
+      }
+    }
+  ],
+  "amend_subscriptions": [
+    {
+      "subscription_number": "A-4534587",
+      "end_customer_account": {
+        "zoom_account_number": "3421746588",
+        "crm_account_number": "A-1234",
+        "account_name": "John Doe LLC",
+        "address": {
+          "address_type": "billTo",
+          "line_1": "55 Almaden Blvd",
+          "line_2": "Suite 10",
+          "line_3": "Tower A",
+          "city": "San Jose",
+          "postal_code": "95114",
+          "state": "PA",
+          "country": "US"
+        }
+      },
+      "invoice_owner_account": {
+        "zoom_account_number": "3421746588",
+        "crm_account_number": "A-1234",
+        "account_name": "John Doe LLC",
+        "address": {
+          "address_type": "billTo",
+          "line_1": "55 Almaden Blvd",
+          "line_2": "Suite 10",
+          "line_3": "Tower A",
+          "city": "San Jose",
+          "postal_code": "95114",
+          "state": "PA",
+          "country": "US"
+        }
+      },
+      "sub_reseller": {
+        "zoom_account_number": "3421746588",
+        "crm_account_number": "A-1234",
+        "account_name": "John Doe LLC",
+        "address": {
+          "address_type": "billTo",
+          "line_1": "55 Almaden Blvd",
+          "line_2": "Suite 10",
+          "line_3": "Tower A",
+          "city": "San Jose",
+          "postal_code": "95114",
+          "state": "PA",
+          "country": "US"
+        }
+      },
+      "sold_to_contact": {
+        "crm_contact_number": "A-1232",
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "Abc@example.com"
+      },
+      "bill_to_contact": {
+        "crm_contact_number": "A-1232",
+        "first_name": "John",
+        "last_name": "Doe",
+        "email": "Abc@example.com"
+      },
+      "currency": "CAD",
+      "deal_reg_number": "DELREG-1002-L1",
+      "po_number": "PO-10021-A",
+      "subscription_metrics": {
+        "subscription_number": "A4324242",
+        "tcv": 120000,
+        "tcb": 120000,
+        "mrr": 10000,
+        "total_discount_pct": 10
+      },
+      "add_offers": [
+        {
+          "offer_id": "OFF-4556",
+          "offer_name": "Zoom Workplace Pro",
+          "sku": "SKU-10000120",
+          "offer_price_list_id": "PRL-2323",
+          "partner_sku_code": "PAR1-ENT-BASE-NH1Y",
+          "offer_price_list_name": "Zoom Workplace Pro Annual",
+          "quantity": 100,
+          "start_date": "2022-10-25",
+          "end_date": "2022-10-25",
+          "charges": [
+            {
+              "charge_model": "Volume Pricing",
+              "charge_type": "OneTime",
+              "charge_id": "PRLC-3223",
+              "partner_sku_code": "PAR1-ENT-BASE-NH1Y",
+              "sale_price": {
+                "amount": 99.99,
+                "currency": "USD"
+              },
+              "net_price": {
+                "amount": 99.99,
+                "currency": "USD"
+              },
+              "net_amount": {
+                "amount": 99.99,
+                "currency": "USD"
+              },
+              "total_discount": 20,
+              "discounts": [
+                {
+                  "discount_type": "DealReg",
+                  "percent_value": 0.1,
+                  "amount_value": 10,
+                  "apply_to": "RECURRING",
+                  "apply_to_charge": "PRLC-3223",
+                  "discount_level": "subscription",
+                  "discount_program": "VLA program"
+                }
+              ]
+            }
+          ],
+          "usage_based_charge": true
+        }
+      ],
+      "add_add_ons": [
+        {
+          "offer_id": "OFF-4556",
+          "offer_name": "Zoom Workplace Pro",
+          "sku": "SKU-10000120",
+          "offer_price_list_id": "PRL-2323",
+          "partner_sku_code": "PAR1-ENT-BASE-NH1Y",
+          "offer_price_list_name": "Zoom Workplace Pro Annual",
+          "quantity": 100,
+          "start_date": "2022-10-25",
+          "end_date": "2022-10-25",
+          "charges": [
+            {
+              "charge_model": "Volume Pricing",
+              "charge_type": "OneTime",
+              "charge_id": "PRLC-3223",
+              "partner_sku_code": "PAR1-ENT-BASE-NH1Y",
+              "sale_price": {
+                "amount": 99.99,
+                "currency": "USD"
+              },
+              "net_price": {
+                "amount": 99.99,
+                "currency": "USD"
+              },
+              "net_amount": {
+                "amount": 99.99,
+                "currency": "USD"
+              },
+              "total_discount": 20,
+              "discounts": [
+                {
+                  "discount_type": "DealReg",
+                  "percent_value": 0.1,
+                  "amount_value": 10,
+                  "apply_to": "RECURRING",
+                  "apply_to_charge": "PRLC-3223",
+                  "discount_level": "subscription",
+                  "discount_program": "VLA program"
+                }
+              ]
+            }
+          ],
+          "usage_based_charge": true
+        }
+      ],
+      "upgrade_offers": [
+        {
+          "offer_id": "OFF-4556",
+          "offer_name": "Zoom Workplace Pro",
+          "sku": "SKU-10000120",
+          "offer_price_list_id": "PRL-2323",
+          "partner_sku_code": "PAR1-ENT-BASE-NH1Y",
+          "offer_price_list_name": "Zoom Workplace Pro Annual",
+          "old_offer_price_list_id": "PRL-3412",
+          "old_partner_sku_code": "PAR1-PRO-BASE-NH1Y",
+          "quantity": 100,
+          "start_date": "2022-10-25",
+          "end_date": "2022-10-25",
+          "charges": [
+            {
+              "charge_model": "Volume Pricing",
+              "charge_type": "OneTime",
+              "charge_id": "PRLC-3223",
+              "partner_sku_code": "PAR1-ENT-BASE-NH1Y",
+              "sale_price": {
+                "amount": 99.99,
+                "currency": "USD"
+              },
+              "net_price": {
+                "amount": 99.99,
+                "currency": "USD"
+              },
+              "net_amount": {
+                "amount": 99.99,
+                "currency": "USD"
+              },
+              "total_discount": 20,
+              "discounts": [
+                {
+                  "discount_type": "DealReg",
+                  "percent_value": 0.1,
+                  "amount_value": 10,
+                  "apply_to": "RECURRING",
+                  "apply_to_charge": "PRLC-3223",
+                  "discount_level": "subscription",
+                  "discount_program": "VLA program"
+                }
+              ]
+            }
+          ],
+          "usage_based_charge": true
+        }
+      ],
+      "remove_offers": [
+        {
+          "offer_id": "OFF-4556",
+          "offer_name": "Zoom Workplace Pro",
+          "sku": "SKU-10000120",
+          "offer_price_list_id": "PRL-2323",
+          "partner_sku_code": "PAR1-ENT-BASE-NH1Y",
+          "offer_price_list_name": "Zoom Workplace Pro Annual",
+          "quantity": 100,
+          "end_date": "2022-10-25",
+          "charges": [
+            {
+              "charge_model": "Volume Pricing",
+              "charge_type": "OneTime",
+              "charge_id": "PRLC-3223",
+              "partner_sku_code": "PAR1-ENT-BASE-NH1Y",
+              "sale_price": {
+                "amount": 99.99,
+                "currency": "USD"
+              },
+              "net_price": {
+                "amount": 99.99,
+                "currency": "USD"
+              },
+              "net_amount": {
+                "amount": 99.99,
+                "currency": "USD"
+              },
+              "total_discount": 20,
+              "discounts": [
+                {
+                  "discount_type": "DealReg",
+                  "percent_value": 0.1,
+                  "amount_value": 10,
+                  "apply_to": "RECURRING",
+                  "apply_to_charge": "PRLC-3223",
+                  "discount_level": "subscription",
+                  "discount_program": "VLA program"
+                }
+              ]
+            }
+          ],
+          "usage_based_charge": true,
+          "remove_reason": "Downsell"
+        }
+      ],
+      "update_offers": [
+        {
+          "offer_id": "OFF-4556",
+          "offer_name": "Zoom Workplace Pro",
+          "sku": "SKU-10000120",
+          "offer_price_list_id": "PRL-2323",
+          "partner_sku_code": "PAR1-ENT-BASE-NH1Y",
+          "offer_price_list_name": "Zoom Workplace Pro Annual",
+          "quantity": 100,
+          "start_date": "2022-10-25",
+          "end_date": "2022-10-25",
+          "charges": [
+            {
+              "charge_model": "Volume Pricing",
+              "charge_type": "OneTime",
+              "charge_id": "PRLC-3223",
+              "partner_sku_code": "PAR1-ENT-BASE-NH1Y",
+              "sale_price": {
+                "amount": 99.99,
+                "currency": "USD"
+              },
+              "net_price": {
+                "amount": 99.99,
+                "currency": "USD"
+              },
+              "net_amount": {
+                "amount": 99.99,
+                "currency": "USD"
+              },
+              "total_discount": 20,
+              "discounts": [
+                {
+                  "discount_type": "DealReg",
+                  "percent_value": 0.1,
+                  "amount_value": 10,
+                  "apply_to": "RECURRING",
+                  "apply_to_charge": "PRLC-3223",
+                  "discount_level": "subscription",
+                  "discount_program": "VLA program"
+                }
+              ]
+            }
+          ],
+          "usage_based_charge": true
+        }
+      ],
+      "cancel_subscription": {
+        "cancel_by": "EndOfCurrentTerm",
+        "cancel_on": "2022-10-25",
+        "cancel_reason": "Customer no longer uses this."
+      },
+      "renew_subscription": {
+        "renewal_term": {
+          "term_type": "TERMED",
+          "period_type": "Month",
+          "term_period": 12,
+          "start_date": "2022-10-25",
+          "end_date": "2022-10-25"
+        },
+        "discounts": [
+          {
+            "discount_type": "Exception",
+            "percent_value": 0.1,
+            "amount_value": 10,
+            "apply_to_charge": "PRLC-3223",
+            "discount_level": "subscription",
+            "discount_program": "VLA program"
+          }
+        ]
+      },
+      "update_subscription": {
+        "auto_renew": true,
+        "renewal_term": {
+          "term_type": "TERMED",
+          "term_period": 12,
+          "start_date": "2023-10-03",
+          "end_date": "2024-03-20"
+        },
+        "sold_to_crm_contact_number": "C-232442",
+        "end_customer_language": "es-ES;",
+        "professional_services": {
+          "requires_professional_services": "Yes, Zoom will do the deployment",
+          "is_zoom_pso_org_engaged": "Yes and I have a PSO Engagement Request ID",
+          "pso_engagement_request_id": "SRE-351262",
+          "deployment_partner": {
+            "deployment_partner_name": "ABC LLC",
+            "deployment_partner_crm_account_number": "A-1234241",
+            "deployment_partner_address": {
+              "line_1": "55 Almaden Blvd",
+              "city": "San Jose",
+              "postal_code": "95114",
+              "state": "PA",
+              "country": "US"
+            }
+          },
+          "professional_services_description": "false"
+        }
+      },
+      "additional_attributes": [
+        {
+          "name": "Tracking number",
+          "value_type": "Boolean",
+          "value": "TR28483"
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "error_code": "5012",
+      "error_description": "Invalid Partner or Reseller Identifier supplied."
+    }
+  ],
+  "warnings": [
+    {
+      "error_code": "5604",
+      "error_description": "No pricebook exists with given \u0060offer_price_list_id\u0060."
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "user_templates": [
+    {
+      "template_id": "OlK7lczzT_e7h6p1Q6wGdg",
+      "template_name": "template_update",
+      "template_type": "update",
+      "template_status": "active"
+    }
+  ]
+}

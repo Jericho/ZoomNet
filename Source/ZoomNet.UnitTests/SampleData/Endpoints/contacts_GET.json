@@ -1,0 +1,39 @@
+{
+  "contacts": [
+    {
+      "contact_type": 1,
+      "dept": "Developer",
+      "direct_numbers": [
+        "\u002B1111111"
+      ],
+      "email": "jchill@example.com",
+      "extension_number": "31",
+      "display_name": "Jill Chill",
+      "first_name": "Jill",
+      "id": "v4iyWT1LTfy8QvPG4GTvdg",
+      "member_id": "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK",
+      "im_group_id": "8jUIm-825c9e31f1064c73b394c5e4557d3447",
+      "im_group_name": "Developers",
+      "job_title": "Developer",
+      "last_name": "Chill",
+      "location": "San Jose",
+      "phone_number": "5550100",
+      "phone_numbers": [
+        {
+          "code": "\u002B1",
+          "country": "US",
+          "label": "Mobile",
+          "number": "5550100",
+          "verified": true
+        }
+      ],
+      "presence_status": "Available",
+      "user_status": "active",
+      "activity": "Active",
+      "sip_phone_number": "11111111",
+      "sip_uri": "example.com"
+    }
+  ],
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 10
+}

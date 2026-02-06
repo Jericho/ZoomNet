@@ -1,0 +1,25 @@
+{
+  "total_records": 1,
+  "next_page_token": "oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2",
+  "registrations": [
+    {
+      "email": "xyz@example.com",
+      "first_name": "First",
+      "last_name": "Last",
+      "video_watch_duration": [
+        {
+          "video_id": "LVRGBTZXI6Kt7zv0g",
+          "video_name": "tutorial one",
+          "duration": 10
+        }
+      ],
+      "authentication_method": "no_auth",
+      "questions": [
+        {
+          "title": "First Name",
+          "answer": "Michael"
+        }
+      ]
+    }
+  ]
+}

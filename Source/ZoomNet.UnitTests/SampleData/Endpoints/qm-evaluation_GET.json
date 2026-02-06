@@ -1,0 +1,40 @@
+{
+  "total": 51,
+  "page_size": 20,
+  "data": [
+    {
+      "id": "0e73a69f8f104d24a589fa0c615abca8",
+      "account_id": "SY-AEWW6Ruqgt89_T2zqBg",
+      "user_id": "httgPnTgTxq0d65-alfYVw",
+      "creator_id": "b0_yDuNGSq65EF8i1f0PcQ",
+      "modify_time": "2024-05-28T09:52:22Z",
+      "create_time": "2024-05-28T09:52:22Z",
+      "channel_type": "VOICE",
+      "task_name": "evaluation_q9DyYF8iSXa3PVAhb6nekQ",
+      "interaction_id": "q9DyYF8iSXa3PVAhb6nekQ",
+      "scorecard_id": "2uJ4u83yQ_qbyyFDmxsMcQ",
+      "creator_info": {
+        "user_id": "b0_yDuNGSq65EF8i1f0PcQ",
+        "display_name": "Rick Arps"
+      },
+      "agent_info": {
+        "user_id": "httgPnTgTxq0d65-alfYVw",
+        "display_name": "Ashlee York"
+      },
+      "evaluators_info": [
+        {
+          "user_id": "b0_yDuNGSq65EF8i1f0PcQ",
+          "display_name": "Rick Arps"
+        }
+      ],
+      "scorecard_name": "Customer Care",
+      "scoring_format": "percentage",
+      "total_score": 50,
+      "evaluation_score": 10,
+      "interaction_deleted": false,
+      "status": "Active",
+      "acknowledgement_status": "Pending"
+    }
+  ],
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42"
+}

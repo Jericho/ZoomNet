@@ -1,0 +1,26 @@
+{
+  "channel_activity_logs": [
+    {
+      "channel_id": "825c9e31f1064c73b394c5e4557d3447",
+      "activity_type": "membership",
+      "activity_timestamp": 1581370790388,
+      "operator": {
+        "display_name": "John Doe",
+        "user_id": "37oirnidtk6ije2tsfazbq",
+        "member_id": "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK"
+      },
+      "members": {
+        "member_status": "join",
+        "member_list": [
+          {
+            "display_name": "John Doe",
+            "user_id": "37oirnidtk6ije2tsfazbq",
+            "member_id": "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK"
+          }
+        ]
+      }
+    }
+  ],
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 15
+}

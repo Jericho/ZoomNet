@@ -1,0 +1,11 @@
+{
+  "delegates": [
+    {
+      "delegateEmail": "john.doe@example.com",
+      "verificationStatus": "accepted",
+      "delegateAccess": "dlgreviewer",
+      "accessTime": "1705098965973",
+      "creationTime": "1705098965973"
+    }
+  ]
+}

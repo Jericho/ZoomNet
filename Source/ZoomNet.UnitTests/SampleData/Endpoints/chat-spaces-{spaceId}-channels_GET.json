@@ -1,0 +1,13 @@
+{
+  "next_page_token": "8V8HigQkzm2O5r9RUn31D9ZyJHgrmFfbLa2",
+  "page_size": 30,
+  "channels": [
+    {
+      "channel_id": "cabc1234567defghijkl01234",
+      "channel_name": "Developers",
+      "description": "Learning channel",
+      "space_channel_type": "private",
+      "member_count": 30
+    }
+  ]
+}

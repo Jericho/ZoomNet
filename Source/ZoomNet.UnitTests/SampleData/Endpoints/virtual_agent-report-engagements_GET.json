@@ -1,0 +1,126 @@
+{
+  "next_page_token": "ngLawmAGlYagy37vLJtKMM4TkMnagfqWm73",
+  "page_size": 10,
+  "total_records": 44,
+  "timezone": "UTC",
+  "engagements": [
+    {
+      "engagement_id": "NF1kPajwRCGa9-cgHWGAQw",
+      "start_time": "2023-07-11T22:17:49.0000000\u002B00:00",
+      "duration": 25,
+      "campaign_name": "campaignA",
+      "global_variables": [
+        {
+          "type": "system",
+          "value": "value A",
+          "group_name": "group A",
+          "group_id": "1688149024708",
+          "variable_name": "variable A",
+          "variable_id": "h9NNoHkwTrqEEiQ3e8ATOw",
+          "need_mask": true,
+          "need_store": true
+        }
+      ],
+      "outcome": "assistanceRequested",
+      "launch_url": "https://zoom.us",
+      "query_summary": {
+        "query_ids": [
+          "kkvuqwaosrm9itxqthxirq"
+        ],
+        "count": 12
+      },
+      "intent_summary": {
+        "intents_matched": [
+          {
+            "intent_id": "sbyW0BwLTUSKGzDsqcfnCQ",
+            "intent_name": "Contact Support copy",
+            "intent_type": "faq",
+            "accuracy": 0.5,
+            "system_intent": true
+          }
+        ],
+        "count": 10
+      },
+      "language_code": "en-US",
+      "query_details": [
+        {
+          "query_id": "0b883910-0783-4383-9dcf-b5c9ba315438",
+          "engagement_id": "ioknax-4siqztcqwga0xug",
+          "bot_id": "FZOKnPjmTse9ISSvQN4Zjg",
+          "bot_session_id": "ioknax-4siqztcqwga0xug",
+          "query_time": "2023-07-11T22:17:49.0000000\u002B00:00",
+          "language_code": "en-US",
+          "query_text": "Route 1",
+          "intents": [
+            {
+              "intent_id": "sbyW0BwLTUSKGzDsqcfnCQ",
+              "intent_name": "Contact Support copy",
+              "intent_type": "faq",
+              "accuracy": 0.5,
+              "system_intent": true
+            }
+          ],
+          "articles": [
+            {
+              "id": "-0zryh7dTEyY9HADPHm_dA",
+              "title": "Can I edit my chat welcome screen?",
+              "answer": "Yes, you can customize the following settings for the chat welcome screen.",
+              "url": "https://docs.google.com/",
+              "score": 0.5,
+              "kb_details": [
+                {
+                  "kb_id": "-0zryh7dTEyY9HADPHm_dA",
+                  "kb_name": "default knowledge base",
+                  "kb_groups": [
+                    {
+                      "id": "2",
+                      "name": "default name"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "end_time": "2023-07-12T22:17:49.0000000\u002B00:00",
+      "consumer_id": "KuwgnuP7RgSJAN3Kjaw_uQ",
+      "deleted": true,
+      "agents": [
+        {
+          "agent_type": "AI_VOICE",
+          "agent_id": "QF0l7by1TfuIteSJfleVdg",
+          "agent_name": "HappyBot AI Agent",
+          "agent_version_id": "Mn8m2c4ERrWrzZ9SqjNHMQ",
+          "agent_version_number": 8
+        }
+      ],
+      "tools": [
+        "End_Conversation"
+      ],
+      "skills": [
+        "Route_To_Demo"
+      ],
+      "articles": [
+        "Can I edit my chat welcome screen?"
+      ],
+      "topics": [
+        "Weather Inquiry"
+      ],
+      "last_responder": "Consumer",
+      "interaction_duration": 25,
+      "interaction_turns": 7,
+      "escalation_reason": "Escalation requested",
+      "user_phone_number": "\u002B12097899000",
+      "source_types": [
+        "ZCC_AI_AGENT"
+      ],
+      "transfer_accepted": true,
+      "implicit_resolution": "RESOLVED",
+      "agent_messages_sent": 3,
+      "consumer_messages_sent": 2
+    }
+  ],
+  "from": "2023-07-01T00:00:00.0000000\u002B00:00",
+  "to": "2023-07-02T23:59:59.0000000\u002B00:00"
+}

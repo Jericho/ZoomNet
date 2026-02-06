@@ -1,0 +1,13 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "contact_lists": [
+    {
+      "contact_list_id": "MN2Dtcb2T-yT5CU3clN-AA",
+      "contact_list_name": "Contact List",
+      "contact_list_description": "Description",
+      "contacts_count": 1
+    }
+  ]
+}

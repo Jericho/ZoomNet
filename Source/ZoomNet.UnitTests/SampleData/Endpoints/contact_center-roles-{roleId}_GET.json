@@ -1,0 +1,19 @@
+{
+  "role_id": "zeYjXoDOS_eV1QmTpj63PQ",
+  "role_name": "Agent",
+  "role_description": "Agent role.",
+  "total_users": 3,
+  "modified_by": "IGTRVt3gQ2i-WjoUIjeZxw",
+  "last_modified_time": "2022-03-03T05:07:46.0000000\u002B00:00",
+  "privileges": {
+    "analytics_settings": [
+      "RptWallboard:Read"
+    ],
+    "administration_settings": [
+      "VecUser:Read"
+    ],
+    "general_settings": [
+      "outbound-voice-call"
+    ]
+  }
+}

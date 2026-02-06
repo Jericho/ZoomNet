@@ -1,0 +1,38 @@
+{
+  "contact_id": "zeYjXoDOS_eV1QmTpj63PQ",
+  "display_name": "Jill Chill",
+  "first_name": "Jill",
+  "last_name": "Chill",
+  "phone_numbers": [
+    "\u002B12048002447"
+  ],
+  "phones": [
+    {
+      "phone_number": "\u002B12048002447",
+      "phone_type": "main"
+    }
+  ],
+  "emails": [
+    "user@example.com"
+  ],
+  "location": "San Jose",
+  "timezone": "America/Los_Angeles",
+  "account_number": "112233445566",
+  "company": "Example",
+  "role": "Agent",
+  "address_book_id": "jweQeTYDOS_eV1QmTpj63PQ",
+  "address_book_name": "Address Book",
+  "variables": [
+    {
+      "variable_group_id": "afececcd-0c9f-48de-9d19-0c84e8bdfeca",
+      "variable_id": "zeYjXoDOS_eV1QmTpj63PQ",
+      "variable_name": "variable demo name",
+      "data_type": "string",
+      "variable_value": "variable value demo"
+    }
+  ],
+  "consumer_ids": [
+    "cvC2JxWkToWZsJUenBvNnw"
+  ],
+  "custom_fields_url": "https://api.zoom.us/v2/contact_center/address_books/custom_fields/contacts/zeYjXoDOS_eV1QmTpj63PQ"
+}

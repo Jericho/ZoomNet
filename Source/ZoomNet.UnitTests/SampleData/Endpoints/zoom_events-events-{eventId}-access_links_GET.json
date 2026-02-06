@@ -1,0 +1,25 @@
+{
+  "access_links": [
+    {
+      "access_link_id": "234kjhg23kl4jhlaksjdh3",
+      "name": "Event Access Link 1",
+      "type": "registration",
+      "is_default": true,
+      "url": "https://gobranding.zipow.com/ev/Ar7HuZc3rtKwaVqLz0QdBYN-2jTOMeGGgLe-G7JzOUQZTIBOpBaH~Aq9NeHNgGwwg2eyFH7eEtP4bXRXiiYCM8pDiTuTbrigbqJ1uK2K6Ga-Ghg",
+      "authentication_method": "bypass_auth",
+      "idp_name": "okta",
+      "allow_domain_list": [
+        "zoom.us"
+      ],
+      "email_restrict_list": [
+        "example1@email.com"
+      ],
+      "security_at_join": {
+        "email_authentication": true,
+        "security_code_verification": true
+      },
+      "ticket_type_id": "234kjhg23kl4jhlaksjdh3",
+      "recurring_registration_option": "all_sessions"
+    }
+  ]
+}

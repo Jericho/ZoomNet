@@ -1,0 +1,1825 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="meeting_alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.alert.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_breakout_room_sharing_ended" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.breakout_room_sharing_ended.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_breakout_room_sharing_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.breakout_room_sharing_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_ended" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.ended.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_joined_breakout_room" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_joined_breakout_room.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_left_breakout_room" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_left_breakout_room.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_sharing_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.sharing_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="recording_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\recording.completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_ended" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.ended.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_summary_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.summary_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_summary_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.summary_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_summary_recovered" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.summary_recovered.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_summary_shared" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.summary_shared.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_summary_trashed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.summary_trashed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_summary_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.summary_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_invitation_accepted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.invitation_accepted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_invitation_dispatched" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.invitation_dispatched.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_invitation_rejected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.invitation_rejected.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_invitation_timeout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.invitation_timeout.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_phone_callout_accepted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_phone_callout_accepted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_phone_callout_missed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_phone_callout_missed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_phone_callout_rejected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_phone_callout_rejected.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_phone_callout_ringing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_phone_callout_ringing.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_room_system_callout_accepted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_room_system_callout_accepted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_room_system_callout_failed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_room_system_callout_failed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_room_system_callout_missed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_room_system_callout_missed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_room_system_callout_rejected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_room_system_callout_rejected.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_room_system_callout_ringing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_room_system_callout_ringing.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_ai_companion_assets_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.ai_companion_assets_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_ai_companion_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.ai_companion_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_ai_companion_stopped" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.ai_companion_stopped.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_aic_transcript_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.aic_transcript_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_chat_message_file_downloaded" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.chat_message_file_downloaded.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_chat_message_file_sent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.chat_message_file_sent.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_chat_message_sent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.chat_message_sent.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_converted_to_webinar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.converted_to_webinar.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_device_tested" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.device_tested.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_live_streaming_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.live_streaming_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_live_streaming_stopped" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.live_streaming_stopped.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_admitted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_admitted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_bind" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_bind.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_feedback" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_feedback.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_jbh_joined" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_jbh_joined.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_jbh_waiting" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_jbh_waiting.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_jbh_waiting_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_jbh_waiting_left.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_joined" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_joined.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_joined_waiting_room" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_joined_waiting_room.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_left.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_left_waiting_room" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_left_waiting_room.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_put_in_waiting_room" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_put_in_waiting_room.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_role_changed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_role_changed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_permanently_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.permanently_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_recovered" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.recovered.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_registration_approved" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.registration_approved.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_registration_cancelled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.registration_cancelled.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_registration_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.registration_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_registration_denied" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.registration_denied.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_risk_alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.risk_alert.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_sharing_ended" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.sharing_ended.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="recording_archive_files_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\recording.archive_files_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="recording_batch_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\recording.batch_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="recording_batch_recovered" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\recording.batch_recovered.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="recording_batch_trashed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\recording.batch_trashed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="recording_cloud_storage_usage_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\recording.cloud_storage_usage_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="recording_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\recording.deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="recording_paused" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\recording.paused.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="recording_recovered" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\recording.recovered.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="recording_registration_approved" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\recording.registration_approved.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="recording_registration_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\recording.registration_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="recording_registration_denied" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\recording.registration_denied.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="recording_renamed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\recording.renamed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="recording_resumed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\recording.resumed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="recording_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\recording.started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="recording_stopped" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\recording.stopped.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="recording_transcript_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\recording.transcript_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="recording_trashed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\recording.trashed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="user_tsp_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\user.tsp_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="user_tsp_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\user.tsp_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="user_tsp_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\user.tsp_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.alert.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_chat_message_file_downloaded" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.chat_message_file_downloaded.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_chat_message_file_sent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.chat_message_file_sent.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_chat_message_sent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.chat_message_sent.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_converted_to_meeting" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.converted_to_meeting.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_participant_bind" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.participant_bind.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_participant_feedback" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.participant_feedback.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_participant_joined" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.participant_joined.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_participant_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.participant_left.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_participant_role_changed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.participant_role_changed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_permanently_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.permanently_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_recovered" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.recovered.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_registration_approved" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.registration_approved.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_registration_cancelled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.registration_cancelled.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_registration_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.registration_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_registration_denied" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.registration_denied.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_sharing_ended" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.sharing_ended.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_sharing_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.sharing_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_rtms_concurrency_near_limit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.rtms_concurrency_near_limit.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_rtms_interrupted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.rtms_interrupted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_rtms_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.rtms_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_rtms_stopped" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.rtms_stopped.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="rtms_concurrency_limited" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\rtms.concurrency_limited.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_rtms_interrupted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.rtms_interrupted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_rtms_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.rtms_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_rtms_stopped" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.rtms_stopped.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat_channel_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\chat_channel.created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat_channel_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\chat_channel.deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat_channel_member_invited" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\chat_channel.member_invited.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat_channel_member_joined" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\chat_channel.member_joined.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat_channel_member_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\chat_channel.member_left.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat_channel_member_removed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\chat_channel.member_removed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat_channel_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\chat_channel.updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat_message_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\chat_message.deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat_message_replied" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\chat_message.replied.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat_message_sent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\chat_message.sent.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="chat_message_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\chat_message.updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_bookmark_added" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.bookmark_added.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_bookmark_removed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.bookmark_removed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_channel_app_added" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.channel_app_added.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_channel_app_removed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.channel_app_removed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_channel_archived" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.channel_archived.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_channel_invitation_accepted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.channel_invitation_accepted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_channel_invitation_approval_requested" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.channel_invitation_approval_requested.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_channel_invitation_approved" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.channel_invitation_approved.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_channel_invitation_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.channel_invitation_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_channel_invitation_declined" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.channel_invitation_declined.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_channel_invitation_rejected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.channel_invitation_rejected.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_channel_invitation_removed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.channel_invitation_removed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_channel_join_approval_requested" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.channel_join_approval_requested.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_channel_join_approved" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.channel_join_approved.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_channel_join_declined" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.channel_join_declined.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_channel_join_requested" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.channel_join_requested.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_channel_message_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.channel_message_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_channel_message_posted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.channel_message_posted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_channel_message_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.channel_message_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_channel_pin_added" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.channel_pin_added.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_channel_pin_removed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.channel_pin_removed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_channel_reaction_added" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.channel_reaction_added.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_channel_reaction_removed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.channel_reaction_removed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_channel_unarchived" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.channel_unarchived.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_dm_message_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.dm_message_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_dm_message_posted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.dm_message_posted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_dm_message_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.dm_message_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_dm_reaction_added" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.dm_reaction_added.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_dm_reaction_removed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.dm_reaction_removed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_emoji_added" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.emoji_added.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_emoji_removed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.emoji_removed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_file_changed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.file_changed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_file_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.file_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_file_downloaded" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.file_downloaded.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_file_shared" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.file_shared.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_file_unshared" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.file_unshared.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_file_uploaded" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.file_uploaded.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_shared_spaces_edited" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.shared_spaces_edited.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_shared_spaces_member_invited" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.shared_spaces_member_invited.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_shared_spaces_member_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.shared_spaces_member_left.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_shared_spaces_member_removed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.shared_spaces_member_removed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_starred" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.starred.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_unstarred" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.unstarred.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_account_settings_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.account_settings_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_ai_call_summary_changed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.ai_call_summary_changed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_blind_transfer_initiated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.blind_transfer_initiated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_call_element_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.call_element_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_call_history_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.call_history_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_call_log_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.call_log_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_call_log_permanently_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.call_log_permanently_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_callee_answered" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.callee_answered.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_callee_call_element_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.callee_call_element_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_callee_call_history_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.callee_call_history_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_callee_call_log_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.callee_call_log_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_callee_ended" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.callee_ended.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_callee_hold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.callee_hold.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_callee_meeting_inviting" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.callee_meeting_inviting.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_callee_missed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.callee_missed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_callee_mute" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.callee_mute.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_callee_parked" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.callee_parked.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_callee_rejected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.callee_rejected.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_callee_ringing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.callee_ringing.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_callee_unhold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.callee_unhold.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_callee_unmute" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.callee_unmute.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_caller_call_element_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.caller_call_element_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_caller_call_history_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.caller_call_history_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_caller_call_log_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.caller_call_log_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_caller_connected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.caller_connected.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_caller_ended" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.caller_ended.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_caller_hold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.caller_hold.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_caller_meeting_inviting" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.caller_meeting_inviting.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_caller_mute" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.caller_mute.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_caller_ringing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.caller_ringing.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_caller_unhold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.caller_unhold.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_caller_unmute" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.caller_unmute.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_conference_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.conference_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_device_registration" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.device_registration.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_emergency_alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.emergency_alert.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_generic_device_provision" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.generic_device_provision.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_group_settings_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.group_settings_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_peering_number_cnam_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.peering_number_cnam_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_peering_number_emergency_address_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.peering_number_emergency_address_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_recording_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.recording_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_recording_completed_for_access_member" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.recording_completed_for_access_member.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_recording_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.recording_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_recording_failed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.recording_failed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_recording_paused" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.recording_paused.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_recording_permanently_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.recording_permanently_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_recording_resumed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.recording_resumed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_recording_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.recording_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_recording_stopped" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.recording_stopped.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_recording_transcript_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.recording_transcript_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_sms_campaign_number_opt_in" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.sms_campaign_number_opt_in.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_sms_campaign_number_opt_out" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.sms_campaign_number_opt_out.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_sms_etiquette_block" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.sms_etiquette_block.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_sms_etiquette_warn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.sms_etiquette_warn.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_sms_received" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.sms_received.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_sms_sent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.sms_sent.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_sms_sent_failed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.sms_sent_failed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_transfer_call_to_voicemail_initiated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.transfer_call_to_voicemail_initiated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_transfer_recipient_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.transfer_recipient_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_voicemail_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.voicemail_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_voicemail_permanently_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.voicemail_permanently_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_voicemail_received" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.voicemail_received.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_voicemail_received_for_access_member" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.voicemail_received_for_access_member.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_voicemail_transcript_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.voicemail_transcript_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_warm_transfer_cancelled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.warm_transfer_cancelled.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_warm_transfer_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.warm_transfer_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_warm_transfer_initiated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.warm_transfer_initiated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="mail_history_event" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\mail.history_event.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="calendar_acl_create" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\calendar.acl_create.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="calendar_acl_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\calendar.acl_delete.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="calendar_acl_update" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\calendar.acl_update.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="calendar_calendarlist_create" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\calendar.calendarlist_create.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="calendar_calendarlist_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\calendar.calendarlist_delete.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="calendar_calendarlist_update" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\calendar.calendarlist_update.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="calendar_event_create" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\calendar.event_create.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="calendar_event_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\calendar.event_delete.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="calendar_event_update" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\calendar.event_update.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="calendar_setting_create" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\calendar.setting_create.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="calendar_setting_update" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\calendar.setting_update.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="visitor_management_checked_in" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\visitor_management.checked_in.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="visitor_management_checked_out" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\visitor_management.checked_out.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="visitor_management_invitation_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\visitor_management.invitation_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="visitor_management_invitation_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\visitor_management.invitation_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="visitor_management_invitation_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\visitor_management.invitation_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="workspace_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\workspace.created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="workspace_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\workspace.deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="workspace_pre_check_in_questionnaire_response_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\workspace.pre_check_in_questionnaire_response_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="workspace_reservation_checked_in" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\workspace.reservation_checked_in.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="workspace_reservation_checked_out" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\workspace.reservation_checked_out.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="workspace_reservation_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\workspace.reservation_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="workspace_reservation_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\workspace.reservation_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="workspace_reservation_questionnaire_response_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\workspace.reservation_questionnaire_response_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="workspace_reservation_questionnaire_response_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\workspace.reservation_questionnaire_response_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="workspace_reservation_update" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\workspace.reservation_update.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="workspace_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\workspace.updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="workspace_user_assigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\workspace.user_assigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="workspace_user_unassigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\workspace.user_unassigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoomroom_alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoomroom.alert.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoomroom_checked_in" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoomroom.checked_in.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoomroom_checked_out" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoomroom.checked_out.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoomroom_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoomroom.created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoomroom_delayed_alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoomroom.delayed_alert.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoomroom_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoomroom.deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoomroom_digital_signage_app_ended" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoomroom.digital_signage_app_ended.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoomroom_digital_signage_app_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoomroom.digital_signage_app_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoomroom_location_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoomroom.location_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoomroom_location_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoomroom.location_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoomroom_location_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoomroom.location_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoomroom_sensor_data" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoomroom.sensor_data.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoomroom_thirdparty_meeting_attempted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoomroom.thirdparty_meeting_attempted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoomroom_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoomroom.updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="bot_installed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\bot_installed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="bot_notification" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\bot_notification.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="interactive_message_actions" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\interactive_message_actions.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="interactive_message_editable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\interactive_message_editable.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="interactive_message_fields_editable" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\interactive_message_fields_editable.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="interactive_message_select" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\interactive_message_select.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_link_shared" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.link_shared.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="scheduler_scheduled_event_canceled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\scheduler.scheduled_event_canceled.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="scheduler_scheduled_event_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\scheduler.scheduled_event_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_asset_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.asset_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_asset_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.asset_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_asset_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.asset_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_business_hours_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.business_hours_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_business_hours_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.business_hours_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_business_hours_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.business_hours_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_call_control_make_call_executed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.call_control_make_call_executed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_closure_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.closure_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_closure_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.closure_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_closure_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.closure_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_consumer_answered" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_consumer_answered.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_consumer_ended" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_consumer_ended.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_consumer_notified" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_consumer_notified.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_consumer_sent_file" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_consumer_sent_file.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_consumer_sent_message" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_consumer_sent_message.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_disposition_added" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_disposition_added.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_email_transcript_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_email_transcript_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_ended" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_ended.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_messaging_transcript_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_messaging_transcript_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_monitor_ended" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_monitor_ended.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_monitor_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_monitor_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_note_added" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_note_added.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_survey_status" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_survey_status.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_takeover_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_takeover_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_transfer_accepted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_transfer_accepted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_transfer_canceled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_transfer_canceled.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_transfer_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_transfer_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_transfer_initiated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_transfer_initiated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_transfer_queued" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_transfer_queued.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_transfer_rejected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_transfer_rejected.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_transfer_reserved" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_transfer_reserved.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_transfer_timeout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_transfer_timeout.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_upgrade_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_upgrade_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_upgrade_expired" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_upgrade_expired.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_upgrade_initiated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_upgrade_initiated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_user_answered" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_user_answered.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_user_dtmf_sent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_user_dtmf_sent.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_user_ended" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_user_ended.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_user_hold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_user_hold.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_user_muted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_user_muted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_user_sent_file" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_user_sent_file.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_user_sent_message" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_user_sent_message.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_user_unhold" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_user_unhold.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_user_unmuted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_user_unmuted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_wrap_up_ended" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_wrap_up_ended.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_wrap_up_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_wrap_up_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_inbox_message_assigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.inbox_message_assigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_inbox_message_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.inbox_message_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_inbox_message_downloaded" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.inbox_message_downloaded.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_inbox_message_opened" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.inbox_message_opened.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_inbox_message_received" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.inbox_message_received.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_inbox_message_reopened" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.inbox_message_reopened.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_inbox_message_resolved" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.inbox_message_resolved.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_outbound_campaign_dialer_status" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.outbound_campaign_dialer_status.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_queue_agent_assigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.queue_agent_assigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_queue_agent_unassigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.queue_agent_unassigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_queue_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.queue_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_queue_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.queue_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_queue_inbound_sla_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.queue_inbound_sla_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_queue_operating_hours_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.queue_operating_hours_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_queue_supervisor_assigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.queue_supervisor_assigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_queue_supervisor_unassigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.queue_supervisor_unassigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_recording_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.recording_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_recording_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.recording_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_recording_paused" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.recording_paused.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_recording_permanently_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.recording_permanently_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_recording_resumed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.recording_resumed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_recording_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.recording_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_recording_stopped" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.recording_stopped.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_recording_transcript_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.recording_transcript_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_sms_status" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.sms_status.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_task_canceled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.task_canceled.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_task_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.task_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_task_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.task_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_task_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.task_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_task_entered_queue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.task_entered_queue.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_task_exited_queue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.task_exited_queue.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_task_reservation_accepted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.task_reservation_accepted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_task_reservation_canceled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.task_reservation_canceled.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_task_reservation_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.task_reservation_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_task_reservation_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.task_reservation_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_task_reservation_rejected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.task_reservation_rejected.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_task_reservation_timeout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.task_reservation_timeout.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_task_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.task_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_user_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.user_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_user_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.user_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_user_login" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.user_login.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_user_logout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.user_logout.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_user_opt_in" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.user_opt_in.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_user_opt_out" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.user_opt_out.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_user_status_changed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.user_status_changed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_user_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.user_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_voicemail_transcript_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.voicemail_transcript_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events_event_cancelled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoom_events.event_cancelled.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events_event_duplicated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoom_events.event_duplicated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events_event_published" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoom_events.event_published.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events_event_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoom_events.event_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events_exhibitor_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoom_events.exhibitor_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events_exhibitor_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoom_events.exhibitor_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events_exhibitor_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoom_events.exhibitor_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events_session_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoom_events.session_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events_session_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoom_events.session_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events_session_ended" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoom_events.session_ended.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events_session_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoom_events.session_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events_speaker_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoom_events.speaker_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events_speaker_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoom_events.speaker_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events_speaker_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoom_events.speaker_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events_ticket_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoom_events.ticket_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events_ticket_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoom_events.ticket_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events_ticket_type_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoom_events.ticket_type_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events_ticket_type_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoom_events.ticket_type_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events_ticket_type_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoom_events.ticket_type_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events_ticket_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoom_events.ticket_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="zoom_events_vod_registration_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\zoom_events.vod_registration_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="revenue_accelerator_conversation_analysis_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\revenue_accelerator.conversation_analysis_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="revenue_accelerator_playlist_add_moment" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\revenue_accelerator.playlist_add_moment.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="revenue_accelerator_playlist_create" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\revenue_accelerator.playlist_create.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="revenue_accelerator_playlist_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\revenue_accelerator.playlist_delete.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="revenue_accelerator_playlist_remove_moment" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\revenue_accelerator.playlist_remove_moment.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="revenue_accelerator_post_comment_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\revenue_accelerator.post_comment_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="number_management_peering_number_cnam_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\number_management.peering_number_cnam_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="number_management_peering_number_emergency_address_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\number_management.peering_number_emergency_address_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_mc_stat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.mc_stat.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_mc_stat_alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.mc_stat_alert.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_mc_zone_stat_alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.mc_zone_stat_alert.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_nfs_alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.nfs_alert.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_rc_stat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.rc_stat.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_rc_stat_alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.rc_stat_alert.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_server_bandwidth_alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.server_bandwidth_alert.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_server_confirmed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.server_confirmed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_server_cpu_alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.server_cpu_alert.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_server_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.server_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_server_disk_alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.server_disk_alert.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_server_memory_alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.server_memory_alert.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_server_offline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.server_offline.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_server_online" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.server_online.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_server_rebooted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.server_rebooted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_server_registered" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.server_registered.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_server_shutdown" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.server_shutdown.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_server_stat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.server_stat.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_server_update_available" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.server_update_available.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_server_update_failed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.server_update_failed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_server_update_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.server_update_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_server_update_success" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.server_update_success.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_service_abnormal_status" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.service_abnormal_status.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_service_cpu_alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.service_cpu_alert.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_service_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.service_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_service_memory_alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.service_memory_alert.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_service_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.service_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_service_stat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.service_stat.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_service_stopped" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.service_stopped.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_service_update_available" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.service_update_available.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_service_update_failed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.service_update_failed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_service_update_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.service_update_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_service_update_success" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.service_update_success.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_zhm_stat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.zhm_stat.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_zhm_stat_alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.zhm_stat_alert.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_zhm_zone_stat_alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.zhm_zone_stat_alert.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_zone_added" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.zone_added.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="node_zone_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\node.zone_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="quality_management_evaluation_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\quality_management.evaluation_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="quality_management_interaction_analysis_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\quality_management.interaction_analysis_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="clinical_notes_note_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\clinical_notes.note_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="video_management_channel_published" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\video_management.channel_published.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="video_management_channel_unpublished" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\video_management.channel_unpublished.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="video_management_channel_video_added" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\video_management.channel_video_added.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="video_management_channel_video_removed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\video_management.channel_video_removed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="group_admin_added" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\group.admin_added.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="group_admin_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\group.admin_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="group_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\group.created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="group_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\group.deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="group_lock_settings_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\group.lock_settings_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="group_member_added" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\group.member_added.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="group_member_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\group.member_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="group_settings_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\group.settings_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="group_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\group.updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="user_activated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\user.activated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="user_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\user.created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="user_deactivated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\user.deactivated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="user_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\user.deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="user_disassociated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\user.disassociated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="user_invitation_accepted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\user.invitation_accepted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="user_personal_notes_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\user.personal_notes_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="user_presence_status_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\user.presence_status_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="user_settings_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\user.settings_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="user_signed_in" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\user.signed_in.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="user_signed_out" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\user.signed_out.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="user_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\user.updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="account_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\account.created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="account_disassociated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\account.disassociated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="account_lock_settings_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\account.lock_settings_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="account_settings_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\account.settings_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="account_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\account.updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="account_vanity_url_approved" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\account.vanity_url_approved.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="account_vanity_url_rejected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\account.vanity_url_rejected.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="information_barriers_policy_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\information_barriers.policy_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="information_barriers_policy_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\information_barriers.policy_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="information_barriers_policy_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\information_barriers.policy_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_data" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_data.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_data_summary" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_data_summary.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_qos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_qos.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="meeting_participant_qos_summary" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_qos_summary.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_call_qos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.call_qos.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_call_qos_summary" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.call_qos_summary.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_user_data" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.user_data.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_user_data_summary" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.user_data_summary.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_user_qos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.user_qos.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_user_qos_summary" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.user_qos_summary.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_participant_data" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.participant_data.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_participant_data_summary" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.participant_data_summary.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_participant_qos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.participant_qos.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_participant_qos_summary" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.participant_qos_summary.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_alert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.alert.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_ended" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.ended.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_live_streaming_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.live_streaming_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_live_streaming_stopped" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.live_streaming_stopped.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_recording_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.recording_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_recording_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.recording_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_recording_paused" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.recording_paused.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_recording_recovered" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.recording_recovered.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_recording_resumed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.recording_resumed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_recording_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.recording_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_recording_stopped" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.recording_stopped.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_recording_summary_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.recording_summary_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_recording_transcript_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.recording_transcript_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_recording_transcript_failed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.recording_transcript_failed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_recording_trashed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.recording_trashed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_sharing_ended" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.sharing_ended.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_sharing_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.sharing_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_stream_ingestion_connected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.stream_ingestion_connected.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_stream_ingestion_disconnected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.stream_ingestion_disconnected.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_stream_ingestion_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.stream_ingestion_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_stream_ingestion_stopped" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.stream_ingestion_stopped.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_stream_ingestion_unbind" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.stream_ingestion_unbind.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_user_joined" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.user_joined.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_user_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.user_left.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_user_phone_callout_accepted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.user_phone_callout_accepted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_user_phone_callout_canceled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.user_phone_callout_canceled.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_user_phone_callout_missed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.user_phone_callout_missed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_user_phone_callout_rejected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.user_phone_callout_rejected.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_user_phone_callout_ringing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.user_phone_callout_ringing.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_user_room_system_callout_accepted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.user_room_system_callout_accepted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_user_room_system_callout_failed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.user_room_system_callout_failed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_user_room_system_callout_missed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.user_room_system_callout_missed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_user_room_system_callout_rejected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.user_room_system_callout_rejected.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_user_room_system_callout_ringing" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.user_room_system_callout_ringing.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="cobrowse_session_ended" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\cobrowse.session_ended.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="cobrowse_session_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\cobrowse.session_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="cobrowse_session_user_joined" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\cobrowse.session_user_joined.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="cobrowse_session_user_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\cobrowse.session_user_left.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="app_deauthorized" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\app_deauthorized.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="app_authorization_request_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\app.authorization_request_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="team_chat_app_mention" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\team_chat.app_mention.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_team_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.team_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="rtms_concurrency_near_limit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\rtms.concurrency_near_limit.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_team_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.team_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_team_members_assigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.team_members_assigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_team_members_unassigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.team_members_unassigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_team_moved" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.team_moved.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_team_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.team_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="endpoint_url_validation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\endpoint.url_validation.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_queue_scheduled_callback_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.queue_scheduled_callback_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="whiteboard_archive_available" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\whiteboard.archive_available.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="whiteboard_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\whiteboard.created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="whiteboard_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\whiteboard.deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="whiteboard_file_added" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\whiteboard.file_added.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="whiteboard_opened" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\whiteboard.opened.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="whiteboard_share_settings_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\whiteboard.share_settings_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="whiteboard_shared" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\whiteboard.shared.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="whiteboard_sharing_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\whiteboard.sharing_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_rtms_interrupted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.rtms_interrupted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_rtms_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.rtms_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_rtms_stopped" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.rtms_stopped.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_cx_engagement_end_data_ready" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.cx_engagement_end_data_ready.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_legacy_engagement_end_data_ready" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.legacy_engagement_end_data_ready.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_message_status" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.message_status.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_user_phone_numbers_assigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.user_phone_numbers_assigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_user_phone_numbers_unassigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.user_phone_numbers_unassigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_user_skills_assigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.user_skills_assigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_user_skills_unassigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.user_skills_unassigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+</root>

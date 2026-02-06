@@ -1,0 +1,25 @@
+{
+  "next_page_token": "6VXOgUaNNeZ7qL7bENvXPgclgeZ3bf3nbj2",
+  "page_size": 1,
+  "total_records": 6,
+  "records": [
+    {
+      "email": "test.user@gmail.com",
+      "bssid": "d0:15:a6:1f:4f:35",
+      "user_display_name": "James Lu",
+      "extension_id": "VodZOCkyRM-wfOqr1xmuMQ",
+      "extension_number": 10010,
+      "site_name": "Main Site",
+      "site_id": "oB18huSERjqbzrsyL2bD5w",
+      "public_ip": "66.172.49.116",
+      "private_ip": "10.100.161.25",
+      "emergency_address": "55 ALMADEN BLVD",
+      "location_name": "example location",
+      "network_switch": {
+        "port": "2",
+        "mac_address": "543968a78ee7"
+      },
+      "location_type": "unknown"
+    }
+  ]
+}

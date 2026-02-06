@@ -1,0 +1,17 @@
+{
+  "next_page_token": "6VXOgUaNNeZ7qL7bENvXPgclgeZ3bf3nbj2",
+  "page_size": 1,
+  "total_records": 6,
+  "records": [
+    {
+      "email": "test.user@gmail.com",
+      "user_display_name": "James Lu",
+      "extension_id": "VodZOCkyRM-wfOqr1xmuMQ",
+      "extension_number": 10010,
+      "site_name": "Main Site",
+      "site_id": "oB18huSERjqbzrsyL2bD5w",
+      "status": "enabled",
+      "reason_for_disabling": 2
+    }
+  ]
+}

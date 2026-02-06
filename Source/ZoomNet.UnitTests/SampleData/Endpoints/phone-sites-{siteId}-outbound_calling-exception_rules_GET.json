@@ -1,0 +1,14 @@
+{
+  "exception_rules": [
+    {
+      "id": "2ypsHHwTTFK-fzZJkudYwA",
+      "match_type": "prefix",
+      "prefix_number": "20665558945",
+      "rule": 1,
+      "comment": "test",
+      "status": "active"
+    }
+  ],
+  "next_page_token": "uBTK3NzNksdkuCUAQaFVFd86kyOr59zg4U2",
+  "page_size": 30
+}

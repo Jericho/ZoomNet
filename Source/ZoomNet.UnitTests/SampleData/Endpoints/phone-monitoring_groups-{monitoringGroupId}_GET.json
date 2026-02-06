@@ -1,0 +1,15 @@
+{
+  "id": "oDmRjKVTRymXGMtgtBK2Sg",
+  "monitor_members_count": 1,
+  "monitored_members_count": 1,
+  "monitoring_privileges": [
+    "listen"
+  ],
+  "name": "pbx_api_test_uacap",
+  "prompt": true,
+  "site": {
+    "id": "8f71O6rWT8KFUGQmJIFAdQ",
+    "name": "Main Site"
+  },
+  "type": 1
+}

@@ -1,0 +1,123 @@
+{
+  "offer_id": "OFR-0000012",
+  "offer_name": "Zoom One Pro",
+  "offer_desc": "Zoom One Professional Bundle",
+  "offer_type": "plan",
+  "z_product_category": "Base Product",
+  "sku": "SKU-00000118",
+  "status": "Limited",
+  "start_date": "2020-10-23",
+  "end_date": "2023-10-25",
+  "offer_products": [
+    {
+      "product_name": "Meetings",
+      "product_id": "PR-1231",
+      "product_family_id": "dfewur3erfdd",
+      "product_family_name": "Core Communication",
+      "product_group_id": "dfewur3erfdd",
+      "product_group_name": "Communication",
+      "product_type": "base",
+      "sku": "SKU-10000120",
+      "product_features": [
+        {
+          "feature_id": "Number of participants",
+          "name": "Maximum number of participants supported",
+          "value_type": "Integer",
+          "value": "100",
+          "uom": "count"
+        }
+      ],
+      "price_list": [
+        {
+          "price_list_id": "PRL-122",
+          "price_list_name": "Zoom Workplace Pro Annual",
+          "prices": [
+            {
+              "price_list_charge_id": "PRLC-1231",
+              "partner_sku_code": "PAR1-PRO-BASE-NH1Y",
+              "charge_type": "Recurring",
+              "charge_model": "Volume Pricing",
+              "name": "Flat fee charge",
+              "uom": "host",
+              "amount": 9.99,
+              "currency": "USD",
+              "region": "LATAM",
+              "country": "US",
+              "min_unit_quantity": 10,
+              "status": "Active",
+              "start_date": "2023-10-25",
+              "end_date": "2023-10-25",
+              "price_tiers": [
+                {
+                  "partner_sku_code": "PAR1-PRO-BASE-NH1Y",
+                  "lower": 1,
+                  "upper": 10,
+                  "price": 81,
+                  "apply_rule": "per-unit"
+                }
+              ]
+            }
+          ],
+          "start_date": "2023-10-25",
+          "end_date": "2030-10-02",
+          "billing_period": "Month",
+          "status": "Limited",
+          "eccn_value": "5D992"
+        }
+      ]
+    }
+  ],
+  "offer_attributes": [
+    {
+      "name": "Min licenses for purchase",
+      "uom": "count",
+      "value_type": "Integer",
+      "value": "10"
+    }
+  ],
+  "pricebook": [
+    {
+      "price_list_id": "PRL-122",
+      "price_list_name": "Zoom Workplace Pro Annual",
+      "prices": [
+        {
+          "price_list_charge_id": "PRLC-1231",
+          "partner_sku_code": "PAR1-PRO-BASE-NH1Y",
+          "charge_type": "Recurring",
+          "charge_model": "Volume Pricing",
+          "name": "Flat fee charge",
+          "uom": "host",
+          "amount": 9.99,
+          "currency": "USD",
+          "country": "US",
+          "min_unit_quantity": 10,
+          "status": "Active",
+          "start_date": "2023-10-25",
+          "end_date": "2023-10-25",
+          "price_tiers": [
+            {
+              "partner_sku_code": "PAR1-PRO-BASE-NH1Y",
+              "lower": 1,
+              "upper": 10,
+              "price": 81,
+              "apply_rule": "per-unit"
+            }
+          ]
+        }
+      ],
+      "start_date": "2023-10-25",
+      "end_date": "2030-10-02",
+      "billing_period": "Month",
+      "status": "Limited",
+      "eccn_value": "5D992",
+      "z_product_class": "1",
+      "pricebook_attributes": [
+        {
+          "name": "Pricebook eligible for Order",
+          "value_type": "Boolean",
+          "value": "true"
+        }
+      ]
+    }
+  ]
+}

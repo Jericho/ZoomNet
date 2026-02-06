@@ -1,0 +1,14 @@
+{
+  "extension_blocked_rules": [
+    {
+      "id": "N9vmnIOHQMSWSL9mrz9jTw",
+      "match_type": "phoneNumber",
+      "phone_number": "\u002B120665558945",
+      "type": "block_for_other_reasons",
+      "blocked_number": "20665558945",
+      "country": "US"
+    }
+  ],
+  "next_page_token": "uBTK3NzNksdkuCUAQaFVFd86kyOr59zg4U2",
+  "page_size": 30
+}

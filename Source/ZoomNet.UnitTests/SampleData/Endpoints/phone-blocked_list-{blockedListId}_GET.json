@@ -1,0 +1,8 @@
+{
+  "block_type": "inbound",
+  "comment": "test",
+  "id": "2ypsHHwTTFK-fzZJkudYwA",
+  "match_type": "prefix",
+  "phone_number": "\u002B120665558945",
+  "status": "active"
+}

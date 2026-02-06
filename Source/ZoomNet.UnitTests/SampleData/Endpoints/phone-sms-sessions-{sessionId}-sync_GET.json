@@ -1,0 +1,39 @@
+{
+  "sms_histories": [
+    {
+      "attachments": [
+        {
+          "download_url": "https://exampleurl.us/file/download/x18dcVWxTcCzbp4zr2AT3A?jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjcm9zc2ZpbGUiLCJhdWQiOiJmaWxlIiwiZGlnIjoiYTZkODE4NzQ2MDNmN2UzZWM4OThkNDMxM2IxNjNhNTQ4NGI4MjkxMTA0ZmQyYzc4MTg1NmY0MGUxY2FlOTI3YyIsImV4cCI6MTY0ODE5NDk4OH0.kAh1EnCkjpwAOX_GUfWVPLK2xhnVPRiwm8vDbD-oyVY",
+          "id": "x18dcVWxTcCzbp4zr2AT3A",
+          "name": "FWDHOMaNRaqIvNc3aIdisg.jpg",
+          "size": 225740,
+          "type": "JPG/JPEG"
+        }
+      ],
+      "date_time": "2022-03-23T02:58:01Z",
+      "direction": "In",
+      "message": "welcome",
+      "message_id": "IQ-cRH5P5EiTWCwpNzScnECJw",
+      "message_type": 2,
+      "sender": {
+        "display_name": "test api",
+        "owner": {
+          "id": "DnEopNmXQEGU2uvvzjgojw",
+          "type": "user"
+        },
+        "phone_number": "18108001001"
+      },
+      "to_members": [
+        {
+          "display_name": "callhandling0001@testapi.com",
+          "owner": {
+            "id": "rYgfsrduSXWCxr94poMN5g",
+            "type": "user"
+          },
+          "phone_number": "12762924594"
+        }
+      ]
+    }
+  ],
+  "sync_token": "MFgyQ0Z3UDkwaF8xNjQyNDA3MjA3MDE0XzE2NDI0MDcyMDcwMTQ="
+}

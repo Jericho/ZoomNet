@@ -1,0 +1,17 @@
+{
+  "created_at": "2023-02-16T17:32:28.0000000\u002B00:00",
+  "app_id": "Bwpq5zXvQr-4PKhtYOD23g",
+  "app_name": "My App",
+  "app_type": "s2s_oauth",
+  "scopes": [
+    "meeting:read"
+  ],
+  "production_credentials": {
+    "client_id": "2J5nVOGXQXCvXoRWyGQDow",
+    "client_secret": "BzFOrwgq1Gw6KCsyeYnmETU5e4zakGwQ"
+  },
+  "development_credentials": {
+    "client_id": "2J5nVOGXQXCvXoRWyGQDow",
+    "client_secret": "BzFOrwgq1Gw6KCsyeYnmETU5e4zakGwQ"
+  }
+}

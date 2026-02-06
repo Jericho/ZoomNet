@@ -58,7 +58,7 @@ namespace ZoomNet.Resources
 
 			return response
 				.EnumerateArray()
-				.Select(a => (a.GetPropertyValue<string>("email"), a.GetPropertyValue<string>("error_message")))
+				.Select(a => (a.GetPropertyValue<string>("email"), a.GetPropertyValue<string>("message")))
 				.ToArray();
 		}
 
@@ -79,7 +79,7 @@ namespace ZoomNet.Resources
 
 			return response
 				.EnumerateArray()
-				.Select(a => (a.GetPropertyValue<string>("email"), a.GetPropertyValue<string>("error_message")))
+				.Select(a => (a.GetPropertyValue<string>("email"), a.GetPropertyValue<string>("message")))
 				.ToArray();
 		}
 

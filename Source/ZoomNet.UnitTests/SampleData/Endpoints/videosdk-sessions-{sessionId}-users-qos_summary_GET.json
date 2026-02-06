@@ -1,0 +1,41 @@
+{
+  "next_page_token": "uBTK3NzNksdkuCUAQaFVFd86kyOr59zg4U2",
+  "page_size": 30,
+  "users": [
+    {
+      "id": "zJKyaiAyTNC-MWjiWC18KQ",
+      "name": "jchill",
+      "user_key": "myUserKey",
+      "qos": [
+        {
+          "type": "audio_input",
+          "details": {
+            "min_bitrate": "27.15 Kbps",
+            "avg_bitrate": "27.15 Kbps",
+            "max_bitrate": "27.15 Kbps",
+            "min_latency": "126 ms",
+            "avg_latency": "126 ms",
+            "max_latency": "126 ms",
+            "min_jitter": "0 ms",
+            "avg_jitter": "0 ms",
+            "max_jitter": "0 ms",
+            "min_loss": "0.03%",
+            "avg_loss": "0.03%",
+            "max_loss": "0.4%",
+            "resolution": "1280*720",
+            "min_frame_rate": "12 fps",
+            "avg_frame_rate": "12 fps",
+            "max_frame_rate": "12 fps",
+            "zoom_min_cpu_usage": "0%",
+            "zoom_avg_cpu_usage": "0%",
+            "zoom_max_cpu_usage": "2%",
+            "system_max_cpu_usage": "11%",
+            "system_min_cpu_pressure_level": "normal",
+            "system_avg_cpu_pressure_level": "normal",
+            "system_max_cpu_pressure_level": "normal"
+          }
+        }
+      ]
+    }
+  ]
+}

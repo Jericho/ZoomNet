@@ -1,0 +1,46 @@
+{
+  "consumer_routing_profile_id": "-6JPFRKERXymVrf_h2EISQ",
+  "consumer_routing_profile_name": "My consumer routing profile",
+  "consumer_routing_profile_description": "This is the consumer routing profile\u0027s description.",
+  "top_priorities": [
+    {
+      "attribute_type": "global_variable",
+      "parameter": {
+        "ids": [
+          "mF8W-YRDRHCWyGMl4UNHWA"
+        ],
+        "enter_queue_start_time": "09:00 AM",
+        "enter_queue_end_time": "11:00 PM",
+        "enter_queue_timezone": "America/New_York",
+        "max_returning_minutes": 60,
+        "variable_id": "--FBpU8hSGqIPNUv4lXR4A",
+        "variable_values": [
+          "vip"
+        ],
+        "operator": "equal_to",
+        "compared_value": "1"
+      }
+    }
+  ],
+  "accumulated_priorities": [
+    {
+      "attribute_type": "global_variable",
+      "incremental_rate": 10,
+      "parameter": {
+        "ids": [
+          "mF8W-YRDRHCWyGMl4UNHWA"
+        ],
+        "enter_queue_start_time": "09:00 AM",
+        "enter_queue_end_time": "11:00 PM",
+        "enter_queue_timezone": "America/New_York",
+        "max_returning_minutes": 60,
+        "variable_id": "--FBpU8hSGqIPNUv4lXR4A",
+        "variable_values": [
+          "vip"
+        ],
+        "operator": "equal_to",
+        "compared_value": "1"
+      }
+    }
+  ]
+}

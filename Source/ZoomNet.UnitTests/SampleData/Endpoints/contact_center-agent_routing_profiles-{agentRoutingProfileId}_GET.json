@@ -1,0 +1,21 @@
+{
+  "agent_routing_profile_id": "fgjdkhgfieryt7465435kjhdkhg",
+  "agent_routing_profile_name": "My agent routing profile",
+  "agent_routing_profile_description": "Example routing profile description.",
+  "wait_time_agent_in_seconds": 10,
+  "priorities": [
+    {
+      "priority_id": "jyuhjknkjgfkjhh9453fjdlg",
+      "priority_order": 1,
+      "category_type": "skill",
+      "skill_category_id": "skill_category_id",
+      "intent_group_id": "intent_group_id",
+      "skill_category_name": "skill_category_name",
+      "intent_group_name": "intent_group_name",
+      "skill_type": "proficiency",
+      "minimum_proficiency_level": 2,
+      "skill_category_required": true,
+      "intent_group_required": false
+    }
+  ]
+}

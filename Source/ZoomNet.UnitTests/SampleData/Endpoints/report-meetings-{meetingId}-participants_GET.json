@@ -1,0 +1,23 @@
+{
+  "next_page_token": "Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3",
+  "page_count": 1,
+  "page_size": 30,
+  "total_records": 1,
+  "participants": [
+    {
+      "customer_key": "349589LkJyeW",
+      "duration": 259,
+      "failover": false,
+      "id": "30R7kT7bTIKSNUFEuH_Qlg",
+      "join_time": "2022-03-23T06:58:09.0000000\u002B00:00",
+      "leave_time": "2022-03-23T07:02:28.0000000\u002B00:00",
+      "name": "example",
+      "registrant_id": "abcdefghij0-klmnopq23456",
+      "status": "in_meeting",
+      "user_email": "jchill@example.com",
+      "user_id": "27423744",
+      "bo_mtg_id": "27423744",
+      "participant_user_id": "DYHrdpjrS3uaOf7dPkkg8w"
+    }
+  ]
+}

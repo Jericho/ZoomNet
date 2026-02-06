@@ -1,0 +1,30 @@
+{
+  "next_page_token": "BJLYC6PABbAHdjwSkGVQeeR6B1juwHqj3G2",
+  "page_size": 20,
+  "total_records": 10,
+  "from": "2021-10-01",
+  "to": "2021-10-12",
+  "call_charges": [
+    {
+      "call_log_id": "1csf78-e9a8-4e14-859e-94ce323a9eef",
+      "caller_number": "1001",
+      "caller_billing_number": "\u002B2100000980",
+      "callee_number": "1008",
+      "callee_billing_number": "\u002B21058945728",
+      "call_type": "voip",
+      "service_type": "call",
+      "calling_party_name": "User",
+      "cost_center": "Phone cost center",
+      "employee_id": "A9877",
+      "department": "Engineering",
+      "end_time": "2021-10-08T16:12:15Z",
+      "duration": 1,
+      "charge_mode": "per_min",
+      "rate": "0.0205",
+      "currency": "USD",
+      "total_charge": "0",
+      "billing_number": "2100000980 Ext. 1001",
+      "forward_number_billing": "2100000980"
+    }
+  ]
+}

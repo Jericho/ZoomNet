@@ -1,0 +1,11 @@
+{
+  "sync_id": "a6w6izgus3qlxz6di0vsrv8s",
+  "kb_id": "whelb0q6qe1bpqg6jrw3ismo",
+  "sync_status": "IN_PROGRESS",
+  "progress_percent": 50,
+  "error_code": 33009,
+  "error_message": "The sync failed because no articles had any content.",
+  "created_at": "2025-01-08T13:00:00.0000000\u002B00:00",
+  "updated_at": "2025-01-08T13:00:00.0000000\u002B00:00",
+  "started_at": "2025-01-10T13:00:00.0000000\u002B00:00"
+}

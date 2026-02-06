@@ -1,0 +1,56 @@
+{
+  "engagement_id": "DmJzBVygRcaMuPqYar2lxU",
+  "messages": [
+    {
+      "content": "\u003Chtml\u003E\u003Chead\u003E\r\n\u003Cmeta http-equiv=\u0022Content-Type\u0022 content=\u0022text/html; charset=utf-8\u0022\u003E\u003C/head\u003E\u003Cbody\u003E\u003Cdiv dir=\u0022ltr\u0022\u003E\u003Cimg src=\u0022cid:ii_me9niaqb0\u0022 alt=\u0022image.png\u0022 width=\u0022542\u0022 height=\u0022224\u0022\u003E\u003Cbr\u003E\u003C/div\u003E\u003C/body\u003E\u003C/html\u003E",
+      "text": "email text",
+      "subject": "email subject",
+      "sent_time": "2024-12-03T13:07:46.1230000\u002B00:00",
+      "from_type": "agent",
+      "user_id": "JzBVygmRcaMzBVygr2lxU",
+      "user_name": "Agent Alice",
+      "from_address": {
+        "name": "Jill",
+        "address": "Jill63PQ@example.com"
+      },
+      "to": [
+        {
+          "name": "Jill",
+          "address": "Jill63PQ@example.com"
+        }
+      ],
+      "cc": [
+        {
+          "name": "Jill",
+          "address": "Jill63PQ@example.com"
+        }
+      ],
+      "bcc": [
+        {
+          "name": "Jill",
+          "address": "Jill63PQ@example.com"
+        }
+      ],
+      "content_mime_type": "text/plain; charset=UTF-8",
+      "message_type": "system",
+      "files": [
+        {
+          "file_type": "application/pdf",
+          "file_name": "invoice_2025.pdf",
+          "file_size": 1024,
+          "download_url": "https://api.example.com/attachments/0AYFv9ePSsmPUSJYHorUWQ/download?type=email_attachment"
+        }
+      ],
+      "inline_files": [
+        {
+          "file_type": "image/png",
+          "file_name": "logo.png",
+          "file_size": 2048,
+          "download_url": "https://api.example.com/attachments/0AYFv9ePSsmPUSJYHorUWQ/download?type=email_attachment"
+        }
+      ]
+    }
+  ],
+  "has_more": false,
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42"
+}

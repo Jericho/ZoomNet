@@ -1,0 +1,12 @@
+{
+  "client_feedbacks": [
+    {
+      "feedback_id": "1",
+      "feedback_name": "Others",
+      "participants_count": 0
+    }
+  ],
+  "from": "2022-01-01",
+  "to": "2022-01-30",
+  "total_records": 10
+}

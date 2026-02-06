@@ -1,0 +1,15 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "level": 1,
+  "child_teams": [
+    {
+      "team_id": "2mDPBg3vSYC_l6crQgeCkA",
+      "team_name": "Parent team",
+      "level": 1,
+      "parent_team_id": "CDl0Wx89Tx-2XBoYVz12DF",
+      "has_children": true
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "polls": [
+    {
+      "id": "QalIoKWLTJehBJ8e1xRrbQ",
+      "status": "notstart",
+      "anonymous": true,
+      "poll_type": 2,
+      "questions": [
+        {
+          "answer_max_character": 200,
+          "answer_min_character": 1,
+          "answer_required": false,
+          "answers": [
+            "Extremely useful"
+          ],
+          "case_sensitive": false,
+          "name": "How useful was this meeting?",
+          "prompts": [
+            {
+              "prompt_question": "How are you?",
+              "prompt_right_answers": [
+                "Good"
+              ]
+            }
+          ],
+          "rating_max_label": "Extremely Likely",
+          "rating_max_value": 4,
+          "rating_min_label": "Not likely",
+          "rating_min_value": 0,
+          "right_answers": [
+            "Good"
+          ],
+          "show_as_dropdown": false,
+          "type": "single"
+        }
+      ],
+      "title": "Learn something new"
+    }
+  ],
+  "total_records": 1
+}

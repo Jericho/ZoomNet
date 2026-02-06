@@ -1,0 +1,30 @@
+{
+  "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
+  "display_name": "Jill",
+  "user_email": "jchill@example.com",
+  "role_id": "27302393-4784-11ec-a3cd-122e3e29bb87",
+  "role_name": "Admin",
+  "client_integration": "Salesforce",
+  "client_integration_name": "integration-test",
+  "status_id": "2",
+  "status_name": "Not Ready",
+  "sub_status_id": "21",
+  "sub_status_name": "Meal",
+  "user_access": "active",
+  "country_iso_code": "US",
+  "region_id": "8f71O6rWT8KFUGQmJIFAdQ",
+  "region_name": "Main Region",
+  "channel_settings": {
+    "multi_channel_engagements": {
+      "enable": true,
+      "max_agent_load": 50,
+      "email_max_agent_load": 50
+    },
+    "concurrent_message_capacity": 4,
+    "concurrent_email_capacity": 4
+  },
+  "package_name": "essentials",
+  "add_ons_plan": [
+    "ai_expert_assist"
+  ]
+}

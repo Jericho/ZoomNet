@@ -1,0 +1,11 @@
+{
+  "total_records": 1,
+  "coeditors": [
+    {
+      "email": "coeditor@example.com",
+      "permission_groups": [
+        "EventConfiguration"
+      ]
+    }
+  ]
+}

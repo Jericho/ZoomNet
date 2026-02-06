@@ -1,0 +1,39 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 1,
+  "from": "2023-01-01T08:00:00.0000000\u002B00:00",
+  "to": "2023-01-01T09:00:00.0000000\u002B00:00",
+  "sms": [
+    {
+      "direction": "inbound",
+      "engagement_id": "3XilEfOvQEKRIWMWhX1jDg",
+      "contact_center_number": "\u002B18108001001",
+      "start_time": "2023-01-01T08:00:00.0000000\u002B00:00",
+      "end_time": "2023-01-01T09:00:00.0000000\u002B00:00",
+      "consumer_number": "\u002B12059300920",
+      "consumer_display_name": "Tester",
+      "queues": [
+        {
+          "queue_id": "d95avl1eRJ-H162PZUJ-qg",
+          "cc_queue_id": "d95avl1eRJ-H162PZUJ-qg",
+          "queue_name": "agentQueue"
+        }
+      ],
+      "agents": [
+        {
+          "user_id": "ukAAkZKfROKMSw1bj_RDFQ",
+          "display_name": "Jilly"
+        }
+      ],
+      "country_name": "China",
+      "sms_types": [
+        "sms"
+      ],
+      "total_sent_messages": 0,
+      "total_received_messages": 0,
+      "total_sent_files": 0,
+      "total_received_files": 0
+    }
+  ]
+}

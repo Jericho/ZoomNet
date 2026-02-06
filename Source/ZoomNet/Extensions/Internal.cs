@@ -4,7 +4,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -1014,6 +1013,14 @@ namespace ZoomNet
 					enumValue = (T)Enum.Parse(enumType, name);
 					return true;
 				}
+
+				// In the rare scenario where the numerical value is returned from the API as a string.
+				// In other words, an integer value like 1 for example is returned as the string "1".
+				if (int.TryParse(str, out int numberValue))
+				{
+					enumValue = (T)Enum.ToObject(enumType, numberValue);
+					return true;
+				}
 			}
 
 			enumValue = default;
@@ -1267,8 +1274,8 @@ namespace ZoomNet
 			var rootElement = await httpContent.AsJson(null, false, cancellationToken).ConfigureAwait(false);
 
 			// Get the various metadata properties
-			var from = DateTime.ParseExact(rootElement.GetPropertyValue("from", string.Empty), "yyyy-MM-dd", CultureInfo.InvariantCulture);
-			var to = DateTime.ParseExact(rootElement.GetPropertyValue("to", string.Empty), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+			var from = DateTime.Parse(rootElement.GetPropertyValue("from", string.Empty));
+			var to = DateTime.Parse(rootElement.GetPropertyValue("to", string.Empty));
 			var nextPageToken = rootElement.GetPropertyValue("next_page_token", string.Empty);
 			var recordsPerPage = rootElement.GetPropertyValue("page_size", 0);
 			var totalRecords = rootElement.GetPropertyValue("total_records", (int?)null);

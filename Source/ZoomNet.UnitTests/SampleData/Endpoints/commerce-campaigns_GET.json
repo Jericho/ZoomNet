@@ -1,0 +1,11 @@
+{
+  "campaigns": [
+    {
+      "campaign_number": 3423423,
+      "campaign_name": "Zoom campaign for Education",
+      "campaign_description": "Zoom Workplace for Education focus campaign",
+      "campaign_start_date": "2023-10-03",
+      "campaign_end_date": "2024-10-03"
+    }
+  ]
+}

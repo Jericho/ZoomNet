@@ -1,0 +1,17 @@
+{
+  "space_id": "8609fdea87b44e2f8e0f21ef3906046c",
+  "channel_id": "8609fdea87b44e2f8e0f21ef3906046c",
+  "space_name": "Developer Group",
+  "space_desc": "Developer discussion group.",
+  "space_members": [
+    {
+      "identifier": "1vRFhZt_2gipkB-SFKkOpnkh",
+      "role": "admin"
+    }
+  ],
+  "space_settings": {
+    "allow_to_add_external_users": 0,
+    "add_member_permissions": 1,
+    "create_channels_permission": 1
+  }
+}

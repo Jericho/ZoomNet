@@ -1,0 +1,7 @@
+{
+  "status_id": "1",
+  "status_name": "Lunch",
+  "status_type": "default",
+  "status_category": "agent_status",
+  "enable": true
+}

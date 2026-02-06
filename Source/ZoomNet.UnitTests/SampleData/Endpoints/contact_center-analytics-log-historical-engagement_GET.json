@@ -1,0 +1,92 @@
+{
+  "timezone": "UTC",
+  "engagement_logs": [
+    {
+      "engagement_id": "t0VAFD7FDkdfwHxlN40_w",
+      "direction": "inbound",
+      "channels": [
+        {
+          "channel": "video",
+          "channel_source": "web_video"
+        }
+      ],
+      "enter_channel": {
+        "channel": "voice",
+        "channel_source": "voice"
+      },
+      "start_time": "2025-05-26T16:30:08.0000000\u002B00:00",
+      "end_time": "2025-05-26T16:32:18.0000000\u002B00:00",
+      "consumer": {
+        "consumer_name": "Jill Chill",
+        "consumer_email": "jchill@example.com",
+        "consumer_number": "\u002B12095551212"
+      },
+      "queues": [
+        {
+          "queue_id": "_dkUfugn8eDFkRohArKqQ",
+          "queue_name": "my_queue"
+        }
+      ],
+      "users": [
+        {
+          "user_id": "i5iDfUroHKU\u0026*FH",
+          "user_name": "kevin_agent"
+        }
+      ],
+      "teams": [
+        {
+          "team_id": "wdhgyuYD74wUF",
+          "team_name": "agent team1"
+        }
+      ],
+      "flows": [
+        {
+          "flow_id": "CBDH87436Hdjse",
+          "flow_name": "flow1"
+        }
+      ],
+      "events": [
+        {
+          "event_id": "rF61SnVrQjyLE2Je7a40uw",
+          "event_name": "engagement.start"
+        }
+      ],
+      "caller_id": "\u002B19135551212",
+      "ani_from": "\u002B19135551212",
+      "dnis_to": "\u002B12095551212",
+      "duration": 38000,
+      "hold_count": 3,
+      "hold_duration": 10000,
+      "warm_transfer_initiated_count": 1,
+      "warm_transfer_completed_count": 1,
+      "warm_transfer_duration": 147000,
+      "direct_transfer_count": 0,
+      "transfer_initiated_count": 0,
+      "transfer_completed_count": 0,
+      "warm_conference_count": 0,
+      "warm_conference_duration": 10000,
+      "conference_count": 3,
+      "blocked": false,
+      "conference_duration": 54000,
+      "voicemail_count": 3,
+      "dispositions": [
+        {
+          "disposition_id": "sUEMfweg34GFE",
+          "disposition_name": "kv"
+        }
+      ],
+      "notes": [
+        {
+          "note_id": "sdfwe67gaDDG",
+          "note_content": "content info",
+          "user_id": "CBVD4fwdfw3DF"
+        }
+      ],
+      "transcript_url": "/v2/contact_center/engagements/transcripts/download/t0VAFD7FDkdfwHxlN40_w",
+      "survey_id": "sghewyDF73FDE"
+    }
+  ],
+  "page_size": 30,
+  "total_records": 10,
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42"
+}

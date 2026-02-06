@@ -1,0 +1,31 @@
+{
+  "next_page_token": "jA5csQv1W1oXuYZLspNIZzMOXqTD9r9Rje2",
+  "page_size": 1,
+  "total_records": 1,
+  "timezone": "America/Los_Angeles",
+  "from": "2021-12-10T00:00:00.0000000\u002B00:00",
+  "to": "2021-12-10T00:15:00.0000000\u002B00:00",
+  "agents": [
+    {
+      "user_id": "ukAAkZKfROKMSw1bj_RDFQ",
+      "display_name": "Jilly",
+      "ready_duration": 3600,
+      "ready_percentage": 85,
+      "not_ready_duration": 3600,
+      "not_ready_percentage": 85,
+      "occupied_duration": 3600,
+      "occupied_percentage": 85,
+      "online_duration": 3600,
+      "offline_duration": 3600,
+      "inbound_average_voice_call_talking_duration": 3600,
+      "average_video_call_talking_duration": 3600,
+      "average_wrap_up_duration": 3600,
+      "start_time_interval": "2022-07-20T14:00:00-08:00",
+      "end_time_interval": "2022-07-20T14:15:00-08:00",
+      "total_outbound_voice_call": 3,
+      "total_outbound_voice_call_duration": 50,
+      "total_inbound_voice_call": 3,
+      "total_inbound_voice_call_duration": 78
+    }
+  ]
+}
