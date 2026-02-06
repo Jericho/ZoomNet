@@ -1274,8 +1274,8 @@ namespace ZoomNet
 			var rootElement = await httpContent.AsJson(null, false, cancellationToken).ConfigureAwait(false);
 
 			// Get the various metadata properties
-			var from = DateTime.Parse(rootElement.GetPropertyValue("from", string.Empty));
-			var to = DateTime.Parse(rootElement.GetPropertyValue("to", string.Empty));
+			var from = DateOnly.FromDateTime(DateTime.Parse(rootElement.GetPropertyValue("from", string.Empty)));
+			var to = DateOnly.FromDateTime(DateTime.Parse(rootElement.GetPropertyValue("to", string.Empty)));
 			var nextPageToken = rootElement.GetPropertyValue("next_page_token", string.Empty);
 			var recordsPerPage = rootElement.GetPropertyValue("page_size", 0);
 			var totalRecords = rootElement.GetPropertyValue("total_records", (int?)null);

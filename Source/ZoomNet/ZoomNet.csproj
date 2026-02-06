@@ -52,10 +52,12 @@
     <Reference Include="System" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
+    <PackageReference Include="Portable.System.DateTimeOnly" Version="9.0.1" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Portable.System.DateTimeOnly" Version="9.0.1" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release' ">
