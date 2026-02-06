@@ -2,6 +2,7 @@ using Microsoft.Extensions.Logging;
 using Pathoschild.Http.Client;
 using Pathoschild.Http.Client.Extensibility;
 using RichardSzalay.MockHttp;
+using Shouldly;
 using System;
 using System.Linq;
 using System.Net;
@@ -58,6 +59,11 @@ namespace ZoomNet.UnitTests
 			httpMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, "test-diagnostic-id");
 
 			return new MockFluentHttpResponse(httpMessage, null, TestContext.Current.CancellationToken);
+		}
+
+		internal static bool ShouldBe(this DateOnly date, DateOnly other)
+		{
+			return Should.Equals(date, other);
 		}
 	}
 }

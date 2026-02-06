@@ -36,15 +36,15 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<PastMeeting>> GetMeetingsAsync(string userId, DateTime from, DateTime to, ReportMeetingType type, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<PastMeeting>> GetMeetingsAsync(string userId, DateOnly from, DateOnly to, ReportMeetingType type, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			VerifyReportDatesRange(from, to);
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync($"report/users/{userId}/meetings")
-				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
-				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
+				.WithArgument("from", from.ToZoomFormat())
+				.WithArgument("to", to.ToZoomFormat())
 				.WithArgument("type", type.ToEnumString())
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pageToken)
@@ -67,15 +67,15 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<ReportHost>> GetHostsAsync(DateTime from, DateTime to, ReportHostType type = ReportHostType.Active, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<ReportHost>> GetHostsAsync(DateOnly from, DateOnly to, ReportHostType type = ReportHostType.Active, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			VerifyReportDatesRange(from, to);
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync("report/users")
-				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
-				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
+				.WithArgument("from", from.ToZoomFormat())
+				.WithArgument("to", to.ToZoomFormat())
 				.WithArgument("type", type.ToEnumString())
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pageToken)
@@ -94,14 +94,14 @@ namespace ZoomNet.Resources
 				.AsObject<DailyUsageReport>();
 		}
 
-		private static void VerifyReportDatesRange(DateTime from, DateTime to)
+		private static void VerifyReportDatesRange(DateOnly from, DateOnly to)
 		{
 			if (to < from)
 			{
 				throw new ArgumentOutOfRangeException(nameof(to), $"Should be greater than or equal to {from.ToZoomFormat()}.");
 			}
 
-			if (to - from > TimeSpan.FromDays(30))
+			if (to.DayNumber - from.DayNumber > 30)
 			{
 				throw new ArgumentOutOfRangeException(nameof(to), "The date range should not exceed one month.");
 			}

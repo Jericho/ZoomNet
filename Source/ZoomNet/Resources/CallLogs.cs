@@ -22,14 +22,14 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<UserCallLog>> GetAsync(string userId, DateTime? from = null, DateTime? to = null, CallLogType type = CallLogType.All, string phoneNumber = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<UserCallLog>> GetAsync(string userId, DateOnly? from = null, DateOnly? to = null, CallLogType type = CallLogType.All, string phoneNumber = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync($"phone/users/{userId}/call_logs")
-				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
-				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
+				.WithArgument("from", from.ToZoomFormat())
+				.WithArgument("to", to.ToZoomFormat())
 				.WithArgument("type", type.ToEnumString())
 				.WithArgument("phone_number", phoneNumber)
 				.WithArgument("page_size", recordsPerPage)
@@ -39,14 +39,14 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithTokenAndDateRange<AccountCallLog>> GetAsync(DateTime? from = null, DateTime? to = null, CallLogType type = CallLogType.All, CallLogPathType? pathType = null, CallLogTimeType? timeType = CallLogTimeType.StartTime, string siteId = null, bool chargedCallLogs = false, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithTokenAndDateRange<AccountCallLog>> GetAsync(DateOnly? from = null, DateOnly? to = null, CallLogType type = CallLogType.All, CallLogPathType? pathType = null, CallLogTimeType? timeType = CallLogTimeType.StartTime, string siteId = null, bool chargedCallLogs = false, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync("phone/call_logs")
-				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
-				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
+				.WithArgument("from", from.ToZoomFormat())
+				.WithArgument("to", to.ToZoomFormat())
 				.WithArgument("type", type.ToEnumString())
 				.WithArgument("path", pathType?.ToEnumString())
 				.WithArgument("timeType", timeType?.ToEnumString())

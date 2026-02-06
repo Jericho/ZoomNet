@@ -22,15 +22,15 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithTokenAndDateRange<DashboardMeetingMetrics>> GetAllMeetingsAsync(DateTime from, DateTime to, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithTokenAndDateRange<DashboardMeetingMetrics>> GetAllMeetingsAsync(DateOnly from, DateOnly to, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync("metrics/meetings")
 				.WithArgument("type", type.ToEnumString())
-				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
-				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
+				.WithArgument("from", from.ToZoomFormat())
+				.WithArgument("to", to.ToZoomFormat())
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
@@ -101,15 +101,15 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithTokenAndDateRange<DashboardMetricsBase>> GetAllWebinarsAsync(DateTime from, DateTime to, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithTokenAndDateRange<DashboardMetricsBase>> GetAllWebinarsAsync(DateOnly from, DateOnly to, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync("metrics/webinars")
 				.WithArgument("type", type.ToEnumString())
-				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
-				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
+				.WithArgument("from", from.ToZoomFormat())
+				.WithArgument("to", to.ToZoomFormat())
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
@@ -192,14 +192,14 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<ZoomRoom> GetRoomDetailsAsync(string zoomRoomId, DateTime from, DateTime to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<ZoomRoom> GetRoomDetailsAsync(string zoomRoomId, DateOnly from, DateOnly to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync($"metrics/zoomrooms/{zoomRoomId}")
-				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
-				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
+				.WithArgument("from", from.ToZoomFormat())
+				.WithArgument("to", to.ToZoomFormat())
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
@@ -207,25 +207,25 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<CrcPortMetrics> GetCrcPortUsageAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default)
+		public Task<CrcPortMetrics> GetCrcPortUsageAsync(DateOnly from, DateOnly to, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync("metrics/crc")
-				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
-				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
+				.WithArgument("from", from.ToZoomFormat())
+				.WithArgument("to", to.ToZoomFormat())
 				.WithCancellationToken(cancellationToken)
 				.AsObject<CrcPortMetrics>();
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithTokenAndDateRange<ImMetric>> GetImMetricsAsync(DateTime from, DateTime to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithTokenAndDateRange<ImMetric>> GetImMetricsAsync(DateOnly from, DateOnly to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync("metrics/im")
-				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
-				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
+				.WithArgument("from", from.ToZoomFormat())
+				.WithArgument("to", to.ToZoomFormat())
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
@@ -233,47 +233,47 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<ClientFeedbackMetricsReport> GetClientFeedbackMetricsAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default)
+		public Task<ClientFeedbackMetricsReport> GetClientFeedbackMetricsAsync(DateOnly from, DateOnly to, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync("metrics/client/feedback")
-				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
-				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
+				.WithArgument("from", from.ToZoomFormat())
+				.WithArgument("to", to.ToZoomFormat())
 				.WithCancellationToken(cancellationToken)
 				.AsObject<ClientFeedbackMetricsReport>();
 		}
 
 		/// <inheritdoc/>
-		public Task<IssuesOfZoomRoomsReport> GetIssuesOfZoomRoomsAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default)
+		public Task<IssuesOfZoomRoomsReport> GetIssuesOfZoomRoomsAsync(DateOnly from, DateOnly to, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync("metrics/zoomrooms/issues")
-				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
-				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
+				.WithArgument("from", from.ToZoomFormat())
+				.WithArgument("to", to.ToZoomFormat())
 				.WithCancellationToken(cancellationToken)
 				.AsObject<IssuesOfZoomRoomsReport>();
 		}
 
 		/// <inheritdoc/>
-		public Task<ZoomRoomWithIssuesReport> GetZoomRoomsWithIssuesAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default)
+		public Task<ZoomRoomWithIssuesReport> GetZoomRoomsWithIssuesAsync(DateOnly from, DateOnly to, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync("metrics/issues/zoomrooms")
-				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
-				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
+				.WithArgument("from", from.ToZoomFormat())
+				.WithArgument("to", to.ToZoomFormat())
 				.WithCancellationToken(cancellationToken)
 				.AsObject<ZoomRoomWithIssuesReport>();
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithTokenAndDateRange<ZoomRoomIssueDetails>> GetIssuesOfZoomRoomAsync(string zoomRoomId, DateTime from, DateTime to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithTokenAndDateRange<ZoomRoomIssueDetails>> GetIssuesOfZoomRoomAsync(string zoomRoomId, DateOnly from, DateOnly to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync($"metrics/issues/zoomrooms/{zoomRoomId}")
-				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
-				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
+				.WithArgument("from", from.ToZoomFormat())
+				.WithArgument("to", to.ToZoomFormat())
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
@@ -281,14 +281,14 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithTokenAndDateRange<ClientFeedbackDetail>> GetZoomMeetingsClientFeedbackAsync(string feedbackId, DateTime from, DateTime to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithTokenAndDateRange<ClientFeedbackDetail>> GetZoomMeetingsClientFeedbackAsync(string feedbackId, DateOnly from, DateOnly to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync($"metrics/client/feedback/{feedbackId}")
-				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
-				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
+				.WithArgument("from", from.ToZoomFormat())
+				.WithArgument("to", to.ToZoomFormat())
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pageToken)
 				.WithCancellationToken(cancellationToken)
@@ -296,12 +296,12 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<ClientSatisfactionReport> GetClientMeetingSatisfactionMetricsAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default)
+		public Task<ClientSatisfactionReport> GetClientMeetingSatisfactionMetricsAsync(DateOnly from, DateOnly to, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync("metrics/client/satisfaction")
-				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
-				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
+				.WithArgument("from", from.ToZoomFormat())
+				.WithArgument("to", to.ToZoomFormat())
 				.WithCancellationToken(cancellationToken)
 				.AsObject<ClientSatisfactionReport>();
 		}
