@@ -390,7 +390,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;items&quot;: [
         ///    {
         ///      &quot;start&quot;: {
-        ///        &quot;date&quot;: &quot;2020-01-01T00:00:00.0 [rest of string was truncated]&quot;;.
+        ///        &quot;date&quot;: &quot;2020-01-01&quot;,
+        ///        [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string calendars__calId__events__eventId__instances_GET {
             get {
@@ -401,12 +402,12 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;start&quot;: {
-        ///    &quot;date&quot;: &quot;2020-01-01T00:00:00.0000000&quot;,
+        ///    &quot;date&quot;: &quot;2020-01-01&quot;,
         ///    &quot;dateTime&quot;: &quot;2020-01-01T00:00:00.0000000\u002B00:00&quot;,
         ///    &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
         ///  },
         ///  &quot;end&quot;: {
-        ///    &quot;date&quot;: &quot;2020-01-01T00:00:00.0000000&quot;,
+        ///    &quot;date&quot;: &quot;2020-01-01&quot;,
         ///    &quot;dateTime&quot;: &quot;2020-01-01T00:00:00.0000000\u002B00:00&quot;,
         ///    &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
         ///  },
@@ -417,7 +418,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;email&quot;: &quot;mark.joe@zoom.com&quot;,
         ///      &quot;optional&quot;: false,
         ///      &quot;resource&quot;: false,
-        ///      &quot;re [rest of string was truncated]&quot;;.
+        ///      &quot;responseStatus&quot;: &quot;needsAction&quot;
+        ///     [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string calendars__calId__events__eventId__move_POST {
             get {
@@ -475,7 +477,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;items&quot;: [
         ///    {
         ///      &quot;start&quot;: {
-        ///        &quot;date&quot;: &quot;2020-01-01T00:00:00.0 [rest of string was truncated]&quot;;.
+        ///        &quot;date&quot;: &quot;2020-01-01&quot;,
+        ///        [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string calendars__calId__events_GET {
             get {
@@ -486,12 +489,12 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;start&quot;: {
-        ///    &quot;date&quot;: &quot;2020-01-01T00:00:00.0000000&quot;,
+        ///    &quot;date&quot;: &quot;2020-01-01&quot;,
         ///    &quot;dateTime&quot;: &quot;2020-01-01T00:00:00.0000000\u002B00:00&quot;,
         ///    &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
         ///  },
         ///  &quot;end&quot;: {
-        ///    &quot;date&quot;: &quot;2020-01-01T00:00:00.0000000&quot;,
+        ///    &quot;date&quot;: &quot;2020-01-01&quot;,
         ///    &quot;dateTime&quot;: &quot;2020-01-01T00:00:00.0000000\u002B00:00&quot;,
         ///    &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
         ///  },
@@ -502,7 +505,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;email&quot;: &quot;mark.joe@zoom.com&quot;,
         ///      &quot;optional&quot;: false,
         ///      &quot;resource&quot;: false,
-        ///      &quot;re [rest of string was truncated]&quot;;.
+        ///      &quot;responseStatus&quot;: &quot;needsAction&quot;
+        ///     [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string calendars__calId__events_import_POST {
             get {
@@ -513,12 +517,12 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;start&quot;: {
-        ///    &quot;date&quot;: &quot;2020-01-01T00:00:00.0000000&quot;,
+        ///    &quot;date&quot;: &quot;2020-01-01&quot;,
         ///    &quot;dateTime&quot;: &quot;2020-01-01T00:00:00.0000000\u002B00:00&quot;,
         ///    &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
         ///  },
         ///  &quot;end&quot;: {
-        ///    &quot;date&quot;: &quot;2020-01-01T00:00:00.0000000&quot;,
+        ///    &quot;date&quot;: &quot;2020-01-01&quot;,
         ///    &quot;dateTime&quot;: &quot;2020-01-01T00:00:00.0000000\u002B00:00&quot;,
         ///    &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
         ///  },
@@ -529,7 +533,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;organizer&quot;: false,
         ///      &quot;email&quot;: &quot;mark.joe@zoom.com&quot;,
         ///      &quot;optional&quot;: false,
-        ///      &quot;s [rest of string was truncated]&quot;;.
+        ///      &quot;self&quot;: false,
+        ///      &quot;resource&quot;: fa [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string calendars__calId__events_POST {
             get {
@@ -540,12 +545,12 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;start&quot;: {
-        ///    &quot;date&quot;: &quot;2020-01-01T00:00:00.0000000&quot;,
+        ///    &quot;date&quot;: &quot;2020-01-01&quot;,
         ///    &quot;dateTime&quot;: &quot;2020-01-01T00:00:00.0000000\u002B00:00&quot;,
         ///    &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
         ///  },
         ///  &quot;end&quot;: {
-        ///    &quot;date&quot;: &quot;2020-01-01T00:00:00.0000000&quot;,
+        ///    &quot;date&quot;: &quot;2020-01-01&quot;,
         ///    &quot;dateTime&quot;: &quot;2020-01-01T00:00:00.0000000\u002B00:00&quot;,
         ///    &quot;timeZone&quot;: &quot;America/Los_Angeles&quot;
         ///  },
@@ -556,7 +561,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;email&quot;: &quot;mark.joe@zoom.com&quot;,
         ///      &quot;optional&quot;: false,
         ///      &quot;resource&quot;: false,
-        ///      &quot;re [rest of string was truncated]&quot;;.
+        ///      &quot;responseStatus&quot;: &quot;needsAction&quot;
+        ///     [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string calendars__calId__events_quickAdd_POST {
             get {
@@ -1215,8 +1221,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///    {
         ///      &quot;file_key&quot;: &quot;Zmlyc3QubGFzdEBleGFtcGxlLmNvbS0xNjc5NTg5MjMwNzY4&quot;,
         ///      &quot;file_count&quot;: 1,
-        ///      &quot;file_start_date&quot;: &quot;2024-04-01T00:00:00.0000000&quot;,
-        ///      &quot;file_end_date&quot;: &quot;2024-04-30T00:00:00.0000000&quot;,
+        ///      &quot;file_start_date&quot;: &quot;2024-04-01&quot;,
+        ///      &quot;file_end_date&quot;: &quot;2024-04-30&quot;,
         ///      &quot;ready_for_download&quot;: true,
         ///      &quot;total_file_size&quot;: 540123
         ///    }
@@ -1237,9 +1243,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///    {
         ///      &quot;matter_id&quot;: &quot;28c92682-f4fc-47b0-bceb-14cb839e0279&quot;,
         ///      &quot;matter_name&quot;: &quot;Test17888&quot;,
-        ///      &quot;matter_start_date&quot;: &quot;2024-04-01T00:00:00.0000000&quot;,
-        ///      &quot;matter_end_date&quot;: &quot;2024-04-30T00:00:00.0000000&quot;,
-        ///      &quot;matter_creation_date&quot;: &quot;2024-05-01T00:00:00.0000000&quot;,
+        ///      &quot;matter_start_date&quot;: &quot;2024-04-01&quot;,
+        ///      &quot;matter_end_date&quot;: &quot;2024-04-30&quot;,
+        ///      &quot;matter_creation_date&quot;: &quot;2024-05-01&quot;,
         ///      &quot;matter_users&quot;: [
         ///        {
         ///          &quot;user_id&quot;: &quot;649ad5f12f804cfea7dd7b1c1bb4c337&quot;,
@@ -1248,7 +1254,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      ]
         ///    }
         ///  ],
-        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM [rest of string was truncated]&quot;;.
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30
+        ///}.
         /// </summary>
         internal static string chat_legalhold_matters_GET {
             get {
@@ -1812,7 +1820,7 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;date&quot;: &quot;2020-03-01T00:00:00.0000000&quot;,
+        ///  &quot;date&quot;: &quot;2020-03-01&quot;,
         ///  &quot;from&quot;: &quot;2020-02-10T21:39:50.0000000\u002B00:00&quot;,
         ///  &quot;messages&quot;: [
         ///    {
@@ -1820,7 +1828,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;date_time&quot;: &quot;2020-02-10T21:39:50.0000000\u002B00:00&quot;,
         ///      &quot;files&quot;: [
         ///        {
-        ///          &quot;download_url&quot;: &quot;https://zoom.us/file/download/xBvggqyjQUal6TecwMlYwQ?filename=example.jpg\u0026jwt=eyJhbGciOiJIUzI1NiJ9.eyJkaWciOiI3Yzg5YzBhYjIzYmZmMjdjNzE3NTQ4YzdjMTc0Njk3MWYzYjNmNjFjMzU5OTliNjE1ZjdjMWJmMzc5YTJiZThlIiwiYXVkIjoiZmlsZSIsImlzcyI6ImNyb3NzZmlsZSIsIm [rest of string was truncated]&quot;;.
+        ///          &quot;download_url&quot;: &quot;https://zoom.us/file/download/xBvggqyjQUal6TecwMlYwQ?filename=example.jpg\u0026jwt=eyJhbGciOiJIUzI1NiJ9.eyJkaWciOiI3Yzg5YzBhYjIzYmZmMjdjNzE3NTQ4YzdjMTc0Njk3MWYzYjNmNjFjMzU5OTliNjE1ZjdjMWJmMzc5YTJiZThlIiwiYXVkIjoiZmlsZSIsImlzcyI6ImNyb3NzZmlsZSIsImV4cCI6MTY0ODI2NDY [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string chat_users__userId__messages_GET {
             get {
@@ -2133,8 +2141,8 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;from&quot;: &quot;2025-02-14T00:00:00.0000000&quot;,
-        ///  &quot;to&quot;: &quot;2025-02-14T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2025-02-14&quot;,
+        ///  &quot;to&quot;: &quot;2025-02-14&quot;,
         ///  &quot;page_size&quot;: 30,
         ///  &quot;next_page_token&quot;: &quot;Tva2CuIdTgsv8wAnhyAdUrm0tY2HuLQtlh4&quot;,
         ///  &quot;sessions&quot;: [
@@ -2147,7 +2155,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;session_pin&quot;: &quot;987536&quot;,
         ///      &quot;users&quot;: [
         ///        {
-        ///          &quot;user_id&quot;: &quot;YZ8uRj9zRf2yY [rest of string was truncated]&quot;;.
+        ///          &quot;user_id&quot;: &quot;YZ8uRj9zRf2yY5cshmzrTA&quot;,
+        ///          &quot;user_name&quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string cobrowsesdk_past_sessions_GET {
             get {
@@ -5274,7 +5283,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;slot_duration&quot;: 15,
         ///  &quot;booking_days&quot;: [
         ///    {
-        ///      &quot;slot_date&quot;: &quot;2025-06-19T00:00:00.0000000&quot;,
+        ///      &quot;slot_date&quot;: &quot;2025-06-19&quot;,
         ///      &quot;slots&quot;: [
         ///        {
         ///          &quot;available_count&quot;: 2,
@@ -9728,8 +9737,8 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;from&quot;: &quot;2020-07-30T00:00:00.0000000&quot;,
-        ///  &quot;to&quot;: &quot;2020-07-30T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2020-07-30&quot;,
+        ///  &quot;to&quot;: &quot;2020-07-30&quot;,
         ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
         ///  &quot;page_size&quot;: 30,
         ///  &quot;total_records&quot;: 5,
@@ -9751,8 +9760,8 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;from&quot;: &quot;2020-07-30T00:00:00.0000000&quot;,
-        ///  &quot;to&quot;: &quot;2020-07-30T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2020-07-30&quot;,
+        ///  &quot;to&quot;: &quot;2020-07-30&quot;,
         ///  &quot;analytics_summary&quot;: [
         ///    {
         ///      &quot;date&quot;: &quot;2022-07-06&quot;,
@@ -10074,10 +10083,10 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;from&quot;: &quot;2022-04-06T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2022-04-06&quot;,
         ///  &quot;next_page_token&quot;: &quot;LkbB9n92siRxgYkffZ8KhApZCQMZpNrN0d2&quot;,
         ///  &quot;page_size&quot;: 30,
-        ///  &quot;to&quot;: &quot;2022-04-07T00:00:00.0000000&quot;,
+        ///  &quot;to&quot;: &quot;2022-04-07&quot;,
         ///  &quot;users&quot;: [
         ///    {
         ///      &quot;audio_sent&quot;: 0,
@@ -10091,7 +10100,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;text_sent&quot;: 0,
         ///      &quot;total_sent&quot;: 0,
         ///      &quot;user_id&quot;: &quot;-0hwjTHMR9uteSRrygQXMA&quot;,
-        ///      &quot;user_name&quot;: &quot;jchi [rest of string was truncated]&quot;;.
+        ///      &quot;user_name&quot;: &quot;jchill&quot;,
+        ///      &quot;video_sent&quot;: 0
+        ///    } [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string metrics_chat_GET {
             get {
@@ -10101,8 +10112,8 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;from&quot;: &quot;2022-01-01T00:00:00.0000000&quot;,
-        ///  &quot;to&quot;: &quot;2022-01-30T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2022-01-01&quot;,
+        ///  &quot;to&quot;: &quot;2022-01-30&quot;,
         ///  &quot;next_page_token&quot;: &quot;uBTK3NzNksdkuCUAQaFVFd86kyOr59zg4U2&quot;,
         ///  &quot;page_size&quot;: 30,
         ///  &quot;client_feedback_details&quot;: [
@@ -10130,8 +10141,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;participants_count&quot;: 0
         ///    }
         ///  ],
-        ///  &quot;from&quot;: &quot;2022-01-01T00:00:00.0000000&quot;,
-        ///  &quot;to&quot;: &quot;2022-01-30T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2022-01-01&quot;,
+        ///  &quot;to&quot;: &quot;2022-01-30&quot;,
         ///  &quot;total_records&quot;: 10
         ///}.
         /// </summary>
@@ -10145,15 +10156,15 @@ namespace ZoomNet.UnitTests.Properties {
         ///   Looks up a localized string similar to {
         ///  &quot;client_satisfaction&quot;: [
         ///    {
-        ///      &quot;date&quot;: &quot;2022-01-01T00:00:00.0000000&quot;,
+        ///      &quot;date&quot;: &quot;2022-01-01&quot;,
         ///      &quot;good_count&quot;: 0,
         ///      &quot;none_count&quot;: 0,
         ///      &quot;not_good_count&quot;: 0,
         ///      &quot;satisfaction_percent&quot;: 100
         ///    }
         ///  ],
-        ///  &quot;from&quot;: &quot;2022-01-01T00:00:00.0000000&quot;,
-        ///  &quot;to&quot;: &quot;2022-01-30T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2022-01-01&quot;,
+        ///  &quot;to&quot;: &quot;2022-01-30&quot;,
         ///  &quot;total_records&quot;: 30
         ///}.
         /// </summary>
@@ -10181,8 +10192,8 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;from&quot;: &quot;2022-03-01T00:00:00.0000000&quot;,
-        ///  &quot;to&quot;: &quot;2022-03-30T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2022-03-01&quot;,
+        ///  &quot;to&quot;: &quot;2022-03-30&quot;,
         ///  &quot;crc_ports_usage&quot;: [
         ///    {
         ///      &quot;crc_ports_hour_usage&quot;: [
@@ -10192,7 +10203,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;total_usage&quot;: 0
         ///        }
         ///      ],
-        ///      &quot;date_time&quot;: &quot;2022-03-01T00:00:00.0000000&quot;
+        ///      &quot;date_time&quot;: &quot;2022-03-01&quot;
         ///    }
         ///  ]
         ///}.
@@ -10205,8 +10216,8 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;from&quot;: &quot;2022-02-01T00:00:00.0000000&quot;,
-        ///  &quot;to&quot;: &quot;2022-02-28T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2022-02-01&quot;,
+        ///  &quot;to&quot;: &quot;2022-02-28&quot;,
         ///  &quot;next_page_token&quot;: &quot;Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3&quot;,
         ///  &quot;page_count&quot;: 1,
         ///  &quot;page_size&quot;: 30,
@@ -10227,8 +10238,8 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;from&quot;: &quot;2022-01-01T00:00:00.0000000&quot;,
-        ///  &quot;to&quot;: &quot;2022-01-30T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2022-01-01&quot;,
+        ///  &quot;to&quot;: &quot;2022-01-30&quot;,
         ///  &quot;total_records&quot;: 30,
         ///  &quot;zoom_rooms&quot;: [
         ///    {
@@ -10429,8 +10440,8 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;from&quot;: &quot;2022-04-01T00:00:00.0000000&quot;,
-        ///  &quot;to&quot;: &quot;2022-04-07T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2022-04-01&quot;,
+        ///  &quot;to&quot;: &quot;2022-04-07&quot;,
         ///  &quot;next_page_token&quot;: &quot;Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3&quot;,
         ///  &quot;page_count&quot;: 1,
         ///  &quot;page_size&quot;: 30,
@@ -10448,7 +10459,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;dept&quot;: &quot;Developers&quot;,
         ///      &quot;duration&quot;: &quot;00:56&quot;,
         ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
-        ///      &quot;en [rest of string was truncated]&quot;;.
+        ///      &quot;end_time&quot;: &quot;2022-01-04T07:50:47.0000 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string metrics_meetings_GET {
             get {
@@ -10458,7 +10469,7 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;from&quot;: &quot;2022-02-01T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2022-02-01&quot;,
         ///  &quot;quality&quot;: {
         ///    &quot;audio&quot;: {
         ///      &quot;bad&quot;: 0,
@@ -10479,7 +10490,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;poor&quot;: 0
         ///    }
         ///  },
-        ///  &quot;to&quot;: &quot;2022-02-28T00:00:00.0000000&quot;
+        ///  &quot;to&quot;: &quot;2022-02-28&quot;
         ///}.
         /// </summary>
         internal static string metrics_quality_GET {
@@ -10673,8 +10684,8 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;from&quot;: &quot;2022-01-01T00:00:00.0000000&quot;,
-        ///  &quot;to&quot;: &quot;2022-01-30T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2022-01-01&quot;,
+        ///  &quot;to&quot;: &quot;2022-01-30&quot;,
         ///  &quot;next_page_token&quot;: &quot;Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3&quot;,
         ///  &quot;page_count&quot;: 1,
         ///  &quot;page_size&quot;: 30,
@@ -10691,7 +10702,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;dept&quot;: &quot;Developers&quot;,
         ///      &quot;duration&quot;: &quot;55:01&quot;,
         ///      &quot;email&quot;: &quot;user@example.com&quot;,
-        ///      &quot;end_time&quot;: &quot;2022-01-13T07:00:46.0 [rest of string was truncated]&quot;;.
+        ///      &quot;end_time&quot;: &quot;2022-01-13T07:00:46.0000000\u002B00:00&quot;,
+        ///      &quot;has_3r [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string metrics_webinars_GET {
             get {
@@ -10753,8 +10765,8 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;from&quot;: &quot;2022-01-01T00:00:00.0000000&quot;,
-        ///  &quot;to&quot;: &quot;2022-01-30T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2022-01-01&quot;,
+        ///  &quot;to&quot;: &quot;2022-01-30&quot;,
         ///  &quot;total_records&quot;: 20,
         ///  &quot;issues&quot;: [
         ///    {
@@ -12017,9 +12029,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;caller_name&quot;: &quot;ZOOM_API Test&quot;,
         ///      &quot;caller_number&quot;: &quot;\u002B12055432724&quot;,
         ///      &quot;caller_number_type&quot;: 1,
-        ///      &quot;date_time&quot;: &quot;2022-04-01T00:00:00.0000000&quot;,
+        ///      &quot;date_time&quot;: &quot;2022-04-01&quot;,
         ///      &quot;direction&quot;: &quot;inbound&quot;,
-        ///      &quot;download_url&quot;: &quot;https://file.zoomdev.us/file?filename=cal [rest of string was truncated]&quot;;.
+        ///      &quot;download_url&quot;: &quot;https://file.zoomdev.us/file?filename=call_recording_080e- [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_call_queues__callQueueId__recordings_GET {
             get {
@@ -15379,7 +15391,7 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;from&quot;: &quot;2021-11-01T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2021-11-01&quot;,
         ///  &quot;next_page_token&quot;: &quot;6jqhz348c100oHbw6cVER45YderniREnwr1&quot;,
         ///  &quot;page_count&quot;: 1,
         ///  &quot;page_size&quot;: 30,
@@ -15391,7 +15403,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;call_element_id&quot;: &quot;20210609-a297ae04-a875-4cfd-85ab-4adcead91edb&quot;,
         ///      &quot;callee_name&quot;: &quot;User A&quot;,
         ///      &quot;callee_number&quot;: &quot;1000001004&quot;,
-        ///      &quot;callee_num [rest of string was truncated]&quot;;.
+        ///      &quot;callee_number_type&quot;: 1,
+        ///   [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_users__userId__recordings_GET {
             get {
@@ -15512,11 +15525,11 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;from&quot;: &quot;2021-05-19T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2021-05-19&quot;,
         ///  &quot;next_page_token&quot;: &quot;VcXBknJ0MQ7kuXun5WKmSjHC1hOBGS2bbr2&quot;,
         ///  &quot;page_count&quot;: 10,
         ///  &quot;page_size&quot;: 15,
-        ///  &quot;to&quot;: &quot;2021-06-19T00:00:00.0000000&quot;,
+        ///  &quot;to&quot;: &quot;2021-06-19&quot;,
         ///  &quot;total_records&quot;: 150,
         ///  &quot;voice_mails&quot;: [
         ///    {
@@ -15524,7 +15537,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;call_log_id&quot;: &quot;55fd0af0-beb0-433a-be97-388de5e99ab4&quot;,
         ///      &quot;call_history_id&quot;: &quot;20190519-55fd0af0-beb0-433a-be97-388de5e99ab4&quot;,
         ///      &quot;call_element_id&quot;: &quot;20210609-a297ae04-a875-4cfd-85ab-4adcead91edb&quot;,
-        ///      &quot;callee_name&quot;: &quot;Jane  [rest of string was truncated]&quot;;.
+        ///      &quot;callee_name&quot;: &quot;Jane Doe&quot;,
+        ///      &quot;callee_number&quot;: &quot;345 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_users__userId__voice_mails_GET {
             get {
@@ -15596,11 +15610,11 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;from&quot;: &quot;2021-05-19T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2021-05-19&quot;,
         ///  &quot;next_page_token&quot;: &quot;VcXBknJ0MQ7kuXun5WKmSjHC1hOBGS2bbr2&quot;,
         ///  &quot;page_count&quot;: 10,
         ///  &quot;page_size&quot;: 15,
-        ///  &quot;to&quot;: &quot;2021-06-19T00:00:00.0000000&quot;,
+        ///  &quot;to&quot;: &quot;2021-06-19&quot;,
         ///  &quot;total_records&quot;: 150,
         ///  &quot;voice_mails&quot;: [
         ///    {
@@ -15610,7 +15624,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;callee_name&quot;: &quot;Jane Doe&quot;,
         ///      &quot;callee_number&quot;: &quot;34567889&quot;,
         ///      &quot;callee_number_type&quot;: 2,
-        ///      &quot;caller_name&quot;: &quot;Joh [rest of string was truncated]&quot;;.
+        ///      &quot;caller_name&quot;: &quot;John Doe&quot;,
+        ///      &quot;caller_number&quot;: &quot;1 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_voice_mails_GET {
             get {
@@ -15783,9 +15798,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///   Looks up a localized string similar to {
         ///  &quot;billing_reports&quot;: [
         ///    {
-        ///      &quot;end_date&quot;: &quot;2022-03-25T00:00:00.0000000&quot;,
+        ///      &quot;end_date&quot;: &quot;2022-03-25&quot;,
         ///      &quot;id&quot;: &quot;indfhgfhfho&quot;,
-        ///      &quot;start_date&quot;: &quot;2022-03-25T00:00:00.0000000&quot;,
+        ///      &quot;start_date&quot;: &quot;2022-03-25&quot;,
         ///      &quot;tax_amount&quot;: &quot;456&quot;,
         ///      &quot;total_amount&quot;: &quot;456&quot;,
         ///      &quot;type&quot;: 1
@@ -15805,11 +15820,11 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;currency&quot;: &quot;USD&quot;,
         ///  &quot;invoices&quot;: [
         ///    {
-        ///      &quot;end_date&quot;: &quot;2022-03-25T00:00:00.0000000&quot;,
+        ///      &quot;end_date&quot;: &quot;2022-03-25&quot;,
         ///      &quot;invoice_charge_name&quot;: &quot;Audio Conferencing Options&quot;,
         ///      &quot;invoice_number&quot;: &quot;3&quot;,
         ///      &quot;quantity&quot;: 45,
-        ///      &quot;start_date&quot;: &quot;2022-03-25T00:00:00.0000000&quot;,
+        ///      &quot;start_date&quot;: &quot;2022-03-25&quot;,
         ///      &quot;tax_amount&quot;: &quot;34&quot;,
         ///      &quot;total_amount&quot;: &quot;45&quot;
         ///    }
@@ -15847,7 +15862,7 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;from&quot;: &quot;2022-03-01T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2022-03-01&quot;,
         ///  &quot;next_page_token&quot;: &quot;peU2gkVkRebcqMTzOPnidf0OxlA3WD9Cunrp&quot;,
         ///  &quot;page_size&quot;: 30,
         ///  &quot;sessions&quot;: [
@@ -15859,7 +15874,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;channel_id&quot;: &quot;7a08102d65d12629bbcca5&quot;,
         ///      &quot;member_emails&quot;: [
         ///        &quot;john.doe\u002B123@example.com&quot;,
-        ///        &quot;john.doe\u002B321@example.com [rest of string was truncated]&quot;;.
+        ///        &quot;john.doe\u002B321@example.com&quot;
+        ///      ],
+        ///     [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string report_chat_sessions_GET {
             get {
@@ -15869,11 +15886,11 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;from&quot;: &quot;2021-12-01T00:00:00.0000000&quot;,
-        ///  &quot;to&quot;: &quot;2021-12-30T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2021-12-01&quot;,
+        ///  &quot;to&quot;: &quot;2021-12-30&quot;,
         ///  &quot;cloud_recording_storage&quot;: [
         ///    {
-        ///      &quot;date&quot;: &quot;2021-12-05T00:00:00.0000000&quot;,
+        ///      &quot;date&quot;: &quot;2021-12-05&quot;,
         ///      &quot;free_usage&quot;: &quot;Unlimited&quot;,
         ///      &quot;plan_usage&quot;: &quot;3 TB&quot;,
         ///      &quot;usage&quot;: &quot;3 MB&quot;
@@ -15891,7 +15908,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///   Looks up a localized string similar to {
         ///  &quot;dates&quot;: [
         ///    {
-        ///      &quot;date&quot;: &quot;2022-03-01T00:00:00.0000000&quot;,
+        ///      &quot;date&quot;: &quot;2022-03-01&quot;,
         ///      &quot;meeting_minutes&quot;: 34,
         ///      &quot;meetings&quot;: 2,
         ///      &quot;new_users&quot;: 3,
@@ -16135,11 +16152,11 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;from&quot;: &quot;2019-06-20T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2019-06-20&quot;,
         ///  &quot;next_page_token&quot;: &quot;w7587w4eiyfsudgk&quot;,
         ///  &quot;page_count&quot;: 1,
         ///  &quot;page_size&quot;: 30,
-        ///  &quot;to&quot;: &quot;2019-07-20T00:00:00.0000000&quot;,
+        ///  &quot;to&quot;: &quot;2019-07-20&quot;,
         ///  &quot;total_records&quot;: 1,
         ///  &quot;telephony_usage&quot;: [
         ///    {
@@ -16151,6 +16168,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;host_email&quot;: &quot;jchill@example.com&quot;,
         ///      &quot;host_id&quot;: &quot;_Rn_hal7ToG5p0AWwIIsjQ&quot;,
         ///      &quot;host_name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;meeting_id&quot;: 94908911701,
         ///   [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string report_telephone_GET {
@@ -16161,10 +16179,10 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;from&quot;: &quot;2022-03-01T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2022-03-01&quot;,
         ///  &quot;next_page_token&quot;: &quot;b43YBRLJFg3V4vsSpxvGdKIGtNbxn9h9If2&quot;,
         ///  &quot;page_size&quot;: 30,
-        ///  &quot;to&quot;: &quot;2022-03-25T00:00:00.0000000&quot;,
+        ///  &quot;to&quot;: &quot;2022-03-25&quot;,
         ///  &quot;upcoming_events&quot;: [
         ///    {
         ///      &quot;dept&quot;: &quot;HR&quot;,
@@ -16190,7 +16208,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;page_number&quot;: 1,
         ///  &quot;page_size&quot;: 30,
         ///  &quot;total_records&quot;: 20,
-        ///  &quot;from&quot;: &quot;2020-07-14T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2020-07-14&quot;,
         ///  &quot;meetings&quot;: [
         ///    {
         ///      &quot;custom_keys&quot;: [
@@ -16205,7 +16223,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;participants_count&quot;: 2,
         ///      &quot;session_key&quot;: &quot;ABC36jaBI145&quot;,
         ///      &quot;source&quot;: &quot;Zoom&quot;,
-        ///     [rest of string was truncated]&quot;;.
+        ///      &quot;start_time&quot;: &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string report_users__userId__meetings_GET {
             get {
@@ -16215,12 +16233,12 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;from&quot;: &quot;2022-03-01T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2022-03-01&quot;,
         ///  &quot;next_page_token&quot;: &quot;b43YBRLJFg3V4vsSpxvGdKIGtNbxn9h9If2&quot;,
         ///  &quot;page_count&quot;: 30,
         ///  &quot;page_number&quot;: 1,
         ///  &quot;page_size&quot;: 30,
-        ///  &quot;to&quot;: &quot;2022-03-25T00:00:00.0000000&quot;,
+        ///  &quot;to&quot;: &quot;2022-03-25&quot;,
         ///  &quot;total_records&quot;: 850,
         ///  &quot;total_meeting_minutes&quot;: 345,
         ///  &quot;total_meetings&quot;: 34,
@@ -16234,7 +16252,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;value&quot;: &quot;18&quot;
         ///        }
         ///      ],
-        ///      &quot;dept&quot; [rest of string was truncated]&quot;;.
+        ///      &quot;dept&quot;: &quot;HR&quot;,
+        ///      &quot;email&quot;: &quot;jchill@ex [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string report_users_GET {
             get {
@@ -18294,8 +18313,8 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;from&quot;: &quot;2022-01-01T00:00:00.0000000&quot;,
-        ///  &quot;to&quot;: &quot;2022-04-01T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2022-01-01&quot;,
+        ///  &quot;to&quot;: &quot;2022-04-01&quot;,
         ///  &quot;next_page_token&quot;: &quot;Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3&quot;,
         ///  &quot;page_count&quot;: 1,
         ///  &quot;page_size&quot;: 30,
@@ -18309,7 +18328,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;recording_count&quot;: 22,
         ///      &quot;start_time&quot;: &quot;2021-03-18T05:41:36.0000000\u002B00:00&quot;,
         ///      &quot;topic&quot;: &quot;My Personal Meeting&quot;,
-        ///       [rest of string was truncated]&quot;;.
+        ///      &quot;total_size&quot;: 22,
+        ///      &quot;type&quot;: &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string users__userId__recordings_GET {
             get {
@@ -18912,11 +18932,11 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;from&quot;: &quot;2021-12-01T00:00:00.0000000&quot;,
-        ///  &quot;to&quot;: &quot;2021-12-02T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2021-12-01&quot;,
+        ///  &quot;to&quot;: &quot;2021-12-02&quot;,
         ///  &quot;cloud_recording_storage&quot;: [
         ///    {
-        ///      &quot;date&quot;: &quot;2021-12-01T00:00:00.0000000&quot;,
+        ///      &quot;date&quot;: &quot;2021-12-01&quot;,
         ///      &quot;usage&quot;: &quot;29 MB&quot;,
         ///      &quot;plan_usage&quot;: &quot;1 GB&quot;,
         ///      &quot;free_usage&quot;: &quot;1 GB&quot;
@@ -18936,7 +18956,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;month&quot;: 12,
         ///  &quot;dates&quot;: [
         ///    {
-        ///      &quot;date&quot;: &quot;2021-12-01T00:00:00.0000000&quot;,
+        ///      &quot;date&quot;: &quot;2021-12-01&quot;,
         ///      &quot;sessions&quot;: 20,
         ///      &quot;users&quot;: 80,
         ///      &quot;session_minutes&quot;: 380
@@ -18954,8 +18974,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///   Looks up a localized string similar to {
         ///  &quot;page_size&quot;: 30,
         ///  &quot;next_page_token&quot;: &quot;suQA5LvDBnH5No5OYD7mqpJuFzJqUOHK8U2&quot;,
-        ///  &quot;from&quot;: &quot;2021-12-01T00:00:00.0000000&quot;,
-        ///  &quot;to&quot;: &quot;2021-12-02T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2021-12-01&quot;,
+        ///  &quot;to&quot;: &quot;2021-12-02&quot;,
         ///  &quot;operation_logs&quot;: [
         ///    {
         ///      &quot;time&quot;: &quot;2019-08-20T19:09:01.0000000\u002B00:00&quot;,
@@ -18977,8 +18997,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///   Looks up a localized string similar to {
         ///  &quot;page_size&quot;: 30,
         ///  &quot;next_page_token&quot;: &quot;suQA5LvDBnH5No5OYD7mqpJuFzJqUOHK8U2&quot;,
-        ///  &quot;from&quot;: &quot;2019-07-15T00:00:00.0000000&quot;,
-        ///  &quot;to&quot;: &quot;2019-07-20T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2019-07-15&quot;,
+        ///  &quot;to&quot;: &quot;2019-07-20&quot;,
         ///  &quot;telephony_usage&quot;: [
         ///    {
         ///      &quot;session_id&quot;: &quot;sfk/aOFJSJSYhGwk1hnxgw==&quot;,
@@ -18988,7 +19008,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;end_time&quot;: &quot;2019-07-15T23:30:19.0000000\u002B00:00&quot;,
         ///      &quot;duration&quot;: 6,
         ///      &quot;total&quot;: 11,
-        ///      &quot;country_name&quot;: [rest of string was truncated]&quot;;.
+        ///      &quot;country_name&quot;: &quot;Macau SAR&quot;,
+        ///      &quot;call_in_numb [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string videosdk_report_telephone_GET {
             get {
@@ -19238,8 +19259,8 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;from&quot;: &quot;2021-12-01T00:00:00.0000000&quot;,
-        ///  &quot;to&quot;: &quot;2021-12-02T00:00:00.0000000&quot;,
+        ///  &quot;from&quot;: &quot;2021-12-01&quot;,
+        ///  &quot;to&quot;: &quot;2021-12-02&quot;,
         ///  &quot;page_size&quot;: 30,
         ///  &quot;next_page_token&quot;: &quot;suQA5LvDBnH5No5OYD7mqpJuFzJqUOHK8U2&quot;,
         ///  &quot;sessions&quot;: [
@@ -19252,7 +19273,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;user_count&quot;: 2,
         ///      &quot;has_voip&quot;: true,
         ///      &quot;has_video&quot;: true,
-        ///      &quot;has_screen [rest of string was truncated]&quot;;.
+        ///      &quot;has_screen_share&quot;: true,
+        ///      &quot;has_recordi [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string videosdk_sessions_GET {
             get {
@@ -21522,8 +21544,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;type&quot;: 1,
         ///      &quot;source_language_id&quot;: &quot;US&quot;,
         ///      &quot;source_language_display_name&quot;: &quot;English&quot;,
-        ///      &quot;target_language_id&quot;: &quot;ASE&quot;,
-        ///      &quot;target_language_display_name&quot;: &quot;American Sign Language&quot;
+        ///      &quot;target_language_id&quot;: &quot;JP&quot;,
+        ///      &quot;target_language_display_name&quot;: &quot;Japanese&quot;
         ///    }
         ///  ]
         ///}.
