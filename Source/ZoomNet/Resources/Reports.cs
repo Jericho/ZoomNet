@@ -94,6 +94,22 @@ namespace ZoomNet.Resources
 				.AsObject<DailyUsageReport>();
 		}
 
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<OperationLog>> GetOperationLogsReportAsync(DateTime from, DateTime to, ReportPhoneOperationsLogType type = ReportPhoneOperationsLogType.All, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		{
+			VerifyReportDatesRange(from, to);
+			Utils.ValidateRecordPerPage(recordsPerPage);
+
+			return _client.GetAsync("phone/reports/operationlogs")
+				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
+				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
+				.WithArgument("category_type", type.ToEnumString())
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pageToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<OperationLog>("operation_logs");
+		}
+
 		private static void VerifyReportDatesRange(DateTime from, DateTime to)
 		{
 			if (to < from)
