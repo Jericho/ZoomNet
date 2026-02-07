@@ -27,7 +27,7 @@ namespace ZoomNet
 		/// <summary>
 		/// Gets the resource which allows you to manage call logs.
 		/// </summary>
-		[Obsolete("Zoom will sunset the CallLogs API endpoints on fully deprecated and sunset on May 30, 2026. Please use the CallHistory instead. For more information, please refer to https://developers.zoom.us/docs/phone/migrate/")]
+		[Obsolete("The CallLogs API endpoints will be deprecated in April 2026. Please use the CallHistory instead. For more information, please refer to https://developers.zoom.us/docs/phone/migrate/")]
 		ICallLogs CallLogs { get; }
 
 		/// <summary>
