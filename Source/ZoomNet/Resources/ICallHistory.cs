@@ -74,8 +74,8 @@ namespace ZoomNet.Resources
 		/// of user call log records, a paging token for retrieving subsequent pages, and the date range covered by the
 		/// results.</returns>
 		Task<PaginatedResponseWithTokenAndDateRange<CallElement>> GetAccountCallHistoryAsync(
-			DateTime? from = null,
-			DateTime? to = null,
+			DateOnly? from = null,
+			DateOnly? to = null,
 			string keyword = null,
 			IEnumerable<CallElementDirection> directions = null,
 			IEnumerable<CallElementConnectType> connectionTypes = null,
