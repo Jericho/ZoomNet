@@ -139,6 +139,31 @@ namespace ZoomNet
 		}
 
 		/// <summary>
+		/// Converts a <see cref="DateOnly" /> into a string that can be accepted by the Zoom API.
+		/// </summary>
+		/// <param name="date">The date.</param>
+		/// <returns>
+		/// The string representation of the date expressed in the Zoom format.
+		/// </returns>
+		internal static string ToZoomFormat(this DateOnly? date)
+		{
+			if (!date.HasValue) return null;
+			return date.Value.ToZoomFormat();
+		}
+
+		/// <summary>
+		/// Converts a <see cref="DateOnly" /> into a string that can be accepted by the Zoom API.
+		/// </summary>
+		/// <param name="date">The date.</param>
+		/// <returns>
+		/// The string representation of the date expressed in the Zoom format.
+		/// </returns>
+		internal static string ToZoomFormat(this DateOnly date)
+		{
+			return date.ToString("yyyy-MM-dd");
+		}
+
+		/// <summary>
 		/// Reads the content of the HTTP response as string asynchronously.
 		/// </summary>
 		/// <param name="httpContent">The content.</param>
@@ -1274,8 +1299,8 @@ namespace ZoomNet
 			var rootElement = await httpContent.AsJson(null, false, cancellationToken).ConfigureAwait(false);
 
 			// Get the various metadata properties
-			var from = DateTime.Parse(rootElement.GetPropertyValue("from", string.Empty));
-			var to = DateTime.Parse(rootElement.GetPropertyValue("to", string.Empty));
+			var from = DateOnly.FromDateTime(DateTime.Parse(rootElement.GetPropertyValue("from", string.Empty)));
+			var to = DateOnly.FromDateTime(DateTime.Parse(rootElement.GetPropertyValue("to", string.Empty)));
 			var nextPageToken = rootElement.GetPropertyValue("next_page_token", string.Empty);
 			var recordsPerPage = rootElement.GetPropertyValue("page_size", 0);
 			var totalRecords = rootElement.GetPropertyValue("total_records", (int?)null);

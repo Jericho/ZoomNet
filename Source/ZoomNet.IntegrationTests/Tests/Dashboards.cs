@@ -12,8 +12,12 @@ namespace ZoomNet.IntegrationTests.Tests
 		{
 			await log.WriteLineAsync("\n***** DASHBOARDS *****\n").ConfigureAwait(false);
 
+			var now = DateTime.UtcNow;
+			var from = DateOnly.FromDateTime(now.AddMonths(-1));
+			var to = DateOnly.FromDateTime(now);
+
 			// GET ALL THE MEETINGS
-			var pastMeetingsStats = await client.Dashboards.GetAllMeetingsAsync(DateTime.UtcNow.AddMonths(-1), DateTime.UtcNow, DashboardMeetingType.Past, 100, null, cancellationToken).ConfigureAwait(false);
+			var pastMeetingsStats = await client.Dashboards.GetAllMeetingsAsync(from, to, DashboardMeetingType.Past, 100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {pastMeetingsStats.TotalRecords} meetings in the last month").ConfigureAwait(false);
 		}
 	}

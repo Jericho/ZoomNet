@@ -13,8 +13,8 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync("\n***** CALL LOGS *****\n").ConfigureAwait(false);
 
 			var now = DateTime.UtcNow;
-			var from = now.Subtract(TimeSpan.FromDays(30));
-			var to = now;
+			var from = DateOnly.FromDateTime(now.Subtract(TimeSpan.FromDays(30)));
+			var to = DateOnly.FromDateTime(now);
 
 			// GET USER'S CALL LOGS
 			var allCallLogs = await client.CallLogs.GetAsync(myUser.Email, from, to, CallLogType.All, null, 100, null, cancellationToken);

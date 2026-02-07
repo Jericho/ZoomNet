@@ -62,8 +62,8 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var userId = "uET9c2fCR06UoPbeqKed4A";
-			var from = new DateTime(2022, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-			var to = new DateTime(2022, 4, 1, 0, 0, 0, DateTimeKind.Utc);
+			var from = new DateOnly(2022, 1, 1);
+			var to = new DateOnly(2022, 4, 1);
 			var recordsPerPage = 30;
 
 			var mockHttp = new MockHttpMessageHandler();
@@ -466,8 +466,8 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var userId = "user123";
-			var from = new DateTime(2022, 1, 1);
-			var to = new DateTime(2022, 4, 1);
+			var from = new DateOnly(2022, 1, 1);
+			var to = new DateOnly(2022, 4, 1);
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "recordings"))
@@ -690,8 +690,8 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var userId = "user123";
-			var from = new DateTime(2023, 1, 1);
-			var to = new DateTime(2023, 1, 31);
+			var from = new DateOnly(2023, 1, 1);
+			var to = new DateOnly(2023, 1, 31);
 			var recordsPerPage = 50;
 			var page = 2;
 
@@ -774,7 +774,7 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var userId = "user123";
-			var from = new DateTime(2023, 6, 1);
+			var from = new DateOnly(2023, 6, 1);
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "recordings"))
@@ -799,7 +799,7 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var userId = "user123";
-			var to = new DateTime(2023, 6, 30);
+			var to = new DateOnly(2023, 6, 30);
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "recordings"))

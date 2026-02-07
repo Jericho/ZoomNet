@@ -492,8 +492,8 @@ namespace ZoomNet.UnitTests.Resources
 			var roomId = "room123";
 			var deviceId = "device1";
 			var sensorType = RoomSensorType.Temperature;
-			var from = new DateTime(2023, 1, 1);
-			var to = new DateTime(2023, 1, 31);
+			var from = new DateOnly(2023, 1, 1);
+			var to = new DateOnly(2023, 1, 31);
 			var recordsPerPage = 50;
 			var pageToken = "token456";
 

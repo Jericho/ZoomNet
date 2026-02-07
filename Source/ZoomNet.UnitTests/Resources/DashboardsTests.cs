@@ -59,8 +59,8 @@ namespace ZoomNet.UnitTests.Resources
 		public async Task GetAllMeetingsAsync_Live()
 		{
 			// Arrange
-			var from = new DateTime(2023, 1, 1);
-			var to = new DateTime(2023, 1, 31);
+			var from = new DateOnly(2023, 1, 1);
+			var to = new DateOnly(2023, 1, 31);
 			var recordsPerPage = 30;
 
 			var mockHttp = new MockHttpMessageHandler();
@@ -90,8 +90,8 @@ namespace ZoomNet.UnitTests.Resources
 		public async Task GetAllMeetingsAsync_Past()
 		{
 			// Arrange
-			var from = new DateTime(2023, 1, 1);
-			var to = new DateTime(2023, 1, 31);
+			var from = new DateOnly(2023, 1, 1);
+			var to = new DateOnly(2023, 1, 31);
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("metrics", "meetings"))
@@ -291,8 +291,8 @@ namespace ZoomNet.UnitTests.Resources
 		public async Task GetAllWebinarsAsync()
 		{
 			// Arrange
-			var from = new DateTime(2023, 1, 1);
-			var to = new DateTime(2023, 1, 31);
+			var from = new DateOnly(2023, 1, 1);
+			var to = new DateOnly(2023, 1, 31);
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("metrics", "webinars"))
@@ -471,8 +471,8 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var zoomRoomId = "room123";
-			var from = new DateTime(2023, 1, 1);
-			var to = new DateTime(2023, 1, 31);
+			var from = new DateOnly(2023, 1, 1);
+			var to = new DateOnly(2023, 1, 31);
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("metrics", "zoomrooms", zoomRoomId))
@@ -502,8 +502,8 @@ namespace ZoomNet.UnitTests.Resources
 		public async Task GetCrcPortUsageAsync()
 		{
 			// Arrange
-			var from = new DateTime(2023, 1, 1);
-			var to = new DateTime(2023, 1, 31);
+			var from = new DateOnly(2023, 1, 1);
+			var to = new DateOnly(2023, 1, 31);
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("metrics", "crc"))
@@ -528,8 +528,8 @@ namespace ZoomNet.UnitTests.Resources
 		public async Task GetImMetricsAsync()
 		{
 			// Arrange
-			var from = new DateTime(2023, 1, 1);
-			var to = new DateTime(2023, 1, 31);
+			var from = new DateOnly(2023, 1, 1);
+			var to = new DateOnly(2023, 1, 31);
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("metrics", "im"))
@@ -555,8 +555,8 @@ namespace ZoomNet.UnitTests.Resources
 		public async Task GetClientFeedbackMetricsAsync()
 		{
 			// Arrange
-			var from = new DateTime(2023, 1, 1);
-			var to = new DateTime(2023, 1, 31);
+			var from = new DateOnly(2023, 1, 1);
+			var to = new DateOnly(2023, 1, 31);
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("metrics", "client", "feedback"))
@@ -581,8 +581,8 @@ namespace ZoomNet.UnitTests.Resources
 		public async Task GetIssuesOfZoomRoomsAsync()
 		{
 			// Arrange
-			var from = new DateTime(2023, 1, 1);
-			var to = new DateTime(2023, 1, 31);
+			var from = new DateOnly(2023, 1, 1);
+			var to = new DateOnly(2023, 1, 31);
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("metrics", "zoomrooms", "issues"))
@@ -607,8 +607,8 @@ namespace ZoomNet.UnitTests.Resources
 		public async Task GetZoomRoomsWithIssuesAsync()
 		{
 			// Arrange
-			var from = new DateTime(2023, 1, 1);
-			var to = new DateTime(2023, 1, 31);
+			var from = new DateOnly(2023, 1, 1);
+			var to = new DateOnly(2023, 1, 31);
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("metrics", "issues", "zoomrooms"))
@@ -634,8 +634,8 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var zoomRoomId = "room123";
-			var from = new DateTime(2023, 1, 1);
-			var to = new DateTime(2023, 1, 31);
+			var from = new DateOnly(2023, 1, 1);
+			var to = new DateOnly(2023, 1, 31);
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("metrics", "issues", "zoomrooms", zoomRoomId))
@@ -662,8 +662,8 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var feedbackId = "feedback123";
-			var from = new DateTime(2023, 1, 1);
-			var to = new DateTime(2023, 1, 31);
+			var from = new DateOnly(2023, 1, 1);
+			var to = new DateOnly(2023, 1, 31);
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("metrics", "client", "feedback", feedbackId))
@@ -689,8 +689,8 @@ namespace ZoomNet.UnitTests.Resources
 		public async Task GetClientMeetingSatisfactionMetrics()
 		{
 			// Arrange
-			var from = new DateTime(2023, 1, 1);
-			var to = new DateTime(2023, 1, 31);
+			var from = new DateOnly(2023, 1, 1);
+			var to = new DateOnly(2023, 1, 31);
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("metrics", "client", "satisfaction"))

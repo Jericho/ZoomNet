@@ -64,8 +64,8 @@ namespace ZoomNet.UnitTests.Resources
 		public async Task GetCallLogsForAccountAsync()
 		{
 			// Arrange
-			var from = new DateTime(2021, 10, 1, 0, 0, 0, DateTimeKind.Utc);
-			var to = new DateTime(2021, 10, 12, 0, 0, 0, DateTimeKind.Utc);
+			var from = new DateOnly(2021, 10, 1);
+			var to = new DateOnly(2021, 10, 12);
 			var recordsPerPage = 5;
 
 			var mockHttp = new MockHttpMessageHandler();
@@ -126,8 +126,8 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var userId = "user123";
-			var from = new DateTime(2023, 12, 1);
-			var to = new DateTime(2023, 12, 31);
+			var from = new DateOnly(2023, 12, 1);
+			var to = new DateOnly(2023, 12, 31);
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "users", userId, "call_logs"))
@@ -237,8 +237,8 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var userId = "user123";
-			var from = new DateTime(2023, 11, 1);
-			var to = new DateTime(2023, 11, 30);
+			var from = new DateOnly(2023, 11, 1);
+			var to = new DateOnly(2023, 11, 30);
 			var type = CallLogType.Missed;
 			var phoneNumber = "+9876543210";
 			var recordsPerPage = 100;
@@ -446,8 +446,8 @@ namespace ZoomNet.UnitTests.Resources
 		public async Task GetAccountCallLogsAsync_WithAllParameters()
 		{
 			// Arrange
-			var from = new DateTime(2023, 10, 1);
-			var to = new DateTime(2023, 10, 31);
+			var from = new DateOnly(2023, 10, 1);
+			var to = new DateOnly(2023, 10, 31);
 			var type = CallLogType.Missed;
 			var pathType = CallLogPathType.Extension;
 			var timeType = CallLogTimeType.EndTime;
@@ -582,7 +582,7 @@ namespace ZoomNet.UnitTests.Resources
 		public async Task GetAccountCallLogsAsync_WithOnlyFromDate()
 		{
 			// Arrange
-			var from = new DateTime(2023, 9, 1);
+			var from = new DateOnly(2023, 9, 1);
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "call_logs"))
@@ -606,7 +606,7 @@ namespace ZoomNet.UnitTests.Resources
 		public async Task GetAccountCallLogsAsync_WithOnlyToDate()
 		{
 			// Arrange
-			var to = new DateTime(2023, 9, 30);
+			var to = new DateOnly(2023, 9, 30);
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "call_logs"))

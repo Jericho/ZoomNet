@@ -62,8 +62,8 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var userId = "user123";
-			var from = new DateTime(2023, 6, 1);
-			var to = new DateTime(2023, 6, 30);
+			var from = new DateOnly(2023, 6, 1);
+			var to = new DateOnly(2023, 6, 30);
 			var type = ReportMeetingType.Past;
 
 			var mockHttp = new MockHttpMessageHandler();
@@ -99,8 +99,8 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var userId = "user123";
-			var from = new DateTime(2023, 6, 30);
-			var to = new DateTime(2023, 6, 1);
+			var from = new DateOnly(2023, 6, 30);
+			var to = new DateOnly(2023, 6, 1);
 			var type = ReportMeetingType.Past;
 
 			var mockHttp = new MockHttpMessageHandler();
@@ -117,8 +117,8 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var userId = "user123";
-			var from = new DateTime(2023, 6, 1);
-			var to = new DateTime(2023, 7, 5); // More than 30 days
+			var from = new DateOnly(2023, 6, 1);
+			var to = new DateOnly(2023, 7, 5); // More than 30 days
 			var type = ReportMeetingType.Past;
 
 			var mockHttp = new MockHttpMessageHandler();
@@ -174,8 +174,8 @@ namespace ZoomNet.UnitTests.Resources
 		public async Task GetHostsAsync_ValidDateRange_ReturnsHosts()
 		{
 			// Arrange
-			var from = new DateTime(2023, 6, 1);
-			var to = new DateTime(2023, 6, 30);
+			var from = new DateOnly(2023, 6, 1);
+			var to = new DateOnly(2023, 6, 30);
 			var type = ReportHostType.Active;
 
 			var mockHttp = new MockHttpMessageHandler();
@@ -213,8 +213,8 @@ namespace ZoomNet.UnitTests.Resources
 		public async Task GetHostsAsync_ToDateBeforeFromDate_ThrowsException()
 		{
 			// Arrange
-			var from = new DateTime(2023, 6, 30);
-			var to = new DateTime(2023, 6, 1);
+			var from = new DateOnly(2023, 6, 30);
+			var to = new DateOnly(2023, 6, 1);
 			var type = ReportHostType.Active;
 
 			var mockHttp = new MockHttpMessageHandler();
@@ -230,8 +230,8 @@ namespace ZoomNet.UnitTests.Resources
 		public async Task GetHostsAsync_DateRangeExceedsOneMonth_ThrowsException()
 		{
 			// Arrange
-			var from = new DateTime(2023, 6, 1);
-			var to = new DateTime(2023, 7, 10); // More than 30 days
+			var from = new DateOnly(2023, 6, 1);
+			var to = new DateOnly(2023, 7, 10); // More than 30 days
 			var type = ReportHostType.Active;
 
 			var mockHttp = new MockHttpMessageHandler();
@@ -315,8 +315,8 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var userId = "user123";
-			var from = new DateTime(2023, 6, 1);
-			var to = new DateTime(2023, 7, 1); // Exactly 30 days
+			var from = new DateOnly(2023, 6, 1);
+			var to = new DateOnly(2023, 7, 1); // Exactly 30 days
 			var type = ReportMeetingType.Past;
 
 			var mockHttp = new MockHttpMessageHandler();
@@ -344,8 +344,8 @@ namespace ZoomNet.UnitTests.Resources
 		public async Task GetHostsAsync_ExactlyThirtyDays_WorksCorrectly()
 		{
 			// Arrange
-			var from = new DateTime(2023, 6, 1);
-			var to = new DateTime(2023, 7, 1); // Exactly 30 days
+			var from = new DateOnly(2023, 6, 1);
+			var to = new DateOnly(2023, 7, 1); // Exactly 30 days
 			var type = ReportHostType.Active;
 
 			var mockHttp = new MockHttpMessageHandler();
@@ -374,7 +374,7 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var userId = "user123";
-			var date = new DateTime(2023, 6, 15);
+			var date = new DateOnly(2023, 6, 15);
 			var type = ReportMeetingType.Past;
 
 			var mockHttp = new MockHttpMessageHandler();
