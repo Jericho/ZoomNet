@@ -12,6 +12,7 @@ using ZoomNet.UnitTests.Properties;
 
 namespace ZoomNet.UnitTests.Resources
 {
+#pragma warning disable CS0618 // Type or member is obsolete
 	public class CallLogsTests
 	{
 		private readonly ITestOutputHelper _outputHelper;
@@ -628,4 +629,5 @@ namespace ZoomNet.UnitTests.Resources
 
 		#endregion
 	}
+#pragma warning restore CS0618 // Type or member is obsolete
 }

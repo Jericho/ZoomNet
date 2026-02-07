@@ -6,6 +6,7 @@ using ZoomNet.Models;
 
 namespace ZoomNet.IntegrationTests.Tests
 {
+#pragma warning disable CS0618 // Type or member is obsolete
 	public class CallLogs : IIntegrationTest
 	{
 		public async Task RunAsync(User myUser, string[] myPermissions, IZoomClient client, TextWriter log, CancellationToken cancellationToken)
@@ -22,4 +23,5 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync($"All call Logs: {allCallLogs.Records.Length}. Missed call logs: {missedCalllogs.Records.Length}").ConfigureAwait(false);
 		}
 	}
+#pragma warning restore CS0618 // Type or member is obsolete
 }

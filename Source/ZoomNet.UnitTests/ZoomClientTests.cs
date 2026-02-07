@@ -115,7 +115,9 @@ namespace ZoomNet.UnitTests
 			client.ShouldNotBeNull();
 			client.Accounts.ShouldNotBeNull();
 			client.Billing.ShouldNotBeNull();
+#pragma warning disable CS0618 // Type or member is obsolete
 			client.CallLogs.ShouldNotBeNull();
+#pragma warning restore CS0618 // Type or member is obsolete
 			client.Chat.ShouldNotBeNull();
 			client.Chatbot.ShouldNotBeNull();
 			client.CloudRecordings.ShouldNotBeNull();
