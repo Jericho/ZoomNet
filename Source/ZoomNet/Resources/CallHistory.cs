@@ -149,7 +149,7 @@ namespace ZoomNet.Resources
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
-				.GetAsync("phone/users/{userId}/call_history")
+				.GetAsync($"phone/users/{userId}/call_history")
 				.WithArgument("from", from?.ToZoomFormat(dateOnly: true))
 				.WithArgument("to", to?.ToZoomFormat(dateOnly: true))
 				.WithArgument("keyword", keyword)
@@ -169,7 +169,7 @@ namespace ZoomNet.Resources
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithTokenAndDateRange<CallElement>("call_history");
+				.AsPaginatedResponseWithTokenAndDateRange<CallElement>("call_logs");
 		}
 
 		/// <inheritdoc/>
