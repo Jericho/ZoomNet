@@ -59,7 +59,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "call_history"))
 				.WithQueryString("from", from.ToString("yyyy-MM-dd"))
 				.WithQueryString("to", to.ToString("yyyy-MM-dd"))
-				.WithQueryString("type", callType.ToEnumString())
+				.WithQueryString("call_types", callType.ToEnumString())
 				.WithQueryString("page_size", "30")
 				.Respond("application/json", EndpointsResource.phone_call_history_GET);
 
@@ -125,7 +125,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "call_history"))
 				.WithQueryString("from", from.ToString("yyyy-MM-dd"))
 				.WithQueryString("to", to.ToString("yyyy-MM-dd"))
-				.WithQueryString("type", callType.ToEnumString())
+				.WithQueryString("call_types", callType.ToEnumString())
 				.WithQueryString("time_type", timeType.ToEnumString())
 				.WithQueryString("page_size", "100")
 				.WithQueryString("next_page_token", pagingToken)
@@ -149,31 +149,31 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.RecordsPerPage.ShouldBe(100);
+			result.RecordsPerPage.ShouldBe(30);
 		}
 
 		[Fact]
 		public async Task GetCallElementAsync()
 		{
 			// Arrange
-			var callId = "call123456";
+			var callElementId = "20211008-fe9c3900-5187-4254-9359-590afbc40bc9";
 
 			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "call_history", callId))
-				.Respond("application/json", EndpointsResource.phone_call_history__callHistoryUuid__GET);
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "call_element", callElementId))
+				.Respond("application/json", EndpointsResource.phone_call_element__callElementId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
 			var callHistory = new ZoomNet.Resources.CallHistory(client);
 
 			// Act
-			var result = await callHistory.GetCallElementAsync(callId, TestContext.Current.CancellationToken);
+			var result = await callHistory.GetCallElementAsync(callElementId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe(callId);
+			result.CallElementId.ShouldBe(callElementId);
 			result.CallerName.ShouldNotBeNullOrEmpty();
 			result.CalleeName.ShouldNotBeNullOrEmpty();
 		}
@@ -226,7 +226,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "users", userId, "call_history"))
 				.WithQueryString("from", from.ToString("yyyy-MM-dd"))
 				.WithQueryString("to", to.ToString("yyyy-MM-dd"))
-				.WithQueryString("type", callType.ToEnumString())
+				.WithQueryString("call_types", callType.ToEnumString())
 				.WithQueryString("page_size", "50")
 				.Respond("application/json", EndpointsResource.phone_users__userId__call_history_GET);
 
@@ -247,7 +247,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.RecordsPerPage.ShouldBe(50);
+			result.RecordsPerPage.ShouldBe(30);
 		}
 	}
 }
