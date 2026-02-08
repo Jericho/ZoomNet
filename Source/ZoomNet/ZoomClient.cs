@@ -230,7 +230,9 @@ namespace ZoomNet
 			Accounts = new Accounts(_fluentClient);
 			Billing = new Billing(_fluentClient);
 			CallHistory = new CallHistory(_fluentClient);
+#pragma warning disable CS0618 // Type or member is obsolete
 			CallLogs = new CallLogs(_fluentClient);
+#pragma warning restore CS0618 // Type or member is obsolete
 			Chat = new Chat(_fluentClient);
 			Chatbot = new Chatbot(_fluentClient);
 			CloudRecordings = new CloudRecordings(_fluentClient);
