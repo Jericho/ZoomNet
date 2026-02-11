@@ -164,8 +164,8 @@ namespace ZoomNet.Resources
 		/// covered.</returns>
 		Task<PaginatedResponseWithTokenAndDateRange<CallElement>> GetUserCallHistoryAsync(
 			string userId,
-			DateTime? from = null,
-			DateTime? to = null,
+			DateOnly? from = null,
+			DateOnly? to = null,
 			string keyword = null,
 			IEnumerable<CallElementDirection> directions = null,
 			IEnumerable<CallElementConnectType> connectionTypes = null,

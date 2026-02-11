@@ -183,8 +183,8 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var userId = "user123";
-			var from = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-			var to = new DateTime(2024, 1, 31, 23, 59, 59, DateTimeKind.Utc);
+			var from = new DateOnly(2024, 1, 1);
+			var to = new DateOnly(2024, 1, 31);
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "users", userId, "call_history"))
@@ -217,8 +217,8 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var userId = "user123";
-			var from = new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-			var to = new DateTime(2024, 1, 31, 23, 59, 59, DateTimeKind.Utc);
+			var from = new DateOnly(2024, 1, 1);
+			var to = new DateOnly(2024, 1, 31);
 			var callType = CallElementCallType.General;
 			var recordsPerPage = 50;
 

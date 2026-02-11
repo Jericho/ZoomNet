@@ -126,8 +126,8 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task<PaginatedResponseWithTokenAndDateRange<CallElement>> GetUserCallHistoryAsync(
 			string userId,
-			DateTime? from = null,
-			DateTime? to = null,
+			DateOnly? from = null,
+			DateOnly? to = null,
 			string keyword = null,
 			IEnumerable<CallElementDirection> directions = null,
 			IEnumerable<CallElementConnectType> connectionTypes = null,
@@ -150,8 +150,8 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync($"phone/users/{userId}/call_history")
-				.WithArgument("from", from?.ToZoomFormat(dateOnly: true))
-				.WithArgument("to", to?.ToZoomFormat(dateOnly: true))
+				.WithArgument("from", from.ToZoomFormat())
+				.WithArgument("to", to.ToZoomFormat())
 				.WithArgument("keyword", keyword)
 				.WithArguments(directions?.Select(item => new KeyValuePair<string, string>("directions", item.ToEnumString())))
 				.WithArguments(connectionTypes?.Select(item => new KeyValuePair<string, string>("connection_types", item.ToEnumString())))
