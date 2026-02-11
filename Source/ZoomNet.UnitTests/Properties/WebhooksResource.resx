@@ -1822,4 +1822,7 @@
   <data name="contact_center_user_skills_unassigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\SampleData\Webhooks\contact_center.user_skills_unassigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="revenue_accelerator_conversation_crm_associations_changed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\revenue_accelerator.conversation_crm_associations_changed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

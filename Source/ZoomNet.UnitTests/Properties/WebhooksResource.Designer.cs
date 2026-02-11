@@ -8692,6 +8692,33 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;revenue_accelerator.deal_conversation_associations_changed&quot;,
+        ///  &quot;event_ts&quot;: 1765788180122,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;aCLhU8cQR4qfdTSvT4stxA&quot;,
+        ///    &quot;object&quot;: [
+        ///      {
+        ///        &quot;conversation_id&quot;: &quot;2wI0tytGQuKUoDvY7%2BUDZw==,1758246901000&quot;,
+        ///        &quot;old_associations&quot;: [],
+        ///        &quot;new_associations&quot;: [
+        ///          {
+        ///            &quot;deal_id&quot;: &quot;006aa00000JkrXiAAR&quot;,
+        ///            &quot;account_id&quot;: &quot;006aa00000JkrQiiAx&quot;,
+        ///            &quot;lead_id&quot;: null
+        ///          }
+        ///        ]
+        ///      },
+        ///      {
+        ///   [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string revenue_accelerator_conversation_crm_associations_changed {
+            get {
+                return ResourceManager.GetString("revenue_accelerator_conversation_crm_associations_changed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;revenue_accelerator.playlist_add_moment&quot;,
         ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
