@@ -1,5 +1,6 @@
 using System;
 using System.Text.Json.Serialization;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.Models
 {
@@ -341,7 +342,11 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Gets or sets the detail result of an event for a call log.
 		/// </summary>
-		[JsonPropertyName("result")]
+		/*
+		 * "result" when parsing a webhook
+		 * "call_results" when parsing the response of an API endpoint.
+		 */
+		[MultipleValuesEnumMember(DefaultValue = "result", OtherValues = new[] { "call_result" })]
 		public CallElementResult Result { get; set; }
 
 		/// <summary>

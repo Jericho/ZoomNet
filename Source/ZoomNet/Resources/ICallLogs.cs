@@ -11,6 +11,7 @@ namespace ZoomNet.Resources
 	/// <remarks>
 	/// See <a href="https://marketplace.zoom.us/docs/api-reference/phone/methods/#tag/Call-Logs">Zoom documentation</a> for more information.
 	/// </remarks>
+	[Obsolete("The CallLogs API endpoints will be deprecated in April 2026. Please use the CallHistory instead. For more information, please refer to https://developers.zoom.us/docs/phone/migrate/")]
 	public interface ICallLogs
 	{
 		/// <summary>

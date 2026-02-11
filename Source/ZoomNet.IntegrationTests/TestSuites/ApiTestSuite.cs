@@ -10,6 +10,7 @@ namespace ZoomNet.IntegrationTests.TestSuites
 		{
 			typeof(Accounts),
 			typeof(Billing),
+			typeof(CallHistory),
 			typeof(CallLogs),
 			typeof(Chat),
 			typeof(CloudRecordings),
