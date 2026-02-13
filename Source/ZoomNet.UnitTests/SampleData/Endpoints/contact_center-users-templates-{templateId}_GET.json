@@ -1,0 +1,55 @@
+{
+  "template_id": "qmLKCot6QfSGwmPKFCgmCg",
+  "template_name": "template name",
+  "template_description": "user template.",
+  "template_type": "add",
+  "template_status": "active",
+  "selected_blocks": [
+    "role"
+  ],
+  "role": "27302393-4784-11ec-a3cd-122e3e29bb87",
+  "package": "essentials",
+  "team": {
+    "team_id": "G3AfPPKrQZWEkgUCEzUvhA",
+    "team_supervisor": true
+  },
+  "client_integration": {
+    "client_integration_application": "Salesforce",
+    "client_integration_name": "my integration"
+  },
+  "external_url": {
+    "enable_external_url": true,
+    "external_launch_url": "https://www.domain.com"
+  },
+  "user_access": true,
+  "country_or_region": "US",
+  "region": "BAAfPPKrQZWEkgUCEzUvhA",
+  "mobile_client": false,
+  "emergency_calling": true,
+  "assigned_queues": {
+    "agent_queue_ids": [
+      "jUthl0VaRH6mcZepV4ITMA"
+    ],
+    "supervisor_queue_ids": [
+      "jUthl0VaRH6mcZepV4ITMA"
+    ],
+    "default_outbound_voice_queue_id": "jUthl0VaRH6mcZepV4ITMA",
+    "default_outbound_message_queue_id": "jUthl0VaRH6mcZepV4ITMA"
+  },
+  "skills": [
+    {
+      "skill_id": "s51M536ZjSgi8o_rzmgQBrA",
+      "proficiency_level": 3
+    }
+  ],
+  "engagement_capacity": {
+    "concurrent_email_capacity": 5,
+    "concurrent_message_capacity": 6,
+    "email_max_agent_load": 10,
+    "message_max_agent_load": 10
+  },
+  "modified_by": "IGTRVt3gQ2i-WjoUIjeZxw",
+  "last_modified_time": "2022-02-15T09:27:15.0000000\u002B00:00",
+  "created_by": "IGTRVt3gQ2i",
+  "created_time": "2022-02-15T09:27:15.0000000\u002B00:00"
+}

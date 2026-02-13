@@ -1,0 +1,60 @@
+{
+  "assignee": {
+    "extension_number": 123,
+    "id": "i242djsgrg",
+    "name": "Pooja",
+    "extension_type": "user"
+  },
+  "assignees": [
+    {
+      "extension_number": 123,
+      "id": "i242djsgrg",
+      "name": "Pooja",
+      "extension_type": "user",
+      "extension_id": "bdkfdler"
+    }
+  ],
+  "device_type": "Ribbon EdgeMarc302",
+  "display_name": "Pooja\u0027s Phone",
+  "id": "1234324",
+  "mac_address": "203a07240534",
+  "provision": {
+    "sip_accounts": [
+      {
+        "authorization_id": "123123",
+        "outbound_proxy": "123123",
+        "password": "1123",
+        "secondary_outbound_proxy": "proxy.example.com:5555",
+        "shared_line": {
+          "alias": "additional information",
+          "line_subscription": {
+            "display_name": "Pooja",
+            "extension_number": 123123,
+            "phone_number": "12059535689"
+          },
+          "outbound_caller_id": "\u002B123123123"
+        },
+        "sip_domain": "123.zoom.us",
+        "user_name": "123123"
+      }
+    ],
+    "type": "manual",
+    "url": "wwww.example.com"
+  },
+  "site": {
+    "id": "123123",
+    "name": "Main Site"
+  },
+  "status": "offline",
+  "provision_template_id": "Ke5Ghevvoo001hr",
+  "private_ip": "192.168.10.13",
+  "public_ip": "220.148.231.126",
+  "policy": {
+    "call_control": {
+      "status": "off"
+    },
+    "hot_desking": {
+      "status": "off"
+    }
+  }
+}

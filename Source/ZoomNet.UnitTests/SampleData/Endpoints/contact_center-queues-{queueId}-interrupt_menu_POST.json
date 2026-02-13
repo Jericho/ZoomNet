@@ -1,0 +1,53 @@
+{
+  "queue_id": "zeYjXoDOS_eV1QmTpj63PQ",
+  "menu_language_code": "en-US",
+  "voice_id": "Joanna",
+  "accept_timeout": 10,
+  "play_interval": 60,
+  "loop_play": false,
+  "loop_interval": 120,
+  "menu_options": [
+    {
+      "keypress": "1",
+      "menu_action": "request_callback",
+      "play_message": "If you would like to leave a voicemail, press {{keyPress}}.",
+      "route_to_flow_id": "c0SjVYqFTzOKs7wgAXM5cQ",
+      "voice_mail_inbox_id": "rdc5hgEDTKuEVI7nz0umDg",
+      "callback_settings": {
+        "callback_number_type": "queue_default_caller_id",
+        "callback_confirm_keypress": "#",
+        "accept_callback_timeout": 10,
+        "enable_offer_phone_number": false,
+        "offer_number_message": "We\u0027ll call you back using the phone number {{current phone number}}. If you want to use a different number, enter it now and then press {{keyPress}}. Otherwise, please stay on the line or press {{keyPress}} now.",
+        "callback_confirm_messsage": "Your request for callback is confirmed. We will use the phone number {{current phone number}} and extension {{extension number}} to call you back when it\u0027s your turn in the queue",
+        "enable_offer_extension_number": false,
+        "offer_extension_number_message": "We\u0027ll call you back using the phone number {{current phone number}}. If you want to add an extension, enter it now and then press {{keyPress}}. Otherwise, please stay on the line or press {{keyPress}} now.",
+        "confirm_extension_number_message": "You entered the extension {{extension number}}. If this is correct, press {{keyPress}} to confirm. Otherwise, enter your extension number and then press {{keyPress}}.",
+        "outbound_dial_option": "auto_greeting",
+        "outbound_dial_greeting_message": "Thanks for waiting in the queue. You will be connected to the next available agent in a short moment.",
+        "callback_timeout": 10,
+        "enable_callback_cancel_message": false,
+        "callback_cancel_message": "Your callback has been canceled due to high call volumes. Please try calling again.",
+        "callback_returning_message": "Hello again. You have a callback set up. Press {{keyPress}} to cancel your callback and wait on the line. Or you can hang up to keep your callback request and end this call.",
+        "enable_callback_offer_time": false,
+        "callback_offer_timezone_id": "America/Los_Angeles",
+        "callback_offer_time": [
+          {
+            "callback_offer_day": "Mon",
+            "callback_offer_start_time": "09:00",
+            "callback_offer_end_time": "18:00"
+          }
+        ],
+        "enable_callback_return_time": false,
+        "callback_return_timezone_id": "America/Los_Angeles",
+        "callback_return_day": [
+          {
+            "callback_return_day": "Mon",
+            "callback_return_sart_time": "09:00",
+            "callback_return_end_time": "18:00"
+          }
+        ]
+      }
+    }
+  ]
+}

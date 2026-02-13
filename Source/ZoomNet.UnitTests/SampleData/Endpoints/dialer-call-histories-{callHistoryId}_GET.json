@@ -1,0 +1,35 @@
+{
+  "call_history_id": "WlLdbYT7R0uWWhJzjBmVVQ",
+  "primary_name": "Klay Thompson",
+  "secondary_name": "Klay T",
+  "company": "GSW",
+  "disposition": "Connected - No interest",
+  "transcript": "[00:00] 16315423526: Your call has been forwarded to voicemail. The person you\u0027re trying to reach is not available. At the tone.\\n[00:05] 16315423526: Please record your message. When you have finished recording, you may hang up.",
+  "type": "HISTORY",
+  "user_id": "1W6kwwJQRL-1p9bsjdQvmw",
+  "call_list_id": "iY092GX9TbWfL54HnBxyPQ",
+  "account_name": "Facebook",
+  "calling_number": "\u002B15162060062",
+  "called_number": "\u002B1-631-542-3526",
+  "complete_called_number": "\u002B16315423526",
+  "call_duration": 29,
+  "create_time": "2025-11-13T15:30:45Z",
+  "start_time": "2025-11-13T15:30:16Z",
+  "dialer_status": "ENDED",
+  "dialer_sub_status": "ANSWER",
+  "disposition_deleted": false,
+  "auto_disposition": true,
+  "meeting_id": "aa916cffb2ad4be9a85f0a9a915799c5",
+  "processing_analysis": false,
+  "call_note": "Prospect showed no interest.",
+  "call_id": "068b9f5120201001631",
+  "amd_result": "HUMAN",
+  "call_list_name": "test disposition",
+  "call_list_deleted": true,
+  "email_addresses": [
+    {
+      "email": "john.smith@acme-corp.com",
+      "type": "PRIMARY_EMAIL"
+    }
+  ]
+}

@@ -32,7 +32,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="DashboardMeetingMetrics">meetings</see>.
 		/// </returns>
-		Task<PaginatedResponseWithTokenAndDateRange<DashboardMeetingMetrics>> GetAllMeetingsAsync(DateTime from, DateTime to, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithTokenAndDateRange<DashboardMeetingMetrics>> GetAllMeetingsAsync(DateOnly from, DateOnly to, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve the details of a meeting.
@@ -130,7 +130,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="DashboardMetricsBase">webinars.</see>.
 		/// </returns>
-		Task<PaginatedResponseWithTokenAndDateRange<DashboardMetricsBase>> GetAllWebinarsAsync(DateTime from, DateTime to, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithTokenAndDateRange<DashboardMetricsBase>> GetAllWebinarsAsync(DateOnly from, DateOnly to, DashboardMeetingType type = DashboardMeetingType.Live, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve the details of a webinar.
@@ -235,7 +235,7 @@ namespace ZoomNet.Resources
 		/// </param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>A <see cref="ZoomRoom"/> Zoom room with details on current and past meetings.</returns>
-		Task<ZoomRoom> GetRoomDetailsAsync(string roomId, DateTime from, DateTime to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<ZoomRoom> GetRoomDetailsAsync(string roomId, DateOnly from, DateOnly to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// A Cloud Room Connector allows H.323/SIP endpoints to connect to a Zoom meeting. <br/>
@@ -248,7 +248,7 @@ namespace ZoomNet.Resources
 		/// <param name="to">Date to end search.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The <see cref="CrcPortMetrics">Report </see> of metrics on CRC usage.</returns>
-		Task<CrcPortMetrics> GetCrcPortUsageAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default);
+		Task<CrcPortMetrics> GetCrcPortUsageAsync(DateOnly from, DateOnly to, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get <a href="https://support.zoom.us/hc/en-us/articles/204654719-Dashboard#h_cc7e9749-1c70-4afb-a9a2-9680654821e4">metrics</a> on how users are utilizing the Zoom Chat Client.
@@ -267,7 +267,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="ImMetric">chat room usage metrics</see>.
 		/// </returns>
-		Task<PaginatedResponseWithTokenAndDateRange<ImMetric>> GetImMetricsAsync(DateTime from, DateTime to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithTokenAndDateRange<ImMetric>> GetImMetricsAsync(DateOnly from, DateOnly to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve survey results from <a href="https://support.zoom.us/hc/en-us/articles/115005855266-End-of-Meeting-Feedback-Survey#h_e30d552b-6d8e-4e0a-a588-9ca8180c4dbf">Zoom meetings client feedback.</a>.
@@ -278,7 +278,7 @@ namespace ZoomNet.Resources
 		/// <param name="to">Date to end search.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>A <see cref="ClientFeedbackMetricsReport"/> report with metrics on client feedback.</returns>
-		Task<ClientFeedbackMetricsReport> GetClientFeedbackMetricsAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default);
+		Task<ClientFeedbackMetricsReport> GetClientFeedbackMetricsAsync(DateOnly from, DateOnly to, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get Top 25 issues of Zoom rooms.
@@ -289,7 +289,7 @@ namespace ZoomNet.Resources
 		/// <param name="to">Date to end search.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>A <see cref="IssuesOfZoomRoomsReport"/> report with the list of top issues in Zoom rooms.</returns>
-		Task<IssuesOfZoomRoomsReport> GetIssuesOfZoomRoomsAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default);
+		Task<IssuesOfZoomRoomsReport> GetIssuesOfZoomRoomsAsync(DateOnly from, DateOnly to, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get information on top 25 Zoom Rooms with issues in a month. The month specified with the “from” and “to” range should fall within the last six months.
@@ -300,7 +300,7 @@ namespace ZoomNet.Resources
 		/// <param name="to">Date to end search.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>A <see cref="ZoomRoomWithIssuesReport"/> report with the list of Zoom rooms with issues.</returns>
-		Task<ZoomRoomWithIssuesReport> GetZoomRoomsWithIssuesAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default);
+		Task<ZoomRoomWithIssuesReport> GetZoomRoomsWithIssuesAsync(DateOnly from, DateOnly to, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get information about the issues that occurred on the Top 25 Zoom Rooms with issues in an account.
@@ -320,7 +320,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="ZoomRoomIssueDetails">Zoom room issue details</see>.
 		/// </returns>
-		Task<PaginatedResponseWithTokenAndDateRange<ZoomRoomIssueDetails>> GetIssuesOfZoomRoomAsync(string zoomRoomId, DateTime from, DateTime to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithTokenAndDateRange<ZoomRoomIssueDetails>> GetIssuesOfZoomRoomAsync(string zoomRoomId, DateOnly from, DateOnly to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve detailed information on a <a href="https://support.zoom.us/hc/en-us/articles/115005855266-End-of-Meeting-Feedback-Survey#h_e30d552b-6d8e-4e0a-a588-9ca8180c4dbf">Zoom meetings client feedback.</a>.
@@ -340,7 +340,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="ClientFeedbackDetail">client feedback details</see>.
 		/// </returns>
-		Task<PaginatedResponseWithTokenAndDateRange<ClientFeedbackDetail>> GetZoomMeetingsClientFeedbackAsync(string feedbackId, DateTime from, DateTime to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithTokenAndDateRange<ClientFeedbackDetail>> GetZoomMeetingsClientFeedbackAsync(string feedbackId, DateOnly from, DateOnly to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// If the <a href="https://support.zoom.us/hc/en-us/articles/115005855266">End of Meeting Feedback Survey</a> option is enabled, attendees will be prompted with a survey window where they can tap either the Thumbs Up or Thumbs Down button that indicates their Zoom meeting experience. <br/>
@@ -354,6 +354,6 @@ namespace ZoomNet.Resources
 		/// <param name="to">Date to end search.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>A <see cref="ClientSatisfactionReport"/> report with a list of client satisfaction reports.</returns>
-		Task<ClientSatisfactionReport> GetClientMeetingSatisfactionMetrics(DateTime from, DateTime to, CancellationToken cancellationToken = default);
+		Task<ClientSatisfactionReport> GetClientMeetingSatisfactionMetricsAsync(DateOnly from, DateOnly to, CancellationToken cancellationToken = default);
 	}
 }

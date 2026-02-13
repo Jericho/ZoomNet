@@ -1,0 +1,15 @@
+{
+  "countries_regions": [
+    {
+      "name": "United States",
+      "code": 1,
+      "iso_code": "US",
+      "rule": 1,
+      "enabled_carrier": [
+        "ZOOM"
+      ]
+    }
+  ],
+  "next_page_token": "uBTK3NzNksdkuCUAQaFVFd86kyOr59zg4U2",
+  "page_size": 30
+}

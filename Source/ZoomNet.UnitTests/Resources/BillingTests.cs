@@ -416,8 +416,8 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var accountId = "test_account_123";
-			var from = new DateTime(2024, 1, 1);
-			var to = new DateTime(2024, 3, 31);
+			var from = new DateOnly(2024, 1, 1);
+			var to = new DateOnly(2024, 3, 31);
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("accounts", accountId, "billing/invoices"))
@@ -462,8 +462,8 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var accountId = "test_account_123";
-			var from = new DateTime(2024, 1, 1);
-			var to = new DateTime(2024, 3, 31);
+			var from = new DateOnly(2024, 1, 1);
+			var to = new DateOnly(2024, 3, 31);
 			var emptyInvoicesJson = @"{
 				""currency"": ""USD"",
 				""invoices"": []
@@ -611,13 +611,13 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var accountId = "test_account_123";
-			var from = new DateTime(2024, 6, 15, 10, 30, 45); // With time component
-			var to = new DateTime(2024, 9, 20, 18, 45, 30);   // With time component
+			var from = new DateOnly(2024, 6, 15);
+			var to = new DateOnly(2024, 9, 20);
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("accounts", accountId, "billing/invoices"))
-				.WithQueryString("from", "2024-06-15") // Should only include date
-				.WithQueryString("to", "2024-09-20")   // Should only include date
+				.WithQueryString("from", "2024-06-15")
+				.WithQueryString("to", "2024-09-20")
 				.Respond("application/json", INVOICES_JSON);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
@@ -719,8 +719,8 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var accountId = "test_account_123";
-			var from = new DateTime(2024, 1, 1);
-			var to = new DateTime(2024, 1, 31);
+			var from = new DateOnly(2024, 1, 1);
+			var to = new DateOnly(2024, 1, 31);
 			var singleInvoiceJson = @"{
 				""currency"": ""EUR"",
 				""invoices"": [

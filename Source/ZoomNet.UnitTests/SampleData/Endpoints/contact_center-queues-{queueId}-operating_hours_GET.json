@@ -1,0 +1,18 @@
+{
+  "business_hour_id": "66ZjSQ7YTOescnINN_4vog",
+  "business_hour_name": "Default Business hours",
+  "closure_set_id": "Ixo-Na0bRfCyQ4q2lAryDw",
+  "closure_set_name": "Default Closure",
+  "account_default_business_hour": true,
+  "account_default_closure_set": true,
+  "operating_hours_overflow_enabled": true,
+  "overflow_to_default_goodbye_message": true,
+  "overflow_to_goodbye_message_asset_id": "dORBRSTxTN6B0vLJ37Kvnw",
+  "overflow_to_goodbye_message_asset_name": "message",
+  "overflow_to_queue_id": "m8IhNvUyTUmx7Jm8h5ZvLQ",
+  "overflow_to_queue_name": "voice_queue1",
+  "overflow_to_flow_id": "psjHGHrHQbaX8Zk7ldc81Q",
+  "overflow_to_flow_name": "voice_flow",
+  "overflow_to_inbox_id": "cMH8RJA0QsyJBCWIFbWfBQ",
+  "overflow_to_inbox_name": "voice_mail_1"
+}

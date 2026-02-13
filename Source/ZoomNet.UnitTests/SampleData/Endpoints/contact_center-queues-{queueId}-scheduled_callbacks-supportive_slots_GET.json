@@ -1,0 +1,16 @@
+{
+  "timezone": "America/Los_Angeles",
+  "slot_duration": 15,
+  "booking_days": [
+    {
+      "slot_date": "2025-06-19",
+      "slots": [
+        {
+          "available_count": 2,
+          "start_time": "2025-06-18T15:00:00.0000000\u002B00:00",
+          "availability_status": "available"
+        }
+      ]
+    }
+  ]
+}

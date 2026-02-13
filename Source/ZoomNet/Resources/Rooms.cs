@@ -294,7 +294,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithTokenAndDateRange<RoomSensorData>> GetSensorDataAsync(string roomId, string deviceId = null, RoomSensorType? sensorType = null, DateTime? from = null, DateTime? to = null, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithTokenAndDateRange<RoomSensorData>> GetSensorDataAsync(string roomId, string deviceId = null, RoomSensorType? sensorType = null, DateOnly? from = null, DateOnly? to = null, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);
 

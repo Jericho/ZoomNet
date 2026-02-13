@@ -6,211 +6,12 @@ using System.Threading.Tasks;
 using Xunit;
 using ZoomNet.Models;
 using ZoomNet.Resources;
+using ZoomNet.UnitTests.Properties;
 
 namespace ZoomNet.UnitTests.Resources
 {
 	public class RoomsTests
 	{
-		private const string ROOMS_LIST_JSON = @"{
-			""page_size"": 30,
-			""next_page_token"": ""token123"",
-			""rooms"": [
-				{
-					""id"": ""room1"",
-					""name"": ""Conference Room A"",
-					""type"": ""ZoomRoom"",
-					""status"": ""Available"",
-					""location_id"": ""loc1""
-				},
-				{
-					""id"": ""room2"",
-					""name"": ""Conference Room B"",
-					""type"": ""SchedulingDisplayOnly"",
-					""status"": ""Available"",
-					""location_id"": ""loc2""
-				}
-			]
-		}";
-
-		private const string ROOM_JSON = @"{
-			""id"": ""room123"",
-			""name"": ""New Conference Room"",
-			""type"": ""ZoomRoom"",
-			""status"": ""Available"",
-			""location_id"": ""loc123""
-		}";
-
-		private const string ROOM_PROFILE_JSON = @"{
-			""basic"": {
-				""id"": ""room123"",
-				""name"": ""Conference Room A"",
-				""activation_code"": ""ABC123"",
-				""timezone"": ""America/New_York""
-			},
-			""device"": {
-				""device_profile_id"": ""profile123""
-			},
-			""setup"": {
-				""room_passcode"": ""123456"",
-				""required_code_to_ext"": false
-			}
-		}";
-
-		private const string LOCATIONS_LIST_JSON = @"{
-			""page_size"": 30,
-			""next_page_token"": ""token123"",
-			""locations"": [
-				{
-					""id"": ""loc1"",
-					""name"": ""Building A"",
-					""type"": 1,
-					""parent_location_id"": null
-				},
-				{
-					""id"": ""loc2"",
-					""name"": ""Floor 1"",
-					""type"": 2,
-					""parent_location_id"": ""loc1""
-				}
-			]
-		}";
-
-		private const string LOCATION_JSON = @"{
-			""id"": ""loc123"",
-			""name"": ""New Building"",
-			""type"": 1,
-			""parent_location_id"": null
-		}";
-
-		private const string LOCATION_PROFILE_JSON = @"{
-			""basic"": {
-				""id"": ""loc123"",
-				""name"": ""Building A"",
-				""address"": ""123 Main St"",
-				""timezone"": ""America/New_York""
-			},
-			""setup"": {
-				""room_passcode"": ""654321"",
-				""required_code_to_ext"": true
-			}
-		}";
-
-		private const string TAG_ID_JSON = @"{
-			""id"": ""tag123""
-		}";
-
-		private const string TAGS_LIST_JSON = @"{
-			""page_size"": 30,
-			""next_page_token"": ""token123"",
-			""tags"": [
-				{
-					""id"": ""tag1"",
-					""name"": ""VIP Rooms"",
-					""description"": ""Rooms for executives""
-				},
-				{
-					""id"": ""tag2"",
-					""name"": ""Training Rooms"",
-					""description"": ""Rooms for training sessions""
-				}
-			]
-		}";
-
-		private const string ROOM_DEVICES_JSON = @"{
-			""devices"": [
-				{
-					""id"": ""device1"",
-					""device_type"": ""Controller"",
-					""device_name"": ""iPad Controller"",
-					""app_version"": ""5.10.0""
-				},
-				{
-					""id"": ""device2"",
-					""device_type"": ""Zoom Rooms Computer"",
-					""device_name"": ""Main Computer"",
-					""app_version"": ""5.10.0""
-				}
-			]
-		}";
-
-		private const string ROOM_DEVICE_PROFILES_JSON = @"[
-			{
-				""id"": ""profile1"",
-				""name"": ""Default Profile"",
-				""camera_id"": ""cam1"",
-				""microphone_id"": ""mic1"",
-				""speaker_id"": ""speaker1""
-			}
-		]";
-
-		private const string SIGNAGE_CONTENTS_JSON = @"{
-			""page_size"": 30,
-			""next_page_token"": ""token123"",
-			""contents"": [
-				{
-					""id"": ""content1"",
-					""name"": ""Welcome Screen"",
-					""type"": ""image"",
-					""folder_id"": ""folder1""
-				}
-			]
-		}";
-
-		private const string SENSOR_DATA_JSON = @"{
-			""page_size"": 30,
-			""next_page_token"": ""token123"",
-			""from"": ""2023-01-01"",
-			""to"": ""2023-01-31"",
-			""sensor_data"": [
-				{
-					""device_id"": ""device1"",
-					""sensor_type"": ""temperature"",
-					""value"": 72.5,
-					""timestamp"": ""2023-01-15T10:00:00Z""
-				}
-			]
-		}";
-
-		private const string ALERT_SETTINGS_JSON = @"{
-			""client_alert"": {
-				""device_system_update_time"": 14
-			},
-			""notification"": {
-				""jbh_reminder"": true
-			}
-		}";
-
-		private const string ROOM_SETTINGS_JSON = @"{
-			""meeting_security"": {
-				""encrypt_shared_screen_content"": true
-			},
-			""zoom_rooms"": {
-				""auto_start_stop_scheduled_meetings"": true
-			}
-		}";
-
-		private const string SIGNAGE_SETTINGS_JSON = @"{
-			""digital_signage"": {
-				""enable_digital_signage"": true,
-				""display_mode"": ""full_screen""
-			}
-		}";
-
-		private const string SCHEDULING_DISPLAY_SETTINGS_JSON = @"{
-			""scheduling_display"": {
-				""display_meeting_list"": true,
-				""all_day_event"": true
-			}
-		}";
-
-		private const string VIRTUAL_CONTROLLER_URL_JSON = @"{
-			""url"": ""https://zoom.us/j/room123/controller""
-		}";
-
-		private const string LOCATION_STRUCTURE_JSON = @"{
-			""structures"": [1, 2, 3, 4]
-		}";
-
 		private readonly ITestOutputHelper _outputHelper;
 
 		public RoomsTests(ITestOutputHelper outputHelper)
@@ -227,7 +28,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms"))
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", ROOMS_LIST_JSON);
+				.Respond("application/json", EndpointsResource.rooms_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -240,8 +41,8 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
-			result.Records[0].Name.ShouldBe("Conference Room A");
+			result.Records.Length.ShouldBe(1);
+			result.Records[0].Name.ShouldBe("My Personal Meeting Room");
 		}
 
 		[Fact]
@@ -256,7 +57,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("parent_location_id", parentLocationId)
 				.WithQueryString("type", type.ToEnumString())
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", ROOMS_LIST_JSON);
+				.Respond("application/json", EndpointsResource.rooms_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -280,7 +81,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("rooms"))
-				.Respond("application/json", ROOM_JSON);
+				.Respond("application/json", EndpointsResource.rooms_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -293,7 +94,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Name.ShouldBe("New Conference Room");
+			result.Name.ShouldBe("My Personal Meeting Room");
 		}
 
 		[Fact]
@@ -310,7 +111,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("rooms"))
-				.Respond("application/json", ROOM_JSON);
+				.Respond("application/json", EndpointsResource.rooms_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -379,7 +180,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", roomId))
 				.WithQueryString("regenerate_activation_code", false.ToString())
-				.Respond("application/json", ROOM_PROFILE_JSON);
+				.Respond("application/json", EndpointsResource.rooms__roomId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -392,8 +193,8 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.Basic.ShouldNotBeNull();
-			result.Basic.Name.ShouldBe("Conference Room A");
-			result.DeviceProfileId.ShouldBe("profile123");
+			result.Basic.Name.ShouldBe("My Personal Meeting Room");
+			result.DeviceProfileId.ShouldBe("J352JVkNRpyAgUaurxmrsh");
 			result.Setup.ShouldNotBeNull();
 		}
 
@@ -407,7 +208,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", roomId))
 				.WithQueryString("regenerate_activation_code", true.ToString())
-				.Respond("application/json", ROOM_PROFILE_JSON);
+				.Respond("application/json", EndpointsResource.rooms__roomId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -566,7 +367,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", roomId, "settings"))
 				.WithQueryString("setting_type", "alert")
-				.Respond("application/json", ALERT_SETTINGS_JSON);
+				.Respond("application/json", EndpointsResource.rooms__id__settings_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -591,7 +392,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", roomId, "settings"))
 				.WithQueryString("setting_type", "meeting")
-				.Respond("application/json", ROOM_SETTINGS_JSON);
+				.Respond("application/json", EndpointsResource.rooms__id__settings_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -616,7 +417,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", roomId, "settings"))
 				.WithQueryString("setting_type", "signage")
-				.Respond("application/json", SIGNAGE_SETTINGS_JSON);
+				.Respond("application/json", EndpointsResource.rooms__id__settings_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -640,7 +441,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", roomId, "settings"))
 				.WithQueryString("setting_type", "scheduling_display")
-				.Respond("application/json", SCHEDULING_DISPLAY_SETTINGS_JSON);
+				.Respond("application/json", EndpointsResource.rooms__id__settings_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -668,7 +469,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", roomId, "sensor_data"))
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", SENSOR_DATA_JSON);
+				.Respond("application/json", EndpointsResource.rooms__roomId__sensor_data_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -691,8 +492,8 @@ namespace ZoomNet.UnitTests.Resources
 			var roomId = "room123";
 			var deviceId = "device1";
 			var sensorType = RoomSensorType.Temperature;
-			var from = new DateTime(2023, 1, 1);
-			var to = new DateTime(2023, 1, 31);
+			var from = new DateOnly(2023, 1, 1);
+			var to = new DateOnly(2023, 1, 31);
 			var recordsPerPage = 50;
 			var pageToken = "token456";
 
@@ -702,7 +503,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("sensor_type", sensorType.ToEnumString())
 				.WithQueryString("page_size", recordsPerPage.ToString())
 				.WithQueryString("next_page_token", pageToken)
-				.Respond("application/json", SENSOR_DATA_JSON);
+				.Respond("application/json", EndpointsResource.rooms__roomId__sensor_data_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -726,7 +527,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", roomId, "virtual_controller"))
 				.WithQueryString("pre_authenticated_link", false.ToString())
-				.Respond("application/json", VIRTUAL_CONTROLLER_URL_JSON);
+				.Respond("application/json", EndpointsResource.rooms__roomId__virtual_controller_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -736,10 +537,10 @@ namespace ZoomNet.UnitTests.Resources
 			var result = await rooms.GetVirtualControllerUrlAsync(roomId, cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
-		mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.ShouldBe("https://zoom.us/j/room123/controller");
+			result.ShouldBe("https://zoom.us/launch/webzrc?nodeId=SnoDt6rcTqi7HIuFZsib9A");
 		}
 
 		[Fact]
@@ -752,7 +553,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", roomId, "virtual_controller"))
 				.WithQueryString("pre_authenticated_link", true.ToString())
-				.Respond("application/json", VIRTUAL_CONTROLLER_URL_JSON);
+				.Respond("application/json", EndpointsResource.rooms__roomId__virtual_controller_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -775,7 +576,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", roomId, "device_profiles"))
-				.Respond("application/json", ROOM_DEVICE_PROFILES_JSON);
+				.Respond("application/json", EndpointsResource.rooms__roomId__device_profiles_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -789,7 +590,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
 			result.Length.ShouldBe(1);
-			result[0].Name.ShouldBe("Default Profile");
+			result[0].Name.ShouldBe("ZR1 Device");
 		}
 
 		[Fact]
@@ -802,7 +603,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", "digital_signage"))
 				.WithQueryString("type", resourceType.ToEnumString())
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", SIGNAGE_CONTENTS_JSON);
+				.Respond("application/json", EndpointsResource.rooms_digital_signage_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -816,7 +617,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
 			result.Records.Length.ShouldBe(1);
-			result.Records[0].Name.ShouldBe("Welcome Screen");
+			result.Records[0].Name.ShouldBe("content name");
 		}
 
 		[Fact]
@@ -831,7 +632,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("type", resourceType.ToEnumString())
 				.WithQueryString("folder_id", folderId)
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", SIGNAGE_CONTENTS_JSON);
+				.Respond("application/json", EndpointsResource.rooms_digital_signage_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -856,7 +657,7 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", "locations", "structure"))
-				.Respond("application/json", LOCATION_STRUCTURE_JSON);
+				.Respond("application/json", EndpointsResource.rooms_locations_structure_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -869,7 +670,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Length.ShouldBe(4);
+			result.Length.ShouldBe(1);
 		}
 
 		[Fact]
@@ -902,7 +703,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("rooms", "locations"))
-				.Respond("application/json", LOCATION_JSON);
+				.Respond("application/json", EndpointsResource.rooms_locations_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -915,7 +716,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Name.ShouldBe("New Building");
+			result.Name.ShouldBe("location name");
 		}
 
 		[Fact]
@@ -927,7 +728,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("rooms", "locations"))
-				.Respond("application/json", LOCATION_JSON);
+				.Respond("application/json", EndpointsResource.rooms_locations_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1000,7 +801,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", "locations", locationId, "settings"))
 				.WithQueryString("setting_type", "alert")
-				.Respond("application/json", ALERT_SETTINGS_JSON);
+				.Respond("application/json", EndpointsResource.rooms_locations__locationId__settings_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1025,7 +826,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", "locations", locationId, "settings"))
 				.WithQueryString("setting_type", "meeting")
-				.Respond("application/json", ROOM_SETTINGS_JSON);
+				.Respond("application/json", EndpointsResource.rooms_locations__locationId__settings_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1050,7 +851,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", "locations", locationId, "settings"))
 				.WithQueryString("setting_type", "signage")
-				.Respond("application/json", SIGNAGE_SETTINGS_JSON);
+				.Respond("application/json", EndpointsResource.rooms_locations__locationId__settings_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1074,7 +875,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", "locations", locationId, "settings"))
 				.WithQueryString("setting_type", "scheduling_display")
-				.Respond("application/json", SCHEDULING_DISPLAY_SETTINGS_JSON);
+				.Respond("application/json", EndpointsResource.rooms_locations__locationId__settings_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1098,7 +899,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", "locations", locationId))
 				.WithQueryString("setting_type", "meeting")
-				.Respond("application/json", LOCATION_PROFILE_JSON);
+				.Respond("application/json", EndpointsResource.rooms_locations__locationId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1111,7 +912,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.Basic.ShouldNotBeNull();
-			result.Basic.Name.ShouldBe("Building A");
+			result.Basic.Name.ShouldBe("State");
 			result.Setup.ShouldNotBeNull();
 		}
 
@@ -1122,7 +923,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", "locations"))
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", LOCATIONS_LIST_JSON);
+				.Respond("application/json", EndpointsResource.rooms_locations_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1135,8 +936,8 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
-			result.Records[0].Name.ShouldBe("Building A");
+			result.Records.Length.ShouldBe(1);
+			result.Records[0].Name.ShouldBe("BuildingA");
 		}
 
 		#endregion
@@ -1152,7 +953,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("rooms", "tags"))
-				.Respond("application/json", TAG_ID_JSON);
+				.Respond("application/json", EndpointsResource.rooms_tags_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1165,7 +966,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.ShouldBe("tag123");
+			result.ShouldBe("5bfc6df7a11445ef81513b2c3b4c8d5d");
 		}
 
 		[Fact]
@@ -1296,7 +1097,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", roomId, "devices"))
-				.Respond("application/json", ROOM_DEVICES_JSON);
+				.Respond("application/json", EndpointsResource.rooms__roomId__devices_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1309,7 +1110,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Length.ShouldBe(2);
+			result.Length.ShouldBe(1);
 		}
 
 		[Fact]
@@ -1415,21 +1216,9 @@ namespace ZoomNet.UnitTests.Resources
 			var roomId = "room123";
 			var deviceProfileId = "profile1";
 
-			var deviceProfileJson = @"{
-				""id"": ""profile1"",
-				""name"": ""Custom Profile"",
-				""camera_id"": ""cam1"",
-				""microphone_id"": ""mic1"",
-				""speaker_id"": ""speaker1"",
-				""audio_processing"": true,
-				""auto_adjust_mic_level"": false,
-				""echo_cancellation"": true,
-				""noise_suppression"": ""moderate""
-			}";
-
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", roomId, "device_profiles", deviceProfileId))
-				.Respond("application/json", deviceProfileJson);
+				.Respond("application/json", EndpointsResource.rooms__roomId__device_profiles__deviceProfileId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1442,8 +1231,8 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("profile1");
-			result.Name.ShouldBe("Custom Profile");
+			result.Id.ShouldBe("Gz_fNcaSPByng-3vsqv_iQ");
+			result.Name.ShouldBe("ZR1 Device");
 		}
 
 		[Fact]
@@ -1541,144 +1330,6 @@ namespace ZoomNet.UnitTests.Resources
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
-		}
-
-		#endregion
-
-		#region Pagination Tests
-
-		[Fact]
-		public async Task GetAllAsync_WithPagingToken_ReturnsRooms()
-		{
-			// Arrange
-			var pagingToken = "token456";
-			var recordsPerPage = 50;
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms"))
-				.WithQueryString("page_size", recordsPerPage.ToString())
-				.WithQueryString("next_page_token", pagingToken)
-				.Respond("application/json", ROOMS_LIST_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var rooms = new Rooms(client);
-
-			// Act
-			var result = await rooms.GetAllAsync(recordsPerPage: recordsPerPage, pagingToken: pagingToken, cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
-		}
-
-		[Fact]
-		public async Task GetAllLocationsAsync_WithPagingToken_ReturnsLocations()
-		{
-			// Arrange
-			var pagingToken = "token789";
-			var recordsPerPage = 50;
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", "locations"))
-				.WithQueryString("page_size", recordsPerPage.ToString())
-				.WithQueryString("next_page_token", pagingToken)
-				.Respond("application/json", LOCATIONS_LIST_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var rooms = new Rooms(client);
-
-			// Act
-			var result = await rooms.GetAllLocationsAsync(recordsPerPage: recordsPerPage, pagingToken: pagingToken, cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
-		}
-
-		[Fact]
-		public async Task GetAllTagsAsync_WithDefaultParameters_ReturnsTags()
-		{
-			// Arrange
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", "tags"))
-				.WithQueryString("page_size", "30")
-				.Respond("application/json", TAGS_LIST_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var rooms = new Rooms(client);
-
-			// Act
-			var result = await rooms.GetAllTagsAsync(cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
-			result.Records[0].Name.ShouldBe("VIP Rooms");
-		}
-
-		[Fact]
-		public async Task GetAllTagsAsync_WithPagingToken_ReturnsTags()
-		{
-			// Arrange
-			var pagingToken = "token321";
-			var recordsPerPage = 50;
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", "tags"))
-				.WithQueryString("page_size", recordsPerPage.ToString())
-				.WithQueryString("next_page_token", pagingToken)
-				.Respond("application/json", TAGS_LIST_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var rooms = new Rooms(client);
-
-			// Act
-			var result = await rooms.GetAllTagsAsync(recordsPerPage, pagingToken, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
-		}
-
-		[Fact]
-		public async Task GetSignageContentsAsync_WithPagingToken_ReturnsContents()
-		{
-			// Arrange
-			var resourceType = SignageResourceType.Content;
-			var pagingToken = "token654";
-			var recordsPerPage = 50;
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("rooms", "digital_signage"))
-				.WithQueryString("type", resourceType.ToEnumString())
-				.WithQueryString("page_size", recordsPerPage.ToString())
-				.WithQueryString("next_page_token", pagingToken)
-				.Respond("application/json", SIGNAGE_CONTENTS_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var rooms = new Rooms(client);
-
-			// Act
-			var result = await rooms.GetSignageContentsAsync(resourceType, recordsPerPage: recordsPerPage, pagingToken: pagingToken, cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(1);
 		}
 
 		#endregion

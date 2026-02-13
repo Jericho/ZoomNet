@@ -1,0 +1,43 @@
+{
+  "total": 50,
+  "page": 1,
+  "page_size": 10,
+  "has_next_page": true,
+  "call_history": [
+    {
+      "call_history_id": "19DBLVM5SHG6cgIeo0vrHQ",
+      "primary_name": "Klay Thompson",
+      "secondary_name": "Klay",
+      "company": "GSW",
+      "account_name": "GSW",
+      "disposition": "Interested",
+      "disposition_deleted": false,
+      "transcript": "[00:00] 16315423526: Your call has been forwarded to voicemail. The person you\u0027re trying to reach is not available. At the tone.\\n[00:05] 16315423526: Please record your message. When you have finished recording, you may hang up.",
+      "type": "HISTORY",
+      "user_id": "1W6kwwJQRL-1p9bsjdQvmw",
+      "call_list_id": "Nq6eIDDOTOa5wrxVdFUR3w",
+      "call_list_name": "Call list test",
+      "call_list_deleted": false,
+      "calling_number": "\u002B1987654321",
+      "called_number": "\u002B1-631-542-4444",
+      "complete_called_number": "\u002B16315424444",
+      "call_duration": 394,
+      "create_time": "2025-11-13T15:30:45Z",
+      "start_time": "2025-11-13T15:24:11Z",
+      "dialer_status": "ENDED",
+      "dialer_sub_status": "ANSWER",
+      "auto_disposition": true,
+      "meeting_id": "3756643caefc4ed0ac3faccdc92a3677",
+      "processing_analysis": false,
+      "call_note": "Prospect showed no interest.",
+      "call_id": "06711553f02021f25a0",
+      "amd_result": "HUMAN",
+      "email_addresses": [
+        {
+          "email": "john.smith@acme-corp.com",
+          "type": "PRIMARY_EMAIL"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "work_item_variables": {
+    "work_item_name": "Research the market performance of competing companies.",
+    "work_item_source_id": "1",
+    "work_item_desc": "Conduct an in-depth analysis of key competitors\u0027 overall performance in the target market, including but not limited to market share, sales trends, product positioning, pricing strategies, distribution channels, and recent market activities.",
+    "work_item_type": "ticket",
+    "work_item_id": "24fwet23525",
+    "work_item_due_date": "2025-10-01T00:00:00",
+    "work_item_origin": "chat system",
+    "work_item_priority": "1",
+    "work_item_transcript_url": "https://api.example.com/v2/transcripts/download/yJAEEra27v4InERTcm77LQ",
+    "work_item_hyperlink": "www.example.com/ticket123",
+    "work_item_type_id": "1"
+  },
+  "flows": [
+    {
+      "flow_entry_id": "4ad5A8qLTIunwdlpzSS4lg",
+      "flow_id": "zeYjXoDOS_eV1QmTpj63PQ",
+      "flow_name": "Demo",
+      "flow_version": "5"
+    }
+  ],
+  "session_id": "z7bc2vC5TPSliVBO4dhaoQ",
+  "engagement_id": "vj9yy02ZTsyK22boIf2dww",
+  "language_code": "en-US",
+  "channels": [
+    {
+      "channel": "work_item",
+      "channel_source": "API"
+    }
+  ],
+  "start_time": "2025-09-01T00:00:00Z",
+  "consumers": [
+    {
+      "consumer_id": "zeYjXoDOS_eV1QmTpj63PQ",
+      "consumer_external_id": "yJAEEra27v4InERTcm77LQ",
+      "consumer_display_name": "Jill Doe",
+      "consumer_email": "JillDoe@example.com",
+      "consumer_number": "\u002B1234561212"
+    }
+  ],
+  "variables": [
+    {
+      "name": "global_custom.user.name",
+      "value": "123"
+    }
+  ]
+}

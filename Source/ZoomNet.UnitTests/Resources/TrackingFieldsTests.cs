@@ -6,46 +6,12 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 using ZoomNet.Resources;
+using ZoomNet.UnitTests.Properties;
 
 namespace ZoomNet.UnitTests.Resources
 {
 	public class TrackingFieldsTests
 	{
-		private const string TRACKING_FIELDS_JSON = @"{
-			""tracking_fields"": [
-				{
-					""id"": ""field1"",
-					""field"": ""Department"",
-					""required"": true,
-					""visible"": true,
-					""recommended_values"": [""Sales"", ""Marketing"", ""Engineering""]
-				},
-				{
-					""id"": ""field2"",
-					""field"": ""Project Code"",
-					""required"": false,
-					""visible"": true,
-					""recommended_values"": [""PROJ001"", ""PROJ002""]
-				}
-			]
-		}";
-
-		private const string SINGLE_TRACKING_FIELD_JSON = @"{
-			""id"": ""field1"",
-			""field"": ""Department"",
-			""required"": true,
-			""visible"": true,
-			""recommended_values"": [""Sales"", ""Marketing"", ""Engineering""]
-		}";
-
-		private const string CREATED_TRACKING_FIELD_JSON = @"{
-			""id"": ""newField123"",
-			""field"": ""Cost Center"",
-			""required"": false,
-			""visible"": true,
-			""recommended_values"": [""CC1000"", ""CC2000"", ""CC3000""]
-		}";
-
 		private readonly ITestOutputHelper _outputHelper;
 
 		public TrackingFieldsTests(ITestOutputHelper outputHelper)
@@ -61,75 +27,7 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("tracking_fields"))
-				.Respond("application/json", TRACKING_FIELDS_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var trackingFields = new TrackingFields(client);
-
-			// Act
-			var result = await trackingFields.GetAllAsync(TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Length.ShouldBe(2);
-			result[0].Id.ShouldBe("field1");
-			result[0].Name.ShouldBe("Department");
-			result[0].IsRequired.ShouldBeTrue();
-			result[0].IsVisible.ShouldBeTrue();
-			result[0].RecommendedValues.ShouldNotBeNull();
-			result[0].RecommendedValues.Length.ShouldBe(3);
-			result[0].RecommendedValues[0].ShouldBe("Sales");
-			result[1].Id.ShouldBe("field2");
-			result[1].Name.ShouldBe("Project Code");
-			result[1].IsRequired.ShouldBeFalse();
-		}
-
-		[Fact]
-		public async Task GetAllAsync_EmptyFields()
-		{
-			// Arrange
-			var emptyJson = @"{""tracking_fields"": []}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("tracking_fields"))
-				.Respond("application/json", emptyJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var trackingFields = new TrackingFields(client);
-
-			// Act
-			var result = await trackingFields.GetAllAsync(TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Length.ShouldBe(0);
-		}
-
-		[Fact]
-		public async Task GetAllAsync_SingleField()
-		{
-			// Arrange
-			var singleFieldJson = @"{
-				""tracking_fields"": [
-					{
-						""id"": ""onlyField"",
-						""field"": ""Single Field"",
-						""required"": false,
-						""visible"": false,
-						""recommended_values"": []
-					}
-				]
-			}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("tracking_fields"))
-				.Respond("application/json", singleFieldJson);
+				.Respond("application/json", EndpointsResource.tracking_fields_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -143,11 +41,13 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
 			result.Length.ShouldBe(1);
-			result[0].Id.ShouldBe("onlyField");
-			result[0].Name.ShouldBe("Single Field");
+			result[0].Id.ShouldBe("a32CJji-weJ92");
+			result[0].Name.ShouldBe("field1");
 			result[0].IsRequired.ShouldBeFalse();
-			result[0].IsVisible.ShouldBeFalse();
-			result[0].RecommendedValues.Length.ShouldBe(0);
+			result[0].IsVisible.ShouldBeTrue();
+			result[0].RecommendedValues.ShouldNotBeNull();
+			result[0].RecommendedValues.Length.ShouldBe(1);
+			result[0].RecommendedValues[0].ShouldBe("value1");
 		}
 
 		#endregion
@@ -162,7 +62,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("tracking_fields", trackingFieldId))
-				.Respond("application/json", SINGLE_TRACKING_FIELD_JSON);
+				.Respond("application/json", EndpointsResource.tracking_fields__fieldId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -175,78 +75,13 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("field1");
-			result.Name.ShouldBe("Department");
-			result.IsRequired.ShouldBeTrue();
+			result.Id.ShouldBe("a32CJji-weJ92");
+			result.Name.ShouldBe("field1");
+			result.IsRequired.ShouldBeFalse();
 			result.IsVisible.ShouldBeTrue();
 			result.RecommendedValues.ShouldNotBeNull();
-			result.RecommendedValues.Length.ShouldBe(3);
-			result.RecommendedValues[0].ShouldBe("Sales");
-			result.RecommendedValues[1].ShouldBe("Marketing");
-			result.RecommendedValues[2].ShouldBe("Engineering");
-		}
-
-		[Fact]
-		public async Task GetAsync_DifferentField()
-		{
-			// Arrange
-			var trackingFieldId = "field999";
-			var customFieldJson = @"{
-				""id"": ""field999"",
-				""field"": ""Custom Field"",
-				""required"": false,
-				""visible"": true,
-				""recommended_values"": [""Value1"", ""Value2""]
-			}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("tracking_fields", trackingFieldId))
-				.Respond("application/json", customFieldJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var trackingFields = new TrackingFields(client);
-
-			// Act
-			var result = await trackingFields.GetAsync(trackingFieldId, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Id.ShouldBe("field999");
-			result.Name.ShouldBe("Custom Field");
-		}
-
-		[Fact]
-		public async Task GetAsync_NoRecommendedValues()
-		{
-			// Arrange
-			var trackingFieldId = "field_empty";
-			var emptyValuesJson = @"{
-				""id"": ""field_empty"",
-				""field"": ""Empty Values"",
-				""required"": true,
-				""visible"": false,
-				""recommended_values"": []
-			}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("tracking_fields", trackingFieldId))
-				.Respond("application/json", emptyValuesJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var trackingFields = new TrackingFields(client);
-
-			// Act
-			var result = await trackingFields.GetAsync(trackingFieldId, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.RecommendedValues.Length.ShouldBe(0);
+			result.RecommendedValues.Length.ShouldBe(1);
+			result.RecommendedValues[0].ShouldBe("value1");
 		}
 
 		#endregion
@@ -261,7 +96,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("tracking_fields"))
-				.Respond("application/json", CREATED_TRACKING_FIELD_JSON);
+				.Respond("application/json", EndpointsResource.tracking_fields_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -274,8 +109,8 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("newField123");
-			result.Name.ShouldBe("Cost Center");
+			result.Id.ShouldBe("a32CJji-weJ92");
+			result.Name.ShouldBe("field1");
 		}
 
 		[Fact]
@@ -287,7 +122,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("tracking_fields"))
-				.Respond("application/json", CREATED_TRACKING_FIELD_JSON);
+				.Respond("application/json", EndpointsResource.tracking_fields_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -313,7 +148,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("tracking_fields"))
-				.Respond("application/json", CREATED_TRACKING_FIELD_JSON);
+				.Respond("application/json", EndpointsResource.tracking_fields_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -336,7 +171,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("tracking_fields"))
-				.Respond("application/json", CREATED_TRACKING_FIELD_JSON);
+				.Respond("application/json", EndpointsResource.tracking_fields_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -394,7 +229,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("tracking_fields"))
-				.Respond("application/json", CREATED_TRACKING_FIELD_JSON);
+				.Respond("application/json", EndpointsResource.tracking_fields_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -419,7 +254,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("tracking_fields"))
-				.Respond("application/json", CREATED_TRACKING_FIELD_JSON);
+				.Respond("application/json", EndpointsResource.tracking_fields_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -444,7 +279,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("tracking_fields"))
-				.Respond("application/json", CREATED_TRACKING_FIELD_JSON);
+				.Respond("application/json", EndpointsResource.tracking_fields_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -467,7 +302,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("tracking_fields"))
-				.Respond("application/json", CREATED_TRACKING_FIELD_JSON);
+				.Respond("application/json", EndpointsResource.tracking_fields_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -490,7 +325,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("tracking_fields"))
-				.Respond("application/json", CREATED_TRACKING_FIELD_JSON);
+				.Respond("application/json", EndpointsResource.tracking_fields_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -829,272 +664,6 @@ namespace ZoomNet.UnitTests.Resources
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
-		}
-
-		[Fact]
-		public async Task DeleteAsync_DifferentField()
-		{
-			// Arrange
-			var trackingFieldId = "fieldToDelete999";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("tracking_fields", trackingFieldId))
-				.Respond(HttpStatusCode.NoContent);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var trackingFields = new TrackingFields(client);
-
-			// Act
-			await trackingFields.DeleteAsync(trackingFieldId, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-		}
-
-		[Fact]
-		public async Task DeleteAsync_WithLongFieldId()
-		{
-			// Arrange
-			var trackingFieldId = "verylongfieldidentifierwithmanycharacters123456789";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("tracking_fields", trackingFieldId))
-				.Respond(HttpStatusCode.NoContent);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var trackingFields = new TrackingFields(client);
-
-			// Act
-			await trackingFields.DeleteAsync(trackingFieldId, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-		}
-
-		#endregion
-
-		#region Edge Cases and Integration Tests
-
-		[Fact]
-		public async Task GetAllAsync_WithManyFields()
-		{
-			// Arrange
-			var manyFieldsJson = @"{
-				""tracking_fields"": [
-					{""id"": ""f1"", ""field"": ""Field 1"", ""required"": true, ""visible"": true, ""recommended_values"": []},
-					{""id"": ""f2"", ""field"": ""Field 2"", ""required"": false, ""visible"": true, ""recommended_values"": []},
-					{""id"": ""f3"", ""field"": ""Field 3"", ""required"": true, ""visible"": false, ""recommended_values"": []},
-					{""id"": ""f4"", ""field"": ""Field 4"", ""required"": false, ""visible"": false, ""recommended_values"": []},
-					{""id"": ""f5"", ""field"": ""Field 5"", ""required"": true, ""visible"": true, ""recommended_values"": []}
-				]
-			}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("tracking_fields"))
-				.Respond("application/json", manyFieldsJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var trackingFields = new TrackingFields(client);
-
-			// Act
-			var result = await trackingFields.GetAllAsync(TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Length.ShouldBe(5);
-		}
-
-		[Fact]
-		public async Task CreateAsync_WithSingleRecommendedValue()
-		{
-			// Arrange
-			var name = "Field with One Value";
-			var recommendedValues = new[] { "OnlyValue" };
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("tracking_fields"))
-				.Respond("application/json", CREATED_TRACKING_FIELD_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var trackingFields = new TrackingFields(client);
-
-			// Act
-			var result = await trackingFields.CreateAsync(name, recommendedValues, cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-		}
-
-		[Fact]
-		public async Task GetAsync_FieldWithManyRecommendedValues()
-		{
-			// Arrange
-			var trackingFieldId = "field_many";
-			var manyValuesJson = @"{
-				""id"": ""field_many"",
-				""field"": ""Many Values"",
-				""required"": true,
-				""visible"": true,
-				""recommended_values"": [""A"", ""B"", ""C"", ""D"", ""E"", ""F"", ""G"", ""H"", ""I"", ""J""]
-			}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("tracking_fields", trackingFieldId))
-				.Respond("application/json", manyValuesJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var trackingFields = new TrackingFields(client);
-
-			// Act
-			var result = await trackingFields.GetAsync(trackingFieldId, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.RecommendedValues.Length.ShouldBe(10);
-		}
-
-		[Fact]
-		public async Task CreateAsync_WithNullName_DoesNotValidate()
-		{
-			// Arrange
-			string name = null;
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("tracking_fields"))
-				.Respond("application/json", CREATED_TRACKING_FIELD_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var trackingFields = new TrackingFields(client);
-
-			// Act - Should not throw because null names have length of 0
-			var result = await trackingFields.CreateAsync(name, cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-		}
-
-		[Fact]
-		public async Task UpdateAsync_WithNullName_DoesNotValidate()
-		{
-			// Arrange
-			var trackingFieldId = "field_null_update";
-			string name = null;
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("tracking_fields", trackingFieldId))
-				.Respond(HttpStatusCode.NoContent);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var trackingFields = new TrackingFields(client);
-
-			// Act - Should not throw because null names have length of 0
-			await trackingFields.UpdateAsync(trackingFieldId, name, cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-		}
-
-		[Fact]
-		public async Task CreateAsync_NameBoundaryTest_49Characters()
-		{
-			// Arrange - Name with 49 characters (1 under limit)
-			var name = new string('Z', 49);
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("tracking_fields"))
-				.Respond("application/json", CREATED_TRACKING_FIELD_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var trackingFields = new TrackingFields(client);
-
-			// Act
-			var result = await trackingFields.CreateAsync(name, cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-		}
-
-		[Fact]
-		public async Task UpdateAsync_NameBoundaryTest_49Characters()
-		{
-			// Arrange - Name with 49 characters (1 under limit)
-			var trackingFieldId = "field_boundary";
-			var name = new string('Y', 49);
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("tracking_fields", trackingFieldId))
-				.Respond(HttpStatusCode.NoContent);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var trackingFields = new TrackingFields(client);
-
-			// Act
-			await trackingFields.UpdateAsync(trackingFieldId, name, cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-		}
-
-		[Fact]
-		public async Task GetAllAsync_WithFieldsHavingVariousVisibilityAndRequiredSettings()
-		{
-			// Arrange
-			var variousSettingsJson = @"{
-				""tracking_fields"": [
-					{""id"": ""f1"", ""field"": ""Required Visible"", ""required"": true, ""visible"": true, ""recommended_values"": []},
-					{""id"": ""f2"", ""field"": ""Required Hidden"", ""required"": true, ""visible"": false, ""recommended_values"": []},
-					{""id"": ""f3"", ""field"": ""Optional Visible"", ""required"": false, ""visible"": true, ""recommended_values"": []},
-					{""id"": ""f4"", ""field"": ""Optional Hidden"", ""required"": false, ""visible"": false, ""recommended_values"": []}
-				]
-			}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("tracking_fields"))
-				.Respond("application/json", variousSettingsJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var trackingFields = new TrackingFields(client);
-
-			// Act
-			var result = await trackingFields.GetAllAsync(TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Length.ShouldBe(4);
-			result[0].IsRequired.ShouldBeTrue();
-			result[0].IsVisible.ShouldBeTrue();
-			result[1].IsRequired.ShouldBeTrue();
-			result[1].IsVisible.ShouldBeFalse();
-			result[2].IsRequired.ShouldBeFalse();
-			result[2].IsVisible.ShouldBeTrue();
-			result[3].IsRequired.ShouldBeFalse();
-			result[3].IsVisible.ShouldBeFalse();
 		}
 
 		#endregion

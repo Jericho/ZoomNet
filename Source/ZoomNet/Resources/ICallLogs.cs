@@ -11,6 +11,7 @@ namespace ZoomNet.Resources
 	/// <remarks>
 	/// See <a href="https://marketplace.zoom.us/docs/api-reference/phone/methods/#tag/Call-Logs">Zoom documentation</a> for more information.
 	/// </remarks>
+	[Obsolete("The CallLogs API endpoints will be deprecated in April 2026. Please use the CallHistory instead. For more information, please refer to https://developers.zoom.us/docs/phone/migrate/")]
 	public interface ICallLogs
 	{
 		/// <summary>
@@ -27,7 +28,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="UserCallLog" />.
 		/// </returns>
-		Task<PaginatedResponseWithToken<UserCallLog>> GetAsync(string userId, DateTime? from = null, DateTime? to = null, CallLogType type = CallLogType.All, string phoneNumber = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<UserCallLog>> GetAsync(string userId, DateOnly? from = null, DateOnly? to = null, CallLogType type = CallLogType.All, string phoneNumber = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get call logs for an entire account.
@@ -45,6 +46,6 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="AccountCallLog" />.
 		/// </returns>
-		Task<PaginatedResponseWithTokenAndDateRange<AccountCallLog>> GetAsync(DateTime? from = null, DateTime? to = null, CallLogType type = CallLogType.All, CallLogPathType? pathType = null, CallLogTimeType? timeType = CallLogTimeType.StartTime, string siteId = null, bool chargedCallLogs = false, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithTokenAndDateRange<AccountCallLog>> GetAsync(DateOnly? from = null, DateOnly? to = null, CallLogType type = CallLogType.All, CallLogPathType? pathType = null, CallLogTimeType? timeType = CallLogTimeType.StartTime, string siteId = null, bool chargedCallLogs = false, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 	}
 }

@@ -1,0 +1,18 @@
+{
+  "total_records": 1,
+  "next_page_token": "oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2",
+  "registrants": [
+    {
+      "email": "email@zoom.us",
+      "registration_status": "INVITED",
+      "tickets": [
+        {
+          "ticket_id": "1234567",
+          "role": "INTERPRETER",
+          "authentication_method": "no_auth",
+          "qr_code_url": "https://zoom.us/qr?t=9\u0026ein=AkhZhct94cUqiDfRumcpPf0loI-QAOt5T9yh_vGRn2-BkPDmjfze~AyTxY2Fs9Nw6ADEk-edYyZIyGIzxVAI_v-Mci1S-KeyRhbZOG3-4kWVpYqSxJK-2Uls-j_GSHh9L7Ku_zZta-MDu2NCA1Rg"
+        }
+      ]
+    }
+  ]
+}

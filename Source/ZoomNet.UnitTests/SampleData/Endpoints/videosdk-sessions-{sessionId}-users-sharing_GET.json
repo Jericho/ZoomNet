@@ -1,0 +1,18 @@
+{
+  "page_size": 1,
+  "next_page_token": "1cyhUewZa419P9F8QUYURck0U3rFWB0d1H2",
+  "users": [
+    {
+      "id": "1670000000",
+      "name": "User",
+      "user_key": "myUserKey",
+      "details": [
+        {
+          "content": "desktop",
+          "start_time": "2021-06-17T06:49:06Z",
+          "end_time": "2021-06-17T06:49:35Z"
+        }
+      ]
+    }
+  ]
+}

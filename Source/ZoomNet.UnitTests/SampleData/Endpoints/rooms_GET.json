@@ -1,0 +1,17 @@
+{
+  "next_page_token": "At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2",
+  "page_size": 20,
+  "rooms": [
+    {
+      "activation_code": "1315-2376-2198-7926",
+      "id": "qMOLddnySIGGVycz8aX_JQ",
+      "location_id": "49D7a0xPQvGQ2DCMZgSe7w",
+      "name": "My Personal Meeting Room",
+      "room_id": "qMOLddnySIGGVycz8aX_JQ",
+      "status": "Offline",
+      "tag_ids": [
+        "90bdda6c226f4f10a4b9a34be8d69f30"
+      ]
+    }
+  ]
+}

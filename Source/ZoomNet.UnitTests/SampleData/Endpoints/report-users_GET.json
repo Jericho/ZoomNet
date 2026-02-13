@@ -1,0 +1,31 @@
+{
+  "from": "2022-03-01",
+  "next_page_token": "b43YBRLJFg3V4vsSpxvGdKIGtNbxn9h9If2",
+  "page_count": 30,
+  "page_number": 1,
+  "page_size": 30,
+  "to": "2022-03-25",
+  "total_records": 850,
+  "total_meeting_minutes": 345,
+  "total_meetings": 34,
+  "total_participants": 56,
+  "users": [
+    {
+      "custom_attributes": [
+        {
+          "key": "4444AAAiAAAAAiAiAiiAii==",
+          "name": "age",
+          "value": "18"
+        }
+      ],
+      "dept": "HR",
+      "email": "jchill@example.com",
+      "id": "2pyjK5VNQHadb2BY6Z4GbA",
+      "meeting_minutes": 342,
+      "meetings": 45,
+      "participants": 56,
+      "type": 1,
+      "user_name": "Jill Chill"
+    }
+  ]
+}

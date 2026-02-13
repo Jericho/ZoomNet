@@ -1,0 +1,17 @@
+{
+  "messages": [
+    {
+      "message_id": "61ACBF3A-8B70-445D-85B2-8EF489F225D",
+      "message_timestamp": 1661997628249,
+      "pinner_user_id": "nldhyzxwqwkwgwdlgry2rq",
+      "pinner_member_id": "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ",
+      "pinned_time": "2020-02-10T21:39:50Z",
+      "currently_pinned": false,
+      "message": "hello, world!",
+      "pinned_by_external_user": false
+    }
+  ],
+  "next_page_token": "1707034615202",
+  "channel_id": "825c9e31f1064c73b394c5e4557d3447",
+  "page_size": 10
+}

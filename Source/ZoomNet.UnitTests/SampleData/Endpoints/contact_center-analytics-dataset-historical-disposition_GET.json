@@ -1,0 +1,31 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "timezone": "UTC",
+  "from": "2025-05-26T16:30:08.0000000\u002B00:00",
+  "to": "2025-07-26T16:30:08.0000000\u002B00:00",
+  "historical_dispositions": [
+    {
+      "disposition_name": "My Disposition",
+      "tier1_disposition_name": "Disposition tier1 name",
+      "tier2_disposition_name": "Disposition tier2 name",
+      "tier3_disposition_name": "Disposition tier3 name",
+      "tier4_disposition_name": "Disposition tier4 name",
+      "account_id": "QxgttRd_QearwLDiZBcnAw",
+      "parent_account_id": "0csc9RR7TR-k-bByzRGoyg",
+      "user_id": "SVoAlV1URdOVhEZrodKHQw",
+      "user_name": "Jane Smith",
+      "disposition_type": "single",
+      "disposition_source": "agent",
+      "channel": "voice",
+      "channel_source": "voice",
+      "team_id": "MhHgsufKS5axWxVWHbghmQ",
+      "team_name": "My Team",
+      "queue_id": "3e8E2PnWTcC9FrKNaDuOeA",
+      "queue_name": "My Queue",
+      "engagement_id": "XYV29VsfROOGUS_BbSXFpQ",
+      "direction": "inbound"
+    }
+  ]
+}

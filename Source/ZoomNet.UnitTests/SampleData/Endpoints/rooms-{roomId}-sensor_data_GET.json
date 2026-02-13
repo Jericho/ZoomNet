@@ -1,0 +1,15 @@
+{
+  "from": "2022-06-19T00:00:00Z",
+  "to": "2022-06-19T00:00:00Z",
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 5,
+  "sensor_data": [
+    {
+      "date_time": "2022-06-19T00:00:00Z",
+      "device_id": "NiVvY1NWpE2nulNrhVjgU4jD0swziVrXBbaFZyC3u\u002Bo=",
+      "sensor_type": "CO2",
+      "sensor_value": "102.0"
+    }
+  ]
+}

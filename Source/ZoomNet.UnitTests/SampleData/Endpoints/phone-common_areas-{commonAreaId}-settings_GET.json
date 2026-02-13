@@ -1,0 +1,35 @@
+{
+  "desk_phones": [
+    {
+      "id": "Aky1xpSLSc2PR0XOtj9XWQ",
+      "display_name": "analog_ta",
+      "device_type": "Poly obi504",
+      "status": "offline",
+      "mac_address": "203a07240534",
+      "hot_desking": {
+        "status": "off"
+      },
+      "private_ip": "192.168.10.13",
+      "public_ip": "220.148.231.126"
+    }
+  ],
+  "holiday_hours": [
+    {
+      "holiday_id": "ULfeE4mgSImyelNmTekUfg",
+      "name": "test",
+      "from": "2022-03-05T00:00:00.0000000\u002B00:00",
+      "to": "2022-03-06T00:00:00.0000000\u002B00:00"
+    }
+  ],
+  "custom_hours_settings": {
+    "custom_hours": [
+      {
+        "from": "09:00",
+        "to": "18:00",
+        "type": 1,
+        "weekday": 7
+      }
+    ],
+    "custom_hour_type": 2
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "reservations": [
+    {
+      "end_time": "2021-03-18T05:41:36.0000000\u002B00:00",
+      "id": "ebrg2b87a6uu9c678qhvsiahsc",
+      "start_time": "2021-03-18T05:41:36.0000000\u002B00:00",
+      "timezone": "Asia/Shanghai",
+      "topic": "My Personal Meeting Room",
+      "user_id": "KDcuGIm1QgePTO8WbOqwIQ",
+      "status": "reserved",
+      "workspace_id": "qMOLddnySIGGVycz8aX_JQ",
+      "location_id": "49D7a0xPQvGQ2DCMZgSe7w"
+    }
+  ]
+}

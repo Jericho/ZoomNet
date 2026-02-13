@@ -1,0 +1,33 @@
+{
+  "scorecards": [
+    {
+      "scorecard_id": "xMCKjazFS9GtJRhGdcLhcQ",
+      "scorecard_name": "Learning experience scoring",
+      "scorecard_description": "Rate your learning experience for this conversation",
+      "average_score": 10,
+      "rate_time": "2022-03-22T05:59:09.0000000\u002B00:00",
+      "rater": {
+        "email": "dummyname@gmail.com",
+        "display_name": "dummy name",
+        "user_id": "6dfgdfgdg444447b0egga"
+      },
+      "scorecard_questions": [
+        {
+          "question_id": "lasiSUvrSvG1rcqFCs4gtg",
+          "question_title": "Question 1",
+          "score": 8,
+          "question_description": "How is this video quality for the conversation?",
+          "question_comment": "This question is great.",
+          "scale": {
+            "min_score_label": "Very strongly disagree.",
+            "max_score_label": "Very strongly agree."
+          },
+          "justification": "The video quality was clear and stable throughout the conversation, making it easy to communicate.",
+          "answer": "Yes"
+        }
+      ]
+    }
+  ],
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30
+}

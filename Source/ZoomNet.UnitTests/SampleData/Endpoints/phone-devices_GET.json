@@ -1,0 +1,34 @@
+{
+  "devices": [
+    {
+      "assignee": {
+        "extension_number": 123,
+        "id": "-tDdYIstSumpA0L13GztIQ",
+        "name": "Pooja",
+        "extension_type": "user"
+      },
+      "assignees": [
+        {
+          "extension_number": 123,
+          "id": "-tDdYIstSumpA0L13GztIQ",
+          "name": "Pooja",
+          "extension_type": "user",
+          "extension_id": "MjGXQfCxShapaxJDka7"
+        }
+      ],
+      "device_type": "AudioCodes405",
+      "display_name": "Pooja\u0027s Phone",
+      "id": "-tDdYIstSumpA0L13GztIQ",
+      "mac_address": "203a07240534",
+      "site": {
+        "id": "NjHmTu16Qfe8yOiNJuekXA",
+        "name": "HQ site"
+      },
+      "status": "online",
+      "provision_template_id": "Ke5Ghevvoo001hr"
+    }
+  ],
+  "next_page_token": "uBTK3NzNksdkuCUAQaFVFd86kyOr59zg4U2",
+  "page_size": 30,
+  "total_records": 1
+}

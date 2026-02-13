@@ -1,0 +1,12 @@
+{
+  "next_page_token": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2",
+  "page_size": 30,
+  "total_records": 300,
+  "users": [
+    {
+      "user_id": "example-FLFD4pfkQ4a2nec",
+      "user_display_name": "jill chill",
+      "user_email": "jchill@example.com"
+    }
+  ]
+}

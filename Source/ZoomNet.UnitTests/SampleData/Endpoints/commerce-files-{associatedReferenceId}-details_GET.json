@@ -1,0 +1,11 @@
+[
+  {
+    "associated_object_type": "Quote",
+    "associated_reference_id": "QU-2323",
+    "description": "Client approval for a quote.",
+    "uploaded_on": "2023-10-03",
+    "document_reference_id": "DOC-1234",
+    "document_name": "endcustomer_acceptance_12032024.pdf",
+    "document_type": "Purchase Order"
+  }
+]

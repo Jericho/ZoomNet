@@ -1,0 +1,56 @@
+{
+  "prospects": [
+    {
+      "prospect_id": "mq4XpiQISe6tlhHRwX9a8g",
+      "type": "UPCOMING",
+      "primary_name": "John Smith",
+      "secondary_name": "Johnny",
+      "title": "Senior Sales Manager",
+      "company": "Acme Corporation",
+      "department": "Sales",
+      "description": "Experienced sales professional with 10\u002B years in enterprise software",
+      "assignee_user_id": "0yT-QeXeQYqW6uizHEFmXA",
+      "call_list_id": "c-ncE_MXQACAjn3_I_35gg",
+      "dialer_status": "CANCELED",
+      "dialer_sub_status": "CANCELED_BY_CALLER",
+      "create_time": "2025-10-20T20:40:52.214\u002B00:00",
+      "modify_time": "2025-10-20T20:40:52.223\u002B00:00",
+      "prospect_type": "CONTACT",
+      "linkedIn_url": "https://linkedin.com/in/johnsmith-contact",
+      "lead_linkedIn_url": "https://linkedin.com/in/johndoe",
+      "company_linkedIn_url": "https://linkedin.com/company/acme-corp",
+      "company_url": "https://www.acme-corp.com",
+      "company_description": "Leading provider of enterprise software solutions",
+      "mailing_country": "United States",
+      "mailing_state": "California",
+      "mailing_city": "San Francisco",
+      "mailing_street": "123 Market Street, Suite 400",
+      "mailing_zip_code": "94105",
+      "import_from": "OPEN_API",
+      "number_of_employees": 100,
+      "annual_revenue": 500000,
+      "topic": "Cloud Solutions",
+      "email_domain": "acme.com",
+      "industry": "Technology",
+      "lead_status": "Qualified",
+      "lead_rating": "Hot",
+      "lead_source": "Website",
+      "custom_fields": [
+        "custom field 1"
+      ],
+      "phone_numbers": [
+        {
+          "number": "1-555-123-4567",
+          "type": "PRIMARY_PHONE",
+          "ext": "1234"
+        }
+      ],
+      "email_addresses": [
+        {
+          "email": "john.smith@acme-corp.com",
+          "type": "PRIMARY_EMAIL"
+        }
+      ]
+    }
+  ]
+}

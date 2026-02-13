@@ -1,0 +1,44 @@
+{
+  "event_id": "woft7torlatbw8ek24bmit5k60",
+  "schedule_id": "ygfx661g9x8dwcgeusdqhsplc0_20231220T160000Z",
+  "attendees": [
+    {
+      "booker": true,
+      "created": "2023-12-21T06:19:23.899Z",
+      "display_name": "bob",
+      "email": "abc@zoom.us",
+      "first_name": "green",
+      "attendee_id": "z7q0q2962w8iyj87249zbi7t10",
+      "last_name": "tom",
+      "time_zone": "Asia/Shanghai",
+      "no_show": false
+    }
+  ],
+  "description": "15 Minute Meeting",
+  "end_date_time": "2023-12-21T16:30:00\u002B08:00",
+  "guests": [
+    "tom@zoom.us"
+  ],
+  "location": "AAA office",
+  "start_date_time": "2023-12-21T16:00:00\u002B08:00",
+  "status": "confirmed",
+  "summary": "daily meeting",
+  "updated": "2023-12-21T06:19:28.309Z",
+  "meeting_notes": "meeting notes",
+  "event_type": "default",
+  "external_location": {
+    "kind": "zoom",
+    "meeting_id": "94777886776",
+    "personal_meeting_id": "98656786887",
+    "meeting_passcode": "958000",
+    "meeting_description": "Invite you to meeting",
+    "meeting_join_url": "https://zoom.us/j/7427752805"
+  },
+  "tracking_params": [
+    {
+      "key": "utm_source",
+      "label": "UTM_Source",
+      "value": "zoom"
+    }
+  ]
+}

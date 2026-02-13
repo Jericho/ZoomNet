@@ -1,0 +1,50 @@
+{
+  "page_count": 20,
+  "deal_registrations": [
+    {
+      "deal_reg_number": "DL-135621",
+      "create_reference_id": "DRR-4834729",
+      "deal_name": "New deal for Zoom Phone",
+      "invoice_owner_crm_account_number": "A-4567",
+      "opportunity_stage": "Closed-Won",
+      "submitted_date": "2023-10-25",
+      "expected_closed_date": "2024-10-25",
+      "estimated_mrr": 1000000,
+      "currency": "USD",
+      "program_name": "Direct Reseller Registration",
+      "original_expiry_date": "2023-10-25",
+      "extended_expiry_date": "2023-10-25",
+      "partner_sales_rep": "John Doe",
+      "zoom_account_executive": "John Doe",
+      "zoom_cam": "John Doe",
+      "status": "submitted",
+      "end_customer": {
+        "crm_account_number": "A-1232",
+        "account_name": "ABC Pvt Ltd",
+        "address": {
+          "address_type": "billTo",
+          "line_1": "55 Almaden Blvd",
+          "line_2": "Suite 10",
+          "line_3": "Tower A",
+          "city": "San Jose",
+          "postal_code": "95114",
+          "state": "PA",
+          "country": "US"
+        },
+        "department": "Engineering",
+        "industry": "Commercial",
+        "account_local_name": "ABC Pvt Ltd",
+        "employee_count": "2-10",
+        "website": "www.zoom.com"
+      },
+      "opportunity": {
+        "opportunity_id": "a56b89",
+        "opportunity_name": "New sales opportunity",
+        "opportunity_type": "Sales Channel",
+        "expected_close_date": "2023-10-25",
+        "partner_role": "Deal Registration",
+        "channel_sales_motion": "Direct Reseller"
+      }
+    }
+  ]
+}

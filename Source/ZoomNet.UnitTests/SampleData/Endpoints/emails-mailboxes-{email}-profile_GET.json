@@ -1,0 +1,20 @@
+{
+  "emailAddress": "john.doe@example.com",
+  "groupEmails": [
+    "sales@example.com"
+  ],
+  "aliases": [
+    {
+      "description": "Alias for Europe sales team.",
+      "aliasEmail": "sales.europe@example.com"
+    }
+  ],
+  "createTime": 1705972326,
+  "status": "active",
+  "mboxSize": 282554,
+  "messagesTotal": 4588,
+  "threadsTotal": 4523,
+  "encryptionEnabled": false,
+  "labelEncryptionEnabled": false,
+  "historyId": "10"
+}

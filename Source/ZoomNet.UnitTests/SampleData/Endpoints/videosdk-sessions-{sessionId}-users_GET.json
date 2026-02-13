@@ -1,0 +1,39 @@
+{
+  "page_size": 30,
+  "next_page_token": "suQA5LvDBnH5No5OYD7mqpJuFzJqUOHK8U2",
+  "users": [
+    {
+      "id": "32dsfsd4g5gd",
+      "name": "exampleuser",
+      "device": "Windows",
+      "ip_address": "127.0.0.1",
+      "location": "New York",
+      "network_type": "Wifi",
+      "microphone": "Plantronics BT600",
+      "speaker": "Plantronics BT600",
+      "camera": "FaceTime HD Camera",
+      "data_center": "SC",
+      "connection_type": "P2P",
+      "join_time": "2019-08-20T19:09:01.0000000\u002B00:00",
+      "leave_time": "2019-08-20T19:19:01.0000000\u002B00:00",
+      "user_key": "myUserKey",
+      "audio_call": [
+        {
+          "call_number": "4131",
+          "call_type": "call-in",
+          "zoom_number": "18773690926"
+        }
+      ],
+      "participant_uuid": "D444CD06-2ABB-2FCC-019B-39E41D8DADF7",
+      "client": "Web Meeting SDK 2.18",
+      "os": "iOS",
+      "os_version": "16.5",
+      "browser_name": "Firefox",
+      "browser_version": "133",
+      "audio_quality": "good",
+      "video_quality": "good",
+      "screen_share_quality": "good",
+      "is_original_host": false
+    }
+  ]
+}

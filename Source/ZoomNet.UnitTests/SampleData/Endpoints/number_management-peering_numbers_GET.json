@@ -1,0 +1,15 @@
+{
+  "next_page_token": "8X8xSdRVKHsabD6Im4tIPODq6GzDOvV5fO1",
+  "numbers": [
+    {
+      "assigned": true,
+      "billing_ref_id": "Some billing referenceId",
+      "allocated_product": "ZOOM_PHONE",
+      "phone_number": "\u002B18108001001",
+      "service_info": "Inbound only number\u0027 or \u0027Metered charges apply",
+      "sip_trunk_name": "test-carrier-sip-trunk",
+      "status": true
+    }
+  ],
+  "total_records": 20
+}

@@ -1,0 +1,16 @@
+{
+  "activity_logs": [
+    {
+      "client_type": "Browser",
+      "email": "jchill@example.com",
+      "ip_address": "192.0.2.1",
+      "time": "2019-09-15T19:13:41.0000000\u002B00:00",
+      "type": "Sign out",
+      "version": "5.9.1.2581"
+    }
+  ],
+  "from": "2019-09-01T00:00:00Z",
+  "next_page_token": "b43YBRLJFg3V4vsSpxvGdKIGtNbxn9h9If2",
+  "page_size": 30,
+  "to": "2019-09-20T00:00:00Z"
+}

@@ -1,0 +1,11 @@
+{
+  "create_reference_id": "DRR-4834729",
+  "deal_reg_number": "DL-0012",
+  "status": "submitted",
+  "errors": [
+    {
+      "error_code": "5801",
+      "error_description": "Invalid end customer contact CRM number."
+    }
+  ]
+}

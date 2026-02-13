@@ -1,0 +1,23 @@
+{
+  "from": "2022-04-06",
+  "next_page_token": "LkbB9n92siRxgYkffZ8KhApZCQMZpNrN0d2",
+  "page_size": 30,
+  "to": "2022-04-07",
+  "users": [
+    {
+      "audio_sent": 0,
+      "code_sippet_sent": 0,
+      "email": "user@example.com",
+      "files_sent": 0,
+      "giphys_sent": 0,
+      "group_sent": 0,
+      "images_sent": 0,
+      "p2p_sent": 0,
+      "text_sent": 0,
+      "total_sent": 0,
+      "user_id": "-0hwjTHMR9uteSRrygQXMA",
+      "user_name": "jchill",
+      "video_sent": 0
+    }
+  ]
+}

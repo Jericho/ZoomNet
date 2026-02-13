@@ -1,0 +1,9 @@
+{
+  "assistants": [
+    {
+      "email": "jchill@example.com",
+      "id": "KDcuGIm1QgePTO8WbOqwIQ",
+      "can_manage_host_private_event": true
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using ZoomNet.Resources;
 
@@ -19,8 +20,14 @@ namespace ZoomNet
 		IBilling Billing { get; }
 
 		/// <summary>
+		/// Gets the resource which allows you to manage call history.
+		/// </summary>
+		ICallHistory CallHistory { get; }
+
+		/// <summary>
 		/// Gets the resource which allows you to manage call logs.
 		/// </summary>
+		[Obsolete("The CallLogs API endpoints will be deprecated in April 2026. Please use the CallHistory instead. For more information, please refer to https://developers.zoom.us/docs/phone/migrate/")]
 		ICallLogs CallLogs { get; }
 
 		/// <summary>
@@ -128,7 +135,7 @@ namespace ZoomNet
 		/// <returns>True if all the scopes have been granted, False otherwise.</returns>
 		/// <remarks>
 		/// The concept of "scopes" only applies to OAuth connections.
-		/// Therefore an exeption will be thrown if you invoke this method while using
+		/// Therefore an exception will be thrown if you invoke this method while using
 		/// a JWT connection (you shouldn't be using JWT in the first place since this
 		/// type of connection has been deprecated in the Zoom API since September 2023).
 		/// </remarks>

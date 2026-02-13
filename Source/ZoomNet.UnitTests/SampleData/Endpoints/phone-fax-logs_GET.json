@@ -1,0 +1,35 @@
+{
+  "next_page_token": "w3cCmMNsRc-pMFhksHrRdQ",
+  "total_records": 300,
+  "fax_logs": [
+    {
+      "fax_log_id": "w2cCmMNsRc-pMFhksHrRdQ",
+      "fax_id": "6A2BE84EE494479B9AFA29F4BB8A8EA6",
+      "site_id": "rtZRykrtTmKSWXJeW-xsBg",
+      "site_name": "Main Site",
+      "direction": "outbound",
+      "extension_id": "VLhIp1jHR_Sgu96DLJpjag",
+      "extension_type": "callQueue",
+      "sender_extension_id": "VLhIp1jHR_Sgu96DLJpjag",
+      "sender_extension_type": "user",
+      "sender_extension_number": "123",
+      "sender_name": "Tester 1",
+      "sender_number": "\u002B12092080933",
+      "sender_type": "client",
+      "sender_location": "California",
+      "sender_user_agent": "Poly/PolyATA400-4.0.2.6778",
+      "receiver_extension_id": "iKBkkqgGQV-bEttrhP5T0g",
+      "receiver_extension_type": "user",
+      "receiver_extension_number": "123",
+      "receiver_name": "Tester 2",
+      "receiver_number": "\u002B12092080933",
+      "receiver_type": "ata",
+      "receiver_location": "Alabama",
+      "receiver_user_agent": "Poly/PolyATA400-4.0.2.6778",
+      "file_id": "bayEy0y9RsadUbuEGrZBYA",
+      "file_pages_count": 6,
+      "status": "sent",
+      "create_time": "2021-10-08T16:12:04.0000000\u002B00:00"
+    }
+  ]
+}

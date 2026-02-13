@@ -1,0 +1,28 @@
+{
+  "next_page_token": "LkbB9n92siRxgYkffZ8KhApZCQMZpNrN0d2",
+  "page_count": 2,
+  "page_number": 1,
+  "page_size": 30,
+  "total_records": 30,
+  "zoom_rooms": [
+    {
+      "account_type": "Work Email",
+      "calender_name": "666555",
+      "camera": "Integrated Webcam",
+      "device_ip": "Computer : 10.100.170.109",
+      "email": "user@example.com",
+      "health": "critical",
+      "id": "35QLhffMSfqUJJ9gCszciw",
+      "issues": [
+        "Zoom room is offline"
+      ],
+      "last_start_time": "2022-03-10T11:34:39Z",
+      "location": "floor1",
+      "location_id": "BzBAAAAAAAfprg",
+      "microphone": "Microphone (3- Logitech USB Headset H340)",
+      "room_name": "jchill",
+      "speaker": "Speakers (3- Logitech USB Headset H340)",
+      "status": "Offline"
+    }
+  ]
+}

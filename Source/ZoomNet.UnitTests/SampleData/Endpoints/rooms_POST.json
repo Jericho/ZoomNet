@@ -1,0 +1,16 @@
+{
+  "id": "qMOLddnySIGGVycz8aX_JQ",
+  "location_id": "49D7a0xPQvGQ2DCMZgSe7w",
+  "name": "My Personal Meeting Room",
+  "room_id": "qMOLddnySIGGVycz8aX_JQ",
+  "tags": [
+    {
+      "tag_name": "private room",
+      "tag_id": "90bdda6c226f4f10a4b9a34be8d69f30"
+    }
+  ],
+  "type": "ZoomRoom",
+  "calendar_resource_id": "u7GQ3q_zQbqJnNp02-oMjQ",
+  "user_id": "Ih3wZpAjTlitZcAhuYRbxg",
+  "pro_device": true
+}

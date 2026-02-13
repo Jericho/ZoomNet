@@ -1,0 +1,45 @@
+{
+  "calling_plans": [
+    {
+      "name": "AU/NZ Metered",
+      "type": 100,
+      "billing_account_id": "3WWAEiEjTj2IQuyDiKMd_A",
+      "billing_account_name": "Delhi billing",
+      "billing_subscription_id": "FT-SUBREF-21168178",
+      "billing_subscription_name": "My Subscription"
+    }
+  ],
+  "emergency_address": {
+    "address_line1": "122",
+    "address_line2": "122",
+    "city": "12",
+    "country": "SG",
+    "id": "fXEdhQmSQheGaNuLYbm8Wg",
+    "state_code": "123",
+    "zip": "50383"
+  },
+  "extension_id": "_zQiBLNDQumOuA_tOnBIrw",
+  "extension_number": 1233012,
+  "id": "3JTPXDqTQCuzYJEwH6kN4g",
+  "name": "test",
+  "phone_numbers": [
+    {
+      "id": "6fTPXDwT2CuzYrwwH6sN4g",
+      "number": "12058945544"
+    }
+  ],
+  "policy": {
+    "international_calling": {
+      "enable": false,
+      "locked_by": "site"
+    },
+    "select_outbound_caller_id": {
+      "enable": false,
+      "locked_by": "account"
+    }
+  },
+  "site": {
+    "id": "kLD4F3WBT-O9LYE31C0tRQ",
+    "name": "API DZ SITE3"
+  }
+}

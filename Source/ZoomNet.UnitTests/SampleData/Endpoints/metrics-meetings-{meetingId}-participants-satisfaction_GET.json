@@ -1,0 +1,13 @@
+{
+  "next_page_token": "ZkFS5lmGLWTjLMqt2IVCBpyKwSnbDrgJzo2",
+  "page_size": 30,
+  "participants": [
+    {
+      "date_time": "2022-01-19T07:34:09.0000000\u002B00:00",
+      "email": "user@example.com",
+      "quality": "GOOD",
+      "user_id": "NJmuvOjlRm2r7yGUPLLOhw",
+      "comment": "Meeting got disconnected."
+    }
+  ]
+}

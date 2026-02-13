@@ -1,0 +1,29 @@
+{
+  "from": "2021-05-19",
+  "next_page_token": "VcXBknJ0MQ7kuXun5WKmSjHC1hOBGS2bbr2",
+  "page_count": 10,
+  "page_size": 15,
+  "to": "2021-06-19",
+  "total_records": 150,
+  "voice_mails": [
+    {
+      "call_id": "876634343743",
+      "call_log_id": "55fd0af0-beb0-433a-be97-388de5e99ab4",
+      "call_history_id": "20190519-55fd0af0-beb0-433a-be97-388de5e99ab4",
+      "call_element_id": "20210609-a297ae04-a875-4cfd-85ab-4adcead91edb",
+      "callee_name": "Jane Doe",
+      "callee_number": "34567889",
+      "callee_number_type": 2,
+      "caller_name": "John Doe",
+      "caller_number": "12345678",
+      "caller_number_type": 1,
+      "date_time": "2019-05-19T20:00:00Z",
+      "download_url": "exampleurl.io",
+      "duration": 18,
+      "id": "d43520fc6b7e4b26bbeef58a8a80f235",
+      "status": "read",
+      "caller_account_code": "111",
+      "callee_account_code": "222"
+    }
+  ]
+}

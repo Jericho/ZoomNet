@@ -1,0 +1,28 @@
+{
+  "whiteboards": [
+    {
+      "whiteboard_id": "48Z4ppMfQJWONeVWFCcVzA",
+      "whiteboard_name": "Q3 Plan",
+      "locked": false,
+      "trashed": false,
+      "readonly": false,
+      "non_cloud": false,
+      "created_date": "2022-03-25T07:29:29.0000000\u002B00:00",
+      "modified_date": "2022-03-25T07:29:29.0000000\u002B00:00",
+      "share_link_setting": {
+        "share_scope": 0,
+        "share_role": 2
+      },
+      "advanced_share_setting": {
+        "can_share": true,
+        "share_to_external": true,
+        "external_can_share": true
+      },
+      "project_id": "The Project ID",
+      "created_by_display_name": "Jack"
+    }
+  ],
+  "next_page_token": "qUEQqB1V0HVhJmwKFQrGOD",
+  "page_size": 10,
+  "total_records": 2
+}

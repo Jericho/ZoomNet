@@ -1,0 +1,32 @@
+{
+  "next_page_token": "ngLawmAGlYagy37vLJtKMM4TkMnagfqWm73",
+  "page_size": 10,
+  "total_records": 44,
+  "timezone": "UTC",
+  "transcripts": [
+    {
+      "engagement_id": "akNPVkF0ShCG-X5dY2Nd0Q",
+      "channel": "Chat Agent",
+      "start_time": "2023-07-11T22:17:30.0000000\u002B00:00",
+      "total_duration": 25,
+      "interaction_duration": 20,
+      "end_time": "2023-07-12T22:17:55.0000000\u002B00:00",
+      "messages": [
+        {
+          "sender": "AI Agent",
+          "timestamp": "2023-07-12T22:17:49.0000000\u002B00:00",
+          "message_type": "text",
+          "text": "Message in the conversation",
+          "kb_articles": [
+            {
+              "title": "Creating and Scheduling Meetings.",
+              "url": "https://support.zoom.com/article_1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "from": "2023-07-01T00:00:00.0000000\u002B00:00",
+  "to": "2023-07-02T23:59:59.0000000\u002B00:00"
+}

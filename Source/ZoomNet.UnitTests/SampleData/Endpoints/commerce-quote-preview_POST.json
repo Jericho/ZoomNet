@@ -1,0 +1,74 @@
+{
+  "status": "submitted",
+  "quote_reference_id": "OR-3248714941",
+  "quote_date": "07-01-2024",
+  "quote_metrics": {
+    "tcv": 100000,
+    "tcb": 100000,
+    "mrr": 1000,
+    "total_discount_pct": 0.1
+  },
+  "subscription_preview": [
+    {
+      "subscription_number": "A-31231322",
+      "tcv": 100000,
+      "tcb": 100000,
+      "mrr": 1000,
+      "total_discount_pct": 0.1
+    }
+  ],
+  "subscription_item_metrics": [
+    {
+      "offer_id": "PR-2323",
+      "offer_name": "Zoom Workplace Pro",
+      "sku": "SKU-00000118",
+      "offer_price_list_id": "Off-2323",
+      "offer_price_list_name": "Zoom Workplace Pro Annual",
+      "charges": [
+        {
+          "charge_model": "Volume Pricing",
+          "charge_type": "OneTime",
+          "sale_price": {
+            "amount": 99.99,
+            "currency": "USD"
+          },
+          "net_price": {
+            "amount": 99.99,
+            "currency": "USD"
+          },
+          "net_amount": {
+            "amount": 99.99,
+            "currency": "USD"
+          },
+          "discounts": [
+            {
+              "discount_type": "DealReg",
+              "percent_value": 0.1,
+              "amount_value": 10,
+              "apply_to": "RECURRING",
+              "apply_to_charge": "PRLC-3223",
+              "discount_level": "subscription",
+              "discount_program": "VLA program"
+            }
+          ]
+        }
+      ],
+      "mrr": {
+        "amount": 99.99,
+        "currency": "USD"
+      }
+    }
+  ],
+  "errors": [
+    {
+      "error_code": "5604",
+      "error_description": "No pricebook exists with given offer_price_list_id."
+    }
+  ],
+  "warnings": [
+    {
+      "error_code": "5604",
+      "error_description": "No pricebook exists with given offer_price_list_id."
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "from": "2023-01-01T00:00:00-08:00",
+  "to": "2023-01-01T01:00:00-08:00",
+  "recordings": [
+    {
+      "recording_id": "ghyetrjj_sdfsdgfkdjfl111",
+      "queue_id": "ghyetrjj_2342353rsgfkdjfl",
+      "cc_queue_id": "smyko04pSCWt9zLI0nn3AQ",
+      "queue_name": "voice",
+      "recording_duration": 150,
+      "download_url": "https://example.com/contact_center/recording/download/01bdb222-9984-4f41-8141-2f760cb398aa?type=voice",
+      "transcript_url": "https://example.com/contact_center/recording/transcripts/download/4Q0ILNMfTA2nJolNxhg0Rw?type=voice",
+      "playback_url": "https://example.com/contact_center/recording/playback/4Q0ILNMfTA2nJolNxhg0Rw?type=voice",
+      "recording_start_time": "2023-01-01T08:00:00.0000000\u002B00:00",
+      "recording_end_time": "2023-01-01T09:00:00.0000000\u002B00:00",
+      "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "display_name": "Jill",
+      "user_email": "jchill@example.com",
+      "recording_type": "automatic",
+      "channel_type": "voice",
+      "channel": "voice",
+      "direction": "outbound",
+      "owner_id": "auiketrjj_2342353fsewkdjfl",
+      "owner_name": "voice",
+      "owner_type": "queue",
+      "engagement_id": "3XilEfOvQEKRIWMWhX1jDg",
+      "flow_name": "voice",
+      "flow_id": "fsdfsd4oippe0ffewcbhjk",
+      "consumer_name": "Jill",
+      "consumer_number": "\u002B12058945728",
+      "consumers": [
+        {
+          "consumer_name": "Jill",
+          "consumer_number": "\u002B12058945728"
+        }
+      ],
+      "exemption": true,
+      "team_id": "edlbknHGRjq35Y5WYxb7_A",
+      "conference_participant": [
+        {
+          "user_id": "HljBAYkdSzqk_eXkXyEV7g",
+          "user_name": "Jill Doe",
+          "queue_id": "y5yK894sT4ixNaO__FO_Jg",
+          "queue_name": "Jill Doe\u0027s queue",
+          "team_id": "edlbknHGRjq35Y5WYxb7_A",
+          "team_name": "Jill Doe\u0027s team",
+          "contact_id": "edlbknHGRjq35Y5WYxb7_A",
+          "contact_name": "Jill Doe",
+          "contact_number": "\u002B12058945728",
+          "participant_type": "agent"
+        }
+      ],
+      "segment_type": "conference",
+      "reason_details": "Compliance review.",
+      "team_name": "Jill Doe\u0027s team"
+    }
+  ]
+}

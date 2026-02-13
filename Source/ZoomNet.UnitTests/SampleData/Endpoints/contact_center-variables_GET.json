@@ -1,0 +1,22 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 1,
+  "variables": [
+    {
+      "variable_id": "W_VATTk_Q5aW6z5rZtBxAQ",
+      "variable_group_id": "afececcd-0c9f-48de-9d19-0c84e8bdfeca",
+      "variable_name": "variable demo name",
+      "default_value": "test_value",
+      "variable_type": "address_book_variable",
+      "data_type": "string",
+      "variable_description": "This is a variable description",
+      "mask_variable_data": true,
+      "values": [
+        "test_value"
+      ],
+      "value_category": "default_value",
+      "used_in_address_book_count": 3
+    }
+  ]
+}

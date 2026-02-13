@@ -1,0 +1,12 @@
+{
+  "from": "2021-12-01",
+  "to": "2021-12-30",
+  "cloud_recording_storage": [
+    {
+      "date": "2021-12-05",
+      "free_usage": "Unlimited",
+      "plan_usage": "3 TB",
+      "usage": "3 MB"
+    }
+  ]
+}

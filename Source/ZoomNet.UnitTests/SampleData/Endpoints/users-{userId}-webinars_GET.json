@@ -1,0 +1,23 @@
+{
+  "next_page_token": "w7587w4eiyfsudgf",
+  "page_count": 1,
+  "page_number": 1,
+  "page_size": 30,
+  "total_records": 20,
+  "webinars": [
+    {
+      "agenda": "Learn more about Zoom APIs",
+      "created_at": "2021-07-01T22:00:00.0000000\u002B00:00",
+      "duration": 60,
+      "host_id": "x1yCzABCDEfg23HiJKl4mN",
+      "id": 1234567890,
+      "join_url": "https://example.com/j/11111",
+      "start_time": "2021-07-13T21:00:00.0000000\u002B00:00",
+      "timezone": "America/Los_Angeles",
+      "topic": "My Webinar",
+      "type": 9,
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "is_simulive": true
+    }
+  ]
+}

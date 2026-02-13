@@ -1,0 +1,18 @@
+{
+  "event": "contact_center.message_status",
+  "event_ts": 1764754270736,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "message_id": "f21b5055-5ec2-4e3f-8dde-916d4f76a2ee",
+      "from": "+12090000000",
+      "to": "+12090001111",
+      "whatsapp_message": {
+        "status": "failed",
+        "reason": "WhatsApp platform failed to send message",
+        "error_detail": "{\\"code\\":\\"131026\\",\\"message\\":\\"Message Undeliverable.\\"}"
+      },
+      "date_time_ms": "2025-12-03T09:31:10.735Z"
+    }
+  }
+}

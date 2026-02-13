@@ -1,0 +1,23 @@
+{
+  "next_page_token": "Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3",
+  "page_count": 1,
+  "page_number": 1,
+  "page_size": 30,
+  "total_records": 1,
+  "meetings": [
+    {
+      "agenda": "My Meeting",
+      "created_at": "2022-03-23T05:31:16.0000000\u002B00:00",
+      "duration": 60,
+      "host_id": "30R7kT7bTIKSNUFEuH_Qlg",
+      "id": 97763643886,
+      "join_url": "https://example.com/j/11111",
+      "pmi": "97891943927",
+      "start_time": "2022-03-23T06:00:00.0000000\u002B00:00",
+      "timezone": "America/Los_Angeles",
+      "topic": "My Meeting",
+      "type": 2,
+      "uuid": "aDYlohsHRtCd4ii1uC2\u002BhA=="
+    }
+  ]
+}

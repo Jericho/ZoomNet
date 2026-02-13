@@ -1,0 +1,16 @@
+{
+  "speaker_id": "3935Ug73Sp6S-7K1BHk7qw",
+  "name": "John Joseph Dev",
+  "email": "email@example.com",
+  "job_title": "Product Manager",
+  "biography": "Provide a brief introduction of the speaker.",
+  "company_name": "zoom",
+  "company_website": "https://www.example.com",
+  "linkedin_url": "https://linkedin.com/example",
+  "twitter_url": "https://twitter.com/example",
+  "youtube_url": "https://youtube.com/example",
+  "featured_in_event_detail_page": true,
+  "visible_in_event_detail_page": true,
+  "featured_in_lobby": false,
+  "visible_in_lobby": true
+}

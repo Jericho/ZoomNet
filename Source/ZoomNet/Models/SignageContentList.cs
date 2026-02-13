@@ -12,7 +12,7 @@ namespace ZoomNet.Models
 		/// Gets or sets the action.
 		/// </summary>
 		[JsonPropertyName("action")]
-		public int Action { get; set; }
+		public SignageContentListAction Action { get; set; }
 
 		/// <summary>
 		/// Gets or sets the number contents.

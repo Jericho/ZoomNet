@@ -1,0 +1,53 @@
+{
+  "display_name": "jamieSLGTest",
+  "extension_id": "WfsrPERXS8inWrpH1Hi_KQ",
+  "extension_number": 1000123471,
+  "id": "RQinnFtmTJ25mx89tW5Cmw",
+  "members": {
+    "users": [
+      {
+        "id": "mNlwFK9ISMKC2toK9oDTcg",
+        "name": "ZOOM_API Test",
+        "extension_id": "oeDyBe8zT2SzOZW6gQJXUA"
+      }
+    ],
+    "common_areas": [
+      {
+        "id": "HIlHzOEzS8ymQPFBZ-39AQ",
+        "name": "Common Area",
+        "extension_id": "HIlHzOEzS8ymQPFBZ-39AQ"
+      }
+    ]
+  },
+  "phone_numbers": [
+    {
+      "id": "---M1padRvSUtw7YihN7sA",
+      "number": "14232058798"
+    }
+  ],
+  "primary_number": "14232058798",
+  "site": {
+    "id": "8f71O6rWT8KFUGQmJIFAdQ",
+    "name": "Main Site"
+  },
+  "status": "active",
+  "timezone": "Pacific/Midway",
+  "policy": {
+    "voicemail_access_members": [
+      {
+        "access_user_id": "w0RChiauQeqRlv5fgxYULQ",
+        "allow_download": false,
+        "allow_delete": false,
+        "allow_sharing": false,
+        "shared_id": "--e8ugg0SeS-9clgrDkn2w",
+        "access_user_type": "user"
+      }
+    ]
+  },
+  "cost_center": "Cost center",
+  "department": "Department",
+  "audio_prompt_language": "en-US",
+  "recording_storage_location": "US",
+  "own_storage_name": "us-oracle-storage",
+  "allow_privacy": true
+}

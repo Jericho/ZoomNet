@@ -1,0 +1,23 @@
+{
+  "customize_numbers": [
+    {
+      "customize_id": "8_RkKw9OQ42oYsXqJJjs4A",
+      "phone_number_id": "55JUZPwERHuGttd_j4qBsQ",
+      "phone_number": "\u002B12055437350",
+      "display_name": "test abc",
+      "incoming": true,
+      "outgoing": true,
+      "extension_id": "HaSokHMCSeK8taMdv2vnXQ",
+      "extension_type": "callQueue",
+      "extension_number": "10001",
+      "extension_name": "SJ CQ",
+      "site": {
+        "id": "8f71O6rWT8KFUGQmJIFAdQ",
+        "name": "testSite"
+      }
+    }
+  ],
+  "next_page_token": "BJLYC6PABbAHdjwSkGVQeeR6B1juwHqj3G2",
+  "page_size": 30,
+  "total_records": 10
+}

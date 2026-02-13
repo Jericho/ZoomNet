@@ -21,7 +21,7 @@ namespace ZoomNet.UnitTests
 			var signature = "v0=93a1a675965ceb9c5a50c5dfb31f20e50f763be37a54ef74cd2d16a1a8e5c0d6";
 			var timestamp = "1720705455";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act
 			var result = parser.VerifySignature(requestBody, secretToken, signature, timestamp);
@@ -39,7 +39,7 @@ namespace ZoomNet.UnitTests
 			var signature = "v0=1a14e79349318fa1bead50ebbd3c185ae078e182d3bbd30ab8010fcb7f4357c7";
 			var timestamp = "1720707175";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act
 			var result = parser.VerifySignature(requestBody, secretToken, signature, timestamp);
@@ -67,7 +67,7 @@ namespace ZoomNet.UnitTests
 #endif
 			var signature = $"v0={hashAsHex}";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act
 			var result = parser.VerifySignature(requestBody, secretToken, signature, timestamp);
@@ -95,7 +95,7 @@ namespace ZoomNet.UnitTests
 #endif
 			var signature = $"v0={hashAsHex}";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act
 			var result = parser.VerifySignature(requestBody, secretToken, signature, timestamp);
@@ -123,7 +123,7 @@ namespace ZoomNet.UnitTests
 #endif
 			var signature = $"v0={hashAsHex}";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act
 			var result = parser.VerifySignature(requestBody, secretToken, signature, timestamp);
@@ -145,7 +145,7 @@ namespace ZoomNet.UnitTests
 			var signature = "v0=invalid_signature_hash";
 			var timestamp = "1720705455";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act
 			var result = parser.VerifySignature(requestBody, secretToken, signature, timestamp);
@@ -163,7 +163,7 @@ namespace ZoomNet.UnitTests
 			var signature = "v0=93a1a675965ceb9c5a50c5dfb31f20e50f763be37a54ef74cd2d16a1a8e5c0d6";
 			var timestamp = "1720705455";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act
 			var result = parser.VerifySignature(requestBody, secretToken, signature, timestamp);
@@ -181,7 +181,7 @@ namespace ZoomNet.UnitTests
 			var signature = "v0=93a1a675965ceb9c5a50c5dfb31f20e50f763be37a54ef74cd2d16a1a8e5c0d6";
 			var timestamp = "1720705455";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act
 			var result = parser.VerifySignature(requestBody, secretToken, signature, timestamp);
@@ -199,7 +199,7 @@ namespace ZoomNet.UnitTests
 			var signature = "v0=93a1a675965ceb9c5a50c5dfb31f20e50f763be37a54ef74cd2d16a1a8e5c0d6";
 			var timestamp = "9999999999";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act
 			var result = parser.VerifySignature(requestBody, secretToken, signature, timestamp);
@@ -217,7 +217,7 @@ namespace ZoomNet.UnitTests
 			var signature = "93a1a675965ceb9c5a50c5dfb31f20e50f763be37a54ef74cd2d16a1a8e5c0d6";
 			var timestamp = "1234567890";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act
 			var result = parser.VerifySignature(requestBody, secretToken, signature, timestamp);
@@ -235,7 +235,7 @@ namespace ZoomNet.UnitTests
 			var signature = "v0=93A1A675965CEB9C5A50C5DFB31F20E50F763BE37A54EF74CD2D16A1A8E5C0D6";
 			var timestamp = "1720705455";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act
 			var result = parser.VerifySignature(requestBody, secretToken, signature, timestamp);
@@ -253,7 +253,7 @@ namespace ZoomNet.UnitTests
 			var signature = "";
 			var timestamp = "1234567890";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act
 			var result = parser.VerifySignature(requestBody, secretToken, signature, timestamp);
@@ -271,7 +271,7 @@ namespace ZoomNet.UnitTests
 			var signature = "v0=93a1a675965ceb9c5a50c5dfb31f20e50f763be37a54ef74cd2d16a1a8e5c0d6";
 			var timestamp = "1234567890";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act & Assert
 			Should.Throw<ArgumentNullException>(() => parser.VerifySignature(requestBody, secretToken, signature, timestamp));
@@ -300,7 +300,7 @@ namespace ZoomNet.UnitTests
 #endif
 			var signature = $"v0={hashAsHex}";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act
 			var result = parser.VerifySignature(requestBody, secretToken, signature, timestamp);
@@ -328,7 +328,7 @@ namespace ZoomNet.UnitTests
 #endif
 			var signature = $"v0={hashAsHex}";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act
 			var result = parser.VerifySignature(requestBody, secretToken, signature, timestamp);
@@ -356,7 +356,7 @@ namespace ZoomNet.UnitTests
 #endif
 			var signature = $"v0={hashAsHex}";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act
 			var result = parser.VerifySignature(requestBody, secretToken, signature, timestamp);
@@ -384,7 +384,7 @@ namespace ZoomNet.UnitTests
 #endif
 			var signature = $"v0={hashAsHex}";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act
 			var result = parser.VerifySignature(requestBody, secretToken, signature, timestamp);
@@ -412,7 +412,7 @@ namespace ZoomNet.UnitTests
 #endif
 			var signature = $"v0={hashAsHex}";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act
 			var result = parser.VerifySignature(requestBody, secretToken, signature, timestamp);
@@ -434,7 +434,7 @@ namespace ZoomNet.UnitTests
 			var signature = "v0=93a1a675965ceb9c5a50c5dfb31f20e50f763be37a54ef74cd2d16a1a8e5c0d6";
 			var timestamp = "1720705455";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act
 			var parsedEvent = parser.VerifyAndParseEventWebhook(requestBody, secretToken, signature, timestamp);
@@ -453,7 +453,7 @@ namespace ZoomNet.UnitTests
 			var signature = "v0=93a1a675965ceb9c5a50c5dfb31f20e50f763be37a54ef74cd2d16a1a8e5c0d6";
 			var timestamp = "1720705455";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act & Assert
 			Should.Throw<SecurityException>(() => parser.VerifyAndParseEventWebhook(requestBody, secretToken, signature, timestamp))
@@ -469,7 +469,7 @@ namespace ZoomNet.UnitTests
 			var signature = "v0=93a1a675965ceb9c5a50c5dfb31f20e50f763be37a54ef74cd2d16a1a8e5c0d6";
 			var timestamp = "1720705455";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act & Assert
 			Should.Throw<SecurityException>(() => parser.VerifyAndParseEventWebhook(requestBody, secretToken, signature, timestamp))
@@ -499,7 +499,7 @@ namespace ZoomNet.UnitTests
 #endif
 			var signature = $"v0={hashAsHex}";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act
 			var result = parser.VerifySignature(requestBody, secretToken, signature, timestamp);
@@ -528,7 +528,7 @@ namespace ZoomNet.UnitTests
 #endif
 			var signature = $"v0={hashAsHex}";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act - Try to use the signature with a different body
 			var result = parser.VerifySignature(attackBody, secretToken, signature, timestamp);
@@ -557,7 +557,7 @@ namespace ZoomNet.UnitTests
 #endif
 			var signature = $"v0={hashAsHex}";
 
-			var parser = new WebhookParser();
+			var parser = new ZoomNet.WebhookParser();
 
 			// Act - Try to use signature from first body with second body
 			var result = parser.VerifySignature(requestBody2, secretToken, signature, timestamp);

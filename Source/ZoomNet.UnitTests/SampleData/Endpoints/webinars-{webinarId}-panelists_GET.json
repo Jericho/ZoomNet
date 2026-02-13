@@ -1,0 +1,16 @@
+{
+  "panelists": [
+    {
+      "id": "Tg2b6GhcQKKbV7nSCbDKug",
+      "email": "jchill@example.com",
+      "name": "Jill Chill",
+      "join_url": "https://example.com/j/11111",
+      "virtual_background_id": "xHhPyb8ERMCmiC5njPjFdQ",
+      "name_tag_id": "xHhPyb8ERMCmiC5njPjFdQ",
+      "name_tag_name": "name",
+      "name_tag_pronouns": "pronouns",
+      "name_tag_description": "description"
+    }
+  ],
+  "total_records": 1
+}

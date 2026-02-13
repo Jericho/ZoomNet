@@ -1,0 +1,13 @@
+{
+  "next_page_token": "b43YBRLJFg3V4vsSpxvGdKIGtNbxn9h9If2",
+  "page_size": 30,
+  "call_logs": [
+    {
+      "url_pattern": "https://zoom.us/v2/users/_DkLL5iMRW-p_6yhPocD4Q/assistants",
+      "time": "1737704112808",
+      "http_status": 200,
+      "method": "GET",
+      "trace_id": "v=2.0;clid=aw1;rid=ZTP_10094594754_scenario_10000000934_aw1_20250124T073509485Z"
+    }
+  ]
+}

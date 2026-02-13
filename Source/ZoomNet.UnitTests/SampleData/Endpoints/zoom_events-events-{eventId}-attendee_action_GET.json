@@ -1,0 +1,11 @@
+{
+  "total_records": 1,
+  "next_page_token": "yqT59YnBSHqvDdNnkeHQsA",
+  "attendees": [
+    {
+      "email": "email@zoom.us",
+      "source": "Console-1",
+      "action": "Check-in"
+    }
+  ]
+}

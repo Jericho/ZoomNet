@@ -1,0 +1,13 @@
+{
+  "total_records": 10,
+  "next_page_token": "yqT59YnBSHqvDdNnkeHQsA",
+  "permissions": [
+    {
+      "user_id": "325bde9e82c84a179ac0f612f7688df7",
+      "chat_channel_id": "dc1731cf94a842bfb43e8b0fe13d2a46@conference.xmppdev.zoom.us",
+      "display_name": "John Doe",
+      "role": "VIEWER",
+      "invite_status": "PENDING"
+    }
+  ]
+}

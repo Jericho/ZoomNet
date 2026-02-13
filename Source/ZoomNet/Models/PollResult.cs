@@ -16,7 +16,7 @@ namespace ZoomNet.Models
 		/// <value>
 		/// The name of the participant.
 		/// </value>
-		[JsonPropertyName("file_name")]
+		[JsonPropertyName("name")]
 		public string ParticipantName { get; set; }
 
 		/// <summary>

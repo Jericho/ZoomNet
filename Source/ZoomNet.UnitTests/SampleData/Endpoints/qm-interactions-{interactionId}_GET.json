@@ -1,0 +1,168 @@
+{
+  "summary": {
+    "evaluation_score": 1,
+    "sentiment_score": 61.19,
+    "engagement_score": 5.546720115175143
+  },
+  "metrics": {
+    "talk_to_listen_ratio": [
+      {
+        "speaker_user_id": "ycEUjKmDSnuPwF33KLTxJg",
+        "value": 0.4311976503861636
+      }
+    ],
+    "longest_monolog": [
+      {
+        "speaker_user_id": "ycEUjKmDSnuPwF33KLTxJg",
+        "value": 8.430000000000007
+      }
+    ],
+    "talk_speed": [
+      {
+        "speaker_user_id": "ycEUjKmDSnuPwF33KLTxJg",
+        "value": 121.0898082744702
+      }
+    ],
+    "filler_words": [
+      {
+        "speaker_user_id": "ycEUjKmDSnuPwF33KLTxJg",
+        "value": 0
+      }
+    ],
+    "patience": [
+      {
+        "speaker_user_id": "ycEUjKmDSnuPwF33KLTxJg",
+        "value": 1.24
+      }
+    ]
+  },
+  "start_time": "2024-05-28T09:52:22Z",
+  "duration": 8,
+  "queue_id": "d5qAagKnQ7-UO_VsdiPdQA",
+  "queue_name": "Demo",
+  "recording_url": "https://example.com/file/YZ75Jmq8TICELRiufFmTrg?filename=GMT20240528-095222_VgKcwkLoTPy80OyNcUo2Yg_VoiceRecording.mp3\u0026jwt=eyJrIjoiMVI2cVdsWGIiLCJhbGciOiJFUzI1NiJ9.eyJhdWQiOiJ6ZnMiLCJkaWciOiJhN2E5MzE1ZWI2YTU5Yzk0MDgwM2VjNGE4MGNkMzk3YWRmYWVhODUwOWI5MThiMTNkOGVlOTgxMzQ1NjhiYmRkIiwiaGRpZyI6ZmFsc2UsImlpYyI6ImRldiIsImV4cCI6MTcyNTYxNzYwNywiaWF0IjoxNzI1MDEyODA3LCJvcmkiOiJ6b29tX2lxIiwiaXNzIjoiZmlsZSJ9.zjyJVGX9N3_hdu8zvytae5JvsFLgff17-39PpbMgpyh6RC7zJCRiHjBnbsV1J3ac4bgtDUGiG_4-M1G8YY0PuQ\u0026mode=play",
+  "screen_recording_urls": [
+    "https://example.com/file/6GmXHipBT_CC3ncyX6d76w?filename=GMT20240812-103352_Recording_3840x2160.mp4\u0026jwt=eyJrIjoiMVI2cVdsWGIiLCJhbGciOiJFUzI1NiJ9.eyJoZGlnIjpmYWxzZSwiaWljIjoiZGV2IiwiZGlnIjoiM2UxOGVjYzQyZmE5Yjk0OTcyOTlhYTlhZWMxNzg2YjgxNmJkMWRlNzQ5ZmZmNGQ1ODZiZDNhY2ViNGFkZjlmYSIsImV4cCI6MTczMTAzMDU1Nywib3JpIjoiem9vbV9pcSIsImF1ZCI6InpmcyIsImlhdCI6MTcyOTczNDU1NywiaXNzIjoiZmlsZSJ9.J7dpq3w9T6qI8US6Xy74ewUvl521tOORsmejM_Yq8eqgJ_KA65p8tYwViSPvu4BygZWZLBiEHsKyPCgChFRj6w\u0026mode=play"
+  ],
+  "transcript_body": {
+    "meeting_id": "VgKcwkLoTPy80OyNcUo2Yg",
+    "account_id": "VgryoPBNR6uWYfyJqu4JFQ",
+    "host_id": "ycEUjKmDSnuPwF33KLTxJg",
+    "recording_start": "2024-05-28T09:52:22Z",
+    "recording_end": "2024-05-28T10:00:47Z",
+    "language": "en",
+    "speakers": [
+      {
+        "speaker_id": "0",
+        "zoom_user_id": "ycEUjKmDSnuPwF33KLTxJg",
+        "email_address": "cci_dev_admin@example.com",
+        "username": "Admin3",
+        "role": "rep"
+      }
+    ],
+    "items": [
+      {
+        "comments": "abc",
+        "item_id": "0",
+        "speaker_id": "0",
+        "zoom_user_id": "ycEUjKmDSnuPwF33KLTxJg",
+        "start_time": "00:00:22.790",
+        "end_time": "00:00:25.680",
+        "text": "A halo, Kanji, this",
+        "email": "cci_dev_admin@example.com"
+      }
+    ]
+  },
+  "language": "en",
+  "interaction_summary": "The meeting involved a diverse range of unrelated exchanges among participants including Admin3 and an unnamed person identified as \u002B12053546173. Topics touched upon, albeit discontinuously, revolved around a possible analytical recording concept, a potential interest in women, and a reference to monthly recording. Nevertheless, the specifics and the central objective of these discussions remained unclear from the provided transcript.",
+  "interaction_info": {
+    "from": "\u002B12053546173",
+    "to": "\u002B12095422197",
+    "interaction_id": "VgKcwkLoTPy80OyNcUo2Yg",
+    "agent_name": "Admin3",
+    "consumer_name": "\u002B12053546173",
+    "channel_type": "VIDEO",
+    "evaluator_name": "Admin3",
+    "scorecard_name": "123",
+    "scorecard_id": "C1SWkGmQSZG37RVL12vrsg",
+    "evaluator_user_id": "ycEUjKmDSnuPwF33KLTxJg",
+    "evaluation_score": 20,
+    "evaluations": [
+      {
+        "evaluation_id": "aI9HM3ZsEScAa",
+        "evaluation_type": "Automated",
+        "evaluation_status_desc": "Completed",
+        "session_id": "abc123def456",
+        "score": 85,
+        "total_score": 60,
+        "score_rate": 0.855,
+        "scoring_format": "points",
+        "evaluator_id": "u_abc123xyz",
+        "evaluator_name": "Sarah Johnson",
+        "section_comments": [
+          {
+            "section_id": "sec_001",
+            "section_name": "Opening \u0026 Greeting",
+            "comment_text": "Excellent rapport building and professional tone throughout the opening."
+          }
+        ],
+        "question_comments": [
+          {
+            "question_id": "q_001",
+            "question_title": "Did the agent properly identify themselves?",
+            "comment_text": "Agent clearly stated their name and company at the beginning.",
+            "comment_time": 15
+          }
+        ],
+        "evaluation_name": "Customer Service Quality Scorecard"
+      }
+    ],
+    "associated_ids": [
+      "VgKcwkLoTPy80OyNcUo2Yg"
+    ]
+  },
+  "screen_recording_status": "UNAVAILABLE",
+  "engagement_id": "2R1t8QtiTsKIOIAV0-a7FQ",
+  "silence_events": [
+    {
+      "start_time": "00:01:07.580",
+      "end_time": "00:01:10.960"
+    }
+  ],
+  "crosstalk_events": [
+    {
+      "start_time": "00:01:07.580",
+      "end_time": "00:01:10.960"
+    }
+  ],
+  "hold_events": [
+    {
+      "start_time": "00:01:07.580",
+      "end_time": "00:01:10.960"
+    }
+  ],
+  "direction": "inbound",
+  "analysis": {
+    "topics": [
+      {
+        "topic_name": "Customer Complaint",
+        "type": "predefined"
+      }
+    ],
+    "indicators": [
+      {
+        "indicator_name": "Hello"
+      }
+    ],
+    "next_steps": [
+      {
+        "next_step": "Jasper: Contact the billing department to pay malpractice premium without policy number"
+      }
+    ],
+    "good_questions": [
+      {
+        "good_question": "I\u0027m really sorry to hear that. Could you please describe the issue you\u2019re experiencing? We\u2019d like to help resolve it as soon as possible."
+      }
+    ]
+  }
+}

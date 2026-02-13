@@ -2,14 +2,18 @@ using Microsoft.Extensions.Logging;
 using Pathoschild.Http.Client;
 using Pathoschild.Http.Client.Extensibility;
 using RichardSzalay.MockHttp;
+using Shouldly;
 using System;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using Xunit;
 using ZoomNet.Json;
 using ZoomNet.Utilities;
 
 namespace ZoomNet.UnitTests
 {
-	public static class Utils
+	internal static class Utils
 	{
 		private const string ZOOM_V2_BASE_URI = "https://api.zoom.us/v2";
 
@@ -42,6 +46,24 @@ namespace ZoomNet.UnitTests
 		public static string GetZoomApiUri(params object[] resources)
 		{
 			return resources.Aggregate(ZOOM_V2_BASE_URI, (current, path) => $"{current.TrimEnd('/')}/{path.ToString().TrimStart('/')}");
+		}
+
+		public static MockFluentHttpResponse CreateResponse(HttpStatusCode statusCode, string content, HttpMethod method = null, string uri = null)
+		{
+			var httpMessage = new HttpResponseMessage(statusCode)
+			{
+				Content = new StringContent(content),
+				RequestMessage = new HttpRequestMessage(method ?? HttpMethod.Get, uri ?? "https://api.zoom.us/v2/test")
+			};
+
+			httpMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, "test-diagnostic-id");
+
+			return new MockFluentHttpResponse(httpMessage, null, TestContext.Current.CancellationToken);
+		}
+
+		internal static bool ShouldBe(this DateOnly date, DateOnly other)
+		{
+			return Should.Equals(date, other);
 		}
 	}
 }

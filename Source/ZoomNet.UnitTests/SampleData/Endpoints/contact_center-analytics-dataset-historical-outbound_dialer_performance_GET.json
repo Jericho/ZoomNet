@@ -1,0 +1,40 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "timezone": "America/Los_Angeles",
+  "from": "2021-12-10T00:00:00Z",
+  "to": "2021-12-10T00:00:00Z",
+  "engagements": [
+    {
+      "engagement_id": "reRAiabVQSqpXxJVDbsy2Q",
+      "start_time": "2021-12-10T00:00:00Z",
+      "end_time": "2021-12-10T00:00:00Z",
+      "campaign": {
+        "campaign_id": "reRAiabVQSqpXxJVDbsy2Q",
+        "campaign_name": "campaign_example"
+      },
+      "contact_list": {
+        "contact_list_id": "reRAiabVQSqpXxJVDbsy2Q",
+        "contact_list_name": "jack_contact_list"
+      },
+      "contact": {
+        "contact_id": "reRAiabVQSqpXxJVDbsy2Q",
+        "contact_name": "jack_contact"
+      },
+      "dialer_method": "progressive",
+      "dnc_flag": true,
+      "caller_id_number": "\u002B1234567890",
+      "consumer_number": "\u002B1234567890",
+      "calls_answered_count": 3,
+      "calls_failed_count": 2,
+      "calls_with_amd_count": 2,
+      "calls_blocked_count": 1,
+      "contacts_connected_count": 1,
+      "dnc_count": 1,
+      "engagement_duration": 321,
+      "response_duration": 123,
+      "calls_skipped_count": 2
+    }
+  ]
+}

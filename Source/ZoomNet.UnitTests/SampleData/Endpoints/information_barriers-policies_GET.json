@@ -1,0 +1,25 @@
+{
+  "policies": [
+    {
+      "assigned_group_id": "SsxAmMT7QPOH19Kf9ZHz6g",
+      "id": "ErxAmMT7QPOH19Kf9Z55ty",
+      "policy_name": "test",
+      "chaperone_group_id": "0P9yYDOFRVeSNvSxwuO8rA",
+      "settings": {
+        "complete_phone_calls": false,
+        "file_transfer": false,
+        "im": false,
+        "in_meeting_chat": false,
+        "meeting": false,
+        "message_via_sms": false,
+        "recording": false,
+        "screen_share": false
+      },
+      "status": 1,
+      "to_group_id": "mjLMOSAERBaakF8kSDWB7g",
+      "type": 1
+    }
+  ],
+  "total_records": 30,
+  "next_page_token": "eyJwYWdlIjogMiwgInBhZ2VTaXplIjogMTB9"
+}

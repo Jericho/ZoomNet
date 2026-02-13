@@ -1,0 +1,76 @@
+{
+  "next_page_token": "b43YBRLJFg3V4vsSpxvGdKIGtNbxn9h9If2",
+  "page_size": 30,
+  "history_meetings": [
+    {
+      "meeting_uuid": "gm8s9L\u002BPTEC\u002BFG3sFbd1Cw==",
+      "meeting_id": 93201235621,
+      "type": "Meeting",
+      "host_display_name": "Jill Chill",
+      "host_email": "jchill@example.com",
+      "start_time": "2024-12-23T07:09:03Z",
+      "end_time": "2024-12-23T08:09:03Z",
+      "topic": "My Meeting",
+      "participants": 5,
+      "duration": 60,
+      "total_participant_minutes": 83,
+      "department": "Developers",
+      "group": "group_01",
+      "source": "Zoom",
+      "unique_viewers": 4,
+      "max_concurrent_views": 3,
+      "create_time": "2024-12-23T06:09:03Z",
+      "custom_fields": [
+        {
+          "key": "attribute 1",
+          "value": "test"
+        }
+      ],
+      "tracking_fields": [
+        {
+          "field": "Meeting purpose.",
+          "value": "Support"
+        }
+      ],
+      "feature_used": {
+        "screen_sharing": true,
+        "video_on": true,
+        "remote_control": true,
+        "closed_caption": false,
+        "breakout_room": false,
+        "language_interpretation": false,
+        "telephone_usage": true,
+        "in_meeting_chat": false,
+        "poll": true,
+        "join_by_room": false,
+        "waiting_room": false,
+        "live_transcription": false,
+        "reaction": true,
+        "zoom_apps": false,
+        "annotation": false,
+        "raise_hand": true,
+        "virtual_background": true,
+        "whiteboard": true,
+        "immersive_scene": false,
+        "avatar": true,
+        "switch_to_mobile": false,
+        "file_sharing": true,
+        "meeting_summary": false,
+        "meeting_questions": false,
+        "record_to_computer": true,
+        "record_to_cloud": true,
+        "live_translation": false,
+        "registration": false,
+        "smart_recording": true,
+        "multi_speaker": false,
+        "meeting_wallpaper": true,
+        "gen_ai_virtual_background": true,
+        "multi_share": true,
+        "document_collaboration": false,
+        "portrait_lighting": false,
+        "personalized_audio_isolation": true,
+        "color_themes": false
+      }
+    }
+  ]
+}

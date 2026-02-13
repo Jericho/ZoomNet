@@ -1,0 +1,66 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "timezone": "America/Los_Angeles",
+  "from": "2021-12-10T00:00:00Z",
+  "to": "2021-12-10T00:00:00Z",
+  "engagements": [
+    {
+      "engagement_id": "reRAiabVQSqpXxJVDbsy2Q",
+      "direction": "inbound",
+      "start_time": "2021-12-10T00:00:00Z",
+      "end_time": "2021-12-10T00:00:00Z",
+      "enter_channel": "messaging",
+      "enter_channel_source": "in_app_chat",
+      "channels": [
+        {
+          "channel": "voice",
+          "channel_source": "voice"
+        }
+      ],
+      "caller_id": "\u002B12765551212",
+      "dnis": "\u002B12765551212",
+      "ani": "\u002B12052075606",
+      "consumer": {
+        "consumer_email": "jack@example.com",
+        "consumer_name": "jack"
+      },
+      "queues": [
+        {
+          "queue_id": "FRDFsxkcQeCnhR5eMBdOHw",
+          "queue_name": "jack_queue"
+        }
+      ],
+      "users": [
+        {
+          "user_id": "FRDFsxkcQeCnhR5eMBdOHw",
+          "user_name": "jack_agent"
+        }
+      ],
+      "teams": [
+        {
+          "team_id": "FRDFsxkcQeCnhR5eMBdOHw",
+          "team_name": "jack_team"
+        }
+      ],
+      "duration": 35678,
+      "handle_duration": 17922,
+      "conversation_duration": 16901,
+      "hold_count": 3,
+      "hold_duration": 169,
+      "warm_transfer_initiated_count": 1,
+      "warm_transfer_completed_count": 1,
+      "warm_transfer_duration": 1453,
+      "direct_transfer_count": 2,
+      "transfer_initiated_count": 1,
+      "transfer_completed_count": 1,
+      "warm_conference_count": 1,
+      "warm_conference_duration": 283764,
+      "conference_count": 1,
+      "conference_duration": 283764,
+      "wrap_up_duration": 143561,
+      "abandoned_count": 0
+    }
+  ]
+}

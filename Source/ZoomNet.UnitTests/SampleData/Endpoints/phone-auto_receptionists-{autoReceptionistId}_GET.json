@@ -1,0 +1,29 @@
+{
+  "cost_center": "testCostCenter",
+  "department": "testDepartment",
+  "extension_id": "WfsrPERXS8inWrpH1Hi_KQ",
+  "extension_number": 555550000000001,
+  "name": "JamieAuto",
+  "timezone": "Pacific/Midway",
+  "audio_prompt_language": "en-US",
+  "holiday_hours": [
+    {
+      "id": "i3gP6xFUTHqSFrIE6nHs7Q",
+      "name": "Holiday 1",
+      "from": "2022-03-08T16:00:00.0000000\u002B00:00",
+      "to": "2022-03-09T16:00:00.0000000\u002B00:00"
+    }
+  ],
+  "phone_numbers": [
+    {
+      "id": "KsxwNLEhQ0SJ4U4Bor4ShA",
+      "number": "\u002B12058945717"
+    }
+  ],
+  "site": {
+    "id": "O4rBC_zEQnCVoiHfXKGKNA",
+    "name": "jamietestsite"
+  },
+  "recording_storage_location": "US",
+  "own_storage_name": "us-oracle-storage"
+}

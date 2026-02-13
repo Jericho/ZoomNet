@@ -1,0 +1,12 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "supervisors": [
+    {
+      "user_id": "T_X0vrroQPO4UwXGNeBS8A",
+      "user_display_name": "Jill Chill",
+      "user_email": "jchill@example.com"
+    }
+  ]
+}

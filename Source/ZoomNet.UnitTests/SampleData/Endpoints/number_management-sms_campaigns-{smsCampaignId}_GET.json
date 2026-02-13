@@ -1,0 +1,19 @@
+{
+  "sms_campaign_id": "C-BlVwSdjvS3WXk5gzfIQFfQ",
+  "display_name": "Test SMS Campaign",
+  "status": "active",
+  "service_type": "zoomPhone",
+  "brand": {
+    "brand_id": "B-c3AN66d_Q4mrQFNUaW-G2w",
+    "name": "Test Campaign"
+  },
+  "phone_numbers": [
+    {
+      "phone_number_id": "iHE1MQAET2iV85MbfaQmwg",
+      "number": "\u002B18887193005"
+    }
+  ],
+  "response_to_opt_in": "ZOOM: Thank you for opting in for our texting notifications. Message frequency may vary. Message and Data Rates may apply. To end messaging from us, Reply with STOP. Reply with HELP for more information.",
+  "response_to_opt_out": "You are unsubscribed to texts from ZOOM. No more messages will be sent.",
+  "response_to_help": "ZOOM: You can get more assistance by visiting https://zoom.us/. Text STOP to stop receiving messages from us. You can also text START to start receiving messages from us again. You can also refer to our privacy policy on our website."
+}

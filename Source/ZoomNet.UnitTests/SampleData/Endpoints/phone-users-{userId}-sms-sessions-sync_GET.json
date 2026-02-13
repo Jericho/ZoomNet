@@ -1,0 +1,53 @@
+{
+  "sms_sessions": [
+    {
+      "last_access_time": "2022-03-25T02:11:27Z",
+      "latest_message": {
+        "attachments": [
+          {
+            "id": "ttllslww",
+            "type": "GIF"
+          }
+        ],
+        "date_time": "2022-03-25T02:11:27Z",
+        "direction": "Out",
+        "message": "hello",
+        "message_id": "cfc07047-123e-4097-91d4-ac2635d646af",
+        "message_type": 6,
+        "sender": {
+          "display_name": "usersubsetting0001@testapi.com",
+          "owner": {
+            "id": "DnEopNmXQEGU2uvvzjgojw",
+            "type": "user"
+          },
+          "phone_number": "\u002B18108001001"
+        },
+        "to_members": [
+          {
+            "display_name": "test api",
+            "owner": {
+              "id": "QOFvOvk7SJeOR2VBfL79_g",
+              "type": "user"
+            },
+            "phone_number": "\u002B13522348840"
+          }
+        ]
+      },
+      "participants": [
+        {
+          "display_name": "usersubsetting0001@testapi.com",
+          "owner": {
+            "id": "QOFvOvk7SJeOR2VBfL79_g",
+            "type": "user"
+          },
+          "phone_number": "\u002B13522348840",
+          "is_session_owner": true
+        }
+      ],
+      "session_id": "67e261d9eefb2f87dc8193b4c2aeb1d8",
+      "session_type": "user",
+      "unread_message_count": 125
+    }
+  ],
+  "sync_token": "TVR5cXB2b2dmSl8xNjIxNTc0ODQ0MDY3XzE2NDgxNzQyODcwMDk="
+}

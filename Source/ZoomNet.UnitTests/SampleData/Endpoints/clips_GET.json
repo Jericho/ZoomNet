@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "title": "clips test title",
+      "description": "just for test",
+      "duration": 6000,
+      "status": "RECORD_SUCCESS",
+      "clip_id": "A2RldhYyU08zeDNIeFJJVzBOcHFRVlZQWXlRAQ",
+      "owner_id": "pRof_6gpQP2YKDxmglRziA",
+      "file_size": 639229,
+      "share_link": "https://dev-integration.zoomdev.us/clips/share/A2RldhYyU08zeDNIeFJJVzBOcHFRVlZQWXlRAQ",
+      "share_link_settings": {
+        "passcode": "Dmpy*xy7",
+        "share_scope": "ANYONE",
+        "enable_passcode": true
+      },
+      "thumbnail_link": "https://file.zoomdev.us/file/2SO3x3HxRIW0NpqQVVPYyQ?attachType=preview\u0026filename=2SO3x3HxRIW0NpqQVVPYyQ.jpg\u0026jwt=eyJhbGciOiJFUzI1NiIsImsiOiJLSzQxYXo3LyJ9.eyJpc3MiOiJmaWxlIiwiYXVkIjoiemZzIiwiaWljIjoiZGV2IiwiaWF0IjoxNzMwNDM4OTE2LCJvcmkiOiJtYXJ2ZWwiLCJkaWciOiI5NDhhMjIxYjU2ZTFhOWM1YTMyOTE0ODdlNjFmMGU1YjA2NzkzNTM3NTY5NDRhZWVjNzcyYmU3OTQ3ZWQ3ZTAwIiwiZXhwIjoxNzMwNDQ2MTE2LCJoZGlnIjpmYWxzZX0.Lgk1SRRKsxrxWN6F9Y9aZgfqXCSZ1mJg-UsunpVCMuRMYUR1Sf-gGn1_2_Fc1gFexkBKr0C50jT7Vo1_1YQUlQ\u0026subType=552x310",
+      "created_date": "2024-10-11T01:51:50.631\u002B00:00",
+      "modified_date": "2024-10-31T10:06:08.460\u002B00:00"
+    }
+  ],
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 30
+}

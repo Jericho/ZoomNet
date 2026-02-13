@@ -1,4 +1,5 @@
 using System.Runtime.Serialization;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.Models
 {
@@ -10,7 +11,7 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// Record on demand.
 		/// </summary>
-		[EnumMember(Value = "OnDemand")]
+		[MultipleValuesEnumMember(DefaultValue = "On-demand", OtherValues = ["On-demand"])]
 		OnDemand,
 
 		/// <summary>

@@ -1,0 +1,12 @@
+{
+  "id": "e4d89238-7a58-4003-b45b-dfd892e9b11b",
+  "description": "my connector",
+  "status": "online",
+  "networks": "10.100.209.10",
+  "log_level": "DEBUG",
+  "managed_rooms": [
+    "598fe412-dee4-4439-bd9a-9f864cab38e2"
+  ],
+  "enable_automatic_update": true,
+  "version": "5.8.1"
+}

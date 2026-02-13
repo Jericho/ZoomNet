@@ -1,0 +1,30 @@
+{
+  "flow_id": "zwKiV80hQ7CwRg9BEm0Bvw",
+  "flow_name": "Video Test",
+  "flow_description": "A testing flow.",
+  "channel_type": "voice",
+  "channel": "messaging",
+  "channel_source": "web_chat",
+  "status": "published",
+  "modified_by": "jdhgdhghk376453hjdf",
+  "last_modified_time": "2022-08-05T01:55:52Z",
+  "entry_points": [
+    {
+      "entry_id": "x_h7uCj3TtScXWOBnQnKrw",
+      "entry_name": "Test video",
+      "entry_number": "\u002B16052052430",
+      "entry_language": "en-US",
+      "email_address": "xxxx@zoom.us"
+    }
+  ],
+  "flow_versions": [
+    {
+      "flow_version_id": "EWg5URJZRXKwfbLJpeJWyA",
+      "flow_version_description": "Version 1",
+      "flow_version_status": "draft",
+      "flow_version": 2,
+      "flow_version_modified_by": "jdhgdhghk376453hjdf",
+      "flow_version_last_modified_time": "2022-08-05T01:55:52Z"
+    }
+  ]
+}

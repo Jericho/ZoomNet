@@ -1,0 +1,16 @@
+{
+  "from": "2020-02-10T21:39:50.0000000\u002B00:00",
+  "to": "2020-02-11T21:39:50.0000000\u002B00:00",
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 10,
+  "sessions": [
+    {
+      "channel_id": "ayxzxi9ttyau5lskqorl1w3rtl1y5ssri",
+      "name": "xBvggqyjQUal6TecwMlYwQ",
+      "type": "1:1",
+      "peer_contact_email": "chat-friend1@example.com",
+      "peer_contact_user_id": "v4iyWT1LTfy8QvPG4GTvdg",
+      "peer_contact_member_id": "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK"
+    }
+  ]
+}

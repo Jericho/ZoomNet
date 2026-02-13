@@ -1,0 +1,35 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "from": "2021-12-10T00:00:00Z",
+  "to": "2021-12-10T00:00:00Z",
+  "timezone": "America/Los_Angeles",
+  "flows": [
+    {
+      "flow_id": "reRAiabVQSqpXxJVDbsy2Q",
+      "flow_name": "flow_example_name",
+      "flow_version": "2",
+      "flow_enter_time": "2021-12-10T00:15:00Z",
+      "flow_exit_time": "2021-12-10T00:15:00Z",
+      "enter_channel": "messaging",
+      "enter_channel_source": "in_app_chat",
+      "entry_point": "\u002B12345678",
+      "engagement_id": "reRAiabVQSqpXxJVDbsy2Q",
+      "flow_offered_count": 1,
+      "flow_upgraded_count": 1,
+      "offerred_to_queue_count": 1,
+      "handled_by_queue_count": 1,
+      "handled_by_first_offered_queue_count": 1,
+      "offered_to_agent_count": 2,
+      "handled_by_agent_count": 1,
+      "handled_by_first_offered_agent_count": 3,
+      "flow_duration": 123,
+      "first_widget_duration": 123,
+      "first_offered_queue_duration": 123,
+      "duration_to_first_handled_queue": 213,
+      "duration_to_first_offered_agent": 123,
+      "duration_to_first_handled_agent": 123
+    }
+  ]
+}

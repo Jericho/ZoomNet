@@ -1,0 +1,18 @@
+{
+  "desk_phones": [
+    {
+      "id": "Aky1xpSLSc2PR0XOtj9XWQ",
+      "display_name": "analog_ta"
+    }
+  ],
+  "holiday_hours": {
+    "holidays": [
+      {
+        "holiday_id": "ULfeE4mgSImyelNmTekUfg",
+        "name": "holiday name",
+        "from": "2022-03-05T00:00:00Z",
+        "to": "2022-03-06T00:00:00Z"
+      }
+    ]
+  }
+}

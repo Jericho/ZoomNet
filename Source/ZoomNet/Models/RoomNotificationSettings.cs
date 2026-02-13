@@ -35,6 +35,11 @@ namespace ZoomNet.Models
 		/// Gets or sets a percentage so that an alert is sent when the battery is less than the specified value.
 		/// </summary>
 		[JsonPropertyName("battery_percentage")]
+		/*
+			This allows us to overcome the fact that "battery_percentage" is a string containing a numerical value
+			See: https://github.com/Jericho/ZoomNet/issues/485
+		*/
+		[JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
 		public int? BatteryPercentage { get; set; }
 
 		/// <summary>

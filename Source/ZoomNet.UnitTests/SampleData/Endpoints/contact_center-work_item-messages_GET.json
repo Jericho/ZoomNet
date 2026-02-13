@@ -1,0 +1,17 @@
+{
+  "messages": [
+    {
+      "message_id": "lKK_xlqXQWex0mKUYyGHUw",
+      "content": {
+        "type": "text",
+        "value": "agent accept"
+      },
+      "sent_time": "2025-12-03T13:07:46.1230000\u002B00:00",
+      "sender_participant_id": "wMLp6VvjTc6A1mkiwHt3dQ",
+      "sender_participant_name": "Agent Alice",
+      "message_type": "system"
+    }
+  ],
+  "has_more": false,
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42"
+}

@@ -1,0 +1,17 @@
+{
+  "from": "2021-03-18T05:41:36.0000000\u002B00:00",
+  "to": "2021-03-18T05:41:36.0000000\u002B00:00",
+  "total_records": 20,
+  "statistic_by_file_extension": {
+    "mp4_file_count": 1,
+    "m4a_file_count": 1,
+    "txt_file_count": 1,
+    "json_file_count": 1,
+    "vtt_file_count": 1
+  },
+  "statistic_by_file_status": {
+    "processing_file_count": 1,
+    "completed_file_count": 1,
+    "failed_file_count": 1
+  }
+}

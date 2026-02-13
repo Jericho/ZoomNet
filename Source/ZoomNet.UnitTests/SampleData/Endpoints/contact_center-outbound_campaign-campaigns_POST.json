@@ -1,0 +1,69 @@
+{
+  "outbound_campaign_id": "TY_XsJuWR9ehXrsf1DSIAQ",
+  "outbound_campaign_name": "My outbound campaign",
+  "outbound_campaign_description": "My outbound campaign description",
+  "queue_id": "TY_XsJuWR9ehXrsf1DSIAQ",
+  "queue_name": "My queue name",
+  "phone_number_id": "XfTPrZjyR5W6QgNARdtGlw",
+  "assign_type": "queue",
+  "outbound_campaign_status": "draft",
+  "dialing_method": "progressive",
+  "dialing_method_settings": {
+    "enable_amd": true,
+    "amd_settings": {
+      "greeting_asset_id": "zNWo_1M5ScCuKnBb2Z-sfw",
+      "answering_machine_asset_id": "z8XtiytyQammquBRlVPiWw"
+    },
+    "enable_abandonment_timeout": false,
+    "abandonment_timeout": 5,
+    "abandonment_message_asset_id": "z8XtiytyQammquBRlVPiWw",
+    "dialing_strategy": "automatic",
+    "preview_timer": 5,
+    "enable_skip": false,
+    "max_skips": 1,
+    "enable_ignore_preview_notification": false,
+    "allow_retry_preview_dialer": false,
+    "max_concurrent_calls": 5,
+    "agentless_amd_off_action": "use_flow",
+    "agentless_amd_off_resource_id": "z8XtiytyQammquBRlVPiWw",
+    "old_flow_id": "_2npVp3juQWO2g9pt2rqSKg",
+    "new_flow_id": "_3npVp3juQWO2g9pt2rqSKg"
+  },
+  "outbound_campaign_priority": 5,
+  "campaign_contact_list": [
+    {
+      "contact_list_id": "MN2Dtcb2T-yT5CU3clN-AA",
+      "contact_list_name": "Contact List",
+      "contact_list_description": "Description",
+      "contacts_count": "1"
+    }
+  ],
+  "campaign_do_not_contact_list_ids": [
+    {
+      "contact_list_id": "Lp7Wzxf4Q-pA9RX6bhO-XX",
+      "contact_list_name": "Do-not-contact list",
+      "contact_list_description": "Description",
+      "contacts_count": "1"
+    }
+  ],
+  "exclusion_logic": "AND",
+  "max_attempts_per_contact": 3,
+  "attempts_use_same_period": false,
+  "second_attempt_period": 30,
+  "third_attempt_period": 60,
+  "other_attempt_period": 120,
+  "retry_period": 60,
+  "retry_period_unit": "hours",
+  "dial_sequence": "LIST_DIAL",
+  "max_ring_time": 15,
+  "enable_max_ring_time": true,
+  "business_hour_source": "queue",
+  "business_hour_id": "h7XtiytFTammquBRlTRiWZ",
+  "enable_closure_hour": true,
+  "closure_set_id": "y9XtiytyQammquBRlTPiWw",
+  "contact_timezone_source": "area_code",
+  "contact_phone_order": "ascending",
+  "enable_always_running": false,
+  "contact_order": 1,
+  "enable_diagnostics": false
+}

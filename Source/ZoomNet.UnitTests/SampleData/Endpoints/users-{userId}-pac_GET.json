@@ -1,0 +1,21 @@
+{
+  "pac_accounts": [
+    {
+      "conference_id": 111111,
+      "dedicated_dial_in_number": [
+        {
+          "country": "USA",
+          "number": "5550110"
+        }
+      ],
+      "global_dial_in_numbers": [
+        {
+          "country": "USA",
+          "number": "5550100"
+        }
+      ],
+      "listen_only_password": "3c2b1a",
+      "participant_password": "a1b2c3"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "host": "API",
+  "custom_keys": [
+    {
+      "key": "Host Nation",
+      "value": "US"
+    }
+  ],
+  "dept": "Developers",
+  "duration": "02:21",
+  "email": "user@example.com",
+  "end_time": "2022-03-01T10:17:35.0000000\u002B00:00",
+  "has_3rd_party_audio": true,
+  "has_archiving": true,
+  "has_pstn": true,
+  "has_recording": true,
+  "has_screen_share": true,
+  "has_sip": true,
+  "has_video": true,
+  "has_voip": true,
+  "has_manual_captions": true,
+  "has_automated_captions": true,
+  "id": 575734086,
+  "in_room_participants": 2,
+  "participants": 2,
+  "start_time": "2022-03-01T10:15:14.0000000\u002B00:00",
+  "topic": "API Meeting",
+  "user_type": "Licensed",
+  "uuid": "gaqOKVN9RAaDHKYWEcASXg==",
+  "has_meeting_summary": true,
+  "has_poll": true,
+  "has_qa": true,
+  "has_survey": false,
+  "avg_jointime_cost": 3.98
+}

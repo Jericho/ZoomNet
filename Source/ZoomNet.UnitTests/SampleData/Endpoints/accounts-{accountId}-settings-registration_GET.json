@@ -1,0 +1,27 @@
+{
+  "options": {
+    "host_email_notification": true,
+    "close_registration": true,
+    "allow_participants_to_join_from_multiple_devices": true,
+    "show_social_share_buttons": true
+  },
+  "questions": [
+    {
+      "field_name": "last_name",
+      "required": true,
+      "selected": true
+    }
+  ],
+  "approve_type": 0,
+  "custom_questions": [
+    {
+      "title": "true",
+      "type": "single_dropdown",
+      "required": true,
+      "selected": true,
+      "answers": [
+        "option 1"
+      ]
+    }
+  ]
+}

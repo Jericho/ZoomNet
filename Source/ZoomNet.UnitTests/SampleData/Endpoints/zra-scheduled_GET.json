@@ -1,0 +1,18 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "from": "2024-04-16T21:39:50Z",
+  "to": "2024-04-16T21:39:50Z",
+  "meetings": [
+    {
+      "topic": "meeting with tom",
+      "user_id": "IGTRVt3gQ2i",
+      "host_id": "IGTRVt3gQ2i",
+      "event_id": "QhhnRjoTT8G5x8VWvNJSxQ_5v8v2qtuasscsbm8c36v0v6e8e",
+      "schedule_time": "2020-05-02T19:13:05Z",
+      "start_time": "2020-05-02T19:13:05Z",
+      "meeting_platform": "zoom",
+      "external": true
+    }
+  ]
+}

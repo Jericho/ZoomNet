@@ -1,0 +1,18 @@
+{
+  "common_areas_activation_codes": [
+    {
+      "common_area_id": "JOZmuJ30Spyrw-v9vUzIrA",
+      "display_name": "test_ca",
+      "extension_number": 100012347,
+      "activation_code": "5678-2345-1234-1234",
+      "activation_code_expiration": "2021-10-08T16:12:04Z",
+      "status": "used",
+      "site": {
+        "site_id": "8f71O6rWT8KFUGQmJIFAdQ",
+        "name": "Main Site"
+      }
+    }
+  ],
+  "next_page_token": "RaO87FrnwXvFQta5aV8sU5C3c9O8s9Nraq2",
+  "page_size": 30
+}

@@ -1,0 +1,13 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "email_notifications": [
+    {
+      "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "email_notification": true,
+      "display_name": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "user_email": "jchill@example.com"
+    }
+  ]
+}

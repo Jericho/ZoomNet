@@ -1,0 +1,180 @@
+{
+  "deal_reg_number": "DL-135621",
+  "create_reference_id": "DRR-4834729",
+  "deal_name": "New deal for Zoom Phone",
+  "deal_description": "New deal for Zoom Phone",
+  "currency": "USD",
+  "program_name": "TSD Agent Registration",
+  "opportunity_stage": "closed-won",
+  "submitted_date": "2023-10-25",
+  "approved_date": "2023-10-25",
+  "denied_date": "2023-10-25",
+  "expected_close_date": "2023-10-25",
+  "partner_role": "Deal Registration",
+  "original_expiry_date": "2023-10-25",
+  "extended_expiry_date": "2023-10-25",
+  "sales_representative": {
+    "self_sales_representative": true,
+    "sales_rep_contact": {
+      "contact_crm_number": "A-12428",
+      "first_name": "Tracy",
+      "last_name": "Smith",
+      "email": "tsmith@somecompany.com",
+      "title": "Account Executive",
+      "phone": "192837489342"
+    }
+  },
+  "submitter": {
+    "contact_crm_number": "A-12428",
+    "first_name": "Tracy",
+    "last_name": "Smith",
+    "email": "tsmith@somecompany.com",
+    "title": "Account Executive",
+    "phone": "192837489342"
+  },
+  "related_partner": "A-1232",
+  "partner_contacts": [
+    {
+      "contact_crm_number": "A-12428",
+      "first_name": "Tracy",
+      "last_name": "Smith",
+      "email": "tsmith@somecompany.com",
+      "title": "Account Executive",
+      "phone": "192837489342"
+    }
+  ],
+  "is_existing_customer": false,
+  "sub_reseller": {
+    "crm_account_number": "A-1232",
+    "account_name": "ABC Pvt Ltd",
+    "address": {
+      "address_type": "billTo",
+      "line_1": "55 Almaden Blvd",
+      "line_2": "Suite 10",
+      "line_3": "Tower A",
+      "city": "San Jose",
+      "postal_code": "95114",
+      "state": "PA",
+      "country": "US"
+    }
+  },
+  "invoice_owner": {
+    "crm_account_number": "A-1232",
+    "account_name": "ABC Distributors Inc",
+    "address": {
+      "address_type": "billTo",
+      "line_1": "55 Almaden Blvd",
+      "line_2": "Suite 10",
+      "line_3": "Tower A",
+      "city": "San Jose",
+      "postal_code": "95114",
+      "state": "PA",
+      "country": "US"
+    }
+  },
+  "end_customer": {
+    "crm_account_number": "A-1232",
+    "account_name": "ABC Pvt Ltd",
+    "address": {
+      "address_type": "billTo",
+      "line_1": "55 Almaden Blvd",
+      "line_2": "Suite 10",
+      "line_3": "Tower A",
+      "city": "San Jose",
+      "postal_code": "95114",
+      "state": "PA",
+      "country": "US"
+    },
+    "department": "Engineering",
+    "industry": "Commercial",
+    "account_local_name": "ABC Pvt Ltd",
+    "employee_count": "2-10",
+    "website": "www.zoom.com"
+  },
+  "end_customer_primary_contact": {
+    "contact_crm_number": "A-12428",
+    "first_name": "Tracy",
+    "last_name": "Smith",
+    "email": "tsmith@somecompany.com",
+    "title": "Account Executive",
+    "phone": "192837489342",
+    "end_customer_contact_domain_reason": "To be provided by customer later"
+  },
+  "end_customer_other_contacts": [
+    {
+      "contact_crm_number": "A-12428",
+      "first_name": "Tracy",
+      "last_name": "Smith",
+      "email": "tsmith@somecompany.com",
+      "title": "Account Executive",
+      "phone": "192837489342",
+      "end_customer_contact_domain_reason": "To be provided by customer later"
+    }
+  ],
+  "end_customer_website_details": {
+    "empty_website": false,
+    "empty_website_reason": "To be provided by customer",
+    "public_website_reason": "To be provided by customer"
+  },
+  "is_public_sector": false,
+  "budget_identified": false,
+  "buy_gov_skus": false,
+  "met_decision_maker": false,
+  "decision_maker_email": "abc@test.com",
+  "decision_maker_name": "John Doe",
+  "estimated_mrr": 100000,
+  "requires_professional_services": false,
+  "professional_services_description": "false",
+  "professional_services_delivered_by": "Zoom, Partner",
+  "phone_carrier": "There is no existing agreement",
+  "product_groups": [
+    {
+      "name": "Zoom Workplace (Pro or Biz)",
+      "quantity": 1000
+    }
+  ],
+  "campaign": "Global Zoom Phone Launch",
+  "sales_activities": [
+    {
+      "sales_activity_number": "ZDRA00011",
+      "type": "Zoom Meeting with Customer",
+      "date": "2023-10-25"
+    }
+  ],
+  "rfp_details": {
+    "is_rfp": false,
+    "rfp_link": "https://www.rfplink.abc.com",
+    "issue_date": "2023-10-25",
+    "due_date": "2023-10-25"
+  },
+  "zoom_cams": {
+    "zoom_territory_cam": "John Doe",
+    "zoom_named_cam": "John Doe",
+    "zoom_distribution_cam": "John Doe"
+  },
+  "additional_comments": "customer retention",
+  "opportunity": {
+    "opportunity_number": "a56b89",
+    "opportunity_name": "New sales opportunity",
+    "opportunity_type": "Sales Channel",
+    "partner_role": "Deal Registration",
+    "channel_sales_motion": "Direct Reseller",
+    "expected_close_date": "2023-10-25"
+  },
+  "status": "submitted",
+  "status_detail": {
+    "return_reason": "RFP link is invalid.",
+    "revoke_reason": "A duplicate deal registration is in progress.",
+    "denied_reason": "The customer is not compliant for the requested deal.",
+    "other_comments": "Conditional approval.",
+    "failure_reason": "Time out."
+  },
+  "documents": [
+    {
+      "document_reference_id": "DOC-1234",
+      "document_note": "Latest purchase order.",
+      "document_type": "Deal Registration"
+    }
+  ],
+  "migration_type": "PBX/Zoom Hybrid Integration (HI)"
+}

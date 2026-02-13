@@ -1,0 +1,36 @@
+{
+  "crm_account_number": "A-0012",
+  "create_reference_id": "ACC-2333",
+  "status": "submitted",
+  "zoom_account_number": "1223837102",
+  "zoom_account_numbers": [
+    3842618277
+  ],
+  "account_name": "ABC Pvt Ltd.",
+  "account_type": "Customer",
+  "created_on_date": "2022-10-18",
+  "employee_count": "51-250",
+  "website": "www.example.com",
+  "currency": "US",
+  "partner_type": "Subreseller",
+  "contacts": [
+    {
+      "contact_crm_number": "A-12428",
+      "first_name": "Tracy",
+      "last_name": "Smith",
+      "job_title": "Account Executive",
+      "company_email": "tsmith@somecompany.com",
+      "business_phone": "192837489342",
+      "primary_role": "Decision Maker"
+    }
+  ],
+  "billing_address": {
+    "line_1": "55 Almaden Blvd",
+    "line_2": "Suite 10",
+    "line_3": "Tower A",
+    "city": "San Jose",
+    "postal_code": "95114",
+    "state": "PA",
+    "country": "US"
+  }
+}

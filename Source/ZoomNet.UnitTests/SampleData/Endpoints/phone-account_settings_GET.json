@@ -1,0 +1,483 @@
+{
+  "call_live_transcription": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "transcription_start_prompt": {
+      "enable": true,
+      "audio_id": "yCT14TwySDGVUypVlKNEyA",
+      "audio_name": "example.mp3"
+    }
+  },
+  "local_survivability_mode": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "external_calling_on_zoom_room_common_area": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "select_outbound_caller_id": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "allow_hide_outbound_caller_id": true
+  },
+  "personal_audio_library": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "allow_music_on_hold_customization": true,
+    "allow_voicemail_and_message_greeting_customization": true
+  },
+  "voicemail": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "allow_videomail": true,
+    "allow_download": false,
+    "allow_delete": true,
+    "allow_share": true,
+    "allow_virtual_background": true
+  },
+  "voicemail_transcription": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "voicemail_notification_by_email": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "include_voicemail_file": true,
+    "include_voicemail_transcription": false,
+    "forward_voicemail_to_email": true
+  },
+  "shared_voicemail_notification_by_email": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "restricted_call_hours": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "time_zone": {
+      "id": "America/Adak",
+      "name": "(GMT-9:00) Adak"
+    },
+    "restricted_hours_applied": false,
+    "restricted_holiday_hours_applied": false,
+    "allow_internal_calls": true
+  },
+  "allowed_call_locations": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "locations_applied": false,
+    "allow_internal_calls": true
+  },
+  "check_voicemails_over_phone": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "auto_call_recording": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "recording_calls": "inbound",
+    "recording_transcription": true,
+    "recording_start_prompt": true,
+    "recording_start_prompt_audio_id": "ySMexBgBQsioV8KKCUybTA",
+    "recording_explicit_consent": true,
+    "allow_stop_resume_recording": true,
+    "disconnect_on_recording_failure": true,
+    "play_recording_beep_tone": {
+      "enable": true,
+      "play_beep_member": "allMembers",
+      "play_beep_volume": 60,
+      "play_beep_time_interval": 15
+    },
+    "inbound_audio_notification": {
+      "recording_start_prompt": true,
+      "recording_start_prompt_audio_id": "ySMexBgBQsioV8KKCUybTA",
+      "recording_explicit_consent": true
+    },
+    "outbound_audio_notification": {
+      "recording_start_prompt": true,
+      "recording_start_prompt_audio_id": "ySMexBgBQsioV8KKCUybTA",
+      "recording_explicit_consent": true
+    }
+  },
+  "ad_hoc_call_recording": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "recording_transcription": true,
+    "allow_download": true,
+    "allow_delete": true,
+    "recording_start_prompt": true,
+    "recording_explicit_consent": true,
+    "play_recording_beep_tone": {
+      "enable": true,
+      "play_beep_member": "allMembers",
+      "play_beep_volume": 60,
+      "play_beep_time_interval": 15
+    }
+  },
+  "international_calling": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "outbound_calling": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "outbound_sms": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "sms": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "international_sms": true
+  },
+  "sms_etiquette_tool": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "sms_etiquette_policy": [
+      {
+        "id": "PdPtFFDbQhKr05WepCHhWQ",
+        "name": "invalid symbol",
+        "description": "invalid symbol",
+        "rule": 1,
+        "content": "test",
+        "action": 1,
+        "active": true
+      }
+    ]
+  },
+  "zoom_phone_on_mobile": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "allow_calling_sms_mms": true
+  },
+  "zoom_phone_on_pwa": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "e2e_encryption": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "call_handling_forwarding_to_other_users": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "call_forwarding_type": 1
+  },
+  "call_overflow": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "call_overflow_type": 1
+  },
+  "call_transferring": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "call_transferring_type": 2
+  },
+  "elevate_to_meeting": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "call_park": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "expiration_period": 3,
+    "call_not_picked_up_action": 50,
+    "forward_to": {
+      "display_name": "ZOOM_API Test",
+      "extension_id": "TO586CYlQFC_WCUvPRXytA",
+      "extension_number": 100014,
+      "extension_type": "user",
+      "id": "oG_nYRFuTJiY1tu0Fur_4Q"
+    },
+    "sequence": 1
+  },
+  "hand_off_to_room": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "mobile_switch_to_carrier": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "delegation": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "audio_intercom": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "block_calls_without_caller_id": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "block_external_calls": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "block_business_hours": true,
+    "block_closed_hours": true,
+    "block_holiday_hours": true,
+    "block_call_action": 0
+  },
+  "call_queue_opt_out_reason": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "call_queue_opt_out_reasons_list": [
+      {
+        "code": "Break",
+        "system": true,
+        "enable": true
+      }
+    ]
+  },
+  "auto_delete_data_after_retention_duration": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "items": [
+      {
+        "type": "callLog",
+        "duration": -1,
+        "time_unit": "year"
+      }
+    ],
+    "delete_type": 1,
+    "permanently_delete_after_days": -1
+  },
+  "auto_call_from_third_party_apps": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "override_default_port": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "min_port": 9000,
+    "max_port": 9998
+  },
+  "peer_to_peer_media": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "advanced_encryption": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "disable_incoming_unencrypted_voicemail": true
+  },
+  "display_call_feedback_survey": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "feedback_type": 1,
+    "feedback_mos": {
+      "enable": true,
+      "min": "1.1",
+      "max": "3.0"
+    },
+    "feedback_duration": {
+      "enable": true,
+      "min": 0,
+      "max": 60
+    }
+  },
+  "block_list_for_inbound_calls_and_messaging": {
+    "enable": true,
+    "locked": true,
+    "locked_by": "account"
+  },
+  "block_calls_as_threat": {
+    "enable": true,
+    "locked": true,
+    "locked_by": "invalid"
+  },
+  "online_fax": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "enable_new_fax_email_notifications": true,
+    "include_fax_as_attachment": false
+  },
+  "private_call_park": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "expiration_period": 3,
+    "call_not_picked_up_action": 50,
+    "forward_to": {
+      "display_name": "ZOOM_API Test",
+      "extension_id": "TO586CYlQFC_WCUvPRXytA",
+      "extension_number": 100014,
+      "extension_type": "user",
+      "id": "oG_nYRFuTJiY1tu0Fur_4Q"
+    },
+    "sequence": 1,
+    "music_on_park": {
+      "audio_id": "yCT14TwySDGVUypVlKNEyA",
+      "audio_name": "example.mp3"
+    }
+  },
+  "sms_template": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "sms_template_list": [
+      {
+        "sms_template_id": "0qWIP8S8QXmo6KShUIyvZA",
+        "name": "name",
+        "description": "description",
+        "content": "content",
+        "active": true
+      }
+    ]
+  },
+  "call_screening": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "exclude_user_company_contacts": true
+  },
+  "sms_auto_reply": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "allow_end_user_edit_call_handling": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "connect_to_operator": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "no_hold_conference": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "conference_dtmf": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "end_conference_call_when_originator_drops": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "chat_channel": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "desk_phone_smart_key_positions_layout": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "auto_opt_out_in_call_queue": {
+    "enable": false,
+    "locked": false,
+    "locked_by": "account",
+    "prompt_before_opt_out_call_queue": true
+  },
+  "allow_mobile_home_phone_callout": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "use_callkit_for_incoming_call_notifications_in_ios": {
+    "enable": false,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "hide_phone_call_history_in_ios": {
+    "enable": false,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "obfuscate_sensitive_data_during_call": {
+    "enable": false,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "prevent_users_upload_audio_files": {
+    "enable": false,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "voicemail_tasks": {
+    "enable": false,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "voicemail_intent_based_prioritization": {
+    "enable": false,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "team_sms_thread_summary": {
+    "enable": false,
+    "locked": false,
+    "locked_by": "account"
+  },
+  "customize_line_name": {
+    "enable": false,
+    "locked": false,
+    "locked_by": "account",
+    "user_line_name": "phoneNumber",
+    "common_area_line_name": "phoneNumber"
+  },
+  "show_custom_disclaimer_when_using_zoom_phone": {
+    "enable": false,
+    "locked": false,
+    "locked_by": "account",
+    "display_frequency": "first_time_only",
+    "custom_disclaimer_list": [
+      {
+        "language": "en-GB",
+        "title": "tilte",
+        "body": "body"
+      }
+    ]
+  }
+}

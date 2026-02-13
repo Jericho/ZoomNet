@@ -1,0 +1,18 @@
+{
+  "booked": false,
+  "booking_link": "https://xyz.com/d/0bedzp07/roundrobin",
+  "created_time": "2025-05-01T16:49:55.801Z",
+  "creator_email": "abc@def.com",
+  "form_id": "s91lg8lb3mhuj4itgtjnd3f440",
+  "questions_and_answers": [
+    {
+      "answers": [
+        "50"
+      ],
+      "question_id": "17y6gve91og6ftr8qo86vlfz70",
+      "question_content": "such as \u0022hobbit\u0022, \u0022email\u0022, \u0022age\u0022"
+    }
+  ],
+  "result_type": "could be one of \u0022event\u0022, \u0022text\u0022 or \u0022url\u0022",
+  "result_value": "{\u0022appointmentId\u0022:\u0022h7z59a55xmkamethclg2huhja0\u0022,\u0022user\u0022:\u0022d/0bedzp07\u0022}"
+}

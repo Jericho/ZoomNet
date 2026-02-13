@@ -223,7 +223,7 @@ namespace ZoomNet.Json
 
 			That's why I wrote the following workaround which removes properties that contain a null value prior to serializing the JsonObject.
 		*/
-		private static void CleanJsonObject(JsonObject jsonObject)
+		internal static void CleanJsonObject(JsonObject jsonObject)
 		{
 			// STEP 1 - Remove properties containing a null value
 			var nullProperties = jsonObject

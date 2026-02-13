@@ -1,0 +1,21 @@
+{
+  "next_page_token": "Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3",
+  "page_count": 1,
+  "page_size": 30,
+  "participants": [
+    {
+      "id": "30R7kT7bTIKSNUFEuH_Qlg",
+      "name": "Jill Chill",
+      "user_id": "ABCDEF123456",
+      "registrant_id": "_f08HhPJS82MIVLuuFaJPg",
+      "user_email": "jchill@example.com",
+      "join_time": "2019-02-01T12:34:12.6600000\u002B00:00",
+      "leave_time": "2019-02-01T12:54:12.6600000\u002B00:00",
+      "duration": 20,
+      "failover": false,
+      "status": "in_meeting",
+      "internal_user": false
+    }
+  ],
+  "total_records": 1
+}

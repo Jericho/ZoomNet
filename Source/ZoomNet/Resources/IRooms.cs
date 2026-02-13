@@ -172,7 +172,7 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">A token to monitor for cancellation requests. Defaults to <see cref="CancellationToken.None"/>.</param>
 		/// <returns>A paginated response containing sensor data for the specified room and filters, along with metadata such as the
 		/// next page token and the date range covered.</returns>
-		Task<PaginatedResponseWithTokenAndDateRange<RoomSensorData>> GetSensorDataAsync(string roomId, string deviceId = null, RoomSensorType? sensorType = null, DateTime? from = null, DateTime? to = null, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithTokenAndDateRange<RoomSensorData>> GetSensorDataAsync(string roomId, string deviceId = null, RoomSensorType? sensorType = null, DateOnly? from = null, DateOnly? to = null, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieves the URL for accessing the virtual controller associated with a specified room.

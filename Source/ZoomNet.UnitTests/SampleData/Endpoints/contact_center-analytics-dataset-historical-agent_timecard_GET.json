@@ -1,0 +1,32 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "timezone": "America/Los_Angeles",
+  "from": "2021-12-10T00:00:00Z",
+  "to": "2021-12-10T00:00:00Z",
+  "users": [
+    {
+      "work_session_id": "reRAiabVQSqpXxJVDbsy2Q",
+      "start_time": "2021-12-10T00:00:00Z",
+      "end_time": "2021-12-10T00:00:00Z",
+      "user_id": "reRAiabVQSqpXxJVDbsy2Q",
+      "user_name": "agent_name_example",
+      "user_status": "not_ready",
+      "user_sub_status": "launch time",
+      "team": {
+        "team_id": "team_id_example",
+        "team_name": "team_name_example"
+      },
+      "ready_duration": 123,
+      "occupied_duration": 234,
+      "not_ready_duration": 123,
+      "work_session_duration": 123,
+      "work_session_start_time": "2025-12-10T00:00:00Z",
+      "work_session_end_time": "2025-12-12T00:00:00Z",
+      "client_type": "client",
+      "agent_country": "US",
+      "ip_address": "192.168.3.4"
+    }
+  ]
+}

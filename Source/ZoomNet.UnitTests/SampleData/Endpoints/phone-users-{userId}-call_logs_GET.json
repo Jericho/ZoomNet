@@ -1,0 +1,80 @@
+{
+  "call_logs": [
+    {
+      "accepted_by": {
+        "extension_number": "1009",
+        "location": "Pontotoc     MS",
+        "name": "Display name",
+        "number_type": 1,
+        "phone_number": "\u002B12055432724"
+      },
+      "answer_start_time": "2021-10-09T16:52:05Z",
+      "call_end_time": "2021-10-09T17:20:53Z",
+      "call_id": "7017184835983901126",
+      "callee_country_code": "1",
+      "callee_country_iso_code": "US",
+      "callee_did_number": "\u002B12055432724",
+      "callee_name": "Callee name",
+      "callee_number": "1018",
+      "callee_number_type": 1,
+      "callee_number_source": "internal",
+      "caller_country_code": "1",
+      "caller_country_iso_code": "US",
+      "caller_did_number": "\u002B12055432724",
+      "caller_name": "Caller name",
+      "caller_number": "\u002B12059300920",
+      "caller_number_type": 1,
+      "caller_number_source": "internal",
+      "caller_billing_reference_id": "ZoomTelecom123456",
+      "charge": "$0.0255",
+      "client_code": "123",
+      "date_time": "2022-01-24T23:58:10Z",
+      "direction": "inbound",
+      "duration": 20,
+      "forwarded_by": {
+        "extension_number": "1009",
+        "extension_type": "user",
+        "location": "Glendale     CA",
+        "name": "The display name",
+        "number_type": 1,
+        "phone_number": "\u002B12055432724"
+      },
+      "forwarded_to": {
+        "extension_number": "1009",
+        "location": "Glendale     CA",
+        "name": "Display name",
+        "number_type": 1,
+        "phone_number": "\u002B12055432724"
+      },
+      "has_recording": false,
+      "has_voicemail": false,
+      "id": "48c1dfd4-91ce-4df5-8495-7c9e33d10869",
+      "outgoing_by": {
+        "extension_number": "1009",
+        "location": "Glendale     CA",
+        "name": "Display name",
+        "number_type": 1,
+        "phone_number": "\u002B12055432724"
+      },
+      "path": "pstn",
+      "rate": "$0.0255",
+      "recording_type": "On-demand",
+      "result": "Call connected",
+      "site": {
+        "id": "8f71O6rWT8KFUGQmJIFAdQ",
+        "name": "Main Site"
+      },
+      "user_id": "DnEopNmXQEGU2uvvzjgojw",
+      "hold_time": 5,
+      "waiting_time": 10,
+      "department": "web-api1",
+      "cost_center": "cost-center1"
+    }
+  ],
+  "from": "2021-10-01",
+  "next_page_token": "AmhfoKtF2Ey4TaPg2iZsAcmetRLs2ZY0Sk2",
+  "page_count": 2,
+  "page_size": 30,
+  "to": "2021-10-12",
+  "total_records": 54
+}

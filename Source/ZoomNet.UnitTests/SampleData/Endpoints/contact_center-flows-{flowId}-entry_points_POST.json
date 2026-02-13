@@ -1,0 +1,11 @@
+{
+  "entry_points": [
+    {
+      "entry_id": "Nn3aO8lOSm6aYYW6l8brSQ",
+      "entry_language": "en_US"
+    }
+  ],
+  "channel_source": "web_chat",
+  "channel": "messaging",
+  "enable_detect_language": false
+}

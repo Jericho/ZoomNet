@@ -1,0 +1,16 @@
+{
+  "blocked_statistic": [
+    {
+      "id": "2Iq1GeCiR5WczhV9QgXwFA",
+      "match_type": "phoneNumber",
+      "phone_number": "\u002B120665558945",
+      "type": "1",
+      "block_count": 3,
+      "threat_count": 2,
+      "blocked_number": "20665558945",
+      "country": "US"
+    }
+  ],
+  "next_page_token": "uBTK3NzNksdkuCUAQaFVFd86kyOr59zg4U2",
+  "page_size": 30
+}

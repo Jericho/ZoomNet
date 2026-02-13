@@ -1,0 +1,17 @@
+{
+  "members": [
+    {
+      "department": "Developers",
+      "email": "jchil.test@example.com",
+      "first_name": "Jill",
+      "id": "49D7a0xPQvGQ2DCMZgSe7w",
+      "last_name": "Chill",
+      "type": 2
+    }
+  ],
+  "next_page_token": "TUNTL8kGBvdBSJiX1PaNAVxYbjV7ouJlKS2",
+  "page_count": 3,
+  "page_number": 1,
+  "page_size": 30,
+  "total_records": 22
+}

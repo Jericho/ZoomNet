@@ -1,0 +1,13 @@
+{
+  "total_records": 1,
+  "next_page_token": "yqT59YnBSHqvDdNnkeHQsA",
+  "vod_channels": [
+    {
+      "channel_id": "iso9Dllddp39dagjLj9j",
+      "name": "My Channel",
+      "status": "PUBLISHED",
+      "is_published_to_hub": true,
+      "type": "VIDEO_LIST_HUB"
+    }
+  ]
+}

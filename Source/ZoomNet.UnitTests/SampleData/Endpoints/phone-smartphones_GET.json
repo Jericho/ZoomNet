@@ -1,0 +1,25 @@
+{
+  "smartphones": [
+    {
+      "smartphone_id": "3WWAEiEjTj2IQuyDiKMd_A",
+      "device_name": "EC50",
+      "device_type": "Zebra TechnologiesEC50S",
+      "serial_number": "202355225D0174",
+      "public_ip": "38.99.100.2",
+      "activation_status": "Activated",
+      "activation_time": "2021-10-08T16:12:04Z",
+      "assignee": {
+        "common_area_id": "JOZmuJ30Spyrw-v9vUzIrA",
+        "name": "test_ca",
+        "extension_number": 123
+      },
+      "site": {
+        "site_id": "NjHmTu16Qfe8yOiNJuekXA",
+        "name": "HQ site"
+      }
+    }
+  ],
+  "next_page_token": "uBTK3NzNksdkuCUAQaFVFd86kyOr59zg4U2",
+  "page_size": 30,
+  "total_records": 1
+}

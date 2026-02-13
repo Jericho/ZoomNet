@@ -1,0 +1,226 @@
+{
+  "next_page_token": "y20RGLOiO2jTy3CMfnNRORmB51kAuhMy0e2",
+  "page_count": 2,
+  "page_size": 10,
+  "total_records": 2,
+  "meeting_number": "93201235621",
+  "participants": [
+    {
+      "id": "_f08HhPJS82MIVLuuFaJPg",
+      "device": "Phone",
+      "client": "Web Meeting SDK 2.18",
+      "domain": "example.com",
+      "harddisk_id": "Disk01",
+      "internal_ip_addresses": [
+        "192.0.2.1"
+      ],
+      "ip_address": "192.0.2.1",
+      "join_time": "2022-03-01T10:15:14.0000000\u002B00:00",
+      "leave_time": "2022-03-01T10:15:14.0000000\u002B00:00",
+      "location": "United States",
+      "mac_addr": "f85e-a012-92d8",
+      "pc_name": "HW0010449",
+      "user_id": "20161536",
+      "user_name": "jchill",
+      "user_qos": [
+        {
+          "as_device_from_crc": {
+            "avg_loss": "0.03%",
+            "bitrate": "27.15 kbps",
+            "jitter": "0 ms",
+            "latency": "126 ms",
+            "max_loss": "0.4%",
+            "frame_rate": "12 fps",
+            "resolution": "1280*720"
+          },
+          "as_device_to_crc": {
+            "avg_loss": "0.03%",
+            "bitrate": "27.15 kbps",
+            "jitter": "0 ms",
+            "latency": "126 ms",
+            "max_loss": "0.4%",
+            "frame_rate": "12 fps",
+            "resolution": "1280*720"
+          },
+          "as_input": {
+            "avg_loss": "0.03%",
+            "bitrate": "27.15 kbps",
+            "jitter": "0 ms",
+            "latency": "126 ms",
+            "max_loss": "0.4%",
+            "frame_rate": "12 fps",
+            "resolution": "1280*720"
+          },
+          "as_output": {
+            "avg_loss": "0.03%",
+            "bitrate": "27.15 kbps",
+            "jitter": "0 ms",
+            "latency": "126 ms",
+            "max_loss": "0.4%",
+            "frame_rate": "12 fps",
+            "resolution": "1280*720"
+          },
+          "audio_device_from_crc": {
+            "avg_loss": "0.03%",
+            "bitrate": "27.15 kbps",
+            "jitter": "0 ms",
+            "latency": "126 ms",
+            "max_loss": "0.4%"
+          },
+          "audio_device_to_crc": {
+            "avg_loss": "0.03%",
+            "bitrate": "27.15 kbps",
+            "jitter": "0 ms",
+            "latency": "126 ms",
+            "max_loss": "0.4%"
+          },
+          "audio_input": {
+            "avg_loss": "0.03%",
+            "bitrate": "27.15 kbps",
+            "jitter": "0 ms",
+            "latency": "126 ms",
+            "max_loss": "0.4%"
+          },
+          "audio_output": {
+            "avg_loss": "0.03%",
+            "bitrate": "27.15 kbps",
+            "jitter": "0 ms",
+            "latency": "126 ms",
+            "max_loss": "0.4%"
+          },
+          "cpu_usage": {
+            "system_max_cpu_usage": "11%",
+            "zoom_avg_cpu_usage": "0%",
+            "zoom_max_cpu_usage": "2%",
+            "zoom_min_cpu_usage": "0%"
+          },
+          "cpu_pressure_level": {
+            "system_min_cpu_pressure_level": "normal",
+            "system_avg_cpu_pressure_level": "normal",
+            "system_max_cpu_pressure_level": "normal"
+          },
+          "date_time": "2022-03-01T10:16:00.0000000\u002B00:00",
+          "video_device_from_crc": {
+            "avg_loss": "0.03%",
+            "bitrate": "27.15 kbps",
+            "jitter": "0 ms",
+            "latency": "126 ms",
+            "max_loss": "0.03%",
+            "frame_rate": "12 fps",
+            "resolution": "1280*720"
+          },
+          "video_device_to_crc": {
+            "avg_loss": "0.03%",
+            "bitrate": "27.15 kbps",
+            "jitter": "0 ms",
+            "latency": "126 ms",
+            "max_loss": "0.4%",
+            "frame_rate": "12 fps",
+            "resolution": "1280*720"
+          },
+          "video_input": {
+            "avg_loss": "0.03%",
+            "bitrate": "27.15 kbps",
+            "jitter": "0 ms",
+            "latency": "126 ms",
+            "max_loss": "0.4%",
+            "frame_rate": "12 fps",
+            "resolution": "1280*720"
+          },
+          "video_output": {
+            "avg_loss": "0.03%",
+            "bitrate": "27.15 kbps",
+            "jitter": "0 ms",
+            "latency": "126 ms",
+            "max_loss": "0.4%",
+            "frame_rate": "12 fps",
+            "resolution": "1280*720"
+          },
+          "as_device_from_rwg": {
+            "avg_loss": "0.03%",
+            "bitrate": "27.15 kbps",
+            "jitter": "0 ms",
+            "latency": "126 ms",
+            "max_loss": "0.4%",
+            "frame_rate": "12 fps",
+            "resolution": "1280*720"
+          },
+          "as_device_to_rwg": {
+            "avg_loss": "0.03%",
+            "bitrate": "27.15 kbps",
+            "jitter": "0 ms",
+            "latency": "126 ms",
+            "max_loss": "0.4%",
+            "frame_rate": "12 fps",
+            "resolution": "1280*720"
+          },
+          "audio_device_from_rwg": {
+            "avg_loss": "0.03%",
+            "bitrate": "27.15 kbps",
+            "jitter": "0 ms",
+            "latency": "126 ms",
+            "max_loss": "0.4%"
+          },
+          "audio_device_to_rwg": {
+            "avg_loss": "0.03%",
+            "bitrate": "27.15 kbps",
+            "jitter": "0 ms",
+            "latency": "126 ms",
+            "max_loss": "0.4%"
+          },
+          "video_device_from_rwg": {
+            "avg_loss": "0.03%",
+            "bitrate": "27.15 kbps",
+            "jitter": "0 ms",
+            "latency": "126 ms",
+            "max_loss": "0.03%",
+            "frame_rate": "12 fps",
+            "resolution": "1280*720"
+          },
+          "video_device_to_rwg": {
+            "avg_loss": "0.03%",
+            "bitrate": "27.15 kbps",
+            "jitter": "0 ms",
+            "latency": "126 ms",
+            "max_loss": "0.4%",
+            "frame_rate": "12 fps",
+            "resolution": "1280*720"
+          },
+          "wifi_rssi": {
+            "max_rssi": -75,
+            "avg_rssi": -69,
+            "min_rssi": -35,
+            "rssi_unit": "dBm"
+          }
+        }
+      ],
+      "version": "5.9.1.2581",
+      "os": "iOS",
+      "os_version": "16.5",
+      "browser_name": "Firefox",
+      "browser_version": "133",
+      "video_connection_type": "UDP",
+      "as_connection_type": "UDP",
+      "participant_uuid": "D444CD06-2ABB-2FCC-019B-39E41D8DADF7",
+      "network_type": "Wired",
+      "data_center": "United States (SC Top)",
+      "full_data_center": "United States (SC Top);",
+      "connection_type": "UDP",
+      "share_application": true,
+      "share_desktop": true,
+      "share_whiteboard": true,
+      "recording": true,
+      "device_name": "iPhone 7 Global",
+      "groupId": "TcjqVCTzRy6hLa0d8WpAIg",
+      "has_archiving": true,
+      "optional_archiving": "no optional archiving",
+      "health": "Warning",
+      "total_jointime_cost": 3.52,
+      "zoom_thin_client_plugin_version": "6.5.11.26770",
+      "email": "jchill@example.com",
+      "issue_list": [
+        "audio"
+      ]
+    }
+  ]
+}
