@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -68,32 +67,21 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync($"Reply \"{messageId}\" sent").ConfigureAwait(false);
 			await Task.Delay(1000, cancellationToken).ConfigureAwait(false); // Allow the Zoom system to process this message and avoid subsequent "message doesn't exist" error messages
 
-			// Check that this computer has a folder containing sample images which we can use to send files to the channel
-			var samplePicturesFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "Samples");
-			if (Directory.Exists(samplePicturesFolder))
-			{
-				var rnd = new Random();
-				var samplePictures = Directory.EnumerateFiles(samplePicturesFolder, "*.jpg");
-				if (samplePictures.Any())
-				{
-					// SEND A FILE TO THE CHANNEL
-					var samplePicture = samplePictures.ElementAt(rnd.Next(0, samplePictures.Count()));
-					using var fileToSendStream = File.OpenRead(samplePicture);
-					var sentFileId = await client.Chat.SendFileAsync(null, "me", null, channel.Id, Path.GetFileName(samplePicture), fileToSendStream, cancellationToken).ConfigureAwait(false);
-					await log.WriteLineAsync($"File {sentFileId} sent").ConfigureAwait(false);
+			// SEND A FILE TO THE CHANNEL
+			var (fileStream, fileName) = Utils.GetRandomImage();
+			var sentFileId = await client.Chat.SendFileAsync(null, "me", null, channel.Id, fileName, fileStream, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"File {sentFileId} sent").ConfigureAwait(false);
 
-					// UPLOAD A FILE
-					samplePicture = samplePictures.ElementAt(rnd.Next(0, samplePictures.Count()));
-					using var fileToUploadStream = File.OpenRead(samplePicture);
-					var uploadedFileId = await client.Chat.UploadFileAsync("me", Path.GetFileName(samplePicture), fileToUploadStream, cancellationToken).ConfigureAwait(false);
-					await log.WriteLineAsync($"File {uploadedFileId} uploaded").ConfigureAwait(false);
+			// UPLOAD A FILE
+			(fileStream, fileName) = Utils.GetRandomImage();
+			var uploadedFileId = await client.Chat.UploadFileAsync("me", fileName, fileStream, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"File {uploadedFileId} uploaded").ConfigureAwait(false);
 
-					// SEND A MESSAGE WITH ATTACHMENT
-					messageId = await client.Chat.SendMessageToChannelAsync(channel.Id, "This message has an attachment", null, new[] { uploadedFileId }, null, cancellationToken).ConfigureAwait(false);
-					await log.WriteLineAsync($"Message \"{messageId}\" sent with attachment").ConfigureAwait(false);
-					await Task.Delay(1000, cancellationToken).ConfigureAwait(false); // Allow the Zoom system to process this message and avoid subsequent "message doesn't exist" error messages
-				}
-			}
+			// SEND A MESSAGE WITH ATTACHMENT
+			(fileStream, fileName) = Utils.GetRandomImage();
+			messageId = await client.Chat.SendMessageToChannelAsync(channel.Id, "This message has an attachment", null, new[] { uploadedFileId }, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Message \"{messageId}\" sent with attachment").ConfigureAwait(false);
+			await Task.Delay(1000, cancellationToken).ConfigureAwait(false); // Allow the Zoom system to process this message and avoid subsequent "message doesn't exist" error messages
 
 			// RETRIEVE LIST OF MESSAGES
 			var paginatedMessages = await client.Chat.GetMessagesToChannelAsync(channel.Id, 100, null, cancellationToken).ConfigureAwait(false);
