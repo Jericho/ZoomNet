@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net48;netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net8.0</TargetFrameworks>
     <LangVersion>14.0</LangVersion>
     <PlatformTarget>anycpu</PlatformTarget>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -36,7 +36,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HttpMultipartParser" Version="9.2.0" />
+    <PackageReference Include="HttpMultipartParser" Version="10.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="[8.0.0,11)" /> <!-- DO NOT UPGRADE. Reasoning is same as explained in GH issue 387 -->
     <PackageReference Include="Microsoft.Extensions.Logging" Version="[8.0.0,11)" /> <!-- DO NOT UPGRADE See https://github.com/Jericho/ZoomNet/issues/387 -->
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.103" PrivateAssets="All" />
