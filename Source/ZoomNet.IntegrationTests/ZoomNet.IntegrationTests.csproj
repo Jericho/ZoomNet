@@ -8,10 +8,6 @@
     <RootNamespace>ZoomNet.IntegrationTests</RootNamespace>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Formitable.BetterStack.Logger.Microsoft" Version="0.1.3-beta0002" />
     <PackageReference Include="Microsoft.Extensions.Diagnostics" Version="10.0.3" />

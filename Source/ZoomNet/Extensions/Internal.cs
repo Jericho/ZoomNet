@@ -1098,7 +1098,8 @@ namespace ZoomNet
 
 		internal static string GetFriendlyName(this Type type)
 		{
-			return _typeAliases.ContainsKey(type) ? _typeAliases[type] : type.FullName;
+			if (_typeAliases.TryGetValue(type, out string typeAlias)) return typeAlias;
+			return type.FullName;
 		}
 
 		private static async Task<JsonElement> ParseZoomResponseAsync(this HttpContent responseFromZoomApi, CancellationToken cancellationToken = default)

@@ -1,5 +1,4 @@
 using System.IO;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -19,9 +18,9 @@ namespace ZoomNet.IntegrationTests.Tests
 				await log.WriteLineAsync($"There are {paginatedAccounts.TotalRecords} sub accounts under the main account").ConfigureAwait(false);
 
 				// GET SETTINGS
-				if (paginatedAccounts.Records.Any())
+				if (paginatedAccounts.Records.Length > 0)
 				{
-					var accountId = paginatedAccounts.Records.First().Id;
+					var accountId = paginatedAccounts.Records[0].Id;
 
 					var meetingAuthenticationSettings = await client.Accounts.GetMeetingAuthenticationSettingsAsync(accountId, cancellationToken).ConfigureAwait(false);
 					await log.WriteLineAsync("Meeting authentication settings retrieved").ConfigureAwait(false);
