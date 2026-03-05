@@ -21,6 +21,7 @@ namespace ZoomNet.Utilities
 		private static readonly TimeSpan DEFAULT_DELAY = TimeSpan.FromSeconds(1);
 
 		private readonly ISystemClock _systemClock;
+		private readonly IRandomGenerator _randomGenerator;
 
 		#endregion
 
@@ -37,7 +38,7 @@ namespace ZoomNet.Utilities
 		/// Initializes a new instance of the <see cref="Http429RetryStrategy" /> class.
 		/// </summary>
 		public Http429RetryStrategy()
-			: this(DEFAULT_MAX_RETRIES, null)
+			: this(DEFAULT_MAX_RETRIES, null, null)
 		{
 		}
 
@@ -46,7 +47,7 @@ namespace ZoomNet.Utilities
 		/// </summary>
 		/// <param name="maxAttempts">The maximum attempts.</param>
 		public Http429RetryStrategy(int maxAttempts)
-			: this(maxAttempts, null)
+			: this(maxAttempts, null, null)
 		{
 		}
 
@@ -55,10 +56,12 @@ namespace ZoomNet.Utilities
 		/// </summary>
 		/// <param name="maxAttempts">The maximum attempts.</param>
 		/// <param name="systemClock">The system clock. This is for unit testing only.</param>
-		internal Http429RetryStrategy(int maxAttempts, ISystemClock systemClock)
+		/// <param name="randomGenerator">The random generator. This is for unit testing only.</param>
+		internal Http429RetryStrategy(int maxAttempts, ISystemClock systemClock, IRandomGenerator randomGenerator)
 		{
 			MaxRetries = maxAttempts;
 			_systemClock = systemClock ?? SystemClock.Instance;
+			_randomGenerator = randomGenerator ?? RandomGenerator.Instance;
 		}
 
 		#endregion
@@ -127,11 +130,8 @@ namespace ZoomNet.Utilities
 
 				// Edit January 2021: I introduced randomness in the wait time to avoid retrying too quickly
 				// and to avoid requests issued in a tight loop to all be retried at the same time.
-				// Up to one extra second: 250 milliseconds * 4.
-				for (int i = 0; i < 4; i++)
-				{
-					waitMilliseconds += RandomGenerator.RollDice(250);
-				}
+				// Up to one extra second
+				waitMilliseconds += _randomGenerator.GetInt32(0, 1000);
 
 				waitTime = TimeSpan.FromMilliseconds(waitMilliseconds);
 			}
