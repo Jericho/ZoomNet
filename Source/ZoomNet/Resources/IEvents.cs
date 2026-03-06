@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -471,6 +472,20 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">A token to monitor for cancellation requests. Defaults to <see cref="CancellationToken.None"/>.</param>
 		/// <returns>A task that represents the asynchronous operation.</returns>
 		Task UpdateExhibitorAsync(string eventId, string exhibitorId, string name = null, string contactFullName = null, string contactEmail = null, bool? isSponsor = null, string sponsorTierId = null, string description = null, IEnumerable<string> sessionIds = null, string website = null, string privacyPolicyUrl = null, string linkedInUrl = null, string twitterUrl = null, string youtubeUrl = null, string instagramUrl = null, string facebookUrl = null, CancellationToken cancellationToken = default);
+
+		#endregion
+
+		#region FILES
+
+		/// <summary>
+		/// Uploads a file to Zoom Events.
+		/// </summary>
+		/// <param name="hubId">The hub Id.</param>
+		/// <param name="fileName">The file name.</param>
+		/// <param name="fileData">The binary data.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The file ID.</returns>
+		Task<string> UploadFileAsync(string hubId, string fileName, Stream fileData, CancellationToken cancellationToken = default);
 
 		#endregion
 
