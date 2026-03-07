@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -143,5 +144,15 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task UpdateOwnerAsync(long accountId, string newOwnerEmail, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Upload a virtual background file for all users on the account to use.
+		/// </summary>
+		/// <param name="accountid">The account Id.</param>
+		/// <param name="fileName">The file name.</param>
+		/// <param name="fileData">The binary data.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The <see cref="VirtualBackgroundFile">background file</see>.</returns>
+		Task<VirtualBackgroundFile> UploadVirtualBackgroundFileAsync(string accountid, string fileName, Stream fileData, CancellationToken cancellationToken = default);
 	}
 }

@@ -29,6 +29,14 @@ namespace ZoomNet.IntegrationTests.Tests
 					await log.WriteLineAsync("Recording authentication settings retrieved").ConfigureAwait(false);
 				}
 			}
+
+			// UPLOAD A BACKGROUND FILE
+			if (client.HasPermission("account:write:virtual_background_files:master"))
+			{
+				var (fileStream, fileName) = Utils.GetRandomImage();
+				var virtualBackground = await client.Accounts.UploadVirtualBackgroundFileAsync(myUser.AccountId, fileName, fileStream, cancellationToken).ConfigureAwait(false);
+				await log.WriteLineAsync($"File {virtualBackground.Name} uploaded").ConfigureAwait(false);
+			}
 		}
 	}
 }
