@@ -23,23 +23,89 @@ namespace ZoomNet.Resources
 			_client = client;
 		}
 
-		#region Agent Statuses
+		#region Address Book
 
 		/// <inheritdoc/>
-		public Task<ContactCenterSystemStatus> CreateAgentStatusAsync(string name, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<ContactCenterAddressBookUnit>> GetAllAddressBookUnitsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			Utils.ValidateRecordPerPage(recordsPerPage);
+
+			return _client
+				.GetAsync("contact_center/address_books/units")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<ContactCenterAddressBookUnit>("units");
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteAddressBookUnitAsync(string unitId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"contact_center/address_books/units/{unitId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<ContactCenterAddressBookUnit> CreateAddressBookUnitAsync(string name = null, string description = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
-				{ "status_category", ContactCenterAgentStatusCategory.SystemStatus.ToEnumString() },
-				{ "status_name", name },
+				{ "unit_name", name },
+				{ "unit_description", description }
 			};
 
 			return _client
-				.PostAsync("contact_center/system_statuses")
+				.PostAsync("contact_center/address_books/units")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
-				.AsObject<ContactCenterSystemStatus>();
+				.AsObject<ContactCenterAddressBookUnit>();
 		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<ContactCenterAddressBook>> GetAllAddressBooksAsync(string unitId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			Utils.ValidateRecordPerPage(recordsPerPage);
+
+			return _client
+				.GetAsync("contact_center/address_books")
+				.WithArgument("unit_id", unitId)
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<ContactCenterAddressBook>("address_books");
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteAddressBookAsync(string addressBookId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"contact_center/address_books/{addressBookId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<ContactCenterAddressBook> CreateAddressBookAsync(string name = null, string description = null, string unitId = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "address_book_name", name },
+				{ "address_book_description", description },
+				{ "unit_id", unitId }
+			};
+
+			return _client
+				.PostAsync("contact_center/address_books")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ContactCenterAddressBook>();
+		}
+
+		#endregion
+
+		#region Agent Statuses
 
 		/// <inheritdoc/>
 		public Task<ContactCenterSystemStatus> CreateAgentNotReadyReasonAsync(string name, IEnumerable<string> queues, bool enabled = true, CancellationToken cancellationToken = default)
@@ -599,7 +665,8 @@ namespace ZoomNet.Resources
 					{
 						{ "concurrent_email_capacity", maxConcurrentEmailConversations },
 						{ "concurrent_message_capacity", maxConcurrentMessagingConversations },
-						{ "multi_channel_engagement", new JsonObject
+						{
+							"multi_channel_engagement", new JsonObject
 							{
 								{ "email_max_agent_load", maxEmailLoadPercentage },
 								{ "enabled", enableVoiceAndVideoEngagement },

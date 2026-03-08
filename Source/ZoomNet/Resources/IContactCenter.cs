@@ -15,10 +15,73 @@ namespace ZoomNet.Resources
 	{
 		#region Address Book
 
+		/// <summary>
+		/// Retrieves a paginated list of all address book units.
+		/// </summary>
+		/// <param name="recordsPerPage">The maximum number of address book units to include in each page of results. Must be greater than zero.</param>
+		/// <param name="pagingToken">An optional token indicating the starting point for the next page of results. Pass <see langword="null"/> or an empty string to retrieve the first page.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a paginated response with a collection of address book units and a token for retrieving the next page, if available.</returns>
+		Task<PaginatedResponseWithToken<ContactCenterAddressBookUnit>> GetAllAddressBookUnitsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Deletes the address book unit identified by the specified ID.
+		/// </summary>
+		/// <param name="unitId">The unique identifier of the address book unit to delete. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the delete operation.</param>
+		/// <returns>A task that represents the asynchronous delete operation.</returns>
+		Task DeleteAddressBookUnitAsync(string unitId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create an address book unit.
+		/// </summary>
+		/// <remarks>Address book units can be used to organize several address books.</remarks>
+		/// <param name="name">The address book unit's name.</param>
+		/// <param name="description">The address book unit's description.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The response.</returns>
+		Task<ContactCenterAddressBookUnit> CreateAddressBookUnitAsync(string name = null, string description = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieves a paginated list of all address books in the contact center.
+		/// </summary>
+		/// <param name="unitId">The unique identifier of the address book unit. Cannot be null or empty.</param>
+		/// <param name="recordsPerPage">The maximum number of address books to include in each page of results. Must be a positive integer.</param>
+		/// <param name="pagingToken">An optional token that identifies the page of results to retrieve. Specify null to retrieve the first page.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a paginated response with a collection
+		/// of address books and a token for retrieving additional pages, if available.</returns>
+		Task<PaginatedResponseWithToken<ContactCenterAddressBook>> GetAllAddressBooksAsync(string unitId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Deletes the address book identified by the specified ID.
+		/// </summary>
+		/// <param name="addressBookId">The unique identifier of the address book to delete. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the delete operation.</param>
+		/// <returns>A task that represents the asynchronous delete operation.</returns>
+		Task DeleteAddressBookAsync(string addressBookId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create an address book.
+		/// </summary>
+		/// <remarks>
+		/// Create an [address book](https://support.zoom.us/hc/en-us/articles/4471544949389).
+		/// An address book is a collection of consumer information like display names, phone numbers, and locations.
+		/// </remarks>
+		/// <param name="name">The address book's name.</param>
+		/// <param name="description">The address book's description.</param>
+		/// <param name="unitId">The address book's unit ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The response.</returns>
+		Task<ContactCenterAddressBook> CreateAddressBookAsync(string name = null, string description = null, string unitId = null, CancellationToken cancellationToken = default);
+
 		#endregion
 
 		#region Agent Statuses
 
+		/*
+		 * Zoom does not support creating custom agent statuses (despite the fact that it's documented in the API docs), as mentioned in this forum post:
+		 * https://devforum.zoom.us/t/custom-agent-statuses-are-excluded-when-retrieving-list-of-contact-center-system-statuses/138003
 		/// <summary>
 		/// Creates a new agent status in the contact center.
 		/// </summary>
@@ -26,6 +89,7 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
 		/// <returns>A task that represents the asynchronous operation. The task result contains the created <see cref="ContactCenterAgentStatus"/> instance.</returns>
 		Task<ContactCenterSystemStatus> CreateAgentStatusAsync(string name, CancellationToken cancellationToken = default);
+		*/
 
 		/// <summary>
 		/// Creates a new agent not ready reason and associates it with the specified queues asynchronously.
