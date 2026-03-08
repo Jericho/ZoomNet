@@ -30,6 +30,9 @@ namespace ZoomNet.IntegrationTests.Tests
 			var paginatedAgentStatuses = await client.ContactCenter.GetAllAgentStatusesAsync(30, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {paginatedAgentStatuses.TotalRecords} agent statuses in Contact Center").ConfigureAwait(false);
 
+			var paginatedAddressBookUnits = await client.ContactCenter.GetAllAddressBookUnitsAsync(30, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {paginatedAddressBookUnits.TotalRecords} address book units in Contact Center").ConfigureAwait(false);
+
 			// CLEANUP PREVIOUS INTEGRATION TESTS THAT MIGHT HAVE BEEN INTERRUPTED BEFORE THEY HAD TIME TO CLEANUP AFTER THEMSELVES
 			var cleanUpTasks = paginatedQueues.Records
 				.Where(m => m.Name.StartsWith("ZoomNet Integration Testing:"))
@@ -91,6 +94,23 @@ namespace ZoomNet.IntegrationTests.Tests
 				});
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
 
+			cleanUpTasks = paginatedAddressBookUnits.Records
+				.Where(u => u.Name.StartsWith("ZoomNet"))
+				.Select(async oldUnit =>
+				{
+					var paginatedAddressBooks = await client.ContactCenter.GetAllAddressBooksAsync(oldUnit.Id, 30, null, cancellationToken).ConfigureAwait(false);
+					foreach (var addressBook in paginatedAddressBooks.Records.Where(b => b.Name.StartsWith("ZoomNet")))
+					{
+						await client.ContactCenter.DeleteAddressBookAsync(addressBook.Id, cancellationToken).ConfigureAwait(false);
+						await log.WriteLineAsync($"Address book {addressBook.Id} deleted").ConfigureAwait(false);
+					}
+
+					await client.ContactCenter.DeleteAddressBookUnitAsync(oldUnit.Id, cancellationToken).ConfigureAwait(false);
+					await log.WriteLineAsync($"Address book unit {oldUnit.Id} deleted").ConfigureAwait(false);
+					await Task.Delay(1000, cancellationToken).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
+				});
+			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
+
 			// Make sure there is at least one Zoom user that can be added to Contact Center
 			var paginatedContactCenterUsers = await client.ContactCenter.SearchUsersAsync(null, null, null, 10, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Found {paginatedContactCenterUsers.TotalRecords} user profiles").ConfigureAwait(false);
@@ -109,8 +129,8 @@ namespace ZoomNet.IntegrationTests.Tests
 				await log.WriteLineAsync($"There are {availableUsers.Count()} users available to be added to Contact Center").ConfigureAwait(false);
 			}
 
-			var newStatus = await client.ContactCenter.CreateAgentStatusAsync("ZoomNet status", cancellationToken).ConfigureAwait(false);
 			var newNotReadyReason = await client.ContactCenter.CreateAgentNotReadyReasonAsync("ZoomNet Integration Testing: Not Ready reason", null, true, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Not ready reason created: {newNotReadyReason.Id}").ConfigureAwait(false);
 
 			// Create a skill category
 			var newSkillCategory = await client.ContactCenter.CreateSkillCategoryAsync("ZoomNet Integration Testing: skill category", "This skill category is for testing purposes", ContactCenterSkillType.Proficiency, 4, cancellationToken).ConfigureAwait(false);
@@ -149,6 +169,13 @@ namespace ZoomNet.IntegrationTests.Tests
 			await client.ContactCenter.AssignSkillsAsync(newUser.Id, [(newSkill.Id, 2)], cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Contact Center skill {newSkill.Id} assigned to user {newUser.Id}").ConfigureAwait(false);
 
+			// Manage an address book
+			var newAddressBookUnit = await client.ContactCenter.CreateAddressBookUnitAsync("ZoomNet Integration Testing: address book unit", "This address book unit was created during integration testing", cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Address book unit {newAddressBookUnit.Id} created").ConfigureAwait(false);
+
+			var newAddressBook = await client.ContactCenter.CreateAddressBookAsync("ZoomNet Integration Testing: address book", "This address book was created during integration testing", newAddressBookUnit.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Address book {newAddressBook.Id} created").ConfigureAwait(false);
+
 			// Miscellaneous queries
 			var paginatedUserQueues = await client.ContactCenter.GetUserQueuesAsync(newUser.Id, null, ContactCenterQueueAssignmentType.Any, 30, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Contact Center user {newUser.Id} is assigned to {paginatedUserQueues.TotalRecords} queues").ConfigureAwait(false);
@@ -174,6 +201,15 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			await client.ContactCenter.DeleteSkillCategoryAsync(newSkillCategory.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Skill category {newSkillCategory.Id} deleted").ConfigureAwait(false);
+
+			await client.ContactCenter.DeleteAgentStatusAsync(newNotReadyReason.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"'Not Ready' reason {newNotReadyReason.Id} deleted").ConfigureAwait(false);
+
+			await client.ContactCenter.DeleteAddressBookAsync(newAddressBook.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Address book {newAddressBook.Id} deleted").ConfigureAwait(false);
+
+			await client.ContactCenter.DeleteAddressBookUnitAsync(newAddressBookUnit.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Address book unit {newAddressBookUnit.Id} deleted").ConfigureAwait(false);
 		}
 	}
 }
