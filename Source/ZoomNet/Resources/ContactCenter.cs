@@ -59,7 +59,7 @@ namespace ZoomNet.Resources
 				{ "role", role },
 				{ "variables", variables?.Select(v => new JsonObject { { "variable_id", v.Id }, { "variable_value", v.Value } }).ToArray() },
 				{ "consumer_ids", consumerIds?.ToArray() },
-				{ "custom_fields", customFields?.Select(v => new JsonObject { { "custom_field_id", v.Id }, { "custom_field_value", v.Value } }).ToArray() }
+				{ "custom_fields", customFields?.Select(f => new JsonObject { { "custom_field_id", f.Id }, { "custom_field_value", f.Value } }).ToArray() }
 			};
 
 			return _client
@@ -70,13 +70,13 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<ContactCenterAddressBookCustomField> CreateAddressBookCustomFieldAsync(string customFieldName, ContactCenterAddressBookCustomFieldDataType dataType, string customFieldDescription = null, string defaultValue = null, IEnumerable<string> pickListValues = null, IEnumerable<string> addressBookIds = null, bool? useAsRoutingProfileParameter = null, bool? useAsExternalUrlParameter = null, bool? showInTransferredCalls = null, bool? showInInboundNotification = null, bool? showInProfileTab = null, CancellationToken cancellationToken = default)
+		public Task<ContactCenterAddressBookCustomField> CreateAddressBookCustomFieldAsync(string name, ContactCenterAddressBookCustomFieldDataType dataType, string description = null, string defaultValue = null, IEnumerable<string> pickListValues = null, IEnumerable<string> addressBookIds = null, bool? useAsRoutingProfileParameter = null, bool? useAsExternalUrlParameter = null, bool? showInTransferredCalls = null, bool? showInInboundNotification = null, bool? showInProfileTab = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
-				{ "custom_field_name", customFieldName },
+				{ "custom_field_name", name },
 				{ "data_type", dataType.ToEnumString() },
-				{ "custom_field_description", customFieldDescription },
+				{ "custom_field_description", description },
 				{ "default_value", defaultValue },
 				{ "pick_list_values", pickListValues?.ToArray() },
 				{ "address_book_ids", addressBookIds?.ToArray() },
@@ -246,6 +246,90 @@ namespace ZoomNet.Resources
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
 				.AsPaginatedResponseWithToken<ContactCenterAddressBookCustomField>("custom_fields");
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateAddressBookAsync(string addressBookId, string name = null, string description = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "address_book_name", name },
+				{ "address_book_description", description },
+			};
+
+			return _client
+				.PatchAsync($"contact_center/address_books/{addressBookId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateAddressBookContactAsync(string contactId, string addressBookId, string displayName = null, string firstName = null, string lastName = null, IEnumerable<(string Number, ContactCenterAddressBookPhoneNumberType Type)> phoneNumbers = null, IEnumerable<string> emails = null, string location = null, string timezone = null, string accountNumber = null, string company = null, string role = null, IEnumerable<(string Id, string Value)> variables = null, IEnumerable<string> consumerIds = null, IEnumerable<(string Id, string Value)> customFields = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "display_name", displayName },
+				{ "first_name", firstName },
+				{ "last_name", lastName },
+				{ "phones", phoneNumbers?.Select(p => new JsonObject { { "phone_number", p.Number }, { "phone_type", p.Type.ToEnumString() } }).ToArray() },
+				{ "emails", emails?.ToArray() },
+				{ "location", location },
+				{ "timezone", timezone },
+				{ "account_number", accountNumber },
+				{ "company", company },
+				{ "role", role },
+				{ "variables", variables?.Select(v => new JsonObject { { "variable_id", v.Id }, { "variable_value", v.Value } }).ToArray() },
+				{ "consumer_ids", consumerIds?.ToArray() },
+				{ "custom_fields", customFields?.Select(f => new JsonObject { { "custom_field_id", f.Id }, { "custom_field_value", f.Value } }).ToArray() }
+			};
+
+			return _client
+				.PatchAsync($"contact_center/address_books/{addressBookId}/contacts/{contactId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ContactCenterAddressBookContact>();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateAddressBookCustomFieldAsync(string customFieldId, string name = null, ContactCenterAddressBookCustomFieldDataType? dataType = null, string description = null, string defaultValue = null, IEnumerable<string> pickListValues = null, IEnumerable<string> addressBookIds = null, bool? useAsRoutingProfileParameter = null, bool? useAsExternalUrlParameter = null, bool? showInTransferredCalls = null, bool? showInInboundNotification = null, bool? showInProfileTab = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "custom_field_name", name },
+				{ "data_type", dataType?.ToEnumString() },
+				{ "custom_field_description", description },
+				{ "default_value", defaultValue },
+				{ "pick_list_values", pickListValues?.ToArray() },
+				{ "address_book_ids", addressBookIds?.ToArray() },
+				{ "use_as_routing_profile_parameter", useAsRoutingProfileParameter },
+				{ "use_as_external_url_parameter", useAsExternalUrlParameter },
+				{ "show_in_transferred_calls", showInTransferredCalls },
+				{ "show_in_inbound_notification", showInInboundNotification },
+				{ "show_in_profile_tab", showInProfileTab }
+			};
+
+			return _client
+				.PatchAsync($"contact_center/address_books/custom_fields/{customFieldId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateAddressBookUnitAsync(string unitId, string name = null, string description = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "unit_name", name },
+				{ "unit_description", description },
+			};
+
+			return _client
+				.PatchAsync($"contact_center/address_books/units/{unitId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
 		}
 
 		#endregion
