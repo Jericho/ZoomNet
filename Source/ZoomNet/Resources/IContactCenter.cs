@@ -32,7 +32,7 @@ namespace ZoomNet.Resources
 		/// <summary>
 		/// Create an address book contact.
 		/// </summary>
-		/// <param name="addressbookId">The address book's ID.</param>
+		/// <param name="addressBookId">The address book's ID.</param>
 		/// <param name="displayName">The contact's display name.</param>
 		/// <param name="firstName">The contact's first name.</param>
 		/// <param name="lastName">The contact's last name.</param>
@@ -48,14 +48,14 @@ namespace ZoomNet.Resources
 		/// <param name="customFields">Information about address book's custom fields.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The address book contact.</returns>
-		Task<ContactCenterAddressBookContact> CreateAddressBookContactAsync(string addressbookId, string displayName, string firstName = null, string lastName = null, IEnumerable<(string Number, ContactCenterAddressBookPhoneNumberType Type)> phoneNumbers = null, IEnumerable<string> emails = null, string location = null, string timezone = null, string accountNumber = null, string company = null, string role = null, IEnumerable<(string Id, string Value)> variables = null, IEnumerable<string> consumerIds = null, IEnumerable<(string Id, string Value)> customFields = null, CancellationToken cancellationToken = default);
+		Task<ContactCenterAddressBookContact> CreateAddressBookContactAsync(string addressBookId, string displayName, string firstName = null, string lastName = null, IEnumerable<(string Number, ContactCenterAddressBookPhoneNumberType Type)> phoneNumbers = null, IEnumerable<string> emails = null, string location = null, string timezone = null, string accountNumber = null, string company = null, string role = null, IEnumerable<(string Id, string Value)> variables = null, IEnumerable<string> consumerIds = null, IEnumerable<(string Id, string Value)> customFields = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Create an address book custom field.
 		/// </summary>
-		/// <param name="customFieldName">The custom field's name.</param>
+		/// <param name="name">The custom field's name.</param>
 		/// <param name="dataType">The custom field's data type.</param>
-		/// <param name="customFieldDescription">The custom field's description.</param>
+		/// <param name="description">The custom field's description.</param>
 		/// <param name="defaultValue">The custom field's default value.</param>
 		/// <param name="pickListValues">Specify the list of supported values for the picklist. This is only valid when `data_type` is `pick_list`.</param>
 		/// <param name="addressBookIds">The address book IDs that should be associated with the custom field.</param>
@@ -66,7 +66,7 @@ namespace ZoomNet.Resources
 		/// <param name="showInProfileTab">Controls whether or not to show the custom fields on the profile tab in the Zoom client.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The response.</returns>
-		Task<ContactCenterAddressBookCustomField> CreateAddressBookCustomFieldAsync(string customFieldName, ContactCenterAddressBookCustomFieldDataType dataType, string customFieldDescription = null, string defaultValue = null, IEnumerable<string> pickListValues = null, IEnumerable<string> addressBookIds = null, bool? useAsRoutingProfileParameter = null, bool? useAsExternalUrlParameter = null, bool? showInTransferredCalls = null, bool? showInInboundNotification = null, bool? showInProfileTab = null, CancellationToken cancellationToken = default);
+		Task<ContactCenterAddressBookCustomField> CreateAddressBookCustomFieldAsync(string name, ContactCenterAddressBookCustomFieldDataType dataType, string description = null, string defaultValue = null, IEnumerable<string> pickListValues = null, IEnumerable<string> addressBookIds = null, bool? useAsRoutingProfileParameter = null, bool? useAsExternalUrlParameter = null, bool? showInTransferredCalls = null, bool? showInInboundNotification = null, bool? showInProfileTab = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Create an address book unit.
@@ -196,6 +196,67 @@ namespace ZoomNet.Resources
 		/// <returns>A task that represents the asynchronous operation. The task result contains a paginated response with a token and
 		/// the retrieved custom fields.</returns>
 		Task<PaginatedResponseWithToken<ContactCenterAddressBookCustomField>> GetAllAddressBookCustomFieldsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Updates the address book entry identified by the specified ID with the provided name and description.
+		/// </summary>
+		/// <param name="adressBookId">The unique identifier of the address book entry to update. This parameter cannot be null or empty.</param>
+		/// <param name="name">The new name to assign to the address book entry. If null, the name is not changed.</param>
+		/// <param name="description">The new description to assign to the address book entry. If null, the description is not changed.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous update operation.</returns>
+		Task UpdateAddressBookAsync(string adressBookId, string name = null, string description = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously updates the specified contact in the address book with the provided details.
+		/// </summary>
+		/// <param name="contactId">The unique identifier of the contact to update. Cannot be null or empty.</param>
+		/// <param name="addressBookId">The unique identifier of the address book containing the contact. Cannot be null or empty.</param>
+		/// <param name="displayName">The display name to assign to the contact. If null, the existing display name remains unchanged.</param>
+		/// <param name="firstName">The first name to assign to the contact. If null, the existing first name remains unchanged.</param>
+		/// <param name="lastName">The last name to assign to the contact. If null, the existing last name remains unchanged.</param>
+		/// <param name="phoneNumbers">A collection of phone numbers and their types to associate with the contact. If null, the existing phone numbers remain unchanged.</param>
+		/// <param name="emails">A collection of email addresses to associate with the contact. If null, the existing email addresses remain unchanged.</param>
+		/// <param name="location">The location to assign to the contact. If null, the existing location remains unchanged.</param>
+		/// <param name="timezone">The time zone to assign to the contact. If null, the existing time zone remains unchanged.</param>
+		/// <param name="accountNumber">The account number to assign to the contact. If null, the existing account number remains unchanged.</param>
+		/// <param name="company">The company name to assign to the contact. If null, the existing company remains unchanged.</param>
+		/// <param name="role">The role or job title to assign to the contact. If null, the existing role remains unchanged.</param>
+		/// <param name="variables">A collection of variables to associate with the contact, each specified by an identifier and value. If null, the existing variables remain unchanged.</param>
+		/// <param name="consumerIds">A collection of consumer identifiers to associate with the contact. If null, the existing consumer IDs remain unchanged.</param>
+		/// <param name="customFields">A collection of custom fields to associate with the contact, each specified by an identifier and value. If null, the existing custom fields remain unchanged.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is None.</param>
+		/// <returns>A task that represents the asynchronous update operation.</returns>
+		Task UpdateAddressBookContactAsync(string contactId, string addressBookId, string displayName = null, string firstName = null, string lastName = null, IEnumerable<(string Number, ContactCenterAddressBookPhoneNumberType Type)> phoneNumbers = null, IEnumerable<string> emails = null, string location = null, string timezone = null, string accountNumber = null, string company = null, string role = null, IEnumerable<(string Id, string Value)> variables = null, IEnumerable<string> consumerIds = null, IEnumerable<(string Id, string Value)> customFields = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously updates the properties of a custom field in the contact center address book.
+		/// </summary>
+		/// <param name="customFieldId">The unique identifier of the custom field to update. Cannot be null or empty.</param>
+		/// <param name="name">The new name for the custom field. If null, the existing name is retained.</param>
+		/// <param name="dataType">The data type of the custom field, which determines how the field is validated and displayed. If null, the existing data type is retained.</param>
+		/// <param name="description">A description providing additional context for the custom field. If null, the existing description is retained.</param>
+		/// <param name="defaultValue">The default value to assign to the custom field if no other value is specified. If null, the existing default value is retained.</param>
+		/// <param name="pickListValues">A collection of valid values for the custom field if it is of a pick list type. If null, the existing pick list values are retained.</param>
+		/// <param name="addressBookIds">A collection of address book identifiers to associate with the custom field. If null, the existing associations are retained.</param>
+		/// <param name="useAsRoutingProfileParameter">true to use the custom field as a routing profile parameter; otherwise, false. If null, the existing setting is retained.</param>
+		/// <param name="useAsExternalUrlParameter">true to use the custom field as an external URL parameter; otherwise, false. If null, the existing setting is retained.</param>
+		/// <param name="showInTransferredCalls">true to display the custom field in transferred calls; otherwise, false. If null, the existing setting is retained.</param>
+		/// <param name="showInInboundNotification">true to display the custom field in inbound notifications; otherwise, false. If null, the existing setting is retained.</param>
+		/// <param name="showInProfileTab">true to display the custom field in the profile tab; otherwise, false. If null, the existing setting is retained.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is None.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the updated custom field.</returns>
+		Task UpdateAddressBookCustomFieldAsync(string customFieldId, string name = null, ContactCenterAddressBookCustomFieldDataType? dataType = null, string description = null, string defaultValue = null, IEnumerable<string> pickListValues = null, IEnumerable<string> addressBookIds = null, bool? useAsRoutingProfileParameter = null, bool? useAsExternalUrlParameter = null, bool? showInTransferredCalls = null, bool? showInInboundNotification = null, bool? showInProfileTab = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Updates the specified address book unit with new values for its name and description.
+		/// </summary>
+		/// <param name="unitId">The unique identifier of the address book unit to update. This value must correspond to an existing unit.</param>
+		/// <param name="name">The new name to assign to the address book unit. If null, the unit's name is not changed.</param>
+		/// <param name="description">The new description to assign to the address book unit. If null, the unit's description is not changed.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. The default value is <see cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous update operation.</returns>
+		Task UpdateAddressBookUnitAsync(string unitId, string name = null, string description = null, CancellationToken cancellationToken = default);
 
 		#endregion
 
