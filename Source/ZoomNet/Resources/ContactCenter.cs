@@ -26,25 +26,72 @@ namespace ZoomNet.Resources
 		#region Address Book
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<ContactCenterAddressBookUnit>> GetAllAddressBookUnitsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<ContactCenterAddressBook> CreateAddressBookAsync(string name = null, string description = null, string unitId = null, CancellationToken cancellationToken = default)
 		{
-			Utils.ValidateRecordPerPage(recordsPerPage);
+			var data = new JsonObject
+			{
+				{ "address_book_name", name },
+				{ "address_book_description", description },
+				{ "unit_id", unitId }
+			};
 
 			return _client
-				.GetAsync("contact_center/address_books/units")
-				.WithArgument("page_size", recordsPerPage)
-				.WithArgument("next_page_token", pagingToken)
+				.PostAsync("contact_center/address_books")
+				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<ContactCenterAddressBookUnit>("units");
+				.AsObject<ContactCenterAddressBook>();
 		}
 
 		/// <inheritdoc/>
-		public Task DeleteAddressBookUnitAsync(string unitId, CancellationToken cancellationToken = default)
+		public Task<ContactCenterAddressBookContact> CreateAddressBookContactAsync(string addressbookId, string displayName, string firstName = null, string lastName = null, IEnumerable<(string Number, ContactCenterAddressBookPhoneNumberType Type)> phoneNumbers = null, IEnumerable<string> emails = null, string location = null, string timezone = null, string accountNumber = null, string company = null, string role = null, IEnumerable<(string Id, string Value)> variables = null, IEnumerable<string> consumerIds = null, IEnumerable<(string Id, string Value)> customFields = null, CancellationToken cancellationToken = default)
 		{
+			var data = new JsonObject
+			{
+				{ "display_name", displayName },
+				{ "first_name", firstName },
+				{ "last_name", lastName },
+				{ "phones", phoneNumbers?.Select(p => new JsonObject { { "phone_number", p.Number }, { "phone_type", p.Type.ToEnumString() } }).ToArray() },
+				{ "emails", emails?.ToArray() },
+				{ "location", location },
+				{ "timezone", timezone },
+				{ "account_number", accountNumber },
+				{ "company", company },
+				{ "role", role },
+				{ "variables", variables?.Select(v => new JsonObject { { "variable_id", v.Id }, { "variable_value", v.Value } }).ToArray() },
+				{ "consumer_ids", consumerIds?.ToArray() },
+				{ "custom_fields", customFields?.Select(v => new JsonObject { { "custom_field_id", v.Id }, { "custom_field_value", v.Value } }).ToArray() }
+			};
+
 			return _client
-				.DeleteAsync($"contact_center/address_books/units/{unitId}")
+				.PostAsync($"contact_center/address_books/{addressbookId}/contacts")
+				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
-				.AsMessage();
+				.AsObject<ContactCenterAddressBookContact>();
+		}
+
+		/// <inheritdoc/>
+		public Task<ContactCenterAddressBookCustomField> CreateAddressBookCustomFieldAsync(string customFieldName, ContactCenterAddressBookCustomFieldDataType dataType, string customFieldDescription = null, string defaultValue = null, IEnumerable<string> pickListValues = null, IEnumerable<string> addressBookIds = null, bool? useAsRoutingProfileParameter = null, bool? useAsExternalUrlParameter = null, bool? showInTransferredCalls = null, bool? showInInboundNotification = null, bool? showInProfileTab = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "custom_field_name", customFieldName },
+				{ "data_type", dataType.ToEnumString() },
+				{ "custom_field_description", customFieldDescription },
+				{ "default_value", defaultValue },
+				{ "pick_list_values", pickListValues?.ToArray() },
+				{ "address_book_ids", addressBookIds?.ToArray() },
+				{ "use_as_routing_profile_parameter", useAsRoutingProfileParameter },
+				{ "use_as_external_url_parameter", useAsExternalUrlParameter },
+				{ "show_in_transferred_calls", showInTransferredCalls },
+				{ "show_in_inbound_notification", showInInboundNotification },
+				{ "show_in_profile_tab", showInProfileTab }
+			};
+
+			return _client
+				.PostAsync("contact_center/address_books/custom_fields")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ContactCenterAddressBookCustomField>();
 		}
 
 		/// <inheritdoc/>
@@ -64,6 +111,117 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task DeleteAddressBookAsync(string addressBookId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"contact_center/address_books/{addressBookId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteAddressBookContactAsync(string addressBookId, string contactId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"contact_center/address_books/{addressBookId}/contacts/{contactId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteAddressBookCustomFieldAsync(string customFieldId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"contact_center/address_books/custom_fields/{customFieldId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteAddressBookUnitAsync(string unitId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"contact_center/address_books/units/{unitId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<ContactCenterAddressBook> GetAddressBookAsync(string addressBookId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"contact_center/address_books/{addressBookId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ContactCenterAddressBook>();
+		}
+
+		/// <inheritdoc/>
+		public Task<ContactCenterAddressBook> GetAddressBookContactAsync(string addressBookId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"contact_center/address_books/{addressBookId}/contacts")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ContactCenterAddressBook>();
+		}
+
+		/// <inheritdoc/>
+		public Task<ContactCenterAddressBookUnit> GetAddressBookUnitAsync(string addressBookUnitId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"contact_center/address_books/units/{addressBookUnitId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ContactCenterAddressBookUnit>();
+		}
+
+		/// <inheritdoc/>
+		public Task<ContactCenterAddressBookCustomField> GetAddressBookCustomFieldAsync(string customFieldId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"contact_center/address_books/custom_fields/{customFieldId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ContactCenterAddressBookCustomField>();
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<ContactCenterContactCustomField>> GetAllContactCustomFieldsAsync(string contactId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			Utils.ValidateRecordPerPage(recordsPerPage);
+
+			return _client
+				.GetAsync($"contact_center/address_books/contacts/{contactId}/custom_fields")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<ContactCenterContactCustomField>("custom_fields");
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<ContactCenterAddressBookCustomField>> GetAllAddressBookContactsAsync(string addressBookId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			Utils.ValidateRecordPerPage(recordsPerPage);
+
+			return _client
+				.GetAsync($"contact_center/address_books/{addressBookId}/contacts")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<ContactCenterAddressBookCustomField>("contacts");
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<ContactCenterAddressBookUnit>> GetAllAddressBookUnitsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			Utils.ValidateRecordPerPage(recordsPerPage);
+
+			return _client
+				.GetAsync("contact_center/address_books/units")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<ContactCenterAddressBookUnit>("units");
+		}
+
+		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<ContactCenterAddressBook>> GetAllAddressBooksAsync(string unitId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);
@@ -78,29 +236,16 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task DeleteAddressBookAsync(string addressBookId, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<ContactCenterAddressBookCustomField>> GetAllAddressBookCustomFieldsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
-			return _client
-				.DeleteAsync($"contact_center/address_books/{addressBookId}")
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <inheritdoc/>
-		public Task<ContactCenterAddressBook> CreateAddressBookAsync(string name = null, string description = null, string unitId = null, CancellationToken cancellationToken = default)
-		{
-			var data = new JsonObject
-			{
-				{ "address_book_name", name },
-				{ "address_book_description", description },
-				{ "unit_id", unitId }
-			};
+			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
-				.PostAsync("contact_center/address_books")
-				.WithJsonBody(data)
+				.GetAsync("contact_center/address_books/custom_fields")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
-				.AsObject<ContactCenterAddressBook>();
+				.AsPaginatedResponseWithToken<ContactCenterAddressBookCustomField>("custom_fields");
 		}
 
 		#endregion
