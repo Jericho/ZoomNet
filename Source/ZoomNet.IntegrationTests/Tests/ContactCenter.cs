@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -32,6 +33,9 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			var paginatedAddressBookUnits = await client.ContactCenter.GetAllAddressBookUnitsAsync(30, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {paginatedAddressBookUnits.TotalRecords} address book units in Contact Center").ConfigureAwait(false);
+
+			var paginatedCustomFields = await client.ContactCenter.GetAllAddressBookCustomFieldsAsync(30, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {paginatedCustomFields.TotalRecords} address book custom fields in Contact Center").ConfigureAwait(false);
 
 			// CLEANUP PREVIOUS INTEGRATION TESTS THAT MIGHT HAVE BEEN INTERRUPTED BEFORE THEY HAD TIME TO CLEANUP AFTER THEMSELVES
 			var cleanUpTasks = paginatedQueues.Records
@@ -94,6 +98,15 @@ namespace ZoomNet.IntegrationTests.Tests
 				});
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
 
+			cleanUpTasks = paginatedCustomFields.Records
+				.Where(f => f.Name.StartsWith("ZoomNet") || f.Name.Equals("field1", StringComparison.OrdinalIgnoreCase) || f.Name.Equals("field2", StringComparison.OrdinalIgnoreCase))
+				.Select(async oldCustomField =>
+				{
+					await client.ContactCenter.DeleteAddressBookCustomFieldAsync(oldCustomField.Id, cancellationToken).ConfigureAwait(false);
+					await log.WriteLineAsync($"Address book custom field {oldCustomField.Id} deleted").ConfigureAwait(false);
+				});
+			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
+
 			cleanUpTasks = paginatedAddressBookUnits.Records
 				.Where(u => u.Name.StartsWith("ZoomNet"))
 				.Select(async oldUnit =>
@@ -126,7 +139,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			}
 			else
 			{
-				await log.WriteLineAsync($"There are {availableUsers.Count()} users available to be added to Contact Center").ConfigureAwait(false);
+				await log.WriteLineAsync($"There are {availableUsers.Length} users available to be added to Contact Center").ConfigureAwait(false);
 			}
 
 			var newNotReadyReason = await client.ContactCenter.CreateAgentNotReadyReasonAsync("ZoomNet Integration Testing: Not Ready reason", null, true, cancellationToken).ConfigureAwait(false);
@@ -176,6 +189,23 @@ namespace ZoomNet.IntegrationTests.Tests
 			var newAddressBook = await client.ContactCenter.CreateAddressBookAsync("ZoomNet Integration Testing: address book", "This address book was created during integration testing", newAddressBookUnit.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Address book {newAddressBook.Id} created").ConfigureAwait(false);
 
+			var newCustomField1 = await client.ContactCenter.CreateAddressBookCustomFieldAsync("ZoomNet field1", ContactCenterAddressBookCustomFieldDataType.String, "This is a custom field", null, null, [newAddressBook.Id], cancellationToken: cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Custom field {newCustomField1.Id} created").ConfigureAwait(false);
+
+			var newCustomField2 = await client.ContactCenter.CreateAddressBookCustomFieldAsync("ZoomNet field2", ContactCenterAddressBookCustomFieldDataType.Number, "This is another custom field", null, null, [newAddressBook.Id], cancellationToken: cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Custom field {newCustomField2.Id} created").ConfigureAwait(false);
+
+			var addressBookContactCustomFields = new (string, string)[]
+			{
+				(newCustomField1.Id, "aaabbbccc"),
+				(newCustomField2.Id, "456")
+			};
+			var newAddressBookContact = await client.ContactCenter.CreateAddressBookContactAsync(newAddressBook.Id, "John Doe", "John", "Doe", [("1234567890", ContactCenterAddressBookPhoneNumberType.Work)], ["john@example.com"], null, null, null, "Big Corp Inc.", "Purchaser", null, null, addressBookContactCustomFields, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Contact {newAddressBookContact.DisplayName} created in address book {newAddressBook.Id}").ConfigureAwait(false);
+
+			var contactCustomFields = await client.ContactCenter.GetAllContactCustomFieldsAsync(newAddressBookContact.Id, 30, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Contact {newAddressBookContact.DisplayName} has {contactCustomFields.TotalRecords} custom fields").ConfigureAwait(false);
+
 			// Miscellaneous queries
 			var paginatedUserQueues = await client.ContactCenter.GetUserQueuesAsync(newUser.Id, null, ContactCenterQueueAssignmentType.Any, 30, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Contact Center user {newUser.Id} is assigned to {paginatedUserQueues.TotalRecords} queues").ConfigureAwait(false);
@@ -204,6 +234,12 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			await client.ContactCenter.DeleteAgentStatusAsync(newNotReadyReason.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"'Not Ready' reason {newNotReadyReason.Id} deleted").ConfigureAwait(false);
+
+			await client.ContactCenter.DeleteAddressBookCustomFieldAsync(newCustomField1.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Address book custom field {newCustomField1.Id} deleted").ConfigureAwait(false);
+
+			await client.ContactCenter.DeleteAddressBookCustomFieldAsync(newCustomField2.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Address book custom field {newCustomField2.Id} deleted").ConfigureAwait(false);
 
 			await client.ContactCenter.DeleteAddressBookAsync(newAddressBook.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Address book {newAddressBook.Id} deleted").ConfigureAwait(false);

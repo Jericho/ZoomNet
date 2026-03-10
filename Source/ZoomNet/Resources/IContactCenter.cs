@@ -16,13 +16,93 @@ namespace ZoomNet.Resources
 		#region Address Book
 
 		/// <summary>
-		/// Retrieves a paginated list of all address book units.
+		/// Create an address book.
 		/// </summary>
-		/// <param name="recordsPerPage">The maximum number of address book units to include in each page of results. Must be greater than zero.</param>
-		/// <param name="pagingToken">An optional token indicating the starting point for the next page of results. Pass <see langword="null"/> or an empty string to retrieve the first page.</param>
-		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
-		/// <returns>A task that represents the asynchronous operation. The task result contains a paginated response with a collection of address book units and a token for retrieving the next page, if available.</returns>
-		Task<PaginatedResponseWithToken<ContactCenterAddressBookUnit>> GetAllAddressBookUnitsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+		/// <remarks>
+		/// Create an [address book](https://support.zoom.us/hc/en-us/articles/4471544949389).
+		/// An address book is a collection of consumer information like display names, phone numbers, and locations.
+		/// </remarks>
+		/// <param name="name">The address book's name.</param>
+		/// <param name="description">The address book's description.</param>
+		/// <param name="unitId">The address book's unit ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The address book.</returns>
+		Task<ContactCenterAddressBook> CreateAddressBookAsync(string name = null, string description = null, string unitId = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create an address book contact.
+		/// </summary>
+		/// <param name="addressbookId">The address book's ID.</param>
+		/// <param name="displayName">The contact's display name.</param>
+		/// <param name="firstName">The contact's first name.</param>
+		/// <param name="lastName">The contact's last name.</param>
+		/// <param name="phoneNumbers">The contact's phone numbers. You must provide this field and/or the `email` field when you create a contact.</param>
+		/// <param name="emails">The contact's email addresses. You must provide either this field or the `phone_numbers` field, or both, when you create a contact.</param>
+		/// <param name="location">The contact's location.</param>
+		/// <param name="timezone">The contact's time zone. Refer to this list for supported [timezones](/docs/api/references/abbreviations/#timezones).</param>
+		/// <param name="accountNumber">The contact's account number.</param>
+		/// <param name="company">The contact's company.</param>
+		/// <param name="role">The contact's role.</param>
+		/// <param name="variables">Information about address book variables.</param>
+		/// <param name="consumerIds">The consumer IDs to be associated with the contact.</param>
+		/// <param name="customFields">Information about address book's custom fields.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The address book contact.</returns>
+		Task<ContactCenterAddressBookContact> CreateAddressBookContactAsync(string addressbookId, string displayName, string firstName = null, string lastName = null, IEnumerable<(string Number, ContactCenterAddressBookPhoneNumberType Type)> phoneNumbers = null, IEnumerable<string> emails = null, string location = null, string timezone = null, string accountNumber = null, string company = null, string role = null, IEnumerable<(string Id, string Value)> variables = null, IEnumerable<string> consumerIds = null, IEnumerable<(string Id, string Value)> customFields = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create an address book custom field.
+		/// </summary>
+		/// <param name="customFieldName">The custom field's name.</param>
+		/// <param name="dataType">The custom field's data type.</param>
+		/// <param name="customFieldDescription">The custom field's description.</param>
+		/// <param name="defaultValue">The custom field's default value.</param>
+		/// <param name="pickListValues">Specify the list of supported values for the picklist. This is only valid when `data_type` is `pick_list`.</param>
+		/// <param name="addressBookIds">The address book IDs that should be associated with the custom field.</param>
+		/// <param name="useAsRoutingProfileParameter">Controls whether or not to use the custom fields in the consumer routing profile.</param>
+		/// <param name="useAsExternalUrlParameter">Controls whether or not to use the `custom_field_name` in defining external URLs launched for each engagement. When set to `true`, the `custom_field_name` should not contain any spaces.</param>
+		/// <param name="showInTransferredCalls">Controls whether or not to show the custom fields in calls transferred to Zoom Phone.</param>
+		/// <param name="showInInboundNotification">Controls whether or not to show the custom fields on the inbound engagement notification in the Zoom client.</param>
+		/// <param name="showInProfileTab">Controls whether or not to show the custom fields on the profile tab in the Zoom client.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The response.</returns>
+		Task<ContactCenterAddressBookCustomField> CreateAddressBookCustomFieldAsync(string customFieldName, ContactCenterAddressBookCustomFieldDataType dataType, string customFieldDescription = null, string defaultValue = null, IEnumerable<string> pickListValues = null, IEnumerable<string> addressBookIds = null, bool? useAsRoutingProfileParameter = null, bool? useAsExternalUrlParameter = null, bool? showInTransferredCalls = null, bool? showInInboundNotification = null, bool? showInProfileTab = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create an address book unit.
+		/// </summary>
+		/// <remarks>Address book units can be used to organize several address books.</remarks>
+		/// <param name="name">The address book unit's name.</param>
+		/// <param name="description">The address book unit's description.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The address book unit.</returns>
+		Task<ContactCenterAddressBookUnit> CreateAddressBookUnitAsync(string name = null, string description = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Deletes the address book identified by the specified ID.
+		/// </summary>
+		/// <param name="addressBookId">The unique identifier of the address book to delete. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the delete operation.</param>
+		/// <returns>A task that represents the asynchronous delete operation.</returns>
+		Task DeleteAddressBookAsync(string addressBookId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Deletes a contact from the specified address book.
+		/// </summary>
+		/// <param name="addressBookId">The unique identifier of the address book from which to remove the contact.</param>
+		/// <param name="contactId">The unique identifier of the contact to delete.</param>
+		/// <param name="cancellationToken">A token that can be used to cancel the asynchronous delete operation.</param>
+		/// <returns>A task that represents the asynchronous delete operation.</returns>
+		Task DeleteAddressBookContactAsync(string addressBookId, string contactId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Deletes a custom field from the address book asynchronously.
+		/// </summary>
+		/// <param name="customFieldId">The unique identifier of the custom field to delete. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation. The default value is <see
+		/// cref="CancellationToken.None"/>.</param>
+		/// <returns>A task that represents the asynchronous delete operation.</returns>
+		Task DeleteAddressBookCustomFieldAsync(string customFieldId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Deletes the address book unit identified by the specified ID.
@@ -33,14 +113,68 @@ namespace ZoomNet.Resources
 		Task DeleteAddressBookUnitAsync(string unitId, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Create an address book unit.
+		/// Retrieves the address book associated with the specified identifier asynchronously.
 		/// </summary>
-		/// <remarks>Address book units can be used to organize several address books.</remarks>
-		/// <param name="name">The address book unit's name.</param>
-		/// <param name="description">The address book unit's description.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>The response.</returns>
-		Task<ContactCenterAddressBookUnit> CreateAddressBookUnitAsync(string name = null, string description = null, CancellationToken cancellationToken = default);
+		/// <param name="addressBookId">The unique identifier of the address book to retrieve. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the requested ContactCenterAddressBook.</returns>
+		Task<ContactCenterAddressBook> GetAddressBookAsync(string addressBookId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously retrieves a contact from the address book using the specified address book identifier.
+		/// </summary>
+		/// <param name="addressBookId">The unique identifier of the address book from which to retrieve the contact. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation, containing the contact information from the address book.
+		/// Returns null if no contact is found for the specified identifier.</returns>
+		Task<ContactCenterAddressBook> GetAddressBookContactAsync(string addressBookId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously retrieves the address book unit associated with the specified identifier.
+		/// </summary>
+		/// <param name="addressBookUnitId">The unique identifier of the address book unit to retrieve. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the requested ContactCenterAddressBookUnit.</returns>
+		Task<ContactCenterAddressBookUnit> GetAddressBookUnitAsync(string addressBookUnitId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously retrieves a custom field from the address book by its unique identifier.
+		/// </summary>
+		/// <param name="customFieldId">The unique identifier of the custom field to retrieve. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the requested ContactCenterAddressBookCustomField if found; otherwise, null.</returns>
+		Task<ContactCenterAddressBookCustomField> GetAddressBookCustomFieldAsync(string customFieldId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieves a paginated list of all custom fields associated with the specified contact.
+		/// </summary>
+		/// <param name="contactId">The unique identifier of the contact whose custom fields are to be retrieved. Cannot be null or empty.</param>
+		/// <param name="recordsPerPage">The maximum number of custom fields to include in each page of results. Must be a positive integer. The default is 30.</param>
+		/// <param name="pagingToken">An optional token used to retrieve the next page of results. Pass null or omit to retrieve the first page.</param>
+		/// <param name="cancellationToken">A token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a paginated response with a token and
+		/// the custom fields associated with the specified contact.</returns>
+		Task<PaginatedResponseWithToken<ContactCenterContactCustomField>> GetAllContactCustomFieldsAsync(string contactId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieves a paginated list of contacts from the specified address book.
+		/// </summary>
+		/// <param name="addressBookId">The unique identifier of the address book from which to retrieve contacts.</param>
+		/// <param name="recordsPerPage">The maximum number of contacts to include in each page of results. The default is 30.</param>
+		/// <param name="pagingToken">An optional token used to retrieve the next page of results. Pass null or omit to retrieve the first page.</param>
+		/// <param name="cancellationToken">A token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a paginated response with the contacts
+		/// from the address book.</returns>
+		Task<PaginatedResponseWithToken<ContactCenterAddressBookCustomField>> GetAllAddressBookContactsAsync(string addressBookId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Retrieves a paginated list of all address book units.
+		/// </summary>
+		/// <param name="recordsPerPage">The maximum number of address book units to include in each page of results. Must be greater than zero.</param>
+		/// <param name="pagingToken">An optional token indicating the starting point for the next page of results. Pass <see langword="null"/> or an empty string to retrieve the first page.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a paginated response with a collection of address book units and a token for retrieving the next page, if available.</returns>
+		Task<PaginatedResponseWithToken<ContactCenterAddressBookUnit>> GetAllAddressBookUnitsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieves a paginated list of all address books in the contact center.
@@ -54,26 +188,14 @@ namespace ZoomNet.Resources
 		Task<PaginatedResponseWithToken<ContactCenterAddressBook>> GetAllAddressBooksAsync(string unitId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Deletes the address book identified by the specified ID.
+		/// Asynchronously retrieves all addres book custom fields, supporting pagination of results.
 		/// </summary>
-		/// <param name="addressBookId">The unique identifier of the address book to delete. Cannot be null or empty.</param>
-		/// <param name="cancellationToken">A cancellation token that can be used to cancel the delete operation.</param>
-		/// <returns>A task that represents the asynchronous delete operation.</returns>
-		Task DeleteAddressBookAsync(string addressBookId, CancellationToken cancellationToken = default);
-
-		/// <summary>
-		/// Create an address book.
-		/// </summary>
-		/// <remarks>
-		/// Create an [address book](https://support.zoom.us/hc/en-us/articles/4471544949389).
-		/// An address book is a collection of consumer information like display names, phone numbers, and locations.
-		/// </remarks>
-		/// <param name="name">The address book's name.</param>
-		/// <param name="description">The address book's description.</param>
-		/// <param name="unitId">The address book's unit ID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>The response.</returns>
-		Task<ContactCenterAddressBook> CreateAddressBookAsync(string name = null, string description = null, string unitId = null, CancellationToken cancellationToken = default);
+		/// <param name="recordsPerPage">The maximum number of custom fields to return per page. Must be a positive integer. The default is 30.</param>
+		/// <param name="pagingToken">An optional token used to retrieve the next page of results. Pass null or omit to retrieve the first page.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a paginated response with a token and
+		/// the retrieved custom fields.</returns>
+		Task<PaginatedResponseWithToken<ContactCenterAddressBookCustomField>> GetAllAddressBookCustomFieldsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		#endregion
 
