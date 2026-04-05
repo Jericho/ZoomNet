@@ -22,10 +22,9 @@ namespace ZoomNet.IntegrationTests.Tests
 				.Select(file => file.MeetingId)
 				.Distinct();
 
-			var b = await client.CloudRecordings.GetParsedTranscriptAsync("pFx7uR3%2BT5yGDjps0dnPWA%3D%3D", cancellationToken).ConfigureAwait(false);
-
-			// DOWNLOAD THE FILES
-			foreach (var meetingId in meetingIds)
+			// DOWNLOAD THE FILES (only for the first meeting, to avoid downloading too many files during the test)
+			var meetingId = meetingIds.FirstOrDefault();
+			if (!string.IsNullOrEmpty(meetingId))
 			{
 				var files = await client.CloudRecordings.DownloadAllMeetingRecordingFilesAsync(meetingId, false, 5, cancellationToken).ConfigureAwait(false);
 
@@ -34,7 +33,6 @@ namespace ZoomNet.IntegrationTests.Tests
 				{
 					await log.WriteLineAsync($"    - Downloaded {file.Info.FileType}").ConfigureAwait(false);
 				}
-
 			}
 		}
 	}
