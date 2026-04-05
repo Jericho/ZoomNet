@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using ZoomNet.Models;
+using ZoomNet.Models.Transcription;
 
 namespace ZoomNet.Utilities
 {

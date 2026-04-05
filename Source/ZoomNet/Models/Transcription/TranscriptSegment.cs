@@ -1,6 +1,6 @@
 using System;
 
-namespace ZoomNet.Models
+namespace ZoomNet.Models.Transcription
 {
 	/// <summary>
 	/// Represents a segment of transcribed audio, including timing, speaker, and text information.
