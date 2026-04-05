@@ -61,7 +61,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<Recording> GetRecordingInformationAsync(string meetingId, int ttl = 60 * 5, CancellationToken cancellationToken = default)
+		public Task<Recording> GetRecordingInformationAsync(string meetingId, int ttl = 60 * 60 * 24 * 7, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"meetings/{Utils.EncodeUUID(meetingId)}/recordings")
