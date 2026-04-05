@@ -1,3 +1,4 @@
+using System;
 using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
@@ -7,6 +8,14 @@ namespace ZoomNet.Models
 	/// </summary>
 	public abstract class RecordingFileBase
 	{
+		private static readonly RecordingContentType[] _screenShareContentTypes =
+		{
+			RecordingContentType.SharedScreenWithSpeakerViewClosedCaptioned,
+			RecordingContentType.SharedScreenWithSpeakerView,
+			RecordingContentType.SharedScreenWithGalleryView,
+			RecordingContentType.SharedScreen
+		};
+
 		/// <summary>
 		/// Gets or sets the file unique id.
 		/// </summary>
@@ -57,5 +66,18 @@ namespace ZoomNet.Models
 		/// </summary>
 		[JsonPropertyName("download_url")]
 		public string DownloadUrl { get; set; }
+
+		/// <summary>
+		/// Gets a value indicating whether the recording file represents a screensharing session.
+		/// </summary>
+		/// <remarks>A value of <see langword="true"/> indicates that the file is a video recording specifically
+		/// identified as screenshare content. Use this property to distinguish between regular video recordings and those
+		/// that capture screensharing activity.</remarks>
+		public bool IsScreenshare => FileType is RecordingFileType.Video && Array.Exists(_screenShareContentTypes, t => t == ContentType);
+
+		/// <summary>
+		/// Gets a value indicating whether this file represents the primary video recording.
+		/// </summary>
+		public bool IsPrimaryVideo => FileType is RecordingFileType.Video && !IsScreenshare;
 	}
 }

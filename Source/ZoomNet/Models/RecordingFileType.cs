@@ -61,6 +61,6 @@ namespace ZoomNet.Models
 		/// A JSON file containing internal user archive AI companion content.
 		/// </summary>
 		[EnumMember(Value = "aic_conversation")]
-		AicConversation,
+		AiConversation,
 	}
 }
