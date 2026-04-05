@@ -134,12 +134,17 @@ namespace ZoomNet.Models
 		}
 
 		/// <summary>
-		/// Retrieves the transcript file associated with the recording, if available.
+		/// Retrieves the transcript or closed-caption file associated with the recording.
+		/// If both a transcript and a closed-caption file are available, the transcript file is returned.
+		/// If only one of them is available, that file is returned.
+		/// If neither is available, null is returned.
 		/// </summary>
 		/// <returns>A <see cref="RecordingFile"/> representing the transcript file if one exists; otherwise, <c>null</c>.</returns>
 		public RecordingFile GetTranscript()
 		{
-			return RecordingFiles?.FirstOrDefault(f => f.FileType is RecordingFileType.Transcript);
+			var file = RecordingFiles?.FirstOrDefault(f => f.FileType is RecordingFileType.Transcript);
+			if (file == null) file = RecordingFiles?.FirstOrDefault(f => f.FileType is RecordingFileType.ClosedCaptioning);
+			return file;
 		}
 
 		/// <summary>
