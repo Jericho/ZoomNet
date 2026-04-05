@@ -269,7 +269,7 @@ namespace ZoomNet.Resources
 			};
 		}
 
-		public static void MergeSpeakers(List<TranscriptSegment> segments, IReadOnlyList<SpeakerMoment> diarization)
+		private static void MergeSpeakers(List<TranscriptSegment> segments, IReadOnlyList<SpeakerMoment> diarization)
 		{
 			foreach (var segment in segments)
 			{
