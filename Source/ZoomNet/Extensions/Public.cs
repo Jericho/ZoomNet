@@ -889,7 +889,7 @@ namespace ZoomNet
 		/// <returns>A task that represents the asynchronous operation. The task result contains an array of tuples, each consisting of
 		/// the file name and a stream for the downloaded recording file. The array includes participant audio files if
 		/// requested; otherwise, only standard recording files are included.</returns>
-		public static async Task<(string FileName, Stream RecordingFile)[]> DownloadAllMeetingRecordingFilesAsync(this ICloudRecordings cloudRecordingsResource, string meetingId, bool includeParticipantAudioFiles = false, int maxDegreeOfParalellism = 5, CancellationToken cancellationToken = default)
+		public static async Task<(RecordingFile Info, Stream Content)[]> DownloadAllMeetingRecordingFilesAsync(this ICloudRecordings cloudRecordingsResource, string meetingId, bool includeParticipantAudioFiles = false, int maxDegreeOfParalellism = 5, CancellationToken cancellationToken = default)
 		{
 			var recordingInfo = await cloudRecordingsResource.GetRecordingInformationAsync(meetingId, cancellationToken: cancellationToken).ConfigureAwait(false);
 
@@ -897,19 +897,19 @@ namespace ZoomNet
 				async recordingFile =>
 				{
 					var fileStream = await cloudRecordingsResource.DownloadFileAsync(recordingFile.DownloadUrl, recordingInfo.DownloadAccessToken, cancellationToken).ConfigureAwait(false);
-					return (recordingFile.FileName, fileStream);
+					return (recordingFile, fileStream);
 				},
 				maxDegreeOfParalellism)
 			.ConfigureAwait(false);
 
-			var participantAudioFiles = Array.Empty<(string FileName, Stream RecordingFile)>();
+			var participantAudioFiles = Array.Empty<(RecordingFile Info, Stream Content)>();
 			if (includeParticipantAudioFiles)
 			{
 				participantAudioFiles = await recordingInfo.ParticipantAudioFiles.ForEachAsync(
 					async recordingFile =>
 					{
 						var fileStream = await cloudRecordingsResource.DownloadFileAsync(recordingFile.DownloadUrl, recordingInfo.DownloadAccessToken, cancellationToken).ConfigureAwait(false);
-						return (recordingFile.FileName, fileStream);
+						return (recordingFile, fileStream);
 					},
 					maxDegreeOfParalellism)
 				.ConfigureAwait(false);
