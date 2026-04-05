@@ -219,5 +219,14 @@ namespace ZoomNet.Resources
 		/// The <see cref="Stream"/> containing the file.
 		/// </returns>
 		Task<Stream> DownloadFileAsync(string downloadUrl, string accessToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously retrieves the unstructed transcript for the specified meeting and parses it to a collection of segments.
+		/// </summary>
+		/// <param name="meetingId">The unique identifier of the meeting for which to retrieve the transcript. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a read-only list of transcript
+		/// segments for the specified meeting. The list is empty if no transcript is available.</returns>
+		Task<IReadOnlyList<TranscriptSegment>> GetParsedTranscriptAsync(string meetingId, CancellationToken cancellationToken = default);
 	}
 }

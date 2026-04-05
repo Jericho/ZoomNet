@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
@@ -234,6 +235,24 @@ namespace ZoomNet.Resources
 
 			// Dispatch the request
 			return request.AsStream();
+		}
+
+		/// <inheritdoc/>
+		public async Task<IReadOnlyList<TranscriptSegment>> GetParsedTranscriptAsync(string meetingId, CancellationToken cancellationToken = default)
+		{
+			const int ttl = 60; // 60 seconds should be enough. We don't want the token to be valid for too long for security reasons.
+
+			var recordingInfo = await GetRecordingInformationAsync(meetingId, ttl, cancellationToken);
+			var transcript = recordingInfo.GetTranscript();
+			var transcriptStream = await DownloadFileAsync(transcript.DownloadUrl, recordingInfo.DownloadAccessToken, cancellationToken);
+
+			var transcriptContent = string.Empty;
+			using (StreamReader reader = new StreamReader(transcriptStream, Encoding.UTF8, true, -1, leaveOpen: true))
+			{
+				transcriptContent = reader.ReadToEnd();
+			}
+
+			return VttTranscriptParser.Parse(transcriptContent);
 		}
 
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<string> registrantIds, string status, CancellationToken cancellationToken = default)
