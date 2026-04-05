@@ -917,5 +917,35 @@ namespace ZoomNet
 
 			return recordingFiles.Concat(participantAudioFiles).ToArray();
 		}
+
+		/// <summary>
+		/// Approve a registration for a meeting.
+		/// </summary>
+		/// <param name="cloudRecordingsResource">The cloud recordings resource.</param>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="registrantId">The registrant ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public static Task ApproveRegistrantAsync(this ICloudRecordings cloudRecordingsResource, long meetingId, string registrantId, CancellationToken cancellationToken = default)
+		{
+			return cloudRecordingsResource.ApproveRegistrantsAsync(meetingId, [registrantId], cancellationToken);
+		}
+
+		/// <summary>
+		/// Reject a registration for a meeting.
+		/// </summary>
+		/// <param name="cloudRecordingsResource">The cloud recordings resource.</param>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="registrantId">The registrant ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public static Task RejectRegistrantAsync(this ICloudRecordings cloudRecordingsResource, long meetingId, string registrantId, CancellationToken cancellationToken = default)
+		{
+			return cloudRecordingsResource.RejectRegistrantsAsync(meetingId, [registrantId], cancellationToken);
+		}
 	}
 }

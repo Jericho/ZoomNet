@@ -166,17 +166,6 @@ namespace ZoomNet.Resources
 		Task<RecordingRegistration> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string address, string city, string country, string zip, string state, string phone, string industry, string organization, string jobTitle, string purchasingTimeFrame, string roleInPurchaseProcess, string numberOfEmployees, string comments, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Approve a registration for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="registrantId">The registrant ID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
-		Task ApproveRegistrantAsync(long meetingId, string registrantId, CancellationToken cancellationToken = default);
-
-		/// <summary>
 		/// Approve multiple registrations for a meeting.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
@@ -186,17 +175,6 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task ApproveRegistrantsAsync(long meetingId, IEnumerable<string> registrantIds, CancellationToken cancellationToken = default);
-
-		/// <summary>
-		/// Reject a registration for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="registrantId">The registrant ID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
-		Task RejectRegistrantAsync(long meetingId, string registrantId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Reject multiple registrations for a meeting.

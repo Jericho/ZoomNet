@@ -179,29 +179,9 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task ApproveRegistrantAsync(long meetingId, string registrantId, CancellationToken cancellationToken = default)
-		{
-			return ApproveRegistrantsAsync(meetingId, new[] { registrantId }, cancellationToken);
-		}
-
-		/// <inheritdoc/>
 		public Task ApproveRegistrantsAsync(long meetingId, IEnumerable<string> registrantIds, CancellationToken cancellationToken = default)
 		{
 			return UpdateRegistrantsStatusAsync(meetingId, registrantIds, "approve", cancellationToken);
-		}
-
-		/// <summary>
-		/// Reject a registration for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="registrantId">The registrant ID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
-		public Task RejectRegistrantAsync(long meetingId, string registrantId, CancellationToken cancellationToken = default)
-		{
-			return RejectRegistrantsAsync(meetingId, new[] { registrantId }, cancellationToken);
 		}
 
 		/// <inheritdoc/>
