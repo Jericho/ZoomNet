@@ -166,5 +166,15 @@ namespace ZoomNet.Models
 		{
 			return RecordingFiles?.FirstOrDefault(f => f.FileType is RecordingFileType.Chat or RecordingFileType.ChatMessage);
 		}
+
+		/// <summary>
+		/// Gets the first recording file of type Timeline from the collection.
+		/// </summary>
+		/// <returns>A <see cref="RecordingFile"/> representing the first file with a file type of Timeline, or <see langword="null"/>
+		/// if no such file exists.</returns>
+		public RecordingFile GetTimeline()
+		{
+			return RecordingFiles?.FirstOrDefault(f => f.FileType is RecordingFileType.Timeline);
+		}
 	}
 }
