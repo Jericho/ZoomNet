@@ -1191,7 +1191,7 @@ namespace ZoomNet
 
 			if (jsonResponse.ValueKind != JsonValueKind.Object)
 			{
-				throw new Exception("The response from the Zomm API does not contain a valid JSON string");
+				throw new Exception("The response from the Zoom API does not contain a valid JSON string");
 			}
 			else if (jsonResponse.TryGetProperty(propertyName, out JsonElement property))
 			{
