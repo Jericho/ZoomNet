@@ -2,12 +2,10 @@ using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration of the time zones supported by Zoom.
-	/// </summary>
+	/// <summary>Timezones.</summary>
 	public enum TimeZones
 	{
-		/// <summary>Not specified.</summary>
+		/// <summary>Not Specified.</summary>
 		[EnumMember(Value = "")]
 		NotSpecified,
 
@@ -302,7 +300,7 @@ namespace ZoomNet.Models
 		/// </remarks>
 		[EnumMember(Value = "Asia/Manila")]
 		Asia_Manila,
-		
+
 		/// <summary>Muscat.</summary>
 		[EnumMember(Value = "Asia/Muscat")]
 		Asia_Muscat,
