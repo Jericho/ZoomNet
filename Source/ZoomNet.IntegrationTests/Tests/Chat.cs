@@ -53,6 +53,33 @@ namespace ZoomNet.IntegrationTests.Tests
 			await client.Chat.DemoteAdminInAccountChannelByUserIdAsync(myUser.Id, channel.Id, memberIdToDemote, cancellationToken);
 			await log.WriteLineAsync("Member was demoted").ConfigureAwait(false);
 
+			//MANAGE MENTION GROUPS
+			var mentionGroupId1 = await client.Chat.CreateMentionGroupAsync(channel.Id, "ZoomNet Integration Testing: new", "This is a mention group for integration testing purposes", paginatedMembers.Records.Select(m => m.Id), cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Mention group \"{mentionGroupId1}\" created").ConfigureAwait(false);
+
+			var mentionGroupId2 = await client.Chat.CreateMentionGroupAsync(channel.Id, "IntegrationTesting", "Another mention group for integration testing purposes", paginatedMembers.Records.Select(m => m.Id), cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Mention group \"{mentionGroupId2}\" created").ConfigureAwait(false);
+
+			await client.Chat.UpdateMentionGroupAsync(channel.Id, mentionGroupId1, "ZoomNet Integration Testing: updated", "This is an updated mention group for integration testing purposes", cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Mention group \"{mentionGroupId1}\" updated").ConfigureAwait(false);
+
+			var mentionGroupMembers = await client.Chat.GetMentionGroupMembersAsync(channel.Id, mentionGroupId1, 100, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {mentionGroupMembers.Records.Length} members in mention group \"{mentionGroupId1}\"").ConfigureAwait(false);
+
+			await mentionGroupMembers.Records.Select(m => m.Id).ForEachAsync(
+				async memberId =>
+				{
+					await client.Chat.RemoveMemberFromMentionGroupAsync(channel.Id, mentionGroupId1, memberId, cancellationToken).ConfigureAwait(false);
+				})
+			.ConfigureAwait(false);
+			await log.WriteLineAsync($"Removed all members from mention group \"{mentionGroupId1}\"").ConfigureAwait(false);
+
+			await client.Chat.AddMembersToMentionGroupAsync(channel.Id, mentionGroupId1, paginatedMembers.Records.Select(m => m.Id), cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Added {mentionGroupMembers.Records.Length} members to mention group \"{mentionGroupId1}\"").ConfigureAwait(false);
+
+			var mentionGoups = await client.Chat.GetAllMentionGroupsAsync(channel.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Channel \"{channel.Id}\" has {mentionGoups.Length} mention groups").ConfigureAwait(false);
+
 			// SEND A MESSAGE TO THE CHANNEL
 			var messageId = await client.Chat.SendMessageToChannelAsync(channel.Id, "This is a test from integration test", null, null, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Message \"{messageId}\" sent").ConfigureAwait(false);
@@ -90,6 +117,12 @@ namespace ZoomNet.IntegrationTests.Tests
 			// DELETE THE MESSAGE
 			await client.Chat.DeleteMessageToChannelAsync(messageId, channel.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Message \"{messageId}\" deleted").ConfigureAwait(false);
+
+			// DELETE THE MENTION GROUPS
+			await client.Chat.DeleteMentionGroupAsync(channel.Id, mentionGroupId1, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Mention group \"{mentionGroupId1}\" deleted").ConfigureAwait(false);
+			await client.Chat.DeleteMentionGroupAsync(channel.Id, mentionGroupId2, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Mention group \"{mentionGroupId2}\" deleted").ConfigureAwait(false);
 
 			// DELETE THE CHANNEL
 			await client.Chat.DeleteAccountChannelAsync(myUser.Id, channel.Id, cancellationToken).ConfigureAwait(false);

@@ -349,5 +349,79 @@ namespace ZoomNet.Resources
 		/// You can only send a maximum of 16 megabytes for images and 20 megabytes for all other file types.
 		/// </remarks>
 		Task<string> UploadFileAsync(string userId, string fileName, Stream fileData, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create a channel mention group.
+		/// </summary>
+		/// <remarks>
+		/// A channel can have a maximum of 20 mention groups.
+		/// The caller must be an admin or owner of the channel.
+		/// </remarks>
+		/// <param name="channelId">The unique identifier of the channel.</param>
+		/// <param name="name">The name of the mention group.</param>
+		/// <param name="description">The description of the mention group.</param>
+		/// <param name="memberIds">The unique identifiers of the members to include in the mention group.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The unique identifier of the created mention group.</returns>
+		Task<string> CreateMentionGroupAsync(string channelId, string name, string description, IEnumerable<string> memberIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update a channel mention group.
+		/// </summary>
+		/// <param name="channelId">The unique identifier of the channel.</param>
+		/// <param name="mentionGroupId">The unique identifier of the mention group.</param>
+		/// <param name="name">The name of the mention group.</param>
+		/// <param name="description">The description of the mention group.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task UpdateMentionGroupAsync(string channelId, string mentionGroupId, string name, string description, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a channel mention group.
+		/// </summary>
+		/// <param name="channelId">The unique identifier of the channel.</param>
+		/// <param name="mentionGroupId">The unique identifier of the mention group.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task DeleteMentionGroupAsync(string channelId, string mentionGroupId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Add members to a channel mention group.
+		/// </summary>
+		/// <param name="channelId">The unique identifier of the channel.</param>
+		/// <param name="mentionGroupId">The unique identifier of the mention group.</param>
+		/// <param name="memberIds">The unique identifiers of the members to include in the mention group.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task AddMembersToMentionGroupAsync(string channelId, string mentionGroupId, IEnumerable<string> memberIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Remove member from a channel mention group.
+		/// </summary>
+		/// <param name="channelId">The unique identifier of the channel.</param>
+		/// <param name="mentionGroupId">The unique identifier of the mention group.</param>
+		/// <param name="memberId">The unique identifier of the member to remove from the mention group.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task RemoveMemberFromMentionGroupAsync(string channelId, string mentionGroupId, string memberId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// List all mention groups in a channel.
+		/// </summary>
+		/// <param name="channelId">The unique identifier of the channel.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>An array of <see cref="ChannelMentionGroup"/> objects.</returns>
+		Task<ChannelMentionGroup[]> GetAllMentionGroupsAsync(string channelId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// List all members of a channel mention group.
+		/// </summary>
+		/// <param name="channelId">The unique identifier of the channel.</param>
+		/// <param name="mentionGroupId">The unique identifier of the mention group.</param>
+		/// <param name="recordsPerPage">The maximum number of records to include in each page of results. Must be greater than zero. Defaults to 30.</param>
+		/// <param name="pagingToken">An optional token used to retrieve the next page of results. Pass <see langword="null"/> to retrieve the first page.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the paginated list of members.</returns>
+		Task<PaginatedResponseWithToken<ChannelMentionGroupMember>> GetMentionGroupMembersAsync(string channelId, string mentionGroupId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 	}
 }

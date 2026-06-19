@@ -335,6 +335,102 @@ namespace ZoomNet.Resources
 				.AsObject<string>("id");
 		}
 
+		/// <inheritdoc/>
+		public Task<string> CreateMentionGroupAsync(string channelId, string name, string description, IEnumerable<string> memberIds, CancellationToken cancellationToken = default)
+		{
+			// I typically defer parameter validation to the API but in this case the error message returned by the Zoom API when the name is too long is not very helpful (it says "Invalid parameter: mention_group_name.")
+			ArgumentNullException.ThrowIfNullOrEmpty(name, nameof(name), "You must specify a name for the mention group");
+			if (name.Length > 40) throw new ArgumentOutOfRangeException(nameof(name), "The name of the mention group cannot be longer than 40 characters");
+			if (description != null && description.Length > 500) throw new ArgumentOutOfRangeException(nameof(description), "The description of the mention group cannot be longer than 500 characters");
+
+			var data = new JsonObject
+			{
+				{ "mention_group_name", name },
+				{ "mention_group_description", description },
+				{ "identifiers", memberIds?.ToArray() }
+			};
+
+			return _client
+				.PostAsync($"chat/channels/{channelId}/mention_group")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("mention_group_id");
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateMentionGroupAsync(string channelId, string mentionGroupId, string name, string description, CancellationToken cancellationToken = default)
+		{
+			// I typically defer parameter validation to the API but in this case the error message returned by the Zoom API when the name is too long is not very helpful (it says "Invalid parameter: mention_group_name.")
+			if (name != null && name.Length > 40) throw new ArgumentOutOfRangeException(nameof(name), "The name of the mention group cannot be longer than 40 characters");
+			if (description != null && description.Length > 500) throw new ArgumentOutOfRangeException(nameof(description), "The description of the mention group cannot be longer than 500 characters");
+
+			var data = new JsonObject
+			{
+				{ "mention_group_name", name },
+				{ "mention_group_description", description },
+			};
+
+			return _client
+				.PatchAsync($"chat/channels/{channelId}/mention_group/{mentionGroupId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteMentionGroupAsync(string channelId, string mentionGroupId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"chat/channels/{channelId}/mention_group/{mentionGroupId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task AddMembersToMentionGroupAsync(string channelId, string mentionGroupId, IEnumerable<string> memberIds, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "identifiers", memberIds?.ToArray() }
+			};
+
+			return _client
+				.PostAsync($"chat/channels/{channelId}/mention_group/{mentionGroupId}/members")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task RemoveMemberFromMentionGroupAsync(string channelId, string mentionGroupId, string memberId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"chat/channels/{channelId}/mention_group/{mentionGroupId}/members")
+				.WithArgument("identifiers", memberId)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<ChannelMentionGroup[]> GetAllMentionGroupsAsync(string channelId, CancellationToken cancellationToken = default)
+		{
+			return _client
+			  .GetAsync($"chat/channels/{channelId}/mention_group")
+			  .WithCancellationToken(cancellationToken)
+			  .AsObject<ChannelMentionGroup[]>("mention_group_list");
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<ChannelMentionGroupMember>> GetMentionGroupMembersAsync(string channelId, string mentionGroupId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"chat/channels/{channelId}/mention_group/{mentionGroupId}/members")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<ChannelMentionGroupMember>("members");
+		}
+
 		private Task<string> SendMessageAsync(string userId, string recipientEmail, string channelId, string message, string replyMessageId = null, IEnumerable<string> fileIds = null, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
