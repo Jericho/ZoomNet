@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -24,6 +23,17 @@ namespace ZoomNet.IntegrationTests.Tests
 				{
 					await client.Chat.DeleteAccountChannelAsync(myUser.Id, oldChannel.Id, cancellationToken).ConfigureAwait(false);
 					await log.WriteLineAsync($"Channel {oldChannel.Id} deleted").ConfigureAwait(false);
+					await Task.Delay(1000, cancellationToken).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
+				});
+			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
+
+			var paginatedEmojis = await client.Chat.GetCustomEmojisAsync(100, null, cancellationToken).ConfigureAwait(false);
+			cleanUpTasks = paginatedEmojis.Records
+				.Where(m => m.Name.StartsWith("ZoomNetIntegrationTesting"))
+				.Select(async oldEmoji =>
+				{
+					await client.Chat.DeleteCustomEmojiAsync(oldEmoji.Id, cancellationToken).ConfigureAwait(false);
+					await log.WriteLineAsync($"Emoji {oldEmoji.Id} deleted").ConfigureAwait(false);
 					await Task.Delay(1000, cancellationToken).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
 				});
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
@@ -54,6 +64,41 @@ namespace ZoomNet.IntegrationTests.Tests
 			await client.Chat.DemoteAdminInAccountChannelByUserIdAsync(myUser.Id, channel.Id, memberIdToDemote, cancellationToken);
 			await log.WriteLineAsync("Member was demoted").ConfigureAwait(false);
 
+			// MANAGE MENTION GROUPS
+			var mentionGroupId1 = await client.Chat.CreateMentionGroupAsync(channel.Id, "ZoomNet Integration Testing: new", "This is a mention group for integration testing purposes", paginatedMembers.Records.Select(m => m.Id), cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Mention group \"{mentionGroupId1}\" created").ConfigureAwait(false);
+
+			var mentionGroupId2 = await client.Chat.CreateMentionGroupAsync(channel.Id, "IntegrationTesting", "Another mention group for integration testing purposes", paginatedMembers.Records.Select(m => m.Id), cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Mention group \"{mentionGroupId2}\" created").ConfigureAwait(false);
+
+			await client.Chat.UpdateMentionGroupAsync(channel.Id, mentionGroupId1, "ZoomNet Integration Testing: updated", "This is an updated mention group for integration testing purposes", cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Mention group \"{mentionGroupId1}\" updated").ConfigureAwait(false);
+
+			var mentionGroupMembers = await client.Chat.GetMentionGroupMembersAsync(channel.Id, mentionGroupId1, 100, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {mentionGroupMembers.Records.Length} members in mention group \"{mentionGroupId1}\"").ConfigureAwait(false);
+
+			await mentionGroupMembers.Records.Select(m => m.Id).ForEachAsync(
+				async memberId =>
+				{
+					await client.Chat.RemoveMemberFromMentionGroupAsync(channel.Id, mentionGroupId1, memberId, cancellationToken).ConfigureAwait(false);
+				})
+			.ConfigureAwait(false);
+			await log.WriteLineAsync($"Removed all members from mention group \"{mentionGroupId1}\"").ConfigureAwait(false);
+
+			await client.Chat.AddMembersToMentionGroupAsync(channel.Id, mentionGroupId1, paginatedMembers.Records.Select(m => m.Id), cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Added {mentionGroupMembers.Records.Length} members to mention group \"{mentionGroupId1}\"").ConfigureAwait(false);
+
+			var mentionGoups = await client.Chat.GetAllMentionGroupsAsync(channel.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Channel \"{channel.Id}\" has {mentionGoups.Length} mention groups").ConfigureAwait(false);
+
+			// EMOJI
+			var (emojiFileStream, emojiFileName) = Utils.GetRandomImage(256);
+			var emojiId = await client.Chat.AddCustomEmojiAsync("ZoomnetIntegrationTestingEmoji", emojiFileName, emojiFileStream, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Emoji \"{emojiId}\" added").ConfigureAwait(false);
+
+			var emojiList = await client.Chat.GetCustomEmojisAsync(100, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {emojiList.TotalRecords} custom emojis").ConfigureAwait(false);
+
 			// SEND A MESSAGE TO THE CHANNEL
 			var messageId = await client.Chat.SendMessageToChannelAsync(channel.Id, "This is a test from integration test", null, null, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Message \"{messageId}\" sent").ConfigureAwait(false);
@@ -68,32 +113,21 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync($"Reply \"{messageId}\" sent").ConfigureAwait(false);
 			await Task.Delay(1000, cancellationToken).ConfigureAwait(false); // Allow the Zoom system to process this message and avoid subsequent "message doesn't exist" error messages
 
-			// Check that this computer has a folder containing sample images which we can use to send files to the channel
-			var samplePicturesFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "Samples");
-			if (Directory.Exists(samplePicturesFolder))
-			{
-				var rnd = new Random();
-				var samplePictures = Directory.EnumerateFiles(samplePicturesFolder, "*.jpg");
-				if (samplePictures.Any())
-				{
-					// SEND A FILE TO THE CHANNEL
-					var samplePicture = samplePictures.ElementAt(rnd.Next(0, samplePictures.Count()));
-					using var fileToSendStream = File.OpenRead(samplePicture);
-					var sentFileId = await client.Chat.SendFileAsync(null, "me", null, channel.Id, Path.GetFileName(samplePicture), fileToSendStream, cancellationToken).ConfigureAwait(false);
-					await log.WriteLineAsync($"File {sentFileId} sent").ConfigureAwait(false);
+			// SEND A FILE TO THE CHANNEL
+			var (fileStream, fileName) = Utils.GetRandomImage();
+			var sentFileId = await client.Chat.SendFileAsync(null, "me", null, channel.Id, fileName, fileStream, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"File {sentFileId} sent").ConfigureAwait(false);
 
-					// UPLOAD A FILE
-					samplePicture = samplePictures.ElementAt(rnd.Next(0, samplePictures.Count()));
-					using var fileToUploadStream = File.OpenRead(samplePicture);
-					var uploadedFileId = await client.Chat.UploadFileAsync("me", Path.GetFileName(samplePicture), fileToUploadStream, cancellationToken).ConfigureAwait(false);
-					await log.WriteLineAsync($"File {uploadedFileId} uploaded").ConfigureAwait(false);
+			// UPLOAD A FILE
+			(fileStream, fileName) = Utils.GetRandomImage();
+			var uploadedFileId = await client.Chat.UploadFileAsync("me", fileName, fileStream, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"File {uploadedFileId} uploaded").ConfigureAwait(false);
 
-					// SEND A MESSAGE WITH ATTACHMENT
-					messageId = await client.Chat.SendMessageToChannelAsync(channel.Id, "This message has an attachment", null, new[] { uploadedFileId }, null, cancellationToken).ConfigureAwait(false);
-					await log.WriteLineAsync($"Message \"{messageId}\" sent with attachment").ConfigureAwait(false);
-					await Task.Delay(1000, cancellationToken).ConfigureAwait(false); // Allow the Zoom system to process this message and avoid subsequent "message doesn't exist" error messages
-				}
-			}
+			// SEND A MESSAGE WITH ATTACHMENT
+			(fileStream, fileName) = Utils.GetRandomImage();
+			messageId = await client.Chat.SendMessageToChannelAsync(channel.Id, "This message has an attachment", null, new[] { uploadedFileId }, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Message \"{messageId}\" sent with attachment").ConfigureAwait(false);
+			await Task.Delay(1000, cancellationToken).ConfigureAwait(false); // Allow the Zoom system to process this message and avoid subsequent "message doesn't exist" error messages
 
 			// RETRIEVE LIST OF MESSAGES
 			var paginatedMessages = await client.Chat.GetMessagesToChannelAsync(channel.Id, 100, null, cancellationToken).ConfigureAwait(false);
@@ -103,9 +137,19 @@ namespace ZoomNet.IntegrationTests.Tests
 			await client.Chat.DeleteMessageToChannelAsync(messageId, channel.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Message \"{messageId}\" deleted").ConfigureAwait(false);
 
+			// DELETE THE MENTION GROUPS
+			await client.Chat.DeleteMentionGroupAsync(channel.Id, mentionGroupId1, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Mention group \"{mentionGroupId1}\" deleted").ConfigureAwait(false);
+			await client.Chat.DeleteMentionGroupAsync(channel.Id, mentionGroupId2, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Mention group \"{mentionGroupId2}\" deleted").ConfigureAwait(false);
+
 			// DELETE THE CHANNEL
 			await client.Chat.DeleteAccountChannelAsync(myUser.Id, channel.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Account channel \"{channel.Id}\" deleted").ConfigureAwait(false);
+
+			// DELETE THE CUSTOM EMOJI
+			await client.Chat.DeleteCustomEmojiAsync(emojiId, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Emoji \"{emojiId}\" deleted").ConfigureAwait(false);
 		}
 	}
 }

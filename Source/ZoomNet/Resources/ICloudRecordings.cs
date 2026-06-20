@@ -4,6 +4,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
+using ZoomNet.Models.Transcription;
 
 namespace ZoomNet.Resources
 {
@@ -57,7 +58,7 @@ namespace ZoomNet.Resources
 		/// <param name="ttl">The download access token Time to Live (TTL) value expressed in seconds. The default value is 604800 which also is the max value allowed by Zoom. This default value represents 7 days (60 seconds * 60 minutes * 24 hours * 7 days = 604,800).</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>Details of recording made for a particular meeding or webinar.</returns>
-		Task<Recording> GetRecordingInformationAsync(string meetingId, int ttl = 604800, CancellationToken cancellationToken = default);
+		Task<Recording> GetRecordingInformationAsync(string meetingId, int ttl = 60 * 60 * 24 * 7, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Delete recording files for a meeting.
@@ -166,17 +167,6 @@ namespace ZoomNet.Resources
 		Task<RecordingRegistration> AddRegistrantAsync(long meetingId, string email, string firstName, string lastName, string address, string city, string country, string zip, string state, string phone, string industry, string organization, string jobTitle, string purchasingTimeFrame, string roleInPurchaseProcess, string numberOfEmployees, string comments, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Approve a registration for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="registrantId">The registrant ID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
-		Task ApproveRegistrantAsync(long meetingId, string registrantId, CancellationToken cancellationToken = default);
-
-		/// <summary>
 		/// Approve multiple registrations for a meeting.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>
@@ -186,17 +176,6 @@ namespace ZoomNet.Resources
 		/// The async task.
 		/// </returns>
 		Task ApproveRegistrantsAsync(long meetingId, IEnumerable<string> registrantIds, CancellationToken cancellationToken = default);
-
-		/// <summary>
-		/// Reject a registration for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="registrantId">The registrant ID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
-		Task RejectRegistrantAsync(long meetingId, string registrantId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Reject multiple registrations for a meeting.
@@ -219,5 +198,14 @@ namespace ZoomNet.Resources
 		/// The <see cref="Stream"/> containing the file.
 		/// </returns>
 		Task<Stream> DownloadFileAsync(string downloadUrl, string accessToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Asynchronously retrieves and parses the transcript for the specified meeting.
+		/// </summary>
+		/// <param name="meetingId">The unique identifier of the meeting for which to retrieve the transcript. Cannot be null or empty.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains a parsed transcript for the specified
+		/// meeting.</returns>
+		Task<RichTranscript> GetParsedTranscriptAsync(string meetingId, CancellationToken cancellationToken = default);
 	}
 }

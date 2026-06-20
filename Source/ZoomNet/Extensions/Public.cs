@@ -828,7 +828,7 @@ namespace ZoomNet
 		/// <param name="connectionInfo">The connection information used to authenticate with the Zoom API. This parameter cannot be <see langword="null"/>.</param>
 		/// <param name="serviceKey">The key that identifies this particular ZoomNet client instance.</param>
 		/// <param name="clientOptions">Optional configuration options for the ZoomNet client. If <see langword="null"/>, default options will be used.</param>
-		/// <param name="httpClientName">The name of the <see cref="HttpClient"/> to be created. Defaults to "ZomNet".</param>
+		/// <param name="httpClientName">The name of the <see cref="HttpClient"/> to be created. Defaults to "ZoomNet".</param>
 		/// <returns>An <see cref="IHttpClientBuilder"/> that can be used to further configure the underlying <see cref="HttpClient"/>.</returns>
 		public static IHttpClientBuilder AddKeyedZoomNet(this IServiceCollection services, IConnectionInfo connectionInfo, string serviceKey, ZoomClientOptions clientOptions = null, string httpClientName = "ZoomNet")
 		{
@@ -846,9 +846,9 @@ namespace ZoomNet
 		/// <param name="serviceKey">The key that identifies this particular ZoomNet client instance.</param>
 		/// <param name="proxy">The <see cref="IWebProxy"/> to use for HTTP requests. If <see langword="null"/>, no proxy will be used.</param>
 		/// <param name="clientOptions">Optional configuration options for the ZoomNet client. If <see langword="null"/>, default options will be used.</param>
-		/// <param name="httpClientName">The name of the <see cref="HttpClient"/> to be created. Defaults to "ZomNet".</param>
+		/// <param name="httpClientName">The name of the <see cref="HttpClient"/> to be created. Defaults to "ZoomNet".</param>
 		/// <returns>An <see cref="IHttpClientBuilder"/> that can be used to further configure the underlying <see cref="HttpClient"/>.</returns>
-		public static IHttpClientBuilder AddKeyedZoomNet(this IServiceCollection services, IConnectionInfo connectionInfo, string serviceKey, IWebProxy proxy, ZoomClientOptions clientOptions = null, string httpClientName = "ZomNet")
+		public static IHttpClientBuilder AddKeyedZoomNet(this IServiceCollection services, IConnectionInfo connectionInfo, string serviceKey, IWebProxy proxy, ZoomClientOptions clientOptions = null, string httpClientName = "ZoomNet")
 		{
 			var httpClientBuilder = services
 				.AddHttpClient(httpClientName)
@@ -873,6 +873,79 @@ namespace ZoomNet
 			});
 
 			return httpClientBuilder;
+		}
+
+		/// <summary>
+		/// Downloads all available recording files for the specified meeting, including optional participant audio files, as asynchronous streams.
+		/// </summary>
+		/// <remarks>The caller is responsible for disposing the returned streams after use. Download operations are
+		/// performed in parallel up to the specified maximum degree of parallelism. If no recordings are available for the
+		/// meeting, the returned array will be empty.</remarks>
+		/// <param name="cloudRecordingsResource">The cloud recordings resource used to access and download meeting recordings.</param>
+		/// <param name="meetingId">The unique identifier of the meeting whose recordings are to be downloaded.</param>
+		/// <param name="includeParticipantAudioFiles">true to include participant audio files in the download; otherwise, false. Defaults to false.</param>
+		/// <param name="maxDegreeOfParalellism">The maximum number of concurrent download operations. Must be greater than zero. Defaults to 5.</param>
+		/// <param name="cancellationToken">A cancellation token that can be used to cancel the download operation.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains an array of tuples, each consisting of
+		/// the file name and a stream for the downloaded recording file. The array includes participant audio files if
+		/// requested; otherwise, only standard recording files are included.</returns>
+		public static async Task<(RecordingFile Info, Stream Content)[]> DownloadAllMeetingRecordingFilesAsync(this ICloudRecordings cloudRecordingsResource, string meetingId, bool includeParticipantAudioFiles = false, int maxDegreeOfParalellism = 5, CancellationToken cancellationToken = default)
+		{
+			var recordingInfo = await cloudRecordingsResource.GetRecordingInformationAsync(meetingId, cancellationToken: cancellationToken).ConfigureAwait(false);
+
+			var recordingFiles = await recordingInfo.RecordingFiles.ForEachAsync(
+				async recordingFile =>
+				{
+					var fileStream = await cloudRecordingsResource.DownloadFileAsync(recordingFile.DownloadUrl, recordingInfo.DownloadAccessToken, cancellationToken).ConfigureAwait(false);
+					return (recordingFile, fileStream);
+				},
+				maxDegreeOfParalellism)
+			.ConfigureAwait(false);
+
+			var participantAudioFiles = Array.Empty<(RecordingFile Info, Stream Content)>();
+			if (includeParticipantAudioFiles)
+			{
+				participantAudioFiles = await recordingInfo.ParticipantAudioFiles.ForEachAsync(
+					async recordingFile =>
+					{
+						var fileStream = await cloudRecordingsResource.DownloadFileAsync(recordingFile.DownloadUrl, recordingInfo.DownloadAccessToken, cancellationToken).ConfigureAwait(false);
+						return (recordingFile, fileStream);
+					},
+					maxDegreeOfParalellism)
+				.ConfigureAwait(false);
+			}
+
+			return recordingFiles.Concat(participantAudioFiles).ToArray();
+		}
+
+		/// <summary>
+		/// Approve a registration for a meeting.
+		/// </summary>
+		/// <param name="cloudRecordingsResource">The cloud recordings resource.</param>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="registrantId">The registrant ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public static Task ApproveRegistrantAsync(this ICloudRecordings cloudRecordingsResource, long meetingId, string registrantId, CancellationToken cancellationToken = default)
+		{
+			return cloudRecordingsResource.ApproveRegistrantsAsync(meetingId, [registrantId], cancellationToken);
+		}
+
+		/// <summary>
+		/// Reject a registration for a meeting.
+		/// </summary>
+		/// <param name="cloudRecordingsResource">The cloud recordings resource.</param>
+		/// <param name="meetingId">The meeting ID.</param>
+		/// <param name="registrantId">The registrant ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>
+		/// The async task.
+		/// </returns>
+		public static Task RejectRegistrantAsync(this ICloudRecordings cloudRecordingsResource, long meetingId, string registrantId, CancellationToken cancellationToken = default)
+		{
+			return cloudRecordingsResource.RejectRegistrantsAsync(meetingId, [registrantId], cancellationToken);
 		}
 	}
 }

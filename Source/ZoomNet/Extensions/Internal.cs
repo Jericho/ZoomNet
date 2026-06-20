@@ -179,7 +179,7 @@ namespace ZoomNet
 		/// while this method uses the UTF-8 encoding in that situation.
 		///
 		/// My motivation for writing this extension method was to work around a situation
-		/// where the 3rd party API I was sending requests to would sometimes return 'utf8'
+		/// where the 3rd party API I was sending requests that would sometimes return 'utf8'
 		/// as the charset and an exception would be thrown when I called the ReadAsStringAsync
 		/// method to get the content of the response into a string because the .Net HttpClient
 		/// would attempt to determine the proper encoding to use but it would fail due to
@@ -1098,7 +1098,8 @@ namespace ZoomNet
 
 		internal static string GetFriendlyName(this Type type)
 		{
-			return _typeAliases.ContainsKey(type) ? _typeAliases[type] : type.FullName;
+			if (_typeAliases.TryGetValue(type, out string typeAlias)) return typeAlias;
+			return type.FullName;
 		}
 
 		private static async Task<JsonElement> ParseZoomResponseAsync(this HttpContent responseFromZoomApi, CancellationToken cancellationToken = default)
@@ -1190,7 +1191,7 @@ namespace ZoomNet
 
 			if (jsonResponse.ValueKind != JsonValueKind.Object)
 			{
-				throw new Exception("The response from the Zomm API does not contain a valid JSON string");
+				throw new Exception("The response from the Zoom API does not contain a valid JSON string");
 			}
 			else if (jsonResponse.TryGetProperty(propertyName, out JsonElement property))
 			{

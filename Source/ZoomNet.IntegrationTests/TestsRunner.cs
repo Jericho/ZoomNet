@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Hosting;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,7 +19,9 @@ namespace ZoomNet.IntegrationTests
 		public async Task StartAsync(CancellationToken cancellationToken)
 		{
 			// Run the tests
+			await Console.Out.WriteLineAsync($"Running integration tests: {_testSuite.GetType().Name}...").ConfigureAwait(false);
 			await _testSuite.RunTestsAsync(cancellationToken).ConfigureAwait(false);
+			await Console.Out.WriteLineAsync("Integration tests completed").ConfigureAwait(false);
 
 			// Shutdown the application
 			_hostApplicationLifetime.StopApplication();

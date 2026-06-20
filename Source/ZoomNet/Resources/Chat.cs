@@ -129,7 +129,7 @@ namespace ZoomNet.Resources
 		public Task<ChatMembersEditResult> InviteMembersToAccountChannelAsync(string userId, string channelId, IEnumerable<string> emails, CancellationToken cancellationToken = default)
 		{
 			ArgumentNullException.ThrowIfNullOrEmpty(emails, nameof(emails), "You must specify at least one member to invite");
-			if (emails.Count() > 20) throw new ArgumentOutOfRangeException("You can invite up to 20 members at once", nameof(emails));
+			if (emails.Count() > 20) throw new ArgumentOutOfRangeException(nameof(emails), "You can invite up to 20 members at once");
 
 			var data = new JsonObject
 			{
@@ -156,7 +156,7 @@ namespace ZoomNet.Resources
 		public Task<ChatMembersEditResult> PromoteMembersInAccountChannelByEmailAsync(string userId, string channelId, IEnumerable<string> emails, CancellationToken cancellationToken = default)
 		{
 			ArgumentNullException.ThrowIfNullOrEmpty(emails, nameof(emails), "You must specify at least one member to invite");
-			if (emails.Count() > 20) throw new ArgumentOutOfRangeException("You can invite up to 20 members at once", nameof(emails));
+			if (emails.Count() > 20) throw new ArgumentOutOfRangeException(nameof(emails), "You can invite up to 20 members at once");
 
 			var data = new JsonObject
 			{
@@ -174,7 +174,7 @@ namespace ZoomNet.Resources
 		public Task DemoteAdminsInAccountChannelByIdAsync(string userId, string channelId, IEnumerable<string> adminIds, CancellationToken cancellationToken = default)
 		{
 			ArgumentNullException.ThrowIfNullOrEmpty(adminIds, nameof(adminIds), "You must specify at least one admin to demote");
-			if (adminIds.Count() > 10) throw new ArgumentOutOfRangeException("You can demote up to 10 admins at once", nameof(adminIds));
+			if (adminIds.Count() > 10) throw new ArgumentOutOfRangeException(nameof(adminIds), "You can demote up to 10 admins at once");
 
 			return _client
 				.DeleteAsync($"chat/users/{userId}/channels/{channelId}/admins")
@@ -187,7 +187,7 @@ namespace ZoomNet.Resources
 		public Task DemoteAdminsInAccountChannelByUserIdAsync(string userId, string channelId, IEnumerable<string> userIds, CancellationToken cancellationToken = default)
 		{
 			ArgumentNullException.ThrowIfNullOrEmpty(userIds, nameof(userIds), "You must specify at least one user to demote");
-			if (userIds.Count() > 10) throw new ArgumentOutOfRangeException("You can demote up to 10 users at once", nameof(userIds));
+			if (userIds.Count() > 10) throw new ArgumentOutOfRangeException(nameof(userIds), "You can demote up to 10 users at once");
 
 			return _client
 				.DeleteAsync($"chat/users/{userId}/channels/{channelId}/admins")
@@ -333,6 +333,147 @@ namespace ZoomNet.Resources
 				})
 				.WithCancellationToken(cancellationToken)
 				.AsObject<string>("id");
+		}
+
+		/// <inheritdoc/>
+		public Task<string> CreateMentionGroupAsync(string channelId, string name, string description, IEnumerable<string> memberIds, CancellationToken cancellationToken = default)
+		{
+			// I typically defer parameter validation to the API but in this case the error message returned by the Zoom API when the name is too long is not very helpful (it says "Invalid parameter: mention_group_name.")
+			ArgumentNullException.ThrowIfNullOrEmpty(name, nameof(name), "You must specify a name for the mention group");
+			if (name.Length > 40) throw new ArgumentOutOfRangeException(nameof(name), "The name of the mention group cannot be longer than 40 characters");
+			if (description != null && description.Length > 500) throw new ArgumentOutOfRangeException(nameof(description), "The description of the mention group cannot be longer than 500 characters");
+
+			var data = new JsonObject
+			{
+				{ "mention_group_name", name },
+				{ "mention_group_description", description },
+				{ "identifiers", memberIds?.ToArray() }
+			};
+
+			return _client
+				.PostAsync($"chat/channels/{channelId}/mention_group")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("mention_group_id");
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateMentionGroupAsync(string channelId, string mentionGroupId, string name, string description, CancellationToken cancellationToken = default)
+		{
+			// I typically defer parameter validation to the API but in this case the error message returned by the Zoom API when the name is too long is not very helpful (it says "Invalid parameter: mention_group_name.")
+			if (name != null && name.Length > 40) throw new ArgumentOutOfRangeException(nameof(name), "The name of the mention group cannot be longer than 40 characters");
+			if (description != null && description.Length > 500) throw new ArgumentOutOfRangeException(nameof(description), "The description of the mention group cannot be longer than 500 characters");
+
+			var data = new JsonObject
+			{
+				{ "mention_group_name", name },
+				{ "mention_group_description", description },
+			};
+
+			return _client
+				.PatchAsync($"chat/channels/{channelId}/mention_group/{mentionGroupId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteMentionGroupAsync(string channelId, string mentionGroupId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"chat/channels/{channelId}/mention_group/{mentionGroupId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task AddMembersToMentionGroupAsync(string channelId, string mentionGroupId, IEnumerable<string> memberIds, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "identifiers", memberIds?.ToArray() }
+			};
+
+			return _client
+				.PostAsync($"chat/channels/{channelId}/mention_group/{mentionGroupId}/members")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task RemoveMemberFromMentionGroupAsync(string channelId, string mentionGroupId, string memberId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"chat/channels/{channelId}/mention_group/{mentionGroupId}/members")
+				.WithArgument("identifiers", memberId)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<ChannelMentionGroup[]> GetAllMentionGroupsAsync(string channelId, CancellationToken cancellationToken = default)
+		{
+			return _client
+			  .GetAsync($"chat/channels/{channelId}/mention_group")
+			  .WithCancellationToken(cancellationToken)
+			  .AsObject<ChannelMentionGroup[]>("mention_group_list");
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<ChannelMentionGroupMember>> GetMentionGroupMembersAsync(string channelId, string mentionGroupId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"chat/channels/{channelId}/mention_group/{mentionGroupId}/members")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<ChannelMentionGroupMember>("members");
+		}
+
+		/// <inheritdoc/>
+		public Task<string> AddCustomEmojiAsync(string name, string fileName, Stream fileData, CancellationToken cancellationToken = default)
+		{
+			var request = _client
+				.PostAsync("chat/emoji/files")
+				.WithBody(bodyBuilder =>
+				{
+					// The file name must be quoted otherwise the Zoom API returns the following error message: Invalid 'Content-Disposition' in multipart form
+					var content = new MultipartFormDataContent
+					{
+						{ new StringContent(name), "\"name\"" },
+						{ new StreamContent(fileData), "file", $"\"{fileName}\"" },
+					};
+
+					return content;
+				})
+			.WithCancellationToken(cancellationToken);
+
+			// There's an easilly overlooked note in this endpoint's documentation that says the base URL is https://fileapi.zoom.us instead of the usual https://api.zoom.us.
+			// If we don't change the base URL, we'll get a "HTTP 404 Not Found" response  with this payload: { "code":64041, "message":"Route Not Found" }
+			request.Message.RequestUri = new UriBuilder("https", "fileapi.zoom.us", 443, request.Message.RequestUri.AbsolutePath).Uri;
+
+			return request.AsObject<string>("file_id");
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteCustomEmojiAsync(string fileId, CancellationToken cancellationToken = default)
+		{
+			return _client
+			  .DeleteAsync($"chat/emoji/{fileId}")
+			  .WithCancellationToken(cancellationToken)
+			  .AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<CustomEmoji>> GetCustomEmojisAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync("chat/emoji")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<CustomEmoji>("emojis");
 		}
 
 		private Task<string> SendMessageAsync(string userId, string recipientEmail, string channelId, string message, string replyMessageId = null, IEnumerable<string> fileIds = null, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)

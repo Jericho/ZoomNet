@@ -70,7 +70,7 @@ namespace ZoomNet.UnitTests.Utilities
 			var maxAttempts = 7;
 
 			// Act
-			var strategy = new Http429RetryStrategy(maxAttempts, mockClock);
+			var strategy = new Http429RetryStrategy(maxAttempts, mockClock, null);
 
 			// Assert
 			strategy.MaxRetries.ShouldBe(7);
@@ -140,7 +140,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var mockClock = new MockSystemClock(2023, 12, 1, 10, 0, 0, 0);
-			var strategy = new Http429RetryStrategy(4, mockClock);
+			var strategy = new Http429RetryStrategy(4, mockClock, null);
 			var response = new HttpResponseMessage(TOO_MANY_REQUESTS);
 			var retryAfter = mockClock.UtcNow.AddSeconds(10).ToString("R");
 			response.Headers.Add("Retry-After", retryAfter);
@@ -157,7 +157,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var mockClock = new MockSystemClock(2023, 12, 1, 10, 0, 0, 0);
-			var strategy = new Http429RetryStrategy(4, mockClock);
+			var strategy = new Http429RetryStrategy(4, mockClock, null);
 			var response = new HttpResponseMessage(TOO_MANY_REQUESTS);
 			var retryAfter = mockClock.UtcNow.AddSeconds(15).ToString("R");
 			response.Headers.Add("Retry-After", retryAfter);
@@ -174,7 +174,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var mockClock = new MockSystemClock(2023, 12, 1, 10, 0, 0, 0);
-			var strategy = new Http429RetryStrategy(4, mockClock);
+			var strategy = new Http429RetryStrategy(4, mockClock, null);
 			var response = new HttpResponseMessage(TOO_MANY_REQUESTS);
 			var retryAfter = mockClock.UtcNow.AddSeconds(30).ToString("R");
 			response.Headers.Add("Retry-After", retryAfter);
@@ -265,7 +265,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var mockClock = new MockSystemClock(2023, 12, 1, 10, 0, 0, 0);
-			var strategy = new Http429RetryStrategy(4, mockClock);
+			var strategy = new Http429RetryStrategy(4, mockClock, null);
 			var response = new HttpResponseMessage(TOO_MANY_REQUESTS);
 			var retryAfter = mockClock.UtcNow.AddSeconds(-10).ToString("R");
 			response.Headers.Add("Retry-After", retryAfter);
@@ -282,7 +282,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var mockClock = new MockSystemClock(2023, 12, 1, 10, 0, 0, 0);
-			var strategy = new Http429RetryStrategy(4, mockClock);
+			var strategy = new Http429RetryStrategy(4, mockClock, null);
 			var response = new HttpResponseMessage(TOO_MANY_REQUESTS);
 			response.Headers.Add("X-RateLimit-Category", "ApiCall");
 			response.Headers.Add("X-RateLimit-Type", "QPS");
@@ -319,7 +319,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var mockClock = new MockSystemClock(2023, 12, 1, 10, 0, 0, 0);
-			var strategy = new Http429RetryStrategy(4, mockClock);
+			var strategy = new Http429RetryStrategy(4, mockClock, null);
 			var response = new HttpResponseMessage(TOO_MANY_REQUESTS);
 			var retryAfter = mockClock.UtcNow.AddSeconds(3).ToString("R");
 			response.Headers.Add("Retry-After", retryAfter);
@@ -383,7 +383,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var mockClock = new MockSystemClock(2023, 12, 1, 10, 0, 0, 0);
-			var strategy = new Http429RetryStrategy(4, mockClock);
+			var strategy = new Http429RetryStrategy(4, mockClock, null);
 			var response = new HttpResponseMessage(TOO_MANY_REQUESTS);
 			var retryAfter = mockClock.UtcNow.AddSeconds(-5).ToString("R");
 			response.Headers.Add("Retry-After", retryAfter);
@@ -400,7 +400,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var mockClock = new MockSystemClock(2023, 12, 1, 10, 0, 0, 0);
-			var strategy = new Http429RetryStrategy(4, mockClock);
+			var strategy = new Http429RetryStrategy(4, mockClock, null);
 			var response = new HttpResponseMessage(TOO_MANY_REQUESTS);
 			var retryAfter = mockClock.UtcNow.AddSeconds(10).ToString("R");
 			response.Headers.Add("Retry-After", retryAfter);
@@ -417,7 +417,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var mockClock = new MockSystemClock(2023, 12, 1, 10, 0, 0, 0);
-			var strategy = new Http429RetryStrategy(4, mockClock);
+			var strategy = new Http429RetryStrategy(4, mockClock, null);
 			var response = new HttpResponseMessage(TOO_MANY_REQUESTS);
 			var retryAfter = mockClock.UtcNow.AddSeconds(5).ToString("R");
 			response.Headers.Add("Retry-After", retryAfter);
@@ -448,7 +448,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var mockClock = new MockSystemClock(2023, 12, 1, 10, 0, 0, 0);
-			var strategy = new Http429RetryStrategy(4, mockClock);
+			var strategy = new Http429RetryStrategy(4, mockClock, null);
 			var response = new HttpResponseMessage(TOO_MANY_REQUESTS);
 			var retryAfter = mockClock.UtcNow.AddSeconds(2).ToString("R");
 			response.Headers.Add("Retry-After", retryAfter);
@@ -469,7 +469,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var mockClock = new MockSystemClock(2023, 12, 1, 10, 0, 0, 0);
-			var strategy = new Http429RetryStrategy(4, mockClock);
+			var strategy = new Http429RetryStrategy(4, mockClock, null);
 			var response = new HttpResponseMessage(TOO_MANY_REQUESTS);
 			var retryAfter = mockClock.UtcNow.AddSeconds(5).ToString("R");
 			response.Headers.Add("Retry-After", retryAfter);
@@ -486,7 +486,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var mockClock = new MockSystemClock(2023, 12, 1, 10, 0, 0, 0);
-			var strategy = new Http429RetryStrategy(4, mockClock);
+			var strategy = new Http429RetryStrategy(4, mockClock, null);
 			var response = new HttpResponseMessage(TOO_MANY_REQUESTS);
 			response.Headers.Add("X-RateLimit-Category", "ApiCall");
 			response.Headers.Add("X-RateLimit-Type", "QPS");

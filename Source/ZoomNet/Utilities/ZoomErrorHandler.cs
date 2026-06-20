@@ -23,7 +23,7 @@ namespace ZoomNet.Utilities
 		public bool TreatHttp200AsException { get; }
 
 		/// <summary>
-		/// Gets a custom error message used when the Zom API returns a HTTP 200 status code that is treated as a failure.
+		/// Gets a custom error message used when the Zoom API returns a HTTP 200 status code that is treated as a failure.
 		/// </summary>
 		/// <remarks>
 		/// A generic message is used if you do not provide your own custom message.

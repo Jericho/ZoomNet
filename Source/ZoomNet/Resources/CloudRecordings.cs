@@ -5,10 +5,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
+using ZoomNet.Models.Transcription;
 using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
@@ -61,7 +63,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<Recording> GetRecordingInformationAsync(string meetingId, int ttl = 60 * 5, CancellationToken cancellationToken = default)
+		public Task<Recording> GetRecordingInformationAsync(string meetingId, int ttl = 60 * 60 * 24 * 7, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"meetings/{Utils.EncodeUUID(meetingId)}/recordings")
@@ -178,29 +180,9 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task ApproveRegistrantAsync(long meetingId, string registrantId, CancellationToken cancellationToken = default)
-		{
-			return ApproveRegistrantsAsync(meetingId, new[] { registrantId }, cancellationToken);
-		}
-
-		/// <inheritdoc/>
 		public Task ApproveRegistrantsAsync(long meetingId, IEnumerable<string> registrantIds, CancellationToken cancellationToken = default)
 		{
 			return UpdateRegistrantsStatusAsync(meetingId, registrantIds, "approve", cancellationToken);
-		}
-
-		/// <summary>
-		/// Reject a registration for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="registrantId">The registrant ID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
-		public Task RejectRegistrantAsync(long meetingId, string registrantId, CancellationToken cancellationToken = default)
-		{
-			return RejectRegistrantsAsync(meetingId, new[] { registrantId }, cancellationToken);
 		}
 
 		/// <inheritdoc/>
@@ -234,6 +216,87 @@ namespace ZoomNet.Resources
 
 			// Dispatch the request
 			return request.AsStream();
+		}
+
+		/// <inheritdoc/>
+		public async Task<RichTranscript> GetParsedTranscriptAsync(string meetingId, CancellationToken cancellationToken = default)
+		{
+			const int ttl = 60; // 60 seconds should be enough. We don't want the token to be valid for too long for security reasons.
+
+			var recordingInfo = await GetRecordingInformationAsync(meetingId, ttl, cancellationToken);
+
+			var transcript = recordingInfo.GetTranscript();
+			var transcriptStream = await DownloadFileAsync(transcript.DownloadUrl, recordingInfo.DownloadAccessToken, cancellationToken);
+			var transcriptContent = string.Empty;
+			using (StreamReader reader = new StreamReader(transcriptStream, Encoding.UTF8, true, -1, leaveOpen: true))
+			{
+				transcriptContent = reader.ReadToEnd();
+			}
+
+			var timeline = recordingInfo.GetTimeline();
+			var timelineStream = await DownloadFileAsync(timeline.DownloadUrl, recordingInfo.DownloadAccessToken, cancellationToken);
+			var timelineContent = string.Empty;
+			using (StreamReader reader = new StreamReader(timelineStream, Encoding.UTF8, true, -1, leaveOpen: true))
+			{
+				timelineContent = reader.ReadToEnd();
+			}
+
+			var segments = VttTranscriptParser.Parse(transcriptContent);
+			var diarization = SpeakerTimelineParser.Parse(timelineContent);
+
+			var richTranscript = GetRichTranscript(segments, diarization);
+			return richTranscript;
+		}
+
+		private static RichTranscript GetRichTranscript(IReadOnlyList<TranscriptSegment> segments, IReadOnlyList<SpeakerMoment> diarization)
+		{
+			var segList = segments.ToList();
+
+			MergeSpeakers(segList, diarization);
+
+			var speakers = segList
+				.Select(s => s.Speaker)
+				.Where(s => !string.IsNullOrEmpty(s))
+				.Distinct()
+				.OrderBy(s => s)
+				.ToList();
+
+			return new RichTranscript
+			{
+				Segments = segList,
+				Diarization = diarization,
+				Speakers = speakers
+			};
+		}
+
+		private static void MergeSpeakers(List<TranscriptSegment> segments, IReadOnlyList<SpeakerMoment> diarization)
+		{
+			foreach (var segment in segments)
+			{
+				// If VTT already has a speaker, keep it
+				if (!string.IsNullOrWhiteSpace(segment.Speaker))
+					continue;
+
+				// Find diarization entries inside the segment time range
+				var matches = diarization
+					.Where(m => m.Timestamp >= segment.Start &&
+								m.Timestamp <= segment.End)
+					.SelectMany(m => m.Speakers)
+					.Where(s => !string.IsNullOrWhiteSpace(s.Username))
+					.ToList();
+
+				if (matches.Count == 0)
+					continue;
+
+				// Pick the most frequent speaker
+				var inferred = matches
+					.GroupBy(s => s.Username)
+					.OrderByDescending(g => g.Count())
+					.First()
+					.Key;
+
+				segment.Speaker = inferred;
+			}
 		}
 
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<string> registrantIds, string status, CancellationToken cancellationToken = default)

@@ -101,7 +101,7 @@ namespace ZoomNet
 				return client;
 			});
 
-			_websocketClient = new WebsocketClient(new Uri("wss://ws.zoom.us"), clientFactory)
+			_websocketClient = new WebsocketClient(new Uri("wss://ws.zoom.us"), null, clientFactory, Utils.MemoryStreamManager)
 			{
 				Name = "ZoomNet",
 				ReconnectTimeout = TimeSpan.FromSeconds(45), // Greater than 30 seconds because we send a heartbeat every 30 seconds

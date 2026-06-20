@@ -41,9 +41,13 @@ namespace ZoomNet.IntegrationTests
 
 			if (FetchCurrentUserInfo)
 			{
+				await Console.Out.WriteLineAsync("Fetching user info...").ConfigureAwait(false);
+
 				currentUser = await Client.Users.GetCurrentAsync(cancellationToken).ConfigureAwait(false);
 				currentUserPermissions = await Client.Users.GetCurrentPermissionsAsync(cancellationToken).ConfigureAwait(false);
 				Array.Sort(currentUserPermissions); // Sort permissions alphabetically for convenience
+
+				await Console.Out.WriteLineAsync("User info fetched.").ConfigureAwait(false);
 			}
 
 			// Execute the async tests in parallel (with max degree of parallelism)
@@ -53,6 +57,13 @@ namespace ZoomNet.IntegrationTests
 					if (cancellationToken.IsCancellationRequested)
 					{
 						return (TestName: testType.Name, ResultCode: ResultCodes.Skipped, Message: SKIPPED_DUE_TO_CANCELATION);
+					}
+
+					var lineNumber = -1;
+					lock (Console.Out)
+					{
+						Console.Out.WriteLine($"RUNNING INTEGRATION TEST: {testType.Name}...");
+						lineNumber = Console.CursorTop - 1;
 					}
 
 					var log = new StringWriter();
@@ -78,6 +89,7 @@ namespace ZoomNet.IntegrationTests
 					{
 						lock (Console.Out)
 						{
+							ClearConsoleLine(lineNumber);
 							Console.Out.WriteLine(log.ToString());
 						}
 					}
@@ -109,6 +121,25 @@ namespace ZoomNet.IntegrationTests
 			}
 
 			return resultCode;
+		}
+
+		// Source - https://stackoverflow.com/a/8946847
+		// Posted by dknaack, modified by community. See post 'Timeline' for change history
+		// Retrieved 2026-04-17, License - CC BY-SA 4.0
+		private static void ClearCurrentConsoleLine()
+		{
+			int currentLineCursor = Console.CursorTop;
+			Console.SetCursorPosition(0, Console.CursorTop);
+			Console.Write(new string(' ', Console.WindowWidth));
+			Console.SetCursorPosition(0, currentLineCursor);
+		}
+
+		private static void ClearConsoleLine(int lineNumber)
+		{
+			int currentLineCursor = Console.CursorTop;
+			Console.SetCursorPosition(0, lineNumber);
+			Console.Write(new string(' ', Console.WindowWidth));
+			Console.SetCursorPosition(0, currentLineCursor);
 		}
 	}
 }

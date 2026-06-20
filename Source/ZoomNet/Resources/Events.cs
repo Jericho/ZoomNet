@@ -1,6 +1,7 @@
 using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
@@ -58,7 +59,7 @@ namespace ZoomNet.Resources
 
 			return response
 				.EnumerateArray()
-				.Select(a => (a.GetPropertyValue<string>("email"), a.GetPropertyValue<string>("message")))
+				.Select(a => (a.GetPropertyValue<string>("email"), a.GetPropertyValue<string>(["error_message", "message"]))) // documentation says the node is called "message" but I have observed a node called "error_message"
 				.ToArray();
 		}
 
@@ -79,7 +80,7 @@ namespace ZoomNet.Resources
 
 			return response
 				.EnumerateArray()
-				.Select(a => (a.GetPropertyValue<string>("email"), a.GetPropertyValue<string>("message")))
+				.Select(a => (a.GetPropertyValue<string>("email"), a.GetPropertyValue<string>(["error_message", "message"]))) // documentation says the node is called "message" but I have observed a node called "error_message"
 				.ToArray();
 		}
 
@@ -698,6 +699,35 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
+		#endregion
+
+		#region FILES
+
+		/// <inheritdoc/>
+		public Task<string> UploadFileAsync(string hubId, string fileName, Stream fileData, CancellationToken cancellationToken = default)
+		{
+			var request = _client
+				.PostAsync("zoom_events/files")
+				.WithBody(bodyBuilder =>
+				{
+					// The file name must be quoted otherwise the Zoom API returns the following error message: Invalid 'Content-Disposition' in multipart form
+					var content = new MultipartFormDataContent
+					{
+						{ new StreamContent(fileData), "file", $"\"{fileName}\"" },
+						{ new StringContent(hubId), "\"hub_id\"" }
+					};
+
+					return content;
+				})
+				.WithCancellationToken(cancellationToken);
+
+			// There's an easilly overlooked note in this endpoint's documentation that says the base URL is https://fileapi.zoom.us instead of the usual https://api.zoom.us.
+			// If we don't change the base URL, we'll get a "HTTP 404 Not Found" response  with this payload: { "code":64041, "message":"Route Not Found" }
+			request.Message.RequestUri = new UriBuilder("https", "fileapi.zoom.us", 443, request.Message.RequestUri.AbsolutePath).Uri;
+
+			return request.AsObject<string>("file_id");
+		}
+
 		#endregion
 
 		#region HUBS
