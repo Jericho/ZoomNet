@@ -423,5 +423,32 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>A task that represents the asynchronous operation. The task result contains the paginated list of members.</returns>
 		Task<PaginatedResponseWithToken<ChannelMentionGroupMember>> GetMentionGroupMembersAsync(string channelId, string mentionGroupId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Add a custom emoji to the account.
+		/// </summary>
+		/// <param name="name">The name of the custom emoji.</param>
+		/// <param name="fileName">The file name of the custom emoji.</param>
+		/// <param name="fileData">The file data of the custom emoji.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task<string> AddCustomEmojiAsync(string name, string fileName, Stream fileData, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a custom emoji from the account.
+		/// </summary>
+		/// <param name="fileId">The unique identifier of the custom emoji.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task DeleteCustomEmojiAsync(string fileId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// List all custom emojis in the account.
+		/// </summary>
+		/// <param name="recordsPerPage">The maximum number of records to include in each page of results. Must be greater than zero. Defaults to 30.</param>
+		/// <param name="pagingToken">An optional token used to retrieve the next page of results. Pass <see langword="null"/> to retrieve the first page.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task that represents the asynchronous operation. The task result contains the paginated list of custom emojis.</returns>
+		Task<PaginatedResponseWithToken<CustomEmoji>> GetCustomEmojisAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 	}
 }

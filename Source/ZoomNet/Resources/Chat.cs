@@ -431,6 +431,51 @@ namespace ZoomNet.Resources
 				.AsPaginatedResponseWithToken<ChannelMentionGroupMember>("members");
 		}
 
+		/// <inheritdoc/>
+		public Task<string> AddCustomEmojiAsync(string name, string fileName, Stream fileData, CancellationToken cancellationToken = default)
+		{
+			var request = _client
+				.PostAsync("chat/emoji/files")
+				.WithBody(bodyBuilder =>
+				{
+					// The file name must be quoted otherwise the Zoom API returns the following error message: Invalid 'Content-Disposition' in multipart form
+					var content = new MultipartFormDataContent
+					{
+						{ new StringContent(name), "\"name\"" },
+						{ new StreamContent(fileData), "file", $"\"{fileName}\"" },
+					};
+
+					return content;
+				})
+			.WithCancellationToken(cancellationToken);
+
+			// There's an easilly overlooked note in this endpoint's documentation that says the base URL is https://fileapi.zoom.us instead of the usual https://api.zoom.us.
+			// If we don't change the base URL, we'll get a "HTTP 404 Not Found" response  with this payload: { "code":64041, "message":"Route Not Found" }
+			request.Message.RequestUri = new UriBuilder("https", "fileapi.zoom.us", 443, request.Message.RequestUri.AbsolutePath).Uri;
+
+			return request.AsObject<string>("file_id");
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteCustomEmojiAsync(string fileId, CancellationToken cancellationToken = default)
+		{
+			return _client
+			  .DeleteAsync($"chat/emoji/{fileId}")
+			  .WithCancellationToken(cancellationToken)
+			  .AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<CustomEmoji>> GetCustomEmojisAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync("chat/emoji")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<CustomEmoji>("emojis");
+		}
+
 		private Task<string> SendMessageAsync(string userId, string recipientEmail, string channelId, string message, string replyMessageId = null, IEnumerable<string> fileIds = null, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject

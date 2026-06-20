@@ -721,9 +721,9 @@ namespace ZoomNet.Resources
 				})
 				.WithCancellationToken(cancellationToken);
 
-			// There's an easilly overlooked note in this endpoint's documentation that says the base URL is https://fileapi.zoom.us instead of the usual https://api.zoom.us/v2.
+			// There's an easilly overlooked note in this endpoint's documentation that says the base URL is https://fileapi.zoom.us instead of the usual https://api.zoom.us.
 			// If we don't change the base URL, we'll get a "HTTP 404 Not Found" response  with this payload: { "code":64041, "message":"Route Not Found" }
-			request.Message.RequestUri = new Uri("https://fileapi.zoom.us/v2/zoom_events/files");
+			request.Message.RequestUri = new UriBuilder("https", "fileapi.zoom.us", 443, request.Message.RequestUri.AbsolutePath).Uri;
 
 			return request.AsObject<string>("file_id");
 		}

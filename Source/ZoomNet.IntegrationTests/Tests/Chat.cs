@@ -27,6 +27,17 @@ namespace ZoomNet.IntegrationTests.Tests
 				});
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
 
+			var paginatedEmojis = await client.Chat.GetCustomEmojisAsync(100, null, cancellationToken).ConfigureAwait(false);
+			cleanUpTasks = paginatedEmojis.Records
+				.Where(m => m.Name.StartsWith("ZoomNetIntegrationTesting"))
+				.Select(async oldEmoji =>
+				{
+					await client.Chat.DeleteCustomEmojiAsync(oldEmoji.Id, cancellationToken).ConfigureAwait(false);
+					await log.WriteLineAsync($"Emoji {oldEmoji.Id} deleted").ConfigureAwait(false);
+					await Task.Delay(1000, cancellationToken).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
+				});
+			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
+
 			// CREATE A NEW CHANNEL
 			var channel = await client.Chat.CreateAccountChannelAsync(myUser.Id, "ZoomNet Integration Testing: new channel", ChatChannelType.Public, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Account channel \"{channel.Name}\" created (Id={channel.Id}").ConfigureAwait(false);
@@ -53,7 +64,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			await client.Chat.DemoteAdminInAccountChannelByUserIdAsync(myUser.Id, channel.Id, memberIdToDemote, cancellationToken);
 			await log.WriteLineAsync("Member was demoted").ConfigureAwait(false);
 
-			//MANAGE MENTION GROUPS
+			// MANAGE MENTION GROUPS
 			var mentionGroupId1 = await client.Chat.CreateMentionGroupAsync(channel.Id, "ZoomNet Integration Testing: new", "This is a mention group for integration testing purposes", paginatedMembers.Records.Select(m => m.Id), cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Mention group \"{mentionGroupId1}\" created").ConfigureAwait(false);
 
@@ -79,6 +90,14 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			var mentionGoups = await client.Chat.GetAllMentionGroupsAsync(channel.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Channel \"{channel.Id}\" has {mentionGoups.Length} mention groups").ConfigureAwait(false);
+
+			// EMOJI
+			var (emojiFileStream, emojiFileName) = Utils.GetRandomImage(256);
+			var emojiId = await client.Chat.AddCustomEmojiAsync("ZoomnetIntegrationTestingEmoji", emojiFileName, emojiFileStream, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Emoji \"{emojiId}\" added").ConfigureAwait(false);
+
+			var emojiList = await client.Chat.GetCustomEmojisAsync(100, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {emojiList.TotalRecords} custom emojis").ConfigureAwait(false);
 
 			// SEND A MESSAGE TO THE CHANNEL
 			var messageId = await client.Chat.SendMessageToChannelAsync(channel.Id, "This is a test from integration test", null, null, null, cancellationToken).ConfigureAwait(false);
@@ -127,6 +146,10 @@ namespace ZoomNet.IntegrationTests.Tests
 			// DELETE THE CHANNEL
 			await client.Chat.DeleteAccountChannelAsync(myUser.Id, channel.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Account channel \"{channel.Id}\" deleted").ConfigureAwait(false);
+
+			// DELETE THE CUSTOM EMOJI
+			await client.Chat.DeleteCustomEmojiAsync(emojiId, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Emoji \"{emojiId}\" deleted").ConfigureAwait(false);
 		}
 	}
 }
