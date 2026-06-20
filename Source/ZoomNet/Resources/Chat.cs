@@ -129,7 +129,7 @@ namespace ZoomNet.Resources
 		public Task<ChatMembersEditResult> InviteMembersToAccountChannelAsync(string userId, string channelId, IEnumerable<string> emails, CancellationToken cancellationToken = default)
 		{
 			ArgumentNullException.ThrowIfNullOrEmpty(emails, nameof(emails), "You must specify at least one member to invite");
-			if (emails.Count() > 20) throw new ArgumentOutOfRangeException("You can invite up to 20 members at once", nameof(emails));
+			if (emails.Count() > 20) throw new ArgumentOutOfRangeException(nameof(emails), "You can invite up to 20 members at once");
 
 			var data = new JsonObject
 			{
@@ -156,7 +156,7 @@ namespace ZoomNet.Resources
 		public Task<ChatMembersEditResult> PromoteMembersInAccountChannelByEmailAsync(string userId, string channelId, IEnumerable<string> emails, CancellationToken cancellationToken = default)
 		{
 			ArgumentNullException.ThrowIfNullOrEmpty(emails, nameof(emails), "You must specify at least one member to invite");
-			if (emails.Count() > 20) throw new ArgumentOutOfRangeException("You can invite up to 20 members at once", nameof(emails));
+			if (emails.Count() > 20) throw new ArgumentOutOfRangeException(nameof(emails), "You can invite up to 20 members at once");
 
 			var data = new JsonObject
 			{
@@ -174,7 +174,7 @@ namespace ZoomNet.Resources
 		public Task DemoteAdminsInAccountChannelByIdAsync(string userId, string channelId, IEnumerable<string> adminIds, CancellationToken cancellationToken = default)
 		{
 			ArgumentNullException.ThrowIfNullOrEmpty(adminIds, nameof(adminIds), "You must specify at least one admin to demote");
-			if (adminIds.Count() > 10) throw new ArgumentOutOfRangeException("You can demote up to 10 admins at once", nameof(adminIds));
+			if (adminIds.Count() > 10) throw new ArgumentOutOfRangeException(nameof(adminIds), "You can demote up to 10 admins at once");
 
 			return _client
 				.DeleteAsync($"chat/users/{userId}/channels/{channelId}/admins")
@@ -187,7 +187,7 @@ namespace ZoomNet.Resources
 		public Task DemoteAdminsInAccountChannelByUserIdAsync(string userId, string channelId, IEnumerable<string> userIds, CancellationToken cancellationToken = default)
 		{
 			ArgumentNullException.ThrowIfNullOrEmpty(userIds, nameof(userIds), "You must specify at least one user to demote");
-			if (userIds.Count() > 10) throw new ArgumentOutOfRangeException("You can demote up to 10 users at once", nameof(userIds));
+			if (userIds.Count() > 10) throw new ArgumentOutOfRangeException(nameof(userIds), "You can demote up to 10 users at once");
 
 			return _client
 				.DeleteAsync($"chat/users/{userId}/channels/{channelId}/admins")
