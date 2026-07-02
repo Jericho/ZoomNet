@@ -780,6 +780,17 @@ namespace ZoomNet.Resources
 		Task<string> GetTokenForLiveStreamingAsync(long meetingId, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Get the transcript metadata for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting UUID. If the UUID begins with a <c>/</c> or contains <c>//</c>, it must be double-encoded.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>The <see cref="Models.MeetingTranscriptInfo"/>.</returns>
+		/// <remarks>
+		/// See <a href="https://developers.zoom.us/docs/api/meetings/#tag/meetings/get/meetings/{meetingId}/transcript">Zoom API documentation</a>.
+		/// </remarks>
+		Task<Models.MeetingTranscriptInfo> GetTranscriptAsync(string meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Get the AI summary for a meeting or webinar.
 		/// </summary>
 		/// <param name="meetingId">The meeting ID.</param>

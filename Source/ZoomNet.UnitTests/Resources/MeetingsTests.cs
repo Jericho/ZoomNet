@@ -1773,6 +1773,38 @@ namespace ZoomNet.UnitTests.Resources
 			result.EditedSummary.SummaryOverview.ShouldBe("Meeting overview");
 		}
 
+		[Fact]
+		public async Task GetTranscriptAsync_WithMeetingUuid_ReturnsTranscriptInfo()
+		{
+			// Arrange
+			var meetingUuid = "uaFkQyFCSwya8iNYtkAw3A==";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingUuid, "transcript"))
+				.Respond("application/json", EndpointsResource.meetings__meetingId__transcript_GET);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			var result = await meetings.GetTranscriptAsync(meetingUuid, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.MeetingId.ShouldBe(meetingUuid);
+			result.AccountId.ShouldBe("Cx3wERazSgup7ZWRHQM8-w");
+			result.MeetingTopic.ShouldBe("My Personal Meeting");
+			result.HostId.ShouldBe("_0ctZtY0REqWalTmwvrdIw");
+			result.CanDownload.ShouldBeTrue();
+			result.AutoDelete.ShouldBeTrue();
+			result.AutoDeleteDate.ShouldBe("2052-11-07");
+			result.DownloadUrl.ShouldNotBeNullOrEmpty();
+			result.DownloadRestrictionReason.ShouldBe("NOT_READY");
+		}
+
 		#endregion
 	}
 }

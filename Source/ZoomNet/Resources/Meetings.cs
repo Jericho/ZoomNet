@@ -1010,6 +1010,15 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task<Models.MeetingTranscriptInfo> GetTranscriptAsync(string meetingId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"meetings/{meetingId}/transcript")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<Models.MeetingTranscriptInfo>();
+		}
+
+		/// <inheritdoc/>
 		public Task<Models.MeetingAiSummary> GetAiSummaryAsync(long meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client

@@ -260,6 +260,7 @@ namespace ZoomNet.Json
 	[JsonSerializable(typeof(ZoomNet.Models.MeetingSummary))]
 	[JsonSerializable(typeof(ZoomNet.Models.MeetingTemplate))]
 	[JsonSerializable(typeof(ZoomNet.Models.MeetingTemplateType))]
+	[JsonSerializable(typeof(ZoomNet.Models.MeetingTranscriptInfo))]
 	[JsonSerializable(typeof(ZoomNet.Models.MeetingType))]
 	[JsonSerializable(typeof(ZoomNet.Models.NoiseSuppressionType))]
 	[JsonSerializable(typeof(ZoomNet.Models.NumberOfEmployees))]
