@@ -1740,7 +1740,7 @@ namespace ZoomNet.UnitTests.Resources
 		public async Task GetAiSummaryAsync_WithMeetingId_ReturnsSummary()
 		{
 			// Arrange
-			var meetingUuid = "uaFkQyFCSwya8iNYtkAw3A==";
+			var meetingUuid = "aDYlohsHRtCd4ii1uC2\u002BhA==";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingUuid, "meeting_summary"))
