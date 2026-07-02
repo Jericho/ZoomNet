@@ -1009,6 +1009,15 @@ namespace ZoomNet.Resources
 				.AsObject<string>("token");
 		}
 
+		/// <inheritdoc/>
+		public Task<MeetingAiSummary> GetAiSummaryAsync(string meetingId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"meetings/{meetingId}/meeting_summary")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<MeetingAiSummary>();
+		}
+
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<(string RegistrantId, string RegistrantEmail)> registrantsInfo, string status, string occurrenceId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject

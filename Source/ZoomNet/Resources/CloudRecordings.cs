@@ -219,6 +219,15 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		public Task<MeetingTranscriptInfo> GetTranscriptAsync(string meetingId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"meetings/{meetingId}/transcript")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<MeetingTranscriptInfo>();
+		}
+
+		/// <inheritdoc/>
 		public async Task<RichTranscript> GetParsedTranscriptAsync(string meetingId, CancellationToken cancellationToken = default)
 		{
 			const int ttl = 60; // 60 seconds should be enough. We don't want the token to be valid for too long for security reasons.
