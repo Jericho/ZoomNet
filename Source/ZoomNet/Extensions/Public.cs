@@ -971,6 +971,5 @@ namespace ZoomNet
 		{
 			return chatResource.UnarchiveChannelsAsync(new[] { channelId }, cancellationToken);
 		}
-
 	}
 }
