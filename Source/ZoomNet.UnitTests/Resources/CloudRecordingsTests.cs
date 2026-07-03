@@ -848,7 +848,7 @@ namespace ZoomNet.UnitTests.Resources
 			result.AutoDelete.ShouldBeTrue();
 			result.AutoDeleteDate.ShouldBe("2052-11-07");
 			result.DownloadUrl.ShouldNotBeNullOrEmpty();
-			result.DownloadRestrictionReason.ShouldBe("NOT_READY");
+			result.DownloadRestrictionReason.ShouldBe(TranscriptDownloadRestrictionReason.NotReady);
 		}
 
 		#endregion
