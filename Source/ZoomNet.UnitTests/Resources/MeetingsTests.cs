@@ -1762,16 +1762,16 @@ namespace ZoomNet.UnitTests.Resources
 			result.MeetingHostId.ShouldBe("30R7kT7bTIKSNUFEuH_Qlg");
 			result.MeetingHostEmail.ShouldBe("jchill@example.com");
 			result.MeetingTopic.ShouldBe("My Meeting");
-			result.SummaryTitle.ShouldBe("Meeting summary for my meeting");
-			result.SummaryContent.ShouldNotBeNullOrEmpty();
-			result.SummaryDocUrl.ShouldBe("https://docs.zoom.us/doc/1aBcDeFgHiJkLmNoPqRsTu");
-			result.SummaryDetails.ShouldNotBeNull();
-			result.SummaryDetails.Length.ShouldBe(1);
-			result.SummaryDetails[0].Label.ShouldBe("Meeting overview");
+			result.Title.ShouldBe("Meeting summary for my meeting");
+			result.Content.ShouldNotBeNullOrEmpty();
+			result.DocUrl.ShouldBe("https://docs.zoom.us/doc/1aBcDeFgHiJkLmNoPqRsTu");
+			result.Details.ShouldNotBeNull();
+			result.Details.Length.ShouldBe(1);
+			result.Details[0].Label.ShouldBe("Meeting overview");
 			result.NextSteps.ShouldNotBeNull();
 			result.NextSteps.Length.ShouldBe(1);
 			result.EditedSummary.ShouldNotBeNull();
-			result.EditedSummary.SummaryOverview.ShouldBe("Meeting overview");
+			result.EditedSummary.Overview.ShouldBe("Meeting overview");
 		}
 
 		#endregion

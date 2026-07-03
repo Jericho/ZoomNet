@@ -842,7 +842,7 @@ namespace ZoomNet.UnitTests.Resources
 			result.ShouldNotBeNull();
 			result.MeetingId.ShouldBe(meetingUuid);
 			result.AccountId.ShouldBe("Cx3wERazSgup7ZWRHQM8-w");
-			result.MeetingTopic.ShouldBe("My Personal Meeting");
+			result.Topic.ShouldBe("My Personal Meeting");
 			result.HostId.ShouldBe("_0ctZtY0REqWalTmwvrdIw");
 			result.CanDownload.ShouldBeTrue();
 			result.AutoDelete.ShouldBeTrue();

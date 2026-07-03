@@ -11,13 +11,13 @@ namespace ZoomNet.Models
 		/// Gets or sets the edited summary overview.
 		/// </summary>
 		[JsonPropertyName("summary_overview")]
-		public string SummaryOverview { get; set; }
+		public string Overview { get; set; }
 
 		/// <summary>
 		/// Gets or sets the edited summary details as a string.
 		/// </summary>
 		[JsonPropertyName("summary_details")]
-		public string SummaryDetails { get; set; }
+		public string Details { get; set; }
 
 		/// <summary>
 		/// Gets or sets the edited next steps.

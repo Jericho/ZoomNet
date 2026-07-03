@@ -24,7 +24,7 @@ namespace ZoomNet.Models
 		/// Gets or sets the meeting topic.
 		/// </summary>
 		[JsonPropertyName("meeting_topic")]
-		public string MeetingTopic { get; set; }
+		public string Topic { get; set; }
 
 		/// <summary>
 		/// Gets or sets the ID of the user who is set as the meeting host.
@@ -36,7 +36,7 @@ namespace ZoomNet.Models
 		/// Gets or sets the date and time the transcript was created.
 		/// </summary>
 		[JsonPropertyName("transcript_created_time")]
-		public DateTime TranscriptCreatedTime { get; set; }
+		public DateTime CreatedTime { get; set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether the transcript can be downloaded.

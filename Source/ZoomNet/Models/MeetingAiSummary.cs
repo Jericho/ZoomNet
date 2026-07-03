@@ -55,67 +55,67 @@ namespace ZoomNet.Models
 		/// Gets or sets the summary's start date and time.
 		/// </summary>
 		[JsonPropertyName("summary_start_time")]
-		public DateTime SummaryStartTime { get; set; }
+		public DateTime StartTime { get; set; }
 
 		/// <summary>
 		/// Gets or sets the summary's end date and time.
 		/// </summary>
 		[JsonPropertyName("summary_end_time")]
-		public DateTime SummaryEndTime { get; set; }
+		public DateTime EndTime { get; set; }
 
 		/// <summary>
 		/// Gets or sets the date and time when the meeting summary was created.
 		/// </summary>
 		[JsonPropertyName("summary_created_time")]
-		public DateTime SummaryCreatedTime { get; set; }
+		public DateTime CreatedTime { get; set; }
 
 		/// <summary>
 		/// Gets or sets the date and time when the meeting summary was last modified.
 		/// </summary>
 		[JsonPropertyName("summary_last_modified_time")]
-		public DateTime SummaryLastModifiedTime { get; set; }
+		public DateTime LastModifiedTime { get; set; }
 
 		/// <summary>
 		/// Gets or sets the user ID of the user who last modified the meeting summary.
 		/// </summary>
 		[JsonPropertyName("summary_last_modified_user_id")]
-		public string SummaryLastModifiedUserId { get; set; }
+		public string LastModifiedUserId { get; set; }
 
 		/// <summary>
 		/// Gets or sets the user email of the user who last modified the meeting summary.
 		/// </summary>
 		[JsonPropertyName("summary_last_modified_user_email")]
-		public string SummaryLastModifiedUserEmail { get; set; }
+		public string LastModifiedUserEmail { get; set; }
 
 		/// <summary>
 		/// Gets or sets the summary title.
 		/// </summary>
 		[JsonPropertyName("summary_title")]
-		public string SummaryTitle { get; set; }
+		public string Title { get; set; }
 
 		/// <summary>
 		/// Gets or sets the complete meeting summary in Markdown format.
 		/// </summary>
 		[JsonPropertyName("summary_content")]
-		public string SummaryContent { get; set; }
+		public string Content { get; set; }
 
 		/// <summary>
 		/// Gets or sets the URL to view the full summary document in Zoom Docs.
 		/// </summary>
 		[JsonPropertyName("summary_doc_url")]
-		public string SummaryDocUrl { get; set; }
+		public string DocUrl { get; set; }
 
 		/// <summary>
 		/// Gets or sets the summary overview.
 		/// </summary>
 		[JsonPropertyName("summary_overview")]
-		public string SummaryOverview { get; set; }
+		public string Overview { get; set; }
 
 		/// <summary>
 		/// Gets or sets the summary details sections.
 		/// </summary>
 		[JsonPropertyName("summary_details")]
-		public MeetingAiSummarySection[] SummaryDetails { get; set; }
+		public MeetingAiSummarySection[] Details { get; set; }
 
 		/// <summary>
 		/// Gets or sets the next steps.
