@@ -33,7 +33,12 @@ namespace ZoomNet.Utilities
 		public static string EncodeUUID(string uuid)
 		{
 			if (string.IsNullOrEmpty(uuid)) return uuid;
+#if NET5_0_OR_GREATER
+			if (!uuid.Contains('/')) return uuid;
+#else
 			if (!uuid.Contains("/")) return uuid;
+#endif
+
 			return HttpUtility.UrlEncode(HttpUtility.UrlEncode(uuid));
 		}
 	}
