@@ -200,6 +200,14 @@ namespace ZoomNet.Resources
 		Task<Stream> DownloadFileAsync(string downloadUrl, string accessToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
+		/// Retrieve the transcript metadata for a meeting.
+		/// </summary>
+		/// <param name="meetingId">The meeting Id or UUID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The <see cref="MeetingTranscriptInfo"/>.</returns>
+		Task<MeetingTranscriptInfo> GetTranscriptAsync(string meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Asynchronously retrieves and parses the transcript for the specified meeting.
 		/// </summary>
 		/// <param name="meetingId">The unique identifier of the meeting for which to retrieve the transcript. Cannot be null or empty.</param>
