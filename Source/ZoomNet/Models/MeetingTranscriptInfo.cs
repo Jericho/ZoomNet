@@ -66,6 +66,6 @@ namespace ZoomNet.Models
 		/// Gets or sets the reason why the transcript cannot be downloaded, if applicable.
 		/// </summary>
 		[JsonPropertyName("download_restriction_reason")]
-		public string DownloadRestrictionReason { get; set; }
+		public TranscriptDownloadRestrictionReason DownloadRestrictionReason { get; set; }
 	}
 }

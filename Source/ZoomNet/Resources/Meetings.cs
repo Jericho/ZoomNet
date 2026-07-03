@@ -1013,7 +1013,7 @@ namespace ZoomNet.Resources
 		public Task<MeetingAiSummary> GetAiSummaryAsync(string meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.GetAsync($"meetings/{meetingId}/meeting_summary")
+				.GetAsync($"meetings/{Utils.EncodeUUID(meetingId)}/meeting_summary")
 				.WithCancellationToken(cancellationToken)
 				.AsObject<MeetingAiSummary>();
 		}

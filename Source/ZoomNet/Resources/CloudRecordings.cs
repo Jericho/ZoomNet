@@ -222,7 +222,7 @@ namespace ZoomNet.Resources
 		public Task<MeetingTranscriptInfo> GetTranscriptAsync(string meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.GetAsync($"meetings/{meetingId}/transcript")
+				.GetAsync($"meetings/{Utils.EncodeUUID(meetingId)}/transcript")
 				.WithCancellationToken(cancellationToken)
 				.AsObject<MeetingTranscriptInfo>();
 		}
