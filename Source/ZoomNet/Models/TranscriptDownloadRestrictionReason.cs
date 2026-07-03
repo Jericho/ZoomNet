@@ -10,7 +10,7 @@ namespace ZoomNet.Models
 		/// <summary>
 		/// The transcript is available.
 		/// </summary>
-		[EnumMember(Value = string.Empty)]
+		[EnumMember(Value = "")]
 		Available,
 
 		/// <summary>
