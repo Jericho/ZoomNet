@@ -450,5 +450,21 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>A task that represents the asynchronous operation. The task result contains the paginated list of custom emojis.</returns>
 		Task<PaginatedResponseWithToken<CustomEmoji>> GetCustomEmojisAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Archive channels in bulk.
+		/// </summary>
+		/// <param name="channelIds">The unique identifiers of the channels to archive.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task ArchiveChannelsAsync(IEnumerable<string> channelIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Unarchive channels in bulk.
+		/// </summary>
+		/// <param name="channelIds">The unique identifiers of the channels to unarchive.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task UnarchiveChannelsAsync(IEnumerable<string> channelIds, CancellationToken cancellationToken = default);
 	}
 }

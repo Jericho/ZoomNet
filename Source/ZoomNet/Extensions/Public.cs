@@ -947,5 +947,30 @@ namespace ZoomNet
 		{
 			return cloudRecordingsResource.RejectRegistrantsAsync(meetingId, [registrantId], cancellationToken);
 		}
+
+		/// <summary>
+		/// Archive a single channel.
+		/// </summary>
+		/// <param name="chatResource">The chat resource.</param>
+		/// <param name="channelId">The unique identifiers of the channel to archive.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		public static Task ArchiveChannelAsync(this IChat chatResource, string channelId, CancellationToken cancellationToken = default)
+		{
+			return chatResource.ArchiveChannelsAsync(new[] { channelId }, cancellationToken);
+		}
+
+		/// <summary>
+		/// Unarchive a single channel.
+		/// </summary>
+		/// <param name="chatResource">The chat resource.</param>
+		/// <param name="channelId">The unique identifiers of the channel to unarchive.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		public static Task UnarchiveChannelsAsync(this IChat chatResource, string channelId, CancellationToken cancellationToken = default)
+		{
+			return chatResource.UnarchiveChannelsAsync(new[] { channelId }, cancellationToken);
+		}
+
 	}
 }

@@ -476,6 +476,38 @@ namespace ZoomNet.Resources
 				.AsPaginatedResponseWithToken<CustomEmoji>("emojis");
 		}
 
+		/// <inheritdoc/>
+		public Task ArchiveChannelsAsync(IEnumerable<string> channelIds, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "method", "archive" },
+				{ "channel_ids", channelIds?.ToArray() }
+			};
+
+			return _client
+				.PatchAsync("chat/channels/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task UnarchiveChannelsAsync(IEnumerable<string> channelIds, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "method", "unarchive" },
+				{ "channel_ids", channelIds?.ToArray() }
+			};
+
+			return _client
+				.PatchAsync("chat/channels/events")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
 		private Task<string> SendMessageAsync(string userId, string recipientEmail, string channelId, string message, string replyMessageId = null, IEnumerable<string> fileIds = null, IEnumerable<ChatMention> mentions = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject

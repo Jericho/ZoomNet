@@ -29,7 +29,7 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			var paginatedEmojis = await client.Chat.GetCustomEmojisAsync(100, null, cancellationToken).ConfigureAwait(false);
 			cleanUpTasks = paginatedEmojis.Records
-				.Where(m => m.Name.StartsWith("ZoomNetIntegrationTesting"))
+				.Where(m => m.Name.StartsWith("ZoomnetIntegrationTesting"))
 				.Select(async oldEmoji =>
 				{
 					await client.Chat.DeleteCustomEmojiAsync(oldEmoji.Id, cancellationToken).ConfigureAwait(false);
@@ -142,6 +142,10 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync($"Mention group \"{mentionGroupId1}\" deleted").ConfigureAwait(false);
 			await client.Chat.DeleteMentionGroupAsync(channel.Id, mentionGroupId2, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Mention group \"{mentionGroupId2}\" deleted").ConfigureAwait(false);
+
+			// ARCHIVE THE CHANNEL
+			await client.Chat.ArchiveChannelsAsync(new[] { channel.Id }, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Account channel \"{channel.Id}\" archived").ConfigureAwait(false);
 
 			// DELETE THE CHANNEL
 			await client.Chat.DeleteAccountChannelAsync(myUser.Id, channel.Id, cancellationToken).ConfigureAwait(false);
