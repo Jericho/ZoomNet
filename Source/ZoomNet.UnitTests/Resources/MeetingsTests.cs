@@ -1736,6 +1736,44 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingRequest();
 		}
 
+		[Fact]
+		public async Task GetAiSummaryAsync_WithMeetingId_ReturnsSummary()
+		{
+			// Arrange
+			var meetingUuid = "aDYlohsHRtCd4ii1uC2\u002BhA==";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("meetings", meetingUuid, "meeting_summary"))
+				.Respond("application/json", EndpointsResource.meetings__meetingId__meeting_summary_GET);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var meetings = new Meetings(client);
+
+			// Act
+			var result = await meetings.GetAiSummaryAsync(meetingUuid, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.MeetingId.ShouldBe(97763643886L);
+			result.MeetingUuid.ShouldBe(meetingUuid);
+			result.MeetingHostId.ShouldBe("30R7kT7bTIKSNUFEuH_Qlg");
+			result.MeetingHostEmail.ShouldBe("jchill@example.com");
+			result.MeetingTopic.ShouldBe("My Meeting");
+			result.Title.ShouldBe("Meeting summary for my meeting");
+			result.Content.ShouldNotBeNullOrEmpty();
+			result.DocUrl.ShouldBe("https://docs.zoom.us/doc/1aBcDeFgHiJkLmNoPqRsTu");
+			result.Details.ShouldNotBeNull();
+			result.Details.Length.ShouldBe(1);
+			result.Details[0].Label.ShouldBe("Meeting overview");
+			result.NextSteps.ShouldNotBeNull();
+			result.NextSteps.Length.ShouldBe(1);
+			result.EditedSummary.ShouldNotBeNull();
+			result.EditedSummary.Overview.ShouldBe("Meeting overview");
+		}
+
 		#endregion
 	}
 }

@@ -778,5 +778,13 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">Cancellation token.</param>
 		/// <returns>The token.</returns>
 		Task<string> GetTokenForLiveStreamingAsync(long meetingId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the AI summary for a meeting or webinar.
+		/// </summary>
+		/// <param name="meetingId">The meeting Id or UUID.</param>
+		/// <param name="cancellationToken">Cancellation token.</param>
+		/// <returns>The <see cref="MeetingAiSummary"/>.</returns>
+		Task<MeetingAiSummary> GetAiSummaryAsync(string meetingId, CancellationToken cancellationToken = default);
 	}
 }
