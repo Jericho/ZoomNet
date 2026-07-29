@@ -812,6 +812,25 @@ namespace ZoomNet.Resources
 		/// <returns>A task representing the asynchronous operation, containing a paginated response with the calendar services.</returns>
 		Task<PaginatedResponseWithToken<CalendarService>> GetCalendarServicesAsync(CancellationToken cancellationToken = default);
 
+		/// <summary>
+		/// Get the list of calendar resources for a given calendar service.
+		/// </summary>
+		/// <param name="serviceId">The unique identifier of the calendar service.</param>
+		/// <param name="recordsPerPage">The number of records to retrieve per page.</param>
+		/// <param name="pagingToken">The token for the page to retrieve.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task representing the asynchronous operation, containing a paginated response with the calendar resources.</returns>
+		Task<PaginatedResponseWithToken<CalendarResource>> GetCalendarResourcesForServiceAsync(string serviceId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get a calendar resource for a given calendar service.
+		/// </summary>
+		/// <param name="serviceId">The unique identifier of the calendar service.</param>
+		/// <param name="resourceId">The unique identifier of the calendar resource.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task representing the asynchronous operation, containing the calendar resource.</returns>
+		Task<CalendarResource> GetCalendarResourceAsync(string serviceId, string resourceId, CancellationToken cancellationToken = default);
+
 		#endregion
 	}
 }

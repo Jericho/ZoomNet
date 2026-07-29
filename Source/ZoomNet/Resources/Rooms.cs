@@ -1194,6 +1194,26 @@ namespace ZoomNet.Resources
 				.AsPaginatedResponseWithToken<CalendarService>("calendar_services");
 		}
 
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<CalendarResource>> GetCalendarResourcesForServiceAsync(string serviceId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/calendar/services/{serviceId}/resources")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<CalendarResource>("calendar_resources");
+		}
+
+		/// <inheritdoc/>
+		public Task<CalendarResource> GetCalendarResourceAsync(string serviceId, string resourceId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/calendar/services/{serviceId}/resources/{resourceId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<CalendarResource>();
+		}
+
 		#endregion
 	}
 }
