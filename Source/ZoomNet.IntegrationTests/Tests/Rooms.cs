@@ -246,12 +246,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			await client.Rooms.UpdateDigitalSignageContentPlaylistAsync(playlistId, "ZoomNet Integration Testing: Playlist - Updated", cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Digital signage content playlist with ID: {playlistId} has been updated").ConfigureAwait(false);
 
-			var items = new[]
-			{
-				(contentId, 10),
-				(urlId, 20)
-			};
-
+			var items = new[] { (contentId, 10), (urlId, 20) };
 			await client.Rooms.UpdateDigitalSignageContentPlaylistItemsAsync(playlistId, items, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Digital signage content playlist with ID: {playlistId} has been updated with {items.Length} items").ConfigureAwait(false);
 
@@ -308,9 +303,6 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			var backgroundFolders = await client.Rooms.GetBackgroundImageFoldersAsync(30, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {backgroundFolders.TotalRecords} background image folders").ConfigureAwait(false);
-
-
-
 
 			await client.Rooms.DeleteDigitalSignageContentItemAsync(contentId, false, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Digital signage content item with ID: {contentId} has been deleted").ConfigureAwait(false);
