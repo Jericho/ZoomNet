@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -507,6 +508,298 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The async task.</returns>
 		Task DeleteDeviceAsync(string roomId, string deviceId, CancellationToken cancellationToken = default);
+
+		#endregion
+
+		#region ZOOM ROOM CONTENT
+
+		/// <summary>
+		/// Create a new folder in the Zoom Rooms Digital Signage content library.
+		/// </summary>
+		/// <param name="folderName">The name of the folder to create.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The ID of the newly created folder.</returns>
+		Task<string> CreateDigitalSignageContentFolderAsync(string folderName, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Upload a media file to a folder in the Zoom Rooms Digital Signage content library.
+		/// </summary>
+		/// <param name="contentName">The name of the media content.</param>
+		/// <param name="fileData">The stream containing the media file data.</param>
+		/// <param name="folderId">The ID of the folder to add the media file to.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The ID of the newly created media content.</returns>
+		Task<string> UploadDigitalSignageMediaAsync(string contentName, Stream fileData, string folderId = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create a new playlist in the Zoom Rooms Digital Signage content library.
+		/// </summary>
+		/// <param name="playlistName">The name of the playlist to create.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The ID of the newly created playlist.</returns>
+		Task<string> CreateDigitalSignageContentPlaylistAsync(string playlistName, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create a new Zoom Rooms Digital Signage content URL.
+		/// </summary>
+		/// <param name="contentName">The name of the content.</param>
+		/// <param name="url">The URL of the content.</param>
+		/// <param name="folderId">The ID of the folder to add the URL to.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The ID of the newly created content URL.</returns>
+		Task<string> CreateDigitalSignageUrlAsync(string contentName, string url, string folderId = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create a new folder in the Zoom Rooms Digital Signage content library for background images.
+		/// </summary>
+		/// <param name="folderName">The name of the folder to create.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The ID of the newly created folder.</returns>
+		Task<string> CreateBackgroundImageFolderAsync(string folderName, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Upload an image to Zoom Room Content Library.
+		/// </summary>
+		/// <param name="fileName">The name of the image file.</param>
+		/// <param name="fileData">The stream containing the image file data.</param>
+		/// <param name="folderId">The ID of the folder to add the image to.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The ID of the newly uploaded background image.</returns>
+		Task<string> UploadBackgroundImageAsync(string fileName, Stream fileData, string folderId = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a folder from the Zoom Rooms Digital Signage content library.
+		/// </summary>
+		/// <param name="folderId">The ID of the folder to delete.</param>
+		/// <param name="removeFromLibraryOnly">If set to true, the folder and all its content item(s) will be removed from the content library only. If set to false, the folder and all its content item(s) will be removed from the content library and from any playlists and/or Zoom Room content lists that reference the content library item(s).</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task representing the asynchronous operation.</returns>
+		/// <remarks>All digital signage content items in this folder will also be deleted.</remarks>
+		Task DeleteDigitalSignageContentFolderAsync(string folderId, bool removeFromLibraryOnly = false, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a content item from the Zoom Rooms Digital Signage content library.
+		/// </summary>
+		/// <param name="contentId">The ID of the content to delete.</param>
+		/// <param name="removeFromLibraryOnly">If set to true, the content item will be removed from the content library only. If set to false, the content item will be removed from the content library and from any playlists and/or Zoom Room content lists that reference the content library item(s).</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task representing the asynchronous operation.</returns>
+		Task DeleteDigitalSignageContentItemAsync(string contentId, bool removeFromLibraryOnly = false, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a playlist from the Zoom Rooms Digital Signage content library.
+		/// </summary>
+		/// <param name="playlistId">The ID of the playlist to delete.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task representing the asynchronous operation.</returns>
+		Task DeleteDigitalSignageContentPlaylistAsync(string playlistId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a background image from the Zoom Rooms Digital Signage content library.
+		/// </summary>
+		/// <param name="imageId">The ID of the background image to delete.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task representing the asynchronous operation.</returns>
+		Task DeleteBackgroundImageAsync(string imageId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a folder from the Zoom Rooms Digital Signage content library for background images.
+		/// </summary>
+		/// <param name="folderId">The ID of the folder to delete.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task representing the asynchronous operation.</returns>
+		Task DeleteBackgroundImageFolderAsync(string folderId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get a folder from the Zoom Rooms Digital Signage content library.
+		/// </summary>
+		/// <param name="folderId">The ID of the folder to retrieve.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The requested digital signage content folder.</returns>
+		Task<DigitalSignageContentFolder> GetDigitalSignageContentFolderAsync(string folderId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get a content item from the Zoom Rooms Digital Signage content library.
+		/// </summary>
+		/// <param name="contentId">The ID of the content item to retrieve.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The requested digital signage content item.</returns>
+		Task<DigitalSignageContentItem> GetDigitalSignageContentItemAsync(string contentId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get a playlist from the Zoom Rooms Digital Signage content library.
+		/// </summary>
+		/// <param name="playlistId">The ID of the playlist to retrieve.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The requested digital signage content playlist.</returns>
+		Task<DigitalSignageContentPlaylist> GetDigitalSignageContentPlaylistAsync(string playlistId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the items in a playlist from the Zoom Rooms Digital Signage content library.
+		/// </summary>
+		/// <param name="playlistId">The ID of the playlist to retrieve items from.</param>
+		/// <param name="recordsPerPage">The number of records to retrieve per page.</param>
+		/// <param name="pagingToken">The token for the page to retrieve.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A paginated response containing the digital signage content items.</returns>
+		Task<PaginatedResponseWithToken<DigitalSignageContentPlaylistItem>> GetDigitalSignageContentPlaylistItemsAsync(string playlistId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get a background image from the Zoom Rooms Digital Signage content library.
+		/// </summary>
+		/// <param name="imageId">The ID of the background image to retrieve.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The requested background image.</returns>
+		Task<ZoomRoomBackGroundImage> GetBackgroundImageAsync(string imageId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get a folder from the Zoom Rooms Digital Signage content library for background images.
+		/// </summary>
+		/// <param name="folderId">The ID of the folder to retrieve.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The requested background image folder.</returns>
+		Task<DigitalSignageContentFolder> GetBackgroundImageFolderAsync(string folderId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the list of Zoom-provided default background images from the background image library.
+		/// </summary>
+		/// <param name="recordsPerPage">The number of records to retrieve per page.</param>
+		/// <param name="pagingToken">The token for the page to retrieve.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A paginated response containing the Zoom-provided default background images.</returns>
+		Task<PaginatedResponseWithToken<ZoomRoomBackGroundImage>> GetDefaultBackgroundImagesAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the list of Zoom Rooms Digital Signage content folders from the content library.
+		/// </summary>
+		/// <param name="recordsPerPage">The number of records to retrieve per page.</param>
+		/// <param name="pagingToken">The token for the page to retrieve.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A paginated response containing the Zoom Rooms Digital Signage content folders.</returns>
+		Task<PaginatedResponseWithToken<DigitalSignageContentItem>> GetDigitalSignageContentItemsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the list of rooms where a playlist is published.
+		/// </summary>
+		/// <param name="playlistId">The unique identifier of the playlist.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>An array of room IDs where the playlist is published.</returns>
+		Task<string[]> GetDigitalSignagePublishedRoomsAsync(string playlistId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the list of Zoom Rooms Digital Signage content playlists from the content library.
+		/// </summary>
+		/// <param name="recordsPerPage">The number of records to retrieve per page.</param>
+		/// <param name="pagingToken">The token for the page to retrieve.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A paginated response containing the Zoom Rooms Digital Signage content playlists.</returns>
+		Task<PaginatedResponseWithToken<DigitalSignageContentPlaylist>> GetDigitalSignageContentPlaylistsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the list of Zoom Rooms Digital Signage content playlists from the content library.
+		/// </summary>
+		/// <param name="folderId">The ID of the folder to retrieve background images from.</param>
+		/// <param name="recordsPerPage">The number of records to retrieve per page.</param>
+		/// <param name="pagingToken">The token for the page to retrieve.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A paginated response containing the Zoom Rooms Digital Signage background images.</returns>
+		Task<PaginatedResponseWithToken<ZoomRoomBackGroundImage>> GetBackgroundImagesAsync(string folderId = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the list of Zoom Rooms Digital Signage content folders from the content library for background images.
+		/// </summary>
+		/// <param name="recordsPerPage">The number of records to retrieve per page.</param>
+		/// <param name="pagingToken">The token for the page to retrieve.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A paginated response containing the Zoom Rooms Digital Signage content folders for background images.</returns>
+		Task<PaginatedResponseWithToken<DigitalSignageContentFolder>> GetBackgroundImageFoldersAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the list of Zoom Rooms Digital Signage content folders from the content library.
+		/// </summary>
+		/// <param name="recordsPerPage">The number of records to retrieve per page.</param>
+		/// <param name="pagingToken">The token for the page to retrieve.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A paginated response containing the Zoom Rooms Digital Signage content folders.</returns>
+		Task<PaginatedResponseWithToken<DigitalSignageContentFolder>> GetDigitalSignageContentFoldersAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update the name of a folder in the Zoom Rooms Digital Signage content library.
+		/// </summary>
+		/// <param name="folderId">The unique identifier of the folder.</param>
+		/// <param name="folderName">The new name for the folder.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task representing the asynchronous operation.</returns>
+		Task UpdateDigitalSignageContentFolderAsync(string folderId, string folderName, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update the name and expiration settings of a digital signage item in the Zoom Rooms Digital Signage content library.
+		/// </summary>
+		/// <param name="contentId">The unique identifier of the digital signage item.</param>
+		/// <param name="contentName">The new name for the digital signage item.</param>
+		/// <param name="url">The new URL for the digital signage item. Please note: This field will be ignored for image or video content items.</param>
+		/// <param name="expires">Indicates whether the digital signage item should have an expiration date.</param>
+		/// <param name="expirationDate">The expiration date for the digital signage item.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task representing the asynchronous operation.</returns>
+		Task UpdateDigitalSignageItemAsync(string contentId, string contentName = null, string url = null, bool? expires = null, DateTime? expirationDate = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update the media file of a digital signage item in the Zoom Rooms Digital Signage content library.
+		/// </summary>
+		/// <param name="contentId">The unique identifier of the digital signage item.</param>
+		/// <param name="contentName">The new name for the digital signage item.</param>
+		/// <param name="fileData">The new media file for the digital signage item.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task representing the asynchronous operation.</returns>
+		Task UpdateDigitalSignageMediaAsync(string contentId, string contentName, Stream fileData, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update the name of a playlist in the Zoom Rooms Digital Signage content library.
+		/// </summary>
+		/// <param name="playlistId">The unique identifier of the playlist.</param>
+		/// <param name="playlistName">The new name for the playlist.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task representing the asynchronous operation.</returns>
+		Task UpdateDigitalSignageContentPlaylistAsync(string playlistId, string playlistName, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update the items in a playlist in the Zoom Rooms Digital Signage content library.
+		/// </summary>
+		/// <param name="playlistId">The unique identifier of the playlist.</param>
+		/// <param name="items">The items to update in the playlist. Note: The playlist contents are entirely replaced with the supplied items.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task representing the asynchronous operation.</returns>
+		Task UpdateDigitalSignageContentPlaylistItemsAsync(string playlistId, IEnumerable<(string Id, int Duration)> items, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update the list of rooms where a playlist is published in the Zoom Rooms Digital Signage content library.
+		/// </summary>
+		/// <param name="playlistId">The unique identifier of the playlist.</param>
+		/// <param name="roomIds">The list of room IDs where the playlist should be published.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task representing the asynchronous operation.</returns>
+		Task UpdateDigitalSignagePublishedRoomsAsync(string playlistId, IEnumerable<string> roomIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update the background image of a Zoom Room.
+		/// </summary>
+		/// <param name="fileId">The unique identifier of the background image file.</param>
+		/// <param name="fileName">The new name for the background image file.</param>
+		/// <param name="fileData">The new background image file data.</param>
+		/// <param name="folderId">The unique identifier of the folder where the background image should be stored.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task representing the asynchronous operation.</returns>
+		Task UpdateBackgroundImageAsync(string fileId, string fileName, Stream fileData, string folderId = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update the name of a folder in the Zoom Rooms Digital Signage content library for background images.
+		/// </summary>
+		/// <param name="folderId">The unique identifier of the folder.</param>
+		/// <param name="folderName">The new name for the folder.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task representing the asynchronous operation.</returns>
+		Task UpdateBackgroundImageFolderAsync(string folderId, string folderName, CancellationToken cancellationToken = default);
 
 		#endregion
 	}
