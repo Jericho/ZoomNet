@@ -30,6 +30,13 @@ namespace ZoomNet.IntegrationTests.Tests
 				}
 			}
 
+			/*
+			 Commenting out because, despite the fact that the account has the permission, the API returns a HTTP 400 with the following payload:
+			{"code":4711,"message":"Invalid access token, does not contain scopes:[account:write:virtual_background_files:master]."}
+
+			I think the message is misleading. The issue is not so much that my S2S OAuth app doesn't have to necessary scope but rather that this
+			endpoint is restricted to master account (i.e.: account with sub-accounts). Just a guess on my part though.
+			
 			// UPLOAD A BACKGROUND FILE
 			if (client.HasPermission("account:write:virtual_background_files:master"))
 			{
@@ -37,6 +44,7 @@ namespace ZoomNet.IntegrationTests.Tests
 				var virtualBackground = await client.Accounts.UploadVirtualBackgroundFileAsync(myUser.AccountId, fileName, fileStream, cancellationToken).ConfigureAwait(false);
 				await log.WriteLineAsync($"File {virtualBackground.Name} uploaded").ConfigureAwait(false);
 			}
+			*/
 		}
 	}
 }

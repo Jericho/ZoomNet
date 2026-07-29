@@ -1054,6 +1054,7 @@ namespace ZoomNet
 
 		internal static T ToObject<T>(this JsonElement element, JsonSerializerOptions options = null)
 		{
+			if (element.ValueKind == JsonValueKind.Null) return default;
 			return JsonSerializer.Deserialize<T>(element.GetRawText(), options ?? JsonFormatter.DefaultDeserializerOptions);
 		}
 
@@ -1241,7 +1242,7 @@ namespace ZoomNet
 				PageCount = pageCount,
 				PageNumber = pageNumber,
 				RecordsPerPage = recordsPerPage,
-				Records = jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()
+				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()) ?? Array.Empty<T>()
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
@@ -1279,7 +1280,7 @@ namespace ZoomNet
 			{
 				NextPageToken = nextPageToken,
 				RecordsPerPage = recordsPerPage,
-				Records = jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()
+				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()) ?? Array.Empty<T>()
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
@@ -1321,7 +1322,7 @@ namespace ZoomNet
 				To = to,
 				NextPageToken = nextPageToken,
 				RecordsPerPage = recordsPerPage,
-				Records = jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()
+				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()) ?? Array.Empty<T>()
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
@@ -1348,7 +1349,7 @@ namespace ZoomNet
 			var result = new PaginatedSyncResponse<T>()
 			{
 				SyncToken = syncToken,
-				Records = jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()
+				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()) ?? Array.Empty<T>()
 			};
 
 			return result;

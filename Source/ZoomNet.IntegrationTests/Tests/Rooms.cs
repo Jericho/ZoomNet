@@ -26,6 +26,14 @@ namespace ZoomNet.IntegrationTests.Tests
 			var currentStructure = await client.Rooms.GetLocationStructureAsync(cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Current location structure: {string.Join(", ", currentStructure.Select(s => s.ToEnumString()))}").ConfigureAwait(false);
 
+			// GET A DIGITAL SIGNAGE BACKGROUND IMAGE FOLDERS
+			var paginatedBackgroundFolders = await client.Rooms.GetBackgroundImageFoldersAsync(100, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {paginatedBackgroundFolders.Records.Length} background image folders").ConfigureAwait(false);
+
+			// GET A DIGITAL SIGNAGE PLAYLISTS
+			var paginatedPlaylists = await client.Rooms.GetDigitalSignageContentPlaylistsAsync(100, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {paginatedPlaylists.Records.Length} playlists").ConfigureAwait(false);
+
 			// CLEANUP PREVIOUS INTEGRATION TESTS THAT MIGHT HAVE BEEN INTERRUPTED BEFORE THEY HAD TIME TO CLEANUP AFTER THEMSELVES
 			var cleanUpTasks = paginatedTags.Records
 				.Where(r => r.Name.StartsWith("ZoomNet Integration Testing:", StringComparison.OrdinalIgnoreCase))
@@ -33,6 +41,26 @@ namespace ZoomNet.IntegrationTests.Tests
 				{
 					await client.Rooms.DeleteTagAsync(oldTag.Id, cancellationToken).ConfigureAwait(false);
 					await log.WriteLineAsync($"Tag {oldTag.Id} deleted").ConfigureAwait(false);
+					await Task.Delay(250, cancellationToken).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
+				});
+			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
+
+			cleanUpTasks = paginatedBackgroundFolders.Records
+				.Where(r => r.Name.StartsWith("ZoomNet Integration Testing:", StringComparison.OrdinalIgnoreCase))
+				.Select(async oldFolder =>
+				{
+					await client.Rooms.DeleteBackgroundImageFolderAsync(oldFolder.Id, cancellationToken).ConfigureAwait(false);
+					await log.WriteLineAsync($"Background image folder {oldFolder.Id} deleted").ConfigureAwait(false);
+					await Task.Delay(250, cancellationToken).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
+				});
+			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
+
+			cleanUpTasks = paginatedPlaylists.Records
+				.Where(r => r.Name.StartsWith("ZoomNet Integration Testing:", StringComparison.OrdinalIgnoreCase))
+				.Select(async oldPlaylist =>
+				{
+					await client.Rooms.DeleteDigitalSignageContentPlaylistAsync(oldPlaylist.Id, cancellationToken).ConfigureAwait(false);
+					await log.WriteLineAsync($"Digital signage content playlist {oldPlaylist.Id} deleted").ConfigureAwait(false);
 					await Task.Delay(250, cancellationToken).ConfigureAwait(false);    // Brief pause to ensure Zoom has time to catch up
 				});
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
@@ -51,6 +79,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			await Task.WhenAll(cleanUpTasks).ConfigureAwait(false);
 
 			await CleanUpAllLocations(client, log, cancellationToken).ConfigureAwait(false);
+
 
 			// CREATE A LOCATION HIERARCHY
 			var desiredStructure = currentStructure
@@ -83,8 +112,8 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			if (currentStructure.Contains(RoomLocationType.Campus))
 			{
-				var state = await client.Rooms.CreateLocationAsync("ZoomNet Integration Testing: Campus", parentId, cancellationToken).ConfigureAwait(false);
-				parentId = state.Id;
+				var campus = await client.Rooms.CreateLocationAsync("ZoomNet Integration Testing: Campus", parentId, cancellationToken).ConfigureAwait(false);
+				parentId = campus.Id;
 				await log.WriteLineAsync("Added a campus to the location structure").ConfigureAwait(false);
 			}
 
@@ -182,6 +211,116 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			await client.Rooms.DeleteAsync(room.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Room has been deleted").ConfigureAwait(false);
+
+
+
+
+			var folderId = await client.Rooms.CreateDigitalSignageContentFolderAsync("ZoomNet Integration Testing: Folder", cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"A new digital signage content folder was created with ID: {folderId}").ConfigureAwait(false);
+
+			await client.Rooms.UpdateDigitalSignageContentFolderAsync(folderId, "ZoomNet Integration Testing: updated", cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Digital signage content folder with ID: {folderId} has been updated").ConfigureAwait(false);
+
+			var (fileStream, fileName) = Utils.GetRandomImage();
+			var contentId = await client.Rooms.UploadDigitalSignageMediaAsync(fileName, fileStream, folderId, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"File {fileName} uploaded to folder with ID: {folderId}").ConfigureAwait(false);
+
+			await client.Rooms.UpdateDigitalSignageItemAsync(contentId, "ZoomNet Integration Testing: updated", cancellationToken: cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Digital signage content item with ID: {contentId} has been updated").ConfigureAwait(false);
+
+			(fileStream, fileName) = Utils.GetRandomImage();
+			await client.Rooms.UpdateDigitalSignageMediaAsync(contentId, fileName, fileStream, cancellationToken).ConfigureAwait(false);
+
+			//await client.Rooms.UpdateDigitalSignageItemAsync(contentId, null, null, true, DateTime.UtcNow.AddDays(1), cancellationToken).ConfigureAwait(false);
+			//await log.WriteLineAsync($"Digital signage content item with ID: {contentId} has been updated").ConfigureAwait(false);
+
+			var urlId = await client.Rooms.CreateDigitalSignageUrlAsync("ZoomNet Integration Testing: URL", "https://zoom.us", folderId, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"A new digital signage content URL was created with ID: {urlId}").ConfigureAwait(false);
+
+			await client.Rooms.UpdateDigitalSignageItemAsync(urlId, "ZoomNet Integration Testing: updated", "http://google.com", null, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Digital signage content URL with ID: {urlId} has been updated").ConfigureAwait(false);
+
+			var playlistId = await client.Rooms.CreateDigitalSignageContentPlaylistAsync("ZoomNet Integration Testing: Playlist", cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"A new digital signage content playlist was created with ID: {playlistId}").ConfigureAwait(false);
+
+			await client.Rooms.UpdateDigitalSignageContentPlaylistAsync(playlistId, "ZoomNet Integration Testing: Playlist - Updated", cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Digital signage content playlist with ID: {playlistId} has been updated").ConfigureAwait(false);
+
+			var items = new[] { (contentId, 10), (urlId, 20) };
+			await client.Rooms.UpdateDigitalSignageContentPlaylistItemsAsync(playlistId, items, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Digital signage content playlist with ID: {playlistId} has been updated with {items.Length} items").ConfigureAwait(false);
+
+			// I have not been able to test this code because I am getting "HTTP 403 Forbidden" with the following payload: { "code":403,"message":"Access restricted."}
+			//await client.Rooms.UpdateDigitalSignagePublishedRoomsAsync(playlistId, [room.Id], cancellationToken).ConfigureAwait(false);
+			//await log.WriteLineAsync($"Digital signage content playlist with ID: {playlistId} has been published to room with ID: {room.Id}").ConfigureAwait(false);
+
+			var backgroundFolderId = await client.Rooms.CreateBackgroundImageFolderAsync("ZoomNet Integration Testing: Background Folder", cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"A new background image folder was created with ID: {backgroundFolderId}").ConfigureAwait(false);
+
+			await client.Rooms.UpdateBackgroundImageFolderAsync(backgroundFolderId, "ZoomNet Integration Testing: Background Folder - Updated", cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Background image folder with ID: {backgroundFolderId} has been updated").ConfigureAwait(false);
+
+			(fileStream, fileName) = Utils.GetRandomImage();
+			var backgroundId = await client.Rooms.UploadBackgroundImageAsync(fileName, fileStream, backgroundFolderId, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"File {fileName} uploaded as a background image").ConfigureAwait(false);
+
+			(fileStream, fileName) = Utils.GetRandomImage();
+			await client.Rooms.UpdateBackgroundImageAsync(backgroundId, fileName, fileStream, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Background image with ID: {backgroundId} has been updated").ConfigureAwait(false);
+
+			var contentFolder = await client.Rooms.GetDigitalSignageContentFolderAsync(folderId, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Digital signage content folder with ID: {folderId} has been retrieved").ConfigureAwait(false);
+
+			var contentItem = await client.Rooms.GetDigitalSignageContentItemAsync(contentId, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Digital signage content item with ID: {contentId} has been retrieved").ConfigureAwait(false);
+
+			contentItem = await client.Rooms.GetDigitalSignageContentItemAsync(urlId, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Digital signage content item with ID: {urlId} has been retrieved").ConfigureAwait(false);
+
+			var playlist = await client.Rooms.GetDigitalSignageContentPlaylistAsync(playlistId, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Digital signage content playlist with ID: {playlistId} has been retrieved").ConfigureAwait(false);
+
+			var playlistItems = await client.Rooms.GetDigitalSignageContentPlaylistItemsAsync(playlistId, 30, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {playlistItems.TotalRecords} items in playlist with ID: {playlistId}").ConfigureAwait(false);
+
+			var backgroundImage = await client.Rooms.GetBackgroundImageAsync(backgroundId, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Background image with ID: {backgroundId} has been retrieved").ConfigureAwait(false);
+
+			var backgroundImageFolder = await client.Rooms.GetBackgroundImageFolderAsync(backgroundFolderId, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Background image folder with ID: {backgroundFolderId} has been retrieved").ConfigureAwait(false);
+
+			var defaultBackgroundImages = await client.Rooms.GetDefaultBackgroundImagesAsync(30, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {defaultBackgroundImages.TotalRecords} default background images").ConfigureAwait(false);
+
+			var contentItems = await client.Rooms.GetDigitalSignageContentItemsAsync(30, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {contentItems.TotalRecords} digital signage content items").ConfigureAwait(false);
+
+			var playlists = await client.Rooms.GetDigitalSignageContentPlaylistsAsync(30, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {playlists.TotalRecords} digital signage content playlists").ConfigureAwait(false);
+
+			var backgroundImages = await client.Rooms.GetBackgroundImagesAsync(backgroundFolderId, 30, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {backgroundImages.TotalRecords} background images").ConfigureAwait(false);
+
+			var backgroundFolders = await client.Rooms.GetBackgroundImageFoldersAsync(30, null, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {backgroundFolders.TotalRecords} background image folders").ConfigureAwait(false);
+
+			await client.Rooms.DeleteDigitalSignageContentItemAsync(contentId, false, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Digital signage content item with ID: {contentId} has been deleted").ConfigureAwait(false);
+
+			await client.Rooms.DeleteDigitalSignageContentItemAsync(urlId, false, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Digital signage content URL with ID: {urlId} has been deleted").ConfigureAwait(false);
+
+			await client.Rooms.DeleteDigitalSignageContentFolderAsync(folderId, false, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Digital signage content folder with ID: {folderId} has been deleted").ConfigureAwait(false);
+
+			await client.Rooms.DeleteDigitalSignageContentPlaylistAsync(playlistId, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Digital signage content playlist with ID: {playlistId} has been deleted").ConfigureAwait(false);
+
+			await client.Rooms.DeleteBackgroundImageAsync(backgroundId, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Background image with ID: {backgroundId} has been deleted").ConfigureAwait(false);
+
+			await client.Rooms.DeleteBackgroundImageFolderAsync(backgroundFolderId, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Background image folder with ID: {backgroundFolderId} has been deleted").ConfigureAwait(false);
 
 			await CleanUpAllLocations(client, log, cancellationToken).ConfigureAwait(false);
 		}
