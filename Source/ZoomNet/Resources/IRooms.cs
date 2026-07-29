@@ -802,5 +802,16 @@ namespace ZoomNet.Resources
 		Task UpdateBackgroundImageFolderAsync(string folderId, string folderName, CancellationToken cancellationToken = default);
 
 		#endregion
+
+		#region ZOOM ROOM CALENDAR
+
+		/// <summary>
+		/// Get the list of the existing calendar services in a Zoom Room account.
+		/// </summary>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task representing the asynchronous operation, containing a paginated response with the calendar services.</returns>
+		Task<PaginatedResponseWithToken<CalendarService>> GetCalendarServicesAsync(CancellationToken cancellationToken = default);
+
+		#endregion
 	}
 }

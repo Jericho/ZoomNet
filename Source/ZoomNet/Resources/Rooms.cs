@@ -1182,5 +1182,18 @@ namespace ZoomNet.Resources
 		}
 
 		#endregion
+
+		#region ZOOM ROOM CALENDAR
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<CalendarService>> GetCalendarServicesAsync(CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync("rooms/calendar/services")
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<CalendarService>("calendar_services");
+		}
+
+		#endregion
 	}
 }
