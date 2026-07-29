@@ -216,9 +216,6 @@ namespace ZoomNet.IntegrationTests.Tests
 			await client.Rooms.DeleteAsync(room.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Room has been deleted").ConfigureAwait(false);
 
-
-
-
 			var folderId = await client.Rooms.CreateDigitalSignageContentFolderAsync("ZoomNet Integration Testing: Folder", cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"A new digital signage content folder was created with ID: {folderId}").ConfigureAwait(false);
 
