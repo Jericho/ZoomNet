@@ -34,6 +34,10 @@ namespace ZoomNet.IntegrationTests.Tests
 			var paginatedPlaylists = await client.Rooms.GetDigitalSignageContentPlaylistsAsync(100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {paginatedPlaylists.Records.Length} playlists").ConfigureAwait(false);
 
+			// GET ALL THE CALENDAR SERVICES
+			var paginatedCalendarServices = await client.Rooms.GetCalendarServicesAsync(cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"There are {paginatedCalendarServices.Records.Length} calendar services").ConfigureAwait(false);
+
 			// CLEANUP PREVIOUS INTEGRATION TESTS THAT MIGHT HAVE BEEN INTERRUPTED BEFORE THEY HAD TIME TO CLEANUP AFTER THEMSELVES
 			var cleanUpTasks = paginatedTags.Records
 				.Where(r => r.Name.StartsWith("ZoomNet Integration Testing:", StringComparison.OrdinalIgnoreCase))
@@ -211,9 +215,6 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			await client.Rooms.DeleteAsync(room.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Room has been deleted").ConfigureAwait(false);
-
-
-
 
 			var folderId = await client.Rooms.CreateDigitalSignageContentFolderAsync("ZoomNet Integration Testing: Folder", cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"A new digital signage content folder was created with ID: {folderId}").ConfigureAwait(false);

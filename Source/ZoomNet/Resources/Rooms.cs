@@ -1071,7 +1071,7 @@ namespace ZoomNet.Resources
 				{ "content_name", contentName },
 				{ "content_url", url },
 				{ "expires", expires },
-				{ "expiration_date", expirationDate?.ToZoomFormat() }
+				{ "expiration_time", expirationDate }
 			};
 
 			return _client
@@ -1101,6 +1101,7 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
+		/// <inheritdoc/>
 		public Task UpdateDigitalSignageContentPlaylistAsync(string playlistId, string playlistName, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
@@ -1177,6 +1178,81 @@ namespace ZoomNet.Resources
 			return _client
 				.PatchAsync($"rooms/content/background/folders/{folderId}")
 				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		#endregion
+
+		#region ZOOM ROOM CALENDAR
+
+		/// <inheritdoc/>
+		public Task<CalendarResource> AddCalendarResourceAsync(string serviceId, string resourceEmail, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "calendar_resource_email", resourceEmail }
+			};
+
+			return _client
+				.PostAsync($"rooms/calendar/services/{serviceId}/resources")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<CalendarResource>();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteCalendarResourceAsync(string serviceId, string resourceId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"rooms/calendar/services/{serviceId}/resources/{resourceId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteCalendarServiceAsync(string serviceId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"rooms/calendar/services/{serviceId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<CalendarService>> GetCalendarServicesAsync(CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync("rooms/calendar/services")
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<CalendarService>("calendar_services");
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<CalendarResource>> GetCalendarResourcesAsync(string serviceId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/calendar/services/{serviceId}/resources")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<CalendarResource>("calendar_resources");
+		}
+
+		/// <inheritdoc/>
+		public Task<CalendarResource> GetCalendarResourceAsync(string serviceId, string resourceId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/calendar/services/{serviceId}/resources/{resourceId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<CalendarResource>();
+		}
+
+		/// <inheritdoc/>
+		public Task StartCalendarServiceSyncProcessAsync(string serviceId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.PutAsync($"rooms/calendar/services/{serviceId}/sync")
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}

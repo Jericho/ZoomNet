@@ -126,16 +126,15 @@ namespace ZoomNet
 			const string defaultDateFormat = dateOnlyFormat + "'T'HH:mm:ss";
 			const string utcDateFormat = defaultDateFormat + "'Z'";
 
-			if (dateOnly)
-			{
-				if (timeZone.HasValue && timeZone.Value == TimeZones.UTC) return date.ToUniversalTime().ToString(dateOnlyFormat);
-				else return date.ToString(dateOnlyFormat);
-			}
-			else
-			{
-				if (timeZone.HasValue && timeZone.Value == TimeZones.UTC) return date.ToUniversalTime().ToString(utcDateFormat);
-				else return date.ToString(defaultDateFormat);
-			}
+			var formats = dateOnly ?
+				(UtcFormat: dateOnlyFormat, OtherTimeZoneFormat: dateOnlyFormat) :
+				(UtcFormat: utcDateFormat, OtherTimeZoneFormat: defaultDateFormat);
+
+			var formattedDate = timeZone.HasValue && timeZone.Value == TimeZones.UTC ?
+				date.ToUniversalTime().ToString(formats.UtcFormat) :
+				date.ToString(formats.OtherTimeZoneFormat);
+
+			return formattedDate;
 		}
 
 		/// <summary>
