@@ -7,6 +7,10 @@ namespace ZoomNet.Models
 	/// </summary>
 	public enum CalendarResourceSyncStatus
 	{
+		/// <summary>Unknown.</summary>
+		[EnumMember(Value = "")]
+		Unknown,
+
 		/// <summary>Synched.</summary>
 		[EnumMember(Value = "success")]
 		Success,

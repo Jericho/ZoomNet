@@ -806,6 +806,33 @@ namespace ZoomNet.Resources
 		#region ZOOM ROOM CALENDAR
 
 		/// <summary>
+		/// Add a calendar resource to a Microsoft Exchange or Office 365 calendar service in a Zoom Room account.
+		/// </summary>
+		/// <param name="serviceId">The unique identifier of the calendar service.</param>
+		/// <param name="resourceEmail">The email address of the calendar resource.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task representing the asynchronous operation, containing the added calendar resource.</returns>
+		/// <remarks>This API does not support adding a calendar resource to a Google calendar service.</remarks>
+		Task<CalendarResource> AddCalendarResourceAsync(string serviceId, string resourceEmail, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a calendar resource from a Microsoft Exchange or Office 365 calendar service in a Zoom Room account.
+		/// </summary>
+		/// <param name="serviceId">The unique identifier of the calendar service.</param>
+		/// <param name="resourceId">The unique identifier of the calendar resource.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task representing the asynchronous operation.</returns>
+		Task DeleteCalendarResourceAsync(string serviceId, string resourceId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Delete a Zoom Room account's calendar service.
+		/// </summary>
+		/// <param name="serviceId">The unique identifier of the calendar service.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task representing the asynchronous operation.</returns>
+		Task DeleteCalendarServiceAsync(string serviceId, CancellationToken cancellationToken = default);
+
+		/// <summary>
 		/// Get the list of the existing calendar services in a Zoom Room account.
 		/// </summary>
 		/// <param name="cancellationToken">The cancellation token.</param>
@@ -820,7 +847,7 @@ namespace ZoomNet.Resources
 		/// <param name="pagingToken">The token for the page to retrieve.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>A task representing the asynchronous operation, containing a paginated response with the calendar resources.</returns>
-		Task<PaginatedResponseWithToken<CalendarResource>> GetCalendarResourcesForServiceAsync(string serviceId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<CalendarResource>> GetCalendarResourcesAsync(string serviceId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get a calendar resource for a given calendar service.
@@ -830,6 +857,14 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>A task representing the asynchronous operation, containing the calendar resource.</returns>
 		Task<CalendarResource> GetCalendarResourceAsync(string serviceId, string resourceId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Kick off the sync process for Zoom Room account's calendar service.
+		/// </summary>
+		/// <param name="serviceId">The unique identifier of the calendar service.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task representing the asynchronous operation.</returns>
+		Task StartCalendarServiceSyncProcessAsync(string serviceId, CancellationToken cancellationToken = default);
 
 		#endregion
 	}
