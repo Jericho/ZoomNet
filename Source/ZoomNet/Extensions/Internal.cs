@@ -442,9 +442,11 @@ namespace ZoomNet
 		/// <returns>Returns the request builder for chaining.</returns>
 		internal static IRequest WithHttp200TreatedAsFailure(this IRequest request, string customExceptionMessage = null)
 		{
+			var diagnosticStore = request.Filters.OfType<ZoomErrorHandler>().Single().DiagnosticStore;
+
 			return request
 				.WithoutFilter<ZoomErrorHandler>()
-				.WithFilter(new ZoomErrorHandler(true, customExceptionMessage));
+				.WithFilter(new ZoomErrorHandler(diagnosticStore, true, customExceptionMessage));
 		}
 
 		/// <summary>Set the body content of the HTTP request.</summary>
@@ -818,16 +820,6 @@ namespace ZoomNet
 				});
 
 			return querystringParameters;
-		}
-
-		internal static DiagnosticInfo GetDiagnosticInfo(this IResponse response)
-		{
-			var diagnosticId = response.Message.Headers.GetValue(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME);
-			if (string.IsNullOrEmpty(diagnosticId)) diagnosticId = response.Message.RequestMessage.Headers.GetValue(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME);
-			if (string.IsNullOrEmpty(diagnosticId)) return null;
-
-			DiagnosticHandler.DiagnosticsInfo.TryGetValue(diagnosticId, out DiagnosticInfo diagnosticInfo);
-			return diagnosticInfo;
 		}
 
 		internal static async Task<(bool IsError, string ErrorMessage, int? ErrorCode)> GetErrorMessageAsync(this HttpResponseMessage message)

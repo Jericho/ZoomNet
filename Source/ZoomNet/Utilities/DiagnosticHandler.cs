@@ -3,9 +3,7 @@ using Microsoft.Extensions.Logging.Abstractions;
 using Pathoschild.Http.Client;
 using Pathoschild.Http.Client.Extensibility;
 using System;
-using System.Collections.Concurrent;
 using System.Diagnostics;
-using System.Linq;
 using System.Net.Http;
 
 namespace ZoomNet.Utilities
@@ -22,21 +20,17 @@ namespace ZoomNet.Utilities
 		private readonly ILogger _logger;
 		private readonly LogLevel _logLevelSuccessfulCalls;
 		private readonly LogLevel _logLevelFailedCalls;
-
-		#endregion
-
-		#region PROPERTIES
-
-		internal static ConcurrentDictionary<string, DiagnosticInfo> DiagnosticsInfo { get; } = new();
+		private readonly IDiagnosticStore _diagnosticStore;
 
 		#endregion
 
 		#region CTOR
 
-		public DiagnosticHandler(LogLevel logLevelSuccessfulCalls, LogLevel logLevelFailedCalls, ILogger logger = null)
+		public DiagnosticHandler(LogLevel logLevelSuccessfulCalls, LogLevel logLevelFailedCalls, IDiagnosticStore diagnosticStore, ILogger logger = null)
 		{
 			_logLevelSuccessfulCalls = logLevelSuccessfulCalls;
 			_logLevelFailedCalls = logLevelFailedCalls;
+			_diagnosticStore = diagnosticStore ?? throw new ArgumentNullException(nameof(diagnosticStore));
 			_logger = logger ?? NullLogger.Instance;
 		}
 
@@ -53,7 +47,7 @@ namespace ZoomNet.Utilities
 			request.WithHeader(DIAGNOSTIC_ID_HEADER_NAME, diagnosticId);
 
 			// Add the diagnostic info to our cache
-			DiagnosticsInfo.TryAdd(diagnosticId, new DiagnosticInfo(new WeakReference<HttpRequestMessage>(request.Message), Stopwatch.GetTimestamp(), null, long.MinValue, request.Options));
+			_diagnosticStore.TryAdd(diagnosticId, new DiagnosticInfo(new WeakReference<HttpRequestMessage>(request.Message), Stopwatch.GetTimestamp(), null, long.MinValue, request.Options));
 		}
 
 		/// <summary>Method invoked just after the HTTP response is received. This method can modify the incoming HTTP response.</summary>
@@ -64,12 +58,12 @@ namespace ZoomNet.Utilities
 			var responseTimestamp = Stopwatch.GetTimestamp();
 
 			var diagnosticId = response.Message.RequestMessage.Headers.GetValue(DIAGNOSTIC_ID_HEADER_NAME);
-			if (DiagnosticsInfo.TryGetValue(diagnosticId, out DiagnosticInfo diagnosticInfo))
+			if (_diagnosticStore.TryGetValue(diagnosticId, out DiagnosticInfo diagnosticInfo))
 			{
 				// Update the cached diagnostic info
 				diagnosticInfo.ResponseReference = new WeakReference<HttpResponseMessage>(response.Message);
 				diagnosticInfo.ResponseTimestamp = responseTimestamp;
-				DiagnosticsInfo[diagnosticId] = diagnosticInfo;
+				_diagnosticStore.AddOrUpdate(diagnosticId, diagnosticInfo);
 
 				// Log
 				var logLevel = response.IsSuccessStatusCode ? _logLevelSuccessfulCalls : _logLevelFailedCalls;
@@ -80,34 +74,6 @@ namespace ZoomNet.Utilities
 
 					_logger.Log(logLevel, template, parameters);
 				}
-
-				Cleanup();
-			}
-		}
-
-		#endregion
-
-		#region PRIVATE METHODS
-
-		private static void Cleanup()
-		{
-			try
-			{
-				// Remove diagnostic information for requests that have been garbage collected
-				foreach (string key in DiagnosticsInfo.Keys.ToArray())
-				{
-					if (DiagnosticsInfo.TryGetValue(key, out DiagnosticInfo diagnosticInfo))
-					{
-						if (!diagnosticInfo.RequestReference.TryGetTarget(out HttpRequestMessage request))
-						{
-							DiagnosticsInfo.TryRemove(key, out _);
-						}
-					}
-				}
-			}
-			catch
-			{
-				// Intentionally left empty
 			}
 		}
 
