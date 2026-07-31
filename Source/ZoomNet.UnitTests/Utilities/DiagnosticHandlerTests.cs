@@ -9,6 +9,7 @@ using ZoomNet.Utilities;
 
 namespace ZoomNet.UnitTests.Utilities
 {
+	[TestClass(DisableParallelization = true)]
 	public class DiagnosticHandlerTests : IDisposable
 	{
 		public DiagnosticHandlerTests()
