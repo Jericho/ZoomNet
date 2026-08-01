@@ -348,6 +348,49 @@ namespace ZoomNet.Resources
 
 		#endregion
 
+		#region ZOOM ROOM ACCOUNT
+
+		/// <inheritdoc/>
+		public Task<ZoomRoomAccountProfile> GetAccountProfileAsync(CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/account_profile")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ZoomRoomAccountProfile>();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateAccountProfileAsync(string requiredCodeToExit = null, string roomPasscode = null, string supportEmail = null, string supportPhone = null, bool? applyBackgroundImageToAllDisplays = null, IEnumerable<(string DisplayId, string ContentId)> backgroundImages = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{
+					"basic", new JsonObject
+					{
+						{ "required_code_to_exit", requiredCodeToExit },
+						{ "room_passcode", roomPasscode },
+						{ "support_email", supportEmail },
+						{ "support_phone", supportPhone }
+					}
+				},
+				{
+					"setup", new JsonObject
+					{
+						{ "apply_background_image_to_all_displays", applyBackgroundImageToAllDisplays },
+						{ "background_images", backgroundImages?.Select(x => new JsonObject { { "display_id", x.DisplayId }, { "content_id", x.ContentId } }).ToArray() }
+					}
+				}
+			};
+
+			return _client
+				.PatchAsync("rooms/account_profile")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		#endregion
+
 		#region ZOOM ROOM CALENDAR
 
 		/// <inheritdoc/>

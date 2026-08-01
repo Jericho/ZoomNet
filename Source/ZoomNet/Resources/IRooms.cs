@@ -216,6 +216,30 @@ namespace ZoomNet.Resources
 
 		#endregion
 
+		#region ZOOM ROOM ACCOUNT
+
+		/// <summary>
+		/// Retrieves the Zoom Room account information for the specified room.
+		/// </summary>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Optional; defaults to <see langword="default"/>.</param>
+		/// <returns>A <see cref="ZoomRoomAccountProfile"/> containing the account information for the specified room.</returns>
+		Task<ZoomRoomAccountProfile> GetAccountProfileAsync(CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update the basic Zoom Room account profile.
+		/// </summary>
+		/// <param name="requiredCodeToExit">The required code to exit the room.</param>
+		/// <param name="roomPasscode">The room passcode.</param>
+		/// <param name="supportEmail">The support email address.</param>
+		/// <param name="supportPhone">The support phone number.</param>
+		/// <param name="applyBackgroundImageToAllDisplays">Whether to apply the background image to all displays.</param>
+		/// <param name="backgroundImages">A collection of background images for the displays.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Optional; defaults to <see langword="default"/>.</param>
+		/// <returns>A task representing the asynchronous operation.</returns>
+		Task UpdateAccountProfileAsync(string requiredCodeToExit = null, string roomPasscode = null, string supportEmail = null, string supportPhone = null, bool? applyBackgroundImageToAllDisplays = null, IEnumerable<(string DisplayId, string ContentId)> backgroundImages = null, CancellationToken cancellationToken = default);
+
+		#endregion
+
 		#region ZOOM ROOM CALENDAR
 
 		/// <summary>

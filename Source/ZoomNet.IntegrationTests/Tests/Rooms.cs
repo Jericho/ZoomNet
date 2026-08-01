@@ -84,6 +84,11 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			await CleanUpAllLocations(client, log, cancellationToken).ConfigureAwait(false);
 
+			// ZOOM ROOM ACCOUNT PROFILE
+			var accountProfile = await client.Rooms.GetAccountProfileAsync(cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Account profile retrieved").ConfigureAwait(false);
+
+			await client.Rooms.UpdateAccountBasicProfileAsync(supportPhone: "555 111-2345", cancellationToken: cancellationToken).ConfigureAwait(false);
 
 			// CREATE A LOCATION HIERARCHY
 			var desiredStructure = currentStructure
