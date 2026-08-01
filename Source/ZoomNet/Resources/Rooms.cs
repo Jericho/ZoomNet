@@ -348,408 +348,75 @@ namespace ZoomNet.Resources
 
 		#endregion
 
-		#region ZOOM LOCATIONS
+		#region ZOOM ROOM CALENDAR
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<RoomLocation>> GetAllLocationsAsync(string parentLocationId = null, RoomLocationType? type = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<CalendarResource> AddCalendarResourceAsync(string serviceId, string resourceEmail, CancellationToken cancellationToken = default)
 		{
-			Utils.ValidateRecordPerPage(recordsPerPage);
+			var data = new JsonObject
+			{
+				{ "calendar_resource_email", resourceEmail }
+			};
 
 			return _client
-				.GetAsync($"rooms/locations")
-				.WithArgument("parent_location_id", parentLocationId)
-				.WithArgument("type", type?.ToEnumString())
+				.PostAsync($"rooms/calendar/services/{serviceId}/resources")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<CalendarResource>();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteCalendarResourceAsync(string serviceId, string resourceId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"rooms/calendar/services/{serviceId}/resources/{resourceId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteCalendarServiceAsync(string serviceId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"rooms/calendar/services/{serviceId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<CalendarService>> GetCalendarServicesAsync(CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync("rooms/calendar/services")
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<CalendarService>("calendar_services");
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<CalendarResource>> GetCalendarResourcesAsync(string serviceId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/calendar/services/{serviceId}/resources")
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<RoomLocation>("locations");
+				.AsPaginatedResponseWithToken<CalendarResource>("calendar_resources");
 		}
 
 		/// <inheritdoc/>
-		public Task<RoomLocationType[]> GetLocationStructureAsync(CancellationToken cancellationToken = default)
+		public Task<CalendarResource> GetCalendarResourceAsync(string serviceId, string resourceId, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.GetAsync("rooms/locations/structure")
+				.GetAsync($"rooms/calendar/services/{serviceId}/resources/{resourceId}")
 				.WithCancellationToken(cancellationToken)
-				.AsObject<RoomLocationType[]>("structures");
+				.AsObject<CalendarResource>();
 		}
 
 		/// <inheritdoc/>
-		public Task UpdateLocationStructureAsync(IEnumerable<RoomLocationType> structure, CancellationToken cancellationToken = default)
-		{
-			var data = new JsonObject
-			{
-				{ "structures", structure.ToArray() }
-			};
-
-			return _client
-				.PutAsync("rooms/locations/structure")
-				.WithJsonBody(data)
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <inheritdoc/>
-		public Task<RoomLocation> CreateLocationAsync(string name, string parentId = null, CancellationToken cancellationToken = default)
-		{
-			var data = new JsonObject
-			{
-				{ "name", name },
-				{ "parent_location_id", parentId }
-			};
-
-			return _client
-				.PostAsync("rooms/locations")
-				.WithJsonBody(data)
-				.WithCancellationToken(cancellationToken)
-				.AsObject<RoomLocation>();
-		}
-
-		/// <inheritdoc/>
-		public Task DeleteLocationAsync(string locationId, CancellationToken cancellationToken = default)
+		public Task StartCalendarServiceSyncProcessAsync(string serviceId, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.DeleteAsync($"rooms/locations/{locationId}")
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <inheritdoc/>
-		public Task MoveLocationASync(string locationId, string parentId, CancellationToken cancellationToken = default)
-		{
-			var data = new JsonObject
-			{
-				{ "parent_location_id", parentId }
-			};
-
-			return _client
-				.PutAsync($"rooms/locations/{locationId}/location")
-				.WithJsonBody(data)
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <inheritdoc/>
-		public async Task<(RoomAlertSettings AlertSettings, RoomNotificationSettings NotificationSettings)> GetLocationAlertSettingsAsync(string locationId, CancellationToken cancellationToken = default)
-		{
-			var response = await _client
-				.GetAsync($"rooms/locations/{locationId}/settings")
-				.WithArgument("setting_type", RoomLocationSettingsType.Alert.ToEnumString())
-				.WithCancellationToken(cancellationToken)
-				.AsJson()
-				.ConfigureAwait(false);
-
-			var alertSettings = response.GetPropertyValue<RoomAlertSettings>("client_alert");
-			var notificationSettings = response.GetPropertyValue<RoomNotificationSettings>("notification");
-
-			return (alertSettings, notificationSettings);
-		}
-
-		/// <inheritdoc/>
-		public async Task<(RoomSecuritySettings SecuritySettings, RoomSettings RoomSettings)> GetLocationSettingsAsync(string locationId, CancellationToken cancellationToken = default)
-		{
-			var response = await _client
-				.GetAsync($"rooms/locations/{locationId}/settings")
-				.WithArgument("setting_type", RoomLocationSettingsType.Meeting.ToEnumString())
-				.WithCancellationToken(cancellationToken)
-				.AsJson()
-				.ConfigureAwait(false);
-
-			var securitySettings = response.GetPropertyValue<RoomSecuritySettings>("meeting_security");
-			var roomSettings = response.GetPropertyValue<RoomSettings>("zoom_rooms");
-
-			return (securitySettings, roomSettings);
-		}
-
-		/// <inheritdoc/>
-		public Task<RoomSignageSettings> GetLocationSignageSettingsAsync(string locationId, CancellationToken cancellationToken = default)
-		{
-			return _client
-				.GetAsync($"rooms/locations/{locationId}/settings")
-				.WithArgument("setting_type", RoomLocationSettingsType.Signage.ToEnumString())
-				.WithCancellationToken(cancellationToken)
-				.AsObject<RoomSignageSettings>("digital_signage");
-		}
-
-		/// <inheritdoc/>
-		public Task<RoomSchedulingDisplaySettings> GetLocationSchedulingDisplaySettingsAsync(string locationId, CancellationToken cancellationToken = default)
-		{
-			return _client
-				.GetAsync($"rooms/locations/{locationId}/settings")
-				.WithArgument("setting_type", RoomLocationSettingsType.SchedulingDisplay.ToEnumString())
-				.WithCancellationToken(cancellationToken)
-				.AsObject<RoomSchedulingDisplaySettings>("scheduling_display");
-		}
-
-		/// <inheritdoc/>
-		public async Task<(RoomLocationBasicProfile Basic, RoomLocationSetupProfile Setup)> GetLocationProfileAsync(string locationId, CancellationToken cancellationToken = default)
-		{
-			var response = await _client
-				.GetAsync($"rooms/locations/{locationId}")
-				.WithArgument("setting_type", RoomLocationSettingsType.Meeting.ToEnumString())
-				.WithCancellationToken(cancellationToken)
-				.AsJson()
-				.ConfigureAwait(false);
-
-			var basicProfile = response.GetPropertyValue<RoomLocationBasicProfile>("basic");
-			var setupProfile = response.GetPropertyValue<RoomLocationSetupProfile>("setup");
-
-			return (basicProfile, setupProfile);
-		}
-
-		/// <inheritdoc/>
-		public Task UpdateLocationProfileAsync(string locationId, string address = null, string description = null, string name = null, bool? codeIsRequiredToExit = null, string passcode = null, string supportEmail = null, string supportPhone = null, TimeZones? timezone = null, bool? applyBackgroundImageToAllDisplays = null, IEnumerable<RoomLocationBackgroundImageInfo> backgroundImageInfos = null, CancellationToken cancellationToken = default)
-		{
-			var basicProfile = new JsonObject
-			{
-				{ "address", address },
-				{ "description", description },
-				{ "name", name },
-				{ "required_code_to_ext", codeIsRequiredToExit },
-				{ "room_passcode", passcode },
-				{ "support_email", supportEmail },
-				{ "support_phone", supportPhone },
-				{ "timezone", timezone?.ToEnumString() }
-			};
-
-			var setupProfile = new JsonObject
-			{
-				{ "apply_background_image_to_all_displays", applyBackgroundImageToAllDisplays },
-				{ "background_image_info", backgroundImageInfos?.ToArray() },
-			};
-
-			var data = new JsonObject
-			{
-				{ "basic", basicProfile },
-				{ "setup", setupProfile }
-			};
-
-			return _client
-				.PatchAsync($"rooms/locations/{locationId}")
-				.WithJsonBody(data)
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		#endregion
-
-		#region ZOOM ROOMS TAGS
-
-		/// <inheritdoc/>
-		public Task<string> CreateTagAsync(string name, string description, CancellationToken cancellationToken = default)
-		{
-			var data = new JsonObject
-			{
-				{ "name", name },
-				{ "description", description }
-			};
-
-			return _client
-				.PostAsync("rooms/tags")
-				.WithJsonBody(data)
-				.WithCancellationToken(cancellationToken)
-				.AsObject<string>("id");
-		}
-
-		/// <inheritdoc/>
-		public Task UpdateTagAsync(string tagId, string name = null, string description = null, CancellationToken cancellationToken = default)
-		{
-			var data = new JsonObject
-			{
-				{ "name", name },
-				{ "description", description }
-			};
-
-			return _client
-				.PatchAsync($"rooms/tags/{tagId}")
-				.WithJsonBody(data)
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <inheritdoc/>
-		public Task AssignTagsToRoom(string roomId, IEnumerable<string> tagIds, CancellationToken cancellationToken = default)
-		{
-			var data = new JsonObject
-			{
-				{ "tag_ids", tagIds.ToArray() }
-			};
-
-			return _client
-				.PatchAsync($"rooms/{roomId}/tags")
-				.WithJsonBody(data)
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <inheritdoc/>
-		public Task AssignTagsToRoomsInLocation(string locationId, IEnumerable<string> tagIds, CancellationToken cancellationToken = default)
-		{
-			var data = new JsonObject
-			{
-				{ "tag_ids", tagIds.ToArray() }
-			};
-
-			return _client
-				.PatchAsync($"rooms/locations/{locationId}/tags")
-				.WithJsonBody(data)
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <inheritdoc/>
-		public Task UnAssignTagFromRoom(string roomId, string tagId, CancellationToken cancellationToken = default)
-		{
-			return _client
-				.DeleteAsync($"rooms/{roomId}/tags")
-				.WithArgument("tag_ids", tagId) // The name of the parameter is "tag_ids" (plural) but the value is a single tagId. Documentation sauys: "Currently, only one Tag ID per request is allowed."
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<RoomTag>> GetAllTagsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
-		{
-			Utils.ValidateRecordPerPage(recordsPerPage);
-
-			return _client
-				.GetAsync("rooms/tags")
-				.WithArgument("page_size", recordsPerPage)
-				.WithArgument("next_page_token", pagingToken)
-				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<RoomTag>("tags");
-		}
-
-		/// <inheritdoc/>
-		public Task DeleteTagAsync(string tagId, CancellationToken cancellationToken = default)
-		{
-			return _client
-				.DeleteAsync($"rooms/tags/{tagId}")
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		#endregion
-
-		#region ZOOM ROOM DEVICES
-
-		/// <inheritdoc/>
-		public Task<RoomDevice[]> GetAllDevicesAsync(string roomId, CancellationToken cancellationToken = default)
-		{
-			return _client
-				.GetAsync($"rooms/{roomId}/devices")
-				.WithCancellationToken(cancellationToken)
-				.AsObject<RoomDevice[]>("devices");
-		}
-
-		/// <inheritdoc/>
-		public Task GetDevicesInformationAsync(string roomId, CancellationToken cancellationToken = default)
-		{
-			/*
-				NOTE TO SELF: I haven't been able to test this functionality. The response to this endpoint is always empty.
-			*/
-
-			return _client
-				.GetAsync($"rooms/{roomId}/device_profiles/devices")
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <inheritdoc/>
-		public Task CreateDeviceProfileAsync(string roomId, bool? enableAudioProcessing = null, bool? autoAdjustMicrophoneLevel = null, string cameraId = null, bool? enableEchoCancellation = null, string microphoneId = null, string name = null, RoomDeviceNoiseSuppressionType? noiseSuppressionType = null, string speakerId = null, CancellationToken cancellationToken = default)
-		{
-			var data = new JsonObject
-			{
-				{ "audio_processing", enableAudioProcessing },
-				{ "auto_adjust_mic_level", autoAdjustMicrophoneLevel },
-				{ "camera_id", cameraId },
-				{ "echo_cancellation", enableEchoCancellation },
-				{ "microphone_id", microphoneId },
-				{ "name", name },
-				{ "noise_suppression", noiseSuppressionType?.ToEnumString() },
-				{ "speaker_id", speakerId }
-			};
-
-			/*
-				NOTE TO SELF: I haven't been able to test this functionality because I get the following error message:
-				"Unable to create device profile because there is no microphone/speaker/camera available in the following Zoom Room: aDLGFI6hRvaXkISCUXzUOA."
-			*/
-
-			return _client
-				.PostAsync($"rooms/{roomId}/device_profiles")
-				.WithJsonBody(data)
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <inheritdoc/>
-		public Task DeleteDeviceProfileAsync(string roomId, string deviceProfileId, CancellationToken cancellationToken = default)
-		{
-			return _client
-				.DeleteAsync($"rooms/{roomId}/device_profiles/{deviceProfileId}")
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <inheritdoc/>
-		public Task<RoomDeviceProfile> GetDeviceProfileAsync(string roomId, string deviceProfileId, CancellationToken cancellationToken = default)
-		{
-			return _client
-				.GetAsync($"rooms/{roomId}/device_profiles/{deviceProfileId}")
-				.WithCancellationToken(cancellationToken)
-				.AsObject<RoomDeviceProfile>();
-		}
-
-		/// <inheritdoc/>
-		public Task UpgradeAppVersionAsync(string roomId, string deviceId, CancellationToken cancellationToken = default)
-		{
-			var data = new JsonObject
-			{
-				{ "action", "upgrade" }
-			};
-
-			return _client
-				.PutAsync($"rooms/{roomId}/devices/{deviceId}/app_version")
-				.WithJsonBody(data)
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <inheritdoc/>
-		public Task DowngradeAppVersionAsync(string roomId, string deviceId, CancellationToken cancellationToken = default)
-		{
-			var data = new JsonObject
-			{
-				{ "action", "downgrade" }
-			};
-
-			return _client
-				.PutAsync($"rooms/{roomId}/devices/{deviceId}/app_version")
-				.WithJsonBody(data)
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <inheritdoc/>
-		public Task CancelAppVersionChangeAsync(string roomId, string deviceId, CancellationToken cancellationToken = default)
-		{
-			var data = new JsonObject
-			{
-				{ "action", "cancel" }
-			};
-
-			return _client
-				.PutAsync($"rooms/{roomId}/devices/{deviceId}/app_version")
-				.WithJsonBody(data)
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <inheritdoc/>
-		public Task DeleteDeviceAsync(string roomId, string deviceId, CancellationToken cancellationToken = default)
-		{
-			return _client
-				.DeleteAsync($"rooms/{roomId}/devices/{deviceId}")
+				.PutAsync($"rooms/calendar/services/{serviceId}/sync")
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
@@ -1184,75 +851,408 @@ namespace ZoomNet.Resources
 
 		#endregion
 
-		#region ZOOM ROOM CALENDAR
+		#region ZOOM ROOM DEVICES
 
 		/// <inheritdoc/>
-		public Task<CalendarResource> AddCalendarResourceAsync(string serviceId, string resourceEmail, CancellationToken cancellationToken = default)
+		public Task<RoomDevice[]> GetAllDevicesAsync(string roomId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/{roomId}/devices")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<RoomDevice[]>("devices");
+		}
+
+		/// <inheritdoc/>
+		public Task GetDevicesInformationAsync(string roomId, CancellationToken cancellationToken = default)
+		{
+			/*
+				NOTE TO SELF: I haven't been able to test this functionality. The response to this endpoint is always empty.
+			*/
+
+			return _client
+				.GetAsync($"rooms/{roomId}/device_profiles/devices")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task CreateDeviceProfileAsync(string roomId, bool? enableAudioProcessing = null, bool? autoAdjustMicrophoneLevel = null, string cameraId = null, bool? enableEchoCancellation = null, string microphoneId = null, string name = null, RoomDeviceNoiseSuppressionType? noiseSuppressionType = null, string speakerId = null, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{
-				{ "calendar_resource_email", resourceEmail }
+				{ "audio_processing", enableAudioProcessing },
+				{ "auto_adjust_mic_level", autoAdjustMicrophoneLevel },
+				{ "camera_id", cameraId },
+				{ "echo_cancellation", enableEchoCancellation },
+				{ "microphone_id", microphoneId },
+				{ "name", name },
+				{ "noise_suppression", noiseSuppressionType?.ToEnumString() },
+				{ "speaker_id", speakerId }
+			};
+
+			/*
+				NOTE TO SELF: I haven't been able to test this functionality because I get the following error message:
+				"Unable to create device profile because there is no microphone/speaker/camera available in the following Zoom Room: aDLGFI6hRvaXkISCUXzUOA."
+			*/
+
+			return _client
+				.PostAsync($"rooms/{roomId}/device_profiles")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteDeviceProfileAsync(string roomId, string deviceProfileId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"rooms/{roomId}/device_profiles/{deviceProfileId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<RoomDeviceProfile> GetDeviceProfileAsync(string roomId, string deviceProfileId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/{roomId}/device_profiles/{deviceProfileId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<RoomDeviceProfile>();
+		}
+
+		/// <inheritdoc/>
+		public Task UpgradeAppVersionAsync(string roomId, string deviceId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "action", "upgrade" }
 			};
 
 			return _client
-				.PostAsync($"rooms/calendar/services/{serviceId}/resources")
+				.PutAsync($"rooms/{roomId}/devices/{deviceId}/app_version")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
-				.AsObject<CalendarResource>();
+				.AsMessage();
 		}
 
 		/// <inheritdoc/>
-		public Task DeleteCalendarResourceAsync(string serviceId, string resourceId, CancellationToken cancellationToken = default)
+		public Task DowngradeAppVersionAsync(string roomId, string deviceId, CancellationToken cancellationToken = default)
 		{
+			var data = new JsonObject
+			{
+				{ "action", "downgrade" }
+			};
+
 			return _client
-				.DeleteAsync($"rooms/calendar/services/{serviceId}/resources/{resourceId}")
+				.PutAsync($"rooms/{roomId}/devices/{deviceId}/app_version")
+				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
 
 		/// <inheritdoc/>
-		public Task DeleteCalendarServiceAsync(string serviceId, CancellationToken cancellationToken = default)
+		public Task CancelAppVersionChangeAsync(string roomId, string deviceId, CancellationToken cancellationToken = default)
 		{
+			var data = new JsonObject
+			{
+				{ "action", "cancel" }
+			};
+
 			return _client
-				.DeleteAsync($"rooms/calendar/services/{serviceId}")
+				.PutAsync($"rooms/{roomId}/devices/{deviceId}/app_version")
+				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<CalendarService>> GetCalendarServicesAsync(CancellationToken cancellationToken = default)
+		public Task DeleteDeviceAsync(string roomId, string deviceId, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.GetAsync("rooms/calendar/services")
+				.DeleteAsync($"rooms/{roomId}/devices/{deviceId}")
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<CalendarService>("calendar_services");
+				.AsMessage();
 		}
 
+		#endregion
+
+		#region ZOOM ROOM LOCATIONS
+
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithToken<CalendarResource>> GetCalendarResourcesAsync(string serviceId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithToken<RoomLocation>> GetAllLocationsAsync(string parentLocationId = null, RoomLocationType? type = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
+			Utils.ValidateRecordPerPage(recordsPerPage);
+
 			return _client
-				.GetAsync($"rooms/calendar/services/{serviceId}/resources")
+				.GetAsync($"rooms/locations")
+				.WithArgument("parent_location_id", parentLocationId)
+				.WithArgument("type", type?.ToEnumString())
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
-				.AsPaginatedResponseWithToken<CalendarResource>("calendar_resources");
+				.AsPaginatedResponseWithToken<RoomLocation>("locations");
 		}
 
 		/// <inheritdoc/>
-		public Task<CalendarResource> GetCalendarResourceAsync(string serviceId, string resourceId, CancellationToken cancellationToken = default)
+		public Task<RoomLocationType[]> GetLocationStructureAsync(CancellationToken cancellationToken = default)
 		{
 			return _client
-				.GetAsync($"rooms/calendar/services/{serviceId}/resources/{resourceId}")
+				.GetAsync("rooms/locations/structure")
 				.WithCancellationToken(cancellationToken)
-				.AsObject<CalendarResource>();
+				.AsObject<RoomLocationType[]>("structures");
 		}
 
 		/// <inheritdoc/>
-		public Task StartCalendarServiceSyncProcessAsync(string serviceId, CancellationToken cancellationToken = default)
+		public Task UpdateLocationStructureAsync(IEnumerable<RoomLocationType> structure, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "structures", structure.ToArray() }
+			};
+
+			return _client
+				.PutAsync("rooms/locations/structure")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<RoomLocation> CreateLocationAsync(string name, string parentId = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "name", name },
+				{ "parent_location_id", parentId }
+			};
+
+			return _client
+				.PostAsync("rooms/locations")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<RoomLocation>();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteLocationAsync(string locationId, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.PutAsync($"rooms/calendar/services/{serviceId}/sync")
+				.DeleteAsync($"rooms/locations/{locationId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task MoveLocationASync(string locationId, string parentId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "parent_location_id", parentId }
+			};
+
+			return _client
+				.PutAsync($"rooms/locations/{locationId}/location")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public async Task<(RoomAlertSettings AlertSettings, RoomNotificationSettings NotificationSettings)> GetLocationAlertSettingsAsync(string locationId, CancellationToken cancellationToken = default)
+		{
+			var response = await _client
+				.GetAsync($"rooms/locations/{locationId}/settings")
+				.WithArgument("setting_type", RoomLocationSettingsType.Alert.ToEnumString())
+				.WithCancellationToken(cancellationToken)
+				.AsJson()
+				.ConfigureAwait(false);
+
+			var alertSettings = response.GetPropertyValue<RoomAlertSettings>("client_alert");
+			var notificationSettings = response.GetPropertyValue<RoomNotificationSettings>("notification");
+
+			return (alertSettings, notificationSettings);
+		}
+
+		/// <inheritdoc/>
+		public async Task<(RoomSecuritySettings SecuritySettings, RoomSettings RoomSettings)> GetLocationSettingsAsync(string locationId, CancellationToken cancellationToken = default)
+		{
+			var response = await _client
+				.GetAsync($"rooms/locations/{locationId}/settings")
+				.WithArgument("setting_type", RoomLocationSettingsType.Meeting.ToEnumString())
+				.WithCancellationToken(cancellationToken)
+				.AsJson()
+				.ConfigureAwait(false);
+
+			var securitySettings = response.GetPropertyValue<RoomSecuritySettings>("meeting_security");
+			var roomSettings = response.GetPropertyValue<RoomSettings>("zoom_rooms");
+
+			return (securitySettings, roomSettings);
+		}
+
+		/// <inheritdoc/>
+		public Task<RoomSignageSettings> GetLocationSignageSettingsAsync(string locationId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/locations/{locationId}/settings")
+				.WithArgument("setting_type", RoomLocationSettingsType.Signage.ToEnumString())
+				.WithCancellationToken(cancellationToken)
+				.AsObject<RoomSignageSettings>("digital_signage");
+		}
+
+		/// <inheritdoc/>
+		public Task<RoomSchedulingDisplaySettings> GetLocationSchedulingDisplaySettingsAsync(string locationId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/locations/{locationId}/settings")
+				.WithArgument("setting_type", RoomLocationSettingsType.SchedulingDisplay.ToEnumString())
+				.WithCancellationToken(cancellationToken)
+				.AsObject<RoomSchedulingDisplaySettings>("scheduling_display");
+		}
+
+		/// <inheritdoc/>
+		public async Task<(RoomLocationBasicProfile Basic, RoomLocationSetupProfile Setup)> GetLocationProfileAsync(string locationId, CancellationToken cancellationToken = default)
+		{
+			var response = await _client
+				.GetAsync($"rooms/locations/{locationId}")
+				.WithArgument("setting_type", RoomLocationSettingsType.Meeting.ToEnumString())
+				.WithCancellationToken(cancellationToken)
+				.AsJson()
+				.ConfigureAwait(false);
+
+			var basicProfile = response.GetPropertyValue<RoomLocationBasicProfile>("basic");
+			var setupProfile = response.GetPropertyValue<RoomLocationSetupProfile>("setup");
+
+			return (basicProfile, setupProfile);
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateLocationProfileAsync(string locationId, string address = null, string description = null, string name = null, bool? codeIsRequiredToExit = null, string passcode = null, string supportEmail = null, string supportPhone = null, TimeZones? timezone = null, bool? applyBackgroundImageToAllDisplays = null, IEnumerable<RoomLocationBackgroundImageInfo> backgroundImageInfos = null, CancellationToken cancellationToken = default)
+		{
+			var basicProfile = new JsonObject
+			{
+				{ "address", address },
+				{ "description", description },
+				{ "name", name },
+				{ "required_code_to_ext", codeIsRequiredToExit },
+				{ "room_passcode", passcode },
+				{ "support_email", supportEmail },
+				{ "support_phone", supportPhone },
+				{ "timezone", timezone?.ToEnumString() }
+			};
+
+			var setupProfile = new JsonObject
+			{
+				{ "apply_background_image_to_all_displays", applyBackgroundImageToAllDisplays },
+				{ "background_image_info", backgroundImageInfos?.ToArray() },
+			};
+
+			var data = new JsonObject
+			{
+				{ "basic", basicProfile },
+				{ "setup", setupProfile }
+			};
+
+			return _client
+				.PatchAsync($"rooms/locations/{locationId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		#endregion
+
+		#region ZOOM ROOMS TAGS
+
+		/// <inheritdoc/>
+		public Task<string> CreateTagAsync(string name, string description, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "name", name },
+				{ "description", description }
+			};
+
+			return _client
+				.PostAsync("rooms/tags")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("id");
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateTagAsync(string tagId, string name = null, string description = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "name", name },
+				{ "description", description }
+			};
+
+			return _client
+				.PatchAsync($"rooms/tags/{tagId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task AssignTagsToRoom(string roomId, IEnumerable<string> tagIds, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "tag_ids", tagIds.ToArray() }
+			};
+
+			return _client
+				.PatchAsync($"rooms/{roomId}/tags")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task AssignTagsToRoomsInLocation(string locationId, IEnumerable<string> tagIds, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "tag_ids", tagIds.ToArray() }
+			};
+
+			return _client
+				.PatchAsync($"rooms/locations/{locationId}/tags")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task UnAssignTagFromRoom(string roomId, string tagId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"rooms/{roomId}/tags")
+				.WithArgument("tag_ids", tagId) // The name of the parameter is "tag_ids" (plural) but the value is a single tagId. Documentation sauys: "Currently, only one Tag ID per request is allowed."
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<RoomTag>> GetAllTagsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			Utils.ValidateRecordPerPage(recordsPerPage);
+
+			return _client
+				.GetAsync("rooms/tags")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<RoomTag>("tags");
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteTagAsync(string tagId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"rooms/tags/{tagId}")
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
