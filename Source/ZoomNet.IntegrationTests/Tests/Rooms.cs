@@ -88,7 +88,15 @@ namespace ZoomNet.IntegrationTests.Tests
 			var accountProfile = await client.Rooms.GetAccountProfileAsync(cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Account profile retrieved").ConfigureAwait(false);
 
-			await client.Rooms.UpdateAccountBasicProfileAsync(supportPhone: "555 111-2345", cancellationToken: cancellationToken).ConfigureAwait(false);
+			await client.Rooms.UpdateAccountProfileAsync(supportPhone: "555 111-2345", cancellationToken: cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Account profile updated").ConfigureAwait(false);
+
+			// ZOOM ROOM ACCOUNT SETTINGS
+			var accountMeetingSettings = await client.Rooms.GetAccountMeetingSettingsAsync(cancellationToken).ConfigureAwait(false);
+			var accountAlertSettings = await client.Rooms.GetAccountAlertSettingsAsync(cancellationToken).ConfigureAwait(false);
+			var accountSignageSettings = await client.Rooms.GetAccountSignageSettingsAsync(cancellationToken).ConfigureAwait(false);
+			var accountSchedulingDisplaySettings = await client.Rooms.GetAccountSchedulingDisplaySettingsAsync(cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Account settings retrieved").ConfigureAwait(false);
 
 			// CREATE A LOCATION HIERARCHY
 			var desiredStructure = currentStructure
@@ -147,8 +155,8 @@ namespace ZoomNet.IntegrationTests.Tests
 			await client.Rooms.MoveLocationASync(floorA2.Id, buildingB.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Floor A2 has been moved to building B").ConfigureAwait(false);
 
-			var locationSettings = await client.Rooms.GetLocationSettingsAsync(buildingA.Id, cancellationToken).ConfigureAwait(false);
-			await log.WriteLineAsync("General settings for a location have been retrieved").ConfigureAwait(false);
+			var locationMeetingSettings = await client.Rooms.GetLocationMeetingSettingsAsync(buildingA.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Meeting settings for a location have been retrieved").ConfigureAwait(false);
 
 			var locationAlertSettings = await client.Rooms.GetLocationAlertSettingsAsync(buildingA.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Alert settings for a location have been retrieved").ConfigureAwait(false);

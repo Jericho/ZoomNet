@@ -5,7 +5,7 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// Zoom Room account profile setup information.
 	/// </summary>
-	public class ZoomRoomAccountProfileSetup
+	public class RoomAccountProfileSetup
 	{
 		/// <summary>
 		/// Gets or sets a value indicating whether to apply the background image to all displays.

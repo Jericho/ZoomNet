@@ -5,7 +5,7 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// Zoom Room account profile basic information.
 	/// </summary>
-	public class ZoomRoomAccountProfileBasic
+	public class RoomAccountProfileBasic
 	{
 		/// <summary>
 		/// Gets or sets the code required to exit the Zoom Room.
