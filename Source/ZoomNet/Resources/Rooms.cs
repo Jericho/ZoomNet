@@ -348,6 +348,101 @@ namespace ZoomNet.Resources
 
 		#endregion
 
+		#region ZOOM ROOM ACCOUNT
+
+		/// <inheritdoc/>
+		public Task<RoomAccountProfile> GetAccountProfileAsync(CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/account_profile")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<RoomAccountProfile>();
+		}
+
+		/// <inheritdoc/>
+		public async Task<(RoomSecuritySettings SecuritySettings, RoomSettings RoomSettings)> GetAccountMeetingSettingsAsync(CancellationToken cancellationToken = default)
+		{
+			var response = await _client
+				.GetAsync($"rooms/account_settings")
+				.WithArgument("setting_type", RoomLocationSettingsType.Meeting.ToEnumString())
+				.WithCancellationToken(cancellationToken)
+				.AsJson()
+				.ConfigureAwait(false);
+
+			var securitySettings = response.GetPropertyValue<RoomSecuritySettings>("meeting_security");
+			var roomSettings = response.GetPropertyValue<RoomSettings>("zoom_rooms");
+
+			return (securitySettings, roomSettings);
+		}
+
+		/// <inheritdoc/>
+		public async Task<(RoomAlertSettings AlertSettings, RoomNotificationSettings NotificationSettings)> GetAccountAlertSettingsAsync(CancellationToken cancellationToken = default)
+		{
+			var response = await _client
+				.GetAsync($"rooms/account_settings")
+				.WithArgument("setting_type", RoomLocationSettingsType.Alert.ToEnumString())
+				.WithCancellationToken(cancellationToken)
+				.AsJson()
+				.ConfigureAwait(false);
+
+			var alertSettings = response.GetPropertyValue<RoomAlertSettings>("client_alert");
+			var notificationSettings = response.GetPropertyValue<RoomNotificationSettings>("notification");
+
+			return (alertSettings, notificationSettings);
+		}
+
+		/// <inheritdoc/>
+		public Task<RoomSignageSettings> GetAccountSignageSettingsAsync(CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/account_settings")
+				.WithArgument("setting_type", RoomLocationSettingsType.Signage.ToEnumString())
+				.WithCancellationToken(cancellationToken)
+				.AsObject<RoomSignageSettings>("digital_signage");
+		}
+
+		/// <inheritdoc/>
+		public Task<RoomSchedulingDisplaySettings> GetAccountSchedulingDisplaySettingsAsync(CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/account_settings")
+				.WithArgument("setting_type", RoomLocationSettingsType.SchedulingDisplay.ToEnumString())
+				.WithCancellationToken(cancellationToken)
+				.AsObject<RoomSchedulingDisplaySettings>("scheduling_display");
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateAccountProfileAsync(string requiredCodeToExit = null, string roomPasscode = null, string supportEmail = null, string supportPhone = null, bool? applyBackgroundImageToAllDisplays = null, IEnumerable<(string DisplayId, string ContentId)> backgroundImages = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{
+					"basic", new JsonObject
+					{
+						{ "required_code_to_exit", requiredCodeToExit },
+						{ "room_passcode", roomPasscode },
+						{ "support_email", supportEmail },
+						{ "support_phone", supportPhone }
+					}
+				},
+				{
+					"setup", new JsonObject
+					{
+						{ "apply_background_image_to_all_displays", applyBackgroundImageToAllDisplays },
+						{ "background_images", backgroundImages?.Select(x => new JsonObject { { "display_id", x.DisplayId }, { "content_id", x.ContentId } }).ToArray() }
+					}
+				}
+			};
+
+			return _client
+				.PatchAsync("rooms/account_profile")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		#endregion
+
 		#region ZOOM ROOM CALENDAR
 
 		/// <inheritdoc/>
@@ -1074,7 +1169,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public async Task<(RoomSecuritySettings SecuritySettings, RoomSettings RoomSettings)> GetLocationSettingsAsync(string locationId, CancellationToken cancellationToken = default)
+		public async Task<(RoomSecuritySettings SecuritySettings, RoomSettings RoomSettings)> GetLocationMeetingSettingsAsync(string locationId, CancellationToken cancellationToken = default)
 		{
 			var response = await _client
 				.GetAsync($"rooms/locations/{locationId}/settings")

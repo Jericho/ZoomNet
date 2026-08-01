@@ -81,6 +81,7 @@ namespace ZoomNet.Utilities
 			// Tell the GC that we have done the cleanup and there is nothing left for the Finalizer to do
 			GC.SuppressFinalize(this);
 		}
+
 		/// <summary>
 		/// Releases unmanaged and - optionally - managed resources.
 		/// </summary>

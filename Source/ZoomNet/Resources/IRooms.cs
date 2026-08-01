@@ -216,6 +216,58 @@ namespace ZoomNet.Resources
 
 		#endregion
 
+		#region ZOOM ROOM ACCOUNT
+
+		/// <summary>
+		/// Get the profile information for the Zoom Room account.
+		/// </summary>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Optional; defaults to <see langword="default"/>.</param>
+		/// <returns>A <see cref="RoomAccountProfile"/> containing the account profile for the specified room.</returns>
+		Task<RoomAccountProfile> GetAccountProfileAsync(CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the general settings applied to the Zoom Room account.
+		/// </summary>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The meeting settings.</returns>
+		Task<(RoomSecuritySettings SecuritySettings, RoomSettings RoomSettings)> GetAccountMeetingSettingsAsync(CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the alert settings applied to the Zoom Room account.
+		/// </summary>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The alert settings.</returns>
+		Task<(RoomAlertSettings AlertSettings, RoomNotificationSettings NotificationSettings)> GetAccountAlertSettingsAsync(CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the signage settings applied to the Zoom Room account.
+		/// </summary>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The signage settings.</returns>
+		Task<RoomSignageSettings> GetAccountSignageSettingsAsync(CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the scheduling display settings applied to the Zoom Room account.
+		/// </summary>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The scheduling display settings.</returns>
+		Task<RoomSchedulingDisplaySettings> GetAccountSchedulingDisplaySettingsAsync(CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update the basic Zoom Room account profile.
+		/// </summary>
+		/// <param name="requiredCodeToExit">The required code to exit the room.</param>
+		/// <param name="roomPasscode">The room passcode.</param>
+		/// <param name="supportEmail">The support email address.</param>
+		/// <param name="supportPhone">The support phone number.</param>
+		/// <param name="applyBackgroundImageToAllDisplays">Whether to apply the background image to all displays.</param>
+		/// <param name="backgroundImages">A collection of background images for the displays.</param>
+		/// <param name="cancellationToken">A token to monitor for cancellation requests. Optional; defaults to <see langword="default"/>.</param>
+		/// <returns>A task representing the asynchronous operation.</returns>
+		Task UpdateAccountProfileAsync(string requiredCodeToExit = null, string roomPasscode = null, string supportEmail = null, string supportPhone = null, bool? applyBackgroundImageToAllDisplays = null, IEnumerable<(string DisplayId, string ContentId)> backgroundImages = null, CancellationToken cancellationToken = default);
+
+		#endregion
+
 		#region ZOOM ROOM CALENDAR
 
 		/// <summary>
@@ -748,12 +800,12 @@ namespace ZoomNet.Resources
 		Task<(RoomAlertSettings AlertSettings, RoomNotificationSettings NotificationSettings)> GetLocationAlertSettingsAsync(string locationId, CancellationToken cancellationToken = default);
 
 		/// <summary>
-		/// Get the general settings applied to Zoom Rooms located in a specific location.
+		/// Get the meeting settings applied to Zoom Rooms located in a specific location.
 		/// </summary>
 		/// <param name="locationId">The location unique identifier.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The meeting settings.</returns>
-		Task<(RoomSecuritySettings SecuritySettings, RoomSettings RoomSettings)> GetLocationSettingsAsync(string locationId, CancellationToken cancellationToken = default);
+		Task<(RoomSecuritySettings SecuritySettings, RoomSettings RoomSettings)> GetLocationMeetingSettingsAsync(string locationId, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get the signage settings applied to Zoom Rooms located in a specific location.
