@@ -26,6 +26,30 @@ namespace ZoomNet.Resources
 			_client = client;
 		}
 
+		#region VISITOR MANAGEMENT
+
+		/// <inheritdoc/>
+		public Task SendInvitationAsync(string visitorEmail, string visitorName, string visitorOrganization, string locationId, string hostId, DateTime? startTime, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "visitor_email", visitorEmail },
+				{ "visitor_name", visitorName },
+				{ "visitor_organization", visitorOrganization },
+				{ "start_time", startTime },
+				{ "invite_location_id", locationId },
+				{ "host_id", hostId }
+			};
+
+			return _client
+				.PostAsync("visitor/invitation")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		#endregion
+
 		#region ZOOM ROOMS
 
 		/// <inheritdoc/>
