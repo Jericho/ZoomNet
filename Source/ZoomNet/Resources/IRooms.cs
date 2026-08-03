@@ -15,6 +15,23 @@ namespace ZoomNet.Resources
 	/// </remarks>
 	public interface IRooms
 	{
+		#region VISITOR MANAGEMENT
+
+		/// <summary>
+		/// Send an invitation to a visitor.
+		/// </summary>
+		/// <param name="visitorEmail">The email address of the visitor.</param>
+		/// <param name="visitorName">The name of the visitor.</param>
+		/// <param name="visitorOrganization">The organization of the visitor.</param>
+		/// <param name="locationId">The ID of the location that the visitor is invited to.</param>
+		/// <param name="hostId">The user ID of the host.</param>
+		/// <param name="startTime">The start time of the visit.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A task representing the asynchronous operation.</returns>
+		Task SendInvitationAsync(string visitorEmail, string visitorName, string visitorOrganization, string locationId, string hostId, DateTime? startTime, CancellationToken cancellationToken = default);
+
+		#endregion
+
 		#region ZOOM ROOMS
 
 		/// <summary>
@@ -835,7 +852,7 @@ namespace ZoomNet.Resources
 		/// Update the basic profile for a room location.
 		/// </summary>
 		/// <param name="locationId">The location unique identifier.</param>
-		/// <param name="address">The address of the location.</param>
+		/// <param name="address">The address of the location. NOTE: Can only be updated for Campus and Building.</param>
 		/// <param name="description">The description of the location.</param>
 		/// <param name="name">The name of the location.</param>
 		/// <param name="codeIsRequiredToExit">Indicates whether a code is required to exit out of your Zoom Rooms application to switch between other apps.</param>
