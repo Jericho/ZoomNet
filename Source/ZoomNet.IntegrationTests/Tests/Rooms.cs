@@ -155,6 +155,20 @@ namespace ZoomNet.IntegrationTests.Tests
 			await client.Rooms.MoveLocationASync(floorA2.Id, buildingB.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Floor A2 has been moved to building B").ConfigureAwait(false);
 
+			await client.Rooms.UpdateLocationProfileAsync(
+				locationId: buildingA.Id,
+				address: "123 Main St.",
+				description: "This building was created and updated for integration testing purposes",
+				name: $"{buildingA.Name} (updated)",
+				supportPhone: "555 555-9876",
+				timezone: TimeZones.Asia_Bangkok,
+				cancellationToken: cancellationToken).ConfigureAwait(false);
+			await client.Rooms.UpdateLocationProfileAsync(
+				locationId: floorA1.Id,
+				description: "This floor was created and updated for integration testing purposes",
+				name: $"{floorA1.Name} (updated)",
+				cancellationToken: cancellationToken).ConfigureAwait(false);
+
 			var locationMeetingSettings = await client.Rooms.GetLocationMeetingSettingsAsync(buildingA.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync("Meeting settings for a location have been retrieved").ConfigureAwait(false);
 
