@@ -1,5 +1,6 @@
 using Pathoschild.Http.Client;
 using Pathoschild.Http.Client.Extensibility;
+using System;
 using System.Net;
 
 namespace ZoomNet.Utilities
@@ -11,6 +12,11 @@ namespace ZoomNet.Utilities
 	internal class ZoomErrorHandler : IHttpFilter
 	{
 		private const string DEFAULT_HTTP_200_EXCEPTION_MESSAGE = "The Zoom API returned a status code that indicates that your request was unseccessful, without providing an explanation. Typically this means that you either lack the necessary permissions or that a paid account is required and you have a free account.";
+
+		/// <summary>
+		/// Gets a reference to the diagnostic store.
+		/// </summary>
+		public IDiagnosticStore DiagnosticStore { get; }
 
 		/// <summary>
 		/// Gets a value indicating whether HTTP 200 returned by the Zoom API should be treated as a failure.
@@ -30,11 +36,12 @@ namespace ZoomNet.Utilities
 		/// </remarks>
 		public string CustomHttp200ExceptionMessage { get; }
 
-		public ZoomErrorHandler()
-			: this(false, null) { }
+		public ZoomErrorHandler(IDiagnosticStore diagnosticStore)
+			: this(diagnosticStore, false, null) { }
 
-		public ZoomErrorHandler(bool treatHttp200AsException, string customHttp200ExceptionMessage)
+		public ZoomErrorHandler(IDiagnosticStore diagnosticStore, bool treatHttp200AsException, string customHttp200ExceptionMessage)
 		{
+			DiagnosticStore = diagnosticStore ?? throw new ArgumentNullException(nameof(diagnosticStore));
 			TreatHttp200AsException = treatHttp200AsException;
 			CustomHttp200ExceptionMessage = customHttp200ExceptionMessage;
 		}
@@ -53,7 +60,13 @@ namespace ZoomNet.Utilities
 			var (isError, errorMessage, errorCode) = response.Message.GetErrorMessageAsync().GetAwaiter().GetResult();
 			if (!isError) return;
 
-			var diagnosticLog = response.GetDiagnosticInfo()?.GetFormattedLog() ?? "Diagnostic log unavailable";
+			var diagnosticLog = "Diagnostic log unavailable";
+			var diagnosticId = response.Message.Headers.GetValue(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME);
+			if (string.IsNullOrEmpty(diagnosticId)) diagnosticId = response.Message.RequestMessage.Headers.GetValue(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME);
+			if (!string.IsNullOrEmpty(diagnosticId) && DiagnosticStore.TryGetValue(diagnosticId, out var diagnosticInfo))
+			{
+				diagnosticLog = diagnosticInfo.GetFormattedLog();
+			}
 
 			if (TreatHttp200AsException && response.Status == HttpStatusCode.OK)
 			{

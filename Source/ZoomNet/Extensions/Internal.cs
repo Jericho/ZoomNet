@@ -126,16 +126,15 @@ namespace ZoomNet
 			const string defaultDateFormat = dateOnlyFormat + "'T'HH:mm:ss";
 			const string utcDateFormat = defaultDateFormat + "'Z'";
 
-			if (dateOnly)
-			{
-				if (timeZone.HasValue && timeZone.Value == TimeZones.UTC) return date.ToUniversalTime().ToString(dateOnlyFormat);
-				else return date.ToString(dateOnlyFormat);
-			}
-			else
-			{
-				if (timeZone.HasValue && timeZone.Value == TimeZones.UTC) return date.ToUniversalTime().ToString(utcDateFormat);
-				else return date.ToString(defaultDateFormat);
-			}
+			var formats = dateOnly ?
+				(UtcFormat: dateOnlyFormat, OtherTimeZoneFormat: dateOnlyFormat) :
+				(UtcFormat: utcDateFormat, OtherTimeZoneFormat: defaultDateFormat);
+
+			var formattedDate = timeZone.HasValue && timeZone.Value == TimeZones.UTC ?
+				date.ToUniversalTime().ToString(formats.UtcFormat) :
+				date.ToString(formats.OtherTimeZoneFormat);
+
+			return formattedDate;
 		}
 
 		/// <summary>
@@ -443,9 +442,11 @@ namespace ZoomNet
 		/// <returns>Returns the request builder for chaining.</returns>
 		internal static IRequest WithHttp200TreatedAsFailure(this IRequest request, string customExceptionMessage = null)
 		{
+			var diagnosticStore = request.Filters.OfType<ZoomErrorHandler>().Single().DiagnosticStore;
+
 			return request
 				.WithoutFilter<ZoomErrorHandler>()
-				.WithFilter(new ZoomErrorHandler(true, customExceptionMessage));
+				.WithFilter(new ZoomErrorHandler(diagnosticStore, true, customExceptionMessage));
 		}
 
 		/// <summary>Set the body content of the HTTP request.</summary>
@@ -821,16 +822,6 @@ namespace ZoomNet
 			return querystringParameters;
 		}
 
-		internal static DiagnosticInfo GetDiagnosticInfo(this IResponse response)
-		{
-			var diagnosticId = response.Message.Headers.GetValue(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME);
-			if (string.IsNullOrEmpty(diagnosticId)) diagnosticId = response.Message.RequestMessage.Headers.GetValue(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME);
-			if (string.IsNullOrEmpty(diagnosticId)) return null;
-
-			DiagnosticHandler.DiagnosticsInfo.TryGetValue(diagnosticId, out DiagnosticInfo diagnosticInfo);
-			return diagnosticInfo;
-		}
-
 		internal static async Task<(bool IsError, string ErrorMessage, int? ErrorCode)> GetErrorMessageAsync(this HttpResponseMessage message)
 		{
 			// Default error code
@@ -1054,6 +1045,7 @@ namespace ZoomNet
 
 		internal static T ToObject<T>(this JsonElement element, JsonSerializerOptions options = null)
 		{
+			if (element.ValueKind == JsonValueKind.Null) return default;
 			return JsonSerializer.Deserialize<T>(element.GetRawText(), options ?? JsonFormatter.DefaultDeserializerOptions);
 		}
 
@@ -1241,7 +1233,7 @@ namespace ZoomNet
 				PageCount = pageCount,
 				PageNumber = pageNumber,
 				RecordsPerPage = recordsPerPage,
-				Records = jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()
+				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()) ?? Array.Empty<T>()
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
@@ -1279,7 +1271,7 @@ namespace ZoomNet
 			{
 				NextPageToken = nextPageToken,
 				RecordsPerPage = recordsPerPage,
-				Records = jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()
+				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()) ?? Array.Empty<T>()
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
@@ -1321,7 +1313,7 @@ namespace ZoomNet
 				To = to,
 				NextPageToken = nextPageToken,
 				RecordsPerPage = recordsPerPage,
-				Records = jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()
+				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()) ?? Array.Empty<T>()
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
@@ -1348,7 +1340,7 @@ namespace ZoomNet
 			var result = new PaginatedSyncResponse<T>()
 			{
 				SyncToken = syncToken,
-				Records = jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()
+				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()) ?? Array.Empty<T>()
 			};
 
 			return result;

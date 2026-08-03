@@ -818,7 +818,7 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
-		public async Task GetLocationSettingsAsync_WithLocationId_ReturnsSettings()
+		public async Task GetLocationMeetingSettingsAsync_WithLocationId_ReturnsSettings()
 		{
 			// Arrange
 			var locationId = "loc123";
@@ -833,7 +833,7 @@ namespace ZoomNet.UnitTests.Resources
 			var rooms = new Rooms(client);
 
 			// Act
-			var result = await rooms.GetLocationSettingsAsync(locationId, TestContext.Current.CancellationToken);
+			var result = await rooms.GetLocationMeetingSettingsAsync(locationId, TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();

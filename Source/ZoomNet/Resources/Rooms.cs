@@ -1,7 +1,9 @@
 using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
@@ -346,7 +348,730 @@ namespace ZoomNet.Resources
 
 		#endregion
 
-		#region ZOOM LOCATIONS
+		#region ZOOM ROOM ACCOUNT
+
+		/// <inheritdoc/>
+		public Task<RoomAccountProfile> GetAccountProfileAsync(CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/account_profile")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<RoomAccountProfile>();
+		}
+
+		/// <inheritdoc/>
+		public async Task<(RoomSecuritySettings SecuritySettings, RoomSettings RoomSettings)> GetAccountMeetingSettingsAsync(CancellationToken cancellationToken = default)
+		{
+			var response = await _client
+				.GetAsync($"rooms/account_settings")
+				.WithArgument("setting_type", RoomLocationSettingsType.Meeting.ToEnumString())
+				.WithCancellationToken(cancellationToken)
+				.AsJson()
+				.ConfigureAwait(false);
+
+			var securitySettings = response.GetPropertyValue<RoomSecuritySettings>("meeting_security");
+			var roomSettings = response.GetPropertyValue<RoomSettings>("zoom_rooms");
+
+			return (securitySettings, roomSettings);
+		}
+
+		/// <inheritdoc/>
+		public async Task<(RoomAlertSettings AlertSettings, RoomNotificationSettings NotificationSettings)> GetAccountAlertSettingsAsync(CancellationToken cancellationToken = default)
+		{
+			var response = await _client
+				.GetAsync($"rooms/account_settings")
+				.WithArgument("setting_type", RoomLocationSettingsType.Alert.ToEnumString())
+				.WithCancellationToken(cancellationToken)
+				.AsJson()
+				.ConfigureAwait(false);
+
+			var alertSettings = response.GetPropertyValue<RoomAlertSettings>("client_alert");
+			var notificationSettings = response.GetPropertyValue<RoomNotificationSettings>("notification");
+
+			return (alertSettings, notificationSettings);
+		}
+
+		/// <inheritdoc/>
+		public Task<RoomSignageSettings> GetAccountSignageSettingsAsync(CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/account_settings")
+				.WithArgument("setting_type", RoomLocationSettingsType.Signage.ToEnumString())
+				.WithCancellationToken(cancellationToken)
+				.AsObject<RoomSignageSettings>("digital_signage");
+		}
+
+		/// <inheritdoc/>
+		public Task<RoomSchedulingDisplaySettings> GetAccountSchedulingDisplaySettingsAsync(CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/account_settings")
+				.WithArgument("setting_type", RoomLocationSettingsType.SchedulingDisplay.ToEnumString())
+				.WithCancellationToken(cancellationToken)
+				.AsObject<RoomSchedulingDisplaySettings>("scheduling_display");
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateAccountProfileAsync(string requiredCodeToExit = null, string roomPasscode = null, string supportEmail = null, string supportPhone = null, bool? applyBackgroundImageToAllDisplays = null, IEnumerable<(string DisplayId, string ContentId)> backgroundImages = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{
+					"basic", new JsonObject
+					{
+						{ "required_code_to_exit", requiredCodeToExit },
+						{ "room_passcode", roomPasscode },
+						{ "support_email", supportEmail },
+						{ "support_phone", supportPhone }
+					}
+				},
+				{
+					"setup", new JsonObject
+					{
+						{ "apply_background_image_to_all_displays", applyBackgroundImageToAllDisplays },
+						{ "background_images", backgroundImages?.Select(x => new JsonObject { { "display_id", x.DisplayId }, { "content_id", x.ContentId } }).ToArray() }
+					}
+				}
+			};
+
+			return _client
+				.PatchAsync("rooms/account_profile")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		#endregion
+
+		#region ZOOM ROOM CALENDAR
+
+		/// <inheritdoc/>
+		public Task<CalendarResource> AddCalendarResourceAsync(string serviceId, string resourceEmail, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "calendar_resource_email", resourceEmail }
+			};
+
+			return _client
+				.PostAsync($"rooms/calendar/services/{serviceId}/resources")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<CalendarResource>();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteCalendarResourceAsync(string serviceId, string resourceId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"rooms/calendar/services/{serviceId}/resources/{resourceId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteCalendarServiceAsync(string serviceId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"rooms/calendar/services/{serviceId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<CalendarService>> GetCalendarServicesAsync(CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync("rooms/calendar/services")
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<CalendarService>("calendar_services");
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<CalendarResource>> GetCalendarResourcesAsync(string serviceId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/calendar/services/{serviceId}/resources")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<CalendarResource>("calendar_resources");
+		}
+
+		/// <inheritdoc/>
+		public Task<CalendarResource> GetCalendarResourceAsync(string serviceId, string resourceId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/calendar/services/{serviceId}/resources/{resourceId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<CalendarResource>();
+		}
+
+		/// <inheritdoc/>
+		public Task StartCalendarServiceSyncProcessAsync(string serviceId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.PutAsync($"rooms/calendar/services/{serviceId}/sync")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		#endregion
+
+		#region ZOOM ROOM CONTENT
+
+		/// <inheritdoc/>
+		public Task<string> CreateDigitalSignageContentFolderAsync(string folderName, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "folder_name", folderName }
+			};
+
+			return _client
+				.PostAsync("rooms/content/digital_signage/folders")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("folder_id");
+		}
+
+		/// <inheritdoc/>
+		public Task<string> UploadDigitalSignageMediaAsync(string contentName, Stream fileData, string folderId = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.PostAsync("https://fileapi.zoom.us/v2/zrdigitalsignage/files")
+				.WithBody(bodyBuilder =>
+				{
+					// The file name must be quoted otherwise the Zoom API returns the following error message: Invalid 'Content-Disposition' in multipart form
+					var content = new MultipartFormDataContent
+					{
+						{ new StreamContent(fileData), "file", $"\"{contentName}\"" }
+					};
+					if (!string.IsNullOrEmpty(folderId)) content.Add(new StringContent(folderId), "\"folder_id\"");
+
+					return content;
+				})
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("content_id");
+		}
+
+		/// <inheritdoc/>
+		public Task<string> CreateDigitalSignageContentPlaylistAsync(string playlistName, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "playlist_name", playlistName }
+			};
+
+			return _client
+				.PostAsync("rooms/content/digital_signage/playlists")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+
+				// PLEASE NOTE:
+				// The payload of the response contains a simple string, not a JSON string as is usually the case with other end points in the Zoom API
+				// Therefore, we need to use the AsString method instead of AsObject<T> method.
+				// I reported the discrepancy on July 27 2026 here: https://devforum.zoom.us/t/create-digital-signage-playlist-does-not-return-expected-json/145068/1
+				.AsString();
+		}
+
+		/// <inheritdoc/>
+		public Task<string> CreateDigitalSignageUrlAsync(string contentName, string url, string folderId = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "content_name", contentName },
+				{ "content_url", url },
+				{ "folder_id", folderId }
+			};
+
+			return _client
+				.PostAsync("rooms/content/digital_signage/contents")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("content_id");
+		}
+
+		/// <inheritdoc/>
+		public Task<string> CreateBackgroundImageFolderAsync(string folderName, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "folder_name", folderName }
+			};
+
+			return _client
+				.PostAsync("rooms/content/background/folders")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("folder_id");
+		}
+
+		/// <inheritdoc/>
+		public Task<string> UploadBackgroundImageAsync(string fileName, Stream fileData, string folderId = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.PostAsync("https://fileapi.zoom.us/v2/zrbackground/files")
+				.WithBody(bodyBuilder =>
+				{
+					// The file name must be quoted otherwise the Zoom API returns the following error message: Invalid 'Content-Disposition' in multipart form
+					var content = new MultipartFormDataContent
+					{
+						{ new StreamContent(fileData), "file", $"\"{fileName}\"" }
+					};
+					if (!string.IsNullOrEmpty(folderId)) content.Add(new StringContent(folderId), "\"folder_id\"");
+
+					return content;
+				})
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("content_id");
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteDigitalSignageContentFolderAsync(string folderId, bool removeFromLibraryOnly = false, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"rooms/content/digital_signage/folders/{folderId}?remove_from_library_only={removeFromLibraryOnly}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteDigitalSignageContentItemAsync(string contentId, bool removeFromLibraryOnly = false, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"rooms/content/digital_signage/contents/{contentId}?remove_from_library_only={removeFromLibraryOnly}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteDigitalSignageContentPlaylistAsync(string playlistId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"rooms/content/digital_signage/playlists/{playlistId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteBackgroundImageAsync(string imageId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"rooms/content/background/contents/{imageId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteBackgroundImageFolderAsync(string folderId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"rooms/content/background/folders/{folderId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<DigitalSignageContentFolder> GetDigitalSignageContentFolderAsync(string folderId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/content/digital_signage/folders/{folderId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<DigitalSignageContentFolder>();
+		}
+
+		/// <inheritdoc/>
+		public Task<DigitalSignageContentItem> GetDigitalSignageContentItemAsync(string contentId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/content/digital_signage/contents/{contentId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<DigitalSignageContentItem>();
+		}
+
+		/// <inheritdoc/>
+		public Task<DigitalSignageContentPlaylist> GetDigitalSignageContentPlaylistAsync(string playlistId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/content/digital_signage/playlists/{playlistId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<DigitalSignageContentPlaylist>();
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<DigitalSignageContentPlaylistItem>> GetDigitalSignageContentPlaylistItemsAsync(string playlistId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/content/digital_signage/playlists/{playlistId}/contents")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<DigitalSignageContentPlaylistItem>("contents");
+		}
+
+		/// <inheritdoc/>
+		public Task<ZoomRoomBackGroundImage> GetBackgroundImageAsync(string imageId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/content/background/contents/{imageId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<ZoomRoomBackGroundImage>();
+		}
+
+		/// <inheritdoc/>
+		public Task<DigitalSignageContentFolder> GetBackgroundImageFolderAsync(string folderId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/content/background/folders/{folderId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<DigitalSignageContentFolder>();
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<ZoomRoomBackGroundImage>> GetDefaultBackgroundImagesAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync("rooms/content/background/defaults")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<ZoomRoomBackGroundImage>("contents");
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<DigitalSignageContentItem>> GetDigitalSignageContentItemsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync("rooms/content/digital_signage/contents")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<DigitalSignageContentItem>("contents");
+		}
+
+		/// <inheritdoc/>
+		public async Task<string[]> GetDigitalSignagePublishedRoomsAsync(string playlistId, CancellationToken cancellationToken = default)
+		{
+			var response = await _client
+				.GetAsync($"rooms/content/digital_signage/playlists/{playlistId}/rooms")
+				.WithCancellationToken(cancellationToken)
+				.AsJson()
+				.ConfigureAwait(false);
+
+			var roomsNode = response.GetProperty("rooms");
+			var roomIds = roomsNode.EnumerateArray().Select(r => r.GetPropertyValue<string>("room_id")).ToArray();
+
+			return roomIds;
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<DigitalSignageContentPlaylist>> GetDigitalSignageContentPlaylistsAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync("rooms/content/digital_signage/playlists")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<DigitalSignageContentPlaylist>("playlists");
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<ZoomRoomBackGroundImage>> GetBackgroundImagesAsync(string folderId = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync("rooms/content/background/contents")
+				.WithArgument("folder_id", folderId)
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<ZoomRoomBackGroundImage>("contents");
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<DigitalSignageContentFolder>> GetBackgroundImageFoldersAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync("rooms/content/background/folders")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<DigitalSignageContentFolder>("folders");
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<DigitalSignageContentFolder>> GetDigitalSignageContentFoldersAsync(int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync("rooms/content/digital_signage/folders")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<DigitalSignageContentFolder>("folders");
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateDigitalSignageContentFolderAsync(string folderId, string folderName, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "folder_name", folderName }
+			};
+
+			return _client
+				.PatchAsync($"rooms/content/digital_signage/folders/{folderId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateDigitalSignageItemAsync(string contentId, string contentName = null, string url = null, bool? expires = null, DateTime? expirationDate = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "content_name", contentName },
+				{ "content_url", url },
+				{ "expires", expires },
+				{ "expiration_time", expirationDate }
+			};
+
+			return _client
+				.PatchAsync($"rooms/content/digital_signage/contents/{contentId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateDigitalSignageMediaAsync(string contentId, string contentName, Stream fileData, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.PutAsync("https://fileapi.zoom.us/v2/zrdigitalsignage/files")
+				.WithBody(bodyBuilder =>
+				{
+					// The file name must be quoted otherwise the Zoom API returns the following error message: Invalid 'Content-Disposition' in multipart form
+					var content = new MultipartFormDataContent
+					{
+						{ new StreamContent(fileData), "file", $"\"{contentName}\"" },
+						{ new StringContent(contentId), "\"content_id\"" }
+					};
+
+					return content;
+				})
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateDigitalSignageContentPlaylistAsync(string playlistId, string playlistName, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "playlist_name", playlistName }
+			};
+
+			return _client
+				.PatchAsync($"rooms/content/digital_signage/playlists/{playlistId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateDigitalSignageContentPlaylistItemsAsync(string playlistId, IEnumerable<(string Id, int Duration)> items, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "contents", items.Select(item => new JsonObject { { "content_id", item.Id }, { "content_duration", item.Duration } }).ToArray() }
+			};
+
+			return _client
+				.PutAsync($"rooms/content/digital_signage/playlists/{playlistId}/contents")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateDigitalSignagePublishedRoomsAsync(string playlistId, IEnumerable<string> roomIds, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "rooms", roomIds.Select(roomId => new JsonObject { { "room_id", roomId } }).ToArray() }
+			};
+
+			return _client
+				.PutAsync($"rooms/content/digital_signage/playlists/{playlistId}/rooms")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateBackgroundImageAsync(string fileId, string fileName, Stream fileData, string folderId = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.PutAsync("https://fileapi.zoom.us/v2/zrbackground/files")
+				.WithBody(bodyBuilder =>
+				{
+					// The file name must be quoted otherwise the Zoom API returns the following error message: Invalid 'Content-Disposition' in multipart form
+					var content = new MultipartFormDataContent
+					{
+						{ new StreamContent(fileData), "file", $"\"{fileName}\"" },
+						{ new StringContent(fileId), "\"content_id\"" }
+					};
+					if (!string.IsNullOrEmpty(folderId)) content.Add(new StringContent(folderId), "\"folder_id\"");
+
+					return content;
+				})
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateBackgroundImageFolderAsync(string folderId, string folderName, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "folder_name", folderName }
+			};
+
+			return _client
+				.PatchAsync($"rooms/content/background/folders/{folderId}")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		#endregion
+
+		#region ZOOM ROOM DEVICES
+
+		/// <inheritdoc/>
+		public Task<RoomDevice[]> GetAllDevicesAsync(string roomId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/{roomId}/devices")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<RoomDevice[]>("devices");
+		}
+
+		/// <inheritdoc/>
+		public Task GetDevicesInformationAsync(string roomId, CancellationToken cancellationToken = default)
+		{
+			/*
+				NOTE TO SELF: I haven't been able to test this functionality. The response to this endpoint is always empty.
+			*/
+
+			return _client
+				.GetAsync($"rooms/{roomId}/device_profiles/devices")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task CreateDeviceProfileAsync(string roomId, bool? enableAudioProcessing = null, bool? autoAdjustMicrophoneLevel = null, string cameraId = null, bool? enableEchoCancellation = null, string microphoneId = null, string name = null, RoomDeviceNoiseSuppressionType? noiseSuppressionType = null, string speakerId = null, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "audio_processing", enableAudioProcessing },
+				{ "auto_adjust_mic_level", autoAdjustMicrophoneLevel },
+				{ "camera_id", cameraId },
+				{ "echo_cancellation", enableEchoCancellation },
+				{ "microphone_id", microphoneId },
+				{ "name", name },
+				{ "noise_suppression", noiseSuppressionType?.ToEnumString() },
+				{ "speaker_id", speakerId }
+			};
+
+			/*
+				NOTE TO SELF: I haven't been able to test this functionality because I get the following error message:
+				"Unable to create device profile because there is no microphone/speaker/camera available in the following Zoom Room: aDLGFI6hRvaXkISCUXzUOA."
+			*/
+
+			return _client
+				.PostAsync($"rooms/{roomId}/device_profiles")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteDeviceProfileAsync(string roomId, string deviceProfileId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"rooms/{roomId}/device_profiles/{deviceProfileId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<RoomDeviceProfile> GetDeviceProfileAsync(string roomId, string deviceProfileId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"rooms/{roomId}/device_profiles/{deviceProfileId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<RoomDeviceProfile>();
+		}
+
+		/// <inheritdoc/>
+		public Task UpgradeAppVersionAsync(string roomId, string deviceId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "action", "upgrade" }
+			};
+
+			return _client
+				.PutAsync($"rooms/{roomId}/devices/{deviceId}/app_version")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DowngradeAppVersionAsync(string roomId, string deviceId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "action", "downgrade" }
+			};
+
+			return _client
+				.PutAsync($"rooms/{roomId}/devices/{deviceId}/app_version")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task CancelAppVersionChangeAsync(string roomId, string deviceId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "action", "cancel" }
+			};
+
+			return _client
+				.PutAsync($"rooms/{roomId}/devices/{deviceId}/app_version")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task DeleteDeviceAsync(string roomId, string deviceId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.DeleteAsync($"rooms/{roomId}/devices/{deviceId}")
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		#endregion
+
+		#region ZOOM ROOM LOCATIONS
 
 		/// <inheritdoc/>
 		public Task<PaginatedResponseWithToken<RoomLocation>> GetAllLocationsAsync(string parentLocationId = null, RoomLocationType? type = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
@@ -444,7 +1169,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public async Task<(RoomSecuritySettings SecuritySettings, RoomSettings RoomSettings)> GetLocationSettingsAsync(string locationId, CancellationToken cancellationToken = default)
+		public async Task<(RoomSecuritySettings SecuritySettings, RoomSettings RoomSettings)> GetLocationMeetingSettingsAsync(string locationId, CancellationToken cancellationToken = default)
 		{
 			var response = await _client
 				.GetAsync($"rooms/locations/{locationId}/settings")
@@ -623,131 +1348,6 @@ namespace ZoomNet.Resources
 		{
 			return _client
 				.DeleteAsync($"rooms/tags/{tagId}")
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		#endregion
-
-		#region ZOOM ROOM DEVICES
-
-		/// <inheritdoc/>
-		public Task<RoomDevice[]> GetAllDevicesAsync(string roomId, CancellationToken cancellationToken = default)
-		{
-			return _client
-				.GetAsync($"rooms/{roomId}/devices")
-				.WithCancellationToken(cancellationToken)
-				.AsObject<RoomDevice[]>("devices");
-		}
-
-		/// <inheritdoc/>
-		public Task GetDevicesInformationAsync(string roomId, CancellationToken cancellationToken = default)
-		{
-			/*
-				NOTE TO SELF: I haven't been able to test this functionality. The response to this endpoint is always empty.
-			*/
-
-			return _client
-				.GetAsync($"rooms/{roomId}/device_profiles/devices")
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <inheritdoc/>
-		public Task CreateDeviceProfileAsync(string roomId, bool? enableAudioProcessing = null, bool? autoAdjustMicrophoneLevel = null, string cameraId = null, bool? enableEchoCancellation = null, string microphoneId = null, string name = null, RoomDeviceNoiseSuppressionType? noiseSuppressionType = null, string speakerId = null, CancellationToken cancellationToken = default)
-		{
-			var data = new JsonObject
-			{
-				{ "audio_processing", enableAudioProcessing },
-				{ "auto_adjust_mic_level", autoAdjustMicrophoneLevel },
-				{ "camera_id", cameraId },
-				{ "echo_cancellation", enableEchoCancellation },
-				{ "microphone_id", microphoneId },
-				{ "name", name },
-				{ "noise_suppression", noiseSuppressionType?.ToEnumString() },
-				{ "speaker_id", speakerId }
-			};
-
-			/*
-				NOTE TO SELF: I haven't been able to test this functionality because I get the following error message:
-				"Unable to create device profile because there is no microphone/speaker/camera available in the following Zoom Room: aDLGFI6hRvaXkISCUXzUOA."
-			*/
-
-			return _client
-				.PostAsync($"rooms/{roomId}/device_profiles")
-				.WithJsonBody(data)
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <inheritdoc/>
-		public Task DeleteDeviceProfileAsync(string roomId, string deviceProfileId, CancellationToken cancellationToken = default)
-		{
-			return _client
-				.DeleteAsync($"rooms/{roomId}/device_profiles/{deviceProfileId}")
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <inheritdoc/>
-		public Task<RoomDeviceProfile> GetDeviceProfileAsync(string roomId, string deviceProfileId, CancellationToken cancellationToken = default)
-		{
-			return _client
-				.GetAsync($"rooms/{roomId}/device_profiles/{deviceProfileId}")
-				.WithCancellationToken(cancellationToken)
-				.AsObject<RoomDeviceProfile>();
-		}
-
-		/// <inheritdoc/>
-		public Task UpgradeAppVersionAsync(string roomId, string deviceId, CancellationToken cancellationToken = default)
-		{
-			var data = new JsonObject
-			{
-				{ "action", "upgrade" }
-			};
-
-			return _client
-				.PutAsync($"rooms/{roomId}/devices/{deviceId}/app_version")
-				.WithJsonBody(data)
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <inheritdoc/>
-		public Task DowngradeAppVersionAsync(string roomId, string deviceId, CancellationToken cancellationToken = default)
-		{
-			var data = new JsonObject
-			{
-				{ "action", "downgrade" }
-			};
-
-			return _client
-				.PutAsync($"rooms/{roomId}/devices/{deviceId}/app_version")
-				.WithJsonBody(data)
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <inheritdoc/>
-		public Task CancelAppVersionChangeAsync(string roomId, string deviceId, CancellationToken cancellationToken = default)
-		{
-			var data = new JsonObject
-			{
-				{ "action", "cancel" }
-			};
-
-			return _client
-				.PutAsync($"rooms/{roomId}/devices/{deviceId}/app_version")
-				.WithJsonBody(data)
-				.WithCancellationToken(cancellationToken)
-				.AsMessage();
-		}
-
-		/// <inheritdoc/>
-		public Task DeleteDeviceAsync(string roomId, string deviceId, CancellationToken cancellationToken = default)
-		{
-			return _client
-				.DeleteAsync($"rooms/{roomId}/devices/{deviceId}")
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}

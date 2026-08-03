@@ -232,10 +232,10 @@ namespace ZoomNet.Resources
 		{
 			const int ttl = 60; // 60 seconds should be enough. We don't want the token to be valid for too long for security reasons.
 
-			var recordingInfo = await GetRecordingInformationAsync(meetingId, ttl, cancellationToken);
+			var recordingInfo = await GetRecordingInformationAsync(meetingId, ttl, cancellationToken).ConfigureAwait(false);
 
 			var transcript = recordingInfo.GetTranscript();
-			var transcriptStream = await DownloadFileAsync(transcript.DownloadUrl, recordingInfo.DownloadAccessToken, cancellationToken);
+			var transcriptStream = await DownloadFileAsync(transcript.DownloadUrl, recordingInfo.DownloadAccessToken, cancellationToken).ConfigureAwait(false);
 			var transcriptContent = string.Empty;
 			using (StreamReader reader = new StreamReader(transcriptStream, Encoding.UTF8, true, -1, leaveOpen: true))
 			{
@@ -243,7 +243,7 @@ namespace ZoomNet.Resources
 			}
 
 			var timeline = recordingInfo.GetTimeline();
-			var timelineStream = await DownloadFileAsync(timeline.DownloadUrl, recordingInfo.DownloadAccessToken, cancellationToken);
+			var timelineStream = await DownloadFileAsync(timeline.DownloadUrl, recordingInfo.DownloadAccessToken, cancellationToken).ConfigureAwait(false);
 			var timelineContent = string.Empty;
 			using (StreamReader reader = new StreamReader(timelineStream, Encoding.UTF8, true, -1, leaveOpen: true))
 			{
