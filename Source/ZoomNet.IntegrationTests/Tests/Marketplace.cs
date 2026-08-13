@@ -30,6 +30,7 @@ namespace ZoomNet.IntegrationTests.Tests
 			{
 				var appId = paginatedCreatedApps.Records.First().Id;
 				var appInfo = await client.Marketplace.GetAppInfoAsync(appId, cancellationToken).ConfigureAwait(false);
+				await log.WriteLineAsync($"Retrieved info about app: {appInfo.Name}").ConfigureAwait(false);
 			}
 
 			// GET THE USER APP REQUESTS
