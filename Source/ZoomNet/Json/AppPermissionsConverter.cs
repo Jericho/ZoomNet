@@ -24,21 +24,18 @@ namespace ZoomNet.Json
 				{
 					if (reader.TokenType == JsonTokenType.StartObject)
 					{
-						var fieldName = string.Empty;
-						var fieldValue = string.Empty;
-
 						while (reader.Read() && reader.TokenType != JsonTokenType.EndObject)
 						{
 							if (reader.TokenType == JsonTokenType.PropertyName)
 							{
+								var propertyValue = (string)null;
 								var propertyName = reader.GetString();
 								reader.Read();
 
-								if (propertyName == "name") fieldValue = reader.GetString();
+								if (propertyName == "name") propertyValue = reader.GetString();
+								if (!string.IsNullOrEmpty(propertyValue)) values.Add(propertyValue);
 							}
 						}
-
-						if (!string.IsNullOrEmpty(fieldValue)) values.Add(fieldValue);
 					}
 				}
 
