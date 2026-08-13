@@ -3,9 +3,9 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>
-	/// App permission.
+	/// App permissions info.
 	/// </summary>
-	public class AppPermission
+	public class AppPermissionsInfo
 	{
 		/// <summary>Gets or sets the group.</summary>
 		[JsonPropertyName("group")]
@@ -16,8 +16,9 @@ namespace ZoomNet.Models
 		public string GroupMessage { get; set; }
 
 		/// <summary>Gets or sets the permissions.</summary>
-		//[JsonPropertyName("permissions")]
-		//public string Permissions { get; set; }
+		[JsonPropertyName("permissions")]
+		[JsonConverter(typeof(Json.AppPermissionsConverter))]
+		public string[] Permissions { get; set; }
 
 		/// <summary>Gets or sets the title.</summary>
 		[JsonPropertyName("title")]
