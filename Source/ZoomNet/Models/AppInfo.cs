@@ -37,7 +37,7 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets the app's permissions.</summary>
 		[JsonPropertyName("app_permissions")]
-		public AppPermission[] Permissions { get; set; }
+		public AppPermissionsInfo[] Permissions { get; set; }
 
 		/// <summary>Gets or sets the app's requirements.</summary>
 		//[JsonPropertyName("app_requirements")]
