@@ -40,8 +40,8 @@ namespace ZoomNet.Models
 		public AppPermissionsInfo[] Permissions { get; set; }
 
 		/// <summary>Gets or sets the app's requirements.</summary>
-		//[JsonPropertyName("app_requirements")]
-		//public AppRequirements Requirements { get; set; }
+		[JsonPropertyName("app_requirements")]
+		public AppRequirements Requirements { get; set; }
 
 		/// <summary>Gets or sets the app's scopes.</summary>
 		[JsonPropertyName("app_scopes")]
