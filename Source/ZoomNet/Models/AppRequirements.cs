@@ -17,6 +17,6 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets the eligibility requirements for app.</summary>
 		[JsonPropertyName("accountEligibility")] // documentation says there's an underscore between 'account' and 'eligibility' but during testing I found that's not the case
-		public string AccountEligibility { get; set; }
+		public AppAccountElibility AccountEligibility { get; set; }
 	}
 }
