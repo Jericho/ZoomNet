@@ -2,6 +2,7 @@ using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
@@ -142,6 +143,75 @@ namespace ZoomNet.Resources
 
 			return _client
 				.PostAsync($"marketplace/apps/{appId}/requests")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public async Task<string> GetAppManifestAsync(string appId, CancellationToken cancellationToken = default)
+		{
+			var result = await _client
+				.GetAsync($"marketplace/apps/{appId}/manifest")
+				.WithCancellationToken(cancellationToken)
+				.AsJson()
+				.ConfigureAwait(false);
+
+			var manifest = result.GetProperty("manifest").GetRawText();
+			return manifest;
+		}
+
+		/// <inheritdoc/>
+		public async Task<bool> ValidateAppManifestAsync(string appId, string manifest, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "manifest", manifest }, // Surely this string value should be encoded but the documentation doesn't mention it.
+				{ "app_id", appId }
+			};
+
+			var result = await _client
+				.PostAsync("marketplace/apps/manifest/validate")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsJson()
+				.ConfigureAwait(false);
+
+			if (result.GetPropertyValue<bool>("ok", false)) return true;
+
+			var errors = result.GetProperty("errors");
+			if (errors.ValueKind == JsonValueKind.Array && errors.GetArrayLength() > 0)
+			{
+				var messages = new List<string>();
+				foreach (var validationError in errors.EnumerateArray())
+				{
+					var message = validationError.GetPropertyValue<string>("message");
+					var setting = validationError.GetPropertyValue<string>("setting");
+					messages.Add($"{message} (Setting: {setting})");
+				}
+
+				throw new InvalidOperationException(string.Join(Environment.NewLine, messages));
+			}
+
+			var error = result.GetPropertyValue<string>("error");
+			if (!string.IsNullOrEmpty(error))
+			{
+				throw new InvalidOperationException($"App manifest validation failed: {error}");
+			}
+
+			return false;
+		}
+
+		/// <inheritdoc/>
+		public Task UpdateAppManifestAsync(string appId, string manifest, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "manifest", manifest } // Surely this string value should be encoded but the documentation doesn't mention it.
+			};
+
+			return _client
+				.PutAsync($"marketplace/apps/{appId}/manifest")
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();

@@ -118,5 +118,31 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The async task.</returns>
 		Task AddAllowRequestForGroupsAsync(string appId, IEnumerable<string> groupIds, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the app manifest.
+		/// </summary>
+		/// <param name="appId">The app's ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The app manifest.</returns>
+		Task<string> GetAppManifestAsync(string appId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Validate the app manifest.
+		/// </summary>
+		/// <param name="appId">The app's ID.</param>
+		/// <param name="manifest">The app manifest.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The validation result.</returns>
+		Task<bool> ValidateAppManifestAsync(string appId, string manifest, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Update the app manifest.
+		/// </summary>
+		/// <param name="appId">The app's ID.</param>
+		/// <param name="manifest">The app manifest.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task UpdateAppManifestAsync(string appId, string manifest, CancellationToken cancellationToken = default);
 	}
 }
