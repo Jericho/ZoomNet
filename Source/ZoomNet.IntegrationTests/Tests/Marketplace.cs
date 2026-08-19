@@ -33,6 +33,10 @@ namespace ZoomNet.IntegrationTests.Tests
 				await log.WriteLineAsync($"Retrieved info about app: {appInfo.Name}").ConfigureAwait(false);
 			}
 
+			// GENERATE A DEEPLINK
+			var deeplink = await client.Marketplace.GenerateAppDeeplinkAsync(DeeplinkType.Meeting, myUser.Id, "my-action", cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"Generated deeplink: {deeplink}").ConfigureAwait(false);
+
 			// GET MY APP'S MANIFEST
 			var myApp = paginatedCreatedApps.Records.SingleOrDefault(a => a.Name.Equals("General app 42", System.StringComparison.OrdinalIgnoreCase));
 			if (myApp != null)

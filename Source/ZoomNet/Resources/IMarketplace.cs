@@ -144,5 +144,15 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The async task.</returns>
 		Task UpdateAppManifestAsync(string appId, string manifest, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Generate a deep link for the app.
+		/// </summary>
+		/// <param name="type">The type of the deep link.</param>
+		/// <param name="userId">The user ID.</param>
+		/// <param name="action">The action of the deeplink, it's a user-defined string.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The deep link URL.</returns>
+		Task<string> GenerateAppDeeplinkAsync(DeeplinkType type, string userId, string action, CancellationToken cancellationToken = default);
 	}
 }
