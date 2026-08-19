@@ -217,6 +217,23 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
+		/// <inheritdoc/>
+		public Task<string> GenerateAppDeeplinkAsync(DeeplinkType type, string userId, string action, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "type", type },
+				{ "user_id", userId },
+				{ "action", action }
+			};
+
+			return _client
+				.PostAsync("zoomapp/deeplink")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsObject<string>("deeplink");
+		}
+
 		private Task<PaginatedResponseWithToken<AppInfo>> GetAppsAsync(string type, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
