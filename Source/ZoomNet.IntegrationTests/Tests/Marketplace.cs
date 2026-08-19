@@ -33,6 +33,17 @@ namespace ZoomNet.IntegrationTests.Tests
 				await log.WriteLineAsync($"Retrieved info about app: {appInfo.Name}").ConfigureAwait(false);
 			}
 
+			// GET MY APP'S MANIFEST
+			var myApp = paginatedCreatedApps.Records.SingleOrDefault(a => a.Name.Equals("General app 42", System.StringComparison.OrdinalIgnoreCase));
+			if (myApp != null)
+			{
+				var manifest = await client.Marketplace.GetAppManifestAsync(myApp.Id, cancellationToken).ConfigureAwait(false);
+				await log.WriteLineAsync($"Retrieved manifest for app: {myApp.Name}").ConfigureAwait(false);
+
+				await client.Marketplace.ValidateAppManifestAsync(myApp.Id, manifest, cancellationToken).ConfigureAwait(false);
+				await log.WriteLineAsync($"Validated manifest for app: {myApp.Name}").ConfigureAwait(false);
+			}
+
 			// GET THE USER APP REQUESTS
 			var paginatedPastUserRequests = await client.Marketplace.GetUserAppRequestsAsync(myUser.Id, AppRequestType.Active, 100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {paginatedPastUserRequests.TotalRecords} past user app requests.").ConfigureAwait(false);
