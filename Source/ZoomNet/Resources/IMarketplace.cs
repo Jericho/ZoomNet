@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -154,5 +156,19 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The deep link URL.</returns>
 		Task<string> GenerateAppDeeplinkAsync(DeeplinkType type, string userId, string action, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Get the app's API logs.
+		/// </summary>
+		/// <param name="appId">The app's ID.</param>
+		/// <param name="duration">Query the date range of the call log.</param>
+		/// <param name="keywords">API endpoint keywords.</param>
+		/// <param name="method">API HTTP method.</param>
+		/// <param name="statusCode">API status code to filter.</param>
+		/// <param name="recordsPerPage">The number of records per page.</param>
+		/// <param name="pagingToken">The paging token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task<PaginatedResponseWithToken<ApiLog>> GetApiLogsAsync(string appId, int? duration = null, string keywords = null, HttpMethod method = null, HttpStatusCode? statusCode = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
 	}
 }
