@@ -25,12 +25,15 @@ namespace ZoomNet.IntegrationTests.Tests
 			var paginatedCreatedApps = await client.Marketplace.GetAccountAppsAsync(100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"This account created {paginatedCreatedApps.TotalRecords} apps.").ConfigureAwait(false);
 
-			// GET DETAILED INFO ABOUT AN APP
-			if (paginatedCreatedApps.Records.Length > 0)
+			// GET DETAILED INFO ABOUT EACH APP
+			foreach (var app in paginatedCreatedApps.Records)
 			{
 				var appId = paginatedCreatedApps.Records.First().Id;
 				var appInfo = await client.Marketplace.GetAppInfoAsync(appId, cancellationToken).ConfigureAwait(false);
 				await log.WriteLineAsync($"Retrieved info about app: {appInfo.Name}").ConfigureAwait(false);
+
+				var logs = await client.Marketplace.GetApiLogsAsync(app.Id, null, null, null, null, 100, null, cancellationToken).ConfigureAwait(false);
+				await log.WriteLineAsync($"Retrieved {logs.Records.Length} API logs for app: {appInfo.Name}").ConfigureAwait(false);
 			}
 
 			// GENERATE A DEEPLINK
