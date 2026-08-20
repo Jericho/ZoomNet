@@ -143,6 +143,7 @@ namespace ZoomNet.Json
 					new WebinarConverter(),
 					new EventConverter(),
 					new InterpreterConverter(),
+					new HttpMethodConverter(),
 				}
 			};
 
@@ -163,6 +164,7 @@ namespace ZoomNet.Json
 					new WebinarConverter(),
 					new EventConverter(),
 					new InterpreterConverter(),
+					new HttpMethodConverter(),
 				}
 			};
 

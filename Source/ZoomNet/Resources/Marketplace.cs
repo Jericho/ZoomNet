@@ -2,6 +2,8 @@ using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 using System.Threading;
@@ -232,6 +234,21 @@ namespace ZoomNet.Resources
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsObject<string>("deeplink");
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<ApiLog>> GetApiLogsAsync(string appId, int? duration = null, string keywords = null, HttpMethod method = null, HttpStatusCode? statusCode = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"marketplace/apps/{appId}/api_call_logs")
+				.WithArgument("duration", duration)
+				.WithArgument("query", keywords)
+				.WithArgument("method", method?.Method)
+				.WithArgument("status_code", statusCode?.ToString())
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<ApiLog>("call_logs");
 		}
 
 		private Task<PaginatedResponseWithToken<AppInfo>> GetAppsAsync(string type, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
