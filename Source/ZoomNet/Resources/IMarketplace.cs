@@ -170,5 +170,15 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The async task.</returns>
 		Task<PaginatedResponseWithToken<ApiLog>> GetApiLogsAsync(string appId, int? duration = null, string keywords = null, HttpMethod method = null, HttpStatusCode? statusCode = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Send an app notification to the Zoom Activity Center.
+		/// </summary>
+		/// <param name="notificationId">The App-generated identifier.</param>
+		/// <param name="content">The notification content.</param>
+		/// <param name="userId">The user ID.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task SendAppNotificationAsync(string notificationId, string content, string userId, CancellationToken cancellationToken = default);
 	}
 }
