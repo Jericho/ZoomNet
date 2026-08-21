@@ -25,6 +25,10 @@ namespace ZoomNet.IntegrationTests.Tests
 			var paginatedCreatedApps = await client.Marketplace.GetAccountAppsAsync(100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"This account created {paginatedCreatedApps.TotalRecords} apps.").ConfigureAwait(false);
 
+			// SEND NOTIFICATION
+			await client.Marketplace.SendAppNotificationAsync("my-notification-id", "This is a test notification from ZoomNet", myUser.Id, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync("Notification sent to the Zoom Activity Center.").ConfigureAwait(false);
+
 			// GET DETAILED INFO ABOUT EACH APP
 			foreach (var app in paginatedCreatedApps.Records)
 			{
