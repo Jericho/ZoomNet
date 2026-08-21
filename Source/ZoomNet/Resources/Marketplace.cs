@@ -251,6 +251,23 @@ namespace ZoomNet.Resources
 				.AsPaginatedResponseWithToken<ApiLog>("call_logs");
 		}
 
+		/// <inheritdoc/>
+		public Task SendAppNotificationAsync(string notificationId, string content, string userId, CancellationToken cancellationToken = default)
+		{
+			var data = new JsonObject
+			{
+				{ "notification_id", notificationId },
+				{ "message", new JsonObject { { "text", content } } },
+				{ "user_id", userId }
+			};
+
+			return _client
+				.PostAsync("app/notifications")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
 		private Task<PaginatedResponseWithToken<AppInfo>> GetAppsAsync(string type, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
