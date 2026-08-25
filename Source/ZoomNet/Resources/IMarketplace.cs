@@ -180,5 +180,21 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The async task.</returns>
 		Task SendAppNotificationAsync(string notificationId, string content, string userId, CancellationToken cancellationToken = default);
+
+		/// <summary>
+		/// Create an app in the Zoom App Marketplace.
+		/// </summary>
+		/// <param name="appName">The name of the app.</param>
+		/// <param name="appType">The type of the app.</param>
+		/// <param name="manifest">The app manifest.</param>
+		/// <param name="contactName">The contact name.</param>
+		/// <param name="contactEmail">The contact email.</param>
+		/// <param name="companyName">The company name.</param>
+		/// <param name="scopes">The scopes.</param>
+		/// <param name="isActive">Whether the app is active.</param>
+		/// <param name="publish">Whether to publish the app.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>The async task.</returns>
+		Task CreateAppAsync(string appName, AppType appType, string manifest, string contactName, string contactEmail, string companyName, IEnumerable<string> scopes = null, bool isActive = false, bool publish = false, CancellationToken cancellationToken = default);
 	}
 }
