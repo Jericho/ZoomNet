@@ -268,6 +268,31 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
+		/// <inheritdoc/>
+		public Task CreateAppAsync(string appName, AppType appType, string manifest, string contactName, string contactEmail, string companyName, IEnumerable<string> scopes = null, bool isActive = false, bool publish = false, CancellationToken cancellationToken = default)
+		{
+			ArgumentNullException.ThrowIfNullOrEmpty(manifest, nameof(manifest));
+
+			var data = new JsonObject
+			{
+				{ "app_type", appType },
+				{ "app_name", appName },
+				{ "contact_name", contactName },
+				{ "contact_email", contactEmail },
+				{ "company_name", companyName },
+				{ "scopes", scopes?.ToArray() },
+				{ "active", isActive },
+				{ "publish", publish },
+				{ "manifest", manifest }
+			};
+
+			return _client
+				.PostAsync("marketplace/apps")
+				.WithJsonBody(data)
+				.WithCancellationToken(cancellationToken)
+				.AsMessage();
+		}
+
 		private Task<PaginatedResponseWithToken<AppInfo>> GetAppsAsync(string type, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			if (recordsPerPage < 1 || recordsPerPage > 300)
