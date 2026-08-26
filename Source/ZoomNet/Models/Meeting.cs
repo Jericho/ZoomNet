@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using ZoomNet.Json;
@@ -16,9 +16,21 @@ namespace ZoomNet.Models
 		[JsonPropertyName("assistant_id")]
 		public string AssistantId { get; set; }
 
+		/// <summary>Gets or sets the URL to join the meeting chat.</summary>
+		[JsonPropertyName("chat_join_url")]
+		public string ChatJoinUrl { get; set; }
+
 		/// <summary>Gets or sets the date and time when the meeting was created.</summary>
 		[JsonPropertyName("created_at")]
 		public DateTime CreatedOn { get; set; }
+
+		/// <summary>Gets or sets how the meeting was created.</summary>
+		[JsonPropertyName("creation_source")]
+		public MeetingCreationSource CreationSource { get; set; }
+
+		/// <summary>Gets or sets the dynamic host key for the meeting.</summary>
+		[JsonPropertyName("dynamic_host_key")]
+		public string DynamicHostKey { get; set; }
 
 		/// <summary>Gets or sets the encrypted passcode for third party endpoints (H323/SIP).</summary>
 		[JsonPropertyName("encrypted_password")]
@@ -44,6 +56,10 @@ namespace ZoomNet.Models
 		[JsonPropertyName("pstn_password")]
 		public string PstnPassword { get; set; }
 
+		/// <summary>Gets or sets the meeting registration URL.</summary>
+		[JsonPropertyName("registration_url")]
+		public string RegistrationUrl { get; set; }
+
 		/// <summary>Gets or Sets the meeting settings.</summary>
 		[JsonPropertyName("settings")]
 		public MeetingSettings Settings { get; set; }
@@ -55,6 +71,10 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the status.</summary>
 		[JsonPropertyName("status")]
 		public MeetingStatus? Status { get; set; }
+
+		/// <summary>Gets or sets the meeting template ID.</summary>
+		[JsonPropertyName("template_id")]
+		public string TemplateId { get; set; }
 
 		/// <summary>Gets or sets the timezone.</summary>
 		[JsonPropertyName("timezone")]
