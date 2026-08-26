@@ -112,7 +112,11 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets the list of global dial-in countries.</summary>
 		[JsonPropertyName("global_dial_in_countries")]
-		public DialInInfo[] DialInInfo { get; set; } = Array.Empty<DialInInfo>();
+		public string[] DialInCountries { get; set; } = Array.Empty<string>();
+
+		/// <summary>Gets or sets the list of global dial-in numbers.</summary>
+		[JsonPropertyName("global_dial_in_numbers")]
+		public DialInInfo[] DialInNumbers { get; set; } = Array.Empty<DialInInfo>();
 
 		/// <summary>Gets or sets the value indicating whether to enable HD video.</summary>
 		[JsonPropertyName("hd_video")]
