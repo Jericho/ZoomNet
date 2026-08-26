@@ -1,4 +1,4 @@
-﻿// Ignore Spelling: Voicemail
+// Ignore Spelling: Voicemail
 
 using System.Text.Json.Serialization;
 
@@ -109,7 +109,7 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// <item>The <see cref="BusyOnAnotherCallAction"/> is set to <see cref="BusyOnAnotherCallActionType.ForwardToVoicemail"/>.</item>
 		/// </list>
 		/// </summary>
-		[JsonPropertyName("connect_to_operator ")]
+		[JsonPropertyName("connect_to_operator")]
 		public bool? ConnectToOperator { get; set; }
 
 		/// <summary>
