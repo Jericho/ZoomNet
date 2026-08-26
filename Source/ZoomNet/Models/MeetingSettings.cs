@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using ZoomNet.Json;
@@ -8,12 +8,28 @@ namespace ZoomNet.Models
 	/// <summary>Meeting Settings.</summary>
 	public class MeetingSettings
 	{
+		/// <summary>Gets or sets the list of additional data center regions for hosting the meeting.</summary>
+		[JsonPropertyName("additional_data_center_regions")]
+		public string[] AdditionalDataCenterRegions { get; set; }
+
+		/// <summary>Gets or sets the value indicating whether to allow the host to control participant mute state.</summary>
+		[JsonPropertyName("allow_host_control_participant_mute_state")]
+		public bool? AllowHostToControlParticipantMuteState { get; set; }
+
 		/// <summary>
 		/// Gets or sets the value indicating whether to allow attendees to join the meeting from multiple devices.
 		/// This setting only works for meetings that require registration.
 		/// </summary>
 		[JsonPropertyName("allow_multiple_devices")]
 		public bool? AllowMultipleDevices { get; set; }
+
+		/// <summary>Gets or sets the value indicating whether to allow alternative hosts to manage cloud recordings.</summary>
+		[JsonPropertyName("alternative_host_manage_cloud_recording")]
+		public bool? AllowAlternativeHostToManageCloudRecording { get; set; }
+
+		/// <summary>Gets or sets the value indicating whether to allow alternative hosts to manage meeting summary.</summary>
+		[JsonPropertyName("alternative_host_manage_meeting_summary")]
+		public bool? AllowAlternativeHostToManageMeetingSummary { get; set; }
 
 		/// <summary>Gets or sets the value indicating whether to allow alternative hosts to add or edit polls. This requires Zoom version 5.8.0 or higher.</summary>
 		[JsonPropertyName("alternative_host_update_polls")]
@@ -55,6 +71,14 @@ namespace ZoomNet.Models
 		[JsonPropertyName("auto_recording")]
 		public AutoRecordingType? AutoRecording { get; set; }
 
+		/// <summary>Gets or sets the value indicating whether to automatically start AI companion questions.</summary>
+		[JsonPropertyName("auto_start_ai_companion_questions")]
+		public bool? AutoStartAiCompanionQuestions { get; set; }
+
+		/// <summary>Gets or sets the value indicating whether to automatically start meeting summary.</summary>
+		[JsonPropertyName("auto_start_meeting_summary")]
+		public bool? AutoStartMeetingSummary { get; set; }
+
 		/// <summary>
 		/// Gets or sets the type of calendar integration used to schedule the meeting.
 		/// Works with the private_meeting field to determine whether to share details of meetings or not.
@@ -87,6 +111,18 @@ namespace ZoomNet.Models
 		[JsonPropertyName("custom_keys")]
 		[JsonConverter(typeof(KeyValuePairConverter))]
 		public KeyValuePair<string, string>[] CustomKeys { get; set; }
+
+		/// <summary>Gets or sets the value indicating whether to enable device testing before joining the meeting.</summary>
+		[JsonPropertyName("device_testing")]
+		public bool? EnableDeviceTesting { get; set; }
+
+		/// <summary>Gets or sets the value indicating whether to disable participant video.</summary>
+		[JsonPropertyName("disable_participant_video")]
+		public bool? DisableParticipantVideo { get; set; }
+
+		/// <summary>Gets or sets the value indicating whether to include email addresses in the attendee report.</summary>
+		[JsonPropertyName("email_in_attendee_report")]
+		public bool? IncludeEmailInAttendeeReport { get; set; }
 
 		/// <summary>
 		/// Gets or sets the value indicating whether to send email notifications to alternative hosts and users with <a href="https://support.zoom.us/hc/en-us/articles/201362803-Scheduling-privilege">scheduling privileges</a>.
@@ -133,6 +169,10 @@ namespace ZoomNet.Models
 		[Obsolete("Deprecated")]
 		public bool? HostInIndia { get; set; }
 
+		/// <summary>Gets or sets the value indicating whether the meeting is internal.</summary>
+		[JsonPropertyName("internal_meeting")]
+		public bool? IsInternalMeeting { get; set; }
+
 		/// <summary>Gets or sets the time limits within which a participant can join a meeting before the meeting's host.</summary>
 		/// <remarks>This value is applicable only if <see cref="JoinBeforeHost"/> is true.</remarks>
 		[JsonPropertyName("jbh_time")]
@@ -156,6 +196,10 @@ namespace ZoomNet.Models
 		[JsonPropertyName("mute_upon_entry")]
 		public bool? MuteUponEntry { get; set; }
 
+		/// <summary>Gets or sets the value indicating whether to enable participant-focused meeting mode.</summary>
+		[JsonPropertyName("participant_focused_meeting")]
+		public bool? ParticipantFocusedMeeting { get; set; }
+
 		/// <summary>Gets or sets the value indicating whether to start video when participants join the meeting.</summary>
 		[JsonPropertyName("participant_video")]
 		public bool? StartVideoWhenParticipantsJoin { get; set; }
@@ -163,6 +207,10 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the value indicating whether the meeting is set as private.</summary>
 		[JsonPropertyName("private_meeting")]
 		public bool? Private { get; set; }
+
+		/// <summary>Gets or sets the value indicating whether to push meeting changes to calendar.</summary>
+		[JsonPropertyName("push_change_to_calendar")]
+		public bool? PushChangeToCalendar { get; set; }
 
 		/// <summary>Gets or sets the value indicating whether a confirmation email is sent when a participant registers.</summary>
 		[JsonPropertyName("registrants_confirmation_email")]
@@ -180,12 +228,20 @@ namespace ZoomNet.Models
 		[JsonPropertyName("request_permission_to_unmute_participants")]
 		public bool? RequestPermissionToUnmutePartecipants { get; set; }
 
+		/// <summary>Gets or sets the value indicating whether to show join info on the registration page.</summary>
+		[JsonPropertyName("show_join_info")]
+		public bool? ShowJoinInfo { get; set; }
+
 		/// <summary>
 		/// Gets or sets the value indicating whether to show social share buttons on the meeting registration page.
 		/// This setting only works for meetings that require registration.
 		/// </summary>
 		[JsonPropertyName("show_share_button")]
 		public bool? ShowShareButton { get; set; }
+
+		/// <summary>Gets or sets the meeting summary template ID.</summary>
+		[JsonPropertyName("summary_template_id")]
+		public string SummaryTemplateId { get; set; }
 
 		/// <summary>Gets or sets the value indicating whether to use Personal Meeting ID. Only used for scheduled meetings and recurring meetings with no fixed time.</summary>
 		[JsonPropertyName("use_pmi")]
@@ -198,5 +254,13 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the value indicating whether a watermark should be displayed when viewing shared screen.</summary>
 		[JsonPropertyName("watermark")]
 		public bool? Watermark { get; set; }
+
+		/// <summary>Gets or sets who can ask AI companion questions.</summary>
+		[JsonPropertyName("who_can_ask_questions")]
+		public WhoCanAskQuestions? WhoCanAskQuestions { get; set; }
+
+		/// <summary>Gets or sets who will receive the meeting summary.</summary>
+		[JsonPropertyName("who_will_receive_summary")]
+		public WhoWillReceiveSummary? WhoWillReceiveSummary { get; set; }
 	}
 }
