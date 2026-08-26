@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
@@ -16,7 +16,7 @@ namespace ZoomNet.Models
 		public string PersonalMeetingId { get; set; }
 
 		/// <summary>Gets or sets a value indicating whether the prescheduled meeting was created via the GSuite app.</summary>
-		[JsonPropertyName("pre_scheduled")]
+		[JsonPropertyName("pre_schedule")]
 		public bool PreScheduled { get; set; } = false;
 
 		/// <summary>Gets or sets the meeting start time.</summary>
