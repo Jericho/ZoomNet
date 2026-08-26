@@ -1,27 +1,19 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the status of a meeting.
-	/// </summary>
+	/// <summary>Enumeration to indicate the status of a meeting.</summary>
 	public enum MeetingStatus
 	{
-		/// <summary>
-		/// Waiting.
-		/// </summary>
+		/// <summary>Waiting.</summary>
 		[EnumMember(Value = "waiting")]
 		Waiting,
 
-		/// <summary>
-		/// Started.
-		/// </summary>
+		/// <summary>Started.</summary>
 		[EnumMember(Value = "started")]
 		Started,
 
-		/// <summary>
-		/// Finished.
-		/// </summary>
+		/// <summary>Finished.</summary>
 		[EnumMember(Value = "finished")]
 		Finished
 	}

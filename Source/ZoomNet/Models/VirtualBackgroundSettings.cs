@@ -1,10 +1,8 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Virtual background settings.
-	/// </summary>
+	/// <summary>Virtual background settings.</summary>
 	public class VirtualBackgroundSettings
 	{
 		/// <summary>Gets or sets a value indicating whether to allow users to upload custom backgrounds.</summary>

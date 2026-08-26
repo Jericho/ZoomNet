@@ -1,38 +1,24 @@
-namespace ZoomNet.Models
+﻿namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the type of meeting.
-	/// </summary>
+	/// <summary>Enumeration to indicate the type of meeting.</summary>
 	public enum MeetingType
 	{
-		/// <summary>
-		/// Instant.
-		/// </summary>
+		/// <summary>Instant.</summary>
 		Instant = 1,
 
-		/// <summary>
-		/// Scheduled.
-		/// </summary>
+		/// <summary>Scheduled.</summary>
 		Scheduled = 2,
 
-		/// <summary>
-		/// Recurring meeting with no fixed time.
-		/// </summary>
+		/// <summary>Recurring meeting with no fixed time.</summary>
 		RecurringNoFixedTime = 3,
 
-		/// <summary>
-		/// Meeting was started using a Personal Meeting ID.
-		/// </summary>
+		/// <summary>Meeting was started using a Personal Meeting ID.</summary>
 		Personal = 4,
 
-		/// <summary>
-		/// A PAC (Personal Audio Conference) meeting.
-		/// </summary>
+		/// <summary>A PAC (Personal Audio Conference) meeting.</summary>
 		PersonalAudioConference = 7,
 
-		/// <summary>
-		/// Recurring meeting with fixed time.
-		/// </summary>
+		/// <summary>Recurring meeting with fixed time.</summary>
 		RecurringFixedTime = 8
 	}
 }

@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the type of synchronization.
-	/// </summary>
+	/// <summary>Enumeration to indicate the type of synchronization.</summary>
 	public enum SynchronizationType
 	{
 		/// <summary>Full synchronization.</summary>

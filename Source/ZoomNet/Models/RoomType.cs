@@ -1,45 +1,31 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate room type.
-	/// </summary>
+	/// <summary>Enumeration to indicate room type.</summary>
 	public enum RoomType
 	{
-		/// <summary>
-		/// Kiosk.
-		/// </summary>
+		/// <summary>Kiosk.</summary>
 		[EnumMember(Value = "Kiosk")]
 		Kiosk,
 
-		/// <summary>
-		/// Zoom room.
-		/// </summary>
+		/// <summary>Zoom room.</summary>
 		[EnumMember(Value = "ZoomRoom")]
 		Room,
 
-		/// <summary>
-		/// Whiteboard.
-		/// </summary>
+		/// <summary>Whiteboard.</summary>
 		[EnumMember(Value = "StandaloneWhiteboard")]
 		Whiteboard,
 
-		/// <summary>
-		/// Scheduling display only.
-		/// </summary>
+		/// <summary>Scheduling display only.</summary>
 		[EnumMember(Value = "SchedulingDisplayOnly")]
 		SchedulingDisplayOnly,
 
-		/// <summary>
-		/// Digital signage only.
-		/// </summary>
+		/// <summary>Digital signage only.</summary>
 		[EnumMember(Value = "DigitalSignageOnly")]
 		DigitalSignageOnly,
 
-		/// <summary>
-		/// Personal Zoom Room.
-		/// </summary>
+		/// <summary>Personal Zoom Room.</summary>
 		[EnumMember(Value = "PersonalZoomRoom")]
 		PersonalRoom,
 	}

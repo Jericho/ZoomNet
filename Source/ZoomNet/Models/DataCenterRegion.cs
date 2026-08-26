@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Data center region.
-	/// </summary>
+	/// <summary>Data center region.</summary>
 	public enum DataCenterRegion
 	{
 		/// <summary>Europe.</summary>

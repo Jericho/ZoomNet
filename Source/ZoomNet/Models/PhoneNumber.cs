@@ -1,10 +1,8 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Phone number.
-	/// </summary>
+	/// <summary>Phone number.</summary>
 	public class PhoneNumber
 	{
 		/// <summary>Gets or sets the country code. For example, for United States phone numbers, this will be a +1 value.</summary>

@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Type of the call used in call element.
-	/// </summary>
+	/// <summary>Type of the call used in call element.</summary>
 	public enum CallElementCallType
 	{
 		/// <summary>General call.</summary>

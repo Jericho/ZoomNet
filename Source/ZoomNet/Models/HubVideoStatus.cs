@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the status of the video.
-	/// </summary>
+	/// <summary>Enumeration to indicate the status of the video.</summary>
 	public enum HubVideoStatus
 	{
 		/// <summary>Video is in processing status and not available for viewing yet.</summary>

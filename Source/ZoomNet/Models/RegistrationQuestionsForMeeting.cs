@@ -1,8 +1,6 @@
-namespace ZoomNet.Models
+﻿namespace ZoomNet.Models
 {
-	/// <summary>
-	/// The questions on the registration form.
-	/// </summary>
+	/// <summary>The questions on the registration form.</summary>
 	public class RegistrationQuestionsForMeeting
 	{
 		/// <summary>Gets or sets the required fields.</summary>

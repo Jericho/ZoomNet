@@ -1,11 +1,9 @@
-using System;
+﻿using System;
 using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Summary information about a meeting.
-	/// </summary>
+	/// <summary>Summary information about a meeting.</summary>
 	public class MeetingSummary : MeetingInfo
 	{
 		/// <summary>Gets or sets the meeting description.</summary>
@@ -18,22 +16,16 @@ namespace ZoomNet.Models
 		[JsonPropertyName("agenda")]
 		public string Agenda { get; set; }
 
-		/// <summary>
-		/// Gets or sets the date and time when the meeting was created.
-		/// </summary>
+		/// <summary>Gets or sets the date and time when the meeting was created.</summary>
 		[JsonPropertyName("created_at")]
 		public DateTime CreatedOn { get; set; }
 
-		/// <summary>
-		/// Gets or sets the URL for the host to start the meeting.
-		/// </summary>
-		[JsonPropertyName("start_url")]
-		public string StartUrl { get; set; }
-
-		/// <summary>
-		/// Gets or sets the personal meeting id.
-		/// </summary>
+		/// <summary>Gets or sets the personal meeting id.</summary>
 		[JsonPropertyName("pmi")]
 		public string PersonalMeetingId { get; set; }
+
+		/// <summary>Gets or sets the URL for the host to start the meeting.</summary>
+		[JsonPropertyName("start_url")]
+		public string StartUrl { get; set; }
 	}
 }

@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the recurring event registration type.
-	/// </summary>
+	/// <summary>Enumeration to indicate the recurring event registration type.</summary>
 	/// <remarks>This is applicable only for recurring events.</remarks>
 	public enum RecurringEventRegistrationType
 	{

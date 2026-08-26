@@ -1,10 +1,8 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Represents the details of a phone number carrier in the Zoom Phone API.
-	/// </summary>
+	/// <summary>Represents the details of a phone number carrier in the Zoom Phone API.</summary>
 	/// <remarks>
 	/// <list type="table">
 	/// <item><term>code</term><description>The unique identifier of the carrier.</description></item>
@@ -13,15 +11,11 @@ namespace ZoomNet.Models
 	/// </remarks>
 	public class PhoneNumberCarrier
 	{
-		/// <summary>
-		/// Gets or sets the unique identifier of the carrier.
-		/// </summary>
+		/// <summary>Gets or sets the unique identifier of the carrier.</summary>
 		[JsonPropertyName("code")]
 		public int? Code { get; set; }
 
-		/// <summary>
-		/// Gets or sets the name of the carrier.
-		/// </summary>
+		/// <summary>Gets or sets the name of the carrier.</summary>
 		[JsonPropertyName("name")]
 		public string Name { get; set; }
 	}

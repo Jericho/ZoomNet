@@ -1,45 +1,31 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the type content share in a meeting/webinar.
-	/// </summary>
+	/// <summary>Enumeration to indicate the type content share in a meeting/webinar.</summary>
 	public enum ScreenshareContentType
 	{
-		/// <summary>
-		/// Application.
-		/// </summary>
+		/// <summary>Application.</summary>
 		[EnumMember(Value = "application")]
 		Application,
 
-		/// <summary>
-		/// Whiteboard.
-		/// </summary>
+		/// <summary>Whiteboard.</summary>
 		[EnumMember(Value = "whiteboard")]
 		Whiteboard,
 
-		/// <summary>
-		/// Desktop.
-		/// </summary>
+		/// <summary>Desktop.</summary>
 		[EnumMember(Value = "desktop")]
 		Desktop,
 
-		/// <summary>
-		/// Airplay.
-		/// </summary>
+		/// <summary>Airplay.</summary>
 		[EnumMember(Value = "airplay")]
 		Airplay,
 
-		/// <summary>
-		/// Camera.
-		/// </summary>
+		/// <summary>Camera.</summary>
 		[EnumMember(Value = "camera")]
 		Camera,
 
-		/// <summary>
-		/// An unrecognized application, such as a third party app.
-		/// </summary>
+		/// <summary>An unrecognized application, such as a third party app.</summary>
 		[EnumMember(Value = "unknown")]
 		Unknown
 	}

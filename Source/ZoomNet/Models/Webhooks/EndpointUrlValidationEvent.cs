@@ -1,4 +1,4 @@
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
@@ -7,20 +7,14 @@ using ZoomNet.Json;
 
 namespace ZoomNet.Models.Webhooks
 {
-	/// <summary>
-	/// This event is triggered when Zoom wants to validate the event notification endpoint URL you have configured in your account.
-	/// </summary>
+	/// <summary>This event is triggered when Zoom wants to validate the event notification endpoint URL you have configured in your account.</summary>
 	public class EndpointUrlValidationEvent : Event
 	{
-		/// <summary>
-		/// Gets or sets the token.
-		/// </summary>
+		/// <summary>Gets or sets the token.</summary>
 		[JsonPropertyName("plainToken")]
 		public string PlainToken { get; set; }
 
-		/// <summary>
-		/// Generates the payload that should be returned to Zoom when your are asked to validate your webhook endpoint URL.
-		/// </summary>
+		/// <summary>Generates the payload that should be returned to Zoom when your are asked to validate your webhook endpoint URL.</summary>
 		/// <param name="secretToken">Your webhoop app's secret token.</param>
 		/// <returns>The payload to be returned to Zoom.</returns>
 		public string GenerateUrlValidationResponse(string secretToken)

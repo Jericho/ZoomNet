@@ -1,21 +1,15 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Room location.
-	/// </summary>
+	/// <summary>Room location.</summary>
 	public class RoomLocation
 	{
-		/// <summary>
-		/// Gets or sets the room location id.
-		/// </summary>
+		/// <summary>Gets or sets the room location id.</summary>
 		[JsonPropertyName("id")]
 		public string Id { get; set; }
 
-		/// <summary>
-		/// Gets or sets the name.
-		/// </summary>
+		/// <summary>Gets or sets the name.</summary>
 		[JsonPropertyName("name")]
 		public string Name { get; set; }
 
@@ -27,9 +21,7 @@ namespace ZoomNet.Models
 		[JsonPropertyName("parent_location_id")]
 		public string ParentId { get; set; }
 
-		/// <summary>
-		/// Gets or sets the type.
-		/// </summary>
+		/// <summary>Gets or sets the type.</summary>
 		[JsonPropertyName("type")]
 		public RoomLocationType Type { get; set; }
 	}

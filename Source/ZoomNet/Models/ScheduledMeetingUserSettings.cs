@@ -1,10 +1,8 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Scheduled Meeting user settings.
-	/// </summary>
+	/// <summary>Scheduled Meeting user settings.</summary>
 	public class ScheduledMeetingUserSettings
 	{
 		/// <summary>Gets or sets a value indicating how participants can join the audio portion of the meeting.</summary>

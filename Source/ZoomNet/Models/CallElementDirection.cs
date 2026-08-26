@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Direction of the call.
-	/// </summary>
+	/// <summary>Direction of the call.</summary>
 	public enum CallElementDirection
 	{
 		/// <summary>Inbound call.</summary>

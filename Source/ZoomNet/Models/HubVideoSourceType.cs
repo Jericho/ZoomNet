@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the video source type.
-	/// </summary>
+	/// <summary>Enumeration to indicate the video source type.</summary>
 	public enum HubVideoSourceType
 	{
 		/// <summary>Unknown (or not specified).</summary>

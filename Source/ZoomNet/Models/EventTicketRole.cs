@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the role granted by a ticket.
-	/// </summary>
+	/// <summary>Enumeration to indicate the role granted by a ticket.</summary>
 	public enum EventTicketRole
 	{
 		/// <summary>Attendee.</summary>

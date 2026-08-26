@@ -1,27 +1,19 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Noise suppression type.
-	/// </summary>
+	/// <summary>Noise suppression type.</summary>
 	public enum NoiseSuppressionType
 	{
-		/// <summary>
-		/// Moderate noise suppression.
-		/// </summary>
+		/// <summary>Moderate noise suppression.</summary>
 		[EnumMember(Value = "moderate")]
 		Moderate,
 
-		/// <summary>
-		/// Aggressive noise suppression.
-		/// </summary>
+		/// <summary>Aggressive noise suppression.</summary>
 		[EnumMember(Value = "aggressive")]
 		Aggressive,
 
-		/// <summary>
-		///  Noise suppression disabled..
-		/// </summary>
+		/// <summary>Noise suppression disabled..</summary>
 		[EnumMember(Value = "none")]
 		None
 	}

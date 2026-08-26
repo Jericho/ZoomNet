@@ -1,10 +1,8 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models.CallHandlingSettings
 {
-	/// <summary>
-	/// Call distribution model for <see cref="CallHandlingSubsettings"/> settings.
-	/// </summary>
+	/// <summary>Call distribution model for <see cref="CallHandlingSubsettings"/> settings.</summary>
 	public class CallDistributionSettings
 	{
 		/// <summary>
@@ -14,15 +12,11 @@ namespace ZoomNet.Models.CallHandlingSettings
 		[JsonPropertyName("handle_multiple_calls")]
 		public bool? HandleMultipleCalls { get; set; }
 
-		/// <summary>
-		/// Gets or sets the ringing duration for each member. Allowed values: 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60.
-		/// </summary>
+		/// <summary>Gets or sets the ringing duration for each member. Allowed values: 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60.</summary>
 		[JsonPropertyName("ring_duration")]
 		public int? RingDuration { get; set; }
 
-		/// <summary>
-		/// Gets or sets the call distribution ring mode.
-		/// </summary>
+		/// <summary>Gets or sets the call distribution ring mode.</summary>
 		[JsonPropertyName("ring_mode")]
 		public RingModeType? RingMode { get; set; }
 

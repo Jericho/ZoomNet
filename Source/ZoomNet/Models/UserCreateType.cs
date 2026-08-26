@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to specify how to create a new user.
-	/// </summary>
+	/// <summary>Enumeration to specify how to create a new user.</summary>
 	public enum UserCreateType
 	{
 		/// <summary>
@@ -23,10 +21,7 @@ namespace ZoomNet.Models
 		[EnumMember(Value = "autoCreate")]
 		Auto,
 
-		/// <summary>
-		/// This action is provided for API partner only.
-		/// User created in this way has no password and is not able to log into the Zoom web site or client.
-		/// </summary>
+		/// <summary>This action is provided for API partner only. User created in this way has no password and is not able to log into the Zoom web site or client.</summary>
 		[EnumMember(Value = "custCreate")]
 		Cust,
 

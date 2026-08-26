@@ -1,39 +1,27 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate room device type.
-	/// </summary>
+	/// <summary>Enumeration to indicate room device type.</summary>
 	public enum RoomDeviceType
 	{
-		/// <summary>
-		/// Zoom Rooms Computer.
-		/// </summary>
+		/// <summary>Zoom Rooms Computer.</summary>
 		[EnumMember(Value = "Zoom Rooms Computer")]
 		Computer,
 
-		/// <summary>
-		/// Controller.
-		/// </summary>
+		/// <summary>Controller.</summary>
 		[EnumMember(Value = "Controller")]
 		Controller,
 
-		/// <summary>
-		/// Scheduling Display.
-		/// </summary>
+		/// <summary>Scheduling Display.</summary>
 		[EnumMember(Value = "Scheduling Display")]
 		SchedulingDisplay,
 
-		/// <summary>
-		/// Control system.
-		/// </summary>
+		/// <summary>Control system.</summary>
 		[EnumMember(Value = "Zoom Rooms Control System")]
 		ControlSystem,
 
-		/// <summary>
-		/// Whiteboard.
-		/// </summary>
+		/// <summary>Whiteboard.</summary>
 		[EnumMember(Value = "Companion Whiteboard")]
 		Whiteboard
 	}

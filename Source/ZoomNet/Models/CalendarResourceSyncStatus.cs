@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Type of calendar integration used to schedule the meeting.
-	/// </summary>
+	/// <summary>Type of calendar integration used to schedule the meeting.</summary>
 	public enum CalendarResourceSyncStatus
 	{
 		/// <summary>Unknown.</summary>

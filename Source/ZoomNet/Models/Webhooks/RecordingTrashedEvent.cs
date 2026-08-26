@@ -1,15 +1,11 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models.Webhooks
 {
-	/// <summary>
-	/// This event is triggered when a user initially deletes a cloud recording.
-	/// </summary>
+	/// <summary>This event is triggered when a user initially deletes a cloud recording.</summary>
 	public class RecordingTrashedEvent : RecordingFilesEvent
 	{
-		/// <summary>
-		/// Gets or sets authentication token to use to retrieve the recording.
-		/// </summary>
+		/// <summary>Gets or sets authentication token to use to retrieve the recording.</summary>
 		/// <remarks>
 		/// Use the generated token value with the download_url value to download
 		/// the cloud recording via an OAuth app.
@@ -20,15 +16,11 @@ namespace ZoomNet.Models.Webhooks
 		/// </remarks>
 		public string DownloadToken { get; set; }
 
-		/// <summary>
-		/// Gets or sets the email address of the user who deleted the recording to the trash.
-		/// </summary>
+		/// <summary>Gets or sets the email address of the user who deleted the recording to the trash.</summary>
 		[JsonPropertyName("operator")]
 		public string Operator { get; set; }
 
-		/// <summary>
-		/// Gets or sets the id of the user who deleted the recording to the trash.
-		/// </summary>
+		/// <summary>Gets or sets the id of the user who deleted the recording to the trash.</summary>
 		[JsonPropertyName("operator_id")]
 		public string OperatorId { get; set; }
 	}

@@ -1,10 +1,8 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Information about a session reservation option.
-	/// </summary>
+	/// <summary>Information about a session reservation option.</summary>
 	public class EventSessionReservationInfo
 	{
 		/// <summary>Gets or sets a value indicating whether the session reservations are enabled.</summary>

@@ -1,51 +1,35 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate room location type.
-	/// </summary>
+	/// <summary>Enumeration to indicate room location type.</summary>
 	public enum RoomLocationType
 	{
-		/// <summary>
-		/// Country.
-		/// </summary>
+		/// <summary>Country.</summary>
 		[EnumMember(Value = "country")]
 		Country,
 
-		/// <summary>
-		/// State.
-		/// </summary>
+		/// <summary>State.</summary>
 		[EnumMember(Value = "States")]
 		State,
 
-		/// <summary>
-		/// City.
-		/// </summary>
+		/// <summary>City.</summary>
 		[EnumMember(Value = "city")]
 		City,
 
-		/// <summary>
-		/// Campus.
-		/// </summary>
+		/// <summary>Campus.</summary>
 		[EnumMember(Value = "campus")]
 		Campus,
 
-		/// <summary>
-		/// Building.
-		/// </summary>
+		/// <summary>Building.</summary>
 		[EnumMember(Value = "building")]
 		Building,
 
-		/// <summary>
-		/// Floor.
-		/// </summary>
+		/// <summary>Floor.</summary>
 		[EnumMember(Value = "floor")]
 		Floor,
 
-		/// <summary>
-		/// Room.
-		/// </summary>
+		/// <summary>Room.</summary>
 		[EnumMember(Value = "room")]
 		Room
 	}

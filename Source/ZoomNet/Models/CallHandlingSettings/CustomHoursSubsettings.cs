@@ -1,11 +1,9 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models.CallHandlingSettings
 {
-	/// <summary>
-	/// Call handling custom hours subsettings.
-	/// </summary>
+	/// <summary>Call handling custom hours subsettings.</summary>
 	public class CustomHoursSubsettings : CallHandlingSubsettingsBase
 	{
 		/// <summary>
@@ -15,6 +13,10 @@ namespace ZoomNet.Models.CallHandlingSettings
 		[JsonPropertyName("allow_members_to_reset")]
 		public bool? AllowMembersToReset { get; set; }
 
+		/// <summary>Gets or sets the custom hours settings.</summary>
+		[JsonPropertyName("custom_hours_settings")]
+		public List<CustomHoursChildSubsettings> CustomHoursSettings { get; set; }
+
 		/// <summary>
 		/// Gets or sets the type of custom hours.
 		/// 1 — 24 hours, 7 days a week.
@@ -23,15 +25,7 @@ namespace ZoomNet.Models.CallHandlingSettings
 		[JsonPropertyName("type")]
 		public byte? CustomHoursType { get; set; }
 
-		/// <summary>
-		/// Gets or sets the custom hours settings.
-		/// </summary>
-		[JsonPropertyName("custom_hours_settings")]
-		public List<CustomHoursChildSubsettings> CustomHoursSettings { get; set; }
-
-		/// <summary>
-		/// Gets the type of sub-setting.
-		/// </summary>
+		/// <summary>Gets the type of sub-setting.</summary>
 		[JsonIgnore]
 		public override CallHandlingSubsettingsType SubsettingType => CallHandlingSubsettingsType.CustomHours;
 	}

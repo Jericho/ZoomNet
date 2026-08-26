@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Specify an action for the content list.
-	/// </summary>
+	/// <summary>Specify an action for the content list.</summary>
 	public enum SignageContentListAction
 	{
 		/// <summary>Add another content list.</summary>

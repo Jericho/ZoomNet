@@ -1,10 +1,8 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Details about an error that occured when creating a ticket for a registrant.
-	/// </summary>
+	/// <summary>Details about an error that occured when creating a ticket for a registrant.</summary>
 	public class EventTicketError
 	{
 		/// <summary>Gets or sets the email address used for the registration.</summary>

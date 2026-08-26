@@ -1,8 +1,6 @@
-namespace ZoomNet.Models
+﻿namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the groups a given attendee can chat with.
-	/// </summary>
+	/// <summary>Enumeration to indicate the groups a given attendee can chat with.</summary>
 	public enum AttendeeChatType
 	{
 		/// <summary> The attendee cannot use chat.</summary>

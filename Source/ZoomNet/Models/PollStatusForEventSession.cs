@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the status of a poll.
-	/// </summary>
+	/// <summary>Enumeration to indicate the status of a poll.</summary>
 	public enum PollStatusForEventSession
 	{
 		/// <summary>Active.</summary>

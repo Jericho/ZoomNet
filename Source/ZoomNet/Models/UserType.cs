@@ -1,8 +1,6 @@
-namespace ZoomNet.Models
+﻿namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the type of a user.
-	/// </summary>
+	/// <summary>Enumeration to indicate the type of a user.</summary>
 	public enum UserType
 	{
 		/// <summary>Basic.</summary>

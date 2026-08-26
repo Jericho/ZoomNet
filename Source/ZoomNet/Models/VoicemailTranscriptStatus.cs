@@ -1,8 +1,6 @@
-namespace ZoomNet.Models
+﻿namespace ZoomNet.Models
 {
-	/// <summary>
-	/// The status of the voicemail transcript.
-	/// </summary>
+	/// <summary>The status of the voicemail transcript.</summary>
 	public enum VoicemailTranscriptStatus
 	{
 		/// <summary>Transcript is not available.</summary>

@@ -1,13 +1,9 @@
-namespace ZoomNet.Models.Webhooks
+﻿namespace ZoomNet.Models.Webhooks
 {
-	/// <summary>
-	/// This event is triggered every time the transcript of the recording is made available after the recorded meeting/webinar ends.
-	/// </summary>
+	/// <summary>This event is triggered every time the transcript of the recording is made available after the recorded meeting/webinar ends.</summary>
 	public class RecordingTranscriptCompletedEvent : RecordingFilesEvent
 	{
-		/// <summary>
-		/// Gets or sets authentication token to use to retrieve the recording.
-		/// </summary>
+		/// <summary>Gets or sets authentication token to use to retrieve the recording.</summary>
 		/// <remarks>
 		/// Use the generated token value with the download_url value to download
 		/// the cloud recording via an OAuth app.

@@ -1,10 +1,8 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Security options at the time of joining an event.
-	/// </summary>
+	/// <summary>Security options at the time of joining an event.</summary>
 	public class EventSecurityAtJoin
 	{
 		/// <summary>Gets or sets a value indicating whether attendees will be required to authenticate with the email that was used at registration when joining.</summary>

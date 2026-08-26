@@ -1,38 +1,24 @@
-namespace ZoomNet.Models
+﻿namespace ZoomNet.Models
 {
-	/// <summary>
-	/// SMS message types.
-	/// </summary>
+	/// <summary>SMS message types.</summary>
 	public enum SmsMessageType
 	{
-		/// <summary>
-		/// SMS.
-		/// </summary>
+		/// <summary>SMS.</summary>
 		Sms = 1,
 
-		/// <summary>
-		/// MMS.
-		/// </summary>
+		/// <summary>MMS.</summary>
 		Mms = 2,
 
-		/// <summary>
-		/// Group SMS.
-		/// </summary>
+		/// <summary>Group SMS.</summary>
 		GroupSms = 3,
 
-		/// <summary>
-		/// Group MMS.
-		/// </summary>
+		/// <summary>Group MMS.</summary>
 		GroupMms = 4,
 
-		/// <summary>
-		/// International SMS.
-		/// </summary>
+		/// <summary>International SMS.</summary>
 		InternationalSms = 5,
 
-		/// <summary>
-		/// MSG_ON_NET.
-		/// </summary>
+		/// <summary>MSG_ON_NET.</summary>
 		MsgOnNet = 6
 	}
 }

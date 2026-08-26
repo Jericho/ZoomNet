@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the type of recording file.
-	/// </summary>
+	/// <summary>Enumeration to indicate the type of recording file.</summary>
 	public enum RecordingFileType
 	{
 		/// <summary>Not specified.</summary>
@@ -51,15 +49,11 @@ namespace ZoomNet.Models
 		[EnumMember(Value = "chat_message")]
 		ChatMessage,
 
-		/// <summary>
-		/// A JSON file containing records of members entering and leaving the subgroup.
-		/// </summary>
+		/// <summary>A JSON file containing records of members entering and leaving the subgroup.</summary>
 		[EnumMember(Value = "sub_group_member_log")]
 		SubGroupMemberLog,
 
-		/// <summary>
-		/// A JSON file containing internal user archive AI companion content.
-		/// </summary>
+		/// <summary>A JSON file containing internal user archive AI companion content.</summary>
 		[EnumMember(Value = "aic_conversation")]
 		AiConversation,
 	}

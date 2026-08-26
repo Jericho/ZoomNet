@@ -1,10 +1,8 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Recording user settings.
-	/// </summary>
+	/// <summary>Recording user settings.</summary>
 	public class RecordingUserSettings
 	{
 		/// <summary>Gets or sets a value indicating whether to ask the host to confirm the disclaimer.</summary>

@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the type of access link of the event.
-	/// </summary>
+	/// <summary>Enumeration to indicate the type of access link of the event.</summary>
 	public enum EventAccessLinkType
 	{
 		/// <summary>Attendees will be required to authenticate with the email that was used at registration when joining.</summary>

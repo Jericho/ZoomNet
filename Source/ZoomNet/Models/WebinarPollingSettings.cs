@@ -1,10 +1,8 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Webinar polling settings.
-	/// </summary>
+	/// <summary>Webinar polling settings.</summary>
 	public class WebinarPollingSettings
 	{
 		/// <summary>Gets or sets a value indicating whether to allow host to create advanced polls and quizzes.</summary>

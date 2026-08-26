@@ -1,8 +1,6 @@
-namespace ZoomNet.Models
+﻿namespace ZoomNet.Models
 {
-	/// <summary>
-	/// A conference event.
-	/// </summary>
+	/// <summary>A conference event.</summary>
 	/// <seealso cref="ZoomNet.Models.Event" />
 	public class Conference : Event
 	{

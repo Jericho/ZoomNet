@@ -1,24 +1,18 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Breakout room participant information as received in webhook events related to breakout room joining and leaving.
-	/// </summary>
+	/// <summary>Breakout room participant information as received in webhook events related to breakout room joining and leaving.</summary>
 	public class BreakoutRoomParticipantInfo : BreakoutRoomParticipantBasicInfo
 	{
-		/// <summary>
-		/// Gets or sets the participant's email address.
-		/// Returns only if the participant joined the meeting by logging into Zoom.
-		/// </summary>
-		[JsonPropertyName("email")]
-		public string Email { get; set; }
-
-		/// <summary>
-		/// Gets or sets the participant's SDK identifier. This value can be alphanumeric.
-		/// </summary>
+		/// <summary>Gets or sets the participant's SDK identifier. This value can be alphanumeric.</summary>
 		[JsonPropertyName("customer_key")]
 		public string CustomerKey { get; set; }
+
+		/// <summary>Gets or sets the participant's email address.</summary>
+		/// <remarks>Returns only if the participant joined the meeting by logging into Zoom.</remarks>
+		[JsonPropertyName("email")]
+		public string Email { get; set; }
 
 		/// <summary>
 		/// Gets or sets the participant's unique ID.
@@ -39,16 +33,11 @@ namespace ZoomNet.Models
 		[JsonPropertyName("participant_uuid")]
 		public string ParticipantUuid { get; set; }
 
-		/// <summary>
-		/// Gets or sets phone number of the participant joined via PSTN.
-		/// </summary>
+		/// <summary>Gets or sets phone number of the participant joined via PSTN.</summary>
 		[JsonPropertyName("phone_number")]
 		public string PhoneNumber { get; set; }
 
-		/// <summary>
-		/// Gets or sets the participant's registrant ID.
-		/// A host or a user with administrative permissions can require registration for Zoom meetings.
-		/// </summary>
+		/// <summary>Gets or sets the participant's registrant ID. A host or a user with administrative permissions can require registration for Zoom meetings.</summary>
 		[JsonPropertyName("registrant_id")]
 		public string RegistrantId { get; set; }
 	}

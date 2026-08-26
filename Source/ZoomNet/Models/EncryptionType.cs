@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the type of encryption.
-	/// </summary>
+	/// <summary>Enumeration to indicate the type of encryption.</summary>
 	public enum EncryptionType
 	{
 		/// <summary>Enhanced encryption.</summary>

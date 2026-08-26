@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Extension type used in call element.
-	/// </summary>
+	/// <summary>Extension type used in call element.</summary>
 	public enum CallElementExtensionType
 	{
 		/// <summary>User.</summary>

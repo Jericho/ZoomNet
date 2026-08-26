@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Interpretation language for an event session.
-	/// </summary>
+	/// <summary>Interpretation language for an event session.</summary>
 	public enum InterpretationLanguageForEventSession
 	{
 		/// <summary>English.</summary>

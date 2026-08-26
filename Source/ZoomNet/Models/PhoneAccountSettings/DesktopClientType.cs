@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models.PhoneAccountSettings
 {
-	/// <summary>
-	/// Desktop client types.
-	/// </summary>
+	/// <summary>Desktop client types.</summary>
 	public enum DesktopClientType
 	{
 		/// <summary>MacOS client.</summary>

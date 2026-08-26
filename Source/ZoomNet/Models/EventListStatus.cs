@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the status of an event when retrieving a list of events.
-	/// </summary>
+	/// <summary>Enumeration to indicate the status of an event when retrieving a list of events.</summary>
 	public enum EventListStatus
 	{
 		/// <summary>Upcoming.</summary>

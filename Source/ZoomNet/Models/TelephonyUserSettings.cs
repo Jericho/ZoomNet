@@ -1,10 +1,8 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Telephony user settings.
-	/// </summary>
+	/// <summary>Telephony user settings.</summary>
 	public class TelephonyUserSettings
 	{
 		/// <summary>Gets or sets the information about the third party audio service.</summary>

@@ -1,23 +1,15 @@
-namespace ZoomNet.Models
+﻿namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the type of a poll.
-	/// </summary>
+	/// <summary>Enumeration to indicate the type of a poll.</summary>
 	public enum PollType
 	{
-		/// <summary>
-		/// Basic.
-		/// </summary>
+		/// <summary>Basic.</summary>
 		Basic = 1,
 
-		/// <summary>
-		/// Advanced poll.
-		/// </summary>
+		/// <summary>Advanced poll.</summary>
 		Advanced = 2,
 
-		/// <summary>
-		/// Quiz.
-		/// </summary>
+		/// <summary>Quiz.</summary>
 		Quiz = 3
 	}
 }

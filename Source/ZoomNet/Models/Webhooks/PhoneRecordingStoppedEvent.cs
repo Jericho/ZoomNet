@@ -1,15 +1,11 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models.Webhooks
 {
-	/// <summary>
-	/// This event is triggered when the recording of a phone call has stopped.
-	/// </summary>
+	/// <summary>This event is triggered when the recording of a phone call has stopped.</summary>
 	public class PhoneRecordingStoppedEvent : RecordingEvent
 	{
-		/// <summary>
-		/// Gets or sets information about stopped recording.
-		/// </summary>
+		/// <summary>Gets or sets information about stopped recording.</summary>
 		[JsonPropertyName("object")]
 		public PhoneCallRecording Recording { get; set; }
 	}

@@ -1,149 +1,101 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using ZoomNet.Json;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Someone who has registered for a meeting or a webinar.
-	/// </summary>
+	/// <summary>Someone who has registered for a meeting or a webinar.</summary>
 	public class Registrant
 	{
-		/// <summary>
-		/// Gets or sets the registrant id.
-		/// </summary>
-		[JsonPropertyName("id")]
-		public string Id { get; set; }
-
-		/// <summary>
-		/// Gets or sets a valid email address.
-		/// </summary>
-		[JsonPropertyName("email")]
-		public string Email { get; set; }
-
-		/// <summary>
-		/// Gets or sets the first name.
-		/// </summary>
-		[JsonPropertyName("first_name")]
-		public string FirstName { get; set; }
-
-		/// <summary>
-		/// Gets or sets the last name.
-		/// </summary>
-		[JsonPropertyName("last_name")]
-		public string LastName { get; set; }
-
-		/// <summary>
-		/// Gets or sets the address.
-		/// </summary>
+		/// <summary>Gets or sets the address.</summary>
 		[JsonPropertyName("address")]
 		public string Address { get; set; }
 
-		/// <summary>
-		/// Gets or sets the city.
-		/// </summary>
+		/// <summary>Gets or sets the city.</summary>
 		[JsonPropertyName("city")]
 		public string City { get; set; }
 
-		/// <summary>
-		/// Gets or sets the country.
-		/// </summary>
-		[JsonPropertyName("country")]
-		public string Country { get; set; }
-
-		/// <summary>
-		/// Gets or sets the zip/postal code.
-		/// </summary>
-		[JsonPropertyName("zip")]
-		public string Zip { get; set; }
-
-		/// <summary>
-		/// Gets or sets the state/province.
-		/// </summary>
-		[JsonPropertyName("state")]
-		public string State { get; set; }
-
-		/// <summary>
-		/// Gets or sets the phone.
-		/// </summary>
-		[JsonPropertyName("phone")]
-		public string Phone { get; set; }
-
-		/// <summary>
-		/// Gets or sets the industry.
-		/// </summary>
-		[JsonPropertyName("industry")]
-		public string Industry { get; set; }
-
-		/// <summary>
-		/// Gets or sets the organization.
-		/// </summary>
-		[JsonPropertyName("org")]
-		public string Organization { get; set; }
-
-		/// <summary>
-		/// Gets or sets the job Title.
-		/// </summary>
-		[JsonPropertyName("job_title")]
-		public string JobTitle { get; set; }
-
-		/// <summary>
-		/// Gets or sets the purchasing Time Frame.
-		/// </summary>
-		[JsonPropertyName("purchasing_time_frame")]
-		public PurchasingTimeFrame PurchasingTimeFrame { get; set; }
-
-		/// <summary>
-		/// Gets or sets the role in purchase process.
-		/// </summary>
-		[JsonPropertyName("role_in_purchase_process")]
-		public RoleInPurchaseProcess RoleInPurchaseProcess { get; set; }
-
-		/// <summary>
-		/// Gets or sets the number of employees.
-		/// </summary>
-		[JsonPropertyName("no_of_employees")]
-		public NumberOfEmployees NumberOfEmployees { get; set; }
-
-		/// <summary>
-		/// Gets or sets the questions &amp; comments.
-		/// </summary>
+		/// <summary>Gets or sets the questions &amp; comments.</summary>
 		[JsonPropertyName("comments")]
 		public string Comments { get; set; }
 
-		/// <summary>
-		/// Gets or sets the custom questions.
-		/// </summary>
+		/// <summary>Gets or sets the country.</summary>
+		[JsonPropertyName("country")]
+		public string Country { get; set; }
+
+		/// <summary>Gets or sets the date and time when the registrant was created.</summary>
+		[JsonPropertyName("create_time")]
+		public DateTime CreatedOn { get; set; }
+
+		/// <summary>Gets or sets the custom questions.</summary>
 		[JsonPropertyName("custom_questions")]
 		[JsonConverter(typeof(CustomQuestionsAnswersConverter))]
 		public KeyValuePair<string, string>[] CustomQuestions { get; set; }
 
-		/// <summary>
-		/// Gets or sets the status.
-		/// </summary>
-		[JsonPropertyName("status")]
-		public RegistrantStatus Status { get; set; }
+		/// <summary>Gets or sets a valid email address.</summary>
+		[JsonPropertyName("email")]
+		public string Email { get; set; }
 
-		/// <summary>
-		/// Gets or sets the date and time when the registrant was created.
-		/// </summary>
-		[JsonPropertyName("create_time")]
-		public DateTime CreatedOn { get; set; }
+		/// <summary>Gets or sets the first name.</summary>
+		[JsonPropertyName("first_name")]
+		public string FirstName { get; set; }
 
-		/// <summary>
-		/// Gets or sets the URL for this registrant to join the meeting.
-		/// </summary>
+		/// <summary>Gets or sets the registrant id.</summary>
+		[JsonPropertyName("id")]
+		public string Id { get; set; }
+
+		/// <summary>Gets or sets the industry.</summary>
+		[JsonPropertyName("industry")]
+		public string Industry { get; set; }
+
+		/// <summary>Gets or sets the job Title.</summary>
+		[JsonPropertyName("job_title")]
+		public string JobTitle { get; set; }
+
+		/// <summary>Gets or sets the URL for this registrant to join the meeting.</summary>
 		[JsonPropertyName("join_url")]
 		public string JoinUrl { get; set; }
 
-		/// <summary>
-		/// Gets or sets the participant pin code used to authenticate audio participants before they join the meeting.
-		/// </summary>
-		/// <remarks>
-		/// Nullable since it is not available in all cases.
-		/// </remarks>
+		/// <summary>Gets or sets the last name.</summary>
+		[JsonPropertyName("last_name")]
+		public string LastName { get; set; }
+
+		/// <summary>Gets or sets the number of employees.</summary>
+		[JsonPropertyName("no_of_employees")]
+		public NumberOfEmployees NumberOfEmployees { get; set; }
+
+		/// <summary>Gets or sets the organization.</summary>
+		[JsonPropertyName("org")]
+		public string Organization { get; set; }
+
+		/// <summary>Gets or sets the participant pin code used to authenticate audio participants before they join the meeting.</summary>
+		/// <remarks>Nullable since it is not available in all cases.</remarks>
 		[JsonPropertyName("participant_pin_code")]
 		public long? ParticipantPinCode { get; set; }
+
+		/// <summary>Gets or sets the phone.</summary>
+		[JsonPropertyName("phone")]
+		public string Phone { get; set; }
+
+		/// <summary>Gets or sets the purchasing Time Frame.</summary>
+		[JsonPropertyName("purchasing_time_frame")]
+		public PurchasingTimeFrame PurchasingTimeFrame { get; set; }
+
+		/// <summary>Gets or sets the role in purchase process.</summary>
+		[JsonPropertyName("role_in_purchase_process")]
+		public RoleInPurchaseProcess RoleInPurchaseProcess { get; set; }
+
+		/// <summary>Gets or sets the state/province.</summary>
+		[JsonPropertyName("state")]
+		public string State { get; set; }
+
+		/// <summary>Gets or sets the status.</summary>
+		[JsonPropertyName("status")]
+		public RegistrantStatus Status { get; set; }
+
+		/// <summary>Gets or sets the zip/postal code.</summary>
+		[JsonPropertyName("zip")]
+		public string Zip { get; set; }
 	}
 }

@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration for the standard registration fields for an event.
-	/// </summary>
+	/// <summary>Enumeration for the standard registration fields for an event.</summary>
 	public enum EventRegistrationField
 	{
 		/// <summary>First name.</summary>

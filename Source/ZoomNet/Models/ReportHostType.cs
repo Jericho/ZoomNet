@@ -1,21 +1,15 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models;
 
-/// <summary>
-/// Enumeration to indicate the type of a host.
-/// </summary>
+/// <summary>Enumeration to indicate the type of a host.</summary>
 public enum ReportHostType
 {
-	/// <summary>
-	/// Active.
-	/// </summary>
+	/// <summary>Active.</summary>
 	[EnumMember(Value = "active")]
 	Active,
 
-	/// <summary>
-	/// Inactive.
-	/// </summary>
+	/// <summary>Inactive.</summary>
 	[EnumMember(Value = "inactive")]
 	Inactive,
 }

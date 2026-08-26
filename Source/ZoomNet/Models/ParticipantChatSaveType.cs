@@ -1,8 +1,6 @@
-namespace ZoomNet.Models
+﻿namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate if a participant is allowed to save meeting chats.
-	/// </summary>
+	/// <summary>Enumeration to indicate if a participant is allowed to save meeting chats.</summary>
 	public enum ParticipantChatSaveType
 	{
 		/// <summary> The participant cannot save chat.</summary>

@@ -1,10 +1,8 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Represents the details of a phone number assignee in the Zoom Phone API.
-	/// </summary>
+	/// <summary>Represents the details of a phone number assignee in the Zoom Phone API.</summary>
 	/// <remarks>
 	/// <list type="table">
 	/// <item><term>extension_number</term><description>The extension number of the assignee.</description></item>
@@ -15,27 +13,19 @@ namespace ZoomNet.Models
 	/// </remarks>
 	public class PhoneNumberAssignee
 	{
-		/// <summary>
-		/// Gets or sets the extension number of the assignee.
-		/// </summary>
+		/// <summary>Gets or sets the extension number of the assignee.</summary>
 		[JsonPropertyName("extension_number")]
 		public long? ExtensionNumber { get; set; }
 
-		/// <summary>
-		/// Gets or sets the unique identifier of the assignee.
-		/// </summary>
+		/// <summary>Gets or sets the unique identifier of the assignee.</summary>
 		[JsonPropertyName("id")]
 		public string Id { get; set; }
 
-		/// <summary>
-		/// Gets or sets the name of the assignee.
-		/// </summary>
+		/// <summary>Gets or sets the name of the assignee.</summary>
 		[JsonPropertyName("name")]
 		public string Name { get; set; }
 
-		/// <summary>
-		/// Gets or sets the type of the assignee.
-		/// </summary>
+		/// <summary>Gets or sets the type of the assignee.</summary>
 		[JsonPropertyName("type")]
 		public string Type { get; set; }
 	}

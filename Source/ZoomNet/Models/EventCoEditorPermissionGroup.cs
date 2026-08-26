@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the permission group assigned to a coeditor.
-	/// </summary>
+	/// <summary>Enumeration to indicate the permission group assigned to a coeditor.</summary>
 	public enum EventCoEditorPermissionGroup
 	{
 		/// <summary>Publish.</summary>

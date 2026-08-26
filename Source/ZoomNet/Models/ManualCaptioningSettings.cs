@@ -1,10 +1,8 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Manual captioning settings.
-	/// </summary>
+	/// <summary>Manual captioning settings.</summary>
 	public class ManualCaptioningSettings
 	{
 		/// <summary>Gets or sets a value indicating whether to allow the host to manually caption or let the host assign a participant to provide manual captioning.</summary>

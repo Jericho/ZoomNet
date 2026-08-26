@@ -1,8 +1,6 @@
-namespace ZoomNet.Models.Webhooks
+﻿namespace ZoomNet.Models.Webhooks
 {
-	/// <summary>
-	/// This event is triggered when the Caller ID name (CNAM) has been updated for PSTN phone numbers.
-	/// </summary>
+	/// <summary>This event is triggered when the Caller ID name (CNAM) has been updated for PSTN phone numbers.</summary>
 	public class PhonePeeringNumberCallerIdNameUpdatedEvent : PeeringNumberUpdatedEvent
 	{
 	}

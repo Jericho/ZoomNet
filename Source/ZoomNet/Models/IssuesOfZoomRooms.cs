@@ -1,10 +1,8 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Top issues from Zoom rooms.
-	/// </summary>
+	/// <summary>Top issues from Zoom rooms.</summary>
 	public class IssuesOfZoomRooms
 	{
 		/// <summary>
@@ -32,14 +30,10 @@ namespace ZoomNet.Models
 		/// * Controller<br/>
 		/// * Scheduling Display.<br/>
 		/// </summary>
-		/// <value>The Issue name.</value>
 		[JsonPropertyName("issue_name")]
 		public IssueType IssueType { get; set; }
 
-		/// <summary>
-		/// Gets or sets the count of Zoom rooms where the issue appeared.
-		/// </summary>
-		/// <value>The count of Zoom rooms where the issue appeared.</value>
+		/// <summary>Gets or sets the count of Zoom rooms where the issue appeared.</summary>
 		[JsonPropertyName("zoom_rooms_count")]
 		public int ZoomRoomsCount { get; set; }
 	}

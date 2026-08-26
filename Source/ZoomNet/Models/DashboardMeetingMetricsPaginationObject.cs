@@ -1,37 +1,23 @@
-using System;
+﻿using System;
 using System.Text.Json.Serialization;
 using ZoomNet.Resources;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Pagination Object for meeting metrics returned as deep nested properties in some <see cref="IDashboards"/> endpoints.
-	/// </summary>
+	/// <summary>Pagination Object for meeting metrics returned as deep nested properties in some <see cref="IDashboards"/> endpoints.</summary>
 	public class DashboardMeetingMetricsPaginationObject
 	{
-		/// <summary>
-		/// Gets or sets the start date for the report.
-		/// </summary>
-		/// <value> Start date for this report in 'yyyy-MM-dd' format.</value>
+		/// <summary>Gets or sets the start date for the report.</summary>
 		public string From { get; set; }
 
-		/// <summary>
-		/// Gets or sets the end date for the report.
-		/// </summary>
-		/// <value> End date for this report in 'yyyy-MM-dd' format.</value>
+		/// <summary>Gets or sets the end date for the report.</summary>
 		public string To { get; set; }
 
-		/// <summary>
-		/// Gets or sets the number of items returned on this page.
-		/// </summary>
-		/// <value>The number of items returned on this page.</value>
+		/// <summary>Gets or sets the number of items returned on this page.</summary>
 		[JsonPropertyName("page_count")]
 		public int PageCount { get; set; }
 
-		/// <summary>
-		/// Gets or sets the number of records returned within a single API call.
-		/// </summary>
-		/// <value>The number of records returned within a single API call.</value>
+		/// <summary>Gets or sets the number of records returned within a single API call.</summary>
 		[JsonIgnore]
 		[Obsolete("Use RecordsPerPage instead.")]
 		public int PageSize
@@ -40,33 +26,21 @@ namespace ZoomNet.Models
 			set => RecordsPerPage = value;
 		}
 
-		/// <summary>
-		/// Gets or sets the number of records returned within a single API call.
-		/// </summary>
-		/// <value>The number of records returned within a single API call.</value>
-		[JsonPropertyName("page_size")]
-		public int RecordsPerPage { get; set; }
+		/// <summary>Gets or sets the metrics for the meetings.</summary>
+		[JsonPropertyName("meetings")]
+		public DashboardMeetingMetrics[] Records { get; set; }
 
-		/// <summary>
-		/// Gets or sets the number of all records available across pages.
-		/// </summary>
-		/// <value>The number of all records available across pages.</value>
-		[JsonPropertyName("total_records")]
-		public int? TotalRecords { get; set; }
-
-		/// <summary>
-		/// Gets or sets the token to retrieve the next page.
-		/// </summary>
-		/// <value>The page token.</value>
+		/// <summary>Gets or sets the token to retrieve the next page.</summary>
 		/// <remarks>This token expires after 15 minutes.</remarks>
 		[JsonPropertyName("next_page_token")]
 		public string NextPageToken { get; set; }
 
-		/// <summary>
-		/// Gets or sets the metrics for the meetings.
-		/// </summary>
-		/// <value>The metrics for the meetings.</value>
-		[JsonPropertyName("meetings")]
-		public DashboardMeetingMetrics[] Records { get; set; }
+		/// <summary>Gets or sets the number of records returned within a single API call.</summary>
+		[JsonPropertyName("page_size")]
+		public int RecordsPerPage { get; set; }
+
+		/// <summary>Gets or sets the number of all records available across pages.</summary>
+		[JsonPropertyName("total_records")]
+		public int? TotalRecords { get; set; }
 	}
 }

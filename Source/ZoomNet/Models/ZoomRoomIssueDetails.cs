@@ -1,11 +1,9 @@
-using System;
+﻿using System;
 using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Details of an issue for a Zoom room.
-	/// </summary>
+	/// <summary>Details of an issue for a Zoom room.</summary>
 	public class ZoomRoomIssueDetails
 	{
 		/// <summary>
@@ -33,14 +31,10 @@ namespace ZoomNet.Models
 		/// * Controller<br/>
 		/// * Scheduling Display.<br/>
 		/// </summary>
-		/// <value>The issue type.</value>
 		[JsonPropertyName("issue")]
 		public IssueType IssueType { get; set; }
 
-		/// <summary>
-		/// Gets or sets the time the issue appeared.
-		/// </summary>
-		/// <value>The time the issue appeared.</value>
+		/// <summary>Gets or sets the time the issue appeared.</summary>
 		[JsonPropertyName("time")]
 		public DateTime Time { get; set; }
 	}

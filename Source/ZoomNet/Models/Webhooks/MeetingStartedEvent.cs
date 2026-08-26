@@ -1,8 +1,6 @@
-namespace ZoomNet.Models.Webhooks
+﻿namespace ZoomNet.Models.Webhooks
 {
-	/// <summary>
-	/// This event is triggered when a meeting has started.
-	/// </summary>
+	/// <summary>This event is triggered when a meeting has started.</summary>
 	public class MeetingStartedEvent : MeetingInfoEvent
 	{
 	}

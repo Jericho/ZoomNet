@@ -1,39 +1,27 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the type of the call.
-	/// </summary>
+	/// <summary>Enumeration to indicate the type of the call.</summary>
 	public enum CallLogCallType
 	{
-		/// <summary>
-		/// Voice over IP.
-		/// </summary>
+		/// <summary>Voice over IP.</summary>
 		[EnumMember(Value = "voip")]
 		Voip,
 
-		/// <summary>
-		/// Public Switched Telephone Network.
-		/// </summary>
+		/// <summary>Public Switched Telephone Network.</summary>
 		[EnumMember(Value = "pstn")]
 		Pstn,
 
-		/// <summary>
-		/// tollfree.
-		/// </summary>
+		/// <summary>Toll free.</summary>
 		[EnumMember(Value = "tollfree")]
 		Tollfree,
 
-		/// <summary>
-		/// international.
-		/// </summary>
+		/// <summary>International.</summary>
 		[EnumMember(Value = "international")]
 		International,
 
-		/// <summary>
-		/// contactCenter.
-		/// </summary>
+		/// <summary>Contact center.</summary>
 		[EnumMember(Value = "contactCenter")]
 		ContactCenter
 	}

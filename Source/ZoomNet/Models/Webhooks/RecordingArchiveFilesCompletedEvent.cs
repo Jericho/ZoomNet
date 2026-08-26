@@ -1,15 +1,11 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models.Webhooks
 {
-	/// <summary>
-	/// This event is triggered every time the archived files of a meeting or webinar become available to download.
-	/// </summary>
+	/// <summary>This event is triggered every time the archived files of a meeting or webinar become available to download.</summary>
 	public class RecordingArchiveFilesCompletedEvent : RecordingEvent
 	{
-		/// <summary>
-		/// Gets or sets authentication token to use to retrieve the recording.
-		/// </summary>
+		/// <summary>Gets or sets authentication token to use to retrieve the recording.</summary>
 		/// <remarks>
 		/// Use the generated token value with the download_url value to download
 		/// the cloud recording via an OAuth app.
@@ -20,9 +16,7 @@ namespace ZoomNet.Models.Webhooks
 		/// </remarks>
 		public string DownloadToken { get; set; }
 
-		/// <summary>
-		/// Gets or sets information about the meeting or webinar recording.
-		/// </summary>
+		/// <summary>Gets or sets information about the meeting or webinar recording.</summary>
 		[JsonPropertyName("object")]
 		public RecordingArchive Recording { get; set; }
 	}

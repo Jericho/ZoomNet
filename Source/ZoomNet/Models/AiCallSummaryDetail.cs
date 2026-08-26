@@ -1,19 +1,15 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// AI phone call summary detail.
-	/// </summary>
+	/// <summary>AI phone call summary detail.</summary>
 	public class AiCallSummaryDetail : AiCallSummary
 	{
 		/// <summary>Gets or sets the recap of the call summary.</summary>
 		[JsonPropertyName("call_summary")]
 		public string Summary { get; set; }
 
-		/// <summary>
-		/// Gets or sets the call summary rate.
-		/// </summary>
+		/// <summary>Gets or sets the call summary rate.</summary>
 		[JsonPropertyName("call_summary_rate")]
 		public CallSummaryRate Rate { get; set; }
 

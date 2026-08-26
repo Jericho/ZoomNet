@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// NumberOfEmployees.
-	/// </summary>
+	/// <summary>NumberOfEmployees.</summary>
 	public enum NumberOfEmployees
 	{
 		/// <summary>Unknown.</summary>

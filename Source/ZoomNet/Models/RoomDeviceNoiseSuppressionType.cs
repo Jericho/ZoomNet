@@ -1,27 +1,19 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate a room device's noise cancellation setting.
-	/// </summary>
+	/// <summary>Enumeration to indicate a room device's noise cancellation setting.</summary>
 	public enum RoomDeviceNoiseSuppressionType
 	{
-		/// <summary>
-		/// Moderate.
-		/// </summary>
+		/// <summary>Moderate.</summary>
 		[EnumMember(Value = "moderate")]
 		Moderate,
 
-		/// <summary>
-		/// Aggressive.
-		/// </summary>
+		/// <summary>Aggressive.</summary>
 		[EnumMember(Value = "aggressive")]
 		Aggressive,
 
-		/// <summary>
-		/// none.
-		/// </summary>
+		/// <summary>none.</summary>
 		[EnumMember(Value = "none")]
 		None
 	}

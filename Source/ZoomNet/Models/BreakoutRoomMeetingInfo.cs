@@ -1,16 +1,11 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Breakout room and main meeting information as received in webhook events related to breakout rooms.
-	/// </summary>
+	/// <summary>Breakout room and main meeting information as received in webhook events related to breakout rooms.</summary>
 	public class BreakoutRoomMeetingInfo : MeetingInfo
 	{
-		/// <summary>
-		/// Gets or sets the breakout room's universally unique identifier (UUID).
-		/// Each breakout room instance generates a breakout room UUID.
-		/// </summary>
+		/// <summary>Gets or sets the breakout room's universally unique identifier (UUID). Each breakout room instance generates a breakout room UUID.</summary>
 		[JsonPropertyName("breakout_room_uuid")]
 		public string BreakoutRoomUuid { get; set; }
 	}

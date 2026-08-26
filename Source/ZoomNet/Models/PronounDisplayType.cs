@@ -1,8 +1,6 @@
-namespace ZoomNet.Models
+﻿namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the user's display pronouns setting.
-	/// </summary>
+	/// <summary>Enumeration to indicate the user's display pronouns setting.</summary>
 	public enum PronounDisplayType
 	{
 		/// <summary>Ask the user every time they join meetings and webinars.</summary>

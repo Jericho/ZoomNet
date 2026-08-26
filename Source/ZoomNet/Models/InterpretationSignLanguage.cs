@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Interpretation sign language.
-	/// </summary>
+	/// <summary>Interpretation sign language.</summary>
 	public enum InterpretationSignLanguage
 	{
 		/// <summary>American Sign Language.</summary>

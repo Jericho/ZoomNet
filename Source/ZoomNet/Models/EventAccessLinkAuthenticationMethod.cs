@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the event authentication method during registration or during join, depending on the access link type.
-	/// </summary>
+	/// <summary>Enumeration to indicate the event authentication method during registration or during join, depending on the access link type.</summary>
 	public enum EventAccessLinkAuthenticationMethod
 	{
 		/// <summary>Zoom account holder.</summary>

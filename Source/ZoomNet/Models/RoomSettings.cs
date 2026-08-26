@@ -1,21 +1,15 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// The model of room settings.
-	/// </summary>
+	/// <summary>The model of room settings.</summary>
 	public class RoomSettings
 	{
-		/// <summary>
-		/// Gets or sets a value indicating whether to allow multiple content sharing.
-		/// </summary>
+		/// <summary>Gets or sets a value indicating whether to allow multiple content sharing.</summary>
 		[JsonPropertyName("allow_multiple_content_sharing")]
 		public bool? AllowMultipleContentSharing { get; set; }
 
-		/// <summary>
-		/// Gets or sets a value indicating whether to enable automated audio test to ensure high quality audio.
-		/// </summary>
+		/// <summary>Gets or sets a value indicating whether to enable automated audio test to ensure high quality audio.</summary>
 		[JsonPropertyName("audio_device_daily_auto_test")]
 		public bool? EnableDailyAudioAutoTest { get; set; }
 
@@ -47,8 +41,12 @@ namespace ZoomNet.Models
 		public bool? AutomaticallyStopScheduledMeeting { get; set; }
 
 		/// <summary>
-		/// Gets or sets a value indicating whether to use facial detection technology to determine and display the attendees count after meetings on Dashboard.
+		/// Gets or sets a value indicating whether to automatically accept incoming far end camera control (FECC) requests from other Zoom clients received during a Zoom meeting.
 		/// </summary>
+		[JsonPropertyName("automatically_accept_far_end_camera_control_request")]
+		public bool? AutomaticallyAcceptFarEndCameraControlRequest { get; set; }
+
+		/// <summary>Gets or sets a value indicating whether to use facial detection technology to determine and display the attendees count after meetings on Dashboard.</summary>
 		[JsonPropertyName("count_attendees_number_in_room")]
 		public bool? CountAttendees { get; set; }
 
@@ -58,21 +56,15 @@ namespace ZoomNet.Models
 		[JsonPropertyName("display_feedback_survey")]
 		public bool? DisplayFeedbackSurvey { get; set; }
 
-		/// <summary>
-		/// Gets or sets a value indicating whether to show the same information on the TV that is shown on the controller.
-		/// </summary>
+		/// <summary>Gets or sets a value indicating whether to show the same information on the TV that is shown on the controller.</summary>
 		[JsonPropertyName("display_meeting_list")]
 		public bool? DisplayMeetingList { get; set; }
 
-		/// <summary>
-		/// Gets or sets a value indicating whether to display room name, time and sharing key on the top portion of TV.
-		/// </summary>
+		/// <summary>Gets or sets a value indicating whether to display room name, time and sharing key on the top portion of TV.</summary>
 		[JsonPropertyName("display_top_banner")]
 		public bool? DisplayTopBanner { get; set; }
 
-		/// <summary>
-		/// Gets or sets a value indicating whether to encrypt screen and content shared in meetings.
-		/// </summary>
+		/// <summary>Gets or sets a value indicating whether to encrypt screen and content shared in meetings.</summary>
 		[JsonPropertyName("encrypt_shared_screen_content")]
 		public bool? EncryptSharedScreenAndContent { get; set; }
 
@@ -90,16 +82,15 @@ namespace ZoomNet.Models
 		[JsonPropertyName("hide_self_view")]
 		public bool? HideSelfView { get; set; }
 
-		/// <summary>
-		/// Gets or sets a value indicating whether to lock the speaker volume control on controller.
-		/// This setting is returned only for location type - "country".
-		/// </summary>
+		/// <summary>Gets or sets settings related to how incoming meeting requests are handled.</summary>
+		[JsonPropertyName("incoming_meeting_request")]
+		public RoomLocationIncomingMeetingRequestSettings IncomingMeetingRequestHandling { get; set; }
+
+		/// <summary>Gets or sets a value indicating whether to lock the speaker volume control on controller. This setting is returned only for location type - "country".</summary>
 		[JsonPropertyName("lock_speaker_volume_control")]
 		public bool? LockSpeakerVolumeControl { get; set; }
 
-		/// <summary>
-		/// Gets or sets a value indicating whether to r sending Whiteboard sessions to contacts or internal users only.
-		/// </summary>
+		/// <summary>Gets or sets a value indicating whether to r sending Whiteboard sessions to contacts or internal users only.</summary>
 		[JsonPropertyName("send_whiteboard_to_internal_contact_only")]
 		public bool? SendWhiteboardToInternalContactOnly { get; set; }
 
@@ -110,15 +101,11 @@ namespace ZoomNet.Models
 		[JsonPropertyName("show_alert_before_meeting")]
 		public bool? ShowAlertBeforeMeeting { get; set; }
 
-		/// <summary>
-		/// Gets or sets a value indicating whether to allow users to see call history of joined meetings and phone calls from the Zoom Rooms controller.
-		/// </summary>
+		/// <summary>Gets or sets a value indicating whether to allow users to see call history of joined meetings and phone calls from the Zoom Rooms controller.</summary>
 		[JsonPropertyName("show_call_history_in_room")]
 		public bool? ShowCallHistoryInRoom { get; set; }
 
-		/// <summary>
-		/// Gets or sets a value indicating whether to allow inviting participants from the contact list during a meeting or when starting a meeting.
-		/// </summary>
+		/// <summary>Gets or sets a value indicating whether to allow inviting participants from the contact list during a meeting or when starting a meeting.</summary>
 		[JsonPropertyName("show_contact_list_on_controller")]
 		public bool? ShowContactListOnController { get; set; }
 
@@ -128,9 +115,7 @@ namespace ZoomNet.Models
 		[JsonPropertyName("show_non_video_participants")]
 		public bool? ShowNonVideoParticipants { get; set; }
 
-		/// <summary>
-		/// Gets or sets a value indicating whether to require the AirPlay service to be started by an administrator rather than always being available.
-		/// </summary>
+		/// <summary>Gets or sets a value indicating whether to require the AirPlay service to be started by an administrator rather than always being available.</summary>
 		[JsonPropertyName("start_airplay_manually")]
 		public bool? StartAirplayManually { get; set; }
 
@@ -160,34 +145,16 @@ namespace ZoomNet.Models
 		[JsonPropertyName("transform_meeting_to_private")]
 		public bool? TransformMeetingsToPrivate { get; set; }
 
-		/// <summary>
-		/// Gets or sets a value indicating whether to display a reminder 10 minutes prior to the next scheduled meeting on the controller.
-		/// </summary>
+		/// <summary>Gets or sets a value indicating whether to display a reminder 10 minutes prior to the next scheduled meeting on the controller.</summary>
 		[JsonPropertyName("upcoming_meeting_alert")]
 		public bool? UpcomingMeetingAlert { get; set; }
 
-		/// <summary>
-		/// Gets or sets a value indicating whether to enable voice commands with Zoom Rooms.
-		/// </summary>
+		/// <summary>Gets or sets a value indicating whether to enable voice commands with Zoom Rooms.</summary>
 		[JsonPropertyName("voice_commands")]
 		public bool? EnableVoiceCommands { get; set; }
 
-		/// <summary>
-		/// Gets or sets a value indicating whether to restart the Zoom Rooms computer and controller once a week.
-		/// </summary>
+		/// <summary>Gets or sets a value indicating whether to restart the Zoom Rooms computer and controller once a week.</summary>
 		[JsonPropertyName("weekly_system_restart")]
 		public bool? WeeklySystemRestart { get; set; }
-
-		/// <summary>
-		/// Gets or sets settings related to how incoming meeting requests are handled.
-		/// </summary>
-		[JsonPropertyName("incoming_meeting_request")]
-		public RoomLocationIncomingMeetingRequestSettings IncomingMeetingRequestHandling { get; set; }
-
-		/// <summary>
-		/// Gets or sets a value indicating whether to automatically accept incoming far end camera control (FECC) requests from other Zoom clients received during a Zoom meeting.
-		/// </summary>
-		[JsonPropertyName("automatically_accept_far_end_camera_control_request")]
-		public bool? AutomaticallyAcceptFarEndCameraControlRequest { get; set; }
 	}
 }

@@ -1,10 +1,8 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Webinar chat settings.
-	/// </summary>
+	/// <summary>Webinar chat settings.</summary>
 	public class WebinarChatSettings
 	{
 		/// <summary>Gets or sets the value indicating what groups a given attendee can chat with.</summary>

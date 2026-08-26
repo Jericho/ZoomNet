@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the layout of the digital signage.
-	/// </summary>
+	/// <summary>Enumeration to indicate the layout of the digital signage.</summary>
 	public enum SignageLayout
 	{
 		/// <summary>Standard Center.</summary>

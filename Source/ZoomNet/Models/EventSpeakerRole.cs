@@ -1,8 +1,6 @@
-namespace ZoomNet.Models
+﻿namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the role granted to a speaker.
-	/// </summary>
+	/// <summary>Enumeration to indicate the role granted to a speaker.</summary>
 	public enum EventSpeakerRole
 	{
 		/// <summary>Alternative host.</summary>

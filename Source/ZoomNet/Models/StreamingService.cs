@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Streaming service.
-	/// </summary>
+	/// <summary>Streaming service.</summary>
 	public enum StreamingService
 	{
 		/// <summary>Facebook.</summary>

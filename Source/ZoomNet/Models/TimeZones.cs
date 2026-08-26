@@ -1,4 +1,4 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -294,10 +294,7 @@ namespace ZoomNet.Models
 		Asia_Magadan,
 
 		/// <summary>Manila.</summary>
-		/// <remarks>
-		/// This timezone is undocumented.
-		/// See <a href="https://github.com/Jericho/ZoomNet/issues/443">GH-443</a> for details.
-		/// </remarks>
+		/// <remarks>This timezone is undocumented. See <a href="https://github.com/Jericho/ZoomNet/issues/443">GH-443</a> for details.</remarks>
 		[EnumMember(Value = "Asia/Manila")]
 		Asia_Manila,
 

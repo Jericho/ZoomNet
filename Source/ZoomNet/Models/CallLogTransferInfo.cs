@@ -1,10 +1,8 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Call transfer/forward information.
-	/// </summary>
+	/// <summary>Call transfer/forward information.</summary>
 	public class CallLogTransferInfo
 	{
 		/// <summary>Gets or sets the extension number.</summary>

@@ -1,10 +1,8 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// A single session event.
-	/// </summary>
+	/// <summary>A single session event.</summary>
 	/// <seealso cref="ZoomNet.Models.Event" />
 	public class SimpleEvent : Event
 	{

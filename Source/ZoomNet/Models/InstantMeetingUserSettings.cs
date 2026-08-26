@@ -1,10 +1,8 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Instant Meeting user settings.
-	/// </summary>
+	/// <summary>Instant Meeting user settings.</summary>
 	public class InstantMeetingUserSettings
 	{
 		/// <summary>Gets or sets a value indicating whether the host can enable Focus Mode when scheduling a meeting.</summary>
@@ -223,9 +221,7 @@ namespace ZoomNet.Models
 		[JsonPropertyName("who_can_share_screen_when_someone_is_sharing")]
 		public WhoCanShare WhoCanShareScreenWhenSomeoneIsSharing { get; set; }
 
-		/// <summary>
-		/// Gets or sets a value indicating whether to allow live streaming by host through Workplace by Facebook.
-		/// </summary>
+		/// <summary>Gets or sets a value indicating whether to allow live streaming by host through Workplace by Facebook.</summary>
 		[JsonPropertyName("workplace_by_facebook")]
 		public bool AllowWorkplaceByFacebook { get; set; }
 	}

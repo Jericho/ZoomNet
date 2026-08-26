@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the type of phone number.
-	/// </summary>
+	/// <summary>Enumeration to indicate the type of phone number.</summary>
 	public enum PhoneType
 	{
 		/// <summary>Unspecified.</summary>

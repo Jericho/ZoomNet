@@ -1,8 +1,6 @@
-namespace ZoomNet.Models
+﻿namespace ZoomNet.Models
 {
-	/// <summary>
-	/// An instant meeting.
-	/// </summary>
+	/// <summary>An instant meeting.</summary>
 	/// <seealso cref="ZoomNet.Models.Meeting" />
 	public class InstantMeeting : Meeting
 	{

@@ -1,4 +1,4 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models.Webhooks
 {
@@ -14,15 +14,11 @@ namespace ZoomNet.Models.Webhooks
 	/// </summary>
 	public class PhoneGenericDeviceProvisionEvent : Event
 	{
-		/// <summary>
-		/// Gets or sets the user's account id.
-		/// </summary>
+		/// <summary>Gets or sets the user's account id.</summary>
 		[JsonPropertyName("account_id")]
 		public string AccountId { get; set; }
 
-		/// <summary>
-		/// Gets or sets phone device information.
-		/// </summary>
+		/// <summary>Gets or sets phone device information.</summary>
 		[JsonPropertyName("object")]
 		public PhoneDevice Device { get; set; }
 	}

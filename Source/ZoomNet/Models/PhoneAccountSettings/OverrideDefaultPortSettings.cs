@@ -1,4 +1,4 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models.PhoneAccountSettings
 {
@@ -10,16 +10,12 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	/// </summary>
 	public class OverrideDefaultPortSettings : SettingsGroupBase
 	{
-		/// <summary>
-		/// Gets or sets minimum port number used by Zoom.
-		/// </summary>
-		[JsonPropertyName("min_port")]
-		public int? MinPort { get; set; }
-
-		/// <summary>
-		/// Gets or sets maximum port number used by Zoom.
-		/// </summary>
+		/// <summary>Gets or sets maximum port number used by Zoom.</summary>
 		[JsonPropertyName("max_port")]
 		public int? MaxPort { get; set; }
+
+		/// <summary>Gets or sets minimum port number used by Zoom.</summary>
+		[JsonPropertyName("min_port")]
+		public int? MinPort { get; set; }
 	}
 }

@@ -1,51 +1,35 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the extension type.
-	/// </summary>
+	/// <summary>Enumeration to indicate the extension type.</summary>
 	public enum PhoneNumberExtensionType
 	{
-		/// <summary>
-		/// user.
-		/// </summary>
+		/// <summary>user.</summary>
 		[EnumMember(Value = "user")]
 		User,
 
-		/// <summary>
-		/// callQueue.
-		/// </summary>
+		/// <summary>callQueue.</summary>
 		[EnumMember(Value = "callQueue")]
 		CallQueue,
 
-		/// <summary>
-		/// autoReceptionist.
-		/// </summary>
+		/// <summary>autoReceptionist.</summary>
 		[EnumMember(Value = "autoReceptionist")]
 		AutoReceptionist,
 
-		/// <summary>
-		/// commonArea.
-		/// </summary>
+		/// <summary>commonArea.</summary>
 		[EnumMember(Value = "commonArea")]
 		CommonArea,
 
-		/// <summary>
-		/// emergencyNumberPool.
-		/// </summary>
+		/// <summary>emergencyNumberPool.</summary>
 		[EnumMember(Value = "emergencyNumberPool")]
 		EmergencyNumberPool,
 
-		/// <summary>
-		/// companyLocation.
-		/// </summary>
+		/// <summary>companyLocation.</summary>
 		[EnumMember(Value = "companyLocation")]
 		CompanyLocation,
 
-		/// <summary>
-		/// meetingService.
-		/// </summary>
+		/// <summary>meetingService.</summary>
 		[EnumMember(Value = "meetingService")]
 		MeetingService
 	}

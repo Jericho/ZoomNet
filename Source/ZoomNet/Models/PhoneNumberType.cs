@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Specifies the type of phone number in the Zoom Phone API.
-	/// </summary>
+	/// <summary>Specifies the type of phone number in the Zoom Phone API.</summary>
 	/// <remarks>
 	/// <list type="table">
 	/// <item><term>toll</term><description>Toll number.</description></item>
@@ -14,21 +12,15 @@ namespace ZoomNet.Models
 	/// </remarks>
 	public enum PhoneNumberType
 	{
-		/// <summary>
-		/// Toll number.
-		/// </summary>
+		/// <summary>Toll number.</summary>
 		[EnumMember(Value = "toll")]
 		Toll,
 
-		/// <summary>
-		/// Toll-free number.
-		/// </summary>
+		/// <summary>Toll-free number.</summary>
 		[EnumMember(Value = "tollfree")]
 		TollFree,
 
-		/// <summary>
-		/// Media link.
-		/// </summary>
+		/// <summary>Media link.</summary>
 		[EnumMember(Value = "media_link")]
 		MediaLink,
 	}

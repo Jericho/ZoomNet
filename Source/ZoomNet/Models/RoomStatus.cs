@@ -1,33 +1,23 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the status of a room.
-	/// </summary>
+	/// <summary>Enumeration to indicate the status of a room.</summary>
 	public enum RoomStatus
 	{
-		/// <summary>
-		/// Offline.
-		/// </summary>
+		/// <summary>Offline.</summary>
 		[EnumMember(Value = "Offline")]
 		Offline,
 
-		/// <summary>
-		/// Available.
-		/// </summary>
+		/// <summary>Available.</summary>
 		[EnumMember(Value = "Available")]
 		Available,
 
-		/// <summary>
-		/// InMeeting.
-		/// </summary>
+		/// <summary>InMeeting.</summary>
 		[EnumMember(Value = "InMeeting")]
 		InMeeting,
 
-		/// <summary>
-		/// Under construction.
-		/// </summary>
+		/// <summary>Under construction.</summary>
 		[EnumMember(Value = "UnderConstruction")]
 		UnderConstruction
 	}

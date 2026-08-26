@@ -1,25 +1,17 @@
-using System;
+﻿using System;
 
 namespace ZoomNet.Models.Webhooks
 {
-	/// <summary>
-	/// This event is triggered when the callee misses a Zoom phone call.
-	/// </summary>
+	/// <summary>This event is triggered when the callee misses a Zoom phone call.</summary>
 	public class PhoneCalleeMissedEvent : PhoneCallFlowEvent
 	{
-		/// <summary>
-		/// Gets or sets the date and time when the ringing started.
-		/// </summary>
+		/// <summary>Gets or sets the date and time when the ringing started.</summary>
 		public DateTime RingingStartedOn { get; set; }
 
-		/// <summary>
-		/// Gets or sets the date and time when the call was ended.
-		/// </summary>
+		/// <summary>Gets or sets the date and time when the call was ended.</summary>
 		public DateTime EndedOn { get; set; }
 
-		/// <summary>
-		/// Gets or sets the reason the call was missed.
-		/// </summary>
+		/// <summary>Gets or sets the reason the call was missed.</summary>
 		public string HandupResult { get; set; }
 
 		/// <summary>

@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Purchasing time frame.
-	/// </summary>
+	/// <summary>Purchasing time frame.</summary>
 	public enum PurchasingTimeFrame
 	{
 		/// <summary>Unknown.</summary>

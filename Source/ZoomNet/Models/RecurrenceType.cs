@@ -1,23 +1,15 @@
-namespace ZoomNet.Models
+﻿namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the type of recurrence.
-	/// </summary>
+	/// <summary>Enumeration to indicate the type of recurrence.</summary>
 	public enum RecurrenceType
 	{
-		/// <summary>
-		/// Daily.
-		/// </summary>
+		/// <summary>Daily.</summary>
 		Daily = 1,
 
-		/// <summary>
-		/// Weekly.
-		/// </summary>
+		/// <summary>Weekly.</summary>
 		Weekly = 2,
 
-		/// <summary>
-		/// Monthly.
-		/// </summary>
+		/// <summary>Monthly.</summary>
 		Monthly = 3
 	}
 }

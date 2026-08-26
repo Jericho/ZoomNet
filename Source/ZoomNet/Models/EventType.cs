@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the type of event.
-	/// </summary>
+	/// <summary>Enumeration to indicate the type of event.</summary>
 	public enum EventType
 	{
 		/// <summary>Multi session event.</summary>

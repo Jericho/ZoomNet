@@ -1,21 +1,15 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the direction of the call.
-	/// </summary>
+	/// <summary>Enumeration to indicate the direction of the call.</summary>
 	public enum CallLogDirection
 	{
-		/// <summary>
-		/// inbound.
-		/// </summary>
+		/// <summary>Inbound.</summary>
 		[EnumMember(Value = "inbound")]
 		Inbound,
 
-		/// <summary>
-		/// outbound.
-		/// </summary>
+		/// <summary>Outbound.</summary>
 		[EnumMember(Value = "outbound")]
 		Outbound
 	}

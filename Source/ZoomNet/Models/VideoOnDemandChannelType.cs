@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the channel type.
-	/// </summary>
+	/// <summary>Enumeration to indicate the channel type.</summary>
 	public enum VideoOnDemandChannelType
 	{
 		/// <summary>The channel content hosted on the Zoom Events platform.</summary>

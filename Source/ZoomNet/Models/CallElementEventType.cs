@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// An event type within a call log.
-	/// </summary>
+	/// <summary>An event type within a call log.</summary>
 	public enum CallElementEventType
 	{
 		/// <summary>Incoming call.</summary>

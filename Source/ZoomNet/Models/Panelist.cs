@@ -1,42 +1,27 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Panelist.
-	/// </summary>
+	/// <summary>Panelist.</summary>
 	public class Panelist
 	{
-		/// <summary>
-		/// Gets or sets the panelist id.
-		/// </summary>
-		/// <value>
-		/// The id.
-		/// </value>
-		[JsonPropertyName("id")]
-		public string Id { get; set; }
-
-		/// <summary>
-		/// Gets or sets the panelist's email address.
-		/// </summary>
+		/// <summary>Gets or sets the panelist's email address.</summary>
 		[JsonPropertyName("email")]
 		public string Email { get; set; }
 
-		/// <summary>
-		/// Gets or sets the panelist's full name.
-		/// </summary>
-		[JsonPropertyName("name")]
-		public string FullName { get; set; }
+		/// <summary>Gets or sets the panelist id.</summary>
+		[JsonPropertyName("id")]
+		public string Id { get; set; }
 
-		/// <summary>
-		/// Gets or sets the panelist's join URL.
-		/// </summary>
+		/// <summary>Gets or sets the panelist's join URL.</summary>
 		[JsonPropertyName("join_url")]
 		public string JoinUrl { get; set; }
 
-		/// <summary>
-		/// Gets or sets the panelist's virtual background id.
-		/// </summary>
+		/// <summary>Gets or sets the panelist's full name.</summary>
+		[JsonPropertyName("name")]
+		public string FullName { get; set; }
+
+		/// <summary>Gets or sets the panelist's virtual background id.</summary>
 		[JsonPropertyName("virtual_background_id")]
 		public string VirtualBackgroundId { get; set; }
 	}

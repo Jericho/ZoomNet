@@ -1,8 +1,6 @@
-namespace ZoomNet.Models
+﻿namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to specify what type of users can admit participants from the Waiting Room.
-	/// </summary>
+	/// <summary>Enumeration to specify what type of users can admit participants from the Waiting Room.</summary>
 	public enum UsersWhoCanAdmitParticipantsFromWaitingRoom
 	{
 		/// <summary>Host and co-hosts only.</summary>

@@ -1,10 +1,8 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// The model of room location incoming meeting requests settings.
-	/// </summary>
+	/// <summary>The model of room location incoming meeting requests settings.</summary>
 	public class RoomLocationIncomingMeetingRequestSettings
 	{
 		/// <summary>

@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the file extension type of the recording file.
-	/// </summary>
+	/// <summary>Enumeration to indicate the file extension type of the recording file.</summary>
 	public enum RecordingFileExtension
 	{
 		/// <summary>Not specified.</summary>

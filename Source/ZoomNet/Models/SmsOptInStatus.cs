@@ -1,8 +1,6 @@
-namespace ZoomNet.Models
+﻿namespace ZoomNet.Models
 {
-	/// <summary>
-	/// The Opt-In status between the Zoom Phone user number and consumer phone number.
-	/// </summary>
+	/// <summary>The Opt-In status between the Zoom Phone user number and consumer phone number.</summary>
 	public enum SmsOptInStatus
 	{
 		/// <summary>
@@ -11,19 +9,13 @@ namespace ZoomNet.Models
 		/// </summary>
 		Default = 0,
 
-		/// <summary>
-		/// This is a new SMS session and an Opt-In message must be sent first.
-		/// </summary>
+		/// <summary>This is a new SMS session and an Opt-In message must be sent first.</summary>
 		NewSession = 1,
 
-		/// <summary>
-		/// An Opt-In message has been sent and a response is pending.
-		/// </summary>
+		/// <summary>An Opt-In message has been sent and a response is pending.</summary>
 		PendingResponse = 2,
 
-		/// <summary>
-		/// An Opt-In message has been sent and the recipient has consented to receive additional SMS messages.
-		/// </summary>
+		/// <summary>An Opt-In message has been sent and the recipient has consented to receive additional SMS messages.</summary>
 		Confirmed = 3,
 
 		/// <summary>

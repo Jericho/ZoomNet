@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the event authentication method for a ticket.
-	/// </summary>
+	/// <summary>Enumeration to indicate the event authentication method for a ticket.</summary>
 	public enum EventAuthenticationMethod
 	{
 		/// <summary>Zoom account holder.</summary>

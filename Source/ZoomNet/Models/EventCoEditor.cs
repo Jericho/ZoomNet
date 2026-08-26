@@ -1,21 +1,15 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// An event coeditor.
-	/// </summary>
+	/// <summary>An event coeditor.</summary>
 	public class EventCoEditor
 	{
-		/// <summary>
-		/// Gets or sets the email address of the coeditor.
-		/// </summary>
+		/// <summary>Gets or sets the email address of the coeditor.</summary>
 		[JsonPropertyName("email")]
 		public string Email { get; set; }
 
-		/// <summary>
-		/// Gets or sets the permissions groups.
-		/// </summary>
+		/// <summary>Gets or sets the permissions groups.</summary>
 		[JsonPropertyName("permission_groups")]
 		public EventCoEditorPermissionGroup[] Permissions { get; set; }
 	}

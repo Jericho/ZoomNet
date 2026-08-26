@@ -1,10 +1,8 @@
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Number type used in call element.
-	/// </summary>
+	/// <summary>Number type used in call element.</summary>
 	public enum CallElementNumberType
 	{
 		/// <summary>Zoom PSTN.</summary>

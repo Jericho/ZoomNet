@@ -1,10 +1,8 @@
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Language interpretation settings.
-	/// </summary>
+	/// <summary>Language interpretation settings.</summary>
 	public class LanguageInterpretationSettings
 	{
 		/// <summary>Gets or sets the supported user-defined languages.</summary>
