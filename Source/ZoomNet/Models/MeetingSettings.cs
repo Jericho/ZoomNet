@@ -124,10 +124,7 @@ namespace ZoomNet.Models
 		[JsonPropertyName("email_in_attendee_report")]
 		public bool? IncludeEmailInAttendeeReport { get; set; }
 
-		/// <summary>
-		/// Gets or sets the value indicating whether to send email notifications to alternative hosts and users with <a href="https://support.zoom.us/hc/en-us/articles/201362803-Scheduling-privilege">scheduling privileges</a>.
-		/// This value defaults to true.
-		/// </summary>
+		/// <summary>Gets or sets the value indicating whether to send email notifications to alternative hosts and users with <a href="https://support.zoom.us/hc/en-us/articles/201362803-Scheduling-privilege">scheduling privileges</a>.</summary>
 		[JsonPropertyName("email_notification")]
 		public bool? SendEmailNotifications { get; set; }
 
@@ -154,7 +151,11 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets the list of global dial-in countries.</summary>
 		[JsonPropertyName("global_dial_in_countries")]
-		public string[] GlobalDialInCountries { get; set; }
+		public string[] DialInCountries { get; set; }
+
+		/// <summary>Gets or sets the list of global dial-in numbers.</summary>
+		[JsonPropertyName("global_dial_in_numbers")]
+		public DialInInfo[] DialInNumbers { get; set; }
 
 		/// <summary>Gets or sets the value indicating whether the 'Allow host to save video order' feature is enabled.</summary>
 		[JsonPropertyName("host_save_video_order")]
