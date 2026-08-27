@@ -12,7 +12,7 @@ namespace ZoomNet.Json
 	{
 		public override bool CanConvert(Type typeToConvert)
 		{
-			return typeToConvert == typeof(Interpreter) || typeToConvert.IsSubclassOf(typeof(Interpreter));
+			return typeof(Interpreter).IsAssignableFrom(typeToConvert);
 		}
 
 		public override Interpreter Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -25,15 +25,35 @@ namespace ZoomNet.Json
 			if (rootElement.TryGetProperty("type", out var typeProperty))
 			{
 				var interpreterType = typeProperty.ToObject<InterpreterType>();
-				switch (interpreterType)
+
+				Interpreter interpreter = interpreterType switch
 				{
-					case InterpreterType.Sign:
-						return rootElement.ToObject<SignLanguageInterpreter>(options);
-					case InterpreterType.Language:
-						return rootElement.ToObject<LanguageInterpreter>(options);
-					default:
-						throw new JsonException($"{interpreterType} is an unknown type of interpreter");
+					InterpreterType.Sign => new SignLanguageInterpreter(),
+					InterpreterType.Language => new LanguageInterpreter(),
+					_ => throw new JsonException($"{interpreterType} is an unknown type of interpreter"),
+				};
+
+				interpreter.Email = rootElement.GetPropertyValue<string>("email");
+				interpreter.Type = interpreterType;
+
+				if (interpreter is LanguageInterpreter languageInterpreter)
+				{
+					languageInterpreter.SourceLanguage = rootElement.GetPropertyValue<InterpretationLanguageForEventSession>("source_language_id");
+					languageInterpreter.SourceLanguageDisplayName = rootElement.GetPropertyValue<string>("source_language_display_name");
+					languageInterpreter.TargetLanguage = rootElement.GetPropertyValue<InterpretationLanguageForEventSession>("target_language_id");
+					languageInterpreter.TargetLanguageDisplayName = rootElement.GetPropertyValue<string>("target_language_display_name");
 				}
+				else if (interpreter is SignLanguageInterpreter signLanguageInterpreter)
+				{
+					signLanguageInterpreter.TargetLanguageDisplayName = rootElement.GetPropertyValue<string>("target_language_display_name");
+					signLanguageInterpreter.TargetLanguage = rootElement.GetPropertyValue<InterpretationSignLanguage>("target_language_id");
+				}
+				else
+				{
+					throw new JsonException($"Unknown interpreter type: {interpreter.GetType().Name}");
+				}
+
+				return interpreter;
 			}
 
 			// Scenario #2: The JSON contains a "interpreter_languages" property that indicates a language interpreter.
