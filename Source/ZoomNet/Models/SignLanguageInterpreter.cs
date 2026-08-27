@@ -1,8 +1,10 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
+using ZoomNet.Json;
 
 namespace ZoomNet.Models
 {
 	/// <summary>A sign language interpreter.</summary>
+	[JsonConverter(typeof(InterpreterConverter))]
 	public class SignLanguageInterpreter : Interpreter
 	{
 		/// <summary>Gets or sets the display name of the target language.</summary>

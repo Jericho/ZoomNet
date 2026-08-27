@@ -1,5 +1,4 @@
 using System.Text.Json.Serialization;
-using ZoomNet.Json;
 
 namespace ZoomNet.Models
 {
@@ -14,7 +13,6 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets the interpreters for the meeting.</summary>
 		[JsonPropertyName("interpreters")]
-		[JsonConverter(typeof(InterpretersConverter<>))] // Open generics support is a new feature in .NET 11 (C# 14)
 		public T[] Interpreters { get; set; }
 	}
 }
