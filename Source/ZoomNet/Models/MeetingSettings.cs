@@ -185,6 +185,10 @@ namespace ZoomNet.Models
 		[JsonPropertyName("join_before_host")]
 		public bool? JoinBeforeHost { get; set; }
 
+		/// <summary>Gets or sets the language interpretation settings.</summary>
+		[JsonPropertyName("language_interpretation")]
+		public LanguageInterpretationMeetingSettings<LanguageInterpreter> LanguageInterpretationSettings { get; set; }
+
 		/// <summary>Gets or sets the value indicating whether only authenticated users can join meetings.</summary>
 		[JsonPropertyName("meeting_authentication")]
 		public bool? AuthenticationRequired { get; set; }
@@ -228,6 +232,10 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the value indicating whether to ask the permission to unmute partecipants.</summary>
 		[JsonPropertyName("request_permission_to_unmute_participants")]
 		public bool? RequestPermissionToUnmutePartecipants { get; set; }
+
+		/// <summary>Gets or sets the sign language interpretation settings.</summary>
+		[JsonPropertyName("sign_language_interpretation")]
+		public LanguageInterpretationMeetingSettings<SignLanguageInterpreter> SignLanguageInterpretationSettings { get; set; }
 
 		/// <summary>Gets or sets the value indicating whether to show join info on the registration page.</summary>
 		[JsonPropertyName("show_join_info")]
