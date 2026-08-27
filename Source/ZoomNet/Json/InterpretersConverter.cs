@@ -16,12 +16,12 @@ namespace ZoomNet.Json
 
 		public InterpretersConverter()
 		{
-			_valueConverter = new InterpreterConverter();
+			_valueConverter = (InterpreterConverter)JsonSerializerOptions.Default.GetConverter(typeof(Interpreter));
 		}
 
 		public override bool CanConvert(Type typeToConvert)
 		{
-			return typeToConvert.IsArray && typeToConvert.IsAssignableFrom(typeof(Interpreter[]));
+			return typeToConvert.IsArray && typeof(Interpreter).IsAssignableFrom(typeToConvert);
 		}
 
 		public override T[] Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
