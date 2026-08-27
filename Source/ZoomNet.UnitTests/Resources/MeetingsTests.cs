@@ -224,6 +224,18 @@ namespace ZoomNet.UnitTests.Resources
 			result.ShouldNotBeNull();
 			result.Id.ShouldBe(97763643886);
 			result.Topic.ShouldBe("My Meeting");
+			result.Settings.LanguageInterpretationSettings.ShouldNotBeNull();
+			result.Settings.LanguageInterpretationSettings.Enabled.ShouldBeTrue();
+			result.Settings.LanguageInterpretationSettings.Interpreters.ShouldNotBeNull();
+			result.Settings.LanguageInterpretationSettings.Interpreters.Length.ShouldBe(1);
+			result.Settings.LanguageInterpretationSettings.Interpreters[0].Email.ShouldBe("interpreter@example.com");
+			result.Settings.LanguageInterpretationSettings.Interpreters[0].SourceLanguage.ShouldBe(InterpretationLanguageForEventSession.English);
+			result.Settings.LanguageInterpretationSettings.Interpreters[0].TargetLanguage.ShouldBe(InterpretationLanguageForEventSession.French);
+			result.Settings.SignLanguageInterpretationSettings.Enabled.ShouldBeTrue();
+			result.Settings.SignLanguageInterpretationSettings.Interpreters.ShouldNotBeNull();
+			result.Settings.SignLanguageInterpretationSettings.Interpreters.Length.ShouldBe(1);
+			result.Settings.SignLanguageInterpretationSettings.Interpreters[0].Email.ShouldBe("interpreter@example.com");
+			result.Settings.SignLanguageInterpretationSettings.Interpreters[0].TargetLanguage.ShouldBe(InterpretationSignLanguage.American);
 		}
 
 		#endregion
