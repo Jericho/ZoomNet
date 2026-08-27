@@ -16,10 +16,8 @@ namespace ZoomNet.Models
 		[JsonPropertyName("allow_host_control_participant_mute_state")]
 		public bool? AllowHostToControlParticipantMuteState { get; set; }
 
-		/// <summary>
-		/// Gets or sets the value indicating whether to allow attendees to join the meeting from multiple devices.
-		/// This setting only works for meetings that require registration.
-		/// </summary>
+		/// <summary>Gets or sets the value indicating whether to allow attendees to join the meeting from multiple devices.</summary>
+		/// <remarks>This setting only works for meetings that require registration.</remarks>
 		[JsonPropertyName("allow_multiple_devices")]
 		public bool? AllowMultipleDevices { get; set; }
 
@@ -179,9 +177,7 @@ namespace ZoomNet.Models
 		[JsonPropertyName("jbh_time")]
 		public JoinBeforeHostTime? JoinBeforeHostTime { get; set; }
 
-		/// <summary>
-		/// Gets or sets the value indicating whether participants can join the meeting before the host starts the meeting. Only used for scheduled or recurring meetings.
-		/// </summary>
+		/// <summary>Gets or sets the value indicating whether participants can join the meeting before the host starts the meeting. Only used for scheduled or recurring meetings.</summary>
 		[JsonPropertyName("join_before_host")]
 		public bool? JoinBeforeHost { get; set; }
 
@@ -229,9 +225,9 @@ namespace ZoomNet.Models
 		[JsonPropertyName("registration_type")]
 		public RegistrationType? RegistrationType { get; set; }
 
-		/// <summary>Gets or sets the value indicating whether to ask the permission to unmute partecipants.</summary>
+		/// <summary>Gets or sets the value indicating whether to ask the permission to unmute participants.</summary>
 		[JsonPropertyName("request_permission_to_unmute_participants")]
-		public bool? RequestPermissionToUnmutePartecipants { get; set; }
+		public bool? RequestPermissionToUnmuteParticipants { get; set; }
 
 		/// <summary>Gets or sets the sign language interpretation settings.</summary>
 		[JsonPropertyName("sign_language_interpretation")]
@@ -241,10 +237,8 @@ namespace ZoomNet.Models
 		[JsonPropertyName("show_join_info")]
 		public bool? ShowJoinInfo { get; set; }
 
-		/// <summary>
-		/// Gets or sets the value indicating whether to show social share buttons on the meeting registration page.
-		/// This setting only works for meetings that require registration.
-		/// </summary>
+		/// <summary>Gets or sets the value indicating whether to show social share buttons on the meeting registration page.</summary>
+		/// <remarks>This setting only works for meetings that require registration.</remarks>
 		[JsonPropertyName("show_share_button")]
 		public bool? ShowShareButton { get; set; }
 
