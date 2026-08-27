@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
@@ -112,7 +112,7 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets the language interpretation settings.</summary>
 		[JsonPropertyName("language_interpretation")]
-		public LanguageInterpretationSettings LanguageInterpretationSettings { get; set; }
+		public LanguageInterpretationUserSettings LanguageInterpretationSettings { get; set; }
 
 		/// <summary>Gets or sets a value indicating whether to allow Facebok live streaming.</summary>
 		[JsonPropertyName("live_streaming_facebook")]

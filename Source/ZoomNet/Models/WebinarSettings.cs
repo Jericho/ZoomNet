@@ -86,7 +86,7 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets the language for emails sent to panelists and registrants.</summary>
 		[JsonPropertyName("email_language")]
-		public Language EmailLanguage { get; set; }
+		public EmailLanguage EmailLanguage { get; set; }
 
 		/// <summary>Gets or sets the value indicating whether to enable session branding.</summary>
 		[JsonPropertyName("enable_session_branding")]
@@ -132,7 +132,7 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets the language interpretation settings.</summary>
 		[JsonPropertyName("language_interpretation")]
-		public LanguageInterpretationSettings LanguageInterpretationSettings { get; set; }
+		public LanguageInterpretationMeetingSettings<LanguageInterpreter> LanguageInterpretationSettings { get; set; }
 
 		/// <summary>Gets or sets the value indicating that only authenticated users can join the webinar.</summary>
 		[JsonPropertyName("meeting_authentication")]
@@ -186,6 +186,10 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the value indicating whether to send 1080p video to attendees.</summary>
 		[JsonPropertyName("send_1080p_video_to_attendees")]
 		public bool? Send1080pVideoToAttendees { get; set; }
+
+		/// <summary>Gets or sets the sign language interpretation settings.</summary>
+		[JsonPropertyName("sign_language_interpretation")]
+		public LanguageInterpretationMeetingSettings<SignLanguageInterpreter> SignLanguageInterpretationSettings { get; set; }
 
 		/// <summary>Gets or sets the value indicating whether to show join info on the registration page.</summary>
 		[JsonPropertyName("show_join_info")]
