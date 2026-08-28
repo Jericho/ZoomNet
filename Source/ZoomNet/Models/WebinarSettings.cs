@@ -162,6 +162,10 @@ namespace ZoomNet.Models
 		[JsonPropertyName("practice_session")]
 		public bool? EnablePracticeSession { get; set; }
 
+		/// <summary>Gets or sets the settings for the Q&A feature.</summary>
+		[JsonPropertyName("question_and_answer")]
+		public QuestionsAndAnswersSettings QuestionsAndAnswers { get; set; }
+
 		/// <summary>Gets or sets the value indicating whether to send confirmation email to registrants.</summary>
 		[JsonPropertyName("registrants_confirmation_email")]
 		public bool? SendConfirmationEmailToRegistrants { get; set; }
