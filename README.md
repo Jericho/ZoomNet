@@ -57,7 +57,7 @@ Here's a basic example of how to create a ZoomNet client:
 
 You can also optionaly specify one of the following three parameters:
 - `HttpClient`: by default, ZoomNet will create a new instance of HttpClient to send requests to the Zoom API. If you want to manage the lifetime of the HttpClient yourself, you can provide your own instance here.
-- `IWebProxy`: proxy where all requests are routed before being sent to the Zoom API. This is particularly useful if you want to be able to capture every single request for debugging purposes.
+- `IWebProxy`: proxy where all requests are routed before being sent to the Zoom API. This is particularly useful if you want to capture every single request for debugging purposes.
 - `HttpMessageHandler`: custom HTTP message handler that will be used by the underlying HttpClient. This is particularly useful for unit testing purposes when you want to mock the requests being sent to the Zoom API.
 
 ### Connection Information
