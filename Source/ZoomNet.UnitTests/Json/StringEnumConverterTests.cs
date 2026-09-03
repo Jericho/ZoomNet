@@ -32,7 +32,7 @@ namespace ZoomNet.UnitTests.Json
 
 		public enum EnumWithDefaultDescriptionAttribute
 		{
-			[DescriptionAttribute("")]
+			[Description("")]
 			DefaultValue,
 		}
 

@@ -3,18 +3,15 @@ using Pathoschild.Http.Client;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
-using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -924,124 +921,24 @@ namespace ZoomNet
 		/// <remarks>Inspired by: https://stackoverflow.com/questions/10418651/using-enummemberattribute-and-doing-automatic-string-conversions .</remarks>
 		internal static string ToEnumString<T>(this T enumValue)
 			where T : Enum
-		{
-			if (enumValue.TryToEnumString(out string stringValue)) return stringValue;
-			return enumValue.ToString();
-		}
+			{
+				// Delegate to the converter and let it throw for undefined values.
+				ZoomNet.Json.StringEnumConverter<T>.TryConvert(enumValue, out var stringValue, true);
+				return stringValue;
+			}
 
 		internal static bool TryToEnumString<T>(this T enumValue, out string stringValue, bool throwWhenUndefined = true)
-			where T : Enum
-		{
-			if (throwWhenUndefined)
-			{
-				var typeOfT = typeof(T);
-				if (!Enum.IsDefined(typeOfT, enumValue))
-				{
-					throw new ArgumentException($"{enumValue} is not a valid value for {typeOfT.Name}", nameof(enumValue));
-				}
-			}
-
-			var multipleValuesEnumMemberAttribute = enumValue.GetAttributeOfType<MultipleValuesEnumMemberAttribute>();
-			if (multipleValuesEnumMemberAttribute != null)
-			{
-				stringValue = multipleValuesEnumMemberAttribute.DefaultValue;
-				return true;
-			}
-
-			var enumMemberAttribute = enumValue.GetAttributeOfType<EnumMemberAttribute>();
-			if (enumMemberAttribute != null)
-			{
-				stringValue = enumMemberAttribute.Value;
-				return true;
-			}
-
-			var jsonPropertyNameAttribute = enumValue.GetAttributeOfType<JsonPropertyNameAttribute>();
-			if (jsonPropertyNameAttribute != null)
-			{
-				stringValue = jsonPropertyNameAttribute.Name;
-				return true;
-			}
-
-			var descriptionAttribute = enumValue.GetAttributeOfType<DescriptionAttribute>();
-			if (descriptionAttribute != null)
-			{
-				stringValue = descriptionAttribute.Description;
-				return true;
-			}
-
-			stringValue = null;
-			return false;
-		}
+			where T : Enum => ZoomNet.Json.StringEnumConverter<T>.TryConvert(enumValue, out stringValue, throwWhenUndefined);
 
 		/// <summary>Parses a string into its corresponding enum value.</summary>
 		/// <typeparam name="T">The enum type.</typeparam>
 		/// <param name="str">The string value.</param>
 		/// <returns>The enum representation of the string value.</returns>
-		/// <remarks>Inspired by: https://stackoverflow.com/questions/10418651/using-enummemberattribute-and-doing-automatic-string-conversions .</remarks>
 		internal static T ToEnum<T>(this string str)
-			where T : Enum
-		{
-			if (str.TryToEnum(out T enumValue)) return enumValue;
-
-			throw new ArgumentException($"There is no value in the {typeof(T).Name} enum that corresponds to '{str}'.");
-		}
+			where T : Enum => ZoomNet.Json.StringEnumConverter<T>.Convert(str);
 
 		internal static bool TryToEnum<T>(this string str, out T enumValue)
-			where T : Enum
-		{
-			var enumType = typeof(T);
-			foreach (var name in Enum.GetNames(enumType))
-			{
-				var customAttributes = enumType.GetField(name).GetCustomAttributes(true);
-
-				// See if there's a matching 'MultipleValuesEnumMember' attribute
-				if (customAttributes.OfType<MultipleValuesEnumMemberAttribute>().Any(attribute => string.Equals(attribute.DefaultValue, str, StringComparison.OrdinalIgnoreCase) ||
-					(attribute.OtherValues ?? Array.Empty<string>()).Any(otherValue => string.Equals(otherValue, str, StringComparison.OrdinalIgnoreCase))))
-				{
-					enumValue = (T)Enum.Parse(enumType, name);
-					return true;
-				}
-
-				// See if there's a matching 'EnumMember' attribute
-				if (customAttributes.OfType<EnumMemberAttribute>().Any(attribute => string.Equals(attribute.Value, str, StringComparison.OrdinalIgnoreCase)))
-				{
-					enumValue = (T)Enum.Parse(enumType, name);
-					return true;
-				}
-
-				// See if there's a matching 'JsonPropertyName' attribute
-				if (customAttributes.OfType<JsonPropertyNameAttribute>().Any(attribute => string.Equals(attribute.Name, str, StringComparison.OrdinalIgnoreCase)))
-				{
-					enumValue = (T)Enum.Parse(enumType, name);
-					return true;
-				}
-
-				// See if there's a matching 'Description' attribute
-				if (customAttributes.OfType<DescriptionAttribute>().Any(attribute => string.Equals(attribute.Description, str, StringComparison.OrdinalIgnoreCase)))
-				{
-					enumValue = (T)Enum.Parse(enumType, name);
-					return true;
-				}
-
-				// See if the value matches the name
-				if (string.Equals(name, str, StringComparison.OrdinalIgnoreCase))
-				{
-					enumValue = (T)Enum.Parse(enumType, name);
-					return true;
-				}
-
-				// In the rare scenario where the numerical value is returned from the API as a string.
-				// In other words, an integer value like 1 for example is returned as the string "1".
-				if (int.TryParse(str, out int numberValue))
-				{
-					enumValue = (T)Enum.ToObject(enumType, numberValue);
-					return true;
-				}
-			}
-
-			enumValue = default;
-			return false;
-		}
+			where T : Enum => ZoomNet.Json.StringEnumConverter<T>.TryConvert(str, out enumValue);
 
 		internal static T ToObject<T>(this JsonElement element, JsonSerializerOptions options = null)
 		{
