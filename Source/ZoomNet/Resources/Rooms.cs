@@ -981,7 +981,7 @@ namespace ZoomNet.Resources
 				{ "echo_cancellation", enableEchoCancellation },
 				{ "microphone_id", microphoneId },
 				{ "name", name },
-				{ "noise_suppression", noiseSuppressionType?.ToEnumString() },
+				{ "noise_suppression", noiseSuppressionType },
 				{ "speaker_id", speakerId }
 			};
 
@@ -1232,7 +1232,7 @@ namespace ZoomNet.Resources
 				{ "room_passcode", passcode },
 				{ "support_email", supportEmail },
 				{ "support_phone", supportPhone },
-				{ "timezone", timezone?.ToEnumString() }
+				{ "timezone", timezone }
 			};
 
 			var setupProfile = new JsonObject

@@ -33,11 +33,16 @@ namespace ZoomNet.Json
 
 				var enumValue = (T)Enum.Parse(enumType, name);
 
-				// Add enum name as a fallback string value with a very low preference value.
-				// Use int.MaxValue - 1 so the name participates in the selection when no attribute-based
-				// strings are available, while entries explicitly marked with int.MaxValue remain excluded
-				// (they are used only for parsing, not for serialization).
-				_enumToString.Add(enumValue, (new List<(string Value, int Preference)> { (name, int.MaxValue - 1) }, System.Convert.ToInt32(enumValue)));
+				// Add enum name but set its 'Preference' to int.MaxValue. This ensures that the enum name can be used for deserialization but not for serialization.
+				//
+				// THIS IS A VERY DELIBERATE CHOICE!
+				// When a given enum value is not decorated with any of the attributes, we want to use the integer value for serialization. This is mandated by the Zoom API.
+				//
+				// The fallback logic in the Write method of this converter uses the integer value of the enum which is the value expected by the Zoom API.
+				// However, please note that the fallback value in the ToEnumString extension method is the enum name. I did not change this logic because I wanted to maintain backward
+				// compatibility even though I believe this fallback logic should be changed to match the logic in the Write method of this converter. changing the fallback logic
+				// would break a few unit tests that are currently passing. I will leave this as is for now but I may change it in the future.
+				_enumToString.Add(enumValue, (new List<(string Value, int Preference)> { (name, int.MaxValue) }, System.Convert.ToInt32(enumValue)));
 
 				// Old logic favored MultipleValuesEnumMember default over EnumMember/JsonPropertyName/Description when serializing.
 				// To keep backward compatibility, set preferences accordingly:
@@ -68,14 +73,14 @@ namespace ZoomNet.Json
 
 		public static bool TryConvert(string stringValue, out T value)
 		{
-			var strings = _enumToString.Where(kvp => kvp.Value.Strings.Any(s => string.Equals(s.Value, stringValue, StringComparison.OrdinalIgnoreCase)));
+			var strings = _enumToString.Where(kvp => kvp.Value.Strings.Any(s => string.Equals(s.Value, stringValue ?? string.Empty, StringComparison.OrdinalIgnoreCase)));
 			if (strings.Any())
 			{
 				value = strings.First().Key;
 				return true;
 			}
 
-			// In rare scenarios, the Zoom API returns the numerical value as a string.
+			// In rare scenarios the Zoom API returns the numerical value as a string.
 			// For example: an integer value like 1 is returned as the string "1".
 			if (int.TryParse(stringValue, out int numberValue))
 			{

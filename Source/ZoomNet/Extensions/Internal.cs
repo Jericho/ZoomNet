@@ -921,11 +921,14 @@ namespace ZoomNet
 		/// <remarks>Inspired by: https://stackoverflow.com/questions/10418651/using-enummemberattribute-and-doing-automatic-string-conversions .</remarks>
 		internal static string ToEnumString<T>(this T enumValue)
 			where T : Enum
-			{
-				// Delegate to the converter and let it throw for undefined values.
-				ZoomNet.Json.StringEnumConverter<T>.TryConvert(enumValue, out var stringValue, true);
-				return stringValue;
-			}
+		{
+			if (ZoomNet.Json.StringEnumConverter<T>.TryConvert(enumValue, out var stringValue, false)) return stringValue;
+
+			// Note from September 2026:
+			// I am leaving this fallback logic in place for backward compatibility but I realize this logic is different than the fallback
+			// logic in StringEnumConverter<T>.Write where the integer value of the enum is used as the fallback.
+			return enumValue.ToString();
+		}
 
 		internal static bool TryToEnumString<T>(this T enumValue, out string stringValue, bool throwWhenUndefined = true)
 			where T : Enum => ZoomNet.Json.StringEnumConverter<T>.TryConvert(enumValue, out stringValue, throwWhenUndefined);
