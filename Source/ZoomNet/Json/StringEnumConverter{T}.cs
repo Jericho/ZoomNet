@@ -17,7 +17,7 @@ namespace ZoomNet.Json
 		where T : Enum
 	{
 		// 'Preference' is used to determine which string value to use when serializing an enum value. The lower the number, the higher the preference.
-		private static Dictionary<T, (List<(string Value, int Preference)> Strings, int IntValue)> _enumToString = new();
+		private static readonly Dictionary<T, (List<(string Value, int Preference)> Strings, int IntValue)> _enumToString = new();
 
 		static StringEnumConverter()
 		{
