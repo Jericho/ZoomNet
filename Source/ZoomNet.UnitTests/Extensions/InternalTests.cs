@@ -362,7 +362,7 @@ namespace ZoomNet.UnitTests.Extensions
 			[InlineData(MyEnum.Second, "Two")]
 			[InlineData(MyEnum.Third, "Three")]
 			[InlineData(MyEnum.Fourth, "Four")]
-			[InlineData(MyEnum.Fifth, "Fifth")]
+			[InlineData(MyEnum.Fifth, "5")]
 			public void ToEnumString(MyEnum value, string expected)
 			{
 				// Act

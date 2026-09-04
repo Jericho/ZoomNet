@@ -32,7 +32,7 @@ namespace ZoomNet.Json
 					return longValue == 1L;
 
 				default:
-					throw new JsonException($"Unable to convert the content of {reader.TokenType.ToEnumString()} JSON node into a boolean value");
+					throw new JsonException($"Unable to convert the content of {reader.TokenType.ToString()} JSON node into a boolean value");
 			}
 		}
 

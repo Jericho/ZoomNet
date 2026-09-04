@@ -924,10 +924,12 @@ namespace ZoomNet
 		{
 			if (ZoomNet.Json.StringEnumConverter<T>.TryConvert(enumValue, out var stringValue, false)) return stringValue;
 
-			// Note from September 2026:
-			// I am leaving this fallback logic in place for backward compatibility but I realize this logic is different than the fallback
+			// Until September 2026 the fallback value was the name of the enum value which was different than the fallback
 			// logic in StringEnumConverter<T>.Write where the integer value of the enum is used as the fallback.
-			return enumValue.ToString();
+			//
+			// The fallback logic here was changed to be consistent with StringEnumConverter<T>.Write.
+			// See: https://github.com/Jericho/ZoomNet/issues/520
+			return Convert.ToInt32(enumValue).ToString();
 		}
 
 		internal static bool TryToEnumString<T>(this T enumValue, out string stringValue, bool throwWhenUndefined = true)

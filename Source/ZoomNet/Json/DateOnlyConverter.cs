@@ -25,7 +25,7 @@ namespace ZoomNet.Json
 					return (int.Parse(parts[0]), int.Parse(parts[1]), int.Parse(parts[2]));
 
 				default:
-					throw new JsonException($"Unable to convert {reader.TokenType.ToEnumString()} to DateOnly");
+					throw new JsonException($"Unable to convert {reader.TokenType.ToString()} to DateOnly");
 			}
 		}
 
