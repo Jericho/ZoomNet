@@ -297,7 +297,7 @@ namespace ZoomNet.Resources
 			var data = new JsonObject
 			{
 				{ "custom_field_name", name },
-				{ "data_type", dataType?.ToEnumString() },
+				{ "data_type", dataType },
 				{ "custom_field_description", description },
 				{ "default_value", defaultValue },
 				{ "pick_list_values", pickListValues?.ToArray() },
@@ -470,7 +470,7 @@ namespace ZoomNet.Resources
 
 			return _client
 				.GetAsync("contact_center/queues")
-				.WithArgument("channel", channel?.ToEnumString())
+				.WithArgument("channel", channel)
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
@@ -723,7 +723,7 @@ namespace ZoomNet.Resources
 			{
 				{ "skill_category_name", name },
 				{ "skill_category_description", description },
-				{ "skill_type", type?.ToEnumString() },
+				{ "skill_type", type },
 				{ "max_proficiency_level", maxProficiencyLevel },
 			};
 			return _client
@@ -909,9 +909,9 @@ namespace ZoomNet.Resources
 				{ "name", name },
 				{ "package_name", packageName },
 				{ "region_id", regionId },
-				{ "status_id", (int?)status },
-				{ "sub_status_id", (int?)subStatus },
-				{ "status", accessStatus?.ToEnumString() },
+				{ "status_id", status },
+				{ "sub_status_id", subStatus },
+				{ "status", accessStatus },
 			};
 
 			return _client
