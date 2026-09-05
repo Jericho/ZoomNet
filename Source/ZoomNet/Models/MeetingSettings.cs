@@ -45,6 +45,10 @@ namespace ZoomNet.Models
 		[JsonPropertyName("approval_type")]
 		public ApprovalType? ApprovalType { get; set; }
 
+		/// <summary>Gets or sets the list of approved/denied countries or regions.</summary>
+		[JsonPropertyName("approved_or_denied_countries_or_regions")]
+		public ApprovedOrDeniedCountries ApprovedOrDeniedCountries { get; set; }
+
 		/// <summary>Gets or sets the value indicating how participants can join the audio portion of the meeting.</summary>
 		[JsonPropertyName("audio")]
 		public AudioType? Audio { get; set; }
