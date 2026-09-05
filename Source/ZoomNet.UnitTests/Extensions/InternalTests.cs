@@ -20,14 +20,14 @@ namespace ZoomNet.UnitTests.Extensions
 			// Note to self:
 			// I'm using TheoryData because can't use DateTime with InlineData: 
 			// Error CS0182  An attribute argument must be a constant expression, typeof expression or array creation expression of an attribute parameter type
-			public static TheoryData<long, DateTime> FromMilliseconds = new TheoryData<long, DateTime>()
+			public static TheoryData<long, DateTime> FromMilliseconds = new()
 			{
 				{ 0, new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) },
 				{ 1000, new DateTime(1970, 1, 1, 0, 0, 1, 0, DateTimeKind.Utc) },
 				{ 16040, new DateTime(1970, 1, 1, 0, 0, 16, 40, DateTimeKind.Utc) },
 			};
 
-			public static TheoryData<long, DateTime> FromSeconds = new TheoryData<long, DateTime>()
+			public static TheoryData<long, DateTime> FromSeconds = new()
 			{
 				{ 0, new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc) },
 				{ 1000, new DateTime(1970, 1, 1, 0, 16, 40, 0, DateTimeKind.Utc) },
@@ -69,14 +69,14 @@ namespace ZoomNet.UnitTests.Extensions
 			// Note to self:
 			// I'm using TheoryData because can't use DateTime with InlineData: 
 			// Error CS0182  An attribute argument must be a constant expression, typeof expression or array creation expression of an attribute parameter type
-			public static TheoryData<DateTime, long> ToMilliseconds = new TheoryData<DateTime, long>()
+			public static TheoryData<DateTime, long> ToMilliseconds = new()
 			{
 				{ new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), 0 },
 				{ new DateTime(1970, 1, 1, 0, 0, 1, 0, DateTimeKind.Utc), 1000 },
 				{ new DateTime(1970, 1, 1, 0, 0, 16, 40, DateTimeKind.Utc), 16040 },
 			};
 
-			public static TheoryData<DateTime, long> ToSeconds = new TheoryData<DateTime, long>()
+			public static TheoryData<DateTime, long> ToSeconds = new()
 			{
 				{ new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc), 0 },
 				{ new DateTime(1970, 1, 1, 0, 0, 1, 0, DateTimeKind.Utc), 1 },
@@ -119,7 +119,7 @@ namespace ZoomNet.UnitTests.Extensions
 			// Note to self:
 			// I'm using TheoryData because can't use DateTime with InlineData: 
 			// Error CS0182  An attribute argument must be a constant expression, typeof expression or array creation expression of an attribute parameter type
-			public static TheoryData<DateTime, string, string> SampleUtcDates = new TheoryData<DateTime, string, string>()
+			public static TheoryData<DateTime, string, string> SampleUtcDates = new()
 			{
 				{ new DateTime(2023, 12, 12, 12, 14, 0, 0, DateTimeKind.Utc), "2023-12-12", "2023-12-12T12:14:00Z" },
 			};
@@ -139,7 +139,7 @@ namespace ZoomNet.UnitTests.Extensions
 			// Note to self:
 			// I'm using TheoryData because can't use DateTime with InlineData: 
 			// Error CS0182  An attribute argument must be a constant expression, typeof expression or array creation expression of an attribute parameter type
-			public static TheoryData<DateTime, string, string> SampleLocalDates = new TheoryData<DateTime, string, string>()
+			public static TheoryData<DateTime, string, string> SampleLocalDates = new()
 			{
 				{ new DateTime(2023, 12, 12, 12, 14, 0, 0, DateTimeKind.Local), "2023-12-12", "2023-12-12T12:14:00" },
 			};
