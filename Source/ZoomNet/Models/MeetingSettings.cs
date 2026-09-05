@@ -61,6 +61,11 @@ namespace ZoomNet.Models
 		[JsonPropertyName("authentication_domains")]
 		public string AuthenticationDomains { get; set; }
 
+		/// <summary>Gets or sets the meeting authentication exceptions.</summary>
+		/// <remarks>The participants added here will receive unique meeting invite links and bypass authentication.</remarks>
+		[JsonPropertyName("authentication_exceptions")]
+		public MeetingAuthenticationExceptions[] AuthenticationExceptions { get; set; }
+
 		/// <summary>Gets or sets the authentication name set in the authentication profile.</summary>
 		[JsonPropertyName("authentication_name")]
 		public string AuthenticationName { get; set; }
