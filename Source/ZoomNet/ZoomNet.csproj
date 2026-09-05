@@ -52,7 +52,7 @@
     <Reference Include="System" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
-    <PackageReference Include="Portable.System.DateTimeOnly" Version="9.0.1" />
+    <PackageReference Include="Portable.System.DateTimeOnly" Version="9.0.2" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
   </ItemGroup>
 
