@@ -47,7 +47,8 @@ namespace ZoomNet.Utilities
 			request.WithHeader(DIAGNOSTIC_ID_HEADER_NAME, diagnosticId);
 
 			// Add the diagnostic info to our cache
-			_diagnosticStore.TryAdd(diagnosticId, new DiagnosticInfo(new WeakReference<HttpRequestMessage>(request.Message), Stopwatch.GetTimestamp(), null, long.MinValue, request.Options));
+			var completeWhen = request?.Options?.CompleteWhen ?? HttpCompletionOption.ResponseContentRead;
+			_diagnosticStore.TryAdd(diagnosticId, new DiagnosticInfo(new WeakReference<HttpRequestMessage>(request.Message), Stopwatch.GetTimestamp(), null, long.MinValue, completeWhen));
 		}
 
 		/// <summary>Method invoked just after the HTTP response is received. This method can modify the incoming HTTP response.</summary>
@@ -60,17 +61,25 @@ namespace ZoomNet.Utilities
 			var diagnosticId = response.Message.RequestMessage.Headers.GetValue(DIAGNOSTIC_ID_HEADER_NAME);
 			if (_diagnosticStore.TryGetValue(diagnosticId, out DiagnosticInfo diagnosticInfo))
 			{
-				// Update the cached diagnostic info
-				diagnosticInfo.ResponseReference = new WeakReference<HttpResponseMessage>(response.Message);
-				diagnosticInfo.ResponseTimestamp = responseTimestamp;
-				_diagnosticStore.AddOrUpdate(diagnosticId, diagnosticInfo);
+				// Create a new diagnostic info instance with the response information populated.
+				// This avoids mutating the existing object in-place which could lead to other threads
+				// observing a partially-updated object (e.g. response reference set but timestamp still default).
+				var updatedDiagnosticInfo = new DiagnosticInfo(
+					diagnosticInfo.RequestReference,
+					diagnosticInfo.RequestTimestamp,
+					new WeakReference<HttpResponseMessage>(response.Message),
+					responseTimestamp,
+					diagnosticInfo.CompleteWhen);
+
+				// Atomically replace the stored entry with the updated instance
+				_diagnosticStore.AddOrUpdate(diagnosticId, updatedDiagnosticInfo);
 
 				// Log
 				var logLevel = response.IsSuccessStatusCode ? _logLevelSuccessfulCalls : _logLevelFailedCalls;
 				if (_logger?.IsEnabled(logLevel) ?? false)
 				{
-					var template = diagnosticInfo.GetLoggingTemplate();
-					var parameters = diagnosticInfo.GetLoggingParameters();
+					var template = updatedDiagnosticInfo.GetLoggingTemplate();
+					var parameters = updatedDiagnosticInfo.GetLoggingParameters();
 
 					_logger.Log(logLevel, template, parameters);
 				}

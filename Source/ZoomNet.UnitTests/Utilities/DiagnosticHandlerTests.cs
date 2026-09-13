@@ -114,13 +114,14 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore);
-			var MockFluentHttpRequest = new MockFluentHttpRequest();
+			var mockFluentHttpRequest = new MockFluentHttpRequest();
+			
 			// Act
-			handler.OnRequest(MockFluentHttpRequest);
+			handler.OnRequest(mockFluentHttpRequest);
 
 			// Assert
 			diagnosticStore.Count.ShouldBe(1);
-			diagnosticStore.ContainsKey(MockFluentHttpRequest.HeaderValue).ShouldBeTrue();
+			diagnosticStore.ContainsKey(mockFluentHttpRequest.HeaderValue).ShouldBeTrue();
 		}
 
 		[Fact]
@@ -129,16 +130,16 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore);
-			var MockFluentHttpRequest = new MockFluentHttpRequest();
+			var mockFluentHttpRequest = new MockFluentHttpRequest();
 
 			// Act
-			handler.OnRequest(MockFluentHttpRequest);
+			handler.OnRequest(mockFluentHttpRequest);
 
 			// Assert
-			diagnosticStore.TryGetValue(MockFluentHttpRequest.HeaderValue, out var diagnosticInfo).ShouldBeTrue();
+			diagnosticStore.TryGetValue(mockFluentHttpRequest.HeaderValue, out var diagnosticInfo).ShouldBeTrue();
 			diagnosticInfo.RequestReference.ShouldNotBeNull();
 			diagnosticInfo.RequestReference.TryGetTarget(out HttpRequestMessage request).ShouldBeTrue();
-			request.ShouldBe(MockFluentHttpRequest.Message);
+			request.ShouldBe(mockFluentHttpRequest.Message);
 		}
 
 		[Fact]
@@ -147,31 +148,31 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore);
-			var MockFluentHttpRequest = new MockFluentHttpRequest();
+			var mockFluentHttpRequest = new MockFluentHttpRequest();
 
 			// Act
-			handler.OnRequest(MockFluentHttpRequest);
+			handler.OnRequest(mockFluentHttpRequest);
 
 			// Assert
-			diagnosticStore.TryGetValue(MockFluentHttpRequest.HeaderValue, out var diagnosticInfo).ShouldBeTrue();
+			diagnosticStore.TryGetValue(mockFluentHttpRequest.HeaderValue, out var diagnosticInfo).ShouldBeTrue();
 			diagnosticInfo.RequestTimestamp.ShouldBeGreaterThan(0);
 		}
 
 		[Fact]
-		public void OnRequest_DiagnosticInfoContainsOptions()
+		public void OnRequest_DiagnosticInfoContainsCompleteWhen()
 		{
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore);
-			var MockFluentHttpRequest = new MockFluentHttpRequest();
+			var mockFluentHttpRequest = new MockFluentHttpRequest();
+			mockFluentHttpRequest.Options.CompleteWhen = HttpCompletionOption.ResponseHeadersRead;
 
 			// Act
-			handler.OnRequest(MockFluentHttpRequest);
+			handler.OnRequest(mockFluentHttpRequest);
 
 			// Assert
-			diagnosticStore.TryGetValue(MockFluentHttpRequest.HeaderValue, out var diagnosticInfo).ShouldBeTrue();
-			diagnosticInfo.Options.ShouldNotBeNull();
-			diagnosticInfo.Options.ShouldBe(MockFluentHttpRequest.Options);
+			diagnosticStore.TryGetValue(mockFluentHttpRequest.HeaderValue, out var diagnosticInfo).ShouldBeTrue();
+			diagnosticInfo.CompleteWhen.ShouldBe(HttpCompletionOption.ResponseHeadersRead);
 		}
 
 		[Fact]
@@ -180,19 +181,19 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore);
-			var MockFluentHttpRequest1 = new MockFluentHttpRequest();
-			var MockFluentHttpRequest2 = new MockFluentHttpRequest();
-			var MockFluentHttpRequest3 = new MockFluentHttpRequest();
+			var mockFluentHttpRequest1 = new MockFluentHttpRequest();
+			var mockFluentHttpRequest2 = new MockFluentHttpRequest();
+			var mockFluentHttpRequest3 = new MockFluentHttpRequest();
 			// Act
-			handler.OnRequest(MockFluentHttpRequest1);
-			handler.OnRequest(MockFluentHttpRequest2);
-			handler.OnRequest(MockFluentHttpRequest3);
+			handler.OnRequest(mockFluentHttpRequest1);
+			handler.OnRequest(mockFluentHttpRequest2);
+			handler.OnRequest(mockFluentHttpRequest3);
 
 			// Assert
 			diagnosticStore.Count.ShouldBe(3);
-			diagnosticStore.ContainsKey(MockFluentHttpRequest1.HeaderValue).ShouldBeTrue();
-			diagnosticStore.ContainsKey(MockFluentHttpRequest2.HeaderValue).ShouldBeTrue();
-			diagnosticStore.ContainsKey(MockFluentHttpRequest3.HeaderValue).ShouldBeTrue();
+			diagnosticStore.ContainsKey(mockFluentHttpRequest1.HeaderValue).ShouldBeTrue();
+			diagnosticStore.ContainsKey(mockFluentHttpRequest2.HeaderValue).ShouldBeTrue();
+			diagnosticStore.ContainsKey(mockFluentHttpRequest3.HeaderValue).ShouldBeTrue();
 		}
 
 		#endregion
@@ -205,17 +206,17 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore);
-			var MockFluentHttpRequest = new MockFluentHttpRequest();
-			handler.OnRequest(MockFluentHttpRequest);
+			var mockFluentHttpRequest = new MockFluentHttpRequest();
+			handler.OnRequest(mockFluentHttpRequest);
 
 			var response = Utils.CreateResponse(HttpStatusCode.OK, @"{""success"": true}");
-			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, MockFluentHttpRequest.HeaderValue);
+			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, mockFluentHttpRequest.HeaderValue);
 
 			// Act
 			handler.OnResponse(response, true);
 
 			// Assert
-			diagnosticStore.TryGetValue(MockFluentHttpRequest.HeaderValue, out var diagnosticInfo).ShouldBeTrue();
+			diagnosticStore.TryGetValue(mockFluentHttpRequest.HeaderValue, out var diagnosticInfo).ShouldBeTrue();
 			diagnosticInfo.ResponseReference.ShouldNotBeNull();
 			diagnosticInfo.ResponseReference.TryGetTarget(out HttpResponseMessage responseMessage).ShouldBeTrue();
 			responseMessage.ShouldBe(response.Message);
@@ -227,19 +228,19 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore);
-			var MockFluentHttpRequest = new MockFluentHttpRequest();
-			handler.OnRequest(MockFluentHttpRequest);
+			var mockFluentHttpRequest = new MockFluentHttpRequest();
+			handler.OnRequest(mockFluentHttpRequest);
 
-			diagnosticStore.TryGetValue(MockFluentHttpRequest.HeaderValue, out var diagnosticInfoBeforeResponse).ShouldBeTrue();
+			diagnosticStore.TryGetValue(mockFluentHttpRequest.HeaderValue, out var diagnosticInfoBeforeResponse).ShouldBeTrue();
 			var initialTimestamp = diagnosticInfoBeforeResponse.ResponseTimestamp;
 			var response = Utils.CreateResponse(HttpStatusCode.OK, @"{""success"": true}");
-			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, MockFluentHttpRequest.HeaderValue);
+			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, mockFluentHttpRequest.HeaderValue);
 
 			// Act
 			handler.OnResponse(response, true);
 
 			// Assert
-			diagnosticStore.TryGetValue(MockFluentHttpRequest.HeaderValue, out var diagnosticInfo).ShouldBeTrue();
+			diagnosticStore.TryGetValue(mockFluentHttpRequest.HeaderValue, out var diagnosticInfo).ShouldBeTrue();
 			diagnosticInfo.ResponseTimestamp.ShouldNotBe(initialTimestamp);
 			diagnosticInfo.ResponseTimestamp.ShouldNotBe(long.MinValue);
 		}
@@ -268,11 +269,11 @@ namespace ZoomNet.UnitTests.Utilities
 			var mockLogger = new MockLogger();
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, mockLogger);
-			var MockFluentHttpRequest = new MockFluentHttpRequest();
-			handler.OnRequest(MockFluentHttpRequest);
+			var mockFluentHttpRequest = new MockFluentHttpRequest();
+			handler.OnRequest(mockFluentHttpRequest);
 
 			var response = Utils.CreateResponse(HttpStatusCode.OK, @"{""success"": true}");
-			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, MockFluentHttpRequest.HeaderValue);
+			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, mockFluentHttpRequest.HeaderValue);
 
 			// Act
 			handler.OnResponse(response, true);
@@ -289,11 +290,11 @@ namespace ZoomNet.UnitTests.Utilities
 			var mockLogger = new MockLogger();
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, mockLogger);
-			var MockFluentHttpRequest = new MockFluentHttpRequest();
-			handler.OnRequest(MockFluentHttpRequest);
+			var mockFluentHttpRequest = new MockFluentHttpRequest();
+			handler.OnRequest(mockFluentHttpRequest);
 
 			var response = Utils.CreateResponse(HttpStatusCode.BadRequest, @"{""error"": ""Bad request""}");
-			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, MockFluentHttpRequest.HeaderValue);
+			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, mockFluentHttpRequest.HeaderValue);
 
 			// Act
 			handler.OnResponse(response, true);
@@ -310,11 +311,11 @@ namespace ZoomNet.UnitTests.Utilities
 			var mockLogger = new MockLogger { IsLoggingEnabled = false };
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, mockLogger);
-			var MockFluentHttpRequest = new MockFluentHttpRequest();
-			handler.OnRequest(MockFluentHttpRequest);
+			var mockFluentHttpRequest = new MockFluentHttpRequest();
+			handler.OnRequest(mockFluentHttpRequest);
 
 			var response = Utils.CreateResponse(HttpStatusCode.OK, @"{""success"": true}");
-			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, MockFluentHttpRequest.HeaderValue);
+			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, mockFluentHttpRequest.HeaderValue);
 
 			// Act
 			handler.OnResponse(response, true);
@@ -329,11 +330,11 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, null);
-			var MockFluentHttpRequest = new MockFluentHttpRequest();
-			handler.OnRequest(MockFluentHttpRequest);
+			var mockFluentHttpRequest = new MockFluentHttpRequest();
+			handler.OnRequest(mockFluentHttpRequest);
 
 			var response = Utils.CreateResponse(HttpStatusCode.OK, @"{""success"": true}");
-			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, MockFluentHttpRequest.HeaderValue);
+			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, mockFluentHttpRequest.HeaderValue);
 
 			// Act & Assert
 			Should.NotThrow(() => handler.OnResponse(response, true));
@@ -350,11 +351,11 @@ namespace ZoomNet.UnitTests.Utilities
 			var mockLogger = new MockLogger();
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var handler = new DiagnosticHandler(LogLevel.Debug, LogLevel.Warning, diagnosticStore, mockLogger);
-			var MockFluentHttpRequest = new MockFluentHttpRequest();
-			handler.OnRequest(MockFluentHttpRequest);
+			var mockFluentHttpRequest = new MockFluentHttpRequest();
+			handler.OnRequest(mockFluentHttpRequest);
 
 			var response = Utils.CreateResponse(HttpStatusCode.Created, @"{""id"": ""123""}");
-			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, MockFluentHttpRequest.HeaderValue);
+			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, mockFluentHttpRequest.HeaderValue);
 
 			// Act
 			handler.OnResponse(response, true);
@@ -370,11 +371,11 @@ namespace ZoomNet.UnitTests.Utilities
 			var mockLogger = new MockLogger();
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Critical, diagnosticStore, mockLogger);
-			var MockFluentHttpRequest = new MockFluentHttpRequest();
-			handler.OnRequest(MockFluentHttpRequest);
+			var mockFluentHttpRequest = new MockFluentHttpRequest();
+			handler.OnRequest(mockFluentHttpRequest);
 
 			var response = Utils.CreateResponse(HttpStatusCode.NotFound, @"{""error"": ""Not found""}");
-			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, MockFluentHttpRequest.HeaderValue);
+			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, mockFluentHttpRequest.HeaderValue);
 
 			// Act
 			handler.OnResponse(response, true);
@@ -390,11 +391,11 @@ namespace ZoomNet.UnitTests.Utilities
 			var mockLogger = new MockLogger();
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var handler = new DiagnosticHandler(LogLevel.Trace, LogLevel.Error, diagnosticStore, mockLogger);
-			var MockFluentHttpRequest = new MockFluentHttpRequest();
-			handler.OnRequest(MockFluentHttpRequest);
+			var mockFluentHttpRequest = new MockFluentHttpRequest();
+			handler.OnRequest(mockFluentHttpRequest);
 
 			var response = Utils.CreateResponse(HttpStatusCode.Unauthorized, @"{""error"": ""Unauthorized""}");
-			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, MockFluentHttpRequest.HeaderValue);
+			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, mockFluentHttpRequest.HeaderValue);
 
 			// Act
 			handler.OnResponse(response, true);
@@ -413,11 +414,11 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore);
-			var MockFluentHttpRequest = new MockFluentHttpRequest();
-			handler.OnRequest(MockFluentHttpRequest);
+			var mockFluentHttpRequest = new MockFluentHttpRequest();
+			handler.OnRequest(mockFluentHttpRequest);
 
 			var response = Utils.CreateResponse(HttpStatusCode.OK, @"{""success"": true}");
-			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, MockFluentHttpRequest.HeaderValue);
+			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, mockFluentHttpRequest.HeaderValue);
 
 			// Act
 			handler.OnResponse(response, true);
@@ -465,24 +466,24 @@ namespace ZoomNet.UnitTests.Utilities
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var mockLogger = new MockLogger();
 			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, mockLogger);
-			var MockFluentHttpRequest = new MockFluentHttpRequest();
+			var mockFluentHttpRequest = new MockFluentHttpRequest();
 
 			// Act - Request
-			handler.OnRequest(MockFluentHttpRequest);
+			handler.OnRequest(mockFluentHttpRequest);
 
 			// Assert - After Request
-			diagnosticStore.ContainsKey(MockFluentHttpRequest.HeaderValue).ShouldBeTrue();
-			diagnosticStore.TryGetValue(MockFluentHttpRequest.HeaderValue, out var diagnosticInfo).ShouldBeTrue();
+			diagnosticStore.ContainsKey(mockFluentHttpRequest.HeaderValue).ShouldBeTrue();
+			diagnosticStore.TryGetValue(mockFluentHttpRequest.HeaderValue, out var diagnosticInfo).ShouldBeTrue();
 			diagnosticInfo.RequestReference.TryGetTarget(out HttpRequestMessage _).ShouldBeTrue();
 			diagnosticInfo.ResponseReference.ShouldBeNull();
 
 			// Act - Response
 			var response = Utils.CreateResponse(HttpStatusCode.OK, @"{""data"": ""test""}");
-			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, MockFluentHttpRequest.HeaderValue);
+			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, mockFluentHttpRequest.HeaderValue);
 			handler.OnResponse(response, true);
 
 			// Assert - After Response
-			diagnosticStore.TryGetValue(MockFluentHttpRequest.HeaderValue, out diagnosticInfo).ShouldBeTrue();
+			diagnosticStore.TryGetValue(mockFluentHttpRequest.HeaderValue, out diagnosticInfo).ShouldBeTrue();
 			diagnosticInfo.ResponseReference.ShouldNotBeNull();
 			diagnosticInfo.ResponseReference.TryGetTarget(out HttpResponseMessage _).ShouldBeTrue();
 			diagnosticInfo.ResponseTimestamp.ShouldNotBe(long.MinValue);
@@ -498,24 +499,24 @@ namespace ZoomNet.UnitTests.Utilities
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var mockLogger = new MockLogger();
 			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, mockLogger);
-			var MockFluentHttpRequest1 = new MockFluentHttpRequest();
-			var MockFluentHttpRequest2 = new MockFluentHttpRequest();
-			var MockFluentHttpRequest3 = new MockFluentHttpRequest();
+			var mockFluentHttpRequest1 = new MockFluentHttpRequest();
+			var mockFluentHttpRequest2 = new MockFluentHttpRequest();
+			var mockFluentHttpRequest3 = new MockFluentHttpRequest();
 
 			// Act - Multiple Requests
-			handler.OnRequest(MockFluentHttpRequest1);
-			handler.OnRequest(MockFluentHttpRequest2);
-			handler.OnRequest(MockFluentHttpRequest3);
+			handler.OnRequest(mockFluentHttpRequest1);
+			handler.OnRequest(mockFluentHttpRequest2);
+			handler.OnRequest(mockFluentHttpRequest3);
 
 			// Create responses
 			var response1 = Utils.CreateResponse(HttpStatusCode.OK, @"{""data"": ""test1""}");
-			response1.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, MockFluentHttpRequest1.HeaderValue);
+			response1.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, mockFluentHttpRequest1.HeaderValue);
 
 			var response2 = Utils.CreateResponse(HttpStatusCode.Created, @"{""data"": ""test2""}");
-			response2.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, MockFluentHttpRequest2.HeaderValue);
+			response2.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, mockFluentHttpRequest2.HeaderValue);
 
 			var response3 = Utils.CreateResponse(HttpStatusCode.BadRequest, @"{""error"": ""test3""}");
-			response3.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, MockFluentHttpRequest3.HeaderValue);
+			response3.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, mockFluentHttpRequest3.HeaderValue);
 
 			// Act - Multiple Responses
 			handler.OnResponse(response1, true);
@@ -523,9 +524,9 @@ namespace ZoomNet.UnitTests.Utilities
 			handler.OnResponse(response3, true);
 
 			// Assert
-			diagnosticStore.TryGetValue(MockFluentHttpRequest1.HeaderValue, out var info1).ShouldBeTrue();
-			diagnosticStore.TryGetValue(MockFluentHttpRequest2.HeaderValue, out var info2).ShouldBeTrue();
-			diagnosticStore.TryGetValue(MockFluentHttpRequest3.HeaderValue, out var info3).ShouldBeTrue();
+			diagnosticStore.TryGetValue(mockFluentHttpRequest1.HeaderValue, out var info1).ShouldBeTrue();
+			diagnosticStore.TryGetValue(mockFluentHttpRequest2.HeaderValue, out var info2).ShouldBeTrue();
+			diagnosticStore.TryGetValue(mockFluentHttpRequest3.HeaderValue, out var info3).ShouldBeTrue();
 
 			info1.ResponseReference.TryGetTarget(out HttpResponseMessage r1).ShouldBeTrue();
 			info2.ResponseReference.TryGetTarget(out HttpResponseMessage r2).ShouldBeTrue();
@@ -548,11 +549,11 @@ namespace ZoomNet.UnitTests.Utilities
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var mockLogger = new MockLogger();
 			var handler = new DiagnosticHandler(successLevel, failureLevel, diagnosticStore, mockLogger);
-			var MockFluentHttpRequest = new MockFluentHttpRequest();
-			handler.OnRequest(MockFluentHttpRequest);
+			var mockFluentHttpRequest = new MockFluentHttpRequest();
+			handler.OnRequest(mockFluentHttpRequest);
 
 			var response = Utils.CreateResponse(HttpStatusCode.OK, @"{""success"": true}");
-			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, MockFluentHttpRequest.HeaderValue);
+			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, mockFluentHttpRequest.HeaderValue);
 
 			// Act
 			handler.OnResponse(response, true);
