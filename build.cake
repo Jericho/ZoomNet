@@ -38,7 +38,9 @@ var gitHubRepoName = repoFullName.Split('/')[1];
 
 var codecovToken = Argument<string>("CODECOV_TOKEN", EnvironmentVariable("CODECOV_TOKEN"));
 
-var sourceFolder = "./Source/";
+// Hard-coding the folder location is a workaround from problem with "dotnet test" and relative paths in .NET 11 SDK Release Candidate 1. See: https://github.com/dotnet/sdk/issues/56196
+var sourceFolder = $"D:/_build/{gitHubRepoName}/Source/";
+
 var outputDir = "./artifacts/";
 var codeCoverageDir = $"{outputDir}CodeCoverage/";
 var benchmarkDir = $"{outputDir}Benchmark/";
