@@ -150,7 +150,7 @@ namespace ZoomNet.UnitTests.Utilities
 				Stopwatch.GetTimestamp(),
 				null,
 				long.MinValue,
-				new RequestOptions()
+				HttpCompletionOption.ResponseContentRead
 			);
 			store.TryAdd(diagnosticId, diagnosticInfo);
 
@@ -416,7 +416,7 @@ namespace ZoomNet.UnitTests.Utilities
 				Stopwatch.GetTimestamp(),
 				null,
 				long.MinValue,
-				new RequestOptions()
+				HttpCompletionOption.ResponseContentRead
 			);
 			store.TryAdd(diagnosticId, diagnosticInfo);
 
@@ -449,7 +449,7 @@ namespace ZoomNet.UnitTests.Utilities
 				Stopwatch.GetTimestamp(),
 				null,
 				long.MinValue,
-				new RequestOptions()
+				HttpCompletionOption.ResponseContentRead
 			);
 			store.TryAdd(aliveId, aliveInfo);
 
@@ -626,7 +626,7 @@ namespace ZoomNet.UnitTests.Utilities
 				requestTimestamp > 0 ? requestTimestamp : Stopwatch.GetTimestamp(),
 				null,
 				responseTimestamp,
-				new RequestOptions()
+				HttpCompletionOption.ResponseContentRead
 			);
 		}
 
@@ -639,7 +639,7 @@ namespace ZoomNet.UnitTests.Utilities
 				Stopwatch.GetTimestamp(),
 				null,
 				long.MinValue,
-				new RequestOptions()
+				HttpCompletionOption.ResponseContentRead
 			);
 			store.TryAdd(diagnosticId, diagnosticInfo);
 			// Request goes out of scope here and becomes eligible for garbage collection
