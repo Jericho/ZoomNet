@@ -74,6 +74,10 @@ namespace ZoomNet.Models
 		[JsonPropertyName("authentication_option")]
 		public string AuthenticationOptionId { get; set; }
 
+		/// <summary>Gets or sets the value indicating whether to automatically add the recording to the video management system.</summary>
+		[JsonPropertyName("auto_add_recording_to_video_management")]
+		public MeetingVideoManagementSettings VideoManagementSettings { get; set; }
+
 		/// <summary>Gets or sets the value indicating if audio is recorded and if so, where the audio is saved.</summary>
 		[JsonPropertyName("auto_recording")]
 		public AutoRecordingType? AutoRecording { get; set; }
