@@ -162,7 +162,7 @@ namespace ZoomNet.Models
 		[JsonPropertyName("practice_session")]
 		public bool? EnablePracticeSession { get; set; }
 
-		/// <summary>Gets or sets the settings for the Q&A feature.</summary>
+		/// <summary>Gets or sets the settings for the Q&amp;A feature.</summary>
 		[JsonPropertyName("question_and_answer")]
 		public QuestionsAndAnswersSettings QuestionsAndAnswers { get; set; }
 
