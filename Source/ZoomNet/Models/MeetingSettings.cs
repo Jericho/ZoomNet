@@ -86,6 +86,10 @@ namespace ZoomNet.Models
 		[JsonPropertyName("auto_start_meeting_summary")]
 		public bool? AutoStartMeetingSummary { get; set; }
 
+		/// <summary>Gets or sets the breakout room settings for the meeting.</summary>
+		[JsonPropertyName("breakout_room")]
+		public MeetingBrakoutRoomSettings BreakoutRoomSettings { get; set; }
+
 		/// <summary>
 		/// Gets or sets the type of calendar integration used to schedule the meeting.
 		/// Works with the private_meeting field to determine whether to share details of meetings or not.
