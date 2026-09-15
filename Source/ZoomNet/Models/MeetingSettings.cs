@@ -263,6 +263,10 @@ namespace ZoomNet.Models
 		[JsonPropertyName("waiting_room")]
 		public bool? WaitingRoom { get; set; }
 
+		/// <summary>Gets or sets the waiting room settings for the meeting.</summary>
+		[JsonPropertyName("waiting_room_options")]
+		public MeetingWaitingRoomSettings WaitingRoomSettings { get; set; }
+
 		/// <summary>Gets or sets the value indicating whether a watermark should be displayed when viewing shared screen.</summary>
 		[JsonPropertyName("watermark")]
 		public bool? Watermark { get; set; }
