@@ -246,6 +246,10 @@ namespace ZoomNet.Models
 		[JsonPropertyName("request_permission_to_unmute_participants")]
 		public bool? RequestPermissionToUnmuteParticipants { get; set; }
 
+		/// <summary>Gets or sets the resources for the meeting.</summary>
+		[JsonPropertyName("resources")]
+		public MeetingResource[] Resources { get; set; }
+
 		/// <summary>Gets or sets the sign language interpretation settings.</summary>
 		[JsonPropertyName("sign_language_interpretation")]
 		public LanguageInterpretationMeetingSettings<SignLanguageInterpreter> SignLanguageInterpretationSettings { get; set; }
