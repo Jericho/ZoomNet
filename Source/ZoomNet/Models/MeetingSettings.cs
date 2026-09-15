@@ -88,7 +88,7 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets the breakout room settings for the meeting.</summary>
 		[JsonPropertyName("breakout_room")]
-		public MeetingBrakoutRoomSettings BreakoutRoomSettings { get; set; }
+		public MeetingBreakoutRoomSettings BreakoutRoomSettings { get; set; }
 
 		/// <summary>
 		/// Gets or sets the type of calendar integration used to schedule the meeting.
