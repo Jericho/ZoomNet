@@ -36,6 +36,9 @@ namespace ZoomNet
 
 		private static readonly DateTime EPOCH = new(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 		private static readonly int DEFAULT_DEGREE_OF_PARALLELISM = Environment.ProcessorCount > 1 ? Environment.ProcessorCount / 2 : 1;
+		private static readonly string[] ERROR_MESSAGE_NODE_NAMES = ["message", "error_message"];
+		private static readonly char[] QUERYSTRING_ITEMS_SEPARATORS = ['&'];
+		private static readonly char[] QUERYSTRING_ITEM_VALUE_SEPARATORS = ['='];
 
 		private static readonly Dictionary<Type, string> _typeAliases = new()
 		{
@@ -806,8 +809,8 @@ namespace ZoomNet
 		{
 			var querystringParameters = uri
 				.Query.TrimStart('?')
-				.Split(new char[] { '&' }, StringSplitOptions.RemoveEmptyEntries)
-				.Select(value => value.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries))
+				.Split(QUERYSTRING_ITEMS_SEPARATORS, StringSplitOptions.RemoveEmptyEntries)
+				.Select(value => value.Split(QUERYSTRING_ITEM_VALUE_SEPARATORS, StringSplitOptions.RemoveEmptyEntries))
 				.Select(splitValue =>
 				{
 					var key = splitValue[0].Trim();
@@ -860,7 +863,7 @@ namespace ZoomNet
 				if (jsonResponse.ValueKind == JsonValueKind.Object)
 				{
 					errorCode = jsonResponse.TryGetProperty("code", out JsonElement jsonErrorCode) ? jsonErrorCode.GetInt32() : null;
-					errorMessage = jsonResponse.GetPropertyValue(new[] { "message", "error_message" }, errorCode.HasValue ? $"Error code: {errorCode}" : errorMessage, false);
+					errorMessage = jsonResponse.GetPropertyValue(ERROR_MESSAGE_NODE_NAMES, errorCode.HasValue ? $"Error code: {errorCode}" : errorMessage, false);
 					if (jsonResponse.TryGetProperty("errors", out JsonElement jsonErrorDetails))
 					{
 						var errorDetails = string.Join(
