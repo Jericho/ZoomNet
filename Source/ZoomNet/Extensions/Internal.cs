@@ -596,7 +596,7 @@ namespace ZoomNet
 		/// <returns>The value of the property converted to type T if found and convertible; otherwise, the specified default value.</returns>
 		internal static T GetPropertyValue<T>(this JsonElement element, string path, T defaultValue, char splitChar = '/')
 		{
-			return element.GetPropertyValue(new[] { path }, defaultValue, false, splitChar);
+			return element.GetPropertyValue([path], defaultValue, false, splitChar);
 		}
 
 		/// <summary>
@@ -628,7 +628,7 @@ namespace ZoomNet
 		/// <returns>The value of the property at the specified path, converted to type T.</returns>
 		internal static T GetPropertyValue<T>(this JsonElement element, string path, char splitChar = '/')
 		{
-			return element.GetPropertyValue<T>(new[] { path }, default, true, splitChar);
+			return element.GetPropertyValue<T>([path], default, true, splitChar);
 		}
 
 		/// <summary>
@@ -1137,7 +1137,7 @@ namespace ZoomNet
 				PageCount = pageCount,
 				PageNumber = pageNumber,
 				RecordsPerPage = recordsPerPage,
-				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()) ?? Array.Empty<T>()
+				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : []) ?? []
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
@@ -1175,7 +1175,7 @@ namespace ZoomNet
 			{
 				NextPageToken = nextPageToken,
 				RecordsPerPage = recordsPerPage,
-				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()) ?? Array.Empty<T>()
+				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : []) ?? []
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
@@ -1217,7 +1217,7 @@ namespace ZoomNet
 				To = to,
 				NextPageToken = nextPageToken,
 				RecordsPerPage = recordsPerPage,
-				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()) ?? Array.Empty<T>()
+				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : []) ?? []
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
@@ -1244,7 +1244,7 @@ namespace ZoomNet
 			var result = new PaginatedSyncResponse<T>()
 			{
 				SyncToken = syncToken,
-				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()) ?? Array.Empty<T>()
+				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : []) ?? []
 			};
 
 			return result;
@@ -1292,7 +1292,7 @@ namespace ZoomNet
 					.GetMethod(nameof(GetElementValue), BindingFlags.Static | BindingFlags.NonPublic)
 					.MakeGenericMethod(underlyingType);
 
-				return (T)getElementValue.Invoke(null, new object[] { property.Value });
+				return (T)getElementValue.Invoke(null, [property.Value]);
 			}
 
 			if (typeOfT.IsArray)
@@ -1307,7 +1307,7 @@ namespace ZoomNet
 				var arrayList = new ArrayList(property.Value.GetArrayLength());
 				foreach (var arrayElement in property.Value.EnumerateArray())
 				{
-					var elementValue = getElementValue.Invoke(null, new object[] { arrayElement });
+					var elementValue = getElementValue.Invoke(null, [arrayElement]);
 					arrayList.Add(elementValue);
 				}
 
