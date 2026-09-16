@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.CallHandlingSettings
+namespace ZoomNet.Models.CallHandlingSettings
 {
 	/// <summary>The type of custom hours.</summary>
 	public enum CustomHoursType

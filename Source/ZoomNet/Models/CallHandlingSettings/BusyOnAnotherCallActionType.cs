@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.CallHandlingSettings
+namespace ZoomNet.Models.CallHandlingSettings
 {
 	/// <summary>The action to take when the user is busy on another call.</summary>
 	public enum BusyOnAnotherCallActionType

@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models
+namespace ZoomNet.Models
 {
 	/// <summary>Chat message party (i.e. sender or recipient) information.</summary>
 	public class ChatMessageParty

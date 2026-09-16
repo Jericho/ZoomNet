@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.CallHandlingSettings
+namespace ZoomNet.Models.CallHandlingSettings
 {
 	/// <summary>The types of action to take when a call is not answered.</summary>
 	public enum CallNotAnswerActionType

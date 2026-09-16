@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models;
+namespace ZoomNet.Models;
 
 /// <summary>Represents the type of calling plan.</summary>
 public enum CallingPlanType

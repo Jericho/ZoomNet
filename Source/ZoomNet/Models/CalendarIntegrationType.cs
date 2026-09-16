@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models
+namespace ZoomNet.Models
 {
 	/// <summary>Type of calendar integration used to schedule the meeting.</summary>
 	public enum CalendarIntegrationType

@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models
+namespace ZoomNet.Models
 {
 	/// <summary>Enumeration to indicate who can post to a chat channel.</summary>
 	public enum ChatChannelPostingPermissions
