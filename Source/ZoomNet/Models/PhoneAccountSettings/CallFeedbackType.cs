@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.PhoneAccountSettings
+namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Call feedback type.</summary>
 	public enum CallFeedbackType

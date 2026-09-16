@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.PhoneAccountSettings
+namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Mobile client types.</summary>
 	public enum MobileClientType

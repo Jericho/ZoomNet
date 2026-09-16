@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.PhoneAccountSettings
+namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>The action when a parked call is not picked up.</summary>
 	public enum CallNotPickedUpAction

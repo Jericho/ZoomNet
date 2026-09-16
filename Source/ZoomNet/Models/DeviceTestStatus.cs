@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models
+namespace ZoomNet.Models
 {
 	/// <summary>Represents meeting device test status.</summary>
 	public enum DeviceTestStatus

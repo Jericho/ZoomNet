@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.Webhooks
+namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>Represents an event related to meeting registration.</summary>
 	public abstract class MeetingRegistrationEvent : MeetingEvent

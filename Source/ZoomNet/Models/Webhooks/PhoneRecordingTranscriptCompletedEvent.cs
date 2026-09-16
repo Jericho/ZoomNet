@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.Webhooks
+namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a transcription of a call recording has completed.</summary>
 	public class PhoneRecordingTranscriptCompletedEvent : RecordingEvent

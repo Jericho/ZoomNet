@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models
+namespace ZoomNet.Models
 {
 	/// <summary>Enumeration to indicate the type of registration for a meeting/webinar.</summary>
 	public enum RegistrationType

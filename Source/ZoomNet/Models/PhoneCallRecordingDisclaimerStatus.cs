@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models
+namespace ZoomNet.Models
 {
 	/// <summary>Enumeration to indicate the status of disclaimer for phone call recording.</summary>
 	public enum PhoneCallRecordingDisclaimerStatus

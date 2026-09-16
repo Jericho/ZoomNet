@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.Webhooks
+namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a user in a breakout room begins sharing content, such as their desktop or the classic whiteboard.</summary>
 	public class MeetingBreakoutRoomSharingStartedEvent : MeetingBreakoutRoomEvent

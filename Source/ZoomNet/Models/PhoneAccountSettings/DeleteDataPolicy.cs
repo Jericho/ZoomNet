@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.PhoneAccountSettings
+namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>The deletion policy (soft/permanent).</summary>
 	public enum DeleteDataPolicy

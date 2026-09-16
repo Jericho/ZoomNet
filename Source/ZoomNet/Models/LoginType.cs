@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models
+namespace ZoomNet.Models
 {
 	/// <summary>Enumeration to indicate the type of login.</summary>
 	public enum LoginType

@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.PhoneAccountSettings
+namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>SMS etiquette policy rule kinds.</summary>
 	public enum SmsEtiquettePolicyRuleKind

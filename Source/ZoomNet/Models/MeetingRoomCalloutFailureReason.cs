@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models
+namespace ZoomNet.Models
 {
 	/// <summary>Failure reasons for joining a meeting through phone (call out) from a Zoom room.</summary>
 	public enum MeetingRoomCalloutFailureReason

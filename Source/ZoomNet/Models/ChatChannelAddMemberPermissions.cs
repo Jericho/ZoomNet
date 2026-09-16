@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models
+namespace ZoomNet.Models
 {
 	/// <summary>Enumeration to indicate who can add new channel members.</summary>
 	public enum ChatChannelAddMemberPermissions

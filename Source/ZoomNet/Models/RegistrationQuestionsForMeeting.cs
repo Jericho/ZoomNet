@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models
+namespace ZoomNet.Models
 {
 	/// <summary>The questions on the registration form.</summary>
 	public class RegistrationQuestionsForMeeting

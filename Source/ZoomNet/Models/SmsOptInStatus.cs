@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models
+namespace ZoomNet.Models
 {
 	/// <summary>The Opt-In status between the Zoom Phone user number and consumer phone number.</summary>
 	public enum SmsOptInStatus

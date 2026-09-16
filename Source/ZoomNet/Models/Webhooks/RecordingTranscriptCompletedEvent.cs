@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.Webhooks
+namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered every time the transcript of the recording is made available after the recorded meeting/webinar ends.</summary>
 	public class RecordingTranscriptCompletedEvent : RecordingFilesEvent

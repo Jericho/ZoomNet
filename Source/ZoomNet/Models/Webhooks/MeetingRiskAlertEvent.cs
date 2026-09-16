@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.Webhooks
+namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered every time someone posts a Zoom meeting link to a social media account.</summary>
 	public class MeetingRiskAlertEvent : MeetingInfoEvent

@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models
+namespace ZoomNet.Models
 {
 	/// <summary>Type of meeting template.</summary>
 	public enum MeetingTemplateType

@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.PhoneAccountSettings
+namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>The actions taken when SMS etiquette policy is triggered.</summary>
 	public enum SmsEtiquettePolicyAction

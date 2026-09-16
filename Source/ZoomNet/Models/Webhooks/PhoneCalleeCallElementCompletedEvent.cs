@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.Webhooks
+namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when the incoming call element records are made available for the callee to view.</summary>
 	public class PhoneCalleeCallElementCompletedEvent : PhoneCallLogOperationEvent
