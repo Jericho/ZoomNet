@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.Webhooks;
+namespace ZoomNet.Models.Webhooks;
 
 /// <summary>This event is triggered when a recording of a meeting or webinar becomes available to view or download.</summary>
 public class RecordingCompletedEvent : RecordingFilesEvent

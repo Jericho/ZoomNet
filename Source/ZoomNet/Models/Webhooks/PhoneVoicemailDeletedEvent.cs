@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.Webhooks
+namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a voicemail is deleted (sent to the trash).</summary>
 	public class PhoneVoicemailDeletedEvent : PhoneVoicemailEvent

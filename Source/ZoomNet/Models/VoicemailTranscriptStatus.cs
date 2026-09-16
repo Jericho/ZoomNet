@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models
+namespace ZoomNet.Models
 {
 	/// <summary>The status of the voicemail transcript.</summary>
 	public enum VoicemailTranscriptStatus

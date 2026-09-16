@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.Webhooks
+namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a recording has been deleted.</summary>
 	public class PhoneRecordingDeletedEvent : RecordingEvent

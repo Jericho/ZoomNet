@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.Webhooks
+namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when the outgoing call history records are made available for the caller to view.</summary>
 	public class PhoneCallerCallHistoryCompletedEvent : PhoneCallLogOperationEvent

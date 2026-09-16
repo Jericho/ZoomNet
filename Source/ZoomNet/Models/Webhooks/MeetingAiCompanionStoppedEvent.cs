@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.Webhooks
+namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a user stops the AI Companion during a live meeting.</summary>
 	public class MeetingAiCompanionStoppedEvent : MeetingAiCompanionEvent

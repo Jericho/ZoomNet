@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.Webhooks
+namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a user sends a public or private chat message during a webinar using the chat feature.</summary>
 	public class WebinarChatMessageSentEvent : ChatMessageSentEvent

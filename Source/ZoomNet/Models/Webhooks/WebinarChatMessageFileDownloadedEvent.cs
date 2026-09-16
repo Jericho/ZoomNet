@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.Webhooks
+namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a message file from a webinar is downloaded.</summary>
 	public class WebinarChatMessageFileDownloadedEvent : ChatMessageFileDownloadedEvent

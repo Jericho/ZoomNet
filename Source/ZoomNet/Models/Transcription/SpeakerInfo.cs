@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.Transcription
+namespace ZoomNet.Models.Transcription
 {
 	/// <summary>
 	/// Represents metadata about a participant detected in Zoom's diarization
