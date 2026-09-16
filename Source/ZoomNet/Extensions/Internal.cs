@@ -1,7 +1,6 @@
 using HttpMultipartParser;
 using Pathoschild.Http.Client;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -957,12 +956,7 @@ namespace ZoomNet
 		{
 			if (value is IEnumerable<T> items)
 			{
-				var jsonArray = new JsonArray();
-				foreach (var item in items)
-				{
-					jsonArray.Add(item);
-				}
-
+				var jsonArray = new JsonArray(items.Select(item => JsonValue.Create(item)).ToArray());
 				jsonObject.Add(propertyName, jsonArray);
 			}
 			else
@@ -1304,14 +1298,17 @@ namespace ZoomNet
 					.GetMethod(nameof(GetElementValue), BindingFlags.Static | BindingFlags.NonPublic)
 					.MakeGenericMethod(elementType);
 
-				var arrayList = new ArrayList(property.Value.GetArrayLength());
-				foreach (var arrayElement in property.Value.EnumerateArray())
+				var elementValues = property.Value.EnumerateArray()
+					.Select(arrayElement => getElementValue.Invoke(null, [arrayElement]))
+					.ToArray();
+
+				var resultArray = Array.CreateInstance(elementType, elementValues.Length);
+				for (int i = 0; i < elementValues.Length; i++)
 				{
-					var elementValue = getElementValue.Invoke(null, [arrayElement]);
-					arrayList.Add(elementValue);
+					resultArray.SetValue(elementValues[i], i);
 				}
 
-				return (T)Convert.ChangeType(arrayList.ToArray(elementType), typeof(T));
+				return (T)Convert.ChangeType(resultArray, typeof(T));
 			}
 
 			return property.Value.GetElementValue<T>();
