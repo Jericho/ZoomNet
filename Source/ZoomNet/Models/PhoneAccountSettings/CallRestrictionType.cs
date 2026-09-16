@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.PhoneAccountSettings
+namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Call forwarding restriction type.</summary>
 	public enum CallRestrictionType

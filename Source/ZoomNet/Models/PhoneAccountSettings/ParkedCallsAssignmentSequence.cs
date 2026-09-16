@@ -1,4 +1,4 @@
-﻿namespace ZoomNet.Models.PhoneAccountSettings
+namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Indicates how parked calls are assigned to a BLF (Busy Lamp Field) key.</summary>
 	public enum ParkedCallsAssignmentSequence
