@@ -65,7 +65,7 @@ namespace ZoomNet.UnitTests.Json
 				""type"": 1,
 				""repeat_interval"": 1
 			},
-			""pre_scheduled"": false
+			""pre_schedule"": false
 		}";
 
 		private const string RECURRING_MEETING_FIXED_TIME_JSON = @"{
@@ -92,7 +92,7 @@ namespace ZoomNet.UnitTests.Json
 					""status"": ""available""
 				}
 			],
-			""pre_scheduled"": true
+			""pre_schedule"": true
 		}";
 
 		[Fact]
