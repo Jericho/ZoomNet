@@ -2,9 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Ip address access control settings.
-	/// </summary>
+	/// <summary>Ip address access control settings.</summary>
 	public class IpAddressAccessControlSettings
 	{
 		/// <summary>

@@ -3,9 +3,7 @@ using ZoomNet.Json;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Date Object.
-	/// </summary>
+	/// <summary>Date Object.</summary>
 	public class DailyUsageSummary
 	{
 		/// <summary>Gets or sets the date.</summary>

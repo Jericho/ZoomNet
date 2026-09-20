@@ -2,9 +2,7 @@ using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the type of attendee experience for an event.
-	/// </summary>
+	/// <summary>Enumeration to indicate the type of attendee experience for an event.</summary>
 	public enum EventCategory
 	{
 		/// <summary>Education and family.</summary>

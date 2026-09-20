@@ -2,9 +2,7 @@ using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to specify the type of virtual background.
-	/// </summary>
+	/// <summary>Enumeration to specify the type of virtual background.</summary>
 	public enum VirtualBackgroundType
 	{
 		/// <summary>Image.</summary>

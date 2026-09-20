@@ -2,9 +2,7 @@ using System.Runtime.Serialization;
 
 namespace ZoomNet.Models.PhoneAccountSettings
 {
-	/// <summary>
-	/// Forwarding extension type.
-	/// </summary>
+	/// <summary>Forwarding extension type.</summary>
 	public enum ForwardingExtensionType
 	{
 		/// <summary>Zoom user.</summary>

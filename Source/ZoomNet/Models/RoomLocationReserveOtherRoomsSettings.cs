@@ -2,14 +2,10 @@ using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// The model of room location reserve other rooms settings.
-	/// </summary>
+	/// <summary>The model of room location reserve other rooms settings.</summary>
 	public class RoomLocationReserveOtherRoomsSettings
 	{
-		/// <summary>
-		/// Gets or sets a value indicating whether a user is allowed to perform instant room reservations of other rooms on the device.
-		/// </summary>
+		/// <summary>Gets or sets a value indicating whether a user is allowed to perform instant room reservations of other rooms on the device.</summary>
 		[JsonPropertyName("allow_to_reserve_other_room_types")]
 		public bool? AllowReserveOtherRooms { get; set; }
 

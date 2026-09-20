@@ -23,10 +23,7 @@ namespace ZoomNet.Models.Transcription
 		/// </summary>
 		public IReadOnlyList<SpeakerMoment> Diarization { get; internal set; }
 
-		/// <summary>
-		/// Gets the distinct list of speakers identified across both the VTT and
-		/// TIMELINE transcripts. The list is normalized and ordered alphabetically.
-		/// </summary>
+		/// <summary>Gets the distinct list of speakers identified across both the VTT and TIMELINE transcripts. The list is normalized and ordered alphabetically.</summary>
 		public IReadOnlyList<string> Speakers { get; internal set; }
 	}
 }

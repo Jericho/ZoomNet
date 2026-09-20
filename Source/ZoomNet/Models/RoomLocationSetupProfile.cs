@@ -2,9 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// The model of room location setup profile.
-	/// </summary>
+	/// <summary>The model of room location setup profile.</summary>
 	public class RoomLocationSetupProfile
 	{
 		/// <summary>

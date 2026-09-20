@@ -230,11 +230,11 @@ namespace ZoomNet.Resources
 			{
 				{ "name", name },
 				{ "is_default", isDefault },
-				{ "authentication_method", authenticationMethod?.ToEnumString() },
+				{ "authentication_method", authenticationMethod },
 				{ "allow_domain_list", allowDomainList?.ToArray() },
 				{ "email_restrict_list", emailRestrictList?.ToArray() },
 				{ "ticket_type_id", ticketTypeId },
-				{ "recurring_registration_option", recurringRegistrationType?.ToEnumString() }
+				{ "recurring_registration_option", recurringRegistrationType }
 			};
 
 			if (emailAuthentication.HasValue || securityCodeVerification.HasValue)
@@ -432,15 +432,15 @@ namespace ZoomNet.Resources
 						{ "end_time", c.End?.ToZoomFormat(TimeZones.UTC) },
 					}).ToArray()
 				},
-				{ "meeting_type", meetingType?.ToEnumString() },
+				{ "meeting_type", meetingType },
 				{ "hub_id", hubId },
-				{ "attendance_type", attendanceType?.ToEnumString() },
-				{ "categories", categories?.Select(c => c.ToEnumString()).ToArray() },
+				{ "attendance_type", attendanceType },
+				{ "categories", categories?.ToArray() },
 				{ "tags", tags?.ToArray() },
 				{ "contact_name", contactName },
 				{ "lobby_start_time", lobbyStart?.ToZoomFormat(TimeZones.UTC) },
 				{ "lobby_end_time", lobbyEnd?.ToZoomFormat(TimeZones.UTC) },
-				{ "blocked_countries", blockedCountries?.Select(bc => bc.ToEnumString()).ToArray() },
+				{ "blocked_countries", blockedCountries?.ToArray() },
 				{ "tagline", tagLine },
 			};
 
@@ -471,13 +471,13 @@ namespace ZoomNet.Resources
 					}).ToArray()
 				},
 				{ "hub_id", hubId },
-				{ "attendance_type", attendanceType?.ToEnumString() },
-				{ "categories", categories?.Select(c => c.ToEnumString()).ToArray() },
+				{ "attendance_type", attendanceType },
+				{ "categories", categories?.ToArray() },
 				{ "tags", tags?.ToArray() },
 				{ "contact_name", contactName },
 				{ "lobby_start_time", lobbyStart?.ToZoomFormat(TimeZones.UTC) },
 				{ "lobby_end_time", lobbyEnd?.ToZoomFormat(TimeZones.UTC) },
-				{ "blocked_countries", blockedCountries?.Select(bc => bc.ToEnumString()).ToArray() },
+				{ "blocked_countries", blockedCountries?.ToArray() },
 				{ "tagline", tagLine },
 			};
 
@@ -515,11 +515,11 @@ namespace ZoomNet.Resources
 				},
 				{ "recurrence", recurrence },
 				{ "hub_id", hubId },
-				{ "attendance_type", attendanceType?.ToEnumString() },
-				{ "categories", categories?.Select(c => c.ToEnumString()).ToArray() },
+				{ "attendance_type", attendanceType },
+				{ "categories", categories?.ToArray() },
 				{ "tags", tags?.ToArray() },
 				{ "contact_name", contactName },
-				{ "blocked_countries", blockedCountries?.Select(bc => bc.ToEnumString()).ToArray() },
+				{ "blocked_countries", blockedCountries?.ToArray() },
 				{ "tagline", tagLine },
 			};
 
@@ -1071,7 +1071,7 @@ namespace ZoomNet.Resources
 				{ "description", description },
 				{ "start_time", start?.ToZoomFormat(TimeZones.UTC) }, // For some reason the Zoom API requires the start and end dates to be in UTC format and returns an error message if you format the dates in any other time zone
 				{ "end_time", end?.ToZoomFormat(TimeZones.UTC) },
-				{ "timezone", timeZone?.ToEnumString() },
+				{ "timezone", timeZone },
 				{ "type", (int?)type },
 				{
 					"session_speakers",
@@ -1099,7 +1099,7 @@ namespace ZoomNet.Resources
 				{ "levels", levels?.ToArray() },
 				{ "alternative_hosts", alternativeHosts?.ToArray() },
 				{ "panelists", panelists?.ToArray() },
-				{ "attendance_type", attendanceType?.ToEnumString() },
+				{ "attendance_type", attendanceType },
 				{ "physical_location", physicalLocation },
 			};
 

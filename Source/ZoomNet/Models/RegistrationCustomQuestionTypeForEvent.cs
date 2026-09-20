@@ -2,9 +2,7 @@ using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the type of registration question for events.
-	/// </summary>
+	/// <summary>Enumeration to indicate the type of registration question for events.</summary>
 	public enum RegistrationCustomQuestionTypeForEvent
 	{
 		/// <summary>Short.</summary>

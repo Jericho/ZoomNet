@@ -2,9 +2,7 @@ using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate room device type.
-	/// </summary>
+	/// <summary>Enumeration to indicate room device type.</summary>
 	public enum RoomSensorType
 	{
 		/// <summary>Carbon dioxide.</summary>

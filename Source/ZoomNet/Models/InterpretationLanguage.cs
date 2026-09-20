@@ -2,9 +2,7 @@ using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Interpretation language.
-	/// </summary>
+	/// <summary>Interpretation language.</summary>
 	public enum InterpretationLanguage
 	{
 		/// <summary>English.</summary>

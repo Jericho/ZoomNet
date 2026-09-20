@@ -2,26 +2,18 @@ using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the status of a user.
-	/// </summary>
+	/// <summary>Enumeration to indicate the status of a user.</summary>
 	public enum UserStatus
 	{
-		/// <summary>
-		/// Active.
-		/// </summary>
+		/// <summary>Active.</summary>
 		[EnumMember(Value = "active")]
 		Active,
 
-		/// <summary>
-		/// Inactive.
-		/// </summary>
+		/// <summary>Inactive.</summary>
 		[EnumMember(Value = "inactive")]
 		Inactive,
 
-		/// <summary>
-		/// Pending.
-		/// </summary>
+		/// <summary>Pending.</summary>
 		[EnumMember(Value = "pending")]
 		Pending
 	}

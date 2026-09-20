@@ -2,9 +2,7 @@ using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the call summary rate.
-	/// </summary>
+	/// <summary>Enumeration to indicate the call summary rate.</summary>
 	public enum CallSummaryRate
 	{
 		/// <summary>Thumb up.</summary>

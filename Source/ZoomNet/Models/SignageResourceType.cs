@@ -2,9 +2,7 @@ using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the type of digital signage resource.
-	/// </summary>
+	/// <summary>Enumeration to indicate the type of digital signage resource.</summary>
 	public enum SignageResourceType
 	{
 		/// <summary>Content files.</summary>

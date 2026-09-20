@@ -2,9 +2,7 @@ using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to specify whow can share their screen.
-	/// </summary>
+	/// <summary>Enumeration to specify whow can share their screen.</summary>
 	public enum WhoCanShare
 	{
 		/// <summary>Only a host can share the screen.</summary>

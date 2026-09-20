@@ -2,9 +2,7 @@ using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Asset's types.
-	/// </summary>
+	/// <summary>Asset's types.</summary>
 	public enum AssetType
 	{
 		/// <summary>Audio asset.</summary>

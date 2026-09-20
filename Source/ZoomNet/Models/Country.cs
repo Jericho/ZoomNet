@@ -874,9 +874,7 @@ namespace ZoomNet.Models
 		Uganda,
 
 		/// <summary>United Kingdom.</summary>
-		/// <remarks>
-		/// See <see cref="Country.United_Kingdom_of_Great_Britain_and_Northern_Ireland"/>.
-		/// </remarks>
+		/// <remarks>See <see cref="Country.United_Kingdom_of_Great_Britain_and_Northern_Ireland"/>.</remarks>
 		[EnumMember(Value = "UK")]
 		United_Kingdom,
 

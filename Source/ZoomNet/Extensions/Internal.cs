@@ -1,20 +1,16 @@
 using HttpMultipartParser;
 using Pathoschild.Http.Client;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
-using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -39,29 +35,31 @@ namespace ZoomNet
 
 		private static readonly DateTime EPOCH = new(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 		private static readonly int DEFAULT_DEGREE_OF_PARALLELISM = Environment.ProcessorCount > 1 ? Environment.ProcessorCount / 2 : 1;
+		private static readonly string[] ERROR_MESSAGE_NODE_NAMES = ["message", "error_message"];
+		private static readonly char[] QUERYSTRING_ITEMS_SEPARATORS = ['&'];
+		private static readonly char[] QUERYSTRING_ITEM_VALUE_SEPARATORS = ['='];
 
-		private static readonly Dictionary<Type, string> _typeAliases =
-			new Dictionary<Type, string>()
-			{
-				{ typeof(byte), "byte" },
-				{ typeof(sbyte), "sbyte" },
-				{ typeof(short), "short" },
-				{ typeof(ushort), "ushort" },
-				{ typeof(int), "int" },
-				{ typeof(uint), "uint" },
-				{ typeof(long), "long" },
-				{ typeof(ulong), "ulong" },
-				{ typeof(float), "float" },
-				{ typeof(double), "double" },
-				{ typeof(decimal), "decimal" },
-				{ typeof(object), "object" },
-				{ typeof(bool), "bool" },
-				{ typeof(char), "char" },
-				{ typeof(string), "string" },
-				{ typeof(void), "void" },
-				{ typeof(nint), "nint" }, // From C# 11 onwards
-				{ typeof(nuint), "nuint" }, // From C# 11 onwards
-			};
+		private static readonly Dictionary<Type, string> _typeAliases = new()
+		{
+			{ typeof(byte), "byte" },
+			{ typeof(sbyte), "sbyte" },
+			{ typeof(short), "short" },
+			{ typeof(ushort), "ushort" },
+			{ typeof(int), "int" },
+			{ typeof(uint), "uint" },
+			{ typeof(long), "long" },
+			{ typeof(ulong), "ulong" },
+			{ typeof(float), "float" },
+			{ typeof(double), "double" },
+			{ typeof(decimal), "decimal" },
+			{ typeof(object), "object" },
+			{ typeof(bool), "bool" },
+			{ typeof(char), "char" },
+			{ typeof(string), "string" },
+			{ typeof(void), "void" },
+			{ typeof(nint), "nint" }, // From C# 11 onwards
+			{ typeof(nuint), "nuint" }, // From C# 11 onwards
+		};
 
 		/// <summary>
 		/// Converts a 'unix time', which is expressed as the number of seconds (or milliseconds) since
@@ -597,7 +595,7 @@ namespace ZoomNet
 		/// <returns>The value of the property converted to type T if found and convertible; otherwise, the specified default value.</returns>
 		internal static T GetPropertyValue<T>(this JsonElement element, string path, T defaultValue, char splitChar = '/')
 		{
-			return element.GetPropertyValue(new[] { path }, defaultValue, false, splitChar);
+			return element.GetPropertyValue([path], defaultValue, false, splitChar);
 		}
 
 		/// <summary>
@@ -629,7 +627,7 @@ namespace ZoomNet
 		/// <returns>The value of the property at the specified path, converted to type T.</returns>
 		internal static T GetPropertyValue<T>(this JsonElement element, string path, char splitChar = '/')
 		{
-			return element.GetPropertyValue<T>(new[] { path }, default, true, splitChar);
+			return element.GetPropertyValue<T>([path], default, true, splitChar);
 		}
 
 		/// <summary>
@@ -810,8 +808,8 @@ namespace ZoomNet
 		{
 			var querystringParameters = uri
 				.Query.TrimStart('?')
-				.Split(new char[] { '&' }, StringSplitOptions.RemoveEmptyEntries)
-				.Select(value => value.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries))
+				.Split(QUERYSTRING_ITEMS_SEPARATORS, StringSplitOptions.RemoveEmptyEntries)
+				.Select(value => value.Split(QUERYSTRING_ITEM_VALUE_SEPARATORS, StringSplitOptions.RemoveEmptyEntries))
 				.Select(splitValue =>
 				{
 					var key = splitValue[0].Trim();
@@ -864,7 +862,7 @@ namespace ZoomNet
 				if (jsonResponse.ValueKind == JsonValueKind.Object)
 				{
 					errorCode = jsonResponse.TryGetProperty("code", out JsonElement jsonErrorCode) ? jsonErrorCode.GetInt32() : null;
-					errorMessage = jsonResponse.GetPropertyValue(new[] { "message", "error_message" }, errorCode.HasValue ? $"Error code: {errorCode}" : errorMessage, false);
+					errorMessage = jsonResponse.GetPropertyValue(ERROR_MESSAGE_NODE_NAMES, errorCode.HasValue ? $"Error code: {errorCode}" : errorMessage, false);
 					if (jsonResponse.TryGetProperty("errors", out JsonElement jsonErrorDetails))
 					{
 						var errorDetails = string.Join(
@@ -925,123 +923,28 @@ namespace ZoomNet
 		internal static string ToEnumString<T>(this T enumValue)
 			where T : Enum
 		{
-			if (enumValue.TryToEnumString(out string stringValue)) return stringValue;
-			return enumValue.ToString();
+			if (ZoomNet.Json.StringEnumConverter<T>.TryConvert(enumValue, out var stringValue, false)) return stringValue;
+
+			// Until September 2026 the fallback value was the name of the enum value which was different than the fallback
+			// logic in StringEnumConverter<T>.Write where the integer value of the enum is used as the fallback.
+			//
+			// The fallback logic here was changed to be consistent with StringEnumConverter<T>.Write.
+			// See: https://github.com/Jericho/ZoomNet/issues/520
+			return Convert.ToInt32(enumValue).ToString();
 		}
 
 		internal static bool TryToEnumString<T>(this T enumValue, out string stringValue, bool throwWhenUndefined = true)
-			where T : Enum
-		{
-			if (throwWhenUndefined)
-			{
-				var typeOfT = typeof(T);
-				if (!Enum.IsDefined(typeOfT, enumValue))
-				{
-					throw new ArgumentException($"{enumValue} is not a valid value for {typeOfT.Name}", nameof(enumValue));
-				}
-			}
-
-			var multipleValuesEnumMemberAttribute = enumValue.GetAttributeOfType<MultipleValuesEnumMemberAttribute>();
-			if (multipleValuesEnumMemberAttribute != null)
-			{
-				stringValue = multipleValuesEnumMemberAttribute.DefaultValue;
-				return true;
-			}
-
-			var enumMemberAttribute = enumValue.GetAttributeOfType<EnumMemberAttribute>();
-			if (enumMemberAttribute != null)
-			{
-				stringValue = enumMemberAttribute.Value;
-				return true;
-			}
-
-			var jsonPropertyNameAttribute = enumValue.GetAttributeOfType<JsonPropertyNameAttribute>();
-			if (jsonPropertyNameAttribute != null)
-			{
-				stringValue = jsonPropertyNameAttribute.Name;
-				return true;
-			}
-
-			var descriptionAttribute = enumValue.GetAttributeOfType<DescriptionAttribute>();
-			if (descriptionAttribute != null)
-			{
-				stringValue = descriptionAttribute.Description;
-				return true;
-			}
-
-			stringValue = null;
-			return false;
-		}
+			where T : Enum => ZoomNet.Json.StringEnumConverter<T>.TryConvert(enumValue, out stringValue, throwWhenUndefined);
 
 		/// <summary>Parses a string into its corresponding enum value.</summary>
 		/// <typeparam name="T">The enum type.</typeparam>
 		/// <param name="str">The string value.</param>
 		/// <returns>The enum representation of the string value.</returns>
-		/// <remarks>Inspired by: https://stackoverflow.com/questions/10418651/using-enummemberattribute-and-doing-automatic-string-conversions .</remarks>
 		internal static T ToEnum<T>(this string str)
-			where T : Enum
-		{
-			if (str.TryToEnum(out T enumValue)) return enumValue;
-
-			throw new ArgumentException($"There is no value in the {typeof(T).Name} enum that corresponds to '{str}'.");
-		}
+			where T : Enum => ZoomNet.Json.StringEnumConverter<T>.Convert(str);
 
 		internal static bool TryToEnum<T>(this string str, out T enumValue)
-			where T : Enum
-		{
-			var enumType = typeof(T);
-			foreach (var name in Enum.GetNames(enumType))
-			{
-				var customAttributes = enumType.GetField(name).GetCustomAttributes(true);
-
-				// See if there's a matching 'MultipleValuesEnumMember' attribute
-				if (customAttributes.OfType<MultipleValuesEnumMemberAttribute>().Any(attribute => string.Equals(attribute.DefaultValue, str, StringComparison.OrdinalIgnoreCase) ||
-					(attribute.OtherValues ?? Array.Empty<string>()).Any(otherValue => string.Equals(otherValue, str, StringComparison.OrdinalIgnoreCase))))
-				{
-					enumValue = (T)Enum.Parse(enumType, name);
-					return true;
-				}
-
-				// See if there's a matching 'EnumMember' attribute
-				if (customAttributes.OfType<EnumMemberAttribute>().Any(attribute => string.Equals(attribute.Value, str, StringComparison.OrdinalIgnoreCase)))
-				{
-					enumValue = (T)Enum.Parse(enumType, name);
-					return true;
-				}
-
-				// See if there's a matching 'JsonPropertyName' attribute
-				if (customAttributes.OfType<JsonPropertyNameAttribute>().Any(attribute => string.Equals(attribute.Name, str, StringComparison.OrdinalIgnoreCase)))
-				{
-					enumValue = (T)Enum.Parse(enumType, name);
-					return true;
-				}
-
-				// See if there's a matching 'Description' attribute
-				if (customAttributes.OfType<DescriptionAttribute>().Any(attribute => string.Equals(attribute.Description, str, StringComparison.OrdinalIgnoreCase)))
-				{
-					enumValue = (T)Enum.Parse(enumType, name);
-					return true;
-				}
-
-				// See if the value matches the name
-				if (string.Equals(name, str, StringComparison.OrdinalIgnoreCase))
-				{
-					enumValue = (T)Enum.Parse(enumType, name);
-					return true;
-				}
-
-				// In the rare scenario where the numerical value is returned from the API as a string.
-				// In other words, an integer value like 1 for example is returned as the string "1".
-				if (int.TryParse(str, out int numberValue))
-				{
-					enumValue = (T)Enum.ToObject(enumType, numberValue);
-					return true;
-				}
-			}
-
-			enumValue = default;
-			return false;
-		}
+			where T : Enum => ZoomNet.Json.StringEnumConverter<T>.TryConvert(str, out enumValue);
 
 		internal static T ToObject<T>(this JsonElement element, JsonSerializerOptions options = null)
 		{
@@ -1053,12 +956,7 @@ namespace ZoomNet
 		{
 			if (value is IEnumerable<T> items)
 			{
-				var jsonArray = new JsonArray();
-				foreach (var item in items)
-				{
-					jsonArray.Add(item);
-				}
-
+				var jsonArray = new JsonArray(items.Select(item => JsonValue.Create(item)).ToArray());
 				jsonObject.Add(propertyName, jsonArray);
 			}
 			else
@@ -1233,7 +1131,7 @@ namespace ZoomNet
 				PageCount = pageCount,
 				PageNumber = pageNumber,
 				RecordsPerPage = recordsPerPage,
-				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()) ?? Array.Empty<T>()
+				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : []) ?? []
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
@@ -1271,7 +1169,7 @@ namespace ZoomNet
 			{
 				NextPageToken = nextPageToken,
 				RecordsPerPage = recordsPerPage,
-				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()) ?? Array.Empty<T>()
+				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : []) ?? []
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
@@ -1313,7 +1211,7 @@ namespace ZoomNet
 				To = to,
 				NextPageToken = nextPageToken,
 				RecordsPerPage = recordsPerPage,
-				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()) ?? Array.Empty<T>()
+				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : []) ?? []
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
@@ -1340,7 +1238,7 @@ namespace ZoomNet
 			var result = new PaginatedSyncResponse<T>()
 			{
 				SyncToken = syncToken,
-				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()) ?? Array.Empty<T>()
+				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : []) ?? []
 			};
 
 			return result;
@@ -1388,7 +1286,7 @@ namespace ZoomNet
 					.GetMethod(nameof(GetElementValue), BindingFlags.Static | BindingFlags.NonPublic)
 					.MakeGenericMethod(underlyingType);
 
-				return (T)getElementValue.Invoke(null, new object[] { property.Value });
+				return (T)getElementValue.Invoke(null, [property.Value]);
 			}
 
 			if (typeOfT.IsArray)
@@ -1400,14 +1298,17 @@ namespace ZoomNet
 					.GetMethod(nameof(GetElementValue), BindingFlags.Static | BindingFlags.NonPublic)
 					.MakeGenericMethod(elementType);
 
-				var arrayList = new ArrayList(property.Value.GetArrayLength());
-				foreach (var arrayElement in property.Value.EnumerateArray())
+				var elementValues = property.Value.EnumerateArray()
+					.Select(arrayElement => getElementValue.Invoke(null, [arrayElement]))
+					.ToArray();
+
+				var resultArray = Array.CreateInstance(elementType, elementValues.Length);
+				for (int i = 0; i < elementValues.Length; i++)
 				{
-					var elementValue = getElementValue.Invoke(null, new object[] { arrayElement });
-					arrayList.Add(elementValue);
+					resultArray.SetValue(elementValues[i], i);
 				}
 
-				return (T)Convert.ChangeType(arrayList.ToArray(elementType), typeof(T));
+				return (T)Convert.ChangeType(resultArray, typeof(T));
 			}
 
 			return property.Value.GetElementValue<T>();

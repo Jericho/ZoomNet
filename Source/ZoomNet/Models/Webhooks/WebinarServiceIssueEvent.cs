@@ -11,9 +11,7 @@ namespace ZoomNet.Models.Webhooks
 	/// </summary>
 	public class WebinarServiceIssueEvent : WebinarInfoEvent
 	{
-		/// <summary>
-		/// Gets or sets the issues that occurred during the webinar.
-		/// </summary>
+		/// <summary>Gets or sets the issues that occurred during the webinar.</summary>
 		public string[] Issues { get; set; }
 	}
 }

@@ -23,7 +23,7 @@ namespace ZoomNet.Json
 					return reader.GetDateTime();
 
 				default:
-					throw new JsonException($"Unable to convert {reader.TokenType.ToEnumString()} to DateTime");
+					throw new JsonException($"Unable to convert {reader.TokenType.ToString()} to DateTime");
 			}
 		}
 

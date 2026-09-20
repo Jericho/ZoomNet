@@ -2,9 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// A recurring event.
-	/// </summary>
+	/// <summary>A recurring event.</summary>
 	/// <seealso cref="ZoomNet.Models.Event" />
 	public class RecurringEvent : Event
 	{

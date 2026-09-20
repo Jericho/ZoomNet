@@ -2,9 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// TSP user settings.
-	/// </summary>
+	/// <summary>TSP user settings.</summary>
 	public class TspUserSettings
 	{
 		/// <summary>Gets or sets a value indicating whether call out or not.</summary>

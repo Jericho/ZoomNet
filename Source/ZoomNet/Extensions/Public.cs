@@ -72,7 +72,7 @@ namespace ZoomNet
 		/// </returns>
 		public static Task AddAssistantByIdAsync(this IUsers usersResource, string userId, string assistantId, CancellationToken cancellationToken = default)
 		{
-			return usersResource.AddAssistantsByIdAsync(userId, new[] { assistantId }, cancellationToken);
+			return usersResource.AddAssistantsByIdAsync(userId, [assistantId], cancellationToken);
 		}
 
 		/// <summary>
@@ -87,7 +87,7 @@ namespace ZoomNet
 		/// </returns>
 		public static Task AddAssistantByEmailAsync(this IUsers usersResource, string userId, string assistantEmail, CancellationToken cancellationToken = default)
 		{
-			return usersResource.AddAssistantsByIdAsync(userId, new[] { assistantEmail }, cancellationToken);
+			return usersResource.AddAssistantsByIdAsync(userId, [assistantEmail], cancellationToken);
 		}
 
 		/// <summary>
@@ -429,7 +429,7 @@ namespace ZoomNet
 		/// </returns>
 		public static Task InviteParticipantByEmailAsync(this IMeetings meetingsResource, long meetingId, string emailAddress, CancellationToken cancellationToken = default)
 		{
-			return meetingsResource.InviteParticipantsByEmailAsync(meetingId, new[] { emailAddress }, cancellationToken);
+			return meetingsResource.InviteParticipantsByEmailAsync(meetingId, [emailAddress], cancellationToken);
 		}
 
 		/// <summary>
@@ -444,7 +444,7 @@ namespace ZoomNet
 		/// </returns>
 		public static Task InviteParticipantByIdAsync(this IMeetings meetingsResource, long meetingId, string userId, CancellationToken cancellationToken = default)
 		{
-			return meetingsResource.InviteParticipantsByIdAsync(meetingId, new[] { userId }, cancellationToken);
+			return meetingsResource.InviteParticipantsByIdAsync(meetingId, [userId], cancellationToken);
 		}
 
 		/// <summary>
@@ -495,7 +495,7 @@ namespace ZoomNet
 		/// <returns>The ID of the added user.</returns>
 		public static async Task<string> AddMemberByEmailAsync(this IGroups groupsResource, string groupId, string emailAddress, CancellationToken cancellationToken = default)
 		{
-			var result = await groupsResource.AddMembersByEmailAsync(groupId, new[] { emailAddress }, cancellationToken).ConfigureAwait(false);
+			var result = await groupsResource.AddMembersByEmailAsync(groupId, [emailAddress], cancellationToken).ConfigureAwait(false);
 
 			// We added a single member to a group therefore the array returned from the Zoom API contains a single element
 			return result.Single();
@@ -511,7 +511,7 @@ namespace ZoomNet
 		/// <returns>The ID of the added user.</returns>
 		public static async Task<string> AddMemberByIdAsync(this IGroups groupsResource, string groupId, string userId, CancellationToken cancellationToken = default)
 		{
-			var result = await groupsResource.AddMembersByIdAsync(groupId, new[] { userId }, cancellationToken).ConfigureAwait(false);
+			var result = await groupsResource.AddMembersByIdAsync(groupId, [userId], cancellationToken).ConfigureAwait(false);
 
 			// We added a single member to a group therefore the array returned from the Zoom API contains a single element
 			return result.Single();
@@ -527,7 +527,7 @@ namespace ZoomNet
 		/// <returns>The ID of the added user.</returns>
 		public static async Task<string> AddAdministratorByEmailAsync(this IGroups groupsResource, string groupId, string emailAddress, CancellationToken cancellationToken = default)
 		{
-			var result = await groupsResource.AddAdministratorsByEmailAsync(groupId, new[] { emailAddress }, cancellationToken).ConfigureAwait(false);
+			var result = await groupsResource.AddAdministratorsByEmailAsync(groupId, [emailAddress], cancellationToken).ConfigureAwait(false);
 
 			// We added a single member to a group therefore the array returned from the Zoom API contains a single element
 			return result.Single();
@@ -543,7 +543,7 @@ namespace ZoomNet
 		/// <returns>The ID of the added user.</returns>
 		public static async Task<string> AddAdministratorByIdAsync(this IGroups groupsResource, string groupId, string userId, CancellationToken cancellationToken = default)
 		{
-			var result = await groupsResource.AddAdministratorsByIdAsync(groupId, new[] { userId }, cancellationToken).ConfigureAwait(false);
+			var result = await groupsResource.AddAdministratorsByIdAsync(groupId, [userId], cancellationToken).ConfigureAwait(false);
 
 			// We added a single member to a group therefore the array returned from the Zoom API contains a single element
 			return result.Single();
@@ -563,7 +563,7 @@ namespace ZoomNet
 		/// </remarks>
 		public static bool HasPermission(this IZoomClient client, string scope)
 		{
-			return client.HasPermissions(new[] { scope });
+			return client.HasPermissions([scope]);
 		}
 
 		/// <summary>
@@ -613,7 +613,7 @@ namespace ZoomNet
 		/// <returns>The async task.</returns>
 		public static Task DeleteVirtualBackgroundAsync(this IGroups groupsResource, string groupId, string fileId, CancellationToken cancellationToken = default)
 		{
-			return groupsResource.DeleteVirtualBackgroundsAsync(groupId, new[] { fileId }, cancellationToken);
+			return groupsResource.DeleteVirtualBackgroundsAsync(groupId, [fileId], cancellationToken);
 		}
 
 		/// <summary>
@@ -626,7 +626,7 @@ namespace ZoomNet
 		/// <returns>The async task.</returns>
 		public static Task AssignTagToRoom(this IRooms roomsResource, string roomId, string tagId, CancellationToken cancellationToken = default)
 		{
-			return roomsResource.AssignTagsToRoom(roomId, new[] { tagId }, cancellationToken);
+			return roomsResource.AssignTagsToRoom(roomId, [tagId], cancellationToken);
 		}
 
 		/// <summary>
@@ -639,7 +639,7 @@ namespace ZoomNet
 		/// <returns>The async task.</returns>
 		public static Task AssignTagToRoomsInLocation(this IRooms roomsResource, string locationId, string tagId, CancellationToken cancellationToken = default)
 		{
-			return roomsResource.AssignTagsToRoomsInLocation(locationId, new[] { tagId }, cancellationToken);
+			return roomsResource.AssignTagsToRoomsInLocation(locationId, [tagId], cancellationToken);
 		}
 
 		/// <summary>
@@ -652,7 +652,7 @@ namespace ZoomNet
 		/// <returns>A task that represents the asynchronous operation.</returns>
 		public static Task DisplayEmergencyContentToAccountAsync(this IRooms roomsResource, string content, string accountId, CancellationToken cancellationToken = default)
 		{
-			return roomsResource.DisplayEmergencyContentToAccountsAsync(content, new[] { accountId }, cancellationToken);
+			return roomsResource.DisplayEmergencyContentToAccountsAsync(content, [accountId], cancellationToken);
 		}
 
 		/// <summary>
@@ -665,7 +665,7 @@ namespace ZoomNet
 		/// <returns>A task that represents the asynchronous operation.</returns>
 		public static Task DisplayEmergencyContentToLocationAsync(this IRooms roomsResource, string content, string locationId, CancellationToken cancellationToken = default)
 		{
-			return roomsResource.DisplayEmergencyContentToLocationsAsync(content, new[] { locationId }, cancellationToken);
+			return roomsResource.DisplayEmergencyContentToLocationsAsync(content, [locationId], cancellationToken);
 		}
 
 		/// <summary>
@@ -678,7 +678,7 @@ namespace ZoomNet
 		/// <returns>A task that represents the asynchronous operation.</returns>
 		public static Task DisplayEmergencyContentToRoomAsync(this IRooms roomsResource, string content, string roomId, CancellationToken cancellationToken = default)
 		{
-			return roomsResource.DisplayEmergencyContentToRoomsAsync(content, new[] { roomId }, cancellationToken);
+			return roomsResource.DisplayEmergencyContentToRoomsAsync(content, [roomId], cancellationToken);
 		}
 
 		/// <summary>
@@ -690,7 +690,7 @@ namespace ZoomNet
 		/// <returns>A task that represents the asynchronous operation.</returns>
 		public static Task RemoveEmergencyContentFromAccountAsync(this IRooms roomsResource, string accountId, CancellationToken cancellationToken = default)
 		{
-			return roomsResource.RemoveEmergencyContentFromAccountsAsync(new[] { accountId }, cancellationToken);
+			return roomsResource.RemoveEmergencyContentFromAccountsAsync([accountId], cancellationToken);
 		}
 
 		/// <summary>
@@ -702,7 +702,7 @@ namespace ZoomNet
 		/// <returns>A task that represents the asynchronous operation.</returns>
 		public static Task RemoveEmergencyContentFromLocationAsync(this IRooms roomsResource, string locationId, CancellationToken cancellationToken = default)
 		{
-			return roomsResource.RemoveEmergencyContentFromLocationsAsync(new[] { locationId }, cancellationToken);
+			return roomsResource.RemoveEmergencyContentFromLocationsAsync([locationId], cancellationToken);
 		}
 
 		/// <summary>
@@ -714,7 +714,7 @@ namespace ZoomNet
 		/// <returns>A task that represents the asynchronous operation.</returns>
 		public static Task RemoveEmergencyContentFromRoomAsync(this IRooms roomsResource, string roomId, CancellationToken cancellationToken = default)
 		{
-			return roomsResource.RemoveEmergencyContentFromRoomsAsync(new[] { roomId }, cancellationToken);
+			return roomsResource.RemoveEmergencyContentFromRoomsAsync([roomId], cancellationToken);
 		}
 
 		/// <summary>
@@ -759,7 +759,7 @@ namespace ZoomNet
 				CustomQuestions = customQuestions?.ToArray()
 			};
 
-			var result = await eventsResource.CreateTicketsAsync(eventId, new[] { ticket }, source, cancellationToken).ConfigureAwait(false);
+			var result = await eventsResource.CreateTicketsAsync(eventId, [ticket], source, cancellationToken).ConfigureAwait(false);
 
 			return (result.Tickets.FirstOrDefault(), result.Errors.FirstOrDefault());
 		}
@@ -797,7 +797,7 @@ namespace ZoomNet
 		{
 			var httpClientBuilder = services
 				.AddHttpClient(httpClientName)
-				.RemoveAllLoggers() // No need for the built-in HttlClient logger(s). We rely on ZoomNet's custom logger instead.
+				.RemoveAllLoggers() // No need for the built-in HttpClient logger(s). We rely on ZoomNet's custom logger instead.
 				.ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler()
 				{
 					Proxy = proxy,
@@ -852,7 +852,7 @@ namespace ZoomNet
 		{
 			var httpClientBuilder = services
 				.AddHttpClient(httpClientName)
-				.RemoveAllLoggers() // No need for the built-in HttlClient logger(s). We rely on ZoomNet's custom logger instead.
+				.RemoveAllLoggers() // No need for the built-in HttpClient logger(s). We rely on ZoomNet's custom logger instead.
 				.ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler()
 				{
 					Proxy = proxy,
@@ -957,7 +957,7 @@ namespace ZoomNet
 		/// <returns>The async task.</returns>
 		public static Task ArchiveChannelAsync(this IChat chatResource, string channelId, CancellationToken cancellationToken = default)
 		{
-			return chatResource.ArchiveChannelsAsync(new[] { channelId }, cancellationToken);
+			return chatResource.ArchiveChannelsAsync([channelId], cancellationToken);
 		}
 
 		/// <summary>
@@ -969,7 +969,7 @@ namespace ZoomNet
 		/// <returns>The async task.</returns>
 		public static Task UnarchiveChannelsAsync(this IChat chatResource, string channelId, CancellationToken cancellationToken = default)
 		{
-			return chatResource.UnarchiveChannelsAsync(new[] { channelId }, cancellationToken);
+			return chatResource.UnarchiveChannelsAsync([channelId], cancellationToken);
 		}
 	}
 }

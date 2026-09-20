@@ -3,9 +3,7 @@ using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the range of employee count associated with an organization.
-	/// </summary>
+	/// <summary>Enumeration to indicate the range of employee count associated with an organization.</summary>
 	public enum BillingEmployeeCount
 	{
 		/// <summary>One.</summary>

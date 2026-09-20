@@ -40,7 +40,7 @@ namespace ZoomNet.Json
 
 		public override DayOfWeek Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 		{
-			if (reader.TokenType != JsonTokenType.Number) throw new JsonException($"Unable to convert {reader.TokenType.ToEnumString()} to DayOfWeek");
+			if (reader.TokenType != JsonTokenType.Number) throw new JsonException($"Unable to convert {reader.TokenType.ToString()} to DayOfWeek");
 			return FromJsonValue(reader.GetInt32());
 		}
 

@@ -2,7 +2,6 @@ using Pathoschild.Http.Client;
 using Shouldly;
 using System;
 using System.Diagnostics;
-using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using Xunit;
