@@ -101,7 +101,7 @@ namespace ZoomNet.Benchmark
 			var enumMember = customAttributes.OfType<EnumMemberAttribute>().FirstOrDefault();
 			if (enumMember != null)
 			{
-				return enumMember.Value;
+				return enumMember.Value ?? string.Empty;
 			}
 
 			var jsonProp = customAttributes.OfType<JsonPropertyNameAttribute>().FirstOrDefault();
