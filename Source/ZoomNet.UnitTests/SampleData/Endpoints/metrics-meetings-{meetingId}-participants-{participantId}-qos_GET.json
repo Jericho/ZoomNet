@@ -184,6 +184,30 @@
         "avg_rssi": -69,
         "min_rssi": -35,
         "rssi_unit": "dBm"
+      },
+      "audio_socket_break": {
+        "socket_break": true,
+        "socket_break_time": "2026-04-20T01:50:42.0000000\u002B00:00",
+        "socket_recover": false,
+        "socket_recover_time": "2026-04-20T01:50:42.0000000\u002B00:00"
+      },
+      "video_socket_break": {
+        "socket_break": true,
+        "socket_break_time": "2026-04-20T01:50:42.0000000\u002B00:00",
+        "socket_recover": false,
+        "socket_recover_time": "2026-04-20T01:50:42.0000000\u002B00:00"
+      },
+      "as_socket_break": {
+        "socket_break": true,
+        "socket_break_time": "2026-04-20T01:50:42.0000000\u002B00:00",
+        "socket_recover": false,
+        "socket_recover_time": "2026-04-20T01:50:42.0000000\u002B00:00"
+      },
+      "command_socket_break": {
+        "socket_break": true,
+        "socket_break_time": "2026-04-20T01:50:42.0000000\u002B00:00",
+        "socket_recover": false,
+        "socket_recover_time": "2026-04-20T01:50:42.0000000\u002B00:00"
       }
     }
   ],
@@ -217,5 +241,8 @@
   "email": "jchill@example.com",
   "issue_list": [
     "audio"
-  ]
+  ],
+  "rc_reason": "Client crash",
+  "vdi_plugin_info_status": "Local",
+  "vdi_plugin_info_fb_code_reason": "None (no error)"
 }

@@ -19,6 +19,7 @@
   "department": "department_pbx",
   "display_name": "test_ca",
   "extension_number": 100012347,
+  "default_transcription_language": "en-US",
   "emergency_address": {
     "address_line1": "55 Almaden Blvd",
     "address_line2": "6th floor",

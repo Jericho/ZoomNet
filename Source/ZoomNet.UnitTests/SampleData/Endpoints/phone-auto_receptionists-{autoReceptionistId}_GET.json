@@ -6,6 +6,7 @@
   "name": "JamieAuto",
   "timezone": "Pacific/Midway",
   "audio_prompt_language": "en-US",
+  "default_transcription_language": "en-US",
   "holiday_hours": [
     {
       "id": "i3gP6xFUTHqSFrIE6nHs7Q",

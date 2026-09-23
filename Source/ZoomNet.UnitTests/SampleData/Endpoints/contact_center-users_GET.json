@@ -1,13 +1,14 @@
 {
   "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
   "page_size": 30,
-  "total_records": 1,
+  "total_records": 10,
   "users": [
     {
       "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
-      "display_name": "Jill",
-      "user_email": "jchill@example.com",
-      "role_id": "27302393-4784-11ec-a3cd-122e3e29bb87",
+      "cc_user_id": "hKuMAiDdRlSwMkBxR5we7g",
+      "display_name": "Jane Doe",
+      "user_email": "jdoe@example.com",
+      "role_id": "0TFVsJqNS82CwkQJLqj1zA",
       "role_name": "Admin",
       "client_integration": "Salesforce",
       "status_id": "2",
@@ -15,8 +16,8 @@
       "sub_status_id": "21",
       "sub_status_name": "Meal",
       "user_access": "active",
-      "modified_by": "27302393-4784-11ec-a3cd-122e3e29bb87",
-      "last_modified_time": "2020-02-10T21:39:50.0000000\u002B00:00",
+      "modified_by": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "last_modified_time": "2022-02-15T09:27:15.0000000\u002B00:00",
       "country_iso_code": "US",
       "region_id": "8f71O6rWT8KFUGQmJIFAdQ",
       "region_name": "Main Region",
@@ -32,7 +33,17 @@
       "package_name": "essentials",
       "add_ons_plan": [
         "ai_expert_assist"
-      ]
+      ],
+      "teams": [
+        {
+          "team_id": "qlU902FoTD-dFi9QnCdZhw",
+          "team_name": "Support Team"
+        }
+      ],
+      "billing_account_id": "PEKovuAEQBu5dpeqmxwW1Q",
+      "billing_account_name": "main billing account"
     }
-  ]
+  ],
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA"
 }

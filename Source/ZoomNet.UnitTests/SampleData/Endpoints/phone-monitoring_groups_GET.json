@@ -13,7 +13,11 @@
         "id": "8f71O6rWT8KFUGQmJIFAdQ",
         "name": "Main Site"
       },
-      "type": 1
+      "type": 1,
+      "allow_monitored_peer_monitoring": true,
+      "monitored_privileges": [
+        "listen"
+      ]
     }
   ],
   "next_page_token": "ICF5K4lVmGG4kyIyGxSfBU2LH4QQG95cn32",

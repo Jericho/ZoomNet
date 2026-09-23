@@ -49,6 +49,7 @@
   },
   "timezone": "Pacific/Midway",
   "audio_prompt_language": "en-US",
+  "default_transcription_language": "en-US",
   "recording_storage_location": "US",
   "own_storage_name": "us-oracle-storage"
 }

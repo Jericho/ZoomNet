@@ -8,7 +8,13 @@
       "pinned_time": "2020-02-10T21:39:50Z",
       "currently_pinned": false,
       "message": "hello, world!",
-      "pinned_by_external_user": false
+      "pinned_by_external_user": false,
+      "encryption_info": {
+        "key_id": "ZXhhbXBsZS1rZXktaWQ=",
+        "encrypt_context": "MTAwMSMjI0NTRTpUZWFtQ2hhdDpFeHRlcm5hbCMjIzcyYTdjOWI1YjFmNDQ1YjM4YWE5NWY0YzU2ODk3NTFjQGNvbmZlcmVuY2UueG1wcGRldi56b29tLnVz",
+        "encrypt_content": "DPOGczEf1FKiIHmcuwAAAwAAABOU5fzpb5Hn8s6t9vzu3yC\u002Bdy4=",
+        "encryption_algorithm": "AES-GCM-256"
+      }
     }
   ],
   "next_page_token": "1707034615202",

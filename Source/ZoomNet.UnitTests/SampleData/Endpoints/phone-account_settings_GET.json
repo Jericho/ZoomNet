@@ -460,6 +460,20 @@
     "locked": false,
     "locked_by": "account"
   },
+  "call_summary": {
+    "enable": true,
+    "locked_by": "account",
+    "locked": true,
+    "auto_call_summary": true,
+    "call_summary_access_from_client_and_web": true,
+    "call_summary_access_from_email": true,
+    "call_summary_view_only": false,
+    "call_summary_start_prompt": {
+      "enable": true,
+      "audio_id": "yCT14TwySDGVUypVlKNEyA",
+      "audio_name": "example.mp3"
+    }
+  },
   "customize_line_name": {
     "enable": false,
     "locked": false,
@@ -474,10 +488,25 @@
     "display_frequency": "first_time_only",
     "custom_disclaimer_list": [
       {
-        "language": "en-GB",
+        "language": "en",
         "title": "tilte",
-        "body": "body"
+        "body": "body",
+        "default": true
       }
     ]
+  },
+  "manage_call_routing_for_unassigned_numbers": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "account",
+    "incoming_call_action": "disconnect",
+    "incoming_call_routing_setting": {
+      "audio_id": "yCT14TwySDGVUypVlKNEyA",
+      "audio_name": "routing-message.mp3",
+      "forward_extension_id": "jN9mb38lQTaMgxUq3Nd6ow",
+      "forward_extension_type": "user",
+      "forward_extension_name": "user A",
+      "forward_extension_number": 101014
+    }
   }
 }

@@ -26,5 +26,7 @@
   "use_in_external_url_parameters": true,
   "client_show_in_client_profile_section": true,
   "client_show_in_client_engagement_section": true,
-  "client_show_in_inbound_call_notifications": true
+  "client_show_in_inbound_call_notifications": true,
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
 }

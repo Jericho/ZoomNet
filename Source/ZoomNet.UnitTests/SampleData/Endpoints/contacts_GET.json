@@ -31,7 +31,8 @@
       "user_status": "active",
       "activity": "Active",
       "sip_phone_number": "11111111",
-      "sip_uri": "example.com"
+      "sip_uri": "example.com",
+      "pronoun": "She"
     }
   ],
   "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",

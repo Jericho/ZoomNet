@@ -2,8 +2,14 @@
   "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
   "page_size": 30,
   "total_records": 10,
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
   "from": "2021-12-10T00:00:00Z",
   "to": "2021-12-10T00:00:00Z",
+  "enter_time_from": "2021-12-10T00:00:00Z",
+  "enter_time_to": "2021-12-10T00:00:00Z",
+  "exit_time_from": "2021-12-10T00:00:00Z",
+  "exit_time_to": "2021-12-10T00:00:00Z",
   "timezone": "America/Los_Angeles",
   "flows": [
     {
@@ -16,6 +22,7 @@
       "enter_channel_source": "in_app_chat",
       "entry_point": "\u002B12345678",
       "engagement_id": "reRAiabVQSqpXxJVDbsy2Q",
+      "direction": "inbound",
       "flow_offered_count": 1,
       "flow_upgraded_count": 1,
       "offerred_to_queue_count": 1,
@@ -29,7 +36,12 @@
       "first_offered_queue_duration": 123,
       "duration_to_first_handled_queue": 213,
       "duration_to_first_offered_agent": 123,
-      "duration_to_first_handled_agent": 123
+      "duration_to_first_handled_agent": 123,
+      "destination": "Route to Sales Queue",
+      "dnis_to": "\u002B12095551212",
+      "ani_from": "\u002B19135551212",
+      "flow_widget_path": "Start,SendMedia,SetVariables,SendMedia,RouteTo",
+      "flow_execution_id": "ZBTRulkDRTaZUeH2nlxDeg"
     }
   ]
 }

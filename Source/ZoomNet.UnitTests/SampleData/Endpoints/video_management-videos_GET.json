@@ -5,6 +5,9 @@
     {
       "video_id": "csduzfv3JwTeyR5QpC3PXw52",
       "video_name": "My Recording1",
+      "description": "Updated description text.",
+      "external_id": "legacy_vid_789",
+      "notes": "This video contains onboarding information.",
       "play_link": "https://abc/recording/unehd6TtTLuTN40owCOqqK",
       "duration": 3000,
       "video_status": "COMPLETED",

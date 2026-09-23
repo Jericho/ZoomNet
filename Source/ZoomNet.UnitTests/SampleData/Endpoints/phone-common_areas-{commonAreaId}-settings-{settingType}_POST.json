@@ -14,5 +14,13 @@
         "to": "2022-03-06T00:00:00Z"
       }
     ]
+  },
+  "break_hours": {
+    "break_hour_settings": [
+      {
+        "break_hour_id": "R4GeDFaLTpeQb1jPDCuPhA",
+        "break_hour_name": "Lunch Break"
+      }
+    ]
   }
 }

@@ -16,6 +16,10 @@
       "message_ids": "4c59ed1d-439a-4e0d-a31f-0c130946f10b",
       "number_of_message_in_thread": 10,
       "conversation_id": "egLSRuj2SlWet\u002BwLi87LNA==,1667893163000",
+      "summary": "Send revised pricing proposal by Friday",
+      "next_steps": [
+        "Send revised pricing sheet"
+      ],
       "duration": 0
     }
   ]

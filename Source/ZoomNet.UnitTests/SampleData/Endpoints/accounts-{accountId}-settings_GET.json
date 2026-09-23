@@ -25,7 +25,11 @@
       "consecutive_characters_length": 8,
       "have_special_character": true,
       "minimum_password_length": 8,
-      "weak_enhance_detection": false
+      "weak_enhance_detection": false,
+      "first_login_rule": true,
+      "former_rule": 5,
+      "change_rule": 3,
+      "expired_rule": 90
     },
     "sign_again_period_for_inactivity_on_client": 5,
     "sign_again_period_for_inactivity_on_web": 10,
@@ -35,7 +39,75 @@
     ],
     "sign_in_with_two_factor_auth_roles": [
       "role"
-    ]
+    ],
+    "sign_in_with_google": {
+      "enable_sign_in_with_google": true,
+      "force_google_login": true,
+      "google_login_domains": [
+        "example.com"
+      ]
+    },
+    "otp_auth": true,
+    "enforce_logout_bypass_management": {
+      "allow_zr_stay_signed_in": true,
+      "allow_zpa_stay_signed_in": false
+    },
+    "hide_push_notification_content": true,
+    "support_clock_out": true,
+    "require_biometric_auth": true,
+    "block_screenshots": true,
+    "sign_in_with_work_email": true,
+    "sign_in_with_fb": false,
+    "sign_in_with_apple": true,
+    "sign_in_with_microsoft": true,
+    "sign_in_with_phone_number": {
+      "enable_sign_in_with_phone_number": true,
+      "sign_in_with_sms_code": true
+    },
+    "sign_in_with_passkey": true,
+    "sign_in_with_outlook": {
+      "enable_sign_in_with_outlook": true,
+      "zm_official_nested_app_auth": true,
+      "enable_custom_nested_app_auth": false,
+      "custom_nested_app_id": "00000000-0000-0000-0000-000000000000"
+    },
+    "only_mdm_mobile_can_sign_in": {
+      "enable_only_mdm_mobile_sign_in": true,
+      "only_mdm_mobile_can_sign_in_tag": "corporate"
+    },
+    "only_zoom_for_intune_app_can_sign_in": true,
+    "trusted_microsoft_tenant": "[\u0022123e4567-e89b-12d3-a456-426614174000\u0022]",
+    "multiple_resource_login": {
+      "enable_multiple_resource_login": true,
+      "multiple_resource_login_limit": 3
+    },
+    "automatic_sign_out": {
+      "enable_separated_sign_out_settings": true,
+      "email_or_phone": {
+        "desktop_client": 5184000,
+        "mobile_client": 5184000,
+        "web_browser": 5184000,
+        "zoom_scheduling_integration": 7776000
+      },
+      "sso": {
+        "desktop_client": 2592000,
+        "mobile_client": 2592000,
+        "web_browser": 2592000,
+        "zoom_scheduling_integration": 2592000
+      },
+      "social_oauth": {
+        "desktop_client": -1,
+        "mobile_client": -1,
+        "web_browser": 2592000,
+        "zoom_scheduling_integration": -1
+      }
+    },
+    "only_mdm_managed_devices_can_sign_in": {
+      "enable": true,
+      "only_mdm_managed_mobile_can_sign_in": true,
+      "only_mdm_managed_pc_can_sign_in": false,
+      "only_mdm_managed_devices_can_sign_in_tag": "corporate"
+    }
   },
   "audio_conferencing": {
     "toll_free_and_fee_based_toll_call": {
@@ -477,6 +549,226 @@
   "general_setting": {
     "auto_zoom_room_proximity_connect": true,
     "show_zoom_room_feature": true
+  },
+  "ai": {
+    "screen_share_ocr": true,
+    "meeting_chat_messages": true,
+    "full_display_names_in_ai_assets": true,
+    "ai_generated_virtual_backgrounds": true,
+    "meeting_agenda": true,
+    "meeting_summary_docs": {
+      "enable": true,
+      "share_with_summary_recipients": true
+    },
+    "phone_user_ai_notices": {
+      "enable": true,
+      "require_press_1_consent": true,
+      "multiple_notifications": true
+    },
+    "meeting_summary_retention": {
+      "enable": true,
+      "retention_days": 30
+    },
+    "meeting_summary_personal_data_redaction": {
+      "enable": true,
+      "personal_data_types": [
+        "NAME",
+        "EMAIL"
+      ]
+    },
+    "meeting_summary_sensitive_data_filter": {
+      "enable": true,
+      "rules": [
+        {
+          "name": "Employee ID",
+          "regular_expression": "[0-9]{6}"
+        }
+      ]
+    },
+    "meeting_coach": {
+      "enable": true,
+      "participant_scope": "participants_and_invitees_in_our_organization"
+    },
+    "third_party_meeting_join": {
+      "enable": true,
+      "allow_recording": true,
+      "calendar": {
+        "enable": true,
+        "join_scope": "all_events_with_video_conference_links"
+      },
+      "pre_meeting_email_notification": {
+        "enable": true,
+        "recipients": "all_invitees"
+      }
+    },
+    "whiteboard_content_generation": true,
+    "smart_recording": {
+      "create_recording_highlights": true,
+      "create_smart_chapters": true,
+      "create_next_steps": true
+    },
+    "clips_summarization_generation": {
+      "enable": true,
+      "general_summary": true,
+      "generation_chapter": true
+    },
+    "clips_create_video_with_aic": {
+      "enable": true,
+      "show_clips_with_avatar": true
+    },
+    "allow_user_create_customize_avatar": {
+      "enable": true,
+      "clips_custom_avatar_delegation": true
+    },
+    "task_creation_and_management": {
+      "enable": false,
+      "auto_generate_details": false,
+      "auto_generate_action": true,
+      "generate_from_transcripts": {
+        "enable": false,
+        "auto_share_with": "internal_participants",
+        "auto_assign_to_collaborator": true
+      },
+      "generate_from_phone_call": {
+        "enable": false,
+        "auto_add_participant_as_collaborator": true,
+        "auto_assign_to_collaborator": true
+      },
+      "generate_from_voicemail": false
+    },
+    "show_conversational_ai_companion": {
+      "enabled": true,
+      "enable_zoom_mate": true,
+      "delete_ai_conversation": true,
+      "delete_ai_conversation_time": 30
+    },
+    "ai_panel_in_workplace": {
+      "enabled": true,
+      "delete_ai_conversation": true,
+      "delete_ai_conversation_time": 30
+    },
+    "enable_ai_on_web": true,
+    "enable_email_compose_with_ai": true,
+    "microsoft_365": {
+      "enable": true,
+      "calendar_events": true,
+      "emails": true,
+      "documents": true
+    },
+    "google": {
+      "enable": true,
+      "calendar_events": true,
+      "emails": true,
+      "documents": true
+    },
+    "web_content": true,
+    "local_file_uploads": true,
+    "organization_custom_dictionaries": true,
+    "third_party_app_tasks": true,
+    "workspace_reservation_recommendations_with_ai": {
+      "enabled": true,
+      "day_recommendation": true,
+      "desk_recommendation": true,
+      "custom_workspaces_recommendation": true,
+      "room_recommendation": true,
+      "proactive_room_recommendation": true
+    },
+    "participant_can_request_aic_in_meeting": true,
+    "restrict_aic_when_external_user_join_meeting": true,
+    "restrict_users_from_joining_ai_enabled_meetings": {
+      "enable": true,
+      "join_notify": "notify_and_remove",
+      "apply_scope": "internal_and_external"
+    },
+    "meeting_questions": {
+      "enable": true,
+      "auto_enable": false,
+      "who_can_ask_questions": "org_from_join_meeting"
+    },
+    "meeting_summary": {
+      "enable": true,
+      "auto_enable": false,
+      "email_notification": true,
+      "whether_include_full_text_in_email": "include_full_text_in_email",
+      "restrict_share_to_outside_of_organization": true,
+      "restrict_summary_share": "external_users",
+      "who_will_receive_summary": "alt_host"
+    },
+    "meeting_summary_template": {
+      "enable": true,
+      "summary_template_id": "template_123"
+    },
+    "meeting_summary_default_language": {
+      "enable": true,
+      "language": "en"
+    },
+    "meeting_summary_ip_access": {
+      "enable": true,
+      "ip_addresses_or_ranges": "192.0.2.0/24"
+    },
+    "remind_me_turn_on_aic": true,
+    "remind_me_turn_on_catch_me_up": true,
+    "meeting_summary_email_only_mode": false,
+    "restrict_users_from_deleting_ai_companion_assets": true,
+    "restrict_users_from_editing_ai_companion_assets": true,
+    "webinar_summary_follow_up_email": true,
+    "webinar_summary_ocr": true,
+    "zoom_events_chat_panel": true,
+    "zoom_events_session_summary": {
+      "enable": true,
+      "auto_start": true
+    },
+    "zoom_events_analytics": true,
+    "zoom_events_chat_compose": true,
+    "zoom_events_email_compose": true,
+    "zoom_events_smart_compose": true,
+    "zoom_events_image_generation": true,
+    "zoom_events_smart_upload": true,
+    "zoom_events_content_generation": true,
+    "chat_summary": {
+      "enable": false,
+      "shown_in_team_chat": true
+    },
+    "chat_compose": {
+      "enable": false,
+      "shown_in_team_chat": true
+    },
+    "hub_ai_question_and_file_creation": true,
+    "canvas_ai_content_generation": true,
+    "canvas_ai_sentence_completion": true,
+    "canvas_ai_post_meeting_writing_tasks": true,
+    "paper_ai_content_generation": true,
+    "sheets_ai_content_generation": true,
+    "sheets_ai_formula": true,
+    "sheets_ai_function": true,
+    "sheets_ai_resources": true,
+    "slides_ai_content_generation": true,
+    "my_notes_meeting_transcription": true,
+    "my_notes_ai_content_generation": {
+      "enable": true,
+      "auto_generate_summary": true,
+      "auto_send_summary_email": true
+    },
+    "include_webinar_summary_follow_up_email": {
+      "enable": true,
+      "attendee_follow_up_email": true,
+      "absentee_follow_up_email": true
+    },
+    "zoom_events_content_studio": true,
+    "webinar_summary": {
+      "enable": true,
+      "auto_enable": false,
+      "email_notification": true,
+      "whether_include_full_text_in_email": "include_full_text_in_email",
+      "restrict_share_to_outside_of_organization": true,
+      "restrict_summary_share": "external_users",
+      "who_will_receive_summary": "host_and_panelist_in_organization"
+    },
+    "webinar_questions": {
+      "enable": true,
+      "auto_enable": false,
+      "who_can_ask_questions": "panelist_org"
+    }
   },
   "allow_authentication_exception": true,
   "authentication_options": [

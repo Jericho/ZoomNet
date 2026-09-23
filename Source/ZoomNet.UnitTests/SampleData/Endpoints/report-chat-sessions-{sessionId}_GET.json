@@ -59,7 +59,13 @@
             "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ"
           ]
         }
-      ]
+      ],
+      "encryption_info": {
+        "key_id": "ZXhhbXBsZS1rZXktaWQ=",
+        "encrypt_context": "MTAwMSMjI0NTRTpUZWFtQ2hhdDpFeHRlcm5hbCMjIzcyYTdjOWI1YjFmNDQ1YjM4YWE5NWY0YzU2ODk3NTFjQGNvbmZlcmVuY2UueG1wcGRldi56b29tLnVz",
+        "encrypt_content": "DPOGczEf1FKiIHmcuwAAAwAAABOU5fzpb5Hn8s6t9vzu3yC\u002Bdy4=",
+        "encryption_algorithm": "AES-GCM-256"
+      }
     }
   ],
   "edited_messages": [
@@ -97,7 +103,13 @@
           "format_type": "Paragraph",
           "format_attr": "h1"
         }
-      ]
+      ],
+      "encryption_info": {
+        "key_id": "ZXhhbXBsZS1rZXktaWQ=",
+        "encrypt_context": "MTAwMSMjI0NTRTpUZWFtQ2hhdDpFeHRlcm5hbCMjIzcyYTdjOWI1YjFmNDQ1YjM4YWE5NWY0YzU2ODk3NTFjQGNvbmZlcmVuY2UueG1wcGRldi56b29tLnVz",
+        "encrypt_content": "DPOGczEf1FKiIHmcuwAAAwAAABOU5fzpb5Hn8s6t9vzu3yC\u002Bdy4=",
+        "encryption_algorithm": "AES-GCM-256"
+      }
     }
   ],
   "from": "2022-03-17",
@@ -114,7 +126,8 @@
       ],
       "giphy_information": [
         {
-          "giphy_view_url": "https://giphy.com/gifs/union-soton-congrats-susu-soton-StRUIQttj1ewZVYZH2"
+          "giphy_view_url": "https://giphy.com/gifs/union-soton-congrats-susu-soton-StRUIQttj1ewZVYZH2",
+          "giphy_download_url": "https://media.giphy.com/media/TBzxTzdzRKZitQnhfx/giphy.gif"
         }
       ],
       "id": "7ba4d98b-0a6a-4fb4-a71b-dd13fd689dc8",
@@ -144,6 +157,15 @@
           ]
         }
       ],
+      "emoji_actions": [
+        {
+          "emoji": "U\u002B1F600",
+          "emoji_action": "remove",
+          "user_id": "v4iyWT1LTfy8QvPG4GTvdg",
+          "member_id": "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ",
+          "emoji_action_timestamp": 1775106992998
+        }
+      ],
       "receiver": "jchill@example.com",
       "is_sender_external": true,
       "reply_main_message_id": "{27ED2949-6457-417C-83EA-72515DAF00BD}",
@@ -167,7 +189,13 @@
           "format_type": "Paragraph",
           "format_attr": "h1"
         }
-      ]
+      ],
+      "encryption_info": {
+        "key_id": "ZXhhbXBsZS1rZXktaWQ=",
+        "encrypt_context": "MTAwMSMjI0NTRTpUZWFtQ2hhdDpFeHRlcm5hbCMjIzcyYTdjOWI1YjFmNDQ1YjM4YWE5NWY0YzU2ODk3NTFjQGNvbmZlcmVuY2UueG1wcGRldi56b29tLnVz",
+        "encrypt_content": "DPOGczEf1FKiIHmcuwAAAwAAABOU5fzpb5Hn8s6t9vzu3yC\u002Bdy4=",
+        "encryption_algorithm": "AES-GCM-256"
+      }
     }
   ],
   "next_page_token": "b43YBRLJFg3V4vsSpxvGdKIGtNbxn9h9If2",

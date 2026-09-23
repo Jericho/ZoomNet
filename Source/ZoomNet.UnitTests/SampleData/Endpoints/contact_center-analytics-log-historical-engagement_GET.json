@@ -83,10 +83,15 @@
         }
       ],
       "transcript_url": "/v2/contact_center/engagements/transcripts/download/t0VAFD7FDkdfwHxlN40_w",
-      "survey_id": "sghewyDF73FDE"
+      "survey_id": "sghewyDF73FDE",
+      "aiea_used": "not_used",
+      "focus_duration": 10000,
+      "aiea_flagged": "flagged"
     }
   ],
   "page_size": 30,
   "total_records": 10,
-  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42"
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA"
 }

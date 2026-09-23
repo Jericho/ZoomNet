@@ -11,5 +11,9 @@
     "id": "8f71O6rWT8KFUGQmJIFAdQ",
     "name": "Main Site"
   },
-  "type": 1
+  "type": 1,
+  "allow_monitored_peer_monitoring": false,
+  "monitored_privileges": [
+    "listen"
+  ]
 }

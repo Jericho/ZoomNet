@@ -6,7 +6,7 @@
       "create_reference_id": "DRR-4834729",
       "deal_name": "New deal for Zoom Phone",
       "invoice_owner_crm_account_number": "A-4567",
-      "opportunity_stage": "Closed-Won",
+      "opportunity_stage": "closed-won",
       "submitted_date": "2023-10-25",
       "expected_closed_date": "2024-10-25",
       "estimated_mrr": 1000000,

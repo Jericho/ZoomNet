@@ -21,7 +21,11 @@
           "id": "DnEopNmXQEGU2uvvzjgojw",
           "type": "user"
         },
-        "phone_number": "18108001001"
+        "phone_number": "18108001001",
+        "operator_ext_number": "800",
+        "operator_ext_id": "NPdquedXS2KvlqGiYebeEg",
+        "operator_ext_type": "user",
+        "operator_name": "David"
       },
       "to_members": [
         {

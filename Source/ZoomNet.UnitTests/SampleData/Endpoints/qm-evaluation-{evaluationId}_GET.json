@@ -31,9 +31,12 @@
               "low_label": "Poor",
               "scale_max": 10,
               "scale_min": 1
-            }
+            },
+            "total_score": 10
           }
-        ]
+        ],
+        "score": 20,
+        "total_score": 30
       }
     ],
     "score": 90,
@@ -49,6 +52,7 @@
     "interaction_id": "yBe0fI6kTFG5IyThF8eRXg",
     "engagement_id": "e59gNVtjTuS--NjwquFKQA",
     "agent_name": "The agent\u0027s name.",
-    "agent_user_id": "The agent\u0027s ID."
+    "agent_user_id": "The agent\u0027s ID.",
+    "completion_date": "2026-03-16T10:45:00Z"
   }
 }

@@ -25,7 +25,12 @@
       "queue_id": "3e8E2PnWTcC9FrKNaDuOeA",
       "queue_name": "My Queue",
       "engagement_id": "XYV29VsfROOGUS_BbSXFpQ",
-      "direction": "inbound"
+      "direction": "inbound",
+      "disposition_time": "2025-05-26T16:30:08Z",
+      "current_disposition_id": "disp_001",
+      "disposition_count": 1
     }
-  ]
+  ],
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA"
 }

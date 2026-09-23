@@ -16,5 +16,14 @@
   "contact_account_number": "111",
   "contact_company": "zoom",
   "contact_role": "developer",
-  "contact_timezone": "America/Los_Angeles"
+  "contact_timezone": "America/Los_Angeles",
+  "custom_fields": [
+    {
+      "custom_field_id": "suk0leXNTye2JjIm6v0yCQ",
+      "custom_field_value": "\u002B1-202-555-0147"
+    }
+  ],
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations",
+  "caller_id": "\u002B15555550100"
 }

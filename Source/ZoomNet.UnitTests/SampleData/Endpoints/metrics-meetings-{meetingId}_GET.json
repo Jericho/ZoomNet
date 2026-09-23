@@ -28,8 +28,10 @@
   "user_type": "Licensed",
   "uuid": "gaqOKVN9RAaDHKYWEcASXg==",
   "has_meeting_summary": true,
+  "has_aic_conversation": true,
   "has_poll": true,
   "has_qa": true,
   "has_survey": false,
-  "avg_jointime_cost": 3.98
+  "avg_jointime_cost": 3.98,
+  "has_external_participant": true
 }

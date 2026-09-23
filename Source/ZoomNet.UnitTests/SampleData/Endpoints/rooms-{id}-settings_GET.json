@@ -2,7 +2,13 @@
   "meeting_security": {
     "encryption_type": "e2ee",
     "end_to_end_encrypted_meetings": true,
-    "auto_security": true
+    "auto_security": true,
+    "waiting_room": true,
+    "meeting_password": true,
+    "require_password_for_scheduled_meeting": true,
+    "rmi_password": true,
+    "password_for_rmi": "true",
+    "phone_password": true
   },
   "zoom_rooms": {
     "allow_multiple_content_sharing": true,
@@ -98,7 +104,8 @@
     "sip_registration_re_enabled": true,
     "zoom_room_come_back_online": true,
     "zoom_room_display_disconnected": true,
-    "zoom_room_offline": true
+    "zoom_room_offline": true,
+    "zoom_room_calendar_resource_is_inaccessible": true
   },
   "scheduling_display": {
     "instant_room_reservation": true,

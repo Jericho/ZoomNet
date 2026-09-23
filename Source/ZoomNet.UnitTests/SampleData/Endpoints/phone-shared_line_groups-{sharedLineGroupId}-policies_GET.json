@@ -4,5 +4,66 @@
     "locked": true,
     "locked_by": "site",
     "modified": true
+  },
+  "voicemail_transcription": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "invalid",
+    "modified": true
+  },
+  "voicemail_notification_by_email": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "invalid",
+    "modified": false,
+    "include_voicemail_file": true,
+    "include_voicemail_transcription": true,
+    "forward_voicemail_to_email": true,
+    "forward_email_list": [
+      "vm-alerts@example.com"
+    ]
+  },
+  "shared_line_group_pickup_code": {
+    "enable": true
+  },
+  "online_fax": {
+    "enable": true,
+    "locked": true,
+    "locked_by": "site",
+    "modified": true,
+    "fax_notification_by_email": true,
+    "fax_notification_email_list": [
+      "vm-alerts@example.com"
+    ],
+    "include_fax_as_attachment": true,
+    "enable_outbound_fax_transmission_report": true
+  },
+  "call_screening": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "invalid",
+    "modified": false,
+    "exclude_user_company_contacts": false
+  },
+  "block_calls_without_caller_id": {
+    "enable": false,
+    "locked": false,
+    "locked_by": "invalid",
+    "modified": false
+  },
+  "auto_delete_data_after_retention_duration": {
+    "enable": false,
+    "locked": false,
+    "locked_by": "invalid",
+    "modified": false,
+    "items": [
+      {
+        "type": "callLog",
+        "duration": -1,
+        "time_unit": "day"
+      }
+    ],
+    "delete_type": 1,
+    "permanently_delete_after_days": -1
   }
 }

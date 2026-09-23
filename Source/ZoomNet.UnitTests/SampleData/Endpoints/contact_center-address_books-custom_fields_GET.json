@@ -1,7 +1,7 @@
 {
   "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
   "page_size": 30,
-  "total_records": 1,
+  "total_records": 10,
   "custom_fields": [
     {
       "custom_field_id": "7381d210 Contact Method",
@@ -24,5 +24,7 @@
       "show_in_inbound_notification": true,
       "show_in_profile_tab": false
     }
-  ]
+  ],
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
 }

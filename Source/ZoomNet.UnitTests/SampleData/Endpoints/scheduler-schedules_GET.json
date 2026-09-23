@@ -160,7 +160,8 @@
       "summary": "daily meeting",
       "schedule_type": "one",
       "updated": "2023-12-21T06:18:32.087Z",
-      "active": true
+      "active": true,
+      "created": "2023-12-21T06:18:32.087Z"
     }
   ]
 }

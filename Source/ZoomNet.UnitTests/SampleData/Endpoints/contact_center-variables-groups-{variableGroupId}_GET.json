@@ -3,5 +3,7 @@
   "variable_group_name": "Agent",
   "variable_group_description": "Agent\u0027s first custom group.",
   "variable_group_type": "system",
-  "variable_group_variables_count": 1
+  "variable_group_variables_count": 1,
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
 }

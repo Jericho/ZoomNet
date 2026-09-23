@@ -1,10 +1,13 @@
 {
   "supervisors": [
     {
-      "user_id": "ukAAkZKfROKMSw1bj_RDFQ",
-      "user_display_name": "Jill Chill",
-      "user_email": "jchill@example.com",
+      "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "cc_user_id": "hKuMAiDdRlSwMkBxR5we7g",
+      "user_display_name": "Jane Doe",
+      "user_email": "jdoe@example.com",
       "assigned_time": "2025-09-03T05:07:46.0000000\u002B00:00"
     }
-  ]
+  ],
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA"
 }

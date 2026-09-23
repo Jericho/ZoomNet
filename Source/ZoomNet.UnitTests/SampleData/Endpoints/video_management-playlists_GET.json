@@ -4,7 +4,12 @@
   "playlists": [
     {
       "playlist_id": "csduzfv3JwTeyR5QpC3PXw52",
-      "name": "My Playlist1"
+      "name": "My Playlist1",
+      "thumbnails": [
+        {
+          "file_url": "https://files.example.com/thumbnails/thumb123.jpg"
+        }
+      ]
     }
   ]
 }

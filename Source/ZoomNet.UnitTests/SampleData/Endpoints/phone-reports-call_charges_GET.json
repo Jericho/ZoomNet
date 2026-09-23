@@ -6,17 +6,32 @@
   "to": "2021-10-12",
   "call_charges": [
     {
+      "charge_id": "20260411-21sf18-e1a8-4211-119e-14ce313a9eac",
       "call_log_id": "1csf78-e9a8-4e14-859e-94ce323a9eef",
+      "call_id": "069e986d5006516028c",
+      "direction": "inbound",
       "caller_number": "1001",
       "caller_billing_number": "\u002B2100000980",
+      "caller_billing_number_type": "voip",
+      "caller_number_country_code": "1",
+      "caller_number_iso_code": "US",
       "callee_number": "1008",
       "callee_billing_number": "\u002B21058945728",
+      "callee_billing_number_type": "toll_free",
+      "callee_number_country_code": "1",
+      "callee_number_iso_code": "US",
+      "owner_type": "user",
+      "owner_name": "User 001",
+      "owner_extension_number": "100",
+      "owner_extension_id": "asa12sdd1as121aa",
       "call_type": "voip",
       "service_type": "call",
       "calling_party_name": "User",
       "cost_center": "Phone cost center",
       "employee_id": "A9877",
       "department": "Engineering",
+      "start_time": "2021-10-08T16:01:15Z",
+      "answer_time": "2021-10-08T16:02:15Z",
       "end_time": "2021-10-08T16:12:15Z",
       "duration": 1,
       "charge_mode": "per_min",
@@ -24,7 +39,8 @@
       "currency": "USD",
       "total_charge": "0",
       "billing_number": "2100000980 Ext. 1001",
-      "forward_number_billing": "2100000980"
+      "forward_number_billing": "2100000980",
+      "result": "answered"
     }
   ]
 }

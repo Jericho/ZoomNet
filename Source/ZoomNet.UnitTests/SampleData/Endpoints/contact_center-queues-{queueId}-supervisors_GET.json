@@ -4,14 +4,23 @@
   "total_records": 10,
   "supervisors": [
     {
-      "user_id": "ukAAkZKfROKMSw1bj_RDFQ",
-      "display_name": "Jill Chill",
-      "user_email": "jchill@example.com",
-      "role_id": "zeYjXoDOS_eV1QmTpj63PQ",
-      "role_name": "Agent",
+      "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "display_name": "Jane Doe",
+      "user_email": "jdoe@example.com",
+      "role_id": "0TFVsJqNS82CwkQJLqj1zA",
+      "role_name": "Admin",
       "status_id": "1",
       "status_name": "Offline",
-      "user_access": "active"
+      "user_access": "active",
+      "teams": [
+        {
+          "team_id": "qlU902FoTD-dFi9QnCdZhw",
+          "team_name": "Support Team"
+        }
+      ],
+      "cc_user_id": "hKuMAiDdRlSwMkBxR5we7g"
     }
-  ]
+  ],
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA"
 }

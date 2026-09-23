@@ -2,6 +2,7 @@
   "summary": {
     "evaluation_score": 1,
     "sentiment_score": 61.19,
+    "sentiment_score_reason": "Customer frustration detected during escalation",
     "engagement_score": 5.546720115175143
   },
   "metrics": {

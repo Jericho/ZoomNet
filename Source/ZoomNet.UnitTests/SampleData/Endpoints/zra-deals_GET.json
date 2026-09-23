@@ -15,6 +15,7 @@
       "deal_is_closed": false,
       "create_time": "2022-03-22T05:59:09.0000000\u002B00:00",
       "account_name": "customer",
+      "customer_account_id": "001ABC123DEF",
       "deal_is_private": false,
       "deal_amount": 1000000,
       "currency_type": "USD",
@@ -22,7 +23,14 @@
       "time_in_stage": 12,
       "number_of_conversations": 4,
       "last_activity_time": "2022-03-22T05:59:09.0000000\u002B00:00",
-      "account_type": "salesforce"
+      "account_type": "salesforce",
+      "deal_retrospective": "The customer test focuses on system reliability, AI-powered capabilities like transcription, and consolidation of multiple tools into a unified platform, positioning Zoom as a strategic partner for their communications infrastructure",
+      "customer_contact": [
+        {
+          "customer_contact_id": "contact_abc123",
+          "customer_contact_name": "John Doe"
+        }
+      ]
     }
   ]
 }

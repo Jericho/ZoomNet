@@ -1,5 +1,13 @@
 {
   "id": 92674392836,
   "start_time": "2022-03-25T07:29:29.0000000\u002B00:00",
-  "app_id": "fdgsfh2ey82fuh"
+  "app_id": "fdgsfh2ey82fuh",
+  "target": "participants",
+  "user_ids": [
+    "30R7kT7bTIKSNUFEuH_Qlg"
+  ],
+  "share_with": {
+    "internal_participants": true,
+    "external_participants": false
+  }
 }

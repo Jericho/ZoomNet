@@ -1,5 +1,7 @@
 {
   "next_page_token": "w3cCmMNsRc-pMFhksHrRdQ",
+  "from": "2025-12-01",
+  "to": "2025-12-31",
   "total_records": 300,
   "fax_logs": [
     {
@@ -29,7 +31,9 @@
       "file_id": "bayEy0y9RsadUbuEGrZBYA",
       "file_pages_count": 6,
       "status": "sent",
-      "create_time": "2021-10-08T16:12:04.0000000\u002B00:00"
+      "read_status": "read",
+      "create_time": 1754880000000,
+      "created_at": "2021-10-08T16:12:04Z"
     }
   ]
 }

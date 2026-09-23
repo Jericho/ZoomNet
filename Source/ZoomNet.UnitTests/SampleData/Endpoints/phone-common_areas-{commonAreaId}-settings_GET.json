@@ -31,5 +31,35 @@
       }
     ],
     "custom_hour_type": 2
-  }
+  },
+  "business_hours_settings": {
+    "business_hours": [
+      {
+        "from": "09:00",
+        "to": "18:00",
+        "type": 1,
+        "weekday": 7
+      }
+    ],
+    "business_hour_type": 2
+  },
+  "break_hours": [
+    {
+      "break_hour_id": "R4GeDFaLTpeQb1jPDCuPhA",
+      "break_hour_name": "Lunch Break",
+      "break_hour_type": "every_business_day",
+      "break_hour_setting": {
+        "from": "12:00",
+        "to": "13:00",
+        "days": [
+          {
+            "weekday": 7,
+            "enable": true,
+            "from": "12:00",
+            "to": "13:00"
+          }
+        ]
+      }
+    }
+  ]
 }

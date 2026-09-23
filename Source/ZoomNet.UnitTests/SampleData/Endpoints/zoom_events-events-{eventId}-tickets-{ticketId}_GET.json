@@ -10,6 +10,8 @@
   "registration_source": "Pardot",
   "session_id": "iso9Djldop39dagjLj3j",
   "authentication_method": "no_auth",
+  "idp_name": "okta",
+  "security_code_at_join": false,
   "first_name": "Jill",
   "last_name": "Chill",
   "address": "1800 Amphibious Blvd",

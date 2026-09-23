@@ -55,5 +55,9 @@
   "waiting_time": 20,
   "voicemail_id": "6cd2da01bcaa47f58e3250a575c5f2bf",
   "caller_account_code": "111",
-  "callee_account_code": "222"
+  "callee_account_code": "222",
+  "handler_name": "handler name",
+  "handler_ext_type": "user",
+  "handler_ext_number": "2345",
+  "handler_ext_id": "1129rA4ZSsScB2Yi1as17Ig"
 }

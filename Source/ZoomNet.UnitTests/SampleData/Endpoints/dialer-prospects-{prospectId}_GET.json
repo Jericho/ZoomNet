@@ -48,5 +48,6 @@
       "email": "john.smith@acme-corp.com",
       "type": "PRIMARY_EMAIL"
     }
-  ]
+  ],
+  "external_id": "xxxx-uuid"
 }

@@ -175,6 +175,9 @@
       "locked_by": "site",
       "modified": true
     },
+    "shared_line_group_pickup_code": {
+      "enable": true
+    },
     "call_queue_opt_out_reason": {
       "enable": true,
       "locked": true,
@@ -194,14 +197,16 @@
       "reset": true,
       "locked": false,
       "locked_by": "site",
+      "modified": true,
       "items": [
         {
           "type": "callLog",
-          "duration": -1,
-          "time_unit": "year"
+          "duration": 180,
+          "time_unit": "day"
         }
       ],
-      "delete_type": 1
+      "delete_type": 1,
+      "permanently_delete_after_days": -1
     },
     "call_park": {
       "call_not_picked_up_action": 50,
@@ -429,7 +434,10 @@
         "enable": true,
         "audio_id": "yCT14TwySDGVUypVlKNEyA",
         "audio_name": "example.mp3"
-      }
+      },
+      "call_summary_access_from_email": true,
+      "call_summary_view_only": true,
+      "call_summary_access_from_client_and_web": true
     },
     "schedule_firmware_update": {
       "enable": true,
@@ -468,6 +476,35 @@
       "locked": true,
       "locked_by": "site",
       "modified": true
+    },
+    "manage_call_routing_for_unassigned_numbers": {
+      "enable": true,
+      "locked": false,
+      "locked_by": "account",
+      "modified": true,
+      "incoming_call_action": "disconnect",
+      "incoming_call_routing_setting": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "audio_name": "routing-message.mp3",
+        "forward_extension_id": "jN9mb38lQTaMgxUq3Nd6ow",
+        "forward_extension_type": "user",
+        "forward_extension_name": "user A",
+        "forward_extension_number": 101014
+      }
+    },
+    "show_custom_disclaimer_when_using_zoom_phone": {
+      "enable": false,
+      "locked": false,
+      "locked_by": "account",
+      "display_frequency": "first_time_only",
+      "custom_disclaimer_list": [
+        {
+          "language": "en",
+          "title": "tilte",
+          "body": "body",
+          "default": true
+        }
+      ]
     }
   },
   "sip_zone": {
@@ -489,6 +526,7 @@
     "level": 1,
     "state_code": "CA",
     "status": 1,
-    "zip": "95113"
+    "zip": "95113",
+    "business_name": "Zoom San Jose Office"
   }
 }

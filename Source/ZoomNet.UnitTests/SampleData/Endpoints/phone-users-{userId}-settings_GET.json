@@ -1,6 +1,7 @@
 {
   "area_code": "01",
   "audio_prompt_language": "en-US",
+  "default_transcription_language": "en-US",
   "company_number": "\u002B12058945640",
   "country": {
     "code": "US",
@@ -123,5 +124,43 @@
         }
       ]
     }
+  },
+  "holiday_hours": [
+    {
+      "holiday_id": "ULfeE4mgSImyelNmTekUfg",
+      "name": "test",
+      "from": "2022-03-05T00:00:00.0000000\u002B00:00",
+      "to": "2022-03-06T00:00:00.0000000\u002B00:00"
+    }
+  ],
+  "break_hours": [
+    {
+      "break_hour_id": "R4GeDFaLTpeQb1jPDCuPhA",
+      "break_hour_name": "Lunch Break",
+      "break_hour_type": "every_business_day",
+      "break_hour_setting": {
+        "from": "12:00",
+        "to": "13:00",
+        "days": [
+          {
+            "weekday": 7,
+            "enable": true,
+            "from": "12:00",
+            "to": "13:00"
+          }
+        ]
+      }
+    }
+  ],
+  "business_hours_settings": {
+    "business_hours": [
+      {
+        "from": "09:00",
+        "to": "18:00",
+        "type": 1,
+        "weekday": 7
+      }
+    ],
+    "business_hour_type": 2
   }
 }

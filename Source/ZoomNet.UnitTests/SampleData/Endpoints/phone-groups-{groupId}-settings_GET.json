@@ -479,6 +479,21 @@
     "locked_by": "account",
     "modified": true
   },
+  "call_summary": {
+    "enable": true,
+    "modified": true,
+    "locked": true,
+    "locked_by": "account",
+    "auto_call_summary": true,
+    "call_summary_access_from_client_and_web": true,
+    "call_summary_access_from_email": true,
+    "call_summary_view_only": false,
+    "call_summary_start_prompt": {
+      "enable": true,
+      "audio_id": "yCT14TwySDGVUypVlKNEyA",
+      "audio_name": "example.mp3"
+    }
+  },
   "show_custom_disclaimer_when_using_zoom_phone": {
     "enable": false,
     "locked": false,
@@ -487,9 +502,10 @@
     "display_frequency": "first_time_only",
     "custom_disclaimer_list": [
       {
-        "language": "en-GB",
+        "language": "en",
         "title": "tilte",
-        "body": "body"
+        "body": "body",
+        "default": true
       }
     ]
   }

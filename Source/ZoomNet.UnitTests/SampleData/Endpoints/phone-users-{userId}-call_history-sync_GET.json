@@ -60,7 +60,11 @@
       "wait_time": 20,
       "ai_call_summary_id": "rBA9KJdyTVqGdTLpysHBsg",
       "caller_account_code": "111",
-      "callee_account_code": "222"
+      "callee_account_code": "222",
+      "handler_name": "handler name",
+      "handler_ext_type": "user",
+      "handler_ext_number": "2345",
+      "handler_ext_id": "1129rA4ZSsScB2Yi1as17Ig"
     }
   ],
   "call_elements": [
@@ -124,7 +128,11 @@
       "wait_time": 20,
       "ai_call_summary_id": "rBA9KJdyTVqGdTLpysHBsg",
       "caller_account_code": "111",
-      "callee_account_code": "222"
+      "callee_account_code": "222",
+      "handler_name": "handler name",
+      "handler_ext_type": "user",
+      "handler_ext_number": "2345",
+      "handler_ext_id": "1129rA4ZSsScB2Yi1as17Ig"
     }
   ],
   "sync_token": "SDVjM3NHRlNyMF8xNjQwODI3NTkyMzkwXzE2NDgwMTUzNTk0MzI="

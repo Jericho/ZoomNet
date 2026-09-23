@@ -68,7 +68,9 @@
       "client": "Web Meeting SDK 2.18",
       "total_jointime_cost": 3.98,
       "aic_disclaimer": "leave meeting",
-      "zoom_thin_client_plugin_version": "6.5.11.26770"
+      "zoom_thin_client_plugin_version": "6.5.11.26770",
+      "vdi_plugin_info_status": "Local",
+      "vdi_plugin_info_fb_code_reason": "None (no error)"
     }
   ]
 }

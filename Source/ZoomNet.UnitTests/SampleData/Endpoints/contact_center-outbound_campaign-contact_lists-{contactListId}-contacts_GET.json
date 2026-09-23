@@ -20,7 +20,16 @@
       "contact_location": "Location",
       "contact_account_number": "123",
       "contact_company": "Zoom",
-      "contact_role": "developer"
+      "contact_role": "developer",
+      "custom_fields": [
+        {
+          "custom_field_id": "suk0leXNTye2JjIm6v0yCQ",
+          "custom_field_value": "\u002B1-202-555-0147"
+        }
+      ],
+      "caller_id": "\u002B15555550100"
     }
-  ]
+  ],
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA"
 }

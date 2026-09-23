@@ -2,9 +2,10 @@
   "users": [
     {
       "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
-      "display_name": "Jill",
-      "user_email": "jchill@example.com",
-      "role_id": "27302393-4784-11ec-a3cd-122e3e29bb87",
+      "cc_user_id": "hKuMAiDdRlSwMkBxR5we7g",
+      "display_name": "Jane Doe",
+      "user_email": "jdoe@example.com",
+      "role_id": "0TFVsJqNS82CwkQJLqj1zA",
       "role_name": "Admin",
       "country_iso_code": "US",
       "client_integration": "Salesforce",
@@ -24,7 +25,9 @@
       "package_name": "essentials",
       "add_ons_plan": [
         "ai_expert_assist"
-      ]
+      ],
+      "billing_account_id": "PEKovuAEQBu5dpeqmxwW1Q",
+      "billing_account_name": "main billing account"
     }
   ]
 }

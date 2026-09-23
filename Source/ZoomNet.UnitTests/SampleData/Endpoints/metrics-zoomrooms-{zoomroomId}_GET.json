@@ -81,7 +81,8 @@
         "start_time": "2022-03-01T10:15:14.0000000\u002B00:00",
         "topic": "API Meeting",
         "user_type": "Licensed",
-        "uuid": "gaqOKVN9RAaDHKYWEcASXg=="
+        "uuid": "gaqOKVN9RAaDHKYWEcASXg==",
+        "meeting_platform": "Zoom"
       }
     ]
   }

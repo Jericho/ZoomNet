@@ -3,5 +3,7 @@
   "region_name": "Main Region",
   "sip_zone_id": "AfgzMEweSQ6tqzC8jhYJ2A",
   "sip_zone_name": "zccsipzone",
-  "is_main_region": true
+  "is_main_region": true,
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
 }

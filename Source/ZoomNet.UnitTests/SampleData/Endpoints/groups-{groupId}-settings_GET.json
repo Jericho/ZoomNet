@@ -248,7 +248,19 @@
     "who_can_share_screen": "host",
     "who_can_share_screen_when_someone_is_sharing": "all",
     "participants_share_simultaneously": "multiple",
-    "workplace_by_facebook": true
+    "workplace_by_facebook": true,
+    "meeting_summary_with_ai_companion": {
+      "enable": true,
+      "auto_enable": true,
+      "who_will_receive_summary": 1,
+      "enable_summary_template": true,
+      "summary_template_id": "1e1356ad"
+    },
+    "ai_companion_questions": {
+      "enable": true,
+      "auto_enable": true,
+      "who_can_ask_questions": 1
+    }
   },
   "other_options": {
     "allow_users_contact_support_via_chat": true,
@@ -318,7 +330,52 @@
       "create_next_steps": true
     },
     "save_chat_text": true,
-    "show_timestamp": true
+    "show_timestamp": true,
+    "recording_notification_for_zoom_client": {
+      "disclaimer_to_participants": "All participants or Guest only",
+      "play_voice_prompt": " All participants or Guest only or  No one",
+      "ask_host_to_confirm": true
+    },
+    "durable_meeting_transcript": {
+      "durable_meeting_transcript": true,
+      "allow_host_access_meeting_transcript": true
+    },
+    "allow_revenue_accelerator_manage_recording_separate_auto_delete": true,
+    "cloud_recording_permanently_deleted": {
+      "cloud_recording_permanently_deleted_from_trash": true,
+      "email_reminder_type": "Weekly digest on Monday"
+    },
+    "allow_cmr_3rd_party_bot": true,
+    "water_marker_recording": true,
+    "viewer_see_transcript": true,
+    "allow_invitees_access_recordings_without_passcode": true,
+    "recording_as_on_demand": true,
+    "recording_notifications_phone_users": {
+      "require_press_one_consent_to_record": true,
+      "multiple_notifications_phone_users": true
+    },
+    "upload_recording": true,
+    "allow_add_cloud_recordings_to_zoom_clips": true,
+    "allow_share": true,
+    "viewer_see_chat": true,
+    "authenticated_view_cloud_recoding": {
+      "authenticated_can_view_cloud_recordings": true,
+      "default_authenticate_content": "Signed-in users in my account"
+    },
+    "notification_subscription_url_when_recording_available": true,
+    "recording_storage_email_notifications": true,
+    "local_recording_options": {
+      "internal_meeting_participants": true,
+      "internal_auto_approve_requests": true,
+      "external_meeting_participants": true,
+      "external_auto_approve_requests": true,
+      "participants_with_specified_domains": true,
+      "participants_with_specified_domains_content": "zoom.us",
+      "participants_specified_domains_auto_approve_requests": true,
+      "save_chat_messages": true,
+      "save_closed_caption": true
+    },
+    "embed_passcode_in_shareable_link": true
   },
   "schedule_meeting": {
     "audio_type": "both",
@@ -361,7 +418,21 @@
   "chat": {
     "share_files": {
       "enable": true,
-      "share_option": "true"
+      "share_option": "account",
+      "view_option": "anyone",
+      "restrictions": {
+        "only_allow_specific_file_types": true,
+        "file_type_restrictions": [
+          ".gz"
+        ],
+        "file_type_restrictions_for_external": [
+          ".gz"
+        ],
+        "maximum_file_size": true,
+        "file_size_restrictions": 100,
+        "file_size_restrictions_for_external": 100,
+        "file_restrictions_apply_to": "sharing_and_viewing"
+      }
     },
     "chat_emojis": {
       "enable": true,
@@ -418,6 +489,229 @@
     "translate_messages": true,
     "search_and_send_animated_gif_images": {
       "enable": true
+    },
+    "ai_sentence_completion": false,
+    "create_group_chat": true,
+    "allow_delete_message": {
+      "enable": true,
+      "time": 5
+    },
+    "download_file": true,
+    "share_screen_in_chat": true,
+    "ai_quick_schedule": false,
+    "survey_poll": true,
+    "allow_edit_message": {
+      "enable": true,
+      "time": 5
+    },
+    "allow_huddles_from_channels": true,
+    "shared_spaces": true,
+    "ai_compose": {
+      "enable": false
+    },
+    "chat_email_address": {
+      "enable": true
+    },
+    "ai_quick_reply": false,
+    "ai_recommend": false,
+    "ai_summary": {
+      "enable": false
+    },
+    "read_receipts": {
+      "enable": false,
+      "allow_users_opt_out": false
+    }
+  },
+  "mail_calendar": {
+    "email_calendar_management": true,
+    "email_management": true,
+    "zoom_email_provider": true
+  },
+  "general_setting": {
+    "auto_zoom_room_proximity_connect": true
+  },
+  "ai": {
+    "screen_share_ocr": true,
+    "meeting_chat_messages": true,
+    "full_display_names_in_ai_assets": true,
+    "ai_generated_virtual_backgrounds": true,
+    "meeting_agenda": true,
+    "meeting_summary_docs": {
+      "enable": true,
+      "share_with_summary_recipients": true
+    },
+    "phone_user_ai_notices": {
+      "enable": true,
+      "require_press_1_consent": true,
+      "multiple_notifications": true
+    },
+    "meeting_summary_retention": {
+      "enable": true,
+      "retention_days": 30
+    },
+    "meeting_coach": {
+      "enable": true,
+      "participant_scope": "participants_and_invitees_in_our_organization"
+    },
+    "third_party_meeting_join": {
+      "enable": true,
+      "allow_recording": true,
+      "calendar": {
+        "enable": true,
+        "join_scope": "all_events_with_video_conference_links"
+      },
+      "pre_meeting_email_notification": {
+        "enable": true,
+        "recipients": "all_invitees"
+      }
+    },
+    "smart_recording": {
+      "create_recording_highlights": true,
+      "create_smart_chapters": true,
+      "create_next_steps": true
+    },
+    "clips_summarization_generation": {
+      "enable": true,
+      "general_summary": true,
+      "generation_chapter": true
+    },
+    "clips_create_video_with_aic": {
+      "enable": true
+    },
+    "allow_user_create_customize_avatar": {
+      "enable": true,
+      "clips_custom_avatar_delegation": true
+    },
+    "whiteboard_content_generation": true,
+    "task_creation_and_management": {
+      "enable": false,
+      "auto_generate_details": false,
+      "auto_generate_action": true,
+      "generate_from_transcripts": {
+        "enable": false,
+        "auto_share_with": "internal_participants",
+        "auto_assign_to_collaborator": true
+      },
+      "generate_from_phone_call": {
+        "enable": false,
+        "auto_add_participant_as_collaborator": true,
+        "auto_assign_to_collaborator": true
+      },
+      "generate_from_voicemail": false
+    },
+    "show_conversational_ai_companion": {
+      "enabled": true,
+      "enable_zoom_mate": true,
+      "delete_ai_conversation": true,
+      "delete_ai_conversation_time": 30
+    },
+    "ai_panel_in_workplace": {
+      "enabled": true,
+      "delete_ai_conversation": true,
+      "delete_ai_conversation_time": 30
+    },
+    "enable_ai_on_web": true,
+    "enable_email_compose_with_ai": true,
+    "microsoft_365": {
+      "enable": true,
+      "calendar_events": true,
+      "emails": true,
+      "documents": true
+    },
+    "google": {
+      "enable": true,
+      "calendar_events": true,
+      "emails": true,
+      "documents": true
+    },
+    "web_content": true,
+    "local_file_uploads": true,
+    "organization_custom_dictionaries": true,
+    "third_party_app_tasks": true,
+    "participant_can_request_aic_in_meeting": true,
+    "restrict_aic_when_external_user_join_meeting": true,
+    "restrict_aic_when_restrict_user_join": true,
+    "restrict_users_from_joining_ai_enabled_meetings": {
+      "enable": true,
+      "join_notify": "notify_and_remove",
+      "apply_scope": "internal_and_external"
+    },
+    "meeting_questions": {
+      "enable": true,
+      "auto_enable": false,
+      "who_can_ask_questions": "org_from_join_meeting"
+    },
+    "meeting_summary": {
+      "enable": true,
+      "auto_enable": false,
+      "email_notification": true,
+      "whether_include_full_text_in_email": "include_full_text_in_email",
+      "restrict_share_to_outside_of_organization": true,
+      "restrict_summary_share": "external_users",
+      "who_will_receive_summary": "alt_host"
+    },
+    "meeting_summary_template": {
+      "enable": true,
+      "summary_template_id": "template_123"
+    },
+    "meeting_summary_default_language": {
+      "enable": true,
+      "language": "en"
+    },
+    "meeting_summary_ip_access": {
+      "enable": true,
+      "ip_addresses_or_ranges": "192.0.2.0/24"
+    },
+    "remind_me_turn_on_aic": true,
+    "remind_me_turn_on_catch_me_up": true,
+    "restrict_users_from_deleting_ai_companion_assets": true,
+    "restrict_users_from_editing_ai_companion_assets": true,
+    "webinar_summary_follow_up_email": true,
+    "webinar_summary_ocr": true,
+    "zoom_events_session_summary": {
+      "enable": true,
+      "auto_start": true
+    },
+    "chat_summary": {
+      "enable": false
+    },
+    "chat_compose": {
+      "enable": false
+    },
+    "hub_ai_question_and_file_creation": true,
+    "canvas_ai_content_generation": true,
+    "canvas_ai_sentence_completion": true,
+    "canvas_ai_post_meeting_writing_tasks": true,
+    "paper_ai_content_generation": true,
+    "sheets_ai_content_generation": true,
+    "sheets_ai_formula": true,
+    "sheets_ai_function": true,
+    "sheets_ai_resources": true,
+    "slides_ai_content_generation": true,
+    "my_notes_meeting_transcription": true,
+    "my_notes_ai_content_generation": {
+      "enable": true,
+      "auto_generate_summary": true,
+      "auto_send_summary_email": true
+    },
+    "include_webinar_summary_follow_up_email": {
+      "enable": true,
+      "attendee_follow_up_email": true,
+      "absentee_follow_up_email": true
+    },
+    "webinar_summary": {
+      "enable": true,
+      "auto_enable": false,
+      "email_notification": true,
+      "whether_include_full_text_in_email": "include_full_text_in_email",
+      "restrict_share_to_outside_of_organization": true,
+      "restrict_summary_share": "external_users",
+      "who_will_receive_summary": "host_and_panelist_in_organization"
+    },
+    "webinar_questions": {
+      "enable": true,
+      "auto_enable": false,
+      "who_can_ask_questions": "panelist_org"
     }
   },
   "allow_authentication_exception": true,

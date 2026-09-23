@@ -1,9 +1,12 @@
 {
   "users": [
     {
-      "user_id": "ukAAkZKfROKMSw1bj_RDFQ",
-      "display_name": "Jill Chill",
-      "user_email": "jchill@example.com"
+      "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "cc_user_id": "hKuMAiDdRlSwMkBxR5we7g",
+      "display_name": "Jane Doe",
+      "user_email": "jdoe@example.com"
     }
-  ]
+  ],
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA"
 }

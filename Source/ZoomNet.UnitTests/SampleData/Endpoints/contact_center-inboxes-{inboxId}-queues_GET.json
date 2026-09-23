@@ -1,12 +1,12 @@
 {
   "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
   "page_size": 30,
-  "total_records": 1,
+  "total_records": 10,
   "queues": [
     {
       "queue_id": "Ql3qxUWXSHes4PmcOmzyOg",
-      "cc_queue_id": "Ql3qxUWXSHes4PmcOmzyOg",
-      "queue_name": "queue_661c6e4b-89fc-4b0d-9978-c7394725462",
+      "cc_queue_id": "a4lCNeq2SzKbgkcDVbjCZQ",
+      "queue_name": "Voice - Customer Support",
       "agents_count": 1,
       "supervisors_count": 1,
       "channel_types": [
@@ -14,5 +14,7 @@
       ],
       "channel": "voice"
     }
-  ]
+  ],
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
 }

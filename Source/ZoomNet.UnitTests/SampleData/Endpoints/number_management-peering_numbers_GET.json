@@ -8,7 +8,12 @@
       "phone_number": "\u002B18108001001",
       "service_info": "Inbound only number\u0027 or \u0027Metered charges apply",
       "sip_trunk_name": "test-carrier-sip-trunk",
-      "status": true
+      "status": true,
+      "voice_msg_capacity": "MULTI_USE",
+      "voice_direction": "INBOUND_AND_OUTBOUND",
+      "outbound_dialer_not_supported": false,
+      "outbound_cli_share_not_supported": false,
+      "message_capability": "NOT_APPLICABLE"
     }
   ],
   "total_records": 20

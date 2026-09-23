@@ -85,6 +85,7 @@
       },
       "charge_name": "monthly recurring charge",
       "charge_type": "recurring",
+      "is_channel_discount_applicable": true,
       "description": "Invoice for ABC Pvt. Ltd.",
       "offer_name": "Zoom Workplace Pro",
       "offer_price_list_name": "Zoom Workplace Pro Annual",

@@ -4,6 +4,17 @@
     "access_user_id": "w0RChiauQeqRlv5fgxYULQ",
     "access_user_type": "commonArea",
     "delete": false,
-    "download": false
-  }
+    "download": false,
+    "share": false
+  },
+  "voicemail_access_members": [
+    {
+      "shared_id": "--e8ugg0SeS-9clgrDkn2w",
+      "access_member_id": "w0RChiauQeqRlv5fgxYULQ",
+      "access_member_type": "commonArea",
+      "delete": false,
+      "download": false,
+      "share": false
+    }
+  ]
 }

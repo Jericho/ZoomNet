@@ -4,5 +4,11 @@
   "address_book_description": "This is an address book.",
   "total_contacts": 30,
   "unit_id": "zeYjXoDOS_eV1QmTpj63PQ",
-  "unit_name": "Unit"
+  "unit_name": "Unit",
+  "queue_ids": [
+    "beYjXoDOS_eV1QmTpj63PQ"
+  ],
+  "team_ids": [
+    "neYjXoDOS_tV1QmTpj43PQ"
+  ]
 }

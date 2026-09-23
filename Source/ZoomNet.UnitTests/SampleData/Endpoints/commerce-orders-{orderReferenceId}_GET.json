@@ -22,7 +22,8 @@
         "name": "Customer segment.",
         "value": "Healthcare"
       }
-    ]
+    ],
+    "trial_id": "Z-021462495"
   },
   "create_subscription": [
     {
@@ -396,6 +397,7 @@
           "offer_price_list_name": "Zoom Workplace Pro Annual",
           "old_offer_price_list_id": "PRL-3412",
           "old_partner_sku_code": "PAR1-PRO-BASE-NH1Y",
+          "old_subscription_price_list_id": "fvnderfy89rui43jr23ej23",
           "quantity": 100,
           "start_date": "2022-10-25",
           "end_date": "2022-10-25",
@@ -440,6 +442,7 @@
           "offer_price_list_id": "PRL-2323",
           "partner_sku_code": "PAR1-ENT-BASE-NH1Y",
           "offer_price_list_name": "Zoom Workplace Pro Annual",
+          "subscription_price_list_id": "fvnderfy89rui43jr23ej23",
           "quantity": 100,
           "start_date": "2022-10-25",
           "end_date": "2022-10-25",
@@ -484,6 +487,7 @@
           "sku": "SKU-10000120",
           "offer_price_list_id": "PRL-2323",
           "partner_sku_code": "PAR1-ENT-BASE-NH1Y",
+          "subscription_price_list_id": "fvnderfy89rui43jr23ej23",
           "offer_price_list_name": "Zoom Workplace Pro Annual",
           "quantity": 100,
           "start_date": "2022-10-25",

@@ -17,7 +17,8 @@
       "topic": "My Webinar",
       "type": 9,
       "uuid": "4444AAAiAAAAAiAiAiiAii==",
-      "is_simulive": true
+      "is_simulive": true,
+      "is_events_webinar": true
     }
   ]
 }

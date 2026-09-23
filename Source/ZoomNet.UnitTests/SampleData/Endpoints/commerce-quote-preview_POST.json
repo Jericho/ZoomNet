@@ -11,6 +11,7 @@
   "subscription_preview": [
     {
       "subscription_number": "A-31231322",
+      "paid_period_start_date": "2024-03-20",
       "tcv": 100000,
       "tcb": 100000,
       "mrr": 1000,

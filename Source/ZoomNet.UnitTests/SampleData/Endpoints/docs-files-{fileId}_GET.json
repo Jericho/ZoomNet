@@ -4,5 +4,11 @@
   "file_type": "doc",
   "file_link": "https://docs.zoom.us/doc/ADuV705lSXW4c6fBgQFarQ",
   "created_time": "2025-06-30T09:47:40.249Z",
-  "modified_time": "2025-06-30T09:47:40.249Z"
+  "modified_time": "2025-06-30T09:47:40.249Z",
+  "file_icon": {
+    "type": "none",
+    "icon": "rocket",
+    "color": "blue",
+    "emoji": "\uD83D\uDE00"
+  }
 }

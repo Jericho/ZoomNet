@@ -5,22 +5,30 @@
   "queue_id": "TY_XsJuWR9ehXrsf1DSIAQ",
   "queue_name": "My queue name",
   "phone_number_id": "XfTPrZjyR5W6QgNARdtGlw",
+  "assign_type": "queue",
   "outbound_campaign_status": "draft",
   "dialing_method": "progressive",
   "dialing_method_settings": {
-    "enable_amd": true,
+    "enable_amd": false,
     "amd_settings": {
       "greeting_asset_id": "zNWo_1M5ScCuKnBb2Z-sfw",
       "answering_machine_asset_id": "z8XtiytyQammquBRlVPiWw"
     },
-    "enable_abandonment_timeout": true,
+    "enable_abandonment_timeout": false,
     "abandonment_timeout": 5,
     "abandonment_message_asset_id": "z8XtiytyQammquBRlVPiWw",
     "dialing_strategy": "automatic",
     "preview_timer": 5,
-    "enable_skip": false,
+    "enable_skip": true,
     "max_skips": 1,
-    "enable_ignore_preview_notification": false
+    "enable_ignore_preview_notification": true,
+    "allow_retry_preview_dialer": false,
+    "max_concurrent_calls": 5,
+    "agentless_amd_off_action": "playMedia",
+    "agentless_amd_off_resource_id": "z8XtiytyQammquBRlVPiWw",
+    "agentless_amd_off_resource_name": "AMD Off Resource",
+    "old_flow_id": "_2npVp3juQWO2g9pt2rqSKg",
+    "new_flow_id": "_3npVp3juQWO2g9pt2rqSKg"
   },
   "outbound_campaign_priority": 5,
   "campaign_contact_list": [
@@ -31,11 +39,43 @@
       "contacts_count": "1"
     }
   ],
+  "campaign_do_not_contact_list": [
+    {
+      "contact_list_id": "Lp7Wzxf4Q-pA9RX6bhO-XX",
+      "contact_list_name": "DNC List",
+      "contact_list_description": "DNC Description",
+      "contacts_count": "1"
+    }
+  ],
+  "exclusion_logic": "and",
+  "max_attempts_per_contact": 3,
+  "attempts_use_same_period": false,
+  "second_attempt_period": 30,
+  "third_attempt_period": 60,
+  "other_attempt_period": 120,
+  "retry_period": 60,
+  "retry_period_unit": "hours",
+  "dial_sequence": "list_dial",
   "enable_max_ring_time": true,
   "max_ring_time": 60,
+  "contact_phone_order": "ascending",
+  "enable_always_running": false,
+  "contact_order": 1,
+  "enable_diagnostics": false,
   "business_hour_source": "queue",
   "business_hour_id": "h7XtiytFTammquBRlTRiWZ",
-  "enable_closure_hour": true,
+  "enable_closure_hour": false,
   "closure_set_id": "y9XtiytyQammquBRlTPiWw",
-  "contact_timezone_source": "area_code"
+  "contact_timezone_source": "area_code",
+  "local_calling_windows": [
+    {
+      "start": "09:00",
+      "end": "18:00"
+    }
+  ],
+  "data_table_id": "AbCdEfGhIjKlMnOpQrStUv",
+  "caller_id_table_field_id": "XyZaBcDeFgHiJkLmNoPqRs",
+  "contact_field_key": "phoneNumber",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
 }

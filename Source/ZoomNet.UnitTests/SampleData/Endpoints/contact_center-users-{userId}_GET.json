@@ -1,8 +1,8 @@
 {
   "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
-  "display_name": "Jill",
-  "user_email": "jchill@example.com",
-  "role_id": "27302393-4784-11ec-a3cd-122e3e29bb87",
+  "display_name": "Jane Doe",
+  "user_email": "jdoe@example.com",
+  "role_id": "0TFVsJqNS82CwkQJLqj1zA",
   "role_name": "Admin",
   "client_integration": "Salesforce",
   "client_integration_name": "integration-test",
@@ -26,5 +26,17 @@
   "package_name": "essentials",
   "add_ons_plan": [
     "ai_expert_assist"
-  ]
+  ],
+  "teams": [
+    {
+      "team_id": "qlU902FoTD-dFi9QnCdZhw",
+      "team_name": "Support Team"
+    }
+  ],
+  "cc_user_id": "hKuMAiDdRlSwMkBxR5we7g",
+  "emergency_calling": true,
+  "billing_account_id": "PEKovuAEQBu5dpeqmxwW1Q",
+  "billing_account_name": "main billing account",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
 }

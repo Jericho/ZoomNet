@@ -25,7 +25,19 @@
         "name": "HQ site"
       },
       "status": "online",
-      "provision_template_id": "Ke5Ghevvoo001hr"
+      "provision_template_id": "Ke5Ghevvoo001hr",
+      "description": "This device is used for testing.",
+      "firmware_version": "108.86.3.9",
+      "private_ip": "192.168.10.13",
+      "public_ip": "220.143.231.126",
+      "policy": {
+        "call_control": {
+          "status": "off"
+        },
+        "hot_desking": {
+          "status": "off"
+        }
+      }
     }
   ],
   "next_page_token": "uBTK3NzNksdkuCUAQaFVFd86kyOr59zg4U2",
