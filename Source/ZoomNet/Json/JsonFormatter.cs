@@ -163,7 +163,12 @@ namespace ZoomNet.Json
 					new WebinarConverter(),
 					new EventConverter(),
 					new InterpreterConverter(),
-				}
+				},
+
+				// For debugging purposes, change the following to 'Disallow' and run the unit tests.
+				// It will highlight JSON nodes from the sample JSON files in Endpoint.resx that are not mapped to a class member.
+				// Please note that there will also be a few false-positives. For instance, a few unit tests use a JSON with a node called 'this_is_a_test' which is intentionally not mapped to a class member .
+				UnmappedMemberHandling = JsonUnmappedMemberHandling.Skip,
 			};
 
 			DefaultSerializationContext = new ZoomNetJsonSerializerContext(DefaultSerializerOptions);
