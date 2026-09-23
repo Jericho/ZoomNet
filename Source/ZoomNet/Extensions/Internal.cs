@@ -576,16 +576,24 @@ namespace ZoomNet
 		/// langword="true"/>.</exception>
 		internal static JsonElement? GetProperty(this JsonElement element, string path, bool throwIfMissing = true, char splitChar = '/')
 		{
-			var parts = path.Split(splitChar);
-			var property = element;
+			if (path == null) throw new ArgumentNullException(nameof(path));
 
-			foreach (var part in parts)
+			var property = element;
+			var span = path.AsSpan();
+			int start = 0;
+			while (start <= span.Length)
 			{
+				int idx = start >= span.Length ? -1 : span.Slice(start).IndexOf(splitChar);
+				ReadOnlySpan<char> partSpan = idx == -1 ? span.Slice(start) : span.Slice(start, idx);
+				string part = partSpan.ToString();
 				if (!property.TryGetProperty(part, out property))
 				{
 					if (throwIfMissing) throw new ArgumentException($"Unable to find '{path}'", nameof(path));
-					else return null;
+					return null;
 				}
+
+				if (idx == -1) break;
+				start += idx + 1;
 			}
 
 			return property;
