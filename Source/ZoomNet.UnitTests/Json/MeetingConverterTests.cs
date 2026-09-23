@@ -47,7 +47,7 @@ namespace ZoomNet.UnitTests.Json
 			""join_url"": ""https://zoom.us/j/111222333"",
 			""created_at"": ""2023-12-15T12:00:00Z"",
 			""pmi"": ""1234567890"",
-			""pre_scheduled"": false
+			""pre_schedule"": false
 		}";
 
 		private const string RECURRING_MEETING_NO_FIXED_TIME_JSON = @"{
