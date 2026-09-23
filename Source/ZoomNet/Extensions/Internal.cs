@@ -25,7 +25,7 @@ namespace ZoomNet
 	/// <summary>
 	/// Internal extension methods.
 	/// </summary>
-	internal static class Internal
+	internal static partial class Internal
 	{
 		internal enum UnixTimePrecision
 		{
@@ -60,6 +60,17 @@ namespace ZoomNet
 			{ typeof(nint), "nint" }, // From C# 11 onwards
 			{ typeof(nuint), "nuint" }, // From C# 11 onwards
 		};
+
+#if NET7_0_OR_GREATER
+		[GeneratedRegex(@"(.*?)(?<=""message"":"")(.*?)(?=""})(.*?$)", RegexOptions.Singleline)]
+		private static partial Regex ErrorMessageRegex();
+
+		[GeneratedRegex(@"(?<!\\)""", RegexOptions.None)]
+		private static partial Regex UnescapedQuoteRegex();
+#else
+		private static readonly Regex ErrorMessageRegex = new(@"(.*?)(?<=""message"":"")(.*?)(?=""})(.*?$)", RegexOptions.Compiled | RegexOptions.Singleline);
+		private static readonly Regex UnescapedQuoteRegex = new(@"(?<!\\)""", RegexOptions.Compiled);
+#endif
 
 		/// <summary>
 		/// Converts a 'unix time', which is expressed as the number of seconds (or milliseconds) since
@@ -949,7 +960,11 @@ namespace ZoomNet
 		internal static T ToObject<T>(this JsonElement element, JsonSerializerOptions options = null)
 		{
 			if (element.ValueKind == JsonValueKind.Null) return default;
+#if NET5_0_OR_GREATER
+			return element.Deserialize<T>(options ?? JsonFormatter.DefaultDeserializerOptions);
+#else
 			return JsonSerializer.Deserialize<T>(element.GetRawText(), options ?? JsonFormatter.DefaultDeserializerOptions);
+#endif
 		}
 
 		internal static void Add<T>(this JsonObject jsonObject, string propertyName, T value)
@@ -1015,8 +1030,12 @@ namespace ZoomNet
 						"message": "Invalid access token, does not contain scopes:["zoom_events_basic:read","zoom_events_basic:read:admin"]"
 					}
 				*/
-				const string pattern = @"(.*?)(?<=""message"":"")(.*?)(?=""})(.*?$)";
-				var matches = Regex.Match(responseContent, pattern, RegexOptions.Compiled | RegexOptions.Singleline);
+
+#if NET7_0_OR_GREATER
+				var matches = ErrorMessageRegex().Match(responseContent);
+#else
+				var matches = ErrorMessageRegex.Match(responseContent);
+#endif
 				if (matches.Groups.Count != 4) throw;
 
 				var prefix = matches.Groups[1].Value;
@@ -1024,7 +1043,12 @@ namespace ZoomNet
 				var postfix = matches.Groups[3].Value;
 				if (string.IsNullOrEmpty(message)) throw;
 
-				var escapedMessage = Regex.Replace(message, @"(?<!\\)""", "\\\"", RegexOptions.Compiled); // Replace un-escaped double-quotes with properly escaped double-quotes
+#if NET7_0_OR_GREATER
+				var escapedMessage = UnescapedQuoteRegex().Replace(message, "\\\"");
+#else
+				var escapedMessage = UnescapedQuoteRegex.Replace(message, "\\\"");
+#endif
+
 				var result = $"{prefix}{escapedMessage}{postfix}";
 				return JsonDocument.Parse(result).RootElement;
 			}
