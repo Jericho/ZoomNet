@@ -82,11 +82,9 @@ namespace ZoomNet.UnitTests.Resources
 			var sessionId = "session789";
 			var attendeeEmails = new[] { "attendee1@example.com", "attendee2@example.com" };
 			var source = "manual";
-			var errorsJson = @"{""errors"": []}";
-
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(new HttpMethod("PATCH"), Utils.GetZoomApiUri("zoom_events", "events", eventId, "sessions", sessionId, "attendee_action"))
-				.Respond("application/json", errorsJson);
+				.Respond("application/json", EndpointsResource.zoom_events_events__eventId__sessions__sessionId__attendee_action_PATCH);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -99,7 +97,9 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Length.ShouldBe(0);
+			result.Length.ShouldBe(1);
+			result[0].Email.ShouldBe("email@zoom.us");
+			result[0].ErrorMessage.ShouldBe("User doesn't have an on-site ticket.");
 		}
 
 		#endregion
