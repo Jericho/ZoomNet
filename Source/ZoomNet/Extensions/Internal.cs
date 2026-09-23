@@ -36,8 +36,6 @@ namespace ZoomNet
 		private static readonly DateTime EPOCH = new(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 		private static readonly int DEFAULT_DEGREE_OF_PARALLELISM = Environment.ProcessorCount > 1 ? Environment.ProcessorCount / 2 : 1;
 		private static readonly string[] ERROR_MESSAGE_NODE_NAMES = ["message", "error_message"];
-		private static readonly char[] QUERYSTRING_ITEMS_SEPARATORS = ['&'];
-		private static readonly char[] QUERYSTRING_ITEM_VALUE_SEPARATORS = ['='];
 
 		private static readonly Dictionary<Type, string> _typeAliases = new()
 		{
@@ -817,18 +815,64 @@ namespace ZoomNet
 
 		internal static IEnumerable<KeyValuePair<string, string>> ParseQuerystring(this Uri uri)
 		{
-			var querystringParameters = uri
-				.Query.TrimStart('?')
-				.Split(QUERYSTRING_ITEMS_SEPARATORS, StringSplitOptions.RemoveEmptyEntries)
-				.Select(value => value.Split(QUERYSTRING_ITEM_VALUE_SEPARATORS, StringSplitOptions.RemoveEmptyEntries))
-				.Select(splitValue =>
-				{
-					var key = splitValue[0].Trim();
-					var value = splitValue.Length > 1 ? splitValue[1].Trim() : null;
-					return new KeyValuePair<string, string>(key, value);
-				});
+			// Non-allocating span-based parser to minimize allocations on hot paths.
+			var q = uri?.Query;
+			var result = new List<KeyValuePair<string, string>>();
+			if (string.IsNullOrEmpty(q)) return result;
 
-			return querystringParameters;
+			ReadOnlySpan<char> span = q.AsSpan();
+			if (span.Length > 0 && span[0] == '?') span = span.Slice(1);
+
+			int i = 0;
+			while (i < span.Length)
+			{
+				// find next '&' without using range index/slice syntax for compatibility
+				int amp = -1;
+				for (int k = i; k < span.Length; k++)
+				{
+					if (span[k] == '&')
+					{
+						amp = k - i;
+						break;
+					}
+				}
+				ReadOnlySpan<char> segment = amp == -1 ? span.Slice(i) : span.Slice(i, amp);
+
+				// split on '='
+				int eq = segment.IndexOf('=');
+				ReadOnlySpan<char> rawKey, rawValue;
+				if (eq == -1)
+				{
+					rawKey = segment;
+					rawValue = default;
+				}
+				else
+				{
+					rawKey = segment.Slice(0, eq);
+					rawValue = segment.Slice(eq + 1);
+				}
+
+				// trim spaces from key and value (mimic string.Trim())
+				string key = TrimToString(rawKey);
+				string value = rawValue.Length == 0 ? null : TrimToString(rawValue);
+
+				result.Add(new KeyValuePair<string, string>(key, value));
+
+				if (amp == -1) break;
+				i += amp + 1;
+			}
+
+			return result;
+
+			static string TrimToString(ReadOnlySpan<char> s)
+			{
+				int start = 0, end = s.Length - 1;
+				while (start <= end && char.IsWhiteSpace(s[start])) start++;
+				while (end >= start && char.IsWhiteSpace(s[end])) end--;
+				if (start == 0 && end == s.Length - 1) return s.ToString();
+				if (end < start) return string.Empty;
+				return s.Slice(start, end - start + 1).ToString();
+			}
 		}
 
 		internal static async Task<(bool IsError, string ErrorMessage, int? ErrorCode)> GetErrorMessageAsync(this HttpResponseMessage message)

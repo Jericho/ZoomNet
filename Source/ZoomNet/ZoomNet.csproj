@@ -60,12 +60,14 @@
     <Reference Include="System.Web" />
     <PackageReference Include="Portable.System.DateTimeOnly" Version="9.0.2" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="System.Memory" Version="4.6.3" />
   </ItemGroup>
 
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Portable.System.DateTimeOnly" Version="9.0.2" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="System.Memory" Version="4.6.3" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release' ">
