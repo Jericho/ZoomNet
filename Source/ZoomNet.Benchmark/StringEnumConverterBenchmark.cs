@@ -70,7 +70,7 @@ namespace ZoomNet.Benchmark
 			}
 		}
 
-		[Benchmark]
+		[Benchmark(Baseline = true)]
 		public void Legacy_Deserialize()
 		{
 			for (int i = 0; i < Iterations; i++)
