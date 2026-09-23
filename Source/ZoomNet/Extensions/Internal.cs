@@ -512,7 +512,7 @@ namespace ZoomNet
 			static void AppendFormatIfNecessary(StringBuilder stringBuilder, string timePart, int value)
 			{
 				if (value <= 0) return;
-				stringBuilder.AppendFormat($" {value} {timePart}{(value > 1 ? "s" : string.Empty)}");
+				stringBuilder.Append($" {value} {timePart}{(value > 1 ? "s" : string.Empty)}");
 			}
 
 			// In case the TimeSpan is extremely short
