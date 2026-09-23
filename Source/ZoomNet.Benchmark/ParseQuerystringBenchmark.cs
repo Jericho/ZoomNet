@@ -8,7 +8,7 @@ public class ParseQuerystringBenchmark
 	[Params(100_000)]
 	public int Iterations;
 
-	private Uri _uri;
+	private Uri _uri = new Uri("https://example.com");
 
 	[GlobalSetup]
 	public void Setup()
