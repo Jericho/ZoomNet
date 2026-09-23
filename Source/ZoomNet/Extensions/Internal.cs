@@ -1109,8 +1109,8 @@ namespace ZoomNet
 			}
 			else if (jsonResponse.TryGetProperty(propertyName, out JsonElement property))
 			{
-				var propertyContent = property.GetRawText();
-				return JsonDocument.Parse(propertyContent, default).RootElement;
+				// Return the property element directly to avoid allocating an intermediate string and reparsing it.
+				return property;
 			}
 			else if (throwIfPropertyIsMissing)
 			{
