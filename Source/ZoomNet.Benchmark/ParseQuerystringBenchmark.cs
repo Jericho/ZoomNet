@@ -32,7 +32,7 @@ public class ParseQuerystringBenchmark
 				{
 					var key = splitValue[0].Trim();
 					var value = splitValue.Length > 1 ? splitValue[1].Trim() : null;
-					return new KeyValuePair<string, string>(key, value);
+					return new KeyValuePair<string, string?>(key, value);
 				});
 
 			// iterate to ensure work is done
