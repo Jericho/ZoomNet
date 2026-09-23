@@ -1,0 +1,20 @@
+{
+  "custom_field_id": "7381d210-360e-4fbd-86e4-33eb7109b084",
+  "custom_field_name": "contact_field_demo",
+  "data_type": "string",
+  "default_value": "option_a",
+  "pick_list_values": [
+    "option_a"
+  ],
+  "contact_list_ids": [
+    "suk0leXNTye2JjIm6v0yCQ"
+  ],
+  "use_as_routing_profile_parameter": true,
+  "use_as_external_url_parameter": false,
+  "show_in_transferred_calls": true,
+  "allow_third_party_access": true,
+  "show_in_inbound_notification": true,
+  "show_in_profile_tab": false,
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
+}

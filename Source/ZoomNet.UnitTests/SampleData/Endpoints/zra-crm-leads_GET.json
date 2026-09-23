@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "zra_lead_id": "OPENAPIaCLhU8cQR4qfdTSvT4stxA006aj00000LprxRjAx",
+      "crm_lead_id": "006aj00000LprxRjAx",
+      "owner_email": "jchill@example.com",
+      "lead_name": "Jill Chill",
+      "lead_email": "jchill@example.com",
+      "company": "Some Company",
+      "job_title": "Manager",
+      "phone": "800-555-0100",
+      "home_phone": "800-555-0100",
+      "mobile_phone": "800-555-0100",
+      "other_phone": "800-555-0100",
+      "modify_time": "2025-11-20T12:00:00.0000000\u002B00:00",
+      "create_time": "2025-11-20T12:00:00.0000000\u002B00:00"
+    }
+  ]
+}

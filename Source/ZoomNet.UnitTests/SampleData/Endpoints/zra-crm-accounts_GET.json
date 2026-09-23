@@ -1,0 +1,18 @@
+{
+  "data": [
+    {
+      "zra_account_id": "OPENAPIaCLhU8cQR4qfdTSvT4stxA006aa00000JkrQiiAx",
+      "crm_account_id": "006aa00000JkrQiiAx",
+      "owner_email": "jchill@example.com",
+      "account_name": "Some Company",
+      "domain": "example.com",
+      "type": "Prospect",
+      "industry": "Electronics",
+      "annual_revenue": 750000,
+      "phone": "800-0555-0100",
+      "employees": 30,
+      "modify_time": "2025-11-20T12:00:00.0000000\u002B00:00",
+      "create_time": "2025-11-20T12:00:00.0000000\u002B00:00"
+    }
+  ]
+}

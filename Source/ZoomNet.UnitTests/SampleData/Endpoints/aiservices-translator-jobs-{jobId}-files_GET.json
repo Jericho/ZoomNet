@@ -1,0 +1,15 @@
+{
+  "files": [
+    {
+      "file_id": "f_001",
+      "input_uri": "s3://acme-bucket/text/2025/11/document_001.txt",
+      "state": "FILE_SUCCEEDED",
+      "output_uri": "s3://acme-bucket/translations/2025/11/document_001.json",
+      "error": {
+        "code": "UNSUPPORTED_LANGUAGE_PAIR",
+        "message": "Translation between zh-CN and ja-JP is not supported"
+      }
+    }
+  ],
+  "next_page_token": "eyJmaWxlX2lkIjoiZl8xMDEifQ"
+}

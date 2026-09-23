@@ -1,0 +1,18 @@
+{
+  "event": "contact_center.consumer_messaging_opt_in",
+  "event_ts": 1764754270736,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "engagement_id": "u154t5-ASlK83fZb1YWqgw",
+      "sms": {
+        "consumer_number": "+12090001111",
+        "contact_center_number": "+12090000000",
+        "campaign_id": "C1TGZWS"
+      },
+      "date_time_ms": "2025-12-03T09:31:10.735Z",
+      "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+      "division_name": "EMEA Operations"
+    }
+  }
+}

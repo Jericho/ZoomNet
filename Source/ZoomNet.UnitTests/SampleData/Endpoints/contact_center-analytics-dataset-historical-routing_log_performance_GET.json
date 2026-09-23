@@ -1,0 +1,69 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "from": "2021-12-10T00:00:00Z",
+  "to": "2021-12-10T00:15:00Z",
+  "timezone": "America/Los_Angeles",
+  "routing_logs": [
+    {
+      "engagement_id": "bgdiH2SPQXmiD30nUiA4uA",
+      "routing_id": "reRAiabVQSqpXxJVDbsy2Q",
+      "routing_order": 1,
+      "queue_id": "reRAiabVQSqpXxJVDbsy2Q",
+      "queue_name": "Sales Queue",
+      "enter_channel": "messaging",
+      "enter_channel_source": "in_app_chat",
+      "agent_routing_profile_id": "vz7qBi2GQ2GaHGUA0jmzmg",
+      "agent_routing_profile_name": "Default Agent Profile",
+      "customer_routing_profile_id": "abc123XYZprofileId",
+      "customer_routing_profile_name": "VIP Customer Profile",
+      "bullseye_routing_rule_id": "bullseyeRule123",
+      "bullseye_routing_rule_name": "Tier 1 Skills Rule",
+      "bullseye_routing_number": 1,
+      "requested_skill_intent_combinations": [
+        {
+          "category": "language",
+          "options": [
+            {
+              "name": "English",
+              "proficiency": 3,
+              "backup": false
+            }
+          ]
+        }
+      ],
+      "used_skill_intent_combinations": [
+        {
+          "category": "language",
+          "options": [
+            {
+              "name": "English",
+              "proficiency": 3,
+              "backup": false
+            }
+          ]
+        }
+      ],
+      "routing_match_result": "success",
+      "routing_match_success": 1,
+      "routing_match_success_handled": 1,
+      "routing_match_success_unhandled": 0,
+      "routing_match_failure": 0,
+      "routing_match_failure_system_filtered": 0,
+      "routing_match_failure_unavailable": 0,
+      "routing_match_failure_skill_mismatch": 0,
+      "routing_match_failure_capacity_limited": 0,
+      "total_agents": 10,
+      "capable_agents": 5,
+      "unavailable_agents": 2,
+      "skill_mismatch_agents": 2,
+      "capacity_limited_agents": 1,
+      "system_filtered_agents": 0,
+      "routing_match_time": "2021-12-10T00:15:00Z",
+      "routing_task_start_time": "2021-12-10T00:14:00Z"
+    }
+  ]
+}

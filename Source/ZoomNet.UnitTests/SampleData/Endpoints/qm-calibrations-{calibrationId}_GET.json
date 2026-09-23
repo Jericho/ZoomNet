@@ -1,0 +1,69 @@
+{
+  "calibration_id": "0e73a69f8f104d24a589fa0c615abca8",
+  "account_id": "SY-AEWW6Ruqgt89_T2zqBg",
+  "task_name": "calibration_q9DyYF8iSXa3PVAhb6nekQ",
+  "status": "Active",
+  "channel_type": "VIDEO",
+  "division_id": "div_123",
+  "interaction_id": "q9DyYF8iSXa3PVAhb6nekQ",
+  "scorecard_id": "2uJ4u83yQ_qbyyFDmxsMcQ",
+  "scorecard_name": "Customer Care",
+  "minimum_evaluators": 100,
+  "due_date": "2026-08-05T10:45:00Z",
+  "create_time": "2026-07-20T09:52:22Z",
+  "modify_time": "2026-07-28T09:52:22Z",
+  "creator_info": {
+    "user_id": "b0_yDuNGSq65EF8i1f0PcQ",
+    "display_name": "Rick Arps"
+  },
+  "agent_info": {
+    "user_id": "httgPnTgTxq0d65-alfYVw",
+    "display_name": "Ashlee York"
+  },
+  "evaluators_info": [
+    {
+      "user_id": "b0_yDuNGSq65EF8i1f0PcQ",
+      "display_name": "Rick Arps"
+    }
+  ],
+  "scoring_format": "percentage",
+  "total_score": 50,
+  "evaluation_score": 42,
+  "calibration_score": 40,
+  "calibration_complete_percentage": 0.66,
+  "interaction_deleted": false,
+  "completion_date": "2026-03-16T10:45:00Z",
+  "evaluator_submissions": [
+    {
+      "evaluator": {
+        "user_id": "b0_yDuNGSq65EF8i1f0PcQ",
+        "display_name": "Rick Arps"
+      },
+      "status": "completed",
+      "submitted_at": "2026-07-28T10:10:00Z",
+      "score": 41
+    }
+  ],
+  "calibration_result": [
+    {
+      "section": "Greeting",
+      "max_score": 10,
+      "question_list": [
+        {
+          "title": "Used proper opening",
+          "description": "Started the interaction with the required opening statement.",
+          "max_score": 5,
+          "total_score": 5,
+          "evaluators": [
+            {
+              "score": 5,
+              "name": "Manager One",
+              "comment": "Good opening and tone.",
+              "answer": "Yes"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "holiday_hours": {
+    "holidays": [
+      {
+        "holiday_id": "ULfeE4mgSImyelNmTekUfg",
+        "name": "test"
+      }
+    ]
+  },
+  "break_hours": {
+    "break_hour_settings": [
+      {
+        "break_hour_id": "R4GeDFaLTpeQb1jPDCuPhA",
+        "break_hour_name": "Lunch Break"
+      }
+    ]
+  }
+}

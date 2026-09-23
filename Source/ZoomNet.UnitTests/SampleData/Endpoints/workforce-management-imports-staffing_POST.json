@@ -1,0 +1,13 @@
+{
+  "forecasts": [
+    {
+      "forecast_id": "cmsfsfsfewfetetett43t4t4t4",
+      "forecast_name": "June staffing import",
+      "status": "Completed",
+      "scheduling_group_count": 2,
+      "interval_count": 50,
+      "warning_count": 23,
+      "error_count": 3
+    }
+  ]
+}

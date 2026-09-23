@@ -1,0 +1,49 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "timezone": "America/Los_Angeles",
+  "start_time_from": "2021-12-10T00:00:00Z",
+  "start_time_to": "2021-12-10T00:15:00Z",
+  "end_time_from": "2021-12-10T00:00:00Z",
+  "end_time_to": "2021-12-10T00:15:00Z",
+  "engagement_timelines": [
+    {
+      "engagement_id": "W_VATTk_Q5aW6z5rZtBxAQ",
+      "channels": [
+        {
+          "channel": "video",
+          "channel_source": "web_video"
+        }
+      ],
+      "disconnect_info": "agent",
+      "entity_timelines": [
+        {
+          "entity": {
+            "entity_id": "agent-leg-abc123",
+            "entity_type": "Agent",
+            "entity_descriptive_name": "John Doe",
+            "channel": "voice",
+            "channel_source": "in_app_chat",
+            "matched_skills_and_intents": [
+              {
+                "type": "skill",
+                "category": "Language",
+                "name": "Billing",
+                "min_proficiency": 5
+              }
+            ]
+          },
+          "segments": [
+            {
+              "segment_type": "agent_conversation_segment",
+              "start_time": "2021-12-10T00:00:00Z",
+              "end_time": "2021-12-10T00:00:00Z",
+              "end_reason": "agent.hangup"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

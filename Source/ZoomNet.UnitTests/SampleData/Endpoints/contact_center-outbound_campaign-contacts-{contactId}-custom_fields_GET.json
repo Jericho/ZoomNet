@@ -1,0 +1,15 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "custom_fields": [
+    {
+      "custom_field_id": "7381d210-360e-4fbd-86e4-33eb7109b084",
+      "custom_field_name": "Preferred Contact Method",
+      "data_type": "string",
+      "custom_field_value": "phone"
+    }
+  ],
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA"
+}

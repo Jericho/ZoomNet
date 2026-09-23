@@ -1,0 +1,1400 @@
+{
+  "queue_id": "Ql3qxUWXSHes4PmcOmzyOg",
+  "bucket_id": null,
+  "menu_language_code": "en-US",
+  "is_accept_timeout": true,
+  "accept_timeout": 10,
+  "play_interval": 60,
+  "is_loop_play": false,
+  "loop_interval": 120,
+  "menu_options": [
+    {
+      "keypress": "1",
+      "menu_action": "request_callback",
+      "route_to_flow_id": "c0SjVYqFTzOKs7wgAXM5cQ",
+      "voicemail_inbox_id": "rdc5hgEDTKuEVI7nz0umDg",
+      "transfer_to_queue_id": null,
+      "outgoing_call": {
+        "target_type": "phone_number",
+        "destination_number": "5555550100",
+        "country_or_region": "1",
+        "zoom_phone_user_id": null,
+        "caller_id_type": "queue_outbound_caller_id",
+        "timeout_interval": 30
+      },
+      "callback_settings": {
+        "callback_number_type": "queue_default_caller_id",
+        "callback_confirm_keypress": "#",
+        "accept_callback_timeout": 10,
+        "is_offer_phone_number": false,
+        "is_offer_extension_number": false,
+        "outbound_dial_option": "auto_greeting",
+        "callback_timeout": 7200,
+        "is_callback_cancel_message": false,
+        "is_advanced_callback_confirmation": false,
+        "is_duplicate_check": false,
+        "is_consumer_first_connecting_message_loop": true,
+        "consumer_first_connecting_message_loop_interval": 0,
+        "is_callback_retry": false,
+        "callback_retry_interval": 60,
+        "is_set_callback_retry_max_attempts": false,
+        "callback_retry_max_attempts": 3,
+        "is_retry_callback_after_bridged": false,
+        "is_callback_cancel_sms": false,
+        "menu_settings": {
+          "is_offer_and_cancel_menus": false,
+          "is_invalid_option": false,
+          "skip_auto_country_code_detection": false,
+          "is_skip_auto_country_code_detection": false
+        },
+        "number_collection": {
+          "is_ask_phone_number_for_anonymous": false
+        },
+        "advanced_callback_confirmation": {
+          "is_voice_message_transcription": false,
+          "callback_voice_message_time_limit": 60,
+          "callback_voice_message_display_time": 5
+        },
+        "time_limits": {
+          "is_offer_times": false,
+          "offer_times": {
+            "timezone_id": "America/Los_Angeles",
+            "details": [
+              {
+                "dow": "Mon",
+                "time_type": "Specific_Time",
+                "time_ranges": [
+                  {
+                    "start": "09:00",
+                    "end": "18:00"
+                  }
+                ]
+              }
+            ]
+          },
+          "is_return_times": false,
+          "return_times": {
+            "timezone_id": "America/Los_Angeles",
+            "details": [
+              {
+                "dow": "Mon",
+                "time_type": "Specific_Time",
+                "time_ranges": [
+                  {
+                    "start": "09:00",
+                    "end": "18:00"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "load_protection": {
+          "is_load_protection": false,
+          "max_limit": 50,
+          "resume_threshold": 30
+        },
+        "is_accept_menu": true,
+        "accept_menu": {
+          "is_invalid_option": true,
+          "is_retry_attempt_message": true
+        },
+        "amd": {
+          "is_amd": false,
+          "amd_settings": {
+            "person_answered": {
+              "action_type": "transfer_to_agent",
+              "accept_menu_config": {
+                "is_invalid_option": false,
+                "is_retry_attempt_message": false
+              }
+            },
+            "voicemail": {
+              "action_type": "end_callback"
+            },
+            "fax": {},
+            "undetermined": {
+              "action_type": "transfer_to_agent"
+            },
+            "busy": {
+              "action_type": "end_callback"
+            },
+            "rejected": {
+              "action_type": "end_callback"
+            },
+            "no_answer": {
+              "action_type": "end_callback"
+            },
+            "invalid_number": {}
+          }
+        },
+        "skip_auto_country_code_detection": false,
+        "is_skip_auto_country_code_detection": false
+      }
+    }
+  ],
+  "menu_default_messages": {
+    "voice_id": "Joanna",
+    "audio_type": "text_to_speech",
+    "menu_options": [
+      {
+        "keypress": "1",
+        "play_message": null,
+        "play_message_custom_audio": {
+          "custom_audio_type": "standard",
+          "custom_audio": [
+            {
+              "order": 1,
+              "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+              "audio_variable": "keypress"
+            }
+          ]
+        }
+      }
+    ],
+    "disconnect_message": null,
+    "disconnect_message_custom_audio": {
+      "custom_audio": [
+        {
+          "order": 0,
+          "audio_asset_id": null
+        }
+      ]
+    },
+    "invalid_option_message_custom_audio": {
+      "custom_audio": [
+        {
+          "order": 0,
+          "audio_asset_id": null
+        }
+      ]
+    },
+    "is_repeat_option": true,
+    "repeat_keypress": {
+      "press_key": "0",
+      "menu_action": null,
+      "play_message": null,
+      "custom_audio": {
+        "custom_audio_type": "standard",
+        "custom_audio": [
+          {
+            "order": 1,
+            "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+            "audio_variable": "keypress"
+          }
+        ]
+      }
+    }
+  },
+  "menu_i18n_messages": [
+    {
+      "voice_id": "Joanna",
+      "audio_type": "text_to_speech",
+      "menu_options": [
+        {
+          "keypress": "1",
+          "play_message": null,
+          "play_message_custom_audio": {
+            "custom_audio_type": "standard",
+            "custom_audio": [
+              {
+                "order": 1,
+                "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                "audio_variable": "keypress"
+              }
+            ]
+          }
+        }
+      ],
+      "disconnect_message": null,
+      "disconnect_message_custom_audio": {
+        "custom_audio": [
+          {
+            "order": 0,
+            "audio_asset_id": null
+          }
+        ]
+      },
+      "invalid_option_message_custom_audio": {
+        "custom_audio": [
+          {
+            "order": 0,
+            "audio_asset_id": null
+          }
+        ]
+      },
+      "is_repeat_option": true,
+      "repeat_keypress": {
+        "press_key": "0",
+        "menu_action": null,
+        "play_message": null,
+        "custom_audio": {
+          "custom_audio_type": "standard",
+          "custom_audio": [
+            {
+              "order": 1,
+              "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+              "audio_variable": "keypress"
+            }
+          ]
+        }
+      },
+      "lang_code": "en-US"
+    }
+  ],
+  "callback_default_messages": {
+    "voice_id": "Joanna",
+    "callback_audio_type": "text_to_speech",
+    "callback_returning_message": null,
+    "callback_returning_message_custom_audio": {
+      "custom_audio_type": "standard",
+      "custom_audio": [
+        {
+          "order": 1,
+          "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+          "audio_variable": "keypress"
+        }
+      ]
+    },
+    "callback_confirm_message": null,
+    "callback_confirm_message_custom_audio": {
+      "custom_audio_type": "standard",
+      "custom_audio": [
+        {
+          "order": 1,
+          "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+          "audio_variable": "current_phone_number"
+        }
+      ]
+    },
+    "outbound_dial_greeting_message": null,
+    "outbound_dial_greeting_message_custom_audio": {
+      "custom_audio": [
+        {
+          "order": 0,
+          "audio_asset_id": null
+        }
+      ]
+    },
+    "callback_cancel_message": null,
+    "callback_cancel_message_custom_audio": {
+      "custom_audio": [
+        {
+          "order": 0,
+          "audio_asset_id": null
+        }
+      ]
+    },
+    "callback_cancel_sms_message": null,
+    "offer_number_message": null,
+    "offer_number_message_custom_audio": {
+      "custom_audio_type": "standard",
+      "custom_audio": [
+        {
+          "order": 1,
+          "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+          "audio_variable": "current_phone_number"
+        }
+      ]
+    },
+    "offer_extension_number_message": null,
+    "offer_extension_number_message_custom_audio": {
+      "custom_audio_type": "standard",
+      "custom_audio": [
+        {
+          "order": 1,
+          "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+          "audio_variable": "current_phone_number"
+        }
+      ]
+    },
+    "confirm_extension_number_message": null,
+    "confirm_extension_number_message_custom_audio": {
+      "custom_audio_type": "standard",
+      "custom_audio": [
+        {
+          "order": 1,
+          "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+          "audio_variable": "current_phone_number"
+        }
+      ]
+    },
+    "menu_settings": {
+      "callback_offer_menu": {
+        "greeting_message": null,
+        "greeting_custom_audio": {
+          "custom_audio_type": "standard",
+          "custom_audio": [
+            {
+              "order": 1,
+              "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+              "audio_variable": "current_phone_number"
+            }
+          ]
+        },
+        "is_greeting_for_anonymous": true,
+        "greeting_message_for_anonymous": null,
+        "greeting_custom_audio_for_anonymous": {
+          "custom_audio": [
+            {
+              "order": 0,
+              "audio_asset_id": null
+            }
+          ]
+        },
+        "callback_keypresses": [
+          {
+            "press_key": "1",
+            "menu_action": "accept_callback",
+            "keypress_message": null,
+            "keypress_message_custom_audio": {
+              "custom_audio_type": "standard",
+              "custom_audio": [
+                {
+                  "order": 1,
+                  "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                  "audio_variable": "keypress"
+                }
+              ]
+            },
+            "play_message": null,
+            "play_message_custom_audio": {
+              "custom_audio_type": "standard",
+              "custom_audio": [
+                {
+                  "order": 1,
+                  "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                  "audio_variable": "confirm_keypress"
+                }
+              ]
+            },
+            "confirm_action_message": null,
+            "confirm_action_custom_audio": {
+              "custom_audio_type": "standard",
+              "custom_audio": [
+                {
+                  "order": 1,
+                  "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                  "audio_variable": "current_phone_number"
+                }
+              ]
+            }
+          }
+        ],
+        "is_repeat_option": true,
+        "repeat_keypress": {
+          "press_key": "0",
+          "menu_action": null,
+          "play_message": null,
+          "custom_audio": {
+            "custom_audio_type": "standard",
+            "custom_audio": [
+              {
+                "order": 1,
+                "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                "audio_variable": "keypress"
+              }
+            ]
+          }
+        }
+      },
+      "callback_cancel_menu": {
+        "greeting_message": null,
+        "greeting_custom_audio": {
+          "custom_audio": [
+            {
+              "order": 0,
+              "audio_asset_id": null
+            }
+          ]
+        },
+        "callback_keypresses": [
+          {
+            "press_key": "1",
+            "menu_action": "cancel_callback",
+            "keypress_message": null,
+            "keypress_message_custom_audio": {
+              "custom_audio_type": "standard",
+              "custom_audio": [
+                {
+                  "order": 1,
+                  "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                  "audio_variable": "keypress"
+                }
+              ]
+            },
+            "play_message": null,
+            "play_message_custom_audio": {
+              "custom_audio": [
+                {
+                  "order": 0,
+                  "audio_asset_id": null
+                }
+              ]
+            }
+          }
+        ],
+        "is_repeat_option": true,
+        "repeat_keypress": {
+          "press_key": "0",
+          "menu_action": null,
+          "play_message": null,
+          "custom_audio": {
+            "custom_audio_type": "standard",
+            "custom_audio": [
+              {
+                "order": 1,
+                "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                "audio_variable": "keypress"
+              }
+            ]
+          }
+        }
+      },
+      "invalid_option": {
+        "invalid_message": null,
+        "invalid_custom_audio": {
+          "custom_audio": [
+            {
+              "order": 0,
+              "audio_asset_id": null
+            }
+          ]
+        },
+        "disconnect_message": null,
+        "disconnect_custom_audio": {
+          "custom_audio": [
+            {
+              "order": 0,
+              "audio_asset_id": null
+            }
+          ]
+        },
+        "is_repeat": true,
+        "repeat_interval": 0,
+        "repeat_limit": 0
+      }
+    },
+    "number_collection": {
+      "ask_phone_number_message_for_anonymous": null,
+      "ask_phone_number_custom_audio_for_anonymous": {
+        "custom_audio_type": "standard",
+        "custom_audio": [
+          {
+            "order": 1,
+            "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+            "audio_variable": "keypress"
+          }
+        ]
+      },
+      "ask_phone_number_again_custom_audio": {
+        "custom_audio_type": "standard",
+        "custom_audio": [
+          {
+            "order": 1,
+            "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+            "audio_variable": "current_phone_number"
+          }
+        ]
+      }
+    },
+    "extension_collection": {
+      "callback_confirm_with_extension_message": null,
+      "callback_confirm_with_extension_custom_audio": {
+        "custom_audio_type": "standard",
+        "custom_audio": [
+          {
+            "order": 1,
+            "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+            "audio_variable": "current_phone_number"
+          }
+        ]
+      }
+    },
+    "advanced_callback_confirmation": {
+      "advanced_confirm_message": {
+        "key_press": null,
+        "message": null,
+        "custom_audio": {
+          "custom_audio_type": "standard",
+          "custom_audio": [
+            {
+              "order": 1,
+              "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+              "audio_variable": "current_phone_number"
+            }
+          ]
+        }
+      },
+      "advanced_confirm_message_with_extension_prompt": {
+        "key_press": null,
+        "message": null,
+        "custom_audio": {
+          "custom_audio_type": "standard",
+          "custom_audio": [
+            {
+              "order": 1,
+              "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+              "audio_variable": "current_phone_number"
+            }
+          ]
+        }
+      },
+      "greeting_setting": {
+        "message": null,
+        "custom_audio": {
+          "custom_audio": [
+            {
+              "order": 0,
+              "audio_asset_id": null
+            }
+          ]
+        }
+      },
+      "end_setting": {
+        "message": null,
+        "custom_audio": {
+          "custom_audio": [
+            {
+              "order": 0,
+              "audio_asset_id": null
+            }
+          ]
+        }
+      },
+      "key_press_listen_setting": {
+        "message": null,
+        "custom_audio": {
+          "custom_audio": [
+            {
+              "order": 0,
+              "audio_asset_id": null
+            }
+          ]
+        }
+      },
+      "key_press_save_setting": {
+        "message": null,
+        "custom_audio": {
+          "custom_audio": [
+            {
+              "order": 0,
+              "audio_asset_id": null
+            }
+          ]
+        }
+      },
+      "key_press_re_recording_setting": {
+        "message": null,
+        "custom_audio": {
+          "custom_audio": [
+            {
+              "order": 0,
+              "audio_asset_id": null
+            }
+          ]
+        }
+      },
+      "too_short_setting": {
+        "message": null,
+        "custom_audio": {
+          "custom_audio": [
+            {
+              "order": 0,
+              "audio_asset_id": null
+            }
+          ]
+        }
+      },
+      "play_save_setting": {
+        "message": null,
+        "custom_audio": {
+          "custom_audio": [
+            {
+              "order": 0,
+              "audio_asset_id": null
+            }
+          ]
+        }
+      }
+    },
+    "load_protection": {
+      "callback_setup_fail_message": null,
+      "callback_setup_fail_custom_audio": {
+        "custom_audio": [
+          {
+            "order": 0,
+            "audio_asset_id": null
+          }
+        ]
+      }
+    },
+    "amd": {
+      "amd_settings": {
+        "person_answered": {
+          "accept_menu_config": {
+            "options": [
+              {
+                "press_key": "0",
+                "menu_action": null,
+                "play_message": null,
+                "custom_audio": {
+                  "custom_audio_type": "standard",
+                  "custom_audio": [
+                    {
+                      "order": 1,
+                      "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                      "audio_variable": "keypress"
+                    }
+                  ]
+                }
+              }
+            ],
+            "is_repeat_option": true,
+            "repeat_keypress": {
+              "press_key": "0",
+              "menu_action": null,
+              "play_message": null,
+              "custom_audio": {
+                "custom_audio_type": "standard",
+                "custom_audio": [
+                  {
+                    "order": 1,
+                    "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                    "audio_variable": "keypress"
+                  }
+                ]
+              }
+            },
+            "invalid_option": {
+              "invalid_message": null,
+              "invalid_custom_audio": {
+                "custom_audio": [
+                  {
+                    "order": 0,
+                    "audio_asset_id": null
+                  }
+                ]
+              },
+              "disconnect_message": null,
+              "disconnect_custom_audio": {
+                "custom_audio": [
+                  {
+                    "order": 0,
+                    "audio_asset_id": null
+                  }
+                ]
+              },
+              "is_repeat": true,
+              "repeat_interval": 0,
+              "repeat_limit": 0
+            },
+            "retry_attempt_message": {
+              "attempt_message": null,
+              "attempt_custom_audio": {
+                "custom_audio_type": "standard",
+                "custom_audio": [
+                  {
+                    "order": 1,
+                    "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                    "audio_variable": "retry_attempt_number"
+                  }
+                ]
+              },
+              "over_limit_attempt_message": null,
+              "over_limit_attempt_custom_audio": {
+                "custom_audio": [
+                  {
+                    "order": 0,
+                    "audio_asset_id": null
+                  }
+                ]
+              },
+              "final_attempt_message": null,
+              "final_attempt_custom_audio": {
+                "custom_audio": [
+                  {
+                    "order": 0,
+                    "audio_asset_id": null
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "voicemail": {
+          "voicemail_asset_id": null
+        }
+      }
+    },
+    "accept_menu": {
+      "options": [
+        {
+          "press_key": "0",
+          "menu_action": null,
+          "play_message": null,
+          "custom_audio": {
+            "custom_audio_type": "standard",
+            "custom_audio": [
+              {
+                "order": 1,
+                "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                "audio_variable": "keypress"
+              }
+            ]
+          }
+        }
+      ],
+      "is_repeat_option": true,
+      "repeat_keypress": {
+        "press_key": "0",
+        "menu_action": null,
+        "play_message": null,
+        "custom_audio": {
+          "custom_audio_type": "standard",
+          "custom_audio": [
+            {
+              "order": 1,
+              "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+              "audio_variable": "keypress"
+            }
+          ]
+        }
+      },
+      "invalid_option": {
+        "invalid_message": null,
+        "invalid_custom_audio": {
+          "custom_audio": [
+            {
+              "order": 0,
+              "audio_asset_id": null
+            }
+          ]
+        },
+        "disconnect_message": null,
+        "disconnect_custom_audio": {
+          "custom_audio": [
+            {
+              "order": 0,
+              "audio_asset_id": null
+            }
+          ]
+        },
+        "is_repeat": true,
+        "repeat_interval": 0,
+        "repeat_limit": 0
+      },
+      "retry_attempt_message": {
+        "attempt_message": null,
+        "attempt_custom_audio": {
+          "custom_audio_type": "standard",
+          "custom_audio": [
+            {
+              "order": 1,
+              "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+              "audio_variable": "retry_attempt_number"
+            }
+          ]
+        },
+        "over_limit_attempt_message": null,
+        "over_limit_attempt_custom_audio": {
+          "custom_audio": [
+            {
+              "order": 0,
+              "audio_asset_id": null
+            }
+          ]
+        },
+        "final_attempt_message": null,
+        "final_attempt_custom_audio": {
+          "custom_audio": [
+            {
+              "order": 0,
+              "audio_asset_id": null
+            }
+          ]
+        }
+      }
+    }
+  },
+  "callback_i18n_messages": [
+    {
+      "voice_id": "Joanna",
+      "callback_audio_type": "text_to_speech",
+      "callback_returning_message": null,
+      "callback_returning_message_custom_audio": {
+        "custom_audio_type": "standard",
+        "custom_audio": [
+          {
+            "order": 1,
+            "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+            "audio_variable": "keypress"
+          }
+        ]
+      },
+      "callback_confirm_message": null,
+      "callback_confirm_message_custom_audio": {
+        "custom_audio_type": "standard",
+        "custom_audio": [
+          {
+            "order": 1,
+            "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+            "audio_variable": "current_phone_number"
+          }
+        ]
+      },
+      "outbound_dial_greeting_message": null,
+      "outbound_dial_greeting_message_custom_audio": {
+        "custom_audio": [
+          {
+            "order": 0,
+            "audio_asset_id": null
+          }
+        ]
+      },
+      "callback_cancel_message": null,
+      "callback_cancel_message_custom_audio": {
+        "custom_audio": [
+          {
+            "order": 0,
+            "audio_asset_id": null
+          }
+        ]
+      },
+      "callback_cancel_sms_message": null,
+      "offer_number_message": null,
+      "offer_number_message_custom_audio": {
+        "custom_audio_type": "standard",
+        "custom_audio": [
+          {
+            "order": 1,
+            "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+            "audio_variable": "current_phone_number"
+          }
+        ]
+      },
+      "offer_extension_number_message": null,
+      "offer_extension_number_message_custom_audio": {
+        "custom_audio_type": "standard",
+        "custom_audio": [
+          {
+            "order": 1,
+            "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+            "audio_variable": "current_phone_number"
+          }
+        ]
+      },
+      "confirm_extension_number_message": null,
+      "confirm_extension_number_message_custom_audio": {
+        "custom_audio_type": "standard",
+        "custom_audio": [
+          {
+            "order": 1,
+            "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+            "audio_variable": "current_phone_number"
+          }
+        ]
+      },
+      "menu_settings": {
+        "callback_offer_menu": {
+          "greeting_message": null,
+          "greeting_custom_audio": {
+            "custom_audio_type": "standard",
+            "custom_audio": [
+              {
+                "order": 1,
+                "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                "audio_variable": "current_phone_number"
+              }
+            ]
+          },
+          "is_greeting_for_anonymous": true,
+          "greeting_message_for_anonymous": null,
+          "greeting_custom_audio_for_anonymous": {
+            "custom_audio": [
+              {
+                "order": 0,
+                "audio_asset_id": null
+              }
+            ]
+          },
+          "callback_keypresses": [
+            {
+              "press_key": "1",
+              "menu_action": "accept_callback",
+              "keypress_message": null,
+              "keypress_message_custom_audio": {
+                "custom_audio_type": "standard",
+                "custom_audio": [
+                  {
+                    "order": 1,
+                    "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                    "audio_variable": "keypress"
+                  }
+                ]
+              },
+              "play_message": null,
+              "play_message_custom_audio": {
+                "custom_audio_type": "standard",
+                "custom_audio": [
+                  {
+                    "order": 1,
+                    "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                    "audio_variable": "confirm_keypress"
+                  }
+                ]
+              },
+              "confirm_action_message": null,
+              "confirm_action_custom_audio": {
+                "custom_audio_type": "standard",
+                "custom_audio": [
+                  {
+                    "order": 1,
+                    "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                    "audio_variable": "current_phone_number"
+                  }
+                ]
+              }
+            }
+          ],
+          "is_repeat_option": true,
+          "repeat_keypress": {
+            "press_key": "0",
+            "menu_action": null,
+            "play_message": null,
+            "custom_audio": {
+              "custom_audio_type": "standard",
+              "custom_audio": [
+                {
+                  "order": 1,
+                  "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                  "audio_variable": "keypress"
+                }
+              ]
+            }
+          }
+        },
+        "callback_cancel_menu": {
+          "greeting_message": null,
+          "greeting_custom_audio": {
+            "custom_audio": [
+              {
+                "order": 0,
+                "audio_asset_id": null
+              }
+            ]
+          },
+          "callback_keypresses": [
+            {
+              "press_key": "1",
+              "menu_action": "cancel_callback",
+              "keypress_message": null,
+              "keypress_message_custom_audio": {
+                "custom_audio_type": "standard",
+                "custom_audio": [
+                  {
+                    "order": 1,
+                    "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                    "audio_variable": "keypress"
+                  }
+                ]
+              },
+              "play_message": null,
+              "play_message_custom_audio": {
+                "custom_audio": [
+                  {
+                    "order": 0,
+                    "audio_asset_id": null
+                  }
+                ]
+              }
+            }
+          ],
+          "is_repeat_option": true,
+          "repeat_keypress": {
+            "press_key": "0",
+            "menu_action": null,
+            "play_message": null,
+            "custom_audio": {
+              "custom_audio_type": "standard",
+              "custom_audio": [
+                {
+                  "order": 1,
+                  "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                  "audio_variable": "keypress"
+                }
+              ]
+            }
+          }
+        },
+        "invalid_option": {
+          "invalid_message": null,
+          "invalid_custom_audio": {
+            "custom_audio": [
+              {
+                "order": 0,
+                "audio_asset_id": null
+              }
+            ]
+          },
+          "disconnect_message": null,
+          "disconnect_custom_audio": {
+            "custom_audio": [
+              {
+                "order": 0,
+                "audio_asset_id": null
+              }
+            ]
+          },
+          "is_repeat": true,
+          "repeat_interval": 0,
+          "repeat_limit": 0
+        }
+      },
+      "number_collection": {
+        "ask_phone_number_message_for_anonymous": null,
+        "ask_phone_number_custom_audio_for_anonymous": {
+          "custom_audio_type": "standard",
+          "custom_audio": [
+            {
+              "order": 1,
+              "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+              "audio_variable": "keypress"
+            }
+          ]
+        },
+        "ask_phone_number_again_custom_audio": {
+          "custom_audio_type": "standard",
+          "custom_audio": [
+            {
+              "order": 1,
+              "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+              "audio_variable": "current_phone_number"
+            }
+          ]
+        }
+      },
+      "extension_collection": {
+        "callback_confirm_with_extension_message": null,
+        "callback_confirm_with_extension_custom_audio": {
+          "custom_audio_type": "standard",
+          "custom_audio": [
+            {
+              "order": 1,
+              "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+              "audio_variable": "current_phone_number"
+            }
+          ]
+        }
+      },
+      "advanced_callback_confirmation": {
+        "advanced_confirm_message": {
+          "key_press": null,
+          "message": null,
+          "custom_audio": {
+            "custom_audio_type": "standard",
+            "custom_audio": [
+              {
+                "order": 1,
+                "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                "audio_variable": "current_phone_number"
+              }
+            ]
+          }
+        },
+        "advanced_confirm_message_with_extension_prompt": {
+          "key_press": null,
+          "message": null,
+          "custom_audio": {
+            "custom_audio_type": "standard",
+            "custom_audio": [
+              {
+                "order": 1,
+                "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                "audio_variable": "current_phone_number"
+              }
+            ]
+          }
+        },
+        "greeting_setting": {
+          "message": null,
+          "custom_audio": {
+            "custom_audio": [
+              {
+                "order": 0,
+                "audio_asset_id": null
+              }
+            ]
+          }
+        },
+        "end_setting": {
+          "message": null,
+          "custom_audio": {
+            "custom_audio": [
+              {
+                "order": 0,
+                "audio_asset_id": null
+              }
+            ]
+          }
+        },
+        "key_press_listen_setting": {
+          "message": null,
+          "custom_audio": {
+            "custom_audio": [
+              {
+                "order": 0,
+                "audio_asset_id": null
+              }
+            ]
+          }
+        },
+        "key_press_save_setting": {
+          "message": null,
+          "custom_audio": {
+            "custom_audio": [
+              {
+                "order": 0,
+                "audio_asset_id": null
+              }
+            ]
+          }
+        },
+        "key_press_re_recording_setting": {
+          "message": null,
+          "custom_audio": {
+            "custom_audio": [
+              {
+                "order": 0,
+                "audio_asset_id": null
+              }
+            ]
+          }
+        },
+        "too_short_setting": {
+          "message": null,
+          "custom_audio": {
+            "custom_audio": [
+              {
+                "order": 0,
+                "audio_asset_id": null
+              }
+            ]
+          }
+        },
+        "play_save_setting": {
+          "message": null,
+          "custom_audio": {
+            "custom_audio": [
+              {
+                "order": 0,
+                "audio_asset_id": null
+              }
+            ]
+          }
+        }
+      },
+      "load_protection": {
+        "callback_setup_fail_message": null,
+        "callback_setup_fail_custom_audio": {
+          "custom_audio": [
+            {
+              "order": 0,
+              "audio_asset_id": null
+            }
+          ]
+        }
+      },
+      "amd": {
+        "amd_settings": {
+          "person_answered": {
+            "accept_menu_config": {
+              "options": [
+                {
+                  "press_key": "0",
+                  "menu_action": null,
+                  "play_message": null,
+                  "custom_audio": {
+                    "custom_audio_type": "standard",
+                    "custom_audio": [
+                      {
+                        "order": 1,
+                        "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                        "audio_variable": "keypress"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "is_repeat_option": true,
+              "repeat_keypress": {
+                "press_key": "0",
+                "menu_action": null,
+                "play_message": null,
+                "custom_audio": {
+                  "custom_audio_type": "standard",
+                  "custom_audio": [
+                    {
+                      "order": 1,
+                      "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                      "audio_variable": "keypress"
+                    }
+                  ]
+                }
+              },
+              "invalid_option": {
+                "invalid_message": null,
+                "invalid_custom_audio": {
+                  "custom_audio": [
+                    {
+                      "order": 0,
+                      "audio_asset_id": null
+                    }
+                  ]
+                },
+                "disconnect_message": null,
+                "disconnect_custom_audio": {
+                  "custom_audio": [
+                    {
+                      "order": 0,
+                      "audio_asset_id": null
+                    }
+                  ]
+                },
+                "is_repeat": true,
+                "repeat_interval": 0,
+                "repeat_limit": 0
+              },
+              "retry_attempt_message": {
+                "attempt_message": null,
+                "attempt_custom_audio": {
+                  "custom_audio_type": "standard",
+                  "custom_audio": [
+                    {
+                      "order": 1,
+                      "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                      "audio_variable": "retry_attempt_number"
+                    }
+                  ]
+                },
+                "over_limit_attempt_message": null,
+                "over_limit_attempt_custom_audio": {
+                  "custom_audio": [
+                    {
+                      "order": 0,
+                      "audio_asset_id": null
+                    }
+                  ]
+                },
+                "final_attempt_message": null,
+                "final_attempt_custom_audio": {
+                  "custom_audio": [
+                    {
+                      "order": 0,
+                      "audio_asset_id": null
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "voicemail": {
+            "voicemail_asset_id": null
+          }
+        }
+      },
+      "accept_menu": {
+        "options": [
+          {
+            "press_key": "0",
+            "menu_action": null,
+            "play_message": null,
+            "custom_audio": {
+              "custom_audio_type": "standard",
+              "custom_audio": [
+                {
+                  "order": 1,
+                  "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                  "audio_variable": "keypress"
+                }
+              ]
+            }
+          }
+        ],
+        "is_repeat_option": true,
+        "repeat_keypress": {
+          "press_key": "0",
+          "menu_action": null,
+          "play_message": null,
+          "custom_audio": {
+            "custom_audio_type": "standard",
+            "custom_audio": [
+              {
+                "order": 1,
+                "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                "audio_variable": "keypress"
+              }
+            ]
+          }
+        },
+        "invalid_option": {
+          "invalid_message": null,
+          "invalid_custom_audio": {
+            "custom_audio": [
+              {
+                "order": 0,
+                "audio_asset_id": null
+              }
+            ]
+          },
+          "disconnect_message": null,
+          "disconnect_custom_audio": {
+            "custom_audio": [
+              {
+                "order": 0,
+                "audio_asset_id": null
+              }
+            ]
+          },
+          "is_repeat": true,
+          "repeat_interval": 0,
+          "repeat_limit": 0
+        },
+        "retry_attempt_message": {
+          "attempt_message": null,
+          "attempt_custom_audio": {
+            "custom_audio_type": "standard",
+            "custom_audio": [
+              {
+                "order": 1,
+                "audio_asset_id": "-6y2_bOWTBixtxmNywboJg",
+                "audio_variable": "retry_attempt_number"
+              }
+            ]
+          },
+          "over_limit_attempt_message": null,
+          "over_limit_attempt_custom_audio": {
+            "custom_audio": [
+              {
+                "order": 0,
+                "audio_asset_id": null
+              }
+            ]
+          },
+          "final_attempt_message": null,
+          "final_attempt_custom_audio": {
+            "custom_audio": [
+              {
+                "order": 0,
+                "audio_asset_id": null
+              }
+            ]
+          }
+        }
+      },
+      "lang_code": "en-US"
+    }
+  ],
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
+}

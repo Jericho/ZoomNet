@@ -1,0 +1,153 @@
+{
+  "voicemail_transcription": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "invalid",
+    "modified": true
+  },
+  "voicemail_notification_by_email": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "site",
+    "modified": false,
+    "include_voicemail_file": true,
+    "include_voicemail_transcription": true,
+    "forward_voicemail_to_email": true,
+    "forward_email_list": [
+      "vm-alerts@example.com"
+    ]
+  },
+  "auto_call_recording": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "invalid",
+    "modified": true,
+    "recording_calls": "inbound_and_outbound",
+    "recording_transcription": true,
+    "allow_stop_resume_recording": true,
+    "disconnect_on_recording_failure": true,
+    "play_recording_beep_tone": {
+      "enable": true,
+      "play_beep_volume": 60,
+      "play_beep_time_interval": 15,
+      "play_beep_member": "allMember"
+    },
+    "inbound_audio_notification": {
+      "recording_start_prompt": true,
+      "recording_start_prompt_audio_id": "Q6wPZB5kT3S6aL9cM1nR2Q",
+      "recording_explicit_consent": false
+    },
+    "outbound_audio_notification": {
+      "recording_start_prompt": true,
+      "recording_start_prompt_audio_id": "H6nM5cV4bX3zA2sD1fG7QW",
+      "recording_explicit_consent": false
+    }
+  },
+  "ad_hoc_call_recording_for_members": {
+    "enable": true
+  },
+  "sms": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "invalid",
+    "modified": true,
+    "international_sms": false,
+    "international_sms_countries": [
+      "US"
+    ]
+  },
+  "call_queue_pickup_code": {
+    "enable": true
+  },
+  "online_fax": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "invalid",
+    "modified": false,
+    "fax_notification_by_email": true,
+    "fax_notification_email_list": [
+      "vm-alerts@example.com"
+    ],
+    "include_fax_as_attachment": true,
+    "enable_outbound_fax_transmission_report": true
+  },
+  "sms_template": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "invalid",
+    "modified": true,
+    "sms_template_list": [
+      {
+        "sms_template_id": "a53ff4ee-0af3-4732-b9ea-6d6b782a5f9f",
+        "name": "Follow-up reply",
+        "description": "General follow-up template",
+        "content": "Thanks for contacting us. We will follow up shortly.",
+        "active": true
+      }
+    ]
+  },
+  "sms_auto_reply": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "invalid",
+    "modified": false,
+    "auto_reply_for_inbound_message": {
+      "trigger_event_type": "closed_hours",
+      "content": "Thank you for contacting us. We are currently closed and will respond during business hours.",
+      "active": true
+    }
+  },
+  "call_screening": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "invalid",
+    "modified": true,
+    "exclude_user_company_contacts": true
+  },
+  "block_calls_without_caller_id": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "invalid",
+    "modified": false
+  },
+  "call_queue_opt_out_reason": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "invalid",
+    "modified": true,
+    "call_queue_opt_out_reasons_list": [
+      {
+        "code": "Lunch break",
+        "system": false,
+        "enable": true
+      }
+    ]
+  },
+  "auto_answer_call_queue_calls": {
+    "enable": false,
+    "locked": false,
+    "locked_by": "site",
+    "modified": false
+  },
+  "auto_delete_data_after_retention_duration": {
+    "enable": false,
+    "locked": false,
+    "locked_by": "invalid",
+    "modified": false,
+    "items": [
+      {
+        "type": "callLog",
+        "duration": -1,
+        "time_unit": "day"
+      }
+    ],
+    "delete_type": 1,
+    "permanently_delete_after_days": -1
+  },
+  "team_sms_thread_summary": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "invalid",
+    "modified": true
+  }
+}

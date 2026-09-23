@@ -1,0 +1,28 @@
+{
+  "from": "2026-06-17T00:00:00.0000000\u002B00:00",
+  "meetings": [
+    {
+      "meeting_uuid": "yO3dfhh3t467UkQ==",
+      "files": [
+        {
+          "file_id": "a2f19f96-9294-4f51-8134-6f0eea108eb2",
+          "sources": [
+            {
+              "source_ip": "10.0.0.1",
+              "download_timestamps": [
+                "2026-06-17T01:02:03.0000000\u002B00:00",
+                "2026-06-17T03:04:05.0000000\u002B00:00"
+              ],
+              "total_download_count": 2,
+              "first_download_time": "2026-06-17T01:02:03.0000000\u002B00:00",
+              "last_download_time": "2026-06-17T03:04:05.0000000\u002B00:00"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "next_page_token": "At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2",
+  "page_size": 30,
+  "to": "2026-06-23T23:59:59.0000000\u002B00:00"
+}

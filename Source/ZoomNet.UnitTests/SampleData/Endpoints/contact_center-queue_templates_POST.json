@@ -1,0 +1,11 @@
+{
+  "queue_template_id": "cIInrJZUQWy12qoLPASXLw",
+  "queue_template_name": "Voice Queue Template",
+  "queue_template_description": "Standard template for voice queues with default settings",
+  "channel": "voice",
+  "queue_template_type": "add",
+  "queue_template_status": "active",
+  "queue_template_need_attention": false,
+  "modified_by": "IGTRVt3gQ2i-WjoUIjeZxw",
+  "last_modified_time": "2022-02-15T09:27:15.0000000\u002B00:00"
+}

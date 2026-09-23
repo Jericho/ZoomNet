@@ -1,0 +1,35 @@
+{
+  "job_id": "job_abc123",
+  "state": "PROCESSING",
+  "submitted_at": "2026-01-05T18:34:12.0000000\u002B00:00",
+  "input": {
+    "mode": "PREFIX",
+    "source": "S3",
+    "uri": "s3://acme-bucket/text/2025/11/"
+  },
+  "output": {
+    "destination": "S3",
+    "uri": "s3://acme-bucket/translations/2025/11/",
+    "layout": "PREFIX"
+  },
+  "config": {
+    "source_language": "en-US",
+    "target_languages": [
+      "es-ES"
+    ]
+  },
+  "summary": {
+    "total_files": 2487,
+    "queued": 0,
+    "processing": 23,
+    "succeeded": 2450,
+    "failed": 14,
+    "skipped": 0,
+    "canceled": 0
+  },
+  "error": {
+    "code": "INVALID_CREDENTIALS",
+    "message": "AWS credentials expired",
+    "details": {}
+  }
+}

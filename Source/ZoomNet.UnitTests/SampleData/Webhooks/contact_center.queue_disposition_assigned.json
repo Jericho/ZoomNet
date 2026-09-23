@@ -1,0 +1,26 @@
+{
+  "event": "contact_center.queue_disposition_assigned",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "cc_queue_id": "xqJE_cgERLyAJHYYL5LLeg",
+      "queue_name": "My Queue",
+      "dispositions": [
+        {
+          "disposition_id": "3mKdQvXTRC-hqPzL9scLLQ",
+          "disposition_name": "Resolved"
+        },
+        {
+          "disposition_id": "Rk2ZQmXVSY6t8FLWpNc9jw",
+          "disposition_name": "Escalated"
+        }
+      ],
+      "assign_type": "inbound",
+      "modified_by": "ukAAkZKfROKMSw1bj_RDFQ",
+      "date_time_ms": "2026-07-13T09:27:15.987Z",
+      "division_id": "f5c4ZOdARVu5VWQaWkQyrw",
+      "division_name": "My Division"
+    }
+  }
+}

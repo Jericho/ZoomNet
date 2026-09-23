@@ -1,0 +1,14 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "queues": [
+    {
+      "queue_id": "1QEhGTxFRmqKKLrZIm18CQ",
+      "queue_name": "Voice - Customer Support",
+      "queue_description": "Agents assigned to this queue handle Customer Support voice calls."
+    }
+  ],
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
+}

@@ -1,0 +1,32 @@
+{
+  "tracking_id": "WEB_624c2507e67d0c7608a6d8a21ef8c7d7",
+  "login_time": "2026-08-13T05:41:22.0000000\u002B00:00",
+  "login_status": "success",
+  "protocol": "saml",
+  "config_id": "pU3KBVgsRh28pGZESVbr9A",
+  "config_title": "IdP - Prod",
+  "email": "jane.doe@example.com",
+  "error_code": 2104,
+  "error_message": "Please check the Zoom invitation email and confirm the invitation before the SSO login.",
+  "destination": "https://success.zoom.us/saml/SSO",
+  "attributes": {},
+  "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36",
+  "saml": {
+    "idp_status_code": "urn:oasis:names:tc:SAML:2.0:status:Success",
+    "issuer": "http://www.idp.com/exk1a2b3c4",
+    "name_id": "nameId",
+    "signing_certificate": "MIIG0zCCBbugAwIBAgIQBYnsZRQcF8KwY44OipxXQTANBgkqhkiG9w0BAQsFADBZMQswCQYDVQQG EwJVUzEVMBMGA1UEChMMRGlnaUNlcnQgSW5jMTMwMQYDVQQDEypEaWdpQ2VydCBHbG9iYWwgRzIg VExTIFJTQSBTSEEyNTYgMjAyMCBDQTEwHhcNMjUxMDMxMDAwMDAwWhcNMjYxMjAxMjM1OTU5WjBr MQswCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTERMA8GA1UEBxMIU2FuIEpvc2UxIjAg BgNVBAoTGVpvb20gQ29tbXVuaWNhdGlvbnMsIEluYy4xEDAOBgNVBAMTB3pvb20udXMwggEiMA0G CSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDdEqamIL8xfFF2XeIGtyLUhHON\u002BsryKje\u002Byn/IAjJf aSMYLULKEpxkO7A7xWCfphy1gnH4MtkPUwmsFhnz5owq1AukxWGy5uDCk4XRZm/mkLmcFkc7d1U4 Pg0Tw5ZxliR9BavKF0JIyy5EvsofiWl6ypu\u002B6gJ0nyhXVXTRwHENALGfFCC7s4lLPfZ8pwvuKCWv m9BB0oMPob23yrolcVowNZrH6tiqwlSKrOKo3WM\u002BQZIhLx893m9CMaD2lAh7tGOa/5LqPVw33APS oV9vddwlbi6wwP9QWn6am/S2OdQFHtXHoQY1HhKR1AU3OQyyVyoipv2IPN9kK5Irs3mOaK\u002B7AgMB AAGjggODMIIDfzAfBgNVHSMEGDAWgBR0hYDAZsffN97PvSk3qgMdvu3NFzAdBgNVHQ4EFgQUxKeR FGdhYW/tcSqXMNcfwL1fKJgwEgYDVR0RBAswCYIHem9vbS51czA\u002BBgNVHSAENzA1MDMGBmeBDAEC AjApMCcGCCsGAQUFBwIBFhtodHRwOi8vd3d3LmRpZ2ljZXJ0LmNvbS9DUFMwDgYDVR0PAQH/BAQD AgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjCBnwYDVR0fBIGXMIGUMEigRqBEhkJo dHRwOi8vY3JsMy5kaWdpY2VydC5jb20vRGlnaUNlcnRHbG9iYWxHMlRMU1JTQVNIQTI1NjIwMjBD QTEtMS5jcmwwSKBGoESGQmh0dHA6Ly9jcmw0LmRpZ2ljZXJ0LmNvbS9EaWdpQ2VydEdsb2JhbEcy VExTUlNBU0hBMjU2MjAyMENBMS0xLmNybDCBhwYIKwYBBQUHAQEEezB5MCQGCCsGAQUFBzABhhho dHRwOi8vb2NzcC5kaWdpY2VydC5jb20wUQYIKwYBBQUHMAKGRWh0dHA6Ly9jYWNlcnRzLmRpZ2lj ZXJ0LmNvbS9EaWdpQ2VydEdsb2JhbEcyVExTUlNBU0hBMjU2MjAyMENBMS0xLmNydDAMBgNVHRMB Af8EAjAAMIIBfgYKKwYBBAHWeQIEAgSCAW4EggFqAWgAdQDXbX0Q0af1d8LH6V/XAL/5gskzWmXh 0LMBcxfAyMVpdwAAAZo7e1OEAAAEAwBGMEQCIH7aysmRxf1gfYG6PgTId6kFGryFYorBqynSOCfz A9zPAiBq0g3Y5C85N9X3izFwJcFcPqA3CQsctwZzh7\u002BD7bvpVgB3AMIxfldFGaNF7n843rKQQevH wiFaIr9/1bWtdprZDlLNAAABmjt7UywAAAQDAEgwRgIhAOFn3neOmhGYDemVAVWOlLxVQ71flk9g mSHOdODdSy0IAiEAhwNs2k1/QjV2fi9kMosh4nKnGHHorWv7mBqVTP5SuYMAdgCUTkOH\u002BuzB74Hz GSQmqBhlAcfTXzgCAT9yZ31VNy4Z2AAAAZo7e1NVAAAEAwBHMEUCIQDQdcSDy2Ph43DVNuODNQAF /ub0U4TIU\u002BdcYZyGeMxeJgIgNEk8Ek8jn0Vbyl8iLcg\u002BOqEIhpbfpzTZvC8I0mTceYIwDQYJKoZI hvcNAQELBQADggEBAIDXLj5H9xc8ohH0lq2S1A7Fpgqbkgub2ASnrJk0i\u002BO/qPjMYaUCpk\u002Bk\u002BAkp RfmoFFTeZrVnK8U62VcfJCqw21/Obg2CgSAZRd7QJU9bwmuQKIkMMCDqnyB9Od2aLFPWsFhlZDSU gnidfZ5V4UGV2iQ4lGkssk8k6\u002BDpjAY68WiAn3xC1G9rqhXU\u002B4Lm7QwoLE0pKvEfTPKIqCJHLjKh H/xkRUeciMRy\u002BZnRBvTWGG4uqW0btyAV05q12lT5VyBzLnAUwhkMq\u002BGJ9qTDjdDKDeiJlDjcVTjD zY9Hs9La4VKI61O\u002BUzHHalBXrvQmHafGW/TbadYjYBvc42Ar5/4CDQo=",
+    "response_xml": "\u003C?xmlversion=\u00221.0\u0022encoding=\u0022UTF-8\u0022?\u003E\u003Csaml2p:ResponseDestination=\u0022https://[SP_ACS_URL]\u0022ID=\u0022[RESPONSE_ID]\u0022InResponseTo=\u0022[REQUEST_ID]\u0022IssueInstant=\u00222026-08-11T10:28:15.408Z\u0022Version=\u00222.0\u0022xmlns:saml2p=\u0022urn:oasis:names:tc:SAML:2.0:protocol\u0022\u003E\u003Csaml2:Issuerxmlns:saml2=\u0022urn:oasis:names:tc:SAML:2.0:assertion\u0022\u003Ehttps://idp.zoom.us\u003C/saml2:Issuer\u003E\u003Cds:Signaturexmlns:ds=\u0022http://www.w3.org/2000/09/xmldsig#\u0022\u003E\u003C/ds:Signature\u003E\u003Csaml2p:Status\u003E\u003Csaml2p:StatusCodeValue=\u0022urn:oasis:names:tc:SAML:2.0:status:Success\u0022/\u003E\u003C/saml2p:Status\u003E\u003Csaml2:AssertionID=\u0022[ASSERTION_ID]\u0022IssueInstant=\u00222026-08-11T10:28:15.408Z\u0022Version=\u00222.0\u0022xmlns:saml2=\u0022urn:oasis:names:tc:SAML:2.0:assertion\u0022\u003E\u003Csaml2:Subject\u003E\u003Csaml2:NameIDFormat=\u0022urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress\u0022\u003Etest@zoom.us\u003C/saml2:NameID\u003E\u003Csaml2:SubjectConfirmationMethod=\u0022urn:oasis:names:tc:SAML:2.0:cm:bearer\u0022\u003E\u003Csaml2:SubjectConfirmationDataNotOnOrAfter=\u00222026-08-11T10:33:15.408Z\u0022Recipient=\u0022https://[SP_ACS_URL]\u0022/\u003E\u003C/saml2:SubjectConfirmation\u003E\u003C/saml2:Subject\u003E\u003C/saml2:Assertion\u003E\u003C/saml2p:Response\u003E",
+    "http_method": "POST"
+  },
+  "oidc": {
+    "scopes": [
+      "openid",
+      "email",
+      "profile"
+    ],
+    "id_token_header_json": "{\u0022alg\u0022:\u0022RS256\u0022,\u0022kid\u0022:\u0022abc\u0022}",
+    "id_token_payload_json": "{\u0022sub\u0022:\u0022abc\u0022,\u0022aud\u0022:\u0022123\u0022,\u0022email_verified\u0022:true,\u0022iss\u0022:\u0022https://idp.zoom.us/oidc/abc\u0022,\u0022groups\u0022:[\u0022Test Grp 1\u0022,\u0022Test Grp 2\u0022,\u0022Test Grp 3\u0022],\u0022exp\u0022:1786602530,\u0022iat\u0022:1786602230,\u0022nonce\u0022:\u0022abc\u0022,\u0022email\u0022:\u0022test@zoom.us\u0022}",
+    "user_info_json": "{\u0022sub\u0022:\u0022123\u0022,\u0022email\u0022:\u0022test@zoom.us\u0022,\u0022email_verified\u0022:true,\u0022active\u0022:\u0022true\u0022}"
+  }
+}

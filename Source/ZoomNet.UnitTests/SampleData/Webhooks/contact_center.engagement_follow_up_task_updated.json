@@ -1,0 +1,16 @@
+{
+  "event": "contact_center.engagement_follow_up_task_updated",
+  "event_ts": 1700001000456,
+  "payload": {
+    "account_id": "A1B2C3D4E5F6G7H8I9J0",
+    "object": {
+      "task_id": "T1234567890",
+      "engagement_id": "E9876543210",
+      "user_id": "U1234567890",
+      "content": "Updated follow-up task content after speaking with the customer.",
+      "date_time_ms": "2026-03-24T17:05:12.456Z",
+      "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+      "division_name": "EMEA Operations"
+    }
+  }
+}

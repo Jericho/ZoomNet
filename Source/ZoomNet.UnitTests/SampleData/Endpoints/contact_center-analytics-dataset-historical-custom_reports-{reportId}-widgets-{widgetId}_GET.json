@@ -1,0 +1,15 @@
+{
+  "widget_id": "AtkB6sHxSjyslNMWL0-8IA",
+  "report_id": "GcyNb1T9Tq6lyo4b-ebCNg",
+  "timezone": "Asia/Shanghai",
+  "from": "2025-12-10T00:00:00.0000000\u002B00:00",
+  "to": "2025-12-10T00:00:00.0000000\u002B00:00",
+  "page": 1,
+  "page_size": 30,
+  "total_records": 10,
+  "data": [
+    {
+      "field_name": "dynamic value"
+    }
+  ]
+}

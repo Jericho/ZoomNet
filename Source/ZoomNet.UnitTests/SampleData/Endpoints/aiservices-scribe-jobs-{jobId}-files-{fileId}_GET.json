@@ -1,0 +1,12 @@
+{
+  "file_id": "f_001",
+  "input_uri": "s3://acme-bucket/audio/2025/11/meeting_001.mp3",
+  "state": "FILE_SUCCEEDED",
+  "output_uri": "s3://acme-bucket/transcripts/2025/11/meeting_001.json",
+  "duration_sec": 183.5,
+  "error": {
+    "code": "UNSUPPORTED_CONTENT_TYPE",
+    "message": "Content type application/pdf is not supported for transcription",
+    "details": {}
+  }
+}

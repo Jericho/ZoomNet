@@ -1,0 +1,21 @@
+{
+  "disclaimer_records": [
+    {
+      "disclaimer_status": "Agree",
+      "time": "2026-01-15T10:17:35Z",
+      "disclaimer_type": "AI Companion",
+      "user_email": "jchill@example.com",
+      "meeting_number": 93201235621,
+      "meeting_id": "gm8s9L\u002BPTEC\u002BFG3sFbd1Cw==",
+      "client_type": "iphone",
+      "is_zoom_event": false,
+      "is_guest": true,
+      "group_ids": [
+        "TaVA8QKik_1233"
+      ],
+      "display_name": "Jill Chill"
+    }
+  ],
+  "next_page_token": "b43YBRLJFg3V4vsSpxvGdKIGtNbxn9h9If2",
+  "page_size": 30
+}

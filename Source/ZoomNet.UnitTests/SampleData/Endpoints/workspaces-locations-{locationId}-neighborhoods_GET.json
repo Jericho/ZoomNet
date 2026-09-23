@@ -1,0 +1,30 @@
+{
+  "result": [
+    {
+      "neighborhood_id": "acf7a8844f35426bb993b3db2c0501dd",
+      "location_id": "49D7a0xPQvGQ2DCMZgSe7w",
+      "name": "Engineering Neighborhood",
+      "workspace_ids": [
+        "qMOLddnySIGGVycz8aX_JQ"
+      ],
+      "allow_user_ids": [
+        "zwKiV80hQ7CwRg9BEm0Bvw"
+      ],
+      "allow_user_group_ids": [
+        "xGm7n9PTQGe5fT0S9sR2Dw"
+      ],
+      "enabled_custom_work_time": true,
+      "hide_group_border": false,
+      "restrict_member_assigned": false,
+      "work_time_rule": {
+        "rule_type": 0,
+        "time_zone": "America/Los_Angeles",
+        "rule_start_time": "09:00:00",
+        "rule_end_time": "17:00:00",
+        "rule_days": [
+          "MONDAY"
+        ]
+      }
+    }
+  ]
+}

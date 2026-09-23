@@ -1,0 +1,26 @@
+{
+  "total_minutes_saved": {
+    "value": 582,
+    "pop_value": -55.1
+  },
+  "host_minutes_saved": {
+    "value": 582,
+    "pop_value": -55.1
+  },
+  "participant_minutes_saved": {
+    "value": 582,
+    "pop_value": -55.1
+  },
+  "unrealized_host_minutes": {
+    "value": 582,
+    "pop_value": -55.1
+  },
+  "unrealized_participant_minutes": {
+    "value": 582,
+    "pop_value": -55.1
+  },
+  "avg_views_per_shared_summary": {
+    "value": 582,
+    "pop_value": -55.1
+  }
+}

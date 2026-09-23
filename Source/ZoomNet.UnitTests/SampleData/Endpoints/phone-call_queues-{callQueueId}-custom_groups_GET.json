@@ -1,0 +1,17 @@
+{
+  "custom_groups": [
+    {
+      "custom_group_id": "4l_dxFbRQR2YpKlcKUpsGw",
+      "sequence": 1,
+      "name": "Custom Group 1",
+      "description": "Custom Group desc",
+      "members": [
+        {
+          "extension_id": "GQAmmBlqTcGI3dRGv9siug",
+          "name": "User 11021",
+          "extension_number": 11201
+        }
+      ]
+    }
+  ]
+}

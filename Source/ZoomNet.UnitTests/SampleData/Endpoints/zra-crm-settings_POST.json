@@ -1,0 +1,17 @@
+{
+  "crm_type": "oracle",
+  "crm_name": "Oracle",
+  "currency_type": "USD",
+  "deal_stages": [
+    {
+      "stage_name": "Prospecting",
+      "stage_type": "OPEN"
+    }
+  ],
+  "url_pattern_deal": "https://example.com/deal/{id}",
+  "url_pattern_account": "https://example.com/account/{id}",
+  "url_pattern_contact": "https://example.com/contact/{id}",
+  "url_pattern_lead": "https://example.com/lead/{id}",
+  "modify_time": "2025-11-20T12:00:00.0000000\u002B00:00",
+  "create_time": "2025-11-20T12:00:00.0000000\u002B00:00"
+}

@@ -1,0 +1,29 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 10,
+  "total_records": 10,
+  "users": [
+    {
+      "cc_user_id": "hKuMAiDdRlSwMkBxR5we7g",
+      "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "user_display_name": "Jane Doe",
+      "user_email": "jdoe@example.com",
+      "user_status": "available",
+      "user_first_name": "John",
+      "user_last_name": "Doe",
+      "user_profile_picture_background_color": "#4A90E2",
+      "user_profile_picture_file_id": "file_abc123xyz",
+      "user_profile_picture_type": "uploaded",
+      "user_personal_profile_avatar": "https://example.com/avatar.png",
+      "queue_count": 5,
+      "queues": [
+        {
+          "queue_id": "RpKKZwpVxNq1aQtMIODHq",
+          "queue_name": "Voice - Customer Support"
+        }
+      ]
+    }
+  ],
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA"
+}

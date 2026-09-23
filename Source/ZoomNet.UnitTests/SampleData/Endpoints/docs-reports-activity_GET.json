@@ -1,0 +1,79 @@
+{
+  "activity_logs": [
+    {
+      "event_id": "Kbqnqi7OR8-vrhlp4ymMdA",
+      "event_type": "file_created",
+      "event_time": "2026-01-06T10:09:21.595Z",
+      "source_ip": "192.168.1.1",
+      "operator": {
+        "user_id": "aCdqwwghR16QF4dDe1Ex_A",
+        "account_id": "d3w1Tgsps6Sm2PbB4rmk1cPw",
+        "user_email": "user@example.com"
+      },
+      "payload": {
+        "file": {
+          "file_id": "cmt_doc_001",
+          "account_id": "d3w1Tgsps6Sm2PbB4rmk1cPw",
+          "file_type": "doc",
+          "file_name": "Review Notes",
+          "product_id": "docs",
+          "shortcut_original_file_type": "doc"
+        },
+        "initial_general_access": {
+          "share_scope": "anyone_in_org",
+          "role": "viewer"
+        },
+        "visibility": "open",
+        "old_description": "Old team docs",
+        "new_description": "Updated team docs",
+        "external_share": true,
+        "old_file_name": "Q1 Planning Doc",
+        "old_icon": "book",
+        "new_icon": "star",
+        "old_owner_info": {
+          "user_id": "aCdqwwghR16QF4dDe1Ex_A",
+          "user_email": "old-owner@example.com",
+          "account_id": "d3w1Tgsps6Sm2PbB4rmk1cPw"
+        },
+        "new_owner_info": {
+          "user_id": "bYzq4sdfR16QF4dDe1Ex_B",
+          "user_email": "new-owner@example.com",
+          "account_id": "d3w1Tgsps6Sm2PbB4rmk1cPw"
+        },
+        "collaborator_type": "user",
+        "is_external": false,
+        "collaborator_role": "viewer",
+        "new_collaborator_role": "commenter",
+        "old_general_access": {
+          "share_scope": "collaborators_only",
+          "role": "viewer"
+        },
+        "new_general_access": {
+          "share_scope": "anyone_with_link",
+          "role": "commenter"
+        },
+        "target_file": {
+          "file_id": "target_002",
+          "account_id": "d3w1Tgsps6Sm2PbB4rmk1cPw",
+          "file_type": "doc",
+          "file_name": "Template Copy",
+          "product_id": "docs",
+          "shortcut_original_file_type": "doc"
+        },
+        "old_file_ancestors": [
+          {
+            "file_id": "oldFolder123",
+            "file_name": "Old Folder",
+            "file_type": "folder",
+            "user_id": "aCdqwwghR16QF4dDe1Ex_A"
+          }
+        ],
+        "attachment_id": "att_9f2kLm",
+        "attachment_name": "Budget.xlsx",
+        "comment_id": "cmt_123456",
+        "thread_id": "thr_123456"
+      }
+    }
+  ],
+  "next_page_token": "eyJ0aW1lQ3Vyc29yIjoiMjAyNS0wNC0yMVQwOTo0NTo1OC45NTJaIiwiaWRDdXJzb3IiOiJzemFsMkpmTlFteTExY1JwdkYxRWhBIn0="
+}

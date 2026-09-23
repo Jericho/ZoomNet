@@ -1,0 +1,11 @@
+{
+  "total_records": 2,
+  "configurations": [
+    {
+      "config_id": "aBc123XyZ",
+      "config_type": "saml",
+      "status": "enabled",
+      "title": "Corp Okta"
+    }
+  ]
+}

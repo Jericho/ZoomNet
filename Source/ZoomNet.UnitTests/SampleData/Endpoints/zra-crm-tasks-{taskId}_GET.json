@@ -1,0 +1,19 @@
+{
+  "task_id": "HlqrLAsuS4OrbY8ablyOvg",
+  "task_type": "IMPORT_DEALS",
+  "task_status": "SUCCESS",
+  "errors": [
+    {
+      "record_index": 101,
+      "record_id": "006aa00000JkrQiiAx",
+      "detail": "missing required field \u0027owner\u0027"
+    }
+  ],
+  "total_count": 50,
+  "success_count": 49,
+  "failed_count": 1,
+  "start_time": "2025-11-20T12:00:00.0000000\u002B00:00",
+  "end_time": "2025-11-20T12:00:00.0000000\u002B00:00",
+  "create_time": "2025-11-20T12:00:00.0000000\u002B00:00",
+  "modify_time": "2025-11-20T12:00:00.0000000\u002B00:00"
+}

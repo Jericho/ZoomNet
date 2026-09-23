@@ -1,0 +1,6 @@
+{
+  "general_access_setting": {
+    "share_scope": "anyone_in_org",
+    "role": "viewer"
+  }
+}

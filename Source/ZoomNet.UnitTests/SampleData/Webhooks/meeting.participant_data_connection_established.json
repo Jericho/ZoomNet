@@ -1,0 +1,49 @@
+{
+  "event": "meeting.participant_data_connection_established",
+  "event_ts": 1779673098888,
+  "payload": {
+    "account_id": "WTpQ2Q_rSKm0-eGZtyakog",
+    "object": {
+      "id": "1234567890",
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "host_id": "x1yCzABCDEfg23HiJKl4mN",
+      "topic": "My Meeting",
+      "type": 8,
+      "start_time": "2026-07-05T21:42:51Z",
+      "participant": {
+        "user_id": "1234567890",
+        "user_name": "Jill Chill",
+        "customer_key": "349589LkJyeW",
+        "participant_uuid": "55555AAAiAAAAAiAiAiiAii",
+        "join_time": "2026-07-05T21:44:51Z",
+        "email": "jchill@example.com",
+        "registrant_id": "abcdefghij0-klmnopq23456",
+        "participant_user_id": "rstuvwxyza789-cde",
+        "phone_number": "8611111111111"
+      },
+      "data_connections": [
+        {
+          "connection_type": "audio",
+          "total_time_cost_ms": 820,
+          "command_connection_time_cost_ms": 140,
+          "data_socket_time_cost_ms": 310,
+          "first_package_time_cost_ms": 370
+        },
+        {
+          "connection_type": "video",
+          "total_time_cost_ms": 1540,
+          "command_connection_time_cost_ms": 260,
+          "data_socket_time_cost_ms": 720,
+          "first_package_time_cost_ms": 560
+        },
+        {
+          "connection_type": "screen_share",
+          "total_time_cost_ms": 2015,
+          "command_connection_time_cost_ms": 305,
+          "data_socket_time_cost_ms": 980,
+          "first_package_time_cost_ms": 730
+        }
+      ]
+    }
+  }
+}

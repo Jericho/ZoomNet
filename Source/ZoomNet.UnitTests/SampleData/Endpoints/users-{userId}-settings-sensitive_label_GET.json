@@ -1,0 +1,48 @@
+{
+  "in_meeting": {
+    "meeting_summary": {
+      "enable": true,
+      "auto_enable": false,
+      "who_will_receive_summary": 2
+    }
+  },
+  "meeting_security": {
+    "encryption_type": "enhanced_encryption"
+  },
+  "recording": {
+    "auto_recording": "cloud",
+    "host_pause_stop_recording": true,
+    "local_recording": true,
+    "local_recording_options": {
+      "internal_meeting_participants": true,
+      "internal_auto_approve_requests": false,
+      "external_meeting_participants": false,
+      "external_auto_approve_requests": false,
+      "participants_with_specified_domains": false,
+      "participants_with_specified_domains_content": "example.com",
+      "participants_specified_domains_auto_approve_requests": false,
+      "save_chat_messages": true,
+      "save_closed_caption": false
+    },
+    "cloud_recording": true,
+    "record_speaker_view": true,
+    "record_gallery_view": false,
+    "record_multi_speaker_view": false,
+    "record_audio_file": true,
+    "record_audio_file_each_participant": false,
+    "save_chat_text": true,
+    "show_timestamp": false,
+    "recording_audio_transcript": true,
+    "record_files_separately": {
+      "active_speaker": true,
+      "gallery_view": false,
+      "shared_screen": false
+    },
+    "display_participant_name": true,
+    "recording_thumbnails": true,
+    "optimize_recording_for_3rd_party_video_editor": false,
+    "save_panelist_chat": false,
+    "save_poll_results": false,
+    "save_close_caption": true
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "next_page_token": "ICF5K4lVmGG4kyIyGxSfBU2LH4QQG95cn32",
+  "page_size": 30,
+  "total_records": 1,
+  "channels": [
+    {
+      "channel_id": "1V7E4IjUTYyZ65oogqXkaQ",
+      "channel_name": "Example push to talk Channel",
+      "channel_description": "Example push to talk channel description.",
+      "total_member_count": 5,
+      "site_id": "vkBoHKaRTxeBiTLRsdEwTQ",
+      "site_name": "Example Site",
+      "user_member_count": 2,
+      "common_area_member_count": 3,
+      "auto_connect": true,
+      "channel_category": "normal"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "labels": [
+    {
+      "classification_id": "abc123xyz",
+      "name": "Confidential",
+      "description": "For internal use only",
+      "color": "#FF5733",
+      "sensitivity_level": 5,
+      "guideline_url": "https://example.com/guidelines",
+      "is_default": false,
+      "create_time": "2026-01-29T10:30:00.0000000\u002B00:00",
+      "modify_time": "2026-01-29T10:30:00.0000000\u002B00:00",
+      "whiteboard_count": 15
+    }
+  ],
+  "total_records": 5
+}

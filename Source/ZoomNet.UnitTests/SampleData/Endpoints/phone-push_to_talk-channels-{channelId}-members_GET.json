@@ -1,0 +1,15 @@
+{
+  "next_page_token": "ICF5K4lVmGG4kyIyGxSfBU2LH4QQG95cn32",
+  "page_size": 30,
+  "total_records": 1,
+  "channel_members": [
+    {
+      "extension_id": "---fzx9HTM2V-nW5vJzy5A",
+      "extension_name": "userA",
+      "site_id": "vkBoHKaRTxeBiTLRsdEwTQ",
+      "site_name": "main site",
+      "extension_type": "user",
+      "broadcast_member_type": "receiver"
+    }
+  ]
+}

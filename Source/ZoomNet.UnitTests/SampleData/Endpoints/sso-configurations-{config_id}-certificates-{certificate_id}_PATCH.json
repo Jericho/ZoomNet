@@ -1,0 +1,11 @@
+{
+  "certificate_id": "cert-789",
+  "type": "self_signed",
+  "name": "corp-sp-2026",
+  "config_id": "aBc123XyZ",
+  "key_size": 2048,
+  "valid_years": 3,
+  "in_use": true,
+  "effective_date": "2026-07-23",
+  "expiration_date": "2029-07-23"
+}

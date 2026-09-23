@@ -1,0 +1,27 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "custom_fields": [
+    {
+      "custom_field_id": "7381d210 Contact Method",
+      "custom_field_name": "Preferred Contact Method",
+      "data_type": "string",
+      "default_value": "phone",
+      "pick_list_values": [
+        "phone"
+      ],
+      "contact_list_ids": [
+        "suk0leXNTye2JjIm6v0yCQ"
+      ],
+      "use_as_routing_profile_parameter": true,
+      "use_as_external_url_parameter": false,
+      "show_in_transferred_calls": true,
+      "allow_third_party_access": true,
+      "show_in_inbound_notification": true,
+      "show_in_profile_tab": false
+    }
+  ],
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA"
+}

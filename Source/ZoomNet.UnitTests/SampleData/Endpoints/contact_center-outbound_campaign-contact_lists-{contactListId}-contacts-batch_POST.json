@@ -1,0 +1,8 @@
+{
+  "failed_contacts": [
+    {
+      "contact_index": "3",
+      "error": "Invalid Email"
+    }
+  ]
+}

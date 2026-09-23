@@ -1,0 +1,21 @@
+{
+  "from": "2026-04-20",
+  "to": "2026-04-27",
+  "next_page_token": "Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3",
+  "page_size": 30,
+  "total_records": 79,
+  "meeting_summary_usage": [
+    {
+      "id": 92065052482,
+      "meeting_minutes": 1,
+      "participants": 1,
+      "is_summary_created": true,
+      "is_summary_shared": true,
+      "host_savings_minutes": 1,
+      "participant_savings_minutes": 0,
+      "unrealized_host_minutes": 0,
+      "unrealized_participant_minutes": 0,
+      "unique_summary_viewers": 0
+    }
+  ]
+}

@@ -1825,4 +1825,121 @@
   <data name="revenue_accelerator_conversation_crm_associations_changed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\SampleData\Webhooks\revenue_accelerator.conversation_crm_associations_changed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="meeting_participant_data_connection_established" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\meeting.participant_data_connection_established.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="webinar_participant_data_connection_established" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\webinar.participant_data_connection_established.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_voice_rtms_interrupted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.voice_rtms_interrupted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_voice_rtms_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.voice_rtms_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_voice_rtms_stopped" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.voice_rtms_stopped.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_fax_log_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.fax_log_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_fax_log_permanently_deleted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.fax_log_permanently_deleted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_fax_received" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.fax_received.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_fax_sent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.fax_sent.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_route_group_status_changed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.route_group_status_changed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_whatsapp_message_received" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.whatsapp_message_received.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_whatsapp_message_sent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.whatsapp_message_sent.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_whatsapp_message_sent_failed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.whatsapp_message_sent_failed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="workspace_issue_reported" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\workspace.issue_reported.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_call_control_answer_call_executed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.call_control_answer_call_executed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_call_control_conference_warm_invite_executed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.call_control_conference_warm_invite_executed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_call_control_end_call_executed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.call_control_end_call_executed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_call_control_hold_call_executed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.call_control_hold_call_executed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_call_control_unhold_call_executed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.call_control_unhold_call_executed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_consumer_messaging_opt_in" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.consumer_messaging_opt_in.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_consumer_messaging_opt_out" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.consumer_messaging_opt_out.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_conference_canceled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_conference_canceled.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_conference_participant_canceled" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_conference_participant_canceled.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_conference_participant_invited" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_conference_participant_invited.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_conference_participant_joined" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_conference_participant_joined.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_conference_participant_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_conference_participant_left.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_conference_participant_rejected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_conference_participant_rejected.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_conference_participant_timeout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_conference_participant_timeout.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_follow_up_task_created" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_follow_up_task_created.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_engagement_follow_up_task_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.engagement_follow_up_task_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_queue_disposition_assigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.queue_disposition_assigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_queue_disposition_set_assigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.queue_disposition_set_assigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_queue_disposition_set_unassigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.queue_disposition_set_unassigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_queue_disposition_unassigned" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.queue_disposition_unassigned.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_queue_disposition_updated" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.queue_disposition_updated.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="video_management_video_quiz_completed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\video_management.video_quiz_completed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="session_ai_interpreter_usage_summary" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\session.ai_interpreter_usage_summary.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="app_authorization_request_approved" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\app.authorization_request_approved.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="app_authorization_request_declined" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\app.authorization_request_declined.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

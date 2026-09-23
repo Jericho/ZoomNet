@@ -1,0 +1,14 @@
+{
+  "event": "phone.fax_log_permanently_deleted",
+  "event_ts": 1619155281301,
+  "payload": {
+    "account_id": "Mt6sv4u0TAyPkwgsL2lxiA",
+    "object": {
+      "fax_logs": [
+        {
+          "fax_log_id": "w2cCmMNsRc-pMFhksHrRdQ"
+        }
+      ]
+    }
+  }
+}

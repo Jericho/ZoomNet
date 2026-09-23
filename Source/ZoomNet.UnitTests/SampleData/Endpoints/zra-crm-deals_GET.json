@@ -1,0 +1,36 @@
+{
+  "data": [
+    {
+      "zra_deal_id": "OPENAPIaCLhU8cQR4qfdTSvT4stxA006aa00000Lprxpjxx",
+      "crm_deal_id": "006aa00000Lprxpjxx",
+      "owner_email": "jchill@example.com",
+      "crm_account_id": "006aa00000JkrQiiAx",
+      "team_member_emails": [
+        "joechill@example.com"
+      ],
+      "contacts": [
+        {
+          "crm_contact_id": "006aa00000LmrAxiRj",
+          "contact_name": "Jill Chill",
+          "contact_email": "jchill@example.com",
+          "phone": "800-555-0100",
+          "home_phone": "800-555-0100",
+          "mobile_phone": "800-555-0100",
+          "other_phone": "800-555-0100"
+        }
+      ],
+      "deal_name": "Deal with Some Company",
+      "stage": "Prospecting",
+      "amount": 12300,
+      "next_step": "Deal next step info",
+      "close_date": "2025-11-20",
+      "probability": 75,
+      "forecast_category": "Early Stage",
+      "is_private": false,
+      "description": "Deal description",
+      "stage_modify_time": "2025-11-20T12:00:00.0000000\u002B00:00",
+      "modify_time": "2025-11-20T12:00:00.0000000\u002B00:00",
+      "create_time": "2025-11-20T12:00:00.0000000\u002B00:00"
+    }
+  ]
+}

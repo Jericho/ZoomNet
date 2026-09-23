@@ -1,0 +1,46 @@
+{
+  "session_id": "d39fc7e14ef9f2b6453f5f02524d79a2",
+  "session_type": "user",
+  "last_access_time": "2022-03-25T02:11:27Z",
+  "participants": [
+    {
+      "display_name": "l api",
+      "id": "DnEopNmXQEGU2uvvzjgojw",
+      "type": "user",
+      "phone_number": "18108001001",
+      "is_session_owner": true
+    }
+  ],
+  "next_page_token": "2z0Ov7kngllAbfQi4ZR2eQTb3mFVYQpYAe4",
+  "page_size": 30,
+  "whatsapp_histories": [
+    {
+      "attachments": [
+        {
+          "download_url": "https://exampleurl.us/file/download/x18dcVWxTcCzbp4zr2AT3A?jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjcm9zc2ZpbGUiLCJhdWQiOiJmaWxlIiwiZGlnIjoiYTZkODE4NzQ2MDNmN2UzZWM4OThkNDMxM2IxNjNhNTQ4NGI4MjkxMTA0ZmQyYzc4MTg1NmY0MGUxY2FlOTI3YyIsImV4cCI6MTY0ODE5NDA1NH0.eCURcan9QOOw9wvBdSn_-TBzgT5HWBzp04IfsK19Oto",
+          "file_id": "x18dcVWxTcCzbp4zr2AT3A",
+          "name": "FWDHOMaNRaqIvNc3aIdisg.jpg",
+          "size": 225740,
+          "type": "JPG"
+        }
+      ],
+      "date_time": "2022-03-23T02:58:01Z",
+      "direction": "In",
+      "message": "welcome",
+      "message_id": "IQ-cRH5P5EiTWCwpNzScnECJw",
+      "message_status": "delivered",
+      "sender": {
+        "display_name": "test api",
+        "id": "DnEopNmXQEGU2uvvzjgojw",
+        "type": "user",
+        "phone_number": "18108001001"
+      },
+      "recipient": {
+        "display_name": "test api",
+        "id": "DnEopNmXQEGU2uvvzjgojw",
+        "type": "user",
+        "phone_number": "18108001001"
+      }
+    }
+  ]
+}

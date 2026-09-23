@@ -1,0 +1,9 @@
+{
+  "attachments": [
+    {
+      "attachment_id": "QISQ2bgbSpmjiFFee4XExB",
+      "download_url": "https://example.com/download/document.pdf",
+      "failed_reason": "The resource does not exist."
+    }
+  ]
+}

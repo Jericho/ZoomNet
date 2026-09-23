@@ -1,0 +1,26 @@
+{
+  "next_page_token": "w3cCmMNsRc-pMFhksHrRdQ",
+  "total_records": 300,
+  "fax_covers": [
+    {
+      "cover_id": "w2cCmMNsRc-pMFhksHrRdQ",
+      "template_id": "6A2BE84EE494479B9AFA29F4BB8A8EA6",
+      "name": "Standard Invoice Cover",
+      "phone_number": "\u002B12093190827",
+      "fax_number": "\u002B14085551234",
+      "fax_number_type": "use_sender_fax_number",
+      "company": "Acme Corp",
+      "country": "US",
+      "state": "California",
+      "city": "San Jose",
+      "address_line_1": "55 Almaden Blvd",
+      "address_line_2": "Suite 600",
+      "zip_code": "95113",
+      "preview_file_id": "bayEy0y9RsadUbuEGrZBYA",
+      "status": "preview_ready",
+      "template_status": "enable",
+      "create_time": "2021-10-08T16:12:04.0000000\u002B00:00",
+      "modify_time": "2021-11-15T09:30:22.0000000\u002B00:00"
+    }
+  ]
+}

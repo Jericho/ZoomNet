@@ -1,0 +1,20 @@
+{
+  "data": [
+    {
+      "zra_contact_id": "OPENAPIaCLhU8cQR4qfdTSvT4stxA006aa00000LmrAxiRj",
+      "crm_contact_id": "006aa00000LmrAxiRj",
+      "owner_email": "jchill@example.com",
+      "crm_account_id": "006aa00000JkrQiiAx",
+      "contact_name": "Jill Chill",
+      "contact_email": "jchill@example.com",
+      "department": "Sales",
+      "job_title": "Sales Manager",
+      "phone": "800-555-0100",
+      "home_phone": "800-555-0100",
+      "mobile_phone": "800-555-0100",
+      "other_phone": "800-555-0100",
+      "modify_time": "2025-11-20T12:00:00.0000000\u002B00:00",
+      "create_time": "2025-11-20T12:00:00.0000000\u002B00:00"
+    }
+  ]
+}

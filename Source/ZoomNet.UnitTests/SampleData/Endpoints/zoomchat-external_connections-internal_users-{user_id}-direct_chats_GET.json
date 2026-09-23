@@ -1,0 +1,19 @@
+{
+  "limit": 20,
+  "sort_by": "external_user_name",
+  "sort_order": "desc",
+  "next_page_token": "em9vbSBhY2NvdW50,NjkwM2FhMTEzOTI3YTFjNWNiNzM1YTU4NThlMGQwMjc",
+  "summary": {
+    "external_user_count": 3
+  },
+  "external_users": [
+    {
+      "joined_date": "2026-06-03",
+      "is_external_user_deactivated": false,
+      "external_user_email": "external-user-1@example.com",
+      "external_account_name": "External Account 1",
+      "member_id": "2vy0eiD8DM8__vVkJsUb9qjbA_t0kMaXORP2-K0tidIYIAZWz_qNcaVoAGAf8okQ",
+      "external_user_name": "External User 1"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "variables": [
+    {
+      "variable_id": "8019c4df-0cf0-4b87-b6e7-0b9e17ef5899",
+      "variable_name": "customer_name",
+      "variable_full_name": "global_custom.test.customer_name",
+      "variable_group_id": "4f3647bb-dc3f-46f2-98d0-900d83231eb5",
+      "variable_group_name": "test",
+      "data_type": "String",
+      "display_name": "Customer Name"
+    }
+  ],
+  "page_size": 30,
+  "page_number": 1,
+  "total_records": 150,
+  "next_page_token": "eyJwYWdlIjoyLCJxdWV1ZUlkIjoiejU1U0pQdUtUeHVsaWkwZ25KY2VEdyJ9",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
+}

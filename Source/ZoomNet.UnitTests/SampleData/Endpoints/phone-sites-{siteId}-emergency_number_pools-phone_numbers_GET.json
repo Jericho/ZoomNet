@@ -1,0 +1,15 @@
+{
+  "next_page_token": "nav48KOj42vYPSG4f0cCdT575bZ980did22",
+  "page_size": 10,
+  "phone_numbers": [
+    {
+      "id": "aMy7P9DMS9iNRkpwXNfRbw",
+      "location": "Brooksville, Florida, United States",
+      "number": "\u002B12015551005",
+      "number_type": "toll",
+      "capability": [
+        "incoming"
+      ]
+    }
+  ]
+}

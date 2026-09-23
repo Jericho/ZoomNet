@@ -1,0 +1,16 @@
+{
+  "files": [
+    {
+      "file_id": "f_001",
+      "input_uri": "s3://acme-bucket/audio/2025/11/call_0001.wav",
+      "state": "FILE_SUCCEEDED",
+      "output_uri": "s3://acme-bucket/transcripts/2025/11/call_0001.json",
+      "duration_sec": 3520.2,
+      "error": {
+        "code": "UNSUPPORTED_MEDIA",
+        "message": "OGG not enabled for MVP"
+      }
+    }
+  ],
+  "next_page_token": "eyJ0YXNrX2lkIjoidGFza18wMDIifQ"
+}

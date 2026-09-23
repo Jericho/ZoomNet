@@ -1,0 +1,57 @@
+{
+  "columns": [
+    {
+      "name": "Text",
+      "column_type": "text",
+      "description": "Text Content",
+      "column_options": {
+        "date_option": {
+          "format": "MM/dd/yyyy",
+          "is_24_hour_format": false
+        },
+        "number_option": {
+          "decimal": 1,
+          "show_separator": false
+        },
+        "select_option": {
+          "options": [
+            {
+              "option_name": "Blue",
+              "option_id": "A8xSJQDVf1dnVIVh"
+            }
+          ]
+        },
+        "percent_option": {
+          "decimal": 1,
+          "show_progress_bar": false
+        },
+        "people_option": {
+          "is_multiple": false,
+          "is_notify": false
+        },
+        "reaction_option": {
+          "icon": {
+            "type": "emoji",
+            "value": "\uD83D\uDC4D"
+          },
+          "display_type": "number",
+          "allow_commenter_react": false
+        },
+        "currency_option": {
+          "decimal": 1,
+          "symbol": "$",
+          "format": "accounting"
+        },
+        "attachment_option": {
+          "layout": "thumbnail"
+        },
+        "url_option": {
+          "display_type": "title",
+          "open_type": "current_page"
+        }
+      },
+      "column_id": "dd08972e3bca46b89ba7bf0c9ee32ff5",
+      "integrated": false
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "contacts": [
+    {
+      "contact_id": "zeYjXoDOS_eV1QmTpj63PQ",
+      "display_name": "John Doe",
+      "first_name": "John",
+      "last_name": "Doe",
+      "phones": [
+        {
+          "phone_number": "\u002B12048002447",
+          "phone_type": "main"
+        }
+      ],
+      "emails": [
+        "john.doe@example.com"
+      ],
+      "location": "New York",
+      "timezone": "America/Los_Angeles",
+      "account_number": "112233445566",
+      "company": "Acme Corp",
+      "role": "Agent",
+      "address_book_id": "jweQeTYDOS_eV1QmTpj63PQ",
+      "address_book_name": "Corporate Address Book",
+      "consumer_ids": [
+        "cvC2JxWkToWZsJUenBvNnw"
+      ],
+      "custom_fields_url": "https://api.zoom.us/v2/contact_center/address_books/custom_fields/contacts/zeYjXoDOS_eV1QmTpj63PQ",
+      "source_id": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+      "source_name": "salesforce"
+    }
+  ],
+  "invalid_contacts": [
+    {
+      "display_name": "Jane Doe",
+      "phone_numbers": [
+        "\u002B12048002447"
+      ],
+      "emails": [
+        "jane.doe@example.com"
+      ],
+      "error_messages": [
+        "Contact does not exist."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "page_size": 20,
+  "next_page_token": "eyJzZWFyY2hfYWZ0ZXIiOlsyMDI2LTA2LTMwVDEyOjAwOjAwWiwiMTlEQkxWTV5TSEc2Y2dJZW8wdnJIUSJdfQ==",
+  "filters": {
+    "from": "2026-06-01",
+    "to": "2026-06-30",
+    "period": "last_30_days",
+    "scope": "my_team",
+    "team_id": "w7mQmV9gRzK2s9xA0P4Y6A",
+    "generated_at": "2026-06-30T12:34:56Z",
+    "timezone": "UTC"
+  },
+  "call_history": [
+    {
+      "call_history_id": "19DBLVM5SHG6cgIeo0vrHQ",
+      "user_id": "1W6kwwJQRL-1p9bsjdQvmw",
+      "user_name": "Klay Thompson",
+      "call_list_name": "Q2 Outbound List",
+      "name": "Stephen Curry",
+      "account_name": "GSW",
+      "called_from": "\u002B14155550100",
+      "phone_number": "\u002B14155550123",
+      "start_time": "2026-06-21T16:08:43Z",
+      "status": "Ended",
+      "disposition": "Interested",
+      "call_notes": "Prospect requested a follow-up next week."
+    }
+  ]
+}

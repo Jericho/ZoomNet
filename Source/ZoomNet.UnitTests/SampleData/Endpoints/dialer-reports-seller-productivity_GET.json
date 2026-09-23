@@ -1,0 +1,60 @@
+{
+  "filters": {
+    "from": "2026-06-01",
+    "to": "2026-06-30",
+    "period": "last_30_days",
+    "scope": "my_team",
+    "team_id": "w7mQmV9gRzK2s9xA0P4Y6A",
+    "generated_at": "2026-06-30T12:34:56Z",
+    "timezone": "UTC"
+  },
+  "aggregate": {
+    "calls": 120,
+    "answered": 90,
+    "connects": 72,
+    "conversations": 41,
+    "meetings_booked": 8,
+    "returned_calls": 5,
+    "returned_calls_answered": 3,
+    "call_time_seconds": 12543,
+    "call_time_formatted": "3:29:03",
+    "talk_time_seconds": 8421,
+    "talk_time_formatted": "2:20:21",
+    "call_to_answered_rate": 0.75,
+    "answered_to_connect_rate": 0.8,
+    "connect_to_conversation_rate": 0.5694,
+    "conversation_to_meeting_rate": 0.1951,
+    "calls_per_meeting": 15,
+    "answered_per_meeting": 11.25,
+    "connects_per_meeting": 9,
+    "conversations_per_meeting": 5.13
+  },
+  "reps": [
+    {
+      "user_id": "1W6kwwJQRL-1p9bsjdQvmw",
+      "rep_name": "Klay Thompson",
+      "rep_email": "klay.thompson@zoom.us",
+      "team_id": "w7mQmV9gRzK2s9xA0P4Y6A",
+      "team_name": "West Sales",
+      "calls": 42,
+      "answered": 31,
+      "connects": 24,
+      "conversations": 13,
+      "meetings_booked": 3,
+      "returned_calls": 2,
+      "returned_calls_answered": 1,
+      "call_time_seconds": 4123,
+      "call_time_formatted": "1:08:43",
+      "talk_time_seconds": 2811,
+      "talk_time_formatted": "0:46:51",
+      "call_to_answered_rate": 0.7381,
+      "answered_to_connect_rate": 0.7742,
+      "connect_to_conversation_rate": 0.5417,
+      "conversation_to_meeting_rate": 0.2308,
+      "calls_per_meeting": 14,
+      "answered_per_meeting": 10.33,
+      "connects_per_meeting": 8,
+      "conversations_per_meeting": 4.33
+    }
+  ]
+}
