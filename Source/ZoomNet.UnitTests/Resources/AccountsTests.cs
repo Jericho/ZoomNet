@@ -346,19 +346,13 @@ namespace ZoomNet.UnitTests.Resources
 			result.ShouldNotBeNull();
 			result.RequireAuthentication.ShouldBeTrue();
 			result.AuthenticationOptions.ShouldNotBeNull();
-			result.AuthenticationOptions.Length.ShouldBe(2);
-			result.AuthenticationOptions[0].Domains.ShouldBe("example.com");
-			result.AuthenticationOptions[0].Id.ShouldBe("auth_option_1");
+			result.AuthenticationOptions.Length.ShouldBe(1);
+			result.AuthenticationOptions[0].Domains.ShouldBe("www.a-b-c.com");
+			result.AuthenticationOptions[0].Id.ShouldBe("MialYiatQVa8WwEEB5UiXw");
 			result.AuthenticationOptions[0].IsDefault.ShouldBeTrue();
-			result.AuthenticationOptions[0].Type.ShouldBe(AuthenticationType.Internal);
+			result.AuthenticationOptions[0].Type.ShouldBe(AuthenticationType.EnforceLoginWithDomains);
 			result.AuthenticationOptions[0].Visible.ShouldBeFalse();
-			result.AuthenticationOptions[0].Name.ShouldBe("Auth Option 1");
-			result.AuthenticationOptions[1].Domains.ShouldBe("test.com");
-			result.AuthenticationOptions[1].Id.ShouldBe("auth_option_2");
-			result.AuthenticationOptions[1].IsDefault.ShouldBeFalse();
-			result.AuthenticationOptions[1].Type.ShouldBe(AuthenticationType.EnforceLogin);
-			result.AuthenticationOptions[1].Visible.ShouldBeFalse();
-			result.AuthenticationOptions[1].Name.ShouldBe("Auth Option 2");
+			result.AuthenticationOptions[0].Name.ShouldBe("test");
 		}
 
 		[Fact]
@@ -484,11 +478,9 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Length.ShouldBe(2);
+			result.Length.ShouldBe(1);
 			result[0].Domain.ShouldBe("example.com");
-			result[0].Status.ShouldBe("activated");
-			result[1].Domain.ShouldBe("test.com");
-			result[1].Status.ShouldBe("pending");
+			result[0].Status.ShouldBe("verified");
 		}
 
 		[Fact]
@@ -540,10 +532,8 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Length.ShouldBe(3);
-			result[0].ShouldBe("trusted1.com");
-			result[1].ShouldBe("trusted2.com");
-			result[2].ShouldBe("trusted3.com");
+			result.Length.ShouldBe(1);
+			result[0].ShouldBe("example.com");
 		}
 
 		[Fact]
