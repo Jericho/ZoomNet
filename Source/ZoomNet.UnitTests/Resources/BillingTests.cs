@@ -83,11 +83,11 @@ namespace ZoomNet.UnitTests.Resources
 
 		private const string PLAN_USAGE_JSON = @"{
 			""plan_base"": {
-			""hosts"": 88,
-			""type"": ""yearly"",
-			""usage"": 28,
-			""active_hosts"": 44,
-			""pending"": 1
+				""hosts"": 88,
+				""type"": ""yearly"",
+				""usage"": 28,
+				""active_hosts"": 44,
+				""pending"": 1
 			},
 			""plan_large_meeting"": [
 			{
@@ -98,20 +98,20 @@ namespace ZoomNet.UnitTests.Resources
 			}
 			],
 			""plan_recording"": {
-			""free_storage"": ""2 GB"",
-			""free_storage_usage"": ""2 GB"",
-			""plan_storage"": ""10 GB"",
-			""plan_storage_exceed"": ""0"",
-			""max_exceed_date"": ""2023-05-04"",
-			""plan_storage_usage"": ""1 GB"",
-			""type"": ""cmr_monthly_commitment_40""
+				""free_storage"": ""2 GB"",
+				""free_storage_usage"": ""2 GB"",
+				""plan_storage"": ""10 GB"",
+				""plan_storage_exceed"": ""0"",
+				""max_exceed_date"": ""2023-05-04"",
+				""plan_storage_usage"": ""1 GB"",
+				""type"": ""cmr_monthly_commitment_40""
 			},
 			""plan_united"": {
-			""hosts"": 88,
-			""name"": ""Zoom Meetings Pro and Zoom Phone Pro Monthly"",
-			""type"": ""pro_zpp_monthly"",
-			""usage"": 28,
-			""pending"": 1
+				""hosts"": 88,
+				""name"": ""Zoom Meetings Pro and Zoom Phone Pro Monthly"",
+				""type"": ""pro_zpp_monthly"",
+				""usage"": 28,
+				""pending"": 1
 			},
 			""plan_webinar"": [
 			{
@@ -138,9 +138,9 @@ namespace ZoomNet.UnitTests.Resources
 			}
 			],
 			""plan_zoom_rooms"": {
-			""hosts"": 88,
-			""type"": ""zroom_monthly"",
-			""usage"": 28
+				""hosts"": 88,
+				""type"": ""zroom_monthly"",
+				""usage"": 28
 			},
 			""plan_room_connector"": [
 			{
@@ -150,28 +150,28 @@ namespace ZoomNet.UnitTests.Resources
 			}
 			],
 			""plan_whiteboard"": {
-			""type"": ""zwb_monthly"",
-			""hosts"": 88,
-			""usage"": 28,
-			""pending"": 1
+				""type"": ""zwb_monthly"",
+				""hosts"": 88,
+				""usage"": 28,
+				""pending"": 1
 			},
 			""plan_whiteboard_plus"": {
-			""type"": ""zwb_plus_monthly"",
-			""hosts"": 88,
-			""usage"": 28,
-			""pending"": 1
+				""type"": ""zwb_plus_monthly"",
+				""hosts"": 88,
+				""usage"": 28,
+				""pending"": 1
 			},
 			""plan_zoom_iq"": {
-			""type"": ""ziq_sales_monthly"",
-			""hosts"": 88,
-			""usage"": 28,
-			""pending"": 1
+				""type"": ""ziq_sales_monthly"",
+				""hosts"": 88,
+				""usage"": 28,
+				""pending"": 1
 			},
 			""plan_ztransl"": {
-			""type"": ""ztransl_monthly"",
-			""hosts"": 88,
-			""usage"": 28,
-			""pending"": 1
+				""type"": ""ztransl_monthly"",
+				""hosts"": 88,
+				""usage"": 28,
+				""pending"": 1
 			},
 			""plan_zwr"": [
 			{
@@ -190,58 +190,58 @@ namespace ZoomNet.UnitTests.Resources
 			}
 			],
 			""plan_znode_base"": {
-			""type"": ""znode_monthly"",
-			""hosts"": 88,
-			""usage"": 28,
-			""pending"": 1
+				""type"": ""znode_monthly"",
+				""hosts"": 88,
+				""usage"": 28,
+				""pending"": 1
 			},
 			""plan_zphybrid"": {
-			""type"": ""zphybrid_monthly"",
-			""hosts"": 88,
-			""usage"": 28,
-			""pending"": 1
+				""type"": ""zphybrid_monthly"",
+				""hosts"": 88,
+				""usage"": 28,
+				""pending"": 1
 			},
 			""plan_zsched"": {
-			""type"": ""zsched_yearly"",
-			""hosts"": 88,
-			""usage"": 28,
-			""pending"": 1
+				""type"": ""zsched_yearly"",
+				""hosts"": 88,
+				""usage"": 28,
+				""pending"": 1
 			},
 			""plan_zmhybrid"": {
-			""type"": ""zm_hybrid_quarterly"",
-			""hosts"": 88,
-			""usage"": 28,
-			""pending"": 1
+				""type"": ""zm_hybrid_quarterly"",
+				""hosts"": 88,
+				""usage"": 28,
+				""pending"": 1
 			},
 			""plan_mchybrid"": {
-			""type"": ""zmc_monthly"",
-			""hosts"": 88,
-			""usage"": 28,
-			""pending"": 1
+				""type"": ""zmc_monthly"",
+				""hosts"": 88,
+				""usage"": 28,
+				""pending"": 1
 			},
 			""plan_rchybrid"": {
-			""type"": ""zrc_monthly"",
-			""hosts"": 88,
-			""usage"": 28,
-			""pending"": 1
+				""type"": ""zrc_monthly"",
+				""hosts"": 88,
+				""usage"": 28,
+				""pending"": 1
 			},
 			""plan_cmrhybrid"": {
-			""type"": ""zm_node_hybrid_rec_quarterly"",
-			""hosts"": 88,
-			""usage"": 28,
-			""pending"": 1
+				""type"": ""zm_node_hybrid_rec_quarterly"",
+				""hosts"": 88,
+				""usage"": 28,
+				""pending"": 1
 			},
 			""plan_tchybrid"": {
-			""type"": ""zn_tc_hybrid_monthly"",
-			""hosts"": 88,
-			""usage"": 28,
-			""pending"": 1
+				""type"": ""zn_tc_hybrid_monthly"",
+				""hosts"": 88,
+				""usage"": 28,
+				""pending"": 1
 			},
 			""plan_workforce_management"": {
-			""type"": ""zm_wf_mgt_quarterly"",
-			""hosts"": 88,
-			""usage"": 28,
-			""pending"": 1
+				""type"": ""zm_wf_mgt_quarterly"",
+				""hosts"": 88,
+				""usage"": 28,
+				""pending"": 1
 			},
 			""plan_zoom_one_premier"": [
 			{
@@ -268,28 +268,28 @@ namespace ZoomNet.UnitTests.Resources
 			}
 			],
 			""plan_zoom_one_edu_student"": {
-			""hosts"": 88,
-			""type"": ""zo_edu_ent_hied_stu_yearly"",
-			""usage"": 28,
-			""pending"": 1
+				""hosts"": 88,
+				""type"": ""zo_edu_ent_hied_stu_yearly"",
+				""usage"": 28,
+				""pending"": 1
 			},
 			""plan_visitor_management"": {
-			""hosts"": 88,
-			""type"": ""zm_visitor_management_monthly"",
-			""usage"": 28,
-			""pending"": 1
+				""hosts"": 88,
+				""type"": ""zm_visitor_management_monthly"",
+				""usage"": 28,
+				""pending"": 1
 			},
 			""plan_partner_premier_support"": {
-			""hosts"": 88,
-			""type"": ""partner_premier_support_monthly"",
-			""usage"": 28,
-			""pending"": 1
+				""hosts"": 88,
+				""type"": ""partner_premier_support_monthly"",
+				""usage"": 28,
+				""pending"": 1
 			},
 			""plan_zoom_clips_plus"": {
-			""hosts"": 88,
-			""type"": ""zm_clips_plus_monthly"",
-			""usage"": 28,
-			""pending"": 1
+				""hosts"": 88,
+				""type"": ""zm_clips_plus_monthly"",
+				""usage"": 28,
+				""pending"": 1
 			}
 		}";
 
