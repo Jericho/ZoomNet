@@ -1,6 +1,5 @@
 using BenchmarkDotNet.Attributes;
 using System.Text.Json;
-using ZoomNet;
 
 namespace ZoomNet.Benchmark;
 
@@ -21,29 +20,65 @@ public class PathSplitBenchmark
 		_element = doc.RootElement.Clone();
 	}
 
-	[Benchmark(Baseline = true)]
-	public void Current_GetProperty()
+	[Benchmark]
+	public void New_GetProperty()
 	{
 		for (int i = 0; i < Iterations; i++)
 		{
-			var v = _element.GetProperty(_path, false);
+			var v = NewGetProperty(_element, _path, false);
 			_ = v.HasValue;
 		}
 	}
 
-	[Benchmark]
-	public void PreSplit_Traverse()
+	[Benchmark(Baseline = true)]
+	public void Legacy_GetProperty()
 	{
-		var parts = _path.Split('/');
 		for (int i = 0; i < Iterations; i++)
 		{
-			var property = _element;
-			bool ok = true;
-			foreach (var part in parts)
-			{
-				if (!property.TryGetProperty(part, out property)) { ok = false; break; }
-			}
-			_ = ok;
+			var v = LegacyGetProperty(_element, _path, false);
+			_ = v.HasValue;
 		}
+	}
+
+	private static JsonElement? LegacyGetProperty(JsonElement element, string path, bool throwIfMissing = true, char splitChar = '/')
+	{
+		var parts = path.Split(splitChar);
+		var property = element;
+
+		foreach (var part in parts)
+		{
+			if (!property.TryGetProperty(part, out property))
+			{
+				if (throwIfMissing) throw new ArgumentException($"Unable to find '{path}'", nameof(path));
+				else return null;
+			}
+		}
+
+		return property;
+	}
+
+	private static JsonElement? NewGetProperty(JsonElement element, string path, bool throwIfMissing = true, char splitChar = '/')
+	{
+		ArgumentNullException.ThrowIfNull(path);
+
+		var property = element;
+		var span = path.AsSpan();
+		int start = 0;
+		while (start <= span.Length)
+		{
+			int idx = start >= span.Length ? -1 : span.Slice(start).IndexOf(splitChar);
+			ReadOnlySpan<char> partSpan = idx == -1 ? span.Slice(start) : span.Slice(start, idx);
+			string part = partSpan.ToString();
+			if (!property.TryGetProperty(part, out property))
+			{
+				if (throwIfMissing) throw new ArgumentException($"Unable to find '{path}'", nameof(path));
+				return null;
+			}
+
+			if (idx == -1) break;
+			start += idx + 1;
+		}
+
+		return property;
 	}
 }
