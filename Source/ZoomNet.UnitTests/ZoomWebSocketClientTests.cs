@@ -1,6 +1,7 @@
 using Shouldly;
 using System;
 using System.Net;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -458,6 +459,48 @@ namespace ZoomNet.UnitTests
 
 			// Assert
 			client.ShouldNotBeNull();
+		}
+
+		#endregion
+
+		#region StopAsync Tests
+
+		[Fact]
+		public async Task StopAsync_WhenNotStarted_CompletesWithoutError()
+		{
+			// Arrange
+			static Task eventProcessor(WebhookEvent evt, CancellationToken ct) => Task.CompletedTask;
+			var connectionInfo = OAuthConnectionInfo.ForServerToServer(CLIENT_ID, CLIENT_SECRET, ACCOUNT_ID);
+			using var client = new ZoomWebSocketClient(connectionInfo, SUBSCRIPTION_ID, eventProcessor);
+
+			// Act & Assert
+			await client.StopAsync();
+		}
+
+		[Fact]
+		public async Task StopAsync_WhenHeartbeatRunning_StopsAndCleansUp()
+		{
+			// Arrange
+			var connectionInfo = OAuthConnectionInfo.ForServerToServer(CLIENT_ID, CLIENT_SECRET, ACCOUNT_ID);
+			static Task eventProcessor(WebhookEvent evt, CancellationToken ct) => Task.CompletedTask;
+			using var client = new ZoomWebSocketClient(connectionInfo, SUBSCRIPTION_ID, eventProcessor);
+
+			// Use reflection to invoke the private StartHeartbeat method to start the background loop
+			var startHeartbeat = typeof(ZoomWebSocketClient).GetMethod("StartHeartbeat", BindingFlags.Instance | BindingFlags.NonPublic)!;
+			startHeartbeat.ShouldNotBeNull();
+			startHeartbeat.Invoke(client, [CancellationToken.None]);
+
+			// Act
+			await client.StopAsync();
+
+			// Assert internal state cleaned up
+			var heartbeatCtsField = typeof(ZoomWebSocketClient).GetField("_heartbeatCts", BindingFlags.Instance | BindingFlags.NonPublic)!;
+			var heartbeatTaskField = typeof(ZoomWebSocketClient).GetField("_heartbeatTask", BindingFlags.Instance | BindingFlags.NonPublic)!;
+			heartbeatCtsField.ShouldNotBeNull();
+			heartbeatTaskField.ShouldNotBeNull();
+
+			heartbeatCtsField.GetValue(client).ShouldBeNull();
+			heartbeatTaskField.GetValue(client).ShouldBeNull();
 		}
 
 		#endregion

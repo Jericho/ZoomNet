@@ -41,7 +41,10 @@ namespace ZoomNet.IntegrationTests.TestSuites
 			// Start the websocket client
 			using var client = new ZoomWebSocketClient(_connectionInfo, _subscriptionId, eventProcessor, false, _proxy, logger);
 			await client.StartAsync(cancellationToken).ConfigureAwait(false);
-			exitEvent.WaitOne();
+
+			// Wait for CTRL+C and then stop the client gracefully
+			await Task.Run(() => exitEvent.WaitOne());
+			await client.StopAsync().ConfigureAwait(false);
 
 			return ResultCodes.Success;
 		}

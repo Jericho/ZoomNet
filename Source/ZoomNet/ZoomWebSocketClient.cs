@@ -54,6 +54,51 @@ namespace ZoomNet
 		}
 
 		/// <summary>
+		/// Stops the websocket client and associated background tasks asynchronously.
+		/// </summary>
+		public async Task StopAsync()
+		{
+			Task heartbeatTask = null;
+			lock (_heartbeatLock)
+			{
+				if (_heartbeatCts != null)
+				{
+					// Signal cancellation to background heartbeat
+					_heartbeatCts.Cancel();
+					heartbeatTask = _heartbeatTask;
+				}
+			}
+
+			if (heartbeatTask != null)
+			{
+				try { await heartbeatTask.ConfigureAwait(false); } catch { }
+			}
+
+			// Stop websocket client
+			if (_websocketClient != null && _websocketClient.IsRunning)
+			{
+				try
+				{
+					await _websocketClient.Stop(WebSocketCloseStatus.NormalClosure, "Shutting down").ConfigureAwait(false);
+				}
+				catch (Exception ex)
+				{
+					_logger.LogError(ex, "Error stopping websocket client");
+				}
+			}
+
+			lock (_heartbeatLock)
+			{
+				if (_heartbeatCts != null)
+				{
+					try { _heartbeatCts.Dispose(); } catch { }
+					_heartbeatCts = null;
+				}
+				_heartbeatTask = null;
+			}
+		}
+
+		/// <summary>
 		/// Initializes a new instance of the <see cref="ZoomWebSocketClient"/> class.
 		/// </summary>
 		/// <param name="connectionInfo">Connection information.</param>
@@ -282,7 +327,7 @@ namespace ZoomNet
 
 		private void ReleaseManagedResources()
 		{
-			// Stop heartbeat if running
+			// Stop heartbeat if running (synchronous fallback for Dispose)
 			lock (_heartbeatLock)
 			{
 				if (_heartbeatCts != null)

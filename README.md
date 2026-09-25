@@ -518,11 +518,12 @@ Console.CancelKeyPress += (s, e) =>
 
 // Start the websocket client
 var connectionInfo = OAuthConnectionInfo.ForServerToServer(clientId, clientSecret, accountId);
-using (var client = new ZoomWebSocketClient(connectionInfo, subscriptionId, eventProcessor, proxy, logger))
-{
-    await client.StartAsync(cts.Token).ConfigureAwait(false);
-    exitEvent.WaitOne();
-}
+using var client = new ZoomWebSocketClient(connectionInfo, subscriptionId, eventProcessor, false, proxy, logger);
+await client.StartAsync(cts.Token).ConfigureAwait(false);
+
+// Wait for CTRL+C and then stop the client gracefully
+await Task.Run(() => exitEvent.WaitOne());
+await client.StopAsync().ConfigureAwait(false);
 ```
 
 #### How to get your websocket subscription id
