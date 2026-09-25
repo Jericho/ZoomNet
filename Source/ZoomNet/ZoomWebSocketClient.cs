@@ -36,6 +36,9 @@ namespace ZoomNet
 		private WebsocketClient _websocketClient;
 		private HttpClient _httpClient;
 		private ITokenHandler _tokenHandler;
+		private CancellationTokenSource _heartbeatCts;
+		private Task _heartbeatTask;
+		private readonly object _heartbeatLock = new();
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ZoomWebSocketClient"/> class.
@@ -123,7 +126,7 @@ namespace ZoomNet
 				.Merge(5) // Allow up to 5 messages to be processed concurently. This number is arbitrary but it seems reasonable.
 				.Subscribe();
 
-			Task.Run(() => SendHeartbeat(_websocketClient, cancellationToken), cancellationToken);
+			StartHeartbeat(cancellationToken);
 
 			return _websocketClient.Start();
 		}
@@ -159,23 +162,75 @@ namespace ZoomNet
 			ReleaseUnmanagedResources();
 		}
 
-		private async Task SendHeartbeat(IWebsocketClient client, CancellationToken cancellationToken = default)
+		private void StartHeartbeat(CancellationToken cancellationToken = default)
 		{
-			while (!cancellationToken.IsCancellationRequested)
+			lock (_heartbeatLock)
 			{
-				await Task.Delay(TimeSpan.FromSeconds(30), cancellationToken); // Zoom requires a heartbeat every 30 seconds
+				if (_heartbeatTask != null) return;
+				_heartbeatCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
 
-				if (!client.IsRunning)
-				{
-					_logger.LogTrace("Client is not running. Skipping heartbeat");
-					continue;
-				}
-
-				_logger.LogTrace("Sending heartbeat");
-
-				await client.SendInstant("{\"module\":\"heartbeat\"}").ConfigureAwait(false);
+#if NET6_0_OR_GREATER
+				_heartbeatTask = HeartbeatLoopWithTimer(_websocketClient, _heartbeatCts.Token);
+#else
+				_heartbeatTask = HeartbeatLoop(_websocketClient, _heartbeatCts.Token);
+#endif
 			}
 		}
+
+#if NET6_0_OR_GREATER
+		// This version of the heartbeat loop uses the new PeriodicTimer class which is more efficient than using Task.Delay() in a loop but available in .NET 6.0 and later only.
+		private async Task HeartbeatLoopWithTimer(IWebsocketClient client, CancellationToken cancellationToken)
+		{
+			try
+			{
+				using var timer = new PeriodicTimer(TimeSpan.FromSeconds(30));
+				while (await timer.WaitForNextTickAsync(cancellationToken).ConfigureAwait(false))
+				{
+					if (!client.IsRunning)
+					{
+						_logger.LogTrace("Client is not running. Skipping heartbeat");
+						continue;
+					}
+
+					_logger.LogTrace("Sending heartbeat");
+					await client.SendInstant("{\"module\":\"heartbeat\"}").ConfigureAwait(false);
+				}
+			}
+			catch (OperationCanceledException) { }
+			catch (Exception ex)
+			{
+				_logger.LogError(ex, "Heartbeat loop failed");
+			}
+		}
+#endif
+
+#if !NET6_0_OR_GREATER
+		// This version of the heartbeat loop can be used in .NET 5.0 and earlier because it uses Task.Delay() in a loop (but it's less efficient than using PeriodicTimer).
+		private async Task HeartbeatLoop(IWebsocketClient client, CancellationToken cancellationToken)
+		{
+			try
+			{
+				while (!cancellationToken.IsCancellationRequested)
+				{
+					await Task.Delay(TimeSpan.FromSeconds(30), cancellationToken).ConfigureAwait(false);
+
+					if (!client.IsRunning)
+					{
+						_logger.LogTrace("Client is not running. Skipping heartbeat");
+						continue;
+					}
+
+					_logger.LogTrace("Sending heartbeat");
+					await client.SendInstant("{\"module\":\"heartbeat\"}").ConfigureAwait(false);
+				}
+			}
+			catch (OperationCanceledException) { }
+			catch (Exception ex)
+			{
+				_logger.LogError(ex, "Heartbeat loop failed");
+			}
+		}
+#endif
 
 		private async Task ProcessMessage(ResponseMessage msg, CancellationToken cancellationToken = default)
 		{
@@ -227,6 +282,26 @@ namespace ZoomNet
 
 		private void ReleaseManagedResources()
 		{
+			// Stop heartbeat if running
+			lock (_heartbeatLock)
+			{
+				if (_heartbeatCts != null)
+				{
+					try
+					{
+						_heartbeatCts.Cancel();
+						_heartbeatTask?.GetAwaiter().GetResult();
+					}
+					catch { }
+					finally
+					{
+						_heartbeatCts.Dispose();
+						_heartbeatCts = null;
+						_heartbeatTask = null;
+					}
+				}
+			}
+
 			_tokenHandler = null;
 
 			if (_websocketClient != null)
