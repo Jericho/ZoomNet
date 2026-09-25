@@ -576,7 +576,7 @@ namespace ZoomNet
 		/// langword="true"/>.</exception>
 		internal static JsonElement? GetProperty(this JsonElement element, string path, bool throwIfMissing = true, char splitChar = '/')
 		{
-			if (path == null) throw new ArgumentNullException(nameof(path));
+			ArgumentNullException.ThrowIfNull(path);
 
 			var property = element;
 			var span = path.AsSpan();
