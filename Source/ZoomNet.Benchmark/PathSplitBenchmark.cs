@@ -10,7 +10,7 @@ public class PathSplitBenchmark
 	public int Iterations;
 
 	private JsonElement _element;
-	private string _path = "object/participant/id";
+	private readonly string _path = "object/participant/id";
 
 	[GlobalSetup]
 	public void Setup()
