@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -10,6 +11,14 @@ namespace ZoomNet.Json
 	/// <seealso cref="JsonConverter" />
 	internal class BooleanConverter : JsonConverter<bool>
 	{
+		private static readonly Dictionary<string, bool> _stringValuesMapping = new()
+		{
+			{ "true", true },
+			{ "false", false },
+			{ "1", true },
+			{ "0", false }
+		};
+
 		public override bool Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
 		{
 			switch (reader.TokenType)
@@ -30,6 +39,12 @@ namespace ZoomNet.Json
 
 				case JsonTokenType.Number when reader.TryGetInt64(out long longValue):
 					return longValue == 1L;
+
+				case JsonTokenType.String:
+					var stringValue = reader.GetString();
+					if (string.IsNullOrEmpty(stringValue)) throw new JsonException("Unable to convert an empty string into a boolean value");
+					if (_stringValuesMapping.TryGetValue(stringValue, out bool boolValue)) return boolValue;
+					throw new JsonException($"Unable to convert '{stringValue}' into a boolean value");
 
 				default:
 					throw new JsonException($"Unable to convert the content of {reader.TokenType.ToString()} JSON node into a boolean value");
