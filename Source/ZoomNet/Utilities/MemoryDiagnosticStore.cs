@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace ZoomNet.Utilities
 {
@@ -12,7 +13,8 @@ namespace ZoomNet.Utilities
 	internal class MemoryDiagnosticStore : IDiagnosticStore, IDisposable
 	{
 		private readonly ConcurrentDictionary<string, DiagnosticInfo> _diagnostics = new();
-		private Timer _cleanupTimer;
+		private CancellationTokenSource _cleanupCts;
+		private Task _cleanupTask;
 
 		public MemoryDiagnosticStore()
 			: this(TimeSpan.Zero)
@@ -22,7 +24,14 @@ namespace ZoomNet.Utilities
 		{
 			if (cleanUpInterval > TimeSpan.Zero)
 			{
-				_cleanupTimer = new Timer(Cleanup, null, TimeSpan.Zero, cleanUpInterval);
+				if (_cleanupTask != null) return;
+				_cleanupCts = new CancellationTokenSource();
+
+#if NET6_0_OR_GREATER
+				_cleanupTask = CleanupLoopWithTimer(cleanUpInterval, _cleanupCts.Token);
+#else
+				_cleanupTask = CleanupLoop(cleanUpInterval, _cleanupCts.Token);
+#endif
 			}
 		}
 
@@ -46,6 +55,47 @@ namespace ZoomNet.Utilities
 
 		/// <inheritdoc/>
 		public int Count => _diagnostics.Count;
+
+#if NET6_0_OR_GREATER
+		// This version of the cleanup loop uses the new PeriodicTimer class which is more efficient than using Task.Delay() in a loop but available in .NET 6.0 and later only.
+		private async Task CleanupLoopWithTimer(TimeSpan cleanUpInterval, CancellationToken cancellationToken)
+		{
+			try
+			{
+				using var timer = new PeriodicTimer(cleanUpInterval);
+				while (await timer.WaitForNextTickAsync(cancellationToken).ConfigureAwait(false))
+				{
+					Cleanup(null);
+				}
+			}
+			catch (OperationCanceledException) { }
+			catch (Exception)
+			{
+				// Intentionally left empty
+			}
+		}
+#endif
+
+#if !NET6_0_OR_GREATER
+		// This version of the cleanup loop can be used in .NET 5.0 and earlier because it uses Task.Delay() in a loop (but it's less efficient than using PeriodicTimer).
+		private async Task CleanupLoop(TimeSpan cleanUpInterval, CancellationToken cancellationToken)
+		{
+			try
+			{
+				while (!cancellationToken.IsCancellationRequested)
+				{
+					await Task.Delay(cleanUpInterval, cancellationToken).ConfigureAwait(false);
+
+					Cleanup(null);
+				}
+			}
+			catch (OperationCanceledException) { }
+			catch (Exception)
+			{
+				// Intentionally left empty
+			}
+		}
+#endif
 
 		/// <summary>
 		/// Cleans up the diagnostic store by removing entries for requests that have been garbage collected.
@@ -103,8 +153,22 @@ namespace ZoomNet.Utilities
 
 		private void ReleaseManagedResources()
 		{
-			_cleanupTimer?.Dispose();
-			_cleanupTimer = null;
+			// Stop cleanup loop if running
+			if (_cleanupCts != null)
+			{
+				try
+				{
+					_cleanupCts.Cancel();
+					_cleanupTask?.GetAwaiter().GetResult();
+				}
+				catch { }
+				finally
+				{
+					_cleanupCts.Dispose();
+					_cleanupCts = null;
+					_cleanupTask = null;
+				}
+			}
 		}
 
 		private void ReleaseUnmanagedResources()
