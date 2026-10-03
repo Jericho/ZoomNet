@@ -379,10 +379,9 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			using var store = new MemoryDiagnosticStore();
-			string diagnosticId = null;
 
 			// Create request in separate scope to allow GC
-			CreateAndAddDiagnosticEntry(store, out diagnosticId);
+			CreateAndAddDiagnosticEntry(store, out string diagnosticId);
 
 			// Verify entry exists
 			store.ContainsKey(diagnosticId).ShouldBeTrue();
@@ -437,8 +436,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			using var store = new MemoryDiagnosticStore();
-			string gcId = null;
-			CreateAndAddDiagnosticEntry(store, out gcId);
+			CreateAndAddDiagnosticEntry(store, out string gcId);
 
 			// Add entry with alive reference
 			var aliveId = "alive-id";
@@ -481,9 +479,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			using var store = new MemoryDiagnosticStore(TimeSpan.FromMilliseconds(200));
-			string diagnosticId = null;
-
-			CreateAndAddDiagnosticEntry(store, out diagnosticId);
+			CreateAndAddDiagnosticEntry(store, out string diagnosticId);
 
 			// Verify entry exists
 			store.ContainsKey(diagnosticId).ShouldBeTrue();
@@ -617,7 +613,7 @@ namespace ZoomNet.UnitTests.Utilities
 
 		#region Helper Methods
 
-		private DiagnosticInfo CreateDiagnosticInfo(long requestTimestamp = 0, long responseTimestamp = long.MinValue)
+		private static DiagnosticInfo CreateDiagnosticInfo(long requestTimestamp = 0, long responseTimestamp = long.MinValue)
 		{
 			var request = new HttpRequestMessage(HttpMethod.Get, "https://api.zoom.us/test");
 			return new DiagnosticInfo(
@@ -629,7 +625,7 @@ namespace ZoomNet.UnitTests.Utilities
 			);
 		}
 
-		private void CreateAndAddDiagnosticEntry(MemoryDiagnosticStore store, out string diagnosticId)
+		private static void CreateAndAddDiagnosticEntry(MemoryDiagnosticStore store, out string diagnosticId)
 		{
 			diagnosticId = Guid.NewGuid().ToString("N");
 			var request = new HttpRequestMessage(HttpMethod.Get, "https://api.zoom.us/test");

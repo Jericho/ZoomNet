@@ -288,7 +288,7 @@ namespace ZoomNet
 			if (oAuthConnectionInfo.Scopes == null) tokenHandler.RefreshTokenIfNecessary(true); // Force the token to be refreshed wich will have the side-effect of populating the '.Scopes'
 
 			var missingScopes = scopes.Except(((OAuthConnectionInfo)tokenHandler.ConnectionInfo).Scopes, StringComparer.OrdinalIgnoreCase).ToArray();
-			return !missingScopes.Any();
+			return missingScopes.Length == 0;
 		}
 
 		/// <inheritdoc/>
@@ -326,11 +326,8 @@ namespace ZoomNet
 
 		private void ReleaseManagedResources()
 		{
-			if (_fluentClient != null)
-			{
-				_fluentClient.Dispose();
-				_fluentClient = null;
-			}
+			_fluentClient?.Dispose();
+			_fluentClient = null;
 
 			if (_httpClient != null && _mustDisposeHttpClient)
 			{

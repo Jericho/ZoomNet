@@ -277,7 +277,7 @@ namespace ZoomNet.UnitTests.Resources
 			{
 				Type = RecurrenceType.Weekly,
 				RepeatInterval = 1,
-				WeeklyDays = new[] { DayOfWeek.Monday, DayOfWeek.Wednesday, DayOfWeek.Friday }
+				WeeklyDays = [DayOfWeek.Monday, DayOfWeek.Wednesday, DayOfWeek.Friday]
 			};
 
 			var mockHttp = new MockHttpMessageHandler();
@@ -703,7 +703,7 @@ namespace ZoomNet.UnitTests.Resources
 					Question = "How was the meeting?",
 					Type = PollQuestionType.SingleChoice,
 					IsRequired = true,
-					Answers = new[] { "Excellent", "Good", "Average", "Poor" }
+					Answers = ["Excellent", "Good", "Average", "Poor"]
 				}
 			};
 
@@ -789,7 +789,7 @@ namespace ZoomNet.UnitTests.Resources
 					Question = "Updated question?",
 					Type = PollQuestionType.SingleChoice,
 					IsRequired = true,
-					Answers = new[] { "Yes", "No" }
+					Answers = ["Yes", "No"]
 				}
 			};
 

@@ -103,11 +103,8 @@ namespace ZoomNet.Utilities
 
 		private void ReleaseManagedResources()
 		{
-			if (_cleanupTimer != null)
-			{
-				_cleanupTimer.Dispose();
-				_cleanupTimer = null;
-			}
+			_cleanupTimer?.Dispose();
+			_cleanupTimer = null;
 		}
 
 		private void ReleaseUnmanagedResources()
