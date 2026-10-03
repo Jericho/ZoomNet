@@ -171,7 +171,8 @@ namespace ZoomNet
 				.Merge(5) // Allow up to 5 messages to be processed concurently. This number is arbitrary but it seems reasonable.
 				.Subscribe();
 
-			StartHeartbeat(cancellationToken);
+			// Zoom requires a heartbeath to be sent every 30 seconds.
+			StartHeartbeat(TimeSpan.FromSeconds(30), cancellationToken);
 
 			return _websocketClient.Start();
 		}
@@ -207,7 +208,7 @@ namespace ZoomNet
 			ReleaseUnmanagedResources();
 		}
 
-		private void StartHeartbeat(CancellationToken cancellationToken = default)
+		private void StartHeartbeat(TimeSpan heartbeatInterval, CancellationToken cancellationToken = default)
 		{
 			lock (_heartbeatLock)
 			{
@@ -215,20 +216,20 @@ namespace ZoomNet
 				_heartbeatCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
 
 #if NET6_0_OR_GREATER
-				_heartbeatTask = HeartbeatLoopWithTimer(_websocketClient, _heartbeatCts.Token);
+				_heartbeatTask = HeartbeatLoopWithTimer(_websocketClient, heartbeatInterval, _heartbeatCts.Token);
 #else
-				_heartbeatTask = HeartbeatLoop(_websocketClient, _heartbeatCts.Token);
+				_heartbeatTask = HeartbeatLoop(_websocketClient, heartbeatInterval, _heartbeatCts.Token);
 #endif
 			}
 		}
 
 #if NET6_0_OR_GREATER
 		// This version of the heartbeat loop uses the new PeriodicTimer class which is more efficient than using Task.Delay() in a loop but available in .NET 6.0 and later only.
-		private async Task HeartbeatLoopWithTimer(IWebsocketClient client, CancellationToken cancellationToken)
+		private async Task HeartbeatLoopWithTimer(IWebsocketClient client, TimeSpan heartbeatInterval, CancellationToken cancellationToken)
 		{
 			try
 			{
-				using var timer = new PeriodicTimer(TimeSpan.FromSeconds(30));
+				using var timer = new PeriodicTimer(heartbeatInterval);
 				while (await timer.WaitForNextTickAsync(cancellationToken).ConfigureAwait(false))
 				{
 					if (!client.IsRunning)
@@ -251,13 +252,13 @@ namespace ZoomNet
 
 #if !NET6_0_OR_GREATER
 		// This version of the heartbeat loop can be used in .NET 5.0 and earlier because it uses Task.Delay() in a loop (but it's less efficient than using PeriodicTimer).
-		private async Task HeartbeatLoop(IWebsocketClient client, CancellationToken cancellationToken)
+		private async Task HeartbeatLoop(IWebsocketClient client, TimeSpan heartbeatInterval, CancellationToken cancellationToken)
 		{
 			try
 			{
 				while (!cancellationToken.IsCancellationRequested)
 				{
-					await Task.Delay(TimeSpan.FromSeconds(30), cancellationToken).ConfigureAwait(false);
+					await Task.Delay(heartbeatInterval, cancellationToken).ConfigureAwait(false);
 
 					if (!client.IsRunning)
 					{
