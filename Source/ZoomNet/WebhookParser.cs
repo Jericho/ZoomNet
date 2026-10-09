@@ -28,6 +28,15 @@ namespace ZoomNet
 
 		private readonly WebHookEventConverter _converter;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="WebhookParser"/> class.
+		/// </summary>
+		/// <param name="throwWhenUnknownEventType">Indicates whether an exception should be thrown when an unknown event type is encountered.</param>
+		public WebhookParser(bool throwWhenUnknownEventType = true)
+		{
+			_converter = new WebHookEventConverter(throwWhenUnknownEventType);
+		}
+
 		/// <inheritdoc/>
 		public bool VerifySignature(string requestBody, string secretToken, string signature, string timestamp)
 		{
@@ -45,15 +54,6 @@ namespace ZoomNet
 
 			// Compare the signatures
 			return calculatedSignature == signature;
-		}
-
-		/// <summary>
-		/// Initializes a new instance of the <see cref="WebhookParser"/> class.
-		/// </summary>
-		/// <param name="throwWhenUnknownEventType">Indicates whether an exception should be thrown when an unknown event type is encountered.</param>
-		public WebhookParser(bool throwWhenUnknownEventType = true)
-		{
-			_converter = new WebHookEventConverter(throwWhenUnknownEventType);
 		}
 
 		/// <inheritdoc/>
