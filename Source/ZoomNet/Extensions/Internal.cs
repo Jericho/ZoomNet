@@ -449,11 +449,16 @@ namespace ZoomNet
 		/// <returns>Returns the request builder for chaining.</returns>
 		internal static IRequest WithHttp200TreatedAsFailure(this IRequest request, string customExceptionMessage = null)
 		{
-			var diagnosticStore = request.Filters.OfType<ZoomErrorHandler>().Single().DiagnosticStore;
+			var errorHandler = request.Filters.OfType<ZoomErrorHandler>().Single();
+			var diagnosticStore = errorHandler.DiagnosticStore;
+			var logRequestHeaders = errorHandler.LogRequestHeaders;
+			var logRequestContent = errorHandler.LogRequestContent;
+			var logResponseHeaders = errorHandler.LogResponseHeaders;
+			var logResponseContent = errorHandler.LogResponseContent;
 
 			return request
 				.WithoutFilter<ZoomErrorHandler>()
-				.WithFilter(new ZoomErrorHandler(diagnosticStore, true, customExceptionMessage));
+				.WithFilter(new ZoomErrorHandler(diagnosticStore, true, customExceptionMessage, logRequestHeaders, logRequestContent, logResponseHeaders, logResponseContent));
 		}
 
 		/// <summary>Set the body content of the HTTP request.</summary>

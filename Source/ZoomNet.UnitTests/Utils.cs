@@ -38,7 +38,7 @@ namespace ZoomNet.UnitTests
 			//   - Error handler must be last
 			// Also, the list of filters must be kept in sync with the filters in ZoomClient in the ZoomNet project.
 			client.Filters.Add(tokenHandler);
-			client.Filters.Add(new DiagnosticHandler(LogLevel.Debug, LogLevel.Error, diagStore, logger));
+			client.Filters.Add(new DiagnosticHandler(LogLevel.Debug, LogLevel.Error, diagStore, logger: logger));
 			client.Filters.Add(new ZoomErrorHandler(diagStore));
 
 			return client;
