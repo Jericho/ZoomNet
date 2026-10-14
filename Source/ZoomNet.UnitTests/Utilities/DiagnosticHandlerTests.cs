@@ -22,7 +22,7 @@ namespace ZoomNet.UnitTests.Utilities
 			var mockLogger = new MockLogger();
 
 			// Act
-			var handler = new DiagnosticHandler(successLogLevel, failureLogLevel, diagnosticStore, mockLogger);
+			var handler = new DiagnosticHandler(successLogLevel, failureLogLevel, diagnosticStore, logger: mockLogger);
 
 			// Assert
 			handler.ShouldNotBeNull();
@@ -37,7 +37,7 @@ namespace ZoomNet.UnitTests.Utilities
 			var diagnosticStore = new MemoryDiagnosticStore();
 
 			// Act
-			var handler = new DiagnosticHandler(successLogLevel, failureLogLevel, diagnosticStore, null);
+			var handler = new DiagnosticHandler(successLogLevel, failureLogLevel, diagnosticStore, logger: null);
 
 			// Assert
 			handler.ShouldNotBeNull();
@@ -267,7 +267,7 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var mockLogger = new MockLogger();
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, mockLogger);
+			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, logger: mockLogger);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 			handler.OnRequest(MockFluentHttpRequest);
 
@@ -288,7 +288,7 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var mockLogger = new MockLogger();
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, mockLogger);
+			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, logger: mockLogger);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 			handler.OnRequest(MockFluentHttpRequest);
 
@@ -309,7 +309,7 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var mockLogger = new MockLogger { IsLoggingEnabled = false };
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, mockLogger);
+			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, logger: mockLogger);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 			handler.OnRequest(MockFluentHttpRequest);
 
@@ -328,7 +328,7 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, null);
+			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, logger: null);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 			handler.OnRequest(MockFluentHttpRequest);
 
@@ -349,7 +349,7 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var mockLogger = new MockLogger();
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Debug, LogLevel.Warning, diagnosticStore, mockLogger);
+			var handler = new DiagnosticHandler(LogLevel.Debug, LogLevel.Warning, diagnosticStore, logger: mockLogger);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 			handler.OnRequest(MockFluentHttpRequest);
 
@@ -369,7 +369,7 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var mockLogger = new MockLogger();
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Critical, diagnosticStore, mockLogger);
+			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Critical, diagnosticStore, logger: mockLogger);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 			handler.OnRequest(MockFluentHttpRequest);
 
@@ -389,7 +389,7 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var mockLogger = new MockLogger();
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Trace, LogLevel.Error, diagnosticStore, mockLogger);
+			var handler = new DiagnosticHandler(LogLevel.Trace, LogLevel.Error, diagnosticStore, logger: mockLogger);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 			handler.OnRequest(MockFluentHttpRequest);
 
@@ -434,10 +434,9 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore);
-			string diagnosticId = null;
 
 			// Create request in separate scope
-			CreateRequestAndCaptureDiagnosticId(handler, out diagnosticId);
+			CreateRequestAndCaptureDiagnosticId(handler, out string diagnosticId);
 
 			// Verify it's in the store
 			diagnosticStore.ContainsKey(diagnosticId).ShouldBeTrue();
@@ -464,7 +463,7 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var mockLogger = new MockLogger();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, mockLogger);
+			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, logger: mockLogger);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 
 			// Act - Request
@@ -497,7 +496,7 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var mockLogger = new MockLogger();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, mockLogger);
+			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, logger: mockLogger);
 			var MockFluentHttpRequest1 = new MockFluentHttpRequest();
 			var MockFluentHttpRequest2 = new MockFluentHttpRequest();
 			var MockFluentHttpRequest3 = new MockFluentHttpRequest();
@@ -547,7 +546,7 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var mockLogger = new MockLogger();
-			var handler = new DiagnosticHandler(successLevel, failureLevel, diagnosticStore, mockLogger);
+			var handler = new DiagnosticHandler(successLevel, failureLevel, diagnosticStore, logger: mockLogger);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 			handler.OnRequest(MockFluentHttpRequest);
 
