@@ -488,7 +488,7 @@ namespace ZoomNet.UnitTests
 			// Use reflection to invoke the private StartHeartbeat method to start the background loop
 			var startHeartbeat = typeof(ZoomWebSocketClient).GetMethod("StartHeartbeat", BindingFlags.Instance | BindingFlags.NonPublic)!;
 			startHeartbeat.ShouldNotBeNull();
-			startHeartbeat.Invoke(client, [CancellationToken.None]);
+			startHeartbeat.Invoke(client, [TimeSpan.FromSeconds(30), CancellationToken.None]);
 
 			// Act
 			await client.StopAsync();
