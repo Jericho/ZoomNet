@@ -228,8 +228,8 @@ namespace ZoomNet
 
 			// Order is important: DiagnosticHandler must be first.
 			// Also, the list of filters must be kept in sync with the filters in Utils.GetFluentClient in the unit testing project.
-			_fluentClient.Filters.Add(new DiagnosticHandler(_options.LogLevelSuccessfulCalls, _options.LogLevelFailedCalls, diagnosticStore, _options.LogRequestHeaders, _options.LogRequestContent, _options.LogResponseHeaders, _options.LogResponseContent, _logger));
-			_fluentClient.Filters.Add(new ZoomErrorHandler(diagnosticStore, false, null, _options.LogRequestHeaders, _options.LogRequestContent, _options.LogResponseHeaders, _options.LogResponseContent));
+			_fluentClient.Filters.Add(new DiagnosticHandler(diagnosticStore, _options, _logger));
+			_fluentClient.Filters.Add(new ZoomErrorHandler(diagnosticStore, false, null, _options));
 
 			Accounts = new Accounts(_fluentClient);
 			Billing = new Billing(_fluentClient);

@@ -6,7 +6,7 @@ namespace ZoomNet.Utilities
 	/// <summary>
 	/// Options for the Zoom client.
 	/// </summary>
-	public class ZoomClientOptions
+	public record ZoomClientOptions
 	{
 		private const string ZOOM_GLOBAL_BASE_URI = "https://api.zoom.us/v2";
 		private const string ZOOM_AUSTRALIA_BASE_URI = "https://api-au.zoom.us/v2";
