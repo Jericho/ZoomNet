@@ -1,0 +1,19 @@
+{
+  "channel_id": "1V7E4IjUTYyZ65oogqXkaQ",
+  "channel_name": "Example push to talk Channel",
+  "channel_description": "Example push to talk channel description.",
+  "site_id": "vkBoHKaRTxeBiTLRsdEwTQ",
+  "site_name": "Example Site",
+  "total_member_count": 5,
+  "user_member_count": 2,
+  "common_area_member_count": 3,
+  "successful_count": 3,
+  "invalid_extension_ids": [
+    "---fzx9HTM2V-nW5vJzy5A"
+  ],
+  "pre_check_passed": true,
+  "existing_auto_connect_channel_name": "Example push to talk Channel",
+  "channel_type": "private",
+  "channel_category": "normal",
+  "auto_connect": true
+}

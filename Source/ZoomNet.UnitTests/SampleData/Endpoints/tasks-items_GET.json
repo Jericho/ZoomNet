@@ -1,0 +1,40 @@
+{
+  "next_page_token": "qUEQqB1V0HVhJmwKFQrGOD",
+  "page_size": 10,
+  "total_records": 2,
+  "tasks": [
+    {
+      "task_id": "z2vo9qNRRHKArlJqkVHNUw",
+      "title": "Complete project documentation",
+      "description": "Write comprehensive documentation for the new API endpoints...",
+      "priority": "Medium",
+      "status": "To do",
+      "is_public": false,
+      "due_date": "2025-09-24",
+      "ai_generated": false,
+      "starred": true,
+      "unread": false,
+      "assignees": [
+        {
+          "user_id": "CcrEGgmeQem1uyJsuIRKwA",
+          "display_name": "John Doe",
+          "email": "john.doe@example.com",
+          "avatar": "https://example.com/avatar.jpg"
+        }
+      ],
+      "collaborators": [
+        {
+          "user_id": "CcrEGgmeQem1uyJsuIRKwA",
+          "display_name": "John Doe",
+          "email": "john.doe@example.com",
+          "avatar": "https://example.com/avatar.jpg"
+        }
+      ],
+      "friendly_task_id": "Task-1",
+      "link": "https://tasks.zoomdev.us/ws53iQgOOkOdzVTxZaVoRA/TASK-1",
+      "create_time": "2025-03-31T12:02:00.0000000\u002B00:00",
+      "modify_time": "2025-03-31T12:02:00.0000000\u002B00:00",
+      "source_type": "user"
+    }
+  ]
+}

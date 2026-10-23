@@ -1,0 +1,16 @@
+{
+  "emojis": [
+    {
+      "file_id": "bKgNq133RoS5TMg99QfZJA",
+      "name": "Hello",
+      "user_id": "v4iyWT1LTfy8QvPG4GTvdg",
+      "member_id": "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK",
+      "user_name": "Jack liu",
+      "user_email": "hello@example.com",
+      "date_added": "2020-02-10T21:39:50Z"
+    }
+  ],
+  "next_page_token": "32.0,-9223372036854775808,1704438757798,so6Q0cltRtiHe7w_5lM39Q",
+  "page_size": 10,
+  "search_key": "hello"
+}

@@ -1,0 +1,19 @@
+{
+  "errors": [
+    {
+      "email": "email@zoom.us",
+      "error_code": "fast_join_with_registrationNeeded",
+      "message": "fast_join should not be true when when registration needed flag is true."
+    }
+  ],
+  "tickets": [
+    {
+      "ticket_id": "iso9Dllddp39dagjLj9j",
+      "external_ticket_id": "iso9Djldop39dagjLj3j",
+      "event_join_link": "https://events.zoom.us/ejl/xyz",
+      "event_registration_link": "https://events.zoom.us/etr/xyz123",
+      "qr_code_url": "https://zoom.us/qr?t=5\u0026ein=Ak61AAOitRj1r8MYQ70-u-Bho-KJvIEC7eEfb_lDBksIfKuA6Ax7~A8bIXPJw8mO01a2",
+      "email": "email@zoom.us"
+    }
+  ]
+}

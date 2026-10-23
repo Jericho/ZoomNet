@@ -1,0 +1,16 @@
+{
+  "admins": [
+    {
+      "email": "jchill@example.com",
+      "first_name": "Jill",
+      "id": "v4iyWT1LTfy8QvPG4GTvdg",
+      "member_id": "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK",
+      "role": "admin",
+      "last_name": "Chill",
+      "name": "Jill Chill",
+      "is_external": false
+    }
+  ],
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 10
+}

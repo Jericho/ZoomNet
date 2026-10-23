@@ -1,0 +1,11 @@
+{
+  "id": "7kdwg5y0Ra6B2vWdtXUJOQ",
+  "name": "newpbx123",
+  "provider": "aws_s3",
+  "s3": {
+    "region": "us-east-1",
+    "bucket": "testpbx",
+    "authentication_mechanism": "aws_access_key"
+  },
+  "verify_status": "success"
+}

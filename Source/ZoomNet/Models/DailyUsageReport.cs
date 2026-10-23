@@ -2,9 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Daily Usage Report.
-	/// </summary>
+	/// <summary>Daily Usage Report.</summary>
 	public class DailyUsageReport
 	{
 		/// <summary>Gets or sets the daily usage summaries.</summary>

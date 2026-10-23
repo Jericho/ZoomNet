@@ -1,0 +1,15 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "playlists": [
+    {
+      "playlist_id": "7c8b7301-d32b-4850-92c7-ea9f5a40fd39",
+      "type": "Normal",
+      "modified_time": "2022-03-22T05:59:09.0000000\u002B00:00",
+      "playlist_name": "ZoomIQ Playlist",
+      "number_of_conversations": 4,
+      "following": true,
+      "created_by": "John Smith"
+    }
+  ]
+}

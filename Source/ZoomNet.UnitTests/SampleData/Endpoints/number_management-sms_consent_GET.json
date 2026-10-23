@@ -1,0 +1,45 @@
+{
+  "page_size": 30,
+  "total_records": 33,
+  "next_page_token": "bkOcmnm6mn6ioYAi10BcgRiEL38WzAo6jP2",
+  "sms_consent": [
+    {
+      "consent_id": "C-91H30r6xTCCpt8nNFSuhWA",
+      "consent_name": "ZPconsent",
+      "description": "This consent will be used by our employees to schedule events, provide reminders and support to our customers.",
+      "account_id": "KGzOF3hCTamb_Xx-bXbgqA",
+      "in_out_bound": {
+        "opt_in_message": {
+          "prompt": "Text START to receive text messages from ZOOM. Message frequency may vary. Message and Data Rates may apply. To end messaging from us, reply with STOP. Reply with HELP for more information.",
+          "keywords": [
+            "START",
+            "keyword"
+          ],
+          "confirmation_message": "You\u0027re subscribed!"
+        },
+        "opt_out_message": {
+          "message": "You are unsubscribed to texts from ZOOM. No more messages will be sent.",
+          "keywords": [
+            "Stop",
+            "keyword"
+          ]
+        },
+        "help_message": {
+          "message": "ZOOM: You can get more assistance by visiting https://zoom.us. Text STOP to stop receiving messages from us. You can also text START to start receiving messages from us again. You can also refer to our privacy policy on our website.",
+          "keywords": [
+            "HELP",
+            "keyword"
+          ]
+        },
+        "disclaimer": {
+          "message": "disclaimer",
+          "enable": true
+        }
+      },
+      "status": true,
+      "create_time": "2024-06-01T08:55:38.0000000\u002B00:00",
+      "modify_time": "2025-09-19T11:20:59.0000000\u002B00:00",
+      "used_number": 48
+    }
+  ]
+}

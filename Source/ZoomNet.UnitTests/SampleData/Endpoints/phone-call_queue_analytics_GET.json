@@ -1,0 +1,26 @@
+{
+  "call_queues": [
+    {
+      "call_queue_id": "3PNsZB50TNev4pgBjtKeDw",
+      "call_queue_name": "test call queue",
+      "call_queue_ext_id": "8f71O6rWT8KFUGQmJIFAdQ",
+      "inbound_calls": 500,
+      "completed_calls": 450,
+      "abandoned_calls": 40,
+      "overflowed_calls": 10,
+      "avg_handle_time": 180,
+      "avg_wrap_up_time": 60,
+      "avg_in_queue_wait_time": 30,
+      "max_in_queue_wait_time": 120,
+      "outbound_calls": 300,
+      "outbound_connected_calls": 450,
+      "outbound_unconnected_calls": 30,
+      "site_name": "SJ Site",
+      "site_id": "lA68sMSVQ6GAUcGg_GH0nQ"
+    }
+  ],
+  "from": "2021-10-01",
+  "to": "2021-10-12",
+  "page_size": 30,
+  "next_page_token": "AmhfoKtF2Ey4TaPg2iZsAcmetRLs2ZY0Sk2"
+}

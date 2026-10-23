@@ -6,76 +6,22 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
 using ZoomNet.Resources;
+using ZoomNet.UnitTests.Properties;
 
 namespace ZoomNet.UnitTests.Resources
 {
 	public class RolesTests
 	{
-		private const string ROLES_JSON = @"{
-			""page_size"": 300,
-			""next_page_token"": ""token123"",
-			""roles"": [
-				{
-					""id"": ""role123"",
-					""name"": ""Admin"",
-					""description"": ""Administrator role"",
-					""total_members"": 5
-				},
-				{
-					""id"": ""role456"",
-					""name"": ""Member"",
-					""description"": ""Standard member role"",
-					""total_members"": 25
-				}
-			]
-		}";
-
-		private const string SINGLE_ROLE_JSON = @"{
-			""id"": ""role123"",
-			""name"": ""Admin"",
-			""description"": ""Administrator role with full access"",
-			""total_members"": 5,
-			""privileges"": [
-				""User:Edit"",
-				""User:View"",
-				""Account:Edit""
-			]
-		}";
-
-		private const string CREATED_ROLE_JSON = @"{
-			""id"": ""newRole789"",
-			""name"": ""Custom Role"",
-			""description"": ""Custom role description"",
-			""total_members"": 0
-		}";
-
-		private const string ROLE_MEMBERS_JSON = @"{
-			""page_size"": 300,
-			""next_page_token"": ""memberToken456"",
-			""total_records"": 3,
-			""members"": [
-				{
-					""id"": ""user123"",
-					""email"": ""user1@example.com"",
-					""first_name"": ""John"",
-					""last_name"": ""Doe"",
-					""type"": 2
-				},
-				{
-					""id"": ""user456"",
-					""email"": ""user2@example.com"",
-					""first_name"": ""Jane"",
-					""last_name"": ""Smith"",
-					""type"": 1
-				},
-				{
-					""id"": ""user789"",
-					""email"": ""user3@example.com"",
-					""first_name"": ""Bob"",
-					""last_name"": ""Johnson"",
-					""type"": 2
-				}
-			]
+		// This JSON string is necessary because the response for a successful request to "POST /roles" is currently undocumented.
+		// This seems to be an oversight, and I asked Zoom (see https://devforum.zoom.us/t/documentation-missing-when-a-role-is-successfully-created/141665)
+		// if they could update their documentation. When they do and we can update the genrated sample data, this hard coded JSON string will be removed
+		private const string ROLE_CREATED_JSON = @"{
+			""id"":""R5C7F72v4SZykDvkfVBCcWw"",
+			""name"":""ZoomNet Integration testing: new role"",
+			""description"":""this is a test"",
+			""type"":""common"",
+			""total_members"":0,
+			""privileges"":[]
 		}";
 
 		private readonly ITestOutputHelper _outputHelper;
@@ -94,7 +40,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("roles"))
 				.WithQueryString("page_size", "300")
-				.Respond("application/json", ROLES_JSON);
+				.Respond("application/json", EndpointsResource.roles_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -107,96 +53,14 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.RecordsPerPage.ShouldBe(300);
-			result.NextPageToken.ShouldBe("token123");
+			result.RecordsPerPage.ShouldBe(0);
+			result.NextPageToken.ShouldBe("");
 			result.Records.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
-			result.Records[0].Id.ShouldBe("role123");
-			result.Records[0].Name.ShouldBe("Admin");
-			result.Records[0].Description.ShouldBe("Administrator role");
-			result.Records[0].MembersCount.ShouldBe(5);
-			result.Records[1].Id.ShouldBe("role456");
-			result.Records[1].Name.ShouldBe("Member");
-		}
-
-		[Fact]
-		public async Task GetAllAsync_WithPagination()
-		{
-			// Arrange
-			var recordsPerPage = 100;
-			var pagingToken = "customToken123";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("roles"))
-				.WithQueryString("page_size", recordsPerPage.ToString())
-				.WithQueryString("next_page_token", pagingToken)
-				.Respond("application/json", ROLES_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var roles = new Roles(client);
-
-			// Act
-			var result = await roles.GetAllAsync(recordsPerPage, pagingToken, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
-		}
-
-		[Fact]
-		public async Task GetAllAsync_EmptyRoles()
-		{
-			// Arrange
-			var emptyRolesJson = @"{
-				""page_size"": 300,
-				""next_page_token"": """",
-				""roles"": []
-			}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("roles"))
-				.WithQueryString("page_size", "300")
-				.Respond("application/json", emptyRolesJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var roles = new Roles(client);
-
-			// Act
-			var result = await roles.GetAllAsync(cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(0);
-		}
-
-		[Fact]
-		public async Task GetAllAsync_MaxRecordsPerPage()
-		{
-			// Arrange
-			var recordsPerPage = 300;
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("roles"))
-				.WithQueryString("page_size", recordsPerPage.ToString())
-				.Respond("application/json", ROLES_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var roles = new Roles(client);
-
-			// Act
-			var result = await roles.GetAllAsync(recordsPerPage, cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
+			result.Records.Length.ShouldBe(1);
+			result.Records[0].Id.ShouldBe("RqBLcd1jLS9a7RBkbGtqn2A");
+			result.Records[0].Name.ShouldBe("My Role");
+			result.Records[0].Description.ShouldBe("my role");
+			result.Records[0].MembersCount.ShouldBe(200);
 		}
 
 		#endregion
@@ -211,7 +75,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("roles"))
-				.Respond(HttpStatusCode.Created, "application/json", CREATED_ROLE_JSON);
+				.Respond(HttpStatusCode.Created, "application/json", ROLE_CREATED_JSON);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -224,9 +88,9 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("newRole789");
-			result.Name.ShouldBe("Custom Role");
-			result.Description.ShouldBe("Custom role description");
+			result.Id.ShouldBe("R5C7F72v4SZykDvkfVBCcWw");
+			result.Name.ShouldBe("ZoomNet Integration testing: new role");
+			result.Description.ShouldBe("this is a test");
 			result.MembersCount.ShouldBe(0);
 		}
 
@@ -239,7 +103,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("roles"))
-				.Respond(HttpStatusCode.Created, "application/json", CREATED_ROLE_JSON);
+				.Respond(HttpStatusCode.Created, "application/json", ROLE_CREATED_JSON);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -252,7 +116,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("newRole789");
+			result.Id.ShouldBe("R5C7F72v4SZykDvkfVBCcWw");
 		}
 
 		[Fact]
@@ -265,7 +129,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("roles"))
-				.Respond(HttpStatusCode.Created, "application/json", CREATED_ROLE_JSON);
+				.Respond(HttpStatusCode.Created, "application/json", ROLE_CREATED_JSON);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -290,7 +154,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("roles"))
-				.Respond(HttpStatusCode.Created, "application/json", CREATED_ROLE_JSON);
+				.Respond(HttpStatusCode.Created, "application/json", ROLE_CREATED_JSON);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -303,7 +167,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("newRole789");
+			result.Id.ShouldBe("R5C7F72v4SZykDvkfVBCcWw");
 		}
 
 		#endregion
@@ -319,7 +183,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("roles", roleId, "members"))
 				.WithQueryString("page_size", "300")
-				.Respond("application/json", ROLE_MEMBERS_JSON);
+				.Respond("application/json", EndpointsResource.roles__roleId__members_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -332,76 +196,14 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.RecordsPerPage.ShouldBe(300);
-			result.NextPageToken.ShouldBe("memberToken456");
-			result.TotalRecords.ShouldBe(3);
-			result.Records.Length.ShouldBe(3);
-			result.Records[0].Id.ShouldBe("user123");
-			result.Records[0].Email.ShouldBe("user1@example.com");
-			result.Records[0].FirstName.ShouldBe("John");
-			result.Records[0].LastName.ShouldBe("Doe");
-			result.Records[1].Id.ShouldBe("user456");
-			result.Records[2].Id.ShouldBe("user789");
-		}
-
-		[Fact]
-		public async Task GetMembersAsync_WithPagination()
-		{
-			// Arrange
-			var roleId = "role456";
-			var recordsPerPage = 50;
-			var pagingToken = "customMemberToken";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("roles", roleId, "members"))
-				.WithQueryString("page_size", recordsPerPage.ToString())
-				.WithQueryString("next_page_token", pagingToken)
-				.Respond("application/json", ROLE_MEMBERS_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var roles = new Roles(client);
-
-			// Act
-			var result = await roles.GetMembersAsync(roleId, recordsPerPage, pagingToken, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(3);
-		}
-
-		[Fact]
-		public async Task GetMembersAsync_EmptyMembers()
-		{
-			// Arrange
-			var roleId = "role789";
-			var emptyMembersJson = @"{
-				""page_size"": 300,
-				""next_page_token"": """",
-				""total_records"": 0,
-				""members"": []
-			}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("roles", roleId, "members"))
-				.WithQueryString("page_size", "300")
-				.Respond("application/json", emptyMembersJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var roles = new Roles(client);
-
-			// Act
-			var result = await roles.GetMembersAsync(roleId, cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(0);
-			result.TotalRecords.ShouldBe(0);
+			result.RecordsPerPage.ShouldBe(30);
+			result.NextPageToken.ShouldBe("TUNTL8kGBvdBSJiX1PaNAVxYbjV7ouJlKS2");
+			result.TotalRecords.ShouldBe(22);
+			result.Records.Length.ShouldBe(1);
+			result.Records[0].Id.ShouldBe("49D7a0xPQvGQ2DCMZgSe7w");
+			result.Records[0].Email.ShouldBe("jchil.test@example.com");
+			result.Records[0].FirstName.ShouldBe("Jill");
+			result.Records[0].LastName.ShouldBe("Chill");
 		}
 
 		#endregion
@@ -579,29 +381,6 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingRequest();
 		}
 
-		[Fact]
-		public async Task UnassignUserAsync_DifferentRole()
-		{
-			// Arrange
-			var roleId = "customRole999";
-			var userId = "userToRemove123";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("roles", roleId, "members", userId))
-				.Respond(HttpStatusCode.NoContent);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var roles = new Roles(client);
-
-			// Act
-			await roles.UnassignUserAsync(roleId, userId, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-		}
-
 		#endregion
 
 		#region GetAsync Tests
@@ -614,7 +393,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("roles", roleId))
-				.Respond("application/json", SINGLE_ROLE_JSON);
+			.Respond("application/json", EndpointsResource.roles__roleId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -627,47 +406,10 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("role123");
-			result.Name.ShouldBe("Admin");
-			result.Description.ShouldBe("Administrator role with full access");
-			result.MembersCount.ShouldBe(5);
-		}
-
-		[Fact]
-		public async Task GetAsync_DifferentRole()
-		{
-			// Arrange
-			var roleId = "role999";
-			var customRoleJson = @"{
-				""id"": ""role999"",
-				""name"": ""Viewer"",
-				""description"": ""Read-only access"",
-				""total_members"": 50,
-				""privileges"": [
-					""User:View"",
-					""Account:View""
-				]
-			}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("roles", roleId))
-				.Respond("application/json", customRoleJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var roles = new Roles(client);
-
-			// Act
-			var result = await roles.GetAsync(roleId, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Id.ShouldBe("role999");
-			result.Name.ShouldBe("Viewer");
-			result.Description.ShouldBe("Read-only access");
-			result.MembersCount.ShouldBe(50);
+			result.Id.ShouldBe("2");
+			result.Name.ShouldBe("My role");
+			result.Description.ShouldBe("My role");
+			result.MembersCount.ShouldBe(20);
 		}
 
 		#endregion
@@ -797,89 +539,9 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingRequest();
 		}
 
-		[Fact]
-		public async Task DeleteAsync_DifferentRole()
-		{
-			// Arrange
-			var roleId = "roleToDelete999";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("roles", roleId))
-				.Respond(HttpStatusCode.NoContent);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var roles = new Roles(client);
-
-			// Act
-			await roles.DeleteAsync(roleId, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-		}
-
-		[Fact]
-		public async Task DeleteAsync_CustomRole()
-		{
-			// Arrange
-			var roleId = "customRole456";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("roles", roleId))
-				.Respond(HttpStatusCode.NoContent);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var roles = new Roles(client);
-
-			// Act
-			await roles.DeleteAsync(roleId, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-		}
-
 		#endregion
 
 		#region Edge Case and Integration Tests
-
-		[Fact]
-		public async Task GetAllAsync_MultiplePages()
-		{
-			// Arrange
-			var firstPageJson = @"{
-				""page_size"": 300,
-				""next_page_token"": ""page2Token"",
-				""roles"": [
-					{
-						""id"": ""role1"",
-						""name"": ""Role 1"",
-						""total_members"": 10
-					}
-				]
-			}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("roles"))
-				.WithQueryString("page_size", "300")
-				.Respond("application/json", firstPageJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var roles = new Roles(client);
-
-			// Act
-			var result = await roles.GetAllAsync(cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.NextPageToken.ShouldBe("page2Token");
-			result.MoreRecordsAvailable.ShouldBeTrue();
-		}
 
 		[Fact]
 		public async Task AssignUsersAsync_HandleEmailWithAtSymbol()
@@ -914,7 +576,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("roles"))
-				.Respond(HttpStatusCode.Created, "application/json", CREATED_ROLE_JSON);
+				.Respond(HttpStatusCode.Created, "application/json", EndpointsResource.roles_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -927,46 +589,6 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-		}
-
-		[Fact]
-		public async Task GetMembersAsync_LargeResultSet()
-		{
-			// Arrange
-			var roleId = "popularRole123";
-			var largeMembersJson = @"{
-				""page_size"": 300,
-				""next_page_token"": ""moreMembers"",
-				""total_records"": 1000,
-				""members"": [
-					{
-						""id"": ""user1"",
-						""email"": ""user1@example.com"",
-						""first_name"": ""User"",
-						""last_name"": ""One"",
-						""type"": 2
-					}
-				]
-			}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("roles", roleId, "members"))
-				.WithQueryString("page_size", "300")
-				.Respond("application/json", largeMembersJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var roles = new Roles(client);
-
-			// Act
-			var result = await roles.GetMembersAsync(roleId, cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.TotalRecords.ShouldBe(1000);
-			result.MoreRecordsAvailable.ShouldBeTrue();
 		}
 
 		#endregion

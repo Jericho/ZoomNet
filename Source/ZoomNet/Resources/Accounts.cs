@@ -1,7 +1,9 @@
 using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
@@ -199,6 +201,24 @@ namespace ZoomNet.Resources
 				.WithJsonBody(data)
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
+		}
+
+		/// <inheritdoc/>
+		public Task<VirtualBackgroundFile> UploadVirtualBackgroundFileAsync(string accountId, string fileName, Stream fileData, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.PostAsync($"accounts/{accountId}/settings/virtual_backgrounds")
+				.WithBody(bodyBuilder =>
+				{
+					// The file name must be quoted otherwise the Zoom API returns the following error message: Invalid 'Content-Disposition' in multipart form
+					var content = new MultipartFormDataContent
+					{
+						{ new StreamContent(fileData), "file", $"\"{fileName}\"" }
+					};
+					return content;
+				})
+				.WithCancellationToken(cancellationToken)
+				.AsObject<VirtualBackgroundFile>();
 		}
 	}
 }

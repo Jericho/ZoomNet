@@ -1,0 +1,17 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "address_books": [
+    {
+      "address_book_id": "zeYjXoDOS_eV1QmTpj63PQ",
+      "address_book_name": "Address Book",
+      "address_book_description": "This is an address book.",
+      "total_contacts": 30,
+      "unit_id": "zeYjXoDOS_eV1QmTpj63PQ",
+      "unit_name": "Unit"
+    }
+  ],
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
+}

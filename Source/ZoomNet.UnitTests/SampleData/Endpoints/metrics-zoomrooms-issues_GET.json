@@ -1,0 +1,11 @@
+{
+  "from": "2022-01-01",
+  "to": "2022-01-30",
+  "total_records": 20,
+  "issues": [
+    {
+      "issue_name": "Untrusted certificate is detected",
+      "zoom_rooms_count": 1
+    }
+  ]
+}

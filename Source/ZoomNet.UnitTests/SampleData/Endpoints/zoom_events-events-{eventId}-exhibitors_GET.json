@@ -1,0 +1,24 @@
+{
+  "total_records": 1,
+  "exhibitors": [
+    {
+      "exhibitor_id": "kNqLPC6hSFiZ9NpgjA549w",
+      "name": "Fletchie Doe",
+      "is_sponsor": true,
+      "tier_id": "4fgRIOXjQGmoH6raAzJf8g",
+      "description": "",
+      "associated_sessions": [
+        "[QnjbUW7ORu2sjvjNfjf_zQ, iERy5vUPRW259kk9l0zNbQ]"
+      ],
+      "contact_name": "John Doe",
+      "contact_email": "abc.def@email.com",
+      "website": "https://mywebsite.com/example",
+      "privacy_policy": "https://mywebsite.com/example",
+      "linkedin_url": "https://linkedin.com/example",
+      "twitter_url": "https://twitter.com/example",
+      "youtube_url": "https://youtube.com/example",
+      "instagram_url": "https://instagram.com/profile",
+      "facebook_url": "https://facebook.com/profile"
+    }
+  ]
+}

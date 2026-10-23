@@ -1,0 +1,15 @@
+{
+  "data": [
+    {
+      "avatar": "https://filedev.zoomdev.us/p/pRof_6gpQP2YKDxmglRziA/664dcb20-5d05-40da-8fd0-ef32b6f2ee5b-3518",
+      "email": "dev_victor_test_main@dispostable.com",
+      "type": "ZOOM_USER",
+      "role": "VIEWER",
+      "display_name": "dev_victor dev_lu",
+      "channel_id": "c15e84143a6949568247c2fe1e097bd2",
+      "user_id": "4BJ2vryWQg-VZaj0iP4p0w"
+    }
+  ],
+  "next_page_token": "INg1ogDUtBxsvlBiDnZQ8Ik0qpK4XaCjg22",
+  "page_size": 30
+}

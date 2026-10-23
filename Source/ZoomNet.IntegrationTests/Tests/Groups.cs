@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -38,25 +37,13 @@ namespace ZoomNet.IntegrationTests.Tests
 			var group = await client.Groups.GetAsync(newGroup.Id, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"Group {group.Id} retrieved").ConfigureAwait(false);
 
-			// UPLOAD BAKGROUND IMAGES
-			// Check that this computer has a folder containing sample images
-			var samplePicturesFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyPictures), "Samples");
-			if (Directory.Exists(samplePicturesFolder))
-			{
-				var rnd = new Random();
-				var samplePictures = Directory.EnumerateFiles(samplePicturesFolder, "*.jpg");
-				if (samplePictures.Any())
-				{
-					// UPLOAD A FILE
-					var samplePicture = samplePictures.ElementAt(rnd.Next(0, samplePictures.Count()));
-					using var fileToUploadStream = File.OpenRead(samplePicture);
-					var uploadedFile = await client.Groups.UploadVirtualBackgroundAsync(group.Id, Path.GetFileName(samplePicture), fileToUploadStream, cancellationToken).ConfigureAwait(false);
-					await log.WriteLineAsync($"File {uploadedFile.Id} uploaded").ConfigureAwait(false);
+			// UPLOAD BACKGROUND IMAGE
+			var (fileStream, fileName) = Utils.GetRandomImage();
+			var uploadedFile = await client.Groups.UploadVirtualBackgroundAsync(group.Id, Path.GetFileName(fileName), fileStream, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"File {uploadedFile.Id} uploaded").ConfigureAwait(false);
 
-					// DELETE THE VIRTUAL BACKGROUND
-					await client.Groups.DeleteVirtualBackgroundAsync(group.Id, uploadedFile.Id, cancellationToken).ConfigureAwait(false);
-				}
-			}
+			// DELETE THE VIRTUAL BACKGROUND
+			await client.Groups.DeleteVirtualBackgroundAsync(group.Id, uploadedFile.Id, cancellationToken).ConfigureAwait(false);
 
 			// ADD AND REMOVE MEMBERS/ADMINISTRATORS
 			var memberId = await client.Groups.AddMemberByIdAsync(group.Id, myUser.Id, cancellationToken).ConfigureAwait(false);

@@ -2,23 +2,28 @@ using Microsoft.Extensions.Logging;
 using Pathoschild.Http.Client;
 using Pathoschild.Http.Client.Extensibility;
 using RichardSzalay.MockHttp;
+using Shouldly;
 using System;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using Xunit;
 using ZoomNet.Json;
 using ZoomNet.Utilities;
 
 namespace ZoomNet.UnitTests
 {
-	public static class Utils
+	internal static class Utils
 	{
 		private const string ZOOM_V2_BASE_URI = "https://api.zoom.us/v2";
 
-		public static IClient GetFluentClient(MockHttpMessageHandler httpMessageHandler, MockHttpMessageHandler tokenMessageHandler = null, ILogger logger = null)
+		public static IClient GetFluentClient(MockHttpMessageHandler httpMessageHandler, MockHttpMessageHandler tokenMessageHandler = null, IDiagnosticStore diagnosticStore = null, ILogger logger = null)
 		{
 			var client = new FluentClient(new Uri(ZOOM_V2_BASE_URI), httpMessageHandler.ToHttpClient());
 			var tokenHandler = tokenMessageHandler == null ?
 				new OAuthTokenHandler(OAuthConnectionInfo.ForServerToServer("bogus clientId", "bogus secret", "bogus accountId", "bogus access token"), null) :
 				new OAuthTokenHandler(OAuthConnectionInfo.ForServerToServer("bogus clientId", "bogus secret", "bogus accountId"), tokenMessageHandler.ToHttpClient(), null);
+			var diagStore = diagnosticStore ?? new MemoryDiagnosticStore();
 
 			client.SetRequestCoordinator(new ZoomRetryCoordinator(new Http429RetryStrategy(), tokenHandler));
 			client.Filters.Remove<DefaultErrorFilter>();
@@ -33,8 +38,8 @@ namespace ZoomNet.UnitTests
 			//   - Error handler must be last
 			// Also, the list of filters must be kept in sync with the filters in ZoomClient in the ZoomNet project.
 			client.Filters.Add(tokenHandler);
-			client.Filters.Add(new DiagnosticHandler(LogLevel.Debug, LogLevel.Error, logger));
-			client.Filters.Add(new ZoomErrorHandler());
+			client.Filters.Add(new DiagnosticHandler(LogLevel.Debug, LogLevel.Error, diagStore, logger));
+			client.Filters.Add(new ZoomErrorHandler(diagStore));
 
 			return client;
 		}
@@ -42,6 +47,24 @@ namespace ZoomNet.UnitTests
 		public static string GetZoomApiUri(params object[] resources)
 		{
 			return resources.Aggregate(ZOOM_V2_BASE_URI, (current, path) => $"{current.TrimEnd('/')}/{path.ToString().TrimStart('/')}");
+		}
+
+		public static MockFluentHttpResponse CreateResponse(HttpStatusCode statusCode, string content, HttpMethod method = null, string uri = null)
+		{
+			var httpMessage = new HttpResponseMessage(statusCode)
+			{
+				Content = new StringContent(content),
+				RequestMessage = new HttpRequestMessage(method ?? HttpMethod.Get, uri ?? "https://api.zoom.us/v2/test")
+			};
+
+			httpMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, "test-diagnostic-id");
+
+			return new MockFluentHttpResponse(httpMessage, null, TestContext.Current.CancellationToken);
+		}
+
+		internal static bool ShouldBe(this DateOnly date, DateOnly other)
+		{
+			return Should.Equals(date, other);
 		}
 	}
 }

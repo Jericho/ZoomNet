@@ -1,0 +1,20 @@
+{
+  "meeting_id": "I3pHE/RnRbmm\u002Bex2g07sxw==",
+  "meeting_number": 97763643885,
+  "note_id": "ArfRXokSTiGTCSYFVtxNa",
+  "note_owner_user_id": "dqV7XEpnS5G3rGsvqylmjQ",
+  "note_start_time": "2025-05-15T03:01:08.608Z",
+  "note_end_time": "2025-05-15T03:25:59.608Z",
+  "note_created_time": "2025-05-15T03:26:08.608Z",
+  "note_last_modified_time": "2025-05-15T03:26:08.608Z",
+  "note_last_modified_user_id": "dqV7XEpnS5G3rGsvqylmjQ",
+  "note_title": "lingbo test.cn\u0027s Zoom Meeting - Version A",
+  "note_content": "Chief Complaint\nThe patient presents with severe stomach pain near the lower abdomen since morning.\\nHistory of Present Illness\\n- The patient is an adult presenting with severe stomach pain.\\n- Pain is located near the lower abdomen, starting this morning.\\n- Attended a dinner party at a restaurant last night.\\n- Denies additional gastrointestinal symptoms.\\nReview of Systems\\n- Gastrointestinal: Reports severe lower abdominal pain. Denies any other gastrointestinal symptoms.\\nSocial History\\n- Recent dining at a restaurant with friends.\\nAssessment and Plan\\n1. Acute Abdominal Pain\\n- Suspected relation to recent meal at a restaurant.\\n- Medication prescribed for pain management.\\n- Advised to avoid eating from outside.\\nPatient Recommendations\\n- Take the prescribed medicines regularly.\\n- Avoid eating from outside.\\n- Return to the clinic if the pain worsens or new symptoms develop.",
+  "is_note_completed": false,
+  "note_completed_time": "2025-05-15T03:26:48.372Z",
+  "ehr_context": {
+    "appointment_id": "6600001",
+    "patient_id": "Patient/75909597",
+    "provider_id": "Practitioner/34373111"
+  }
+}

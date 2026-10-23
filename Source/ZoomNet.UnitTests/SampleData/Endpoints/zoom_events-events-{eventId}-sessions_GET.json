@@ -1,0 +1,72 @@
+{
+  "total_records": 1,
+  "sessions": [
+    {
+      "timezone": "America/New_York",
+      "type": 2,
+      "meeting_id": 97763643886,
+      "webinar_id": 97871060099,
+      "session_id": "4uzfv3JwTeyR5QpC3PXwMg",
+      "name": "Session 1",
+      "description": "Educational Session on ZoomEvents",
+      "start_time": "2022-05-31T13:00:00.0000000\u002B00:00",
+      "end_time": "2022-05-31T13:00:00.0000000\u002B00:00",
+      "session_speakers": [
+        {
+          "speaker_id": "4uzfv3JwTeyR5QpC3PXwMg",
+          "access_to_edit_session": true,
+          "show_in_session_detail": true,
+          "has_alternative_host_permission": true,
+          "meeting_role": 2,
+          "name": "Speaker-1",
+          "company": "Zoom",
+          "title": "Product Lead"
+        }
+      ],
+      "featured": true,
+      "visible_in_landing_page": true,
+      "featured_in_lobby": false,
+      "visible_in_lobby": true,
+      "is_simulive": true,
+      "record_file_id": "f09340e1-cdc3-4eae-9a74-98f9777ed908",
+      "chat_channel": true,
+      "led_by_sponsor": false,
+      "track_labels": [
+        "Technical Track"
+      ],
+      "audience_labels": [
+        "Family"
+      ],
+      "product_labels": [
+        "zoomMeeting"
+      ],
+      "level": [
+        "Level-1"
+      ],
+      "alternative_host": [
+        "abc.cd@email.com"
+      ],
+      "panelist": [
+        "abc.cd@email.com"
+      ],
+      "interpreter_languages": [
+        {
+          "language_id": "EN",
+          "language_display_name": "English"
+        }
+      ],
+      "sign_interpreter_languages": [
+        {
+          "language_id": "EN",
+          "language_display_name": "English"
+        }
+      ],
+      "attendance_type": "hybrid",
+      "physical_location": "801 Mt Vernon Pl NW, Washington, DC 20001",
+      "session_reservation": {
+        "allow_reservations": true,
+        "max_capacity": 20
+      }
+    }
+  ]
+}

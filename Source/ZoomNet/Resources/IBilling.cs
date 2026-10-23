@@ -54,7 +54,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The currency used in the invoices and an array containing summary information about invoices.
 		/// </returns>
-		Task<BillingInvoiceSummary[]> GetInvoicesAsync(string accountId, DateTime from, DateTime to, CancellationToken cancellationToken = default);
+		Task<BillingInvoiceSummary[]> GetInvoicesAsync(string accountId, DateOnly from, DateOnly to, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get detailed information about an invoice.

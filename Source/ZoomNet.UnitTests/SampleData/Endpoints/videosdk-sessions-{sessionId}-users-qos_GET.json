@@ -1,0 +1,150 @@
+{
+  "page_size": 1,
+  "next_page_token": "1cyhUewZa419P9F8QUYURck0U3rFWB0d1H2",
+  "users": [
+    {
+      "id": "1670000000",
+      "name": "User",
+      "device": "Android",
+      "client": "Web Meeting SDK 2.18",
+      "os": "iOS",
+      "os_version": "16.5",
+      "browser_name": "Firefox",
+      "browser_version": "133",
+      "ip_address": "192.0.2.0",
+      "location": "San Jose (US)",
+      "network_type": "Wifi",
+      "microphone": "Plantronics BT600",
+      "speaker": "Plantronics BT600",
+      "camera": "FaceTime HD Camera",
+      "data_center": "SC",
+      "connection_type": "P2P",
+      "join_time": "2019-08-20T19:09:01.0000000\u002B00:00",
+      "leave_time": "2019-08-20T19:19:01.0000000\u002B00:00",
+      "user_key": "myUserKey",
+      "is_original_host": false,
+      "user_qos": [
+        {
+          "date_time": "2019-08-20T19:19:01.0000000\u002B00:00",
+          "audio_input": {
+            "bitrate": "23 kbps",
+            "latency": "126 ms",
+            "jitter": "6 ms",
+            "avg_loss": "0.3%",
+            "max_loss": "1.9%"
+          },
+          "audio_output": {
+            "bitrate": "23 kbps",
+            "latency": "126 ms",
+            "jitter": "6 ms",
+            "avg_loss": "0.3%",
+            "max_loss": "1.9%"
+          },
+          "video_input": {
+            "bitrate": "23 kbps",
+            "latency": "126 ms",
+            "jitter": "6 ms",
+            "avg_loss": "0.3%",
+            "max_loss": "1.9%",
+            "resolution": "1280*720",
+            "frame_rate": "12 fps"
+          },
+          "video_output": {
+            "bitrate": "23 kbps",
+            "latency": "126 ms",
+            "jitter": "6 ms",
+            "avg_loss": "0.3%",
+            "max_loss": "1.9%",
+            "resolution": "1280*720",
+            "frame_rate": "12 fps"
+          },
+          "as_input": {
+            "bitrate": "23 Kbps",
+            "latency": "126 ms",
+            "jitter": "6 ms",
+            "avg_loss": "0.3%",
+            "max_loss": "1.9%",
+            "resolution": "1280*720",
+            "frame_rate": "12 fps"
+          },
+          "as_output": {
+            "bitrate": "23 Kbps",
+            "latency": "126 ms",
+            "jitter": "6 ms",
+            "avg_loss": "0.3%",
+            "max_loss": "1.9%",
+            "resolution": "1280*720",
+            "frame_rate": "12 fps"
+          },
+          "audio_device_from_rwg": {
+            "bitrate": "23 kbps",
+            "latency": "126 ms",
+            "jitter": "6 ms",
+            "avg_loss": "0.3%",
+            "max_loss": "1.9%"
+          },
+          "audio_device_to_rwg": {
+            "bitrate": "23 kbps",
+            "latency": "126 ms",
+            "jitter": "6 ms",
+            "avg_loss": "0.3%",
+            "max_loss": "1.9%"
+          },
+          "video_device_from_rwg": {
+            "bitrate": "23 kbps",
+            "latency": "126 ms",
+            "jitter": "6 ms",
+            "avg_loss": "0.3%",
+            "max_loss": "1.9%",
+            "resolution": "1280*720",
+            "frame_rate": "12 fps"
+          },
+          "video_device_to_rwg": {
+            "bitrate": "23 kbps",
+            "latency": "126 ms",
+            "jitter": "6 ms",
+            "avg_loss": "0.3%",
+            "max_loss": "1.9%",
+            "resolution": "1280*720",
+            "frame_rate": "12 fps"
+          },
+          "as_device_from_rwg": {
+            "bitrate": "23 Kbps",
+            "latency": "126 ms",
+            "jitter": "6 ms",
+            "avg_loss": "0.3%",
+            "max_loss": "1.9%",
+            "resolution": "1280*720",
+            "frame_rate": "12 fps"
+          },
+          "as_device_to_rwg": {
+            "bitrate": "23 Kbps",
+            "latency": "126 ms",
+            "jitter": "6 ms",
+            "avg_loss": "0.3%",
+            "max_loss": "1.9%",
+            "resolution": "1280*720",
+            "frame_rate": "12 fps"
+          },
+          "wifi_rssi": {
+            "max_rssi": -75,
+            "avg_rssi": -69,
+            "min_rssi": -35,
+            "rssi_unit": "dBm"
+          },
+          "cpu_usage": {
+            "zoom_min_cpu_usage": "8%",
+            "zoom_avg_cpu_usage": "12%",
+            "zoom_max_cpu_usage": "18%",
+            "system_max_cpu_usage": "40%"
+          },
+          "cpu_pressure_level": {
+            "system_min_cpu_pressure_level": "normal",
+            "system_avg_cpu_pressure_level": "normal",
+            "system_max_cpu_pressure_level": "normal"
+          }
+        }
+      ]
+    }
+  ]
+}

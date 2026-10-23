@@ -1,0 +1,26 @@
+{
+  "phone_id": "123456",
+  "authorization_name": "testname",
+  "domain": "example.com",
+  "password": "123456",
+  "registration_expire_time": 60,
+  "user_email": "jchill@example.com",
+  "user_name": "Jill Chill",
+  "voice_mail": "4000",
+  "display_number": "5551110105",
+  "server": {
+    "proxy_server": "192.0.2.2",
+    "register_server": "192.0.2.2",
+    "transport_protocol": "UDP"
+  },
+  "server_2": {
+    "proxy_server": "192.0.2.2",
+    "register_server": "192.0.2.2",
+    "transport_protocol": "UDP"
+  },
+  "server_3": {
+    "proxy_server": "192.0.2.2",
+    "register_server": "192.0.2.2",
+    "transport_protocol": "UDP"
+  }
+}

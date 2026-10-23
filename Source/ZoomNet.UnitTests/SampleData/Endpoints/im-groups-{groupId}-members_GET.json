@@ -1,0 +1,16 @@
+{
+  "next_page_token": "w7587w4eiyfsudgf",
+  "page_count": 1,
+  "page_number": 1,
+  "page_size": 30,
+  "total_records": 20,
+  "members": [
+    {
+      "email": "jchill@example.com",
+      "first_name": "Jill",
+      "id": "v4iyWT1LTfy8QvPG4GTvdg",
+      "last_name": "Chill",
+      "type": 1
+    }
+  ]
+}

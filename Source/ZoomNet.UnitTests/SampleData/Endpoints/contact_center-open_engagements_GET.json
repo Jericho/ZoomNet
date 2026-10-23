@@ -1,0 +1,54 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 10,
+  "total_records": 10,
+  "timezone": "America/Los_Angeles",
+  "engagements": [
+    {
+      "start_time": "2025-12-03T13:07:46.0000000\u002B00:00",
+      "email_sent_time": "2025-12-03T13:07:46.0000000\u002B00:00",
+      "engagement_id": "W_VATTk_Q5aW6z5rZtBxAQ",
+      "direction": "inbound",
+      "status": "in_queue",
+      "channels": [
+        {
+          "channel": "email",
+          "channel_source": "email_address"
+        }
+      ],
+      "consumers": [
+        {
+          "consumer_id": "zeYjXoDOS_eV1QmTpj63PQ",
+          "consumer_display_name": "John",
+          "consumer_email_address": "consumer@example.com",
+          "consumer_number": "\u002B800-555-1212"
+        }
+      ],
+      "flows": [
+        {
+          "flow_id": "zeYjXoDOS_eV1QmTpj63PQ",
+          "flow_name": "Demo",
+          "flow_version": "5"
+        }
+      ],
+      "queues": [
+        {
+          "cc_queue_id": "a4lCNeq2SzKbgkcDVbjCZQ",
+          "queue_name": "Voice - Customer Support"
+        }
+      ],
+      "agents": [
+        {
+          "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
+          "display_name": "Jane Doe",
+          "team_id": "w1bj_RDFQukAAkZKfROKMS",
+          "team_name": "teamA"
+        }
+      ],
+      "priority": "High",
+      "subject": "email subject"
+    }
+  ],
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
+}

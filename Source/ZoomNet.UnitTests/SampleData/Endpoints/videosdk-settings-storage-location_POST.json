@@ -1,0 +1,10 @@
+{
+  "id": "GOSG08LQQoeDyyRAO6GgLw",
+  "name": "0827aksk",
+  "provider": "aws_s3",
+  "s3": {
+    "region": "us-east-2",
+    "bucket": "testpbx",
+    "authentication_mechanism": "aws_access_key"
+  }
+}

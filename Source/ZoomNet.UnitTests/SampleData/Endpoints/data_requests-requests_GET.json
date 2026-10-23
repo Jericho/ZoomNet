@@ -1,0 +1,24 @@
+{
+  "total_records": 1,
+  "records": [
+    {
+      "request_id": "1952221087039594498",
+      "request_type": "DELETE",
+      "created_at": "2000-10-31T01:30:00.0000000-05:00",
+      "requestor_user_id": "abcdefghij",
+      "requestor_name": "Test User",
+      "account_id": "abcdefg",
+      "user_identifier": "a@a.com",
+      "data_type": [
+        "ALL"
+      ],
+      "state": "Processing",
+      "files_count": 1,
+      "start_at": "2025-08-05T23:14:10.4480000\u002B00:00",
+      "end_at": "2025-08-05T23:14:10.4480000\u002B00:00",
+      "is_current_user": true,
+      "failed_reason": "User does not belong to account"
+    }
+  ],
+  "next_page_token": "abcdef"
+}

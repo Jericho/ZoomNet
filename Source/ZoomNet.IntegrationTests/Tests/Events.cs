@@ -46,6 +46,11 @@ namespace ZoomNet.IntegrationTests.Tests
 
 			var hub = hubs.First(h => h.IsActive);
 
+			// UPLOAD A FILE TO THE HUB
+			var (fileToUploadStream, fileToUploadName) = Utils.GetRandomImage();
+			var uploadedFileId = await client.Events.UploadFileAsync(hub.Id, fileToUploadName, fileToUploadStream, cancellationToken).ConfigureAwait(false);
+			await log.WriteLineAsync($"File {uploadedFileId} uploaded").ConfigureAwait(false);
+
 			// GET ALL THE HUB HOSTS
 			var hubHosts = await client.Events.GetAllHubHostsAsync(hub.Id, 100, null, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"There are {hubHosts.TotalRecords} hosts for hub {hub.Id}").ConfigureAwait(false);

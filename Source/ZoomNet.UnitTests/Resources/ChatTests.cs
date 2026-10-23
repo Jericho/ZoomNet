@@ -10,96 +10,12 @@ using System.Threading.Tasks;
 using Xunit;
 using ZoomNet.Models;
 using ZoomNet.Resources;
+using ZoomNet.UnitTests.Properties;
 
 namespace ZoomNet.UnitTests.Resources
 {
 	public class ChatTests
 	{
-		private const string ACCOUNT_CHANNELS_JSON = @"{
-			""page_size"": 30,
-			""next_page_token"": ""token123"",
-			""channels"": [
-				{
-					""id"": ""channel1"",
-					""name"": ""Test Channel 1"",
-					""type"": 1,
-					""channel_url"": ""https://zoom.us/channel/channel1"",
-					""jid"": ""channel1@conference.zoom.us""
-				},
-				{
-					""id"": ""channel2"",
-					""name"": ""Test Channel 2"",
-					""type"": 2,
-					""channel_url"": ""https://zoom.us/channel/channel2"",
-					""jid"": ""channel2@conference.zoom.us""
-				}
-			]
-		}";
-
-		private const string SINGLE_CHANNEL_JSON = @"{
-			""id"": ""channel1"",
-			""name"": ""Test Channel"",
-			""type"": 1,
-			""channel_url"": ""https://zoom.us/channel/channel1"",
-			""jid"": ""channel1@conference.zoom.us"",
-			""channel_settings"": {
-				""add_member_permissions"": 1,
-				""posting_permissions"": 1,
-				""new_members_can_see_previous_messages_files"": true,
-				""mention_all_permissions"": 1
-			}
-		}";
-
-		private const string CHANNEL_MEMBERS_JSON = @"{
-			""page_size"": 30,
-			""next_page_token"": ""membertoken"",
-			""members"": [
-				{
-					""id"": ""member1"",
-					""email"": ""member1@example.com"",
-					""first_name"": ""John"",
-					""last_name"": ""Doe"",
-					""role"": ""member""
-				},
-				{
-					""id"": ""member2"",
-					""email"": ""member2@example.com"",
-					""first_name"": ""Jane"",
-					""last_name"": ""Smith"",
-					""role"": ""admin""
-				}
-			]
-		}";
-
-		private const string CHAT_MEMBERS_EDIT_RESULT_JSON = @"{
-			""added_at"": ""2020-02-10T21:39:50Z"",
-			""ids"": ""D40dy5L7SJiSTayIvRV9Lw,KT6h5SfCSm6YNjZo7i8few"",
-			""member_ids"": ""R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ,R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJ""
-		}";
-
-		private const string CHAT_MESSAGES_JSON = @"{
-			""page_size"": 30,
-			""next_page_token"": ""msgtoken"",
-			""messages"": [
-				{
-					""id"": ""msg1"",
-					""message"": ""Hello"",
-					""sender"": ""user@example.com"",
-					""date_time"": ""2023-01-01T10:00:00Z""
-				},
-				{
-					""id"": ""msg2"",
-					""message"": ""Hi there"",
-					""sender"": ""user2@example.com"",
-					""date_time"": ""2023-01-01T10:05:00Z""
-				}
-			]
-		}";
-
-		private const string MESSAGE_ID_JSON = @"{
-			""id"": ""msg123""
-		}";
-
 		private const string FILE_ID_JSON = @"{
 			""id"": ""file123""
 		}";
@@ -125,7 +41,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("chat", "users", userId, "channels"))
 				.WithQueryString("page_size", recordsPerPage.ToString())
 				.WithQueryString("next_page_token", pagingToken)
-				.Respond("application/json", ACCOUNT_CHANNELS_JSON);
+				.Respond("application/json", EndpointsResource.chat_users__userId__channels_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -138,12 +54,12 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.RecordsPerPage.ShouldBe(30);
-			result.NextPageToken.ShouldBe("token123");
+			result.RecordsPerPage.ShouldBe(10);
+			result.NextPageToken.ShouldBe("qUEQqB1V0HVhJmwKFQrGOD");
 			result.Records.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
-			result.Records[0].Id.ShouldBe("channel1");
-			result.Records[0].Name.ShouldBe("Test Channel 1");
+			result.Records.Length.ShouldBe(1);
+			result.Records[0].Id.ShouldBe("cabc1234567defghijkl01234");
+			result.Records[0].Name.ShouldBe("Developers");
 		}
 
 		[Fact]
@@ -155,7 +71,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("chat", "users", userId, "channels", channelId))
-				.Respond("application/json", SINGLE_CHANNEL_JSON);
+				.Respond("application/json", EndpointsResource.chat_users__userId__channels__channelId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -168,8 +84,8 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("channel1");
-			result.Name.ShouldBe("Test Channel");
+			result.Id.ShouldBe("cabc1234567defghijkl01234");
+			result.Name.ShouldBe("Developers");
 		}
 
 		[Fact]
@@ -183,7 +99,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("chat", "users", userId, "channels"))
-				.Respond("application/json", SINGLE_CHANNEL_JSON);
+				.Respond("application/json", EndpointsResource.chat_users__userId__channels_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -196,7 +112,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("channel1");
+			result.Id.ShouldBe("825c9e31f1064c73b394c5e4557d3447");
 		}
 
 		[Fact]
@@ -288,7 +204,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("chat", "users", userId, "channels", channelId, "members"))
 				.WithQueryString("page_size", recordsPerPage.ToString())
 				.WithQueryString("next_page_token", pagingToken)
-				.Respond("application/json", CHANNEL_MEMBERS_JSON);
+				.Respond("application/json", EndpointsResource.chat_users__userId__channels__channelId__members_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -301,9 +217,9 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
-			result.Records[0].Id.ShouldBe("member1");
-			result.Records[0].Email.ShouldBe("member1@example.com");
+			result.Records.Length.ShouldBe(1);
+			result.Records[0].Id.ShouldBe("v4iyWT1LTfy8QvPG4GTvdg");
+			result.Records[0].Email.ShouldBe("jchill@example.com");
 		}
 
 		[Fact]
@@ -316,7 +232,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("chat", "users", userId, "channels", channelId, "members"))
-				.Respond("application/json", CHAT_MEMBERS_EDIT_RESULT_JSON);
+				.Respond("application/json", EndpointsResource.chat_users__userId__channels__channelId__members_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -400,7 +316,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("chat", "users", userId, "channels", channelId, "admins"))
-				.Respond("application/json", CHAT_MEMBERS_EDIT_RESULT_JSON);
+				.Respond("application/json", EndpointsResource.chat_users__userId__channels__channelId__admins_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -511,7 +427,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("chat", "channels", channelId))
-				.Respond("application/json", SINGLE_CHANNEL_JSON);
+				.Respond("application/json", EndpointsResource.chat_channels__channelId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -524,7 +440,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("channel1");
+			result.Id.ShouldBe("cabc1234567defghijkl01234");
 		}
 
 		[Fact]
@@ -600,11 +516,10 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var channelId = "channel1";
-			var joinResponse = @"{""id"":""member123""}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("chat", "channels", channelId, "members", "me"))
-				.Respond("application/json", joinResponse);
+				.Respond("application/json", EndpointsResource.chat_channels__channelId__members_me_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -616,7 +531,7 @@ namespace ZoomNet.UnitTests.Resources
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldBe("member123");
+			result.ShouldBe("v4iyWT1LTfy8QvPG4GTvdg");
 		}
 
 		#endregion
@@ -633,7 +548,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("chat", "users", userId, "messages"))
-				.Respond("application/json", MESSAGE_ID_JSON);
+				.Respond("application/json", EndpointsResource.chat_users__userId__messages_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -645,7 +560,7 @@ namespace ZoomNet.UnitTests.Resources
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldBe("msg123");
+			result.ShouldBe("8cfaf567-bf5a-4acc-b4f2-88b3d371aca5");
 		}
 
 		[Fact]
@@ -658,7 +573,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("chat", "users", userId, "messages"))
-				.Respond("application/json", MESSAGE_ID_JSON);
+				.Respond("application/json", EndpointsResource.chat_users__userId__messages_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -670,7 +585,7 @@ namespace ZoomNet.UnitTests.Resources
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldBe("msg123");
+			result.ShouldBe("8cfaf567-bf5a-4acc-b4f2-88b3d371aca5");
 		}
 
 		[Fact]
@@ -685,7 +600,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("chat", "users", userId, "messages"))
 				.WithQueryString("to_contact", recipientEmail)
 				.WithQueryString("page_size", recordsPerPage.ToString())
-				.Respond("application/json", CHAT_MESSAGES_JSON);
+				.Respond("application/json", EndpointsResource.chat_users__userId__messages_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -698,8 +613,8 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
-			result.Records[0].Id.ShouldBe("msg1");
+			result.Records.Length.ShouldBe(1);
+			result.Records[0].Id.ShouldBe("EAB58B01-B35F-4F97-BA69-F9650F54679A");
 		}
 
 		[Fact]
@@ -714,7 +629,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("chat", "users", userId, "messages"))
 				.WithQueryString("to_channel", channelId)
 				.WithQueryString("page_size", recordsPerPage.ToString())
-				.Respond("application/json", CHAT_MESSAGES_JSON);
+				.Respond("application/json", EndpointsResource.chat_users__userId__messages_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -727,7 +642,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
+			result.Records.Length.ShouldBe(1);
 		}
 
 		[Fact]

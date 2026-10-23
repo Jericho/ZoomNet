@@ -1,0 +1,35 @@
+{
+  "meeting_host_id": "30R7kT7bTIKSNUFEuH_Qlg",
+  "meeting_host_email": "jchill@example.com",
+  "meeting_uuid": "aDYlohsHRtCd4ii1uC2\u002BhA==",
+  "meeting_id": 97763643886,
+  "meeting_topic": "My Meeting",
+  "meeting_start_time": "2019-07-15T23:24:52.0000000\u002B00:00",
+  "meeting_end_time": "2020-07-15T23:30:19.0000000\u002B00:00",
+  "summary_start_time": "2019-07-15T23:24:52.0000000\u002B00:00",
+  "summary_end_time": "2020-07-15T23:30:19.0000000\u002B00:00",
+  "summary_created_time": "2019-07-15T23:24:52.0000000\u002B00:00",
+  "summary_last_modified_time": "2020-07-15T23:30:19.0000000\u002B00:00",
+  "summary_last_modified_user_id": "Lfi0BlBQTM-bbktE9BRUvA",
+  "summary_last_modified_user_email": "user@example.com",
+  "summary_title": "Meeting summary for my meeting",
+  "summary_overview": "Meeting overview",
+  "summary_details": [
+    {
+      "label": "Meeting overview",
+      "summary": "Meeting overview"
+    }
+  ],
+  "next_steps": [
+    "step1"
+  ],
+  "edited_summary": {
+    "summary_overview": "Meeting overview",
+    "summary_details": "Meeting overview",
+    "next_steps": [
+      "step1"
+    ]
+  },
+  "summary_content": "## Key takeaways\n- Mobile app performance issues are affecting user retention.\n- New onboarding flow received positive feedback from beta testers.\n- Need to prioritize accessibility improvements.\n- Customer support response time has improved by 25%.\n\n## Discussed topics\n### Mobile App Performance\nDiscussion of recent performance metrics and user complaints\n- **Details**\n    - Sarah (Product): Reports of app crashes increased 15% this month\n    - Mike (Engineering): Memory optimization needed in latest release\n    - Tom (QA): Identified memory leak in photo upload feature\n- **Conclusion**\n    - Implement performance monitoring tools\n    - Prioritize memory optimization in next sprint\n\n### Onboarding Flow\nReview of beta testing results for new user onboarding\n- **Details**\n    - Rachel (UX): 90% completion rate in beta testing\n    - David (Product): Positive feedback on simplified registration\n- **Conclusion**\n    - Ready for full rollout next month\n    - Need to monitor analytics post-launch\n\n### Accessibility Compliance\nDiscussion of current accessibility status and needed improvements\n- **Details**\n    - Lisa (Design): Screen reader compatibility issues identified\n    - John (Engineering): WCAG compliance at 80%\n- **Conclusion**\n    - Create accessibility improvement roadmap\n    - Schedule external audit\n\n## Challenges\n* Resource constraints for performance optimization\n* Integration testing environment stability issues\n* Lack of accessibility expertise in the team\n\n## Action items\n- **Sarah**\n  - Prepare performance monitoring implementation plan\n  - Schedule follow-up meeting with engineering team\n- **Mike**\n  - Investigate memory leak fix\n  - Document performance optimization guidelines\n- **Lisa**\n  - Create accessibility improvement proposal\n  - Research accessibility testing tools\n- **Rachel**\n  - Prepare onboarding analytics dashboard\n  - Document beta testing findings",
+  "summary_doc_url": "https://docs.zoom.us/doc/1aBcDeFgHiJkLmNoPqRsTu"
+}

@@ -1,0 +1,13 @@
+{
+  "total_records": 1,
+  "request_type": "EXPORT",
+  "file_records": [
+    {
+      "file_id": "M84CPMhmTGqeMMfwrvb6mA",
+      "file_name": "EXPORT_2xxx0x0x.zip",
+      "size": "15667",
+      "created_at": "2025-08-06T17:30:00.0000000\u002B00:00"
+    }
+  ],
+  "next_page_token": "nextPageToken123"
+}

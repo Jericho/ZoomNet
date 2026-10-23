@@ -1,0 +1,75 @@
+{
+  "call_logs": [
+    {
+      "accepted_by": {
+        "extension_number": "1009",
+        "location": "Glendale     CA",
+        "name": "Display name",
+        "number_type": 1,
+        "phone_number": "\u002B12055432724"
+      },
+      "answer_start_time": "2021-10-08T16:10:04Z",
+      "call_end_time": "2021-10-08T16:12:04Z",
+      "call_id": "7006926284340112376",
+      "callee_user_id": "IqoQmDRqS-aIoXqV_FZ88w",
+      "callee_country_code": "1",
+      "callee_country_iso_code": "US",
+      "callee_did_number": "\u002B12135551234",
+      "callee_name": "Jan Dev",
+      "callee_number": "101",
+      "callee_number_type": 1,
+      "callee_number_source": "internal",
+      "caller_user_id": "IqoQmDRqS-aIoXqV_FZ88w",
+      "caller_country_code": "1",
+      "caller_country_iso_code": "US",
+      "caller_did_number": "\u002B18108001001",
+      "caller_name": "Zoom",
+      "caller_number": "\u002B12095552345",
+      "caller_number_type": 1,
+      "caller_number_source": "internal",
+      "caller_billing_reference_id": "ZoomTelecom123456",
+      "charge": "$0.0255",
+      "client_code": "123",
+      "date_time": "2022-01-24T23:58:10Z",
+      "direction": "inbound",
+      "duration": 7,
+      "forwarded_by": {
+        "extension_number": "1009",
+        "extension_type": "callQueue",
+        "location": "Glendale     CA",
+        "name": "The display name",
+        "number_type": 1,
+        "phone_number": "\u002B12055432724"
+      },
+      "forwarded_to": {
+        "extension_number": "1009",
+        "location": "Glendale     CA",
+        "name": "Display name",
+        "number_type": 1,
+        "phone_number": "\u002B12055432724"
+      },
+      "has_recording": false,
+      "has_voicemail": false,
+      "id": "11f2bacb-37d8-4ae4-8d88-be657421266f",
+      "outgoing_by": {
+        "extension_number": "1009",
+        "location": "Glendale     CA",
+        "name": "Display name",
+        "number_type": 1,
+        "phone_number": "\u002B12055432724"
+      },
+      "path": "callQueue",
+      "rate": "$0.0255",
+      "recording_type": "Automatic",
+      "result": "Call connected",
+      "site": {
+        "id": "GNO-CItXQaLhqH3qfPD1kg",
+        "name": "Main Site"
+      },
+      "user_id": "IqoQmDRqS-aIoXqV_FZ88w",
+      "hold_time": 5,
+      "waiting_time": 47
+    }
+  ],
+  "sync_token": "SDVjM3NHRlNyMF8xNjQwODI3NTkyMzkwXzE2NDgwMTUzNTk0MzI="
+}

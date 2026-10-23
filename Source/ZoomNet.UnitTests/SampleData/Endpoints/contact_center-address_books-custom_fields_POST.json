@@ -1,0 +1,21 @@
+{
+  "custom_field_id": "7381d210-360e-4fbd-86e4-33eb7109b084",
+  "custom_field_name": "Preferred Contact Method",
+  "custom_field_description": "The custom field for contact method",
+  "data_type": "pick_list",
+  "default_value": "phone",
+  "pick_list_values": [
+    "phone"
+  ],
+  "address_books": [
+    {
+      "address_book_id": "X2e_jsLNRkCjI0sQg2kRQQ",
+      "address_book_name": "Jill\u0027s address book"
+    }
+  ],
+  "use_as_routing_profile_parameter": true,
+  "use_as_external_url_parameter": false,
+  "show_in_transferred_calls": true,
+  "show_in_inbound_notification": true,
+  "show_in_profile_tab": false
+}

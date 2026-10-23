@@ -2,26 +2,18 @@ using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the status of a registrant.
-	/// </summary>
+	/// <summary>Enumeration to indicate the status of a registrant.</summary>
 	public enum RegistrantStatus
 	{
-		/// <summary>
-		/// Pending.
-		/// </summary>
+		/// <summary>Pending.</summary>
 		[EnumMember(Value = "pending")]
 		Pending,
 
-		/// <summary>
-		/// Approved.
-		/// </summary>
+		/// <summary>Approved.</summary>
 		[EnumMember(Value = "approved")]
 		Approved,
 
-		/// <summary>
-		/// Denied.
-		/// </summary>
+		/// <summary>Denied.</summary>
 		[EnumMember(Value = "denied")]
 		Denied
 	}

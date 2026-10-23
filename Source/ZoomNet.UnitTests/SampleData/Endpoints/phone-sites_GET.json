@@ -1,0 +1,22 @@
+{
+  "next_page_token": "nav48KOj42vYPSG4f0cCdT575bZ980did22",
+  "page_size": 10,
+  "sites": [
+    {
+      "country": {
+        "code": "US",
+        "name": "United States"
+      },
+      "id": "SQv52YtkRLC2dwrDdYtGsA",
+      "main_auto_receptionist": {
+        "extension_id": "pl1XprjhTQK1CCMVKTqCFA",
+        "extension_number": 12345,
+        "id": "Kbdc9lv_SBCuPMjj_lhxVA",
+        "name": "ApiTA_R_2020_07_12_00_41_57_145"
+      },
+      "name": "ApiTA_Site_2020_07_12_00_41_57_141",
+      "site_code": 1
+    }
+  ],
+  "total_records": 20
+}

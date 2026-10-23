@@ -1,0 +1,40 @@
+{
+  "next_page_token": "w7587w4eiyfsudgf",
+  "page_size": 30,
+  "apps": [
+    {
+      "app_id": "nqSreNVsQ2eGzUMGnA8AHA",
+      "app_name": "Example App",
+      "app_type": "ZoomApp",
+      "app_usage": 1,
+      "app_status": "PUBLISHED",
+      "request_id": "zZLSQoL6S0OB6asaZ3zAOQ",
+      "request_total_number": 8,
+      "request_pending_number": 3,
+      "request_approved_number": 2,
+      "request_declined_number": 2,
+      "latest_request_date_time": "2021-07-21T17:32:28.0000000\u002B00:00",
+      "reviewer_name": "Jill Chill",
+      "review_date_time": "2021-07-21T17:32:28.0000000\u002B00:00",
+      "app_developer_type": "THIRD_PARTY",
+      "app_description": "information about the app.",
+      "app_icon": "https://marketplacecontent.zoom.us//oE98TDy1QymZ3nZs_uILrw/RxGA0jOvQU6aKxttLwQ2-A/app/B67xzmliS9-noBDwsGun1Q/KRUURXa-T6iQz7-S9bEO6A.png",
+      "scopes": [
+        {
+          "scope_name": "View all users\u0027 team chat messages",
+          "scope_description": "This app will gain access to the team chat channels. Please review its privacy policy first."
+        }
+      ],
+      "app_privacy_policy_url": "https://www.example.com/privacy/policy",
+      "app_directory_url": "https://marketplace.zoom.us/apps/{appId}",
+      "app_help_url": "https://www.example.com/support",
+      "restricted_time": "2024-03-21T17:32:28Z",
+      "approval_info": {
+        "approved_type": "forSpecificUser",
+        "approver_id": "1gAKvx8fSUeTg-mHgmYTRA",
+        "approved_time": "2024-03-21T14:32:28Z",
+        "app_approval_closed": true
+      }
+    }
+  ]
+}

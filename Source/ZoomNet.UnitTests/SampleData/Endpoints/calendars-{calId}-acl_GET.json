@@ -1,0 +1,17 @@
+{
+  "kind": "calendar#acl",
+  "etag": "\u002200000000000000000000\u0022",
+  "nextPageToken": "user:abc@example.com!",
+  "items": [
+    {
+      "kind": "calendar#aclRule",
+      "etag": "\u002200000000000000000000\u0022",
+      "id": "user:cba.fed@zoom.com",
+      "scope": {
+        "type": "user",
+        "value": "abc.def@zoom.us"
+      },
+      "role": "reader"
+    }
+  ]
+}

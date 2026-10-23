@@ -1,0 +1,32 @@
+{
+  "validation_response": {
+    "is_valid": true,
+    "violations": [
+      {
+        "violation_type": "Quantity mismatch",
+        "severity": "Stop",
+        "reason": {
+          "error_code": "6311",
+          "error_message": "Zoom Phone Pay As You Go must be accompanied by one of the following rate plans"
+        },
+        "affected_offers": [
+          null
+        ],
+        "suggestions": [
+          {
+            "action": "Add",
+            "offers": [
+              {
+                "price_list_id": "PRL-1741014098274",
+                "name": "Zoom Workplace Pro Plus US/Canada Monthly"
+              }
+            ],
+            "suggested_quantity": 1,
+            "mandatory": false,
+            "product_type": "base"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "id": "iHE1MQAET2iV85MbfaQmwg",
+  "number": "\u002B1203030333",
+  "allocated_product": "ZOOM_CONTACT_CENTER",
+  "number_type": "Toll",
+  "display_name": "Alice",
+  "caller_id_name": "Bob Company",
+  "carrier": {
+    "code": 2,
+    "name": "Bandwidth"
+  },
+  "capability": [
+    "Incoming"
+  ],
+  "source": "Zoom",
+  "status": "Pending",
+  "emergency_address": {
+    "address_line1": "53 Rav Road",
+    "address_line2": "Floor 1",
+    "city": "San Jose",
+    "county": "CO. Cork",
+    "state_code": "CA",
+    "country": "US",
+    "zip": "95113"
+  },
+  "address_update_required": true,
+  "emergency_address_update_time": "2024-10-29T14:18:28Z",
+  "site": {
+    "site_id": "8f71O6rWT8KFUGQmJIFAdQ",
+    "name": "Main Site"
+  },
+  "assigned_list": [
+    {
+      "assigned_to_id": "rYgfsrduSXWCxr94poMN5g",
+      "assgined_to_name": "Alice Bob",
+      "assigned_to_type": "User",
+      "source_channel": "Voice",
+      "extension_number": "6503",
+      "meeting_id": "964 3020 9491",
+      "greeting": {
+        "id": "vWby3OZaQlS1nAdmEAqgwA",
+        "name": "hotspot.wav"
+      },
+      "on_hold_music": {
+        "id": "vWby3OZaQlS1nAdmEAqgwA",
+        "name": "music.wav"
+      },
+      "display_number": "\u002B1 360 209 5623",
+      "label": "xxx"
+    }
+  ],
+  "sip_group": {
+    "id": "vZWksdNbRkKTdzOth09skw",
+    "name": "Sip 01"
+  },
+  "location": {
+    "country": "United States",
+    "city": "San Jose",
+    "state": "California"
+  }
+}

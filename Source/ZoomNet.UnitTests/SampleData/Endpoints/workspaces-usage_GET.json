@@ -1,0 +1,14 @@
+{
+  "desk_usage": {
+    "in_use": 2,
+    "not_in_use": 1
+  },
+  "room_usage": {
+    "in_use": 1,
+    "not_in_use": 1
+  },
+  "total_usage": {
+    "in_use": 1,
+    "not_in_use": 1
+  }
+}

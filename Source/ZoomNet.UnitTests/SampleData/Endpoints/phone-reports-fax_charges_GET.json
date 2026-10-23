@@ -1,0 +1,26 @@
+{
+  "next_page_token": "BJLYC6PABbAHdjwSkGVQeeR6B1juwHqj3G2",
+  "page_size": 30,
+  "total_records": 10,
+  "from": "2025-06-01",
+  "to": "2025-06-30",
+  "fax_charges": [
+    {
+      "fax_id": "FD361623719B460388970623D2AB808A",
+      "sender_number": "\u002B2100000980",
+      "receiver_number": "\u002B21058945728",
+      "billing_number": "\u002B21058945728",
+      "end_time": "2025-07-02T15:51:00Z",
+      "charge_mode": "per_page",
+      "fax_type": "international",
+      "unlimited": false,
+      "total_pages": 5,
+      "rate": "0.0406",
+      "currency": "USD",
+      "currency_sign": "$",
+      "charge_status": "calculated",
+      "charged_pages": 5,
+      "total_charge": "0.203"
+    }
+  ]
+}

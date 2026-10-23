@@ -1,0 +1,14 @@
+{
+  "id": "1",
+  "conference_code": "0125",
+  "dial_in_numbers": [
+    {
+      "code": "1",
+      "country_label": "America",
+      "number": "\u002B1 1000200200",
+      "type": "toll"
+    }
+  ],
+  "leader_pin": "US_TSP_TB",
+  "tsp_bridge": "US_TSP_TB"
+}

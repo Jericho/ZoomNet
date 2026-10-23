@@ -1,0 +1,14 @@
+{
+  "total_records": 200,
+  "groups": [
+    {
+      "id": "MIuNMURBTkuwfZ20jteRJg",
+      "name": "Developers",
+      "total_members": 200,
+      "search_by_account": true,
+      "search_by_domain": true,
+      "search_by_ma_account": true,
+      "type": "normal"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "page_size": 30,
+  "total_records": 33,
+  "next_page_token": "bkOcmnm6mn6ioYAi10BcgRiEL38WzAo6jP2",
+  "sms_consent_number": [
+    {
+      "phone_number_id": "-6QPOIFtSU-wjt2Kl2TUng",
+      "phone_number": "\u002B12095805275",
+      "account_id": "KGzOF3hCTamb_Xx-bXbgqA"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "e855dd4a292b18b1",
+  "criteria": {
+    "from": "john.doe@example.com",
+    "to": "jane.doe@example.com",
+    "subject": "email subject.",
+    "query": "from:user@example.com is:unread",
+    "negatedQuery": "is:unread",
+    "hasAttachment": true,
+    "size": 1024,
+    "sizeComparison": "smaller"
+  },
+  "action": {
+    "addLabelIds": [
+      "TRASH"
+    ],
+    "removeLabelIds": [
+      "SPAM"
+    ],
+    "forward": "john.doe@example.com"
+  }
+}

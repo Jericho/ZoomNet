@@ -1,0 +1,16 @@
+{
+  "carrier_reseller_numbers": [
+    {
+      "assigned_status": "assigned",
+      "carrier_code": 9998,
+      "country_iso_code": "US",
+      "phone_number": "\u002B12059535689",
+      "status": "active",
+      "sub_account_id": "8EVJZPwCTmSZme6fTOcBFg",
+      "sub_account_name": "testAccount"
+    }
+  ],
+  "next_page_token": "next_page_token",
+  "page_size": 30,
+  "total_records": 1
+}

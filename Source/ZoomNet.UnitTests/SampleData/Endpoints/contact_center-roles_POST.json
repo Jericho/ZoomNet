@@ -1,0 +1,18 @@
+{
+  "role_id": "zeYjXoDOS_eV1QmTpj63PQ",
+  "role_name": "Agent",
+  "role_description": "Agent role.",
+  "privileges": {
+    "analytics_settings": [
+      "RptWallboard:Read"
+    ],
+    "administration_settings": [
+      "UserManagement:Read"
+    ],
+    "general_settings": [
+      "OutboundVoiceCall"
+    ]
+  },
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA"
+}

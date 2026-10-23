@@ -46,7 +46,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="PastMeeting">meetings</see>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<PastMeeting>> GetMeetingsAsync(string userId, DateTime from, DateTime to, ReportMeetingType type = ReportMeetingType.Past, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<PastMeeting>> GetMeetingsAsync(string userId, DateOnly from, DateOnly to, ReportMeetingType type = ReportMeetingType.Past, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Get a list of participants from past webinars with two or more participants. To see a list of participants for webinars with one participant use <see cref="IDashboards.GetMeetingParticipantsAsync"/>.
@@ -86,7 +86,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// An array of <see cref="ReportHost">report items</see>.
 		/// </returns>
-		Task<PaginatedResponseWithToken<ReportHost>> GetHostsAsync(DateTime from, DateTime to, ReportHostType type = ReportHostType.Active, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
+		Task<PaginatedResponseWithToken<ReportHost>> GetHostsAsync(DateOnly from, DateOnly to, ReportHostType type = ReportHostType.Active, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Gets daily report to access the account-wide usage of Zoom services for each day in a given month. It lists the number of new users, meetings, participants, and meeting minutes.

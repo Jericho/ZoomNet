@@ -73,7 +73,7 @@ namespace ZoomNet.UnitTests.Json
 			};
 
 			// Assert
-			lambda.ShouldThrowWithMessage<JsonException>("Unable to convert a null value to DateOnly");
+			lambda.ShouldThrowWithMessage<JsonException>("Unable to convert an empty string to DateOnly");
 		}
 
 		[Fact]
@@ -97,7 +97,7 @@ namespace ZoomNet.UnitTests.Json
 			};
 
 			// Assert
-			lambda.ShouldThrowWithMessage<JsonException>($"Unable to convert {rawValue} to DateOnly");
+			lambda.ShouldThrowWithMessage<JsonException>($"Unable to convert '{rawValue}' to DateOnly");
 		}
 
 		[Fact]

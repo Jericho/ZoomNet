@@ -1,0 +1,26 @@
+{
+  "files": [
+    {
+      "file_id": "f_001",
+      "input_uri": "s3://acme-bucket/transcripts/2025/11/meeting_001.vtt",
+      "state": "FILE_SUCCEEDED",
+      "output_uri": "s3://acme-bucket/summaries/2025/11/meeting_001.json",
+      "usage": {
+        "input_units": 4820,
+        "output_units": 312,
+        "unit_type": "characters",
+        "details": {
+          "summarizer": {
+            "task": "full_summary",
+            "summary_type": "CONVERSATION"
+          }
+        }
+      },
+      "error": {
+        "code": "UNSUPPORTED_CONTENT_TYPE",
+        "message": "Content type audio/wav is not supported for summarization"
+      }
+    }
+  ],
+  "next_page_token": "eyJmaWxlX2lkIjoiZl8xMDEifQ"
+}

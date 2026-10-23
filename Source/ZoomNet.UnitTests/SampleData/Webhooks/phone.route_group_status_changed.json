@@ -1,0 +1,27 @@
+{
+  "event": "phone.route_group_status_changed",
+  "payload": {
+    "account_id": "TQTvjT52Tmi_wrhASNNOEw",
+    "object": {
+      "name": "route group alert",
+      "module": "routeGroup",
+      "rule": {
+        "type": 1,
+        "severity": "warning"
+      },
+      "target": {
+        "type": 1
+      },
+      "detected_time": "2021-08-20T00:52:20Z",
+      "sbc": "23.244.91.35:5060",
+      "route_groups": [
+        {
+          "id": "_rq8mGC9RlSEDbYQwhFs_A",
+          "name": "TG_10009239_12",
+          "region": "newSipSj-z1"
+        }
+      ]
+    }
+  },
+  "event_ts": 1629420755266
+}

@@ -1,0 +1,12 @@
+{
+  "year": 2021,
+  "month": 12,
+  "dates": [
+    {
+      "date": "2021-12-01",
+      "sessions": 20,
+      "users": 80,
+      "session_minutes": 380
+    }
+  ]
+}

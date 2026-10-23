@@ -1,0 +1,29 @@
+{
+  "page_size": 10,
+  "total_records": 10,
+  "from": "2026-01-01",
+  "to": "2026-01-01",
+  "timezone": "UTC",
+  "next_page_token": "ngLawmAGlYagy37vLJtKMM4TkMnagfqWm73",
+  "operation_logs": [
+    {
+      "ai_studio_operation_id": "log_01HZX8Y3Y8H5M9V3QW7KJY5P9A",
+      "operator_id": "u-123456",
+      "operator_info": "alice@example.com",
+      "category": "ZVA AI AGENT",
+      "category_filter_key": "ZVA_AI_AGENT",
+      "action": "Add",
+      "action_filter_key": "ADD",
+      "subaction": "Create",
+      "detail": "Add AI Agent",
+      "account_id": "a-987654",
+      "log_time": "2026-01-15T08:12:31.123Z",
+      "op_start_time": "2026-01-15T08:12:30.987Z",
+      "op_end_time": "2026-01-15T08:12:31.123Z",
+      "create_time": "2026-01-15T08:12:30.987Z",
+      "business_id": "agent_8f3c2a",
+      "business_id_type": 1,
+      "resource_id": "{\\\u0022aiAgentId\\\u0022:\\\u0022agent_8f3c2a\\\u0022}"
+    }
+  ]
+}

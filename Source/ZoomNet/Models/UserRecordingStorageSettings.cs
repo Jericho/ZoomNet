@@ -2,9 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// User recording storage settings.
-	/// </summary>
+	/// <summary>User recording storage settings.</summary>
 	public class UserRecordingStorageSettings
 	{
 		/// <summary>

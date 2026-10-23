@@ -1,0 +1,13 @@
+{
+  "channel_id": "1V7E4IjUTYyZ65oogqXkaQ",
+  "channel_name": "Example push to talk Channel",
+  "channel_description": "Example push to talk channel description.",
+  "total_member_count": 5,
+  "site_id": "vkBoHKaRTxeBiTLRsdEwTQ",
+  "site_name": "Example Site",
+  "user_member_count": 2,
+  "common_area_member_count": 3,
+  "auto_connect": true,
+  "channel_type": "private",
+  "channel_category": "normal"
+}

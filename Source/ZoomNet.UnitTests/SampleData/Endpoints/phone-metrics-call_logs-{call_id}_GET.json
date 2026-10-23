@@ -1,0 +1,37 @@
+{
+  "call_id": "7081466125443483485",
+  "callee": {
+    "codec": "ES8311",
+    "device_private_ip": "10.100.111.237",
+    "device_public_ip": "38.99.100.2",
+    "device_type": "MAC_Client",
+    "extension_number": "100994",
+    "headset": "Edifier",
+    "isp": "Cogent Communications",
+    "microphone": "\u002B18889843519",
+    "phone_number": "\u002B18889843519",
+    "site_id": "ZNWikLeVSjuaMvUoxFqCuw",
+    "id": "DYHrdpjrS3uaOf7dPkkg8w",
+    "extension_type": "user",
+    "display_name": "user A"
+  },
+  "caller": {
+    "codec": "ES8311",
+    "device_private_ip": "10.100.111.237",
+    "device_public_ip": "38.99.100.2",
+    "device_type": "MAC_Client",
+    "extension_number": "100152",
+    "headset": "Edifier",
+    "isp": "Cogent Communications",
+    "microphone": "\u002B12053194087",
+    "phone_number": "\u002B12053194087",
+    "site_id": "ZNWikLeVSjuaMvUoxFqCuw",
+    "id": "S5ODD6U3RcGs7H01n8vswA",
+    "extension_type": "user",
+    "display_name": "user B"
+  },
+  "date_time": "2022-04-01T03:05:18Z",
+  "direction": "internal",
+  "duration": 27,
+  "mos": "3.6"
+}

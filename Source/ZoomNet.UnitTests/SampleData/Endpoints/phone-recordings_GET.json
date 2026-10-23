@@ -1,0 +1,52 @@
+{
+  "next_page_token": "cWiI3vTqdcENiV9RJz3Rh8iP1ksNPheW8c1",
+  "page_size": 30,
+  "recordings": [
+    {
+      "auto_delete_policy": "1 year",
+      "call_id": "7072598989368295984",
+      "call_log_id": "6f9c2948-40ad-46bc-8700-34ca2d098098",
+      "call_element_id": "20210609-a297ae04-a875-4cfd-85ab-4adcead91edb",
+      "callee_name": "User A",
+      "callee_number": "1000001004",
+      "callee_number_type": 1,
+      "caller_name": "User B",
+      "caller_number": "1000123476",
+      "caller_number_type": 1,
+      "outgoing_by": {
+        "name": "User B",
+        "extension_number": "123476"
+      },
+      "accepted_by": {
+        "name": "User A",
+        "extension_number": "10201"
+      },
+      "date_time": "2022-03-08T05:37:23.0000000\u002B00:00",
+      "disclaimer_status": 0,
+      "direction": "outbound",
+      "download_url": "https://domain/recording/download/EvVNLihbQ1WpeG_ALwnNzg",
+      "duration": 115,
+      "end_time": "2022-03-08T05:39:19.0000000\u002B00:00",
+      "id": "6f9c294840ad46bc870034ca2d098098",
+      "meeting_uuid": "egLSRuj2SlWet\u002BwLi87LNA==",
+      "owner": {
+        "extension_number": 1000123476,
+        "id": "NL3cEpSdRc-c2t8aLoZqiw",
+        "name": "user@test.com",
+        "type": "user",
+        "extension_status": "deleted",
+        "extension_deleted_time": "2022-10-14T22:10:54Z"
+      },
+      "recording_type": "OnDemand",
+      "site": {
+        "id": "8f71O6rWT8KFUGQmJIFAdQ",
+        "name": "Main Site"
+      },
+      "transcript_download_url": "https://domain/recording_transcript/download/8f7345c50a654182ab1672fdb3be61ff",
+      "auto_delete_enable": true,
+      "caller_account_code": "111",
+      "callee_account_code": "222"
+    }
+  ],
+  "total_records": 50
+}

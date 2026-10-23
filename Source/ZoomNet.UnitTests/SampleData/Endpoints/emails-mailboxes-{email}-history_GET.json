@@ -1,0 +1,129 @@
+{
+  "history": [
+    {
+      "id": "1454",
+      "cid": "b35d091400000000_12185",
+      "messagesAdded": [
+        {
+          "message": {
+            "id": "b35d091400000000_e861880afaf26dc8_604",
+            "labelIds": [
+              "INBOX"
+            ],
+            "threadId": "b35d091400000000_e862202d7e502e95_587"
+          }
+        }
+      ],
+      "messagesDeleted": [
+        {
+          "message": {
+            "id": "b35d091400000000_e861880afaf26dc8_604",
+            "labelIds": [
+              "INBOX"
+            ],
+            "threadId": "b35d091400000000_e862202d7e502e95_587"
+          }
+        }
+      ],
+      "messagesImported": [
+        {
+          "message": {
+            "id": "b35d091400000000_e861880afaf26dc8_604",
+            "labelIds": [
+              "INBOX"
+            ],
+            "threadId": "b35d091400000000_e862202d7e502e95_587"
+          }
+        }
+      ],
+      "messagesImportedNew": [
+        {
+          "message": {
+            "id": "b35d091400000000_e861880afaf26dc8_604",
+            "labelIds": [
+              "INBOX"
+            ],
+            "threadId": "b35d091400000000_e862202d7e502e95_587"
+          }
+        }
+      ],
+      "messagesUpdated": [
+        {
+          "message": {
+            "id": "b35d091400000000_e861880afaf26dc8_604",
+            "labelIds": [
+              "INBOX"
+            ],
+            "threadId": "b35d091400000000_e862202d7e502e95_587"
+          }
+        }
+      ],
+      "labelsAdded": [
+        {
+          "labelIds": [
+            "LABEL_1"
+          ],
+          "message": {
+            "id": "b35d091400000000_e861880afaf26dc8_604",
+            "labelIds": [
+              "LABEL_1"
+            ],
+            "threadId": "b35d091400000000_e862202d7e502e95_587"
+          }
+        }
+      ],
+      "labelsRemoved": [
+        {
+          "labelIds": [
+            "LABEL_2"
+          ],
+          "message": {
+            "id": "b35d091400000000_e861880afaf26dc8_604",
+            "labelIds": [
+              "INBOX"
+            ],
+            "threadId": "b35d091400000000_e862202d7e502e95_587"
+          }
+        }
+      ],
+      "settingsAdded": [
+        {
+          "id": "Label_44",
+          "type": "userLabels"
+        }
+      ],
+      "settingsDeleted": [
+        {
+          "id": "Label_44",
+          "type": "userLabels"
+        }
+      ],
+      "settingsUpdated": [
+        {
+          "id": "Label_44",
+          "type": "userLabels"
+        }
+      ],
+      "delegatesAdded": [
+        "john.doe@example.com"
+      ],
+      "delegatesDeleted": [
+        "john.doe@example.com"
+      ],
+      "delegatesUpdated": [
+        "john.doe@example.com"
+      ],
+      "delegatorsAdded": [
+        "david.smith@example.com"
+      ],
+      "delegatorsDeleted": [
+        "david.smith@example.com"
+      ],
+      "delegatorsUpdated": [
+        "david.smith@example.com"
+      ]
+    }
+  ],
+  "nextPageToken": "00000000000005b3",
+  "historyId": "1777"
+}

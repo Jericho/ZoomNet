@@ -1,0 +1,51 @@
+{
+  "basic": {
+    "activation_code": "1315-2376-2198-7926",
+    "hide_room_in_contacts": true,
+    "name": "My Personal Meeting Room",
+    "display_name": "My Personal Meeting Room",
+    "required_code_to_ext": true,
+    "room_passcode": "975193018",
+    "support_email": "contact-it@example.com",
+    "support_phone": "18798769876",
+    "calendar_resource_id": "u7GQ3q_zQbqJnNp02-oMjQ",
+    "zoom_room_type": "ZoomRoom",
+    "location_id": "49D7a0xPQvGQ2DCMZgSe7w",
+    "tag_ids": [
+      "Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3"
+    ],
+    "use_display_name_on_scheduling_display": true,
+    "use_display_name_on_zoom_rooms_display_and_controller": true,
+    "use_display_name_in_meetings": true,
+    "capacity": 1,
+    "show_room_capacity_on_the_zoom_rooms": true,
+    "show_room_capacity_on_the_scheduling_display": true,
+    "user_id": "Ih3wZpAjTlitZcAhuYRbxg"
+  },
+  "device": {
+    "device_profile_id": "J352JVkNRpyAgUaurxmrsh"
+  },
+  "setup": {
+    "checkin_and_checkout": {
+      "enable": true,
+      "checkin_and_checkout_options": {
+        "checkin_minutes_prior_to_meeting_start_time": 600,
+        "allowed_minutes_before_release_room_after_no_checkout": 600,
+        "enable_new_user_checkin_notification": true,
+        "enable_remove_recurring": true,
+        "allowed_consecutive_missed_checkin_before_removing_room": 4
+      }
+    },
+    "under_construction": true,
+    "apply_background_image_to_all_displays": true,
+    "background_image_info": [
+      {
+        "display_id": "zoom_rooms_display1",
+        "content_id": "zrd9DycNSxK6K4dEUS6z-g",
+        "download_url": "https://zoom.us/file/Sq2mdxqRQ9eq7wmD5TFD6g?jwt=eyJ0eXAiOiJKV1QiLCJrIjoiaHRlNU05dDciLCJ6bV9za20iOiJ6bV9vMm0iLCJhbGc",
+        "download_url_ttl": 3600
+      }
+    ],
+    "pro_device": true
+  }
+}

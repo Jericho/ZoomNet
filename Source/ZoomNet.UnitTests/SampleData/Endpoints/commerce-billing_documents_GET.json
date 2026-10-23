@@ -1,0 +1,32 @@
+{
+  "document_count": 100,
+  "billing_documents": [
+    {
+      "document_number": "INVC10235997",
+      "document_date": "2023-10-25T00:00:00.000Z",
+      "document_type": "invoice",
+      "customer_name": [
+        "ABC Pvt. Ltd."
+      ],
+      "customer_zoom_account_number": 4435343789,
+      "sub_reseller_name": "Subreseller One",
+      "invoice_owner_name": "Subreseller One",
+      "due_date": "2023-11-25T00:00:00.000Z",
+      "payment_status": "Paid",
+      "balance": {
+        "amount": 99.99,
+        "currency": "USD"
+      },
+      "net_amount": {
+        "amount": 99.99,
+        "currency": "USD"
+      },
+      "po_number": "PO-10021-A",
+      "billing_description": "Correcting invoice error",
+      "posted_date": "2023-10-26",
+      "reason_detail": "Correcting invoice error",
+      "reference_billing_document_id": "8a8aa183907cc66e01907d722e232bcd"
+    }
+  ],
+  "next_page_token": "gfrnkgrgfe4583492"
+}

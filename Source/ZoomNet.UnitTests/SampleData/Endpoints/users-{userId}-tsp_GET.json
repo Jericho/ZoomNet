@@ -1,0 +1,18 @@
+{
+  "tsp_accounts": [
+    {
+      "conference_code": "0125",
+      "dial_in_numbers": [
+        {
+          "code": "1",
+          "country_label": "America",
+          "number": "\u002B1 1000200200",
+          "type": "toll"
+        }
+      ],
+      "id": "1",
+      "leader_pin": "11189898",
+      "tsp_bridge": "US_TSP_TB"
+    }
+  ]
+}

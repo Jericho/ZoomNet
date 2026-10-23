@@ -1,0 +1,37 @@
+{
+  "schedule_id": "s4xg14dfoxu4t7avyd8453vr90",
+  "summary": "test workflow2222",
+  "type": "one",
+  "status": "confirmed",
+  "start_date_time": "2026-04-07T08:00:00Z",
+  "end_date_time": "2026-04-07T08:30:00Z",
+  "duration": 30,
+  "capacity": 1,
+  "attendees": [
+    {
+      "id": "nzsb8soiwevala67283933le80",
+      "email": "elianedarkd9@gmail.com",
+      "first_name": "aaa",
+      "last_name": "aaa",
+      "display_name": "aaa aaa",
+      "booker": true,
+      "response_status": "accepted",
+      "time_format": "12h",
+      "time_zone": "Asia/Shanghai",
+      "created": "2026-04-07T06:21:10.9070000\u002B00:00"
+    }
+  ],
+  "assigned_to": [
+    "guts zhu"
+  ],
+  "location": "NYC Office, 123 Main St",
+  "location_additional_info": "No need to knock",
+  "location_kind": "physical",
+  "tracking": [
+    {
+      "tracking_key": "utm_campaign",
+      "tracking_value": "bio_consultation"
+    }
+  ],
+  "event_id": "b5p14d5ghjvb4t7a9hq8473rv60"
+}

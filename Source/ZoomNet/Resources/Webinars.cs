@@ -410,7 +410,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PollForMeetingOrWebinar> CreatePoll(long webinarId, string title, IEnumerable<PollQuestionForMeetingOrWebinar> questions, CancellationToken cancellationToken = default)
+		public Task<PollForMeetingOrWebinar> CreatePollAsync(long webinarId, string title, IEnumerable<PollQuestionForMeetingOrWebinar> questions, CancellationToken cancellationToken = default)
 		{
 			var data = new JsonObject
 			{

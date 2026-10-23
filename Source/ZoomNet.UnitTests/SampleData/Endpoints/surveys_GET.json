@@ -1,0 +1,10 @@
+{
+  "surveys": [
+    {
+      "survey_id": "4444AAAiAAAAAiAiAiiAii==",
+      "survey_name": "The survey of meeting",
+      "survey_type": "survey"
+    }
+  ],
+  "next_page_token": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2"
+}

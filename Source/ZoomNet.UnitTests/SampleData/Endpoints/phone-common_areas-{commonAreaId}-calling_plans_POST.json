@@ -1,0 +1,10 @@
+{
+  "calling_plans": [
+    {
+      "name": "US/CA Metered Calling Plan",
+      "type": 100,
+      "billing_account_id": "3WWAEiEjTj2IQuyDiKMd_A",
+      "billing_account_name": "Delhi billing"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "id": "C-BlVwSdjvS3WXk5gzfIQFfQ",
+  "display_name": "Test SMS Campaign",
+  "status": "active",
+  "service_type": "zoomPhone",
+  "brand": {
+    "id": "B-c3AN66d_Q4mrQFNUaW-G2w",
+    "name": "Test Campaign"
+  },
+  "phone_numbers": [
+    {
+      "id": "iHE1MQAET2iV85MbfaQmwg",
+      "number": "\u002B18887193005"
+    }
+  ],
+  "auto_renew": true,
+  "create_time": "2022-07-21T02:23:25.000Z",
+  "use_case": "lowVolumeMixed",
+  "categories_fit": true,
+  "content_type": [
+    "urlLink"
+  ],
+  "sample_message_1": "Test Campaign Message1",
+  "sample_message_2": "Test Campaign Message2",
+  "sample_message_3": "Test Campaign Message3",
+  "sample_message_4": "Test Campaign Message4",
+  "sample_message_5": "Test Campaign Message5"
+}

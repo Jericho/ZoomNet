@@ -1,0 +1,18 @@
+{
+  "total_records": 1,
+  "next_page_token": "oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2",
+  "chat_transcripts": [
+    {
+      "chat_type": "Lobby Chat",
+      "chat_name": "Lobby Chat - 1",
+      "sender": "James Brown",
+      "sender_email": "james.brown@zoomtest.us",
+      "message_time": "2023-08-22T02:58:56Z",
+      "message": "Hi, How are you doing?",
+      "reset_time": "2023-08-22T02:58:56Z",
+      "reset_by_whom": "Tom Brown",
+      "chat_channel_id": "asfasdfasdf12312",
+      "message_id": "d1231241sfdsdfs"
+    }
+  ]
+}

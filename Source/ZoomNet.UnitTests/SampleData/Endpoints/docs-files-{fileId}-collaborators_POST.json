@@ -1,0 +1,12 @@
+{
+  "collaborators": [
+    {
+      "collaborator_id": "user:9aSWJV2rTyWwkIDWmPYsfg",
+      "collaborator_type": "user",
+      "role": "viewer",
+      "user_id": "9aSWJV2rTyWwkIDWmPYsfg",
+      "channel_id": "4b1826c3597b492e9b1f7a9bd59d3f8c",
+      "email": "user@example.com"
+    }
+  ]
+}

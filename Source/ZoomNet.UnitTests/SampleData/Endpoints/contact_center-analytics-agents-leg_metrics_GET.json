@@ -1,0 +1,48 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 10,
+  "total_records": 10,
+  "timezone": "America/Los_Angeles",
+  "from": "2021-12-10T00:00:00Z",
+  "to": "2021-12-10T00:15:00Z",
+  "users": [
+    {
+      "user_id": "ukAAkZKfROKMSw1bj_RDFQ",
+      "display_name": "joe.chill",
+      "user_email": "joe.chill@example.com",
+      "leg_metrics": [
+        {
+          "channel": "messaging",
+          "channel_source": "in_app_chat",
+          "engagement_id": "reRAiabVQSqpXxJVDbsy2Q",
+          "cc_queue_id": "Ql3qxUWXSHes4PmcOmzyOg",
+          "queue_name": "agentQueue",
+          "agent_offered": 1,
+          "refused_engagement": false,
+          "handled_engagement": true,
+          "handle_duration": 90,
+          "agent_first_response_duration": 1,
+          "ring_duration": 8,
+          "conversation_duration": 80,
+          "hold_count": 0,
+          "hold_duration": 0,
+          "warm_conference": 1,
+          "warm_conference_duration": 10,
+          "conference_count": 1,
+          "conference_duration": 10,
+          "warm_transfer_initiated": 1,
+          "warm_transfer_completed": 1,
+          "warm_transfer_duration": 30,
+          "direct_transfer": false,
+          "transferred_initiated": 1,
+          "transferred_completed": 1,
+          "wrap_up_duration": 10,
+          "disposition_id": "TaAGy_e7QgyPPAyDwGkl3Q",
+          "disposition_name": "disposition1",
+          "agent_start_time": "2020-02-11T05:39:50Z",
+          "agent_end_time": "2020-02-11T05:39:56Z"
+        }
+      ]
+    }
+  ]
+}

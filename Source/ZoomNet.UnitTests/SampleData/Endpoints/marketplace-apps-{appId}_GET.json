@@ -1,0 +1,44 @@
+{
+  "app_id": "nqSreNVsQ2eGzUMGnA8AHA",
+  "app_name": "Example App",
+  "app_description": "Example App description",
+  "app_type": "ZoomApp",
+  "app_usage": 1,
+  "app_status": "PUBLISHED",
+  "app_links": {
+    "documentation_url": "https://xxxx",
+    "privacy_policy_url": "https://xxxx",
+    "support_url": "https://xxxx",
+    "terms_of_use_url": "https://xxxx"
+  },
+  "app_permissions": [
+    {
+      "group": "View",
+      "group_message": "App can view information",
+      "title": "Associated with you",
+      "permissions": [
+        {
+          "name": "Devices"
+        }
+      ]
+    }
+  ],
+  "app_requirements": {
+    "user_role": "admin",
+    "min_client_version": "5.7.3",
+    "account_eligibility": {
+      "account_types": [
+        "Free"
+      ],
+      "premium_events": [
+        {
+          "event_name": "Meeting participant data",
+          "event": "meeting.participant_qos_summary"
+        }
+      ]
+    }
+  },
+  "app_scopes": [
+    "meeting:read"
+  ]
+}

@@ -2,9 +2,7 @@ using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Language.
-	/// </summary>
+	/// <summary>Languages.</summary>
 	public enum Language
 	{
 		/// <summary>Mandarin (PRC).</summary>
@@ -29,7 +27,7 @@ namespace ZoomNet.Models
 
 		/// <summary>English (New Zealand).</summary>
 		[EnumMember(Value = "en-NZ")]
-		English_NewZealand,
+		English_New_Zealand,
 
 		/// <summary>English (US).</summary>
 		[EnumMember(Value = "en-US")]
@@ -57,7 +55,7 @@ namespace ZoomNet.Models
 
 		/// <summary>Japanese (Japan).</summary>
 		[EnumMember(Value = "ja-JP")]
-		Japanese,
+		Japanese_Japan,
 
 		/// <summary>Korean (Korea).</summary>
 		[EnumMember(Value = "ko-KR")]
@@ -85,7 +83,11 @@ namespace ZoomNet.Models
 
 		/// <summary>Russian (Russia).</summary>
 		[EnumMember(Value = "ru-RU")]
-		Russian,
+		Russian_Russia,
+
+		/// <summary>Chinese (Taiwan).</summary>
+		[EnumMember(Value = "sh-TW")]
+		Chinese_Taiwan,
 
 		/// <summary>Swedish (Sweden).</summary>
 		[EnumMember(Value = "sv-SE")]
@@ -109,10 +111,6 @@ namespace ZoomNet.Models
 
 		/// <summary>Chinese (Hong Kong).</summary>
 		[EnumMember(Value = "zh-HK")]
-		Chinese_HongKong,
-
-		/// <summary>Chinese (Taiwan).</summary>
-		[EnumMember(Value = "zh-TW")]
-		Chinese_Taiwan,
+		Chinese_Hong_Kong,
 	}
 }

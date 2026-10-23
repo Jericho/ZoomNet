@@ -1,0 +1,23 @@
+{
+  "group_call_pickup": [
+    {
+      "id": "qLZ4vXb8RAydayOR5ckYMg",
+      "display_name": "testGCP",
+      "extension_id": "testGCP",
+      "extension_number": 10002,
+      "member_count": 1,
+      "description": "test",
+      "delay": 0,
+      "cost_center": "test",
+      "department": "test",
+      "site": {
+        "id": "8f71O6rWT8KFUGQmJIFAdQ",
+        "name": "testGCPSite"
+      },
+      "directed_call_pickup": true
+    }
+  ],
+  "next_page_token": "BJLYC6PABbAHdjwSkGVQeeR6B1juwHqj3G2",
+  "page_size": 30,
+  "total_records": 1
+}

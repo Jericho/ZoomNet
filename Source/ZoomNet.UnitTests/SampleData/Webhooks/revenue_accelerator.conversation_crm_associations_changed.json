@@ -1,0 +1,48 @@
+{
+  "event": "revenue_accelerator.deal_conversation_associations_changed",
+  "event_ts": 1765788180122,
+  "payload": {
+    "account_id": "aCLhU8cQR4qfdTSvT4stxA",
+    "object": [
+      {
+        "conversation_id": "2wI0tytGQuKUoDvY7%2BUDZw==,1758246901000",
+        "old_associations": [],
+        "new_associations": [
+          {
+            "deal_id": "006aa00000JkrXiAAR",
+            "account_id": "006aa00000JkrQiiAx",
+            "lead_id": null
+          }
+        ]
+      },
+      {
+        "conversation_id": "810a2556dc9f48a09d417e2f567c913b",
+        "old_associations": [
+          {
+            "deal_id": null,
+            "account_id": null,
+            "lead_id": "006aa00000LmrAxiRj"
+          }
+        ],
+        "new_associations": [
+          {
+            "deal_id": null,
+            "account_id": "006aa00000JkrQiiAx",
+            "lead_id": null
+          }
+        ]
+      },
+      {
+        "conversation_id": "cdd31d3830fa47c1a7c62f8ad21b8b57",
+        "old_associations": [
+          {
+            "deal_id": "006aa00000JkrXiAAR",
+            "account_id": "006aa00000JkrQiiAx",
+            "lead_id": null
+          }
+        ],
+        "new_associations": []
+      }
+    ]
+  }
+}

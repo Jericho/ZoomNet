@@ -1,0 +1,19 @@
+{
+  "line_keys": [
+    {
+      "alias": "Line1",
+      "index": 1,
+      "key_assignment": {
+        "display_name": "Test 123",
+        "extension_id": "TO586CYlQFC_WCUvPRXytA",
+        "extension_number": "1000001004",
+        "phone_number": "\u002B12058945795",
+        "retrieval_code": "*801",
+        "speed_dial_number": "123456"
+      },
+      "line_key_id": "BH9SHc4YTnWqQ9u0LC3kkg",
+      "outbound_caller_id": "\u002B18108001001",
+      "type": "line"
+    }
+  ]
+}

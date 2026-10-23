@@ -1,0 +1,23 @@
+{
+  "deal_id": "0065g00000DgD2QAAV",
+  "deal_name": "Maximize profits",
+  "deal_stage": "Needs Analysis",
+  "deal_description": "Maximize profits",
+  "owner_name": "John Wick",
+  "owner_email": "jw@zoom.us",
+  "owner_id": "IGTRVt3gQ2i-WjoUIjeZxw",
+  "deal_is_closed": false,
+  "create_time": "2022-03-22T05:59:09.0000000\u002B00:00",
+  "account_name": "customer",
+  "deal_is_private": false,
+  "deal_amount": 1000000,
+  "currency_type": "USD",
+  "close_date": "2023-04-19",
+  "time_in_stage": 12,
+  "number_of_conversations": 4,
+  "last_activity_time": "2022-03-22T05:59:09.0000000\u002B00:00",
+  "account_type": "salesforce",
+  "contacts": [
+    "John"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "next_page_token": "lfei3g",
+  "page_size": 30,
+  "result": [
+    {
+      "extension_id": "feq3g",
+      "display_name": "Name",
+      "email": "example@example.com",
+      "extension_number": "1003",
+      "site": {
+        "id": "fdjl23",
+        "name": "New site"
+      }
+    }
+  ]
+}

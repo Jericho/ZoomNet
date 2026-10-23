@@ -1,0 +1,19 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "assets": [
+    {
+      "asset_id": "zeYjXoDOS_eV1QmTpj63PQ",
+      "asset_name": "My asset name.",
+      "asset_description": "My asset description.",
+      "asset_type": "image",
+      "asset_category_id": "8ONs9XW4S9a2Lco9O0GdCw",
+      "asset_category_name": "Sales Category",
+      "asset_language_code": "zh-CN",
+      "modified_by": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "last_modified_time": "2022-02-15T09:27:15.0000000\u002B00:00",
+      "asset_items_url": "https://api.zoom.us/v2/contact_center/asset_library/assets/zeYjXoDOS_eV1QmTpj63PQ?asset_item_name=english%20audio"
+    }
+  ]
+}

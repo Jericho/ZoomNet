@@ -1,0 +1,17 @@
+{
+  "total_records": 1,
+  "next_page_token": "oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2",
+  "surveys": [
+    {
+      "session_name": "Introduction",
+      "session_id": "ZALMy1b8RRiK810bVL-wFg",
+      "email": "ZALMy1b8RRiK810bVL-wFg",
+      "question_and_answers": [
+        {
+          "question": "What is your favorite type of ice cream flavor?",
+          "answer": "Chocolate"
+        }
+      ]
+    }
+  ]
+}

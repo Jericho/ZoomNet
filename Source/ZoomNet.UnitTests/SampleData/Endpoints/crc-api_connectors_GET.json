@@ -1,0 +1,15 @@
+{
+  "total_records": 10,
+  "next_page_token": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2",
+  "page_size": 1,
+  "api_connectors": [
+    {
+      "id": "e4d89238-7a58-4003-b45b-dfd892e9b11b",
+      "description": "my connector",
+      "status": "online",
+      "networks": "10.100.209.10",
+      "enable_automatic_update": true,
+      "version": "5.8.1"
+    }
+  ]
+}

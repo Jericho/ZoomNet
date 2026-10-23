@@ -1,0 +1,26 @@
+{
+  "from": "2021-12-01",
+  "to": "2021-12-02",
+  "page_size": 30,
+  "next_page_token": "suQA5LvDBnH5No5OYD7mqpJuFzJqUOHK8U2",
+  "sessions": [
+    {
+      "id": "sfk/aOFJSJSYhGwk1hnxgw==",
+      "session_name": "My session",
+      "start_time": "2019-08-20T19:09:01.0000000\u002B00:00",
+      "end_time": "2019-08-20T19:19:01.0000000\u002B00:00",
+      "duration": "30:00",
+      "user_count": 2,
+      "has_voip": true,
+      "has_video": true,
+      "has_screen_share": true,
+      "has_recording": true,
+      "has_pstn": true,
+      "session_key": "my_session_key",
+      "has_session_summary": true,
+      "audio_quality": "good",
+      "video_quality": "good",
+      "screen_share_quality": "good"
+    }
+  ]
+}

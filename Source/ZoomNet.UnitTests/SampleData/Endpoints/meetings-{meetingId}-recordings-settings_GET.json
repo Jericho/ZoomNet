@@ -1,0 +1,16 @@
+{
+  "approval_type": 0,
+  "authentication_domains": "example.com",
+  "authentication_option": "auth_option",
+  "authentication_name": "auth display name",
+  "on_demand": false,
+  "password": "975238724",
+  "recording_authentication": true,
+  "send_email_to_host": false,
+  "share_recording": "publicly",
+  "show_social_share_buttons": true,
+  "topic": "My Personal Meeting Room",
+  "viewer_download": true,
+  "auto_delete": true,
+  "auto_delete_date": "2028-07-12"
+}

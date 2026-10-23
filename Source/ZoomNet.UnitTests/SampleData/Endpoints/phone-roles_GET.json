@@ -1,0 +1,11 @@
+{
+  "roles": [
+    {
+      "id": "MRNStlOVS02fJ6pOAzrh0A",
+      "name": "Phone Super Admin",
+      "description": "Admin has full privileges to access and manage the Zoom Phone (default).",
+      "total_members": 1,
+      "is_default": true
+    }
+  ]
+}

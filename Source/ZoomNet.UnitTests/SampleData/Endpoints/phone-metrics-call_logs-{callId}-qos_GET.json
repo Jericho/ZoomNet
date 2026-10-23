@@ -1,0 +1,63 @@
+{
+  "call_id": "7081466125443483485",
+  "callee_qos": {
+    "device_private_ip": "10.100.111.237",
+    "device_public_ip": "38.99.100.2",
+    "receiving": [
+      {
+        "date_time": "2022-04-01T03:05:43.0000000\u002B00:00",
+        "qos": {
+          "avg_loss": "0.82%",
+          "bitrate": "14.98kbps",
+          "jitter": "7.53ms",
+          "max_loss": "1.51%",
+          "mos": "3.6",
+          "network_delay": "307"
+        }
+      }
+    ],
+    "sending": [
+      {
+        "date_time": "2022-04-01T03:05:43.0000000\u002B00:00",
+        "qos": {
+          "avg_loss": "0.82%",
+          "bitrate": "14.98kbps",
+          "jitter": "7.53ms",
+          "max_loss": "1.51%",
+          "mos": "3.6",
+          "network_delay": "307"
+        }
+      }
+    ]
+  },
+  "caller_qos": {
+    "device_private_ip": "10.100.111.237",
+    "device_public_ip": "38.99.100.2",
+    "receiving": [
+      {
+        "date_time": "2022-04-01T03:05:43.0000000\u002B00:00",
+        "qos": {
+          "avg_loss": "1.29%",
+          "bitrate": "16.31kbps",
+          "jitter": "5.15ms",
+          "max_loss": "2.01%",
+          "mos": "3.6",
+          "network_delay": "301"
+        }
+      }
+    ],
+    "sending": [
+      {
+        "date_time": "2022-04-01T03:05:43.0000000\u002B00:00",
+        "qos": {
+          "avg_loss": "1.29%",
+          "bitrate": "16.31kbps",
+          "jitter": "5.15ms",
+          "max_loss": "2.01%",
+          "mos": "3.6",
+          "network_delay": "303"
+        }
+      }
+    ]
+  }
+}

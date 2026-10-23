@@ -1,0 +1,25 @@
+{
+  "call_queues": [
+    {
+      "extension_id": "DgKe5UPTTlODBvcgmRIlPw",
+      "extension_number": 26000026001,
+      "id": "3PNsZB50TNev4pgBjtKeDw",
+      "name": "ApiTA_2020_12_21_19_54_05_476",
+      "phone_numbers": [
+        {
+          "id": "KsxwNLEhQ0SJ4U4Bor4ShA",
+          "number": "\u002B12058945717",
+          "source": "internal"
+        }
+      ],
+      "site": {
+        "id": "8f71O6rWT8KFUGQmJIFAdQ",
+        "name": "Main Site"
+      },
+      "status": "active"
+    }
+  ],
+  "next_page_token": "OvrVMfenVmKgsH0SqfWQ2jgUsHFGXeanCB2",
+  "page_size": 30,
+  "total_records": 1
+}

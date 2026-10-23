@@ -1,0 +1,17 @@
+{
+  "schedule_id": "ppusajjudy3zniqtmpwm3corc0",
+  "duration": 30,
+  "days": [
+    {
+      "date": "2026-03-25",
+      "status": "available",
+      "spots": [
+        {
+          "start_time": "2026-03-25T09:00:00.0000000\u002B00:00",
+          "status": "available",
+          "available_number": 1
+        }
+      ]
+    }
+  ]
+}

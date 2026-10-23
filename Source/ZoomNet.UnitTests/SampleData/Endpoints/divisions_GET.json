@@ -1,0 +1,14 @@
+{
+  "next_page_token": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2",
+  "page_size": 30,
+  "total_records": 300,
+  "divisions": [
+    {
+      "division_id": "example-TaOOmobxuqLVnw",
+      "division_name": "my division",
+      "division_description": "this is division",
+      "is_main_division": true,
+      "total_members": 100
+    }
+  ]
+}

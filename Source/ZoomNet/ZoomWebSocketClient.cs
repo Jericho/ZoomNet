@@ -36,6 +36,9 @@ namespace ZoomNet
 		private WebsocketClient _websocketClient;
 		private HttpClient _httpClient;
 		private ITokenHandler _tokenHandler;
+		private CancellationTokenSource _heartbeatCts;
+		private Task _heartbeatTask;
+		private readonly object _heartbeatLock = new();
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ZoomWebSocketClient"/> class.
@@ -62,7 +65,7 @@ namespace ZoomNet
 		public ZoomWebSocketClient(IConnectionInfo connectionInfo, string subscriptionId, Func<Models.Webhooks.Event, CancellationToken, Task> eventProcessor, bool throwWhenUnknownEventType, IWebProxy proxy = null, ILogger logger = null)
 		{
 			ArgumentNullException.ThrowIfNull(connectionInfo);
-			ArgumentNullException.ThrowIfNull(subscriptionId);
+			ArgumentNullException.ThrowIfNullOrWhiteSpace(subscriptionId);
 			ArgumentNullException.ThrowIfNull(eventProcessor);
 
 			// According to https://marketplace.zoom.us/docs/api-reference/websockets/, only Server-to-Server OAuth connections are supported
@@ -101,7 +104,7 @@ namespace ZoomNet
 				return client;
 			});
 
-			_websocketClient = new WebsocketClient(new Uri("wss://ws.zoom.us"), clientFactory)
+			_websocketClient = new WebsocketClient(new Uri("wss://ws.zoom.us"), null, clientFactory, Utils.MemoryStreamManager)
 			{
 				Name = "ZoomNet",
 				ReconnectTimeout = TimeSpan.FromSeconds(45), // Greater than 30 seconds because we send a heartbeat every 30 seconds
@@ -123,9 +126,55 @@ namespace ZoomNet
 				.Merge(5) // Allow up to 5 messages to be processed concurently. This number is arbitrary but it seems reasonable.
 				.Subscribe();
 
-			Task.Run(() => SendHeartbeat(_websocketClient, cancellationToken), cancellationToken);
+			// Zoom requires a heartbeath to be sent every 30 seconds.
+			StartHeartbeat(TimeSpan.FromSeconds(30), cancellationToken);
 
 			return _websocketClient.Start();
+		}
+
+		/// <summary>
+		/// Stops the websocket client and associated background tasks asynchronously.
+		/// </summary>
+		public async Task StopAsync()
+		{
+			Task heartbeatTask = null;
+			lock (_heartbeatLock)
+			{
+				if (_heartbeatCts != null)
+				{
+					// Signal cancellation to background heartbeat
+					_heartbeatCts.Cancel();
+					heartbeatTask = _heartbeatTask;
+				}
+			}
+
+			if (heartbeatTask != null)
+			{
+				try { await heartbeatTask.ConfigureAwait(false); } catch { }
+			}
+
+			// Stop websocket client
+			if (_websocketClient != null && _websocketClient.IsRunning)
+			{
+				try
+				{
+					await _websocketClient.Stop(WebSocketCloseStatus.NormalClosure, "Shutting down").ConfigureAwait(false);
+				}
+				catch (Exception ex)
+				{
+					_logger.LogError(ex, "Error stopping websocket client");
+				}
+			}
+
+			lock (_heartbeatLock)
+			{
+				if (_heartbeatCts != null)
+				{
+					try { _heartbeatCts.Dispose(); } catch { }
+					_heartbeatCts = null;
+				}
+				_heartbeatTask = null;
+			}
 		}
 
 		/// <summary>
@@ -159,23 +208,75 @@ namespace ZoomNet
 			ReleaseUnmanagedResources();
 		}
 
-		private async Task SendHeartbeat(IWebsocketClient client, CancellationToken cancellationToken = default)
+		private void StartHeartbeat(TimeSpan heartbeatInterval, CancellationToken cancellationToken = default)
 		{
-			while (!cancellationToken.IsCancellationRequested)
+			lock (_heartbeatLock)
 			{
-				await Task.Delay(TimeSpan.FromSeconds(30), cancellationToken); // Zoom requires a heartbeat every 30 seconds
+				if (_heartbeatTask != null) return;
+				_heartbeatCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
 
-				if (!client.IsRunning)
-				{
-					_logger.LogTrace("Client is not running. Skipping heartbeat");
-					continue;
-				}
-
-				_logger.LogTrace("Sending heartbeat");
-
-				await client.SendInstant("{\"module\":\"heartbeat\"}").ConfigureAwait(false);
+#if NET6_0_OR_GREATER
+				_heartbeatTask = HeartbeatLoopWithTimer(_websocketClient, heartbeatInterval, _heartbeatCts.Token);
+#else
+				_heartbeatTask = HeartbeatLoop(_websocketClient, heartbeatInterval, _heartbeatCts.Token);
+#endif
 			}
 		}
+
+#if NET6_0_OR_GREATER
+		// This version of the heartbeat loop uses the new PeriodicTimer class which is more efficient than using Task.Delay() in a loop but available in .NET 6.0 and later only.
+		private async Task HeartbeatLoopWithTimer(IWebsocketClient client, TimeSpan heartbeatInterval, CancellationToken cancellationToken)
+		{
+			try
+			{
+				using var timer = new PeriodicTimer(heartbeatInterval);
+				while (await timer.WaitForNextTickAsync(cancellationToken).ConfigureAwait(false))
+				{
+					if (!client.IsRunning)
+					{
+						_logger.LogTrace("Client is not running. Skipping heartbeat");
+						continue;
+					}
+
+					_logger.LogTrace("Sending heartbeat");
+					await client.SendInstant("{\"module\":\"heartbeat\"}").ConfigureAwait(false);
+				}
+			}
+			catch (OperationCanceledException) { }
+			catch (Exception ex)
+			{
+				_logger.LogError(ex, "Heartbeat loop failed");
+			}
+		}
+#endif
+
+#if !NET6_0_OR_GREATER
+		// This version of the heartbeat loop can be used in .NET 5.0 and earlier because it uses Task.Delay() in a loop (but it's less efficient than using PeriodicTimer).
+		private async Task HeartbeatLoop(IWebsocketClient client, TimeSpan heartbeatInterval, CancellationToken cancellationToken)
+		{
+			try
+			{
+				while (!cancellationToken.IsCancellationRequested)
+				{
+					await Task.Delay(heartbeatInterval, cancellationToken).ConfigureAwait(false);
+
+					if (!client.IsRunning)
+					{
+						_logger.LogTrace("Client is not running. Skipping heartbeat");
+						continue;
+					}
+
+					_logger.LogTrace("Sending heartbeat");
+					await client.SendInstant("{\"module\":\"heartbeat\"}").ConfigureAwait(false);
+				}
+			}
+			catch (OperationCanceledException) { }
+			catch (Exception ex)
+			{
+				_logger.LogError(ex, "Heartbeat loop failed");
+			}
+		}
+#endif
 
 		private async Task ProcessMessage(ResponseMessage msg, CancellationToken cancellationToken = default)
 		{
@@ -227,6 +328,26 @@ namespace ZoomNet
 
 		private void ReleaseManagedResources()
 		{
+			// Stop heartbeat if running (synchronous fallback for Dispose)
+			lock (_heartbeatLock)
+			{
+				if (_heartbeatCts != null)
+				{
+					try
+					{
+						_heartbeatCts.Cancel();
+						_heartbeatTask?.GetAwaiter().GetResult();
+					}
+					catch { }
+					finally
+					{
+						_heartbeatCts.Dispose();
+						_heartbeatCts = null;
+						_heartbeatTask = null;
+					}
+				}
+			}
+
 			_tokenHandler = null;
 
 			if (_websocketClient != null)
@@ -240,11 +361,8 @@ namespace ZoomNet
 				_websocketClient = null;
 			}
 
-			if (_httpClient != null)
-			{
-				_httpClient.Dispose();
-				_httpClient = null;
-			}
+			_httpClient?.Dispose();
+			_httpClient = null;
 		}
 
 		private void ReleaseUnmanagedResources()

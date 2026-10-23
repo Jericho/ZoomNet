@@ -1,0 +1,11 @@
+{
+  "admins": [
+    {
+      "email": "jchill@example.com",
+      "name": "Jill Chill"
+    }
+  ],
+  "next_page_token": "oMTCmjMRwzSfZtUXDIuWDswdksIQ3dyGUB1",
+  "page_size": 1,
+  "total_records": 20
+}

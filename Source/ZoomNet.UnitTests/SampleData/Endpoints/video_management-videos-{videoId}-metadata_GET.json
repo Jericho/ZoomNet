@@ -1,0 +1,19 @@
+{
+  "video_name": "My Recording1",
+  "description": "Updated description text.",
+  "external_id": "legacy_vid_789",
+  "notes": "This video contains onboarding information.",
+  "play_link": "https://abc/recording/unehd6TtTLuTN40owCOqqK",
+  "duration": 3000,
+  "video_status": "COMPLETED",
+  "video_source": "RECORDING",
+  "thumbnails": [
+    {
+      "file_url": "https://files.zoom.us/thumbnails/thumb123.jpg"
+    }
+  ],
+  "owner_name": "John Doe",
+  "owner_email": "john.doe@xyz.com",
+  "created_time": "2022-06-03T20:51:00.0000000\u002B00:00",
+  "modified_time": "2022-06-03T20:51:00.0000000\u002B00:00"
+}

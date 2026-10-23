@@ -1,0 +1,7 @@
+[
+  {
+    "field_id": "city_name",
+    "type": "plain_text_input",
+    "value": "San Jose"
+  }
+]

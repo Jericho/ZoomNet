@@ -1,0 +1,23 @@
+{
+  "from": "2025-02-14",
+  "to": "2025-02-14",
+  "page_size": 30,
+  "next_page_token": "Tva2CuIdTgsv8wAnhyAdUrm0tY2HuLQtlh4",
+  "sessions": [
+    {
+      "session_id": "GDDykmpQQU6MWL3GqLNUkw",
+      "start_time": "2025-02-14T19:09:01.0000000\u002B00:00",
+      "end_time": "2025-02-14T19:15:01.0000000\u002B00:00",
+      "duration": "00:03:19",
+      "user_count": 2,
+      "session_pin": "987536",
+      "users": [
+        {
+          "user_id": "YZ8uRj9zRf2yY5cshmzrTA",
+          "user_name": "exampleuser",
+          "role_type": "agent"
+        }
+      ]
+    }
+  ]
+}

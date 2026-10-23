@@ -58,12 +58,12 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public async Task<BillingInvoiceSummary[]> GetInvoicesAsync(string accountId, DateTime from, DateTime to, CancellationToken cancellationToken = default)
+		public async Task<BillingInvoiceSummary[]> GetInvoicesAsync(string accountId, DateOnly from, DateOnly to, CancellationToken cancellationToken = default)
 		{
 			var response = await _client
 				.GetAsync($"accounts/{accountId}/billing/invoices")
-				.WithArgument("from", from.ToZoomFormat(dateOnly: true))
-				.WithArgument("to", to.ToZoomFormat(dateOnly: true))
+				.WithArgument("from", from.ToZoomFormat())
+				.WithArgument("to", to.ToZoomFormat())
 				.WithCancellationToken(cancellationToken)
 				.AsJson()
 				.ConfigureAwait(false);

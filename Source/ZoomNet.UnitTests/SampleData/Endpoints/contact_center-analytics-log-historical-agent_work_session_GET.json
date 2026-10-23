@@ -1,0 +1,34 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "timezone": "America/Los_Angeles",
+  "start_time_from": "2026-12-10T00:00:00Z",
+  "start_time_to": "2026-12-10T00:00:00Z",
+  "end_time_from": "2026-12-10T00:00:00Z",
+  "end_time_to": "2026-12-10T00:00:00Z",
+  "work_sessions": [
+    {
+      "work_session_id": "reRAiabVQSqpXxJVDbsy2Q",
+      "work_session_start_time": "2026-12-10T00:00:00Z",
+      "work_session_end_time": "2026-12-12T00:00:00Z",
+      "user_id": "reRAiabVQSqpXxJVDbsy2Q",
+      "user_name": "agent_name_example",
+      "work_session_duration": 123,
+      "work_session_modify_by_id": "PHPGirW5Rr",
+      "work_session_modify_by_name": "my_agent",
+      "agent_regions": [
+        "Main Region"
+      ],
+      "client_types": [
+        "client"
+      ],
+      "agent_countries": [
+        "US"
+      ],
+      "ip_addresses": [
+        "66.172.9.16"
+      ]
+    }
+  ]
+}

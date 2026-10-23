@@ -1,0 +1,16 @@
+{
+  "next_page_token": "w7587w4eiyfsudgf",
+  "page_count": 1,
+  "page_number": 1,
+  "page_size": 30,
+  "total_records": 20,
+  "devices": [
+    {
+      "id": "abceHewahkrehwiK",
+      "encryption": "auto",
+      "ip": "127.0.0.1",
+      "name": "api_test_20190508",
+      "protocol": "H.323"
+    }
+  ]
+}

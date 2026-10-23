@@ -1,0 +1,17 @@
+{
+  "next_page_token": "ICF5K4lVmGG4kyIyGxSfBU2LH4QQG95cn32",
+  "page_size": 30,
+  "total_records": 1,
+  "private_directory_members": [
+    {
+      "extension_id": "JpjPXizWTz-l35tFRUK3Gg",
+      "extension_type": "user",
+      "extension_number": 800,
+      "extension_display_name": "sample extension",
+      "extension_email": "sample@zooom.us",
+      "searchable_on_web_portal": "everybody",
+      "site_id": "vkBoHKaRTxeBiTLRsdEwTQ",
+      "site_name": "sample site"
+    }
+  ]
+}

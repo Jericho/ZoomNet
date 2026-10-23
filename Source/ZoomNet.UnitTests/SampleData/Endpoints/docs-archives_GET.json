@@ -1,0 +1,17 @@
+{
+  "from": "2026-02-13T00:00:00.0000000\u002B00:00",
+  "to": "2026-03-14T00:00:00.0000000\u002B00:00",
+  "page_size": 20,
+  "next_page_token": "IAfJX3jsOLW7w3dokmFl84zOa0MAVGyMEB2",
+  "total_records": 30,
+  "data": [
+    {
+      "file_id": "hCSzn_k9SGGXTwjujsF73w",
+      "version": 1,
+      "product": "docs",
+      "trigger_type": "doc_edit",
+      "archive_time": "2023-07-27T17:36:34.0000000\u002B00:00",
+      "download_url": "https://example.com/download/archive.json"
+    }
+  ]
+}

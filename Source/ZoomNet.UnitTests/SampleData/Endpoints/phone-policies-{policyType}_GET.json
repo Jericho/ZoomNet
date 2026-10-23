@@ -1,0 +1,9 @@
+{
+  "allow_emergency_calls": {
+    "enable": true,
+    "locked": true,
+    "locked_by": "account",
+    "allow_emergency_calls_from_clients": true,
+    "allow_emergency_calls_from_deskphones": true
+  }
+}

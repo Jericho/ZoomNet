@@ -1,0 +1,44 @@
+{
+  "total_records": 50,
+  "page_size": 30,
+  "interactions": [
+    {
+      "start_time": "2020-05-01T19:13:02Z",
+      "duration": 5,
+      "queue_id": "Je4zLPZ-SBiLCiebE35ALQ",
+      "queue_name": "Demo",
+      "interaction_info": {
+        "from": "\u002B16692520210",
+        "to": "\u002B12364352078",
+        "interaction_id": "X51n17BZQTqKtxwF4mmTIw",
+        "agent_name": "Admin3",
+        "consumer_name": "\u002B16692520210",
+        "channel_type": "AUDIO",
+        "associated_ids": [
+          "xxxx"
+        ],
+        "evaluations": [
+          {
+            "evaluation_id": "2c8704b1bc374bb981dd66428ca3eb7b",
+            "evaluation_type": "Manual scoring"
+          }
+        ]
+      },
+      "engagement_id": "PH6wferlTACAfBzYGAVOYg",
+      "direction": "inbound",
+      "disposition": "dev-disponsition",
+      "silence_event_count": 2,
+      "crosstalk_event_count": 2,
+      "hold_event_count": 3,
+      "scorecard_name": "test Kraig 1227",
+      "summary": {
+        "evaluation_score": 58.63,
+        "sentiment_score": 58.63,
+        "engagement_score": 58.63
+      },
+      "primary_language": "en",
+      "screen_recording_status": "AVAILABLE"
+    }
+  ],
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42"
+}

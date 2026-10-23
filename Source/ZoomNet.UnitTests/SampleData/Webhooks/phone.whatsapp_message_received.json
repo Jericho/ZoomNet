@@ -1,0 +1,34 @@
+{
+  "event": "phone.whatsapp_message_received",
+  "event_ts": 1626759486127,
+  "payload": {
+    "account_id": "2TP-coFVSnmyvYZogk8gAg",
+    "object": {
+      "sender": {
+        "phone_number": "12132822256",
+        "display_name": "Johh Doe"
+      },
+      "recipient": {
+        "phone_number": "12132792348",
+        "id": "RMITfuhuuxyzyuyyi3Kfg",
+        "type": "user",
+        "display_name": "Tomcat",
+        "is_message_owner": true
+      },
+      "message": "Welcome to our company!",
+      "attachments": [
+        {
+          "file_id": "ux7LtGDPRmqbo0nLQ2v9jQ",
+          "size": 10692,
+          "name": "Screenshot2021_05_17_183842.jpg",
+          "type": "JPG",
+          "download_url": "https://downloadUrl.zoom.us"
+        }
+      ],
+      "session_id": "e5e9b8417c1f2da2cd3006f3d9d4641a",
+      "message_id": "72abd192-97ee-4ddb-b498-85048f4c34d7",
+      "date_time": "2021-07-19T18:43:43Z",
+      "message_status": "received"
+    }
+  }
+}

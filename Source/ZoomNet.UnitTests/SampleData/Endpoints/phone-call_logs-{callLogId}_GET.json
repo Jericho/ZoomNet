@@ -1,0 +1,59 @@
+{
+  "call_id": "7018317023722949162",
+  "call_type": "voip",
+  "callee_country_code": "1",
+  "callee_country_iso_code": "US",
+  "callee_did_number": "\u002B12055432724",
+  "callee_name": "Callee name",
+  "callee_number": "1018",
+  "callee_number_type": 1,
+  "callee_number_source": "internal",
+  "callee_status": "deleted",
+  "callee_deleted_time": "2022-10-14T22:10:54Z",
+  "caller_country_code": "1",
+  "caller_country_iso_code": "US",
+  "caller_did_number": "\u002B12055432724",
+  "caller_name": "Caller name",
+  "caller_number": "\u002B16622001852",
+  "caller_number_type": 1,
+  "caller_number_source": "internal",
+  "caller_billing_reference_id": "ZoomTelecom123456",
+  "caller_status": "deleted",
+  "caller_deleted_time": "2022-10-14T22:10:54Z",
+  "date_time": "2021-10-12T22:54:31Z",
+  "device_private_ip": "12",
+  "device_public_ip": "23",
+  "direction": "inbound",
+  "duration": 20,
+  "has_recording": false,
+  "has_voicemail": false,
+  "id": "a55d94f7-27ea-4dbb-ab25-028f2c8d55bd",
+  "log_details": [
+    {
+      "date_time": "2021-10-12T22:54:31Z",
+      "hold_time": 5,
+      "device_private_ip": "12",
+      "device_public_ip": "23",
+      "duration": 20,
+      "forward_to": {
+        "extension_number": "1002",
+        "id": "1234abcd",
+        "name": "name",
+        "type": "user",
+        "extension_status": "deleted",
+        "extension_deleted_time": "2022-10-14T22:10:54Z"
+      },
+      "id": "a55d94f7-27ea-4dbb-ab25-028f2c8d55bd",
+      "path": "callQueue",
+      "result": "Call connected",
+      "site": {
+        "id": "8f71O6rWT8KFUGQmJIFAdQ",
+        "name": "Main Site"
+      }
+    }
+  ],
+  "path": "callQueue",
+  "result": "Call connected",
+  "department": "web-api1",
+  "cost_center": "cost-center1"
+}

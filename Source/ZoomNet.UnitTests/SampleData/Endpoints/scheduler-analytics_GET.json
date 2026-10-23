@@ -1,0 +1,90 @@
+{
+  "event_distribution_by_duration": [
+    {
+      "Event distribution by duration": [
+        {
+          "30": 65
+        },
+        {
+          "45": 15
+        },
+        {
+          "60": 35
+        }
+      ]
+    }
+  ],
+  "last_n_days": "\u0022last_n_days\u0022:{{\u0022created_scheduled_events\u0022:65},{\u0022completed_scheduled_events\u0022:34},{\u0022created_schedules\u0022:20},{\u0022cancelled_scheduled_events\u0022:14},{\u0022rescheduled_scheduled_events\u0022:8},{\u0022cancelled_schedules\u0022:3},{\u0022one_to_one\u0022:10},{\u0022any_host_available\u0022:5},{\u0022one_off_meeting\u0022:2},{\u0022all_host_available\u0022:1},{\u0022meeting_poll\u0022:1},{\u0022one_to_many\u0022:1}}",
+  "popular_schedules": {
+    "Popular schedules": [
+      {
+        "Test 1-1": 5
+      },
+      {
+        "Test 1-to-many": 4
+      },
+      {
+        "Test any host available": 3
+      }
+    ]
+  },
+  "popular_time_of_week": {
+    "Popular times (day of week)": [
+      {
+        "Fri": 20
+      },
+      {
+        "Wed": 16
+      },
+      {
+        "Thu": 11
+      },
+      {
+        "Tue": 8
+      },
+      {
+        "Mon": 6
+      },
+      {
+        "Sat": 3
+      },
+      {
+        "Sun": 1
+      }
+    ]
+  },
+  "popular_time_of_day": {
+    "Popular times (hour of day)": [
+      {
+        "11": 16
+      },
+      {
+        "12": 6
+      },
+      {
+        "16": 3
+      }
+    ]
+  },
+  "previous_period": "\u0022previous_period\u0022:{{\u0022created_scheduled_events\u0022:65},{\u0022completed_scheduled_events\u0022:34},{\u0022created_schedules\u0022:20},{\u0022cancelled_scheduled_events\u0022:14},{\u0022rescheduled_scheduled_events\u0022:8},{\u0022cancelled_schedules\u0022:3},{\u0022one_to_one\u0022:10},{\u0022any_host_available\u0022:5},{\u0022one_off_meeting\u0022:2},{\u0022all_host_available\u0022:1},{\u0022meeting_poll\u0022:1},{\u0022one_to_many\u0022:1}}",
+  "users_with_least_events": {
+    "Users with the least events": [
+      {
+        "Dan Smith": 5
+      },
+      {
+        "Allan Swift": 10
+      }
+    ]
+  },
+  "users_with_most_events": {
+    "Users with the most events": [
+      {
+        "Dan Smith": 65
+      },
+      {
+        "Allan Swift": 20
+      }
+    ]
+  }
+}

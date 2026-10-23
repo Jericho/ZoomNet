@@ -13,8 +13,8 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync("\n***** REPORTS *****\n").ConfigureAwait(false);
 
 			var now = DateTime.UtcNow;
-			var from = now.Subtract(TimeSpan.FromDays(30));
-			var to = now;
+			var from = DateOnly.FromDateTime(now.Subtract(TimeSpan.FromDays(30)));
+			var to = DateOnly.FromDateTime(now);
 
 			// GET ALL HOSTS
 			var activeHosts = await client.Reports.GetHostsAsync(from, to, ReportHostType.Active, 30, null, cancellationToken);

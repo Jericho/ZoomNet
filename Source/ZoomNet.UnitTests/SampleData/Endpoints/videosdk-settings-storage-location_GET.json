@@ -1,0 +1,13 @@
+[
+  {
+    "id": "9lXuCXgOTIqocq81iotCdQ",
+    "name": "11111",
+    "provider": "aws_s3",
+    "selected": true,
+    "s3": {
+      "region": "us-east-2",
+      "bucket": "testpbx",
+      "authentication_mechanism": "aws_access_key"
+    }
+  }
+]

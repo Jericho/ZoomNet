@@ -1,0 +1,21 @@
+{
+  "success_list": [
+    {
+      "prospect_id": "mq4XpiQISe6tlhHRwX9a8g",
+      "name": "John Smith",
+      "phone": "\u002B1-555-123-4567"
+    }
+  ],
+  "failed_list": [
+    {
+      "phone": "\u002B1-555-123-4567",
+      "name": "John Smith",
+      "error_message": "VALIDATION_ERROR: Invalid phone number format"
+    }
+  ],
+  "total_processed": 5,
+  "total_failed": 2,
+  "total_prospects": 7,
+  "assigned_to_user_id": "0yT-QeXeQYqW6uizHEFmXA",
+  "assigned_to_user_email": "dev\u002Bjohn_doe_zradialer@zoomsandbox.us"
+}

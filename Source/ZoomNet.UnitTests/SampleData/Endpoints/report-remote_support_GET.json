@@ -1,0 +1,22 @@
+{
+  "remote_support_logs": [
+    {
+      "meeting_start_time": "2025-09-15T13:20:12Z",
+      "meeting_uuid": "gm8s9L\u002BPTEC\u002BFG3sFbd1Cw==",
+      "meeting_number": "93201235621",
+      "topic": "My Meeting",
+      "meeting_host_id": "FyOCGDLEShWSihPcupWHtA",
+      "supporter_name": "Jill Chill",
+      "supporter_email": "jchill@example.com",
+      "supportee_name": "Tom",
+      "supportee_email": "tom@example.com",
+      "request_time": "2025-09-15T13:21:29Z",
+      "wait_time": "01:28",
+      "start_time": "2025-09-15T13:22:57Z",
+      "end_time": "2025-09-15T13:42:34Z",
+      "duration": "19:37"
+    }
+  ],
+  "next_page_token": "b43YBRLJFg3V4vsSpxvGdKIGtNbxn9h9If2",
+  "page_size": 30
+}

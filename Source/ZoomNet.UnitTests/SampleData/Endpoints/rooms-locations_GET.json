@@ -1,0 +1,12 @@
+{
+  "locations": [
+    {
+      "id": "AAAAAAAAAA",
+      "name": "BuildingA",
+      "parent_location_id": "49D7a0xPQvGQ2DCMZgSe7w",
+      "type": "building"
+    }
+  ],
+  "next_page_token": "At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2",
+  "page_size": 30
+}

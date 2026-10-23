@@ -1,0 +1,61 @@
+{
+  "total_records": 1,
+  "next_page_token": "oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2",
+  "attendees": [
+    {
+      "display_name": "First Last",
+      "first_name": "First",
+      "last_name": "Last",
+      "email": "email@zoom.us",
+      "opt_in_marketing": 1,
+      "marketing_consent_prechecked": 1,
+      "event_attendance": "attended",
+      "attendance_type": [
+        "hybrid"
+      ],
+      "lobby_attendance": "attended",
+      "lobby_chat_sent": 2,
+      "survey_taken": 0,
+      "total_sessions_joined": 0,
+      "number_of_tickets": 0,
+      "role": "General",
+      "tickets": [
+        {
+          "ticket_type_name": "General Ticket",
+          "ticket_type_id": "Fn2rBZgJQzi6VIU--uWqnA",
+          "external_ticket_id": "iso9Djldop39dagjLj3j",
+          "ticket_id": "Fn2rBZgJQzi6VIUABuWcqB",
+          "authentication_method": "no_auth",
+          "questions": [
+            {
+              "title": "First Name",
+              "answer": "Michael"
+            }
+          ]
+        }
+      ],
+      "session_attendance": [
+        {
+          "session_id": "Pn9rBZgJQzi6RXUABmWcqB",
+          "session_name": "Session one",
+          "session_attendance": "attended",
+          "duration_spent_in_session": 20,
+          "chat_messages_sent": 20,
+          "material_download": true,
+          "recording_view": false,
+          "live_streaming_view": false,
+          "recording_view_duration": 20,
+          "live_streaming_view_duration": 30,
+          "session_join_time": "2022-03-24T22:30:00.0000000\u002B00:00",
+          "session_exit_time": "2022-03-24T22:30:00.0000000\u002B00:00",
+          "session_reserved": false,
+          "session_bookmarked": false
+        }
+      ],
+      "profile_created": false,
+      "personal_chats": 0,
+      "connection_made": 20,
+      "last_modified_date": "2025-08-24T22:30:00.0000000\u002B00:00"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "site_id": "SQv52YtkRLC2dwrDdYtGsA",
+  "psap": {
+    "enable": true,
+    "route_extension_only_calls": 1,
+    "local_number_extensions": {
+      "caller_number_source": 0,
+      "shared_number_scope": 0
+    },
+    "caller_number_method": 1,
+    "target_number": {
+      "phone_number_id": "vlaTaJZwSfaFHkTpUFrs3g",
+      "phone_number": "\u002B12532644621"
+    },
+    "emergency_number_pool": {
+      "count": 2
+    },
+    "byoc_target_carrier": {
+      "us_ca": "ZOOM"
+    }
+  },
+  "internal_safety_response_team": {
+    "enable": true,
+    "call_handling": 2,
+    "max_holding_time": 8,
+    "target_call_queue": {
+      "call_queue_id": "T3Kk9EK5T8G8bE5LMvKS0A",
+      "extension_id": "hRTLGKtQTx6Nag8Xt96IqQ",
+      "extension_number": 1003,
+      "display_name": "SafetyTeam",
+      "overflow_action": 1,
+      "overflow_call_queue": {
+        "call_queue_id": "9ImUTeXqSmqXHJ7Zc6dfXQ",
+        "extension_id": "kKMhbSNRTUuG-Cw2iVfSMg",
+        "extension_number": 1004,
+        "display_name": "Front Desk"
+      }
+    }
+  },
+  "nomadic_emergency_service": {
+    "enable": true,
+    "feature_testing": {
+      "extension_count": 2
+    },
+    "allow_personal_location": true,
+    "auto_location_sharing": false,
+    "bootstrap_mode": true,
+    "mac_switch_detection": {
+      "enable": true,
+      "package_deployment": 1
+    },
+    "bssid_change_prompt": true,
+    "alert_email_recipients": [
+      "jchill@example.com"
+    ]
+  },
+  "emergency_address_management": {
+    "enable": true,
+    "prompt_default_address": true
+  }
+}

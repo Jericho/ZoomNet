@@ -1,0 +1,15 @@
+{
+  "next_page_token": "nav48KOj42vYPSG4f0cCdT575bZ980did22",
+  "page_size": 30,
+  "total_records": 45,
+  "targets": [
+    {
+      "target_id": "zSBIkYJzS6KkQqu5nFxvgg",
+      "target_type": "user",
+      "target_name": "Test name",
+      "extension_number": 1234503,
+      "site_id": "8f71O6rWT8KFUGQmJIFAdQ",
+      "site_name": "Main Site"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "clip_id": "abc123",
+  "status": "manual",
+  "chapters": [
+    {
+      "start_time": "00:00:00.000",
+      "title": "Introduction",
+      "summary": "The clip starts with an overview of the topic."
+    }
+  ]
+}

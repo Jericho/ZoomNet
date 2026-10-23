@@ -1,0 +1,26 @@
+{
+  "conversation_id": "egLSRuj2SlWet\u002BwLi87LNA==,1667893163000",
+  "meeting_id": 896549134891,
+  "meeting_uuid": "egLSRuj2SlWet\u002BwLi87LNA==",
+  "host_id": "x1yCzABCDEfg23HiJKl4mN",
+  "host_email": "jchill@example.com",
+  "topic": "Maximize profits",
+  "conversation_topic": "Maximize profits",
+  "duration": 60,
+  "summary": "summary",
+  "conversation_type": "meeting",
+  "stage_during_conversation": "Perception Analysis",
+  "start_time": "2022-03-23T06:00:00Z",
+  "meeting_start_time": "2022-03-23T06:00:00Z",
+  "iq_processed_time": "2022-03-23T06:00:00Z",
+  "engagement_score": 20,
+  "sentiment_score": 80,
+  "conversation_url": "https://zoom.us/iq/conversation?meetingId...",
+  "deal": {
+    "id": "0065g00000DhY3eAAF",
+    "name": "deal name",
+    "stage": "Needs Analysis",
+    "customer_crm_account_name": "customer",
+    "close_date": "2023-04-19"
+  }
+}

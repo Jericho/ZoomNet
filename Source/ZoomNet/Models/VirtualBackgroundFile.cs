@@ -2,9 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Virtual background file.
-	/// </summary>
+	/// <summary>Virtual background file.</summary>
 	public class VirtualBackgroundFile
 	{
 		/// <summary>Gets or sets the unique identifier.</summary>

@@ -1,0 +1,15 @@
+{
+  "calling_plans": [
+    {
+      "assigned": 28,
+      "available": 72,
+      "name": "US/CA Metered Calling Plan",
+      "subscribed": 100,
+      "type": 100,
+      "billing_account_id": "3WWAEiEjTj2IQuyDiKMd_A",
+      "billing_account_name": "Delhi billing",
+      "billing_subscription_id": "FT-SUBREF-21168178",
+      "billing_subscription_name": "My Subscription"
+    }
+  ]
+}

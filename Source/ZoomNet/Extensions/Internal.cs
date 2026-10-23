@@ -1,21 +1,16 @@
 using HttpMultipartParser;
 using Pathoschild.Http.Client;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
-using System.Runtime.Serialization;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Nodes;
-using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -30,7 +25,7 @@ namespace ZoomNet
 	/// <summary>
 	/// Internal extension methods.
 	/// </summary>
-	internal static class Internal
+	internal static partial class Internal
 	{
 		internal enum UnixTimePrecision
 		{
@@ -40,29 +35,40 @@ namespace ZoomNet
 
 		private static readonly DateTime EPOCH = new(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 		private static readonly int DEFAULT_DEGREE_OF_PARALLELISM = Environment.ProcessorCount > 1 ? Environment.ProcessorCount / 2 : 1;
+		private static readonly string[] ERROR_MESSAGE_NODE_NAMES = ["message", "error_message"];
 
-		private static readonly Dictionary<Type, string> _typeAliases =
-			new Dictionary<Type, string>()
-			{
-				{ typeof(byte), "byte" },
-				{ typeof(sbyte), "sbyte" },
-				{ typeof(short), "short" },
-				{ typeof(ushort), "ushort" },
-				{ typeof(int), "int" },
-				{ typeof(uint), "uint" },
-				{ typeof(long), "long" },
-				{ typeof(ulong), "ulong" },
-				{ typeof(float), "float" },
-				{ typeof(double), "double" },
-				{ typeof(decimal), "decimal" },
-				{ typeof(object), "object" },
-				{ typeof(bool), "bool" },
-				{ typeof(char), "char" },
-				{ typeof(string), "string" },
-				{ typeof(void), "void" },
-				{ typeof(nint), "nint" }, // From C# 11 onwards
-				{ typeof(nuint), "nuint" }, // From C# 11 onwards
-			};
+		private static readonly Dictionary<Type, string> _typeAliases = new()
+		{
+			{ typeof(byte), "byte" },
+			{ typeof(sbyte), "sbyte" },
+			{ typeof(short), "short" },
+			{ typeof(ushort), "ushort" },
+			{ typeof(int), "int" },
+			{ typeof(uint), "uint" },
+			{ typeof(long), "long" },
+			{ typeof(ulong), "ulong" },
+			{ typeof(float), "float" },
+			{ typeof(double), "double" },
+			{ typeof(decimal), "decimal" },
+			{ typeof(object), "object" },
+			{ typeof(bool), "bool" },
+			{ typeof(char), "char" },
+			{ typeof(string), "string" },
+			{ typeof(void), "void" },
+			{ typeof(nint), "nint" }, // From C# 11 onwards
+			{ typeof(nuint), "nuint" }, // From C# 11 onwards
+		};
+
+#if NET7_0_OR_GREATER
+		[GeneratedRegex(@"(.*?)(?<=""message"":"")(.*?)(?=""})(.*?$)", RegexOptions.Singleline)]
+		private static partial Regex ErrorMessageRegex();
+
+		[GeneratedRegex(@"(?<!\\)""", RegexOptions.None)]
+		private static partial Regex UnescapedQuoteRegex();
+#else
+		private static readonly Regex ErrorMessageRegex = new(@"(.*?)(?<=""message"":"")(.*?)(?=""})(.*?$)", RegexOptions.Compiled | RegexOptions.Singleline);
+		private static readonly Regex UnescapedQuoteRegex = new(@"(?<!\\)""", RegexOptions.Compiled);
+#endif
 
 		/// <summary>
 		/// Converts a 'unix time', which is expressed as the number of seconds (or milliseconds) since
@@ -127,16 +133,40 @@ namespace ZoomNet
 			const string defaultDateFormat = dateOnlyFormat + "'T'HH:mm:ss";
 			const string utcDateFormat = defaultDateFormat + "'Z'";
 
-			if (dateOnly)
-			{
-				if (timeZone.HasValue && timeZone.Value == TimeZones.UTC) return date.ToUniversalTime().ToString(dateOnlyFormat);
-				else return date.ToString(dateOnlyFormat);
-			}
-			else
-			{
-				if (timeZone.HasValue && timeZone.Value == TimeZones.UTC) return date.ToUniversalTime().ToString(utcDateFormat);
-				else return date.ToString(defaultDateFormat);
-			}
+			var formats = dateOnly ?
+				(UtcFormat: dateOnlyFormat, OtherTimeZoneFormat: dateOnlyFormat) :
+				(UtcFormat: utcDateFormat, OtherTimeZoneFormat: defaultDateFormat);
+
+			var formattedDate = timeZone.HasValue && timeZone.Value == TimeZones.UTC ?
+				date.ToUniversalTime().ToString(formats.UtcFormat) :
+				date.ToString(formats.OtherTimeZoneFormat);
+
+			return formattedDate;
+		}
+
+		/// <summary>
+		/// Converts a <see cref="DateOnly" /> into a string that can be accepted by the Zoom API.
+		/// </summary>
+		/// <param name="date">The date.</param>
+		/// <returns>
+		/// The string representation of the date expressed in the Zoom format.
+		/// </returns>
+		internal static string ToZoomFormat(this DateOnly? date)
+		{
+			if (!date.HasValue) return null;
+			return date.Value.ToZoomFormat();
+		}
+
+		/// <summary>
+		/// Converts a <see cref="DateOnly" /> into a string that can be accepted by the Zoom API.
+		/// </summary>
+		/// <param name="date">The date.</param>
+		/// <returns>
+		/// The string representation of the date expressed in the Zoom format.
+		/// </returns>
+		internal static string ToZoomFormat(this DateOnly date)
+		{
+			return date.ToString("yyyy-MM-dd");
 		}
 
 		/// <summary>
@@ -155,7 +185,7 @@ namespace ZoomNet
 		/// while this method uses the UTF-8 encoding in that situation.
 		///
 		/// My motivation for writing this extension method was to work around a situation
-		/// where the 3rd party API I was sending requests to would sometimes return 'utf8'
+		/// where the 3rd party API I was sending requests that would sometimes return 'utf8'
 		/// as the charset and an exception would be thrown when I called the ReadAsStringAsync
 		/// method to get the content of the response into a string because the .Net HttpClient
 		/// would attempt to determine the proper encoding to use but it would fail due to
@@ -419,9 +449,11 @@ namespace ZoomNet
 		/// <returns>Returns the request builder for chaining.</returns>
 		internal static IRequest WithHttp200TreatedAsFailure(this IRequest request, string customExceptionMessage = null)
 		{
+			var diagnosticStore = request.Filters.OfType<ZoomErrorHandler>().Single().DiagnosticStore;
+
 			return request
 				.WithoutFilter<ZoomErrorHandler>()
-				.WithFilter(new ZoomErrorHandler(true, customExceptionMessage));
+				.WithFilter(new ZoomErrorHandler(diagnosticStore, true, customExceptionMessage));
 		}
 
 		/// <summary>Set the body content of the HTTP request.</summary>
@@ -489,7 +521,7 @@ namespace ZoomNet
 			static void AppendFormatIfNecessary(StringBuilder stringBuilder, string timePart, int value)
 			{
 				if (value <= 0) return;
-				stringBuilder.AppendFormat($" {value} {timePart}{(value > 1 ? "s" : string.Empty)}");
+				stringBuilder.Append($" {value} {timePart}{(value > 1 ? "s" : string.Empty)}");
 			}
 
 			// In case the TimeSpan is extremely short
@@ -544,16 +576,24 @@ namespace ZoomNet
 		/// langword="true"/>.</exception>
 		internal static JsonElement? GetProperty(this JsonElement element, string path, bool throwIfMissing = true, char splitChar = '/')
 		{
-			var parts = path.Split(splitChar);
-			var property = element;
+			ArgumentNullException.ThrowIfNull(path);
 
-			foreach (var part in parts)
+			var property = element;
+			var span = path.AsSpan();
+			int start = 0;
+			while (start <= span.Length)
 			{
+				int idx = start >= span.Length ? -1 : span.Slice(start).IndexOf(splitChar);
+				ReadOnlySpan<char> partSpan = idx == -1 ? span.Slice(start) : span.Slice(start, idx);
+				string part = partSpan.ToString();
 				if (!property.TryGetProperty(part, out property))
 				{
 					if (throwIfMissing) throw new ArgumentException($"Unable to find '{path}'", nameof(path));
-					else return null;
+					return null;
 				}
+
+				if (idx == -1) break;
+				start += idx + 1;
 			}
 
 			return property;
@@ -572,7 +612,7 @@ namespace ZoomNet
 		/// <returns>The value of the property converted to type T if found and convertible; otherwise, the specified default value.</returns>
 		internal static T GetPropertyValue<T>(this JsonElement element, string path, T defaultValue, char splitChar = '/')
 		{
-			return element.GetPropertyValue(new[] { path }, defaultValue, false, splitChar);
+			return element.GetPropertyValue([path], defaultValue, false, splitChar);
 		}
 
 		/// <summary>
@@ -604,7 +644,7 @@ namespace ZoomNet
 		/// <returns>The value of the property at the specified path, converted to type T.</returns>
 		internal static T GetPropertyValue<T>(this JsonElement element, string path, char splitChar = '/')
 		{
-			return element.GetPropertyValue<T>(new[] { path }, default, true, splitChar);
+			return element.GetPropertyValue<T>([path], default, true, splitChar);
 		}
 
 		/// <summary>
@@ -783,25 +823,64 @@ namespace ZoomNet
 
 		internal static IEnumerable<KeyValuePair<string, string>> ParseQuerystring(this Uri uri)
 		{
-			var querystringParameters = uri
-				.Query.TrimStart('?')
-				.Split(new char[] { '&' }, StringSplitOptions.RemoveEmptyEntries)
-				.Select(value => value.Split(new char[] { '=' }, StringSplitOptions.RemoveEmptyEntries))
-				.Select(splitValue =>
+			// Non-allocating span-based parser to minimize allocations on hot paths.
+			var q = uri?.Query;
+			var result = new List<KeyValuePair<string, string>>();
+			if (string.IsNullOrEmpty(q)) return result;
+
+			ReadOnlySpan<char> span = q.AsSpan();
+			if (span.Length > 0 && span[0] == '?') span = span.Slice(1);
+
+			int i = 0;
+			while (i < span.Length)
+			{
+				// find next '&' without using range index/slice syntax for compatibility
+				int amp = -1;
+				for (int k = i; k < span.Length; k++)
 				{
-					var key = splitValue[0].Trim();
-					var value = splitValue.Length > 1 ? splitValue[1].Trim() : null;
-					return new KeyValuePair<string, string>(key, value);
-				});
+					if (span[k] == '&')
+					{
+						amp = k - i;
+						break;
+					}
+				}
+				ReadOnlySpan<char> segment = amp == -1 ? span.Slice(i) : span.Slice(i, amp);
 
-			return querystringParameters;
-		}
+				// split on '='
+				int eq = segment.IndexOf('=');
+				ReadOnlySpan<char> rawKey, rawValue;
+				if (eq == -1)
+				{
+					rawKey = segment;
+					rawValue = default;
+				}
+				else
+				{
+					rawKey = segment.Slice(0, eq);
+					rawValue = segment.Slice(eq + 1);
+				}
 
-		internal static DiagnosticInfo GetDiagnosticInfo(this IResponse response)
-		{
-			var diagnosticId = response.Message.RequestMessage.Headers.GetValue(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME);
-			DiagnosticHandler.DiagnosticsInfo.TryGetValue(diagnosticId, out DiagnosticInfo diagnosticInfo);
-			return diagnosticInfo;
+				// trim spaces from key and value (mimic string.Trim())
+				string key = TrimToString(rawKey);
+				string value = rawValue.Length == 0 ? null : TrimToString(rawValue);
+
+				result.Add(new KeyValuePair<string, string>(key, value));
+
+				if (amp == -1) break;
+				i += amp + 1;
+			}
+
+			return result;
+
+			static string TrimToString(ReadOnlySpan<char> s)
+			{
+				int start = 0, end = s.Length - 1;
+				while (start <= end && char.IsWhiteSpace(s[start])) start++;
+				while (end >= start && char.IsWhiteSpace(s[end])) end--;
+				if (start == 0 && end == s.Length - 1) return s.ToString();
+				if (end < start) return string.Empty;
+				return s.Slice(start, end - start + 1).ToString();
+			}
 		}
 
 		internal static async Task<(bool IsError, string ErrorMessage, int? ErrorCode)> GetErrorMessageAsync(this HttpResponseMessage message)
@@ -846,7 +925,7 @@ namespace ZoomNet
 				if (jsonResponse.ValueKind == JsonValueKind.Object)
 				{
 					errorCode = jsonResponse.TryGetProperty("code", out JsonElement jsonErrorCode) ? jsonErrorCode.GetInt32() : null;
-					errorMessage = jsonResponse.GetPropertyValue(new[] { "message", "error_message" }, errorCode.HasValue ? $"Error code: {errorCode}" : errorMessage, false);
+					errorMessage = jsonResponse.GetPropertyValue(ERROR_MESSAGE_NODE_NAMES, errorCode.HasValue ? $"Error code: {errorCode}" : errorMessage, false);
 					if (jsonResponse.TryGetProperty("errors", out JsonElement jsonErrorDetails))
 					{
 						var errorDetails = string.Join(
@@ -907,131 +986,44 @@ namespace ZoomNet
 		internal static string ToEnumString<T>(this T enumValue)
 			where T : Enum
 		{
-			if (enumValue.TryToEnumString(out string stringValue)) return stringValue;
-			return enumValue.ToString();
+			if (ZoomNet.Json.StringEnumConverter<T>.TryConvert(enumValue, out var stringValue, false)) return stringValue;
+
+			// Until September 2026 the fallback value was the name of the enum value which was different than the fallback
+			// logic in StringEnumConverter<T>.Write where the integer value of the enum is used as the fallback.
+			//
+			// The fallback logic here was changed to be consistent with StringEnumConverter<T>.Write.
+			// See: https://github.com/Jericho/ZoomNet/issues/520
+			return Convert.ToInt32(enumValue).ToString();
 		}
 
 		internal static bool TryToEnumString<T>(this T enumValue, out string stringValue, bool throwWhenUndefined = true)
-			where T : Enum
-		{
-			if (throwWhenUndefined)
-			{
-				var typeOfT = typeof(T);
-				if (!Enum.IsDefined(typeOfT, enumValue))
-				{
-					throw new ArgumentException($"{enumValue} is not a valid value for {typeOfT.Name}", nameof(enumValue));
-				}
-			}
-
-			var multipleValuesEnumMemberAttribute = enumValue.GetAttributeOfType<MultipleValuesEnumMemberAttribute>();
-			if (multipleValuesEnumMemberAttribute != null)
-			{
-				stringValue = multipleValuesEnumMemberAttribute.DefaultValue;
-				return true;
-			}
-
-			var enumMemberAttribute = enumValue.GetAttributeOfType<EnumMemberAttribute>();
-			if (enumMemberAttribute != null)
-			{
-				stringValue = enumMemberAttribute.Value;
-				return true;
-			}
-
-			var jsonPropertyNameAttribute = enumValue.GetAttributeOfType<JsonPropertyNameAttribute>();
-			if (jsonPropertyNameAttribute != null)
-			{
-				stringValue = jsonPropertyNameAttribute.Name;
-				return true;
-			}
-
-			var descriptionAttribute = enumValue.GetAttributeOfType<DescriptionAttribute>();
-			if (descriptionAttribute != null)
-			{
-				stringValue = descriptionAttribute.Description;
-				return true;
-			}
-
-			stringValue = null;
-			return false;
-		}
+			where T : Enum => ZoomNet.Json.StringEnumConverter<T>.TryConvert(enumValue, out stringValue, throwWhenUndefined);
 
 		/// <summary>Parses a string into its corresponding enum value.</summary>
 		/// <typeparam name="T">The enum type.</typeparam>
 		/// <param name="str">The string value.</param>
 		/// <returns>The enum representation of the string value.</returns>
-		/// <remarks>Inspired by: https://stackoverflow.com/questions/10418651/using-enummemberattribute-and-doing-automatic-string-conversions .</remarks>
 		internal static T ToEnum<T>(this string str)
-			where T : Enum
-		{
-			if (str.TryToEnum(out T enumValue)) return enumValue;
-
-			throw new ArgumentException($"There is no value in the {typeof(T).Name} enum that corresponds to '{str}'.");
-		}
+			where T : Enum => ZoomNet.Json.StringEnumConverter<T>.Convert(str);
 
 		internal static bool TryToEnum<T>(this string str, out T enumValue)
-			where T : Enum
-		{
-			var enumType = typeof(T);
-			foreach (var name in Enum.GetNames(enumType))
-			{
-				var customAttributes = enumType.GetField(name).GetCustomAttributes(true);
-
-				// See if there's a matching 'MultipleValuesEnumMember' attribute
-				if (customAttributes.OfType<MultipleValuesEnumMemberAttribute>().Any(attribute => string.Equals(attribute.DefaultValue, str, StringComparison.OrdinalIgnoreCase) ||
-					(attribute.OtherValues ?? Array.Empty<string>()).Any(otherValue => string.Equals(otherValue, str, StringComparison.OrdinalIgnoreCase))))
-				{
-					enumValue = (T)Enum.Parse(enumType, name);
-					return true;
-				}
-
-				// See if there's a matching 'EnumMember' attribute
-				if (customAttributes.OfType<EnumMemberAttribute>().Any(attribute => string.Equals(attribute.Value, str, StringComparison.OrdinalIgnoreCase)))
-				{
-					enumValue = (T)Enum.Parse(enumType, name);
-					return true;
-				}
-
-				// See if there's a matching 'JsonPropertyName' attribute
-				if (customAttributes.OfType<JsonPropertyNameAttribute>().Any(attribute => string.Equals(attribute.Name, str, StringComparison.OrdinalIgnoreCase)))
-				{
-					enumValue = (T)Enum.Parse(enumType, name);
-					return true;
-				}
-
-				// See if there's a matching 'Description' attribute
-				if (customAttributes.OfType<DescriptionAttribute>().Any(attribute => string.Equals(attribute.Description, str, StringComparison.OrdinalIgnoreCase)))
-				{
-					enumValue = (T)Enum.Parse(enumType, name);
-					return true;
-				}
-
-				// See if the value matches the name
-				if (string.Equals(name, str, StringComparison.OrdinalIgnoreCase))
-				{
-					enumValue = (T)Enum.Parse(enumType, name);
-					return true;
-				}
-			}
-
-			enumValue = default;
-			return false;
-		}
+			where T : Enum => ZoomNet.Json.StringEnumConverter<T>.TryConvert(str, out enumValue);
 
 		internal static T ToObject<T>(this JsonElement element, JsonSerializerOptions options = null)
 		{
+			if (element.ValueKind == JsonValueKind.Null) return default;
+#if NET5_0_OR_GREATER
+			return element.Deserialize<T>(options ?? JsonFormatter.DefaultDeserializerOptions);
+#else
 			return JsonSerializer.Deserialize<T>(element.GetRawText(), options ?? JsonFormatter.DefaultDeserializerOptions);
+#endif
 		}
 
 		internal static void Add<T>(this JsonObject jsonObject, string propertyName, T value)
 		{
 			if (value is IEnumerable<T> items)
 			{
-				var jsonArray = new JsonArray();
-				foreach (var item in items)
-				{
-					jsonArray.Add(item);
-				}
-
+				var jsonArray = new JsonArray(items.Select(item => JsonValue.Create(item)).ToArray());
 				jsonObject.Add(propertyName, jsonArray);
 			}
 			else
@@ -1063,7 +1055,8 @@ namespace ZoomNet
 
 		internal static string GetFriendlyName(this Type type)
 		{
-			return _typeAliases.ContainsKey(type) ? _typeAliases[type] : type.FullName;
+			if (_typeAliases.TryGetValue(type, out string typeAlias)) return typeAlias;
+			return type.FullName;
 		}
 
 		private static async Task<JsonElement> ParseZoomResponseAsync(this HttpContent responseFromZoomApi, CancellationToken cancellationToken = default)
@@ -1089,8 +1082,12 @@ namespace ZoomNet
 						"message": "Invalid access token, does not contain scopes:["zoom_events_basic:read","zoom_events_basic:read:admin"]"
 					}
 				*/
-				const string pattern = @"(.*?)(?<=""message"":"")(.*?)(?=""})(.*?$)";
-				var matches = Regex.Match(responseContent, pattern, RegexOptions.Compiled | RegexOptions.Singleline);
+
+#if NET7_0_OR_GREATER
+				var matches = ErrorMessageRegex().Match(responseContent);
+#else
+				var matches = ErrorMessageRegex.Match(responseContent);
+#endif
 				if (matches.Groups.Count != 4) throw;
 
 				var prefix = matches.Groups[1].Value;
@@ -1098,7 +1095,12 @@ namespace ZoomNet
 				var postfix = matches.Groups[3].Value;
 				if (string.IsNullOrEmpty(message)) throw;
 
-				var escapedMessage = Regex.Replace(message, @"(?<!\\)""", "\\\"", RegexOptions.Compiled); // Replace un-escaped double-quotes with properly escaped double-quotes
+#if NET7_0_OR_GREATER
+				var escapedMessage = UnescapedQuoteRegex().Replace(message, "\\\"");
+#else
+				var escapedMessage = UnescapedQuoteRegex.Replace(message, "\\\"");
+#endif
+
 				var result = $"{prefix}{escapedMessage}{postfix}";
 				return JsonDocument.Parse(result).RootElement;
 			}
@@ -1155,12 +1157,12 @@ namespace ZoomNet
 
 			if (jsonResponse.ValueKind != JsonValueKind.Object)
 			{
-				throw new Exception("The response from the Zomm API does not contain a valid JSON string");
+				throw new Exception("The response from the Zoom API does not contain a valid JSON string");
 			}
 			else if (jsonResponse.TryGetProperty(propertyName, out JsonElement property))
 			{
-				var propertyContent = property.GetRawText();
-				return JsonDocument.Parse(propertyContent, default).RootElement;
+				// Return the property element directly to avoid allocating an intermediate string and reparsing it.
+				return property;
 			}
 			else if (throwIfPropertyIsMissing)
 			{
@@ -1205,7 +1207,7 @@ namespace ZoomNet
 				PageCount = pageCount,
 				PageNumber = pageNumber,
 				RecordsPerPage = recordsPerPage,
-				Records = jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()
+				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : []) ?? []
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
@@ -1243,7 +1245,7 @@ namespace ZoomNet
 			{
 				NextPageToken = nextPageToken,
 				RecordsPerPage = recordsPerPage,
-				Records = jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()
+				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : []) ?? []
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
@@ -1264,8 +1266,8 @@ namespace ZoomNet
 			var rootElement = await httpContent.AsJson(null, false, cancellationToken).ConfigureAwait(false);
 
 			// Get the various metadata properties
-			var from = DateTime.ParseExact(rootElement.GetPropertyValue("from", string.Empty), "yyyy-MM-dd", CultureInfo.InvariantCulture);
-			var to = DateTime.ParseExact(rootElement.GetPropertyValue("to", string.Empty), "yyyy-MM-dd", CultureInfo.InvariantCulture);
+			var from = DateOnly.FromDateTime(DateTime.Parse(rootElement.GetPropertyValue("from", string.Empty)));
+			var to = DateOnly.FromDateTime(DateTime.Parse(rootElement.GetPropertyValue("to", string.Empty)));
 			var nextPageToken = rootElement.GetPropertyValue("next_page_token", string.Empty);
 			var recordsPerPage = rootElement.GetPropertyValue("page_size", 0);
 			var totalRecords = rootElement.GetPropertyValue("total_records", (int?)null);
@@ -1285,7 +1287,7 @@ namespace ZoomNet
 				To = to,
 				NextPageToken = nextPageToken,
 				RecordsPerPage = recordsPerPage,
-				Records = jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()
+				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : []) ?? []
 			};
 			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
@@ -1312,7 +1314,7 @@ namespace ZoomNet
 			var result = new PaginatedSyncResponse<T>()
 			{
 				SyncToken = syncToken,
-				Records = jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : Array.Empty<T>()
+				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : []) ?? []
 			};
 
 			return result;
@@ -1360,7 +1362,7 @@ namespace ZoomNet
 					.GetMethod(nameof(GetElementValue), BindingFlags.Static | BindingFlags.NonPublic)
 					.MakeGenericMethod(underlyingType);
 
-				return (T)getElementValue.Invoke(null, new object[] { property.Value });
+				return (T)getElementValue.Invoke(null, [property.Value]);
 			}
 
 			if (typeOfT.IsArray)
@@ -1372,14 +1374,17 @@ namespace ZoomNet
 					.GetMethod(nameof(GetElementValue), BindingFlags.Static | BindingFlags.NonPublic)
 					.MakeGenericMethod(elementType);
 
-				var arrayList = new ArrayList(property.Value.GetArrayLength());
-				foreach (var arrayElement in property.Value.EnumerateArray())
+				var elementValues = property.Value.EnumerateArray()
+					.Select(arrayElement => getElementValue.Invoke(null, [arrayElement]))
+					.ToArray();
+
+				var resultArray = Array.CreateInstance(elementType, elementValues.Length);
+				for (int i = 0; i < elementValues.Length; i++)
 				{
-					var elementValue = getElementValue.Invoke(null, new object[] { arrayElement });
-					arrayList.Add(elementValue);
+					resultArray.SetValue(elementValues[i], i);
 				}
 
-				return (T)Convert.ChangeType(arrayList.ToArray(elementType), typeof(T));
+				return (T)Convert.ChangeType(resultArray, typeof(T));
 			}
 
 			return property.Value.GetElementValue<T>();

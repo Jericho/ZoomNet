@@ -25,7 +25,7 @@ namespace ZoomNet.Resources
 		public Task<PastMeeting> GetAsync(string meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.GetAsync($"past_meetings/{meetingId}")
+				.GetAsync($"past_meetings/{Utils.EncodeUUID(meetingId)}")
 				.WithCancellationToken(cancellationToken)
 				.AsObject<PastMeeting>();
 		}
@@ -36,7 +36,7 @@ namespace ZoomNet.Resources
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
-				.GetAsync($"past_meetings/{meetingId}/participants")
+				.GetAsync($"past_meetings/{Utils.EncodeUUID(meetingId)}/participants")
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)

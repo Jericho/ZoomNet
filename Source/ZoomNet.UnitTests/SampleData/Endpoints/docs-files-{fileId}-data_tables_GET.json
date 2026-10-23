@@ -1,0 +1,17 @@
+{
+  "data_tables": [
+    {
+      "data_table_id": "6108696fe9b44dc3a2675a448ab0c338",
+      "name": "Project tracker",
+      "is_synced": false,
+      "related_table": {
+        "file_id": "Fk0XWCWSTJqgTDcxbAKLfQ",
+        "data_table_id": "c7628bc10b5a458cb7b4af3747cbf32d"
+      },
+      "integration": {
+        "marketplace_app_id": "wc9NSSgESB-qLJed0RSZjQ",
+        "integration_type": "jira"
+      }
+    }
+  ]
+}

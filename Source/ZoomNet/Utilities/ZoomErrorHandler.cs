@@ -1,5 +1,6 @@
 using Pathoschild.Http.Client;
 using Pathoschild.Http.Client.Extensibility;
+using System;
 using System.Net;
 
 namespace ZoomNet.Utilities
@@ -13,28 +14,34 @@ namespace ZoomNet.Utilities
 		private const string DEFAULT_HTTP_200_EXCEPTION_MESSAGE = "The Zoom API returned a status code that indicates that your request was unseccessful, without providing an explanation. Typically this means that you either lack the necessary permissions or that a paid account is required and you have a free account.";
 
 		/// <summary>
-		/// Gets or sets a value indicating whether HTTP 200 returned by the Zoom API should be treated as a failure.
+		/// Gets a reference to the diagnostic store.
+		/// </summary>
+		public IDiagnosticStore DiagnosticStore { get; }
+
+		/// <summary>
+		/// Gets a value indicating whether HTTP 200 returned by the Zoom API should be treated as a failure.
 		/// </summary>
 		/// <remarks>
 		/// As incredible as it sounds, Zoom sometimes uses HTTP 200 to indicate that a particular request has failed.
 		/// One such example is when you attempt to update a webinar but your account does not have a Webinar subscription plan. See the <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/webinars/webinarupdate#responses">'Responses' section in the documentation about updating a webinar</a>.
 		/// Another example is when you attempt to create a role but you do not have the permission to do so. See the <a href="https://marketplace.zoom.us/docs/api-reference/zoom-api/roles/createrole#responses">'Responses' section in the documentation about creating a role</a>.
 		/// </remarks>
-		public bool TreatHttp200AsException { get; set; }
+		public bool TreatHttp200AsException { get; }
 
 		/// <summary>
-		/// Gets or sets a custom error message used when the Zom API returns a HTTP 200 status code that is treated as a failure.
+		/// Gets a custom error message used when the Zoom API returns a HTTP 200 status code that is treated as a failure.
 		/// </summary>
 		/// <remarks>
 		/// A generic message is used if you do not provide your own custom message.
 		/// </remarks>
-		public string CustomHttp200ExceptionMessage { get; set; }
+		public string CustomHttp200ExceptionMessage { get; }
 
-		public ZoomErrorHandler()
-			: this(false, null) { }
+		public ZoomErrorHandler(IDiagnosticStore diagnosticStore)
+			: this(diagnosticStore, false, null) { }
 
-		public ZoomErrorHandler(bool treatHttp200AsException, string customHttp200ExceptionMessage)
+		public ZoomErrorHandler(IDiagnosticStore diagnosticStore, bool treatHttp200AsException, string customHttp200ExceptionMessage)
 		{
+			DiagnosticStore = diagnosticStore ?? throw new ArgumentNullException(nameof(diagnosticStore));
 			TreatHttp200AsException = treatHttp200AsException;
 			CustomHttp200ExceptionMessage = customHttp200ExceptionMessage;
 		}
@@ -53,7 +60,13 @@ namespace ZoomNet.Utilities
 			var (isError, errorMessage, errorCode) = response.Message.GetErrorMessageAsync().GetAwaiter().GetResult();
 			if (!isError) return;
 
-			var diagnosticLog = response.GetDiagnosticInfo()?.GetFormattedLog() ?? "Diagnostic log unavailable";
+			var diagnosticLog = "Diagnostic log unavailable";
+			var diagnosticId = response.Message.Headers.GetValue(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME);
+			if (string.IsNullOrEmpty(diagnosticId)) diagnosticId = response.Message.RequestMessage.Headers.GetValue(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME);
+			if (!string.IsNullOrEmpty(diagnosticId) && DiagnosticStore.TryGetValue(diagnosticId, out var diagnosticInfo))
+			{
+				diagnosticLog = diagnosticInfo.GetFormattedLog();
+			}
 
 			if (TreatHttp200AsException && response.Status == HttpStatusCode.OK)
 			{

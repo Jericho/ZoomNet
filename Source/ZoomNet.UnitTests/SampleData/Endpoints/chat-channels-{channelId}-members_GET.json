@@ -1,0 +1,17 @@
+{
+  "members": [
+    {
+      "email": "jchill@example.com",
+      "first_name": "Jill",
+      "id": "6dfgdfgdg444447b0egga",
+      "member_id": "R4VM29Oj0fVM2hhEmSKVM2hhezJTezJTKVM2hezJT2hezJTSK",
+      "last_name": "Chill",
+      "name": "Jill Chill",
+      "role": "admin",
+      "is_external": true
+    }
+  ],
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 10,
+  "total_records": 1
+}

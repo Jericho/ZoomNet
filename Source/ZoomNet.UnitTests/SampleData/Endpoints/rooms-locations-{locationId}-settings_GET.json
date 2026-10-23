@@ -1,0 +1,111 @@
+{
+  "meeting_security": {
+    "encryption_type": "e2ee",
+    "end_to_end_encrypted_meetings": true,
+    "auto_security": true
+  },
+  "zoom_rooms": {
+    "allow_multiple_content_sharing": true,
+    "audio_device_daily_auto_test": true,
+    "auto_accept_incoming_call_and_fecc": true,
+    "auto_direct_sharing": true,
+    "auto_start_scheduled_meeting": true,
+    "auto_stop_scheduled_meeting": true,
+    "count_attendees_number_in_room": true,
+    "display_feedback_survey": true,
+    "display_meeting_list": true,
+    "display_top_banner": true,
+    "encrypt_shared_screen_content": true,
+    "hide_id_for_private_meeting": true,
+    "hide_self_view": true,
+    "lock_speaker_volume_control": true,
+    "send_whiteboard_to_internal_contact_only": true,
+    "show_alert_before_meeting": true,
+    "show_call_history_in_room": true,
+    "show_contact_list_on_controller": true,
+    "show_non_video_participants": true,
+    "start_airplay_manually": true,
+    "start_airplay_mirroring": true,
+    "start_hdmi_content_share_manualy": true,
+    "support_join_3rd_party_meeting": true,
+    "transform_meeting_to_private": true,
+    "upcoming_meeting_alert": true,
+    "voice_commands": true,
+    "weekly_system_restart": true,
+    "incoming_meeting_request": {
+      "automatically_accept_incoming_meeting_request": true,
+      "automatically_unmute": true
+    },
+    "automatically_accept_far_end_camera_control_request": true
+  },
+  "client_alert": {
+    "detect_bluetooth_microphone_error_alert": true,
+    "detect_bluetooth_speaker_error_alert": true,
+    "detect_camera_error_alert": true,
+    "detect_microphone_error_alert": true,
+    "detect_speaker_error_alert": true,
+    "cpu_usage_high_detected_notification_on_zr_display": true,
+    "network_unstable_detected_notification_on_zr_display": true
+  },
+  "digital_signage": {
+    "banner": {
+      "banner_room_name": true,
+      "banner_sharing_key": true,
+      "banner_time": true
+    },
+    "display_period": {
+      "start_displaying_content": 1,
+      "stop_displaying_content": 1
+    },
+    "enable_digital_signage": true,
+    "layout": "standard",
+    "mute": true,
+    "play_list": [
+      {
+        "action": "update",
+        "contents": [
+          {
+            "content_id": "blKfsfQ-QSW7V_LPjZrIdg",
+            "duration": 65,
+            "id": "qMOLddnySIGGVycz8aX_JQ",
+            "name": "content name",
+            "order": 1
+          }
+        ],
+        "end_time": "2021-03-18T05:41:36Z",
+        "id": "blKfsfQ-QSW7V_LPjZrIdg",
+        "name": "content name",
+        "start_time": "2021-03-18T05:41:36Z"
+      }
+    ]
+  },
+  "notification": {
+    "audio_meet_usability_threshold": true,
+    "audio_not_meet_usability_threshold": true,
+    "battery_is_charging": true,
+    "battery_low_and_not_charging": true,
+    "battery_percentage": "90",
+    "controller_scheduling_disconnected": true,
+    "controller_scheduling_reconnected": true,
+    "cpu_usage_high_detected": true,
+    "mic_speaker_camera_disconnected": true,
+    "mic_speaker_camera_reconnected": true,
+    "network_unstable_detected": true,
+    "sip_registration_failed": true,
+    "sip_registration_re_enabled": true,
+    "zoom_room_come_back_online": true,
+    "zoom_room_display_disconnected": true,
+    "zoom_room_offline": true
+  },
+  "scheduling_display": {
+    "instant_room_reservation": true,
+    "reserve_other_rooms": {
+      "allow_to_reserve_other_rooms": true,
+      "location_types": "floor"
+    },
+    "set_scheduling_display_background_image_to_zoom_room_background": true,
+    "home_screen_theme": "compact",
+    "home_screen_qr_code_url": "https://example.com",
+    "home_screen_qr_code_supporting_text": "Scan to reserve"
+  }
+}
