@@ -1,4 +1,5 @@
 using System.Runtime.Serialization;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.Models;
 
@@ -129,6 +130,7 @@ public enum ReportPhoneOperationsLogType
 
 	/// <summary>Phone number.</summary>
 	[EnumMember(Value = "phone_number")]
+	[MultipleValuesEnumMember(DefaultValue = "phone_number", OtherValues = ["Phone Number"])]
 	PhoneNumber,
 
 	/// <summary>Policy.</summary>
