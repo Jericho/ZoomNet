@@ -1,0 +1,34 @@
+{
+  "next_page_token": "At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2",
+  "page_size": 30,
+  "workspaces": [
+    {
+      "id": "qMOLddnySIGGVycz8aX_JQ",
+      "workspace_status": "free",
+      "workspace_name": "My Room",
+      "workspace_type": "desk",
+      "location_id": "49D7a0xPQvGQ2DCMZgSe7w",
+      "capacity": "30",
+      "construction_status": true,
+      "room_images": [
+        "https://image.url"
+      ],
+      "requires_approval": true,
+      "available": true,
+      "reserve_permission": true,
+      "asset_ids": [
+        "acf7a8844f35426bb993b3db2c0501dd"
+      ],
+      "max_reserve_duration": 8,
+      "point_coordinate_x": 721.614983,
+      "point_coordinate_y": 405.104484,
+      "point_coordinate_radius": 17,
+      "polygon_coordinates": [
+        {
+          "polygon_coordinate_x": 233.22,
+          "polygon_coordinate_y": 347.12
+        }
+      ]
+    }
+  ]
+}

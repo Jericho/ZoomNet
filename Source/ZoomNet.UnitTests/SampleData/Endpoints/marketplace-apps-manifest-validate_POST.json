@@ -1,0 +1,10 @@
+{
+  "ok": false,
+  "error": "invalid_manifest",
+  "errors": [
+    {
+      "message": "Event Subscription requires either Request URL or Socket Mode Enabled",
+      "setting": "/settings/event_subscriptions"
+    }
+  ]
+}

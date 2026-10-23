@@ -1,0 +1,21 @@
+{
+  "id": "qLZ4vXb8RAydayOR5ckYMg",
+  "display_name": "testGCP",
+  "extension_id": "mLG45gHYSVaeVVc64gp1jQ",
+  "extension_number": 10002,
+  "description": "test",
+  "delay": 5,
+  "member_count": 1,
+  "cost_center": "test",
+  "department": "test",
+  "site": {
+    "id": "8f71O6rWT8KFUGQmJIFAdQ",
+    "name": "testGCPSite"
+  },
+  "play_incoming_calls_sound": {
+    "enable": true,
+    "ring_tone": "ringtone_1",
+    "duration": 0
+  },
+  "directed_call_pickup": true
+}

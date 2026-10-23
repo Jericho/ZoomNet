@@ -1,0 +1,10 @@
+{
+  "total_records": 1,
+  "next_page_token": "oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2",
+  "attendees": [
+    {
+      "email": "email@zoom.us",
+      "authentication_method": "no_auth"
+    }
+  ]
+}

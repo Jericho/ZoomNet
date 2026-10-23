@@ -1,0 +1,118 @@
+{
+  "config_id": "default",
+  "default_license": {
+    "license_assignment": "zoom_workplace",
+    "license_type": "none",
+    "subscription": "2025 Subscription"
+  },
+  "basic": {
+    "email_address": {
+      "enabled": true,
+      "attribute_name": "NameID"
+    },
+    "first_name": {
+      "enabled": true,
+      "attribute_name": "givenName",
+      "update_at_each_login": true
+    },
+    "last_name": {
+      "enabled": true,
+      "attribute_name": "sn",
+      "update_at_each_login": true
+    },
+    "display_name": {
+      "enabled": true,
+      "attribute_name": "displayName",
+      "update_at_each_login": true,
+      "prevent_editing_for_sso_users": false
+    },
+    "pronouns": {
+      "enabled": true,
+      "attribute_name": "pronouns",
+      "update_at_each_login": true,
+      "prevent_editing_for_sso_users": false
+    },
+    "phone": {
+      "enabled": true,
+      "attribute_name": "telephoneNumber",
+      "update_at_each_login": true
+    },
+    "mobile": {
+      "enabled": true,
+      "attribute_name": "mobile"
+    },
+    "office": {
+      "enabled": true,
+      "attribute_name": "officePhone"
+    },
+    "home": {
+      "enabled": true,
+      "attribute_name": "homePhone"
+    },
+    "fax": {
+      "enabled": true,
+      "attribute_name": "facsimileTelephoneNumber"
+    },
+    "company": {
+      "enabled": true,
+      "attribute_name": "company",
+      "prevent_editing_for_sso_users": false
+    },
+    "manager": {
+      "enabled": true,
+      "attribute_name": "manager"
+    },
+    "job_title": {
+      "enabled": true,
+      "attribute_name": "title",
+      "prevent_editing_for_sso_users": false
+    },
+    "location": {
+      "enabled": true,
+      "attribute_name": "streetAddress",
+      "prevent_editing_for_sso_users": false
+    },
+    "profile_picture": {
+      "enabled": true,
+      "attribute_name": "photoUrl"
+    },
+    "personal_link_name": {
+      "enabled": true,
+      "attribute_name": "vanityName",
+      "update_at_each_login": true
+    },
+    "department": {
+      "enabled": true,
+      "attribute_name": "department",
+      "prevent_editing_for_sso_users": false
+    },
+    "cost_center": {
+      "enabled": true,
+      "attribute_name": "costCenter"
+    },
+    "kaltura_user_id": {
+      "enabled": true,
+      "attribute_name": "cmsUserId"
+    },
+    "zoom_phone_ext_number": {
+      "enabled": true,
+      "attribute_name": "extensionNumber"
+    },
+    "zoom_phone_number": {
+      "enabled": true,
+      "attribute_name": "zoomPhoneNumber"
+    },
+    "employee_unique_id": {
+      "enabled": true,
+      "attribute_name": "employeeNumber"
+    },
+    "zra_region": {
+      "enabled": true,
+      "attribute_name": "revenueAcceleratorRegion"
+    },
+    "zra_segment": {
+      "enabled": true,
+      "attribute_name": "revenueAcceleratorSegment"
+    }
+  }
+}

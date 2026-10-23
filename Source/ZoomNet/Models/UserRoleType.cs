@@ -2,9 +2,7 @@ using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the user role type.
-	/// </summary>
+	/// <summary>Enumeration to indicate the user role type.</summary>
 	public enum UserRoleType
 	{
 		/// <summary>Host.</summary>

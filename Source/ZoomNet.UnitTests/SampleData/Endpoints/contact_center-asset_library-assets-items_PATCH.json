@@ -1,0 +1,18 @@
+{
+  "succeeded_assets": [
+    {
+      "asset_id": "WkdWelkzSnBjSEZwYjI0PQ11",
+      "asset_name": "asset name",
+      "asset_item_language": "en-US"
+    }
+  ],
+  "failed_assets": [
+    {
+      "asset_id": "WkdWelkzSnBjSEZwYjI0PQ11",
+      "asset_name": "asset name",
+      "asset_item_language": "en-US",
+      "error_code": 10026,
+      "error_message": "Asset item not found."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "Label_10",
+  "name": "MyVacation",
+  "parentId": "Label_0",
+  "labelLevel": 2,
+  "messageListVisibilitystring": "show",
+  "labelListVisibility": "labelShow",
+  "color": {
+    "textColor": "#000000",
+    "backgroundColor": "#cccccc"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "result": {
+    "invitation_id": "feYLmdxtQsqX3kx08ZqxOQ",
+    "address": "New York",
+    "details": "Notice items",
+    "start_time": "2021-03-18T05:41:36Z",
+    "host_email": "kim.luo@zoom.us",
+    "host_name": "Kim Luo",
+    "invite_location_id": "FCTDHSgLTDGbeUY0VOXq0A",
+    "office_name": "test-carl-JA01",
+    "visitor_photo_url": "https://file.zoomdev.us/file/cFRTpF9IRICHDQZpi5wGcg?business=zr\u0026jwt=eyJ6bV9za20iOiJ6bV9vMm0iLCJ0eXAiOiJKV1QiLCJrIjoiS3F3RGs4UHIiLCJhbGciOiJFUzI1NiJ9.eyJhdWQiOiJ6ZnMiLCJ0b2tlbklkIjoiYTBqUS1ROTVUTm1DLWEzOE5ialduQSIsImFwcE5hbWUiOiJ6ciIsImlzcyI6InpyIiwicGVybWlzc2lvbiI6IntcImFjdGlvblwiOlwicmVhZFwiLFwiZW50aXR5XCI6e1wiY291bnRcIjowLFwiZmlsZUlkXCI6XCJjRlJUcEY5SVJJQ0hEUVpwaTV3R2NnXCIsXCJtYXhTaXplXCI6MH19IiwiZXhwIjoxNzIzNTE3MTk2LCJ0b2tlblR5cGUiOiJwcmVzaWduVG9rZW4iLCJpYXQiOjE3MjM0MzA3OTZ9.0Uq4fZzTlaKAOL6UDF86N-dOVOAaetlAtwZMHWFenwbHEK5Ps436C4Zy-zGmX9LbaGGkFMyV2P9mbP4oWPXZhg",
+    "check_in_time": "2021-03-18T05:41:36Z",
+    "status": "WAITING_FOR_REGISTRATION",
+    "time_zone": "Asia/Shanghai",
+    "visitor_email": "carl.li@zoom.us",
+    "visitor_name": "Carl Li",
+    "visitor_organization": "Zoom"
+  }
+}

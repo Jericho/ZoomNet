@@ -1,0 +1,13 @@
+{
+  "next_page_token": "nav48KOj42vYPSG4f0cCdT575bZ980did22",
+  "page_size": 30,
+  "templates": [
+    {
+      "description": "Main site user template",
+      "id": "2kFqiqSlS5udzWB5QqMiNg",
+      "name": "user_template",
+      "type": "user"
+    }
+  ],
+  "total_records": 2
+}

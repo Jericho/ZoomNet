@@ -15,17 +15,18 @@ namespace ZoomNet.Json
 			{
 				case JsonTokenType.None:
 				case JsonTokenType.Null:
-				case JsonTokenType.String when string.IsNullOrEmpty(reader.GetString()):
 					throw new JsonException("Unable to convert a null value to DateOnly");
 
 				case JsonTokenType.String:
 					var rawValue = reader.GetString();
+					if (string.IsNullOrEmpty(rawValue)) throw new JsonException("Unable to convert an empty string to DateOnly");
+
 					var parts = rawValue.Split('-');
-					if (parts.Length != 3) throw new JsonException($"Unable to convert {rawValue} to DateOnly");
+					if (parts.Length != 3) throw new JsonException($"Unable to convert '{rawValue}' to DateOnly");
 					return (int.Parse(parts[0]), int.Parse(parts[1]), int.Parse(parts[2]));
 
 				default:
-					throw new JsonException($"Unable to convert {reader.TokenType.ToEnumString()} to DateOnly");
+					throw new JsonException($"Unable to convert {reader.TokenType.ToString()} to DateOnly");
 			}
 		}
 

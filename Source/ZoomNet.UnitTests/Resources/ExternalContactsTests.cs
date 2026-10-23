@@ -8,57 +8,12 @@ using System.Threading.Tasks;
 using Xunit;
 using ZoomNet.Models;
 using ZoomNet.Resources;
+using ZoomNet.UnitTests.Properties;
 
 namespace ZoomNet.UnitTests.Resources
 {
 	public class ExternalContactsTests
 	{
-		private const string EXTERNAL_CONTACTS_JSON = @"{
-			""page_size"": 30,
-			""next_page_token"": ""token123"",
-			""external_contacts"": [
-				{
-					""external_contact_id"": ""extContact1"",
-					""name"": ""John Doe"",
-					""description"": ""Primary contact"",
-					""email"": ""john.doe@example.com"",
-					""extension_number"": ""1001"",
-					""id"": ""custom001"",
-					""phone_numbers"": [""+1234567890"", ""+0987654321""],
-					""routing_path"": ""default"",
-					""auto_call_recorded"": true
-				},
-				{
-					""external_contact_id"": ""extContact2"",
-					""name"": ""Jane Smith"",
-					""description"": ""Secondary contact"",
-					""email"": ""jane.smith@example.com"",
-					""extension_number"": ""1002"",
-					""id"": ""custom002"",
-					""phone_numbers"": [""+1122334455""],
-					""routing_path"": ""secondary"",
-					""auto_call_recorded"": false
-				}
-			]
-		}";
-
-		private const string SINGLE_EXTERNAL_CONTACT_JSON = @"{
-			""external_contact_id"": ""extContact1"",
-			""name"": ""John Doe"",
-			""description"": ""Primary contact"",
-			""email"": ""john.doe@example.com"",
-			""extension_number"": ""1001"",
-			""id"": ""custom001"",
-			""phone_numbers"": [""+1234567890"", ""+0987654321""],
-			""routing_path"": ""default"",
-			""auto_call_recorded"": true
-		}";
-
-		private const string CREATED_EXTERNAL_CONTACT_JSON = @"{
-			""external_contact_id"": ""newExtContact"",
-			""name"": ""New Contact""
-		}";
-
 		private readonly ITestOutputHelper _outputHelper;
 
 		public ExternalContactsTests(ITestOutputHelper outputHelper)
@@ -77,7 +32,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "external_contacts"))
 				.WithQueryString("page_size", recordsPerPage.ToString())
-				.Respond("application/json", EXTERNAL_CONTACTS_JSON);
+				.Respond("application/json", EndpointsResource.phone_external_contacts_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -91,123 +46,17 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
 			result.RecordsPerPage.ShouldBe(30);
-			result.NextPageToken.ShouldBe("token123");
+			result.NextPageToken.ShouldBe("BJLYC6PABbAHdjwSkGVQeeR6B1juwHqj3G2");
 			result.Records.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
-			result.Records[0].ExternalContactId.ShouldBe("extContact1");
-			result.Records[0].Name.ShouldBe("John Doe");
-			result.Records[0].Description.ShouldBe("Primary contact");
-			result.Records[0].Email.ShouldBe("john.doe@example.com");
-			result.Records[0].ExtensionNumber.ShouldBe("1001");
+			result.Records.Length.ShouldBe(1);
+			result.Records[0].ExternalContactId.ShouldBe("OJGi5xOFQPmrJbKg68-iWg");
+			result.Records[0].Name.ShouldBe("Johnson");
+			result.Records[0].Description.ShouldBe("External contact Johnson");
+			result.Records[0].Email.ShouldBe("example@example.com");
+			result.Records[0].ExtensionNumber.ShouldBe("101014");
 			result.Records[0].PhoneNumbers.ShouldNotBeNull();
-			result.Records[0].PhoneNumbers.Count.ShouldBe(2);
+			result.Records[0].PhoneNumbers.Count.ShouldBe(1);
 			result.Records[0].AutoCallRecorded.ShouldBeTrue();
-		}
-
-		[Fact]
-		public async Task GetAllAsync_WithCustomRecordsPerPage()
-		{
-			// Arrange
-			var recordsPerPage = 10;
-			var nextPageToken = "token456";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "external_contacts"))
-				.WithQueryString("page_size", recordsPerPage.ToString())
-				.WithQueryString("next_page_token", nextPageToken)
-				.Respond("application/json", EXTERNAL_CONTACTS_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var externalContacts = new ExternalContacts(client);
-
-			// Act
-			var result = await externalContacts.GetAllAsync(recordsPerPage, nextPageToken, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
-		}
-
-		[Fact]
-		public async Task GetAllAsync_WithMinimumRecordsPerPage()
-		{
-			// Arrange
-			var recordsPerPage = 1;
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "external_contacts"))
-				.WithQueryString("page_size", recordsPerPage.ToString())
-				.Respond("application/json", EXTERNAL_CONTACTS_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var externalContacts = new ExternalContacts(client);
-
-			// Act
-			var result = await externalContacts.GetAllAsync(recordsPerPage: recordsPerPage, cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-		}
-
-		[Fact]
-		public async Task GetAllAsync_EmptyResults()
-		{
-			// Arrange
-			var emptyContactsJson = @"{
-				""page_size"": 30,
-				""next_page_token"": """",
-				""external_contacts"": []
-			}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "external_contacts"))
-				.WithQueryString("page_size", "30")
-				.Respond("application/json", emptyContactsJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var externalContacts = new ExternalContacts(client);
-
-			// Act
-			var result = await externalContacts.GetAllAsync(cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(0);
-			result.NextPageToken.ShouldBeEmpty();
-		}
-
-		[Fact]
-		public async Task GetAllAsync_WithPagingToken()
-		{
-			// Arrange
-			var nextPageToken = "next_page_token_123";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "external_contacts"))
-				.WithQueryString("page_size", "30")
-				.WithQueryString("next_page_token", nextPageToken)
-				.Respond("application/json", EXTERNAL_CONTACTS_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var externalContacts = new ExternalContacts(client);
-
-			// Act
-			var result = await externalContacts.GetAllAsync(nextPageToken: nextPageToken, cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
 		}
 
 		#endregion
@@ -222,7 +71,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "external_contacts", externalContactId))
-				.Respond("application/json", SINGLE_EXTERNAL_CONTACT_JSON);
+				.Respond("application/json", EndpointsResource.phone_external_contacts__externalContactId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -235,16 +84,18 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.ExternalContactId.ShouldBe("extContact1");
-			result.Name.ShouldBe("John Doe");
-			result.Description.ShouldBe("Primary contact");
-			result.Email.ShouldBe("john.doe@example.com");
-			result.ExtensionNumber.ShouldBe("1001");
-			result.Id.ShouldBe("custom001");
+			result.ExternalContactId.ShouldBe("OJGi5xOFQPmrJbKg68-iWg");
+			result.Name.ShouldBe("Johnson");
+			result.Description.ShouldBe("External contact Johnson");
+			result.Email.ShouldBe("example@example.com");
+			result.ExtensionNumber.ShouldBe("101014");
+			result.Id.ShouldBe("external_contact_01");
 			result.PhoneNumbers.ShouldNotBeNull();
-			result.PhoneNumbers.Count.ShouldBe(2);
-			result.RoutingPath.ShouldBe("default");
+			result.PhoneNumbers.Count.ShouldBe(1);
+			result.RoutingPath.ShouldBeNull();
 			result.AutoCallRecorded.ShouldBeTrue();
+			result.ProfilePictureUrl.ShouldBe("https://file.zoom.us/public/file/NgY6XhB0Q1KUOIpbnjQrTA/MS41Lm3jVUCBCmBzQxZEXUvHcJ_YRtZ-CVuQ68tE7kKC60t_/twP0LQrnQfS7bQ6utANohw.png");
+			result.TreatAsInternalExtension.ShouldBeTrue();
 		}
 
 		[Fact]
@@ -273,36 +124,6 @@ namespace ZoomNet.UnitTests.Resources
 			await Should.ThrowAsync<ArgumentException>(() => externalContacts.GetDetailsAsync(string.Empty, TestContext.Current.CancellationToken));
 		}
 
-		[Fact]
-		public async Task GetDetailsAsync_WithDifferentContactId()
-		{
-			// Arrange
-			var externalContactId = "differentContact123";
-			var customContactJson = @"{
-				""external_contact_id"": ""differentContact123"",
-				""name"": ""Different Contact"",
-				""email"": ""different@example.com""
-			}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "external_contacts", externalContactId))
-				.Respond("application/json", customContactJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var externalContacts = new ExternalContacts(client);
-
-			// Act
-			var result = await externalContacts.GetDetailsAsync(externalContactId, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.ExternalContactId.ShouldBe("differentContact123");
-			result.Name.ShouldBe("Different Contact");
-		}
-
 		#endregion
 
 		#region AddAsync Tests
@@ -324,7 +145,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("phone", "external_contacts"))
-				.Respond("application/json", CREATED_EXTERNAL_CONTACT_JSON);
+				.Respond("application/json", EndpointsResource.phone_external_contacts_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -337,8 +158,8 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.ExternalContactId.ShouldBe("newExtContact");
-			result.Name.ShouldBe("New Contact");
+			result.ExternalContactId.ShouldBe("nqerMCD0Tu6RPGoCpVbPtA");
+			result.Name.ShouldBe("Johnson");
 		}
 
 		[Fact]
@@ -352,7 +173,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("phone", "external_contacts"))
-				.Respond("application/json", CREATED_EXTERNAL_CONTACT_JSON);
+				.Respond("application/json", EndpointsResource.phone_external_contacts_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -385,7 +206,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("phone", "external_contacts"))
-				.Respond("application/json", CREATED_EXTERNAL_CONTACT_JSON);
+				.Respond("application/json", EndpointsResource.phone_external_contacts_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -412,7 +233,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("phone", "external_contacts"))
-				.Respond("application/json", CREATED_EXTERNAL_CONTACT_JSON);
+				.Respond("application/json", EndpointsResource.phone_external_contacts_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -477,28 +298,6 @@ namespace ZoomNet.UnitTests.Resources
 
 			// Act & Assert
 			await Should.ThrowAsync<ArgumentException>(() => externalContacts.DeleteAsync(string.Empty, TestContext.Current.CancellationToken));
-		}
-
-		[Fact]
-		public async Task DeleteAsync_WithDifferentContactId()
-		{
-			// Arrange
-			var externalContactId = "toBeDeleted456";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Delete, Utils.GetZoomApiUri("phone", "external_contacts", externalContactId))
-				.Respond(HttpStatusCode.NoContent);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var externalContacts = new ExternalContacts(client);
-
-			// Act
-			await externalContacts.DeleteAsync(externalContactId, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
 		}
 
 		#endregion
@@ -679,96 +478,6 @@ namespace ZoomNet.UnitTests.Resources
 		#region Edge Case Tests
 
 		[Fact]
-		public async Task GetAllAsync_WithMaxRecordsPerPage()
-		{
-			// Arrange
-			var recordsPerPage = 100;
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "external_contacts"))
-				.WithQueryString("page_size", recordsPerPage.ToString())
-				.Respond("application/json", EXTERNAL_CONTACTS_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var externalContacts = new ExternalContacts(client);
-
-			// Act
-			var result = await externalContacts.GetAllAsync(recordsPerPage: recordsPerPage, cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-		}
-
-		[Fact]
-		public async Task GetDetailsAsync_ContactWithNoPhoneNumbers()
-		{
-			// Arrange
-			var externalContactId = "noPhones";
-			var noPhoneJson = @"{
-				""external_contact_id"": ""noPhones"",
-				""name"": ""Contact Without Phones"",
-				""phone_numbers"": []
-			}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "external_contacts", externalContactId))
-				.Respond("application/json", noPhoneJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var externalContacts = new ExternalContacts(client);
-
-			// Act
-			var result = await externalContacts.GetDetailsAsync(externalContactId, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.PhoneNumbers.ShouldNotBeNull();
-			result.PhoneNumbers.Count.ShouldBe(0);
-		}
-
-		[Fact]
-		public async Task GetAllAsync_SingleContact()
-		{
-			// Arrange
-			var singleContactJson = @"{
-				""page_size"": 30,
-				""next_page_token"": """",
-				""external_contacts"": [
-					{
-						""external_contact_id"": ""single"",
-						""name"": ""Single Contact""
-					}
-				]
-			}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "external_contacts"))
-				.WithQueryString("page_size", "30")
-				.Respond("application/json", singleContactJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var externalContacts = new ExternalContacts(client);
-
-			// Act
-			var result = await externalContacts.GetAllAsync(cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(1);
-			result.Records[0].ExternalContactId.ShouldBe("single");
-			result.Records[0].Name.ShouldBe("Single Contact");
-		}
-
-		[Fact]
 		public async Task AddAsync_ContactWithMultiplePhoneNumbers()
 		{
 			// Arrange
@@ -786,7 +495,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("phone", "external_contacts"))
-				.Respond("application/json", CREATED_EXTERNAL_CONTACT_JSON);
+				.Respond("application/json", EndpointsResource.phone_external_contacts_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);

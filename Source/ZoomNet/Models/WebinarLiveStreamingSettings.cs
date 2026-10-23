@@ -2,9 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Webinar live streaming settings.
-	/// </summary>
+	/// <summary>Webinar live streaming settings.</summary>
 	public class WebinarLiveStreamingSettings
 	{
 		/// <summary>Gets or sets the specific instructions to allow your account's meeting hosts to configure a custom live stream.</summary>

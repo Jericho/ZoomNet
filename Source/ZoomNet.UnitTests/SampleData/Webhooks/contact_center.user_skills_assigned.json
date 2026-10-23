@@ -1,0 +1,20 @@
+{
+  "event": "contact_center.user_skills_assigned.",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "Mt6sv4u0TAyPkwgsL2lxiA",
+    "object": {
+      "date_time_ms": "2022-02-15T09:27:15.987Z",
+      "user_id": "giudgf_4576385jsdhfsfsd",
+      "display_name": "John Doe",
+      "user_email": "johndoe@example.com",
+      "role_id": "27302393-4784-11ec-a3cd-122e3e29bb87",
+      "role_name": "Admin",
+      "skills": [
+        {
+          "skill_id": "s0pP7Z_AcR_6xUiAS2SLE1g"
+        }
+      ]
+    }
+  }
+}

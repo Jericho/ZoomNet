@@ -1,0 +1,13 @@
+{
+  "members": [
+    {
+      "display_name": "testUser",
+      "extension_id": "JpjPXizWTz-l35tFRUK3Gg",
+      "extension_number": 10010,
+      "extension_type": "user"
+    }
+  ],
+  "next_page_token": "ICF5K4lVmGG4kyIyGxSfBU2LH4QQG95cn32",
+  "page_size": 30,
+  "total_records": 1
+}

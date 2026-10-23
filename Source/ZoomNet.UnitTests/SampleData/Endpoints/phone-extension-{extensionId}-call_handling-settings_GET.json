@@ -1,0 +1,334 @@
+{
+  "business_hours": [
+    {
+      "settings": {
+        "allow_callers_check_voicemail": true,
+        "allow_members_to_reset": true,
+        "audio_while_connecting": {
+          "id": "qPwtDrrcSua8O0_n0bDRDg",
+          "name": "Default"
+        },
+        "call_distribution": {
+          "handle_multiple_calls": true,
+          "ring_duration": 10,
+          "ring_mode": "simultaneous",
+          "skip_offline_device_phone_number": true
+        },
+        "call_forwarding_settings": [
+          {
+            "description": "testNumber",
+            "enable": true,
+            "id": "qPvrfrrcrf843cdfvbDRDg",
+            "phone_number": "\u002B12058945565",
+            "external_contact": {
+              "name": "Johnson",
+              "email": "example@example.com",
+              "external_contact_id": "OJGi5xOFQPmrJbKg68-iWg",
+              "phone_numbers": [
+                "\u002B12058945656"
+              ]
+            }
+          }
+        ],
+        "call_not_answer_action": 2,
+        "connect_to_operator": true,
+        "custom_hours_settings": [
+          {
+            "from": "09:00",
+            "to": "18:00",
+            "type": 1,
+            "weekday": 5
+          }
+        ],
+        "greeting_prompt": {
+          "id": "0",
+          "name": "test"
+        },
+        "max_call_in_queue": 5,
+        "max_wait_time": 30,
+        "music_on_hold": {
+          "id": "fdsij3he89qj2-23uie",
+          "name": "Default"
+        },
+        "receive_call": true,
+        "require_press_1_before_connecting": true,
+        "ring_mode": "simultaneous",
+        "routing": {
+          "action": 1,
+          "forward_to": {
+            "display_name": "api_ta_test",
+            "extension_id": "jN9mb38lQTaMgxUq3Nd6ow",
+            "extension_number": 101014,
+            "extension_type": "user",
+            "id": "DYHrdpjrS3uaOf7dPkkg8w",
+            "phone_number": "\u002B18889843519",
+            "description": "forward to phone number \u002B18889843519.",
+            "voicemail_greeting": {
+              "id": "b_fFF75hRgCtzG7Dw7wQgQ",
+              "name": "Voicemail greeting"
+            },
+            "zcc_phone_number": "12055903036",
+            "zcc_phone_number_display_name": "Display name - (205) 690-3036(American English)",
+            "partner_contact_center_id": "0Qa7FFTfR0CgzpgwUrcxtQ",
+            "pcc_phone_number_display_name": "Test contact center",
+            "teams_app_id": "wgYRHE6ITJOZmV6DBvoyZw",
+            "teams_voice_app_name": "Test Teams app"
+          },
+          "operator": {
+            "display_name": "user A",
+            "extension_id": "jN9mb38lQTaMgxUq3Nd6ow",
+            "extension_number": 101014,
+            "extension_type": "user",
+            "id": "DYHrdpjrS3uaOf7dPkkg8w"
+          },
+          "connect_to_operator": true,
+          "allow_callers_check_voicemail": true,
+          "voicemail_greeting": {
+            "id": "b_fFF75hRgCtzG7Dw7wQgQ",
+            "name": "Greeting voicemail"
+          },
+          "voicemail_leaving_instruction": {
+            "id": "LxC4hMD8TJeFpwRcB_QWkA",
+            "name": "Voicemail greeting"
+          },
+          "message_greeting": {
+            "id": "di936zivT46YBCt3dr15GQ",
+            "name": "Message greeting"
+          },
+          "require_press_1_before_connecting": true,
+          "overflow_play_callee_voicemail_greeting": true,
+          "play_callee_voicemail_greeting": true,
+          "busy_play_callee_voicemail_greeting": true
+        },
+        "busy_routing": {
+          "action": 1,
+          "forward_to": {
+            "display_name": "api_ta_test",
+            "extension_id": "jN9mb38lQTaMgxUq3Nd6ow",
+            "extension_number": 101014,
+            "extension_type": "user",
+            "id": "DYHrdpjrS3uaOf7dPkkg8w",
+            "phone_number": "\u002B18889843519",
+            "description": "forward to phone number \u002B18889843519.",
+            "voicemail_greeting": {
+              "id": "b_fFF75hRgCtzG7Dw7wQgQ",
+              "name": "Voicemail greeting"
+            }
+          },
+          "operator": {
+            "display_name": "user A",
+            "extension_id": "jN9mb38lQTaMgxUq3Nd6ow",
+            "extension_number": 101014,
+            "extension_type": "user",
+            "id": "DYHrdpjrS3uaOf7dPkkg8w"
+          },
+          "connect_to_operator": true,
+          "allow_callers_check_voicemail": true,
+          "voicemail_greeting": {
+            "id": "b_fFF75hRgCtzG7Dw7wQgQ",
+            "name": "Greeting voicemail"
+          },
+          "voicemail_leaving_instruction": {
+            "id": "LxC4hMD8TJeFpwRcB_QWkA",
+            "name": "Voicemail greeting"
+          },
+          "message_greeting": {
+            "id": "di936zivT46YBCt3dr15GQ",
+            "name": "Message greeting"
+          },
+          "require_press_1_before_connecting": true,
+          "overflow_play_callee_voicemail_greeting": true,
+          "play_callee_voicemail_greeting": true,
+          "busy_play_callee_voicemail_greeting": true
+        },
+        "type": 1,
+        "wrap_up_time": 30
+      },
+      "sub_setting_type": "call_forwarding"
+    }
+  ],
+  "closed_hours": [
+    {
+      "settings": {
+        "allow_callers_check_voicemail": true,
+        "call_forwarding_settings": [
+          {
+            "description": "testDescription",
+            "enable": false,
+            "id": "sd8683_fwh39_F3hfsd",
+            "phone_number": "\u002B12058945583",
+            "external_contact": {
+              "name": "Johnson",
+              "email": "example@example.com",
+              "external_contact_id": "OJGi5xOFQPmrJbKg68-iWg",
+              "phone_numbers": [
+                "\u002B12058945656"
+              ]
+            }
+          }
+        ],
+        "call_not_answer_action": 2,
+        "connect_to_operator": true,
+        "max_wait_time": 30,
+        "require_press_1_before_connecting": true,
+        "ring_mode": "simultaneous",
+        "routing": {
+          "action": 1,
+          "forward_to": {
+            "display_name": "api_ta_test",
+            "extension_id": "jN9mb38lQTaMgxUq3Nd6ow",
+            "extension_number": 101014,
+            "extension_type": "user",
+            "id": "DYHrdpjrS3uaOf7dPkkg8w",
+            "phone_number": "\u002B18889843519",
+            "description": "forward to phone number \u002B18889843519.",
+            "voicemail_greeting": {
+              "id": "b_fFF75hRgCtzG7Dw7wQgQ",
+              "name": "Voicemail greeting"
+            },
+            "zcc_phone_number": "12055903036",
+            "zcc_phone_number_display_name": "Display name - (205) 690-3036(American English)",
+            "partner_contact_center_id": "0Qa7FFTfR0CgzpgwUrcxtQ",
+            "pcc_phone_number_display_name": "Test contact center",
+            "teams_app_id": "wgYRHE6ITJOZmV6DBvoyZw",
+            "teams_voice_app_name": "Test Teams app"
+          },
+          "operator": {
+            "display_name": "user A",
+            "extension_id": "jN9mb38lQTaMgxUq3Nd6ow",
+            "extension_number": 101014,
+            "extension_type": "user",
+            "id": "DYHrdpjrS3uaOf7dPkkg8w"
+          },
+          "connect_to_operator": true,
+          "allow_callers_check_voicemail": true,
+          "voicemail_greeting": {
+            "id": "b_fFF75hRgCtzG7Dw7wQgQ",
+            "name": "Greeting voicemail"
+          },
+          "voicemail_leaving_instruction": {
+            "id": "LxC4hMD8TJeFpwRcB_QWkA",
+            "name": "Voicemail greeting"
+          },
+          "message_greeting": {
+            "id": "di936zivT46YBCt3dr15GQ",
+            "name": "Message greeting"
+          },
+          "require_press_1_before_connecting": true,
+          "overflow_play_callee_voicemail_greeting": true,
+          "play_callee_voicemail_greeting": true,
+          "busy_play_callee_voicemail_greeting": true
+        },
+        "busy_routing": {
+          "action": 1,
+          "forward_to": {
+            "display_name": "api_ta_test",
+            "extension_id": "jN9mb38lQTaMgxUq3Nd6ow",
+            "extension_number": 101014,
+            "extension_type": "user",
+            "id": "DYHrdpjrS3uaOf7dPkkg8w",
+            "phone_number": "\u002B18889843519",
+            "description": "forward to phone number \u002B18889843519.",
+            "voicemail_greeting": {
+              "id": "b_fFF75hRgCtzG7Dw7wQgQ",
+              "name": "Voicemail greeting"
+            }
+          },
+          "operator": {
+            "display_name": "user A",
+            "extension_id": "jN9mb38lQTaMgxUq3Nd6ow",
+            "extension_number": 101014,
+            "extension_type": "user",
+            "id": "DYHrdpjrS3uaOf7dPkkg8w"
+          },
+          "connect_to_operator": true,
+          "allow_callers_check_voicemail": true,
+          "voicemail_greeting": {
+            "id": "b_fFF75hRgCtzG7Dw7wQgQ",
+            "name": "Greeting voicemail"
+          },
+          "voicemail_leaving_instruction": {
+            "id": "LxC4hMD8TJeFpwRcB_QWkA",
+            "name": "Voicemail greeting"
+          },
+          "message_greeting": {
+            "id": "di936zivT46YBCt3dr15GQ",
+            "name": "Message greeting"
+          },
+          "require_press_1_before_connecting": true,
+          "overflow_play_callee_voicemail_greeting": true,
+          "play_callee_voicemail_greeting": true,
+          "busy_play_callee_voicemail_greeting": true
+        }
+      },
+      "sub_setting_type": "call_forwarding"
+    }
+  ],
+  "holiday_hours": [
+    {
+      "details": [
+        {
+          "settings": {
+            "allow_callers_check_voicemail": true,
+            "call_forwarding_settings": [
+              {
+                "description": "testDescription",
+                "enable": false,
+                "id": "dash32943QWfjiofejd",
+                "phone_number": "\u002B12058945583",
+                "external_contact": {
+                  "name": "Johnson",
+                  "email": "example@example.com",
+                  "external_contact_id": "OJGi5xOFQPmrJbKg68-iWg",
+                  "phone_numbers": [
+                    "\u002B12058945656"
+                  ]
+                }
+              }
+            ],
+            "call_not_answer_action": 2,
+            "connect_to_operator": false,
+            "from": "2022-05-01T00:00:00.0000000\u002B00:00",
+            "max_wait_time": 60,
+            "name": "Labor Day",
+            "require_press_1_before_connecting": true,
+            "ring_mode": "sequential",
+            "routing": {
+              "action": 1,
+              "forward_to": {
+                "display_name": "api_ta_test",
+                "extension_id": "jN9mb38lQTaMgxUq3Nd6ow",
+                "extension_number": 101014,
+                "extension_type": "user",
+                "id": "DYHrdpjrS3uaOf7dPkkg8w",
+                "phone_number": "\u002B18889843519",
+                "description": "forward to phone number \u002B18889843519.",
+                "voicemail_greeting": {}
+              },
+              "operator": {
+                "display_name": "user A",
+                "extension_id": "jN9mb38lQTaMgxUq3Nd6ow",
+                "extension_number": 101014,
+                "extension_type": "user",
+                "id": "DYHrdpjrS3uaOf7dPkkg8w"
+              },
+              "connect_to_operator": true,
+              "allow_callers_check_voicemail": true,
+              "voicemail_greeting": {
+                "id": "0",
+                "name": "test"
+              },
+              "require_press_1_before_connecting": true,
+              "overflow_play_callee_voicemail_greeting": true,
+              "play_callee_voicemail_greeting": true,
+              "busy_play_callee_voicemail_greeting": true
+            },
+            "to": "2022-05-05T00:00:00.0000000\u002B00:00"
+          },
+          "sub_setting_type": "call_forwarding"
+        }
+      ],
+      "holiday_id": "ewhu3i9-f3f3-fiohed"
+    }
+  ]
+}

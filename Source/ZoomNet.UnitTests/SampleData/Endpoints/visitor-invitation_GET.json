@@ -1,0 +1,24 @@
+{
+  "next_page_token": "At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2",
+  "page_size": 30,
+  "total_records": 200,
+  "invitations": [
+    {
+      "invitation_id": "feYLmdxtQsqX3kx08ZqxOQ",
+      "address": "New York",
+      "details": "Notice items",
+      "start_time": "2021-04-18T05:41:36Z",
+      "host_email": "example@mail.com",
+      "host_name": "Example host name",
+      "invite_location_id": "FCTDHSgLTDGbeUY0VOXq0A",
+      "office_name": "Example office",
+      "visitor_photo_url": "https://file.zoom.us/file/example-url",
+      "check_in_time": "2021-04-18T05:41:36Z",
+      "status": "WAITING_FOR_REGISTRATION",
+      "time_zone": "Asia/Shanghai",
+      "visitor_email": "jchill@example.com",
+      "visitor_name": "Jill Chill",
+      "visitor_organization": "Zoom"
+    }
+  ]
+}

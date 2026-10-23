@@ -1,0 +1,12 @@
+{
+  "total_records": 30,
+  "collaboration_devices": [
+    {
+      "id": "F1C6E9DF-429E-4FA1-85DA-AC95464F3D18",
+      "device_name": "Test Computer",
+      "room_name": "My Personal Zoom Room",
+      "room_user_id": "HgCQF82ZS5GiQ4x_fCx0MB",
+      "status": "Online"
+    }
+  ]
+}

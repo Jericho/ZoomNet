@@ -1,0 +1,33 @@
+{
+  "total_records": 1,
+  "ticket_types": [
+    {
+      "ticket_type_id": "234kjhg23kl4jhlaksjdh3",
+      "name": "General Admission Ticket",
+      "currency": "USD",
+      "free": true,
+      "price": "0",
+      "quantity": 50,
+      "start_time": "2022-03-24T22:30:00Z",
+      "end_time": "2023-01-01T06:30:00Z",
+      "description": "The description of the ticket type.",
+      "sold_quantity": 35,
+      "sessions": [
+        "ALL"
+      ],
+      "bookmarked_sessions": [
+        "ALL"
+      ],
+      "private_visibility_rules": {
+        "account_restrict": true,
+        "allow_domain_list": [
+          "zoom.us"
+        ],
+        "email_restrict_list": [
+          "example1@email.com"
+        ],
+        "attendance_type": "hybrid"
+      }
+    }
+  ]
+}

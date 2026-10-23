@@ -1,0 +1,20 @@
+{
+  "entry_points": [
+    {
+      "entry_id": "xxxxxxxxxx",
+      "entry_number": "\u002B1209144732",
+      "entry_email": "xxx@example.com",
+      "entry_name": "test entry",
+      "entry_number_type": 2,
+      "entry_number_country_code": "US",
+      "entry_number_area_code": "209",
+      "entry_language": "en-US",
+      "customer_identity_source": "from"
+    }
+  ],
+  "enable_detect_language": true,
+  "channel": "messaging",
+  "channel_source": "web_chat",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
+}

@@ -1,0 +1,17 @@
+{
+  "next_page_token": "8V8HigQkzm2O5r9RUn31D9ZyJHgrmFfbLa2",
+  "page_size": 30,
+  "members": [
+    {
+      "user_id": "KDcuGIm1QgePTO8WbOqwIQ",
+      "member_id": "1vuNwCvcgr1mI8WliW1gUKxoA8lozI4LHqDVoRIjMGaQHINfZWxqVHMilvXM8HGA",
+      "email": "jchill@example.com",
+      "role": "member",
+      "status": "active",
+      "first_name": "Jill",
+      "last_name": "Chill",
+      "display_name": "Jill Chill",
+      "is_external_user": true
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "phone_number_campaign_opt_statuses": [
+    {
+      "consumer_phone_number": "\u002B120944XXXXX",
+      "zoom_phone_user_number": "\u002B120944XXXXX",
+      "opt_status": "opt_out",
+      "opt_in_status": 0,
+      "opt_in_message": "Text START to receive text messages from ZOOM. Message frequency may vary. Message and Data Rates may apply. To end messaging from us, reply with STOP. Reply with HELP for more information."
+    }
+  ]
+}

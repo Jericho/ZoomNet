@@ -1,0 +1,23 @@
+{
+  "device_id": "yfWfRkZ_QPSNGuWKiAGYbQ",
+  "device_name": "ATA Device",
+  "positions": [
+    {
+      "index": 1,
+      "owner_extension_name": "Port owner name",
+      "owner_extension_number": 123,
+      "extension_number": 123,
+      "extension_type": "User",
+      "extension_id": "MjGXQfCxShapaxJDka7",
+      "display_name": "Display name",
+      "phone_number": "\u002B12055437350",
+      "outbound_caller_ids": [
+        {
+          "extension_id": "MjGXQfCxShapaxJDka7",
+          "phone_number": "\u002B12055437350",
+          "usage_type": "Main Company Number"
+        }
+      ]
+    }
+  ]
+}

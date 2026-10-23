@@ -1,4 +1,5 @@
 using Pathoschild.Http.Client;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
@@ -26,7 +27,7 @@ namespace ZoomNet.Resources
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
-				.GetAsync($"past_webinars/{uuid}/absentees")
+				.GetAsync($"past_webinars/{Utils.EncodeUUID(uuid)}/absentees")
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
@@ -74,6 +75,7 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
+		[Obsolete("This method has been deprecated and is no longer supported due to GCM encryption updates for security purposes")]
 		public Task<MeetingFile[]> GetFilesAsync(long webinarId, CancellationToken cancellationToken = default)
 		{
 			return _client

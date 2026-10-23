@@ -1,0 +1,14 @@
+{
+  "group_call_pickup_member": [
+    {
+      "id": "F1r_jMw4SGGljLqKdcMsvw",
+      "display_name": "testGCPUser",
+      "extension_id": "qLZ4vr_jMw4SFUGQmJI",
+      "extension_type": "user",
+      "extension_number": 10001
+    }
+  ],
+  "next_page_token": "fefeLbe42",
+  "page_size": 30,
+  "total_records": 1
+}

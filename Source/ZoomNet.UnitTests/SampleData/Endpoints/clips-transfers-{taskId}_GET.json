@@ -1,0 +1,9 @@
+{
+  "status": "FAILED",
+  "transfer_type": "PARTIAL_TRANSFER",
+  "source_owner_user_id": "user_123",
+  "target_owner_user_id": "user_234",
+  "clip_id_list": [
+    "clip_id_123"
+  ]
+}

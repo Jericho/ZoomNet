@@ -2,18 +2,16 @@ using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Countries.
-	/// </summary>
+	/// <summary>Countries.</summary>
 	public enum Country
 	{
-		/// <summary>United Arab Emirates.</summary>
-		[EnumMember(Value = "AE")]
-		United_Arab_Emirates,
-
 		/// <summary>Andorra.</summary>
 		[EnumMember(Value = "AD")]
 		Andorra,
+
+		/// <summary>United Arab Emirates.</summary>
+		[EnumMember(Value = "AE")]
+		United_Arab_Emirates,
 
 		/// <summary>Afghanistan.</summary>
 		[EnumMember(Value = "AF")]

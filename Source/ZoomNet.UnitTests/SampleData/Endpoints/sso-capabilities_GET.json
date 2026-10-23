@@ -1,0 +1,12 @@
+{
+  "supported_config_types": [
+    "saml"
+  ],
+  "visibility_required": false,
+  "multiple_configurations_supported": false,
+  "title_required": false,
+  "approved_vanity_urls": [
+    "corp.zoom.us"
+  ],
+  "login_restriction_supported": false
+}

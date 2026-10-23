@@ -1,0 +1,10 @@
+{
+  "status": "SUCCESS",
+  "create_time": "2025-11-05T04:13:40.800Z",
+  "row_processed": 1000,
+  "total_rows": 1000,
+  "import_id": "cmgoyz7mb00002f6obth9ojea",
+  "file_name": "HistoricalData.csv",
+  "timezone": "America/New_York",
+  "imported_by": "3U-_aQo_ROeigseGAQL5_A"
+}

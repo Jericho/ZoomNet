@@ -1,0 +1,58 @@
+{
+  "attendees": [
+    {
+      "additionalGuests": 0,
+      "displayName": "Mark Joe",
+      "email": "mark.joe@zoom.com",
+      "optional": false,
+      "resource": false,
+      "responseStatus": "needsAction"
+    }
+  ],
+  "colorId": "5",
+  "created": "2020-01-01T00:00:00Z",
+  "creator": {
+    "email": "mark.joe@zoom.com"
+  },
+  "description": "event description",
+  "end": {
+    "date": "2020-01-01",
+    "dateTime": "2020-01-01T00:00:00Z",
+    "timeZone": "America/Los_Angeles"
+  },
+  "etag": "\u0022123456789\u0022",
+  "eventType": "default",
+  "guestsCanInviteOthers": true,
+  "guestsCanModify": false,
+  "guestsCanSeeOtherGuests": true,
+  "iCalUID": "abc@zoom.us",
+  "id": "0lyk1qjjd8t8thnf5y1f02a6c0",
+  "kind": "calendar#event",
+  "location": "San Jose",
+  "organizer": {
+    "email": "mark.joe@zoom.com"
+  },
+  "recurrence": [
+    "RRULE:FREQ=DAILY;COUNT=2;INTERVAL=3"
+  ],
+  "reminders": {
+    "useDefault": false,
+    "overrides": [
+      {
+        "method": "email",
+        "minutes": 5
+      }
+    ]
+  },
+  "sequence": 1,
+  "start": {
+    "timeZone": "America/Los_Angeles",
+    "date": "2020-01-01",
+    "dateTime": "2020-01-01T00:00:00.0000000\u002B00:00"
+  },
+  "status": "confirmed",
+  "summary": "event title",
+  "transparency": "transparent",
+  "visibility": "default",
+  "updated": "2020-01-01T00:00:00Z"
+}

@@ -1,0 +1,11 @@
+{
+  "kind": "calendar#settings",
+  "etag": "\u002200000000000000000000\u0022",
+  "nextPageToken": "displaySecondaryTimezone",
+  "items": [
+    {
+      "id": "autoAddZoomMeeting",
+      "value": "false"
+    }
+  ]
+}

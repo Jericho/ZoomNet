@@ -1,0 +1,13 @@
+{
+  "billing_reports": [
+    {
+      "end_date": "2022-03-25",
+      "id": "indfhgfhfho",
+      "start_date": "2022-03-25",
+      "tax_amount": "456",
+      "total_amount": "456",
+      "type": 1
+    }
+  ],
+  "currency": "USD"
+}

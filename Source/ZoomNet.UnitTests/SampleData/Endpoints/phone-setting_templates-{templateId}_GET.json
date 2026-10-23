@@ -1,0 +1,123 @@
+{
+  "description": "Main site user template",
+  "id": "2kFqiqSlS5udzWB5QqMiNg",
+  "name": "user template",
+  "policy": {
+    "ad_hoc_call_recording": {
+      "enable": true,
+      "recording_start_prompt": true,
+      "recording_transcription": true
+    },
+    "auto_call_recording": {
+      "enable": true,
+      "recording_calls": "inbound",
+      "recording_start_prompt": true,
+      "recording_transcription": true,
+      "inbound_audio_notification": {
+        "recording_start_prompt": true
+      },
+      "outbound_audio_notification": {
+        "recording_start_prompt": true
+      }
+    },
+    "sms": {
+      "enable": true,
+      "international_sms": true
+    },
+    "voicemail": {
+      "allow_transcription": true,
+      "enable": true
+    },
+    "call_forwarding": {
+      "enable": true,
+      "call_forwarding_type": 1
+    },
+    "call_overflow": {
+      "enable": true,
+      "call_overflow_type": 1
+    }
+  },
+  "profile": {
+    "area_code": "1",
+    "country": "US"
+  },
+  "type": "user",
+  "user_settings": {
+    "audio_prompt_language": "en-US",
+    "block_calls_without_caller_id": false,
+    "call_handling": {
+      "business_hours": {
+        "business_hour_action": 50,
+        "connect_to_operator": {
+          "enable": true,
+          "id": "fWOgOALdT1ei4vjXK-QYsA",
+          "type": "user",
+          "external_number": {
+            "number": "\u002B12055433924",
+            "description": "API test forwarding to number"
+          },
+          "play_callee_voicemail_greeting": true,
+          "require_press_1_before_connecting": true,
+          "allow_caller_check_voicemail": true
+        },
+        "busy_action": 50,
+        "busy_connect_operator": {
+          "enable": true,
+          "id": "fWOgOALdT1ei4vjXK-QYsA",
+          "type": "user",
+          "external_number": {
+            "number": "\u002B12055433924",
+            "description": "API test forwarding to number"
+          },
+          "play_callee_voicemail_greeting": true,
+          "require_press_1_before_connecting": true,
+          "allow_caller_check_voicemail": true
+        },
+        "custom_hours": [
+          {
+            "from": "09:00",
+            "to": "18:00",
+            "type": 2,
+            "weekday": 2
+          }
+        ],
+        "ring_type": "simultaneous",
+        "ringing_duration": "15",
+        "type": 2
+      },
+      "close_hours": {
+        "close_hour_action": 50,
+        "connect_to_operator": {
+          "enable": true,
+          "id": "fWOgOALdT1ei4vjXK-QYsA",
+          "type": "user",
+          "external_number": {
+            "number": "\u002B12055433924",
+            "description": "API test forwarding to number"
+          },
+          "play_callee_voicemail_greeting": true,
+          "require_press_1_before_connecting": true,
+          "allow_caller_check_voicemail": true
+        },
+        "busy_action": 50,
+        "busy_connect_operator": {
+          "enable": true,
+          "id": "fWOgOALdT1ei4vjXK-QYsA",
+          "type": "user",
+          "external_number": {
+            "number": "\u002B12055433924",
+            "description": "API test forwarding to number"
+          },
+          "play_callee_voicemail_greeting": true,
+          "require_press_1_before_connecting": true,
+          "allow_caller_check_voicemail": true
+        },
+        "max_wait_time": "30"
+      }
+    },
+    "desk_phone": {
+      "pin_code": "0995"
+    },
+    "hold_music": "default"
+  }
+}

@@ -132,13 +132,37 @@ namespace ZoomNet.UnitTests.Json
 			lambda.ShouldThrowWithMessage<JsonException>("Unable to convert a null value into a boolean value");
 		}
 
+		[Theory]
+		[InlineData("true", true)]
+		[InlineData("1", true)]
+		[InlineData("false", false)]
+		[InlineData("0", false)]
+		public void Can_read_some_strings(string stringValue, bool expected)
+		{
+			// Arrange
+			var json = $"\"{stringValue}\"";
+			var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(json);
+			var jsonReader = new Utf8JsonReader(jsonUtf8);
+			var objectType = (Type)null;
+			var options = new JsonSerializerOptions();
+
+			var converter = new BooleanConverter();
+
+			// Act
+			jsonReader.Read();
+			var result = converter.Read(ref jsonReader, objectType, options);
+
+			// Assert
+			result.ShouldBe(expected);
+		}
+
 		[Fact]
-		public void Read_Throws_WhenString()
+		public void Read_Throws_When_Unknown_String()
 		{
 			Action lambda = () =>
 			{
 				// Arrange
-				var json = "\"Strings are not handled by our boolean converter\"";
+				var json = "\"bogus_value\"";
 				var jsonUtf8 = (ReadOnlySpan<byte>)Encoding.UTF8.GetBytes(json);
 				var jsonReader = new Utf8JsonReader(jsonUtf8);
 				var objectType = (Type)null;
@@ -152,7 +176,7 @@ namespace ZoomNet.UnitTests.Json
 			};
 
 			// Assert
-			lambda.ShouldThrowWithMessage<JsonException>("Unable to convert the content of String JSON node into a boolean value");
+			lambda.ShouldThrowWithMessage<JsonException>("Unable to convert 'bogus_value' into a boolean value");
 		}
 
 		[Fact]

@@ -1,0 +1,33 @@
+{
+  "custom_survey": {
+    "title": "Learn something new",
+    "anonymous": false,
+    "numbered_questions": false,
+    "show_question_type": false,
+    "feedback": "Thank you so much for taking the time to complete the survey. Your feedback really makes a difference.",
+    "questions": [
+      {
+        "name": "How useful was this meeting?",
+        "type": "single",
+        "answer_required": false,
+        "show_as_dropdown": false,
+        "answers": [
+          "Extremely useful"
+        ],
+        "prompts": [
+          {
+            "prompt_question": "How are you?"
+          }
+        ],
+        "answer_min_character": 1,
+        "answer_max_character": 200,
+        "rating_min_value": 1,
+        "rating_max_value": 4,
+        "rating_min_label": "Not likely",
+        "rating_max_label": "Extremely Likely"
+      }
+    ]
+  },
+  "show_in_the_browser": true,
+  "third_party_survey": "https://example.com"
+}

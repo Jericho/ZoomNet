@@ -1,0 +1,13 @@
+{
+  "next_page_token": "zi4JE9iWsGMZ92F9xhnlcZRxl2Fh47qio02",
+  "page_size": 100,
+  "plans": [
+    {
+      "assigned": 10,
+      "available": 10,
+      "subscribed": 20,
+      "name": "US/CA Included Phone Numbers",
+      "is_unlimited": true
+    }
+  ]
+}

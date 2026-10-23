@@ -1,0 +1,62 @@
+{
+  "from": "2023-07-01T00:00:00.0000000\u002B00:00",
+  "to": "2023-07-02T23:59:59.0000000\u002B00:00",
+  "next_page_token": "ngLawmAGlYagy37vLJtKMM4TkMnagfqWm73",
+  "page_size": 10,
+  "total_records": 22,
+  "timezone": "UTC",
+  "engagement_query_details": [
+    {
+      "engagement_id": "NF1kPajwRCGa9-cgHWGAQw",
+      "query_details": [
+        {
+          "query_id": "0b883910-0783-4383-9dcf-b5c9ba315438",
+          "bot_id": "FZOKnPjmTse9ISSvQN4Zjg",
+          "bot_name": "Chatbot",
+          "bot_session_id": "ioknax-4siqztcqwga0xug",
+          "query_time": "2023-07-11T22:17:49.0000000\u002B00:00",
+          "language_code": "en-US",
+          "query_text": "Route 1",
+          "intents": [
+            {
+              "intent_id": "sbyW0BwLTUSKGzDsqcfnCQ",
+              "intent_name": "Contact Support copy",
+              "intent_type": "faq",
+              "accuracy": 0.5,
+              "system_intent": false
+            }
+          ],
+          "articles": [
+            {
+              "article_id": "-0zryh7dTEyY9HADPHm_dA",
+              "article_title": "Can I edit my chat welcome screen?",
+              "article_answer": "Yes, you can customize the following settings for the chat welcome screen.",
+              "article_url": "https://docs.google.com/",
+              "is_helpful": true,
+              "article_score": 0.5,
+              "kb_details": [
+                {
+                  "kb_id": "0zryh7dTEyY9HADPHm_dA",
+                  "kb_name": "default knowledge base",
+                  "kb_groups": [
+                    {
+                      "group_id": "2",
+                      "group_name": "default name"
+                    }
+                  ]
+                }
+              ],
+              "helpful_response": "No Response"
+            }
+          ],
+          "deleted": true,
+          "topic_name": "Check refund status",
+          "agent_id": "jSeZPyVUQamm7WSVZWpExA",
+          "agent_name": "HappyBot Agent",
+          "agent_type": "AI_VOICE",
+          "agent_session_id": "vXd6K1SPSz2WSTz0t3wuRg"
+        }
+      ]
+    }
+  ]
+}

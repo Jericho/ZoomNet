@@ -1,0 +1,37 @@
+{
+  "agent_routing_profile_id": "pkOWR9aiR1WLvyDJCBi06A",
+  "agent_routing_profile_name": "My agent routing profile",
+  "agent_routing_profile_description": "This is the agent routing profile\u0027s description.",
+  "wait_time_agent_in_seconds": 10,
+  "priorities": [
+    {
+      "priority_id": "jyuhjknkjgfkjhh9453fjdlg",
+      "priority_order": 1,
+      "category_type": "skill",
+      "skill_category_id": "skill_category_id",
+      "intent_group_id": "intent_group_id",
+      "skill_category_name": "skill_category_name",
+      "intent_group_name": "intent_group_name",
+      "skill_type": "proficiency",
+      "minimum_proficiency_level": 2,
+      "skill_category_required": true,
+      "intent_group_required": false,
+      "default_skill_id": "sRrl8f3IKQp_LByU08Ibi6g",
+      "default_skill_name": "default_skill__name",
+      "time_step": 10,
+      "backup_skills": [
+        {
+          "backup_skill_id": "sk_OpAInMSpGwbwzkbGz6sQ",
+          "backup_skill_name": "backup_skill_name",
+          "minimum_proficiency_level": 3
+        }
+      ]
+    }
+  ],
+  "time_steps": [
+    10
+  ],
+  "ignore_transferring_skills": false,
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA"
+}

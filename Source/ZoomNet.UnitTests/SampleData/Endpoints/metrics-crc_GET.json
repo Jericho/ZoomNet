@@ -1,0 +1,16 @@
+{
+  "from": "2022-03-01",
+  "to": "2022-03-30",
+  "crc_ports_usage": [
+    {
+      "crc_ports_hour_usage": [
+        {
+          "hour": "00",
+          "max_usage": 0,
+          "total_usage": 0
+        }
+      ],
+      "date_time": "2022-03-01"
+    }
+  ]
+}

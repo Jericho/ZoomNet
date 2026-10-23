@@ -1,0 +1,17 @@
+{
+  "status": "submitted",
+  "quote_reference_id": "QO-3248714941",
+  "quote_date": "2023-10-03",
+  "errors": [
+    {
+      "error_code": "5604",
+      "error_description": "No pricebook exists with given offer_price_list_id."
+    }
+  ],
+  "warnings": [
+    {
+      "error_code": "5604",
+      "error_description": "No pricebook exists with given offer_price_list_id."
+    }
+  ]
+}

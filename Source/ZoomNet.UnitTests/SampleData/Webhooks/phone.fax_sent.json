@@ -1,0 +1,35 @@
+{
+  "event": "phone.fax_sent",
+  "event_ts": 1619155281301,
+  "payload": {
+    "account_id": "Mt6sv4u0TAyPkwgsL2lxiA",
+    "object": {
+      "fax_log_id": "w2cCmMNsRc-pMFhksHrRdQ",
+      "fax_id": "6A2BE84EE494479B9AFA29F4BB8A8EA6",
+      "site_id": "rtZRykrtTmKSWXJeW-xsBg",
+      "site_name": "Main Site",
+      "extension_id": "VLhIp1jHR_Sgu96DLJpjag",
+      "extension_type": "user",
+      "direction": "outbound",
+      "sender_extension_id": "VLhIp1jHR_Sgu96DLJpjag",
+      "sender_extension_type": "user",
+      "sender_extension_number": "123",
+      "sender_name": "Tester 1",
+      "sender_number": "+12092080933",
+      "sender_type": "client",
+      "sender_location": "California",
+      "receiver_extension_id": "iKBkkqgGQV-bEttrhP5T0g",
+      "receiver_extension_type": "user",
+      "receiver_extension_number": "456",
+      "receiver_name": "Tester 2",
+      "receiver_number": "+14085559876",
+      "receiver_type": "client",
+      "receiver_location": "Alabama",
+      "file_id": "bayEy0y9RsadUbuEGrZBYA",
+      "file_pages_count": 6,
+      "status": "sent",
+      "create_time": 1722470400123,
+      "created_at": "2021-10-08T16:12:05Z"
+    }
+  }
+}

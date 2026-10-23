@@ -1,6 +1,7 @@
 using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
@@ -58,7 +59,7 @@ namespace ZoomNet.Resources
 
 			return response
 				.EnumerateArray()
-				.Select(a => (a.GetPropertyValue<string>("email"), a.GetPropertyValue<string>("error_message")))
+				.Select(a => (a.GetPropertyValue<string>("email"), a.GetPropertyValue<string>(["error_message", "message"]))) // documentation says the node is called "message" but I have observed a node called "error_message"
 				.ToArray();
 		}
 
@@ -79,7 +80,7 @@ namespace ZoomNet.Resources
 
 			return response
 				.EnumerateArray()
-				.Select(a => (a.GetPropertyValue<string>("email"), a.GetPropertyValue<string>("error_message")))
+				.Select(a => (a.GetPropertyValue<string>("email"), a.GetPropertyValue<string>(["error_message", "message"]))) // documentation says the node is called "message" but I have observed a node called "error_message"
 				.ToArray();
 		}
 
@@ -229,11 +230,11 @@ namespace ZoomNet.Resources
 			{
 				{ "name", name },
 				{ "is_default", isDefault },
-				{ "authentication_method", authenticationMethod?.ToEnumString() },
+				{ "authentication_method", authenticationMethod },
 				{ "allow_domain_list", allowDomainList?.ToArray() },
 				{ "email_restrict_list", emailRestrictList?.ToArray() },
 				{ "ticket_type_id", ticketTypeId },
-				{ "recurring_registration_option", recurringRegistrationType?.ToEnumString() }
+				{ "recurring_registration_option", recurringRegistrationType }
 			};
 
 			if (emailAuthentication.HasValue || securityCodeVerification.HasValue)
@@ -431,15 +432,15 @@ namespace ZoomNet.Resources
 						{ "end_time", c.End?.ToZoomFormat(TimeZones.UTC) },
 					}).ToArray()
 				},
-				{ "meeting_type", meetingType?.ToEnumString() },
+				{ "meeting_type", meetingType },
 				{ "hub_id", hubId },
-				{ "attendance_type", attendanceType?.ToEnumString() },
-				{ "categories", categories?.Select(c => c.ToEnumString()).ToArray() },
+				{ "attendance_type", attendanceType },
+				{ "categories", categories?.ToArray() },
 				{ "tags", tags?.ToArray() },
 				{ "contact_name", contactName },
 				{ "lobby_start_time", lobbyStart?.ToZoomFormat(TimeZones.UTC) },
 				{ "lobby_end_time", lobbyEnd?.ToZoomFormat(TimeZones.UTC) },
-				{ "blocked_countries", blockedCountries?.Select(bc => bc.ToEnumString()).ToArray() },
+				{ "blocked_countries", blockedCountries?.ToArray() },
 				{ "tagline", tagLine },
 			};
 
@@ -470,13 +471,13 @@ namespace ZoomNet.Resources
 					}).ToArray()
 				},
 				{ "hub_id", hubId },
-				{ "attendance_type", attendanceType?.ToEnumString() },
-				{ "categories", categories?.Select(c => c.ToEnumString()).ToArray() },
+				{ "attendance_type", attendanceType },
+				{ "categories", categories?.ToArray() },
 				{ "tags", tags?.ToArray() },
 				{ "contact_name", contactName },
 				{ "lobby_start_time", lobbyStart?.ToZoomFormat(TimeZones.UTC) },
 				{ "lobby_end_time", lobbyEnd?.ToZoomFormat(TimeZones.UTC) },
-				{ "blocked_countries", blockedCountries?.Select(bc => bc.ToEnumString()).ToArray() },
+				{ "blocked_countries", blockedCountries?.ToArray() },
 				{ "tagline", tagLine },
 			};
 
@@ -514,11 +515,11 @@ namespace ZoomNet.Resources
 				},
 				{ "recurrence", recurrence },
 				{ "hub_id", hubId },
-				{ "attendance_type", attendanceType?.ToEnumString() },
-				{ "categories", categories?.Select(c => c.ToEnumString()).ToArray() },
+				{ "attendance_type", attendanceType },
+				{ "categories", categories?.ToArray() },
 				{ "tags", tags?.ToArray() },
 				{ "contact_name", contactName },
-				{ "blocked_countries", blockedCountries?.Select(bc => bc.ToEnumString()).ToArray() },
+				{ "blocked_countries", blockedCountries?.ToArray() },
 				{ "tagline", tagLine },
 			};
 
@@ -698,6 +699,35 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
+		#endregion
+
+		#region FILES
+
+		/// <inheritdoc/>
+		public Task<string> UploadFileAsync(string hubId, string fileName, Stream fileData, CancellationToken cancellationToken = default)
+		{
+			var request = _client
+				.PostAsync("zoom_events/files")
+				.WithBody(bodyBuilder =>
+				{
+					// The file name must be quoted otherwise the Zoom API returns the following error message: Invalid 'Content-Disposition' in multipart form
+					var content = new MultipartFormDataContent
+					{
+						{ new StreamContent(fileData), "file", $"\"{fileName}\"" },
+						{ new StringContent(hubId), "\"hub_id\"" }
+					};
+
+					return content;
+				})
+				.WithCancellationToken(cancellationToken);
+
+			// There's an easilly overlooked note in this endpoint's documentation that says the base URL is https://fileapi.zoom.us instead of the usual https://api.zoom.us.
+			// If we don't change the base URL, we'll get a "HTTP 404 Not Found" response  with this payload: { "code":64041, "message":"Route Not Found" }
+			request.Message.RequestUri = new UriBuilder("https", "fileapi.zoom.us", 443, request.Message.RequestUri.AbsolutePath).Uri;
+
+			return request.AsObject<string>("file_id");
+		}
+
 		#endregion
 
 		#region HUBS
@@ -1041,7 +1071,7 @@ namespace ZoomNet.Resources
 				{ "description", description },
 				{ "start_time", start?.ToZoomFormat(TimeZones.UTC) }, // For some reason the Zoom API requires the start and end dates to be in UTC format and returns an error message if you format the dates in any other time zone
 				{ "end_time", end?.ToZoomFormat(TimeZones.UTC) },
-				{ "timezone", timeZone?.ToEnumString() },
+				{ "timezone", timeZone },
 				{ "type", (int?)type },
 				{
 					"session_speakers",
@@ -1069,7 +1099,7 @@ namespace ZoomNet.Resources
 				{ "levels", levels?.ToArray() },
 				{ "alternative_hosts", alternativeHosts?.ToArray() },
 				{ "panelists", panelists?.ToArray() },
-				{ "attendance_type", attendanceType?.ToEnumString() },
+				{ "attendance_type", attendanceType },
 				{ "physical_location", physicalLocation },
 			};
 

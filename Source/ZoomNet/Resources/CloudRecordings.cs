@@ -5,10 +5,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Text.Json.Nodes;
 using System.Threading;
 using System.Threading.Tasks;
 using ZoomNet.Models;
+using ZoomNet.Models.Transcription;
 using ZoomNet.Utilities;
 
 namespace ZoomNet.Resources
@@ -29,15 +31,15 @@ namespace ZoomNet.Resources
 
 		/// <inheritdoc/>
 		[Obsolete("Zoom is in the process of deprecating the \"page number\" and \"page count\" fields.")]
-		public Task<PaginatedResponseWithTokenAndDateRange<Recording>> GetRecordingsForUserAsync(string userId, bool queryTrash = false, DateTime? from = null, DateTime? to = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithTokenAndDateRange<Recording>> GetRecordingsForUserAsync(string userId, bool queryTrash = false, DateOnly? from = null, DateOnly? to = null, int recordsPerPage = 30, int page = 1, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync($"users/{userId}/recordings")
 				.WithArgument("trash", queryTrash.ToString().ToLowerInvariant())
-				.WithArgument("from", from?.ToZoomFormat(dateOnly: true))
-				.WithArgument("to", to?.ToZoomFormat(dateOnly: true))
+				.WithArgument("from", from.ToZoomFormat())
+				.WithArgument("to", to.ToZoomFormat())
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("page_number", page)
 				.WithCancellationToken(cancellationToken)
@@ -45,15 +47,15 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<PaginatedResponseWithTokenAndDateRange<Recording>> GetRecordingsForUserAsync(string userId, bool queryTrash = false, DateTime? from = null, DateTime? to = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		public Task<PaginatedResponseWithTokenAndDateRange<Recording>> GetRecordingsForUserAsync(string userId, bool queryTrash = false, DateOnly? from = null, DateOnly? to = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
 				.GetAsync($"users/{userId}/recordings")
 				.WithArgument("trash", queryTrash.ToString().ToLowerInvariant())
-				.WithArgument("from", from?.ToZoomFormat(dateOnly: true))
-				.WithArgument("to", to?.ToZoomFormat(dateOnly: true))
+				.WithArgument("from", from.ToZoomFormat())
+				.WithArgument("to", to.ToZoomFormat())
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
@@ -61,10 +63,10 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<Recording> GetRecordingInformationAsync(string meetingId, int ttl = 60 * 5, CancellationToken cancellationToken = default)
+		public Task<Recording> GetRecordingInformationAsync(string meetingId, int ttl = 60 * 60 * 24 * 7, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.GetAsync($"meetings/{meetingId}/recordings")
+				.GetAsync($"meetings/{Utils.EncodeUUID(meetingId)}/recordings")
 				.WithArgument("include_fields", "download_access_token")
 				.WithArgument("ttl", ttl)
 				.WithCancellationToken(cancellationToken)
@@ -75,7 +77,7 @@ namespace ZoomNet.Resources
 		public Task DeleteRecordingFilesAsync(string meetingId, bool deletePermanently = false, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.DeleteAsync($"meetings/{meetingId}/recordings")
+				.DeleteAsync($"meetings/{Utils.EncodeUUID(meetingId)}/recordings")
 				.WithArgument("action", deletePermanently ? "delete" : "trash")
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
@@ -85,7 +87,7 @@ namespace ZoomNet.Resources
 		public Task DeleteRecordingFileAsync(string meetingId, string recordingFileId, bool deletePermanently = false, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.DeleteAsync($"meetings/{meetingId}/recordings/{recordingFileId}")
+				.DeleteAsync($"meetings/{Utils.EncodeUUID(meetingId)}/recordings/{recordingFileId}")
 				.WithArgument("action", deletePermanently ? "delete" : "trash")
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
@@ -95,7 +97,7 @@ namespace ZoomNet.Resources
 		public Task RecoverRecordingFilesAsync(string meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.PutAsync($"meetings/{meetingId}/recordings/status")
+				.PutAsync($"meetings/{Utils.EncodeUUID(meetingId)}/recordings/status")
 				.WithArgument("action", "recover")
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
@@ -105,7 +107,7 @@ namespace ZoomNet.Resources
 		public Task RecoverRecordingFileAsync(string meetingId, string recordingFileId, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.PutAsync($"meetings/{meetingId}/recordings/{recordingFileId}/status")
+				.PutAsync($"meetings/{Utils.EncodeUUID(meetingId)}/recordings/{recordingFileId}/status")
 				.WithArgument("action", "recover")
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
@@ -115,7 +117,7 @@ namespace ZoomNet.Resources
 		public Task<RecordingSettings> GetRecordingSettingsAsync(string meetingId, CancellationToken cancellationToken = default)
 		{
 			return _client
-				.GetAsync($"meetings/{meetingId}/recordings/settings")
+				.GetAsync($"meetings/{Utils.EncodeUUID(meetingId)}/recordings/settings")
 				.WithCancellationToken(cancellationToken)
 				.AsObject<RecordingSettings>();
 		}
@@ -127,7 +129,7 @@ namespace ZoomNet.Resources
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
-				.GetAsync($"meetings/{meetingId}/recordings/registrants")
+				.GetAsync($"meetings/{Utils.EncodeUUID(meetingId)}/recordings/registrants")
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("page_number", page)
 				.WithCancellationToken(cancellationToken)
@@ -140,7 +142,7 @@ namespace ZoomNet.Resources
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
-				.GetAsync($"meetings/{meetingId}/recordings/registrants")
+				.GetAsync($"meetings/{Utils.EncodeUUID(meetingId)}/recordings/registrants")
 				.WithArgument("page_size", recordsPerPage)
 				.WithArgument("next_page_token", pagingToken)
 				.WithCancellationToken(cancellationToken)
@@ -178,29 +180,9 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task ApproveRegistrantAsync(long meetingId, string registrantId, CancellationToken cancellationToken = default)
-		{
-			return ApproveRegistrantsAsync(meetingId, new[] { registrantId }, cancellationToken);
-		}
-
-		/// <inheritdoc/>
 		public Task ApproveRegistrantsAsync(long meetingId, IEnumerable<string> registrantIds, CancellationToken cancellationToken = default)
 		{
 			return UpdateRegistrantsStatusAsync(meetingId, registrantIds, "approve", cancellationToken);
-		}
-
-		/// <summary>
-		/// Reject a registration for a meeting.
-		/// </summary>
-		/// <param name="meetingId">The meeting ID.</param>
-		/// <param name="registrantId">The registrant ID.</param>
-		/// <param name="cancellationToken">The cancellation token.</param>
-		/// <returns>
-		/// The async task.
-		/// </returns>
-		public Task RejectRegistrantAsync(long meetingId, string registrantId, CancellationToken cancellationToken = default)
-		{
-			return RejectRegistrantsAsync(meetingId, new[] { registrantId }, cancellationToken);
 		}
 
 		/// <inheritdoc/>
@@ -234,6 +216,96 @@ namespace ZoomNet.Resources
 
 			// Dispatch the request
 			return request.AsStream();
+		}
+
+		/// <inheritdoc/>
+		public Task<MeetingTranscriptInfo> GetTranscriptAsync(string meetingId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"meetings/{Utils.EncodeUUID(meetingId)}/transcript")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<MeetingTranscriptInfo>();
+		}
+
+		/// <inheritdoc/>
+		public async Task<RichTranscript> GetParsedTranscriptAsync(string meetingId, CancellationToken cancellationToken = default)
+		{
+			const int ttl = 60; // 60 seconds should be enough. We don't want the token to be valid for too long for security reasons.
+
+			var recordingInfo = await GetRecordingInformationAsync(meetingId, ttl, cancellationToken).ConfigureAwait(false);
+
+			var transcript = recordingInfo.GetTranscript();
+			var transcriptStream = await DownloadFileAsync(transcript.DownloadUrl, recordingInfo.DownloadAccessToken, cancellationToken).ConfigureAwait(false);
+			var transcriptContent = string.Empty;
+			using (StreamReader reader = new StreamReader(transcriptStream, Encoding.UTF8, true, -1, leaveOpen: true))
+			{
+				transcriptContent = reader.ReadToEnd();
+			}
+
+			var timeline = recordingInfo.GetTimeline();
+			var timelineStream = await DownloadFileAsync(timeline.DownloadUrl, recordingInfo.DownloadAccessToken, cancellationToken).ConfigureAwait(false);
+			var timelineContent = string.Empty;
+			using (StreamReader reader = new StreamReader(timelineStream, Encoding.UTF8, true, -1, leaveOpen: true))
+			{
+				timelineContent = reader.ReadToEnd();
+			}
+
+			var segments = VttTranscriptParser.Parse(transcriptContent);
+			var diarization = SpeakerTimelineParser.Parse(timelineContent);
+
+			var richTranscript = GetRichTranscript(segments, diarization);
+			return richTranscript;
+		}
+
+		private static RichTranscript GetRichTranscript(IReadOnlyList<TranscriptSegment> segments, IReadOnlyList<SpeakerMoment> diarization)
+		{
+			var segList = segments.ToList();
+
+			MergeSpeakers(segList, diarization);
+
+			var speakers = segList
+				.Select(s => s.Speaker)
+				.Where(s => !string.IsNullOrEmpty(s))
+				.Distinct()
+				.OrderBy(s => s)
+				.ToList();
+
+			return new RichTranscript
+			{
+				Segments = segList,
+				Diarization = diarization,
+				Speakers = speakers
+			};
+		}
+
+		private static void MergeSpeakers(List<TranscriptSegment> segments, IReadOnlyList<SpeakerMoment> diarization)
+		{
+			foreach (var segment in segments)
+			{
+				// If VTT already has a speaker, keep it
+				if (!string.IsNullOrWhiteSpace(segment.Speaker))
+					continue;
+
+				// Find diarization entries inside the segment time range
+				var matches = diarization
+					.Where(m => m.Timestamp >= segment.Start &&
+								m.Timestamp <= segment.End)
+					.SelectMany(m => m.Speakers)
+					.Where(s => !string.IsNullOrWhiteSpace(s.Username))
+					.ToList();
+
+				if (matches.Count == 0)
+					continue;
+
+				// Pick the most frequent speaker
+				var inferred = matches
+					.GroupBy(s => s.Username)
+					.OrderByDescending(g => g.Count())
+					.First()
+					.Key;
+
+				segment.Speaker = inferred;
+			}
 		}
 
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<string> registrantIds, string status, CancellationToken cancellationToken = default)

@@ -83,16 +83,19 @@ namespace ZoomNet.Utilities
 
 		public object[] GetLoggingParameters()
 		{
+			// Get the request and response objects
 			RequestReference.TryGetTarget(out HttpRequestMessage request);
 			ResponseReference.TryGetTarget(out HttpResponseMessage response);
 
-			// Get the content to the request/response and calculate how long it took to get the response
-			var elapsed = TimeSpan.FromTicks(ResponseTimestamp - RequestTimestamp);
+			// Get the content of the request/response and calculate how long it took to get the response
 			var isStreaming = Options.CompleteWhen == HttpCompletionOption.ResponseHeadersRead;
 			var requestContent = request?.Content?.ReadAsStringAsync(null).GetAwaiter().GetResult();
 			var responseContent = isStreaming
 				? "... content omitted from this log because the response is streaming ..."
 				: response?.Content?.ReadAsStringAsync(null).GetAwaiter().GetResult();
+
+			// Calculate how long it took to get the response
+			var elapsed = TimeSpan.FromTicks(ResponseTimestamp - RequestTimestamp);
 
 			// Calculate the content size
 			var requestContentLength = requestContent?.Length ?? 0;

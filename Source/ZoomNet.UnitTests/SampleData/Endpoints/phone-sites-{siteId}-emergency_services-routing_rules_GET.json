@@ -1,0 +1,13 @@
+[
+  {
+    "number_pattern": "911",
+    "name": "Zoom Default Emergency Number",
+    "translation": "\u002B1933",
+    "zoom_default": true,
+    "routing_type": 4,
+    "sip_group": {
+      "sip_group_id": "F_WKDH6FRdeddZBcNUlUeA",
+      "display_name": "Del Test Group"
+    }
+  }
+]

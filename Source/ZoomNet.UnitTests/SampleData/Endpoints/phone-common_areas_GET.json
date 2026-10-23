@@ -1,0 +1,42 @@
+{
+  "common_areas": [
+    {
+      "calling_plans": [
+        {
+          "name": "US/CA Metered Calling Plan",
+          "type": 100,
+          "billing_account_id": "3WWAEiEjTj2IQuyDiKMd_A",
+          "billing_account_name": "Delhi billing",
+          "billing_subscription_id": "FT-SUBREF-21168178",
+          "billing_subscription_name": "My Subscription"
+        }
+      ],
+      "display_name": "test_ca",
+      "extension_number": 100012347,
+      "id": "JOZmuJ30Spyrw-v9vUzIrA",
+      "phone_numbers": [
+        {
+          "display_name": "Phone number display name",
+          "id": "S5q4FDC3QsOCnO7LqHgqNw",
+          "number": "\u002B12058945543",
+          "source": "internal"
+        }
+      ],
+      "site": {
+        "id": "8f71O6rWT8KFUGQmJIFAdQ",
+        "name": "Main Site"
+      },
+      "status": "offline",
+      "desk_phones": [
+        {
+          "id": "Aky1xpSLSc2PR0XOtj9XWQ",
+          "display_name": "analog_ta",
+          "device_type": "Poly obi504",
+          "status": "offline"
+        }
+      ]
+    }
+  ],
+  "next_page_token": "RaO87FrnwXvFQta5aV8sU5C3c9O8s9Nraq2",
+  "page_size": 30
+}

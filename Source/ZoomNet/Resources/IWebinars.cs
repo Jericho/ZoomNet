@@ -423,7 +423,7 @@ namespace ZoomNet.Resources
 		/// <returns>
 		/// The async task.
 		/// </returns>
-		Task<PollForMeetingOrWebinar> CreatePoll(long webinarId, string title, IEnumerable<PollQuestionForMeetingOrWebinar> questions, CancellationToken cancellationToken = default);
+		Task<PollForMeetingOrWebinar> CreatePollAsync(long webinarId, string title, IEnumerable<PollQuestionForMeetingOrWebinar> questions, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Retrieve a poll.

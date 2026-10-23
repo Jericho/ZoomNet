@@ -1,0 +1,47 @@
+{
+  "schemas": [
+    "urn:ietf:params:scim:api:messages:2.0:ListResponse"
+  ],
+  "totalResults": 20,
+  "startIndex": 1,
+  "itemsPerPage": 10,
+  "Resources": [
+    {
+      "id": "k\u0026KdKr6TLWuxdDtk0hjSzL",
+      "meta": {
+        "resourceType": "User",
+        "location": "https://api.zoom.us/scim2/Users/k\u0026KdKr6TLWuxdDtk0hjSzL",
+        "version": "1.0.0",
+        "created": "2023-11-24T05:13:15Z",
+        "lastModified": "2023-11-25T06:23:17Z"
+      },
+      "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:ListResponse"
+      ],
+      "name": {
+        "givenName": "Jill",
+        "familyName": "Chill"
+      },
+      "emails": [
+        {
+          "type": "work",
+          "value": "jchill@example.com",
+          "primary": true
+        }
+      ],
+      "displayName": "Jill Chill",
+      "userName": "jchill@example.com",
+      "active": true,
+      "userType": "On-Prem",
+      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+        "department": "Development"
+      },
+      "urn:us:zoom:scim:schemas:extension:1.0:ZoomUser": {
+        "loginType": {
+          "workEmail": true,
+          "sso": true
+        }
+      }
+    }
+  ]
+}

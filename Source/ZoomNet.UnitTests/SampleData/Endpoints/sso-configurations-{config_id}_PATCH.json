@@ -1,0 +1,74 @@
+{
+  "config_id": "aBc123XyZ",
+  "config_type": "oidc",
+  "status": "enabled",
+  "title": "Corp Okta",
+  "description": null,
+  "saml": {
+    "idp_entity_id": "http://www.okta.com/exkabcd1234",
+    "idp_sign_in_url": "https://corp.okta.com/app/zoom/exkabcd1234/sso/saml",
+    "idp_sign_out_url": "https://corp.okta.com/app/zoom/exkabcd1234/slo/saml",
+    "idp_certificate": "MIIDpDCCAoygAwIBAgIGA...==",
+    "metadata_url": null,
+    "binding_type": "post",
+    "sp_entity_id": "corp.zoom.us",
+    "sp_metadata_url": "https://corp.zoom.us/saml/metadata/sp",
+    "sp_certificate_id": null,
+    "sp_certificate_auto_upgrade": true,
+    "sign_saml_request": true,
+    "sign_saml_logout_request": true,
+    "support_encrypted_assertions": false
+  },
+  "security": {
+    "restrict_sign_in_enabled": true,
+    "allowed_email_domains": [
+      "example.com"
+    ],
+    "allowed_user_groups": [
+      "Engineering"
+    ]
+  },
+  "visibility": {
+    "visibility_type": "any_vanity_urls",
+    "vanity_urls": [
+      "corp.zoom.us"
+    ]
+  },
+  "save_response_log_enabled": false,
+  "created_at": "2026-07-23T10:15:30.0000000\u002B00:00",
+  "updated_at": "2026-07-23T10:15:30.0000000\u002B00:00",
+  "incommon": {
+    "incommon_entity_id": null,
+    "incommon_idp_name": null,
+    "incommon_status": "pending",
+    "idp_entity_id": "http://www.okta.com/exkabcd1234",
+    "idp_sign_in_url": "https://corp.okta.com/app/zoom/exkabcd1234/sso/saml",
+    "idp_sign_out_url": "https://corp.okta.com/app/zoom/exkabcd1234/slo/saml",
+    "idp_certificate": "MIIDpDCCAoygAwIBAgIGA...==",
+    "binding_type": "post",
+    "sp_entity_id": "corp.zoom.us",
+    "sp_metadata_url": "https://corp.zoom.us/saml/metadata/sp",
+    "sp_certificate_id": null,
+    "sp_certificate_auto_upgrade": true,
+    "sign_saml_request": true,
+    "sign_saml_logout_request": true,
+    "support_encrypted_assertions": false
+  },
+  "oidc": {
+    "client_id": null,
+    "client_secret": null,
+    "discovery_url": null,
+    "authorization_endpoint": null,
+    "token_endpoint": null,
+    "user_info_endpoint": null,
+    "jwks_uri": null,
+    "end_session_endpoint": null,
+    "scopes": [
+      "[\u0022openid\u0022,\u0022email\u0022]"
+    ],
+    "token_issuer": null,
+    "callback_url": null,
+    "post_logout_redirect_url": null,
+    "response_type": null
+  }
+}

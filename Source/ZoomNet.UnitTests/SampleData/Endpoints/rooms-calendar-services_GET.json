@@ -1,0 +1,12 @@
+{
+  "calendar_services": [
+    {
+      "calendar_service_id": "rNQUpdDXySFGhVycz7aR-SR",
+      "calendar_service_name": "zroom1@example.com",
+      "calendar_resource_total_number": 100,
+      "calendar_resource_assigned_number": 10,
+      "added_date_time": "2022-03-31T19:03:03.0000000\u002B00:00",
+      "latest_synced_date_time": "2022-03-31T19:03:03.0000000\u002B00:00"
+    }
+  ]
+}

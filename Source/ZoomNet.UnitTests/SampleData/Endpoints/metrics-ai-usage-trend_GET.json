@@ -1,0 +1,16 @@
+{
+  "from": "2026-05-21",
+  "to": "2026-05-27",
+  "trend": [
+    {
+      "date": "2026-05-21",
+      "metrics": [
+        {
+          "feature": "meeting_questions",
+          "category": "Jira",
+          "count": 10
+        }
+      ]
+    }
+  ]
+}

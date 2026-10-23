@@ -1,0 +1,66 @@
+{
+  "total_records": 1,
+  "next_page_token": "oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2",
+  "registrants": [
+    {
+      "display_name": "First Last",
+      "first_name": "First",
+      "last_name": "Last",
+      "email": "email@zoom.us",
+      "opt_in_marketing": 1,
+      "registration_date": "2025-03-24T22:30:00.0000000\u002B00:00",
+      "event_attendance": "attended",
+      "country": "US",
+      "lobby_attendance": "attended",
+      "surveys_count": 0,
+      "polls_count": 0,
+      "resource_link_engagement": [
+        {
+          "file_id": "Pn9rBZgJQzi6RXUABmWcqB",
+          "name": "resource link A"
+        }
+      ],
+      "sessions": [
+        {
+          "session_id": "Pn9rBZgJQzi6RXUABmWcqB",
+          "session_name": "Session one",
+          "session_attendance": "attended",
+          "duration_in_session": 20,
+          "bookmarked": true,
+          "material_download": [
+            {
+              "file_id": "Pn9rBZgJQzi6RXUABmWcqB",
+              "name": "session-file.pdf"
+            }
+          ],
+          "in_session_resource_download": [
+            {
+              "file_id": "Pn9rBZgJQzi6RXUABmWcqB",
+              "name": "in-session-file.pdf"
+            }
+          ],
+          "recording_view": false,
+          "recording_view_duration": 20,
+          "live_streaming_view": false,
+          "live_streaming_view_duration": 30
+        }
+      ],
+      "tickets": [
+        {
+          "ticket_type_name": "General Ticket",
+          "ticket_type_id": "Fn2rBZgJQzi6VIU--uWqnA",
+          "ticket_id": "Fn2rBZgJQzi6VIUABuWcqB",
+          "registration_source": "Pardot",
+          "registration_method": "self-registration",
+          "authentication_method": "no_auth",
+          "questions": [
+            {
+              "title": "First Name",
+              "answer": "Michael"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

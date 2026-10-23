@@ -1,0 +1,6 @@
+{
+  "stream_url": "https://example.com/livestream",
+  "stream_key": "ABCDEFG12345HIJ6789",
+  "page_url": "https://example.com/livestream/123",
+  "resolution": "720p"
+}

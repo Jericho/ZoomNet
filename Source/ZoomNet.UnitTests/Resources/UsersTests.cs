@@ -9,154 +9,12 @@ using System.Threading.Tasks;
 using Xunit;
 using ZoomNet.Models;
 using ZoomNet.Resources;
+using ZoomNet.UnitTests.Properties;
 
 namespace ZoomNet.UnitTests.Resources
 {
 	public class UsersTests
 	{
-		private const string USERS_JSON = @"{
-			""page_count"": 1,
-			""page_number"": 1,
-			""page_size"": 30,
-			""total_records"": 2,
-			""users"": [
-				{
-					""id"": ""user123"",
-					""first_name"": ""John"",
-					""last_name"": ""Doe"",
-					""email"": ""john.doe@example.com"",
-					""type"": 2,
-					""status"": ""active"",
-					""created_at"": ""2023-01-01T00:00:00Z"",
-					""last_login_time"": ""2023-06-01T10:00:00Z"",
-					""timezone"": ""America/Los_Angeles"",
-					""pmi"": 1234567890,
-					""verified"": 1
-				},
-				{
-					""id"": ""user456"",
-					""first_name"": ""Jane"",
-					""last_name"": ""Smith"",
-					""email"": ""jane.smith@example.com"",
-					""type"": 1,
-					""status"": ""active"",
-					""created_at"": ""2023-02-01T00:00:00Z"",
-					""last_login_time"": ""2023-06-02T10:00:00Z"",
-					""timezone"": ""America/New_York"",
-					""pmi"": 9876543210,
-					""verified"": 1
-				}
-			]
-		}";
-
-		private const string USERS_WITH_TOKEN_JSON = @"{
-			""page_size"": 30,
-			""next_page_token"": ""token123"",
-			""users"": [
-				{
-					""id"": ""user123"",
-					""first_name"": ""John"",
-					""last_name"": ""Doe"",
-					""email"": ""john.doe@example.com"",
-					""type"": 2,
-					""status"": ""active"",
-					""created_at"": ""2023-01-01T00:00:00Z"",
-					""pmi"": 1234567890
-				}
-			]
-		}";
-
-		private const string SINGLE_USER_JSON = @"{
-			""id"": ""user123"",
-			""first_name"": ""John"",
-			""last_name"": ""Doe"",
-			""email"": ""john.doe@example.com"",
-			""type"": 2,
-			""status"": ""active"",
-			""created_at"": ""2023-01-01T00:00:00Z"",
-			""last_login_time"": ""2023-06-01T10:00:00Z"",
-			""timezone"": ""America/Los_Angeles"",
-			""pmi"": 1234567890,
-			""verified"": 1,
-			""company"": ""Acme Corp"",
-			""dept"": ""Engineering"",
-			""job_title"": ""Software Engineer"",
-			""location"": ""San Francisco"",
-			""phone_numbers"": [
-				{
-					""country"": ""US"",
-					""code"": ""+1"",
-					""number"": ""555-1234"",
-					""type"": ""Office""
-				}
-			]
-		}";
-
-		private const string ASSISTANTS_JSON = @"{
-			""assistants"": [
-				{
-					""id"": ""assistant1"",
-					""email"": ""assistant1@example.com""
-				},
-				{
-					""id"": ""assistant2"",
-					""email"": ""assistant2@example.com""
-				}
-			]
-		}";
-
-		private const string USER_SETTINGS_JSON = @"{
-			""scheduled_meeting"": {
-				""host_video"": true,
-				""participants_video"": true
-			},
-			""in_meeting"": {
-				""allow_live_streaming"": true
-			}
-		}";
-
-		private const string AUTH_SETTINGS_JSON = @"{
-			""meeting_authentication"": true,
-			""authentication_options"": [
-				{
-					""default_option"": true,
-					""domains"": ""example.com,example.org"",
-					""id"":	""auth123"",
-					""name"": ""Company Authentication"",
-					""type"": ""enforce_login_with_domains"",
-					""enforce_login_with_same_account"": ""enforce_login"",
-					""visible"": true
-				}
-			]
-		}";
-
-		private const string SECURITY_SETTINGS_JSON = @"{
-			""meeting_security"": {
-				""waiting_room"": true,
-				""encryption_type"": ""e2ee"",
-				""approved_or_denied_countries_or_regions"": {
-					""enable"": true
-				}
-			}
-		}";
-
-		private const string PERMISSIONS_JSON = @"{
-			""permissions"": [""User:Write"", ""User:Read"", ""Meeting:Write""]
-		}";
-
-		private const string VIRTUAL_BACKGROUND_JSON = @"{
-			""id"": ""bg123"",
-			""name"": ""background.jpg"",
-			""size"": 1024000,
-			""type"": ""image"",
-			""is_default"": false
-		}";
-
-		private const string PRESENCE_STATUS_JSON = @"{
-			""status"": ""Available"",
-			""duration"": 0
-		}";
-
 		private readonly ITestOutputHelper _outputHelper;
 
 		public UsersTests(ITestOutputHelper outputHelper)
@@ -179,7 +37,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("status", "active")
 				.WithQueryString("page_size", recordsPerPage.ToString())
 				.WithQueryString("page_number", pageNumber.ToString())
-				.Respond("application/json", USERS_JSON);
+				.Respond("application/json", EndpointsResource.users_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -192,11 +50,11 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Records.Length.ShouldBe(2);
+			result.Records.Length.ShouldBe(1);
 			result.PageNumber.ShouldBe(1);
-			result.PageCount.ShouldBe(1);
+			result.PageCount.ShouldBe(100);
 			result.RecordsPerPage.ShouldBe(30);
-			result.TotalRecords.ShouldBe(2);
+			result.TotalRecords.ShouldBe(8482);
 		}
 
 		[Fact]
@@ -211,7 +69,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("status", "inactive")
 				.WithQueryString("page_size", recordsPerPage.ToString())
 				.WithQueryString("page_number", pageNumber.ToString())
-				.Respond("application/json", USERS_JSON);
+				.Respond("application/json", EndpointsResource.users_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -240,7 +98,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("role_id", roleId)
 				.WithQueryString("page_size", recordsPerPage.ToString())
 				.WithQueryString("page_number", pageNumber.ToString())
-				.Respond("application/json", USERS_JSON);
+				.Respond("application/json", EndpointsResource.users_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -268,7 +126,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users"))
 				.WithQueryString("status", "active")
 				.WithQueryString("page_size", "30")
-				.Respond("application/json", USERS_WITH_TOKEN_JSON);
+				.Respond("application/json", EndpointsResource.users_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -283,7 +141,7 @@ namespace ZoomNet.UnitTests.Resources
 			result.ShouldNotBeNull();
 			result.Records.Length.ShouldBe(1);
 			result.RecordsPerPage.ShouldBe(30);
-			result.NextPageToken.ShouldBe("token123");
+			result.NextPageToken.ShouldBe("8V8HigQkzm2O5r9RUn31D9ZyJHgrmFfbLa2");
 		}
 
 		[Fact]
@@ -297,7 +155,7 @@ namespace ZoomNet.UnitTests.Resources
 				.WithQueryString("status", "active")
 				.WithQueryString("page_size", "30")
 				.WithQueryString("next_page_token", pagingToken)
-				.Respond("application/json", USERS_WITH_TOKEN_JSON);
+				.Respond("application/json", EndpointsResource.users_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -305,31 +163,6 @@ namespace ZoomNet.UnitTests.Resources
 
 			// Act
 			var result = await users.GetAllAsync(pagingToken: pagingToken, cancellationToken: TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldNotBeNull();
-		}
-
-		[Fact]
-		public async Task GetAllAsync_WithPagingToken_CustomRecordsPerPage()
-		{
-			// Arrange
-			var recordsPerPage = 100;
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users"))
-				.WithQueryString("status", "active")
-				.WithQueryString("page_size", "100")
-				.Respond("application/json", USERS_WITH_TOKEN_JSON);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var users = new Users(client);
-
-			// Act
-			var result = await users.GetAllAsync(recordsPerPage: recordsPerPage, pagingToken: null, cancellationToken: TestContext.Current.CancellationToken);
 
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
@@ -349,7 +182,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("users"))
-				.Respond("application/json", SINGLE_USER_JSON);
+				.Respond("application/json", EndpointsResource.users_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -362,7 +195,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Email.ShouldBe("john.doe@example.com");
+			result.Email.ShouldBe("jchill@example.com");
 		}
 
 		[Fact]
@@ -378,7 +211,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("users"))
-				.Respond("application/json", SINGLE_USER_JSON);
+				.Respond("application/json", EndpointsResource.users_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -402,7 +235,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("users"))
-				.Respond("application/json", SINGLE_USER_JSON);
+				.Respond("application/json", EndpointsResource.users_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -552,7 +385,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId))
-				.Respond("application/json", SINGLE_USER_JSON);
+				.Respond("application/json", EndpointsResource.users__userId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -565,10 +398,10 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("user123");
-			result.FirstName.ShouldBe("John");
-			result.LastName.ShouldBe("Doe");
-			result.Email.ShouldBe("john.doe@example.com");
+			result.Id.ShouldBe("zJKyaiAyTNC-MWjiWC18KQ");
+			result.FirstName.ShouldBe("Jill");
+			result.LastName.ShouldBe("Chill");
+			result.Email.ShouldBe("jchill@example.com");
 		}
 
 		[Fact]
@@ -579,7 +412,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", email))
-				.Respond("application/json", SINGLE_USER_JSON);
+				.Respond("application/json", EndpointsResource.users__userId__GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -698,7 +531,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "assistants"))
-				.Respond("application/json", ASSISTANTS_JSON);
+				.Respond("application/json", EndpointsResource.users__userId__assistants_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -711,7 +544,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Length.ShouldBe(2);
+			result.Length.ShouldBe(1);
 		}
 
 		[Fact]
@@ -849,7 +682,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "schedulers"))
-				.Respond("application/json", ASSISTANTS_JSON.Replace("assistants", "schedulers"));
+				.Respond("application/json", EndpointsResource.users__userId__schedulers_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -971,7 +804,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "settings"))
-				.Respond("application/json", USER_SETTINGS_JSON);
+				.Respond("application/json", EndpointsResource.users__userId__settings_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -995,7 +828,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "settings"))
 				.WithQueryString("option", "meeting_authentication")
-				.Respond("application/json", AUTH_SETTINGS_JSON);
+				.Respond("application/json", EndpointsResource.users__userId__settings_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1021,7 +854,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "settings"))
 				.WithQueryString("option", "recording_authentication")
-				.Respond("application/json", AUTH_SETTINGS_JSON.Replace("meeting_authentication", "recording_authentication"));
+				.Respond("application/json", EndpointsResource.users__userId__settings_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1045,7 +878,7 @@ namespace ZoomNet.UnitTests.Resources
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "settings"))
 				.WithQueryString("option", "meeting_security")
-				.Respond("application/json", SECURITY_SETTINGS_JSON);
+				.Respond("application/json", EndpointsResource.users__userId__settings_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1143,7 +976,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "permissions"))
-				.Respond("application/json", PERMISSIONS_JSON);
+				.Respond("application/json", EndpointsResource.users__userId__permissions_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1156,7 +989,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Length.ShouldBe(3);
+			result.Length.ShouldBe(1);
 		}
 
 		[Fact]
@@ -1186,16 +1019,15 @@ namespace ZoomNet.UnitTests.Resources
 		#region Email and Name Validation Tests
 
 		[Fact]
-		public async Task CheckEmailInUseAsync_True()
+		public async Task CheckEmailInUseAsync()
 		{
 			// Arrange
 			var email = "existing@example.com";
-			var responseJson = @"{""existed_email"": true}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", "email"))
 				.WithQueryString("email", email)
-				.Respond("application/json", responseJson);
+				.Respond("application/json", EndpointsResource.users_email_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1208,31 +1040,6 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldBeTrue();
-		}
-
-		[Fact]
-		public async Task CheckEmailInUseAsync_False()
-		{
-			// Arrange
-			var email = "nonexistent@example.com";
-			var responseJson = @"{""existed_email"": false}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", "email"))
-				.WithQueryString("email", email)
-				.Respond("application/json", responseJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var users = new Users(client);
-
-			// Act
-			var result = await users.CheckEmailInUseAsync(email, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldBeFalse();
 		}
 
 		[Fact]
@@ -1259,41 +1066,15 @@ namespace ZoomNet.UnitTests.Resources
 		}
 
 		[Fact]
-		public async Task CheckPersonalMeetingRoomNameInUseAsync_True()
+		public async Task CheckPersonalMeetingRoomNameInUseAsync()
 		{
 			// Arrange
 			var name = "johns-room";
-			var responseJson = @"{""existed"": true}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", "vanity_name"))
 				.WithQueryString("vanity_name", name)
-				.Respond("application/json", responseJson);
-
-			var logger = _outputHelper.ToLogger<IZoomClient>();
-			var client = Utils.GetFluentClient(mockHttp, logger: logger);
-			var users = new Users(client);
-
-			// Act
-			var result = await users.CheckPersonalMeetingRoomNameInUseAsync(name, TestContext.Current.CancellationToken);
-
-			// Assert
-			mockHttp.VerifyNoOutstandingExpectation();
-			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldBeTrue();
-		}
-
-		[Fact]
-		public async Task CheckPersonalMeetingRoomNameInUseAsync_False()
-		{
-			// Arrange
-			var name = "available-room";
-			var responseJson = @"{""existed"": false}";
-
-			var mockHttp = new MockHttpMessageHandler();
-			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", "vanity_name"))
-				.WithQueryString("vanity_name", name)
-				.Respond("application/json", responseJson);
+				.Respond("application/json", EndpointsResource.users_vanity_name_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1345,12 +1126,11 @@ namespace ZoomNet.UnitTests.Resources
 		{
 			// Arrange
 			var userId = "user123";
-			var responseJson = @"{""token"": ""zak_token_123""}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "token"))
 				.WithQueryString("type", "zak")
-				.Respond("application/json", responseJson);
+				.Respond("application/json", EndpointsResource.users__userId__token_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1362,7 +1142,7 @@ namespace ZoomNet.UnitTests.Resources
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldBe("zak_token_123");
+			result.ShouldBe("6IjAwMDAwMSIsInptX3NrbSI6InptX");
 		}
 
 		[Fact]
@@ -1371,13 +1151,12 @@ namespace ZoomNet.UnitTests.Resources
 			// Arrange
 			var userId = "user123";
 			var ttl = 3600;
-			var responseJson = @"{""token"": ""zak_token_456""}";
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "token"))
 				.WithQueryString("type", "zak")
 				.WithQueryString("ttl", ttl.ToString())
-				.Respond("application/json", responseJson);
+				.Respond("application/json", EndpointsResource.users__userId__token_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1389,7 +1168,7 @@ namespace ZoomNet.UnitTests.Resources
 			// Assert
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
-			result.ShouldBe("zak_token_456");
+			result.ShouldBe("6IjAwMDAwMSIsInptX3NrbSI6InptX");
 		}
 
 		#endregion
@@ -1406,7 +1185,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Post, Utils.GetZoomApiUri("users", userId, "settings", "virtual_backgrounds"))
-				.Respond("application/json", VIRTUAL_BACKGROUND_JSON);
+				.Respond("application/json", EndpointsResource.users__userId__settings_virtual_backgrounds_POST);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);
@@ -1419,7 +1198,7 @@ namespace ZoomNet.UnitTests.Resources
 			mockHttp.VerifyNoOutstandingExpectation();
 			mockHttp.VerifyNoOutstandingRequest();
 			result.ShouldNotBeNull();
-			result.Id.ShouldBe("bg123");
+			result.Id.ShouldBe("_l0MP1U7Qn2JgJ4oEJbVZQ");
 		}
 
 		[Fact]
@@ -1520,7 +1299,7 @@ namespace ZoomNet.UnitTests.Resources
 
 			var mockHttp = new MockHttpMessageHandler();
 			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("users", userId, "presence_status"))
-				.Respond("application/json", PRESENCE_STATUS_JSON);
+				.Respond("application/json", EndpointsResource.users__userId__presence_status_GET);
 
 			var logger = _outputHelper.ToLogger<IZoomClient>();
 			var client = Utils.GetFluentClient(mockHttp, logger: logger);

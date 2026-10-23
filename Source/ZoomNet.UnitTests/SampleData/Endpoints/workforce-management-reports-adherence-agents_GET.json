@@ -1,0 +1,36 @@
+{
+  "next_page_token": "jA5csQv1W1oXuYZLspNIZzMOXqTD9r9Rje2",
+  "page_size": 10,
+  "total_records": 100,
+  "timezone": "America/Los_Angeles",
+  "agents": [
+    {
+      "user_id": "0c30da44bd68aae3b5714abb885a59",
+      "display_name": "Alex",
+      "shifts": [
+        {
+          "start_time": "2024-11-06T03:30:00.000Z",
+          "end_time": "2024-11-06T03:30:00.000Z",
+          "start_in_adherence": 0,
+          "end_in_adherence": 0
+        }
+      ],
+      "schedule_activities": [
+        {
+          "activity_id": "0c30da44bd68aae3b5714abb885a59",
+          "activity_name": "Chat",
+          "start_time": "1730896200000",
+          "end_time": "1730896200000"
+        }
+      ],
+      "adherence_time_for_activity": [
+        {
+          "activity_id": "0c30da44bd68aae3b5714abb885a59",
+          "activity_name": "Chat",
+          "activity_in_adherence": 0,
+          "activity_out_adherence": 0
+        }
+      ]
+    }
+  ]
+}

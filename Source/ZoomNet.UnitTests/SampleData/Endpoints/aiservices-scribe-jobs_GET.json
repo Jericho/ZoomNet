@@ -1,0 +1,43 @@
+{
+  "jobs": [
+    {
+      "job_id": "job_abc123",
+      "state": "PROCESSING",
+      "submitted_at": "2026-01-05T18:34:12.0000000\u002B00:00",
+      "input": {
+        "mode": "INPUT_PREFIX",
+        "source": "S3",
+        "uri": "s3://acme-bucket/audio/"
+      },
+      "output": {
+        "destination": "S3",
+        "uri": "s3://acme-bucket/transcripts/",
+        "layout": "PREFIX"
+      },
+      "config": {
+        "language": "en-US",
+        "timestamps": true,
+        "word_time_offsets": false,
+        "channel_separation": false,
+        "diarization": false,
+        "profanity_filter": false,
+        "output_format": "json"
+      },
+      "summary": {
+        "total_files": 2487,
+        "queued": 0,
+        "processing": 23,
+        "succeeded": 2450,
+        "failed": 14,
+        "skipped": 0,
+        "canceled": 0
+      },
+      "error": {
+        "code": "INVALID_CREDENTIALS",
+        "message": "AWS credentials expired",
+        "details": {}
+      }
+    }
+  ],
+  "next_page_token": "eyJqb2JfaWQiOiJqb2JfZGVmNDU2In0"
+}

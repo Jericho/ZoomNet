@@ -1,0 +1,13 @@
+{
+  "id": "c6o8l4m5xxyyaz0kxiqec6v6",
+  "kb_id": "whelb0q6qe1bpqg6jrw3ismo",
+  "category": "Foo",
+  "title": "Article One",
+  "url": "https://example.com/foo/article1",
+  "created_at": "2023-03-21T20:21:30.6590000\u002B00:00",
+  "updated_at": "2023-03-21T20:21:30.6590000\u002B00:00",
+  "exclude": false,
+  "language": "en-US",
+  "external_id": "871b707a-7756-46b6-bfba-36a297ba1e85",
+  "content": "\u003Cp\u003Earticle 1 content with \u003Cb\u003Esome\u003C/b\u003E \u003Ci\u003Ehtml\u003C/i\u003E\u003C/p\u003E"
+}

@@ -1,0 +1,12 @@
+{
+  "successful_operations_count": 5,
+  "unsuccessful_operations_count": 3,
+  "users": [
+    {
+      "user_id": "1stlycl8qwcvfubn4dvdca",
+      "member_id": "1vRFhZt_2gipkB-SFKkOpnkh",
+      "is_external_user": false,
+      "operation_status": "successful"
+    }
+  ]
+}

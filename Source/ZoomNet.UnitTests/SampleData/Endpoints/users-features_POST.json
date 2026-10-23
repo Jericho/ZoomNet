@@ -1,0 +1,13 @@
+{
+  "success_user_ids": [
+    "-gbbm4KGTsSvL5zmELDJdw"
+  ],
+  "fail_details": [
+    {
+      "user_ids": [
+        "-gbbm4KGTsSvL5zmELDJdw"
+      ],
+      "reason": "Not enough seats"
+    }
+  ]
+}

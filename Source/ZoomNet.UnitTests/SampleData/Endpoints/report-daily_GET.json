@@ -1,0 +1,13 @@
+{
+  "dates": [
+    {
+      "date": "2022-03-01",
+      "meeting_minutes": 34,
+      "meetings": 2,
+      "new_users": 3,
+      "participants": 4
+    }
+  ],
+  "month": 3,
+  "year": 2022
+}

@@ -2,9 +2,7 @@ using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Role in purchase process.
-	/// </summary>
+	/// <summary>Role in purchase process.</summary>
 	public enum RoleInPurchaseProcess
 	{
 		/// <summary>Unknown.</summary>

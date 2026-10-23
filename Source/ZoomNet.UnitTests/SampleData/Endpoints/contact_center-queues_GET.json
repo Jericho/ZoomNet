@@ -1,0 +1,20 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 1,
+  "queues": [
+    {
+      "queue_id": "zeYjXoDOS_eV1QmTpj63PQ",
+      "cc_queue_id": "xqJE_cgERLyAJHYYL5LLeg",
+      "queue_name": "queue_661c6e4b-89fc-4b0d-9978-c7394725462",
+      "agents_count": 1,
+      "supervisors_count": 1,
+      "channel_types": [
+        "voice"
+      ],
+      "channel": "voice",
+      "modified_by": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "last_modified_time": "2022-02-15T09:27:15.0000000\u002B00:00"
+    }
+  ]
+}

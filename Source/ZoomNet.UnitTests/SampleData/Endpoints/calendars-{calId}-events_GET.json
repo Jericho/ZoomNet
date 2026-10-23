@@ -1,0 +1,73 @@
+{
+  "kind": "calendar#events",
+  "etag": "\u002200000000000000000000\u0022",
+  "summary": "calendar summary",
+  "description": "calendar description",
+  "updated": "2020-01-01T00:00:00.0000000\u002B00:00",
+  "timeZone": "America/Los_Angeles",
+  "accessRole": "owner",
+  "defaultReminders": [
+    {
+      "method": "email",
+      "minutes": 5
+    }
+  ],
+  "nextPageToken": "ffffffffa8b32bff_te7ldipj31fqfo3mw3jjzgz6c0!",
+  "items": [
+    {
+      "start": {
+        "date": "2020-01-01",
+        "dateTime": "2020-01-01T00:00:00.0000000\u002B00:00",
+        "timeZone": "America/Los_Angeles"
+      },
+      "end": {
+        "date": "2020-01-01",
+        "dateTime": "2020-01-01T00:00:00.0000000\u002B00:00",
+        "timeZone": "America/Los_Angeles"
+      },
+      "attendees": [
+        {
+          "additionalGuests": 0,
+          "displayName": "Mark Joe",
+          "email": "mark.joe@zoom.com",
+          "optional": false,
+          "resource": false,
+          "responseStatus": "needsAction"
+        }
+      ],
+      "colorId": "5",
+      "description": "event description",
+      "guestsCanInviteOthers": true,
+      "guestsCanModify": false,
+      "guestsCanSeeOtherGuests": true,
+      "location": "San Jose",
+      "recurrence": [
+        "RRULE:FREQ=DAILY;COUNT=2;INTERVAL=3"
+      ],
+      "reminders": {
+        "useDefault": false,
+        "overrides": [
+          {
+            "method": "email",
+            "minutes": 5
+          }
+        ]
+      },
+      "status": "confirmed",
+      "summary": "event title",
+      "transparency": "transparent",
+      "visibility": "default",
+      "id": "0lyk1qjjd8t8thnf5y1f02a6c0",
+      "created": "2020-01-01T00:00:00Z",
+      "creator": {
+        "email": "mark.joe@zoom.com"
+      },
+      "organizer": {
+        "email": "mark.joe@zoom.com"
+      },
+      "kind": "calendar#event",
+      "updated": "2020-01-01T00:00:00Z"
+    }
+  ],
+  "nextSyncToken": "The next page token retrieves events changed after returning this result. This system omits it when you add the \u0060nextPageToken\u0060. Users need to retrieve all pages of result before getting the \u0060nextSyncToken\u0060."
+}

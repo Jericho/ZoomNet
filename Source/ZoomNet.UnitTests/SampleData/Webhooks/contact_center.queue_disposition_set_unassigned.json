@@ -1,0 +1,26 @@
+{
+  "event": "contact_center.queue_disposition_set_unassigned",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "cc_queue_id": "xqJE_cgERLyAJHYYL5LLeg",
+      "queue_name": "My Queue",
+      "disposition_sets": [
+        {
+          "disposition_set_id": "W_VATTk_Q5aW6z5rZtBxAD",
+          "disposition_set_name": "My Disposition Set One"
+        },
+        {
+          "disposition_set_id": "YUEZQivXRSq2YFOUkW3ctw",
+          "disposition_set_name": "My Disposition Set Two"
+        }
+      ],
+      "assign_type": "inbound",
+      "modified_by": "ukAAkZKfROKMSw1bj_RDFQ",
+      "date_time_ms": "2026-07-13T09:27:15.987Z",
+      "division_id": "f5c4ZOdARVu5VWQaWkQyrw",
+      "division_name": "My Division"
+    }
+  }
+}

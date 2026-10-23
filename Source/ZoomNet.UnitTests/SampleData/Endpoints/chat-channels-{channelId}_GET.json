@@ -1,0 +1,20 @@
+{
+  "channel_settings": {
+    "add_member_permissions": 2,
+    "new_members_can_see_previous_messages_files": true,
+    "posting_permissions": 3,
+    "mention_all_permissions": 1,
+    "allow_to_add_external_users": 2,
+    "designated_posting_members": [
+      {
+        "member_id": "b8b03c9ed5114ed59e4833cc6cb4921b",
+        "user_id": "xvenagdyr6yonp8fhpky0w"
+      }
+    ]
+  },
+  "id": "cabc1234567defghijkl01234",
+  "jid": "cabc1234567defghijkl01234@conference.xmpp.zoom.us",
+  "name": "Developers",
+  "type": 2,
+  "channel_url": "https://zoom.us/launch/chat/v2/eyJzaWQiOiIyY2RkZjNyNjU3YTY0ODUzOWVhOThkODFhNjRiODE2YkBjb25mZXJlbmNlLnhtcHBkZXYuem9vbS51cyJ1"
+}

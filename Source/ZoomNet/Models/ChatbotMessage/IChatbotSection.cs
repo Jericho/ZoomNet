@@ -2,9 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models.ChatbotMessage;
 
-/// <summary>
-/// A part of the section body.
-/// </summary>
+/// <summary>A part of the section body.</summary>
 [JsonPolymorphic(TypeDiscriminatorPropertyName = "type")]
 [JsonDerivedType(typeof(ChatbotActions), "actions")]
 [JsonDerivedType(typeof(ChatbotAttachment), "attachments")]

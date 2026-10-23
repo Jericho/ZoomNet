@@ -1,0 +1,33 @@
+{
+  "users": [
+    {
+      "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "cc_user_id": "hKuMAiDdRlSwMkBxR5we7g",
+      "display_name": "Jane Doe",
+      "user_email": "jdoe@example.com",
+      "role_id": "0TFVsJqNS82CwkQJLqj1zA",
+      "role_name": "Admin",
+      "country_iso_code": "US",
+      "client_integration": "Salesforce",
+      "client_integration_name": "integration-test",
+      "status_id": "1",
+      "status_name": "Offline",
+      "user_access": "active",
+      "channel_settings": {
+        "multi_channel_engagements": {
+          "enable": true,
+          "max_agent_load": 50,
+          "email_max_agent_load": 50
+        },
+        "concurrent_message_capacity": 4,
+        "concurrent_email_capacity": 4
+      },
+      "package_name": "essentials",
+      "add_ons_plan": [
+        "ai_expert_assist"
+      ],
+      "billing_account_id": "PEKovuAEQBu5dpeqmxwW1Q",
+      "billing_account_name": "main billing account"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "total_records": 1,
+  "next_page_token": "yqT59YnBSHqvDdNnkeHQsA",
+  "videos": [
+    {
+      "video_id": "csduzfv3JwTeyR5QpC3PXw52",
+      "video_name": "My Recording1",
+      "play_link": "https://abc/recording/unehd6TtTLuTN40owCOqqK",
+      "duration": 3000,
+      "video_status": "COMPLETED",
+      "video_source": "RECORDING"
+    }
+  ]
+}

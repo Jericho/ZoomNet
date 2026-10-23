@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "comment_id": "comment_abc123def456",
+      "content": [
+        {
+          "text": "the text demo",
+          "order": 0,
+          "attributes": {
+            "link": "https://google.cn"
+          },
+          "mention": {
+            "email": "example@zoom.us",
+            "user_id": "3afwV0HiZS9mCLpxSQQbVz",
+            "display_name": "John Doe",
+            "avatar": "https://example.com/avatar.jpg"
+          }
+        }
+      ],
+      "content_text": "the text demo",
+      "create_time": 1752715586000
+    }
+  ],
+  "next_page_token": "qUEQqB1V0HVhJmwKFQrGOD",
+  "page_size": 10,
+  "total_records": 2
+}

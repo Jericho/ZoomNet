@@ -2,9 +2,7 @@ using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Enumeration to indicate the type of content in a recording file.
-	/// </summary>
+	/// <summary>Enumeration to indicate the type of content in a recording file.</summary>
 	public enum RecordingContentType
 	{
 		/// <summary>Not specified.</summary>

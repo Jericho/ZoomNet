@@ -1,0 +1,17 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 10,
+  "total_records": 10,
+  "users": [
+    {
+      "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "cc_user_id": "hKuMAiDdRlSwMkBxR5we7g",
+      "display_name": "Jane Doe",
+      "user_email": "jdoe@example.com",
+      "role_id": "0TFVsJqNS82CwkQJLqj1zA",
+      "role_name": "Admin"
+    }
+  ],
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA"
+}

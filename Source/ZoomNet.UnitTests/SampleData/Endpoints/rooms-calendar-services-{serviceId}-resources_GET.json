@@ -1,0 +1,13 @@
+{
+  "next_page_token": "At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2",
+  "page_size": 20,
+  "calendar_resources": [
+    {
+      "calendar_resource_id": "rNQUpdDXySFGhVycz7aR-SR",
+      "calendar_resource_email": "zroom1@example.com",
+      "calendar_resource_name": "zroom1",
+      "assigned_room_id": "yLom99u5QuKBTw4Q7_P6Pw",
+      "sync_status": "Success"
+    }
+  ]
+}

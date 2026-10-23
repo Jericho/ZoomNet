@@ -1,0 +1,52 @@
+{
+  "assignee": {
+    "audio_prompt_language": "en-GB",
+    "display_number": "display_name_123",
+    "extension_number": 1000001101,
+    "greeting": {
+      "id": "4CRwFZtVTa67JcfO37iQqA",
+      "name": "TestName"
+    },
+    "id": "rYgfsrduSXWCxr94poMN5g",
+    "label": "abcd",
+    "meeting_id": "abcd",
+    "name": "Test name",
+    "on_hold_music": {
+      "id": "4CRwFZtVTa67JcfO37iQqA",
+      "name": "Audio1"
+    },
+    "type": "user"
+  },
+  "capability": [
+    "incoming"
+  ],
+  "carrier": {
+    "code": 2,
+    "name": "Inteliquent"
+  },
+  "display_name": "Display name",
+  "emergency_address": {
+    "address_line1": "55 ALMADEN BLVD",
+    "address_line2": "test 7",
+    "city": "SAN JOSE",
+    "country": "US",
+    "state_code": "CA",
+    "zip": "95113"
+  },
+  "emergency_address_status": 1,
+  "emergency_address_update_time": "2022-02-18T07:20:19Z",
+  "id": "iHE1MQAET2iV85MbfaQmwg",
+  "location": "Mz83e03MT1efcUvxdKlq3w",
+  "number": "\u002B18886510412",
+  "number_type": "toll",
+  "sip_group": {
+    "display_name": "RRRR",
+    "id": "8MhK7ea4Q4ihIQ4TD_g0kw"
+  },
+  "site": {
+    "id": "8f71O6rWT8KFUGQmJIFAdQ",
+    "name": "Main Site"
+  },
+  "source": "external",
+  "status": "available"
+}

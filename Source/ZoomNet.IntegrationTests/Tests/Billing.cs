@@ -26,8 +26,10 @@ namespace ZoomNet.IntegrationTests.Tests
 			await log.WriteLineAsync($"Your base plan type is: {planUsage.BasePlan.Type}").ConfigureAwait(false);
 
 			// GET INVOICES
-			var from = DateTime.UtcNow.AddYears(-1);
-			var to = DateTime.UtcNow;
+			var now = DateTime.UtcNow;
+			var from = DateOnly.FromDateTime(now.AddYears(-1));
+			var to = DateOnly.FromDateTime(now);
+
 			var invoices = await client.Billing.GetInvoicesAsync("me", from, to, cancellationToken).ConfigureAwait(false);
 			await log.WriteLineAsync($"{invoices.Length} invoices were issued in the last year.").ConfigureAwait(false);
 		}

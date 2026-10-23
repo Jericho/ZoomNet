@@ -1,0 +1,6 @@
+{
+  "invitation": "Jill Chill is inviting you to a scheduled Zoom meeting.\r\n\r\nTopic: My Meeting\r\nTime: Mar 25, 2022 03:32 PM America, Los_Angeles\r\n\r\nJoin Zoom Meeting\r\nhttps://zoom.us/j/55544443210?pwd=8pEkRweVXPV3Ob2KJYgFTRlDtl1gSn.1\r\n\r\nMeeting ID: 555 4444 3210\r\nPasscode: 123456\r\nOne tap mobile\r\n\u002B5678901234,,55544443210#,,,,*123456# US (gg)\r\n\r\nDial by your location\r\n\u002B1 15550100 US (gg)\r\nMeeting ID: 555 4444 3210\r\nPasscode: 123456\r\nFind your local number: https://zoom.us/u/ab12cdef34jh\r\n\r\nJoin by SIP\r\n5550100@zoomcrc.com\r\n\r\nJoin by H.323\r\n192.0.2.1 (US West)\r\nMeeting ID: 555 4444 3210\r\nPasscode: 123456\r\n\r\n",
+  "sip_links": [
+    "5550100@zoomcrc.com"
+  ]
+}

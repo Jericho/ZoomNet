@@ -1,0 +1,16 @@
+{
+  "next_page_token": "bkOcmnm6mn6ioYAi10BcgRiEL38WzAo6jP2",
+  "page_size": 30,
+  "sms_campaigns": [
+    {
+      "id": "C-BlVwSdjvS3WXk5gzfIQFfQ",
+      "display_name": "Test SMS Campaign",
+      "status": "active",
+      "brand": {
+        "id": "B-c3AN66d_Q4mrQFNUaW-G2w",
+        "name": "Test Campaign"
+      }
+    }
+  ],
+  "total_records": 1
+}

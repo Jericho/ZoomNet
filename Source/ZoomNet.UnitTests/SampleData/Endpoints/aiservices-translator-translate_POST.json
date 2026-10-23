@@ -1,0 +1,20 @@
+{
+  "request_id": "req_abc123",
+  "result": {
+    "translations": {
+      "es-ES": "Buenos d\u00EDas a todos, comencemos la reuni\u00F3n de hoy."
+    }
+  },
+  "model": "zoom-translator-v1",
+  "usage": {
+    "input_units": 62,
+    "output_units": 56,
+    "unit_type": "characters",
+    "details": {
+      "translator": {
+        "source_language": "en-US",
+        "target_language": "es-ES"
+      }
+    }
+  }
+}

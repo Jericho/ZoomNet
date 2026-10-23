@@ -1,0 +1,38 @@
+{
+  "next_page_token": "2z0Ov7kngllAbfQi4ZR2eQTb3mFVYQpYAe3",
+  "page_size": 30,
+  "alert_settings": [
+    {
+      "alert_setting_id": "uvsOCaiDQR2M-NviKFHo0w",
+      "alert_setting_name": "Call Queue Alert",
+      "module": 1,
+      "rule": 1,
+      "rule_conditions": [
+        {
+          "rule_condition_type": 5,
+          "rule_condition_value": "Warning"
+        }
+      ],
+      "targets": [
+        {
+          "target_name": "test api"
+        }
+      ],
+      "time_frame_type": "specific_time",
+      "time_frame_from": "08:30:00",
+      "time_frame_to": "18:00:00",
+      "frequency": 5,
+      "email_recipients": [
+        "test@example.com"
+      ],
+      "chat_channels": [
+        {
+          "chat_channel_name": "ApiTA_Site_2020_07_21_11_02_26_901",
+          "token": "eyJhbGciOiJIUzUxMiIsInYiOiIy",
+          "end_point": "https://www.testexample.com"
+        }
+      ],
+      "status": 1
+    }
+  ]
+}

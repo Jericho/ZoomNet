@@ -2,9 +2,7 @@ using System.Runtime.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// The result reason of an event for a call log.
-	/// </summary>
+	/// <summary>The result reason of an event for a call log.</summary>
 	public enum CallElementResultReason
 	{
 		/// <summary>Answered by other.</summary>

@@ -1,0 +1,85 @@
+{
+  "id": "89f1000000000000_e856432f45a75bea_001",
+  "message": {
+    "id": "01d1000000000000_e8bc79717a36a5ff_006",
+    "threadId": "3bc0000000000000_e8572723056fa10d_001",
+    "labelIds": [
+      "DRAFT"
+    ],
+    "snippet": "Hello, Jane Doe, writing to you for next weeks meeting.",
+    "historyId": "457889",
+    "internalDate": "1705098864740",
+    "payload": {
+      "partId": "1.1",
+      "mimeType": "text/html",
+      "filename": "cats.jpg",
+      "headers": [
+        {
+          "name": "To",
+          "value": "john.doe@example.com"
+        }
+      ],
+      "body": {
+        "attachmentId": "7d4d447700000000_e85f09d67065eb70_121_1",
+        "size": 5434,
+        "data": "dGhpcyBsaW5lIHVzZXMgbWFpbCBtZXJnZSBAZmlyc3RuYW1lCnRoaXMgbGluZSBkb2VzIG5vdCB1c2UgbWFpbCBtZXJnZSBAZmlyc3RuYW1lCg=="
+      },
+      "parts": [
+        {
+          "partId": "0",
+          "mimeType": "multipart/alternative",
+          "filename": "demo.xls",
+          "headers": [
+            {
+              "name": "Content-Type",
+              "value": "multipart/ALTERNATIVE"
+            }
+          ],
+          "body": {
+            "attachmentId": "7d4d447700000000_e85f09d67065eb70_121_1",
+            "data": "",
+            "size": 0
+          },
+          "parts": [
+            {
+              "partId": "0.0",
+              "mimeType": "text/plain",
+              "filename": "demo1.xls",
+              "headers": [
+                {
+                  "name": "Content-Type",
+                  "value": "text/PLAIN"
+                }
+              ],
+              "body": {
+                "attachmentId": "7d4d447700000000_e85f09d67065eb70_121_2",
+                "data": "W2ltYWdlOiBTY3JlZW5zaG90IDIwMjQtMDItMDQgYXQgMTAuMjIuMDjigK9QTS5wbmddCgpXaWxsIHRoaXMgZ2VuZXJhdGUgbXVsdGlwbGUgcGFydD8K",
+                "size": 87
+              },
+              "parts": [
+                {
+                  "partId": "0.0.0",
+                  "mimeType": "multipart/related",
+                  "filename": "demo2.xls",
+                  "headers": [
+                    {
+                      "name": "Content-Transfer-Encoding",
+                      "value": "7bit"
+                    }
+                  ],
+                  "body": {
+                    "attachmentId": "7d4d447700000000_e85f09d67065eb70_121_3",
+                    "data": "",
+                    "size": 0
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "sizeEstimate": 50000,
+    "raw": "TUlNRS1WZXJzaW9uOiAxLjANCkRhdGU6IFRodSwgMjggTWF5IDIwMjAgMTQ6MDE6MTkgLTA3MDANCk1lc3NhZ2UtSUQ6 IDxDQU89ekZkNVZUMW56PUJRRzRET2UxdFhxY3FXT1VzWUhqbjdxNXE9OTZmY0RHN2lNOUFAbWFpbC5nbWFpbC5jb20\u002BDQpTdWJqZ WN0OiB0ZXN0IHRocmVhZGluZyBOby4gMQ0KRnJvbTogRGViYmllIFpoYW5nIDxkZWJiaWUuemhhbmdAem9vbS51cz4NClRvOiBkZW JiaWUudGVzdGVyMTBAZ21haWwuY29tDQpDb250ZW50LVR5cGU6IG11bHRpcGFydC9hbHRlcm5hdGl2ZTsgYm91bmRhcnk9IjAwMDA wMDAwMDAwMDVlNzI3YzA1YTZiYmExYmUiDQoNCi0tMDAwMDAwMDAwMDAwNWU3MjdjMDVhNmJiYTFiZQ0KQ29udGVudC1UeXBlOiB0 ZXh0L3BsYWluOyBjaGFyc2V0PSJVVEYtOCINCg0KVGVzdCB0aHJlYWRpbmcuICBBdHRlbXB0IDEuDQoNCi0tMDAwMDAwMDAwMDAwN WU3MjdjMDVhNmJiYTFiZQ0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9IlVURi04Ig0KQ29udGVudC1UcmFuc2Zlci 1FbmNvZGluZzogcXVvdGVkLXByaW50YWJsZQ0KDQo8ZGl2IGRpcj0zRCJsdHIiPlRlc3QgdGhyZWFkaW5nLj1DMj1BMCBBdHRlbXB 0IDEuPC9kaXY\u002BDQoNCi0tMDAwMDAwMDAwMDAwNWU3MjdjMDVhNmJiYTFiZS0t"
+  }
+}

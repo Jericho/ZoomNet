@@ -1,0 +1,14 @@
+{
+  "from": "2022-02-01",
+  "to": "2022-02-28",
+  "next_page_token": "Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3",
+  "page_count": 1,
+  "page_size": 30,
+  "total_records": 1,
+  "issue_details": [
+    {
+      "issue": "Untrusted certificate is detected",
+      "time": "2022-02-27T08:37:05.0000000\u002B00:00"
+    }
+  ]
+}

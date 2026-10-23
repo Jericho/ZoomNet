@@ -1,0 +1,25 @@
+{
+  "from": "2023-07-01T00:00:00.0000000\u002B00:00",
+  "to": "2023-07-02T23:59:59.0000000\u002B00:00",
+  "next_page_token": "ngLawmAGlYagy37vLJtKMM4TkMnagfqWm73",
+  "page_size": 10,
+  "total_records": 22,
+  "timezone": "UTC",
+  "engagement_variable_details": [
+    {
+      "engagement_id": "G9wepeWxQAO7o0M6AJw2AA",
+      "variable_details": [
+        {
+          "variable_id": "f15c3714-4c24-4fc1-b4e6-4f0702b5398f8b2a93e9-3125-4044-8cd6-06ce7f582de8",
+          "type": "Number",
+          "name": "startTime",
+          "value": "1736866627040",
+          "need_mask": true,
+          "group_id": "1fb58719-22f3-439f-88e2-96c069347331",
+          "group_name": "Engagement",
+          "submitted_at": "2025-11-04T02:46:45Z"
+        }
+      ]
+    }
+  ]
+}

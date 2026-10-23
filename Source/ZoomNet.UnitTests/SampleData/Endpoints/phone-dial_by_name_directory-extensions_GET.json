@@ -1,0 +1,16 @@
+{
+  "next_page_token": "FHBv62",
+  "page_size": 10,
+  "result": [
+    {
+      "extension_id": "FDFU83j",
+      "display_name": "CUSTOMERS",
+      "email": "email@example.com",
+      "extension_number": "1933",
+      "site": {
+        "id": "flej2f",
+        "name": "New Site"
+      }
+    }
+  ]
+}

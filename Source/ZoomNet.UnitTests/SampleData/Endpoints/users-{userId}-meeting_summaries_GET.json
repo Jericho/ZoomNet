@@ -1,0 +1,21 @@
+{
+  "page_size": 30,
+  "next_page_token": "Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3",
+  "from": "2023-10-19T07:00:00.0000000\u002B00:00",
+  "to": "2023-10-20T07:00:00.0000000\u002B00:00",
+  "summaries": [
+    {
+      "meeting_host_id": "30R7kT7bTIKSNUFEuH_Qlg",
+      "meeting_host_email": "jchill@example.com",
+      "meeting_uuid": "aDYlohsHRtCd4ii1uC2\u002BhA==",
+      "meeting_id": 97763643886,
+      "meeting_topic": "My Meeting",
+      "meeting_start_time": "2019-07-15T23:24:52.0000000\u002B00:00",
+      "meeting_end_time": "2020-07-15T23:30:19.0000000\u002B00:00",
+      "summary_start_time": "2019-07-15T23:24:52.0000000\u002B00:00",
+      "summary_end_time": "2020-07-15T23:30:19.0000000\u002B00:00",
+      "summary_created_time": "2019-07-15T23:24:52.0000000\u002B00:00",
+      "summary_last_modified_time": "2020-07-15T23:30:19.0000000\u002B00:00"
+    }
+  ]
+}

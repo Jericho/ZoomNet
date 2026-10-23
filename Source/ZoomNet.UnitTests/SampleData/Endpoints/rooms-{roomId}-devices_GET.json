@@ -1,0 +1,21 @@
+{
+  "devices": [
+    {
+      "app_version": "5.9.1 (2581)",
+      "device_system": "Win10 Build 19043.1266",
+      "device_type": "Controller",
+      "id": "{0.0.1.00000000}.{eff76542-ac52-4c78-bd90-67f968bab16f}",
+      "room_name": "My Room",
+      "status": "Online",
+      "device_mac_addresses": [
+        "01-23-45-67-89-AB"
+      ],
+      "device_hostname": "Test Computer",
+      "device_manufacturer": "Poly",
+      "device_model": "MacBookPro14,1",
+      "device_firmware": "1.1.1",
+      "ip_address": "10.10.10.10",
+      "serial_number": "6NRN2A0"
+    }
+  ]
+}

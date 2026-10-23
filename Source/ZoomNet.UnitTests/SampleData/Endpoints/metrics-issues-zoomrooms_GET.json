@@ -1,0 +1,12 @@
+{
+  "from": "2022-01-01",
+  "to": "2022-01-30",
+  "total_records": 30,
+  "zoom_rooms": [
+    {
+      "id": "NHwIXQQ2Ro-fJ13cxj_fuQ",
+      "issues_count": 12,
+      "room_name": "jchill room"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "next_page_token": "IXIhcpJWscHfISSKTcdl2QpSMLyRE38zH92",
+  "page_size": 3,
+  "sip_groups": [
+    {
+      "description": "test SIP group",
+      "display_name": "RRRR",
+      "id": "8MhK7ea4Q4ihIQ4TD_g0kw",
+      "send_sip_group_name": false,
+      "sip_trunk": {
+        "id": "VWQU-veBQnm08EtBkUGnbw",
+        "name": "TESTAPI01"
+      }
+    }
+  ]
+}

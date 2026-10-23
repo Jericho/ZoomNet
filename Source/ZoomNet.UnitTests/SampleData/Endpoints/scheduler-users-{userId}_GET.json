@@ -1,0 +1,8 @@
+{
+  "slug": "zoom_us",
+  "scheduling_url": "https://scheduler.zoom.us/zoom_us",
+  "display_name": "name",
+  "picture": "base64 encoding string",
+  "logo": "user logo",
+  "time_zone": "America/New York"
+}

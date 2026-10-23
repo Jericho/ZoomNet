@@ -1,0 +1,14 @@
+{
+  "next_page_token": "8X8xSdRVKHsabD6Im4tIPODq6GzDOvV5fO1",
+  "numbers": [
+    {
+      "assigned": 1,
+      "billing_reference_id": "Some billing referenceId",
+      "phone_number": "\u002B18108001001",
+      "service_info": "Some service info",
+      "sip_trunk_name": "test-carrier-sip-trunk",
+      "status": 0
+    }
+  ],
+  "total_records": 20
+}

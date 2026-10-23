@@ -1,0 +1,17 @@
+{
+  "page_size": 30,
+  "next_page_token": "Tva2CuIdTgsv8wAnhyAdUrm0tY2HuLQtlh4",
+  "users": [
+    {
+      "user_connection_id": "Nlg8wgA0TFe3jT87CjQZqg",
+      "user_id": "YZ8uRj9zRf2yY5cshmzrTA",
+      "user_name": "exampleuser",
+      "role_type": "agent",
+      "ip_address": "127.0.0.1",
+      "data_center": "US",
+      "join_time": "2025-03-18T05:07:13.0000000\u002B00:00",
+      "leave_time": "2025-03-18T05:09:13.0000000\u002B00:00",
+      "duration": "00:03:19"
+    }
+  ]
+}

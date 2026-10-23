@@ -1,0 +1,13 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "flows": [
+    {
+      "flow_id": "psjHGHrHQbaX8Zk7ldc81Q",
+      "flow_name": "Default Flow"
+    }
+  ],
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
+}

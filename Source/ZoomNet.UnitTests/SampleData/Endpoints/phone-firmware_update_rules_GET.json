@@ -1,0 +1,12 @@
+{
+  "next_page_token": "10mHdrdYyMxKi8LQhL7GPI6BWj65IcrbjJ2",
+  "page_size": 30,
+  "rules": [
+    {
+      "rule_id": "3h_bQL5MR_-sCmlJcTclVg",
+      "version": "3.4.5.18",
+      "device_type": "AudioCodes",
+      "device_model": "445hd"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "legal_hold_matters": [
+    {
+      "matter_id": "28c92682-f4fc-47b0-bceb-14cb839e0279",
+      "matter_name": "Test17888",
+      "matter_start_date": "2024-04-01",
+      "matter_end_date": "2024-04-30",
+      "matter_creation_date": "2024-05-01",
+      "matter_users": [
+        {
+          "user_id": "649ad5f12f804cfea7dd7b1c1bb4c337",
+          "email": "first.last@test.com"
+        }
+      ]
+    }
+  ],
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30
+}

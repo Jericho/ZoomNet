@@ -2,9 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>
-	/// Custom attribute.
-	/// </summary>
+	/// <summary>Custom attribute.</summary>
 	public class CustomAttribute
 	{
 		/// <summary>Gets or sets the unique identifier.</summary>

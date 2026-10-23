@@ -1,0 +1,22 @@
+{
+  "kind": "\u0022calendar#colors\u0022",
+  "updated": "2012-02-14T00:00:00.0000000\u002B00:00",
+  "calendar": [
+    {
+      "color_id": "\u00221\u0022",
+      "value": {
+        "foreground": "\u0022#FD3D4A\u0022",
+        "background": "\u0022#F7F9FA\u0022"
+      }
+    }
+  ],
+  "event": [
+    {
+      "color_id": "\u00221\u0022",
+      "value": {
+        "foreground": "\u0022#FD3D4A\u0022",
+        "background": "\u0022#F7F9FA\u0022"
+      }
+    }
+  ]
+}

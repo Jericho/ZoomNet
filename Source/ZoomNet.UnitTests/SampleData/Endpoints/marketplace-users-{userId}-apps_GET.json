@@ -1,0 +1,16 @@
+{
+  "next_page_token": "w7587w4eiyfsudgf",
+  "page_size": 30,
+  "apps": [
+    {
+      "app_id": "nqSreNVsQ2eGzUMGnA8AHA",
+      "app_name": "Example App",
+      "app_type": "ZoomApp",
+      "app_usage": 1,
+      "app_status": "PUBLISHED",
+      "request_id": "zZLSQoL6S0OB6asaZ3zAOQ",
+      "request_date_time": "2021-07-21T17:32:28.0000000\u002B00:00",
+      "request_status": "pending"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "total_records": 1,
+  "next_page_token": "yqT59YnBSHqvDdNnkeHQsA",
+  "hosts": [
+    {
+      "host_user_id": "4uzfv3JwTeyR5QpC3PXwMg",
+      "email": "host@example.com"
+    }
+  ]
+}

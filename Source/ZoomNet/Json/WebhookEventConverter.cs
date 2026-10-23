@@ -814,7 +814,12 @@ namespace ZoomNet.Json
 					if (value.TryGetInt32(out var intValue)) return new KeyValuePair<string, object>(key, intValue);
 					if (value.TryGetInt16(out var shortValue)) return new KeyValuePair<string, object>(key, shortValue);
 					throw new JsonException($"Property {key} appears to contain a numerical value but we are unable to determine the exact type");
-				default: return new KeyValuePair<string, object>(key, value.GetRawText());
+				default:
+#if NET5_0_OR_GREATER
+					return new KeyValuePair<string, object>(key, value.Deserialize<object>(JsonFormatter.DefaultDeserializerOptions));
+#else
+					return new KeyValuePair<string, object>(key, value.GetRawText());
+#endif
 			}
 		}
 

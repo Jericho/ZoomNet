@@ -1,0 +1,40 @@
+{
+  "call_logs": [
+    {
+      "call_id": "7081466125443483485",
+      "callee": {
+        "codec": "ES8311",
+        "device_private_ip": "10.100.111.237",
+        "device_public_ip": "38.99.100.2",
+        "device_type": "MAC_Client 5.11.9.9957",
+        "extension_number": "100994",
+        "headset": "Edifier",
+        "isp": "Cogent Communications",
+        "microphone": "\u002B12053194087",
+        "phone_number": "\u002B12053194087",
+        "site_id": "ZNWikLeVSjuaMvUoxFqCuw"
+      },
+      "caller": {
+        "codec": "ES8311",
+        "device_private_ip": "10.100.111.232",
+        "device_public_ip": "38.99.100.3",
+        "device_type": "MAC_Client",
+        "extension_number": "100152",
+        "headset": "Edifier",
+        "isp": "Cogent Communications",
+        "microphone": "\u002B12053194087",
+        "phone_number": "\u002B12053194087",
+        "site_id": "ZNWikLeVSjuaMvUoxFqCuw"
+      },
+      "date_time": "2021-04-01T02:59:32Z",
+      "direction": "internal",
+      "duration": 20,
+      "mos": "4.5"
+    }
+  ],
+  "from": "2021-03-31",
+  "next_page_token": "T6WMY4fJBIAlxPUiqRtwvQS9dvsq8AoRam2",
+  "page_size": 30,
+  "to": "2021-04-01",
+  "total_records": 20
+}

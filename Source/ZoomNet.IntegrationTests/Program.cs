@@ -141,7 +141,7 @@ namespace ZoomNet.IntegrationTests
 							var subscriptionId = Environment.GetEnvironmentVariable("ZOOM_WEBSOCKET_SUBSCRIPTIONID", EnvironmentVariableTarget.User);
 							return new WebSocketsTestSuite(connectionInfo, subscriptionId, proxy, loggerFactory);
 						}
-					default: throw new Exception("Unknwon test type");
+					default: throw new Exception($"Unknown test type: {_testType}");
 				}
 			});
 

@@ -1,0 +1,39 @@
+{
+  "call_id": "876634343743",
+  "call_log_id": "55fd0af0-beb0-433a-be97-388de5e99ab4",
+  "call_history_id": "20210519-55fd0af0-beb0-433a-be97-388de5e99ab4",
+  "call_element_id": "20210609-a297ae04-a875-4cfd-85ab-4adcead91edb",
+  "callee_name": "Jane Doe",
+  "callee_number": "34567889",
+  "callee_number_type": 2,
+  "caller_name": "John Doe",
+  "caller_number": "12345678",
+  "caller_number_type": 1,
+  "date_time": "2021-05-19T20:00:00Z",
+  "download_url": "exampleurl.io",
+  "duration": 18,
+  "id": "d43520fc6b7e4b26bbeef58a8a80f235",
+  "status": "read",
+  "transcription": {
+    "content": "some transcript content",
+    "status": 2,
+    "engine": "otter"
+  },
+  "deleted_time": "2023-04-18T22:10:49.9070000\u002B00:00",
+  "days_left_auto_permantely_delete": 30,
+  "soft_deleted_type": "Manual",
+  "intent_detect_status": "success",
+  "intent_results": [
+    {
+      "intent_id": "",
+      "confidence_score": 1
+    }
+  ],
+  "voice_mail_task": {
+    "status": "success",
+    "content": "Call back the caller at \u002B12091112222 tomorrow.",
+    "feedback": "thumbs_up"
+  },
+  "caller_account_code": "111",
+  "callee_account_code": "222"
+}

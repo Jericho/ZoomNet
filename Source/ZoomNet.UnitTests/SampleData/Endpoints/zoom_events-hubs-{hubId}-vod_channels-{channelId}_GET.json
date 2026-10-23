@@ -1,0 +1,19 @@
+{
+  "channel_id": "iso9Dllddp39dagjLj9j",
+  "name": "FoodieFlicks",
+  "description": "A cinematic journey through the world of cuisine!.",
+  "status": "PUBLISHED",
+  "is_published_to_hub": true,
+  "type": "VIDEO_LIST_HUB",
+  "embed_script": "\u003Cscript src=\u0022https: //gozestatic.zoom.us/zoomevents-vod-sdk/0.0.8/vod_embed_sdk/zoomVodEmbed.js\u0022\u003E\u003C/script\u003E\u003Cdiv class=\u0022zoom-embed\u0022 style=\u0022width:100%;height:100%;\u0022 data-channel-id=\u0022RAvxS3RWSVOjgchfA1porQ\u0022 data-video-id=\u0022CsjUfFg5Tx6Lj08sjpu2yA\u0022 data-embed-option=\u0022inline\u0022 data-embed-display=\u0022\u0022 data-domain=\u0022https: //goevents.zoom.us\u0022\u003E\u003Cimg src=\u0022https://onzoomcontent3.zoom.us/img/default_session_image.jpg\u0022 style=\u0022width:100%;\u0022\u003E\u003C/div\u003E",
+  "channel_link": "https://events.zoom.us/ej/AqXm3Kdn61-zHknD9faMn5TFBVAXx4zwQOeMbJkkI63GDBVz6znZ~A1dLQvAML0MYNyUw-UnzDCKI_Sw",
+  "settings": {
+    "authentication_method": "bypass_auth",
+    "allow_domain_list": [
+      "zoom.us"
+    ],
+    "allow_email_list": [
+      "example1@email.com"
+    ]
+  }
+}

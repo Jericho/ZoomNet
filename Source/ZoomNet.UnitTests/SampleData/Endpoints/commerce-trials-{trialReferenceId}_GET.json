@@ -1,0 +1,109 @@
+{
+  "trial_id": "Z-021462495",
+  "end_customer_account": {
+    "zoom_account_number": "3421746588",
+    "crm_account_number": "A-12323",
+    "account_name": "John Doe LLC",
+    "address": {
+      "address_type": "billTo",
+      "line_1": "55 Almaden Blvd",
+      "line_2": "Suite 10",
+      "line_3": "Tower A",
+      "city": "San Jose",
+      "postal_code": "95114",
+      "state": "PA",
+      "country": "US"
+    }
+  },
+  "invoice_owner_account": {
+    "zoom_account_number": "3421746588",
+    "crm_account_number": "A-12323",
+    "account_name": "John Doe LLC",
+    "address": {
+      "address_type": "billTo",
+      "line_1": "55 Almaden Blvd",
+      "line_2": "Suite 10",
+      "line_3": "Tower A",
+      "city": "San Jose",
+      "postal_code": "95114",
+      "state": "PA",
+      "country": "US"
+    }
+  },
+  "sub_reseller": {
+    "zoom_account_number": "3421746588",
+    "crm_account_number": "A-45r33",
+    "account_name": "Novam Corp.",
+    "address": {
+      "address_type": "billTo",
+      "line_1": "55 Almaden Blvd",
+      "line_2": "Suite 10",
+      "line_3": "Tower A",
+      "city": "San Jose",
+      "postal_code": "95114",
+      "state": "PA",
+      "country": "US"
+    }
+  },
+  "bill_to": {
+    "zoom_account_number": "3421746588",
+    "crm_account_number": "A-12323",
+    "account_name": "John Doe LLC",
+    "address": {
+      "line_1": "55 Almaden Blvd",
+      "line_2": "Suite 10",
+      "line_3": "Tower A",
+      "city": "San Jose",
+      "postal_code": "95114",
+      "state": "PA",
+      "country": "US"
+    }
+  },
+  "sold_to": {
+    "zoom_account_number": "3421746588",
+    "crm_account_number": "A-12323",
+    "account_name": "John Doe LLC",
+    "address": {
+      "line_1": "55 Almaden Blvd",
+      "line_2": "Suite 10",
+      "line_3": "Tower A",
+      "city": "San Jose",
+      "postal_code": "95114",
+      "state": "PA",
+      "country": "US"
+    }
+  },
+  "sold_to_contact": {
+    "crm_contact_number": "A-1232",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "abc@test.com"
+  },
+  "bill_to_contact": {
+    "crm_contact_number": "A-1232",
+    "first_name": "John",
+    "last_name": "Doe",
+    "email": "abc@test.com"
+  },
+  "trial_lines": [
+    {
+      "offer_id": "PR-2323",
+      "offer_name": "Zoom Workplace Pro",
+      "offer_type": "plan",
+      "sku": "SKU-00000118",
+      "offer_price_list_id": "PRL-2323",
+      "offer_price_list_name": "Zoom Workplace Pro Annual",
+      "quantity": 100,
+      "start_date": "2023-10-03",
+      "end_date": "2024-10-03",
+      "offer_attributes": [
+        {
+          "name": "Min licenses for purchase",
+          "uom": "count",
+          "value_type": "Integer",
+          "value": "10"
+        }
+      ]
+    }
+  ]
+}

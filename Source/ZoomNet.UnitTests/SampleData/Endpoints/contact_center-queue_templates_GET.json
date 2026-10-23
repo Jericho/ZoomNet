@@ -1,0 +1,20 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "queue_templates": [
+    {
+      "template_id": "cIInrJZUQWy12qoLPASXLw",
+      "template_name": "voice add template 9",
+      "template_description": "test voice add template 9",
+      "channel": "voice",
+      "template_type": "add",
+      "template_status": "active",
+      "template_need_attention": false,
+      "modified_by": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "last_modified_time": "2022-02-15T09:27:15.0000000\u002B00:00"
+    }
+  ],
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
+}

@@ -1,0 +1,8 @@
+{
+  "errors": [
+    {
+      "email": "email@zoom.us",
+      "message": "User doesn\u0027t have an on-site ticket"
+    }
+  ]
+}

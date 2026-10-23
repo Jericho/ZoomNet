@@ -71,6 +71,10 @@ namespace ZoomNet
 		public IBilling Billing { get; private set; }
 
 		/// <inheritdoc/>
+		public ICallHistory CallHistory { get; private set; }
+
+		/// <inheritdoc/>
+		[Obsolete("The CallLogs API endpoints will be deprecated in April 2026. Please use the CallHistory instead. For more information, please refer to https://developers.zoom.us/docs/phone/migrate/")]
 		public ICallLogs CallLogs { get; private set; }
 
 		/// <inheritdoc/>
@@ -219,13 +223,19 @@ namespace ZoomNet
 				throw new ZoomException($"{connectionInfo.GetType()} is an unknown connection type", null, null, null, null);
 			}
 
+			var cleanupInterval = TimeSpan.FromSeconds(5);
+			var diagnosticStore = new MemoryDiagnosticStore(cleanupInterval);
+
 			// The list of filters must be kept in sync with the filters in Utils.GetFluentClient in the unit testing project.
-			_fluentClient.Filters.Add(new DiagnosticHandler(_options.LogLevelSuccessfulCalls, _options.LogLevelFailedCalls, _logger));
-			_fluentClient.Filters.Add(new ZoomErrorHandler());
+			_fluentClient.Filters.Add(new DiagnosticHandler(_options.LogLevelSuccessfulCalls, _options.LogLevelFailedCalls, diagnosticStore, _logger));
+			_fluentClient.Filters.Add(new ZoomErrorHandler(diagnosticStore));
 
 			Accounts = new Accounts(_fluentClient);
 			Billing = new Billing(_fluentClient);
+			CallHistory = new CallHistory(_fluentClient);
+#pragma warning disable CS0618 // Type or member is obsolete
 			CallLogs = new CallLogs(_fluentClient);
+#pragma warning restore CS0618 // Type or member is obsolete
 			Chat = new Chat(_fluentClient);
 			Chatbot = new Chatbot(_fluentClient);
 			CloudRecordings = new CloudRecordings(_fluentClient);
@@ -278,7 +288,7 @@ namespace ZoomNet
 			if (oAuthConnectionInfo.Scopes == null) tokenHandler.RefreshTokenIfNecessary(true); // Force the token to be refreshed wich will have the side-effect of populating the '.Scopes'
 
 			var missingScopes = scopes.Except(((OAuthConnectionInfo)tokenHandler.ConnectionInfo).Scopes, StringComparer.OrdinalIgnoreCase).ToArray();
-			return !missingScopes.Any();
+			return missingScopes.Length == 0;
 		}
 
 		/// <inheritdoc/>
@@ -316,11 +326,8 @@ namespace ZoomNet
 
 		private void ReleaseManagedResources()
 		{
-			if (_fluentClient != null)
-			{
-				_fluentClient.Dispose();
-				_fluentClient = null;
-			}
+			_fluentClient?.Dispose();
+			_fluentClient = null;
 
 			if (_httpClient != null && _mustDisposeHttpClient)
 			{

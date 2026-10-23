@@ -1,0 +1,56 @@
+{
+  "next_page_token": "Cj8KLwotCgsI3ujvqgYQgIXUGxIeChwKGjBzNzAyZWVtbjBzOTdlZXFhNXE1NWg4ZWJtGgwIzIPVrAYQwM3WrAPAPgE=",
+  "items": [
+    {
+      "availability_id": "x3h1u4id4liffdyszsp8kpxl80",
+      "default": true,
+      "name": "The working hours.",
+      "owner": "easonfsxsysks3lgchitiw@scheudler.zoom.us",
+      "segments_recurrence": {
+        "sun": [
+          {
+            "end": "17:00",
+            "start": "09:00"
+          }
+        ],
+        "mon": [
+          {
+            "end": "17:00",
+            "start": "09:00"
+          }
+        ],
+        "tue": [
+          {
+            "end": "17:00",
+            "start": "09:00"
+          }
+        ],
+        "wed": [
+          {
+            "end": "17:00",
+            "start": "09:00"
+          }
+        ],
+        "thu": [
+          {
+            "end": "17:00",
+            "start": "09:00"
+          }
+        ],
+        "fri": [
+          {
+            "end": "17:00",
+            "start": "09:00"
+          }
+        ],
+        "sat": [
+          {
+            "end": "17:00",
+            "start": "09:00"
+          }
+        ]
+      },
+      "time_zone": "Asia/Shanghai"
+    }
+  ]
+}

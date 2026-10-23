@@ -1,0 +1,11 @@
+{
+  "next_page_token": "cm2n7z2vl000e9cllp4ckoc45",
+  "page_size": 15,
+  "total_records": "45",
+  "scheduling_groups": [
+    {
+      "scheduling_group_id": "cmgoyz7mb00002f6obth9ojea",
+      "name": "Supportline"
+    }
+  ]
+}

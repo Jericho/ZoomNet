@@ -1,0 +1,28 @@
+{
+  "attachments": [
+    {
+      "download_url": "https://exampleurl.us/file/download/x18dcVWxTcCzbp4zr2AT3A?jwt=eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJjcm9zc2ZpbGUiLCJhdWQiOiJmaWxlIiwiZGlnIjoiYTZkODE4NzQ2MDNmN2UzZWM4OThkNDMxM2IxNjNhNTQ4NGI4MjkxMTA0ZmQyYzc4MTg1NmY0MGUxY2FlOTI3YyIsImV4cCI6MTY0ODE5NDA1NH0.eCURcan9QOOw9wvBdSn_-TBzgT5HWBzp04IfsK19Oto",
+      "file_id": "x18dcVWxTcCzbp4zr2AT3A",
+      "name": "FWDHOMaNRaqIvNc3aIdisg.jpg",
+      "size": 225740,
+      "type": "JPG"
+    }
+  ],
+  "date_time": "2022-03-23T02:58:01Z",
+  "direction": "In",
+  "message": "Welcome to our company!",
+  "message_id": "IQ-cRH5P5EiTWCwpNzScnECJw",
+  "message_status": "delivered",
+  "sender": {
+    "display_name": "ezreal mao",
+    "id": "WeD59Hn7SvqNRB9jcxz5NQ",
+    "type": "user",
+    "phone_number": "12092693625"
+  },
+  "recipient": {
+    "display_name": "test api",
+    "id": "DnEopNmXQEGU2uvvzjgojw",
+    "type": "user",
+    "phone_number": "18108001001"
+  }
+}
