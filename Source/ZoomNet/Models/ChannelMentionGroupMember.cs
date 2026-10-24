@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace ZoomNet.Models
 {
-	/// <summary>MEmeber of a channel mention group.</summary>
+	/// <summary>Member of a channel mention group.</summary>
 	public class ChannelMentionGroupMember
 	{
 		/// <summary>Gets or sets the display name.</summary>
