@@ -10,7 +10,6 @@ namespace ZoomNet.Models
 		public string Id { get; set; }
 
 		/// <summary>Gets or sets the phone number.</summary>
-		/// </summary>
 		[JsonPropertyName("number")]
 		public string Number { get; set; }
 
