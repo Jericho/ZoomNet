@@ -124,5 +124,44 @@ namespace ZoomNet.Resources
 				.WithCancellationToken(cancellationToken)
 				.AsMessage();
 		}
+
+		#region Call Queues
+		/// <inheritdoc/>
+		public Task<CallQueue> GetCallQueueAsync(string callQueueId, CancellationToken cancellationToken = default)
+		{
+			return _client
+				.GetAsync($"phone/call_queues/{callQueueId}")
+				.WithCancellationToken(cancellationToken)
+				.AsObject<CallQueue>();
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<CallQueue>> GetAllCallQueuesAsync(string department = null, string costCenter = null, string siteId = null, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			Utils.ValidateRecordPerPage(recordsPerPage, max: 100);
+
+			return _client
+				.GetAsync($"phone/call_queues")
+				.WithArgument("department", department)
+				.WithArgument("cost_center", costCenter)
+				.WithArgument("site_id", siteId)
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<CallQueue>("call_queues");
+		}
+
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<CallQueueMember>> GetCallQueueMembersAsync(string callQueueId, int recordsPerPage = 30, string pagingToken = null, CancellationToken cancellationToken = default)
+		{
+			Utils.ValidateRecordPerPage(recordsPerPage);
+			return _client
+				.GetAsync($"phone/call_queues/{callQueueId}/members")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", pagingToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<CallQueueMember>("call_queue_members");
+		}
+		#endregion
 	}
 }
