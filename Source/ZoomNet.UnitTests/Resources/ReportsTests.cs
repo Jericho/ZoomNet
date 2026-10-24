@@ -308,6 +308,78 @@ namespace ZoomNet.UnitTests.Resources
 
 		#endregion
 
+		#region GetOperationLogsReportAsync Tests
+
+		[Fact]
+		public async Task GetOperationLogsReportAsync_ValidParameters_ReturnsOperationLogs()
+		{
+			// Arrange
+			var from = new DateTime(2021, 10, 1);
+			var to = new DateTime(2021, 10, 12);
+			var type = ReportPhoneOperationsLogType.PhoneNumber;
+			var pageToken = "BJLYC6PABbAHdjwSkGVQeeR6B1juwHqj3G2";
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "reports", "operationlogs"))
+				.WithQueryString("from", "2021-10-01")
+				.WithQueryString("to", "2021-10-12")
+				.WithQueryString("category_type", type.ToEnumString())
+				.WithQueryString("page_size", "20")
+				.WithQueryString("next_page_token", pageToken)
+				.Respond("application/json", EndpointsResource.phone_reports_operationlogs_GET);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var reports = new Reports(client);
+
+			// Act
+			var result = await reports.GetOperationLogsReportAsync(from, to, type, 20, pageToken, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.ShouldNotBeNull();
+			result.RecordsPerPage.ShouldBe(20);
+			result.NextPageToken.ShouldBe(pageToken);
+			result.Records.ShouldHaveSingleItem();
+			result.Records[0].Action.ShouldBe("ADD");
+			result.Records[0].CategoryType.ShouldBe(type);
+			result.Records[0].OperationDetail.ShouldBe("Add BYOC +86 182 5188 5564");
+			result.Records[0].Operator.ShouldBe("user@test.com");
+			result.Records[0].Time.ShouldBe(new DateTime(2021, 10, 12, 10, 0, 0, DateTimeKind.Utc));
+		}
+
+		[Fact]
+		public async Task GetOperationLogsReportAsync_ToDateBeforeFromDate_ThrowsException()
+		{
+			// Arrange
+			var from = new DateTime(2021, 10, 12);
+			var to = new DateTime(2021, 10, 1);
+			var mockHttp = new MockHttpMessageHandler();
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var reports = new Reports(client);
+
+			// Act & Assert
+			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => reports.GetOperationLogsReportAsync(from, to, cancellationToken: TestContext.Current.CancellationToken));
+		}
+
+		[Fact]
+		public async Task GetOperationLogsReportAsync_DateRangeExceedsOneMonth_ThrowsException()
+		{
+			// Arrange
+			var from = new DateTime(2021, 10, 1);
+			var to = new DateTime(2021, 11, 1, 0, 0, 1);
+			var mockHttp = new MockHttpMessageHandler();
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var reports = new Reports(client);
+
+			// Act & Assert
+			await Should.ThrowAsync<ArgumentOutOfRangeException>(() => reports.GetOperationLogsReportAsync(from, to, cancellationToken: TestContext.Current.CancellationToken));
+		}
+
+		#endregion
+
 		#region Edge Case Tests
 
 		[Fact]
