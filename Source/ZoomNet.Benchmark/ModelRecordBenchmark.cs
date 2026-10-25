@@ -28,7 +28,13 @@ public class ModelRecordBenchmark
 			StartTime = new DateTime(2026, 1, 1, 13, 30, 0, DateTimeKind.Utc)
 		};
 
-		_registrantCopy = _registrant with { };
+		_registrantCopy = new RegistrantInfo
+		{
+			EventId = _registrant.EventId,
+			Id = _registrant.Id,
+			JoinUrl = _registrant.JoinUrl,
+			StartTime = _registrant.StartTime
+		};
 		_registrantJson = JsonSerializer.Serialize(_registrant);
 
 		_callQueue = new CallQueue
