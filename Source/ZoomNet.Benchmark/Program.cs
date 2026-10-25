@@ -6,5 +6,5 @@ public static class Program
 {
 	public static void Main(string[] args)
 		//=> BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args);
-		=> BenchmarkSwitcher.FromTypes([typeof(PathSplitBenchmark)]).Run(args);
+		=> BenchmarkSwitcher.FromTypes([typeof(ModelRecordBenchmark)]).Run(args);
 }
