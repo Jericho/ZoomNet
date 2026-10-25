@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Settings that allow extension or user to make and accept calls and send SMS.</summary>
-	public class AllowedCallLocationsSettings : SettingsGroupBase
+	public record AllowedCallLocationsSettings : SettingsGroupBase
 	{
 		/// <summary>Gets or sets a value indicating whether to allow internal calls when outside of allowed locations.</summary>
 		[JsonPropertyName("allow_internal_calls")]

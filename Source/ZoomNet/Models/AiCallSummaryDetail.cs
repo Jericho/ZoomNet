@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>AI phone call summary detail.</summary>
-	public class AiCallSummaryDetail : AiCallSummary
+	public record AiCallSummaryDetail : AiCallSummary
 	{
 		/// <summary>Gets or sets the recap of the call summary.</summary>
 		[JsonPropertyName("call_summary")]

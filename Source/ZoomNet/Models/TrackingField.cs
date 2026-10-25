@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A tracking field.</summary>
-	public class TrackingField
+	public record TrackingField
 	{
 		/// <summary>Gets or sets the name of the tracking field.</summary>
 		[JsonPropertyName("field")]

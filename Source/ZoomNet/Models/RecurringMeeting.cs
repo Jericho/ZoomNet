@@ -4,7 +4,7 @@ namespace ZoomNet.Models
 {
 	/// <summary>A meeting.</summary>
 	/// <seealso cref="ZoomNet.Models.Meeting" />
-	public class RecurringMeeting : Meeting
+	public record RecurringMeeting : Meeting
 	{
 		/// <summary>Gets or sets the occurrences.</summary>
 		[JsonPropertyName("occurrences")]

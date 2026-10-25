@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Delete data item information.</summary>
-	public class DeleteDataItem
+	public record DeleteDataItem
 	{
 		/// <summary>Gets or sets the retention duration where -1 means unlimited. See <see cref="DurationUnit"/> for the value unit.</summary>
 		[JsonPropertyName("duration")]

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Standard Registration question.</summary>
-	public class RegistrationStandardQuestion
+	public record RegistrationStandardQuestion
 	{
 		/// <summary>Gets or sets the field name.</summary>
 		[JsonPropertyName("field_name")]

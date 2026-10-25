@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Represents the waiting room settings for a meeting.</summary>
-	public class MeetingWaitingRoomSettings
+	public record MeetingWaitingRoomSettings
 	{
 		/// <summary>Gets or sets the mode of the waiting room.</summary>
 		[JsonPropertyName("mode")]

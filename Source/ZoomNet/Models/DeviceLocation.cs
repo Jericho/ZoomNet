@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Information about device location.</summary>
-	public class DeviceLocation
+	public record DeviceLocation
 	{
 		/// <summary>Gets or sets the basic service set identifier of the device.</summary>
 		[JsonPropertyName("bssid")]

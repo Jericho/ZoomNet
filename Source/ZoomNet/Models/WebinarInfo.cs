@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Represents information about webinar.</summary>
-	public class WebinarInfo : WebinarBasicInfo
+	public record WebinarInfo : WebinarBasicInfo
 	{
 		/// <summary>Gets or sets the scheduled webinar duration in minutes.</summary>
 		[JsonPropertyName("duration")]

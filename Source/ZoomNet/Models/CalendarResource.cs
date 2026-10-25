@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Calendar resource record.</summary>
-	public class CalendarResource
+	public record CalendarResource
 	{
 		/// <summary>Gets or sets the id of the room assigned to the calendar resource.</summary>
 		[JsonPropertyName("assigned_room_id")]

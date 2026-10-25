@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Information about phone call that includes call id and two parties - caller and callee.</summary>
-	public class WebhookPhoneCallInfo
+	public record WebhookPhoneCallInfo
 	{
 		/// <summary>Gets or sets the phone call unique id.</summary>
 		[JsonPropertyName("call_id")]

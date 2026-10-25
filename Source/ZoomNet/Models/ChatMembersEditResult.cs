@@ -5,7 +5,7 @@ namespace ZoomNet.Models
 	using ZoomNet.Json;
 
 	/// <summary>Chat channel invitation result.</summary>
-	public class ChatMembersEditResult
+	public record ChatMembersEditResult
 	{
 		/// <summary>Gets or sets the date and time when the member(s) are added to the channel.</summary>
 		[JsonPropertyName("added_at")]

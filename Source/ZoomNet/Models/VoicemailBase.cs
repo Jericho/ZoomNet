@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Base information about voicemail common for API endpoints and webhook events.</summary>
-	public abstract class VoicemailBase : VoicemailBasicInfo
+	public abstract record VoicemailBase : VoicemailBasicInfo
 	{
 		/// <summary>Gets or sets call element id.</summary>
 		[JsonPropertyName("call_element_id")]

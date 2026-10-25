@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>SMS message information (as provided in API endpoints).</summary>
-	public class SmsMessage : SmsMessageBase
+	public record SmsMessage : SmsMessageBase
 	{
 		/// <summary>Gets or sets the SMS direction.</summary>
 		[JsonPropertyName("direction")]

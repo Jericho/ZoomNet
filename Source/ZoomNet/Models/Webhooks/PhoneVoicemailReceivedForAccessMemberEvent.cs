@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a callee misses a call and receives a voicemail from the caller.</summary>
-	public class PhoneVoicemailReceivedForAccessMemberEvent : Event
+	public record PhoneVoicemailReceivedForAccessMemberEvent : Event
 	{
 		/// <summary>Gets or sets account id of the access member.</summary>
 		[JsonPropertyName("account_id")]

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Settings related to playing a prompt to call participants when the transcription has started.</summary>
-	public class TranscriptionStartPrompt
+	public record TranscriptionStartPrompt
 	{
 		/// <summary>Gets or sets the audio prompt file id.</summary>
 		/// <remarks>If the audio was removed from the user's audio library, it will be marked with a prefix, 'removed_vWby3OZaQlS1nAdmEAqgwA' for example.</remarks>

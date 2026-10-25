@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Information about the Enable continuous meeting chat feature.</summary>
-	public class ContinuousMeetingChatSettings
+	public record ContinuousMeetingChatSettings
 	{
 		/// <summary>Gets or sets whether to enable the Automatically add invited external users setting.</summary>
 		[JsonPropertyName("auto_add_invited_external_users")]

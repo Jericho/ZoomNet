@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Chat channel settings.</summary>
-	public class ChatChannelSettings
+	public record ChatChannelSettings
 	{
 		/// <summary>Gets or sets the value indicating who can add new channel members.</summary>
 		[JsonPropertyName("add_member_permissions")]

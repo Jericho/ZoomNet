@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Meeting AI summary returned by the Zoom Summaries API.</summary>
-	public class MeetingAiSummary
+	public record MeetingAiSummary
 	{
 		/// <summary>Gets or sets the edited summary.</summary>
 		[JsonPropertyName("edited_summary")]

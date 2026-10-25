@@ -4,7 +4,7 @@ namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered every time an invitation's recipient rejects an invitation to join a meeting or video call.</summary>
 	/// <remarks>This event is only suitable for triggering with the Zoom client.</remarks>
-	public class MeetingInvitationRejectedEvent : MeetingInvitationEvent
+	public record MeetingInvitationRejectedEvent : MeetingInvitationEvent
 	{
 		/// <summary>Gets or sets the email address of the user who rejected the meeting.</summary>
 		[JsonPropertyName("operator")]

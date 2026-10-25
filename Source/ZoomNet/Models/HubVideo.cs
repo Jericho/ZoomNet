@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A video/recording of a hub.</summary>
-	public class HubVideo
+	public record HubVideo
 	{
 		/// <summary>Gets or sets the video duration in minutes.</summary>
 		[JsonPropertyName("duration")]

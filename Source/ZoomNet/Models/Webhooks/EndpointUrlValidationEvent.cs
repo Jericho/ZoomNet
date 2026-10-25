@@ -8,7 +8,7 @@ using ZoomNet.Json;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when Zoom wants to validate the event notification endpoint URL you have configured in your account.</summary>
-	public class EndpointUrlValidationEvent : Event
+	public record EndpointUrlValidationEvent : Event
 	{
 		/// <summary>Gets or sets the token.</summary>
 		[JsonPropertyName("plainToken")]

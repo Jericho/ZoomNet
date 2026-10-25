@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models;
 
 /// <summary>A response from the Chatbot endpoints.</summary>
-public class ChatbotMessageInformation
+public record ChatbotMessageInformation
 {
 	/// <summary>Gets or sets the message ID.</summary>
 	[JsonPropertyName("message_id")]

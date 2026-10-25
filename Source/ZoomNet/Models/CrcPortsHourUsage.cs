@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Usage of the CRC for the hour.</summary>
-	public class CrcPortsHourUsage
+	public record CrcPortsHourUsage
 	{
 		/// <summary>Gets or sets the hour that the usage is for, in 24h format.</summary>
 		[JsonPropertyName("hour")]

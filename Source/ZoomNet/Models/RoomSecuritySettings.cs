@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Room security settings.</summary>
-	public class RoomSecuritySettings
+	public record RoomSecuritySettings
 	{
 		/// <summary>Gets or sets a value indicating whether all meetings must be secured with at least one security options.</summary>
 		/// <remarks>

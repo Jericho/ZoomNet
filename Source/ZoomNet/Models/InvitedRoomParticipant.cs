@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Represents information about the participant invited to join a meeting through phone (call out) from a Zoom room.</summary>
-	public class InvitedRoomParticipant
+	public record InvitedRoomParticipant
 	{
 		/// <summary>Gets or sets the type of call out.</summary>
 		/// <remarks>Supported values - 'h323' and 'sip'.</remarks>

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Represents properties that are applicable to all account or group phone settings.</summary>
-	public abstract class SettingsGroupBase
+	public abstract record SettingsGroupBase
 	{
 		/// <summary>Gets or sets a value indicating whether related settings are enabled.</summary>
 		[JsonPropertyName("enable")]

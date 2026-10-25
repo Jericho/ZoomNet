@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>Represents event related to meeting or webinar chat message sending.</summary>
-	public abstract class ChatMessageSentEvent : Event
+	public abstract record ChatMessageSentEvent : Event
 	{
 		/// <summary>Gets or sets the account id of the user who created the meeting or webinar.</summary>
 		[JsonPropertyName("account_id")]

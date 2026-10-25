@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>The result of a poll for a given participant.</summary>
-	public class PollResult
+	public record PollResult
 	{
 		/// <summary>Gets or sets the email address of the user who submitted answers to the poll.</summary>
 		[JsonPropertyName("email")]

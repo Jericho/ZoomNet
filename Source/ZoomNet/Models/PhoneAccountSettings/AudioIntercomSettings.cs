@@ -5,7 +5,7 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	/// When an intercom call is received, the phone beeps to notify the user of the incoming intercom call,
 	/// and the user's phone automatically answers the intercom call.
 	/// </summary>
-	public class AudioIntercomSettings : SettingsGroupBase
+	public record AudioIntercomSettings : SettingsGroupBase
 	{
 	}
 }

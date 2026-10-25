@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Details of a screensharing by a participant.</summary>
-	public class ScreenshareDetails
+	public record ScreenshareDetails
 	{
 		/// <summary>Gets or sets the type of content shared. Allowed values: application, whiteboard, desktop.</summary>
 		[JsonPropertyName("content")]

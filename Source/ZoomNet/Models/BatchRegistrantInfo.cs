@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Batch registrant Info.</summary>
-	public class BatchRegistrantInfo
+	public record BatchRegistrantInfo
 	{
 		/// <summary>Gets or sets registant's email.</summary>
 		[JsonPropertyName("email")]

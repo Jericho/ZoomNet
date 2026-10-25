@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>Represents an event related to user TSP account action (create/update/delete).</summary>
-	public abstract class UserTspEvent : Event
+	public abstract record UserTspEvent : Event
 	{
 		/// <summary>Gets or sets the account id of the user who made action related to TSP account.</summary>
 		[JsonPropertyName("account_id")]

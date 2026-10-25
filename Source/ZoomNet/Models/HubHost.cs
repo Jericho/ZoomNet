@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A Host.</summary>
-	public class HubHost
+	public record HubHost
 	{
 		/// <summary>Gets or sets the email address of the hub host.</summary>
 		[JsonPropertyName("email")]

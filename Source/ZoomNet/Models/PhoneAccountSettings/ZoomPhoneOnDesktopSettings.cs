@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Settings that allow to use Zoom Phone on desktop clients.</summary>
-	public class ZoomPhoneOnDesktopSettings : SettingsGroupBase
+	public record ZoomPhoneOnDesktopSettings : SettingsGroupBase
 	{
 		/// <summary>Gets or sets the clients that are allowed to make and receive calls.</summary>
 		[JsonPropertyName("allow_calling_clients")]

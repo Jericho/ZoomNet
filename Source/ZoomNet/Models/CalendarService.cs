@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Calendar service record.</summary>
-	public class CalendarService
+	public record CalendarService
 	{
 		/// <summary>Gets or sets the date and time when the calendar service was added.</summary>
 		[JsonPropertyName("added_date_time")]

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a webinar registration has been denied.</summary>
-	public class WebinarRegistrationDeniedEvent : WebinarRegistrationEvent
+	public record WebinarRegistrationDeniedEvent : WebinarRegistrationEvent
 	{
 		/// <summary>Gets or sets the email address of the user who denied the registration.</summary>
 		[JsonPropertyName("operator")]

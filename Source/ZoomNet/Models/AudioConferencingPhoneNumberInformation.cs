@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Toll-free and Fee-based Toll Call phone number information.</summary>
-	public class AudioConferencingPhoneNumberInformation
+	public record AudioConferencingPhoneNumberInformation
 	{
 		/// <summary>Gets or sets the phone number's E.164 country calling code.</summary>
 		[JsonPropertyName("code")]

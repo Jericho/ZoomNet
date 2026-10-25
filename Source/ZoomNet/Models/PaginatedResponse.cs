@@ -5,7 +5,7 @@ namespace ZoomNet.Models
 {
 	/// <summary>Pagination Object.</summary>
 	/// <typeparam name="T">The type of records.</typeparam>
-	public class PaginatedResponse<T>
+	public record PaginatedResponse<T>
 	{
 		/// <summary>Gets or sets the number of items returned on this page.</summary>
 		[JsonPropertyName("page_count")]

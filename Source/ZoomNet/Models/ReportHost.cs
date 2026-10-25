@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models;
 
 /// <summary>Host report item.</summary>
-public class ReportHost
+public record ReportHost
 {
 	/// <summary>Gets or sets the custom attributes.</summary>
 	[JsonPropertyName("custom_attributes")]

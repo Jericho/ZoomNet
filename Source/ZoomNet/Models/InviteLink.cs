@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Meeting invite link.</summary>
-	public class InviteLink
+	public record InviteLink
 	{
 		/// <summary>Gets or sets the URL to join the meeting.</summary>
 		[JsonPropertyName("join_url")]

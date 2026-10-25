@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a meeting is permanently deleted.</summary>
-	public class MeetingPermanentlyDeletedEvent : MeetingEvent
+	public record MeetingPermanentlyDeletedEvent : MeetingEvent
 	{
 		/// <summary>
 		/// Gets or sets the operation.

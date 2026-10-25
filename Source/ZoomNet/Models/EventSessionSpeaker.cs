@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A session speaker.</summary>
-	public class EventSessionSpeaker
+	public record EventSessionSpeaker
 	{
 		/// <summary>Gets or sets a value indicating whether the speaker has access to edit the session information.</summary>
 		[JsonPropertyName("access_to_edit_session")]

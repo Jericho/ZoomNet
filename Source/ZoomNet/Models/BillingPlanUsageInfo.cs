@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Usage information.</summary>
-	public class BillingPlanUsageInfo
+	public record BillingPlanUsageInfo
 	{
 		/// <summary>Gets or sets the Base plan usage information.</summary>
 		[JsonPropertyName("plan_base")]

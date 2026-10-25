@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>An event access link.</summary>
-	public class EventAccessLink
+	public record EventAccessLink
 	{
 		/// <summary>Gets or sets the access link id.</summary>
 		[JsonPropertyName("access_link_id")]

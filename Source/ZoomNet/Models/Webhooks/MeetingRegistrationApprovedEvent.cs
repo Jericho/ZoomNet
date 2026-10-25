@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a meeting registration has been approved.</summary>
-	public class MeetingRegistrationApprovedEvent : MeetingRegistrationEvent
+	public record MeetingRegistrationApprovedEvent : MeetingRegistrationEvent
 	{
 		/// <summary>Gets or sets the email address of the user who approved the registration.</summary>
 		[JsonPropertyName("operator")]

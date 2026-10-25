@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>Represents an event related to the phone call log/element/history operation (deleted/completed).</summary>
-	public abstract class PhoneCallLogOperationEvent : Event
+	public abstract record PhoneCallLogOperationEvent : Event
 	{
 		/// <summary>Gets or sets the account id of the call log.</summary>
 		[JsonPropertyName("account_id")]

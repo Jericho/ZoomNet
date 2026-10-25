@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Settings that allow calls placed on hold to be resumed from another location using a retrieval code.</summary>
-	public class CallParkSettings : SettingsGroupBase
+	public record CallParkSettings : SettingsGroupBase
 	{
 		/// <summary>Gets or sets the action if a parked call is not picked up.</summary>
 		[JsonPropertyName("call_not_picked_up_action")]

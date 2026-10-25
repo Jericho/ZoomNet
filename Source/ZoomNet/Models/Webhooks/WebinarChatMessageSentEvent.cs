@@ -1,7 +1,7 @@
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a user sends a public or private chat message during a webinar using the chat feature.</summary>
-	public class WebinarChatMessageSentEvent : ChatMessageSentEvent
+	public record WebinarChatMessageSentEvent : ChatMessageSentEvent
 	{
 		/// <summary>Gets or sets the webinar id.</summary>
 		public long WebinarId { get; set; }

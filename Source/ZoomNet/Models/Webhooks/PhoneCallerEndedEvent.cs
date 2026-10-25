@@ -3,7 +3,7 @@ using System;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when the caller ends a Zoom Phone call.</summary>
-	public class PhoneCallerEndedEvent : PhoneCallFlowEvent
+	public record PhoneCallerEndedEvent : PhoneCallFlowEvent
 	{
 		/// <summary>Gets or sets the date and time when the ringing started.</summary>
 		public DateTime RingingStartedOn { get; set; }

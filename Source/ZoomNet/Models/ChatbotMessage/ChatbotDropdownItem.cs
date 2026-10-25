@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.ChatbotMessage;
 
 /// <summary>A dropdown list item.</summary>
-public class ChatbotDropdownItem
+public record ChatbotDropdownItem
 {
 	/// <summary>Gets or sets the text of this dropdown list item.</summary>
 	[JsonPropertyName("text")]

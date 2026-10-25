@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Account settings as provided in <see cref="Webhooks.PhoneAccountSettingsUpdatedEvent"/>.</summary>
-	public class WebhookAccountSettings
+	public record WebhookAccountSettings
 	{
 		/// <summary>Gets or sets the updated account's id.</summary>
 		[JsonPropertyName("id")]

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a user recovers a recording from the trash.</summary>
-	public class RecordingRecoveredEvent : RecordingFilesEvent
+	public record RecordingRecoveredEvent : RecordingFilesEvent
 	{
 		/// <summary>Gets or sets authentication token to use to retrieve the recording.</summary>
 		/// <remarks>

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Phone number.</summary>
-	public class PhoneNumber
+	public record PhoneNumber
 	{
 		/// <summary>Gets or sets the country code. For example, for United States phone numbers, this will be a +1 value.</summary>
 		[JsonPropertyName("code")]

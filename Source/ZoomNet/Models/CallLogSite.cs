@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Call transfer/forward information.</summary>
-	public class CallLogSite
+	public record CallLogSite
 	{
 		/// <summary>Gets or sets the Id.</summary>
 		[JsonPropertyName("id")]

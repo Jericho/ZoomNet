@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Base model for metrics returned by Dashboards client for meetings and webinars.</summary>
-	public class DashboardMetricsBase
+	public record DashboardMetricsBase
 	{
 		/// <summary>Gets or sets the department of the host.</summary>
 		[JsonPropertyName("dept")]

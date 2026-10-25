@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Represents a folder in the Zoom Rooms Digital Signage content library.</summary>
-	public class DigitalSignageContentFolder
+	public record DigitalSignageContentFolder
 	{
 		/// <summary>Gets or sets the folder ID.</summary>
 		[JsonPropertyName("folder_id")]

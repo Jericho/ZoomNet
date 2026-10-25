@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Room tag.</summary>
-	public class RoomTag
+	public record RoomTag
 	{
 		/// <summary>Gets or sets the short description of the Zoom Room Tag.</summary>
 		[JsonPropertyName("description")]

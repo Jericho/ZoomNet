@@ -5,7 +5,7 @@ using ZoomNet.Json;
 namespace ZoomNet.Models
 {
 	/// <summary>Meeting participant feedback provided at the end of the meeting.</summary>
-	public class MeetingParticipantFeedback
+	public record MeetingParticipantFeedback
 	{
 		/// <summary>Gets or sets the participant's comments.</summary>
 		/// <remarks>Should be null if participant is satisfied.</remarks>

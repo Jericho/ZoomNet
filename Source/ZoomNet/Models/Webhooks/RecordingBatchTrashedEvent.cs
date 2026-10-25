@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered every time a user temporarily deletes all of their cloud recordings.</summary>
-	public class RecordingBatchTrashedEvent : RecordingEvent
+	public record RecordingBatchTrashedEvent : RecordingEvent
 	{
 		/// <summary>Gets or sets the type of batch operation.</summary>
 		[JsonPropertyName("operation")]

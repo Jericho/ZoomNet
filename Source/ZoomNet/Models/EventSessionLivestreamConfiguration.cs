@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Livestream configuration for a session.</summary>
-	public class EventSessionLivestreamConfiguration
+	public record EventSessionLivestreamConfiguration
 	{
 		/// <summary>Gets or sets the effective time of the stream key when it is valid.</summary>
 		[JsonPropertyName("effective_time")]

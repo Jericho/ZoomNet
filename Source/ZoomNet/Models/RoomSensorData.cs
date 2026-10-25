@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Room sensor data.</summary>
-	public class RoomSensorData
+	public record RoomSensorData
 	{
 		/// <summary>Gets or sets the time when the sensor data is reported.</summary>
 		[JsonPropertyName("date_time")]

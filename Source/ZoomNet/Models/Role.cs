@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Role.</summary>
-	public class Role
+	public record Role
 	{
 		/// <summary>Gets or sets the description.</summary>
 		[JsonPropertyName("description")]

@@ -5,7 +5,7 @@ namespace ZoomNet.Models
 {
 	/// <summary>A scheduled meeting.</summary>
 	/// <seealso cref="ZoomNet.Models.Meeting" />
-	public class ScheduledMeeting : Meeting
+	public record ScheduledMeeting : Meeting
 	{
 		/// <summary>Gets or sets the meeting duration in minutes.</summary>
 		[JsonPropertyName("duration")]

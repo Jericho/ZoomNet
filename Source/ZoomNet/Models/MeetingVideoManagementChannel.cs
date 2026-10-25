@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Represents the waiting room settings for a meeting.</summary>
-	public class MeetingVideoManagementChannel
+	public record MeetingVideoManagementChannel
 	{
 		/// <summary>Gets or sets the id of the video management channel.</summary>
 		[JsonPropertyName("channel_id")]

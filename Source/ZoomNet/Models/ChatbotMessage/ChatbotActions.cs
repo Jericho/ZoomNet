@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.ChatbotMessage;
 
 /// <summary>A message line containing one or more actions.</summary>
-public class ChatbotActions : IChatbotBody, IChatbotSection
+public record ChatbotActions : IChatbotBody, IChatbotSection
 {
 	/// <summary>Gets or sets the actions.</summary>
 	[JsonPropertyName("items")]

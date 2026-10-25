@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered every time one of app users or account users temporarily deletes a meeting summary.</summary>
-	public class MeetingSummaryTrashedEvent : MeetingSummaryEvent
+	public record MeetingSummaryTrashedEvent : MeetingSummaryEvent
 	{
 		/// <summary>Gets or sets the email address of the user who deleted the meeting summary.</summary>
 		[JsonPropertyName("operator")]

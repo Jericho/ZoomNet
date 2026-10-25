@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Call transfer information as provided in webhook events.</summary>
-	public class WebhookCallTransferInfo
+	public record WebhookCallTransferInfo
 	{
 		/// <summary>Gets or sets call's unique id.</summary>
 		[JsonPropertyName("call_id")]

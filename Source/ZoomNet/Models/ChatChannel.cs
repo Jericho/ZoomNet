@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Chat channel.</summary>
-	public class ChatChannel
+	public record ChatChannel
 	{
 		/// <summary>Gets or sets the channel id.</summary>
 		[JsonPropertyName("id")]

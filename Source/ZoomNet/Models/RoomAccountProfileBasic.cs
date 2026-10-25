@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Zoom Room account profile basic information.</summary>
-	public class RoomAccountProfileBasic
+	public record RoomAccountProfileBasic
 	{
 		/// <summary>Gets or sets the code required to exit the Zoom Room.</summary>
 		[JsonPropertyName("required_code_to_exit")]

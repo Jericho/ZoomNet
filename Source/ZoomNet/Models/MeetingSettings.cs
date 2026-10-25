@@ -6,7 +6,7 @@ using ZoomNet.Json;
 namespace ZoomNet.Models
 {
 	/// <summary>Meeting Settings.</summary>
-	public class MeetingSettings
+	public record MeetingSettings
 	{
 		/// <summary>Gets or sets the list of additional data center regions for hosting the meeting.</summary>
 		[JsonPropertyName("additional_data_center_regions")]

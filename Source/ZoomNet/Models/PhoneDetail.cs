@@ -23,7 +23,7 @@ namespace ZoomNet.Models
 	/// <item><term>status</term><description>The status of the phone.</description></item>
 	/// </list>
 	/// </remarks>
-	public class PhoneDetail
+	public record PhoneDetail
 	{
 		/// <summary>Gets or sets the assignee information for the phone.</summary>
 		[JsonPropertyName("assignee")]
