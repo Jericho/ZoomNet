@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Meeting summary information as received in related webhook events.</summary>
-	public class WebhookMeetingSummary
+	public record WebhookMeetingSummary
 	{
 		/// <summary>Gets or sets the meeting's end date and time.</summary>
 		[JsonPropertyName("meeting_end_time")]

@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Ticket type.</summary>
-	public class EventTicketType
+	public record EventTicketType
 	{
 		/// <summary>Gets or sets the list of session IDs pre-bookmarked or ALL.</summary>
 		/// <remarks>ALL refers to all the sessions in the event.</remarks>

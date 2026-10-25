@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Virtual background file.</summary>
-	public class VirtualBackgroundFile
+	public record VirtualBackgroundFile
 	{
 		/// <summary>Gets or sets the unique identifier.</summary>
 		[JsonPropertyName("id")]

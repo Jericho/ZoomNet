@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Metrics for a client satisfaction item.</summary>
-	public class ClientSatisfactionMetrics
+	public record ClientSatisfactionMetrics
 	{
 		/// <summary>Gets or sets the date of the report.</summary>
 		[JsonPropertyName("date")]

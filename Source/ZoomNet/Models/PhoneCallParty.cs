@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Information about phone call party, i.e. caller or callee.</summary>
-	public class PhoneCallParty
+	public record PhoneCallParty
 	{
 		/// <summary>Gets or sets the account code.</summary>
 		[JsonPropertyName("account_name")]

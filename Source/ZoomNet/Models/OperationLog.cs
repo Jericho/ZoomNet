@@ -10,7 +10,7 @@ namespace ZoomNet.Models
 	/// <summary>
 	/// Represents a log entry for an operation performed in Zoom.
 	/// </summary>
-	public class OperationLog
+	public record OperationLog
 	{
 		/// <summary>Gets or sets the action.</summary>
 		[JsonPropertyName("action")]

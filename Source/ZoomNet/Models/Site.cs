@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models;
 
 /// <summary>Site information to which a user belongs to.</summary>
-public class Site
+public record Site
 {
 	/// <summary>Gets or sets the Id.</summary>
 	[JsonPropertyName("id")]

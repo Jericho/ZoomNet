@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Virtual background settings.</summary>
-	public class VirtualBackgroundSettings
+	public record VirtualBackgroundSettings
 	{
 		/// <summary>Gets or sets a value indicating whether to allow users to upload custom backgrounds.</summary>
 		[JsonPropertyName("allow_upload_custom")]

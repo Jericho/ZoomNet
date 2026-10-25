@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Zoom Account phone settings.</summary>
-	public class AccountSettings : CommonAccountAndGroupSettings
+	public record AccountSettings : CommonAccountAndGroupSettings
 	{
 		/// <summary>Gets or sets settings that allow users to perform call control actions from authorized Zoom Marketplace apps.</summary>
 		[JsonPropertyName("auto_call_from_third_party_apps")]

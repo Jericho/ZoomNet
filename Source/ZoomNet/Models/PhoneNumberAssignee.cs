@@ -11,7 +11,7 @@ namespace ZoomNet.Models
 	/// <item><term>type</term><description>The type of the assignee, which can be one of the following:</description></item>
 	/// </list>
 	/// </remarks>
-	public class PhoneNumberAssignee
+	public record PhoneNumberAssignee
 	{
 		/// <summary>Gets or sets the extension number of the assignee.</summary>
 		[JsonPropertyName("extension_number")]

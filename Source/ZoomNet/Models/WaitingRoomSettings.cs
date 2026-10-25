@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Waiting room settings.</summary>
-	public class WaitingRoomSettings
+	public record WaitingRoomSettings
 	{
 		/// <summary>Gets or sets the type of participants to be admitted to tge waiting room.</summary>
 		[JsonPropertyName("participants_to_place_in_waiting_room")]

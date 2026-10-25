@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Metrics of a meeting participant.</summary>
-	public class DashboardMeetingParticipant : DashboardParticipant
+	public record DashboardMeetingParticipant : DashboardParticipant
 	{
 		/// <summary>Gets or sets the type of camera used by participant during the meeting.</summary>
 		[JsonPropertyName("camera")]

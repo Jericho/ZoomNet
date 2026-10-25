@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Telephony user settings.</summary>
-	public class TelephonyUserSettings
+	public record TelephonyUserSettings
 	{
 		/// <summary>Gets or sets the information about the third party audio service.</summary>
 		[JsonPropertyName("audio_conference_info")]

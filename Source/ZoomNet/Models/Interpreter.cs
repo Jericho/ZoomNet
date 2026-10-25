@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A session interpreter.</summary>
-	public abstract class Interpreter
+	public abstract record Interpreter
 	{
 		/// <summary>Gets or sets the email address of the interpreter.</summary>
 		[JsonPropertyName("email")]

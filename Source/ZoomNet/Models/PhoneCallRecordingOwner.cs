@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Phone call owner.</summary>
-	public class PhoneCallRecordingOwner
+	public record PhoneCallRecordingOwner
 	{
 		/// <summary>Gets or sets the extension number.</summary>
 		[JsonPropertyName("extension_number")]

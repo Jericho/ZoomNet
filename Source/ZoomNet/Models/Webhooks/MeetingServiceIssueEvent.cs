@@ -9,7 +9,7 @@ namespace ZoomNet.Models.Webhooks
 	/// - High CPU usage.
 	/// - Call reconnection problems.
 	/// </summary>
-	public class MeetingServiceIssueEvent : MeetingInfoEvent
+	public record MeetingServiceIssueEvent : MeetingInfoEvent
 	{
 		/// <summary>Gets or sets the issues that occurred during the meeting.</summary>
 		public string[] Issues { get; set; }

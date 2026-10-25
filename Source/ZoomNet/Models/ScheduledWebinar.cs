@@ -5,7 +5,7 @@ namespace ZoomNet.Models
 {
 	/// <summary>A scheduled webinar.</summary>
 	/// <seealso cref="ZoomNet.Models.Webinar" />
-	public class ScheduledWebinar : Webinar
+	public record ScheduledWebinar : Webinar
 	{
 		/// <summary>Gets or sets the webinar start time.</summary>
 		[JsonPropertyName("start_time")]

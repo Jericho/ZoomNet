@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.ChatbotMessage;
 
 /// <summary>A single form field element.</summary>
-public class ChatbotFormField : IChatbotValidate
+public record ChatbotFormField : IChatbotValidate
 {
 	/// <summary>Gets or sets a value indicating whether the field is editable.</summary>
 	[JsonPropertyName("editable")]

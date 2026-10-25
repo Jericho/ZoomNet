@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Contact.</summary>
-	public class Contact
+	public record Contact
 	{
 		/// <summary>Gets or sets the direct number.</summary>
 		[JsonPropertyName("direct_number")]

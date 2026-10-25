@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Line subscription information.</summary>
-	public class LineSubscription
+	public record LineSubscription
 	{
 		/// <summary>Gets or sets the display name.</summary>
 		[JsonPropertyName("display_name")]

@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Details of an issue for a Zoom room.</summary>
-	public class ZoomRoomIssueDetails
+	public record ZoomRoomIssueDetails
 	{
 		/// <summary>
 		/// Gets or sets the issue type.<br/>

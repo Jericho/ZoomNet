@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A poll associated with a meeting or a webinar.</summary>
-	public class PollForMeetingOrWebinar : Poll
+	public record PollForMeetingOrWebinar : Poll
 	{
 		/// <summary>Gets or sets the questions.</summary>
 		[JsonPropertyName("questions")]

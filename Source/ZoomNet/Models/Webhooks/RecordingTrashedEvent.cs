@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a user initially deletes a cloud recording.</summary>
-	public class RecordingTrashedEvent : RecordingFilesEvent
+	public record RecordingTrashedEvent : RecordingFilesEvent
 	{
 		/// <summary>Gets or sets authentication token to use to retrieve the recording.</summary>
 		/// <remarks>

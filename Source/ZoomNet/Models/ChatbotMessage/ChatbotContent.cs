@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.ChatbotMessage;
 
 /// <summary>The message content for a Chatbot message.</summary>
-public class ChatbotContent
+public record ChatbotContent
 {
 	/// <summary>Gets or sets the body of the message.</summary>
 	[JsonPropertyName("body")]

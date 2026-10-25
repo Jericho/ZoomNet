@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Meeting Resource.</summary>
-	public class MeetingResource
+	public record MeetingResource
 	{
 		/// <summary>Gets or sets the type of the meeting resource.</summary>
 		[JsonPropertyName("resource_type")]

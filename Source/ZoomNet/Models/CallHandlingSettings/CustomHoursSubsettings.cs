@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.CallHandlingSettings
 {
 	/// <summary>Call handling custom hours subsettings.</summary>
-	public class CustomHoursSubsettings : CallHandlingSubsettingsBase
+	public record CustomHoursSubsettings : CallHandlingSubsettingsBase
 	{
 		/// <summary>
 		/// Gets or sets a value indicating whether the queue members are able to set their own business hours.

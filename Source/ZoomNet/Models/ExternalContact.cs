@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Zoom phone external contact model.</summary>
-	public class ExternalContact
+	public record ExternalContact
 	{
 		/// <summary>Gets or sets the Zoom-generated external contact Id. Don't set it on external contact creation, it will be generated automatically.</summary>
 		[JsonPropertyName("external_contact_id")]

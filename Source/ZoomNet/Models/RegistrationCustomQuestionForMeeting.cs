@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A custom question to be answered during registration process for a meeting.</summary>
-	public class RegistrationCustomQuestionForMeeting
+	public record RegistrationCustomQuestionForMeeting
 	{
 		/// <summary>Gets or sets the answers to the question.</summary>
 		/// <remarks>Can not be used for short question type as this type of question requires registrants to type out the answer.</remarks>

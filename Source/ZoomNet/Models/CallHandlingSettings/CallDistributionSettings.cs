@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.CallHandlingSettings
 {
 	/// <summary>Call distribution model for <see cref="CallHandlingSubsettings"/> settings.</summary>
-	public class CallDistributionSettings
+	public record CallDistributionSettings
 	{
 		/// <summary>
 		/// Gets or sets a value indicating whether the maximum number of calls that can be handled simultaneously is less than half of the total amount of available call queue members.

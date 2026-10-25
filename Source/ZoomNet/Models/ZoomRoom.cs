@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Zoom Room.</summary>
-	public class ZoomRoom
+	public record ZoomRoom
 	{
 		/// <summary>Gets or sets the Zoom room email type.</summary>
 		[JsonPropertyName("account_type")]

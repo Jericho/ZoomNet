@@ -5,7 +5,7 @@ using ZoomNet.Models.QualityOfService;
 namespace ZoomNet.Models
 {
 	/// <summary>Quality of service provided to a participant.</summary>
-	public class DashboardParticipantQos
+	public record DashboardParticipantQos
 	{
 		/// <summary>Gets or sets the value of metrics on screen share being sent from a Cloud Room Connector used by the participant to join the meeting.</summary>
 		[JsonPropertyName("as_device_from_crc")]

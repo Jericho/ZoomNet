@@ -5,7 +5,7 @@ using ZoomNet.Utilities;
 namespace ZoomNet.Models
 {
 	/// <summary>Call element record.</summary>
-	public class CallElement
+	public record CallElement
 	{
 		/// <summary>Gets or sets the call answer time.</summary>
 		[JsonPropertyName("answer_time")]

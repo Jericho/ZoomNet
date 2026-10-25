@@ -3,7 +3,7 @@ using System;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered every time a host or webinar attendee changes their role during a webinar.</summary>
-	public class WebinarParticipantRoleChangedEvent : WebinarParticipantEvent
+	public record WebinarParticipantRoleChangedEvent : WebinarParticipantEvent
 	{
 		/// <summary>Gets or sets the time when the participant changed the role.</summary>
 		public DateTime ChangedOn { get; set; }

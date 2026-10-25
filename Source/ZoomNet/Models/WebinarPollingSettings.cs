@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Webinar polling settings.</summary>
-	public class WebinarPollingSettings
+	public record WebinarPollingSettings
 	{
 		/// <summary>Gets or sets a value indicating whether to allow host to create advanced polls and quizzes.</summary>
 		/// <remarks>Advanced polls and quizzes include single choice, multiple choice, drop down, matching, short answer, long answer, rank order, and fill-in-the-blank questions. Hosts can also set the correct answers for quizzes they create.</remarks>

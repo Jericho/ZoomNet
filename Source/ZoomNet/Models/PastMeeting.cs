@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A meeting that occurred in the past.</summary>
-	public class PastMeeting : MeetingBasicInfo
+	public record PastMeeting : MeetingBasicInfo
 	{
 		/// <summary>Gets or sets the meeting host's department.</summary>
 		[JsonPropertyName("dept")]

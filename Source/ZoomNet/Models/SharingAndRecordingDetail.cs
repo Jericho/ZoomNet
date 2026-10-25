@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Details of a sharing or recording by a meeting participant.</summary>
-	public class SharingAndRecordingDetail
+	public record SharingAndRecordingDetail
 	{
 		/// <summary>Gets or sets the type of content shared.</summary>
 		[JsonPropertyName("content")]

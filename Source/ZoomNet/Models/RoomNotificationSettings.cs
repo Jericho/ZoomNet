@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>The model of room location notification settings.</summary>
-	public class RoomNotificationSettings
+	public record RoomNotificationSettings
 	{
 		/// <summary>Gets or sets a value indicating whether to send an alert when the audio echo test result meets usability threshold.</summary>
 		[JsonPropertyName("audio_meet_usability_threshold")]

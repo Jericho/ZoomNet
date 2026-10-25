@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Information about the updated asset.</summary>
-	public class WebhookAssetUpdates
+	public record WebhookAssetUpdates
 	{
 		/// <summary>Gets or sets the asset's description.</summary>
 		[JsonPropertyName("asset_description")]

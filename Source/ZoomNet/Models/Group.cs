@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Group.</summary>
-	public class Group
+	public record Group
 	{
 		/// <summary>Gets or sets the group id.</summary>
 		[JsonPropertyName("id")]

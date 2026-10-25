@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Settings that allow to display call feedback at the end of the calls.</summary>
-	public class DisplayCallFeedbackSurveySettings : SettingsGroupBase
+	public record DisplayCallFeedbackSurveySettings : SettingsGroupBase
 	{
 		/// <summary>Gets or sets feedback duration setting.</summary>
 		[JsonPropertyName("feedback_duration")]

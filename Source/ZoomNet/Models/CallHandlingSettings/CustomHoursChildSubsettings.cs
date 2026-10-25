@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.CallHandlingSettings
 {
 	/// <summary>Custom hours child subsettings.</summary>
-	public class CustomHoursChildSubsettings
+	public record CustomHoursChildSubsettings
 	{
 		/// <summary>Gets or sets custom hours start time in HH:mm format.</summary>
 		[JsonPropertyName("from")]

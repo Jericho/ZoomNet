@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Video on-demand channel.</summary>
-	public class VideoOnDemandChannel
+	public record VideoOnDemandChannel
 	{
 		/// <summary>Gets or sets the channel id.</summary>
 		[JsonPropertyName("channel_id")]

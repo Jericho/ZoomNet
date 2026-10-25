@@ -5,7 +5,7 @@ using ZoomNet.Json;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>Represents a generic event.</summary>
-	public abstract class Event
+	public abstract record Event
 	{
 		/// <summary>Gets or sets the type of event.</summary>
 		public EventType EventType { get; set; }

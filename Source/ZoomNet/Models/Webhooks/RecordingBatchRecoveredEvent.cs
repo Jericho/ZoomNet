@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered every time a user recovers one or more cloud recordings from the trash.</summary>
-	public class RecordingBatchRecoveredEvent : RecordingEvent
+	public record RecordingBatchRecoveredEvent : RecordingEvent
 	{
 		/// <summary>Gets or sets the email address of the user who recovered the recording.</summary>
 		[JsonPropertyName("operator")]

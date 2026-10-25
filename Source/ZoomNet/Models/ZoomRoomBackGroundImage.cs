@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Represents a Zoom Room background image.</summary>
-	public class ZoomRoomBackGroundImage
+	public record ZoomRoomBackGroundImage
 	{
 		/// <summary>Gets or sets the id of the image.</summary>
 		[JsonPropertyName("content_id")]

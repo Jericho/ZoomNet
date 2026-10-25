@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Information about emergency call party, i.e. caller or callee.</summary>
-	public class EmergencyCallParty
+	public record EmergencyCallParty
 	{
 		/// <summary>Gets or sets the user's display name.</summary>
 		[JsonPropertyName("display_name")]

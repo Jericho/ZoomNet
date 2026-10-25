@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Summary information regarding an invoice.</summary>
-	public class BillingInvoiceSummary
+	public record BillingInvoiceSummary
 	{
 		/// <summary>Gets or sets the remaining balance of the invoice after all payments and refunds are applied.</summary>
 		[JsonPropertyName("balance")]

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a user permanently deletes a cloud recording.</summary>
-	public class RecordingDeletedEvent : RecordingFilesEvent
+	public record RecordingDeletedEvent : RecordingFilesEvent
 	{
 		/// <summary>Gets or sets the email address of the user who deleted the recording.</summary>
 		[JsonPropertyName("operator")]

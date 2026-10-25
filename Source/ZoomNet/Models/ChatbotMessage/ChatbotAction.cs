@@ -4,7 +4,7 @@ using ZoomNet.Json;
 namespace ZoomNet.Models.ChatbotMessage;
 
 /// <summary>An action which can be clicked.</summary>
-public class ChatbotAction
+public record ChatbotAction
 {
 	/// <summary>Gets or sets the style of this action.</summary>
 	[JsonPropertyName("style")]

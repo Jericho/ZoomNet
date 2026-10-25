@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Information about a live stream.</summary>
-	public class LiveStreamingInfo
+	public record LiveStreamingInfo
 	{
 		/// <summary>Gets or sets the meeting id, also known as the meeting number.</summary>
 		[JsonPropertyName("custom_live_streaming_settings")]

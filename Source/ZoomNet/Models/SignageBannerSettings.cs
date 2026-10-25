@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Elements you want to dispay in the top banner.</summary>
-	public class SignageBannerSettings
+	public record SignageBannerSettings
 	{
 		/// <summary>Gets or sets a value indicating whether to display the room name.</summary>
 		[JsonPropertyName("banner_room_name")]

@@ -8,7 +8,7 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	/// The range should be between 9,000 and 9,999.
 	/// At least 50 ports need to be configured to make sure the functionality is not affected.
 	/// </summary>
-	public class OverrideDefaultPortSettings : SettingsGroupBase
+	public record OverrideDefaultPortSettings : SettingsGroupBase
 	{
 		/// <summary>Gets or sets maximum port number used by Zoom.</summary>
 		[JsonPropertyName("max_port")]

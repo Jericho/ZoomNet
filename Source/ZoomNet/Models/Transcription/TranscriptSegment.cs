@@ -6,7 +6,7 @@ namespace ZoomNet.Models.Transcription
 	/// <remarks>A transcript segment defines a contiguous interval within an audio transcript, typically
 	/// corresponding to a single speaker's utterance. Use this type to access or display individual portions of a
 	/// transcript, such as for highlighting or speaker attribution.</remarks>
-	public sealed class TranscriptSegment
+	public sealed record TranscriptSegment
 	{
 		/// <summary>Gets the start time of the interval.</summary>
 		public TimeSpan Start { get; internal set; }

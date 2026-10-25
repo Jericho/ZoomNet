@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>'Mention' in a chat message.</summary>
-	public class ChatMention
+	public record ChatMention
 	{
 		/// <summary>Gets or sets the contact being mentioned.</summary>
 		/// <remarks>Will be empty if <see cref="Type"/> is <see cref="ChatMentionType.All"/>.</remarks>

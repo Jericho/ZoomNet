@@ -4,7 +4,7 @@ namespace ZoomNet.Models
 {
 	/// <summary>Language interpretation meeting settings.</summary>
 	/// <typeparam name="T">The type of interpreter.</typeparam>
-	public class LanguageInterpretationMeetingSettings<T>
+	public record LanguageInterpretationMeetingSettings<T>
 		where T : Interpreter
 	{
 		/// <summary>Gets or sets a value indicating whether to enable language interpretation for the meeting.</summary>

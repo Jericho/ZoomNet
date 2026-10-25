@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Chat message information as received in meeting or webinar chat message webhook events.</summary>
-	public class WebhookChatMessage
+	public record WebhookChatMessage
 	{
 		/// <summary>Gets or sets the date and time when the chat message was sent.</summary>
 		[JsonPropertyName("date_time")]

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>SMS attachment file information.</summary>
-	public class SmsAttachment
+	public record SmsAttachment
 	{
 		/// <summary>Gets or sets the download link for the media file.</summary>
 		[JsonPropertyName("download_url")]

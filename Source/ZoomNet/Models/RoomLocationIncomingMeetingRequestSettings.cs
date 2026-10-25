@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>The model of room location incoming meeting requests settings.</summary>
-	public class RoomLocationIncomingMeetingRequestSettings
+	public record RoomLocationIncomingMeetingRequestSettings
 	{
 		/// <summary>
 		/// Gets or sets a value indicating whether the Zoom Room will automatically accept incoming meeting requests (calls), such as being invited to a meeting in progress.

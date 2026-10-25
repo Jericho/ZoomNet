@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Plan usage.</summary>
-	public class BillingPlanUsage
+	public record BillingPlanUsage
 	{
 		/// <summary>Gets or sets the plan's number of hosts.</summary>
 		[JsonPropertyName("hosts")]

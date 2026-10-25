@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Represents meeting authentication exceptions.</summary>
-	public class MeetingAuthenticationExceptions
+	public record MeetingAuthenticationExceptions
 	{
 		/// <summary>Gets or sets the email address of the participant who will receive unique meeting invite links and bypass authentication.</summary>
 		[JsonPropertyName("email")]

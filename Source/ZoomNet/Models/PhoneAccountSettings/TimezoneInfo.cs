@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Timezone information.</summary>
-	public class TimezoneInfo
+	public record TimezoneInfo
 	{
 		/// <summary>Gets or sets the timezone id.</summary>
 		[JsonPropertyName("id")]

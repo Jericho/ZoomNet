@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Settings that control automatic calls recording.</summary>
-	public class AutoCallRecordingSettings : CallRecordingSettings
+	public record AutoCallRecordingSettings : CallRecordingSettings
 	{
 		/// <summary>Gets or sets a value indicating whether the stop and resume of automatic call recording is enabled.</summary>
 		[JsonPropertyName("allow_stop_resume_recording")]

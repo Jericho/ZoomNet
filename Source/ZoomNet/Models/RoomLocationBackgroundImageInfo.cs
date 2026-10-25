@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>The model of room location basic profile.</summary>
-	public class RoomLocationBackgroundImageInfo
+	public record RoomLocationBackgroundImageInfo
 	{
 		/// <summary>
 		/// Gets or sets the content id when the background image is a background image library content item or default Zoom Rooms background image library content item.

@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Represents meeting and transcript file information as received in <see cref="Webhooks.MeetingAicTranscriptCompletedEvent"/>.</summary>
-	public class WebhookAiCompanionMeetingTranscript
+	public record WebhookAiCompanionMeetingTranscript
 	{
 		/// <summary>Gets or sets attachment type.</summary>
 		/// <remarks>Equals 'durable_transcript' in <see cref="Webhooks.MeetingAicTranscriptCompletedEvent"/>.</remarks>

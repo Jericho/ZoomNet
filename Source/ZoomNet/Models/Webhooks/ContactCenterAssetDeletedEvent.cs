@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when the asset is deleted.</summary>
-	public class ContactCenterAssetDeletedEvent : Event
+	public record ContactCenterAssetDeletedEvent : Event
 	{
 		/// <summary>Gets or sets the account id.</summary>
 		[JsonPropertyName("account_id")]

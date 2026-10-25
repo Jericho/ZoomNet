@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered every time the title of a cloud recording is changed.</summary>
-	public class RecordingRenamedEvent : RecordingEvent
+	public record RecordingRenamedEvent : RecordingEvent
 	{
 		/// <summary>Gets or sets the email address of the user who renamed the recording.</summary>
 		[JsonPropertyName("operator")]

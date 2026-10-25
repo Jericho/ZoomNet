@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Settings for the Questions and Answers for webinar.</summary>
-	public class QuestionsAndAnswersSettings
+	public record QuestionsAndAnswersSettings
 	{
 		/// <summary>Gets or sets a value indicating whether to allow submitting questions.</summary>
 		[JsonPropertyName("allow_submit_questions")]

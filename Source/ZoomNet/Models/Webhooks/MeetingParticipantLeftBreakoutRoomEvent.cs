@@ -3,7 +3,7 @@ using System;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a meeting participant leaves a meeting breakout room.</summary>
-	public class MeetingParticipantLeftBreakoutRoomEvent : MeetingBreakoutRoomEvent
+	public record MeetingParticipantLeftBreakoutRoomEvent : MeetingBreakoutRoomEvent
 	{
 		/// <summary>Gets or sets the information about meeting participant.</summary>
 		public BreakoutRoomParticipantInfo Participant { get; set; }

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Device information as provided in <see cref="Webhooks.PhoneDeviceRegistrationEvent"/>.</summary>
-	public class WebhookDeviceRegistration
+	public record WebhookDeviceRegistration
 	{
 		/// <summary>Gets or sets the device id.</summary>
 		[JsonPropertyName("device_id")]

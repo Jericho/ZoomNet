@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Room device.</summary>
-	public class RoomDevice
+	public record RoomDevice
 	{
 		/// <summary>Gets or sets the app version of Zoom Rooms.</summary>
 		[JsonPropertyName("app_version")]

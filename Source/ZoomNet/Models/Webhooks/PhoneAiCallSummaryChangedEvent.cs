@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when the system generates or updates an AI call summary.</summary>
-	public class PhoneAiCallSummaryChangedEvent : Event
+	public record PhoneAiCallSummaryChangedEvent : Event
 	{
 		/// <summary>Gets or sets the user's account id.</summary>
 		[JsonPropertyName("account_id")]

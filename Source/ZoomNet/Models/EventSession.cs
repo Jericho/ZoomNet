@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>An event session.</summary>
-	public class EventSession
+	public record EventSession
 	{
 		/// <summary>Gets or sets the event description.</summary>
 		[JsonPropertyName("description")]

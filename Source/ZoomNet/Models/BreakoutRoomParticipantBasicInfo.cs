@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Basic information about breakout room participant.</summary>
-	public class BreakoutRoomParticipantBasicInfo
+	public record BreakoutRoomParticipantBasicInfo
 	{
 		/// <summary>Gets or sets the participant's user ID. This is the same value used in the Users APIs if the participant logged in to join the meeting.</summary>
 		[JsonPropertyName("id")]

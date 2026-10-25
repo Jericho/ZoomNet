@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.ChatbotMessage;
 
 /// <summary>A message line containing an attachment.</summary>
-public class ChatbotAttachment : IChatbotBody, IChatbotSection
+public record ChatbotAttachment : IChatbotBody, IChatbotSection
 {
 	/// <summary>Gets or sets the extension of the attachment.</summary>
 	[JsonPropertyName("ext")]

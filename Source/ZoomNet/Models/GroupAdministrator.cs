@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Group administrator.</summary>
-	public class GroupAdministrator
+	public record GroupAdministrator
 	{
 		/// <summary>Gets or sets the administrator's email address.</summary>
 		[JsonPropertyName("email")]

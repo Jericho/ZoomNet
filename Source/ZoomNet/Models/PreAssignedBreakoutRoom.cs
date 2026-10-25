@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Pre assigned breakout room.</summary>
-	public class PreAssignedBreakoutRoom
+	public record PreAssignedBreakoutRoom
 	{
 		/// <summary>Gets or sets the name of the breakout room.</summary>
 		[JsonPropertyName("name")]

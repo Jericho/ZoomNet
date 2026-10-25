@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Zoom phone external contact details model.</summary>
-	public class ExternalContactDetails : ExternalContact
+	public record ExternalContactDetails : ExternalContact
 	{
 		/// <summary>Gets or sets a value indicating whether to allow the automatic call recording.</summary>
 		[JsonPropertyName("auto_call_recorded")]

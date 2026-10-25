@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Opt-out reason for call queue.</summary>
-	public class CallQueueOptOutReason
+	public record CallQueueOptOutReason
 	{
 		/// <summary>Gets or sets opt-out reason code.</summary>
 		[JsonPropertyName("code")]

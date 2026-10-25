@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Call history.</summary>
-	public class CallHistory
+	public record CallHistory
 	{
 		/// <summary>Gets or sets the call answer time.</summary>
 		[JsonPropertyName("answer_time")]

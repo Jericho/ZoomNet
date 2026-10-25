@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>The model of room scheduling display settings.</summary>
-	public class RoomSchedulingDisplaySettings
+	public record RoomSchedulingDisplaySettings
 	{
 		/// <summary>Gets or sets the settings that allows Zoom Room Scheduling Display to reserve other Zoom Rooms.</summary>
 		[JsonPropertyName("allow_to_reserve_other_rooms")]

@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Payload model for <see cref="Webhooks.ContactCenterAssetCreatedEvent"/>.</summary>
-	public class WebhookAssetCreated
+	public record WebhookAssetCreated
 	{
 		/// <summary>Gets or sets the asset's description.</summary>
 		[JsonPropertyName("asset_description")]

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Top issues from Zoom rooms.</summary>
-	public class IssuesOfZoomRooms
+	public record IssuesOfZoomRooms
 	{
 		/// <summary>
 		/// Gets or sets the Issue Name.<br/>

@@ -5,7 +5,7 @@ namespace ZoomNet.Models
 {
 	/// <summary>Phone call recording transcript.</summary>
 	/// <remarks>Not documented by Zoom.</remarks>
-	public class PhoneCallRecordingTranscript
+	public record PhoneCallRecordingTranscript
 	{
 		/// <summary>Gets or sets the account ID.</summary>
 		/// <remarks>Not documented by Zoom.</remarks>

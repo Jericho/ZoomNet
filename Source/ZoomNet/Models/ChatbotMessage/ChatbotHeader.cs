@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.ChatbotMessage;
 
 /// <summary>A message header which is above the main body of the message.</summary>
-public class ChatbotHeader
+public record ChatbotHeader
 {
 	/// <summary>Initializes a new instance of the <see cref="ChatbotHeader" /> class.</summary>
 	public ChatbotHeader()

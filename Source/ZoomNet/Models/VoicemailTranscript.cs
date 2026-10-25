@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Voicemail transcript information.</summary>
-	public class VoicemailTranscript
+	public record VoicemailTranscript
 	{
 		/// <summary>Gets or sets the content of the voicemail transcript.</summary>
 		[JsonPropertyName("content")]

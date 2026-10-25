@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Shared line information.</summary>
-	public class SharedLine
+	public record SharedLine
 	{
 		/// <summary>Gets or sets the alias.</summary>
 		[JsonPropertyName("alias")]

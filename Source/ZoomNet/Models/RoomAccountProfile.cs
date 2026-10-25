@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Zoom Room account profile.</summary>
-	public class RoomAccountProfile
+	public record RoomAccountProfile
 	{
 		/// <summary>Gets or sets the basic profile information.</summary>
 		[JsonPropertyName("basic")]

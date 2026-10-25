@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>TSP user settings.</summary>
-	public class TspUserSettings
+	public record TspUserSettings
 	{
 		/// <summary>Gets or sets a value indicating whether call out or not.</summary>
 		[JsonPropertyName("call_out")]

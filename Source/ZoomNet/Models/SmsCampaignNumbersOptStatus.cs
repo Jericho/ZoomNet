@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Opt status for each pair of sender's phone number and receiver's phone number.</summary>
-	public class SmsCampaignNumbersOptStatus
+	public record SmsCampaignNumbersOptStatus
 	{
 		/// <summary>Gets or sets the end user's phone number in E.164 format that sends the Opt-in or Opt-out keyword to the Zoom Phone number.</summary>
 		[JsonPropertyName("consumer_phone_number")]

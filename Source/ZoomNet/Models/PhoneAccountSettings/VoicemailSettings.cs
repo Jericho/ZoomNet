@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Settings that control voicemail and videomail access and behavior.</summary>
-	public class VoicemailSettings : SettingsGroupBase
+	public record VoicemailSettings : SettingsGroupBase
 	{
 		/// <summary>Gets or sets a value indicating whether users are allowed to delete their own voicemail or videomail.</summary>
 		[JsonPropertyName("allow_delete")]

@@ -13,7 +13,7 @@ namespace ZoomNet.Models
 	/// - the JSON payload uses "email" instead of "user_email".
 	/// - the JSON payload includes a "user_id" property which contains the participant identifier and a "id" property which contains the UserId.
 	/// </remarks>
-	public class WebhookParticipant
+	public record WebhookParticipant
 	{
 		/// <summary>Gets or sets the participant's SDK identifier.</summary>
 		[JsonPropertyName("customer_key")]

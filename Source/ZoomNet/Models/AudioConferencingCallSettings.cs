@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A user's Tol=free and fee-base toll call settings.</summary>
-	public class AudioConferencingCallSettings
+	public record AudioConferencingCallSettings
 	{
 		/// <summary>Gets or sets a value indicating whether webinar attendees can dial in through the account's Toll-free and Fee-based Toll Call phone numbers.</summary>
 		/// <remarks>This feature is only available in version 5.2.2 and higher.</remarks>

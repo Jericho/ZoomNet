@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Custom attribute.</summary>
-	public class CustomAttribute
+	public record CustomAttribute
 	{
 		/// <summary>Gets or sets the unique identifier.</summary>
 		[JsonPropertyName("key")]

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A session attendee.</summary>
-	public class EventSessionAttendee
+	public record EventSessionAttendee
 	{
 		/// <summary>Gets or sets the event authentication method for the ticket.</summary>
 		[JsonPropertyName("authentication_method")]

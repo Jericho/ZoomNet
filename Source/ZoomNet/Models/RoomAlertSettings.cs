@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>The model of room alert settings.</summary>
-	public class RoomAlertSettings
+	public record RoomAlertSettings
 	{
 		/// <summary>Gets or sets a value indicating whether to display a notification message on the Zoom Room display when CPU usage is above 90%.</summary>
 		[JsonPropertyName("cpu_usage_high_detected_notification_on_zr_display")]

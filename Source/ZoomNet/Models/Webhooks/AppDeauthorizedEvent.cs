@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a user uninstalls or deauthorizes your app.</summary>
-	public class AppDeauthorizedEvent : Event
+	public record AppDeauthorizedEvent : Event
 	{
 		/// <summary>Gets or sets the unique identifier of the account in wich the event occured.</summary>
 		[JsonPropertyName("account_id")]

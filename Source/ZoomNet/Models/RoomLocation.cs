@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Room location.</summary>
-	public class RoomLocation
+	public record RoomLocation
 	{
 		/// <summary>Gets or sets the room location id.</summary>
 		[JsonPropertyName("id")]

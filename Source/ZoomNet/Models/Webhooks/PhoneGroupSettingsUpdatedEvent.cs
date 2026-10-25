@@ -4,7 +4,7 @@ using ZoomNet.Models.PhoneAccountSettings;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when group settings changed.</summary>
-	public class PhoneGroupSettingsUpdatedEvent : Event
+	public record PhoneGroupSettingsUpdatedEvent : Event
 	{
 		/// <summary>Gets or sets the account ID of the user that updated the group settings.</summary>
 		[JsonPropertyName("account_id")]

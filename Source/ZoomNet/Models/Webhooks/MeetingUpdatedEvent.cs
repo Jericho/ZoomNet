@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a meeting is updated.</summary>
-	public class MeetingUpdatedEvent : Event
+	public record MeetingUpdatedEvent : Event
 	{
 		/// <summary>Gets or sets the email address of the user who updated the meeting.</summary>
 		[JsonPropertyName("operator")]

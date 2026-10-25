@@ -3,7 +3,7 @@ using System;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered every time a phone user joins a meeting and binds to an attendee in the meeting.</summary>
-	public class MeetingParticipantBindEvent : MeetingParticipantEvent
+	public record MeetingParticipantBindEvent : MeetingParticipantEvent
 	{
 		/// <summary>Gets or sets user id of participant the phone user binds to.</summary>
 		/// <remarks>This value is assigned to a participant when they join a meeting, and is only valid for the duration of the meeting.</remarks>

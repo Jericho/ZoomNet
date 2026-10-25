@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>SMS message information (as provided in webhook events).</summary>
-	public class WebhookSmsMessage : SmsMessageBase
+	public record WebhookSmsMessage : SmsMessageBase
 	{
 		/// <summary>Gets or sets the reason for SMS sending failure.</summary>
 		/// <remarks>Empty field means the SMS sending was successful.</remarks>

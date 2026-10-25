@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A recording.</summary>
-	public class Recording : RecordedMeetingOrWebinarInfo
+	public record Recording : RecordedMeetingOrWebinarInfo
 	{
 		/// <summary>Gets or sets the ID of the user account who completed the recording.</summary>
 		[JsonPropertyName("account_id")]
