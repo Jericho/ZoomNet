@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Registrant info.</summary>
-	public class RegistrantInfo
+	public record RegistrantInfo
 	{
 		/// <summary>Gets or sets the unique identifier of the meeting or webinar.</summary>
 		[JsonPropertyName("id")]

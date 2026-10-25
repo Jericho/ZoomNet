@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.CallHandlingSettings
 {
 	/// <summary>The model of call handling subsettings.</summary>
-	public class CallHandlingSubsettings : CallHandlingSubsettingsBase
+	public record CallHandlingSubsettings : CallHandlingSubsettingsBase
 	{
 		/// <summary>
 		/// Gets or sets a value indicating whether to allow the callers to check voicemails.

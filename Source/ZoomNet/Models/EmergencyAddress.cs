@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models;
 
 /// <summary>Represents an emergency address.</summary>
-public class EmergencyAddress
+public record EmergencyAddress
 {
 	/// <summary>Gets or sets the first line of the address.</summary>
 	[JsonPropertyName("address_line1")]

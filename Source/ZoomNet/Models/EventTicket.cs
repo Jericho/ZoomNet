@@ -5,7 +5,7 @@ using ZoomNet.Json;
 namespace ZoomNet.Models
 {
 	/// <summary>The full details about a ticket assigned to a registrant.</summary>
-	public class EventTicket : EventTicketSummary
+	public record EventTicket : EventTicketSummary
 	{
 		/// <summary>Gets or sets the address.</summary>
 		[JsonPropertyName("address")]

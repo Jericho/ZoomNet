@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>User recording storage settings.</summary>
-	public class UserRecordingStorageSettings
+	public record UserRecordingStorageSettings
 	{
 		/// <summary>
 		/// Gets or sets the list of countries where user's recorded content such as meetings, webinars, and phone recordings, as well as voicemail, transcripts, and custom greeting prompts can be stored.

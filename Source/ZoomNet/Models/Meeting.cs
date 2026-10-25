@@ -6,7 +6,7 @@ using ZoomNet.Json;
 namespace ZoomNet.Models
 {
 	/// <summary>A meeting.</summary>
-	public abstract class Meeting : MeetingBasicInfo
+	public abstract record Meeting : MeetingBasicInfo
 	{
 		/// <summary>Gets or sets the meeting description.</summary>
 		[JsonPropertyName("agenda")]

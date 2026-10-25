@@ -5,7 +5,7 @@ using ZoomNet.Resources;
 namespace ZoomNet.Models
 {
 	/// <summary>Pagination Object for meeting metrics returned as deep nested properties in some <see cref="IDashboards"/> endpoints.</summary>
-	public class DashboardMeetingMetricsPaginationObject
+	public record DashboardMeetingMetricsPaginationObject
 	{
 		/// <summary>Gets or sets the start date for the report.</summary>
 		public string From { get; set; }

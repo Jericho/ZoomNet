@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Represents asset item model.</summary>
-	public class AssetItem : AssetItemBase
+	public record AssetItem : AssetItemBase
 	{
 		/// <summary>Gets or sets the asset item's content.</summary>
 		/// <remarks>This data only applies to <see cref="AssetType.Text"/> and <see cref="AssetType.SavedReply"/>.</remarks>

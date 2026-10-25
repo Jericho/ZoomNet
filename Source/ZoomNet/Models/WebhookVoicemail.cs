@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Represents phone voicemail information (as provided in webhook events).</summary>
-	public class WebhookVoicemail : VoicemailBase
+	public record WebhookVoicemail : VoicemailBase
 	{
 		/// <summary>Gets or sets callee's DID (direct inward dial) number.</summary>
 		[JsonPropertyName("callee_did_number")]

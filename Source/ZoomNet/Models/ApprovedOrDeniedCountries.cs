@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Approved or Denied Countries.</summary>
-	public class ApprovedOrDeniedCountries
+	public record ApprovedOrDeniedCountries
 	{
 		/// <summary>Gets or sets the list of approved countries or regions.</summary>
 		[JsonPropertyName("approved_list")]

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Represents information about meeting's devices test result.</summary>
-	public class DeviceTestResult
+	public record DeviceTestResult
 	{
 		/// <summary>Gets or sets the camera test status.</summary>
 		[JsonPropertyName("camera_status")]

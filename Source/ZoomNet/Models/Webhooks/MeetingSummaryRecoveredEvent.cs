@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered every time one of app users or account users recovers a summary from the trash.</summary>
-	public class MeetingSummaryRecoveredEvent : MeetingSummaryEvent
+	public record MeetingSummaryRecoveredEvent : MeetingSummaryEvent
 	{
 		/// <summary>Gets or sets the email address of the user who recovered the meeting summary.</summary>
 		[JsonPropertyName("operator")]

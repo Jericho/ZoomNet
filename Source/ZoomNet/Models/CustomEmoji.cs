@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Custom emoji.</summary>
-	public class CustomEmoji
+	public record CustomEmoji
 	{
 		/// <summary>Gets or sets the custom emoji's date added.</summary>
 		[JsonPropertyName("date_added")]

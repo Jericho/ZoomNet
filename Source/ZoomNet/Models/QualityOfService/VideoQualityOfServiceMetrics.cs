@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.QualityOfService
 {
 	/// <summary>Quality of service data for video.</summary>
-	public class VideoQualityOfServiceMetrics : PacketQualityOfServiceMetrics
+	public record VideoQualityOfServiceMetrics : PacketQualityOfServiceMetrics
 	{
 		/// <summary>Gets or sets the frame rate value.</summary>
 		[JsonPropertyName("frame_rate")]

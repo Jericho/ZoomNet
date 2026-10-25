@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Tracking Source.</summary>
-	public class TrackingSource
+	public record TrackingSource
 	{
 		/// <summary>Gets or sets the unique identifier.</summary>
 		[JsonPropertyName("id")]

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Provisioning information of a device.</summary>
-	public class DeviceProvisioning
+	public record DeviceProvisioning
 	{
 		/// <summary>Gets or sets the SIP account details registered during the device provisioning process.</summary>
 		/// <remarks>Applicable only for <see cref="DeviceProvisioningType.Manual"/> provisioning type.</remarks>

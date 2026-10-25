@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Closed captioning settings.</summary>
-	public class ClosedCaptioningSettings
+	public record ClosedCaptioningSettings
 	{
 		/// <summary>Gets or sets a value indicating whether to allow a live transcription service to transcribe meetings.</summary>
 		[JsonPropertyName("auto_transcribing")]

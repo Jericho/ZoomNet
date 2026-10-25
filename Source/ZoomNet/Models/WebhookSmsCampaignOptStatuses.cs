@@ -7,7 +7,7 @@ namespace ZoomNet.Models
 	/// SMS campaign information that is sent in <see cref="Webhooks.PhoneSmsCampaignNumberOptInEvent"/> and
 	/// <see cref="Webhooks.PhoneSmsCampaignNumberOptOutEvent"/> webhook events.
 	/// </summary>
-	public class WebhookSmsCampaignOptStatuses
+	public record WebhookSmsCampaignOptStatuses
 	{
 		/// <summary>Gets or sets the date and time when the event has occurred.</summary>
 		[JsonPropertyName("date_time")]

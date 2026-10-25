@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A recording file.</summary>
-	public class RecordingFile : RecordingFileBase
+	public record RecordingFile : RecordingFileBase
 	{
 		/// <summary>Gets or sets the date and time when the recording was deleted.</summary>
 		/// <remarks>Returned in the response only for trash query.</remarks>

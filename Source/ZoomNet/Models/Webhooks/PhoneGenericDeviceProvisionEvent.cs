@@ -12,7 +12,7 @@ namespace ZoomNet.Models.Webhooks
 	/// - changing the Session Initiation Protocol (SIP) Zone assignment for a site where the user is assigned
 	/// - adding or removing a device from a user.
 	/// </summary>
-	public class PhoneGenericDeviceProvisionEvent : Event
+	public record PhoneGenericDeviceProvisionEvent : Event
 	{
 		/// <summary>Gets or sets the user's account id.</summary>
 		[JsonPropertyName("account_id")]

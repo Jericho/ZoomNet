@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Survey.</summary>
-	public class Survey
+	public record Survey
 	{
 		/// <summary>Gets or sets the information about the customized survey.</summary>
 		[JsonPropertyName("custom_survey")]

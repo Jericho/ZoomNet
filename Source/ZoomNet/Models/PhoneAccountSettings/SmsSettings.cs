@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Settings that allow users to send and receive messages.</summary>
-	public class SmsSettings : SettingsGroupBase
+	public record SmsSettings : SettingsGroupBase
 	{
 		/// <summary>Gets or sets a value indicating whether message copying is allowed.</summary>
 		[JsonPropertyName("allow_copy")]

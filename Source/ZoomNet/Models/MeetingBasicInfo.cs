@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Represents minimal information provided about the meeting.</summary>
-	public class MeetingBasicInfo
+	public record MeetingBasicInfo
 	{
 		/// <summary>Gets or sets the ID of the user who is set as the host of the meeting.</summary>
 		[JsonPropertyName("host_id")]

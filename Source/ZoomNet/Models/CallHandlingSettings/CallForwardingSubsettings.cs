@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.CallHandlingSettings
 {
 	/// <summary>Call forwarding subsettings.</summary>
-	public class CallForwardingSubsettings : CallHandlingSubsettingsBase
+	public record CallForwardingSubsettings : CallHandlingSubsettingsBase
 	{
 		/// <summary>Gets or sets the list of call forwarding settings.</summary>
 		[JsonPropertyName("call_forwarding_settings")]

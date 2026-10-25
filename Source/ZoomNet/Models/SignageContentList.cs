@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Content list.</summary>
-	public class SignageContentList
+	public record SignageContentList
 	{
 		/// <summary>Gets or sets the action.</summary>
 		[JsonPropertyName("action")]

@@ -4,7 +4,7 @@ namespace ZoomNet.Models
 {
 	/// <summary>User's TSP account information.</summary>
 	/// <remarks>A user can have a maximum of two TSP accounts.</remarks>
-	public class TspAccount
+	public record TspAccount
 	{
 		/// <summary>Gets or sets the conference code (max length 16).</summary>
 		[JsonPropertyName("conference_code")]

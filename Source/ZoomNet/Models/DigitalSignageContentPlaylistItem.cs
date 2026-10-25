@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Represents an item in a Zoom Rooms Digital Signage content playlist.</summary>
-	public class DigitalSignageContentPlaylistItem
+	public record DigitalSignageContentPlaylistItem
 	{
 		/// <summary>Gets or sets the duration of the content item in seconds.</summary>
 		[JsonPropertyName("content_duration")]

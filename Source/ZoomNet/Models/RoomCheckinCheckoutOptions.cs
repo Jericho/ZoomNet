@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Room check-in and check-out options.</summary>
-	public class RoomCheckinCheckoutOptions
+	public record RoomCheckinCheckoutOptions
 	{
 		/// <summary>Gets or sets the allowed number of consecutive missed check-ins before removing the room from entire meeting series.</summary>
 		[JsonPropertyName("allowed_consecutive_missed_checkin_before_removing_room")]

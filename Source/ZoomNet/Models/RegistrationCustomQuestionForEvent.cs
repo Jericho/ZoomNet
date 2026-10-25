@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A custom question to be answered during registration process for an event.</summary>
-	public class RegistrationCustomQuestionForEvent
+	public record RegistrationCustomQuestionForEvent
 	{
 		/// <summary>Gets or sets the field name.</summary>
 		[JsonPropertyName("field_name")]

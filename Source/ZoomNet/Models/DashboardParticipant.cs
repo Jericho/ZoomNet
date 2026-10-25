@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Metrics of a participant.</summary>
-	public class DashboardParticipant
+	public record DashboardParticipant
 	{
 		/// <summary>Gets or sets the participant's audio quality.</summary>
 		/// <remarks>

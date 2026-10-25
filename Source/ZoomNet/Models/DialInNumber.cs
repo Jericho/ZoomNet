@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Information about the TSP (Telephony Service Provider) dial-in number.</summary>
-	public class DialInNumber
+	public record DialInNumber
 	{
 		/// <summary>Gets or sets the country code (max length 6).</summary>
 		[JsonPropertyName("code")]

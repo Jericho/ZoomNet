@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered every time a user converts a meeting into a webinar.</summary>
-	public class MeetingConvertedToWebinarEvent : Event
+	public record MeetingConvertedToWebinarEvent : Event
 	{
 		/// <summary>Gets or sets the account id of the user who converted the meeting into a webinar.</summary>
 		[JsonPropertyName("account_id")]

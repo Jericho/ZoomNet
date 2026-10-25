@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Room device profile.</summary>
-	public class RoomDeviceProfile
+	public record RoomDeviceProfile
 	{
 		/// <summary>Gets or sets a value indicating whether audio processing is enabled.</summary>
 		[JsonPropertyName("audio_processing")]

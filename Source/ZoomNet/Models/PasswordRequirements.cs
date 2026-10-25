@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Password requirements.</summary>
-	public class PasswordRequirements
+	public record PasswordRequirements
 	{
 		/// <summary>Gets or sets a value indicating whether password must contain at least one alphabetical letter.</summary>
 		[JsonPropertyName("have_letter")]

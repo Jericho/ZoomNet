@@ -4,7 +4,7 @@ namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered every time an invitation's recipient accepts an invitation to join a meeting or video call.</summary>
 	/// <remarks>This event is only suitable for triggering with the Zoom client.</remarks>
-	public class MeetingInvitationAcceptedEvent : MeetingInvitationEvent
+	public record MeetingInvitationAcceptedEvent : MeetingInvitationEvent
 	{
 		/// <summary>Gets or sets the email address of the user who accepted the meeting.</summary>
 		[JsonPropertyName("operator")]

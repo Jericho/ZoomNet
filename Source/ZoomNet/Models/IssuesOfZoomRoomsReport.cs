@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Top issues across Zoom rooms for the given date range.</summary>
-	public class IssuesOfZoomRoomsReport
+	public record IssuesOfZoomRoomsReport
 	{
 		/// <summary>Gets or sets the start date for this report.</summary>
 		[JsonPropertyName("from")]

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models;
 
 /// <summary>Represents a calling plan.</summary>
-public class CallingPlan
+public record CallingPlan
 {
 	/// <summary>Gets or sets the billing account ID.</summary>
 	[JsonPropertyName("billing_account_id")]

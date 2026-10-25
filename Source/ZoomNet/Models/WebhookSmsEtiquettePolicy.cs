@@ -7,7 +7,7 @@ namespace ZoomNet.Models
 	/// SMS etiquette policy information that is sent in <see cref="Webhooks.PhoneSmsEtiquetteBlockEvent"/> and
 	/// <see cref="Webhooks.PhoneSmsEtiquetteWarnEvent"/> webhook events.
 	/// </summary>
-	public class WebhookSmsEtiquettePolicy
+	public record WebhookSmsEtiquettePolicy
 	{
 		/// <summary>Gets or sets the date and time when the event has occurred.</summary>
 		[JsonPropertyName("date_time")]

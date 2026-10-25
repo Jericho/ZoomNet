@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Simulive delay start settings.</summary>
-	public class SimuliveDelayStart
+	public record SimuliveDelayStart
 	{
 		/// <summary>Gets or sets a value indicating whether simulive needs to delay playback.</summary>
 		[JsonPropertyName("enable")]

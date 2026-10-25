@@ -4,7 +4,7 @@ namespace ZoomNet.Models
 {
 	/// <summary>Phone call recording transcript timeline speaking user.</summary>
 	/// <remarks>Not documented by Zoom.</remarks>
-	public class PhoneCallRecordingTranscriptTimelineUser
+	public record PhoneCallRecordingTranscriptTimelineUser
 	{
 		/// <summary>Gets or sets the client type.</summary>
 		/// <remarks>Not documented by Zoom.<br/> Most likely is actually an enumerator.</remarks>

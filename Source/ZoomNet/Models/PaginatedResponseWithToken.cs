@@ -6,7 +6,7 @@ namespace ZoomNet.Models
 {
 	/// <summary>Pagination Object.</summary>
 	/// <typeparam name="T">The type of records.</typeparam>
-	public class PaginatedResponseWithToken<T>
+	public record PaginatedResponseWithToken<T>
 	{
 		private int? _totalRecords = null;
 

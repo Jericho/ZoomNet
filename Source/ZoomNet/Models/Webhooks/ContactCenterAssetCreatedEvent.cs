@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a new asset is created.</summary>
-	public class ContactCenterAssetCreatedEvent : Event
+	public record ContactCenterAssetCreatedEvent : Event
 	{
 		/// <summary>Gets or sets the account id.</summary>
 		[JsonPropertyName("account_id")]

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Language interpretation user settings.</summary>
-	public class LanguageInterpretationUserSettings
+	public record LanguageInterpretationUserSettings
 	{
 		/// <summary>Gets or sets the supported user-defined languages.</summary>
 		[JsonPropertyName("custom_languages")]

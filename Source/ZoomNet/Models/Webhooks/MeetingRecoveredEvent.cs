@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a meeting has been recovered.</summary>
-	public class MeetingRecoveredEvent : MeetingEvent
+	public record MeetingRecoveredEvent : MeetingEvent
 	{
 		/// <summary>Gets or sets the operation (allowed values: all, single).</summary>
 		[JsonPropertyName("operation")]

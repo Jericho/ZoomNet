@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Information regarding an invoice item.</summary>
-	public class BillingInvoiceItem
+	public record BillingInvoiceItem
 	{
 		/// <summary>Gets or sets the description of the charge.</summary>
 		[JsonPropertyName("charge_name")]

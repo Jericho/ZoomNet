@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Breakout room participant information as received in webhook events related to breakout room joining and leaving.</summary>
-	public class BreakoutRoomParticipantInfo : BreakoutRoomParticipantBasicInfo
+	public record BreakoutRoomParticipantInfo : BreakoutRoomParticipantBasicInfo
 	{
 		/// <summary>Gets or sets the participant's SDK identifier. This value can be alphanumeric.</summary>
 		[JsonPropertyName("customer_key")]
