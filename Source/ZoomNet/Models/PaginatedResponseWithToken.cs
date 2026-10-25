@@ -16,7 +16,7 @@ namespace ZoomNet.Models
 		public int PageSize
 		{
 			get => RecordsPerPage;
-			set => RecordsPerPage = value;
+			init => RecordsPerPage = value;
 		}
 
 		/// <summary>Gets or sets the number of records returned within a single API call.</summary>

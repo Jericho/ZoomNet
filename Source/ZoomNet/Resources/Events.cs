@@ -948,74 +948,83 @@ namespace ZoomNet.Resources
 		/// <inheritdoc/>
 		public Task UpsertSessionPollsAsync(string eventId, string sessionId, IEnumerable<PollForEventSession> polls, CancellationToken cancellationToken = default)
 		{
-			foreach (var poll in polls)
+			var normalizedPolls = polls?.Select(p =>
 			{
 				// There are a number of scenarios where questions are deemed to be "advanced". When a poll contains advanced questions, it's "poll_type" cannot be "Basic".
 				// See: https://devforum.zoom.us/t/unable-to-create-poll-for-an-event-session-the-poll-contains-advanced-poll-questions/135561
-
-				// So far, the scenarios I have been able to onfirm to cause a question to be considered "advanced" are:
+				// So far, the scenarios I have been able to confirm to cause a question to be considered "advanced" are:
 				// - The question is required (IsRequired == true)
 				// - The question is a dropdown (ShowAsDropdown == true)
 				// - The type of question is anything other than single choice (Type != PollQuestionType.SingleChoice)
-				var pollContainsAdvancedQuestions = poll.Questions?.Any(q =>
+				var pollType = p.Type;
+				var pollContainsAdvancedQuestions = p.Questions?.Any(q =>
 					q.IsRequired ||
 					q.ShowAsDropdown.GetValueOrDefault(false) ||
 					q.Type != PollQuestionType.SingleChoice) ?? false;
-				var isBasicPoll = poll.Type == PollType.Basic;
-				if (pollContainsAdvancedQuestions && isBasicPoll) poll.Type = PollType.Advanced;
-
-				// If the max and/or min number of characters are not configured, the API will return the following error message:
-				// Short/Long answers can not exceed character length.
-
-				// Make sure the min and max character limits are within the allowed range for short answers
-				foreach (var item in poll.Questions.Where(q => q.Type == PollQuestionType.Short))
+				if (pollContainsAdvancedQuestions && p.Type == PollType.Basic)
 				{
-					item.MinimumNumberOfCharacters = Math.Max(item.MinimumNumberOfCharacters ?? 1, 1);
-					item.MaximumNumberOfCharacters = Math.Min(item.MaximumNumberOfCharacters ?? 500, 500);
+					pollType = PollType.Advanced;
 				}
 
-				// Make sure the min and max character limits are within the allowed range for long answers
-				foreach (var item in poll.Questions.Where(q => q.Type == PollQuestionType.Long))
+				var questions = (p.Questions ?? Array.Empty<PollQuestionForEventSession>())
+					.Select(q =>
+					{
+						var minimumNumberOfCharacters = q.MinimumNumberOfCharacters;
+						var maximumNumberOfCharacters = q.MaximumNumberOfCharacters;
+
+						if (q.Type == PollQuestionType.Short)
+						{
+							minimumNumberOfCharacters = Math.Max(minimumNumberOfCharacters ?? 1, 1);
+							maximumNumberOfCharacters = Math.Min(maximumNumberOfCharacters ?? 500, 500);
+						}
+						else if (q.Type == PollQuestionType.Long)
+						{
+							minimumNumberOfCharacters = Math.Max(minimumNumberOfCharacters ?? 1, 1);
+							maximumNumberOfCharacters = Math.Min(maximumNumberOfCharacters ?? 2000, 2000);
+						}
+
+						return q with
+						{
+							MinimumNumberOfCharacters = minimumNumberOfCharacters,
+							MaximumNumberOfCharacters = maximumNumberOfCharacters
+						};
+					})
+					.ToArray();
+
+				return new JsonObject
 				{
-					item.MinimumNumberOfCharacters = Math.Max(item.MinimumNumberOfCharacters ?? 1, 1);
-					item.MaximumNumberOfCharacters = Math.Min(item.MaximumNumberOfCharacters ?? 2000, 2000);
-				}
-			}
+					{ "title", p.Title },
+					{ "poll_type", (int)pollType },
+					{ "status", p.Status.ToEnumString() },
+					{ "anonymous", p.AllowAnonymous },
+					{
+						"questions",
+						questions.Select(q => new JsonObject
+						{
+							{ "answer_max_character", q.MaximumNumberOfCharacters },
+							{ "answer_min_character", q.MinimumNumberOfCharacters },
+							{ "answer_required", pollType == PollType.Basic ? null : q.IsRequired },
+							{ "answers", q.Answers?.ToArray() },
+							{ "case_sensitive", q.IsCaseSensitive },
+							{ "name", q.Question },
+							{ "prompts", q.Prompts?.ToArray() },
+							{ "prompt_right_answers", q.PromptCorrectAnswers?.ToArray() },
+							{ "rating_max_label", q.RatingHighScoreLabel },
+							{ "rating_max_value", q.RatingMaximumValue },
+							{ "rating_min_label", q.RatingLowScoreLabel },
+							{ "rating_min_value", q.RatingMinimumValue },
+							{ "right_answers", q.CorrectAnswers?.ToArray() },
+							{ "show_as_dropdown", q.ShowAsDropdown },
+							{ "type", q.Type.ToEnumString() },
+							{ "title", q.Title }
+						}).ToArray()
+					}
+				};
+			}).ToArray();
 
 			var data = new JsonObject
 			{
-				{
-					"polls",
-					polls?.Select(p => new JsonObject
-					{
-						{ "title", p.Title },
-						{ "poll_type", (int)p.Type },
-						{ "status", p.Status.ToEnumString() },
-						{ "anonymous", p.AllowAnonymous },
-						{
-							"questions",
-							p.Questions?.Select(q => new JsonObject
-							{
-								{ "answer_max_character", q.MaximumNumberOfCharacters },
-								{ "answer_min_character", q.MinimumNumberOfCharacters },
-								{ "answer_required", p.Type == PollType.Basic ? null : q.IsRequired },
-								{ "answers", q.Answers?.ToArray() },
-								{ "case_sensitive", q.IsCaseSensitive },
-								{ "name", q.Question },
-								{ "prompts", q.Prompts?.ToArray() },
-								{ "prompt_right_answers", q.PromptCorrectAnswers?.ToArray() },
-								{ "rating_max_label", q.RatingHighScoreLabel },
-								{ "rating_max_value", q.RatingMaximumValue },
-								{ "rating_min_label", q.RatingLowScoreLabel },
-								{ "rating_min_value", q.RatingMinimumValue },
-								{ "right_answers", q.CorrectAnswers?.ToArray() },
-								{ "show_as_dropdown", q.ShowAsDropdown },
-								{ "type", q.Type.ToEnumString() },
-								{ "title", q.Title }
-							}).ToArray()
-						}
-					}).ToArray()
-				}
+				{ "polls", normalizedPolls }
 			};
 
 			return _client

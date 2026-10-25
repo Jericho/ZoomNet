@@ -259,9 +259,7 @@ namespace ZoomNet.Resources
 
 		private static RichTranscript GetRichTranscript(IReadOnlyList<TranscriptSegment> segments, IReadOnlyList<SpeakerMoment> diarization)
 		{
-			var segList = segments.ToList();
-
-			MergeSpeakers(segList, diarization);
+			var segList = MergeSpeakers(segments, diarization);
 
 			var speakers = segList
 				.Select(s => s.Speaker)
@@ -278,34 +276,36 @@ namespace ZoomNet.Resources
 			};
 		}
 
-		private static void MergeSpeakers(List<TranscriptSegment> segments, IReadOnlyList<SpeakerMoment> diarization)
+		private static IReadOnlyList<TranscriptSegment> MergeSpeakers(IReadOnlyList<TranscriptSegment> segments, IReadOnlyList<SpeakerMoment> diarization)
 		{
-			foreach (var segment in segments)
-			{
-				// If VTT already has a speaker, keep it
-				if (!string.IsNullOrWhiteSpace(segment.Speaker))
-					continue;
+			return segments
+				.Select(segment =>
+				{
+					// If VTT already has a speaker, keep it
+					if (!string.IsNullOrWhiteSpace(segment.Speaker))
+						return segment;
 
-				// Find diarization entries inside the segment time range
-				var matches = diarization
-					.Where(m => m.Timestamp >= segment.Start &&
+					// Find diarization entries inside the segment time range
+					var matches = diarization
+						.Where(m => m.Timestamp >= segment.Start &&
 								m.Timestamp <= segment.End)
-					.SelectMany(m => m.Speakers)
-					.Where(s => !string.IsNullOrWhiteSpace(s.Username))
-					.ToList();
+						.SelectMany(m => m.Speakers)
+						.Where(s => !string.IsNullOrWhiteSpace(s.Username))
+						.ToList();
 
-				if (matches.Count == 0)
-					continue;
+					if (matches.Count == 0)
+						return segment;
 
-				// Pick the most frequent speaker
-				var inferred = matches
-					.GroupBy(s => s.Username)
-					.OrderByDescending(g => g.Count())
-					.First()
-					.Key;
+					// Pick the most frequent speaker
+					var inferred = matches
+						.GroupBy(s => s.Username)
+						.OrderByDescending(g => g.Count())
+						.First()
+						.Key;
 
-				segment.Speaker = inferred;
-			}
+					return segment with { Speaker = inferred };
+				})
+				.ToList();
 		}
 
 		private Task UpdateRegistrantsStatusAsync(long meetingId, IEnumerable<string> registrantIds, string status, CancellationToken cancellationToken = default)

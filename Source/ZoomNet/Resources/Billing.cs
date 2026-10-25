@@ -2,6 +2,7 @@ using Pathoschild.Http.Client;
 using Pathoschild.Http.Client.Extensibility;
 using System;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Text.Json.Nodes;
 using System.Threading;
@@ -69,8 +70,10 @@ namespace ZoomNet.Resources
 				.ConfigureAwait(false);
 
 			var currency = response.GetPropertyValue("currency", string.Empty);
-			var invoices = response.GetPropertyValue<BillingInvoiceSummary[]>("invoices", Array.Empty<BillingInvoiceSummary>());
-			Array.ForEach(invoices, invoice => invoice.Currency = currency);
+			var invoices = response
+				.GetPropertyValue<BillingInvoiceSummary[]>("invoices", Array.Empty<BillingInvoiceSummary>())
+				.Select(invoice => invoice with { Currency = currency })
+				.ToArray();
 
 			return invoices;
 		}

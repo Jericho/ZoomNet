@@ -9,15 +9,15 @@ namespace ZoomNet.Models.Transcription
 	public sealed record TranscriptSegment
 	{
 		/// <summary>Gets the start time of the interval.</summary>
-		public TimeSpan Start { get; internal set; }
+		public TimeSpan Start { get; init; }
 
 		/// <summary>Gets the time of day at which the interval ends.</summary>
-		public TimeSpan End { get; internal set; }
+		public TimeSpan End { get; init; }
 
 		/// <summary>Gets the name of the speaker associated with the content.</summary>
-		public string Speaker { get; internal set; }
+		public string Speaker { get; init; }
 
 		/// <summary>Gets the text content associated with this instance.</summary>
-		public string Text { get; internal set; }
+		public string Text { get; init; }
 	}
 }
