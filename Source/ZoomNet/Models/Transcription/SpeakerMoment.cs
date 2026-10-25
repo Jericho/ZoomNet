@@ -14,7 +14,7 @@ namespace ZoomNet.Models.Transcription
 		/// was taken. This value corresponds to the <c>ts</c> field in Zoom's
 		/// timeline data.
 		/// </summary>
-		public TimeSpan Timestamp { get; internal set; }
+		public TimeSpan Timestamp { get; init; }
 
 		/// <summary>
 		/// Gets the collection of participants detected at this moment in time.
@@ -22,6 +22,6 @@ namespace ZoomNet.Models.Transcription
 		/// Zoom user ID, and whether multiple people were detected on the same audio
 		/// channel.
 		/// </summary>
-		public IReadOnlyList<SpeakerInfo> Speakers { get; internal set; }
+		public IReadOnlyList<SpeakerInfo> Speakers { get; init; }
 	}
 }

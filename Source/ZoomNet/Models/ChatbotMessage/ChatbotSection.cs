@@ -41,7 +41,7 @@ public record ChatbotSection : IChatbotBody, IChatbotValidate
 	[JsonIgnore]
 	public DateTime TimeStampFromDateTime
 	{
-		set => TimeStamp = value.ToUnixTime(Internal.UnixTimePrecision.Milliseconds);
+		init => TimeStamp = value.ToUnixTime(Internal.UnixTimePrecision.Milliseconds);
 	}
 
 	/// <inheritdoc/>
