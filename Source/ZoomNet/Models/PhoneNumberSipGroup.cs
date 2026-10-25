@@ -13,10 +13,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the unique identifier of the SIP group.</summary>
 		[JsonPropertyName("display_name")]
-		public string DisplayName { get; set; }
+		public string DisplayName { get; init; }
 
 		/// <summary>Gets or sets the name of the SIP group.</summary>
 		[JsonPropertyName("id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 	}
 }

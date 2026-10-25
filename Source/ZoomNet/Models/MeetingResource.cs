@@ -7,14 +7,14 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the type of the meeting resource.</summary>
 		[JsonPropertyName("resource_type")]
-		public MeetingResourceType Type { get; set; }
+		public MeetingResourceType Type { get; init; }
 
 		/// <summary>Gets or sets the ID of the meeting resource.</summary>
 		[JsonPropertyName("resource_id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the value indicating the permission level for users to access the whiteboard.</summary>
 		[JsonPropertyName("permission_level")]
-		public MeetingResourcePermissionLevel PermissionLevel { get; set; }
+		public MeetingResourcePermissionLevel PermissionLevel { get; init; }
 	}
 }

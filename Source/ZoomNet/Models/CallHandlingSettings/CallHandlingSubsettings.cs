@@ -14,14 +14,14 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// - The <see cref="BusyOnAnotherCallAction"/> is set to 1 (Forward to a voicemail).(Only applicable to the User).
 		/// </summary>
 		[JsonPropertyName("allow_callers_check_voicemail")]
-		public bool? AllowCallersCheckVoicemail { get; set; }
+		public bool? AllowCallersCheckVoicemail { get; init; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether the queue members to set their own business hours.
 		/// This field allows queue members' business Hours to override the default hours of the call queue.
 		/// </summary>
 		[JsonPropertyName("allow_members_to_reset")]
-		public bool? AllowMembersToReset { get; set; }
+		public bool? AllowMembersToReset { get; init; }
 
 		/// <summary>
 		/// Gets or sets the audio while connecting the prompt ID.
@@ -31,14 +31,14 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// - 0 - disable.
 		/// </summary>
 		[JsonPropertyName("audio_while_connecting_id")]
-		public string AudioWhileConnectingId { get; set; }
+		public string AudioWhileConnectingId { get; init; }
 
 		/// <summary>
 		/// Gets or sets description of the phone number to which the call is forwarded.
 		/// It sets when <see cref="BusyOnAnotherCallAction"/> action is set to <see cref="BusyOnAnotherCallActionType.ForwardToPhoneNumber"/>.
 		/// </summary>
 		[JsonPropertyName("busy_description")]
-		public string BusyDescription { get; set; }
+		public string BusyDescription { get; init; }
 
 		/// <summary>
 		/// Gets or sets the forwarding extension ID that's required only when <see cref="BusyOnAnotherCallAction"/> setting is set to:
@@ -52,18 +52,18 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// </list>
 		/// </summary>
 		[JsonPropertyName("busy_forward_to_extension_id")]
-		public string BusyForwardToExtensionId { get; set; }
+		public string BusyForwardToExtensionId { get; init; }
 
 		/// <summary>Gets or sets the action to take when the user is busy on another call.</summary>
 		[JsonPropertyName("busy_on_another_call_action")]
-		public BusyOnAnotherCallActionType? BusyOnAnotherCallAction { get; set; }
+		public BusyOnAnotherCallActionType? BusyOnAnotherCallAction { get; init; }
 
 		/// <summary>
 		/// Gets or sets the extension's phone number or forward to an external number in E.164 format.
 		/// It sets when <see cref="BusyOnAnotherCallAction"/> action is set to <see cref="BusyOnAnotherCallActionType.ForwardToPhoneNumber"/>.
 		/// </summary>
 		[JsonPropertyName("busy_phone_number")]
-		public string BusyPhoneNumber { get; set; }
+		public string BusyPhoneNumber { get; init; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether to play callee's voicemail greeting when the caller reaches the end of the forwarding sequence.
@@ -79,7 +79,7 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// </list>
 		/// </summary>
 		[JsonPropertyName("busy_play_callee_voicemail_greeting")]
-		public bool? BusyPlayCalleeVoicemailGreeting { get; set; }
+		public bool? BusyPlayCalleeVoicemailGreeting { get; init; }
 
 		/// <summary>
 		/// Gets or sets the value indicating whether the receiver needs to press 1 before connecting the call for it to be forwarded to an external contact or a number,
@@ -87,7 +87,7 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// This option ensures that forwarded calls won't reach the voicemail box for the external contact or a number.
 		/// </summary>
 		[JsonPropertyName("busy_require_press_1_before_connecting")]
-		public bool? BusyRequirePress1BeforeConnecting { get; set; }
+		public bool? BusyRequirePress1BeforeConnecting { get; init; }
 
 		/// <summary>
 		/// Gets or sets this option to distribute incoming calls.
@@ -95,11 +95,11 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// calls will ring for a specific time before trying the next available queue member.
 		/// </summary>
 		[JsonPropertyName("call_distribution")]
-		public CallDistributionSettings CallDistribution { get; set; }
+		public CallDistributionSettings CallDistribution { get; init; }
 
 		/// <summary>Gets or sets the action to take when a call is not answered.</summary>
 		[JsonPropertyName("call_not_answer_action")]
-		public CallNotAnswerActionType? CallNotAnswerAction { get; set; }
+		public CallNotAnswerActionType? CallNotAnswerAction { get; init; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether to allow callers to reach an operator.
@@ -110,14 +110,14 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// </list>
 		/// </summary>
 		[JsonPropertyName("connect_to_operator")]
-		public bool? ConnectToOperator { get; set; }
+		public bool? ConnectToOperator { get; init; }
 
 		/// <summary>
 		/// Gets or sets description of the phone number to which the call is forwarded.
 		/// This field is only available if <see cref="CallNotAnswerAction"/> is set to <see cref="CallNotAnswerActionType.ForwardToPhoneNumber"/>.
 		/// </summary>
 		[JsonPropertyName("description")]
-		public string Description { get; set; }
+		public string Description { get; init; }
 
 		/// <summary>
 		/// Gets or sets the forwarding extension ID.
@@ -143,28 +143,28 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// </list>
 		/// </summary>
 		[JsonPropertyName("forward_to_extension_id")]
-		public string ForwardToExtensionId { get; set; }
+		public string ForwardToExtensionId { get; init; }
 
 		/// <summary>
 		/// Gets or sets the Partner Contact Center Setting ID to which the call is forwarded.
 		/// This field is only available if <see cref="CallNotAnswerAction"/> is set to <see cref="CallNotAnswerActionType.ForwardToPartnerContactCenter"/>.
 		/// </summary>
 		[JsonPropertyName("forward_to_partner_contact_center_id")]
-		public string ForwardToPartnerContactCenterId { get; set; }
+		public string ForwardToPartnerContactCenterId { get; init; }
 
 		/// <summary>
 		/// Gets or sets the Microsoft Teams Voice App ID to which the call is forwarded.
 		/// This field is only available if <see cref="CallNotAnswerAction"/> is set to <see cref="CallNotAnswerActionType.ForwardToMicrosoftTeamsResourceAccount"/>.
 		/// </summary>
 		[JsonPropertyName("forward_to_teams_id")]
-		public string ForwardToTeamsId { get; set; }
+		public string ForwardToTeamsId { get; init; }
 
 		/// <summary>
 		/// Gets or sets the Zoom Contact Center phone number, in E.164 format, to which the call is forwarded.
 		/// This field is only available if <see cref="CallNotAnswerAction"/> is set to <see cref="CallNotAnswerActionType.ForwardToZoomContactCenter"/>.
 		/// </summary>
 		[JsonPropertyName("forward_to_zcc_phone_number")]
-		public string ForwardToZccPhoneNumber { get; set; }
+		public string ForwardToZccPhoneNumber { get; init; }
 
 		/// <summary>
 		/// Gets or sets the greeting audio prompt ID.
@@ -172,7 +172,7 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// This is only required for the Call Queue or Auto Receptionist call_handling sub-setting.
 		/// </summary>
 		[JsonPropertyName("greeting_prompt_id")]
-		public string GreetingPromptId { get; set; }
+		public string GreetingPromptId { get; init; }
 
 		/// <summary>
 		/// Gets or sets the maximum number of calls in queue. Specify the maximum number of callers to place in the queue.
@@ -180,7 +180,7 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// It's required for the Call Queue call_handling sub-setting.
 		/// </summary>
 		[JsonPropertyName("max_call_in_queue")]
-		public int? MaxCallInQueue { get; set; }
+		public int? MaxCallInQueue { get; init; }
 
 		/// <summary>
 		/// Gets or sets the maximum wait time, in seconds, for <see cref="RingModeType.Simultaneous"/> ring mode
@@ -188,14 +188,14 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// <see href="https://developers.zoom.us/docs/api/phone/#tag/call-handling/PATCH/phone/extension/{extensionId}/call_handling/settings/{settingType}"/> to check allowed values.
 		/// </summary>
 		[JsonPropertyName("max_wait_time")]
-		public int? MaxWaitTime { get; set; }
+		public int? MaxWaitTime { get; init; }
 
 		/// <summary>
 		/// Gets or sets the message greeting prompt ID.
 		/// This field is only available if <see cref="CallNotAnswerAction"/> is set to <see cref="CallNotAnswerActionType.PlayMessageThenDisconnect"/>.
 		/// </summary>
 		[JsonPropertyName("message_greeting_id")]
-		public string MessageGreetingId { get; set; }
+		public string MessageGreetingId { get; init; }
 
 		/// <summary>
 		/// Gets or sets the music on hold prompt ID. This field is an option to choose music for inbound callers when they're placed on hold by a call queue member.
@@ -203,7 +203,7 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// Only required for the Call Queue call_handling sub-setting.
 		/// </summary>
 		[JsonPropertyName("music_on_hold_id")]
-		public string MusicOnHoldId { get; set; }
+		public string MusicOnHoldId { get; init; }
 
 		/// <summary>
 		/// Gets or sets the extension ID of the operator to whom the call is being forwarded.
@@ -214,7 +214,7 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// </list>
 		/// </summary>
 		[JsonPropertyName("operator_extension_id")]
-		public string OperatorExtensionId { get; set; }
+		public string OperatorExtensionId { get; init; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether to play callee's voicemail greeting when the caller reaches the end of the forwarding sequence.
@@ -228,14 +228,14 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// - <see cref="CallNotAnswerActionType.ForwardToSharedLineGroup"/>.
 		/// </summary>
 		[JsonPropertyName("overflow_play_callee_voicemail_greeting")]
-		public bool? OverflowPlayCalleeVoicemailGreeting { get; set; }
+		public bool? OverflowPlayCalleeVoicemailGreeting { get; init; }
 
 		/// <summary>
 		/// Gets or sets the extension's phone number or forward to an external number in E.164 format.
 		/// This field is only available if <see cref="CallNotAnswerAction"/> is set to <see cref="CallNotAnswerActionType.ForwardToPhoneNumber"/>.
 		/// </summary>
 		[JsonPropertyName("phone_number")]
-		public string PhoneNumber { get; set; }
+		public string PhoneNumber { get; init; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether to play callee's voicemail greeting when the caller reaches the end of forwarding sequence.
@@ -246,7 +246,7 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// </list>
 		/// </summary>
 		[JsonPropertyName("play_callee_voicemail_greeting")]
-		public bool? PlayCalleeVoicemailGreeting { get; set; }
+		public bool? PlayCalleeVoicemailGreeting { get; init; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether call queue members can receive new incoming calls notification even on the call.
@@ -254,7 +254,7 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// It's required for the Call Queue call handling sub-setting.
 		/// </summary>
 		[JsonPropertyName("receive_call")]
-		public bool? ReceiveCall { get; set; }
+		public bool? ReceiveCall { get; init; }
 
 		/// <summary>
 		/// Gets or sets the call handling ring mode, only allowed values:
@@ -264,7 +264,7 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// </list>
 		/// </summary>
 		[JsonPropertyName("ring_mode")]
-		public RingModeType? RingMode { get; set; }
+		public RingModeType? RingMode { get; init; }
 
 		/// <summary>
 		/// Gets or sets the value indicating whether press 1 before connecting the call to forward to an external contact or a number,
@@ -276,7 +276,7 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// - 10(Forward to a Phone Number).
 		/// </remarks>
 		[JsonPropertyName("un_answered_require_press_1_before_connecting")]
-		public bool? UnAnsweredRequirePress1BeforeConnecting { get; set; }
+		public bool? UnAnsweredRequirePress1BeforeConnecting { get; init; }
 
 		/// <summary>
 		/// Gets or sets the voicemail greeting prompt ID.
@@ -287,7 +287,7 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// </list>
 		/// </summary>
 		[JsonPropertyName("voicemail_greeting_id")]
-		public string VoicemailGreetingId { get; set; }
+		public string VoicemailGreetingId { get; init; }
 
 		/// <summary>
 		/// Gets or sets the voicemail leaving instruction prompt ID.
@@ -298,14 +298,14 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// </list>
 		/// </summary>
 		[JsonPropertyName("voicemail_leaving_instruction_id")]
-		public string VoicemailLeavingInstructionId { get; set; }
+		public string VoicemailLeavingInstructionId { get; init; }
 
 		/// <summary>
 		/// Gets or sets the wrap up time in seconds. Specify the duration before the next queue call is routed to a member in call queue.
 		/// See the <see href="https://developers.zoom.us/docs/api/phone/#tag/call-handling/PATCH/phone/extension/{extensionId}/call_handling/settings/{settingType}"/>  to check allowed values.
 		/// </summary>
 		[JsonPropertyName("wrap_up_time")]
-		public int? WrapUpTime { get; set; }
+		public int? WrapUpTime { get; init; }
 
 		/// <summary>Gets the type of sub-setting.</summary>
 		[JsonIgnore]

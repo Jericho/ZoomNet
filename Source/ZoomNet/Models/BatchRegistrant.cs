@@ -7,14 +7,14 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets registant's email.</summary>
 		[JsonPropertyName("email")]
-		public string Email { get; set; }
+		public string Email { get; init; }
 
 		/// <summary>Gets or sets registant's first name.</summary>
 		[JsonPropertyName("first_name")]
-		public string FirstName { get; set; }
+		public string FirstName { get; init; }
 
 		/// <summary>Gets or sets registant's last name.</summary>
 		[JsonPropertyName("last_name")]
-		public string LastName { get; set; }
+		public string LastName { get; init; }
 	}
 }

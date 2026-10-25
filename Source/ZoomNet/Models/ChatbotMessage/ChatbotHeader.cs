@@ -20,13 +20,13 @@ public record ChatbotHeader
 	/// <summary>Gets or sets the style of the message text.</summary>
 	[JsonPropertyName("style")]
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-	public ChatbotMessageStyle Style { get; set; }
+	public ChatbotMessageStyle Style { get; init; }
 
 	/// <summary>Gets or sets the sub-header of the message header.</summary>
 	[JsonPropertyName("sub_head")]
-	public ChatbotMessageText SubHeader { get; set; }
+	public ChatbotMessageText SubHeader { get; init; }
 
 	/// <summary>Gets or sets the text of the message.</summary>
 	[JsonPropertyName("text")]
-	public string Text { get; set; }
+	public string Text { get; init; }
 }

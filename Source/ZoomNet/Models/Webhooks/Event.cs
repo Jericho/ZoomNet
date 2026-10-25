@@ -8,7 +8,7 @@ namespace ZoomNet.Models.Webhooks
 	public abstract record Event
 	{
 		/// <summary>Gets or sets the type of event.</summary>
-		public EventType EventType { get; set; }
+		public EventType EventType { get; init; }
 
 		/// <summary>Gets or sets the timestamp at which the event occured.</summary>
 		/// <remarks>
@@ -19,6 +19,6 @@ namespace ZoomNet.Models.Webhooks
 		/// </remarks>
 		[JsonPropertyName("timestamp")]
 		[JsonConverter(typeof(EpochConverter))]
-		public DateTime Timestamp { get; set; }
+		public DateTime Timestamp { get; init; }
 	}
 }

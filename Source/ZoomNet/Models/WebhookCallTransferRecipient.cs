@@ -7,14 +7,14 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the recipient's extension number.</summary>
 		[JsonPropertyName("extension_number")]
-		public long ExtensionNumber { get; set; }
+		public long ExtensionNumber { get; init; }
 
 		/// <summary>Gets or sets the name of the recipient.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets the recipient's phone number in E.164 format.</summary>
 		[JsonPropertyName("phone_number")]
-		public string PhoneNumber { get; set; }
+		public string PhoneNumber { get; init; }
 	}
 }

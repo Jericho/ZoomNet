@@ -7,22 +7,22 @@ namespace ZoomNet.Models.QualityOfService
 	{
 		/// <summary>Gets or sets the average loss value.</summary>
 		[JsonPropertyName("avg_loss")]
-		public string AverageLoss { get; set; }
+		public string AverageLoss { get; init; }
 
 		/// <summary>Gets or sets the bitrate value.</summary>
 		[JsonPropertyName("bitrate")]
-		public string Bitrate { get; set; }
+		public string Bitrate { get; init; }
 
 		/// <summary>Gets or sets the jitter value.</summary>
 		[JsonPropertyName("jitter")]
-		public string Jitter { get; set; }
+		public string Jitter { get; init; }
 
 		/// <summary>Gets or sets the latency value.</summary>
 		[JsonPropertyName("latency")]
-		public string Latency { get; set; }
+		public string Latency { get; init; }
 
 		/// <summary>Gets or sets the max loss value.</summary>
 		[JsonPropertyName("max_loss")]
-		public string MaxLoss { get; set; }
+		public string MaxLoss { get; init; }
 	}
 }

@@ -8,9 +8,9 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the sync token.</summary>
 		[JsonPropertyName("sync_token")]
-		public string SyncToken { get; set; }
+		public string SyncToken { get; init; }
 
 		/// <summary>Gets or sets the records.</summary>
-		public T[] Records { get; set; }
+		public T[] Records { get; init; }
 	}
 }

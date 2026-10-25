@@ -7,6 +7,6 @@ namespace ZoomNet.Models.Webhooks
 	{
 		/// <summary>Gets or sets the information about recording storage usage.</summary>
 		[JsonPropertyName("object")]
-		public RecordingStorageUsage StorageUsage { get; set; }
+		public RecordingStorageUsage StorageUsage { get; init; }
 	}
 }

@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the asset's item id.</summary>
 		[JsonPropertyName("asset_item_id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the asset's item name.</summary>
 		[JsonPropertyName("asset_item_name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 	}
 }

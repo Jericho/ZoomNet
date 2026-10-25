@@ -7,9 +7,9 @@ namespace ZoomNet.Models.Webhooks
 	{
 		/// <summary>Gets or sets the account id of the call log.</summary>
 		[JsonPropertyName("account_id")]
-		public string AccountId { get; set; }
+		public string AccountId { get; init; }
 
 		/// <summary>Gets or sets user id of the call log owner.</summary>
-		public string UserId { get; set; }
+		public string UserId { get; init; }
 	}
 }

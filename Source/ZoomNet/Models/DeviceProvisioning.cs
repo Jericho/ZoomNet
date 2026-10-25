@@ -8,15 +8,15 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the SIP account details registered during the device provisioning process.</summary>
 		/// <remarks>Applicable only for <see cref="DeviceProvisioningType.Manual"/> provisioning type.</remarks>
 		[JsonPropertyName("sip_accounts")]
-		public SipAccount[] SipAccounts { get; set; }
+		public SipAccount[] SipAccounts { get; init; }
 
 		/// <summary>Gets or sets the provisioning type.</summary>
 		[JsonPropertyName("type")]
-		public DeviceProvisioningType Type { get; set; }
+		public DeviceProvisioningType Type { get; init; }
 
 		/// <summary>Gets or sets the provisioning url.</summary>
 		/// <remarks>Applicable only for <see cref="DeviceProvisioningType.Assisted"/> provisioning type.</remarks>
 		[JsonPropertyName("url")]
-		public string Url { get; set; }
+		public string Url { get; init; }
 	}
 }

@@ -11,13 +11,13 @@ namespace ZoomNet.Models
 		/// <see cref="SmsParticipantOwnerType.AutoReceptionist"/>.
 		/// </summary>
 		[JsonPropertyName("sms_sender_user_id")]
-		public string SenderUserId { get; set; }
+		public string SenderUserId { get; init; }
 
 		/// <summary>
 		/// Gets or sets the owner's id in a case when <see cref="SmsOwnerBase.Type"/> is
 		/// <see cref="SmsParticipantOwnerType.CallQueue"/> or <see cref="SmsParticipantOwnerType.AutoReceptionist"/>.
 		/// </summary>
 		[JsonPropertyName("team_id")]
-		public string TeamId { get; set; }
+		public string TeamId { get; init; }
 	}
 }

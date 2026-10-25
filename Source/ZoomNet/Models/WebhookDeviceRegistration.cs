@@ -7,14 +7,14 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the device id.</summary>
 		[JsonPropertyName("device_id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the device name.</summary>
 		[JsonPropertyName("device_name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets MAC address or serial number.</summary>
 		[JsonPropertyName("mac_address")]
-		public string MacAddress { get; set; }
+		public string MacAddress { get; init; }
 	}
 }

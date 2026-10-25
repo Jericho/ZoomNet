@@ -8,76 +8,76 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the department of the host.</summary>
 		[JsonPropertyName("dept")]
-		public string Department { get; set; }
+		public string Department { get; init; }
 
 		/// <summary>Gets or sets the meeting duration.</summary>
 		[JsonPropertyName("duration")]
-		public string Duration { get; set; }
+		public string Duration { get; init; }
 
 		/// <summary>Gets or sets the email address of the meeting host.</summary>
 		[JsonPropertyName("email")]
-		public string Email { get; set; }
+		public string Email { get; init; }
 
 		/// <summary>Gets or sets the end time of the meeting.</summary>
 		[JsonPropertyName("end_time")]
-		public DateTime? EndTime { get; set; }
+		public DateTime? EndTime { get; init; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether or not <a href="https://support.zoom.us/hc/en-us/articles/202470795-3rd-Party-Audio-Conference">3rd party audio</a> was used in the meeting.
 		/// </summary>
 		[JsonPropertyName("has_3rd_party_audio")]
-		public bool Has3RdPartyAudio { get; set; }
+		public bool Has3RdPartyAudio { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether or not the PSTN was used in the meeting.</summary>
 		[JsonPropertyName("has_pstn")]
-		public bool HasPstn { get; set; }
+		public bool HasPstn { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether or not the recording feature was used in the meeting.</summary>
 		[JsonPropertyName("has_recording")]
-		public bool HasRecording { get; set; }
+		public bool HasRecording { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether or not screenshare feature was used in the meeting.</summary>
 		[JsonPropertyName("has_screen_share")]
-		public bool HasScreenShare { get; set; }
+		public bool HasScreenShare { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether or not someone joined the meeting using SIP.</summary>
 		[JsonPropertyName("has_sip")]
-		public bool HasSip { get; set; }
+		public bool HasSip { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether or not video was used in the meeting.</summary>
 		[JsonPropertyName("has_video")]
-		public bool HasVideo { get; set; }
+		public bool HasVideo { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether or not VoIP was used in the meeting.</summary>
 		[JsonPropertyName("has_voip")]
-		public bool HasVoip { get; set; }
+		public bool HasVoip { get; init; }
 
 		/// <summary>Gets or sets the display name of the meeting host.</summary>
 		[JsonPropertyName("host")]
-		public string Host { get; set; }
+		public string Host { get; init; }
 
 		/// <summary>Gets or sets the meeting id, also known as the meeting number.</summary>
 		[JsonPropertyName("id")]
-		public long Id { get; set; }
+		public long Id { get; init; }
 
 		/// <summary>Gets or sets the meeting participant count.</summary>
 		[JsonPropertyName("participants")]
-		public int ParticipantCount { get; set; }
+		public int ParticipantCount { get; init; }
 
 		/// <summary>Gets or sets the start time of the meeting.</summary>
 		[JsonPropertyName("start_time")]
-		public DateTime StartTime { get; set; }
+		public DateTime StartTime { get; init; }
 
 		/// <summary>Gets or sets the topic of the meeting.</summary>
 		[JsonPropertyName("topic")]
-		public string Topic { get; set; }
+		public string Topic { get; init; }
 
 		/// <summary>Gets or sets the license type of the user.</summary>
 		[JsonPropertyName("user_type")]
-		public string UserType { get; set; }
+		public string UserType { get; init; }
 
 		/// <summary>Gets or sets the unique id.</summary>
 		[JsonPropertyName("uuid")]
-		public string Uuid { get; set; }
+		public string Uuid { get; init; }
 	}
 }

@@ -10,6 +10,6 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets the opt-out reasons for call queues.</summary>
 		[JsonPropertyName("call_queue_opt_out_reasons_list")]
-		public CallQueueOptOutReason[] OptOutReasons { get; set; }
+		public CallQueueOptOutReason[] OptOutReasons { get; init; }
 	}
 }

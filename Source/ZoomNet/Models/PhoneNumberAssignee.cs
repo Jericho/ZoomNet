@@ -15,18 +15,18 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the extension number of the assignee.</summary>
 		[JsonPropertyName("extension_number")]
-		public long? ExtensionNumber { get; set; }
+		public long? ExtensionNumber { get; init; }
 
 		/// <summary>Gets or sets the unique identifier of the assignee.</summary>
 		[JsonPropertyName("id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the name of the assignee.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets the type of the assignee.</summary>
 		[JsonPropertyName("type")]
-		public string Type { get; set; }
+		public string Type { get; init; }
 	}
 }

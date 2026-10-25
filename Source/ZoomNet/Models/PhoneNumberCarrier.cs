@@ -13,10 +13,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the unique identifier of the carrier.</summary>
 		[JsonPropertyName("code")]
-		public int? Code { get; set; }
+		public int? Code { get; init; }
 
 		/// <summary>Gets or sets the name of the carrier.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 	}
 }

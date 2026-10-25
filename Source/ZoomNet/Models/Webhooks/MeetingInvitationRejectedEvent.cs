@@ -8,10 +8,10 @@ namespace ZoomNet.Models.Webhooks
 	{
 		/// <summary>Gets or sets the email address of the user who rejected the meeting.</summary>
 		[JsonPropertyName("operator")]
-		public string Operator { get; set; }
+		public string Operator { get; init; }
 
 		/// <summary>Gets or sets id of the user who rejected the meeting.</summary>
 		[JsonPropertyName("operator_id")]
-		public string OperatorId { get; set; }
+		public string OperatorId { get; init; }
 	}
 }

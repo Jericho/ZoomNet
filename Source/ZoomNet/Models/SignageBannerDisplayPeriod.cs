@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the number of minutes before the meeting starts.</summary>
 		[JsonPropertyName("start_displaying_content")]
-		public int StartDisplayingContent { get; set; }
+		public int StartDisplayingContent { get; init; }
 
 		/// <summary>Gets or sets the number of minutes after the meeting ends.</summary>
 		[JsonPropertyName("stop_displaying_content")]
-		public int StopDisplayingContent { get; set; }
+		public int StopDisplayingContent { get; init; }
 	}
 }

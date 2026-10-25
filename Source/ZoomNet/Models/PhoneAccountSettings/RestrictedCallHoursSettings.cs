@@ -7,18 +7,18 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets a value indicating whether to allow internal calls/SMS during restricted hours.</summary>
 		[JsonPropertyName("allow_internal_calls")]
-		public bool? AllowInternalCalls { get; set; }
+		public bool? AllowInternalCalls { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether restricted holiday hours has been applied.</summary>
 		[JsonPropertyName("restricted_holiday_hours_applied")]
-		public bool? RestrictedHolidayHoursApplied { get; set; }
+		public bool? RestrictedHolidayHoursApplied { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether restricted hours has been applied.</summary>
 		[JsonPropertyName("restricted_hours_applied")]
-		public bool? RestrictedHoursApplied { get; set; }
+		public bool? RestrictedHoursApplied { get; init; }
 
 		/// <summary>Gets or sets timezone information.</summary>
 		[JsonPropertyName("time_zone")]
-		public TimezoneInfo Timezone { get; set; }
+		public TimezoneInfo Timezone { get; init; }
 	}
 }

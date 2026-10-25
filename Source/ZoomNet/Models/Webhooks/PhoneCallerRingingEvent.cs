@@ -6,6 +6,6 @@ namespace ZoomNet.Models.Webhooks
 	public record PhoneCallerRingingEvent : PhoneCallFlowEvent
 	{
 		/// <summary>Gets or sets the date and time when the ringing started.</summary>
-		public DateTime RingingStartedOn { get; set; }
+		public DateTime RingingStartedOn { get; init; }
 	}
 }

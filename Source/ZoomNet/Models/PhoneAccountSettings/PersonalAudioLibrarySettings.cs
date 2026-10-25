@@ -7,10 +7,10 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets a value indicating whether to allow music on hold customization.</summary>
 		[JsonPropertyName("allow_music_on_hold_customization")]
-		public bool? AllowMusicOnHoldCustomization { get; set; }
+		public bool? AllowMusicOnHoldCustomization { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether to allow voicemail and message greeting customization.</summary>
 		[JsonPropertyName("allow_voicemail_and_message_greeting_customization")]
-		public bool? AllowVoicemailAndMessageGreetingCustomization { get; set; }
+		public bool? AllowVoicemailAndMessageGreetingCustomization { get; init; }
 	}
 }

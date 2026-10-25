@@ -8,26 +8,26 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the reason for SMS sending failure.</summary>
 		/// <remarks>Empty field means the SMS sending was successful.</remarks>
 		[JsonPropertyName("failure_reason")]
-		public string FailureReason { get; set; }
+		public string FailureReason { get; init; }
 
 		/// <summary>Gets or sets the owner of the SMS.</summary>
 		[JsonPropertyName("owner")]
-		public WebhookSmsOwner Owner { get; set; }
+		public WebhookSmsOwner Owner { get; init; }
 
 		/// <summary>Gets or sets the list of opt statuses for each number pair.</summary>
 		[JsonPropertyName("phone_number_campaign_opt_statuses")]
-		public SmsCampaignNumbersOptStatus[] PhoneNumbersOptStatuses { get; set; }
+		public SmsCampaignNumbersOptStatus[] PhoneNumbersOptStatuses { get; init; }
 
 		/// <summary>Gets or sets the SMS sender.</summary>
 		[JsonPropertyName("sender")]
-		public WebhookSmsParticipant Sender { get; set; }
+		public WebhookSmsParticipant Sender { get; init; }
 
 		/// <summary>Gets or sets the SMS session id.</summary>
 		[JsonPropertyName("session_id")]
-		public string SessionId { get; set; }
+		public string SessionId { get; init; }
 
 		/// <summary>Gets or sets the SMS receivers.</summary>
 		[JsonPropertyName("to_members")]
-		public WebhookSmsParticipant[] Recipients { get; set; }
+		public WebhookSmsParticipant[] Recipients { get; init; }
 	}
 }

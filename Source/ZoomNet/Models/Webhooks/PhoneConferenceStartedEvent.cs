@@ -7,10 +7,10 @@ namespace ZoomNet.Models.Webhooks
 	{
 		/// <summary>Gets or sets the user's account id.</summary>
 		[JsonPropertyName("account_id")]
-		public string AccountId { get; set; }
+		public string AccountId { get; init; }
 
 		/// <summary>Gets or sets conference call information.</summary>
 		[JsonPropertyName("object")]
-		public ConferenceCall ConferenceCall { get; set; }
+		public ConferenceCall ConferenceCall { get; init; }
 	}
 }

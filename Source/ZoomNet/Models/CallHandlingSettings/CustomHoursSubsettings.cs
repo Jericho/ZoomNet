@@ -11,11 +11,11 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// This field allows queue members' business hours to override the default hours of the call queue.
 		/// </summary>
 		[JsonPropertyName("allow_members_to_reset")]
-		public bool? AllowMembersToReset { get; set; }
+		public bool? AllowMembersToReset { get; init; }
 
 		/// <summary>Gets or sets the custom hours settings.</summary>
 		[JsonPropertyName("custom_hours_settings")]
-		public List<CustomHoursChildSubsettings> CustomHoursSettings { get; set; }
+		public List<CustomHoursChildSubsettings> CustomHoursSettings { get; init; }
 
 		/// <summary>
 		/// Gets or sets the type of custom hours.
@@ -23,7 +23,7 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// 2 — Custom hours.
 		/// </summary>
 		[JsonPropertyName("type")]
-		public byte? CustomHoursType { get; set; }
+		public byte? CustomHoursType { get; init; }
 
 		/// <summary>Gets the type of sub-setting.</summary>
 		[JsonIgnore]

@@ -7,6 +7,6 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets call overflow restriction.</summary>
 		[JsonPropertyName("call_overflow_type")]
-		public CallRestrictionType? CallOverflowType { get; set; }
+		public CallRestrictionType? CallOverflowType { get; init; }
 	}
 }

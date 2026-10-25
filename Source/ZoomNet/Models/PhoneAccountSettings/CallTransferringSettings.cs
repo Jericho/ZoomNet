@@ -7,6 +7,6 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets call transfer restriction.</summary>
 		[JsonPropertyName("call_transferring_type")]
-		public CallRestrictionType? CallTransferringType { get; set; }
+		public CallRestrictionType? CallTransferringType { get; init; }
 	}
 }

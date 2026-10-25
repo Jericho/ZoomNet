@@ -7,21 +7,21 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the access link id.</summary>
 		[JsonPropertyName("access_link_id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the registration restricted to these specific domains.</summary>
 		/// <remarks>This array returns a maximum of 50 domains.</remarks>
 		[JsonPropertyName("allow_domain_list")]
-		public string[] AllowDomainList { get; set; }
+		public string[] AllowDomainList { get; init; }
 
 		/// <summary>Gets or sets the event authentication method during registration or during join, depending on the access link type.</summary>
 		[JsonPropertyName("authentication_method")]
-		public EventAuthenticationMethod AuthenticationMethod { get; set; }
+		public EventAuthenticationMethod AuthenticationMethod { get; init; }
 
 		/// <summary>Gets or sets the registration restricted to users by email addresses.</summary>
 		/// <remarks>Only these users are allowed to register and these email addresses will receive an email invitation.</remarks>
 		[JsonPropertyName("email_restrict_list")]
-		public string[] EmailRestrictList { get; set; }
+		public string[] EmailRestrictList { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether this is the default access link.</summary>
 		/// <remarks>
@@ -29,32 +29,32 @@ namespace ZoomNet.Models
 		/// These existing event links will operate as a registration link or group join link based upon the default setting.
 		/// </remarks>
 		[JsonPropertyName("is_default")]
-		public bool IsDefault { get; set; }
+		public bool IsDefault { get; init; }
 
 		/// <summary>Gets or sets the name of the access link.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets the recurring event registration type.</summary>
 		/// <remarks>This is applicable only for recurring events.</remarks>
 		[JsonPropertyName("recurring_registration_option")]
-		public RecurringEventRegistrationType RecurringRegistrationType { get; set; }
+		public RecurringEventRegistrationType RecurringRegistrationType { get; init; }
 
 		/// <summary>Gets or sets the security at the time of joining.</summary>
 		[JsonPropertyName("security_at_join")]
-		public EventSecurityAtJoin SecurityAtJoin { get; set; }
+		public EventSecurityAtJoin SecurityAtJoin { get; init; }
 
 		/// <summary>Gets or sets the The ticket type ID.</summary>
 		/// <remarks>This field applies only to group-join link type. This establishes the access permissions of the user within the event.</remarks>
 		[JsonPropertyName("ticket_type_id")]
-		public string TicketTypeId { get; set; }
+		public string TicketTypeId { get; init; }
 
 		/// <summary>Gets or sets the type of access link of the event.</summary>
 		[JsonPropertyName("type")]
-		public EventAccessLinkType Type { get; set; }
+		public EventAccessLinkType Type { get; init; }
 
 		/// <summary>Gets or sets the event access link.</summary>
 		[JsonPropertyName("url")]
-		public string Url { get; set; }
+		public string Url { get; init; }
 	}
 }

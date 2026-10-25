@@ -14,18 +14,18 @@ namespace ZoomNet.Models
 		/// use the Get a meeting API.
 		/// </remarks>
 		[JsonPropertyName("agenda")]
-		public string Agenda { get; set; }
+		public string Agenda { get; init; }
 
 		/// <summary>Gets or sets the date and time when the meeting was created.</summary>
 		[JsonPropertyName("created_at")]
-		public DateTime CreatedOn { get; set; }
+		public DateTime CreatedOn { get; init; }
 
 		/// <summary>Gets or sets the personal meeting id.</summary>
 		[JsonPropertyName("pmi")]
-		public string PersonalMeetingId { get; set; }
+		public string PersonalMeetingId { get; init; }
 
 		/// <summary>Gets or sets the URL for the host to start the meeting.</summary>
 		[JsonPropertyName("start_url")]
-		public string StartUrl { get; set; }
+		public string StartUrl { get; init; }
 	}
 }

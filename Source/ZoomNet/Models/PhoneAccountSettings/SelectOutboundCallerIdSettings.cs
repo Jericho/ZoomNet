@@ -7,6 +7,6 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets a value indicating whether to allow extensions to hide outbound caller ID.</summary>
 		[JsonPropertyName("allow_hide_outbound_caller_id")]
-		public bool? AllowHideOutboundCallerId { get; set; }
+		public bool? AllowHideOutboundCallerId { get; init; }
 	}
 }

@@ -7,14 +7,14 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets a value indicating whether setting is enabled.</summary>
 		[JsonPropertyName("enable")]
-		public bool Enabled { get; set; }
+		public bool Enabled { get; init; }
 
 		/// <summary>Gets or sets maximum call duration in seconds.</summary>
 		[JsonPropertyName("max")]
-		public int Max { get; set; }
+		public int Max { get; init; }
 
 		/// <summary>Gets or sets minimum call duration in seconds.</summary>
 		[JsonPropertyName("min")]
-		public int Min { get; set; }
+		public int Min { get; init; }
 	}
 }

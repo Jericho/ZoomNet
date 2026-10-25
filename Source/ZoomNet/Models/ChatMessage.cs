@@ -8,18 +8,18 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the date and time at which the message was sent.</summary>
 		[JsonPropertyName("date_time")]
-		public DateTime SentOn { get; set; }
+		public DateTime SentOn { get; init; }
 
 		/// <summary>Gets or sets the unique identifier of the message.</summary>
 		[JsonPropertyName("id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the message content.</summary>
 		[JsonPropertyName("message")]
-		public string Message { get; set; }
+		public string Message { get; init; }
 
 		/// <summary>Gets or sets the timestamp of the message in microseconds.</summary>
 		[JsonPropertyName("timestamp")]
-		public long Timestamp { get; set; }
+		public long Timestamp { get; init; }
 	}
 }

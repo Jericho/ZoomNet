@@ -7,9 +7,9 @@ public record PhoneCallPhoneNumber
 {
 	/// <summary>Gets or sets the phone number ID.</summary>
 	[JsonPropertyName("id")]
-	public string PhoneNumberId { get; set; }
+	public string PhoneNumberId { get; init; }
 
 	/// <summary>Gets or sets the phone number.</summary>
 	[JsonPropertyName("number")]
-	public string PhoneNumber { get; set; }
+	public string PhoneNumber { get; init; }
 }

@@ -12,29 +12,29 @@ namespace ZoomNet.Models
 		/// For long_answer polls, a maximum of 2,000 characters.
 		/// </remarks>
 		[JsonPropertyName("answer_max_character")]
-		public int? MaximumNumberOfCharacters { get; set; }
+		public int? MaximumNumberOfCharacters { get; init; }
 
 		/// <summary>Gets or sets the minimum number of characters.</summary>
 		/// <remarks>This field only applies to questions of type 'Short' and 'Long'. Must be greather or equal to 1.</remarks>
 		[JsonPropertyName("answer_min_character")]
-		public int? MinimumNumberOfCharacters { get; set; }
+		public int? MinimumNumberOfCharacters { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the question must be answered.</summary>
 		[JsonPropertyName("answer_required")]
-		public bool IsRequired { get; set; }
+		public bool IsRequired { get; init; }
 
 		/// <summary>Gets or sets the answers to the question.</summary>
 		[JsonPropertyName("answers")]
-		public string[] Answers { get; set; }
+		public string[] Answers { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the corect answer is case sensitive.</summary>
 		/// <remarks>This field only applies to questions of type 'Fill in the blanks'.</remarks>
 		[JsonPropertyName("case_sensitive")]
-		public bool? IsCaseSensitive { get; set; }
+		public bool? IsCaseSensitive { get; init; }
 
 		/// <summary>Gets or sets the question asked during the poll.</summary>
 		[JsonPropertyName("name")]
-		public string Question { get; set; }
+		public string Question { get; init; }
 
 		/// <summary>Gets or sets the question prompt's correct answers.</summary>
 		/// <remarks>
@@ -42,42 +42,42 @@ namespace ZoomNet.Models
 		/// - For rank_order polls, you can only provide one correct answer.
 		/// </remarks>
 		[JsonPropertyName("prompt_right_answers")]
-		public string[] PromptCorrectAnswers { get; set; }
+		public string[] PromptCorrectAnswers { get; init; }
 
 		/// <summary>Gets or sets the high score label.</summary>
 		/// <remarks>This field only applies to questions of type 'Rating'.</remarks>
 		[JsonPropertyName("rating_max_label")]
-		public string RatingHighScoreLabel { get; set; }
+		public string RatingHighScoreLabel { get; init; }
 
 		/// <summary>Gets or sets the rating maximum value.</summary>
 		/// <remarks>This field only applies to questions of type 'Rating'. Must be smaller or equal to 10.</remarks>
 		[JsonPropertyName("rating_max_value")]
-		public int? RatingMaximumValue { get; set; }
+		public int? RatingMaximumValue { get; init; }
 
 		/// <summary>Gets or sets the low score label.</summary>
 		/// <remarks>This field only applies to questions of type 'Rating'.</remarks>
 		[JsonPropertyName("rating_min_label")]
-		public string RatingLowScoreLabel { get; set; }
+		public string RatingLowScoreLabel { get; init; }
 
 		/// <summary>Gets or sets the rating minimum value.</summary>
 		/// <remarks>This field only applies to questions of type 'Rating'. Must be greather or equal to 0.</remarks>
 		[JsonPropertyName("rating_min_value")]
-		public int? RatingMinimumValue { get; set; }
+		public int? RatingMinimumValue { get; init; }
 
 		/// <summary>Gets or sets the correct answer(s) to the question.</summary>
 		[JsonPropertyName("right_answers")]
-		public string[] CorrectAnswers { get; set; }
+		public string[] CorrectAnswers { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the possible answers will be displayed as a drop-down box.</summary>
 		[JsonPropertyName("show_as_dropdown")]
-		public bool? ShowAsDropdown { get; set; }
+		public bool? ShowAsDropdown { get; init; }
 
 		/// <summary>Gets or sets the poll's title, up to 64 characters.</summary>
 		[JsonPropertyName("title")]
-		public string Title { get; set; }
+		public string Title { get; init; }
 
 		/// <summary>Gets or sets the type of question.</summary>
 		[JsonPropertyName("type")]
-		public PollQuestionType Type { get; set; }
+		public PollQuestionType Type { get; init; }
 	}
 }

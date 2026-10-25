@@ -7,14 +7,14 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the content of the voicemail transcript.</summary>
 		[JsonPropertyName("content")]
-		public string Content { get; set; }
+		public string Content { get; init; }
 
 		/// <summary>Gets or sets the company that provides the transcription engine technology.</summary>
 		[JsonPropertyName("engine")]
-		public string Engine { get; set; }
+		public string Engine { get; init; }
 
 		/// <summary>Gets or sets the status of the voicemail transcript.</summary>
 		[JsonPropertyName("status")]
-		public VoicemailTranscriptStatus Status { get; set; }
+		public VoicemailTranscriptStatus Status { get; init; }
 	}
 }
