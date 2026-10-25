@@ -4,6 +4,6 @@ namespace ZoomNet.Models.Webhooks
 	public record PhoneCallerCallLogCompletedEvent : PhoneCallLogOperationEvent
 	{
 		/// <summary>Gets or sets completed call logs information.</summary>
-		public UserCallLog[] CallLogs { get; set; }
+		public UserCallLog[] CallLogs { get; init; }
 	}
 }

@@ -8,28 +8,28 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets call's unique id.</summary>
 		[JsonPropertyName("call_id")]
-		public string CallId { get; set; }
+		public string CallId { get; init; }
 
 		/// <summary>Gets or sets date and time related to call transfer.</summary>
 		/// <remarks>Depending on the webhook event this can be a timestamp when the call transfer was initiated or completed.</remarks>
 		[JsonPropertyName("date_time")]
-		public DateTime Timestamp { get; set; }
+		public DateTime Timestamp { get; init; }
 
 		/// <summary>Gets or sets the call transfer operation failure reason.</summary>
 		/// <remarks>Empty string indicates successful operation.</remarks>
 		[JsonPropertyName("failure_reason")]
-		public string FailureReason { get; set; }
+		public string FailureReason { get; init; }
 
 		/// <summary>Gets or sets the call transfer owner.</summary>
 		[JsonPropertyName("owner")]
-		public CallLogOwnerInfo Owner { get; set; }
+		public CallLogOwnerInfo Owner { get; init; }
 
 		/// <summary>Gets or sets the transfer account code.</summary>
 		[JsonPropertyName("transfer_account_code")]
-		public string TransferAccountCode { get; set; }
+		public string TransferAccountCode { get; init; }
 
 		/// <summary>Gets or sets call transfer destination phone number.</summary>
 		[JsonPropertyName("transfer_phone_number")]
-		public string TransferPhoneNumber { get; set; }
+		public string TransferPhoneNumber { get; init; }
 	}
 }

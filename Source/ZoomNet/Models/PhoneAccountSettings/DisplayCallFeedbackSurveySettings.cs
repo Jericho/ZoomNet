@@ -7,14 +7,14 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets feedback duration setting.</summary>
 		[JsonPropertyName("feedback_duration")]
-		public FeedbackDurationSetting FeedbackDuration { get; set; }
+		public FeedbackDurationSetting FeedbackDuration { get; init; }
 
 		/// <summary>Gets or sets feedback MOS setting.</summary>
 		[JsonPropertyName("feedback_mos")]
-		public FeedbackMeanOpinionScoreSetting FeedbackMeanOpinionScore { get; set; }
+		public FeedbackMeanOpinionScoreSetting FeedbackMeanOpinionScore { get; init; }
 
 		/// <summary>Gets or sets feedback survey type.</summary>
 		[JsonPropertyName("feedback_type")]
-		public CallFeedbackType? FeedbackType { get; set; }
+		public CallFeedbackType? FeedbackType { get; init; }
 	}
 }

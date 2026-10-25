@@ -9,10 +9,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets a value indicating whether to enable language interpretation for the meeting.</summary>
 		[JsonPropertyName("enable")]
-		public bool Enabled { get; set; }
+		public bool Enabled { get; init; }
 
 		/// <summary>Gets or sets the interpreters for the meeting.</summary>
 		[JsonPropertyName("interpreters")]
-		public T[] Interpreters { get; set; }
+		public T[] Interpreters { get; init; }
 	}
 }

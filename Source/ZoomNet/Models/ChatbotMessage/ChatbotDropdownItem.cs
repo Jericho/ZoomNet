@@ -7,9 +7,9 @@ public record ChatbotDropdownItem
 {
 	/// <summary>Gets or sets the text of this dropdown list item.</summary>
 	[JsonPropertyName("text")]
-	public string Text { get; set; }
+	public string Text { get; init; }
 
 	/// <summary>Gets or sets the value of this dropdown list item.</summary>
 	[JsonPropertyName("value")]
-	public string Value { get; set; }
+	public string Value { get; init; }
 }

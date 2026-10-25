@@ -17,7 +17,7 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the participant's SDK identifier.</summary>
 		[JsonPropertyName("customer_key")]
-		public string CustomerKey { get; set; }
+		public string CustomerKey { get; init; }
 
 		/// <summary>Gets or sets the participant's email address.</summary>
 		/// <remarks>
@@ -25,7 +25,7 @@ namespace ZoomNet.Models
 		/// If the participant is not a part of the host's account this returns empty string.
 		/// </remarks>
 		[JsonPropertyName("email")]
-		public string Email { get; set; }
+		public string Email { get; init; }
 
 		/// <summary>Gets or sets the user id of the participant.</summary>
 		/// <remarks>
@@ -34,7 +34,7 @@ namespace ZoomNet.Models
 		/// Use <see cref="ParticipantUserId"/> instead as this property is going to be deprecated.
 		/// </remarks>
 		[JsonPropertyName("id")]
-		public string UserId { get; set; }
+		public string UserId { get; init; }
 
 		/// <summary>Gets or sets the participant's universally unique id.</summary>
 		/// <remarks>
@@ -43,7 +43,7 @@ namespace ZoomNet.Models
 		/// The value is blank for external users.
 		/// </remarks>
 		[JsonPropertyName("participant_user_id")]
-		public string ParticipantUserId { get; set; }
+		public string ParticipantUserId { get; init; }
 
 		/// <summary>Gets or sets the participant's meeting universally unique id.</summary>
 		/// <remarks>
@@ -51,24 +51,24 @@ namespace ZoomNet.Models
 		/// This value does not change when the participant joins/leaves a breakout room.
 		/// </remarks>
 		[JsonPropertyName("participant_uuid")]
-		public string ParticipantUuid { get; set; }
+		public string ParticipantUuid { get; init; }
 
 		/// <summary>Gets or sets phone number of participant who joined via PSTN.</summary>
 		[JsonPropertyName("phone_number")]
-		public string PhoneNumber { get; set; }
+		public string PhoneNumber { get; init; }
 
 		/// <summary>Gets or sets the participant's registrant id.</summary>
 		/// <remarks>A host or a user with admin permissions can require registration for Zoom meetings.</remarks>
 		[JsonPropertyName("registrant_id")]
-		public string RegistrantId { get; set; }
+		public string RegistrantId { get; init; }
 
 		/// <summary>Gets or sets the unique participant identifier.</summary>
 		/// <remarks>This is unique for each meeting participant and is valid only for that meeting.</remarks>
 		[JsonPropertyName("user_id")]
-		public string ParticipantId { get; set; }
+		public string ParticipantId { get; init; }
 
 		/// <summary>Gets or sets the participant's display name.</summary>
 		[JsonPropertyName("user_name")]
-		public string DisplayName { get; set; }
+		public string DisplayName { get; init; }
 	}
 }

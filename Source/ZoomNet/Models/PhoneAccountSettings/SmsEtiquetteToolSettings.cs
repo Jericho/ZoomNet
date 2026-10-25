@@ -7,6 +7,6 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets SMS etiquette policies.</summary>
 		[JsonPropertyName("sms_etiquette_policy")]
-		public SmsEtiquettePolicy[] SmsEtiquettePolicy { get; set; }
+		public SmsEtiquettePolicy[] SmsEtiquettePolicy { get; init; }
 	}
 }

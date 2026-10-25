@@ -4,9 +4,9 @@ namespace ZoomNet.Models.Webhooks
 	public record MeetingBreakoutRoomSharingStartedEvent : MeetingBreakoutRoomEvent
 	{
 		/// <summary>Gets or sets the information about meeting participant.</summary>
-		public BreakoutRoomParticipantBasicInfo Participant { get; set; }
+		public BreakoutRoomParticipantBasicInfo Participant { get; init; }
 
 		/// <summary>Gets or sets the information about the meeting's screenshare.</summary>
-		public ScreenshareDetails SharingDetails { get; set; }
+		public ScreenshareDetails SharingDetails { get; init; }
 	}
 }

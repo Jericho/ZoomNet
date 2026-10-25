@@ -7,38 +7,38 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the access level.</summary>
 		[JsonPropertyName("access_level")]
-		public string AccessLevel { get; set; }
+		public string AccessLevel { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the events in the hub are automatically listed.</summary>
 		[JsonPropertyName("auto_list_events")]
-		public bool AutomaticallyListEvents { get; set; }
+		public bool AutomaticallyListEvents { get; init; }
 
 		/// <summary>Gets or sets the description.</summary>
 		[JsonPropertyName("description")]
-		public string Description { get; set; }
+		public string Description { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the hub is hidden or not.</summary>
 		[JsonPropertyName("hidden_hub")]
-		public bool IsHidden { get; set; }
+		public bool IsHidden { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the hub is active or not.</summary>
 		[JsonPropertyName("hub_active")]
-		public bool IsActive { get; set; }
+		public bool IsActive { get; init; }
 
 		/// <summary>Gets or sets the hub id.</summary>
 		[JsonPropertyName("hub_id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the hub is a landing hub.</summary>
 		[JsonPropertyName("landing_hub")]
-		public bool IsLandingHub { get; set; }
+		public bool IsLandingHub { get; init; }
 
 		/// <summary>Gets or sets the name.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets the public URL.</summary>
 		[JsonPropertyName("public_url")]
-		public string PublicUrl { get; set; }
+		public string PublicUrl { get; init; }
 	}
 }

@@ -6,6 +6,6 @@ namespace ZoomNet.Models.Webhooks
 	public record PhoneCallerUnholdEvent : PhoneCallFlowEvent
 	{
 		/// <summary>Gets or sets the date and time when the call hold ended.</summary>
-		public DateTime HoldEndedOn { get; set; }
+		public DateTime HoldEndedOn { get; init; }
 	}
 }

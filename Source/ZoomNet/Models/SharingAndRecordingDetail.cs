@@ -7,14 +7,14 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the type of content shared.</summary>
 		[JsonPropertyName("content")]
-		public string Content { get; set; }
+		public string Content { get; init; }
 
 		/// <summary>Gets or sets the end time of the sharing.</summary>
 		[JsonPropertyName("end_time")]
-		public string EndTime { get; set; }
+		public string EndTime { get; init; }
 
 		/// <summary>Gets or sets the start time of the sharing.</summary>
 		[JsonPropertyName("start_time")]
-		public string StartTime { get; set; }
+		public string StartTime { get; init; }
 	}
 }

@@ -7,6 +7,6 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets call forwarding restriction.</summary>
 		[JsonPropertyName("call_forwarding_type")]
-		public CallRestrictionType? CallForwardingType { get; set; }
+		public CallRestrictionType? CallForwardingType { get; init; }
 	}
 }

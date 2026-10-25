@@ -7,14 +7,14 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the unique identifier of the phone number.</summary>
 		[JsonPropertyName("id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the phone number.</summary>
 		[JsonPropertyName("number")]
-		public string Number { get; set; }
+		public string Number { get; init; }
 
 		/// <summary>Gets or sets the source of the phone number.</summary>
 		[JsonPropertyName("source")]
-		public CallQueueNumberSource Source { get; set; }
+		public CallQueueNumberSource Source { get; init; }
 	}
 }

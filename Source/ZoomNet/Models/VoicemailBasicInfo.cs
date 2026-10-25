@@ -8,6 +8,6 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets unique identifier of the voicemail.</summary>
 		[JsonPropertyName("id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 	}
 }

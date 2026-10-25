@@ -6,12 +6,12 @@ namespace ZoomNet.Models.Webhooks
 	public record MeetingParticipantRoleChangedEvent : MeetingParticipantEvent
 	{
 		/// <summary>Gets or sets the time when the participant changed the role.</summary>
-		public DateTime ChangedOn { get; set; }
+		public DateTime ChangedOn { get; init; }
 
 		/// <summary>Gets or sets the participant's new role.</summary>
-		public ParticipantRole NewRole { get; set; }
+		public ParticipantRole NewRole { get; init; }
 
 		/// <summary>Gets or sets the participant's old role.</summary>
-		public ParticipantRole OldRole { get; set; }
+		public ParticipantRole OldRole { get; init; }
 	}
 }

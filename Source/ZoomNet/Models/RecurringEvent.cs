@@ -8,6 +8,6 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the recurrence info.</summary>
 		[JsonPropertyName("recurrence")]
-		public EventRecurrenceInfo RecurrenceInfo { get; set; }
+		public EventRecurrenceInfo RecurrenceInfo { get; init; }
 	}
 }

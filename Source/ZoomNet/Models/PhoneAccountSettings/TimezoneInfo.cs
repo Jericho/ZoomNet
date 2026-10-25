@@ -7,10 +7,10 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets the timezone id.</summary>
 		[JsonPropertyName("id")]
-		public TimeZones Id { get; set; }
+		public TimeZones Id { get; init; }
 
 		/// <summary>Gets or sets the timezone name.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 	}
 }

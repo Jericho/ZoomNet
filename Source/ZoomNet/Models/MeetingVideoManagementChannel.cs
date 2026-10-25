@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the id of the video management channel.</summary>
 		[JsonPropertyName("channel_id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the name of the video management channel.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 	}
 }

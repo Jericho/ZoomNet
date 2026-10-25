@@ -10,6 +10,6 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets a value indicating whether to disable incoming unencrypted voicemail.</summary>
 		[JsonPropertyName("disable_incoming_unencrypted_voicemail")]
-		public bool? DisableIncomingUnencryptedVoicemail { get; set; }
+		public bool? DisableIncomingUnencryptedVoicemail { get; init; }
 	}
 }

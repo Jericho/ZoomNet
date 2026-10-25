@@ -7,14 +7,14 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets opt-out reason code.</summary>
 		[JsonPropertyName("code")]
-		public string Code { get; set; }
+		public string Code { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether opt-out reason is enabled.</summary>
 		[JsonPropertyName("enable")]
-		public bool Enabled { get; set; }
+		public bool Enabled { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether this opt-out reason is system default one.</summary>
 		[JsonPropertyName("system")]
-		public bool IsSystem { get; set; }
+		public bool IsSystem { get; init; }
 	}
 }

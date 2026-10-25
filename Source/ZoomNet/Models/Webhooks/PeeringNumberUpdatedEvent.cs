@@ -7,10 +7,10 @@ namespace ZoomNet.Models.Webhooks
 	{
 		/// <summary>Gets or sets the account id of the customer using provider exchange.</summary>
 		[JsonPropertyName("account_id")]
-		public string AccountId { get; set; }
+		public string AccountId { get; init; }
 
 		/// <summary>Gets or sets peering number update information.</summary>
 		[JsonPropertyName("object")]
-		public WebhookPeeringNumberUpdate PeeringNumber { get; set; }
+		public WebhookPeeringNumberUpdate PeeringNumber { get; init; }
 	}
 }

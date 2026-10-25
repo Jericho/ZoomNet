@@ -8,23 +8,23 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the date the meeting will canceled. Cannot be used with "end_times".</summary>
 		[JsonPropertyName("end_date_time")]
-		public DateTime? EndDateTime { get; set; }
+		public DateTime? EndDateTime { get; init; }
 
 		/// <summary>Gets or sets the number of times the meeting will occur before it is canceled. Cannot be used with "end_date_time".</summary>
 		[JsonPropertyName("end_times")]
-		public int? EndTimes { get; set; }
+		public int? EndTimes { get; init; }
 
 		/// <summary>Gets or sets the day of the month for the meeting to be scheduled. The value range is from 1 to 31.</summary>
 		[JsonPropertyName("monthly_day")]
-		public int? MonthlyDay { get; set; }
+		public int? MonthlyDay { get; init; }
 
 		/// <summary>Gets or sets the week for which the meeting should recur each month.</summary>
 		[JsonPropertyName("monthly_week")]
-		public int? MonthlyWeek { get; set; }
+		public int? MonthlyWeek { get; init; }
 
 		/// <summary>Gets or sets the day for which the meeting should recur each month.</summary>
 		[JsonPropertyName("monthly_week_day")]
-		public DayOfWeek? MonthlyWeekDay { get; set; }
+		public DayOfWeek? MonthlyWeekDay { get; init; }
 
 		/// <summary>
 		/// Gets or sets the interval should the meeting repeat.
@@ -33,14 +33,14 @@ namespace ZoomNet.Models
 		/// For a monthly meeting, max of 3 months.
 		/// </summary>
 		[JsonPropertyName("repeat_interval")]
-		public int? RepeatInterval { get; set; }
+		public int? RepeatInterval { get; init; }
 
 		/// <summary>Gets or sets the recurrence type.</summary>
 		[JsonPropertyName("type")]
-		public RecurrenceType Type { get; set; }
+		public RecurrenceType Type { get; init; }
 
 		/// <summary>Gets or sets the days of the week the meeting should repeat, multiple values separated by comma.</summary>
 		[JsonPropertyName("weekly_days")]
-		public DayOfWeek[] WeeklyDays { get; set; }
+		public DayOfWeek[] WeeklyDays { get; init; }
 	}
 }

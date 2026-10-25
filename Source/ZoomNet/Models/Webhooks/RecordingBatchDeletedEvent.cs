@@ -7,13 +7,13 @@ namespace ZoomNet.Models.Webhooks
 	{
 		/// <summary>Gets or sets the email address of the user who deleted the recording.</summary>
 		[JsonPropertyName("operator")]
-		public string Operator { get; set; }
+		public string Operator { get; init; }
 
 		/// <summary>Gets or sets the id of the user who deleted the recording.</summary>
 		[JsonPropertyName("operator_id")]
-		public string OperatorId { get; set; }
+		public string OperatorId { get; init; }
 
 		/// <summary>Gets or sets the information about meeting or webinar recordings.</summary>
-		public RecordingsBatch[] Meetings { get; set; }
+		public RecordingsBatch[] Meetings { get; init; }
 	}
 }

@@ -31,10 +31,10 @@ namespace ZoomNet.Models
 		/// * Scheduling Display.<br/>
 		/// </summary>
 		[JsonPropertyName("issue_name")]
-		public IssueType IssueType { get; set; }
+		public IssueType IssueType { get; init; }
 
 		/// <summary>Gets or sets the count of Zoom rooms where the issue appeared.</summary>
 		[JsonPropertyName("zoom_rooms_count")]
-		public int ZoomRoomsCount { get; set; }
+		public int ZoomRoomsCount { get; init; }
 	}
 }

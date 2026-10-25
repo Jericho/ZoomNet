@@ -9,10 +9,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the webinar start time.</summary>
 		[JsonPropertyName("start_time")]
-		public DateTime StartTime { get; set; }
+		public DateTime StartTime { get; init; }
 
 		/// <summary>Gets or sets the timezone.</summary>
 		[JsonPropertyName("timezone")]
-		public TimeZones Timezone { get; set; }
+		public TimeZones Timezone { get; init; }
 	}
 }

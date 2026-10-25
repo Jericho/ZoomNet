@@ -7,17 +7,17 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the email address of the user who submitted answers to the poll.</summary>
 		[JsonPropertyName("email")]
-		public string ParticipantEmail { get; set; }
+		public string ParticipantEmail { get; init; }
 
 		/// <summary>Gets or sets the name of the user who submitted answers to the poll.</summary>
 		/// <remarks>
 		/// If "anonymous" option is enabled for a poll, the participant's polling information will be kept anonymous and the value of 'name' field will be "Anonymous Attendee".
 		/// </remarks>
 		[JsonPropertyName("name")]
-		public string ParticipantName { get; set; }
+		public string ParticipantName { get; init; }
 
 		/// <summary>Gets or sets the answers to questions asked during the poll.</summary>
 		[JsonPropertyName("question_details")]
-		public PollAnswer[] Details { get; set; }
+		public PollAnswer[] Details { get; init; }
 	}
 }

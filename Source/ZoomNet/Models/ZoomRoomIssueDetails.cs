@@ -32,10 +32,10 @@ namespace ZoomNet.Models
 		/// * Scheduling Display.<br/>
 		/// </summary>
 		[JsonPropertyName("issue")]
-		public IssueType IssueType { get; set; }
+		public IssueType IssueType { get; init; }
 
 		/// <summary>Gets or sets the time the issue appeared.</summary>
 		[JsonPropertyName("time")]
-		public DateTime Time { get; set; }
+		public DateTime Time { get; init; }
 	}
 }

@@ -7,10 +7,10 @@ namespace ZoomNet.Models.Webhooks
 	{
 		/// <summary>Gets or sets the account id.</summary>
 		[JsonPropertyName("account_id")]
-		public string AccountId { get; set; }
+		public string AccountId { get; init; }
 
 		/// <summary>Gets or sets the information about the deleted asset.</summary>
 		[JsonPropertyName("object")]
-		public WebhookAssetDeleted Asset { get; set; }
+		public WebhookAssetDeleted Asset { get; init; }
 	}
 }

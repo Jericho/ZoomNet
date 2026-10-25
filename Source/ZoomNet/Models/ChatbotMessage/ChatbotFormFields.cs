@@ -8,7 +8,7 @@ public record ChatbotFormFields : IChatbotBody, IChatbotSection, IChatbotValidat
 {
 	/// <summary>Gets or sets the fields of the message.</summary>
 	[JsonPropertyName("items")]
-	public ICollection<ChatbotFormField> Items { get; set; }
+	public ICollection<ChatbotFormField> Items { get; init; }
 
 	/// <inheritdoc/>
 	public void Validate(bool enableMarkdownSupport)

@@ -10,11 +10,11 @@ public record ChatbotContent
 {
 	/// <summary>Gets or sets the body of the message.</summary>
 	[JsonPropertyName("body")]
-	public ICollection<IChatbotBody> Body { get; set; }
+	public ICollection<IChatbotBody> Body { get; init; }
 
 	/// <summary>Gets or sets the header and sub-header of the message.</summary>
 	[JsonPropertyName("head")]
-	public ChatbotHeader Head { get; set; }
+	public ChatbotHeader Head { get; init; }
 
 	/// <summary>Verify that the content is valid.</summary>
 	/// <param name="enableMarkdownSupport">True if the content has markdown syntax enabled.</param>

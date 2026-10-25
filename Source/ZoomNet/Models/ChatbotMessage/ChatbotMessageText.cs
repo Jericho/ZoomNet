@@ -20,9 +20,9 @@ public record ChatbotMessageText
 	/// <summary>Gets or sets the style of the message text.</summary>
 	[JsonPropertyName("style")]
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-	public ChatbotMessageStyle Style { get; set; }
+	public ChatbotMessageStyle Style { get; init; }
 
 	/// <summary>Gets or sets the text of the message.</summary>
 	[JsonPropertyName("text")]
-	public string Text { get; set; }
+	public string Text { get; init; }
 }

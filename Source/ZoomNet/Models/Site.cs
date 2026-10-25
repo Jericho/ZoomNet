@@ -7,9 +7,9 @@ public record Site
 {
 	/// <summary>Gets or sets the Id.</summary>
 	[JsonPropertyName("id")]
-	public string Id { get; set; }
+	public string Id { get; init; }
 
 	/// <summary>Gets or sets the name.</summary>
 	[JsonPropertyName("name")]
-	public string Name { get; set; }
+	public string Name { get; init; }
 }

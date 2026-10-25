@@ -7,6 +7,6 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the shared user email.</summary>
 		[JsonPropertyName("user_email")]
-		public string Email { get; set; }
+		public string Email { get; init; }
 	}
 }

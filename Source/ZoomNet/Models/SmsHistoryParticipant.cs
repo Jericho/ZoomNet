@@ -7,6 +7,6 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets owner.</summary>
 		[JsonPropertyName("owner")]
-		public SmsParticipantOwner Owner { get; set; }
+		public SmsParticipantOwner Owner { get; init; }
 	}
 }

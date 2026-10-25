@@ -7,6 +7,6 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the CustomerKey of the participant.</summary>
 		[JsonPropertyName("customer_key")]
-		public string CustomerKey { get; set; }
+		public string CustomerKey { get; init; }
 	}
 }
