@@ -16,13 +16,12 @@ namespace ZoomNet.UnitTests.Utilities
 		public void Constructor_WithAllParameters_SetsPropertiesCorrectly()
 		{
 			// Arrange
-			var successLogLevel = LogLevel.Information;
-			var failureLogLevel = LogLevel.Error;
 			var diagnosticStore = new MemoryDiagnosticStore();
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Information, LogLevelFailedCalls = LogLevel.Error };
 			var mockLogger = new MockLogger();
 
 			// Act
-			var handler = new DiagnosticHandler(successLogLevel, failureLogLevel, diagnosticStore, mockLogger);
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, mockLogger);
 
 			// Assert
 			handler.ShouldNotBeNull();
@@ -32,37 +31,24 @@ namespace ZoomNet.UnitTests.Utilities
 		public void Constructor_WithNullLogger_UsesNullLogger()
 		{
 			// Arrange
-			var successLogLevel = LogLevel.Debug;
-			var failureLogLevel = LogLevel.Warning;
 			var diagnosticStore = new MemoryDiagnosticStore();
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Debug, LogLevelFailedCalls = LogLevel.Warning };
 
 			// Act
-			var handler = new DiagnosticHandler(successLogLevel, failureLogLevel, diagnosticStore, null);
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, null);
 
 			// Assert
 			handler.ShouldNotBeNull();
 		}
 
 		[Fact]
-		public void Constructor_WithDifferentLogLevels_WorksCorrectly()
-		{
-			// Arrange & Act
-			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler1 = new DiagnosticHandler(LogLevel.Trace, LogLevel.Critical, diagnosticStore);
-			var handler2 = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore);
-			var handler3 = new DiagnosticHandler(LogLevel.None, LogLevel.None, diagnosticStore);
-
-			// Assert
-			handler1.ShouldNotBeNull();
-			handler2.ShouldNotBeNull();
-			handler3.ShouldNotBeNull();
-		}
-
-		[Fact]
 		public void Constructor_Throws_WhenDiagnosticStoreIsNull()
 		{
+			//Arrange
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Trace, LogLevelFailedCalls = LogLevel.Critical };
+
 			// Act
-			Should.Throw<ArgumentNullException>(() => new DiagnosticHandler(LogLevel.Trace, LogLevel.Critical, null));
+			Should.Throw<ArgumentNullException>(() => new DiagnosticHandler(null, clientOptions, null));
 		}
 
 		#endregion
@@ -74,7 +60,8 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore);
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Information, LogLevelFailedCalls = LogLevel.Error };
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, null);
 			var mockRequest = new MockFluentHttpRequest();
 
 			// Act
@@ -92,7 +79,8 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore);
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Information, LogLevelFailedCalls = LogLevel.Error };
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, null);
 			var mockRequest1 = new MockFluentHttpRequest();
 			var mockRequest2 = new MockFluentHttpRequest();
 			var mockRequest3 = new MockFluentHttpRequest();
@@ -113,7 +101,8 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore);
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Information, LogLevelFailedCalls = LogLevel.Error };
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, null);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 			// Act
 			handler.OnRequest(MockFluentHttpRequest);
@@ -128,7 +117,8 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore);
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Information, LogLevelFailedCalls = LogLevel.Error };
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, null);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 
 			// Act
@@ -146,7 +136,8 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore);
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Information, LogLevelFailedCalls = LogLevel.Error };
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, null);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 
 			// Act
@@ -162,7 +153,8 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore);
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Information, LogLevelFailedCalls = LogLevel.Error };
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, null);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 
 			// Act
@@ -179,7 +171,8 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore);
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Information, LogLevelFailedCalls = LogLevel.Error };
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, null);
 			var MockFluentHttpRequest1 = new MockFluentHttpRequest();
 			var MockFluentHttpRequest2 = new MockFluentHttpRequest();
 			var MockFluentHttpRequest3 = new MockFluentHttpRequest();
@@ -204,7 +197,8 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore);
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Information, LogLevelFailedCalls = LogLevel.Error };
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, null);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 			handler.OnRequest(MockFluentHttpRequest);
 
@@ -226,7 +220,8 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore);
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Information, LogLevelFailedCalls = LogLevel.Error };
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, null);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 			handler.OnRequest(MockFluentHttpRequest);
 
@@ -249,7 +244,8 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore);
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Information, LogLevelFailedCalls = LogLevel.Error };
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, null);
 			var response = Utils.CreateResponse(HttpStatusCode.OK, @"{""success"": true}");
 			response.Message.RequestMessage.Headers.Add(DiagnosticHandler.DIAGNOSTIC_ID_HEADER_NAME, "unknown-diagnostic-id");
 
@@ -267,7 +263,8 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var mockLogger = new MockLogger();
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, mockLogger);
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Information, LogLevelFailedCalls = LogLevel.Error };
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, mockLogger);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 			handler.OnRequest(MockFluentHttpRequest);
 
@@ -288,7 +285,8 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var mockLogger = new MockLogger();
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, mockLogger);
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Information, LogLevelFailedCalls = LogLevel.Error };
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, mockLogger);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 			handler.OnRequest(MockFluentHttpRequest);
 
@@ -309,7 +307,8 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var mockLogger = new MockLogger { IsLoggingEnabled = false };
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, mockLogger);
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Information, LogLevelFailedCalls = LogLevel.Error };
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, mockLogger);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 			handler.OnRequest(MockFluentHttpRequest);
 
@@ -328,7 +327,8 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, null);
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Information, LogLevelFailedCalls = LogLevel.Error };
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, null);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 			handler.OnRequest(MockFluentHttpRequest);
 
@@ -349,7 +349,8 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var mockLogger = new MockLogger();
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Debug, LogLevel.Warning, diagnosticStore, mockLogger);
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Debug, LogLevelFailedCalls = LogLevel.Warning };
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, mockLogger);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 			handler.OnRequest(MockFluentHttpRequest);
 
@@ -369,7 +370,8 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var mockLogger = new MockLogger();
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Critical, diagnosticStore, mockLogger);
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Information, LogLevelFailedCalls = LogLevel.Critical };
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, mockLogger);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 			handler.OnRequest(MockFluentHttpRequest);
 
@@ -389,7 +391,8 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var mockLogger = new MockLogger();
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Trace, LogLevel.Error, diagnosticStore, mockLogger);
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Trace, LogLevelFailedCalls = LogLevel.Error };
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, mockLogger);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 			handler.OnRequest(MockFluentHttpRequest);
 
@@ -412,7 +415,8 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore);
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Information, LogLevelFailedCalls = LogLevel.Error };
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, null);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 			handler.OnRequest(MockFluentHttpRequest);
 
@@ -433,11 +437,11 @@ namespace ZoomNet.UnitTests.Utilities
 		{
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore);
-			string diagnosticId = null;
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Information, LogLevelFailedCalls = LogLevel.Error };
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, null);
 
 			// Create request in separate scope
-			CreateRequestAndCaptureDiagnosticId(handler, out diagnosticId);
+			CreateRequestAndCaptureDiagnosticId(handler, out string diagnosticId);
 
 			// Verify it's in the store
 			diagnosticStore.ContainsKey(diagnosticId).ShouldBeTrue();
@@ -464,7 +468,8 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var mockLogger = new MockLogger();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, mockLogger);
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Information, LogLevelFailedCalls = LogLevel.Error };
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, mockLogger);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 
 			// Act - Request
@@ -497,7 +502,8 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var mockLogger = new MockLogger();
-			var handler = new DiagnosticHandler(LogLevel.Information, LogLevel.Error, diagnosticStore, mockLogger);
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Information, LogLevelFailedCalls = LogLevel.Error };
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, mockLogger);
 			var MockFluentHttpRequest1 = new MockFluentHttpRequest();
 			var MockFluentHttpRequest2 = new MockFluentHttpRequest();
 			var MockFluentHttpRequest3 = new MockFluentHttpRequest();
@@ -547,7 +553,8 @@ namespace ZoomNet.UnitTests.Utilities
 			// Arrange
 			var diagnosticStore = new MemoryDiagnosticStore();
 			var mockLogger = new MockLogger();
-			var handler = new DiagnosticHandler(successLevel, failureLevel, diagnosticStore, mockLogger);
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = successLevel, LogLevelFailedCalls = failureLevel };
+			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, mockLogger);
 			var MockFluentHttpRequest = new MockFluentHttpRequest();
 			handler.OnRequest(MockFluentHttpRequest);
 

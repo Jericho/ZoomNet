@@ -18,19 +18,17 @@ namespace ZoomNet.Utilities
 
 		internal const string DIAGNOSTIC_ID_HEADER_NAME = "ZoomNet-Diagnostic-Id";
 		private readonly ILogger _logger;
-		private readonly LogLevel _logLevelSuccessfulCalls;
-		private readonly LogLevel _logLevelFailedCalls;
 		private readonly IDiagnosticStore _diagnosticStore;
+		private readonly ZoomClientOptions _clientOptions;
 
 		#endregion
 
 		#region CTOR
 
-		public DiagnosticHandler(LogLevel logLevelSuccessfulCalls, LogLevel logLevelFailedCalls, IDiagnosticStore diagnosticStore, ILogger logger = null)
+		public DiagnosticHandler(IDiagnosticStore diagnosticStore, ZoomClientOptions clientOptions = null, ILogger logger = null)
 		{
-			_logLevelSuccessfulCalls = logLevelSuccessfulCalls;
-			_logLevelFailedCalls = logLevelFailedCalls;
 			_diagnosticStore = diagnosticStore ?? throw new ArgumentNullException(nameof(diagnosticStore));
+			_clientOptions = clientOptions ?? new ZoomClientOptions();
 			_logger = logger ?? NullLogger.Instance;
 		}
 
@@ -66,13 +64,17 @@ namespace ZoomNet.Utilities
 				_diagnosticStore.AddOrUpdate(diagnosticId, diagnosticInfo);
 
 				// Log
-				var logLevel = response.IsSuccessStatusCode ? _logLevelSuccessfulCalls : _logLevelFailedCalls;
+				var logLevel = response.IsSuccessStatusCode ? _clientOptions.LogLevelSuccessfulCalls : _clientOptions.LogLevelFailedCalls;
 				if (_logger?.IsEnabled(logLevel) ?? false)
 				{
-					var template = diagnosticInfo.GetLoggingTemplate();
-					var parameters = diagnosticInfo.GetLoggingParameters();
+					var template = diagnosticInfo.GetLoggingTemplate(true, _clientOptions.LogRequestHeaders, _clientOptions.LogRequestContent, _clientOptions.LogResponseHeaders, _clientOptions.LogResponseContent);
+					var parameters = diagnosticInfo.GetLoggingParameters(_clientOptions.LogRequestHeaders, _clientOptions.LogRequestContent, _clientOptions.LogResponseHeaders, _clientOptions.LogResponseContent);
 
+					// CA2254 warns when the message template varies; allow it here because we need to pass
+					// the template to structured logging providers exactly as produced by DiagnosticInfo.
+#pragma warning disable CA2254 // Template is intentionally dynamic for structured loggers
 					_logger.Log(logLevel, template, parameters);
+#pragma warning restore CA2254
 				}
 			}
 		}

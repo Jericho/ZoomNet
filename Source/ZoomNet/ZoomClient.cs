@@ -223,12 +223,13 @@ namespace ZoomNet
 				throw new ZoomException($"{connectionInfo.GetType()} is an unknown connection type", null, null, null, null);
 			}
 
-			var cleanupInterval = TimeSpan.FromSeconds(5);
+			var cleanupInterval = TimeSpan.FromSeconds(15);
 			var diagnosticStore = new MemoryDiagnosticStore(cleanupInterval);
 
-			// The list of filters must be kept in sync with the filters in Utils.GetFluentClient in the unit testing project.
-			_fluentClient.Filters.Add(new DiagnosticHandler(_options.LogLevelSuccessfulCalls, _options.LogLevelFailedCalls, diagnosticStore, _logger));
-			_fluentClient.Filters.Add(new ZoomErrorHandler(diagnosticStore));
+			// Order is important: DiagnosticHandler must be first.
+			// Also, the list of filters must be kept in sync with the filters in Utils.GetFluentClient in the unit testing project.
+			_fluentClient.Filters.Add(new DiagnosticHandler(diagnosticStore, _options, _logger));
+			_fluentClient.Filters.Add(new ZoomErrorHandler(diagnosticStore, false, null, _options));
 
 			Accounts = new Accounts(_fluentClient);
 			Billing = new Billing(_fluentClient);

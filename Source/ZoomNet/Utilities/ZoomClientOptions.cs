@@ -6,7 +6,7 @@ namespace ZoomNet.Utilities
 	/// <summary>
 	/// Options for the Zoom client.
 	/// </summary>
-	public class ZoomClientOptions
+	public record ZoomClientOptions
 	{
 		private const string ZOOM_GLOBAL_BASE_URI = "https://api.zoom.us/v2";
 		private const string ZOOM_AUSTRALIA_BASE_URI = "https://api-au.zoom.us/v2";
@@ -26,6 +26,18 @@ namespace ZoomNet.Utilities
 		/// Gets or sets the log levels for failed calls (HTTP status code outside of the 200-299 range).
 		/// </summary>
 		public LogLevel LogLevelFailedCalls { get; set; } = LogLevel.Error;
+
+		/// <summary>Gets or sets a value indicating whether to log request headers.</summary>
+		public bool LogRequestHeaders { get; set; } = true;
+
+		/// <summary>Gets or sets a value indicating whether to log request content.</summary>
+		public bool LogRequestContent { get; set; } = true;
+
+		/// <summary>Gets or sets a value indicating whether to log response headers.</summary>
+		public bool LogResponseHeaders { get; set; } = true;
+
+		/// <summary>Gets or sets a value indicating whether to log response content.</summary>
+		public bool LogResponseContent { get; set; } = true;
 
 		/// <summary>
 		/// Gets or sets the base URL of the Zoom API endpoint.

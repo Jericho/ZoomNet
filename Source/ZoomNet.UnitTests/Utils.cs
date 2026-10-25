@@ -32,14 +32,16 @@ namespace ZoomNet.UnitTests
 			client.Formatters.Clear();
 			client.Formatters.Add(new JsonFormatter());
 
+			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Debug, LogLevelFailedCalls = LogLevel.Error };
+
 			// Order is important:
 			//   - Token handler must be first
 			//   - Diagnostic handler must be second
 			//   - Error handler must be last
 			// Also, the list of filters must be kept in sync with the filters in ZoomClient in the ZoomNet project.
 			client.Filters.Add(tokenHandler);
-			client.Filters.Add(new DiagnosticHandler(LogLevel.Debug, LogLevel.Error, diagStore, logger));
-			client.Filters.Add(new ZoomErrorHandler(diagStore));
+			client.Filters.Add(new DiagnosticHandler(diagStore, clientOptions, logger: logger));
+			client.Filters.Add(new ZoomErrorHandler(diagStore, true, null, clientOptions));
 
 			return client;
 		}
