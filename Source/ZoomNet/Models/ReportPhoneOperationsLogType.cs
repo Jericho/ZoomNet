@@ -129,7 +129,6 @@ public enum ReportPhoneOperationsLogType
 	OutboundNumber,
 
 	/// <summary>Phone number.</summary>
-	[EnumMember(Value = "phone_number")]
 	[MultipleValuesEnumMember(DefaultValue = "phone_number", OtherValues = ["Phone Number"])]
 	PhoneNumber,
 
