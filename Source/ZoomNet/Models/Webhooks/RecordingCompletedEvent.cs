@@ -12,5 +12,5 @@ public record RecordingCompletedEvent : RecordingFilesEvent
 	/// event notification. Pass download_token as a bearer token in
 	/// the authorization header of your HTTP request.
 	/// </remarks>
-	public string DownloadToken { get; set; }
+	public string DownloadToken { get; init; }
 }

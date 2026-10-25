@@ -4,6 +4,6 @@ namespace ZoomNet.Models.Webhooks
 	public record PhoneCalleeCallElementCompletedEvent : PhoneCallLogOperationEvent
 	{
 		/// <summary>Gets or sets completed call elements information.</summary>
-		public CallElement[] CallElements { get; set; }
+		public CallElement[] CallElements { get; init; }
 	}
 }

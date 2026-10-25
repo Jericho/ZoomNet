@@ -8,18 +8,18 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the "accepted by" information.</summary>
 		[JsonPropertyName("accepted_by")]
-		public CallLogTransferInfo AcceptedBy { get; set; }
+		public CallLogTransferInfo AcceptedBy { get; init; }
 
 		/// <summary>Gets or sets the "forwarded from" information.</summary>
 		[JsonPropertyName("forwarded_by")]
-		public CallLogTransferInfo ForwardedBy { get; set; }
+		public CallLogTransferInfo ForwardedBy { get; init; }
 
 		/// <summary>Gets or sets the "forwarded to" information.</summary>
 		[JsonPropertyName("forwarded_to")]
-		public CallLogTransferInfo ForwardedTo { get; set; }
+		public CallLogTransferInfo ForwardedTo { get; init; }
 
 		/// <summary>Gets or sets the "outgoing by" information.</summary>
 		[JsonPropertyName("outgoing_by")]
-		public CallLogTransferInfo OutgoingBy { get; set; }
+		public CallLogTransferInfo OutgoingBy { get; init; }
 	}
 }

@@ -6,6 +6,6 @@ namespace ZoomNet.Models.Webhooks
 	public record PhoneCallerUnmuteEvent : PhoneCallFlowEvent
 	{
 		/// <summary>Gets or sets the date and time when the caller unmuted themselves.</summary>
-		public DateTime UnmutedOn { get; set; }
+		public DateTime UnmutedOn { get; init; }
 	}
 }

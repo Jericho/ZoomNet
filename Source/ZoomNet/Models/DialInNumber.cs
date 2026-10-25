@@ -7,18 +7,18 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the country code (max length 6).</summary>
 		[JsonPropertyName("code")]
-		public string CountryCode { get; set; }
+		public string CountryCode { get; init; }
 
 		/// <summary>Gets or sets the TSP country label (max length 10).</summary>
 		[JsonPropertyName("country_label")]
-		public string CountryLabel { get; set; }
+		public string CountryLabel { get; init; }
 
 		/// <summary>Gets or sets the dial-in phone number (max length 16).</summary>
 		[JsonPropertyName("number")]
-		public string Number { get; set; }
+		public string Number { get; init; }
 
 		/// <summary>Gets or sets the type of the phone number.</summary>
 		[JsonPropertyName("type")]
-		public PhoneNumberType Type { get; set; }
+		public PhoneNumberType Type { get; init; }
 	}
 }

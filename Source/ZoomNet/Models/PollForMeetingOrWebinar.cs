@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the questions.</summary>
 		[JsonPropertyName("questions")]
-		public PollQuestionForMeetingOrWebinar[] Questions { get; set; }
+		public PollQuestionForMeetingOrWebinar[] Questions { get; init; }
 
 		/// <summary>Gets or sets the status of the poll.</summary>
 		[JsonPropertyName("status")]
-		public PollStatusForMeetingOrWebinar Status { get; set; }
+		public PollStatusForMeetingOrWebinar Status { get; init; }
 	}
 }

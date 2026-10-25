@@ -7,22 +7,22 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets a valid email address.</summary>
 		[JsonPropertyName("email")]
-		public string Email { get; set; }
+		public string Email { get; init; }
 
 		/// <summary>Gets or sets the first name.</summary>
 		[JsonPropertyName("first_name")]
-		public string FirstName { get; set; }
+		public string FirstName { get; init; }
 
 		/// <summary>Gets or sets the member id.</summary>
 		[JsonPropertyName("id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the last name.</summary>
 		[JsonPropertyName("last_name")]
-		public string LastName { get; set; }
+		public string LastName { get; init; }
 
 		/// <summary>Gets or sets the role.</summary>
 		[JsonPropertyName("role")]
-		public ChatChannelRole Role { get; set; }
+		public ChatChannelRole Role { get; init; }
 	}
 }

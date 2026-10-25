@@ -8,18 +8,18 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the participant's email address.</summary>
 		[JsonPropertyName("email")]
-		public string Email { get; set; }
+		public string Email { get; init; }
 
 		/// <summary>Gets or sets the meeting id.</summary>
 		[JsonPropertyName("meeting_id")]
-		public string MeetingId { get; set; }
+		public string MeetingId { get; init; }
 
 		/// <summary>Gets or sets the participant's name.</summary>
 		[JsonPropertyName("participant_name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets the time the feedback was submitted by the participant.</summary>
 		[JsonPropertyName("time")]
-		public DateTime Time { get; set; }
+		public DateTime Time { get; init; }
 	}
 }

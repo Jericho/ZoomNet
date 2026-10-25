@@ -7,30 +7,30 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the amount of free storage for recording.</summary>
 		[JsonPropertyName("free_storage")]
-		public string FreeStorage { get; set; }
+		public string FreeStorage { get; init; }
 
 		/// <summary>Gets or sets the amount of free storage used.</summary>
 		[JsonPropertyName("free_storage_usage")]
-		public string FreeStorageUsage { get; set; }
+		public string FreeStorageUsage { get; init; }
 
 		/// <summary>Gets or sets the date when the plan exceeds maximum storage..</summary>
 		[JsonPropertyName("max_exceed_date")]
-		public string MaxExceededOn { get; set; }
+		public string MaxExceededOn { get; init; }
 
 		/// <summary>Gets or sets the amount of free storage for recording.</summary>
 		[JsonPropertyName("plan_storage")]
-		public string PlanStorage { get; set; }
+		public string PlanStorage { get; init; }
 
 		/// <summary>Gets or sets the ???.</summary>
 		[JsonPropertyName("plan_storage_exceed")]
-		public string PlanStorageExceed { get; set; }
+		public string PlanStorageExceed { get; init; }
 
 		/// <summary>Gets or sets the amount of free storage used.</summary>
 		[JsonPropertyName("plan_storage_usage")]
-		public string PlanStorageUsage { get; set; }
+		public string PlanStorageUsage { get; init; }
 
 		/// <summary>Gets or sets the base plan's type.</summary>
 		[JsonPropertyName("type")]
-		public string Type { get; set; }
+		public string Type { get; init; }
 	}
 }

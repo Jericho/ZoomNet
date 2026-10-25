@@ -8,14 +8,14 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the device's private IP address if the account has the show_device_ip_for_call_log parameter set to enabled.</summary>
 		[JsonPropertyName("device_private_ip")]
-		public string DevicePrivateIp { get; set; }
+		public string DevicePrivateIp { get; init; }
 
 		/// <summary>Gets or sets the device's public IP address if the account has the show_device_ip_for_call_log parameter set to enabled.</summary>
 		[JsonPropertyName("device_public_ip")]
-		public string DevicePublicIp { get; set; }
+		public string DevicePublicIp { get; init; }
 
 		/// <summary>Gets or sets the "owner" information.</summary>
 		[JsonPropertyName("owner")]
-		public CallLogOwnerInfo Owner { get; set; }
+		public CallLogOwnerInfo Owner { get; init; }
 	}
 }

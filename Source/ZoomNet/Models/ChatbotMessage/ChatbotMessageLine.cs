@@ -20,7 +20,7 @@ public record ChatbotMessageLine : IChatbotBody, IChatbotSection, IChatbotValida
 
 	/// <summary>Gets or sets a value indicating whether the message is editable.</summary>
 	[JsonPropertyName("editable")]
-	public bool Editable { get; set; }
+	public bool Editable { get; init; }
 
 	/// <summary>
 	/// Gets or sets the link for the message.
@@ -30,16 +30,16 @@ public record ChatbotMessageLine : IChatbotBody, IChatbotSection, IChatbotValida
 	/// </summary>
 	[JsonPropertyName("link")]
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-	public string Link { get; set; }
+	public string Link { get; init; }
 
 	/// <summary>Gets or sets the style of the message text.</summary>
 	[JsonPropertyName("style")]
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-	public ChatbotMessageStyle Style { get; set; }
+	public ChatbotMessageStyle Style { get; init; }
 
 	/// <summary>Gets or sets the text of the message.</summary>
 	[JsonPropertyName("text")]
-	public string Text { get; set; }
+	public string Text { get; init; }
 
 	/// <inheritdoc/>
 	public void Validate(bool enableMarkdownSupport)

@@ -27,62 +27,62 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the assignee information for the phone.</summary>
 		[JsonPropertyName("assignee")]
-		public PhoneNumberAssignee Assignee { get; set; }
+		public PhoneNumberAssignee Assignee { get; init; }
 
 		/// <summary>Gets or sets the list of capabilities for the phone (e.g., SMS, voice).</summary>
 		[JsonPropertyName("capability")]
-		public List<string> Capability { get; set; }
+		public List<string> Capability { get; init; }
 
 		/// <summary>Gets or sets the carrier information for the phone.</summary>
 		[JsonPropertyName("carrier")]
-		public PhoneNumberCarrier Carrier { get; set; }
+		public PhoneNumberCarrier Carrier { get; init; }
 
 		/// <summary>Gets or sets the display name of the phone.</summary>
 		[JsonPropertyName("display_name")]
-		public string DisplayName { get; set; }
+		public string DisplayName { get; init; }
 
 		/// <summary>Gets or sets the emergency address associated with the phone.</summary>
 		[JsonPropertyName("emergency_address")]
-		public EmergencyAddress EmergencyAddress { get; set; }
+		public EmergencyAddress EmergencyAddress { get; init; }
 
 		/// <summary>Gets or sets the status of the emergency address.</summary>
 		[JsonPropertyName("emergency_address_status")]
-		public int? EmergencyAddressStatus { get; set; }
+		public int? EmergencyAddressStatus { get; init; }
 
 		/// <summary>Gets or sets the last update time of the emergency address.</summary>
 		[JsonPropertyName("emergency_address_update_time")]
-		public string EmergencyAddressUpdateTime { get; set; }
+		public string EmergencyAddressUpdateTime { get; init; }
 
 		/// <summary>Gets or sets the unique identifier of the phone.</summary>
 		[JsonPropertyName("id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the location of the phone.</summary>
 		[JsonPropertyName("location")]
-		public string Location { get; set; }
+		public string Location { get; init; }
 
 		/// <summary>Gets or sets the phone number.</summary>
 		[JsonPropertyName("number")]
-		public string Number { get; set; }
+		public string Number { get; init; }
 
 		/// <summary>Gets or sets the type of the phone number.</summary>
 		[JsonPropertyName("number_type")]
-		public string NumberType { get; set; }
+		public string NumberType { get; init; }
 
 		/// <summary>Gets or sets the SIP group information for the phone.</summary>
 		[JsonPropertyName("sip_group")]
-		public PhoneNumberSipGroup SipGroup { get; set; }
+		public PhoneNumberSipGroup SipGroup { get; init; }
 
 		/// <summary>Gets or sets the site information associated with the phone.</summary>
 		[JsonPropertyName("site")]
-		public Site Site { get; set; }
+		public Site Site { get; init; }
 
 		/// <summary>Gets or sets the source of the phone number.</summary>
 		[JsonPropertyName("source")]
-		public string Source { get; set; }
+		public string Source { get; init; }
 
 		/// <summary>Gets or sets the status of the phone.</summary>
 		[JsonPropertyName("status")]
-		public string Status { get; set; }
+		public string Status { get; init; }
 	}
 }

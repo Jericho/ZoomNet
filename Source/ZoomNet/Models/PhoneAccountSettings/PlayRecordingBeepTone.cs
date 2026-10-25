@@ -7,21 +7,21 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets a value indicating whether to play the side tone beep for recorded users while recording.</summary>
 		[JsonPropertyName("enable")]
-		public bool Enabled { get; set; }
+		public bool Enabled { get; init; }
 
 		/// <summary>Gets or sets whether to play the recording beep tone all participants in the call or only the recording user.</summary>
 		/// <remarks>Provided only when <see cref="Enabled"/> is true.</remarks>
 		[JsonPropertyName("play_beep_member")]
-		public PlayBeepMember? PlayBeepMember { get; set; }
+		public PlayBeepMember? PlayBeepMember { get; init; }
 
 		/// <summary>Gets or sets the beep time interval in seconds.</summary>
 		/// <remarks>Provided only when <see cref="Enabled"/> is true.</remarks>
 		[JsonPropertyName("play_beep_time_interval")]
-		public int? PlayBeepTimeInterval { get; set; }
+		public int? PlayBeepTimeInterval { get; init; }
 
 		/// <summary>Gets or sets the side tone beep volume.</summary>
 		/// <remarks>Provided only when <see cref="Enabled"/> is true.</remarks>
 		[JsonPropertyName("play_beep_volume")]
-		public int? PlayBeepVolume { get; set; }
+		public int? PlayBeepVolume { get; init; }
 	}
 }

@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the email address of the coeditor.</summary>
 		[JsonPropertyName("email")]
-		public string Email { get; set; }
+		public string Email { get; init; }
 
 		/// <summary>Gets or sets the permissions groups.</summary>
 		[JsonPropertyName("permission_groups")]
-		public EventCoEditorPermissionGroup[] Permissions { get; set; }
+		public EventCoEditorPermissionGroup[] Permissions { get; init; }
 	}
 }

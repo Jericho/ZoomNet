@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the email address of the interpreter.</summary>
 		[JsonPropertyName("email")]
-		public string Email { get; set; }
+		public string Email { get; init; }
 
 		/// <summary>Gets or sets the interpreter type.</summary>
 		[JsonPropertyName("type")]
-		public InterpreterType Type { get; set; }
+		public InterpreterType Type { get; init; }
 	}
 }

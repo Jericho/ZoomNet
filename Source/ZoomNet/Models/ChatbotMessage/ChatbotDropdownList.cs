@@ -11,20 +11,20 @@ public record ChatbotDropdownList : IChatbotBody, IChatbotSection
 	/// <remarks>Should be null when <see cref="StaticSource"/> is set.</remarks>
 	[JsonPropertyName("select_items")]
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-	public ICollection<ChatbotDropdownItem> SelectItems { get; set; }
+	public ICollection<ChatbotDropdownItem> SelectItems { get; init; }
 
 	/// <summary>Gets or sets the default selected item.</summary>
 	[JsonPropertyName("selected_item")]
-	public ChatbotDropdownItem SelectedItem { get; set; }
+	public ChatbotDropdownItem SelectedItem { get; init; }
 
 	/// <summary>Gets or sets the static source of the data for this dropdown list.</summary>
 	/// <remarks>Should be <see cref="ChatbotDropdownStaticSource.Unspecified"/> when <see cref="SelectItems"/> is set.</remarks>
 	[JsonPropertyName("static_source")]
 	[JsonConverter(typeof(StringEnumConverter<ChatbotDropdownStaticSource>))]
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-	public ChatbotDropdownStaticSource StaticSource { get; set; } = default;
+	public ChatbotDropdownStaticSource StaticSource { get; init; } = default;
 
 	/// <summary>Gets or sets the text of this message line.</summary>
 	[JsonPropertyName("text")]
-	public string Text { get; set; }
+	public string Text { get; init; }
 }

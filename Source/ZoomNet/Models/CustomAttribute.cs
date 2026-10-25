@@ -7,14 +7,14 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the unique identifier.</summary>
 		[JsonPropertyName("key")]
-		public string Key { get; set; }
+		public string Key { get; init; }
 
 		/// <summary>Gets or sets the name.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets the value.</summary>
 		[JsonPropertyName("value")]
-		public string Value { get; set; }
+		public string Value { get; init; }
 	}
 }

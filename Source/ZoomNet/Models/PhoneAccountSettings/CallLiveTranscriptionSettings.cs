@@ -7,6 +7,6 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets settings related to playing a prompt to call participants when the transcription has started.</summary>
 		[JsonPropertyName("transcription_start_prompt")]
-		public TranscriptionStartPrompt TranscriptionStartPrompt { get; set; }
+		public TranscriptionStartPrompt TranscriptionStartPrompt { get; init; }
 	}
 }

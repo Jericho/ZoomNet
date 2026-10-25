@@ -7,13 +7,13 @@ public record CallingPlan
 {
 	/// <summary>Gets or sets the billing account ID.</summary>
 	[JsonPropertyName("billing_account_id")]
-	public string BillingAccountId { get; set; }
+	public string BillingAccountId { get; init; }
 
 	/// <summary>Gets or sets the name of the billing account.</summary>
 	[JsonPropertyName("billing_account_name")]
-	public string BillingAccountName { get; set; }
+	public string BillingAccountName { get; init; }
 
 	/// <summary>Gets or sets the type of the calling plan.</summary>
 	[JsonPropertyName("type")]
-	public CallingPlanType Type { get; set; }
+	public CallingPlanType Type { get; init; }
 }

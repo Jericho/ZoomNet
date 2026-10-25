@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the event authentication method for the ticket.</summary>
 		[JsonPropertyName("authentication_method")]
-		public EventAuthenticationMethod AuthenticationMethod { get; set; }
+		public EventAuthenticationMethod AuthenticationMethod { get; init; }
 
 		/// <summary>Gets or sets the email address of the attendee.</summary>
 		[JsonPropertyName("email")]
-		public string Email { get; set; }
+		public string Email { get; init; }
 	}
 }

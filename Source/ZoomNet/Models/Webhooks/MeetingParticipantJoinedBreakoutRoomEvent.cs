@@ -6,9 +6,9 @@ namespace ZoomNet.Models.Webhooks
 	public record MeetingParticipantJoinedBreakoutRoomEvent : MeetingBreakoutRoomEvent
 	{
 		/// <summary>Gets or sets the information about meeting participant.</summary>
-		public BreakoutRoomParticipantInfo Participant { get; set; }
+		public BreakoutRoomParticipantInfo Participant { get; init; }
 
 		/// <summary>Gets or sets the time when the participant joined the breakout room.</summary>
-		public DateTime JoinTime { get; set; }
+		public DateTime JoinTime { get; init; }
 	}
 }

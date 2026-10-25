@@ -6,6 +6,6 @@ namespace ZoomNet.Models.Webhooks
 	public record MeetingParticipantSentToWaitingRoomEvent : MeetingParticipantEvent
 	{
 		/// <summary>Gets or sets the date and time at which the participant was sent to the waiting room.</summary>
-		public DateTime SentToWaitingRoomOn { get; set; }
+		public DateTime SentToWaitingRoomOn { get; init; }
 	}
 }

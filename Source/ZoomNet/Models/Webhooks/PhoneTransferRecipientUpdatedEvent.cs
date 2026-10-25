@@ -5,6 +5,6 @@ namespace ZoomNet.Models.Webhooks
 	public record PhoneTransferRecipientUpdatedEvent : PhoneCallTransferEvent
 	{
 		/// <summary>Gets or sets the recipient who received the warm/blind transfer call from the event owner.</summary>
-		public WebhookCallTransferRecipient Recipient { get; set; }
+		public WebhookCallTransferRecipient Recipient { get; init; }
 	}
 }

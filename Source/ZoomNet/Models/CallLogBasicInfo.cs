@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the unique id of the call.</summary>
 		[JsonPropertyName("call_id")]
-		public string CallId { get; set; }
+		public string CallId { get; init; }
 
 		/// <summary>Gets or sets the unique call log id.</summary>
 		[JsonPropertyName("id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 	}
 }

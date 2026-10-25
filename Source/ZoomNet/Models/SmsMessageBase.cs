@@ -8,22 +8,22 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the SMS attachment array.</summary>
 		[JsonPropertyName("attachments")]
-		public SmsAttachment[] Attachments { get; set; }
+		public SmsAttachment[] Attachments { get; init; }
 
 		/// <summary>Gets or sets the UTC time when the message was created.</summary>
 		[JsonPropertyName("date_time")]
-		public DateTime CreatedOn { get; set; }
+		public DateTime CreatedOn { get; init; }
 
 		/// <summary>Gets or sets the SMS text contents.</summary>
 		[JsonPropertyName("message")]
-		public string Message { get; set; }
+		public string Message { get; init; }
 
 		/// <summary>Gets or sets the SMS message ID.</summary>
 		[JsonPropertyName("message_id")]
-		public string MessageId { get; set; }
+		public string MessageId { get; init; }
 
 		/// <summary>Gets or sets the SMS message type.</summary>
 		[JsonPropertyName("message_type")]
-		public SmsMessageType Type { get; set; }
+		public SmsMessageType Type { get; init; }
 	}
 }

@@ -7,11 +7,11 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the type of camera used by participant during the meeting.</summary>
 		[JsonPropertyName("camera")]
-		public string Camera { get; set; }
+		public string Camera { get; init; }
 
 		/// <summary>Gets or sets the number of participants who joined via Zoom Room.</summary>
 		[JsonPropertyName("in_room_participants")]
-		public int InRoomParticipants { get; set; }
+		public int InRoomParticipants { get; init; }
 
 		/// <summary>Gets or sets the participant's universally unique ID (UUID).</summary>
 		/// <remarks>
@@ -19,10 +19,10 @@ namespace ZoomNet.Models
 		/// If the participant joins the meeting without logging into Zoom, this returns an empty string value.
 		/// </remarks>
 		[JsonPropertyName("participant_user_id")]
-		public string ParticipantUserId { get; set; }
+		public string ParticipantUserId { get; init; }
 
 		/// <summary>Gets or sets the participant's status.</summary>
 		[JsonPropertyName("status")]
-		public ParticipantStatus Status { get; set; }
+		public ParticipantStatus Status { get; init; }
 	}
 }

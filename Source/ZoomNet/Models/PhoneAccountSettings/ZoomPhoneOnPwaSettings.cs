@@ -7,10 +7,10 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets a value indicating whether calling on Zoom PWA is allowed.</summary>
 		[JsonPropertyName("allow_calling")]
-		public bool? AllowCalling { get; set; }
+		public bool? AllowCalling { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether using SMS/MMS on Zoom PWA is allowed.</summary>
 		[JsonPropertyName("allow_sms_mms")]
-		public bool? AllowSmsMms { get; set; }
+		public bool? AllowSmsMms { get; init; }
 	}
 }

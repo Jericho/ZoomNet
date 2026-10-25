@@ -7,11 +7,11 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the room location id.</summary>
 		[JsonPropertyName("id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the name.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>
 		/// Gets or sets the unique identifier of the parent location.
@@ -19,10 +19,10 @@ namespace ZoomNet.Models
 		/// The value of parent_location_id of the top-level location (country) is the Account ID of the Zoom account.
 		/// </summary>
 		[JsonPropertyName("parent_location_id")]
-		public string ParentId { get; set; }
+		public string ParentId { get; init; }
 
 		/// <summary>Gets or sets the type.</summary>
 		[JsonPropertyName("type")]
-		public RoomLocationType Type { get; set; }
+		public RoomLocationType Type { get; init; }
 	}
 }

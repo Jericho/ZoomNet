@@ -8,18 +8,18 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the start date for this report.</summary>
 		[JsonPropertyName("from")]
-		public DateTime From { get; set; }
+		public DateTime From { get; init; }
 
 		/// <summary>Gets or sets the collection of Zoom room issues.</summary>
 		[JsonPropertyName("issues")]
-		public IssuesOfZoomRooms[] Issues { get; set; }
+		public IssuesOfZoomRooms[] Issues { get; init; }
 
 		/// <summary>Gets or sets the end date for this report.</summary>
 		[JsonPropertyName("to")]
-		public DateTime To { get; set; }
+		public DateTime To { get; init; }
 
 		/// <summary>Gets or sets the number of all records available across pages.</summary>
 		[JsonPropertyName("total_records")]
-		public int TotalRecords { get; set; }
+		public int TotalRecords { get; init; }
 	}
 }

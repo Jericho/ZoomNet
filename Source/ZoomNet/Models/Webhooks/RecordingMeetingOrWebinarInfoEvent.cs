@@ -7,6 +7,6 @@ namespace ZoomNet.Models.Webhooks
 	{
 		/// <summary>Gets or sets information about recorded meeting or webinar.</summary>
 		[JsonPropertyName("object")]
-		public RecordedMeetingOrWebinarInfo SessionInfo { get; set; }
+		public RecordedMeetingOrWebinarInfo SessionInfo { get; init; }
 	}
 }

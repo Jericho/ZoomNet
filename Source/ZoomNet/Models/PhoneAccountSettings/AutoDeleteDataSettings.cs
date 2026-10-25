@@ -7,10 +7,10 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets the deletion policy.</summary>
 		[JsonPropertyName("delete_type")]
-		public DeleteDataPolicy? DeleteType { get; set; }
+		public DeleteDataPolicy? DeleteType { get; init; }
 
 		/// <summary>Gets or sets information about delete data items.</summary>
 		[JsonPropertyName("items")]
-		public DeleteDataItem[] Items { get; set; }
+		public DeleteDataItem[] Items { get; init; }
 	}
 }

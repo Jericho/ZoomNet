@@ -9,67 +9,67 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the address.</summary>
 		[JsonPropertyName("address")]
-		public string Address { get; set; }
+		public string Address { get; init; }
 
 		/// <summary>Gets or sets the city.</summary>
 		[JsonPropertyName("city")]
-		public string City { get; set; }
+		public string City { get; init; }
 
 		/// <summary>Gets or sets the questions &amp; comments.</summary>
 		[JsonPropertyName("comments")]
-		public string Comments { get; set; }
+		public string Comments { get; init; }
 
 		/// <summary>Gets or sets the country.</summary>
 		[JsonPropertyName("country")]
-		public string Country { get; set; }
+		public string Country { get; init; }
 
 		/// <summary>Gets or sets the custom questions.</summary>
 		[JsonPropertyName("custom_questions")]
 		[JsonConverter(typeof(TicketCustomQuestionsAnswersConverter))]
-		public KeyValuePair<string, string>[] CustomQuestions { get; set; }
+		public KeyValuePair<string, string>[] CustomQuestions { get; init; }
 
 		/// <summary>Gets or sets a valid email address.</summary>
 		[JsonPropertyName("email")]
-		public string Email { get; set; }
+		public string Email { get; init; }
 
 		/// <summary>Gets or sets the unique join link created for the ticket.</summary>
 		[JsonPropertyName("event_join_link")]
-		public string EventJoinUrl { get; set; }
+		public string EventJoinUrl { get; init; }
 
 		/// <summary>Gets or sets the set of unique alphanumeric characters that references the external ticket ID.</summary>
 		[JsonPropertyName("external_ticket_id")]
-		public string ExternalTicketId { get; set; }
+		public string ExternalTicketId { get; init; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether to support guest join i.e. Non-Zoom users (Fast join without upfront authentication).
 		/// If true then the registration_needed flag should not be set to true as it is an invalid combination.
 		/// </summary>
 		[JsonPropertyName("fast_join")]
-		public bool FastJoin { get; set; }
+		public bool FastJoin { get; init; }
 
 		/// <summary>Gets or sets the first name.</summary>
 		[JsonPropertyName("first_name")]
-		public string FirstName { get; set; }
+		public string FirstName { get; init; }
 
 		/// <summary>Gets or sets the industry.</summary>
 		[JsonPropertyName("industry")]
-		public string Industry { get; set; }
+		public string Industry { get; init; }
 
 		/// <summary>Gets or sets the job Title.</summary>
 		[JsonPropertyName("job_title")]
-		public string JobTitle { get; set; }
+		public string JobTitle { get; init; }
 
 		/// <summary>Gets or sets the last name.</summary>
 		[JsonPropertyName("last_name")]
-		public string LastName { get; set; }
+		public string LastName { get; init; }
 
 		/// <summary>Gets or sets the organization.</summary>
 		[JsonPropertyName("organization")]
-		public string Organization { get; set; }
+		public string Organization { get; init; }
 
 		/// <summary>Gets or sets the phone.</summary>
 		[JsonPropertyName("phone")]
-		public string Phone { get; set; }
+		public string Phone { get; init; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether registrant needs to fill an online registration form.
@@ -77,31 +77,31 @@ namespace ZoomNet.Models
 		/// Also, if true then event_registration_link is returned instead of event_join_link in the response.
 		/// </summary>
 		[JsonPropertyName("registration_needed")]
-		public bool RegistrationNeeded { get; set; }
+		public bool RegistrationNeeded { get; init; }
 
 		/// <summary>Gets or sets the source of registration.</summary>
 		[JsonPropertyName("registration_source")]
-		public string RegistrationSource { get; set; }
+		public string RegistrationSource { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether to send email notifications.</summary>
 		[JsonPropertyName("send_notification")]
-		public bool SendNotifications { get; set; }
+		public bool SendNotifications { get; init; }
 
 		/// <summary>Gets or sets the list of session ID’s users want to register for the event.</summary>
 		/// <remarks>This is applicable only for recurring events with session level registration enabled.</remarks>
 		[JsonPropertyName("session_ids")]
-		public string[] SessionIds { get; set; }
+		public string[] SessionIds { get; init; }
 
 		/// <summary>Gets or sets the state/Province.</summary>
 		[JsonPropertyName("state")]
-		public string State { get; set; }
+		public string State { get; init; }
 
 		/// <summary>Gets or sets the ticket type id.</summary>
 		[JsonPropertyName("ticket_type_id")]
-		public string TypeId { get; set; }
+		public string TypeId { get; init; }
 
 		/// <summary>Gets or sets the zip/postal Code.</summary>
 		[JsonPropertyName("zip")]
-		public string Zip { get; set; }
+		public string Zip { get; init; }
 	}
 }

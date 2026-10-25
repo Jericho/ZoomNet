@@ -7,12 +7,12 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the participant's SDK identifier. This value can be alphanumeric.</summary>
 		[JsonPropertyName("customer_key")]
-		public string CustomerKey { get; set; }
+		public string CustomerKey { get; init; }
 
 		/// <summary>Gets or sets the participant's email address.</summary>
 		/// <remarks>Returns only if the participant joined the meeting by logging into Zoom.</remarks>
 		[JsonPropertyName("email")]
-		public string Email { get; set; }
+		public string Email { get; init; }
 
 		/// <summary>
 		/// Gets or sets the participant's unique ID.
@@ -24,21 +24,21 @@ namespace ZoomNet.Models
 		/// This value returns blank for external users.
 		/// </summary>
 		[JsonPropertyName("participant_user_id")]
-		public string ParticipantUserId { get; set; }
+		public string ParticipantUserId { get; init; }
 
 		/// <summary>
 		/// Gets or sets the participant's UUID for this specific meeting and any breakout rooms created in this meeting.
 		/// This value is assigned to a participant when they join a meeting, and is only valid for the duration of that meeting.
 		/// </summary>
 		[JsonPropertyName("participant_uuid")]
-		public string ParticipantUuid { get; set; }
+		public string ParticipantUuid { get; init; }
 
 		/// <summary>Gets or sets phone number of the participant joined via PSTN.</summary>
 		[JsonPropertyName("phone_number")]
-		public string PhoneNumber { get; set; }
+		public string PhoneNumber { get; init; }
 
 		/// <summary>Gets or sets the participant's registrant ID. A host or a user with administrative permissions can require registration for Zoom meetings.</summary>
 		[JsonPropertyName("registrant_id")]
-		public string RegistrantId { get; set; }
+		public string RegistrantId { get; init; }
 	}
 }

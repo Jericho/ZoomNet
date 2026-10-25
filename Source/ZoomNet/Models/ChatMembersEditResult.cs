@@ -9,16 +9,16 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the date and time when the member(s) are added to the channel.</summary>
 		[JsonPropertyName("added_at")]
-		public DateTime AddedAt { get; set; }
+		public DateTime AddedAt { get; init; }
 
 		/// <summary>Gets or sets the user ids of the members added to the channel. The user ids of those who are not from the same account will be omitted from the list.</summary>
 		[JsonPropertyName("ids")]
 		[JsonConverter(typeof(DelimitedStringConverter))]
-		public string[] Ids { get; set; }
+		public string[] Ids { get; init; }
 
 		/// <summary>Gets or sets the member IDs of the members added to the channel.</summary>
 		[JsonPropertyName("member_ids")]
 		[JsonConverter(typeof(DelimitedStringConverter))]
-		public string[] MemberIds { get; set; }
+		public string[] MemberIds { get; init; }
 	}
 }

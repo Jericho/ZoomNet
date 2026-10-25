@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the user's name to display in the meeting.</summary>
 		[JsonPropertyName("invitee_name")]
-		public string InviteeName { get; set; }
+		public string InviteeName { get; init; }
 
 		/// <summary>Gets or sets the user's phone number.</summary>
 		[JsonPropertyName("phone_number")]
-		public long PhoneNumber { get; set; }
+		public long PhoneNumber { get; init; }
 	}
 }

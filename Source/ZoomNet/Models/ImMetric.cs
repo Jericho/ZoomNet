@@ -7,78 +7,78 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets total number of instant meeting calls received by the user.</summary>
 		[JsonPropertyName("calls_receive")]
-		public int CallReceive { get; set; }
+		public int CallReceive { get; init; }
 
 		/// <summary>Gets or sets total number of instant meeting calls made by the user.</summary>
 		[JsonPropertyName("calls_send")]
-		public int CallsSend { get; set; }
+		public int CallsSend { get; init; }
 
 		/// <summary>Gets or sets the user email.</summary>
 		[JsonPropertyName("email")]
-		public string Email { get; set; }
+		public string Email { get; init; }
 
 		/// <summary>Gets or sets total number of emojis received by the user.</summary>
 		[JsonPropertyName("emoji_receive")]
-		public int EmojiReceive { get; set; }
+		public int EmojiReceive { get; init; }
 
 		/// <summary>Gets or sets total number of emojis sent by the user.</summary>
 		[JsonPropertyName("emoji_send")]
-		public int EmojiSend { get; set; }
+		public int EmojiSend { get; init; }
 
 		/// <summary>Gets or sets total number of files received by the user.</summary>
 		[JsonPropertyName("files_receive")]
-		public int FilesReceive { get; set; }
+		public int FilesReceive { get; init; }
 
 		/// <summary>Gets or sets total number of files sent by the user.</summary>
 		[JsonPropertyName("files_send")]
-		public int FilesSend { get; set; }
+		public int FilesSend { get; init; }
 
 		/// <summary>Gets or sets total number of messages received by the user in channels.</summary>
 		[JsonPropertyName("group_receive")]
-		public int GroupReceive { get; set; }
+		public int GroupReceive { get; init; }
 
 		/// <summary>Gets or sets total number of messages sent by the user in channels.</summary>
 		[JsonPropertyName("group_send")]
-		public int GroupSend { get; set; }
+		public int GroupSend { get; init; }
 
 		/// <summary>Gets or sets total number of images received by the user.</summary>
 		[JsonPropertyName("images_receive")]
-		public int ImagesReceive { get; set; }
+		public int ImagesReceive { get; init; }
 
 		/// <summary>Gets or sets total number of images sent by the user.</summary>
 		[JsonPropertyName("images_send")]
-		public int ImagesSend { get; set; }
+		public int ImagesSend { get; init; }
 
 		/// <summary>Gets or sets total number of messages received by the user.</summary>
 		[JsonPropertyName("total_receive")]
-		public int TotalReceive { get; set; }
+		public int TotalReceive { get; init; }
 
 		/// <summary>Gets or sets the total number of messages sent by the user.</summary>
 		[JsonPropertyName("total_send")]
-		public int TotalSend { get; set; }
+		public int TotalSend { get; init; }
 
 		/// <summary>Gets or sets the user id.</summary>
 		[JsonPropertyName("user_id")]
-		public string UserId { get; set; }
+		public string UserId { get; init; }
 
 		/// <summary>Gets or sets the user display name.</summary>
 		[JsonPropertyName("user_name")]
-		public string UserName { get; set; }
+		public string UserName { get; init; }
 
 		/// <summary>Gets or sets total number of video files received by the user. .</summary>
 		[JsonPropertyName("videos_receive")]
-		public int VideosReceive { get; set; }
+		public int VideosReceive { get; init; }
 
 		/// <summary>Gets or sets total number of video files sent by the user.</summary>
 		[JsonPropertyName("videos_send")]
-		public int VideosSend { get; set; }
+		public int VideosSend { get; init; }
 
 		/// <summary>Gets or sets total number of voice files received by the user.</summary>
 		[JsonPropertyName("voice_receive")]
-		public int VoiceReceive { get; set; }
+		public int VoiceReceive { get; init; }
 
 		/// <summary>Gets or sets total number of voice files sent by the user.</summary>
 		[JsonPropertyName("voice_send")]
-		public int VoiceSend { get; set; }
+		public int VoiceSend { get; init; }
 	}
 }

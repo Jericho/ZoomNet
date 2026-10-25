@@ -7,10 +7,10 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets a value indicating whether to allow internal calls when outside of allowed locations.</summary>
 		[JsonPropertyName("allow_internal_calls")]
-		public bool? AllowInternalCalls { get; set; }
+		public bool? AllowInternalCalls { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether locations have been applied.</summary>
 		[JsonPropertyName("locations_applied")]
-		public bool? LocationsApplied { get; set; }
+		public bool? LocationsApplied { get; init; }
 	}
 }

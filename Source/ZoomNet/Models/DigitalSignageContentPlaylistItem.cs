@@ -7,14 +7,14 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the duration of the content item in seconds.</summary>
 		[JsonPropertyName("content_duration")]
-		public int Duration { get; set; }
+		public int Duration { get; init; }
 
 		/// <summary>Gets or sets the content item ID.</summary>
 		[JsonPropertyName("content_id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the name of the content item.</summary>
 		[JsonPropertyName("content_name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 	}
 }

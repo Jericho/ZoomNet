@@ -8,18 +8,18 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the answers to the question.</summary>
 		/// <remarks>Can not be used for short question type as this type of question requires registrants to type out the answer.</remarks>
 		[JsonPropertyName("answers")]
-		public string[] Answers { get; set; }
+		public string[] Answers { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the registrant must answer this question.</summary>
 		[JsonPropertyName("required")]
-		public bool IsRequired { get; set; }
+		public bool IsRequired { get; init; }
 
 		/// <summary>Gets or sets the title of the custom question.</summary>
 		[JsonPropertyName("title")]
-		public string Title { get; set; }
+		public string Title { get; init; }
 
 		/// <summary>Gets or sets the type of question.</summary>
 		[JsonPropertyName("type")]
-		public RegistrationCustomQuestionTypeForMeeting Type { get; set; }
+		public RegistrationCustomQuestionTypeForMeeting Type { get; init; }
 	}
 }

@@ -10,21 +10,21 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the transcribed text end timespan.</summary>
 		/// <remarks>Not documented by Zoom.</remarks>
 		[JsonPropertyName("end_ts")]
-		public TimeSpan EndTimeSpan { get; set; }
+		public TimeSpan EndTimeSpan { get; init; }
 
 		/// <summary>Gets or sets the transcribed text.</summary>
 		/// <remarks>Not documented by Zoom.</remarks>
 		[JsonPropertyName("text")]
-		public string Text { get; set; }
+		public string Text { get; init; }
 
 		/// <summary>Gets or sets the transcribed text start timespan.</summary>
 		/// <remarks>Not documented by Zoom.</remarks>
 		[JsonPropertyName("ts")]
-		public TimeSpan StartTimeSpan { get; set; }
+		public TimeSpan StartTimeSpan { get; init; }
 
 		/// <summary>Gets or sets the transcribed text users.</summary>
 		/// <remarks>Not documented by Zoom.<br/> Might be empty.</remarks>
 		[JsonPropertyName("users")]
-		public PhoneCallRecordingTranscriptTimelineUser[] Users { get; set; }
+		public PhoneCallRecordingTranscriptTimelineUser[] Users { get; init; }
 	}
 }

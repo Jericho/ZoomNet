@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the label of the summary section.</summary>
 		[JsonPropertyName("label")]
-		public string Label { get; set; }
+		public string Label { get; init; }
 
 		/// <summary>Gets or sets the content of the summary section.</summary>
 		[JsonPropertyName("summary")]
-		public string Summary { get; set; }
+		public string Summary { get; init; }
 	}
 }

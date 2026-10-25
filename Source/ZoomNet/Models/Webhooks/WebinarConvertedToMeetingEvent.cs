@@ -7,18 +7,18 @@ namespace ZoomNet.Models.Webhooks
 	{
 		/// <summary>Gets or sets the account id of the user who converted the webinar into a meeting.</summary>
 		[JsonPropertyName("account_id")]
-		public string AccountId { get; set; }
+		public string AccountId { get; init; }
 
 		/// <summary>Gets or sets information about the meeting converted from a webinar.</summary>
 		[JsonPropertyName("object")]
-		public MeetingInfo Meeting { get; set; }
+		public MeetingInfo Meeting { get; init; }
 
 		/// <summary>Gets or sets the email address of the user who converted the webinar into a meeting.</summary>
 		[JsonPropertyName("operator")]
-		public string Operator { get; set; }
+		public string Operator { get; init; }
 
 		/// <summary>Gets or sets id of the user who converted the webinar into a meeting.</summary>
 		[JsonPropertyName("operator_id")]
-		public string OperatorId { get; set; }
+		public string OperatorId { get; init; }
 	}
 }

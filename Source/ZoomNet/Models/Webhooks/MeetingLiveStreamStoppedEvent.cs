@@ -6,6 +6,6 @@ namespace ZoomNet.Models.Webhooks
 	public record MeetingLiveStreamStoppedEvent : MeetingLiveStreamEvent
 	{
 		/// <summary>Gets or sets the date and time at which the live stream stopped.</summary>
-		public DateTime StoppedOn { get; set; }
+		public DateTime StoppedOn { get; init; }
 	}
 }

@@ -7,17 +7,17 @@ namespace ZoomNet.Models.Webhooks
 	{
 		/// <summary>Gets or sets the type of batch operation.</summary>
 		[JsonPropertyName("operation")]
-		public RecordingsBatchTrashOperationType Operation { get; set; }
+		public RecordingsBatchTrashOperationType Operation { get; init; }
 
 		/// <summary>Gets or sets the email address of the user who batch deleted recordings to trash.</summary>
 		[JsonPropertyName("operator")]
-		public string Operator { get; set; }
+		public string Operator { get; init; }
 
 		/// <summary>Gets or sets the id of the user who batch deleted recordings to trash.</summary>
 		[JsonPropertyName("operator_id")]
-		public string OperatorId { get; set; }
+		public string OperatorId { get; init; }
 
 		/// <summary>Gets or sets meeting or webinar uuids which recordings were trashed.</summary>
-		public string[] MeetingUuids { get; set; }
+		public string[] MeetingUuids { get; init; }
 	}
 }

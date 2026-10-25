@@ -8,30 +8,30 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the extension id.</summary>
 		[JsonPropertyName("extension_id")]
-		public string ExtensionId { get; set; }
+		public string ExtensionId { get; init; }
 
 		/// <summary>Gets or sets the extension number.</summary>
 		[JsonPropertyName("extension_number")]
-		public long? ExtensionNumber { get; set; }
+		public long? ExtensionNumber { get; init; }
 
 		/// <summary>Gets or sets the unique identifier of the call queue.</summary>
 		[JsonPropertyName("id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the name of the call queue.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets the phone numbers assigned to the call queue.</summary>
 		[JsonPropertyName("phone_numbers")]
-		public List<CallQueuePhoneNumber> PhoneNumbers { get; set; }
+		public List<CallQueuePhoneNumber> PhoneNumbers { get; init; }
 
 		/// <summary>Gets or sets the site information.</summary>
 		[JsonPropertyName("site")]
-		public Site Site { get; set; }
+		public Site Site { get; init; }
 
 		/// <summary>Gets or sets the status of the call queue.</summary>
 		[JsonPropertyName("status")]
-		public CallQueueStatus Status { get; set; }
+		public CallQueueStatus Status { get; init; }
 	}
 }

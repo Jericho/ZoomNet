@@ -7,11 +7,11 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets callee's DID (direct inward dial) number.</summary>
 		[JsonPropertyName("callee_did_number")]
-		public string CalleeDidNumber { get; set; }
+		public string CalleeDidNumber { get; init; }
 
 		/// <summary>Gets or sets callee's extension type.</summary>
 		[JsonPropertyName("callee_extension_type")]
-		public PhoneCallExtensionType? CalleeExtensionType { get; set; }
+		public PhoneCallExtensionType? CalleeExtensionType { get; init; }
 
 		/// <summary>Gets or sets callee's id.</summary>
 		/// <remarks>
@@ -22,18 +22,18 @@ namespace ZoomNet.Models
 		/// - <see cref="PhoneCallExtensionType.SharedLineGroup"/>: shared line group id.
 		/// </remarks>
 		[JsonPropertyName("callee_id")]
-		public string CalleeId { get; set; }
+		public string CalleeId { get; init; }
 
 		/// <summary>Gets or sets callee's user id.</summary>
 		[JsonPropertyName("callee_user_id")]
-		public string CalleeUserId { get; set; }
+		public string CalleeUserId { get; init; }
 
 		/// <summary>Gets or sets caller's DID (direct inward dial) number.</summary>
 		[JsonPropertyName("caller_did_number")]
-		public string CallerDidNumber { get; set; }
+		public string CallerDidNumber { get; init; }
 
 		/// <summary>Gets or sets caller's user id.</summary>
 		[JsonPropertyName("caller_user_id")]
-		public string CallerUserId { get; set; }
+		public string CallerUserId { get; init; }
 	}
 }

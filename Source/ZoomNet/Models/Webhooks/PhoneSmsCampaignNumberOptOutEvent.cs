@@ -7,6 +7,6 @@ namespace ZoomNet.Models.Webhooks
 	{
 		/// <summary>Gets or sets information about phone numbers that sent and received opt-out keyword.</summary>
 		[JsonPropertyName("object")]
-		public WebhookSmsCampaignOptStatuses SmsCampaignNumbers { get; set; }
+		public WebhookSmsCampaignOptStatuses SmsCampaignNumbers { get; init; }
 	}
 }

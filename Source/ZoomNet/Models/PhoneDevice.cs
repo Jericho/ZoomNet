@@ -7,26 +7,26 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets device manufacturer and model name.</summary>
 		[JsonPropertyName("device_type")]
-		public string Type { get; set; }
+		public string Type { get; init; }
 
 		/// <summary>Gets or sets device name.</summary>
 		[JsonPropertyName("display_name")]
-		public string DisplayName { get; set; }
+		public string DisplayName { get; init; }
 
 		/// <summary>Gets or sets device id.</summary>
 		[JsonPropertyName("id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets MAC address or serial number.</summary>
 		[JsonPropertyName("mac_address")]
-		public string MacAddress { get; set; }
+		public string MacAddress { get; init; }
 
 		/// <summary>Gets or sets the provisioning information of a device.</summary>
 		[JsonPropertyName("provision")]
-		public DeviceProvisioning Provision { get; set; }
+		public DeviceProvisioning Provision { get; init; }
 
 		/// <summary>Gets or sets the site to assign the phone user to.</summary>
 		[JsonPropertyName("site")]
-		public Site Site { get; set; }
+		public Site Site { get; init; }
 	}
 }

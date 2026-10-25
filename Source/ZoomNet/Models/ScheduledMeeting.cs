@@ -9,18 +9,18 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the meeting duration in minutes.</summary>
 		[JsonPropertyName("duration")]
-		public int Duration { get; set; }
+		public int Duration { get; init; }
 
 		/// <summary>Gets or sets the personal meeting id.</summary>
 		[JsonPropertyName("pmi")]
-		public string PersonalMeetingId { get; set; }
+		public string PersonalMeetingId { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the prescheduled meeting was created via the GSuite app.</summary>
 		[JsonPropertyName("pre_schedule")]
-		public bool PreScheduled { get; set; } = false;
+		public bool PreScheduled { get; init; } = false;
 
 		/// <summary>Gets or sets the meeting start time.</summary>
 		[JsonPropertyName("start_time")]
-		public DateTime StartTime { get; set; }
+		public DateTime StartTime { get; init; }
 	}
 }

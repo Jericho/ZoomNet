@@ -7,9 +7,9 @@ namespace ZoomNet.Models
 	public record PaginatedResponseWithTokenAndDateRange<T> : PaginatedResponseWithToken<T>
 	{
 		/// <summary>Gets or sets the start date for the report.</summary>
-		public DateOnly From { get; set; }
+		public DateOnly From { get; init; }
 
 		/// <summary>Gets or sets the end date for the report.</summary>
-		public DateOnly To { get; set; }
+		public DateOnly To { get; init; }
 	}
 }

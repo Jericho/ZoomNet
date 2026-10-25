@@ -7,10 +7,10 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets a value indicating whether to allow user to delete their own ad-hoc recording.</summary>
 		[JsonPropertyName("allow_delete")]
-		public bool? AllowDelete { get; set; }
+		public bool? AllowDelete { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether to allow user to download their own ad-hoc recording.</summary>
 		[JsonPropertyName("allow_download")]
-		public bool? AllowDownload { get; set; }
+		public bool? AllowDownload { get; init; }
 	}
 }

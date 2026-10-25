@@ -4,9 +4,9 @@ namespace ZoomNet.Models.Webhooks
 	public record WebinarRegistrationEvent : WebinarEvent
 	{
 		/// <summary>Gets or sets the registrant information.</summary>
-		public Registrant Registrant { get; set; }
+		public Registrant Registrant { get; init; }
 
 		/// <summary>Gets or sets the information about webinar registration source tracking.</summary>
-		public TrackingSource TrackingSource { get; set; }
+		public TrackingSource TrackingSource { get; init; }
 	}
 }

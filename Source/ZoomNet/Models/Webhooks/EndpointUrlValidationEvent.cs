@@ -12,7 +12,7 @@ namespace ZoomNet.Models.Webhooks
 	{
 		/// <summary>Gets or sets the token.</summary>
 		[JsonPropertyName("plainToken")]
-		public string PlainToken { get; set; }
+		public string PlainToken { get; init; }
 
 		/// <summary>Generates the payload that should be returned to Zoom when your are asked to validate your webhook endpoint URL.</summary>
 		/// <param name="secretToken">Your webhoop app's secret token.</param>

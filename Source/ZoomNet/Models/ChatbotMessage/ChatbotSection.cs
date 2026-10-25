@@ -13,28 +13,28 @@ public record ChatbotSection : IChatbotBody, IChatbotValidate
 	/// <summary>Gets or sets the footer for this section.</summary>
 	[JsonPropertyName("footer")]
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-	public string Footer { get; set; }
+	public string Footer { get; init; }
 
 	/// <summary>Gets or sets the URL of the footer icon for this section.</summary>
 	[JsonPropertyName("footer_icon")]
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-	public string FooterIcon { get; set; }
+	public string FooterIcon { get; init; }
 
 	/// <summary>Gets or sets the associated messages for this section.</summary>
 	[JsonPropertyName("sections")]
-	public ICollection<IChatbotSection> Sections { get; set; }
+	public ICollection<IChatbotSection> Sections { get; init; }
 
 	/// <summary>Gets or sets the color of the sidebar for this section.</summary>
 	[JsonPropertyName("sidebar_color")]
 	[JsonConverter(typeof(NullableHexColorConverter))]
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-	public Color? SidebarColor { get; set; }
+	public Color? SidebarColor { get; init; }
 
 	/// <summary>Gets or sets a timestamp to display in the footer. Unix timestamp format or use <see cref="TimeStampFromDateTime"/>.</summary>
 	/// <remarks>There may be a timezone conversion issue on Zoom's side. The value here is one hour off the time displayed on the Zoom message.</remarks>
 	[JsonPropertyName("ts")]
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-	public long? TimeStamp { get; set; }
+	public long? TimeStamp { get; init; }
 
 	/// <summary>Sets the timestamp from a <see cref="DateTime"/> value.</summary>
 	/// <remarks>There may be a timezone conversion issue on Zoom's side. The value here is one hour off the time displayed on the Zoom message.</remarks>

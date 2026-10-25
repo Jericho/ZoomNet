@@ -7,10 +7,10 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets a value indicating whether users are allowed to make emergency calls from Zoom clients.</summary>
 		[JsonPropertyName("allow_emergency_calls_from_clients")]
-		public bool? AllowEmergencyCallsFromClients { get; set; }
+		public bool? AllowEmergencyCallsFromClients { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether users are allowed to make emergency calls from desk phones.</summary>
 		[JsonPropertyName("allow_emergency_calls_from_deskphones")]
-		public bool? AllowEmergencyCallsFromDeskphones { get; set; }
+		public bool? AllowEmergencyCallsFromDeskphones { get; init; }
 	}
 }

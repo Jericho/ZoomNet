@@ -8,42 +8,42 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the asset's description.</summary>
 		[JsonPropertyName("asset_description")]
-		public string Description { get; set; }
+		public string Description { get; init; }
 
 		/// <summary>Gets or sets the asset's id.</summary>
 		[JsonPropertyName("asset_id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the asset's items.</summary>
 		[JsonPropertyName("asset_items")]
-		public AssetItem[] Items { get; set; }
+		public AssetItem[] Items { get; init; }
 
 		/// <summary>Gets or sets the asset's language code.</summary>
 		[JsonPropertyName("asset_language_code")]
-		public Language LanguageCode { get; set; }
+		public Language LanguageCode { get; init; }
 
 		/// <summary>Gets or sets the asset's name.</summary>
 		[JsonPropertyName("asset_name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets the asset's type.</summary>
 		[JsonPropertyName("asset_type")]
-		public AssetType Type { get; set; }
+		public AssetType Type { get; init; }
 
 		/// <summary>Gets or sets the asset category's id.</summary>
 		[JsonPropertyName("category_id")]
-		public string CategoryId { get; set; }
+		public string CategoryId { get; init; }
 
 		/// <summary>Gets or sets the asset category's name.</summary>
 		[JsonPropertyName("category_name")]
-		public string CategoryName { get; set; }
+		public string CategoryName { get; init; }
 
 		/// <summary>Gets or sets the date and time when the asset was created.</summary>
 		[JsonPropertyName("date_time_ms")]
-		public DateTime CreatedOn { get; set; }
+		public DateTime CreatedOn { get; init; }
 
 		/// <summary>Gets or sets the id of the user that last modified this data.</summary>
 		[JsonPropertyName("modified_by")]
-		public string ModifiedBy { get; set; }
+		public string ModifiedBy { get; init; }
 	}
 }

@@ -7,22 +7,22 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the download link for the media file.</summary>
 		[JsonPropertyName("download_url")]
-		public string DownloadUrl { get; set; }
+		public string DownloadUrl { get; init; }
 
 		/// <summary>Gets or sets the media file ID.</summary>
 		[JsonPropertyName("id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the file name.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets the file size.</summary>
 		[JsonPropertyName("size")]
-		public int Size { get; set; }
+		public int Size { get; init; }
 
 		/// <summary>Gets or sets the file type.</summary>
 		[JsonPropertyName("type")]
-		public SmsAttachmentType Type { get; set; }
+		public SmsAttachmentType Type { get; init; }
 	}
 }

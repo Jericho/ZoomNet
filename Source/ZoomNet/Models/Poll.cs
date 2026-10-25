@@ -7,18 +7,18 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets a value indicating whether to allow participants to anonymously answer poll questions.</summary>
 		[JsonPropertyName("anonymous")]
-		public bool AllowAnonymous { get; set; }
+		public bool AllowAnonymous { get; init; }
 
 		/// <summary>Gets or sets the unique identifier.</summary>
 		[JsonPropertyName("id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the type of the poll.</summary>
 		[JsonPropertyName("poll_type")]
-		public PollType Type { get; set; }
+		public PollType Type { get; init; }
 
 		/// <summary>Gets or sets the title of the poll.</summary>
 		[JsonPropertyName("title")]
-		public string Title { get; set; }
+		public string Title { get; init; }
 	}
 }

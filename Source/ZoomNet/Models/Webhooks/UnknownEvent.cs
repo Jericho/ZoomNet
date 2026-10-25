@@ -6,9 +6,9 @@ namespace ZoomNet.Models.Webhooks
 	public record UnknownEvent : Event
 	{
 		/// <summary>Gets or sets the name of the event type.</summary>
-		public string EventTypeName { get; set; }
+		public string EventTypeName { get; init; }
 
 		/// <summary>Gets or sets the JSON payload.</summary>
-		public JsonElement Payload { get; set; }
+		public JsonElement Payload { get; init; }
 	}
 }

@@ -7,26 +7,26 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the extension number.</summary>
 		[JsonPropertyName("extension_number")]
-		public string ExtensionNumber { get; set; }
+		public string ExtensionNumber { get; init; }
 
 		/// <summary>Gets or sets the extension type.</summary>
 		[JsonPropertyName("extension_type")]
-		public CallLogTransferInfoExtensionType? ExtensionType { get; set; }
+		public CallLogTransferInfoExtensionType? ExtensionType { get; init; }
 
 		/// <summary>Gets or sets the location.</summary>
 		[JsonPropertyName("location")]
-		public string Location { get; set; }
+		public string Location { get; init; }
 
 		/// <summary>Gets or sets the name.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets the number type.</summary>
 		[JsonPropertyName("number_type")]
-		public CallLogTransferInfoNumberType? NumberType { get; set; }
+		public CallLogTransferInfoNumberType? NumberType { get; init; }
 
 		/// <summary>Gets or sets the phone number.</summary>
 		[JsonPropertyName("phone_number")]
-		public string PhoneNumber { get; set; }
+		public string PhoneNumber { get; init; }
 	}
 }

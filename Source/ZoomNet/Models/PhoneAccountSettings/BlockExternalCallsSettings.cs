@@ -7,18 +7,18 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets a value indicating whether external calls are blocked during business hours.</summary>
 		[JsonPropertyName("block_business_hours")]
-		public bool? BlockBusinessHours { get; set; }
+		public bool? BlockBusinessHours { get; init; }
 
 		/// <summary>Gets or sets the action when a call is blocked.</summary>
 		[JsonPropertyName("block_call_action")]
-		public BlockCallAction? BlockCallAction { get; set; }
+		public BlockCallAction? BlockCallAction { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether external calls are blocked during closed hours.</summary>
 		[JsonPropertyName("block_closed_hours")]
-		public bool? BlockClosedHours { get; set; }
+		public bool? BlockClosedHours { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether external calls are blocked during holiday hours.</summary>
 		[JsonPropertyName("block_holiday_hours")]
-		public bool? BlockHolidayHours { get; set; }
+		public bool? BlockHolidayHours { get; init; }
 	}
 }

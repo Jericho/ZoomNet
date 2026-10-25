@@ -7,6 +7,6 @@ namespace ZoomNet.Models.Webhooks
 	{
 		/// <summary>Gets or sets information about stopped recording.</summary>
 		[JsonPropertyName("object")]
-		public PhoneCallRecording Recording { get; set; }
+		public PhoneCallRecording Recording { get; init; }
 	}
 }

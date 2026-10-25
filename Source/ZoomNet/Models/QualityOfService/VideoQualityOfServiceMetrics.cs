@@ -7,10 +7,10 @@ namespace ZoomNet.Models.QualityOfService
 	{
 		/// <summary>Gets or sets the frame rate value.</summary>
 		[JsonPropertyName("frame_rate")]
-		public string FrameRate { get; set; }
+		public string FrameRate { get; init; }
 
 		/// <summary>Gets or sets the resolution value.</summary>
 		[JsonPropertyName("resolution")]
-		public string Resolution { get; set; }
+		public string Resolution { get; init; }
 	}
 }

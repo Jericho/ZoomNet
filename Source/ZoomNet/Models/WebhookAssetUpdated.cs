@@ -8,18 +8,18 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the asset's id.</summary>
 		[JsonPropertyName("asset_id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the date and time when the asset is updated.</summary>
 		[JsonPropertyName("date_time_ms")]
-		public DateTime UpdatedOn { get; set; }
+		public DateTime UpdatedOn { get; init; }
 
 		/// <summary>Gets or sets the id of the user that last modified this data.</summary>
 		[JsonPropertyName("modified_by")]
-		public string ModifiedBy { get; set; }
+		public string ModifiedBy { get; init; }
 
 		/// <summary>Gets or sets the information about the updated asset.</summary>
 		[JsonPropertyName("updates")]
-		public WebhookAssetUpdates Updates { get; set; }
+		public WebhookAssetUpdates Updates { get; init; }
 	}
 }

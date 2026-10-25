@@ -8,38 +8,38 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the effective time of the stream key when it is valid.</summary>
 		[JsonPropertyName("effective_time")]
-		public DateTime EffectiveTime { get; set; }
+		public DateTime EffectiveTime { get; init; }
 
 		/// <summary>Gets or sets the expiration time of the stream key.</summary>
 		[JsonPropertyName("expiration_time")]
-		public DateTime ExpirationTime { get; set; }
+		public DateTime ExpirationTime { get; init; }
 
 		/// <summary>Gets or sets the stream backup url.</summary>
 		[JsonPropertyName("stream_backup_url")]
-		public string StreamBackupUrl { get; set; }
+		public string StreamBackupUrl { get; init; }
 
 		/// <summary>Gets or sets the stream key.</summary>
 		[JsonPropertyName("stream_key")]
-		public string StreamKey { get; set; }
+		public string StreamKey { get; init; }
 
 		/// <summary>Gets or sets the stream key description.</summary>
 		[JsonPropertyName("stream_key_description")]
-		public string StreamKeyDescription { get; set; }
+		public string StreamKeyDescription { get; init; }
 
 		/// <summary>Gets or sets the stream key ID.</summary>
 		[JsonPropertyName("stream_key_id")]
-		public string StreamKeyId { get; set; }
+		public string StreamKeyId { get; init; }
 
 		/// <summary>Gets or sets the stream key name.</summary>
 		[JsonPropertyName("stream_key_name")]
-		public string StreamKeyName { get; set; }
+		public string StreamKeyName { get; init; }
 
 		/// <summary>Gets or sets the type of stream key.</summary>
 		[JsonPropertyName("stream_key_type")]
-		public string StreamKeyType { get; set; }
+		public string StreamKeyType { get; init; }
 
 		/// <summary>Gets or sets the stream url.</summary>
 		[JsonPropertyName("stream_url")]
-		public string StreamUrl { get; set; }
+		public string StreamUrl { get; init; }
 	}
 }

@@ -6,9 +6,9 @@ namespace ZoomNet.Models.Webhooks
 	public record PhoneCallerMeetingInvitingEvent : PhoneCallFlowEvent
 	{
 		/// <summary>Gets or sets the date and time when the call was escalated to a meeting.</summary>
-		public DateTime EscalatedAt { get; set; }
+		public DateTime EscalatedAt { get; init; }
 
 		/// <summary>Gets or sets the meeting id.</summary>
-		public string MeetingId { get; set; }
+		public string MeetingId { get; init; }
 	}
 }

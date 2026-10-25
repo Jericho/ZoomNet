@@ -8,32 +8,32 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the meeting's end date and time.</summary>
 		[JsonPropertyName("meeting_end_time")]
-		public DateTime MeetingEndTime { get; set; }
+		public DateTime MeetingEndTime { get; init; }
 
 		/// <summary>Gets or sets the meeting host's email address.</summary>
 		[JsonPropertyName("meeting_host_email")]
-		public string MeetingHostEmail { get; set; }
+		public string MeetingHostEmail { get; init; }
 
 		/// <summary>Gets or sets the ID of the user who is set as the meeting host.</summary>
 		[JsonPropertyName("meeting_host_id")]
-		public string MeetingHostId { get; set; }
+		public string MeetingHostId { get; init; }
 
 		/// <summary>Gets or sets the meeting id.</summary>
 		[JsonPropertyName("meeting_id")]
 		[JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
-		public long MeetingId { get; set; }
+		public long MeetingId { get; init; }
 
 		/// <summary>Gets or sets the meeting's start date and time.</summary>
 		[JsonPropertyName("meeting_start_time")]
-		public DateTime MeetingStartTime { get; set; }
+		public DateTime MeetingStartTime { get; init; }
 
 		/// <summary>Gets or sets meeting topic.</summary>
 		[JsonPropertyName("meeting_topic")]
-		public string MeetingTopic { get; set; }
+		public string MeetingTopic { get; init; }
 
 		/// <summary>Gets or sets the unique meeting id.</summary>
 		[JsonPropertyName("meeting_uuid")]
-		public string MeetingUuid { get; set; }
+		public string MeetingUuid { get; init; }
 
 		/// <summary>Gets or sets the complete meeting summary in Markdown format.</summary>
 		/// <remarks>
@@ -41,11 +41,11 @@ namespace ZoomNet.Models
 		/// <see cref="Webhooks.EventType.MeetingSummaryUpdated"/> webhooks.
 		/// </remarks>
 		[JsonPropertyName("summary_content")]
-		public string SummaryContent { get; set; }
+		public string SummaryContent { get; init; }
 
 		/// <summary>Gets or sets the date and time when the meeting summary was created.</summary>
 		[JsonPropertyName("summary_created_time")]
-		public DateTime SummaryCreatedTime { get; set; }
+		public DateTime SummaryCreatedTime { get; init; }
 
 		/// <summary>Gets or sets the URL to view the full summary document in Zoom Docs.</summary>
 		/// <remarks>
@@ -53,32 +53,32 @@ namespace ZoomNet.Models
 		/// <see cref="Webhooks.EventType.MeetingSummaryUpdated"/> webhooks.
 		/// </remarks>
 		[JsonPropertyName("summary_doc_url")]
-		public string SummaryDocUrl { get; set; }
+		public string SummaryDocUrl { get; init; }
 
 		/// <summary>Gets or sets the summary's end date and time.</summary>
 		[JsonPropertyName("summary_end_time")]
-		public DateTime SummaryEndTime { get; set; }
+		public DateTime SummaryEndTime { get; init; }
 
 		/// <summary>Gets or sets the date and time when the meeting summary was last modified.</summary>
 		[JsonPropertyName("summary_last_modified_time")]
-		public DateTime SummaryLastModifiedTime { get; set; }
+		public DateTime SummaryLastModifiedTime { get; init; }
 
 		/// <summary>Gets or sets the user email of the user who last modified the meeting summary.</summary>
 		/// <remarks>Value is available only in <see cref="Webhooks.EventType.MeetingSummaryUpdated"/> webhook.</remarks>
 		[JsonPropertyName("summary_last_modified_user_email")]
-		public string SummaryLastModifiedUserEmail { get; set; }
+		public string SummaryLastModifiedUserEmail { get; init; }
 
 		/// <summary>Gets or sets the user ID of the user who last modified the meeting summary.</summary>
 		/// <remarks>Value is available only in <see cref="Webhooks.EventType.MeetingSummaryUpdated"/> webhook.</remarks>
 		[JsonPropertyName("summary_last_modified_user_id")]
-		public string SummaryLastModifiedUserId { get; set; }
+		public string SummaryLastModifiedUserId { get; init; }
 
 		/// <summary>Gets or sets the summary's start date and time.</summary>
 		[JsonPropertyName("summary_start_time")]
-		public DateTime SummaryStartTime { get; set; }
+		public DateTime SummaryStartTime { get; init; }
 
 		/// <summary>Gets or sets the summary title.</summary>
 		[JsonPropertyName("summary_title")]
-		public string SummaryTitle { get; set; }
+		public string SummaryTitle { get; init; }
 	}
 }

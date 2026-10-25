@@ -6,6 +6,6 @@ namespace ZoomNet.Models.Webhooks
 	public record MeetingParticipantAdmittedEvent : MeetingParticipantEvent
 	{
 		/// <summary>Gets or sets the date and time at which the participant has been admitted to the meeting.</summary>
-		public DateTime AdmittedOn { get; set; }
+		public DateTime AdmittedOn { get; init; }
 	}
 }

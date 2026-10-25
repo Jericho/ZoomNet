@@ -7,10 +7,10 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets the group id.</summary>
 		[JsonPropertyName("group_id")]
-		public string GroupId { get; set; }
+		public string GroupId { get; init; }
 
 		/// <summary>Gets or sets the group settings.</summary>
 		[JsonPropertyName("settings")]
-		public GroupSettings Settings { get; set; }
+		public GroupSettings Settings { get; init; }
 	}
 }

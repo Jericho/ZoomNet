@@ -4,6 +4,6 @@ namespace ZoomNet.Models.Webhooks
 	public record MeetingAiCompanionAssetsDeletedEvent : MeetingAiCompanionEvent
 	{
 		/// <summary>Gets or sets AI companion assets that were deleted.</summary>
-		public string[] DeletedAssets { get; set; }
+		public string[] DeletedAssets { get; init; }
 	}
 }

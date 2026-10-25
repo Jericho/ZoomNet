@@ -7,14 +7,14 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets whether to enable the Automatically add invited external users setting.</summary>
 		[JsonPropertyName("auto_add_invited_external_users")]
-		public bool? AutoAddInvitedExternalUsers { get; set; }
+		public bool? AutoAddInvitedExternalUsers { get; init; }
 
 		/// <summary>Gets or sets the channel's ID.</summary>
 		[JsonPropertyName("channel_id")]
-		public string ChannelId { get; set; }
+		public string ChannelId { get; init; }
 
 		/// <summary>Gets or sets whether to enable the Enable continuous meeting chat setting.</summary>
 		[JsonPropertyName("enable")]
-		public bool? Enable { get; set; }
+		public bool? Enable { get; init; }
 	}
 }

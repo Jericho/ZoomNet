@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the check-in and check-out options subsettings.</summary>
 		[JsonPropertyName("checkin_and_checkout_options")]
-		public RoomCheckinCheckoutOptions Options { get; set; }
+		public RoomCheckinCheckoutOptions Options { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether to enable check-in and check-out options.</summary>
 		[JsonPropertyName("enable")]
-		public bool Enabled { get; set; }
+		public bool Enabled { get; init; }
 	}
 }

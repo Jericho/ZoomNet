@@ -8,18 +8,18 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the answer submitted by the participant.</summary>
 		[JsonPropertyName("answer")]
-		public string Answer { get; set; }
+		public string Answer { get; init; }
 
 		/// <summary>Gets or sets the date and time at which the answer to the poll was submitted.</summary>
 		[JsonPropertyName("date_time")]
-		public DateTime SubmittedOn { get; set; }
+		public DateTime SubmittedOn { get; init; }
 
 		/// <summary>Gets or sets the unique identifier of the poll.</summary>
 		[JsonPropertyName("polling_id")]
-		public string PollId { get; set; }
+		public string PollId { get; init; }
 
 		/// <summary>Gets or sets the question asked during the poll.</summary>
 		[JsonPropertyName("question")]
-		public string Question { get; set; }
+		public string Question { get; init; }
 	}
 }

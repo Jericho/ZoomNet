@@ -6,12 +6,12 @@ namespace ZoomNet.Models.Webhooks
 	public record PhoneCalleeRejectedEvent : PhoneCallFlowEvent
 	{
 		/// <summary>Gets or sets the date and time when the ringing started.</summary>
-		public DateTime RingingStartedOn { get; set; }
+		public DateTime RingingStartedOn { get; init; }
 
 		/// <summary>Gets or sets the date and time when the call was declined by the callee.</summary>
-		public DateTime EndedOn { get; set; }
+		public DateTime EndedOn { get; init; }
 
 		/// <summary>Gets or sets the reason the call was rejected.</summary>
-		public string HandupResult { get; set; }
+		public string HandupResult { get; init; }
 	}
 }

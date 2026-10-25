@@ -7,11 +7,11 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets the action taken when a policy is triggered.</summary>
 		[JsonPropertyName("action")]
-		public SmsEtiquettePolicyAction Action { get; set; }
+		public SmsEtiquettePolicyAction Action { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the policy is active.</summary>
 		[JsonPropertyName("active")]
-		public bool Active { get; set; }
+		public bool Active { get; init; }
 
 		/// <summary>Gets or sets policy content.</summary>
 		/// <remarks>
@@ -19,22 +19,22 @@ namespace ZoomNet.Models.PhoneAccountSettings
 		/// For <see cref="SmsEtiquettePolicyRuleKind.RegularExpression"/> - regular expression (back references and zero-width assertions are not supported).
 		/// </remarks>
 		[JsonPropertyName("content")]
-		public string Content { get; set; }
+		public string Content { get; init; }
 
 		/// <summary>Gets or sets policy description.</summary>
 		[JsonPropertyName("description")]
-		public string Description { get; set; }
+		public string Description { get; init; }
 
 		/// <summary>Gets or sets policy id.</summary>
 		[JsonPropertyName("id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets policy name.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets policy rule kind.</summary>
 		[JsonPropertyName("rule")]
-		public SmsEtiquettePolicyRuleKind Rule { get; set; }
+		public SmsEtiquettePolicyRuleKind Rule { get; init; }
 	}
 }

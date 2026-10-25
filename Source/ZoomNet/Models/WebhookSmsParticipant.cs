@@ -7,14 +7,14 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets sender's/receiver's id.</summary>
 		[JsonPropertyName("id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether this is the owner of the message.</summary>
 		[JsonPropertyName("is_message_owner")]
-		public bool? IsMessageOwner { get; set; }
+		public bool? IsMessageOwner { get; init; }
 
 		/// <summary>Gets or sets sender's/receiver's type.</summary>
 		[JsonPropertyName("type")]
-		public SmsParticipantOwnerType? Type { get; set; }
+		public SmsParticipantOwnerType? Type { get; init; }
 	}
 }

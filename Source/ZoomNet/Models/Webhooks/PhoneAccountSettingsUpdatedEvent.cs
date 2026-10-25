@@ -8,14 +8,14 @@ namespace ZoomNet.Models.Webhooks
 	{
 		/// <summary>Gets or sets the account ID of the user that updated the account settings.</summary>
 		[JsonPropertyName("account_id")]
-		public string AccountId { get; set; }
+		public string AccountId { get; init; }
 
 		/// <summary>Gets or sets the updated account settings.</summary>
 		[JsonPropertyName("object")]
-		public WebhookAccountSettings NewSettings { get; set; }
+		public WebhookAccountSettings NewSettings { get; init; }
 
 		/// <summary>Gets or sets the previous account settings (before update).</summary>
 		[JsonPropertyName("old_object")]
-		public WebhookAccountSettings OldSettings { get; set; }
+		public WebhookAccountSettings OldSettings { get; init; }
 	}
 }

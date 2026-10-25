@@ -7,31 +7,31 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the video duration in minutes.</summary>
 		[JsonPropertyName("duration")]
-		public int Duration { get; set; }
+		public int Duration { get; init; }
 
 		/// <summary>Gets or sets the name.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets the play URL.</summary>
 		[JsonPropertyName("play_link")]
-		public string PlayUrl { get; set; }
+		public string PlayUrl { get; init; }
 
 		/// <summary>Gets or sets the ID of the Zoom Event this video belongs to.</summary>
 		/// <remarks>If this is not associated to any Zoom Event then it is blank.</remarks>
 		[JsonPropertyName("source_event_id")]
-		public string SourceEventId { get; set; }
+		public string SourceEventId { get; init; }
 
 		/// <summary>Gets or sets the video source type.</summary>
 		[JsonPropertyName("source_type")]
-		public HubVideoSourceType SourceType { get; set; }
+		public HubVideoSourceType SourceType { get; init; }
 
 		/// <summary>Gets or sets the status.</summary>
 		[JsonPropertyName("status")]
-		public HubVideoStatus Status { get; set; }
+		public HubVideoStatus Status { get; init; }
 
 		/// <summary>Gets or sets the video id.</summary>
 		[JsonPropertyName("video_id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 	}
 }

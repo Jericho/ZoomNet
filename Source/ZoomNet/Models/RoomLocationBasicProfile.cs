@@ -7,38 +7,38 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the address.</summary>
 		[JsonPropertyName("address")]
-		public string Address { get; set; }
+		public string Address { get; init; }
 
 		/// <summary>Gets or sets the description.</summary>
 		[JsonPropertyName("description")]
-		public string Description { get; set; }
+		public string Description { get; init; }
 
 		/// <summary>Gets or sets the name.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets the parent location id.</summary>
 		[JsonPropertyName("parent_location_id")]
-		public string ParentLocationId { get; set; }
+		public string ParentLocationId { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether to require code to exit out of your Zoom Rooms application to switch between other apps.</summary>
 		[JsonPropertyName("required_code_to_ext")]
-		public bool? CodeIsRequiredToExit { get; set; }
+		public bool? CodeIsRequiredToExit { get; init; }
 
 		/// <summary>Gets or sets the 1-16 digit number or characters used to secure your Zoom Rooms application.</summary>
 		[JsonPropertyName("room_passcode")]
-		public string Passcode { get; set; }
+		public string Passcode { get; init; }
 
 		/// <summary>Gets or sets the email address to be used for reporting Zoom Room issues.</summary>
 		[JsonPropertyName("support_email")]
-		public string SupportEmail { get; set; }
+		public string SupportEmail { get; init; }
 
 		/// <summary>Gets or sets the phone number to be used for reporting Zoom Room issues.</summary>
 		[JsonPropertyName("support_phone")]
-		public string SupportPhone { get; set; }
+		public string SupportPhone { get; init; }
 
 		/// <summary>Gets or sets the timezone (only returned for location type - city).</summary>
 		[JsonPropertyName("timezone")]
-		public TimeZones? Timezone { get; set; }
+		public TimeZones? Timezone { get; init; }
 	}
 }

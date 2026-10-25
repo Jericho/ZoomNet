@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the playlist ID.</summary>
 		[JsonPropertyName("playlist_id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the name of the playlist.</summary>
 		[JsonPropertyName("playlist_name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 	}
 }

@@ -7,22 +7,22 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the country code. For example, for United States phone numbers, this will be a +1 value.</summary>
 		[JsonPropertyName("code")]
-		public string CountryCode { get; set; }
+		public string CountryCode { get; init; }
 
 		/// <summary>Gets or sets the country.</summary>
 		[JsonPropertyName("country")]
-		public Country Country { get; set; }
+		public Country Country { get; init; }
 
 		/// <summary>Gets or sets the type.</summary>
 		[JsonPropertyName("label")]
-		public PhoneType? Type { get; set; }
+		public PhoneType? Type { get; init; }
 
 		/// <summary>Gets or sets the phone number.</summary>
 		[JsonPropertyName("number")]
-		public string Number { get; set; }
+		public string Number { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether Zoom has verified the phone number.</summary>
 		[JsonPropertyName("verified")]
-		public bool IsVerified { get; set; }
+		public bool IsVerified { get; init; }
 	}
 }

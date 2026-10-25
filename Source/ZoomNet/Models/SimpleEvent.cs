@@ -8,6 +8,6 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the type of meeting.</summary>
 		[JsonPropertyName("meeting_type")]
-		public EventMeetingType MeetingType { get; set; }
+		public EventMeetingType MeetingType { get; init; }
 	}
 }

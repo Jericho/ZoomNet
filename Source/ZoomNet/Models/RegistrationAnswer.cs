@@ -7,11 +7,11 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the title of the custom question.</summary>
 		[JsonPropertyName("title")]
-		public string Title { get; set; }
+		public string Title { get; init; }
 
 		/// <summary>Gets or sets the response.</summary>
 		/// <remarks>This has a limit of 128 characters.</remarks>
 		[JsonPropertyName("value")]
-		public string Answer { get; set; }
+		public string Answer { get; init; }
 	}
 }

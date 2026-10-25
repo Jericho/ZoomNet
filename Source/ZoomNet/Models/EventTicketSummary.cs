@@ -7,18 +7,18 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the event authentication method for the ticket.</summary>
 		[JsonPropertyName("authentication_method")]
-		public EventAuthenticationMethod AuthenticationMethod { get; set; }
+		public EventAuthenticationMethod AuthenticationMethod { get; init; }
 
 		/// <summary>Gets or sets the QR code Url.</summary>
 		[JsonPropertyName("qr_code_url")]
-		public string QrCodeUrl { get; set; }
+		public string QrCodeUrl { get; init; }
 
 		/// <summary>Gets or sets the role.</summary>
 		[JsonPropertyName("role")]
-		public EventTicketRole? Role { get; set; }
+		public EventTicketRole? Role { get; init; }
 
 		/// <summary>Gets or sets the id of the registrant ticket.</summary>
 		[JsonPropertyName("ticket_id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 	}
 }

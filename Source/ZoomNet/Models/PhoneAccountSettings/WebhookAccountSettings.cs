@@ -7,10 +7,10 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets the updated account's id.</summary>
 		[JsonPropertyName("id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the account settings.</summary>
 		[JsonPropertyName("settings")]
-		public AccountSettings Settings { get; set; }
+		public AccountSettings Settings { get; init; }
 	}
 }

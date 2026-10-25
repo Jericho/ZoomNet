@@ -7,14 +7,14 @@ namespace ZoomNet.Models.Webhooks
 	{
 		/// <summary>Gets or sets account id of the access member.</summary>
 		[JsonPropertyName("account_id")]
-		public string AccountId { get; set; }
+		public string AccountId { get; init; }
 
 		/// <summary>Gets or sets information about received voicemail.</summary>
 		[JsonPropertyName("object")]
-		public WebhookVoicemail Voicemail { get; set; }
+		public WebhookVoicemail Voicemail { get; init; }
 
 		/// <summary>Gets or sets access member's extension type.</summary>
-		public PhoneCallExtensionType AccessMemberExtensionType { get; set; }
+		public PhoneCallExtensionType AccessMemberExtensionType { get; init; }
 
 		/// <summary>Gets or sets access member's id.</summary>
 		/// <remarks>
@@ -22,6 +22,6 @@ namespace ZoomNet.Models.Webhooks
 		/// - <see cref="PhoneCallExtensionType.User"/>: callee user id.
 		/// - <see cref="PhoneCallExtensionType.CommonAreaPhone"/>: common area id.
 		/// </remarks>
-		public string AccessMemberId { get; set; }
+		public string AccessMemberId { get; init; }
 	}
 }

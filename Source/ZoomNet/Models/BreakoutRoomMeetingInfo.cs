@@ -7,6 +7,6 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the breakout room's universally unique identifier (UUID). Each breakout room instance generates a breakout room UUID.</summary>
 		[JsonPropertyName("breakout_room_uuid")]
-		public string BreakoutRoomUuid { get; set; }
+		public string BreakoutRoomUuid { get; init; }
 	}
 }

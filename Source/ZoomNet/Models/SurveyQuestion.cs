@@ -8,50 +8,50 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the maximum number of characters. This field only applies to questions of type 'Long'.</summary>
 		/// <remarks>Must be smaller or equal to 2,000.</remarks>
 		[JsonPropertyName("answer_max_character")]
-		public int? MaximumNumberOfCharacters { get; set; }
+		public int? MaximumNumberOfCharacters { get; init; }
 
 		/// <summary>Gets or sets the minimum number of characters. This field only applies to questions of type 'Long'.</summary>
 		/// <remarks>Must be greather or equal to 1.</remarks>
 		[JsonPropertyName("answer_min_character")]
-		public int? MinimumNumberOfCharacters { get; set; }
+		public int? MinimumNumberOfCharacters { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the question must be answered.</summary>
 		[JsonPropertyName("answer_required")]
-		public bool IsRequired { get; set; }
+		public bool IsRequired { get; init; }
 
 		/// <summary>Gets or sets the possible answers to chose from.</summary>
 		[JsonPropertyName("answers")]
-		public string[] Answers { get; set; }
+		public string[] Answers { get; init; }
 
 		/// <summary>Gets or sets the survey question.</summary>
 		/// <remarks>Up to 255 characters.</remarks>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets the high score label. This field only applies to questions of type 'Rating'.</summary>
 		[JsonPropertyName("rating_max_label")]
-		public string RatingHighScoreLabel { get; set; }
+		public string RatingHighScoreLabel { get; init; }
 
 		/// <summary>Gets or sets the rating maximum value. This field only applies to questions of type 'Rating'.</summary>
 		/// <remarks>Must be smaller or equal to 10.</remarks>
 		[JsonPropertyName("rating_max_value")]
-		public int? RatingMaximumValue { get; set; }
+		public int? RatingMaximumValue { get; init; }
 
 		/// <summary>Gets or sets the low score label. This field only applies to questions of type 'Rating'.</summary>
 		[JsonPropertyName("rating_min_label")]
-		public string RatingLowScoreLabel { get; set; }
+		public string RatingLowScoreLabel { get; init; }
 
 		/// <summary>Gets or sets the rating minimum value. This field only applies to questions of type 'Rating'.</summary>
 		/// <remarks>Must be greather or equal to 0.</remarks>
 		[JsonPropertyName("rating_min_value")]
-		public int? RatingMinimumValue { get; set; }
+		public int? RatingMinimumValue { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the possible answers will be displayed as a drop-down box.</summary>
 		[JsonPropertyName("show_as_dropdown")]
-		public bool ShowAsDropdown { get; set; }
+		public bool ShowAsDropdown { get; init; }
 
 		/// <summary>Gets or sets the question type.</summary>
 		[JsonPropertyName("type")]
-		public SurveyQuestionType Type { get; set; }
+		public SurveyQuestionType Type { get; init; }
 	}
 }

@@ -7,7 +7,7 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the settings that allows Zoom Room Scheduling Display to reserve other Zoom Rooms.</summary>
 		[JsonPropertyName("allow_to_reserve_other_rooms")]
-		public RoomLocationReserveOtherRoomsSettings ReserveOtherRooms { get; set; }
+		public RoomLocationReserveOtherRoomsSettings ReserveOtherRooms { get; init; }
 
 		/// <summary>Gets or sets thew additional text to appear adjacent to the space reserved for a QR code.</summary>
 		/// <remarks>
@@ -15,7 +15,7 @@ namespace ZoomNet.Models
 		/// This setting has no effect if the home screen theme is "standard".
 		/// </remarks>
 		[JsonPropertyName("home_screen_qr_code_supporting_text")]
-		public string QRCodeSupportingText { get; set; }
+		public string QRCodeSupportingText { get; init; }
 
 		/// <summary>Gets or sets Url where users are redirected when the QR code image is scanned.</summary>
 		/// <remarks>
@@ -25,21 +25,21 @@ namespace ZoomNet.Models
 		/// This setting has no effect if the home screen theme is "standard".
 		/// </remarks>
 		[JsonPropertyName("home_screen_qr_code_url")]
-		public string QRCodeUrl { get; set; }
+		public string QRCodeUrl { get; init; }
 
 		/// <summary>Gets or sets the Zoom Room scheduling display UI theme.</summary>
 		[JsonPropertyName("home_screen_theme")]
-		public string HomeScreenTheme { get; set; }
+		public string HomeScreenTheme { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether to allow a user to perform an instant room reservation on the device.</summary>
 		[JsonPropertyName("instant_room_reservation")]
-		public bool? AllowInstantRoomReservation { get; set; }
+		public bool? AllowInstantRoomReservation { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether to use the same background image as the Zoom Room.</summary>
 		/// <remarks>
 		/// Some Zoom Rooms Scheduling displays use a different display aspect ratio than standard 16:9; the background image will be scaled to fit the Scheduling Display's display, with any excess cropped.
 		/// </remarks>
 		[JsonPropertyName("set_scheduling_display_background_image_to_zoom_room_background")]
-		public bool? UseZoomRoomBackgroundImage { get; set; }
+		public bool? UseZoomRoomBackgroundImage { get; init; }
 	}
 }

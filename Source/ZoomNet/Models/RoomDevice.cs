@@ -7,54 +7,54 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the app version of Zoom Rooms.</summary>
 		[JsonPropertyName("app_version")]
-		public string AppVersion { get; set; }
+		public string AppVersion { get; init; }
 
 		/// <summary>Gets or sets the device's firmware.</summary>
 		[JsonPropertyName("device_firmware")]
-		public string Firmware { get; set; }
+		public string Firmware { get; init; }
 
 		/// <summary>Gets or sets the device's name.</summary>
 		[JsonPropertyName("device_hostname")]
-		public string HostName { get; set; }
+		public string HostName { get; init; }
 
 		/// <summary>Gets or sets the device's MAC addresses.</summary>
 		[JsonPropertyName("device_mac_addresses")]
-		public string[] MacAddresses { get; set; }
+		public string[] MacAddresses { get; init; }
 
 		/// <summary>Gets or sets the device's manufacturer.</summary>
 		[JsonPropertyName("device_manufacturer")]
-		public string Manufacturer { get; set; }
+		public string Manufacturer { get; init; }
 
 		/// <summary>Gets or sets the device's model.</summary>
 		[JsonPropertyName("device_model")]
-		public string Model { get; set; }
+		public string Model { get; init; }
 
 		/// <summary>Gets or sets the operating system of the device.</summary>
 		[JsonPropertyName("device_system")]
-		public string OperatingSystem { get; set; }
+		public string OperatingSystem { get; init; }
 
 		/// <summary>Gets or sets the type of the device.</summary>
 		[JsonPropertyName("device_type")]
-		public RoomDeviceType Type { get; set; }
+		public RoomDeviceType Type { get; init; }
 
 		/// <summary>Gets or sets the unique identifier.</summary>
 		[JsonPropertyName("id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the device's IP address.</summary>
 		[JsonPropertyName("ip_address")]
-		public string IpAddress { get; set; }
+		public string IpAddress { get; init; }
 
 		/// <summary>Gets or sets the name of the Zoom Room.</summary>
 		[JsonPropertyName("room_name")]
-		public string RoomName { get; set; }
+		public string RoomName { get; init; }
 
 		/// <summary>Gets or sets the device's serial number.</summary>
 		[JsonPropertyName("serial_number")]
-		public string SerialNumber { get; set; }
+		public string SerialNumber { get; init; }
 
 		/// <summary>Gets or sets the status of the device.</summary>
 		[JsonPropertyName("status")]
-		public RoomDeviceStatus Status { get; set; }
+		public RoomDeviceStatus Status { get; init; }
 	}
 }

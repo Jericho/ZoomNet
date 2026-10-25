@@ -7,16 +7,16 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets a value indicating whether setting is enabled.</summary>
 		[JsonPropertyName("enable")]
-		public bool Enabled { get; set; }
+		public bool Enabled { get; init; }
 
 		/// <summary>Gets or sets maximum MOS (mean opinion score).</summary>
 		[JsonPropertyName("max")]
 		[JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
-		public double Max { get; set; }
+		public double Max { get; init; }
 
 		/// <summary>Gets or sets minimum MOS (mean opinion score).</summary>
 		[JsonPropertyName("min")]
 		[JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
-		public double Min { get; set; }
+		public double Min { get; init; }
 	}
 }
