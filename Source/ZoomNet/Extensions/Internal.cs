@@ -1196,9 +1196,9 @@ namespace ZoomNet
 				RecordsPerPage = recordsPerPage,
 				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : []) ?? []
 			};
-			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
-			return result;
+			if (totalRecords.HasValue) return result with { TotalRecords = totalRecords.Value };
+			else return result;
 		}
 
 		/// <summary>Asynchronously retrieve the JSON encoded content and convert it to a 'PaginatedResponseWithToken' object.</summary>
@@ -1234,9 +1234,9 @@ namespace ZoomNet
 				RecordsPerPage = recordsPerPage,
 				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : []) ?? []
 			};
-			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
-			return result;
+			if (totalRecords.HasValue) return result with { TotalRecords = totalRecords.Value };
+			else return result;
 		}
 
 		/// <summary>Asynchronously retrieve the JSON encoded content and convert it to a 'PaginatedResponseWithToken' object.</summary>
@@ -1276,9 +1276,9 @@ namespace ZoomNet
 				RecordsPerPage = recordsPerPage,
 				Records = (jsonProperty.HasValue ? jsonProperty.Value.ToObject<T[]>(options) : []) ?? []
 			};
-			if (totalRecords.HasValue) result.TotalRecords = totalRecords.Value;
 
-			return result;
+			if (totalRecords.HasValue) return result with { TotalRecords = totalRecords.Value };
+			else return result;
 		}
 
 		private static async Task<PaginatedSyncResponse<T>> AsPaginatedSyncResponse<T>(this HttpContent httpContent, string propertyName, JsonSerializerOptions options = null, CancellationToken cancellationToken = default)

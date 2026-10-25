@@ -24,7 +24,7 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets a value indicating whether the call summary was deleted.</summary>
 		[JsonPropertyName("deleted")]
-		public bool IsDeleted { get; init; }
+		public bool IsDeleted { get; init; } = false;
 
 		/// <summary>Gets or sets a value indicating whether the call summary was edited.</summary>
 		[JsonPropertyName("edited")]

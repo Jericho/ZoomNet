@@ -14,16 +14,16 @@ namespace ZoomNet.Models.Transcription
 		/// Each segment contains a time range, optional speaker attribution, and the
 		/// corresponding block of spoken text.
 		/// </summary>
-		public IReadOnlyList<TranscriptSegment> Segments { get; internal set; }
+		public IReadOnlyList<TranscriptSegment> Segments { get; init; }
 
 		/// <summary>
 		/// Gets the diarization timeline entries extracted from Zoom's
 		/// timeline and timeline_refine data. These entries indicate which
 		/// participants were detected as speaking at specific timestamps.
 		/// </summary>
-		public IReadOnlyList<SpeakerMoment> Diarization { get; internal set; }
+		public IReadOnlyList<SpeakerMoment> Diarization { get; init; }
 
 		/// <summary>Gets the distinct list of speakers identified across both the VTT and TIMELINE transcripts. The list is normalized and ordered alphabetically.</summary>
-		public IReadOnlyList<string> Speakers { get; internal set; }
+		public IReadOnlyList<string> Speakers { get; init; }
 	}
 }
