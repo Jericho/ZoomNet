@@ -23,7 +23,7 @@ namespace ZoomNet.Models
 		public int PageSize
 		{
 			get => RecordsPerPage;
-			set => RecordsPerPage = value;
+			init => RecordsPerPage = value;
 		}
 
 		/// <summary>Gets or sets the metrics for the meetings.</summary>

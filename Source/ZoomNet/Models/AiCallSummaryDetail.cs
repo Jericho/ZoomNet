@@ -24,8 +24,5 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the transcription language ID.</summary>
 		[JsonPropertyName("transcript_language")]
 		public string TranscriptLanguage { get; init; }
-
-		/// <summary>Gets a value indicating whether the entity is marked as deleted.</summary>
-		public new bool IsDeleted => false;
 	}
 }
