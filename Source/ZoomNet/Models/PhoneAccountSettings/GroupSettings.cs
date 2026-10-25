@@ -7,6 +7,6 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets settings that allow emergency calls from specific device types.</summary>
 		[JsonPropertyName("allow_emergency_calls")]
-		public AllowEmergencyCallsSettings AllowEmergencyCalls { get; set; }
+		public AllowEmergencyCallsSettings AllowEmergencyCalls { get; init; }
 	}
 }

@@ -8,27 +8,27 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the live meeting or webinar chat file download URL.</summary>
 		/// <remarks>Available only in <see cref="Webhooks.MeetingChatMessageFileSentEvent"/> and <see cref="Webhooks.WebinarChatMessageFileSentEvent"/>.</remarks>
 		[JsonPropertyName("download_url")]
-		public string DownloadUrl { get; set; }
+		public string DownloadUrl { get; init; }
 
 		/// <summary>Gets or sets the live meeting or webinar chat file uuid, in base64 encoded format.</summary>
 		[JsonPropertyName("file_id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the live meeting or webinar chat file name.</summary>
 		[JsonPropertyName("file_name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets id of the user who uploaded the chat file. The value is blank for external users.</summary>
 		/// <remarks>Available only in <see cref="Webhooks.MeetingChatMessageFileDownloadedEvent"/> and <see cref="Webhooks.WebinarChatMessageFileDownloadedEvent"/>.</remarks>
 		[JsonPropertyName("file_owner_id")]
-		public string OwnerId { get; set; }
+		public string OwnerId { get; init; }
 
 		/// <summary>Gets or sets the live meeting or webinar chat file size, in bytes.</summary>
 		[JsonPropertyName("file_size")]
-		public long Size { get; set; }
+		public long Size { get; init; }
 
 		/// <summary>Gets or sets the live meeting or webinar chat file type.</summary>
 		[JsonPropertyName("file_type")]
-		public string Type { get; set; }
+		public string Type { get; init; }
 	}
 }

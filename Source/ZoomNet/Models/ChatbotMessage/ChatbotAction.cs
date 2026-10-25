@@ -10,13 +10,13 @@ public record ChatbotAction
 	[JsonPropertyName("style")]
 	[JsonConverter(typeof(StringEnumConverter<ChatbotActionStyle>))]
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-	public ChatbotActionStyle Style { get; set; }
+	public ChatbotActionStyle Style { get; init; }
 
 	/// <summary>Gets or sets the text of this action.</summary>
 	[JsonPropertyName("text")]
-	public string Text { get; set; }
+	public string Text { get; init; }
 
 	/// <summary>Gets or sets the value of this action.</summary>
 	[JsonPropertyName("value")]
-	public string Value { get; set; }
+	public string Value { get; init; }
 }

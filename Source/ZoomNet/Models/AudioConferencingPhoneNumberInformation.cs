@@ -7,22 +7,22 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the phone number's E.164 country calling code.</summary>
 		[JsonPropertyName("code")]
-		public string CallingCode { get; set; }
+		public string CallingCode { get; init; }
 
 		/// <summary>Gets or sets the phone number's E.164 country calling code.</summary>
 		[JsonPropertyName("country_code")]
-		public Country CountryCode { get; set; }
+		public Country CountryCode { get; init; }
 
 		/// <summary>Gets or sets the name of the country.</summary>
 		[JsonPropertyName("country_name")]
-		public string CountryName { get; set; }
+		public string CountryName { get; init; }
 
 		/// <summary>Gets or sets the phone number display number.</summary>
 		[JsonPropertyName("display_number")]
-		public string DisplayNumber { get; set; }
+		public string DisplayNumber { get; init; }
 
 		/// <summary>Gets or sets the phone number.</summary>
 		[JsonPropertyName("number")]
-		public string Number { get; set; }
+		public string Number { get; init; }
 	}
 }

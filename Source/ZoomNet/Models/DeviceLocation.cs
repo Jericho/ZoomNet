@@ -7,14 +7,14 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the basic service set identifier of the device.</summary>
 		[JsonPropertyName("bssid")]
-		public string[] BssId { get; set; }
+		public string[] BssId { get; init; }
 
 		/// <summary>Gets or sets the GPS location of the device.</summary>
 		[JsonPropertyName("gps")]
-		public string[] Gps { get; set; }
+		public string[] Gps { get; init; }
 
 		/// <summary>Gets or sets the IP address of the device.</summary>
 		[JsonPropertyName("ip")]
-		public string[] IpAddress { get; set; }
+		public string[] IpAddress { get; init; }
 	}
 }

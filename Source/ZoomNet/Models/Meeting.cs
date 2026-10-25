@@ -10,83 +10,83 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the meeting description.</summary>
 		[JsonPropertyName("agenda")]
-		public string Agenda { get; set; }
+		public string Agenda { get; init; }
 
 		/// <summary>Gets or sets the ID of the user who scheduled this meeting on behalf of the host.</summary>
 		[JsonPropertyName("assistant_id")]
-		public string AssistantId { get; set; }
+		public string AssistantId { get; init; }
 
 		/// <summary>Gets or sets the URL to join the meeting chat.</summary>
 		[JsonPropertyName("chat_join_url")]
-		public string ChatJoinUrl { get; set; }
+		public string ChatJoinUrl { get; init; }
 
 		/// <summary>Gets or sets the date and time when the meeting was created.</summary>
 		[JsonPropertyName("created_at")]
-		public DateTime CreatedOn { get; set; }
+		public DateTime CreatedOn { get; init; }
 
 		/// <summary>Gets or sets how the meeting was created.</summary>
 		[JsonPropertyName("creation_source")]
-		public MeetingCreationSource CreationSource { get; set; }
+		public MeetingCreationSource CreationSource { get; init; }
 
 		/// <summary>Gets or sets the dynamic host key for the meeting.</summary>
 		[JsonPropertyName("dynamic_host_key")]
-		public string DynamicHostKey { get; set; }
+		public string DynamicHostKey { get; init; }
 
 		/// <summary>Gets or sets the encrypted passcode for third party endpoints (H323/SIP).</summary>
 		[JsonPropertyName("encrypted_password")]
-		public string EncryptedPassword { get; set; }
+		public string EncryptedPassword { get; init; }
 
 		/// <summary>Gets or sets the H.323/SIP room system password.</summary>
 		[JsonPropertyName("h323_password")]
-		public string H323Password { get; set; }
+		public string H323Password { get; init; }
 
 		/// <summary>Gets or sets the email address of the meeting host.</summary>
 		[JsonPropertyName("host_email")]
-		public string HostEmail { get; set; }
+		public string HostEmail { get; init; }
 
 		/// <summary>Gets or sets the URL to join the meeting.</summary>
 		[JsonPropertyName("join_url")]
-		public string JoinUrl { get; set; }
+		public string JoinUrl { get; init; }
 
 		/// <summary>Gets or sets the password to join the meeting. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters.</summary>
 		[JsonPropertyName("password")]
-		public string Password { get; set; }
+		public string Password { get; init; }
 
 		/// <summary>Gets or sets the password to join the phone session.</summary>
 		[JsonPropertyName("pstn_password")]
-		public string PstnPassword { get; set; }
+		public string PstnPassword { get; init; }
 
 		/// <summary>Gets or sets the meeting registration URL.</summary>
 		[JsonPropertyName("registration_url")]
-		public string RegistrationUrl { get; set; }
+		public string RegistrationUrl { get; init; }
 
 		/// <summary>Gets or Sets the meeting settings.</summary>
 		[JsonPropertyName("settings")]
-		public MeetingSettings Settings { get; set; }
+		public MeetingSettings Settings { get; init; }
 
 		/// <summary>Gets or sets the URL for the host to start the meeting.</summary>
 		[JsonPropertyName("start_url")]
-		public string StartUrl { get; set; }
+		public string StartUrl { get; init; }
 
 		/// <summary>Gets or sets the status.</summary>
 		[JsonPropertyName("status")]
-		public MeetingStatus? Status { get; set; }
+		public MeetingStatus? Status { get; init; }
 
 		/// <summary>Gets or sets the meeting template ID.</summary>
 		[JsonPropertyName("template_id")]
-		public string TemplateId { get; set; }
+		public string TemplateId { get; init; }
 
 		/// <summary>Gets or sets the timezone.</summary>
 		[JsonPropertyName("timezone")]
-		public TimeZones Timezone { get; set; }
+		public TimeZones Timezone { get; init; }
 
 		/// <summary>Gets or sets the tracking fields.</summary>
 		[JsonPropertyName("tracking_fields")]
 		[JsonConverter(typeof(TrackingFieldsConverter))]
-		public KeyValuePair<string, string>[] TrackingFields { get; set; } = Array.Empty<KeyValuePair<string, string>>();
+		public KeyValuePair<string, string>[] TrackingFields { get; init; } = Array.Empty<KeyValuePair<string, string>>();
 
 		/// <summary>Gets or sets the meeting type.</summary>
 		[JsonPropertyName("type")]
-		public MeetingType Type { get; set; }
+		public MeetingType Type { get; init; }
 	}
 }

@@ -8,14 +8,14 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the webinar agenda.</summary>
 		[JsonPropertyName("agenda")]
-		public string Agenda { get; set; }
+		public string Agenda { get; init; }
 
 		/// <summary>Gets or sets the date and time when the webinar was created.</summary>
 		[JsonPropertyName("created_at")]
-		public DateTime CreatedOn { get; set; }
+		public DateTime CreatedOn { get; init; }
 
 		/// <summary>Gets or sets the URL to join the webinar.</summary>
 		[JsonPropertyName("join_url")]
-		public string JoinUrl { get; set; }
+		public string JoinUrl { get; init; }
 	}
 }

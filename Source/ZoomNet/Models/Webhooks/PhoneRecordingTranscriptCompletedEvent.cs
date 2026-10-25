@@ -4,6 +4,6 @@ namespace ZoomNet.Models.Webhooks
 	public record PhoneRecordingTranscriptCompletedEvent : RecordingEvent
 	{
 		/// <summary>Gets or sets completed phone call recordings.</summary>
-		public PhoneCallRecording[] Recordings { get; set; }
+		public PhoneCallRecording[] Recordings { get; init; }
 	}
 }

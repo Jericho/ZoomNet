@@ -10,285 +10,285 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the list of additional data center regions for hosting the meeting.</summary>
 		[JsonPropertyName("additional_data_center_regions")]
-		public string[] AdditionalDataCenterRegions { get; set; }
+		public string[] AdditionalDataCenterRegions { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether to allow the host to control participant mute state.</summary>
 		[JsonPropertyName("allow_host_control_participant_mute_state")]
-		public bool? AllowHostToControlParticipantMuteState { get; set; }
+		public bool? AllowHostToControlParticipantMuteState { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether to allow attendees to join the meeting from multiple devices.</summary>
 		/// <remarks>This setting only works for meetings that require registration.</remarks>
 		[JsonPropertyName("allow_multiple_devices")]
-		public bool? AllowMultipleDevices { get; set; }
+		public bool? AllowMultipleDevices { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether to allow alternative hosts to manage cloud recordings.</summary>
 		[JsonPropertyName("alternative_host_manage_cloud_recording")]
-		public bool? AllowAlternativeHostToManageCloudRecording { get; set; }
+		public bool? AllowAlternativeHostToManageCloudRecording { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether to allow alternative hosts to manage meeting summary.</summary>
 		[JsonPropertyName("alternative_host_manage_meeting_summary")]
-		public bool? AllowAlternativeHostToManageMeetingSummary { get; set; }
+		public bool? AllowAlternativeHostToManageMeetingSummary { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether to allow alternative hosts to add or edit polls. This requires Zoom version 5.8.0 or higher.</summary>
 		[JsonPropertyName("alternative_host_update_polls")]
-		public bool? AllowAlternativeHostToUpdatePolls { get; set; }
+		public bool? AllowAlternativeHostToUpdatePolls { get; init; }
 
 		/// <summary>Gets or sets the value indicating alternative hosts email addresses or IDs. Multiple value separated by semicolon.</summary>
 		[JsonPropertyName("alternative_hosts")]
-		public string AlternativeHosts { get; set; }
+		public string AlternativeHosts { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether to send email notifications to alternative hosts, default value is true.</summary>
 		[JsonPropertyName("alternative_hosts_email_notification")]
-		public bool? SendNotificationsToAlternativeHosts { get; set; }
+		public bool? SendNotificationsToAlternativeHosts { get; init; }
 
 		/// <summary>Gets or sets the approval type.</summary>
 		[JsonPropertyName("approval_type")]
-		public ApprovalType? ApprovalType { get; set; }
+		public ApprovalType? ApprovalType { get; init; }
 
 		/// <summary>Gets or sets the list of approved/denied countries or regions.</summary>
 		[JsonPropertyName("approved_or_denied_countries_or_regions")]
-		public ApprovedOrDeniedCountries ApprovedOrDeniedCountries { get; set; }
+		public ApprovedOrDeniedCountries ApprovedOrDeniedCountries { get; init; }
 
 		/// <summary>Gets or sets the value indicating how participants can join the audio portion of the meeting.</summary>
 		[JsonPropertyName("audio")]
-		public AudioType? Audio { get; set; }
+		public AudioType? Audio { get; init; }
 
 		/// <summary>Gets or sets the third party audio conference info. Constraints: Max 2048 chars.</summary>
 		[JsonPropertyName("audio_conference_info")]
-		public string ThirdPartyAudioConferenceInfo { get; set; }
+		public string ThirdPartyAudioConferenceInfo { get; init; }
 
 		/// <summary>Gets or sets the list the domains that are authenticated if user has configured "Sign Into Zoom with Specified Domains" option.</summary>
 		[JsonPropertyName("authentication_domains")]
-		public string AuthenticationDomains { get; set; }
+		public string AuthenticationDomains { get; init; }
 
 		/// <summary>Gets or sets the meeting authentication exceptions.</summary>
 		/// <remarks>The participants added here will receive unique meeting invite links and bypass authentication.</remarks>
 		[JsonPropertyName("authentication_exceptions")]
-		public MeetingAuthenticationExceptions[] AuthenticationExceptions { get; set; }
+		public MeetingAuthenticationExceptions[] AuthenticationExceptions { get; init; }
 
 		/// <summary>Gets or sets the authentication name set in the authentication profile.</summary>
 		[JsonPropertyName("authentication_name")]
-		public string AuthenticationName { get; set; }
+		public string AuthenticationName { get; init; }
 
 		/// <summary>Gets or Sets the authentication option id.</summary>
 		[JsonPropertyName("authentication_option")]
-		public string AuthenticationOptionId { get; set; }
+		public string AuthenticationOptionId { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether to automatically add the recording to the video management system.</summary>
 		[JsonPropertyName("auto_add_recording_to_video_management")]
-		public MeetingVideoManagementSettings VideoManagementSettings { get; set; }
+		public MeetingVideoManagementSettings VideoManagementSettings { get; init; }
 
 		/// <summary>Gets or sets the value indicating if audio is recorded and if so, where the audio is saved.</summary>
 		[JsonPropertyName("auto_recording")]
-		public AutoRecordingType? AutoRecording { get; set; }
+		public AutoRecordingType? AutoRecording { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether to automatically start AI companion questions.</summary>
 		[JsonPropertyName("auto_start_ai_companion_questions")]
-		public bool? AutoStartAiCompanionQuestions { get; set; }
+		public bool? AutoStartAiCompanionQuestions { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether to automatically start meeting summary.</summary>
 		[JsonPropertyName("auto_start_meeting_summary")]
-		public bool? AutoStartMeetingSummary { get; set; }
+		public bool? AutoStartMeetingSummary { get; init; }
 
 		/// <summary>Gets or sets the breakout room settings for the meeting.</summary>
 		[JsonPropertyName("breakout_room")]
-		public MeetingBreakoutRoomSettings BreakoutRoomSettings { get; set; }
+		public MeetingBreakoutRoomSettings BreakoutRoomSettings { get; init; }
 
 		/// <summary>
 		/// Gets or sets the type of calendar integration used to schedule the meeting.
 		/// Works with the private_meeting field to determine whether to share details of meetings or not.
 		/// </summary>
 		[JsonPropertyName("calendar_type")]
-		public CalendarIntegrationType? CalendarIntegrationType { get; set; }
+		public CalendarIntegrationType? CalendarIntegrationType { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether registration is closed after event date.</summary>
 		[JsonPropertyName("close_registration")]
-		public bool? CloseRegistration { get; set; }
+		public bool? CloseRegistration { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether the meeting should be hosted in China.</summary>
 		[JsonPropertyName("cn_meeting")]
 		[Obsolete("Deprecated")]
-		public bool? HostInChina { get; set; }
+		public bool? HostInChina { get; init; }
 
 		/// <summary>Gets or sets the contact email for registration.</summary>
 		[JsonPropertyName("contact_email")]
-		public string ContactEmail { get; set; }
+		public string ContactEmail { get; init; }
 
 		/// <summary>Gets or sets the contact name for registration.</summary>
 		[JsonPropertyName("contact_name")]
-		public string ContactName { get; set; }
+		public string ContactName { get; init; }
 
 		/// <summary>Gets or sets information about the Enable continuous meeting chat feature.</summary>
 		[JsonPropertyName("continuous_meeting_chat")]
-		public ContinuousMeetingChatSettings ContinuousMeetingChat { get; set; }
+		public ContinuousMeetingChatSettings ContinuousMeetingChat { get; init; }
 
 		/// <summary>Gets or sets the custom keys and values assigned to the meeting.</summary>
 		[JsonPropertyName("custom_keys")]
 		[JsonConverter(typeof(KeyValuePairConverter))]
-		public KeyValuePair<string, string>[] CustomKeys { get; set; }
+		public KeyValuePair<string, string>[] CustomKeys { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether to enable device testing before joining the meeting.</summary>
 		[JsonPropertyName("device_testing")]
-		public bool? EnableDeviceTesting { get; set; }
+		public bool? EnableDeviceTesting { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether to disable participant video.</summary>
 		[JsonPropertyName("disable_participant_video")]
-		public bool? DisableParticipantVideo { get; set; }
+		public bool? DisableParticipantVideo { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether to include email addresses in the attendee report.</summary>
 		[JsonPropertyName("email_in_attendee_report")]
-		public bool? IncludeEmailInAttendeeReport { get; set; }
+		public bool? IncludeEmailInAttendeeReport { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether to send email notifications to alternative hosts and users with <a href="https://support.zoom.us/hc/en-us/articles/201362803-Scheduling-privilege">scheduling privileges</a>.</summary>
 		[JsonPropertyName("email_notification")]
-		public bool? SendEmailNotifications { get; set; }
+		public bool? SendEmailNotifications { get; init; }
 
 		/// <summary>
 		/// Gets or sets the encryption type.
 		/// When using end-to-end encryption, several features (e.g. cloud recording, phone/SIP/H.323 dial-in) will be automatically disabled.
 		/// </summary>
 		[JsonPropertyName("encryption_type")]
-		public EncryptionType? EncryptionType { get; set; }
+		public EncryptionType? EncryptionType { get; init; }
 
 		/// <summary>Gets or sets the value indicating that only signed-in users can join this meeting.</summary>
 		[JsonPropertyName("enforce_login")]
 		[Obsolete("This field is deprecated and will not be supported in the future.")]
-		public bool? EnforceLogin { get; set; }
+		public bool? EnforceLogin { get; init; }
 
 		/// <summary>Gets or sets the value indicating only signed-in users with specified domains can join this meeting.</summary>
 		[JsonPropertyName("enforce_login_domains")]
 		[Obsolete("This field is deprecated and will not be supported in the future.")]
-		public string EnforceLoginDomains { get; set; }
+		public string EnforceLoginDomains { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether the Focus Mode feature is enabled when the meeting starts.</summary>
 		[JsonPropertyName("focus_mode")]
-		public bool? FocusModeEnabled { get; set; }
+		public bool? FocusModeEnabled { get; init; }
 
 		/// <summary>Gets or sets the list of global dial-in countries.</summary>
 		[JsonPropertyName("global_dial_in_countries")]
-		public string[] DialInCountries { get; set; }
+		public string[] DialInCountries { get; init; }
 
 		/// <summary>Gets or sets the list of global dial-in numbers.</summary>
 		[JsonPropertyName("global_dial_in_numbers")]
-		public DialInInfo[] DialInNumbers { get; set; }
+		public DialInInfo[] DialInNumbers { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether the 'Allow host to save video order' feature is enabled.</summary>
 		[JsonPropertyName("host_save_video_order")]
-		public bool? HostCanSaveVideoOrder { get; set; }
+		public bool? HostCanSaveVideoOrder { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether to start video when host joins the meeting.</summary>
 		[JsonPropertyName("host_video")]
-		public bool? StartVideoWhenHostJoins { get; set; }
+		public bool? StartVideoWhenHostJoins { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether the meeting should be hosted in India.</summary>
 		[JsonPropertyName("in_meeting")]
 		[Obsolete("Deprecated")]
-		public bool? HostInIndia { get; set; }
+		public bool? HostInIndia { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether the meeting is internal.</summary>
 		[JsonPropertyName("internal_meeting")]
-		public bool? IsInternalMeeting { get; set; }
+		public bool? IsInternalMeeting { get; init; }
 
 		/// <summary>Gets or sets the time limits within which a participant can join a meeting before the meeting's host.</summary>
 		/// <remarks>This value is applicable only if <see cref="JoinBeforeHost"/> is true.</remarks>
 		[JsonPropertyName("jbh_time")]
-		public JoinBeforeHostTime? JoinBeforeHostTime { get; set; }
+		public JoinBeforeHostTime? JoinBeforeHostTime { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether participants can join the meeting before the host starts the meeting. Only used for scheduled or recurring meetings.</summary>
 		[JsonPropertyName("join_before_host")]
-		public bool? JoinBeforeHost { get; set; }
+		public bool? JoinBeforeHost { get; init; }
 
 		/// <summary>Gets or sets the language interpretation settings.</summary>
 		[JsonPropertyName("language_interpretation")]
-		public LanguageInterpretationMeetingSettings<LanguageInterpreter> LanguageInterpretationSettings { get; set; }
+		public LanguageInterpretationMeetingSettings<LanguageInterpreter> LanguageInterpretationSettings { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether only authenticated users can join meetings.</summary>
 		[JsonPropertyName("meeting_authentication")]
-		public bool? AuthenticationRequired { get; set; }
+		public bool? AuthenticationRequired { get; init; }
 
 		/// <summary>Gets or sets meeting's invitees.</summary>
 		[JsonPropertyName("meeting_invitees")]
-		public InvitedParticipant[] Invitees { get; set; }
+		public InvitedParticipant[] Invitees { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether participants are muted upon entry.</summary>
 		[JsonPropertyName("mute_upon_entry")]
-		public bool? MuteUponEntry { get; set; }
+		public bool? MuteUponEntry { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether to enable participant-focused meeting mode.</summary>
 		[JsonPropertyName("participant_focused_meeting")]
-		public bool? ParticipantFocusedMeeting { get; set; }
+		public bool? ParticipantFocusedMeeting { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether to start video when participants join the meeting.</summary>
 		[JsonPropertyName("participant_video")]
-		public bool? StartVideoWhenParticipantsJoin { get; set; }
+		public bool? StartVideoWhenParticipantsJoin { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether the meeting is set as private.</summary>
 		[JsonPropertyName("private_meeting")]
-		public bool? Private { get; set; }
+		public bool? Private { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether to push meeting changes to calendar.</summary>
 		[JsonPropertyName("push_change_to_calendar")]
-		public bool? PushChangeToCalendar { get; set; }
+		public bool? PushChangeToCalendar { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether a confirmation email is sent when a participant registers.</summary>
 		[JsonPropertyName("registrants_confirmation_email")]
-		public bool? SendRegistrationConfirmationEmail { get; set; }
+		public bool? SendRegistrationConfirmationEmail { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether to send registrants an email confirmation.</summary>
 		[JsonPropertyName("registrants_email_notification")]
-		public bool? SendConfirmationEmailToRegistrants { get; set; }
+		public bool? SendConfirmationEmailToRegistrants { get; init; }
 
 		/// <summary>Gets or sets the registration type. Used for recurring meeting with fixed time only.</summary>
 		[JsonPropertyName("registration_type")]
-		public RegistrationType? RegistrationType { get; set; }
+		public RegistrationType? RegistrationType { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether to ask the permission to unmute participants.</summary>
 		[JsonPropertyName("request_permission_to_unmute_participants")]
-		public bool? RequestPermissionToUnmuteParticipants { get; set; }
+		public bool? RequestPermissionToUnmuteParticipants { get; init; }
 
 		/// <summary>Gets or sets the resources for the meeting.</summary>
 		[JsonPropertyName("resources")]
-		public MeetingResource[] Resources { get; set; }
+		public MeetingResource[] Resources { get; init; }
 
 		/// <summary>Gets or sets the sign language interpretation settings.</summary>
 		[JsonPropertyName("sign_language_interpretation")]
-		public LanguageInterpretationMeetingSettings<SignLanguageInterpreter> SignLanguageInterpretationSettings { get; set; }
+		public LanguageInterpretationMeetingSettings<SignLanguageInterpreter> SignLanguageInterpretationSettings { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether to show join info on the registration page.</summary>
 		[JsonPropertyName("show_join_info")]
-		public bool? ShowJoinInfo { get; set; }
+		public bool? ShowJoinInfo { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether to show social share buttons on the meeting registration page.</summary>
 		/// <remarks>This setting only works for meetings that require registration.</remarks>
 		[JsonPropertyName("show_share_button")]
-		public bool? ShowShareButton { get; set; }
+		public bool? ShowShareButton { get; init; }
 
 		/// <summary>Gets or sets the meeting summary template ID.</summary>
 		[JsonPropertyName("summary_template_id")]
-		public string SummaryTemplateId { get; set; }
+		public string SummaryTemplateId { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether to use Personal Meeting ID. Only used for scheduled meetings and recurring meetings with no fixed time.</summary>
 		[JsonPropertyName("use_pmi")]
-		public bool? UsePmi { get; set; }
+		public bool? UsePmi { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether to use a waiting room.</summary>
 		[JsonPropertyName("waiting_room")]
-		public bool? WaitingRoom { get; set; }
+		public bool? WaitingRoom { get; init; }
 
 		/// <summary>Gets or sets the waiting room settings for the meeting.</summary>
 		[JsonPropertyName("waiting_room_options")]
-		public MeetingWaitingRoomSettings WaitingRoomSettings { get; set; }
+		public MeetingWaitingRoomSettings WaitingRoomSettings { get; init; }
 
 		/// <summary>Gets or sets the value indicating whether a watermark should be displayed when viewing shared screen.</summary>
 		[JsonPropertyName("watermark")]
-		public bool? Watermark { get; set; }
+		public bool? Watermark { get; init; }
 
 		/// <summary>Gets or sets who can ask AI companion questions.</summary>
 		[JsonPropertyName("who_can_ask_questions")]
-		public WhoCanAskQuestions? WhoCanAskQuestions { get; set; }
+		public WhoCanAskQuestions? WhoCanAskQuestions { get; init; }
 
 		/// <summary>Gets or sets who will receive the meeting summary.</summary>
 		[JsonPropertyName("who_will_receive_summary")]
-		public WhoWillReceiveSummary? WhoWillReceiveSummary { get; set; }
+		public WhoWillReceiveSummary? WhoWillReceiveSummary { get; init; }
 	}
 }

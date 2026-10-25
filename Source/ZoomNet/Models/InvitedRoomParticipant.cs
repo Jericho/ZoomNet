@@ -8,10 +8,10 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the type of call out.</summary>
 		/// <remarks>Supported values - 'h323' and 'sip'.</remarks>
 		[JsonPropertyName("call_type")]
-		public string CallType { get; set; }
+		public string CallType { get; init; }
 
 		/// <summary>Gets or sets the user's device IP address.</summary>
 		[JsonPropertyName("device_ip")]
-		public string DeviceIp { get; set; }
+		public string DeviceIp { get; init; }
 	}
 }

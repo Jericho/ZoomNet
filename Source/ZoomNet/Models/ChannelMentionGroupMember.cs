@@ -7,30 +7,30 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the display name.</summary>
 		[JsonPropertyName("display_name")]
-		public string DisplayName { get; set; }
+		public string DisplayName { get; init; }
 
 		/// <summary>Gets or sets a valid email address.</summary>
 		[JsonPropertyName("email")]
-		public string Email { get; set; }
+		public string Email { get; init; }
 
 		/// <summary>Gets or sets the first name.</summary>
 		[JsonPropertyName("first_name")]
-		public string FirstName { get; set; }
+		public string FirstName { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether it is an external member.</summary>
 		[JsonPropertyName("is_external")]
-		public bool IsExternal { get; set; }
+		public bool IsExternal { get; init; }
 
 		/// <summary>Gets or sets the last name.</summary>
 		[JsonPropertyName("last_name")]
-		public string LastName { get; set; }
+		public string LastName { get; init; }
 
 		/// <summary>Gets or sets the member id.</summary>
 		[JsonPropertyName("member_id")]
-		public string MemberId { get; set; }
+		public string MemberId { get; init; }
 
 		/// <summary>Gets or sets the user id.</summary>
 		[JsonPropertyName("user_id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 	}
 }

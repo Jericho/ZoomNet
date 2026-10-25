@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets a value indicating whether attendees will be required to authenticate with the email that was used at registration when joining.</summary>
 		[JsonPropertyName("email_authentication")]
-		public bool RequireEmailAuthentication { get; set; }
+		public bool RequireEmailAuthentication { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether attendees will be required to verify a security code.</summary>
 		[JsonPropertyName("security_code_verification")]
-		public bool RequireSecurityCodeVerification { get; set; }
+		public bool RequireSecurityCodeVerification { get; init; }
 	}
 }

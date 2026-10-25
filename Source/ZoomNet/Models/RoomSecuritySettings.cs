@@ -14,14 +14,14 @@ namespace ZoomNet.Models
 		/// If no security option is enabled, Zoom will secure all meetings with Waiting Room.
 		/// </remarks>
 		[JsonPropertyName("auto_security")]
-		public bool? MustBeSecured { get; set; }
+		public bool? MustBeSecured { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the meeting password is encrypted and included in the invitation link.</summary>
 		[JsonPropertyName("encryption_type")]
-		public EncryptionType? EncryptionType { get; set; }
+		public EncryptionType? EncryptionType { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether end-to-end encryption is enabled.</summary>
 		[JsonPropertyName("end_to_end_encrypted_meetings")]
-		public bool? EndToEndEncryptionEnabled { get; set; }
+		public bool? EndToEndEncryptionEnabled { get; init; }
 	}
 }

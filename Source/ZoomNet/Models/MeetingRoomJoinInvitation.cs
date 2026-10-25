@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the user name of the event's trigger.</summary>
 		[JsonPropertyName("inviter_name")]
-		public string InviterName { get; set; }
+		public string InviterName { get; init; }
 
 		/// <summary>Gets or sets the request unique identifier (UUID).</summary>
 		[JsonPropertyName("message_id")]
-		public string MessageId { get; set; }
+		public string MessageId { get; init; }
 	}
 }

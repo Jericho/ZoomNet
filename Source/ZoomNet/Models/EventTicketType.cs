@@ -9,52 +9,52 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the list of session IDs pre-bookmarked or ALL.</summary>
 		/// <remarks>ALL refers to all the sessions in the event.</remarks>
 		[JsonPropertyName("bookmarked_sessions")]
-		public string[] BookmarkedSessions { get; set; }
+		public string[] BookmarkedSessions { get; init; }
 
 		/// <summary>Gets or sets the currency.</summary>
 		[JsonPropertyName("currency")]
-		public string Currency { get; set; }
+		public string Currency { get; init; }
 
 		/// <summary>Gets or sets the description.</summary>
 		[JsonPropertyName("description")]
-		public string Description { get; set; }
+		public string Description { get; init; }
 
 		/// <summary>Gets or sets the end of ticket sales.</summary>
 		[JsonPropertyName("end_time")]
-		public DateTime EndTime { get; set; }
+		public DateTime EndTime { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the ticket is free.</summary>
 		[JsonPropertyName("free")]
-		public bool IsFree { get; set; }
+		public bool IsFree { get; init; }
 
 		/// <summary>Gets or sets the name of the ticket type.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets the price.</summary>
 		[JsonPropertyName("price")]
 		[JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)] // This allows us to overcome the fact that the API returns this value as a string rather than a number
-		public double Price { get; set; }
+		public double Price { get; init; }
 
 		/// <summary>Gets or sets the total number of tickets available.</summary>
 		[JsonPropertyName("quantity")]
-		public int QuantityTotal { get; set; }
+		public int QuantityTotal { get; init; }
 
 		/// <summary>Gets or sets the list of session IDs allowed for this ticket type or ALL.</summary>
 		/// <remarks>'ALL' refers to all the sessions in the event.</remarks>
 		[JsonPropertyName("sessions")]
-		public string[] Sessions { get; set; }
+		public string[] Sessions { get; init; }
 
 		/// <summary>Gets or sets the number of tickets that have been sold.</summary>
 		[JsonPropertyName("sold_quantity")]
-		public int QuantitySold { get; set; }
+		public int QuantitySold { get; init; }
 
 		/// <summary>Gets or sets the start of ticket sales.</summary>
 		[JsonPropertyName("start_time")]
-		public DateTime StartTime { get; set; }
+		public DateTime StartTime { get; init; }
 
 		/// <summary>Gets or sets the ticket type id.</summary>
 		[JsonPropertyName("ticket_type_id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 	}
 }

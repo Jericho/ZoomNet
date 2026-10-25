@@ -7,14 +7,14 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the description of the sponsor tier.</summary>
 		[JsonPropertyName("description")]
-		public string Description { get; set; }
+		public string Description { get; init; }
 
 		/// <summary>Gets or sets the name of the sponsor tier.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets the unique identifier for the sponsor tier.</summary>
 		[JsonPropertyName("tier_id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 	}
 }

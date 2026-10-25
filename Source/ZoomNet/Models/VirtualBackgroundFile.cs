@@ -7,22 +7,22 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the unique identifier.</summary>
 		[JsonPropertyName("id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether this file is the default virtual background.</summary>
 		[JsonPropertyName("is_default")]
-		public bool IsDefault { get; set; }
+		public bool IsDefault { get; init; }
 
 		/// <summary>Gets or sets name.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets the size.</summary>
 		[JsonPropertyName("size")]
-		public int Size { get; set; }
+		public int Size { get; init; }
 
 		/// <summary>Gets or sets the type.</summary>
 		[JsonPropertyName("type")]
-		public VirtualBackgroundType Type { get; set; }
+		public VirtualBackgroundType Type { get; init; }
 	}
 }

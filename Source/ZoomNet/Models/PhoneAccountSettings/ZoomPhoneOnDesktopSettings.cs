@@ -7,10 +7,10 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets the clients that are allowed to make and receive calls.</summary>
 		[JsonPropertyName("allow_calling_clients")]
-		public DesktopClientType[] AllowCallingClients { get; set; }
+		public DesktopClientType[] AllowCallingClients { get; init; }
 
 		/// <summary>Gets or sets the clients that are allowed to use SMS/MMS.</summary>
 		[JsonPropertyName("allow_sms_mms_clients")]
-		public DesktopClientType[] AllowSmsMmsClients { get; set; }
+		public DesktopClientType[] AllowSmsMmsClients { get; init; }
 	}
 }

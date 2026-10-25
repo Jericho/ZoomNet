@@ -14,22 +14,22 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the action.</summary>
 		[JsonPropertyName("action")]
-		public string Action { get; set; }
+		public string Action { get; init; }
 
 		/// <summary>Gets or sets the operation type.</summary>
 		[JsonPropertyName("category_type")]
-		public ReportPhoneOperationsLogType CategoryType { get; set; }
+		public ReportPhoneOperationsLogType CategoryType { get; init; }
 
 		/// <summary>Gets or sets the operation detail.</summary>
 		[JsonPropertyName("operation_detail")]
-		public string OperationDetail { get; set; }
+		public string OperationDetail { get; init; }
 
 		/// <summary>Gets or sets the Operator.</summary>
 		[JsonPropertyName("operator")]
-		public string Operator { get; set; }
+		public string Operator { get; init; }
 
 		/// <summary>Gets or sets the timestamp.</summary>
 		[JsonPropertyName("time")]
-		public DateTime Time { get; set; }
+		public DateTime Time { get; init; }
 	}
 }

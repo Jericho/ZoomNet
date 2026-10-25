@@ -9,12 +9,12 @@ namespace ZoomNet.Models
 		/// Gets or sets the list of countries where user's recorded content such as meetings, webinars, and phone recordings, as well as voicemail, transcripts, and custom greeting prompts can be stored.
 		/// </summary>
 		[JsonPropertyName("allowed_values")]
-		public Country[] AllowedCountries { get; set; }
+		public Country[] AllowedCountries { get; init; }
 
 		/// <summary>
 		/// Gets or sets the country where user's recorded content such as meetings, webinars, and phone recordings, as well as voicemail, transcripts, and custom greeting prompts are stored.
 		/// </summary>
 		[JsonPropertyName("value")]
-		public Country Country { get; set; }
+		public Country Country { get; init; }
 	}
 }

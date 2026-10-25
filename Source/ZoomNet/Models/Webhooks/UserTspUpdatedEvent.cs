@@ -7,6 +7,6 @@ namespace ZoomNet.Models.Webhooks
 	{
 		/// <summary>Gets or sets original information about user's TSP account.</summary>
 		[JsonPropertyName("old_object")]
-		public TspAccount OldAccount { get; set; }
+		public TspAccount OldAccount { get; init; }
 	}
 }

@@ -8,35 +8,35 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the meeting or webinar scheduled duration in minutes.</summary>
 		[JsonPropertyName("duration")]
-		public int Duration { get; set; }
+		public int Duration { get; init; }
 
 		/// <summary>Gets or sets the id of the user set as the host of the meeting or webinar.</summary>
 		[JsonPropertyName("host_id")]
-		public string HostId { get; set; }
+		public string HostId { get; init; }
 
 		/// <summary>Gets or sets the id of the meeting or webinar.</summary>
 		[JsonPropertyName("id")]
 		[JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
-		public long Id { get; set; }
+		public long Id { get; init; }
 
 		/// <summary>Gets or sets the meeting or webinar start time.</summary>
 		[JsonPropertyName("start_time")]
-		public DateTime StartTime { get; set; }
+		public DateTime StartTime { get; init; }
 
 		/// <summary>Gets or sets the meeting or webinar timezone.</summary>
 		[JsonPropertyName("timezone")]
-		public TimeZones Timezone { get; set; }
+		public TimeZones Timezone { get; init; }
 
 		/// <summary>Gets or sets the meeting or webinar topic.</summary>
 		[JsonPropertyName("topic")]
-		public string Topic { get; set; }
+		public string Topic { get; init; }
 
 		/// <summary>Gets or sets the type of the meeting or webinar.</summary>
 		[JsonPropertyName("type")]
-		public RecordingType Type { get; set; }
+		public RecordingType Type { get; init; }
 
 		/// <summary>Gets or sets the uuid of the meeting or webinar.</summary>
 		[JsonPropertyName("uuid")]
-		public string Uuid { get; set; }
+		public string Uuid { get; init; }
 	}
 }

@@ -8,10 +8,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the hourly metrics for the port usage.</summary>
 		[JsonPropertyName("crc_ports_hour_usage")]
-		public CrcPortsHourUsage[] HourlyUsage { get; set; }
+		public CrcPortsHourUsage[] HourlyUsage { get; init; }
 
 		/// <summary>Gets or sets the date and time of the port usage.</summary>
 		[JsonPropertyName("date_time")]
-		public DateTime DateTime { get; set; }
+		public DateTime DateTime { get; init; }
 	}
 }

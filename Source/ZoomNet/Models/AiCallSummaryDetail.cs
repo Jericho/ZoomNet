@@ -7,23 +7,23 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the recap of the call summary.</summary>
 		[JsonPropertyName("call_summary")]
-		public string Summary { get; set; }
+		public string Summary { get; init; }
 
 		/// <summary>Gets or sets the call summary rate.</summary>
 		[JsonPropertyName("call_summary_rate")]
-		public CallSummaryRate Rate { get; set; }
+		public CallSummaryRate Rate { get; init; }
 
 		/// <summary>Gets or sets the detailed version of the call summary.</summary>
 		[JsonPropertyName("detailed_summary")]
-		public string DetailedSummary { get; set; }
+		public string DetailedSummary { get; init; }
 
 		/// <summary>Gets or sets the next step in the call summary.</summary>
 		[JsonPropertyName("next_steps")]
-		public string NextStep { get; set; }
+		public string NextStep { get; init; }
 
 		/// <summary>Gets or sets the transcription language ID.</summary>
 		[JsonPropertyName("transcript_language")]
-		public string TranscriptLanguage { get; set; }
+		public string TranscriptLanguage { get; init; }
 
 		/// <summary>Gets a value indicating whether the entity is marked as deleted.</summary>
 		public new bool IsDeleted => false;

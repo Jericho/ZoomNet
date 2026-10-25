@@ -7,14 +7,14 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the feedback id.</summary>
 		[JsonPropertyName("feedback_id")]
-		public string FeedbackId { get; set; }
+		public string FeedbackId { get; init; }
 
 		/// <summary>Gets or sets the feedback name.</summary>
 		[JsonPropertyName("feedback_name")]
-		public string FeebackName { get; set; }
+		public string FeebackName { get; init; }
 
 		/// <summary>Gets or sets the participant count.</summary>
 		[JsonPropertyName("participants_count")]
-		public int ParticipantsCount { get; set; }
+		public int ParticipantsCount { get; init; }
 	}
 }

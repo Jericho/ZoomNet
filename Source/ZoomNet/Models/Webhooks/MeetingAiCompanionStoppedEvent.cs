@@ -4,9 +4,9 @@ namespace ZoomNet.Models.Webhooks
 	public record MeetingAiCompanionStoppedEvent : MeetingAiCompanionEvent
 	{
 		/// <summary>Gets or sets a value indicating whether AI companion's meeting questions feature was stopped.</summary>
-		public bool Questions { get; set; }
+		public bool Questions { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether AI companion's meeting summary feature was stopped.</summary>
-		public bool Summary { get; set; }
+		public bool Summary { get; init; }
 	}
 }

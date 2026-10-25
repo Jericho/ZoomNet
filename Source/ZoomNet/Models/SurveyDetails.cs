@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets a value indicating whether to allow participants to anonymously answer survey questions.</summary>
 		[JsonPropertyName("anonymous")]
-		public bool AllowAnonymous { get; set; }
+		public bool AllowAnonymous { get; init; }
 
 		/// <summary>Gets or sets the survey questions.</summary>
 		[JsonPropertyName("questions")]
-		public SurveyQuestion[] Questions { get; set; }
+		public SurveyQuestion[] Questions { get; init; }
 	}
 }

@@ -4,6 +4,6 @@ namespace ZoomNet.Models.Webhooks
 	public abstract record WebinarParticipantEvent : WebinarInfoEvent
 	{
 		/// <summary>Gets or sets the participant information.</summary>
-		public WebhookParticipant Participant { get; set; }
+		public WebhookParticipant Participant { get; init; }
 	}
 }

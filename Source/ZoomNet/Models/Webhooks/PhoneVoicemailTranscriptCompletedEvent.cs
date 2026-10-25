@@ -7,6 +7,6 @@ namespace ZoomNet.Models.Webhooks
 	{
 		/// <summary>Gets or sets information about completed voicemail transcript.</summary>
 		[JsonPropertyName("object")]
-		public WebhookVoicemail Voicemail { get; set; }
+		public WebhookVoicemail Voicemail { get; init; }
 	}
 }

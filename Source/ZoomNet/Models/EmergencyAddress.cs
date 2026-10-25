@@ -7,29 +7,29 @@ public record EmergencyAddress
 {
 	/// <summary>Gets or sets the first line of the address.</summary>
 	[JsonPropertyName("address_line1")]
-	public string AddressLine1 { get; set; }
+	public string AddressLine1 { get; init; }
 
 	/// <summary>Gets or sets the second line of the address.</summary>
 	[JsonPropertyName("address_line2")]
-	public string AddressLine2 { get; set; }
+	public string AddressLine2 { get; init; }
 
 	/// <summary>Gets or sets the city.</summary>
 	[JsonPropertyName("city")]
-	public string City { get; set; }
+	public string City { get; init; }
 
 	/// <summary>Gets or sets the country.</summary>
 	[JsonPropertyName("country")]
-	public string Country { get; set; }
+	public string Country { get; init; }
 
 	/// <summary>Gets or sets the emergency address id.</summary>
 	[JsonPropertyName("id")]
-	public string Id { get; set; }
+	public string Id { get; init; }
 
 	/// <summary>Gets or sets the state code.</summary>
 	[JsonPropertyName("state_code")]
-	public string StateCode { get; set; }
+	public string StateCode { get; init; }
 
 	/// <summary>Gets or sets the postal code.</summary>
 	[JsonPropertyName("zip")]
-	public string Zip { get; set; }
+	public string Zip { get; init; }
 }

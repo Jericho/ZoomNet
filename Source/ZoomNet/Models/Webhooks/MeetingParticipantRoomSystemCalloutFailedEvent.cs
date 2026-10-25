@@ -7,6 +7,6 @@ namespace ZoomNet.Models.Webhooks
 	{
 		/// <summary>Gets or sets the reason type for failure.</summary>
 		[JsonPropertyName("reason_type")]
-		public MeetingRoomCalloutFailureReason ReasonType { get; set; }
+		public MeetingRoomCalloutFailureReason ReasonType { get; init; }
 	}
 }

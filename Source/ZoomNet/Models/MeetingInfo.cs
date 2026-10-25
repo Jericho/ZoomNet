@@ -8,18 +8,18 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the meeting's duration in minutes.</summary>
 		[JsonPropertyName("duration")]
-		public int Duration { get; set; }
+		public int Duration { get; init; }
 
 		/// <summary>Gets or sets the meeting's start time.</summary>
 		[JsonPropertyName("start_time")]
-		public DateTime StartTime { get; set; }
+		public DateTime StartTime { get; init; }
 
 		/// <summary>Gets or sets the meeting's timezone.</summary>
 		[JsonPropertyName("timezone")]
-		public TimeZones Timezone { get; set; }
+		public TimeZones Timezone { get; init; }
 
 		/// <summary>Gets or sets the meeting's type.</summary>
 		[JsonPropertyName("type")]
-		public MeetingType Type { get; set; }
+		public MeetingType Type { get; init; }
 	}
 }

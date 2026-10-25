@@ -4,6 +4,6 @@ namespace ZoomNet.Models.Webhooks
 	public abstract record WebinarSharingEvent : WebinarParticipantEvent
 	{
 		/// <summary>Gets or sets the information about the screenshare.</summary>
-		public ScreenshareDetails ScreenshareDetails { get; set; }
+		public ScreenshareDetails ScreenshareDetails { get; init; }
 	}
 }

@@ -4,6 +4,6 @@ namespace ZoomNet.Models.Webhooks
 	public record PhoneVoicemailDeletedEvent : PhoneVoicemailEvent
 	{
 		/// <summary>Gets or sets deleted voicemails information.</summary>
-		public VoicemailBasicInfo[] Voicemails { get; set; }
+		public VoicemailBasicInfo[] Voicemails { get; init; }
 	}
 }

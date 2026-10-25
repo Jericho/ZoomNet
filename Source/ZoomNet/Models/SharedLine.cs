@@ -7,14 +7,14 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the alias.</summary>
 		[JsonPropertyName("alias")]
-		public string Alias { get; set; }
+		public string Alias { get; init; }
 
 		/// <summary>Gets or sets line subscription information.</summary>
 		[JsonPropertyName("line_subscription")]
-		public LineSubscription LineSubscription { get; set; }
+		public LineSubscription LineSubscription { get; init; }
 
 		/// <summary>Gets or sets outbound caller id.</summary>
 		[JsonPropertyName("outbound_caller_id")]
-		public string OutboundCallerId { get; set; }
+		public string OutboundCallerId { get; init; }
 	}
 }

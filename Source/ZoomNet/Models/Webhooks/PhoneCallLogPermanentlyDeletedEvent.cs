@@ -4,6 +4,6 @@ namespace ZoomNet.Models.Webhooks
 	public record PhoneCallLogPermanentlyDeletedEvent : PhoneCallLogOperationEvent
 	{
 		/// <summary>Gets or sets information about deleted call logs.</summary>
-		public CallLogBasicInfo[] CallLogs { get; set; }
+		public CallLogBasicInfo[] CallLogs { get; init; }
 	}
 }

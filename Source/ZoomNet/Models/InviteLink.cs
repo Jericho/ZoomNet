@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the URL to join the meeting.</summary>
 		[JsonPropertyName("join_url")]
-		public string JoinUrl { get; set; }
+		public string JoinUrl { get; init; }
 
 		/// <summary>Gets or sets the display name of the invited attendee.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 	}
 }

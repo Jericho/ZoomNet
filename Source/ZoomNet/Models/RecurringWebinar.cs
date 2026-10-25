@@ -8,10 +8,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the occurrences.</summary>
 		[JsonPropertyName("occurrences")]
-		public MeetingOccurrence[] Occurrences { get; set; }
+		public MeetingOccurrence[] Occurrences { get; init; }
 
 		/// <summary>Gets or sets the recurrence info.</summary>
 		[JsonPropertyName("recurrence")]
-		public RecurrenceInfo RecurrenceInfo { get; set; }
+		public RecurrenceInfo RecurrenceInfo { get; init; }
 	}
 }

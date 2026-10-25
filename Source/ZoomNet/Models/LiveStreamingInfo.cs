@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the meeting id, also known as the meeting number.</summary>
 		[JsonPropertyName("custom_live_streaming_settings")]
-		public LiveStreamingSettings Settings { get; set; }
+		public LiveStreamingSettings Settings { get; init; }
 
 		/// <summary>Gets or sets the name of the live streaming service.</summary>
 		[JsonPropertyName("service")]
-		public string ServiceName { get; set; }
+		public string ServiceName { get; init; }
 	}
 }

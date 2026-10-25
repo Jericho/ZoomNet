@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets a value indicating whether the video management is enabled.</summary>
 		[JsonPropertyName("enable")]
-		public bool Enabled { get; set; }
+		public bool Enabled { get; init; }
 
 		/// <summary>Gets or sets the channels for the video management.</summary>
 		[JsonPropertyName("channels")]
-		public MeetingVideoManagementChannel[] Channels { get; set; }
+		public MeetingVideoManagementChannel[] Channels { get; init; }
 	}
 }

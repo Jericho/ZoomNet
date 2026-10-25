@@ -8,10 +8,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the start date for this report.</summary>
 		[JsonPropertyName("from")]
-		public DateTime From { get; set; }
+		public DateTime From { get; init; }
 
 		/// <summary>Gets or sets the end date for this report.</summary>
 		[JsonPropertyName("to")]
-		public DateTime To { get; set; }
+		public DateTime To { get; init; }
 	}
 }

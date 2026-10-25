@@ -9,12 +9,12 @@ namespace ZoomNet.Models
 		/// Gets or sets a value indicating whether the Zoom Room will automatically accept incoming meeting requests (calls), such as being invited to a meeting in progress.
 		/// </summary>
 		[JsonPropertyName("automatically_accept_incoming_meeting_request")]
-		public bool? AutomaticallyAcceptIncomingMeetingRequests { get; set; }
+		public bool? AutomaticallyAcceptIncomingMeetingRequests { get; init; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether the Zoom Room will automatically unmute after it automatically accepts the incoming meeting request and joins the meeting.
 		/// </summary>
 		[JsonPropertyName("automatically_unmute")]
-		public bool? AutomaticallyUnmute { get; set; }
+		public bool? AutomaticallyUnmute { get; init; }
 	}
 }

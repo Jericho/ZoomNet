@@ -8,22 +8,22 @@ namespace ZoomNet.Models.Webhooks
 	{
 		/// <summary>Gets or sets the unique identifier of the account in wich the event occured.</summary>
 		[JsonPropertyName("account_id")]
-		public string AccountId { get; set; }
+		public string AccountId { get; init; }
 
 		/// <summary>Gets or sets the app's client Id.</summary>
 		[JsonPropertyName("client_id")]
-		public string ClientId { get; set; }
+		public string ClientId { get; init; }
 
 		/// <summary>Gets or sets the time at which the user uninstalled your app.</summary>
 		[JsonPropertyName("deauthorization_time")]
-		public DateTime DeauthorizationTime { get; set; }
+		public DateTime DeauthorizationTime { get; init; }
 
 		/// <summary>Gets or sets the unique identifier for each instance of deauthorization / app uninstallation done by a user.</summary>
 		[JsonPropertyName("signature")]
-		public string Signature { get; set; }
+		public string Signature { get; init; }
 
 		/// <summary>Gets or sets the user Id.</summary>
 		[JsonPropertyName("user_id")]
-		public string UserId { get; set; }
+		public string UserId { get; init; }
 	}
 }

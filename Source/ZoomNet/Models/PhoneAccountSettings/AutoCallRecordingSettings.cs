@@ -7,21 +7,21 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets a value indicating whether the stop and resume of automatic call recording is enabled.</summary>
 		[JsonPropertyName("allow_stop_resume_recording")]
-		public bool? AllowStopResumeRecording { get; set; }
+		public bool? AllowStopResumeRecording { get; init; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether a call disconnects when there is an issue with the automatic call recording and the call cannot reconnect after five seconds.
 		/// This does not include emergency calls.
 		/// </summary>
 		[JsonPropertyName("disconnect_on_recording_failure")]
-		public bool? DisconnectOnRecordingFailure { get; set; }
+		public bool? DisconnectOnRecordingFailure { get; init; }
 
 		/// <summary>Gets or sets the type of automatically recorded calls.</summary>
 		[JsonPropertyName("recording_calls")]
-		public AutoRecordedCallType? RecordingCalls { get; set; }
+		public AutoRecordedCallType? RecordingCalls { get; init; }
 
 		/// <summary>Gets or sets the audio that plays when the recording has started.</summary>
 		[JsonPropertyName("recording_start_prompt_audio_id")]
-		public string RecordingStartPromptAudioId { get; set; }
+		public string RecordingStartPromptAudioId { get; init; }
 	}
 }

@@ -8,38 +8,38 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the content item ID.</summary>
 		[JsonPropertyName("content_id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the name of the content item.</summary>
 		[JsonPropertyName("content_name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets the type of the content item.</summary>
 		[JsonPropertyName("content_type")]
-		public DigitalSignageContentItemType Type { get; set; }
+		public DigitalSignageContentItemType Type { get; init; }
 
 		/// <summary>Gets or sets the URL of the content item.</summary>
 		[JsonPropertyName("content_url")]
-		public string Url { get; set; }
+		public string Url { get; init; }
 
 		/// <summary>Gets or sets the download URL of the content item.</summary>
 		[JsonPropertyName("download_url")]
-		public string DownloadUrl { get; set; }
+		public string DownloadUrl { get; init; }
 
 		/// <summary>Gets or sets the time-to-live of the download URL.</summary>
 		[JsonPropertyName("download_url_ttl")]
-		public long DownloadUrlTimeToLive { get; set; }
+		public long DownloadUrlTimeToLive { get; init; }
 
 		/// <summary>Gets or sets the expiration date of the content item.</summary>
 		[JsonPropertyName("expiration_date")]
-		public DateTime? ExpirationDate { get; set; }
+		public DateTime? ExpirationDate { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the content item expires.</summary>
 		[JsonPropertyName("expires")]
-		public bool Expires { get; set; }
+		public bool Expires { get; init; }
 
 		/// <summary>Gets or sets the folder ID of the content item.</summary>
 		[JsonPropertyName("folder_id")]
-		public string FolderId { get; set; }
+		public string FolderId { get; init; }
 	}
 }

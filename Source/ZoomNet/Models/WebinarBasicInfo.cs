@@ -13,10 +13,10 @@ namespace ZoomNet.Models
 			Also, see: https://github.com/Jericho/ZoomNet/issues/228
 		*/
 		[JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
-		public long Id { get; set; }
+		public long Id { get; init; }
 
 		/// <summary>Gets or sets the webinar's unique id. Each webinar instance generates a webinar uuid.</summary>
 		[JsonPropertyName("uuid")]
-		public string Uuid { get; set; }
+		public string Uuid { get; init; }
 	}
 }

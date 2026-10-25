@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets a value indicating whether a reminder should be sent to attendees and panelists.</summary>
 		[JsonPropertyName("enable")]
-		public bool Enabled { get; set; }
+		public bool Enabled { get; init; }
 
 		/// <summary>Gets or sets the schedule of the reminder.</summary>
 		[JsonPropertyName("type")]
-		public ReminderSchedule Schedule { get; set; }
+		public ReminderSchedule Schedule { get; init; }
 	}
 }

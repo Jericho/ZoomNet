@@ -8,10 +8,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the date and time when the instance started.</summary>
 		[JsonPropertyName("start_time")]
-		public DateTime StartedOn { get; set; }
+		public DateTime StartedOn { get; init; }
 
 		/// <summary>Gets or sets the uuid.</summary>
 		[JsonPropertyName("uuid")]
-		public string Uuid { get; set; }
+		public string Uuid { get; init; }
 	}
 }

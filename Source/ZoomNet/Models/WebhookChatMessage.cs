@@ -8,20 +8,20 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the date and time when the chat message was sent.</summary>
 		[JsonPropertyName("date_time")]
-		public DateTime Timestamp { get; set; }
+		public DateTime Timestamp { get; init; }
 
 		/// <summary>Gets or sets the chat file uuids, in base64 encoded format.</summary>
 		/// <remarks>Available only in <see cref="Webhooks.MeetingChatMessageSentEvent"/> and <see cref="Webhooks.WebinarChatMessageSentEvent"/>.</remarks>
 		[JsonPropertyName("file_ids")]
-		public string[] FileIds { get; set; }
+		public string[] FileIds { get; init; }
 
 		/// <summary>Gets or sets the content of the chat message.</summary>
 		/// <remarks>Available only in <see cref="Webhooks.MeetingChatMessageSentEvent"/> and <see cref="Webhooks.WebinarChatMessageSentEvent"/>.</remarks>
 		[JsonPropertyName("message_content")]
-		public string Content { get; set; }
+		public string Content { get; init; }
 
 		/// <summary>Gets or sets the chat message uuid.</summary>
 		[JsonPropertyName("message_id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 	}
 }

@@ -10,15 +10,15 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// Note that the first incoming call may not be answered first.
 		/// </summary>
 		[JsonPropertyName("handle_multiple_calls")]
-		public bool? HandleMultipleCalls { get; set; }
+		public bool? HandleMultipleCalls { get; init; }
 
 		/// <summary>Gets or sets the ringing duration for each member. Allowed values: 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60.</summary>
 		[JsonPropertyName("ring_duration")]
-		public int? RingDuration { get; set; }
+		public int? RingDuration { get; init; }
 
 		/// <summary>Gets or sets the call distribution ring mode.</summary>
 		[JsonPropertyName("ring_mode")]
-		public RingModeType? RingMode { get; set; }
+		public RingModeType? RingMode { get; init; }
 
 		/// <summary>
 		/// Gets or sets the value indicating whether:
@@ -27,6 +27,6 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// Required except for simultaneous ring mode.
 		/// </summary>
 		[JsonPropertyName("skip_offline_device_phone_number")]
-		public bool? SkipOfflineDevicePhoneNumber { get; set; }
+		public bool? SkipOfflineDevicePhoneNumber { get; init; }
 	}
 }

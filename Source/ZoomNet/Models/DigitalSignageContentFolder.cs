@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the folder ID.</summary>
 		[JsonPropertyName("folder_id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the name of the folder.</summary>
 		[JsonPropertyName("folder_name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 	}
 }

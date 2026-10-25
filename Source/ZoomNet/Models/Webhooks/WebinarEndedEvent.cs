@@ -6,9 +6,9 @@ namespace ZoomNet.Models.Webhooks
 	public record WebinarEndedEvent : WebinarInfoEvent
 	{
 		/// <summary>Gets or sets the date and time when the webinar ended.</summary>
-		public DateTime EndTime { get; set; }
+		public DateTime EndTime { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the webinar is a practice session.</summary>
-		public bool PracticeSession { get; set; }
+		public bool PracticeSession { get; init; }
 	}
 }

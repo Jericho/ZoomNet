@@ -7,22 +7,22 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the member id.</summary>
 		[JsonPropertyName("id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the level of the member.</summary>
 		[JsonPropertyName("level")]
-		public string Level { get; set; }
+		public string Level { get; init; }
 
 		/// <summary>Gets or sets the name of the user or common area.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the user can receive calls. It displays if the level is user.</summary>
 		[JsonPropertyName("receive_call")]
-		public bool ReceiveCall { get; set; }
+		public bool ReceiveCall { get; init; }
 
 		/// <summary>Gets or sets the extension ID of the user or common area.</summary>
 		[JsonPropertyName("extension_id")]
-		public string ExtensionId { get; set; }
+		public string ExtensionId { get; init; }
 	}
 }

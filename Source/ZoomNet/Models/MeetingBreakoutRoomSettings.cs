@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets a value indicating whether the breakout room pre-assign option is enabled.</summary>
 		[JsonPropertyName("enable")]
-		public bool Enabled { get; set; }
+		public bool Enabled { get; init; }
 
 		/// <summary>Gets or sets the rooms.</summary>
 		[JsonPropertyName("rooms")]
-		public PreAssignedBreakoutRoom[] Rooms { get; set; }
+		public PreAssignedBreakoutRoom[] Rooms { get; init; }
 	}
 }

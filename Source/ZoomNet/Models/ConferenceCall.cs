@@ -8,28 +8,28 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the call id.</summary>
 		[JsonPropertyName("call_id")]
-		public string CallId { get; set; }
+		public string CallId { get; init; }
 
 		/// <summary>Gets or sets the conference id.</summary>
 		/// <remarks>No conference id is provided if <see cref="EnableMultiplePartyConference"/> is false.</remarks>
 		[JsonPropertyName("conference_id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the date and time when the conference call started.</summary>
 		[JsonPropertyName("date_time")]
-		public DateTime StartedOn { get; set; }
+		public DateTime StartedOn { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether to enable multiple parties to join the conference call.</summary>
 		[JsonPropertyName("enable_multiple_party_conference")]
-		public bool EnableMultiplePartyConference { get; set; }
+		public bool EnableMultiplePartyConference { get; init; }
 
 		/// <summary>Gets or sets the reason a conference call failed to start.</summary>
 		/// <remarks>Empty string means success.</remarks>
 		[JsonPropertyName("failure_reason")]
-		public string FailureReason { get; set; }
+		public string FailureReason { get; init; }
 
 		/// <summary>Gets or sets the call owner.</summary>
 		[JsonPropertyName("owner")]
-		public CallLogOwnerInfo Owner { get; set; }
+		public CallLogOwnerInfo Owner { get; init; }
 	}
 }

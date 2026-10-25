@@ -21,7 +21,7 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets the number of records returned within a single API call.</summary>
 		[JsonPropertyName("page_size")]
-		public int RecordsPerPage { get; set; }
+		public int RecordsPerPage { get; init; }
 
 		/// <summary>Gets or sets the number of all records available across pages.</summary>
 		[JsonPropertyName("total_records")]
@@ -38,10 +38,10 @@ namespace ZoomNet.Models
 		 * However, there is one exception: "sync_token is used when invoking the "Sync user's call history" endpoint, documented here: https://developers.zoom.us/docs/api/phone/#tag/call-logs
 		 */
 		[MultipleValuesEnumMember(DefaultValue = "next_page_token", OtherValues = ["sync_token"])]
-		public string NextPageToken { get; set; }
+		public string NextPageToken { get; init; }
 
 		/// <summary>Gets or sets the records.</summary>
-		public T[] Records { get; set; }
+		public T[] Records { get; init; }
 
 		/// <summary>Gets a value indicating whether more records are available.</summary>
 		public bool MoreRecordsAvailable => !string.IsNullOrEmpty(NextPageToken);

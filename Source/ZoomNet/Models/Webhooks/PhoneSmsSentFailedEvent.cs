@@ -7,6 +7,6 @@ namespace ZoomNet.Models.Webhooks
 	{
 		/// <summary>Gets or sets SMS information payload that failed to be sent.</summary>
 		[JsonPropertyName("object")]
-		public WebhookSmsMessage Message { get; set; }
+		public WebhookSmsMessage Message { get; init; }
 	}
 }

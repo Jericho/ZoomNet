@@ -11,10 +11,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the date and time when the event has occurred.</summary>
 		[JsonPropertyName("date_time")]
-		public DateTime Timestamp { get; set; }
+		public DateTime Timestamp { get; init; }
 
 		/// <summary>Gets or sets the list of phone number pairs that were opted in or out of SMS campaign.</summary>
 		[JsonPropertyName("phone_number_campaign_opt_statuses")]
-		public SmsCampaignNumbersOptStatus[] PhoneNumbers { get; set; }
+		public SmsCampaignNumbersOptStatus[] PhoneNumbers { get; init; }
 	}
 }

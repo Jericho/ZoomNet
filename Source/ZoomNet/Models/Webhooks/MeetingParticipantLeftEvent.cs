@@ -6,9 +6,9 @@ namespace ZoomNet.Models.Webhooks
 	public record MeetingParticipantLeftEvent : MeetingParticipantEvent
 	{
 		/// <summary>Gets or sets the date and time at which the participant left the meeting.</summary>
-		public DateTime LeftOn { get; set; }
+		public DateTime LeftOn { get; init; }
 
 		/// <summary>Gets or sets the reason why the participant left the meeting.</summary>
-		public string LeaveReason { get; set; }
+		public string LeaveReason { get; init; }
 	}
 }

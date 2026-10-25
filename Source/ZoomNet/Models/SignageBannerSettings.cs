@@ -7,14 +7,14 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets a value indicating whether to display the room name.</summary>
 		[JsonPropertyName("banner_room_name")]
-		public bool DisplayRoomName { get; set; }
+		public bool DisplayRoomName { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether to display the sharing key.</summary>
 		[JsonPropertyName("banner_sharing_key")]
-		public bool DisplaySharingKey { get; set; }
+		public bool DisplaySharingKey { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether to display the time.</summary>
 		[JsonPropertyName("banner_time")]
-		public bool DisplayTime { get; set; }
+		public bool DisplayTime { get; init; }
 	}
 }

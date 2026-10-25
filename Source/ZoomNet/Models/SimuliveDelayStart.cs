@@ -7,7 +7,7 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets a value indicating whether simulive needs to delay playback.</summary>
 		[JsonPropertyName("enable")]
-		public bool IsEnabled { get; set; }
+		public bool IsEnabled { get; init; }
 
 		/// <summary>Gets or sets the delay time.</summary>
 		/// <remarks>
@@ -15,10 +15,10 @@ namespace ZoomNet.Models
 		/// If the time unit is minutes, then the maximum value is 10 and the minimum value is 1.
 		/// </remarks>
 		[JsonPropertyName("time")]
-		public int Time { get; set; }
+		public int Time { get; init; }
 
 		/// <summary>Gets or sets the delay time unit.</summary>
 		[JsonPropertyName("timeunit")]
-		public SimuliveDelayTimeUnit TimeUnit { get; set; }
+		public SimuliveDelayTimeUnit TimeUnit { get; init; }
 	}
 }

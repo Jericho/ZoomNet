@@ -5,6 +5,6 @@ namespace ZoomNet.Models.Webhooks
 	public record PhoneWarmTransferInitiatedEvent : PhoneCallTransferEvent
 	{
 		/// <summary>Gets or sets the newly generated call ID when the call is transferred.</summary>
-		public string TransferCallId { get; set; }
+		public string TransferCallId { get; init; }
 	}
 }

@@ -4,6 +4,6 @@ namespace ZoomNet.Models.Webhooks
 	public record MeetingRiskAlertEvent : MeetingInfoEvent
 	{
 		/// <summary>Gets or sets the information about at-risk meeting notifier.</summary>
-		public MeetingAtRiskDetails ArmnDetails { get; set; }
+		public MeetingAtRiskDetails ArmnDetails { get; init; }
 	}
 }

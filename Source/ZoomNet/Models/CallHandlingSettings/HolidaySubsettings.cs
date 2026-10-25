@@ -8,19 +8,19 @@ namespace ZoomNet.Models.CallHandlingSettings
 	{
 		/// <summary>Gets or sets the holiday's start date and time in yyyy-MM-dd'T'HH:mm:ss'Z' format.</summary>
 		[JsonPropertyName("from")]
-		public DateTime? From { get; set; }
+		public DateTime? From { get; init; }
 
 		/// <summary>Gets or sets the holiday's ID.</summary>
 		[JsonPropertyName("holiday_id")]
-		public string HolidayId { get; set; }
+		public string HolidayId { get; init; }
 
 		/// <summary>Gets or sets the name of the holiday.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets the holiday's end date and time in yyyy-MM-dd'T'HH:mm:ss'Z' format.</summary>
 		[JsonPropertyName("to")]
-		public DateTime? To { get; set; }
+		public DateTime? To { get; init; }
 
 		/// <summary>Gets the type of sub-setting.</summary>
 		[JsonIgnore]

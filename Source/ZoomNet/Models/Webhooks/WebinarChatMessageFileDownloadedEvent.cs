@@ -4,9 +4,9 @@ namespace ZoomNet.Models.Webhooks
 	public record WebinarChatMessageFileDownloadedEvent : ChatMessageFileDownloadedEvent
 	{
 		/// <summary>Gets or sets the webinar id.</summary>
-		public long WebinarId { get; set; }
+		public long WebinarId { get; init; }
 
 		/// <summary>Gets or sets the webinar instance uuid.</summary>
-		public string WebinarUuid { get; set; }
+		public string WebinarUuid { get; init; }
 	}
 }

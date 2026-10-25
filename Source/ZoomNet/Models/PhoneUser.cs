@@ -7,49 +7,49 @@ public record PhoneUser
 {
 	/// <summary>Gets or sets the calling plans.</summary>
 	[JsonPropertyName("calling_plans")]
-	public CallingPlan[] CallingPlans { get; set; }
+	public CallingPlan[] CallingPlans { get; init; }
 
 	/// <summary>Gets or sets the cost center.</summary>
 	[JsonPropertyName("cost_center")]
-	public string CostCenter { get; set; }
+	public string CostCenter { get; init; }
 
 	/// <summary>Gets or sets the department of the object.</summary>
 	[JsonPropertyName("department")]
-	public string Department { get; set; }
+	public string Department { get; init; }
 
 	/// <summary>Gets or sets the email address.</summary>
 	[JsonPropertyName("email")]
-	public string Email { get; set; }
+	public string Email { get; init; }
 
 	/// <summary>Gets or sets the extension ID.</summary>
 	[JsonPropertyName("extension_id")]
-	public string ExtensionId { get; set; }
+	public string ExtensionId { get; init; }
 
 	/// <summary>Gets or sets the extension number.</summary>
 	[JsonPropertyName("extension_number")]
-	public int ExtensionNumber { get; set; }
+	public int ExtensionNumber { get; init; }
 
 	/// <summary>Gets or sets the Zoom user ID.</summary>
 	[JsonPropertyName("id")]
-	public string Id { get; set; }
+	public string Id { get; init; }
 
 	/// <summary>Gets or sets the Zoom user name.</summary>
 	[JsonPropertyName("name")]
-	public string Name { get; set; }
+	public string Name { get; init; }
 
 	/// <summary>Gets or sets the phone numbers.</summary>
 	[JsonPropertyName("phone_numbers")]
-	public PhoneCallPhoneNumber[] PhoneNumbers { get; set; }
+	public PhoneCallPhoneNumber[] PhoneNumbers { get; init; }
 
 	/// <summary>Gets or sets the Zoom phone user id.</summary>
 	[JsonPropertyName("phone_user_id")]
-	public string PhoneUserId { get; set; }
+	public string PhoneUserId { get; init; }
 
 	/// <summary>Gets or sets a site.</summary>
 	[JsonPropertyName("site")]
-	public Site Site { get; set; }
+	public Site Site { get; init; }
 
 	/// <summary>Gets or sets the status of the user.</summary>
 	[JsonPropertyName("status")]
-	public PhoneCallUserStatus Status { get; set; }
+	public PhoneCallUserStatus Status { get; init; }
 }

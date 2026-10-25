@@ -7,6 +7,6 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the user's recording storage settings.</summary>
 		[JsonPropertyName("recording_storage_location")]
-		public UserRecordingStorageSettings RecordingStorageLocation { get; set; }
+		public UserRecordingStorageSettings RecordingStorageLocation { get; init; }
 	}
 }

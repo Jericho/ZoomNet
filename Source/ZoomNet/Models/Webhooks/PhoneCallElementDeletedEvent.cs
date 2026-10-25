@@ -6,15 +6,15 @@ namespace ZoomNet.Models.Webhooks
 	public record PhoneCallElementDeletedEvent : PhoneCallLogOperationEvent
 	{
 		/// <summary>Gets or sets the deleted call element ids. Empty if <see cref="DeleteAll"/> is true.</summary>
-		public string[] CallElementIds { get; set; }
+		public string[] CallElementIds { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the user has deleted all call logs.</summary>
-		public bool DeleteAll { get; set; }
+		public bool DeleteAll { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the account has enabled call log trash.</summary>
-		public bool MoveToTrash { get; set; }
+		public bool MoveToTrash { get; init; }
 
 		/// <summary>Gets or sets the delete event time. If specified then all call logs prior to this time have been deleted.</summary>
-		public DateTime? ExecuteTime { get; set; }
+		public DateTime? ExecuteTime { get; init; }
 	}
 }

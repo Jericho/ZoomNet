@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets sender's/receiver's name.</summary>
 		[JsonPropertyName("display_name")]
-		public string DisplayName { get; set; }
+		public string DisplayName { get; init; }
 
 		/// <summary>Gets or sets sender's/receiver's phone number.</summary>
 		[JsonPropertyName("phone_number")]
-		public string PhoneNumber { get; set; }
+		public string PhoneNumber { get; init; }
 	}
 }

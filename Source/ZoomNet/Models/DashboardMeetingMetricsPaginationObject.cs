@@ -8,14 +8,14 @@ namespace ZoomNet.Models
 	public record DashboardMeetingMetricsPaginationObject
 	{
 		/// <summary>Gets or sets the start date for the report.</summary>
-		public string From { get; set; }
+		public string From { get; init; }
 
 		/// <summary>Gets or sets the end date for the report.</summary>
-		public string To { get; set; }
+		public string To { get; init; }
 
 		/// <summary>Gets or sets the number of items returned on this page.</summary>
 		[JsonPropertyName("page_count")]
-		public int PageCount { get; set; }
+		public int PageCount { get; init; }
 
 		/// <summary>Gets or sets the number of records returned within a single API call.</summary>
 		[JsonIgnore]
@@ -28,19 +28,19 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets the metrics for the meetings.</summary>
 		[JsonPropertyName("meetings")]
-		public DashboardMeetingMetrics[] Records { get; set; }
+		public DashboardMeetingMetrics[] Records { get; init; }
 
 		/// <summary>Gets or sets the token to retrieve the next page.</summary>
 		/// <remarks>This token expires after 15 minutes.</remarks>
 		[JsonPropertyName("next_page_token")]
-		public string NextPageToken { get; set; }
+		public string NextPageToken { get; init; }
 
 		/// <summary>Gets or sets the number of records returned within a single API call.</summary>
 		[JsonPropertyName("page_size")]
-		public int RecordsPerPage { get; set; }
+		public int RecordsPerPage { get; init; }
 
 		/// <summary>Gets or sets the number of all records available across pages.</summary>
 		[JsonPropertyName("total_records")]
-		public int? TotalRecords { get; set; }
+		public int? TotalRecords { get; init; }
 	}
 }

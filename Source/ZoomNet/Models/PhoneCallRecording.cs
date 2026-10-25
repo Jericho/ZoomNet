@@ -9,125 +9,125 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the call-receiving user.</summary>
 		/// <remarks>The recording must belong to the receiver and call queue for it to be available.</remarks>
 		[JsonPropertyName("accepted_by")]
-		public PhoneCallUser CallReceiver { get; set; }
+		public PhoneCallUser CallReceiver { get; init; }
 
 		/// <summary>Gets or sets the call element id.</summary>
 		[JsonPropertyName("call_element_id")]
-		public string CallElementId { get; set; }
+		public string CallElementId { get; init; }
 
 		/// <summary>Gets or sets the call history id.</summary>
 		[JsonPropertyName("call_history_id")]
-		public string CallHistoryId { get; set; }
+		public string CallHistoryId { get; init; }
 
 		/// <summary>Gets or sets the unique call log ID.</summary>
 		[JsonPropertyName("call_log_id")]
-		public string CallLogId { get; set; }
+		public string CallLogId { get; init; }
 
 		/// <summary>Gets or sets the callee account code.</summary>
 		[JsonPropertyName("callee_account_code")]
-		public string CalleeAccountCode { get; set; }
+		public string CalleeAccountCode { get; init; }
 
 		/// <summary>Gets or sets the callee DID (direct inward dial) number, in E.164 format.</summary>
 		[JsonPropertyName("callee_did_number")]
-		public string CalleeDidNumber { get; set; }
+		public string CalleeDidNumber { get; init; }
 
 		/// <summary>Gets or sets the callee name.</summary>
 		[JsonPropertyName("callee_name")]
-		public string CalleeName { get; set; }
+		public string CalleeName { get; init; }
 
 		/// <summary>Gets or sets the callee phone number.</summary>
 		[JsonPropertyName("callee_number")]
-		public string CalleeNumber { get; set; }
+		public string CalleeNumber { get; init; }
 
 		/// <summary>Gets or sets the callee number type.</summary>
 		[JsonPropertyName("callee_number_type")]
 		[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-		public PhoneCallNumberType? CalleeNumberType { get; set; }
+		public PhoneCallNumberType? CalleeNumberType { get; init; }
 
 		/// <summary>Gets or sets the caller account code.</summary>
 		[JsonPropertyName("caller_account_code")]
-		public string CallerAccountCode { get; set; }
+		public string CallerAccountCode { get; init; }
 
 		/// <summary>Gets or sets the caller DID (direct inward dial) number, in E.164 format.</summary>
 		[JsonPropertyName("caller_did_number")]
-		public string CallerDidNumber { get; set; }
+		public string CallerDidNumber { get; init; }
 
 		/// <summary>Gets or sets the caller name.</summary>
 		[JsonPropertyName("caller_name")]
-		public string CallerName { get; set; }
+		public string CallerName { get; init; }
 
 		/// <summary>Gets or sets the caller phone number.</summary>
 		[JsonPropertyName("caller_number")]
-		public string CallerNumber { get; set; }
+		public string CallerNumber { get; init; }
 
 		/// <summary>Gets or sets the caller number type.</summary>
 		[JsonPropertyName("caller_number_type")]
 		[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-		public PhoneCallNumberType? CallerNumberType { get; set; }
+		public PhoneCallNumberType? CallerNumberType { get; init; }
 
 		/// <summary>Gets or sets the channel id.</summary>
 		[JsonPropertyName("channel_id")]
-		public string ChannelId { get; set; }
+		public string ChannelId { get; init; }
 
 		/// <summary>Gets or sets the call recording start datetime.</summary>
 		[JsonPropertyName("date_time")]
-		public DateTime StartDateTime { get; set; }
+		public DateTime StartDateTime { get; init; }
 
 		/// <summary>Gets or sets the call direction.</summary>
 		[JsonPropertyName("direction")]
 		[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-		public CallLogDirection Direction { get; set; }
+		public CallLogDirection Direction { get; init; }
 
 		/// <summary>Gets or sets the disclaimer status.</summary>
 		[JsonPropertyName("disclaimer_status")]
 		[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-		public PhoneCallRecordingDisclaimerStatus DisclaimerStatus { get; set; }
+		public PhoneCallRecordingDisclaimerStatus DisclaimerStatus { get; init; }
 
 		/// <summary>Gets or sets the download URL for the call recording.</summary>
 		[JsonPropertyName("download_url")]
-		public string DownloadUrl { get; set; }
+		public string DownloadUrl { get; init; }
 
 		/// <summary>Gets or sets the call duration, in seconds.</summary>
 		[JsonPropertyName("duration")]
-		public int Duration { get; set; }
+		public int Duration { get; init; }
 
 		/// <summary>Gets or sets the call recording end datetime.</summary>
 		[JsonPropertyName("end_time")]
-		public DateTime EndDateTime { get; set; }
+		public DateTime EndDateTime { get; init; }
 
 		/// <summary>Gets or sets the file URL for the call recording.</summary>
 		/// <remarks>Not documented by Zoom.</remarks>
 		[JsonPropertyName("file_url")]
-		public string FileUrl { get; set; }
+		public string FileUrl { get; init; }
 
 		/// <summary>Gets or sets the call-initiating user.</summary>
 		/// <remarks>The recording must belong to the initiator and call queue for it to be available.</remarks>
 		[JsonPropertyName("outgoing_by")]
-		public PhoneCallUser CallInitiator { get; set; }
+		public PhoneCallUser CallInitiator { get; init; }
 
 		/// <summary>Gets or sets the call recording owner.</summary>
 		[JsonPropertyName("owner")]
-		public PhoneCallRecordingOwner Owner { get; set; }
+		public PhoneCallRecordingOwner Owner { get; init; }
 
 		/// <summary>Gets or sets the call recording type.</summary>
 		[JsonPropertyName("recording_type")]
 		[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-		public PhoneCallRecordingType? Type { get; set; }
+		public PhoneCallRecordingType? Type { get; init; }
 
 		/// <summary>Gets or sets id of the SIP call.</summary>
 		[JsonPropertyName("sip_id")]
-		public string SipId { get; set; }
+		public string SipId { get; init; }
 
 		/// <summary>Gets or sets the call recording site information.</summary>
 		[JsonPropertyName("site")]
-		public CallLogSite Site { get; set; }
+		public CallLogSite Site { get; init; }
 
 		/// <summary>Gets or sets the download URL for the call recording transcript.</summary>
 		[JsonPropertyName("transcript_download_url")]
-		public string TranscriptDownloadUrl { get; set; }
+		public string TranscriptDownloadUrl { get; init; }
 
 		/// <summary>Gets or sets the user id.</summary>
 		[JsonPropertyName("user_id")]
-		public string UserId { get; set; }
+		public string UserId { get; init; }
 	}
 }

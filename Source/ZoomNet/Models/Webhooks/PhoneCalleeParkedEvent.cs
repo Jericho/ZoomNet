@@ -6,12 +6,12 @@ namespace ZoomNet.Models.Webhooks
 	public record PhoneCalleeParkedEvent : PhoneCallFlowEvent
 	{
 		/// <summary>Gets or sets the date and time when the call park began.</summary>
-		public DateTime ParkedOn { get; set; }
+		public DateTime ParkedOn { get; init; }
 
 		/// <summary>Gets or sets the code to connect with caller.</summary>
-		public string ParkCode { get; set; }
+		public string ParkCode { get; init; }
 
 		/// <summary>Gets or sets the reason for parking failure.</summary>
-		public string ParkFailureReason { get; set; }
+		public string ParkFailureReason { get; init; }
 	}
 }

@@ -7,6 +7,6 @@ namespace ZoomNet.Models.Webhooks
 	{
 		/// <summary>Gets or sets information about SMS etiquette warn policy that was violated.</summary>
 		[JsonPropertyName("object")]
-		public WebhookSmsEtiquettePolicy Policy { get; set; }
+		public WebhookSmsEtiquettePolicy Policy { get; init; }
 	}
 }

@@ -7,6 +7,6 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the number of active hosts under the base plan.</summary>
 		[JsonPropertyName("active_hosts")]
-		public int ActiveHostsCount { get; set; }
+		public int ActiveHostsCount { get; init; }
 	}
 }

@@ -10,13 +10,13 @@ namespace ZoomNet.Models
 		/// If the value of the this field is true, the background_image_info object will only contain and only accept changes to the background image information of zoom_rooms_display1.
 		/// </summary>
 		[JsonPropertyName("apply_background_image_to_all_displays")]
-		public bool? ApplyBackgroundImageToAllDisplays { get; set; }
+		public bool? ApplyBackgroundImageToAllDisplays { get; init; }
 
 		/// <summary>
 		/// Gets or sets the background image information for each display.
 		/// If the value of the <see cref="ApplyBackgroundImageToAllDisplays"/> is true, this object will only accept changes to the background image information of zoom_rooms_display1.
 		/// </summary>
 		[JsonPropertyName("background_image_info")]
-		public RoomLocationBackgroundImageInfo[] BackgroundImageInfo { get; set; }
+		public RoomLocationBackgroundImageInfo[] BackgroundImageInfo { get; init; }
 	}
 }

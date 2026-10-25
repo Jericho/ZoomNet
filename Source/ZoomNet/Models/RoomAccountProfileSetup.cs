@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets a value indicating whether to apply the background image to all displays.</summary>
 		[JsonPropertyName("apply_background_image_to_all_displays")]
-		public bool ApplyBackgroundImageToAllDisplays { get; set; }
+		public bool ApplyBackgroundImageToAllDisplays { get; init; }
 
 		/// <summary>Gets or sets the background image information for the Zoom Room.</summary>
 		[JsonPropertyName("background_image_info")]
-		public RoomLocationBackgroundImageInfo[] BackgroundImages { get; set; }
+		public RoomLocationBackgroundImageInfo[] BackgroundImages { get; init; }
 	}
 }

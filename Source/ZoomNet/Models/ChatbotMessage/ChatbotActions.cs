@@ -8,10 +8,10 @@ public record ChatbotActions : IChatbotBody, IChatbotSection
 {
 	/// <summary>Gets or sets the actions.</summary>
 	[JsonPropertyName("items")]
-	public ICollection<ChatbotAction> Items { get; set; }
+	public ICollection<ChatbotAction> Items { get; init; }
 
 	/// <summary>Gets or sets the number of buttons visible. If the number of items are over this limit, it will group the buttons into a list.</summary>
 	[JsonPropertyName("limit")]
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-	public int? Limit { get; set; }
+	public int? Limit { get; init; }
 }

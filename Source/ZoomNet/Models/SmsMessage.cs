@@ -7,14 +7,14 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the SMS direction.</summary>
 		[JsonPropertyName("direction")]
-		public SmsDirection Direction { get; set; }
+		public SmsDirection Direction { get; init; }
 
 		/// <summary>Gets or sets the SMS sender.</summary>
 		[JsonPropertyName("sender")]
-		public SmsHistoryParticipant Sender { get; set; }
+		public SmsHistoryParticipant Sender { get; init; }
 
 		/// <summary>Gets or sets the SMS receivers.</summary>
 		[JsonPropertyName("to_members")]
-		public SmsHistoryParticipant[] Recipients { get; set; }
+		public SmsHistoryParticipant[] Recipients { get; init; }
 	}
 }

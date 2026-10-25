@@ -12,10 +12,10 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets maximum port number used by Zoom.</summary>
 		[JsonPropertyName("max_port")]
-		public int? MaxPort { get; set; }
+		public int? MaxPort { get; init; }
 
 		/// <summary>Gets or sets minimum port number used by Zoom.</summary>
 		[JsonPropertyName("min_port")]
-		public int? MinPort { get; set; }
+		public int? MinPort { get; init; }
 	}
 }

@@ -7,22 +7,22 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the name of the tracking field.</summary>
 		[JsonPropertyName("field")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets the tracking field id.</summary>
 		[JsonPropertyName("id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the array of recommended values.</summary>
 		[JsonPropertyName("recommended_values")]
-		public string[] RecommendedValues { get; set; }
+		public string[] RecommendedValues { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the field is required.</summary>
 		[JsonPropertyName("required")]
-		public bool IsRequired { get; set; }
+		public bool IsRequired { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the field is visible.</summary>
 		[JsonPropertyName("visible")]
-		public bool IsVisible { get; set; }
+		public bool IsVisible { get; init; }
 	}
 }

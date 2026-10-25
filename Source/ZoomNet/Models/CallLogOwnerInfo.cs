@@ -7,18 +7,18 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the extension number.</summary>
 		[JsonPropertyName("extension_number")]
-		public int ExtensionNumber { get; set; }
+		public int ExtensionNumber { get; init; }
 
 		/// <summary>Gets or sets the owner ID.</summary>
 		[JsonPropertyName("id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the name.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets the owner type.</summary>
 		[JsonPropertyName("type")]
-		public CallLogOwnerType? Type { get; set; }
+		public CallLogOwnerType? Type { get; init; }
 	}
 }

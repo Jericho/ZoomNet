@@ -16,36 +16,36 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets the URL which can be used to download the file.</summary>
 		[JsonPropertyName("download_url")]
-		public string DownloadUrl { get; set; }
+		public string DownloadUrl { get; init; }
 
 		/// <summary>Gets or sets the file extension.</summary>
 		[JsonPropertyName("file_extension")]
-		public RecordingFileExtension FileExtension { get; set; }
+		public RecordingFileExtension FileExtension { get; init; }
 
 		/// <summary>Gets or sets the file name.</summary>
 		[JsonPropertyName("file_name")]
-		public string FileName { get; set; }
+		public string FileName { get; init; }
 
 		/// <summary>Gets or sets the file path to the on-premise account recording.</summary>
 		/// <remarks>This field is returned only for Zoom On-Premise accounts.</remarks>
 		[JsonPropertyName("file_path")]
-		public string FilePath { get; set; }
+		public string FilePath { get; init; }
 
 		/// <summary>Gets or sets the file size in bytes.</summary>
 		[JsonPropertyName("file_size")]
-		public long Size { get; set; }
+		public long Size { get; init; }
 
 		/// <summary>Gets or sets the file type.</summary>
 		[JsonPropertyName("file_type")]
-		public RecordingFileType FileType { get; set; }
+		public RecordingFileType FileType { get; init; }
 
 		/// <summary>Gets or sets the file unique id.</summary>
 		[JsonPropertyName("id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the file content type.</summary>
 		[JsonPropertyName("recording_type")]
-		public RecordingContentType ContentType { get; set; }
+		public RecordingContentType ContentType { get; init; }
 
 		/// <summary>Gets a value indicating whether the recording file represents a screensharing session.</summary>
 		/// <remarks>A value of <see langword="true"/> indicates that the file is a video recording specifically

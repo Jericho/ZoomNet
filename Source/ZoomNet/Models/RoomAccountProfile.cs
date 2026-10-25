@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the basic profile information.</summary>
 		[JsonPropertyName("basic")]
-		public RoomAccountProfileBasic BasicProfile { get; set; }
+		public RoomAccountProfileBasic BasicProfile { get; init; }
 
 		/// <summary>Gets or sets the setup profile information.</summary>
 		[JsonPropertyName("setup")]
-		public RoomAccountProfileSetup SetupProfile { get; set; }
+		public RoomAccountProfileSetup SetupProfile { get; init; }
 	}
 }

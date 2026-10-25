@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the owner user id.</summary>
 		[JsonPropertyName("id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the owner type.</summary>
 		[JsonPropertyName("type")]
-		public SmsParticipantOwnerType Type { get; set; }
+		public SmsParticipantOwnerType Type { get; init; }
 	}
 }

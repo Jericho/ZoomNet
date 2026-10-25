@@ -9,10 +9,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the display name of the target language.</summary>
 		[JsonPropertyName("target_language_display_name")]
-		public string TargetLanguageDisplayName { get; set; }
+		public string TargetLanguageDisplayName { get; init; }
 
 		/// <summary>Gets or sets the target language.</summary>
 		[JsonPropertyName("target_language_id")]
-		public InterpretationSignLanguage TargetLanguage { get; set; }
+		public InterpretationSignLanguage TargetLanguage { get; init; }
 	}
 }

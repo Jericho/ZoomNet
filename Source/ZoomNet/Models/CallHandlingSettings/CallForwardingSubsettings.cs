@@ -8,7 +8,7 @@ namespace ZoomNet.Models.CallHandlingSettings
 	{
 		/// <summary>Gets or sets the list of call forwarding settings.</summary>
 		[JsonPropertyName("call_forwarding_settings")]
-		public List<CallForwardingChildSubsettings> CallForwardingSettings { get; set; }
+		public List<CallForwardingChildSubsettings> CallForwardingSettings { get; init; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether the user must press "1" before the call connects, when a call is forwarded to a personal phone number.
@@ -16,7 +16,7 @@ namespace ZoomNet.Models.CallHandlingSettings
 		/// Press 1 is always enabled and is required for callQueue type extension calls.
 		/// </summary>
 		[JsonPropertyName("sub_setting_type")]
-		public bool? RequirePress1BeforeConnecting { get; set; }
+		public bool? RequirePress1BeforeConnecting { get; init; }
 
 		/// <summary>Gets the type of sub-setting.</summary>
 		[JsonIgnore]

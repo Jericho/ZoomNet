@@ -14,10 +14,10 @@ namespace ZoomNet.Models.Webhooks
 		/// event notification. Pass download_token as a bearer token in
 		/// the authorization header of your HTTP request.
 		/// </remarks>
-		public string DownloadToken { get; set; }
+		public string DownloadToken { get; init; }
 
 		/// <summary>Gets or sets information about the meeting or webinar recording.</summary>
 		[JsonPropertyName("object")]
-		public RecordingArchive Recording { get; set; }
+		public RecordingArchive Recording { get; init; }
 	}
 }

@@ -7,7 +7,7 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the ID of the user who is set as the host of the meeting.</summary>
 		[JsonPropertyName("host_id")]
-		public string HostId { get; set; }
+		public string HostId { get; init; }
 
 		/// <summary>Gets or sets the meeting id, also known as the meeting number.</summary>
 		[JsonPropertyName("id")]
@@ -17,14 +17,14 @@ namespace ZoomNet.Models
 			Also, see: https://github.com/Jericho/ZoomNet/issues/228
 		*/
 		[JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
-		public long Id { get; set; }
+		public long Id { get; init; }
 
 		/// <summary>Gets or sets the topic of the meeting.</summary>
 		[JsonPropertyName("topic")]
-		public string Topic { get; set; }
+		public string Topic { get; init; }
 
 		/// <summary>Gets or sets the unique id. Each meeting instance generates a meeting uuid.</summary>
 		[JsonPropertyName("uuid")]
-		public string Uuid { get; set; }
+		public string Uuid { get; init; }
 	}
 }

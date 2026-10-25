@@ -7,10 +7,10 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the name of the breakout room.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets the email addresses of the participants who are to be assigned to the breakout room.</summary>
 		[JsonPropertyName("participants")]
-		public string[] Participants { get; set; }
+		public string[] Participants { get; init; }
 	}
 }

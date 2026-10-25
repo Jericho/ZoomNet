@@ -7,14 +7,14 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the information about the customized survey.</summary>
 		[JsonPropertyName("custom_survey")]
-		public SurveyDetails Details { get; set; }
+		public SurveyDetails Details { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the survey will be displayed in the attendee's browser.</summary>
 		[JsonPropertyName("show_in_the_browser")]
-		public bool ShowInBrowser { get; set; }
+		public bool ShowInBrowser { get; init; }
 
 		/// <summary>Gets or sets the link to the third party meeting survey.</summary>
 		[JsonPropertyName("third_party_survey")]
-		public string ThirdPartySurveyLink { get; set; }
+		public string ThirdPartySurveyLink { get; init; }
 	}
 }

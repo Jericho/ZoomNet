@@ -7,18 +7,18 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the stream page URL.</summary>
 		[JsonPropertyName("page_url")]
-		public string PageUrl { get; set; }
+		public string PageUrl { get; init; }
 
 		/// <summary>Gets or sets the number of pixels in each dimension that the video camera can display.</summary>
 		[JsonPropertyName("resolution")]
-		public string Resolution { get; set; }
+		public string Resolution { get; init; }
 
 		/// <summary>Gets or sets the stream key.</summary>
 		[JsonPropertyName("stream_key")]
-		public string Key { get; set; }
+		public string Key { get; init; }
 
 		/// <summary>Gets or sets the stream URL.</summary>
 		[JsonPropertyName("stream_url")]
-		public string Url { get; set; }
+		public string Url { get; init; }
 	}
 }

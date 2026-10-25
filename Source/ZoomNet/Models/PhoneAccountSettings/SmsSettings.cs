@@ -7,14 +7,14 @@ namespace ZoomNet.Models.PhoneAccountSettings
 	{
 		/// <summary>Gets or sets a value indicating whether message copying is allowed.</summary>
 		[JsonPropertyName("allow_copy")]
-		public bool? AllowCopy { get; set; }
+		public bool? AllowCopy { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether content pasting is allowed.</summary>
 		[JsonPropertyName("allow_paste")]
-		public bool? AllowPaste { get; set; }
+		public bool? AllowPaste { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether users can send and receive international messages.</summary>
 		[JsonPropertyName("international_sms")]
-		public bool? InternationalSms { get; set; }
+		public bool? InternationalSms { get; init; }
 	}
 }

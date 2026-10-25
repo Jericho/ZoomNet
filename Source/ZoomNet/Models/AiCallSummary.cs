@@ -8,34 +8,34 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the id of AI call summary.</summary>
 		[JsonPropertyName("ai_call_summary_id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the call id.</summary>
 		[JsonPropertyName("call_id")]
-		public string CallId { get; set; }
+		public string CallId { get; init; }
 
 		/// <summary>Gets or sets the list of call log ids.</summary>
 		[JsonPropertyName("call_log_ids")]
-		public string[] CallLogIds { get; set; }
+		public string[] CallLogIds { get; init; }
 
 		/// <summary>Gets or sets the created date and time.</summary>
 		[JsonPropertyName("created_time")]
-		public DateTime CreatedOn { get; set; }
+		public DateTime CreatedOn { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the call summary was deleted.</summary>
 		[JsonPropertyName("deleted")]
-		public bool IsDeleted { get; set; }
+		public bool IsDeleted { get; init; }
 
 		/// <summary>Gets or sets a value indicating whether the call summary was edited.</summary>
 		[JsonPropertyName("edited")]
-		public bool IsModified { get; set; }
+		public bool IsModified { get; init; }
 
 		/// <summary>Gets or sets the modified date and time.</summary>
 		[JsonPropertyName("modified_time")]
-		public DateTime? ModifiedOn { get; set; }
+		public DateTime? ModifiedOn { get; init; }
 
 		/// <summary>Gets or sets the owner's user id.</summary>
 		[JsonPropertyName("user_id")]
-		public string UserId { get; set; }
+		public string UserId { get; init; }
 	}
 }

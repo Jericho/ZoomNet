@@ -7,14 +7,14 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the email address used for the registration.</summary>
 		[JsonPropertyName("email")]
-		public string Email { get; set; }
+		public string Email { get; init; }
 
 		/// <summary>Gets or sets the error code for the failure reason.</summary>
 		[JsonPropertyName("error_code")]
-		public string ErrorCode { get; set; }
+		public string ErrorCode { get; init; }
 
 		/// <summary>Gets or sets the error message.</summary>
 		[JsonPropertyName("message")]
-		public string Message { get; set; }
+		public string Message { get; init; }
 	}
 }

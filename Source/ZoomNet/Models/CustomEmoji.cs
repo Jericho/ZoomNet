@@ -8,30 +8,30 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the custom emoji's date added.</summary>
 		[JsonPropertyName("date_added")]
-		public DateTime DateAdded { get; set; }
+		public DateTime DateAdded { get; init; }
 
 		/// <summary>Gets or sets the custom emoji id.</summary>
 		[JsonPropertyName("file_id")]
-		public string Id { get; set; }
+		public string Id { get; init; }
 
 		/// <summary>Gets or sets the custom emoji's member id.</summary>
 		[JsonPropertyName("member_id")]
-		public string MemberId { get; set; }
+		public string MemberId { get; init; }
 
 		/// <summary>Gets or sets the custom emoji's name.</summary>
 		[JsonPropertyName("name")]
-		public string Name { get; set; }
+		public string Name { get; init; }
 
 		/// <summary>Gets or sets the custom emoji's user email.</summary>
 		[JsonPropertyName("user_email")]
-		public string UserEmail { get; set; }
+		public string UserEmail { get; init; }
 
 		/// <summary>Gets or sets the custom emoji's user id.</summary>
 		[JsonPropertyName("user_id")]
-		public string UserId { get; set; }
+		public string UserId { get; init; }
 
 		/// <summary>Gets or sets the custom emoji's user name.</summary>
 		[JsonPropertyName("user_name")]
-		public string UserName { get; set; }
+		public string UserName { get; init; }
 	}
 }

@@ -4,9 +4,9 @@ namespace ZoomNet.Models.Webhooks
 	public record MeetingChatMessageFileSentEvent : ChatMessageFileSentEvent
 	{
 		/// <summary>Gets or sets the meeting id.</summary>
-		public long MeetingId { get; set; }
+		public long MeetingId { get; init; }
 
 		/// <summary>Gets or sets the meeting instance uuid.</summary>
-		public string MeetingUuid { get; set; }
+		public string MeetingUuid { get; init; }
 	}
 }

@@ -7,6 +7,6 @@ namespace ZoomNet.Models
 	{
 		/// <summary>Gets or sets the invoice items.</summary>
 		[JsonPropertyName("invoice_items")]
-		public BillingInvoiceItem[] Items { get; set; }
+		public BillingInvoiceItem[] Items { get; init; }
 	}
 }
