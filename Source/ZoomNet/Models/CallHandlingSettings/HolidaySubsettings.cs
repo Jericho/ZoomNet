@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.CallHandlingSettings
 {
 	/// <summary>Call handling holiday subsettings.</summary>
-	public class HolidaySubsettings : CallHandlingSubsettingsBase
+	public record HolidaySubsettings : CallHandlingSubsettingsBase
 	{
 		/// <summary>Gets or sets the holiday's start date and time in yyyy-MM-dd'T'HH:mm:ss'Z' format.</summary>
 		[JsonPropertyName("from")]

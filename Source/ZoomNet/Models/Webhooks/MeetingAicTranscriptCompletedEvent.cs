@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event triggers when the meeting transcript file is completed after a meeting or webinar ends.</summary>
-	public class MeetingAicTranscriptCompletedEvent : Event
+	public record MeetingAicTranscriptCompletedEvent : Event
 	{
 		/// <summary>Gets or sets the account ID of the user that hosted the meeting.</summary>
 		[JsonPropertyName("account_id")]

@@ -7,7 +7,7 @@ namespace ZoomNet.Models.CallHandlingSettings
 	[JsonDerivedType(typeof(CallHandlingSubsettings))]
 	[JsonDerivedType(typeof(CustomHoursSubsettings))]
 	[JsonDerivedType(typeof(HolidaySubsettings))]
-	public abstract class CallHandlingSubsettingsBase
+	public abstract record CallHandlingSubsettingsBase
 	{
 		/// <summary>Gets the type of sub-setting.</summary>
 		[JsonIgnore]

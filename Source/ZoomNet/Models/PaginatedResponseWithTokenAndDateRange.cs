@@ -4,7 +4,7 @@ namespace ZoomNet.Models
 {
 	/// <summary>Pagination Object.</summary>
 	/// <typeparam name="T">The type of records.</typeparam>
-	public class PaginatedResponseWithTokenAndDateRange<T> : PaginatedResponseWithToken<T>
+	public record PaginatedResponseWithTokenAndDateRange<T> : PaginatedResponseWithToken<T>
 	{
 		/// <summary>Gets or sets the start date for the report.</summary>
 		public DateOnly From { get; set; }

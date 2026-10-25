@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A poll.</summary>
-	public abstract class Poll
+	public abstract record Poll
 	{
 		/// <summary>Gets or sets a value indicating whether to allow participants to anonymously answer poll questions.</summary>
 		[JsonPropertyName("anonymous")]

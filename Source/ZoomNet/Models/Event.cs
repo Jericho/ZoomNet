@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>An event.</summary>
-	public abstract class Event
+	public abstract record Event
 	{
 		/// <summary>Gets or sets the access level.</summary>
 		[JsonPropertyName("access_level")]

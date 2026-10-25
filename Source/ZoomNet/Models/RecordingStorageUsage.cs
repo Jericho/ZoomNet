@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Information about recording cloud storage usage.</summary>
-	public class RecordingStorageUsage
+	public record RecordingStorageUsage
 	{
 		/// <summary>Gets or sets the recording free storage.</summary>
 		[JsonPropertyName("free_storage")]

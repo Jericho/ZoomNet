@@ -1,7 +1,7 @@
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered every time a user rejects an invitation to join a meeting through phone (call out).</summary>
-	public class MeetingParticipantPhoneCalloutRejectedEvent : MeetingParticipantPhoneCalloutEvent
+	public record MeetingParticipantPhoneCalloutRejectedEvent : MeetingParticipantPhoneCalloutEvent
 	{
 	}
 }

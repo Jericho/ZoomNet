@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Recording user settings.</summary>
-	public class RecordingUserSettings
+	public record RecordingUserSettings
 	{
 		/// <summary>Gets or sets a value indicating whether to ask the host to confirm the disclaimer.</summary>
 		[JsonPropertyName("ask_host_to_confirm_disclaimer")]

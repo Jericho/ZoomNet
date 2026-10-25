@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Ip address access control settings.</summary>
-	public class IpAddressAccessControlSettings
+	public record IpAddressAccessControlSettings
 	{
 		/// <summary>
 		/// Gets or sets a value indicating whether the cloud recordings of this account can only be accessed by the IP addresses defined in the <see cref="IpAddressesAndRanges"/> property.

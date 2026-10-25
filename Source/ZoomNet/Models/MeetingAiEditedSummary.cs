@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>The edited version of a meeting AI summary.</summary>
-	public class MeetingAiEditedSummary
+	public record MeetingAiEditedSummary
 	{
 		/// <summary>Gets or sets the edited next steps.</summary>
 		[JsonPropertyName("next_steps")]

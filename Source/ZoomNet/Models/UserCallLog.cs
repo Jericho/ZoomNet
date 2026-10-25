@@ -4,7 +4,7 @@ namespace ZoomNet.Models
 {
 	/// <summary>A user call log item.</summary>
 	/// <seealso cref="ZoomNet.Models.CallLog" />
-	public class UserCallLog : CallLog
+	public record UserCallLog : CallLog
 	{
 		/// <summary>Gets or sets the "accepted by" information.</summary>
 		[JsonPropertyName("accepted_by")]

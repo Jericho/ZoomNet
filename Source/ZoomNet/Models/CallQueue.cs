@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A Call Queue.</summary>
-	public class CallQueue
+	public record CallQueue
 	{
 		/// <summary>Gets or sets the extension id.</summary>
 		[JsonPropertyName("extension_id")]

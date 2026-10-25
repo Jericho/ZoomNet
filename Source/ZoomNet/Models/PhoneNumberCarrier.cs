@@ -9,7 +9,7 @@ namespace ZoomNet.Models
 	/// <item><term>name</term><description>The name of the carrier.</description></item>
 	/// </list>
 	/// </remarks>
-	public class PhoneNumberCarrier
+	public record PhoneNumberCarrier
 	{
 		/// <summary>Gets or sets the unique identifier of the carrier.</summary>
 		[JsonPropertyName("code")]

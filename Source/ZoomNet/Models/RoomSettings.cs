@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>The model of room settings.</summary>
-	public class RoomSettings
+	public record RoomSettings
 	{
 		/// <summary>Gets or sets a value indicating whether to allow multiple content sharing.</summary>
 		[JsonPropertyName("allow_multiple_content_sharing")]

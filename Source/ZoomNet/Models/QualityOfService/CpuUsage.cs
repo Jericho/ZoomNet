@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.QualityOfService
 {
 	/// <summary>CPU usage metrics.</summary>
-	public class CpuUsage
+	public record CpuUsage
 	{
 		/// <summary>Gets or sets the system maximum cpu usage.</summary>
 		[JsonPropertyName("system_max_cpu_usage")]

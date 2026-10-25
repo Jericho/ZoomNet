@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Authentication options.</summary>
-	public class AuthenticationOptions
+	public record AuthenticationOptions
 	{
 		/// <summary>Gets or sets a value indicating whether this is the default authentication option.</summary>
 		[JsonPropertyName("default_option")]

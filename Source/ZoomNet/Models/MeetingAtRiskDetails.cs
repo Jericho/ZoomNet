@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Information about the at-risk meeting.</summary>
-	public class MeetingAtRiskDetails
+	public record MeetingAtRiskDetails
 	{
 		/// <summary>Gets or sets the meeting's url.</summary>
 		[JsonPropertyName("meeting_url")]

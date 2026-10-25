@@ -4,7 +4,7 @@ using ZoomNet.Json;
 namespace ZoomNet.Models
 {
 	/// <summary>Daily Usage Summary.</summary>
-	public class DailyUsageSummary
+	public record DailyUsageSummary
 	{
 		/// <summary>Gets or sets the date.</summary>
 		[JsonPropertyName("date")]

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>Represents an event related to a meeting live streaming.</summary>
-	public abstract class MeetingLiveStreamEvent : MeetingInfoEvent
+	public abstract record MeetingLiveStreamEvent : MeetingInfoEvent
 	{
 		/// <summary>Gets or sets the email address of the user who started the live stream.</summary>
 		[JsonPropertyName("operator")]

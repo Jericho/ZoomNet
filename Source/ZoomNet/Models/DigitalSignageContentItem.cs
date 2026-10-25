@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Represents a content item in the Zoom Rooms Digital Signage content library.</summary>
-	public class DigitalSignageContentItem
+	public record DigitalSignageContentItem
 	{
 		/// <summary>Gets or sets the content item ID.</summary>
 		[JsonPropertyName("content_id")]

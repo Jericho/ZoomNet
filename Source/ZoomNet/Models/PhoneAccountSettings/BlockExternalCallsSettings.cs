@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Settings that allow to set rules for blocking external calls during business, closed, and holiday hours.</summary>
-	public class BlockExternalCallsSettings : SettingsGroupBase
+	public record BlockExternalCallsSettings : SettingsGroupBase
 	{
 		/// <summary>Gets or sets a value indicating whether external calls are blocked during business hours.</summary>
 		[JsonPropertyName("block_business_hours")]

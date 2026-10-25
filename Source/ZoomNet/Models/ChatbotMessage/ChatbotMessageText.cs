@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.ChatbotMessage;
 
 /// <summary>The attachment information field.</summary>
-public class ChatbotMessageText
+public record ChatbotMessageText
 {
 	/// <summary>Initializes a new instance of the <see cref="ChatbotMessageText"/> class.</summary>
 	public ChatbotMessageText()

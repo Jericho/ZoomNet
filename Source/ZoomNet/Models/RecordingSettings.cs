@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Meeting recording settings.</summary>
-	public class RecordingSettings
+	public record RecordingSettings
 	{
 		/// <summary>Gets or sets the approval type for the registration.</summary>
 		[JsonPropertyName("approval_type")]

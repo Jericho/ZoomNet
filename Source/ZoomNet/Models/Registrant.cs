@@ -6,7 +6,7 @@ using ZoomNet.Json;
 namespace ZoomNet.Models
 {
 	/// <summary>Someone who has registered for a meeting or a webinar.</summary>
-	public class Registrant
+	public record Registrant
 	{
 		/// <summary>Gets or sets the address.</summary>
 		[JsonPropertyName("address")]

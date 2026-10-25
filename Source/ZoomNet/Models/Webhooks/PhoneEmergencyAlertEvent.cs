@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when Zoom phone users dials emergency number from their Zoom phone.</summary>
-	public class PhoneEmergencyAlertEvent : Event
+	public record PhoneEmergencyAlertEvent : Event
 	{
 		/// <summary>Gets or sets caller's account id.</summary>
 		[JsonPropertyName("account_id")]

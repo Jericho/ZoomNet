@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Survey question.</summary>
-	public class SurveyQuestion
+	public record SurveyQuestion
 	{
 		/// <summary>Gets or sets the maximum number of characters. This field only applies to questions of type 'Long'.</summary>
 		/// <remarks>Must be smaller or equal to 2,000.</remarks>

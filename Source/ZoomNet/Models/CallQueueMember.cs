@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Represents a member of a call queue, which can be a user or a common area.</summary>
-	public class CallQueueMember
+	public record CallQueueMember
 	{
 		/// <summary>Gets or sets the member id.</summary>
 		[JsonPropertyName("id")]

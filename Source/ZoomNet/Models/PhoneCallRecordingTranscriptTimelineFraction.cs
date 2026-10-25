@@ -5,7 +5,7 @@ namespace ZoomNet.Models
 {
 	/// <summary>Phone call recording transcript timeline fraction.</summary>
 	/// <remarks>Not documented by Zoom.</remarks>
-	public class PhoneCallRecordingTranscriptTimelineFraction
+	public record PhoneCallRecordingTranscriptTimelineFraction
 	{
 		/// <summary>Gets or sets the transcribed text end timespan.</summary>
 		/// <remarks>Not documented by Zoom.</remarks>

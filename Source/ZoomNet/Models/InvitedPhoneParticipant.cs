@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Represents information about the participant invited to join a meeting through phone (call out).</summary>
-	public class InvitedPhoneParticipant
+	public record InvitedPhoneParticipant
 	{
 		/// <summary>Gets or sets the user's name to display in the meeting.</summary>
 		[JsonPropertyName("invitee_name")]

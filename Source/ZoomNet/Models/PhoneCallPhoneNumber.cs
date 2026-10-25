@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models;
 
 /// <summary>Represents a phone number used in a phone call.</summary>
-public class PhoneCallPhoneNumber
+public record PhoneCallPhoneNumber
 {
 	/// <summary>Gets or sets the phone number ID.</summary>
 	[JsonPropertyName("id")]

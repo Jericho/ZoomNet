@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>An account's billing information.</summary>
-	public class BillingInfo
+	public record BillingInfo
 	{
 		/// <summary>Gets or sets the billing contact's address.</summary>
 		[JsonPropertyName("address")]

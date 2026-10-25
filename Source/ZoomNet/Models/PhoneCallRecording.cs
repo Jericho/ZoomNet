@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Phone call recording.</summary>
-	public class PhoneCallRecording : PhoneCallRecordingBasicInfo
+	public record PhoneCallRecording : PhoneCallRecordingBasicInfo
 	{
 		/// <summary>Gets or sets the call-receiving user.</summary>
 		/// <remarks>The recording must belong to the receiver and call queue for it to be available.</remarks>

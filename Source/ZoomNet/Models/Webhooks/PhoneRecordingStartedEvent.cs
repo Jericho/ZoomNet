@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when the recordings has been initiated in a phone call.</summary>
-	public class PhoneRecordingStartedEvent : RecordingEvent
+	public record PhoneRecordingStartedEvent : RecordingEvent
 	{
 		/// <summary>Gets or sets information about started recording.</summary>
 		[JsonPropertyName("object")]

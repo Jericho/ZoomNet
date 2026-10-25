@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>AI phone call summary.</summary>
-	public class AiCallSummary
+	public record AiCallSummary
 	{
 		/// <summary>Gets or sets the id of AI call summary.</summary>
 		[JsonPropertyName("ai_call_summary_id")]

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Telephony regions settings.</summary>
-	public class TelephonyRegionsSettings
+	public record TelephonyRegionsSettings
 	{
 		/// <summary>Gets or sets the Telephony regions provided by Zoom to select from.</summary>
 		[JsonPropertyName("allowed_values")]

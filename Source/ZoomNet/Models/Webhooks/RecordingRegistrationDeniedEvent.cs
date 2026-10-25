@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered every time a registrant is denied from viewing a cloud recording.</summary>
-	public class RecordingRegistrationDeniedEvent : RecordingRegistrationEvent
+	public record RecordingRegistrationDeniedEvent : RecordingRegistrationEvent
 	{
 		/// <summary>Gets or sets the email address of the user who denied the recording registration.</summary>
 		[JsonPropertyName("operator")]

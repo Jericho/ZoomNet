@@ -1,7 +1,7 @@
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a meeting participant joins a meeting before the host.</summary>
-	public class MeetingParticipantJoinedBeforeHostEvent : MeetingParticipantEvent
+	public record MeetingParticipantJoinedBeforeHostEvent : MeetingParticipantEvent
 	{
 	}
 }

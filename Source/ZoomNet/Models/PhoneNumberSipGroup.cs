@@ -9,7 +9,7 @@ namespace ZoomNet.Models
 	/// <item><term>name</term><description>The name of the carrier.</description></item>
 	/// </list>
 	/// </remarks>
-	public class PhoneNumberSipGroup
+	public record PhoneNumberSipGroup
 	{
 		/// <summary>Gets or sets the unique identifier of the SIP group.</summary>
 		[JsonPropertyName("display_name")]

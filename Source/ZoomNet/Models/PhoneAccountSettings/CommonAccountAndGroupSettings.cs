@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Settings that are common for the account and the group.</summary>
-	public abstract class CommonAccountAndGroupSettings
+	public abstract record CommonAccountAndGroupSettings
 	{
 		/// <summary>Gets or sets settings that control ad-hoc call recording.</summary>
 		[JsonPropertyName("ad_hoc_call_recording")]

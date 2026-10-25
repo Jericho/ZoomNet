@@ -8,7 +8,7 @@ using ZoomNet.Json;
 namespace ZoomNet.Models.ChatbotMessage;
 
 /// <summary>A message section that groups together multiple messages with a common sidebar.</summary>
-public class ChatbotSection : IChatbotBody, IChatbotValidate
+public record ChatbotSection : IChatbotBody, IChatbotValidate
 {
 	/// <summary>Gets or sets the footer for this section.</summary>
 	[JsonPropertyName("footer")]

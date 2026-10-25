@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.ChatbotMessage;
 
 /// <summary>The attachment information.</summary>
-public class ChatbotAttachmentInformation
+public record ChatbotAttachmentInformation
 {
 	/// <summary>Gets or sets the description line of the attachment.</summary>
 	[JsonPropertyName("description")]

@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Meeting transcript metadata returned by the Zoom Meetings API.</summary>
-	public class MeetingTranscriptInfo
+	public record MeetingTranscriptInfo
 	{
 		/// <summary>Gets or sets the account ID.</summary>
 		[JsonPropertyName("account_id")]

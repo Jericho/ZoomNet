@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Summary information about a meeting.</summary>
-	public class MeetingSummary : MeetingInfo
+	public record MeetingSummary : MeetingInfo
 	{
 		/// <summary>Gets or sets the meeting description.</summary>
 		/// <remarks>

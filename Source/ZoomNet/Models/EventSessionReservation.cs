@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A session reservation for a registrant.</summary>
-	public class EventSessionReservation
+	public record EventSessionReservation
 	{
 		/// <summary>Gets or sets the email address of the registrant.</summary>
 		[JsonPropertyName("email")]

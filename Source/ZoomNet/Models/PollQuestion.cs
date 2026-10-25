@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>The answer to a question asked during a poll.</summary>
-	public abstract class PollQuestion
+	public abstract record PollQuestion
 	{
 		/// <summary>Gets or sets the maximum number of characters.</summary>
 		/// <remarks>

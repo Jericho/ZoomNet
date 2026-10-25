@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>The recipient who received a warm/blind transfer call from the webhook event owner.</summary>
-	public class WebhookCallTransferRecipient
+	public record WebhookCallTransferRecipient
 	{
 		/// <summary>Gets or sets the recipient's extension number.</summary>
 		[JsonPropertyName("extension_number")]

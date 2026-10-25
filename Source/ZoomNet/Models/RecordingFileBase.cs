@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Base information about recording file.</summary>
-	public abstract class RecordingFileBase
+	public abstract record RecordingFileBase
 	{
 		private static readonly RecordingContentType[] _screenShareContentTypes =
 		{

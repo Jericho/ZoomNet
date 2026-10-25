@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.CallHandlingSettings
 {
 	/// <summary>The call forwarding route settings. It's only required for the <see cref="CallForwardingSubsettings"/>.</summary>
-	public class CallForwardingChildSubsettings
+	public record CallForwardingChildSubsettings
 	{
 		/// <summary>Gets or sets the external phone number's description.</summary>
 		[JsonPropertyName("description")]

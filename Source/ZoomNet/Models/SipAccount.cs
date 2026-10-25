@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>SIP account information.</summary>
-	public class SipAccount
+	public record SipAccount
 	{
 		/// <summary>Gets or sets the authorization id of the SIP account.</summary>
 		[JsonPropertyName("authorization_id")]

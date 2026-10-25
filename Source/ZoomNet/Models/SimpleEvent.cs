@@ -4,7 +4,7 @@ namespace ZoomNet.Models
 {
 	/// <summary>A single session event.</summary>
 	/// <seealso cref="ZoomNet.Models.Event" />
-	public class SimpleEvent : Event
+	public record SimpleEvent : Event
 	{
 		/// <summary>Gets or sets the type of meeting.</summary>
 		[JsonPropertyName("meeting_type")]

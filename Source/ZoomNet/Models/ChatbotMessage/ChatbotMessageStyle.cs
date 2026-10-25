@@ -5,7 +5,7 @@ using ZoomNet.Json;
 namespace ZoomNet.Models.ChatbotMessage;
 
 /// <summary>A style applied to a message.</summary>
-public class ChatbotMessageStyle
+public record ChatbotMessageStyle
 {
 	/// <summary>Gets or sets a value indicating whether the bold style is set for this message.</summary>
 	[JsonPropertyName("bold")]

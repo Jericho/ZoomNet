@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Dial-in information.</summary>
-	public class DialInInfo
+	public record DialInInfo
 	{
 		/// <summary>Gets or sets the dial-in city.</summary>
 		[JsonPropertyName("city")]

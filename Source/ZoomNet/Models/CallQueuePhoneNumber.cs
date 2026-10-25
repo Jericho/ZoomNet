@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Represents a phone number assigned to a call queue.</summary>
-	public class CallQueuePhoneNumber
+	public record CallQueuePhoneNumber
 	{
 		/// <summary>Gets or sets the unique identifier of the phone number.</summary>
 		[JsonPropertyName("id")]

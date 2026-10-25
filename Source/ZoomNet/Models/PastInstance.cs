@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A meeting or webinar instance that occured in the past.</summary>
-	public class PastInstance
+	public record PastInstance
 	{
 		/// <summary>Gets or sets the date and time when the instance started.</summary>
 		[JsonPropertyName("start_time")]

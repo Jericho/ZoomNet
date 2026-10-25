@@ -5,7 +5,7 @@ namespace ZoomNet.Models
 {
 	/// <summary>A language interpreter.</summary>
 	[JsonConverter(typeof(InterpreterConverter))]
-	public class LanguageInterpreter : Interpreter
+	public record LanguageInterpreter : Interpreter
 	{
 		/// <summary>Gets or sets the display name of the source language.</summary>
 		[JsonPropertyName("source_language_display_name")]

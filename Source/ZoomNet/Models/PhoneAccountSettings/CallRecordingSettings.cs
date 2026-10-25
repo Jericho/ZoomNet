@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Settings related to call recording.</summary>
-	public abstract class CallRecordingSettings : SettingsGroupBase
+	public abstract record CallRecordingSettings : SettingsGroupBase
 	{
 		/// <summary>Gets or sets settings for inbound recording audio notification.</summary>
 		[JsonPropertyName("inbound_audio_notification")]

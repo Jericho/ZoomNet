@@ -5,7 +5,7 @@ using ZoomNet.Json;
 namespace ZoomNet.Models.ChatbotMessage;
 
 /// <summary>A message line containing a dropdown list.</summary>
-public class ChatbotDropdownList : IChatbotBody, IChatbotSection
+public record ChatbotDropdownList : IChatbotBody, IChatbotSection
 {
 	/// <summary>Gets or sets the data for this dropdown list.</summary>
 	/// <remarks>Should be null when <see cref="StaticSource"/> is set.</remarks>

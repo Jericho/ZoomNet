@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A call log item.</summary>
-	public abstract class CallLog : CallLogBasicInfo
+	public abstract record CallLog : CallLogBasicInfo
 	{
 		/// <summary>Gets or sets the call answer time.</summary>
 		[JsonPropertyName("answer_start_time")]

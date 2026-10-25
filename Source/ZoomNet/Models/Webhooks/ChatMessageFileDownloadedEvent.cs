@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>Represents event related to meeting or webinar chat message file downloading.</summary>
-	public abstract class ChatMessageFileDownloadedEvent : Event
+	public abstract record ChatMessageFileDownloadedEvent : Event
 	{
 		/// <summary>Gets or sets the account id of the user who downloaded the file. The value is blank for external users.</summary>
 		[JsonPropertyName("account_id")]

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Represents a playlist in the Zoom Rooms Digital Signage content library.</summary>
-	public class DigitalSignageContentPlaylist
+	public record DigitalSignageContentPlaylist
 	{
 		/// <summary>Gets or sets the playlist ID.</summary>
 		[JsonPropertyName("playlist_id")]

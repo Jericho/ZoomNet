@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A ssponsor tier for an event.</summary>
-	public class SponsorTier
+	public record SponsorTier
 	{
 		/// <summary>Gets or sets the description of the sponsor tier.</summary>
 		[JsonPropertyName("description")]

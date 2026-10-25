@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Settings related to playing the recording beep tone.</summary>
-	public class PlayRecordingBeepTone
+	public record PlayRecordingBeepTone
 	{
 		/// <summary>Gets or sets a value indicating whether to play the side tone beep for recorded users while recording.</summary>
 		[JsonPropertyName("enable")]

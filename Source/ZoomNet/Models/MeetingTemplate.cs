@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Details of a meeting template.</summary>
-	public class MeetingTemplate
+	public record MeetingTemplate
 	{
 		/// <summary>Gets or sets the unique identifier of the template.</summary>
 		[JsonPropertyName("id")]

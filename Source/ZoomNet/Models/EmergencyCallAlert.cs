@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Emergency call alert information as provided in <see cref="Webhooks.PhoneEmergencyAlertEvent"/>.</summary>
-	public class EmergencyCallAlert
+	public record EmergencyCallAlert
 	{
 		/// <summary>Gets or sets the call id.</summary>
 		[JsonPropertyName("call_id")]

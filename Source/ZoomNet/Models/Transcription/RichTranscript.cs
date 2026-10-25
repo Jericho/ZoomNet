@@ -7,7 +7,7 @@ namespace ZoomNet.Models.Transcription
 	/// with the TIMELINE word‑level transcript to provide a richer, more detailed
 	/// representation of the recorded meeting's spoken content.
 	/// </summary>
-	public sealed class RichTranscript
+	public sealed record RichTranscript
 	{
 		/// <summary>
 		/// Gets the list of transcript segments derived primarily from the VTT file.

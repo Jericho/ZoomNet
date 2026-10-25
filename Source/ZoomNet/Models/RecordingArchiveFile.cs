@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Information about recording archive file.</summary>
-	public class RecordingArchiveFile : RecordingFileBase
+	public record RecordingArchiveFile : RecordingFileBase
 	{
 		/// <summary>Gets or sets a value indicating whether to auto delete the archived file.</summary>
 		/// <remarks>The 'Tag Archiving Files for Deletion' feature must be enabled in OP.</remarks>

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Sharing and recording details of participants from live or past meetings.</summary>
-	public class ParticipantSharingDetails
+	public record ParticipantSharingDetails
 	{
 		/// <summary>Gets or sets the sharing details.</summary>
 		[JsonPropertyName("details")]

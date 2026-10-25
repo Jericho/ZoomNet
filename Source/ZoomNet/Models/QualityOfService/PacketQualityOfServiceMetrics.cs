@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.QualityOfService
 {
 	/// <summary>Quality of service data.</summary>
-	public class PacketQualityOfServiceMetrics
+	public record PacketQualityOfServiceMetrics
 	{
 		/// <summary>Gets or sets the average loss value.</summary>
 		[JsonPropertyName("avg_loss")]

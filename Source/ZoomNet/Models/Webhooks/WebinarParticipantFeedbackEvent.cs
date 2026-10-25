@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered every time an attendee completes an end-of-webinar feedback survey for a webinar.</summary>
-	public class WebinarParticipantFeedbackEvent : Event
+	public record WebinarParticipantFeedbackEvent : Event
 	{
 		/// <summary>Gets or sets the account id of the user who commits the feedback.</summary>
 		[JsonPropertyName("account_id")]

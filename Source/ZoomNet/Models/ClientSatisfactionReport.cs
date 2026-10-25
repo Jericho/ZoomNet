@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Report on client statisfaction feedback.</summary>
-	public class ClientSatisfactionReport
+	public record ClientSatisfactionReport
 	{
 		/// <summary>Gets or sets the collection of client feedback metrics.</summary>
 		[JsonPropertyName("client_satisfaction")]

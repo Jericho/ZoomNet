@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Information about the meeting or webinar recordings.</summary>
-	public class RecordingsBatch
+	public record RecordingsBatch
 	{
 		/// <summary>Gets or sets the uuid of the recorded meeting or webinar instance.</summary>
 		[JsonPropertyName("meeting_uuid")]

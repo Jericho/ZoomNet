@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>An exhibitor.</summary>
-	public class EventExhibitor
+	public record EventExhibitor
 	{
 		/// <summary>Gets or sets the sessions associated with the exhibitor or sponsor. The value is an array of sessionIds.</summary>
 		[JsonPropertyName("associated_sessions")]

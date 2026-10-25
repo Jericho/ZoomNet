@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Metrics of the quality of service experienced by a meeting participant.</summary>
-	public class DashboardMeetingParticipantQos
+	public record DashboardMeetingParticipantQos
 	{
 		/// <summary>Gets or sets the type of device using which the participant joined the meeting.</summary>
 		[JsonPropertyName("device")]

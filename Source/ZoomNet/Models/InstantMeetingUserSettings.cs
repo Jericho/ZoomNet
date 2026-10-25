@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Instant Meeting user settings.</summary>
-	public class InstantMeetingUserSettings
+	public record InstantMeetingUserSettings
 	{
 		/// <summary>Gets or sets a value indicating whether the host can enable Focus Mode when scheduling a meeting.</summary>
 		/// <remarks>This value defaults to null.</remarks>

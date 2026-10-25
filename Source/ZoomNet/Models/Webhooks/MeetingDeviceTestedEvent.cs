@@ -7,7 +7,7 @@ namespace ZoomNet.Models.Webhooks
 	/// When a user joins a meeting, they choose to test their connected camera, microphone, and speaker devices.
 	/// The Zoom client performs a test for the selected device and prompts a user to confirm whether the device works.
 	/// </summary>
-	public class MeetingDeviceTestedEvent : Event
+	public record MeetingDeviceTestedEvent : Event
 	{
 		/// <summary>Gets or sets the account id of the user who created the meeting.</summary>
 		[JsonPropertyName("account_id")]

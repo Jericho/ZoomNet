@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Prompt question.</summary>
-	public class PollPrompt
+	public record PollPrompt
 	{
 		/// <summary>Gets or sets the question prompt's title.</summary>
 		[JsonPropertyName("prompt_question")]

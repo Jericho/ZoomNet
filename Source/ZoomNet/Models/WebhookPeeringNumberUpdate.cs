@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Peering number update model used in webhooks.</summary>
-	public class WebhookPeeringNumberUpdate
+	public record WebhookPeeringNumberUpdate
 	{
 		/// <summary>Gets or sets the carrier code.</summary>
 		[JsonPropertyName("carrier_code")]

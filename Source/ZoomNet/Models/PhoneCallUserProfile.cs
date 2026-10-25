@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models;
 
 /// <summary>Phone call user profile information.</summary>
-public class PhoneCallUserProfile
+public record PhoneCallUserProfile
 {
 	/// <summary>Gets or sets the calling plans.</summary>
 	[JsonPropertyName("calling_plans")]

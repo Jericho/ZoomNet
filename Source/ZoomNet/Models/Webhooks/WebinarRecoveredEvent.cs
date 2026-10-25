@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered every time a user recovers a previously-deleted webinar.</summary>
-	public class WebinarRecoveredEvent : WebinarEvent
+	public record WebinarRecoveredEvent : WebinarEvent
 	{
 		/// <summary>Gets or sets the operation (allowed values: all, single).</summary>
 		[JsonPropertyName("operation")]

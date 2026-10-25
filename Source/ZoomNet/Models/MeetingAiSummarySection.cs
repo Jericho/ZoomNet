@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A section of a meeting AI summary.</summary>
-	public class MeetingAiSummarySection
+	public record MeetingAiSummarySection
 	{
 		/// <summary>Gets or sets the label of the summary section.</summary>
 		[JsonPropertyName("label")]

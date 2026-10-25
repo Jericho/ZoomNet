@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>An event coeditor.</summary>
-	public class EventCoEditor
+	public record EventCoEditor
 	{
 		/// <summary>Gets or sets the email address of the coeditor.</summary>
 		[JsonPropertyName("email")]

@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Details of participant feedback on Zoom meetings client.</summary>
-	public class ClientFeedbackDetail
+	public record ClientFeedbackDetail
 	{
 		/// <summary>Gets or sets the participant's email address.</summary>
 		[JsonPropertyName("email")]

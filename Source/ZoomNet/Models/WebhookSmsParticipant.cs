@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>The user who sent/received the SMS (as provided in webhook events).</summary>
-	public class WebhookSmsParticipant : SmsParticipantBase
+	public record WebhookSmsParticipant : SmsParticipantBase
 	{
 		/// <summary>Gets or sets sender's/receiver's id.</summary>
 		[JsonPropertyName("id")]

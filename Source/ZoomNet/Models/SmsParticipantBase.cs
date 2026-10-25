@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Base information about SMS participant (sender or receiver) common for API endpoints and webhook events.</summary>
-	public abstract class SmsParticipantBase
+	public abstract record SmsParticipantBase
 	{
 		/// <summary>Gets or sets sender's/receiver's name.</summary>
 		[JsonPropertyName("display_name")]

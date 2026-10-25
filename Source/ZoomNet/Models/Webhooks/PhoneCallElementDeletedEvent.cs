@@ -3,7 +3,7 @@ using System;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a call element is deleted.</summary>
-	public class PhoneCallElementDeletedEvent : PhoneCallLogOperationEvent
+	public record PhoneCallElementDeletedEvent : PhoneCallLogOperationEvent
 	{
 		/// <summary>Gets or sets the deleted call element ids. Empty if <see cref="DeleteAll"/> is true.</summary>
 		public string[] CallElementIds { get; set; }

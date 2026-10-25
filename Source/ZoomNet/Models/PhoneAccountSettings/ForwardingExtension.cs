@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Call forwarding extension information.</summary>
-	public class ForwardingExtension
+	public record ForwardingExtension
 	{
 		/// <summary>Gets or sets the extension's name.</summary>
 		[JsonPropertyName("display_name")]

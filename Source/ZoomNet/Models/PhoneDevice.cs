@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Phone device information.</summary>
-	public class PhoneDevice
+	public record PhoneDevice
 	{
 		/// <summary>Gets or sets device manufacturer and model name.</summary>
 		[JsonPropertyName("device_type")]

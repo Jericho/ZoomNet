@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Daily Usage Report.</summary>
-	public class DailyUsageReport
+	public record DailyUsageReport
 	{
 		/// <summary>Gets or sets the daily usage summaries.</summary>
 		[JsonPropertyName("dates")]

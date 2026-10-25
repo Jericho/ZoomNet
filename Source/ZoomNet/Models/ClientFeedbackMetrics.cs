@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Metrics for a feedback item.</summary>
-	public class ClientFeedbackMetrics
+	public record ClientFeedbackMetrics
 	{
 		/// <summary>Gets or sets the feedback id.</summary>
 		[JsonPropertyName("feedback_id")]

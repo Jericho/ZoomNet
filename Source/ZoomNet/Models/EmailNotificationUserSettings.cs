@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Email notification user settings.</summary>
-	public class EmailNotificationUserSettings
+	public record EmailNotificationUserSettings
 	{
 		/// <summary>Gets or sets a value indicating whether a notification is sent when an alternative host is set or removed from a meeting.</summary>
 		[JsonPropertyName("alternative_host_reminder")]

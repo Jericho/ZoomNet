@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Metric for chat room usage.</summary>
-	public class ImMetric
+	public record ImMetric
 	{
 		/// <summary>Gets or sets total number of instant meeting calls received by the user.</summary>
 		[JsonPropertyName("calls_receive")]

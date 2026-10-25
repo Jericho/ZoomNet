@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Settings that allow Zoom to automatically delete data after the retention duration has elapsed.</summary>
-	public class AutoDeleteDataSettings : SettingsGroupBase
+	public record AutoDeleteDataSettings : SettingsGroupBase
 	{
 		/// <summary>Gets or sets the deletion policy.</summary>
 		[JsonPropertyName("delete_type")]

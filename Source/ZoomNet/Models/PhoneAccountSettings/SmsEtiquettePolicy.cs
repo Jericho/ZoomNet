@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>SMS etiquette policy.</summary>
-	public class SmsEtiquettePolicy
+	public record SmsEtiquettePolicy
 	{
 		/// <summary>Gets or sets the action taken when a policy is triggered.</summary>
 		[JsonPropertyName("action")]

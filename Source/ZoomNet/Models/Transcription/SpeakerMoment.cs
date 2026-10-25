@@ -7,7 +7,7 @@ namespace ZoomNet.Models.Transcription
 	/// Represents a diarized moment in the recording where Zoom detected one or more
 	/// participants as speaking or contributing audio at a specific point in time.
 	/// </summary>
-	public sealed class SpeakerMoment
+	public sealed record SpeakerMoment
 	{
 		/// <summary>
 		/// Gets the timestamp within the recording at which the diarization snapshot

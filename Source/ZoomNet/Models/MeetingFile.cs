@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A file sent via in-meeting chat during a meeting.</summary>
-	public class MeetingFile
+	public record MeetingFile
 	{
 		/// <summary>Gets or sets the URL to download the file.</summary>
 		[JsonPropertyName("download_url")]

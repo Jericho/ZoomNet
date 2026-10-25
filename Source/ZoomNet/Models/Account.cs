@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>An account.</summary>
-	public class Account
+	public record Account
 	{
 		/// <summary>Gets or sets the name of the account.</summary>
 		[JsonPropertyName("account_name")]

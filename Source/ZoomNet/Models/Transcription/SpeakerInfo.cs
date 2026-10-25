@@ -5,7 +5,7 @@ namespace ZoomNet.Models.Transcription
 	/// timeline at a specific moment in the recording. This information is used
 	/// to infer which user was speaking during a given time range.
 	/// </summary>
-	public sealed class SpeakerInfo
+	public sealed record SpeakerInfo
 	{
 		/// <summary>Gets the display name of the participant, if available.</summary>
 		public string Username { get; internal set; }

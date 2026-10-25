@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A speaker.</summary>
-	public class EventSpeaker
+	public record EventSpeaker
 	{
 		/// <summary>Gets or sets the biography of the speaker.</summary>
 		[JsonPropertyName("biography")]

@@ -1,7 +1,7 @@
 namespace ZoomNet.Models
 {
 	/// <summary>Chat message party (i.e. sender or recipient) information.</summary>
-	public class ChatMessageParty
+	public record ChatMessageParty
 	{
 		/// <summary>Gets or sets message sender or recipient name.</summary>
 		public string Name { get; set; }

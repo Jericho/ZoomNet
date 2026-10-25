@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A live stream settings.</summary>
-	public class LiveStreamingSettings
+	public record LiveStreamingSettings
 	{
 		/// <summary>Gets or sets the stream page URL.</summary>
 		[JsonPropertyName("page_url")]

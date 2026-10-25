@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a meeting is deleted.</summary>
-	public class MeetingDeletedEvent : MeetingEvent
+	public record MeetingDeletedEvent : MeetingEvent
 	{
 		/// <summary>Gets or sets the operation (allowed values: all, single).</summary>
 		[JsonPropertyName("operation")]

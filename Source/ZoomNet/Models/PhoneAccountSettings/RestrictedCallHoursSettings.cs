@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Settings that allow to define when the extension or user cannot make or accept calls and send SMS.</summary>
-	public class RestrictedCallHoursSettings : SettingsGroupBase
+	public record RestrictedCallHoursSettings : SettingsGroupBase
 	{
 		/// <summary>Gets or sets a value indicating whether to allow internal calls/SMS during restricted hours.</summary>
 		[JsonPropertyName("allow_internal_calls")]

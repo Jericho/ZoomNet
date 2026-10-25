@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>The model of room setup profile.</summary>
-	public class RoomSetupProfile
+	public record RoomSetupProfile
 	{
 		/// <summary>
 		/// Gets or sets a value indicating whether to apply the same background image to all displays of the Zoom Room.

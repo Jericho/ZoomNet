@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Recurrence.</summary>
-	public class RecurrenceInfo
+	public record RecurrenceInfo
 	{
 		/// <summary>Gets or sets the date the meeting will canceled. Cannot be used with "end_times".</summary>
 		[JsonPropertyName("end_date_time")]

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Information about Zoom user and related TSP account.</summary>
-	public class UserTspAccount
+	public record UserTspAccount
 	{
 		/// <summary>Gets or sets the user's email address.</summary>
 		[JsonPropertyName("email")]

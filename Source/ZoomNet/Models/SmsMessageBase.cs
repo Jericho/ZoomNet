@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Base information about SMS message common for API endpoints and webhook events.</summary>
-	public abstract class SmsMessageBase
+	public abstract record SmsMessageBase
 	{
 		/// <summary>Gets or sets the SMS attachment array.</summary>
 		[JsonPropertyName("attachments")]

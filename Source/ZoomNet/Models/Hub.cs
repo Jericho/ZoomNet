@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>A hub.</summary>
-	public class Hub
+	public record Hub
 	{
 		/// <summary>Gets or sets the access level.</summary>
 		[JsonPropertyName("access_level")]

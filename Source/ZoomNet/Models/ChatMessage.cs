@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Chat message.</summary>
-	public class ChatMessage
+	public record ChatMessage
 	{
 		/// <summary>Gets or sets the date and time at which the message was sent.</summary>
 		[JsonPropertyName("date_time")]

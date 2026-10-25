@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.PhoneAccountSettings
 {
 	/// <summary>Setting that allows to enable call feedback and set min/max mean opinion score.</summary>
-	public class FeedbackMeanOpinionScoreSetting
+	public record FeedbackMeanOpinionScoreSetting
 	{
 		/// <summary>Gets or sets a value indicating whether setting is enabled.</summary>
 		[JsonPropertyName("enable")]

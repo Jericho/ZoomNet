@@ -5,7 +5,7 @@ using ZoomNet.Resources;
 namespace ZoomNet.Models
 {
 	/// <summary>Webinar Settings.</summary>
-	public class WebinarSettings
+	public record WebinarSettings
 	{
 		/// <summary>Gets or sets the value indicating whether to add an audio watermark when recording.</summary>
 		[JsonPropertyName("add_audio_watermark")]

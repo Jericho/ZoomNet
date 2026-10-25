@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>The answer to a question asked during a poll.</summary>
-	public class PollAnswer
+	public record PollAnswer
 	{
 		/// <summary>Gets or sets the answer submitted by the participant.</summary>
 		[JsonPropertyName("answer")]

@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Payload model for <see cref="Webhooks.ContactCenterAssetDeletedEvent"/>.</summary>
-	public class WebhookAssetDeleted
+	public record WebhookAssetDeleted
 	{
 		/// <summary>Gets or sets a value indicating whether the asset is archived.</summary>
 		[JsonPropertyName("archived")]

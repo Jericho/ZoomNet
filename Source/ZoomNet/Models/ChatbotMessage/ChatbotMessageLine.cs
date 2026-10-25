@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.ChatbotMessage;
 
 /// <summary>A line of the message body.</summary>
-public class ChatbotMessageLine : IChatbotBody, IChatbotSection, IChatbotValidate
+public record ChatbotMessageLine : IChatbotBody, IChatbotSection, IChatbotValidate
 {
 	/// <summary>Initializes a new instance of the <see cref="ChatbotMessageLine"/> class.</summary>
 	public ChatbotMessageLine()

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a webinar registration has been cancelled.</summary>
-	public class WebinarRegistrationCancelledEvent : WebinarRegistrationEvent
+	public record WebinarRegistrationCancelledEvent : WebinarRegistrationEvent
 	{
 		/// <summary>Gets or sets the email address of the user who cancelled the registration.</summary>
 		[JsonPropertyName("operator")]

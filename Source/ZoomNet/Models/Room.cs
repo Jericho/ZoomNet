@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Room.</summary>
-	public class Room
+	public record Room
 	{
 		/// <summary>Gets or sets the code used to complete the setup of the Zoom Room.</summary>
 		[JsonPropertyName("activation_code")]

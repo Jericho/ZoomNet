@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Attendee actions performed by host for an event.</summary>
-	public class AttendeeAction
+	public record AttendeeAction
 	{
 		/// <summary>Gets or sets the action name.</summary>
 		[JsonPropertyName("action")]

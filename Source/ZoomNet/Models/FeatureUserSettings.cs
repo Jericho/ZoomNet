@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 namespace ZoomNet.Models
 {
 	/// <summary>Feature user settings.</summary>
-	public class FeatureUserSettings
+	public record FeatureUserSettings
 	{
 		/// <summary>Gets or sets a value indicating whether meetings can be hosted in China.</summary>
 		[JsonPropertyName("cn_meeting")]
