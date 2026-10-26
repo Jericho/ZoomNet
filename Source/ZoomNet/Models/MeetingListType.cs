@@ -20,7 +20,7 @@ namespace ZoomNet.Models
 		/// <summary>All upcoming meetings, including live meetings.</summary>
 		/// <remarks>
 		/// I don't know what the distinction between "upcoming" and "upcoming_meetings" is.
-		/// Evidently, neither does the Zoom staff: https://devforum.zoom.us/t/upcoming-meetings-api-returns-an-empty-response/145937/15
+		/// Evidently, neither does the Zoom staff: https://devforum.zoom.us/t/upcoming-meetings-api-returns-an-empty-response/145937/15.
 		/// </remarks>
 		[EnumMember(Value = "upcoming_meetings")]
 		UpcomingMeetings,

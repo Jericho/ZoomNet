@@ -76,27 +76,6 @@ namespace ZoomNet.Utilities
 		}
 #endif
 
-#if !NET6_0_OR_GREATER
-		// This version of the cleanup loop can be used in .NET 5.0 and earlier because it uses Task.Delay() in a loop (but it's less efficient than using PeriodicTimer).
-		private async Task CleanupLoop(TimeSpan cleanUpInterval, CancellationToken cancellationToken)
-		{
-			try
-			{
-				while (!cancellationToken.IsCancellationRequested)
-				{
-					await Task.Delay(cleanUpInterval, cancellationToken).ConfigureAwait(false);
-
-					Cleanup(null);
-				}
-			}
-			catch (OperationCanceledException) { }
-			catch (Exception)
-			{
-				// Intentionally left empty
-			}
-		}
-#endif
-
 		/// <summary>
 		/// Cleans up the diagnostic store by removing entries for requests that have been garbage collected.
 		/// </summary>
@@ -150,6 +129,27 @@ namespace ZoomNet.Utilities
 
 			ReleaseUnmanagedResources();
 		}
+
+#if !NET6_0_OR_GREATER
+		// This version of the cleanup loop can be used in .NET 5.0 and earlier because it uses Task.Delay() in a loop (but it's less efficient than using PeriodicTimer).
+		private async Task CleanupLoop(TimeSpan cleanUpInterval, CancellationToken cancellationToken)
+		{
+			try
+			{
+				while (!cancellationToken.IsCancellationRequested)
+				{
+					await Task.Delay(cleanUpInterval, cancellationToken).ConfigureAwait(false);
+
+					Cleanup(null);
+				}
+			}
+			catch (OperationCanceledException) { }
+			catch (Exception)
+			{
+				// Intentionally left empty
+			}
+		}
+#endif
 
 		private void ReleaseManagedResources()
 		{

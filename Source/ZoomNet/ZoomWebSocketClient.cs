@@ -32,13 +32,13 @@ namespace ZoomNet
 		private readonly IWebProxy _proxy;
 		private readonly Func<Models.Webhooks.Event, CancellationToken, Task> _eventProcessor;
 		private readonly bool _throwWhenUnknownEventType;
+		private readonly object _heartbeatLock = new();
 
 		private WebsocketClient _websocketClient;
 		private HttpClient _httpClient;
 		private ITokenHandler _tokenHandler;
 		private CancellationTokenSource _heartbeatCts;
 		private Task _heartbeatTask;
-		private readonly object _heartbeatLock = new();
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ZoomWebSocketClient"/> class.
@@ -114,9 +114,7 @@ namespace ZoomNet
 			_websocketClient.DisconnectionHappened.Subscribe(info => _logger.LogTrace("Disconnection happened, type: {disconnectionReason}", info.Type));
 		}
 
-		/// <summary>
-		/// Start listening to incoming webhooks from Zoom.
-		/// </summary>
+		/// <summary>Start listening to incoming webhooks from Zoom.</summary>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>Asynchronous task.</returns>
 		public Task StartAsync(CancellationToken cancellationToken = default)
@@ -132,9 +130,8 @@ namespace ZoomNet
 			return _websocketClient.Start();
 		}
 
-		/// <summary>
-		/// Stops the websocket client and associated background tasks asynchronously.
-		/// </summary>
+		/// <summary>Stops the websocket client and associated background tasks asynchronously.</summary>
+		/// <returns>Asynchronous task.</returns>
 		public async Task StopAsync()
 		{
 			Task heartbeatTask = null;

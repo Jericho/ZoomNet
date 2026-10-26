@@ -126,6 +126,7 @@ namespace ZoomNet.Resources
 		}
 
 		#region Call Queues
+
 		/// <inheritdoc/>
 		public Task<CallQueue> GetCallQueueAsync(string callQueueId, CancellationToken cancellationToken = default)
 		{

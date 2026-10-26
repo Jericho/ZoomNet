@@ -143,6 +143,7 @@ namespace ZoomNet.Resources
 		#endregion
 
 		#region Call Queues Endpoints
+
 		/// <summary>
 		/// Get call queue details.
 		/// </summary>

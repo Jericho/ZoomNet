@@ -18,9 +18,7 @@ using ZoomNet.Json;
 using ZoomNet.Models;
 using ZoomNet.Utilities;
 
-#pragma warning disable IDE0130 // Namespace does not match folder structure
 namespace ZoomNet
-#pragma warning restore IDE0130 // Namespace does not match folder structure
 {
 	/// <summary>
 	/// Internal extension methods.
@@ -845,6 +843,7 @@ namespace ZoomNet
 						break;
 					}
 				}
+
 				ReadOnlySpan<char> segment = amp == -1 ? span.Slice(i) : span.Slice(i, amp);
 
 				// split on '='
