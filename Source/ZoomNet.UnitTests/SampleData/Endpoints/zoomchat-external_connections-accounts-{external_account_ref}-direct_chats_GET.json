@@ -1,0 +1,22 @@
+{
+  "limit": 20,
+  "sort_by": "external_user_name",
+  "sort_order": "desc",
+  "next_page_token": "2025-07-23,ovgxrfj8qfiyoh4nuhnvog",
+  "summary": {
+    "direct_messages_with_unique_users_in_your_account_count": 3,
+    "external_user_count": 1,
+    "users_from_your_account_count": 1
+  },
+  "external_users": [
+    {
+      "joined_date": "2025-07-23",
+      "is_external_user_deactivated": false,
+      "chats_owned_by_your_account_count": 1,
+      "external_user_email": "external-user-1@example.com",
+      "direct_messages_with_unique_users_in_your_account_count": 2,
+      "member_id": "2vy0eiD8DM8__vVkJsUb9qjbA_t0kMaXORP2-K0tidIYIAZWz_qNcaVoAGAf8okQ",
+      "external_user_name": "External User 1"
+    }
+  ]
+}

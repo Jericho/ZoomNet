@@ -24,6 +24,10 @@
         "amount": 100000,
         "currency": "USD"
       },
+      "tcb": {
+        "amount": 100000,
+        "currency": "USD"
+      },
       "updated_date": "2024-07-01",
       "trade_screening": false,
       "deal_reg_number": "DELREG-1002-L1",

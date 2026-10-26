@@ -1,0 +1,50 @@
+{
+  "event": "contact_center.engagement_conference_participant_canceled",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "engagement_id": "KGyggzS9QXWjt7L7yl2OxQ",
+      "engagement_direction": "inbound",
+      "channel": "voice",
+      "flow_id": "enETUX_FQJGYXx3Tx69nSw",
+      "flow_name": "My flow",
+      "flow_number": "+14808782332",
+      "teams": [
+        {
+          "team_id": "cLEZQivXRSq2YFOUkW3ctw",
+          "team_name": "My team"
+        }
+      ],
+      "division_id": "865BmPAaSG69vc1ZI9cxlg",
+      "division_name": "My division",
+      "date_time_ms": "2025-12-15T07:50:48.536Z",
+      "conference_id": "cc2bc81c-f6fe-4445-89c2-21a04994fb3d",
+      "conference_participants": [
+        {
+          "participant_display_name": "Jane Doe",
+          "participant_role": "customer",
+          "participant_phone_number": "+1479235161723"
+        },
+        {
+          "participant_user_id": "dsafdsaghjfdsg",
+          "participant_display_name": "Jane Smith",
+          "participant_role": "host"
+        },
+        {
+          "participant_user_id": "fhgdashjkgfds",
+          "participant_display_name": "Olivia Martin",
+          "participant_role": "invitee"
+        },
+        {
+          "participant_display_name": "John Miller",
+          "participant_role": "invitee",
+          "participant_phone_number": "+1479213567632"
+        }
+      ],
+      "canceled_participant": {
+        "participant_user_id": "ppsafdjsahfdag"
+      }
+    }
+  }
+}

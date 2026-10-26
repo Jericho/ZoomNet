@@ -61,7 +61,13 @@
           "card_id": "xBvggqyjQUal6TecwMlYwQ",
           "card_json": "{   \u0022content\u0022: {     \u0022settings\u0022: {       \u0022default_sidebar_color\u0022: \u0022#0E72ED\u0022,       \u0022is_split_sidebar\u0022: false     }   } }"
         }
-      ]
+      ],
+      "encryption_info": {
+        "key_id": "ZXhhbXBsZS1rZXktaWQ=",
+        "encrypt_context": "MTAwMSMjI0NTRTpUZWFtQ2hhdDpFeHRlcm5hbCMjIzcyYTdjOWI1YjFmNDQ1YjM4YWE5NWY0YzU2ODk3NTFjQGNvbmZlcmVuY2UueG1wcGRldi56b29tLnVz",
+        "encrypt_content": "DPOGczEf1FKiIHmcuwAAAwAAABOU5fzpb5Hn8s6t9vzu3yC\u002Bdy4=",
+        "encryption_algorithm": "AES-GCM-256"
+      }
     }
   ],
   "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",

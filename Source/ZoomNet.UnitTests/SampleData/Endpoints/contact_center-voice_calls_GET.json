@@ -132,7 +132,17 @@
           "rate": "$0.019",
           "charge_type": "per_minute"
         }
+      ],
+      "sbcInfos": [
+        {
+          "session_border_controller_name": "ams1sbc",
+          "session_border_controller_ip_address": "38.145.73.20",
+          "consumer_zoom_trunk_name": "C10010142296A06",
+          "consumer_sbc_ip_address": "39.15.60.145"
+        }
       ]
     }
-  ]
+  ],
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA"
 }

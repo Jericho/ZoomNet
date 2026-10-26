@@ -5,12 +5,23 @@
   },
   "caller_enters_no_action": {
     "action": 15,
+    "caller_no_input_timeout": 3,
     "audio_prompt_repeat": 3,
+    "voicemail_greeting": {
+      "id": "j2IsurWLRR-yWcbNGqPnaA",
+      "name": "custom.wav"
+    },
     "forward_to": {
       "display_name": "ZOOM_API Test",
       "extension_id": "z97zV9NsSoa846i-ag3uEw",
       "extension_number": "101021",
-      "id": "EVqEKnrMRWyPr705Fk5h2w"
+      "id": "EVqEKnrMRWyPr705Fk5h2w",
+      "phone_number": "\u002B18889843519",
+      "teams_app_id": "oB18huSERjqbzrsyL2bD5w",
+      "partner_contact_center_id": "0za4SO7OQ5mxeHEP8nHvGg",
+      "zva_receptionist_id": "6uv8qMMDShm6OGgFTrQPbA",
+      "third_party_agent_id": "T0x6LuR4TBKWFY6_ulxaOQ",
+      "external_contact_id": "OJGi5xOFQPmrJbKg68-iWg"
     }
   },
   "key_actions": [
@@ -22,12 +33,22 @@
         "extension_id": "TO586CYlQFC_WCUvPRXytA",
         "extension_number": "101002",
         "id": "oG_nYRFuTJiY1tu0Fur_4Q",
-        "phone_number": "\u002B12055437350"
+        "phone_number": "\u002B12055437350",
+        "teams_app_id": "oB18huSERjqbzrsyL2bD5w",
+        "partner_contact_center_id": "0za4SO7OQ5mxeHEP8nHvGg",
+        "zva_receptionist_id": "6uv8qMMDShm6OGgFTrQPbA",
+        "third_party_agent_id": "T0x6LuR4TBKWFY6_ulxaOQ",
+        "external_contact_id": "OJGi5xOFQPmrJbKg68-iWg"
       },
       "voicemail_greeting": {
         "id": "j2IsurWLRR-yWcbNGqPnaA",
         "name": "custom.wav"
       }
     }
-  ]
+  ],
+  "allow_callers_to_navigate_ivr": {
+    "enable": true,
+    "voice_input_confidence_score": "low"
+  },
+  "allow_dialing_by_extension": true
 }

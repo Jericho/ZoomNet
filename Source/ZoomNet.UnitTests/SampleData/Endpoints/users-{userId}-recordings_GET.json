@@ -20,6 +20,11 @@
       "recording_play_passcode": "yNYIS408EJygs7rE5vVsJwXIz4-VW7MH",
       "auto_delete": true,
       "auto_delete_date": "2028-07-12",
+      "service_name": "recording_1 ",
+      "rc_zone": "zone-1202",
+      "instance_id": "01fe6a07d0462b39717fa009f32541ab803e6690a4169d82a66f9a8a4da84225 ",
+      "share_url": "https://example.com/rec/share/WIJ8urG7u8tot6TRFBCzg6cWVb-XKJ_ZUVkzGb03utHQI0crVlLcMBtSY670oz8r.NCPzhUaalBJ1dDTD",
+      "external_storage_addr": "192.163.1.2 ",
       "recording_files": [
         {
           "deleted_time": "2021-03-18T05:41:36Z",

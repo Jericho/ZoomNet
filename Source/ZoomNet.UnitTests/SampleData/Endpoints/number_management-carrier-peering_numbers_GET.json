@@ -7,9 +7,15 @@
       "assigned": true,
       "billing_ref_id": "Some billing referenceId",
       "phone_number": "\u002B18108001001",
+      "allocated_product": "ZOOM_PHONE",
       "service_info": "Some service info",
       "sip_trunk_name": "test-carrier-sip-trunk",
-      "status": true
+      "status": true,
+      "voice_msg_capacity": "MULTI_USE",
+      "voice_direction": "INBOUND_AND_OUTBOUND",
+      "outbound_dialer_not_supported": false,
+      "outbound_cli_share_not_supported": false,
+      "message_capability": "NOT_APPLICABLE"
     }
   ],
   "total_records": 20

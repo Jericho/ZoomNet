@@ -1,4 +1,5 @@
 {
+  "engagement_id": "DmJzBVygRcaMuPqYar2lxU",
   "messages": [
     {
       "message_id": "lKK_xlqXQWex0mKUYyGHUw",
@@ -6,12 +7,47 @@
         "type": "text",
         "value": "agent accept"
       },
+      "message_details": {
+        "content_type": "text",
+        "content": "\u003Chtml\u003E\u003Chead\u003E\u003Cmeta charset=\u0022UTF-8\u0022\u003E\u003C/head\u003E\u003Cbody\u003E\u003Cp\u003ERefund request for order 774512.\u003C/p\u003E\u003Cp\u003ECustomer reports duplicate charge and asks for reversal.\u003C/p\u003E\u003C/body\u003E\u003C/html\u003E",
+        "text": "Refund request for order 774512. Customer reports duplicate charge and asks for reversal.",
+        "subject": "Refund request for order",
+        "from_address": {
+          "name": "Jane Doe",
+          "address": "jdoe@example.com"
+        },
+        "to_addresses": [
+          {
+            "name": "Jane Doe",
+            "address": "jdoe@example.com"
+          }
+        ],
+        "files": [
+          {
+            "file_type": "application/pdf",
+            "file_name": "invoice_2025.pdf",
+            "file_size": 1024,
+            "download_url": "https://www.example.com/v2/contact_center/attachments/0AYFv9ePSsmPUSJYHorUWQ/download?type=email_attachment"
+          }
+        ],
+        "inline_files": [
+          {
+            "file_type": "image/png",
+            "file_name": "logo.png",
+            "file_size": 2048,
+            "download_url": "https://www.example.com/v2/contact_center/attachments/0AYFv9ePSsmPUSJYHorUWQ/download?type=email_attachment"
+          }
+        ]
+      },
       "sent_time": "2025-12-03T13:07:46.1230000\u002B00:00",
       "sender_participant_id": "wMLp6VvjTc6A1mkiwHt3dQ",
       "sender_participant_name": "Agent Alice",
-      "message_type": "system"
+      "message_type": "system",
+      "message_channel": "email"
     }
   ],
   "has_more": false,
-  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42"
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA"
 }

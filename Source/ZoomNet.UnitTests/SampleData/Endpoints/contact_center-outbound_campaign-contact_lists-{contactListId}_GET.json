@@ -2,5 +2,8 @@
   "contact_list_id": "MN2Dtcb2T-yT5CU3clN-AA",
   "contact_list_name": "Contact List",
   "contact_list_description": "Description",
-  "contacts_count": 1
+  "contacts_count": 1,
+  "contact_list_type": "contact",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
 }

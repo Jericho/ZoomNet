@@ -1,0 +1,18 @@
+{
+  "from": "2026-05-11",
+  "to": "2026-05-27",
+  "next_page_token": "Tva2CuIdTgsv8wAnhyAdU3m06Y2HuLQtlh3",
+  "page_size": 30,
+  "total_records": 79,
+  "details": [
+    {
+      "display_name": "Jacky",
+      "email": "abc@test.com",
+      "action": 20,
+      "features_used": [
+        "meetings_total"
+      ],
+      "dept": "HR"
+    }
+  ]
+}

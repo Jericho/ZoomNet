@@ -5,7 +5,8 @@
       "access_user_id": "w0RChiauQeqRlv5fgxYULQ",
       "access_user_type": "commonArea",
       "delete": false,
-      "download": false
+      "download": false,
+      "share": false
     }
   ],
   "voicemail_transcription": {
@@ -32,5 +33,81 @@
     "locked": true,
     "locked_by": "site",
     "modified": true
+  },
+  "call_screening": {
+    "enable": true,
+    "locked": false,
+    "locked_by": "invalid",
+    "modified": false,
+    "exclude_user_company_contacts": false
+  },
+  "block_calls_without_caller_id": {
+    "enable": false,
+    "locked": false,
+    "locked_by": "invalid",
+    "modified": false
+  },
+  "auto_delete_data_after_retention_duration": {
+    "enable": false,
+    "locked": false,
+    "locked_by": "invalid",
+    "modified": false,
+    "items": [
+      {
+        "type": "callLog",
+        "duration": -1,
+        "time_unit": "day"
+      }
+    ],
+    "delete_type": 1,
+    "permanently_delete_after_days": -1
+  },
+  "team_sms_thread_summary": {
+    "enable": false,
+    "locked": false,
+    "locked_by": "invalid",
+    "modified": false
+  },
+  "sms_template": {
+    "enable": false,
+    "sms_template_list": [
+      {
+        "sms_template_id": "yCT14TwySDGVUypVlKNEyA",
+        "name": "Out of Office",
+        "description": "This template will have an OOO message",
+        "content": "I am currently out of office and will respond when I return.",
+        "active": true
+      }
+    ],
+    "locked": false,
+    "locked_by": "invalid",
+    "modified": false
+  },
+  "sms_auto_reply": {
+    "enable": false,
+    "locked": false,
+    "locked_by": "invalid",
+    "modified": false,
+    "auto_reply_for_inbound_message": {
+      "trigger_event_type": "closed_hours",
+      "content": "Thank you for contacting us. We are currently closed and will respond during business hours.",
+      "active": true
+    }
+  },
+  "voicemail_greeting_enforcement_preamble_postamble": {
+    "enable": false,
+    "locked": false,
+    "locked_by": "invalid",
+    "modified": false,
+    "play_preamble_message_before_voicemail_greeting": {
+      "enable": false,
+      "audio_id": "yCT14TwySDGVUypVlKNEyA",
+      "audio_name": "preamble_greeting.mp3"
+    },
+    "play_postamble_message_after_voicemail_greeting": {
+      "enable": false,
+      "audio_id": "yCT14TwySDGVUypVlKNEyA",
+      "audio_name": "postamble_greeting.mp3"
+    }
   }
 }

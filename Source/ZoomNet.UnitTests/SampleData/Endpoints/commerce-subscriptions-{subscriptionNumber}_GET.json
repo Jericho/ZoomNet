@@ -137,6 +137,7 @@
       "sku": "SKU-00000118",
       "offer_price_list_id": "PRL-2323",
       "offer_price_list_name": "Zoom Workplace Pro Annual",
+      "subscription_price_list_id": "fvnderfy89rui43jr23ej23",
       "quantity": 100,
       "start_date": "2023-10-03",
       "end_date": "2024-10-03",
@@ -146,6 +147,7 @@
           "charge_model": "Volume Pricing",
           "charge_type": "OneTime",
           "charge_id": "PRLC-3223",
+          "is_channel_discount_applicable": true,
           "partner_sku_code": "PAR1-ENT-BASE-NH1Y",
           "sale_price": {
             "amount": 99.99,

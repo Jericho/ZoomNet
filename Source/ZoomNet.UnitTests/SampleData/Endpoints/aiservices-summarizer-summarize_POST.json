@@ -1,0 +1,22 @@
+{
+  "request_id": "req_abc123",
+  "task": "full_summary",
+  "result": {
+    "recap": "The team aligned on deliverables: Bob will document the auth API by Friday.",
+    "summary_text": "**Authentication Module**\nBob completed the auth module. Documentation is due Friday.",
+    "action_items": "- **Bob**: Document the auth API by Friday",
+    "full_summary": "## Recap\nThe team aligned on deliverables: Bob will document the auth API by Friday.\n\n## Summary\n**Authentication Module**\nBob completed the auth module. Documentation is due Friday.\n\n## Action Items\n- **Bob**: Document the auth API by Friday"
+  },
+  "model": "zoom-summarizer-v1",
+  "usage": {
+    "input_units": 4820,
+    "output_units": 312,
+    "unit_type": "characters",
+    "details": {
+      "summarizer": {
+        "task": "full_summary",
+        "summary_type": "CONVERSATION"
+      }
+    }
+  }
+}

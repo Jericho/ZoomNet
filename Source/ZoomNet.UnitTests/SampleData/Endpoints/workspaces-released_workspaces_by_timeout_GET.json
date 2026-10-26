@@ -2,7 +2,7 @@
   "next_page_token": "At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2",
   "page_size": 30,
   "total_records": 20,
-  "release_events": [
+  "release_infos": [
     {
       "event_id": "qMOLddnySIGGVycz8aX_JQ",
       "workspace_id": "qMOLddnySIGGVycz8aX_JQ",

@@ -62,7 +62,9 @@
       "has_archiving": false,
       "optional_archiving": "no optional archiving",
       "bo_mtg_id": "Dkgwu8nm/ExG1vM\u002BGhLRhA==",
-      "zoom_thin_client_plugin_version": "6.5.11.26770"
+      "zoom_thin_client_plugin_version": "6.5.11.26770",
+      "vdi_plugin_info_status": "Local",
+      "vdi_plugin_info_fb_code_reason": "None (no error)"
     }
   ]
 }

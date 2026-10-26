@@ -14,7 +14,16 @@
           "attendee_id": "z7q0q2962w8iyj87249zbi7t10",
           "last_name": "tom",
           "time_zone": "Asia/Shanghai",
-          "no_show": false
+          "no_show": false,
+          "customValues": [
+            {
+              "name": "question1",
+              "position": 1,
+              "values": [
+                "At home"
+              ]
+            }
+          ]
         }
       ],
       "description": "15 Minute Meeting",

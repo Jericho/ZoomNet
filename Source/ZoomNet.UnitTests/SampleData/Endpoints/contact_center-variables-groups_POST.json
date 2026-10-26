@@ -3,5 +3,7 @@
   "variable_group_name": "us.group",
   "variable_group_description": "The first custom group.",
   "variable_group_type": "custom",
-  "variable_group_variables_count": 0
+  "variable_group_variables_count": 0,
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
 }

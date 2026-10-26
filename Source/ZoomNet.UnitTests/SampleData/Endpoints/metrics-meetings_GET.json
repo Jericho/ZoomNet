@@ -47,7 +47,8 @@
       "has_poll": false,
       "has_qa": false,
       "has_survey": false,
-      "avg_jointime_cost": 4.55
+      "avg_jointime_cost": 4.55,
+      "has_external_participant": true
     }
   ]
 }

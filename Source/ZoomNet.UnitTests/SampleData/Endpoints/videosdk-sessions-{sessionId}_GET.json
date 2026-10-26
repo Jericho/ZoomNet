@@ -17,6 +17,7 @@
   "created_at": "2022-03-25T07:29:29.0000000\u002B00:00",
   "settings": {
     "auto_recording": "cloud",
+    "hold": 0,
     "global_dial_in_countries": [
       "US"
     ],

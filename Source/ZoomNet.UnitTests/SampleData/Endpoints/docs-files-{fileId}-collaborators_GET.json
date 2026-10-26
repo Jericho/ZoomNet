@@ -1,0 +1,14 @@
+{
+  "collaborators": [
+    {
+      "collaborator_id": "user:9aSWJV2rTyWwkIDWmPYsfg",
+      "collaborator_type": "user",
+      "role": "viewer",
+      "collaborator_name": "Jack",
+      "user_id": "9aSWJV2rTyWwkIDWmPYsfg",
+      "channel_id": "utSBcPSTQTmiebe_if1rpg",
+      "email": "user@example.com",
+      "avatar_url": "https://images.zoom.us/p/v2/c6ea193b21e21r4rdqw21wdc3b0170737fb3213e21e34/1f1wwe2c3-432e-4dfa-92ab-f732w1a385q1301-2v21"
+    }
+  ]
+}

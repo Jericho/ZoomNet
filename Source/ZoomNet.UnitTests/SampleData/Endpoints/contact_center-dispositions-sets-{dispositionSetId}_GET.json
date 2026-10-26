@@ -13,9 +13,11 @@
   ],
   "queues": [
     {
-      "queue_id": "d95avl1eRJ-H162PZUJ-qg",
-      "cc_queue_id": "d95avl1eRJ-H162PZUJ-qg",
-      "queue_name": "Sales"
+      "queue_id": "Ql3qxUWXSHes4PmcOmzyOg",
+      "cc_queue_id": "a4lCNeq2SzKbgkcDVbjCZQ",
+      "queue_name": "Voice - Customer Support"
     }
-  ]
+  ],
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
 }

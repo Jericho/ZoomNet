@@ -1,0 +1,22 @@
+{
+  "event": "contact_center.queue_disposition_updated",
+  "event_ts": 1627906944384,
+  "payload": {
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
+    "object": {
+      "cc_queue_id": "xqJE_cgERLyAJHYYL5LLeg",
+      "queue_name": "My Queue",
+      "assign_type": "inbound",
+      "modified_by": "ukAAkZKfROKMSw1bj_RDFQ",
+      "date_time_ms": "2026-07-13T09:27:15.987Z",
+      "division_id": "f5c4ZOdARVu5VWQaWkQyrw",
+      "division_name": "My Division",
+      "updates": {
+        "default_disposition_id": "3mKdQvXTRC-hqPzL9scLLQ",
+        "default_disposition_name": "Callback Scheduled",
+        "disposition_required": true,
+        "enable_disposition": true
+      }
+    }
+  }
+}

@@ -29,6 +29,9 @@
   "audio_quality": "good",
   "video_quality": "good",
   "screen_share_quality": "good",
+  "has_meeting_summary": true,
+  "has_aic_conversation": true,
   "has_poll": false,
-  "has_survey": false
+  "has_survey": false,
+  "has_external_participant": true
 }

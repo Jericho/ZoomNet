@@ -11,6 +11,9 @@
       "marketing_consent_prechecked": 0,
       "register_date": "2022-03-24T22:30:00.0000000\u002B00:00",
       "event_attendance": "attended",
+      "registered_session_ids": [
+        "UoARddSoTN2gPKIXxVPbCQ"
+      ],
       "attendance_type": [
         "hybrid"
       ],

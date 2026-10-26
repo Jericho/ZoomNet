@@ -1,0 +1,29 @@
+{
+  "import_id": "imp_abc123",
+  "status": "completed",
+  "source": "slack_lists",
+  "submitted_at": "2026-04-15T10:06:30.0000000\u002B00:00",
+  "completed_at": "2026-04-15T10:06:45.0000000\u002B00:00",
+  "project_name": "Project tracker",
+  "project_id": "project_id_123",
+  "project_link": "https://tasks.example.com/project/project_id_123",
+  "total_tasks": 1000,
+  "processed_tasks": 430,
+  "successful_tasks": 993,
+  "failed_tasks": 7,
+  "failed_task_details": [
+    {
+      "record_id": "Rec0ABEDKGPQC",
+      "title": "Print welcome banner",
+      "error": "Invalid due date format"
+    }
+  ],
+  "unmapped_users": [
+    "U09XYZ",
+    "U08ABC"
+  ],
+  "warnings": [
+    "2 tasks created without due date"
+  ],
+  "error": "Invalid file format: missing required field list_metadata"
+}

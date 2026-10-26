@@ -1,8 +1,8 @@
 {
-  "queue_id": "zeYjXoDOS_eV1QmTpj63PQ",
-  "cc_queue_id": "xqJE_cgERLyAJHYYL5LLeg",
-  "queue_name": "queue_661c6e4b-89fc-4b0d-9978-c7394725462",
-  "queue_description": "This is a task queue.",
+  "queue_id": "Ql3qxUWXSHes4PmcOmzyOg",
+  "cc_queue_id": "a4lCNeq2SzKbgkcDVbjCZQ",
+  "queue_name": "Voice - Customer Support",
+  "queue_description": "Agents assigned to this queue handle Customer Support voice calls.",
   "dispositions_count": 1,
   "disposition_sets_count": 1,
   "channel_types": [
@@ -18,6 +18,7 @@
   },
   "distribution_type": 1,
   "distribution_duration_in_seconds": 30,
+  "direct_transfer_waiting_experience": true,
   "connecting_media_id": "connectingAudioMp3",
   "connecting_media_filename": "Connecting Audio",
   "transferring_media_id": "transferringAudioMp3",

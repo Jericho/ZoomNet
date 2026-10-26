@@ -1,7 +1,8 @@
 {
   "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
-  "page_size": 30,
+  "page_size": 10,
   "total_records": 10,
+  "highest_watermark": "2021-12-10T08:15:00.0000000\u002B00:00",
   "from": "2021-12-10T08:00:00.0000000\u002B00:00",
   "to": "2021-12-10T08:15:00.0000000\u002B00:00",
   "variable_logs": [
@@ -15,7 +16,10 @@
       "variable_value": "demo",
       "group_type": "system",
       "data_type": "boolean",
-      "created_at": "2023-01-01T08:00:00.0000000-08:00"
+      "created_at": "2023-01-01T08:00:00.0000000-08:00",
+      "group_name": "Engagement"
     }
-  ]
+  ],
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
 }

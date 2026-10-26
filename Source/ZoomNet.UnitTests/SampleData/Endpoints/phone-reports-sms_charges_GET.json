@@ -12,16 +12,20 @@
       "from_number": "2019980987",
       "from_extension_number": "1008",
       "from_display_name": "Sender A",
+      "from_email": "sender.a@gmail.com",
       "to_number": "2013450986",
       "to_extension_number": "1008",
       "to_display_name": "Receiver A",
+      "to_email": "receiver.a@gmail.com",
       "sent_time": "2022-03-23T02:58:01Z",
       "billing_number": "\u002B2100000980",
       "cost_center": "Phone cost center",
       "department": "Engineering",
       "rate": "0.0205",
       "currency": "USD",
-      "total_charge": "0"
+      "total_charge": "0",
+      "delivery_status": "Delivered",
+      "delivery_detail": "The message was successfully delivered to the intended recipient(s) on the mobile operator\u0027s network."
     }
   ]
 }

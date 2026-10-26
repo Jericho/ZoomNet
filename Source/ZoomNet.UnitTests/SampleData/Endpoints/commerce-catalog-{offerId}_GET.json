@@ -94,6 +94,7 @@
           "status": "Active",
           "start_date": "2023-10-25",
           "end_date": "2023-10-25",
+          "is_channel_discount_applicable": true,
           "price_tiers": [
             {
               "partner_sku_code": "PAR1-PRO-BASE-NH1Y",

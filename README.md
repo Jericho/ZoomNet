@@ -31,10 +31,11 @@ PM> Install-Package ZoomNet
 ## .NET framework suport
 
 ZoomNet currently supports:
-- .NET framework 4.8
-- any framework supporting `.NET Standard 2.1` (which includes .NET 5.0 and all subsequent versions as well as some legacy versions such as .NET Core 3.x and ASP.NET Core 3.x).
+- `.NET framework 4.8`
+- any framework supporting `.NET Standard 2.0` (which includes .NET 5.0 and all subsequent versions as well as some legacy versions such as .NET Core 3.x and ASP.NET Core 3.x).
+- `.NET 10.0`
 
-The last version of ZoomNet that supported `.NET 4.6.1`, `.NET 4.7.2` and `.NET Standard 2.0` was 0.35.0
+The last version of ZoomNet that supported `.NET framework 4.6.1` and `.NET framework 4.7.2` was 0.35.0
 
 
 ## Usage
@@ -518,11 +519,12 @@ Console.CancelKeyPress += (s, e) =>
 
 // Start the websocket client
 var connectionInfo = OAuthConnectionInfo.ForServerToServer(clientId, clientSecret, accountId);
-using (var client = new ZoomWebSocketClient(connectionInfo, subscriptionId, eventProcessor, proxy, logger))
-{
-    await client.StartAsync(cts.Token).ConfigureAwait(false);
-    exitEvent.WaitOne();
-}
+using var client = new ZoomWebSocketClient(connectionInfo, subscriptionId, eventProcessor, false, proxy, logger);
+await client.StartAsync(cts.Token).ConfigureAwait(false);
+
+// Wait for CTRL+C and then stop the client gracefully
+await Task.Run(() => exitEvent.WaitOne());
+await client.StopAsync().ConfigureAwait(false);
 ```
 
 #### How to get your websocket subscription id

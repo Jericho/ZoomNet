@@ -68,6 +68,7 @@
     "authentication_name": "Sign in to Zoom",
     "authentication_option": "signIn_D8cJuqWVQ623CI4Q8yQK0Q",
     "auto_recording": "cloud",
+    "host_pause_stop_recording": false,
     "auto_add_recording_to_video_management": {
       "enable": true,
       "channels": [
@@ -194,11 +195,15 @@
     "request_permission_to_unmute_participants": true,
     "allow_host_control_participant_mute_state": false,
     "disable_participant_video": false,
-    "email_in_attendee_report": true
+    "email_in_attendee_report": true,
+    "auto_start_deepfake_detection": false,
+    "prevent_screen_capture": false,
+    "disable_recording_control": "all"
   },
   "start_time": "2022-03-25T07:29:29.0000000\u002B00:00",
-  "start_url": "https://example.com/s/11111",
+  "start_url": "https://example.com/s/12345678901?zak=example_zak_token",
   "status": "waiting",
+  "sensitivity_label_id": "WAzVaIjFR1Cxd767i9jksw",
   "template_id": "Dv4YdINdTk\u002BZ5RToadh5ug==",
   "timezone": "America/Los_Angeles",
   "topic": "My Meeting",

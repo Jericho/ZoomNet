@@ -1,0 +1,65 @@
+{
+  "bucket_id": "zeYjXoDOS_eV1QmTpj63PQ",
+  "audio_interrupts": [
+    {
+      "audio_asset_id": "asset_001",
+      "audio_filename": "welcome_message.mp3",
+      "audio_url": "https://www.example.com/audio/asset_001.mp3",
+      "play_after_seconds": 30,
+      "is_loop": false,
+      "loop_interval": 45,
+      "disable_audio": false
+    }
+  ],
+  "notify_interrupts": {
+    "play_after_seconds": 15,
+    "is_loop": true,
+    "loop_interval": 30,
+    "notify_position_in_queue": {
+      "custom_audio_type": "advanced",
+      "custom_audio": [
+        {
+          "order": 1,
+          "audio_asset_id": "piq_intro_001",
+          "audio_filename": "you_are_number.mp3",
+          "audio_variable": "customer_position"
+        }
+      ],
+      "over_limit_custom_audio": [
+        {
+          "order": 1,
+          "audio_asset_id": "piq_intro_001",
+          "audio_filename": "you_are_number.mp3",
+          "audio_variable": "customer_position"
+        }
+      ]
+    },
+    "notify_estimated_wait_time": {
+      "custom_audio_type": "advanced",
+      "custom_audio": [
+        {
+          "order": 1,
+          "audio_asset_id": "piq_intro_001",
+          "audio_filename": "you_are_number.mp3",
+          "audio_variable": "customer_position"
+        }
+      ],
+      "over_limit_custom_audio": [
+        {
+          "order": 1,
+          "audio_asset_id": "piq_intro_001",
+          "audio_filename": "you_are_number.mp3",
+          "audio_variable": "wait_time"
+        }
+      ],
+      "backup_custom_audio": [
+        {
+          "order": 1,
+          "audio_asset_id": "piq_intro_001",
+          "audio_filename": "you_are_number.mp3",
+          "audio_variable": "wait_time"
+        }
+      ]
+    }
+  }
+}

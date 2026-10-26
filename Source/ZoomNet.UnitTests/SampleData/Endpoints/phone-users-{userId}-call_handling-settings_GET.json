@@ -1,0 +1,107 @@
+{
+  "call_forward_settings": [
+    {
+      "call_forward_id": "sd8683_fwh39_F3hfsd",
+      "enable": false,
+      "phone_number": "\u002B12058945583",
+      "phone_number_description": "Office landline",
+      "external_contact": {
+        "external_contact_id": "OJGi5xOFQPmrJbKg68-iWg",
+        "external_contact_name": "Johnson",
+        "external_contact_email": "example@example.com",
+        "phone_numbers": [
+          "\u002B12058945656"
+        ]
+      }
+    }
+  ],
+  "call_distribution_setting": {
+    "ring_mode": "simultaneous",
+    "simultaneous_ring_max_wait_time": 30,
+    "sequential_ring_duration": 30
+  },
+  "call_handling_setting": {
+    "busy_on_another_call_action": "call_waiting",
+    "busy_on_another_call_action_setting": {
+      "allow_callers_check_voicemail": false,
+      "connect_to_operator": false,
+      "operator_extension": {
+        "extension_id": "jN9mb38lQTaMgxUq3Nd6ow",
+        "extension_number": 101014,
+        "extension_name": "user A",
+        "extension_type": "user"
+      },
+      "voicemail_greeting": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "audio_name": "voicemail-greeting.mp3"
+      },
+      "leave_voicemail_instruction": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "audio_name": "leave-voicemail-instruction.mp3"
+      },
+      "play_callee_voicemail_greeting": false,
+      "forward_to_extension": {
+        "extension_id": "jN9mb38lQTaMgxUq3Nd6ow",
+        "extension_number": 101014,
+        "extension_name": "user A",
+        "extension_type": "user"
+      },
+      "forward_to_external_contact": {
+        "external_contact_id": "OJGi5xOFQPmrJbKg68-iWg",
+        "external_contact_name": "Johnson",
+        "external_contact_email": "example@example.com",
+        "phone_numbers": [
+          "\u002B12058945656"
+        ]
+      },
+      "require_press_1_before_connecting": false,
+      "forward_phone_number": "\u002B12058945656",
+      "forward_phone_number_description": "Office landline",
+      "message_greeting": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "audio_name": "message.mp3"
+      }
+    },
+    "call_not_answer_action": "forward_to_voicemail",
+    "call_not_answer_action_setting": {
+      "allow_callers_check_voicemail": false,
+      "connect_to_operator": false,
+      "operator_extension": {
+        "extension_id": "jN9mb38lQTaMgxUq3Nd6ow",
+        "extension_number": 101014,
+        "extension_name": "user A",
+        "extension_type": "user"
+      },
+      "voicemail_greeting": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "audio_name": "voicemail-greeting.mp3"
+      },
+      "leave_voicemail_instruction": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "audio_name": "leave-voicemail-instruction.mp3"
+      },
+      "play_callee_voicemail_greeting": false,
+      "forward_to_extension": {
+        "extension_id": "jN9mb38lQTaMgxUq3Nd6ow",
+        "extension_number": 101014,
+        "extension_name": "user A",
+        "extension_type": "user"
+      },
+      "forward_phone_number": "\u002B12058945656",
+      "forward_phone_number_description": "Office landline",
+      "require_press_1_before_connecting": false,
+      "forward_to_external_contact": {
+        "external_contact_id": "OJGi5xOFQPmrJbKg68-iWg",
+        "external_contact_name": "Johnson",
+        "external_contact_email": "example@example.com",
+        "phone_numbers": [
+          "\u002B12058945656"
+        ]
+      },
+      "message_greeting": {
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "audio_name": "message.mp3"
+      }
+    }
+  }
+}

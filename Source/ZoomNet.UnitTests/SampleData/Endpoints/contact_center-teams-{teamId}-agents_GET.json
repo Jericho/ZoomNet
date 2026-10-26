@@ -4,9 +4,12 @@
   "total_records": 10,
   "agents": [
     {
-      "user_id": "T_X0vrroQPO4UwXGNeBS8A",
-      "user_display_name": "Jill Chill",
-      "user_email": "jchill@example.com"
+      "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "user_display_name": "Jane Doe",
+      "user_email": "jdoe@example.com",
+      "cc_user_id": "hKuMAiDdRlSwMkBxR5we7g"
     }
-  ]
+  ],
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA"
 }

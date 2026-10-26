@@ -1,0 +1,24 @@
+{
+  "request_id": "req_123",
+  "duration_sec": 27.4,
+  "result": {
+    "text_display": "Hello and welcome to the meeting...",
+    "segments": [
+      {
+        "start": 0,
+        "end": 3.24,
+        "text": "Hello and welcome...",
+        "channel": 0,
+        "speaker": "speaker_1",
+        "words": [
+          {
+            "word": "Hello",
+            "start": 0,
+            "end": 0.2
+          }
+        ]
+      }
+    ]
+  },
+  "model": "zoom-asr-en-v1"
+}

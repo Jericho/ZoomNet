@@ -124,7 +124,7 @@
   "decision_maker_name": "John Doe",
   "estimated_mrr": 100000,
   "requires_professional_services": false,
-  "professional_services_description": "false",
+  "professional_services_description": "Partner will provide this service.",
   "professional_services_delivered_by": "Zoom, Partner",
   "phone_carrier": "There is no existing agreement",
   "product_groups": [
@@ -143,7 +143,7 @@
   ],
   "rfp_details": {
     "is_rfp": false,
-    "rfp_link": "https://www.rfplink.abc.com",
+    "rfp_link": "https://www.rfplink.example.com",
     "issue_date": "2023-10-25",
     "due_date": "2023-10-25"
   },

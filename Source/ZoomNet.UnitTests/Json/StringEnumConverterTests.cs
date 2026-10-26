@@ -8,11 +8,25 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Xunit;
 using ZoomNet.Json;
+using ZoomNet.Utilities;
 
 namespace ZoomNet.UnitTests.Json
 {
 	public class StringEnumConverterTests
 	{
+		private class ModelWithEnumProperty
+		{
+			[JsonPropertyName("status")]
+			public EnumWithMultipleAndEnumMemberAttributes Status { get; set; }
+		}
+
+		private enum EnumWithMultipleAndEnumMemberAttributes
+		{
+			[EnumMember(Value = "enum_member_value")]
+			[MultipleValuesEnumMember(DefaultValue = "enum_member_value", OtherValues = new[] { "alternate_value" })]
+			Value = 1,
+		}
+
 		public enum EnumWithEnumMemberAttribute
 		{
 			[EnumMember(Value = "")]
@@ -40,6 +54,22 @@ namespace ZoomNet.UnitTests.Json
 		{
 			[EnumMember(Value = "first")]
 			DefaultFirstValue,
+		}
+
+		[Theory]
+		[InlineData(@"{""status"":""enum_member_value""}")]
+		[InlineData(@"{""status"":""alternate_value""}")]
+		public void Deserialize_Model_With_EnumMember_And_MultipleValuesEnumMember(string json)
+		{
+			var options = new JsonSerializerOptions();
+			options.Converters.Add(new EnumConverterFactory());
+
+			// Act
+			var result = JsonSerializer.Deserialize<ModelWithEnumProperty>(json, options);
+
+			// Assert
+			result.ShouldNotBeNull();
+			result.Status.ShouldBe(EnumWithMultipleAndEnumMemberAttributes.Value);
 		}
 
 		[Theory]

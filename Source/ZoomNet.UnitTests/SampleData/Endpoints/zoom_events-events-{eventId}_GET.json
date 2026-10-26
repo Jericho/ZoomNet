@@ -44,5 +44,13 @@
   ],
   "attendance_type": "hybrid",
   "physical_location": "801 Mt Vernon Pl NW, Washington, DC 20001",
+  "venue": {
+    "name": "Washington Convention Center",
+    "street_address": "801 Allen Y. Lew Place NW",
+    "city": "Ashburn",
+    "postal_code": "23112",
+    "state": "VA",
+    "country": "US"
+  },
   "tagline": "Unlocking Innovation: Join Us for the Day of Insipiration and Insight!"
 }

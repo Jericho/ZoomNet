@@ -1,0 +1,26 @@
+{
+  "total_records": 15,
+  "next_page_token": "oLVRGBTZXI6Kt7zv0gb8Qy4h8cLNbzK1ig2",
+  "data": [
+    {
+      "email": "attendee@example.com",
+      "event_id": "JNB2TQDLQLycFjdf9MIicQ",
+      "event_name": "Event ABC",
+      "session_id": "asdfTQDLQLycFjdf9MIicQ",
+      "session_name": "Session A",
+      "certification_type": "full_credit",
+      "certification_status": "completed",
+      "certification_time": "2026-02-27T19:05:00.0000000\u002B00:00",
+      "current_level": 3,
+      "total_levels": 3,
+      "credits_earned": 1.5,
+      "minutes_watched": 45,
+      "minutes_watched_required": 40,
+      "polls_answered": 3,
+      "polls_answered_required": 2,
+      "content_downloads": 2,
+      "content_downloads_required": 1,
+      "meeting_seconds": 3517
+    }
+  ]
+}

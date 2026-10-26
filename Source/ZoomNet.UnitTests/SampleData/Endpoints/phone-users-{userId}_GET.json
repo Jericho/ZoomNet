@@ -262,6 +262,21 @@
       "modified": true,
       "locked_by": "site"
     },
+    "call_summary": {
+      "enable": true,
+      "modified": true,
+      "locked": true,
+      "locked_by": "account",
+      "auto_call_summary": true,
+      "call_summary_access_from_client_and_web": true,
+      "call_summary_access_from_email": true,
+      "call_summary_view_only": false,
+      "call_summary_start_prompt": {
+        "enable": true,
+        "audio_id": "yCT14TwySDGVUypVlKNEyA",
+        "audio_name": "example.mp3"
+      }
+    },
     "zoom_phone_on_desktop": {
       "allow_calling_clients": [
         "mac_os"
@@ -273,6 +288,29 @@
       "locked": true,
       "locked_by": "site",
       "modified": true
+    },
+    "online_fax": {
+      "enable": true,
+      "locked": true,
+      "locked_by": "site",
+      "modified": true,
+      "fax_notification_by_email": true,
+      "include_fax_as_attachment": true,
+      "enable_outbound_fax_transmission_report": true
+    },
+    "show_custom_disclaimer_when_using_zoom_phone": {
+      "enable": false,
+      "locked": false,
+      "locked_by": "account",
+      "display_frequency": "first_time_only",
+      "custom_disclaimer_list": [
+        {
+          "language": "en",
+          "title": "tilte",
+          "body": "body",
+          "default": true
+        }
+      ]
     }
   },
   "site_admin": true,

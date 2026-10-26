@@ -1,0 +1,25 @@
+{
+  "task_id": "z2vo9qNRRHKArlJqkVHNUw",
+  "title": "Complete project documentation",
+  "description": "Write comprehensive documentation for the new API endpoints",
+  "priority": "Medium",
+  "status": "To do",
+  "is_public": false,
+  "due_date": "2025-09-24",
+  "starred": false,
+  "collaborators": [
+    {
+      "user_id": "w0RChiauQeqRlv5fgxYULQ",
+      "email": "john.doe@example.com"
+    }
+  ],
+  "assignees": [
+    {
+      "user_id": "w0RChiauQeqRlv5fgxYULQ",
+      "email": "invited-assignee@example.com"
+    }
+  ],
+  "create_time": "2025-03-25T07:29:29.0000000\u002B00:00",
+  "friendly_task_id": "Task-1",
+  "link": "https://tasks.example.com/ws53iQgOOkOdzVTxZaVoRA/TASK-1"
+}

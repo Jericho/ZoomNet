@@ -11,6 +11,7 @@
   "date_time": "2022-03-23T02:58:01Z",
   "direction": "In",
   "message": "welcome",
+  "delivery_status": "delivered",
   "message_id": "IQ-cRH5P5EiTWCwpNzScnECJw",
   "message_type": 2,
   "sender": {
@@ -19,7 +20,11 @@
       "id": "WeD59Hn7SvqNRB9jcxz5NQ",
       "type": "user"
     },
-    "phone_number": "12092693625"
+    "phone_number": "12092693625",
+    "operator_ext_number": "800",
+    "operator_ext_id": "NPdquedXS2KvlqGiYebeEg",
+    "operator_ext_type": "user",
+    "operator_name": "David"
   },
   "to_members": [
     {

@@ -92,7 +92,13 @@
           "agent_id": "QF0l7by1TfuIteSJfleVdg",
           "agent_name": "HappyBot AI Agent",
           "agent_version_id": "Mn8m2c4ERrWrzZ9SqjNHMQ",
-          "agent_version_number": 8
+          "agent_version_number": 8,
+          "agent_minor_version_number": 11,
+          "agent_instance_id": "vrySX4iCSQeR3yXsWhenSw",
+          "agent_instance_name": "San Jose store",
+          "agent_instance_version_id": "Tc1lX0oBRfOJmXKY8cIcvw",
+          "agent_instance_version_name": "Sales \u0026 Marketing",
+          "agent_instance_version_number": 3
         }
       ],
       "tools": [
@@ -118,7 +124,16 @@
       "transfer_accepted": true,
       "implicit_resolution": "RESOLVED",
       "agent_messages_sent": 3,
-      "consumer_messages_sent": 2
+      "consumer_messages_sent": 2,
+      "topic_groups": [
+        "Shipping and delivery"
+      ],
+      "llm_models": [
+        "gpt-5.2"
+      ],
+      "guardrail_triggers": [
+        "jailbreak_prompt_injection"
+      ]
     }
   ],
   "from": "2023-07-01T00:00:00.0000000\u002B00:00",

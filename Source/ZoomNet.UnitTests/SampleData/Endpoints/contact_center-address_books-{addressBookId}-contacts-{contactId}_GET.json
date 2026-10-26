@@ -34,5 +34,7 @@
   "consumer_ids": [
     "cvC2JxWkToWZsJUenBvNnw"
   ],
-  "custom_fields_url": "https://api.zoom.us/v2/contact_center/address_books/custom_fields/contacts/zeYjXoDOS_eV1QmTpj63PQ"
+  "custom_fields_url": "https://api.zoom.us/v2/contact_center/address_books/custom_fields/contacts/zeYjXoDOS_eV1QmTpj63PQ",
+  "source_id": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "source_name": "salesforce"
 }

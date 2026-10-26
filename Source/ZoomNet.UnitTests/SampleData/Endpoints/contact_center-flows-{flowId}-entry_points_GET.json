@@ -8,10 +8,13 @@
       "entry_number_type": 2,
       "entry_number_country_code": "US",
       "entry_number_area_code": "209",
-      "entry_language": "en-US"
+      "entry_language": "en-US",
+      "customer_identity_source": "from"
     }
   ],
   "enable_detect_language": true,
   "channel": "messaging",
-  "channel_source": "web_chat"
+  "channel_source": "web_chat",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
 }

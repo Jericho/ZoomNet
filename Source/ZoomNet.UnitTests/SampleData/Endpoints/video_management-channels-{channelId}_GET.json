@@ -7,5 +7,11 @@
   "categories": [
     "Education"
   ],
-  "channel_link": "https://videocenter.zoom.us/e/channels/MYysLCuzQ0mmk1CvarkaDA"
+  "channel_link": "https://videocenter.zoom.us/e/channels/MYysLCuzQ0mmk1CvarkaDA",
+  "access_type": "PEOPLE_WITH_ACCESS",
+  "thumbnails": [
+    {
+      "file_url": "https://files.zoom.us/thumbnails/thumb123.jpg"
+    }
+  ]
 }

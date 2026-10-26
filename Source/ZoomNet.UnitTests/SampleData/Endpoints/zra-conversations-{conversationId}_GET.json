@@ -20,6 +20,9 @@
     "id": "0065g00000DhY3eAAF",
     "name": "deal name",
     "stage": "Needs Analysis",
+    "customer_crm_account_ids": [
+      "Ac0065g00000DhY3eAAF"
+    ],
     "customer_crm_account_name": "customer",
     "close_date": "2023-04-19"
   },

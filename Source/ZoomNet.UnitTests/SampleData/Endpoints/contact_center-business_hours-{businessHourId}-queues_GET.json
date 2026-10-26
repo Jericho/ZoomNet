@@ -4,9 +4,11 @@
   "total_records": 10,
   "queues": [
     {
-      "queue_id": "ZWQ33BD1C6E46FFD0D869D32E220D35F4D4",
-      "cc_queue_id": "xqJE_cgERLyAJHYYL5LLeg",
-      "queue_name": "VoiceQueue"
+      "queue_id": "Ql3qxUWXSHes4PmcOmzyOg",
+      "cc_queue_id": "a4lCNeq2SzKbgkcDVbjCZQ",
+      "queue_name": "Voice - Customer Support"
     }
-  ]
+  ],
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
 }

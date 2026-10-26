@@ -2,10 +2,13 @@
   "entry_points": [
     {
       "entry_id": "Nn3aO8lOSm6aYYW6l8brSQ",
-      "entry_language": "en_US"
+      "entry_language": "en_US",
+      "customer_identity_source": "from"
     }
   ],
   "channel_source": "web_chat",
   "channel": "messaging",
-  "enable_detect_language": false
+  "enable_detect_language": false,
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
 }

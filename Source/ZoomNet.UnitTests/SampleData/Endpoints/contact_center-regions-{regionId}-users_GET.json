@@ -4,11 +4,14 @@
   "total_records": 10,
   "users": [
     {
-      "user_id": "ukAAkZKfROKMSw1bj_RDFQ",
-      "display_name": "Jill Chill",
-      "user_email": "jchill@example.com",
-      "role_id": "27302393-4784-11ec-a3cd-122e3e29bb87",
-      "role_name": "Agent"
+      "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "cc_user_id": "hKuMAiDdRlSwMkBxR5we7g",
+      "display_name": "Jane Doe",
+      "user_email": "jdoe@example.com",
+      "role_id": "0TFVsJqNS82CwkQJLqj1zA",
+      "role_name": "Admin"
     }
-  ]
+  ],
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA"
 }

@@ -287,6 +287,134 @@ namespace ZoomNet.UnitTests.Resources
 
 		#endregion
 
+		#region Call Queues Tests
+
+		[Fact]
+		public async Task GetCallQueueAsync_WithValidCallQueueId_ReturnsCallQueue()
+		{
+			// Arrange
+			var callQueueId = "queue123";
+			const string response = @"{
+				""id"": ""queue123"",
+				""name"": ""Sales"",
+				""extension_id"": ""extension123"",
+				""extension_number"": 1001,
+				""status"": ""active"",
+				""phone_numbers"": [{ ""id"": ""number123"", ""number"": ""15551234567"", ""source"": ""external"" }]
+			}";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "call_queues", callQueueId))
+				.Respond("application/json", response);
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var phone = new Phone(client);
+
+			// Act
+			var result = await phone.GetCallQueueAsync(callQueueId, TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.Id.ShouldBe(callQueueId);
+			result.Name.ShouldBe("Sales");
+			result.ExtensionNumber.ShouldBe(1001);
+			result.Status.ShouldBe(CallQueueStatus.Active);
+			result.PhoneNumbers[0].Number.ShouldBe("15551234567");
+			result.PhoneNumbers[0].Source.ShouldBe(CallQueueNumberSource.External);
+		}
+
+		[Fact]
+		public async Task GetAllCallQueuesAsync_WithFiltersAndPaging_ReturnsCallQueues()
+		{
+			// Arrange
+			const string department = "Sales";
+			const string costCenter = "North";
+			const string siteId = "site123";
+			const string pagingToken = "next-token";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "call_queues"))
+				.WithQueryString("department", department)
+				.WithQueryString("cost_center", costCenter)
+				.WithQueryString("site_id", siteId)
+				.WithQueryString("page_size", "25")
+				.WithQueryString("next_page_token", pagingToken)
+				.Respond("application/json", @"{
+					""call_queues"": [{ ""id"": ""queue123"", ""name"": ""Sales"", ""status"": ""active"" }],
+					""page_size"": 25,
+					""next_page_token"": ""next-token""
+				}");
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var phone = new Phone(client);
+
+			// Act
+			var result = await phone.GetAllCallQueuesAsync(
+				department,
+				costCenter,
+				siteId,
+				recordsPerPage: 25,
+				pagingToken: pagingToken,
+				cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.RecordsPerPage.ShouldBe(25);
+			result.NextPageToken.ShouldBe(pagingToken);
+			result.Records.Length.ShouldBe(1);
+			result.Records[0].Id.ShouldBe("queue123");
+		}
+
+		[Fact]
+		public async Task GetCallQueueMembersAsync_WithPaging_ReturnsMembers()
+		{
+			// Arrange
+			var callQueueId = "queue123";
+			var pagingToken = "member-next-token";
+
+			var mockHttp = new MockHttpMessageHandler();
+			mockHttp.Expect(HttpMethod.Get, Utils.GetZoomApiUri("phone", "call_queues", callQueueId, "members"))
+				.WithQueryString("page_size", "10")
+				.WithQueryString("next_page_token", pagingToken)
+				.Respond("application/json", @"{
+					""call_queue_members"": [{
+						""id"": ""user123"",
+						""name"": ""Alex"",
+						""level"": ""user"",
+						""receive_call"": true,
+						""extension_id"": ""extension123""
+					}],
+					""page_size"": 10,
+					""next_page_token"": ""member-next-token""
+				}");
+
+			var logger = _outputHelper.ToLogger<IZoomClient>();
+			var client = Utils.GetFluentClient(mockHttp, logger: logger);
+			var phone = new Phone(client);
+
+			// Act
+			var result = await phone.GetCallQueueMembersAsync(
+				callQueueId,
+				recordsPerPage: 10,
+				pagingToken: pagingToken,
+				cancellationToken: TestContext.Current.CancellationToken);
+
+			// Assert
+			mockHttp.VerifyNoOutstandingExpectation();
+			mockHttp.VerifyNoOutstandingRequest();
+			result.NextPageToken.ShouldBe(pagingToken);
+			result.Records.Length.ShouldBe(1);
+			result.Records[0].Id.ShouldBe("user123");
+			result.Records[0].ReceiveCall.ShouldBeTrue();
+			result.Records[0].ExtensionId.ShouldBe("extension123");
+		}
+
+		#endregion
+
 		#region UpdateCallHandlingSettingsAsync Tests
 
 		[Fact]

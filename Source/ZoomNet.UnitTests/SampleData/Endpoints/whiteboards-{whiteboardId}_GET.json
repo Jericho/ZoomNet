@@ -23,5 +23,13 @@
   "embedded_content_types": [
     0
   ],
-  "project_id": "The Project ID"
+  "project_id": "qiMWddmtRxqwSFrK22lJPg",
+  "classification_label": {
+    "id": "abc123xyz",
+    "name": "Confidential",
+    "description": "For internal use only",
+    "color": "#FF5733",
+    "sensitivity_level": 5,
+    "guideline_url": "https://example.com/guidelines"
+  }
 }

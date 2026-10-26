@@ -47,6 +47,9 @@
           "license_option": 16,
           "subscription_id": "SUBREF-xxxxxx-xxxxxx"
         }
+      ],
+      "login_types": [
+        101
       ]
     }
   ]

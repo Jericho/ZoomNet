@@ -15,7 +15,23 @@
       "skill_type": "proficiency",
       "minimum_proficiency_level": 2,
       "skill_category_required": true,
-      "intent_group_required": false
+      "intent_group_required": false,
+      "default_skill_id": "sRrl8f3IKQp_LByU08Ibi6g",
+      "default_skill_name": "default_skill__name",
+      "time_step": 10,
+      "backup_skills": [
+        {
+          "backup_skill_id": "sk_OpAInMSpGwbwzkbGz6sQ",
+          "backup_skill_name": "backup_skill_name",
+          "minimum_proficiency_level": 3
+        }
+      ]
     }
-  ]
+  ],
+  "time_steps": [
+    10
+  ],
+  "ignore_transferring_skills": false,
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA"
 }

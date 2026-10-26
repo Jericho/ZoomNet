@@ -25,7 +25,7 @@ namespace ZoomNet
 	/// <summary>
 	/// Internal extension methods.
 	/// </summary>
-	internal static class Internal
+	internal static partial class Internal
 	{
 		internal enum UnixTimePrecision
 		{
@@ -36,8 +36,6 @@ namespace ZoomNet
 		private static readonly DateTime EPOCH = new(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 		private static readonly int DEFAULT_DEGREE_OF_PARALLELISM = Environment.ProcessorCount > 1 ? Environment.ProcessorCount / 2 : 1;
 		private static readonly string[] ERROR_MESSAGE_NODE_NAMES = ["message", "error_message"];
-		private static readonly char[] QUERYSTRING_ITEMS_SEPARATORS = ['&'];
-		private static readonly char[] QUERYSTRING_ITEM_VALUE_SEPARATORS = ['='];
 
 		private static readonly Dictionary<Type, string> _typeAliases = new()
 		{
@@ -60,6 +58,17 @@ namespace ZoomNet
 			{ typeof(nint), "nint" }, // From C# 11 onwards
 			{ typeof(nuint), "nuint" }, // From C# 11 onwards
 		};
+
+#if NET7_0_OR_GREATER
+		[GeneratedRegex(@"(.*?)(?<=""message"":"")(.*?)(?=""})(.*?$)", RegexOptions.Singleline)]
+		private static partial Regex ErrorMessageRegex();
+
+		[GeneratedRegex(@"(?<!\\)""", RegexOptions.None)]
+		private static partial Regex UnescapedQuoteRegex();
+#else
+		private static readonly Regex ErrorMessageRegex = new(@"(.*?)(?<=""message"":"")(.*?)(?=""})(.*?$)", RegexOptions.Compiled | RegexOptions.Singleline);
+		private static readonly Regex UnescapedQuoteRegex = new(@"(?<!\\)""", RegexOptions.Compiled);
+#endif
 
 		/// <summary>
 		/// Converts a 'unix time', which is expressed as the number of seconds (or milliseconds) since
@@ -440,11 +449,12 @@ namespace ZoomNet
 		/// <returns>Returns the request builder for chaining.</returns>
 		internal static IRequest WithHttp200TreatedAsFailure(this IRequest request, string customExceptionMessage = null)
 		{
-			var diagnosticStore = request.Filters.OfType<ZoomErrorHandler>().Single().DiagnosticStore;
+			var errorHandler = request.Filters.OfType<ZoomErrorHandler>().Single();
+			var diagnosticStore = errorHandler.DiagnosticStore;
 
 			return request
 				.WithoutFilter<ZoomErrorHandler>()
-				.WithFilter(new ZoomErrorHandler(diagnosticStore, true, customExceptionMessage));
+				.WithFilter(new ZoomErrorHandler(diagnosticStore, true, customExceptionMessage, errorHandler.ClientOptions));
 		}
 
 		/// <summary>Set the body content of the HTTP request.</summary>
@@ -512,7 +522,7 @@ namespace ZoomNet
 			static void AppendFormatIfNecessary(StringBuilder stringBuilder, string timePart, int value)
 			{
 				if (value <= 0) return;
-				stringBuilder.AppendFormat($" {value} {timePart}{(value > 1 ? "s" : string.Empty)}");
+				stringBuilder.Append($" {value} {timePart}{(value > 1 ? "s" : string.Empty)}");
 			}
 
 			// In case the TimeSpan is extremely short
@@ -567,16 +577,24 @@ namespace ZoomNet
 		/// langword="true"/>.</exception>
 		internal static JsonElement? GetProperty(this JsonElement element, string path, bool throwIfMissing = true, char splitChar = '/')
 		{
-			var parts = path.Split(splitChar);
-			var property = element;
+			ArgumentNullException.ThrowIfNull(path);
 
-			foreach (var part in parts)
+			var property = element;
+			var span = path.AsSpan();
+			int start = 0;
+			while (start <= span.Length)
 			{
+				int idx = start >= span.Length ? -1 : span.Slice(start).IndexOf(splitChar);
+				ReadOnlySpan<char> partSpan = idx == -1 ? span.Slice(start) : span.Slice(start, idx);
+				string part = partSpan.ToString();
 				if (!property.TryGetProperty(part, out property))
 				{
 					if (throwIfMissing) throw new ArgumentException($"Unable to find '{path}'", nameof(path));
-					else return null;
+					return null;
 				}
+
+				if (idx == -1) break;
+				start += idx + 1;
 			}
 
 			return property;
@@ -806,18 +824,64 @@ namespace ZoomNet
 
 		internal static IEnumerable<KeyValuePair<string, string>> ParseQuerystring(this Uri uri)
 		{
-			var querystringParameters = uri
-				.Query.TrimStart('?')
-				.Split(QUERYSTRING_ITEMS_SEPARATORS, StringSplitOptions.RemoveEmptyEntries)
-				.Select(value => value.Split(QUERYSTRING_ITEM_VALUE_SEPARATORS, StringSplitOptions.RemoveEmptyEntries))
-				.Select(splitValue =>
-				{
-					var key = splitValue[0].Trim();
-					var value = splitValue.Length > 1 ? splitValue[1].Trim() : null;
-					return new KeyValuePair<string, string>(key, value);
-				});
+			// Non-allocating span-based parser to minimize allocations on hot paths.
+			var q = uri?.Query;
+			var result = new List<KeyValuePair<string, string>>();
+			if (string.IsNullOrEmpty(q)) return result;
 
-			return querystringParameters;
+			ReadOnlySpan<char> span = q.AsSpan();
+			if (span.Length > 0 && span[0] == '?') span = span.Slice(1);
+
+			int i = 0;
+			while (i < span.Length)
+			{
+				// find next '&' without using range index/slice syntax for compatibility
+				int amp = -1;
+				for (int k = i; k < span.Length; k++)
+				{
+					if (span[k] == '&')
+					{
+						amp = k - i;
+						break;
+					}
+				}
+				ReadOnlySpan<char> segment = amp == -1 ? span.Slice(i) : span.Slice(i, amp);
+
+				// split on '='
+				int eq = segment.IndexOf('=');
+				ReadOnlySpan<char> rawKey, rawValue;
+				if (eq == -1)
+				{
+					rawKey = segment;
+					rawValue = default;
+				}
+				else
+				{
+					rawKey = segment.Slice(0, eq);
+					rawValue = segment.Slice(eq + 1);
+				}
+
+				// trim spaces from key and value (mimic string.Trim())
+				string key = TrimToString(rawKey);
+				string value = rawValue.Length == 0 ? null : TrimToString(rawValue);
+
+				result.Add(new KeyValuePair<string, string>(key, value));
+
+				if (amp == -1) break;
+				i += amp + 1;
+			}
+
+			return result;
+
+			static string TrimToString(ReadOnlySpan<char> s)
+			{
+				int start = 0, end = s.Length - 1;
+				while (start <= end && char.IsWhiteSpace(s[start])) start++;
+				while (end >= start && char.IsWhiteSpace(s[end])) end--;
+				if (start == 0 && end == s.Length - 1) return s.ToString();
+				if (end < start) return string.Empty;
+				return s.Slice(start, end - start + 1).ToString();
+			}
 		}
 
 		internal static async Task<(bool IsError, string ErrorMessage, int? ErrorCode)> GetErrorMessageAsync(this HttpResponseMessage message)
@@ -949,7 +1013,11 @@ namespace ZoomNet
 		internal static T ToObject<T>(this JsonElement element, JsonSerializerOptions options = null)
 		{
 			if (element.ValueKind == JsonValueKind.Null) return default;
+#if NET5_0_OR_GREATER
+			return element.Deserialize<T>(options ?? JsonFormatter.DefaultDeserializerOptions);
+#else
 			return JsonSerializer.Deserialize<T>(element.GetRawText(), options ?? JsonFormatter.DefaultDeserializerOptions);
+#endif
 		}
 
 		internal static void Add<T>(this JsonObject jsonObject, string propertyName, T value)
@@ -1015,8 +1083,12 @@ namespace ZoomNet
 						"message": "Invalid access token, does not contain scopes:["zoom_events_basic:read","zoom_events_basic:read:admin"]"
 					}
 				*/
-				const string pattern = @"(.*?)(?<=""message"":"")(.*?)(?=""})(.*?$)";
-				var matches = Regex.Match(responseContent, pattern, RegexOptions.Compiled | RegexOptions.Singleline);
+
+#if NET7_0_OR_GREATER
+				var matches = ErrorMessageRegex().Match(responseContent);
+#else
+				var matches = ErrorMessageRegex.Match(responseContent);
+#endif
 				if (matches.Groups.Count != 4) throw;
 
 				var prefix = matches.Groups[1].Value;
@@ -1024,7 +1096,12 @@ namespace ZoomNet
 				var postfix = matches.Groups[3].Value;
 				if (string.IsNullOrEmpty(message)) throw;
 
-				var escapedMessage = Regex.Replace(message, @"(?<!\\)""", "\\\"", RegexOptions.Compiled); // Replace un-escaped double-quotes with properly escaped double-quotes
+#if NET7_0_OR_GREATER
+				var escapedMessage = UnescapedQuoteRegex().Replace(message, "\\\"");
+#else
+				var escapedMessage = UnescapedQuoteRegex.Replace(message, "\\\"");
+#endif
+
 				var result = $"{prefix}{escapedMessage}{postfix}";
 				return JsonDocument.Parse(result).RootElement;
 			}
@@ -1085,8 +1162,8 @@ namespace ZoomNet
 			}
 			else if (jsonResponse.TryGetProperty(propertyName, out JsonElement property))
 			{
-				var propertyContent = property.GetRawText();
-				return JsonDocument.Parse(propertyContent, default).RootElement;
+				// Return the property element directly to avoid allocating an intermediate string and reparsing it.
+				return property;
 			}
 			else if (throwIfPropertyIsMissing)
 			{

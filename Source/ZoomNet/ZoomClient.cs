@@ -223,12 +223,13 @@ namespace ZoomNet
 				throw new ZoomException($"{connectionInfo.GetType()} is an unknown connection type", null, null, null, null);
 			}
 
-			var cleanupInterval = TimeSpan.FromSeconds(5);
+			var cleanupInterval = TimeSpan.FromSeconds(15);
 			var diagnosticStore = new MemoryDiagnosticStore(cleanupInterval);
 
-			// The list of filters must be kept in sync with the filters in Utils.GetFluentClient in the unit testing project.
-			_fluentClient.Filters.Add(new DiagnosticHandler(_options.LogLevelSuccessfulCalls, _options.LogLevelFailedCalls, diagnosticStore, _logger));
-			_fluentClient.Filters.Add(new ZoomErrorHandler(diagnosticStore));
+			// Order is important: DiagnosticHandler must be first.
+			// Also, the list of filters must be kept in sync with the filters in Utils.GetFluentClient in the unit testing project.
+			_fluentClient.Filters.Add(new DiagnosticHandler(diagnosticStore, _options, _logger));
+			_fluentClient.Filters.Add(new ZoomErrorHandler(diagnosticStore, false, null, _options));
 
 			Accounts = new Accounts(_fluentClient);
 			Billing = new Billing(_fluentClient);
@@ -288,7 +289,7 @@ namespace ZoomNet
 			if (oAuthConnectionInfo.Scopes == null) tokenHandler.RefreshTokenIfNecessary(true); // Force the token to be refreshed wich will have the side-effect of populating the '.Scopes'
 
 			var missingScopes = scopes.Except(((OAuthConnectionInfo)tokenHandler.ConnectionInfo).Scopes, StringComparer.OrdinalIgnoreCase).ToArray();
-			return !missingScopes.Any();
+			return missingScopes.Length == 0;
 		}
 
 		/// <inheritdoc/>
@@ -326,11 +327,8 @@ namespace ZoomNet
 
 		private void ReleaseManagedResources()
 		{
-			if (_fluentClient != null)
-			{
-				_fluentClient.Dispose();
-				_fluentClient = null;
-			}
+			_fluentClient?.Dispose();
+			_fluentClient = null;
 
 			if (_httpClient != null && _mustDisposeHttpClient)
 			{

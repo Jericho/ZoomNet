@@ -1,0 +1,39 @@
+{
+  "task_id": "z2vo9qNRRHKArlJqkVHNUw",
+  "title": "the tasks title demo",
+  "description": "the task description",
+  "priority": "Medium",
+  "status": "To do",
+  "is_public": false,
+  "due_date": "2025-09-24",
+  "is_ai_generated": false,
+  "starred": false,
+  "tasks_attachments": [],
+  "assignees": [
+    {
+      "user_id": "w0RChiauQeqRlv5fgxYULQ",
+      "display_name": "John Doe",
+      "email": "john.doe@example.com",
+      "avatar": "https://example.com/avatar.jpg"
+    }
+  ],
+  "collaborators": [
+    {
+      "user_id": "w0RChiauQeqRlv5fgxYULQ",
+      "display_name": "John Doe",
+      "email": "john.doe@example.com",
+      "avatar": "https://example.com/avatar.jpg"
+    }
+  ],
+  "source_type": "user",
+  "friendly_task_id": "Task-1",
+  "link": "https://tasks.zoomdev.us/ws53iQgOOkOdzVTxZaVoRA/TASK-1",
+  "associated_meeting": {
+    "id": 97763643886,
+    "uuid": "aDYlohsHRtCd4ii1uC2\u002BhA==",
+    "topic": "Tasks Meeting",
+    "meeting_date": "2025-03-31T12:02:00.0000000\u002B00:00"
+  },
+  "create_time": "2025-03-31T12:02:00.0000000\u002B00:00",
+  "modify_time": "2025-03-31T12:02:00.0000000\u002B00:00"
+}

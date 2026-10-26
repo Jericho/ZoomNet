@@ -1,0 +1,12 @@
+{
+  "zra_users": [
+    {
+      "user_id": "abc123xyz",
+      "email": "john.doe@example.com",
+      "user_region": "US-Sales-Region1",
+      "user_segment": "US-Sales-Segment1",
+      "create_time": "2020-05-02T19:13:05Z",
+      "modify_time": "2020-05-02T20:13:05Z"
+    }
+  ]
+}

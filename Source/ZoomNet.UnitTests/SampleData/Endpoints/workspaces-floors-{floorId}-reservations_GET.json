@@ -1,0 +1,23 @@
+{
+  "reservations": [
+    {
+      "reservation_date": "2025-03-16",
+      "source": "Calendar",
+      "reservation_start_time": "2025-03-16T09:00:00Z",
+      "reservation_end_time": "2025-03-16T10:00:00Z",
+      "workspace_location": "Building A / Floor 1",
+      "workspace_name": "Desk-001",
+      "workspace_type": "Desk",
+      "desk_device_type": "Zoom Rooms",
+      "user_name": "John Doe",
+      "user_email": "john.doe@example.com",
+      "user_department": "Engineering",
+      "checkin_time": "2025-03-16T09:05:00Z",
+      "checkout_time": "2025-03-16T09:55:00Z",
+      "reservation_book_time": "2025-03-15T14:00:00Z",
+      "assets": "Monitor, Keyboard",
+      "capacity": "1",
+      "neighborhood_group": "Zone A"
+    }
+  ]
+}

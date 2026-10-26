@@ -1,0 +1,33 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "timezone": "America/Los_Angeles",
+  "start_time_from": "2026-12-10T00:00:00Z",
+  "start_time_to": "2026-12-10T00:00:00Z",
+  "end_time_from": "2026-12-10T00:00:00Z",
+  "end_time_to": "2026-12-10T00:00:00Z",
+  "opt_info": [
+    {
+      "work_session_id": "reRAiabVQSqpXxJVDbsy2Q",
+      "start_time": "2026-12-10T00:00:00Z",
+      "end_time": "2026-12-10T00:00:00Z",
+      "user_id": "reRAiabVQSqpXxJVDbsy2Q",
+      "user_name": "agent_name_example",
+      "team_id": "PHPGirW5Rr-XzeUeEXx3eg",
+      "team_name": "my_team",
+      "queue_id": "PHPGirW5Rr-XzeUeEXx3eg",
+      "queue_name": "my_queue",
+      "queue_channel": "Voice",
+      "opt": "opt-in",
+      "opt_duration": 123,
+      "opt_start_time": "2026-12-10T00:00:00Z",
+      "opt_end_time": "2026-12-12T00:00:00Z",
+      "opt_modify_by_id": "PHPGirW5Rr",
+      "opt_modify_by_name": "my_agent",
+      "opt_out_reason": "57"
+    }
+  ]
+}

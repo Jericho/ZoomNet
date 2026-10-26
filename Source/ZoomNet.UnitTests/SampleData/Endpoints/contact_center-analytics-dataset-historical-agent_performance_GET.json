@@ -50,7 +50,26 @@
       "inbound_conversation_duration": 123,
       "inbound_handle_duration": 123,
       "outbound_handled_count": 1,
-      "outbound_conversation_duration": 123
+      "outbound_conversation_duration": 123,
+      "third_party_dialer_wait_duration": 123,
+      "channel_switch_count": 1,
+      "dnis_to": "\u002B12095551212",
+      "origin_method": "outbound",
+      "agent_leg_id": "ZWR01A4AF5E1ED183F1BEE02C2F29EE723F",
+      "parked_count": 1,
+      "switch_method": "switch_voice_to_video",
+      "ani_from": "\u002B19135551212",
+      "focus_duration": 123,
+      "inactive_conversation_duration": 1,
+      "agent_message_received_count": 1,
+      "active_conversation_duration": 1,
+      "customer_ring_disconnect_count": 1
     }
-  ]
+  ],
+  "start_time_from": "2021-12-10T00:00:00Z",
+  "start_time_to": "2021-12-10T00:00:00Z",
+  "end_time_to": "2021-12-10T00:00:00Z",
+  "end_time_from": "2021-12-10T00:00:00Z",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
 }

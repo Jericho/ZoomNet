@@ -1,7 +1,7 @@
 {
-  "next_page_token": "jA5csQv1W1oXuYZLspNIZzMOXqTD9r9Rje2",
-  "page_size": 1,
-  "total_records": 1,
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
   "skills": [
     {
       "skill_id": "saaHWgVMGQU69soco456oNA",
@@ -14,5 +14,7 @@
       "modified_by": "IGTRVt3gQ2i-WjoUIjeZxw",
       "last_modified_time": "2022-02-15T09:27:15.0000000\u002B00:00"
     }
-  ]
+  ],
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA"
 }

@@ -26,9 +26,11 @@
     "file_id": "bayEy0y9RsadUbuEGrZBYA",
     "file_pages_count": 6,
     "status": "sent",
+    "read_status": "read",
     "status_reason": "no_answer",
     "retry_times": 0,
     "node": 0,
-    "create_time": "2021-10-08T16:12:04.0000000\u002B00:00"
+    "create_time": 1754880000000,
+    "created_at": "2021-10-08T16:12:04Z"
   }
 ]

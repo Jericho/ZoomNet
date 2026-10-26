@@ -1,0 +1,11 @@
+{
+  "widget_id": "AtkB6sHxSjyslNMWL0-8IA",
+  "report_id": "GcyNb1T9Tq6lyo4b-ebCNg",
+  "schema": [
+    {
+      "field_name": "queue",
+      "field_type": "id_name",
+      "description": "The specific name of a queue on the Zoom platform."
+    }
+  ]
+}

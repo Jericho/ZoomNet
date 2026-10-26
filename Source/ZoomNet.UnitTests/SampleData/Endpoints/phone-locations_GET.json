@@ -21,6 +21,8 @@
       "parent_location_id": "RTGmTYafRU24RqJunfotSA",
       "private_ip": "192.1.1.2",
       "public_ip": "192.1.1.1",
+      "private_ipv6": "fd00:1234:5678:9abc::/120",
+      "public_ipv6": "2001:db8:1234:5678::/120",
       "sip_group": {
         "display_name": "band width",
         "id": "F_WKDH6FRdeddZBcNUlUeA"
@@ -37,7 +39,8 @@
         "state_code": "CA",
         "country": "US",
         "zip": "95113",
-        "vat_number": "123456789B01"
+        "vat_number": "123456789B01",
+        "business_name": "Zoom San Jose Office"
       },
       "minimum_match_criteria": true
     }

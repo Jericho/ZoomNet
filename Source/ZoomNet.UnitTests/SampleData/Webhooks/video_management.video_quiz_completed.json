@@ -1,0 +1,16 @@
+{
+  "event": "video_management.video_quiz_completed",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "channel_id": "iso9Dllddp39dagjLj9j",
+      "video_id": "abc9Dllddp39dagjLj9j",
+      "video_name": "Demo",
+      "quiz_id": "abc9Dllddsdfsd3sfdsd9",
+      "quiz_name": "Validation check",
+      "user_id": "xy9Dllddsdfsd32asdfas",
+      "completed_at": "2026-01-29T18:42:10Z"
+    }
+  }
+}

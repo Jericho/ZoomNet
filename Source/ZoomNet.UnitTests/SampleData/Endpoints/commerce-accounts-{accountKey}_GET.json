@@ -2,6 +2,7 @@
   "crm_account_number": "A-0012",
   "create_reference_id": "ACC-2333",
   "status": "submitted",
+  "status_detail": "Contact update failure.",
   "zoom_account_number": "1223837102",
   "zoom_account_numbers": [
     3842618277
@@ -32,5 +33,11 @@
     "postal_code": "95114",
     "state": "PA",
     "country": "US"
-  }
+  },
+  "errors": [
+    {
+      "error_code": "5012",
+      "error_description": "Invalid contact email."
+    }
+  ]
 }

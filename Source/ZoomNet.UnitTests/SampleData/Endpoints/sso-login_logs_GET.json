@@ -1,0 +1,18 @@
+{
+  "query_start_time": "2026-08-13T00:00:00.0000000\u002B00:00",
+  "query_end_time": "2026-08-13T06:00:00.0000000\u002B00:00",
+  "page_size": 20,
+  "next_page_token": "0f8fb6d8df289b64b938dd50b9d72f51c03370cd691cd81bf648115e421dc076",
+  "logs": [
+    {
+      "tracking_id": "WEB_624c2507e67d0c7608a6d8a21ef8c7d7",
+      "login_time": "2026-08-13T05:41:22.0000000\u002B00:00",
+      "login_status": "success",
+      "protocol": "saml",
+      "config_id": "EomLrMF4SkmZQGFS4QUaLA",
+      "config_title": "IdP - Prod",
+      "email": "test@zoom.us",
+      "error_code": 1001
+    }
+  ]
+}

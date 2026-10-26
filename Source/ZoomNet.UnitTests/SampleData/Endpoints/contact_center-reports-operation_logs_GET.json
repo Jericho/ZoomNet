@@ -14,7 +14,13 @@
       "agent_region_id": "test_region_id",
       "agent_region_name": "test_region_name",
       "team_id": "test_team_id",
-      "team_name": "test_team_name"
+      "team_name": "test_team_name",
+      "object_id": "rMTX7iq2RGy6ELcm91bcLA",
+      "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+      "division_name": "EMEA Operations"
     }
-  ]
+  ],
+  "highest_watermark": "2024-04-25T07:51:30.0000000\u002B00:00",
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA"
 }

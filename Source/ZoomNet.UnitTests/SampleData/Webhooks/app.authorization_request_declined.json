@@ -1,0 +1,25 @@
+{
+  "event": "app.authorization_request_declined",
+  "event_ts": 1641884378841,
+  "payload": {
+    "request_id": "wEVg-VQOTgGVCWWhuJRxCg",
+    "app_id": "wFhhvfBnSP6EtmebqXZCPQ",
+    "app_name": "My Test App",
+    "app_type": "SDK OAuth App",
+    "app_status": "published",
+    "app_description": "This is a test app.",
+    "scope": "specific_users",
+    "reviewer_name": "Admin User",
+    "reviewer_email": "admin@example.com",
+    "reviewed_requests": [
+      {
+        "requester_name": "Jill Chill",
+        "requester_email": "jill.chill@example.com"
+      },
+      {
+        "requester_name": "Alex Morgan",
+        "requester_email": "alex.morgan@example.com"
+      }
+    ]
+  }
+}

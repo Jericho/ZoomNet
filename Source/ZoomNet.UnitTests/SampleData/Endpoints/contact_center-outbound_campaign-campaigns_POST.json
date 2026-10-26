@@ -3,7 +3,7 @@
   "outbound_campaign_name": "My outbound campaign",
   "outbound_campaign_description": "My outbound campaign description",
   "queue_id": "TY_XsJuWR9ehXrsf1DSIAQ",
-  "queue_name": "My queue name",
+  "queue_name": "Voice - Customer Support",
   "phone_number_id": "XfTPrZjyR5W6QgNARdtGlw",
   "assign_type": "queue",
   "outbound_campaign_status": "draft",
@@ -65,5 +65,16 @@
   "contact_phone_order": "ascending",
   "enable_always_running": false,
   "contact_order": 1,
-  "enable_diagnostics": false
+  "enable_diagnostics": false,
+  "local_calling_windows": [
+    {
+      "start": "09:00",
+      "end": "18:00"
+    }
+  ],
+  "data_table_id": "AbCdEfGhIjKlMnOpQrStUv",
+  "caller_id_table_field_id": "XyZaBcDeFgHiJkLmNoPqRs",
+  "contact_field_key": "phoneNumber",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
 }

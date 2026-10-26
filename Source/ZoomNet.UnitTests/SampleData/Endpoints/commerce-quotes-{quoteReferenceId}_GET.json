@@ -11,6 +11,7 @@
     "quote_expiry_date": "2023-11-02",
     "po_number": "PO-10021-A",
     "trade_screening": false,
+    "ae_initiated_quote": false,
     "quote_metrics": {
       "tcv": 120000,
       "tcb": 120000,
@@ -427,6 +428,7 @@
           "offer_price_list_name": "Zoom Workplace Pro Annual",
           "old_offer_price_list_id": "PRL-3412",
           "old_partner_sku_code": "PAR1-PRO-BASE-NH1Y",
+          "old_subscription_price_list_id": "fvnderfy89rui43jr23ej23",
           "quantity": 100,
           "start_date": "2022-10-25",
           "end_date": "2022-10-25",
@@ -473,6 +475,7 @@
           "offer_price_list_id": "PRL-2323",
           "partner_sku_code": "PAR1-ENT-BASE-NH1Y",
           "offer_price_list_name": "Zoom Workplace Pro Annual",
+          "subscription_price_list_id": "fvnderfy89rui43jr23ej23",
           "quantity": 100,
           "end_date": "2022-10-25",
           "charges": [
@@ -519,6 +522,7 @@
           "offer_price_list_id": "PRL-2323",
           "partner_sku_code": "PAR1-ENT-BASE-NH1Y",
           "offer_price_list_name": "Zoom Workplace Pro Annual",
+          "subscription_price_list_id": "fvnderfy89rui43jr23ej23",
           "quantity": 100,
           "start_date": "2022-10-25",
           "end_date": "2022-10-25",
@@ -577,7 +581,8 @@
             "amount_value": 10,
             "apply_to_charge": "PRLC-3223",
             "discount_level": "subscription",
-            "discount_program": "VLA program"
+            "discount_program": "VLA program",
+            "subscription_price_list_id": "SRP1234"
           }
         ]
       },
