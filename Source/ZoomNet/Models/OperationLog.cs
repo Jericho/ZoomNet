@@ -26,6 +26,6 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets the timestamp.</summary>
 		[JsonPropertyName("time")]
-		public DateTime Time { get; set; }
+		public DateTime? Time { get; set; }
 	}
 }
