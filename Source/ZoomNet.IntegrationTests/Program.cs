@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -110,7 +111,10 @@ namespace ZoomNet.IntegrationTests
 			}
 
 			// Configure the proxy if desired
-			var proxy = _useProxy ? new WebProxy($"http://localhost:{_proxyPort}") : null;
+			var isFiddlerRunning = Process.GetProcessesByName("Fiddler").Length > 0;
+			var isFiddlerEverywhereRunning = Process.GetProcessesByName("Fiddler Everywhere").Length > 0;
+			var proxyPort = isFiddlerRunning ? 8888 : (isFiddlerEverywhereRunning ? 8866 : 0);
+			var proxy = isFiddlerRunning || isFiddlerEverywhereRunning ? new WebProxy($"http://localhost:{proxyPort}") : null;
 
 			// Configure options
 			var clientOptions = new ZoomClientOptions
