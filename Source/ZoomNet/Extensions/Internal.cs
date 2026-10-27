@@ -18,7 +18,9 @@ using ZoomNet.Json;
 using ZoomNet.Models;
 using ZoomNet.Utilities;
 
+#pragma warning disable IDE0130 // Namespace does not match folder structure
 namespace ZoomNet
+#pragma warning restore IDE0130 // Namespace does not match folder structure
 {
 	/// <summary>
 	/// Internal extension methods.
@@ -56,17 +58,6 @@ namespace ZoomNet
 			{ typeof(nint), "nint" }, // From C# 11 onwards
 			{ typeof(nuint), "nuint" }, // From C# 11 onwards
 		};
-
-#if NET7_0_OR_GREATER
-		[GeneratedRegex(@"(.*?)(?<=""message"":"")(.*?)(?=""})(.*?$)", RegexOptions.Singleline)]
-		private static partial Regex ErrorMessageRegex();
-
-		[GeneratedRegex(@"(?<!\\)""", RegexOptions.None)]
-		private static partial Regex UnescapedQuoteRegex();
-#else
-		private static readonly Regex ErrorMessageRegex = new(@"(.*?)(?<=""message"":"")(.*?)(?=""})(.*?$)", RegexOptions.Compiled | RegexOptions.Singleline);
-		private static readonly Regex UnescapedQuoteRegex = new(@"(?<!\\)""", RegexOptions.Compiled);
-#endif
 
 		/// <summary>
 		/// Converts a 'unix time', which is expressed as the number of seconds (or milliseconds) since
@@ -131,13 +122,9 @@ namespace ZoomNet
 			const string defaultDateFormat = dateOnlyFormat + "'T'HH:mm:ss";
 			const string utcDateFormat = defaultDateFormat + "'Z'";
 
-			var formats = dateOnly ?
-				(UtcFormat: dateOnlyFormat, OtherTimeZoneFormat: dateOnlyFormat) :
-				(UtcFormat: utcDateFormat, OtherTimeZoneFormat: defaultDateFormat);
-
-			var formattedDate = timeZone.HasValue && timeZone.Value == TimeZones.UTC ?
-				date.ToUniversalTime().ToString(formats.UtcFormat) :
-				date.ToString(formats.OtherTimeZoneFormat);
+			var utcFormat = dateOnly ? dateOnlyFormat : utcDateFormat;
+			var otherTimeZoneFormat = dateOnly ? dateOnlyFormat : defaultDateFormat;
+			var formattedDate = timeZone.HasValue && timeZone.Value == TimeZones.UTC ? date.ToUniversalTime().ToString(utcFormat) : date.ToString(otherTimeZoneFormat);
 
 			return formattedDate;
 		}
@@ -1423,5 +1410,16 @@ namespace ZoomNet
 				_ => throw new ArgumentException($"Unsable to map {typeOfT.FullName} to a corresponding JSON type", nameof(T)),
 			};
 		}
+
+#if NET7_0_OR_GREATER
+		[GeneratedRegex(@"(.*?)(?<=""message"":"")(.*?)(?=""})(.*?$)", RegexOptions.Singleline)]
+		private static partial Regex ErrorMessageRegex();
+
+		[GeneratedRegex(@"(?<!\\)""", RegexOptions.None)]
+		private static partial Regex UnescapedQuoteRegex();
+#else
+		private static readonly Regex ErrorMessageRegex = new(@"(.*?)(?<=""message"":"")(.*?)(?=""})(.*?$)", RegexOptions.Compiled | RegexOptions.Singleline);
+		private static readonly Regex UnescapedQuoteRegex = new(@"(?<!\\)""", RegexOptions.Compiled);
+#endif
 	}
 }

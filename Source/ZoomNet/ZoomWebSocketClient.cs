@@ -21,18 +21,23 @@ namespace ZoomNet
 	public class ZoomWebSocketClient : IDisposable
 	{
 		// The error message we get from Zoom's WebSocket server when a token has expired is not always the same.
-		private static readonly HashSet<string> _invalidTokenMessages = new(StringComparer.OrdinalIgnoreCase)
-		{
+		private static readonly HashSet<string> _invalidTokenMessages =
+		[
+			with(StringComparer.OrdinalIgnoreCase),
 			"Invalid Token",
 			"Token is invalid"
-		};
+		];
 
 		private readonly string _subscriptionId;
 		private readonly ILogger _logger;
 		private readonly IWebProxy _proxy;
 		private readonly Func<Models.Webhooks.Event, CancellationToken, Task> _eventProcessor;
 		private readonly bool _throwWhenUnknownEventType;
+#if NET9_0_OR_GREATER
+		private readonly System.Threading.Lock _heartbeatLock = new();
+#else
 		private readonly object _heartbeatLock = new();
+#endif
 
 		private WebsocketClient _websocketClient;
 		private HttpClient _httpClient;
@@ -170,6 +175,7 @@ namespace ZoomNet
 					try { _heartbeatCts.Dispose(); } catch { }
 					_heartbeatCts = null;
 				}
+
 				_heartbeatTask = null;
 			}
 		}
