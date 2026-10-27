@@ -21,12 +21,11 @@ namespace ZoomNet
 	public class ZoomWebSocketClient : IDisposable
 	{
 		// The error message we get from Zoom's WebSocket server when a token has expired is not always the same.
-		private static readonly HashSet<string> _invalidTokenMessages =
-		[
-			with(StringComparer.OrdinalIgnoreCase),
+		private static readonly HashSet<string> _invalidTokenMessages = new(StringComparer.OrdinalIgnoreCase)
+		{
 			"Invalid Token",
 			"Token is invalid"
-		];
+		};
 
 		private readonly string _subscriptionId;
 		private readonly ILogger _logger;
