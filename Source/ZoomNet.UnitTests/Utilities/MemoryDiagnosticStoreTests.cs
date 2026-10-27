@@ -396,7 +396,7 @@ namespace ZoomNet.UnitTests.Utilities
 			info.RequestReference.TryGetTarget(out _).ShouldBeFalse();
 
 			// Act
-			store.Cleanup(null);
+			store.Cleanup();
 
 			// Assert
 			store.ContainsKey(diagnosticId).ShouldBeFalse();
@@ -424,7 +424,7 @@ namespace ZoomNet.UnitTests.Utilities
 			GC.Collect();
 
 			// Act
-			store.Cleanup(null);
+			store.Cleanup();
 
 			// Assert
 			store.ContainsKey(diagnosticId).ShouldBeTrue();
@@ -456,7 +456,7 @@ namespace ZoomNet.UnitTests.Utilities
 			GC.Collect();
 
 			// Act
-			store.Cleanup(null);
+			store.Cleanup();
 
 			// Assert
 			store.ContainsKey(gcId).ShouldBeFalse();
@@ -471,7 +471,7 @@ namespace ZoomNet.UnitTests.Utilities
 			using var store = new MemoryDiagnosticStore();
 
 			// Act & Assert
-			Should.NotThrow(() => store.Cleanup(null));
+			Should.NotThrow(() => store.Cleanup());
 		}
 
 		[Fact]
