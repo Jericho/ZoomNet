@@ -21,7 +21,7 @@
       "metric": "nfs",
       "field": "used_percent",
       "value": 90.123874,
-      "threshold": 80.0,
+      "threshold": 80,
       "operator": ">",
       "level": "warn"
     }

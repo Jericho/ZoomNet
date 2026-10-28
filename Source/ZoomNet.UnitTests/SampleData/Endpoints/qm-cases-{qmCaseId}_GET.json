@@ -1,0 +1,36 @@
+{
+  "account_id": "example-value",
+  "division_id": "example-value",
+  "connection_id": "example-value",
+  "qm_case_id": "example-value",
+  "external_case_key": "example-value",
+  "source_case_id": "example-value",
+  "schema_version": "example-value",
+  "last_source_updated_at": "2026-01-15T10:30:00.0000000\u002B00:00",
+  "last_idempotency_key": "example-value",
+  "mapped_fields": {},
+  "derived_engagement_ids": [],
+  "indicators": [],
+  "topics": [],
+  "create_time": "2026-01-15T10:30:00.0000000\u002B00:00",
+  "modify_time": "2026-01-15T10:30:00.0000000\u002B00:00",
+  "activities": {},
+  "interactions": [],
+  "ai_summary": {},
+  "ai_sentiment": {},
+  "performance_info": {
+    "calibration_info": {
+      "task_status": 2,
+      "task_id": "calibration-task-123",
+      "session_id": "session-123",
+      "draft_status": false
+    },
+    "evaluation_info": {
+      "task_status": 2,
+      "task_id": "evaluation-task-123",
+      "session_id": "session-123",
+      "can_edit": true,
+      "can_feedback": true
+    }
+  }
+}

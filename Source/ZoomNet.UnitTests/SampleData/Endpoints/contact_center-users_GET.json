@@ -6,6 +6,12 @@
     {
       "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
       "cc_user_id": "hKuMAiDdRlSwMkBxR5we7g",
+      "agent_identifiers": [
+        {
+          "agent_identifier_id": "agent_identifier_123",
+          "identifier": "zoom4821"
+        }
+      ],
       "display_name": "Jane Doe",
       "user_email": "jdoe@example.com",
       "role_id": "0TFVsJqNS82CwkQJLqj1zA",
@@ -31,9 +37,11 @@
         "concurrent_email_capacity": 4
       },
       "package_name": "essentials",
+      "subscription_id": null,
       "add_ons_plan": [
         "ai_expert_assist"
       ],
+      "add_ons_subscriptions": null,
       "teams": [
         {
           "team_id": "qlU902FoTD-dFi9QnCdZhw",

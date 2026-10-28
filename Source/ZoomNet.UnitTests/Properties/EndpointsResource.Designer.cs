@@ -133,6 +133,32 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;logo&quot;: {
+        ///    &quot;file_id&quot;: &quot;8oGZC9WeQzC4wLKz5Yy8Bw&quot;,
+        ///    &quot;file_name&quot;: &quot;logo.png&quot;,
+        ///    &quot;description&quot;: &quot;Thank you for joining. The host will start the meeting shortly.&quot;
+        ///  },
+        ///  &quot;image&quot;: {
+        ///    &quot;file_id&quot;: &quot;3nR7pQ1sT9uVxYzAaBbCcD&quot;,
+        ///    &quot;file_name&quot;: &quot;background.png&quot;
+        ///  },
+        ///  &quot;video&quot;: {
+        ///    &quot;file_id&quot;: &quot;7hJ2kL4mN6oP8qR0sT2uVw&quot;,
+        ///    &quot;file_name&quot;: &quot;welcome.mp4&quot;
+        ///  },
+        ///  &quot;title&quot;: &quot;Please wait, the host will let you in soon.&quot;,
+        ///  &quot;participant_will_see&quot;: &quot;image&quot;,
+        ///  &quot;default_image&quot;: &quot;customize&quot;
+        ///}.
+        /// </summary>
+        internal static string accounts__accountId__settings_meeting_waiting_room_branding_POST {
+            get {
+                return ResourceManager.GetString("accounts-{accountId}-settings-meeting_waiting_room_branding_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;options&quot;: {
         ///    &quot;host_email_notification&quot;: true,
         ///    &quot;close_registration&quot;: true,
@@ -174,6 +200,32 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string accounts__accountId__settings_virtual_backgrounds_POST {
             get {
                 return ResourceManager.GetString("accounts-{accountId}-settings-virtual_backgrounds_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;logo&quot;: {
+        ///    &quot;file_id&quot;: &quot;8oGZC9WeQzC4wLKz5Yy8Bw&quot;,
+        ///    &quot;file_name&quot;: &quot;logo.png&quot;,
+        ///    &quot;description&quot;: &quot;Thank you for joining. The host will start the meeting shortly.&quot;
+        ///  },
+        ///  &quot;image&quot;: {
+        ///    &quot;file_id&quot;: &quot;3nR7pQ1sT9uVxYzAaBbCcD&quot;,
+        ///    &quot;file_name&quot;: &quot;background.png&quot;
+        ///  },
+        ///  &quot;video&quot;: {
+        ///    &quot;file_id&quot;: &quot;7hJ2kL4mN6oP8qR0sT2uVw&quot;,
+        ///    &quot;file_name&quot;: &quot;welcome.mp4&quot;
+        ///  },
+        ///  &quot;title&quot;: &quot;Please wait, the host will let you in soon.&quot;,
+        ///  &quot;participant_will_see&quot;: &quot;image&quot;,
+        ///  &quot;default_image&quot;: &quot;customize&quot;,
+        ///  &quot;default_vi [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string accounts__accountId__settings_webinar_waiting_room_branding_POST {
+            get {
+                return ResourceManager.GetString("accounts-{accountId}-settings-webinar_waiting_room_branding_POST", resourceCulture);
             }
         }
         
@@ -235,6 +287,81 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string aic_users__userId__conversation_archive_GET {
             get {
                 return ResourceManager.GetString("aic-users-{userId}-conversation_archive_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;vocabulary_id&quot;: &quot;acct_vocab_abc123&quot;,
+        ///  &quot;language&quot;: &quot;en-US&quot;,
+        ///  &quot;phrases&quot;: [
+        ///    &quot;Acme&quot;
+        ///  ],
+        ///  &quot;name&quot;: &quot;vocabulary name&quot;
+        ///}.
+        /// </summary>
+        internal static string aiservices_assets_vocabularies__vocabularyId__GET {
+            get {
+                return ResourceManager.GetString("aiservices-assets-vocabularies-{vocabularyId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;vocabularies&quot;: [
+        ///    {
+        ///      &quot;vocabulary_id&quot;: &quot;acct_vocab_abc123&quot;,
+        ///      &quot;language&quot;: &quot;en-US&quot;,
+        ///      &quot;name&quot;: &quot;vocabulary name&quot;
+        ///    }
+        ///  ],
+        ///  &quot;next_page_token&quot;: &quot;eyJqb2JfaWQiOiJqb2JfZGVmNDU2In0&quot;
+        ///}.
+        /// </summary>
+        internal static string aiservices_assets_vocabularies_GET {
+            get {
+                return ResourceManager.GetString("aiservices-assets-vocabularies_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;vocabulary_id&quot;: &quot;acct_vocab_abc123&quot;,
+        ///  &quot;language&quot;: &quot;en-US&quot;,
+        ///  &quot;phrases&quot;: [
+        ///    &quot;Acme&quot;
+        ///  ],
+        ///  &quot;name&quot;: &quot;vocabulary name&quot;
+        ///}.
+        /// </summary>
+        internal static string aiservices_assets_vocabularies_POST {
+            get {
+                return ResourceManager.GetString("aiservices-assets-vocabularies_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;answers&quot;: [
+        ///    {
+        ///      &quot;type&quot;: &quot;predicate&quot;,
+        ///      &quot;name&quot;: &quot;damaged&quot;,
+        ///      &quot;probability&quot;: 0.9964802288772219
+        ///    }
+        ///  ],
+        ///  &quot;model&quot;: &quot;zoom-decisions&quot;,
+        ///  &quot;request_id&quot;: &quot;req_test_case_predicate&quot;,
+        ///  &quot;usage&quot;: {
+        ///    &quot;input_units&quot;: 96,
+        ///    &quot;output_units&quot;: 1,
+        ///    &quot;unit_type&quot;: &quot;tokens&quot;,
+        ///    &quot;details&quot;: {}
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string aiservices_decisions_decide_POST {
+            get {
+                return ResourceManager.GetString("aiservices-decisions-decide_POST", resourceCulture);
             }
         }
         
@@ -367,12 +494,22 @@ namespace ZoomNet.UnitTests.Properties {
         ///      }
         ///    ]
         ///  },
-        ///  &quot;model&quot;: &quot;zoom-asr-en-v1&quot;
-        ///}.
+        ///  &quot;model&quot;: &quot;zoom-asr-en-v1&quot;,
+        ///  &quot;outputs&quot;: {
+        ///    &quot;text [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string aiservices_scribe_transcribe_POST {
             get {
                 return ResourceManager.GetString("aiservices-scribe-transcribe_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {}.
+        /// </summary>
+        internal static string aiservices_speech_summarization_summarize_POST {
+            get {
+                return ResourceManager.GetString("aiservices-speech-summarization-summarize_POST", resourceCulture);
             }
         }
         
@@ -3996,6 +4133,31 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
         ///  &quot;page_size&quot;: 30,
         ///  &quot;total_records&quot;: 10,
+        ///  &quot;timezone&quot;: &quot;UTC&quot;,
+        ///  &quot;from&quot;: &quot;2025-12-10T00:00:00Z&quot;,
+        ///  &quot;to&quot;: &quot;2025-12-10T00:15:00Z&quot;,
+        ///  &quot;agent_loads&quot;: [
+        ///    {
+        ///      &quot;agent_load_id&quot;: &quot;agload_01HXYZ123&quot;,
+        ///      &quot;agent_id&quot;: &quot;u1234567890&quot;,
+        ///      &quot;agent_name&quot;: &quot;Alex Smith&quot;,
+        ///      &quot;agent_email&quot;: &quot;alex.smith@example.com&quot;,
+        ///      &quot;team_id&quot;: &quot;team_123456&quot;,
+        ///      &quot;team_name&quot;: &quot;Support Team&quot;,
+        ///      &quot;queue_id_names&quot;: {
+        ///        &quot;queue_123&quot;: &quot;General  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_analytics_dataset_historical_agent_load_GET {
+            get {
+                return ResourceManager.GetString("contact_center-analytics-dataset-historical-agent_load_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
         ///  &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///  &quot;from&quot;: &quot;2021-12-10T00:00:00Z&quot;,
         ///  &quot;to&quot;: &quot;2021-12-10T00:00:00Z&quot;,
@@ -4336,14 +4498,14 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;agents&quot;: [
         ///    {
         ///      &quot;user_id&quot;: &quot;ukAAkZKfROKMSw1bj_RDFQ&quot;,
-        ///      &quot;display_name&quot;: &quot;Jilly&quot;,
+        ///      &quot;display_name&quot;: &quot;John&quot;,
         ///      &quot;voice&quot;: {
         ///        &quot;offers_total&quot;: 5,
         ///        &quot;offers_acd&quot;: 4,
         ///        &quot;offers_non_acd&quot;: 1,
         ///        &quot;offers_answered&quot;: 5,
         ///        &quot;offers_answered_acd_inbound&quot;: 2,
-        ///        &quot;offers_missed&quot;: [rest of string was truncated]&quot;;.
+        ///        &quot;offers_missed&quot;:  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_analytics_historical_queues_agents_metrics_GET {
             get {
@@ -7846,15 +8008,16 @@ namespace ZoomNet.UnitTests.Properties {
         ///    {
         ///      &quot;user_id&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
         ///      &quot;cc_user_id&quot;: &quot;hKuMAiDdRlSwMkBxR5we7g&quot;,
+        ///      &quot;agent_identifiers&quot;: [
+        ///        {
+        ///          &quot;agent_identifier_id&quot;: &quot;agent_identifier_123&quot;,
+        ///          &quot;identifier&quot;: &quot;zoom4821&quot;
+        ///        }
+        ///      ],
         ///      &quot;display_name&quot;: &quot;Jane Doe&quot;,
         ///      &quot;user_email&quot;: &quot;jdoe@example.com&quot;,
         ///      &quot;role_id&quot;: &quot;0TFVsJqNS82CwkQJLqj1zA&quot;,
-        ///      &quot;role_name&quot;: &quot;Admin&quot;,
-        ///      &quot;client_integration&quot;: &quot;Salesforce&quot;,
-        ///      &quot;status_id&quot;: &quot;2&quot;,
-        ///      &quot;status_name&quot;: &quot;Not Ready&quot;,
-        ///      &quot;sub_status_id&quot;: &quot;21&quot;,
-        ///      &quot;sub [rest of string was truncated]&quot;;.
+        ///      &quot;role_name [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_users_GET {
             get {
@@ -8285,6 +8448,18 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string contacts_groups_POST {
             get {
                 return ResourceManager.GetString("contacts-groups_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;contact_id&quot;: &quot;A1bC2dE3fG4hI5jK6lM7nO8pQ9rS0tU&quot;,
+        ///  &quot;display_name&quot;: &quot;John Smith&quot;
+        ///}.
+        /// </summary>
+        internal static string contacts_user__user_id__personal_POST {
+            get {
+                return ResourceManager.GetString("contacts-user-{user_id}-personal_POST", resourceCulture);
             }
         }
         
@@ -9204,8 +9379,108 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;comment_id&quot;: &quot;f56d75afca6641f4b8f482874f4d0b5f&quot;,
+        ///  &quot;thread_type&quot;: &quot;full_page&quot;,
+        ///  &quot;content&quot;: {
+        ///    &quot;format&quot;: &quot;plain_text&quot;,
+        ///    &quot;text&quot;: &quot;Please add an owner for this section.&quot;
+        ///  },
+        ///  &quot;created_by&quot;: {
+        ///    &quot;display_name&quot;: &quot;Ada&quot;,
+        ///    &quot;user_id&quot;: &quot;u_123456789&quot;
+        ///  },
+        ///  &quot;created_time&quot;: &quot;2026-07-07T12:34:56.0000000\u002B00:00&quot;,
+        ///  &quot;file_id&quot;: &quot;Ns0UAkYNQOCO-42TD7u5BQ&quot;,
+        ///  &quot;last_edited_time&quot;: &quot;2026-07-07T12:34:56.0000000\u002B00:00&quot;,
+        ///  &quot;parent&quot;: {
+        ///    &quot;thread_id&quot;: &quot;45da44aebcff473cafc72417e0cd14c6&quot;,
+        ///    [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string docs_files__fileId__comments__commentId__GET {
+            get {
+                return ResourceManager.GetString("docs-files-{fileId}-comments-{commentId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;comment_id&quot;: &quot;f56d75afca6641f4b8f482874f4d0b5f&quot;,
+        ///  &quot;thread_type&quot;: &quot;full_page&quot;,
+        ///  &quot;content&quot;: {
+        ///    &quot;format&quot;: &quot;plain_text&quot;,
+        ///    &quot;text&quot;: &quot;Please add an owner for this section.&quot;
+        ///  },
+        ///  &quot;created_by&quot;: {
+        ///    &quot;display_name&quot;: &quot;Ada&quot;,
+        ///    &quot;user_id&quot;: &quot;u_123456789&quot;
+        ///  },
+        ///  &quot;created_time&quot;: &quot;2026-07-07T12:34:56.0000000\u002B00:00&quot;,
+        ///  &quot;file_id&quot;: &quot;Ns0UAkYNQOCO-42TD7u5BQ&quot;,
+        ///  &quot;last_edited_time&quot;: &quot;2026-07-07T13:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;parent&quot;: {
+        ///    &quot;thread_id&quot;: &quot;45da44aebcff473cafc72417e0cd14c6&quot;,
+        ///    [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string docs_files__fileId__comments__commentId__PATCH {
+            get {
+                return ResourceManager.GetString("docs-files-{fileId}-comments-{commentId}_PATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;comments&quot;: [
+        ///    {
+        ///      &quot;comment_id&quot;: &quot;f56d75afca6641f4b8f482874f4d0b5f&quot;,
+        ///      &quot;thread_type&quot;: &quot;full_page&quot;,
+        ///      &quot;content&quot;: {
+        ///        &quot;format&quot;: &quot;plain_text&quot;,
+        ///        &quot;text&quot;: &quot;Please add an owner for this section.&quot;
+        ///      },
+        ///      &quot;created_by&quot;: {
+        ///        &quot;display_name&quot;: &quot;Ada&quot;,
+        ///        &quot;user_id&quot;: &quot;u_123456789&quot;
+        ///      },
+        ///      &quot;created_time&quot;: &quot;2026-07-07T12:34:56.0000000\u002B00:00&quot;,
+        ///      &quot;file_id&quot;: &quot;Ns0UAkYNQOCO-42TD7u5BQ&quot;,
+        ///      &quot;last_edited_time&quot;: &quot;2026-07-07T12:34:56.0000000\u002B00:00 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string docs_files__fileId__comments_GET {
+            get {
+                return ResourceManager.GetString("docs-files-{fileId}-comments_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;comment_id&quot;: &quot;f56d75afca6641f4b8f482874f4d0b5f&quot;,
+        ///  &quot;thread_type&quot;: &quot;full_page&quot;,
+        ///  &quot;content&quot;: {
+        ///    &quot;format&quot;: &quot;plain_text&quot;,
+        ///    &quot;text&quot;: &quot;Please add an owner for this section.&quot;
+        ///  },
+        ///  &quot;created_by&quot;: {
+        ///    &quot;display_name&quot;: &quot;Ada&quot;,
+        ///    &quot;user_id&quot;: &quot;u_123456789&quot;
+        ///  },
+        ///  &quot;created_time&quot;: &quot;2026-07-07T12:34:56.0000000\u002B00:00&quot;,
+        ///  &quot;file_id&quot;: &quot;Ns0UAkYNQOCO-42TD7u5BQ&quot;,
+        ///  &quot;last_edited_time&quot;: &quot;2026-07-07T12:34:56.0000000\u002B00:00&quot;,
+        ///  &quot;parent&quot;: {
+        ///    &quot;thread_id&quot;: &quot;45da44aebcff473cafc72417e0cd14c6&quot;,
+        ///    [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string docs_files__fileId__comments_POST {
+            get {
+                return ResourceManager.GetString("docs-files-{fileId}-comments_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;file_name&quot;: &quot;Q3 Plan&quot;,
-        ///  &quot;file_content&quot;: &quot;## Product Development\n\n- Complete beta testing for mobile app by July 15\n- Implement AI-powered recommendation engine&quot;
+        ///  &quot;file_content&quot;: &quot;## Product Development\n\n- Complete beta testing for mobile app by July 15\n- Implement AI-powered recommendation engine&quot;,
+        ///  &quot;file_link&quot;: &quot;https://docs.zoom.us/doc/ADuV705lSXW4c6fBgQFarQ&quot;
         ///}.
         /// </summary>
         internal static string docs_files__fileId__content_GET {
@@ -10357,6 +10632,32 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;logo&quot;: {
+        ///    &quot;file_id&quot;: &quot;8oGZC9WeQzC4wLKz5Yy8Bw&quot;,
+        ///    &quot;file_name&quot;: &quot;logo.png&quot;,
+        ///    &quot;description&quot;: &quot;Thank you for joining. The host will start the meeting shortly.&quot;
+        ///  },
+        ///  &quot;image&quot;: {
+        ///    &quot;file_id&quot;: &quot;3nR7pQ1sT9uVxYzAaBbCcD&quot;,
+        ///    &quot;file_name&quot;: &quot;background.png&quot;
+        ///  },
+        ///  &quot;video&quot;: {
+        ///    &quot;file_id&quot;: &quot;7hJ2kL4mN6oP8qR0sT2uVw&quot;,
+        ///    &quot;file_name&quot;: &quot;welcome.mp4&quot;
+        ///  },
+        ///  &quot;title&quot;: &quot;Please wait, the host will let you in soon.&quot;,
+        ///  &quot;participant_will_see&quot;: &quot;image&quot;,
+        ///  &quot;default_image&quot;: &quot;customize&quot;
+        ///}.
+        /// </summary>
+        internal static string groups__groupId__settings_meeting_waiting_room_branding_POST {
+            get {
+                return ResourceManager.GetString("groups-{groupId}-settings-meeting_waiting_room_branding_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;options&quot;: {
         ///    &quot;host_email_notification&quot;: true,
         ///    &quot;close_registration&quot;: true,
@@ -10398,6 +10699,32 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string groups__groupId__settings_virtual_backgrounds_POST {
             get {
                 return ResourceManager.GetString("groups-{groupId}-settings-virtual_backgrounds_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;logo&quot;: {
+        ///    &quot;file_id&quot;: &quot;8oGZC9WeQzC4wLKz5Yy8Bw&quot;,
+        ///    &quot;file_name&quot;: &quot;logo.png&quot;,
+        ///    &quot;description&quot;: &quot;Thank you for joining. The host will start the meeting shortly.&quot;
+        ///  },
+        ///  &quot;image&quot;: {
+        ///    &quot;file_id&quot;: &quot;3nR7pQ1sT9uVxYzAaBbCcD&quot;,
+        ///    &quot;file_name&quot;: &quot;background.png&quot;
+        ///  },
+        ///  &quot;video&quot;: {
+        ///    &quot;file_id&quot;: &quot;7hJ2kL4mN6oP8qR0sT2uVw&quot;,
+        ///    &quot;file_name&quot;: &quot;welcome.mp4&quot;
+        ///  },
+        ///  &quot;title&quot;: &quot;Please wait, the host will let you in soon.&quot;,
+        ///  &quot;participant_will_see&quot;: &quot;image&quot;,
+        ///  &quot;default_image&quot;: &quot;customize&quot;,
+        ///  &quot;default_vi [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string groups__groupId__settings_webinar_waiting_room_branding_POST {
+            get {
+                return ResourceManager.GetString("groups-{groupId}-settings-webinar_waiting_room_branding_POST", resourceCulture);
             }
         }
         
@@ -15120,7 +15447,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///  },
         ///  &quot;state_code&quot;: &quot;CA&quot;,
         ///  &quot;status&quot;: 1,
-        ///  &quot;zip&quot;: &quot;95113&quot;
+        ///  &quot;zip&quot;: &quot;95113&quot;,
+        ///  &quot;business_name&quot;: &quot;Zoom San Jose Office&quot;
         ///}.
         /// </summary>
         internal static string phone_emergency_addresses__emergencyAddressId__GET {
@@ -15149,7 +15477,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///  },
         ///  &quot;state_code&quot;: &quot;CA&quot;,
         ///  &quot;status&quot;: 1,
-        ///  &quot;zip&quot;: &quot;95113&quot;
+        ///  &quot;zip&quot;: &quot;95113&quot;,
+        ///  &quot;business_name&quot;: &quot;Zoom San Jose Office&quot;
         ///}.
         /// </summary>
         internal static string phone_emergency_addresses__emergencyAddressId__PATCH {
@@ -15206,7 +15535,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///  },
         ///  &quot;state_code&quot;: &quot;CA&quot;,
         ///  &quot;status&quot;: 1,
-        ///  &quot;zip&quot;: &quot;95113&quot;
+        ///  &quot;zip&quot;: &quot;95113&quot;,
+        ///  &quot;business_name&quot;: &quot;Zoom San Jose Office&quot;
         ///}.
         /// </summary>
         internal static string phone_emergency_addresses_POST {
@@ -15235,6 +15565,22 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string phone_emergency_number_pools_phone_numbers_GET {
             get {
                 return ResourceManager.GetString("phone-emergency_number_pools-phone_numbers_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;phone_numbers&quot;: [
+        ///    {
+        ///      &quot;id&quot;: &quot;iHE1MQAET2iV85MbfaQmwg&quot;,
+        ///      &quot;number&quot;: &quot;\u002B18887193005&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string phone_emergency_number_pools_phone_numbers_POST {
+            get {
+                return ResourceManager.GetString("phone-emergency_number_pools-phone_numbers_POST", resourceCulture);
             }
         }
         
@@ -15846,13 +16192,12 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;country&quot;: &quot;US&quot;,
         ///    &quot;id&quot;: &quot;Qza2T_KATwCeUfTkzGsOmQ&quot;,
         ///    &quot;state_code&quot;: &quot;CA&quot;,
-        ///    &quot;zip&quot;: &quot;95113&quot;
+        ///    &quot;zip&quot;: &quot;95113&quot;,
+        ///    &quot;business_name&quot;: &quot;Zoom San Jose Office&quot;
         ///  },
         ///  &quot;id&quot;: &quot;eRYjZlItQIqlFbCuRA__SQ&quot;,
         ///  &quot;name&quot;: &quot;example location&quot;,
-        ///  &quot;network_switches&quot;: [
-        ///    {
-        ///      &quot;mac_address&quot;: &quot;6416 [rest of string was truncated]&quot;;.
+        ///  &quot;network_s [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_locations__locationId__GET {
             get {
@@ -17947,10 +18292,10 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;id&quot;: &quot;x18dcVWxTcCzbp4zr2AT3A&quot;,
         ///      &quot;name&quot;: &quot;FWDHOMaNRaqIvNc3aIdisg.jpg&quot;,
         ///      &quot;size&quot;: 225740,
-        ///      &quot;type&quot;: &quot;JPG/JPEG&quot;
+        ///      &quot;type&quot;: &quot;GIF&quot;
         ///    }
         ///  ],
-        ///  &quot;date_time&quot;: &quot;20 [rest of string was truncated]&quot;;.
+        ///  &quot;date_time&quot;: &quot;2022-03 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_sms_sessions__sessionId__messages__messageId__GET {
             get {
@@ -18834,6 +19179,43 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string qm_calibrations_GET {
             get {
                 return ResourceManager.GetString("qm-calibrations_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;account_id&quot;: &quot;example-value&quot;,
+        ///  &quot;division_id&quot;: &quot;example-value&quot;,
+        ///  &quot;connection_id&quot;: &quot;example-value&quot;,
+        ///  &quot;qm_case_id&quot;: &quot;example-value&quot;,
+        ///  &quot;external_case_key&quot;: &quot;example-value&quot;,
+        ///  &quot;source_case_id&quot;: &quot;example-value&quot;,
+        ///  &quot;schema_version&quot;: &quot;example-value&quot;,
+        ///  &quot;last_source_updated_at&quot;: &quot;2026-01-15T10:30:00.0000000\u002B00:00&quot;,
+        ///  &quot;last_idempotency_key&quot;: &quot;example-value&quot;,
+        ///  &quot;mapped_fields&quot;: {},
+        ///  &quot;derived_engagement_ids&quot;: [],
+        ///  &quot;indicators&quot;: [],
+        ///  &quot;topics&quot;: [],
+        ///  &quot;create_time&quot;: &quot;2026-01-15T10:30:00.0000 [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string qm_cases__qmCaseId__GET {
+            get {
+                return ResourceManager.GetString("qm-cases-{qmCaseId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total&quot;: 1,
+        ///  &quot;page_size&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;example-value&quot;,
+        ///  &quot;data&quot;: []
+        ///}.
+        /// </summary>
+        internal static string qm_cases_GET {
+            get {
+                return ResourceManager.GetString("qm-cases_GET", resourceCulture);
             }
         }
         
@@ -22284,6 +22666,32 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;logo&quot;: {
+        ///    &quot;file_id&quot;: &quot;8oGZC9WeQzC4wLKz5Yy8Bw&quot;,
+        ///    &quot;file_name&quot;: &quot;logo.png&quot;,
+        ///    &quot;description&quot;: &quot;Thank you for joining. The host will start the meeting shortly.&quot;
+        ///  },
+        ///  &quot;image&quot;: {
+        ///    &quot;file_id&quot;: &quot;3nR7pQ1sT9uVxYzAaBbCcD&quot;,
+        ///    &quot;file_name&quot;: &quot;background.png&quot;
+        ///  },
+        ///  &quot;video&quot;: {
+        ///    &quot;file_id&quot;: &quot;7hJ2kL4mN6oP8qR0sT2uVw&quot;,
+        ///    &quot;file_name&quot;: &quot;welcome.mp4&quot;
+        ///  },
+        ///  &quot;title&quot;: &quot;Please wait, the host will let you in soon.&quot;,
+        ///  &quot;participant_will_see&quot;: &quot;image&quot;,
+        ///  &quot;default_image&quot;: &quot;customize&quot;
+        ///}.
+        /// </summary>
+        internal static string users__userId__settings_meeting_waiting_room_branding_POST {
+            get {
+                return ResourceManager.GetString("users-{userId}-settings-meeting_waiting_room_branding_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;in_meeting&quot;: {
         ///    &quot;meeting_summary&quot;: {
         ///      &quot;enable&quot;: true,
@@ -22321,6 +22729,32 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string users__userId__settings_virtual_backgrounds_POST {
             get {
                 return ResourceManager.GetString("users-{userId}-settings-virtual_backgrounds_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;logo&quot;: {
+        ///    &quot;file_id&quot;: &quot;8oGZC9WeQzC4wLKz5Yy8Bw&quot;,
+        ///    &quot;file_name&quot;: &quot;logo.png&quot;,
+        ///    &quot;description&quot;: &quot;Thank you for joining. The host will start the meeting shortly.&quot;
+        ///  },
+        ///  &quot;image&quot;: {
+        ///    &quot;file_id&quot;: &quot;3nR7pQ1sT9uVxYzAaBbCcD&quot;,
+        ///    &quot;file_name&quot;: &quot;background.png&quot;
+        ///  },
+        ///  &quot;video&quot;: {
+        ///    &quot;file_id&quot;: &quot;7hJ2kL4mN6oP8qR0sT2uVw&quot;,
+        ///    &quot;file_name&quot;: &quot;welcome.mp4&quot;
+        ///  },
+        ///  &quot;title&quot;: &quot;Please wait, the host will let you in soon.&quot;,
+        ///  &quot;participant_will_see&quot;: &quot;image&quot;,
+        ///  &quot;default_image&quot;: &quot;customize&quot;,
+        ///  &quot;default_vi [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string users__userId__settings_webinar_waiting_room_branding_POST {
+            get {
+                return ResourceManager.GetString("users-{userId}-settings-webinar_waiting_room_branding_POST", resourceCulture);
             }
         }
         
@@ -24975,6 +25409,31 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;workspace_permission&quot;: {
+        ///    &quot;enabled&quot;: true,
+        ///    &quot;allow_user_ids&quot;: [
+        ///      &quot;zwKiV80hQ7CwRg9BEm0Bvw&quot;
+        ///    ],
+        ///    &quot;allow_user_group_ids&quot;: [
+        ///      &quot;xGm7n9PTQGe5fT0S9sR2Dw&quot;
+        ///    ],
+        ///    &quot;non_supported_reason&quot;: &quot;This workspace is part of a neighborhood or already assigned, so restricted-user rules can\u2019t be applied.&quot;
+        ///  },
+        ///  &quot;capacity&quot;: 8,
+        ///  &quot;reservation_admin&quot;: [
+        ///    &quot;admin1@zoom.us&quot;
+        ///  ],
+        ///  &quot;required_approve&quot;: true
+        ///}.
+        /// </summary>
+        internal static string workspaces__workspaceId__settings_GET {
+            get {
+                return ResourceManager.GetString("workspaces-{workspaceId}-settings_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;next_page_token&quot;: &quot;At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2&quot;,
         ///  &quot;page_size&quot;: 30,
         ///  &quot;workspaces&quot;: [
@@ -25960,6 +26419,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;status&quot;: &quot;active&quot;,
         ///      &quot;anonymous&quot;: false,
         ///      &quot;poll_type&quot;: 2,
+        ///      &quot;poll_source&quot;: &quot;session&quot;,
         ///      &quot;questions&quot;: [
         ///        {
         ///          &quot;answer_max_character&quot;: 200,
@@ -25970,8 +26430,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///          ],
         ///          &quot;case_sensitive&quot;: false,
         ///          &quot;name&quot;: &quot;How useful was this meeting?&quot;,
-        ///          &quot;prompts&quot;: [
-        ///            &quot;How are [rest of string was truncated]&quot;;.
+        ///          &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string zoom_events_events__eventId__sessions__sessionId__polls_GET {
             get {
@@ -26696,6 +27155,17 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string zoomapp_deeplink_POST {
             get {
                 return ResourceManager.GetString("zoomapp-deeplink_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;tab_id&quot;: &quot;fb6ecaf2-686c-4440-b9ae-b5e9392309ec&quot;
+        ///}.
+        /// </summary>
+        internal static string zoomchat_chat_sessions__chat_session_id__tabs_POST {
+            get {
+                return ResourceManager.GetString("zoomchat-chat_sessions-{chat_session_id}-tabs_POST", resourceCulture);
             }
         }
         

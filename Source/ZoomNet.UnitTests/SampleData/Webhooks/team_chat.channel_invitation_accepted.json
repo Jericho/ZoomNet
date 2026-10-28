@@ -12,8 +12,8 @@
         "channel_name": "Test",
         "type": 5
       },
-      "organization":{
-        "org_id":"dsdsd",
+      "organization": {
+        "org_id": "dsdsd",
         "org_name": "dsdsd"
       },
       "invitee": {

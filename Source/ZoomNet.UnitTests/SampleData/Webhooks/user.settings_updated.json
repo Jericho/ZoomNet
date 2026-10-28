@@ -11,6 +11,64 @@
       "settings": {
         "in_meeting": {
           "custom_live_streaming_service": true
+        },
+        "ai": {
+          "whiteboard_content_generation": true,
+          "show_conversational_ai_companion": {
+            "enabled": true,
+            "enable_zoom_mate": true
+          },
+          "ai_panel_in_workplace": {
+            "enabled": true
+          },
+          "enable_ai_on_web": true,
+          "webinar_summary_follow_up_email": true,
+          "webinar_summary_ocr": true,
+          "zoom_events_session_summary": {
+            "enable": true,
+            "auto_start": true
+          },
+          "hub_ai_question_and_file_creation": true,
+          "canvas_ai_content_generation": true,
+          "canvas_ai_sentence_completion": true,
+          "canvas_ai_post_meeting_writing_tasks": true,
+          "paper_ai_content_generation": true,
+          "sheets_ai_content_generation": true,
+          "sheets_ai_formula": true,
+          "sheets_ai_function": true,
+          "sheets_ai_resources": true,
+          "slides_ai_content_generation": true,
+          "my_notes_meeting_transcription": true,
+          "my_notes_ai_content_generation": {
+            "enable": true
+          },
+          "chat_summary": {
+            "enable": false,
+            "show_in_zoom_chat": true
+          },
+          "chat_compose": {
+            "enable": false,
+            "show_in_zoom_chat": true
+          },
+          "webinar_questions": {
+            "enable": true,
+            "auto_enable": false,
+            "who_can_ask_questions": "panelist_org"
+          },
+          "webinar_summary": {
+            "enable": true,
+            "auto_enable": false,
+            "email_notification": true,
+            "whether_include_full_text_in_email": "include_full_text_in_email",
+            "restrict_share_to_outside_of_organization": true,
+            "restrict_summary_share": "external_users",
+            "who_will_receive_summary": "host_and_panelist_in_organization"
+          },
+          "include_webinar_summary_follow_up_email": {
+            "enable": true,
+            "attendee_follow_up_email": true,
+            "absentee_follow_up_email": false
+          }
         }
       }
     },
@@ -19,6 +77,64 @@
       "settings": {
         "in_meeting": {
           "custom_live_streaming_service": false
+        },
+        "ai": {
+          "whiteboard_content_generation": false,
+          "show_conversational_ai_companion": {
+            "enabled": true,
+            "enable_zoom_mate": true
+          },
+          "ai_panel_in_workplace": {
+            "enabled": true
+          },
+          "enable_ai_on_web": true,
+          "webinar_summary_follow_up_email": true,
+          "webinar_summary_ocr": true,
+          "zoom_events_session_summary": {
+            "enable": true,
+            "auto_start": true
+          },
+          "hub_ai_question_and_file_creation": false,
+          "canvas_ai_content_generation": false,
+          "canvas_ai_sentence_completion": false,
+          "canvas_ai_post_meeting_writing_tasks": false,
+          "paper_ai_content_generation": false,
+          "sheets_ai_content_generation": false,
+          "sheets_ai_formula": false,
+          "sheets_ai_function": false,
+          "sheets_ai_resources": false,
+          "slides_ai_content_generation": false,
+          "my_notes_meeting_transcription": false,
+          "my_notes_ai_content_generation": {
+            "enable": false
+          },
+          "chat_summary": {
+            "enable": false,
+            "show_in_zoom_chat": true
+          },
+          "chat_compose": {
+            "enable": false,
+            "show_in_zoom_chat": true
+          },
+          "webinar_questions": {
+            "enable": true,
+            "auto_enable": false,
+            "who_can_ask_questions": "panelist_org"
+          },
+          "webinar_summary": {
+            "enable": true,
+            "auto_enable": false,
+            "email_notification": true,
+            "whether_include_full_text_in_email": "include_full_text_in_email",
+            "restrict_share_to_outside_of_organization": true,
+            "restrict_summary_share": "external_users",
+            "who_will_receive_summary": "host_and_panelist_in_organization"
+          },
+          "include_webinar_summary_follow_up_email": {
+            "enable": true,
+            "attendee_follow_up_email": true,
+            "absentee_follow_up_email": false
+          }
         }
       }
     }

@@ -11,7 +11,8 @@
     "country": "US",
     "id": "Qza2T_KATwCeUfTkzGsOmQ",
     "state_code": "CA",
-    "zip": "95113"
+    "zip": "95113",
+    "business_name": "Zoom San Jose Office"
   },
   "id": "eRYjZlItQIqlFbCuRA__SQ",
   "name": "example location",
@@ -27,6 +28,8 @@
   "parent_location_id": "FksDtQDfR9qs3gWXNDsfIw",
   "private_ip": "192.1.1.2",
   "public_ip": "192.1.1.1",
+  "private_ipv6": "fd00:1234:5678:9abc::/120",
+  "public_ipv6": "2001:db8:1234:5678::/120",
   "sip_group": {
     "display_name": "band width",
     "id": "F_WKDH6FRdeddZBcNUlUeA"

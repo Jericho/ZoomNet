@@ -71,7 +71,11 @@
       "expert_assist_feature": [
         "ea_info_retrieval"
       ],
-      "engagement_count": 1
+      "engagement_count": 1,
+      "work_item_type": {
+        "work_item_type_id": "BtfGbUfSQoedk4iIeql9qw",
+        "work_item_type_name": "work item type example"
+      }
     }
   ]
 }

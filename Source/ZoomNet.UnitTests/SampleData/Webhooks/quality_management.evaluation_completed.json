@@ -22,7 +22,8 @@
       "scoring_format": "points",
       "total_possible_score": 50,
       "evaluation_score": 10,
-      "evaluation_score_ratio": 0.20
+      "evaluation_score_ratio": 0.2,
+      "evaluation_type": "AUTOMATED"
     }
   }
 }

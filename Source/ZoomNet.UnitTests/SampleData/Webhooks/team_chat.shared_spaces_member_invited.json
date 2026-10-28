@@ -20,14 +20,14 @@
         {
           "user_id": "zFEXGGfNXTWRBzj4Mr286T",
           "user_email": "user3@example.com",
-          "display_name":"test",
+          "display_name": "test",
           "member_id": "1vRFhZt_2gipkB-SFKkOpnkhWpeSf1wiCPYdRWctkgMaE9NWn66sJouoz8opRcsg",
           "role": "admin"
         },
         {
           "user_id": "m2hWkcLkH52tZto9daw7B2",
           "user_email": "user4@example.com",
-          "display_name":"test",
+          "display_name": "test",
           "member_id": "1vRFhZt_2gipkB-SFKkOpnkhWpeSf1wiCPYdRWctkgMaE9NWn66sJouoz8opRcsg",
           "role": "member"
         }

@@ -23,11 +23,26 @@
         "concurrent_email_capacity": 4
       },
       "package_name": "essentials",
+      "subscription_id": "SUBREF-20010798251-A-S31518725",
       "add_ons_plan": [
         "ai_expert_assist"
       ],
+      "add_ons_subscriptions": [
+        {
+          "add_ons_plan_name": "ai_expert_assist",
+          "subscription_id": "QB-SUBREF-20010782373"
+        }
+      ],
       "billing_account_id": "PEKovuAEQBu5dpeqmxwW1Q",
-      "billing_account_name": "main billing account"
+      "billing_account_name": "main billing account",
+      "agent_identifiers": [
+        {
+          "agent_identifier_id": "agent_identifier_123",
+          "identifier": "zoom4821"
+        }
+      ]
     }
-  ]
+  ],
+  "division_name": "EMEA Operations",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA"
 }

@@ -8,10 +8,10 @@
     "operator": "zapp.mobile.admin@ep.test",
     "operator_id": "TFq5AiLZSOyuCUpH28gohw",
     "object": {
-      "organization":{
-        "org_id":"dsdsd",
+      "organization": {
+        "org_id": "dsdsd",
         "org_name": "dsdsd",
-        "is_trust":false
+        "is_trust": false
       },
       "channel": {
         "channel_id": "C12345678",

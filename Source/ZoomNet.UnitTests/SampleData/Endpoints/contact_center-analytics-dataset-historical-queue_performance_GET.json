@@ -87,7 +87,11 @@
       "enter_queue_id": "ZWT70A1CE9D236F8E85DF9F80726A8DCEC5",
       "focus_duration": 123,
       "queue_offer_canceled_count": 1,
-      "outbound_canceled_count": 1
+      "outbound_canceled_count": 1,
+      "work_item_type": {
+        "work_item_type_id": "BtfGbUfSQoedk4iIeql9qw",
+        "work_item_type_name": "work item type example"
+      }
     }
   ],
   "division_name": "EMEA Operations",

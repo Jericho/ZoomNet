@@ -33,13 +33,20 @@
         },
         "disclaimer": {
           "message": "disclaimer",
-          "enable": true
+          "enable": true,
+          "append_frequency": "OFF"
         }
       },
       "status": true,
       "create_time": "2024-06-01T08:55:38.0000000\u002B00:00",
       "modify_time": "2025-09-19T11:20:59.0000000\u002B00:00",
-      "used_number": 48
+      "used_number": 48,
+      "enable_consent_handling_message": true,
+      "enable_help_message": true,
+      "enable_disclaimer": true,
+      "enable_opt_in_out_at_campaign_level": false,
+      "outbound_messages_to_unknown_numbers": "ALLOW_ANY_MESSAGE",
+      "inbound_messages_from_unknown_numbers": "ALLOW_ANY_MESSAGE"
     }
   ]
 }

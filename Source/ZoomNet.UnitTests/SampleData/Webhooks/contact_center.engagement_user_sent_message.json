@@ -16,10 +16,19 @@
       "consumer_number": "+18005550100",
       "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
       "user_display_name": "John Doe",
+      "teams": [
+        {
+          "team_id": "cLEZQivXRSq2YFOUkW3ctw",
+          "team_name": "My team"
+        }
+      ],
       "flow_number": "+18005550101",
       "consumer_id": "szCyubr_aQhieHNWYbAGMYg",
       "consumer_display_name": "Jane Smith",
-      "message_text": "How can I help you?"
+      "message_text": "How can I help you?",
+      "message_style_type": "text",
+      "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+      "division_name": "EMEA Operations"
     }
   }
 }

@@ -37,7 +37,9 @@
             "destination_ip_domain": "example.com",
             "destination_ip_port": "5000",
             "device_detail": "GoogleChromeSAB 130",
-            "client": "Web video sdk 1.12.10"
+            "client": "Web video sdk 1.12.10",
+            "zoom_thin_client_plugin_version": "6.5.11.26770",
+            "rc_reason": "Client crash"
           }
         ]
       }

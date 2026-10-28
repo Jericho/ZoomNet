@@ -8,7 +8,9 @@
       "contact_center_number": "+18005550100",
       "consumer_number": "+18005550101",
       "status": "delivered",
-      "date_time_ms": "2022-02-15T09:27:15.321Z"
+      "date_time_ms": "2022-02-15T09:27:15.321Z",
+      "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+      "division_name": "EMEA Operations"
     }
   }
 }

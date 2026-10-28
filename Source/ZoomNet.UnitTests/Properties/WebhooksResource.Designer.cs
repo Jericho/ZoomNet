@@ -62,18 +62,18 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;account.created&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
-        ///			&quot;owner_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///			&quot;email&quot;: &quot;jchill@example.com&quot;
-        ///		}
-        ///	}
+        ///  &quot;event&quot;: &quot;account.created&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
+        ///      &quot;owner_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;
+        ///    }
+        ///  }
         ///}.
         /// </summary>
         internal static string account_created {
@@ -84,18 +84,18 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;account.disassociated&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
-        ///			&quot;owner_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///			&quot;owner_email&quot;: &quot;jchill@example.com&quot;
-        ///		}
-        ///	}
+        ///  &quot;event&quot;: &quot;account.disassociated&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
+        ///      &quot;owner_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///      &quot;owner_email&quot;: &quot;jchill@example.com&quot;
+        ///    }
+        ///  }
         ///}.
         /// </summary>
         internal static string account_disassociated {
@@ -106,7 +106,7 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;account.lock_settings_updated&quot;,
+        ///  &quot;event&quot;: &quot;account.lock_settings_updated&quot;,
         ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
@@ -116,16 +116,13 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;settings&quot;: {
         ///        &quot;recording&quot;: {
         ///          &quot;auto_recording&quot;: &quot;cloud&quot;
-        ///				}
-        ///			},
-        ///      &quot;id&quot;: &quot;eUblMKLnTMKX0pVvNAlA0Q&quot;
-        ///		},
-        ///    &quot;time_stamp&quot;: 1626230691572,
-        ///    &quot;old_object&quot;: {
-        ///      &quot;id&quot;: &quot;zJ4Cu-awQEyypwYtM0HwrA&quot;,
-        ///      &quot;settings&quot;: {
-        ///        &quot;recording&quot;: {
-        ///       [rest of string was truncated]&quot;;.
+        ///        },
+        ///        &quot;ai&quot;: {
+        ///          &quot;whiteboard_content_generation&quot;: true,
+        ///          &quot;show_conversational_ai_companion&quot;: {
+        ///            &quot;enabled&quot;: true,
+        ///            &quot;enable_zoom_mate&quot;: true,
+        ///      [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string account_lock_settings_updated {
             get {
@@ -146,15 +143,12 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;settings&quot;: {
         ///        &quot;recording&quot;: {
         ///          &quot;auto_recording&quot;: &quot;cloud&quot;
-        ///        }
-        ///      }
-        ///    },
-        ///    &quot;time_stamp&quot;: 1626230691572,
-        ///    &quot;old_object&quot;: {
-        ///      &quot;id&quot;: &quot;eUblMKLnTMKX0pVvNAlA0Q&quot;,
-        ///      &quot;settings&quot;: {
-        ///        &quot;recording&quot;: {
-        ///  [rest of string was truncated]&quot;;.
+        ///        },
+        ///        &quot;ai&quot;: {
+        ///          &quot;whiteboard_content_generation&quot;: true,
+        ///          &quot;show_conversational_ai_companion&quot;: {
+        ///            &quot;enabled&quot;: true,
+        ///           [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string account_settings_updated {
             get {
@@ -164,23 +158,23 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;account.updated&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
-        ///			&quot;account_name&quot;: &quot;Jill Chill&quot;,
-        ///			&quot;account_alias&quot;: &quot;JChill&quot;
-        ///		},
-        ///		&quot;old_object&quot;: {
-        ///			&quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
-        ///			&quot;account_name&quot;: &quot;Jill Chill&quot;,
-        ///			&quot;account_alias&quot;: &quot;Jill_Chill&quot;
-        ///		}
-        ///	}
+        ///  &quot;event&quot;: &quot;account.updated&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
+        ///      &quot;account_name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;account_alias&quot;: &quot;JChill&quot;
+        ///    },
+        ///    &quot;old_object&quot;: {
+        ///      &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
+        ///      &quot;account_name&quot;: &quot;Jill Chill&quot;,
+        ///      &quot;account_alias&quot;: &quot;Jill_Chill&quot;
+        ///    }
+        ///  }
         ///}.
         /// </summary>
         internal static string account_updated {
@@ -191,16 +185,16 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;account.vanity_url_approved&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;vanity_url&quot;: &quot;https://example.com&quot;,
-        ///			&quot;id&quot;: &quot;abcD3ojfdbjfg&quot;
-        ///		}
-        ///	}
+        ///  &quot;event&quot;: &quot;account.vanity_url_approved&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;vanity_url&quot;: &quot;https://example.com&quot;,
+        ///      &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;
+        ///    }
+        ///  }
         ///}.
         /// </summary>
         internal static string account_vanity_url_approved {
@@ -211,16 +205,16 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;account.vanity_url_rejected&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;vanity_url&quot;: &quot;https://example.com&quot;,
-        ///			&quot;id&quot;: &quot;eUulMKLnTMKX0pVvMAlB0Q&quot;
-        ///		}
-        ///	}
+        ///  &quot;event&quot;: &quot;account.vanity_url_rejected&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;vanity_url&quot;: &quot;https://example.com&quot;,
+        ///      &quot;id&quot;: &quot;eUulMKLnTMKX0pVvMAlB0Q&quot;
+        ///    }
+        ///  }
         ///}.
         /// </summary>
         internal static string account_vanity_url_rejected {
@@ -341,16 +335,18 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;event&quot;: &quot;bot_notification&quot;,
         ///  &quot;event_ts&quot;: 1560796234686,
         ///  &quot;payload&quot;: {
-        ///      &quot;accountId&quot;: &quot;asgVcjZnWWRLWvv_GtyGuaxg&quot;,
-        ///      &quot;channelName&quot;: &quot;Photos&quot;,
-        ///      &quot;cmd&quot;: &quot;island&quot;,
-        ///      &quot;name&quot;: &quot;Unsplash&quot;,
-        ///      &quot;robotJid&quot;: &quot;v10r4uxexurcasg-pwh8hyh7sg@example.com&quot;,
-        ///      &quot;timestamp&quot;: 1560796234686,
-        ///      &quot;toJid&quot;: &quot;b1c841dc7b0b4as69287e6be05c7f93f25@conference.example.com&quot;,
-        ///      &quot;userId&quot;: &quot;KdYKjnimT4asKPd8KKdQt9FQ&quot;,
-        ///      &quot;userJid&quot;: &quot;kdykjnimtas4kpd8kkdqt9fq@example.com&quot;,
-        ///      &quot;userName&quot;: &quot;Jill  [rest of string was truncated]&quot;;.
+        ///    &quot;accountId&quot;: &quot;asgVcjZnWWRLWvv_GtyGuaxg&quot;,
+        ///    &quot;channelName&quot;: &quot;Photos&quot;,
+        ///    &quot;cmd&quot;: &quot;island&quot;,
+        ///    &quot;name&quot;: &quot;Unsplash&quot;,
+        ///    &quot;robotJid&quot;: &quot;v10r4uxexurcasg-pwh8hyh7sg@example.com&quot;,
+        ///    &quot;timestamp&quot;: 1560796234686,
+        ///    &quot;toJid&quot;: &quot;b1c841dc7b0b4as69287e6be05c7f93f25@conference.example.com&quot;,
+        ///    &quot;userId&quot;: &quot;KdYKjnimT4asKPd8KKdQt9FQ&quot;,
+        ///    &quot;userJid&quot;: &quot;kdykjnimtas4kpd8kkdqt9fq@example.com&quot;,
+        ///    &quot;userName&quot;: &quot;Jill Chill&quot;
+        ///  }
+        ///}.
         /// </summary>
         internal static string bot_notification {
             get {
@@ -580,30 +576,25 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;chat_channel.created&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;operator&quot;: &quot;user@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;name&quot;: &quot;Team Chat&quot;,
-        ///			&quot;type&quot;: 1,
-        ///			&quot;date_time&quot;: &quot;2020-02-10T21:39:50Z&quot;,
-        ///			&quot;timestamp&quot;: 1581370790388,
-        ///			&quot;members&quot;: [
-        ///				{
-        ///					&quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
-        ///					&quot;display_name&quot;: &quot;Tara Smith&quot;
-        ///				},
-        ///				{
-        ///					&quot;id&quot;: &quot;hijK4lmnopqrs&quot;,
-        ///					&quot;display_name&quot;: &quot;Sasha Taylor&quot;
-        ///				}
-        ///			]
-        ///		}
-        ///	}
-        ///}.
+        ///  &quot;event&quot;: &quot;chat_channel.created&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot;: &quot;user@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;name&quot;: &quot;Team Chat&quot;,
+        ///      &quot;type&quot;: 1,
+        ///      &quot;date_time&quot;: &quot;2020-02-10T21:39:50Z&quot;,
+        ///      &quot;timestamp&quot;: 1581370790388,
+        ///      &quot;members&quot;: [
+        ///        {
+        ///          &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
+        ///          &quot;display_name&quot;: &quot;Tara Smith&quot;
+        ///        },
+        ///        {
+        ///          &quot;id&quot;: &quot;hijK4lmnopqrs&quot;,
+        ///           [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string chat_channel_created {
             get {
@@ -613,20 +604,20 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;chat_channel.deleted&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;operator&quot;: &quot;user@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;name&quot;: &quot;Team Chat&quot;,
-        ///			&quot;id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
-        ///			&quot;type&quot;: 1,
-        ///			&quot;date_time&quot;: &quot;2020-02-10T21:39:50Z&quot;,
-        ///			&quot;timestamp&quot;: 1581370790388
-        ///		}
-        ///	}
+        ///  &quot;event&quot;: &quot;chat_channel.deleted&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot;: &quot;user@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;name&quot;: &quot;Team Chat&quot;,
+        ///      &quot;id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
+        ///      &quot;type&quot;: 1,
+        ///      &quot;date_time&quot;: &quot;2020-02-10T21:39:50Z&quot;,
+        ///      &quot;timestamp&quot;: 1581370790388
+        ///    }
+        ///  }
         ///}.
         /// </summary>
         internal static string chat_channel_deleted {
@@ -637,27 +628,25 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;chat_channel.member_invited&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;operator&quot;: &quot;user@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;name&quot;: &quot;Team Chat&quot;,
-        ///			&quot;id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
-        ///			&quot;type&quot;: 1,
-        ///			&quot;date_time&quot;: &quot;2020-02-10T21:39:50Z&quot;,
-        ///			&quot;timestamp&quot;: 1581370790388,
-        ///			&quot;members&quot;: [
-        ///				{
-        ///					&quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
-        ///					&quot;display_name&quot;: &quot;Tara Smith&quot;
-        ///				}
-        ///			]
-        ///		}
-        ///	}
-        ///}.
+        ///  &quot;event&quot;: &quot;chat_channel.member_invited&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot;: &quot;user@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;name&quot;: &quot;Team Chat&quot;,
+        ///      &quot;id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
+        ///      &quot;type&quot;: 1,
+        ///      &quot;date_time&quot;: &quot;2020-02-10T21:39:50Z&quot;,
+        ///      &quot;timestamp&quot;: 1581370790388,
+        ///      &quot;members&quot;: [
+        ///        {
+        ///          &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
+        ///          &quot;display_name&quot;: &quot;Tara Smith&quot;
+        ///        }
+        ///      ]
+        ///   [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string chat_channel_member_invited {
             get {
@@ -667,20 +656,20 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;chat_channel.member_joined&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;operator&quot;: &quot;user@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;name&quot;: &quot;Team Chat&quot;,
-        ///			&quot;id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
-        ///			&quot;type&quot;: 1,
-        ///			&quot;date_time&quot;: &quot;2020-02-10T21:39:50Z&quot;,
-        ///			&quot;timestamp&quot;: 1581370790388
-        ///		}
-        ///	}
+        ///  &quot;event&quot;: &quot;chat_channel.member_joined&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot;: &quot;user@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;name&quot;: &quot;Team Chat&quot;,
+        ///      &quot;id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
+        ///      &quot;type&quot;: 1,
+        ///      &quot;date_time&quot;: &quot;2020-02-10T21:39:50Z&quot;,
+        ///      &quot;timestamp&quot;: 1581370790388
+        ///    }
+        ///  }
         ///}.
         /// </summary>
         internal static string chat_channel_member_joined {
@@ -691,20 +680,20 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;chat_channel.member_left&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;operator&quot;: &quot;user@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;name&quot;: &quot;Team Chat&quot;,
-        ///			&quot;id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
-        ///			&quot;type&quot;: 1,
-        ///			&quot;date_time&quot;: &quot;2020-02-10T21:39:50Z&quot;,
-        ///			&quot;timestamp&quot;: 1581370790388
-        ///		}
-        ///	}
+        ///  &quot;event&quot;: &quot;chat_channel.member_left&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot;: &quot;user@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;name&quot;: &quot;Team Chat&quot;,
+        ///      &quot;id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
+        ///      &quot;type&quot;: 1,
+        ///      &quot;date_time&quot;: &quot;2020-02-10T21:39:50Z&quot;,
+        ///      &quot;timestamp&quot;: 1581370790388
+        ///    }
+        ///  }
         ///}.
         /// </summary>
         internal static string chat_channel_member_left {
@@ -715,27 +704,25 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;chat_channel.member_removed&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;operator&quot;: &quot;user@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;name&quot;: &quot;Team Chat&quot;,
-        ///			&quot;id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
-        ///			&quot;type&quot;: 1,
-        ///			&quot;date_time&quot;: &quot;2020-02-10T21:39:50Z&quot;,
-        ///			&quot;timestamp&quot;: 1581370790388,
-        ///			&quot;members&quot;: [
-        ///				{
-        ///					&quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
-        ///					&quot;display_name&quot;: &quot;Tara Smith&quot;
-        ///				}
-        ///			]
-        ///		}
-        ///	}
-        ///}.
+        ///  &quot;event&quot;: &quot;chat_channel.member_removed&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot;: &quot;user@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;name&quot;: &quot;Team Chat&quot;,
+        ///      &quot;id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
+        ///      &quot;type&quot;: 1,
+        ///      &quot;date_time&quot;: &quot;2020-02-10T21:39:50Z&quot;,
+        ///      &quot;timestamp&quot;: 1581370790388,
+        ///      &quot;members&quot;: [
+        ///        {
+        ///          &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
+        ///          &quot;display_name&quot;: &quot;Tara Smith&quot;
+        ///        }
+        ///      ]
+        ///   [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string chat_channel_member_removed {
             get {
@@ -745,20 +732,20 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;chat_channel.updated&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;operator&quot;: &quot;user@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;name&quot;: &quot;Team Chat&quot;,
-        ///			&quot;id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
-        ///			&quot;type&quot;: 1,
-        ///			&quot;date_time&quot;: &quot;2020-02-10T21:39:50Z&quot;,
-        ///			&quot;timestamp&quot;: 1581370790388
-        ///		}
-        ///	}
+        ///  &quot;event&quot;: &quot;chat_channel.updated&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot;: &quot;user@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;name&quot;: &quot;Team Chat&quot;,
+        ///      &quot;id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
+        ///      &quot;type&quot;: 1,
+        ///      &quot;date_time&quot;: &quot;2020-02-10T21:39:50Z&quot;,
+        ///      &quot;timestamp&quot;: 1581370790388
+        ///    }
+        ///  }
         ///}.
         /// </summary>
         internal static string chat_channel_updated {
@@ -769,22 +756,21 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;chat_message.deleted&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;operator&quot;: &quot;user@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
-        ///			&quot;type&quot;: &quot;to_channel&quot;,
-        ///			&quot;date_time&quot;: &quot;2020-02-10T21:39:50Z&quot;,
-        ///			&quot;timestamp&quot;: 1581370790388,
-        ///			&quot;session_id&quot;: &quot;abcdefghijklmnop12345&quot;,
-        ///			&quot;contact_email&quot;: &quot;user2@example.com&quot;,
-        ///			&quot;channel_id&quot;: &quot;qrstuvwxyz67890&quot;,
-        ///			&quot;channel_name&quot;: &quot;Team Chat&quot;,
-        ///			&quot;message&quot;: &quot;Hell [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;chat_message.deleted&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot;: &quot;user@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
+        ///      &quot;type&quot;: &quot;to_channel&quot;,
+        ///      &quot;date_time&quot;: &quot;2020-02-10T21:39:50Z&quot;,
+        ///      &quot;timestamp&quot;: 1581370790388,
+        ///      &quot;session_id&quot;: &quot;abcdefghijklmnop12345&quot;,
+        ///      &quot;contact_email&quot;: &quot;user2@example.com&quot;,
+        ///      &quot;channel_id&quot;: &quot;qrstuvwxyz67890&quot;,
+        ///      &quot;channel_name&quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string chat_message_deleted {
             get {
@@ -794,22 +780,21 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;chat_message.replied&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;operator&quot;: &quot;user@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
-        ///			&quot;type&quot;: &quot;to_channel&quot;,
-        ///			&quot;date_time&quot;: &quot;2020-02-10T21:39:50Z&quot;,
-        ///			&quot;timestamp&quot;: 1581370790388,
-        ///			&quot;session_id&quot;: &quot;abcdefghijklmnop12345&quot;,
-        ///			&quot;contact_email&quot;: &quot;user2@example.com&quot;,
-        ///			&quot;channel_id&quot;: &quot;qrstuvwxyz67890&quot;,
-        ///			&quot;channel_name&quot;: &quot;Team Chat&quot;,
-        ///			&quot;message&quot;: &quot;Hell [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;chat_message.replied&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot;: &quot;user@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
+        ///      &quot;type&quot;: &quot;to_channel&quot;,
+        ///      &quot;date_time&quot;: &quot;2020-02-10T21:39:50Z&quot;,
+        ///      &quot;timestamp&quot;: 1581370790388,
+        ///      &quot;session_id&quot;: &quot;abcdefghijklmnop12345&quot;,
+        ///      &quot;contact_email&quot;: &quot;user2@example.com&quot;,
+        ///      &quot;channel_id&quot;: &quot;qrstuvwxyz67890&quot;,
+        ///      &quot;channel_name&quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string chat_message_replied {
             get {
@@ -819,22 +804,21 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;chat_message.sent&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;operator&quot;: &quot;user@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
-        ///			&quot;type&quot;: &quot;to_channel&quot;,
-        ///			&quot;date_time&quot;: &quot;2020-02-10T21:39:50Z&quot;,
-        ///			&quot;timestamp&quot;: 1581370790388,
-        ///			&quot;session_id&quot;: &quot;abcdefghijklmnop12345&quot;,
-        ///			&quot;contact_email&quot;: &quot;user2@example.com&quot;,
-        ///			&quot;channel_id&quot;: &quot;qrstuvwxyz67890&quot;,
-        ///			&quot;channel_name&quot;: &quot;Team Chat&quot;,
-        ///			&quot;message&quot;: &quot;Hello w [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;chat_message.sent&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot;: &quot;user@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
+        ///      &quot;type&quot;: &quot;to_channel&quot;,
+        ///      &quot;date_time&quot;: &quot;2020-02-10T21:39:50Z&quot;,
+        ///      &quot;timestamp&quot;: 1581370790388,
+        ///      &quot;session_id&quot;: &quot;abcdefghijklmnop12345&quot;,
+        ///      &quot;contact_email&quot;: &quot;user2@example.com&quot;,
+        ///      &quot;channel_id&quot;: &quot;qrstuvwxyz67890&quot;,
+        ///      &quot;channel_name&quot;: &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string chat_message_sent {
             get {
@@ -844,22 +828,21 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;chat_message.updated&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;operator&quot;: &quot;user@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
-        ///			&quot;type&quot;: &quot;to_channel&quot;,
-        ///			&quot;date_time&quot;: &quot;2020-02-10T21:39:50Z&quot;,
-        ///			&quot;timestamp&quot;: 1581370790388,
-        ///			&quot;session_id&quot;: &quot;abcdefghijklmnop12345&quot;,
-        ///			&quot;contact_email&quot;: &quot;user2@example.com&quot;,
-        ///			&quot;channel_id&quot;: &quot;qrstuvwxyz67890&quot;,
-        ///			&quot;channel_name&quot;: &quot;Team Chat&quot;,
-        ///			&quot;message&quot;: &quot;Hell [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;chat_message.updated&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot;: &quot;user@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
+        ///      &quot;type&quot;: &quot;to_channel&quot;,
+        ///      &quot;date_time&quot;: &quot;2020-02-10T21:39:50Z&quot;,
+        ///      &quot;timestamp&quot;: 1581370790388,
+        ///      &quot;session_id&quot;: &quot;abcdefghijklmnop12345&quot;,
+        ///      &quot;contact_email&quot;: &quot;user2@example.com&quot;,
+        ///      &quot;channel_id&quot;: &quot;qrstuvwxyz67890&quot;,
+        ///      &quot;channel_name&quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string chat_message_updated {
             get {
@@ -987,9 +970,9 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;contact_center.asset_created&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1627906944384,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;D8cJuqWVQ623CI4Q8yQK0Q&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;asset_id&quot;: &quot;WkdWelkzSnBjSFJwYjI0PQ11&quot;,
         ///      &quot;asset_name&quot;: &quot;My Asset&quot;,
@@ -1000,7 +983,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///        {
         ///          &quot;asset_item_id&quot;: &quot;beYjXoDOS_eV1QmTpj63PQ&quot;,
         ///          &quot;asset_item_name&quot;: &quot;My Asset Item&quot;,
-        ///          &quot;asset_item_langu [rest of string was truncated]&quot;;.
+        ///          &quot;asse [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_asset_created {
             get {
@@ -1011,16 +994,18 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;contact_center.asset_deleted&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1627906944384,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;D8cJuqWVQ623CI4Q8yQK0Q&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;asset_id&quot;: &quot;WkdWelkzSnBjSFJwYjI0PQ11&quot;,
         ///      &quot;asset_name&quot;: &quot;My Asset&quot;,
         ///      &quot;archived&quot;: true,
         ///      &quot;archived_time&quot;: &quot;2025-06-26T09:27:15Z&quot;,
         ///      &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
-        ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.987Z&quot;
+        ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.987Z&quot;,
+        ///      &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4LpA&quot;,
+        ///      &quot;division_name&quot;: &quot;EMEA Operations&quot;
         ///    }
         ///  }
         ///}.
@@ -1034,20 +1019,19 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;contact_center.asset_updated&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1627906944384,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;D8cJuqWVQ623CI4Q8yQK0Q&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;asset_id&quot;: &quot;WkdWelkzSnBjSFJwYjI0PQ11&quot;,
         ///      &quot;updates&quot;: {
         ///        &quot;asset_name&quot;: &quot;My Asset&quot;,
-        ///        &quot;asset_description&quot;: &quot;This is an example asset.&quot;,
+        ///        &quot;asset_description&quot;: &quot;This is an exmaple asset.&quot;,
         ///        &quot;asset_item_added&quot;: [
         ///          {
         ///            &quot;asset_item_id&quot;: &quot;beYjXoDOS_eV1QmTpj63PQ&quot;,
-        ///            &quot;asset_item_name&quot;: &quot;My Asset Item&quot;,
-        ///            &quot;asset_item_language&quot;: &quot;en-US&quot;,
-        ///            &quot;i [rest of string was truncated]&quot;;.
+        ///            &quot;asset_item_name&quot;: &quot;My Asset Item Added&quot;,
+        ///            &quot;asset_item_language&quot;: &quot;en-US [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_asset_updated {
             get {
@@ -1086,7 +1070,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;object&quot;: {
         ///      &quot;business_hour_id&quot;: &quot;66ZjSQ7YTOescnINN_4vog&quot;,
         ///      &quot;modified_by&quot;: &quot;a4sduuiQ7sdfrrtINNsepp&quot;,
-        ///      &quot;date_time_ms&quot;: &quot;2023-03-15T09:27:15.987Z&quot;
+        ///      &quot;date_time_ms&quot;: &quot;2023-03-15T09:27:15.987Z&quot;,
+        ///      &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4LpA&quot;,
+        ///      &quot;division_name&quot;: &quot;EMEA Operations&quot;
         ///    }
         ///  }
         ///}.
@@ -1219,11 +1205,15 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;object&quot;: {
         ///      &quot;engagement_id&quot;: &quot;u154t5-ASlK83fZb1YWqgw&quot;,
         ///      &quot;user_id&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///      &quot;teams&quot;: [
+        ///        {
+        ///          &quot;team_id&quot;: &quot;cLEZQivXRSq2YFOUkW3ctw&quot;,
+        ///          &quot;team_name&quot;: &quot;My team&quot;
+        ///        }
+        ///      ],
         ///      &quot;request_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;,
-        ///      &quot;date_time_ms&quot;: &quot;2025-09-03T09:27:15.987Z&quot;
-        ///    }
-        ///  }
-        ///}.
+        ///      &quot;date_time_ms&quot;: &quot;2025-09-03T09:27:15.987Z&quot;,
+        ///      &quot;division [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_call_control_make_call_executed {
             get {
@@ -1285,7 +1275,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;object&quot;: {
         ///      &quot;closure_set_id&quot;: &quot;Ixo-Na0bRfCyQ4q2lAryDw&quot;,
         ///      &quot;modified_by&quot;: &quot;a4sduuiQ7sdfrrtINNsepp&quot;,
-        ///      &quot;date_time_ms&quot;: &quot;2023-03-15T09:27:15.987Z&quot;
+        ///      &quot;date_time_ms&quot;: &quot;2023-03-15T09:27:15.987Z&quot;,
+        ///      &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4LpA&quot;,
+        ///      &quot;division_name&quot;: &quot;EMEA Operations&quot;
         ///    }
         ///  }
         ///}.
@@ -1721,10 +1713,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;channel_source&quot;: &quot;in_app_video&quot;,
         ///      &quot;flow_id&quot;: &quot;ZWWC0A840C726C2CE3ACF01041CB8CFD8B9&quot;,
         ///      &quot;flow_name&quot;: &quot;My Flow&quot;,
-        ///      &quot;date_time_ms&quot;: &quot;2023-05-01T09:27:15.987Z&quot;
-        ///    }
-        ///  }
-        ///}.
+        ///      &quot;date_time_ms&quot;: &quot;2023-05-01T09:27:15.987Z&quot;,
+        ///      &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4LpA&quot;,
+        ///      &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_engagement_ended {
             get {
@@ -1881,9 +1872,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;flow_name&quot;: &quot;My Flow&quot;,
         ///      &quot;transfer_from&quot;: &quot;zoom_phone&quot;,
         ///      &quot;transfer_from_id&quot;: &quot;7396294160320498337&quot;,
-        ///      &quot;date_time_ms&quot;: &quot;2023-05-01T09:27:15.987Z&quot;
-        ///    }
-        /// [rest of string was truncated]&quot;;.
+        ///      &quot;date_time_ms&quot;: &quot;2023-05-01T09:27:15.987Z&quot;,
+        ///       [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_engagement_started {
             get {
@@ -2390,6 +2380,29 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;contact_center.engagement_video_participant_left&quot;,
+        ///  &quot;event_ts&quot;: 1627906944384,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;wMLp6VvjTc6A1mkiwHt3dQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;engagement_id&quot;: &quot;DmJzBVygRcaMuPqYar2lUg&quot;,
+        ///      &quot;channel&quot;: &quot;video&quot;,
+        ///      &quot;channel_source&quot;: &quot;web_video&quot;,
+        ///      &quot;participant_id&quot;: &quot;vWewxER2Q5O4KwgdzFSmYw&quot;,
+        ///      &quot;participant_name&quot;: &quot;John Doe&quot;,
+        ///      &quot;participant_type&quot;: &quot;agent&quot;,
+        ///      &quot;leave_reason&quot;: &quot;left&quot;,
+        ///      &quot;leave_reason_detail&quot;: &quot;leave_clicked&quot;,
+        ///      &quot;date_time_m [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_engagement_video_participant_left {
+            get {
+                return ResourceManager.GetString("contact_center_engagement_video_participant_left", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;contact_center.engagement_wrap_up_ended&quot;,
         ///  &quot;event_ts&quot;: 1627906944384,
         ///  &quot;payload&quot;: {
@@ -2538,10 +2551,13 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;channel&quot;: &quot;voice&quot;,
         ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;,
         ///      &quot;queue_name&quot;: &quot;My Queue&quot;,
-        ///      &quot;flow_id&quot;: &quot;ZWWC0A840C726C2CE3ACF01041CB8CFD8B9&quot;,
-        ///      &quot;flow_name&quot;: &quot;My Flow&quot;,
-        ///      &quot;flow_number&quot;: &quot;+18005550100&quot;,
-        ///      &quot;consumer_number [rest of string was truncated]&quot;;.
+        ///      &quot;teams&quot;: [
+        ///        {
+        ///          &quot;team_id&quot;: &quot;cLEZQivXRSq2YFOUkW3ctw&quot;,
+        ///          &quot;team_name&quot;: &quot;My team&quot;
+        ///        }
+        ///      ],
+        ///      &quot;flow_id&quot;: [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_inbox_message_received {
             get {
@@ -2630,9 +2646,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;whatsapp_message&quot;: {
         ///        &quot;status&quot;: &quot;failed&quot;,
         ///        &quot;reason&quot;: &quot;WhatsApp platform failed to send message&quot;,
-        ///        &quot;error_detail&quot;: &quot;{\\&quot;code\\&quot;:\\&quot;131026\\&quot;,\\&quot;message\\&quot;:\\&quot;Message Undeliverable.\\&quot;}&quot;
+        ///        &quot;error_detail&quot;: &quot;{\&quot;code\&quot;:\&quot;131026\&quot;,\&quot;message\&quot;:\&quot;Message Undeliverable.\&quot;}&quot;
         ///      },
-        ///      &quot;d [rest of string was truncated]&quot;;.
+        ///      &quot;date_time [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_message_status {
             get {
@@ -2650,7 +2666,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;engagement_id&quot;: &quot;u154t5-ASlK83fZb1YWqgw&quot;,
         ///      &quot;external_engagement_id&quot;: &quot;ozyn5uh9Qgu10uYAqcXq4g&quot;,
         ///      &quot;campaign_dialer_status&quot;: &quot;consumer_answer&quot;,
-        ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.987Z&quot;
+        ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.987Z&quot;,
+        ///      &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4LpA&quot;,
+        ///      &quot;division_name&quot;: &quot;EMEA Operations&quot;
         ///    }
         ///  }
         ///}.
@@ -2672,10 +2690,13 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;user_id&quot;: &quot;ukAAkZKfROKMSw1bj_RDFQ&quot;,
         ///      &quot;display_name&quot;: &quot;John Doe&quot;,
         ///      &quot;user_email&quot;: &quot;johndoe@example.com&quot;,
-        ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.987Z&quot;
-        ///    }
-        ///  }
-        ///}.
+        ///      &quot;teams&quot;: [
+        ///        {
+        ///          &quot;team_id&quot;: &quot;cLEZQivXRSq2YFOUkW3ctw&quot;,
+        ///          &quot;team_name&quot;: &quot;My team&quot;
+        ///        }
+        ///      ],
+        ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.987Z [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_queue_agent_assigned {
             get {
@@ -2694,10 +2715,13 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;user_id&quot;: &quot;ukAAkZKfROKMSw1bj_RDFQ&quot;,
         ///      &quot;display_name&quot;: &quot;John Doe&quot;,
         ///      &quot;user_email&quot;: &quot;johndoe@example.com&quot;,
-        ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.987Z&quot;
-        ///    }
-        ///  }
-        ///}.
+        ///      &quot;teams&quot;: [
+        ///        {
+        ///          &quot;team_id&quot;: &quot;cLEZQivXRSq2YFOUkW3ctw&quot;,
+        ///          &quot;team_name&quot;: &quot;My team&quot;
+        ///        }
+        ///      ],
+        ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.98 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_queue_agent_unassigned {
             get {
@@ -2956,10 +2980,13 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;user_id&quot;: &quot;ukAAkZKfROKMSw1bj_RDFQ&quot;,
         ///      &quot;display_name&quot;: &quot;John Doe&quot;,
         ///      &quot;user_email&quot;: &quot;johndoe@example.com&quot;,
-        ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.987Z&quot;
-        ///    }
-        ///  }
-        ///}.
+        ///      &quot;teams&quot;: [
+        ///        {
+        ///          &quot;team_id&quot;: &quot;cLEZQivXRSq2YFOUkW3ctw&quot;,
+        ///          &quot;team_name&quot;: &quot;My team&quot;
+        ///        }
+        ///      ],
+        ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_queue_supervisor_assigned {
             get {
@@ -2978,10 +3005,13 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;user_id&quot;: &quot;ukAAkZKfROKMSw1bj_RDFQ&quot;,
         ///      &quot;display_name&quot;: &quot;John Doe&quot;,
         ///      &quot;user_email&quot;: &quot;johndoe@example.com&quot;,
-        ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.987Z&quot;
-        ///    }
-        ///  }
-        ///}.
+        ///      &quot;teams&quot;: [
+        ///        {
+        ///          &quot;team_id&quot;: &quot;cLEZQivXRSq2YFOUkW3ctw&quot;,
+        ///          &quot;team_name&quot;: &quot;My team&quot;
+        ///        }
+        ///      ],
+        ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27: [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_queue_supervisor_unassigned {
             get {
@@ -3019,7 +3049,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;account_id&quot;: &quot;D8cJuqWVQ623CI4Q8yQK0Q&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;recording_id&quot;: &quot;ghyetrjj_sdfsdgfkdjfl11&quot;,
-        ///      &quot;date_time_ms&quot;: &quot;2023-03-30T14:15:57.987Z&quot;
+        ///      &quot;date_time_ms&quot;: &quot;2023-03-30T14:15:57.987Z&quot;,
+        ///      &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4LpA&quot;,
+        ///      &quot;division_name&quot;: &quot;EMEA Operations&quot;
         ///    }
         ///  }
         ///}.
@@ -3060,7 +3092,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;account_id&quot;: &quot;D8cJuqWVQ623CI4Q8yQK0Q&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;recording_id&quot;: &quot;ghyetrjj_sdfsdgfkdjfl11&quot;,
-        ///      &quot;date_time_ms&quot;: &quot;2023-03-30T14:15:57.987Z&quot;
+        ///      &quot;date_time_ms&quot;: &quot;2023-03-30T14:15:57.987Z&quot;,
+        ///      &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4LpA&quot;,
+        ///      &quot;division_name&quot;: &quot;EMEA Operations&quot;
         ///    }
         ///  }
         ///}.
@@ -3171,7 +3205,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;contact_center_number&quot;: &quot;+18005550100&quot;,
         ///      &quot;consumer_number&quot;: &quot;+18005550101&quot;,
         ///      &quot;status&quot;: &quot;delivered&quot;,
-        ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.321Z&quot;
+        ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.321Z&quot;,
+        ///      &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4LpA&quot;,
+        ///      &quot;division_name&quot;: &quot;EMEA Operations&quot;
         ///    }
         ///  }
         ///}.
@@ -3192,12 +3228,12 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;task_id&quot;: &quot;ZWTFBC1C663A02CFCDD971EC9B538C49372&quot;,
         ///      &quot;flow_id&quot;: &quot;ZWW5670D99C6FC89113D2C1CC95A3E4D1E4&quot;,
         ///      &quot;task_status&quot;: &quot;canceled&quot;,
+        ///      &quot;cancel_reason&quot;: &quot;abandoned&quot;,
         ///      &quot;flow_name&quot;: &quot;My Flow&quot;,
         ///      &quot;channel_id&quot;: &quot;ZTCBB294D00C3B3B7D6C74777FF24FA937B&quot;,
         ///      &quot;channel_name&quot;: &quot;video&quot;,
         ///      &quot;task_priority&quot;: 10,
-        ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;,
-        ///      &quot;que [rest of string was truncated]&quot;;.
+        ///      &quot;cc_queue_id&quot;:  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_task_canceled {
             get {
@@ -3286,10 +3322,12 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;task_id&quot;: &quot;ZWTFBC1C663A02CFCDD971EC9B538C49372&quot;,
         ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;,
         ///      &quot;queue_name&quot;: &quot;My Queue&quot;,
-        ///      &quot;channel&quot;: &quot;video&quot;,
-        ///      &quot;channel_source&quot;: &quot;in_app_video&quot;,
-        ///      &quot;queue_description&quot;: &quot;This is an exmaple queue.&quot;,
-        ///  [rest of string was truncated]&quot;;.
+        ///      &quot;teams&quot;: [
+        ///        {
+        ///          &quot;team_id&quot;: &quot;cLEZQivXRSq2YFOUkW3ctw&quot;,
+        ///          &quot;team_name&quot;: &quot;My team&quot;
+        ///        }
+        ///     [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_task_entered_queue {
             get {
@@ -3309,10 +3347,12 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;task_id&quot;: &quot;ZWTFBC1C663A02CFCDD971EC9B538C49372&quot;,
         ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;,
         ///      &quot;queue_name&quot;: &quot;My Queue&quot;,
-        ///      &quot;channel&quot;: &quot;video&quot;,
-        ///      &quot;channel_source&quot;: &quot;in_app_video&quot;,
-        ///      &quot;queue_description&quot;: &quot;This is an example queue.&quot;,
-        ///   [rest of string was truncated]&quot;;.
+        ///      &quot;teams&quot;: [
+        ///        {
+        ///          &quot;team_id&quot;: &quot;cLEZQivXRSq2YFOUkW3ctw&quot;,
+        ///          &quot;team_name&quot;: &quot;My team&quot;
+        ///        }
+        ///      [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_task_exited_queue {
             get {
@@ -3330,11 +3370,11 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;task_reservation_id&quot;: &quot;ZWR1C1FB695C654A829FE56553A709E8EBB&quot;,
         ///      &quot;flow_id&quot;: &quot;ZWW5670D99C6FC89113D2C1CC95A3E4D1E4&quot;,
         ///      &quot;assigned_user_id&quot;: &quot;M2rStJNqSyOlmyw-ti2fGg&quot;,
-        ///      &quot;flow_name&quot;: &quot;wf_example&quot;,
+        ///      &quot;flow_name&quot;: &quot;My Flow&quot;,
         ///      &quot;task_id&quot;: &quot;ZWTFBC1C663A02CFCDD971EC9B538C49372&quot;,
         ///      &quot;channel&quot;: &quot;video&quot;,
         ///      &quot;channel_source&quot;: &quot;in_app_video&quot;,
-        ///      &quot; [rest of string was truncated]&quot;;.
+        ///      &quot;cc_ [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_task_reservation_accepted {
             get {
@@ -3352,11 +3392,11 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;task_reservation_id&quot;: &quot;ZWR1C1FB695C654A829FE56553A709E8EBB&quot;,
         ///      &quot;flow_id&quot;: &quot;ZWW5670D99C6FC89113D2C1CC95A3E4D1E4&quot;,
         ///      &quot;assigned_user_id&quot;: &quot;M2rStJNqSyOlmyw-ti2fGg&quot;,
-        ///      &quot;flow_name&quot;: &quot;wf_example&quot;,
+        ///      &quot;flow_name&quot;: &quot;My Flow&quot;,
         ///      &quot;task_id&quot;: &quot;ZWTFBC1C663A02CFCDD971EC9B538C49372&quot;,
         ///      &quot;channel&quot;: &quot;video&quot;,
         ///      &quot;channel_source&quot;: &quot;in_app_video&quot;,
-        ///      &quot; [rest of string was truncated]&quot;;.
+        ///      &quot;cc_ [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_task_reservation_canceled {
             get {
@@ -3374,11 +3414,11 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;task_reservation_id&quot;: &quot;ZWR1C1FB695C654A829FE56553A709E8EBB&quot;,
         ///      &quot;flow_id&quot;: &quot;ZWW5670D99C6FC89113D2C1CC95A3E4D1E4&quot;,
         ///      &quot;assigned_user_id&quot;: &quot;M2rStJNqSyOlmyw-ti2fGg&quot;,
-        ///      &quot;flow_name&quot;: &quot;wf_example&quot;,
+        ///      &quot;flow_name&quot;: &quot;My Flow&quot;,
         ///      &quot;task_id&quot;: &quot;ZWTFBC1C663A02CFCDD971EC9B538C49372&quot;,
         ///      &quot;channel&quot;: &quot;video&quot;,
         ///      &quot;channel_source&quot;: &quot;in_app_video&quot;,
-        ///       [rest of string was truncated]&quot;;.
+        ///      &quot;cc [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_task_reservation_completed {
             get {
@@ -3396,11 +3436,11 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;task_reservation_id&quot;: &quot;ZWR1C1FB695C654A829FE56553A709E8EBB&quot;,
         ///      &quot;flow_id&quot;: &quot;ZWW5670D99C6FC89113D2C1CC95A3E4D1E4&quot;,
         ///      &quot;assigned_user_id&quot;: &quot;M2rStJNqSyOlmyw-ti2fGg&quot;,
-        ///      &quot;flow_name&quot;: &quot;wf_example&quot;,
+        ///      &quot;flow_name&quot;: &quot;My Flow&quot;,
         ///      &quot;task_id&quot;: &quot;ZWTFBC1C663A02CFCDD971EC9B538C49372&quot;,
         ///      &quot;channel&quot;: &quot;video&quot;,
         ///      &quot;channel_source&quot;: &quot;in_app_video&quot;,
-        ///      &quot;c [rest of string was truncated]&quot;;.
+        ///      &quot;cc_q [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_task_reservation_created {
             get {
@@ -3418,11 +3458,11 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;task_reservation_id&quot;: &quot;ZWR1C1FB695C654A829FE56553A709E8EBB&quot;,
         ///      &quot;flow_id&quot;: &quot;ZWW5670D99C6FC89113D2C1CC95A3E4D1E4&quot;,
         ///      &quot;assigned_user_id&quot;: &quot;M2rStJNqSyOlmyw-ti2fGg&quot;,
-        ///      &quot;flow_name&quot;: &quot;wf_example&quot;,
+        ///      &quot;flow_name&quot;: &quot;My Flow&quot;,
         ///      &quot;task_id&quot;: &quot;ZWTFBC1C663A02CFCDD971EC9B538C49372&quot;,
         ///      &quot;channel&quot;: &quot;video&quot;,
         ///      &quot;channel_source&quot;: &quot;in_app_video&quot;,
-        ///      &quot; [rest of string was truncated]&quot;;.
+        ///      &quot;cc_ [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_task_reservation_rejected {
             get {
@@ -3440,11 +3480,11 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;task_reservation_id&quot;: &quot;ZWR1C1FB695C654A829FE56553A709E8EBB&quot;,
         ///      &quot;flow_id&quot;: &quot;ZWW5670D99C6FC89113D2C1CC95A3E4D1E4&quot;,
         ///      &quot;assigned_user_id&quot;: &quot;M2rStJNqSyOlmyw-ti2fGg&quot;,
-        ///      &quot;flow_name&quot;: &quot;wf_example&quot;,
+        ///      &quot;flow_name&quot;: &quot;My Flow&quot;,
         ///      &quot;task_id&quot;: &quot;ZWTFBC1C663A02CFCDD971EC9B538C49372&quot;,
         ///      &quot;channel&quot;: &quot;video&quot;,
         ///      &quot;channel_source&quot;: &quot;in_app_video&quot;,
-        ///      &quot;c [rest of string was truncated]&quot;;.
+        ///      &quot;cc_q [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_task_reservation_timeout {
             get {
@@ -3487,10 +3527,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;team_description&quot;: &quot;This is the sales team&quot;,
         ///      &quot;parent_team_id&quot;: &quot;PZy04MG_Q7Gytg9k7CVU6w&quot;,
         ///      &quot;parent_team_name&quot;: &quot;Online sales team&quot;,
-        ///      &quot;date_time_ms&quot;: &quot;2025-02-15T09:27:15.988Z&quot;
-        ///    }
-        ///  }
-        ///}.
+        ///      &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4LpA&quot;,
+        ///      &quot;division_name&quot;: &quot;EMEA Operations&quot;,
+        ///      &quot;date_time_ms&quot;: &quot;2025-02-15T09: [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_team_created {
             get {
@@ -3510,10 +3549,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;team_description&quot;: &quot;This is the sales team&quot;,
         ///      &quot;parent_team_id&quot;: &quot;PZy04MG_Q7Gytg9k7CVU6w&quot;,
         ///      &quot;parent_team_name&quot;: &quot;Online sales team&quot;,
-        ///      &quot;date_time_ms&quot;: &quot;2025-02-15T09:27:15.988Z&quot;
-        ///    }
-        ///  }
-        ///}.
+        ///      &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4LpA&quot;,
+        ///      &quot;division_name&quot;: &quot;EMEA Operations&quot;,
+        ///      &quot;date_time_ms&quot;: &quot;2025-02-15T09: [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_team_deleted {
             get {
@@ -3534,6 +3572,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;T_X0vrroQPO4UwXGNeBS8A&quot;
         ///      ],
         ///      &quot;team_role&quot;: &quot;supervisor&quot;,
+        ///      &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4LpA&quot;,
+        ///      &quot;division_name&quot;: &quot;EMEA Operations&quot;,
         ///      &quot;date_time_ms&quot;: &quot;2025-02-16T09:27:15.987Z&quot;
         ///    }
         ///  }
@@ -3558,6 +3598,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;T_X0vrroQPO4UwXGNeBS8A&quot;
         ///      ],
         ///      &quot;team_role&quot;: &quot;supervisor&quot;,
+        ///      &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4LpA&quot;,
+        ///      &quot;division_name&quot;: &quot;EMEA Operations&quot;,
         ///      &quot;date_time_ms&quot;: &quot;2025-02-16T09:27:15.987Z&quot;
         ///    }
         ///  }
@@ -3600,6 +3642,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;team_id&quot;: &quot;2mDPBg3vSYC_l6crQgeCkA&quot;,
         ///      &quot;team_name&quot;: &quot;My Team&quot;,
         ///      &quot;team_description&quot;: &quot;This is the updated sales team&quot;,
+        ///      &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4LpA&quot;,
+        ///      &quot;division_name&quot;: &quot;EMEA Operations&quot;,
         ///      &quot;date_time_ms&quot;: &quot;2025-02-16T09:27:15.988Z&quot;
         ///    }
         ///  }
@@ -3647,7 +3691,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///        {
         ///          &quot;user_id&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;
         ///        }
-        ///      ]
+        ///      ],
+        ///      &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4LpA&quot;,
+        ///      &quot;division_name&quot;: &quot;EMEA Operations&quot;
         ///    }
         ///  }
         ///}.
@@ -3668,10 +3714,15 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;user_id&quot;: &quot;ukAAkZKfROKMSw1bj_RDFQ&quot;,
         ///      &quot;display_name&quot;: &quot;John Doe&quot;,
         ///      &quot;user_email&quot;: &quot;johndoe@example.com&quot;,
-        ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.987Z&quot;
-        ///    }
-        ///  }
-        ///}.
+        ///      &quot;teams&quot;: [
+        ///        {
+        ///          &quot;team_id&quot;: &quot;cLEZQivXRSq2YFOUkW3ctw&quot;,
+        ///          &quot;team_name&quot;: &quot;My team&quot;
+        ///        }
+        ///      ],
+        ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.987Z&quot;,
+        ///      &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4LpA&quot;,
+        ///       [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_user_login {
             get {
@@ -3689,10 +3740,15 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;user_id&quot;: &quot;ukAAkZKfROKMSw1bj_RDFQ&quot;,
         ///      &quot;display_name&quot;: &quot;John Doe&quot;,
         ///      &quot;user_email&quot;: &quot;johndoe@example.com&quot;,
-        ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.987Z&quot;
-        ///    }
-        ///  }
-        ///}.
+        ///      &quot;teams&quot;: [
+        ///        {
+        ///          &quot;team_id&quot;: &quot;cLEZQivXRSq2YFOUkW3ctw&quot;,
+        ///          &quot;team_name&quot;: &quot;My team&quot;
+        ///        }
+        ///      ],
+        ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.987Z&quot;,
+        ///      &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4LpA&quot;,
+        ///      [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_user_logout {
             get {
@@ -3712,10 +3768,13 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;user_email&quot;: &quot;johndoe@example.com&quot;,
         ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;,
         ///      &quot;queue_name&quot;: &quot;My Queue&quot;,
-        ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.987Z&quot;
-        ///    }
-        ///  }
-        ///}.
+        ///      &quot;teams&quot;: [
+        ///        {
+        ///          &quot;team_id&quot;: &quot;cLEZQivXRSq2YFOUkW3ctw&quot;,
+        ///          &quot;team_name&quot;: &quot;My team&quot;
+        ///        }
+        ///      ],
+        ///      &quot;date_time_ms&quot;: &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_user_opt_in {
             get {
@@ -3735,10 +3794,13 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;user_email&quot;: &quot;johndoe@example.com&quot;,
         ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;,
         ///      &quot;queue_name&quot;: &quot;My Queue&quot;,
-        ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.987Z&quot;
-        ///    }
-        ///  }
-        ///}.
+        ///      &quot;teams&quot;: [
+        ///        {
+        ///          &quot;team_id&quot;: &quot;cLEZQivXRSq2YFOUkW3ctw&quot;,
+        ///          &quot;team_name&quot;: &quot;My team&quot;
+        ///        }
+        ///      ],
+        ///      &quot;date_time_ms&quot;:  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_user_opt_out {
             get {
@@ -3756,13 +3818,14 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.987Z&quot;,
         ///      &quot;user_id&quot;: &quot;giudgf_4576385jsdhfsfsd&quot;,
         ///      &quot;display_name&quot;: &quot;John Doe&quot;,
-        ///      &quot;user_email&quot;: &quot;johndoe@example.com&quot;,
-        ///      &quot;role_id&quot;: &quot;27302393-4784-11ec-a3cd-122e3e29bb87&quot;,
-        ///      &quot;role_name&quot;: &quot;Admin&quot;,
-        ///      &quot;phone_numbers&quot;: [
+        ///      &quot;teams&quot;: [
         ///        {
-        ///          &quot;phone_number&quot;: &quot;+18005551212&quot;,
-        ///  [rest of string was truncated]&quot;;.
+        ///          &quot;team_id&quot;: &quot;cLEZQivXRSq2YFOUkW3ctw&quot;,
+        ///          &quot;team_name&quot;: &quot;My team&quot;
+        ///        }
+        ///      ],
+        ///      &quot;user_email&quot;: &quot;johndoe@example.com&quot;,
+        ///      &quot;role_id&quot;: &quot;27302393-4784-11ec [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_user_phone_numbers_assigned {
             get {
@@ -3780,12 +3843,14 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;date_time_ms&quot;: &quot;2025-12-12T09:27:15.987Z&quot;,
         ///      &quot;user_id&quot;: &quot;giudgf_4576385jsdhfsfsd&quot;,
         ///      &quot;display_name&quot;: &quot;John Doe&quot;,
-        ///      &quot;user_email&quot;: &quot;johndoe@example.com&quot;,
-        ///      &quot;role_id&quot;: &quot;27302393-4784-11ec-a3cd-122e3e29bb87&quot;,
-        ///      &quot;role_name&quot;: &quot;Admin&quot;,
-        ///      &quot;phone_numbers&quot;: [
+        ///      &quot;teams&quot;: [
         ///        {
-        ///          &quot;phone_number&quot;: &quot;+12093412723&quot;,        /// [rest of string was truncated]&quot;;.
+        ///          &quot;team_id&quot;: &quot;cLEZQivXRSq2YFOUkW3ctw&quot;,
+        ///          &quot;team_name&quot;: &quot;My team&quot;
+        ///        }
+        ///      ],
+        ///      &quot;user_email&quot;: &quot;johndoe@example.com&quot;,
+        ///      &quot;role_id&quot;: &quot;27302393-4784-11 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_user_phone_numbers_unassigned {
             get {
@@ -3795,7 +3860,7 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;event&quot;: &quot;contact_center.user_skills_assigned.&quot;,
+        ///  &quot;event&quot;: &quot;contact_center.user_skills_assigned&quot;,
         ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
@@ -3803,13 +3868,14 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.987Z&quot;,
         ///      &quot;user_id&quot;: &quot;giudgf_4576385jsdhfsfsd&quot;,
         ///      &quot;display_name&quot;: &quot;John Doe&quot;,
-        ///      &quot;user_email&quot;: &quot;johndoe@example.com&quot;,
-        ///      &quot;role_id&quot;: &quot;27302393-4784-11ec-a3cd-122e3e29bb87&quot;,
-        ///      &quot;role_name&quot;: &quot;Admin&quot;,
-        ///      &quot;skills&quot;: [
+        ///      &quot;teams&quot;: [
         ///        {
-        ///          &quot;skill_id&quot;: &quot;s0pP7Z_AcR_6xUiAS2SLE1g&quot;
-        ///         [rest of string was truncated]&quot;;.
+        ///          &quot;team_id&quot;: &quot;cLEZQivXRSq2YFOUkW3ctw&quot;,
+        ///          &quot;team_name&quot;: &quot;My team&quot;
+        ///        }
+        ///      ],
+        ///      &quot;user_email&quot;: &quot;johndoe@example.com&quot;,
+        ///      &quot;role_id&quot;: &quot;27302393-4784-11ec-a3cd-1 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_user_skills_assigned {
             get {
@@ -3827,13 +3893,14 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.987Z&quot;,
         ///      &quot;user_id&quot;: &quot;giudgf_4576385jsdhfsfsd&quot;,
         ///      &quot;display_name&quot;: &quot;John Doe&quot;,
-        ///      &quot;user_email&quot;: &quot;johndoe@example.com&quot;,
-        ///      &quot;role_id&quot;: &quot;27302393-4784-11ec-a3cd-122e3e29bb87&quot;,
-        ///      &quot;role_name&quot;: &quot;Admin&quot;,
-        ///      &quot;skills&quot;: [
+        ///      &quot;teams&quot;: [
         ///        {
-        ///          &quot;skill_id&quot;: &quot;s0pP7Z_AcR_6xUiAS2SLE1g&quot;
-        ///        [rest of string was truncated]&quot;;.
+        ///          &quot;team_id&quot;: &quot;cLEZQivXRSq2YFOUkW3ctw&quot;,
+        ///          &quot;team_name&quot;: &quot;My team&quot;
+        ///        }
+        ///      ],
+        ///      &quot;user_email&quot;: &quot;johndoe@example.com&quot;,
+        ///      &quot;role_id&quot;: &quot;27302393-4784-11ec-a3cd [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_user_skills_unassigned {
             get {
@@ -3851,12 +3918,15 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;user_id&quot;: &quot;ukAAkZKfROKMSw1bj_RDFQ&quot;,
         ///      &quot;display_name&quot;: &quot;John Doe&quot;,
         ///      &quot;user_email&quot;: &quot;johndoe@example.com&quot;,
+        ///      &quot;teams&quot;: [
+        ///        {
+        ///          &quot;team_id&quot;: &quot;cLEZQivXRSq2YFOUkW3ctw&quot;,
+        ///          &quot;team_name&quot;: &quot;My team&quot;
+        ///        }
+        ///      ],
         ///      &quot;previous_status_id&quot;: &quot;2&quot;,
         ///      &quot;previous_status_name&quot;: &quot;Not Ready&quot;,
-        ///      &quot;previous_sub_status_id&quot;: &quot;20&quot;,
-        ///      &quot;previous_sub_status_name&quot;: &quot;Break&quot;,
-        ///      &quot;current_status_id&quot;: &quot;2&quot;,
-        ///      &quot;current_status_name&quot;: &quot;Not  [rest of string was truncated]&quot;;.
+        ///      &quot;previous_su [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_user_status_changed {
             get {
@@ -3873,14 +3943,16 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;object&quot;: {
         ///      &quot;date_time_ms&quot;: &quot;2022-02-15T09:27:15.987Z&quot;,
         ///      &quot;user_id&quot;: &quot;giudgf_4576385jsdhfsfsd&quot;,
+        ///      &quot;teams&quot;: [
+        ///        {
+        ///          &quot;team_id&quot;: &quot;cLEZQivXRSq2YFOUkW3ctw&quot;,
+        ///          &quot;team_name&quot;: &quot;My team&quot;
+        ///        }
+        ///      ],
+        ///      &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4LpA&quot;,
+        ///      &quot;division_name&quot;: &quot;EMEA Operations&quot;,
         ///      &quot;updates&quot;: {
-        ///        &quot;role_id&quot;: &quot;27302393-4784-11ec-a3cd-122e3e29bb87&quot;,
-        ///        &quot;role_name&quot;: &quot;Admin&quot;,
-        ///        &quot;status_id&quot;: &quot;2&quot;,
-        ///        &quot;status_name&quot;: &quot;Not Ready&quot;,
-        ///        &quot;sub_status_id&quot;: &quot;109&quot;,
-        ///        &quot;sub_status_name&quot;: &quot;Whispering&quot;,
-        ///        &quot;cli [rest of string was truncated]&quot;;.
+        ///        &quot;role_id&quot;:  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_user_updated {
             get {
@@ -3979,23 +4051,23 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;group.admin_added&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///		&quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
-        ///			&quot;admins&quot;: [
-        ///				{
-        ///					&quot;id&quot; : &quot;qB1V0HKFQrGODVhJmqUEQw&quot;,
-        ///					&quot;email&quot; : &quot;jchill@example.com&quot;
-        ///				}
-        ///			]
-        ///		},
-        ///		&quot;time_stamp&quot;: 1626230691572
-        ///	}
+        ///  &quot;event&quot;: &quot;group.admin_added&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
+        ///      &quot;admins&quot;: [
+        ///        {
+        ///          &quot;id&quot;: &quot;qB1V0HKFQrGODVhJmqUEQw&quot;,
+        ///          &quot;email&quot;: &quot;jchill@example.com&quot;
+        ///        }
+        ///      ]
+        ///    },
+        ///    &quot;time_stamp&quot;: 1626230691572
+        ///  }
         ///}.
         /// </summary>
         internal static string group_admin_added {
@@ -4006,23 +4078,23 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;group.admin_deleted&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///		&quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
-        ///			&quot;admins&quot;: [
-        ///				{
-        ///					&quot;id&quot; : &quot;qB1V0HKFQrGODVhJmqUEQw&quot;,
-        ///					&quot;email&quot; : &quot;jchill@example.com&quot;
-        ///				}
-        ///			]
-        ///		},
-        ///		&quot;time_stamp&quot;: 1626230691572
-        ///	}
+        ///  &quot;event&quot;: &quot;group.admin_deleted&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
+        ///      &quot;admins&quot;: [
+        ///        {
+        ///          &quot;id&quot;: &quot;qB1V0HKFQrGODVhJmqUEQw&quot;,
+        ///          &quot;email&quot;: &quot;jchill@example.com&quot;
+        ///        }
+        ///      ]
+        ///    },
+        ///    &quot;time_stamp&quot;: 1626230691572
+        ///  }
         ///}.
         /// </summary>
         internal static string group_admin_deleted {
@@ -4033,18 +4105,18 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;group.created&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///		&quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
-        ///			&quot;name&quot;: &quot;example-group&quot;
-        ///		},
-        ///		&quot;time_stamp&quot;: 1626230691572
-        ///	}
+        ///  &quot;event&quot;: &quot;group.created&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
+        ///      &quot;name&quot;: &quot;example-group&quot;
+        ///    },
+        ///    &quot;time_stamp&quot;: 1626230691572
+        ///  }
         ///}.
         /// </summary>
         internal static string group_created {
@@ -4055,18 +4127,18 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;group.deleted&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///		&quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
-        ///			&quot;name&quot;: &quot;example-group&quot;
-        ///		},
-        ///		&quot;time_stamp&quot;: 1626230691572
-        ///	}
+        ///  &quot;event&quot;: &quot;group.deleted&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
+        ///      &quot;name&quot;: &quot;example-group&quot;
+        ///    },
+        ///    &quot;time_stamp&quot;: 1626230691572
+        ///  }
         ///}.
         /// </summary>
         internal static string group_deleted {
@@ -4088,14 +4160,12 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;settings&quot;: {
         ///        &quot;recording&quot;: {
         ///          &quot;cloud_recording&quot;: false
-        ///        }
-        ///      }
-        ///    },
-        ///    &quot;time_stamp&quot;: 1626230691572,
-        ///    &quot;old_object&quot;: {
-        ///      &quot;id&quot;: &quot;49D7a0xPQvGQ2DCMZgSe7w&quot;,
-        ///      &quot;settings&quot;: {
-        ///        &quot;recording&quot;: { [rest of string was truncated]&quot;;.
+        ///        },
+        ///        &quot;ai&quot;: {
+        ///          &quot;whiteboard_content_generation&quot;: true,
+        ///          &quot;show_conversational_ai_companion&quot;: {
+        ///            &quot;enabled&quot;: true,
+        ///        [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string group_lock_settings_updated {
             get {
@@ -4105,23 +4175,23 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;group.member_added&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///		&quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
-        ///			&quot;members&quot;: [
-        ///				{
-        ///					&quot;id&quot; : &quot;qB1V0HKFQrGODVhJmqUEQw&quot;,
-        ///					&quot;email&quot; : &quot;jchill@example.com&quot;
-        ///				}
-        ///			]
-        ///		},
-        ///		&quot;time_stamp&quot;: 1626230691572
-        ///	}
+        ///  &quot;event&quot;: &quot;group.member_added&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
+        ///      &quot;members&quot;: [
+        ///        {
+        ///          &quot;id&quot;: &quot;qB1V0HKFQrGODVhJmqUEQw&quot;,
+        ///          &quot;email&quot;: &quot;jchill@example.com&quot;
+        ///        }
+        ///      ]
+        ///    },
+        ///    &quot;time_stamp&quot;: 1626230691572
+        ///  }
         ///}.
         /// </summary>
         internal static string group_member_added {
@@ -4132,23 +4202,23 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;group.members_deleted&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///		&quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
-        ///			&quot;members&quot;: [
-        ///				{
-        ///					&quot;id&quot; : &quot;qB1V0HKFQrGODVhJmqUEQw&quot;,
-        ///					&quot;email&quot; : &quot;jchill@example.com&quot;
-        ///				}
-        ///			]
-        ///		},
-        ///		&quot;time_stamp&quot;: 1626230691572
-        ///	}
+        ///  &quot;event&quot;: &quot;group.members_deleted&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
+        ///      &quot;members&quot;: [
+        ///        {
+        ///          &quot;id&quot;: &quot;qB1V0HKFQrGODVhJmqUEQw&quot;,
+        ///          &quot;email&quot;: &quot;jchill@example.com&quot;
+        ///        }
+        ///      ]
+        ///    },
+        ///    &quot;time_stamp&quot;: 1626230691572
+        ///  }
         ///}.
         /// </summary>
         internal static string group_member_deleted {
@@ -4170,15 +4240,12 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;settings&quot;: {
         ///        &quot;recording&quot;: {
         ///          &quot;auto_recording&quot;: true
-        ///        }
-        ///      }
-        ///    },
-        ///    &quot;time_stamp&quot;: 1626230691572,
-        ///    &quot;old_object&quot;: {
-        ///      &quot;id&quot;: &quot;49D7a0xPQvGQ2DCMZgSe7w&quot;,
-        ///      &quot;settings&quot;: {
-        ///        &quot;recording&quot;: {
-        ///       [rest of string was truncated]&quot;;.
+        ///        },
+        ///        &quot;ai&quot;: {
+        ///          &quot;whiteboard_content_generation&quot;: true,
+        ///          &quot;show_conversational_ai_companion&quot;: {
+        ///            &quot;enabled&quot;: true,
+        ///            &quot;en [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string group_settings_updated {
             get {
@@ -4214,23 +4281,22 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;information_barriers.policy_created&quot;,
-        ///	&quot;event_ts&quot;: 1660013569332,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;0r1HpfZYQB6gWNSdlGYS9A&quot;,
-        ///			&quot;assigned_group_id&quot;: &quot;O5FnCpUOSeSzfoBcosSc3A&quot;,
-        ///			&quot;to_group_id&quot;: &quot;NCLsKWGUQ0KEdrg3DBQKLQ&quot;,
-        ///			&quot;policy_name&quot;: &quot;tes1_test2&quot;,
-        ///			&quot;settings&quot;: {
-        ///				&quot;meeting&quot;: false,
-        ///				&quot;screen_share&quot;: false,
-        ///				&quot;file_transfer&quot;: false,
-        ///				&quot;in_meeting_chat&quot;: false,
-        ///				&quot;im&quot;: false,
-        ///				&quot;recording&quot;: false,
-        ///				&quot;complete_phone_ [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;information_barriers.policy_created&quot;,
+        ///  &quot;event_ts&quot;: 1660013569332,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;0r1HpfZYQB6gWNSdlGYS9A&quot;,
+        ///      &quot;assigned_group_id&quot;: &quot;O5FnCpUOSeSzfoBcosSc3A&quot;,
+        ///      &quot;to_group_id&quot;: &quot;NCLsKWGUQ0KEdrg3DBQKLQ&quot;,
+        ///      &quot;policy_name&quot;: &quot;tes1_test2&quot;,
+        ///      &quot;settings&quot;: {
+        ///        &quot;meeting&quot;: false,
+        ///        &quot;screen_share&quot;: false,
+        ///        &quot;file_transfer&quot;: false,
+        ///        &quot;in_meeting_chat&quot;: false,
+        ///        &quot;im&quot;: false,
+        ///    [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string information_barriers_policy_created {
             get {
@@ -4240,23 +4306,22 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;information_barriers.policy_deleted&quot;,
-        ///	&quot;event_ts&quot;: 1660013569332,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;0r1HpfZYQB6gWNSdlGYS9A&quot;,
-        ///			&quot;assigned_group_id&quot;: &quot;O5FnCpUOSeSzfoBcosSc3A&quot;,
-        ///			&quot;to_group_id&quot;: &quot;NCLsKWGUQ0KEdrg3DBQKLQ&quot;,
-        ///			&quot;policy_name&quot;: &quot;tes1_test2&quot;,
-        ///			&quot;settings&quot;: {
-        ///				&quot;meeting&quot;: false,
-        ///				&quot;screen_share&quot;: false,
-        ///				&quot;file_transfer&quot;: false,
-        ///				&quot;in_meeting_chat&quot;: false,
-        ///				&quot;im&quot;: false,
-        ///				&quot;recording&quot;: false,
-        ///				&quot;complete_phone_ [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;information_barriers.policy_deleted&quot;,
+        ///  &quot;event_ts&quot;: 1660013569332,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;0r1HpfZYQB6gWNSdlGYS9A&quot;,
+        ///      &quot;assigned_group_id&quot;: &quot;O5FnCpUOSeSzfoBcosSc3A&quot;,
+        ///      &quot;to_group_id&quot;: &quot;NCLsKWGUQ0KEdrg3DBQKLQ&quot;,
+        ///      &quot;policy_name&quot;: &quot;tes1_test2&quot;,
+        ///      &quot;settings&quot;: {
+        ///        &quot;meeting&quot;: false,
+        ///        &quot;screen_share&quot;: false,
+        ///        &quot;file_transfer&quot;: false,
+        ///        &quot;in_meeting_chat&quot;: false,
+        ///        &quot;im&quot;: false,
+        ///    [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string information_barriers_policy_deleted {
             get {
@@ -4266,22 +4331,21 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;information_barriers.policy_updated&quot;,
-        ///	&quot;event_ts&quot;: 1660013569332,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
-        ///		&quot;object&quot;: {
-        ///            &quot;id&quot;: &quot;0r1HpfZYQB6gWNSdlGYS9A&quot;,
-        ///			&quot;new_policy&quot;: {
-        ///			  &quot;assigned_group_id&quot;: &quot;O5FnCpUOSeSzfoBcosSc3A&quot;,
-        ///			  &quot;to_group_id&quot;: &quot;NCLsKWGUQ0KEdrg3DBQKLQ&quot;,
-        ///			  &quot;policy_name&quot;: &quot;tes1_test2&quot;,
-        ///			  &quot;settings&quot;: {
-        ///			  	&quot;meeting&quot;: false,
-        ///			  	&quot;screen_share&quot;: false,
-        ///			  	&quot;file_transfer&quot;: false,
-        ///			  	&quot;in_meeting_chat&quot;: false,
-        ///			  	&quot;im&quot;: false, [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;information_barriers.policy_updated&quot;,
+        ///  &quot;event_ts&quot;: 1660013569332,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;0r1HpfZYQB6gWNSdlGYS9A&quot;,
+        ///      &quot;new_policy&quot;: {
+        ///        &quot;assigned_group_id&quot;: &quot;O5FnCpUOSeSzfoBcosSc3A&quot;,
+        ///        &quot;to_group_id&quot;: &quot;NCLsKWGUQ0KEdrg3DBQKLQ&quot;,
+        ///        &quot;policy_name&quot;: &quot;tes1_test2&quot;,
+        ///        &quot;settings&quot;: {
+        ///          &quot;meeting&quot;: false,
+        ///          &quot;screen_share&quot;: false,
+        ///          &quot;file_transfer&quot;: false,
+        ///          &quot;in_meeting_c [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string information_barriers_policy_updated {
             get {
@@ -4293,25 +4357,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;interactive_message_actions&quot;,
         ///  &quot;event_ts&quot;: 1560891332219,
-        ///  &quot;payload&quot;: {
-        ///    &quot;accountId&quot;: &quot;gVcjZnWWRLWvv_GtyGuaxg&quot;,
-        ///    &quot;actionItem&quot;: {
-        ///      &quot;text&quot;: &quot;Add&quot;,
-        ///      &quot;value&quot;: &quot;add&quot;
-        ///    },
-        ///    &quot;channelName&quot;: &quot;Jill Chill&quot;,
-        ///    &quot;messageId&quot;: &quot;20190618205516496_ynICmz8_aw1&quot;,
-        ///    &quot;original&quot;: {
-        ///      &quot;head&quot;: {
-        ///        &quot;sub_head&quot;: {
-        ///          &quot;text&quot;: &quot;I am a sub header&quot;
-        ///        },
-        ///        &quot;text&quot;: &quot;I am a header&quot;
-        ///      },
-        ///      &quot;body&quot;: [
-        ///        {
-        ///          &quot;type&quot;: &quot;actions&quot;,
-        ///        [rest of string was truncated]&quot;;.
+        ///  &quot;callback_url&quot;: &quot;https://api.zoom.us/v2/im/chat/callback/bKFS3ybORiWbJx6VM6Qe1A&quot;,
+        ///  &quot;callback_token&quot;: &quot;eyJzdiI6IjAwMDAwMSIsInR5cCI6IkpXVCIsImFsZyI6IkVTMjU2In0.eyJhdWQiOiJib3QiLCJ1aWQiOiJWV2ZQa1NENVJvMk5xRWUyR1VMa2F3IiwiY2xpZW50SWQiOiJRQmZVaEFyUlNHVVFVclM2ZDFXVnciLCJpc3MiOiJ6b29tIiwiZXhwIjoxNzYwMzYzNzc5LCJpYXQiOjE3NjAzMzM3NzksImFpZCI6InQ4dURPZWtYUkx5b3ExR0M4UFBaTVEifQ.wBeNSNeYLQYJD1Lp0O0EnnfyCYNzF03tEwFin0-hRV7UfECLmHsW7NnQ9EEPGxO [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string interactive_message_actions {
             get {
@@ -4323,20 +4370,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;interactive_message_editable&quot;,
         ///  &quot;event_ts&quot;: 1560891135776,
-        ///  &quot;payload&quot;: {
-        ///    &quot;accountId&quot;: &quot;gVcjZnWWRLWvv_GtyGuaxg&quot;,
-        ///    &quot;channelName&quot;: &quot;Jill Chill&quot;,
-        ///    &quot;editItem&quot;: {
-        ///      &quot;origin&quot;: &quot;I am a message with editable text&quot;,
-        ///      &quot;target&quot;: &quot;I am a message with editable text that has been edited&quot;
-        ///    },
-        ///    &quot;messageId&quot;: &quot;20190618205205291_tI1CUa6_aw1&quot;,
-        ///    &quot;original&quot;: {
-        ///      &quot;head&quot;: {
-        ///        &quot;sub_head&quot;: {
-        ///          &quot;text&quot;: &quot;I am a sub header&quot;
-        ///        },
-        ///        &quot;text&quot;: &quot;I am a h [rest of string was truncated]&quot;;.
+        ///  &quot;callback_url&quot;: &quot;https://api.zoom.us/v2/im/chat/callback/bKFS3ybORiWbJx6VM6Qe1A&quot;,
+        ///  &quot;callback_token&quot;: &quot;eyJzdiI6IjAwMDAwMSIsInR5cCI6IkpXVCIsImFsZyI6IkVTMjU2In0.eyJhdWQiOiJib3QiLCJ1aWQiOiJWV2ZQa1NENVJvMk5xRWUyR1VMa2F3IiwiY2xpZW50SWQiOiJRQmZVaEFyUlNHVVFVclM2ZDFXVnciLCJpc3MiOiJ6b29tIiwiZXhwIjoxNzYwMzYzNzc5LCJpYXQiOjE3NjAzMzM3NzksImFpZCI6InQ4dURPZWtYUkx5b3ExR0M4UFBaTVEifQ.wBeNSNeYLQYJD1Lp0O0EnnfyCYNzF03tEwFin0-hRV7UfECLmHsW7NnQ9EEPGx [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string interactive_message_editable {
             get {
@@ -4348,23 +4383,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;interactive_message_fields_editable&quot;,
         ///  &quot;event_ts&quot;: 1560891222018,
-        ///  &quot;payload&quot;: {
-        ///    &quot;accountId&quot;: &quot;gVcjZnWWRLWvv_GtyGuaxg&quot;,
-        ///    &quot;channelName&quot;: &quot;Jill Chill&quot;,
-        ///    &quot;fieldEditItem&quot;: {
-        ///      &quot;currentValue&quot;: &quot;&quot;,
-        ///      &quot;key&quot;: &quot;Title&quot;,
-        ///      &quot;newValue&quot;: &quot;Software Engineer&quot;
-        ///    },
-        ///    &quot;messageId&quot;: &quot;20190618205323327_EZjIqCQ_aw1&quot;,
-        ///    &quot;original&quot;: {
-        ///      &quot;head&quot;: {
-        ///        &quot;sub_head&quot;: {
-        ///          &quot;text&quot;: &quot;I am a sub header&quot;
-        ///        },
-        ///        &quot;text&quot;: &quot;I am a header&quot;
-        ///      },
-        ///      &quot;bo [rest of string was truncated]&quot;;.
+        ///  &quot;callback_url&quot;: &quot;https://api.zoom.us/v2/im/chat/callback/bKFS3ybORiWbJx6VM6Qe1A&quot;,
+        ///  &quot;callback_token&quot;: &quot;eyJzdiI6IjAwMDAwMSIsInR5cCI6IkpXVCIsImFsZyI6IkVTMjU2In0.eyJhdWQiOiJib3QiLCJ1aWQiOiJWV2ZQa1NENVJvMk5xRWUyR1VMa2F3IiwiY2xpZW50SWQiOiJRQmZVaEFyUlNHVVFVclM2ZDFXVnciLCJpc3MiOiJ6b29tIiwiZXhwIjoxNzYwMzYzNzc5LCJpYXQiOjE3NjAzMzM3NzksImFpZCI6InQ4dURPZWtYUkx5b3ExR0M4UFBaTVEifQ.wBeNSNeYLQYJD1Lp0O0EnnfyCYNzF03tEwFin0-hRV7UfECLmHsW7Nn [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string interactive_message_fields_editable {
             get {
@@ -4424,7 +4444,7 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;meeting.ai_companion_assets_deleted&quot;,
-        ///  &quot;event_ts&quot;: 1726142087123,
+        ///  &quot;event_ts&quot;: 1726155000123,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
         ///    &quot;object&quot;: {
@@ -4449,13 +4469,13 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;meeting.ai_companion_started&quot;,
-        ///  &quot;event_ts&quot;: 1726142087123,
+        ///  &quot;event_ts&quot;: 1725264900000,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///    &quot;account_id&quot;: &quot;a1B2c3D4E5f6G7h8I9J0&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;meeting_number&quot;: 97763643886,
-        ///      &quot;meeting_uuid&quot;: &quot;aDYlohsHRtCd4ii1uC2+hA==&quot;,
-        ///      &quot;host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
+        ///      &quot;meeting_number&quot;: 98273645123,
+        ///      &quot;meeting_uuid&quot;: &quot;cXYlohsHRtCd4ii1uC2+hA==&quot;,
+        ///      &quot;host_id&quot;: &quot;12R7kT7bTIKSNUFEuH_Qlg&quot;,
         ///      &quot;ai_companion&quot;: {
         ///        &quot;questions&quot;: true
         ///      }
@@ -4504,7 +4524,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;meeting_id&quot;: 97763643886,
         ///      &quot;meeting_topic&quot;: &quot;My Meeting&quot;,
         ///      &quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
-        ///      &quot;file_id&quot;: &quot;97F060CE-B123-4A57-A9E1-CC241BC1C555&quot;,
+        ///      &quot;file_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
         ///      &quot;attach_type&quot;: &quot;durable_transcript&quot;
         ///    }
         ///  }
@@ -4518,24 +4538,24 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;meeting.alert&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: 1234567890,
-        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///			&quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///			&quot;topic&quot;: &quot;My Meeting&quot;,
-        ///			&quot;type&quot;: 8,
-        ///			&quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///			&quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///			&quot;duration&quot;: 60,
-        ///			&quot;issues&quot;: [
-        ///				&quot;Unstable audio quality&quot;
-        ///			]
-        ///		}
-        ///	}
+        ///  &quot;event&quot;: &quot;meeting.alert&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;1234567890&quot;,
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///      &quot;topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;type&quot;: 2,
+        ///      &quot;join_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
+        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///      &quot;duration&quot;: 60,
+        ///      &quot;issues&quot;: [
+        ///        &quot;Unstable audio quality&quot;
+        ///      ]
+        ///    }
+        ///  }
         ///}.
         /// </summary>
         internal static string meeting_alert {
@@ -4546,23 +4566,22 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;meeting.breakout_room_sharing_ended&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;1234567890&quot;,
-        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///			&quot;breakout_room_uuid&quot;: &quot;FkQbpP2UR028mDrwzEahqw==&quot;,
-        ///			&quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///			&quot;topic&quot;: &quot;My Meeting&quot;,
-        ///			&quot;type&quot;: 8,
-        ///			&quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///			&quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///			&quot;duration&quot;: 60,
-        ///			&quot;participant&quot;: {
-        ///				&quot;user_id&quot;: &quot;31228928&quot;,
-        ///				&quot;parent_user_i [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;meeting.breakout_room_sharing_ended&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;1234567890&quot;,
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;breakout_room_uuid&quot;: &quot;FkQbpP2UR028mDrwzEahqw==&quot;,
+        ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///      &quot;topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;type&quot;: 8,
+        ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
+        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///      &quot;duration&quot;: 60,
+        ///      &quot;participant&quot;: {
+        ///        &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_breakout_room_sharing_ended {
             get {
@@ -4572,23 +4591,22 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;meeting.breakout_room_sharing_started&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;1234567890&quot;,
-        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///			&quot;breakout_room_uuid&quot;: &quot;FkQbpP2UR028mDrwzEahqw==&quot;,
-        ///			&quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///			&quot;topic&quot;: &quot;My Meeting&quot;,
-        ///			&quot;type&quot;: 8,
-        ///			&quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///			&quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///			&quot;duration&quot;: 60,
-        ///			&quot;participant&quot;: {
-        ///				&quot;user_id&quot;: &quot;31228928&quot;,
-        ///				&quot;parent_user [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;meeting.breakout_room_sharing_started&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;1234567890&quot;,
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;breakout_room_uuid&quot;: &quot;FkQbpP2UR028mDrwzEahqw==&quot;,
+        ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///      &quot;topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;type&quot;: 8,
+        ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
+        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///      &quot;duration&quot;: 60,
+        ///      &quot;participant&quot;: {
+        ///        [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_breakout_room_sharing_started {
             get {
@@ -4628,14 +4646,13 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;object&quot;: {
         ///      &quot;meeting_id&quot;: 1234567890,
         ///      &quot;meeting_uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;breakout_room_uuid&quot;: &quot;FkQbpP2UR028mDrwzEahqw==&quot;,
         ///      &quot;chat_message_file&quot;: {
-        ///        &quot;date_time&quot;: &quot;2022-01-10T07:20:10Z&quot;,
+        ///        &quot;date_time&quot;: &quot;GMT20220110-072010&quot;,
         ///        &quot;sender_session_id&quot;: &quot;26219520&quot;,
         ///        &quot;sender_name&quot;: &quot;Jill Chill&quot;,
         ///        &quot;sender_email&quot;: &quot;dlp.user@example.com&quot;,
-        ///        &quot;sender_type&quot;: &quot;host&quot;,
-        ///        &quot;recipient_session_id&quot;: &quot;38681600&quot;,
-        ///  [rest of string was truncated]&quot;;.
+        ///        &quot;sender_type&quot;:  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_chat_message_file_sent {
             get {
@@ -4645,20 +4662,21 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///    &quot;event&quot;: &quot;meeting.chat_message_sent&quot;,
-        ///    &quot;event_ts&quot;: 1626230691572,
-        ///    &quot;payload&quot;: {
-        ///        &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///        &quot;object&quot;: {
-        ///            &quot;id&quot;: 1234567890,
-        ///            &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///            &quot;chat_message&quot;: {
-        ///                &quot;date_time&quot;: &quot;2022-01-10T07:20:10Z&quot;,
-        ///                &quot;sender_session_id&quot;: &quot;26219520&quot;,
-        ///                &quot;sender_name&quot;: &quot;Jill Chill&quot;,
-        ///                &quot;sender_email&quot;: &quot;dlp.user@example.com&quot;,
-        ///                &quot;sender_type&quot;: &quot;host&quot;,
-        /// [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;meeting.chat_message_sent&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: 1234567890,
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;breakout_room_uuid&quot;: &quot;FkQbpP2UR028mDrwzEahqw==&quot;,
+        ///      &quot;chat_message&quot;: {
+        ///        &quot;date_time&quot;: &quot;GMT20220110-072010&quot;,
+        ///        &quot;sender_session_id&quot;: &quot;26219520&quot;,
+        ///        &quot;sender_name&quot;: &quot;Jill Chill&quot;,
+        ///        &quot;sender_email&quot;: &quot;dlp.user@example.com&quot;,
+        ///        &quot;sender_type&quot;: &quot;host&quot;,
+        ///        &quot;sender_c [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_chat_message_sent {
             get {
@@ -4678,14 +4696,13 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;id&quot;: 1234567890,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///      &quot;topic&quot;: &quot;My Webinar&quot;,
+        ///      &quot;topic&quot;: &quot;My Meeting Converted&quot;,
         ///      &quot;type&quot;: 5,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;
         ///    }
-        ///  }
-        ///}.
+        ///   [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_converted_to_webinar {
             get {
@@ -4695,23 +4712,23 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;meeting.created&quot;,
-        ///	&quot;event_ts&quot;: 1617628462392,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;VjZoEArIT5y-HlWxkV-tVA&quot;,
-        ///		&quot;operator&quot;: &quot;someone@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;8lzIwvZTSOqjndWPbPqzuA&quot;,
-        ///		&quot;operation&quot;: &quot;single&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///			&quot;id&quot;: 1234567890,
-        ///			&quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///			&quot;topic&quot;: &quot;My Meeting&quot;,
-        ///			&quot;type&quot;: 8,
-        ///			&quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///			&quot;duration&quot;: 60,
-        ///			&quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///			&quot;join_url&quot;: &quot;https:/ [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;meeting.created&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;operation&quot;: &quot;single&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;id&quot;: 1234567890,
+        ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///      &quot;topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;type&quot;: 8,
+        ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
+        ///      &quot;duration&quot;: 60,
+        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///    [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_created {
             get {
@@ -4721,25 +4738,23 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;meeting.deleted&quot;,
-        ///	&quot;event_ts&quot;: 1617628462764,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;VjZoEArIT5y-HlWxkV-tVA&quot;,
-        ///		&quot;operator&quot;: &quot;someone@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;8lzIwvZTSOqjndWPbPqzuA&quot;,
-        ///		&quot;operation&quot;: &quot;single&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;uuid&quot;: &quot;5yDZGNlQSV6qOjg4NxajHQ==&quot;,
-        ///			&quot;id&quot;: 98884753832,
-        ///			&quot;host_id&quot;: &quot;8lzIwvZTSOqjndWPbPqzuA&quot;,
-        ///			&quot;topic&quot;: &quot;ZoomNet Unit Testing: instant meeting&quot;,
-        ///			&quot;type&quot;: 1,
-        ///			&quot;duration&quot;: 60,
-        ///			&quot;timezone&quot;: &quot;America/New_York&quot;
-        ///		}
-        ///	}
-        ///}
-        ///.
+        ///  &quot;event&quot;: &quot;meeting.deleted&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;operation&quot;: &quot;single&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;id&quot;: 1234567890,
+        ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///      &quot;topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;type&quot;: 8,
+        ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
+        ///      &quot;duration&quot;: 60,
+        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///    [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_deleted {
             get {
@@ -4759,9 +4774,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;test_result&quot;: {
         ///        &quot;user_id&quot;: &quot;1234567890&quot;,
         ///        &quot;user_name&quot;: &quot;JillChill&quot;,
-        ///        &quot;camera_status&quot;: 0,
+        ///        &quot;camera_status&quot;: 1,
         ///        &quot;speaker_status&quot;: 1,
-        ///        &quot;microphone_status&quot;: 2,
+        ///        &quot;microphone_status&quot;: 1,
         ///        &quot;os&quot;: &quot;ios&quot;
         ///      }
         ///    }
@@ -4776,22 +4791,23 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;meeting.ended&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;1234567890&quot;,
-        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///			&quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///			&quot;topic&quot;: &quot;My Meeting&quot;,
-        ///			&quot;type&quot;: 8,
-        ///			&quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///			&quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///			&quot;duration&quot;: 60,
-        ///			&quot;end_time&quot;: &quot;2021-07-13T23:00:51Z&quot;
-        ///		}
-        ///	}
+        ///  &quot;event&quot;: &quot;meeting.ended&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;1234567890&quot;,
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///      &quot;host_email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;type&quot;: 3,
+        ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
+        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///      &quot;duration&quot;: 60,
+        ///      &quot;end_time&quot;: &quot;2021-07-13T23:00:51Z&quot;
+        ///    }
+        ///  }
         ///}.
         /// </summary>
         internal static string meeting_ended {
@@ -4802,24 +4818,20 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;meeting.invitation_accepted&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
-        ///		&quot;operator_id&quot;: &quot;Hy7YgA-cR4eU8EfWV00tPQ&quot;,
-        ///		&quot;operator&quot;: &quot;dhill@example.com&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;91578204824&quot;,
-        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///			&quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
-        ///			&quot;topic&quot;: &quot;Jill Chill&apos;s Zoom Meeting&quot;,
-        ///			&quot;participant&quot;: {
-        ///				&quot;participant_user_id&quot;: &quot;rPwsQrpC6gPuw2zEJqw&quot;,
-        ///				&quot;email&quot;: &quot;jchill@example.com&quot;
-        ///			}
-        ///		}
-        ///	}
-        ///}.
+        ///  &quot;event&quot;: &quot;meeting.invitation_accepted&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///    &quot;operator_id&quot;: &quot;Hy7YgA-cR4eU8EfWV00tPQ&quot;,
+        ///    &quot;operator&quot;: &quot;dhill@example.com&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;91578204824&quot;,
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///      &quot;topic&quot;: &quot;Jill Chill&apos;s Zoom Meeting&quot;,
+        ///      &quot;participant&quot;: {
+        ///        &quot;participant_user_id&quot;: &quot;rPwsQrpC6gPuw2zEJqw&quot;,
+        ///        &quot;email&quot;: &quot;jchill@example.co [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_invitation_accepted {
             get {
@@ -4829,24 +4841,20 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;meeting.invitation_dispatched&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
-        ///		&quot;operator_id&quot;: &quot;Hy7YgA-cR4eU8EfWV00tPQ&quot;,
-        ///		&quot;operator&quot;: &quot;dhill@example.com&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;91578204824&quot;,
-        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///			&quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
-        ///			&quot;topic&quot;: &quot;Jill Chill&apos;s Zoom Meeting&quot;,
-        ///			&quot;participant&quot;: {
-        ///				&quot;participant_user_id&quot;: &quot;rPwsQrpC6gPuw2zEJqw&quot;,
-        ///				&quot;email&quot;: &quot;jchill@example.com&quot;
-        ///			}
-        ///		}
-        ///	}
-        ///}.
+        ///  &quot;event&quot;: &quot;meeting.invitation_dispatched&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///    &quot;operator_id&quot;: &quot;Hy7YgA-cR4eU8EfWV00tPQ&quot;,
+        ///    &quot;operator&quot;: &quot;dhill@example.com&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;91578204824&quot;,
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///      &quot;topic&quot;: &quot;Jill Chill&apos;s Zoom Meeting&quot;,
+        ///      &quot;participant&quot;: {
+        ///        &quot;participant_user_id&quot;: &quot;rPwsQrpC6gPuw2zEJqw&quot;,
+        ///        &quot;email&quot;: &quot;jchill@example. [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_invitation_dispatched {
             get {
@@ -4856,24 +4864,20 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;meeting.invitation_rejected&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
-        ///		&quot;operator_id&quot;: &quot;Hy7YgA-cR4eU8EfWV00tPQ&quot;,
-        ///		&quot;operator&quot;: &quot;dhill@example.com&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;91578204824&quot;,
-        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///			&quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
-        ///			&quot;topic&quot;: &quot;Jill Chill&apos;s Zoom Meeting&quot;,
-        ///			&quot;participant&quot;: {
-        ///				&quot;participant_user_id&quot;: &quot;rPwsQrpC6gPuw2zEJqw&quot;,
-        ///				&quot;email&quot;: &quot;jchill@example.com&quot;
-        ///			}
-        ///		}
-        ///	}
-        ///}.
+        ///  &quot;event&quot;: &quot;meeting.invitation_rejected&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///    &quot;operator_id&quot;: &quot;Hy7YgA-cR4eU8EfWV00tPQ&quot;,
+        ///    &quot;operator&quot;: &quot;dhill@example.com&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;91578204824&quot;,
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///      &quot;topic&quot;: &quot;Jill Chill&apos;s Zoom Meeting&quot;,
+        ///      &quot;participant&quot;: {
+        ///        &quot;participant_user_id&quot;: &quot;rPwsQrpC6gPuw2zEJqw&quot;,
+        ///        &quot;email&quot;: &quot;jchill@example.co [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_invitation_rejected {
             get {
@@ -4883,24 +4887,20 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;meeting.invitation_timeout&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
-        ///		&quot;operator_id&quot;: &quot;Hy7YgA-cR4eU8EfWV00tPQ&quot;,
-        ///		&quot;operator&quot;: &quot;dhill@example.com&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;91578204824&quot;,
-        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///			&quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
-        ///			&quot;topic&quot;: &quot;Jill Chill&apos;s Zoom Meeting&quot;,
-        ///			&quot;participant&quot;: {
-        ///				&quot;participant_user_id&quot;: &quot;rPwsQrpC6gPuw2zEJqw&quot;,
-        ///				&quot;email&quot;: &quot;jchill@example.com&quot;
-        ///			}
-        ///		}
-        ///	}
-        ///}.
+        ///  &quot;event&quot;: &quot;meeting.invitation_timeout&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///    &quot;operator_id&quot;: &quot;Hy7YgA-cR4eU8EfWV00tPQ&quot;,
+        ///    &quot;operator&quot;: &quot;dhill@example.com&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;91578204824&quot;,
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///      &quot;topic&quot;: &quot;Jill Chill&apos;s Zoom Meeting&quot;,
+        ///      &quot;participant&quot;: {
+        ///        &quot;participant_user_id&quot;: &quot;rPwsQrpC6gPuw2zEJqw&quot;,
+        ///        &quot;email&quot;: &quot;jchill@example.com [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_invitation_timeout {
             get {
@@ -4921,7 +4921,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///      &quot;topic&quot;: &quot;My Meeting&quot;,
-        ///      &quot;type&quot;: 8,
+        ///      &quot;type&quot;: 2,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
@@ -4946,7 +4946,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///      &quot;topic&quot;: &quot;My Meeting&quot;,
-        ///      &quot;type&quot;: 8,
+        ///      &quot;type&quot;: 2,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
@@ -4964,18 +4964,18 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;operation&quot;: &quot;single&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;id&quot;: &quot;1234567890&quot;,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///      &quot;topic&quot;: &quot;My Meeting&quot;,
-        ///      &quot;type&quot;: 8,
+        ///      &quot;type&quot;: 2,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///      &quot;duration&quot;: 60,
-        ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill [rest of string was truncated]&quot;;.
+        ///      &quot;dura [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_admitted {
             get {
@@ -4999,8 +4999,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
-        ///        &quot;bind_user_id&quot;: &quot;16778 [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
+        ///        &quot;bind_user_id&quot;: &quot;16778240&quot;,
+        ///       [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_bind {
             get {
@@ -5084,19 +5085,22 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///    &quot;event&quot;: &quot;meeting.participant_feedback&quot;,
-        ///    &quot;event_ts&quot;: 1626230691572,
-        ///    &quot;payload&quot;: {
-        ///        &quot;account_id&quot;: &quot;q6gBJVO5TzexKYTb_I2rpg&quot;,
-        ///        &quot;object&quot;: {
-        ///            &quot;id&quot;: &quot;7357282288&quot;,
-        ///            &quot;uuid&quot;: &quot;0AErJTQBTI2bSXKyAxIq5A==&quot;,
-        ///            &quot;participant&quot;: {
-        ///                &quot;participant_uuid&quot;:&quot;I2rpg_q6gBJVO5TzexKYTb&quot;,
-        ///                &quot;participant_user_id&quot;: &quot;zJKyaiAyTNC-MWjiWC18KQ&quot;,
-        ///                &quot;user_name&quot;: &quot;jchill&quot;,
-        ///                &quot;feedback&quot;: {
-        ///                    &quot;satisfied&quot;: [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;meeting.participant_feedback&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;q6gBJVO5TzexKYTb_I2rpg&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;7357282288&quot;,
+        ///      &quot;uuid&quot;: &quot;0AErJTQBTI2bSXKyAxIq5A==&quot;,
+        ///      &quot;participant&quot;: {
+        ///        &quot;participant_uuid&quot;: &quot;I2rpg_q6gBJVO5TzexKYTb&quot;,
+        ///        &quot;participant_user_id&quot;: &quot;zJKyaiAyTNC-MWjiWC18KQ&quot;,
+        ///        &quot;user_name&quot;: &quot;jchill&quot;,
+        ///        &quot;feedback&quot;: {
+        ///          &quot;satisfied&quot;: true,
+        ///          &quot;rating_quality&quot;: {
+        ///            &quot;type&quot;: &quot;2-point&quot;,
+        ///   [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_feedback {
             get {
@@ -5121,7 +5125,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;participant&quot;: {
         ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill Chil [rest of string was truncated]&quot;;.
+        ///        &quot;user_name&quot;: &quot;JillChill [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_jbh_joined {
             get {
@@ -5146,7 +5150,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;participant&quot;: {
         ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill Chi [rest of string was truncated]&quot;;.
+        ///        &quot;user_name&quot;: &quot;JillChil [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_jbh_waiting {
             get {
@@ -5171,7 +5175,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;participant&quot;: {
         ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill  [rest of string was truncated]&quot;;.
+        ///        &quot;user_name&quot;: &quot;JillC [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_jbh_waiting_left {
             get {
@@ -5195,8 +5199,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill C [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
+        ///        &quot;user_name&quot;: &quot;Jill Chill&quot;,
+        ///      [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_joined {
             get {
@@ -5206,23 +5211,22 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;meeting.participant_joined_breakout_room&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;1234567890&quot;,
-        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///			&quot;breakout_room_uuid&quot;: &quot;FkQbpP2UR028mDrwzEahqw==&quot;,
-        ///			&quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///			&quot;topic&quot;: &quot;My Meeting&quot;,
-        ///			&quot;type&quot;: 8,
-        ///			&quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///			&quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///			&quot;duration&quot;: 60,
-        ///			&quot;participant&quot;: {
-        ///				&quot;user_id&quot;: &quot;31228928&quot;,
-        ///				&quot;parent_u [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;meeting.participant_joined_breakout_room&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;1234567890&quot;,
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;breakout_room_uuid&quot;: &quot;FkQbpP2UR028mDrwzEahqw==&quot;,
+        ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///      &quot;topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;type&quot;: 8,
+        ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
+        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///      &quot;duration&quot;: 60,
+        ///      &quot;participant&quot;: {
+        ///     [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_joined_breakout_room {
             get {
@@ -5246,8 +5250,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
-        ///        &quot;user_n [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
+        ///        &quot;user_name&quot;: &quot;Jill C [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_joined_waiting_room {
             get {
@@ -5271,8 +5275,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill Chi [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
+        ///        &quot;user_name&quot;: &quot;Jill Chill&quot;,
+        ///        [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_left {
             get {
@@ -5282,23 +5287,22 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;meeting.participant_left_breakout_room&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;1234567890&quot;,
-        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///			&quot;breakout_room_uuid&quot;: &quot;FkQbpP2UR028mDrwzEahqw==&quot;,
-        ///			&quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///			&quot;topic&quot;: &quot;My Meeting&quot;,
-        ///			&quot;type&quot;: 8,
-        ///			&quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///			&quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///			&quot;duration&quot;: 60,
-        ///			&quot;participant&quot;: {
-        ///				&quot;user_id&quot;: &quot;31228928&quot;,
-        ///				&quot;parent_use [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;meeting.participant_left_breakout_room&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;1234567890&quot;,
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;breakout_room_uuid&quot;: &quot;FkQbpP2UR028mDrwzEahqw==&quot;,
+        ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///      &quot;topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;type&quot;: 8,
+        ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
+        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///      &quot;duration&quot;: 60,
+        ///      &quot;participant&quot;: {
+        ///       [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_left_breakout_room {
             get {
@@ -5322,8 +5326,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
-        ///        &quot;user_nam [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
+        ///        &quot;user_name&quot;: &quot;Jill Chi [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_left_waiting_room {
             get {
@@ -5352,6 +5356,31 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string meeting_participant_phone_callout_accepted {
             get {
                 return ResourceManager.GetString("meeting_participant_phone_callout_accepted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;meeting.participant_phone_callout_failed&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: 713592696,
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///      &quot;participant&quot;: {
+        ///        &quot;invitee_name&quot;: &quot;Jill Chill&quot;,
+        ///        &quot;phone_number&quot;: 1800000000
+        ///      },
+        ///      &quot;reason_type&quot;: 0
+        ///    }
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string meeting_participant_phone_callout_failed {
+            get {
+                return ResourceManager.GetString("meeting_participant_phone_callout_failed", resourceCulture);
             }
         }
         
@@ -5443,8 +5472,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
-        ///        &quot;user_n [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
+        ///        &quot;user_name&quot;: &quot;Jill C [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_put_in_waiting_room {
             get {
@@ -5491,12 +5520,12 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_name&quot;: &quot;JillChill&quot;,
         ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
         ///        &quot;email&quot;: &quot;user@example.com&quot;,
-        ///        &quot;qos&quot; : [
+        ///        &quot;qos&quot;: [
         ///          {
-        ///          &quot;type&quot; : &quot;audio_output&quot;,
-        ///          &quot;details&quot; : {
-        ///            &quot;min_bitrate&quot; : &quot;6 kbps&quot;,
-        ///            &quot;avg_ [rest of string was truncated]&quot;;.
+        ///            &quot;type&quot;: &quot;audio_output&quot;,
+        ///            &quot;details&quot;: {
+        ///              &quot;min_bitrate&quot;: &quot;6 kbps&quot;,
+        ///              &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_qos_summary {
             get {
@@ -5520,8 +5549,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
-        ///        &quot;participant_u [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
+        ///        &quot;participant_uuid&quot;: &quot;55555A [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_role_changed {
             get {
@@ -5878,6 +5907,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;meeting_uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///    &quot;operator_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
         ///    &quot;rtms_stream_id&quot;: &quot;609340fb2a7946909659956c8aa9250c&quot;,
+        ///    &quot;meeting_id&quot;: 85746065123,
+        ///    &quot;account_id&quot;: &quot;abcdefg123xyz&quot;,
+        ///    &quot;is_original_host&quot;: true,
         ///    &quot;server_urls&quot;: &quot;wss://127.0.0.1:443&quot;
         ///  }
         ///}.
@@ -5908,9 +5940,9 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;meeting.sharing_ended&quot;,
-        ///  &quot;event_ts&quot;: 1234566789900,
+        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;EPeQtiABC000VYxHMA&quot;,
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;id&quot;: &quot;1234567890&quot;,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
@@ -5921,9 +5953,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;16778000&quot;,
-        ///        &quot;user_name&quot;: &quot;Arya Arya&quot;,
-        ///      [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;ABCDE12345&quot;,
+        ///        &quot;user_name&quot;: &quot;JillChill&quot;,
+        ///        &quot;id [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_sharing_ended {
             get {
@@ -5933,24 +5965,23 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;meeting.sharing_started&quot;,
-        ///	&quot;event_ts&quot;: 1234566789900,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;EPeQtiABC000VYxHMA&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;duration&quot;: 60,
-        ///			&quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///			&quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///			&quot;topic&quot;: &quot;My Meeting&quot;,
-        ///			&quot;id&quot;: 1234567890,
-        ///			&quot;type&quot;: 8,
-        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///			&quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///			&quot;participant&quot;: {
-        ///				&quot;id&quot;: &quot;s0AAAASoSE1V8KIFOCYw&quot;,
-        ///				&quot;user_id&quot;: &quot;16778000&quot;,
-        ///				&quot;user_name&quot;: &quot;Arya Arya&quot;,
-        ///				&quot;sharing [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;meeting.sharing_started&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;1234567890&quot;,
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///      &quot;topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;type&quot;: 8,
+        ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
+        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///      &quot;duration&quot;: 60,
+        ///      &quot;participant&quot;: {
+        ///        &quot;user_id&quot;: &quot;ABCDE12345&quot;,
+        ///        &quot;user_name&quot;: &quot;JillChill&quot;,
+        ///        &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_sharing_started {
             get {
@@ -5960,23 +5991,23 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;meeting.started&quot;,
-        ///	&quot;event_ts&quot;: 1619016544371,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;VjZoEArIT5y-HlWxkV-tVA&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;duration&quot;: 60,
-        ///			&quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///			&quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///			&quot;topic&quot;: &quot;My Meeting&quot;,
-        ///			&quot;id&quot;: 1234567890,
-        ///			&quot;type&quot;: 8,
-        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///			&quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;
-        ///		}
-        ///	}
-        ///}
-        ///.
+        ///  &quot;event&quot;: &quot;meeting.started&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;1234567890&quot;,
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///      &quot;host_email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;type&quot;: 8,
+        ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
+        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///      &quot;duration&quot;: 60
+        ///    }
+        ///  }
+        ///}.
         /// </summary>
         internal static string meeting_started {
             get {
@@ -5986,20 +6017,19 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;meeting.summary_completed&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;meeting_host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
-        ///			&quot;meeting_host_email&quot;: &quot;jchill@example.com&quot;,
-        ///			&quot;meeting_uuid&quot;: &quot;aDYlohsHRtCd4ii1uC2+hA==&quot;,
-        ///			&quot;meeting_id&quot;: 97763643886,
-        ///			&quot;meeting_topic&quot;: &quot;My Meeting&quot;,
-        ///			&quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
-        ///			&quot;meeting_end_time&quot;: &quot;2019-07-15T23:30:19Z&quot;,
-        ///			&quot;summary_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
-        ///			&quot;summ [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;meeting.summary_completed&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;meeting_host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
+        ///      &quot;meeting_host_email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;meeting_uuid&quot;: &quot;aDYlohsHRtCd4ii1uC2+hA==&quot;,
+        ///      &quot;meeting_id&quot;: 97763643886,
+        ///      &quot;meeting_topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
+        ///      &quot;meeting_end_time&quot;: &quot;2020-07-15T23:30:19Z&quot;,
+        ///      &quot;summary_start_time&quot;: &quot;2 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_summary_completed {
             get {
@@ -6009,20 +6039,20 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;meeting.summary_deleted&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
-        ///		&quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;meeting_host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
-        ///			&quot;meeting_host_email&quot;: &quot;jchill@example.com&quot;,
-        ///			&quot;meeting_uuid&quot;: &quot;aDYlohsHRtCd4ii1uC2+hA==&quot;,
-        ///			&quot;meeting_id&quot;: 97763643886,
-        ///			&quot;meeting_topic&quot;: &quot;My Meeting&quot;,
-        ///			&quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
-        ///			&quot;meeting_end_time&quot;: &quot;2019-07 [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;meeting.summary_deleted&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;meeting_host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
+        ///      &quot;meeting_host_email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;meeting_uuid&quot;: &quot;aDYlohsHRtCd4ii1uC2+hA==&quot;,
+        ///      &quot;meeting_id&quot;: 97763643886,
+        ///      &quot;meeting_topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
+        ///   [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_summary_deleted {
             get {
@@ -6032,20 +6062,20 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;meeting.summary_recovered&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
-        ///		&quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;meeting_host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
-        ///			&quot;meeting_host_email&quot;: &quot;jchill@example.com&quot;,
-        ///			&quot;meeting_uuid&quot;: &quot;aDYlohsHRtCd4ii1uC2+hA==&quot;,
-        ///			&quot;meeting_id&quot;: 97763643886,
-        ///			&quot;meeting_topic&quot;: &quot;My Meeting&quot;,
-        ///			&quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
-        ///			&quot;meeting_end_time&quot;: &quot;2019- [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;meeting.summary_recovered&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;meeting_host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
+        ///      &quot;meeting_host_email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;meeting_uuid&quot;: &quot;aDYlohsHRtCd4ii1uC2+hA==&quot;,
+        ///      &quot;meeting_id&quot;: 97763643886,
+        ///      &quot;meeting_topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_summary_recovered {
             get {
@@ -6055,20 +6085,20 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;meeting.summary_shared&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
-        ///		&quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;meeting_host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
-        ///			&quot;meeting_host_email&quot;: &quot;jchill@example.com&quot;,
-        ///			&quot;meeting_uuid&quot;: &quot;aDYlohsHRtCd4ii1uC2+hA==&quot;,
-        ///			&quot;meeting_id&quot;: 97763643886,
-        ///			&quot;meeting_topic&quot;: &quot;My Meeting&quot;,
-        ///			&quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
-        ///			&quot;meeting_end_time&quot;: &quot;2019-07- [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;meeting.summary_shared&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;meeting_host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
+        ///      &quot;meeting_host_email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;meeting_uuid&quot;: &quot;aDYlohsHRtCd4ii1uC2+hA==&quot;,
+        ///      &quot;meeting_id&quot;: 97763643886,
+        ///      &quot;meeting_topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
+        ///    [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_summary_shared {
             get {
@@ -6078,20 +6108,20 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;meeting.summary_trashed&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
-        ///		&quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;meeting_host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
-        ///			&quot;meeting_host_email&quot;: &quot;jchill@example.com&quot;,
-        ///			&quot;meeting_uuid&quot;: &quot;aDYlohsHRtCd4ii1uC2+hA==&quot;,
-        ///			&quot;meeting_id&quot;: 97763643886,
-        ///			&quot;meeting_topic&quot;: &quot;My Meeting&quot;,
-        ///			&quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
-        ///			&quot;meeting_end_time&quot;: &quot;2019-07 [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;meeting.summary_trashed&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;meeting_host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
+        ///      &quot;meeting_host_email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;meeting_uuid&quot;: &quot;aDYlohsHRtCd4ii1uC2+hA==&quot;,
+        ///      &quot;meeting_id&quot;: 97763643886,
+        ///      &quot;meeting_topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
+        ///   [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_summary_trashed {
             get {
@@ -6101,20 +6131,20 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;meeting.summary_updated&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
-        ///		&quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;meeting_host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
-        ///			&quot;meeting_host_email&quot;: &quot;jchill@example.com&quot;,
-        ///			&quot;meeting_uuid&quot;: &quot;aDYlohsHRtCd4ii1uC2+hA==&quot;,
-        ///			&quot;meeting_id&quot;: 97763643886,
-        ///			&quot;meeting_topic&quot;: &quot;My Meeting&quot;,
-        ///			&quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
-        ///			&quot;meeting_end_time&quot;: &quot;2019-07 [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;meeting.summary_updated&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;dzVA4QmMQfyISoRcpFO8CA&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;meeting_host_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
+        ///      &quot;meeting_host_email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;meeting_uuid&quot;: &quot;aDYlohsHRtCd4ii1uC2+hA==&quot;,
+        ///      &quot;meeting_id&quot;: 97763643886,
+        ///      &quot;meeting_topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;meeting_start_time&quot;: &quot;2019-07-15T23:24:52Z&quot;,
+        ///   [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_summary_updated {
             get {
@@ -6124,23 +6154,22 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;meeting.updated&quot;,
-        ///	&quot;event_ts&quot;: 1617628464664,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;VjZoEArIT5y-HlWxkV-tVA&quot;,
-        ///		&quot;operator&quot;: &quot;someone@example.com&quot;,
-        ///		&quot;operator_id&quot;: &quot;8lzIwvZTSOqjndWPbPqzuA&quot;,
-        ///		&quot;scope&quot;: &quot;single&quot;,
-        ///		&quot;time_stamp&quot;: 1617628463664,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: 94890226305,
-        ///			&quot;topic&quot;: &quot;ZoomNet Unit Testing: UPDATED scheduled meeting&quot;,
-        ///			&quot;settings&quot;: { &quot;audio&quot;: &quot;voip&quot; }
-        ///			},
-        ///		&quot;old_object&quot;: {
-        ///			&quot;id&quot;: 94890226305,
-        ///			&quot;topic&quot;: &quot;ZoomNet Unit Testing: scheduled meeting&quot;,
-        ///			&quot;settings&quot; [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;meeting.updated&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: 1234567890,
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///      &quot;topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;type&quot;: 8,
+        ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
+        ///      &quot;duration&quot;: 60,
+        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///      &quot;join_url&quot;: &quot;https://exam [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_updated {
             get {
@@ -6208,8 +6237,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;object&quot;: {
         ///      &quot;metric&quot;: &quot;meeting_stat_per_zone&quot;,
         ///      &quot;field&quot;: &quot;attendees_count&quot;,
-        ///      &quot;value&quot;: 0.0,
-        ///      &quot;threshold&quot;: 0.0,
+        ///      &quot;value&quot;: 0,
+        ///      &quot;threshold&quot;: 0,
         ///      &quot;operator&quot;: &quot;&gt;=&quot;,
         ///      &quot;level&quot;: &quot;error&quot;,
         ///      &quot;zone&quot;: &quot;batch-install-zone&quot;
@@ -6402,16 +6431,17 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
-        ///        &quot;server&quot;: {
-        ///          &quot;id&quot;: &quot;4d81d866-f385-458e-88f0-f9bdf0e28d9c&quot;,
-        ///          &quot;udid&quot;: &quot;58c79d0c04312ff40fb0b2575c60ca18da65bd93bae488ee62279ab9d0e1e1e8&quot;,
-        ///          &quot;name&quot;: &quot;devint-luke&quot;,
-        ///          &quot;location&quot;: &quot;Hefei - CN&quot;,
-        ///          &quot;os_image&quot;: &quot;Ubuntu22.04-20240119123604&quot;,
-        ///          &quot;status&quot;: &quot;online&quot;,
-        ///          &quot;module&quot;: &quot;hybrid&quot;
-        ///        },
-        ///        &quot;metri [rest of string was truncated]&quot;;.
+        ///      &quot;server&quot;: {
+        ///        &quot;id&quot;: &quot;4d81d866-f385-458e-88f0-f9bdf0e28d9c&quot;,
+        ///        &quot;udid&quot;: &quot;58c79d0c04312ff40fb0b2575c60ca18da65bd93bae488ee62279ab9d0e1e1e8&quot;,
+        ///        &quot;name&quot;: &quot;devint-luke&quot;,
+        ///        &quot;location&quot;: &quot;Hefei - CN&quot;,
+        ///        &quot;os_image&quot;: &quot;Ubuntu22.04-20240119123604&quot;,
+        ///        &quot;status&quot;: &quot;online&quot;,
+        ///        &quot;module&quot;: &quot;hybrid&quot;
+        ///      },
+        ///      &quot;metric&quot;: &quot;node_disk&quot;,
+        ///   [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string node_server_disk_alert {
             get {
@@ -6707,16 +6737,17 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
-        ///        &quot;server&quot;: {
-        ///          &quot;id&quot;: &quot;4d81d866-f385-458e-88f0-f9bdf0e28d9c&quot;,
-        ///          &quot;udid&quot;: &quot;58c79d0c04312ff40fb0b2575c60ca18da65bd93bae488ee62279ab9d0e1e1e8&quot;,
-        ///          &quot;name&quot;: &quot;devint-luke&quot;,
-        ///          &quot;location&quot;: &quot;Hefei - CN&quot;,
-        ///          &quot;os_image&quot;: &quot;Ubuntu22.04-20240119123604&quot;,
-        ///          &quot;status&quot;: &quot;online&quot;,
-        ///          &quot;module&quot;: &quot;hybrid&quot;
-        ///        },
-        ///        &quot;servi [rest of string was truncated]&quot;;.
+        ///      &quot;server&quot;: {
+        ///        &quot;id&quot;: &quot;4d81d866-f385-458e-88f0-f9bdf0e28d9c&quot;,
+        ///        &quot;udid&quot;: &quot;58c79d0c04312ff40fb0b2575c60ca18da65bd93bae488ee62279ab9d0e1e1e8&quot;,
+        ///        &quot;name&quot;: &quot;devint-luke&quot;,
+        ///        &quot;location&quot;: &quot;Hefei - CN&quot;,
+        ///        &quot;os_image&quot;: &quot;Ubuntu22.04-20240119123604&quot;,
+        ///        &quot;status&quot;: &quot;online&quot;,
+        ///        &quot;module&quot;: &quot;hybrid&quot;
+        ///      },
+        ///      &quot;service&quot;: {
+        ///        &quot;id&quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string node_service_cpu_alert {
             get {
@@ -6779,16 +6810,17 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
-        ///        &quot;server&quot;: {
-        ///          &quot;id&quot;: &quot;2e1c4887-c673-4fce-92af-4964dfded9aa&quot;,
-        ///          &quot;udid&quot;: &quot;76b147007cb2ceb38d4cb0baec8dca238bb362bfd39b0e58cb01d0bd81770400&quot;,
-        ///          &quot;name&quot;: &quot;bdm-0608-dev-1&quot;,
-        ///          &quot;location&quot;: &quot;Hefei - CN&quot;,
-        ///          &quot;os_image&quot;: &quot;Ubuntu22.04-20240418022929&quot;,
-        ///          &quot;status&quot;: &quot;online&quot;,
-        ///          &quot;module&quot;: &quot;mc&quot;
-        ///        },
-        ///        &quot;service&quot; [rest of string was truncated]&quot;;.
+        ///      &quot;server&quot;: {
+        ///        &quot;id&quot;: &quot;2e1c4887-c673-4fce-92af-4964dfded9aa&quot;,
+        ///        &quot;udid&quot;: &quot;76b147007cb2ceb38d4cb0baec8dca238bb362bfd39b0e58cb01d0bd81770400&quot;,
+        ///        &quot;name&quot;: &quot;bdm-0608-dev-1&quot;,
+        ///        &quot;location&quot;: &quot;Hefei - CN&quot;,
+        ///        &quot;os_image&quot;: &quot;Ubuntu22.04-20240418022929&quot;,
+        ///        &quot;status&quot;: &quot;online&quot;,
+        ///        &quot;module&quot;: &quot;mc&quot;
+        ///      },
+        ///      &quot;service&quot;: {
+        ///        &quot;id&quot;: &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string node_service_started {
             get {
@@ -7001,8 +7033,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;object&quot;: {
         ///      &quot;metric&quot;: &quot;meeting_stat_per_zone&quot;,
         ///      &quot;field&quot;: &quot;client_count&quot;,
-        ///      &quot;value&quot;: 0.0,
-        ///      &quot;threshold&quot;: 0.0,
+        ///      &quot;value&quot;: 0,
+        ///      &quot;threshold&quot;: 0,
         ///      &quot;operator&quot;: &quot;&gt;=&quot;,
         ///      &quot;level&quot;: &quot;error&quot;,
         ///      &quot;zone&quot;: &quot;batch-install-zone&quot;
@@ -7025,9 +7057,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
         ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
         ///    &quot;object&quot;: {
-        ///        &quot;zone&quot;: &quot;test1&quot;,
-        ///        &quot;module&quot;: &quot;hybrid&quot;,
-        ///        &quot;type&quot;: &quot;meeting_zone&quot;
+        ///      &quot;zone&quot;: &quot;test1&quot;,
+        ///      &quot;module&quot;: &quot;hybrid&quot;,
+        ///      &quot;type&quot;: &quot;meeting_zone&quot;
         ///    }
         ///  }
         ///}.
@@ -7063,9 +7095,9 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;number_management.peering_number_cnam_updated&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1619155436400,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;cnam&quot;: &quot;name&quot;,
         ///      &quot;carrier_code&quot;: 3457,
@@ -7085,14 +7117,14 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;number_management.peering_number_emergency_address_updated&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1619155436400,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;emergency_address&quot;: {
         ///        &quot;address_line1&quot;: &quot;55 ALMADEN BLVD&quot;,
-        ///        &quot;address_line2&quot;: &quot;8 Floor&quot;,
-        ///        &quot;city&quot;: &quot;San Jose&quot;,
+        ///        &quot;address_line2&quot;: &quot;13F&quot;,
+        ///        &quot;city&quot;: &quot;SAN JOSE&quot;,
         ///        &quot;country&quot;: &quot;US&quot;,
         ///        &quot;state_code&quot;: &quot;CA&quot;,
         ///        &quot;zip&quot;: &quot;95113&quot;
@@ -7116,19 +7148,21 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;event&quot;: &quot;phone.account_settings_updated&quot;,
         ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;id&quot;: &quot;eUblMKLnTMKX0pVvNAlA0Q&quot;,
         ///      &quot;settings&quot;: {
-        ///        &quot;ad_hoc_call_recording&quot;: {
+        ///        &quot;call_live_transcription&quot;: {
         ///          &quot;enable&quot;: true,
         ///          &quot;locked&quot;: false,
-        ///          &quot;locked_by&quot;: &quot;account&quot;,
-        ///          &quot;recording_start_prompt&quot;: true,
-        ///          &quot;recording_explicit_consent&quot;: true,
-        ///          &quot;recording_transcription&quot;: true,
-        ///          &quot;allow_download&quot;: true,
-        ///          &quot;a [rest of string was truncated]&quot;;.
+        ///          &quot;transcription_start_prompt&quot;: {
+        ///            &quot;enable&quot;: false,
+        ///            &quot;audio_id&quot;: &quot;_rG7uKlJRAWn-013nTD1bA&quot;,
+        ///            &quot;audio_name&quot;: &quot;hello1.mp3&quot;
+        ///          }
+        ///        }
+        ///      }
+        ///    } [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_account_settings_updated {
             get {
@@ -7139,21 +7173,20 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.ai_call_summary_changed&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;89gnHJQ9SdSmFpI9wmh6fQ&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;edited&quot;: true,
         ///      &quot;deleted&quot;: false,
         ///      &quot;ai_call_summary_id&quot;: &quot;iNsfqK6gQOCiILiKhrlLqQ&quot;,
         ///      &quot;user_id&quot;: &quot;FvB3CRfOQUuhF1IOB176Tg&quot;,
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;call_id&quot;: &quot;066bd0dee0066150033&quot;,
         ///      &quot;call_log_ids&quot;: [
         ///        &quot;6afdf3e3-87e3-47d0-834c-6ee3598e3b96&quot;,
         ///        &quot;6afdf3e3-87e3-47d0-834c-6ee3598e3b00&quot;
         ///      ],
-        ///      &quot;created_time&quot;: &quot;2023-10-08T16:12:04Z&quot;,
-        ///  [rest of string was truncated]&quot;;.
+        ///      &quot;call_element_ids&quot;: [
+        ///        &quot;6afdf3e3-87e3-47d0-834c-6ee3 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_ai_call_summary_changed {
             get {
@@ -7164,23 +7197,23 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.blind_transfer_initiated&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;failure_reason&quot;: &quot;&quot;,
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;call_id&quot;: &quot;6986878782238080581&quot;,
         ///      &quot;owner&quot;: {
         ///        &quot;type&quot;: &quot;user&quot;,
         ///        &quot;id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///        &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///        &quot;name&quot;: &quot;usersubsetting0001&quot;,
         ///        &quot;extension_number&quot;: 6666
         ///      },
-        ///      &quot;transfer_phone_number&quot;: &quot;+12092592844&quot;,
-        ///      &quot;transfer_account_code&quot;: &quot;123&quot;,
-        ///      &quot;date_time&quot;: &quot;2021-07-13T21:44:51Z&quot;
+        ///      &quot;transfer_phone_number&quot;: &quot;+12055432724&quot;,
+        ///      &quot;date_time&quot;: &quot;2021-07-20T05:38:04Z&quot;
         ///    }
-        ///  }        /// [rest of string was truncated]&quot;;.
+        ///  }
+        ///}.
         /// </summary>
         internal static string phone_blind_transfer_initiated {
             get {
@@ -7191,19 +7224,19 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.call_element_deleted&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;call_element_ids&quot;: [
         ///        &quot;20240724-9a0887ca-da53-4c62-b32a-563789ef264e&quot;
         ///      ],
         ///      &quot;user_id&quot;: &quot;DYHrdpjrS3uaOf7dPkkg8w&quot;,
-        ///      &quot;execute_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
+        ///      &quot;execute_time&quot;: &quot;2024-10-09T08:10:11.128Z&quot;,
         ///      &quot;move_to_trash&quot;: true,
         ///      &quot;delete_all&quot;: false
         ///    }
-        ///  }
+        ///  },
+        ///  &quot;event_ts&quot;: 1721799823000
         ///}.
         /// </summary>
         internal static string phone_call_element_deleted {
@@ -7215,21 +7248,20 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.call_history_deleted&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;call_log_ids&quot;: [
         ///        &quot;20240724-9a0887ca-da53-4c62-b32a-563789ef264e&quot;
         ///      ],
         ///      &quot;user_id&quot;: &quot;DYHrdpjrS3uaOf7dPkkg8w&quot;,
-        ///      &quot;execute_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
+        ///      &quot;execute_time&quot;: &quot;2024-10-09T08:10:11.128Z&quot;,
         ///      &quot;move_to_trash&quot;: true,
         ///      &quot;delete_all&quot;: false
         ///    }
-        ///  }
-        ///}
-        ///.
+        ///  },
+        ///  &quot;event_ts&quot;: 1721799823000
+        ///}.
         /// </summary>
         internal static string phone_call_history_deleted {
             get {
@@ -7240,19 +7272,19 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.call_log_deleted&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;call_logs&quot;: [
         ///        {
         ///          &quot;id&quot;: &quot;9a0887ca-da53-4c62-b32a-563789ef264e&quot;,
-        ///          &quot;call_id&quot;: &quot;6998252113337041462&quot;
+        ///          &quot;call_id&quot;: &quot;6954218111457544837&quot;
         ///        }
         ///      ],
         ///      &quot;user_id&quot;: &quot;DYHrdpjrS3uaOf7dPkkg8w&quot;
         ///    }
-        ///  }
+        ///  },
+        ///  &quot;event_ts&quot;: 1619155281301
         ///}.
         /// </summary>
         internal static string phone_call_log_deleted {
@@ -7264,19 +7296,19 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.call_log_permanently_deleted&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;call_logs&quot;: [
         ///        {
         ///          &quot;id&quot;: &quot;9a0887ca-da53-4c62-b32a-563789ef264e&quot;,
-        ///          &quot;call_id&quot;: &quot;6998252113337041462&quot;
+        ///          &quot;call_id&quot;: &quot;6954218111457544837&quot;
         ///        }
         ///      ],
         ///      &quot;user_id&quot;: &quot;DYHrdpjrS3uaOf7dPkkg8w&quot;
         ///    }
-        ///  }
+        ///  },
+        ///  &quot;event_ts&quot;: 1619155281301
         ///}.
         /// </summary>
         internal static string phone_call_log_permanently_deleted {
@@ -7298,11 +7330,11 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;call_qos&quot;: {
         ///        &quot;type&quot;: &quot;caller&quot;,
         ///        &quot;id&quot;: &quot;KLN56y2cSzu0pWxUSec4RQ&quot;,
+        ///        &quot;user_email&quot;: &quot;hello.test@gmail.com&quot;,
         ///        &quot;qos&quot;: {
         ///          &quot;date_time&quot;: &quot;2021-04-26T05:26:00Z&quot;,
         ///          &quot;type&quot;: &quot;sending&quot;,
-        ///          &quot;details&quot;: {
-        ///            &quot;bitrate&quot;:  [rest of string was truncated]&quot;;.
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_call_qos {
             get {
@@ -7324,10 +7356,10 @@ namespace ZoomNet.UnitTests.Properties {
         ///        {
         ///          &quot;type&quot;: &quot;caller&quot;,
         ///          &quot;user_id&quot;: &quot;KLN56y2cSzu0pWxUSec4RQ&quot;,
+        ///          &quot;user_email&quot;: &quot;hello.test@gmail.com&quot;,
         ///          &quot;qos&quot;: [
         ///            {
-        ///              &quot;date_time&quot;: &quot;2021-04-26T05:26:00Z&quot;,
-        ///              &quot;type&quot;: &quot;sendi [rest of string was truncated]&quot;;.
+        ///              &quot;date_time&quot;: &quot;202 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_call_qos_summary {
             get {
@@ -7338,11 +7370,11 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.callee_answered&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;channel_id&quot;: &quot;b21dee06-ddaa-4578-ab90-1dd6e50ea4ba&quot;,
         ///      &quot;caller&quot;: {
         ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
@@ -7352,7 +7384,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;phone_number&quot;: &quot;+12058945456&quot;,
         ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
         ///        &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///        &quot;device_type&quot;: &quot;MAC_Client(5.7.5.1123 [rest of string was truncated]&quot;;.
+        ///   [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_answered {
             get {
@@ -7363,18 +7395,18 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.callee_call_element_completed&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;user_id&quot;: &quot;DYHrdpjrS3uaOf7dPkkg8w&quot;,
         ///      &quot;call_elements&quot;: [
         ///        {
         ///          &quot;call_element_id&quot;: &quot;20231008-48c1dfd4-91ce-4df5-8495-7c9e33d10869&quot;,
         ///          &quot;call_history_uuid&quot;: &quot;20231008-1ac1df2a-912e-d125-8a15-1a1233d10f1a&quot;,
-        ///          &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///          &quot;call_id&quot;: &quot;7018317023722949162&quot;,
         ///          &quot;group_id&quot;: &quot;_sj190JDFasa19321_adA7&quot;,
-        ///          &quot;connect_type&quot;: &quot; [rest of string was truncated]&quot;;.
+        ///          &quot;connect_type&quot;: &quot;internal&quot;,
+        ///          &quot;call_type&quot;: &quot;general&quot;,
+        ///          &quot;dire [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_call_element_completed {
             get {
@@ -7385,19 +7417,19 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.callee_call_history_completed&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;user_id&quot;: &quot;DYHrdpjrS3uaOf7dPkkg8w&quot;,
         ///      &quot;call_logs&quot;: [
         ///        {
-        ///          &quot;id&quot;: &quot;20231008-0f5c57cd-49a7-467d-9570-a012316edbb7&quot;,
-        ///          &quot;call_path_id&quot;: &quot;20231008-e13e793c-a5fb-4e8b-884b-b0c1e867a9c6&quot;,
-        ///          &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///          &quot;id&quot;: &quot;20231008-48c1dfd4-91ce-4df5-8495-7c9e33d10869&quot;,
+        ///          &quot;call_path_id&quot;: &quot;20231008-1ac1df2a-912e-d125-8a15-1a1233d10f1a&quot;,
+        ///          &quot;call_id&quot;: &quot;7018317023722949162&quot;,
         ///          &quot;group_id&quot;: &quot;_sj190JDFasa19321_adA7&quot;,
         ///          &quot;connect_type&quot;: &quot;internal&quot;,
-        ///           [rest of string was truncated]&quot;;.
+        ///          &quot;call_type&quot;: &quot;general&quot;,
+        ///          &quot;direction&quot;: &quot;inbound&quot;,
+        ///   [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_call_history_completed {
             get {
@@ -7408,11 +7440,9 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.callee_call_log_completed&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;user_id&quot;: &quot;DYHrdpjrS3uaOf7dPkkg8w&quot;,
         ///      &quot;call_logs&quot;: [
         ///        {
         ///          &quot;id&quot;: &quot;4a4ed8ec-6be4-4e42-96e6-352a4396204d&quot;,
@@ -7421,7 +7451,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;caller_number_type&quot;: 1,
         ///          &quot;caller_name&quot;: &quot;usersubsetting0001@testapi.com&quot;,
         ///          &quot;caller_country_iso_code&quot;: &quot;US&quot;,
-        ///          &quot;caller_countr [rest of string was truncated]&quot;;.
+        ///          &quot;callee_number&quot;: &quot;1026&quot;,
+        ///          &quot;callee_number_type&quot;: 1,
+        ///          &quot;cal [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_call_log_completed {
             get {
@@ -7432,11 +7464,11 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.callee_ended&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;channel_id&quot;: &quot;b21dee06-ddaa-4578-ab90-1dd6e50ea4ba&quot;,
         ///      &quot;caller&quot;: {
         ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
@@ -7446,8 +7478,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
         ///        &quot;extension_number&quot;: 1002,
         ///        &quot;phone_number&quot;: &quot;+12058945456&quot;,
-        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
-        ///       [rest of string was truncated]&quot;;.
+        ///        &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_ended {
             get {
@@ -7458,22 +7489,22 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.callee_hold&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;caller&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
         ///        &quot;extension_number&quot;: 810003,
-        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
+        ///        &quot;phone_number&quot;: &quot;810003&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
         ///      &quot;callee&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
-        ///        &quot;ti [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;kRQpbWO5TV6E7wxEYOKFWw&quot;,
+        ///        &quot;timezone&quot;: &quot;Asia/Shanghai&quot;,
+        ///         [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_hold {
             get {
@@ -7484,21 +7515,21 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.callee_meeting_inviting&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;caller&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;extension_number&quot;: 810003,
-        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
+        ///        &quot;extension_number&quot;: 555011,
+        ///        &quot;phone_number&quot;: &quot;555011&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
         ///      &quot;callee&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,        /// [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;kRQpbWO5TV6E7wxEYOKFWw&quot;,
+        ///        &quot;timezone&quot;: &quot;Asia/Shanghai [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_meeting_inviting {
             get {
@@ -7509,22 +7540,21 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.callee_missed&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;call_id&quot;: &quot;6998252731812285292&quot;,
+        ///      &quot;channel_id&quot;: &quot;768efc81-4d27-4d05-ac27-768579b090d4&quot;,
         ///      &quot;caller&quot;: {
         ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
         ///      &quot;callee&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
-        ///        &quot;extension_type&quot;: &quot;user&quot;,
+        ///        &quot;extension_type&quot;: &quot;callQueue&quot;,
         ///        &quot;extension_number&quot;: 1002,
         ///        &quot;phone_number&quot;: &quot;+12058945456&quot;,
-        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
-        ///      [rest of string was truncated]&quot;;.
+        ///    [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_missed {
             get {
@@ -7535,22 +7565,22 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.callee_mute&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;caller&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
         ///        &quot;extension_number&quot;: 810003,
-        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
+        ///        &quot;phone_number&quot;: &quot;810003&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
         ///      &quot;callee&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
-        ///        &quot;ti [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;kRQpbWO5TV6E7wxEYOKFWw&quot;,
+        ///        &quot;timezone&quot;: &quot;Asia/Shanghai&quot;,
+        ///         [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_mute {
             get {
@@ -7561,22 +7591,21 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.callee_parked&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;caller&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
         ///        &quot;extension_number&quot;: 810003,
-        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
-        ///        &quot;connection_type&quot;: &quot;voip&quot;
+        ///        &quot;phone_number&quot;: &quot;810003&quot;,
+        ///        &quot;connection_type&quot;: &quot;pstn_on_net&quot;
         ///      },
         ///      &quot;callee&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
-        ///        &quot; [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;kRQpbWO5TV6E7wxEYOKFWw&quot;,
+        ///        &quot;timezone&quot;: &quot;Asia/Shanghai&quot;,        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_parked {
             get {
@@ -7587,22 +7616,21 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.callee_rejected&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;call_id&quot;: &quot;6998308781135528785&quot;,
+        ///      &quot;channel_id&quot;: &quot;7bfb20d5-8e50-43b5-b078-b3a5f5972b55&quot;,
         ///      &quot;caller&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;extension_number&quot;: 810003,
-        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
+        ///        &quot;extension_number&quot;: 1045,
+        ///        &quot;phone_number&quot;: &quot;1045&quot;,
         ///        &quot;device_type&quot;: &quot;Windows_Client(5.7.5.939)&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
         ///      &quot;callee&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
-        ///        &quot;extension_type&quot;: &quot;user&quot;,
-        /// [rest of string was truncated]&quot;;.
+        ///   [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_rejected {
             get {
@@ -7613,9 +7641,8 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.callee_ringing&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;caller&quot;: {
@@ -7628,7 +7655,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;phone_number&quot;: &quot;+12058945456&quot;,
         ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
         ///        &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///        &quot;de [rest of string was truncated]&quot;;.
+        ///        &quot;device_type&quot;: &quot;MAC_C [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_ringing {
             get {
@@ -7639,22 +7666,22 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.callee_unhold&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;caller&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
         ///        &quot;extension_number&quot;: 810003,
-        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
+        ///        &quot;phone_number&quot;: &quot;810003&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
         ///      &quot;callee&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
-        ///        &quot; [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;kRQpbWO5TV6E7wxEYOKFWw&quot;,
+        ///        &quot;timezone&quot;: &quot;Asia/Shanghai&quot;,
+        ///       [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_unhold {
             get {
@@ -7665,22 +7692,22 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.callee_unmute&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;caller&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
         ///        &quot;extension_number&quot;: 810003,
-        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
+        ///        &quot;phone_number&quot;: &quot;810003&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
         ///      &quot;callee&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
-        ///        &quot; [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;kRQpbWO5TV6E7wxEYOKFWw&quot;,
+        ///        &quot;timezone&quot;: &quot;Asia/Shanghai&quot;,
+        ///       [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_callee_unmute {
             get {
@@ -7691,18 +7718,18 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.caller_call_element_completed&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;user_id&quot;: &quot;DYHrdpjrS3uaOf7dPkkg8w&quot;,
         ///      &quot;call_elements&quot;: [
         ///        {
         ///          &quot;call_element_id&quot;: &quot;20231008-48c1dfd4-91ce-4df5-8495-7c9e33d10869&quot;,
         ///          &quot;call_history_uuid&quot;: &quot;20231008-1ac1df2a-912e-d125-8a15-1a1233d10f1a&quot;,
-        ///          &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///          &quot;call_id&quot;: &quot;7018317023722949162&quot;,
         ///          &quot;group_id&quot;: &quot;_sj190JDFasa19321_adA7&quot;,
-        ///          &quot;connect_type&quot;: &quot; [rest of string was truncated]&quot;;.
+        ///          &quot;connect_type&quot;: &quot;internal&quot;,
+        ///          &quot;call_type&quot;: &quot;general&quot;,
+        ///          &quot;dire [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_caller_call_element_completed {
             get {
@@ -7713,19 +7740,19 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.caller_call_history_completed&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;user_id&quot;: &quot;DYHrdpjrS3uaOf7dPkkg8w&quot;,
         ///      &quot;call_logs&quot;: [
         ///        {
-        ///          &quot;id&quot;: &quot;20231008-0f5c57cd-49a7-467d-9570-a012316edbb7&quot;,
-        ///          &quot;call_path_id&quot;: &quot;20231008-e13e793c-a5fb-4e8b-884b-b0c1e867a9c6&quot;,
-        ///          &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///          &quot;id&quot;: &quot;20231008-48c1dfd4-91ce-4df5-8495-7c9e33d10869&quot;,
+        ///          &quot;call_path_id&quot;: &quot;20231008-1ac1df2a-912e-d125-8a15-1a1233d10f1a&quot;,
+        ///          &quot;call_id&quot;: &quot;7018317023722949162&quot;,
         ///          &quot;group_id&quot;: &quot;_sj190JDFasa19321_adA7&quot;,
         ///          &quot;connect_type&quot;: &quot;internal&quot;,
-        ///           [rest of string was truncated]&quot;;.
+        ///          &quot;call_type&quot;: &quot;general&quot;,
+        ///          &quot;direction&quot;: &quot;inbound&quot;,
+        ///   [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_caller_call_history_completed {
             get {
@@ -7736,11 +7763,9 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.caller_call_log_completed&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;user_id&quot;: &quot;DYHrdpjrS3uaOf7dPkkg8w&quot;,
         ///      &quot;call_logs&quot;: [
         ///        {
         ///          &quot;id&quot;: &quot;4a4ed8ec-6be4-4e42-96e6-352a4396204d&quot;,
@@ -7748,8 +7773,10 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;caller_number&quot;: &quot;1045&quot;,
         ///          &quot;caller_number_type&quot;: 1,
         ///          &quot;caller_name&quot;: &quot;usersubsetting0001@testapi.com&quot;,
-        ///          &quot;caller_country_iso_code&quot;: &quot;US&quot;,
-        ///          &quot;caller_countr [rest of string was truncated]&quot;;.
+        ///          &quot;callee_number&quot;: &quot;1026&quot;,
+        ///          &quot;callee_number_type&quot;: 1,
+        ///          &quot;callee_name&quot;: &quot;ZOOM_API Test&quot;,
+        ///          &quot;call [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_caller_call_log_completed {
             get {
@@ -7760,22 +7787,19 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.caller_connected&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
-        ///      &quot;callee&quot;: {
-        ///        &quot;extension_number&quot;: 810003,
-        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
-        ///        &quot;connection_type&quot;: &quot;voip&quot;
-        ///      },
+        ///      &quot;call_id&quot;: &quot;6997939173429971528&quot;,
+        ///      &quot;channel_id&quot;: &quot;1df42be1-8420-4396-9e78-0a7ee7bc5aab&quot;,
         ///      &quot;caller&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
         ///        &quot;extension_number&quot;: 1002,
         ///        &quot;phone_number&quot;: &quot;+12058945456&quot;,
-        ///        &quot;us [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
+        ///        &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///        &quot;device_type [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_caller_connected {
             get {
@@ -7786,22 +7810,19 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.caller_ended&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
-        ///      &quot;callee&quot;: {
-        ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;extension_number&quot;: 810003,
-        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
-        ///        &quot;connection_type&quot;: &quot;voip&quot;
-        ///      },
+        ///      &quot;call_id&quot;: &quot;6997939173429971528&quot;,
         ///      &quot;caller&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
         ///        &quot;extension_number&quot;: 1002,
-        ///        &quot;phone_number [rest of string was truncated]&quot;;.
+        ///        &quot;phone_number&quot;: &quot;+12058945456&quot;,
+        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
+        ///        &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///        &quot;device_type&quot;: &quot;MAC_Client(5.7.5.1123)&quot;,
+        ///        &quot;device_id&quot;: &quot;f7aLLSmqRpiWP [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_caller_ended {
             get {
@@ -7812,22 +7833,22 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.caller_hold&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;callee&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
         ///        &quot;extension_number&quot;: 810003,
-        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
+        ///        &quot;phone_number&quot;: &quot;810003&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
         ///      &quot;caller&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
-        ///        &quot;ti [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;kRQpbWO5TV6E7wxEYOKFWw&quot;,
+        ///        &quot;timezone&quot;: &quot;Asia/Shanghai&quot;,
+        ///         [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_caller_hold {
             get {
@@ -7838,21 +7859,21 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.caller_meeting_inviting&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;callee&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;extension_number&quot;: 810003,
-        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
+        ///        &quot;extension_number&quot;: 555011,
+        ///        &quot;phone_number&quot;: &quot;555011&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
         ///      &quot;caller&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,        /// [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;kRQpbWO5TV6E7wxEYOKFWw&quot;,
+        ///        &quot;timezone&quot;: &quot;Asia/Shanghai [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_caller_meeting_inviting {
             get {
@@ -7863,22 +7884,22 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.caller_mute&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;callee&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
         ///        &quot;extension_number&quot;: 810003,
-        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
+        ///        &quot;phone_number&quot;: &quot;810003&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
         ///      &quot;caller&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
-        ///        &quot;ti [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;kRQpbWO5TV6E7wxEYOKFWw&quot;,
+        ///        &quot;timezone&quot;: &quot;Asia/Shanghai&quot;,
+        ///         [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_caller_mute {
             get {
@@ -7889,22 +7910,19 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.caller_ringing&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
-        ///      &quot;callee&quot;: {
-        ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;extension_number&quot;: 810003,
-        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
-        ///        &quot;connection_type&quot;: &quot;voip&quot;
-        ///      },
+        ///      &quot;call_id&quot;: &quot;6997939173429971528&quot;,
+        ///      &quot;channel_id&quot;: &quot;1df42be1-8420-4396-9e78-0a7ee7bc5aab&quot;,
         ///      &quot;caller&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
         ///        &quot;extension_number&quot;: 1002,
-        ///        &quot;phone_numb [rest of string was truncated]&quot;;.
+        ///        &quot;phone_number&quot;: &quot;+12058945456&quot;,
+        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
+        ///        &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///        &quot;device_type&quot;: [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_caller_ringing {
             get {
@@ -7915,22 +7933,22 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.caller_unhold&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;callee&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
         ///        &quot;extension_number&quot;: 810003,
-        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
+        ///        &quot;phone_number&quot;: &quot;810003&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
         ///      &quot;caller&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
-        ///        &quot; [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;kRQpbWO5TV6E7wxEYOKFWw&quot;,
+        ///        &quot;timezone&quot;: &quot;Asia/Shanghai&quot;,
+        ///       [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_caller_unhold {
             get {
@@ -7941,22 +7959,22 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.caller_unmute&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
         ///      &quot;callee&quot;: {
         ///        &quot;extension_type&quot;: &quot;user&quot;,
         ///        &quot;extension_number&quot;: 810003,
-        ///        &quot;phone_number&quot;: &quot;+12092592844&quot;,
+        ///        &quot;phone_number&quot;: &quot;810003&quot;,
         ///        &quot;connection_type&quot;: &quot;voip&quot;
         ///      },
         ///      &quot;caller&quot;: {
         ///        &quot;extension_id&quot;: &quot;52OdSKGSSS-EOyJwQncFvA&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
-        ///        &quot;user_id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
-        ///        &quot; [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;kRQpbWO5TV6E7wxEYOKFWw&quot;,
+        ///        &quot;timezone&quot;: &quot;Asia/Shanghai&quot;,
+        ///       [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_caller_unmute {
             get {
@@ -7967,21 +7985,21 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.conference_started&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;failure_reason&quot;: &quot;&quot;,
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;call_id&quot;: &quot;6986878782238080581&quot;,
         ///      &quot;enable_multiple_party_conference&quot;: true,
         ///      &quot;conference_id&quot;: &quot;2074969d-621f-41d3-890c-8a44a03fa3e0&quot;,
         ///      &quot;owner&quot;: {
         ///        &quot;type&quot;: &quot;user&quot;,
         ///        &quot;id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///        &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///        &quot;name&quot;: &quot;usersubsetting0001&quot;,
         ///        &quot;extension_number&quot;: 6666
         ///      },
-        ///      &quot;date_time&quot;: &quot;2021-07-13T21: [rest of string was truncated]&quot;;.
+        ///      &quot;date_ti [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_conference_started {
             get {
@@ -7992,17 +8010,16 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.device_registration&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;device_id&quot;: &quot;JOZmuJ30Spyrw-v9vUzIrA&quot;,
         ///      &quot;device_name&quot;: &quot;New_DeskPhone&quot;,
         ///      &quot;mac_address&quot;: &quot;012345678912&quot;
         ///    }
-        ///  }
-        ///}
-        ///.
+        ///  },
+        ///  &quot;event_ts&quot;: 1625034680324
+        ///}.
         /// </summary>
         internal static string phone_device_registration {
             get {
@@ -8013,9 +8030,7 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.emergency_alert&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;caller&quot;: {
         ///        &quot;id&quot;: &quot;DnEopNmXQEGU2uvvzjgojw&quot;,
@@ -8024,11 +8039,15 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;display_name&quot;: &quot;pbxta api&quot;,
         ///        &quot;extension_type&quot;: &quot;user&quot;,
         ///        &quot;site_id&quot;: &quot;8f71O6rWT8KFUGQmJIFAdQ&quot;,
-        ///        &quot;site_name&quot;: &quot;Main Site&quot;,
-        ///        &quot;phone_number&quot;: &quot;+12192818492&quot;
+        ///        &quot;site_name&quot;: &quot;Main Site&quot;
         ///      },
         ///      &quot;callee&quot;: {
-        ///        &quot;pho [rest of string was truncated]&quot;;.
+        ///        &quot;phone_number&quot;: &quot;933&quot;
+        ///      },
+        ///      &quot;location&quot;: {
+        ///        &quot;gps&quot;: [
+        ///          &quot;31.29846,120.6645&quot;
+        ///      [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_emergency_alert {
             get {
@@ -8129,13 +8148,12 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.generic_device_provision&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;TQTvjT52Tmi_wrhASNNOEw&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;id&quot;: &quot;JOZmuJ30Spyrw-v9vUzIrA&quot;,
         ///      &quot;display_name&quot;: &quot;test_cap&quot;,
-        ///      &quot;device_type&quot;: &quot;Other&quot;,
+        ///      &quot;device_type&quot;: &quot;Other &quot;,
         ///      &quot;mac_address&quot;: &quot;012345678912&quot;,
         ///      &quot;site&quot;: {
         ///        &quot;id&quot;: &quot;8f71O6rWT8KFUGQmJIFAdQ&quot;,
@@ -8146,7 +8164,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;sip_accounts&quot;: [
         ///          {
         ///            &quot;password&quot;: &quot;4dL09r0H&quot;,
-        ///  [rest of string was truncated]&quot;;.
+        ///            &quot;sip_d [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_generic_device_provision {
             get {
@@ -8157,21 +8175,24 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.group_settings_updated&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;group_id&quot;: &quot;IfRqsMZSSzGBKm2AFJ7r3Q&quot;,
         ///      &quot;settings&quot;: {
-        ///        &quot;ad_hoc_call_recording&quot;: {
+        ///        &quot;call_live_transcription&quot;: {
         ///          &quot;enable&quot;: true,
-        ///          &quot;locked&quot;: true,
-        ///          &quot;locked_by&quot;: &quot;site&quot;,
-        ///          &quot;modified&quot;: true,
-        ///          &quot;recording_start_prompt&quot;: true,
-        ///          &quot;recording_explicit_consent&quot;: true,
-        ///          &quot;recording_transcription&quot;: true,
-        ///          &quot;allow_d [rest of string was truncated]&quot;;.
+        ///          &quot;locked&quot;: false,
+        ///          &quot;transcription_start_prompt&quot;: {
+        ///            &quot;enable&quot;: true,
+        ///            &quot;audio_id&quot;: &quot;N_1FYBsGTE28ACkVN__EiA&quot;,
+        ///            &quot;audio_name&quot;: &quot;hello1.mp3&quot;
+        ///          }
+        ///        }
+        ///      }
+        ///    },
+        ///    &quot;old_object&quot;: {
+        ///    [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_group_settings_updated {
             get {
@@ -8182,17 +8203,17 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.peering_number_cnam_updated&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;cnam&quot;: &quot;name&quot;,
         ///      &quot;carrier_code&quot;: 3457,
         ///      &quot;phone_numbers&quot;: [
-        ///        &quot;+18008001000&quot;
+        ///        &quot;18008001000&quot;
         ///      ]
         ///    }
-        ///  }
+        ///  },
+        ///  &quot;event_ts&quot;: 1619155436400
         ///}.
         /// </summary>
         internal static string phone_peering_number_cnam_updated {
@@ -8204,24 +8225,24 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.peering_number_emergency_address_updated&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;emergency_address&quot;: {
         ///        &quot;address_line1&quot;: &quot;55 ALMADEN BLVD&quot;,
-        ///        &quot;address_line2&quot;: &quot;8 Floor&quot;,
-        ///        &quot;city&quot;: &quot;San Jose&quot;,
+        ///        &quot;address_line2&quot;: &quot;13F&quot;,
+        ///        &quot;city&quot;: &quot;SAN JOSE&quot;,
         ///        &quot;country&quot;: &quot;US&quot;,
         ///        &quot;state_code&quot;: &quot;CA&quot;,
         ///        &quot;zip&quot;: &quot;95113&quot;
         ///      },
         ///      &quot;carrier_code&quot;: 3457,
         ///      &quot;phone_numbers&quot;: [
-        ///        &quot;+18008001000&quot;
+        ///        &quot;18008001000&quot;
         ///      ]
         ///    }
-        ///  }
+        ///  },
+        ///  &quot;event_ts&quot;: 1619155436400
         ///}.
         /// </summary>
         internal static string phone_peering_number_emergency_address_updated {
@@ -8239,15 +8260,15 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;object&quot;: {
         ///      &quot;recordings&quot;: [
         ///        {
-        ///          &quot;id&quot;: &quot;c71b360f6e774e3aa101453117b7e1a7&quot;,
+        ///          &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
         ///          &quot;user_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
         ///          &quot;caller_number&quot;: &quot;1026&quot;,
         ///          &quot;caller_number_type&quot;: 1,
         ///          &quot;caller_name&quot;: &quot;Caller Name&quot;,
-        ///          &quot;caller_did_number&quot;: &quot;+12092592844&quot;,
-        ///          &quot;caller_account_code&quot;: &quot;123&quot;,
+        ///          &quot;caller_did_number&quot;: &quot;+12055967465&quot;,
         ///          &quot;callee_number&quot;: &quot;1045&quot;,
-        ///   [rest of string was truncated]&quot;;.
+        ///          &quot;callee_number_type&quot;: 1,
+        ///          &quot;callee_name&quot;: &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_recording_completed {
             get {
@@ -8264,14 +8285,15 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;object&quot;: {
         ///      &quot;recordings&quot;: [
         ///        {
-        ///          &quot;id&quot;: &quot;c71b360f6e774e3aa101453117b7e1a7&quot;,
-        ///          &quot;user_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///          &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
+        ///          &quot;user_id&quot;: &quot;w0RChiauQeqRlv5fgxYULQ&quot;,
         ///          &quot;caller_number&quot;: &quot;1026&quot;,
         ///          &quot;caller_number_type&quot;: 1,
         ///          &quot;caller_name&quot;: &quot;Caller Name&quot;,
-        ///          &quot;caller_did_number&quot;: &quot;+12092592844&quot;,
-        ///          &quot;caller_account_code&quot;: &quot;123&quot;,
-        ///          &quot;callee_nu [rest of string was truncated]&quot;;.
+        ///          &quot;caller_did_number&quot;: &quot;+12055967465&quot;,
+        ///          &quot;callee_number&quot;: &quot;1045&quot;,
+        ///          &quot;callee_number_type&quot;: 1,
+        ///      [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_recording_completed_for_access_member {
             get {
@@ -8282,18 +8304,18 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.recording_deleted&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;recordings&quot;: [
         ///        {
-        ///          &quot;id&quot;: &quot;c71b360f6e774e3aa101453117b7e1a7&quot;,
-        ///          &quot;call_id&quot;: &quot;6998252113337041462&quot;
+        ///          &quot;id&quot;: &quot;9a0887ca-da53-4c62-b32a-563789ef264e&quot;,
+        ///          &quot;call_id&quot;: &quot;6954218111457544837&quot;
         ///        }
         ///      ]
         ///    }
-        ///  }
+        ///  },
+        ///  &quot;event_ts&quot;: 1619155281301
         ///}.
         /// </summary>
         internal static string phone_recording_deleted {
@@ -8307,18 +8329,18 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;event&quot;: &quot;phone.recording_failed&quot;,
         ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;TAjiGweoTLeK72SaeocBZg&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;id&quot;: &quot;c71b360f6e774e3aa101453117b7e1a7&quot;,
+        ///      &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
         ///      &quot;user_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
         ///      &quot;caller_number&quot;: &quot;1026&quot;,
-        ///      &quot;caller_account_code&quot;: &quot;123&quot;,
         ///      &quot;callee_number&quot;: &quot;1045&quot;,
-        ///      &quot;callee_account_code&quot;: &quot;456&quot;,
         ///      &quot;direction&quot;: &quot;outbound&quot;,
-        ///      &quot;date_time&quot;: &quot;2021-08-19T21:12:38Z&quot;,
+        ///      &quot;date_time&quot;: &quot;2021-06-09T06:09:24Z&quot;,
         ///      &quot;recording_type&quot;: &quot;OnDemand&quot;,
-        ///      &quot;call_id&quot;: &quot;6998252113337041 [rest of string was truncated]&quot;;.
+        ///      &quot;call_id&quot;: &quot;6971672158469969953&quot;,
+        ///      &quot;channel_id&quot;: &quot;5c01a45b-53a8-4773-b244-beb670c13357&quot;,
+        ///      &quot;sip_id [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_recording_failed {
             get {
@@ -8333,16 +8355,18 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;id&quot;: &quot;c71b360f6e774e3aa101453117b7e1a7&quot;,
+        ///      &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
         ///      &quot;user_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
         ///      &quot;caller_number&quot;: &quot;1026&quot;,
-        ///      &quot;caller_account_code&quot;: &quot;123&quot;,
         ///      &quot;callee_number&quot;: &quot;1045&quot;,
-        ///      &quot;callee_account_code&quot;: &quot;456&quot;,
         ///      &quot;direction&quot;: &quot;outbound&quot;,
-        ///      &quot;date_time&quot;: &quot;2021-08-19T21:12:38Z&quot;,
+        ///      &quot;date_time&quot;: &quot;2021-06-09T06:09:24Z&quot;,
         ///      &quot;recording_type&quot;: &quot;OnDemand&quot;,
-        ///      &quot;call_id&quot;: &quot;6998252113337041 [rest of string was truncated]&quot;;.
+        ///      &quot;call_id&quot;: &quot;6971672158469969953&quot;,
+        ///      &quot;owner&quot;: {
+        ///        &quot;type&quot;: &quot;user&quot;,
+        ///        &quot;id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///      [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_recording_paused {
             get {
@@ -8353,18 +8377,18 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.recording_permanently_deleted&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;recordings&quot;: [
         ///        {
-        ///          &quot;id&quot;: &quot;c71b360f6e774e3aa101453117b7e1a7&quot;,
-        ///          &quot;call_id&quot;: &quot;6998252113337041462&quot;
+        ///          &quot;id&quot;: &quot;9a0887ca-da53-4c62-b32a-563789ef264e&quot;,
+        ///          &quot;call_id&quot;: &quot;6954218111457544837&quot;
         ///        }
         ///      ]
         ///    }
-        ///  }
+        ///  },
+        ///  &quot;event_ts&quot;: 1619155281301
         ///}.
         /// </summary>
         internal static string phone_recording_permanently_deleted {
@@ -8380,16 +8404,18 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;id&quot;: &quot;c71b360f6e774e3aa101453117b7e1a7&quot;,
+        ///      &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
         ///      &quot;user_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
         ///      &quot;caller_number&quot;: &quot;1026&quot;,
-        ///      &quot;caller_account_code&quot;: &quot;123&quot;,
         ///      &quot;callee_number&quot;: &quot;1045&quot;,
-        ///      &quot;callee_account_code&quot;: &quot;456&quot;,
         ///      &quot;direction&quot;: &quot;outbound&quot;,
-        ///      &quot;date_time&quot;: &quot;2021-08-19T21:12:38Z&quot;,
+        ///      &quot;date_time&quot;: &quot;2021-06-09T06:09:24Z&quot;,
         ///      &quot;recording_type&quot;: &quot;OnDemand&quot;,
-        ///      &quot;call_id&quot;: &quot;699825211333704 [rest of string was truncated]&quot;;.
+        ///      &quot;call_id&quot;: &quot;6971672158469969953&quot;,
+        ///      &quot;owner&quot;: {
+        ///        &quot;type&quot;: &quot;user&quot;,
+        ///        &quot;id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///     [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_recording_resumed {
             get {
@@ -8404,16 +8430,16 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;id&quot;: &quot;c71b360f6e774e3aa101453117b7e1a7&quot;,
+        ///      &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
         ///      &quot;user_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
         ///      &quot;caller_number&quot;: &quot;1026&quot;,
-        ///      &quot;caller_account_code&quot;: &quot;123&quot;,
         ///      &quot;callee_number&quot;: &quot;1045&quot;,
-        ///      &quot;callee_account_code&quot;: &quot;456&quot;,
         ///      &quot;direction&quot;: &quot;outbound&quot;,
-        ///      &quot;date_time&quot;: &quot;2021-08-19T21:12:38Z&quot;,
+        ///      &quot;date_time&quot;: &quot;2021-06-09T06:09:24Z&quot;,
         ///      &quot;recording_type&quot;: &quot;OnDemand&quot;,
-        ///      &quot;call_id&quot;: &quot;699825211333704 [rest of string was truncated]&quot;;.
+        ///      &quot;call_id&quot;: &quot;6971672158469969953&quot;,
+        ///      &quot;channel_id&quot;: &quot;5c01a45b-53a8-4773-b244-beb670c13357&quot;,
+        ///      &quot;sip_id&quot;: &quot;VeSbXj3 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_recording_started {
             get {
@@ -8428,16 +8454,16 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;id&quot;: &quot;c71b360f6e774e3aa101453117b7e1a7&quot;,
+        ///      &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
         ///      &quot;user_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
         ///      &quot;caller_number&quot;: &quot;1026&quot;,
-        ///      &quot;caller_account_code&quot;: &quot;123&quot;,
         ///      &quot;callee_number&quot;: &quot;1045&quot;,
-        ///      &quot;callee_account_code&quot;: &quot;456&quot;,
         ///      &quot;direction&quot;: &quot;outbound&quot;,
-        ///      &quot;date_time&quot;: &quot;2021-08-19T21:12:38Z&quot;,
+        ///      &quot;date_time&quot;: &quot;2021-06-09T06:09:24Z&quot;,
         ///      &quot;recording_type&quot;: &quot;OnDemand&quot;,
-        ///      &quot;call_id&quot;: &quot;699825211333704 [rest of string was truncated]&quot;;.
+        ///      &quot;call_id&quot;: &quot;6971672158469969953&quot;,
+        ///      &quot;channel_id&quot;: &quot;5c01a45b-53a8-4773-b244-beb670c13357&quot;,
+        ///      &quot;sip_id&quot;: &quot;VeSbXj3 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_recording_stopped {
             get {
@@ -8454,15 +8480,15 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;object&quot;: {
         ///      &quot;recordings&quot;: [
         ///        {
-        ///          &quot;id&quot;: &quot;c71b360f6e774e3aa101453117b7e1a7&quot;,
+        ///          &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
         ///          &quot;user_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
         ///          &quot;caller_number&quot;: &quot;1026&quot;,
         ///          &quot;caller_number_type&quot;: 1,
         ///          &quot;caller_name&quot;: &quot;Caller Name&quot;,
-        ///          &quot;caller_account_code&quot;: &quot;123&quot;,
         ///          &quot;callee_number&quot;: &quot;1045&quot;,
-        ///          &quot;callee_number_type&quot;: 2,
-        ///    [rest of string was truncated]&quot;;.
+        ///          &quot;callee_number_type&quot;: 1,
+        ///          &quot;callee_name&quot;: &quot;Callee Name&quot;,
+        ///          &quot;duration&quot;:  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_recording_transcript_completed {
             get {
@@ -8501,17 +8527,17 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.sms_campaign_number_opt_in&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;phone_number_campaign_opt_statuses&quot;: [
         ///        {
-        ///          &quot;consumer_phone_number&quot;: &quot;+12092592844&quot;,
-        ///          &quot;zoom_phone_user_number&quot;: &quot;+12058945456&quot;
+        ///          &quot;consumer_phone_number&quot;: &quot;+15043449240&quot;,
+        ///          &quot;zoom_phone_user_number&quot;: &quot;+12094436304&quot;
         ///        }
         ///      ],
-        ///      &quot;date_time&quot;: &quot;2021-07-13T21:44:51Z&quot;
+        ///      &quot;date_time&quot;: &quot;2021-07-19T18:43:43Z&quot;
         ///    }
         ///  }
         ///}.
@@ -8525,17 +8551,17 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.sms_campaign_number_opt_out&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;phone_number_campaign_opt_statuses&quot;: [
         ///        {
-        ///          &quot;consumer_phone_number&quot;: &quot;+12092592844&quot;,
-        ///          &quot;zoom_phone_user_number&quot;: &quot;+12058945456&quot;
+        ///          &quot;consumer_phone_number&quot;: &quot;+15043449240&quot;,
+        ///          &quot;zoom_phone_user_number&quot;: &quot;+12094436304&quot;
         ///        }
         ///      ],
-        ///      &quot;date_time&quot;: &quot;2021-07-13T21:44:51Z&quot;
+        ///      &quot;date_time&quot;: &quot;2021-07-19T18:43:43Z&quot;
         ///    }
         ///  }
         ///}.
@@ -8549,14 +8575,14 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.sms_etiquette_block&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;email&quot;: &quot;user.email@company.com&quot;,
         ///      &quot;message&quot;: &quot;this is my SSN 123-45-6789&quot;,
         ///      &quot;policy_name&quot;: &quot;Company&apos;s SSN blocking policy&quot;,
-        ///      &quot;date_time&quot;: &quot;2021-07-13T21:44:51Z&quot;
+        ///      &quot;date_time&quot;: &quot;2025-03-15T18:43:43Z&quot;
         ///    }
         ///  }
         ///}.
@@ -8570,14 +8596,14 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.sms_etiquette_warn&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;email&quot;: &quot;user.email@company.com&quot;,
         ///      &quot;message&quot;: &quot;this is my SSN 123-45-6789&quot;,
         ///      &quot;policy_name&quot;: &quot;Company&apos;s SSN warning policy&quot;,
-        ///      &quot;date_time&quot;: &quot;2021-07-13T21:44:51Z&quot;
+        ///      &quot;date_time&quot;: &quot;2025-03-15T18:43:43Z&quot;
         ///    }
         ///  }
         ///}.
@@ -8591,9 +8617,9 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.sms_received&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;sender&quot;: {
         ///        &quot;phone_number&quot;: &quot;12132822256&quot;,
@@ -8606,8 +8632,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///          &quot;phone_number&quot;: &quot;12132792348&quot;,
         ///          &quot;id&quot;: &quot;RMITfuhuuxyzyuyyi3Kfg&quot;,
         ///          &quot;type&quot;: &quot;user&quot;,
-        ///          &quot;display_name&quot;: &quot;Tom&quot;,
-        ///          &quot;is_message_owner&quot;:  [rest of string was truncated]&quot;;.
+        ///          &quot;display_name&quot;: &quot;Tomcat&quot;,
+        ///          &quot;is_m [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_sms_received {
             get {
@@ -8618,9 +8644,9 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.sms_sent&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;failure_reason&quot;: &quot;1101-phone message error send&quot;,
         ///      &quot;sender&quot;: {
@@ -8632,9 +8658,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;to_members&quot;: [
         ///        {
         ///          &quot;phone_number&quot;: &quot;12132792348&quot;,
-        ///          &quot;id&quot;: &quot;RMITfuhuuxyzyuyyi3Kfg&quot;,
-        ///          &quot;type&quot;: &quot;user&quot;,
-        ///           [rest of string was truncated]&quot;;.
+        ///          &quot;id&quot;: &quot;RMIThhijkxyzyuyyi3Kfg&quot;,
+        ///          &quot;type&quot;: &quot;user&quot;, [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_sms_sent {
             get {
@@ -8645,23 +8670,24 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.sms_sent_failed&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;failure_reason&quot;: &quot;1101-phone message error send&quot;,
         ///      &quot;sender&quot;: {
         ///        &quot;phone_number&quot;: &quot;12132822256&quot;,
-        ///        &quot;id&quot;: &quot;RMIGplfpSLauTMDMTi3Kfg&quot;,
-        ///        &quot;type&quot;: &quot;user&quot;,
-        ///        &quot;display_name&quot;: &quot;Jackson&quot;
+        ///        &quot;id&quot;: &quot;RMIGplfpSLauTMDMTi3Kfg&quot;
         ///      },
         ///      &quot;to_members&quot;: [
         ///        {
         ///          &quot;phone_number&quot;: &quot;12132792348&quot;,
-        ///          &quot;id&quot;: &quot;RMITfuhuuxyzyuyyi3Kfg&quot;,
-        ///          &quot;type&quot;: &quot;user&quot;,
-        ///    [rest of string was truncated]&quot;;.
+        ///          &quot;is_message_owner&quot;: true
+        ///        }
+        ///      ],
+        ///      &quot;owner&quot;: {
+        ///        &quot;type&quot;: &quot;callQueue&quot;,
+        ///        &quot;id&quot;: &quot;2 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_sms_sent_failed {
             get {
@@ -8672,21 +8698,23 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.transfer_call_to_voicemail_initiated&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;failure_reason&quot;: &quot;&quot;,
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;call_id&quot;: &quot;6986878782238080581&quot;,
         ///      &quot;owner&quot;: {
         ///        &quot;type&quot;: &quot;user&quot;,
         ///        &quot;id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///        &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///        &quot;name&quot;: &quot;usersubsetting0001&quot;,
         ///        &quot;extension_number&quot;: 6666
         ///      },
-        ///      &quot;transfer_phone_number&quot;: &quot;+12092592844&quot;,
-        ///      &quot;transfer_account_code&quot;: &quot;123&quot;,
-        ///      &quot;date_time&quot;: &quot;2021-07-13T21:44:51Z&quot;        /// [rest of string was truncated]&quot;;.
+        ///      &quot;transfer_phone_number&quot;: &quot;+12055432724&quot;,
+        ///      &quot;date_time&quot;: &quot;2021-07-20T05:38:04Z&quot;
+        ///    }
+        ///  }
+        ///}.
         /// </summary>
         internal static string phone_transfer_call_to_voicemail_initiated {
             get {
@@ -8697,23 +8725,22 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.transfer_recipient_updated&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1712558722775,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;failure_reason&quot;: &quot;&quot;,
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;call_id&quot;: &quot;6986878782238080581&quot;,
         ///      &quot;owner&quot;: {
         ///        &quot;type&quot;: &quot;user&quot;,
         ///        &quot;id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///        &quot;name&quot;: &quot;Jill Chill&quot;,
-        ///        &quot;extension_number&quot;: 6666
+        ///        &quot;name&quot;: &quot;Tom Jones&quot;,
+        ///        &quot;extension_number&quot;: 1001019
         ///      },
         ///      &quot;recipient&quot;: {
         ///        &quot;extension_number&quot;: 1001020,
-        ///        &quot;phone_number&quot;: &quot;+12058945456&quot;,
-        ///        &quot;name&quot;: &quot;Jane Smith&quot;
-        ///      }, [rest of string was truncated]&quot;;.
+        ///        &quot;phone_number&quot;: &quot;+12192818492&quot;,
+        ///        &quot;name&quot;: &quot;Jane Sm [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_transfer_recipient_updated {
             get {
@@ -8724,9 +8751,8 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.voicemail_deleted&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;voice_mails&quot;: [
         ///        {
@@ -8734,7 +8760,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///        }
         ///      ]
         ///    }
-        ///  }
+        ///  },
+        ///  &quot;event_ts&quot;: 1619155436400
         ///}.
         /// </summary>
         internal static string phone_voicemail_deleted {
@@ -8746,9 +8773,8 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.voicemail_permanently_deleted&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;Mt6sv4u0TAyPkwgsL2lxiA&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;voice_mails&quot;: [
         ///        {
@@ -8756,7 +8782,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///        }
         ///      ]
         ///    }
-        ///  }
+        ///  },
+        ///  &quot;event_ts&quot;: 1619155436400
         ///}.
         /// </summary>
         internal static string phone_voicemail_permanently_deleted {
@@ -8767,18 +8794,18 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;event&quot;: &quot;phone.voicemail_received&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;97IYU62bTpSY66_pir2PgA&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;id&quot;: &quot;70ea156dc8414742839569c1556c3314&quot;,
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
-        ///      &quot;call_log_id&quot;: &quot;55fd0af0-beb0-433a-be97-388de5e99ab4&quot;,
-        ///      &quot;call_history_id&quot;: &quot;20231008-1ac1df2a-912e-d125-8a15-1a1233d10f1a&quot;,
-        ///      &quot;call_element_id&quot;: &quot;20231008-48c1dfd4-91ce-4df5-8495-7c9e33d10869&quot;,
         ///      &quot;callee_id&quot;: &quot;s6njoqZLT6aPvUQ0JyydeQ&quot;,
-        ///      &quot;callee_extension_t [rest of string was truncated]&quot;;.
+        ///      &quot;call_id&quot;: &quot;666888666865648555&quot;,
+        ///      &quot;call_log_id&quot;: &quot;55fd0af0-beb0-433a-be97-388de5e99ab4&quot;,
+        ///      &quot;call_history_id&quot;: &quot;20210609-a297ae04-a875-4cfd-85ab-4adcead91edb&quot;,
+        ///      &quot;call_element_id&quot;: &quot;20210609-a297ae04-a875-4cfd-85ab-4adcead91edb&quot;,
+        ///      &quot;duration&quot;: 3,
+        ///      &quot;caller_user_id&quot;: &quot;9Y0sGVcgRrW_9eV6kwLf7w&quot;,
+        ///      &quot;caller_name&quot;: &quot;Rascoe Thomas&quot;,
+        ///      &quot;caller_did_num [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_voicemail_received {
             get {
@@ -8788,18 +8815,18 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;event&quot;: &quot;phone.voicemail_received_for_access_member&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;97IYU62bTpSY66_pir2PgA&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;id&quot;: &quot;70ea156dc8414742839569c1556c3314&quot;,
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
-        ///      &quot;call_log_id&quot;: &quot;55fd0af0-beb0-433a-be97-388de5e99ab4&quot;,
-        ///      &quot;call_history_id&quot;: &quot;20231008-1ac1df2a-912e-d125-8a15-1a1233d10f1a&quot;,
-        ///      &quot;call_element_id&quot;: &quot;20231008-48c1dfd4-91ce-4df5-8495-7c9e33d10869&quot;,
         ///      &quot;callee_id&quot;: &quot;s6njoqZLT6aPvUQ0JyydeQ&quot;,
-        ///      &quot; [rest of string was truncated]&quot;;.
+        ///      &quot;call_id&quot;: &quot;666888666865648555&quot;,
+        ///      &quot;call_log_id&quot;: &quot;55fd0af0-beb0-433a-be97-388de5e99ab4&quot;,
+        ///      &quot;call_history_id&quot;: &quot;20210609-a297ae04-a875-4cfd-85ab-4adcead91edb&quot;,
+        ///      &quot;call_element_id&quot;: &quot;20210609-a297ae04-a875-4cfd-85ab-4adcead91edb&quot;,
+        ///      &quot;duration&quot;: 3,
+        ///      &quot;caller_name&quot;: &quot;Rascoe Thomas&quot;,
+        ///      &quot;caller_did_number&quot;: &quot;+12055967465&quot;,
+        ///      &quot;callee_extension_type [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_voicemail_received_for_access_member {
             get {
@@ -8809,18 +8836,18 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;event&quot;: &quot;phone.voicemail_transcript_completed&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;97IYU62bTpSY66_pir2PgA&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;id&quot;: &quot;70ea156dc8414742839569c1556c3314&quot;,
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
-        ///      &quot;call_log_id&quot;: &quot;55fd0af0-beb0-433a-be97-388de5e99ab4&quot;,
-        ///      &quot;call_history_id&quot;: &quot;20231008-1ac1df2a-912e-d125-8a15-1a1233d10f1a&quot;,
-        ///      &quot;call_element_id&quot;: &quot;20231008-48c1dfd4-91ce-4df5-8495-7c9e33d10869&quot;,
         ///      &quot;callee_id&quot;: &quot;s6njoqZLT6aPvUQ0JyydeQ&quot;,
-        ///      &quot;callee [rest of string was truncated]&quot;;.
+        ///      &quot;call_id&quot;: &quot;666888666865648555&quot;,
+        ///      &quot;call_log_id&quot;: &quot;55fd0af0-beb0-433a-be97-388de5e99ab4&quot;,
+        ///      &quot;call_history_id&quot;: &quot;20210609-a297ae04-a875-4cfd-85ab-4adcead91edb&quot;,
+        ///      &quot;call_element_id&quot;: &quot;20210609-a297ae04-a875-4cfd-85ab-4adcead91edb&quot;,
+        ///      &quot;caller_name&quot;: &quot;Rascoe Thomas&quot;,
+        ///      &quot;callee_extension_type&quot;: &quot;callQueue&quot;,
+        ///      &quot;callee_name&quot;: &quot;Chris&apos;s_CQ01_2_members&quot;,
+        ///  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_voicemail_transcript_completed {
             get {
@@ -8831,24 +8858,22 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.warm_transfer_cancelled&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;failure_reason&quot;: &quot;&quot;,
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;call_id&quot;: &quot;6986878782238080581&quot;,
         ///      &quot;owner&quot;: {
         ///        &quot;type&quot;: &quot;user&quot;,
         ///        &quot;id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///        &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///        &quot;name&quot;: &quot;usersubsetting0001&quot;,
         ///        &quot;extension_number&quot;: 6666
         ///      },
-        ///      &quot;transfer_phone_number&quot;: &quot;+12092592844&quot;,
-        ///      &quot;transfer_account_code&quot;: &quot;123&quot;,
-        ///      &quot;date_time&quot;: &quot;2021-07-13T21:44:51Z&quot;
+        ///      &quot;date_time&quot;: &quot;2021-07-20T05:38:04Z&quot;
         ///    }
         ///  }
-        /// [rest of string was truncated]&quot;;.
+        ///}.
         /// </summary>
         internal static string phone_warm_transfer_cancelled {
             get {
@@ -8859,24 +8884,23 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.warm_transfer_completed&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;failure_reason&quot;: &quot;&quot;,
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;call_id&quot;: &quot;6986878782238080581&quot;,
+        ///      &quot;transfer_phone_number&quot;: &quot;+12055432724&quot;,
         ///      &quot;owner&quot;: {
         ///        &quot;type&quot;: &quot;user&quot;,
         ///        &quot;id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///        &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///        &quot;name&quot;: &quot;usersubsetting0001&quot;,
         ///        &quot;extension_number&quot;: 6666
         ///      },
-        ///      &quot;transfer_phone_number&quot;: &quot;+12092592844&quot;,
-        ///      &quot;transfer_account_code&quot;: &quot;123&quot;,
-        ///      &quot;date_time&quot;: &quot;2021-07-13T21:44:51Z&quot;
+        ///      &quot;date_time&quot;: &quot;2021-07-20T05:38:04Z&quot;
         ///    }
         ///  }
-        /// [rest of string was truncated]&quot;;.
+        ///}.
         /// </summary>
         internal static string phone_warm_transfer_completed {
             get {
@@ -8887,22 +8911,21 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;phone.warm_transfer_initiated&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1626759486127,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;2TP-coFVSnmyvYZogk8gAg&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;failure_reason&quot;: &quot;&quot;,
-        ///      &quot;call_id&quot;: &quot;6998252113337041462&quot;,
+        ///      &quot;call_id&quot;: &quot;6986878782238080581&quot;,
         ///      &quot;owner&quot;: {
         ///        &quot;type&quot;: &quot;user&quot;,
         ///        &quot;id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///        &quot;name&quot;: &quot;Jill Chill&quot;,
+        ///        &quot;name&quot;: &quot;usersubsetting0001&quot;,
         ///        &quot;extension_number&quot;: 6666
         ///      },
-        ///      &quot;transfer_phone_number&quot;: &quot;+12092592844&quot;,
-        ///      &quot;transfer_account_code&quot;: &quot;123&quot;,
+        ///      &quot;transfer_phone_number&quot;: &quot;+12055432724&quot;,
         ///      &quot;transfer_call_id&quot;: &quot;6986878782238080584&quot;,
-        ///      [rest of string was truncated]&quot;;.
+        ///      &quot;date_time&quot;: &quot;2021 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_warm_transfer_initiated {
             get {
@@ -9038,20 +9061,10 @@ namespace ZoomNet.UnitTests.Properties {
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;recording.archive_files_completed&quot;,
         ///  &quot;event_ts&quot;: 1626230691572,
-        ///  &quot;download_token&quot;: &quot;abJhbGciOiJIUzUxMiJ9&quot;,
+        ///  &quot;download_token&quot;: &quot;abJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJodHRwczovL2V2ZW50Lnpvb20udXMiLCJhY2NvdW50SWQiOiJNdDZzdjR1MFRBeVBrd2dzTDJseGlBIiwiYXVkIjoiaHR0cHM6Ly9vYXV0aC56b29tLnVzIiwibWlkIjoieFp3SEc0c3BRU2VuekdZWG16dnpiUT09IiwiZXhwIjoxNjI2MTM5NTA3LCJ1c2VySWQiOiJEWUhyZHBqclMzdWFPZjdkUGtrZzh3In0.a6KetiC6BlkDhf1dP4KBGUE1bb2brMeraoD45yhFx0eSSSTFdkHQnsKmlJQ-hdo9Zy-4vQw3rOxlyoHv583JyZ&quot;,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///    &quot;object&quot;: {
-        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///      &quot;id&quot;: 1234567890,
-        ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///      &quot;topic&quot;: &quot;My Personal Recording&quot;,
-        ///      &quot;type&quot;: 4,
-        ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///      &quot;duration&quot;: 60,
-        ///      &quot;duration_in_second&quot;: 3602,
-        ///    [rest of string was truncated]&quot;;.
+        ///    &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string recording_archive_files_completed {
             get {
@@ -9065,8 +9078,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///    &quot;operator&quot; : &quot;admin@example.com&quot;,
-        ///    &quot;operator_id&quot; : &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;meetings&quot;: [
         ///        {
@@ -9093,8 +9106,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///    &quot;operator&quot; : &quot;admin@example.com&quot;,
-        ///    &quot;operator_id&quot; : &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;meetings&quot;: [
         ///        {
@@ -9122,7 +9135,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;operator_id&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
         ///    &quot;operation&quot;: &quot;trash_user_recordings&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;meeting_uuids&quot;: [
@@ -9149,8 +9162,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;free_storage&quot;: &quot;1.65 GB&quot;,
         ///      &quot;plan_storage&quot;: &quot;40 GB&quot;,
         ///      &quot;plan_type&quot;: &quot;cmr_monthly_commitment_40&quot;,
-        ///      &quot;storage_used&quot;: &quot;38.35 GB&quot;,
-        ///      &quot;storage_used_percentage&quot;: 95,
+        ///      &quot;storage_used&quot;: &quot;1.65 GB&quot;,
+        ///      &quot;storage_used_percentage&quot;: 80,
         ///      &quot;storage_exceed&quot;: &quot;0&quot;,
         ///      &quot;max_exceed_date&quot;: &quot;2023-03-01&quot;
         ///    }
@@ -9165,22 +9178,22 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;recording.completed&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;download_token&quot;: &quot;abJhbGciOiJIUzUxMiJ9&quot;,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: 1234567890,
-        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///			&quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///			&quot;account_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///			&quot;topic&quot;: &quot;My Personal Recording&quot;,
-        ///			&quot;type&quot;: 4,
-        ///			&quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///			&quot;password&quot;: &quot;132456&quot;,
-        ///			&quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///			&quot;host_email&quot;: &quot;jchill@example.c [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;recording.completed&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: 1234567890,
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///      &quot;account_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///      &quot;topic&quot;: &quot;My Personal Recording&quot;,
+        ///      &quot;type&quot;: 4,
+        ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
+        ///      &quot;password&quot;: &quot;132456&quot;,
+        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///      &quot;host_email&quot;: &quot;jchill@example.com&quot;,
+        ///  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string recording_completed {
             get {
@@ -9195,7 +9208,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;operator_id&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;id&quot;: 1234567890,
@@ -9204,7 +9217,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;topic&quot;: &quot;My Personal Recording&quot;,
         ///      &quot;type&quot;: 4,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///      &quot;timezone&quot;: &quot;America/Los_Angel [rest of string was truncated]&quot;;.
+        ///      &quot;timezone&quot;: &quot;America/Los_An [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string recording_deleted {
             get {
@@ -9241,19 +9254,20 @@ namespace ZoomNet.UnitTests.Properties {
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;recording.recovered&quot;,
         ///  &quot;event_ts&quot;: 1626230691572,
-        ///  &quot;download_token&quot;: &quot;abJhbGciOiJIUzUxMiJ9&quot;,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;operator_id&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;id&quot;: 1234567890,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///      &quot;account_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///      &quot;topic&quot;: &quot;My Personal Recording&quot;,
         ///      &quot;type&quot;: 4,
-        ///      &quot;start_time&quot;: &quot;2021-07-13T21 [rest of string was truncated]&quot;;.
+        ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
+        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///      &quot;duration&quot;: 60,
+        ///      &quot;share_ [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string recording_recovered {
             get {
@@ -9268,7 +9282,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;operator_id&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;id&quot;: 1234567890,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
@@ -9278,7 +9292,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
-        ///     [rest of string was truncated]&quot;;.
+        ///  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string recording_registration_approved {
             get {
@@ -9301,9 +9315,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
-        ///      &quot;registrant&quot;: {
-        ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
-        ///        &quot;email&quot;: &quot;jchil [rest of string was truncated]&quot;;.
+        ///      &quot;occurrences&quot;: {
+        ///        &quot;occurrence_id&quot;: &quot;ABCDE12345&quot;,
+        ///        &quot;start_time&quot;:  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string recording_registration_created {
             get {
@@ -9326,9 +9340,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
-        ///      &quot;registrant&quot;: {
-        ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
-        ///        &quot;email&quot;: &quot;jchill [rest of string was truncated]&quot;;.
+        ///      &quot;occurrences&quot;: {
+        ///        &quot;occurrence_id&quot;: &quot;ABCDE12345&quot;,
+        ///        &quot;start_time&quot;: &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string recording_registration_denied {
             get {
@@ -9344,17 +9358,17 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
         ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///    &quot;time_stamp&quot;: 1628705277325,
+        ///    &quot;time_stamp&quot;: &quot;1628705277325&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;id&quot;: 1234567890,
-        ///      &quot;topic&quot;: &quot;My New Personal Recording&quot;,
+        ///      &quot;topic&quot;: &quot;My Old Personal Recording&quot;,
         ///      &quot;type&quot;: 4,
-        ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;
+        ///      &quot;host_id&quot;: &quot;I6zp-pPbTl22Z29H786Ixg&quot;
         ///    },
-        ///    &quot;old_object&quot;: {
+        ///    &quot;recording_file&quot;: {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///      &quot;id&quot;: 1234567 [rest of string was truncated]&quot;;.
+        ///      &quot;id&quot;: 1 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string recording_renamed {
             get {
@@ -9441,7 +9455,6 @@ namespace ZoomNet.UnitTests.Properties {
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;recording.transcript_completed&quot;,
         ///  &quot;event_ts&quot;: 1626230691572,
-        ///  &quot;download_token&quot;: &quot;abJhbGciOiJIUzUxMiJ9&quot;,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
@@ -9453,7 +9466,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;topic&quot;: &quot;My Personal Recording&quot;,
         ///      &quot;type&quot;: 4,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///      &quot;timezone&quot; [rest of string was truncated]&quot;;.
+        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///      &quot;password&quot;: &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string recording_transcript_completed {
             get {
@@ -9465,11 +9479,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;recording.trashed&quot;,
         ///  &quot;event_ts&quot;: 1626230691572,
-        ///  &quot;download_token&quot;: &quot;abJhbGciOiJIUzUxMiJ9&quot;,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;id&quot;: 1234567890,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
@@ -9477,7 +9488,11 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;account_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///      &quot;topic&quot;: &quot;My Personal Recording&quot;,
         ///      &quot;type&quot;: 4,
-        ///      &quot;start_time&quot;: &quot;2021-07-13T21:4 [rest of string was truncated]&quot;;.
+        ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
+        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///      &quot;host_email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;duration&quot;: 60,
+        ///      &quot;pa [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string recording_trashed {
             get {
@@ -9651,7 +9666,7 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;event&quot;: &quot;meeting.rtms_concurrency_limited&quot;,
+        ///  &quot;event&quot;: &quot;rtms.concurrency_limited&quot;,
         ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
         ///    &quot;operator_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
@@ -9687,20 +9702,64 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;rtms.request_status&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;operator_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
+        ///    &quot;id_field&quot;: {
+        ///      &quot;meeting_uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;
+        ///    },
+        ///    &quot;rtms_stream_id&quot;: &quot;aa13f8debb2a45c689211a3ddcda53e4&quot;,
+        ///    &quot;reboot_in_minutes&quot;: 360,
+        ///    &quot;reason&quot;: 1
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string rtms_request_status {
+            get {
+                return ResourceManager.GetString("rtms_request_status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;scheduler.routing_form_submission_created&quot;,
+        ///  &quot;event_ts&quot;: 1759147200123,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;user_id&quot;: &quot;dndhfdjdihd&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;routing_form_submission_id&quot;: &quot;61mzpk6irznpqc5yfkcnafyse7&quot;,
+        ///      &quot;routing_form_id&quot;: &quot;routing_form_abc123&quot;,
+        ///      &quot;created_at&quot;: &quot;2026-09-29T12:00:00.123Z&quot;,
+        ///      &quot;result&quot;: {
+        ///        &quot;type&quot;: &quot;event_type&quot;,
+        ///        &quot;value&quot;: &quot;https://scheduler.zoom.us/jane-doe/demo-30m&quot;
+        ///      },
+        ///      &quot;questions_and_answers&quot;: [
+        ///   [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string scheduler_routing_form_submission_created {
+            get {
+                return ResourceManager.GetString("scheduler_routing_form_submission_created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;scheduler.scheduled_event_canceled&quot;,
         ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;user_id&quot;: &quot;dndhfdjdihd&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;invitee_email&quot;: &quot;admin@example.com&quot;,
-        ///      &quot;invitee_first_name&quot;: &quot;aaa&quot;,
-        ///      &quot;invitee_last_name&quot;: &quot;bbb&quot;,
-        ///      &quot;manage_url&quot;: &quot;https://scheduler.zoom.us/manage/m0o1uf25uq89wllenxxxxxxxxxxxx&quot;,
-        ///      &quot;cancellation&quot;: {
-        ///        &quot;canceled_by&quot;: &quot;aa@bb.c&quot;,
-        ///        &quot;canceler_type&quot;: &quot;host&quot;,
-        ///        &quot;cancel_at&quot;: &quot;2023-12-21T16 [rest of string was truncated]&quot;;.
+        ///      &quot;invitee_email&quot;: &quot;john.doe@example.com&quot;,
+        ///      &quot;invitee_first_name&quot;: &quot;John&quot;,
+        ///      &quot;invitee_last_name&quot;: &quot;Doe&quot;,
+        ///      &quot;invitee_id&quot;: &quot;61mzpk6irznpqc5yfkcnafyse7&quot;,
+        ///      &quot;rescheduled_to_event_id&quot;: &quot;t36axo1tnxvyte5w35x4zht964&quot;,
+        ///      &quot;rescheduled_to_invitee_id&quot;: &quot;fl4ulj7pa0ez23jmfq980ydae7&quot;,
+        ///      &quot;manage_url&quot;: &quot;https://sc [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string scheduler_scheduled_event_canceled {
             get {
@@ -9716,14 +9775,13 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;user_id&quot;: &quot;dndhfdjdihd&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;invitee_email&quot;: &quot;admin@example.com&quot;,
-        ///      &quot;invitee_first_name&quot;: &quot;aaa&quot;,
-        ///      &quot;invitee_last_name&quot;: &quot;bbb&quot;,
-        ///      &quot;manage_url&quot;: &quot;https://scheduler.zoom.us/manage/m0o1uf25uq89wllenxxxxxxxxxxxx&quot;,
-        ///      &quot;time_zone&quot;: &quot;Asia/Shanghai&quot;,
-        ///      &quot;questions_and_answers&quot;: [
-        ///        {
-        ///          &quot;question&quot;: &quot;Please share anything tha [rest of string was truncated]&quot;;.
+        ///      &quot;invitee_email&quot;: &quot;john.doe@example.com&quot;,
+        ///      &quot;invitee_first_name&quot;: &quot;John&quot;,
+        ///      &quot;invitee_last_name&quot;: &quot;Doe&quot;,
+        ///      &quot;invitee_id&quot;: &quot;61mzpk6irznpqc5yfkcnafyse7&quot;,
+        ///      &quot;rescheduled_from_event_id&quot;: &quot;t36axo1tnxvyte5w35x4zht964&quot;,
+        ///      &quot;rescheduled_from_invitee_id&quot;: &quot;fl4ulj7pa0ez23jmfq980ydae7&quot;,
+        ///      &quot;manage_url&quot;: &quot;https:/ [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string scheduler_scheduled_event_created {
             get {
@@ -9866,8 +9924,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///	&quot;operator&quot; : &quot;user@example.com&quot;,
-        ///	&quot;operator_id&quot; : &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
+        ///    &quot;operator&quot;: &quot;user@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;session_id&quot;: 1234567890,
         ///      &quot;session_name&quot;: &quot;My Personal Recording&quot;,
@@ -9897,8 +9955,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;recording_file&quot;: {
-        ///          &quot;recording_start&quot;: &quot;2021-03-23T22:14:57Z&quot;,
-        ///          &quot;recording_end&quot;: &quot;2021-03-23T23:15:41Z&quot;
+        ///        &quot;recording_start&quot;: &quot;2021-03-23T22:14:57Z&quot;,
+        ///        &quot;recording_end&quot;: &quot;2021-03-23T23:15:41Z&quot;
         ///      }
         ///    }
         ///  }
@@ -9916,8 +9974,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///	&quot;operator&quot; : &quot;user@example.com&quot;,
-        ///	&quot;operator_id&quot; : &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
+        ///    &quot;operator&quot;: &quot;user@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;session_id&quot;: 1234567890,
         ///      &quot;session_name&quot;: &quot;My Personal Recording&quot;,
@@ -9947,8 +10005,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;recording_file&quot;: {
-        ///          &quot;recording_start&quot;: &quot;2021-03-23T22:14:57Z&quot;,
-        ///          &quot;recording_end&quot;: &quot;2021-03-23T23:15:41Z&quot;
+        ///        &quot;recording_start&quot;: &quot;2021-03-23T22:14:57Z&quot;,
+        ///        &quot;recording_end&quot;: &quot;2021-03-23T23:15:41Z&quot;
         ///      }
         ///    }
         ///  }
@@ -9973,8 +10031,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;recording_file&quot;: {
-        ///          &quot;recording_start&quot;: &quot;2021-03-23T22:14:57Z&quot;,
-        ///          &quot;recording_end&quot;: &quot;2021-03-23T23:15:41Z&quot;
+        ///        &quot;recording_start&quot;: &quot;2021-03-23T22:14:57Z&quot;,
+        ///        &quot;recording_end&quot;: &quot;2021-03-23T23:15:41Z&quot;
         ///      }
         ///    }
         ///  }
@@ -9999,8 +10057,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;recording_file&quot;: {
-        ///          &quot;recording_start&quot;: &quot;2021-03-23T22:14:57Z&quot;,
-        ///          &quot;recording_end&quot;: &quot;2021-03-23T23:15:41Z&quot;
+        ///        &quot;recording_start&quot;: &quot;2021-03-23T22:14:57Z&quot;,
+        ///        &quot;recording_end&quot;: &quot;2021-03-23T23:15:41Z&quot;
         ///      }
         ///    }
         ///  }
@@ -10044,12 +10102,12 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;event&quot;: &quot;session.recording_transcript_completed&quot;,
+        ///  &quot;event&quot;: &quot;session.recording_transcript_failed&quot;,
         ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;session_id&quot;: 1234567890,
+        ///      &quot;session_id&quot;: &quot;1234567890&quot;,
         ///      &quot;session_name&quot;: &quot;My Personal Recording&quot;,
         ///      &quot;session_key&quot;: &quot;ABC36jaBI145&quot;,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
@@ -10070,8 +10128,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///	&quot;operator&quot; : &quot;user@example.com&quot;,
-        ///	&quot;operator_id&quot; : &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
+        ///    &quot;operator&quot;: &quot;user@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;session_id&quot;: 1234567890,
         ///      &quot;session_name&quot;: &quot;My Personal Recording&quot;,
@@ -10113,6 +10171,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;session_id&quot;: &quot;4567UVWxYZABCdEfGhiJkl==&quot;,
         ///    &quot;session_key&quot;: &quot;ABC36jaBI145&quot;,
         ///    &quot;rtms_stream_id&quot;: &quot;609340fb2a7946909659956c8aa9250c&quot;,
+        ///    &quot;account_id&quot;: &quot;abcdefg123xyz&quot;,
         ///    &quot;server_urls&quot;: &quot;wss://127.0.0.1:443&quot;
         ///  }
         ///}.
@@ -10345,12 +10404,12 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;id&quot;: &quot;25508864&quot;,
         ///        &quot;name&quot;: &quot;example&quot;,
         ///        &quot;user_key&quot;: &quot;ASD74dfDI854&quot;,
+        ///        &quot;is_original_host&quot;: true,
         ///        &quot;data&quot;: [
         ///          {
         ///            &quot;device&quot;: &quot;WIN&quot;,
         ///            &quot;location&quot;: &quot;New York&quot;,
-        ///            &quot;network_type&quot;: &quot;Wired&quot;,
-        ///           [rest of string was truncated]&quot;;.
+        ///            &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string session_user_data {
             get {
@@ -10372,11 +10431,12 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;id&quot;: &quot;25508864&quot;,
         ///        &quot;name&quot;: &quot;example&quot;,
         ///        &quot;user_key&quot;: &quot;ASD74dfDI854&quot;,
+        ///        &quot;is_original_host&quot;: true,
         ///        &quot;data&quot;: [
         ///          {
         ///            &quot;device&quot;: &quot;Windows&quot;,
         ///            &quot;location&quot;: &quot;New York&quot;,
-        ///            &quot;network_type&quot;: &quot;Wired&quot;, [rest of string was truncated]&quot;;.
+        ///  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string session_user_data_summary {
             get {
@@ -10568,12 +10628,11 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;id&quot;: &quot;1234567890&quot;,
         ///        &quot;name&quot;: &quot;example&quot;,
         ///        &quot;user_key&quot;: &quot;ASD74dfDI854&quot;,
+        ///        &quot;is_original_host&quot;: true,
         ///        &quot;qos&quot;: [
         ///          {
         ///            &quot;date_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///            &quot;type&quot;: &quot;audio_input&quot;,
-        ///            &quot;details&quot;: {
-        ///    [rest of string was truncated]&quot;;.
+        ///            &quot;type&quot;: &quot;audio_inp [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string session_user_qos {
             get {
@@ -10583,22 +10642,23 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;event&quot; : &quot;session.user_qos_summary&quot;,
-        ///  &quot;event_ts&quot; : 1673353332744,
-        ///  &quot;payload&quot; : {
-        ///    &quot;account_id&quot; : &quot;AAAAAABBBB&quot;,
-        ///    &quot;object&quot; : {
-        ///      &quot;session_id&quot; : &quot;gkBE2XmnRJq42wHoMox/5g==&quot;,
-        ///      &quot;user&quot; : {
-        ///        &quot;id&quot; : &quot;16778240&quot;,
-        ///        &quot;name&quot; : &quot;example&quot;,
-        ///        &quot;user_key&quot; : &quot;vkgfmFwpQqOftr90XLkeBA&quot;,
-        ///        &quot;qos&quot; : [ {
-        ///          &quot;type&quot; : &quot;cpu_usage&quot;,
-        ///          &quot;details&quot; : {
-        ///            &quot;zoom_min_cpu_usage&quot; : &quot;0%&quot;,
-        ///            &quot;zoom_avg_cpu_usage&quot; : &quot;0%&quot;,
-        ///            &quot;zoom_max_cpu_usage&quot; [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;session.user_qos_summary&quot;,
+        ///  &quot;event_ts&quot;: 1673353332744,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;session_id&quot;: &quot;gkBE2XmnRJq42wHoMox/5g==&quot;,
+        ///      &quot;session_name&quot;: &quot;XdafAKX5RXDACJZXv4xR-w&quot;,
+        ///      &quot;user&quot;: {
+        ///        &quot;id&quot;: &quot;16778240&quot;,
+        ///        &quot;name&quot;: &quot;example&quot;,
+        ///        &quot;user_key&quot;: &quot;vkgfmFwpQqOftr90XLkeBA&quot;,
+        ///        &quot;is_original_host&quot;: true,
+        ///        &quot;qos&quot;: [
+        ///          {
+        ///            &quot;type&quot;: &quot;cpu_usage&quot;,
+        ///            &quot;details&quot;: {
+        ///              &quot;zoom_min_cpu_us [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string session_user_qos_summary {
             get {
@@ -10761,8 +10821,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;type&quot;: &quot;to_channel&quot;,
         ///      &quot;channel_id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
         ///      &quot;message_id&quot;: &quot;BFECE135-6A19-4282-9310-5975675DE6EE&quot;,
-        ///      &quot;message&quot;: &quot;Daily Standup Meeting Agenda:\
-        ///What did you do yesterday? [rest of string was truncated]&quot;;.
+        ///      &quot;message&quot;: &quot;Daily Standup Meeting Agenda:\nWhat did you do yesterday?\ [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string team_chat_bookmark_added {
             get {
@@ -10783,8 +10842,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;type&quot;: &quot;to_channel&quot;,
         ///      &quot;channel_id&quot;: &quot;6dfgdfgdg444447b0egga&quot;,
         ///      &quot;message_id&quot;: &quot;BFECE135-6A19-4282-9310-5975675DE6EE&quot;,
-        ///      &quot;message&quot;: &quot;Daily Standup Meeting Agenda:\
-        ///What did you do yesterda [rest of string was truncated]&quot;;.
+        ///      &quot;message&quot;: &quot;Daily Standup Meeting Agenda:\nWhat did you do yesterday [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string team_chat_bookmark_removed {
             get {
@@ -10877,8 +10935,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;channel_name&quot;: &quot;Test&quot;,
         ///        &quot;type&quot;: 5
         ///      },
-        ///      &quot;organization&quot;:{
-        ///        &quot;org_id&quot;:&quot;d [rest of string was truncated]&quot;;.
+        ///      &quot;organization&quot;: {
+        ///        &quot;org_id&quot;:  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string team_chat_channel_invitation_accepted {
             get {
@@ -10924,12 +10982,12 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;operator&quot;: &quot;zapp.mobile.admin@ep.test&quot;,
         ///    &quot;operator_id&quot;: &quot;TFq5AiLZSOyuCUpH28gohw&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;organization&quot;:{
-        ///        &quot;org_id&quot;:&quot;dsdsd&quot;,
+        ///      &quot;organization&quot;: {
+        ///        &quot;org_id&quot;: &quot;dsdsd&quot;,
         ///        &quot;org_name&quot;: &quot;dsdsd&quot;
         ///      },
         ///      &quot;channel&quot;: {
-        ///        &quot;channel_id [rest of string was truncated]&quot;;.
+        ///        &quot;channel_ [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string team_chat_channel_invitation_approved {
             get {
@@ -10996,12 +11054,12 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;operator&quot;: &quot;zapp.mobile.admin@ep.test&quot;,
         ///    &quot;operator_id&quot;: &quot;TFq5AiLZSOyuCUpH28gohw&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;organization&quot;:{
-        ///        &quot;org_id&quot;:&quot;dsdsd&quot;,
+        ///      &quot;organization&quot;: {
+        ///        &quot;org_id&quot;: &quot;dsdsd&quot;,
         ///        &quot;org_name&quot;: &quot;dsdsd&quot;,
-        ///        &quot;is_trust&quot;:false
+        ///        &quot;is_trust&quot;: false
         ///      },
-        ///      &quot;chann [rest of string was truncated]&quot;;.
+        ///      &quot;ch [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string team_chat_channel_invitation_rejected {
             get {
@@ -11030,6 +11088,30 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string team_chat_channel_invitation_removed {
             get {
                 return ResourceManager.GetString("team_chat_channel_invitation_removed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;team_chat.channel_invitation_removed&quot;,
+        ///  &quot;event_ts&quot;: 1705009616546,
+        ///  &quot;payload&quot;: {
+        ///    &quot;operator_member_id&quot;: &quot;1vCFVGsqi_lo8BqWMfmP8hiRn9a37oxCCPYdRWctkgMaE9NWn66sJouoz8opRcsg&quot;,
+        ///    &quot;account_id&quot;: &quot;9_IdLmGATIyUrNmCB4P_zQ&quot;,
+        ///    &quot;operator&quot;: &quot;zapp.mobile.admin@ep.test&quot;,
+        ///    &quot;operator_id&quot;: &quot;TFq5AiLZSOyuCUpH28gohw&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;channel&quot;: {
+        ///        &quot;channel_id&quot;: &quot;C12345678&quot;,
+        ///        &quot;channel_name&quot;: &quot;Test&quot;,
+        ///        &quot;type&quot;: 5
+        ///      },
+        ///      &quot;organization&quot;: {
+        ///        &quot;org_id&quot;: &quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string team_chat_channel_invitation_removed_ {
+            get {
+                return ResourceManager.GetString("team_chat_channel_invitation_removed ", resourceCulture);
             }
         }
         
@@ -11117,14 +11199,14 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;account_id&quot;: &quot;9_IdLmGATIyUrNmCB4P_zQ&quot;,
         ///    &quot;operator&quot;: &quot;zapp.mobile.admin@ep.test&quot;,
         ///    &quot;operator_id&quot;: &quot;TFq5AiLZSOyuCUpH28gohw&quot;,
-        ///    &quot;by_external_user&quot;:true,
+        ///    &quot;by_external_user&quot;: true,
         ///    &quot;object&quot;: {
         ///      &quot;channel&quot;: {
         ///        &quot;channel_id&quot;: &quot;C12345678&quot;,
         ///        &quot;channel_name&quot;: &quot;Test&quot;,
         ///        &quot;type&quot;: 5
         ///      },
-        ///      &quot;organizatio [rest of string was truncated]&quot;;.
+        ///      &quot;organizati [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string team_chat_channel_join_requested {
             get {
@@ -11656,11 +11738,11 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;operator_member_id&quot;: &quot;V0xKXVARQVmlXMYVbGoTEA&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;space_id&quot;: &quot;8dnjn8uuadijdijS6yqnrc&quot;,
-        ///      &quot;new_settings&quot;:{
+        ///      &quot;new_settings&quot;: {
         ///        &quot;name&quot;: &quot;Shared Space Name&quot;,
         ///        &quot;desc&quot;: &quot;Shared Space Description&quot;,
         ///        &quot;option&quot;: {
-        ///          &quot;add_external_users&quot;: &quot;by_any_member&quot; [rest of string was truncated]&quot;;.
+        ///          &quot;add_external_users&quot;: &quot;by_any_member [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string team_chat_shared_spaces_edited {
             get {
@@ -11960,14 +12042,14 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;date-time&quot;: &quot;2019-11-26T20:13:57Z&quot;,
+        ///      &quot;date_time&quot;: &quot;2019-11-26T20:13:57Z&quot;,
         ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
         ///      &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
         ///      &quot;presence_status&quot;: &quot;Away&quot;,
-        ///      &quot;app&quot; : {
-        ///        &quot;type&quot; : &quot;mobile&quot;,
+        ///      &quot;app&quot;: {
+        ///        &quot;type&quot;: &quot;mobile&quot;,
         ///        &quot;presence_status&quot;: &quot;Offline&quot;
-        ///	  }
+        ///      }
         ///    }
         ///  }
         ///}.
@@ -11992,13 +12074,10 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;settings&quot;: {
         ///        &quot;in_meeting&quot;: {
         ///          &quot;custom_live_streaming_service&quot;: true
-        ///        }
-        ///      }
-        ///    },
-        ///    &quot;old_object&quot;: {
-        ///      &quot;id&quot;: &quot;eUulMKLnTMKX0pVvMAlB0Q&quot;,
-        ///      &quot;settings&quot;: {
-        ///    [rest of string was truncated]&quot;;.
+        ///        },
+        ///        &quot;ai&quot;: {
+        ///          &quot;whiteboard_content_generation&quot;: true,
+        ///          &quot;show_conversational_ai [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string user_settings_updated {
             get {
@@ -12018,7 +12097,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;date_time&quot;: &quot;2021-07-26T20:13:57Z&quot;,
         ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
         ///      &quot;version&quot;: &quot;5.7.4.1585&quot;,
-        ///      &quot;login_type&quot;: &quot;100&quot;
+        ///      &quot;login_type&quot;: 100
         ///    }
         ///  }
         ///}.
@@ -12041,7 +12120,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;date_time&quot;: &quot;2021-07-26T20:13:57Z&quot;,
         ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
         ///      &quot;version&quot;: &quot;5.7.4.1585&quot;,
-        ///      &quot;login_type&quot;: &quot;100&quot;
+        ///      &quot;login_type&quot;: 100
         ///    }
         ///  }
         ///}.
@@ -12055,23 +12134,24 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;user.tsp_created&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1234566789900,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;Mtgfdgfgd2lxiA&quot;,
         ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;operator_id&quot;: &quot;DYdgdg64567g8w&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
-        ///      &quot;id&quot;: &quot;DYbbbbf7dPkkg8w&quot;,
         ///      &quot;tsp_credentials&quot;: {
         ///        &quot;id&quot;: &quot;2&quot;,
         ///        &quot;conference_code&quot;: &quot;123456789&quot;,
         ///        &quot;leader_pin&quot;: &quot;123456&quot;,
-        ///        &quot;tsp_bridge&quot;: &quot;US_TSP_TB&quot;,
         ///        &quot;dial_in_numbers&quot;: [
         ///          {
         ///            &quot;code&quot;: &quot;1&quot;,
-        ///    [rest of string was truncated]&quot;;.
+        ///            &quot;number&quot;: &quot;123456789&quot;,
+        ///            &quot;type&quot;: &quot;toll&quot;
+        ///          },
+        ///          {
+        ///            &quot;code&quot;: [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string user_tsp_created {
             get {
@@ -12082,23 +12162,24 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;user.tsp_deleted&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1234566789900,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;Mtgfdgfgd2lxiA&quot;,
         ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;operator_id&quot;: &quot;DYdgdg64567g8w&quot;,
         ///    &quot;object&quot;: {
-        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
-        ///      &quot;id&quot;: &quot;DYbbbbf7dPkkg8w&quot;,
         ///      &quot;tsp_credentials&quot;: {
         ///        &quot;id&quot;: &quot;2&quot;,
         ///        &quot;conference_code&quot;: &quot;123456789&quot;,
         ///        &quot;leader_pin&quot;: &quot;123456&quot;,
-        ///        &quot;tsp_bridge&quot;: &quot;US_TSP_TB&quot;,
         ///        &quot;dial_in_numbers&quot;: [
         ///          {
         ///            &quot;code&quot;: &quot;1&quot;,
-        ///    [rest of string was truncated]&quot;;.
+        ///            &quot;number&quot;: &quot;123456789&quot;,
+        ///            &quot;type&quot;: &quot;toll&quot;
+        ///          },
+        ///          {
+        ///            &quot;code&quot;: [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string user_tsp_deleted {
             get {
@@ -12109,23 +12190,22 @@ namespace ZoomNet.UnitTests.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;user.tsp_updated&quot;,
-        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;event_ts&quot;: 1234566789900,
         ///  &quot;payload&quot;: {
-        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;account_id&quot;: &quot;Mtgfdgfgd2lxiA&quot;,
         ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;operator_id&quot;: &quot;DYdgdg64567g8w&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;id&quot;: &quot;DYbbbbf7dPkkg8w&quot;,
         ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
         ///      &quot;tsp_credentials&quot;: {
-        ///        &quot;id&quot;: &quot;2&quot;,
-        ///        &quot;conference_code&quot;: &quot;123456789&quot;,
-        ///        &quot;leader_pin&quot;: &quot;123456&quot;,
-        ///        &quot;tsp_bridge&quot;: &quot;US_TSP_TB&quot;,
+        ///        &quot;conference_code&quot;: &quot;0125&quot;,
+        ///        &quot;leader_pin&quot;: &quot;11189898&quot;,
         ///        &quot;dial_in_numbers&quot;: [
         ///          {
         ///            &quot;code&quot;: &quot;1&quot;,
-        ///    [rest of string was truncated]&quot;;.
+        ///            &quot;number&quot;: &quot;+1 1000200200&quot;,
+        ///            &quot;type&quot;: &quot;to [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string user_tsp_updated {
             get {
@@ -12156,6 +12236,47 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string user_updated {
             get {
                 return ResourceManager.GetString("user_updated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;video_management.channel_deleted&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;channel_id&quot;: &quot;iso9Dllddp39dagjLj9j&quot;,
+        ///      &quot;name&quot;: &quot;FoodieFlicks&quot;,
+        ///      &quot;owner_id&quot;: &quot;abc9Dllddp39dagjLj9j&quot;
+        ///    }
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string video_management_channel_deleted {
+            get {
+                return ResourceManager.GetString("video_management_channel_deleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;video_management.channel_owner_changed&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;channel_id&quot;: &quot;iso9Dllddp39dagjLj9j&quot;,
+        ///      &quot;name&quot;: &quot;FoodieFlicks&quot;,
+        ///      &quot;previous_owner_id&quot;: &quot;cgec9Dllddp39dagjLj08&quot;,
+        ///      &quot;new_owner_id&quot;: &quot;abc9Dllddp39dagjLj9j&quot;
+        ///    }
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string video_management_channel_owner_changed {
+            get {
+                return ResourceManager.GetString("video_management_channel_owner_changed", resourceCulture);
             }
         }
         
@@ -12393,7 +12514,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///      &quot;topic&quot;: &quot;My Webinar&quot;,
-        ///      &quot;type&quot;: 5,
+        ///      &quot;type&quot;: 2,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
@@ -12442,14 +12563,13 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;object&quot;: {
         ///      &quot;webinar_id&quot;: 1234567890,
         ///      &quot;webinar_uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;breakout_room_uuid&quot;: &quot;FkQbpP2UR028mDrwzEahqw==&quot;,
         ///      &quot;chat_message_file&quot;: {
-        ///        &quot;date_time&quot;: &quot;2022-01-10T07:20:10Z&quot;,
+        ///        &quot;date_time&quot;: &quot;GMT20220110-072010&quot;,
         ///        &quot;sender_session_id&quot;: &quot;26219520&quot;,
         ///        &quot;sender_name&quot;: &quot;Jill Chill&quot;,
         ///        &quot;sender_email&quot;: &quot;dlp.user@example.com&quot;,
-        ///        &quot;sender_type&quot;: &quot;host&quot;,
-        ///        &quot;recipient_session_id&quot;: &quot;38681600&quot;,
-        ///  [rest of string was truncated]&quot;;.
+        ///        &quot;sender_type&quot;:  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_chat_message_file_sent {
             get {
@@ -12459,20 +12579,21 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///    &quot;event&quot;: &quot;webinar.chat_message_sent&quot;,
-        ///    &quot;event_ts&quot;: 1626230691572,
-        ///    &quot;payload&quot;: {
-        ///        &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///        &quot;object&quot;: {
-        ///            &quot;id&quot;: 1234567890,
-        ///            &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///            &quot;chat_message&quot;: {
-        ///                &quot;date_time&quot;: &quot;2022-01-10T07:20:10Z&quot;,
-        ///                &quot;sender_session_id&quot;: &quot;26219520&quot;,
-        ///                &quot;sender_name&quot;: &quot;Jill Chill&quot;,
-        ///                &quot;sender_email&quot;: &quot;dlp.user@example.com&quot;,
-        ///                &quot;sender_type&quot;: &quot;host&quot;,
-        /// [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;webinar.chat_message_sent&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: 1234567890,
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;breakout_room_uuid&quot;: &quot;FkQbpP2UR028mDrwzEahqw==&quot;,
+        ///      &quot;chat_message&quot;: {
+        ///        &quot;date_time&quot;: &quot;GMT20220110-072010&quot;,
+        ///        &quot;sender_session_id&quot;: &quot;26219520&quot;,
+        ///        &quot;sender_name&quot;: &quot;Jill Chill&quot;,
+        ///        &quot;sender_email&quot;: &quot;dlp.user@example.com&quot;,
+        ///        &quot;sender_type&quot;: &quot;host&quot;,
+        ///        &quot;sender_c [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_chat_message_sent {
             get {
@@ -12490,16 +12611,15 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///      &quot;id&quot;: 1234567890,
+        ///      &quot;id&quot;: 9876543210,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///      &quot;topic&quot;: &quot;My Meeting&quot;,
-        ///      &quot;type&quot;: 8,
+        ///      &quot;topic&quot;: &quot;My Webinar Converted&quot;,
+        ///      &quot;type&quot;: 2,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///      &quot;duration&quot;: 60,
+        ///      &quot;duration&quot;: 45,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;
         ///    }
-        ///  }
-        ///}.
+        ///   [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_converted_to_meeting {
             get {
@@ -12561,24 +12681,22 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;webinar.ended&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;1234567890&quot;,
-        ///			&quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
-        ///			&quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///			&quot;topic&quot;: &quot;My Webinar&quot;,
-        ///			&quot;type&quot;: 5,
-        ///			&quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///			&quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///			&quot;duration&quot;: 60,
-        ///			&quot;end_time&quot;: &quot;2021-07-13T23:00:51Z&quot;,
-        ///			&quot;practice_session&quot;: true
-        ///		}
-        ///	}
-        ///}.
+        ///  &quot;event&quot;: &quot;webinar.ended&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;1234567890&quot;,
+        ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///      &quot;host_email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;topic&quot;: &quot;My Webinar&quot;,
+        ///      &quot;type&quot;: 5,
+        ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
+        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///      &quot;end_time&quot;: &quot;2021-07-13T23:00:51Z&quot;,
+        ///      &quot;duration&quot;: 60,
+        ///      &quot;practice_session&quot;:  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_ended {
             get {
@@ -12596,14 +12714,15 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;id&quot;: &quot;1234567890&quot;,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///      &quot;topic&quot;: &quot;My Webinar&quot;,
-        ///      &quot;type&quot;: 5,
+        ///      &quot;topic&quot;: &quot;My Meeting&quot;,
+        ///      &quot;type&quot;: 8,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
-        ///        &quot;bind_user_id&quot;:&quot;167782 [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
+        ///        &quot;bind_user_id&quot;: &quot;16778240&quot;,
+        ///       [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_participant_bind {
             get {
@@ -12687,19 +12806,22 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///    &quot;event&quot;: &quot;webinar.participant_feedback&quot;,
-        ///    &quot;event_ts&quot;: 1626230691572,
-        ///    &quot;payload&quot;: {
-        ///        &quot;account_id&quot;: &quot;q6gBJVO5TzexKYTb_I2rpg&quot;,
-        ///        &quot;object&quot;: {
-        ///            &quot;id&quot;: &quot;7357282288&quot;,
-        ///            &quot;uuid&quot;: &quot;0AErJTQBTI2bSXKyAxIq5A==&quot;,
-        ///            &quot;participant&quot;: {
-        ///                &quot;participant_uuid&quot;: &quot;I2rpg_q6gBJVO5TzexKYTb&quot;,
-        ///                &quot;participant_user_id&quot;: &quot;zJKyaiAyTNC-MWjiWC18KQ&quot;,
-        ///                &quot;user_name&quot;: &quot;jchill&quot;,
-        ///                &quot;feedback&quot;: {
-        ///                    &quot;satisfied&quot; [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;webinar.participant_feedback&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;q6gBJVO5TzexKYTb_I2rpg&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;7357282288&quot;,
+        ///      &quot;uuid&quot;: &quot;0AErJTQBTI2bSXKyAxIq5A==&quot;,
+        ///      &quot;participant&quot;: {
+        ///        &quot;participant_uuid&quot;: &quot;I2rpg_q6gBJVO5TzexKYTb&quot;,
+        ///        &quot;participant_user_id&quot;: &quot;zJKyaiAyTNC-MWjiWC18KQ&quot;,
+        ///        &quot;user_name&quot;: &quot;jchill&quot;,
+        ///        &quot;feedback&quot;: {
+        ///          &quot;satisfied&quot;: true,
+        ///          &quot;feedback_details&quot;: [
+        ///            {
+        ///              &quot;id [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_participant_feedback {
             get {
@@ -12718,13 +12840,14 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///      &quot;topic&quot;: &quot;My Webinar&quot;,
-        ///      &quot;type&quot;: 5,
+        ///      &quot;type&quot;: 9,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill C [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
+        ///        &quot;user_name&quot;: &quot;Jill Chill&quot;,
+        ///      [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_participant_joined {
             get {
@@ -12743,13 +12866,14 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///      &quot;topic&quot;: &quot;My Webinar&quot;,
-        ///      &quot;type&quot;: 5,
+        ///      &quot;type&quot;: 9,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill Chi [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
+        ///        &quot;user_name&quot;: &quot;Jill Chill&quot;,
+        ///        [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_participant_left {
             get {
@@ -12797,10 +12921,11 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;user_name&quot;: &quot;JillChill&quot;,
         ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
         ///        &quot;email&quot;: &quot;user@example.com&quot;,
-        ///         &quot;qos&quot; : [ {
-        ///          &quot;type&quot; : &quot;audio_output&quot;,
-        ///          &quot;details&quot; : {
-        ///            &quot;min_bitrate&quot; : &quot;6 kbps&quot;, [rest of string was truncated]&quot;;.
+        ///        &quot;qos&quot;: [
+        ///          {
+        ///            &quot;type&quot;: &quot;audio_output&quot;,
+        ///            &quot;details&quot;: {
+        ///              &quot;min_bitrate [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_participant_qos_summary {
             get {
@@ -12819,13 +12944,14 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///      &quot;topic&quot;: &quot;My Webinar&quot;,
-        ///      &quot;type&quot;: 5,
+        ///      &quot;type&quot;: 9,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;55555AAAiAAAAAiAiAiiAii&quot;,
-        ///        &quot;user_name&quot;: &quot; [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
+        ///        &quot;user_name&quot;: &quot;JillChill&quot;,
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_participant_role_changed {
             get {
@@ -12962,12 +13088,10 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;event&quot;: &quot;webinar.registration_denied&quot;,
+        ///  &quot;event&quot;: &quot;webinar.registration_created&quot;,
         ///  &quot;event_ts&quot;: 1626230691572,
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
-        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;id&quot;: 1234567890,
@@ -12977,7 +13101,10 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///      &quot;occurrences&quot; [rest of string was truncated]&quot;;.
+        ///      &quot;occurrences&quot;: [
+        ///        {
+        ///          &quot;occurrence_id&quot;: &quot;ABCDE12345&quot;,
+        ///          &quot;start_time&quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_registration_denied {
             get {
@@ -13009,6 +13136,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;webinar_uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///    &quot;operator_id&quot;: &quot;30R7kT7bTIKSNUFEuH_Qlg&quot;,
         ///    &quot;rtms_stream_id&quot;: &quot;609340fb2a7946909659956c8aa9250c&quot;,
+        ///    &quot;webinar_id&quot;: 85746065123,
+        ///    &quot;account_id&quot;: &quot;abcdefg123xyz&quot;,
+        ///    &quot;is_original_host&quot;: true,
         ///    &quot;server_urls&quot;: &quot;wss://127.0.0.1:443&quot;
         ///  }
         ///}.
@@ -13047,13 +13177,14 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///      &quot;topic&quot;: &quot;My Webinar&quot;,
-        ///      &quot;type&quot;: 5,
+        ///      &quot;type&quot;: 9,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill Chill&quot;,        /// [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;ABCDE12345&quot;,
+        ///        &quot;user_name&quot;: &quot;JillChill&quot;,
+        ///        &quot;sh [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_sharing_ended {
             get {
@@ -13072,13 +13203,14 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
         ///      &quot;topic&quot;: &quot;My Webinar&quot;,
-        ///      &quot;type&quot;: 5,
+        ///      &quot;type&quot;: 9,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill Chill&quot; [rest of string was truncated]&quot;;.
+        ///        &quot;user_id&quot;: &quot;ABCDE12345&quot;,
+        ///        &quot;user_name&quot;: &quot;JillChill&quot;,
+        ///        &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_sharing_started {
             get {
@@ -13096,8 +13228,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;id&quot;: &quot;1234567890&quot;,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
+        ///      &quot;host_email&quot;: &quot;jchill@example.com&quot;,
         ///      &quot;topic&quot;: &quot;My Webinar&quot;,
-        ///      &quot;type&quot;: 5,
+        ///      &quot;type&quot;: 9,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60
@@ -13120,15 +13253,16 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
         ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
         ///    &quot;scope&quot;: &quot;single&quot;,
-        ///    &quot;time_stamp&quot;: 1617628463664,
         ///    &quot;object&quot;: {
         ///      &quot;id&quot;: 1234567890,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;x1yCzABCDEfg23HiJKl4mN&quot;,
-        ///      &quot;topic&quot;: &quot;ZoomNet Unit Testing: UPDATED scheduled webinar&quot;,
+        ///      &quot;topic&quot;: &quot;My Webinar&quot;,
         ///      &quot;type&quot;: 9,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
-        ///  [rest of string was truncated]&quot;;.
+        ///      &quot;duration&quot;: 60,
+        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///      &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string webinar_updated {
             get {
@@ -13196,7 +13330,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;whiteboard_id&quot;: &quot;1234567890&quot;,
         ///      &quot;whiteboard_name&quot;: &quot;Q3 Plan&quot;,
         ///      &quot;whiteboard_type&quot;: 0,
-        ///      &quot;non_cloud&quot;:false
+        ///      &quot;non_cloud&quot;: false
         ///    }
         ///  }
         ///}.
@@ -13255,21 +13389,23 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///    &quot;event&quot;:&quot;whiteboard.share_setting_updated&quot;,
-        ///    &quot;event_ts&quot;:1626230691572,
-        ///    &quot;payload&quot;:{
-        ///        &quot;account_id&quot;:&quot;AAAAAABBBB&quot;,
-        ///        &quot;operator&quot;:&quot;admin@example.com&quot;,
-        ///        &quot;operator_id&quot;:&quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///        &quot;object&quot;:{
-        ///            &quot;whiteboard_id&quot;:&quot;BK0R3Lg-Toi92viKHhzUVQ&quot;,
-        ///            &quot;settings&quot;:{
-        ///                &quot;share_link_setting&quot;:{
-        ///                    &quot;share_scope&quot;:0,
-        ///                    &quot;share_role&quot;:4
-        ///                },
-        ///                &quot;advanced_share_setting&quot;:{
-        ///           [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;whiteboard.share_setting_updated&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;whiteboard_id&quot;: &quot;BK0R3Lg-Toi92viKHhzUVQ&quot;,
+        ///      &quot;settings&quot;: {
+        ///        &quot;share_link_setting&quot;: {
+        ///          &quot;share_scope&quot;: 0,
+        ///          &quot;share_role&quot;: 4
+        ///        },
+        ///        &quot;advanced_share_setting&quot;: {
+        ///          &quot;can_share&quot;: true,
+        ///          &quot;share_to_external&quot;: true,
+        ///        [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string whiteboard_share_settings_updated {
             get {
@@ -13356,7 +13492,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;operator_id&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
         ///    &quot;object&quot;: {
         ///      &quot;id&quot;: &quot;fqtckjhjhee89ruidvc2h6lc4g&quot;,
-        ///      &quot;workspace_name&quot; : &quot;Workspace Name&quot;
+        ///      &quot;workspace_name&quot;: &quot;Workspace Name&quot;
         ///    }
         ///  }
         ///}.
@@ -13412,22 +13548,42 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;workspace.reservation_checked_in&quot;,
-        ///	&quot;event_ts&quot;: &quot;290112312321&quot;,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;G3NQs8u1Qni4Pc-qBPgsxg&quot;,
-        ///		&quot;operator&quot; : &quot;admin@example.com&quot;,
-        ///	    &quot;operator_id&quot; : &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;fqtckjhjhee89ruidvc2h6lc4g&quot;,
-        ///			&quot;workspace_id&quot;: &quot;qwNQb8u1Qbi3Pc-qBPgshy&quot;,
-        ///			&quot;topic&quot;: &quot;Reserve Zoom Room-01&quot;,
-        ///			&quot;start_time&quot;: &quot;2022-01-19T02:10:00Z&quot;,
-        ///			&quot;end_time&quot;: &quot;2022-01-19T03:55:00Z&quot;,
-        ///			&quot;reserve_for&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;
-        ///		}
-        ///	}
-        ///}.
+        ///  &quot;event&quot;: &quot;workspace.pre_check_in_questionnaire_response_created&quot;,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;VQYZ9ytmTbaXK9Zr2LvIrg&quot;,
+        ///    &quot;operator&quot;: &quot;yuki-devint@zoom.us&quot;,
+        ///    &quot;operator_id&quot;: &quot;rZXNXVlVSTaSZDTJvLcBew&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;start_time&quot;: &quot;2024-02-14T03:50:00Z&quot;,
+        ///      &quot;event_id&quot;: &quot;dxpwbc2fi8tzz7d012rwx9u8c0&quot;,
+        ///      &quot;user_name&quot;: &quot;Simash pokh&quot;,
+        ///      &quot;desk_id&quot;: &quot;SJjU1CcGSs2L7odn6PanQw&quot;,
+        ///      &quot;workspace_name&quot;: &quot;test change date - Desk1&quot;,
+        ///      &quot;location_id&quot;: &quot;wnFFoWRwTLeww81UuAeW4g&quot;,
+        ///   [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string workspace_pre_check_in_questionnaire_response_created_ {
+            get {
+                return ResourceManager.GetString("workspace_pre_check_in_questionnaire_response_created ", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;workspace.reservation_checked_in&quot;,
+        ///  &quot;event_ts&quot;: &quot;290112312321&quot;,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;G3NQs8u1Qni4Pc-qBPgsxg&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;fqtckjhjhee89ruidvc2h6lc4g&quot;,
+        ///      &quot;workspace_id&quot;: &quot;qwNQb8u1Qbi3Pc-qBPgshy&quot;,
+        ///      &quot;topic&quot;: &quot;Reserve Zoom Room-01&quot;,
+        ///      &quot;start_time&quot;: &quot;2022-01-19T02:10:00Z&quot;,
+        ///      &quot;end_time&quot;: &quot;2022-01-19T03:55:00Z&quot;,
+        ///      &quot;reserve_for&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;
+        ///  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string workspace_reservation_checked_in {
             get {
@@ -13437,22 +13593,20 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;workspace.reservation_checked_out&quot;,
-        ///	&quot;event_ts&quot;: &quot;290112312321&quot;,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;G3NQs8u1Qni4Pc-qBPgsxg&quot;,
-        ///		&quot;operator&quot; : &quot;admin@example.com&quot;,
-        ///	    &quot;operator_id&quot; : &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;fqtckjhjhee89ruidvc2h6lc4g&quot;,
-        ///			&quot;workspace_id&quot;: &quot;qwNQb8u1Qbi3Pc-qBPgshy&quot;,
-        ///			&quot;topic&quot;: &quot;Reserve Zoom Room-01&quot;,
-        ///			&quot;start_time&quot;: &quot;2022-01-19T02:10:00Z&quot;,
-        ///			&quot;end_time&quot;: &quot;2022-01-19T03:55:00Z&quot;,
-        ///			&quot;reserve_for&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;
-        ///		}
-        ///	}
-        ///}.
+        ///  &quot;event&quot;: &quot;workspace.reservation_checked_out&quot;,
+        ///  &quot;event_ts&quot;: &quot;290112312321&quot;,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;G3NQs8u1Qni4Pc-qBPgsxg&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;fqtckjhjhee89ruidvc2h6lc4g&quot;,
+        ///      &quot;workspace_id&quot;: &quot;qwNQb8u1Qbi3Pc-qBPgshy&quot;,
+        ///      &quot;topic&quot;: &quot;Reserve Zoom Room-01&quot;,
+        ///      &quot;start_time&quot;: &quot;2022-01-19T02:10:00Z&quot;,
+        ///      &quot;end_time&quot;: &quot;2022-01-19T03:55:00Z&quot;,
+        ///      &quot;reserve_for&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string workspace_reservation_checked_out {
             get {
@@ -13485,22 +13639,20 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;workspace.reservation_deleted&quot;,
-        ///	&quot;event_ts&quot;: &quot;290112312321&quot;,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;G3NQs8u1Qni4Pc-qBPgsxg&quot;,
-        ///		&quot;operator&quot; : &quot;admin@example.com&quot;,
-        ///	    &quot;operator_id&quot; : &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;fqtckjhjhee89ruidvc2h6lc4g&quot;,
-        ///			&quot;workspace_id&quot;: &quot;qwNQb8u1Qbi3Pc-qBPgshy&quot;,
-        ///			&quot;topic&quot;: &quot;Reserve Zoom Room-01&quot;,
-        ///			&quot;start_time&quot;: &quot;2022-01-19T02:10:00Z&quot;,
-        ///			&quot;end_time&quot;: &quot;2022-01-19T03:55:00Z&quot;,
-        ///			&quot;reserve_for&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;
-        ///		}
-        ///	}
-        ///}.
+        ///  &quot;event&quot;: &quot;workspace.reservation_deleted&quot;,
+        ///  &quot;event_ts&quot;: &quot;290112312321&quot;,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;G3NQs8u1Qni4Pc-qBPgsxg&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;fqtckjhjhee89ruidvc2h6lc4g&quot;,
+        ///      &quot;workspace_id&quot;: &quot;qwNQb8u1Qbi3Pc-qBPgshy&quot;,
+        ///      &quot;topic&quot;: &quot;Reserve Zoom Room-01&quot;,
+        ///      &quot;start_time&quot;: &quot;2022-01-19T02:10:00Z&quot;,
+        ///      &quot;end_time&quot;: &quot;2022-01-19T03:55:00Z&quot;,
+        ///      &quot;reserve_for&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;
+        ///     [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string workspace_reservation_deleted {
             get {
@@ -13554,22 +13706,20 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;workspace.reservation_updated&quot;,
-        ///	&quot;event_ts&quot;: &quot;290112312321&quot;,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;G3NQs8u1Qni4Pc-qBPgsxg&quot;,
-        ///		&quot;operator&quot; : &quot;admin@example.com&quot;,
-        ///	    &quot;operator_id&quot; : &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;fqtckjhjhee89ruidvc2h6lc4g&quot;,
-        ///			&quot;workspace_id&quot;: &quot;qwNQb8u1Qbi3Pc-qBPgshy&quot;,
-        ///			&quot;topic&quot;: &quot;Reserve Zoom Room-01&quot;,
-        ///			&quot;start_time&quot;: &quot;2022-01-19T02:10:00Z&quot;,
-        ///			&quot;end_time&quot;: &quot;2022-01-19T03:55:00Z&quot;,
-        ///			&quot;reserve_for&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;
-        ///		}
-        ///	}
-        ///}.
+        ///  &quot;event&quot;: &quot;workspace.reservation_updated&quot;,
+        ///  &quot;event_ts&quot;: &quot;290112312321&quot;,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;G3NQs8u1Qni4Pc-qBPgsxg&quot;,
+        ///    &quot;operator&quot;: &quot;admin@example.com&quot;,
+        ///    &quot;operator_id&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;fqtckjhjhee89ruidvc2h6lc4g&quot;,
+        ///      &quot;workspace_id&quot;: &quot;qwNQb8u1Qbi3Pc-qBPgshy&quot;,
+        ///      &quot;topic&quot;: &quot;Reserve Zoom Room-01&quot;,
+        ///      &quot;start_time&quot;: &quot;2022-01-19T02:10:00Z&quot;,
+        ///      &quot;end_time&quot;: &quot;2022-01-19T03:55:00Z&quot;,
+        ///      &quot;reserve_for&quot;: &quot;I7zp-pYbTl22Z29H796Ixg&quot;
+        ///     [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string workspace_reservation_update {
             get {
@@ -13588,7 +13738,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;object&quot;: {
         ///      &quot;id&quot;: &quot;fqtckjhjhee89ruidvc2h6lc4g&quot;,
         ///      &quot;workspace_name&quot;: &quot;My updated workspace&quot;
-        ///      }
+        ///    }
         ///  }
         ///}.
         /// </summary>
@@ -13867,21 +14017,22 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///    &quot;event&quot;: &quot;zoom_events.session_ended&quot;,
-        ///    &quot;event_ts&quot;: 1626230691572,
-        ///    &quot;payload&quot;: {
-        ///        &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///        &quot;object&quot;: {
-        ///            &quot;event_id&quot;: &quot;1234567890abcd&quot;,
-        ///            &quot;host_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
-        ///            &quot;session_id&quot;: &quot;1234567890abcd&quot;,
-        ///            &quot;name&quot;: &quot;My Session-1&quot;,
-        ///            &quot;type&quot;: 2,
-        ///            &quot;start_time&quot;: &quot;2023-07-13T21:44:51Z&quot;,
-        ///            &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///            &quot;end_time&quot;: &quot;2023-07-13T23:00:51Z&quot;
-        ///        }
-        ///     [rest of string was truncated]&quot;;.
+        ///  &quot;event&quot;: &quot;zoom_events.session_ended&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;event_id&quot;: &quot;1234567890abcd&quot;,
+        ///      &quot;host_id&quot;: &quot;z8yCxjabcdEFGHfp8uQ&quot;,
+        ///      &quot;session_id&quot;: &quot;1234567890abcd&quot;,
+        ///      &quot;name&quot;: &quot;My Session-1&quot;,
+        ///      &quot;type&quot;: 2,
+        ///      &quot;start_time&quot;: &quot;2023-07-13T21:44:51Z&quot;,
+        ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
+        ///      &quot;end_time&quot;: &quot;2023-07-13T23:00:51Z&quot;
+        ///    }
+        ///  }
+        ///}.
         /// </summary>
         internal static string zoom_events_session_ended {
             get {
@@ -14186,12 +14337,13 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;payload&quot;: {
         ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
         ///    &quot;object&quot;: {
-        ///        &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
-        ///        &quot;room_name&quot;: &quot;My Zoom Room&quot;,
-        ///        &quot;calendar_name&quot;: &quot;mycalendar@example.com&quot;,
-        ///        &quot;email&quot;: &quot;jchill@example.com&quot;,
-        ///        &quot;event_id&quot;: &quot;AbbbbbGYxLTc3OTVkMzFmZDc0MwBGAAAAAAD48FI58voYSqDgJePOSZblBwBQ/N0JvB/FRqv5UT2rFfkVAAAAAAENAABQ/N0JvB/FRqv5UT2rFfkVAAE2YC8DAAA=&quot;,
-        ///        &quot;change_key&quot;: &quot;DwAAABYAAABQ/N0JvB/FRqv5UT2rFfkVAAE2XqVw&quot;,        /// [rest of string was truncated]&quot;;.
+        ///      &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
+        ///      &quot;room_name&quot;: &quot;My Zoom Room&quot;,
+        ///      &quot;calendar_name&quot;: &quot;mycalendar@example.com&quot;,
+        ///      &quot;email&quot;: &quot;jchill@example.com&quot;,
+        ///      &quot;event_id&quot;: &quot;AbbbbbGYxLTc3OTVkMzFmZDc0MwBGAAAAAAD48FI58voYSqDgJePOSZblBwBQ/N0JvB/FRqv5UT2rFfkVAAAAAAENAABQ/N0JvB/FRqv5UT2rFfkVAAE2YC8DAAA=&quot;,
+        ///      &quot;change_key&quot;: &quot;DwAAABYAAABQ/N0JvB/FRqv5UT2rFfkVAAE2XqVw&quot;,
+        ///      &quot;reso [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string zoomroom_checked_in {
             get {
@@ -14285,18 +14437,18 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;zoomroom.digital_signage_app_ended&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;room_id&quot;: &quot;abcD3ojfdbjfg&quot;,
-        ///			&quot;app_name&quot;: &quot;My Zoom Room&quot;,
-        ///			&quot;app_id&quot;: &quot;NiVvY1NWpE2nulNrhVjgU4jD0swziVrXBbaFZyC3u+o=&quot;,
-        ///			&quot;start_time&quot;: &quot;2022-06-19T00:00:00Z&quot;,
-        ///            &quot;end_time&quot;: &quot;2022-06-19T01:01:00Z&quot;
-        ///		}
-        ///	}
+        ///  &quot;event&quot;: &quot;zoomroom.digital_signage_app_ended&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;room_id&quot;: &quot;abcD3ojfdbjfg&quot;,
+        ///      &quot;app_name&quot;: &quot;My Zoom Room&quot;,
+        ///      &quot;app_id&quot;: &quot;NiVvY1NWpE2nulNrhVjgU4jD0swziVrXBbaFZyC3u+o=&quot;,
+        ///      &quot;start_time&quot;: &quot;2022-06-19T00:00:00Z&quot;,
+        ///      &quot;end_time&quot;: &quot;2022-06-19T01:01:00Z&quot;
+        ///    }
+        ///  }
         ///}.
         /// </summary>
         internal static string zoomroom_digital_signage_app_ended {
@@ -14307,18 +14459,18 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;zoomroom.digital_signage_play_started&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;room_id&quot;: &quot;abcD3ojfdbjfg&quot;,
-        ///			&quot;app_name&quot;: &quot;My Zoom Room&quot;,
-        ///			&quot;app_id&quot;: &quot;NiVvY1NWpE2nulNrhVjgU4jD0swziVrXBbaFZyC3u+o=&quot;,
-        ///			&quot;start_time&quot;: &quot;2022-06-19T00:00:00Z&quot;,
-        ///            &quot;end_time&quot;: &quot;2022-06-19T01:01:00Z&quot;
-        ///		}
-        ///	}
+        ///  &quot;event&quot;: &quot;zoomroom.digital_signage_play_started&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;room_id&quot;: &quot;abcD3ojfdbjfg&quot;,
+        ///      &quot;app_name&quot;: &quot;My Zoom Room&quot;,
+        ///      &quot;app_id&quot;: &quot;NiVvY1NWpE2nulNrhVjgU4jD0swziVrXBbaFZyC3u+o=&quot;,
+        ///      &quot;start_time&quot;: &quot;2022-06-19T00:00:00Z&quot;,
+        ///      &quot;end_time&quot;: &quot;2022-06-19T01:01:00Z&quot;
+        ///    }
+        ///  }
         ///}.
         /// </summary>
         internal static string zoomroom_digital_signage_app_started {
@@ -14398,21 +14550,23 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;zoomroom.sensor_data&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
-        ///			&quot;room_name&quot;: &quot;My Zoom Room&quot;,
-        ///			&quot;device_id&quot;: &quot;NiVvY1NWpE2nulNrhVjgU4jD0swziVrXBbaFZyC3u+o=&quot;,
-        ///			&quot;sensor_data&quot;: [{
-        ///				&quot;date_time&quot;: &quot;2022-06-19T00:00:00Z&quot;,
-        ///				&quot;sensor_type&quot;: &quot;REAL_TIME_PEOPLE_COUNT&quot;,
-        ///				&quot;sensor_value&quot;: &quot;20&quot;
-        ///			}]
-        ///		}
-        ///	}
+        ///  &quot;event&quot;: &quot;zoomroom.sensor_data&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;id&quot;: &quot;abcD3ojfdbjfg&quot;,
+        ///      &quot;room_name&quot;: &quot;My Zoom Room&quot;,
+        ///      &quot;device_id&quot;: &quot;NiVvY1NWpE2nulNrhVjgU4jD0swziVrXBbaFZyC3u+o=&quot;,
+        ///      &quot;sensor_data&quot;: [
+        ///        {
+        ///          &quot;date_time&quot;: &quot;2022-06-19T00:00:00Z&quot;,
+        ///          &quot;sensor_type&quot;: &quot;REAL_TIME_PEOPLE_COUNT&quot;,
+        ///          &quot;sensor_value&quot;: &quot;20&quot;
+        ///        }
+        ///      ]
+        ///    }
+        ///  }
         ///}.
         /// </summary>
         internal static string zoomroom_sensor_data {
@@ -14423,20 +14577,20 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///	&quot;event&quot;: &quot;zoomroom.thirdparty_meeting_attempted&quot;,
-        ///	&quot;event_ts&quot;: 1626230691572,
-        ///	&quot;payload&quot;: {
-        ///		&quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
-        ///		&quot;object&quot;: {
-        ///			&quot;room_id&quot;: &quot;abcD3ojfdbjfg&quot;,
-        ///            &quot;join_time&quot;: &quot;2022-07-27T16:56:34Z&quot;,
-        ///            &quot;meeting_source_type&quot;: &quot;ZOOM&quot;,
-        ///            &quot;join_url&quot;: &quot;url&quot;,
-        ///            &quot;sip_address&quot;: &quot;sip address&quot;,
-        ///            &quot;third_party_meeting_id&quot;: &quot;12121313123&quot;,
-        ///            &quot;passcode&quot;: &quot;123&quot;
-        ///		}
-        ///	}
+        ///  &quot;event&quot;: &quot;zoomroom.thirdparty_meeting_attempted&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AAAAAABBBB&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;room_id&quot;: &quot;abcD3ojfdbjfg&quot;,
+        ///      &quot;join_time&quot;: &quot;2022-07-27T16:56:34Z&quot;,
+        ///      &quot;meeting_source_type&quot;: &quot;ZOOM&quot;,
+        ///      &quot;join_url&quot;: &quot;url&quot;,
+        ///      &quot;sip_address&quot;: &quot;sip address&quot;,
+        ///      &quot;third_party_meeting_id&quot;: &quot;12121313123&quot;,
+        ///      &quot;passcode&quot;: &quot;123&quot;
+        ///    }
+        ///  }
         ///}.
         /// </summary>
         internal static string zoomroom_thirdparty_meeting_attempted {

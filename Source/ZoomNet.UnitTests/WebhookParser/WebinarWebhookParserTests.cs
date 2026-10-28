@@ -439,7 +439,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 			info.Id.ShouldBe(MeetingId);
 			info.Uuid.ShouldBe(MeetingUuid);
 			info.HostId.ShouldBe(HostId);
-			info.Topic.ShouldBe("My Webinar");
+			info.Topic.ShouldBe("My Meeting Converted");
 			info.Type.ShouldBe(WebinarType.Regular);
 			info.StartTime.ShouldBe(timestamp);
 			info.Timezone.ShouldBe(TimeZones.America_Los_Angeles);
@@ -500,7 +500,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			VerifyWebinarInfo(parsedEvent.Webinar);
 
-			VerifyScreenshareDetails(parsedEvent.ScreenshareDetails);
+			VerifyScreenshareDetails(parsedEvent.ScreenshareDetails, new DateTime(2021, 7, 13, 21, 56, 0, 0, DateTimeKind.Utc));
 		}
 
 		#endregion

@@ -702,7 +702,8 @@
       "enable": true,
       "auto_enable": false,
       "who_can_ask_questions": "panelist_org"
-    }
+    },
+    "ai_model_type": "ZMO"
   },
   "authentication_options": [
     {
@@ -748,6 +749,43 @@
       "users_who_can_admit_participants_from_waiting_room": 1,
       "whitelisted_domains_for_waiting_room": "example.com"
     },
-    "webinar_password": true
+    "webinar_password": true,
+    "meeting_waiting_room_branding": {
+      "logo": {
+        "file_id": "8oGZC9WeQzC4wLKz5Yy8Bw",
+        "file_name": "logo.png",
+        "description": "Thank you for joining. The host will start the meeting shortly."
+      },
+      "image": {
+        "file_id": "3nR7pQ1sT9uVxYzAaBbCcD",
+        "file_name": "background.png"
+      },
+      "video": {
+        "file_id": "7hJ2kL4mN6oP8qR0sT2uVw",
+        "file_name": "welcome.mp4"
+      },
+      "title": "Please wait, the host will let you in soon.",
+      "participant_will_see": "image",
+      "default_image": "customize"
+    },
+    "webinar_waiting_room_branding": {
+      "logo": {
+        "file_id": "8oGZC9WeQzC4wLKz5Yy8Bw",
+        "file_name": "logo.png",
+        "description": "Thank you for joining. The host will start the meeting shortly."
+      },
+      "image": {
+        "file_id": "3nR7pQ1sT9uVxYzAaBbCcD",
+        "file_name": "background.png"
+      },
+      "video": {
+        "file_id": "7hJ2kL4mN6oP8qR0sT2uVw",
+        "file_name": "welcome.mp4"
+      },
+      "title": "Please wait, the host will let you in soon.",
+      "participant_will_see": "image",
+      "default_image": "customize",
+      "default_video": "customizeVideos"
+    }
   }
 }

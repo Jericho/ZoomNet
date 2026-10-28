@@ -5,6 +5,7 @@
     "session_id": "4567UVWxYZABCdEfGhiJkl==",
     "session_key": "ABC36jaBI145",
     "rtms_stream_id": "609340fb2a7946909659956c8aa9250c",
+    "account_id": "abcdefg123xyz",
     "server_urls": "wss://127.0.0.1:443"
   }
 }

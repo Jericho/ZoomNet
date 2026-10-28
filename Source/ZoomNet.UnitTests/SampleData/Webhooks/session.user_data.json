@@ -11,6 +11,7 @@
         "id": "25508864",
         "name": "example",
         "user_key": "ASD74dfDI854",
+        "is_original_host": true,
         "data": [
           {
             "device": "WIN",
@@ -36,7 +37,8 @@
             "as_internal_ip_address": "127.0.0.1",
             "as_internal_ip_port": "5060",
             "destination_ip_domain": "example.com",
-            "destination_ip_port": "5000"
+            "destination_ip_port": "5000",
+            "rc_reason": "Client crash"
           }
         ]
       }

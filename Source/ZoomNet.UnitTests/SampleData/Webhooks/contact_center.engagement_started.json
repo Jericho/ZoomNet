@@ -11,7 +11,9 @@
       "flow_name": "My Flow",
       "transfer_from": "zoom_phone",
       "transfer_from_id": "7396294160320498337",
-      "date_time_ms": "2023-05-01T09:27:15.987Z"
+      "date_time_ms": "2023-05-01T09:27:15.987Z",
+      "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+      "division_name": "EMEA Operations"
     }
   }
 }

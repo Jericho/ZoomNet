@@ -1,8 +1,6 @@
 {
   "event": "phone.emergency_alert",
-  "event_ts": 1626230691572,
   "payload": {
-    "account_id": "AAAAAABBBB",
     "object": {
       "caller": {
         "id": "DnEopNmXQEGU2uvvzjgojw",
@@ -11,8 +9,7 @@
         "display_name": "pbxta api",
         "extension_type": "user",
         "site_id": "8f71O6rWT8KFUGQmJIFAdQ",
-        "site_name": "Main Site",
-        "phone_number": "+12192818492"
+        "site_name": "Main Site"
       },
       "callee": {
         "phone_number": "933"
@@ -28,18 +25,14 @@
           "fc:7f:49:12:45:01"
         ]
       },
+      "location_type": 0,
       "router": "ZOOM",
-      "call_id": "6998252113337041462",
-      "ringing_start_time": "2021-08-19T21:12:28Z",
-      "emergency_address": {
-        "address_line1": "55 ALMADEN BLVD",
-        "address_line2": "8 Floor",
-        "city": "San Jose",
-        "country": "US",
-        "state_code": "CA",
-        "zip": "95113"
-      },
+      "call_id": "6998308626516675500",
+      "ringing_start_time": "2021-08-20T00:51:52Z",
+      "emergency_address": {},
       "deliver_to": "SAFETY_TEAM"
-    }
-  }
+    },
+    "account_id": "TQTvjT52Tmi_wrhASNNOEw"
+  },
+  "event_ts": 1629420725562
 }

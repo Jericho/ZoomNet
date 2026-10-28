@@ -24,12 +24,20 @@
       "transfer_to_queue_name": "My Transfer Queue",
       "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
       "user_display_name": "John Smith",
+      "teams": [
+        {
+          "team_id": "cLEZQivXRSq2YFOUkW3ctw",
+          "team_name": "My team"
+        }
+      ],
       "transfer_to_user_id": "WTTRVy3gQ2i-WjoUIjeHzh",
       "transfer_to_user_display_name": "Jane Smith",
       "consumer_id": "zeYjXoDOS_eV1QmTpj63PQ",
       "consumer_display_name": "John Doe",
       "consumer_number": "+18005550101",
-      "date_time_ms": "2021-12-03T05:07:46.987Z"
+      "date_time_ms": "2021-12-03T05:07:46.987Z",
+      "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+      "division_name": "EMEA Operations"
     }
   }
 }

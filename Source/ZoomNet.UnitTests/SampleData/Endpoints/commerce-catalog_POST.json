@@ -121,7 +121,13 @@
               "value_type": "Boolean",
               "value": "true"
             }
-          ]
+          ],
+          "zoom_universal_hierarchy": {
+            "product_family": "Meetings",
+            "product_group": "Meetings",
+            "product_line_group": "Education Meeting",
+            "product_line": "Zoom Education Pro"
+          }
         }
       ]
     }

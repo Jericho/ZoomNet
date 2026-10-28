@@ -39,7 +39,8 @@
     "ai_reply": true,
     "ai_sentence_completion": true,
     "ai_quick_schedule": true,
-    "survey_poll": true
+    "survey_poll": true,
+    "default_channel_type": false
   },
   "email_notification": {
     "alternative_host_reminder": true,
