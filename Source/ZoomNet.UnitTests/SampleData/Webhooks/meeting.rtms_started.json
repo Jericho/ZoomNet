@@ -5,6 +5,9 @@
     "meeting_uuid": "4444AAAiAAAAAiAiAiiAii==",
     "operator_id": "30R7kT7bTIKSNUFEuH_Qlg",
     "rtms_stream_id": "609340fb2a7946909659956c8aa9250c",
+    "meeting_id": 85746065123,
+    "account_id": "abcdefg123xyz",
+    "is_original_host": true,
     "server_urls": "wss://127.0.0.1:443"
   }
 }

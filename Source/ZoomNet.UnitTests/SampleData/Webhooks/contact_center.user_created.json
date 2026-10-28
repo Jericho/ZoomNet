@@ -17,11 +17,32 @@
       "channel_settings": {
         "multi_channel_engagements": {
           "enable": true,
-          "max_agent_load": 50
+          "max_agent_load": 50,
+          "email_max_agent_load": 50
         },
-        "concurrent_message_capacity": 4
+        "concurrent_message_capacity": 4,
+        "concurrent_email_capacity": 20,
+        "messaging_occupied": true,
+        "email_occupied": true
       },
-      "date_time_ms": "2023-03-01T00:00:00.987Z"
+      "emergency_calling": true,
+      "user_intents": [
+        {
+          "intent_id": "OlK7lczzT_e7h6p1Q6wGdg",
+          "intent_group_id": "Ql3qxUWXSHes4PmcOmzyOg"
+        }
+      ],
+      "user_package": {
+        "package_name": "essentials"
+      },
+      "user_add_ons_plans": [
+        {
+          "add_ons_plan_name": "ai_expert_assist"
+        }
+      ],
+      "date_time_ms": "2023-03-01T00:00:00.987Z",
+      "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+      "division_name": "EMEA Operations"
     }
   }
 }

@@ -1,8 +1,8 @@
 {
   "event": "meeting.sharing_ended",
-  "event_ts": 1234566789900,
+  "event_ts": 1626230691572,
   "payload": {
-    "account_id": "EPeQtiABC000VYxHMA",
+    "account_id": "AAAAAABBBB",
     "object": {
       "id": "1234567890",
       "uuid": "4444AAAiAAAAAiAiAiiAii==",
@@ -13,14 +13,14 @@
       "timezone": "America/Los_Angeles",
       "duration": 60,
       "participant": {
-        "user_id": "16778000",
-        "user_name": "Arya Arya",
-        "id": "s0AAAASoSE1V8KIFOCYw",
+        "user_id": "ABCDE12345",
+        "user_name": "JillChill",
+        "id": "iFxeBPYun6SAiWUzBcEkX",
         "sharing_details": {
           "content": "application",
           "link_source": "in_meeting",
-          "file_link": "https://shared",
-          "date_time": "2021-07-13T21:55:52Z",
+          "file_link": "",
+          "date_time": "2021-07-13T21:56:00Z",
           "source": "dropbox"
         }
       }

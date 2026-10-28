@@ -6,8 +6,8 @@
     "object": {
       "metric": "meeting_stat_per_zone",
       "field": "attendees_count",
-      "value": 0.0,
-      "threshold": 0.0,
+      "value": 0,
+      "threshold": 0,
       "operator": ">=",
       "level": "error",
       "zone": "batch-install-zone"

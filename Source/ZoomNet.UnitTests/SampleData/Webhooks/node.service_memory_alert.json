@@ -23,7 +23,7 @@
       "metric": "docker_memory",
       "field": "used",
       "value": 8980.48,
-      "threshold": 0.0,
+      "threshold": 0,
       "operator": ">",
       "level": "warn",
       "container": "mra"

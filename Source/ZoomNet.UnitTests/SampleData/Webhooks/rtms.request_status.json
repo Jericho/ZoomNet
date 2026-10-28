@@ -1,0 +1,13 @@
+{
+  "event": "rtms.request_status",
+  "event_ts": 1626230691572,
+  "payload": {
+    "operator_id": "30R7kT7bTIKSNUFEuH_Qlg",
+    "id_field": {
+      "meeting_uuid": "4444AAAiAAAAAiAiAiiAii=="
+    },
+    "rtms_stream_id": "aa13f8debb2a45c689211a3ddcda53e4",
+    "reboot_in_minutes": 360,
+    "reason": 1
+  }
+}

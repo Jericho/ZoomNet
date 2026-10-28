@@ -1,19 +1,26 @@
 {
-	"event": "meeting.deleted",
-	"event_ts": 1617628462764,
-	"payload": {
-		"account_id": "VjZoEArIT5y-HlWxkV-tVA",
-		"operator": "someone@example.com",
-		"operator_id": "8lzIwvZTSOqjndWPbPqzuA",
-		"operation": "single",
-		"object": {
-			"uuid": "5yDZGNlQSV6qOjg4NxajHQ==",
-			"id": 98884753832,
-			"host_id": "8lzIwvZTSOqjndWPbPqzuA",
-			"topic": "ZoomNet Unit Testing: instant meeting",
-			"type": 1,
-			"duration": 60,
-			"timezone": "America/New_York"
-		}
-	}
+  "event": "meeting.deleted",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator": "admin@example.com",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "operation": "single",
+    "object": {
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "id": 1234567890,
+      "host_id": "x1yCzABCDEfg23HiJKl4mN",
+      "topic": "My Meeting",
+      "type": 8,
+      "start_time": "2021-07-13T21:44:51Z",
+      "duration": 60,
+      "timezone": "America/Los_Angeles",
+      "occurrences": [
+        {
+          "occurrence_id": "ABCDE12345",
+          "start_time": "2021-07-13T21:44:51Z"
+        }
+      ]
+    }
+  }
 }

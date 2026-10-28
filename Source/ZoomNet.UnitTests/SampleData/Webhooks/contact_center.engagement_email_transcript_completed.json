@@ -11,7 +11,9 @@
       "flow_id": "ZWWC0A840C726C2CE3ACF01041CB8CFD8B9",
       "flow_name": "Email Flow",
       "transcript_url": "https://api.zoom.us/v2/contact_center/email/messages?engagement_id=u1ASlK83fZb54t5-1YWqgw&direction=forward&page_size=30",
-      "date_time_ms": "2025-07-15T08:12:15.987Z"
+      "date_time_ms": "2025-07-15T08:12:15.987Z",
+      "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+      "division_name": "EMEA Operations"
     }
   }
 }

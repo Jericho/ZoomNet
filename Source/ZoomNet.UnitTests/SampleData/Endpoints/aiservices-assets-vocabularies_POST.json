@@ -1,0 +1,8 @@
+{
+  "vocabulary_id": "acct_vocab_abc123",
+  "language": "en-US",
+  "phrases": [
+    "Acme"
+  ],
+  "name": "vocabulary name"
+}

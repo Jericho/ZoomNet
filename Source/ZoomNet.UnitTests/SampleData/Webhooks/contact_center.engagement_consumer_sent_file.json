@@ -16,6 +16,12 @@
       "consumer_number": "+18005550101",
       "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
       "user_display_name": "John Doe",
+      "teams": [
+        {
+          "team_id": "cLEZQivXRSq2YFOUkW3ctw",
+          "team_name": "My team"
+        }
+      ],
       "flow_number": "+18005550100",
       "consumer_id": "szCyubr_aQhieHNWYbAGMYg",
       "consumer_display_name": "Jane Doe",
@@ -24,9 +30,12 @@
           "file_id": "Chh7WtzyTaa-PIvsSpfwmA",
           "file_name": "My Image",
           "file_size": 1796,
-          "file_type": "Image"
+          "file_type": "Image",
+          "download_url": "https://www.zoom.us/v2/contact_center/attachments/0AYFv9ePSsmPUSJYHorUWQ/download?type=messaging_attachment"
         }
-      ]
+      ],
+      "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+      "division_name": "EMEA Operations"
     }
   }
 }

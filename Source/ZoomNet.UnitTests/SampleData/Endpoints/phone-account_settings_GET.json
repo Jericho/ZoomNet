@@ -90,9 +90,6 @@
     "locked_by": "account",
     "recording_calls": "inbound",
     "recording_transcription": true,
-    "recording_start_prompt": true,
-    "recording_start_prompt_audio_id": "ySMexBgBQsioV8KKCUybTA",
-    "recording_explicit_consent": true,
     "allow_stop_resume_recording": true,
     "disconnect_on_recording_failure": true,
     "play_recording_beep_tone": {

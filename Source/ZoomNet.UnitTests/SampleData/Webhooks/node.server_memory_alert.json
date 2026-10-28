@@ -16,8 +16,8 @@
       },
       "metric": "node_memory",
       "field": "used",
-      "value": 875692.0,
-      "threshold": 114688.0,
+      "value": 875692,
+      "threshold": 114688,
       "operator": ">",
       "level": "error"
     }

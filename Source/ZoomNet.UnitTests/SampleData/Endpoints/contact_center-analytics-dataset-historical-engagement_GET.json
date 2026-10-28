@@ -51,6 +51,10 @@
           "team_name": "jack_team"
         }
       ],
+      "work_item_type": {
+        "work_item_type_id": "BtfGbUfSQoedk4iIeql9qw",
+        "work_item_type_name": "work item type example"
+      },
       "duration": 35678,
       "handle_duration": 17922,
       "conversation_duration": 16901,

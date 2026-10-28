@@ -1,6 +1,8 @@
 {
   "event": "interactive_message_editable",
   "event_ts": 1560891135776,
+  "callback_url": "https://api.zoom.us/v2/im/chat/callback/bKFS3ybORiWbJx6VM6Qe1A",
+  "callback_token": "eyJzdiI6IjAwMDAwMSIsInR5cCI6IkpXVCIsImFsZyI6IkVTMjU2In0.eyJhdWQiOiJib3QiLCJ1aWQiOiJWV2ZQa1NENVJvMk5xRWUyR1VMa2F3IiwiY2xpZW50SWQiOiJRQmZVaEFyUlNHVVFVclM2ZDFXVnciLCJpc3MiOiJ6b29tIiwiZXhwIjoxNzYwMzYzNzc5LCJpYXQiOjE3NjAzMzM3NzksImFpZCI6InQ4dURPZWtYUkx5b3ExR0M4UFBaTVEifQ.wBeNSNeYLQYJD1Lp0O0EnnfyCYNzF03tEwFin0-hRV7UfECLmHsW7NnQ9EEPGxOokDKnQb-pRPd_iBX4JKfg_Q",
   "payload": {
     "accountId": "gVcjZnWWRLWvv_GtyGuaxg",
     "channelName": "Jill Chill",

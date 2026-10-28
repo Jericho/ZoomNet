@@ -12,7 +12,9 @@
         "service_level_exclude_long_abandoned_calls": true,
         "service_level_exclude_abandoned_quit_engagements": true,
         "service_level_target_in_percentage": 80
-      }
+      },
+      "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+      "division_name": "EMEA Operations"
     }
   }
 }

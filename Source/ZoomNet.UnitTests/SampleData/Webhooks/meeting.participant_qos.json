@@ -21,9 +21,9 @@
               "max_loss": "0.0%",
               "quality": "good",
               "quality_score": "3.65",
-              "min_rssi": -56,
-              "avg_rssi": -50,
-              "max_rssi": -44,
+              "min_rssi": "-56",
+              "avg_rssi": "-50",
+              "max_rssi": "-44",
               "rssi_unit": "dBm"
             }
           }

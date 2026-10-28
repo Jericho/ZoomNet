@@ -1,0 +1,17 @@
+{
+  "workspace_permission": {
+    "enabled": true,
+    "allow_user_ids": [
+      "zwKiV80hQ7CwRg9BEm0Bvw"
+    ],
+    "allow_user_group_ids": [
+      "xGm7n9PTQGe5fT0S9sR2Dw"
+    ],
+    "non_supported_reason": "This workspace is part of a neighborhood or already assigned, so restricted-user rules can\u2019t be applied."
+  },
+  "capacity": 8,
+  "reservation_admin": [
+    "admin1@zoom.us"
+  ],
+  "required_approve": true
+}

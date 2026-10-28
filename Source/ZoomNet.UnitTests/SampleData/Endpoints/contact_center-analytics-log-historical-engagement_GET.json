@@ -86,7 +86,11 @@
       "survey_id": "sghewyDF73FDE",
       "aiea_used": "not_used",
       "focus_duration": 10000,
-      "aiea_flagged": "flagged"
+      "aiea_flagged": "flagged",
+      "work_item_type": {
+        "work_item_type_id": "BtfGbUfSQoedk4iIeql9qw",
+        "work_item_type_name": "work item type example"
+      }
     }
   ],
   "page_size": 30,

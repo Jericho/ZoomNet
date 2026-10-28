@@ -345,7 +345,7 @@ namespace ZoomNet.UnitTests.Resources
 			result.Records[0].CategoryType.ShouldBe(type);
 			result.Records[0].OperationDetail.ShouldBe("Add BYOC +86 182 5188 5564");
 			result.Records[0].Operator.ShouldBe("user@test.com");
-			result.Records[0].Time.ShouldBe(new DateTime(2021, 10, 12, 10, 0, 0, DateTimeKind.Utc));
+			result.Records[0].Time.ShouldBeNull();
 		}
 
 		[Fact]

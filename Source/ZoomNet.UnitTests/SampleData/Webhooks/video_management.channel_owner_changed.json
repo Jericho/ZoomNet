@@ -1,0 +1,13 @@
+{
+  "event": "video_management.channel_owner_changed",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "object": {
+      "channel_id": "iso9Dllddp39dagjLj9j",
+      "name": "FoodieFlicks",
+      "previous_owner_id": "cgec9Dllddp39dagjLj08",
+      "new_owner_id": "abc9Dllddp39dagjLj9j"
+    }
+  }
+}

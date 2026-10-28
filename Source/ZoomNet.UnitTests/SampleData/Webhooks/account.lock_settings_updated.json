@@ -1,5 +1,5 @@
 {
-	"event": "account.lock_settings_updated",
+  "event": "account.lock_settings_updated",
   "event_ts": 1626230691572,
   "payload": {
     "account_id": "AAAAAABBBB",
@@ -9,18 +9,138 @@
       "settings": {
         "recording": {
           "auto_recording": "cloud"
-				}
-			},
+        },
+        "ai": {
+          "whiteboard_content_generation": true,
+          "show_conversational_ai_companion": {
+            "enabled": true,
+            "enable_zoom_mate": true,
+            "delete_ai_conversation": true,
+            "delete_ai_conversation_time": true
+          },
+          "ai_panel_in_workplace": {
+            "enabled": true,
+            "delete_ai_conversation": true,
+            "delete_ai_conversation_time": true
+          },
+          "enable_ai_on_web": true,
+          "enable_email_compose_with_ai": true,
+          "microsoft_365": {
+            "enable": true
+          },
+          "google": {
+            "enable": true
+          },
+          "web_content": true,
+          "local_file_uploads": true,
+          "organization_custom_dictionaries": true,
+          "third_party_app_tasks": true,
+          "webinar_summary_follow_up_email": false,
+          "webinar_summary_ocr": false,
+          "zoom_events_session_summary": {
+            "enable": false,
+            "auto_start": false
+          },
+          "zoom_events_chat_panel": false,
+          "chat_summary": true,
+          "chat_compose": true,
+          "hub_ai_question_and_file_creation": true,
+          "canvas_ai_content_generation": true,
+          "canvas_ai_sentence_completion": true,
+          "canvas_ai_post_meeting_writing_tasks": true,
+          "paper_ai_content_generation": true,
+          "sheets_ai_content_generation": true,
+          "sheets_ai_formula": true,
+          "sheets_ai_function": true,
+          "sheets_ai_resources": true,
+          "slides_ai_content_generation": true,
+          "my_notes_meeting_transcription": true,
+          "my_notes_ai_content_generation": true,
+          "webinar_questions": {
+            "enable": false,
+            "auto_enable": false,
+            "who_can_ask_questions": false
+          },
+          "webinar_summary": {
+            "enable": false,
+            "auto_enable": false,
+            "who_will_receive_summary": false
+          },
+          "include_webinar_summary_follow_up_email": {
+            "enable": false
+          }
+        }
+      },
       "id": "eUblMKLnTMKX0pVvNAlA0Q"
-		},
+    },
     "time_stamp": 1626230691572,
     "old_object": {
       "id": "zJ4Cu-awQEyypwYtM0HwrA",
       "settings": {
         "recording": {
           "auto_recording": "cloud"
-				}
-			}
-		}
-	}
+        },
+        "ai": {
+          "whiteboard_content_generation": false,
+          "show_conversational_ai_companion": {
+            "enabled": true,
+            "enable_zoom_mate": true,
+            "delete_ai_conversation": true,
+            "delete_ai_conversation_time": false
+          },
+          "ai_panel_in_workplace": {
+            "enabled": true,
+            "delete_ai_conversation": true,
+            "delete_ai_conversation_time": false
+          },
+          "enable_ai_on_web": true,
+          "enable_email_compose_with_ai": true,
+          "microsoft_365": {
+            "enable": false
+          },
+          "google": {
+            "enable": false
+          },
+          "web_content": false,
+          "local_file_uploads": false,
+          "organization_custom_dictionaries": false,
+          "third_party_app_tasks": false,
+          "webinar_summary_follow_up_email": false,
+          "webinar_summary_ocr": false,
+          "zoom_events_session_summary": {
+            "enable": false,
+            "auto_start": false
+          },
+          "zoom_events_chat_panel": false,
+          "chat_summary": true,
+          "chat_compose": true,
+          "hub_ai_question_and_file_creation": false,
+          "canvas_ai_content_generation": false,
+          "canvas_ai_sentence_completion": false,
+          "canvas_ai_post_meeting_writing_tasks": false,
+          "paper_ai_content_generation": false,
+          "sheets_ai_content_generation": false,
+          "sheets_ai_formula": false,
+          "sheets_ai_function": false,
+          "sheets_ai_resources": false,
+          "slides_ai_content_generation": false,
+          "my_notes_meeting_transcription": false,
+          "my_notes_ai_content_generation": false,
+          "webinar_questions": {
+            "enable": false,
+            "auto_enable": false,
+            "who_can_ask_questions": false
+          },
+          "webinar_summary": {
+            "enable": false,
+            "auto_enable": false,
+            "who_will_receive_summary": false
+          },
+          "include_webinar_summary_follow_up_email": {
+            "enable": false
+          }
+        }
+      }
+    }
+  }
 }
