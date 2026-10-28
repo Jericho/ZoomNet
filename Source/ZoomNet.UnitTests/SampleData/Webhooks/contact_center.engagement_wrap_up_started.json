@@ -14,11 +14,20 @@
       "queue_name": "My Queue",
       "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
       "user_display_name": "John Doe",
+      "teams": [
+        {
+          "team_id": "cLEZQivXRSq2YFOUkW3ctw",
+          "team_name": "My team"
+        }
+      ],
       "flow_number": "+18005550101",
       "consumer_id": "zeYjXoDOS_eV1QmTpj63PQ",
       "consumer_display_name": "Jane Smith",
       "consumer_number": "+18005550100",
-      "date_time_ms": "2022-06-14T15:56:53.987Z"
+      "date_time_ms": "2022-06-14T15:56:53.987Z",
+      "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+      "division_name": "EMEA Operations",
+      "consumer_email": "janedoe@example.com"
     }
   }
 }

@@ -26,7 +26,8 @@
       "work_session_end_time": "2025-12-12T00:00:00Z",
       "client_type": "client",
       "agent_country": "US",
-      "ip_address": "192.168.3.4"
+      "ip_address": "192.168.3.4",
+      "focus_duration": 123
     }
   ],
   "start_time_from": "2021-12-10T00:00:00Z",

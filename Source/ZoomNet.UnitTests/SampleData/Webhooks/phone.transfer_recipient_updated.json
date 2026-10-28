@@ -1,23 +1,24 @@
 {
   "event": "phone.transfer_recipient_updated",
-  "event_ts": 1626230691572,
+  "event_ts": 1712558722775,
   "payload": {
-    "account_id": "AAAAAABBBB",
+    "account_id": "2TP-coFVSnmyvYZogk8gAg",
     "object": {
       "failure_reason": "",
-      "call_id": "6998252113337041462",
+      "call_id": "6986878782238080581",
       "owner": {
         "type": "user",
         "id": "z8yCxjabcdEFGHfp8uQ",
-        "name": "Jill Chill",
-        "extension_number": 6666
+        "name": "Tom Jones",
+        "extension_number": 1001019
       },
       "recipient": {
         "extension_number": 1001020,
-        "phone_number": "+12058945456",
-        "name": "Jane Smith"
+        "phone_number": "+12192818492",
+        "name": "Jane Smith",
+        "connection_type": "pstn_on_net"
       },
-      "date_time": "2021-07-13T21:44:51Z"
+      "date_time": "2024-04-08T14:45:22Z"
     }
   }
 }

@@ -14,8 +14,9 @@
       "timezone": "America/Los_Angeles",
       "participant": {
         "id": "iFxeBPYun6SAiWUzBcEkX",
-        "user_name": "Jill Chill",
-        "customer_key": "349589LkJyeW"
+        "user_name": "JillChill",
+        "customer_key": "349589LkJyeW",
+        "registrant_id": "abcdefghij0-klmnopq23456"
       }
     }
   }

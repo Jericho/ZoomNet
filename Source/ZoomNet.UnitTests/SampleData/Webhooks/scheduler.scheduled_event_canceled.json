@@ -5,9 +5,12 @@
     "account_id": "AAAAAABBBB",
     "user_id": "dndhfdjdihd",
     "object": {
-      "invitee_email": "admin@example.com",
-      "invitee_first_name": "aaa",
-      "invitee_last_name": "bbb",
+      "invitee_email": "john.doe@example.com",
+      "invitee_first_name": "John",
+      "invitee_last_name": "Doe",
+      "invitee_id": "61mzpk6irznpqc5yfkcnafyse7",
+      "rescheduled_to_event_id": "t36axo1tnxvyte5w35x4zht964",
+      "rescheduled_to_invitee_id": "fl4ulj7pa0ez23jmfq980ydae7",
       "manage_url": "https://scheduler.zoom.us/manage/m0o1uf25uq89wllenxxxxxxxxxxxx",
       "cancellation": {
         "canceled_by": "aa@bb.c",
@@ -21,8 +24,8 @@
           "question": "Please share anything that will help prepare for our meeting.",
           "position": 0,
           "answer": [
-            "1111",
-            "222"
+            "First line",
+            "Second line"
           ]
         }
       ],
@@ -30,24 +33,24 @@
         "event_id": "woft7torlatbw8ek24bmit5k60",
         "attendees": [
           {
-            "display_name": "green tom",
-            "email": "abc@booker.us"
+            "display_name": "Jane Doe",
+            "email": "jane@example.com"
           },
           {
-            "display_name": "red five",
-            "email": "abc@host.us"
+            "display_name": "David Smith",
+            "email": "david@example.com"
           }
         ],
         "end_date_time": "2023-12-21T16:30:00Z",
         "guests": [
-          "guest1@guest.us",
-          "guest2@guest.us"
+          "guest1@example.com",
+          "guest2@example.com"
         ],
         "location_kind": "custom",
         "location": {
-          "custom_location": "AAA office",
-          "location_type": "custom",
-          "additional_info": "extra info"
+          "custom_location": "123 Main St",
+          "location_type": "in-person_meeting",
+          "additional_info": "additional information"
         },
         "external_location": {
           "kind": "zoom",
@@ -59,7 +62,7 @@
         },
         "start_date_time": "2023-12-21T16:00:00Z",
         "status": "confirmed",
-        "summary": "daily meeting",
+        "summary": "30 minute meeting",
         "updated": "2023-12-21T06:19:28.309Z",
         "created": "2023-12-21T06:18:28.309Z",
         "meeting_notes": "meeting notes",
@@ -70,13 +73,21 @@
         }
       },
       "tracking": {
-        "utm_source": "zoom",
-        "utm_medium": "meeting arrange",
-        "utm_campaign": "spring sale",
-        "utm_content": "booking link",
-        "utm_term": "learning"
+        "utm_source": "email",
+        "utm_medium": "newsletter",
+        "utm_campaign": "spring_sale",
+        "utm_content": "booking_link",
+        "utm_term": "shopping",
+        "salesforce_ids": [
+          {
+            "sf_person": "0035g00000AbCdEAAZ"
+          },
+          {
+            "sf_relates": "0015g00000AbCdEAAZ"
+          }
+        ]
       },
-      "rescheduled": false,
+      "rescheduled": true,
       "created": "2023-12-21T06:18:28.309Z",
       "text_phone_number": "+1 48837847"
     }

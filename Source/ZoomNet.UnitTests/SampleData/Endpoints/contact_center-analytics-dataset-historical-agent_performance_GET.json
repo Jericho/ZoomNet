@@ -63,7 +63,11 @@
       "inactive_conversation_duration": 1,
       "agent_message_received_count": 1,
       "active_conversation_duration": 1,
-      "customer_ring_disconnect_count": 1
+      "customer_ring_disconnect_count": 1,
+      "work_item_type": {
+        "work_item_type_id": "BtfGbUfSQoedk4iIeql9qw",
+        "work_item_type_name": "work item type example"
+      }
     }
   ],
   "start_time_from": "2021-12-10T00:00:00Z",

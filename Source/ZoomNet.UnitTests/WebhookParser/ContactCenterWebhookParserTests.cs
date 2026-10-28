@@ -16,11 +16,10 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 		private const string AssetId = "WkdWelkzSnBjSFJwYjI0PQ11";
 		private const string AssetName = "My Asset";
-		private const string AssetDescription = "This is an example asset.";
+		private const string AssetDescription = "This is an exmaple asset."; // Typo in the word 'example' is intentional, as it is in the sample JSON.
 		private const string AssetModifiedBy = "IGTRVt3gQ2i-WjoUIjeZxw";
 		private const string AssetCategoryId = "bnGEj1yrRb6qlNMvyMK08g";
 		private const string AssetItemId = "beYjXoDOS_eV1QmTpj63PQ";
-		private const string AssetItemName = "My Asset Item";
 		private static readonly DateTime assetTimestamp = new DateTime(2022, 2, 15, 9, 27, 15, 987);
 
 		#endregion
@@ -86,7 +85,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 			info.Items.ShouldNotBeNull();
 			info.Items.ShouldHaveSingleItem();
 
-			VerifyAssetItem(info.Items[0]);
+			VerifyAssetItem(info.Items[0], Language.Spanish_Spain, "Created", true);
 		}
 
 		/// <summary>
@@ -121,33 +120,31 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			info.Updates.AddedItems.ShouldNotBeNull();
 			info.Updates.AddedItems.ShouldHaveSingleItem();
-
-			VerifyAssetItem(info.Updates.AddedItems[0]);
+			VerifyAssetItem(info.Updates.AddedItems[0], Language.English_US, "Added", true);
 
 			info.Updates.UpdatedItems.ShouldNotBeNull();
 			info.Updates.UpdatedItems.ShouldHaveSingleItem();
-
-			VerifyAssetItem(info.Updates.UpdatedItems[0]);
+			VerifyAssetItem(info.Updates.UpdatedItems[0], Language.Spanish_Spain, "Updated", false);
 
 			info.Updates.DeletedItems.ShouldNotBeNull();
 			info.Updates.DeletedItems.ShouldHaveSingleItem();
 
 			info.Updates.DeletedItems[0].Id.ShouldBe(AssetItemId);
-			info.Updates.DeletedItems[0].Name.ShouldBe(AssetItemName);
+			info.Updates.DeletedItems[0].Name.ShouldBe("My Asset Item Deleted");
 		}
 
 		/// <summary>
 		/// Verify <see cref="AssetItem"/> properties.
 		/// </summary>
-		private void VerifyAssetItem(AssetItem item)
+		private void VerifyAssetItem(AssetItem item, Language language, string namePostFix, bool isDefault)
 		{
 			item.Id.ShouldBe(AssetItemId);
-			item.Name.ShouldBe(AssetItemName);
-			item.Language.ShouldBe(Language.English_US);
+			item.Name.ShouldBe($"My Asset Item {namePostFix}");
+			item.Language.ShouldBe(language);
 			item.FileUrl.ShouldBe("https://file.zoom.us/example.mp3");
-			item.Content.ShouldBe("My Asset Item Content");
+			item.Content.ShouldBe($"My Asset Item {namePostFix}");
 			item.Voice.ShouldBe("Joanna");
-			item.IsDefault.ShouldBeTrue();
+			item.IsDefault.ShouldBe(isDefault);
 		}
 
 		#endregion

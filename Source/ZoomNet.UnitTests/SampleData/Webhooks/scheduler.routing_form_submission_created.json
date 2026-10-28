@@ -1,0 +1,29 @@
+{
+  "event": "scheduler.routing_form_submission_created",
+  "event_ts": 1759147200123,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "user_id": "dndhfdjdihd",
+    "object": {
+      "routing_form_submission_id": "61mzpk6irznpqc5yfkcnafyse7",
+      "routing_form_id": "routing_form_abc123",
+      "created_at": "2026-09-29T12:00:00.123Z",
+      "result": {
+        "type": "event_type",
+        "value": "https://scheduler.zoom.us/jane-doe/demo-30m"
+      },
+      "questions_and_answers": [
+        {
+          "question_id": "industry",
+          "question": "What is your industry?",
+          "answer": "IT & Software"
+        },
+        {
+          "question_id": "notes",
+          "question": "Anything else you would like us to know?",
+          "answer": ""
+        }
+      ]
+    }
+  }
+}

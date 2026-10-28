@@ -24,8 +24,8 @@
       },
       "metric": "meeting_stat_per_mmr",
       "field": "meeting_count",
-      "value": 5.0,
-      "threshold": 3.0,
+      "value": 5,
+      "threshold": 3,
       "operator": ">=",
       "level": "warn"
     }

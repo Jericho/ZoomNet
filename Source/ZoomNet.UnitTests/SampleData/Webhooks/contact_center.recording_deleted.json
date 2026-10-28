@@ -5,7 +5,9 @@
     "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
     "object": {
       "recording_id": "ghyetrjj_sdfsdgfkdjfl11",
-      "date_time_ms": "2023-03-30T14:15:57.987Z"
+      "date_time_ms": "2023-03-30T14:15:57.987Z",
+      "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+      "division_name": "EMEA Operations"
     }
   }
 }

@@ -22,7 +22,15 @@
       "consumer_email": "janedoe@example.com",
       "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
       "user_display_name": "John Doe",
-      "date_time_ms": "2024-09-11T02:18:11.658Z"
+      "teams": [
+        {
+          "team_id": "cLEZQivXRSq2YFOUkW3ctw",
+          "team_name": "My team"
+        }
+      ],
+      "date_time_ms": "2024-09-11T02:18:11.658Z",
+      "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+      "division_name": "EMEA Operations"
     }
   }
 }

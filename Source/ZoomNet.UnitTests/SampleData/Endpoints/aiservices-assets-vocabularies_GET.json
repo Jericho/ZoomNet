@@ -1,0 +1,10 @@
+{
+  "vocabularies": [
+    {
+      "vocabulary_id": "acct_vocab_abc123",
+      "language": "en-US",
+      "name": "vocabulary name"
+    }
+  ],
+  "next_page_token": "eyJqb2JfaWQiOiJqb2JfZGVmNDU2In0"
+}

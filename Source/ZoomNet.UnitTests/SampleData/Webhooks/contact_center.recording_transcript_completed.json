@@ -23,7 +23,13 @@
       "users": [
         {
           "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
-          "user_display_name": "John Doe"
+          "user_display_name": "John Doe",
+          "teams": [
+            {
+              "team_id": "cLEZQivXRSq2YFOUkW3ctw",
+              "team_name": "My team"
+            }
+          ]
         }
       ],
       "consumers": [
@@ -32,7 +38,9 @@
           "consumer_number": "+18005550100",
           "consumer_display_name": "Jane Doe"
         }
-      ]
+      ],
+      "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+      "division_name": "EMEA Operations"
     }
   }
 }

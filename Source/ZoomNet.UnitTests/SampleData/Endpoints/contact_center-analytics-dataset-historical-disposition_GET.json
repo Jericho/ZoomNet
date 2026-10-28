@@ -28,7 +28,11 @@
       "direction": "inbound",
       "disposition_time": "2025-05-26T16:30:08Z",
       "current_disposition_id": "disp_001",
-      "disposition_count": 1
+      "disposition_count": 1,
+      "work_item_type": {
+        "work_item_type_id": "BtfGbUfSQoedk4iIeql9qw",
+        "work_item_type_name": "work item type example"
+      }
     }
   ],
   "division_name": "EMEA Operations",

@@ -1,0 +1,62 @@
+{
+  "event": "workspace.pre_check_in_questionnaire_response_created",
+  "payload": {
+    "account_id": "VQYZ9ytmTbaXK9Zr2LvIrg",
+    "operator": "yuki-devint@zoom.us",
+    "operator_id": "rZXNXVlVSTaSZDTJvLcBew",
+    "object": {
+      "start_time": "2024-02-14T03:50:00Z",
+      "event_id": "dxpwbc2fi8tzz7d012rwx9u8c0",
+      "user_name": "Simash pokh",
+      "desk_id": "SJjU1CcGSs2L7odn6PanQw",
+      "workspace_name": "test change date - Desk1",
+      "location_id": "wnFFoWRwTLeww81UuAeW4g",
+      "questionnaire_respnse": [
+        {
+          "id": "Fl75C43YTmS_IpMzYLipJw",
+          "title": "Simash Reservation Questionnaire",
+          "list": [
+            {
+              "question_id": "0ds1NFeDQ1WfWlgVK-7OMQ",
+              "title": "do you like AI ?",
+              "type": "single",
+              "options": [
+                {
+                  "option_id": "UClQqM1qT_q-bZQ0Xti7Vw",
+                  "text": "Yes"
+                },
+                {
+                  "option_id": "1S1hZzFGTwW9Llxdr2vzyw",
+                  "text": "No"
+                }
+              ],
+              "reply_id": "UClQqM1qT_q-bZQ0Xti7Vw"
+            },
+            {
+              "question_id": "2XMaJFwNSr-BJpTfo6rRAQ",
+              "title": "what is your fav food ? ",
+              "type": "multiple",
+              "options": [
+                {
+                  "option_id": "iPkq2UDOSLOLHNq_Ac1WsQ",
+                  "text": "momo"
+                },
+                {
+                  "option_id": "dpv4EZ7QQUqRhBmYj4_b7w",
+                  "text": "sea food"
+                },
+                {
+                  "option_id": "__DjlrV7TeyCSZVmCWAnng",
+                  "text": "rice"
+                }
+              ],
+              "reply_id": "iPkq2UDOSLOLHNq_Ac1WsQ,dpv4EZ7QQUqRhBmYj4_b7w"
+            }
+          ],
+          "subject": "reservation"
+        }
+      ]
+    }
+  },
+  "event_ts": 1707848572310
+}

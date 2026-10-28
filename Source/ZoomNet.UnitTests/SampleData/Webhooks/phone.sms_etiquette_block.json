@@ -1,13 +1,13 @@
 {
   "event": "phone.sms_etiquette_block",
-  "event_ts": 1626230691572,
+  "event_ts": 1626759486127,
   "payload": {
-    "account_id": "AAAAAABBBB",
+    "account_id": "2TP-coFVSnmyvYZogk8gAg",
     "object": {
-      "email": "jchill@example.com",
+      "email": "user.email@company.com",
       "message": "this is my SSN 123-45-6789",
       "policy_name": "Company's SSN blocking policy",
-      "date_time": "2021-07-13T21:44:51Z"
+      "date_time": "2025-03-15T18:43:43Z"
     }
   }
 }

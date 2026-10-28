@@ -1,8 +1,8 @@
 {
   "event": "contact_center.asset_created",
-  "event_ts": 1626230691572,
+  "event_ts": 1627906944384,
   "payload": {
-    "account_id": "AAAAAABBBB",
+    "account_id": "D8cJuqWVQ623CI4Q8yQK0Q",
     "object": {
       "asset_id": "WkdWelkzSnBjSFJwYjI0PQ11",
       "asset_name": "My Asset",
@@ -23,7 +23,9 @@
       "category_id": "bnGEj1yrRb6qlNMvyMK08g",
       "category_name": "My Category",
       "modified_by": "IGTRVt3gQ2i-WjoUIjeZxw",
-      "date_time_ms": "2022-02-15T09:27:15.987Z"
+      "date_time_ms": "2022-02-15T09:27:15.987Z",
+      "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+      "division_name": "EMEA Operations"
     }
   }
 }

@@ -6,6 +6,7 @@
       "status": "active",
       "anonymous": false,
       "poll_type": 2,
+      "poll_source": "session",
       "questions": [
         {
           "answer_max_character": 200,
