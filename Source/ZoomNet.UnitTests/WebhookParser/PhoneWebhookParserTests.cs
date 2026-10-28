@@ -774,8 +774,8 @@ namespace ZoomNet.UnitTests.WebhookParser
 			var parsedEvent = ParseWebhookEvent<PhoneAiCallSummaryChangedEvent>(WebhooksResource.phone_ai_call_summary_changed);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneAiCallSummaryChanged);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
-			parsedEvent.AccountId.ShouldBe(AccountId);
+			parsedEvent.Timestamp.ShouldBe(new DateTime(2024, 8, 23, 23, 25, 15, 40, DateTimeKind.Utc));
+			parsedEvent.AccountId.ShouldBe("89gnHJQ9SdSmFpI9wmh6fQ");
 
 			VerifyAiCallSummary(parsedEvent.CallSummary);
 		}
@@ -786,7 +786,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 			var parsedEvent = ParseWebhookEvent<PhoneConferenceStartedEvent>(WebhooksResource.phone_conference_started);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneConferenceStarted);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.Timestamp.ShouldBe(new DateTime(2021, 7, 20, 5, 38, 6, 127, DateTimeKind.Utc));
 			parsedEvent.AccountId.ShouldBe(AccountId);
 
 			parsedEvent.ConferenceCall.ShouldNotBeNull();
@@ -805,7 +805,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 			var parsedEvent = ParseWebhookEvent<PhoneDeviceRegistrationEvent>(WebhooksResource.phone_device_registration);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneDeviceRegistration);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.Timestamp.ShouldBe(new DateTime(2021, 6, 30, 6, 31, 20, 324, DateTimeKind.Utc));
 			parsedEvent.AccountId.ShouldBe(AccountId);
 
 			parsedEvent.Device.ShouldNotBeNull();
@@ -865,7 +865,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneAccountSettingsUpdated);
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
-			parsedEvent.AccountId.ShouldBe(AccountId);
+			parsedEvent.AccountId.ShouldBe("Mt6sv4u0TAyPkwgsL2lxiA");
 
 			parsedEvent.OldSettings.ShouldNotBeNull();
 			parsedEvent.OldSettings.Id.ShouldBe("eUblMKLnTMKX0pVvNAlA0Q");

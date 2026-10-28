@@ -151,7 +151,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 			var parsedEvent = ParseWebhookEvent<MeetingUpdatedEvent>(WebhooksResource.meeting_updated);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingUpdated);
-			parsedEvent.Timestamp.ShouldBe(1617628464664.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
 			parsedEvent.Operator.ShouldBe("someone@example.com");
 			parsedEvent.OperatorId.ShouldBe("8lzIwvZTSOqjndWPbPqzuA");
 			parsedEvent.Operation.ShouldBe("single");
@@ -176,8 +176,8 @@ namespace ZoomNet.UnitTests.WebhookParser
 			var parsedEvent = ParseWebhookEvent<MeetingStartedEvent>(WebhooksResource.meeting_started);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingStarted);
-			parsedEvent.Timestamp.ShouldBe(1619016544371.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
-			parsedEvent.AccountId.ShouldBe("VjZoEArIT5y-HlWxkV-tVA");
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
 
 			VerifyMeetingInfo(parsedEvent.Meeting);
 		}
@@ -387,7 +387,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			VerifyMeetingParticipantEvent(parsedEvent);
 
-			VerifyWebhookParticipant(parsedEvent.Participant);
+			VerifyWebhookParticipant(parsedEvent.Participant, displayName: "Jill Chill", phoneNumber: null);
 
 			parsedEvent.SentToWaitingRoomOn.ShouldBe(timestamp);
 		}
@@ -401,7 +401,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			VerifyMeetingParticipantEvent(parsedEvent);
 
-			VerifyWebhookParticipant(parsedEvent.Participant, customerKey: null, phoneNumber: null, userId: null);
+			VerifyWebhookParticipant(parsedEvent.Participant, customerKey: null, phoneNumber: null, userId: null, participantUserId: "rstuvwxyza789-cde");
 
 			parsedEvent.ChangedOn.ShouldBe(timestamp);
 			parsedEvent.NewRole.ShouldBe(ParticipantRole.CoHost);
@@ -1073,11 +1073,12 @@ namespace ZoomNet.UnitTests.WebhookParser
 			string email = UserEmail,
 			string participantUserId = "iFxeBPYun6SAiWUzBcEkX",
 			string participantId = "1234567890",
-			string userId = "iFxeBPYun6SAiWUzBcEkX")
+			string userId = "iFxeBPYun6SAiWUzBcEkX",
+			string displayName = "JillChill")
 		{
 			info.ShouldNotBeNull();
 			info.UserId.ShouldBe(userId);
-			info.DisplayName.ShouldBe("JillChill");
+			info.DisplayName.ShouldBe(displayName);
 			info.ParticipantId.ShouldBe(participantId);
 			info.ParticipantUuid.ShouldBe("55555AAAiAAAAAiAiAiiAii");
 			info.Email.ShouldBe(email);
