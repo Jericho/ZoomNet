@@ -1,0 +1,23 @@
+{
+  "comment_id": "f56d75afca6641f4b8f482874f4d0b5f",
+  "thread_type": "full_page",
+  "content": {
+    "format": "plain_text",
+    "text": "Please add an owner for this section."
+  },
+  "created_by": {
+    "display_name": "Ada",
+    "user_id": "u_123456789"
+  },
+  "created_time": "2026-07-07T12:34:56.0000000\u002B00:00",
+  "file_id": "Ns0UAkYNQOCO-42TD7u5BQ",
+  "last_edited_time": "2026-07-07T12:34:56.0000000\u002B00:00",
+  "parent": {
+    "thread_id": "45da44aebcff473cafc72417e0cd14c6",
+    "type": "comment",
+    "parent_comment_id": "35dfb9ed08a84c63a4a292dfde5fda91"
+  },
+  "plain_text": "Please add an owner for this section.",
+  "thread_id": "45da44aebcff473cafc72417e0cd14c6",
+  "thread_status": "open"
+}

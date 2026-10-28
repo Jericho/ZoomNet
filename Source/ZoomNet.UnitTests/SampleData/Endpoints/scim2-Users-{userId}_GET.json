@@ -95,6 +95,7 @@
     "zoomEnhancedMedia": "4503599627370496",
     "aiSalesAssist": "128",
     "eduStandardStudent": "1152921504606846976",
+    "zoomAdvancedDataProtection": "zm_advanced_data_protection",
     "zoomWorkplaceSubscription": "2025 Subscription",
     "zoomRevenueAcceleratorSubscription": "2025 Subscription",
     "zoomCustomerManagedKeySubscription": "2025 Subscription",
@@ -116,6 +117,7 @@
     "eduStandardStudentSubscription": "2025 Subscription",
     "zoomAIProductivitySuiteSubscription": "2025 Subscription",
     "zoomMate": "zm_mate_license_only",
-    "zoomMateSubscription": "2025 Subscription"
+    "zoomMateSubscription": "2025 Subscription",
+    "zoomAdvancedDataProtectionSubscription": "2025 Subscription"
   }
 }

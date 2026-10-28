@@ -34,7 +34,9 @@
             "as_internal_ip_address": "127.0.0.1",
             "as_internal_ip_port": "5060",
             "destination_ip_domain": "example.com",
-            "destination_ip_port": "5000"
+            "destination_ip_port": "5000",
+            "zoom_thin_client_plugin_version": "6.5.11.26770",
+            "rc_reason": "Client crash"
           }
         ]
       }

@@ -1,0 +1,31 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "timezone": "UTC",
+  "from": "2025-12-10T00:00:00Z",
+  "to": "2025-12-10T00:15:00Z",
+  "agent_loads": [
+    {
+      "agent_load_id": "agload_01HXYZ123",
+      "agent_id": "u1234567890",
+      "agent_name": "Alex Smith",
+      "agent_email": "alex.smith@example.com",
+      "team_id": "team_123456",
+      "team_name": "Support Team",
+      "queue_id_names": {
+        "queue_123": "General Support"
+      },
+      "task_channel_category": "VOICE_AND_VIDEO",
+      "agent_used_capacity": 25.5,
+      "agent_max_capacity": 50,
+      "task_channel_unique_name": "default",
+      "work_item_channel_type_name": "Voice",
+      "agent_load_version": 1,
+      "start_time": "2025-12-10T00:00:00Z",
+      "end_time": "2025-12-10T00:15:00Z",
+      "duration": 900000,
+      "process_by": "agent-load-service"
+    }
+  ]
+}

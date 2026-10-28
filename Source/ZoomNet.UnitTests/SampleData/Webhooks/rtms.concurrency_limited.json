@@ -1,5 +1,5 @@
 {
-  "event": "meeting.rtms_concurrency_limited",
+  "event": "rtms.concurrency_limited",
   "event_ts": 1626230691572,
   "payload": {
     "operator_id": "30R7kT7bTIKSNUFEuH_Qlg",

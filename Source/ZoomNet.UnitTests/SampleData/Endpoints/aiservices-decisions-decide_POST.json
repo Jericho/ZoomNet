@@ -1,0 +1,17 @@
+{
+  "answers": [
+    {
+      "type": "predicate",
+      "name": "damaged",
+      "probability": 0.9964802288772219
+    }
+  ],
+  "model": "zoom-decisions",
+  "request_id": "req_test_case_predicate",
+  "usage": {
+    "input_units": 96,
+    "output_units": 1,
+    "unit_type": "tokens",
+    "details": {}
+  }
+}

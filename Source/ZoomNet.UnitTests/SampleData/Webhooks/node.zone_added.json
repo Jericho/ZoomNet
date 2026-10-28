@@ -6,9 +6,9 @@
     "operator": "admin@example.com",
     "operator_id": "z8yCxjabcdEFGHfp8uQ",
     "object": {
-        "zone": "test1",
-        "module": "hybrid",
-        "type": "meeting_zone"
+      "zone": "test1",
+      "module": "hybrid",
+      "type": "meeting_zone"
     }
   }
 }

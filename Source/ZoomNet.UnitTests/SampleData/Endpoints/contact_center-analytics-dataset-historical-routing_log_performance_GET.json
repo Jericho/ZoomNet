@@ -16,6 +16,10 @@
       "queue_name": "Sales Queue",
       "enter_channel": "messaging",
       "enter_channel_source": "in_app_chat",
+      "work_item_type": {
+        "work_item_type_id": "BtfGbUfSQoedk4iIeql9qw",
+        "work_item_type_name": "work item type example"
+      },
       "agent_routing_profile_id": "vz7qBi2GQ2GaHGUA0jmzmg",
       "agent_routing_profile_name": "Default Agent Profile",
       "customer_routing_profile_id": "abc123XYZprofileId",

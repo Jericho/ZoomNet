@@ -20,5 +20,10 @@
       }
     ]
   },
-  "model": "zoom-asr-en-v1"
+  "model": "zoom-asr-en-v1",
+  "outputs": {
+    "text_polishing": {
+      "text": "Hello, and welcome to the meeting. "
+    }
+  }
 }

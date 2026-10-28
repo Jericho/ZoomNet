@@ -41,7 +41,11 @@
       "dnis_to": "\u002B12095551212",
       "ani_from": "\u002B19135551212",
       "flow_widget_path": "Start,SendMedia,SetVariables,SendMedia,RouteTo",
-      "flow_execution_id": "ZBTRulkDRTaZUeH2nlxDeg"
+      "flow_execution_id": "ZBTRulkDRTaZUeH2nlxDeg",
+      "work_item_type": {
+        "work_item_type_id": "BtfGbUfSQoedk4iIeql9qw",
+        "work_item_type_name": "work item type example"
+      }
     }
   ]
 }

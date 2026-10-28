@@ -11,7 +11,9 @@
       "flow_id": "ZWWC0A840C726C2CE3ACF01041CB8CFD8B9",
       "flow_name": "My Flow",
       "transcript_url": "https://api.zoom.us/v2/contact_center/engagements/transcripts/download/SbgQTc2zS1ieFuCi5tXG6g",
-      "date_time_ms": "2023-10-15T08:12:15.987Z"
+      "date_time_ms": "2023-10-15T08:12:15.987Z",
+      "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+      "division_name": "EMEA Operations"
     }
   }
 }

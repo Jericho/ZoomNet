@@ -6,6 +6,14 @@
     "object": {
       "date_time_ms": "2022-02-15T09:27:15.987Z",
       "user_id": "giudgf_4576385jsdhfsfsd",
+      "teams": [
+        {
+          "team_id": "cLEZQivXRSq2YFOUkW3ctw",
+          "team_name": "My team"
+        }
+      ],
+      "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+      "division_name": "EMEA Operations",
       "updates": {
         "role_id": "27302393-4784-11ec-a3cd-122e3e29bb87",
         "role_name": "Admin",
@@ -19,9 +27,32 @@
         "channel_settings": {
           "multi_channel_engagements": {
             "enable": true,
-            "max_agent_load": 50
+            "max_agent_load": 50,
+            "email_max_agent_load": 50
           },
-          "concurrent_message_capacity": 4
+          "concurrent_message_capacity": 4,
+          "concurrent_email_capacity": 20,
+          "messaging_occupied": true,
+          "email_occupied": true
+        },
+        "emergency_calling": true,
+        "user_intents": [
+          {
+            "intent_id": "OlK7lczzT_e7h6p1Q6wGdg",
+            "intent_group_id": "Ql3qxUWXSHes4PmcOmzyOg"
+          }
+        ],
+        "user_package": {
+          "package_name": "essentials"
+        },
+        "user_add_ons_plans": [
+          {
+            "add_ons_plan_name": "ai_expert_assist"
+          }
+        ],
+        "external_url": {
+          "enable": true,
+          "external_launch_url": "https://zoom.us"
         }
       }
     }

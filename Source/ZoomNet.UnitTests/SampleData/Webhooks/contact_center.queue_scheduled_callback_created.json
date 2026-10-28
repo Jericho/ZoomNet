@@ -16,7 +16,9 @@
           "email": "jdoe@example.com",
           "phone_number": "+18005550100"
         }
-      ]
+      ],
+      "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+      "division_name": "EMEA Operations"
     }
   }
 }

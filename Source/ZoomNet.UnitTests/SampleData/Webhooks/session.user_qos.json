@@ -11,6 +11,7 @@
         "id": "1234567890",
         "name": "example",
         "user_key": "ASD74dfDI854",
+        "is_original_host": true,
         "qos": [
           {
             "date_time": "2021-07-13T21:44:51Z",

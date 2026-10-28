@@ -59,8 +59,6 @@
       "locked": true,
       "locked_by": "account",
       "recording_calls": "inbound",
-      "recording_explicit_consent": true,
-      "recording_start_prompt": true,
       "recording_transcription": true,
       "play_recording_beep_tone": {
         "enable": true,

@@ -20,8 +20,7 @@
           "file_size": 246560,
           "file_extension": "M4A",
           "download_url": "https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngBBBB",
-          "status": "completed",
-          "recording_type": "audio_only"
+          "status": "completed"
         }
       ],
       "participant_audio_files": [

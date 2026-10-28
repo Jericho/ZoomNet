@@ -10,6 +10,7 @@
       "call_qos": {
         "type": "caller",
         "id": "KLN56y2cSzu0pWxUSec4RQ",
+        "user_email": "hello.test@gmail.com",
         "qos": {
           "date_time": "2021-04-26T05:26:00Z",
           "type": "sending",
@@ -19,7 +20,8 @@
             "max_loss": "0.0",
             "jitter": "8",
             "network_delay": "23",
-            "mos": "4.5"
+            "mos": "4.5",
+            "network": "LAN"
           }
         }
       }

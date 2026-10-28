@@ -199,7 +199,11 @@
     "disable_participant_video": false,
     "email_in_attendee_report": true,
     "auto_start_deepfake_detection": false,
-    "prevent_screen_capture": false
+    "prevent_screen_capture": false,
+    "allow_participants_to_transcribe_meetings_with_my_notes": {
+      "enable": true,
+      "participant_scope": "organization"
+    }
   },
   "start_time": "2022-03-25T07:29:29.0000000\u002B00:00",
   "start_url": "https://example.com/s/12345678901?zak=example_zak_token",

@@ -54,9 +54,11 @@
           "agent_id": "jSeZPyVUQamm7WSVZWpExA",
           "agent_name": "HappyBot Agent",
           "agent_type": "AI_VOICE",
-          "agent_session_id": "vXd6K1SPSz2WSTz0t3wuRg"
+          "agent_session_id": "vXd6K1SPSz2WSTz0t3wuRg",
+          "feedback": "Helpful"
         }
       ]
     }
-  ]
+  ],
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA"
 }

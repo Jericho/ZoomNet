@@ -6,7 +6,7 @@
     "account_id": "9_IdLmGATIyUrNmCB4P_zQ",
     "operator": "zapp.mobile.admin@ep.test",
     "operator_id": "TFq5AiLZSOyuCUpH28gohw",
-    "by_external_user":true,
+    "by_external_user": true,
     "object": {
       "channel": {
         "channel_id": "C12345678",

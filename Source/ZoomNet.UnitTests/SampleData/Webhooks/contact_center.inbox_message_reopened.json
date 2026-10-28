@@ -15,10 +15,18 @@
       "consumer_number": "+18005550101",
       "user_id": "IGTRVt3gQ2i-WjoUIjeZxw",
       "user_display_name": "John Doe",
+      "teams": [
+        {
+          "team_id": "cLEZQivXRSq2YFOUkW3ctw",
+          "team_name": "My team"
+        }
+      ],
       "inbox_id": "szCyubr_aQhieHNWYbAGMYg",
       "inbox_name": "My Inbox",
       "message_id": "KGTRVt3gQ2i-WjoUIjewXq",
-      "date_time_ms": "2024-09-09T02:57:32.719Z"
+      "date_time_ms": "2024-09-09T02:57:32.719Z",
+      "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+      "division_name": "EMEA Operations"
     }
   }
 }

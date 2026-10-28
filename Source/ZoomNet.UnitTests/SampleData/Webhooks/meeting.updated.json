@@ -1,21 +1,124 @@
 {
-	"event": "meeting.updated",
-	"event_ts": 1617628464664,
-	"payload": {
-		"account_id": "VjZoEArIT5y-HlWxkV-tVA",
-		"operator": "someone@example.com",
-		"operator_id": "8lzIwvZTSOqjndWPbPqzuA",
-		"scope": "single",
-		"time_stamp": 1617628463664,
-		"object": {
-			"id": 94890226305,
-			"topic": "ZoomNet Unit Testing: UPDATED scheduled meeting",
-			"settings": { "audio": "voip" }
-			},
-		"old_object": {
-			"id": 94890226305,
-			"topic": "ZoomNet Unit Testing: scheduled meeting",
-			"settings": { "audio": "telephony" }
-		}
-	}
+  "event": "meeting.updated",
+  "event_ts": 1626230691572,
+  "payload": {
+    "account_id": "AAAAAABBBB",
+    "operator": "admin@example.com",
+    "operator_id": "z8yCxjabcdEFGHfp8uQ",
+    "object": {
+      "id": 1234567890,
+      "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "host_id": "x1yCzABCDEfg23HiJKl4mN",
+      "topic": "My Meeting",
+      "type": 8,
+      "start_time": "2021-07-13T21:44:51Z",
+      "duration": 60,
+      "timezone": "America/Los_Angeles",
+      "join_url": "https://example.com/meeting",
+      "password": "XYz@BC!D1087",
+      "agenda": "Overview of Meeting Topics",
+      "registration_url": "https://example.com",
+      "occurrences": [
+        {
+          "occurrence_id": "ABCDE12345",
+          "start_time": "2021-07-13T21:44:51Z",
+          "duration": 60,
+          "status": "available"
+        }
+      ],
+      "settings": {
+        "host_video": true,
+        "jbh_time": 5,
+        "meeting_invitees": [
+          {
+            "email": "jchill@example.com"
+          }
+        ],
+        "language_interpretation": {
+          "enable": true,
+          "interpreters": [
+            {
+              "email": "interpreter@example.com",
+              "languages": "US,FR",
+              "interpreter_languages": "English,French"
+            }
+          ]
+        },
+        "sign_language_interpretation": {
+          "enable": true,
+          "interpreters": [
+            {
+              "email": "interpreter@example.com",
+              "sign_language": "American"
+            }
+          ]
+        },
+        "continuous_meeting_chat": {
+          "enable": true,
+          "auto_add_invited_external_users": false,
+          "auto_add_meeting_participants": false,
+          "channel_id": "cabc1234567defghijkl01234"
+        },
+        "auto_start_meeting_summary": true,
+        "who_will_receive_summary": 1,
+        "auto_start_ai_companion_questions": true,
+        "who_can_ask_questions": 1,
+        "summary_template_id": "1e1356ad",
+        "email_in_attendee_report": true,
+        "allow_host_control_participant_mute_state": true,
+        "prevent_screen_capture": true,
+        "allow_participants_to_transcribe_meetings_with_my_notes": {
+          "enable": true,
+          "participant_scope": "organization"
+        }
+      }
+    },
+    "old_object": {
+      "id": 1234567890,
+      "settings": {
+        "participant_video": false,
+        "use_pmi": false,
+        "disable_recording_control": "all",
+        "join_before_host": true,
+        "jbh_time": 0,
+        "meeting_invitees": [
+          {
+            "email": "jchill@example.com"
+          }
+        ],
+        "language_interpretation": {
+          "enable": true,
+          "interpreters": [
+            {
+              "email": "interpreter@example.com",
+              "languages": "US,JP",
+              "interpreter_languages": "English,Japanese"
+            }
+          ]
+        },
+        "sign_language_interpretation": {
+          "enable": true,
+          "interpreters": [
+            {
+              "email": "interpreter@example.com",
+              "sign_language": "American"
+            }
+          ]
+        },
+        "continuous_meeting_chat": {
+          "enable": true,
+          "auto_add_invited_external_users": true,
+          "auto_add_meeting_participants": true,
+          "channel_id": "cabc1234567defghijkl01234"
+        },
+        "auto_start_meeting_summary": false,
+        "email_in_attendee_report": false,
+        "auto_start_ai_companion_questions": false,
+        "summary_template_id": "87pkpo08",
+        "allow_host_control_participant_mute_state": false,
+        "prevent_screen_capture": false
+      }
+    },
+    "time_stamp": 1724653728243
+  }
 }

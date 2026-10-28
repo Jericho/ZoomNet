@@ -1,7 +1,7 @@
 {
   "event": "recording.archive_files_completed",
   "event_ts": 1626230691572,
-  "download_token": "abJhbGciOiJIUzUxMiJ9",
+  "download_token": "abJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJodHRwczovL2V2ZW50Lnpvb20udXMiLCJhY2NvdW50SWQiOiJNdDZzdjR1MFRBeVBrd2dzTDJseGlBIiwiYXVkIjoiaHR0cHM6Ly9vYXV0aC56b29tLnVzIiwibWlkIjoieFp3SEc0c3BRU2VuekdZWG16dnpiUT09IiwiZXhwIjoxNjI2MTM5NTA3LCJ1c2VySWQiOiJEWUhyZHBqclMzdWFPZjdkUGtrZzh3In0.a6KetiC6BlkDhf1dP4KBGUE1bb2brMeraoD45yhFx0eSSSTFdkHQnsKmlJQ-hdo9Zy-4vQw3rOxlyoHv583JyZ",
   "payload": {
     "account_id": "AAAAAABBBB",
     "object": {
@@ -20,8 +20,6 @@
       "account_name": "account_01",
       "complete_time": "2021-03-12T02:57:27Z",
       "is_breakout_room": false,
-      "status": "completed",
-      "group_id": "pvFIYKSDTum9iCDOOtQL4w,_FsqLyI0RlO6LVPeUVWi8g",
       "archive_files": [
         {
           "id": "ed6c2f27-2ae7-42f4-b3d0-835b493e4fa8",
@@ -36,7 +34,7 @@
           "participant_join_time": "2021-03-12T02:07:27Z",
           "participant_leave_time": "2021-03-12T02:12:27Z",
           "encryption_fingerprint": "2123150b921fb1babda81c6156d2711659d37b5d3cbe6957e22e51fbb87e7a87",
-          "storage_location":"US"
+          "storage_location": "US"
         },
         {
           "id": "388ffb46-1541-460d-8447-4624451a1db7",
@@ -53,7 +51,9 @@
           "encryption_fingerprint": "abf85f0fe6a4db3cdd8c37e505e1dd18a34d9696170a14b5bc6395677472cf43",
           "storage_location": "US"
         }
-      ]
+      ],
+      "status": "completed",
+      "group_id": "pvFIYKSDTum9iCDOOtQL4w,_FsqLyI0RlO6LVPeUVWi8g"
     }
   }
 }

@@ -55,6 +55,18 @@
     },
     "hot_desking": {
       "status": "off"
+    },
+    "device_address_configuration": {
+      "address_option": "inherit",
+      "emergency_address": {
+        "id": "CCc8zYT1SN60i7uDMzDbXA",
+        "address_line1": "55 Almaden Boulevard",
+        "address_line2": "1002 Airport Way S",
+        "city": "SAN JOSE",
+        "country": "US",
+        "state_code": "CA",
+        "zip": "95113"
+      }
     }
   }
 }

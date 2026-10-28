@@ -10,7 +10,9 @@
       "channel_source": "in_app_video",
       "flow_id": "ZWWC0A840C726C2CE3ACF01041CB8CFD8B9",
       "flow_name": "My Flow",
-      "date_time_ms": "2023-05-01T09:27:15.987Z"
+      "date_time_ms": "2023-05-01T09:27:15.987Z",
+      "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+      "division_name": "EMEA Operations"
     }
   }
 }

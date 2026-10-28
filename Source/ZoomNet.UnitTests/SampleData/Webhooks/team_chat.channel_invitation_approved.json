@@ -8,8 +8,8 @@
     "operator": "zapp.mobile.admin@ep.test",
     "operator_id": "TFq5AiLZSOyuCUpH28gohw",
     "object": {
-      "organization":{
-        "org_id":"dsdsd",
+      "organization": {
+        "org_id": "dsdsd",
         "org_name": "dsdsd"
       },
       "channel": {
@@ -33,7 +33,7 @@
       ],
       "timestamp": 324323423423,
       "date_time": "2024-01-11T19:55:26Z",
-      "type":"by_invitee_account_admin"
+      "type": "by_invitee_account_admin"
     }
   }
 }

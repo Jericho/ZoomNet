@@ -3994,4 +3994,70 @@
   <data name="aiservices-translator-translate_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\SampleData\Endpoints\aiservices-translator-translate_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="zoomchat-chat_sessions-{chat_session_id}-tabs_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\zoomchat-chat_sessions-{chat_session_id}-tabs_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contacts-user-{user_id}-personal_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\contacts-user-{user_id}-personal_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone-emergency_number_pools-phone_numbers_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\phone-emergency_number_pools-phone_numbers_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="workspaces-{workspaceId}-settings_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\workspaces-{workspaceId}-settings_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="docs-files-{fileId}-comments_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\docs-files-{fileId}-comments_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="docs-files-{fileId}-comments_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\docs-files-{fileId}-comments_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="docs-files-{fileId}-comments-{commentId}_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\docs-files-{fileId}-comments-{commentId}_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="docs-files-{fileId}-comments-{commentId}_PATCH" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\docs-files-{fileId}-comments-{commentId}_PATCH.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-analytics-dataset-historical-agent_load_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\contact_center-analytics-dataset-historical-agent_load_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="qm-cases_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\qm-cases_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="qm-cases-{qmCaseId}_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\qm-cases-{qmCaseId}_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="groups-{groupId}-settings-meeting_waiting_room_branding_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\groups-{groupId}-settings-meeting_waiting_room_branding_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="groups-{groupId}-settings-webinar_waiting_room_branding_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\groups-{groupId}-settings-webinar_waiting_room_branding_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="users-{userId}-settings-meeting_waiting_room_branding_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\users-{userId}-settings-meeting_waiting_room_branding_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="users-{userId}-settings-webinar_waiting_room_branding_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\users-{userId}-settings-webinar_waiting_room_branding_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="accounts-{accountId}-settings-meeting_waiting_room_branding_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\accounts-{accountId}-settings-meeting_waiting_room_branding_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="accounts-{accountId}-settings-webinar_waiting_room_branding_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\accounts-{accountId}-settings-webinar_waiting_room_branding_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="aiservices-assets-vocabularies_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\aiservices-assets-vocabularies_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="aiservices-assets-vocabularies_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\aiservices-assets-vocabularies_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="aiservices-assets-vocabularies-{vocabularyId}_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\aiservices-assets-vocabularies-{vocabularyId}_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="aiservices-decisions-decide_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\aiservices-decisions-decide_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="aiservices-speech-summarization-summarize_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\aiservices-speech-summarization-summarize_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

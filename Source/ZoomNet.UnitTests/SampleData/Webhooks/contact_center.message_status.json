@@ -10,9 +10,11 @@
       "whatsapp_message": {
         "status": "failed",
         "reason": "WhatsApp platform failed to send message",
-        "error_detail": "{\\"code\\":\\"131026\\",\\"message\\":\\"Message Undeliverable.\\"}"
+        "error_detail": "{\"code\":\"131026\",\"message\":\"Message Undeliverable.\"}"
       },
-      "date_time_ms": "2025-12-03T09:31:10.735Z"
+      "date_time_ms": "2025-12-03T09:31:10.735Z",
+      "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+      "division_name": "EMEA Operations"
     }
   }
 }

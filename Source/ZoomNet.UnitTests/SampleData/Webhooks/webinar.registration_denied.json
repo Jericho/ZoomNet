@@ -1,10 +1,8 @@
 {
-  "event": "webinar.registration_denied",
+  "event": "webinar.registration_created",
   "event_ts": 1626230691572,
   "payload": {
     "account_id": "AAAAAABBBB",
-    "operator": "admin@example.com",
-    "operator_id": "z8yCxjabcdEFGHfp8uQ",
     "object": {
       "uuid": "4444AAAiAAAAAiAiAiiAii==",
       "id": 1234567890,
@@ -26,9 +24,9 @@
         "last_name": "Chill",
         "email": "jchill@example.com",
         "tracking_source": {
-           "id": "5516482804110",
-           "source_name": "general",
-           "tracking_url": "https://example.com/webinar/register/5516482804110/WN_juM2BGyLQMyQ_ZrqiGRhLg"
+          "id": "5516482804110",
+          "source_name": "general",
+          "tracking_url": "https://example.com/webinar/register/5516482804110/WN_juM2BGyLQMyQ_ZrqiGRhLg"
         }
       }
     }

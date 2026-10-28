@@ -11,6 +11,7 @@
         "id": "25508864",
         "name": "example",
         "user_key": "ASD74dfDI854",
+        "is_original_host": true,
         "data": [
           {
             "device": "Windows",
@@ -38,7 +39,8 @@
             "destination_ip_domain": "example.com",
             "destination_ip_port": "5000",
             "device_detail": "GoogleChromeSAB 130",
-            "client": "Web video sdk 1.12.10"
+            "client": "Web video sdk 1.12.10",
+            "rc_reason": "Client crash"
           }
         ]
       }

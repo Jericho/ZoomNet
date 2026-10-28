@@ -78,7 +78,11 @@
           "phone_number": "\u002B12097481234",
           "extension_number": "26701"
         }
-      ]
+      ],
+      "work_item_type": {
+        "work_item_type_id": "BtfGbUfSQoedk4iIeql9qw",
+        "work_item_type_name": "work item type example"
+      }
     }
   ],
   "timezone": "UTC",
