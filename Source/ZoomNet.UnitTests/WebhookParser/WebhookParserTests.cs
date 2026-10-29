@@ -198,7 +198,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingSharingEnded);
 
-			VerifyMeetingSharingEvent(parsedEvent);
+			VerifyMeetingSharingEvent(parsedEvent, new DateTime(2021, 7, 13, 21, 56, 0, DateTimeKind.Utc));
 		}
 
 		[Fact]
@@ -329,7 +329,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			VerifyMeetingParticipantEvent(parsedEvent);
 
-			VerifyWebhookParticipant(parsedEvent.Participant);
+			VerifyWebhookParticipant(parsedEvent.Participant, participantUserId: "rstuvwxyza789-cde");
 
 			parsedEvent.JoinedOn.ShouldBe(timestamp);
 		}
@@ -418,7 +418,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			VerifyBreakoutRoomParticipantInfo(parsedEvent.Participant);
 
-			parsedEvent.JoinTime.ShouldBe(new DateTime(2021, 7, 13, 21, 45, 51, DateTimeKind.Utc));
+			parsedEvent.JoinTime.ShouldBe(timestamp);
 		}
 
 		[Fact]
@@ -1073,7 +1073,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 			string participantUserId = "iFxeBPYun6SAiWUzBcEkX",
 			string participantId = "1234567890",
 			string userId = "iFxeBPYun6SAiWUzBcEkX",
-			string displayName = "JillChill",
+			string displayName = "Jill Chill",
 			string participantUuid = "55555AAAiAAAAAiAiAiiAii")
 		{
 			info.ShouldNotBeNull();
@@ -1313,7 +1313,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		{
 			info.ShouldNotBeNull();
 			info.Length.ShouldBe(1);
-			info[0].OccurrenceId.ShouldBe("1677637740000");
+			info[0].OccurrenceId.ShouldBe("ABCDE12345");
 			info[0].StartTime.ShouldBe(timestamp);
 			info[0].Duration.ShouldBe(duration);
 			info[0].Status.ShouldBe(status);
@@ -1401,7 +1401,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		/// <summary>
 		/// Verify <see cref="MeetingSharingEvent"/> properties.
 		/// </summary>
-		private static void VerifyMeetingSharingEvent(MeetingSharingEvent parsedEvent)
+		private static void VerifyMeetingSharingEvent(MeetingSharingEvent parsedEvent, DateTime? sharingDate = null)
 		{
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
 			parsedEvent.AccountId.ShouldBe(AccountId);
@@ -1414,7 +1414,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			VerifyMeetingInfo(parsedEvent.Meeting);
 
-			VerifyScreenshareDetails(parsedEvent.ScreenshareDetails, new DateTime(2021, 7, 13, 21, 55, 52, DateTimeKind.Utc));
+			VerifyScreenshareDetails(parsedEvent.ScreenshareDetails, sharingDate ?? new DateTime(2021, 7, 13, 21, 55, 52, DateTimeKind.Utc));
 		}
 
 		/// <summary>
