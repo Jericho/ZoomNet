@@ -14,7 +14,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 	{
 		#region private fields
 
-		private const string DownloadToken = "abJhbGciOiJIUzUxMiJ9";
+		private const string DownloadToken = "abJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJodHRwczovL2V2ZW50Lnpvb20udXMiLCJhY2NvdW50SWQiOiJNdDZzdjR1MFRBeVBrd2dzTDJseGlBIiwiYXVkIjoiaHR0cHM6Ly9vYXV0aC56b29tLnVzIiwibWlkIjoieFp3SEc0c3BRU2VuekdZWG16dnpiUT09IiwiZXhwIjoxNjI2MTM5NTA3LCJ1c2VySWQiOiJEWUhyZHBqclMzdWFPZjdkUGtrZzh3In0.a6KetiC6BlkDhf1dP4KBGUE1bb2brMeraoD45yhFx0eSSSTFdkHQnsKmlJQ-hdo9Zy-4vQw3rOxlyoHv583JyZ";
 
 		#endregion
 
@@ -364,8 +364,8 @@ namespace ZoomNet.UnitTests.WebhookParser
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingTrashed);
 
 			parsedEvent.DownloadToken.ShouldBe(DownloadToken);
-			parsedEvent.Operator.ShouldBe(OperatorEmail);
-			parsedEvent.OperatorId.ShouldBe(OperatorId);
+			parsedEvent.Operator.ShouldBeNull();
+			parsedEvent.OperatorId.ShouldBeNull();
 
 			VerifyRecordedMeetingOrWebinarInfo(parsedEvent.Recording);
 
@@ -486,7 +486,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		private static void VerifyTranscriptRecordingFile(RecordingFile file)
 		{
 			file.ShouldNotBeNull();
-			file.Id.ShouldBe("bd5b3ea6-7dd6-484d-9125-b297e0a2f80a");
+			file.Id.ShouldBe("ed6c2f27-2ae7-42f4-b3d0-835b493e4fa8");
 			file.MeetingId.ShouldBe("098765ABCD");
 			file.StartTime.ShouldBe(new DateTime(2021, 3, 23, 22, 14, 57, 0, DateTimeKind.Utc));
 			file.EndTime.ShouldBe(new DateTime(2021, 3, 23, 23, 15, 41, 0, DateTimeKind.Utc));
