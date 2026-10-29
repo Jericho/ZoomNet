@@ -142,6 +142,16 @@ namespace ZoomNet.Resources
 
 		#endregion
 
+		/// <summary>Lists the account's Zoom Phone auto receptionists.</summary>
+		/// <param name="recordsPerPage">Records per page (1 to 100). Default is 30.</param>
+		/// <param name="nextPageToken">The next page token returned by the previous page.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
+		/// <returns>A page of auto receptionists.</returns>
+		/// <remarks>Requires phone:read:list_auto_receptionists:admin or the corresponding master scope.
+		/// See https://developers.zoom.us/docs/api/phone/ for endpoint documentation.</remarks>
+		Task<PaginatedResponseWithToken<PhoneAutoReceptionist>> ListAutoReceptionistsAsync(
+			int recordsPerPage = 30, string nextPageToken = null, CancellationToken cancellationToken = default);
+
 		#region Call Queues Endpoints
 
 		/// <summary>
