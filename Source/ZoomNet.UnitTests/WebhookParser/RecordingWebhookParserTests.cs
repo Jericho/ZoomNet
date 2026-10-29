@@ -393,11 +393,11 @@ namespace ZoomNet.UnitTests.WebhookParser
 		/// <summary>
 		/// Verify <see cref="RecordingEvent"/> properties.
 		/// </summary>
-		private static void VerifyRecordingEvent(RecordingEvent parsedEvent, ZoomNet.Models.Webhooks.EventType eventType)
+		private static void VerifyRecordingEvent(RecordingEvent parsedEvent, ZoomNet.Models.Webhooks.EventType eventType, DateTime? timestamp = null, string accountId = AccountId)
 		{
 			parsedEvent.EventType.ShouldBe(eventType);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
-			parsedEvent.AccountId.ShouldBe(AccountId);
+			parsedEvent.Timestamp.ShouldBe(timestamp ?? eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(accountId);
 		}
 
 		/// <summary>

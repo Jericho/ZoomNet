@@ -733,8 +733,8 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingAiCompanionStopped);
 
-			var timestamp = new DateTime(2024, 9, 2, 8, 15, 0, DateTimeKind.Utc);
-			VerifyMeetingAiCompanionEvent(parsedEvent, timestamp);
+			var timestamp = new DateTime(2024, 9, 12, 11, 54, 47, 123, DateTimeKind.Utc);
+			VerifyMeetingAiCompanionEvent(parsedEvent, timestamp, "dzVA4QmMQfyISoRcpFO8CA", 97763643886, "aDYlohsHRtCd4ii1uC2+hA==", "30R7kT7bTIKSNUFEuH_Qlg");
 
 			parsedEvent.Questions.ShouldBe(false);
 			parsedEvent.Summary.ShouldBe(true);
@@ -831,7 +831,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 			parsedEvent.Operator.ShouldBe(OperatorEmail);
 			parsedEvent.OperatorId.ShouldBe(OperatorId);
 
-			VerifyWebinarInfo(parsedEvent.Webinar);
+			VerifyWebinarInfo(parsedEvent.Webinar, "My Meeting Converted", WebinarType.Regular);
 		}
 
 		[Fact]
