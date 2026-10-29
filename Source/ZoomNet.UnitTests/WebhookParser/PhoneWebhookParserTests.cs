@@ -38,13 +38,13 @@ namespace ZoomNet.UnitTests.WebhookParser
 		{
 			var parsedEvent = ParseWebhookEvent<PhoneCalleeAnsweredEvent>(WebhooksResource.phone_callee_answered);
 
-			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeAnswered);
+			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeAnswered, new DateTime(2021, 8, 19, 21, 12, 50, 749, DateTimeKind.Utc), "TQTvjT52Tmi_wrhASNNOEw", "6998252113337041462");
 
 			parsedEvent.AnsweredOn.ShouldBe(answeredTimestamp);
 			parsedEvent.RingingStartedOn.ShouldBe(ringingStartedTimestamp);
 
 			VerifyVoipParty(parsedEvent.CallInfo.Caller, extensionNumber: null, extensionType: null);
-			VerifyZoomUserParty(parsedEvent.CallInfo.Callee, extensionId: null, extensionType: null);
+			VerifyZoomUserParty(parsedEvent.CallInfo.Callee, extensionId: null, extensionType: null, connectionType: PhoneCallConnectionType.Voip);
 			VerifyForwardedBy(parsedEvent.ForwardedBy);
 			VerifyRedirectForwardedBy(parsedEvent.RedirectForwardedBy);
 		}
@@ -54,14 +54,14 @@ namespace ZoomNet.UnitTests.WebhookParser
 		{
 			var parsedEvent = ParseWebhookEvent<PhoneCalleeEndedEvent>(WebhooksResource.phone_callee_ended);
 
-			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeEnded);
+			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeEnded, new DateTime(2021, 8, 19, 21, 12, 56, 754, DateTimeKind.Utc), "TQTvjT52Tmi_wrhASNNOEw", "6998252113337041462");
 
 			parsedEvent.AnsweredOn.ShouldBe(answeredTimestamp);
 			parsedEvent.EndedOn.ShouldBe(callEndedTimestamp);
 			parsedEvent.RingingStartedOn.ShouldBe(ringingStartedTimestamp);
 
 			VerifyVoipParty(parsedEvent.CallInfo.Caller, extensionNumber: null, extensionType: null);
-			VerifyZoomUserParty(parsedEvent.CallInfo.Callee);
+			VerifyZoomUserParty(parsedEvent.CallInfo.Callee, connectionType: PhoneCallConnectionType.Voip);
 			VerifyForwardedBy(parsedEvent.ForwardedBy);
 			VerifyRedirectForwardedBy(parsedEvent.RedirectForwardedBy);
 		}
@@ -71,12 +71,12 @@ namespace ZoomNet.UnitTests.WebhookParser
 		{
 			var parsedEvent = ParseWebhookEvent<PhoneCalleeHoldEvent>(WebhooksResource.phone_callee_hold);
 
-			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeHold);
+			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeHold, new DateTime(2021, 7, 20, 5, 38, 6, 127, DateTimeKind.Utc), "2TP-coFVSnmyvYZogk8gAg", "6986878782238080581");
 
-			parsedEvent.HoldStartedOn.ShouldBe(timestamp);
+			parsedEvent.HoldStartedOn.ShouldBe(new DateTime(2021, 7, 20, 5, 38, 4, DateTimeKind.Utc));
 
-			VerifyVoipParty(parsedEvent.CallInfo.Caller);
-			VerifyZoomUserParty(parsedEvent.CallInfo.Callee, deviceType: null);
+			VerifyVoipParty(parsedEvent.CallInfo.Caller, phoneNumber: "810003");
+			VerifyZoomUserParty(parsedEvent.CallInfo.Callee, deviceType: null, connectionType: PhoneCallConnectionType.Voip, phoneNumber: "810005", extensionNumber: 810005, userId: "kRQpbWO5TV6E7wxEYOKFWw", timezone: TimeZones.Asia_Shanghai);
 		}
 
 		[Fact]
@@ -113,14 +113,14 @@ namespace ZoomNet.UnitTests.WebhookParser
 		{
 			var parsedEvent = ParseWebhookEvent<PhoneCalleeMissedEvent>(WebhooksResource.phone_callee_missed);
 
-			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeMissed);
+			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeMissed, new DateTime(2021, 8, 19, 21, 15, 55, 259, DateTimeKind.Utc), "TQTvjT52Tmi_wrhASNNOEw", "6998252731812285292");
 
-			parsedEvent.RingingStartedOn.ShouldBe(ringingStartedTimestamp);
-			parsedEvent.EndedOn.ShouldBe(callEndedTimestamp);
-			parsedEvent.HandupResult.ShouldBe("No Answer");
+			parsedEvent.RingingStartedOn.ShouldBe(new DateTime(2021, 8, 19, 21, 15, 29, DateTimeKind.Utc));
+			parsedEvent.EndedOn.ShouldBe(new DateTime(2021, 8, 19, 21, 15, 42, DateTimeKind.Utc));
+			parsedEvent.HandupResult.ShouldBeNull();
 
 			VerifyVoipParty(parsedEvent.CallInfo.Caller, extensionNumber: null, extensionType: null);
-			VerifyZoomUserParty(parsedEvent.CallInfo.Callee);
+			VerifyZoomUserParty(parsedEvent.CallInfo.Callee, extensionType: PhoneCallExtensionType.CallQueue, connectionType: PhoneCallConnectionType.Voip);
 			VerifyForwardedBy(parsedEvent.ForwardedBy);
 			VerifyRedirectForwardedBy(parsedEvent.RedirectForwardedBy);
 		}
@@ -143,14 +143,14 @@ namespace ZoomNet.UnitTests.WebhookParser
 		{
 			var parsedEvent = ParseWebhookEvent<PhoneCalleeParkedEvent>(WebhooksResource.phone_callee_parked);
 
-			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeParked);
+			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeParked, new DateTime(2021, 7, 20, 5, 38, 6, 127, DateTimeKind.Utc), "2TP-coFVSnmyvYZogk8gAg", "6986878782238080581");
 
-			parsedEvent.ParkedOn.ShouldBe(timestamp);
+			parsedEvent.ParkedOn.ShouldBe(new DateTime(2021, 7, 20, 5, 38, 4, DateTimeKind.Utc));
 			parsedEvent.ParkCode.ShouldBe("*869");
 			parsedEvent.ParkFailureReason.ShouldBe("Park successfully.");
 
-			VerifyVoipParty(parsedEvent.CallInfo.Caller);
-			VerifyZoomUserParty(parsedEvent.CallInfo.Callee, deviceType: null);
+			VerifyVoipParty(parsedEvent.CallInfo.Caller, phoneNumber: "810003", connectionType: PhoneCallConnectionType.PstnOnNet);
+			VerifyZoomUserParty(parsedEvent.CallInfo.Callee, deviceType: null, connectionType: PhoneCallConnectionType.Voip, phoneNumber: "810005", extensionNumber: 810005, userId: "kRQpbWO5TV6E7wxEYOKFWw", timezone: TimeZones.Asia_Shanghai);
 		}
 
 		[Fact]
@@ -173,12 +173,12 @@ namespace ZoomNet.UnitTests.WebhookParser
 		{
 			var parsedEvent = ParseWebhookEvent<PhoneCalleeRingingEvent>(WebhooksResource.phone_callee_ringing);
 
-			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeRinging);
+			VerifyPhoneCallFlowEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeRinging, new DateTime(2021, 8, 19, 21, 12, 41, 742, DateTimeKind.Utc), "TQTvjT52Tmi_wrhASNNOEw", "6998252113337041462");
 
 			parsedEvent.RingingStartedOn.ShouldBe(ringingStartedTimestamp);
 
 			VerifyVoipParty(parsedEvent.CallInfo.Caller, extensionNumber: null, extensionType: null);
-			VerifyZoomUserParty(parsedEvent.CallInfo.Callee, extensionId: null);
+			VerifyZoomUserParty(parsedEvent.CallInfo.Callee, extensionId: null, connectionType: PhoneCallConnectionType.Voip);
 			VerifyForwardedBy(parsedEvent.ForwardedBy);
 			VerifyRedirectForwardedBy(parsedEvent.RedirectForwardedBy);
 		}
@@ -420,12 +420,12 @@ namespace ZoomNet.UnitTests.WebhookParser
 		{
 			var parsedEvent = ParseWebhookEvent<PhoneCallerCallHistoryCompletedEvent>(WebhooksResource.phone_caller_call_history_completed);
 
-			VerifyPhoneCallLogOperationEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCallerCallHistoryCompleted);
+			VerifyPhoneCallLogOperationEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCallerCallHistoryCompleted, new DateTime(2021, 6, 9, 5, 55, 32, 807, DateTimeKind.Utc), "TQTvjT52Tmi_wrhASNNOEw", "IqoQmDRqS-aIoXqV_FZ88w");
 
 			parsedEvent.CallLogs.ShouldNotBeNull();
 			parsedEvent.CallLogs.ShouldHaveSingleItem();
 
-			VerifyCallElement(parsedEvent.CallLogs[0], callElementId: null, callHistoryUuid: null);
+			VerifyCallElement(parsedEvent.CallLogs[0], callElementId: null, callHistoryUuid: null, id: "20231008-48c1dfd4-91ce-4df5-8495-7c9e33d10869", callPathId: "20231008-1ac1df2a-912e-d125-8a15-1a1233d10f1a");
 		}
 
 		[Fact]
@@ -756,9 +756,9 @@ namespace ZoomNet.UnitTests.WebhookParser
 		{
 			var parsedEvent = ParseWebhookEvent<PhoneWarmTransferCancelledEvent>(WebhooksResource.phone_warm_transfer_cancelled);
 
-			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneWarmTransferCancelled);
+			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneWarmTransferCancelled, new DateTime(2021, 7, 20, 5, 38, 6, 127, DateTimeKind.Utc), "2TP-coFVSnmyvYZogk8gAg");
 
-			VerifyCallTransferInfo(parsedEvent.CallTransfer);
+			VerifyCallTransferInfo(parsedEvent.CallTransfer, transferPhoneNumber: null, transferAccountCode: null, callId: "6986878782238080581", ownerName: "usersubsetting0001", infoTimestamp: new DateTime(2021, 7, 20, 5, 38, 4, DateTimeKind.Utc));
 		}
 
 		[Fact]
@@ -1041,10 +1041,11 @@ namespace ZoomNet.UnitTests.WebhookParser
 			long? extensionNumber = 810003,
 			PhoneCallExtensionType? extensionType = PhoneCallExtensionType.User,
 			string deviceType = null,
-			PhoneCallConnectionType connectionType = PhoneCallConnectionType.Voip)
+			PhoneCallConnectionType connectionType = PhoneCallConnectionType.Voip,
+			string phoneNumber = PhoneNumberA)
 		{
 			partyInfo.ShouldNotBeNull();
-			partyInfo.PhoneNumber.ShouldBe(PhoneNumberA);
+			partyInfo.PhoneNumber.ShouldBe(phoneNumber);
 			partyInfo.ConnectionType.ShouldBe(connectionType);
 			partyInfo.ExtensionNumber.ShouldBe(extensionNumber);
 			partyInfo.ExtensionType.ShouldBe(extensionType);
@@ -1059,15 +1060,19 @@ namespace ZoomNet.UnitTests.WebhookParser
 			string extensionId = "52OdSKGSSS-EOyJwQncFvA",
 			PhoneCallExtensionType? extensionType = PhoneCallExtensionType.User,
 			string deviceType = "MAC_Client(5.7.5.1123)",
-			PhoneCallConnectionType connectionType = PhoneCallConnectionType.PstnOffNet)
+			PhoneCallConnectionType connectionType = PhoneCallConnectionType.PstnOffNet,
+			string phoneNumber = PhoneNumberB,
+			long extensionNumber = 1002,
+			string userId = "DnEopNmXQEGU2uvvzjgojw",
+			TimeZones timezone = TimeZones.America_Los_Angeles)
 		{
 			partyInfo.ShouldNotBeNull();
-			partyInfo.PhoneNumber.ShouldBe(PhoneNumberB);
+			partyInfo.PhoneNumber.ShouldBe(phoneNumber);
 			partyInfo.ExtensionId.ShouldBe(extensionId);
 			partyInfo.ExtensionType.ShouldBe(extensionType);
-			partyInfo.ExtensionNumber.ShouldBe(1002);
-			partyInfo.UserId.ShouldBe("DnEopNmXQEGU2uvvzjgojw");
-			partyInfo.Timezone.ShouldBe(TimeZones.America_Los_Angeles);
+			partyInfo.ExtensionNumber.ShouldBe(extensionNumber);
+			partyInfo.UserId.ShouldBe(userId);
+			partyInfo.Timezone.ShouldBe(timezone);
 			partyInfo.DeviceType.ShouldBe(deviceType);
 			partyInfo.DeviceId.ShouldBe("f7aLLSmqRpiWP0U3U6CaNA");
 			partyInfo.ConnectionType.ShouldBe(connectionType);
@@ -1497,11 +1502,11 @@ namespace ZoomNet.UnitTests.WebhookParser
 		/// <summary>
 		/// Verify <see cref="PhoneCallTransferEvent"/> properties.
 		/// </summary>
-		private static void VerifyPhoneCallTransferEvent(PhoneCallTransferEvent parsedEvent, ZoomNet.Models.Webhooks.EventType eventType)
+		private static void VerifyPhoneCallTransferEvent(PhoneCallTransferEvent parsedEvent, ZoomNet.Models.Webhooks.EventType eventType, DateTime? timestamp = null, string accountId = AccountId)
 		{
 			parsedEvent.EventType.ShouldBe(eventType);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
-			parsedEvent.AccountId.ShouldBe(AccountId);
+			parsedEvent.Timestamp.ShouldBe(timestamp ?? eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(accountId);
 		}
 
 		/// <summary>
@@ -1510,27 +1515,30 @@ namespace ZoomNet.UnitTests.WebhookParser
 		private static void VerifyCallTransferInfo(
 			WebhookCallTransferInfo info,
 			string transferPhoneNumber = PhoneNumberA,
-			string transferAccountCode = "123")
+			string transferAccountCode = "123",
+			string callId = CallId,
+			string ownerName = "Jill Chill",
+			DateTime? infoTimestamp = null)
 		{
 			info.ShouldNotBeNull();
-			info.CallId.ShouldBe(CallId);
-			info.Timestamp.ShouldBe(timestamp);
+			info.CallId.ShouldBe(callId);
+			info.Timestamp.ShouldBe(infoTimestamp ?? timestamp);
 			info.TransferPhoneNumber.ShouldBe(transferPhoneNumber);
 			info.TransferAccountCode.ShouldBe(transferAccountCode);
 			info.FailureReason.ShouldBe(string.Empty);
 
-			VerifyCallOwnerInfo(info.Owner);
+			VerifyCallOwnerInfo(info.Owner, ownerName);
 		}
 
 		/// <summary>
 		/// Verify <see cref="CallLogOwnerInfo"/> properties.
 		/// </summary>
-		private static void VerifyCallOwnerInfo(CallLogOwnerInfo info)
+		private static void VerifyCallOwnerInfo(CallLogOwnerInfo info, string name = "Jill Chill")
 		{
 			info.ShouldNotBeNull();
 			info.Type.ShouldBe(CallLogOwnerType.User);
 			info.Id.ShouldBe("z8yCxjabcdEFGHfp8uQ");
-			info.Name.ShouldBe("Jill Chill");
+			info.Name.ShouldBe(name);
 			info.ExtensionNumber.ShouldBe(6666);
 		}
 
