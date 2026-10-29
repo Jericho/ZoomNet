@@ -156,7 +156,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
 			parsedEvent.AccountId.ShouldBe(AccountId);
 
-			VerifyWebinarInfo(parsedEvent.Webinar);
+			VerifyWebinarInfo(parsedEvent.Webinar, type: WebinarType.Regular);
 
 			parsedEvent.EndTime.ShouldBe(new DateTime(2021, 7, 13, 23, 0, 51, DateTimeKind.Utc));
 			parsedEvent.PracticeSession.ShouldBe(true);
@@ -169,9 +169,9 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarParticipantBind);
 
-			VerifyWebinarParticipantEvent(parsedEvent);
+			VerifyWebinarParticipantEvent(parsedEvent, topic: "My Meeting", type: (WebinarType)8);
 
-			VerifyWebhookParticipant(parsedEvent.Participant, customerKey: null, email: null, participantUserId: null);
+			VerifyWebhookParticipant(parsedEvent.Participant, customerKey: null, email: null, participantUserId: null, displayName: "Jill Chill");
 
 			parsedEvent.BindUserId.ShouldBe("16778240");
 			parsedEvent.BindParticipantUuid.ShouldBe("B8E2844F-F162-4808-A997-F267BCE8B0BB");
@@ -243,7 +243,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			VerifyWebinarParticipantEvent(parsedEvent);
 
-			VerifyWebhookParticipant(parsedEvent.Participant, customerKey: null, phoneNumber: null, userId: null);
+			VerifyWebhookParticipant(parsedEvent.Participant, phoneNumber: null, userId: null, participantUuid: null, participantUserId: "rstuvwxyza789-cde");
 
 			parsedEvent.ChangedOn.ShouldBe(timestamp);
 			parsedEvent.NewRole.ShouldBe(ParticipantRole.CoHost);
@@ -409,12 +409,12 @@ namespace ZoomNet.UnitTests.WebhookParser
 		/// <summary>
 		/// Verify <see cref="WebinarParticipantEvent"/> properties.
 		/// </summary>
-		private static void VerifyWebinarParticipantEvent(WebinarParticipantEvent parsedEvent)
+		private static void VerifyWebinarParticipantEvent(WebinarParticipantEvent parsedEvent, string topic = "My Webinar", WebinarType type = WebinarType.RecurringFixedTime)
 		{
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
 			parsedEvent.AccountId.ShouldBe(AccountId);
 
-			VerifyWebinarInfo(parsedEvent.Webinar);
+			VerifyWebinarInfo(parsedEvent.Webinar, topic, type);
 		}
 
 		/// <summary>
@@ -433,14 +433,14 @@ namespace ZoomNet.UnitTests.WebhookParser
 		/// <summary>
 		/// Verify <see cref="WebinarInfo"/> properties.
 		/// </summary>
-		private static void VerifyWebinarInfo(WebinarInfo info)
+		private static void VerifyWebinarInfo(WebinarInfo info, string topic = "My Webinar", WebinarType type = WebinarType.RecurringFixedTime)
 		{
 			info.ShouldNotBeNull();
 			info.Id.ShouldBe(MeetingId);
 			info.Uuid.ShouldBe(MeetingUuid);
 			info.HostId.ShouldBe(HostId);
-			info.Topic.ShouldBe("My Webinar");
-			info.Type.ShouldBe(WebinarType.RecurringFixedTime);
+			info.Topic.ShouldBe(topic);
+			info.Type.ShouldBe(type);
 			info.StartTime.ShouldBe(timestamp);
 			info.Timezone.ShouldBe(TimeZones.America_Los_Angeles);
 			info.Duration.ShouldBe(60);
