@@ -197,7 +197,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 			parsedEvent.Participant.DisplayName.ShouldBe("jchill");
 
 			parsedEvent.Feedback.ShouldNotBeNull();
-			parsedEvent.Feedback.Satisfied.ShouldBeFalse();
+			parsedEvent.Feedback.Satisfied.ShouldBeTrue();
 			parsedEvent.Feedback.Comments.ShouldBe("good enough");
 			parsedEvent.Feedback.Details.ShouldNotBeNull();
 			parsedEvent.Feedback.Details.Length.ShouldBe(1);
@@ -214,7 +214,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			VerifyWebinarParticipantEvent(parsedEvent);
 
-			VerifyWebhookParticipant(parsedEvent.Participant);
+			VerifyWebhookParticipant(parsedEvent.Participant, displayName: "Jill Chill");
 
 			parsedEvent.JoinedOn.ShouldBe(timestamp);
 		}
@@ -228,7 +228,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			VerifyWebinarParticipantEvent(parsedEvent);
 
-			VerifyWebhookParticipant(parsedEvent.Participant);
+			VerifyWebhookParticipant(parsedEvent.Participant, displayName: "Jill Chill");
 
 			parsedEvent.LeftOn.ShouldBe(new DateTime(2021, 7, 13, 22, 50, 51, DateTimeKind.Utc));
 			parsedEvent.LeaveReason.ShouldBe("Jill Chill left the webinar.<br>Reason: Host ended the webinar.");
@@ -243,7 +243,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			VerifyWebinarParticipantEvent(parsedEvent);
 
-			VerifyWebhookParticipant(parsedEvent.Participant, customerKey: null, phoneNumber: null);
+			VerifyWebhookParticipant(parsedEvent.Participant, customerKey: null, phoneNumber: null, userId: null);
 
 			parsedEvent.ChangedOn.ShouldBe(timestamp);
 			parsedEvent.NewRole.ShouldBe(ParticipantRole.CoHost);
@@ -321,12 +321,12 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			VerifyWebinarRegistrationEvent(parsedEvent);
 
-			VerifyRegistrantExtended(parsedEvent.Registrant);
+			VerifyRegistrantExtended(parsedEvent.Registrant, joinUrl: "https://example.com");
 
 			parsedEvent.Registrant.Comments.ShouldBe("Looking forward to the webinar");
 			parsedEvent.Registrant.CustomQuestions.ShouldNotBeNull();
 			parsedEvent.Registrant.CustomQuestions.Length.ShouldBe(1);
-			parsedEvent.Registrant.CustomQuestions[0].Key.ShouldBe("What do you hope to learn from this webinar?");
+			parsedEvent.Registrant.CustomQuestions[0].Key.ShouldBe("What do you hope to learn from this Webinar?");
 			parsedEvent.Registrant.CustomQuestions[0].Value.ShouldBe("Look forward to learning how you come up with new recipes and what other services you offer.");
 		}
 
@@ -352,7 +352,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarSharingStarted);
 
-			VerifyWebinarSharingEvent(parsedEvent);
+			VerifyWebinarSharingEvent(parsedEvent, userId: "iFxeBPYun6SAiWUzBcEkX");
 		}
 
 		[Fact]
@@ -362,7 +362,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarSharingEnded);
 
-			VerifyWebinarSharingEvent(parsedEvent);
+			VerifyWebinarSharingEvent(parsedEvent, userId: null);
 		}
 
 		[Fact]
@@ -439,8 +439,8 @@ namespace ZoomNet.UnitTests.WebhookParser
 			info.Id.ShouldBe(MeetingId);
 			info.Uuid.ShouldBe(MeetingUuid);
 			info.HostId.ShouldBe(HostId);
-			info.Topic.ShouldBe("My Meeting Converted");
-			info.Type.ShouldBe(WebinarType.Regular);
+			info.Topic.ShouldBe("My Webinar");
+			info.Type.ShouldBe(WebinarType.RecurringFixedTime);
 			info.StartTime.ShouldBe(timestamp);
 			info.Timezone.ShouldBe(TimeZones.America_Los_Angeles);
 			info.Duration.ShouldBe(60);
@@ -487,16 +487,16 @@ namespace ZoomNet.UnitTests.WebhookParser
 		/// <summary>
 		/// Verify <see cref="WebinarSharingEvent"/> properties.
 		/// </summary>
-		private static void VerifyWebinarSharingEvent(WebinarSharingEvent parsedEvent)
+		private static void VerifyWebinarSharingEvent(WebinarSharingEvent parsedEvent, string userId = "ABCDE12345")
 		{
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
 			parsedEvent.AccountId.ShouldBe(AccountId);
 
 			parsedEvent.Participant.ShouldNotBeNull();
-			parsedEvent.Participant.DisplayName.ShouldBe("Jill Chill");
+			parsedEvent.Participant.DisplayName.ShouldBe("JillChill");
 			parsedEvent.Participant.Email.ShouldBeNullOrEmpty();
-			parsedEvent.Participant.ParticipantId.ShouldBe("iFxeBPYun6SAiWUzBcEkX");
-			parsedEvent.Participant.UserId.ShouldBe("ABCDE12345");
+			parsedEvent.Participant.ParticipantId.ShouldBe("ABCDE12345");
+			parsedEvent.Participant.UserId.ShouldBe(userId);
 
 			VerifyWebinarInfo(parsedEvent.Webinar);
 
