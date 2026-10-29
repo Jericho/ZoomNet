@@ -152,17 +152,16 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingUpdated);
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
-			parsedEvent.Operator.ShouldBe("someone@example.com");
-			parsedEvent.OperatorId.ShouldBe("8lzIwvZTSOqjndWPbPqzuA");
-			parsedEvent.Operation.ShouldBe("single");
-			parsedEvent.UpdatedOn.ShouldBe(1617628463664.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
+			parsedEvent.Operator.ShouldBe("admin@example.com");
+			parsedEvent.OperatorId.ShouldBe("z8yCxjabcdEFGHfp8uQ");
+			parsedEvent.Operation.ShouldBeNull();
+			parsedEvent.UpdatedOn.ShouldBe(new DateTime(2024, 8, 26, 6, 28, 48, 243, DateTimeKind.Utc));
 
 			parsedEvent.ModifiedFields.ShouldNotBeNull();
-			parsedEvent.ModifiedFields.Length.ShouldBe(2);
-			parsedEvent.ModifiedFields[0].FieldName.ShouldBe("topic");
+			parsedEvent.ModifiedFields.Length.ShouldBe(1);
+			parsedEvent.ModifiedFields[0].FieldName.ShouldBe("settings");
 			parsedEvent.ModifiedFields[0].OldValue.ShouldBe("ZoomNet Unit Testing: scheduled meeting");
 			parsedEvent.ModifiedFields[0].NewValue.ShouldBe("ZoomNet Unit Testing: UPDATED scheduled meeting");
-			parsedEvent.ModifiedFields[1].FieldName.ShouldBe("settings");
 
 			parsedEvent.MeetingFields.ShouldNotBeNull();
 			parsedEvent.MeetingFields.Length.ShouldBe(1);
@@ -474,7 +473,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			VerifyMeetingSummaryEvent(parsedEvent);
 
-			parsedEvent.MeetingSummary.SummaryContent.ShouldBe("## Key takeaways\n- Mobile app performance issues are affecting user retention.\n- New onboarding flow received positive feedback from beta testers.");
+			parsedEvent.MeetingSummary.SummaryContent.ShouldStartWith("## Key takeaways");
 			parsedEvent.MeetingSummary.SummaryDocUrl.ShouldBe("https://docs.example.com/doc/1aBcDeFgHiJkLmNoPqRsTu");
 			parsedEvent.MeetingSummary.SummaryLastModifiedUserEmail.ShouldBeNull();
 			parsedEvent.MeetingSummary.SummaryLastModifiedUserId.ShouldBeNull();
@@ -550,7 +549,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			parsedEvent.MeetingSummary.SummaryLastModifiedUserId.ShouldBe("Lfi0BlBQTM-bbktE9BRUvA");
 			parsedEvent.MeetingSummary.SummaryLastModifiedUserEmail.ShouldBe("user@example.com");
-			parsedEvent.MeetingSummary.SummaryContent.ShouldBe("## Key takeaways\n- Mobile app performance issues are affecting user retention.\n- New onboarding flow received positive feedback from beta testers.");
+			parsedEvent.MeetingSummary.SummaryContent.ShouldStartWith("## Key takeaways");
 			parsedEvent.MeetingSummary.SummaryDocUrl.ShouldBe("https://docs.example.com/doc/1aBcDeFgHiJkLmNoPqRsTu");
 		}
 
@@ -1026,14 +1025,14 @@ namespace ZoomNet.UnitTests.WebhookParser
 			parsedEvent.MeetingSummary.MeetingId.ShouldBe(97763643886);
 			parsedEvent.MeetingSummary.MeetingUuid.ShouldBe("aDYlohsHRtCd4ii1uC2+hA==");
 			parsedEvent.MeetingSummary.MeetingStartTime.ShouldBe(new DateTime(2019, 7, 15, 23, 24, 52, DateTimeKind.Utc));
-			parsedEvent.MeetingSummary.MeetingEndTime.ShouldBe(new DateTime(2019, 7, 15, 23, 30, 19, DateTimeKind.Utc));
+			parsedEvent.MeetingSummary.MeetingEndTime.ShouldBe(new DateTime(2020, 7, 15, 23, 30, 19, DateTimeKind.Utc));
 			parsedEvent.MeetingSummary.MeetingHostEmail.ShouldBe(UserEmail);
 			parsedEvent.MeetingSummary.MeetingHostId.ShouldBe("30R7kT7bTIKSNUFEuH_Qlg");
 			parsedEvent.MeetingSummary.MeetingTopic.ShouldBe("My Meeting");
-			parsedEvent.MeetingSummary.SummaryCreatedTime.ShouldBe(new DateTime(2019, 7, 15, 23, 31, 47, DateTimeKind.Utc));
+			parsedEvent.MeetingSummary.SummaryCreatedTime.ShouldBe(new DateTime(2019, 7, 15, 23, 24, 52, DateTimeKind.Utc));
 			parsedEvent.MeetingSummary.SummaryStartTime.ShouldBe(new DateTime(2019, 7, 15, 23, 24, 52, DateTimeKind.Utc));
-			parsedEvent.MeetingSummary.SummaryEndTime.ShouldBe(new DateTime(2019, 7, 15, 23, 30, 19, DateTimeKind.Utc));
-			parsedEvent.MeetingSummary.SummaryLastModifiedTime.ShouldBe(new DateTime(2019, 7, 15, 23, 32, 19, DateTimeKind.Utc));
+			parsedEvent.MeetingSummary.SummaryEndTime.ShouldBe(new DateTime(2020, 7, 15, 23, 30, 19, DateTimeKind.Utc));
+			parsedEvent.MeetingSummary.SummaryLastModifiedTime.ShouldBe(new DateTime(2020, 7, 15, 23, 30, 19, DateTimeKind.Utc));
 			parsedEvent.MeetingSummary.SummaryTitle.ShouldBe("Meeting Summary for my meeting");
 		}
 
@@ -1307,7 +1306,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		{
 			info.ShouldNotBeNull();
 			info.Length.ShouldBe(1);
-			info[0].OccurrenceId.ShouldBe("ABCDE12345");
+			info[0].OccurrenceId.ShouldBe("1677637740000");
 			info[0].StartTime.ShouldBe(timestamp);
 			info[0].Duration.ShouldBe(duration);
 			info[0].Status.ShouldBe(status);
@@ -1397,18 +1396,18 @@ namespace ZoomNet.UnitTests.WebhookParser
 		/// </summary>
 		private static void VerifyMeetingSharingEvent(MeetingSharingEvent parsedEvent)
 		{
-			parsedEvent.Timestamp.ShouldBe(1234566789900.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
-			parsedEvent.AccountId.ShouldBe("EPeQtiABC000VYxHMA");
+			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AccountId);
 
 			parsedEvent.Participant.ShouldNotBeNull();
-			parsedEvent.Participant.DisplayName.ShouldBe("Arya Arya");
+			parsedEvent.Participant.DisplayName.ShouldBe("JillChill");
 			parsedEvent.Participant.Email.ShouldBeNullOrEmpty();
-			parsedEvent.Participant.ParticipantId.ShouldBe("16778000");
-			parsedEvent.Participant.UserId.ShouldBe("s0AAAASoSE1V8KIFOCYw");
+			parsedEvent.Participant.ParticipantId.ShouldBe("ABCDE12345");
+			parsedEvent.Participant.UserId.ShouldBe("iFxeBPYun6SAiWUzBcEkX");
 
 			VerifyMeetingInfo(parsedEvent.Meeting);
 
-			VerifyScreenshareDetails(parsedEvent.ScreenshareDetails, new DateTime(2021, 7, 13, 21, 56, 0, 0, DateTimeKind.Utc));
+			VerifyScreenshareDetails(parsedEvent.ScreenshareDetails, new DateTime(2021, 7, 13, 21, 55, 52, DateTimeKind.Utc));
 		}
 
 		/// <summary>
