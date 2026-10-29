@@ -114,7 +114,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.RecordingBatchTrashed);
 
 			parsedEvent.Operator.ShouldBe(OperatorEmail);
-			parsedEvent.OperatorId.ShouldBe(OperatorId);
+			parsedEvent.OperatorId.ShouldBe("I7zp-pYbTl22Z29H796Ixg");
 			parsedEvent.Operation.ShouldBe(RecordingsBatchTrashOperationType.TrashUserRecordings);
 
 			parsedEvent.MeetingUuids.ShouldNotBeNull();
