@@ -477,7 +477,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 			parsedEvent.Recordings.ShouldNotBeNull();
 			parsedEvent.Recordings.ShouldHaveSingleItem();
 
-			VerifyPhoneCallRecording(parsedEvent.Recordings[0]);
+			VerifyPhoneCallRecording(parsedEvent.Recordings[0], userId: "w0RChiauQeqRlv5fgxYULQ");
 		}
 
 		[Fact]
@@ -485,13 +485,13 @@ namespace ZoomNet.UnitTests.WebhookParser
 		{
 			var parsedEvent = ParseWebhookEvent<PhoneRecordingDeletedEvent>(WebhooksResource.phone_recording_deleted);
 
-			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneRecordingDeleted);
+			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneRecordingDeleted, new DateTime(2021, 4, 23, 5, 21, 21, 301, DateTimeKind.Utc), "Mt6sv4u0TAyPkwgsL2lxiA");
 
 			parsedEvent.Recordings.ShouldNotBeNull();
 			parsedEvent.Recordings.ShouldHaveSingleItem();
 
-			parsedEvent.Recordings[0].Id.ShouldBe(RecordingId);
-			parsedEvent.Recordings[0].CallId.ShouldBe(CallId);
+			parsedEvent.Recordings[0].Id.ShouldBe("9a0887ca-da53-4c62-b32a-563789ef264e");
+			parsedEvent.Recordings[0].CallId.ShouldBe("6954218111457544837");
 		}
 
 		[Fact]
@@ -499,7 +499,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		{
 			var parsedEvent = ParseWebhookEvent<PhoneRecordingFailedEvent>(WebhooksResource.phone_recording_failed);
 
-			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneRecordingFailed);
+			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneRecordingFailed, accountId: "TAjiGweoTLeK72SaeocBZg");
 
 			VerifyPhoneCallRecordingSimple(parsedEvent.Recording);
 
@@ -526,13 +526,13 @@ namespace ZoomNet.UnitTests.WebhookParser
 		{
 			var parsedEvent = ParseWebhookEvent<PhoneRecordingPermanentlyDeletedEvent>(WebhooksResource.phone_recording_permanently_deleted);
 
-			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneRecordingPermanentlyDeleted);
+			VerifyRecordingEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneRecordingPermanentlyDeleted, new DateTime(2021, 4, 23, 5, 21, 21, 301, DateTimeKind.Utc), "Mt6sv4u0TAyPkwgsL2lxiA");
 
 			parsedEvent.Recordings.ShouldNotBeNull();
 			parsedEvent.Recordings.ShouldHaveSingleItem();
 
-			parsedEvent.Recordings[0].Id.ShouldBe(RecordingId);
-			parsedEvent.Recordings[0].CallId.ShouldBe(CallId);
+			parsedEvent.Recordings[0].Id.ShouldBe("9a0887ca-da53-4c62-b32a-563789ef264e");
+			parsedEvent.Recordings[0].CallId.ShouldBe("6954218111457544837");
 		}
 
 		[Fact]
@@ -1263,47 +1263,47 @@ namespace ZoomNet.UnitTests.WebhookParser
 		/// <summary>
 		/// Verify some of the <see cref="PhoneCallRecording"/> properties.
 		/// </summary>
-		private static void VerifyPhoneCallRecordingSimple(PhoneCallRecording recording)
+		private static void VerifyPhoneCallRecordingSimple(PhoneCallRecording recording, string userId = "z8yCxjabcdEFGHfp8uQ")
 		{
 			recording.ShouldNotBeNull();
-			recording.Id.ShouldBe(RecordingId);
-			recording.UserId.ShouldBe("z8yCxjabcdEFGHfp8uQ");
+			recording.Id.ShouldBe("abcD3ojfdbjfg");
+			recording.UserId.ShouldBe(userId);
 			recording.CallerNumber.ShouldBe("1026");
-			recording.CallerAccountCode.ShouldBe("123");
+			recording.CallerAccountCode.ShouldBeNull();
 			recording.CalleeNumber.ShouldBe("1045");
-			recording.CalleeAccountCode.ShouldBe("456");
+			recording.CalleeAccountCode.ShouldBeNull();
 			recording.Direction.ShouldBe(CallLogDirection.Outbound);
-			recording.StartDateTime.ShouldBe(answeredTimestamp);
+			recording.StartDateTime.ShouldBe(new DateTime(2021, 6, 9, 6, 9, 24, DateTimeKind.Utc));
 			recording.Type.ShouldBe(PhoneCallRecordingType.OnDemand);
-			recording.CallId.ShouldBe(CallId);
+			recording.CallId.ShouldBe("6971672158469969953");
 		}
 
 		/// <summary>
 		/// Verify <see cref="PhoneCallRecording"/> properties.
 		/// </summary>
-		private static void VerifyPhoneCallRecording(PhoneCallRecording recording, bool transcriptRecording = false)
+		private static void VerifyPhoneCallRecording(PhoneCallRecording recording, bool transcriptRecording = false, string userId = "z8yCxjabcdEFGHfp8uQ")
 		{
-			VerifyPhoneCallRecordingSimple(recording);
+			VerifyPhoneCallRecordingSimple(recording, userId);
 
 			recording.CallLogId.ShouldBe("a297ae04-a875-4cfd-85ab-4adcead91edb");
 
 			recording.CallerNumberType.ShouldBe(PhoneCallNumberType.Internal);
 			recording.CallerName.ShouldBe("Caller Name");
 
-			recording.CalleeNumberType.ShouldBe(PhoneCallNumberType.External);
+			recording.CalleeNumberType.ShouldBe(PhoneCallNumberType.Internal);
 			recording.CalleeName.ShouldBe("Callee Name");
 
 			recording.Duration.ShouldBe(43);
-			recording.EndDateTime.ShouldBe(callEndedTimestamp);
+			recording.EndDateTime.ShouldBe(new DateTime(2021, 6, 9, 6, 10, 7, DateTimeKind.Utc));
 
 			// There are some differences in available properties depending on audio recording or transcript.
 			if (!transcriptRecording)
 			{
-				recording.CallElementId.ShouldBe(CallElementId);
-				recording.CallHistoryId.ShouldBe(CallHistoryId);
+				recording.CallElementId.ShouldBe("20210609-a297ae04-a875-4cfd-85ab-4adcead91edb");
+				recording.CallHistoryId.ShouldBe("20210609-a297ae04-a875-4cfd-85ab-4adcead91edb");
 
-				recording.CallerDidNumber.ShouldBe(PhoneNumberA);
-				recording.CalleeDidNumber.ShouldBe(PhoneNumberB);
+				recording.CallerDidNumber.ShouldBe("+12055967465");
+				recording.CalleeDidNumber.ShouldBe("+15104381494");
 
 				recording.DownloadUrl.ShouldBe("https://some.url.com");
 				recording.TranscriptDownloadUrl.ShouldBeNull();
@@ -1320,18 +1320,13 @@ namespace ZoomNet.UnitTests.WebhookParser
 				recording.DownloadUrl.ShouldBeNull();
 			}
 
-			recording.CallReceiver.ShouldNotBeNull();
-			recording.CallReceiver.ExtensionNumber.ShouldBe("900");
-			recording.CallReceiver.Name.ShouldBe("Accepted by");
-
-			recording.CallInitiator.ShouldNotBeNull();
-			recording.CallInitiator.ExtensionNumber.ShouldBe("800");
-			recording.CallInitiator.Name.ShouldBe("Outgoing by");
+			recording.CallReceiver.ShouldBeNull();
+			recording.CallInitiator.ShouldBeNull();
 
 			VerifyPhoneCallRecordingOwner(recording.Owner, hasAccessPermission: !transcriptRecording ? true : (bool?)null);
 
 			recording.Site.ShouldNotBeNull();
-			recording.Site.Id.ShouldBe(SiteId);
+			recording.Site.Id.ShouldBe("qORJkxNDTA25_VfJ3GK9KA");
 		}
 
 		/// <summary>
@@ -1340,9 +1335,9 @@ namespace ZoomNet.UnitTests.WebhookParser
 		private static void VerifyPhoneCallRecordingOwner(PhoneCallRecordingOwner owner, bool? hasAccessPermission = null)
 		{
 			owner.ShouldNotBeNull();
-			owner.Id.ShouldBe(OwnerId);
+			owner.Id.ShouldBe("z8yCxjabcdEFGHfp8uQ");
 			owner.Type.ShouldBe(PhoneCallRecordingOwnerType.User);
-			owner.Name.ShouldBe("Owner name");
+			owner.Name.ShouldBe("usersubsetting0001");
 			owner.ExtensionNumber.ShouldBe(6666);
 			owner.HasAccessPermission.ShouldBe(hasAccessPermission);
 		}
