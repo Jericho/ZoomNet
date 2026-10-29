@@ -704,8 +704,8 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.MeetingAiCompanionAssetsDeleted);
 
-			var timestamp = new DateTime(2024, 9, 2, 8, 15, 0, DateTimeKind.Utc);
-			VerifyMeetingAiCompanionEvent(parsedEvent, timestamp);
+			var timestamp = new DateTime(2024, 9, 12, 15, 30, 0, 123, DateTimeKind.Utc);
+			VerifyMeetingAiCompanionEvent(parsedEvent, timestamp, "dzVA4QmMQfyISoRcpFO8CA", 97763643886, "aDYlohsHRtCd4ii1uC2+hA==", "30R7kT7bTIKSNUFEuH_Qlg");
 
 			parsedEvent.DeletedAssets.ShouldNotBeNull();
 			parsedEvent.DeletedAssets.Length.ShouldBe(1);
@@ -1073,13 +1073,14 @@ namespace ZoomNet.UnitTests.WebhookParser
 			string participantUserId = "iFxeBPYun6SAiWUzBcEkX",
 			string participantId = "1234567890",
 			string userId = "iFxeBPYun6SAiWUzBcEkX",
-			string displayName = "JillChill")
+			string displayName = "JillChill",
+			string participantUuid = "55555AAAiAAAAAiAiAiiAii")
 		{
 			info.ShouldNotBeNull();
 			info.UserId.ShouldBe(userId);
 			info.DisplayName.ShouldBe(displayName);
 			info.ParticipantId.ShouldBe(participantId);
-			info.ParticipantUuid.ShouldBe("55555AAAiAAAAAiAiAiiAii");
+			info.ParticipantUuid.ShouldBe(participantUuid);
 			info.Email.ShouldBe(email);
 			info.RegistrantId.ShouldBe("abcdefghij0-klmnopq23456");
 			info.ParticipantUserId.ShouldBe(participantUserId);
@@ -1200,15 +1201,21 @@ namespace ZoomNet.UnitTests.WebhookParser
 		/// <summary>
 		/// Verify <see cref="MeetingAiCompanionEvent"/> properties.
 		/// </summary>
-		private static void VerifyMeetingAiCompanionEvent(MeetingAiCompanionEvent parsedEvent, DateTime timestamp)
+		private static void VerifyMeetingAiCompanionEvent(
+			MeetingAiCompanionEvent parsedEvent,
+			DateTime timestamp,
+			string accountId = "a1B2c3D4E5f6G7h8I9J0",
+			long meetingId = 98273645123,
+			string meetingUuid = "cXYlohsHRtCd4ii1uC2+hA==",
+			string hostId = "12R7kT7bTIKSNUFEuH_Qlg")
 		{
 			parsedEvent.Timestamp.ShouldBe(timestamp);
-			parsedEvent.AccountId.ShouldBe("a1B2c3D4E5f6G7h8I9J0");
+			parsedEvent.AccountId.ShouldBe(accountId);
 
 			parsedEvent.Meeting.ShouldNotBeNull();
-			parsedEvent.Meeting.Id.ShouldBe(98273645123);
-			parsedEvent.Meeting.Uuid.ShouldBe("cXYlohsHRtCd4ii1uC2+hA==");
-			parsedEvent.Meeting.HostId.ShouldBe("12R7kT7bTIKSNUFEuH_Qlg");
+			parsedEvent.Meeting.Id.ShouldBe(meetingId);
+			parsedEvent.Meeting.Uuid.ShouldBe(meetingUuid);
+			parsedEvent.Meeting.HostId.ShouldBe(hostId);
 		}
 
 		/// <summary>
