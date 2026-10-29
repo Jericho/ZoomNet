@@ -172,7 +172,7 @@ namespace ZoomNet.Json
 					return meetingParticipantFeedbackEvent;
 				case Models.Webhooks.EventType.MeetingParticipantJoined:
 					var meetingParticipantJoinedEvent = payloadJsonProperty.ToObject<MeetingParticipantJoinedEvent>(options);
-					meetingParticipantJoinedEvent.JoinedOn = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/join_time");
+					meetingParticipantJoinedEvent.JoinedOn = ParseParticipantDateTime(payloadJsonProperty);
 					meetingParticipantJoinedEvent.Participant = ParseParticipantProperty<WebhookParticipant>(payloadJsonProperty);
 					return meetingParticipantJoinedEvent;
 				case Models.Webhooks.EventType.MeetingParticipantSentToWaitingRoom:
@@ -395,7 +395,7 @@ namespace ZoomNet.Json
 				case Models.Webhooks.EventType.MeetingParticipantJoinedBreakoutRoom:
 					var meetingParticipantJoinedBreakoutRoomEvent = payloadJsonProperty.ToObject<MeetingParticipantJoinedBreakoutRoomEvent>(options);
 					meetingParticipantJoinedBreakoutRoomEvent.Participant = ParseParticipantProperty<BreakoutRoomParticipantInfo>(payloadJsonProperty);
-					meetingParticipantJoinedBreakoutRoomEvent.JoinTime = payloadJsonProperty.GetPropertyValue<DateTime>("object/participant/join_time");
+					meetingParticipantJoinedBreakoutRoomEvent.JoinTime = ParseParticipantDateTime(payloadJsonProperty);
 					return meetingParticipantJoinedBreakoutRoomEvent;
 				case Models.Webhooks.EventType.MeetingParticipantLeftBreakoutRoom:
 					var meetingParticipantLeftBreakoutRoomEvent = payloadJsonProperty.ToObject<MeetingParticipantLeftBreakoutRoomEvent>(options);
