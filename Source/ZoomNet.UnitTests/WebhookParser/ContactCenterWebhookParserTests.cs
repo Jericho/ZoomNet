@@ -20,6 +20,8 @@ namespace ZoomNet.UnitTests.WebhookParser
 		private const string AssetModifiedBy = "IGTRVt3gQ2i-WjoUIjeZxw";
 		private const string AssetCategoryId = "bnGEj1yrRb6qlNMvyMK08g";
 		private const string AssetItemId = "beYjXoDOS_eV1QmTpj63PQ";
+		private const string AssetAccountId = "D8cJuqWVQ623CI4Q8yQK0Q";
+		private static readonly DateTime assetEventTimestamp = new DateTime(2021, 8, 2, 12, 22, 24, 384, DateTimeKind.Utc);
 		private static readonly DateTime assetTimestamp = new DateTime(2022, 2, 15, 9, 27, 15, 987);
 
 		#endregion
@@ -32,8 +34,8 @@ namespace ZoomNet.UnitTests.WebhookParser
 			var parsedEvent = ParseWebhookEvent<ContactCenterAssetCreatedEvent>(WebhooksResource.contact_center_asset_created);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.ContactCenterAssetCreated);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
-			parsedEvent.AccountId.ShouldBe(AccountId);
+			parsedEvent.Timestamp.ShouldBe(assetEventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AssetAccountId);
 
 			VerifyWebhookAssetCreated(parsedEvent.Asset);
 		}
@@ -44,8 +46,8 @@ namespace ZoomNet.UnitTests.WebhookParser
 			var parsedEvent = ParseWebhookEvent<ContactCenterAssetDeletedEvent>(WebhooksResource.contact_center_asset_deleted);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.ContactCenterAssetDeleted);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
-			parsedEvent.AccountId.ShouldBe(AccountId);
+			parsedEvent.Timestamp.ShouldBe(assetEventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AssetAccountId);
 
 			VerifyWebhookAssetDeleted(parsedEvent.Asset);
 		}
@@ -56,8 +58,8 @@ namespace ZoomNet.UnitTests.WebhookParser
 			var parsedEvent = ParseWebhookEvent<ContactCenterAssetUpdatedEvent>(WebhooksResource.contact_center_asset_updated);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.ContactCenterAssetUpdated);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
-			parsedEvent.AccountId.ShouldBe(AccountId);
+			parsedEvent.Timestamp.ShouldBe(assetEventTimestamp);
+			parsedEvent.AccountId.ShouldBe(AssetAccountId);
 
 			VerifyWebhookAssetUpdated(parsedEvent.Asset);
 		}
@@ -74,7 +76,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 			info.ShouldNotBeNull();
 			info.Id.ShouldBe(AssetId);
 			info.Name.ShouldBe(AssetName);
-			info.Description.ShouldBe(AssetDescription);
+			info.Description.ShouldBe("This is an example asset.");
 			info.Type.ShouldBe(AssetType.Audio);
 			info.LanguageCode.ShouldBe(Language.English_US);
 			info.CategoryId.ShouldBe(AssetCategoryId);
@@ -85,7 +87,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 			info.Items.ShouldNotBeNull();
 			info.Items.ShouldHaveSingleItem();
 
-			VerifyAssetItem(info.Items[0], Language.Spanish_Spain, "Created", true);
+			VerifyAssetItem(info.Items[0], Language.English_US, "My Asset Item", "My Asset Item Content", "https://file.zoom.us/example.mp3", true);
 		}
 
 		/// <summary>
@@ -120,11 +122,11 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			info.Updates.AddedItems.ShouldNotBeNull();
 			info.Updates.AddedItems.ShouldHaveSingleItem();
-			VerifyAssetItem(info.Updates.AddedItems[0], Language.English_US, "Added", true);
+			VerifyAssetItem(info.Updates.AddedItems[0], Language.English_US, "My Asset Item Added", "My Asset Item Content Added", "https://file.zoom.us/xxxx", true);
 
 			info.Updates.UpdatedItems.ShouldNotBeNull();
 			info.Updates.UpdatedItems.ShouldHaveSingleItem();
-			VerifyAssetItem(info.Updates.UpdatedItems[0], Language.Spanish_Spain, "Updated", false);
+			VerifyAssetItem(info.Updates.UpdatedItems[0], Language.Spanish_Spain, "My Asset Item Updated", "My Asset Item Content Updated", "https://file.zoom.us/xxxx", false);
 
 			info.Updates.DeletedItems.ShouldNotBeNull();
 			info.Updates.DeletedItems.ShouldHaveSingleItem();
@@ -136,13 +138,13 @@ namespace ZoomNet.UnitTests.WebhookParser
 		/// <summary>
 		/// Verify <see cref="AssetItem"/> properties.
 		/// </summary>
-		private void VerifyAssetItem(AssetItem item, Language language, string namePostFix, bool isDefault)
+		private void VerifyAssetItem(AssetItem item, Language language, string name, string content, string fileUrl, bool isDefault)
 		{
 			item.Id.ShouldBe(AssetItemId);
-			item.Name.ShouldBe($"My Asset Item {namePostFix}");
+			item.Name.ShouldBe(name);
 			item.Language.ShouldBe(language);
-			item.FileUrl.ShouldBe("https://file.zoom.us/example.mp3");
-			item.Content.ShouldBe($"My Asset Item {namePostFix}");
+			item.FileUrl.ShouldBe(fileUrl);
+			item.Content.ShouldBe(content);
 			item.Voice.ShouldBe("Joanna");
 			item.IsDefault.ShouldBe(isDefault);
 		}

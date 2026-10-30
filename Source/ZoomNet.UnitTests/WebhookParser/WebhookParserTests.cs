@@ -400,7 +400,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			VerifyMeetingParticipantEvent(parsedEvent);
 
-			VerifyWebhookParticipant(parsedEvent.Participant, customerKey: null, phoneNumber: null, userId: null, participantUserId: "rstuvwxyza789-cde");
+			VerifyWebhookParticipant(parsedEvent.Participant, displayName: "JillChill", customerKey: null, phoneNumber: null, userId: null, participantUserId: "rstuvwxyza789-cde");
 
 			parsedEvent.ChangedOn.ShouldBe(timestamp);
 			parsedEvent.NewRole.ShouldBe(ParticipantRole.CoHost);
