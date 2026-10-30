@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text.Json;
 using ZoomNet.Models;
@@ -937,7 +938,10 @@ namespace ZoomNet.Json
 		private static RecordingProgressEvent ParseRecordingProgressTimestamps(JsonElement payloadJsonProperty, RecordingProgressEvent parsedEvent)
 		{
 			parsedEvent.StartTime = payloadJsonProperty.GetPropertyValue<DateTime>("object/recording_file/recording_start");
-			parsedEvent.EndTime = payloadJsonProperty.GetPropertyValue<DateTime?>("object/recording_file/recording_end", null);
+
+			// The sample data contains an empty string when the recording hasn't ended yet
+			var recordingEnd = payloadJsonProperty.GetPropertyValue<string>("object/recording_file/recording_end", null);
+			parsedEvent.EndTime = string.IsNullOrEmpty(recordingEnd) ? null : DateTime.Parse(recordingEnd, CultureInfo.InvariantCulture, DateTimeStyles.AdjustToUniversal | DateTimeStyles.AssumeUniversal);
 
 			return parsedEvent;
 		}
@@ -949,7 +953,14 @@ namespace ZoomNet.Json
 
 		private static DateTime ParseTimestampFromUnixMilliseconds(JsonElement payloadJsonProperty)
 		{
-			return payloadJsonProperty.GetPropertyValue<long>("time_stamp").FromUnixTime(UnixTimePrecision.Milliseconds);
+			var timeStamp = payloadJsonProperty.GetProperty("time_stamp");
+
+			// The timestamp is a string in some samples and a number in others
+			var milliseconds = timeStamp.ValueKind == JsonValueKind.String
+				? long.Parse(timeStamp.GetString(), CultureInfo.InvariantCulture)
+				: timeStamp.GetInt64();
+
+			return milliseconds.FromUnixTime(UnixTimePrecision.Milliseconds);
 		}
 
 		private static DateTime ParseRingingStartTime(JsonElement payloadJsonProperty)
