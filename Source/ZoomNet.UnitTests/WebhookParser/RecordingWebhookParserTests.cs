@@ -384,7 +384,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 			parsedEvent.Recording.ParticipantAudioFiles.ShouldNotBeNull();
 			parsedEvent.Recording.ParticipantAudioFiles.ShouldHaveSingleItem();
 
-			VerifyParticipantAudioFile(parsedEvent.Recording.ParticipantAudioFiles[0]);
+			VerifyParticipantAudioFile(parsedEvent.Recording.ParticipantAudioFiles[0], "ed6c2f27-2ae7-42f4-b3d0-835b493e4fa8", "MyRecording", RecordingFileExtension.MP4, "AAAA");
 		}
 
 		#endregion
@@ -494,7 +494,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 			file.ContentType.ShouldBe(RecordingContentType.AudioTranscript);
 			file.FileType.ShouldBe(RecordingFileType.Transcript);
 			file.Size.ShouldBe(142);
-			file.FileExtension.ShouldBe(RecordingFileExtension.VTT);
+			file.FileExtension.ShouldBe(RecordingFileExtension.NotSpecified);
 			file.PlayUrl.ShouldBe("https://example.com/recording/play/Qg75t7xZBtEbAkjdlgbfdngBBBB");
 			file.DownloadUrl.ShouldBe("https://example.com/recording/download/Qg75t7xZBtEbAkjdlgbfdngBBBB");
 			file.Status.ShouldBe(RecordingStatus.Completed);
