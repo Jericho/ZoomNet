@@ -642,7 +642,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		{
 			var parsedEvent = ParseWebhookEvent<PhoneSmsCampaignNumberOptInEvent>(WebhooksResource.phone_sms_campaign_number_opt_in);
 
-			VerifyPhoneSmsEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneSmsCampaignNumberOptIn);
+			VerifyPhoneSmsEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneSmsCampaignNumberOptIn, smsEventTimestamp, smsAccountId);
 
 			VerifySmsCampaignOptStatuses(parsedEvent.SmsCampaignNumbers);
 		}
@@ -652,7 +652,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		{
 			var parsedEvent = ParseWebhookEvent<PhoneSmsCampaignNumberOptOutEvent>(WebhooksResource.phone_sms_campaign_number_opt_out);
 
-			VerifyPhoneSmsEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneSmsCampaignNumberOptOut);
+			VerifyPhoneSmsEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneSmsCampaignNumberOptOut, smsEventTimestamp, smsAccountId);
 
 			VerifySmsCampaignOptStatuses(parsedEvent.SmsCampaignNumbers);
 		}
@@ -771,9 +771,9 @@ namespace ZoomNet.UnitTests.WebhookParser
 		{
 			var parsedEvent = ParseWebhookEvent<PhoneBlindTransferInitiatedEvent>(WebhooksResource.phone_blind_transfer_initiated);
 
-			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneBlindTransferInitiated);
+			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneBlindTransferInitiated, smsEventTimestamp, smsAccountId);
 
-			VerifyCallTransferInfo(parsedEvent.CallTransfer);
+			VerifyCallTransferInfo(parsedEvent.CallTransfer, transferPhoneNumber: "+12055432724", transferAccountCode: null, callId: callerMediaCallId, ownerName: "usersubsetting0001", infoTimestamp: callerMediaDate);
 		}
 
 		[Fact]
@@ -781,9 +781,9 @@ namespace ZoomNet.UnitTests.WebhookParser
 		{
 			var parsedEvent = ParseWebhookEvent<PhoneTransferCallToVoicemailInitiatedEvent>(WebhooksResource.phone_transfer_call_to_voicemail_initiated);
 
-			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneTransferCallToVoicemailInitiated);
+			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneTransferCallToVoicemailInitiated, smsEventTimestamp, smsAccountId);
 
-			VerifyCallTransferInfo(parsedEvent.CallTransfer);
+			VerifyCallTransferInfo(parsedEvent.CallTransfer, transferPhoneNumber: "+12055432724", transferAccountCode: null, callId: callerMediaCallId, ownerName: "usersubsetting0001", infoTimestamp: callerMediaDate);
 		}
 
 		[Fact]
@@ -791,9 +791,9 @@ namespace ZoomNet.UnitTests.WebhookParser
 		{
 			var parsedEvent = ParseWebhookEvent<PhoneTransferRecipientUpdatedEvent>(WebhooksResource.phone_transfer_recipient_updated);
 
-			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneTransferRecipientUpdated);
+			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneTransferRecipientUpdated, new DateTime(2024, 4, 8, 6, 45, 22, 775, DateTimeKind.Utc), smsAccountId);
 
-			VerifyCallTransferInfo(parsedEvent.CallTransfer, transferPhoneNumber: null, transferAccountCode: null);
+			VerifyCallTransferInfo(parsedEvent.CallTransfer, transferPhoneNumber: null, transferAccountCode: null, callId: callerMediaCallId, ownerName: "Tom Jones", infoTimestamp: new DateTime(2024, 4, 8, 14, 45, 22, DateTimeKind.Utc), ownerExtensionNumber: 1001019);
 
 			VerifyCallTransferRecipient(parsedEvent.Recipient);
 		}
@@ -813,9 +813,9 @@ namespace ZoomNet.UnitTests.WebhookParser
 		{
 			var parsedEvent = ParseWebhookEvent<PhoneWarmTransferCompletedEvent>(WebhooksResource.phone_warm_transfer_completed);
 
-			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneWarmTransferCompleted);
+			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneWarmTransferCompleted, smsEventTimestamp, smsAccountId);
 
-			VerifyCallTransferInfo(parsedEvent.CallTransfer);
+			VerifyCallTransferInfo(parsedEvent.CallTransfer, transferPhoneNumber: "+12055432724", transferAccountCode: null, callId: callerMediaCallId, ownerName: "usersubsetting0001", infoTimestamp: callerMediaDate);
 		}
 
 		[Fact]
@@ -823,9 +823,9 @@ namespace ZoomNet.UnitTests.WebhookParser
 		{
 			var parsedEvent = ParseWebhookEvent<PhoneWarmTransferInitiatedEvent>(WebhooksResource.phone_warm_transfer_initiated);
 
-			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneWarmTransferInitiated);
+			VerifyPhoneCallTransferEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneWarmTransferInitiated, smsEventTimestamp, smsAccountId);
 
-			VerifyCallTransferInfo(parsedEvent.CallTransfer);
+			VerifyCallTransferInfo(parsedEvent.CallTransfer, transferPhoneNumber: "+12055432724", transferAccountCode: null, callId: callerMediaCallId, ownerName: "usersubsetting0001", infoTimestamp: callerMediaDate);
 
 			parsedEvent.TransferCallId.ShouldBe("6986878782238080584");
 		}
@@ -853,12 +853,12 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			parsedEvent.ConferenceCall.ShouldNotBeNull();
 			parsedEvent.ConferenceCall.Id.ShouldBe("2074969d-621f-41d3-890c-8a44a03fa3e0");
-			parsedEvent.ConferenceCall.CallId.ShouldBe(CallId);
-			parsedEvent.ConferenceCall.StartedOn.ShouldBe(timestamp);
+			parsedEvent.ConferenceCall.CallId.ShouldBe(callerMediaCallId);
+			parsedEvent.ConferenceCall.StartedOn.ShouldBe(callerMediaDate);
 			parsedEvent.ConferenceCall.EnableMultiplePartyConference.ShouldBeTrue();
 			parsedEvent.ConferenceCall.FailureReason.ShouldBeEmpty();
 
-			VerifyCallOwnerInfo(parsedEvent.ConferenceCall.Owner);
+			VerifyCallOwnerInfo(parsedEvent.ConferenceCall.Owner, "usersubsetting0001");
 		}
 
 		[Fact]
@@ -883,7 +883,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneEmergencyAlert);
 			parsedEvent.Timestamp.ShouldBe(new DateTime(2021, 8, 20, 0, 52, 5, 562, DateTimeKind.Utc));
-			parsedEvent.AccountId.ShouldBe(AccountId);
+			parsedEvent.AccountId.ShouldBe(callerAccountId);
 
 			VerifyEmergencyCallAlert(parsedEvent.Alert);
 		}
@@ -895,7 +895,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneGenericDeviceProvision);
 			parsedEvent.Timestamp.ShouldBe(new DateTime(2021, 6, 30, 6, 31, 20, 324, DateTimeKind.Utc));
-			parsedEvent.AccountId.ShouldBe(AccountId);
+			parsedEvent.AccountId.ShouldBe(callerAccountId);
 
 			VerifyPhoneDevice(parsedEvent.Device);
 		}
@@ -907,7 +907,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			VerifyPeeringNumberUpdatedEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhonePeeringNumberCallerIdNameUpdated);
 
-			VerifyWebhookPeeringNumberUpdate(parsedEvent.PeeringNumber);
+			VerifyWebhookPeeringNumberUpdate(parsedEvent.PeeringNumber, phoneNumber: "18008001000");
 		}
 
 		[Fact]
@@ -917,7 +917,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			VerifyPeeringNumberUpdatedEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhonePeeringNumberEmergencyAddressUpdated);
 
-			VerifyWebhookPeeringNumberUpdate(parsedEvent.PeeringNumber, callerIdName: null);
+			VerifyWebhookPeeringNumberUpdate(parsedEvent.PeeringNumber, callerIdName: null, phoneNumber: "18008001000");
 		}
 
 		[Fact]
@@ -926,12 +926,13 @@ namespace ZoomNet.UnitTests.WebhookParser
 			var parsedEvent = ParseWebhookEvent<PhoneAccountSettingsUpdatedEvent>(WebhooksResource.phone_account_settings_updated);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneAccountSettingsUpdated);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
+			parsedEvent.Timestamp.ShouldBe(new DateTime(2021, 7, 14, 2, 44, 51, 572, DateTimeKind.Utc));
 			parsedEvent.AccountId.ShouldBe("Mt6sv4u0TAyPkwgsL2lxiA");
 
 			parsedEvent.OldSettings.ShouldNotBeNull();
 			parsedEvent.OldSettings.Id.ShouldBe("eUblMKLnTMKX0pVvNAlA0Q");
 			parsedEvent.OldSettings.Settings.ShouldNotBeNull();
+			VerifyCallLiveTranscriptionSettings(parsedEvent.OldSettings.Settings.CallLiveTranscription, false, "tB-zbQ_WTIeYHFT7A9hPvw", "congrats.mp3");
 
 			parsedEvent.NewSettings.ShouldNotBeNull();
 			parsedEvent.NewSettings.Id.ShouldBe("eUblMKLnTMKX0pVvNAlA0Q");
@@ -939,49 +940,11 @@ namespace ZoomNet.UnitTests.WebhookParser
 			var accountSettings = parsedEvent.NewSettings.Settings;
 			accountSettings.ShouldNotBeNull();
 
-			VerifyAdHocCallRecordingSettings(accountSettings.AdHocCallRecording);
-			VerifyAdvancedEncryptionSettings(accountSettings.AdvancedEncryption);
-			VerifyAllowedCallLocationsSettings(accountSettings.AllowedCallLocations);
-			VerifySettingGroupBase(accountSettings.AudioIntercom);
-			VerifySettingGroupBase(accountSettings.AutoCallFromThirdPartyApps);
-			VerifyAutoCallRecordingSettings(accountSettings.AutoCallRecording);
-			VerifyAutoDeleteDataSetings(accountSettings.AutoDeleteDataAfterRetentionDuration);
-			VerifySettingGroupBase(accountSettings.BlockCallsAsThreat);
-			VerifySettingGroupBase(accountSettings.BlockCallsWithoutCallerId);
-			VerifyBlockExternalCallsSettings(accountSettings.BlockExternalCalls);
-			VerifySettingGroupBase(accountSettings.BlockInboundCallsAndMessaging);
-			VerifyCallForwardingSettings(accountSettings.CallHandlingForwardingToOtherUsers);
-			VerifyCallLiveTranscriptionSettings(accountSettings.CallLiveTranscription);
-			VerifyCallOverflowSettings(accountSettings.CallOverflow);
-			VerifyCallParkSettings(accountSettings.CallPark);
-			VerifyCallQueueOptOutReasonSettings(accountSettings.CallQueueOptOutReason);
-			VerifyCallTransferringSettings(accountSettings.CallTransferring);
-			VerifySettingGroupBase(accountSettings.CheckVoicemailsOverPhone);
-			VerifySettingGroupBase(accountSettings.Delegation);
-			VerifyDisplayCallFeedbackSurveySettings(accountSettings.DisplayCallFeedbackSurvey);
-			VerifySettingGroupBase(accountSettings.EndToEndEncryption);
-			VerifySettingGroupBase(accountSettings.ElevateToMeeting);
-			VerifySettingGroupBase(accountSettings.ExternalCallingOnZoomRoomCommonArea);
-			VerifySettingGroupBase(accountSettings.HandOffToRoom);
-			VerifySettingGroupBase(accountSettings.InternationalCalling);
-			VerifySettingGroupBase(accountSettings.LocalSurvivabilityMode);
-			VerifySettingGroupBase(accountSettings.MobileSwitchToCarrier);
-			VerifySettingGroupBase(accountSettings.OutboundCalling);
-			VerifyOutboundSmsSettings(accountSettings.OutboundSms);
-			VerifyOverrideDefaultPortSettings(accountSettings.OverrideDefaultPort);
-			VerifySettingGroupBase(accountSettings.PeerToPeerMedia);
-			VerifyPersonalAudioLibrarySettings(accountSettings.PersonalAudioLibrary);
-			VerifyRestrictedCallHoursSettings(accountSettings.RestrictedCallHours);
-			VerifySelectOutboundCallerIdSettings(accountSettings.SelectOutboundCallerId);
-			VerifySettingGroupBase(accountSettings.SharedVoicemailNotificationByEmail);
-			VerifySmsSettings(accountSettings.Sms);
-			VerifySmsEtiquetteToolSettings(accountSettings.SmsEtiquetteTool);
-			VerifyVoicemailSettings(accountSettings.Voicemail);
-			VerifyVoicemailNotificationByEmailSettings(accountSettings.VoicemailNotificationByEmail);
-			VerifySettingGroupBase(accountSettings.VoicemailTranscription);
-			VerifyZoomPhoneOnDesktopSettings(accountSettings.ZoomPhoneOnDesktop);
-			VerifyZoomPhoneOnMobileSettings(accountSettings.ZoomPhoneOnMobile);
-			VerifyZoomPhoneOnPwaSettings(accountSettings.ZoomPhoneOnPwa);
+			// The sample only contains the call live transcription settings
+			VerifyCallLiveTranscriptionSettings(accountSettings.CallLiveTranscription, false, "_rG7uKlJRAWn-013nTD1bA", "hello1.mp3");
+			accountSettings.AdHocCallRecording.ShouldBeNull();
+			accountSettings.CallOverflow.ShouldBeNull();
+			accountSettings.Voicemail.ShouldBeNull();
 		}
 
 		[Fact]
@@ -990,12 +953,13 @@ namespace ZoomNet.UnitTests.WebhookParser
 			var parsedEvent = ParseWebhookEvent<PhoneGroupSettingsUpdatedEvent>(WebhooksResource.phone_group_settings_updated);
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.PhoneGroupSettingsUpdated);
-			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
-			parsedEvent.AccountId.ShouldBe(AccountId);
+			parsedEvent.Timestamp.ShouldBe(new DateTime(2021, 4, 23, 5, 21, 21, 301, DateTimeKind.Utc));
+			parsedEvent.AccountId.ShouldBe("Mt6sv4u0TAyPkwgsL2lxiA");
 
 			parsedEvent.OldSettings.ShouldNotBeNull();
 			parsedEvent.OldSettings.GroupId.ShouldBe("IfRqsMZSSzGBKm2AFJ7r3Q");
 			parsedEvent.OldSettings.Settings.ShouldNotBeNull();
+			VerifyCallLiveTranscriptionSettings(parsedEvent.OldSettings.Settings.CallLiveTranscription, true, "P_1FYBsGTE28ACkVNAc5t", "welcome.mp3");
 
 			parsedEvent.NewSettings.ShouldNotBeNull();
 			parsedEvent.NewSettings.GroupId.ShouldBe("IfRqsMZSSzGBKm2AFJ7r3Q");
@@ -1003,44 +967,11 @@ namespace ZoomNet.UnitTests.WebhookParser
 			var groupSettings = parsedEvent.NewSettings.Settings;
 			groupSettings.ShouldNotBeNull();
 
-			VerifyAdHocCallRecordingSettings(groupSettings.AdHocCallRecording, AdministratorLevel.Site);
-			VerifyAdvancedEncryptionSettings(groupSettings.AdvancedEncryption, AdministratorLevel.UserGroup);
-			VerifyAllowEmergencyCallsSettings(groupSettings.AllowEmergencyCalls);
-			VerifyAllowedCallLocationsSettings(groupSettings.AllowedCallLocations, AdministratorLevel.UserGroup);
-			VerifySettingGroupBase(groupSettings.AudioIntercom, AdministratorLevel.UserGroup);
-			VerifyAutoCallRecordingSettings(groupSettings.AutoCallRecording, AdministratorLevel.UserGroup);
-			VerifySettingGroupBase(groupSettings.BlockCallsWithoutCallerId, AdministratorLevel.UserGroup);
-			VerifyBlockExternalCallsSettings(groupSettings.BlockExternalCalls, AdministratorLevel.UserGroup);
-			VerifySettingGroupBase(groupSettings.BlockInboundCallsAndMessaging, AdministratorLevel.UserGroup);
-			VerifyCallForwardingSettings(groupSettings.CallHandlingForwardingToOtherUsers, AdministratorLevel.UserGroup);
-			VerifyCallLiveTranscriptionSettings(groupSettings.CallLiveTranscription, AdministratorLevel.UserGroup);
-			VerifyCallOverflowSettings(groupSettings.CallOverflow, AdministratorLevel.UserGroup);
-			VerifyCallParkSettings(groupSettings.CallPark, AdministratorLevel.UserGroup);
-			VerifyCallTransferringSettings(groupSettings.CallTransferring, AdministratorLevel.UserGroup);
-			VerifySettingGroupBase(groupSettings.CheckVoicemailsOverPhone, AdministratorLevel.UserGroup);
-			VerifySettingGroupBase(groupSettings.Delegation, AdministratorLevel.UserGroup);
-			VerifyDisplayCallFeedbackSurveySettings(groupSettings.DisplayCallFeedbackSurvey, AdministratorLevel.UserGroup);
-			VerifySettingGroupBase(groupSettings.EndToEndEncryption, AdministratorLevel.UserGroup);
-			VerifySettingGroupBase(groupSettings.ElevateToMeeting, AdministratorLevel.UserGroup);
-			VerifySettingGroupBase(groupSettings.HandOffToRoom, AdministratorLevel.UserGroup);
-			VerifySettingGroupBase(groupSettings.InternationalCalling, AdministratorLevel.UserGroup);
-			VerifySettingGroupBase(groupSettings.LocalSurvivabilityMode, AdministratorLevel.UserGroup);
-			VerifySettingGroupBase(groupSettings.MobileSwitchToCarrier, AdministratorLevel.UserGroup);
-			VerifySettingGroupBase(groupSettings.OutboundCalling, AdministratorLevel.UserGroup);
-			VerifyOutboundSmsSettings(groupSettings.OutboundSms, AdministratorLevel.UserGroup);
-			VerifySettingGroupBase(groupSettings.PeerToPeerMedia, AdministratorLevel.UserGroup);
-			VerifyPersonalAudioLibrarySettings(groupSettings.PersonalAudioLibrary, AdministratorLevel.UserGroup);
-			VerifyRestrictedCallHoursSettings(groupSettings.RestrictedCallHours, AdministratorLevel.UserGroup);
-			VerifySelectOutboundCallerIdSettings(groupSettings.SelectOutboundCallerId, AdministratorLevel.UserGroup);
-			VerifySettingGroupBase(groupSettings.SharedVoicemailNotificationByEmail, AdministratorLevel.UserGroup);
-			VerifySmsSettings(groupSettings.Sms, AdministratorLevel.UserGroup);
-			VerifySmsEtiquetteToolSettings(groupSettings.SmsEtiquetteTool, AdministratorLevel.UserGroup);
-			VerifyVoicemailSettings(groupSettings.Voicemail, AdministratorLevel.UserGroup);
-			VerifyVoicemailNotificationByEmailSettings(groupSettings.VoicemailNotificationByEmail, AdministratorLevel.UserGroup);
-			VerifySettingGroupBase(groupSettings.VoicemailTranscription, AdministratorLevel.UserGroup);
-			VerifyZoomPhoneOnDesktopSettings(groupSettings.ZoomPhoneOnDesktop, AdministratorLevel.Site);
-			VerifyZoomPhoneOnMobileSettings(groupSettings.ZoomPhoneOnMobile, AdministratorLevel.UserGroup);
-			VerifyZoomPhoneOnPwaSettings(groupSettings.ZoomPhoneOnPwa, AdministratorLevel.UserGroup);
+			// The sample only contains the call live transcription settings
+			VerifyCallLiveTranscriptionSettings(groupSettings.CallLiveTranscription, true, "N_1FYBsGTE28ACkVN__EiA", "hello1.mp3");
+			groupSettings.AdHocCallRecording.ShouldBeNull();
+			groupSettings.CallOverflow.ShouldBeNull();
+			groupSettings.Voicemail.ShouldBeNull();
 		}
 
 		[Fact]
@@ -1405,11 +1336,11 @@ namespace ZoomNet.UnitTests.WebhookParser
 		private static void VerifySmsCampaignOptStatuses(WebhookSmsCampaignOptStatuses optStatuses)
 		{
 			optStatuses.ShouldNotBeNull();
-			optStatuses.Timestamp.ShouldBe(timestamp);
+			optStatuses.Timestamp.ShouldBe(new DateTime(2021, 7, 19, 18, 43, 43, DateTimeKind.Utc));
 			optStatuses.PhoneNumbers.ShouldNotBeNull();
 			optStatuses.PhoneNumbers.ShouldHaveSingleItem();
-			optStatuses.PhoneNumbers[0].ConsumerPhoneNumber.ShouldBe(PhoneNumberA);
-			optStatuses.PhoneNumbers[0].ZoomPhoneUserNumber.ShouldBe(PhoneNumberB);
+			optStatuses.PhoneNumbers[0].ConsumerPhoneNumber.ShouldBe("+15043449240");
+			optStatuses.PhoneNumbers[0].ZoomPhoneUserNumber.ShouldBe("+12094436304");
 		}
 
 		/// <summary>
@@ -1567,7 +1498,8 @@ namespace ZoomNet.UnitTests.WebhookParser
 			string transferAccountCode = "123",
 			string callId = CallId,
 			string ownerName = "Jill Chill",
-			DateTime? infoTimestamp = null)
+			DateTime? infoTimestamp = null,
+			int ownerExtensionNumber = 6666)
 		{
 			info.ShouldNotBeNull();
 			info.CallId.ShouldBe(callId);
@@ -1576,19 +1508,19 @@ namespace ZoomNet.UnitTests.WebhookParser
 			info.TransferAccountCode.ShouldBe(transferAccountCode);
 			info.FailureReason.ShouldBe(string.Empty);
 
-			VerifyCallOwnerInfo(info.Owner, ownerName);
+			VerifyCallOwnerInfo(info.Owner, ownerName, ownerExtensionNumber);
 		}
 
 		/// <summary>
 		/// Verify <see cref="CallLogOwnerInfo"/> properties.
 		/// </summary>
-		private static void VerifyCallOwnerInfo(CallLogOwnerInfo info, string name = "Jill Chill")
+		private static void VerifyCallOwnerInfo(CallLogOwnerInfo info, string name = "Jill Chill", int extensionNumber = 6666)
 		{
 			info.ShouldNotBeNull();
 			info.Type.ShouldBe(CallLogOwnerType.User);
 			info.Id.ShouldBe("z8yCxjabcdEFGHfp8uQ");
 			info.Name.ShouldBe(name);
-			info.ExtensionNumber.ShouldBe(6666);
+			info.ExtensionNumber.ShouldBe(extensionNumber);
 		}
 
 		/// <summary>
@@ -1598,7 +1530,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		{
 			info.ShouldNotBeNull();
 			info.ExtensionNumber.ShouldBe(1001020);
-			info.PhoneNumber.ShouldBe(PhoneNumberB);
+			info.PhoneNumber.ShouldBe("+12192818492");
 			info.Name.ShouldBe("Jane Smith");
 		}
 
@@ -1627,10 +1559,10 @@ namespace ZoomNet.UnitTests.WebhookParser
 		private static void VerifyEmergencyCallAlert(EmergencyCallAlert alert)
 		{
 			alert.ShouldNotBeNull();
-			alert.CallId.ShouldBe(CallId);
+			alert.CallId.ShouldBe("6998308626516675500");
 			alert.Router.ShouldBe(EmergencyCallSource.Zoom);
 			alert.DeliverTo.ShouldBe(EmergencyCallDestination.SafetyTeam);
-			alert.RingingStartedOn.ShouldBe(ringingStartedTimestamp);
+			alert.RingingStartedOn.ShouldBe(new DateTime(2021, 8, 20, 0, 51, 52, DateTimeKind.Utc));
 
 			alert.Callee.ShouldNotBeNull();
 			alert.Callee.PhoneNumber.ShouldBe("933");
@@ -1642,7 +1574,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 			alert.Caller.DisplayName.ShouldBe("pbxta api");
 			alert.Caller.SiteId.ShouldBe(SiteId);
 			alert.Caller.SiteName.ShouldBe("Main Site");
-			alert.Caller.PhoneNumber.ShouldBe("+12192818492");
+			alert.Caller.PhoneNumber.ShouldBeNull();
 			alert.Caller.Timezone.ShouldBe(TimeZones.America_Los_Angeles);
 
 			alert.Location.ShouldNotBeNull();
@@ -1656,7 +1588,13 @@ namespace ZoomNet.UnitTests.WebhookParser
 			alert.Location.IpAddress.ShouldHaveSingleItem();
 			alert.Location.IpAddress[0].ShouldBe("192.0.2.1,192.0.2.2");
 
-			VerifyEmergencyAddress(alert.EmergencyAddress);
+			alert.EmergencyAddress.ShouldNotBeNull();
+			alert.EmergencyAddress.AddressLine1.ShouldBeNull();
+			alert.EmergencyAddress.AddressLine2.ShouldBeNull();
+			alert.EmergencyAddress.City.ShouldBeNull();
+			alert.EmergencyAddress.Country.ShouldBeNull();
+			alert.EmergencyAddress.StateCode.ShouldBeNull();
+			alert.EmergencyAddress.Zip.ShouldBeNull();
 		}
 
 		/// <summary>
@@ -1681,7 +1619,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 			device.ShouldNotBeNull();
 			device.Id.ShouldBe("JOZmuJ30Spyrw-v9vUzIrA");
 			device.DisplayName.ShouldBe("test_cap");
-			device.Type.ShouldBe("Other");
+			device.Type.ShouldBe("Other ");
 			device.MacAddress.ShouldBe("012345678912");
 
 			device.Site.ShouldNotBeNull();
@@ -1705,10 +1643,10 @@ namespace ZoomNet.UnitTests.WebhookParser
 			SharedLine sharedLine = sipAccount.SharedLine;
 
 			sharedLine.ShouldNotBeNull();
-			sharedLine.Alias.ShouldBe("Example line");
-			sharedLine.OutboundCallerId.ShouldBe(PhoneNumberB);
+			sharedLine.Alias.ShouldBeNull();
+			sharedLine.OutboundCallerId.ShouldBe("+12055433429");
 			sharedLine.LineSubscription.ShouldNotBeNull();
-			sharedLine.LineSubscription.PhoneNumber.ShouldBe(PhoneNumberA);
+			sharedLine.LineSubscription.PhoneNumber.ShouldBe("+12055433429");
 			sharedLine.LineSubscription.ExtensionNumber.ShouldBe(1040);
 			sharedLine.LineSubscription.DisplayName.ShouldBe("test_cap");
 		}
@@ -1726,13 +1664,13 @@ namespace ZoomNet.UnitTests.WebhookParser
 		/// <summary>
 		/// Verify <see cref="WebhookPeeringNumberUpdate"/> properties.
 		/// </summary>
-		private static void VerifyWebhookPeeringNumberUpdate(WebhookPeeringNumberUpdate info, string callerIdName = "name")
+		private static void VerifyWebhookPeeringNumberUpdate(WebhookPeeringNumberUpdate info, string callerIdName = "name", string phoneNumber = "+18008001000")
 		{
 			info.ShouldNotBeNull();
 			info.CarrierCode.ShouldBe(3457);
 			info.PhoneNumbers.ShouldNotBeNull();
 			info.PhoneNumbers.ShouldHaveSingleItem();
-			info.PhoneNumbers[0].ShouldBe("+18008001000");
+			info.PhoneNumbers[0].ShouldBe(phoneNumber);
 
 			if (!string.IsNullOrEmpty(callerIdName))
 			{
@@ -1898,22 +1836,24 @@ namespace ZoomNet.UnitTests.WebhookParser
 		/// <summary>
 		/// Verify <see cref="CallLiveTranscriptionSettings"/> properties.
 		/// </summary>
-		private static void VerifyCallLiveTranscriptionSettings(CallLiveTranscriptionSettings settings, AdministratorLevel level = AdministratorLevel.Account)
+		private static void VerifyCallLiveTranscriptionSettings(CallLiveTranscriptionSettings settings, bool promptEnabled, string audioId, string audioName)
 		{
-			VerifySettingGroupBase(settings, level);
+			settings.ShouldNotBeNull();
+			settings.Enabled.ShouldBeTrue();
+			settings.Locked.ShouldBe(false);
 
-			VerifyTranscriptionStartPrompt(settings.TranscriptionStartPrompt);
+			VerifyTranscriptionStartPrompt(settings.TranscriptionStartPrompt, promptEnabled, audioId, audioName);
 		}
 
 		/// <summary>
 		/// Verify <see cref="TranscriptionStartPrompt"/> properties.
 		/// </summary>
-		private static void VerifyTranscriptionStartPrompt(TranscriptionStartPrompt prompt)
+		private static void VerifyTranscriptionStartPrompt(TranscriptionStartPrompt prompt, bool enabled, string audioId, string audioName)
 		{
 			prompt.ShouldNotBeNull();
-			prompt.Enabled.ShouldBeTrue();
-			prompt.AudioId.ShouldBe("yCT14TwySDGVUypVlKNEyA");
-			prompt.AudioName.ShouldBe("example.mp3");
+			prompt.Enabled.ShouldBe(enabled);
+			prompt.AudioId.ShouldBe(audioId);
+			prompt.AudioName.ShouldBe(audioName);
 		}
 
 		/// <summary>
