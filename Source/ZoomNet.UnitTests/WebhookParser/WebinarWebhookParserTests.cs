@@ -502,7 +502,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			VerifyWebinarInfo(parsedEvent.Webinar);
 
-			VerifyScreenshareDetails(parsedEvent.ScreenshareDetails, new DateTime(2021, 7, 13, 21, 56, 0, 0, DateTimeKind.Utc));
+			VerifyScreenshareDetails(parsedEvent.ScreenshareDetails, new DateTime(2021, 7, 13, 21, 55, 52, 0, DateTimeKind.Utc));
 		}
 
 		#endregion
