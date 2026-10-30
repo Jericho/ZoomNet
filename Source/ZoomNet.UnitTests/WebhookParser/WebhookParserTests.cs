@@ -1050,16 +1050,16 @@ namespace ZoomNet.UnitTests.WebhookParser
 		/// <summary>
 		/// Verify <see cref="MeetingInfo"/> properties.
 		/// </summary>
-		private static void VerifyMeetingInfo(MeetingInfo info)
+		private static void VerifyMeetingInfo(MeetingInfo info, long id = MeetingId, string topic = "My Meeting", int duration = 60)
 		{
 			info.ShouldNotBeNull();
-			info.Id.ShouldBe(MeetingId);
+			info.Id.ShouldBe(id);
 			info.Uuid.ShouldBe(MeetingUuid);
 			info.HostId.ShouldBe(HostId);
-			info.Topic.ShouldBe("My Meeting");
+			info.Topic.ShouldBe(topic);
 			info.StartTime.ShouldBe(timestamp);
 			info.Timezone.ShouldBe(TimeZones.America_Los_Angeles);
-			info.Duration.ShouldBe(60);
+			info.Duration.ShouldBe(duration);
 		}
 
 		/// <summary>
@@ -1309,12 +1309,12 @@ namespace ZoomNet.UnitTests.WebhookParser
 		/// <summary>
 		/// Verify meeting occurrences content.
 		/// </summary>
-		private static void VerifyMeetingOccurrences(MeetingOccurrence[] info, int? duration, string status)
+		private static void VerifyMeetingOccurrences(MeetingOccurrence[] info, int? duration, string status, string occurrenceId = "ABCDE12345", DateTime? startTime = null)
 		{
 			info.ShouldNotBeNull();
 			info.Length.ShouldBe(1);
-			info[0].OccurrenceId.ShouldBe("ABCDE12345");
-			info[0].StartTime.ShouldBe(timestamp);
+			info[0].OccurrenceId.ShouldBe(occurrenceId);
+			info[0].StartTime.ShouldBe(startTime ?? timestamp);
 			info[0].Duration.ShouldBe(duration);
 			info[0].Status.ShouldBe(status);
 		}

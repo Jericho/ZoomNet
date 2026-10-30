@@ -23,7 +23,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
 			parsedEvent.AccountId.ShouldBe(AccountId);
 
-			VerifyWebinarInfo(parsedEvent.Webinar);
+			VerifyWebinarInfo(parsedEvent.Webinar, type: (WebinarType)2);
 
 			parsedEvent.Issues.ShouldNotBeNull();
 			parsedEvent.Issues.ShouldBe(new[] { "Unstable audio quality" });
@@ -101,7 +101,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 			parsedEvent.Operator.ShouldBe(OperatorEmail);
 			parsedEvent.OperatorId.ShouldBe(OperatorId);
 
-			VerifyMeetingInfo(parsedEvent.Meeting);
+			VerifyMeetingInfo(parsedEvent.Meeting, 9876543210, "My Webinar Converted", 45);
 		}
 
 		[Fact]
@@ -214,7 +214,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			VerifyWebinarParticipantEvent(parsedEvent);
 
-			VerifyWebhookParticipant(parsedEvent.Participant, displayName: "Jill Chill");
+			VerifyWebhookParticipant(parsedEvent.Participant, displayName: "Jill Chill", participantUserId: "rstuvwxyza789-cde");
 
 			parsedEvent.JoinedOn.ShouldBe(timestamp);
 		}
@@ -228,7 +228,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			VerifyWebinarParticipantEvent(parsedEvent);
 
-			VerifyWebhookParticipant(parsedEvent.Participant, displayName: "Jill Chill");
+			VerifyWebhookParticipant(parsedEvent.Participant, displayName: "Jill Chill", participantUserId: "rstuvwxyza789-cde");
 
 			parsedEvent.LeftOn.ShouldBe(new DateTime(2021, 7, 13, 22, 50, 51, DateTimeKind.Utc));
 			parsedEvent.LeaveReason.ShouldBe("Jill Chill left the webinar.<br>Reason: Host ended the webinar.");
@@ -243,7 +243,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			VerifyWebinarParticipantEvent(parsedEvent);
 
-			VerifyWebhookParticipant(parsedEvent.Participant, phoneNumber: null, userId: null, participantUuid: null, participantUserId: "rstuvwxyza789-cde");
+			VerifyWebhookParticipant(parsedEvent.Participant, displayName: "JillChill", phoneNumber: null, userId: null, participantUuid: null, participantUserId: "rstuvwxyza789-cde");
 
 			parsedEvent.ChangedOn.ShouldBe(timestamp);
 			parsedEvent.NewRole.ShouldBe(ParticipantRole.CoHost);
@@ -262,7 +262,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 			parsedEvent.OperatorId.ShouldBe(OperatorId);
 			parsedEvent.Operation.ShouldBe("single");
 
-			VerifyRecurringWebinar(parsedEvent.Webinar);
+			VerifyRecurringWebinar(parsedEvent.Webinar, occurrenceId: "1677637740000", occurrenceStartTime: new DateTime(2023, 3, 1, 2, 29, 0, DateTimeKind.Utc));
 		}
 
 		[Fact]
@@ -277,7 +277,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 			parsedEvent.OperatorId.ShouldBe(OperatorId);
 			parsedEvent.Operation.ShouldBe("single");
 
-			VerifyRecurringWebinar(parsedEvent.Webinar);
+			VerifyRecurringWebinar(parsedEvent.Webinar, occurrenceId: "1677637740000", occurrenceStartTime: new DateTime(2023, 3, 1, 2, 29, 0, DateTimeKind.Utc));
 		}
 
 		[Fact]
@@ -323,7 +323,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			VerifyRegistrantExtended(parsedEvent.Registrant, joinUrl: "https://example.com");
 
-			parsedEvent.Registrant.Comments.ShouldBe("Looking forward to the webinar");
+			parsedEvent.Registrant.Comments.ShouldBe("Looking forward to the Webinar");
 			parsedEvent.Registrant.CustomQuestions.ShouldNotBeNull();
 			parsedEvent.Registrant.CustomQuestions.Length.ShouldBe(1);
 			parsedEvent.Registrant.CustomQuestions[0].Key.ShouldBe("What do you hope to learn from this Webinar?");
@@ -454,7 +454,9 @@ namespace ZoomNet.UnitTests.WebhookParser
 			string joinUrl = null,
 			string password = null,
 			int? occurrenceDuration = null,
-			string occurrenceStatus = null)
+			string occurrenceStatus = null,
+			string occurrenceId = "ABCDE12345",
+			DateTime? occurrenceStartTime = null)
 		{
 			info.ShouldNotBeNull();
 			info.ShouldBeOfType<RecurringWebinar>();
@@ -470,7 +472,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 			parsedWebinar.JoinUrl.ShouldBe(joinUrl);
 			parsedWebinar.Password.ShouldBe(password);
 
-			VerifyMeetingOccurrences(parsedWebinar.Occurrences, occurrenceDuration, occurrenceStatus);
+			VerifyMeetingOccurrences(parsedWebinar.Occurrences, occurrenceDuration, occurrenceStatus, occurrenceId, occurrenceStartTime);
 		}
 
 		/// <summary>
