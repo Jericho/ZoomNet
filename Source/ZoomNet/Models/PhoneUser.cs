@@ -27,7 +27,7 @@ public class PhoneUser
 
 	/// <summary>Gets or sets the extension number.</summary>
 	[JsonPropertyName("extension_number")]
-	public int ExtensionNumber { get; set; }
+	public long ExtensionNumber { get; set; }
 
 	/// <summary>Gets or sets the Zoom user ID.</summary>
 	[JsonPropertyName("id")]
