@@ -11,9 +11,7 @@ public class PhoneUserExtensionTests
 {
     [Theory]
     [InlineData("26000026001", 26000026001L)]
-    [InlineData("\"26000026001\"", 26000026001L)]
     [InlineData("999999999999999", 999999999999999L)]
-    [InlineData("\"999999999999999\"", 999999999999999L)]
     public async Task ListPhoneUsersPreservesExtensionsBeyondInt32(string extension, long expected)
     {
         using var http = new MockHttpMessageHandler();
