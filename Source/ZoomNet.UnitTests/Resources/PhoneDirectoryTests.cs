@@ -13,7 +13,6 @@ public class PhoneDirectoryTests
 {
     [Theory]
     [InlineData("26000026001")]
-    [InlineData("\"26000026001\"")]
     public async Task AutoReceptionistListingPreservesLargeExtensionsAndPageTokens(string extension)
     {
         using var http = new MockHttpMessageHandler();

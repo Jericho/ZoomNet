@@ -15,6 +15,5 @@ public class PhoneAutoReceptionist
 
 	/// <summary>Gets or sets the extension number, including site-prefixed numbers.</summary>
 	[JsonPropertyName("extension_number")]
-	[JsonNumberHandling(JsonNumberHandling.AllowReadingFromString)]
 	public long ExtensionNumber { get; set; }
 }
