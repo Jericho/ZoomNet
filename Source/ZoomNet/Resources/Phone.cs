@@ -125,6 +125,19 @@ namespace ZoomNet.Resources
 				.AsMessage();
 		}
 
+		/// <inheritdoc/>
+		public Task<PaginatedResponseWithToken<PhoneAutoReceptionist>> ListAutoReceptionistsAsync(
+			int recordsPerPage = 30, string nextPageToken = null, CancellationToken cancellationToken = default)
+		{
+			Utils.ValidateRecordPerPage(recordsPerPage, max: 100);
+			return _client
+				.GetAsync("phone/auto_receptionists")
+				.WithArgument("page_size", recordsPerPage)
+				.WithArgument("next_page_token", nextPageToken)
+				.WithCancellationToken(cancellationToken)
+				.AsPaginatedResponseWithToken<PhoneAutoReceptionist>("auto_receptionists");
+		}
+
 		#region Call Queues
 
 		/// <inheritdoc/>
