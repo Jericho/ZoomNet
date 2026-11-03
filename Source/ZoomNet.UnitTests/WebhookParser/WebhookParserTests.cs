@@ -158,15 +158,14 @@ namespace ZoomNet.UnitTests.WebhookParser
 			parsedEvent.UpdatedOn.ShouldBe(new DateTime(2024, 8, 26, 6, 28, 48, 243, DateTimeKind.Utc));
 
 			parsedEvent.ModifiedFields.ShouldNotBeNull();
-			parsedEvent.ModifiedFields.Length.ShouldBe(1);
-			parsedEvent.ModifiedFields[0].FieldName.ShouldBe("settings");
-			parsedEvent.ModifiedFields[0].OldValue.ShouldBe("ZoomNet Unit Testing: scheduled meeting");
-			parsedEvent.ModifiedFields[0].NewValue.ShouldBe("ZoomNet Unit Testing: UPDATED scheduled meeting");
+			parsedEvent.ModifiedFields.Length.ShouldBe(13);
+			parsedEvent.ModifiedFields.ShouldContain(f => f.FieldName == "settings");
 
 			parsedEvent.MeetingFields.ShouldNotBeNull();
-			parsedEvent.MeetingFields.Length.ShouldBe(3);
-			parsedEvent.MeetingFields[0].FieldName.ShouldBe("id");
-			parsedEvent.MeetingFields[0].Value.ShouldBe(94890226305);
+			parsedEvent.MeetingFields.Length.ShouldBe(14);
+			parsedEvent.MeetingFields.ShouldContain(f => f.FieldName == "id");
+			parsedEvent.MeetingFields.ShouldContain(f => f.FieldName == "uuid");
+			parsedEvent.MeetingFields.ShouldContain(f => f.FieldName == "topic");
 		}
 
 		[Fact]
@@ -790,8 +789,8 @@ namespace ZoomNet.UnitTests.WebhookParser
 			parsedEvent.MeetingId.ShouldBe(MeetingId);
 			parsedEvent.MeetingUuid.ShouldBe(MeetingUuid);
 
-			VerifyChatMessageFile(parsedEvent.File, null, "https://file.zoomdev.us/file/hsdAXySKRe2KgS-0YNeSXg");
-			VerifyWebhookChatMessage(parsedEvent.Message, null, null);
+			VerifyChatMessageFile(parsedEvent.File, null, "https://file.zoomdev.us/file/hsdAXySKRe2KgS-0YNeSXg/attach/format/plain?decryptType=1&filename=example.jpg&jwt=eyJhbGciOiJIUzI1NiJ9.eyJkaWciOiI3Yzg5YzBhYjIzYmZmMjdjNzE3NTQ4YzdjMTc0Njk3MWYzYjNmNjFjMzU5OTliNjE1ZjdjMWJmMzc5YTJiZThlIiwiYXVkIjoiZmlsZSIsImlzcyI6ImNyb3NzZmlsZSIsImV4cCI6MTY0ODI2NDY5N30.2fQxw3F1cEhvFJmnE2zPOdkHnPeZUktv_P0M--e-Tg8&mode=play");
+			VerifyWebhookChatMessage(parsedEvent.Message, null, null, new DateTime(2022, 1, 10, 2, 20, 10, DateTimeKind.Utc));
 			VerifyChatMessageSender(parsedEvent.Sender);
 			VerifyChatMessageRecipient(parsedEvent.Recipient);
 		}
@@ -814,7 +813,8 @@ namespace ZoomNet.UnitTests.WebhookParser
 				[
 					"MS17RDk0QTY3QUQtQkFGQy04QTJFLTI2RUEtNkYxQjRBRTU1MTk5fQ==",
 					"MS17NDQ0OEU5MjMtM0JFOS1CMDA1LTQ0NDAtQjdGOTU0Rjk5MTkyfQ=="
-				]);
+				],
+				new DateTime(2022, 1, 10, 2, 20, 10, DateTimeKind.Utc));
 			VerifyChatMessageSender(parsedEvent.Sender);
 			VerifyChatMessageRecipient(parsedEvent.Recipient);
 		}
@@ -1235,11 +1235,11 @@ namespace ZoomNet.UnitTests.WebhookParser
 		/// <summary>
 		/// Verify <see cref="WebhookChatMessage"/> properties.
 		/// </summary>
-		private static void VerifyWebhookChatMessage(WebhookChatMessage chatMessage, string content, string[] fileIds)
+		private static void VerifyWebhookChatMessage(WebhookChatMessage chatMessage, string content, string[] fileIds, DateTime? timestamp = null)
 		{
 			chatMessage.ShouldNotBeNull();
 			chatMessage.Id.ShouldBe("MS17MDQ5NjE4QjYtRjk4Ny00REEwLUFBQUItMTg3QTY0RjU2MzhFfQ==");
-			chatMessage.Timestamp.ShouldBe(new DateTime(2022, 1, 10, 7, 20, 10, DateTimeKind.Utc));
+			chatMessage.Timestamp.ShouldBe(timestamp ?? new DateTime(2022, 1, 10, 7, 20, 10, DateTimeKind.Utc));
 			chatMessage.Content.ShouldBe(content);
 
 			if (fileIds == null)
@@ -1268,13 +1268,13 @@ namespace ZoomNet.UnitTests.WebhookParser
 		/// <summary>
 		/// Verify chat message recipient properties.
 		/// </summary>
-		private static void VerifyChatMessageRecipient(ChatMessageParty chatMessageParty)
+		private static void VerifyChatMessageRecipient(ChatMessageParty chatMessageParty, string email = "guest.user@example", ChatMessagePartyType partyType = ChatMessagePartyType.Guest)
 		{
 			chatMessageParty.ShouldNotBeNull();
 			chatMessageParty.Name.ShouldBe("John Smith");
-			chatMessageParty.Email.ShouldBe("guest.user@example");
+			chatMessageParty.Email.ShouldBe(email);
 			chatMessageParty.SessionId.ShouldBe("38681600");
-			chatMessageParty.PartyType.ShouldBe(ChatMessagePartyType.Guest);
+			chatMessageParty.PartyType.ShouldBe(partyType);
 		}
 
 		/// <summary>

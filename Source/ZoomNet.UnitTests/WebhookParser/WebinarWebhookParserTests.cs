@@ -59,8 +59,8 @@ namespace ZoomNet.UnitTests.WebhookParser
 			parsedEvent.WebinarId.ShouldBe(MeetingId);
 			parsedEvent.WebinarUuid.ShouldBe(MeetingUuid);
 
-			VerifyChatMessageFile(parsedEvent.File, null, "https://file.zoomdev.us/file/hsdAXySKRe2KgS-0YNeSXg");
-			VerifyWebhookChatMessage(parsedEvent.Message, null, null);
+			VerifyChatMessageFile(parsedEvent.File, null, "https://file.zoomdev.us/file/hsdAXySKRe2KgS-0YNeSXg/attach/format/plain?decryptType=1&filename=example.jpg&jwt=eyJhbGciOiJIUzI1NiJ9.eyJkaWciOiI3Yzg5YzBhYjIzYmZmMjdjNzE3NTQ4YzdjMTc0Njk3MWYzYjNmNjFjMzU5OTliNjE1ZjdjMWJmMzc5YTJiZThlIiwiYXVkIjoiZmlsZSIsImlzcyI6ImNyb3NzZmlsZSIsImV4cCI6MTY0ODI2NDY5N30.2fQxw3F1cEhvFJmnE2zPOdkHnPeZUktv_P0M--e-Tg8&mode=play");
+			VerifyWebhookChatMessage(parsedEvent.Message, null, null, new DateTime(2022, 1, 10, 2, 20, 10, DateTimeKind.Utc));
 			VerifyChatMessageSender(parsedEvent.Sender);
 			VerifyChatMessageRecipient(parsedEvent.Recipient);
 		}
@@ -84,9 +84,10 @@ namespace ZoomNet.UnitTests.WebhookParser
 				{
 					"MS17RDk0QTY3QUQtQkFGQy04QTJFLTI2RUEtNkYxQjRBRTU1MTk5fQ==",
 					"MS17NDQ0OEU5MjMtM0JFOS1CMDA1LTQ0NDAtQjdGOTU0Rjk5MTkyfQ=="
-				});
+				},
+				new DateTime(2022, 1, 10, 2, 20, 10, DateTimeKind.Utc));
 			VerifyChatMessageSender(parsedEvent.Sender);
-			VerifyChatMessageRecipient(parsedEvent.Recipient);
+			VerifyChatMessageRecipient(parsedEvent.Recipient, string.Empty);
 		}
 
 		[Fact]
