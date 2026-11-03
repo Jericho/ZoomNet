@@ -110,7 +110,7 @@ namespace ZoomNet.Resources
 		/// <param name="cancellationToken">A cancellation token that can be used to cancel the asynchronous operation.</param>
 		/// <returns>A task that represents the asynchronous operation. The task result contains the call history record if found;
 		/// otherwise, null.</returns>
-		Task<CallHistory> GetCallHistoryAsync(string callHistoryUuid, CancellationToken cancellationToken = default);
+		Task<ZoomNet.Models.CallHistory> GetCallHistoryAsync(string callHistoryUuid, CancellationToken cancellationToken = default);
 
 		/// <summary>
 		/// Asynchronously retrieves detailed information about a specific AI call summary for a given user.

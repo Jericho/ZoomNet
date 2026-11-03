@@ -106,12 +106,12 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<CallHistory> GetCallHistoryAsync(string callHistoryUuid, CancellationToken cancellationToken = default)
+		public Task<ZoomNet.Models.CallHistory> GetCallHistoryAsync(string callHistoryUuid, CancellationToken cancellationToken = default)
 		{
 			return _client
 				.GetAsync($"phone/call_history/{callHistoryUuid}")
 				.WithCancellationToken(cancellationToken)
-				.AsObject<CallHistory>();
+				.AsObject<ZoomNet.Models.CallHistory>();
 		}
 
 		/// <inheritdoc/>
