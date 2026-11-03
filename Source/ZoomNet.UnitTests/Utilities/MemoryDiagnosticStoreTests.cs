@@ -484,13 +484,15 @@ namespace ZoomNet.UnitTests.Utilities
 			// Verify entry exists
 			store.ContainsKey(diagnosticId).ShouldBeTrue();
 
-			// Force garbage collection
-			GC.Collect();
-			GC.WaitForPendingFinalizers();
-			GC.Collect();
-
-			// Act - Wait for timer to trigger cleanup
-			Thread.Sleep(500);
+			// Act - Poll until the timer removes the entry, forcing GC on each iteration
+			var deadline = DateTime.UtcNow.AddSeconds(10);
+			while (DateTime.UtcNow < deadline && store.ContainsKey(diagnosticId))
+			{
+				GC.Collect();
+				GC.WaitForPendingFinalizers();
+				GC.Collect();
+				Thread.Sleep(50);
+			}
 
 			// Assert - Entry should be removed by timer
 			store.ContainsKey(diagnosticId).ShouldBeFalse();
