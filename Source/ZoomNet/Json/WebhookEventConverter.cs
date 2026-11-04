@@ -366,18 +366,6 @@ namespace ZoomNet.Json
 							.Select(kvp => (FieldName: kvp.Key, Value: kvp.Value))
 							.ToArray()
 					};
-					return payloadJsonProperty.ToObject<MeetingUpdatedEvent>(options) with
-					{
-						UpdatedOn = ParseTimestampFromUnixMilliseconds(payloadJsonProperty),
-						ModifiedFields = meetingFieldsValueWasModified
-		.Concat(meetingFieldsValueWasCleared)
-		.Concat(meetingFieldsValueWasAdded)
-		.ToArray(),
-						MeetingFields = newMeetingValues
-		.Select(kvp => (FieldName: kvp.Key, Value: kvp.Value))
-		.ToArray()
-					};
-
 				case Models.Webhooks.EventType.WebinarPermanentlyDeleted:
 					return payloadJsonProperty.ToObject<WebinarPermanentlyDeletedEvent>(options);
 				case Models.Webhooks.EventType.WebinarStarted:
