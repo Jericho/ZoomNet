@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Text.Json;
 using ZoomNet.Models;
 
@@ -18,6 +19,11 @@ namespace ZoomNet.Json
 				case JsonTokenType.Null:
 				case JsonTokenType.String when string.IsNullOrEmpty(reader.GetString()):
 					throw new JsonException($"Unable to convert a null value to DateTime");
+
+				// https://devforum.zoom.us/t/webhook-documentation-shows-unusual-date-time-format/147462
+				case JsonTokenType.String when reader.GetString().StartsWith("GMT", StringComparison.OrdinalIgnoreCase):
+					var dateTimeString = reader.GetString().Remove(0, 3);
+					return DateTime.ParseExact(dateTimeString, "yyyyMMdd-HHmmss", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
 
 				case JsonTokenType.String:
 					return reader.GetDateTime();
