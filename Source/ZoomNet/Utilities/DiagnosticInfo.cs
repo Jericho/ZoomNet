@@ -1,3 +1,4 @@
+using Pathoschild.Http.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,25 +7,25 @@ using System.Text;
 
 namespace ZoomNet.Utilities
 {
-	internal sealed class DiagnosticInfo
+	internal class DiagnosticInfo
 	{
-		public WeakReference<HttpRequestMessage> RequestReference { get; }
+		public WeakReference<HttpRequestMessage> RequestReference { get; set; }
 
-		public long RequestTimestamp { get; }
+		public long RequestTimestamp { get; set; }
 
-		public WeakReference<HttpResponseMessage> ResponseReference { get; }
+		public WeakReference<HttpResponseMessage> ResponseReference { get; set; }
 
-		public long ResponseTimestamp { get; }
+		public long ResponseTimestamp { get; set; }
 
-		public HttpCompletionOption CompleteWhen { get; }
+		public RequestOptions Options { get; set; }
 
-		public DiagnosticInfo(WeakReference<HttpRequestMessage> requestReference, long requestTimestamp, WeakReference<HttpResponseMessage> responseReference, long responseTimestamp, System.Net.Http.HttpCompletionOption completeWhen)
+		public DiagnosticInfo(WeakReference<HttpRequestMessage> requestReference, long requestTimestamp, WeakReference<HttpResponseMessage> responseReference, long responseTimestamp, RequestOptions options)
 		{
-			RequestReference = requestReference ?? throw new ArgumentNullException(nameof(requestReference));
+			RequestReference = requestReference;
 			RequestTimestamp = requestTimestamp;
 			ResponseReference = responseReference;
 			ResponseTimestamp = responseTimestamp;
-			CompleteWhen = completeWhen;
+			Options = options;
 		}
 
 		public string GetLoggingTemplate(bool structuredFormat, bool logRequestHeaders, bool logRequestContent, bool logResponseHeaders, bool logResponseContent)
@@ -103,7 +104,7 @@ namespace ZoomNet.Utilities
 			ResponseReference.TryGetTarget(out HttpResponseMessage response);
 
 			// Get the content of the request/response
-			var isStreaming = CompleteWhen == HttpCompletionOption.ResponseHeadersRead;
+			var isStreaming = Options.CompleteWhen == HttpCompletionOption.ResponseHeadersRead;
 			var requestContent = request?.Content?.ReadAsStringAsync(null).GetAwaiter().GetResult();
 			var responseContent = isStreaming
 				? "... content omitted from this log because the response is streaming ..."

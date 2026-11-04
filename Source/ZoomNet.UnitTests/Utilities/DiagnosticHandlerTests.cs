@@ -104,7 +104,7 @@ namespace ZoomNet.UnitTests.Utilities
 			var clientOptions = new ZoomClientOptions() with { LogLevelSuccessfulCalls = LogLevel.Information, LogLevelFailedCalls = LogLevel.Error };
 			var handler = new DiagnosticHandler(diagnosticStore, clientOptions, null);
 			var mockFluentHttpRequest = new MockFluentHttpRequest();
-			
+
 			// Act
 			handler.OnRequest(mockFluentHttpRequest);
 
@@ -164,7 +164,7 @@ namespace ZoomNet.UnitTests.Utilities
 
 			// Assert
 			diagnosticStore.TryGetValue(mockFluentHttpRequest.HeaderValue, out var diagnosticInfo).ShouldBeTrue();
-			diagnosticInfo.CompleteWhen.ShouldBe(HttpCompletionOption.ResponseHeadersRead);
+			diagnosticInfo.Options.CompleteWhen.ShouldBe(HttpCompletionOption.ResponseHeadersRead);
 		}
 
 		[Fact]
