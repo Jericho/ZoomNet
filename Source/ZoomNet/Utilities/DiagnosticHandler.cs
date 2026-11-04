@@ -45,8 +45,7 @@ namespace ZoomNet.Utilities
 			request.WithHeader(DIAGNOSTIC_ID_HEADER_NAME, diagnosticId);
 
 			// Add the diagnostic info to our cache
-			var completeWhen = request?.Options?.CompleteWhen ?? HttpCompletionOption.ResponseContentRead;
-			_diagnosticStore.TryAdd(diagnosticId, new DiagnosticInfo(new WeakReference<HttpRequestMessage>(request.Message), Stopwatch.GetTimestamp(), null, long.MinValue, completeWhen));
+			_diagnosticStore.TryAdd(diagnosticId, new DiagnosticInfo(new WeakReference<HttpRequestMessage>(request.Message), Stopwatch.GetTimestamp(), null, long.MinValue, request?.Options));
 		}
 
 		/// <summary>Method invoked just after the HTTP response is received. This method can modify the incoming HTTP response.</summary>
@@ -67,7 +66,7 @@ namespace ZoomNet.Utilities
 					diagnosticInfo.RequestTimestamp,
 					new WeakReference<HttpResponseMessage>(response.Message),
 					responseTimestamp,
-					diagnosticInfo.CompleteWhen);
+					diagnosticInfo.Options);
 
 				// Atomically replace the stored entry with the updated instance
 				_diagnosticStore.AddOrUpdate(diagnosticId, updatedDiagnosticInfo);
