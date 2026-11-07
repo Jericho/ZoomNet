@@ -452,7 +452,7 @@ namespace ZoomNet.UnitTests.Utilities
 			GC.Collect();
 
 			// Act - Run cleanup
-			diagnosticStore.Cleanup(null);
+			diagnosticStore.Cleanup();
 
 			// Assert - Should be removed
 			diagnosticStore.ContainsKey(diagnosticId).ShouldBeFalse();

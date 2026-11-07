@@ -192,12 +192,12 @@ namespace ZoomNet.Resources
 		}
 
 		/// <inheritdoc/>
-		public Task<ZoomRoom> GetRoomDetailsAsync(string zoomRoomId, DateOnly from, DateOnly to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
+		public Task<ZoomRoom> GetRoomDetailsAsync(string roomId, DateOnly from, DateOnly to, int recordsPerPage = 30, string pageToken = null, CancellationToken cancellationToken = default)
 		{
 			Utils.ValidateRecordPerPage(recordsPerPage);
 
 			return _client
-				.GetAsync($"metrics/zoomrooms/{zoomRoomId}")
+				.GetAsync($"metrics/zoomrooms/{roomId}")
 				.WithArgument("from", from.ToZoomFormat())
 				.WithArgument("to", to.ToZoomFormat())
 				.WithArgument("page_size", recordsPerPage)

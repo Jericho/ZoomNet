@@ -396,7 +396,7 @@ namespace ZoomNet.UnitTests.Utilities
 			info.RequestReference.TryGetTarget(out _).ShouldBeFalse();
 
 			// Act
-			store.Cleanup(null);
+			store.Cleanup();
 
 			// Assert
 			store.ContainsKey(diagnosticId).ShouldBeFalse();
@@ -424,7 +424,7 @@ namespace ZoomNet.UnitTests.Utilities
 			GC.Collect();
 
 			// Act
-			store.Cleanup(null);
+			store.Cleanup();
 
 			// Assert
 			store.ContainsKey(diagnosticId).ShouldBeTrue();
@@ -456,7 +456,7 @@ namespace ZoomNet.UnitTests.Utilities
 			GC.Collect();
 
 			// Act
-			store.Cleanup(null);
+			store.Cleanup();
 
 			// Assert
 			store.ContainsKey(gcId).ShouldBeFalse();
@@ -471,7 +471,7 @@ namespace ZoomNet.UnitTests.Utilities
 			using var store = new MemoryDiagnosticStore();
 
 			// Act & Assert
-			Should.NotThrow(() => store.Cleanup(null));
+			Should.NotThrow(() => store.Cleanup());
 		}
 
 		[Fact]
@@ -484,13 +484,15 @@ namespace ZoomNet.UnitTests.Utilities
 			// Verify entry exists
 			store.ContainsKey(diagnosticId).ShouldBeTrue();
 
-			// Force garbage collection
-			GC.Collect();
-			GC.WaitForPendingFinalizers();
-			GC.Collect();
-
-			// Act - Wait for timer to trigger cleanup
-			Thread.Sleep(500);
+			// Act - Poll until the timer removes the entry, forcing GC on each iteration
+			var deadline = DateTime.UtcNow.AddSeconds(10);
+			while (DateTime.UtcNow < deadline && store.ContainsKey(diagnosticId))
+			{
+				GC.Collect();
+				GC.WaitForPendingFinalizers();
+				GC.Collect();
+				Thread.Sleep(50);
+			}
 
 			// Assert - Entry should be removed by timer
 			store.ContainsKey(diagnosticId).ShouldBeFalse();

@@ -390,14 +390,14 @@ namespace ZoomNet.UnitTests.WebhookParser
 			parsedEvent.UpdatedOn.ShouldBe(1617628463664.FromUnixTime(Internal.UnixTimePrecision.Milliseconds));
 
 			parsedEvent.ModifiedFields.ShouldNotBeNull();
-			parsedEvent.ModifiedFields.Length.ShouldBe(2);
+			parsedEvent.ModifiedFields.Length.ShouldBe(12);
 			parsedEvent.ModifiedFields[0].FieldName.ShouldBe("topic");
 			parsedEvent.ModifiedFields[0].OldValue.ShouldBe("ZoomNet Unit Testing: scheduled webinar");
 			parsedEvent.ModifiedFields[0].NewValue.ShouldBe("ZoomNet Unit Testing: UPDATED scheduled webinar");
 			parsedEvent.ModifiedFields[1].FieldName.ShouldBe("settings");
 
 			parsedEvent.WebinarFields.ShouldNotBeNull();
-			parsedEvent.WebinarFields.Length.ShouldBe(1);
+			parsedEvent.WebinarFields.Length.ShouldBe(13);
 			parsedEvent.WebinarFields[0].FieldName.ShouldBe("id");
 			parsedEvent.WebinarFields[0].Value.ShouldBe(MeetingId);
 		}

@@ -56,51 +56,10 @@ namespace ZoomNet.Utilities
 		/// <inheritdoc/>
 		public int Count => _diagnostics.Count;
 
-#if NET6_0_OR_GREATER
-		// This version of the cleanup loop uses the new PeriodicTimer class which is more efficient than using Task.Delay() in a loop but available in .NET 6.0 and later only.
-		private async Task CleanupLoopWithTimer(TimeSpan cleanUpInterval, CancellationToken cancellationToken)
-		{
-			try
-			{
-				using var timer = new PeriodicTimer(cleanUpInterval);
-				while (await timer.WaitForNextTickAsync(cancellationToken).ConfigureAwait(false))
-				{
-					Cleanup(null);
-				}
-			}
-			catch (OperationCanceledException) { }
-			catch (Exception)
-			{
-				// Intentionally left empty
-			}
-		}
-#endif
-
-#if !NET6_0_OR_GREATER
-		// This version of the cleanup loop can be used in .NET 5.0 and earlier because it uses Task.Delay() in a loop (but it's less efficient than using PeriodicTimer).
-		private async Task CleanupLoop(TimeSpan cleanUpInterval, CancellationToken cancellationToken)
-		{
-			try
-			{
-				while (!cancellationToken.IsCancellationRequested)
-				{
-					await Task.Delay(cleanUpInterval, cancellationToken).ConfigureAwait(false);
-
-					Cleanup(null);
-				}
-			}
-			catch (OperationCanceledException) { }
-			catch (Exception)
-			{
-				// Intentionally left empty
-			}
-		}
-#endif
-
 		/// <summary>
 		/// Cleans up the diagnostic store by removing entries for requests that have been garbage collected.
 		/// </summary>
-		public void Cleanup(object state)
+		public void Cleanup()
 		{
 			try
 			{
@@ -150,6 +109,47 @@ namespace ZoomNet.Utilities
 
 			ReleaseUnmanagedResources();
 		}
+
+#if NET6_0_OR_GREATER
+		// This version of the cleanup loop uses the new PeriodicTimer class which is more efficient than using Task.Delay() in a loop but available in .NET 6.0 and later only.
+		private async Task CleanupLoopWithTimer(TimeSpan cleanUpInterval, CancellationToken cancellationToken)
+		{
+			try
+			{
+				using var timer = new PeriodicTimer(cleanUpInterval);
+				while (await timer.WaitForNextTickAsync(cancellationToken).ConfigureAwait(false))
+				{
+					Cleanup();
+				}
+			}
+			catch (OperationCanceledException) { }
+			catch (Exception)
+			{
+				// Intentionally left empty
+			}
+		}
+#endif
+
+#if !NET6_0_OR_GREATER
+		// This version of the cleanup loop can be used in .NET 5.0 and earlier because it uses Task.Delay() in a loop (but it's less efficient than using PeriodicTimer).
+		private async Task CleanupLoop(TimeSpan cleanUpInterval, CancellationToken cancellationToken)
+		{
+			try
+			{
+				while (!cancellationToken.IsCancellationRequested)
+				{
+					await Task.Delay(cleanUpInterval, cancellationToken).ConfigureAwait(false);
+
+					Cleanup();
+				}
+			}
+			catch (OperationCanceledException) { }
+			catch (Exception)
+			{
+				// Intentionally left empty
+			}
+		}
+#endif
 
 		private void ReleaseManagedResources()
 		{

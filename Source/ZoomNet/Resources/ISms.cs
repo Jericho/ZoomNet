@@ -36,12 +36,12 @@ namespace ZoomNet.Resources
 		/// </summary>
 		/// <param name="sessionId">SMS session ID.</param>
 		/// <param name="messageId">SMS message ID.</param>
-		/// <param name="cancellation">The cancellation token.</param>
+		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>Specific message from SMS session.</returns>
 		/// <remarks>
 		/// See <a href="https://developers.zoom.us/docs/api/rest/reference/phone/methods/#operation/smsByMessageId">
 		/// Zoom endpoint documentation</a> for more information.
 		/// </remarks>
-		Task<SmsMessage> GetSmsByMessageIdAsync(string sessionId, string messageId, CancellationToken cancellation = default);
+		Task<SmsMessage> GetSmsByMessageIdAsync(string sessionId, string messageId, CancellationToken cancellationToken = default);
 	}
 }

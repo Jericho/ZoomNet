@@ -84,14 +84,29 @@ namespace ZoomNet.Json
 						.Select(jsonProperty => ConvertJsonPropertyToKeyValuePair(jsonProperty))
 						.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
-					meetingUpdatedEvent.ModifiedFields = oldMeetingValues.Keys
-						.Where(key => !oldMeetingValues[key].Equals(newMeetingValues[key]))
+					// Fields that are present in both the old and new values, but have different values.
+					var meetingFieldsValueWasModified = oldMeetingValues.Keys
+						.Where(key => newMeetingValues.ContainsKey(key) && !oldMeetingValues[key].Equals(newMeetingValues[key]))
 						.Select(key => (FieldName: key, OldValue: oldMeetingValues[key], NewValue: newMeetingValues[key]))
 						.ToArray();
 
-					meetingUpdatedEvent.MeetingFields = oldMeetingValues.Keys
-						.Where(key => oldMeetingValues[key].Equals(newMeetingValues[key]))
-						.Select(key => (FieldName: key, Value: oldMeetingValues[key]))
+					// Fields that are present in the old values, but are not present in the new values. Presumably because they were cleared.
+					var meetingFieldsValueWasCleared = oldMeetingValues.Keys
+						.Where(key => !newMeetingValues.ContainsKey(key))
+						.Select(key => (FieldName: key, OldValue: oldMeetingValues[key], NewValue: (object)null))
+						.ToArray();
+
+					// Fields that are not present in the old values, but are present in the new  values. Presumably because they were added.
+					var meetingFieldsValueWasAdded = newMeetingValues.Keys
+						.Where(key => !oldMeetingValues.ContainsKey(key))
+						.Select(key => (FieldName: key, OldValue: (object)null, NewValue: newMeetingValues[key]))
+						.ToArray();
+
+					// Combine the three arrays into a single array of modified fields.
+					meetingUpdatedEvent.ModifiedFields = meetingFieldsValueWasModified.Concat(meetingFieldsValueWasCleared).Concat(meetingFieldsValueWasAdded).ToArray();
+
+					meetingUpdatedEvent.MeetingFields = newMeetingValues
+						.Select(kvp => (FieldName: kvp.Key, Value: kvp.Value))
 						.ToArray();
 
 					return meetingUpdatedEvent;
@@ -293,14 +308,29 @@ namespace ZoomNet.Json
 						.Select(jsonProperty => ConvertJsonPropertyToKeyValuePair(jsonProperty))
 						.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 
-					webinarUpdatedEvent.ModifiedFields = oldWebinarValues.Keys
-						.Where(key => !oldWebinarValues[key].Equals(newWebinarValues[key]))
+					// Fields that are present in both the old and new values, but have different values.
+					var webinarFieldsValueWasModified = oldWebinarValues.Keys
+						.Where(key => newWebinarValues.ContainsKey(key) && !oldWebinarValues[key].Equals(newWebinarValues[key]))
 						.Select(key => (FieldName: key, OldValue: oldWebinarValues[key], NewValue: newWebinarValues[key]))
 						.ToArray();
 
-					webinarUpdatedEvent.WebinarFields = oldWebinarValues.Keys
-						.Where(key => oldWebinarValues[key].Equals(newWebinarValues[key]))
-						.Select(key => (FieldName: key, Value: oldWebinarValues[key]))
+					// Fields that are present in the old values, but are not present in the new values. Presumably because they were cleared.
+					var webinarFieldsValueWasCleared = oldWebinarValues.Keys
+						.Where(key => !newWebinarValues.ContainsKey(key))
+						.Select(key => (FieldName: key, OldValue: oldWebinarValues[key], NewValue: (object)null))
+						.ToArray();
+
+					// Fields that are not present in the old values, but are present in the new  values. Presumably because they were added.
+					var webinarFieldsValueWasAdded = newWebinarValues.Keys
+						.Where(key => !oldWebinarValues.ContainsKey(key))
+						.Select(key => (FieldName: key, OldValue: (object)null, NewValue: newWebinarValues[key]))
+						.ToArray();
+
+					// Combine the three arrays into a single array of modified fields.
+					webinarUpdatedEvent.ModifiedFields = webinarFieldsValueWasModified.Concat(webinarFieldsValueWasCleared).Concat(webinarFieldsValueWasAdded).ToArray();
+
+					webinarUpdatedEvent.WebinarFields = newWebinarValues
+						.Select(kvp => (FieldName: kvp.Key, Value: kvp.Value))
 						.ToArray();
 
 					return webinarUpdatedEvent;

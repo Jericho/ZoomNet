@@ -5,11 +5,11 @@ namespace ZoomNet.Models
 	/// <summary>Enumeration to indicate the source of callee/caller number.</summary>
 	public enum CallQueueNumberSource
 	{
-		/// <summary>Internal</summary>
+		/// <summary>Internal.</summary>
 		[EnumMember(Value = "internal")]
 		Internal,
 
-		/// <summary>External</summary>
+		/// <summary>External.</summary>
 		[EnumMember(Value = "external")]
 		External,
 	}

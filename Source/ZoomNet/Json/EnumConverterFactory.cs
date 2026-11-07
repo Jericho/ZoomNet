@@ -10,14 +10,14 @@ namespace ZoomNet.Json
 		{
 		}
 
-		public override bool CanConvert(Type type)
+		public override bool CanConvert(Type typeToConvert)
 		{
-			return type.IsEnum;
+			return typeToConvert.IsEnum;
 		}
 
-		public override JsonConverter CreateConverter(Type type, JsonSerializerOptions options)
+		public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
 		{
-			return (JsonConverter)Activator.CreateInstance(GetEnumConverterType(type));
+			return (JsonConverter)Activator.CreateInstance(GetEnumConverterType(typeToConvert));
 		}
 
 		private static Type GetEnumConverterType(Type enumType) => typeof(StringEnumConverter<>).MakeGenericType(enumType);

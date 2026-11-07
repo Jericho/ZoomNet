@@ -18,17 +18,13 @@ namespace ZoomNet.Json
 			var rawEventType = rootElement.GetPropertyValue<string>("event_type");
 			if (!rawEventType.TryToEnum(out EventType eventType)) throw new JsonException($"{rawEventType} is an unknown event type");
 
-			switch (eventType)
+			return eventType switch
 			{
-				case EventType.Simple:
-					return rootElement.ToObject<SimpleEvent>(options);
-				case EventType.Conference:
-					return rootElement.ToObject<Conference>(options);
-				case EventType.Reccuring:
-					return rootElement.ToObject<RecurringEvent>(options);
-				default:
-					throw new JsonException($"{eventType} is an unknown event type");
-			}
+				EventType.Simple => rootElement.ToObject<SimpleEvent>(options),
+				EventType.Conference => rootElement.ToObject<Conference>(options),
+				EventType.Reccuring => rootElement.ToObject<RecurringEvent>(options),
+				_ => throw new JsonException($"{eventType} is an unknown event type"),
+			};
 		}
 	}
 }

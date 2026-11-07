@@ -148,11 +148,11 @@ namespace ZoomNet.Resources
 		/// <summary>
 		/// Upload a virtual background file for all users on the account to use.
 		/// </summary>
-		/// <param name="accountid">The account Id.</param>
+		/// <param name="accountId">The account Id.</param>
 		/// <param name="fileName">The file name.</param>
 		/// <param name="fileData">The binary data.</param>
 		/// <param name="cancellationToken">The cancellation token.</param>
 		/// <returns>The <see cref="VirtualBackgroundFile">background file</see>.</returns>
-		Task<VirtualBackgroundFile> UploadVirtualBackgroundFileAsync(string accountid, string fileName, Stream fileData, CancellationToken cancellationToken = default);
+		Task<VirtualBackgroundFile> UploadVirtualBackgroundFileAsync(string accountId, string fileName, Stream fileData, CancellationToken cancellationToken = default);
 	}
 }

@@ -1,9 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace ZoomNet.Models
 {
@@ -30,6 +26,6 @@ namespace ZoomNet.Models
 
 		/// <summary>Gets or sets the timestamp.</summary>
 		[JsonPropertyName("time")]
-		public DateTime Time { get; set; }
+		public DateTime? Time { get; set; }
 	}
 }

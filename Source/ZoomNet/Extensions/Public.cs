@@ -759,9 +759,9 @@ namespace ZoomNet
 				CustomQuestions = customQuestions?.ToArray()
 			};
 
-			var result = await eventsResource.CreateTicketsAsync(eventId, [ticket], source, cancellationToken).ConfigureAwait(false);
+			var (tickets, errors) = await eventsResource.CreateTicketsAsync(eventId, [ticket], source, cancellationToken).ConfigureAwait(false);
 
-			return (result.Tickets.FirstOrDefault(), result.Errors.FirstOrDefault());
+			return (tickets.FirstOrDefault(), errors.FirstOrDefault());
 		}
 
 		/// <summary>

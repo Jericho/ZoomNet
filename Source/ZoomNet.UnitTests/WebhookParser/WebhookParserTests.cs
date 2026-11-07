@@ -165,7 +165,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 			parsedEvent.ModifiedFields[1].FieldName.ShouldBe("settings");
 
 			parsedEvent.MeetingFields.ShouldNotBeNull();
-			parsedEvent.MeetingFields.Length.ShouldBe(1);
+			parsedEvent.MeetingFields.Length.ShouldBe(3);
 			parsedEvent.MeetingFields[0].FieldName.ShouldBe("id");
 			parsedEvent.MeetingFields[0].Value.ShouldBe(94890226305);
 		}
