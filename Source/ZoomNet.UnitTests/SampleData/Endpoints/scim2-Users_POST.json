@@ -120,6 +120,10 @@
     "zoomAIProductivitySuiteSubscription": "2025 Subscription",
     "zoomMate": "zm_mate_license_only",
     "zoomMateSubscription": "2025 Subscription",
-    "zoomAdvancedDataProtectionSubscription": "2025 Subscription"
+    "zoomAdvancedDataProtectionSubscription": "2025 Subscription",
+    "deepfakeRiskDetection": "deepfake_risk_detection",
+    "deepfakeRiskDetectionSubscription": "2025 Subscription",
+    "wvHqAgentSubscription": "2025 Subscription",
+    "wvHqAgent": "wv_hq_agent"
   }
 }

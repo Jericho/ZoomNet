@@ -14,6 +14,8 @@
       "camera": "FaceTime HD Camera",
       "data_center": "SC",
       "connection_type": "P2P",
+      "video_connection_type": "UDP",
+      "as_connection_type": "UDP",
       "join_time": "2019-08-20T19:09:01.0000000\u002B00:00",
       "leave_time": "2019-08-20T19:19:01.0000000\u002B00:00",
       "user_key": "myUserKey",
@@ -33,7 +35,8 @@
       "audio_quality": "good",
       "video_quality": "good",
       "screen_share_quality": "good",
-      "is_original_host": false
+      "is_original_host": false,
+      "leave_reason": "Normal leave"
     }
   ]
 }

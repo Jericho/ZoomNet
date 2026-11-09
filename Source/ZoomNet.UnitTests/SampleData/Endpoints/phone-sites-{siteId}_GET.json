@@ -257,13 +257,13 @@
       "block_closed_hours": true,
       "block_holiday_hours": true,
       "block_call_action": 0,
-      "block_call_change_type": 0,
-      "e2e_encryption": {
-        "enable": true,
-        "locked": true,
-        "locked_by": "site",
-        "modified": true
-      }
+      "block_call_change_type": 0
+    },
+    "e2e_encryption": {
+      "enable": true,
+      "locked": true,
+      "locked_by": "site",
+      "modified": true
     },
     "force_off_net": {
       "enable": true,
