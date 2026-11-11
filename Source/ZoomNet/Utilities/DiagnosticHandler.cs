@@ -75,8 +75,8 @@ namespace ZoomNet.Utilities
 				var logLevel = response.IsSuccessStatusCode ? _clientOptions.LogLevelSuccessfulCalls : _clientOptions.LogLevelFailedCalls;
 				if (_logger?.IsEnabled(logLevel) ?? false)
 				{
-					var template = diagnosticInfo.GetLoggingTemplate(true, _clientOptions.LogRequestHeaders, _clientOptions.LogRequestContent, _clientOptions.LogResponseHeaders, _clientOptions.LogResponseContent);
-					var parameters = diagnosticInfo.GetLoggingParameters(_clientOptions.LogRequestHeaders, _clientOptions.LogRequestContent, _clientOptions.LogResponseHeaders, _clientOptions.LogResponseContent);
+					var template = updatedDiagnosticInfo.GetLoggingTemplate(true, _clientOptions.LogRequestHeaders, _clientOptions.LogRequestContent, _clientOptions.LogResponseHeaders, _clientOptions.LogResponseContent);
+					var parameters = updatedDiagnosticInfo.GetLoggingParameters(_clientOptions.LogRequestHeaders, _clientOptions.LogRequestContent, _clientOptions.LogResponseHeaders, _clientOptions.LogResponseContent);
 
 					// CA2254 warns when the message template varies; allow it here because we need to pass
 					// the template to structured logging providers exactly as produced by DiagnosticInfo.
