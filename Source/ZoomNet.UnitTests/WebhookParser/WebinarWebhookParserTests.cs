@@ -87,7 +87,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 				},
 				new DateTime(2022, 1, 10, 2, 20, 10, DateTimeKind.Utc));
 			VerifyChatMessageSender(parsedEvent.Sender);
-			VerifyChatMessageRecipient(parsedEvent.Recipient, string.Empty);
+			VerifyChatMessageRecipient(parsedEvent.Recipient, string.Empty, ChatMessagePartyType.Everyone);
 		}
 
 		[Fact]
