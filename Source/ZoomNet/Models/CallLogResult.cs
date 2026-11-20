@@ -7,8 +7,8 @@ namespace ZoomNet.Models
 	public enum CallLogResult
 	{
 		// The following enum values are based on the documented possible values for:
-		// - phone.caller_call_log_completed (currently undocumented, See: https://devforum.zoom.us/t/undocumented-possible-values-in-the-result-json-node-for-the-phone-caller-call-log-completed-webhook/147587)
-		// - phone.callee_call_log_completed
+		// - phone.caller_call_log_completed (deprecated. See: https://devforum.zoom.us/t/undocumented-possible-values-in-the-result-json-node-for-the-phone-caller-call-log-completed-webhook/147587)
+		// - phone.callee_call_log_completed (this webhook is not marked as deprecated in documentation but I suspect it should be)
 		// - phone.caller_call_element_completed,
 		// - phone.callee_call_element_completed,
 		// - phone.caller_call_history_completed (deprecated)

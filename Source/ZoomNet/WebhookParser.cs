@@ -32,9 +32,10 @@ namespace ZoomNet
 		/// Initializes a new instance of the <see cref="WebhookParser"/> class.
 		/// </summary>
 		/// <param name="throwWhenUnknownEventType">Indicates whether an exception should be thrown when an unknown event type is encountered.</param>
-		public WebhookParser(bool throwWhenUnknownEventType = true)
+		/// <param name="throwWhenDeprecatedEventType">Indicates whether an exception should be thrown when a deprecated event type is encountered.</param>
+		public WebhookParser(bool throwWhenUnknownEventType = true, bool throwWhenDeprecatedEventType = true)
 		{
-			_converter = new WebHookEventConverter(throwWhenUnknownEventType);
+			_converter = new WebHookEventConverter(throwWhenUnknownEventType, throwWhenDeprecatedEventType);
 		}
 
 		/// <inheritdoc/>

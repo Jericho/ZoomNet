@@ -16,10 +16,12 @@ namespace ZoomNet.Json
 	internal class WebHookEventConverter : ZoomNetJsonConverter<Models.Webhooks.Event>
 	{
 		private readonly bool _throwWhenUnknownEventType;
+		private readonly bool _throwWhenDeprecatedEventType;
 
-		public WebHookEventConverter(bool throwWhenUnknownEventType = true)
+		public WebHookEventConverter(bool throwWhenUnknownEventType = true, bool throwWhenDeprecatedEventType = false)
 		{
 			_throwWhenUnknownEventType = throwWhenUnknownEventType;
+			_throwWhenDeprecatedEventType = throwWhenDeprecatedEventType;
 		}
 
 		public override Models.Webhooks.Event Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
@@ -39,6 +41,11 @@ namespace ZoomNet.Json
 				}
 
 				eventType = Models.Webhooks.EventType.Unknown;
+			}
+
+			if (_throwWhenDeprecatedEventType && IsDeprecated(eventType))
+			{
+				throw new NotSupportedException($"The event type '{eventType.ToEnumString()}' is deprecated and no longer supported.");
 			}
 
 			var webHookEvent = ParsePayloadToWebhookEvent(rootElement, eventType, options);
@@ -1001,6 +1008,21 @@ namespace ZoomNet.Json
 		private static T[] ParseRecordings<T>(JsonElement payloadJsonProperty)
 		{
 			return payloadJsonProperty.GetPropertyValue<T[]>("object/recordings");
+		}
+
+		private static bool IsDeprecated(Models.Webhooks.EventType eventType)
+		{
+			return eventType switch
+			{
+				Models.Webhooks.EventType.PhoneCallHistoryDeleted => true,
+				Models.Webhooks.EventType.PhoneCallLogDeleted => true,
+				Models.Webhooks.EventType.PhoneCallLogPermanentlyDeleted => true,
+				Models.Webhooks.EventType.PhoneCalleeCallHistoryCompleted => true,
+				Models.Webhooks.EventType.PhoneCalleeCallLogCompleted => true,
+				Models.Webhooks.EventType.PhoneCallerCallHistoryCompleted => true,
+				Models.Webhooks.EventType.PhoneCallerCallLogCompleted => true,
+				_ => false,
+			};
 		}
 	}
 }

@@ -3,6 +3,7 @@ using System;
 namespace ZoomNet.Models.Webhooks
 {
 	/// <summary>This event is triggered when a call history is deleted.</summary>
+	[Obsolete("This event is deprecated and will be removed in a future release. phone.call_element_deleted — triggers when a call element record is deleted, which supersedes the legacy call history deletion payload with a forward-compatible data model.")]
 	public class PhoneCallHistoryDeletedEvent : PhoneCallLogOperationEvent
 	{
 		/// <summary>Gets or sets the deleted call log ids. Empty if <see cref="DeleteAll"/> is true.</summary>
