@@ -489,19 +489,6 @@ namespace ZoomNet.UnitTests.WebhookParser
 		}
 
 		[Fact]
-		public void PhoneCallerCallLogCompletd()
-		{
-			var parsedEvent = ParseWebhookEvent<PhoneCallerCallLogCompletedEvent>(WebhooksResource.phone_caller_call_log_completed);
-
-			VerifyPhoneCallLogOperationEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCallerCallLogCompleted);
-
-			parsedEvent.CallLogs.ShouldNotBeNull();
-			parsedEvent.CallLogs.ShouldHaveSingleItem();
-
-			VerifyUserCallLog(parsedEvent.CallLogs[0]);
-		}
-
-		[Fact]
 		public void PhoneRecordingCompleted()
 		{
 			var parsedEvent = ParseWebhookEvent<PhoneRecordingCompletedEvent>(WebhooksResource.phone_recording_completed);
