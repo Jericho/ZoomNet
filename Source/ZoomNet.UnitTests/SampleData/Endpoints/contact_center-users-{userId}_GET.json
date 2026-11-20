@@ -45,6 +45,19 @@
       "identifier": "zoom4821"
     }
   ],
+  "tags": [
+    {
+      "tag_group_id": "tg_558833",
+      "tag_group_name": "Region",
+      "tag_infos": [
+        {
+          "tag_id": "tag_11111",
+          "tag_name": "North America",
+          "tag_color": "#336699"
+        }
+      ]
+    }
+  ],
   "add_ons_subscriptions": [
     {
       "add_ons_plan_name": "ai_expert_assist",

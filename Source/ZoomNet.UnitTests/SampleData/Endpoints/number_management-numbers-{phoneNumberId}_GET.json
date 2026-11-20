@@ -57,5 +57,14 @@
     "country": "United States",
     "city": "San Jose",
     "state": "California"
+  },
+  "division": {
+    "division_id": "-ea0J8GSTmGbO0DnENlUaQ",
+    "name": "Main Division"
+  },
+  "ms_tenant": {
+    "ms_tenant_id": "ec8d83ca-3473-47c9-bea2-a8aqqqqzz",
+    "ms_tenant_name": "Operator Connect Teams",
+    "number_upload_status": "Syncing"
   }
 }

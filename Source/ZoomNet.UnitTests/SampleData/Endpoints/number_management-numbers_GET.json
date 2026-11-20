@@ -39,7 +39,8 @@
           "assigned_to_name": "Alice Bob",
           "assigned_to_type": "User",
           "source_channel": "Voice",
-          "extension_number": "6503"
+          "extension_number": "6503",
+          "extension_id": "T9ekdsewRnCjAxi8deUhlQ"
         }
       ],
       "sip_group": {
@@ -50,6 +51,15 @@
         "country": "United States",
         "city": "San Jose",
         "state": "California"
+      },
+      "ms_tenant": {
+        "ms_tenant_id": "ec8d83ca-3473-47c9-bea2-a8aqqqqzz",
+        "ms_tenant_name": "Operator Connect Teams",
+        "number_upload_status": "Syncing"
+      },
+      "division": {
+        "division_id": "-ea0J8GSTmGbO0DnENlUaQ",
+        "name": "Main Division"
       }
     }
   ]

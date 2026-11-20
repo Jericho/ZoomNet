@@ -49,7 +49,20 @@
         }
       ],
       "billing_account_id": "PEKovuAEQBu5dpeqmxwW1Q",
-      "billing_account_name": "main billing account"
+      "billing_account_name": "main billing account",
+      "tags": [
+        {
+          "tag_group_id": "tg_558833",
+          "tag_group_name": "Region",
+          "tag_infos": [
+            {
+              "tag_id": "tag_11111",
+              "tag_name": "North America",
+              "tag_color": "#336699"
+            }
+          ]
+        }
+      ]
     }
   ],
   "division_name": "EMEA Operations",

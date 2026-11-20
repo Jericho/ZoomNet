@@ -12,5 +12,7 @@
       "import_from": "OPEN_API",
       "recent_dialed": false
     }
-  ]
+  ],
+  "next_page_token": "eyJzZWFyY2hfYWZ0ZXIiOlsyMDI2LTA2LTMwVDEyOjAwOjAwWiwiMTlEQkxWTV5TSEc2Y2dJZW8wdnJIUSJdfQ==",
+  "page_size": 20
 }

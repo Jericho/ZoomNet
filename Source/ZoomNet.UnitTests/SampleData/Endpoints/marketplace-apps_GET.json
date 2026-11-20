@@ -34,7 +34,14 @@
         "approver_id": "1gAKvx8fSUeTg-mHgmYTRA",
         "approved_time": "2024-03-21T14:32:28Z",
         "app_approval_closed": true
-      }
+      },
+      "adds": "999",
+      "connections": "2",
+      "active_users": "99",
+      "total_calls": "1000",
+      "failed_calls": "10",
+      "first_used": "2026-03-21T14:32:28Z",
+      "last_used": "2026-06-21T14:32:28Z"
     }
   ]
 }

@@ -27,6 +27,19 @@
       "flow_version_last_modified_time": "2022-08-05T01:55:52Z"
     }
   ],
+  "tags": [
+    {
+      "tag_group_id": "tg_558833",
+      "tag_group_name": "Region",
+      "tag_infos": [
+        {
+          "tag_id": "tag_11111",
+          "tag_name": "North America",
+          "tag_color": "#336699"
+        }
+      ]
+    }
+  ],
   "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
   "division_name": "EMEA Operations"
 }

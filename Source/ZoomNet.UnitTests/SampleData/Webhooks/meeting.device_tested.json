@@ -6,6 +6,12 @@
     "object": {
       "id": 1234567890,
       "uuid": "4444AAAiAAAAAiAiAiiAii==",
+      "custom_keys": [
+        {
+          "key": "appointment_id",
+          "value": "APT-12345"
+        }
+      ],
       "test_result": {
         "user_id": "1234567890",
         "user_name": "JillChill",

@@ -20,5 +20,18 @@
   ],
   "asset_language_code": "en-US",
   "category_id": "bnGEj1yrRb6qlNMvyMK08g",
-  "category_name": "flows assets"
+  "category_name": "flows assets",
+  "tags": [
+    {
+      "tag_group_id": "tg_558833",
+      "tag_group_name": "Region",
+      "tag_infos": [
+        {
+          "tag_id": "tag_11111",
+          "tag_name": "North America",
+          "tag_color": "#336699"
+        }
+      ]
+    }
+  ]
 }

@@ -18,6 +18,7 @@
         "timezone": "America/Los_Angeles",
         "device_type": "MAC_Client(5.7.5.1123)",
         "device_id": "f7aLLSmqRpiWP0U3U6CaNA",
+        "hardware_device_id": "06__wmlGRIGUnj-gOGT73A",
         "connection_type": "voip"
       },
       "forwarded_by": {

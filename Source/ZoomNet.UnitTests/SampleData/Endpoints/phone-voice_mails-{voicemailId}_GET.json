@@ -6,6 +6,7 @@
   "callee_name": "Jane Doe",
   "callee_number": "34567889",
   "callee_number_type": 2,
+  "caller_number_spam_type": "spam",
   "caller_name": "John Doe",
   "caller_number": "12345678",
   "caller_number_type": 1,

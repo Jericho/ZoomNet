@@ -7,6 +7,12 @@
       "id": 713592696,
       "uuid": "4444AAAiAAAAAiAiAiiAii==",
       "host_id": "ICuPoX4ERtikRcKqkVxunQ",
+      "custom_keys": [
+        {
+          "key": "appointment_id",
+          "value": "APT-12345"
+        }
+      ],
       "message_id": "atsXxhSEQWit9t+U02HXNQ==",
       "inviter_name": "Jill Chill",
       "participant": {

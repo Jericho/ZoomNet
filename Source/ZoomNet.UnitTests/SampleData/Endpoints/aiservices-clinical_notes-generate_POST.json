@@ -1,0 +1,35 @@
+{
+  "request_id": "request_123",
+  "transcript": {
+    "text_display": "Synthetic consultation transcript.",
+    "segments": [
+      {
+        "id": "segment_1",
+        "start": 0,
+        "end": 1,
+        "channel": 0,
+        "speaker": "Speaker 1",
+        "text": "Synthetic consultation.",
+        "words": [
+          {
+            "word": "Synthetic",
+            "start": 0,
+            "end": 0.5,
+            "is_profanity_mark": false
+          }
+        ],
+        "language": "en-US"
+      }
+    ],
+    "duration_sec": 1
+  },
+  "clinical_notes": {
+    "full_note": "**Subjective**\n\nSynthetic note.",
+    "sections": [
+      {
+        "title": "Subjective (S)",
+        "content": "Synthetic section content."
+      }
+    ]
+  }
+}

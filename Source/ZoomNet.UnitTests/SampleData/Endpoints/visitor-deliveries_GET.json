@@ -1,0 +1,23 @@
+{
+  "page_size": 30,
+  "next_page_token": "At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2",
+  "total_records": 20,
+  "deliveries": [
+    {
+      "delivery_id": "66f0a1c2e4b0a1c2e4b0a1c2",
+      "created_time": "2026-09-01T08:30:00Z",
+      "delivery_space_id": "wsp_9f2c4b6a8d1e",
+      "delivery_space_name": "Front Desk Locker",
+      "location_path": "United States/California/San Jose/Building A/Floor 2",
+      "recipient_user_id": "abc123XyZ",
+      "recipient_first_name": "Jane",
+      "recipient_last_name": "Doe",
+      "recipient_email": "jane.doe@example.com",
+      "carrier": "FedEx",
+      "tracking_number": "1234567890",
+      "status": "picked_up",
+      "pick_up_time": "2026-09-02T03:12:00Z",
+      "pick_up_verification": "signature"
+    }
+  ]
+}

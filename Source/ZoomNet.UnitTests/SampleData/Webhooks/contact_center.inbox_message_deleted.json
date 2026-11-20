@@ -24,7 +24,7 @@
       "inbox_id": "szCyubr_aQhieHNWYbAGMYg",
       "inbox_name": "My Inbox",
       "message_id": "KGTRVt3gQ2i-WjoUIjewXq",
-      "delete_type": "Soft delete",
+      "delete_type": "soft deleted",
       "date_time_ms": "2024-09-09T02:57:32.719Z",
       "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
       "division_name": "EMEA Operations"

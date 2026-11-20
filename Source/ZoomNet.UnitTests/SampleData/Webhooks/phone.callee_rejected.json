@@ -21,6 +21,7 @@
         "timezone": "America/Los_Angeles",
         "device_type": "Windows_Client(5.7.5.939)",
         "device_id": "f7aLLSmqRpiWP0U3U6CaNA",
+        "hardware_device_id": "06__wmlGRIGUnj-gOGT73A",
         "connection_type": "voip"
       },
       "ringing_start_time": "2021-08-20T00:52:20Z",

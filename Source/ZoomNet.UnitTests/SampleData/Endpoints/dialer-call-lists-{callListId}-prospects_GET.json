@@ -53,5 +53,7 @@
       ],
       "external_id": "xxx-uuid"
     }
-  ]
+  ],
+  "page_size": 20,
+  "next_page_token": "eyJzZWFyY2hfYWZ0ZXIiOlsyMDI2LTA2LTMwVDEyOjAwOjAwWiwiMTlEQkxWTV5TSEc2Y2dJZW8wdnJIUSJdfQ=="
 }

@@ -1,9 +1,14 @@
 {
   "kpis": [
     {
-      "kpi": "meeting_summary_hosts",
+      "kpi": "actions_zoommate_and_workplace",
       "value": 582,
-      "pop_value": -55.1
+      "pop_value": 20.3
+    },
+    {
+      "kpi": "users_zoommate_and_workplace",
+      "value": 100,
+      "pop_value": 10.2
     }
   ]
 }

@@ -50,6 +50,14 @@
       ],
       "login_types": [
         101
+      ],
+      "divisions": [
+        {
+          "division_id": "example-TaOOmobxuqLVnw",
+          "division_name": "my division",
+          "division_description": "this is division",
+          "is_main_division": true
+        }
       ]
     }
   ]

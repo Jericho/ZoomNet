@@ -342,6 +342,35 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;request_id&quot;: &quot;request_123&quot;,
+        ///  &quot;transcript&quot;: {
+        ///    &quot;text_display&quot;: &quot;Synthetic consultation transcript.&quot;,
+        ///    &quot;segments&quot;: [
+        ///      {
+        ///        &quot;id&quot;: &quot;segment_1&quot;,
+        ///        &quot;start&quot;: 0,
+        ///        &quot;end&quot;: 1,
+        ///        &quot;channel&quot;: 0,
+        ///        &quot;speaker&quot;: &quot;Speaker 1&quot;,
+        ///        &quot;text&quot;: &quot;Synthetic consultation.&quot;,
+        ///        &quot;words&quot;: [
+        ///          {
+        ///            &quot;word&quot;: &quot;Synthetic&quot;,
+        ///            &quot;start&quot;: 0,
+        ///            &quot;end&quot;: 0.5,
+        ///            &quot;is_profanity_mark&quot;: false
+        ///          }
+        ///        ],
+        ///        &quot;language&quot;: &quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string aiservices_clinical_notes_generate_POST {
+            get {
+                return ResourceManager.GetString("aiservices-clinical_notes-generate_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;answers&quot;: [
         ///    {
         ///      &quot;type&quot;: &quot;predicate&quot;,
@@ -2554,15 +2583,15 @@ namespace ZoomNet.UnitTests.Properties {
         ///   Looks up a localized string similar to {
         ///  &quot;meeting_id&quot;: &quot;I3pHE/RnRbmm\u002Bex2g07sxw==&quot;,
         ///  &quot;meeting_number&quot;: 97763643885,
+        ///  &quot;business_type&quot;: &quot;meeting&quot;,
+        ///  &quot;visit_id&quot;: &quot;aDYlohsHRtCd4ii1uC2\u002BhA==&quot;,
         ///  &quot;note_id&quot;: &quot;ArfRXokSTiGTCSYFVtxNa&quot;,
         ///  &quot;note_owner_user_id&quot;: &quot;dqV7XEpnS5G3rGsvqylmjQ&quot;,
         ///  &quot;note_start_time&quot;: &quot;2025-05-15T03:01:08.608Z&quot;,
         ///  &quot;note_end_time&quot;: &quot;2025-05-15T03:25:59.608Z&quot;,
         ///  &quot;note_created_time&quot;: &quot;2025-05-15T03:26:08.608Z&quot;,
         ///  &quot;note_last_modified_time&quot;: &quot;2025-05-15T03:26:08.608Z&quot;,
-        ///  &quot;note_last_modified_user_id&quot;: &quot;dqV7XEpnS5G3rGsvqylmjQ&quot;,
-        ///  &quot;note_title&quot;: &quot;lingbo test.cn\u0027s Zoom Meeting - Version A&quot;,
-        ///  [rest of string was truncated]&quot;;.
+        ///  &quot;note_last_modified_user_id&quot;: &quot;dqV7XEpnS5G3rGs [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string clinical_notes_notes__noteId__GET {
             get {
@@ -2580,11 +2609,11 @@ namespace ZoomNet.UnitTests.Properties {
         ///    {
         ///      &quot;meeting_id&quot;: &quot;I3pHE/RnRbmm\u002Bex2g07sxw==&quot;,
         ///      &quot;meeting_number&quot;: 97763643885,
+        ///      &quot;business_type&quot;: &quot;meeting&quot;,
+        ///      &quot;visit_id&quot;: &quot;aDYlohsHRtCd4ii1uC2\u002BhA==&quot;,
         ///      &quot;note_id&quot;: &quot;ArfRXokSTiGTCSYFVtxNa&quot;,
         ///      &quot;note_owner_user_id&quot;: &quot;dqV7XEpnS5G3rGsvqylmjQ&quot;,
-        ///      &quot;note_start_time&quot;: &quot;2025-05-15T03:01:08.608Z&quot;,
-        ///      &quot;note_end_time&quot;: &quot;2025-05-15T03:25:59.608Z&quot;,
-        ///      &quot;note_created_time&quot;: &quot;2025- [rest of string was truncated]&quot;;.
+        ///      &quot;note_start_time&quot;: &quot;2025-05-15T03:01:08.608Z&quot;, [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string clinical_notes_notes_GET {
             get {
@@ -4414,21 +4443,19 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4LpA&quot;,
+        ///  &quot;division_name&quot;: &quot;EMEA Operations&quot;,
+        ///  &quot;from&quot;: &quot;2021-12-10T00:00:00Z&quot;,
         ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
         ///  &quot;page_size&quot;: 30,
-        ///  &quot;total_records&quot;: 10,
-        ///  &quot;division_name&quot;: &quot;EMEA Operations&quot;,
-        ///  &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4LpA&quot;,
-        ///  &quot;from&quot;: &quot;2021-12-10T00:00:00Z&quot;,
-        ///  &quot;to&quot;: &quot;2021-12-10T00:15:00Z&quot;,
-        ///  &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///  &quot;routing_logs&quot;: [
         ///    {
-        ///      &quot;engagement_id&quot;: &quot;bgdiH2SPQXmiD30nUiA4uA&quot;,
-        ///      &quot;routing_id&quot;: &quot;reRAiabVQSqpXxJVDbsy2Q&quot;,
-        ///      &quot;routing_order&quot;: 1,
-        ///      &quot;queue_id&quot;: &quot;reRAiabVQSqpXxJVDbsy2Q&quot;,
-        ///      &quot;queue_name&quot; [rest of string was truncated]&quot;;.
+        ///      &quot;agent_routing_profile_id&quot;: &quot;vz7qBi2GQ2GaHGUA0jmzmg&quot;,
+        ///      &quot;agent_routing_profile_name&quot;: &quot;Default Agent Profile&quot;,
+        ///      &quot;bullseye_routing_number&quot;: 1,
+        ///      &quot;bullseye_routing_rule_id&quot;: &quot;bullseyeRule123&quot;,
+        ///      &quot;bullseye_routing_rule_name&quot;: &quot;Tier 1 Skills Rule&quot;,
+        ///      &quot;ca [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_analytics_dataset_historical_routing_log_performance_GET {
             get {
@@ -6082,11 +6109,11 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;access_user_count&quot;: 5,
         ///      &quot;access_queue_count&quot;: 5,
         ///      &quot;last_modified_time&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;,
-        ///      &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;
-        ///    }
-        ///  ],
-        ///  &quot;division_name&quot;: &quot;EMEA Operations&quot;,
-        ///  &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4 [rest of string was truncated]&quot;;.
+        ///      &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///      &quot;tags&quot;: [
+        ///        {
+        ///          &quot;tag_group_id&quot;: &quot;tg_558833&quot;,
+        ///          &quot;tag_group [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_inboxes_GET {
             get {
@@ -7074,20 +7101,20 @@ namespace ZoomNet.UnitTests.Properties {
         ///   Looks up a localized string similar to {
         ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
         ///  &quot;page_size&quot;: 30,
-        ///  &quot;total_records&quot;: 1,
+        ///  &quot;total_records&quot;: 10,
         ///  &quot;queues&quot;: [
         ///    {
-        ///      &quot;queue_id&quot;: &quot;zeYjXoDOS_eV1QmTpj63PQ&quot;,
-        ///      &quot;cc_queue_id&quot;: &quot;xqJE_cgERLyAJHYYL5LLeg&quot;,
-        ///      &quot;queue_name&quot;: &quot;queue_661c6e4b-89fc-4b0d-9978-c7394725462&quot;,
+        ///      &quot;queue_id&quot;: &quot;Ql3qxUWXSHes4PmcOmzyOg&quot;,
+        ///      &quot;cc_queue_id&quot;: &quot;a4lCNeq2SzKbgkcDVbjCZQ&quot;,
+        ///      &quot;queue_name&quot;: &quot;Voice - Customer Support&quot;,
         ///      &quot;agents_count&quot;: 1,
         ///      &quot;supervisors_count&quot;: 1,
-        ///      &quot;channel_types&quot;: [
-        ///        &quot;voice&quot;
-        ///      ],
         ///      &quot;channel&quot;: &quot;voice&quot;,
         ///      &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
-        ///      &quot;last_modified_time&quot;: &quot;2022-02-15 [rest of string was truncated]&quot;;.
+        ///      &quot;last_modified_time&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;,
+        ///      &quot;tags&quot;: [
+        ///        {
+        ///          [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_queues_GET {
             get {
@@ -7106,8 +7133,14 @@ namespace ZoomNet.UnitTests.Properties {
         ///  ],
         ///  &quot;channel&quot;: &quot;voice&quot;,
         ///  &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4LpA&quot;,
-        ///  &quot;division_name&quot;: &quot;EMEA Operations&quot;
-        ///}.
+        ///  &quot;division_name&quot;: &quot;EMEA Operations&quot;,
+        ///  &quot;tags&quot;: [
+        ///    {
+        ///      &quot;tag_group_id&quot;: &quot;tg_558833&quot;,
+        ///      &quot;tag_group_name&quot;: &quot;Region&quot;,
+        ///      &quot;tag_infos&quot;: [
+        ///        {
+        ///          &quot;tag [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_queues_POST {
             get {
@@ -7430,9 +7463,14 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;skill_type&quot;: &quot;text&quot;,
         ///  &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
         ///  &quot;last_modified_time&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;,
-        ///  &quot;division_name&quot;: &quot;EMEA Operations&quot;,
-        ///  &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4LpA&quot;
-        ///}.
+        ///  &quot;tags&quot;: [
+        ///    {
+        ///      &quot;tag_group_id&quot;: &quot;tg_558833&quot;,
+        ///      &quot;tag_group_name&quot;: &quot;Region&quot;,
+        ///      &quot;tag_infos&quot;: [
+        ///        {
+        ///          &quot;tag_id&quot;: &quot;tag_11111&quot;,
+        ///          &quot;tag_name&quot;: &quot;North America&quot;, [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_skills_categories__skillCategoryId__GET {
             get {
@@ -7453,10 +7491,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;total_agent_routing_profiles&quot;: 5,
         ///      &quot;skill_type&quot;: &quot;text&quot;,
         ///      &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
-        ///      &quot;last_modified_time&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;
-        ///    }
-        ///  ],
-        ///   [rest of string was truncated]&quot;;.
+        ///      &quot;last_modified_time&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;,
+        ///      &quot;tags&quot;:  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_skills_categories_GET {
             get {
@@ -7472,8 +7508,15 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;skill_type&quot;: &quot;text&quot;,
         ///  &quot;max_proficiency_level&quot;: 25,
         ///  &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
-        ///  &quot;last_modified_time&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;
-        ///}.
+        ///  &quot;last_modified_time&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;,
+        ///  &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4LpA&quot;,
+        ///  &quot;division_name&quot;: &quot;EMEA Operations&quot;,
+        ///  &quot;tags&quot;: [
+        ///    {
+        ///      &quot;tag_group_id&quot;: &quot;tg_558833&quot;,
+        ///      &quot;tag_group_name&quot;: &quot;Region&quot;,
+        ///      &quot;tag_infos&quot;: [
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string contact_center_skills_categories_POST {
             get {
@@ -7644,6 +7687,160 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string contact_center_system_statuses_POST {
             get {
                 return ResourceManager.GetString("contact_center-system_statuses_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;tag_group_id&quot;: &quot;tg_lob_001&quot;,
+        ///  &quot;tag_group_name&quot;: &quot;Line of Business&quot;,
+        ///  &quot;used_in&quot;: [
+        ///    &quot;users&quot;,
+        ///    &quot;inbox&quot;,
+        ///    &quot;skills&quot;,
+        ///    &quot;queues&quot;,
+        ///    &quot;asset_library&quot;
+        ///  ],
+        ///  &quot;tag_count&quot;: 1,
+        ///  &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///  &quot;created_at&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;,
+        ///  &quot;modified_at&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;,
+        ///  &quot;created_by&quot;: &quot;IGTRVt3gQ2i&quot;
+        ///}.
+        /// </summary>
+        internal static string contact_center_tag_groups__tagGroupId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-tag_groups-{tagGroupId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;tag_groups&quot;: [
+        ///    {
+        ///      &quot;tag_group_id&quot;: &quot;tg_lob_001&quot;,
+        ///      &quot;tag_group_name&quot;: &quot;Line of Business&quot;,
+        ///      &quot;used_in&quot;: [
+        ///        &quot;users&quot;,
+        ///        &quot;inbox&quot;,
+        ///        &quot;skills&quot;,
+        ///        &quot;queues&quot;,
+        ///        &quot;asset_library&quot;
+        ///      ],
+        ///      &quot;tag_count&quot;: 1
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_tag_groups_GET {
+            get {
+                return ResourceManager.GetString("contact_center-tag_groups_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;tag_group_id&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///  &quot;tag_group_name&quot;: &quot;Line of Business&quot;,
+        ///  &quot;used_in&quot;: [
+        ///    &quot;users&quot;,
+        ///    &quot;inbox&quot;,
+        ///    &quot;skills&quot;,
+        ///    &quot;queues&quot;,
+        ///    &quot;asset_library&quot;
+        ///  ],
+        ///  &quot;tag_count&quot;: 1,
+        ///  &quot;modified_by&quot;: &quot;IGTRVt3gQ2i-WjoUIjeZxw&quot;,
+        ///  &quot;created_at&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;,
+        ///  &quot;modified_at&quot;: &quot;2022-02-15T09:27:15.0000000\u002B00:00&quot;,
+        ///  &quot;created_by&quot;: &quot;IGTRVt3gQ2i&quot;
+        ///}.
+        /// </summary>
+        internal static string contact_center_tag_groups_POST {
+            get {
+                return ResourceManager.GetString("contact_center-tag_groups_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;tag_id&quot;: &quot;tag_123&quot;,
+        ///  &quot;tag_name&quot;: &quot;Healthcare&quot;,
+        ///  &quot;tag_color&quot;: &quot;#E57373&quot;,
+        ///  &quot;used_in&quot;: [
+        ///    &quot;skills&quot;,
+        ///    &quot;queues&quot;
+        ///  ],
+        ///  &quot;used_count&quot;: 6,
+        ///  &quot;tag_groups&quot;: [
+        ///    {
+        ///      &quot;tag_group_id&quot;: &quot;tg_lob_001&quot;,
+        ///      &quot;tag_group_name&quot;: &quot;Line of Business&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_tags__tagId__GET {
+            get {
+                return ResourceManager.GetString("contact_center-tags-{tagId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42&quot;,
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;total_records&quot;: 10,
+        ///  &quot;tags&quot;: [
+        ///    {
+        ///      &quot;tag_id&quot;: &quot;tag_123&quot;,
+        ///      &quot;tag_name&quot;: &quot;Healthcare&quot;,
+        ///      &quot;tag_color&quot;: &quot;#E57373&quot;,
+        ///      &quot;used_in&quot;: [
+        ///        &quot;skills&quot;,
+        ///        &quot;queues&quot;
+        ///      ],
+        ///      &quot;used_count&quot;: 6,
+        ///      &quot;tag_groups&quot;: [
+        ///        {
+        ///          &quot;tag_group_id&quot;: &quot;tg_lob_001&quot;,
+        ///          &quot;tag_group_name&quot;: &quot;Line of Business&quot;
+        ///        }
+        ///      ]
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_tags_GET {
+            get {
+                return ResourceManager.GetString("contact_center-tags_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;tag_id&quot;: &quot;tag_123&quot;,
+        ///  &quot;tag_name&quot;: &quot;Healthcare&quot;,
+        ///  &quot;tag_color&quot;: &quot;#E57373&quot;,
+        ///  &quot;used_in&quot;: [
+        ///    &quot;skills&quot;,
+        ///    &quot;queues&quot;
+        ///  ],
+        ///  &quot;used_count&quot;: 6,
+        ///  &quot;tag_groups&quot;: [
+        ///    {
+        ///      &quot;tag_group_id&quot;: &quot;tg_lob_001&quot;,
+        ///      &quot;tag_group_name&quot;: &quot;Line of Business&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string contact_center_tags_POST {
+            get {
+                return ResourceManager.GetString("contact_center-tags_POST", resourceCulture);
             }
         }
         
@@ -7902,6 +8099,24 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string contact_center_users__userId__GET {
             get {
                 return ResourceManager.GetString("contact_center-users-{userId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;number_groups&quot;: [
+        ///    {
+        ///      &quot;number_group_id&quot;: &quot;jQgKCAbeQFCrtvpeMH8lGg&quot;,
+        ///      &quot;number_group_name&quot;: &quot;Group4&quot;
+        ///    }
+        ///  ],
+        ///  &quot;division_id&quot;: &quot;kV9aR7Jt2QmEXfBcUz4LpA&quot;,
+        ///  &quot;division_name&quot;: &quot;EMEA Operations&quot;
+        ///}.
+        /// </summary>
+        internal static string contact_center_users__userId__number_groups_GET {
+            get {
+                return ResourceManager.GetString("contact_center-users-{userId}-number_groups_GET", resourceCulture);
             }
         }
         
@@ -9576,6 +9791,61 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string docs_files__fileId__data_tables__tableId__columns_POST {
             get {
                 return ResourceManager.GetString("docs-files-{fileId}-data_tables-{tableId}-columns_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;forms&quot;: [
+        ///    {
+        ///      &quot;items&quot;: [
+        ///        {
+        ///          &quot;item_type&quot;: &quot;question&quot;,
+        ///          &quot;question&quot;: {
+        ///            &quot;name&quot;: &quot;Task Name&quot;,
+        ///            &quot;description&quot;: &quot;Please enter your full legal name.&quot;,
+        ///            &quot;show_desc&quot;: true,
+        ///            &quot;required&quot;: true,
+        ///            &quot;column&quot;: {
+        ///              &quot;column_type&quot;: &quot;text&quot;,
+        ///              &quot;column_options&quot;: {
+        ///                &quot;select_option&quot;: {
+        ///                  &quot;options&quot;: [
+        ///                    {
+        ///                      &quot;name&quot;: &quot;Blue&quot;,
+        ///        [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string docs_files__fileId__data_tables__tableId__forms_GET {
+            get {
+                return ResourceManager.GetString("docs-files-{fileId}-data_tables-{tableId}-forms_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;items&quot;: [
+        ///    {
+        ///      &quot;item_type&quot;: &quot;question&quot;,
+        ///      &quot;question&quot;: {
+        ///        &quot;name&quot;: &quot;Task Name&quot;,
+        ///        &quot;description&quot;: &quot;Please enter your full legal name.&quot;,
+        ///        &quot;show_desc&quot;: true,
+        ///        &quot;required&quot;: true,
+        ///        &quot;column&quot;: {
+        ///          &quot;column_type&quot;: &quot;text&quot;,
+        ///          &quot;column_options&quot;: {
+        ///            &quot;select_option&quot;: {
+        ///              &quot;options&quot;: [
+        ///                {
+        ///                  &quot;name&quot;: &quot;Blue&quot;,
+        ///                  &quot;id&quot;: &quot;A8xSJQDVf1dnVIVh&quot;
+        ///                }
+        ///              ]
+        ///         [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string docs_files__fileId__data_tables__tableId__forms_POST {
+            get {
+                return ResourceManager.GetString("docs-files-{fileId}-data_tables-{tableId}-forms_POST", resourceCulture);
             }
         }
         
@@ -12469,9 +12739,14 @@ namespace ZoomNet.UnitTests.Properties {
         ///   Looks up a localized string similar to {
         ///  &quot;summaries&quot;: [
         ///    {
-        ///      &quot;feature&quot;: &quot;ai_chat_panel&quot;,
-        ///      &quot;licensed_count&quot;: 60,
-        ///      &quot;active_count&quot;: 40
+        ///      &quot;feature&quot;: &quot;total_zoommate&quot;,
+        ///      &quot;licensed_count&quot;: 7399,
+        ///      &quot;active_count&quot;: 6942
+        ///    },
+        ///    {
+        ///      &quot;feature&quot;: &quot;total_workplace&quot;,
+        ///      &quot;licensed_count&quot;: 16107,
+        ///      &quot;active_count&quot;: 6860
         ///    }
         ///  ]
         ///}.
@@ -12486,9 +12761,14 @@ namespace ZoomNet.UnitTests.Properties {
         ///   Looks up a localized string similar to {
         ///  &quot;kpis&quot;: [
         ///    {
-        ///      &quot;kpi&quot;: &quot;meeting_summary_hosts&quot;,
+        ///      &quot;kpi&quot;: &quot;actions_zoommate_and_workplace&quot;,
         ///      &quot;value&quot;: 582,
-        ///      &quot;pop_value&quot;: -55.1
+        ///      &quot;pop_value&quot;: 20.3
+        ///    },
+        ///    {
+        ///      &quot;kpi&quot;: &quot;users_zoommate_and_workplace&quot;,
+        ///      &quot;value&quot;: 100,
+        ///      &quot;pop_value&quot;: 10.2
         ///    }
         ///  ]
         ///}.
@@ -14430,14 +14710,14 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;caller_name&quot;: &quot;John Doe&quot;,
         ///  &quot;caller_number&quot;: &quot;12345678&quot;,
         ///  &quot;caller_number_type&quot;: 1,
+        ///  &quot;caller_number_spam_type&quot;: &quot;spam&quot;,
         ///  &quot;date_time&quot;: &quot;2019-05-19T20:00:00Z&quot;,
         ///  &quot;download_url&quot;: &quot;exampleurl.io&quot;,
         ///  &quot;duration&quot;: 18,
         ///  &quot;id&quot;: &quot;d43520fc6b7e4b26bbeef58a8a80f235&quot;,
         ///  &quot;status&quot;: &quot;read&quot;,
         ///  &quot;soft_deleted&quot;: true,
-        ///  &quot;soft_deleted_type&quot;: &quot;Manual&quot;,
-        ///  &quot;delet [rest of string was truncated]&quot;;.
+        ///  &quot;s [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_call_element__callElementId__voice_mail_GET {
             get {
@@ -15435,7 +15715,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;country&quot;: &quot;US&quot;,
         ///  &quot;id&quot;: &quot;Qza2T_KATwCeUfTkzGsOmQ&quot;,
         ///  &quot;is_default&quot;: true,
-        ///  &quot;level&quot;: 1,
+        ///  &quot;level&quot;: 0,
         ///  &quot;owner&quot;: {
         ///    &quot;extension_number&quot;: 101002,
         ///    &quot;id&quot;: &quot;y9th648XRfSL9S61p1TsBw&quot;,
@@ -15497,7 +15777,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;country&quot;: &quot;US&quot;,
         ///      &quot;id&quot;: &quot;Qza2T_KATwCeUfTkzGsOmQ&quot;,
         ///      &quot;is_default&quot;: true,
-        ///      &quot;level&quot;: 1,
+        ///      &quot;level&quot;: 0,
         ///      &quot;owner&quot;: {
         ///        &quot;extension_number&quot;: 101002,
         ///        &quot;id&quot;: &quot;y9th648XRfSL9S61p1TsBw&quot;,
@@ -15523,12 +15803,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;country&quot;: &quot;US&quot;,
         ///  &quot;id&quot;: &quot;Qza2T_KATwCeUfTkzGsOmQ&quot;,
         ///  &quot;is_default&quot;: true,
-        ///  &quot;level&quot;: 1,
-        ///  &quot;owner&quot;: {
-        ///    &quot;extension_number&quot;: &quot;101002&quot;,
-        ///    &quot;id&quot;: &quot;y9th648XRfSL9S61p1TsBw&quot;,
-        ///    &quot;name&quot;: &quot;ZOOM_API Test&quot;
-        ///  },
+        ///  &quot;level&quot;: 0,
         ///  &quot;site&quot;: {
         ///    &quot;id&quot;: &quot;SQv52YtkRLC2dwrDdYtGsA&quot;,
         ///    &quot;name&quot;: &quot;Main site&quot;
@@ -15698,8 +15973,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;direction&quot;: &quot;outbound&quot;,
         ///      &quot;extension_id&quot;: &quot;VLhIp1jHR_Sgu96DLJpjag&quot;,
         ///      &quot;extension_type&quot;: &quot;callQueue&quot;,
-        ///      &quot;sender_extension_id&quot;: &quot;VLhIp1jHR_Sgu96DLJpjag&quot;,
-        ///      &quot;sende [rest of string was truncated]&quot;;.
+        ///      &quot;sender_id&quot;: &quot;VLhIp1jHR_Sgu96DLJpjag&quot;,
+        ///      &quot;sender_extensio [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_extension__extensionId__fax_logs_GET {
             get {
@@ -15874,12 +16149,12 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;direction&quot;: &quot;outbound&quot;,
         ///    &quot;extension_id&quot;: &quot;VLhIp1jHR_Sgu96DLJpjag&quot;,
         ///    &quot;extension_type&quot;: &quot;callQueue&quot;,
+        ///    &quot;sender_id&quot;: &quot;VLhIp1jHR_Sgu96DLJpjag&quot;,
         ///    &quot;sender_extension_id&quot;: &quot;VLhIp1jHR_Sgu96DLJpjag&quot;,
         ///    &quot;sender_extension_type&quot;: &quot;user&quot;,
         ///    &quot;sender_extension_number&quot;: &quot;123&quot;,
         ///    &quot;sender_name&quot;: &quot;Tester 1&quot;,
-        ///    &quot;sender_number&quot;: &quot;\u002B12092080933&quot;,
-        ///    &quot;sender_type [rest of string was truncated]&quot;;.
+        ///    &quot;sender_num [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_fax_logs__faxLogId__GET {
             get {
@@ -15902,8 +16177,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;direction&quot;: &quot;outbound&quot;,
         ///      &quot;extension_id&quot;: &quot;VLhIp1jHR_Sgu96DLJpjag&quot;,
         ///      &quot;extension_type&quot;: &quot;callQueue&quot;,
-        ///      &quot;sender_extension_id&quot;: &quot;VLhIp1jHR_Sgu96DLJpjag&quot;,
-        ///      &quot;sende [rest of string was truncated]&quot;;.
+        ///      &quot;sender_id&quot;: &quot;VLhIp1jHR_Sgu96DLJpjag&quot;,
+        ///      &quot;sender_extensio [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_fax_logs_GET {
             get {
@@ -18985,13 +19260,12 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;callee_name&quot;: &quot;Jane Doe&quot;,
         ///  &quot;callee_number&quot;: &quot;34567889&quot;,
         ///  &quot;callee_number_type&quot;: 2,
+        ///  &quot;caller_number_spam_type&quot;: &quot;spam&quot;,
         ///  &quot;caller_name&quot;: &quot;John Doe&quot;,
         ///  &quot;caller_number&quot;: &quot;12345678&quot;,
         ///  &quot;caller_number_type&quot;: 1,
         ///  &quot;date_time&quot;: &quot;2021-05-19T20:00:00Z&quot;,
-        ///  &quot;download_url&quot;: &quot;exampleurl.io&quot;,
-        ///  &quot;duration&quot;: 18,
-        ///  &quot;i [rest of string was truncated]&quot;;.
+        ///  &quot;download_url&quot;: &quot;ex [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_voice_mails__voicemailId__GET {
             get {
@@ -19320,7 +19594,13 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;interaction_id&quot;: &quot;QMp3e6_WShCVuifNbrQd4w&quot;
+        ///  &quot;interaction_id&quot;: &quot;QMp3e6_WShCVuifNbrQd4w&quot;,
+        ///  &quot;channel_type&quot;: &quot;voice&quot;,
+        ///  &quot;channel_source&quot;: &quot;sms&quot;,
+        ///  &quot;message_count&quot;: 2,
+        ///  &quot;email_count&quot;: 2,
+        ///  &quot;duration_sec&quot;: 360,
+        ///  &quot;source&quot;: &quot;QM_3RD_URL&quot;
         ///}.
         /// </summary>
         internal static string qm_interactions_POST {
@@ -21050,6 +21330,31 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string scheduler_events_GET {
             get {
                 return ResourceManager.GetString("scheduler-events_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;aec369a4fce6ae655749b00fc7260bfd&quot;,
+        ///  &quot;items&quot;: [
+        ///    {
+        ///      &quot;schedule_id&quot;: &quot;ygfx661g9x8dwcgeusdqhsplc0&quot;,
+        ///      &quot;availability_override&quot;: false,
+        ///      &quot;availability_rules&quot;: [
+        ///        {
+        ///          &quot;availability_id&quot;: &quot;x3h1u4id4liffdyszsp8kpxl80&quot;,
+        ///          &quot;email&quot;: &quot;easonfsxsysks3lgchitiw@scheduler.zoom.us&quot;,
+        ///          &quot;segments&quot;: [
+        ///            {
+        ///              &quot;start&quot;: &quot;2023-12-21T06:00:00Z&quot;,
+        ///              &quot;end&quot;: &quot;2023-12-21T06:00:00Z&quot;
+        ///            }
+        ///          ],
+        ///          &quot; [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string scheduler_managed_schedules_GET {
+            get {
+                return ResourceManager.GetString("scheduler-managed_schedules_GET", resourceCulture);
             }
         }
         
@@ -23567,7 +23872,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;camera&quot;: &quot;FaceTime HD Camera&quot;,
         ///      &quot;data_center&quot;: &quot;SC&quot;,
         ///      &quot;connection_type&quot;: &quot;P2P&quot;,
-        ///      &quot;join_time&quot;: &quot;2019-08-20T19:09:01.000 [rest of string was truncated]&quot;;.
+        ///      &quot;video_connection_type&quot;: &quot;UDP&quot;,
+        ///     [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string videosdk_sessions__sessionId__users_GET {
             get {
@@ -23937,6 +24243,74 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string virtual_agent_report_transcripts_GET {
             get {
                 return ResourceManager.GetString("virtual_agent-report-transcripts_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 50,
+        ///  &quot;from&quot;: &quot;2026-08-01T00:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;to&quot;: &quot;2026-08-30T23:59:59.0000000\u002B00:00&quot;,
+        ///  &quot;timezone&quot;: &quot;America/Indianapolis&quot;,
+        ///  &quot;next_page_token&quot;: &quot;esXqy3zTXWj1OPxpG3V0DW2WkkLP9jVgkM3&quot;,
+        ///  &quot;division_id&quot;: &quot;RjOj8nQKTIq1UmiUOvEK0A&quot;,
+        ///  &quot;usage_aggregate&quot;: [
+        ///    {
+        ///      &quot;channel&quot;: &quot;voice&quot;,
+        ///      &quot;subscription_id&quot;: &quot;QB-SUBREF-20010725167&quot;,
+        ///      &quot;agent_id&quot;: &quot;Gx09fwlOQT6oz8gRZwkLVg&quot;,
+        ///      &quot;agent_name&quot;: &quot;IT Helpdesk Voice Agent&quot;,
+        ///      &quot;agent_in [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string virtual_agent_report_usage_aggregate_GET {
+            get {
+                return ResourceManager.GetString("virtual_agent-report-usage-aggregate_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_size&quot;: 10,
+        ///  &quot;total_records&quot;: 50,
+        ///  &quot;from&quot;: &quot;2026-08-01T00:00:00.0000000\u002B00:00&quot;,
+        ///  &quot;to&quot;: &quot;2026-08-30T23:59:59.0000000\u002B00:00&quot;,
+        ///  &quot;timezone&quot;: &quot;America/Indianapolis&quot;,
+        ///  &quot;next_page_token&quot;: &quot;esXqy3zTXWj1OPxpG3V0DW2WkkLP9jVgkM3&quot;,
+        ///  &quot;division_id&quot;: &quot;RjOj8nQKTIq1UmiUOvEK0A&quot;,
+        ///  &quot;usage_details&quot;: [
+        ///    {
+        ///      &quot;channel&quot;: &quot;voice&quot;,
+        ///      &quot;subscription_id&quot;: &quot;QB-SUBREF-20010725167&quot;,
+        ///      &quot;agent_id&quot;: &quot;Gx09fwlOQT6oz8gRZwkLVg&quot;,
+        ///      &quot;agent_name&quot;: &quot;IT Helpdesk Voice Agent&quot;,
+        ///      &quot;agent_inst [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string virtual_agent_report_usage_details_GET {
+            get {
+                return ResourceManager.GetString("virtual_agent-report-usage-details_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;page_size&quot;: 30,
+        ///  &quot;next_page_token&quot;: &quot;At6eWnFZ1FB3arCXnRxqHLXKhbDW18yz2i2&quot;,
+        ///  &quot;total_records&quot;: 20,
+        ///  &quot;deliveries&quot;: [
+        ///    {
+        ///      &quot;delivery_id&quot;: &quot;66f0a1c2e4b0a1c2e4b0a1c2&quot;,
+        ///      &quot;created_time&quot;: &quot;2026-09-01T08:30:00Z&quot;,
+        ///      &quot;delivery_space_id&quot;: &quot;wsp_9f2c4b6a8d1e&quot;,
+        ///      &quot;delivery_space_name&quot;: &quot;Front Desk Locker&quot;,
+        ///      &quot;location_path&quot;: &quot;United States/California/San Jose/Building A/Floor 2&quot;,
+        ///      &quot;recipient_user_id&quot;: &quot;abc123XyZ&quot;,
+        ///      &quot;recipient_first_name&quot;: &quot;Jane&quot;,
+        ///      &quot;recipient_last_ [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string visitor_deliveries_GET {
+            get {
+                return ResourceManager.GetString("visitor-deliveries_GET", resourceCulture);
             }
         }
         
@@ -25271,10 +25645,14 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;display_name&quot;: &quot;Alex&quot;,
         ///      &quot;email&quot;: &quot;alex@aol.com&quot;,
         ///      &quot;created_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
-        ///      &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;
-        ///    }
-        ///  ]
-        ///}.
+        ///      &quot;updated_at&quot;: &quot;2024-01-15T10:30:00Z&quot;,
+        ///      &quot;is_staffable&quot;: false,
+        ///      &quot;is_admin&quot;: true,
+        ///      &quot;is_supervisor&quot;: false,
+        ///      &quot;is_view_only&quot;: false,
+        ///      &quot;scheduling_groups&quot;: [
+        ///        {
+        ///          &quot;scheduling_group_id&quot;: &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string workforce_management_users_GET {
             get {

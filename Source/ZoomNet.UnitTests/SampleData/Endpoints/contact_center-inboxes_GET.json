@@ -10,7 +10,20 @@
       "access_user_count": 5,
       "access_queue_count": 5,
       "last_modified_time": "2022-02-15T09:27:15.0000000\u002B00:00",
-      "modified_by": "IGTRVt3gQ2i-WjoUIjeZxw"
+      "modified_by": "IGTRVt3gQ2i-WjoUIjeZxw",
+      "tags": [
+        {
+          "tag_group_id": "tg_558833",
+          "tag_group_name": "Region",
+          "tag_infos": [
+            {
+              "tag_id": "tag_11111",
+              "tag_name": "North America",
+              "tag_color": "#336699"
+            }
+          ]
+        }
+      ]
     }
   ],
   "division_name": "EMEA Operations",

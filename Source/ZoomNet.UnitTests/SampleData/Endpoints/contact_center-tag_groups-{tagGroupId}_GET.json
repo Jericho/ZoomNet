@@ -1,0 +1,16 @@
+{
+  "tag_group_id": "tg_lob_001",
+  "tag_group_name": "Line of Business",
+  "used_in": [
+    "users",
+    "inbox",
+    "skills",
+    "queues",
+    "asset_library"
+  ],
+  "tag_count": 1,
+  "modified_by": "IGTRVt3gQ2i-WjoUIjeZxw",
+  "created_at": "2022-02-15T09:27:15.0000000\u002B00:00",
+  "modified_at": "2022-02-15T09:27:15.0000000\u002B00:00",
+  "created_by": "IGTRVt3gQ2i"
+}

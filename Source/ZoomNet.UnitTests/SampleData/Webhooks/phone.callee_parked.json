@@ -18,7 +18,8 @@
         "extension_number": 810005,
         "phone_number": "810005",
         "device_id": "f7aLLSmqRpiWP0U3U6CaNA",
-        "connection_type": "voip"
+        "connection_type": "voip",
+        "hardware_device_id": "06__wmlGRIGUnj-gOGT73A"
       },
       "park_code": "*869",
       "park_failure_reason": "Park successfully.",

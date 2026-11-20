@@ -1,20 +1,32 @@
 {
   "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
   "page_size": 30,
-  "total_records": 1,
+  "total_records": 10,
   "queues": [
     {
-      "queue_id": "zeYjXoDOS_eV1QmTpj63PQ",
-      "cc_queue_id": "xqJE_cgERLyAJHYYL5LLeg",
-      "queue_name": "queue_661c6e4b-89fc-4b0d-9978-c7394725462",
+      "queue_id": "Ql3qxUWXSHes4PmcOmzyOg",
+      "cc_queue_id": "a4lCNeq2SzKbgkcDVbjCZQ",
+      "queue_name": "Voice - Customer Support",
       "agents_count": 1,
       "supervisors_count": 1,
-      "channel_types": [
-        "voice"
-      ],
       "channel": "voice",
       "modified_by": "IGTRVt3gQ2i-WjoUIjeZxw",
-      "last_modified_time": "2022-02-15T09:27:15.0000000\u002B00:00"
+      "last_modified_time": "2022-02-15T09:27:15.0000000\u002B00:00",
+      "tags": [
+        {
+          "tag_group_id": "tg_558833",
+          "tag_group_name": "Region",
+          "tag_infos": [
+            {
+              "tag_id": "tag_11111",
+              "tag_name": "North America",
+              "tag_color": "#336699"
+            }
+          ]
+        }
+      ]
     }
-  ]
+  ],
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations"
 }

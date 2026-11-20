@@ -5,5 +5,20 @@
   "skill_type": "text",
   "max_proficiency_level": 25,
   "modified_by": "IGTRVt3gQ2i-WjoUIjeZxw",
-  "last_modified_time": "2022-02-15T09:27:15.0000000\u002B00:00"
+  "last_modified_time": "2022-02-15T09:27:15.0000000\u002B00:00",
+  "division_id": "kV9aR7Jt2QmEXfBcUz4LpA",
+  "division_name": "EMEA Operations",
+  "tags": [
+    {
+      "tag_group_id": "tg_558833",
+      "tag_group_name": "Region",
+      "tag_infos": [
+        {
+          "tag_id": "tag_11111",
+          "tag_name": "North America",
+          "tag_color": "#336699"
+        }
+      ]
+    }
+  ]
 }

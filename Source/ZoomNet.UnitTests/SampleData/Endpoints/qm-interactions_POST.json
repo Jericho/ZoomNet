@@ -1,3 +1,9 @@
 {
-  "interaction_id": "QMp3e6_WShCVuifNbrQd4w"
+  "interaction_id": "QMp3e6_WShCVuifNbrQd4w",
+  "channel_type": "voice",
+  "channel_source": "sms",
+  "message_count": 2,
+  "email_count": 2,
+  "duration_sec": 360,
+  "source": "QM_3RD_URL"
 }

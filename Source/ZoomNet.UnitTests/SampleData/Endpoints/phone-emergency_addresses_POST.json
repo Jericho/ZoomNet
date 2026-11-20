@@ -5,12 +5,7 @@
   "country": "US",
   "id": "Qza2T_KATwCeUfTkzGsOmQ",
   "is_default": true,
-  "level": 1,
-  "owner": {
-    "extension_number": "101002",
-    "id": "y9th648XRfSL9S61p1TsBw",
-    "name": "ZOOM_API Test"
-  },
+  "level": 0,
   "site": {
     "id": "SQv52YtkRLC2dwrDdYtGsA",
     "name": "Main site"

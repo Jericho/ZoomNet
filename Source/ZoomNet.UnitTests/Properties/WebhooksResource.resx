@@ -1966,4 +1966,16 @@
   <data name="video_management_channel_owner_changed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\SampleData\Webhooks\video_management.channel_owner_changed.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="phone_call_rtms_interrupted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.call_rtms_interrupted.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_call_rtms_started" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.call_rtms_started.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="phone_call_rtms_stopped" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\phone.call_rtms_stopped.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center_notification_sent" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Webhooks\contact_center.notification_sent.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

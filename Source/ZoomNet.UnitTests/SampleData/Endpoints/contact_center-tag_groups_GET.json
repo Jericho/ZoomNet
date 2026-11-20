@@ -1,0 +1,19 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "tag_groups": [
+    {
+      "tag_group_id": "tg_lob_001",
+      "tag_group_name": "Line of Business",
+      "used_in": [
+        "users",
+        "inbox",
+        "skills",
+        "queues",
+        "asset_library"
+      ],
+      "tag_count": 1
+    }
+  ]
+}

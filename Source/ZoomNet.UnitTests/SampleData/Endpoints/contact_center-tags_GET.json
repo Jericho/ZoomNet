@@ -1,0 +1,23 @@
+{
+  "next_page_token": "R4aF9Oj0fVM2hhezJTEmSKaBSkfesDwGy42",
+  "page_size": 30,
+  "total_records": 10,
+  "tags": [
+    {
+      "tag_id": "tag_123",
+      "tag_name": "Healthcare",
+      "tag_color": "#E57373",
+      "used_in": [
+        "skills",
+        "queues"
+      ],
+      "used_count": 6,
+      "tag_groups": [
+        {
+          "tag_group_id": "tg_lob_001",
+          "tag_group_name": "Line of Business"
+        }
+      ]
+    }
+  ]
+}

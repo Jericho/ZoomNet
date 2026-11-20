@@ -694,7 +694,8 @@
       "whether_include_full_text_in_email": "include_full_text_in_email",
       "restrict_share_to_outside_of_organization": true,
       "restrict_summary_share": "external_users",
-      "who_will_receive_summary": "alt_host"
+      "who_will_receive_summary": "alt_host",
+      "support_participants_receive_summary": true
     },
     "meeting_summary_template": {
       "enable": true,
@@ -834,43 +835,6 @@
       "users_who_can_admit_participants_from_waiting_room": 0,
       "whitelisted_domains_for_waiting_room": "example.com"
     },
-    "meeting_waiting_room_branding": {
-      "logo": {
-        "file_id": "8oGZC9WeQzC4wLKz5Yy8Bw",
-        "file_name": "logo.png",
-        "description": "Thank you for joining. The host will start the meeting shortly."
-      },
-      "image": {
-        "file_id": "3nR7pQ1sT9uVxYzAaBbCcD",
-        "file_name": "background.png"
-      },
-      "video": {
-        "file_id": "7hJ2kL4mN6oP8qR0sT2uVw",
-        "file_name": "welcome.mp4"
-      },
-      "title": "Please wait, the host will let you in soon.",
-      "participant_will_see": "image",
-      "default_image": "customize"
-    },
-    "webinar_waiting_room_branding": {
-      "logo": {
-        "file_id": "8oGZC9WeQzC4wLKz5Yy8Bw",
-        "file_name": "logo.png",
-        "description": "Thank you for joining. The host will start the meeting shortly."
-      },
-      "image": {
-        "file_id": "3nR7pQ1sT9uVxYzAaBbCcD",
-        "file_name": "background.png"
-      },
-      "video": {
-        "file_id": "7hJ2kL4mN6oP8qR0sT2uVw",
-        "file_name": "welcome.mp4"
-      },
-      "title": "Please wait, the host will let you in soon.",
-      "participant_will_see": "image",
-      "default_image": "customize",
-      "default_video": "customizeVideos"
-    },
     "webinar_password": true,
     "waiting_room_options": {
       "enable": true,
@@ -885,7 +849,8 @@
         "move_participants_to_waiting_room_when_host_dropped": true,
         "allow_participants_to_reply_to_host": true
       }
-    }
+    },
+    "enforce_fips_mode": false
   },
   "in_session": {
     "custom_data_center_regions": false,

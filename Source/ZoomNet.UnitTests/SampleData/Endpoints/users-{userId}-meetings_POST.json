@@ -188,6 +188,7 @@
     ],
     "auto_start_meeting_summary": false,
     "who_will_receive_summary": 1,
+    "support_participants_receive_summary": false,
     "auto_start_ai_companion_questions": false,
     "who_can_ask_questions": 1,
     "summary_template_id": "1e1356ad",

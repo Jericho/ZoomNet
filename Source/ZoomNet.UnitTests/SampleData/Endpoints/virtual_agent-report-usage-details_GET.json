@@ -1,0 +1,23 @@
+{
+  "page_size": 10,
+  "total_records": 50,
+  "from": "2026-08-01T00:00:00.0000000\u002B00:00",
+  "to": "2026-08-30T23:59:59.0000000\u002B00:00",
+  "timezone": "America/Indianapolis",
+  "next_page_token": "esXqy3zTXWj1OPxpG3V0DW2WkkLP9jVgkM3",
+  "division_id": "RjOj8nQKTIq1UmiUOvEK0A",
+  "usage_details": [
+    {
+      "channel": "voice",
+      "subscription_id": "QB-SUBREF-20010725167",
+      "agent_id": "Gx09fwlOQT6oz8gRZwkLVg",
+      "agent_name": "IT Helpdesk Voice Agent",
+      "agent_instance_id": "Z46VTKvdTMuk2RFfruj8oQ",
+      "agent_instance_name": "San Jose Store",
+      "started_at": "2026-09-01T20:08:46.0000000\u002B00:00",
+      "ended_at": "2026-09-01T20:10:16.0000000\u002B00:00",
+      "minutes": 3.5,
+      "engagement_id": "cR8mF2qVTr6Lx9nB4sWpAA"
+    }
+  ]
+}

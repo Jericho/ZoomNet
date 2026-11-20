@@ -32,6 +32,14 @@
   "division_ids": [
     "xxxxxxxxxx"
   ],
+  "divisions": [
+    {
+      "division_id": "example-TaOOmobxuqLVnw",
+      "division_name": "my division",
+      "division_description": "this is division",
+      "is_main_division": true
+    }
+  ],
   "im_group_ids": [
     "t-_-d56CSWG-7BF15LLrOw"
   ],

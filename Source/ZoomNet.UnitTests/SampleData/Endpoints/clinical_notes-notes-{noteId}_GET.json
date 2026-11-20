@@ -1,6 +1,8 @@
 {
   "meeting_id": "I3pHE/RnRbmm\u002Bex2g07sxw==",
   "meeting_number": 97763643885,
+  "business_type": "meeting",
+  "visit_id": "aDYlohsHRtCd4ii1uC2\u002BhA==",
   "note_id": "ArfRXokSTiGTCSYFVtxNa",
   "note_owner_user_id": "dqV7XEpnS5G3rGsvqylmjQ",
   "note_start_time": "2025-05-15T03:01:08.608Z",
@@ -12,6 +14,16 @@
   "note_content": "Chief Complaint\nThe patient presents with severe stomach pain near the lower abdomen since morning.\\nHistory of Present Illness\\n- The patient is an adult presenting with severe stomach pain.\\n- Pain is located near the lower abdomen, starting this morning.\\n- Attended a dinner party at a restaurant last night.\\n- Denies additional gastrointestinal symptoms.\\nReview of Systems\\n- Gastrointestinal: Reports severe lower abdominal pain. Denies any other gastrointestinal symptoms.\\nSocial History\\n- Recent dining at a restaurant with friends.\\nAssessment and Plan\\n1. Acute Abdominal Pain\\n- Suspected relation to recent meal at a restaurant.\\n- Medication prescribed for pain management.\\n- Advised to avoid eating from outside.\\nPatient Recommendations\\n- Take the prescribed medicines regularly.\\n- Avoid eating from outside.\\n- Return to the clinic if the pain worsens or new symptoms develop.",
   "is_note_completed": false,
   "note_completed_time": "2025-05-15T03:26:48.372Z",
+  "transcript": {
+    "items": [
+      {
+        "text": "How have you been feeling since the last visit?",
+        "start_time": "00:01:23.450",
+        "end_time": "00:01:27.900",
+        "speaker_name": "Dr. Smith"
+      }
+    ]
+  },
   "ehr_context": {
     "appointment_id": "6600001",
     "patient_id": "Patient/75909597",

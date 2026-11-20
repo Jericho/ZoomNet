@@ -1,9 +1,14 @@
 {
   "summaries": [
     {
-      "feature": "ai_chat_panel",
-      "licensed_count": 60,
-      "active_count": 40
+      "feature": "total_zoommate",
+      "licensed_count": 7399,
+      "active_count": 6942
+    },
+    {
+      "feature": "total_workplace",
+      "licensed_count": 16107,
+      "active_count": 6860
     }
   ]
 }

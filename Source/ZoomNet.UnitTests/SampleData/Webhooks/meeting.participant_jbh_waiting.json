@@ -12,6 +12,12 @@
       "start_time": "2021-07-13T21:44:51Z",
       "duration": 60,
       "timezone": "America/Los_Angeles",
+      "custom_keys": [
+        {
+          "key": "appointment_id",
+          "value": "APT-12345"
+        }
+      ],
       "participant": {
         "id": "iFxeBPYun6SAiWUzBcEkX",
         "user_name": "JillChill",

@@ -2658,6 +2658,30 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;contact_center.notification_sent&quot;,
+        ///  &quot;event_ts&quot;: 1792387200000,
+        ///  &quot;payload&quot;: {
+        ///    &quot;account_id&quot;: &quot;AbCdEfGhIjKlMnOpQrStUvWxYz&quot;,
+        ///    &quot;object&quot;: {
+        ///      &quot;alert_name&quot;: &quot;test-notification-1012&quot;,
+        ///      &quot;module&quot;: &quot;CX Analytics - Dashboard&quot;,
+        ///      &quot;measure&quot;: &quot;Count&quot;,
+        ///      &quot;trigger&quot;: &quot;test_queue_name&quot;,
+        ///      &quot;value&quot;: &quot;Count: 24%&quot;,
+        ///      &quot;time&quot;: &quot;2026-10-11T16:00:08&quot;,
+        ///      &quot;timezone&quot;: &quot;US/Samoa&quot;,
+        ///      &quot;date_time_ms&quot;: &quot;2026-10-12T03:00:08.000Z&quot;,
+        ///      &quot;division_id&quot;: &quot;DIV1234567890&quot;,
+        ///     [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string contact_center_notification_sent {
+            get {
+                return ResourceManager.GetString("contact_center_notification_sent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;event&quot;: &quot;contact_center.outbound_campaign_dialer_status&quot;,
         ///  &quot;event_ts&quot;: 1627906944384,
         ///  &quot;payload&quot;: {
@@ -4771,17 +4795,18 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;object&quot;: {
         ///      &quot;id&quot;: 1234567890,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;value&quot;: &quot;APT-12345&quot;
+        ///        }
+        ///      ],
         ///      &quot;test_result&quot;: {
         ///        &quot;user_id&quot;: &quot;1234567890&quot;,
         ///        &quot;user_name&quot;: &quot;JillChill&quot;,
         ///        &quot;camera_status&quot;: 1,
         ///        &quot;speaker_status&quot;: 1,
-        ///        &quot;microphone_status&quot;: 1,
-        ///        &quot;os&quot;: &quot;ios&quot;
-        ///      }
-        ///    }
-        ///  }
-        ///}.
+        ///        &quot;microphone_status&quot;: 1,        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_device_tested {
             get {
@@ -4805,10 +4830,9 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
-        ///      &quot;end_time&quot;: &quot;2021-07-13T23:00:51Z&quot;
-        ///    }
-        ///  }
-        ///}.
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;, [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_ended {
             get {
@@ -5123,9 +5147,10 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///      &quot;participant&quot;: {
-        ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
-        ///        &quot;user_name&quot;: &quot;JillChill [rest of string was truncated]&quot;;.
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;value&quot;: &quot;APT- [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_jbh_joined {
             get {
@@ -5148,9 +5173,10 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///      &quot;participant&quot;: {
-        ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
-        ///        &quot;user_name&quot;: &quot;JillChil [rest of string was truncated]&quot;;.
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;value&quot;: &quot;APT [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_jbh_waiting {
             get {
@@ -5173,9 +5199,10 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;duration&quot;: 60,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///      &quot;participant&quot;: {
-        ///        &quot;id&quot;: &quot;iFxeBPYun6SAiWUzBcEkX&quot;,
-        ///        &quot;user_name&quot;: &quot;JillC [rest of string was truncated]&quot;;.
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;value&quot;: &quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_jbh_waiting_left {
             get {
@@ -5345,13 +5372,17 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;id&quot;: 713592696,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;value&quot;: &quot;APT-12345&quot;
+        ///        }
+        ///      ],
         ///      &quot;participant&quot;: {
         ///        &quot;invitee_name&quot;: &quot;Jill Chill&quot;,
         ///        &quot;phone_number&quot;: 1800000000
         ///      }
-        ///    }
-        ///  }
-        ///}.
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_phone_callout_accepted {
             get {
@@ -5369,14 +5400,17 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;id&quot;: 713592696,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;value&quot;: &quot;APT-12345&quot;
+        ///        }
+        ///      ],
         ///      &quot;participant&quot;: {
         ///        &quot;invitee_name&quot;: &quot;Jill Chill&quot;,
         ///        &quot;phone_number&quot;: 1800000000
         ///      },
-        ///      &quot;reason_type&quot;: 0
-        ///    }
-        ///  }
-        ///}.
+        ///  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_phone_callout_failed {
             get {
@@ -5394,13 +5428,17 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;id&quot;: 713592696,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;value&quot;: &quot;APT-12345&quot;
+        ///        }
+        ///      ],
         ///      &quot;participant&quot;: {
         ///        &quot;invitee_name&quot;: &quot;Jill Chill&quot;,
         ///        &quot;phone_number&quot;: 1800000000
         ///      }
-        ///    }
-        ///  }
-        ///}.
+        ///   [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_phone_callout_missed {
             get {
@@ -5418,13 +5456,17 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;id&quot;: 713592696,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;value&quot;: &quot;APT-12345&quot;
+        ///        }
+        ///      ],
         ///      &quot;participant&quot;: {
         ///        &quot;invitee_name&quot;: &quot;Jill Chill&quot;,
         ///        &quot;phone_number&quot;: 1800000000
         ///      }
-        ///    }
-        ///  }
-        ///}.
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_phone_callout_rejected {
             get {
@@ -5442,13 +5484,17 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;id&quot;: 713592696,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;value&quot;: &quot;APT-12345&quot;
+        ///        }
+        ///      ],
         ///      &quot;participant&quot;: {
         ///        &quot;invitee_name&quot;: &quot;Jill Chill&quot;,
         ///        &quot;phone_number&quot;: 1800000000
         ///      }
-        ///    }
-        ///  }
-        ///}.
+        ///  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_phone_callout_ringing {
             get {
@@ -5568,15 +5614,15 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;id&quot;: 713592696,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;value&quot;: &quot;APT-12345&quot;
+        ///        }
+        ///      ],
         ///      &quot;message_id&quot;: &quot;atsXxhSEQWit9t+U02HXNQ==&quot;,
         ///      &quot;inviter_name&quot;: &quot;Jill Chill&quot;,
-        ///      &quot;participant&quot;: {
-        ///        &quot;call_type&quot;: &quot;h323&quot;,
-        ///        &quot;device_ip&quot;: &quot;10.100.111.237&quot;
-        ///      }
-        ///    }
-        ///  }
-        ///}.
+        ///      &quot;participa [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_room_system_callout_accepted {
             get {
@@ -5594,16 +5640,15 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;id&quot;: 713592696,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;value&quot;: &quot;APT-12345&quot;
+        ///        }
+        ///      ],
         ///      &quot;message_id&quot;: &quot;atsXxhSEQWit9t+U02HXNQ==&quot;,
         ///      &quot;inviter_name&quot;: &quot;Jill Chill&quot;,
-        ///      &quot;reason_type&quot;: 1,
-        ///      &quot;participant&quot;: {
-        ///        &quot;call_type&quot;: &quot;h323&quot;,
-        ///        &quot;device_ip&quot;: &quot;10.100.111.237&quot;
-        ///      }
-        ///    }
-        ///  }
-        ///}.
+        ///      &quot;reason_type [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_room_system_callout_failed {
             get {
@@ -5621,15 +5666,15 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;id&quot;: 713592696,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;value&quot;: &quot;APT-12345&quot;
+        ///        }
+        ///      ],
         ///      &quot;message_id&quot;: &quot;atsXxhSEQWit9t+U02HXNQ==&quot;,
         ///      &quot;inviter_name&quot;: &quot;Jill Chill&quot;,
-        ///      &quot;participant&quot;: {
-        ///        &quot;call_type&quot;: &quot;h323&quot;,
-        ///        &quot;device_ip&quot;: &quot;10.100.111.237&quot;
-        ///      }
-        ///    }
-        ///  }
-        ///}.
+        ///      &quot;participant [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_room_system_callout_missed {
             get {
@@ -5647,15 +5692,15 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;id&quot;: 713592696,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;value&quot;: &quot;APT-12345&quot;
+        ///        }
+        ///      ],
         ///      &quot;message_id&quot;: &quot;atsXxhSEQWit9t+U02HXNQ==&quot;,
         ///      &quot;inviter_name&quot;: &quot;Jill Chill&quot;,
-        ///      &quot;participant&quot;: {
-        ///        &quot;call_type&quot;: &quot;h323&quot;,
-        ///        &quot;device_ip&quot;: &quot;10.100.111.237&quot;
-        ///      }
-        ///    }
-        ///  }
-        ///}.
+        ///      &quot;participa [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_room_system_callout_rejected {
             get {
@@ -5673,15 +5718,15 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;id&quot;: 713592696,
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;host_id&quot;: &quot;ICuPoX4ERtikRcKqkVxunQ&quot;,
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;value&quot;: &quot;APT-12345&quot;
+        ///        }
+        ///      ],
         ///      &quot;message_id&quot;: &quot;atsXxhSEQWit9t+U02HXNQ==&quot;,
         ///      &quot;inviter_name&quot;: &quot;Jill Chill&quot;,
-        ///      &quot;participant&quot;: {
-        ///        &quot;call_type&quot;: &quot;h323&quot;,
-        ///        &quot;device_ip&quot;: &quot;10.100.111.237&quot;
-        ///      }
-        ///    }
-        ///  }
-        ///}.
+        ///      &quot;participan [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_room_system_callout_ringing {
             get {
@@ -6004,10 +6049,10 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;type&quot;: 8,
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
-        ///      &quot;duration&quot;: 60
-        ///    }
-        ///  }
-        ///}.
+        ///      &quot;duration&quot;: 60,
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_started {
             get {
@@ -7364,6 +7409,56 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string phone_call_qos_summary {
             get {
                 return ResourceManager.GetString("phone_call_qos_summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;phone.call_rtms_interrupted&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;call_id&quot;: &quot;7018317023722949162&quot;,
+        ///    &quot;rtms_stream_id&quot;: &quot;609340fb2a7946909659956c8aa9250c&quot;
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string phone_call_rtms_interrupted {
+            get {
+                return ResourceManager.GetString("phone_call_rtms_interrupted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;phone.call_rtms_started&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;call_id&quot;: &quot;7018317023722949162==&quot;,
+        ///    &quot;rtms_stream_id&quot;: &quot;609340fb2a7946909659956c8aa9250c&quot;,
+        ///    &quot;server_urls&quot;: &quot;wss://127.0.0.1:443&quot;
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string phone_call_rtms_started {
+            get {
+                return ResourceManager.GetString("phone_call_rtms_started", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;event&quot;: &quot;phone.call_rtms_stopped&quot;,
+        ///  &quot;event_ts&quot;: 1626230691572,
+        ///  &quot;payload&quot;: {
+        ///    &quot;call_id&quot;: &quot;7018317023722949162&quot;,
+        ///    &quot;rtms_stream_id&quot;: &quot;609340fb2a7946909659956c8aa9250c&quot;,
+        ///    &quot;stop_reason&quot;: 1
+        ///  }
+        ///}.
+        /// </summary>
+        internal static string phone_call_rtms_stopped {
+            get {
+                return ResourceManager.GetString("phone_call_rtms_stopped", resourceCulture);
             }
         }
         

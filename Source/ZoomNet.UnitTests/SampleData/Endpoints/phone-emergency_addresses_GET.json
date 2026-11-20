@@ -7,7 +7,7 @@
       "country": "US",
       "id": "Qza2T_KATwCeUfTkzGsOmQ",
       "is_default": true,
-      "level": 1,
+      "level": 0,
       "owner": {
         "extension_number": 101002,
         "id": "y9th648XRfSL9S61p1TsBw",
@@ -25,5 +25,5 @@
   ],
   "next_page_token": "T6WMY4fJBIAlxPUiqRtwvQS9dvsq8AoRam2",
   "page_size": 30,
-  "total_records": 20
+  "total_records": 1
 }

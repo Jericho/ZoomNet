@@ -1,0 +1,19 @@
+{
+  "event": "contact_center.notification_sent",
+  "event_ts": 1792387200000,
+  "payload": {
+    "account_id": "AbCdEfGhIjKlMnOpQrStUvWxYz",
+    "object": {
+      "alert_name": "test-notification-1012",
+      "module": "CX Analytics - Dashboard",
+      "measure": "Count",
+      "trigger": "test_queue_name",
+      "value": "Count: 24%",
+      "time": "2026-10-11T16:00:08",
+      "timezone": "US/Samoa",
+      "date_time_ms": "2026-10-12T03:00:08.000Z",
+      "division_id": "DIV1234567890",
+      "division_name": "Customer Support"
+    }
+  }
+}

@@ -4060,4 +4060,46 @@
   <data name="aiservices-speech-summarization-summarize_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\SampleData\Endpoints\aiservices-speech-summarization-summarize_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="scheduler-managed_schedules_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\scheduler-managed_schedules_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="visitor-deliveries_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\visitor-deliveries_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="docs-files-{fileId}-data_tables-{tableId}-forms_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\docs-files-{fileId}-data_tables-{tableId}-forms_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="docs-files-{fileId}-data_tables-{tableId}-forms_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\docs-files-{fileId}-data_tables-{tableId}-forms_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-users-{userId}-number_groups_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\contact_center-users-{userId}-number_groups_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-tag_groups_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\contact_center-tag_groups_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-tag_groups_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\contact_center-tag_groups_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-tag_groups-{tagGroupId}_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\contact_center-tag_groups-{tagGroupId}_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-tags_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\contact_center-tags_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-tags_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\contact_center-tags_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="contact_center-tags-{tagId}_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\contact_center-tags-{tagId}_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="virtual_agent-report-usage-aggregate_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\virtual_agent-report-usage-aggregate_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="virtual_agent-report-usage-details_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\virtual_agent-report-usage-details_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="aiservices-clinical_notes-generate_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\aiservices-clinical_notes-generate_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

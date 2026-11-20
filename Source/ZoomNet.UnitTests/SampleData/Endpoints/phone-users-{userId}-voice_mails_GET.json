@@ -17,6 +17,7 @@
       "caller_name": "John Doe",
       "caller_number": "12345678",
       "caller_number_type": 1,
+      "caller_number_spam_type": "spam",
       "date_time": "2019-05-19T20:00:00Z",
       "download_url": "exampleurl.io",
       "duration": 18,

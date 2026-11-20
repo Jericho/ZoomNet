@@ -83,7 +83,15 @@
       },
       "rescheduled": true,
       "created": "2023-12-21T06:18:28.309Z",
-      "text_phone_number": "+1 83798773"
+      "text_phone_number": "+1 83798773",
+      "payment": {
+        "amount": 10.54,
+        "currency": "USD",
+        "external_id": "exampleId",
+        "provider": "stripe",
+        "successful": true,
+        "terms": "Free cancellation or rescheduling 1 day before event starts"
+      }
     }
   }
 }

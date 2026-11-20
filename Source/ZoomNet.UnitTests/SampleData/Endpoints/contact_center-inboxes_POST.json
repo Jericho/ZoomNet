@@ -32,5 +32,18 @@
       "enable": false,
       "send_alert_for_unresolved_voicemail_timeout": 30
     }
-  }
+  },
+  "tags": [
+    {
+      "tag_group_id": "tg_558833",
+      "tag_group_name": "Region",
+      "tag_infos": [
+        {
+          "tag_id": "tag_11111",
+          "tag_name": "North America",
+          "tag_color": "#336699"
+        }
+      ]
+    }
+  ]
 }
