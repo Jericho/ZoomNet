@@ -348,43 +348,19 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCallHistoryDeleted()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCallHistoryDeletedEvent>(WebhooksResource.phone_call_history_deleted);
-
-			VerifyPhoneCallLogOperationEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCallHistoryDeleted, callLogDeleteTimestamp, "Mt6sv4u0TAyPkwgsL2lxiA");
-
-			parsedEvent.DeleteAll.ShouldBeFalse();
-			parsedEvent.MoveToTrash.ShouldBeTrue();
-			parsedEvent.ExecuteTime.ShouldBe(executeTimestamp);
-
-			parsedEvent.CallLogIds.ShouldNotBeNull();
-			parsedEvent.CallLogIds.ShouldHaveSingleItem();
-			parsedEvent.CallLogIds[0].ShouldBe("20240724-9a0887ca-da53-4c62-b32a-563789ef264e");
+			Should.Throw<NotSupportedException>(() => ParseWebhookEvent<PhoneCallHistoryDeletedEvent>(WebhooksResource.phone_call_history_deleted));
 		}
 
 		[Fact]
 		public void PhoneCallLogDeleted()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCallLogDeletedEvent>(WebhooksResource.phone_call_log_deleted);
-
-			VerifyPhoneCallLogOperationEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCallLogDeleted, callLogRemovedTimestamp, "Mt6sv4u0TAyPkwgsL2lxiA");
-
-			parsedEvent.CallLogs.ShouldNotBeNull();
-			parsedEvent.CallLogs.ShouldHaveSingleItem();
-			parsedEvent.CallLogs[0].Id.ShouldBe("9a0887ca-da53-4c62-b32a-563789ef264e");
-			parsedEvent.CallLogs[0].CallId.ShouldBe("6954218111457544837");
+			Should.Throw<NotSupportedException>(() => ParseWebhookEvent<PhoneCallLogDeletedEvent>(WebhooksResource.phone_call_log_deleted));
 		}
 
 		[Fact]
 		public void PhoneCallLogPermanentlyDeletedEvent()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCallLogPermanentlyDeletedEvent>(WebhooksResource.phone_call_log_permanently_deleted);
-
-			VerifyPhoneCallLogOperationEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCallLogPermanentlyDeleted, callLogRemovedTimestamp, "Mt6sv4u0TAyPkwgsL2lxiA");
-
-			parsedEvent.CallLogs.ShouldNotBeNull();
-			parsedEvent.CallLogs.ShouldHaveSingleItem();
-			parsedEvent.CallLogs[0].Id.ShouldBe("9a0887ca-da53-4c62-b32a-563789ef264e");
-			parsedEvent.CallLogs[0].CallId.ShouldBe("6954218111457544837");
+			Should.Throw<NotSupportedException>(() => ParseWebhookEvent<PhoneCallLogPermanentlyDeletedEvent>(WebhooksResource.phone_call_log_permanently_deleted));
 		}
 
 		[Fact]
@@ -416,76 +392,25 @@ namespace ZoomNet.UnitTests.WebhookParser
 		[Fact]
 		public void PhoneCalleeCallHistoryCompleted()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCalleeCallHistoryCompletedEvent>(WebhooksResource.phone_callee_call_history_completed);
-
-			VerifyPhoneCallLogOperationEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeCallHistoryCompleted, callLogTimestamp, callerAccountId, "IqoQmDRqS-aIoXqV_FZ88w");
-
-			parsedEvent.CallLogs.ShouldNotBeNull();
-			parsedEvent.CallLogs.ShouldHaveSingleItem();
-
-			VerifyCallElement(parsedEvent.CallLogs[0], callElementId: null, callHistoryUuid: null, id: "20231008-48c1dfd4-91ce-4df5-8495-7c9e33d10869", callPathId: "20231008-1ac1df2a-912e-d125-8a15-1a1233d10f1a");
+			Should.Throw<NotSupportedException>(() => ParseWebhookEvent<PhoneCalleeCallHistoryCompletedEvent>(WebhooksResource.phone_callee_call_history_completed));
 		}
 
 		[Fact]
 		public void PhoneCallerCallHistoryCompleted()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCallerCallHistoryCompletedEvent>(WebhooksResource.phone_caller_call_history_completed);
-
-			VerifyPhoneCallLogOperationEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCallerCallHistoryCompleted, new DateTime(2021, 6, 9, 5, 55, 32, 807, DateTimeKind.Utc), "TQTvjT52Tmi_wrhASNNOEw", "IqoQmDRqS-aIoXqV_FZ88w");
-
-			parsedEvent.CallLogs.ShouldNotBeNull();
-			parsedEvent.CallLogs.ShouldHaveSingleItem();
-
-			VerifyCallElement(parsedEvent.CallLogs[0], callElementId: null, callHistoryUuid: null, id: "20231008-48c1dfd4-91ce-4df5-8495-7c9e33d10869", callPathId: "20231008-1ac1df2a-912e-d125-8a15-1a1233d10f1a");
+			Should.Throw<NotSupportedException>(() => ParseWebhookEvent<PhoneCallerCallHistoryCompletedEvent>(WebhooksResource.phone_caller_call_history_completed));
 		}
 
 		[Fact]
 		public void PhoneCalleeCallLogCompleted()
 		{
-			var parsedEvent = ParseWebhookEvent<PhoneCalleeCallLogCompletedEvent>(WebhooksResource.phone_callee_call_log_completed);
+			Should.Throw<NotSupportedException>(() => ParseWebhookEvent<PhoneCalleeCallLogCompletedEvent>(WebhooksResource.phone_callee_call_log_completed));
+		}
 
-			VerifyPhoneCallLogOperationEvent(parsedEvent, ZoomNet.Models.Webhooks.EventType.PhoneCalleeCallLogCompleted, callLogTimestamp, callerAccountId, "IqoQmDRqS-aIoXqV_FZ88w");
-
-			parsedEvent.CallLogs.ShouldNotBeNull();
-			parsedEvent.CallLogs.ShouldHaveSingleItem();
-
-			var callLog = parsedEvent.CallLogs[0];
-			callLog.Id.ShouldBe("4a4ed8ec-6be4-4e42-96e6-352a4396204d");
-			callLog.CallId.ShouldBe("6971668473388011511");
-			callLog.CallType.ShouldBe(CallLogCallType.Voip);
-
-			callLog.CallerNumber.ShouldBe("1045");
-			callLog.CallerNumberType.ShouldBe(CallLogCallerNumberType.Extension);
-			callLog.CallerName.ShouldBe("usersubsetting0001@testapi.com");
-			callLog.CallerCountryCode.ShouldBe("1");
-			callLog.CallerCountryIsoCode.ShouldBe(Country.United_States_of_America);
-			callLog.CallerDidNumber.ShouldBe("+12055967465");
-
-			callLog.CalleeNumber.ShouldBe("1026");
-			callLog.CalleeNumberType.ShouldBe(CallLogCalleeNumberType.Extension);
-			callLog.CalleeName.ShouldBe("ZOOM_API Test");
-			callLog.CalleeCountryCode.ShouldBe("1");
-			callLog.CalleeCountryIsoCode.ShouldBe(Country.United_States_of_America);
-			callLog.CalleeDidNumber.ShouldBe("+15104381494");
-
-			callLog.Direction.ShouldBe(CallLogDirection.Inbound);
-			callLog.Duration.ShouldBe(0);
-			callLog.Result.ShouldBe(CallLogResult.Rejected);
-			callLog.Path.ShouldBe("extension");
-
-			callLog.StartedTime.ShouldBe(new DateTime(2021, 6, 9, 5, 55, 7, DateTimeKind.Utc));
-			callLog.CallEndTime.ShouldBe(new DateTime(2021, 6, 9, 5, 55, 12, DateTimeKind.Utc));
-
-			callLog.HasRecording.ShouldBe(false);
-			callLog.ClientCode.ShouldBe("741");
-
-			callLog.ForwardedBy.ShouldNotBeNull();
-			callLog.ForwardedBy.ExtensionNumber.ShouldBe("1009");
-			callLog.ForwardedBy.ExtensionType.ShouldBe(CallLogTransferInfoExtensionType.CallQueue);
-			callLog.ForwardedBy.Location.ShouldBe("Glendale     CA");
-			callLog.ForwardedBy.Name.ShouldBe("Display name");
-			callLog.ForwardedBy.NumberType.ShouldBe(CallLogTransferInfoNumberType.Extension);
-			callLog.ForwardedBy.PhoneNumber.ShouldBe("+12055432724");
+		[Fact]
+		public void PhoneCallerCallLogCompletd()
+		{
+			Should.Throw<NotSupportedException>(() => ParseWebhookEvent<PhoneCallerCallLogCompletedEvent>(WebhooksResource.phone_caller_call_log_completed));
 		}
 
 		[Fact]
