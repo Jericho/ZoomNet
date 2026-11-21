@@ -363,7 +363,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			parsedEvent.EventType.ShouldBe(ZoomNet.Models.Webhooks.EventType.WebinarSharingEnded);
 
-			VerifyWebinarSharingEvent(parsedEvent, userId: null);
+			VerifyWebinarSharingEvent(parsedEvent, userId: null, sharingDate: new DateTime(2021, 7, 13, 21, 56, 0, DateTimeKind.Utc));
 		}
 
 		[Fact]
@@ -490,7 +490,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 		/// <summary>
 		/// Verify <see cref="WebinarSharingEvent"/> properties.
 		/// </summary>
-		private static void VerifyWebinarSharingEvent(WebinarSharingEvent parsedEvent, string userId = "ABCDE12345")
+		private static void VerifyWebinarSharingEvent(WebinarSharingEvent parsedEvent, string userId = "ABCDE12345", DateTime? sharingDate = null)
 		{
 			parsedEvent.Timestamp.ShouldBe(eventTimestamp);
 			parsedEvent.AccountId.ShouldBe(AccountId);
@@ -503,7 +503,7 @@ namespace ZoomNet.UnitTests.WebhookParser
 
 			VerifyWebinarInfo(parsedEvent.Webinar);
 
-			VerifyScreenshareDetails(parsedEvent.ScreenshareDetails, new DateTime(2021, 7, 13, 21, 55, 52, 0, DateTimeKind.Utc));
+			VerifyScreenshareDetails(parsedEvent.ScreenshareDetails, sharingDate ?? new DateTime(2021, 7, 13, 21, 55, 52, DateTimeKind.Utc));
 		}
 
 		#endregion
