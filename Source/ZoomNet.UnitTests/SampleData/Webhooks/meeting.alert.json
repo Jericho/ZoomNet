@@ -12,6 +12,12 @@
       "join_time": "2021-07-13T21:44:51Z",
       "timezone": "America/Los_Angeles",
       "duration": 60,
+      "custom_keys": [
+        {
+          "key": "appointment_id",
+          "value": "APT-12345"
+        }
+      ],
       "issues": [
         "Unstable audio quality"
       ]

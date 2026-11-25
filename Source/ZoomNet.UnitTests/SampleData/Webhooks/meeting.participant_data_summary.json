@@ -6,6 +6,12 @@
     "object": {
       "uuid": "4444AAAiAAAAAiAiAiiAii==",
       "id": "1234567890",
+      "custom_keys": [
+        {
+          "key": "appointment_id",
+          "value": "APT-12345"
+        }
+      ],
       "participant": {
         "participant_id": "1234567890",
         "participant_user_id": "rstuvwxyza789-cde",

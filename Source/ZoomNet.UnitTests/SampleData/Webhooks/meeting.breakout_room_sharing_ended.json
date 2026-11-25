@@ -13,6 +13,12 @@
       "start_time": "2021-07-13T21:44:51Z",
       "timezone": "America/Los_Angeles",
       "duration": 60,
+      "custom_keys": [
+        {
+          "key": "appointment_id",
+          "value": "APT-12345"
+        }
+      ],
       "participant": {
         "user_id": "31228928",
         "parent_user_id": "ABCDE12345",
