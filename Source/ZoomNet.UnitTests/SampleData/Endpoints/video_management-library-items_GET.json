@@ -1,0 +1,15 @@
+{
+  "next_page_token": "yqT59YnBSHqvDdNnkeHQsA",
+  "items": [
+    {
+      "item_id": "eeebe75dc3a94556912d79b2b487f616",
+      "name": "Lecture 1",
+      "item_type": "VIDEO",
+      "status": "COMPLETED",
+      "source": "OTHERS",
+      "owner_id": "abc9Dllddp39dagjLj9j",
+      "created_at": "2026-10-12T17:44:09.0000000\u002B00:00",
+      "modified_at": "2026-10-12T17:44:09.0000000\u002B00:00"
+    }
+  ]
+}

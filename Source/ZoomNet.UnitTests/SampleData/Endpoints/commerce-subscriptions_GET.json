@@ -18,6 +18,7 @@
       "end_date": "2024-07-01",
       "order_number": "O-132323",
       "sub_reseller_name": "ABC Inc.",
+      "sub_reseller_partner_level": "Platinum",
       "sold_to_email": "abc@test.com",
       "mrr": {
         "gross_amount": 120000,

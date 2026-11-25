@@ -13,7 +13,8 @@
         "account_name": "John Galt",
         "zoom_account_number": "3842618277"
       },
-      "sub_reseller_name": "ABC Inc."
+      "sub_reseller_name": "ABC Inc.",
+      "sub_reseller_partner_level": "Platinum"
     }
   ]
 }

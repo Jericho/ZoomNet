@@ -15,5 +15,19 @@
   "owner_name": "John Doe",
   "owner_email": "john.doe@xyz.com",
   "created_time": "2022-06-03T20:51:00.0000000\u002B00:00",
-  "modified_time": "2022-06-03T20:51:00.0000000\u002B00:00"
+  "modified_time": "2022-06-03T20:51:00.0000000\u002B00:00",
+  "tags": [
+    "Announcements",
+    "Engineering"
+  ],
+  "categories": [
+    {
+      "name": "Technology",
+      "sub_categories": [
+        "AI",
+        "Machine Learning",
+        "Computer Vision"
+      ]
+    }
+  ]
 }

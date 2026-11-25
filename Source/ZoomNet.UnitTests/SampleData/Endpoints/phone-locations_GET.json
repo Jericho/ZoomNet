@@ -1,7 +1,7 @@
 {
   "locations": [
     {
-      "bssid": "SA43YjfBTS6gJbUpfvIziQ",
+      "bssid": "00:11:22:33:44:55",
       "elin": {
         "phone_number": "\u002B12058945656",
         "phone_number_id": "9h5vTQJ0TmyKs0wItZ3JAw"
@@ -11,16 +11,16 @@
       "name": "example location",
       "network_switches": [
         {
-          "mac_address": "0004f25eec3d",
-          "port": "23",
-          "port_prefix": "01",
-          "port_range_from": "01",
-          "port_range_to": "02"
+          "mac_address": "00:04:f2:5e:ec:3d",
+          "port": "11",
+          "port_prefix": "Gig0/",
+          "port_range_from": "1",
+          "port_range_to": "24"
         }
       ],
       "parent_location_id": "RTGmTYafRU24RqJunfotSA",
-      "private_ip": "192.1.1.2",
-      "public_ip": "192.1.1.1",
+      "private_ip": "10.20.0.0/24",
+      "public_ip": "203.0.113.10",
       "private_ipv6": "fd00:1234:5678:9abc::/120",
       "public_ipv6": "2001:db8:1234:5678::/120",
       "sip_group": {

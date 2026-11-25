@@ -4102,4 +4102,34 @@
   <data name="aiservices-clinical_notes-generate_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\SampleData\Endpoints\aiservices-clinical_notes-generate_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="video_management-categories_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\video_management-categories_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="video_management-library-collections_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\video_management-library-collections_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="video_management-library-collections_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\video_management-library-collections_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="video_management-library-collections-{collectionId}_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\video_management-library-collections-{collectionId}_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="video_management-library-collections-{collectionId}-items_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\video_management-library-collections-{collectionId}-items_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="video_management-library-items_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\video_management-library-items_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="video_management-tags_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\video_management-tags_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="marketplace-app-{appId}-event_certificates_GET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\marketplace-app-{appId}-event_certificates_GET.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="marketplace-app-{appId}-event_certificates_POST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\marketplace-app-{appId}-event_certificates_POST.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="marketplace-app-{appId}-event_certificates_PATCH" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\SampleData\Endpoints\marketplace-app-{appId}-event_certificates_PATCH.json;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
 </root>

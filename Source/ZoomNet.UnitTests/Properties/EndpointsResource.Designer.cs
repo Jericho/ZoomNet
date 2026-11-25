@@ -2984,14 +2984,14 @@ namespace ZoomNet.UnitTests.Properties {
         ///  ],
         ///  &quot;account_name&quot;: &quot;ABC Pvt Ltd.&quot;,
         ///  &quot;account_type&quot;: &quot;Customer&quot;,
+        ///  &quot;partner_level&quot;: &quot;Platinum&quot;,
         ///  &quot;created_on_date&quot;: &quot;2022-10-18&quot;,
         ///  &quot;employee_count&quot;: &quot;51-250&quot;,
         ///  &quot;website&quot;: &quot;www.example.com&quot;,
         ///  &quot;currency&quot;: &quot;US&quot;,
         ///  &quot;partner_type&quot;: &quot;Subreseller&quot;,
         ///  &quot;contacts&quot;: [
-        ///    {
-        ///      &quot;contact_crm_number&quot;: [rest of string was truncated]&quot;;.
+        ///   [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string commerce_accounts__accountKey__GET {
             get {
@@ -3012,14 +3012,14 @@ namespace ZoomNet.UnitTests.Properties {
         ///        3842618277
         ///      ],
         ///      &quot;account_type&quot;: &quot;Customer&quot;,
-        ///      &quot;partner_type&quot;: &quot;Subreseller&quot;,
+        ///      &quot;partner_type&quot;: &quot;Sub-Reseller&quot;,
+        ///      &quot;partner_level&quot;: &quot;Platinum&quot;,
         ///      &quot;country&quot;: &quot;US&quot;,
         ///      &quot;currency&quot;: &quot;USD&quot;,
         ///      &quot;website&quot;: &quot;www.abc.com&quot;,
         ///      &quot;status&quot;: &quot;submitted&quot;
         ///    }
-        ///  ]
-        ///}.
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string commerce_accounts_GET {
             get {
@@ -3493,7 +3493,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;end_customer_crm_account_number&quot;: &quot;A-3454334&quot;,
         ///      &quot;sub_reseller_name&quot;: &quot;John&quot;,
         ///      &quot;sub_reseller_crm_account_number&quot;: &quot;A-348742&quot;,
-        ///      &quot;invoice_owner_name&quot;: &quot;John&quot; [rest of string was truncated]&quot;;.
+        ///      &quot;sub_reseller_partner_level&quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string commerce_quotes_GET {
             get {
@@ -3622,7 +3622,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///        &quot;account_name&quot;: &quot;John Galt&quot;,
         ///        &quot;zoom_account_number&quot;: &quot;3842618277&quot;
         ///      },
-        ///      &quot;sub_reseller_name&quot;: &quot;ABC Inc.&quot;
+        ///      &quot;sub_reseller_name&quot;: &quot;ABC Inc.&quot;,
+        ///      &quot;sub_reseller_partner_level&quot;: &quot;Platinum&quot;
         ///    }
         ///  ]
         ///}.
@@ -11790,6 +11791,59 @@ namespace ZoomNet.UnitTests.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;certificates&quot;: [
+        ///    {
+        ///      &quot;certificate_id&quot;: &quot;Uvhn0cnlSYKIm8TxSUpj_A&quot;,
+        ///      &quot;status&quot;: &quot;current&quot;,
+        ///      &quot;key_algorithm&quot;: &quot;RSA&quot;,
+        ///      &quot;key_size&quot;: 2048,
+        ///      &quot;expires_at&quot;: 1825204359000,
+        ///      &quot;sha1_fingerprint&quot;: &quot;D8:5B:F4:87:DF:FC:A9:50:FF:72:32:F0:EF:98:12:0F:43:6C:B1:F1&quot;,
+        ///      &quot;sha256_fingerprint&quot;: &quot;ULmGI1w72jhyP5qM4TTHihT1yP5PX5TxgrUP2-wKABo&quot;,
+        ///      &quot;certificate&quot;: &quot;-----BEGIN CERTIFICATE-----\nMIIDETCCAfmgAwIBAgIQLT656e\u002B5cAqLgCduKJLaqjANBgkqhkiG9w0BAQsFADAp\nMScwJQYDVQQDDB5ab29tIE [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string marketplace_app__appId__event_certificates_GET {
+            get {
+                return ResourceManager.GetString("marketplace-app-{appId}-event_certificates_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;certificate_id&quot;: &quot;Uvhn0cnlSYKIm8TxSUpj_A&quot;,
+        ///  &quot;status&quot;: &quot;current&quot;,
+        ///  &quot;key_algorithm&quot;: &quot;RSA&quot;,
+        ///  &quot;key_size&quot;: 2048,
+        ///  &quot;expires_at&quot;: 1825204359000,
+        ///  &quot;sha1_fingerprint&quot;: &quot;D8:5B:F4:87:DF:FC:A9:50:FF:72:32:F0:EF:98:12:0F:43:6C:B1:F1&quot;,
+        ///  &quot;sha256_fingerprint&quot;: &quot;ULmGI1w72jhyP5qM4TTHihT1yP5PX5TxgrUP2-wKABo&quot;,
+        ///  &quot;certificate&quot;: &quot;-----BEGIN CERTIFICATE-----\nMIIDETCCAfmgAwIBAgIQLT656e\u002B5cAqLgCduKJLaqjANBgkqhkiG9w0BAQsFADAp\nMScwJQYDVQQDDB5ab29tIEV2ZW50IFN1YnNjcmlwdGlvbiBDbGllbnQwHhcNMjYx\nMDMwMDAzMjE5WhcN [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string marketplace_app__appId__event_certificates_PATCH {
+            get {
+                return ResourceManager.GetString("marketplace-app-{appId}-event_certificates_PATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;certificate_id&quot;: &quot;Uvhn0cnlSYKIm8TxSUpj_A&quot;,
+        ///  &quot;status&quot;: &quot;current&quot;,
+        ///  &quot;key_algorithm&quot;: &quot;RSA&quot;,
+        ///  &quot;key_size&quot;: 2048,
+        ///  &quot;expires_at&quot;: 1825204359000,
+        ///  &quot;sha1_fingerprint&quot;: &quot;D8:5B:F4:87:DF:FC:A9:50:FF:72:32:F0:EF:98:12:0F:43:6C:B1:F1&quot;,
+        ///  &quot;sha256_fingerprint&quot;: &quot;ULmGI1w72jhyP5qM4TTHihT1yP5PX5TxgrUP2-wKABo&quot;,
+        ///  &quot;certificate&quot;: &quot;-----BEGIN CERTIFICATE-----\nMIIDETCCAfmgAwIBAgIQLT656e\u002B5cAqLgCduKJLaqjANBgkqhkiG9w0BAQsFADAp\nMScwJQYDVQQDDB5ab29tIEV2ZW50IFN1YnNjcmlwdGlvbiBDbGllbnQwHhcNMjYx\nMDMwMDAzMjE5WhcN [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string marketplace_app__appId__event_certificates_POST {
+            get {
+                return ResourceManager.GetString("marketplace-app-{appId}-event_certificates_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [
         ///  {
         ///    &quot;field_id&quot;: &quot;city_name&quot;,
@@ -15745,7 +15799,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///  &quot;country&quot;: &quot;US&quot;,
         ///  &quot;id&quot;: &quot;Qza2T_KATwCeUfTkzGsOmQ&quot;,
         ///  &quot;is_default&quot;: true,
-        ///  &quot;level&quot;: 1,
+        ///  &quot;level&quot;: 0,
         ///  &quot;owner&quot;: {
         ///    &quot;extension_number&quot;: 101002,
         ///    &quot;id&quot;: &quot;y9th648XRfSL9S61p1TsBw&quot;,
@@ -16455,24 +16509,22 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
-        ///  &quot;bssid&quot;: &quot;SA43YjfBTS6gJbUpfvIziQ&quot;,
-        ///  &quot;elin&quot;: {
-        ///    &quot;phone_number&quot;: &quot;\u002B12058945656&quot;,
-        ///    &quot;phone_number_id&quot;: &quot;9h5vTQJ0TmyKs0wItZ3JAw&quot;
-        ///  },
+        ///  &quot;id&quot;: &quot;eRYjZlItQIqlFbCuRA__SQ&quot;,
+        ///  &quot;identifier&quot;: &quot;hq-building&quot;,
+        ///  &quot;name&quot;: &quot;Headquarters&quot;,
+        ///  &quot;public_ip&quot;: &quot;203.0.113.10&quot;,
+        ///  &quot;private_ip&quot;: &quot;10.20.0.0/24&quot;,
+        ///  &quot;minimum_match_criteria&quot;: false,
         ///  &quot;emergency_address&quot;: {
-        ///    &quot;address_line1&quot;: &quot;55 ALMADEN BLVD&quot;,
-        ///    &quot;address_line2&quot;: &quot;6th floor&quot;,
-        ///    &quot;city&quot;: &quot;SAN JOSE&quot;,
-        ///    &quot;country&quot;: &quot;US&quot;,
         ///    &quot;id&quot;: &quot;Qza2T_KATwCeUfTkzGsOmQ&quot;,
+        ///    &quot;country&quot;: &quot;US&quot;,
+        ///    &quot;address_line1&quot;: &quot;55 ALMADEN BLVD&quot;,
+        ///    &quot;city&quot;: &quot;SAN JOSE&quot;,
         ///    &quot;state_code&quot;: &quot;CA&quot;,
         ///    &quot;zip&quot;: &quot;95113&quot;,
         ///    &quot;business_name&quot;: &quot;Zoom San Jose Office&quot;
-        ///  },
-        ///  &quot;id&quot;: &quot;eRYjZlItQIqlFbCuRA__SQ&quot;,
-        ///  &quot;name&quot;: &quot;example location&quot;,
-        ///  &quot;network_s [rest of string was truncated]&quot;;.
+        ///  }
+        ///}.
         /// </summary>
         internal static string phone_locations__locationId__GET {
             get {
@@ -16484,7 +16536,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///   Looks up a localized string similar to {
         ///  &quot;locations&quot;: [
         ///    {
-        ///      &quot;bssid&quot;: &quot;SA43YjfBTS6gJbUpfvIziQ&quot;,
+        ///      &quot;bssid&quot;: &quot;00:11:22:33:44:55&quot;,
         ///      &quot;elin&quot;: {
         ///        &quot;phone_number&quot;: &quot;\u002B12058945656&quot;,
         ///        &quot;phone_number_id&quot;: &quot;9h5vTQJ0TmyKs0wItZ3JAw&quot;
@@ -16494,11 +16546,11 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;name&quot;: &quot;example location&quot;,
         ///      &quot;network_switches&quot;: [
         ///        {
-        ///          &quot;mac_address&quot;: &quot;0004f25eec3d&quot;,
-        ///          &quot;port&quot;: &quot;23&quot;,
-        ///          &quot;port_prefix&quot;: &quot;01&quot;,
-        ///          &quot;port_range_from&quot;: &quot;01&quot;,
-        ///          &quot;port_rang [rest of string was truncated]&quot;;.
+        ///          &quot;mac_address&quot;: &quot;00:04:f2:5e:ec:3d&quot;,
+        ///          &quot;port&quot;: &quot;11&quot;,
+        ///          &quot;port_prefix&quot;: &quot;Gig0/&quot;,
+        ///          &quot;port_range_from&quot;: &quot;1&quot;,
+        ///          &quot;port_ra [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string phone_locations_GET {
             get {
@@ -23364,6 +23416,30 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 1,
+        ///  &quot;next_page_token&quot;: &quot;yqT59YnBSHqvDdNnkeHQsA&quot;,
+        ///  &quot;categories&quot;: [
+        ///    {
+        ///      &quot;category_id&quot;: &quot;7a723299-9df2-42ca-8550-bab5224d4858&quot;,
+        ///      &quot;name&quot;: &quot;cat1&quot;,
+        ///      &quot;sub_categories&quot;: [
+        ///        {
+        ///          &quot;category_id&quot;: &quot;c11e22a2-718d-4acb-953d-fc6b8ea81e95&quot;,
+        ///          &quot;name&quot;: &quot;onboarding&quot;
+        ///        }
+        ///      ]
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string video_management_categories_GET {
+            get {
+                return ResourceManager.GetString("video_management-categories_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;channel_id&quot;: &quot;iso9Dllddp39dagjLj9j&quot;,
         ///  &quot;name&quot;: &quot;FoodieFlicks&quot;,
         ///  &quot;description&quot;: &quot;A cinematic journey through the world of cuisine!.&quot;,
@@ -23502,6 +23578,96 @@ namespace ZoomNet.UnitTests.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;collection_id&quot;: &quot;7788b943b13e44bfa3cdd29452242452&quot;,
+        ///  &quot;name&quot;: &quot;Biology 101&quot;,
+        ///  &quot;owner_id&quot;: &quot;abc9Dllddp39dagjLj9j&quot;,
+        ///  &quot;description&quot;: &quot;Migrated from the source library.&quot;,
+        ///  &quot;created_at&quot;: &quot;2026-10-12T18:02:38.0000000\u002B00:00&quot;,
+        ///  &quot;modified_at&quot;: &quot;2026-10-12T18:02:38.0000000\u002B00:00&quot;
+        ///}.
+        /// </summary>
+        internal static string video_management_library_collections__collectionId__GET {
+            get {
+                return ResourceManager.GetString("video_management-library-collections-{collectionId}_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;yqT59YnBSHqvDdNnkeHQsA&quot;,
+        ///  &quot;items&quot;: [
+        ///    {
+        ///      &quot;item_id&quot;: &quot;eeebe75dc3a94556912d79b2b487f616&quot;,
+        ///      &quot;title&quot;: &quot;Lecture 1&quot;,
+        ///      &quot;item_type&quot;: &quot;IMAGE&quot;,
+        ///      &quot;owner_id&quot;: &quot;abc9Dllddp39dagjLj9j&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string video_management_library_collections__collectionId__items_GET {
+            get {
+                return ResourceManager.GetString("video_management-library-collections-{collectionId}-items_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;yqT59YnBSHqvDdNnkeHQsA&quot;,
+        ///  &quot;collections&quot;: [
+        ///    {
+        ///      &quot;collection_id&quot;: &quot;7788b943b13e44bfa3cdd29452242452&quot;,
+        ///      &quot;name&quot;: &quot;Biology 101&quot;,
+        ///      &quot;owner_id&quot;: &quot;abc9Dllddp39dagjLj9j&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string video_management_library_collections_GET {
+            get {
+                return ResourceManager.GetString("video_management-library-collections_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;collection_id&quot;: &quot;7788b943b13e44bfa3cdd29452242452&quot;,
+        ///  &quot;name&quot;: &quot;Biology 101&quot;,
+        ///  &quot;owner_id&quot;: &quot;abc9Dllddp39dagjLj9j&quot;,
+        ///  &quot;description&quot;: &quot;Migrated from the source library.&quot;
+        ///}.
+        /// </summary>
+        internal static string video_management_library_collections_POST {
+            get {
+                return ResourceManager.GetString("video_management-library-collections_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;next_page_token&quot;: &quot;yqT59YnBSHqvDdNnkeHQsA&quot;,
+        ///  &quot;items&quot;: [
+        ///    {
+        ///      &quot;item_id&quot;: &quot;eeebe75dc3a94556912d79b2b487f616&quot;,
+        ///      &quot;name&quot;: &quot;Lecture 1&quot;,
+        ///      &quot;item_type&quot;: &quot;VIDEO&quot;,
+        ///      &quot;status&quot;: &quot;COMPLETED&quot;,
+        ///      &quot;source&quot;: &quot;OTHERS&quot;,
+        ///      &quot;owner_id&quot;: &quot;abc9Dllddp39dagjLj9j&quot;,
+        ///      &quot;created_at&quot;: &quot;2026-10-12T17:44:09.0000000\u002B00:00&quot;,
+        ///      &quot;modified_at&quot;: &quot;2026-10-12T17:44:09.0000000\u002B00:00&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string video_management_library_items_GET {
+            get {
+                return ResourceManager.GetString("video_management-library-items_GET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;total_records&quot;: 1,
         ///  &quot;next_page_token&quot;: &quot;yqT59YnBSHqvDdNnkeHQsA&quot;,
         ///  &quot;videos&quot;: [
@@ -23554,6 +23720,24 @@ namespace ZoomNet.UnitTests.Properties {
         internal static string video_management_playlists_POST {
             get {
                 return ResourceManager.GetString("video_management-playlists_POST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
+        ///  &quot;total_records&quot;: 3,
+        ///  &quot;next_page_token&quot;: &quot;yqT59YnBSHqvDdNnkeHQsA&quot;,
+        ///  &quot;tags&quot;: [
+        ///    {
+        ///      &quot;tag_id&quot;: &quot;qUL14jutQMiqZsbvZTpK3w&quot;,
+        ///      &quot;name&quot;: &quot;Announcements&quot;
+        ///    }
+        ///  ]
+        ///}.
+        /// </summary>
+        internal static string video_management_tags_GET {
+            get {
+                return ResourceManager.GetString("video_management-tags_GET", resourceCulture);
             }
         }
         

@@ -80,6 +80,7 @@
         "zoom_account_number": "3421746588",
         "crm_account_number": "A-1232",
         "account_name": "John Doe LLC",
+        "partner_level": "Platinum",
         "address": {
           "address_type": "billTo",
           "line_1": "55 Almaden Blvd",
@@ -253,6 +254,13 @@
           }
         },
         "professional_services_description": "false"
+      },
+      "competitive_buyout": {
+        "compensation_type": "Free Period",
+        "free_period_duration": 30,
+        "credit_amount": 50.99,
+        "incumbent_end_date": "2026-10-01",
+        "competitor_name": "ABC Inc"
       }
     }
   ],
@@ -293,6 +301,7 @@
         "zoom_account_number": "3421746588",
         "crm_account_number": "A-1234",
         "account_name": "John Doe LLC",
+        "partner_level": "Platinum",
         "address": {
           "address_type": "billTo",
           "line_1": "55 Almaden Blvd",

@@ -10,7 +10,8 @@
         3842618277
       ],
       "account_type": "Customer",
-      "partner_type": "Subreseller",
+      "partner_type": "Sub-Reseller",
+      "partner_level": "Platinum",
       "country": "US",
       "currency": "USD",
       "website": "www.abc.com",

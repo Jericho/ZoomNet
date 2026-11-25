@@ -9,6 +9,7 @@
   ],
   "account_name": "ABC Pvt Ltd.",
   "account_type": "Customer",
+  "partner_level": "Platinum",
   "created_on_date": "2022-10-18",
   "employee_count": "51-250",
   "website": "www.example.com",

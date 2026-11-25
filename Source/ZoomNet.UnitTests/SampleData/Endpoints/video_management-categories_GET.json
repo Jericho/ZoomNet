@@ -1,0 +1,16 @@
+{
+  "total_records": 1,
+  "next_page_token": "yqT59YnBSHqvDdNnkeHQsA",
+  "categories": [
+    {
+      "category_id": "7a723299-9df2-42ca-8550-bab5224d4858",
+      "name": "cat1",
+      "sub_categories": [
+        {
+          "category_id": "c11e22a2-718d-4acb-953d-fc6b8ea81e95",
+          "name": "onboarding"
+        }
+      ]
+    }
+  ]
+}

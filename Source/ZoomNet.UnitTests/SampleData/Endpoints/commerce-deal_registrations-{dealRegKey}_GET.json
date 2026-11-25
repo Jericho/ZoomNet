@@ -47,6 +47,7 @@
   "sub_reseller": {
     "crm_account_number": "A-1232",
     "account_name": "ABC Pvt Ltd",
+    "partner_level": "Platinum",
     "address": {
       "address_type": "billTo",
       "line_1": "55 Almaden Blvd",

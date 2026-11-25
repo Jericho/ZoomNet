@@ -17,11 +17,13 @@
         "username": "my_username",
         "password": "my_password",
         "client_id": "your_client_id",
+        "client_auth_type": 1,
         "client_secret": "your_client_secret",
         "token_url": "https://auth.example.com/oauth/token",
         "scope": "read:org write:user",
         "state": "request-123",
         "client_authentication": "body",
+        "custom_params": "{\u0022key1\u0022:\u0022value1\u0022,\u0022key2\u0022:\u0022value2\u0022}",
         "custom_header_key": "x-api-key",
         "custom_header_value": "your_api_key_value"
       }

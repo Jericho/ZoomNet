@@ -43,6 +43,7 @@
     "zoom_account_number": "3421746588",
     "crm_account_number": "A-45r33",
     "account_name": "Novam Corp.",
+    "partner_level": "Platinum",
     "address": {
       "address_type": "billTo",
       "line_1": "55 Almaden Blvd",

@@ -4575,12 +4575,11 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;join_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
-        ///      &quot;issues&quot;: [
-        ///        &quot;Unstable audio quality&quot;
-        ///      ]
-        ///    }
-        ///  }
-        ///}.
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;value&quot;: &quot;APT-12345&quot;
+        ///        }        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_alert {
             get {
@@ -4604,8 +4603,8 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
-        ///      &quot;participant&quot;: {
-        ///        &quot; [rest of string was truncated]&quot;;.
+        ///      &quot;custom_keys&quot;: [
+        ///        { [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_breakout_room_sharing_ended {
             get {
@@ -4629,7 +4628,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
-        ///      &quot;participant&quot;: {
+        ///      &quot;custom_keys&quot;: [
         ///        [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_breakout_room_sharing_started {
@@ -5091,15 +5090,17 @@ namespace ZoomNet.UnitTests.Properties {
         ///    &quot;object&quot;: {
         ///      &quot;uuid&quot;: &quot;4444AAAiAAAAAiAiAiiAii==&quot;,
         ///      &quot;id&quot;: &quot;1234567890&quot;,
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;value&quot;: &quot;APT-12345&quot;
+        ///        }
+        ///      ],
         ///      &quot;participant&quot;: {
         ///        &quot;participant_id&quot;: &quot;1234567890&quot;,
         ///        &quot;participant_user_id&quot;: &quot;rstuvwxyza789-cde&quot;,
         ///        &quot;email&quot;: &quot;user@example.com&quot;,
-        ///        &quot;data&quot;: [
-        ///          {
-        ///            &quot;device&quot;: &quot;Windows&quot;,
-        ///            &quot;location&quot;: &quot;New York&quot;,
-        ///            &quot;network_type&quot;: &quot;Wired&quot;, [rest of string was truncated]&quot;;.
+        ///        &quot;data&quot;: [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_data_summary {
             get {
@@ -5225,10 +5226,10 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
-        ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill Chill&quot;,
-        ///      [rest of string was truncated]&quot;;.
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;value&quot;: &quot;APT-1234 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_joined {
             get {
@@ -5252,7 +5253,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
-        ///      &quot;participant&quot;: {
+        ///      &quot;custom_keys&quot;: [
         ///     [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_joined_breakout_room {
@@ -5276,9 +5277,10 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
-        ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill C [rest of string was truncated]&quot;;.
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;valu [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_joined_waiting_room {
             get {
@@ -5301,10 +5303,10 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
-        ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill Chill&quot;,
-        ///        [rest of string was truncated]&quot;;.
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;value&quot;: &quot;APT-12345&quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_left {
             get {
@@ -5328,7 +5330,7 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
-        ///      &quot;participant&quot;: {
+        ///      &quot;custom_keys&quot;: [
         ///       [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_left_breakout_room {
@@ -5352,9 +5354,10 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
-        ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill Chi [rest of string was truncated]&quot;;.
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;value&quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_left_waiting_room {
             get {
@@ -5517,9 +5520,10 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
-        ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
-        ///        &quot;user_name&quot;: &quot;Jill C [rest of string was truncated]&quot;;.
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;valu [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_put_in_waiting_room {
             get {
@@ -5594,9 +5598,10 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
-        ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;1234567890&quot;,
-        ///        &quot;participant_uuid&quot;: &quot;55555A [rest of string was truncated]&quot;;.
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;value&quot;: &quot;AP [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_participant_role_changed {
             get {
@@ -5997,10 +6002,11 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
-        ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;ABCDE12345&quot;,
-        ///        &quot;user_name&quot;: &quot;JillChill&quot;,
-        ///        &quot;id [rest of string was truncated]&quot;;.
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;value&quot;: &quot;APT-12345&quot;
+        ///  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_sharing_ended {
             get {
@@ -6023,10 +6029,10 @@ namespace ZoomNet.UnitTests.Properties {
         ///      &quot;start_time&quot;: &quot;2021-07-13T21:44:51Z&quot;,
         ///      &quot;timezone&quot;: &quot;America/Los_Angeles&quot;,
         ///      &quot;duration&quot;: 60,
-        ///      &quot;participant&quot;: {
-        ///        &quot;user_id&quot;: &quot;ABCDE12345&quot;,
-        ///        &quot;user_name&quot;: &quot;JillChill&quot;,
-        ///        &quot; [rest of string was truncated]&quot;;.
+        ///      &quot;custom_keys&quot;: [
+        ///        {
+        ///          &quot;key&quot;: &quot;appointment_id&quot;,
+        ///          &quot;value&quot;: &quot;APT-12345&quot;        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meeting_sharing_started {
             get {

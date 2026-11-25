@@ -12,6 +12,7 @@
       "end_customer_crm_account_number": "A-3454334",
       "sub_reseller_name": "John",
       "sub_reseller_crm_account_number": "A-348742",
+      "sub_reseller_partner_level": "Platinum",
       "invoice_owner_name": "John",
       "invoice_owner_crm_account_number": "A-348742",
       "creation_date": "2024-07-01",

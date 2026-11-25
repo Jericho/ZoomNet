@@ -33,5 +33,10 @@
       "tracking_value": "bio_consultation"
     }
   ],
-  "event_id": "b5p14d5ghjvb4t7a9hq8473rv60"
+  "event_id": "b5p14d5ghjvb4t7a9hq8473rv60",
+  "guests": [
+    {
+      "email": "guest@example.com"
+    }
+  ]
 }
