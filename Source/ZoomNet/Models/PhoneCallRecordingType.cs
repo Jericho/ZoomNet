@@ -1,5 +1,4 @@
 using System.Runtime.Serialization;
-using ZoomNet.Utilities;
 
 namespace ZoomNet.Models
 {
@@ -7,7 +6,7 @@ namespace ZoomNet.Models
 	public enum PhoneCallRecordingType
 	{
 		/// <summary>Record on demand.</summary>
-		[MultipleValuesEnumMember(DefaultValue = "On-demand", OtherValues = ["On-demand"])]
+		[EnumMember(Value = "On-demand")]
 		OnDemand,
 
 		/// <summary>Record automatically.</summary>
