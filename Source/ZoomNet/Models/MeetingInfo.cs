@@ -23,7 +23,7 @@ namespace ZoomNet.Models
 		[JsonPropertyName("type")]
 		public MeetingType Type { get; set; }
 
-		/// <summary>Gets or sets the meeting's join time (which, I believe, is the same as StartTime).</summary>
+		/// <summary>Sets the meeting's join time (which, I believe, is the same as StartTime).</summary>
 		/// <remarks>
 		/// The reason why I added this property on this model is to be able to handle scenarios where the
 		/// JSON from Zoom API contains a node called 'join_time' rather than the expected start_time.
@@ -36,7 +36,6 @@ namespace ZoomNet.Models
 		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
 		public DateTime? JoinTime
 		{
-			get { return StartTime; }
 			set { if (value.HasValue) StartTime = value.Value; }
 		}
 	}

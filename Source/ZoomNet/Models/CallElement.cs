@@ -1,6 +1,6 @@
 using System;
+using System.Diagnostics;
 using System.Text.Json.Serialization;
-using ZoomNet.Utilities;
 
 namespace ZoomNet.Models
 {
@@ -228,12 +228,24 @@ namespace ZoomNet.Models
 		public CallElementRecordingType RecordingType { get; set; }
 
 		/// <summary>Gets or sets the detail result of an event for a call log.</summary>
-		/*
-		 * "result" when parsing a webhook
-		 * "call_results" when parsing the response of an API endpoint.
-		 */
-		[MultipleValuesEnumMember(DefaultValue = "result", OtherValues = new[] { "call_result" })]
+		[JsonPropertyName("result")]
 		public CallElementResult Result { get; set; }
+
+		/// <summary>Sets the detail result of an event for a call log.</summary>
+		/// <remarks>
+		/// The JSON node that contains the detail result of an event for a call log
+		/// is called 'result' when parsing a webhook, but it is called 'call_result'
+		/// when parsing the response of an API endpoint.
+		/// </remarks>
+		[JsonPropertyName("call_result")]
+#if NET5_0_OR_GREATER
+		[JsonIgnore(Condition = JsonIgnoreCondition.WhenWriting)]
+#endif
+		[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+		public CallElementResult? CallResult
+		{
+			set { if (value.HasValue) Result = value.Value; }
+		}
 
 		/// <summary>Gets or sets the result reason of an event for a call log.</summary>
 		[JsonPropertyName("result_reason")]
