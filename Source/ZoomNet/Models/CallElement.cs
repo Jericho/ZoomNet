@@ -175,6 +175,10 @@ namespace ZoomNet.Models
 		[JsonPropertyName("direction")]
 		public CallLogDirection? Direction { get; set; }
 
+		/// <summary>Gets or sets the call duration.</summary>
+		[JsonPropertyName("duration")]
+		public int Duration { get; set; }
+
 		/// <summary>Gets or sets the call end time.</summary>
 		[JsonPropertyName("end_time")]
 		public DateTime? EndTime { get; set; }
@@ -202,6 +206,10 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the id of the call history.</summary>
 		[JsonPropertyName("id")]
 		public string Id { get; set; }
+
+		/// <summary>Gets or sets a value indicating whether the call is international.</summary>
+		[JsonPropertyName("international")]
+		public bool IsInternational { get; set; }
 
 		/// <summary>Gets or sets the operator extension id.</summary>
 		[JsonPropertyName("operator_ext_id")]
@@ -250,6 +258,22 @@ namespace ZoomNet.Models
 		/// <summary>Gets or sets the result reason of an event for a call log.</summary>
 		[JsonPropertyName("result_reason")]
 		public CallElementResultReason? ResultReason { get; set; }
+
+		/// <summary>Gets or sets the SBC ID that the call goes through.</summary>
+		[JsonPropertyName("sbc_id")]
+		public string SbcId { get; set; }
+
+		/// <summary>Gets or sets the SBC name that the call goes through.</summary>
+		[JsonPropertyName("sbc_name")]
+		public string SbcName { get; set; }
+
+		/// <summary>Gets or sets the SIP group ID that the call goes through.</summary>
+		[JsonPropertyName("sip_group_id")]
+		public string SipGroupId { get; set; }
+
+		/// <summary>Gets or sets the SIP group name that the call goes through.</summary>
+		[JsonPropertyName("sip_group_name")]
+		public string SipGroupName { get; set; }
 
 		/// <summary>Gets or sets the call start time.</summary>
 		[JsonPropertyName("start_time")]
